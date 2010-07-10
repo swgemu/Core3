@@ -92,7 +92,7 @@ object_tangible_lair_vesp_shared_lair_vesp = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2116978464
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp, "object/tangible/lair/vesp/shared_lair_vesp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vesp_shared_lair_vesp, "object/tangible/lair/vesp/shared_lair_vesp.iff")
 
 object_tangible_lair_vesp_shared_lair_vesp_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_vesp_shared_lair_vesp_desert = SharedTangibleObjectTemplate
 	clientObjectCRC = 2079570981
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp_desert, "object/tangible/lair/vesp/shared_lair_vesp_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vesp_shared_lair_vesp_desert, "object/tangible/lair/vesp/shared_lair_vesp_desert.iff")
 
 object_tangible_lair_vesp_shared_lair_vesp_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_vesp_shared_lair_vesp_mountain = SharedTangibleObjectTempla
 	clientObjectCRC = 4143757009
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp_mountain, "object/tangible/lair/vesp/shared_lair_vesp_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vesp_shared_lair_vesp_mountain, "object/tangible/lair/vesp/shared_lair_vesp_mountain.iff")

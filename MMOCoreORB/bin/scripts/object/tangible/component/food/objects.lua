@@ -92,7 +92,7 @@ object_tangible_component_food_shared_container_barrel = SharedTangibleObjectTem
 	clientObjectCRC = 208291925
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_shared_container_barrel, "object/tangible/component/food/shared_container_barrel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_shared_container_barrel, "object/tangible/component/food/shared_container_barrel.iff")
 
 object_tangible_component_food_shared_container_cask = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -145,7 +145,7 @@ object_tangible_component_food_shared_container_cask = SharedTangibleObjectTempl
 	clientObjectCRC = 225597999
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_shared_container_cask, "object/tangible/component/food/shared_container_cask.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_shared_container_cask, "object/tangible/component/food/shared_container_cask.iff")
 
 object_tangible_component_food_shared_container_large_glass = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s2_full.apt",
@@ -198,7 +198,7 @@ object_tangible_component_food_shared_container_large_glass = SharedTangibleObje
 	clientObjectCRC = 1157356093
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_shared_container_large_glass, "object/tangible/component/food/shared_container_large_glass.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_shared_container_large_glass, "object/tangible/component/food/shared_container_large_glass.iff")
 
 object_tangible_component_food_shared_container_small_glass = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
@@ -251,7 +251,7 @@ object_tangible_component_food_shared_container_small_glass = SharedTangibleObje
 	clientObjectCRC = 4135258442
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_shared_container_small_glass, "object/tangible/component/food/shared_container_small_glass.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_shared_container_small_glass, "object/tangible/component/food/shared_container_small_glass.iff")
 
 object_tangible_component_food_shared_ingredient_ball_of_dough = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_bakery_item.apt",
@@ -304,7 +304,7 @@ object_tangible_component_food_shared_ingredient_ball_of_dough = SharedTangibleO
 	clientObjectCRC = 4273682590
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_shared_ingredient_ball_of_dough, "object/tangible/component/food/shared_ingredient_ball_of_dough.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_shared_ingredient_ball_of_dough, "object/tangible/component/food/shared_ingredient_ball_of_dough.iff")
 
 object_tangible_component_food_shared_ingredient_carbosyrup = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
@@ -357,4 +357,4 @@ object_tangible_component_food_shared_ingredient_carbosyrup = SharedTangibleObje
 	clientObjectCRC = 3067661591
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_shared_ingredient_carbosyrup, "object/tangible/component/food/shared_ingredient_carbosyrup.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_shared_ingredient_carbosyrup, "object/tangible/component/food/shared_ingredient_carbosyrup.iff")

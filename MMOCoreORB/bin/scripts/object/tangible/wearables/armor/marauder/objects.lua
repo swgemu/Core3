@@ -92,7 +92,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_belt = Shared
 	clientObjectCRC = 1193954837
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_belt, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_belt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_belt, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_belt.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_bicep_l_f.sat",
@@ -145,7 +145,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_l = Sha
 	clientObjectCRC = 912959243
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_bicep_l.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_bicep_r_f.sat",
@@ -198,7 +198,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_r = Sha
 	clientObjectCRC = 1186980504
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_bicep_r.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_bracer_l_f.sat",
@@ -251,7 +251,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_l = Sh
 	clientObjectCRC = 204201638
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_bracer_l.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_bracer_r_f.sat",
@@ -304,7 +304,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_r = Sh
 	clientObjectCRC = 2097060661
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_bracer_r.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_chest_plate_f.sat",
@@ -357,7 +357,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_chest_plate =
 	clientObjectCRC = 2919726583
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_chest_plate, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_chest_plate, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_chest_plate.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_gloves_f.sat",
@@ -410,7 +410,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_gloves = Shar
 	clientObjectCRC = 2425881545
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_gloves, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_gloves.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_gloves, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_gloves.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_helmet_f.sat",
@@ -463,7 +463,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_helmet = Shar
 	clientObjectCRC = 643359425
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_helmet, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_helmet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_helmet, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_helmet.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_leggings_f.sat",
@@ -516,7 +516,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_leggings = Sh
 	clientObjectCRC = 2198799289
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_leggings, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_leggings.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_leggings, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s01_leggings.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_bicep_l_f.sat",
@@ -569,7 +569,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_l = Sha
 	clientObjectCRC = 189218995
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_bicep_l.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_bicep_r_f.sat",
@@ -622,7 +622,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_r = Sha
 	clientObjectCRC = 2073167136
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_bicep_r.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_boots_f.sat",
@@ -675,7 +675,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_boots = Share
 	clientObjectCRC = 3490583753
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_boots, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_boots.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_boots, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_boots.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_bracer_l_f.sat",
@@ -728,7 +728,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_l = Sh
 	clientObjectCRC = 3291712997
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_bracer_l.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_bracer_r_f.sat",
@@ -781,7 +781,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_r = Sh
 	clientObjectCRC = 3035023478
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_bracer_r.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_chest_plate_f.sat",
@@ -834,7 +834,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate =
 	clientObjectCRC = 2524065296
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_chest_plate.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_chest_plate_m.sat",
@@ -887,7 +887,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate_q
 	clientObjectCRC = 990779747
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate_quest, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_chest_plate_quest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate_quest, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_chest_plate_quest.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_leggings_f.sat",
@@ -940,7 +940,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_leggings = Sh
 	clientObjectCRC = 1259819258
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_leggings, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_leggings.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_leggings, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s02_leggings.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bandolier_double = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bandolier_double_f.sat",
@@ -993,7 +993,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bandolier_dou
 	clientObjectCRC = 711641234
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bandolier_double, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bandolier_double.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bandolier_double, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bandolier_double.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bicep_l_f.sat",
@@ -1046,7 +1046,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_l = Sha
 	clientObjectCRC = 3823310518
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bicep_l.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bicep_r_f.sat",
@@ -1099,7 +1099,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_r = Sha
 	clientObjectCRC = 2469810981
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bicep_r.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_boots_f.sat",
@@ -1152,7 +1152,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_boots = Share
 	clientObjectCRC = 698520359
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_boots, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_boots.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_boots, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_boots.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bracer_l_f.sat",
@@ -1205,7 +1205,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_l = Sh
 	clientObjectCRC = 2210677540
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_l, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bracer_l.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bracer_r_f.sat",
@@ -1258,7 +1258,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_r = Sh
 	clientObjectCRC = 4077979319
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_r, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_bracer_r.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_chest_plate_f.sat",
@@ -1311,7 +1311,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_chest_plate =
 	clientObjectCRC = 2174820173
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_chest_plate, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_chest_plate, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_chest_plate.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_gloves_f.sat",
@@ -1364,7 +1364,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_gloves = Shar
 	clientObjectCRC = 2675295685
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_gloves, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_gloves.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_gloves, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_gloves.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_helmet_f.sat",
@@ -1417,7 +1417,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_helmet = Shar
 	clientObjectCRC = 699737293
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_helmet, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_helmet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_helmet, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_helmet.iff")
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_leggings_f.sat",
@@ -1470,4 +1470,4 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_leggings = Sh
 	clientObjectCRC = 216047163
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_leggings, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_leggings.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_leggings, "object/tangible/wearables/armor/marauder/shared_armor_marauder_s03_leggings.iff")

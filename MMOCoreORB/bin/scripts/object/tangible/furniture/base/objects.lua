@@ -92,4 +92,4 @@ object_tangible_furniture_base_shared_furniture_base = SharedTangibleObjectTempl
 	clientObjectCRC = 3515230028
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_base_shared_furniture_base, "object/tangible/furniture/base/shared_furniture_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_base_shared_furniture_base, "object/tangible/furniture/base/shared_furniture_base.iff")

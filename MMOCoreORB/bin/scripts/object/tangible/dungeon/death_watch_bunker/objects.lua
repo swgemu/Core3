@@ -92,7 +92,7 @@ object_tangible_dungeon_death_watch_bunker_shared_crazed_miner_medicine = Shared
 	clientObjectCRC = 3544017422
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_crazed_miner_medicine, "object/tangible/dungeon/death_watch_bunker/shared_crazed_miner_medicine.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_crazed_miner_medicine, "object/tangible/dungeon/death_watch_bunker/shared_crazed_miner_medicine.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
@@ -145,7 +145,7 @@ object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal = Shared
 	clientObjectCRC = 2953987050
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal, "object/tangible/dungeon/death_watch_bunker/shared_door_control_terminal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal, "object/tangible/dungeon/death_watch_bunker/shared_door_control_terminal.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_drill_battery = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -198,7 +198,7 @@ object_tangible_dungeon_death_watch_bunker_shared_drill_battery = SharedTangible
 	clientObjectCRC = 707354619
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_drill_battery, "object/tangible/dungeon/death_watch_bunker/shared_drill_battery.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_drill_battery, "object/tangible/dungeon/death_watch_bunker/shared_drill_battery.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_drill_battery_clean = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -251,7 +251,7 @@ object_tangible_dungeon_death_watch_bunker_shared_drill_battery_clean = SharedTa
 	clientObjectCRC = 1573354578
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_drill_battery_clean, "object/tangible/dungeon/death_watch_bunker/shared_drill_battery_clean.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_drill_battery_clean, "object/tangible/dungeon/death_watch_bunker/shared_drill_battery_clean.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_enhanced_filter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
@@ -304,7 +304,7 @@ object_tangible_dungeon_death_watch_bunker_shared_enhanced_filter = SharedTangib
 	clientObjectCRC = 474299270
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_enhanced_filter, "object/tangible/dungeon/death_watch_bunker/shared_enhanced_filter.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_enhanced_filter, "object/tangible/dungeon/death_watch_bunker/shared_enhanced_filter.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_filter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
@@ -357,7 +357,7 @@ object_tangible_dungeon_death_watch_bunker_shared_filter = SharedTangibleObjectT
 	clientObjectCRC = 4268583510
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_filter, "object/tangible/dungeon/death_watch_bunker/shared_filter.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_filter, "object/tangible/dungeon/death_watch_bunker/shared_filter.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_filter_dispenser = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
@@ -410,7 +410,7 @@ object_tangible_dungeon_death_watch_bunker_shared_filter_dispenser = SharedTangi
 	clientObjectCRC = 3953005946
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_filter_dispenser, "object/tangible/dungeon/death_watch_bunker/shared_filter_dispenser.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_filter_dispenser, "object/tangible/dungeon/death_watch_bunker/shared_filter_dispenser.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_gel_packet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_antidote_chemical.apt",
@@ -463,7 +463,7 @@ object_tangible_dungeon_death_watch_bunker_shared_gel_packet = SharedTangibleObj
 	clientObjectCRC = 3707628236
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_gel_packet, "object/tangible/dungeon/death_watch_bunker/shared_gel_packet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_gel_packet, "object/tangible/dungeon/death_watch_bunker/shared_gel_packet.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_invulnerable_debris = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_conduit.apt",
@@ -516,7 +516,7 @@ object_tangible_dungeon_death_watch_bunker_shared_invulnerable_debris = SharedTa
 	clientObjectCRC = 1491458500
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_invulnerable_debris, "object/tangible/dungeon/death_watch_bunker/shared_invulnerable_debris.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_invulnerable_debris, "object/tangible/dungeon/death_watch_bunker/shared_invulnerable_debris.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_passkey_hall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -569,7 +569,7 @@ object_tangible_dungeon_death_watch_bunker_shared_passkey_hall = SharedTangibleO
 	clientObjectCRC = 2015489022
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_passkey_hall, "object/tangible/dungeon/death_watch_bunker/shared_passkey_hall.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_passkey_hall, "object/tangible/dungeon/death_watch_bunker/shared_passkey_hall.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_passkey_mine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -622,7 +622,7 @@ object_tangible_dungeon_death_watch_bunker_shared_passkey_mine = SharedTangibleO
 	clientObjectCRC = 72046646
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_passkey_mine, "object/tangible/dungeon/death_watch_bunker/shared_passkey_mine.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_passkey_mine, "object/tangible/dungeon/death_watch_bunker/shared_passkey_mine.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_passkey_storage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -675,7 +675,7 @@ object_tangible_dungeon_death_watch_bunker_shared_passkey_storage = SharedTangib
 	clientObjectCRC = 2522380231
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_passkey_storage, "object/tangible/dungeon/death_watch_bunker/shared_passkey_storage.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_passkey_storage, "object/tangible/dungeon/death_watch_bunker/shared_passkey_storage.iff")
 
 object_tangible_dungeon_death_watch_bunker_shared_workbench = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_tbl_s1.apt",
@@ -728,4 +728,4 @@ object_tangible_dungeon_death_watch_bunker_shared_workbench = SharedTangibleObje
 	clientObjectCRC = 4007608473
 }
 
-ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_workbench, "object/tangible/dungeon/death_watch_bunker/shared_workbench.iff")
+ObjectTemplates:addClientTemplate(object_tangible_dungeon_death_watch_bunker_shared_workbench, "object/tangible/dungeon/death_watch_bunker/shared_workbench.iff")

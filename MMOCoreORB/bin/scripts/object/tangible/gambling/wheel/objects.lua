@@ -92,4 +92,4 @@ object_tangible_gambling_wheel_shared_roulette = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2596039133
 }
 
-ObjectTemplates:addTemplate(object_tangible_gambling_wheel_shared_roulette, "object/tangible/gambling/wheel/shared_roulette.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gambling_wheel_shared_roulette, "object/tangible/gambling/wheel/shared_roulette.iff")

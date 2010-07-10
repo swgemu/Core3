@@ -92,7 +92,7 @@ object_tangible_wearables_pants_shared_nightsister_pants_s01 = SharedTangibleObj
 	clientObjectCRC = 2233956453
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_nightsister_pants_s01, "object/tangible/wearables/pants/shared_nightsister_pants_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_nightsister_pants_s01, "object/tangible/wearables/pants/shared_nightsister_pants_s01.iff")
 
 object_tangible_wearables_pants_shared_nightsister_pants_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_pants_s02.sat",
@@ -145,7 +145,7 @@ object_tangible_wearables_pants_shared_nightsister_pants_s02 = SharedTangibleObj
 	clientObjectCRC = 1580257522
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_nightsister_pants_s02, "object/tangible/wearables/pants/shared_nightsister_pants_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_nightsister_pants_s02, "object/tangible/wearables/pants/shared_nightsister_pants_s02.iff")
 
 object_tangible_wearables_pants_shared_pants_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s01_f.sat",
@@ -198,7 +198,7 @@ object_tangible_wearables_pants_shared_pants_s01 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 729715050
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s01, "object/tangible/wearables/pants/shared_pants_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s01, "object/tangible/wearables/pants/shared_pants_s01.iff")
 
 object_tangible_wearables_pants_shared_pants_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s02_f.sat",
@@ -251,7 +251,7 @@ object_tangible_wearables_pants_shared_pants_s02 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 4033427965
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s02, "object/tangible/wearables/pants/shared_pants_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s02, "object/tangible/wearables/pants/shared_pants_s02.iff")
 
 object_tangible_wearables_pants_shared_pants_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s04_f.sat",
@@ -304,7 +304,7 @@ object_tangible_wearables_pants_shared_pants_s04 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1116173668
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s04, "object/tangible/wearables/pants/shared_pants_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s04, "object/tangible/wearables/pants/shared_pants_s04.iff")
 
 object_tangible_wearables_pants_shared_pants_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s05_f.sat",
@@ -357,7 +357,7 @@ object_tangible_wearables_pants_shared_pants_s05 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 193598185
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s05, "object/tangible/wearables/pants/shared_pants_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s05, "object/tangible/wearables/pants/shared_pants_s05.iff")
 
 object_tangible_wearables_pants_shared_pants_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s06_f.sat",
@@ -410,7 +410,7 @@ object_tangible_wearables_pants_shared_pants_s06 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3499997822
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s06, "object/tangible/wearables/pants/shared_pants_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s06, "object/tangible/wearables/pants/shared_pants_s06.iff")
 
 object_tangible_wearables_pants_shared_pants_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s07_f.sat",
@@ -463,7 +463,7 @@ object_tangible_wearables_pants_shared_pants_s07 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2576408051
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s07, "object/tangible/wearables/pants/shared_pants_s07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s07, "object/tangible/wearables/pants/shared_pants_s07.iff")
 
 object_tangible_wearables_pants_shared_pants_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s08_f.sat",
@@ -516,7 +516,7 @@ object_tangible_wearables_pants_shared_pants_s08 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 597357025
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s08, "object/tangible/wearables/pants/shared_pants_s08.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s08, "object/tangible/wearables/pants/shared_pants_s08.iff")
 
 object_tangible_wearables_pants_shared_pants_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s09_f.sat",
@@ -569,7 +569,7 @@ object_tangible_wearables_pants_shared_pants_s09 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1788319340
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s09, "object/tangible/wearables/pants/shared_pants_s09.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s09, "object/tangible/wearables/pants/shared_pants_s09.iff")
 
 object_tangible_wearables_pants_shared_pants_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s10_f.sat",
@@ -622,7 +622,7 @@ object_tangible_wearables_pants_shared_pants_s10 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2036071327
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s10, "object/tangible/wearables/pants/shared_pants_s10.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s10, "object/tangible/wearables/pants/shared_pants_s10.iff")
 
 object_tangible_wearables_pants_shared_pants_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s11_f.sat",
@@ -675,7 +675,7 @@ object_tangible_wearables_pants_shared_pants_s11 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 810982418
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s11, "object/tangible/wearables/pants/shared_pants_s11.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s11, "object/tangible/wearables/pants/shared_pants_s11.iff")
 
 object_tangible_wearables_pants_shared_pants_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_f.sat",
@@ -728,7 +728,7 @@ object_tangible_wearables_pants_shared_pants_s12 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3946919045
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s12, "object/tangible/wearables/pants/shared_pants_s12.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s12, "object/tangible/wearables/pants/shared_pants_s12.iff")
 
 object_tangible_wearables_pants_shared_pants_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s13_f.sat",
@@ -781,7 +781,7 @@ object_tangible_wearables_pants_shared_pants_s13 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2722910984
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s13, "object/tangible/wearables/pants/shared_pants_s13.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s13, "object/tangible/wearables/pants/shared_pants_s13.iff")
 
 object_tangible_wearables_pants_shared_pants_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s14_f.sat",
@@ -834,7 +834,7 @@ object_tangible_wearables_pants_shared_pants_s14 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1504671772
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s14, "object/tangible/wearables/pants/shared_pants_s14.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s14, "object/tangible/wearables/pants/shared_pants_s14.iff")
 
 object_tangible_wearables_pants_shared_pants_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s15_f.sat",
@@ -887,7 +887,7 @@ object_tangible_wearables_pants_shared_pants_s15 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 279060369
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s15, "object/tangible/wearables/pants/shared_pants_s15.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s15, "object/tangible/wearables/pants/shared_pants_s15.iff")
 
 object_tangible_wearables_pants_shared_pants_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s17_f.sat",
@@ -940,7 +940,7 @@ object_tangible_wearables_pants_shared_pants_s17 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2193150091
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s17, "object/tangible/wearables/pants/shared_pants_s17.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s17, "object/tangible/wearables/pants/shared_pants_s17.iff")
 
 object_tangible_wearables_pants_shared_pants_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s18_f.sat",
@@ -993,7 +993,7 @@ object_tangible_wearables_pants_shared_pants_s18 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 951254169
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s18, "object/tangible/wearables/pants/shared_pants_s18.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s18, "object/tangible/wearables/pants/shared_pants_s18.iff")
 
 object_tangible_wearables_pants_shared_pants_s21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s21_f.sat",
@@ -1046,7 +1046,7 @@ object_tangible_wearables_pants_shared_pants_s21 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 489589658
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s21, "object/tangible/wearables/pants/shared_pants_s21.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s21, "object/tangible/wearables/pants/shared_pants_s21.iff")
 
 object_tangible_wearables_pants_shared_pants_s22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s22_f.sat",
@@ -1099,7 +1099,7 @@ object_tangible_wearables_pants_shared_pants_s22 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3325633293
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s22, "object/tangible/wearables/pants/shared_pants_s22.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s22, "object/tangible/wearables/pants/shared_pants_s22.iff")
 
 object_tangible_wearables_pants_shared_pants_s24 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s24_f.sat",
@@ -1152,7 +1152,7 @@ object_tangible_wearables_pants_shared_pants_s24 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1960275860
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s24, "object/tangible/wearables/pants/shared_pants_s24.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s24, "object/tangible/wearables/pants/shared_pants_s24.iff")
 
 object_tangible_wearables_pants_shared_pants_s25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s25_f.sat",
@@ -1205,7 +1205,7 @@ object_tangible_wearables_pants_shared_pants_s25 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1037699097
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s25, "object/tangible/wearables/pants/shared_pants_s25.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s25, "object/tangible/wearables/pants/shared_pants_s25.iff")
 
 object_tangible_wearables_pants_shared_pants_s26 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s26_f.sat",
@@ -1258,7 +1258,7 @@ object_tangible_wearables_pants_shared_pants_s26 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3872235662
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s26, "object/tangible/wearables/pants/shared_pants_s26.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s26, "object/tangible/wearables/pants/shared_pants_s26.iff")
 
 object_tangible_wearables_pants_shared_pants_s27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s27_f.sat",
@@ -1311,7 +1311,7 @@ object_tangible_wearables_pants_shared_pants_s27 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2948646659
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s27, "object/tangible/wearables/pants/shared_pants_s27.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s27, "object/tangible/wearables/pants/shared_pants_s27.iff")
 
 object_tangible_wearables_pants_shared_pants_s28 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_f.sat",
@@ -1364,7 +1364,7 @@ object_tangible_wearables_pants_shared_pants_s28 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 365619985
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s28, "object/tangible/wearables/pants/shared_pants_s28.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s28, "object/tangible/wearables/pants/shared_pants_s28.iff")
 
 object_tangible_wearables_pants_shared_pants_s29 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s29_f.sat",
@@ -1417,7 +1417,7 @@ object_tangible_wearables_pants_shared_pants_s29 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1556581532
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s29, "object/tangible/wearables/pants/shared_pants_s29.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s29, "object/tangible/wearables/pants/shared_pants_s29.iff")
 
 object_tangible_wearables_pants_shared_pants_s30 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s30_f.sat",
@@ -1470,7 +1470,7 @@ object_tangible_wearables_pants_shared_pants_s30 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1326178671
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s30, "object/tangible/wearables/pants/shared_pants_s30.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s30, "object/tangible/wearables/pants/shared_pants_s30.iff")
 
 object_tangible_wearables_pants_shared_pants_s31 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s31_f.sat",
@@ -1523,7 +1523,7 @@ object_tangible_wearables_pants_shared_pants_s31 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 101091042
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s31, "object/tangible/wearables/pants/shared_pants_s31.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s31, "object/tangible/wearables/pants/shared_pants_s31.iff")
 
 object_tangible_wearables_pants_shared_pants_s32 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s32_f.sat",
@@ -1576,7 +1576,7 @@ object_tangible_wearables_pants_shared_pants_s32 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3708890741
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s32, "object/tangible/wearables/pants/shared_pants_s32.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s32, "object/tangible/wearables/pants/shared_pants_s32.iff")
 
 object_tangible_wearables_pants_shared_pants_s33 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s33_f.sat",
@@ -1629,4 +1629,4 @@ object_tangible_wearables_pants_shared_pants_s33 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2484881912
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s33, "object/tangible/wearables/pants/shared_pants_s33.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_pants_shared_pants_s33, "object/tangible/wearables/pants/shared_pants_s33.iff")

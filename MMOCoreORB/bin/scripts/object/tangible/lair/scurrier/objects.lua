@@ -92,7 +92,7 @@ object_tangible_lair_scurrier_shared_lair_scurrier = SharedTangibleObjectTemplat
 	clientObjectCRC = 3654226862
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier, "object/tangible/lair/scurrier/shared_lair_scurrier.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier, "object/tangible/lair/scurrier/shared_lair_scurrier.iff")
 
 object_tangible_lair_scurrier_shared_lair_scurrier_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_scurrier_shared_lair_scurrier_desert = SharedTangibleObject
 	clientObjectCRC = 1092043415
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_desert, "object/tangible/lair/scurrier/shared_lair_scurrier_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_desert, "object/tangible/lair/scurrier/shared_lair_scurrier_desert.iff")
 
 object_tangible_lair_scurrier_shared_lair_scurrier_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,7 +198,7 @@ object_tangible_lair_scurrier_shared_lair_scurrier_dune = SharedTangibleObjectTe
 	clientObjectCRC = 129638931
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_dune, "object/tangible/lair/scurrier/shared_lair_scurrier_dune.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_dune, "object/tangible/lair/scurrier/shared_lair_scurrier_dune.iff")
 
 object_tangible_lair_scurrier_shared_lair_scurrier_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -251,7 +251,7 @@ object_tangible_lair_scurrier_shared_lair_scurrier_mountain = SharedTangibleObje
 	clientObjectCRC = 3299579420
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_mountain, "object/tangible/lair/scurrier/shared_lair_scurrier_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_mountain, "object/tangible/lair/scurrier/shared_lair_scurrier_mountain.iff")
 
 object_tangible_lair_scurrier_shared_lair_scurrier_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -304,4 +304,4 @@ object_tangible_lair_scurrier_shared_lair_scurrier_wasteland = SharedTangibleObj
 	clientObjectCRC = 3138468221
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_wasteland, "object/tangible/lair/scurrier/shared_lair_scurrier_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_wasteland, "object/tangible/lair/scurrier/shared_lair_scurrier_wasteland.iff")

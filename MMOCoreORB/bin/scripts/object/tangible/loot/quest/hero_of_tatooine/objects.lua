@@ -92,7 +92,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism = SharedTangibl
 	clientObjectCRC = 2895321218
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_altruism.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_altruism.iff")
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_courage.apt",
@@ -145,7 +145,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage = SharedTangible
 	clientObjectCRC = 1173220327
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_courage.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_courage.iff")
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_honor.apt",
@@ -198,7 +198,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor = SharedTangibleOb
 	clientObjectCRC = 1842983256
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_honor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_honor.iff")
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_intellect.apt",
@@ -251,7 +251,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect = SharedTangib
 	clientObjectCRC = 2725337290
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_intellect.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_intellect.iff")
 
 object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_head.apt",
@@ -304,4 +304,4 @@ object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull = SharedTangible
 	clientObjectCRC = 577481974
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull, "object/tangible/loot/quest/hero_of_tatooine/shared_squill_skull.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull, "object/tangible/loot/quest/hero_of_tatooine/shared_squill_skull.iff")

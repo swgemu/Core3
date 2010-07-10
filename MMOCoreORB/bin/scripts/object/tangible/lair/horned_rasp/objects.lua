@@ -92,7 +92,7 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp = SharedTangibleObjectT
 	clientObjectCRC = 4201023069
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp.iff")
 
 object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland = SharedTangi
 	clientObjectCRC = 1788421902
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_grassland.iff")
 
 object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle = SharedTangible
 	clientObjectCRC = 2453418917
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_jungle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_jungle.iff")

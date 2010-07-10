@@ -92,4 +92,4 @@ object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed = SharedTangib
 	clientObjectCRC = 1563479543
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed, "object/tangible/deed/faction_perk/minefield/shared_field_1x1_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed, "object/tangible/deed/faction_perk/minefield/shared_field_1x1_deed.iff")

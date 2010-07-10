@@ -92,7 +92,7 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch = SharedTangibleObjectTempl
 	clientObjectCRC = 66686181
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch.iff")
 
 object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest = SharedTangibleObje
 	clientObjectCRC = 544226811
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_forest.iff")
 
 object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain = SharedTangibleOb
 	clientObjectCRC = 1253989511
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_mountain.iff")

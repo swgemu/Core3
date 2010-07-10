@@ -95,7 +95,7 @@ object_building_corellia_shared_association_hall_civilian_corellia = SharedBuild
 	clientObjectCRC = 2742139830
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_association_hall_civilian_corellia, "object/building/corellia/shared_association_hall_civilian_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_association_hall_civilian_corellia, "object/building/corellia/shared_association_hall_civilian_corellia.iff")
 
 object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_bank_s01.apt",
@@ -151,7 +151,7 @@ object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 925292585
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_bank_corellia, "object/building/corellia/shared_bank_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_bank_corellia, "object/building/corellia/shared_bank_corellia.iff")
 
 object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -207,7 +207,7 @@ object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2013728951
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_cantina_corellia, "object/building/corellia/shared_cantina_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_cantina_corellia, "object/building/corellia/shared_cantina_corellia.iff")
 
 object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -263,7 +263,7 @@ object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2023346551
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_capitol_corellia, "object/building/corellia/shared_capitol_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_capitol_corellia, "object/building/corellia/shared_capitol_corellia.iff")
 
 object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -319,7 +319,7 @@ object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:
 	clientObjectCRC = 4160058931
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_cloning_corellia, "object/building/corellia/shared_cloning_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_cloning_corellia, "object/building/corellia/shared_cloning_corellia.iff")
 
 object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_32x16_s01.apt",
@@ -375,7 +375,7 @@ object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuilding
 	clientObjectCRC = 3487204259
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_32x16_s01, "object/building/corellia/shared_filler_block_corellia_32x16_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_block_corellia_32x16_s01, "object/building/corellia/shared_filler_block_corellia_32x16_s01.iff")
 
 object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_64x32_s01.apt",
@@ -431,7 +431,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuilding
 	clientObjectCRC = 1480274759
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s01, "object/building/corellia/shared_filler_block_corellia_64x32_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s01, "object/building/corellia/shared_filler_block_corellia_64x32_s01.iff")
 
 object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_64x32_s02.apt",
@@ -487,7 +487,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuilding
 	clientObjectCRC = 2200738768
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s02, "object/building/corellia/shared_filler_block_corellia_64x32_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s02, "object/building/corellia/shared_filler_block_corellia_64x32_s02.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s01.apt",
@@ -543,7 +543,7 @@ object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildi
 	clientObjectCRC = 2891016021
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_01, "object/building/corellia/shared_filler_building_corellia_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_01, "object/building/corellia/shared_filler_building_corellia_style_01.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s02.apt",
@@ -599,7 +599,7 @@ object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildi
 	clientObjectCRC = 2001129410
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_02, "object/building/corellia/shared_filler_building_corellia_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_02, "object/building/corellia/shared_filler_building_corellia_style_02.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s03.apt",
@@ -655,7 +655,7 @@ object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildi
 	clientObjectCRC = 1045145679
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_03, "object/building/corellia/shared_filler_building_corellia_style_03.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_03, "object/building/corellia/shared_filler_building_corellia_style_03.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s04.apt",
@@ -711,7 +711,7 @@ object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildi
 	clientObjectCRC = 3316155227
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_04, "object/building/corellia/shared_filler_building_corellia_style_04.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_04, "object/building/corellia/shared_filler_building_corellia_style_04.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s05.apt",
@@ -767,7 +767,7 @@ object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildi
 	clientObjectCRC = 2359682262
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_05, "object/building/corellia/shared_filler_building_corellia_style_05.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_05, "object/building/corellia/shared_filler_building_corellia_style_05.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s06.apt",
@@ -823,7 +823,7 @@ object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildi
 	clientObjectCRC = 1471302721
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_06, "object/building/corellia/shared_filler_building_corellia_style_06.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_06, "object/building/corellia/shared_filler_building_corellia_style_06.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s07.apt",
@@ -879,7 +879,7 @@ object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildi
 	clientObjectCRC = 515845068
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_07, "object/building/corellia/shared_filler_building_corellia_style_07.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_07, "object/building/corellia/shared_filler_building_corellia_style_07.iff")
 
 object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_24x16_s01.apt",
@@ -935,7 +935,7 @@ object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObject
 	clientObjectCRC = 2616481902
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x16_s01, "object/building/corellia/shared_filler_historic_24x16_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_historic_24x16_s01, "object/building/corellia/shared_filler_historic_24x16_s01.iff")
 
 object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_24x16_s02.apt",
@@ -991,7 +991,7 @@ object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObject
 	clientObjectCRC = 1088680185
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x16_s02, "object/building/corellia/shared_filler_historic_24x16_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_historic_24x16_s02, "object/building/corellia/shared_filler_historic_24x16_s02.iff")
 
 object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_32x16_s01.apt",
@@ -1047,7 +1047,7 @@ object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObject
 	clientObjectCRC = 1667646591
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x16_s01, "object/building/corellia/shared_filler_historic_32x16_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_historic_32x16_s01, "object/building/corellia/shared_filler_historic_32x16_s01.iff")
 
 object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_32x16_s02.apt",
@@ -1103,7 +1103,7 @@ object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObject
 	clientObjectCRC = 3094473960
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x16_s02, "object/building/corellia/shared_filler_historic_32x16_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_historic_32x16_s02, "object/building/corellia/shared_filler_historic_32x16_s02.iff")
 
 object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x16_s01.apt",
@@ -1159,7 +1159,7 @@ object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemp
 	clientObjectCRC = 2757381075
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x16_s01, "object/building/corellia/shared_filler_slum_16x16_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_slum_16x16_s01, "object/building/corellia/shared_filler_slum_16x16_s01.iff")
 
 object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x32_s01.apt",
@@ -1215,7 +1215,7 @@ object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemp
 	clientObjectCRC = 1694210539
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s01, "object/building/corellia/shared_filler_slum_16x32_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_slum_16x32_s01, "object/building/corellia/shared_filler_slum_16x32_s01.iff")
 
 object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x32_s02.apt",
@@ -1271,7 +1271,7 @@ object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemp
 	clientObjectCRC = 3219927420
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s02, "object/building/corellia/shared_filler_slum_16x32_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_slum_16x32_s02, "object/building/corellia/shared_filler_slum_16x32_s02.iff")
 
 object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_garage_s01_u01.apt",
@@ -1327,7 +1327,7 @@ object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1140644280
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_garage_corellia, "object/building/corellia/shared_garage_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_garage_corellia, "object/building/corellia/shared_garage_corellia.iff")
 
 object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1383,7 +1383,7 @@ object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingO
 	clientObjectCRC = 1288802152
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_guild_combat_corellia_style_01, "object/building/corellia/shared_guild_combat_corellia_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_guild_combat_corellia_style_01, "object/building/corellia/shared_guild_combat_corellia_style_01.iff")
 
 object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1439,7 +1439,7 @@ object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildin
 	clientObjectCRC = 2920780919
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_guild_commerce_corellia_style_01, "object/building/corellia/shared_guild_commerce_corellia_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_guild_commerce_corellia_style_01, "object/building/corellia/shared_guild_commerce_corellia_style_01.iff")
 
 object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1495,7 +1495,7 @@ object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjec
 	clientObjectCRC = 3431234640
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_guild_theater_corellia_s01, "object/building/corellia/shared_guild_theater_corellia_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_guild_theater_corellia_s01, "object/building/corellia/shared_guild_theater_corellia_s01.iff")
 
 object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1551,7 +1551,7 @@ object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuild
 	clientObjectCRC = 3226540131
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_guild_university_corellia_style_01, "object/building/corellia/shared_guild_university_corellia_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_guild_university_corellia_style_01, "object/building/corellia/shared_guild_university_corellia_style_01.iff")
 
 object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1607,7 +1607,7 @@ object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate
 	clientObjectCRC = 2966265050
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia, "object/building/corellia/shared_hospital_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_hospital_corellia, "object/building/corellia/shared_hospital_corellia.iff")
 
 object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1663,7 +1663,7 @@ object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemp
 	clientObjectCRC = 1414124568
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia_s02, "object/building/corellia/shared_hospital_corellia_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_hospital_corellia_s02, "object/building/corellia/shared_hospital_corellia_s02.iff")
 
 object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1719,7 +1719,7 @@ object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3326447330
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_hotel_corellia, "object/building/corellia/shared_hotel_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_hotel_corellia, "object/building/corellia/shared_hotel_corellia.iff")
 
 object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1775,7 +1775,7 @@ object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjec
 	clientObjectCRC = 2032858770
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_merchant_tent_corellia_s01, "object/building/corellia/shared_merchant_tent_corellia_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_merchant_tent_corellia_s01, "object/building/corellia/shared_merchant_tent_corellia_s01.iff")
 
 object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1831,7 +1831,7 @@ object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObject
 	clientObjectCRC = 2468987350
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_lg_s01_fp1, "object/building/corellia/shared_ply_corl_house_lg_s01_fp1.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_lg_s01_fp1, "object/building/corellia/shared_ply_corl_house_lg_s01_fp1.iff")
 
 object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1887,7 +1887,7 @@ object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectT
 	clientObjectCRC = 1777902906
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_m_s01_fp1, "object/building/corellia/shared_ply_corl_house_m_s01_fp1.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_m_s01_fp1, "object/building/corellia/shared_ply_corl_house_m_s01_fp1.iff")
 
 object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1943,7 +1943,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectT
 	clientObjectCRC = 4262283837
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp1, "object/building/corellia/shared_ply_corl_house_s_s01_fp1.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp1, "object/building/corellia/shared_ply_corl_house_s_s01_fp1.iff")
 
 object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1999,7 +1999,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectT
 	clientObjectCRC = 622518954
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp2, "object/building/corellia/shared_ply_corl_house_s_s01_fp2.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp2, "object/building/corellia/shared_ply_corl_house_s_s01_fp2.iff")
 
 object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2055,7 +2055,7 @@ object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectT
 	clientObjectCRC = 3972901152
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s02_fp1, "object/building/corellia/shared_ply_corl_house_s_s02_fp1.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_s_s02_fp1, "object/building/corellia/shared_ply_corl_house_s_s02_fp1.iff")
 
 object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2111,7 +2111,7 @@ object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 4015891242
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_salon_corellia, "object/building/corellia/shared_salon_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_salon_corellia, "object/building/corellia/shared_salon_corellia.iff")
 
 object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_shuttleport_s01.apt",
@@ -2167,7 +2167,7 @@ object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTempl
 	clientObjectCRC = 197393539
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_shuttleport_corellia, "object/building/corellia/shared_shuttleport_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_shuttleport_corellia, "object/building/corellia/shared_shuttleport_corellia.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s01.apt",
@@ -2223,7 +2223,7 @@ object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObj
 	clientObjectCRC = 2284214156
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_01, "object/building/corellia/shared_skyscraper_corellia_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_01, "object/building/corellia/shared_skyscraper_corellia_style_01.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s02.apt",
@@ -2279,7 +2279,7 @@ object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObj
 	clientObjectCRC = 1395785499
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_02, "object/building/corellia/shared_skyscraper_corellia_style_02.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_02, "object/building/corellia/shared_skyscraper_corellia_style_02.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s03.apt",
@@ -2335,7 +2335,7 @@ object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObj
 	clientObjectCRC = 440178838
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_03, "object/building/corellia/shared_skyscraper_corellia_style_03.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_03, "object/building/corellia/shared_skyscraper_corellia_style_03.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s04.apt",
@@ -2391,7 +2391,7 @@ object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObj
 	clientObjectCRC = 3789534082
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_04, "object/building/corellia/shared_skyscraper_corellia_style_04.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_04, "object/building/corellia/shared_skyscraper_corellia_style_04.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s05.apt",
@@ -2447,7 +2447,7 @@ object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObj
 	clientObjectCRC = 2832389135
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_05, "object/building/corellia/shared_skyscraper_corellia_style_05.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_05, "object/building/corellia/shared_skyscraper_corellia_style_05.iff")
 
 object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2503,4 +2503,4 @@ object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate
 	clientObjectCRC = 1449497657
 }
 
-ObjectTemplates:addTemplate(object_building_corellia_shared_starport_corellia, "object/building/corellia/shared_starport_corellia.iff")
+ObjectTemplates:addClientTemplate(object_building_corellia_shared_starport_corellia, "object/building/corellia/shared_starport_corellia.iff")

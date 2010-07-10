@@ -92,7 +92,7 @@ object_tangible_furniture_cheap_shared_armoire_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 814787995
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_armoire_s01, "object/tangible/furniture/cheap/shared_armoire_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_cheap_shared_armoire_s01, "object/tangible/furniture/cheap/shared_armoire_s01.iff")
 
 object_tangible_furniture_cheap_shared_bookcase_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_bookcase_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_furniture_cheap_shared_bookcase_s01 = SharedTangibleObjectTempla
 	clientObjectCRC = 536193644
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_bookcase_s01, "object/tangible/furniture/cheap/shared_bookcase_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_cheap_shared_bookcase_s01, "object/tangible/furniture/cheap/shared_bookcase_s01.iff")
 
 object_tangible_furniture_cheap_shared_cabinet_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_cabinet_s01.apt",
@@ -198,7 +198,7 @@ object_tangible_furniture_cheap_shared_cabinet_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1571830128
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_cabinet_s01, "object/tangible/furniture/cheap/shared_cabinet_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_cheap_shared_cabinet_s01, "object/tangible/furniture/cheap/shared_cabinet_s01.iff")
 
 object_tangible_furniture_cheap_shared_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_chair_s01.apt",
@@ -251,7 +251,7 @@ object_tangible_furniture_cheap_shared_chair_s01 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 390371593
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_chair_s01, "object/tangible/furniture/cheap/shared_chair_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_cheap_shared_chair_s01, "object/tangible/furniture/cheap/shared_chair_s01.iff")
 
 object_tangible_furniture_cheap_shared_chest_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_chest_s01.apt",
@@ -304,7 +304,7 @@ object_tangible_furniture_cheap_shared_chest_s01 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3830949127
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_chest_s01, "object/tangible/furniture/cheap/shared_chest_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_cheap_shared_chest_s01, "object/tangible/furniture/cheap/shared_chest_s01.iff")
 
 object_tangible_furniture_cheap_shared_coffee_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_coffee_table_s01.apt",
@@ -357,7 +357,7 @@ object_tangible_furniture_cheap_shared_coffee_table_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 3533156957
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_coffee_table_s01, "object/tangible/furniture/cheap/shared_coffee_table_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_cheap_shared_coffee_table_s01, "object/tangible/furniture/cheap/shared_coffee_table_s01.iff")
 
 object_tangible_furniture_cheap_shared_couch_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_couch_s01.apt",
@@ -410,7 +410,7 @@ object_tangible_furniture_cheap_shared_couch_s01 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 760525609
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_couch_s01, "object/tangible/furniture/cheap/shared_couch_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_cheap_shared_couch_s01, "object/tangible/furniture/cheap/shared_couch_s01.iff")
 
 object_tangible_furniture_cheap_shared_end_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_end_table_s01.apt",
@@ -463,7 +463,7 @@ object_tangible_furniture_cheap_shared_end_table_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 506885495
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_end_table_s01, "object/tangible/furniture/cheap/shared_end_table_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_cheap_shared_end_table_s01, "object/tangible/furniture/cheap/shared_end_table_s01.iff")
 
 object_tangible_furniture_cheap_shared_love_seat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_love_seat_s01.apt",
@@ -516,4 +516,4 @@ object_tangible_furniture_cheap_shared_love_seat_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 649092668
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_cheap_shared_love_seat_s01, "object/tangible/furniture/cheap/shared_love_seat_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_cheap_shared_love_seat_s01, "object/tangible/furniture/cheap/shared_love_seat_s01.iff")

@@ -92,4 +92,4 @@ object_tangible_firework_base_shared_firework_base = SharedTangibleObjectTemplat
 	clientObjectCRC = 1696219911
 }
 
-ObjectTemplates:addTemplate(object_tangible_firework_base_shared_firework_base, "object/tangible/firework/base/shared_firework_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_firework_base_shared_firework_base, "object/tangible/firework/base/shared_firework_base.iff")

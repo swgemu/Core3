@@ -82,4 +82,4 @@ object_intangible_ship_base_shared_ship_control_device_base = SharedIntangibleOb
 	clientObjectCRC = 1318932514
 }
 
-ObjectTemplates:addTemplate(object_intangible_ship_base_shared_ship_control_device_base, "object/intangible/ship/base/shared_ship_control_device_base.iff")
+ObjectTemplates:addClientTemplate(object_intangible_ship_base_shared_ship_control_device_base, "object/intangible/ship/base/shared_ship_control_device_base.iff")

@@ -96,7 +96,7 @@ object_weapon_ranged_rifle_shared_rifle_acid_beam = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 3329701535
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_acid_beam, "object/weapon/ranged/rifle/shared_rifle_acid_beam.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_acid_beam, "object/weapon/ranged/rifle/shared_rifle_acid_beam.iff")
 
 object_weapon_ranged_rifle_shared_rifle_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_beam_rifle.apt",
@@ -153,7 +153,7 @@ object_weapon_ranged_rifle_shared_rifle_beam = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 852163759
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_beam, "object/weapon/ranged/rifle/shared_rifle_beam.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_beam, "object/weapon/ranged/rifle/shared_rifle_beam.iff")
 
 object_weapon_ranged_rifle_shared_rifle_berserker = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_berserker.apt",
@@ -210,7 +210,7 @@ object_weapon_ranged_rifle_shared_rifle_berserker = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 1604898449
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_berserker, "object/weapon/ranged/rifle/shared_rifle_berserker.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_berserker, "object/weapon/ranged/rifle/shared_rifle_berserker.iff")
 
 object_weapon_ranged_rifle_shared_rifle_bowcaster = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_bowcaster.apt",
@@ -267,7 +267,7 @@ object_weapon_ranged_rifle_shared_rifle_bowcaster = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 2976096139
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_bowcaster, "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_bowcaster, "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff")
 
 object_weapon_ranged_rifle_shared_rifle_cdef = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
@@ -324,7 +324,7 @@ object_weapon_ranged_rifle_shared_rifle_cdef = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 3496137221
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_cdef, "object/weapon/ranged/rifle/shared_rifle_cdef.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_cdef, "object/weapon/ranged/rifle/shared_rifle_cdef.iff")
 
 object_weapon_ranged_rifle_shared_rifle_dlt20 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
@@ -381,7 +381,7 @@ object_weapon_ranged_rifle_shared_rifle_dlt20 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1650151261
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_dlt20, "object/weapon/ranged/rifle/shared_rifle_dlt20.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_dlt20, "object/weapon/ranged/rifle/shared_rifle_dlt20.iff")
 
 object_weapon_ranged_rifle_shared_rifle_dlt20a = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
@@ -438,7 +438,7 @@ object_weapon_ranged_rifle_shared_rifle_dlt20a = SharedWeaponObjectTemplate:new 
 	clientObjectCRC = 2200111432
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_dlt20a, "object/weapon/ranged/rifle/shared_rifle_dlt20a.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_dlt20a, "object/weapon/ranged/rifle/shared_rifle_dlt20a.iff")
 
 object_weapon_ranged_rifle_shared_rifle_e11 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
@@ -495,7 +495,7 @@ object_weapon_ranged_rifle_shared_rifle_e11 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 4027327053
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_e11, "object/weapon/ranged/rifle/shared_rifle_e11.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_e11, "object/weapon/ranged/rifle/shared_rifle_e11.iff")
 
 object_weapon_ranged_rifle_shared_rifle_ewok_crossbow = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_ewok_crossbow.apt",
@@ -552,7 +552,7 @@ object_weapon_ranged_rifle_shared_rifle_ewok_crossbow = SharedWeaponObjectTempla
 	clientObjectCRC = 917715390
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_ewok_crossbow, "object/weapon/ranged/rifle/shared_rifle_ewok_crossbow.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_ewok_crossbow, "object/weapon/ranged/rifle/shared_rifle_ewok_crossbow.iff")
 
 object_weapon_ranged_rifle_shared_rifle_flame_thrower = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_flamer.apt",
@@ -609,7 +609,7 @@ object_weapon_ranged_rifle_shared_rifle_flame_thrower = SharedWeaponObjectTempla
 	clientObjectCRC = 3238374228
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_flame_thrower, "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_flame_thrower, "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff")
 
 object_weapon_ranged_rifle_shared_rifle_jawa_ion = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_jawa_ion.apt",
@@ -666,7 +666,7 @@ object_weapon_ranged_rifle_shared_rifle_jawa_ion = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 1928416827
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_jawa_ion, "object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_jawa_ion, "object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff")
 
 object_weapon_ranged_rifle_shared_rifle_laser = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser.apt",
@@ -723,7 +723,7 @@ object_weapon_ranged_rifle_shared_rifle_laser = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1390088554
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_laser, "object/weapon/ranged/rifle/shared_rifle_laser.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_laser, "object/weapon/ranged/rifle/shared_rifle_laser.iff")
 
 object_weapon_ranged_rifle_shared_rifle_laser_noob = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser.apt",
@@ -780,7 +780,7 @@ object_weapon_ranged_rifle_shared_rifle_laser_noob = SharedWeaponObjectTemplate:
 	clientObjectCRC = 378484773
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_laser_noob, "object/weapon/ranged/rifle/shared_rifle_laser_noob.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_laser_noob, "object/weapon/ranged/rifle/shared_rifle_laser_noob.iff")
 
 object_weapon_ranged_rifle_shared_rifle_lightning = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_lightning_cannon.apt",
@@ -837,7 +837,7 @@ object_weapon_ranged_rifle_shared_rifle_lightning = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 708413629
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_lightning, "object/weapon/ranged/rifle/shared_rifle_lightning.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_lightning, "object/weapon/ranged/rifle/shared_rifle_lightning.iff")
 
 object_weapon_ranged_rifle_shared_rifle_sg82 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_sg82.apt",
@@ -894,7 +894,7 @@ object_weapon_ranged_rifle_shared_rifle_sg82 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 3248736753
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_sg82, "object/weapon/ranged/rifle/shared_rifle_sg82.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_sg82, "object/weapon/ranged/rifle/shared_rifle_sg82.iff")
 
 object_weapon_ranged_rifle_shared_rifle_spraystick = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_spraystick.apt",
@@ -951,7 +951,7 @@ object_weapon_ranged_rifle_shared_rifle_spraystick = SharedWeaponObjectTemplate:
 	clientObjectCRC = 284980584
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_spraystick, "object/weapon/ranged/rifle/shared_rifle_spraystick.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_spraystick, "object/weapon/ranged/rifle/shared_rifle_spraystick.iff")
 
 object_weapon_ranged_rifle_shared_rifle_t21 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21.apt",
@@ -1008,7 +1008,7 @@ object_weapon_ranged_rifle_shared_rifle_t21 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1951509016
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_t21, "object/weapon/ranged/rifle/shared_rifle_t21.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_t21, "object/weapon/ranged/rifle/shared_rifle_t21.iff")
 
 object_weapon_ranged_rifle_shared_rifle_tenloss_dxr6_disruptor_loot = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dxr6_combined.apt",
@@ -1065,7 +1065,7 @@ object_weapon_ranged_rifle_shared_rifle_tenloss_dxr6_disruptor_loot = SharedWeap
 	clientObjectCRC = 20961126
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_tenloss_dxr6_disruptor_loot, "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_tenloss_dxr6_disruptor_loot, "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff")
 
 object_weapon_ranged_rifle_shared_rifle_tusken = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_tusken_s01.apt",
@@ -1122,7 +1122,7 @@ object_weapon_ranged_rifle_shared_rifle_tusken = SharedWeaponObjectTemplate:new 
 	clientObjectCRC = 2874182418
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_tusken, "object/weapon/ranged/rifle/shared_rifle_tusken.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_tusken, "object/weapon/ranged/rifle/shared_rifle_tusken.iff")
 
 object_weapon_ranged_rifle_shared_rifle_victor_tusken = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_tusken_s01.apt",
@@ -1179,4 +1179,4 @@ object_weapon_ranged_rifle_shared_rifle_victor_tusken = SharedWeaponObjectTempla
 	clientObjectCRC = 4165527266
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_rifle_shared_rifle_victor_tusken, "object/weapon/ranged/rifle/shared_rifle_victor_tusken.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_victor_tusken, "object/weapon/ranged/rifle/shared_rifle_victor_tusken.iff")

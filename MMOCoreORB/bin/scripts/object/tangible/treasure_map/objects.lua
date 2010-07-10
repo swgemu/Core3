@@ -92,7 +92,7 @@ object_tangible_treasure_map_shared_treasure_map_base = SharedTangibleObjectTemp
 	clientObjectCRC = 2463455571
 }
 
-ObjectTemplates:addTemplate(object_tangible_treasure_map_shared_treasure_map_base, "object/tangible/treasure_map/shared_treasure_map_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_treasure_map_shared_treasure_map_base, "object/tangible/treasure_map/shared_treasure_map_base.iff")
 
 object_tangible_treasure_map_shared_treasure_map_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -145,4 +145,4 @@ object_tangible_treasure_map_shared_treasure_map_quest = SharedTangibleObjectTem
 	clientObjectCRC = 239886061
 }
 
-ObjectTemplates:addTemplate(object_tangible_treasure_map_shared_treasure_map_quest, "object/tangible/treasure_map/shared_treasure_map_quest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_treasure_map_shared_treasure_map_quest, "object/tangible/treasure_map/shared_treasure_map_quest.iff")

@@ -92,7 +92,7 @@ object_tangible_sign_player_base_shared_player_sign_base = SharedTangibleObjectT
 	clientObjectCRC = 1607004274
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_base_shared_player_sign_base, "object/tangible/sign/player/base/shared_player_sign_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_base_shared_player_sign_base, "object/tangible/sign/player/base/shared_player_sign_base.iff")
 
 object_tangible_sign_player_base_shared_shop_sign_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s01.apt",
@@ -145,4 +145,4 @@ object_tangible_sign_player_base_shared_shop_sign_base = SharedTangibleObjectTem
 	clientObjectCRC = 1431689328
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_base_shared_shop_sign_base, "object/tangible/sign/player/base/shared_shop_sign_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_base_shared_shop_sign_base, "object/tangible/sign/player/base/shared_shop_sign_base.iff")

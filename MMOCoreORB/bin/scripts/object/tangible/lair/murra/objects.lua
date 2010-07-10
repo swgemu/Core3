@@ -92,7 +92,7 @@ object_tangible_lair_murra_shared_lair_murra = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1522261205
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra, "object/tangible/lair/murra/shared_lair_murra.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_murra_shared_lair_murra, "object/tangible/lair/murra/shared_lair_murra.iff")
 
 object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 1680788890
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_grassland, "object/tangible/lair/murra/shared_lair_murra_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_murra_shared_lair_murra_grassland, "object/tangible/lair/murra/shared_lair_murra_grassland.iff")
 
 object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemp
 	clientObjectCRC = 3942109536
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_mountain, "object/tangible/lair/murra/shared_lair_murra_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_murra_shared_lair_murra_mountain, "object/tangible/lair/murra/shared_lair_murra_mountain.iff")

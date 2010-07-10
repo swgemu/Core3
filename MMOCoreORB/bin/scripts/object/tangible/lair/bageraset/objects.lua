@@ -92,7 +92,7 @@ object_tangible_lair_bageraset_shared_lair_bageraset = SharedTangibleObjectTempl
 	clientObjectCRC = 4218860200
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bageraset_shared_lair_bageraset, "object/tangible/lair/bageraset/shared_lair_bageraset.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bageraset_shared_lair_bageraset, "object/tangible/lair/bageraset/shared_lair_bageraset.iff")
 
 object_tangible_lair_bageraset_shared_lair_bageraset_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_bageraset_shared_lair_bageraset_forest = SharedTangibleObje
 	clientObjectCRC = 46513624
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bageraset_shared_lair_bageraset_forest, "object/tangible/lair/bageraset/shared_lair_bageraset_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bageraset_shared_lair_bageraset_forest, "object/tangible/lair/bageraset/shared_lair_bageraset_forest.iff")

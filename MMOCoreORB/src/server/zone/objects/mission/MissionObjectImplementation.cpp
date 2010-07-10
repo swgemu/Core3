@@ -178,7 +178,7 @@ void MissionObjectImplementation::setTargetTemplateCRC(uint32 crc, bool notifyCl
 }
 
 void MissionObjectImplementation::createWaypoint() {
-	waypointToMission = (WaypointObject*) getZoneServer()->createObject(3038003230, 1);
+	waypointToMission = (WaypointObject*) getZoneServer()->createObject(0xc456e788, 1);
 	//obj->setPlanetCRC(planet.hashCode());
 	//obj->setPosition(positionX, 0, positionY);
 	waypointToMission->setActive(false);

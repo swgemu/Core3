@@ -92,4 +92,4 @@ object_installation_faction_perk_covert_detector_shared_detector_base = SharedIn
 	clientObjectCRC = 2218940295
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_covert_detector_shared_detector_base, "object/installation/faction_perk/covert_detector/shared_detector_base.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_covert_detector_shared_detector_base, "object/installation/faction_perk/covert_detector/shared_detector_base.iff")

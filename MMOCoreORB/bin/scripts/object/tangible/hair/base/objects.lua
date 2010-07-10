@@ -92,4 +92,4 @@ object_tangible_hair_base_shared_hair_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1570783223
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_base_shared_hair_base, "object/tangible/hair/base/shared_hair_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_hair_base_shared_hair_base, "object/tangible/hair/base/shared_hair_base.iff")

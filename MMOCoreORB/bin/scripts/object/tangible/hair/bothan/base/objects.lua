@@ -92,7 +92,7 @@ object_tangible_hair_bothan_base_shared_hair_bothan_base = SharedTangibleObjectT
 	clientObjectCRC = 2550508164
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_base, "object/tangible/hair/bothan/base/shared_hair_bothan_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_base, "object/tangible/hair/bothan/base/shared_hair_bothan_base.iff")
 
 object_tangible_hair_bothan_base_shared_hair_bothan_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -145,7 +145,7 @@ object_tangible_hair_bothan_base_shared_hair_bothan_female_base = SharedTangible
 	clientObjectCRC = 4122368933
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_female_base, "object/tangible/hair/bothan/base/shared_hair_bothan_female_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_female_base, "object/tangible/hair/bothan/base/shared_hair_bothan_female_base.iff")
 
 object_tangible_hair_bothan_base_shared_hair_bothan_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -198,4 +198,4 @@ object_tangible_hair_bothan_base_shared_hair_bothan_male_base = SharedTangibleOb
 	clientObjectCRC = 4062977600
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_male_base, "object/tangible/hair/bothan/base/shared_hair_bothan_male_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_male_base, "object/tangible/hair/bothan/base/shared_hair_bothan_male_base.iff")

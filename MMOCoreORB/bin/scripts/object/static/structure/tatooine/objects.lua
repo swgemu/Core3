@@ -82,7 +82,7 @@ object_static_structure_tatooine_shared_antenna_tatt_style_1 = SharedStaticObjec
 	clientObjectCRC = 1093255506
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_antenna_tatt_style_1, "object/static/structure/tatooine/shared_antenna_tatt_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_antenna_tatt_style_1, "object/static/structure/tatooine/shared_antenna_tatt_style_1.iff")
 
 object_static_structure_tatooine_shared_antenna_tatt_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_imprv_tato_antenna_s02.apt",
@@ -125,7 +125,7 @@ object_static_structure_tatooine_shared_antenna_tatt_style_2 = SharedStaticObjec
 	clientObjectCRC = 2587781573
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_antenna_tatt_style_2, "object/static/structure/tatooine/shared_antenna_tatt_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_antenna_tatt_style_2, "object/static/structure/tatooine/shared_antenna_tatt_style_2.iff")
 
 object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_over_beam_s01.apt",
@@ -168,7 +168,7 @@ object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01 = Shared
 	clientObjectCRC = 4012796711
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01, "object/static/structure/tatooine/shared_beam_tatooine_overhead_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01, "object/static/structure/tatooine/shared_beam_tatooine_overhead_style_01.iff")
 
 object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_over_beam_s02.apt",
@@ -211,7 +211,7 @@ object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02 = Shared
 	clientObjectCRC = 876200880
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02, "object/static/structure/tatooine/shared_beam_tatooine_overhead_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02, "object/static/structure/tatooine/shared_beam_tatooine_overhead_style_02.iff")
 
 object_static_structure_tatooine_shared_bridge_tatooine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_bridge_sml_s01.apt",
@@ -254,7 +254,7 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_01 = SharedS
 	clientObjectCRC = 1188632964
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_01, "object/static/structure/tatooine/shared_bridge_tatooine_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_01, "object/static/structure/tatooine/shared_bridge_tatooine_small_style_01.iff")
 
 object_static_structure_tatooine_shared_bridge_tatooine_small_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_bridge_sml_s02.apt",
@@ -297,7 +297,7 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_02 = SharedS
 	clientObjectCRC = 2647568659
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_02, "object/static/structure/tatooine/shared_bridge_tatooine_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_02, "object/static/structure/tatooine/shared_bridge_tatooine_small_style_02.iff")
 
 object_static_structure_tatooine_shared_bridge_tatooine_small_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_bridge_sml_s03.apt",
@@ -340,7 +340,7 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_03 = SharedS
 	clientObjectCRC = 3569604254
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_03, "object/static/structure/tatooine/shared_bridge_tatooine_small_style_03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_03, "object/static/structure/tatooine/shared_bridge_tatooine_small_style_03.iff")
 
 object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_concrete_slab_s01.apt",
@@ -383,7 +383,7 @@ object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8 = SharedStat
 	clientObjectCRC = 3926077524
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8, "object/static/structure/tatooine/shared_concrete_slab_tatooine_16x8.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8, "object/static/structure/tatooine/shared_concrete_slab_tatooine_16x8.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_crate_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
@@ -426,7 +426,7 @@ object_static_structure_tatooine_shared_debris_tatt_crate_1 = SharedStaticObject
 	clientObjectCRC = 2802480216
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_crate_1, "object/static/structure/tatooine/shared_debris_tatt_crate_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_crate_1, "object/static/structure/tatooine/shared_debris_tatt_crate_1.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_crate_metal_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
@@ -469,7 +469,7 @@ object_static_structure_tatooine_shared_debris_tatt_crate_metal_1 = SharedStatic
 	clientObjectCRC = 640052328
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_crate_metal_1, "object/static/structure/tatooine/shared_debris_tatt_crate_metal_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_crate_metal_1, "object/static/structure/tatooine/shared_debris_tatt_crate_metal_1.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_drum_dented_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
@@ -512,7 +512,7 @@ object_static_structure_tatooine_shared_debris_tatt_drum_dented_1 = SharedStatic
 	clientObjectCRC = 2065777367
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_dented_1, "object/static/structure/tatooine/shared_debris_tatt_drum_dented_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_dented_1, "object/static/structure/tatooine/shared_debris_tatt_drum_dented_1.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_drum_storage_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s05.apt",
@@ -555,7 +555,7 @@ object_static_structure_tatooine_shared_debris_tatt_drum_storage_1 = SharedStati
 	clientObjectCRC = 1759237578
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_storage_1, "object/static/structure/tatooine/shared_debris_tatt_drum_storage_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_storage_1, "object/static/structure/tatooine/shared_debris_tatt_drum_storage_1.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_drum_storage_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s06.apt",
@@ -598,7 +598,7 @@ object_static_structure_tatooine_shared_debris_tatt_drum_storage_2 = SharedStati
 	clientObjectCRC = 3016523101
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_storage_2, "object/static/structure/tatooine/shared_debris_tatt_drum_storage_2.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_storage_2, "object/static/structure/tatooine/shared_debris_tatt_drum_storage_2.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s02.apt",
@@ -641,7 +641,7 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected = Shar
 	clientObjectCRC = 3869966709
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected, "object/static/structure/tatooine/shared_debris_tatt_pipe_dual_unconnected.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected, "object/static/structure/tatooine/shared_debris_tatt_pipe_dual_unconnected.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s03.apt",
@@ -684,7 +684,7 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1 = SharedStatic
 	clientObjectCRC = 2912961482
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1, "object/static/structure/tatooine/shared_debris_tatt_pipe_narrow_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1, "object/static/structure/tatooine/shared_debris_tatt_pipe_narrow_1.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s04.apt",
@@ -727,7 +727,7 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2 = SharedStatic
 	clientObjectCRC = 1991764829
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2, "object/static/structure/tatooine/shared_debris_tatt_pipe_narrow_2.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2, "object/static/structure/tatooine/shared_debris_tatt_pipe_narrow_2.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s01.apt",
@@ -770,7 +770,7 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth = SharedStati
 	clientObjectCRC = 734378137
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth, "object/static/structure/tatooine/shared_debris_tatt_pipe_widemouth.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth, "object/static/structure/tatooine/shared_debris_tatt_pipe_widemouth.iff")
 
 object_static_structure_tatooine_shared_debris_tatt_radar_dish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s10.apt",
@@ -813,7 +813,7 @@ object_static_structure_tatooine_shared_debris_tatt_radar_dish = SharedStaticObj
 	clientObjectCRC = 509333295
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_radar_dish, "object/static/structure/tatooine/shared_debris_tatt_radar_dish.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_radar_dish, "object/static/structure/tatooine/shared_debris_tatt_radar_dish.iff")
 
 object_static_structure_tatooine_shared_guild_ball_free_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_guild_golden_ball_freestand_s01.apt",
@@ -856,7 +856,7 @@ object_static_structure_tatooine_shared_guild_ball_free_style_01 = SharedStaticO
 	clientObjectCRC = 4217839607
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_guild_ball_free_style_01, "object/static/structure/tatooine/shared_guild_ball_free_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_guild_ball_free_style_01, "object/static/structure/tatooine/shared_guild_ball_free_style_01.iff")
 
 object_static_structure_tatooine_shared_guild_banner_free_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_guild_banner_freestand_s01.apt",
@@ -899,7 +899,7 @@ object_static_structure_tatooine_shared_guild_banner_free_style_01 = SharedStati
 	clientObjectCRC = 3370382065
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_guild_banner_free_style_01, "object/static/structure/tatooine/shared_guild_banner_free_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_guild_banner_free_style_01, "object/static/structure/tatooine/shared_guild_banner_free_style_01.iff")
 
 object_static_structure_tatooine_shared_guild_statue_free_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_guild_statue_freestand_s01.apt",
@@ -942,7 +942,7 @@ object_static_structure_tatooine_shared_guild_statue_free_style_01 = SharedStati
 	clientObjectCRC = 3311933250
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_guild_statue_free_style_01, "object/static/structure/tatooine/shared_guild_statue_free_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_guild_statue_free_style_01, "object/static/structure/tatooine/shared_guild_statue_free_style_01.iff")
 
 object_static_structure_tatooine_shared_luke_farm_dome = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_luke_farm_dome.apt",
@@ -985,7 +985,7 @@ object_static_structure_tatooine_shared_luke_farm_dome = SharedStaticObjectTempl
 	clientObjectCRC = 833921892
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_luke_farm_dome, "object/static/structure/tatooine/shared_luke_farm_dome.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_luke_farm_dome, "object/static/structure/tatooine/shared_luke_farm_dome.iff")
 
 object_static_structure_tatooine_shared_luke_farm_garage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_luke_farm_garage.apt",
@@ -1028,7 +1028,7 @@ object_static_structure_tatooine_shared_luke_farm_garage = SharedStaticObjectTem
 	clientObjectCRC = 2599767179
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_luke_farm_garage, "object/static/structure/tatooine/shared_luke_farm_garage.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_luke_farm_garage, "object/static/structure/tatooine/shared_luke_farm_garage.iff")
 
 object_static_structure_tatooine_shared_orchard_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_orchard_s01.apt",
@@ -1071,7 +1071,7 @@ object_static_structure_tatooine_shared_orchard_tatooine_style_01 = SharedStatic
 	clientObjectCRC = 2565487141
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_orchard_tatooine_style_01, "object/static/structure/tatooine/shared_orchard_tatooine_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_orchard_tatooine_style_01, "object/static/structure/tatooine/shared_orchard_tatooine_style_01.iff")
 
 object_static_structure_tatooine_shared_orchard_tatooine_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_orchard_s02.apt",
@@ -1114,7 +1114,7 @@ object_static_structure_tatooine_shared_orchard_tatooine_style_02 = SharedStatic
 	clientObjectCRC = 1140691634
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_orchard_tatooine_style_02, "object/static/structure/tatooine/shared_orchard_tatooine_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_orchard_tatooine_style_02, "object/static/structure/tatooine/shared_orchard_tatooine_style_02.iff")
 
 object_static_structure_tatooine_shared_palette_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_palette_s01.apt",
@@ -1157,7 +1157,7 @@ object_static_structure_tatooine_shared_palette_tatooine_style_01 = SharedStatic
 	clientObjectCRC = 964260108
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_palette_tatooine_style_01, "object/static/structure/tatooine/shared_palette_tatooine_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_palette_tatooine_style_01, "object/static/structure/tatooine/shared_palette_tatooine_style_01.iff")
 
 object_static_structure_tatooine_shared_pillar_damaged_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_damaged_s01.apt",
@@ -1200,7 +1200,7 @@ object_static_structure_tatooine_shared_pillar_damaged_large_style_01 = SharedSt
 	clientObjectCRC = 241421707
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_damaged_large_style_01, "object/static/structure/tatooine/shared_pillar_damaged_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_damaged_large_style_01, "object/static/structure/tatooine/shared_pillar_damaged_large_style_01.iff")
 
 object_static_structure_tatooine_shared_pillar_pristine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_s01.apt",
@@ -1243,7 +1243,7 @@ object_static_structure_tatooine_shared_pillar_pristine_large_style_01 = SharedS
 	clientObjectCRC = 4292692970
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_pristine_large_style_01, "object/static/structure/tatooine/shared_pillar_pristine_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_pristine_large_style_01, "object/static/structure/tatooine/shared_pillar_pristine_large_style_01.iff")
 
 object_static_structure_tatooine_shared_pillar_pristine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_sml_s01.apt",
@@ -1286,7 +1286,7 @@ object_static_structure_tatooine_shared_pillar_pristine_small_style_01 = SharedS
 	clientObjectCRC = 3757161564
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_pristine_small_style_01, "object/static/structure/tatooine/shared_pillar_pristine_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_pristine_small_style_01, "object/static/structure/tatooine/shared_pillar_pristine_small_style_01.iff")
 
 object_static_structure_tatooine_shared_pillar_pristine_tall_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_s02.apt",
@@ -1329,7 +1329,7 @@ object_static_structure_tatooine_shared_pillar_pristine_tall_style_01 = SharedSt
 	clientObjectCRC = 3787857912
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_pristine_tall_style_01, "object/static/structure/tatooine/shared_pillar_pristine_tall_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_pristine_tall_style_01, "object/static/structure/tatooine/shared_pillar_pristine_tall_style_01.iff")
 
 object_static_structure_tatooine_shared_pillar_ruined_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_ruin_s01.apt",
@@ -1372,7 +1372,7 @@ object_static_structure_tatooine_shared_pillar_ruined_large_style_01 = SharedSta
 	clientObjectCRC = 1598087847
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_ruined_large_style_01, "object/static/structure/tatooine/shared_pillar_ruined_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_ruined_large_style_01, "object/static/structure/tatooine/shared_pillar_ruined_large_style_01.iff")
 
 object_static_structure_tatooine_shared_pillar_ruined_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_ruin_sml_s01.apt",
@@ -1415,7 +1415,7 @@ object_static_structure_tatooine_shared_pillar_ruined_small_style_01 = SharedSta
 	clientObjectCRC = 2137789713
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_ruined_small_style_01, "object/static/structure/tatooine/shared_pillar_ruined_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_ruined_small_style_01, "object/static/structure/tatooine/shared_pillar_ruined_small_style_01.iff")
 
 object_static_structure_tatooine_shared_pillar_watto_junkshop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jnkshp_pillar.apt",
@@ -1458,7 +1458,7 @@ object_static_structure_tatooine_shared_pillar_watto_junkshop = SharedStaticObje
 	clientObjectCRC = 4197410545
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_watto_junkshop, "object/static/structure/tatooine/shared_pillar_watto_junkshop.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_watto_junkshop, "object/static/structure/tatooine/shared_pillar_watto_junkshop.iff")
 
 object_static_structure_tatooine_shared_planter_hanging_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_planter_hanging_s01.apt",
@@ -1501,7 +1501,7 @@ object_static_structure_tatooine_shared_planter_hanging_style_01 = SharedStaticO
 	clientObjectCRC = 965371099
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_planter_hanging_style_01, "object/static/structure/tatooine/shared_planter_hanging_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_planter_hanging_style_01, "object/static/structure/tatooine/shared_planter_hanging_style_01.iff")
 
 object_static_structure_tatooine_shared_planter_window_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_planter_window_s01.apt",
@@ -1544,7 +1544,7 @@ object_static_structure_tatooine_shared_planter_window_style_01 = SharedStaticOb
 	clientObjectCRC = 3602181980
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_planter_window_style_01, "object/static/structure/tatooine/shared_planter_window_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_planter_window_style_01, "object/static/structure/tatooine/shared_planter_window_style_01.iff")
 
 object_static_structure_tatooine_shared_shed_junkshop_watto = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jnkshp_bldg.apt",
@@ -1587,7 +1587,7 @@ object_static_structure_tatooine_shared_shed_junkshop_watto = SharedStaticObject
 	clientObjectCRC = 3540340474
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_shed_junkshop_watto, "object/static/structure/tatooine/shared_shed_junkshop_watto.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_shed_junkshop_watto, "object/static/structure/tatooine/shared_shed_junkshop_watto.iff")
 
 object_static_structure_tatooine_shared_skeleton_greater_krayt_head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_head_s01.apt",
@@ -1630,7 +1630,7 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_head = SharedStat
 	clientObjectCRC = 2360757218
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_head, "object/static/structure/tatooine/shared_skeleton_greater_krayt_head.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_head, "object/static/structure/tatooine/shared_skeleton_greater_krayt_head.iff")
 
 object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_spine_s01.apt",
@@ -1673,7 +1673,7 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large = Sha
 	clientObjectCRC = 1968966439
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large, "object/static/structure/tatooine/shared_skeleton_greater_krayt_spine_large.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large, "object/static/structure/tatooine/shared_skeleton_greater_krayt_spine_large.iff")
 
 object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_spine_s02.apt",
@@ -1716,7 +1716,7 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium = Sh
 	clientObjectCRC = 3765108574
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium, "object/static/structure/tatooine/shared_skeleton_greater_krayt_spine_medium.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium, "object/static/structure/tatooine/shared_skeleton_greater_krayt_spine_medium.iff")
 
 object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_spine_s03.apt",
@@ -1759,7 +1759,7 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small = Sha
 	clientObjectCRC = 1095212814
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small, "object/static/structure/tatooine/shared_skeleton_greater_krayt_spine_small.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small, "object/static/structure/tatooine/shared_skeleton_greater_krayt_spine_small.iff")
 
 object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_arm_s01.apt",
@@ -1802,7 +1802,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01 = SharedStat
 	clientObjectCRC = 2765616042
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01, "object/static/structure/tatooine/shared_skeleton_krayt_arm_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01, "object/static/structure/tatooine/shared_skeleton_krayt_arm_style_01.iff")
 
 object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_arm_s02.apt",
@@ -1845,7 +1845,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02 = SharedStat
 	clientObjectCRC = 2143312701
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02, "object/static/structure/tatooine/shared_skeleton_krayt_arm_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02, "object/static/structure/tatooine/shared_skeleton_krayt_arm_style_02.iff")
 
 object_static_structure_tatooine_shared_skeleton_krayt_foot = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_foot.apt",
@@ -1888,7 +1888,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_foot = SharedStaticObject
 	clientObjectCRC = 3709855452
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_foot, "object/static/structure/tatooine/shared_skeleton_krayt_foot.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_foot, "object/static/structure/tatooine/shared_skeleton_krayt_foot.iff")
 
 object_static_structure_tatooine_shared_skeleton_krayt_head_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_head_s01.apt",
@@ -1931,7 +1931,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_head_style_01 = SharedSta
 	clientObjectCRC = 1206320755
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_head_style_01, "object/static/structure/tatooine/shared_skeleton_krayt_head_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_head_style_01, "object/static/structure/tatooine/shared_skeleton_krayt_head_style_01.iff")
 
 object_static_structure_tatooine_shared_skeleton_krayt_head_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_head_s02.apt",
@@ -1974,7 +1974,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_head_style_02 = SharedSta
 	clientObjectCRC = 2633062116
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_head_style_02, "object/static/structure/tatooine/shared_skeleton_krayt_head_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_head_style_02, "object/static/structure/tatooine/shared_skeleton_krayt_head_style_02.iff")
 
 object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_leg_s01.apt",
@@ -2017,7 +2017,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01 = SharedStat
 	clientObjectCRC = 244287544
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01, "object/static/structure/tatooine/shared_skeleton_krayt_leg_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01, "object/static/structure/tatooine/shared_skeleton_krayt_leg_style_01.iff")
 
 object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_leg_s02.apt",
@@ -2060,7 +2060,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02 = SharedStat
 	clientObjectCRC = 3583516847
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02, "object/static/structure/tatooine/shared_skeleton_krayt_leg_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02, "object/static/structure/tatooine/shared_skeleton_krayt_leg_style_02.iff")
 
 object_static_structure_tatooine_shared_skeleton_krayt_ribcage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_ribcage.apt",
@@ -2103,7 +2103,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_ribcage = SharedStaticObj
 	clientObjectCRC = 3011148946
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_ribcage, "object/static/structure/tatooine/shared_skeleton_krayt_ribcage.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_ribcage, "object/static/structure/tatooine/shared_skeleton_krayt_ribcage.iff")
 
 object_static_structure_tatooine_shared_skeleton_krayt_tail = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_tail.apt",
@@ -2146,7 +2146,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_tail = SharedStaticObject
 	clientObjectCRC = 2336540846
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_tail, "object/static/structure/tatooine/shared_skeleton_krayt_tail.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_tail, "object/static/structure/tatooine/shared_skeleton_krayt_tail.iff")
 
 object_static_structure_tatooine_shared_stair_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_stair_large_s01.apt",
@@ -2189,7 +2189,7 @@ object_static_structure_tatooine_shared_stair_tatooine_large_style_01 = SharedSt
 	clientObjectCRC = 1322132974
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stair_tatooine_large_style_01, "object/static/structure/tatooine/shared_stair_tatooine_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_tatooine_large_style_01, "object/static/structure/tatooine/shared_stair_tatooine_large_style_01.iff")
 
 object_static_structure_tatooine_shared_stair_tatooine_large_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_stair_large_s02.apt",
@@ -2232,7 +2232,7 @@ object_static_structure_tatooine_shared_stair_tatooine_large_style_02 = SharedSt
 	clientObjectCRC = 2514062713
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stair_tatooine_large_style_02, "object/static/structure/tatooine/shared_stair_tatooine_large_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_tatooine_large_style_02, "object/static/structure/tatooine/shared_stair_tatooine_large_style_02.iff")
 
 object_static_structure_tatooine_shared_stair_tatooine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_stair_sml_s01.apt",
@@ -2275,7 +2275,7 @@ object_static_structure_tatooine_shared_stair_tatooine_small_style_01 = SharedSt
 	clientObjectCRC = 1860358744
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stair_tatooine_small_style_01, "object/static/structure/tatooine/shared_stair_tatooine_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_tatooine_small_style_01, "object/static/structure/tatooine/shared_stair_tatooine_small_style_01.iff")
 
 object_static_structure_tatooine_shared_stair_tatooine_small_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_stair_sml_s02.apt",
@@ -2318,7 +2318,7 @@ object_static_structure_tatooine_shared_stair_tatooine_small_style_02 = SharedSt
 	clientObjectCRC = 3052763855
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stair_tatooine_small_style_02, "object/static/structure/tatooine/shared_stair_tatooine_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_tatooine_small_style_02, "object/static/structure/tatooine/shared_stair_tatooine_small_style_02.iff")
 
 object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_sandstone_hovel_s01.apt",
@@ -2361,7 +2361,7 @@ object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01 = SharedSt
 	clientObjectCRC = 3200019712
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01, "object/static/structure/tatooine/shared_stone_hovel_tatooine_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01, "object/static/structure/tatooine/shared_stone_hovel_tatooine_style_01.iff")
 
 object_static_structure_tatooine_shared_streetsign_upright_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_street_sign_s01.apt",
@@ -2404,7 +2404,7 @@ object_static_structure_tatooine_shared_streetsign_upright_style_01 = SharedStat
 	clientObjectCRC = 1684082876
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_streetsign_upright_style_01, "object/static/structure/tatooine/shared_streetsign_upright_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_streetsign_upright_style_01, "object/static/structure/tatooine/shared_streetsign_upright_style_01.iff")
 
 object_static_structure_tatooine_shared_streetsign_wall_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_street_sign_wall_s01.apt",
@@ -2447,7 +2447,7 @@ object_static_structure_tatooine_shared_streetsign_wall_style_01 = SharedStaticO
 	clientObjectCRC = 3198539542
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_streetsign_wall_style_01, "object/static/structure/tatooine/shared_streetsign_wall_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_streetsign_wall_style_01, "object/static/structure/tatooine/shared_streetsign_wall_style_01.iff")
 
 object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
@@ -2489,7 +2489,7 @@ object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01 = SharedStatic
 	clientObjectCRC = 2616904837
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01, "object/static/structure/tatooine/shared_tato_imprv_bannerpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01, "object/static/structure/tatooine/shared_tato_imprv_bannerpole_s01.iff")
 
 object_static_structure_tatooine_shared_tato_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -2531,7 +2531,7 @@ object_static_structure_tatooine_shared_tato_imprv_flagpole_s01 = SharedStaticOb
 	clientObjectCRC = 1474884262
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_tato_imprv_flagpole_s01, "object/static/structure/tatooine/shared_tato_imprv_flagpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_tato_imprv_flagpole_s01, "object/static/structure/tatooine/shared_tato_imprv_flagpole_s01.iff")
 
 object_static_structure_tatooine_shared_tent_house_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_tent_house_s01.apt",
@@ -2574,7 +2574,7 @@ object_static_structure_tatooine_shared_tent_house_tatooine_style_01 = SharedSta
 	clientObjectCRC = 1417975984
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_tent_house_tatooine_style_01, "object/static/structure/tatooine/shared_tent_house_tatooine_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_tent_house_tatooine_style_01, "object/static/structure/tatooine/shared_tent_house_tatooine_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_archway_s01.apt",
@@ -2617,7 +2617,7 @@ object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01 = S
 	clientObjectCRC = 380331488
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_archway_tatooine_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_archway_tatooine_large_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_archway_wide_s01.apt",
@@ -2660,7 +2660,7 @@ object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01 = Sh
 	clientObjectCRC = 757634419
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01, "object/static/structure/tatooine/shared_wall_archway_tatooine_wide_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01, "object/static/structure/tatooine/shared_wall_archway_tatooine_wide_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_cleft_s01.apt",
@@ -2703,7 +2703,7 @@ object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01 = Sha
 	clientObjectCRC = 3117988515
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_cleft_tatooine_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_cleft_tatooine_large_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_damaged_s01.apt",
@@ -2746,7 +2746,7 @@ object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01 = S
 	clientObjectCRC = 3482982112
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_damaged_tatooine_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_damaged_tatooine_large_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_gate_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wallgate_s01.apt",
@@ -2789,7 +2789,7 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_01 = SharedStat
 	clientObjectCRC = 3317597393
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_01, "object/static/structure/tatooine/shared_wall_gate_tatooine_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_01, "object/static/structure/tatooine/shared_wall_gate_tatooine_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_gate_tatooine_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wallgate_s02.apt",
@@ -2832,7 +2832,7 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_02 = SharedStat
 	clientObjectCRC = 514403398
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_02, "object/static/structure/tatooine/shared_wall_gate_tatooine_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_02, "object/static/structure/tatooine/shared_wall_gate_tatooine_style_02.iff")
 
 object_static_structure_tatooine_shared_wall_gate_tatooine_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wallgate_s03.apt",
@@ -2875,7 +2875,7 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_03 = SharedStat
 	clientObjectCRC = 1470385099
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_03, "object/static/structure/tatooine/shared_wall_gate_tatooine_style_03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_03, "object/static/structure/tatooine/shared_wall_gate_tatooine_style_03.iff")
 
 object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wallgate_wide_s01.apt",
@@ -2918,7 +2918,7 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01 = Share
 	clientObjectCRC = 107098437
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01, "object/static/structure/tatooine/shared_wall_gate_tatooine_wide_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01, "object/static/structure/tatooine/shared_wall_gate_tatooine_wide_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_junkshop_watto = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jnkshp_wall.apt",
@@ -2961,7 +2961,7 @@ object_static_structure_tatooine_shared_wall_junkshop_watto = SharedStaticObject
 	clientObjectCRC = 3988863044
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_junkshop_watto, "object/static/structure/tatooine/shared_wall_junkshop_watto.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_junkshop_watto, "object/static/structure/tatooine/shared_wall_junkshop_watto.iff")
 
 object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_s01.apt",
@@ -3004,7 +3004,7 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01 = 
 	clientObjectCRC = 2746619484
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_pristine_tatooine_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_pristine_tatooine_large_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_s02.apt",
@@ -3047,7 +3047,7 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02 = 
 	clientObjectCRC = 2023866059
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02, "object/static/structure/tatooine/shared_wall_pristine_tatooine_large_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02, "object/static/structure/tatooine/shared_wall_pristine_tatooine_large_style_02.iff")
 
 object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_sml_s01.apt",
@@ -3090,7 +3090,7 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01 = 
 	clientObjectCRC = 2207965674
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01, "object/static/structure/tatooine/shared_wall_pristine_tatooine_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01, "object/static/structure/tatooine/shared_wall_pristine_tatooine_small_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_s03.apt",
@@ -3133,7 +3133,7 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01 = S
 	clientObjectCRC = 1229804318
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01, "object/static/structure/tatooine/shared_wall_pristine_tatooine_tall_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01, "object/static/structure/tatooine/shared_wall_pristine_tatooine_tall_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_ruin_s01.apt",
@@ -3176,7 +3176,7 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01 = Sh
 	clientObjectCRC = 3589895396
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_ruined_tatooine_large_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_ruined_tatooine_large_style_01.iff")
 
 object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_ruin_s02.apt",
@@ -3219,7 +3219,7 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02 = Sh
 	clientObjectCRC = 250535027
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02, "object/static/structure/tatooine/shared_wall_ruined_tatooine_large_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02, "object/static/structure/tatooine/shared_wall_ruined_tatooine_large_style_02.iff")
 
 object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_sml_ruin_s01.apt",
@@ -3262,4 +3262,4 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01 = Sh
 	clientObjectCRC = 4124410706
 }
 
-ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01, "object/static/structure/tatooine/shared_wall_ruined_tatooine_small_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01, "object/static/structure/tatooine/shared_wall_ruined_tatooine_small_style_01.iff")

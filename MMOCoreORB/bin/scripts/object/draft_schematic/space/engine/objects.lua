@@ -82,7 +82,7 @@ object_draft_schematic_space_engine_shared_basic_engine = SharedDraftSchematicOb
 	clientObjectCRC = 541354942
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_basic_engine, "object/draft_schematic/space/engine/shared_basic_engine.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_basic_engine, "object/draft_schematic/space/engine/shared_basic_engine.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_space_engine_shared_eng_mk1 = SharedDraftSchematicObjectT
 	clientObjectCRC = 1997394294
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk1, "object/draft_schematic/space/engine/shared_eng_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk1, "object/draft_schematic/space/engine/shared_eng_mk1.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_space_engine_shared_eng_mk2 = SharedDraftSchematicObjectT
 	clientObjectCRC = 2887416289
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk2, "object/draft_schematic/space/engine/shared_eng_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk2, "object/draft_schematic/space/engine/shared_eng_mk2.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_space_engine_shared_eng_mk3 = SharedDraftSchematicObjectT
 	clientObjectCRC = 3843497580
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk3, "object/draft_schematic/space/engine/shared_eng_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk3, "object/draft_schematic/space/engine/shared_eng_mk3.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_space_engine_shared_eng_mk4 = SharedDraftSchematicObjectT
 	clientObjectCRC = 519320952
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk4, "object/draft_schematic/space/engine/shared_eng_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk4, "object/draft_schematic/space/engine/shared_eng_mk4.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_space_engine_shared_eng_mk5 = SharedDraftSchematicObjectT
 	clientObjectCRC = 1475957493
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk5, "object/draft_schematic/space/engine/shared_eng_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk5, "object/draft_schematic/space/engine/shared_eng_mk5.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk1 = SharedDraftSchem
 	clientObjectCRC = 3601967388
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk1, "object/draft_schematic/space/engine/shared_engine_limiter_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk1, "object/draft_schematic/space/engine/shared_engine_limiter_mk1.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk2 = SharedDraftSchem
 	clientObjectCRC = 228983179
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk2, "object/draft_schematic/space/engine/shared_engine_limiter_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk2, "object/draft_schematic/space/engine/shared_engine_limiter_mk2.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk3 = SharedDraftSchem
 	clientObjectCRC = 1152083462
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk3, "object/draft_schematic/space/engine/shared_engine_limiter_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk3, "object/draft_schematic/space/engine/shared_engine_limiter_mk3.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk4 = SharedDraftSchem
 	clientObjectCRC = 3209186578
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk4, "object/draft_schematic/space/engine/shared_engine_limiter_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk4, "object/draft_schematic/space/engine/shared_engine_limiter_mk4.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,7 +512,7 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk5 = SharedDraftSchem
 	clientObjectCRC = 4131728031
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk5, "object/draft_schematic/space/engine/shared_engine_limiter_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk5, "object/draft_schematic/space/engine/shared_engine_limiter_mk5.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -555,7 +555,7 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk1 = SharedDraftSc
 	clientObjectCRC = 4012002136
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk1, "object/draft_schematic/space/engine/shared_engine_overdriver_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk1, "object/draft_schematic/space/engine/shared_engine_overdriver_mk1.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -598,7 +598,7 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk2 = SharedDraftSc
 	clientObjectCRC = 875946959
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk2, "object/draft_schematic/space/engine/shared_engine_overdriver_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk2, "object/draft_schematic/space/engine/shared_engine_overdriver_mk2.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -641,7 +641,7 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk3 = SharedDraftSc
 	clientObjectCRC = 2100855874
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk3, "object/draft_schematic/space/engine/shared_engine_overdriver_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk3, "object/draft_schematic/space/engine/shared_engine_overdriver_mk3.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -684,7 +684,7 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk4 = SharedDraftSc
 	clientObjectCRC = 2262544214
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk4, "object/draft_schematic/space/engine/shared_engine_overdriver_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk4, "object/draft_schematic/space/engine/shared_engine_overdriver_mk4.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -727,4 +727,4 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk5 = SharedDraftSc
 	clientObjectCRC = 3486959835
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk5, "object/draft_schematic/space/engine/shared_engine_overdriver_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk5, "object/draft_schematic/space/engine/shared_engine_overdriver_mk5.iff")

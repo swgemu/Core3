@@ -82,7 +82,7 @@ object_draft_schematic_scout_shared_item_camokit_corellia = SharedDraftSchematic
 	clientObjectCRC = 1271566961
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_corellia, "object/draft_schematic/scout/shared_item_camokit_corellia.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_corellia, "object/draft_schematic/scout/shared_item_camokit_corellia.iff")
 
 object_draft_schematic_scout_shared_item_camokit_dantooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_scout_shared_item_camokit_dantooine = SharedDraftSchemati
 	clientObjectCRC = 1726167672
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_dantooine, "object/draft_schematic/scout/shared_item_camokit_dantooine.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_dantooine, "object/draft_schematic/scout/shared_item_camokit_dantooine.iff")
 
 object_draft_schematic_scout_shared_item_camokit_dathomir = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_scout_shared_item_camokit_dathomir = SharedDraftSchematic
 	clientObjectCRC = 3742569809
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_dathomir, "object/draft_schematic/scout/shared_item_camokit_dathomir.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_dathomir, "object/draft_schematic/scout/shared_item_camokit_dathomir.iff")
 
 object_draft_schematic_scout_shared_item_camokit_endor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_scout_shared_item_camokit_endor = SharedDraftSchematicObj
 	clientObjectCRC = 1218082990
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_endor, "object/draft_schematic/scout/shared_item_camokit_endor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_endor, "object/draft_schematic/scout/shared_item_camokit_endor.iff")
 
 object_draft_schematic_scout_shared_item_camokit_lok = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_scout_shared_item_camokit_lok = SharedDraftSchematicObjec
 	clientObjectCRC = 594480745
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_lok, "object/draft_schematic/scout/shared_item_camokit_lok.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_lok, "object/draft_schematic/scout/shared_item_camokit_lok.iff")
 
 object_draft_schematic_scout_shared_item_camokit_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_scout_shared_item_camokit_naboo = SharedDraftSchematicObj
 	clientObjectCRC = 2327891628
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_naboo, "object/draft_schematic/scout/shared_item_camokit_naboo.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_naboo, "object/draft_schematic/scout/shared_item_camokit_naboo.iff")
 
 object_draft_schematic_scout_shared_item_camokit_rori = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_scout_shared_item_camokit_rori = SharedDraftSchematicObje
 	clientObjectCRC = 380917503
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_rori, "object/draft_schematic/scout/shared_item_camokit_rori.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_rori, "object/draft_schematic/scout/shared_item_camokit_rori.iff")
 
 object_draft_schematic_scout_shared_item_camokit_talus = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_scout_shared_item_camokit_talus = SharedDraftSchematicObj
 	clientObjectCRC = 2475866246
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_talus, "object/draft_schematic/scout/shared_item_camokit_talus.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_talus, "object/draft_schematic/scout/shared_item_camokit_talus.iff")
 
 object_draft_schematic_scout_shared_item_camokit_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_scout_shared_item_camokit_tatooine = SharedDraftSchematic
 	clientObjectCRC = 2005529582
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_tatooine, "object/draft_schematic/scout/shared_item_camokit_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_tatooine, "object/draft_schematic/scout/shared_item_camokit_tatooine.iff")
 
 object_draft_schematic_scout_shared_item_camokit_yavin = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_scout_shared_item_camokit_yavin = SharedDraftSchematicObj
 	clientObjectCRC = 2300033935
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_yavin, "object/draft_schematic/scout/shared_item_camokit_yavin.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camokit_yavin, "object/draft_schematic/scout/shared_item_camokit_yavin.iff")
 
 object_draft_schematic_scout_shared_item_camp_basic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,7 +512,7 @@ object_draft_schematic_scout_shared_item_camp_basic = SharedDraftSchematicObject
 	clientObjectCRC = 2508179971
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_basic, "object/draft_schematic/scout/shared_item_camp_basic.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camp_basic, "object/draft_schematic/scout/shared_item_camp_basic.iff")
 
 object_draft_schematic_scout_shared_item_camp_elite = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -555,7 +555,7 @@ object_draft_schematic_scout_shared_item_camp_elite = SharedDraftSchematicObject
 	clientObjectCRC = 102187210
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_elite, "object/draft_schematic/scout/shared_item_camp_elite.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camp_elite, "object/draft_schematic/scout/shared_item_camp_elite.iff")
 
 object_draft_schematic_scout_shared_item_camp_improved = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -598,7 +598,7 @@ object_draft_schematic_scout_shared_item_camp_improved = SharedDraftSchematicObj
 	clientObjectCRC = 3426650174
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_improved, "object/draft_schematic/scout/shared_item_camp_improved.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camp_improved, "object/draft_schematic/scout/shared_item_camp_improved.iff")
 
 object_draft_schematic_scout_shared_item_camp_luxury = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -641,7 +641,7 @@ object_draft_schematic_scout_shared_item_camp_luxury = SharedDraftSchematicObjec
 	clientObjectCRC = 253213515
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_luxury, "object/draft_schematic/scout/shared_item_camp_luxury.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camp_luxury, "object/draft_schematic/scout/shared_item_camp_luxury.iff")
 
 object_draft_schematic_scout_shared_item_camp_multi = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -684,7 +684,7 @@ object_draft_schematic_scout_shared_item_camp_multi = SharedDraftSchematicObject
 	clientObjectCRC = 3178673319
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_multi, "object/draft_schematic/scout/shared_item_camp_multi.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camp_multi, "object/draft_schematic/scout/shared_item_camp_multi.iff")
 
 object_draft_schematic_scout_shared_item_camp_quality = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -727,7 +727,7 @@ object_draft_schematic_scout_shared_item_camp_quality = SharedDraftSchematicObje
 	clientObjectCRC = 1609906001
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_quality, "object/draft_schematic/scout/shared_item_camp_quality.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_camp_quality, "object/draft_schematic/scout/shared_item_camp_quality.iff")
 
 object_draft_schematic_scout_shared_item_trap_drowsy_dart = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -770,7 +770,7 @@ object_draft_schematic_scout_shared_item_trap_drowsy_dart = SharedDraftSchematic
 	clientObjectCRC = 1724840642
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_drowsy_dart, "object/draft_schematic/scout/shared_item_trap_drowsy_dart.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_drowsy_dart, "object/draft_schematic/scout/shared_item_trap_drowsy_dart.iff")
 
 object_draft_schematic_scout_shared_item_trap_enraging_spur = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -813,7 +813,7 @@ object_draft_schematic_scout_shared_item_trap_enraging_spur = SharedDraftSchemat
 	clientObjectCRC = 253853379
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_enraging_spur, "object/draft_schematic/scout/shared_item_trap_enraging_spur.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_enraging_spur, "object/draft_schematic/scout/shared_item_trap_enraging_spur.iff")
 
 object_draft_schematic_scout_shared_item_trap_flash_bomb = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -856,7 +856,7 @@ object_draft_schematic_scout_shared_item_trap_flash_bomb = SharedDraftSchematicO
 	clientObjectCRC = 1322113998
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_flash_bomb, "object/draft_schematic/scout/shared_item_trap_flash_bomb.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_flash_bomb, "object/draft_schematic/scout/shared_item_trap_flash_bomb.iff")
 
 object_draft_schematic_scout_shared_item_trap_melee_def_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -899,7 +899,7 @@ object_draft_schematic_scout_shared_item_trap_melee_def_1 = SharedDraftSchematic
 	clientObjectCRC = 4212347810
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_melee_def_1, "object/draft_schematic/scout/shared_item_trap_melee_def_1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_melee_def_1, "object/draft_schematic/scout/shared_item_trap_melee_def_1.iff")
 
 object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -942,7 +942,7 @@ object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1 = SharedDraftSc
 	clientObjectCRC = 2226010853
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1, "object/draft_schematic/scout/shared_item_trap_melee_ranged_def_1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1, "object/draft_schematic/scout/shared_item_trap_melee_ranged_def_1.iff")
 
 object_draft_schematic_scout_shared_item_trap_noise_maker = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -985,7 +985,7 @@ object_draft_schematic_scout_shared_item_trap_noise_maker = SharedDraftSchematic
 	clientObjectCRC = 4127661828
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_noise_maker, "object/draft_schematic/scout/shared_item_trap_noise_maker.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_noise_maker, "object/draft_schematic/scout/shared_item_trap_noise_maker.iff")
 
 object_draft_schematic_scout_shared_item_trap_ranged_def_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1028,7 +1028,7 @@ object_draft_schematic_scout_shared_item_trap_ranged_def_1 = SharedDraftSchemati
 	clientObjectCRC = 3312435007
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_ranged_def_1, "object/draft_schematic/scout/shared_item_trap_ranged_def_1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_ranged_def_1, "object/draft_schematic/scout/shared_item_trap_ranged_def_1.iff")
 
 object_draft_schematic_scout_shared_item_trap_sonic_pulse = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1071,7 +1071,7 @@ object_draft_schematic_scout_shared_item_trap_sonic_pulse = SharedDraftSchematic
 	clientObjectCRC = 2585913329
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_sonic_pulse, "object/draft_schematic/scout/shared_item_trap_sonic_pulse.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_sonic_pulse, "object/draft_schematic/scout/shared_item_trap_sonic_pulse.iff")
 
 object_draft_schematic_scout_shared_item_trap_state_def_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1114,7 +1114,7 @@ object_draft_schematic_scout_shared_item_trap_state_def_1 = SharedDraftSchematic
 	clientObjectCRC = 1618982847
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_state_def_1, "object/draft_schematic/scout/shared_item_trap_state_def_1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_state_def_1, "object/draft_schematic/scout/shared_item_trap_state_def_1.iff")
 
 object_draft_schematic_scout_shared_item_trap_tranq_dart = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1157,7 +1157,7 @@ object_draft_schematic_scout_shared_item_trap_tranq_dart = SharedDraftSchematicO
 	clientObjectCRC = 4155383645
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_tranq_dart, "object/draft_schematic/scout/shared_item_trap_tranq_dart.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_tranq_dart, "object/draft_schematic/scout/shared_item_trap_tranq_dart.iff")
 
 object_draft_schematic_scout_shared_item_trap_webber = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1200,4 +1200,4 @@ object_draft_schematic_scout_shared_item_trap_webber = SharedDraftSchematicObjec
 	clientObjectCRC = 2895113899
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_webber, "object/draft_schematic/scout/shared_item_trap_webber.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_scout_shared_item_trap_webber, "object/draft_schematic/scout/shared_item_trap_webber.iff")

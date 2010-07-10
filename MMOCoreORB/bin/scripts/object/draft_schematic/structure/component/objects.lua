@@ -82,7 +82,7 @@ object_draft_schematic_structure_component_shared_structural_module = SharedDraf
 	clientObjectCRC = 3736246245
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structural_module, "object/draft_schematic/structure/component/shared_structural_module.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structural_module, "object/draft_schematic/structure/component/shared_structural_module.iff")
 
 object_draft_schematic_structure_component_shared_structure_fluidic_drilling_pumping_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_structure_component_shared_structure_fluidic_drilling_pum
 	clientObjectCRC = 188700507
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_fluidic_drilling_pumping_unit, "object/draft_schematic/structure/component/shared_structure_fluidic_drilling_pumping_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_fluidic_drilling_pumping_unit, "object/draft_schematic/structure/component/shared_structure_fluidic_drilling_pumping_unit.iff")
 
 object_draft_schematic_structure_component_shared_structure_generator_turbine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_structure_component_shared_structure_generator_turbine = 
 	clientObjectCRC = 890068144
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_generator_turbine, "object/draft_schematic/structure/component/shared_structure_generator_turbine.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_generator_turbine, "object/draft_schematic/structure/component/shared_structure_generator_turbine.iff")
 
 object_draft_schematic_structure_component_shared_structure_harvesting_mechanism = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_structure_component_shared_structure_harvesting_mechanism
 	clientObjectCRC = 1426968673
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_harvesting_mechanism, "object/draft_schematic/structure/component/shared_structure_harvesting_mechanism.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_harvesting_mechanism, "object/draft_schematic/structure/component/shared_structure_harvesting_mechanism.iff")
 
 object_draft_schematic_structure_component_shared_structure_heavy_harvesting_mechanism = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_structure_component_shared_structure_heavy_harvesting_mec
 	clientObjectCRC = 2142863561
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_heavy_harvesting_mechanism, "object/draft_schematic/structure/component/shared_structure_heavy_harvesting_mechanism.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_heavy_harvesting_mechanism, "object/draft_schematic/structure/component/shared_structure_heavy_harvesting_mechanism.iff")
 
 object_draft_schematic_structure_component_shared_structure_light_ore_mining_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_structure_component_shared_structure_light_ore_mining_uni
 	clientObjectCRC = 3263967120
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_light_ore_mining_unit, "object/draft_schematic/structure/component/shared_structure_light_ore_mining_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_light_ore_mining_unit, "object/draft_schematic/structure/component/shared_structure_light_ore_mining_unit.iff")
 
 object_draft_schematic_structure_component_shared_structure_light_power_core_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_structure_component_shared_structure_light_power_core_uni
 	clientObjectCRC = 2040269434
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_light_power_core_unit, "object/draft_schematic/structure/component/shared_structure_light_power_core_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_light_power_core_unit, "object/draft_schematic/structure/component/shared_structure_light_power_core_unit.iff")
 
 object_draft_schematic_structure_component_shared_structure_manufacturing_mechanism = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_structure_component_shared_structure_manufacturing_mechan
 	clientObjectCRC = 1592150343
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_manufacturing_mechanism, "object/draft_schematic/structure/component/shared_structure_manufacturing_mechanism.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_manufacturing_mechanism, "object/draft_schematic/structure/component/shared_structure_manufacturing_mechanism.iff")
 
 object_draft_schematic_structure_component_shared_structure_ore_mining_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_structure_component_shared_structure_ore_mining_unit = Sh
 	clientObjectCRC = 2037730009
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_ore_mining_unit, "object/draft_schematic/structure/component/shared_structure_ore_mining_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_ore_mining_unit, "object/draft_schematic/structure/component/shared_structure_ore_mining_unit.iff")
 
 object_draft_schematic_structure_component_shared_structure_power_core_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_structure_component_shared_structure_power_core_unit = Sh
 	clientObjectCRC = 3261427507
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_power_core_unit, "object/draft_schematic/structure/component/shared_structure_power_core_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_power_core_unit, "object/draft_schematic/structure/component/shared_structure_power_core_unit.iff")
 
 object_draft_schematic_structure_component_shared_structure_small_storage_section = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,7 +512,7 @@ object_draft_schematic_structure_component_shared_structure_small_storage_sectio
 	clientObjectCRC = 3364203190
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_small_storage_section, "object/draft_schematic/structure/component/shared_structure_small_storage_section.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_small_storage_section, "object/draft_schematic/structure/component/shared_structure_small_storage_section.iff")
 
 object_draft_schematic_structure_component_shared_structure_storage_section = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -555,7 +555,7 @@ object_draft_schematic_structure_component_shared_structure_storage_section = Sh
 	clientObjectCRC = 1345350988
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_storage_section, "object/draft_schematic/structure/component/shared_structure_storage_section.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_storage_section, "object/draft_schematic/structure/component/shared_structure_storage_section.iff")
 
 object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilling_pumping_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -598,7 +598,7 @@ object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilli
 	clientObjectCRC = 661556822
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilling_pumping_unit, "object/draft_schematic/structure/component/shared_structure_turbo_fluidic_drilling_pumping_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilling_pumping_unit, "object/draft_schematic/structure/component/shared_structure_turbo_fluidic_drilling_pumping_unit.iff")
 
 object_draft_schematic_structure_component_shared_wall_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -641,7 +641,7 @@ object_draft_schematic_structure_component_shared_wall_module = SharedDraftSchem
 	clientObjectCRC = 686217066
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_wall_module, "object/draft_schematic/structure/component/shared_wall_module.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_wall_module, "object/draft_schematic/structure/component/shared_wall_module.iff")
 
 object_draft_schematic_structure_component_shared_weapon_mount_heavy_stabilization_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -684,4 +684,4 @@ object_draft_schematic_structure_component_shared_weapon_mount_heavy_stabilizati
 	clientObjectCRC = 2433532742
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_weapon_mount_heavy_stabilization_unit, "object/draft_schematic/structure/component/shared_weapon_mount_heavy_stabilization_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_weapon_mount_heavy_stabilization_unit, "object/draft_schematic/structure/component/shared_weapon_mount_heavy_stabilization_unit.iff")

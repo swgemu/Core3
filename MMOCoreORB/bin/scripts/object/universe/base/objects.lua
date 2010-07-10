@@ -82,7 +82,7 @@ object_universe_base_shared_base_universe = SharedUniverseObjectTemplate:new {
 	clientObjectCRC = 2428076790
 }
 
-ObjectTemplates:addTemplate(object_universe_base_shared_base_universe, "object/universe/base/shared_base_universe.iff")
+ObjectTemplates:addClientTemplate(object_universe_base_shared_base_universe, "object/universe/base/shared_base_universe.iff")
 
 object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,4 +125,4 @@ object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new 
 	clientObjectCRC = 3854968513
 }
 
-ObjectTemplates:addTemplate(object_universe_base_shared_universe_default, "object/universe/base/shared_universe_default.iff")
+ObjectTemplates:addClientTemplate(object_universe_base_shared_universe_default, "object/universe/base/shared_universe_default.iff")

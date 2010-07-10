@@ -92,4 +92,4 @@ object_tangible_container_food_shared_lunchbox_base = SharedTangibleObjectTempla
 	clientObjectCRC = 1773382797
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_food_shared_lunchbox_base, "object/tangible/container/food/shared_lunchbox_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_food_shared_lunchbox_base, "object/tangible/container/food/shared_lunchbox_base.iff")

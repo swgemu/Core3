@@ -92,7 +92,7 @@ object_tangible_lair_chuba_shared_lair_chuba = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3941503205
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba, "object/tangible/lair/chuba/shared_lair_chuba.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_chuba_shared_lair_chuba, "object/tangible/lair/chuba/shared_lair_chuba.iff")
 
 object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTempla
 	clientObjectCRC = 2016717177
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_forest, "object/tangible/lair/chuba/shared_lair_chuba_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_chuba_shared_lair_chuba_forest, "object/tangible/lair/chuba/shared_lair_chuba_forest.iff")
 
 object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplat
 	clientObjectCRC = 745493888
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_swamp, "object/tangible/lair/chuba/shared_lair_chuba_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_chuba_shared_lair_chuba_swamp, "object/tangible/lair/chuba/shared_lair_chuba_swamp.iff")

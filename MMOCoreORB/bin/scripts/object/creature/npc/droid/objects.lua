@@ -116,7 +116,7 @@ object_creature_npc_droid_shared_2_1b_surgical_droid_base = SharedCreatureObject
 	clientObjectCRC = 1605343560
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_2_1b_surgical_droid_base, "object/creature/npc/droid/shared_2_1b_surgical_droid_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_2_1b_surgical_droid_base, "object/creature/npc/droid/shared_2_1b_surgical_droid_base.iff")
 
 object_creature_npc_droid_shared_3po_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -193,7 +193,7 @@ object_creature_npc_droid_shared_3po_base = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2915624318
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_3po_base, "object/creature/npc/droid/shared_3po_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_3po_base, "object/creature/npc/droid/shared_3po_base.iff")
 
 object_creature_npc_droid_shared_bomarr_monk_spider_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -270,7 +270,7 @@ object_creature_npc_droid_shared_bomarr_monk_spider_droid = SharedCreatureObject
 	clientObjectCRC = 3197073485
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_bomarr_monk_spider_droid, "object/creature/npc/droid/shared_bomarr_monk_spider_droid.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_bomarr_monk_spider_droid, "object/creature/npc/droid/shared_bomarr_monk_spider_droid.iff")
 
 object_creature_npc_droid_shared_cll_8_binary_load_lifter_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -347,7 +347,7 @@ object_creature_npc_droid_shared_cll_8_binary_load_lifter_base = SharedCreatureO
 	clientObjectCRC = 2746759604
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_cll_8_binary_load_lifter_base, "object/creature/npc/droid/shared_cll_8_binary_load_lifter_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_cll_8_binary_load_lifter_base, "object/creature/npc/droid/shared_cll_8_binary_load_lifter_base.iff")
 
 object_creature_npc_droid_shared_dark_trooper_phase_ii_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -424,7 +424,7 @@ object_creature_npc_droid_shared_dark_trooper_phase_ii_base = SharedCreatureObje
 	clientObjectCRC = 3007882000
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_dark_trooper_phase_ii_base, "object/creature/npc/droid/shared_dark_trooper_phase_ii_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_dark_trooper_phase_ii_base, "object/creature/npc/droid/shared_dark_trooper_phase_ii_base.iff")
 
 object_creature_npc_droid_shared_droideka_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -501,7 +501,7 @@ object_creature_npc_droid_shared_droideka_base = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 1363686436
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_droideka_base, "object/creature/npc/droid/shared_droideka_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_droideka_base, "object/creature/npc/droid/shared_droideka_base.iff")
 
 object_creature_npc_droid_shared_dz_70_fugitive_tracker_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -578,7 +578,7 @@ object_creature_npc_droid_shared_dz_70_fugitive_tracker_base = SharedCreatureObj
 	clientObjectCRC = 1822521972
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_dz_70_fugitive_tracker_base, "object/creature/npc/droid/shared_dz_70_fugitive_tracker_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_dz_70_fugitive_tracker_base, "object/creature/npc/droid/shared_dz_70_fugitive_tracker_base.iff")
 
 object_creature_npc_droid_shared_eg_6_power_droid_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -655,7 +655,7 @@ object_creature_npc_droid_shared_eg_6_power_droid_base = SharedCreatureObjectTem
 	clientObjectCRC = 4263326196
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_eg_6_power_droid_base, "object/creature/npc/droid/shared_eg_6_power_droid_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_eg_6_power_droid_base, "object/creature/npc/droid/shared_eg_6_power_droid_base.iff")
 
 object_creature_npc_droid_shared_ig_assassin_droid_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -732,7 +732,7 @@ object_creature_npc_droid_shared_ig_assassin_droid_base = SharedCreatureObjectTe
 	clientObjectCRC = 2147155885
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_ig_assassin_droid_base, "object/creature/npc/droid/shared_ig_assassin_droid_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_ig_assassin_droid_base, "object/creature/npc/droid/shared_ig_assassin_droid_base.iff")
 
 object_creature_npc_droid_shared_imperial_probot_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -809,7 +809,7 @@ object_creature_npc_droid_shared_imperial_probot_base = SharedCreatureObjectTemp
 	clientObjectCRC = 855701230
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_imperial_probot_base, "object/creature/npc/droid/shared_imperial_probot_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_imperial_probot_base, "object/creature/npc/droid/shared_imperial_probot_base.iff")
 
 object_creature_npc_droid_shared_it_o_interrogator_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -886,7 +886,7 @@ object_creature_npc_droid_shared_it_o_interrogator_base = SharedCreatureObjectTe
 	clientObjectCRC = 2404177386
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_it_o_interrogator_base, "object/creature/npc/droid/shared_it_o_interrogator_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_it_o_interrogator_base, "object/creature/npc/droid/shared_it_o_interrogator_base.iff")
 
 object_creature_npc_droid_shared_jedi_training_droid_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -963,7 +963,7 @@ object_creature_npc_droid_shared_jedi_training_droid_base = SharedCreatureObject
 	clientObjectCRC = 1824587153
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_jedi_training_droid_base, "object/creature/npc/droid/shared_jedi_training_droid_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_jedi_training_droid_base, "object/creature/npc/droid/shared_jedi_training_droid_base.iff")
 
 object_creature_npc_droid_shared_le_repair_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1040,7 +1040,7 @@ object_creature_npc_droid_shared_le_repair_droid = SharedCreatureObjectTemplate:
 	clientObjectCRC = 3636727392
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_le_repair_droid, "object/creature/npc/droid/shared_le_repair_droid.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_le_repair_droid, "object/creature/npc/droid/shared_le_repair_droid.iff")
 
 object_creature_npc_droid_shared_lin_demolitionmech_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1117,7 +1117,7 @@ object_creature_npc_droid_shared_lin_demolitionmech_base = SharedCreatureObjectT
 	clientObjectCRC = 3586538841
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_lin_demolitionmech_base, "object/creature/npc/droid/shared_lin_demolitionmech_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_lin_demolitionmech_base, "object/creature/npc/droid/shared_lin_demolitionmech_base.iff")
 
 object_creature_npc_droid_shared_maul_probe_droid_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1194,7 +1194,7 @@ object_creature_npc_droid_shared_maul_probe_droid_base = SharedCreatureObjectTem
 	clientObjectCRC = 1281145336
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_maul_probe_droid_base, "object/creature/npc/droid/shared_maul_probe_droid_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_maul_probe_droid_base, "object/creature/npc/droid/shared_maul_probe_droid_base.iff")
 
 object_creature_npc_droid_shared_mse_6_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1271,7 +1271,7 @@ object_creature_npc_droid_shared_mse_6_base = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3289977441
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_mse_6_base, "object/creature/npc/droid/shared_mse_6_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_mse_6_base, "object/creature/npc/droid/shared_mse_6_base.iff")
 
 object_creature_npc_droid_shared_r2_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1348,7 +1348,7 @@ object_creature_npc_droid_shared_r2_base = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2822086398
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r2_base, "object/creature/npc/droid/shared_r2_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r2_base, "object/creature/npc/droid/shared_r2_base.iff")
 
 object_creature_npc_droid_shared_r3_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1425,7 +1425,7 @@ object_creature_npc_droid_shared_r3_base = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 681918105
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r3_base, "object/creature/npc/droid/shared_r3_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r3_base, "object/creature/npc/droid/shared_r3_base.iff")
 
 object_creature_npc_droid_shared_r4_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1502,7 +1502,7 @@ object_creature_npc_droid_shared_r4_base = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2786425205
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r4_base, "object/creature/npc/droid/shared_r4_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r4_base, "object/creature/npc/droid/shared_r4_base.iff")
 
 object_creature_npc_droid_shared_r5_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1579,7 +1579,7 @@ object_creature_npc_droid_shared_r5_base = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 646306066
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r5_base, "object/creature/npc/droid/shared_r5_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r5_base, "object/creature/npc/droid/shared_r5_base.iff")
 
 object_creature_npc_droid_shared_ra7_bug_droid_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1656,7 +1656,7 @@ object_creature_npc_droid_shared_ra7_bug_droid_base = SharedCreatureObjectTempla
 	clientObjectCRC = 148666614
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_ra7_bug_droid_base, "object/creature/npc/droid/shared_ra7_bug_droid_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_ra7_bug_droid_base, "object/creature/npc/droid/shared_ra7_bug_droid_base.iff")
 
 object_creature_npc_droid_shared_red_protocol_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1733,7 +1733,7 @@ object_creature_npc_droid_shared_red_protocol_base = SharedCreatureObjectTemplat
 	clientObjectCRC = 368181993
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_red_protocol_base, "object/creature/npc/droid/shared_red_protocol_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_red_protocol_base, "object/creature/npc/droid/shared_red_protocol_base.iff")
 
 object_creature_npc_droid_shared_robo_bartender_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1810,7 +1810,7 @@ object_creature_npc_droid_shared_robo_bartender_base = SharedCreatureObjectTempl
 	clientObjectCRC = 3380886881
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_robo_bartender_base, "object/creature/npc/droid/shared_robo_bartender_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_robo_bartender_base, "object/creature/npc/droid/shared_robo_bartender_base.iff")
 
 object_creature_npc_droid_shared_silver_protocol_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1887,7 +1887,7 @@ object_creature_npc_droid_shared_silver_protocol_base = SharedCreatureObjectTemp
 	clientObjectCRC = 2083758013
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_silver_protocol_base, "object/creature/npc/droid/shared_silver_protocol_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_silver_protocol_base, "object/creature/npc/droid/shared_silver_protocol_base.iff")
 
 object_creature_npc_droid_shared_tt_8l_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1964,7 +1964,7 @@ object_creature_npc_droid_shared_tt_8l_base = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1547923813
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_tt_8l_base, "object/creature/npc/droid/shared_tt_8l_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_tt_8l_base, "object/creature/npc/droid/shared_tt_8l_base.iff")
 
 object_creature_npc_droid_shared_tt_8l_y7_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2041,7 +2041,7 @@ object_creature_npc_droid_shared_tt_8l_y7_base = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 1384722195
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_tt_8l_y7_base, "object/creature/npc/droid/shared_tt_8l_y7_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_tt_8l_y7_base, "object/creature/npc/droid/shared_tt_8l_y7_base.iff")
 
 object_creature_npc_droid_shared_wed_treadwell_base = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2118,4 +2118,4 @@ object_creature_npc_droid_shared_wed_treadwell_base = SharedCreatureObjectTempla
 	clientObjectCRC = 1639908569
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_droid_shared_wed_treadwell_base, "object/creature/npc/droid/shared_wed_treadwell_base.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_wed_treadwell_base, "object/creature/npc/droid/shared_wed_treadwell_base.iff")

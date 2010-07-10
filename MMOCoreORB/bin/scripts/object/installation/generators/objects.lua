@@ -92,7 +92,7 @@ object_installation_generators_shared_power_generator_fusion_style_1 = SharedIns
 	clientObjectCRC = 1283788286
 }
 
-ObjectTemplates:addTemplate(object_installation_generators_shared_power_generator_fusion_style_1, "object/installation/generators/shared_power_generator_fusion_style_1.iff")
+ObjectTemplates:addClientTemplate(object_installation_generators_shared_power_generator_fusion_style_1, "object/installation/generators/shared_power_generator_fusion_style_1.iff")
 
 object_installation_generators_shared_power_generator_photo_bio_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_photo_bio_u0.apt",
@@ -145,7 +145,7 @@ object_installation_generators_shared_power_generator_photo_bio_style_1 = Shared
 	clientObjectCRC = 2363771835
 }
 
-ObjectTemplates:addTemplate(object_installation_generators_shared_power_generator_photo_bio_style_1, "object/installation/generators/shared_power_generator_photo_bio_style_1.iff")
+ObjectTemplates:addClientTemplate(object_installation_generators_shared_power_generator_photo_bio_style_1, "object/installation/generators/shared_power_generator_photo_bio_style_1.iff")
 
 object_installation_generators_shared_power_generator_solar_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_solar_base_u0.apt",
@@ -198,7 +198,7 @@ object_installation_generators_shared_power_generator_solar_style_1 = SharedInst
 	clientObjectCRC = 859942951
 }
 
-ObjectTemplates:addTemplate(object_installation_generators_shared_power_generator_solar_style_1, "object/installation/generators/shared_power_generator_solar_style_1.iff")
+ObjectTemplates:addClientTemplate(object_installation_generators_shared_power_generator_solar_style_1, "object/installation/generators/shared_power_generator_solar_style_1.iff")
 
 object_installation_generators_shared_power_generator_wind_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_wind_u0.apt",
@@ -251,4 +251,4 @@ object_installation_generators_shared_power_generator_wind_style_1 = SharedInsta
 	clientObjectCRC = 2932869055
 }
 
-ObjectTemplates:addTemplate(object_installation_generators_shared_power_generator_wind_style_1, "object/installation/generators/shared_power_generator_wind_style_1.iff")
+ObjectTemplates:addClientTemplate(object_installation_generators_shared_power_generator_wind_style_1, "object/installation/generators/shared_power_generator_wind_style_1.iff")

@@ -82,7 +82,7 @@ object_player_base_shared_base_player = SharedPlayerObjectTemplate:new {
 	clientObjectCRC = 1894914263
 }
 
-ObjectTemplates:addTemplate(object_player_base_shared_base_player, "object/player/base/shared_base_player.iff")
+ObjectTemplates:addClientTemplate(object_player_base_shared_base_player, "object/player/base/shared_base_player.iff")
 
 object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,4 +125,4 @@ object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
 	clientObjectCRC = 1016063662
 }
 
-ObjectTemplates:addTemplate(object_player_base_shared_player_default, "object/player/base/shared_player_default.iff")
+ObjectTemplates:addClientTemplate(object_player_base_shared_player_default, "object/player/base/shared_player_default.iff")

@@ -92,4 +92,4 @@ object_tangible_travel_shuttle_base_shared_base_travel_shuttle = SharedTangibleO
 	clientObjectCRC = 1622629631
 }
 
-ObjectTemplates:addTemplate(object_tangible_travel_shuttle_base_shared_base_travel_shuttle, "object/tangible/travel/shuttle/base/shared_base_travel_shuttle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_travel_shuttle_base_shared_base_travel_shuttle, "object/tangible/travel/shuttle/base/shared_base_travel_shuttle.iff")

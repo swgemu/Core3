@@ -92,4 +92,4 @@ object_installation_turret_base_shared_turret_base = SharedInstallationObjectTem
 	clientObjectCRC = 646823895
 }
 
-ObjectTemplates:addTemplate(object_installation_turret_base_shared_turret_base, "object/installation/turret/base/shared_turret_base.iff")
+ObjectTemplates:addClientTemplate(object_installation_turret_base_shared_turret_base, "object/installation/turret/base/shared_turret_base.iff")

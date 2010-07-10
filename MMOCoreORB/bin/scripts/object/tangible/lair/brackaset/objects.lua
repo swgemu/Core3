@@ -92,7 +92,7 @@ object_tangible_lair_brackaset_shared_lair_brackaset = SharedTangibleObjectTempl
 	clientObjectCRC = 2129819322
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_brackaset_shared_lair_brackaset, "object/tangible/lair/brackaset/shared_lair_brackaset.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_brackaset_shared_lair_brackaset, "object/tangible/lair/brackaset/shared_lair_brackaset.iff")
 
 object_tangible_lair_brackaset_shared_lair_brackaset_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_brackaset_shared_lair_brackaset_desert = SharedTangibleObje
 	clientObjectCRC = 3690646770
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_brackaset_shared_lair_brackaset_desert, "object/tangible/lair/brackaset/shared_lair_brackaset_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_brackaset_shared_lair_brackaset_desert, "object/tangible/lair/brackaset/shared_lair_brackaset_desert.iff")

@@ -92,7 +92,7 @@ object_tangible_furniture_elegant_shared_armoire_elegant_s01 = SharedTangibleObj
 	clientObjectCRC = 56090695
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_armoire_elegant_s01, "object/tangible/furniture/elegant/shared_armoire_elegant_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_elegant_shared_armoire_elegant_s01, "object/tangible/furniture/elegant/shared_armoire_elegant_s01.iff")
 
 object_tangible_furniture_elegant_shared_bookcase_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_bookcase_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_furniture_elegant_shared_bookcase_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 1814465035
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_bookcase_s01, "object/tangible/furniture/elegant/shared_bookcase_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_elegant_shared_bookcase_s01, "object/tangible/furniture/elegant/shared_bookcase_s01.iff")
 
 object_tangible_furniture_elegant_shared_cabinet_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_cabinet_s01.apt",
@@ -198,7 +198,7 @@ object_tangible_furniture_elegant_shared_cabinet_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 2940457110
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_cabinet_s01, "object/tangible/furniture/elegant/shared_cabinet_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_elegant_shared_cabinet_s01, "object/tangible/furniture/elegant/shared_cabinet_s01.iff")
 
 object_tangible_furniture_elegant_shared_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_chair_s01.apt",
@@ -251,7 +251,7 @@ object_tangible_furniture_elegant_shared_chair_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 824180051
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_chair_s01, "object/tangible/furniture/elegant/shared_chair_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_elegant_shared_chair_s01, "object/tangible/furniture/elegant/shared_chair_s01.iff")
 
 object_tangible_furniture_elegant_shared_chest_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_chest_s01.apt",
@@ -304,7 +304,7 @@ object_tangible_furniture_elegant_shared_chest_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3255615837
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_chest_s01, "object/tangible/furniture/elegant/shared_chest_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_elegant_shared_chest_s01, "object/tangible/furniture/elegant/shared_chest_s01.iff")
 
 object_tangible_furniture_elegant_shared_coffee_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_coffee_table_s01.apt",
@@ -357,7 +357,7 @@ object_tangible_furniture_elegant_shared_coffee_table_s01 = SharedTangibleObject
 	clientObjectCRC = 1775305785
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_coffee_table_s01, "object/tangible/furniture/elegant/shared_coffee_table_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_elegant_shared_coffee_table_s01, "object/tangible/furniture/elegant/shared_coffee_table_s01.iff")
 
 object_tangible_furniture_elegant_shared_couch_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_couch_s01.apt",
@@ -410,7 +410,7 @@ object_tangible_furniture_elegant_shared_couch_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 185587571
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_couch_s01, "object/tangible/furniture/elegant/shared_couch_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_elegant_shared_couch_s01, "object/tangible/furniture/elegant/shared_couch_s01.iff")
 
 object_tangible_furniture_elegant_shared_end_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_end_table_s01.apt",
@@ -463,7 +463,7 @@ object_tangible_furniture_elegant_shared_end_table_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 551627081
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_end_table_s01, "object/tangible/furniture/elegant/shared_end_table_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_elegant_shared_end_table_s01, "object/tangible/furniture/elegant/shared_end_table_s01.iff")
 
 object_tangible_furniture_elegant_shared_love_seat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_love_seat_s01.apt",
@@ -516,4 +516,4 @@ object_tangible_furniture_elegant_shared_love_seat_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 409403906
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_love_seat_s01, "object/tangible/furniture/elegant/shared_love_seat_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_elegant_shared_love_seat_s01, "object/tangible/furniture/elegant/shared_love_seat_s01.iff")

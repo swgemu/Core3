@@ -92,7 +92,7 @@ object_tangible_lair_kusak_shared_lair_kusak = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 4037110317
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kusak_shared_lair_kusak, "object/tangible/lair/kusak/shared_lair_kusak.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kusak_shared_lair_kusak, "object/tangible/lair/kusak/shared_lair_kusak.iff")
 
 object_tangible_lair_kusak_shared_lair_kusak_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_kusak_shared_lair_kusak_wasteland = SharedTangibleObjectTem
 	clientObjectCRC = 3071582373
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kusak_shared_lair_kusak_wasteland, "object/tangible/lair/kusak/shared_lair_kusak_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kusak_shared_lair_kusak_wasteland, "object/tangible/lair/kusak/shared_lair_kusak_wasteland.iff")

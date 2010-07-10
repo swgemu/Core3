@@ -92,7 +92,7 @@ object_tangible_powerup_base_shared_armor_base = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2900653287
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_base_shared_armor_base, "object/tangible/powerup/base/shared_armor_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_armor_base, "object/tangible/powerup/base/shared_armor_base.iff")
 
 object_tangible_powerup_base_shared_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_powerup_base_shared_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 486380582
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_base_shared_base, "object/tangible/powerup/base/shared_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_base, "object/tangible/powerup/base/shared_base.iff")
 
 object_tangible_powerup_base_shared_weapon_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s01.apt",
@@ -198,4 +198,4 @@ object_tangible_powerup_base_shared_weapon_base = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1015299597
 }
 
-ObjectTemplates:addTemplate(object_tangible_powerup_base_shared_weapon_base, "object/tangible/powerup/base/shared_weapon_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_weapon_base, "object/tangible/powerup/base/shared_weapon_base.iff")

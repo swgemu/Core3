@@ -95,7 +95,7 @@ object_building_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1092202767
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_catwalk, "object/building/endor/shared_endor_catwalk.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_catwalk, "object/building/endor/shared_endor_catwalk.iff")
 
 object_building_endor_shared_endor_catwalk_cap = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_catwlk_cap_s01.apt",
@@ -151,7 +151,7 @@ object_building_endor_shared_endor_catwalk_cap = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1451215471
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_catwalk_cap, "object/building/endor/shared_endor_catwalk_cap.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_catwalk_cap, "object/building/endor/shared_endor_catwalk_cap.iff")
 
 object_building_endor_shared_endor_forest_hut = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_forest_hut_s01.apt",
@@ -207,7 +207,7 @@ object_building_endor_shared_endor_forest_hut = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 2759537117
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_forest_hut, "object/building/endor/shared_endor_forest_hut.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_forest_hut, "object/building/endor/shared_endor_forest_hut.iff")
 
 object_building_endor_shared_endor_giant_catwalk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_catwlk_64m_s01.apt",
@@ -263,7 +263,7 @@ object_building_endor_shared_endor_giant_catwalk = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 2543574892
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_giant_catwalk, "object/building/endor/shared_endor_giant_catwalk.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_giant_catwalk, "object/building/endor/shared_endor_giant_catwalk.iff")
 
 object_building_endor_shared_endor_giant_village_tree_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_s01.apt",
@@ -319,7 +319,7 @@ object_building_endor_shared_endor_giant_village_tree_s01 = SharedBuildingObject
 	clientObjectCRC = 3384806373
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_giant_village_tree_s01, "object/building/endor/shared_endor_giant_village_tree_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_giant_village_tree_s01, "object/building/endor/shared_endor_giant_village_tree_s01.iff")
 
 object_building_endor_shared_endor_lake_hut = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lakevillage_lake_hut.apt",
@@ -375,7 +375,7 @@ object_building_endor_shared_endor_lake_hut = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 790353916
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_hut, "object/building/endor/shared_endor_lake_hut.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_hut, "object/building/endor/shared_endor_lake_hut.iff")
 
 object_building_endor_shared_endor_lake_hut_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_hut_s02.apt",
@@ -431,7 +431,7 @@ object_building_endor_shared_endor_lake_hut_s02 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1488414842
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_hut_s02, "object/building/endor/shared_endor_lake_hut_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_hut_s02, "object/building/endor/shared_endor_lake_hut_s02.iff")
 
 object_building_endor_shared_endor_lake_platform = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lakevillage_lake_hut_pc1.apt",
@@ -487,7 +487,7 @@ object_building_endor_shared_endor_lake_platform = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2419475197
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_platform, "object/building/endor/shared_endor_lake_platform.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_platform, "object/building/endor/shared_endor_lake_platform.iff")
 
 object_building_endor_shared_endor_lake_platform_cap = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_platform_cap_s01.apt",
@@ -543,7 +543,7 @@ object_building_endor_shared_endor_lake_platform_cap = SharedBuildingObjectTempl
 	clientObjectCRC = 1002562347
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_platform_cap, "object/building/endor/shared_endor_lake_platform_cap.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_platform_cap, "object/building/endor/shared_endor_lake_platform_cap.iff")
 
 object_building_endor_shared_endor_lake_walkway_square = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_platform_square_s01.apt",
@@ -599,7 +599,7 @@ object_building_endor_shared_endor_lake_walkway_square = SharedBuildingObjectTem
 	clientObjectCRC = 1339123676
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_walkway_square, "object/building/endor/shared_endor_lake_walkway_square.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_walkway_square, "object/building/endor/shared_endor_lake_walkway_square.iff")
 
 object_building_endor_shared_endor_lake_walkway_straight = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_platform_rectangle_s01.apt",
@@ -655,7 +655,7 @@ object_building_endor_shared_endor_lake_walkway_straight = SharedBuildingObjectT
 	clientObjectCRC = 3597287151
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_walkway_straight, "object/building/endor/shared_endor_lake_walkway_straight.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_walkway_straight, "object/building/endor/shared_endor_lake_walkway_straight.iff")
 
 object_building_endor_shared_endor_tiki_torch = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_tiki_torch_s01.apt",
@@ -711,7 +711,7 @@ object_building_endor_shared_endor_tiki_torch = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 4148017771
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_tiki_torch, "object/building/endor/shared_endor_tiki_torch.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_tiki_torch, "object/building/endor/shared_endor_tiki_torch.iff")
 
 object_building_endor_shared_endor_village_tree = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_s01.apt",
@@ -767,7 +767,7 @@ object_building_endor_shared_endor_village_tree = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1111623449
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_village_tree, "object/building/endor/shared_endor_village_tree.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_village_tree, "object/building/endor/shared_endor_village_tree.iff")
 
 object_building_endor_shared_endor_village_tree_viewpoint = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_viewpoint_s01.apt",
@@ -823,7 +823,7 @@ object_building_endor_shared_endor_village_tree_viewpoint = SharedBuildingObject
 	clientObjectCRC = 4074943330
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endor_village_tree_viewpoint, "object/building/endor/shared_endor_village_tree_viewpoint.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_village_tree_viewpoint, "object/building/endor/shared_endor_village_tree_viewpoint.iff")
 
 object_building_endor_shared_endr_lake_rail16m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_rail16m.apt",
@@ -866,7 +866,7 @@ object_building_endor_shared_endr_lake_rail16m = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2748322568
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail16m, "object/building/endor/shared_endr_lake_rail16m.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endr_lake_rail16m, "object/building/endor/shared_endr_lake_rail16m.iff")
 
 object_building_endor_shared_endr_lake_rail2m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_rail2m.apt",
@@ -909,7 +909,7 @@ object_building_endor_shared_endr_lake_rail2m = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 380245173
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail2m, "object/building/endor/shared_endr_lake_rail2m.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endr_lake_rail2m, "object/building/endor/shared_endr_lake_rail2m.iff")
 
 object_building_endor_shared_endr_lake_rail4m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_rail4m.apt",
@@ -952,7 +952,7 @@ object_building_endor_shared_endr_lake_rail4m = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1280981925
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail4m, "object/building/endor/shared_endr_lake_rail4m.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endr_lake_rail4m, "object/building/endor/shared_endr_lake_rail4m.iff")
 
 object_building_endor_shared_endr_lake_rail8m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_rail8m.apt",
@@ -995,4 +995,4 @@ object_building_endor_shared_endr_lake_rail8m = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4189742469
 }
 
-ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail8m, "object/building/endor/shared_endr_lake_rail8m.iff")
+ObjectTemplates:addClientTemplate(object_building_endor_shared_endr_lake_rail8m, "object/building/endor/shared_endr_lake_rail8m.iff")

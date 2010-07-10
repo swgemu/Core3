@@ -92,7 +92,7 @@ object_tangible_lair_qurvel_shared_lair_qurvel = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1736818373
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_qurvel_shared_lair_qurvel, "object/tangible/lair/qurvel/shared_lair_qurvel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_qurvel_shared_lair_qurvel, "object/tangible/lair/qurvel/shared_lair_qurvel.iff")
 
 object_tangible_lair_qurvel_shared_lair_qurvel_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_qurvel_shared_lair_qurvel_forest = SharedTangibleObjectTemp
 	clientObjectCRC = 107086842
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_qurvel_shared_lair_qurvel_forest, "object/tangible/lair/qurvel/shared_lair_qurvel_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_qurvel_shared_lair_qurvel_forest, "object/tangible/lair/qurvel/shared_lair_qurvel_forest.iff")
 
 object_tangible_lair_qurvel_shared_lair_qurvel_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_qurvel_shared_lair_qurvel_mountain = SharedTangibleObjectTe
 	clientObjectCRC = 4099487001
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_qurvel_shared_lair_qurvel_mountain, "object/tangible/lair/qurvel/shared_lair_qurvel_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_qurvel_shared_lair_qurvel_mountain, "object/tangible/lair/qurvel/shared_lair_qurvel_mountain.iff")

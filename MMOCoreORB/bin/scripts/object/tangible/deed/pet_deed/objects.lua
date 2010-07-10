@@ -92,7 +92,7 @@ object_tangible_deed_pet_deed_shared_acklay_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1956514459
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_acklay_deed, "object/tangible/deed/pet_deed/shared_acklay_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_acklay_deed, "object/tangible/deed/pet_deed/shared_acklay_deed.iff")
 
 object_tangible_deed_pet_deed_shared_angler_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/angler_hue.sat",
@@ -145,7 +145,7 @@ object_tangible_deed_pet_deed_shared_angler_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2482798836
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_angler_deed, "object/tangible/deed/pet_deed/shared_angler_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_angler_deed, "object/tangible/deed/pet_deed/shared_angler_deed.iff")
 
 object_tangible_deed_pet_deed_shared_bageraset_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bageraset_hue.sat",
@@ -198,7 +198,7 @@ object_tangible_deed_pet_deed_shared_bageraset_deed = SharedTangibleObjectTempla
 	clientObjectCRC = 3630864640
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bageraset_deed, "object/tangible/deed/pet_deed/shared_bageraset_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_bageraset_deed, "object/tangible/deed/pet_deed/shared_bageraset_deed.iff")
 
 object_tangible_deed_pet_deed_shared_bantha_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bantha_hue.sat",
@@ -251,7 +251,7 @@ object_tangible_deed_pet_deed_shared_bantha_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2365841175
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bantha_deed, "object/tangible/deed/pet_deed/shared_bantha_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_bantha_deed, "object/tangible/deed/pet_deed/shared_bantha_deed.iff")
 
 object_tangible_deed_pet_deed_shared_bearded_jax_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bearded_jax_hue.sat",
@@ -304,7 +304,7 @@ object_tangible_deed_pet_deed_shared_bearded_jax_deed = SharedTangibleObjectTemp
 	clientObjectCRC = 78102585
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bearded_jax_deed, "object/tangible/deed/pet_deed/shared_bearded_jax_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_bearded_jax_deed, "object/tangible/deed/pet_deed/shared_bearded_jax_deed.iff")
 
 object_tangible_deed_pet_deed_shared_blurrg_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/blurrg_hue.sat",
@@ -357,7 +357,7 @@ object_tangible_deed_pet_deed_shared_blurrg_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2944380432
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_blurrg_deed, "object/tangible/deed/pet_deed/shared_blurrg_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_blurrg_deed, "object/tangible/deed/pet_deed/shared_blurrg_deed.iff")
 
 object_tangible_deed_pet_deed_shared_boar_wolf_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boar_wolf_hue.sat",
@@ -410,7 +410,7 @@ object_tangible_deed_pet_deed_shared_boar_wolf_deed = SharedTangibleObjectTempla
 	clientObjectCRC = 770531261
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_boar_wolf_deed, "object/tangible/deed/pet_deed/shared_boar_wolf_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_boar_wolf_deed, "object/tangible/deed/pet_deed/shared_boar_wolf_deed.iff")
 
 object_tangible_deed_pet_deed_shared_bocatt_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bocatt_hue.sat",
@@ -463,7 +463,7 @@ object_tangible_deed_pet_deed_shared_bocatt_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1788467919
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bocatt_deed, "object/tangible/deed/pet_deed/shared_bocatt_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_bocatt_deed, "object/tangible/deed/pet_deed/shared_bocatt_deed.iff")
 
 object_tangible_deed_pet_deed_shared_bol_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bol_hue.sat",
@@ -516,7 +516,7 @@ object_tangible_deed_pet_deed_shared_bol_deed = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 3319053761
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bol_deed, "object/tangible/deed/pet_deed/shared_bol_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_bol_deed, "object/tangible/deed/pet_deed/shared_bol_deed.iff")
 
 object_tangible_deed_pet_deed_shared_bolle_bol_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bolle_bol_hue.sat",
@@ -569,7 +569,7 @@ object_tangible_deed_pet_deed_shared_bolle_bol_deed = SharedTangibleObjectTempla
 	clientObjectCRC = 355900211
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bolle_bol_deed, "object/tangible/deed/pet_deed/shared_bolle_bol_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_bolle_bol_deed, "object/tangible/deed/pet_deed/shared_bolle_bol_deed.iff")
 
 object_tangible_deed_pet_deed_shared_bolma_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bolma_hue.sat",
@@ -622,7 +622,7 @@ object_tangible_deed_pet_deed_shared_bolma_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3293690275
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bolma_deed, "object/tangible/deed/pet_deed/shared_bolma_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_bolma_deed, "object/tangible/deed/pet_deed/shared_bolma_deed.iff")
 
 object_tangible_deed_pet_deed_shared_bordok_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bordok_hue.sat",
@@ -675,7 +675,7 @@ object_tangible_deed_pet_deed_shared_bordok_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3849896931
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bordok_deed, "object/tangible/deed/pet_deed/shared_bordok_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_bordok_deed, "object/tangible/deed/pet_deed/shared_bordok_deed.iff")
 
 object_tangible_deed_pet_deed_shared_brackaset_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/brackaset_hue.sat",
@@ -728,7 +728,7 @@ object_tangible_deed_pet_deed_shared_brackaset_deed = SharedTangibleObjectTempla
 	clientObjectCRC = 2722964789
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_brackaset_deed, "object/tangible/deed/pet_deed/shared_brackaset_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_brackaset_deed, "object/tangible/deed/pet_deed/shared_brackaset_deed.iff")
 
 object_tangible_deed_pet_deed_shared_carrion_spat_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/carrion_spat_hue.sat",
@@ -781,7 +781,7 @@ object_tangible_deed_pet_deed_shared_carrion_spat_deed = SharedTangibleObjectTem
 	clientObjectCRC = 1539923178
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_carrion_spat_deed, "object/tangible/deed/pet_deed/shared_carrion_spat_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_carrion_spat_deed, "object/tangible/deed/pet_deed/shared_carrion_spat_deed.iff")
 
 object_tangible_deed_pet_deed_shared_choku_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/choku_hue.sat",
@@ -834,7 +834,7 @@ object_tangible_deed_pet_deed_shared_choku_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 568963373
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_choku_deed, "object/tangible/deed/pet_deed/shared_choku_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_choku_deed, "object/tangible/deed/pet_deed/shared_choku_deed.iff")
 
 object_tangible_deed_pet_deed_shared_cu_pa_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cu_pa_hue.sat",
@@ -887,7 +887,7 @@ object_tangible_deed_pet_deed_shared_cu_pa_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1372684709
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_cu_pa_deed, "object/tangible/deed/pet_deed/shared_cu_pa_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_cu_pa_deed, "object/tangible/deed/pet_deed/shared_cu_pa_deed.iff")
 
 object_tangible_deed_pet_deed_shared_dalyrake_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dalyrake_hue.sat",
@@ -940,7 +940,7 @@ object_tangible_deed_pet_deed_shared_dalyrake_deed = SharedTangibleObjectTemplat
 	clientObjectCRC = 3912913130
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_dalyrake_deed, "object/tangible/deed/pet_deed/shared_dalyrake_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_dalyrake_deed, "object/tangible/deed/pet_deed/shared_dalyrake_deed.iff")
 
 object_tangible_deed_pet_deed_shared_deed_3p0_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid.sat",
@@ -993,7 +993,7 @@ object_tangible_deed_pet_deed_shared_deed_3p0_advanced_basic = SharedTangibleObj
 	clientObjectCRC = 3377218847
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_3p0_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_3p0_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_3p0_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_3p0_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_3p0_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid.sat",
@@ -1046,7 +1046,7 @@ object_tangible_deed_pet_deed_shared_deed_3p0_basic = SharedTangibleObjectTempla
 	clientObjectCRC = 1415490905
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_3p0_basic, "object/tangible/deed/pet_deed/shared_deed_3p0_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_3p0_basic, "object/tangible/deed/pet_deed/shared_deed_3p0_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
@@ -1099,7 +1099,7 @@ object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_advanced_basic = Sh
 	clientObjectCRC = 2057798202
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_binary_load_lifter_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_binary_load_lifter_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
@@ -1152,7 +1152,7 @@ object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_basic = SharedTangi
 	clientObjectCRC = 2601281504
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_basic, "object/tangible/deed/pet_deed/shared_deed_binary_load_lifter_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_basic, "object/tangible/deed/pet_deed/shared_deed_binary_load_lifter_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_droid_basic_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1205,7 +1205,7 @@ object_tangible_deed_pet_deed_shared_deed_droid_basic_base = SharedTangibleObjec
 	clientObjectCRC = 3223531426
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_droid_basic_base, "object/tangible/deed/pet_deed/shared_deed_droid_basic_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_droid_basic_base, "object/tangible/deed/pet_deed/shared_deed_droid_basic_base.iff")
 
 object_tangible_deed_pet_deed_shared_deed_dz70_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
@@ -1258,7 +1258,7 @@ object_tangible_deed_pet_deed_shared_deed_dz70_advanced_basic = SharedTangibleOb
 	clientObjectCRC = 582239250
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_dz70_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_dz70_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_dz70_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_dz70_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_dz70_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
@@ -1311,7 +1311,7 @@ object_tangible_deed_pet_deed_shared_deed_dz70_basic = SharedTangibleObjectTempl
 	clientObjectCRC = 3167973020
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_dz70_basic, "object/tangible/deed/pet_deed/shared_deed_dz70_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_dz70_basic, "object/tangible/deed/pet_deed/shared_deed_dz70_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_le_repair_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
@@ -1364,7 +1364,7 @@ object_tangible_deed_pet_deed_shared_deed_le_repair_advanced_basic = SharedTangi
 	clientObjectCRC = 1844616075
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_le_repair_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_le_repair_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_le_repair_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_le_repair_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_le_repair_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
@@ -1417,7 +1417,7 @@ object_tangible_deed_pet_deed_shared_deed_le_repair_basic = SharedTangibleObject
 	clientObjectCRC = 882669301
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_le_repair_basic, "object/tangible/deed/pet_deed/shared_deed_le_repair_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_le_repair_basic, "object/tangible/deed/pet_deed/shared_deed_le_repair_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_mse_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
@@ -1470,7 +1470,7 @@ object_tangible_deed_pet_deed_shared_deed_mse_advanced_basic = SharedTangibleObj
 	clientObjectCRC = 3093478182
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_mse_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_mse_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_mse_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_mse_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_mse_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
@@ -1523,7 +1523,7 @@ object_tangible_deed_pet_deed_shared_deed_mse_basic = SharedTangibleObjectTempla
 	clientObjectCRC = 710547098
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_mse_basic, "object/tangible/deed/pet_deed/shared_deed_mse_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_mse_basic, "object/tangible/deed/pet_deed/shared_deed_mse_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_power_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
@@ -1576,7 +1576,7 @@ object_tangible_deed_pet_deed_shared_deed_power_advanced_basic = SharedTangibleO
 	clientObjectCRC = 3935000008
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_power_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_power_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_power_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_power_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_power_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
@@ -1629,7 +1629,7 @@ object_tangible_deed_pet_deed_shared_deed_power_basic = SharedTangibleObjectTemp
 	clientObjectCRC = 3515669510
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_power_basic, "object/tangible/deed/pet_deed/shared_deed_power_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_power_basic, "object/tangible/deed/pet_deed/shared_deed_power_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_probot_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid.sat",
@@ -1682,7 +1682,7 @@ object_tangible_deed_pet_deed_shared_deed_probot_advanced_basic = SharedTangible
 	clientObjectCRC = 2316266352
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_probot_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_probot_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_probot_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_probot_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_probot_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid.sat",
@@ -1735,7 +1735,7 @@ object_tangible_deed_pet_deed_shared_deed_probot_basic = SharedTangibleObjectTem
 	clientObjectCRC = 3430959224
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_probot_basic, "object/tangible/deed/pet_deed/shared_deed_probot_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_probot_basic, "object/tangible/deed/pet_deed/shared_deed_probot_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_r2_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -1788,7 +1788,7 @@ object_tangible_deed_pet_deed_shared_deed_r2_advanced_basic = SharedTangibleObje
 	clientObjectCRC = 1405017351
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r2_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_r2_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_r2_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_r2_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_r2_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -1841,7 +1841,7 @@ object_tangible_deed_pet_deed_shared_deed_r2_basic = SharedTangibleObjectTemplat
 	clientObjectCRC = 3138660886
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r2_basic, "object/tangible/deed/pet_deed/shared_deed_r2_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_r2_basic, "object/tangible/deed/pet_deed/shared_deed_r2_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_r3_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
@@ -1894,7 +1894,7 @@ object_tangible_deed_pet_deed_shared_deed_r3_advanced_basic = SharedTangibleObje
 	clientObjectCRC = 1740395217
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r3_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_r3_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_r3_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_r3_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_r3_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
@@ -1947,7 +1947,7 @@ object_tangible_deed_pet_deed_shared_deed_r3_basic = SharedTangibleObjectTemplat
 	clientObjectCRC = 1119399416
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r3_basic, "object/tangible/deed/pet_deed/shared_deed_r3_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_r3_basic, "object/tangible/deed/pet_deed/shared_deed_r3_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_r4_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
@@ -2000,7 +2000,7 @@ object_tangible_deed_pet_deed_shared_deed_r4_advanced_basic = SharedTangibleObje
 	clientObjectCRC = 3954310643
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r4_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_r4_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_r4_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_r4_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_r4_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
@@ -2053,7 +2053,7 @@ object_tangible_deed_pet_deed_shared_deed_r4_basic = SharedTangibleObjectTemplat
 	clientObjectCRC = 2809987356
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r4_basic, "object/tangible/deed/pet_deed/shared_deed_r4_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_r4_basic, "object/tangible/deed/pet_deed/shared_deed_r4_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_r5_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
@@ -2106,7 +2106,7 @@ object_tangible_deed_pet_deed_shared_deed_r5_advanced_basic = SharedTangibleObje
 	clientObjectCRC = 3753079333
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r5_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_r5_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_r5_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_r5_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_r5_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
@@ -2159,7 +2159,7 @@ object_tangible_deed_pet_deed_shared_deed_r5_basic = SharedTangibleObjectTemplat
 	clientObjectCRC = 1590789874
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r5_basic, "object/tangible/deed/pet_deed/shared_deed_r5_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_r5_basic, "object/tangible/deed/pet_deed/shared_deed_r5_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_surgical_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
@@ -2212,7 +2212,7 @@ object_tangible_deed_pet_deed_shared_deed_surgical_advanced_basic = SharedTangib
 	clientObjectCRC = 1818683217
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_surgical_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_surgical_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_surgical_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_surgical_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_surgical_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
@@ -2265,7 +2265,7 @@ object_tangible_deed_pet_deed_shared_deed_surgical_basic = SharedTangibleObjectT
 	clientObjectCRC = 3195886758
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_surgical_basic, "object/tangible/deed/pet_deed/shared_deed_surgical_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_surgical_basic, "object/tangible/deed/pet_deed/shared_deed_surgical_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_treadwell_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wed_treadwell.sat",
@@ -2318,7 +2318,7 @@ object_tangible_deed_pet_deed_shared_deed_treadwell_advanced_basic = SharedTangi
 	clientObjectCRC = 560171017
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_treadwell_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_treadwell_advanced_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_treadwell_advanced_basic, "object/tangible/deed/pet_deed/shared_deed_treadwell_advanced_basic.iff")
 
 object_tangible_deed_pet_deed_shared_deed_treadwell_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wed_treadwell.sat",
@@ -2371,7 +2371,7 @@ object_tangible_deed_pet_deed_shared_deed_treadwell_basic = SharedTangibleObject
 	clientObjectCRC = 868926943
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_treadwell_basic, "object/tangible/deed/pet_deed/shared_deed_treadwell_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_deed_treadwell_basic, "object/tangible/deed/pet_deed/shared_deed_treadwell_basic.iff")
 
 object_tangible_deed_pet_deed_shared_dewback_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dewback_hue.sat",
@@ -2424,7 +2424,7 @@ object_tangible_deed_pet_deed_shared_dewback_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 1201174852
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_dewback_deed, "object/tangible/deed/pet_deed/shared_dewback_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_dewback_deed, "object/tangible/deed/pet_deed/shared_dewback_deed.iff")
 
 object_tangible_deed_pet_deed_shared_dune_lizard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dune_lizard_hue.sat",
@@ -2477,7 +2477,7 @@ object_tangible_deed_pet_deed_shared_dune_lizard_deed = SharedTangibleObjectTemp
 	clientObjectCRC = 1235591728
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_dune_lizard_deed, "object/tangible/deed/pet_deed/shared_dune_lizard_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_dune_lizard_deed, "object/tangible/deed/pet_deed/shared_dune_lizard_deed.iff")
 
 object_tangible_deed_pet_deed_shared_durni_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/durni_hue.sat",
@@ -2530,7 +2530,7 @@ object_tangible_deed_pet_deed_shared_durni_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 568136061
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_durni_deed, "object/tangible/deed/pet_deed/shared_durni_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_durni_deed, "object/tangible/deed/pet_deed/shared_durni_deed.iff")
 
 object_tangible_deed_pet_deed_shared_eopie_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eopie_hue.sat",
@@ -2583,7 +2583,7 @@ object_tangible_deed_pet_deed_shared_eopie_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2825186184
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_eopie_deed, "object/tangible/deed/pet_deed/shared_eopie_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_eopie_deed, "object/tangible/deed/pet_deed/shared_eopie_deed.iff")
 
 object_tangible_deed_pet_deed_shared_falumpaset_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/falumpaset_hue.sat",
@@ -2636,7 +2636,7 @@ object_tangible_deed_pet_deed_shared_falumpaset_deed = SharedTangibleObjectTempl
 	clientObjectCRC = 1479198736
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_falumpaset_deed, "object/tangible/deed/pet_deed/shared_falumpaset_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_falumpaset_deed, "object/tangible/deed/pet_deed/shared_falumpaset_deed.iff")
 
 object_tangible_deed_pet_deed_shared_fambaa_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/fambaa_hue.sat",
@@ -2689,7 +2689,7 @@ object_tangible_deed_pet_deed_shared_fambaa_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2357528913
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_fambaa_deed, "object/tangible/deed/pet_deed/shared_fambaa_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_fambaa_deed, "object/tangible/deed/pet_deed/shared_fambaa_deed.iff")
 
 object_tangible_deed_pet_deed_shared_gnort_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gnort_hue.sat",
@@ -2742,7 +2742,7 @@ object_tangible_deed_pet_deed_shared_gnort_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1211421519
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gnort_deed, "object/tangible/deed/pet_deed/shared_gnort_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_gnort_deed, "object/tangible/deed/pet_deed/shared_gnort_deed.iff")
 
 object_tangible_deed_pet_deed_shared_graul_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/graul_hue.sat",
@@ -2795,7 +2795,7 @@ object_tangible_deed_pet_deed_shared_graul_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 4170181913
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_graul_deed, "object/tangible/deed/pet_deed/shared_graul_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_graul_deed, "object/tangible/deed/pet_deed/shared_graul_deed.iff")
 
 object_tangible_deed_pet_deed_shared_gronda_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gronda_hue.sat",
@@ -2848,7 +2848,7 @@ object_tangible_deed_pet_deed_shared_gronda_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 307411638
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gronda_deed, "object/tangible/deed/pet_deed/shared_gronda_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_gronda_deed, "object/tangible/deed/pet_deed/shared_gronda_deed.iff")
 
 object_tangible_deed_pet_deed_shared_gualama_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gualama_hue.sat",
@@ -2901,7 +2901,7 @@ object_tangible_deed_pet_deed_shared_gualama_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 3538897851
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gualama_deed, "object/tangible/deed/pet_deed/shared_gualama_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_gualama_deed, "object/tangible/deed/pet_deed/shared_gualama_deed.iff")
 
 object_tangible_deed_pet_deed_shared_guf_drolg_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/guf_drolg_hue.sat",
@@ -2954,7 +2954,7 @@ object_tangible_deed_pet_deed_shared_guf_drolg_deed = SharedTangibleObjectTempla
 	clientObjectCRC = 2604348719
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_guf_drolg_deed, "object/tangible/deed/pet_deed/shared_guf_drolg_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_guf_drolg_deed, "object/tangible/deed/pet_deed/shared_guf_drolg_deed.iff")
 
 object_tangible_deed_pet_deed_shared_gurnaset_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurnaset_hue.sat",
@@ -3007,7 +3007,7 @@ object_tangible_deed_pet_deed_shared_gurnaset_deed = SharedTangibleObjectTemplat
 	clientObjectCRC = 1841540570
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gurnaset_deed, "object/tangible/deed/pet_deed/shared_gurnaset_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_gurnaset_deed, "object/tangible/deed/pet_deed/shared_gurnaset_deed.iff")
 
 object_tangible_deed_pet_deed_shared_gurrcat_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tusk_cat_hue.sat",
@@ -3060,7 +3060,7 @@ object_tangible_deed_pet_deed_shared_gurrcat_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 1914113142
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gurrcat_deed, "object/tangible/deed/pet_deed/shared_gurrcat_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_gurrcat_deed, "object/tangible/deed/pet_deed/shared_gurrcat_deed.iff")
 
 object_tangible_deed_pet_deed_shared_gurreck_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurreck_hue.sat",
@@ -3113,7 +3113,7 @@ object_tangible_deed_pet_deed_shared_gurreck_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 596282825
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gurreck_deed, "object/tangible/deed/pet_deed/shared_gurreck_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_gurreck_deed, "object/tangible/deed/pet_deed/shared_gurreck_deed.iff")
 
 object_tangible_deed_pet_deed_shared_hermit_spider_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hermit_spider_hue.sat",
@@ -3166,7 +3166,7 @@ object_tangible_deed_pet_deed_shared_hermit_spider_deed = SharedTangibleObjectTe
 	clientObjectCRC = 4141996678
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_hermit_spider_deed, "object/tangible/deed/pet_deed/shared_hermit_spider_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_hermit_spider_deed, "object/tangible/deed/pet_deed/shared_hermit_spider_deed.iff")
 
 object_tangible_deed_pet_deed_shared_huf_dun_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/huf_dun_hue.sat",
@@ -3219,7 +3219,7 @@ object_tangible_deed_pet_deed_shared_huf_dun_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 2761665621
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_huf_dun_deed, "object/tangible/deed/pet_deed/shared_huf_dun_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_huf_dun_deed, "object/tangible/deed/pet_deed/shared_huf_dun_deed.iff")
 
 object_tangible_deed_pet_deed_shared_huurton_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/huurton_hue.sat",
@@ -3272,7 +3272,7 @@ object_tangible_deed_pet_deed_shared_huurton_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 2364325407
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_huurton_deed, "object/tangible/deed/pet_deed/shared_huurton_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_huurton_deed, "object/tangible/deed/pet_deed/shared_huurton_deed.iff")
 
 object_tangible_deed_pet_deed_shared_ikopi_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ikopi_hue.sat",
@@ -3325,7 +3325,7 @@ object_tangible_deed_pet_deed_shared_ikopi_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3921976066
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_ikopi_deed, "object/tangible/deed/pet_deed/shared_ikopi_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_ikopi_deed, "object/tangible/deed/pet_deed/shared_ikopi_deed.iff")
 
 object_tangible_deed_pet_deed_shared_kaadu_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kaadu_hue.sat",
@@ -3378,7 +3378,7 @@ object_tangible_deed_pet_deed_shared_kaadu_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3178486742
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kaadu_deed, "object/tangible/deed/pet_deed/shared_kaadu_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_kaadu_deed, "object/tangible/deed/pet_deed/shared_kaadu_deed.iff")
 
 object_tangible_deed_pet_deed_shared_kahmurra_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/murra_hue.sat",
@@ -3431,7 +3431,7 @@ object_tangible_deed_pet_deed_shared_kahmurra_deed = SharedTangibleObjectTemplat
 	clientObjectCRC = 1489129172
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kahmurra_deed, "object/tangible/deed/pet_deed/shared_kahmurra_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_kahmurra_deed, "object/tangible/deed/pet_deed/shared_kahmurra_deed.iff")
 
 object_tangible_deed_pet_deed_shared_kima_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kima_hue.sat",
@@ -3484,7 +3484,7 @@ object_tangible_deed_pet_deed_shared_kima_deed = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1283047253
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kima_deed, "object/tangible/deed/pet_deed/shared_kima_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_kima_deed, "object/tangible/deed/pet_deed/shared_kima_deed.iff")
 
 object_tangible_deed_pet_deed_shared_kimogila_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kimogila_hue.sat",
@@ -3537,7 +3537,7 @@ object_tangible_deed_pet_deed_shared_kimogila_deed = SharedTangibleObjectTemplat
 	clientObjectCRC = 1282379469
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kimogila_deed, "object/tangible/deed/pet_deed/shared_kimogila_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_kimogila_deed, "object/tangible/deed/pet_deed/shared_kimogila_deed.iff")
 
 object_tangible_deed_pet_deed_shared_kliknik_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kliknik_hue.sat",
@@ -3590,7 +3590,7 @@ object_tangible_deed_pet_deed_shared_kliknik_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 2930512218
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kliknik_deed, "object/tangible/deed/pet_deed/shared_kliknik_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_kliknik_deed, "object/tangible/deed/pet_deed/shared_kliknik_deed.iff")
 
 object_tangible_deed_pet_deed_shared_krahbu_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/krahbu_hue.sat",
@@ -3643,7 +3643,7 @@ object_tangible_deed_pet_deed_shared_krahbu_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2423537916
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_krahbu_deed, "object/tangible/deed/pet_deed/shared_krahbu_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_krahbu_deed, "object/tangible/deed/pet_deed/shared_krahbu_deed.iff")
 
 object_tangible_deed_pet_deed_shared_kusak_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kusak_hue.sat",
@@ -3696,7 +3696,7 @@ object_tangible_deed_pet_deed_shared_kusak_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 4028060677
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kusak_deed, "object/tangible/deed/pet_deed/shared_kusak_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_kusak_deed, "object/tangible/deed/pet_deed/shared_kusak_deed.iff")
 
 object_tangible_deed_pet_deed_shared_kwi_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kwi_hue.sat",
@@ -3749,7 +3749,7 @@ object_tangible_deed_pet_deed_shared_kwi_deed = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 123859018
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kwi_deed, "object/tangible/deed/pet_deed/shared_kwi_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_kwi_deed, "object/tangible/deed/pet_deed/shared_kwi_deed.iff")
 
 object_tangible_deed_pet_deed_shared_langlatch_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/langlatch_hue.sat",
@@ -3802,7 +3802,7 @@ object_tangible_deed_pet_deed_shared_langlatch_deed = SharedTangibleObjectTempla
 	clientObjectCRC = 3557409216
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_langlatch_deed, "object/tangible/deed/pet_deed/shared_langlatch_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_langlatch_deed, "object/tangible/deed/pet_deed/shared_langlatch_deed.iff")
 
 object_tangible_deed_pet_deed_shared_malkloc_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/malkloc_hue.sat",
@@ -3855,7 +3855,7 @@ object_tangible_deed_pet_deed_shared_malkloc_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 1098639127
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_malkloc_deed, "object/tangible/deed/pet_deed/shared_malkloc_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_malkloc_deed, "object/tangible/deed/pet_deed/shared_malkloc_deed.iff")
 
 object_tangible_deed_pet_deed_shared_mawgax_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mawgax_hue.sat",
@@ -3908,7 +3908,7 @@ object_tangible_deed_pet_deed_shared_mawgax_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2243211725
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_mawgax_deed, "object/tangible/deed/pet_deed/shared_mawgax_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_mawgax_deed, "object/tangible/deed/pet_deed/shared_mawgax_deed.iff")
 
 object_tangible_deed_pet_deed_shared_merek_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/merek_hue.sat",
@@ -3961,7 +3961,7 @@ object_tangible_deed_pet_deed_shared_merek_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1043002633
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_merek_deed, "object/tangible/deed/pet_deed/shared_merek_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_merek_deed, "object/tangible/deed/pet_deed/shared_merek_deed.iff")
 
 object_tangible_deed_pet_deed_shared_mott_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mott_hue.sat",
@@ -4014,7 +4014,7 @@ object_tangible_deed_pet_deed_shared_mott_deed = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 172941482
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_mott_deed, "object/tangible/deed/pet_deed/shared_mott_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_mott_deed, "object/tangible/deed/pet_deed/shared_mott_deed.iff")
 
 object_tangible_deed_pet_deed_shared_narglatch_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/narglatch_hue.sat",
@@ -4067,7 +4067,7 @@ object_tangible_deed_pet_deed_shared_narglatch_deed = SharedTangibleObjectTempla
 	clientObjectCRC = 3881607388
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_narglatch_deed, "object/tangible/deed/pet_deed/shared_narglatch_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_narglatch_deed, "object/tangible/deed/pet_deed/shared_narglatch_deed.iff")
 
 object_tangible_deed_pet_deed_shared_piket_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/piket_hue.sat",
@@ -4120,7 +4120,7 @@ object_tangible_deed_pet_deed_shared_piket_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1026311847
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_piket_deed, "object/tangible/deed/pet_deed/shared_piket_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_piket_deed, "object/tangible/deed/pet_deed/shared_piket_deed.iff")
 
 object_tangible_deed_pet_deed_shared_pugoriss_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pugoriss_hue.sat",
@@ -4173,7 +4173,7 @@ object_tangible_deed_pet_deed_shared_pugoriss_deed = SharedTangibleObjectTemplat
 	clientObjectCRC = 2234730618
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_pugoriss_deed, "object/tangible/deed/pet_deed/shared_pugoriss_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_pugoriss_deed, "object/tangible/deed/pet_deed/shared_pugoriss_deed.iff")
 
 object_tangible_deed_pet_deed_shared_rancor_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rancor_hue.sat",
@@ -4226,7 +4226,7 @@ object_tangible_deed_pet_deed_shared_rancor_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1261006244
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_rancor_deed, "object/tangible/deed/pet_deed/shared_rancor_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_rancor_deed, "object/tangible/deed/pet_deed/shared_rancor_deed.iff")
 
 object_tangible_deed_pet_deed_shared_roba_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/roba_hue.sat",
@@ -4279,7 +4279,7 @@ object_tangible_deed_pet_deed_shared_roba_deed = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1872969890
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_roba_deed, "object/tangible/deed/pet_deed/shared_roba_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_roba_deed, "object/tangible/deed/pet_deed/shared_roba_deed.iff")
 
 object_tangible_deed_pet_deed_shared_ronto_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ronto_hue.sat",
@@ -4332,7 +4332,7 @@ object_tangible_deed_pet_deed_shared_ronto_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 913136842
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_ronto_deed, "object/tangible/deed/pet_deed/shared_ronto_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_ronto_deed, "object/tangible/deed/pet_deed/shared_ronto_deed.iff")
 
 object_tangible_deed_pet_deed_shared_sand_panther_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_sand_panther_hue.sat",
@@ -4385,7 +4385,7 @@ object_tangible_deed_pet_deed_shared_sand_panther_deed = SharedTangibleObjectTem
 	clientObjectCRC = 1167578973
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_sand_panther_deed, "object/tangible/deed/pet_deed/shared_sand_panther_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_sand_panther_deed, "object/tangible/deed/pet_deed/shared_sand_panther_deed.iff")
 
 object_tangible_deed_pet_deed_shared_sharnaff_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sharnaff_hue.sat",
@@ -4438,7 +4438,7 @@ object_tangible_deed_pet_deed_shared_sharnaff_deed = SharedTangibleObjectTemplat
 	clientObjectCRC = 266796409
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_sharnaff_deed, "object/tangible/deed/pet_deed/shared_sharnaff_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_sharnaff_deed, "object/tangible/deed/pet_deed/shared_sharnaff_deed.iff")
 
 object_tangible_deed_pet_deed_shared_shear_mite_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shear_mite_hue.sat",
@@ -4491,7 +4491,7 @@ object_tangible_deed_pet_deed_shared_shear_mite_deed = SharedTangibleObjectTempl
 	clientObjectCRC = 3695263840
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_shear_mite_deed, "object/tangible/deed/pet_deed/shared_shear_mite_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_shear_mite_deed, "object/tangible/deed/pet_deed/shared_shear_mite_deed.iff")
 
 object_tangible_deed_pet_deed_shared_slice_hound_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_slice_hound_hue.sat",
@@ -4544,7 +4544,7 @@ object_tangible_deed_pet_deed_shared_slice_hound_deed = SharedTangibleObjectTemp
 	clientObjectCRC = 3038018529
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_slice_hound_deed, "object/tangible/deed/pet_deed/shared_slice_hound_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_slice_hound_deed, "object/tangible/deed/pet_deed/shared_slice_hound_deed.iff")
 
 object_tangible_deed_pet_deed_shared_snorbal_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/snorbal_hue.sat",
@@ -4597,7 +4597,7 @@ object_tangible_deed_pet_deed_shared_snorbal_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 2012451666
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_snorbal_deed, "object/tangible/deed/pet_deed/shared_snorbal_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_snorbal_deed, "object/tangible/deed/pet_deed/shared_snorbal_deed.iff")
 
 object_tangible_deed_pet_deed_shared_squall_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/squall_hue.sat",
@@ -4650,7 +4650,7 @@ object_tangible_deed_pet_deed_shared_squall_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 497548283
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_squall_deed, "object/tangible/deed/pet_deed/shared_squall_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_squall_deed, "object/tangible/deed/pet_deed/shared_squall_deed.iff")
 
 object_tangible_deed_pet_deed_shared_swirl_prong_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/swirl_prong_hue.sat",
@@ -4703,7 +4703,7 @@ object_tangible_deed_pet_deed_shared_swirl_prong_deed = SharedTangibleObjectTemp
 	clientObjectCRC = 1483639394
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_swirl_prong_deed, "object/tangible/deed/pet_deed/shared_swirl_prong_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_swirl_prong_deed, "object/tangible/deed/pet_deed/shared_swirl_prong_deed.iff")
 
 object_tangible_deed_pet_deed_shared_thune_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thune_hue.sat",
@@ -4756,7 +4756,7 @@ object_tangible_deed_pet_deed_shared_thune_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3975996682
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_thune_deed, "object/tangible/deed/pet_deed/shared_thune_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_thune_deed, "object/tangible/deed/pet_deed/shared_thune_deed.iff")
 
 object_tangible_deed_pet_deed_shared_torton_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/torton_hue.sat",
@@ -4809,7 +4809,7 @@ object_tangible_deed_pet_deed_shared_torton_deed = SharedTangibleObjectTemplate:
 	clientObjectCRC = 936838311
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_torton_deed, "object/tangible/deed/pet_deed/shared_torton_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_torton_deed, "object/tangible/deed/pet_deed/shared_torton_deed.iff")
 
 object_tangible_deed_pet_deed_shared_tybis_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tybis_hue.sat",
@@ -4862,7 +4862,7 @@ object_tangible_deed_pet_deed_shared_tybis_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 517622400
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_tybis_deed, "object/tangible/deed/pet_deed/shared_tybis_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_tybis_deed, "object/tangible/deed/pet_deed/shared_tybis_deed.iff")
 
 object_tangible_deed_pet_deed_shared_veermok_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/veermok_hue.sat",
@@ -4915,7 +4915,7 @@ object_tangible_deed_pet_deed_shared_veermok_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 2817313494
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_veermok_deed, "object/tangible/deed/pet_deed/shared_veermok_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_veermok_deed, "object/tangible/deed/pet_deed/shared_veermok_deed.iff")
 
 object_tangible_deed_pet_deed_shared_vehicular_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/monstrosity.sat",
@@ -4968,7 +4968,7 @@ object_tangible_deed_pet_deed_shared_vehicular_prototype = SharedTangibleObjectT
 	clientObjectCRC = 3969410602
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vehicular_prototype, "object/tangible/deed/pet_deed/shared_vehicular_prototype.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_vehicular_prototype, "object/tangible/deed/pet_deed/shared_vehicular_prototype.iff")
 
 object_tangible_deed_pet_deed_shared_vehicular_prototype_bike = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
@@ -5021,7 +5021,7 @@ object_tangible_deed_pet_deed_shared_vehicular_prototype_bike = SharedTangibleOb
 	clientObjectCRC = 1133365907
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vehicular_prototype_bike, "object/tangible/deed/pet_deed/shared_vehicular_prototype_bike.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_vehicular_prototype_bike, "object/tangible/deed/pet_deed/shared_vehicular_prototype_bike.iff")
 
 object_tangible_deed_pet_deed_shared_verne_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/verne_hue.sat",
@@ -5074,7 +5074,7 @@ object_tangible_deed_pet_deed_shared_verne_deed = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1757419903
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_verne_deed, "object/tangible/deed/pet_deed/shared_verne_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_verne_deed, "object/tangible/deed/pet_deed/shared_verne_deed.iff")
 
 object_tangible_deed_pet_deed_shared_vesp_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vesp_hue.sat",
@@ -5127,7 +5127,7 @@ object_tangible_deed_pet_deed_shared_vesp_deed = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 76738383
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vesp_deed, "object/tangible/deed/pet_deed/shared_vesp_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_vesp_deed, "object/tangible/deed/pet_deed/shared_vesp_deed.iff")
 
 object_tangible_deed_pet_deed_shared_vir_vur_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vir_vur_hue.sat",
@@ -5180,7 +5180,7 @@ object_tangible_deed_pet_deed_shared_vir_vur_deed = SharedTangibleObjectTemplate
 	clientObjectCRC = 2428442733
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vir_vur_deed, "object/tangible/deed/pet_deed/shared_vir_vur_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_vir_vur_deed, "object/tangible/deed/pet_deed/shared_vir_vur_deed.iff")
 
 object_tangible_deed_pet_deed_shared_woolamander_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/woolamander_hue.sat",
@@ -5233,7 +5233,7 @@ object_tangible_deed_pet_deed_shared_woolamander_deed = SharedTangibleObjectTemp
 	clientObjectCRC = 2463526816
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_woolamander_deed, "object/tangible/deed/pet_deed/shared_woolamander_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_woolamander_deed, "object/tangible/deed/pet_deed/shared_woolamander_deed.iff")
 
 object_tangible_deed_pet_deed_shared_zucca_boar_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zucca_boar_hue.sat",
@@ -5286,4 +5286,4 @@ object_tangible_deed_pet_deed_shared_zucca_boar_deed = SharedTangibleObjectTempl
 	clientObjectCRC = 1175512432
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_zucca_boar_deed, "object/tangible/deed/pet_deed/shared_zucca_boar_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_pet_deed_shared_zucca_boar_deed, "object/tangible/deed/pet_deed/shared_zucca_boar_deed.iff")

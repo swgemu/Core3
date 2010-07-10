@@ -92,7 +92,7 @@ object_tangible_scout_trap_shared_trap_drowsy_dart = SharedTangibleObjectTemplat
 	clientObjectCRC = 705221769
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_drowsy_dart, "object/tangible/scout/trap/shared_trap_drowsy_dart.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_drowsy_dart, "object/tangible/scout/trap/shared_trap_drowsy_dart.iff")
 
 object_tangible_scout_trap_shared_trap_enraging_spur = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_enraging_spur.apt",
@@ -145,7 +145,7 @@ object_tangible_scout_trap_shared_trap_enraging_spur = SharedTangibleObjectTempl
 	clientObjectCRC = 3897339231
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_enraging_spur, "object/tangible/scout/trap/shared_trap_enraging_spur.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_enraging_spur, "object/tangible/scout/trap/shared_trap_enraging_spur.iff")
 
 object_tangible_scout_trap_shared_trap_flash_bomb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_flash_bomb.apt",
@@ -198,7 +198,7 @@ object_tangible_scout_trap_shared_trap_flash_bomb = SharedTangibleObjectTemplate
 	clientObjectCRC = 708754512
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_flash_bomb, "object/tangible/scout/trap/shared_trap_flash_bomb.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_flash_bomb, "object/tangible/scout/trap/shared_trap_flash_bomb.iff")
 
 object_tangible_scout_trap_shared_trap_melee_def_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
@@ -251,7 +251,7 @@ object_tangible_scout_trap_shared_trap_melee_def_1 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3084221929
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_melee_def_1, "object/tangible/scout/trap/shared_trap_melee_def_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_melee_def_1, "object/tangible/scout/trap/shared_trap_melee_def_1.iff")
 
 object_tangible_scout_trap_shared_trap_melee_ranged_def_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_ww41.apt",
@@ -304,7 +304,7 @@ object_tangible_scout_trap_shared_trap_melee_ranged_def_1 = SharedTangibleObject
 	clientObjectCRC = 3453088617
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_melee_ranged_def_1, "object/tangible/scout/trap/shared_trap_melee_ranged_def_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_melee_ranged_def_1, "object/tangible/scout/trap/shared_trap_melee_ranged_def_1.iff")
 
 object_tangible_scout_trap_shared_trap_noise_maker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_noise_maker.apt",
@@ -357,7 +357,7 @@ object_tangible_scout_trap_shared_trap_noise_maker = SharedTangibleObjectTemplat
 	clientObjectCRC = 3133223247
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_noise_maker, "object/tangible/scout/trap/shared_trap_noise_maker.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_noise_maker, "object/tangible/scout/trap/shared_trap_noise_maker.iff")
 
 object_tangible_scout_trap_shared_trap_ranged_def_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
@@ -410,7 +410,7 @@ object_tangible_scout_trap_shared_trap_ranged_def_1 = SharedTangibleObjectTempla
 	clientObjectCRC = 46866220
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_ranged_def_1, "object/tangible/scout/trap/shared_trap_ranged_def_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_ranged_def_1, "object/tangible/scout/trap/shared_trap_ranged_def_1.iff")
 
 object_tangible_scout_trap_shared_trap_ranged_speed_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
@@ -463,7 +463,7 @@ object_tangible_scout_trap_shared_trap_ranged_speed_1 = SharedTangibleObjectTemp
 	clientObjectCRC = 2460580704
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_ranged_speed_1, "object/tangible/scout/trap/shared_trap_ranged_speed_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_ranged_speed_1, "object/tangible/scout/trap/shared_trap_ranged_speed_1.iff")
 
 object_tangible_scout_trap_shared_trap_sonic_pulse = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_sonic_pulse.apt",
@@ -516,7 +516,7 @@ object_tangible_scout_trap_shared_trap_sonic_pulse = SharedTangibleObjectTemplat
 	clientObjectCRC = 3605514682
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_sonic_pulse, "object/tangible/scout/trap/shared_trap_sonic_pulse.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_sonic_pulse, "object/tangible/scout/trap/shared_trap_sonic_pulse.iff")
 
 object_tangible_scout_trap_shared_trap_state_def_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
@@ -569,7 +569,7 @@ object_tangible_scout_trap_shared_trap_state_def_1 = SharedTangibleObjectTemplat
 	clientObjectCRC = 750361076
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_state_def_1, "object/tangible/scout/trap/shared_trap_state_def_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_state_def_1, "object/tangible/scout/trap/shared_trap_state_def_1.iff")
 
 object_tangible_scout_trap_shared_trap_tranq_dart = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
@@ -622,7 +622,7 @@ object_tangible_scout_trap_shared_trap_tranq_dart = SharedTangibleObjectTemplate
 	clientObjectCRC = 2472376515
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_tranq_dart, "object/tangible/scout/trap/shared_trap_tranq_dart.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_tranq_dart, "object/tangible/scout/trap/shared_trap_tranq_dart.iff")
 
 object_tangible_scout_trap_shared_trap_webber = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_webber.apt",
@@ -675,4 +675,4 @@ object_tangible_scout_trap_shared_trap_webber = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 3441092972
 }
 
-ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_webber, "object/tangible/scout/trap/shared_trap_webber.iff")
+ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_webber, "object/tangible/scout/trap/shared_trap_webber.iff")

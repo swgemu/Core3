@@ -92,4 +92,4 @@ object_weapon_trap_shared_eqp_weapon_auto_laser_trap = SharedTangibleObjectTempl
 	clientObjectCRC = 1619506188
 }
 
-ObjectTemplates:addTemplate(object_weapon_trap_shared_eqp_weapon_auto_laser_trap, "object/weapon/trap/shared_eqp_weapon_auto_laser_trap.iff")
+ObjectTemplates:addClientTemplate(object_weapon_trap_shared_eqp_weapon_auto_laser_trap, "object/weapon/trap/shared_eqp_weapon_auto_laser_trap.iff")

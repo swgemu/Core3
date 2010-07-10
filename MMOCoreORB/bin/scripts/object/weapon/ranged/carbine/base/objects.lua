@@ -96,4 +96,4 @@ object_weapon_ranged_carbine_base_shared_carbine_base = SharedWeaponObjectTempla
 	clientObjectCRC = 2810105369
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_carbine_base_shared_carbine_base, "object/weapon/ranged/carbine/base/shared_carbine_base.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_base_shared_carbine_base, "object/weapon/ranged/carbine/base/shared_carbine_base.iff")

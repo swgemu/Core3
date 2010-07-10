@@ -92,7 +92,7 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko = SharedTangibleObjectTempl
 	clientObjectCRC = 2543663822
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko, "object/tangible/lair/peko_peko/shared_lair_peko_peko.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko, "object/tangible/lair/peko_peko/shared_lair_peko_peko.iff")
 
 object_tangible_lair_peko_peko_shared_lair_peko_peko_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_forest = SharedTangibleObje
 	clientObjectCRC = 1250959161
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_forest, "object/tangible/lair/peko_peko/shared_lair_peko_peko_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_forest, "object/tangible/lair/peko_peko/shared_lair_peko_peko_forest.iff")
 
 object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,7 +198,7 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland = SharedTangibleO
 	clientObjectCRC = 739180542
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland, "object/tangible/lair/peko_peko/shared_lair_peko_peko_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland, "object/tangible/lair/peko_peko/shared_lair_peko_peko_grassland.iff")
 
 object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -251,4 +251,4 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp = SharedTangibleObjec
 	clientObjectCRC = 4010621056
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp, "object/tangible/lair/peko_peko/shared_lair_peko_peko_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp, "object/tangible/lair/peko_peko/shared_lair_peko_peko_swamp.iff")

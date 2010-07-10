@@ -92,7 +92,7 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 2944625946
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa, "object/tangible/lair/cu_pa/shared_lair_cu_pa.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa, "object/tangible/lair/cu_pa/shared_lair_cu_pa.iff")
 
 object_tangible_lair_cu_pa_shared_lair_cu_pa_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa_dune = SharedTangibleObjectTemplate
 	clientObjectCRC = 3403514963
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_dune, "object/tangible/lair/cu_pa/shared_lair_cu_pa_dune.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_dune, "object/tangible/lair/cu_pa/shared_lair_cu_pa_dune.iff")
 
 object_tangible_lair_cu_pa_shared_lair_cu_pa_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -198,7 +198,7 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa_mountain = SharedTangibleObjectTemp
 	clientObjectCRC = 3513164342
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_mountain, "object/tangible/lair/cu_pa/shared_lair_cu_pa_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_mountain, "object/tangible/lair/cu_pa/shared_lair_cu_pa_mountain.iff")
 
 object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -251,4 +251,4 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland = SharedTangibleObjectTem
 	clientObjectCRC = 770810726
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland, "object/tangible/lair/cu_pa/shared_lair_cu_pa_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland, "object/tangible/lair/cu_pa/shared_lair_cu_pa_wasteland.iff")

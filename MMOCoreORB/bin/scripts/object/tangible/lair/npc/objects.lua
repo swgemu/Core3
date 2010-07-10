@@ -92,4 +92,4 @@ object_tangible_lair_npc_shared_lair_npc_general = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1642238246
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_npc_shared_lair_npc_general, "object/tangible/lair/npc/shared_lair_npc_general.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_npc_shared_lair_npc_general, "object/tangible/lair/npc/shared_lair_npc_general.iff")

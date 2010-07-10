@@ -92,7 +92,7 @@ object_tangible_item_new_player_shared_new_player_cloning_coupon = SharedTangibl
 	clientObjectCRC = 2459202861
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_new_player_shared_new_player_cloning_coupon, "object/tangible/item/new_player/shared_new_player_cloning_coupon.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_new_player_shared_new_player_cloning_coupon, "object/tangible/item/new_player/shared_new_player_cloning_coupon.iff")
 
 object_tangible_item_new_player_shared_new_player_travel_coupon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_item_new_player_shared_new_player_travel_coupon = SharedTangible
 	clientObjectCRC = 190401300
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_new_player_shared_new_player_travel_coupon, "object/tangible/item/new_player/shared_new_player_travel_coupon.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_new_player_shared_new_player_travel_coupon, "object/tangible/item/new_player/shared_new_player_travel_coupon.iff")
 
 object_tangible_item_new_player_shared_new_player_vehicle_coupon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
@@ -198,4 +198,4 @@ object_tangible_item_new_player_shared_new_player_vehicle_coupon = SharedTangibl
 	clientObjectCRC = 835581820
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_new_player_shared_new_player_vehicle_coupon, "object/tangible/item/new_player/shared_new_player_vehicle_coupon.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_new_player_shared_new_player_vehicle_coupon, "object/tangible/item/new_player/shared_new_player_vehicle_coupon.iff")

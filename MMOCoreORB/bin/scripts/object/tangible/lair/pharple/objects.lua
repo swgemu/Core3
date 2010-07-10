@@ -92,7 +92,7 @@ object_tangible_lair_pharple_shared_lair_pharple = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3003958462
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple, "object/tangible/lair/pharple/shared_lair_pharple.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_pharple_shared_lair_pharple, "object/tangible/lair/pharple/shared_lair_pharple.iff")
 
 object_tangible_lair_pharple_shared_lair_pharple_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_pharple_shared_lair_pharple_wasteland = SharedTangibleObjec
 	clientObjectCRC = 4033646950
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple_wasteland, "object/tangible/lair/pharple/shared_lair_pharple_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_pharple_shared_lair_pharple_wasteland, "object/tangible/lair/pharple/shared_lair_pharple_wasteland.iff")

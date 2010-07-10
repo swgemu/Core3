@@ -82,4 +82,4 @@ object_jedi_manager_shared_jedi_manager = SharedJediManagerTemplate:new {
 	clientObjectCRC = 4042830301
 }
 
-ObjectTemplates:addTemplate(object_jedi_manager_shared_jedi_manager, "object/jedi_manager/shared_jedi_manager.iff")
+ObjectTemplates:addClientTemplate(object_jedi_manager_shared_jedi_manager, "object/jedi_manager/shared_jedi_manager.iff")

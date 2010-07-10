@@ -92,4 +92,4 @@ object_tangible_parrot_cage_shared_parrot_cage = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1639031767
 }
 
-ObjectTemplates:addTemplate(object_tangible_parrot_cage_shared_parrot_cage, "object/tangible/parrot_cage/shared_parrot_cage.iff")
+ObjectTemplates:addClientTemplate(object_tangible_parrot_cage_shared_parrot_cage, "object/tangible/parrot_cage/shared_parrot_cage.iff")

@@ -96,7 +96,7 @@ object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:
 	clientObjectCRC = 1334573707
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_unarmed_shared_unarmed_default, "object/weapon/melee/unarmed/shared_unarmed_default.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_unarmed_shared_unarmed_default, "object/weapon/melee/unarmed/shared_unarmed_default.iff")
 
 object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -153,4 +153,4 @@ object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTe
 	clientObjectCRC = 1891079953
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_unarmed_shared_unarmed_default_player, "object/weapon/melee/unarmed/shared_unarmed_default_player.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_unarmed_shared_unarmed_default_player, "object/weapon/melee/unarmed/shared_unarmed_default_player.iff")

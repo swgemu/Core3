@@ -92,7 +92,7 @@ object_tangible_lair_vir_vir_shared_lair_vir_vir = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1439526693
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vir_vir_shared_lair_vir_vir, "object/tangible/lair/vir_vir/shared_lair_vir_vir.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vir_vir_shared_lair_vir_vir, "object/tangible/lair/vir_vir/shared_lair_vir_vir.iff")
 
 object_tangible_lair_vir_vir_shared_lair_vir_vir_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_vir_vir_shared_lair_vir_vir_grassland = SharedTangibleObjec
 	clientObjectCRC = 1627499859
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vir_vir_shared_lair_vir_vir_grassland, "object/tangible/lair/vir_vir/shared_lair_vir_vir_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vir_vir_shared_lair_vir_vir_grassland, "object/tangible/lair/vir_vir/shared_lair_vir_vir_grassland.iff")

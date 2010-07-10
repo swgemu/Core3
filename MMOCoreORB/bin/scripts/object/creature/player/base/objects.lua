@@ -116,4 +116,4 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 957124474
 }
 
-ObjectTemplates:addTemplate(object_creature_player_base_shared_base_player, "object/creature/player/base/shared_base_player.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_base_shared_base_player, "object/creature/player/base/shared_base_player.iff")

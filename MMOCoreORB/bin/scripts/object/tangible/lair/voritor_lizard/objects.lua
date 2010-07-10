@@ -92,7 +92,7 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard = SharedTangibleO
 	clientObjectCRC = 908714854
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard.iff")
 
 object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland = Share
 	clientObjectCRC = 3526592210
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_grassland.iff")
 
 object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -198,4 +198,4 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain = Shared
 	clientObjectCRC = 1883986886
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_mountain.iff")

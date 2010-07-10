@@ -75,7 +75,7 @@ public:
 
 		CreatureManager* creatureManager = zone->getCreatureManager();
 
-		uint32 templ = String("object/mobile/shared_boba_fett.iff").hashCode();
+		uint32 templ = String("object/mobile/boba_fett.iff").hashCode();
 
 		if (!arguments.isEmpty()) {
 			templ = String(arguments.toString()).hashCode();

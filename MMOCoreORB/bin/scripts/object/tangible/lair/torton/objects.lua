@@ -92,7 +92,7 @@ object_tangible_lair_torton_shared_lair_torton = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1086986057
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton, "object/tangible/lair/torton/shared_lair_torton.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_torton_shared_lair_torton, "object/tangible/lair/torton/shared_lair_torton.iff")
 
 object_tangible_lair_torton_shared_lair_torton_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_torton_shared_lair_torton_grassland = SharedTangibleObjectT
 	clientObjectCRC = 2619306263
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton_grassland, "object/tangible/lair/torton/shared_lair_torton_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_torton_shared_lair_torton_grassland, "object/tangible/lair/torton/shared_lair_torton_grassland.iff")

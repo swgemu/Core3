@@ -82,7 +82,7 @@ object_draft_schematic_item_quest_item_shared_attunement_grid = SharedDraftSchem
 	clientObjectCRC = 4038906353
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_attunement_grid, "object/draft_schematic/item/quest_item/shared_attunement_grid.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_attunement_grid, "object/draft_schematic/item/quest_item/shared_attunement_grid.iff")
 
 object_draft_schematic_item_quest_item_shared_current_alternator = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -125,7 +125,7 @@ object_draft_schematic_item_quest_item_shared_current_alternator = SharedDraftSc
 	clientObjectCRC = 4250243198
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_current_alternator, "object/draft_schematic/item/quest_item/shared_current_alternator.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_current_alternator, "object/draft_schematic/item/quest_item/shared_current_alternator.iff")
 
 object_draft_schematic_item_quest_item_shared_feedback_controller = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -168,7 +168,7 @@ object_draft_schematic_item_quest_item_shared_feedback_controller = SharedDraftS
 	clientObjectCRC = 3237757933
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_feedback_controller, "object/draft_schematic/item/quest_item/shared_feedback_controller.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_feedback_controller, "object/draft_schematic/item/quest_item/shared_feedback_controller.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -211,7 +211,7 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor =
 	clientObjectCRC = 4025902927
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_config_processor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_config_processor.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -254,7 +254,7 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip = 
 	clientObjectCRC = 1486639811
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_decryption_chip.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_decryption_chip.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -297,7 +297,7 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver = Sh
 	clientObjectCRC = 1039066742
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_gyro_receiver.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_gyro_receiver.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -340,7 +340,7 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp = Share
 	clientObjectCRC = 2171554059
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_signal_amp.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_signal_amp.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -383,7 +383,7 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array 
 	clientObjectCRC = 4028815217
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_solid_state_array.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_solid_state_array.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -426,7 +426,7 @@ object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack = Shared
 	clientObjectCRC = 1522512719
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack, "object/draft_schematic/item/quest_item/shared_fs_medic_puzzle_heal_pack.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack, "object/draft_schematic/item/quest_item/shared_fs_medic_puzzle_heal_pack.iff")
 
 object_draft_schematic_item_quest_item_shared_output_governor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -469,7 +469,7 @@ object_draft_schematic_item_quest_item_shared_output_governor = SharedDraftSchem
 	clientObjectCRC = 863982881
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_output_governor, "object/draft_schematic/item/quest_item/shared_output_governor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_output_governor, "object/draft_schematic/item/quest_item/shared_output_governor.iff")
 
 object_draft_schematic_item_quest_item_shared_power_regulator = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -512,4 +512,4 @@ object_draft_schematic_item_quest_item_shared_power_regulator = SharedDraftSchem
 	clientObjectCRC = 2816707854
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_power_regulator, "object/draft_schematic/item/quest_item/shared_power_regulator.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_power_regulator, "object/draft_schematic/item/quest_item/shared_power_regulator.iff")

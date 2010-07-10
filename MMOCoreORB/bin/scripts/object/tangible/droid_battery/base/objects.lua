@@ -92,4 +92,4 @@ object_tangible_droid_battery_base_shared_base_battery = SharedTangibleObjectTem
 	clientObjectCRC = 4005418239
 }
 
-ObjectTemplates:addTemplate(object_tangible_droid_battery_base_shared_base_battery, "object/tangible/droid_battery/base/shared_base_battery.iff")
+ObjectTemplates:addClientTemplate(object_tangible_droid_battery_base_shared_base_battery, "object/tangible/droid_battery/base/shared_base_battery.iff")

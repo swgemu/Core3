@@ -95,7 +95,7 @@ object_building_poi_hq_shared_hutt_lrg = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 2883928313
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_lrg, "object/building/poi/hq/shared_hutt_lrg.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_hutt_lrg, "object/building/poi/hq/shared_hutt_lrg.iff")
 
 object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -151,7 +151,7 @@ object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3359402016
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_med, "object/building/poi/hq/shared_hutt_med.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_hutt_med, "object/building/poi/hq/shared_hutt_med.iff")
 
 object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -207,7 +207,7 @@ object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1295187033
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_sm, "object/building/poi/hq/shared_hutt_sm.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_hutt_sm, "object/building/poi/hq/shared_hutt_sm.iff")
 
 object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -263,7 +263,7 @@ object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1970934894
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_lrg, "object/building/poi/hq/shared_imperial_lrg.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_imperial_lrg, "object/building/poi/hq/shared_imperial_lrg.iff")
 
 object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -319,7 +319,7 @@ object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 379796663
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_med, "object/building/poi/hq/shared_imperial_med.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_imperial_med, "object/building/poi/hq/shared_imperial_med.iff")
 
 object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -375,7 +375,7 @@ object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 759219915
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_sm, "object/building/poi/hq/shared_imperial_sm.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_imperial_sm, "object/building/poi/hq/shared_imperial_sm.iff")
 
 object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -431,7 +431,7 @@ object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1900138383
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_lrg, "object/building/poi/hq/shared_rebel_lrg.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_rebel_lrg, "object/building/poi/hq/shared_rebel_lrg.iff")
 
 object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -487,7 +487,7 @@ object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 312010582
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_med, "object/building/poi/hq/shared_rebel_med.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_rebel_med, "object/building/poi/hq/shared_rebel_med.iff")
 
 object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -543,4 +543,4 @@ object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 2752460800
 }
 
-ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_sm, "object/building/poi/hq/shared_rebel_sm.iff")
+ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_rebel_sm, "object/building/poi/hq/shared_rebel_sm.iff")

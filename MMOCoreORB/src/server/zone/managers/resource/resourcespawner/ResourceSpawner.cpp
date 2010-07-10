@@ -414,7 +414,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* playerCreature, const String& r
 
 		// Create new waypoint
 		if (waypoint == NULL)
-			newwaypoint = (WaypointObject*) server->createObject(3038003230, 1);
+			newwaypoint = (WaypointObject*) server->createObject(0xc456e788, 1);
 		else {
 			playerCreature->getPlayerObject()->removeWaypoint(waypoint->getObjectID(), true);
 			newwaypoint = waypoint.get();

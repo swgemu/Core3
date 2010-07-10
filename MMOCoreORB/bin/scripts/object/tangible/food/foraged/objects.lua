@@ -92,7 +92,7 @@ object_tangible_food_foraged_shared_edible_jar_berries = SharedTangibleObjectTem
 	clientObjectCRC = 1405655823
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_berries, "object/tangible/food/foraged/shared_edible_jar_berries.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_berries, "object/tangible/food/foraged/shared_edible_jar_berries.iff")
 
 object_tangible_food_foraged_shared_edible_jar_bugs = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_food_foraged_shared_edible_jar_bugs = SharedTangibleObjectTempla
 	clientObjectCRC = 2220813342
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_bugs, "object/tangible/food/foraged/shared_edible_jar_bugs.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_bugs, "object/tangible/food/foraged/shared_edible_jar_bugs.iff")
 
 object_tangible_food_foraged_shared_edible_jar_fungus = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -198,7 +198,7 @@ object_tangible_food_foraged_shared_edible_jar_fungus = SharedTangibleObjectTemp
 	clientObjectCRC = 404667969
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_fungus, "object/tangible/food/foraged/shared_edible_jar_fungus.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_fungus, "object/tangible/food/foraged/shared_edible_jar_fungus.iff")
 
 object_tangible_food_foraged_shared_edible_jar_funk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -251,7 +251,7 @@ object_tangible_food_foraged_shared_edible_jar_funk = SharedTangibleObjectTempla
 	clientObjectCRC = 3997953331
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_funk, "object/tangible/food/foraged/shared_edible_jar_funk.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_funk, "object/tangible/food/foraged/shared_edible_jar_funk.iff")
 
 object_tangible_food_foraged_shared_edible_jar_livers = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -304,7 +304,7 @@ object_tangible_food_foraged_shared_edible_jar_livers = SharedTangibleObjectTemp
 	clientObjectCRC = 4279994826
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_livers, "object/tangible/food/foraged/shared_edible_jar_livers.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_livers, "object/tangible/food/foraged/shared_edible_jar_livers.iff")
 
 object_tangible_food_foraged_shared_foraged_fruit_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
@@ -357,7 +357,7 @@ object_tangible_food_foraged_shared_foraged_fruit_s1 = SharedTangibleObjectTempl
 	clientObjectCRC = 1125771498
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s1, "object/tangible/food/foraged/shared_foraged_fruit_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s1, "object/tangible/food/foraged/shared_foraged_fruit_s1.iff")
 
 object_tangible_food_foraged_shared_foraged_fruit_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s2.apt",
@@ -410,7 +410,7 @@ object_tangible_food_foraged_shared_foraged_fruit_s2 = SharedTangibleObjectTempl
 	clientObjectCRC = 2551070845
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s2, "object/tangible/food/foraged/shared_foraged_fruit_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s2, "object/tangible/food/foraged/shared_foraged_fruit_s2.iff")
 
 object_tangible_food_foraged_shared_foraged_fruit_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s3.apt",
@@ -463,7 +463,7 @@ object_tangible_food_foraged_shared_foraged_fruit_s3 = SharedTangibleObjectTempl
 	clientObjectCRC = 3506644976
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s3, "object/tangible/food/foraged/shared_foraged_fruit_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s3, "object/tangible/food/foraged/shared_foraged_fruit_s3.iff")
 
 object_tangible_food_foraged_shared_foraged_fruit_s4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s4.apt",
@@ -516,7 +516,7 @@ object_tangible_food_foraged_shared_foraged_fruit_s4 = SharedTangibleObjectTempl
 	clientObjectCRC = 719326436
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s4, "object/tangible/food/foraged/shared_foraged_fruit_s4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s4, "object/tangible/food/foraged/shared_foraged_fruit_s4.iff")
 
 object_tangible_food_foraged_shared_foraged_fruit_s5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s5.apt",
@@ -569,7 +569,7 @@ object_tangible_food_foraged_shared_foraged_fruit_s5 = SharedTangibleObjectTempl
 	clientObjectCRC = 1676503913
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s5, "object/tangible/food/foraged/shared_foraged_fruit_s5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s5, "object/tangible/food/foraged/shared_foraged_fruit_s5.iff")
 
 object_tangible_food_foraged_shared_foraged_vegetable_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s2.apt",
@@ -622,7 +622,7 @@ object_tangible_food_foraged_shared_foraged_vegetable_s2 = SharedTangibleObjectT
 	clientObjectCRC = 2375994584
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s2, "object/tangible/food/foraged/shared_foraged_vegetable_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s2, "object/tangible/food/foraged/shared_foraged_vegetable_s2.iff")
 
 object_tangible_food_foraged_shared_foraged_vegetable_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s3.apt",
@@ -675,7 +675,7 @@ object_tangible_food_foraged_shared_foraged_vegetable_s3 = SharedTangibleObjectT
 	clientObjectCRC = 3298011989
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s3, "object/tangible/food/foraged/shared_foraged_vegetable_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s3, "object/tangible/food/foraged/shared_foraged_vegetable_s3.iff")
 
 object_tangible_food_foraged_shared_foraged_vegetable_s4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s4.apt",
@@ -728,7 +728,7 @@ object_tangible_food_foraged_shared_foraged_vegetable_s4 = SharedTangibleObjectT
 	clientObjectCRC = 1064337473
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s4, "object/tangible/food/foraged/shared_foraged_vegetable_s4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s4, "object/tangible/food/foraged/shared_foraged_vegetable_s4.iff")
 
 object_tangible_food_foraged_shared_foraged_vegetable_s5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s5.apt",
@@ -781,4 +781,4 @@ object_tangible_food_foraged_shared_foraged_vegetable_s5 = SharedTangibleObjectT
 	clientObjectCRC = 1987962828
 }
 
-ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s5, "object/tangible/food/foraged/shared_foraged_vegetable_s5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s5, "object/tangible/food/foraged/shared_foraged_vegetable_s5.iff")

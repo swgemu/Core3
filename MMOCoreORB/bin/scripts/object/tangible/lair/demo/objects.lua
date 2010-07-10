@@ -92,4 +92,4 @@ object_tangible_lair_demo_shared_lair_demo = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 146696119
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_demo_shared_lair_demo, "object/tangible/lair/demo/shared_lair_demo.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_demo_shared_lair_demo, "object/tangible/lair/demo/shared_lair_demo.iff")

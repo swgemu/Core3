@@ -82,4 +82,4 @@ object_guild_shared_guild_object = SharedGuildObjectTemplate:new {
 	clientObjectCRC = 2101404390
 }
 
-ObjectTemplates:addTemplate(object_guild_shared_guild_object, "object/guild/shared_guild_object.iff")
+ObjectTemplates:addClientTemplate(object_guild_shared_guild_object, "object/guild/shared_guild_object.iff")

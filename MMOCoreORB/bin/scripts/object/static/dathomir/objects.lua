@@ -82,7 +82,7 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall1 = SharedStaticObjectTem
 	clientObjectCRC = 2786092096
 }
 
-ObjectTemplates:addTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall1, "object/static/dathomir/shared_dath_mistyfalls_waterfall1.iff")
+ObjectTemplates:addClientTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall1, "object/static/dathomir/shared_dath_mistyfalls_waterfall1.iff")
 
 object_static_dathomir_shared_dath_mistyfalls_waterfall2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_dath_mistyfalls_waterfall2.prt",
@@ -125,4 +125,4 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall2 = SharedStaticObjectTem
 	clientObjectCRC = 2097663191
 }
 
-ObjectTemplates:addTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall2, "object/static/dathomir/shared_dath_mistyfalls_waterfall2.iff")
+ObjectTemplates:addClientTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall2, "object/static/dathomir/shared_dath_mistyfalls_waterfall2.iff")

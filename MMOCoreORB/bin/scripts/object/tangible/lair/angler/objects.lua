@@ -92,7 +92,7 @@ object_tangible_lair_angler_shared_lair_angler = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1988238968
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler, "object/tangible/lair/angler/shared_lair_angler.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler, "object/tangible/lair/angler/shared_lair_angler.iff")
 
 object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -145,7 +145,7 @@ object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemp
 	clientObjectCRC = 20648312
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_jungle, "object/tangible/lair/angler/shared_lair_angler_jungle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_jungle, "object/tangible/lair/angler/shared_lair_angler_jungle.iff")
 
 object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -198,7 +198,7 @@ object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTempl
 	clientObjectCRC = 2297908648
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_swamp, "object/tangible/lair/angler/shared_lair_angler_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_swamp, "object/tangible/lair/angler/shared_lair_angler_swamp.iff")
 
 object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -251,4 +251,4 @@ object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObject
 	clientObjectCRC = 3099411810
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_underwater, "object/tangible/lair/angler/shared_lair_angler_underwater.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_underwater, "object/tangible/lair/angler/shared_lair_angler_underwater.iff")

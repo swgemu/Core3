@@ -92,7 +92,7 @@ object_tangible_lair_hanadak_shared_lair_hanadak = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2197561822
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_hanadak_shared_lair_hanadak, "object/tangible/lair/hanadak/shared_lair_hanadak.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_hanadak_shared_lair_hanadak, "object/tangible/lair/hanadak/shared_lair_hanadak.iff")
 
 object_tangible_lair_hanadak_shared_lair_hanadak_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -145,4 +145,4 @@ object_tangible_lair_hanadak_shared_lair_hanadak_mountain = SharedTangibleObject
 	clientObjectCRC = 2169247668
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_hanadak_shared_lair_hanadak_mountain, "object/tangible/lair/hanadak/shared_lair_hanadak_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_hanadak_shared_lair_hanadak_mountain, "object/tangible/lair/hanadak/shared_lair_hanadak_mountain.iff")

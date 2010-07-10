@@ -92,7 +92,7 @@ object_tangible_loot_misc_shared_artifact_rare_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 865298765
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_artifact_rare_s01, "object/tangible/loot/misc/shared_artifact_rare_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_artifact_rare_s01, "object/tangible/loot/misc/shared_artifact_rare_s01.iff")
 
 object_tangible_loot_misc_shared_basket_expensive_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_basket_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_loot_misc_shared_basket_expensive_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 4077046979
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_basket_expensive_s01, "object/tangible/loot/misc/shared_basket_expensive_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_basket_expensive_s01, "object/tangible/loot/misc/shared_basket_expensive_s01.iff")
 
 object_tangible_loot_misc_shared_bowl_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s03.apt",
@@ -198,7 +198,7 @@ object_tangible_loot_misc_shared_bowl_s01 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2848209064
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_bowl_s01, "object/tangible/loot/misc/shared_bowl_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_bowl_s01, "object/tangible/loot/misc/shared_bowl_s01.iff")
 
 object_tangible_loot_misc_shared_briefcase_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
@@ -251,7 +251,7 @@ object_tangible_loot_misc_shared_briefcase_s01 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1815409445
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_briefcase_s01, "object/tangible/loot/misc/shared_briefcase_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_briefcase_s01, "object/tangible/loot/misc/shared_briefcase_s01.iff")
 
 object_tangible_loot_misc_shared_brown_rug = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_sm_s04.apt",
@@ -304,7 +304,7 @@ object_tangible_loot_misc_shared_brown_rug = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3249408869
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_brown_rug, "object/tangible/loot/misc/shared_brown_rug.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_brown_rug, "object/tangible/loot/misc/shared_brown_rug.iff")
 
 object_tangible_loot_misc_shared_cage_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_cage_bamboo.apt",
@@ -357,7 +357,7 @@ object_tangible_loot_misc_shared_cage_s01 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 842587466
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_cage_s01, "object/tangible/loot/misc/shared_cage_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_cage_s01, "object/tangible/loot/misc/shared_cage_s01.iff")
 
 object_tangible_loot_misc_shared_camera_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
@@ -410,7 +410,7 @@ object_tangible_loot_misc_shared_camera_s01 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 327865364
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_camera_s01, "object/tangible/loot/misc/shared_camera_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_camera_s01, "object/tangible/loot/misc/shared_camera_s01.iff")
 
 object_tangible_loot_misc_shared_casserole_binna_jode = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
@@ -463,7 +463,7 @@ object_tangible_loot_misc_shared_casserole_binna_jode = SharedTangibleObjectTemp
 	clientObjectCRC = 3603005332
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_casserole_binna_jode, "object/tangible/loot/misc/shared_casserole_binna_jode.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_casserole_binna_jode, "object/tangible/loot/misc/shared_casserole_binna_jode.iff")
 
 object_tangible_loot_misc_shared_casual_rug = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_sm_s02.apt",
@@ -516,7 +516,7 @@ object_tangible_loot_misc_shared_casual_rug = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 759121721
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_casual_rug, "object/tangible/loot/misc/shared_casual_rug.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_casual_rug, "object/tangible/loot/misc/shared_casual_rug.iff")
 
 object_tangible_loot_misc_shared_corsec_id_badge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket.apt",
@@ -569,7 +569,7 @@ object_tangible_loot_misc_shared_corsec_id_badge = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3380245587
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_corsec_id_badge, "object/tangible/loot/misc/shared_corsec_id_badge.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_corsec_id_badge, "object/tangible/loot/misc/shared_corsec_id_badge.iff")
 
 object_tangible_loot_misc_shared_damaged_datapad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
@@ -622,7 +622,7 @@ object_tangible_loot_misc_shared_damaged_datapad = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2077895809
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_damaged_datapad, "object/tangible/loot/misc/shared_damaged_datapad.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_damaged_datapad, "object/tangible/loot/misc/shared_damaged_datapad.iff")
 
 object_tangible_loot_misc_shared_datadisk_corrupt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -675,7 +675,7 @@ object_tangible_loot_misc_shared_datadisk_corrupt = SharedTangibleObjectTemplate
 	clientObjectCRC = 1598786934
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_datadisk_corrupt, "object/tangible/loot/misc/shared_datadisk_corrupt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_datadisk_corrupt, "object/tangible/loot/misc/shared_datadisk_corrupt.iff")
 
 object_tangible_loot_misc_shared_decryptor_broken_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_decryptor_imperial.apt",
@@ -728,7 +728,7 @@ object_tangible_loot_misc_shared_decryptor_broken_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 4256936356
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_decryptor_broken_s01, "object/tangible/loot/misc/shared_decryptor_broken_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_decryptor_broken_s01, "object/tangible/loot/misc/shared_decryptor_broken_s01.iff")
 
 object_tangible_loot_misc_shared_dermal_analyxer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_worklight.apt",
@@ -781,7 +781,7 @@ object_tangible_loot_misc_shared_dermal_analyxer = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1425405589
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_dermal_analyxer, "object/tangible/loot/misc/shared_dermal_analyxer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_dermal_analyxer, "object/tangible/loot/misc/shared_dermal_analyxer.iff")
 
 object_tangible_loot_misc_shared_firework_dud_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework_s1.apt",
@@ -834,7 +834,7 @@ object_tangible_loot_misc_shared_firework_dud_s1 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 706975394
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_firework_dud_s1, "object/tangible/loot/misc/shared_firework_dud_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_firework_dud_s1, "object/tangible/loot/misc/shared_firework_dud_s1.iff")
 
 object_tangible_loot_misc_shared_firework_dud_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_firework.apt",
@@ -887,7 +887,7 @@ object_tangible_loot_misc_shared_firework_dud_s2 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 4046732853
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_firework_dud_s2, "object/tangible/loot/misc/shared_firework_dud_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_firework_dud_s2, "object/tangible/loot/misc/shared_firework_dud_s2.iff")
 
 object_tangible_loot_misc_shared_force_crystal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -940,7 +940,7 @@ object_tangible_loot_misc_shared_force_crystal = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2901988249
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_force_crystal, "object/tangible/loot/misc/shared_force_crystal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_force_crystal, "object/tangible/loot/misc/shared_force_crystal.iff")
 
 object_tangible_loot_misc_shared_glass_heirloom_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
@@ -993,7 +993,7 @@ object_tangible_loot_misc_shared_glass_heirloom_s01 = SharedTangibleObjectTempla
 	clientObjectCRC = 3730613962
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_glass_heirloom_s01, "object/tangible/loot/misc/shared_glass_heirloom_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_glass_heirloom_s01, "object/tangible/loot/misc/shared_glass_heirloom_s01.iff")
 
 object_tangible_loot_misc_shared_green_rug = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_m_s02.apt",
@@ -1046,7 +1046,7 @@ object_tangible_loot_misc_shared_green_rug = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2290214914
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_green_rug, "object/tangible/loot/misc/shared_green_rug.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_green_rug, "object/tangible/loot/misc/shared_green_rug.iff")
 
 object_tangible_loot_misc_shared_gungan_lance = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_electric_polearm.apt",
@@ -1099,7 +1099,7 @@ object_tangible_loot_misc_shared_gungan_lance = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 2604517877
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_gungan_lance, "object/tangible/loot/misc/shared_gungan_lance.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_gungan_lance, "object/tangible/loot/misc/shared_gungan_lance.iff")
 
 object_tangible_loot_misc_shared_gungan_signet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s14_m.apt",
@@ -1152,7 +1152,7 @@ object_tangible_loot_misc_shared_gungan_signet = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 374420297
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_gungan_signet, "object/tangible/loot/misc/shared_gungan_signet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_gungan_signet, "object/tangible/loot/misc/shared_gungan_signet.iff")
 
 object_tangible_loot_misc_shared_holocron_splinters_sith_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_holocron_splinters.apt",
@@ -1205,7 +1205,7 @@ object_tangible_loot_misc_shared_holocron_splinters_sith_s01 = SharedTangibleObj
 	clientObjectCRC = 1021999255
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_holocron_splinters_sith_s01, "object/tangible/loot/misc/shared_holocron_splinters_sith_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_holocron_splinters_sith_s01, "object/tangible/loot/misc/shared_holocron_splinters_sith_s01.iff")
 
 object_tangible_loot_misc_shared_hyperdrive_part_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
@@ -1258,7 +1258,7 @@ object_tangible_loot_misc_shared_hyperdrive_part_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 1159518109
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_hyperdrive_part_s01, "object/tangible/loot/misc/shared_hyperdrive_part_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_hyperdrive_part_s01, "object/tangible/loot/misc/shared_hyperdrive_part_s01.iff")
 
 object_tangible_loot_misc_shared_inkpen_engraved_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_writing_utensils.apt",
@@ -1311,7 +1311,7 @@ object_tangible_loot_misc_shared_inkpen_engraved_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 239625063
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_inkpen_engraved_s01, "object/tangible/loot/misc/shared_inkpen_engraved_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_inkpen_engraved_s01, "object/tangible/loot/misc/shared_inkpen_engraved_s01.iff")
 
 object_tangible_loot_misc_shared_insects_rare_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -1364,7 +1364,7 @@ object_tangible_loot_misc_shared_insects_rare_s01 = SharedTangibleObjectTemplate
 	clientObjectCRC = 1419164698
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_insects_rare_s01, "object/tangible/loot/misc/shared_insects_rare_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_insects_rare_s01, "object/tangible/loot/misc/shared_insects_rare_s01.iff")
 
 object_tangible_loot_misc_shared_jawa_beads = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_m.sat",
@@ -1417,7 +1417,7 @@ object_tangible_loot_misc_shared_jawa_beads = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1637830141
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_jawa_beads, "object/tangible/loot/misc/shared_jawa_beads.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_jawa_beads, "object/tangible/loot/misc/shared_jawa_beads.iff")
 
 object_tangible_loot_misc_shared_keepsakes = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_vehicle_toolkit.apt",
@@ -1470,7 +1470,7 @@ object_tangible_loot_misc_shared_keepsakes = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 634814302
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_keepsakes, "object/tangible/loot/misc/shared_keepsakes.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_keepsakes, "object/tangible/loot/misc/shared_keepsakes.iff")
 
 object_tangible_loot_misc_shared_key_electronic_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_key_electronic.apt",
@@ -1523,7 +1523,7 @@ object_tangible_loot_misc_shared_key_electronic_s01 = SharedTangibleObjectTempla
 	clientObjectCRC = 1312940379
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_key_electronic_s01, "object/tangible/loot/misc/shared_key_electronic_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_key_electronic_s01, "object/tangible/loot/misc/shared_key_electronic_s01.iff")
 
 object_tangible_loot_misc_shared_ledger_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -1576,7 +1576,7 @@ object_tangible_loot_misc_shared_ledger_s01 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1032597494
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_ledger_s01, "object/tangible/loot/misc/shared_ledger_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_ledger_s01, "object/tangible/loot/misc/shared_ledger_s01.iff")
 
 object_tangible_loot_misc_shared_loot_krayt_arm1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_arm_s01.apt",
@@ -1629,7 +1629,7 @@ object_tangible_loot_misc_shared_loot_krayt_arm1 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3424112691
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_arm1, "object/tangible/loot/misc/shared_loot_krayt_arm1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_krayt_arm1, "object/tangible/loot/misc/shared_loot_krayt_arm1.iff")
 
 object_tangible_loot_misc_shared_loot_krayt_arm2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_arm_s02.apt",
@@ -1682,7 +1682,7 @@ object_tangible_loot_misc_shared_loot_krayt_arm2 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 385906852
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_arm2, "object/tangible/loot/misc/shared_loot_krayt_arm2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_krayt_arm2, "object/tangible/loot/misc/shared_loot_krayt_arm2.iff")
 
 object_tangible_loot_misc_shared_loot_krayt_foot = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_foot.apt",
@@ -1735,7 +1735,7 @@ object_tangible_loot_misc_shared_loot_krayt_foot = SharedTangibleObjectTemplate:
 	clientObjectCRC = 4031807386
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_foot, "object/tangible/loot/misc/shared_loot_krayt_foot.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_krayt_foot, "object/tangible/loot/misc/shared_loot_krayt_foot.iff")
 
 object_tangible_loot_misc_shared_loot_krayt_leg1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_leg_s01.apt",
@@ -1788,7 +1788,7 @@ object_tangible_loot_misc_shared_loot_krayt_leg1 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3363519588
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_leg1, "object/tangible/loot/misc/shared_loot_krayt_leg1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_krayt_leg1, "object/tangible/loot/misc/shared_loot_krayt_leg1.iff")
 
 object_tangible_loot_misc_shared_loot_krayt_leg2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_leg_s02.apt",
@@ -1841,7 +1841,7 @@ object_tangible_loot_misc_shared_loot_krayt_leg2 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 325883123
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_leg2, "object/tangible/loot/misc/shared_loot_krayt_leg2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_krayt_leg2, "object/tangible/loot/misc/shared_loot_krayt_leg2.iff")
 
 object_tangible_loot_misc_shared_loot_krayt_spine1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_spine_s01.apt",
@@ -1894,7 +1894,7 @@ object_tangible_loot_misc_shared_loot_krayt_spine1 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3374450491
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_spine1, "object/tangible/loot/misc/shared_loot_krayt_spine1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_krayt_spine1, "object/tangible/loot/misc/shared_loot_krayt_spine1.iff")
 
 object_tangible_loot_misc_shared_loot_krayt_spine2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_spine_s02.apt",
@@ -1947,7 +1947,7 @@ object_tangible_loot_misc_shared_loot_krayt_spine2 = SharedTangibleObjectTemplat
 	clientObjectCRC = 305508268
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_spine2, "object/tangible/loot/misc/shared_loot_krayt_spine2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_krayt_spine2, "object/tangible/loot/misc/shared_loot_krayt_spine2.iff")
 
 object_tangible_loot_misc_shared_loot_krayt_spine3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_spine_s03.apt",
@@ -2000,7 +2000,7 @@ object_tangible_loot_misc_shared_loot_krayt_spine3 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1530447905
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_spine3, "object/tangible/loot/misc/shared_loot_krayt_spine3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_krayt_spine3, "object/tangible/loot/misc/shared_loot_krayt_spine3.iff")
 
 object_tangible_loot_misc_shared_loot_skull_bith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_head.apt",
@@ -2053,7 +2053,7 @@ object_tangible_loot_misc_shared_loot_skull_bith = SharedTangibleObjectTemplate:
 	clientObjectCRC = 707837564
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_bith, "object/tangible/loot/misc/shared_loot_skull_bith.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_skull_bith, "object/tangible/loot/misc/shared_loot_skull_bith.iff")
 
 object_tangible_loot_misc_shared_loot_skull_bol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_bol_skull.apt",
@@ -2106,7 +2106,7 @@ object_tangible_loot_misc_shared_loot_skull_bol = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2725183958
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_bol, "object/tangible/loot/misc/shared_loot_skull_bol.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_skull_bol, "object/tangible/loot/misc/shared_loot_skull_bol.iff")
 
 object_tangible_loot_misc_shared_loot_skull_human = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_head.apt",
@@ -2159,7 +2159,7 @@ object_tangible_loot_misc_shared_loot_skull_human = SharedTangibleObjectTemplate
 	clientObjectCRC = 632440114
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_human, "object/tangible/loot/misc/shared_loot_skull_human.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_skull_human, "object/tangible/loot/misc/shared_loot_skull_human.iff")
 
 object_tangible_loot_misc_shared_loot_skull_ithorian = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_ithorian_head.apt",
@@ -2212,7 +2212,7 @@ object_tangible_loot_misc_shared_loot_skull_ithorian = SharedTangibleObjectTempl
 	clientObjectCRC = 128900324
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_ithorian, "object/tangible/loot/misc/shared_loot_skull_ithorian.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_skull_ithorian, "object/tangible/loot/misc/shared_loot_skull_ithorian.iff")
 
 object_tangible_loot_misc_shared_loot_skull_krayt1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_head_s01.apt",
@@ -2265,7 +2265,7 @@ object_tangible_loot_misc_shared_loot_skull_krayt1 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3855703718
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_krayt1, "object/tangible/loot/misc/shared_loot_skull_krayt1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_skull_krayt1, "object/tangible/loot/misc/shared_loot_skull_krayt1.iff")
 
 object_tangible_loot_misc_shared_loot_skull_krayt2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_head_s02.apt",
@@ -2318,7 +2318,7 @@ object_tangible_loot_misc_shared_loot_skull_krayt2 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1053226545
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_krayt2, "object/tangible/loot/misc/shared_loot_skull_krayt2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_skull_krayt2, "object/tangible/loot/misc/shared_loot_skull_krayt2.iff")
 
 object_tangible_loot_misc_shared_loot_skull_thune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_thune_skull.apt",
@@ -2371,7 +2371,7 @@ object_tangible_loot_misc_shared_loot_skull_thune = SharedTangibleObjectTemplate
 	clientObjectCRC = 2842325032
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_thune, "object/tangible/loot/misc/shared_loot_skull_thune.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_skull_thune, "object/tangible/loot/misc/shared_loot_skull_thune.iff")
 
 object_tangible_loot_misc_shared_loot_skull_voritor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_lizard_skull.apt",
@@ -2424,7 +2424,7 @@ object_tangible_loot_misc_shared_loot_skull_voritor = SharedTangibleObjectTempla
 	clientObjectCRC = 3032461432
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_voritor, "object/tangible/loot/misc/shared_loot_skull_voritor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_loot_skull_voritor, "object/tangible/loot/misc/shared_loot_skull_voritor.iff")
 
 object_tangible_loot_misc_shared_majestic_rug = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_sm_s03.apt",
@@ -2477,7 +2477,7 @@ object_tangible_loot_misc_shared_majestic_rug = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 317779620
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_majestic_rug, "object/tangible/loot/misc/shared_majestic_rug.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_majestic_rug, "object/tangible/loot/misc/shared_majestic_rug.iff")
 
 object_tangible_loot_misc_shared_medallion_black_sun_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_medallion_black_sun.apt",
@@ -2530,7 +2530,7 @@ object_tangible_loot_misc_shared_medallion_black_sun_s01 = SharedTangibleObjectT
 	clientObjectCRC = 706045997
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_medallion_black_sun_s01, "object/tangible/loot/misc/shared_medallion_black_sun_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_medallion_black_sun_s01, "object/tangible/loot/misc/shared_medallion_black_sun_s01.iff")
 
 object_tangible_loot_misc_shared_medallion_dark_jedi_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/atf_jedi_dark_side_amulet.apt",
@@ -2583,7 +2583,7 @@ object_tangible_loot_misc_shared_medallion_dark_jedi_s01 = SharedTangibleObjectT
 	clientObjectCRC = 689527148
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_medallion_dark_jedi_s01, "object/tangible/loot/misc/shared_medallion_dark_jedi_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_medallion_dark_jedi_s01, "object/tangible/loot/misc/shared_medallion_dark_jedi_s01.iff")
 
 object_tangible_loot_misc_shared_mt_casserole = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
@@ -2636,7 +2636,7 @@ object_tangible_loot_misc_shared_mt_casserole = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 4152880530
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mt_casserole, "object/tangible/loot/misc/shared_mt_casserole.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_mt_casserole, "object/tangible/loot/misc/shared_mt_casserole.iff")
 
 object_tangible_loot_misc_shared_mt_flatbread = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -2689,7 +2689,7 @@ object_tangible_loot_misc_shared_mt_flatbread = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 2434258915
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mt_flatbread, "object/tangible/loot/misc/shared_mt_flatbread.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_mt_flatbread, "object/tangible/loot/misc/shared_mt_flatbread.iff")
 
 object_tangible_loot_misc_shared_mt_pie = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_pie_full_s1.apt",
@@ -2742,7 +2742,7 @@ object_tangible_loot_misc_shared_mt_pie = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 468840680
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mt_pie, "object/tangible/loot/misc/shared_mt_pie.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_mt_pie, "object/tangible/loot/misc/shared_mt_pie.iff")
 
 object_tangible_loot_misc_shared_mt_soup = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
@@ -2795,7 +2795,7 @@ object_tangible_loot_misc_shared_mt_soup = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3702520473
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mt_soup, "object/tangible/loot/misc/shared_mt_soup.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_mt_soup, "object/tangible/loot/misc/shared_mt_soup.iff")
 
 object_tangible_loot_misc_shared_mystical_orb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -2848,7 +2848,7 @@ object_tangible_loot_misc_shared_mystical_orb = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 3480466055
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mystical_orb, "object/tangible/loot/misc/shared_mystical_orb.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_mystical_orb, "object/tangible/loot/misc/shared_mystical_orb.iff")
 
 object_tangible_loot_misc_shared_mystical_powered_orb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -2901,7 +2901,7 @@ object_tangible_loot_misc_shared_mystical_powered_orb = SharedTangibleObjectTemp
 	clientObjectCRC = 1931809434
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mystical_powered_orb, "object/tangible/loot/misc/shared_mystical_powered_orb.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_mystical_powered_orb, "object/tangible/loot/misc/shared_mystical_powered_orb.iff")
 
 object_tangible_loot_misc_shared_ornamental_sconce = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_weapon_auto_laser_trap.apt",
@@ -2954,7 +2954,7 @@ object_tangible_loot_misc_shared_ornamental_sconce = SharedTangibleObjectTemplat
 	clientObjectCRC = 3678039981
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_ornamental_sconce, "object/tangible/loot/misc/shared_ornamental_sconce.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_ornamental_sconce, "object/tangible/loot/misc/shared_ornamental_sconce.iff")
 
 object_tangible_loot_misc_shared_palm_frond = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_palm_frond.apt",
@@ -3007,7 +3007,7 @@ object_tangible_loot_misc_shared_palm_frond = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1764965839
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_palm_frond, "object/tangible/loot/misc/shared_palm_frond.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_palm_frond, "object/tangible/loot/misc/shared_palm_frond.iff")
 
 object_tangible_loot_misc_shared_personal_effects = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_vehicle_toolkit.apt",
@@ -3060,7 +3060,7 @@ object_tangible_loot_misc_shared_personal_effects = SharedTangibleObjectTemplate
 	clientObjectCRC = 2137101597
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_personal_effects, "object/tangible/loot/misc/shared_personal_effects.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_personal_effects, "object/tangible/loot/misc/shared_personal_effects.iff")
 
 object_tangible_loot_misc_shared_petrified_avian_egg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -3113,7 +3113,7 @@ object_tangible_loot_misc_shared_petrified_avian_egg = SharedTangibleObjectTempl
 	clientObjectCRC = 3152449908
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_petrified_avian_egg, "object/tangible/loot/misc/shared_petrified_avian_egg.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_petrified_avian_egg, "object/tangible/loot/misc/shared_petrified_avian_egg.iff")
 
 object_tangible_loot_misc_shared_picture_handheld_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -3166,7 +3166,7 @@ object_tangible_loot_misc_shared_picture_handheld_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 1021103631
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_picture_handheld_s01, "object/tangible/loot/misc/shared_picture_handheld_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_picture_handheld_s01, "object/tangible/loot/misc/shared_picture_handheld_s01.iff")
 
 object_tangible_loot_misc_shared_picture_handheld_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -3219,7 +3219,7 @@ object_tangible_loot_misc_shared_picture_handheld_s02 = SharedTangibleObjectTemp
 	clientObjectCRC = 3888866968
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_picture_handheld_s02, "object/tangible/loot/misc/shared_picture_handheld_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_picture_handheld_s02, "object/tangible/loot/misc/shared_picture_handheld_s02.iff")
 
 object_tangible_loot_misc_shared_proclamation_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -3272,7 +3272,7 @@ object_tangible_loot_misc_shared_proclamation_s01 = SharedTangibleObjectTemplate
 	clientObjectCRC = 720417432
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_proclamation_s01, "object/tangible/loot/misc/shared_proclamation_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_proclamation_s01, "object/tangible/loot/misc/shared_proclamation_s01.iff")
 
 object_tangible_loot_misc_shared_recording_rod_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recording_rod.apt",
@@ -3325,7 +3325,7 @@ object_tangible_loot_misc_shared_recording_rod_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3573709036
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_recording_rod_s01, "object/tangible/loot/misc/shared_recording_rod_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_recording_rod_s01, "object/tangible/loot/misc/shared_recording_rod_s01.iff")
 
 object_tangible_loot_misc_shared_shisa_decorative_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_shisha.apt",
@@ -3378,7 +3378,7 @@ object_tangible_loot_misc_shared_shisa_decorative_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 1359996863
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_shisa_decorative_s01, "object/tangible/loot/misc/shared_shisa_decorative_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_shisa_decorative_s01, "object/tangible/loot/misc/shared_shisa_decorative_s01.iff")
 
 object_tangible_loot_misc_shared_slave_collar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_acc_slaving_collar.apt",
@@ -3431,7 +3431,7 @@ object_tangible_loot_misc_shared_slave_collar = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 3986073325
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_slave_collar, "object/tangible/loot/misc/shared_slave_collar.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_slave_collar, "object/tangible/loot/misc/shared_slave_collar.iff")
 
 object_tangible_loot_misc_shared_speaker_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_speaker.apt",
@@ -3484,7 +3484,7 @@ object_tangible_loot_misc_shared_speaker_s01 = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 141936959
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_speaker_s01, "object/tangible/loot/misc/shared_speaker_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_speaker_s01, "object/tangible/loot/misc/shared_speaker_s01.iff")
 
 object_tangible_loot_misc_shared_spectrum_recorder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_worklight.apt",
@@ -3537,7 +3537,7 @@ object_tangible_loot_misc_shared_spectrum_recorder = SharedTangibleObjectTemplat
 	clientObjectCRC = 2986929439
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_spectrum_recorder, "object/tangible/loot/misc/shared_spectrum_recorder.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_spectrum_recorder, "object/tangible/loot/misc/shared_spectrum_recorder.iff")
 
 object_tangible_loot_misc_shared_sports_award_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/msc_toy_ball_sm.apt",
@@ -3590,7 +3590,7 @@ object_tangible_loot_misc_shared_sports_award_s01 = SharedTangibleObjectTemplate
 	clientObjectCRC = 3850821437
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_sports_award_s01, "object/tangible/loot/misc/shared_sports_award_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_sports_award_s01, "object/tangible/loot/misc/shared_sports_award_s01.iff")
 
 object_tangible_loot_misc_shared_ticket_collectors_item_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket.apt",
@@ -3643,7 +3643,7 @@ object_tangible_loot_misc_shared_ticket_collectors_item_s01 = SharedTangibleObje
 	clientObjectCRC = 1896550802
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_ticket_collectors_item_s01, "object/tangible/loot/misc/shared_ticket_collectors_item_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_ticket_collectors_item_s01, "object/tangible/loot/misc/shared_ticket_collectors_item_s01.iff")
 
 object_tangible_loot_misc_shared_ticket_expired = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -3696,7 +3696,7 @@ object_tangible_loot_misc_shared_ticket_expired = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2280007490
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_ticket_expired, "object/tangible/loot/misc/shared_ticket_expired.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_ticket_expired, "object/tangible/loot/misc/shared_ticket_expired.iff")
 
 object_tangible_loot_misc_shared_toxic_rations = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_vehicle_toolkit.apt",
@@ -3749,7 +3749,7 @@ object_tangible_loot_misc_shared_toxic_rations = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 381474584
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_toxic_rations, "object/tangible/loot/misc/shared_toxic_rations.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_toxic_rations, "object/tangible/loot/misc/shared_toxic_rations.iff")
 
 object_tangible_loot_misc_shared_worklight = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_worklight.apt",
@@ -3802,4 +3802,4 @@ object_tangible_loot_misc_shared_worklight = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 667280512
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_worklight, "object/tangible/loot/misc/shared_worklight.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loot_misc_shared_worklight, "object/tangible/loot/misc/shared_worklight.iff")

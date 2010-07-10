@@ -92,7 +92,7 @@ object_tangible_furniture_decorative_shared_bacta_tank = SharedTangibleObjectTem
 	clientObjectCRC = 778917674
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bacta_tank, "object/tangible/furniture/decorative/shared_bacta_tank.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bacta_tank, "object/tangible/furniture/decorative/shared_bacta_tank.iff")
 
 object_tangible_furniture_decorative_shared_basket_closed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_basket_s01.apt",
@@ -145,7 +145,7 @@ object_tangible_furniture_decorative_shared_basket_closed = SharedTangibleObject
 	clientObjectCRC = 1552726710
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_basket_closed, "object/tangible/furniture/decorative/shared_basket_closed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_basket_closed, "object/tangible/furniture/decorative/shared_basket_closed.iff")
 
 object_tangible_furniture_decorative_shared_bottle_fat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s01.apt",
@@ -198,7 +198,7 @@ object_tangible_furniture_decorative_shared_bottle_fat = SharedTangibleObjectTem
 	clientObjectCRC = 2472176746
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_fat, "object/tangible/furniture/decorative/shared_bottle_fat.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bottle_fat, "object/tangible/furniture/decorative/shared_bottle_fat.iff")
 
 object_tangible_furniture_decorative_shared_bottle_pear = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s04.apt",
@@ -251,7 +251,7 @@ object_tangible_furniture_decorative_shared_bottle_pear = SharedTangibleObjectTe
 	clientObjectCRC = 3744745457
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_pear, "object/tangible/furniture/decorative/shared_bottle_pear.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bottle_pear, "object/tangible/furniture/decorative/shared_bottle_pear.iff")
 
 object_tangible_furniture_decorative_shared_bottle_tall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s02.apt",
@@ -304,7 +304,7 @@ object_tangible_furniture_decorative_shared_bottle_tall = SharedTangibleObjectTe
 	clientObjectCRC = 1391690326
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_tall, "object/tangible/furniture/decorative/shared_bottle_tall.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bottle_tall, "object/tangible/furniture/decorative/shared_bottle_tall.iff")
 
 object_tangible_furniture_decorative_shared_bubble_tank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_bubble.apt",
@@ -357,7 +357,7 @@ object_tangible_furniture_decorative_shared_bubble_tank = SharedTangibleObjectTe
 	clientObjectCRC = 3911421124
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bubble_tank, "object/tangible/furniture/decorative/shared_bubble_tank.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bubble_tank, "object/tangible/furniture/decorative/shared_bubble_tank.iff")
 
 object_tangible_furniture_decorative_shared_cafe_chair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_cafe_s02.apt",
@@ -410,7 +410,7 @@ object_tangible_furniture_decorative_shared_cafe_chair = SharedTangibleObjectTem
 	clientObjectCRC = 4161463527
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_cafe_chair, "object/tangible/furniture/decorative/shared_cafe_chair.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_cafe_chair, "object/tangible/furniture/decorative/shared_cafe_chair.iff")
 
 object_tangible_furniture_decorative_shared_campfire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_fresh.apt",
@@ -463,7 +463,7 @@ object_tangible_furniture_decorative_shared_campfire = SharedTangibleObjectTempl
 	clientObjectCRC = 2302774503
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_campfire, "object/tangible/furniture/decorative/shared_campfire.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_campfire, "object/tangible/furniture/decorative/shared_campfire.iff")
 
 object_tangible_furniture_decorative_shared_carved_bowl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s03.apt",
@@ -516,7 +516,7 @@ object_tangible_furniture_decorative_shared_carved_bowl = SharedTangibleObjectTe
 	clientObjectCRC = 339149947
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_carved_bowl, "object/tangible/furniture/decorative/shared_carved_bowl.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_carved_bowl, "object/tangible/furniture/decorative/shared_carved_bowl.iff")
 
 object_tangible_furniture_decorative_shared_corellian_flagpole = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -569,7 +569,7 @@ object_tangible_furniture_decorative_shared_corellian_flagpole = SharedTangibleO
 	clientObjectCRC = 1081449691
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_corellian_flagpole, "object/tangible/furniture/decorative/shared_corellian_flagpole.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_corellian_flagpole, "object/tangible/furniture/decorative/shared_corellian_flagpole.iff")
 
 object_tangible_furniture_decorative_shared_diagnostic_screen = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
@@ -622,7 +622,7 @@ object_tangible_furniture_decorative_shared_diagnostic_screen = SharedTangibleOb
 	clientObjectCRC = 2673191290
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_diagnostic_screen, "object/tangible/furniture/decorative/shared_diagnostic_screen.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_diagnostic_screen, "object/tangible/furniture/decorative/shared_diagnostic_screen.iff")
 
 object_tangible_furniture_decorative_shared_foodcart = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_foodcart_s01.apt",
@@ -675,7 +675,7 @@ object_tangible_furniture_decorative_shared_foodcart = SharedTangibleObjectTempl
 	clientObjectCRC = 247713361
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_foodcart, "object/tangible/furniture/decorative/shared_foodcart.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_foodcart, "object/tangible/furniture/decorative/shared_foodcart.iff")
 
 object_tangible_furniture_decorative_shared_fruit_assorted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_fruit_item.apt",
@@ -728,7 +728,7 @@ object_tangible_furniture_decorative_shared_fruit_assorted = SharedTangibleObjec
 	clientObjectCRC = 2967222212
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_fruit_assorted, "object/tangible/furniture/decorative/shared_fruit_assorted.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_fruit_assorted, "object/tangible/furniture/decorative/shared_fruit_assorted.iff")
 
 object_tangible_furniture_decorative_shared_hanging_planter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_planter_hanging_s01.apt",
@@ -781,7 +781,7 @@ object_tangible_furniture_decorative_shared_hanging_planter = SharedTangibleObje
 	clientObjectCRC = 3845808441
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_hanging_planter, "object/tangible/furniture/decorative/shared_hanging_planter.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_hanging_planter, "object/tangible/furniture/decorative/shared_hanging_planter.iff")
 
 object_tangible_furniture_decorative_shared_kitchen_utensils = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_kitchen_set_lg_s1.apt",
@@ -834,7 +834,7 @@ object_tangible_furniture_decorative_shared_kitchen_utensils = SharedTangibleObj
 	clientObjectCRC = 2914356187
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_kitchen_utensils, "object/tangible/furniture/decorative/shared_kitchen_utensils.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_kitchen_utensils, "object/tangible/furniture/decorative/shared_kitchen_utensils.iff")
 
 object_tangible_furniture_decorative_shared_microphone_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_microphone_s1.apt",
@@ -887,7 +887,7 @@ object_tangible_furniture_decorative_shared_microphone_s01 = SharedTangibleObjec
 	clientObjectCRC = 1371805603
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_microphone_s01, "object/tangible/furniture/decorative/shared_microphone_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_microphone_s01, "object/tangible/furniture/decorative/shared_microphone_s01.iff")
 
 object_tangible_furniture_decorative_shared_microphone_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_microphone_s2.apt",
@@ -940,7 +940,7 @@ object_tangible_furniture_decorative_shared_microphone_s02 = SharedTangibleObjec
 	clientObjectCRC = 2329132852
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_microphone_s02, "object/tangible/furniture/decorative/shared_microphone_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_microphone_s02, "object/tangible/furniture/decorative/shared_microphone_s02.iff")
 
 object_tangible_furniture_decorative_shared_park_bench = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_bench.apt",
@@ -993,7 +993,7 @@ object_tangible_furniture_decorative_shared_park_bench = SharedTangibleObjectTem
 	clientObjectCRC = 3230914916
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_park_bench, "object/tangible/furniture/decorative/shared_park_bench.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_park_bench, "object/tangible/furniture/decorative/shared_park_bench.iff")
 
 object_tangible_furniture_decorative_shared_pitcher_full = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_pitcher_s1_full.apt",
@@ -1046,7 +1046,7 @@ object_tangible_furniture_decorative_shared_pitcher_full = SharedTangibleObjectT
 	clientObjectCRC = 3027440534
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_pitcher_full, "object/tangible/furniture/decorative/shared_pitcher_full.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_pitcher_full, "object/tangible/furniture/decorative/shared_pitcher_full.iff")
 
 object_tangible_furniture_decorative_shared_plain_bowl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s01.apt",
@@ -1099,7 +1099,7 @@ object_tangible_furniture_decorative_shared_plain_bowl = SharedTangibleObjectTem
 	clientObjectCRC = 265330510
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_plain_bowl, "object/tangible/furniture/decorative/shared_plain_bowl.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_plain_bowl, "object/tangible/furniture/decorative/shared_plain_bowl.iff")
 
 object_tangible_furniture_decorative_shared_portable_stove = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_portable_stove_sm_s1.apt",
@@ -1152,7 +1152,7 @@ object_tangible_furniture_decorative_shared_portable_stove = SharedTangibleObjec
 	clientObjectCRC = 1276845581
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_portable_stove, "object/tangible/furniture/decorative/shared_portable_stove.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_portable_stove, "object/tangible/furniture/decorative/shared_portable_stove.iff")
 
 object_tangible_furniture_decorative_shared_professor_desk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_professor_desk.apt",
@@ -1205,7 +1205,7 @@ object_tangible_furniture_decorative_shared_professor_desk = SharedTangibleObjec
 	clientObjectCRC = 3449846247
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_professor_desk, "object/tangible/furniture/decorative/shared_professor_desk.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_professor_desk, "object/tangible/furniture/decorative/shared_professor_desk.iff")
 
 object_tangible_furniture_decorative_shared_radio = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
@@ -1258,7 +1258,7 @@ object_tangible_furniture_decorative_shared_radio = SharedTangibleObjectTemplate
 	clientObjectCRC = 1925051927
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_radio, "object/tangible/furniture/decorative/shared_radio.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_radio, "object/tangible/furniture/decorative/shared_radio.iff")
 
 object_tangible_furniture_decorative_shared_shisa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_shisha.apt",
@@ -1311,7 +1311,7 @@ object_tangible_furniture_decorative_shared_shisa = SharedTangibleObjectTemplate
 	clientObjectCRC = 2687763225
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_shisa, "object/tangible/furniture/decorative/shared_shisa.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_shisa, "object/tangible/furniture/decorative/shared_shisa.iff")
 
 object_tangible_furniture_decorative_shared_slave_brazier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_slave_brazier.apt",
@@ -1364,7 +1364,7 @@ object_tangible_furniture_decorative_shared_slave_brazier = SharedTangibleObject
 	clientObjectCRC = 3637045167
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_slave_brazier, "object/tangible/furniture/decorative/shared_slave_brazier.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_slave_brazier, "object/tangible/furniture/decorative/shared_slave_brazier.iff")
 
 object_tangible_furniture_decorative_shared_spear_rack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_rack_spears.apt",
@@ -1417,7 +1417,7 @@ object_tangible_furniture_decorative_shared_spear_rack = SharedTangibleObjectTem
 	clientObjectCRC = 584986683
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_spear_rack, "object/tangible/furniture/decorative/shared_spear_rack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_spear_rack, "object/tangible/furniture/decorative/shared_spear_rack.iff")
 
 object_tangible_furniture_decorative_shared_streetlamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
@@ -1470,7 +1470,7 @@ object_tangible_furniture_decorative_shared_streetlamp = SharedTangibleObjectTem
 	clientObjectCRC = 1025826272
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_streetlamp, "object/tangible/furniture/decorative/shared_streetlamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_streetlamp, "object/tangible/furniture/decorative/shared_streetlamp.iff")
 
 object_tangible_furniture_decorative_shared_stuffed_fish = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fish_lg_s1.apt",
@@ -1523,7 +1523,7 @@ object_tangible_furniture_decorative_shared_stuffed_fish = SharedTangibleObjectT
 	clientObjectCRC = 3754610369
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_stuffed_fish, "object/tangible/furniture/decorative/shared_stuffed_fish.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_stuffed_fish, "object/tangible/furniture/decorative/shared_stuffed_fish.iff")
 
 object_tangible_furniture_decorative_shared_tanning_hide_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_hide_tanning_s01.apt",
@@ -1576,7 +1576,7 @@ object_tangible_furniture_decorative_shared_tanning_hide_s01 = SharedTangibleObj
 	clientObjectCRC = 92142046
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s01, "object/tangible/furniture/decorative/shared_tanning_hide_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s01, "object/tangible/furniture/decorative/shared_tanning_hide_s01.iff")
 
 object_tangible_furniture_decorative_shared_tanning_hide_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_hide_tanning_s02.apt",
@@ -1629,7 +1629,7 @@ object_tangible_furniture_decorative_shared_tanning_hide_s02 = SharedTangibleObj
 	clientObjectCRC = 3731509577
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s02, "object/tangible/furniture/decorative/shared_tanning_hide_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s02, "object/tangible/furniture/decorative/shared_tanning_hide_s02.iff")
 
 object_tangible_furniture_decorative_shared_tatooine_tapestry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_tapestry_tato.apt",
@@ -1682,4 +1682,4 @@ object_tangible_furniture_decorative_shared_tatooine_tapestry = SharedTangibleOb
 	clientObjectCRC = 2550512766
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tatooine_tapestry, "object/tangible/furniture/decorative/shared_tatooine_tapestry.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_tatooine_tapestry, "object/tangible/furniture/decorative/shared_tatooine_tapestry.iff")
