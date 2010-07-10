@@ -37,6 +37,22 @@ class CreatureThinkEvent;
 
 using namespace server::zone::objects::creature::events;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
+class CreatureMoveEvent;
+
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::events;
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -63,6 +79,8 @@ public:
 	void activateRecovery();
 
 	void doRecovery();
+
+	void doMovement();
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
@@ -94,6 +112,8 @@ class NonPlayerCreatureObjectImplementation : public CreatureObjectImplementatio
 protected:
 	Reference<CreatureThinkEvent*> thinkEvent;
 
+	Reference<CreatureMoveEvent*> moveEvent;
+
 public:
 	NonPlayerCreatureObjectImplementation();
 
@@ -102,6 +122,8 @@ public:
 	virtual void activateRecovery();
 
 	void doRecovery();
+
+	void doMovement();
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
@@ -151,6 +173,8 @@ public:
 	void activateRecovery();
 
 	void doRecovery();
+
+	void doMovement();
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 

@@ -37,7 +37,7 @@ public:
 			CloneSpawnPoint point;
 			point.parseFromLua(&a);
 
-			System::out << "adding spawning point" << endl;
+			//System::out << "adding spawning point" << endl;
 
 			spawningPoints.add(point);
 

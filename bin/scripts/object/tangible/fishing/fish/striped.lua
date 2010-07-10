@@ -42,7 +42,7 @@
 
 
 object_tangible_fishing_fish_striped = object_tangible_fishing_fish_shared_striped:new {
-
+	gameObjectType = 8234
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_striped, "object/tangible/fishing/fish/striped.iff")

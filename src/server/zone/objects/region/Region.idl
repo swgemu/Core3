@@ -57,6 +57,8 @@ class Region extends ActiveArea {
 	protected VectorMap<unsigned long, BazaarTerminal> bazaars;
 	
 	public Region() {
+		super();
+		
 		bazaars.setNoDuplicateInsertPlan();
 		bazaars.setNullValue(null);
 	}

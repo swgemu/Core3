@@ -42,7 +42,7 @@
 
 
 object_tangible_fishing_fish_faa = object_tangible_fishing_fish_shared_faa:new {
-
+	gameObjectType = 8234
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_faa, "object/tangible/fishing/fish/faa.iff")
