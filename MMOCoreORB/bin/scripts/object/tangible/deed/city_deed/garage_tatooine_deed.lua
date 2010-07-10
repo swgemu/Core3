@@ -42,7 +42,10 @@
 
 
 object_tangible_deed_city_deed_garage_tatooine_deed = object_tangible_deed_city_deed_shared_garage_tatooine_deed:new {
-
+	templateType = DEED,
+	gameObjectType = 8388609,
+	generatedObjectTemplate = "object/building/player/player_garage_tatooine_style_01.iff",
+	maxCondition = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_garage_tatooine_deed, "object/tangible/deed/city_deed/garage_tatooine_deed.iff")
