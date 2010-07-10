@@ -46,6 +46,7 @@ which carries forward this exception.
 #define CANCELCRAFTINGSESSIONCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
 
 class CancelCraftingSessionCommand : public QueueCommand {
 public:
@@ -66,8 +67,14 @@ public:
 		if(creature == NULL || !creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		ManagedReference<PlayerObject* > playerObject = ((PlayerCreature*)creature)->getPlayerObject();
-		playerObject->cancelCraftingSession();
+		ManagedReference<PlayerCreature* > player = ((PlayerCreature*)creature);
+
+		ManagedReference<CraftingTool* > craftingTool = player->getLastCraftingToolUsed();
+
+		if(craftingTool != NULL)
+			craftingTool->cancelCraftingSession(player);
+		else
+			return GENERALERROR;
 
 		return SUCCESS;
 	}

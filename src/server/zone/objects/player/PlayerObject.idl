@@ -55,8 +55,6 @@ include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.managers.crafting.schematicmap.DraftSchematicGroup;
 import server.zone.ZoneClientSession;
-include server.zone.objects.tangible.tool.CraftingStation;
-include server.zone.objects.tangible.tool.CraftingTool;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaVector;
 import server.zone.objects.waypoint.WaypointObject;
@@ -66,7 +64,6 @@ include server.zone.objects.player.variables.SkillList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
-include server.zone.objects.player.craftingsession.CraftingSession;
 import server.zone.Zone;
 include server.zone.templates.SharedObjectTemplate;
 
@@ -108,9 +105,6 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected SchematicList schematicList;
-	
-	@dereferenced
-	protected CraftingSession craftingSession;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -396,6 +390,14 @@ class PlayerObject extends IntangibleObject {
 		return schematicList;
 	}
 	
+	public DraftSchematic getSchematic(int i) {
+		return schematicList.get(i);
+	}
+	
+	@local
+	@dereferenced
+	public native Vector<DraftSchematic> filterSchematicList(Vector<unsigned int> enabledTabs);
+	
 	public int getFoodFilling() {
 		return foodFilling;
 	}
@@ -433,30 +435,5 @@ class PlayerObject extends IntangibleObject {
 	public int getExperience(final string xp) {
 		return experienceList.get(xp);
 	}
-	
-	@local
-	public native void requestCraftingSession(PlayerCreature player, CraftingTool craftingTool);
-	
-	@local
-	public native void requestCraftingSession(PlayerCreature player, CraftingStation craftingStation);
-	
-	@local
-	public native void cancelCraftingSession();
-	
-	@local
-	private native CraftingStation findCraftingStation(PlayerCreature player, int toolType);
-	
-	@local
-	private native CraftingTool findCraftingTool(PlayerCreature player, int stationType);
-	
-	@local
-	@dereferenced
-	public native Vector<DraftSchematic> filterSchematicList(Vector<unsigned int> enabledTabs);
-	
-	@local
-	public native void selectDraftSchematic(PlayerCreature player, int index);
-	
-	@local
-	public native void synchronizedUIListenForSchematic();
 	
 }

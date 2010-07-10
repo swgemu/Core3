@@ -594,12 +594,33 @@ SchematicList* PlayerObject::getSchematics() {
 		return ((PlayerObjectImplementation*) _impl)->getSchematics();
 }
 
-int PlayerObject::getFoodFilling() {
+DraftSchematic* PlayerObject::getSchematic(int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 39);
+		method.addSignedIntParameter(i);
+
+		return (DraftSchematic*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getSchematic(i);
+}
+
+Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(Vector<unsigned int>* enabledTabs) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((PlayerObjectImplementation*) _impl)->filterSchematicList(enabledTabs);
+}
+
+int PlayerObject::getFoodFilling() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 40);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -611,7 +632,7 @@ int PlayerObject::getFoodFillingMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -623,7 +644,7 @@ int PlayerObject::getDrinkFilling() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -635,7 +656,7 @@ int PlayerObject::getDrinkFillingMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -647,7 +668,7 @@ int PlayerObject::getJediState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -659,7 +680,7 @@ byte PlayerObject::getLanguageID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithByteReturn();
 	} else
@@ -687,60 +708,12 @@ int PlayerObject::getExperience(const String& xp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 		method.addAsciiParameter(xp);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((PlayerObjectImplementation*) _impl)->getExperience(xp);
-}
-
-void PlayerObject::requestCraftingSession(PlayerCreature* player, CraftingTool* craftingTool) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((PlayerObjectImplementation*) _impl)->requestCraftingSession(player, craftingTool);
-}
-
-void PlayerObject::requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((PlayerObjectImplementation*) _impl)->requestCraftingSession(player, craftingStation);
-}
-
-void PlayerObject::cancelCraftingSession() {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((PlayerObjectImplementation*) _impl)->cancelCraftingSession();
-}
-
-Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(Vector<unsigned int>* enabledTabs) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return ((PlayerObjectImplementation*) _impl)->filterSchematicList(enabledTabs);
-}
-
-void PlayerObject::selectDraftSchematic(PlayerCreature* player, int index) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((PlayerObjectImplementation*) _impl)->selectDraftSchematic(player, index);
-}
-
-void PlayerObject::synchronizedUIListenForSchematic() {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((PlayerObjectImplementation*) _impl)->synchronizedUIListenForSchematic();
 }
 
 /*
@@ -826,12 +799,11 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("friendList", &friendList);
 	addSerializableVariable("ignoreList", &ignoreList);
 	addSerializableVariable("schematicList", &schematicList);
-	addSerializableVariable("craftingSession", &craftingSession);
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/player/PlayerObject.idl(127):  		Logger.setLoggingName("PlayerObject");
+	// server/zone/objects/player/PlayerObject.idl(121):  		Logger.setLoggingName("PlayerObject");
 	Logger::setLoggingName("PlayerObject");
 }
 
@@ -839,152 +811,157 @@ void PlayerObjectImplementation::finalize() {
 }
 
 bool PlayerObjectImplementation::hasFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(303):  		return friendList.contains(name);
+	// server/zone/objects/player/PlayerObject.idl(297):  		return friendList.contains(name);
 	return (&friendList)->contains(name);
 }
 
 bool PlayerObjectImplementation::isIgnoring(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(307):  		return ignoreList.contains(name);
+	// server/zone/objects/player/PlayerObject.idl(301):  		return ignoreList.contains(name);
 	return (&ignoreList)->contains(name);
 }
 
 void PlayerObjectImplementation::addReverseFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(311):  		friendList.addReversePlayer(name);
+	// server/zone/objects/player/PlayerObject.idl(305):  		friendList.addReversePlayer(name);
 	(&friendList)->addReversePlayer(name);
 }
 
 void PlayerObjectImplementation::removeReverseFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(315):  		friendList.removeReversePlayer(name);
+	// server/zone/objects/player/PlayerObject.idl(309):  		friendList.removeReversePlayer(name);
 	(&friendList)->removeReversePlayer(name);
 }
 
 bool PlayerObjectImplementation::hasWaypoint(unsigned long long objectID) {
-	// server/zone/objects/player/PlayerObject.idl(321):  		return waypointList.contains(objectID);
+	// server/zone/objects/player/PlayerObject.idl(315):  		return waypointList.contains(objectID);
 	return (&waypointList)->contains(objectID);
 }
 
 bool PlayerObjectImplementation::hasSkill(Skill* skill) {
-	// server/zone/objects/player/PlayerObject.idl(326):  		return skillList.contains(skill);
+	// server/zone/objects/player/PlayerObject.idl(320):  		return skillList.contains(skill);
 	return (&skillList)->contains(skill);
 }
 
 unsigned int PlayerObjectImplementation::getCharacterBitmask() {
-	// server/zone/objects/player/PlayerObject.idl(332):  		return characterBitmask;
+	// server/zone/objects/player/PlayerObject.idl(326):  		return characterBitmask;
 	return characterBitmask;
 }
 
 String PlayerObjectImplementation::getTitle() {
-	// server/zone/objects/player/PlayerObject.idl(336):  		return title;
+	// server/zone/objects/player/PlayerObject.idl(330):  		return title;
 	return title;
 }
 
 unsigned int PlayerObjectImplementation::getAdminLevel() {
-	// server/zone/objects/player/PlayerObject.idl(340):  		return adminLevel;
+	// server/zone/objects/player/PlayerObject.idl(334):  		return adminLevel;
 	return adminLevel;
 }
 
 bool PlayerObjectImplementation::isDeveloper() {
-	// server/zone/objects/player/PlayerObject.idl(344):  		return adminLevel == DEV;
+	// server/zone/objects/player/PlayerObject.idl(338):  		return adminLevel == DEV;
 	return adminLevel == DEV;
 }
 
 bool PlayerObjectImplementation::isCSR() {
-	// server/zone/objects/player/PlayerObject.idl(348):  		return adminLevel == CSR;
+	// server/zone/objects/player/PlayerObject.idl(342):  		return adminLevel == CSR;
 	return adminLevel == CSR;
 }
 
 bool PlayerObjectImplementation::isPrivileged() {
-	// server/zone/objects/player/PlayerObject.idl(352):  		return adminLevel > 0;
+	// server/zone/objects/player/PlayerObject.idl(346):  		return adminLevel > 0;
 	return adminLevel > 0;
 }
 
 void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
-	// server/zone/objects/player/PlayerObject.idl(356):  		characterBitmask = bitmask;
+	// server/zone/objects/player/PlayerObject.idl(350):  		characterBitmask = bitmask;
 	characterBitmask = bitmask;
 }
 
 void PlayerObjectImplementation::setTitle(const String& characterTitle) {
-	// server/zone/objects/player/PlayerObject.idl(363):  		title = characterTitle;
+	// server/zone/objects/player/PlayerObject.idl(357):  		title = characterTitle;
 	title = characterTitle;
 }
 
 VectorMap<String, int>* PlayerObjectImplementation::getXpTypeCapList() {
-	// server/zone/objects/player/PlayerObject.idl(368):  	 return xpTypeCapList;
+	// server/zone/objects/player/PlayerObject.idl(362):  	 return xpTypeCapList;
 	return (&xpTypeCapList);
 }
 
 DeltaVectorMap<String, int>* PlayerObjectImplementation::getExperienceList() {
-	// server/zone/objects/player/PlayerObject.idl(373):  		return experienceList;
+	// server/zone/objects/player/PlayerObject.idl(367):  		return experienceList;
 	return (&experienceList);
 }
 
 int PlayerObjectImplementation::getForcePower() {
-	// server/zone/objects/player/PlayerObject.idl(377):  		return forcePower;
+	// server/zone/objects/player/PlayerObject.idl(371):  		return forcePower;
 	return forcePower;
 }
 
 int PlayerObjectImplementation::getForcePowerMax() {
-	// server/zone/objects/player/PlayerObject.idl(381):  		return forcePowerMax;
+	// server/zone/objects/player/PlayerObject.idl(375):  		return forcePowerMax;
 	return forcePowerMax;
 }
 
 WaypointList* PlayerObjectImplementation::getWaypointList() {
-	// server/zone/objects/player/PlayerObject.idl(386):  		return waypointList;
+	// server/zone/objects/player/PlayerObject.idl(380):  		return waypointList;
 	return (&waypointList);
 }
 
 SkillList* PlayerObjectImplementation::getSkills() {
-	// server/zone/objects/player/PlayerObject.idl(391):  		return skillList;
+	// server/zone/objects/player/PlayerObject.idl(385):  		return skillList;
 	return (&skillList);
 }
 
 SchematicList* PlayerObjectImplementation::getSchematics() {
-	// server/zone/objects/player/PlayerObject.idl(396):  		return schematicList;
+	// server/zone/objects/player/PlayerObject.idl(390):  		return schematicList;
 	return (&schematicList);
 }
 
+DraftSchematic* PlayerObjectImplementation::getSchematic(int i) {
+	// server/zone/objects/player/PlayerObject.idl(394):  		return schematicList.get(i);
+	return (&schematicList)->get(i);
+}
+
 int PlayerObjectImplementation::getFoodFilling() {
-	// server/zone/objects/player/PlayerObject.idl(400):  		return foodFilling;
+	// server/zone/objects/player/PlayerObject.idl(402):  		return foodFilling;
 	return foodFilling;
 }
 
 int PlayerObjectImplementation::getFoodFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(404):  		return foodFillingMax;
+	// server/zone/objects/player/PlayerObject.idl(406):  		return foodFillingMax;
 	return foodFillingMax;
 }
 
 int PlayerObjectImplementation::getDrinkFilling() {
-	// server/zone/objects/player/PlayerObject.idl(408):  		return drinkFilling;
+	// server/zone/objects/player/PlayerObject.idl(410):  		return drinkFilling;
 	return drinkFilling;
 }
 
 int PlayerObjectImplementation::getDrinkFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(412):  		return drinkFillingMax;
+	// server/zone/objects/player/PlayerObject.idl(414):  		return drinkFillingMax;
 	return drinkFillingMax;
 }
 
 int PlayerObjectImplementation::getJediState() {
-	// server/zone/objects/player/PlayerObject.idl(416):  		return jediState;
+	// server/zone/objects/player/PlayerObject.idl(418):  		return jediState;
 	return jediState;
 }
 
 byte PlayerObjectImplementation::getLanguageID() {
-	// server/zone/objects/player/PlayerObject.idl(420):  		return languageID;
+	// server/zone/objects/player/PlayerObject.idl(422):  		return languageID;
 	return languageID;
 }
 
 DeltaVector<String>* PlayerObjectImplementation::getFriendList() {
-	// server/zone/objects/player/PlayerObject.idl(425):  		return friendList;
+	// server/zone/objects/player/PlayerObject.idl(427):  		return friendList;
 	return (&friendList);
 }
 
 DeltaVector<String>* PlayerObjectImplementation::getIgnoreList() {
-	// server/zone/objects/player/PlayerObject.idl(430):  		return ignoreList;
+	// server/zone/objects/player/PlayerObject.idl(432):  		return ignoreList;
 	return (&ignoreList);
 }
 
 int PlayerObjectImplementation::getExperience(const String& xp) {
-	// server/zone/objects/player/PlayerObject.idl(434):  		return experienceList.get(xp);
+	// server/zone/objects/player/PlayerObject.idl(436):  		return experienceList.get(xp);
 	return (&experienceList)->get(xp);
 }
 
@@ -1102,24 +1079,27 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertSignedInt(getForcePowerMax());
 		break;
 	case 40:
-		resp->insertSignedInt(getFoodFilling());
+		resp->insertLong(getSchematic(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 41:
-		resp->insertSignedInt(getFoodFillingMax());
+		resp->insertSignedInt(getFoodFilling());
 		break;
 	case 42:
-		resp->insertSignedInt(getDrinkFilling());
+		resp->insertSignedInt(getFoodFillingMax());
 		break;
 	case 43:
-		resp->insertSignedInt(getDrinkFillingMax());
+		resp->insertSignedInt(getDrinkFilling());
 		break;
 	case 44:
-		resp->insertSignedInt(getJediState());
+		resp->insertSignedInt(getDrinkFillingMax());
 		break;
 	case 45:
-		resp->insertByte(getLanguageID());
+		resp->insertSignedInt(getJediState());
 		break;
 	case 46:
+		resp->insertByte(getLanguageID());
+		break;
+	case 47:
 		resp->insertSignedInt(getExperience(inv->getAsciiParameter(_param0_getExperience__String_)));
 		break;
 	default:
@@ -1263,6 +1243,10 @@ int PlayerObjectAdapter::getForcePower() {
 
 int PlayerObjectAdapter::getForcePowerMax() {
 	return ((PlayerObjectImplementation*) impl)->getForcePowerMax();
+}
+
+DraftSchematic* PlayerObjectAdapter::getSchematic(int i) {
+	return ((PlayerObjectImplementation*) impl)->getSchematic(i);
 }
 
 int PlayerObjectAdapter::getFoodFilling() {

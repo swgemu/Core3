@@ -52,7 +52,7 @@ import engine.core.ManagedObject;
 import server.zone.objects.player.PlayerCreature;
 include server.zone.packets.scene.AttributeListMessage;
 
-import server.zone.objects.resource.ResourceContainer;
+include server.zone.objects.resource.ResourceContainer;
 include server.zone.objects.resource.SpawnDensityMap;
 include server.zone.objects.resource.SpawnMap;
 

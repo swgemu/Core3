@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "server/zone/packets/resource/SurveyMessage.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 class ResourceSpawner;
 

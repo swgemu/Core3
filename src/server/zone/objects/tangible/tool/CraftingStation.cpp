@@ -127,7 +127,7 @@ void CraftingStation::setComplexityLevel(int level) {
 		((CraftingStationImplementation*) _impl)->setComplexityLevel(level);
 }
 
-void CraftingStation::reqeustCraftingSession(PlayerCreature* player) {
+SceneObject* CraftingStation::findCraftingTool(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -135,9 +135,9 @@ void CraftingStation::reqeustCraftingSession(PlayerCreature* player) {
 		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
-		method.executeWithVoidReturn();
+		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		((CraftingStationImplementation*) _impl)->reqeustCraftingSession(player);
+		return ((CraftingStationImplementation*) _impl)->findCraftingTool(player);
 }
 
 /*
@@ -277,7 +277,7 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		setComplexityLevel(inv->getSignedIntParameter());
 		break;
 	case 12:
-		reqeustCraftingSession((PlayerCreature*) inv->getObjectParameter());
+		resp->insertLong(findCraftingTool((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -310,8 +310,8 @@ void CraftingStationAdapter::setComplexityLevel(int level) {
 	((CraftingStationImplementation*) impl)->setComplexityLevel(level);
 }
 
-void CraftingStationAdapter::reqeustCraftingSession(PlayerCreature* player) {
-	((CraftingStationImplementation*) impl)->reqeustCraftingSession(player);
+SceneObject* CraftingStationAdapter::findCraftingTool(PlayerCreature* player) {
+	return ((CraftingStationImplementation*) impl)->findCraftingTool(player);
 }
 
 /*

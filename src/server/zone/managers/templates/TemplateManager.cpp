@@ -11,6 +11,7 @@
 #include "server/zone/templates/intangible/SharedConstructionContractObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedManufactureSchematicObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedDraftSchematicObjectTemplate.h"
+#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedMissionDataObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedMissionListEntryObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedMissionObjectTemplate.h"
@@ -133,7 +134,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<DeedTemplate>(SharedObjectTemplate::DEED);
 	templateFactory.registerObject<MissionTerminalTemplate>(SharedObjectTemplate::MISSIONTERMINAL);
 	templateFactory.registerObject<CloningBuildingObjectTemplate>(SharedObjectTemplate::CLONINGBUILDING);
-
+	templateFactory.registerObject<DraftSchematicObjectTemplate>(SharedObjectTemplate::DRAFTSCHEMATIC);
 }
 
 
@@ -238,7 +239,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("DEED", SharedObjectTemplate::DEED);
 	luaTemplatesInstance->setGlobalInt("MISSIONTERMINAL", SharedObjectTemplate::MISSIONTERMINAL);
 	luaTemplatesInstance->setGlobalInt("CLONINGBUILDING", SharedObjectTemplate::CLONINGBUILDING);
-
+	luaTemplatesInstance->setGlobalInt("DRAFTSCHEMATIC", SharedObjectTemplate::DRAFTSCHEMATIC);
 }
 
 int TemplateManager::includeFile(lua_State* L) {

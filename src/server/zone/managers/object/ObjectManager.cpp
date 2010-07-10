@@ -261,7 +261,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ResourceContainer>(SceneObject::ORGANICSTRUCTURAL);
 	objectFactory.registerObject<ResourceContainer>(SceneObject::QUESTREOURCE);
 
-	objectFactory.registerObject<ManufactureSchematic>(SceneObject::DRAFTSCHEMATIC);
+	objectFactory.registerObject<DraftSchematic>(SceneObject::DRAFTSCHEMATIC);
+	objectFactory.registerObject<ManufactureSchematic>(SceneObject::MANUFACTURINGSCHEMATIC);
 
 }
 

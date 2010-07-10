@@ -475,6 +475,14 @@ System::out << schematic->getObjectNameStringIdName() << endl;
 	}
 }
 
+Vector<ManagedReference<DraftSchematic* > > PlayerObjectImplementation::filterSchematicList(
+		Vector<uint32>* enabledTabs) {
+
+	Locker _locker(_this);
+
+	return schematicList.filterSchematicList(enabledTabs);
+}
+
 void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient) {
 	String nameLower = name.toLowerCase();
 
@@ -707,132 +715,4 @@ void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient)
 		parent->sendMessage(dplay9);
 	}
 
-}
-
-
-void PlayerObjectImplementation::requestCraftingSession(
-		PlayerCreature* player, CraftingTool* craftingTool) {
-
-	Locker _locker(player);
-
-	//Locate closest crafting station, if exists.
-	CraftingStation* craftingStation = findCraftingStation(player, craftingTool->getToolType());
-
-	craftingSession.request(player, _this, craftingTool, craftingStation);
-}
-
-void PlayerObjectImplementation::requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation) {
-
-	Locker _locker(player);
-
-	// Locate associated crafting tool
-	CraftingTool* craftingTool = findCraftingTool(player, craftingStation->getStationType());
-
-	craftingSession.request(player, _this, craftingTool, craftingStation);
-}
-
-void PlayerObjectImplementation::cancelCraftingSession() {
-	craftingSession.cancel();
-}
-
-CraftingStation* PlayerObjectImplementation::findCraftingStation(PlayerCreature* player,
-		int toolType){
-
-	CraftingStation* station;
-	ZoneServer* server = player->getZone()->getZoneServer();
-	Zone* zone = player->getZone();
-
-	Locker zoneLocker(zone);
-
-	for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* scno =
-				(SceneObjectImplementation*) player->getInRangeObject(i);
-
-		if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
-
-			station = (CraftingStation*) server->getObject(scno->getObjectID());
-
-			if(station == NULL)
-				continue;
-
-			if (toolType == station->getStationType() || (toolType
-					== CraftingTool::JEDI && station->getStationType()
-					== CraftingTool::WEAPON)) {
-				return station;
-			}
-		}
-	}
-
-	return NULL;
-}
-
-CraftingTool* PlayerObjectImplementation::findCraftingTool(
-		PlayerCreature* player, int stationType) {
-
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
-			"inventory");
-	Locker inventoryLocker(inventory);
-	CraftingTool* craftingTool = NULL;
-
-	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
-
-		SceneObject* object = inventory->getContainerObject(i);
-
-		if (object != NULL && object->isCraftingTool()) {
-
-			int toolType = ((CraftingTool*) object)->getToolType();
-
-			if (toolType == stationType) {
-				craftingTool = (CraftingTool*) object;
-				return craftingTool;
-			}
-
-			if (toolType == CraftingTool::JEDI && stationType
-					== CraftingTool::WEAPON) {
-				craftingTool = (CraftingTool*) object;
-			}
-		}
-
-	}
-	return craftingTool;
-}
-
-Vector<ManagedReference<DraftSchematic* > > PlayerObjectImplementation::filterSchematicList(
-		Vector<uint32>* enabledTabs) {
-
-	Locker _locker(_this);
-
-	return schematicList.filterSchematicList(enabledTabs);
-}
-
-void PlayerObjectImplementation::selectDraftSchematic(PlayerCreature* player, int index) {
-
-	DraftSchematic* schematic = schematicList.get(index);
-
-	if(schematic == NULL) {
-		craftingSession.cancel();
-		return;
-	}
-
-	try {
-
-		ManufactureSchematic* newSchematic =
-				(ManufactureSchematic*) player->getZoneServer()->createObject(
-						schematic->getClientObjectCRC(), 0);
-
-		newSchematic->setDraftSchematic(schematic);
-
-		TangibleObject* tano =
-				(TangibleObject*) player->getZoneServer()->createObject(
-						schematic->getTanoCRC(), 0);
-
-		craftingSession.selectDraftSchematic(newSchematic, tano);
-
-	} catch (...) {
-		player->sendSystemMessage("ui_craft", "err_no_prototype");
-	}
-}
-
-void PlayerObjectImplementation::synchronizedUIListenForSchematic() {
-	craftingSession.synchronizedUIListen();
 }

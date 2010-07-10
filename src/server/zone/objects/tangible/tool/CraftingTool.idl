@@ -47,7 +47,10 @@ package server.zone.objects.tangible.tool;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
+include server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.player.PlayerCreature;
+include server.zone.objects.tangible.tool.CraftingStation;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
@@ -59,7 +62,18 @@ class CraftingTool extends ToolTangibleObject {
 	protected string status;
 	
 	@dereferenced
-	Vector<unsigned int> enabledTabs;
+	protected Vector<unsigned int> enabledTabs;
+	
+	//@dereferenced
+	//protected transient CraftingSession craftingSession;
+	
+	protected transient CraftingStation craftingStation;
+	
+	protected transient int state;
+	protected transient int insertCounter;
+	
+	protected transient ManufactureSchematic manufactureSchematic;
+	protected transient TangibleObject prototype;
 	
 	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
 	public static final int FOOD = 2; // Food and Chemical Crafting Tool
@@ -77,6 +91,8 @@ class CraftingTool extends ToolTangibleObject {
 		super.initializeTransientMembers();
 		
 		Logger.setLoggingName("CraftingTool");
+		
+		state = 1;
 	}
 	
 	@local
@@ -114,5 +130,20 @@ class CraftingTool extends ToolTangibleObject {
 	@local
 	public native Vector<unsigned int> getToolTabs();
 	
-	public native void requestCraftingSession(PlayerCreature player);
+	@local
+	public native void requestCraftingSession(PlayerCreature player, CraftingStation craftingStation = null);
+	
+	private native void sendStart(PlayerCreature player);
+	
+	@local
+	public native void cancelCraftingSession(PlayerCreature player);
+	
+	@local
+	private native void locateCraftingStation(PlayerCreature player, int toolType);
+
+	@local
+	public native void selectDraftSchematic(PlayerCreature player, int index);
+	
+	@local
+	public native void synchronizedUIListenForSchematic(PlayerCreature player);
 }

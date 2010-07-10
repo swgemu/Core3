@@ -42,22 +42,36 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef RESOURCEWEIGHTS_H_
-#define RESOURCEWEIGHTS_H_
+#ifndef CRAFTINGSESSION_H_
+#define CRAFTINGSESSION_H_
 
 #include "engine/engine.h"
-#include "ResourceWeight.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "CraftingSlots.h"
 
-class ResourceWeights : public Vector<ResourceWeight* >{
+class CraftingSession {
+private:
+	ManagedReference<ManufactureSchematic* > schematic;
+	ManagedReference<TangibleObject* > object;
+
+	int insertCount;
+	int currentState;
+
 public:
-	ResourceWeights() {
+	CraftingSession();
 
-	}
+	~CraftingSession();
 
-	~ResourceWeights() {
-		for (int i = 0; i < size(); ++i)
-			delete get(i);
-	}
+
+	void selectDraftSchematic(ManufactureSchematic* manu, TangibleObject* tano);
+
+	void synchronizedUIListen();
+
+private:
+
+
+
 };
 
-#endif /* RESOURCEWEIGHTS_H_ */
+#endif /* CRAFTINGSESSION_H_ */

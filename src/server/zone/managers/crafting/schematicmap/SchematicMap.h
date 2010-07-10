@@ -59,39 +59,36 @@ which carries forward this exception.
 
 class SchematicMap : public Singleton<SchematicMap>, public Lua {
 
-	static VectorMap<uint32, ManagedReference<DraftSchematic* > > nameMap;
-	static VectorMap<String, DraftSchematicGroup* > groupMap;
-	static uint32 nextSchematicID;
+	VectorMap<uint32, ManagedReference<DraftSchematic* > > schematicIdMap;
+	VectorMap<String, DraftSchematicGroup* > groupMap;
+	ZoneServer* zoneServer;
+	ObjectManager* objectManager;
 
 public:
 
 	SchematicMap();
 	~SchematicMap();
 
-	void initialize() {
-		loadDraftSchematicFile();
-	}
+	void initialize(ZoneServer* server, ObjectManager* objMan);
 
-	static void addSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
-	static void removeSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
-	static void addSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
-	static void removeSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
+	void loadDraftSchematicDatabase();
+
+	void addSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
+	void removeSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
+	void addSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
+	void removeSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
 
 	void sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID);
 	void sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID);
 
 	DraftSchematic* get(uint32 schemid) {
-		return nameMap.get(schemid);
+		return schematicIdMap.get(schemid);
 	}
 
 private:
-	void registerFunctions();
 
 	void loadDraftSchematicFile();
-
-	static void mapDraftSchematic(const String& groupname, DraftSchematic* schematic);
-	static int runDraftSchematicFile(lua_State* L);
-	static int addDraftSchematicToServer(lua_State *L);
+	void mapDraftSchematic(DraftSchematic* schematic);
 };
 
 #endif /* SCHEMATICMAP_H_ */

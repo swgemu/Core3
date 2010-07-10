@@ -47,84 +47,38 @@ package server.zone.object.draftschematic.DraftSchematic;
 include server.zone.packets.scene.AttributeListMessage;
 include server.zone.packets.object.ObjectControllerMessage;
 import engine.service.proto.BaseMessage;
+include server.zone.templates.intangible.DraftSchematicObjectTemplate;
+include server.zone.objects.intangible.IntangibleObject;
 
-include server.zone.objects.draftschematic.draftslot.DraftSlots;
 include server.zone.objects.draftschematic.draftslot.DraftSlot;
 include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
-include server.zone.objects.draftschematic.resourceweight.ResourceWeights;
 include server.zone.objects.scene.variables.StringId;
+include server.zone.templates.SharedObjectTemplate;
 
-import engine.core.ManagedObject;
-import server.zone.objects.player.PlayerCreature;
+include server.zone.objects.player.PlayerCreature;
 
-class DraftSchematic extends ManagedObject implements Logger {
+class DraftSchematic extends IntangibleObject {
 
 	/// Arbitrary ID for the schematic
-	private unsigned int schematicID;
-
-	// CRC
-	private unsigned int clientObjectCRC;
+	private unsigned int schematicID; 
 	
-	@dereferenced
-	StringId objectName;
+	/// SharedDraftSchematicTemplate
+	transient private DraftSchematicObjectTemplate schematicTemplate;
 	
-	/// Level of complexity
-	private float complexity;
-	
-	/// Indicates what tab in the crafting tool this item is found on
-	/*
-	 * BITMASK FOR TABS
-	 * 0 = unknown													0000
-	 * 1 = weapons													0001
-	 * 2 = armor													0010
-	 * 4 = food														0100
-	 * 8 = clothing													1000
-	 * 16 = vehicle											   0001 0000
-	 * 32 =	droid											   0010 0000
-	 * 64 = chemical										   0100 0000
-	 * 128 = tissues									  	   1000 0000
-	 * 256 = creatures									  0001 0000 0000
-	 * 512 = furniture									  0010 0000 0000
-	 * 1024 = installation								  0100 0000 0000
-	 * 2048 = lightsaber							 	  1000 0000 0000
-	 * 4096 = generic item							 0001 0000 0000 0000
-	 * 8192 = genetics								 0010 0000 0000 0000
-	 * 16384 = tailor, Mandalorian					 0100 0000 0000 0000
-	 * 32768 = armorsmith, Mandalorian				 1000 0000 0000 0000
-	 * 65536 = Droid Engineer, Mandalorian		0001 0000 0000 0000 0000
-	 * 131072 = Starship Components				0010 0000 0000 0000 0000
-	 * 262144 = Ship Tools						0100 0000 0000 0000 0000
-	 * 524288 = Misc							1000 0000 0000 0000 0000
-	 * * */
-	private unsigned int toolTab;
-	
-	/// The datapad size of the schematic
-	private int size;
-	
-	/// Xp Type awarded
-	protected string xpType;
-	
-	/// XP Amount awarded
-	protected int xpAmount;
-	
-	/// Assembly skill used
-	protected string assemblySkill;
-	
-	/// Experimentation Skill used
-	protected string experiementationSkill;
-	
-	@dereferenced
-	protected DraftSlots draftSlots;
-	
-	@dereferenced
-	protected ResourceWeights resourceWeights;
-	
-	unsigned int tanoCRC;
-	
-	public DraftSchematic() {
-		Logger.setLoggingName("DraftSchematic");	
+	public DraftSchematic() {	
+		Logger.setLoggingName("DraftSchematic");
 	}
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -163,33 +117,7 @@ class DraftSchematic extends ManagedObject implements Logger {
 	 */
 	public native void sendResourceWeightsTo(PlayerCreature player);
 
-	@local
-	public void addSlot(DraftSlot slot) {
-		draftSlots.add(slot);
-	}
-	
-	public int getDraftSlotCount() {
-		return draftSlots.size();
-	}
-	
-	@local
-	public DraftSlot getDraftSlot(int i) {
-		return draftSlots.get(i);
-	}
-	
-	@local
-	public void addResourceWeight(ResourceWeight weight) {
-		resourceWeights.add(weight);
-	}
-	
-	public int getResourceWeightCount() {
-		return resourceWeights.size();
-	}
-	
-	@local
-	public ResourceWeight getResourceWeight(int i) {
-		return resourceWeights.get(i);
-	}
+	public native SceneObject createManufactureSchematic();
 	
 	/**
 	 * Setter for the schematic ID
@@ -207,138 +135,59 @@ class DraftSchematic extends ManagedObject implements Logger {
 		return schematicID;
 	}
 	
-	/**
-	 * Setter for complexity
-	 * \param complex Complexity Level
-	 */
-	public void setComplexity(float complex) {
-		complexity = complex;
-	}
+	public native int getDraftSlotCount();
+	
+	@local
+	public native DraftSlot getDraftSlot(int i);
+	
+	public native int getResourceWeightCount();
+	
+	@local
+	public native ResourceWeight getResourceWeight(int i);
 	
 	/**
 	 * Getter for complexity
 	 * \return complexity
 	 */
-	public float getComplexity() {
-		return complexity;
-	}
-	
-	/**
-	 * Setter for the crafting tool tab mask
-	 * \param tab crafting tool tab
-	 */
-	public void setToolTab(unsigned int tab) {
-		toolTab = tab;
-	}
-	
+	public native float getComplexity();
+
 	/**
 	 * Setter for the crafting tool tab mask
 	 * \return toolTab
 	 */
-	public unsigned int getToolTab() {
-		return toolTab;
-	}
-	
-	/**
-	 * Setter for the schematic size
-	 * \param s size of schematic
-	 */
-	public void setSize(unsigned int s) {
-		size = s;
-	}
-	
+	public native unsigned int getToolTab();
+
 	/**
 	 * getter for the schematic size
 	 * \return size
 	 */
-	public float getSize() {
-		return size;
-	}
-	
-	/**
-	 * Setter for xptype
-	 * \param type type of xp
-	 */
-	public void setXpType(string type) {
-		xpType = type;
-	}
-	
+	public native float getSize();
+
 	/**
 	 * getter for xpType
 	 * \return size
 	 */
-	public string getXpType() {
-		return xpType;
-	}
-	
-	/**
-	 * Setter for xpAmount
-	 * \param amount xp amount
-	 */
-	public void setXpAmount(int amount) {
-		xpAmount = amount;
-	}
-	
+	public native string getXpType();
+
 	/**
 	 * getter for the xpAmount
 	 * \return xpAmount
 	 */
-	public int getXpAmount() {
-		return xpAmount;
-	}
+	public native int getXpAmount();
 
-	/**
-	 * Setter for assemblySkill
-	 * \param skill assemblySkill
-	 */
-	public void setAssemblySkill(string skill) {
-		assemblySkill = skill;
-	}
-	
 	/**
 	 * getter for assemblyMod
 	 * \return assemblyMod
 	 */
-	public string getAssemblySkill() {
-		return assemblySkill;
-	}
+	public native string getAssemblySkill();
 
-	/**
-	 * Setter for experiementationSkill
-	 * \param skill experiementationSkill
-	 */
-	public void setExperiementationSkill(string skill) {
-		experiementationSkill = skill;
-	}
-	
 	/**
 	 * getter for experiementationMod
 	 * \return experiementationMod
 	 */
-	public string getExperiementationSkill() {
-		return experiementationSkill;
-	}
+	public native string getExperiementationSkill();
 	
-	public void setClientObjectCRC(unsigned int crc) {
-		clientObjectCRC = crc;
-	}
-	
-	public unsigned int getClientObjectCRC() {
-		return clientObjectCRC;
-	}
-	
-	@local
-	public native void setObjectName(@dereferenced StringId stringId);
-	
-	public string getObjectNameStringIdName() {
-		return objectName.getStringID();
-	}
-	
-	public void setTanoCRC(unsigned int crc) {
-		tanoCRC = crc;
-	}
-	
-	public unsigned int getTanoCRC() {
-		return tanoCRC;
-	}
+	public native unsigned int getTanoCRC();
+
+	public native string getGroupName();
 }

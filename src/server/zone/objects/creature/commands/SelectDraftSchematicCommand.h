@@ -73,15 +73,25 @@ public:
 
 	    ManagedReference<PlayerCreature* > player = (PlayerCreature*) creature;
 
+	    ManagedReference<CraftingTool* > craftingTool = player->getLastCraftingToolUsed();
+
+	    if(craftingTool == NULL) {
+			player->sendSystemMessage("ui_craft", "err_no_crafting_tool");
+	    	return GENERALERROR;
+	    }
+
 		StringTokenizer tokenizer(arguments.toString());
 
 		if(tokenizer.hasMoreTokens()) {
 
 			int index = tokenizer.getIntToken();
-			player->getPlayerObject()->selectDraftSchematic(player, index);
 
-		} else
+			craftingTool->selectDraftSchematic(player, index);
+
+		} else {
+			player->sendSystemMessage("ui_craft", "err_no_draft_schematic_selected");
 			return GENERALERROR;
+		}
 
 		return SUCCESS;
 	}

@@ -6,8 +6,6 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-#include "server/zone/objects/resource/ResourceContainer.h"
-
 /*
  *	ResourceSpawnStub
  */

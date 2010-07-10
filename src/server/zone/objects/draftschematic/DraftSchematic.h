@@ -11,37 +11,25 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace player {
-
-class PlayerCreature;
-
-} // namespace player
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::player;
-
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "server/zone/packets/object/ObjectControllerMessage.h"
 
-#include "server/zone/objects/draftschematic/draftslot/DraftSlots.h"
+#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
+
+#include "server/zone/objects/intangible/IntangibleObject.h"
 
 #include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
 
 #include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
 
-#include "server/zone/objects/draftschematic/resourceweight/ResourceWeights.h"
-
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "engine/core/ManagedObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "engine/service/proto/BaseMessage.h"
 
 namespace server {
 namespace zone {
@@ -49,9 +37,13 @@ namespace object {
 namespace draftschematic {
 namespace DraftSchematic {
 
-class DraftSchematic : public ManagedObject {
+class DraftSchematic : public IntangibleObject {
 public:
 	DraftSchematic();
+
+	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -61,61 +53,37 @@ public:
 
 	void sendResourceWeightsTo(PlayerCreature* player);
 
-	void addSlot(DraftSlot* slot);
-
-	int getDraftSlotCount();
-
-	DraftSlot* getDraftSlot(int i);
-
-	void addResourceWeight(ResourceWeight* weight);
-
-	int getResourceWeightCount();
-
-	ResourceWeight* getResourceWeight(int i);
+	SceneObject* createManufactureSchematic();
 
 	void setSchematicID(unsigned int id);
 
 	unsigned int getSchematicID();
 
-	void setComplexity(float complex);
+	int getDraftSlotCount();
+
+	DraftSlot* getDraftSlot(int i);
+
+	int getResourceWeightCount();
+
+	ResourceWeight* getResourceWeight(int i);
 
 	float getComplexity();
 
-	void setToolTab(unsigned int tab);
-
 	unsigned int getToolTab();
-
-	void setSize(unsigned int s);
 
 	float getSize();
 
-	void setXpType(String& type);
-
 	String getXpType();
-
-	void setXpAmount(int amount);
 
 	int getXpAmount();
 
-	void setAssemblySkill(String& skill);
-
 	String getAssemblySkill();
-
-	void setExperiementationSkill(String& skill);
 
 	String getExperiementationSkill();
 
-	void setClientObjectCRC(unsigned int crc);
-
-	unsigned int getClientObjectCRC();
-
-	void setObjectName(StringId& stringId);
-
-	String getObjectNameStringIdName();
-
-	void setTanoCRC(unsigned int crc);
-
 	unsigned int getTanoCRC();
+
+	String getGroupName();
 
 protected:
 	DraftSchematic(DummyConstructorParameter* param);
@@ -124,7 +92,7 @@ protected:
 
 	String _return_getAssemblySkill;
 	String _return_getExperiementationSkill;
-	String _return_getObjectNameStringIdName;
+	String _return_getGroupName;
 	String _return_getXpType;
 
 	friend class DraftSchematicHelper;
@@ -144,39 +112,19 @@ namespace object {
 namespace draftschematic {
 namespace DraftSchematic {
 
-class DraftSchematicImplementation : public ManagedObjectImplementation, public Logger {
+class DraftSchematicImplementation : public IntangibleObjectImplementation {
 	unsigned int schematicID;
 
-	unsigned int clientObjectCRC;
-
-	StringId objectName;
-
-	float complexity;
-
-	unsigned int toolTab;
-
-	int size;
-
-protected:
-	String xpType;
-
-	int xpAmount;
-
-	String assemblySkill;
-
-	String experiementationSkill;
-
-	DraftSlots draftSlots;
-
-	ResourceWeights resourceWeights;
-
-private:
-	unsigned int tanoCRC;
+	DraftSchematicObjectTemplate* schematicTemplate;
 
 public:
 	DraftSchematicImplementation();
 
 	DraftSchematicImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -190,61 +138,37 @@ private:
 public:
 	void sendResourceWeightsTo(PlayerCreature* player);
 
-	void addSlot(DraftSlot* slot);
-
-	int getDraftSlotCount();
-
-	DraftSlot* getDraftSlot(int i);
-
-	void addResourceWeight(ResourceWeight* weight);
-
-	int getResourceWeightCount();
-
-	ResourceWeight* getResourceWeight(int i);
+	SceneObject* createManufactureSchematic();
 
 	void setSchematicID(unsigned int id);
 
 	unsigned int getSchematicID();
 
-	void setComplexity(float complex);
+	int getDraftSlotCount();
+
+	DraftSlot* getDraftSlot(int i);
+
+	int getResourceWeightCount();
+
+	ResourceWeight* getResourceWeight(int i);
 
 	float getComplexity();
 
-	void setToolTab(unsigned int tab);
-
 	unsigned int getToolTab();
-
-	void setSize(unsigned int s);
 
 	float getSize();
 
-	void setXpType(String& type);
-
 	String getXpType();
-
-	void setXpAmount(int amount);
 
 	int getXpAmount();
 
-	void setAssemblySkill(String& skill);
-
 	String getAssemblySkill();
-
-	void setExperiementationSkill(String& skill);
 
 	String getExperiementationSkill();
 
-	void setClientObjectCRC(unsigned int crc);
-
-	unsigned int getClientObjectCRC();
-
-	void setObjectName(StringId& stringId);
-
-	String getObjectNameStringIdName();
-
-	void setTanoCRC(unsigned int crc);
-
 	unsigned int getTanoCRC();
+
+	String getGroupName();
 
 	DraftSchematic* _this;
 
@@ -279,11 +203,13 @@ protected:
 	friend class DraftSchematic;
 };
 
-class DraftSchematicAdapter : public ManagedObjectAdapter {
+class DraftSchematicAdapter : public IntangibleObjectAdapter {
 public:
 	DraftSchematicAdapter(DraftSchematicImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -291,56 +217,34 @@ public:
 
 	void sendResourceWeightsTo(PlayerCreature* player);
 
-	int getDraftSlotCount();
-
-	int getResourceWeightCount();
+	SceneObject* createManufactureSchematic();
 
 	void setSchematicID(unsigned int id);
 
 	unsigned int getSchematicID();
 
-	void setComplexity(float complex);
+	int getDraftSlotCount();
+
+	int getResourceWeightCount();
 
 	float getComplexity();
 
-	void setToolTab(unsigned int tab);
-
 	unsigned int getToolTab();
-
-	void setSize(unsigned int s);
 
 	float getSize();
 
-	void setXpType(String& type);
-
 	String getXpType();
-
-	void setXpAmount(int amount);
 
 	int getXpAmount();
 
-	void setAssemblySkill(String& skill);
-
 	String getAssemblySkill();
-
-	void setExperiementationSkill(String& skill);
 
 	String getExperiementationSkill();
 
-	void setClientObjectCRC(unsigned int crc);
-
-	unsigned int getClientObjectCRC();
-
-	String getObjectNameStringIdName();
-
-	void setTanoCRC(unsigned int crc);
-
 	unsigned int getTanoCRC();
 
-protected:
-	String _param0_setXpType__String_;
-	String _param0_setAssemblySkill__String_;
-	String _param0_setExperiementationSkill__String_;
+	String getGroupName();
+
 };
 
 class DraftSchematicHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicHelper> {

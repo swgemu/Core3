@@ -25,21 +25,9 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace resource {
-
-class ResourceContainer;
-
-} // namespace resource
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::resource;
-
 #include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/objects/resource/ResourceContainer.h"
 
 #include "server/zone/objects/resource/SpawnDensityMap.h"
 

@@ -11,7 +11,6 @@
 #include "../SharedIntangibleObjectTemplate.h"
 
 class SharedDraftSchematicObjectTemplate : public SharedIntangibleObjectTemplate {
-
 public:
 	SharedDraftSchematicObjectTemplate() {
 
@@ -21,7 +20,9 @@ public:
 
 	}
 
-
+	void readObject(LuaObject* templateData) {
+		SharedIntangibleObjectTemplate::readObject(templateData);
+	}
 };
 
 
