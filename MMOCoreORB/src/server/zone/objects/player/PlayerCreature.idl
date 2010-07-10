@@ -55,6 +55,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.tangible.Container;
 include server.zone.objects.tangible.tool.SurveyTool;
+import server.zone.objects.tangible.tool.CraftingTool;
 import engine.service.proto.BasePacket;
 import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
@@ -107,7 +108,7 @@ class PlayerCreature extends CreatureObject {
 	protected transient PlayerRecoveryEvent recoveryEvent;
 	
 	protected int skillPoints;
-	
+
 	@transient
 	protected boolean teachingOrLearning;
 
@@ -138,6 +139,8 @@ class PlayerCreature extends CreatureObject {
 	protected SurveyTool surveyTool;
 	@weakReference
 	protected WaypointObject surveyWaypoint;
+
+	protected transient CraftingTool lastCraftingToolUsed;
 	
 	//npc conversation
 	protected string lastNpcConvoMessage;
@@ -232,7 +235,7 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void doRecovery();
 	
-	/**
+		/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
 	 * @post { this object is locked, menuResponse is complete}
@@ -715,5 +718,13 @@ class PlayerCreature extends CreatureObject {
 	
 	public boolean hasBadge(unsigned int badge) {
 		return badges.hasBadge(badge);
+	}
+	
+	public CraftingTool getLastCraftingToolUsed() {
+		return lastCraftingToolUsed;
+	}
+	
+	public void setLastCraftingToolUsed(CraftingTool tool) {
+		lastCraftingToolUsed = tool;
 	}
 }

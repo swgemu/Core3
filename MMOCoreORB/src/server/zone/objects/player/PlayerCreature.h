@@ -80,6 +80,22 @@ using namespace server::zone::objects::tangible;
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+namespace tool {
+
+class CraftingTool;
+
+} // namespace tool
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::tool;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 namespace events {
 
@@ -508,6 +524,10 @@ public:
 
 	bool hasBadge(unsigned int badge);
 
+	CraftingTool* getLastCraftingToolUsed();
+
+	void setLastCraftingToolUsed(CraftingTool* tool);
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
@@ -593,6 +613,8 @@ protected:
 	ManagedWeakReference<SurveyTool* > surveyTool;
 
 	ManagedWeakReference<WaypointObject* > surveyWaypoint;
+
+	ManagedReference<CraftingTool* > lastCraftingToolUsed;
 
 	String lastNpcConvoMessage;
 
@@ -849,6 +871,10 @@ public:
 
 	bool hasBadge(unsigned int badge);
 
+	CraftingTool* getLastCraftingToolUsed();
+
+	void setLastCraftingToolUsed(CraftingTool* tool);
+
 	PlayerCreature* _this;
 
 	operator const PlayerCreature*();
@@ -1095,6 +1121,10 @@ public:
 	void setCenteredBonus(int bonus);
 
 	bool hasBadge(unsigned int badge);
+
+	CraftingTool* getLastCraftingToolUsed();
+
+	void setLastCraftingToolUsed(CraftingTool* tool);
 
 protected:
 	String _param1_canAddObject__SceneObject_String_;

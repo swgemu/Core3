@@ -97,7 +97,7 @@ public:
 
 	void setComplexityLevel(int level);
 
-	void reqeustCraftingSession(PlayerCreature* player);
+	SceneObject* findCraftingTool(PlayerCreature* player);
 
 protected:
 	CraftingStation(DummyConstructorParameter* param);
@@ -151,7 +151,7 @@ public:
 
 	void setComplexityLevel(int level);
 
-	void reqeustCraftingSession(PlayerCreature* player);
+	SceneObject* findCraftingTool(PlayerCreature* player);
 
 	CraftingStation* _this;
 
@@ -204,7 +204,7 @@ public:
 
 	void setComplexityLevel(int level);
 
-	void reqeustCraftingSession(PlayerCreature* player);
+	SceneObject* findCraftingTool(PlayerCreature* player);
 
 };
 

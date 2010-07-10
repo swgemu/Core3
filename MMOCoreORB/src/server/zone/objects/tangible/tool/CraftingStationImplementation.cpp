@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
 
 
 void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -69,7 +70,7 @@ int CraftingStationImplementation::handleObjectMenuSelect(PlayerCreature* player
 	PlayerObject* playerObject = playerCreature->getPlayerObject();
 
 	if (selectedID == 20) { // use object
-		reqeustCraftingSession(playerCreature);
+
 	}
 
 	return 1;
@@ -91,6 +92,31 @@ void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm,
 	}
 }
 
-void CraftingStationImplementation::reqeustCraftingSession(PlayerCreature* player) {
-	player->getPlayerObject()->requestCraftingSession(player, _this);
+SceneObject* CraftingStationImplementation::findCraftingTool(PlayerCreature* player) {
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
+			"inventory");
+	Locker inventoryLocker(inventory);
+	SceneObject* craftingTool = NULL;
+
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+
+		SceneObject* object = inventory->getContainerObject(i);
+
+		if (object != NULL && object->isCraftingTool()) {
+
+			int toolType = ((CraftingTool*) object)->getToolType();
+
+			if (toolType == type) {
+				return object;
+			}
+
+			if (toolType == CraftingTool::JEDI && type
+					== CraftingTool::WEAPON) {
+				craftingTool = object;
+			}
+		}
+
+	}
+	return craftingTool;
 }

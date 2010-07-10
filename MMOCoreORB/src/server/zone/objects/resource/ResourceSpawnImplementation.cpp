@@ -196,6 +196,12 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
    	ResourceContainer* newResource = NULL;
 
    	newResource = (ResourceContainer*) getZoneServer()->createObject(containerCRC, 2);
+
+   	if(newResource == NULL) {
+   		error("Unable to create resource container: " + String::valueOf(containerCRC));
+   		return NULL;
+   	}
+
    	newResource->setSpawnObject(_this);
    	newResource->setQuantity(units);
    	StringId customString;

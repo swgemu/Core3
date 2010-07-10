@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ResourceWeight {
+class ResourceWeight : public Object {
 private:
 
 	Vector<uint8> properties;

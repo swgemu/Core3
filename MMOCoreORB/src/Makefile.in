@@ -93,6 +93,10 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/ZoneClientSession.$(OBJEXT) \
 	server/zone/Zone.$(OBJEXT) \
 	server/zone/objects/scene/SceneObject.$(OBJEXT) \
+	server/zone/objects/scene/Observer.$(OBJEXT) \
+	server/zone/objects/scene/Observable.$(OBJEXT) \
+	server/zone/objects/area/ActiveArea.$(OBJEXT) \
+	server/zone/objects/area/BadgeActiveArea.$(OBJEXT) \
 	server/zone/objects/intangible/IntangibleObject.$(OBJEXT) \
 	server/zone/objects/intangible/ControlDevice.$(OBJEXT) \
 	server/zone/objects/staticobject/StaticObject.$(OBJEXT) \
@@ -104,17 +108,29 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/objects/creature/CreatureObject.$(OBJEXT) \
 	server/zone/objects/creature/trainer/TrainerCreature.$(OBJEXT) \
 	server/zone/objects/creature/VehicleObject.$(OBJEXT) \
+	server/zone/objects/creature/NonPlayerCreatureObject.$(OBJEXT) \
+	server/zone/objects/creature/shuttle/ShuttleCreature.$(OBJEXT) \
+	server/zone/objects/creature/buffs/Buff.$(OBJEXT) \
 	server/zone/objects/player/PlayerObject.$(OBJEXT) \
 	server/zone/objects/player/sui/SuiBox.$(OBJEXT) \
 	server/zone/objects/player/sui/messagebox/SuiMessageBox.$(OBJEXT) \
 	server/zone/objects/player/sui/listbox/SuiListBox.$(OBJEXT) \
+	server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.$(OBJEXT) \
+	server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.$(OBJEXT) \
+	server/zone/objects/player/sui/inputbox/SuiInputBox.$(OBJEXT) \
 	server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.$(OBJEXT) \
 	server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.$(OBJEXT) \
+	server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.$(OBJEXT) \
+	server/zone/objects/player/sui/transferbox/SuiTransferBox.$(OBJEXT) \
 	server/zone/objects/waypoint/WaypointObject.$(OBJEXT) \
 	server/zone/objects/player/PlayerCreature.$(OBJEXT) \
 	server/zone/objects/cell/CellObject.$(OBJEXT) \
 	server/zone/objects/group/GroupObject.$(OBJEXT) \
 	server/zone/objects/region/Region.$(OBJEXT) \
+	server/zone/objects/installation/InstallationObject.$(OBJEXT) \
+	server/zone/objects/installation/factory/FactoryObject.$(OBJEXT) \
+	server/zone/objects/installation/generator/GeneratorObject.$(OBJEXT) \
+	server/zone/objects/installation/harvester/HarvesterObject.$(OBJEXT) \
 	server/zone/objects/building/BuildingObject.$(OBJEXT) \
 	server/zone/objects/building/cloning/CloningBuildingObject.$(OBJEXT) \
 	server/zone/objects/building/medical/MedicalBuildingObject.$(OBJEXT) \
@@ -126,6 +142,8 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/chat/ChatManager.$(OBJEXT) \
 	server/chat/PersistentMessage.$(OBJEXT) \
 	server/zone/managers/objectcontroller/ObjectController.$(OBJEXT) \
+	server/zone/objects/draftschematic/DraftSchematic.$(OBJEXT) \
+	server/zone/objects/manufactureschematic/ManufactureSchematic.$(OBJEXT) \
 	server/zone/objects/resource/ResourceSpawn.$(OBJEXT) \
 	server/zone/objects/tangible/fishing/FishingPoleObject.$(OBJEXT) \
 	server/zone/objects/tangible/fishing/FishingBaitObject.$(OBJEXT) \
@@ -139,6 +157,8 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/objects/tangible/weapon/OneHandMeleeWeapon.$(OBJEXT) \
 	server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.$(OBJEXT) \
 	server/zone/objects/tangible/weapon/PolearmWeaponObject.$(OBJEXT) \
+	server/zone/managers/crafting/CraftingManager.$(OBJEXT) \
+	server/zone/managers/crafting/schematicmap/SchematicMap.$(OBJEXT) \
 	server/zone/managers/structure/StructureManager.$(OBJEXT) \
 	server/zone/managers/planet/PlanetManager.$(OBJEXT) \
 	server/zone/managers/radial/RadialManager.$(OBJEXT) \
@@ -146,22 +166,34 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/managers/creature/CreatureManager.$(OBJEXT) \
 	server/zone/managers/bazaar/BazaarManager.$(OBJEXT) \
 	server/zone/managers/bazaar/BazaarAuctionsMap.$(OBJEXT) \
+	server/zone/managers/mission/MissionManager.$(OBJEXT) \
 	server/zone/objects/resource/ResourceContainer.$(OBJEXT) \
 	server/zone/objects/tangible/tool/CraftingTool.$(OBJEXT) \
+	server/zone/objects/tangible/tool/CraftingStation.$(OBJEXT) \
 	server/zone/objects/tangible/tool/ToolTangibleObject.$(OBJEXT) \
 	server/zone/objects/tangible/tool/SurveyTool.$(OBJEXT) \
 	server/zone/objects/tangible/wearables/WearableObject.$(OBJEXT) \
 	server/zone/objects/tangible/wearables/ClothingObject.$(OBJEXT) \
 	server/zone/objects/tangible/wearables/ArmorObject.$(OBJEXT) \
 	server/zone/objects/tangible/deed/Deed.$(OBJEXT) \
-	server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeed.$(OBJEXT) \
+	server/zone/objects/tangible/deed/building/BuildingDeed.$(OBJEXT) \
+	server/zone/objects/tangible/deed/installation/InstallationDeed.$(OBJEXT) \
+	server/zone/objects/tangible/sign/SignObject.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/Terminal.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/bank/BankTerminal.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/mission/MissionTerminal.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/bazaar/AuctionItem.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/structure/StructureTerminal.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/travel/TravelTerminal.$(OBJEXT) \
 	server/zone/objects/mission/MissionObject.$(OBJEXT) \
+	server/zone/objects/mission/MissionObjective.$(OBJEXT) \
+	server/zone/objects/mission/SurveyMissionObjective.$(OBJEXT) \
+	server/zone/objects/mission/MissionObserver.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.$(OBJEXT) \
+	server/zone/objects/tangible/ticket/TicketObject.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) \
 	server/conf/ConfigManager.$(OBJEXT) \
@@ -180,9 +212,12 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/ZoneMessageProcessorThread.$(OBJEXT) \
 	server/zone/ZoneProcessServerImplementation.$(OBJEXT) \
 	server/zone/ZoneImplementation.$(OBJEXT) \
+	server/zone/managers/crafting/CraftingManagerImplementation.$(OBJEXT) \
 	server/zone/managers/planet/HeightMap.$(OBJEXT) \
 	server/zone/managers/object/ObjectManager.$(OBJEXT) \
 	server/zone/managers/planet/PlanetManagerImplementation.$(OBJEXT) \
+	server/zone/managers/planet/MapLocationTable.$(OBJEXT) \
+	server/zone/managers/planet/MapLocationEntry.$(OBJEXT) \
 	server/zone/managers/player/PlayerManagerImplementation.$(OBJEXT) \
 	server/zone/managers/name/NameManager.$(OBJEXT) \
 	server/zone/managers/group/GroupManager.$(OBJEXT) \
@@ -199,7 +234,12 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/managers/resource/resourcespawner/resourcepool/FixedPool.$(OBJEXT) \
 	server/zone/managers/resource/resourcespawner/resourcepool/NativePool.$(OBJEXT) \
 	server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.$(OBJEXT) \
+	server/zone/objects/draftschematic/DraftSchematicImplementation.$(OBJEXT) \
+	server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.$(OBJEXT) \
 	server/zone/objects/scene/SceneObjectImplementation.$(OBJEXT) \
+	server/zone/objects/scene/ObserverImplementation.$(OBJEXT) \
+	server/zone/objects/scene/ObserverEventMap.$(OBJEXT) \
+	server/zone/objects/area/ActiveAreaImplementation.$(OBJEXT) \
 	server/zone/objects/region/RegionImplementation.$(OBJEXT) \
 	server/zone/objects/terrain/ProceduralTerrainAppearance.$(OBJEXT) \
 	server/zone/objects/terrain/TerrainGenerator.$(OBJEXT) \
@@ -213,18 +253,33 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/objects/tangible/TangibleObjectImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/ContainerImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.$(OBJEXT) \
-	server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeedImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/deed/DeedImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/deed/building/BuildingDeedImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.$(OBJEXT) \
+	server/zone/objects/installation/harvester/HarvesterObjectImplementation.$(OBJEXT) \
+	server/zone/objects/installation/generator/GeneratorObjectImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/tool/SurveyToolImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/tool/CraftingToolImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/tool/CraftingStationImplementation.$(OBJEXT) \
 	server/zone/objects/group/GroupObjectImplementation.$(OBJEXT) \
 	server/zone/objects/creature/CreatureObjectImplementation.$(OBJEXT) \
+	server/zone/objects/creature/NonPlayerCreatureObjectImplementation.$(OBJEXT) \
+	server/zone/objects/creature/damageovertime/DamageOverTime.$(OBJEXT) \
+	server/zone/objects/creature/damageovertime/DamageOverTimeList.$(OBJEXT) \
+	server/zone/objects/creature/buffs/BuffImplementation.$(OBJEXT) \
+	server/zone/objects/creature/buffs/BuffList.$(OBJEXT) \
 	server/zone/objects/creature/trainer/TrainerCreatureImplementation.$(OBJEXT) \
 	server/zone/objects/creature/variables/CommandQueueAction.$(OBJEXT) \
 	server/zone/objects/creature/commands/QueueCommand.$(OBJEXT) \
 	server/zone/objects/creature/LuaCreatureObject.$(OBJEXT) \
 	server/zone/objects/creature/VehicleObjectImplementation.$(OBJEXT) \
+	server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.$(OBJEXT) \
 	server/zone/objects/creature/variables/SkillBoxList.$(OBJEXT) \
 	server/zone/objects/player/PlayerObjectImplementation.$(OBJEXT) \
 	server/zone/objects/player/variables/SkillList.$(OBJEXT) \
+	server/zone/objects/player/variables/SchematicList.$(OBJEXT) \
 	server/zone/objects/resource/ResourceSpawnImplementation.$(OBJEXT) \
 	server/zone/objects/resource/simplexnoise/SimplexNoise.$(OBJEXT) \
 	server/zone/objects/resource/ResourceContainerImplementation.$(OBJEXT) \
@@ -233,14 +288,21 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/objects/scene/variables/ParameterizedStringId.$(OBJEXT) \
 	server/zone/objects/scene/variables/CustomizationVariables.$(OBJEXT) \
 	server/zone/objects/cell/CellObjectImplementation.$(OBJEXT) \
+	server/zone/objects/installation/InstallationObjectImplementation.$(OBJEXT) \
 	server/zone/objects/building/BuildingObjectImplementation.$(OBJEXT) \
 	server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.$(OBJEXT) \
+	server/zone/objects/building/StructurePermissionList.$(OBJEXT) \
 	server/zone/objects/player/PlayerCreatureImplementation.$(OBJEXT) \
 	server/zone/objects/player/sui/SuiBoxImplementation.$(OBJEXT) \
+	server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.$(OBJEXT) \
 	server/zone/objects/player/sui/listbox/SuiListBoxImplementation.$(OBJEXT) \
+	server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBoxImplementation.$(OBJEXT) \
+	server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBoxImplementation.$(OBJEXT) \
 	server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.$(OBJEXT) \
+	server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBoxImplementation.$(OBJEXT) \
 	server/zone/objects/player/badges/Badge.$(OBJEXT) \
 	server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.$(OBJEXT) \
+	server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.$(OBJEXT) \
 	server/zone/packets/charcreation/ClientCreateCharacterCallback.$(OBJEXT) \
 	server/zone/packets/object/ObjectControllerMessageCallback.$(OBJEXT) \
 	server/chat/room/ChatRoomImplementation.$(OBJEXT) \
@@ -249,7 +311,8 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/managers/objectcontroller/ObjectControllerImplementation.$(OBJEXT) \
 	server/zone/managers/objectcontroller/command/CommandConfigManager.$(OBJEXT) \
 	server/zone/managers/terrain/TerrainManager.$(OBJEXT) \
-	server/zone/managers/template/TemplateManager.$(OBJEXT) \
+	server/zone/managers/templates/TemplateManager.$(OBJEXT) \
+	server/zone/managers/mission/MissionManagerImplementation.$(OBJEXT) \
 	server/zone/objects/waypoint/WaypointObjectImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/weapon/WeaponObjectImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/weapon/MeleeWeaponObjectImplementation.$(OBJEXT) \
@@ -260,14 +323,22 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminalImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/bazaar/AuctionItemImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/ticketcollector/TicketCollectorImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/ticket/TicketObjectImplementation.$(OBJEXT) \
 	server/zone/managers/radial/RadialManagerImplementation.$(OBJEXT) \
 	server/zone/managers/resource/ResourceManagerImplementation.$(OBJEXT) \
 	server/zone/managers/creature/CreatureManagerImplementation.$(OBJEXT) \
 	server/zone/managers/combat/CombatManager.$(OBJEXT) \
 	server/zone/objects/mission/MissionObjectImplementation.$(OBJEXT) \
+	server/zone/objects/mission/MissionObjectiveImplementation.$(OBJEXT) \
+	server/zone/objects/mission/SurveyMissionObjectiveImplementation.$(OBJEXT) \
+	server/zone/objects/mission/MissionObserverImplementation.$(OBJEXT) \
 	server/zone/templates/SharedTangibleObjectTemplate.$(OBJEXT) \
+	server/zone/templates/intangible/DraftSchematicObjectTemplate.$(OBJEXT) \
 	server/zone/templates/SharedObjectTemplate.$(OBJEXT) \
 	server/zone/templates/tangible/SharedBuildingObjectTemplate.$(OBJEXT) \
+	server/zone/templates/tangible/SharedStructureObjectTemplate.$(OBJEXT) \
 	server/zone/templates/tangible/SharedCreatureObjectTemplate.$(OBJEXT) \
 	server/zone/templates/tangible/SharedWeaponObjectTemplate.$(OBJEXT) \
 	main.$(OBJEXT)
@@ -408,6 +479,10 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/ZoneClientSession.cpp \
 				server/zone/Zone.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
+				server/zone/objects/scene/Observer.cpp \
+				server/zone/objects/scene/Observable.cpp \
+				server/zone/objects/area/ActiveArea.cpp \
+				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \
 				server/zone/objects/staticobject/StaticObject.cpp \
@@ -419,17 +494,29 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/creature/trainer/TrainerCreature.cpp \
 				server/zone/objects/creature/VehicleObject.cpp \
+				server/zone/objects/creature/NonPlayerCreatureObject.cpp \
+				server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
+				server/zone/objects/creature/buffs/Buff.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBox.cpp \
+				server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.cpp \
+				server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.cpp \
+				server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.cpp \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
+				server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
+				server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
 				server/zone/objects/region/Region.cpp \
+				server/zone/objects/installation/InstallationObject.cpp \
+				server/zone/objects/installation/factory/FactoryObject.cpp \
+				server/zone/objects/installation/generator/GeneratorObject.cpp \
+				server/zone/objects/installation/harvester/HarvesterObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
 				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
 				server/zone/objects/building/medical/MedicalBuildingObject.cpp \
@@ -441,6 +528,8 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/chat/ChatManager.cpp \
 				server/chat/PersistentMessage.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
+				server/zone/objects/draftschematic/DraftSchematic.cpp \
+				server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
 				server/zone/objects/resource/ResourceSpawn.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
@@ -454,6 +543,8 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/weapon/OneHandMeleeWeapon.cpp \
 				server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.cpp \
 				server/zone/objects/tangible/weapon/PolearmWeaponObject.cpp \
+				server/zone/managers/crafting/CraftingManager.cpp \
+				server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/managers/planet/PlanetManager.cpp \
 				server/zone/managers/radial/RadialManager.cpp \
@@ -461,22 +552,34 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/managers/creature/CreatureManager.cpp \
 				server/zone/managers/bazaar/BazaarManager.cpp \
 				server/zone/managers/bazaar/BazaarAuctionsMap.cpp \
+				server/zone/managers/mission/MissionManager.cpp \
 				server/zone/objects/resource/ResourceContainer.cpp \
 				server/zone/objects/tangible/tool/CraftingTool.cpp \
+				server/zone/objects/tangible/tool/CraftingStation.cpp \
 				server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
 				server/zone/objects/tangible/tool/SurveyTool.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
 				server/zone/objects/tangible/wearables/ClothingObject.cpp \
 				server/zone/objects/tangible/wearables/ArmorObject.cpp \
 				server/zone/objects/tangible/deed/Deed.cpp \
-				server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeed.cpp \
+				server/zone/objects/tangible/deed/building/BuildingDeed.cpp \
+				server/zone/objects/tangible/deed/installation/InstallationDeed.cpp \
+				server/zone/objects/tangible/sign/SignObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
 				server/zone/objects/tangible/terminal/bank/BankTerminal.cpp \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.cpp \
 				server/zone/objects/tangible/terminal/bazaar/AuctionItem.cpp \
+				server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.cpp \
+				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
+				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
+				server/zone/objects/mission/MissionObjective.cpp \
+				server/zone/objects/mission/SurveyMissionObjective.cpp \
+				server/zone/objects/mission/MissionObserver.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
+				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
+				server/zone/objects/tangible/ticket/TicketObject.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 
 core3_SOURCES = $(core3_IDLS) \
@@ -496,9 +599,12 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/ZoneMessageProcessorThread.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
+		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
+		server/zone/managers/planet/MapLocationTable.cpp \
+		server/zone/managers/planet/MapLocationEntry.cpp \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
 		server/zone/managers/name/NameManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
@@ -515,7 +621,12 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/resource/resourcespawner/resourcepool/FixedPool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/NativePool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.cpp \
+		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
+		server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/objects/scene/ObserverImplementation.cpp \
+		server/zone/objects/scene/ObserverEventMap.cpp \
+		server/zone/objects/area/ActiveAreaImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
 		server/zone/objects/terrain/TerrainGenerator.cpp \
@@ -529,18 +640,33 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
-		server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeedImplementation.cpp \
+		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
+		server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.cpp \
+		server/zone/objects/tangible/deed/DeedImplementation.cpp \
+		server/zone/objects/tangible/deed/building/BuildingDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.cpp \
+		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
+		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
 		server/zone/objects/tangible/tool/SurveyToolImplementation.cpp \
+		server/zone/objects/tangible/tool/CraftingToolImplementation.cpp \
+		server/zone/objects/tangible/tool/CraftingStationImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
+		server/zone/objects/creature/NonPlayerCreatureObjectImplementation.cpp \
+		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
+		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
+		server/zone/objects/creature/buffs/BuffImplementation.cpp \
+		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
+		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/variables/SkillList.cpp \
+		server/zone/objects/player/variables/SchematicList.cpp \
 		server/zone/objects/resource/ResourceSpawnImplementation.cpp \
 		server/zone/objects/resource/simplexnoise/SimplexNoise.cpp \
 		server/zone/objects/resource/ResourceContainerImplementation.cpp \
@@ -549,14 +675,21 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/scene/variables/ParameterizedStringId.cpp \
 		server/zone/objects/scene/variables/CustomizationVariables.cpp \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
+		server/zone/objects/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
+		server/zone/objects/building/StructurePermissionList.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
+		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
+		server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBoxImplementation.cpp \
+		server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBoxImplementation.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
+		server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBoxImplementation.cpp \
 		server/zone/objects/player/badges/Badge.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
+		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacterCallback.cpp \
 		server/zone/packets/object/ObjectControllerMessageCallback.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
@@ -565,7 +698,8 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/managers/terrain/TerrainManager.cpp \
-		server/zone/managers/template/TemplateManager.cpp \
+		server/zone/managers/templates/TemplateManager.cpp \
+		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/MeleeWeaponObjectImplementation.cpp \
@@ -576,14 +710,22 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/AuctionItemImplementation.cpp \
+		server/zone/objects/tangible/terminal/ticketcollector/TicketCollectorImplementation.cpp \
+		server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.cpp \
+		server/zone/objects/tangible/ticket/TicketObjectImplementation.cpp \
 		server/zone/managers/radial/RadialManagerImplementation.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
+		server/zone/objects/mission/MissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/SurveyMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
+		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
 		server/zone/templates/SharedObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
+		server/zone/templates/tangible/SharedStructureObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedCreatureObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
 		main.cpp
@@ -665,6 +807,24 @@ server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp):
 server/zone/objects/scene/SceneObject.$(OBJEXT):  \
 	server/zone/objects/scene/$(am__dirstamp) \
 	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/scene/Observer.$(OBJEXT):  \
+	server/zone/objects/scene/$(am__dirstamp) \
+	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/scene/Observable.$(OBJEXT):  \
+	server/zone/objects/scene/$(am__dirstamp) \
+	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/area/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/area
+	@: > server/zone/objects/area/$(am__dirstamp)
+server/zone/objects/area/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/area/$(DEPDIR)
+	@: > server/zone/objects/area/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/area/ActiveArea.$(OBJEXT):  \
+	server/zone/objects/area/$(am__dirstamp) \
+	server/zone/objects/area/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/area/BadgeActiveArea.$(OBJEXT):  \
+	server/zone/objects/area/$(am__dirstamp) \
+	server/zone/objects/area/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/intangible/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/intangible
 	@: > server/zone/objects/intangible/$(am__dirstamp)
@@ -728,6 +888,27 @@ server/zone/objects/creature/trainer/TrainerCreature.$(OBJEXT):  \
 server/zone/objects/creature/VehicleObject.$(OBJEXT):  \
 	server/zone/objects/creature/$(am__dirstamp) \
 	server/zone/objects/creature/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/NonPlayerCreatureObject.$(OBJEXT):  \
+	server/zone/objects/creature/$(am__dirstamp) \
+	server/zone/objects/creature/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/shuttle/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/creature/shuttle
+	@: > server/zone/objects/creature/shuttle/$(am__dirstamp)
+server/zone/objects/creature/shuttle/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/creature/shuttle/$(DEPDIR)
+	@: > server/zone/objects/creature/shuttle/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/shuttle/ShuttleCreature.$(OBJEXT):  \
+	server/zone/objects/creature/shuttle/$(am__dirstamp) \
+	server/zone/objects/creature/shuttle/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/buffs/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/creature/buffs
+	@: > server/zone/objects/creature/buffs/$(am__dirstamp)
+server/zone/objects/creature/buffs/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/creature/buffs/$(DEPDIR)
+	@: > server/zone/objects/creature/buffs/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/buffs/Buff.$(OBJEXT):  \
+	server/zone/objects/creature/buffs/$(am__dirstamp) \
+	server/zone/objects/creature/buffs/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/player
 	@: > server/zone/objects/player/$(am__dirstamp)
@@ -764,6 +945,31 @@ server/zone/objects/player/sui/listbox/$(DEPDIR)/$(am__dirstamp):
 server/zone/objects/player/sui/listbox/SuiListBox.$(OBJEXT):  \
 	server/zone/objects/player/sui/listbox/$(am__dirstamp) \
 	server/zone/objects/player/sui/listbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/listbox/teachplayerlistbox/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/listbox/teachplayerlistbox
+	@: > server/zone/objects/player/sui/listbox/teachplayerlistbox/$(am__dirstamp)
+server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR)
+	@: > server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.$(OBJEXT): server/zone/objects/player/sui/listbox/teachplayerlistbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/listbox/playerlearnlistbox/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/listbox/playerlearnlistbox
+	@: > server/zone/objects/player/sui/listbox/playerlearnlistbox/$(am__dirstamp)
+server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR)
+	@: > server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.$(OBJEXT): server/zone/objects/player/sui/listbox/playerlearnlistbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/inputbox/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/inputbox
+	@: > server/zone/objects/player/sui/inputbox/$(am__dirstamp)
+server/zone/objects/player/sui/inputbox/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/inputbox/$(DEPDIR)
+	@: > server/zone/objects/player/sui/inputbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/inputbox/SuiInputBox.$(OBJEXT):  \
+	server/zone/objects/player/sui/inputbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/inputbox/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.$(OBJEXT):  \
 	server/zone/objects/player/sui/listbox/$(am__dirstamp) \
 	server/zone/objects/player/sui/listbox/$(DEPDIR)/$(am__dirstamp)
@@ -775,6 +981,23 @@ server/zone/objects/player/sui/banktransferbox/$(DEPDIR)/$(am__dirstamp):
 	@: > server/zone/objects/player/sui/banktransferbox/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.$(OBJEXT): server/zone/objects/player/sui/banktransferbox/$(am__dirstamp) \
 	server/zone/objects/player/sui/banktransferbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/characterbuilderbox/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/characterbuilderbox
+	@: > server/zone/objects/player/sui/characterbuilderbox/$(am__dirstamp)
+server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR)
+	@: > server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.$(OBJEXT): server/zone/objects/player/sui/characterbuilderbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/transferbox/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/transferbox
+	@: > server/zone/objects/player/sui/transferbox/$(am__dirstamp)
+server/zone/objects/player/sui/transferbox/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/transferbox/$(DEPDIR)
+	@: > server/zone/objects/player/sui/transferbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/transferbox/SuiTransferBox.$(OBJEXT):  \
+	server/zone/objects/player/sui/transferbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/transferbox/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/waypoint/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/waypoint
 	@: > server/zone/objects/waypoint/$(am__dirstamp)
@@ -814,6 +1037,42 @@ server/zone/objects/region/$(DEPDIR)/$(am__dirstamp):
 server/zone/objects/region/Region.$(OBJEXT):  \
 	server/zone/objects/region/$(am__dirstamp) \
 	server/zone/objects/region/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/installation
+	@: > server/zone/objects/installation/$(am__dirstamp)
+server/zone/objects/installation/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/installation/$(DEPDIR)
+	@: > server/zone/objects/installation/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/InstallationObject.$(OBJEXT):  \
+	server/zone/objects/installation/$(am__dirstamp) \
+	server/zone/objects/installation/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/factory/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/installation/factory
+	@: > server/zone/objects/installation/factory/$(am__dirstamp)
+server/zone/objects/installation/factory/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/installation/factory/$(DEPDIR)
+	@: > server/zone/objects/installation/factory/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/factory/FactoryObject.$(OBJEXT):  \
+	server/zone/objects/installation/factory/$(am__dirstamp) \
+	server/zone/objects/installation/factory/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/generator/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/installation/generator
+	@: > server/zone/objects/installation/generator/$(am__dirstamp)
+server/zone/objects/installation/generator/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/installation/generator/$(DEPDIR)
+	@: > server/zone/objects/installation/generator/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/generator/GeneratorObject.$(OBJEXT):  \
+	server/zone/objects/installation/generator/$(am__dirstamp) \
+	server/zone/objects/installation/generator/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/harvester/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/installation/harvester
+	@: > server/zone/objects/installation/harvester/$(am__dirstamp)
+server/zone/objects/installation/harvester/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/installation/harvester/$(DEPDIR)
+	@: > server/zone/objects/installation/harvester/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/harvester/HarvesterObject.$(OBJEXT):  \
+	server/zone/objects/installation/harvester/$(am__dirstamp) \
+	server/zone/objects/installation/harvester/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/building/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/building
 	@: > server/zone/objects/building/$(am__dirstamp)
@@ -904,6 +1163,24 @@ server/zone/managers/objectcontroller/$(DEPDIR)/$(am__dirstamp):
 server/zone/managers/objectcontroller/ObjectController.$(OBJEXT):  \
 	server/zone/managers/objectcontroller/$(am__dirstamp) \
 	server/zone/managers/objectcontroller/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/draftschematic/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/draftschematic
+	@: > server/zone/objects/draftschematic/$(am__dirstamp)
+server/zone/objects/draftschematic/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/draftschematic/$(DEPDIR)
+	@: > server/zone/objects/draftschematic/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/draftschematic/DraftSchematic.$(OBJEXT):  \
+	server/zone/objects/draftschematic/$(am__dirstamp) \
+	server/zone/objects/draftschematic/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/manufactureschematic/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/manufactureschematic
+	@: > server/zone/objects/manufactureschematic/$(am__dirstamp)
+server/zone/objects/manufactureschematic/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/manufactureschematic/$(DEPDIR)
+	@: > server/zone/objects/manufactureschematic/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/manufactureschematic/ManufactureSchematic.$(OBJEXT):  \
+	server/zone/objects/manufactureschematic/$(am__dirstamp) \
+	server/zone/objects/manufactureschematic/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/resource/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/resource
 	@: > server/zone/objects/resource/$(am__dirstamp)
@@ -967,6 +1244,24 @@ server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.$(OBJEXT):  \
 server/zone/objects/tangible/weapon/PolearmWeaponObject.$(OBJEXT):  \
 	server/zone/objects/tangible/weapon/$(am__dirstamp) \
 	server/zone/objects/tangible/weapon/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/crafting/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/managers/crafting
+	@: > server/zone/managers/crafting/$(am__dirstamp)
+server/zone/managers/crafting/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/managers/crafting/$(DEPDIR)
+	@: > server/zone/managers/crafting/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/crafting/CraftingManager.$(OBJEXT):  \
+	server/zone/managers/crafting/$(am__dirstamp) \
+	server/zone/managers/crafting/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/crafting/schematicmap/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/managers/crafting/schematicmap
+	@: > server/zone/managers/crafting/schematicmap/$(am__dirstamp)
+server/zone/managers/crafting/schematicmap/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/managers/crafting/schematicmap/$(DEPDIR)
+	@: > server/zone/managers/crafting/schematicmap/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/crafting/schematicmap/SchematicMap.$(OBJEXT):  \
+	server/zone/managers/crafting/schematicmap/$(am__dirstamp) \
+	server/zone/managers/crafting/schematicmap/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/structure/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/managers/structure
 	@: > server/zone/managers/structure/$(am__dirstamp)
@@ -1024,6 +1319,15 @@ server/zone/managers/bazaar/BazaarManager.$(OBJEXT):  \
 server/zone/managers/bazaar/BazaarAuctionsMap.$(OBJEXT):  \
 	server/zone/managers/bazaar/$(am__dirstamp) \
 	server/zone/managers/bazaar/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/mission/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/managers/mission
+	@: > server/zone/managers/mission/$(am__dirstamp)
+server/zone/managers/mission/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/managers/mission/$(DEPDIR)
+	@: > server/zone/managers/mission/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/mission/MissionManager.$(OBJEXT):  \
+	server/zone/managers/mission/$(am__dirstamp) \
+	server/zone/managers/mission/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/resource/ResourceContainer.$(OBJEXT):  \
 	server/zone/objects/resource/$(am__dirstamp) \
 	server/zone/objects/resource/$(DEPDIR)/$(am__dirstamp)
@@ -1034,6 +1338,9 @@ server/zone/objects/tangible/tool/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/tangible/tool/$(DEPDIR)
 	@: > server/zone/objects/tangible/tool/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/tool/CraftingTool.$(OBJEXT):  \
+	server/zone/objects/tangible/tool/$(am__dirstamp) \
+	server/zone/objects/tangible/tool/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/tool/CraftingStation.$(OBJEXT):  \
 	server/zone/objects/tangible/tool/$(am__dirstamp) \
 	server/zone/objects/tangible/tool/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/tool/ToolTangibleObject.$(OBJEXT):  \
@@ -1066,15 +1373,32 @@ server/zone/objects/tangible/deed/$(DEPDIR)/$(am__dirstamp):
 server/zone/objects/tangible/deed/Deed.$(OBJEXT):  \
 	server/zone/objects/tangible/deed/$(am__dirstamp) \
 	server/zone/objects/tangible/deed/$(DEPDIR)/$(am__dirstamp)
-server/zone/objects/tangible/deed/playerhouse/$(am__dirstamp):
-	@$(MKDIR_P) server/zone/objects/tangible/deed/playerhouse
-	@: > server/zone/objects/tangible/deed/playerhouse/$(am__dirstamp)
-server/zone/objects/tangible/deed/playerhouse/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) server/zone/objects/tangible/deed/playerhouse/$(DEPDIR)
-	@: > server/zone/objects/tangible/deed/playerhouse/$(DEPDIR)/$(am__dirstamp)
-server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeed.$(OBJEXT):  \
-	server/zone/objects/tangible/deed/playerhouse/$(am__dirstamp) \
-	server/zone/objects/tangible/deed/playerhouse/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/deed/building/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/deed/building
+	@: > server/zone/objects/tangible/deed/building/$(am__dirstamp)
+server/zone/objects/tangible/deed/building/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/deed/building/$(DEPDIR)
+	@: > server/zone/objects/tangible/deed/building/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/deed/building/BuildingDeed.$(OBJEXT):  \
+	server/zone/objects/tangible/deed/building/$(am__dirstamp) \
+	server/zone/objects/tangible/deed/building/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/deed/installation/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/deed/installation
+	@: > server/zone/objects/tangible/deed/installation/$(am__dirstamp)
+server/zone/objects/tangible/deed/installation/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/deed/installation/$(DEPDIR)
+	@: > server/zone/objects/tangible/deed/installation/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/deed/installation/InstallationDeed.$(OBJEXT): server/zone/objects/tangible/deed/installation/$(am__dirstamp) \
+	server/zone/objects/tangible/deed/installation/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/sign/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/sign
+	@: > server/zone/objects/tangible/sign/$(am__dirstamp)
+server/zone/objects/tangible/sign/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/sign/$(DEPDIR)
+	@: > server/zone/objects/tangible/sign/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/sign/SignObject.$(OBJEXT):  \
+	server/zone/objects/tangible/sign/$(am__dirstamp) \
+	server/zone/objects/tangible/sign/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/terminal/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/tangible/terminal
 	@: > server/zone/objects/tangible/terminal/$(am__dirstamp)
@@ -1114,6 +1438,31 @@ server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.$(OBJEXT):  \
 server/zone/objects/tangible/terminal/bazaar/AuctionItem.$(OBJEXT):  \
 	server/zone/objects/tangible/terminal/bazaar/$(am__dirstamp) \
 	server/zone/objects/tangible/terminal/bazaar/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/elevator/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/elevator
+	@: > server/zone/objects/tangible/terminal/elevator/$(am__dirstamp)
+server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/elevator/$(DEPDIR)
+	@: > server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.$(OBJEXT): server/zone/objects/tangible/terminal/elevator/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/structure/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/structure
+	@: > server/zone/objects/tangible/terminal/structure/$(am__dirstamp)
+server/zone/objects/tangible/terminal/structure/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/structure/$(DEPDIR)
+	@: > server/zone/objects/tangible/terminal/structure/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/structure/StructureTerminal.$(OBJEXT): server/zone/objects/tangible/terminal/structure/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/structure/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/travel/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/travel
+	@: > server/zone/objects/tangible/terminal/travel/$(am__dirstamp)
+server/zone/objects/tangible/terminal/travel/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/travel/$(DEPDIR)
+	@: > server/zone/objects/tangible/terminal/travel/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/travel/TravelTerminal.$(OBJEXT):  \
+	server/zone/objects/tangible/terminal/travel/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/travel/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/mission/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/mission
 	@: > server/zone/objects/mission/$(am__dirstamp)
@@ -1121,6 +1470,15 @@ server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/mission/$(DEPDIR)
 	@: > server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/mission/MissionObject.$(OBJEXT):  \
+	server/zone/objects/mission/$(am__dirstamp) \
+	server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/mission/MissionObjective.$(OBJEXT):  \
+	server/zone/objects/mission/$(am__dirstamp) \
+	server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/mission/SurveyMissionObjective.$(OBJEXT):  \
+	server/zone/objects/mission/$(am__dirstamp) \
+	server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/mission/MissionObserver.$(OBJEXT):  \
 	server/zone/objects/mission/$(am__dirstamp) \
 	server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/terminal/startinglocation/$(am__dirstamp):
@@ -1131,6 +1489,23 @@ server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR)/$(am__dirstamp)
 	@: > server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.$(OBJEXT): server/zone/objects/tangible/terminal/startinglocation/$(am__dirstamp) \
 	server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/ticketcollector/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/ticketcollector
+	@: > server/zone/objects/tangible/terminal/ticketcollector/$(am__dirstamp)
+server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR)
+	@: > server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.$(OBJEXT): server/zone/objects/tangible/terminal/ticketcollector/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/ticket/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/ticket
+	@: > server/zone/objects/tangible/ticket/$(am__dirstamp)
+server/zone/objects/tangible/ticket/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/ticket/$(DEPDIR)
+	@: > server/zone/objects/tangible/ticket/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/ticket/TicketObject.$(OBJEXT):  \
+	server/zone/objects/tangible/ticket/$(am__dirstamp) \
+	server/zone/objects/tangible/ticket/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/terminal/characterbuilder/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/tangible/terminal/characterbuilder
 	@: > server/zone/objects/tangible/terminal/characterbuilder/$(am__dirstamp)
@@ -1219,6 +1594,9 @@ server/zone/ZoneProcessServerImplementation.$(OBJEXT):  \
 	server/zone/$(DEPDIR)/$(am__dirstamp)
 server/zone/ZoneImplementation.$(OBJEXT): server/zone/$(am__dirstamp) \
 	server/zone/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/crafting/CraftingManagerImplementation.$(OBJEXT):  \
+	server/zone/managers/crafting/$(am__dirstamp) \
+	server/zone/managers/crafting/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/planet/HeightMap.$(OBJEXT):  \
 	server/zone/managers/planet/$(am__dirstamp) \
 	server/zone/managers/planet/$(DEPDIR)/$(am__dirstamp)
@@ -1232,6 +1610,12 @@ server/zone/managers/object/ObjectManager.$(OBJEXT):  \
 	server/zone/managers/object/$(am__dirstamp) \
 	server/zone/managers/object/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/planet/PlanetManagerImplementation.$(OBJEXT):  \
+	server/zone/managers/planet/$(am__dirstamp) \
+	server/zone/managers/planet/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/planet/MapLocationTable.$(OBJEXT):  \
+	server/zone/managers/planet/$(am__dirstamp) \
+	server/zone/managers/planet/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/planet/MapLocationEntry.$(OBJEXT):  \
 	server/zone/managers/planet/$(am__dirstamp) \
 	server/zone/managers/planet/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/player/PlayerManagerImplementation.$(OBJEXT):  \
@@ -1322,9 +1706,24 @@ server/zone/managers/resource/resourcespawner/resourcepool/NativePool.$(OBJEXT):
 	server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.$(OBJEXT): server/zone/managers/resource/resourcespawner/resourcepool/$(am__dirstamp) \
 	server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/draftschematic/DraftSchematicImplementation.$(OBJEXT):  \
+	server/zone/objects/draftschematic/$(am__dirstamp) \
+	server/zone/objects/draftschematic/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.$(OBJEXT):  \
+	server/zone/objects/manufactureschematic/$(am__dirstamp) \
+	server/zone/objects/manufactureschematic/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/scene/SceneObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/scene/$(am__dirstamp) \
 	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/scene/ObserverImplementation.$(OBJEXT):  \
+	server/zone/objects/scene/$(am__dirstamp) \
+	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/scene/ObserverEventMap.$(OBJEXT):  \
+	server/zone/objects/scene/$(am__dirstamp) \
+	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/area/ActiveAreaImplementation.$(OBJEXT):  \
+	server/zone/objects/area/$(am__dirstamp) \
+	server/zone/objects/area/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/region/RegionImplementation.$(OBJEXT):  \
 	server/zone/objects/region/$(am__dirstamp) \
 	server/zone/objects/region/$(DEPDIR)/$(am__dirstamp)
@@ -1376,10 +1775,31 @@ server/zone/objects/tangible/ContainerImplementation.$(OBJEXT):  \
 server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.$(OBJEXT):  \
 	server/zone/objects/tangible/terminal/bazaar/$(am__dirstamp) \
 	server/zone/objects/tangible/terminal/bazaar/$(DEPDIR)/$(am__dirstamp)
-server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeedImplementation.$(OBJEXT):  \
-	server/zone/objects/tangible/deed/playerhouse/$(am__dirstamp) \
-	server/zone/objects/tangible/deed/playerhouse/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.$(OBJEXT): server/zone/objects/tangible/terminal/elevator/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.$(OBJEXT): server/zone/objects/tangible/terminal/structure/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/structure/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/deed/DeedImplementation.$(OBJEXT):  \
+	server/zone/objects/tangible/deed/$(am__dirstamp) \
+	server/zone/objects/tangible/deed/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/deed/building/BuildingDeedImplementation.$(OBJEXT):  \
+	server/zone/objects/tangible/deed/building/$(am__dirstamp) \
+	server/zone/objects/tangible/deed/building/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.$(OBJEXT): server/zone/objects/tangible/deed/installation/$(am__dirstamp) \
+	server/zone/objects/tangible/deed/installation/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/harvester/HarvesterObjectImplementation.$(OBJEXT):  \
+	server/zone/objects/installation/harvester/$(am__dirstamp) \
+	server/zone/objects/installation/harvester/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/generator/GeneratorObjectImplementation.$(OBJEXT):  \
+	server/zone/objects/installation/generator/$(am__dirstamp) \
+	server/zone/objects/installation/generator/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/tool/SurveyToolImplementation.$(OBJEXT):  \
+	server/zone/objects/tangible/tool/$(am__dirstamp) \
+	server/zone/objects/tangible/tool/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/tool/CraftingToolImplementation.$(OBJEXT):  \
+	server/zone/objects/tangible/tool/$(am__dirstamp) \
+	server/zone/objects/tangible/tool/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/tool/CraftingStationImplementation.$(OBJEXT):  \
 	server/zone/objects/tangible/tool/$(am__dirstamp) \
 	server/zone/objects/tangible/tool/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/group/GroupObjectImplementation.$(OBJEXT):  \
@@ -1388,6 +1808,27 @@ server/zone/objects/group/GroupObjectImplementation.$(OBJEXT):  \
 server/zone/objects/creature/CreatureObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/creature/$(am__dirstamp) \
 	server/zone/objects/creature/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/NonPlayerCreatureObjectImplementation.$(OBJEXT):  \
+	server/zone/objects/creature/$(am__dirstamp) \
+	server/zone/objects/creature/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/damageovertime/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/creature/damageovertime
+	@: > server/zone/objects/creature/damageovertime/$(am__dirstamp)
+server/zone/objects/creature/damageovertime/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/creature/damageovertime/$(DEPDIR)
+	@: > server/zone/objects/creature/damageovertime/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/damageovertime/DamageOverTime.$(OBJEXT):  \
+	server/zone/objects/creature/damageovertime/$(am__dirstamp) \
+	server/zone/objects/creature/damageovertime/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/damageovertime/DamageOverTimeList.$(OBJEXT):  \
+	server/zone/objects/creature/damageovertime/$(am__dirstamp) \
+	server/zone/objects/creature/damageovertime/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/buffs/BuffImplementation.$(OBJEXT):  \
+	server/zone/objects/creature/buffs/$(am__dirstamp) \
+	server/zone/objects/creature/buffs/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/buffs/BuffList.$(OBJEXT):  \
+	server/zone/objects/creature/buffs/$(am__dirstamp) \
+	server/zone/objects/creature/buffs/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/creature/trainer/TrainerCreatureImplementation.$(OBJEXT):  \
 	server/zone/objects/creature/trainer/$(am__dirstamp) \
 	server/zone/objects/creature/trainer/$(DEPDIR)/$(am__dirstamp)
@@ -1415,6 +1856,9 @@ server/zone/objects/creature/LuaCreatureObject.$(OBJEXT):  \
 server/zone/objects/creature/VehicleObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/creature/$(am__dirstamp) \
 	server/zone/objects/creature/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.$(OBJEXT):  \
+	server/zone/objects/creature/shuttle/$(am__dirstamp) \
+	server/zone/objects/creature/shuttle/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/creature/variables/SkillBoxList.$(OBJEXT):  \
 	server/zone/objects/creature/variables/$(am__dirstamp) \
 	server/zone/objects/creature/variables/$(DEPDIR)/$(am__dirstamp)
@@ -1428,6 +1872,9 @@ server/zone/objects/player/variables/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/player/variables/$(DEPDIR)
 	@: > server/zone/objects/player/variables/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/variables/SkillList.$(OBJEXT):  \
+	server/zone/objects/player/variables/$(am__dirstamp) \
+	server/zone/objects/player/variables/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/variables/SchematicList.$(OBJEXT):  \
 	server/zone/objects/player/variables/$(am__dirstamp) \
 	server/zone/objects/player/variables/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/resource/ResourceSpawnImplementation.$(OBJEXT):  \
@@ -1466,24 +1913,39 @@ server/zone/objects/scene/variables/CustomizationVariables.$(OBJEXT):  \
 server/zone/objects/cell/CellObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/cell/$(am__dirstamp) \
 	server/zone/objects/cell/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/installation/InstallationObjectImplementation.$(OBJEXT):  \
+	server/zone/objects/installation/$(am__dirstamp) \
+	server/zone/objects/installation/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/building/BuildingObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/building/$(am__dirstamp) \
 	server/zone/objects/building/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/building/tutorial/$(am__dirstamp) \
 	server/zone/objects/building/tutorial/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/StructurePermissionList.$(OBJEXT):  \
+	server/zone/objects/building/$(am__dirstamp) \
+	server/zone/objects/building/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/PlayerCreatureImplementation.$(OBJEXT):  \
 	server/zone/objects/player/$(am__dirstamp) \
 	server/zone/objects/player/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/sui/SuiBoxImplementation.$(OBJEXT):  \
 	server/zone/objects/player/sui/$(am__dirstamp) \
 	server/zone/objects/player/sui/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.$(OBJEXT):  \
+	server/zone/objects/player/sui/inputbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/inputbox/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/sui/listbox/SuiListBoxImplementation.$(OBJEXT):  \
 	server/zone/objects/player/sui/listbox/$(am__dirstamp) \
 	server/zone/objects/player/sui/listbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBoxImplementation.$(OBJEXT): server/zone/objects/player/sui/listbox/teachplayerlistbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBoxImplementation.$(OBJEXT): server/zone/objects/player/sui/listbox/playerlearnlistbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.$(OBJEXT):  \
 	server/zone/objects/player/sui/messagebox/$(am__dirstamp) \
 	server/zone/objects/player/sui/messagebox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBoxImplementation.$(OBJEXT): server/zone/objects/player/sui/characterbuilderbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/badges/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/player/badges
 	@: > server/zone/objects/player/badges/$(am__dirstamp)
@@ -1495,6 +1957,9 @@ server/zone/objects/player/badges/Badge.$(OBJEXT):  \
 	server/zone/objects/player/badges/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.$(OBJEXT): server/zone/objects/player/sui/banktransferbox/$(am__dirstamp) \
 	server/zone/objects/player/sui/banktransferbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.$(OBJEXT):  \
+	server/zone/objects/player/sui/transferbox/$(am__dirstamp) \
+	server/zone/objects/player/sui/transferbox/$(DEPDIR)/$(am__dirstamp)
 server/zone/packets/charcreation/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/packets/charcreation
 	@: > server/zone/packets/charcreation/$(am__dirstamp)
@@ -1543,15 +2008,18 @@ server/zone/managers/terrain/$(DEPDIR)/$(am__dirstamp):
 server/zone/managers/terrain/TerrainManager.$(OBJEXT):  \
 	server/zone/managers/terrain/$(am__dirstamp) \
 	server/zone/managers/terrain/$(DEPDIR)/$(am__dirstamp)
-server/zone/managers/template/$(am__dirstamp):
-	@$(MKDIR_P) server/zone/managers/template
-	@: > server/zone/managers/template/$(am__dirstamp)
-server/zone/managers/template/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) server/zone/managers/template/$(DEPDIR)
-	@: > server/zone/managers/template/$(DEPDIR)/$(am__dirstamp)
-server/zone/managers/template/TemplateManager.$(OBJEXT):  \
-	server/zone/managers/template/$(am__dirstamp) \
-	server/zone/managers/template/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/templates/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/managers/templates
+	@: > server/zone/managers/templates/$(am__dirstamp)
+server/zone/managers/templates/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/managers/templates/$(DEPDIR)
+	@: > server/zone/managers/templates/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/templates/TemplateManager.$(OBJEXT):  \
+	server/zone/managers/templates/$(am__dirstamp) \
+	server/zone/managers/templates/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/mission/MissionManagerImplementation.$(OBJEXT):  \
+	server/zone/managers/mission/$(am__dirstamp) \
+	server/zone/managers/mission/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/waypoint/WaypointObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/waypoint/$(am__dirstamp) \
 	server/zone/objects/waypoint/$(DEPDIR)/$(am__dirstamp)
@@ -1580,6 +2048,14 @@ server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminalI
 server/zone/objects/tangible/terminal/bazaar/AuctionItemImplementation.$(OBJEXT):  \
 	server/zone/objects/tangible/terminal/bazaar/$(am__dirstamp) \
 	server/zone/objects/tangible/terminal/bazaar/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/ticketcollector/TicketCollectorImplementation.$(OBJEXT): server/zone/objects/tangible/terminal/ticketcollector/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.$(OBJEXT):  \
+	server/zone/objects/tangible/terminal/travel/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/travel/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/ticket/TicketObjectImplementation.$(OBJEXT):  \
+	server/zone/objects/tangible/ticket/$(am__dirstamp) \
+	server/zone/objects/tangible/ticket/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/radial/RadialManagerImplementation.$(OBJEXT):  \
 	server/zone/managers/radial/$(am__dirstamp) \
 	server/zone/managers/radial/$(DEPDIR)/$(am__dirstamp)
@@ -1601,6 +2077,15 @@ server/zone/managers/combat/CombatManager.$(OBJEXT):  \
 server/zone/objects/mission/MissionObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/mission/$(am__dirstamp) \
 	server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/mission/MissionObjectiveImplementation.$(OBJEXT):  \
+	server/zone/objects/mission/$(am__dirstamp) \
+	server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/mission/SurveyMissionObjectiveImplementation.$(OBJEXT):  \
+	server/zone/objects/mission/$(am__dirstamp) \
+	server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/mission/MissionObserverImplementation.$(OBJEXT):  \
+	server/zone/objects/mission/$(am__dirstamp) \
+	server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
 server/zone/templates/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/templates
 	@: > server/zone/templates/$(am__dirstamp)
@@ -1610,6 +2095,15 @@ server/zone/templates/$(DEPDIR)/$(am__dirstamp):
 server/zone/templates/SharedTangibleObjectTemplate.$(OBJEXT):  \
 	server/zone/templates/$(am__dirstamp) \
 	server/zone/templates/$(DEPDIR)/$(am__dirstamp)
+server/zone/templates/intangible/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/templates/intangible
+	@: > server/zone/templates/intangible/$(am__dirstamp)
+server/zone/templates/intangible/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/templates/intangible/$(DEPDIR)
+	@: > server/zone/templates/intangible/$(DEPDIR)/$(am__dirstamp)
+server/zone/templates/intangible/DraftSchematicObjectTemplate.$(OBJEXT):  \
+	server/zone/templates/intangible/$(am__dirstamp) \
+	server/zone/templates/intangible/$(DEPDIR)/$(am__dirstamp)
 server/zone/templates/SharedObjectTemplate.$(OBJEXT):  \
 	server/zone/templates/$(am__dirstamp) \
 	server/zone/templates/$(DEPDIR)/$(am__dirstamp)
@@ -1620,6 +2114,9 @@ server/zone/templates/tangible/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/templates/tangible/$(DEPDIR)
 	@: > server/zone/templates/tangible/$(DEPDIR)/$(am__dirstamp)
 server/zone/templates/tangible/SharedBuildingObjectTemplate.$(OBJEXT):  \
+	server/zone/templates/tangible/$(am__dirstamp) \
+	server/zone/templates/tangible/$(DEPDIR)/$(am__dirstamp)
+server/zone/templates/tangible/SharedStructureObjectTemplate.$(OBJEXT):  \
 	server/zone/templates/tangible/$(am__dirstamp) \
 	server/zone/templates/tangible/$(DEPDIR)/$(am__dirstamp)
 server/zone/templates/tangible/SharedCreatureObjectTemplate.$(OBJEXT):  \
@@ -1663,17 +2160,24 @@ mostlyclean-compile:
 	-rm -f server/zone/managers/bazaar/BazaarManager.$(OBJEXT)
 	-rm -f server/zone/managers/bazaar/BazaarManagerImplementation.$(OBJEXT)
 	-rm -f server/zone/managers/combat/CombatManager.$(OBJEXT)
+	-rm -f server/zone/managers/crafting/CraftingManager.$(OBJEXT)
+	-rm -f server/zone/managers/crafting/CraftingManagerImplementation.$(OBJEXT)
+	-rm -f server/zone/managers/crafting/schematicmap/SchematicMap.$(OBJEXT)
 	-rm -f server/zone/managers/creature/CreatureManager.$(OBJEXT)
 	-rm -f server/zone/managers/creature/CreatureManagerImplementation.$(OBJEXT)
 	-rm -f server/zone/managers/group/GroupManager.$(OBJEXT)
 	-rm -f server/zone/managers/minigames/FishingManager.$(OBJEXT)
 	-rm -f server/zone/managers/minigames/FishingManagerImplementation.$(OBJEXT)
+	-rm -f server/zone/managers/mission/MissionManager.$(OBJEXT)
+	-rm -f server/zone/managers/mission/MissionManagerImplementation.$(OBJEXT)
 	-rm -f server/zone/managers/name/NameManager.$(OBJEXT)
 	-rm -f server/zone/managers/object/ObjectManager.$(OBJEXT)
 	-rm -f server/zone/managers/objectcontroller/ObjectController.$(OBJEXT)
 	-rm -f server/zone/managers/objectcontroller/ObjectControllerImplementation.$(OBJEXT)
 	-rm -f server/zone/managers/objectcontroller/command/CommandConfigManager.$(OBJEXT)
 	-rm -f server/zone/managers/planet/HeightMap.$(OBJEXT)
+	-rm -f server/zone/managers/planet/MapLocationEntry.$(OBJEXT)
+	-rm -f server/zone/managers/planet/MapLocationTable.$(OBJEXT)
 	-rm -f server/zone/managers/planet/PlanetManager.$(OBJEXT)
 	-rm -f server/zone/managers/planet/PlanetManagerImplementation.$(OBJEXT)
 	-rm -f server/zone/managers/player/PlayerManager.$(OBJEXT)
@@ -1695,10 +2199,14 @@ mostlyclean-compile:
 	-rm -f server/zone/managers/structure/StructureManager.$(OBJEXT)
 	-rm -f server/zone/managers/structure/StructureManagerImplementation.$(OBJEXT)
 	-rm -f server/zone/managers/sui/SuiManager.$(OBJEXT)
-	-rm -f server/zone/managers/template/TemplateManager.$(OBJEXT)
+	-rm -f server/zone/managers/templates/TemplateManager.$(OBJEXT)
 	-rm -f server/zone/managers/terrain/TerrainManager.$(OBJEXT)
+	-rm -f server/zone/objects/area/ActiveArea.$(OBJEXT)
+	-rm -f server/zone/objects/area/ActiveAreaImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/area/BadgeActiveArea.$(OBJEXT)
 	-rm -f server/zone/objects/building/BuildingObject.$(OBJEXT)
 	-rm -f server/zone/objects/building/BuildingObjectImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/building/StructurePermissionList.$(OBJEXT)
 	-rm -f server/zone/objects/building/cloning/CloningBuildingObject.$(OBJEXT)
 	-rm -f server/zone/objects/building/medical/MedicalBuildingObject.$(OBJEXT)
 	-rm -f server/zone/objects/building/recreation/RecreationBuildingObject.$(OBJEXT)
@@ -1710,22 +2218,48 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/creature/CreatureObject.$(OBJEXT)
 	-rm -f server/zone/objects/creature/CreatureObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/creature/LuaCreatureObject.$(OBJEXT)
+	-rm -f server/zone/objects/creature/NonPlayerCreatureObject.$(OBJEXT)
+	-rm -f server/zone/objects/creature/NonPlayerCreatureObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/creature/VehicleObject.$(OBJEXT)
 	-rm -f server/zone/objects/creature/VehicleObjectImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/creature/buffs/Buff.$(OBJEXT)
+	-rm -f server/zone/objects/creature/buffs/BuffImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/creature/buffs/BuffList.$(OBJEXT)
 	-rm -f server/zone/objects/creature/commands/QueueCommand.$(OBJEXT)
+	-rm -f server/zone/objects/creature/damageovertime/DamageOverTime.$(OBJEXT)
+	-rm -f server/zone/objects/creature/damageovertime/DamageOverTimeList.$(OBJEXT)
+	-rm -f server/zone/objects/creature/shuttle/ShuttleCreature.$(OBJEXT)
+	-rm -f server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/creature/trainer/TrainerCreature.$(OBJEXT)
 	-rm -f server/zone/objects/creature/trainer/TrainerCreatureImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/creature/variables/CommandQueueAction.$(OBJEXT)
 	-rm -f server/zone/objects/creature/variables/SkillBoxList.$(OBJEXT)
+	-rm -f server/zone/objects/draftschematic/DraftSchematic.$(OBJEXT)
+	-rm -f server/zone/objects/draftschematic/DraftSchematicImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/group/GroupObject.$(OBJEXT)
 	-rm -f server/zone/objects/group/GroupObjectImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/installation/InstallationObject.$(OBJEXT)
+	-rm -f server/zone/objects/installation/InstallationObjectImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/installation/factory/FactoryObject.$(OBJEXT)
+	-rm -f server/zone/objects/installation/generator/GeneratorObject.$(OBJEXT)
+	-rm -f server/zone/objects/installation/generator/GeneratorObjectImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/installation/harvester/HarvesterObject.$(OBJEXT)
+	-rm -f server/zone/objects/installation/harvester/HarvesterObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/intangible/ControlDevice.$(OBJEXT)
 	-rm -f server/zone/objects/intangible/IntangibleObject.$(OBJEXT)
 	-rm -f server/zone/objects/intangible/IntangibleObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/intangible/VehicleControlDevice.$(OBJEXT)
 	-rm -f server/zone/objects/intangible/VehicleControlDeviceImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/manufactureschematic/ManufactureSchematic.$(OBJEXT)
+	-rm -f server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/mission/MissionObject.$(OBJEXT)
 	-rm -f server/zone/objects/mission/MissionObjectImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/mission/MissionObjective.$(OBJEXT)
+	-rm -f server/zone/objects/mission/MissionObjectiveImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/mission/MissionObserver.$(OBJEXT)
+	-rm -f server/zone/objects/mission/MissionObserverImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/mission/SurveyMissionObjective.$(OBJEXT)
+	-rm -f server/zone/objects/mission/SurveyMissionObjectiveImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/PlayerCreature.$(OBJEXT)
 	-rm -f server/zone/objects/player/PlayerCreatureImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/PlayerObject.$(OBJEXT)
@@ -1735,11 +2269,22 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/player/sui/SuiBoxImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBoxImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/inputbox/SuiInputBox.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/listbox/SuiListBox.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/listbox/SuiListBoxImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBoxImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBoxImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/messagebox/SuiMessageBox.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/transferbox/SuiTransferBox.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/player/variables/SchematicList.$(OBJEXT)
 	-rm -f server/zone/objects/player/variables/SkillList.$(OBJEXT)
 	-rm -f server/zone/objects/region/Region.$(OBJEXT)
 	-rm -f server/zone/objects/region/RegionImplementation.$(OBJEXT)
@@ -1748,6 +2293,10 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/resource/ResourceSpawn.$(OBJEXT)
 	-rm -f server/zone/objects/resource/ResourceSpawnImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/resource/simplexnoise/SimplexNoise.$(OBJEXT)
+	-rm -f server/zone/objects/scene/Observable.$(OBJEXT)
+	-rm -f server/zone/objects/scene/Observer.$(OBJEXT)
+	-rm -f server/zone/objects/scene/ObserverEventMap.$(OBJEXT)
+	-rm -f server/zone/objects/scene/ObserverImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/scene/SceneObject.$(OBJEXT)
 	-rm -f server/zone/objects/scene/SceneObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/scene/variables/CustomizationVariables.$(OBJEXT)
@@ -1763,14 +2312,18 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/tangible/TangibleObject.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/TangibleObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/deed/Deed.$(OBJEXT)
-	-rm -f server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeed.$(OBJEXT)
-	-rm -f server/zone/objects/tangible/deed/playerhouse/PlayerHouseDeedImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/deed/DeedImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/deed/building/BuildingDeed.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/deed/building/BuildingDeedImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/deed/installation/InstallationDeed.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/fishing/FishObject.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/fishing/FishObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/fishing/FishingBaitObject.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/fishing/FishingBaitObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/fishing/FishingPoleObject.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/fishing/FishingPoleObjectImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/sign/SignObject.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/Terminal.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/TerminalImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/bank/BankTerminal.$(OBJEXT)
@@ -1780,10 +2333,23 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminalImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/mission/MissionTerminal.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/structure/StructureTerminal.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/ticketcollector/TicketCollectorImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/travel/TravelTerminal.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/ticket/TicketObject.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/ticket/TicketObjectImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/tool/CraftingStation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/tool/CraftingStationImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/tool/CraftingTool.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/tool/CraftingToolImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/tool/SurveyTool.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/tool/SurveyToolImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/tool/ToolTangibleObject.$(OBJEXT)
@@ -1811,8 +2377,10 @@ mostlyclean-compile:
 	-rm -f server/zone/packets/object/ObjectControllerMessageCallback.$(OBJEXT)
 	-rm -f server/zone/templates/SharedObjectTemplate.$(OBJEXT)
 	-rm -f server/zone/templates/SharedTangibleObjectTemplate.$(OBJEXT)
+	-rm -f server/zone/templates/intangible/DraftSchematicObjectTemplate.$(OBJEXT)
 	-rm -f server/zone/templates/tangible/SharedBuildingObjectTemplate.$(OBJEXT)
 	-rm -f server/zone/templates/tangible/SharedCreatureObjectTemplate.$(OBJEXT)
+	-rm -f server/zone/templates/tangible/SharedStructureObjectTemplate.$(OBJEXT)
 	-rm -f server/zone/templates/tangible/SharedWeaponObjectTemplate.$(OBJEXT)
 
 distclean-compile:
@@ -1848,17 +2416,24 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/bazaar/$(DEPDIR)/BazaarManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/bazaar/$(DEPDIR)/BazaarManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/combat/$(DEPDIR)/CombatManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/crafting/$(DEPDIR)/CraftingManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/crafting/$(DEPDIR)/CraftingManagerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/crafting/schematicmap/$(DEPDIR)/SchematicMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/creature/$(DEPDIR)/CreatureManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/creature/$(DEPDIR)/CreatureManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/group/$(DEPDIR)/GroupManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/minigames/$(DEPDIR)/FishingManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/minigames/$(DEPDIR)/FishingManagerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/mission/$(DEPDIR)/MissionManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/mission/$(DEPDIR)/MissionManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/name/$(DEPDIR)/NameManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/object/$(DEPDIR)/ObjectManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/objectcontroller/$(DEPDIR)/ObjectController.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/objectcontroller/$(DEPDIR)/ObjectControllerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/objectcontroller/command/$(DEPDIR)/CommandConfigManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/planet/$(DEPDIR)/HeightMap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/planet/$(DEPDIR)/MapLocationEntry.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/planet/$(DEPDIR)/MapLocationTable.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/planet/$(DEPDIR)/PlanetManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/planet/$(DEPDIR)/PlanetManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/player/$(DEPDIR)/PlayerManager.Po@am__quote@
@@ -1880,10 +2455,14 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/structure/$(DEPDIR)/StructureManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/structure/$(DEPDIR)/StructureManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/sui/$(DEPDIR)/SuiManager.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/template/$(DEPDIR)/TemplateManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/templates/$(DEPDIR)/TemplateManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/terrain/$(DEPDIR)/TerrainManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/area/$(DEPDIR)/ActiveArea.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/area/$(DEPDIR)/ActiveAreaImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/area/$(DEPDIR)/BadgeActiveArea.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/$(DEPDIR)/BuildingObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/$(DEPDIR)/BuildingObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/$(DEPDIR)/StructurePermissionList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/cloning/$(DEPDIR)/CloningBuildingObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/medical/$(DEPDIR)/MedicalBuildingObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/recreation/$(DEPDIR)/RecreationBuildingObject.Po@am__quote@
@@ -1895,22 +2474,48 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/$(DEPDIR)/CreatureObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/$(DEPDIR)/CreatureObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/$(DEPDIR)/LuaCreatureObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/$(DEPDIR)/NonPlayerCreatureObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/$(DEPDIR)/NonPlayerCreatureObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/$(DEPDIR)/VehicleObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/$(DEPDIR)/VehicleObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/buffs/$(DEPDIR)/Buff.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/buffs/$(DEPDIR)/BuffImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/buffs/$(DEPDIR)/BuffList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/commands/$(DEPDIR)/QueueCommand.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/damageovertime/$(DEPDIR)/DamageOverTime.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/damageovertime/$(DEPDIR)/DamageOverTimeList.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/shuttle/$(DEPDIR)/ShuttleCreature.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/shuttle/$(DEPDIR)/ShuttleCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/trainer/$(DEPDIR)/TrainerCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/trainer/$(DEPDIR)/TrainerCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/variables/$(DEPDIR)/CommandQueueAction.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/variables/$(DEPDIR)/SkillBoxList.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/draftschematic/$(DEPDIR)/DraftSchematic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/draftschematic/$(DEPDIR)/DraftSchematicImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/group/$(DEPDIR)/GroupObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/group/$(DEPDIR)/GroupObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/installation/$(DEPDIR)/InstallationObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/installation/$(DEPDIR)/InstallationObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/installation/factory/$(DEPDIR)/FactoryObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/installation/generator/$(DEPDIR)/GeneratorObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/installation/generator/$(DEPDIR)/GeneratorObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/installation/harvester/$(DEPDIR)/HarvesterObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/installation/harvester/$(DEPDIR)/HarvesterObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/intangible/$(DEPDIR)/ControlDevice.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/intangible/$(DEPDIR)/IntangibleObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/intangible/$(DEPDIR)/IntangibleObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/intangible/$(DEPDIR)/VehicleControlDevice.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/intangible/$(DEPDIR)/VehicleControlDeviceImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/manufactureschematic/$(DEPDIR)/ManufactureSchematic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/manufactureschematic/$(DEPDIR)/ManufactureSchematicImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/MissionObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/MissionObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/MissionObjective.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/MissionObjectiveImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/MissionObserver.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/MissionObserverImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/SurveyMissionObjective.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/SurveyMissionObjectiveImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/$(DEPDIR)/PlayerCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/$(DEPDIR)/PlayerCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/$(DEPDIR)/PlayerObject.Po@am__quote@
@@ -1920,11 +2525,22 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/$(DEPDIR)/SuiBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/banktransferbox/$(DEPDIR)/SuiBankTransferBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/banktransferbox/$(DEPDIR)/SuiBankTransferBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR)/SuiCharacterBuilderBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR)/SuiCharacterBuilderBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/inputbox/$(DEPDIR)/SuiInputBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/inputbox/$(DEPDIR)/SuiInputBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/listbox/$(DEPDIR)/SuiListBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/listbox/$(DEPDIR)/SuiListBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/listbox/$(DEPDIR)/SuiListBoxMenuItem.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR)/PlayerLearnListBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR)/PlayerLearnListBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR)/TeachPlayerListBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR)/TeachPlayerListBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/messagebox/$(DEPDIR)/SuiMessageBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/messagebox/$(DEPDIR)/SuiMessageBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/transferbox/$(DEPDIR)/SuiTransferBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/transferbox/$(DEPDIR)/SuiTransferBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/variables/$(DEPDIR)/SchematicList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/variables/$(DEPDIR)/SkillList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/region/$(DEPDIR)/Region.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/region/$(DEPDIR)/RegionImplementation.Po@am__quote@
@@ -1933,6 +2549,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/resource/$(DEPDIR)/ResourceSpawn.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/resource/$(DEPDIR)/ResourceSpawnImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/resource/simplexnoise/$(DEPDIR)/SimplexNoise.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/Observable.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/Observer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/ObserverEventMap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/ObserverImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/SceneObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/SceneObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/variables/$(DEPDIR)/CustomizationVariables.Po@am__quote@
@@ -1948,14 +2568,18 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/$(DEPDIR)/TangibleObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/$(DEPDIR)/TangibleObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/$(DEPDIR)/Deed.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/playerhouse/$(DEPDIR)/PlayerHouseDeed.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/playerhouse/$(DEPDIR)/PlayerHouseDeedImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/$(DEPDIR)/DeedImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/building/$(DEPDIR)/BuildingDeed.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/building/$(DEPDIR)/BuildingDeedImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/installation/$(DEPDIR)/InstallationDeed.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/installation/$(DEPDIR)/InstallationDeedImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/fishing/$(DEPDIR)/FishObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/fishing/$(DEPDIR)/FishObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/fishing/$(DEPDIR)/FishingBaitObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/fishing/$(DEPDIR)/FishingBaitObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/fishing/$(DEPDIR)/FishingPoleObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/fishing/$(DEPDIR)/FishingPoleObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/sign/$(DEPDIR)/SignObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/$(DEPDIR)/Terminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/$(DEPDIR)/TerminalImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/bank/$(DEPDIR)/BankTerminal.Po@am__quote@
@@ -1965,10 +2589,23 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/bazaar/$(DEPDIR)/BazaarTerminalImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR)/CharacterBuilderTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR)/CharacterBuilderTerminalImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/ElevatorTerminal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/ElevatorTerminalImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/mission/$(DEPDIR)/MissionTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR)/StartingLocationTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR)/StartingLocationTerminalImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/structure/$(DEPDIR)/StructureTerminal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/structure/$(DEPDIR)/StructureTerminalImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR)/TicketCollector.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR)/TicketCollectorImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/travel/$(DEPDIR)/TravelTerminal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/travel/$(DEPDIR)/TravelTerminalImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/ticket/$(DEPDIR)/TicketObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/ticket/$(DEPDIR)/TicketObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/tool/$(DEPDIR)/CraftingStation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/tool/$(DEPDIR)/CraftingStationImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/tool/$(DEPDIR)/CraftingTool.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/tool/$(DEPDIR)/CraftingToolImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/tool/$(DEPDIR)/SurveyTool.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/tool/$(DEPDIR)/SurveyToolImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/tool/$(DEPDIR)/ToolTangibleObject.Po@am__quote@
@@ -1996,8 +2633,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/packets/object/$(DEPDIR)/ObjectControllerMessageCallback.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/templates/$(DEPDIR)/SharedObjectTemplate.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/templates/$(DEPDIR)/SharedTangibleObjectTemplate.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/templates/intangible/$(DEPDIR)/DraftSchematicObjectTemplate.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/templates/tangible/$(DEPDIR)/SharedBuildingObjectTemplate.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/templates/tangible/$(DEPDIR)/SharedCreatureObjectTemplate.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/templates/tangible/$(DEPDIR)/SharedStructureObjectTemplate.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/templates/tangible/$(DEPDIR)/SharedWeaponObjectTemplate.Po@am__quote@
 
 .cpp.o:
@@ -2140,12 +2779,18 @@ distclean-generic:
 	-rm -f server/zone/managers/bazaar/$(am__dirstamp)
 	-rm -f server/zone/managers/combat/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/managers/combat/$(am__dirstamp)
+	-rm -f server/zone/managers/crafting/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/managers/crafting/$(am__dirstamp)
+	-rm -f server/zone/managers/crafting/schematicmap/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/managers/crafting/schematicmap/$(am__dirstamp)
 	-rm -f server/zone/managers/creature/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/managers/creature/$(am__dirstamp)
 	-rm -f server/zone/managers/group/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/managers/group/$(am__dirstamp)
 	-rm -f server/zone/managers/minigames/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/managers/minigames/$(am__dirstamp)
+	-rm -f server/zone/managers/mission/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/managers/mission/$(am__dirstamp)
 	-rm -f server/zone/managers/name/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/managers/name/$(am__dirstamp)
 	-rm -f server/zone/managers/object/$(DEPDIR)/$(am__dirstamp)
@@ -2176,10 +2821,12 @@ distclean-generic:
 	-rm -f server/zone/managers/structure/$(am__dirstamp)
 	-rm -f server/zone/managers/sui/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/managers/sui/$(am__dirstamp)
-	-rm -f server/zone/managers/template/$(DEPDIR)/$(am__dirstamp)
-	-rm -f server/zone/managers/template/$(am__dirstamp)
+	-rm -f server/zone/managers/templates/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/managers/templates/$(am__dirstamp)
 	-rm -f server/zone/managers/terrain/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/managers/terrain/$(am__dirstamp)
+	-rm -f server/zone/objects/area/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/area/$(am__dirstamp)
 	-rm -f server/zone/objects/building/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/building/$(am__dirstamp)
 	-rm -f server/zone/objects/building/cloning/$(DEPDIR)/$(am__dirstamp)
@@ -2196,16 +2843,34 @@ distclean-generic:
 	-rm -f server/zone/objects/cell/$(am__dirstamp)
 	-rm -f server/zone/objects/creature/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/creature/$(am__dirstamp)
+	-rm -f server/zone/objects/creature/buffs/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/creature/buffs/$(am__dirstamp)
 	-rm -f server/zone/objects/creature/commands/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/creature/commands/$(am__dirstamp)
+	-rm -f server/zone/objects/creature/damageovertime/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/creature/damageovertime/$(am__dirstamp)
+	-rm -f server/zone/objects/creature/shuttle/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/creature/shuttle/$(am__dirstamp)
 	-rm -f server/zone/objects/creature/trainer/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/creature/trainer/$(am__dirstamp)
 	-rm -f server/zone/objects/creature/variables/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/creature/variables/$(am__dirstamp)
+	-rm -f server/zone/objects/draftschematic/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/draftschematic/$(am__dirstamp)
 	-rm -f server/zone/objects/group/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/group/$(am__dirstamp)
+	-rm -f server/zone/objects/installation/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/installation/$(am__dirstamp)
+	-rm -f server/zone/objects/installation/factory/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/installation/factory/$(am__dirstamp)
+	-rm -f server/zone/objects/installation/generator/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/installation/generator/$(am__dirstamp)
+	-rm -f server/zone/objects/installation/harvester/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/installation/harvester/$(am__dirstamp)
 	-rm -f server/zone/objects/intangible/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/intangible/$(am__dirstamp)
+	-rm -f server/zone/objects/manufactureschematic/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/manufactureschematic/$(am__dirstamp)
 	-rm -f server/zone/objects/mission/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/mission/$(am__dirstamp)
 	-rm -f server/zone/objects/player/$(DEPDIR)/$(am__dirstamp)
@@ -2216,10 +2881,20 @@ distclean-generic:
 	-rm -f server/zone/objects/player/sui/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/banktransferbox/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/banktransferbox/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/characterbuilderbox/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/inputbox/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/inputbox/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/listbox/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/listbox/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/listbox/playerlearnlistbox/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/listbox/teachplayerlistbox/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/messagebox/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/messagebox/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/transferbox/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/transferbox/$(am__dirstamp)
 	-rm -f server/zone/objects/player/variables/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/player/variables/$(am__dirstamp)
 	-rm -f server/zone/objects/region/$(DEPDIR)/$(am__dirstamp)
@@ -2238,10 +2913,14 @@ distclean-generic:
 	-rm -f server/zone/objects/tangible/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/deed/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/deed/$(am__dirstamp)
-	-rm -f server/zone/objects/tangible/deed/playerhouse/$(DEPDIR)/$(am__dirstamp)
-	-rm -f server/zone/objects/tangible/deed/playerhouse/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/deed/building/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/deed/building/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/deed/installation/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/deed/installation/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/fishing/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/fishing/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/sign/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/sign/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/bank/$(DEPDIR)/$(am__dirstamp)
@@ -2250,10 +2929,20 @@ distclean-generic:
 	-rm -f server/zone/objects/tangible/terminal/bazaar/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/characterbuilder/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/elevator/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/mission/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/mission/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/startinglocation/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/structure/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/structure/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/ticketcollector/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/travel/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/travel/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/ticket/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/ticket/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/tool/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/tool/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/weapon/$(DEPDIR)/$(am__dirstamp)
@@ -2272,6 +2961,8 @@ distclean-generic:
 	-rm -f server/zone/packets/object/$(am__dirstamp)
 	-rm -f server/zone/templates/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/templates/$(am__dirstamp)
+	-rm -f server/zone/templates/intangible/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/templates/intangible/$(am__dirstamp)
 	-rm -f server/zone/templates/tangible/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/templates/tangible/$(am__dirstamp)
 
@@ -2283,7 +2974,7 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/bazaar/$(DEPDIR) server/zone/managers/combat/$(DEPDIR) server/zone/managers/creature/$(DEPDIR) server/zone/managers/group/$(DEPDIR) server/zone/managers/minigames/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/professions/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/resource/$(DEPDIR) server/zone/managers/resource/resourcespawner/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcemap/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcetree/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/managers/sui/$(DEPDIR) server/zone/managers/template/$(DEPDIR) server/zone/managers/terrain/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/creature/commands/$(DEPDIR) server/zone/objects/creature/trainer/$(DEPDIR) server/zone/objects/creature/variables/$(DEPDIR) server/zone/objects/group/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/player/badges/$(DEPDIR) server/zone/objects/player/sui/$(DEPDIR) server/zone/objects/player/sui/banktransferbox/$(DEPDIR) server/zone/objects/player/sui/listbox/$(DEPDIR) server/zone/objects/player/sui/messagebox/$(DEPDIR) server/zone/objects/player/variables/$(DEPDIR) server/zone/objects/region/$(DEPDIR) server/zone/objects/resource/$(DEPDIR) server/zone/objects/resource/simplexnoise/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/staticobject/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/deed/$(DEPDIR) server/zone/objects/tangible/deed/playerhouse/$(DEPDIR) server/zone/objects/tangible/fishing/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/bank/$(DEPDIR) server/zone/objects/tangible/terminal/bazaar/$(DEPDIR) server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR) server/zone/objects/tangible/terminal/mission/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/tool/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/terrain/$(DEPDIR) server/zone/objects/terrain/layer/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR) server/zone/templates/$(DEPDIR) server/zone/templates/tangible/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/bazaar/$(DEPDIR) server/zone/managers/combat/$(DEPDIR) server/zone/managers/crafting/$(DEPDIR) server/zone/managers/crafting/schematicmap/$(DEPDIR) server/zone/managers/creature/$(DEPDIR) server/zone/managers/group/$(DEPDIR) server/zone/managers/minigames/$(DEPDIR) server/zone/managers/mission/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/professions/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/resource/$(DEPDIR) server/zone/managers/resource/resourcespawner/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcemap/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcetree/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/managers/sui/$(DEPDIR) server/zone/managers/templates/$(DEPDIR) server/zone/managers/terrain/$(DEPDIR) server/zone/objects/area/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/creature/buffs/$(DEPDIR) server/zone/objects/creature/commands/$(DEPDIR) server/zone/objects/creature/damageovertime/$(DEPDIR) server/zone/objects/creature/shuttle/$(DEPDIR) server/zone/objects/creature/trainer/$(DEPDIR) server/zone/objects/creature/variables/$(DEPDIR) server/zone/objects/draftschematic/$(DEPDIR) server/zone/objects/group/$(DEPDIR) server/zone/objects/installation/$(DEPDIR) server/zone/objects/installation/factory/$(DEPDIR) server/zone/objects/installation/generator/$(DEPDIR) server/zone/objects/installation/harvester/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/manufactureschematic/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/player/badges/$(DEPDIR) server/zone/objects/player/sui/$(DEPDIR) server/zone/objects/player/sui/banktransferbox/$(DEPDIR) server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR) server/zone/objects/player/sui/inputbox/$(DEPDIR) server/zone/objects/player/sui/listbox/$(DEPDIR) server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR) server/zone/objects/player/sui/messagebox/$(DEPDIR) server/zone/objects/player/sui/transferbox/$(DEPDIR) server/zone/objects/player/variables/$(DEPDIR) server/zone/objects/region/$(DEPDIR) server/zone/objects/resource/$(DEPDIR) server/zone/objects/resource/simplexnoise/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/staticobject/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/deed/$(DEPDIR) server/zone/objects/tangible/deed/building/$(DEPDIR) server/zone/objects/tangible/deed/installation/$(DEPDIR) server/zone/objects/tangible/fishing/$(DEPDIR) server/zone/objects/tangible/sign/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/bank/$(DEPDIR) server/zone/objects/tangible/terminal/bazaar/$(DEPDIR) server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR) server/zone/objects/tangible/terminal/elevator/$(DEPDIR) server/zone/objects/tangible/terminal/mission/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/terminal/structure/$(DEPDIR) server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR) server/zone/objects/tangible/terminal/travel/$(DEPDIR) server/zone/objects/tangible/ticket/$(DEPDIR) server/zone/objects/tangible/tool/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/terrain/$(DEPDIR) server/zone/objects/terrain/layer/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR) server/zone/templates/$(DEPDIR) server/zone/templates/intangible/$(DEPDIR) server/zone/templates/tangible/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -2317,7 +3008,7 @@ install-ps: install-ps-am
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/bazaar/$(DEPDIR) server/zone/managers/combat/$(DEPDIR) server/zone/managers/creature/$(DEPDIR) server/zone/managers/group/$(DEPDIR) server/zone/managers/minigames/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/professions/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/resource/$(DEPDIR) server/zone/managers/resource/resourcespawner/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcemap/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcetree/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/managers/sui/$(DEPDIR) server/zone/managers/template/$(DEPDIR) server/zone/managers/terrain/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/creature/commands/$(DEPDIR) server/zone/objects/creature/trainer/$(DEPDIR) server/zone/objects/creature/variables/$(DEPDIR) server/zone/objects/group/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/player/badges/$(DEPDIR) server/zone/objects/player/sui/$(DEPDIR) server/zone/objects/player/sui/banktransferbox/$(DEPDIR) server/zone/objects/player/sui/listbox/$(DEPDIR) server/zone/objects/player/sui/messagebox/$(DEPDIR) server/zone/objects/player/variables/$(DEPDIR) server/zone/objects/region/$(DEPDIR) server/zone/objects/resource/$(DEPDIR) server/zone/objects/resource/simplexnoise/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/staticobject/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/deed/$(DEPDIR) server/zone/objects/tangible/deed/playerhouse/$(DEPDIR) server/zone/objects/tangible/fishing/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/bank/$(DEPDIR) server/zone/objects/tangible/terminal/bazaar/$(DEPDIR) server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR) server/zone/objects/tangible/terminal/mission/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/tool/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/terrain/$(DEPDIR) server/zone/objects/terrain/layer/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR) server/zone/templates/$(DEPDIR) server/zone/templates/tangible/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/bazaar/$(DEPDIR) server/zone/managers/combat/$(DEPDIR) server/zone/managers/crafting/$(DEPDIR) server/zone/managers/crafting/schematicmap/$(DEPDIR) server/zone/managers/creature/$(DEPDIR) server/zone/managers/group/$(DEPDIR) server/zone/managers/minigames/$(DEPDIR) server/zone/managers/mission/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/professions/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/resource/$(DEPDIR) server/zone/managers/resource/resourcespawner/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcemap/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcetree/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/managers/sui/$(DEPDIR) server/zone/managers/templates/$(DEPDIR) server/zone/managers/terrain/$(DEPDIR) server/zone/objects/area/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/creature/buffs/$(DEPDIR) server/zone/objects/creature/commands/$(DEPDIR) server/zone/objects/creature/damageovertime/$(DEPDIR) server/zone/objects/creature/shuttle/$(DEPDIR) server/zone/objects/creature/trainer/$(DEPDIR) server/zone/objects/creature/variables/$(DEPDIR) server/zone/objects/draftschematic/$(DEPDIR) server/zone/objects/group/$(DEPDIR) server/zone/objects/installation/$(DEPDIR) server/zone/objects/installation/factory/$(DEPDIR) server/zone/objects/installation/generator/$(DEPDIR) server/zone/objects/installation/harvester/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/manufactureschematic/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/player/badges/$(DEPDIR) server/zone/objects/player/sui/$(DEPDIR) server/zone/objects/player/sui/banktransferbox/$(DEPDIR) server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR) server/zone/objects/player/sui/inputbox/$(DEPDIR) server/zone/objects/player/sui/listbox/$(DEPDIR) server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR) server/zone/objects/player/sui/messagebox/$(DEPDIR) server/zone/objects/player/sui/transferbox/$(DEPDIR) server/zone/objects/player/variables/$(DEPDIR) server/zone/objects/region/$(DEPDIR) server/zone/objects/resource/$(DEPDIR) server/zone/objects/resource/simplexnoise/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/staticobject/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/deed/$(DEPDIR) server/zone/objects/tangible/deed/building/$(DEPDIR) server/zone/objects/tangible/deed/installation/$(DEPDIR) server/zone/objects/tangible/fishing/$(DEPDIR) server/zone/objects/tangible/sign/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/bank/$(DEPDIR) server/zone/objects/tangible/terminal/bazaar/$(DEPDIR) server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR) server/zone/objects/tangible/terminal/elevator/$(DEPDIR) server/zone/objects/tangible/terminal/mission/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/terminal/structure/$(DEPDIR) server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR) server/zone/objects/tangible/terminal/travel/$(DEPDIR) server/zone/objects/tangible/ticket/$(DEPDIR) server/zone/objects/tangible/tool/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/terrain/$(DEPDIR) server/zone/objects/terrain/layer/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR) server/zone/templates/$(DEPDIR) server/zone/templates/intangible/$(DEPDIR) server/zone/templates/tangible/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

@@ -90,7 +90,6 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 				server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
-				server/zone/objects/player/craftingsession/CraftingSession.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/cell/CellObject.cpp \
@@ -305,6 +304,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/SurveyMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
+		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
 		server/zone/templates/SharedObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedStructureObjectTemplate.cpp \

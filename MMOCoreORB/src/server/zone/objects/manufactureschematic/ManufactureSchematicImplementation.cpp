@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "ManufactureSchematic.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
 
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "server/zone/packets/scene/SceneObjectCloseMessage.h"
@@ -119,8 +120,14 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 	if(!player->isPlayerCreature())
 		return;
 
-	PlayerObject* playerObject = ((PlayerCreature*) player)->getPlayerObject();
-	playerObject->synchronizedUIListenForSchematic();
+	ManagedReference<PlayerCreature* > playerCreature = (PlayerCreature*) player;
+
+	ManagedReference<CraftingTool* > craftingTool = playerCreature->getLastCraftingToolUsed();
+
+	if(craftingTool != NULL)
+		craftingTool->synchronizedUIListenForSchematic(playerCreature);
+	else
+		playerCreature->sendSystemMessage("ui_craft", "err_no_crafting_tool");
 }
 
 void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
