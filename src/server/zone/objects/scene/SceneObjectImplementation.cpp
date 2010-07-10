@@ -113,6 +113,11 @@ void SceneObjectImplementation::initializePrivateData() {
 	containerVolumeLimit = 0;
 	gameObjectType = 0;
 	containmentType = 0;
+
+	setGlobalLogging(true);
+	setLogging(false);
+
+	setLoggingName("SceneObject");
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
