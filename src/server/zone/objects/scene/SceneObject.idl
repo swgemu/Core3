@@ -370,13 +370,15 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @param templateData templateData points to the SharedObjectTemplate LuaObject that is used to initialize SceneObejct members 
 	 */
 	public SceneObject() {
-		initializeTransientMembers();
+		initializePrivateData();
 	}
 	
 	public void finalize() {
 		Logger.info("deleting object from memory", true);
 		//StackTrace.printStackTrace();
 	}
+	
+	public native void initializePrivateData();
 
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject

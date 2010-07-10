@@ -300,7 +300,7 @@ void FishingManagerImplementation::fishingStep(PlayerCreature* player, int nextA
 	}
 	case REELING:
 	{
-		SceneObject* newMarker = updateMarker(player, marker, false);
+		ManagedReference<SceneObject*> newMarker = updateMarker(player, marker, false);
 
 		if (newMarker != NULL)
 			fishingProceed(player, nextAction, newMarker, fish, boxID, REELING, true, moodString);
@@ -317,7 +317,7 @@ void FishingManagerImplementation::fishingStep(PlayerCreature* player, int nextA
 				mishapEvent("@fishing:tore_bait", player, boxID, true, moodString);
 			} else {
 
-				SceneObject* newMarker = updateMarker(player, marker, true);
+				ManagedReference<SceneObject*> newMarker = updateMarker(player, marker, true);
 
 				if (newMarker != NULL) {
 					fishingProceed(player, nextAction, newMarker, fish, boxID, REELGAME, true, moodString);
@@ -501,7 +501,7 @@ uint32 FishingManagerImplementation::createWindow(PlayerCreature* player, uint32
 	if (player == NULL)
 		return -1;
 
-	SceneObject* marker = getFishMarker(player);
+	ManagedReference<SceneObject*> marker = getFishMarker(player);
 
 	if (marker == NULL)
 		return -1;
@@ -750,7 +750,7 @@ void FishingManagerImplementation::cheat(PlayerCreature* player, int value) {
 		float x = player->getPositionX();
 		float y = player->getPositionY();
 
-		SceneObject* marker = getFishMarker(player);
+		ManagedReference<SceneObject*> marker = getFishMarker(player);
 
 		if (marker != NULL) {
 			float z = marker->getPositionZ();
@@ -1107,11 +1107,13 @@ void FishingManagerImplementation::removeMarker(PlayerCreature* player, SceneObj
 				VectorMap<uint64, ManagedReference<SceneObject*> >* objects = marker->getContainerObjects();
 
 				while (objects->size() > 0) {
-					if (objects->get(0)->isPersistent()) {
-						objects->get(0)->destroyObjectFromDatabase(true);
+					ManagedReference<SceneObject*> object = objects->get((int)0);
+
+					if (object->isPersistent()) {
+						object->destroyObjectFromDatabase(true);
 					}
 
-					marker->removeObject(objects->get(0));
+					marker->removeObject(object);
 				}
 			}
 		}

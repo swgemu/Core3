@@ -590,6 +590,8 @@ public:
 
 	SceneObject();
 
+	void initializePrivateData();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
@@ -1393,6 +1395,8 @@ public:
 
 	void finalize();
 
+	void initializePrivateData();
+
 	virtual void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
@@ -1753,6 +1757,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void finalize();
+
+	void initializePrivateData();
 
 	void initializeTransientMembers();
 

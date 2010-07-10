@@ -42,7 +42,7 @@
 
 
 object_tangible_fishing_fish_blackfish = object_tangible_fishing_fish_shared_blackfish:new {
-
+	gameObjectType = 8234
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_blackfish, "object/tangible/fishing/fish/blackfish.iff")

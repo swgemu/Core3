@@ -52,11 +52,15 @@ import server.zone.Zone;
 import system.util.SortedVector;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.events.CreatureThinkEvent;
+import server.zone.objects.creature.events.CreatureMoveEvent;
 import system.lang.ref.Reference;
 
 class NonPlayerCreatureObject extends CreatureObject {
 	@dereferenced
 	protected Reference<CreatureThinkEvent> thinkEvent;
+	
+	@dereferenced
+	protected Reference<CreatureMoveEvent> moveEvent;
 	
 	public NonPlayerCreatureObject() {
 		Logger.setLoggingName("NonPlayerCreatureObject");
@@ -67,6 +71,8 @@ class NonPlayerCreatureObject extends CreatureObject {
 	public abstract native void activateRecovery();
 	
 	public native void doRecovery();
+	
+	public native void doMovement();
 	
 	/**
 	 * Inflicts damage into the object
