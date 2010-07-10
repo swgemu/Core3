@@ -149,10 +149,13 @@ void ResourceSpawner::loadResourceSpawns() {
 
 	while (iterator.getNextKey(objectID)) {
 
-		ManagedReference<ResourceSpawn* > resourceSpawn = (ResourceSpawn*) DistributedObjectBroker::instance()->lookUp(objectID);
+		ManagedReference<ResourceSpawn* > resourceSpawn = dynamic_cast<ResourceSpawn*>(DistributedObjectBroker::instance()->lookUp(objectID));
 
-		if (!resourceSpawn->inShift())
+		if (resourceSpawn == NULL || !resourceSpawn->inShift()) {
+			if(resourceSpawn == NULL)
+				error("Trying to load object as ResourceSpawn that is not a resource spawn");
 			continue;
+		}
 
 		resourceMap->add(resourceSpawn->getName(), resourceSpawn);
 
@@ -210,7 +213,12 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
  	String name = makeResourceName(resourceEntry->isOrganic());
 
-  	ResourceSpawn* newSpawn = (ResourceSpawn*)objectManager->createObject(0xb2825c5a, 1, "resourcespawns");
+  	ResourceSpawn* newSpawn = dynamic_cast<ResourceSpawn*>(objectManager->createObject(0xb2825c5a, 1, "resourcespawns"));
+
+  	if(newSpawn == NULL) {
+  		error("createResourceSpawn is trying to create a resourcespawn with the wrong type");
+  		return NULL;
+  	}
 
  	String resType = resourceEntry->getType();
  	newSpawn->setType(resType);

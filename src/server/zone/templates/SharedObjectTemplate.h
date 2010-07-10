@@ -93,6 +93,7 @@ public:
 	const static int CRAFTINGSTATION = 0x4000008;
 	const static int MISSIONTERMINAL = 0x4000009;
 	const static int CLONINGBUILDING = 0x400000A;
+	const static int DRAFTSCHEMATIC = 0x400000B;
 
 public:
 	SharedObjectTemplate() {

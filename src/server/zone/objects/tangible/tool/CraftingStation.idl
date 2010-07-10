@@ -109,5 +109,6 @@ class CraftingStation extends ToolTangibleObject {
 		complexityLevel = level;
 	}
 	
-	public native void reqeustCraftingSession(PlayerCreature player);
+	public native SceneObject findCraftingTool(PlayerCreature player);
+	
 }

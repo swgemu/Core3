@@ -44,16 +44,31 @@ which carries forward this exception.
 
 #include "DraftSchematic.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage6.h"
-//#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage7.h"
+#include "server/zone/objects/intangible/IntangibleObject.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage8.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
 /*#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"*/
 
+void DraftSchematicImplementation::initializeTransientMembers() {
+	IntangibleObjectImplementation::initializeTransientMembers();
+
+	setGlobalLogging(true);
+	setLogging(false);
+
+	setLoggingName("DraftSchematic");
+}
+
+void DraftSchematicImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	IntangibleObjectImplementation::loadTemplateData(templateData);
+
+	schematicTemplate = dynamic_cast<DraftSchematicObjectTemplate*>(templateData);
+}
 
 void DraftSchematicImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 
@@ -76,8 +91,8 @@ void DraftSchematicImplementation::sendDraftSlotsTo(PlayerCreature* player) {
 	msg->insertInt(schematicID);
 	msg->insertInt(clientObjectCRC);
 
-	msg->insertInt(complexity); // ex: 3
-	msg->insertInt(size); // ex: 1
+	msg->insertInt(schematicTemplate->getComplexity()); // ex: 3
+	msg->insertInt(schematicTemplate->getSize()); // ex: 1
 	msg->insertByte(2);
 
 	insertIngredients(msg);
@@ -87,6 +102,8 @@ void DraftSchematicImplementation::sendDraftSlotsTo(PlayerCreature* player) {
 }
 
 void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* msg) {
+
+	Vector<DraftSlot* > draftSlots = schematicTemplate->getDraftSlots();
 
 	msg->insertInt(draftSlots.size());
 
@@ -98,6 +115,9 @@ void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* ms
 }
 
 void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player) {
+
+	Vector<ResourceWeight* > resourceWeights = schematicTemplate->getResourceWeights();
+
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x0207);
 
 	msg->insertInt(schematicID);
@@ -118,6 +138,70 @@ void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player)
 	player->sendMessage(msg);
 }
 
-void DraftSchematicImplementation::setObjectName(StringId& stringId) {
-	objectName = stringId;
+SceneObject* DraftSchematicImplementation::createManufactureSchematic() {
+
+	ManufactureSchematic* manuSchematic =
+			dynamic_cast<ManufactureSchematic* > (getZoneServer()->createObject(0xF75E04C2, 0));
+
+	if(manuSchematic == NULL) {
+		error("Could not create ManufactureSchematic for " + getObjectNameStringIdName());
+		return NULL;
+	}
+
+	manuSchematic->setDraftSchematic(_this);
+	return manuSchematic;
 }
+
+int DraftSchematicImplementation::getDraftSlotCount() {
+	return schematicTemplate->getDraftSlots().size();
+}
+
+DraftSlot* DraftSchematicImplementation::getDraftSlot(int i) {
+	return schematicTemplate->getDraftSlots().get(i);
+}
+
+int DraftSchematicImplementation::getResourceWeightCount() {
+	return schematicTemplate->getResourceWeights().size();
+}
+
+ResourceWeight* DraftSchematicImplementation::getResourceWeight(int i) {
+	return schematicTemplate->getResourceWeights().get(i);
+}
+
+
+float DraftSchematicImplementation::getComplexity() {
+	return (float)schematicTemplate->getComplexity();
+}
+
+uint32 DraftSchematicImplementation::getToolTab() {
+	return (uint32)schematicTemplate->getCraftingToolTab();
+}
+
+float DraftSchematicImplementation::getSize() {
+	return (float)schematicTemplate->getSize();
+}
+
+String DraftSchematicImplementation::getXpType() {
+	return schematicTemplate->getXpType();
+}
+
+int DraftSchematicImplementation::getXpAmount() {
+	return schematicTemplate->getXp();
+}
+
+String DraftSchematicImplementation::getAssemblySkill() {
+	return schematicTemplate->getAssemblySkill();
+}
+
+String DraftSchematicImplementation::getExperiementationSkill() {
+	return schematicTemplate->getExperimentingSkill();
+}
+
+uint32 DraftSchematicImplementation::getTanoCRC() {
+	return schematicTemplate->getTanoCRC();
+}
+
+String DraftSchematicImplementation::getGroupName() {
+	return schematicTemplate->getGroupName();
+}
+

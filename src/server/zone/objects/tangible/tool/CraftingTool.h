@@ -63,7 +63,13 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 #include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
 
@@ -109,7 +115,13 @@ public:
 
 	Vector<unsigned int>* getToolTabs();
 
-	void requestCraftingSession(PlayerCreature* player);
+	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation = NULL);
+
+	void cancelCraftingSession(PlayerCreature* player);
+
+	void selectDraftSchematic(PlayerCreature* player, int index);
+
+	void synchronizedUIListenForSchematic(PlayerCreature* player);
 
 protected:
 	CraftingTool(DummyConstructorParameter* param);
@@ -141,8 +153,17 @@ protected:
 
 	String status;
 
-private:
 	Vector<unsigned int> enabledTabs;
+
+	ManagedReference<CraftingStation* > craftingStation;
+
+	int state;
+
+	int insertCounter;
+
+	ManagedReference<ManufactureSchematic* > manufactureSchematic;
+
+	ManagedReference<TangibleObject* > prototype;
 
 public:
 	static const int CLOTHING = 1;
@@ -179,7 +200,21 @@ public:
 
 	Vector<unsigned int>* getToolTabs();
 
-	void requestCraftingSession(PlayerCreature* player);
+	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation = NULL);
+
+private:
+	void sendStart(PlayerCreature* player);
+
+public:
+	void cancelCraftingSession(PlayerCreature* player);
+
+private:
+	void locateCraftingStation(PlayerCreature* player, int toolType);
+
+public:
+	void selectDraftSchematic(PlayerCreature* player, int index);
+
+	void synchronizedUIListenForSchematic(PlayerCreature* player);
 
 	CraftingTool* _this;
 
@@ -227,8 +262,6 @@ public:
 	bool isCraftingTool();
 
 	int getToolType();
-
-	void requestCraftingSession(PlayerCreature* player);
 
 };
 

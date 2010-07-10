@@ -46,8 +46,9 @@ which carries forward this exception.
 #define DRAFTSLOT_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 
-class DraftSlot {
+class DraftSlot : public Object {
 private:
 
 	StringId stringId;

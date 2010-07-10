@@ -86,7 +86,12 @@ public:
 		} else if(object->isCraftingStation()) {
 
 			CraftingStation* craftingStation = (CraftingStation*) object.get();
-			craftingStation->reqeustCraftingSession((PlayerCreature*)creature);
+
+			ManagedReference<CraftingTool* > craftingTool = (CraftingTool*)
+					craftingStation->findCraftingTool((PlayerCreature*)creature);
+
+			if(craftingTool != NULL)
+				craftingTool->requestCraftingSession((PlayerCreature*)creature, craftingStation);
 
 		} else
 			return INVALIDTARGET;

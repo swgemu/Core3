@@ -111,10 +111,6 @@ using namespace server::zone;
 
 #include "server/zone/managers/crafting/schematicmap/DraftSchematicGroup.h"
 
-#include "server/zone/objects/tangible/tool/CraftingStation.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
@@ -130,8 +126,6 @@ using namespace server::zone;
 #include "server/zone/objects/player/variables/IgnoreList.h"
 
 #include "server/zone/objects/player/variables/SchematicList.h"
-
-#include "server/zone/objects/player/craftingsession/CraftingSession.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
@@ -264,6 +258,10 @@ public:
 
 	SchematicList* getSchematics();
 
+	DraftSchematic* getSchematic(int i);
+
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
+
 	int getFoodFilling();
 
 	int getFoodFillingMax();
@@ -281,18 +279,6 @@ public:
 	DeltaVector<String>* getIgnoreList();
 
 	int getExperience(const String& xp);
-
-	void requestCraftingSession(PlayerCreature* player, CraftingTool* craftingTool);
-
-	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation);
-
-	void cancelCraftingSession();
-
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
-
-	void selectDraftSchematic(PlayerCreature* player, int index);
-
-	void synchronizedUIListenForSchematic();
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -353,8 +339,6 @@ protected:
 	IgnoreList ignoreList;
 
 	SchematicList schematicList;
-
-	CraftingSession craftingSession;
 
 public:
 	static const int LFG = 1;
@@ -479,6 +463,10 @@ public:
 
 	SchematicList* getSchematics();
 
+	DraftSchematic* getSchematic(int i);
+
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
+
 	int getFoodFilling();
 
 	int getFoodFillingMax();
@@ -496,24 +484,6 @@ public:
 	DeltaVector<String>* getIgnoreList();
 
 	int getExperience(const String& xp);
-
-	void requestCraftingSession(PlayerCreature* player, CraftingTool* craftingTool);
-
-	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation);
-
-	void cancelCraftingSession();
-
-private:
-	CraftingStation* findCraftingStation(PlayerCreature* player, int toolType);
-
-	CraftingTool* findCraftingTool(PlayerCreature* player, int stationType);
-
-public:
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
-
-	void selectDraftSchematic(PlayerCreature* player, int index);
-
-	void synchronizedUIListenForSchematic();
 
 	PlayerObject* _this;
 
@@ -619,6 +589,8 @@ public:
 	int getForcePower();
 
 	int getForcePowerMax();
+
+	DraftSchematic* getSchematic(int i);
 
 	int getFoodFilling();
 
