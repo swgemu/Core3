@@ -200,12 +200,17 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 
 void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 
-	removeObject(manufactureSchematic);
-	manufactureSchematic->setDraftSchematic(NULL);
-	manufactureSchematic = NULL;
+	if (manufactureSchematic != NULL) {
+		removeObject(manufactureSchematic);
+		manufactureSchematic->setDraftSchematic(NULL);
 
-	removeObject(prototype);
-	prototype = NULL;
+		manufactureSchematic = NULL;
+	}
+
+	if (prototype != NULL) {
+		removeObject(prototype);
+		prototype = NULL;
+	}
 
 	if (player != NULL) {
 		// DPlay9
