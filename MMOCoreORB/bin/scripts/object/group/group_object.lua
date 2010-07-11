@@ -42,7 +42,7 @@
 
 
 object_group_group_object = object_group_shared_group_object:new {
-
+	gameObjectType = 13
 }
 
 ObjectTemplates:addTemplate(object_group_group_object, "object/group/group_object.iff")
