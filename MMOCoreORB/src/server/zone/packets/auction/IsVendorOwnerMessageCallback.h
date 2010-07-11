@@ -45,6 +45,13 @@ public:
 
 		if (bazaar->isBazaarTerminal()) {
 			ActiveArea* area = bazaar->getActiveArea();
+
+			if (area == NULL) {
+				bazaar->error("NULL AREA FOR THIS BAZAAR");
+
+				return;
+			}
+
 			String bazaarRegion = area->getObjectName()->getStringID();
 			//String bazaarRegion = ((BazaarTerminal*) bazaar.get())->getBazaarRegion();
 			String planetString = Planet::getPlanetName(zone->getZoneID());
