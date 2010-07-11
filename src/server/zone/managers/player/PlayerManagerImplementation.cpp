@@ -519,6 +519,7 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
 	tutorial->createCellObjects();
 	tutorial->setStaticBuilding(false);
+	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
@@ -553,6 +554,7 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* 
 	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
 	tutorial->createCellObjects();
 	tutorial->setStaticBuilding(false);
+	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
