@@ -318,7 +318,7 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature* player) {
 
-	if(manufactureSchematic == NULL)
+	if (manufactureSchematic == NULL || prototype == NULL)
 		return;
 
 	ManufactureSchematicObjectMessage7* mcso7 =
