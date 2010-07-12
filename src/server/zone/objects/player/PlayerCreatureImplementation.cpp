@@ -551,7 +551,6 @@ int PlayerCreatureImplementation::notifyObjectDestructionObservers(TangibleObjec
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
-
 int PlayerCreatureImplementation::canAddObject(SceneObject* object, String& errorDescription) {
 	if (object->isArmorObject()) {
 		PlayerManager* playerManager = getZoneServer()->getPlayerManager();

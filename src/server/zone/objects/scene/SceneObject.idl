@@ -63,6 +63,7 @@ import system.lang.StackTrace;
 import server.zone.managers.objectcontroller.ObjectController;
 import system.lang.ref.Reference;
 import engine.core.Task;
+import engine.util.Vector3;
 
 
 import server.zone.ZoneProcessServerImplementation;
@@ -457,9 +458,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @param range range to check
 	 * @return returns true if this object is in range with obj
 	 */
-	public boolean isInRange(SceneObject obj, float range) {
-		return QuadTreeEntry.isInRange(obj.getPositionX(), obj.getPositionY(), range);
-	}
+	public native boolean isInRange(SceneObject obj, float range);
 
 	/**
 	 * Evaluates if the object is in range
@@ -771,7 +770,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @post { this object is locked, in range objects are updated with the new position }
 	 * @param lightUpdate if true a standalone message is sent to the in range objects
 	 */
-	public native abstract void updateZone(boolean lightUpdate);
+	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
 
 	/**
 	 * Updates position and/or parent of this object and to the rest of in range objects
@@ -780,7 +779,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @param newParent cellObject where this object is
 	 * @param lightUpdate if true a standalone message is sent to the in range objects
 	 */
-	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate); 
+	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate, boolean sendPackets = true); 
 
 	/**
 	 * Broadcasts the message to the in range objects
@@ -936,13 +935,23 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 
 	public native unsigned long getObjectID();
 
-	public float getPositionX() {
-		return QuadTreeEntry.getPositionX();
+	@local
+	@dereferenced
+	public Vector3 getPosition() {
+		return QuadTreeEntry.getPosition();
 	}
 	
 	public native float getWorldPositionX();
 	public native float getWorldPositionY();
 	public native float getWorldPositionZ();
+	
+	@local
+	@dereferenced
+	public native Vector3 getWorldPosition();
+	
+	public float getPositionX() {
+		return QuadTreeEntry.getPositionX();
+	}
 
 	public float getPositionZ() {
 		return QuadTreeEntry.getPositionZ();
@@ -1259,6 +1268,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 
 	public void setDirection(float fw, float fx, float fy, float fz) {
 		direction.set(fw, fx, fy, fz);
+	}
+	
+	public void setDirection(float headingAngleRadians) {
+		direction.setHeadingDirection(headingAngleRadians);
 	}
 	
 	@local

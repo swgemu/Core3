@@ -42,10 +42,8 @@ bool VehicleObjectImplementation::checkInRangeGarage() {
 		if (scno == this)
 			continue;
 
-
 		if (scno->isGarage() && scno->isInRange(_this, 15))
 			return true;
-
 	}
 
 	return false;

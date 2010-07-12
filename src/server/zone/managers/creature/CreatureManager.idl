@@ -9,6 +9,7 @@ import server.zone.objects.tangible.TangibleObject;
 import engine.core.ManagedObject;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.NonPlayerCreatureObject;
 import server.zone.Zone;
 import server.zone.managers.objectcontroller.ObjectController;
 
@@ -21,8 +22,8 @@ class CreatureManager extends ManagedObject implements Logger {
 	@weakReference
 	protected Zone zone;
 	
-	@dereferenced
-	protected CreatureMap creatureMap;
+	/*@dereferenced
+	protected CreatureMap creatureMap;*/
 
 	public CreatureManager(Zone planet, ZoneProcessServerImplementation impl) {
 		server = planet.getZoneServer();
@@ -51,18 +52,25 @@ class CreatureManager extends ManagedObject implements Logger {
 	public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
 	
 	
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
+	@local
+	public native int notifyDestruction(TangibleObject destructor, NonPlayerCreatureObject destructedObject, int condition);
+	
 	public native void loadDynamicSpawnAreas();
 	
 	public native void loadTrainers();
 	
 	private native boolean createCreatureChildrenObjects(CreatureObject creature);
 	
-	public synchronized void addCreatureToMap(CreatureObject creature) {
+	/*public synchronized void addCreatureToMap(CreatureObject creature) {
 		creatureMap.put(creature.getObjectID(), creature);
 	}
 	
 	public synchronized void removeCreatureFromMap(unsigned long oid) {
 		creatureMap.remove(oid);
-	}
+	}*/
 	
 }

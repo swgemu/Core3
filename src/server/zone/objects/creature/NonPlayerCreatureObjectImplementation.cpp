@@ -7,9 +7,17 @@
 
 #include "NonPlayerCreatureObject.h"
 #include "events/CreatureThinkEvent.h"
+#include "events/CreatureMoveEvent.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/packets/scene/UpdateTransformMessage.h"
+#include "server/zone/packets/scene/LightUpdateTransformMessage.h"
+#include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
+#include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
+#include "server/zone/Zone.h"
+#include "PatrolPoint.h"
 
 void NonPlayerCreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
@@ -33,8 +41,12 @@ void NonPlayerCreatureObjectImplementation::initializeTransientMembers() {
 }
 
 void NonPlayerCreatureObjectImplementation::doRecovery() {
+	if (isDead())
+		return;
+
 	activateHAMRegeneration();
 	activateStateRecovery();
+	activatePostureRecovery();
 
 	if (damageOverTimeList.hasDot() && damageOverTimeList.isNextTickPast()) {
 		damageOverTimeList.activateDots(_this);
@@ -50,6 +62,8 @@ void NonPlayerCreatureObjectImplementation::doRecovery() {
 				CombatManager::instance()->attemptPeace(_this);
 			} else {
 				setTargetID(creo->getObjectID(), true);
+
+				setFollowObject(creo);
 
 				if (commandQueue.size() == 0)
 					enqueueCommand(0xA8FEF90A, 0, creo->getObjectID(), ""); // Do default attack
@@ -70,6 +84,195 @@ void NonPlayerCreatureObjectImplementation::activateRecovery() {
 	if (!thinkEvent->isScheduled())
 		thinkEvent->schedule(2000);
 }
+
+void NonPlayerCreatureObjectImplementation::activatePostureRecovery() {
+	if (isProne() || isKnockedDown() || isKneeling())
+		executeObjectControllerAction(0xA8A25C79); // stand
+}
+
+void NonPlayerCreatureObjectImplementation::updateCurrentPosition(PatrolPoint* pos) {
+	PatrolPoint* nextPosition = pos;
+
+	setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(),
+		nextPosition->getPositionY());
+
+	SceneObject* cell = nextPosition->getCell();
+
+	StringBuffer reachedPosition;
+	reachedPosition << "(" << positionX << ", " << positionY << ")";
+	info("reached " + reachedPosition.toString(), true);
+
+	if (cell != NULL)
+		updateZoneWithParent(cell, false, false);
+	else
+		updateZone(false, false);
+}
+
+
+/*void NonPlayerCreatureObjectImplementation::checkNewAngle(float directionangle) {
+	float radians = M_PI / 2 - directionangle;
+	uint8 newDirectionAngle = (uint8) ((radians / 6.283f) * 100);
+
+	if (newDirectionAngle != directionAngle) {
+		setRadialDirection(radians);
+
+		broadcastNextPositionUpdate();
+	}
+}*/
+
+void NonPlayerCreatureObjectImplementation::doMovement() {
+	//info("doMovement", true);
+	if (isDead())
+		return;
+
+	if (currentSpeed != 0) {
+		updateCurrentPosition(&nextStepPosition);
+		nextStepPosition.setReached(true);
+	}
+
+	if (patrolPoints.size() == 0) {
+		if (followObject != NULL) {
+			setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
+		} else {
+			currentSpeed = 0;
+			return;
+		}
+	}
+
+	float maxDistance = 5;
+	float dist = 0;
+
+	float dx, dy;
+	ManagedReference<SceneObject*> cellObject;
+
+	bool found = false;
+
+	Vector3 thisWorldPos = getWorldPosition();
+	PatrolPoint* nextPosition = NULL;
+
+	while (!found && patrolPoints.size() != 0) {
+		nextPosition = &patrolPoints.elementAt(0);
+
+		cellObject = nextPosition->getCell();
+
+		Vector3 nextPosWorldPos = nextPosition->getWorldPosition();
+
+		dx = nextPosWorldPos.getX() - thisWorldPos.getX();
+		dy = nextPosWorldPos.getY() - thisWorldPos.getY();
+
+		dist = sqrt(dx * dx + dy * dy);
+
+		if (dist < maxDistance && cellObject == parent) {
+			patrolPoints.remove(0);
+
+			nextPosition = NULL;
+		} else
+			found = true;
+	}
+
+	if (!found) {
+		currentSpeed = 0;
+		//info("not found in doMovement", true);
+
+		if (followObject != NULL)
+			activateMovementEvent();
+
+		return;
+	}
+
+	if (!isStanding()) {
+		activateMovementEvent();
+		return;
+	}
+
+	float newPositionX, newPositionZ, newPositionY;
+
+	newPositionX = thisWorldPos.getX() + (runSpeed * (dx / dist));
+	newPositionY = thisWorldPos.getY() + (runSpeed * (dy / dist));
+	newPositionZ = zone->getHeight(newPositionX, newPositionY);
+
+	float directionangle = atan2(newPositionX - thisWorldPos.getX(), newPositionY - thisWorldPos.getY());
+
+	direction.setHeadingDirection(directionangle);
+
+	currentSpeed = runSpeed;
+
+	if (parent != cellObject || (cellObject != NULL && dist <= currentSpeed)) {
+		nextStepPosition = *nextPosition;
+	} else {
+		nextStepPosition.setPosition(newPositionX, newPositionZ, newPositionY);
+		nextStepPosition.setCell(NULL);
+	}
+
+	nextStepPosition.setReached(false);
+	//nextStepPosition.addEstimatedTimeOfArrival(900);
+
+	//info("broadcast next position update", true);
+
+	//PatrolPoint nextStepHalf(positionX + (runSpeed * dx / dist * 1.5), newPositionZ, positionY + (runSpeed * dy / dist * 1.5));
+
+	broadcastNextPositionUpdate(&nextStepPosition);
+
+	activateMovementEvent();
+}
+
+void NonPlayerCreatureObjectImplementation::activateMovementEvent() {
+	if (moveEvent == NULL) {
+		moveEvent = new CreatureMoveEvent(_this);
+
+		moveEvent->schedule(1000);
+	}
+
+	if (!moveEvent->isScheduled())
+		moveEvent->schedule(1000);
+}
+
+void NonPlayerCreatureObjectImplementation::setNextPosition(float x, float z, float y, SceneObject* cell) {
+	PatrolPoint point(x, z, y, cell);
+
+	if (patrolPoints.size() == 0)
+		patrolPoints.add(point);
+	else
+		patrolPoints.setElementAt(0, point);
+}
+
+void NonPlayerCreatureObjectImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
+	BasePacket* msg = NULL;
+	++movementCounter;
+
+	if (point == NULL) {
+		if (parent != NULL)
+			msg = new UpdateTransformWithParentMessage(_this);
+		else
+			msg = new UpdateTransformMessage(_this);
+	} else {
+		if (point->getCell() != NULL)
+			msg = new LightUpdateTransformWithParentMessage(_this, point->getPositionX(), point->getPositionZ(), point->getPositionY(), point->getCell()->getObjectID());
+		else
+			msg = new LightUpdateTransformMessage(_this, point->getPositionX(), point->getPositionZ(), point->getPositionY());
+	}
+
+	broadcastMessage(msg, false);
+}
+
+int NonPlayerCreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	creatureManager->notifyDestruction(attacker, _this, condition);
+
+	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
+}
+
+bool NonPlayerCreatureObjectImplementation::hasOrganics() {
+	return ((getHideMax() + getBoneMax() + getMeatMax()) > 0);
+}
+
+int NonPlayerCreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+	activateRecovery();
+
+	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+}
+
 
 void NonPlayerCreatureObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* player) {
 	int creaKnowledge = player->getSkillMod("creature_knowledge");
@@ -299,19 +502,4 @@ void NonPlayerCreatureObjectImplementation::fillAttributeList(AttributeListMessa
 		alm->insertAttribute("cat_wpn_damage", damageMsg.toString());
 	}
 
-}
-
-
-void NonPlayerCreatureObjectImplementation::doMovement() {
-
-}
-
-bool NonPlayerCreatureObjectImplementation::hasOrganics() {
-	return ((getHideMax() + getBoneMax() + getMeatMax()) > 0);
-}
-
-int NonPlayerCreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	activateRecovery();
-
-	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }

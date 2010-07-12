@@ -264,14 +264,10 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 						continue;
 				}
 
-				float posX, posY;
+				Vector3 pos = object->getWorldPosition();
 
-				posX = object->getWorldPositionX();
-				posY = object->getWorldPositionY();
-
-
-				gmlr->addMapLocation(object->getObjectID(), name, posX,
-						posY, entry->getType1(), entry->getType2(), entry->getType3());
+				gmlr->addMapLocation(object->getObjectID(), name, pos.getX(),
+						pos.getY(), entry->getType1(), entry->getType2(), entry->getType3());
 			}
 
 		}
