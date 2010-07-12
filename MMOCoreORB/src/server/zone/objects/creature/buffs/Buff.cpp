@@ -558,8 +558,8 @@ int BuffImplementation::getAttributeModifierValue(byte attribute) {
 	// server/zone/objects/creature/buffs/Buff.idl(167):  		return 
 	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(168):  			return attributeModifiers.get(attribute);
 	return (&attributeModifiers)->get(attribute);
-	// server/zone/objects/creature/buffs/Buff.idl(170):  0.0f;
-	return 0.0f;
+	// server/zone/objects/creature/buffs/Buff.idl(170):  0;
+	return 0;
 }
 
 int BuffImplementation::getSkillModifierValue(const String& modname) {

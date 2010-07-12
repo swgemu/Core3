@@ -28,13 +28,13 @@ float TerrainManager::getHighestHeight(float x0, float y0, float x1, float y1, i
 	msg2 << "getHeights for (x0, y0) = (" << x0 << ", " << y0 << ") (x1, y1) = (" << x1 << ", " << y1 << ")";
 	info(msg2.toString(), true);*/
 
-	int deltaX = fabs(x1 - x0);
-	int deltaY = fabs(y1 - y0);
+	int deltaX = (int)fabs(x1 - x0);
+	int deltaY = (int)fabs(y1 - y0);
 
 	float maxHeight = -16000.f;
 
-	for (int i = y0; i < y0 + deltaY; i += stepping) {
-		for (int j = x0; j < x0 + deltaX; j += stepping) {
+	for (int i = (int)y0; i < (int)y0 + deltaY; i += stepping) {
+		for (int j = (int)x0; j < (int)x0 + deltaX; j += stepping) {
 			float height = zone->getHeight(j, i);
 
 			/*StringBuffer msg;

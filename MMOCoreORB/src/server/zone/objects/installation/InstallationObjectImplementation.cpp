@@ -304,7 +304,7 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 			//setOperating(false);
 		}
 
-		addPower(-1.0f * enegeryAmount);
+		addPower((int) (-1.0f * enegeryAmount));
 	}
 
 	lastMaintenanceTime.updateToCurrentTime();
@@ -348,9 +348,9 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	float currentQuantity = container->getQuantity();
 
 	if (harvestAmount > 0) {
-		spawn->extractResource(zone->getZoneID(), harvestAmount);
+		spawn->extractResource(zone->getZoneID(), (int) harvestAmount);
 
-		updateResourceContainerQuantity(container, currentQuantity + harvestAmount, true);
+		updateResourceContainerQuantity(container, (int) (currentQuantity + harvestAmount), true);
 		//container->setQuantity(currentQuantity + harvestAmount);
 	}
 	// Update Timestamp

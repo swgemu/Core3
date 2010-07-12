@@ -155,7 +155,7 @@ uint32 DamageOverTime::initDot(CreatureObject* victim) {
 	case CreatureState::DISEASED:
 		nextTick.updateToCurrentTime();
 		nextTick.addMiliTime(19000);
-		uint32 shockWounds = victim->getShockWounds();
+		uint32 shockWounds = (uint32) victim->getShockWounds();
 		power = strength + (shockWounds * strength / 500);
 		break;
 	}
@@ -206,7 +206,7 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim) {
 }
 
 uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
-	uint32 shockWounds = victim->getShockWounds();
+	uint32 shockWounds = (uint32) victim->getShockWounds();
 	uint32 power = strength + (shockWounds * strength / 500);
 
 	victim->addWounds(attribute, power);

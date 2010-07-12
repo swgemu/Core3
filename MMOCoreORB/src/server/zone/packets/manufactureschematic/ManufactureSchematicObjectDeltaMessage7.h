@@ -257,7 +257,7 @@ public:
 		for (int i = 0; i < titleCount; i++) {
 			addListFloatElement(i, 0); //0
 		}
-		//*********************************
+		//!*********************************
 		// Initialize update 0A************
 		startUpdate(0x0A);
 
@@ -266,7 +266,7 @@ public:
 		for (int i = 0; i < titleCount; i++) {
 			addListFloatElement(i, 0);
 		}
-		//*********************************
+		//!*********************************
 		// Initialize update 0B************
 		startUpdate(0x0B);
 
@@ -275,7 +275,7 @@ public:
 		for (int i = 0; i < titleCount; i++) {
 			addListFloatElement(i, 0);
 		}
-		//*********************************
+		//!*********************************
 		// Initialize update 0C************
 		startUpdate(0x0C);
 
@@ -284,7 +284,7 @@ public:
 		for (int i = 0; i < titleCount; i++) {
 			addListFloatElement(i, 0);
 		}
-		//**********************************/
+		//!**********************************/
 
 	}
 

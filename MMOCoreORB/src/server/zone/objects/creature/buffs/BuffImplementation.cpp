@@ -90,7 +90,7 @@ void BuffImplementation::activate() {
 	applySkillModifiers();
 
 	buffEvent = new BuffDurationEvent(creature, _this);
-	buffEvent->schedule(buffDuration * 1000);
+	buffEvent->schedule((int) (buffDuration * 1000));
 	nextExecutionTime = buffEvent->getNextExecutionTime();
 
 	if (creature->isPlayerCreature())
@@ -149,7 +149,7 @@ void BuffImplementation::parseSkillModifierString(const String& modifierstring) 
 		String modname = token.subString(0, tokpos);
 		float value = Float::valueOf(token.subString(tokpos + 1, token.length()));
 
-		skillModifiers.put(modname, value);
+		skillModifiers.put(modname, (int) value);
 	}
 }
 
