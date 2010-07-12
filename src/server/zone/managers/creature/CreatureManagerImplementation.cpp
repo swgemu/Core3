@@ -9,7 +9,9 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/creature/trainer/TrainerCreature.h"
+#include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/db/ServerDatabase.h"
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
@@ -58,7 +60,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 		cellParent->addObject(object, -1);
 	}
 
-	addCreatureToMap(creature);
+	//addCreatureToMap(creature);
 
 	Locker _locker(creature);
 
@@ -89,6 +91,17 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 
 void CreatureManagerImplementation::loadDynamicSpawnAreas() {
 	info("loading random spawn regions...", true);
+}
+
+int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition) {
+	destructedObject->setPosture(CreaturePosture::DEAD, true);
+
+	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(destructedObject);
+	despawn->schedule(10000);
+
+	CombatManager::instance()->attemptPeace(destructedObject);
+
+	return 1;
 }
 
 void CreatureManagerImplementation::loadTrainers() {

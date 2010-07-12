@@ -42,7 +42,11 @@
 
 
 object_building_player_player_garage_corellia_style_01 = object_building_player_shared_player_garage_corellia_style_01:new {
-
+	gameObjectType = 4102,
+	mapLocationsType1 = 6,
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	allowedZones = {0,7}
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_garage_corellia_style_01, "object/building/player/player_garage_corellia_style_01.iff")

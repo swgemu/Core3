@@ -486,7 +486,7 @@ void SceneObjectImplementation::updateVehiclePosition() {
 	}
 }
 
-void SceneObjectImplementation::updateZone(bool lightUpdate) {
+void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	if (zone == NULL)
 		return;
 
@@ -508,7 +508,7 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 
 	zone->inRange(this, 256);
 
-	if (parent == NULL || !parent->isVehicleObject()) {
+	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
 		if (lightUpdate) {
 			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
 			broadcastMessage(message, false);
@@ -531,7 +531,7 @@ void SceneObjectImplementation::notifyCloseContainer(PlayerCreature* player) {
 	notifyObservers(ObserverEventType::CLOSECONTAINER, player);
 }
 
-void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
+void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
 	if (zone == NULL)
 		return;
 
@@ -596,12 +596,14 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		building->inRange(this, 256);
 	}
 
-	if (lightUpdate) {
-		LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
-		broadcastMessage(message, false);
-	} else {
-		UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
-		broadcastMessage(message, false);
+	if (sendPackets) {
+		if (lightUpdate) {
+			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
+			broadcastMessage(message, false);
+		} else {
+			UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
+			broadcastMessage(message, false);
+		}
 	}
 
 	notifySelfPositionUpdate();
@@ -937,6 +939,16 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 	return false;
 }
 
+bool SceneObjectImplementation::isInRange(SceneObject* object, float range) {
+	Vector3 worldPos = object->getWorldPosition();
+	Vector3 thisPos = getWorldPosition();
+
+	if (thisPos.squaredDistanceTo(worldPos) <= range * range)
+		return true;
+
+	return false;
+}
+
 float SceneObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 	// TEMP till
 	float x = targetCreature->getWorldPositionX();
@@ -1013,6 +1025,27 @@ void SceneObjectImplementation::setObjectName(StringId& stringID) {
 	objectName = stringID;
 }
 
+Vector3 SceneObjectImplementation::getWorldPosition() {
+	if (parent == NULL)
+		return getPosition();
+
+	SceneObject* root = getRootParent();
+
+	if (!root->isBuildingObject())
+		return getPosition();
+
+	float length = Math::sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
+	float angle = root->getDirection()->getRadians() + atan2(positionX, positionY);
+
+	float posX = root->getPositionX() + (sin(angle) * length);
+	float posY = root->getPositionY() + (cos(angle) * length);
+	float posZ = root->getPositionZ() + positionZ;
+
+	Vector3 position(posX, posY, posZ);
+
+	return position;
+}
+
 float SceneObjectImplementation::getWorldPositionX() {
 	if (parent == NULL)
 		return positionX;
@@ -1042,9 +1075,6 @@ float SceneObjectImplementation::getWorldPositionZ() {
 		return positionZ;
 
 	SceneObject* root = getRootParent();
-
-	/*float length = Math::sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
-	float angle = direction.getRadians() - atan(positionX, positionY);*/
 
 	return root->getPositionZ() + positionZ;
 }

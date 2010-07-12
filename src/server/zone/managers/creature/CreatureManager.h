@@ -87,6 +87,20 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class NonPlayerCreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -128,13 +142,11 @@ public:
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
 
+	int notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition);
+
 	void loadDynamicSpawnAreas();
 
 	void loadTrainers();
-
-	void addCreatureToMap(CreatureObject* creature);
-
-	void removeCreatureFromMap(unsigned long long oid);
 
 protected:
 	CreatureManager(DummyConstructorParameter* param);
@@ -164,8 +176,6 @@ protected:
 
 	ManagedWeakReference<Zone* > zone;
 
-	CreatureMap creatureMap;
-
 public:
 	CreatureManagerImplementation(Zone* planet, ZoneProcessServerImplementation* impl);
 
@@ -175,6 +185,8 @@ public:
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
 
+	int notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition);
+
 	void loadDynamicSpawnAreas();
 
 	void loadTrainers();
@@ -183,10 +195,6 @@ private:
 	bool createCreatureChildrenObjects(CreatureObject* creature);
 
 public:
-	void addCreatureToMap(CreatureObject* creature);
-
-	void removeCreatureFromMap(unsigned long long oid);
-
 	CreatureManager* _this;
 
 	operator const CreatureManager*();
@@ -233,10 +241,6 @@ public:
 	void loadDynamicSpawnAreas();
 
 	void loadTrainers();
-
-	void addCreatureToMap(CreatureObject* creature);
-
-	void removeCreatureFromMap(unsigned long long oid);
 
 };
 
