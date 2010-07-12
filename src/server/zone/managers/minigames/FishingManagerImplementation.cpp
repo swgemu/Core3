@@ -31,7 +31,7 @@ int FishingManagerImplementation::checkLocation(PlayerCreature* player, int qual
 	if (angle > 360)
 		angle = angle - 360;
 
-	float distance = MIN((MAX(10.0 - (quality / 12.f), 2.1) + (float)System::random(3.f)), 10.0); // Calculates the Distance, using the Pole's Quality
+	float distance = MIN((MAX(10.0 - (quality / 12.f), 2.1) + (float)System::random(3)), 10.0); // Calculates the Distance, using the Pole's Quality
 
 	angle = 2 * M_PI * angle / 360;
 
@@ -1021,8 +1021,8 @@ SceneObject* FishingManagerImplementation::updateMarker(PlayerCreature* player, 
 			}
 		} else if (event == 3) {
 			// FIGHT HARD
-			x += System::random(1.f);
-			y += System::random(1.f);
+			x += System::random(1);
+			y += System::random(1);
 			//info("X: "+String::valueOf(x)+" Y: "+String::valueOf(y) + " Z: "+String::valueOf(z), true);
 			if (checkUpdateMarker(player, x, y, z)) {
 				player->sendSystemMessage("@fishing:loot_beached");// BEACHED!
@@ -1032,8 +1032,8 @@ SceneObject* FishingManagerImplementation::updateMarker(PlayerCreature* player, 
 			}
 		} else if (event == 4) {
 			// FIGHT AWAY
-			x += System::random(1.f);
-			y += System::random(1.f);
+			x += System::random(1);
+			y += System::random(1);
 			//info("X: "+String::valueOf(x)+" Y: "+String::valueOf(y) + " Z: "+String::valueOf(z), true);
 			if (checkUpdateMarker(player, x, y, z)) {
 				player->sendSystemMessage("@fishing:loot_beached");// BEACHED!
@@ -1043,8 +1043,8 @@ SceneObject* FishingManagerImplementation::updateMarker(PlayerCreature* player, 
 			}
 		} else if (event == 5) {
 			// FISH RUN
-			x += System::random(1.f);
-			y += System::random(1.f);
+			x += System::random(1);
+			y += System::random(1);
 			//info("X: "+String::valueOf(x)+" Y: "+String::valueOf(y) + " Z: "+String::valueOf(z), true);
 			if (checkUpdateMarker(player, x, y, z)) {
 				player->sendSystemMessage("@fishing:loot_beached");// BEACHED!
@@ -1054,8 +1054,8 @@ SceneObject* FishingManagerImplementation::updateMarker(PlayerCreature* player, 
 			}
 		} else {
 			// FISH CHARGE
-			x -= System::random(1.f);
-			y -= System::random(1.f);
+			x -= System::random(1);
+			y -= System::random(1);
 			//info("X: "+String::valueOf(x)+" Y: "+String::valueOf(y) + " Z: "+String::valueOf(z), true);
 			if (checkUpdateMarker(player, x, y, z)) {
 				player->sendSystemMessage("@fishing:loot_beached");// BEACHED!

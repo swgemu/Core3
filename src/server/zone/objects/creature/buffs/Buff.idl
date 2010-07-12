@@ -167,7 +167,7 @@ class Buff extends ManagedObject {
 		if (attributeModifiers.contains(attribute))
 			return attributeModifiers.get(attribute);
 
-		return 0.0f;
+		return 0;
 	}
 
 	public abstract int getSkillModifierValue(final string modname) {

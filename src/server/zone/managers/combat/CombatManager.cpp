@@ -422,7 +422,7 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 
 	int damageType = weapon->getDamageType();
 
-	int resist = 0;
+	float resist = 0;
 
 	switch (damageType) {
 	case WeaponObject::KINETIC:
@@ -457,7 +457,7 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 		break;
 	}
 
-	return resist;
+	return (int)resist;
 
 }
 
@@ -534,7 +534,7 @@ int CombatManager::getMindArmorReduction(CreatureObject* attacker, CreatureObjec
 int CombatManager::getArmorNpcReduction(CreatureObject* attacker, NonPlayerCreatureObject* defender, WeaponObject* weapon) {
 	int damageType = weapon->getDamageType();
 
-	int resist = 0;
+	float resist = 0;
 
 	switch (damageType) {
 	case WeaponObject::KINETIC:
@@ -569,7 +569,7 @@ int CombatManager::getArmorNpcReduction(CreatureObject* attacker, NonPlayerCreat
 		break;
 	}
 
-	return resist;
+	return (int)resist;
 }
 
 int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, float damage, int poolToDamage) {
@@ -841,10 +841,10 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, CombatQueue
 
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
-	int health = weapon->getHealthAttackCost() * command->getHealthCostMultiplier();
-	int action = weapon->getActionAttackCost() * command->getActionCostMultiplier();
-	int mind = weapon->getMindAttackCost() * command->getMindCostMultiplier();
-	int force = weapon->getForceCost() * command->getForceCostMultiplier();
+	int health = (int) (weapon->getHealthAttackCost() * command->getHealthCostMultiplier());
+	int action = (int) (weapon->getActionAttackCost() * command->getActionCostMultiplier());
+	int mind = (int) (weapon->getMindAttackCost() * command->getMindCostMultiplier());
+	int force = (int) (weapon->getForceCost() * command->getForceCostMultiplier());
 
 	if (health > 0) {
 		if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
@@ -1094,20 +1094,20 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 
 	if (poolsToDamage & HEALTH) {
 		damage += calculateDamage(attacker, defender, HEALTH) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, damage, true);
+		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)damage, true);
 	}
 
 	if (poolsToDamage & ACTION) {
 		damage += calculateDamage(attacker, defender, ACTION) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::ACTION, damage, true);
+		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)damage, true);
 	}
 
 	if (poolsToDamage & MIND) {
 		damage += calculateDamage(attacker, defender, MIND) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::MIND, damage, true);
+		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)damage, true);
 	}
 
-	return damage;
+	return (int) damage;
 }
 
 int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage) {

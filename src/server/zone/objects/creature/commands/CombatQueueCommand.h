@@ -18,7 +18,7 @@ class CombatQueueCommand: public QueueCommand {
 protected:
 	float damageMultiplier;
 	float speedMultiplier;
-	float poolsToDamage;
+	int poolsToDamage;
 
 	float healthCostMultiplier;
 	float actionCostMultiplier;

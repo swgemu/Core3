@@ -79,7 +79,7 @@ public:
 
 			// If the sample task exists, we can't sample again
 			if (sampletask != NULL) {
-				int seconds = ((sampletask->getNextExecutionTime().getMiliTime() - Time().getMiliTime()) / 1000.0f);
+				int seconds = (int) ((sampletask->getNextExecutionTime().getMiliTime() - Time().getMiliTime()) / 1000.0f);
 
 				ParameterizedStringId message("survey","tool_recharge_time");
 				message.setDI(seconds);

@@ -103,7 +103,7 @@ public:
 	}*/
 
 	void updateShockWounds() {
-		addIntUpdate(15, creo->getShockWounds());
+		addIntUpdate(15, (int) creo->getShockWounds());
 	}
 
 	void updateCreatureLinkID() {
