@@ -91,7 +91,7 @@ public:
 		if (obj == NULL)
 			return false;
 
-		int degrees = creature->getDirectionAngle();
+		int degrees = (int) creature->getDirectionAngle();
 
 		float offsetX = dist * sin(Math::deg2rad(degrees));
 		float offsetY = dist * cos(Math::deg2rad(degrees));

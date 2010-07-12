@@ -59,7 +59,7 @@ namespace server {
 			ManagedReference<Buff*> buffObject;
 
 		public:
-			BuffDurationEvent(CreatureObject* creature, Buff* buff) : Task(buff->getBuffDuration() * 1000) {
+			BuffDurationEvent(CreatureObject* creature, Buff* buff) : Task((int) buff->getBuffDuration() * 1000) {
 				creatureObject = creature;
 				buffObject = buff;
 			}
