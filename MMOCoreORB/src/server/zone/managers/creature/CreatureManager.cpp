@@ -16,6 +16,8 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/creature/NonPlayerCreatureObject.h"
+
 #include "server/zone/Zone.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -65,6 +67,14 @@ CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x
 		return ((CreatureManagerImplementation*) _impl)->spawnCreature(templateCRC, x, z, y, parentID);
 }
 
+int CreatureManager::notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((CreatureManagerImplementation*) _impl)->notifyDestruction(destructor, destructedObject, condition);
+}
+
 void CreatureManager::loadDynamicSpawnAreas() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -87,32 +97,6 @@ void CreatureManager::loadTrainers() {
 		method.executeWithVoidReturn();
 	} else
 		((CreatureManagerImplementation*) _impl)->loadTrainers();
-}
-
-void CreatureManager::addCreatureToMap(CreatureObject* creature) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addObjectParameter(creature);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureManagerImplementation*) _impl)->addCreatureToMap(creature);
-}
-
-void CreatureManager::removeCreatureFromMap(unsigned long long oid) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-		method.addUnsignedLongParameter(oid);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureManagerImplementation*) _impl)->removeCreatureFromMap(oid);
 }
 
 /*
@@ -184,40 +168,27 @@ void CreatureManagerImplementation::_serializationHelperMethod() {
 
 	addSerializableVariable("server", &server);
 	addSerializableVariable("zone", &zone);
-	addSerializableVariable("creatureMap", &creatureMap);
 }
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet, ZoneProcessServerImplementation* impl) {
 	_initializeImplementation();
-	// server/zone/managers/creature/CreatureManager.idl(28):  		server = planet.getZoneServer();
+	// server/zone/managers/creature/CreatureManager.idl(29):  		server = planet.getZoneServer();
 	server = planet->getZoneServer();
-	// server/zone/managers/creature/CreatureManager.idl(29):  		processor = impl;
+	// server/zone/managers/creature/CreatureManager.idl(30):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/creature/CreatureManager.idl(30):  		zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl(31):  		zone = planet;
 	zone = planet;
-	// server/zone/managers/creature/CreatureManager.idl(32):  		Logger.setLoggingName("CreatureManager");
+	// server/zone/managers/creature/CreatureManager.idl(33):  		Logger.setLoggingName("CreatureManager");
 	Logger::setLoggingName("CreatureManager");
-	// server/zone/managers/creature/CreatureManager.idl(33):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/creature/CreatureManager.idl(34):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/creature/CreatureManager.idl(34):  		Logger.setLogging(false);
+	// server/zone/managers/creature/CreatureManager.idl(35):  		Logger.setLogging(false);
 	Logger::setLogging(false);
 }
 
 void CreatureManagerImplementation::initialize() {
-	// server/zone/managers/creature/CreatureManager.idl(38):  		loadTrainers();
+	// server/zone/managers/creature/CreatureManager.idl(39):  		loadTrainers();
 	loadTrainers();
-}
-
-void CreatureManagerImplementation::addCreatureToMap(CreatureObject* creature) {
-	Locker _locker(_this);
-	// server/zone/managers/creature/CreatureManager.idl(61):  		creatureMap.put(creature.getObjectID(), creature);
-	(&creatureMap)->put(creature->getObjectID(), creature);
-}
-
-void CreatureManagerImplementation::removeCreatureFromMap(unsigned long long oid) {
-	Locker _locker(_this);
-	// server/zone/managers/creature/CreatureManager.idl(65):  		creatureMap.remove(oid);
-	(&creatureMap)->remove(oid);
 }
 
 /*
@@ -243,12 +214,6 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 9:
 		loadTrainers();
 		break;
-	case 10:
-		addCreatureToMap((CreatureObject*) inv->getObjectParameter());
-		break;
-	case 11:
-		removeCreatureFromMap(inv->getUnsignedLongParameter());
-		break;
 	default:
 		return NULL;
 	}
@@ -270,14 +235,6 @@ void CreatureManagerAdapter::loadDynamicSpawnAreas() {
 
 void CreatureManagerAdapter::loadTrainers() {
 	((CreatureManagerImplementation*) impl)->loadTrainers();
-}
-
-void CreatureManagerAdapter::addCreatureToMap(CreatureObject* creature) {
-	((CreatureManagerImplementation*) impl)->addCreatureToMap(creature);
-}
-
-void CreatureManagerAdapter::removeCreatureFromMap(unsigned long long oid) {
-	((CreatureManagerImplementation*) impl)->removeCreatureFromMap(oid);
 }
 
 /*

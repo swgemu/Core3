@@ -83,6 +83,10 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
 
+#include "server/zone/objects/creature/PatrolPointsVector.h"
+
+#include "server/zone/objects/creature/PatrolPoint.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -110,19 +114,35 @@ public:
 
 	void activateRecovery();
 
+	void activateMovementEvent();
+
 	void doRecovery();
 
 	void doMovement();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void setNextPosition(float x, float z, float y, SceneObject* cell = NULL);
+
+	void updateCurrentPosition(PatrolPoint* point);
+
+	void broadcastNextPositionUpdate(PatrolPoint* point);
+
+	void clearPatrolPoints();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void activatePostureRecovery();
+
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isNonPlayerCreature();
+
+	void setFollowObject(SceneObject* obj);
 
 	float getKinetic();
 
@@ -167,6 +187,8 @@ public:
 	unsigned int getFerocity();
 
 	unsigned int getArmor();
+
+	PatrolPoint* getHomeLocation();
 
 	bool hasOrganics();
 
@@ -202,9 +224,19 @@ protected:
 
 	Vector<String> skillCommands;
 
+	PatrolPointsVector patrolPoints;
+
+	PatrolPoint homeLocation;
+
+	PatrolPoint nextStepPosition;
+
 	NonPlayerCreatureObjectTemplate* npcTemplate;
 
 	bool baby;
+
+	float currentSpeed;
+
+	ManagedReference<SceneObject* > followObject;
 
 public:
 	NonPlayerCreatureObjectImplementation();
@@ -215,19 +247,35 @@ public:
 
 	virtual void activateRecovery();
 
+	virtual void activateMovementEvent();
+
 	void doRecovery();
 
 	void doMovement();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void setNextPosition(float x, float z, float y, SceneObject* cell = NULL);
+
+	void updateCurrentPosition(PatrolPoint* point);
+
+	void broadcastNextPositionUpdate(PatrolPoint* point);
+
+	void clearPatrolPoints();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void activatePostureRecovery();
+
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isNonPlayerCreature();
+
+	void setFollowObject(SceneObject* obj);
 
 	float getKinetic();
 
@@ -272,6 +320,8 @@ public:
 	unsigned int getFerocity();
 
 	unsigned int getArmor();
+
+	PatrolPoint* getHomeLocation();
 
 	bool hasOrganics();
 
@@ -318,17 +368,29 @@ public:
 
 	void activateRecovery();
 
+	void activateMovementEvent();
+
 	void doRecovery();
 
 	void doMovement();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void setNextPosition(float x, float z, float y, SceneObject* cell);
+
+	void clearPatrolPoints();
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	void activatePostureRecovery();
 
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isNonPlayerCreature();
+
+	void setFollowObject(SceneObject* obj);
 
 	float getKinetic();
 

@@ -9,6 +9,7 @@
 #define CREATUREMOVEEVENT_H_
 
 #include "../CreatureObject.h"
+#include "../PatrolPoint.h"
 
 namespace server {
 namespace zone {
@@ -19,6 +20,9 @@ namespace events {
 class CreatureMoveEvent : public Task {
 	ManagedWeakReference<NonPlayerCreatureObject*> creature;
 
+	//Vector<PatrolPoint> waypoints;
+
+	//PatrolPoint homeLocation;
 	//float nextPosition
 
 public:

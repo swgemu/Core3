@@ -57,6 +57,8 @@ import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
 include server.zone.templates.tangible.NonPlayerCreatureObjectTemplate;
+include server.zone.objects.creature.PatrolPointsVector;
+include server.zone.objects.creature.PatrolPoint;
 
 class NonPlayerCreatureObject extends CreatureObject {
 	@dereferenced
@@ -68,9 +70,22 @@ class NonPlayerCreatureObject extends CreatureObject {
 	@dereferenced
 	protected Vector<string> skillCommands;
 	
+	@dereferenced
+	protected PatrolPointsVector patrolPoints;
+	
+	@dereferenced
+	protected PatrolPoint homeLocation;
+	
+	@dereferenced
+	protected PatrolPoint nextStepPosition;
+	
 	protected transient NonPlayerCreatureObjectTemplate npcTemplate;
 	
 	protected boolean baby;
+	
+	protected float currentSpeed;
+	
+	protected SceneObject followObject;
 	
 	public NonPlayerCreatureObject() {
 		Logger.setLoggingName("NonPlayerCreatureObject");
@@ -78,6 +93,8 @@ class NonPlayerCreatureObject extends CreatureObject {
 		Logger.setGlobalLogging(true);
 		
 		baby = false;
+		
+		currentSpeed = 0;
 		
 		npcTemplate = null;
 	}
@@ -91,11 +108,25 @@ class NonPlayerCreatureObject extends CreatureObject {
 	
 	public abstract native void activateRecovery();
 	
+	public abstract native void activateMovementEvent();
+	
 	public native void doRecovery();
 	
 	public native void doMovement();
 	
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	public native void setNextPosition(float x, float z, float y, SceneObject cell = null);
+	
+	@local
+	public native void updateCurrentPosition(PatrolPoint point);
+	
+	@local
+	public native void broadcastNextPositionUpdate(PatrolPoint point);
+	
+	public void clearPatrolPoints() {
+		patrolPoints.removeAll();
+	}
 	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
@@ -113,6 +144,16 @@ class NonPlayerCreatureObject extends CreatureObject {
 	 * @return unused for now
 	 */
 	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
+	
+	
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	
+	public native void activatePostureRecovery();
 	
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
@@ -132,6 +173,16 @@ class NonPlayerCreatureObject extends CreatureObject {
 	
 	public boolean isNonPlayerCreature() {
 		return true;
+	}
+	
+	public void setFollowObject(SceneObject obj) {
+		if (followObject != obj) {
+			clearPatrolPoints();
+
+			followObject = obj;
+
+			activateMovementEvent();
+		}
 	}
 	
 	public float getKinetic() {
@@ -283,6 +334,11 @@ class NonPlayerCreatureObject extends CreatureObject {
 			return 0;
 		
 		return npcTemplate.getArmor();
+	}
+	
+	@local
+	public PatrolPoint getHomeLocation() {
+		return homeLocation;
 	}
 
 	public native boolean hasOrganics();

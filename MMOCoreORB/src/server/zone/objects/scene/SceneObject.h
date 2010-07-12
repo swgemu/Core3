@@ -179,6 +179,8 @@ using namespace server::zone::objects::area;
 
 #include "engine/core/Task.h"
 
+#include "engine/util/Vector3.h"
+
 #include "server/zone/objects/scene/Observable.h"
 
 namespace server {
@@ -680,9 +682,9 @@ public:
 
 	void removeFromBuilding(BuildingObject* building);
 
-	void updateZone(bool lightUpdate);
+	void updateZone(bool lightUpdate, bool sendPackets = true);
 
-	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
+	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
 
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
@@ -722,13 +724,17 @@ public:
 
 	unsigned long long getObjectID();
 
-	float getPositionX();
+	Vector3 getPosition();
 
 	float getWorldPositionX();
 
 	float getWorldPositionY();
 
 	float getWorldPositionZ();
+
+	Vector3 getWorldPosition();
+
+	float getPositionX();
 
 	float getPositionZ();
 
@@ -877,6 +883,8 @@ public:
 	void setZone(Zone* zon);
 
 	void setDirection(float fw, float fx, float fy, float fz);
+
+	void setDirection(float headingAngleRadians);
 
 	void setDirection(const Quaternion& dir);
 
@@ -1485,9 +1493,9 @@ public:
 
 	virtual void removeFromBuilding(BuildingObject* building);
 
-	virtual void updateZone(bool lightUpdate);
+	virtual void updateZone(bool lightUpdate, bool sendPackets = true);
 
-	virtual void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
+	virtual void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
 
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
@@ -1527,13 +1535,17 @@ public:
 
 	unsigned long long getObjectID();
 
-	float getPositionX();
+	Vector3 getPosition();
 
 	float getWorldPositionX();
 
 	float getWorldPositionY();
 
 	float getWorldPositionZ();
+
+	Vector3 getWorldPosition();
+
+	float getPositionX();
 
 	float getPositionZ();
 
@@ -1682,6 +1694,8 @@ public:
 	void setZone(Zone* zon);
 
 	void setDirection(float fw, float fx, float fy, float fz);
+
+	void setDirection(float headingAngleRadians);
 
 	void setDirection(const Quaternion& dir);
 
@@ -1836,9 +1850,9 @@ public:
 
 	void removeFromBuilding(BuildingObject* building);
 
-	void updateZone(bool lightUpdate);
+	void updateZone(bool lightUpdate, bool sendPackets);
 
-	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
+	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets);
 
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
@@ -1868,13 +1882,13 @@ public:
 
 	unsigned long long getObjectID();
 
-	float getPositionX();
-
 	float getWorldPositionX();
 
 	float getWorldPositionY();
 
 	float getWorldPositionZ();
+
+	float getPositionX();
 
 	float getPositionZ();
 
@@ -2013,6 +2027,8 @@ public:
 	void setZone(Zone* zon);
 
 	void setDirection(float fw, float fx, float fy, float fz);
+
+	void setDirection(float headingAngleRadians);
 
 	void setMovementCounter(unsigned int count);
 
