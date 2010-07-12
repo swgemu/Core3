@@ -46,6 +46,10 @@ package server.zone.object.manufactureschematic.ManufactureSchematic;
 
 include server.zone.packets.scene.AttributeListMessage;
 include server.zone.packets.object.ObjectControllerMessage;
+include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
+include server.zone.objects.manufactureschematic.IngredientSlots;
+include server.zone.objects.tangible.TangibleObject;
+include system.lang.ref.Reference;
 
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.draftschematic.DraftSchematic;
@@ -53,8 +57,12 @@ import server.zone.objects.player.PlayerCreature;
 
 class ManufactureSchematic extends SceneObject {
 
-	
+	protected transient float complexity;
 	protected transient DraftSchematic draftSchematic;
+	protected transient boolean assembled;
+	
+	@dereferenced
+	protected transient IngredientSlots ingredientSlots;
 	
 	public ManufactureSchematic() {
 		Logger.setLoggingName("ManufactureSchematic");	
@@ -108,9 +116,36 @@ class ManufactureSchematic extends SceneObject {
 	
 	public void setDraftSchematic(DraftSchematic schematic) {
 		draftSchematic = schematic;
+		
+		if(draftSchematic != null)
+			initializeIngredientSlots(draftSchematic);
 	}
+	
+	public native void initializeIngredientSlots(DraftSchematic schematic);
+	
+	public native void cleanupIngredientSlots();
 	
 	public DraftSchematic getDraftSchematic() {
 		return draftSchematic;
 	}
+	
+	@local
+	@dereferenced
+	public native Reference<IngredientSlot> getIngredientSlot(int index);
+	
+	public native int getSlotCount();
+	
+	public void increaseComplexity() {
+		complexity++;
+	}
+	
+	public void decreaseComplexity() {
+		if(complexity > 1)
+			complexity = complexity - 1;
+	}
+	
+	public float getComplexity() {
+		return complexity;
+	}
+
 }

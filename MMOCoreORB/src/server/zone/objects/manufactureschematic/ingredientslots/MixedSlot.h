@@ -42,24 +42,23 @@
  which carries forward this exception.
  */
 
-#ifndef RESOURCESLOT_H_
-#define RESOURCESLOT_H_
+#ifndef MIXEDSLOT_H_
+#define MIXEDSLOT_H_
 
-#include "CraftingSlot.h"
+#include "IngredientSlot.h"
 
-class ResourceSlot: public CraftingSlot {
+class MixedSlot: public IngredientSlot {
 
-	ResourceContainer* contents;
+	TangibleObject* contents;
 
 public:
-	ResourceSlot() :
-		CraftingSlot() {
+	MixedSlot() : IngredientSlot() {
 
 		slottype = RESOURCESLOT;
 		contents = NULL;
 	}
 
-	~ResourceSlot() {
+	~MixedSlot() {
 
 		cleanup();
 	}
@@ -73,21 +72,35 @@ public:
 
 	inline int size() {
 
-		if (contents != NULL)
-			return contents->getQuantity();
+		if (contents != NULL) {
+			int count = contents->getUseCount();
+			if (count == 0)
+				count = 1;
+			return count;
+		}
 		else
 			return 0;
 	}
 
 	inline bool add(TangibleObject* tano) {
+		/*
+		if(contents == NULL){
+			contents = tano;
+		} else {
+			if(tano->isComponent()  && contents->isComponent()) {
 
-		ResourceContainer* incomingResource = (ResourceContainer*) tano;
+				TangibleObject* incomingComponent = (TangibleObject*) tano;
+				int contentsCount = contents->getObjectCount();
+				int incomingCount = incomingComponent->getObjectCount();
 
-		if (contents == NULL)
-			contents = incomingResource;
-		else
-			contents->setQuantity(contents->getQuantity()
-					+ incomingResource->getQuantity());
+				if(contentsCount == 0)
+					contentsCount = 1;
+				if(incomingCount == 0)
+					incomingCount = 1;
+
+				contents->setObjectCount(contentsCount + incomingCount);
+			}
+		}*/
 
 		return true;
 	}
@@ -110,8 +123,8 @@ public:
 		} else {
 
 			System::out << "Name: " << contents->getCustomObjectName().toString() << endl;
-			System::out << "Quantity: " << contents->getQuantity() << endl;
+			System::out << "Quantity: " << contents->getUseCount() << endl;
 		}
 	}
 };
-#endif /*RESOURCESLOT_H_*/
+#endif /*MIXEDSLOT_H_*/

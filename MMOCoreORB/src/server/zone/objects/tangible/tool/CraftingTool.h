@@ -123,6 +123,16 @@ public:
 
 	void synchronizedUIListenForSchematic(PlayerCreature* player);
 
+	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+
+	void sendIngredientAddSuccess(PlayerCreature* player, int slot, int count);
+
+	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+
+	void sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int count);
+
+	void sendSlotMessage(PlayerCreature* player, int counter, int message);
+
 protected:
 	CraftingTool(DummyConstructorParameter* param);
 
@@ -216,6 +226,16 @@ public:
 
 	void synchronizedUIListenForSchematic(PlayerCreature* player);
 
+	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+
+	void sendIngredientAddSuccess(PlayerCreature* player, int slot, int count);
+
+	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+
+	void sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int count);
+
+	void sendSlotMessage(PlayerCreature* player, int counter, int message);
+
 	CraftingTool* _this;
 
 	operator const CraftingTool*();
@@ -262,6 +282,24 @@ public:
 	bool isCraftingTool();
 
 	int getToolType();
+
+	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation);
+
+	void cancelCraftingSession(PlayerCreature* player);
+
+	void selectDraftSchematic(PlayerCreature* player, int index);
+
+	void synchronizedUIListenForSchematic(PlayerCreature* player);
+
+	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+
+	void sendIngredientAddSuccess(PlayerCreature* player, int slot, int count);
+
+	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+
+	void sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int count);
+
+	void sendSlotMessage(PlayerCreature* player, int counter, int message);
 
 };
 

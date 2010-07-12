@@ -98,16 +98,97 @@ void ManufactureSchematic::setDraftSchematic(DraftSchematic* schematic) {
 		((ManufactureSchematicImplementation*) _impl)->setDraftSchematic(schematic);
 }
 
-DraftSchematic* ManufactureSchematic::getDraftSchematic() {
+void ManufactureSchematic::initializeIngredientSlots(DraftSchematic* schematic) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+		method.addObjectParameter(schematic);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->initializeIngredientSlots(schematic);
+}
+
+void ManufactureSchematic::cleanupIngredientSlots() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->cleanupIngredientSlots();
+}
+
+DraftSchematic* ManufactureSchematic::getDraftSchematic() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
 	} else
 		return ((ManufactureSchematicImplementation*) _impl)->getDraftSchematic();
+}
+
+Reference<IngredientSlot*> ManufactureSchematic::getIngredientSlot(int index) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getIngredientSlot(index);
+}
+
+int ManufactureSchematic::getSlotCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getSlotCount();
+}
+
+void ManufactureSchematic::increaseComplexity() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->increaseComplexity();
+}
+
+void ManufactureSchematic::decreaseComplexity() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->decreaseComplexity();
+}
+
+float ManufactureSchematic::getComplexity() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getComplexity();
 }
 
 /*
@@ -181,18 +262,37 @@ void ManufactureSchematicImplementation::_serializationHelperMethod() {
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(60):  		Logger.setLoggingName("ManufactureSchematic");
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(68):  		Logger.setLoggingName("ManufactureSchematic");
 	Logger::setLoggingName("ManufactureSchematic");
 }
 
 void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schematic) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(110):  		draftSchematic = schematic;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(118):  		draftSchematic = schematic;
 	draftSchematic = schematic;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(120):  	}
+	if (draftSchematic != NULL)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(121):  			initializeIngredientSlots(draftSchematic);
+	initializeIngredientSlots(draftSchematic);
 }
 
 DraftSchematic* ManufactureSchematicImplementation::getDraftSchematic() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(114):  		return draftSchematic;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(129):  		return draftSchematic;
 	return draftSchematic;
+}
+
+void ManufactureSchematicImplementation::increaseComplexity() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(139):  		complexity++;
+	complexity ++;
+}
+
+void ManufactureSchematicImplementation::decreaseComplexity() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(143):  	}
+	if (complexity > 1)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(144):  			complexity = complexity - 1;
+	complexity = complexity - 1;
+}
+
+float ManufactureSchematicImplementation::getComplexity() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(148):  		return complexity;
+	return complexity;
 }
 
 /*
@@ -222,7 +322,25 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		setDraftSchematic((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 11:
+		initializeIngredientSlots((DraftSchematic*) inv->getObjectParameter());
+		break;
+	case 12:
+		cleanupIngredientSlots();
+		break;
+	case 13:
 		resp->insertLong(getDraftSchematic()->_getObjectID());
+		break;
+	case 14:
+		resp->insertSignedInt(getSlotCount());
+		break;
+	case 15:
+		increaseComplexity();
+		break;
+	case 16:
+		decreaseComplexity();
+		break;
+	case 17:
+		resp->insertFloat(getComplexity());
 		break;
 	default:
 		return NULL;
@@ -251,8 +369,32 @@ void ManufactureSchematicAdapter::setDraftSchematic(DraftSchematic* schematic) {
 	((ManufactureSchematicImplementation*) impl)->setDraftSchematic(schematic);
 }
 
+void ManufactureSchematicAdapter::initializeIngredientSlots(DraftSchematic* schematic) {
+	((ManufactureSchematicImplementation*) impl)->initializeIngredientSlots(schematic);
+}
+
+void ManufactureSchematicAdapter::cleanupIngredientSlots() {
+	((ManufactureSchematicImplementation*) impl)->cleanupIngredientSlots();
+}
+
 DraftSchematic* ManufactureSchematicAdapter::getDraftSchematic() {
 	return ((ManufactureSchematicImplementation*) impl)->getDraftSchematic();
+}
+
+int ManufactureSchematicAdapter::getSlotCount() {
+	return ((ManufactureSchematicImplementation*) impl)->getSlotCount();
+}
+
+void ManufactureSchematicAdapter::increaseComplexity() {
+	((ManufactureSchematicImplementation*) impl)->increaseComplexity();
+}
+
+void ManufactureSchematicAdapter::decreaseComplexity() {
+	((ManufactureSchematicImplementation*) impl)->decreaseComplexity();
+}
+
+float ManufactureSchematicAdapter::getComplexity() {
+	return ((ManufactureSchematicImplementation*) impl)->getComplexity();
 }
 
 /*

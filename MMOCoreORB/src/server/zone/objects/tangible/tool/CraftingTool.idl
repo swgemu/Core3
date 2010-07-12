@@ -73,6 +73,7 @@ class CraftingTool extends ToolTangibleObject {
 	protected transient int insertCounter;
 	
 	protected transient ManufactureSchematic manufactureSchematic;
+	
 	protected transient TangibleObject prototype;
 	
 	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
@@ -130,20 +131,25 @@ class CraftingTool extends ToolTangibleObject {
 	@local
 	public native Vector<unsigned int> getToolTabs();
 	
-	@local
 	public native void requestCraftingSession(PlayerCreature player, CraftingStation craftingStation = null);
 	
 	private native void sendStart(PlayerCreature player);
 	
-	@local
 	public native void cancelCraftingSession(PlayerCreature player);
 	
-	@local
 	private native void locateCraftingStation(PlayerCreature player, int toolType);
 
-	@local
 	public native void selectDraftSchematic(PlayerCreature player, int index);
-	
-	@local
+
 	public native void synchronizedUIListenForSchematic(PlayerCreature player);
+	
+	public native void addIngredient(PlayerCreature player, TangibleObject tano, int slot, int count);
+	
+	public native void sendIngredientAddSuccess(PlayerCreature player, int slot, int count);
+	
+	public native void removeIngredient(PlayerCreature player, TangibleObject tano, int slot, int count);
+	
+	public native void sendIngredientRemoveSuccess(PlayerCreature player, int slot, int count);
+	
+	public native void sendSlotMessage(PlayerCreature player, int counter, int message);
 }

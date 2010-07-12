@@ -49,7 +49,6 @@ which carries forward this exception.
 #include "../BaseLineMessage.h"
 
 #include "../../objects/draftschematic/DraftSchematic.h"
-#include "../../objects/draftschematic/DraftSchematicValues.h"
 
 class ManufactureSchematicObjectDeltaMessage3 : public DeltaMessage {
 public:
@@ -71,7 +70,7 @@ public:
 
 	void updateCraftedValues(DraftSchematic * draftSchematic){
 
-		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
+		/*DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
 
 		String name;
 		float value;
@@ -92,7 +91,7 @@ public:
 			insertAscii(name);
 			insertFloat(value);
 
-		}
+		}*/
 	}
 };
 

@@ -50,9 +50,13 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
 
 #include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
+#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
+#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage7.h"
 
 void CraftingToolImplementation::loadTemplateData(
@@ -202,8 +206,8 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 
 	if (manufactureSchematic != NULL) {
 		removeObject(manufactureSchematic);
+		manufactureSchematic->cleanupIngredientSlots();
 		manufactureSchematic->setDraftSchematic(NULL);
-
 		manufactureSchematic = NULL;
 	}
 
@@ -221,6 +225,8 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 		dplay9->close();
 		player->sendMessage(dplay9);
 	}
+
+	player->setLastCraftingToolUsed(NULL);
 }
 
 void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
@@ -318,8 +324,15 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature* player) {
 
-	if (manufactureSchematic == NULL || prototype == NULL)
+	if(manufactureSchematic == NULL) {
+		player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
 		return;
+	}
+
+	if (prototype == NULL) {
+		player->sendSystemMessage("ui_craft", "err_no_prototype");
+		return;
+	}
 
 	ManufactureSchematicObjectMessage7* mcso7 =
 			new ManufactureSchematicObjectMessage7(manufactureSchematic);
@@ -351,3 +364,167 @@ void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature
 
 	player->sendMessage(objMsg);
 }
+
+void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
+	/// Tano can't be NULL
+
+	if(manufactureSchematic == NULL) {
+		sendSlotMessage(player, clientCounter, IngredientSlot::NOSCHEMATIC);
+		return;
+	}
+
+	if (prototype == NULL) {
+		sendSlotMessage(player, clientCounter, IngredientSlot::PROTOTYPENOTFOUND);
+		return;
+	}
+
+	Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getIngredientSlot(slot);
+
+	if(ingredientSlot->add(player, tano)) {
+
+		sendIngredientAddSuccess(player, slot, clientCounter);
+
+	} else {
+
+		sendSlotMessage(player, clientCounter, IngredientSlot::INVALIDINGREDIENT);
+
+	}
+
+	// Increment the insert counter
+	insertCounter++;
+}
+
+void CraftingToolImplementation::sendIngredientAddSuccess(PlayerCreature* player, int slot, int clientCounter) {
+	// DMSCO6 ***************************************************
+	// Prepares the slot for insert
+	ManufactureSchematicObjectDeltaMessage6* dMsco6 =
+			new ManufactureSchematicObjectDeltaMessage6(
+					manufactureSchematic->getObjectID());
+
+	dMsco6->insertToResourceSlot(insertCounter);
+	dMsco6->close();
+
+	player->sendMessage(dMsco6);
+	// End DMSCO6 ********************************************F*******
+
+	// DMSCO7 ***************************************************
+	// Updates the slot
+	ManufactureSchematicObjectDeltaMessage7 * dMsco7 =
+			new ManufactureSchematicObjectDeltaMessage7(
+					manufactureSchematic->getObjectID());
+
+	if (insertCounter == 1)
+		// If it's the first resource inserted, we need to fully update all the slots
+		dMsco7->fullUpdate(manufactureSchematic, slot);
+	else
+		// If it's not the first resources, slots are updates, and only insert needs done
+		dMsco7->partialUpdate(manufactureSchematic, slot, insertCounter);
+
+
+	manufactureSchematic->increaseComplexity();
+	dMsco7->close();
+
+	player->sendMessage(dMsco7);
+	// End DMSCO7 ***************************************************
+
+	// Start DMSCO3 ***********************************************************
+	// Updates the Complexity
+	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
+			new ManufactureSchematicObjectDeltaMessage3(
+					manufactureSchematic->getObjectID());
+	dMsco3->updateComplexity(manufactureSchematic->getComplexity());
+	dMsco3->close();
+
+	player->sendMessage(dMsco3);
+	// End DMSCO3 *************************************************************
+
+	sendSlotMessage(player, clientCounter, IngredientSlot::OK);
+}
+
+void CraftingToolImplementation::removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
+	/// Tano can't be NULL
+
+	if(manufactureSchematic == NULL) {
+		sendSlotMessage(player, clientCounter, IngredientSlot::NOSCHEMATIC);
+		return;
+	}
+
+	if (prototype == NULL) {
+		sendSlotMessage(player, clientCounter, IngredientSlot::PROTOTYPENOTFOUND);
+		return;
+	}
+
+	Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getIngredientSlot(slot);
+
+	if(ingredientSlot->remove(player)) {
+
+		sendIngredientRemoveSuccess(player, slot, clientCounter);
+
+	} else {
+
+		sendSlotMessage(player, clientCounter, IngredientSlot::NOCOMPONENTTRANSFER);
+
+	}
+
+	// Increment the insert counter
+	insertCounter++;
+
+}
+
+void CraftingToolImplementation::sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int clientCounter) {
+	// DMCSO7 ******************************************************
+	// Removes resource from client slot
+	ManufactureSchematicObjectDeltaMessage7* dMsco7 =
+			new ManufactureSchematicObjectDeltaMessage7(
+					manufactureSchematic->getObjectID());
+
+	dMsco7->removeResource(slot, manufactureSchematic->getSlotCount()
+			+ insertCounter);
+
+	dMsco7->close();
+
+	player->sendMessage(dMsco7);
+	// End DMCSO7 ***************************************************
+
+
+	// Object Controller ********************************************
+	// Updates the screen with the resource removal
+	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
+			player->getObjectID(), 0x0B, 0x010C);
+	objMsg->insertInt(0x108);
+	objMsg->insertInt(0);
+	objMsg->insertByte(clientCounter);
+
+	player->sendMessage(objMsg);
+	// End Object Controller *****************************************
+
+	if (insertCounter > 0)
+		manufactureSchematic->decreaseComplexity();
+
+	// Start DMSCO3 ***********************************************************
+	// Updates the Complexity
+	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
+			new ManufactureSchematicObjectDeltaMessage3(
+					manufactureSchematic->getObjectID());
+	dMsco3->updateComplexity(manufactureSchematic->getComplexity());
+	dMsco3->close();
+
+	player->sendMessage(dMsco3);
+	// End DMSCO3 *************************************************************
+}
+
+void CraftingToolImplementation::sendSlotMessage(PlayerCreature* player,
+		int counter, int message) {
+
+	// Object Controller ********************************************
+	// Send Bad Slot message
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	objMsg->insertInt(0x107);
+	objMsg->insertInt(message);
+	objMsg->insertByte(counter);
+
+	player->sendMessage(objMsg);
+	//End Object Controller ******************************************
+}
+
