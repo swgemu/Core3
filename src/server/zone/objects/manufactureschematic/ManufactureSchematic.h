@@ -29,6 +29,14 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/packets/object/ObjectControllerMessage.h"
 
+#include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "system/lang/ref/Reference.h"
+
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -55,7 +63,21 @@ public:
 
 	void setDraftSchematic(DraftSchematic* schematic);
 
+	void initializeIngredientSlots(DraftSchematic* schematic);
+
+	void cleanupIngredientSlots();
+
 	DraftSchematic* getDraftSchematic();
+
+	Reference<IngredientSlot*> getIngredientSlot(int index);
+
+	int getSlotCount();
+
+	void increaseComplexity();
+
+	void decreaseComplexity();
+
+	float getComplexity();
 
 protected:
 	ManufactureSchematic(DummyConstructorParameter* param);
@@ -81,7 +103,13 @@ namespace ManufactureSchematic {
 
 class ManufactureSchematicImplementation : public SceneObjectImplementation {
 protected:
+	float complexity;
+
 	ManagedReference<DraftSchematic* > draftSchematic;
+
+	bool assembled;
+
+	IngredientSlots ingredientSlots;
 
 public:
 	ManufactureSchematicImplementation();
@@ -100,7 +128,21 @@ public:
 
 	void setDraftSchematic(DraftSchematic* schematic);
 
+	void initializeIngredientSlots(DraftSchematic* schematic);
+
+	void cleanupIngredientSlots();
+
 	DraftSchematic* getDraftSchematic();
+
+	Reference<IngredientSlot*> getIngredientSlot(int index);
+
+	int getSlotCount();
+
+	void increaseComplexity();
+
+	void decreaseComplexity();
+
+	float getComplexity();
 
 	ManufactureSchematic* _this;
 
@@ -151,7 +193,19 @@ public:
 
 	void setDraftSchematic(DraftSchematic* schematic);
 
+	void initializeIngredientSlots(DraftSchematic* schematic);
+
+	void cleanupIngredientSlots();
+
 	DraftSchematic* getDraftSchematic();
+
+	int getSlotCount();
+
+	void increaseComplexity();
+
+	void decreaseComplexity();
+
+	float getComplexity();
 
 };
 

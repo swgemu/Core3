@@ -46,9 +46,9 @@ protected:
 
 	uint32 tanoCRC;
 
-	Vector<DraftSlot* > draftSlots;
+	Vector<Reference<DraftSlot* > > draftSlots;
 
-	Vector<ResourceWeight* > resourceWeights;
+	Vector<Reference<ResourceWeight* > > resourceWeights;
 
 public:
 	DraftSchematicObjectTemplate();
@@ -57,11 +57,11 @@ public:
 
 	void readObject(LuaObject* templateData);
 
-	Vector<DraftSlot* > getDraftSlots() {
+	Vector<Reference<DraftSlot* > > getDraftSlots() {
         return draftSlots;
     }
 
-	Vector<ResourceWeight* > getResourceWeights() {
+	Vector<Reference<ResourceWeight* > > getResourceWeights() {
         return resourceWeights;
     }
 

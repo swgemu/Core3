@@ -45,15 +45,14 @@
 #ifndef OPTIONALMIXEDSLOT_H_
 #define OPTIONALMIXEDSLOT_H_
 
-#include "CraftingSlot.h"
+#include "IngredientSlot.h"
 
-class OptionalMixedSlot : public CraftingSlot {
+class OptionalMixedSlot : public IngredientSlot {
 
 	TangibleObject* contents;
 
 public:
-	OptionalMixedSlot() :
-		CraftingSlot() {
+	OptionalMixedSlot() : IngredientSlot() {
 
 		slottype = RESOURCESLOT;
 		contents = NULL;

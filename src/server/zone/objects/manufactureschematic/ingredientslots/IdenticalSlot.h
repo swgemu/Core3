@@ -42,25 +42,25 @@
  which carries forward this exception.
  */
 
-#ifndef OPTIONALIDENTICALSLOT_H_
-#define OPTIONALIDENTICALSLOT_H_
+#ifndef IDENTICALSLOT_H_
+#define IDENTICALSLOT_H_
 
-#include "CraftingSlot.h"
+#include "IngredientSlot.h"
 
-class OptionalIdenticalSlot : public CraftingSlot {
+class IdenticalSlot: public IngredientSlot {
 
 	TangibleObject* contents;
 	String serial;
 
 public:
-	OptionalIdenticalSlot() :
-		CraftingSlot() {
+	IdenticalSlot() : IngredientSlot() {
 
-		slottype = RESOURCESLOT;
+		slottype = IDENTICALSLOT;
 		contents = NULL;
+		serial = "";
 	}
 
-	~OptionalIdenticalSlot() {
+	~IdenticalSlot() {
 
 		cleanup();
 	}
@@ -85,28 +85,26 @@ public:
 	}
 
 	inline bool add(TangibleObject* tano) {
-/*
-		if(contents == NULL){
+
+		/*if(contents == NULL){
 			contents = tano;
 			serial = tano->getCraftedSerial();
 		} else {
-			if(tano->isComponent() && contents->isComponent()) {
-				if(serial != tano->getCraftedSerial())
-					return false;
+			if(!contents->isComponent() || (serial != tano->getCraftedSerial()))
+				return false;
 
-				TangibleObject* incomingComponent = (TangibleObject*) tano;
-				int contentsCount = contents->getObjectCount();
-				int incomingCount = incomingComponent->getObjectCount();
+			TangibleObject* incomingComponent = (TangibleObject*) tano;
+			int contentsCount = contents->getObjectCount();
+			int incomingCount = incomingComponent->getObjectCount();
 
-				if(contentsCount == 0)
-					contentsCount = 1;
-				if(incomingCount == 0)
-					incomingCount = 1;
+			if(contentsCount == 0)
+				contentsCount = 1;
+			if(incomingCount == 0)
+				incomingCount = 1;
 
-				contents->setObjectCount(contentsCount + incomingCount);
-			}
+			contents->setObjectCount(contentsCount + incomingCount);
+
 		}*/
-
 		return true;
 	}
 
@@ -117,7 +115,11 @@ public:
 
 	inline TangibleObject* get() {
 
-		return (TangibleObject*) contents;
+		return contents;
+	}
+
+	inline bool isFull() {
+
 	}
 
 	void toString() {
@@ -132,4 +134,4 @@ public:
 		}
 	}
 };
-#endif /*OPTIONALIDENTICALSLOT_H_*/
+#endif /*IDENTICALSLOT_H_*/
