@@ -42,66 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CRAFTINGSLOT_H_
-#define CRAFTINGSLOT_H_
+#ifndef INGREDIENTSLOTS_H_
+#define INGREDIENTSLOTS_H_
 
 #include "server/zone/objects/resource/ResourceContainer.h"
 
-class CraftingSlot {
-
-protected:
-
-	int maxsize;
-	int slottype;
-	String serial;
+class IngredientSlots : public Vector<Reference<IngredientSlot* > >, public Logger {
 
 public:
 
-	static const int RESOURCESLOT = 0;
-	static const int IDENTICALSLOT = 1;
-	static const int MIXEDSLOT = 2;
-	static const int OPTIONALIDENTICALSLOT = 3;
-	static const int OPTIONALMIXEDSLOT = 4;
-
-public:
-	CraftingSlot(){
-
+	IngredientSlots() {
+		setLoggingName("IngredientSlots");
 	}
 
-	virtual ~CraftingSlot(){
-
+	~IngredientSlots() {
+		info("Deleting IngredientSlots");
 	}
 
-	virtual inline void init(const int size){
-
-	}
-
-	virtual inline void cleanup(){
-
-	}
-
-	virtual inline int size(){
-
-		return 0;
-	}
-
-	virtual inline bool add(TangibleObject* tano) {
-
-		return false;
-	}
-
-	virtual inline void clear(){
-
-	}
-
-	virtual inline TangibleObject* get() {
-
-		return NULL;
-	}
-
-	virtual void toString(){
-
-
-	}
 };
-#endif /*CRAFTINGSLOTS_H_*/
+#endif /*INGREDIENTSLOTS_H_*/

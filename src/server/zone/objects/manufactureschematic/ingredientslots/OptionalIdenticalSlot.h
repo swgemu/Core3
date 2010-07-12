@@ -42,24 +42,24 @@
  which carries forward this exception.
  */
 
-#ifndef MIXEDSLOT_H_
-#define MIXEDSLOT_H_
+#ifndef OPTIONALIDENTICALSLOT_H_
+#define OPTIONALIDENTICALSLOT_H_
 
-#include "CraftingSlot.h"
+#include "IngredientSlot.h"
 
-class MixedSlot: public CraftingSlot {
+class OptionalIdenticalSlot : public IngredientSlot {
 
 	TangibleObject* contents;
+	String serial;
 
 public:
-	MixedSlot() :
-		CraftingSlot() {
+	OptionalIdenticalSlot() : IngredientSlot() {
 
 		slottype = RESOURCESLOT;
 		contents = NULL;
 	}
 
-	~MixedSlot() {
+	~OptionalIdenticalSlot() {
 
 		cleanup();
 	}
@@ -84,11 +84,14 @@ public:
 	}
 
 	inline bool add(TangibleObject* tano) {
-		/*
+/*
 		if(contents == NULL){
 			contents = tano;
+			serial = tano->getCraftedSerial();
 		} else {
-			if(tano->isComponent()  && contents->isComponent()) {
+			if(tano->isComponent() && contents->isComponent()) {
+				if(serial != tano->getCraftedSerial())
+					return false;
 
 				TangibleObject* incomingComponent = (TangibleObject*) tano;
 				int contentsCount = contents->getObjectCount();
@@ -128,4 +131,4 @@ public:
 		}
 	}
 };
-#endif /*MIXEDSLOT_H_*/
+#endif /*OPTIONALIDENTICALSLOT_H_*/

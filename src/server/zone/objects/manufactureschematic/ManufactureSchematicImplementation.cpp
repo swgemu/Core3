@@ -54,6 +54,13 @@ which carries forward this exception.
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage6.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage8.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
+
+#include "ingredientslots/ResourceSlot.h"
+//#include "ingredientslots/IdenticalSlot.h"
+//#include "ingredientslots/MixedSlot.h"
+//#include "ingredientslots/OptionalIdenticalSlot.h"
+//#include "ingredientslots/OptionalMixedSlot.h"
+
 /*#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"*/
@@ -115,6 +122,17 @@ void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 
 }
 
+Reference<IngredientSlot*> ManufactureSchematicImplementation::getIngredientSlot(int index) {
+	if(index < ingredientSlots.size())
+		return ingredientSlots.get(index);
+
+	return NULL;
+}
+
+int ManufactureSchematicImplementation::getSlotCount() {
+	return ingredientSlots.size();
+}
+
 void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* player, int value) {
 
 	if(!player->isPlayerCreature())
@@ -132,4 +150,59 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 
 void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
 
+}
+
+void ManufactureSchematicImplementation::initializeIngredientSlots(
+		DraftSchematic* schematic) {
+
+	cleanupIngredientSlots();
+
+	assembled = false;
+	complexity = schematic->getComplexity();
+
+	Reference<IngredientSlot* > ingredientSlot = NULL;
+	Reference<DraftSlot* > draftSlot = NULL;
+
+	for (int i = 0; i < draftSchematic->getDraftSlotCount(); ++i) {
+
+		draftSlot = draftSchematic->getDraftSlot(i);
+
+		String type = draftSlot->getResourceType();
+		int quantity = draftSlot->getQuantity();
+
+		switch (draftSlot->getSlotType()) {
+		case IngredientSlot::RESOURCESLOT:
+			ingredientSlot = new ResourceSlot(type, quantity);
+			break;
+		case IngredientSlot::IDENTICALSLOT:
+			//ingredientSlot = new IdenticalSlot();
+			break;
+		case IngredientSlot::MIXEDSLOT:
+			//ingredientSlot = new MixedSlot();
+			break;
+		case IngredientSlot::OPTIONALIDENTICALSLOT:
+			//ingredientSlot = new OptionalIdenticalSlot();
+			break;
+		case IngredientSlot::OPTIONALMIXEDSLOT:
+			//ingredientSlot = new OptionalMixedSlot();
+			break;
+		}
+
+		ingredientSlots.add(ingredientSlot);
+	}
+}
+
+void ManufactureSchematicImplementation::cleanupIngredientSlots() {
+
+	while (ingredientSlots.size() > 0) {
+		Reference<IngredientSlot* > slot = ingredientSlots.remove(0);
+
+		if (slot != NULL) {
+
+			if(!assembled && slot->hasItem())
+				slot->returnObjectToParent();
+
+			slot = NULL;
+		}
+	}
 }

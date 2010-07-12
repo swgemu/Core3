@@ -103,7 +103,7 @@ void DraftSchematicImplementation::sendDraftSlotsTo(PlayerCreature* player) {
 
 void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* msg) {
 
-	Vector<DraftSlot* > draftSlots = schematicTemplate->getDraftSlots();
+	Vector<Reference<DraftSlot* >  >draftSlots = schematicTemplate->getDraftSlots();
 
 	msg->insertInt(draftSlots.size());
 
@@ -116,7 +116,7 @@ void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* ms
 
 void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player) {
 
-	Vector<ResourceWeight* > resourceWeights = schematicTemplate->getResourceWeights();
+	Vector<Reference<ResourceWeight* > > resourceWeights = schematicTemplate->getResourceWeights();
 
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x0207);
 
