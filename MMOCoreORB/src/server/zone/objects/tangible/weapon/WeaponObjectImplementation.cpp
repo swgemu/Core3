@@ -11,9 +11,12 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 void WeaponObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
+
+	weaponTemplate = dynamic_cast<SharedWeaponObjectTemplate*>(TemplateManager::instance()->getTemplate(serverObjectCRC));
 
 	setLoggingName("WeaponObject");
 }
@@ -21,49 +24,49 @@ void WeaponObjectImplementation::initializeTransientMembers() {
 void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	SharedWeaponObjectTemplate* weaoData = dynamic_cast<SharedWeaponObjectTemplate*>(templateData);
+	weaponTemplate = dynamic_cast<SharedWeaponObjectTemplate*>(templateData);
 
 	certified = false;
 
-	attackType = weaoData->getAttackType();
-	weaponEffect =  weaoData->getWeaponEffect();
-	weaponEffectIndex = weaoData->getWeaponEffectIndex();
+	attackType = weaponTemplate->getAttackType();
+	weaponEffect =  weaponTemplate->getWeaponEffect();
+	weaponEffectIndex = weaponTemplate->getWeaponEffectIndex();
 
-	xpType = weaoData->getXpType();
+	//xpType = weaponTemplate->getXpType();
 
-	damageType = weaoData->getDamageType();
+	damageType = weaponTemplate->getDamageType();
 
-	certificationsRequired = weaoData->getCertificationsRequired();
-	creatureAccuracyModifiers = weaoData->getCreatureAccuracyModifiers();
-	defenderDefenseModifiers = weaoData->getDefenderDefenseModifiers();
-	damageModifiers = weaoData->getDamageModifiers();
-	speedModifiers = weaoData->getSpeedModifiers();
-	defenderSecondaryDefenseModifiers = weaoData->getDefenderSecondaryDefenseModifiers();
+	//certificationsRequired = weaponTemplate->getCertificationsRequired();
+	//creatureAccuracyModifiers = weaponTemplate->getCreatureAccuracyModifiers();
+	//defenderDefenseModifiers = weaponTemplate->getDefenderDefenseModifiers();
+	//damageModifiers = weaponTemplate->getDamageModifiers();
+	//speedModifiers = weaponTemplate->getSpeedModifiers();
+	//defenderSecondaryDefenseModifiers = weaponTemplate->getDefenderSecondaryDefenseModifiers();
 
-	armorPiercing = weaoData->getArmorPiercing();
+	armorPiercing = weaponTemplate->getArmorPiercing();
 
-	healthAttackCost = weaoData->getHealthAttackCost();
-	actionAttackCost = weaoData->getActionAttackCost();
-	mindAttackCost = weaoData->getMindAttackCost();
-	forceCost = weaoData->getForceCost();
+	healthAttackCost = weaponTemplate->getHealthAttackCost();
+	actionAttackCost = weaponTemplate->getActionAttackCost();
+	mindAttackCost = weaponTemplate->getMindAttackCost();
+	forceCost = weaponTemplate->getForceCost();
 
-	pointBlankAccuracy = weaoData->getPointBlankAccuracy();
-	pointBlankRange = weaoData->getPointBlankRange();
+	pointBlankAccuracy = weaponTemplate->getPointBlankAccuracy();
+	pointBlankRange = weaponTemplate->getPointBlankRange();
 
-	idealRange = weaoData->getIdealRange();
-	idealAccuracy = weaoData->getIdealAccuracy();
+	idealRange = weaponTemplate->getIdealRange();
+	idealAccuracy = weaponTemplate->getIdealAccuracy();
 
-	maxRange = weaoData->getMaxRange();
-	maxRangeAccuracy = weaoData->getMaxRangeAccuracy();
+	maxRange = weaponTemplate->getMaxRange();
+	maxRangeAccuracy = weaponTemplate->getMaxRangeAccuracy();
 
-	minDamage = weaoData->getMinDamage();
-	maxDamage = weaoData->getMaxDamage();
+	minDamage = weaponTemplate->getMinDamage();
+	maxDamage = weaponTemplate->getMaxDamage();
 
-	woundsRatio = weaoData->getWoundsRatio();
+	woundsRatio = weaponTemplate->getWoundsRatio();
 
-	area = weaoData->getArea();
+	area = weaponTemplate->getArea();
 
-	attackSpeed = weaoData->getAttackSpeed();
+	attackSpeed = weaponTemplate->getAttackSpeed();
 }
 
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -231,8 +234,10 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 bool WeaponObjectImplementation::isCertifiedFor(PlayerCreature* object) {
 	PlayerObject* ghost = object->getPlayerObject();
 
-	for (int i = 0; i < certificationsRequired.size(); ++i) {
-		String cert = certificationsRequired.get(i);
+	Vector<String>* certificationsRequired = weaponTemplate->getCertificationsRequired();
+
+	for (int i = 0; i < certificationsRequired->size(); ++i) {
+		String cert = certificationsRequired->get(i);
 
 		if (!ghost->hasSkill(cert)) {
 			return false;

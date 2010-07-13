@@ -81,11 +81,29 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace weapon {
+
+class WeaponObject;
+
+} // namespace weapon
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::weapon;
+
 #include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
 
 #include "server/zone/objects/creature/PatrolPointsVector.h"
 
 #include "server/zone/objects/creature/PatrolPoint.h"
+
+#include "server/zone/objects/creature/DamageMap.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -138,11 +156,15 @@ public:
 
 	void activatePostureRecovery();
 
+	void clearCombatState(bool clearDefenders = true);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isNonPlayerCreature();
 
 	void setFollowObject(SceneObject* obj);
+
+	DamageMap* getDamageMap();
 
 	float getKinetic();
 
@@ -230,6 +252,8 @@ protected:
 
 	PatrolPoint nextStepPosition;
 
+	DamageMap damageMap;
+
 	NonPlayerCreatureObjectTemplate* npcTemplate;
 
 	bool baby;
@@ -271,11 +295,15 @@ public:
 
 	void activatePostureRecovery();
 
+	void clearCombatState(bool clearDefenders = true);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isNonPlayerCreature();
 
 	void setFollowObject(SceneObject* obj);
+
+	DamageMap* getDamageMap();
 
 	float getKinetic();
 
@@ -385,6 +413,8 @@ public:
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	void activatePostureRecovery();
+
+	void clearCombatState(bool clearDefenders);
 
 	bool isAttackableBy(CreatureObject* object);
 

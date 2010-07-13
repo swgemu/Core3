@@ -65,6 +65,8 @@ using namespace server::zone;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -185,6 +187,8 @@ public:
 
 	int getDamageType();
 
+	String getXpType();
+
 	bool hasMeleeAttack();
 
 	bool hasRangedAttack();
@@ -211,6 +215,8 @@ protected:
 	WeaponObject(DummyConstructorParameter* param);
 
 	virtual ~WeaponObject();
+
+	String _return_getXpType;
 
 	friend class WeaponObjectHelper;
 };
@@ -273,19 +279,7 @@ protected:
 
 	int forceCost;
 
-	String xpType;
-
-	Vector<String> damageModifiers;
-
-	Vector<String> speedModifiers;
-
-	Vector<String> creatureAccuracyModifiers;
-
-	Vector<String> defenderDefenseModifiers;
-
-	Vector<String> certificationsRequired;
-
-	Vector<String> defenderSecondaryDefenseModifiers;
+	SharedWeaponObjectTemplate* weaponTemplate;
 
 public:
 	static const int NONE = 0;
@@ -398,6 +392,8 @@ public:
 
 	int getDamageType();
 
+	String getXpType();
+
 	bool hasMeleeAttack();
 
 	bool hasRangedAttack();
@@ -502,6 +498,8 @@ public:
 	int getForceCost();
 
 	int getDamageType();
+
+	String getXpType();
 
 	bool hasMeleeAttack();
 

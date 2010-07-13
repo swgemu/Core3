@@ -195,32 +195,32 @@ public:
 		this->woundsRatio = woundsRatio;
 	}
 
-	Vector<String> getCertificationsRequired() const {
-		return certificationsRequired;
+	Vector<String>* getCertificationsRequired() {
+		return &certificationsRequired;
 	}
 
-	Vector<String> getCreatureAccuracyModifiers() const {
-		return creatureAccuracyModifiers;
+	Vector<String>* getCreatureAccuracyModifiers() {
+		return &creatureAccuracyModifiers;
 	}
 
-	Vector<String> getDamageModifiers() const {
-		return damageModifiers;
+	Vector<String>* getDamageModifiers() {
+		return &damageModifiers;
 	}
 
 	inline int getDamageType() const {
 		return damageType;
 	}
 
-	Vector<String> getDefenderDefenseModifiers() const {
-		return defenderDefenseModifiers;
+	Vector<String>* getDefenderDefenseModifiers() {
+		return &defenderDefenseModifiers;
 	}
 
-	Vector<String> getDefenderSecondaryDefenseModifiers() const {
-		return defenderSecondaryDefenseModifiers;
+	Vector<String>* getDefenderSecondaryDefenseModifiers() {
+		return &defenderSecondaryDefenseModifiers;
 	}
 
-	Vector<String> getSpeedModifiers() const {
-		return speedModifiers;
+	Vector<String>* getSpeedModifiers() {
+		return &speedModifiers;
 	}
 
 	void setCertificationsRequired(Vector<String> certificationsRequired) {
