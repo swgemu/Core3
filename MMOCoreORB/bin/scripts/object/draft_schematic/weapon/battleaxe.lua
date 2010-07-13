@@ -56,6 +56,7 @@ object_draft_schematic_weapon_battleaxe = object_draft_schematic_weapon_shared_b
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"axe_head", "shaft", "axe_head_fastener", "reinforcement_core"},

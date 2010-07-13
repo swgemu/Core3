@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_item_storage_module_6 = object_draft_sche
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "thermal_shielding", "cargo_management_unit", "cargo_restraints", "inventory_smart_indexer", "inventory_caching_unit"},

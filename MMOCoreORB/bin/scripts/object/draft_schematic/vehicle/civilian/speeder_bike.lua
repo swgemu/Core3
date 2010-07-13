@@ -56,6 +56,7 @@ object_draft_schematic_vehicle_civilian_speeder_bike = object_draft_schematic_ve
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n"},
    ingredientTitleNames = {"vehicle_body", "structural_frame"},

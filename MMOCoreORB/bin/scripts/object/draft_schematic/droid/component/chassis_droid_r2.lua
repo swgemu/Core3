@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_chassis_droid_r2 = object_draft_schematic
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_body_shell", "secondary_body_structure", "frame", "intellex_iv_computer", "manipulator_arm", "motivator", "sensor_suite"},

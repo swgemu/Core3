@@ -56,6 +56,7 @@ object_draft_schematic_item_item_firework_one = object_draft_schematic_item_shar
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"canister", "booster_charge", "burster_charge", "effect_generator"},

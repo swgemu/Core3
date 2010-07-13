@@ -56,6 +56,7 @@ object_draft_schematic_furniture_furniture_candle_free_s01_on = object_draft_sch
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"candle", "wick", "candle_holder"},

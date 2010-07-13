@@ -56,6 +56,7 @@ object_draft_schematic_food_dessert_sweesonberry_rolls = object_draft_schematic_
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"bantha_butter", "pastebread", "oat_covering", "berries", "additive"},

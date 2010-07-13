@@ -56,6 +56,7 @@ object_draft_schematic_space_repair_booster_repair_kit = object_draft_schematic_
 
    assemblySkill = "medicine_assembly", 
    experimentingSkill = "medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"repair_parts", "fiberplast_patches"},

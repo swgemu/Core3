@@ -56,6 +56,7 @@ object_draft_schematic_chemistry_med_fire_blanket = object_draft_schematic_chemi
 
    assemblySkill = "medicine_assembly", 
    experimentingSkill = "medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"coolent_gel", "fire_suppression_lining", "delivery_medium", "drug_strength_compound"},

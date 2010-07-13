@@ -56,6 +56,7 @@ object_draft_schematic_furniture_furniture_chair_upholstered = object_draft_sche
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "upholstery"},

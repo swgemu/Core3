@@ -56,6 +56,7 @@ object_draft_schematic_food_drink_tilla_tiil = object_draft_schematic_food_share
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "first_carbonation", "second_carbonation", "third_carbonation", "glass", "additive"},

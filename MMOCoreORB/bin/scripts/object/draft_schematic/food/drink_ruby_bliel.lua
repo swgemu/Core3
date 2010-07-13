@@ -56,6 +56,7 @@ object_draft_schematic_food_drink_ruby_bliel = object_draft_schematic_food_share
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"water", "fruit_flavoring", "glass", "additive"},

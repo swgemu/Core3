@@ -56,6 +56,7 @@ object_draft_schematic_structure_component_structural_module = object_draft_sche
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"reinforcement_rods", "body_material", "insulation"},

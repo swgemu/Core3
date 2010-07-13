@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_chassis_droid_surgical = object_draft_sch
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"frame", "leg_struts", "body_sheath", "hydraulic_system_pumps", "droid_brain", "manipulator_arm", "sensor_suite"},

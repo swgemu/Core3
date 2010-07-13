@@ -56,6 +56,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn_advanced = obje
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
 
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_kashyyykian_black_mtn", "armor_layer_track", "segment_mounting_tabs", "defensive_layer", "defensive_layer_2", "segment_enhancement"},

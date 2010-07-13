@@ -56,6 +56,7 @@ object_draft_schematic_spices_spice_neutron_pixey = object_draft_schematic_spice
 
    assemblySkill = "spice_assembly", 
    experimentingSkill = "spice_experimentation", 
+   customizationSkill = "spice_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"crystalline_stratifier", "neutron_impactor", "fruit_flavoring"},

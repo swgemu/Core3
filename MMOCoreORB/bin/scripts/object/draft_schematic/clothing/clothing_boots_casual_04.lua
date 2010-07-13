@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_boots_casual_04 = object_draft_schemati
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"boots", "binding_and_hardware", "sole"},

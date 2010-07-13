@@ -56,6 +56,7 @@ object_draft_schematic_scout_item_trap_enraging_spur = object_draft_schematic_sc
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"spur_core", "spur_housing", "spur_spikes"},

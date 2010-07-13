@@ -56,6 +56,7 @@ object_draft_schematic_munition_mine_xg = object_draft_schematic_munition_shared
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"weapon_casing", "load_bearing_frame", "activation_panel", "warhead_assembly", "warhead_fusing"},

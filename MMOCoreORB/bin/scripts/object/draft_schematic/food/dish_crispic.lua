@@ -56,6 +56,7 @@ object_draft_schematic_food_dish_crispic = object_draft_schematic_food_shared_di
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"flaky_crust", "meaty_core", "additive"},

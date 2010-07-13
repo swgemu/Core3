@@ -56,6 +56,7 @@ object_draft_schematic_slicing_slicing_laser_knife = object_draft_schematic_slic
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "spice_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "controller", "laser_assembly"},

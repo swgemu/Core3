@@ -56,6 +56,7 @@ object_draft_schematic_item_item_jedi_tool = object_draft_schematic_item_shared_
 
    assemblySkill = "jedi_saber_assembly", 
    experimentingSkill = "jedi_saber_experimentation", 
+   customizationSkill = "jedi_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "electronic_control_unit"},

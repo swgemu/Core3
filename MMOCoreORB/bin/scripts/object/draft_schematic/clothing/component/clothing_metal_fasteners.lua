@@ -56,6 +56,7 @@ object_draft_schematic_clothing_component_clothing_metal_fasteners = object_draf
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"fastener_housing", "fastener_clip"},

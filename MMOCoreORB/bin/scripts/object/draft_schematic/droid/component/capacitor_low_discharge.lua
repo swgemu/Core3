@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_capacitor_low_discharge = object_draft_sc
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"conductive_surface", "core_plates", "resistor_material"},

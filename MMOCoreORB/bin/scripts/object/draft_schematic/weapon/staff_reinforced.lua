@@ -56,6 +56,7 @@ object_draft_schematic_weapon_staff_reinforced = object_draft_schematic_weapon_s
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"staff_shaft", "flex_core", "balance_tabs", "impact_face"},

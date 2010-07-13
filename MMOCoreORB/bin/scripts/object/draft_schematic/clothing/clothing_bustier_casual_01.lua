@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_bustier_casual_01 = object_draft_schema
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"bodice", "binding_and_reinforcement", "trim"},

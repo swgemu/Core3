@@ -56,6 +56,7 @@ object_draft_schematic_food_dish_synthsteak = object_draft_schematic_food_shared
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"vegetable_mash", "cereal_fortifier", "cooking_wrap", "additive"},

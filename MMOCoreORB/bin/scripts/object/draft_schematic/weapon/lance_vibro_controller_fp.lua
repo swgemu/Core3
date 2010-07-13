@@ -56,6 +56,7 @@ object_draft_schematic_weapon_lance_vibro_controller_fp = object_draft_schematic
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"staff_shaft", "vibro_unit_and_power_cell_brackets", "power_circuits", "vibration_generator"},

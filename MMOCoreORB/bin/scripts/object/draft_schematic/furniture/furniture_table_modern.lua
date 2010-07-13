@@ -56,6 +56,7 @@ object_draft_schematic_furniture_furniture_table_modern = object_draft_schematic
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "table_top"},

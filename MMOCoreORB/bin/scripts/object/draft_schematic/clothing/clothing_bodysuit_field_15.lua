@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_bodysuit_field_15 = object_draft_schema
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"highly_elastic_skin_fabric", "wiring_and_reinforcement", "hardware"},

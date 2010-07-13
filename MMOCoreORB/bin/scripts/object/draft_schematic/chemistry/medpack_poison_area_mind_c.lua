@@ -56,6 +56,7 @@ object_draft_schematic_chemistry_medpack_poison_area_mind_c = object_draft_schem
 
    assemblySkill = "combat_medicine_assembly", 
    experimentingSkill = "combat_medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},

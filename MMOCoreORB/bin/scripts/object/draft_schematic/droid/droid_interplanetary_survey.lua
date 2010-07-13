@@ -56,6 +56,7 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "shielding_and_insulation", "communication_array", "transportation_module", "survey_control_circuit", "survey_scanning_storage_circuit", "command_interpreter", "navigation_control_circuit"},

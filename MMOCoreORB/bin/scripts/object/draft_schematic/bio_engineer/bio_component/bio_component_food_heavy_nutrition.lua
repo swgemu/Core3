@@ -56,6 +56,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_nutri
 
    assemblySkill = "bio_engineer_assembly", 
    experimentingSkill = "bio_engineer_experimentation", 
+   customizationSkill = "bio_customization", 
 
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"nutrient_base", "vitamin_enhancers", "chemical_enhancers", "secrets"},

@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_apron_chef_01 = object_draft_schematic_
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"apron", "binding_and_reinforcement", "binding_and_hardware", "chef_suit", "bow_tie"},
