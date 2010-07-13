@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_module_socket_bank = object_draft_schemat
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"expansion_board", "connector_socket", "attachment_bracket", "shock_buffering", "support_strut", "general_droid_module", "general_droid_module2", "general_droid_module3"},

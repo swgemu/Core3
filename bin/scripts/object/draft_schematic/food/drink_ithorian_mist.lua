@@ -56,6 +56,7 @@ object_draft_schematic_food_drink_ithorian_mist = object_draft_schematic_food_sh
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"water", "alcohol_mixer", "alcohol", "glass", "additive"},

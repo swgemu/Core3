@@ -56,6 +56,7 @@ object_draft_schematic_food_dish_blood_chowder = object_draft_schematic_food_sha
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"water", "purified_blood", "flavored_soypro", "additive"},

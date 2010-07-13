@@ -56,6 +56,7 @@ object_draft_schematic_droid_droid_probot = object_draft_schematic_droid_shared_
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "shielding_and_insulation", "droid_brain", "manipulator_arm", "motivator", "navigation_sensor_suite", "espionage_sensor_suite", "general_droid_module_package", "droid_defensive_module"},

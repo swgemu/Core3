@@ -56,6 +56,7 @@ object_draft_schematic_weapon_axe_vibro = object_draft_schematic_weapon_shared_a
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"vibro_unit_and_power_cell_brackets", "axe_base", "vibration_generator"},

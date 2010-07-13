@@ -56,6 +56,7 @@ object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_s
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"knife_shaft", "cutting_edge", "grip", "vibro_unit_and_power_cell_brackets", "vibration_generator"},

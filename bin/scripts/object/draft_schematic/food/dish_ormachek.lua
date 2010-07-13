@@ -56,6 +56,7 @@ object_draft_schematic_food_dish_ormachek = object_draft_schematic_food_shared_d
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"meat", "dough", "beans", "spiney_wrap"},

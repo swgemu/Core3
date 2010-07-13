@@ -56,6 +56,7 @@ object_draft_schematic_munition_component_warhead_chemical = object_draft_schema
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"warhead_module_casing", "chemical_containment", "containment_field_coil", "trigger_pulse_prism", "chemical_payload"},

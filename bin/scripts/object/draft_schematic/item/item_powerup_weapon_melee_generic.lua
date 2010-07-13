@@ -56,6 +56,7 @@ object_draft_schematic_item_item_powerup_weapon_melee_generic = object_draft_sch
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"resource_one", "resource_two"},

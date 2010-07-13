@@ -56,6 +56,7 @@ object_draft_schematic_scout_item_camp_improved = object_draft_schematic_scout_s
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"shelter_canvas", "shelter_structure"},

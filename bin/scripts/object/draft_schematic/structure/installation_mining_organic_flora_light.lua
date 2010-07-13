@@ -56,6 +56,7 @@ object_draft_schematic_structure_installation_mining_organic_flora_light = objec
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "plant_handling_mechanism", "bio_storage_tank"},

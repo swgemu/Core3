@@ -56,6 +56,7 @@ object_draft_schematic_item_component_item_micro_sensor_suite = object_draft_sch
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "assembly_frame", "thermal_shielding", "thermal_and_contaminant_shield", "micro_transciever_net", "base_pre_processing_unit", "primary_array_processing_and_control_unit", "sensor_array_wiring_harness"},

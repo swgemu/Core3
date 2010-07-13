@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_personality_module_sarcastic = object_dra
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_smart_indexer", "sarcasm_sub_processor", "primary_phrase_database"},

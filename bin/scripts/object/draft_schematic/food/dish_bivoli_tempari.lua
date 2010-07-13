@@ -56,6 +56,7 @@ object_draft_schematic_food_dish_bivoli_tempari = object_draft_schematic_food_sh
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"protato", "carbosyrup", "tough_meat", "vegetables", "additive"},

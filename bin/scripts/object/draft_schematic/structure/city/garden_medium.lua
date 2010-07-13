@@ -56,6 +56,7 @@ object_draft_schematic_structure_city_garden_medium = object_draft_schematic_str
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"decorative_flora", "foundation", "wall_sections"},

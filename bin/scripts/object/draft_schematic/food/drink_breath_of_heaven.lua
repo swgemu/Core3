@@ -56,6 +56,7 @@ object_draft_schematic_food_drink_breath_of_heaven = object_draft_schematic_food
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"first_alcohol", "second_alcohol", "first_mash", "second_mash", "glass", "additive"},

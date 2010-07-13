@@ -56,6 +56,7 @@ object_draft_schematic_food_dessert_chandad = object_draft_schematic_food_shared
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"wheat", "water", "fruit_filling", "rice_filling", "additive"},

@@ -56,6 +56,7 @@ object_draft_schematic_food_dessert_pyollian_cake = object_draft_schematic_food_
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"sweet_cake_mix", "oats", "topping", "additive"},

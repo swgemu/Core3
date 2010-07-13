@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_manipulator_arm = object_draft_schematic_
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "servo_motors", "attachment_bracket", "shock_buffering", "support_strut"},

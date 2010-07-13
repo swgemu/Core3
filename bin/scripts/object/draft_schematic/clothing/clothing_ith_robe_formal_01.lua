@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_ith_robe_formal_01 = object_draft_schem
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "extra_trim", "jewelry_setting", "hardware", "inner_gown", "outer_gown"},

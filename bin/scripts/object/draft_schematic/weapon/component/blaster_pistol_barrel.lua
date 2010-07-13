@@ -56,6 +56,7 @@ object_draft_schematic_weapon_component_blaster_pistol_barrel = object_draft_sch
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"emitter_nozzle", "actuating_blaster_module", "barrel_to_receiver_coupling", "prismatic_crystal", "barrel_shroud"},

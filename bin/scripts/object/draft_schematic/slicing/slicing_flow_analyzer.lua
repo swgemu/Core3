@@ -56,6 +56,7 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
 
    assemblySkill = "spice_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "spice_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "controller", "scanner_assembly"},

@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_formal_06 = object_draft_s
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"highly_elastic_skin_fabric", "hardware"},

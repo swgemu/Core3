@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_hat_twilek_casual_01 = object_draft_sch
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_weatherproofing", "bone_decoration", "liner"},

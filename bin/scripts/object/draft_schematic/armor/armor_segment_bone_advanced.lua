@@ -56,6 +56,7 @@ object_draft_schematic_armor_armor_segment_bone_advanced = object_draft_schemati
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
 
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_bone", "segment_mounting_tabs", "segment_enhancement"},

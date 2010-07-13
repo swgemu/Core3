@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_repair_module = object_draft_schematic_dr
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "repair_tools", "repair_expert_system"},

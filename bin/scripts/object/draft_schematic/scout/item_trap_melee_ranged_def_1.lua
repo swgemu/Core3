@@ -56,6 +56,7 @@ object_draft_schematic_scout_item_trap_melee_ranged_def_1 = object_draft_schemat
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"trap_housing", "entangling_mesh", "bioluminescence"},

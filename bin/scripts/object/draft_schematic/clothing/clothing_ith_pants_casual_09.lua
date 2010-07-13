@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_ith_pants_casual_09 = object_draft_sche
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_reinforcement", "metal_fasteners", "synthetic_cloth"},

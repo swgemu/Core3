@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_playback_module = object_draft_schematic_
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"recording_material", "wave_synthesis", "sound_emission_device"},

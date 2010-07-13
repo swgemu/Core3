@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_unit_delivery_cartridge = object_draft_sc
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"cartridge_housing", "contact_mechanism"},

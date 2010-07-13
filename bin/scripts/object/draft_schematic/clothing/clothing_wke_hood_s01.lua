@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_wke_hood_s01 = object_draft_schematic_c
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_hardware"},

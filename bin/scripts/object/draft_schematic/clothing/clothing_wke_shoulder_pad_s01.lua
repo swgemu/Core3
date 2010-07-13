@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_wke_shoulder_pad_s01 = object_draft_sch
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_hardware"},

@@ -56,6 +56,7 @@ object_draft_schematic_instrument_instrument_kloo_horn = object_draft_schematic_
 
    assemblySkill = "instrument_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "instrument_customization", 
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "valving"},

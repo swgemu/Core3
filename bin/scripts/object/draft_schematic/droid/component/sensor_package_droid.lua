@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_sensor_package_droid = object_draft_schem
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "transducer_array", "insulation", "transducer_substrate", "contaminant_purge", "interference_shielding"},

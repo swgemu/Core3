@@ -56,6 +56,7 @@ object_draft_schematic_weapon_component_projectile_pistol_barrel_advanced = obje
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"lining", "bore"},

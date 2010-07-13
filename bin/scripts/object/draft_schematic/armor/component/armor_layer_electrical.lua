@@ -56,6 +56,7 @@ object_draft_schematic_armor_component_armor_layer_electrical = object_draft_sch
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
 
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_layer_frame", "primary_insulator_micro_layer", "secondary_insulator_microsheath"},

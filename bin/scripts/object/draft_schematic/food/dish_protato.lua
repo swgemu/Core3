@@ -56,6 +56,7 @@ object_draft_schematic_food_dish_protato = object_draft_schematic_food_shared_di
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"protein_fortifier", "vegetable_mash"},

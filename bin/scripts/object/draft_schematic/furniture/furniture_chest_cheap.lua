@@ -56,6 +56,7 @@ object_draft_schematic_furniture_furniture_chest_cheap = object_draft_schematic_
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"panelling", "frame"},

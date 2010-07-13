@@ -56,6 +56,7 @@ object_draft_schematic_structure_installation_generator_solar = object_draft_sch
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "solar_platform", "structure_sway_joints", "power_modulation_unit", "capacitance_storage_tank", "cell_manufacturing_mechanism"},

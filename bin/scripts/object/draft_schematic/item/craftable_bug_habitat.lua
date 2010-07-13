@@ -56,6 +56,7 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"container", "life_support", "creature_sample"},

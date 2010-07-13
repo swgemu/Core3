@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_bracer_r = object_draft_sc
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"auxilary_coverage", "body", "liner", "hardware_and_attachments", "binding_and_reinforcement", "padding", "armor", "load_bearing_harness", "reinforcement"},

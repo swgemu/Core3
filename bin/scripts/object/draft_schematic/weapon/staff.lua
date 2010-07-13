@@ -56,6 +56,7 @@ object_draft_schematic_weapon_staff = object_draft_schematic_weapon_shared_staff
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n"},
    ingredientTitleNames = {"staff_shaft"},

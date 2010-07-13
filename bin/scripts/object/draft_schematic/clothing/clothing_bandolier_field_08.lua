@@ -56,6 +56,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_08 = object_draft_schem
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"hardware", "load_bearing_harness", "reinforcement"},

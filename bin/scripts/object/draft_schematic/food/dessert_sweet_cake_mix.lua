@@ -56,6 +56,7 @@ object_draft_schematic_food_dessert_sweet_cake_mix = object_draft_schematic_food
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"fine_wheat", "berries", "sweetener"},

@@ -56,6 +56,7 @@ object_draft_schematic_weapon_component_sword_core = object_draft_schematic_weap
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n"},
    ingredientTitleNames = {"sword_core"},

@@ -56,6 +56,7 @@ object_draft_schematic_munition_grenade_fragmentation_c_22 = object_draft_schema
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"body_shell", "magnetic_grapple", "timed_dial", "fragmentation_sleeve", "warhead_assembly", "warhead_fusing"},

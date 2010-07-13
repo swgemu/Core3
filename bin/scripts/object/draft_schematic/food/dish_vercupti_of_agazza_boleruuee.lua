@@ -56,6 +56,7 @@ object_draft_schematic_food_dish_vercupti_of_agazza_boleruuee = object_draft_sch
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dexters_secret_ingredient", "insect_meat", "tubers", "dough", "additive"},

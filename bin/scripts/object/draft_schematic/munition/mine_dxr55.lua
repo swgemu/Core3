@@ -56,6 +56,7 @@ object_draft_schematic_munition_mine_dxr55 = object_draft_schematic_munition_sha
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"weapon_casing", "trigger_mechanism", "warhead_compartment", "grounding_pile", "warhead_insulator", "warhead_assembly", "null_field_generator", "warhead_fusing", "warhead_booster"},

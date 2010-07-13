@@ -56,6 +56,7 @@ object_draft_schematic_furniture_furniture_armoire_cheap = object_draft_schemati
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"ingredients"},
    ingredientTitleNames = {"frame"},

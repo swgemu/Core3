@@ -56,6 +56,7 @@ object_draft_schematic_droid_droid_dz70 = object_draft_schematic_droid_shared_dr
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "system_hardening", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module"},
