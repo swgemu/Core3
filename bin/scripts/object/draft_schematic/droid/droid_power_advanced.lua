@@ -56,6 +56,7 @@ object_draft_schematic_droid_droid_power_advanced = object_draft_schematic_droid
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "thermal_shielding", "generator_shell_hardening", "droid_brain", "engine_unit", "power_module", "sensor_suite", "general_droid_module", "droid_defensive_module"},

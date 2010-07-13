@@ -56,6 +56,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_b
 
    assemblySkill = "bio_engineer_assembly", 
    experimentingSkill = "bio_engineer_experimentation", 
+   customizationSkill = "bio_customization", 
 
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"protein_base", "coagulating_materials", "chemical_enhancers", "bacterial_enhancers"},

@@ -56,6 +56,7 @@ object_draft_schematic_food_dish_kanali_wafers = object_draft_schematic_food_sha
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"carbosyrup", "fruit_core", "preservative_wrap", "additive"},

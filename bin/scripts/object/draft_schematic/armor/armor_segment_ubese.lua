@@ -56,6 +56,7 @@ object_draft_schematic_armor_armor_segment_ubese = object_draft_schematic_armor_
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
 
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"segment_layer_assembly_plate", "armor_layer_weld_tabs", "segment_mounting_tabs", "defensive_layer", "segment_enhancement"},

@@ -56,6 +56,7 @@ object_draft_schematic_weapon_component_stock = object_draft_schematic_weapon_co
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"stock_unit", "butt_cap_and_receiver_attachment_point"},

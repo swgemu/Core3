@@ -56,6 +56,7 @@ object_draft_schematic_food_dessert_air_cake = object_draft_schematic_food_share
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"carbosyrup", "dough", "fruit_core", "additive"},

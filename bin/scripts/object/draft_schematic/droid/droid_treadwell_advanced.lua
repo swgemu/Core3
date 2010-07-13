@@ -56,6 +56,7 @@ object_draft_schematic_droid_droid_treadwell_advanced = object_draft_schematic_d
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "arm_struts", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module", "general_droid_module2", "droid_defensive_module"},

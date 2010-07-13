@@ -56,6 +56,7 @@ object_draft_schematic_chemistry_medpack_wound_action_d = object_draft_schematic
 
    assemblySkill = "medicine_assembly", 
    experimentingSkill = "medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strenth_compound_2"},

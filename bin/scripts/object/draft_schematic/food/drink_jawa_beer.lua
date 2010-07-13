@@ -56,6 +56,7 @@ object_draft_schematic_food_drink_jawa_beer = object_draft_schematic_food_shared
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "bantha_flavoring", "glass", "additive"},

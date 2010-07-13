@@ -56,6 +56,7 @@ object_draft_schematic_weapon_component_blade_vibro_unit_advanced = object_draft
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"module_housing", "ultrasonic_vibration_generator", "conductive_circuits", "weapon_enhancement"},

@@ -56,6 +56,7 @@ object_draft_schematic_food_drink_bespin_port = object_draft_schematic_food_shar
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "aged_fruit_additive", "sugarized_tubers", "berry_mixer", "glass", "additive"},

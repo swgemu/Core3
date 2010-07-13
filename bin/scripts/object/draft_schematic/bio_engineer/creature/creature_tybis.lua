@@ -56,6 +56,7 @@ object_draft_schematic_bio_engineer_creature_creature_tybis = object_draft_schem
 
    assemblySkill = "bio_engineer_assembly", 
    experimentingSkill = "bio_engineer_experimentation", 
+   customizationSkill = "bio_customization", 
 
    ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
    ingredientTitleNames = {"dna_template", "protein_base", "organic_nutrition_materials"},

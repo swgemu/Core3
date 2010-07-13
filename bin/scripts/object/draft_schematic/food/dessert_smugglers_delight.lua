@@ -56,6 +56,7 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dough", "bantha_butter", "filling_tubers", "succulent_fruit", "additive"},

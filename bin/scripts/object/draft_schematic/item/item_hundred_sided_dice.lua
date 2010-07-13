@@ -56,6 +56,7 @@ object_draft_schematic_item_item_hundred_sided_dice = object_draft_schematic_ite
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"cube_core", "hardened_shell"},

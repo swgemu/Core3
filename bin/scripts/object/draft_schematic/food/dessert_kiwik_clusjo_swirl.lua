@@ -56,6 +56,7 @@ object_draft_schematic_food_dessert_kiwik_clusjo_swirl = object_draft_schematic_
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"sweet_berries", "tart_berries", "fruit_filling", "water", "additive"},

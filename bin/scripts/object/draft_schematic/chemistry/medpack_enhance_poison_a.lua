@@ -56,6 +56,7 @@ object_draft_schematic_chemistry_medpack_enhance_poison_a = object_draft_schemat
 
    assemblySkill = "medicine_assembly", 
    experimentingSkill = "medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"first_organic_element", "second_organic_element", "first_inorganic_element", "second_inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},

@@ -56,6 +56,7 @@ object_draft_schematic_structure_installation_generator_fusion = object_draft_sc
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_frame", "body_shell_structure", "ore_extractor_mill", "structure_foundation", "pile_containment_shielding", "pile_containment_unit", "pile_containment_coolant", "matched_turbine_cluster", "capacitance_storage_compartments", "cell_manufacturing_mechanism"},

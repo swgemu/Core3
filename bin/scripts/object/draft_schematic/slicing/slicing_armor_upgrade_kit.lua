@@ -56,6 +56,7 @@ object_draft_schematic_slicing_slicing_armor_upgrade_kit = object_draft_schemati
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "tools", "chemicals"},

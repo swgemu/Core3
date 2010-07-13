@@ -56,6 +56,7 @@ object_draft_schematic_food_drink_elshandruu_pica_thundercloud = object_draft_sc
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "radioactive_core", "neutronium_thinner", "fruit_twist", "glass", "additive"},

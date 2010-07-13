@@ -56,6 +56,7 @@ object_draft_schematic_food_drink_veronian_berry_wine = object_draft_schematic_f
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"water", "fruit", "alcohol", "glass", "additive"},

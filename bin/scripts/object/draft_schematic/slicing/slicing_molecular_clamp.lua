@@ -56,6 +56,7 @@ object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "spice_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"clamp_body", "controller", "molecular_fuser"},

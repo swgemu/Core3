@@ -56,6 +56,7 @@ object_draft_schematic_armor_component_armor_layer_energy = object_draft_schemat
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
 
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_layer_frame", "ablative_damage_absorbtion_medium", "energy_sink", "second_tier_insulation_medium"},

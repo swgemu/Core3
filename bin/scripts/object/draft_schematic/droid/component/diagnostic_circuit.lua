@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_diagnostic_circuit = object_draft_schemat
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"insulated_board_material", "integrated_circuit"},

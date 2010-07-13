@@ -56,6 +56,7 @@ object_draft_schematic_food_drink_flameout = object_draft_schematic_food_shared_
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "reactive_element", "fermented_tubers", "glass", "additive"},

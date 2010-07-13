@@ -56,6 +56,7 @@ object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_sha
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"knife_shaft", "cutting_edge", "grip_cap", "grip"},

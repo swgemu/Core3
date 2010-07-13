@@ -56,6 +56,7 @@ object_draft_schematic_scout_item_trap_sonic_pulse = object_draft_schematic_scou
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"device_housing", "device_interior", "device_systems"},

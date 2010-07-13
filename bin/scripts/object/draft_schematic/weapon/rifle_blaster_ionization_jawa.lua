@@ -56,6 +56,7 @@ object_draft_schematic_weapon_rifle_blaster_ionization_jawa = object_draft_schem
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"stock", "receiver_assembly", "grip_assembly", "powerhandler", "barrel"},

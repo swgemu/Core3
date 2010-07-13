@@ -56,6 +56,7 @@ object_draft_schematic_armor_component_deflector_shield_generator_energy_ray = o
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"assembly_mounting_frame", "field_harmonic_tuning_array", "emitter_module_insulation", "field_generation_pile"},

@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_armor_module_4 = object_draft_schematic_d
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "armor_filler", "stress_resist_plate", "fracture_capture_medium"},

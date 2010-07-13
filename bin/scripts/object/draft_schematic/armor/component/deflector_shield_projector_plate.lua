@@ -56,6 +56,7 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"plate_mounting_brackets", "field_isolator_assembly", "projector_field_array"},

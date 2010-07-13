@@ -56,6 +56,7 @@ object_draft_schematic_droid_droid_r4_advanced = object_draft_schematic_droid_sh
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"base_chassis", "chassis_frame_interface", "general_droid_module", "general_droid_module2", "general_droid_module3", "droid_defensive_module", "droid_defensive_module2"},

@@ -56,6 +56,7 @@ object_draft_schematic_munition_grenade_proton = object_draft_schematic_munition
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
 
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"shell", "thumb_trigger", "activation_indicator", "warhead_insulator", "igniter_charge", "warhead_assembly", "null_field_generator", "warhead_fusing", "warhead_booster"},

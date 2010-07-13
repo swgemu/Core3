@@ -56,6 +56,7 @@ object_draft_schematic_chemistry_component_solid_delivery_shell_advanced = objec
 
    assemblySkill = "medicine_assembly", 
    experimentingSkill = "medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"purified_organic_element", "shell_material_seed_matrix"},

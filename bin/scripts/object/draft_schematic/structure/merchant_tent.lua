@@ -56,6 +56,7 @@ object_draft_schematic_structure_merchant_tent = object_draft_schematic_structur
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
 
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"tent_frame", "insulation_and_covering", "foundation", "fiberplast_tent_covering", "reinforced_secondary_covering"},

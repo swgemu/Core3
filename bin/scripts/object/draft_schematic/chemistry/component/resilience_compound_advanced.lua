@@ -56,6 +56,7 @@ object_draft_schematic_chemistry_component_resilience_compound_advanced = object
 
    assemblySkill = "combat_medicine_assembly", 
    experimentingSkill = "combat_medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"delivery_medium", "drug_strength_compound"},

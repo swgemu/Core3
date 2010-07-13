@@ -56,6 +56,7 @@ object_draft_schematic_item_component_item_electronics_gp_module = object_draft_
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization", 
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"module_brackets", "circuit_stabilization_medium", "circuit_shielding_and_substrate", "pre_processing_logic_circuitry", "thermal_and_contaminant_shield"},

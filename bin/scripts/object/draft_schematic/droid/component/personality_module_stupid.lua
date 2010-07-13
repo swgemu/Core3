@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_personality_module_stupid = object_draft_
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "primary_phrase_database"},

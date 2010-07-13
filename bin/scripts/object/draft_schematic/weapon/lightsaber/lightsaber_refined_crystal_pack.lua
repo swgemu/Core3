@@ -56,6 +56,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
 
    assemblySkill = "jedi_saber_assembly", 
    experimentingSkill = "jedi_saber_experimentation", 
+   customizationSkill = "jedi_customization", 
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"module_housing", "ultrasonic_vibration_generator", "conductive_circuits", "lightsaber_module_atkspd", "lightsaber_module_damage", "lightsaber_module_forcecost", "lightsaber_module_woundchance"},

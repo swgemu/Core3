@@ -56,6 +56,7 @@ object_draft_schematic_droid_component_repair_unit_casing_advanced = object_draf
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 
+   customizationSkill = "droid_customization", 
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"main_unit_housing", "fiber_unit_housing"},
