@@ -52,6 +52,7 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
 	-L/usr/local/BerkeleyDB.4.8/lib \
+	-L/usr/local/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
 	-lmysqlclient -lz -lengine3 -llua -ldb
 
@@ -235,6 +236,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/NonPlayerCreatureObjectImplementation.cpp \
+		server/zone/objects/creature/DamageMap.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
 		server/zone/objects/creature/buffs/BuffImplementation.cpp \

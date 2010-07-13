@@ -72,6 +72,8 @@ SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
 	
 	clientCRC = 0, 
 	
+	level = 10,
+	
 	baseHAM = { 300, 300, 300, 300, 300, 300, 300, 300, 300 },
 	skillMods = { }
 	

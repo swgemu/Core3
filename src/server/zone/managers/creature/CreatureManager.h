@@ -144,6 +144,8 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition);
 
+	void disseminateExperience(TangibleObject* destructor, NonPlayerCreatureObject* creature);
+
 	void loadDynamicSpawnAreas();
 
 	void loadTrainers();
@@ -186,6 +188,8 @@ public:
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
 
 	int notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition);
+
+	void disseminateExperience(TangibleObject* destructor, NonPlayerCreatureObject* creature);
 
 	void loadDynamicSpawnAreas();
 
@@ -237,6 +241,8 @@ public:
 	void initialize();
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID);
+
+	void disseminateExperience(TangibleObject* destructor, NonPlayerCreatureObject* creature);
 
 	void loadDynamicSpawnAreas();
 

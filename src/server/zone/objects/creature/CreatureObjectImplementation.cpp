@@ -130,7 +130,7 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	listenToID = 0;
 
-	level = 0;
+	level = creoData->getLevel();
 
 	weapon = NULL;
 	group = NULL;

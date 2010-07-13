@@ -59,6 +59,9 @@ class CreatureManager extends ManagedObject implements Logger {
 	@local
 	public native int notifyDestruction(TangibleObject destructor, NonPlayerCreatureObject destructedObject, int condition);
 	
+	
+	public native void disseminateExperience(TangibleObject destructor, NonPlayerCreatureObject creature);
+	
 	public native void loadDynamicSpawnAreas();
 	
 	public native void loadTrainers();
