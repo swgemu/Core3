@@ -11,6 +11,7 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
@@ -72,6 +73,18 @@ void NonPlayerCreatureObjectImplementation::doRecovery() {
 	}
 
 	activateRecovery();
+}
+
+/**
+ * Cleares the combat state
+ * @pre { this object is locked }
+ * @post { this object is locked, this object is not in a combat state }
+ * @param clearDefenders if true the defender vector willl be emptied
+ */
+void NonPlayerCreatureObjectImplementation::clearCombatState(bool clearDefenders) {
+	CreatureObjectImplementation::clearCombatState(clearDefenders);
+
+	damageMap.removeAll();
 }
 
 void NonPlayerCreatureObjectImplementation::activateRecovery() {
@@ -269,6 +282,13 @@ bool NonPlayerCreatureObjectImplementation::hasOrganics() {
 
 int NonPlayerCreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
 	activateRecovery();
+
+	if (attacker->isPlayerCreature()) {
+		PlayerCreature* player = (PlayerCreature*) attacker;
+
+		if (damage > 0)
+			damageMap.addDamage(player, damage);
+	}
 
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }

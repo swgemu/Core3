@@ -73,6 +73,7 @@ include server.zone.objects.creature.variables.CooldownTimerMap;
 include server.zone.objects.creature.buffs.BuffList;
 include server.zone.objects.creature.damageovertime.DamageOverTimeList;
 import server.zone.objects.creature.buffs.Buff;
+import server.zone.objects.tangible.weapon.WeaponObject;
 
 class CreatureObject extends TangibleObject {
 	protected int bankCredits;
@@ -192,6 +193,8 @@ class CreatureObject extends TangibleObject {
 		
 		linkedCreature = null;
 		controlDevice = null;
+		
+		level = 0;
 		
 		skillModList.setNullValue(0);
 	}

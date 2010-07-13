@@ -155,6 +155,22 @@ class Buff;
 
 using namespace server::zone::objects::creature::buffs;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace weapon {
+
+class WeaponObject;
+
+} // namespace weapon
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::weapon;
+
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"

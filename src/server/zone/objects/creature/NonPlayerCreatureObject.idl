@@ -56,9 +56,11 @@ import server.zone.objects.creature.events.CreatureMoveEvent;
 import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.tangible.weapon.WeaponObject;
 include server.zone.templates.tangible.NonPlayerCreatureObjectTemplate;
 include server.zone.objects.creature.PatrolPointsVector;
 include server.zone.objects.creature.PatrolPoint;
+include server.zone.objects.creature.DamageMap;
 
 class NonPlayerCreatureObject extends CreatureObject {
 	@dereferenced
@@ -78,6 +80,9 @@ class NonPlayerCreatureObject extends CreatureObject {
 	
 	@dereferenced
 	protected PatrolPoint nextStepPosition;
+	
+	@dereferenced
+	protected DamageMap damageMap;
 	
 	protected transient NonPlayerCreatureObjectTemplate npcTemplate;
 	
@@ -156,6 +161,14 @@ class NonPlayerCreatureObject extends CreatureObject {
 	public native void activatePostureRecovery();
 	
 	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
+	public native void clearCombatState(boolean clearDefenders = true);
+	
+	/**
 	 * Evaluates if this object can be attacket by the passed creature object
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
@@ -183,6 +196,11 @@ class NonPlayerCreatureObject extends CreatureObject {
 
 			activateMovementEvent();
 		}
+	}
+	
+	@local
+	public DamageMap getDamageMap() {
+		return damageMap;
 	}
 	
 	public float getKinetic() {

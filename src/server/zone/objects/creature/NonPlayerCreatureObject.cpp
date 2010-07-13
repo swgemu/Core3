@@ -14,6 +14,8 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
 /*
  *	NonPlayerCreatureObjectStub
  */
@@ -199,12 +201,25 @@ void NonPlayerCreatureObject::activatePostureRecovery() {
 		((NonPlayerCreatureObjectImplementation*) _impl)->activatePostureRecovery();
 }
 
-bool NonPlayerCreatureObject::isAttackableBy(CreatureObject* object) {
+void NonPlayerCreatureObject::clearCombatState(bool clearDefenders) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+		method.addBooleanParameter(clearDefenders);
+
+		method.executeWithVoidReturn();
+	} else
+		((NonPlayerCreatureObjectImplementation*) _impl)->clearCombatState(clearDefenders);
+}
+
+bool NonPlayerCreatureObject::isAttackableBy(CreatureObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -217,7 +232,7 @@ bool NonPlayerCreatureObject::isNonPlayerCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -229,7 +244,7 @@ void NonPlayerCreatureObject::setFollowObject(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -237,12 +252,20 @@ void NonPlayerCreatureObject::setFollowObject(SceneObject* obj) {
 		((NonPlayerCreatureObjectImplementation*) _impl)->setFollowObject(obj);
 }
 
+DamageMap* NonPlayerCreatureObject::getDamageMap() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((NonPlayerCreatureObjectImplementation*) _impl)->getDamageMap();
+}
+
 float NonPlayerCreatureObject::getKinetic() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -254,7 +277,7 @@ float NonPlayerCreatureObject::getEnergy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -266,7 +289,7 @@ float NonPlayerCreatureObject::getElectricity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -278,7 +301,7 @@ float NonPlayerCreatureObject::getStun() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -290,7 +313,7 @@ float NonPlayerCreatureObject::getBlast() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -302,7 +325,7 @@ float NonPlayerCreatureObject::getHeat() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -314,7 +337,7 @@ float NonPlayerCreatureObject::getCold() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -326,7 +349,7 @@ float NonPlayerCreatureObject::getAcid() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -338,7 +361,7 @@ float NonPlayerCreatureObject::getLightSaber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -350,7 +373,7 @@ bool NonPlayerCreatureObject::isStalker() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -362,7 +385,7 @@ bool NonPlayerCreatureObject::isBaby() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -374,7 +397,7 @@ bool NonPlayerCreatureObject::isKiller() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -386,7 +409,7 @@ float NonPlayerCreatureObject::getTame() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -398,7 +421,7 @@ String NonPlayerCreatureObject::getMeatType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		method.executeWithAsciiReturn(_return_getMeatType);
 		return _return_getMeatType;
@@ -411,7 +434,7 @@ String NonPlayerCreatureObject::getBoneType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		method.executeWithAsciiReturn(_return_getBoneType);
 		return _return_getBoneType;
@@ -424,7 +447,7 @@ String NonPlayerCreatureObject::getHideType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		method.executeWithAsciiReturn(_return_getHideType);
 		return _return_getHideType;
@@ -437,7 +460,7 @@ float NonPlayerCreatureObject::getMilk() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -449,7 +472,7 @@ float NonPlayerCreatureObject::getHideMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -461,7 +484,7 @@ float NonPlayerCreatureObject::getBoneMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -473,7 +496,7 @@ float NonPlayerCreatureObject::getMeatMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -485,7 +508,7 @@ unsigned int NonPlayerCreatureObject::getFerocity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -497,7 +520,7 @@ unsigned int NonPlayerCreatureObject::getArmor() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -517,7 +540,7 @@ bool NonPlayerCreatureObject::hasOrganics() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -597,6 +620,7 @@ void NonPlayerCreatureObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("patrolPoints", &patrolPoints);
 	addSerializableVariable("homeLocation", &homeLocation);
 	addSerializableVariable("nextStepPosition", &nextStepPosition);
+	addSerializableVariable("damageMap", &damageMap);
 	addSerializableVariable("baby", &baby);
 	addSerializableVariable("currentSpeed", &currentSpeed);
 	addSerializableVariable("followObject", &followObject);
@@ -604,228 +628,233 @@ void NonPlayerCreatureObjectImplementation::_serializationHelperMethod() {
 
 NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(91):  		Logger.setLoggingName("NonPlayerCreatureObject");
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(96):  		Logger.setLoggingName("NonPlayerCreatureObject");
 	Logger::setLoggingName("NonPlayerCreatureObject");
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(92):  		Logger.setLogging(false);
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(97):  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(93):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(98):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(95):  		baby = false;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(100):  		baby = false;
 	baby = false;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(97):  		currentSpeed = 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(102):  		currentSpeed = 0;
 	currentSpeed = 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(99):  		npcTemplate = null;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(104):  		npcTemplate = null;
 	npcTemplate = NULL;
 }
 
 void NonPlayerCreatureObjectImplementation::clearPatrolPoints() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(128):  		patrolPoints.removeAll();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(133):  		patrolPoints.removeAll();
 	(&patrolPoints)->removeAll();
 }
 
 bool NonPlayerCreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(165):  		if 
-	if (object == _this)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(166):  			return false;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(178):  		if 
+	if (object == _this)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(179):  			return false;
 	return false;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(168):  		return 
-	if (_this->isDead())	// server/zone/objects/creature/NonPlayerCreatureObject.idl(169):  			return false;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(181):  		return 
+	if (_this->isDead())	// server/zone/objects/creature/NonPlayerCreatureObject.idl(182):  			return false;
 	return false;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(171):  true;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(184):  true;
 	return true;
 }
 
 bool NonPlayerCreatureObjectImplementation::isNonPlayerCreature() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(175):  		return true;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(188):  		return true;
 	return true;
 }
 
 void NonPlayerCreatureObjectImplementation::setFollowObject(SceneObject* obj) {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(179):  	}
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(192):  	}
 	if (followObject != obj){
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(180):  			clearPatrolPoints();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(193):  			clearPatrolPoints();
 	clearPatrolPoints();
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(182):  			followObject = obj;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(195):  			followObject = obj;
 	followObject = obj;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(184):  			activateMovementEvent();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(197):  			activateMovementEvent();
 	activateMovementEvent();
 }
 }
 
+DamageMap* NonPlayerCreatureObjectImplementation::getDamageMap() {
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(203):  		return damageMap;
+	return (&damageMap);
+}
+
 float NonPlayerCreatureObjectImplementation::getKinetic() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(189):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(190):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(207):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(208):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(192):  npcTemplate.getKinetic();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(210):  npcTemplate.getKinetic();
 	return npcTemplate->getKinetic();
 }
 
 float NonPlayerCreatureObjectImplementation::getEnergy() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(196):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(197):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(214):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(215):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(199):  npcTemplate.getEnergy();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(217):  npcTemplate.getEnergy();
 	return npcTemplate->getEnergy();
 }
 
 float NonPlayerCreatureObjectImplementation::getElectricity() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(203):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(204):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(221):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(222):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(206):  npcTemplate.getElectricity();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(224):  npcTemplate.getElectricity();
 	return npcTemplate->getElectricity();
 }
 
 float NonPlayerCreatureObjectImplementation::getStun() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(210):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(211):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(228):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(229):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(213):  npcTemplate.getStun();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(231):  npcTemplate.getStun();
 	return npcTemplate->getStun();
 }
 
 float NonPlayerCreatureObjectImplementation::getBlast() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(217):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(218):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(235):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(236):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(220):  npcTemplate.getBlast();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(238):  npcTemplate.getBlast();
 	return npcTemplate->getBlast();
 }
 
 float NonPlayerCreatureObjectImplementation::getHeat() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(224):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(225):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(242):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(243):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(227):  npcTemplate.getHeat();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(245):  npcTemplate.getHeat();
 	return npcTemplate->getHeat();
 }
 
 float NonPlayerCreatureObjectImplementation::getCold() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(231):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(232):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(249):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(250):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(234):  npcTemplate.getCold();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(252):  npcTemplate.getCold();
 	return npcTemplate->getCold();
 }
 
 float NonPlayerCreatureObjectImplementation::getAcid() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(238):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(239):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(256):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(257):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(241):  npcTemplate.getAcid();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(259):  npcTemplate.getAcid();
 	return npcTemplate->getAcid();
 }
 
 float NonPlayerCreatureObjectImplementation::getLightSaber() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(245):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(246):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(263):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(264):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(248):  npcTemplate.getLightSaber();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(266):  npcTemplate.getLightSaber();
 	return npcTemplate->getLightSaber();
 }
 
 bool NonPlayerCreatureObjectImplementation::isStalker() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(252):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(253):  			return false;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(270):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(271):  			return false;
 	return false;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(255):  npcTemplate.isStalker();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(273):  npcTemplate.isStalker();
 	return npcTemplate->isStalker();
 }
 
 bool NonPlayerCreatureObjectImplementation::isBaby() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(259):  		return baby;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(277):  		return baby;
 	return baby;
 }
 
 bool NonPlayerCreatureObjectImplementation::isKiller() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(263):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(264):  			return false;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(281):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(282):  			return false;
 	return false;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(266):  npcTemplate.isKiller();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(284):  npcTemplate.isKiller();
 	return npcTemplate->isKiller();
 }
 
 float NonPlayerCreatureObjectImplementation::getTame() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(270):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(271):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(288):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(289):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(273):  npcTemplate.getTame();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(291):  npcTemplate.getTame();
 	return npcTemplate->getTame();
 }
 
 String NonPlayerCreatureObjectImplementation::getMeatType() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(277):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(278):  			return "";
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(295):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(296):  			return "";
 	return "";
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(280):  npcTemplate.getMeatType();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(298):  npcTemplate.getMeatType();
 	return npcTemplate->getMeatType();
 }
 
 String NonPlayerCreatureObjectImplementation::getBoneType() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(284):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(285):  			return "";
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(302):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(303):  			return "";
 	return "";
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(287):  npcTemplate.getBoneType();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(305):  npcTemplate.getBoneType();
 	return npcTemplate->getBoneType();
 }
 
 String NonPlayerCreatureObjectImplementation::getHideType() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(291):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(292):  			return "";
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(309):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(310):  			return "";
 	return "";
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(294):  npcTemplate.getHideType();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(312):  npcTemplate.getHideType();
 	return npcTemplate->getHideType();
 }
 
 float NonPlayerCreatureObjectImplementation::getMilk() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(298):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(299):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(316):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(317):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(301):  npcTemplate.getMilk();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(319):  npcTemplate.getMilk();
 	return npcTemplate->getMilk();
 }
 
 float NonPlayerCreatureObjectImplementation::getHideMax() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(305):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(306):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(323):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(324):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(308):  npcTemplate.getHideMax();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(326):  npcTemplate.getHideMax();
 	return npcTemplate->getHideMax();
 }
 
 float NonPlayerCreatureObjectImplementation::getBoneMax() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(312):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(313):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(330):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(331):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(315):  npcTemplate.getBoneMax();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(333):  npcTemplate.getBoneMax();
 	return npcTemplate->getBoneMax();
 }
 
 float NonPlayerCreatureObjectImplementation::getMeatMax() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(319):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(320):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(337):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(338):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(322):  npcTemplate.getMeatMax();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(340):  npcTemplate.getMeatMax();
 	return npcTemplate->getMeatMax();
 }
 
 unsigned int NonPlayerCreatureObjectImplementation::getFerocity() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(326):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(327):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(344):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(345):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(329):  npcTemplate.getFerocity();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(347):  npcTemplate.getFerocity();
 	return npcTemplate->getFerocity();
 }
 
 unsigned int NonPlayerCreatureObjectImplementation::getArmor() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(333):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(334):  			return 0;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(351):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/NonPlayerCreatureObject.idl(352):  			return 0;
 	return 0;
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(336):  npcTemplate.getArmor();
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(354):  npcTemplate.getArmor();
 	return npcTemplate->getArmor();
 }
 
 PatrolPoint* NonPlayerCreatureObjectImplementation::getHomeLocation() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(341):  		return homeLocation;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(359):  		return homeLocation;
 	return (&homeLocation);
 }
 
@@ -874,81 +903,84 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 		activatePostureRecovery();
 		break;
 	case 17:
-		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		clearCombatState(inv->getBooleanParameter());
 		break;
 	case 18:
-		resp->insertBoolean(isNonPlayerCreature());
+		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 19:
-		setFollowObject((SceneObject*) inv->getObjectParameter());
+		resp->insertBoolean(isNonPlayerCreature());
 		break;
 	case 20:
-		resp->insertFloat(getKinetic());
+		setFollowObject((SceneObject*) inv->getObjectParameter());
 		break;
 	case 21:
-		resp->insertFloat(getEnergy());
+		resp->insertFloat(getKinetic());
 		break;
 	case 22:
-		resp->insertFloat(getElectricity());
+		resp->insertFloat(getEnergy());
 		break;
 	case 23:
-		resp->insertFloat(getStun());
+		resp->insertFloat(getElectricity());
 		break;
 	case 24:
-		resp->insertFloat(getBlast());
+		resp->insertFloat(getStun());
 		break;
 	case 25:
-		resp->insertFloat(getHeat());
+		resp->insertFloat(getBlast());
 		break;
 	case 26:
-		resp->insertFloat(getCold());
+		resp->insertFloat(getHeat());
 		break;
 	case 27:
-		resp->insertFloat(getAcid());
+		resp->insertFloat(getCold());
 		break;
 	case 28:
-		resp->insertFloat(getLightSaber());
+		resp->insertFloat(getAcid());
 		break;
 	case 29:
-		resp->insertBoolean(isStalker());
+		resp->insertFloat(getLightSaber());
 		break;
 	case 30:
-		resp->insertBoolean(isBaby());
+		resp->insertBoolean(isStalker());
 		break;
 	case 31:
-		resp->insertBoolean(isKiller());
+		resp->insertBoolean(isBaby());
 		break;
 	case 32:
-		resp->insertFloat(getTame());
+		resp->insertBoolean(isKiller());
 		break;
 	case 33:
-		resp->insertAscii(getMeatType());
+		resp->insertFloat(getTame());
 		break;
 	case 34:
-		resp->insertAscii(getBoneType());
+		resp->insertAscii(getMeatType());
 		break;
 	case 35:
-		resp->insertAscii(getHideType());
+		resp->insertAscii(getBoneType());
 		break;
 	case 36:
-		resp->insertFloat(getMilk());
+		resp->insertAscii(getHideType());
 		break;
 	case 37:
-		resp->insertFloat(getHideMax());
+		resp->insertFloat(getMilk());
 		break;
 	case 38:
-		resp->insertFloat(getBoneMax());
+		resp->insertFloat(getHideMax());
 		break;
 	case 39:
-		resp->insertFloat(getMeatMax());
+		resp->insertFloat(getBoneMax());
 		break;
 	case 40:
-		resp->insertInt(getFerocity());
+		resp->insertFloat(getMeatMax());
 		break;
 	case 41:
-		resp->insertInt(getArmor());
+		resp->insertInt(getFerocity());
 		break;
 	case 42:
+		resp->insertInt(getArmor());
+		break;
+	case 43:
 		resp->insertBoolean(hasOrganics());
 		break;
 	default:
@@ -1000,6 +1032,10 @@ int NonPlayerCreatureObjectAdapter::notifyObjectDestructionObservers(TangibleObj
 
 void NonPlayerCreatureObjectAdapter::activatePostureRecovery() {
 	((NonPlayerCreatureObjectImplementation*) impl)->activatePostureRecovery();
+}
+
+void NonPlayerCreatureObjectAdapter::clearCombatState(bool clearDefenders) {
+	((NonPlayerCreatureObjectImplementation*) impl)->clearCombatState(clearDefenders);
 }
 
 bool NonPlayerCreatureObjectAdapter::isAttackableBy(CreatureObject* object) {

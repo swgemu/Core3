@@ -51,6 +51,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 include server.zone.templates.SharedObjectTemplate;
+include server.zone.templates.tangible.SharedWeaponObjectTemplate;
 
 class WeaponObject extends TangibleObject {
 	protected int attackType;
@@ -86,7 +87,9 @@ class WeaponObject extends TangibleObject {
 	protected int mindAttackCost;
 	protected int forceCost;
 	
-	protected string xpType;
+	protected transient SharedWeaponObjectTemplate weaponTemplate;
+	
+	/*protected string xpType;
 	
 	@dereferenced
 	protected Vector<string> damageModifiers;
@@ -104,7 +107,7 @@ class WeaponObject extends TangibleObject {
 	protected Vector<string> certificationsRequired;
 	
 	@dereferenced
-	protected Vector<string> defenderSecondaryDefenseModifiers;
+	protected Vector<string> defenderSecondaryDefenseModifiers;*/
 	
 	public static final int NONE = 0;
 	public static final int LIGHT = 1;
@@ -162,6 +165,8 @@ class WeaponObject extends TangibleObject {
 		
 		attackSpeed = 1;
 		
+		weaponTemplate = null;
+		
 		Logger.setLoggingName("WeaponObject");
 	}
 	
@@ -192,27 +197,27 @@ class WeaponObject extends TangibleObject {
 	
 	@local
 	public Vector<string> getDamageModifiers() {
-		return damageModifiers;
+		return weaponTemplate.getDamageModifiers();
 	}
 	
 	@local
 	public Vector<string> getSpeedModifiers() {
-		return speedModifiers;
+		return weaponTemplate.getSpeedModifiers();
 	}
 	
 	@local
 	public Vector<string> getCreatureAccuracyModifiers() {
-		return creatureAccuracyModifiers;
+		return weaponTemplate.getCreatureAccuracyModifiers();
 	}
 	
 	@local
 	public Vector<string> getDefenderDefenseModifiers() {
-		return defenderDefenseModifiers;
+		return weaponTemplate.getDefenderDefenseModifiers();
 	}
 	
 	@local
 	public Vector<string> getDefenderSecondaryDefenseModifiers() {
-		return defenderSecondaryDefenseModifiers;
+		return weaponTemplate.getDefenderSecondaryDefenseModifiers();
 	}
 	
 	public void setCertified(boolean cert) {
@@ -289,6 +294,10 @@ class WeaponObject extends TangibleObject {
 	
 	public int getDamageType() {
 		return damageType;
+	}
+	
+	public string getXpType() {
+		return weaponTemplate.getXpType();
 	}
 	
 	public boolean hasMeleeAttack() {

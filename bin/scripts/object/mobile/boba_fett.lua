@@ -56,6 +56,8 @@ object_mobile_boba_fett = object_mobile_shared_boba_fett:new {
 	acid = 10,
 	lightSaber = 10,
 	
+	level = 300,
+	
 	stalker = 0,
 	killer = 0,
 	
