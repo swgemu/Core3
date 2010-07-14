@@ -134,6 +134,8 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
+	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
+
 	void killPlayer(TangibleObject* attacker, PlayerCreature* player);
 
 	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
@@ -240,6 +242,8 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
+	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
+
 	void killPlayer(TangibleObject* attacker, PlayerCreature* player);
 
 	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
@@ -334,6 +338,10 @@ public:
 	void loadNameMap();
 
 	void finalize();
+
+	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
+
+	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
 
 	void killPlayer(TangibleObject* attacker, PlayerCreature* player);
 

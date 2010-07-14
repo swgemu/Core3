@@ -46,6 +46,8 @@ object_weapon_creature_creature_default_weapon = object_weapon_creature_shared_c
 	attackType = MELEEATTACK,
 	damageType = KINETIC,
 	
+	maxRange = 5,
+	
 	certificationsRequired = {  },
 	
 	creatureAccuracyModifiers = { "unarmed_accuracy" },

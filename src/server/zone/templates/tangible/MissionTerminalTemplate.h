@@ -8,7 +8,6 @@
 #ifndef MISSIONTERMINALTEMPLATE_H_
 #define MISSIONTERMINALTEMPLATE_H_
 
-
 #include "../SharedTangibleObjectTemplate.h"
 
 class MissionTerminalTemplate : public SharedTangibleObjectTemplate {

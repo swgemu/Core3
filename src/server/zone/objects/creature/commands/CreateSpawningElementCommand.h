@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef CREATESPAWNINGELEMENTCOMMAND_H_
 #define CREATESPAWNINGELEMENTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 
 class CreateSpawningElementCommand : public QueueCommand {
 public:
@@ -62,6 +64,60 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		try {
+			String templateString;
+			tokenizer.getStringToken(templateString);
+
+			float x = tokenizer.getFloatToken();
+			float y = tokenizer.getFloatToken();
+
+			uint64 cellid = 0;
+
+			if (tokenizer.hasMoreTokens())
+				cellid = tokenizer.getLongToken();
+
+			ZoneServer* zoneServer = server->getZoneServer();
+
+			ManagedReference<SceneObject*> cell;
+
+			if (cellid != 0)
+				cell = zoneServer->getObject(cellid);
+
+			ManagedReference<SceneObject*> objectToSpawn = zoneServer->createObject(templateString.hashCode(), 0);
+
+			if (objectToSpawn == NULL) {
+				creature->sendSystemMessage("wrong template string");
+				return GENERALERROR;
+			}
+
+			if (cell != NULL) {
+				if (cell->isCellObject())
+					cell->addObject(objectToSpawn, -1, false);
+				else {
+					creature->sendSystemMessage("wrong cell id");
+					return GENERALERROR;
+				}
+			}
+
+			Zone* zone = creature->getZone();
+
+			if (zone == NULL)
+				return GENERALERROR;
+
+			objectToSpawn->initializePosition(x, zone->getHeight(x, y), y);
+
+			objectToSpawn->insertToZone(zone);
+
+			StringBuffer msg;
+			msg << "object spawned with object id " << objectToSpawn->getObjectID();
+			creature->sendSystemMessage(msg.toString());
+
+		} catch (...) {
+			creature->sendSystemMessage("/createSpawningElement templateString x y parentid(optional)");
+		}
 
 		return SUCCESS;
 	}

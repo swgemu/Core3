@@ -732,6 +732,33 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(PlayerCreature* 
 	return recoveryTime;
 }
 
+int PlayerManagerImplementation::notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject) {
+	destructor->unlock();
+
+	try {
+		DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructedObject->getDefenderList();
+
+		for (int i = 0; i < defenderList->size(); ++i) {
+			SceneObject* defender = defenderList->get(i);
+
+			if (!defender->isTangibleObject())
+				continue;
+
+			Locker clocker(defender, destructedObject);
+
+			((TangibleObject*)defender)->removeDefender(destructedObject);
+		}
+
+		destructedObject->clearCombatState(true);
+	} catch (...) {
+		error("unreported exception caught in int PlayerManagerImplementation::notifyDefendersOfIncapacitation");
+	}
+
+	destructor->wlock();
+
+	return 0;
+}
+
 int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
 	if (!destructedObject->isPlayerCreature())
 		return 1;
@@ -744,9 +771,6 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		return 0;
 
 	playerCreature->updateIncapacitationCounter();
-
-	playerCreature->clearCombatState();
-	destructor->removeDefender(playerCreature);
 
 	if (playerCreature->getIncapacitationCounter() < 3) {
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
@@ -774,6 +798,8 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		}
 	}
 
+	notifyDefendersOfIncapacitation(destructor, destructedObject);
+
 	return 0;
 }
 
@@ -787,7 +813,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCre
 	}
 
 	player->setPosture(CreaturePosture::DEAD, true);
-	player->clearCombatState();
 
 	CombatManager::instance()->freeDuelList(player, false);
 
@@ -802,13 +827,16 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCre
 }
 
 void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* player) {
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
 	player->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
 
 	ManagedReference<SuiListBox*> cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST);
 
 	cloneMenu->setPromptTitle("@base_player:revive_title");
-
-	Zone* zone = player->getZone();
 
 	CloningBuildingObject* closestCloning = zone->getNearestCloningBuilding(player);
 	CloningBuildingObject* preDesignatedFacility = NULL;

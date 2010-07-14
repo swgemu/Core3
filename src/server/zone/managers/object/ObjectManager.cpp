@@ -9,6 +9,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/NonPlayerCreatureObject.h"
+#include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -52,6 +53,7 @@
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/wearables/ClothingObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
@@ -120,10 +122,11 @@ ObjectManager::~ObjectManager() {
 void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
+	objectFactory.registerObject<TangibleObject>(SceneObject::GENERALTANGIBLEOBJECT);
 	objectFactory.registerObject<BadgeActiveArea>(SceneObject::BADGEAREA);
 	objectFactory.registerObject<Region>(SceneObject::REGIONAREA);
 	objectFactory.registerObject<StaticObject>(SceneObject::STATICOBJECT);
-	objectFactory.registerObject<CreatureObject>(SceneObject::CREATURE);
+	objectFactory.registerObject<Creature>(SceneObject::CREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObject::NPCCREATURE);
 	objectFactory.registerObject<ShuttleCreature>(SceneObject::SHUTTLECREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
@@ -211,6 +214,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TicketCollector>(SceneObject::TICKETCOLLECTOR);
 	objectFactory.registerObject<TicketObject>(SceneObject::TRAVELTICKET);
 	objectFactory.registerObject<TravelTerminal>(SceneObject::TRAVELTERMINAL);
+	objectFactory.registerObject<LairObject>(SceneObject::LAIR);
 
 	objectFactory.registerObject<Deed>(SceneObject::DEED);
 	objectFactory.registerObject<BuildingDeed>(SceneObject::BUILDINGDEED);

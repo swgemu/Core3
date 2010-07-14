@@ -95,6 +95,7 @@ public:
 	const static int CLONINGBUILDING = 0x400000A;
 	const static int DRAFTSCHEMATIC = 0x400000B;
 	const static int NPCCREATURE = 0x400000C;
+	const static int LAIRTEMPLATE = 0x400000D;
 
 public:
 	SharedObjectTemplate() {
@@ -380,6 +381,11 @@ public:
 	virtual bool isNonPlayerCreatureObjectTemplate() {
 		return false;
 	}
+
+	virtual bool isLairObjectTemplate() {
+		return false;
+	}
+
 };
 
 

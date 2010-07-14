@@ -78,6 +78,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/creature/trainer/TrainerCreature.cpp \
 				server/zone/objects/creature/VehicleObject.cpp \
 				server/zone/objects/creature/NonPlayerCreatureObject.cpp \
+				server/zone/objects/creature/Creature.cpp \
+				server/zone/objects/creature/AiAgent.cpp \
 				server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 				server/zone/objects/creature/buffs/Buff.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
@@ -149,6 +151,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/deed/installation/InstallationDeed.cpp \
 				server/zone/objects/tangible/sign/SignObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
+				server/zone/objects/tangible/lair/LairObject.cpp \
 				server/zone/objects/tangible/terminal/bank/BankTerminal.cpp \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.cpp \
@@ -236,6 +239,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/NonPlayerCreatureObjectImplementation.cpp \
+		server/zone/objects/creature/AiAgentImplementation.cpp \
 		server/zone/objects/creature/DamageMap.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
@@ -291,6 +295,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp \
 		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
+		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/AuctionItemImplementation.cpp \

@@ -90,8 +90,13 @@ class PlayerManager extends ManagedObject implements Logger {
 	 * @pre { destructor and destructedObject locked }
 	 * @post { destructor and destructedObject locked }
 	 */
-	@local
 	public native int notifyDestruction(TangibleObject destructor, TangibleObject destructedObject, int condition);
+	
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
+	public native int notifyDefendersOfIncapacitation(TangibleObject destructor, TangibleObject destructedObject); 
 	
 	/**
 	 * @pre {Êattacker and player locked }

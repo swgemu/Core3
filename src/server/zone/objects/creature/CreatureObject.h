@@ -246,8 +246,6 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void sendPvpStatusTo(PlayerCreature* player);
-
 	void sendSystemMessage(const String& message);
 
 	void sendSystemMessage(UnicodeString& message);
@@ -287,6 +285,8 @@ public:
 	void addEncumbrance(int type, int value, bool notifyClient = true);
 
 	void setWeapon(WeaponObject* weao, bool notifyClient = false);
+
+	int notifyObjectInserted(SceneObject* object);
 
 	void setInstrumentID(int instrumentid, bool notifyClient = false);
 
@@ -372,8 +372,6 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	bool isAggressiveTo(PlayerCreature* object);
-
 	void sendConversationStartTo(SceneObject* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
@@ -447,12 +445,6 @@ public:
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
-
-	bool isRebel();
-
-	bool isImperial();
-
-	bool isNeurtral();
 
 	bool isGroupped();
 
@@ -542,8 +534,6 @@ public:
 
 	int getSpecies();
 
-	int getFaction();
-
 	DeltaVector<int>* getBaseHAM();
 
 	SkillBoxList* getSkillBoxList();
@@ -624,6 +614,10 @@ public:
 
 	bool isNonPlayerCreature();
 
+	bool isCreature();
+
+	bool isAiAgent();
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -658,8 +652,6 @@ protected:
 	int gender;
 
 	int species;
-
-	int faction;
 
 	DeltaVector<int> baseHAM;
 
@@ -786,8 +778,6 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	virtual void sendPvpStatusTo(PlayerCreature* player);
-
 	void sendSystemMessage(const String& message);
 
 	void sendSystemMessage(UnicodeString& message);
@@ -827,6 +817,8 @@ public:
 	void addEncumbrance(int type, int value, bool notifyClient = true);
 
 	void setWeapon(WeaponObject* weao, bool notifyClient = false);
+
+	int notifyObjectInserted(SceneObject* object);
 
 	void setInstrumentID(int instrumentid, bool notifyClient = false);
 
@@ -912,8 +904,6 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	virtual bool isAggressiveTo(PlayerCreature* object);
-
 	virtual void sendConversationStartTo(SceneObject* player);
 
 	virtual void selectConversationOption(int option, SceneObject* obj);
@@ -987,12 +977,6 @@ public:
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
-
-	bool isRebel();
-
-	bool isImperial();
-
-	bool isNeurtral();
 
 	bool isGroupped();
 
@@ -1082,8 +1066,6 @@ public:
 
 	int getSpecies();
 
-	int getFaction();
-
 	DeltaVector<int>* getBaseHAM();
 
 	SkillBoxList* getSkillBoxList();
@@ -1164,6 +1146,10 @@ public:
 
 	virtual bool isNonPlayerCreature();
 
+	virtual bool isCreature();
+
+	virtual bool isAiAgent();
+
 	CreatureObject* _this;
 
 	operator const CreatureObject*();
@@ -1209,8 +1195,6 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void sendPvpStatusTo(PlayerCreature* player);
-
 	void sendSystemMessage(const String& message);
 
 	void sendSystemMessage(UnicodeString& message);
@@ -1248,6 +1232,8 @@ public:
 	void addEncumbrance(int type, int value, bool notifyClient);
 
 	void setWeapon(WeaponObject* weao, bool notifyClient);
+
+	int notifyObjectInserted(SceneObject* object);
 
 	void setInstrumentID(int instrumentid, bool notifyClient);
 
@@ -1329,8 +1315,6 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	bool isAggressiveTo(PlayerCreature* object);
-
 	void sendConversationStartTo(SceneObject* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
@@ -1404,12 +1388,6 @@ public:
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
-
-	bool isRebel();
-
-	bool isImperial();
-
-	bool isNeurtral();
 
 	bool isGroupped();
 
@@ -1491,8 +1469,6 @@ public:
 
 	int getSpecies();
 
-	int getFaction();
-
 	long long getSkillMod(const String& skillmod);
 
 	bool hasSkillBox(const String& skillBox);
@@ -1566,6 +1542,10 @@ public:
 	bool isShuttleCreature();
 
 	bool isNonPlayerCreature();
+
+	bool isCreature();
+
+	bool isAiAgent();
 
 protected:
 	String _param0_sendSystemMessage__String_;

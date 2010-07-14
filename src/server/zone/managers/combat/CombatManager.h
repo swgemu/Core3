@@ -158,7 +158,7 @@ protected:
 
 	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
 	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, float damage, int poolsToDamage);
-	int getArmorNpcReduction(CreatureObject* attacker, NonPlayerCreatureObject* defender, WeaponObject* weapon);
+	int getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon);
 	int getHealthArmorReduction(CreatureObject* attacker, CreatureObject* defender);
 	int getActionArmorReduction(CreatureObject* attacker, CreatureObject* defender);
 	int getMindArmorReduction(CreatureObject* attacker, CreatureObject* defender);

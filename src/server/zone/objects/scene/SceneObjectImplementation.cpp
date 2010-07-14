@@ -445,6 +445,24 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 	}
 }
 
+int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float range) {
+	if (zone == NULL)
+		return 0;
+
+	int numberOfObjects = 0;
+
+	Locker zoneLocker(zone);
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+		if (scno->isInRange(_this, range) && scno->getGameObjectType() == gameObjectType)
+			++numberOfObjects;
+	}
+
+	return numberOfObjects;
+}
+
 void SceneObjectImplementation::sendMessage(BasePacket* msg) {
 	delete msg;
 }

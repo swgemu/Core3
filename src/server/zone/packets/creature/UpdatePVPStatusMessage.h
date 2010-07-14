@@ -75,7 +75,7 @@ public:
 		insertShort(0x04);
 		insertInt(0x08A1C126);  // CRC
 		insertInt(pvpBitmask);
-		insertInt(0);
+		insertInt(tano->getFaction());
 
 		insertLong(tano->getObjectID());
 	}

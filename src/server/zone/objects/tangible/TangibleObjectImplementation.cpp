@@ -53,7 +53,9 @@ which carries forward this exception.
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/templates/SharedTangibleObjectTemplate.h"
-
+#include "server/zone/objects/creature/CreatureFlag.h"
+#include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -95,6 +97,26 @@ void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* tano6 = new TangibleObjectMessage6(_this);
 	player->sendMessage(tano6);
+
+	if (player->isPlayerCreature())
+		sendPvpStatusTo((PlayerCreature*) player);
+}
+
+void TangibleObjectImplementation::sendPvpStatusTo(PlayerCreature* player) {
+	uint32 newPvpStatusBitmask = pvpStatusBitmask;
+
+	if (!(newPvpStatusBitmask & CreatureFlag::ATTACKABLE)) {
+		if (isAttackableBy(player))
+			newPvpStatusBitmask |= CreatureFlag::ATTACKABLE;
+	}
+
+	if (!(newPvpStatusBitmask & CreatureFlag::AGGRESSIVE)) {
+		if (isAggressiveTo(player))
+			newPvpStatusBitmask |= CreatureFlag::AGGRESSIVE;
+	}
+
+	BaseMessage* pvp = new UpdatePVPStatusMessage(_this, newPvpStatusBitmask);
+	player->sendMessage(pvp);
 }
 
 void TangibleObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
@@ -110,8 +132,6 @@ void TangibleObjectImplementation::synchronizedUIStopListen(SceneObject* player,
 void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 	if (defender == _this)
 		return;
-
-	setCombatState();
 
 	if (defenderList.size() == 0) {
 		addDefender(defender);
@@ -144,13 +164,13 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 
 	if (i == defenderList.size())
 		addDefender(defender);
+	else
+		setCombatState();
 }
 
 void TangibleObjectImplementation::addDefender(SceneObject* defender) {
 	if (defender == _this)
 		return;
-
-	setCombatState();
 
 	for (int i = 0; i < defenderList.size(); ++i) {
 		if (defender == defenderList.get(i))
@@ -167,6 +187,8 @@ void TangibleObjectImplementation::addDefender(SceneObject* defender) {
 	dtano6->close();
 
 	broadcastMessage(dtano6, true);
+
+	setCombatState();
 }
 
 void TangibleObjectImplementation::removeDefenders() {

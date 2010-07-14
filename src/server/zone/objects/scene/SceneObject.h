@@ -196,6 +196,8 @@ public:
 
 	static const int GROUPOBJECT = 13;
 
+	static const int GENERALTANGIBLEOBJECT = 4;
+
 	static const int STATICOBJECT = 5;
 
 	static const int ARMOR = 0x100;
@@ -375,6 +377,8 @@ public:
 	static const int LOOTKIT = 0x2029;
 
 	static const int FISH = 0x202A;
+
+	static const int LAIR = 0x202B;
 
 	static const int TERMINAL = 0x4000;
 
@@ -607,6 +611,8 @@ public:
 	int inRangeObjectCount();
 
 	QuadTreeEntry* getInRangeObject(int index);
+
+	int inRangeObjects(unsigned int gameObjectType, float range);
 
 	bool isInRange(SceneObject* obj, float range);
 
@@ -1003,6 +1009,8 @@ public:
 
 	static const int GROUPOBJECT = 13;
 
+	static const int GENERALTANGIBLEOBJECT = 4;
+
 	static const int STATICOBJECT = 5;
 
 	static const int ARMOR = 0x100;
@@ -1182,6 +1190,8 @@ public:
 	static const int LOOTKIT = 0x2029;
 
 	static const int FISH = 0x202A;
+
+	static const int LAIR = 0x202B;
 
 	static const int TERMINAL = 0x4000;
 
@@ -1418,6 +1428,8 @@ public:
 	int inRangeObjectCount();
 
 	QuadTreeEntry* getInRangeObject(int index);
+
+	int inRangeObjects(unsigned int gameObjectType, float range);
 
 	bool isInRange(SceneObject* obj, float range);
 
@@ -1783,6 +1795,8 @@ public:
 	void error(const String& msg);
 
 	int inRangeObjectCount();
+
+	int inRangeObjects(unsigned int gameObjectType, float range);
 
 	bool isInRange(SceneObject* obj, float range);
 
