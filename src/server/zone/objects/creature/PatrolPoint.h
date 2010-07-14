@@ -61,7 +61,7 @@ public:
 	PatrolPoint() {
 		cell = NULL;
 
-		reached = false;
+		reached = true;
 
 		addSerializableVariables();
 	}

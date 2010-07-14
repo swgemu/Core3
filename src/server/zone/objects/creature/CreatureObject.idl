@@ -82,8 +82,6 @@ class CreatureObject extends TangibleObject {
 	protected int gender;
 	protected int species;
 	
-	protected int faction;
-	
 	@dereferenced
 	protected DeltaVector<int> baseHAM;
 	
@@ -237,13 +235,6 @@ class CreatureObject extends TangibleObject {
 	public native void sendBaselinesTo(SceneObject player);
 	
 	/**
-	 * Sends the pvp options bitmask
-	 * @pre { this object is locked}
-	 * @post { this object is locked }
-	 */
-	public abstract native void sendPvpStatusTo(PlayerCreature player);
-	
-	/**
 	 * Sends a system message to the client of this object
 	 * @pre {}
 	 * @post { this object received the message }
@@ -394,6 +385,12 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void setWeapon(WeaponObject weao, boolean notifyClient = false);
+	
+	/**
+	 * Is called when this object has been inserted with an object
+	 * @param object object that has been inserted
+	 */
+	public native int notifyObjectInserted(SceneObject object);
 	
 	/**
 	 * Updates the instrument id to the specified object id
@@ -691,16 +688,6 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	/**
-	 * Evaluates if this creature is aggresive to the object
-	 * @pre { }
-	 * @post { }
-	 * @return returns true if its aggressive
-	 */
-	public abstract boolean isAggressiveTo(PlayerCreature object) {
-		return false;
-	}
-	
-	/**
 	 * sends the conversation list 
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
@@ -813,18 +800,6 @@ class CreatureObject extends TangibleObject {
 	public native void activateQueueAction();
 	
 	public native unicode getCreatureName();
-	
-	public boolean isRebel() {
-		return faction == 0x16148850;
-	}
-	
-	public boolean isImperial() {
-		return faction == 0xDB4ACC54;
-	}
-	
-	public boolean isNeurtral() {
-		return faction == 0;
-	}
 	
 	public boolean isGroupped() {
 		return group != null;
@@ -1018,10 +993,6 @@ class CreatureObject extends TangibleObject {
 		return species;
 	}
 	
-	public int getFaction() {
-		return faction;
-	}
-	
 	@local
 	public DeltaVector<int> getBaseHAM() {
 		return baseHAM;
@@ -1182,6 +1153,14 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public abstract boolean isNonPlayerCreature() {
+		return false;
+	}
+	
+	public abstract boolean isCreature() {
+		return false;
+	}
+	
+	public abstract boolean isAiAgent() {
 		return false;
 	}
 

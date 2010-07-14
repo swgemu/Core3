@@ -130,12 +130,26 @@ void MissionManager::randomizeSurveyMission(PlayerCreature* player, MissionObjec
 		((MissionManagerImplementation*) _impl)->randomizeSurveyMission(player, mission);
 }
 
-void MissionManager::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManager::randomizeGeneralMission(PlayerCreature* player, MissionObject* mission) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeGeneralMission(player, mission);
+}
+
+void MissionManager::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(mission);
 		method.addObjectParameter(missionTerminal);
 		method.addObjectParameter(player);
@@ -150,7 +164,7 @@ void MissionManager::createSurveyMissionObjectives(MissionObject* mission, Missi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(mission);
 		method.addObjectParameter(missionTerminal);
 		method.addObjectParameter(player);
@@ -165,7 +179,7 @@ bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spaw
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(spawn);
 
@@ -285,12 +299,15 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		randomizeSurveyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		createMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		randomizeGeneralMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
 	case 14:
-		createSurveyMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		createMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 15:
+		createSurveyMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 16:
 		resp->insertBoolean(hasSurveyMission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_hasSurveyMission__PlayerCreature_String_)));
 		break;
 	default:
@@ -326,6 +343,10 @@ void MissionManagerAdapter::populateArtisanMissionList(MissionTerminal* missionT
 
 void MissionManagerAdapter::randomizeSurveyMission(PlayerCreature* player, MissionObject* mission) {
 	((MissionManagerImplementation*) impl)->randomizeSurveyMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeGeneralMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeGeneralMission(player, mission);
 }
 
 void MissionManagerAdapter::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {

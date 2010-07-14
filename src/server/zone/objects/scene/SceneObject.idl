@@ -146,6 +146,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public static final int PLAYEROBJECT = 12;
 	public static final int GROUPOBJECT = 13;
 	
+	public static final int GENERALTANGIBLEOBJECT = 4;
 	public static final int STATICOBJECT = 5;
 
 	public static final int ARMOR = 0x100;
@@ -242,7 +243,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public static final int CAMOKIT = 0x2028;
 	public static final int LOOTKIT = 0x2029;
 	public static final int FISH = 0x202A;
-
+	public static final int LAIR = 0x202B;
 
 	public static final int TERMINAL = 0x4000;
 	public static final int BANK = 0x4001;
@@ -449,6 +450,14 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public QuadTreeEntry getInRangeObject(int index) {
 		return QuadTreeEntry.getInRangeObject(index);
 	}
+	
+	/**
+	 * Returns number of specified game objects in range
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return number of objects in range
+	 */
+	public native int inRangeObjects(unsigned int gameObjectType, float range);
 
 	/**
 	 * Evaluates if the object is in range
@@ -858,7 +867,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	/**
 	 * Adds a pending task of this SceneObject
 	 * @pre { this locked }
-	 * @post { this locked�}
+	 * @post { this locked}
 	 * @param name Name of the task
 	 * @param task Task to add
 	 */

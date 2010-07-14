@@ -222,23 +222,6 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	sendPvpStatusTo(playerCreature);
 }
 
-void CreatureObjectImplementation::sendPvpStatusTo(PlayerCreature* player) {
-	uint32 newPvpStatusBitmask = pvpStatusBitmask;
-
-	if (!(newPvpStatusBitmask & CreatureFlag::ATTACKABLE)) {
-		if (isAttackableBy(player))
-			newPvpStatusBitmask |= CreatureFlag::ATTACKABLE;
-	}
-
-	if (!(newPvpStatusBitmask & CreatureFlag::AGGRESSIVE)) {
-		if (isAggressiveTo(player))
-			newPvpStatusBitmask |= CreatureFlag::AGGRESSIVE;
-	}
-
-	BaseMessage* pvp = new UpdatePVPStatusMessage(this, newPvpStatusBitmask);
-	player->sendMessage(pvp);
-}
-
 void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	SortedVector<SceneObject*> objects(1, slottedObjects.size());
 	objects.setNoDuplicateInsertPlan();
@@ -1073,6 +1056,13 @@ int CreatureObjectImplementation::canAddObject(SceneObject* object, String& erro
 	}
 
 	return TangibleObjectImplementation::canAddObject(object, errorDescription);
+}
+
+int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
+	if (object->isWeaponObject())
+		setWeapon((WeaponObject*)object);
+
+	return TangibleObjectImplementation::notifyObjectInserted(object);
 }
 
 void CreatureObjectImplementation::setCreatureLink(CreatureObject* object, bool notifyClient) {

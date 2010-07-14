@@ -71,6 +71,7 @@ class MissionManager extends Observer implements Logger {
 	
 	
 	public native void randomizeSurveyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeGeneralMission(PlayerCreature player, MissionObject mission);
 	
 	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);

@@ -97,7 +97,7 @@ void CreatureManagerImplementation::loadDynamicSpawnAreas() {
 	info("loading random spawn regions...", true);
 }
 
-int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition) {
+int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
 	destructedObject->setPosture(CreaturePosture::DEAD, true);
 
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(destructedObject);
@@ -110,7 +110,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	return 1;
 }
 
-void CreatureManagerImplementation::disseminateExperience(TangibleObject* destructor, NonPlayerCreatureObject* creature) {
+void CreatureManagerImplementation::disseminateExperience(TangibleObject* destructor, AiAgent* creature) {
 	DamageMap* damageMap = creature->getDamageMap();
 
 	uint32 totalDamage = damageMap->getTotalDamage();

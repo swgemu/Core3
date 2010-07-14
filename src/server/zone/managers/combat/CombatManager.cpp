@@ -28,6 +28,9 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (attacker == defender)
 		return false;
 
+	if (attacker->getZone() == NULL || defender->getZone() == NULL)
+		return false;
+
 	bool success = true;
 
 	if (attacker->isRidingMount())
@@ -149,12 +152,15 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	if (animationCRC == 0)
 		animationCRC = getDefaultAttackAnimation(attacker);
 
+	if (attacker->isCreature())
+		animationCRC = String("creature_attack_light").hashCode();
+
 	uint8 hit = damage != 0 ? 1 : 0;
 
 	if (defenderObject->isCreatureObject()) {
 		combatAction = new CombatAction(attacker, (CreatureObject*)defenderObject, animationCRC, hit);
 	} else {
-		combatAction = new CombatAction(attacker, command->getAnimationCRC());
+		combatAction = new CombatAction(attacker, defenderObject, command->getAnimationCRC(), hit);
 	}
 
 	attacker->broadcastMessage(combatAction, true);
@@ -531,7 +537,7 @@ int CombatManager::getMindArmorReduction(CreatureObject* attacker, CreatureObjec
 	return 0;
 }
 
-int CombatManager::getArmorNpcReduction(CreatureObject* attacker, NonPlayerCreatureObject* defender, WeaponObject* weapon) {
+int CombatManager::getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon) {
 	int damageType = weapon->getDamageType();
 
 	float resist = 0;
@@ -576,8 +582,8 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 	if (poolToDamage == 0)
 		return 0;
 
-	if (defender->isNonPlayerCreature()) {
-		return getArmorNpcReduction(attacker, (NonPlayerCreatureObject*)defender, weapon);
+	if (defender->isAiAgent()) {
+		return getArmorNpcReduction(attacker, (AiAgent*)defender, weapon);
 	}
 
 	if (poolToDamage & CombatManager::HEALTH) {
@@ -1116,7 +1122,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 
 	int damage = System::random(1000);
 
-	defender->inflictDamage(defender, 0, damage, true);
+	defender->inflictDamage(attacker, 0, damage, true);
 
 	return damage;
 }

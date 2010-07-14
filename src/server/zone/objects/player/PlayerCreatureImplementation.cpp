@@ -169,7 +169,7 @@ bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 
 		if (duelList.contains(playerCreature) && playerCreature->requestedDuelTo(_this))
 			return true;
-	} else if (object->isNonPlayerCreature())
+	} else if (object->isAiAgent())
 		return true;
 
 	return false;

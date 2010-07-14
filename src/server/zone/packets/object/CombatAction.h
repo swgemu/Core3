@@ -74,6 +74,28 @@ public:
 		insertByte(0);
 	}
 
+	CombatAction(CreatureObject* attacker, TangibleObject* defender,
+			uint32 animcrc, uint8 hit) :
+				ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
+
+		insertInt(animcrc);
+
+		insertLong(attacker->getObjectID());
+		insertLong(attacker->getWeaponID());
+
+		insertByte(attacker->getPosture());
+		insertByte(0xFF);
+		insertByte(0xFF);
+
+		defenderSize = 1;
+
+		insertShort(1);
+		insertLong(defender->getObjectID());
+		insertByte(0);
+		insertByte(hit);
+		insertByte(0);
+	}
+
 	CombatAction(CreatureObject* attacker, uint32 animcrc) :
 		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
 		insertInt(animcrc);
@@ -90,19 +112,19 @@ public:
 	}
 
 	CombatAction(CreatureObject* attacker, uint32 animcrc, long weaponID) :
-			ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
-			insertInt(animcrc);
+		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
+		insertInt(animcrc);
 
-			insertLong(attacker->getObjectID());
-			insertLong(weaponID);
+		insertLong(attacker->getObjectID());
+		insertLong(weaponID);
 
-			insertByte(attacker->getPosture());
-			insertByte(0xFF);
-			insertByte(0xFF);
+		insertByte(attacker->getPosture());
+		insertByte(0xFF);
+		insertByte(0xFF);
 
-			defenderSize = 0;
-			insertShort(0); // number of defenders
-		}
+		defenderSize = 0;
+		insertShort(0); // number of defenders
+	}
 
 	CombatAction(CreatureObject* attacker, CreatureObject* defender,
 			uint32 animcrc,uint8 hit, long wpnID) :
