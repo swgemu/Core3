@@ -163,9 +163,17 @@ void MissionManagerImplementation::populateGeneralMissionList(MissionTerminal* m
 
 	for (int i = 0; i < missionBag->getContainerObjectsSize(); ++i) {
 		MissionObject* mission = (MissionObject*) missionBag->getContainerObject(i);
-		mission->setTypeCRC(0x74EF9BE3, true);
+		randomizeGeneralMission(player, mission);
+
 		mission->setRefreshCounter(counter, true);
 	}
+}
+
+void MissionManagerImplementation::randomizeGeneralMission(PlayerCreature* player, MissionObject* mission) {
+
+	//String mission = "mission/mission_destroy_neutral_easy_creature_naboo";
+
+	mission->setTypeCRC(0x74EF9BE3);
 }
 
 void MissionManagerImplementation::populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {

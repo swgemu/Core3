@@ -42,7 +42,36 @@
 
 
 object_mobile_cu_pa = object_mobile_shared_cu_pa:new {
+	templateType = NPCCREATURE,
+	armor = 0,
 
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = 0,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightSaber = 0,
+	
+	level = 11,
+	
+	stalker = 0,
+	killer = 0,
+	
+	tame = 0,
+	
+	meatType = "",
+	boneType = "",
+	hideType = "",
+	
+	milk = 0,
+	hideMax = 0,
+	boneMax = 0,
+	meatMax = 0,
+	
+	ferocity = 0
 }
 
 ObjectTemplates:addTemplate(object_mobile_cu_pa, "object/mobile/cu_pa.iff")

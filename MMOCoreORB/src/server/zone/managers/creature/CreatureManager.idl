@@ -10,6 +10,7 @@ import engine.core.ManagedObject;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.NonPlayerCreatureObject;
+import server.zone.objects.creature.AiAgent;
 import server.zone.Zone;
 import server.zone.managers.objectcontroller.ObjectController;
 
@@ -57,10 +58,10 @@ class CreatureManager extends ManagedObject implements Logger {
 	 * @post { destructor and destructedObject locked }
 	 */
 	@local
-	public native int notifyDestruction(TangibleObject destructor, NonPlayerCreatureObject destructedObject, int condition);
+	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
 	
 	
-	public native void disseminateExperience(TangibleObject destructor, NonPlayerCreatureObject creature);
+	public native void disseminateExperience(TangibleObject destructor, AiAgent creature);
 	
 	public native void loadDynamicSpawnAreas();
 	

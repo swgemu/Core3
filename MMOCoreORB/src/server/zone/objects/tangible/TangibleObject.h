@@ -186,6 +186,10 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	bool isAggressiveTo(PlayerCreature* object);
+
+	void sendPvpStatusTo(PlayerCreature* player);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
@@ -232,6 +236,14 @@ public:
 
 	unsigned int getPlayerUseMask();
 
+	int getFaction();
+
+	bool isRebel();
+
+	bool isImperial();
+
+	bool isNeutral();
+
 	bool isSliced();
 
 	void setCustomizationString(const String& vars);
@@ -263,6 +275,8 @@ protected:
 	float complexity;
 
 	int volume;
+
+	int faction;
 
 	CustomizationVariables customizationVariables;
 
@@ -391,6 +405,10 @@ public:
 
 	virtual bool isAttackableBy(CreatureObject* object);
 
+	virtual bool isAggressiveTo(PlayerCreature* object);
+
+	virtual void sendPvpStatusTo(PlayerCreature* player);
+
 	virtual int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	virtual int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
@@ -436,6 +454,14 @@ public:
 	bool isDestroyed();
 
 	unsigned int getPlayerUseMask();
+
+	int getFaction();
+
+	bool isRebel();
+
+	bool isImperial();
+
+	bool isNeutral();
 
 	bool isSliced();
 
@@ -508,6 +534,10 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	bool isAggressiveTo(PlayerCreature* object);
+
+	void sendPvpStatusTo(PlayerCreature* player);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient);
@@ -549,6 +579,14 @@ public:
 	bool isDestroyed();
 
 	unsigned int getPlayerUseMask();
+
+	int getFaction();
+
+	bool isRebel();
+
+	bool isImperial();
+
+	bool isNeutral();
 
 	bool isSliced();
 

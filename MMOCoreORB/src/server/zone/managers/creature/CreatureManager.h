@@ -101,6 +101,20 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class AiAgent;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -142,9 +156,9 @@ public:
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
 
-	int notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition);
+	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
-	void disseminateExperience(TangibleObject* destructor, NonPlayerCreatureObject* creature);
+	void disseminateExperience(TangibleObject* destructor, AiAgent* creature);
 
 	void loadDynamicSpawnAreas();
 
@@ -187,9 +201,9 @@ public:
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
 
-	int notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition);
+	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
-	void disseminateExperience(TangibleObject* destructor, NonPlayerCreatureObject* creature);
+	void disseminateExperience(TangibleObject* destructor, AiAgent* creature);
 
 	void loadDynamicSpawnAreas();
 
@@ -242,7 +256,7 @@ public:
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID);
 
-	void disseminateExperience(TangibleObject* destructor, NonPlayerCreatureObject* creature);
+	void disseminateExperience(TangibleObject* destructor, AiAgent* creature);
 
 	void loadDynamicSpawnAreas();
 

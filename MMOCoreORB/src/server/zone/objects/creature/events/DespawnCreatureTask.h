@@ -8,13 +8,13 @@
 #ifndef DESPAWNCREATURETASK_H_
 #define DESPAWNCREATURETASK_H_
 
-#include "../NonPlayerCreatureObject.h"
+#include "../CreatureObject.h"
 
 class DespawnCreatureTask : public Task {
-	ManagedReference<NonPlayerCreatureObject*> creature;
+	ManagedReference<CreatureObject*> creature;
 
 public:
-	DespawnCreatureTask(NonPlayerCreatureObject* cr) {
+	DespawnCreatureTask(CreatureObject* cr) {
 		creature = cr;
 	}
 

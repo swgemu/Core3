@@ -94,6 +94,8 @@ public:
 
 	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
 
+	void randomizeGeneralMission(PlayerCreature* player, MissionObject* mission);
+
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
@@ -142,6 +144,8 @@ public:
 	void populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeGeneralMission(PlayerCreature* player, MissionObject* mission);
 
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
@@ -201,6 +205,8 @@ public:
 	void populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeGeneralMission(PlayerCreature* player, MissionObject* mission);
 
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 

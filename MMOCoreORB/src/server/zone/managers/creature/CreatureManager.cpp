@@ -18,6 +18,8 @@
 
 #include "server/zone/objects/creature/NonPlayerCreatureObject.h"
 
+#include "server/zone/objects/creature/AiAgent.h"
+
 #include "server/zone/Zone.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -67,7 +69,7 @@ CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x
 		return ((CreatureManagerImplementation*) _impl)->spawnCreature(templateCRC, x, z, y, parentID);
 }
 
-int CreatureManager::notifyDestruction(TangibleObject* destructor, NonPlayerCreatureObject* destructedObject, int condition) {
+int CreatureManager::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -75,7 +77,7 @@ int CreatureManager::notifyDestruction(TangibleObject* destructor, NonPlayerCrea
 		return ((CreatureManagerImplementation*) _impl)->notifyDestruction(destructor, destructedObject, condition);
 }
 
-void CreatureManager::disseminateExperience(TangibleObject* destructor, NonPlayerCreatureObject* creature) {
+void CreatureManager::disseminateExperience(TangibleObject* destructor, AiAgent* creature) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -186,22 +188,22 @@ void CreatureManagerImplementation::_serializationHelperMethod() {
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet, ZoneProcessServerImplementation* impl) {
 	_initializeImplementation();
-	// server/zone/managers/creature/CreatureManager.idl(29):  		server = planet.getZoneServer();
+	// server/zone/managers/creature/CreatureManager.idl(30):  		server = planet.getZoneServer();
 	server = planet->getZoneServer();
-	// server/zone/managers/creature/CreatureManager.idl(30):  		processor = impl;
+	// server/zone/managers/creature/CreatureManager.idl(31):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/creature/CreatureManager.idl(31):  		zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl(32):  		zone = planet;
 	zone = planet;
-	// server/zone/managers/creature/CreatureManager.idl(33):  		Logger.setLoggingName("CreatureManager");
+	// server/zone/managers/creature/CreatureManager.idl(34):  		Logger.setLoggingName("CreatureManager");
 	Logger::setLoggingName("CreatureManager");
-	// server/zone/managers/creature/CreatureManager.idl(34):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/creature/CreatureManager.idl(35):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/creature/CreatureManager.idl(35):  		Logger.setLogging(false);
+	// server/zone/managers/creature/CreatureManager.idl(36):  		Logger.setLogging(false);
 	Logger::setLogging(false);
 }
 
 void CreatureManagerImplementation::initialize() {
-	// server/zone/managers/creature/CreatureManager.idl(39):  		loadTrainers();
+	// server/zone/managers/creature/CreatureManager.idl(40):  		loadTrainers();
 	loadTrainers();
 }
 
@@ -223,7 +225,7 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 8:
-		disseminateExperience((TangibleObject*) inv->getObjectParameter(), (NonPlayerCreatureObject*) inv->getObjectParameter());
+		disseminateExperience((TangibleObject*) inv->getObjectParameter(), (AiAgent*) inv->getObjectParameter());
 		break;
 	case 9:
 		loadDynamicSpawnAreas();
@@ -246,7 +248,7 @@ CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, 
 	return ((CreatureManagerImplementation*) impl)->spawnCreature(templateCRC, x, z, y, parentID);
 }
 
-void CreatureManagerAdapter::disseminateExperience(TangibleObject* destructor, NonPlayerCreatureObject* creature) {
+void CreatureManagerAdapter::disseminateExperience(TangibleObject* destructor, AiAgent* creature) {
 	((CreatureManagerImplementation*) impl)->disseminateExperience(destructor, creature);
 }
 

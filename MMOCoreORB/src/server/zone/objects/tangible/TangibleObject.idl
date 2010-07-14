@@ -64,6 +64,8 @@ class TangibleObject extends SceneObject {
 	protected float complexity;
 	protected int volume;
 	
+	protected int faction;
+	
 	@dereferenced
 	protected CustomizationVariables customizationVariables;
 	
@@ -130,6 +132,8 @@ class TangibleObject extends SceneObject {
 	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize TangibleObject members
 	 */
 	public TangibleObject() {
+		faction = 0;
+		
 		Logger.setLoggingName("TangibleObject");
 	}
 	
@@ -269,12 +273,29 @@ class TangibleObject extends SceneObject {
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
 	 * @pre { this object is locked }
-	 * @post { this object is locked�}
+	 * @post { this object is locked}
 	 * @return returns true if the creature object can attack this 
 	 */
 	public abstract boolean isAttackableBy(CreatureObject object) {
 		return false;
 	}
+	
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
+	public abstract boolean isAggressiveTo(PlayerCreature object) {
+		return false;
+	}
+	
+	/**
+	 * Sends the pvp options bitmask
+	 * @pre { this object is locked}
+	 * @post { this object is locked }
+	 */
+	public abstract native void sendPvpStatusTo(PlayerCreature player);
 	
 	/**
 	 * Inflicts damage into the object
@@ -377,6 +398,22 @@ class TangibleObject extends SceneObject {
 	
 	public unsigned int getPlayerUseMask() {
 		return playerUseMask;
+	}
+	
+	public int getFaction() {
+		return faction;
+	}
+	
+	public boolean isRebel() {
+		return faction == 0x16148850;
+	}
+	
+	public boolean isImperial() {
+		return faction == 0xDB4ACC54;
+	}
+	
+	public boolean isNeutral() {
+		return faction == 0;
 	}
 	
 	public boolean isSliced() {
