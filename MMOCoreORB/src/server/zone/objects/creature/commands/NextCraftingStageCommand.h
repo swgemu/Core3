@@ -63,6 +63,37 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+
+		/**
+		 * Argument = 1 integer
+		 * This argument is the stage for nextCraftingStage
+		 */
+
+		if(!creature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		ManagedReference<PlayerCreature* > player = (PlayerCreature*) creature;
+
+		ManagedReference<CraftingTool* > craftingTool = player->getLastCraftingToolUsed();
+
+		if(craftingTool == NULL) {
+			player->sendSystemMessage("ui_craft", "err_no_crafting_tool");
+			return GENERALERROR;
+		}
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		if(tokenizer.hasMoreTokens()) {
+
+			int stage = tokenizer.getIntToken();
+
+			craftingTool->nextCraftingStage(player, stage);
+
+		} else {
+			player->sendSystemMessage("ui_craft", "err_no_draft_schematic_selected");
+			return GENERALERROR;
+		}
+
 		return SUCCESS;
 	}
 

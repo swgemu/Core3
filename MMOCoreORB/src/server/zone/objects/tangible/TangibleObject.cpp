@@ -614,6 +614,58 @@ void TangibleObject::setCustomizationString(const String& vars) {
 		((TangibleObjectImplementation*) _impl)->setCustomizationString(vars);
 }
 
+void TangibleObject::setCraftersName(String& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 43);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setCraftersName(name);
+}
+
+String TangibleObject::getCraftersName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 44);
+
+		method.executeWithAsciiReturn(_return_getCraftersName);
+		return _return_getCraftersName;
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getCraftersName();
+}
+
+void TangibleObject::setCraftersSerial(String& serial) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 45);
+		method.addAsciiParameter(serial);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setCraftersSerial(serial);
+}
+
+String TangibleObject::getCraftersSerial() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
+
+		method.executeWithAsciiReturn(_return_getCraftersSerial);
+		return _return_getCraftersSerial;
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getCraftersSerial();
+}
+
 /*
  *	TangibleObjectImplementation
  */
@@ -855,6 +907,26 @@ void TangibleObjectImplementation::setCustomizationString(const String& vars) {
 	(&customizationVariables)->parseFromClientString(vars);
 }
 
+void TangibleObjectImplementation::setCraftersName(String& name) {
+	// server/zone/objects/tangible/TangibleObject.idl(391):  		craftersName = name;
+	craftersName = name;
+}
+
+String TangibleObjectImplementation::getCraftersName() {
+	// server/zone/objects/tangible/TangibleObject.idl(395):  		return craftersName;
+	return craftersName;
+}
+
+void TangibleObjectImplementation::setCraftersSerial(String& serial) {
+	// server/zone/objects/tangible/TangibleObject.idl(399):  		craftersSerial = serial;
+	craftersSerial = serial;
+}
+
+String TangibleObjectImplementation::getCraftersSerial() {
+	// server/zone/objects/tangible/TangibleObject.idl(403):  		return craftersSerial;
+	return craftersSerial;
+}
+
 /*
  *	TangibleObjectAdapter
  */
@@ -994,6 +1066,18 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 48:
 		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
+		break;
+	case 43:
+		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
+		break;
+	case 44:
+		resp->insertAscii(getCraftersName());
+		break;
+	case 45:
+		setCraftersSerial(inv->getAsciiParameter(_param0_setCraftersSerial__String_));
+		break;
+	case 46:
+		resp->insertAscii(getCraftersSerial());
 		break;
 	default:
 		return NULL;
@@ -1172,6 +1256,22 @@ bool TangibleObjectAdapter::isSliced() {
 
 void TangibleObjectAdapter::setCustomizationString(const String& vars) {
 	((TangibleObjectImplementation*) impl)->setCustomizationString(vars);
+}
+
+void TangibleObjectAdapter::setCraftersName(String& name) {
+	((TangibleObjectImplementation*) impl)->setCraftersName(name);
+}
+
+String TangibleObjectAdapter::getCraftersName() {
+	return ((TangibleObjectImplementation*) impl)->getCraftersName();
+}
+
+void TangibleObjectAdapter::setCraftersSerial(String& serial) {
+	((TangibleObjectImplementation*) impl)->setCraftersSerial(serial);
+}
+
+String TangibleObjectAdapter::getCraftersSerial() {
+	return ((TangibleObjectImplementation*) impl)->getCraftersSerial();
 }
 
 /*

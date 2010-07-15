@@ -1,3 +1,4 @@
+
 /*
 Copyright (C) 2007 <SWGEmu>
 
@@ -42,57 +43,37 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#ifndef UPDATETOOLCOUNTDOWNTASK_H_
+#define UPDATETOOLCOUNTDOWNTASK_H_
 
-#ifndef MANUFACTURESCHEMATICOBJECTDELTAMESSAGE3_H_
-#define MANUFACTURESCHEMATICOBJECTDELTAMESSAGE3_H_
+#include "../CraftingTool.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 
-#include "../BaseLineMessage.h"
+class UpdateToolCountdownTask : public Task {
+	ManagedReference<CraftingTool* > craftingTool;
+	ManagedReference<PlayerCreature* > player;
+	int timeLeft;
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-
-class ManufactureSchematicObjectDeltaMessage3 : public DeltaMessage {
 public:
-	ManufactureSchematicObjectDeltaMessage3(uint64 sceneObjSchematic)
-			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 3) {
+	UpdateToolCountdownTask(PlayerCreature* pl, CraftingTool* tool, int time) : Task() {
+		craftingTool = tool;
+		player = pl;
+		timeLeft = time;
 	}
 
-	void updateComplexity(float complexity) {
-		addFloatUpdate(0, complexity);
-	}
+	void run() {
+		try {
 
-	void updateName(String name) {
-		addUnicodeUpdate(2, name);
-	}
+			TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3(craftingTool);
+			dtano3->updateCraftingTimer(timeLeft);
+			dtano3->close();
+			player->sendMessage(dtano3);
 
-	void updateCondition(int condition) {
-		addIntUpdate(4, condition);
-	}
 
-	void updateCraftingValues(ManufactureSchematic* manufactureSchematic){
-
-		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
-
-		String name;
-		float value;
-
-		int count = craftingValues->getValuesToSendSize();
-
-		startUpdate(5);
-
-		startList(count, count);
-
-		for (int i = 0; i < count; ++i){
-
-			insertByte(0);
-			insertAscii("crafting");
-			insertInt(0);
-			name = craftingValues->getValuesToSend(i);
-			value = craftingValues->getCurrentValue(name);
-			insertAscii(name);
-			insertFloat(value);
-
+		} catch (...) {
+			System::out << "Unreported exception caught in UpdateToolCountdownEvent::activate\n";
 		}
 	}
 };
 
-#endif /*MANUFACTURESCHEMATICOBJECTMESSAGE3_H_*/
+#endif /*UPDATETOOLCOUNTDOWNTASK_H_*/

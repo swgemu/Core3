@@ -49,6 +49,11 @@
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
+
+void ResourceSpawnImplementation::initializeTransientMembers() {
+
+}
+
 void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm,
 		PlayerCreature* object) {
 
@@ -65,6 +70,19 @@ void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm,
 
 bool ResourceSpawnImplementation::inShift() {
 	return despawned > time(0);
+}
+
+void ResourceSpawnImplementation::addAttribute(const String& attribute,
+		int value, int index) {
+	spawnAttributes.put(attribute, value);
+
+	if (indexedStats.size() == 0) {
+
+		for (int i = 0; i < 11; ++i)
+			indexedStats.add(0);
+	}
+
+	indexedStats.set(index, (uint32)value);
 }
 
 int ResourceSpawnImplementation::getAttributeAndValue(String& attribute,

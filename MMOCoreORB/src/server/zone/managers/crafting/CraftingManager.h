@@ -14,16 +14,6 @@
 namespace server {
 namespace zone {
 
-class ZoneServer;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
-
-namespace server {
-namespace zone {
-
 class ZoneProcessServerImplementation;
 
 } // namespace zone
@@ -73,6 +63,8 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
@@ -80,6 +72,8 @@ using namespace server::zone::objects::player;
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
+
+#include "engine/core/ManagedObject.h"
 
 #include "system/util/VectorMap.h"
 
@@ -90,6 +84,50 @@ namespace crafting {
 
 class CraftingManager : public ManagedObject {
 public:
+	static const short RESOURCE = 0x00;
+
+	static const short COMPONENTLINEAR = 0x01;
+
+	static const short COMPONENTPERCENTAGE = 0x02;
+
+	static const short CR = 1;
+
+	static const short CD = 2;
+
+	static const short DR = 3;
+
+	static const short HR = 4;
+
+	static const short FL = 5;
+
+	static const short MA = 6;
+
+	static const short PE = 7;
+
+	static const short OQ = 8;
+
+	static const short SR = 9;
+
+	static const short UT = 10;
+
+	static const short AMAZINGSUCCESS = 0;
+
+	static const short GREATSUCCESS = 1;
+
+	static const short GOODSUCCESS = 2;
+
+	static const short MODERATESUCCESS = 3;
+
+	static const short SUCCESS = 4;
+
+	static const short MARGINALSUCCESS = 5;
+
+	static const short OK = 6;
+
+	static const short BARELYSUCCESSFUL = 7;
+
+	static const short CRITICALFAILURE = 8;
+
 	CraftingManager(ZoneServer* serv, ZoneProcessServerImplementation* proc, ObjectManager* objman);
 
 	void initialize();
@@ -104,10 +142,18 @@ public:
 
 	void sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID);
 
+	int calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+
+	int calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
+
+	String generateSerial();
+
 protected:
 	CraftingManager(DummyConstructorParameter* param);
 
 	virtual ~CraftingManager();
+
+	String _return_generateSerial;
 
 	friend class CraftingManagerHelper;
 };
@@ -134,6 +180,50 @@ class CraftingManagerImplementation : public ManagedObjectImplementation, public
 	SchematicMap* schematicMap;
 
 public:
+	static const short RESOURCE = 0x00;
+
+	static const short COMPONENTLINEAR = 0x01;
+
+	static const short COMPONENTPERCENTAGE = 0x02;
+
+	static const short CR = 1;
+
+	static const short CD = 2;
+
+	static const short DR = 3;
+
+	static const short HR = 4;
+
+	static const short FL = 5;
+
+	static const short MA = 6;
+
+	static const short PE = 7;
+
+	static const short OQ = 8;
+
+	static const short SR = 9;
+
+	static const short UT = 10;
+
+	static const short AMAZINGSUCCESS = 0;
+
+	static const short GREATSUCCESS = 1;
+
+	static const short GOODSUCCESS = 2;
+
+	static const short MODERATESUCCESS = 3;
+
+	static const short SUCCESS = 4;
+
+	static const short MARGINALSUCCESS = 5;
+
+	static const short OK = 6;
+
+	static const short BARELYSUCCESSFUL = 7;
+
+	static const short CRITICALFAILURE = 8;
+
 	CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc, ObjectManager* objman);
 
 	CraftingManagerImplementation(DummyConstructorParameter* param);
@@ -149,6 +239,16 @@ public:
 	void sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID);
 
 	void sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID);
+
+	int calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+
+	int calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
+
+private:
+	float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
+
+public:
+	String generateSerial();
 
 	CraftingManager* _this;
 
@@ -194,6 +294,12 @@ public:
 	void sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID);
 
 	void sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID);
+
+	int calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+
+	int calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
+
+	String generateSerial();
 
 };
 

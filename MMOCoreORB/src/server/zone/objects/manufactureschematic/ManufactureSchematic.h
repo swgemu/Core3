@@ -33,6 +33,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/manufactureschematic/IngredientSlots.h"
 
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "system/lang/ref/Reference.h"
@@ -79,6 +81,30 @@ public:
 
 	float getComplexity();
 
+	bool isReadyForAssembly();
+
+	void setAssembled();
+
+	bool isAssembled();
+
+	void setCompleted();
+
+	bool isCompleted();
+
+	CraftingValues* getCraftingValues();
+
+	void setExperimentingCounter(int value);
+
+	int getExperimentingCounter();
+
+	int getExperimentingCounterPrevious();
+
+	void setManufactureLimit(int limit);
+
+	int getManufactureLimit();
+
+	byte getCustomizationType();
+
 protected:
 	ManufactureSchematic(DummyConstructorParameter* param);
 
@@ -109,7 +135,17 @@ protected:
 
 	bool assembled;
 
+	bool completed;
+
+	int experimentingCounter;
+
+	int experimentingCounterPrevious;
+
+	int manufactureLimit;
+
 	IngredientSlots ingredientSlots;
+
+	CraftingValues craftingValues;
 
 public:
 	ManufactureSchematicImplementation();
@@ -143,6 +179,30 @@ public:
 	void decreaseComplexity();
 
 	float getComplexity();
+
+	bool isReadyForAssembly();
+
+	void setAssembled();
+
+	bool isAssembled();
+
+	void setCompleted();
+
+	bool isCompleted();
+
+	CraftingValues* getCraftingValues();
+
+	void setExperimentingCounter(int value);
+
+	int getExperimentingCounter();
+
+	int getExperimentingCounterPrevious();
+
+	void setManufactureLimit(int limit);
+
+	int getManufactureLimit();
+
+	byte getCustomizationType();
 
 	ManufactureSchematic* _this;
 
@@ -206,6 +266,28 @@ public:
 	void decreaseComplexity();
 
 	float getComplexity();
+
+	bool isReadyForAssembly();
+
+	void setAssembled();
+
+	bool isAssembled();
+
+	void setCompleted();
+
+	bool isCompleted();
+
+	void setExperimentingCounter(int value);
+
+	int getExperimentingCounter();
+
+	int getExperimentingCounterPrevious();
+
+	void setManufactureLimit(int limit);
+
+	int getManufactureLimit();
+
+	byte getCustomizationType();
 
 };
 

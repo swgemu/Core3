@@ -248,10 +248,21 @@ public:
 
 	void setCustomizationString(const String& vars);
 
+	void setCraftersName(String& name);
+
+	String getCraftersName();
+
+	void setCraftersSerial(String& serial);
+
+	String getCraftersSerial();
+
 protected:
 	TangibleObject(DummyConstructorParameter* param);
 
 	virtual ~TangibleObject();
+
+	String _return_getCraftersName;
+	String _return_getCraftersSerial;
 
 	friend class TangibleObjectHelper;
 };
@@ -467,6 +478,14 @@ public:
 
 	void setCustomizationString(const String& vars);
 
+	void setCraftersName(String& name);
+
+	String getCraftersName();
+
+	void setCraftersSerial(String& serial);
+
+	String getCraftersSerial();
+
 	TangibleObject* _this;
 
 	operator const TangibleObject*();
@@ -592,10 +611,20 @@ public:
 
 	void setCustomizationString(const String& vars);
 
+	void setCraftersName(String& name);
+
+	String getCraftersName();
+
+	void setCraftersSerial(String& serial);
+
+	String getCraftersSerial();
+
 protected:
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
 	String _param0_getCustomizationString__String_;
 	String _param0_setCustomizationString__String_;
+	String _param0_setCraftersName__String_;
+	String _param0_setCraftersSerial__String_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {

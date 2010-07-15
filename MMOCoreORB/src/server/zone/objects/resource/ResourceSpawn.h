@@ -25,9 +25,21 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
-#include "server/zone/packets/scene/AttributeListMessage.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace resource {
 
-#include "server/zone/objects/resource/ResourceContainer.h"
+class ResourceContainer;
+
+} // namespace resource
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::resource;
+
+#include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "server/zone/objects/resource/SpawnDensityMap.h"
 
@@ -50,6 +62,8 @@ class ResourceSpawn : public SceneObject {
 public:
 	ResourceSpawn();
 
+	void initializeTransientMembers();
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void decreaseContainerReferenceCount();
@@ -66,7 +80,7 @@ public:
 
 	void addStfClass(const String& newclass);
 
-	void addAttribute(const String& attribute, int value);
+	void addAttribute(const String& attribute, int value, int index);
 
 	bool isType(const String& type);
 
@@ -123,6 +137,8 @@ public:
 	int getAttributeAndValue(String& attribute, int index);
 
 	int getAttributeValue(int index);
+
+	int getValueOf(int index);
 
 	void print();
 
@@ -188,12 +204,16 @@ protected:
 
 	bool energy;
 
+	Vector<unsigned int> indexedStats;
+
 public:
 	ResourceSpawnImplementation();
 
 	ResourceSpawnImplementation(DummyConstructorParameter* param);
 
 	void finalize();
+
+	void initializeTransientMembers();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -211,7 +231,7 @@ public:
 
 	void addStfClass(const String& newclass);
 
-	void addAttribute(const String& attribute, int value);
+	void addAttribute(const String& attribute, int value, int index);
 
 	bool isType(const String& type);
 
@@ -277,6 +297,8 @@ public:
 
 	int getAttributeValue(int index);
 
+	int getValueOf(int index);
+
 	void print();
 
 	ResourceSpawn* _this;
@@ -318,6 +340,8 @@ public:
 
 	void finalize();
 
+	void initializeTransientMembers();
+
 	void decreaseContainerReferenceCount();
 
 	void setName(const String& name);
@@ -332,7 +356,7 @@ public:
 
 	void addStfClass(const String& newclass);
 
-	void addAttribute(const String& attribute, int value);
+	void addAttribute(const String& attribute, int value, int index);
 
 	bool isType(const String& type);
 
@@ -378,12 +402,14 @@ public:
 
 	int getAttributeValue(int index);
 
+	int getValueOf(int index);
+
 protected:
 	String _param0_setName__String_;
 	String _param0_setType__String_;
 	String _param0_addClass__String_;
 	String _param0_addStfClass__String_;
-	String _param0_addAttribute__String_int_;
+	String _param0_addAttribute__String_int_int_;
 	String _param0_isType__String_;
 };
 

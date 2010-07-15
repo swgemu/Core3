@@ -42,15 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "DraftSchematicValuesImplementation.h"
+#include "CraftingValues.h"
 
-DraftSchematicValuesImplementation::DraftSchematicValuesImplementation() : DraftSchematicValuesServant() {
+CraftingValues::CraftingValues() {
 	EMPTY = "";
 	experimentalValuesMap.setNullValue(NULL);
 	doHide = true;
 }
 
-DraftSchematicValuesImplementation::~DraftSchematicValuesImplementation() {
+CraftingValues::~CraftingValues() {
 	for (int i = 0; i < experimentalValuesMap.size(); ++i) {
 		delete experimentalValuesMap.get(i);
 	}
@@ -60,7 +60,7 @@ DraftSchematicValuesImplementation::~DraftSchematicValuesImplementation() {
 	valuesToSend.removeAll();
 }
 
-void DraftSchematicValuesImplementation::addExperimentalProperty(const String& title, const String& subtitle,
+void CraftingValues::addExperimentalProperty(const String& title, const String& subtitle,
 		const float min, const float max, const int precision, const bool filler) {
 	Subclasses* subclasses;
 
@@ -75,7 +75,7 @@ void DraftSchematicValuesImplementation::addExperimentalProperty(const String& t
 	}
 }
 
-String& DraftSchematicValuesImplementation::getExperimentalPropertyTitle(
+String& CraftingValues::getExperimentalPropertyTitle(
 		const String& subtitle) {
 
 	Subclasses* subclasses;
@@ -96,7 +96,7 @@ String& DraftSchematicValuesImplementation::getExperimentalPropertyTitle(
 }
 
 
-String& DraftSchematicValuesImplementation::getExperimentalPropertyTitle(
+String& CraftingValues::getExperimentalPropertyTitle(
 		const int i) {
 
 	Subclasses* subclasses;
@@ -110,7 +110,7 @@ String& DraftSchematicValuesImplementation::getExperimentalPropertyTitle(
 	return EMPTY;
 }
 
-String& DraftSchematicValuesImplementation::getVisibleExperimentalPropertyTitle(
+String& CraftingValues::getVisibleExperimentalPropertyTitle(
 		const int i) {
 
 	Subclasses* subclasses;
@@ -130,7 +130,7 @@ String& DraftSchematicValuesImplementation::getVisibleExperimentalPropertyTitle(
 	return EMPTY;
 }
 
-String& DraftSchematicValuesImplementation::getExperimentalPropertySubtitlesTitle(const int i) {
+String& CraftingValues::getExperimentalPropertySubtitlesTitle(const int i) {
 	Subclasses* subclasses;
 	int count = 0;
 
@@ -147,7 +147,7 @@ String& DraftSchematicValuesImplementation::getExperimentalPropertySubtitlesTitl
 	return EMPTY;
 }
 
-String& DraftSchematicValuesImplementation::getExperimentalPropertySubtitle(const int i) {
+String& CraftingValues::getExperimentalPropertySubtitle(const int i) {
 	Subclasses* subclasses;
 	int count = 0;
 
@@ -168,7 +168,7 @@ String& DraftSchematicValuesImplementation::getExperimentalPropertySubtitle(cons
 	return EMPTY;
 }
 
-String& DraftSchematicValuesImplementation::getExperimentalPropertySubtitle(const String title, const int i) {
+String& CraftingValues::getExperimentalPropertySubtitle(const String title, const int i) {
 	Subclasses* subclasses;
 
 	subclasses = experimentalValuesMap.get(title);
@@ -179,7 +179,7 @@ String& DraftSchematicValuesImplementation::getExperimentalPropertySubtitle(cons
 		return EMPTY;
 }
 
-int DraftSchematicValuesImplementation::getExperimentalPropertySubtitleSize() {
+int CraftingValues::getExperimentalPropertySubtitleSize() {
 	Subclasses* subclasses;
 	int size = 0;
 
@@ -192,7 +192,7 @@ int DraftSchematicValuesImplementation::getExperimentalPropertySubtitleSize() {
 	return size;
 }
 
-int DraftSchematicValuesImplementation::getExperimentalPropertySubtitleSize(const String title) {
+int CraftingValues::getExperimentalPropertySubtitleSize(const String title) {
 	Subclasses* subclasses = NULL;
 
 	subclasses = experimentalValuesMap.get(title);
@@ -203,7 +203,7 @@ int DraftSchematicValuesImplementation::getExperimentalPropertySubtitleSize(cons
 	return (int)VALUENOTFOUND;
 }
 
-bool DraftSchematicValuesImplementation::hasProperty(const String& attribute) {
+bool CraftingValues::hasProperty(const String& attribute) {
 
 	Subclasses* subclasses;
 	Values* values;
@@ -223,7 +223,7 @@ bool DraftSchematicValuesImplementation::hasProperty(const String& attribute) {
 	return false;
 }
 
-bool DraftSchematicValuesImplementation::isHidden(const String& attribute) {
+bool CraftingValues::isHidden(const String& attribute) {
 
 	Subclasses* subclasses;
 	Values* values;
@@ -243,7 +243,7 @@ bool DraftSchematicValuesImplementation::isHidden(const String& attribute) {
 	return false;
 }
 
-void DraftSchematicValuesImplementation::setHidden(const String& attribute) {
+void CraftingValues::setHidden(const String& attribute) {
 
 	Subclasses* subclasses;
 	Values* values;
@@ -262,7 +262,7 @@ void DraftSchematicValuesImplementation::setHidden(const String& attribute) {
 	}
 }
 
-void DraftSchematicValuesImplementation::unsetHidden(const String& attribute) {
+void CraftingValues::unsetHidden(const String& attribute) {
 
 	Subclasses* subclasses;
 	Values* values;
@@ -281,7 +281,7 @@ void DraftSchematicValuesImplementation::unsetHidden(const String& attribute) {
 	}
 }
 
-void DraftSchematicValuesImplementation::setCurrentValue(
+void CraftingValues::setCurrentValue(
 		const String& attribute, const float value) {
 
 	Subclasses* subclasses;
@@ -302,7 +302,7 @@ void DraftSchematicValuesImplementation::setCurrentValue(
 	}
 }
 
-void DraftSchematicValuesImplementation::setCurrentValue(const String& attribute,
+void CraftingValues::setCurrentValue(const String& attribute,
 		const float value, const float min, const float max) {
 
 	Subclasses* subclasses;
@@ -327,7 +327,7 @@ void DraftSchematicValuesImplementation::setCurrentValue(const String& attribute
 	}
 }
 
-float DraftSchematicValuesImplementation::getCurrentValue(
+float CraftingValues::getCurrentValue(
 		const String& attribute) {
 
 	Subclasses* subclasses;
@@ -349,7 +349,7 @@ float DraftSchematicValuesImplementation::getCurrentValue(
 	return VALUENOTFOUND;
 }
 
-float DraftSchematicValuesImplementation::getCurrentValue(const int i) {
+float CraftingValues::getCurrentValue(const int i) {
 	Subclasses* subclasses;
 	int count = 0;
 
@@ -370,7 +370,7 @@ float DraftSchematicValuesImplementation::getCurrentValue(const int i) {
 	return VALUENOTFOUND;
 }
 
-void DraftSchematicValuesImplementation::lockValue(const String& attribute) {
+void CraftingValues::lockValue(const String& attribute) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -389,7 +389,7 @@ void DraftSchematicValuesImplementation::lockValue(const String& attribute) {
 	}
 }
 
-void DraftSchematicValuesImplementation::resetValue(const String& attribute) {
+void CraftingValues::resetValue(const String& attribute) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -408,7 +408,7 @@ void DraftSchematicValuesImplementation::resetValue(const String& attribute) {
 	}
 }
 
-void DraftSchematicValuesImplementation::setCurrentPercentage(
+void CraftingValues::setCurrentPercentage(
 		const String& subtitle, const float value) {
 
 	float max = 0.0f;
@@ -437,7 +437,7 @@ void DraftSchematicValuesImplementation::setCurrentPercentage(
 	}
 }
 
-void DraftSchematicValuesImplementation::setCurrentPercentage(const String& subtitle,
+void CraftingValues::setCurrentPercentage(const String& subtitle,
 		const float value, const float min, const float max) {
 
 	Subclasses* subclasses;
@@ -466,7 +466,7 @@ void DraftSchematicValuesImplementation::setCurrentPercentage(const String& subt
 	}
 }
 
-float DraftSchematicValuesImplementation::getCurrentPercentage(
+float CraftingValues::getCurrentPercentage(
 		const String& attribute) {
 
 	Subclasses* subclasses;
@@ -488,7 +488,7 @@ float DraftSchematicValuesImplementation::getCurrentPercentage(
 	return VALUENOTFOUND;
 }
 
-float DraftSchematicValuesImplementation::getCurrentPercentage(const int i) {
+float CraftingValues::getCurrentPercentage(const int i) {
 	Subclasses* subclasses;
 	int count = 0;
 
@@ -509,7 +509,7 @@ float DraftSchematicValuesImplementation::getCurrentPercentage(const int i) {
 	return VALUENOTFOUND;
 }
 
-float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const int i) {
+float CraftingValues::getCurrentPercentageAverage(const int i) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -536,7 +536,7 @@ float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const int 
 	return (average / count);
 }
 
-float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const String title) {
+float CraftingValues::getCurrentPercentageAverage(const String title) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -564,7 +564,7 @@ float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const Stri
 	return (average / count);
 }
 
-void DraftSchematicValuesImplementation::setMaxPercentage(
+void CraftingValues::setMaxPercentage(
 		const String& attribute, const float value) {
 
 	float max;
@@ -587,7 +587,7 @@ void DraftSchematicValuesImplementation::setMaxPercentage(
 	}
 }
 
-float DraftSchematicValuesImplementation::getMaxPercentage(
+float CraftingValues::getMaxPercentage(
 		const String& attribute) {
 
 	Subclasses* subclasses;
@@ -609,7 +609,7 @@ float DraftSchematicValuesImplementation::getMaxPercentage(
 	return VALUENOTFOUND;
 }
 
-float DraftSchematicValuesImplementation::getMaxPercentage(const int i) {
+float CraftingValues::getMaxPercentage(const int i) {
 	Subclasses* subclasses;
 	int count = 0;
 
@@ -630,7 +630,7 @@ float DraftSchematicValuesImplementation::getMaxPercentage(const int i) {
 	return VALUENOTFOUND;
 }
 
-float DraftSchematicValuesImplementation::getMaxPercentageAverage(const int i) {
+float CraftingValues::getMaxPercentageAverage(const int i) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -654,7 +654,7 @@ float DraftSchematicValuesImplementation::getMaxPercentageAverage(const int i) {
 	return (average / count);
 }
 
-float DraftSchematicValuesImplementation::getMaxValue(const String& attribute) {
+float CraftingValues::getMaxValue(const String& attribute) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -674,7 +674,7 @@ float DraftSchematicValuesImplementation::getMaxValue(const String& attribute) {
 	return VALUENOTFOUND;
 }
 
-float DraftSchematicValuesImplementation::getMinValue(const String& attribute) {
+float CraftingValues::getMinValue(const String& attribute) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -694,7 +694,7 @@ float DraftSchematicValuesImplementation::getMinValue(const String& attribute) {
 	return VALUENOTFOUND;
 }
 
-void DraftSchematicValuesImplementation::setMinValue(const String& attribute, const float value) {
+void CraftingValues::setMinValue(const String& attribute, const float value) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -712,7 +712,7 @@ void DraftSchematicValuesImplementation::setMinValue(const String& attribute, co
 	}
 }
 
-void DraftSchematicValuesImplementation::setMaxValue(const String& attribute, const float value) {
+void CraftingValues::setMaxValue(const String& attribute, const float value) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -730,7 +730,7 @@ void DraftSchematicValuesImplementation::setMaxValue(const String& attribute, co
 	}
 }
 
-int DraftSchematicValuesImplementation::getPrecision(const String& attribute) {
+int CraftingValues::getPrecision(const String& attribute) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -750,7 +750,7 @@ int DraftSchematicValuesImplementation::getPrecision(const String& attribute) {
 	return (int)VALUENOTFOUND;
 }
 
-void DraftSchematicValuesImplementation::setPrecision(const String& attribute, const int value) {
+void CraftingValues::setPrecision(const String& attribute, const int value) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -768,7 +768,7 @@ void DraftSchematicValuesImplementation::setPrecision(const String& attribute, c
 	}
 }
 
-void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draftSchematic, bool initial) {
+void CraftingValues::recalculateValues(bool initial) {
 	String experimentalPropTitle, attributeName;
 	float percentage = 0.f, min = 0.f, max = 0.f, newValue = 0.f, oldValue = 0.f;
 	bool hidden = false;
@@ -812,7 +812,7 @@ void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draft
 }
 
 
-void DraftSchematicValuesImplementation::toString() {
+void CraftingValues::toString() {
 	Subclasses* tempSubclasses;
 
 	for (int i = 0;i < experimentalValuesMap.size(); ++i) {

@@ -42,18 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef DRAFTSCHEMATICVALUESIMPLEMENTATION_H_
-#define DRAFTSCHEMATICVALUESIMPLEMENTATION_H_
+#ifndef CRAFTINGVALUES_H_
+#define CRAFTINGVALUES_H_
 
 #include "ValuesClasses.h"
-#include "DraftSchematicAttribute.h"
-#include "DraftSchematicValues.h"
-#include "DraftSchematic.h"
 
-#include "../tangible/crafting/CraftingTool.h"
-
-
-class DraftSchematicValuesImplementation : public DraftSchematicValuesServant {
+class CraftingValues : public Serializable {
 	VectorMap<String, Subclasses*> experimentalValuesMap;
 
 	Vector<String> valuesToSend;
@@ -70,8 +64,8 @@ public:
 	static const int HIDDEN = 2;
 
 public:
-	DraftSchematicValuesImplementation();
-	~DraftSchematicValuesImplementation();
+	CraftingValues();
+	~CraftingValues();
 	// Experimental Titles
 	void addExperimentalProperty(const String& title, const String& subtitle,
 			const float min, const float max, const int precision, const bool filler);
@@ -131,7 +125,7 @@ public:
 	int getPrecision(const String& attribute);
 	void setPrecision(const String& attribute, const int precision);
 
-	void recalculateValues(DraftSchematic* draftSchematic, bool initial);
+	void recalculateValues(bool initial);
 
 	void toString();
 
@@ -216,4 +210,4 @@ public:
 
 };
 
-#endif /*DRAFTSCHEMATICVALUESIMPLEMENTATION_H_*/
+#endif /*CRAFTINGVALUES_H_*/

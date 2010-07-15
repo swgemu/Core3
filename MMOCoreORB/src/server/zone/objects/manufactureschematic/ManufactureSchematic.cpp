@@ -191,6 +191,148 @@ float ManufactureSchematic::getComplexity() {
 		return ((ManufactureSchematicImplementation*) _impl)->getComplexity();
 }
 
+bool ManufactureSchematic::isReadyForAssembly() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->isReadyForAssembly();
+}
+
+void ManufactureSchematic::setAssembled() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->setAssembled();
+}
+
+bool ManufactureSchematic::isAssembled() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->isAssembled();
+}
+
+void ManufactureSchematic::setCompleted() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->setCompleted();
+}
+
+bool ManufactureSchematic::isCompleted() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->isCompleted();
+}
+
+CraftingValues* ManufactureSchematic::getCraftingValues() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getCraftingValues();
+}
+
+void ManufactureSchematic::setExperimentingCounter(int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->setExperimentingCounter(value);
+}
+
+int ManufactureSchematic::getExperimentingCounter() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getExperimentingCounter();
+}
+
+int ManufactureSchematic::getExperimentingCounterPrevious() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getExperimentingCounterPrevious();
+}
+
+void ManufactureSchematic::setManufactureLimit(int limit) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addSignedIntParameter(limit);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->setManufactureLimit(limit);
+}
+
+int ManufactureSchematic::getManufactureLimit() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getManufactureLimit();
+}
+
+byte ManufactureSchematic::getCustomizationType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		return method.executeWithByteReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getCustomizationType();
+}
+
 /*
  *	ManufactureSchematicImplementation
  */
@@ -262,37 +404,92 @@ void ManufactureSchematicImplementation::_serializationHelperMethod() {
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(68):  		Logger.setLoggingName("ManufactureSchematic");
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(76):  		Logger.setLoggingName("ManufactureSchematic");
 	Logger::setLoggingName("ManufactureSchematic");
 }
 
 void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schematic) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(118):  		draftSchematic = schematic;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(126):  		draftSchematic = schematic;
 	draftSchematic = schematic;
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(120):  	}
-	if (draftSchematic != NULL)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(121):  			initializeIngredientSlots(draftSchematic);
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(128):  	}
+	if (draftSchematic != NULL)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(129):  			initializeIngredientSlots(draftSchematic);
 	initializeIngredientSlots(draftSchematic);
 }
 
 DraftSchematic* ManufactureSchematicImplementation::getDraftSchematic() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(129):  		return draftSchematic;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(137):  		return draftSchematic;
 	return draftSchematic;
 }
 
 void ManufactureSchematicImplementation::increaseComplexity() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(139):  		complexity++;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(147):  		complexity++;
 	complexity ++;
 }
 
 void ManufactureSchematicImplementation::decreaseComplexity() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(143):  	}
-	if (complexity > 1)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(144):  			complexity = complexity - 1;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(151):  	}
+	if (complexity > 1)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(152):  			complexity = complexity - 1;
 	complexity = complexity - 1;
 }
 
 float ManufactureSchematicImplementation::getComplexity() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(148):  		return complexity;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(156):  		return complexity;
 	return complexity;
+}
+
+void ManufactureSchematicImplementation::setAssembled() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(162):  		assembled = true;
+	assembled = true;
+}
+
+bool ManufactureSchematicImplementation::isAssembled() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(166):  		return assembled;
+	return assembled;
+}
+
+void ManufactureSchematicImplementation::setCompleted() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(170):  		completed = true;
+	completed = true;
+}
+
+bool ManufactureSchematicImplementation::isCompleted() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(174):  		return completed;
+	return completed;
+}
+
+CraftingValues* ManufactureSchematicImplementation::getCraftingValues() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(179):  		return craftingValues;
+	return (&craftingValues);
+}
+
+void ManufactureSchematicImplementation::setExperimentingCounter(int value) {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(183):  		experimentingCounterPrevious = experimentingCounter;
+	experimentingCounterPrevious = experimentingCounter;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(184):  		experimentingCounter = value;
+	experimentingCounter = value;
+}
+
+int ManufactureSchematicImplementation::getExperimentingCounter() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(188):  		return experimentingCounter;
+	return experimentingCounter;
+}
+
+int ManufactureSchematicImplementation::getExperimentingCounterPrevious() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(192):  		return experimentingCounterPrevious;
+	return experimentingCounterPrevious;
+}
+
+void ManufactureSchematicImplementation::setManufactureLimit(int limit) {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(196):  		manufactureLimit = limit;
+	manufactureLimit = limit;
+}
+
+int ManufactureSchematicImplementation::getManufactureLimit() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(200):  		return manufactureLimit;
+	return manufactureLimit;
+}
+
+byte ManufactureSchematicImplementation::getCustomizationType() {
 }
 
 /*
@@ -341,6 +538,39 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		break;
 	case 17:
 		resp->insertFloat(getComplexity());
+		break;
+	case 18:
+		resp->insertBoolean(isReadyForAssembly());
+		break;
+	case 19:
+		setAssembled();
+		break;
+	case 20:
+		resp->insertBoolean(isAssembled());
+		break;
+	case 21:
+		setCompleted();
+		break;
+	case 22:
+		resp->insertBoolean(isCompleted());
+		break;
+	case 23:
+		setExperimentingCounter(inv->getSignedIntParameter());
+		break;
+	case 24:
+		resp->insertSignedInt(getExperimentingCounter());
+		break;
+	case 25:
+		resp->insertSignedInt(getExperimentingCounterPrevious());
+		break;
+	case 26:
+		setManufactureLimit(inv->getSignedIntParameter());
+		break;
+	case 27:
+		resp->insertSignedInt(getManufactureLimit());
+		break;
+	case 28:
+		resp->insertByte(getCustomizationType());
 		break;
 	default:
 		return NULL;
@@ -395,6 +625,50 @@ void ManufactureSchematicAdapter::decreaseComplexity() {
 
 float ManufactureSchematicAdapter::getComplexity() {
 	return ((ManufactureSchematicImplementation*) impl)->getComplexity();
+}
+
+bool ManufactureSchematicAdapter::isReadyForAssembly() {
+	return ((ManufactureSchematicImplementation*) impl)->isReadyForAssembly();
+}
+
+void ManufactureSchematicAdapter::setAssembled() {
+	((ManufactureSchematicImplementation*) impl)->setAssembled();
+}
+
+bool ManufactureSchematicAdapter::isAssembled() {
+	return ((ManufactureSchematicImplementation*) impl)->isAssembled();
+}
+
+void ManufactureSchematicAdapter::setCompleted() {
+	((ManufactureSchematicImplementation*) impl)->setCompleted();
+}
+
+bool ManufactureSchematicAdapter::isCompleted() {
+	return ((ManufactureSchematicImplementation*) impl)->isCompleted();
+}
+
+void ManufactureSchematicAdapter::setExperimentingCounter(int value) {
+	((ManufactureSchematicImplementation*) impl)->setExperimentingCounter(value);
+}
+
+int ManufactureSchematicAdapter::getExperimentingCounter() {
+	return ((ManufactureSchematicImplementation*) impl)->getExperimentingCounter();
+}
+
+int ManufactureSchematicAdapter::getExperimentingCounterPrevious() {
+	return ((ManufactureSchematicImplementation*) impl)->getExperimentingCounterPrevious();
+}
+
+void ManufactureSchematicAdapter::setManufactureLimit(int limit) {
+	((ManufactureSchematicImplementation*) impl)->setManufactureLimit(limit);
+}
+
+int ManufactureSchematicAdapter::getManufactureLimit() {
+	return ((ManufactureSchematicImplementation*) impl)->getManufactureLimit();
+}
+
+byte ManufactureSchematicAdapter::getCustomizationType() {
+	return ((ManufactureSchematicImplementation*) impl)->getCustomizationType();
 }
 
 /*

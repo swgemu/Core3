@@ -4,8 +4,6 @@
 
 #include "ResourceContainer.h"
 
-#include "server/zone/objects/resource/ResourceSpawn.h"
-
 #include "server/zone/objects/player/PlayerCreature.h"
 
 /*

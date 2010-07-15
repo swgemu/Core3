@@ -52,7 +52,7 @@ import engine.core.ManagedObject;
 import server.zone.objects.player.PlayerCreature;
 include server.zone.packets.scene.AttributeListMessage;
 
-include server.zone.objects.resource.ResourceContainer;
+import server.zone.objects.resource.ResourceContainer;
 include server.zone.objects.resource.SpawnDensityMap;
 include server.zone.objects.resource.SpawnMap;
 
@@ -88,6 +88,9 @@ class ResourceSpawn extends SceneObject {
 	protected int containerReferenceCount;
 	protected boolean dbDestroyed;
 	protected boolean energy;
+	
+	@dereferenced 
+	protected Vector<unsigned int> indexedStats;
 
     public ResourceSpawn() {
        	spawnType = "";
@@ -113,6 +116,8 @@ class ResourceSpawn extends SceneObject {
     	if (!dbDestroyed && (containerReferenceCount == 0))
     		decreaseContainerReferenceCount();
     }
+    
+    public native void initializeTransientMembers();
         
    /**
 	 * Fills the attribute list message options that are sent to player creature
@@ -165,9 +170,7 @@ class ResourceSpawn extends SceneObject {
     	stfSpawnClasses.add(newclass);
     }
 
-	public void addAttribute(final string attribute, int value) {
-		spawnAttributes.put(attribute, value);
-	}
+	public native void addAttribute(final string attribute, int value, int index);
 	
 	public boolean isType(final string type) {
 		for(int i = 0; i < stfSpawnClasses.size(); ++i) {
@@ -286,8 +289,12 @@ class ResourceSpawn extends SceneObject {
     @local
     public native int getAttributeAndValue(string attribute, int index);
     
-    public native int getAttributeValue(int index) {
+    public int getAttributeValue(int index) {
     	return spawnAttributes.get(index);
+    }
+    
+    public int getValueOf(int index) {
+    	return indexedStats.get(index);
     }
 
 	@local
