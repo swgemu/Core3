@@ -136,6 +136,7 @@ void CraftingToolImplementation::requestCraftingSession(PlayerCreature* player,
 	}
 
 	Locker _locker(player);
+	Locker locker(_this);
 
 	craftingStation = station;
 
@@ -150,9 +151,8 @@ void CraftingToolImplementation::requestCraftingSession(PlayerCreature* player,
 }
 
 void CraftingToolImplementation::sendStart(PlayerCreature* player) {
-	if (player == NULL) {
-		return;
-	}
+
+	/// pre: player and _this locked
 
 	insertCounter = 1;
 	experimentationPoints = 0;
@@ -237,6 +237,8 @@ void CraftingToolImplementation::sendToolStartFailure(PlayerCreature* player) {
 
 void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 
+	Locker _locker(_this);
+
 	if (manufactureSchematic != NULL) {
 		removeObject(manufactureSchematic);
 		manufactureSchematic->cleanupIngredientSlots();
@@ -289,6 +291,8 @@ void CraftingToolImplementation::closeCraftingWindow(PlayerCreature* player, int
 void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
 		int toolType) {
 
+	/// pre: player and _this locked
+
 	ZoneServer* server = player->getZone()->getZoneServer();
 	Zone* zone = player->getZone();
 
@@ -318,6 +322,8 @@ void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
 
 void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 		int index) {
+
+	Locker locker(_this);
 
 	DraftSchematic* draftschematic = player->getPlayerObject()->getSchematic(
 			index);
@@ -425,6 +431,8 @@ void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature
 void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
 	/// Tano can't be NULL
 
+	Locker locker(_this);
+
 	if(manufactureSchematic == NULL) {
 		sendSlotMessage(player, clientCounter, IngredientSlot::NOSCHEMATIC);
 		return;
@@ -452,6 +460,9 @@ void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleO
 }
 
 void CraftingToolImplementation::sendIngredientAddSuccess(PlayerCreature* player, int slot, int clientCounter) {
+
+	/// pre: _this locked
+
 	// DMSCO6 ***************************************************
 	// Prepares the slot for insert
 	ManufactureSchematicObjectDeltaMessage6* dMsco6 =
@@ -501,6 +512,8 @@ void CraftingToolImplementation::sendIngredientAddSuccess(PlayerCreature* player
 void CraftingToolImplementation::removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
 	/// Tano can't be NULL
 
+	Locker _locker(_this);
+
 	if(manufactureSchematic == NULL) {
 		sendSlotMessage(player, clientCounter, IngredientSlot::NOSCHEMATIC);
 		return;
@@ -529,6 +542,9 @@ void CraftingToolImplementation::removeIngredient(PlayerCreature* player, Tangib
 }
 
 void CraftingToolImplementation::sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int clientCounter) {
+
+	/// pre: _this locked
+
 	// DMCSO7 ******************************************************
 	// Removes resource from client slot
 	ManufactureSchematicObjectDeltaMessage7* dMsco7 =
@@ -607,6 +623,8 @@ void CraftingToolImplementation::nextCraftingStage(PlayerCreature* player, int c
 		return;
 	}
 
+	Locker _locker(_this);
+
 	manufactureSchematic->setAssembled();
 
 	if (state == 2) {
@@ -644,6 +662,8 @@ void CraftingToolImplementation::nextCraftingStage(PlayerCreature* player, int c
 }
 
 void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int clientCounter) {
+
+	/// pre: _this locked
 
 	// Get the appropriate number of Experimentation points from Skill
 	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
@@ -760,6 +780,8 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 
 void CraftingToolImplementation::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {
 
+	Locker _locker(_this);
+
 	manufactureSchematic->setManufactureLimit(schematicCount);
 
 	StringTokenizer tokenizer(customization);
@@ -817,6 +839,8 @@ void CraftingToolImplementation::customization(PlayerCreature* player, String& n
 
 void CraftingToolImplementation::finishStage1(PlayerCreature* player, int clientCounter) {
 
+	/// pre: _this locked
+
 	PlayerObjectDeltaMessage9* dplay9 =
 			new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setCraftingState(state);
@@ -837,6 +861,8 @@ void CraftingToolImplementation::finishStage1(PlayerCreature* player, int client
 }
 
 void CraftingToolImplementation::finishStage2(PlayerCreature* player, int clientCounter) {
+
+	/// pre: _this locked
 
 	state = 0;
 
@@ -861,6 +887,8 @@ void CraftingToolImplementation::finishStage2(PlayerCreature* player, int client
 void CraftingToolImplementation::createPrototype(PlayerCreature* player,
 		int clientCounter, int practice) {
 
+	Locker _locker(_this);
+
 	if(manufactureSchematic == NULL) {
 		sendSlotMessage(player, 0, IngredientSlot::NOSCHEMATIC);
 		return;
@@ -880,12 +908,12 @@ void CraftingToolImplementation::createPrototype(PlayerCreature* player,
 
 		if (practice != 0) {
 
-			createObject(player, manufactureSchematic->getComplexity() * 2, true);
+			createObject(player, manufactureSchematic->getComplexity() * 2, false);
 
 		} else {
 
 			// This is for practiceing
-			createObject(player, manufactureSchematic->getComplexity() * 2, false);
+			createObject(player, manufactureSchematic->getComplexity() * 2, true);
 			xp *= 1.05f;
 		}
 
@@ -978,13 +1006,15 @@ void CraftingToolImplementation::createPrototype(PlayerCreature* player,
 }*/
 
 void CraftingToolImplementation::createObject(PlayerCreature* player,
-		int timer, bool create) {
+		int timer, bool practice) {
+
+	/// pre: _this locked
 
 	int timer2 = 1;
 
 	Reference<UpdateToolCountdownTask* > updateToolCountdownTask;
 
-	Reference<CreateObjectTask* > createObjectTask = new CreateObjectTask(player, _this, create);
+	Reference<CreateObjectTask* > createObjectTask = new CreateObjectTask(player, _this, practice);
 
 	if (server != NULL) {
 
@@ -1014,6 +1044,13 @@ void CraftingToolImplementation::createObject(PlayerCreature* player,
 }
 
 void CraftingToolImplementation::depositObject(PlayerCreature* player, bool practice) {
+
+	if(practice) {
+	    removeObject(prototype);
+		prototype = NULL;
+		status = "@crafting:tool_status_ready";
+		return;
+	}
 
 	ManagedReference<SceneObject* > inventory = player->getSlottedObject("inventory");
 
