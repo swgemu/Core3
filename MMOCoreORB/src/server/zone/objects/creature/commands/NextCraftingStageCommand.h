@@ -90,8 +90,9 @@ public:
 			craftingTool->nextCraftingStage(player, stage);
 
 		} else {
-			player->sendSystemMessage("ui_craft", "err_no_draft_schematic_selected");
-			return GENERALERROR;
+
+			craftingTool->nextCraftingStage(player, 0);
+
 		}
 
 		return SUCCESS;
