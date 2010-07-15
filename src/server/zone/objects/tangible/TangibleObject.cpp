@@ -619,7 +619,7 @@ void TangibleObject::setCraftersName(String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 49);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -632,7 +632,7 @@ String TangibleObject::getCraftersName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 50);
 
 		method.executeWithAsciiReturn(_return_getCraftersName);
 		return _return_getCraftersName;
@@ -645,7 +645,7 @@ void TangibleObject::setCraftersSerial(String& serial) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 51);
 		method.addAsciiParameter(serial);
 
 		method.executeWithVoidReturn();
@@ -658,7 +658,7 @@ String TangibleObject::getCraftersSerial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 52);
 
 		method.executeWithAsciiReturn(_return_getCraftersSerial);
 		return _return_getCraftersSerial;
@@ -908,22 +908,22 @@ void TangibleObjectImplementation::setCustomizationString(const String& vars) {
 }
 
 void TangibleObjectImplementation::setCraftersName(String& name) {
-	// server/zone/objects/tangible/TangibleObject.idl(391):  		craftersName = name;
+	// server/zone/objects/tangible/TangibleObject.idl(428):  		craftersName = name;
 	craftersName = name;
 }
 
 String TangibleObjectImplementation::getCraftersName() {
-	// server/zone/objects/tangible/TangibleObject.idl(395):  		return craftersName;
+	// server/zone/objects/tangible/TangibleObject.idl(432):  		return craftersName;
 	return craftersName;
 }
 
 void TangibleObjectImplementation::setCraftersSerial(String& serial) {
-	// server/zone/objects/tangible/TangibleObject.idl(399):  		craftersSerial = serial;
+	// server/zone/objects/tangible/TangibleObject.idl(436):  		craftersSerial = serial;
 	craftersSerial = serial;
 }
 
 String TangibleObjectImplementation::getCraftersSerial() {
-	// server/zone/objects/tangible/TangibleObject.idl(403):  		return craftersSerial;
+	// server/zone/objects/tangible/TangibleObject.idl(440):  		return craftersSerial;
 	return craftersSerial;
 }
 
@@ -1067,16 +1067,16 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case 48:
 		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
-	case 43:
+	case 49:
 		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
 		break;
-	case 44:
+	case 50:
 		resp->insertAscii(getCraftersName());
 		break;
-	case 45:
+	case 51:
 		setCraftersSerial(inv->getAsciiParameter(_param0_setCraftersSerial__String_));
 		break;
-	case 46:
+	case 52:
 		resp->insertAscii(getCraftersSerial());
 		break;
 	default:
