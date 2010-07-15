@@ -51,6 +51,10 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/tangible/tool/events/CreateObjectTask.h"
+#include "server/zone/objects/tangible/tool/events/UpdateToolCountdownTask.h"
 
 #include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
@@ -119,9 +123,24 @@ Vector<uint32>* CraftingToolImplementation::getToolTabs() {
 void CraftingToolImplementation::requestCraftingSession(PlayerCreature* player,
 		CraftingStation* station) {
 
+	if(status == "@crafting:tool_status_finished") {
+		player->sendSystemMessage("system_msg", "crafting_tool_full");
+		sendToolStartFailure(player);
+		return;
+	}
+
+	if(status == "@crafting:tool_status_working") {
+		player->sendSystemMessage("system_msg", "crafting_tool_creating_prototype");
+		sendToolStartFailure(player);
+		return;
+	}
+
 	Locker _locker(player);
 
 	craftingStation = station;
+
+	if(craftingManager == NULL)
+		craftingManager = player->getZoneServer()->getCraftingManager();
 
 	//Locate closest crafting station, if exists.
 	if (craftingStation == NULL)
@@ -136,6 +155,8 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 	}
 
 	insertCounter = 1;
+	experimentationPoints = 0;
+	assemblyResult = 8;
 
 	PlayerObject* playerObject = player->getPlayerObject();
 
@@ -202,6 +223,18 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 	player->setLastCraftingToolUsed(_this);
 }
 
+void CraftingToolImplementation::sendToolStartFailure(PlayerCreature* player) {
+
+	// Start Object Controller **(Failed to start crafting Session************
+	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
+			player->getObjectID(), 0x0B, 0x010C);
+	objMsg->insertInt(0x10F);
+	objMsg->insertInt(0);
+	objMsg->insertByte(0);
+
+	player->sendMessage(objMsg);
+}
+
 void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 
 	if (manufactureSchematic != NULL) {
@@ -212,8 +245,10 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 	}
 
 	if (prototype != NULL) {
-		removeObject(prototype);
-		prototype = NULL;
+		if(status == "@crafting:tool_status_ready") {
+			removeObject(prototype);
+			prototype = NULL;
+		}
 	}
 
 	if (player != NULL) {
@@ -227,6 +262,28 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 	}
 
 	player->setLastCraftingToolUsed(NULL);
+}
+
+void CraftingToolImplementation::closeCraftingWindow(PlayerCreature* player, int clientCounter) {
+
+	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	objMsg->insertInt(0x10A);
+	objMsg->insertInt(1);
+	objMsg->insertByte(clientCounter);
+
+	player->sendMessage(objMsg);
+
+	objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	objMsg->insertInt(0x10A);
+	objMsg->insertInt(0);
+	objMsg->insertByte(clientCounter);
+
+	player->sendMessage(objMsg);
+
+	objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
+	objMsg->insertByte(clientCounter);
+
+	player->sendMessage(objMsg);
 }
 
 void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
@@ -275,21 +332,21 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 		manufactureSchematic
 				= (ManufactureSchematic*) draftschematic->createManufactureSchematic();
 
+		prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
+				draftschematic->getTanoCRC(), 0));
+
 		if (manufactureSchematic == NULL) {
 			player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
 			return;
 		}
 
-		addObject(manufactureSchematic, 0x4, false);
-		manufactureSchematic->sendTo(player, true);
-
-		prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
-				draftschematic->getTanoCRC(), 0));
-
 		if (prototype == NULL) {
 			player->sendSystemMessage("ui_craft", "err_no_prototype");
 			return;
 		}
+
+		addObject(manufactureSchematic, 0x4, false);
+		manufactureSchematic->sendTo(player, true);
 
 		addObject(prototype, 0xFFFFFFFF, false);
 		prototype->sendTo(player, true);
@@ -528,3 +585,449 @@ void CraftingToolImplementation::sendSlotMessage(PlayerCreature* player,
 	//End Object Controller ******************************************
 }
 
+void CraftingToolImplementation::nextCraftingStage(PlayerCreature* player, int clientCounter) {
+
+	if(manufactureSchematic == NULL) {
+		sendSlotMessage(player, 0, IngredientSlot::NOSCHEMATIC);
+		return;
+	}
+
+	if (prototype == NULL) {
+		sendSlotMessage(player, 0, IngredientSlot::PROTOTYPENOTFOUND);
+		return;
+	}
+
+	// Make sure all the require resources are there, if not, return them to inventory and close tool
+	if(!manufactureSchematic->isReadyForAssembly()){
+
+		closeCraftingWindow(player, clientCounter);
+
+		cancelCraftingSession(player);
+
+		return;
+	}
+
+	manufactureSchematic->setAssembled();
+
+	if (state == 2) {
+
+		// Calculate exp failure for red bars
+		experimentalFailureRate = craftingManager->calculateExperimentationFailureRate(player, manufactureSchematic, 0);
+
+		// Flag to get the experimenting window
+		if (craftingStation != NULL) {
+
+			// Assemble with Experimenting
+			state = 3;
+			initialAssembly(player, clientCounter);
+
+		} else {
+
+			// Assemble without Experimenting
+			state = 4;
+			initialAssembly(player, clientCounter);
+
+		}
+
+	} else if (state == 3) {
+
+		//finishAssembly(player, craftingTool, draftSchematic, counter);
+
+	} else if (state == 5) {
+
+		finishStage1(player, clientCounter);
+
+	} else if (state == 6) {
+
+		finishStage2(player, clientCounter);
+	}
+}
+
+void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int clientCounter) {
+
+	// Get the appropriate number of Experimentation points from Skill
+	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
+
+	String expskill = draftSchematic->getExperimentationSkill();
+	experimentationPoints = int(player->getSkillMod(expskill) / 10);
+
+	// Get the level of customization
+	String custskill = draftSchematic->getCustomizationSkill();
+	int custpoints = 0;//int(player->getSkillMod(custskill));
+
+	// Start DPLAY9 ***********************************************************
+	// Updates the stage of crafting, sets the number of experimentation points
+	PlayerObjectDeltaMessage9* dplay9 =
+		new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	dplay9->setCraftingState(state); // 3 If Experimenting is active, 4 if already experimented/ No experimenting
+	dplay9->setExperimentationPoints(experimentationPoints);
+	dplay9->close();
+
+	player->sendMessage(dplay9);
+	// End DPLAY9 *************************************************************
+
+	// Determine the outcome of the craft, Amazing through Critical
+	assemblyResult = craftingManager->calculateAssemblySuccess(player, draftSchematic, effectiveness);
+
+	//Set crafting percentages
+	//setInitialCraftingValues(player, craftingTool, draftSchematic);
+
+	// Set Crafter name and generate serial number
+	String name = player->getFirstName();
+	prototype->setCraftersName(name);
+
+	String serial = craftingManager->generateSerial();
+	prototype->setCraftersSerial(serial);
+
+	// Update the Tano with new values
+	//tano->updateCraftingValues(draftSchematic);
+
+	// Start DMSCO3 ***********************************************************
+	// Sends the updated values to the crafting screen
+	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
+		new ManufactureSchematicObjectDeltaMessage3(manufactureSchematic->getObjectID());
+	dMsco3->updateCraftingValues(manufactureSchematic);
+	dMsco3->close();
+
+	player->sendMessage(dMsco3);
+	// End DMSCO3 *************************************************************
+
+	// Start DMSCO7 ***********************************************************
+	// Sends the experimental properties and experimental percentages
+	ManufactureSchematicObjectDeltaMessage7* dMsco7 =
+		new ManufactureSchematicObjectDeltaMessage7(manufactureSchematic->getObjectID());
+	dMsco7->updateForAssembly(manufactureSchematic, experimentalFailureRate);
+	if (custpoints > 0) {
+		dMsco7->updateCustomizationOptions(manufactureSchematic, custpoints);
+	}
+	dMsco7->close();
+
+	player->sendMessage(dMsco7);
+	// End DMSCO7 *************************************************************
+
+	// Start DTANO3 ***********************************************************
+	// Updates the Complexity and the condition
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(prototype);
+	dtano3->updateComplexity(manufactureSchematic->getComplexity());
+	dtano3->updateMaxCondition();
+	dtano3->close();
+
+	player->sendMessage(dtano3);
+	// End DTANO3 *************************************************************
+
+
+	// Start Object Controller *******************************************
+	// Send the results
+	ObjectControllerMessage* objMsg =
+		new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
+	objMsg->insertInt(0x109);
+
+	objMsg->insertInt(assemblyResult); // Assembly Results
+
+	objMsg->insertByte(clientCounter);
+
+	player->sendMessage(objMsg);
+	// End Object Controller ******************************************
+
+	// If the window is closed now, this sets the resources to no be recoverable
+	manufactureSchematic->setAssembled();
+
+
+	// Remove all resources - Not recovering them
+	if (assemblyResult == CraftingManager::CRITICALFAILURE) {
+
+		//manufactureSchematic->resetCraftingValues();
+
+		state = 2;
+		// re-setup the slots and ingredients
+		manufactureSchematic->synchronizedUIListen(player, 0);
+
+		// Start Dplay9 **************************************
+		// Reset crafting state
+		PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		dplay9->setCraftingState(state);
+
+		dplay9->close();
+
+		player->sendMessage(dplay9);
+		// End DPLAY9 ****************************************
+
+		// Reset inserts
+		insertCounter = 1;
+	}
+}
+
+void CraftingToolImplementation::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {
+
+	manufactureSchematic->setManufactureLimit(schematicCount);
+
+	StringTokenizer tokenizer(customization);
+	byte customizationnumber, customizationvalue, customizationtype;
+
+	Database::escapeString(name);
+
+	UnicodeString customName(name);
+	prototype->setCustomObjectName(customName, false);
+
+	VectorMap<byte, byte> customizationMap;
+
+
+		while (tokenizer.hasMoreTokens()) {
+
+			customizationnumber = tokenizer.getIntToken();
+			//customizationtype = manufactureSchematic->getCustomizationType(customizationnumber);
+
+			customizationvalue = tokenizer.getIntToken();
+
+			customizationMap.put(customizationtype, customizationvalue);
+		}
+
+
+	for (int i = 0; i < customizationMap.size(); ++i) {
+		prototype->setCustomizationVariable(customizationMap.elementAt(i).getKey(), customizationMap.get(i));
+	}
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(prototype);
+	dtano3->updateName(name);
+	dtano3->updateCustomizationString();
+	dtano3->close();
+
+	player->sendMessage(dtano3);
+
+	ManufactureSchematicObjectDeltaMessage3 * dMsco3 =
+			new ManufactureSchematicObjectDeltaMessage3(manufactureSchematic->getObjectID());
+	dMsco3->updateName(name);
+	dMsco3->updateCondition(schematicCount);
+	dMsco3->close();
+
+	player->sendMessage(dMsco3);
+
+	//Object Controller
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	objMsg->insertInt(0x15A);
+	objMsg->insertInt(0);
+	objMsg->insertByte(0);
+
+	player->sendMessage(objMsg);
+
+	state = 5;
+}
+
+void CraftingToolImplementation::finishStage1(PlayerCreature* player, int clientCounter) {
+
+	PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	dplay9->setCraftingState(state);
+	dplay9->close();
+
+	player->sendMessage(dplay9);
+
+	//Object Controller
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
+	objMsg->insertInt(0x109);
+	objMsg->insertInt(4);
+	objMsg->insertByte(clientCounter);
+
+	player->sendMessage(objMsg);
+
+	state = 6;
+}
+
+void CraftingToolImplementation::finishStage2(PlayerCreature* player, int clientCounter) {
+
+	state = 0;
+
+	PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	dplay9->insertShort(5);
+	dplay9->insertInt(0xFFFFFFFF);
+	dplay9->setCraftingState(0);
+
+	dplay9->close();
+	player->sendMessage(dplay9);
+
+	//Object Controller
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	objMsg->insertInt(0x10A);
+	objMsg->insertInt(1);
+	objMsg->insertByte(clientCounter); //?!?!
+	player->sendMessage(objMsg);
+}
+
+void CraftingToolImplementation::createPrototype(PlayerCreature* player,
+		int clientCounter, int practice) {
+
+	if(manufactureSchematic == NULL) {
+		sendSlotMessage(player, 0, IngredientSlot::NOSCHEMATIC);
+		return;
+	}
+
+	if (prototype == NULL) {
+		sendSlotMessage(player, 0, IngredientSlot::PROTOTYPENOTFOUND);
+		return;
+	}
+
+	if (manufactureSchematic->isAssembled() && !manufactureSchematic->isCompleted()) {
+
+		closeCraftingWindow(player, clientCounter);
+
+		String xpType = manufactureSchematic->getDraftSchematic()->getXpType();
+		int xp = manufactureSchematic->getDraftSchematic()->getXpAmount();
+
+		if (practice != 0) {
+
+			createObject(player, manufactureSchematic->getComplexity() * 2, true);
+
+		} else {
+
+			// This is for practiceing
+			createObject(player, manufactureSchematic->getComplexity() * 2, false);
+			xp *= 1.05f;
+		}
+
+		PlayerManager* playerManager = server->getPlayerManager();
+		playerManager->awardExperience(player, xpType, xp);
+
+		manufactureSchematic->setCompleted();
+
+	} else {
+
+		closeCraftingWindow(player, clientCounter);
+
+		sendSlotMessage(player, clientCounter, IngredientSlot::WEIRDFAILEDMESSAGE);
+	}
+}
+/*void CraftingToolImplementation::createSchematic(CraftingTool* craftingTool, Player* player, int counter) {
+
+	DraftSchematic* draftSchematic;
+	TangibleObject* workingTano;
+
+	try {
+
+		if (craftingTool == NULL) {
+
+			sendSlotMessage(player, counter, SLOTNOTOOL);
+			return;
+
+		}
+
+		draftSchematic = craftingTool->getWorkingDraftSchematic();
+
+		if (draftSchematic == NULL) {
+
+			sendSlotMessage(player, counter, SLOTNOSCHEMATIC);
+			return;
+
+		}
+
+		workingTano = craftingTool->getWorkingTano();
+
+		if (workingTano == NULL) {
+
+			sendSlotMessage(player, counter, SLOTPROTOTYPENOTFOUND);
+			return;
+
+		}
+
+		if (!draftSchematic->isFinished() && draftSchematic->resourcesWereRemoved()) {
+
+			//Object Controller
+			ObjectControllerMessage* objMsg =
+					new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+			objMsg->insertInt(0x10B);
+			objMsg->insertInt(1);
+			objMsg->insertByte(counter);
+
+			player->sendMessage(objMsg);
+
+			//player->addXp(xpType, xp, true);
+			draftSchematic->setFinished();
+
+			workingTano->setParent(player);
+
+			ManufactureSchematic* manufactureSchematic = new ManufactureSchematic(player->getNewItemID(),
+					draftSchematic, craftingTool);
+			manufactureSchematic->deploy();
+			manufactureSchematic->addObject(craftingTool->getWorkingTano());
+			craftingTool->clearWorkingTano();
+
+			server->addObject(manufactureSchematic);
+
+			manufactureSchematic->setPersistent(false);
+
+			manufactureSchematic->setUpdated(false);
+
+			player->addDatapadItem(manufactureSchematic);
+
+			manufactureSchematic->sendTo(player);
+
+		} else {
+
+			closeCraftingWindow(player, counter);
+
+			sendSlotMessage(player, counter, WEIRDFAILEDMESSAGE);
+		}
+
+	} catch (...) {
+
+	}
+}*/
+
+void CraftingToolImplementation::createObject(PlayerCreature* player,
+		int timer, bool create) {
+
+	int timer2 = 1;
+
+	Reference<UpdateToolCountdownTask* > updateToolCountdownTask;
+
+	Reference<CreateObjectTask* > createObjectTask = new CreateObjectTask(player, _this, create);
+
+	if (server != NULL) {
+
+		status = "@crafting:tool_status_working";
+
+		while (timer > 0) {
+			updateToolCountdownTask = new UpdateToolCountdownTask(player, _this, timer);
+			updateToolCountdownTask->schedule(timer2);
+			timer -= 5;
+			timer2 += 5000;
+		}
+
+		if (timer < 0) {
+			timer2 += timer;// * 1000;
+			timer = 0;
+		}
+
+		updateToolCountdownTask
+				= new UpdateToolCountdownTask(player, _this, timer);
+
+		updateToolCountdownTask->schedule(timer2);
+		createObjectTask->schedule(timer2);
+
+	} else {
+		System::out << "server == NULL\n";
+	}
+}
+
+void CraftingToolImplementation::depositObject(PlayerCreature* player, bool practice) {
+
+	ManagedReference<SceneObject* > inventory = player->getSlottedObject("inventory");
+
+	if (inventory->getContainerObjectsSize() < 80) {
+
+		player->sendSystemMessage("system_msg", "prototype_transferred");
+		removeObject(prototype);
+		inventory->addObject(prototype, -1, true);
+
+		status = "@crafting:tool_status_ready";
+
+	} else {
+
+		player->sendSystemMessage("system_msg", "prototype_not_transferred");
+		status = "@crafting:tool_status_finished";
+	}
+}

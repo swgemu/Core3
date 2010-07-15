@@ -185,7 +185,9 @@ class DraftSchematic extends IntangibleObject {
 	 * getter for experiementationMod
 	 * \return experiementationMod
 	 */
-	public native string getExperiementationSkill();
+	public native string getExperimentationSkill();
+	
+	public native string getCustomizationSkill();
 	
 	public native unsigned int getTanoCRC();
 

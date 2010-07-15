@@ -79,7 +79,9 @@ public:
 
 	String getAssemblySkill();
 
-	String getExperiementationSkill();
+	String getExperimentationSkill();
+
+	String getCustomizationSkill();
 
 	unsigned int getTanoCRC();
 
@@ -91,7 +93,8 @@ protected:
 	virtual ~DraftSchematic();
 
 	String _return_getAssemblySkill;
-	String _return_getExperiementationSkill;
+	String _return_getCustomizationSkill;
+	String _return_getExperimentationSkill;
 	String _return_getGroupName;
 	String _return_getXpType;
 
@@ -164,7 +167,9 @@ public:
 
 	String getAssemblySkill();
 
-	String getExperiementationSkill();
+	String getExperimentationSkill();
+
+	String getCustomizationSkill();
 
 	unsigned int getTanoCRC();
 
@@ -239,7 +244,9 @@ public:
 
 	String getAssemblySkill();
 
-	String getExperiementationSkill();
+	String getExperimentationSkill();
+
+	String getCustomizationSkill();
 
 	unsigned int getTanoCRC();
 

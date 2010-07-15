@@ -4,8 +4,6 @@
 
 #include "CraftingManager.h"
 
-#include "server/zone/ZoneServer.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
@@ -95,6 +93,49 @@ void CraftingManager::sendResourceWeightsTo(PlayerCreature* player, unsigned int
 		((CraftingManagerImplementation*) _impl)->sendResourceWeightsTo(player, schematicID);
 }
 
+int CraftingManager::calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+		method.addObjectParameter(draftSchematic);
+		method.addFloatParameter(effectiveness);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CraftingManagerImplementation*) _impl)->calculateAssemblySuccess(player, draftSchematic, effectiveness);
+}
+
+int CraftingManager::calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+		method.addObjectParameter(manufactureSchematic);
+		method.addSignedIntParameter(pointsUsed);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CraftingManagerImplementation*) _impl)->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
+}
+
+String CraftingManager::generateSerial() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithAsciiReturn(_return_generateSerial);
+		return _return_generateSerial;
+	} else
+		return ((CraftingManagerImplementation*) _impl)->generateSerial();
+}
+
 /*
  *	CraftingManagerImplementation
  */
@@ -166,22 +207,22 @@ void CraftingManagerImplementation::_serializationHelperMethod() {
 
 CraftingManagerImplementation::CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc, ObjectManager* objman) {
 	_initializeImplementation();
-	// server/zone/managers/crafting/CraftingManager.idl(69):  		Logger.setLoggingName("CraftingManager");
+	// server/zone/managers/crafting/CraftingManager.idl(98):  		Logger.setLoggingName("CraftingManager");
 	Logger::setLoggingName("CraftingManager");
-	// server/zone/managers/crafting/CraftingManager.idl(71):  		Logger.setLogging(true);
+	// server/zone/managers/crafting/CraftingManager.idl(100):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/crafting/CraftingManager.idl(72):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/crafting/CraftingManager.idl(101):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/crafting/CraftingManager.idl(74):  		zoneServer = serv;
+	// server/zone/managers/crafting/CraftingManager.idl(103):  		zoneServer = serv;
 	zoneServer = serv;
-	// server/zone/managers/crafting/CraftingManager.idl(75):  		zoneProcessor = proc;
+	// server/zone/managers/crafting/CraftingManager.idl(104):  		zoneProcessor = proc;
 	zoneProcessor = proc;
-	// server/zone/managers/crafting/CraftingManager.idl(76):  		objectManager = objman;
+	// server/zone/managers/crafting/CraftingManager.idl(105):  		objectManager = objman;
 	objectManager = objman;
 }
 
 DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int schematicID) {
-	// server/zone/managers/crafting/CraftingManager.idl(89):  		return schematicMap.get(schematicID);
+	// server/zone/managers/crafting/CraftingManager.idl(118):  		return schematicMap.get(schematicID);
 	return schematicMap->get(schematicID);
 }
 
@@ -205,6 +246,15 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 8:
 		sendResourceWeightsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
+	case 9:
+		resp->insertSignedInt(calculateAssemblySuccess((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
+		break;
+	case 10:
+		resp->insertSignedInt(calculateExperimentationFailureRate((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		break;
+	case 11:
+		resp->insertAscii(generateSerial());
+		break;
 	default:
 		return NULL;
 	}
@@ -222,6 +272,18 @@ void CraftingManagerAdapter::sendDraftSlotsTo(PlayerCreature* player, unsigned i
 
 void CraftingManagerAdapter::sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID) {
 	((CraftingManagerImplementation*) impl)->sendResourceWeightsTo(player, schematicID);
+}
+
+int CraftingManagerAdapter::calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
+	return ((CraftingManagerImplementation*) impl)->calculateAssemblySuccess(player, draftSchematic, effectiveness);
+}
+
+int CraftingManagerAdapter::calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
+	return ((CraftingManagerImplementation*) impl)->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
+}
+
+String CraftingManagerAdapter::generateSerial() {
+	return ((CraftingManagerImplementation*) impl)->generateSerial();
 }
 
 /*

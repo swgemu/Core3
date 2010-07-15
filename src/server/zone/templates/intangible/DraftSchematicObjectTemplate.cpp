@@ -33,6 +33,7 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 
 	assemblySkill = templateData->getStringField("assemblySkill");
 	experimentingSkill = templateData->getStringField("experimentingSkill");
+	customizationSkill = templateData->getStringField("customizationSkill");
 
 	LuaObject ingredientTemplateNamesList = templateData->getObjectField("ingredientTemplateNames");
 	for (int i = 1; i <= ingredientTemplateNamesList.getTableSize(); ++i) {

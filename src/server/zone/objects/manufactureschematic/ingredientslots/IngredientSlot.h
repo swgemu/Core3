@@ -102,7 +102,11 @@ public:
 	}
 
 	~IngredientSlot(){
+		info("Deleting Slot type " + String::valueOf(slottype));
+	}
 
+	bool isType(int type) {
+		return type == slottype;
 	}
 
 	virtual inline void init(const int size){
@@ -133,7 +137,9 @@ public:
 		return NULL;
 	}
 
-	virtual inline bool isFull() = 0;
+	virtual inline bool isComplete() {
+		return false;
+	}
 
 	virtual inline bool hasItem() {
 		return false;

@@ -63,6 +63,43 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		/**
+		 * Arguments
+		 *
+		 * 1 Unicode String
+		 * Contains clientCounter and int for practice
+		 *
+		 */
+
+		if (!creature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+
+		ManagedReference<CraftingTool*> craftingTool =
+				player->getLastCraftingToolUsed();
+
+		if (craftingTool == NULL) {
+			player->sendSystemMessage("ui_craft", "err_no_crafting_tool");
+			return GENERALERROR;
+		}
+
+		int clientCounter, practice;
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		if(tokenizer.hasMoreTokens())
+			clientCounter = tokenizer.getIntToken();
+		else
+			return GENERALERROR;
+
+		if(tokenizer.hasMoreTokens())
+			practice = tokenizer.getIntToken();
+		else
+			practice = 1;
+
+		craftingTool->createPrototype(player, clientCounter, practice);
+
 		return SUCCESS;
 	}
 

@@ -2,7 +2,7 @@
  * SharedDraftSchematicObjectTemplate.h
  *
  *  Created on: 06/05/2010
- *      Author: victor
+ *      Author: kyle
  */
 
 #ifndef DRAFTSCHEMATICOBJECTTEMPLATE_H_
@@ -26,6 +26,7 @@ protected:
 
 	String assemblySkill;
 	String experimentingSkill;
+	String customizationSkill;
 
 	Vector<String> ingredientTemplateNames;
 	Vector<String> ingredientTitleNames;
@@ -56,6 +57,7 @@ public:
 	~DraftSchematicObjectTemplate();
 
 	void readObject(LuaObject* templateData);
+
 
 	Vector<Reference<DraftSlot* > > getDraftSlots() {
         return draftSlots;
@@ -123,6 +125,10 @@ public:
 
     String getExperimentingSkill() {
         return experimentingSkill;
+    }
+
+    String getCustomizationSkill() {
+    	return customizationSkill;
     }
 
     String getGroupName() {

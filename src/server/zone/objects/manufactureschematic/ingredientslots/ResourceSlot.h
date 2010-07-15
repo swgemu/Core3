@@ -70,7 +70,6 @@ public:
 	~ResourceSlot() {
 
 		cleanup();
-		info("Deleting Slot");
 	}
 
 	inline void cleanup() {
@@ -152,9 +151,8 @@ public:
 		return (TangibleObject*) contents;
 	}
 
-	inline bool isFull() {
-		return (contents->getSpawnType() == type && contents->getQuantity()
-				== quantity);
+	inline bool isComplete() {
+		return (contents->getQuantity() == quantity);
 	}
 
 	inline bool hasItem() {

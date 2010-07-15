@@ -44,17 +44,20 @@ which carries forward this exception.
 
 package server.zone.managers.crafting;
 
-import server.zone.ZoneServer;
 import server.zone.ZoneProcessServerImplementation;
 import engine.log.Logger;
 import engine.lua.Lua;
+import engine.core.ManagedObject;
 import system.util.VectorMap;
 import server.zone.managers.object.ObjectManager;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.player.PlayerCreature;
 
+include server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.managers.crafting.schematicmap.SchematicMap;
+
+
 
 class CraftingManager extends ManagedObject implements Lua {
 	
@@ -63,6 +66,32 @@ class CraftingManager extends ManagedObject implements Lua {
 	private transient ObjectManager objectManager;
 
 	private transient SchematicMap schematicMap;
+	
+	// Ingredient math types
+	public static final short RESOURCE = 0x00;
+	public static final short COMPONENTLINEAR = 0x01;
+	public static final short COMPONENTPERCENTAGE = 0x02;
+	
+	public static final short CR = 1;
+	public static final short CD = 2;
+	public static final short DR = 3;
+	public static final short HR = 4;
+	public static final short FL = 5;
+	public static final short MA = 6;
+	public static final short PE = 7;
+	public static final short OQ = 8;
+	public static final short SR = 9;
+	public static final short UT = 10;
+	
+	public static final short AMAZINGSUCCESS = 0;
+	public static final short GREATSUCCESS = 1;
+	public static final short GOODSUCCESS = 2;
+	public static final short MODERATESUCCESS = 3;
+	public static final short SUCCESS = 4;
+	public static final short MARGINALSUCCESS = 5;
+	public static final short OK = 6;
+	public static final short BARELYSUCCESSFUL = 7;
+	public static final short CRITICALFAILURE = 8;
 
 	public CraftingManager(ZoneServer serv, ZoneProcessServerImplementation proc, ObjectManager objman) {
 		
@@ -92,4 +121,12 @@ class CraftingManager extends ManagedObject implements Lua {
 	public native void sendDraftSlotsTo(PlayerCreature player, unsigned int schematicID);
 	
 	public native void sendResourceWeightsTo(PlayerCreature player, unsigned int schematicID);
+	
+	public native int calculateAssemblySuccess(PlayerCreature player, DraftSchematic draftSchematic, float effectiveness);
+	
+	public native int calculateExperimentationFailureRate(PlayerCreature player, ManufactureSchematic manufactureSchematic, int pointsUsed);
+	
+	private native float getWeightedValue(ManufactureSchematic manufactureSchematic, int type);
+	
+	public native string generateSerial();
 }
