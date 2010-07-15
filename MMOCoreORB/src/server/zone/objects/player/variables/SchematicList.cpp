@@ -96,33 +96,6 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 	return val;
 }
 
-bool SchematicList::remove(DraftSchematic* schematic, DeltaMessage* message, int updates) {
-
-	int index = -1;
-
-	for(int i = 0; i < vector.size(); ++i) {
-		if(schematic->getObjectNameStringIdName() == vector.get(i)->getObjectNameStringIdName()) {
-			index = i;
-			break;
-		}
-	}
-
-	if(index == -1)
-		return false;
-
-	vector.removeElementAt(index);
-
-	if (message != NULL) {
-		if (updates != 0)
-			message->startList(updates, updateCounter += updates);
-
-		message->insertByte(0);
-		message->insertShort(index);
-	}
-
-	return true;
-}
-
 Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
 		Vector<uint32>* enabledTabs) {
 

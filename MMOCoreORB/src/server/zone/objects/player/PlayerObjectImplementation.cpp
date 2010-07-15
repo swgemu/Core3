@@ -425,17 +425,20 @@ void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftS
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
 		msg->startUpdate(4);
 
-		schematicList.remove(schematics.get(0), msg, schematics.size());
+		schematicList.remove(schematicList.find(schematics.get(0)), msg, schematics.size());
 
 		for (int i = 1; i < schematics.size(); ++i)
-			schematicList.remove(schematics.get(i), msg, 0);
+			schematicList.remove(schematicList.find(schematics.get(i)), msg, 0);
 
 		msg->close();
 
 		sendMessage(msg);
+
 	} else {
+
 		for (int i = 0; i < schematics.size(); ++i)
-			schematicList.remove(schematics.get(i));
+			schematicList.remove(schematicList.find(schematics.get(i)));
+
 	}
 }
 
@@ -465,13 +468,13 @@ System::out << schematic->getObjectNameStringIdName() << endl;
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
 		msg->startUpdate(4);
 
-		schematicList.remove(schematic, msg, 1);
+		schematicList.remove(schematicList.find(schematic), msg, 1);
 
 		msg->close();
 
 		sendMessage(msg);
 	} else {
-		schematicList.remove(schematic);
+		schematicList.remove(schematicList.find(schematic));
 	}
 }
 
