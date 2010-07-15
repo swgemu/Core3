@@ -84,7 +84,7 @@ public:
 			return 0;
 	}
 
-	inline bool add(PlayerCreature* player, TangibleObject* tano) {
+	bool add(PlayerCreature* player, TangibleObject* tano) {
 
 		/// Must be a resource container to proceed
 		if (tano->isResourceContainer()) {
@@ -132,7 +132,7 @@ public:
 
 			}
 
-			if(removeFromParent)
+			if(removeFromParent && previousParent != NULL)
 				previousParent->removeObject(incomingResource, true);
 
 			return true;
