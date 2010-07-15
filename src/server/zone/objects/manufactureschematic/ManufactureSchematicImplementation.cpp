@@ -215,7 +215,7 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 
 		Reference<IngredientSlot* > slot = ingredientSlots.get(i);
 
-		if(slot == NULL || !slot->isComplete())
+		if(slot == NULL || !slot->hasItem() || !slot->isComplete())
 			return false;
 	}
 	return true;
