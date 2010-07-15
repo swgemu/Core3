@@ -238,17 +238,30 @@ String DraftSchematic::getAssemblySkill() {
 		return ((DraftSchematicImplementation*) _impl)->getAssemblySkill();
 }
 
-String DraftSchematic::getExperiementationSkill() {
+String DraftSchematic::getExperimentationSkill() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 21);
 
-		method.executeWithAsciiReturn(_return_getExperiementationSkill);
-		return _return_getExperiementationSkill;
+		method.executeWithAsciiReturn(_return_getExperimentationSkill);
+		return _return_getExperimentationSkill;
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getExperiementationSkill();
+		return ((DraftSchematicImplementation*) _impl)->getExperimentationSkill();
+}
+
+String DraftSchematic::getCustomizationSkill() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		method.executeWithAsciiReturn(_return_getCustomizationSkill);
+		return _return_getCustomizationSkill;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getCustomizationSkill();
 }
 
 unsigned int DraftSchematic::getTanoCRC() {
@@ -256,7 +269,7 @@ unsigned int DraftSchematic::getTanoCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -268,7 +281,7 @@ String DraftSchematic::getGroupName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 
 		method.executeWithAsciiReturn(_return_getGroupName);
 		return _return_getGroupName;
@@ -419,12 +432,15 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getAssemblySkill());
 		break;
 	case 21:
-		resp->insertAscii(getExperiementationSkill());
+		resp->insertAscii(getExperimentationSkill());
 		break;
 	case 22:
-		resp->insertInt(getTanoCRC());
+		resp->insertAscii(getCustomizationSkill());
 		break;
 	case 23:
+		resp->insertInt(getTanoCRC());
+		break;
+	case 24:
 		resp->insertAscii(getGroupName());
 		break;
 	default:
@@ -494,8 +510,12 @@ String DraftSchematicAdapter::getAssemblySkill() {
 	return ((DraftSchematicImplementation*) impl)->getAssemblySkill();
 }
 
-String DraftSchematicAdapter::getExperiementationSkill() {
-	return ((DraftSchematicImplementation*) impl)->getExperiementationSkill();
+String DraftSchematicAdapter::getExperimentationSkill() {
+	return ((DraftSchematicImplementation*) impl)->getExperimentationSkill();
+}
+
+String DraftSchematicAdapter::getCustomizationSkill() {
+	return ((DraftSchematicImplementation*) impl)->getCustomizationSkill();
 }
 
 unsigned int DraftSchematicAdapter::getTanoCRC() {

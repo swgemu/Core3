@@ -44,7 +44,7 @@ which carries forward this exception.
 
 package server.zone.objects.tangible.tool;
 
-import server.zone.objects.tangible.tool.ToolTangibleObject;
+
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.draftschematic.DraftSchematic;
@@ -52,8 +52,8 @@ include server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.player.PlayerCreature;
 include server.zone.objects.tangible.tool.CraftingStation;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.managers.crafting.CraftingManager;
 
 class CraftingTool extends ToolTangibleObject {
 	
@@ -61,12 +61,11 @@ class CraftingTool extends ToolTangibleObject {
 	protected float effectiveness;
 	protected string status;
 	
+	protected transient CraftingManager craftingManager;
+	
 	@dereferenced
 	protected Vector<unsigned int> enabledTabs;
-	
-	//@dereferenced
-	//protected transient CraftingSession craftingSession;
-	
+
 	protected transient CraftingStation craftingStation;
 	
 	protected transient int state;
@@ -75,6 +74,12 @@ class CraftingTool extends ToolTangibleObject {
 	protected transient ManufactureSchematic manufactureSchematic;
 	
 	protected transient TangibleObject prototype;
+	
+	protected transient int experimentationPoints;
+	
+	protected transient int assemblyResult;
+	
+	protected transient int experimentalFailureRate;
 	
 	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
 	public static final int FOOD = 2; // Food and Chemical Crafting Tool
@@ -94,6 +99,8 @@ class CraftingTool extends ToolTangibleObject {
 		Logger.setLoggingName("CraftingTool");
 		
 		state = 1;
+		
+		status = "@crafting:tool_status_ready";
 	}
 	
 	@local
@@ -135,7 +142,11 @@ class CraftingTool extends ToolTangibleObject {
 	
 	private native void sendStart(PlayerCreature player);
 	
+	private native void sendToolStartFailure(PlayerCreature player);
+	
 	public native void cancelCraftingSession(PlayerCreature player);
+	
+	private native void closeCraftingWindow(PlayerCreature player, int clientCounter);
 	
 	private native void locateCraftingStation(PlayerCreature player, int toolType);
 
@@ -143,13 +154,29 @@ class CraftingTool extends ToolTangibleObject {
 
 	public native void synchronizedUIListenForSchematic(PlayerCreature player);
 	
-	public native void addIngredient(PlayerCreature player, TangibleObject tano, int slot, int count);
+	public native void addIngredient(PlayerCreature player, TangibleObject tano, int slot, int clientCounter);
 	
-	public native void sendIngredientAddSuccess(PlayerCreature player, int slot, int count);
+	private native void sendIngredientAddSuccess(PlayerCreature player, int slot, int clientCounter);
 	
-	public native void removeIngredient(PlayerCreature player, TangibleObject tano, int slot, int count);
+	public native void removeIngredient(PlayerCreature player, TangibleObject tano, int slot, int clientCounter);
 	
-	public native void sendIngredientRemoveSuccess(PlayerCreature player, int slot, int count);
+	private native void sendIngredientRemoveSuccess(PlayerCreature player, int slot, int clientCounter);
 	
-	public native void sendSlotMessage(PlayerCreature player, int counter, int message);
+	private native void sendSlotMessage(PlayerCreature player, int clientCounter, int message);
+	
+	public native void nextCraftingStage(PlayerCreature player, int clientCounter);
+
+	private native void initialAssembly(PlayerCreature player, int counter);
+
+	public native void customization(PlayerCreature player, string name, int schematicCount, string customization);
+
+	private native void finishStage1(PlayerCreature player, int clientCounter);
+	
+	private native void finishStage2(PlayerCreature player, int clientCounter);
+
+	public native void createPrototype(PlayerCreature player, int clientCounter, int practice);
+
+	public native void createObject(PlayerCreature player, int timer, boolean create);
+	
+	public native void depositObject(PlayerCreature player, boolean practice);
 }

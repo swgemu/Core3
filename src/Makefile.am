@@ -115,6 +115,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
 				server/zone/objects/draftschematic/DraftSchematic.cpp \
 				server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
+				server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
 				server/zone/objects/resource/ResourceSpawn.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \

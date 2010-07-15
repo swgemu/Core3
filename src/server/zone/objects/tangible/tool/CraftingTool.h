@@ -41,16 +41,6 @@ using namespace server::zone::packets::scene;
 
 namespace server {
 namespace zone {
-
-class Zone;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
-
-namespace server {
-namespace zone {
 namespace packets {
 namespace object {
 
@@ -63,6 +53,20 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace crafting {
+
+class CraftingManager;
+
+} // namespace crafting
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::crafting;
+
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
@@ -70,8 +74,6 @@ using namespace server::zone::packets::object;
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
-
-#include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -123,15 +125,19 @@ public:
 
 	void synchronizedUIListenForSchematic(PlayerCreature* player);
 
-	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void sendIngredientAddSuccess(PlayerCreature* player, int slot, int count);
+	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+	void nextCraftingStage(PlayerCreature* player, int clientCounter);
 
-	void sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int count);
+	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
 
-	void sendSlotMessage(PlayerCreature* player, int counter, int message);
+	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
+
+	void createObject(PlayerCreature* player, int timer, bool create);
+
+	void depositObject(PlayerCreature* player, bool practice);
 
 protected:
 	CraftingTool(DummyConstructorParameter* param);
@@ -163,6 +169,8 @@ protected:
 
 	String status;
 
+	ManagedReference<CraftingManager* > craftingManager;
+
 	Vector<unsigned int> enabledTabs;
 
 	ManagedReference<CraftingStation* > craftingStation;
@@ -174,6 +182,12 @@ protected:
 	ManagedReference<ManufactureSchematic* > manufactureSchematic;
 
 	ManagedReference<TangibleObject* > prototype;
+
+	int experimentationPoints;
+
+	int assemblyResult;
+
+	int experimentalFailureRate;
 
 public:
 	static const int CLOTHING = 1;
@@ -215,10 +229,14 @@ public:
 private:
 	void sendStart(PlayerCreature* player);
 
+	void sendToolStartFailure(PlayerCreature* player);
+
 public:
 	void cancelCraftingSession(PlayerCreature* player);
 
 private:
+	void closeCraftingWindow(PlayerCreature* player, int clientCounter);
+
 	void locateCraftingStation(PlayerCreature* player, int toolType);
 
 public:
@@ -226,15 +244,39 @@ public:
 
 	void synchronizedUIListenForSchematic(PlayerCreature* player);
 
-	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void sendIngredientAddSuccess(PlayerCreature* player, int slot, int count);
+private:
+	void sendIngredientAddSuccess(PlayerCreature* player, int slot, int clientCounter);
 
-	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+public:
+	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int count);
+private:
+	void sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int clientCounter);
 
-	void sendSlotMessage(PlayerCreature* player, int counter, int message);
+	void sendSlotMessage(PlayerCreature* player, int clientCounter, int message);
+
+public:
+	void nextCraftingStage(PlayerCreature* player, int clientCounter);
+
+private:
+	void initialAssembly(PlayerCreature* player, int counter);
+
+public:
+	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
+
+private:
+	void finishStage1(PlayerCreature* player, int clientCounter);
+
+	void finishStage2(PlayerCreature* player, int clientCounter);
+
+public:
+	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
+
+	void createObject(PlayerCreature* player, int timer, bool create);
+
+	void depositObject(PlayerCreature* player, bool practice);
 
 	CraftingTool* _this;
 
@@ -291,16 +333,23 @@ public:
 
 	void synchronizedUIListenForSchematic(PlayerCreature* player);
 
-	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void sendIngredientAddSuccess(PlayerCreature* player, int slot, int count);
+	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int count);
+	void nextCraftingStage(PlayerCreature* player, int clientCounter);
 
-	void sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int count);
+	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
 
-	void sendSlotMessage(PlayerCreature* player, int counter, int message);
+	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
 
+	void createObject(PlayerCreature* player, int timer, bool create);
+
+	void depositObject(PlayerCreature* player, bool practice);
+
+protected:
+	String _param1_customization__PlayerCreature_String_int_String_;
+	String _param3_customization__PlayerCreature_String_int_String_;
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {

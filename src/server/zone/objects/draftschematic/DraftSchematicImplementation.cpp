@@ -193,8 +193,12 @@ String DraftSchematicImplementation::getAssemblySkill() {
 	return schematicTemplate->getAssemblySkill();
 }
 
-String DraftSchematicImplementation::getExperiementationSkill() {
+String DraftSchematicImplementation::getExperimentationSkill() {
 	return schematicTemplate->getExperimentingSkill();
+}
+
+String DraftSchematicImplementation::getCustomizationSkill() {
+	return schematicTemplate->getCustomizationSkill();
 }
 
 uint32 DraftSchematicImplementation::getTanoCRC() {

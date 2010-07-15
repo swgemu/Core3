@@ -51,6 +51,8 @@ which carries forward this exception.
 #ifndef RESOURCEATTRIBUTE_H_
 #define RESOURCEATTRIBUTE_H_
 
+#include "server/zone/managers/crafting/CraftingManager.h"
+
 /**
  * The resource attribute class stores the name
  * of a resource attribute and the min / max value
@@ -60,6 +62,7 @@ private:
 	String name;
 	int minimum;
 	int maximum;
+	int index;
 
 public:
 	/**
@@ -72,6 +75,9 @@ public:
 		name = n;
 		minimum = min;
 		maximum = max;
+		index = 0;
+
+		setIndex(name);
 	}
 
 	/**
@@ -79,6 +85,30 @@ public:
 	 */
 	~ResourceAttribute() {
 
+	}
+
+	void setIndex(String name) {
+
+		if(name == "res_decay_resist")
+			index = CraftingManager::DR;
+		else if(name == "res_quality")
+			index = CraftingManager::OQ;
+		else if(name == "res_flavor")
+			index = CraftingManager::FL;
+		else if(name == "res_potential_energy")
+			index = CraftingManager::PE;
+		else if(name == "res_malleability")
+			index = CraftingManager::MA;
+		else if(name == "res_toughness")
+			index = CraftingManager::UT;
+		else if(name == "res_shock_resistance")
+			index = CraftingManager::SR;
+		else if(name == "res_conductivity")
+			index = CraftingManager::CD;
+		else if(name == "res_cold_resist")
+			index = CraftingManager::CR;
+		else if(name == "res_heat_resist")
+			index = CraftingManager::HR;
 	}
 
 	/**
@@ -100,6 +130,10 @@ public:
 	 */
 	int getMaximum() {
 		return maximum;
+	}
+
+	int getIndex() {
+		return index;
 	}
 };
 

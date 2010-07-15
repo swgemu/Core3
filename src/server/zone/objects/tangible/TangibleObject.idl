@@ -423,6 +423,22 @@ class TangibleObject extends SceneObject {
 	public void setCustomizationString(final string vars) {
 		customizationVariables.parseFromClientString(vars);
 	}
+	
+	public void setCraftersName(string name) {
+		craftersName = name;
+	}
+	
+	public string getCraftersName() {
+		return craftersName;
+	}
+	
+	public void setCraftersSerial(string serial) {
+		craftersSerial = serial;
+	}
+	
+	public string getCraftersSerial() {
+		return craftersSerial;
+	}
 }
 
 

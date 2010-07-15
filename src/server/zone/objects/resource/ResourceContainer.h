@@ -14,20 +14,6 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace resource {
-
-class ResourceSpawn;
-
-} // namespace resource
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::resource;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace player {
 
 class PlayerCreature;
@@ -38,6 +24,8 @@ class PlayerCreature;
 } // namespace server
 
 using namespace server::zone::objects::player;
+
+#include "server/zone/objects/resource/ResourceSpawn.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 

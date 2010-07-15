@@ -66,3 +66,155 @@ void CraftingManagerImplementation::sendDraftSlotsTo(PlayerCreature* player, uin
 void CraftingManagerImplementation::sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID) {
 	schematicMap->sendResourceWeightsTo(player, schematicID);
 }
+
+int CraftingManagerImplementation::calculateAssemblySuccess(PlayerCreature* player,
+		DraftSchematic* draftSchematic, float effectiveness) {
+
+	// Skill + Luck roll and crafting tool effectiveness determine the
+	// Success of the crafting result
+
+	int preresult, result;
+
+	// Get assembly points from skill
+	String assemblySkill = draftSchematic->getAssemblySkill();
+	float assemblyPoints = float(player->getSkillMod(assemblySkill) / 10);
+
+	// Get modifier from tool to modify success
+	float toolModifier = 1.0f + (effectiveness / 100);
+
+	//Pyollian Cake
+	/*if (player->hasBuff(BuffCRC::FOOD_CRAFT_BONUS)) {
+		Buff* buff = player->getBuff(BuffCRC::FOOD_CRAFT_BONUS);
+
+		if (buff != NULL) {
+			float craftbonus = buff->getSkillModifierValue("craft_bonus");
+			toolModifier *= 1.0f + (craftbonus / 100.0f);
+			player->removeBuff(buff);
+		}
+	}*/
+
+	// Gets failure rate * 10  3.5% to 6.5% = 35 - 65
+	int failureRate = 50 - effectiveness;
+
+	int luck = System::random(1000) + player->getSkillMod("luck") * 10;
+
+	// The assembly roll is based on 0-1000 result
+	if (luck < failureRate)
+		return CRITICALFAILURE;
+
+	if (luck >= 950)
+		return AMAZINGSUCCESS;
+
+	// We will use a scale of 0-200 for the rest of results
+	luck = (luck / 5) + int(toolModifier * (assemblyPoints * 10));
+
+	if (luck > 160)
+		return GREATSUCCESS;
+
+	if (luck > 140)
+		return GOODSUCCESS;
+
+	if (luck > 110)
+		return MODERATESUCCESS;
+
+	if (luck > 90)
+		return SUCCESS;
+
+	if (luck > 75)
+		return MARGINALSUCCESS;
+
+	if (luck > 60)
+		return OK;
+
+	return BARELYSUCCESSFUL;
+}
+
+int CraftingManagerImplementation::calculateExperimentationFailureRate(PlayerCreature* player,
+		ManufactureSchematic* manufactureSchematic, int pointsUsed) {
+
+	// Get the Weighted value of MA
+	float ma = getWeightedValue(manufactureSchematic, MA);
+
+	// Get Experimentation skill
+	String expSkill = manufactureSchematic->getDraftSchematic()->getExperimentationSkill();
+	float expPoints = player->getSkillMod(expSkill);
+
+	int failure = int((50.0f + (ma - 500.0f) / 40.0f + expPoints - 5.0f * float(pointsUsed)));
+
+	return failure;
+}
+
+float CraftingManagerImplementation::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
+
+	int nsum = 0;
+	float weightedAverage = 0;
+	int n = 0;
+	int stat = 0;
+
+	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
+
+		Reference<IngredientSlot* > ingredientslot = manufactureSchematic->getIngredientSlot(i);
+		Reference<DraftSlot* > draftslot = manufactureSchematic->getDraftSchematic()->getDraftSlot(i);
+
+		if(!ingredientslot->isType(IngredientSlot::RESOURCESLOT))
+			continue;
+
+		ManagedReference<ResourceContainer* > resourceContainer = (ResourceContainer*) ingredientslot->get();
+
+		if(resourceContainer == NULL)
+			continue;
+
+		ManagedReference<ResourceSpawn* > spawn = resourceContainer->getSpawnObject();
+
+		int combineType = draftslot->getCombineType();
+
+		switch (combineType) {
+		case RESOURCE:
+			n = draftslot->getQuantity();
+			stat = spawn->getValueOf(type);
+
+			if (stat != 0) {
+
+				nsum += n;
+				weightedAverage += (stat * n);
+
+			}
+			break;
+		case COMPONENTLINEAR:
+		case COMPONENTPERCENTAGE:
+			break;
+
+		}
+	}
+
+	if (weightedAverage != 0)
+		weightedAverage /= float(nsum);
+
+	return weightedAverage;
+}
+
+String CraftingManagerImplementation::generateSerial() {
+
+	StringBuffer ss;
+
+	char a;
+
+	ss << "(";
+
+	for (int i = 0; i < 8; ++i) {
+
+		a = (System::random(34));
+		if (a < 9) {
+			a = a + 48;
+		} else {
+			a -= 9;
+			a = a + 97;
+		}
+		ss << a;
+	}
+
+	ss << ")";
+
+
+	return ss.toString();
+}

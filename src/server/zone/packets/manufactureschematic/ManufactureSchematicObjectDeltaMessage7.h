@@ -105,19 +105,19 @@ public:
 		update7();
 	}
 
-	void updateForAssembly(DraftSchematic* draftSchematic){
-		initializeExperimentalValues(draftSchematic);  // Temp
-		update9(draftSchematic, true);
-		update0B(draftSchematic);
-		update0C(draftSchematic);
-		update12(draftSchematic);
+	void updateForAssembly(ManufactureSchematic* manufactureSchematic, float failureRate){
+		initializeExperimentalValues(manufactureSchematic);  // Temp
+		update9(manufactureSchematic, true);
+		update0B(manufactureSchematic);
+		update0C(manufactureSchematic);
+		update12(failureRate);
 	}
 
-	void updateCustomizationOptions(DraftSchematic* draftSchematic, int custpoints){
-		update0D(draftSchematic);
-		update0E(draftSchematic);
-		update0F(draftSchematic);
-		update10(draftSchematic, custpoints);
+	void updateCustomizationOptions(ManufactureSchematic* manufactureSchematic, int custpoints){
+		update0D(manufactureSchematic);
+		update0E(manufactureSchematic);
+		update0F(manufactureSchematic);
+		update10(manufactureSchematic, custpoints);
 		update11();
 	}
 
@@ -227,14 +227,14 @@ public:
 
 	}
 
-	void initializeExperimentalValues(DraftSchematic* draftSchematic) {
+	void initializeExperimentalValues(ManufactureSchematic* manufactureSchematic) {
 
-		/*DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
 		startUpdate(8);
 
 		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
-		int counter = draftSchematic->getExpCounter();
+		int counter = manufactureSchematic->getExperimentingCounter();
 
 		insertInt(titleCount);
 		insertInt(titleCount);
@@ -289,10 +289,43 @@ public:
 	}
 
 	// This sends the experimental values shown in the Screen after hitting assemble
-	void update9(DraftSchematic* draftSchematic, bool initial) {
+	void update9(ManufactureSchematic* manufactureSchematic, bool initial) {
+
+		int count;
+
+		startUpdate(9);
+
+		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
+
+		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
+
+		if (initial) {
+			manufactureSchematic->setExperimentingCounter(titleCount * 2);
+			manufactureSchematic->setExperimentingCounter(titleCount * 3);
+		}
+
+//System::out << "Visible: " << titleCount << "  Count: " << count << endl;
+
+		count = manufactureSchematic->getExperimentingCounterPrevious();
+
+		startList(titleCount, count);
+
+		for (int i = 0; i < titleCount; i++) {
+
+			String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+
+			float value = craftingValues->getCurrentPercentageAverage(title);
+
+			if(value > 0 && value < .01)
+				value = .01f;
+
+			removeListFloatElement(i, value);
+
+		}
+
 		/*startUpdate(9);
 
-		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 		int count, linenum;
 		String title, subtitle;
 		float value;
@@ -317,10 +350,10 @@ public:
 		}
 
 		if (initial) {
-			draftSchematic->setExpCounter(updatedLines.size() * 2);
+			manufactureSchematic->setExperimentingCounter(updatedLines.size() * 2);
 			count = updatedLines.size() * 2;
 		} else {
-			count = draftSchematic->getExpCounter();
+			count = manufactureSchematic->getExperimentingCounter();
 		}
 
 		startList(updatedLines.size(), count);
@@ -338,9 +371,9 @@ public:
 		updatedLines.removeAll();*/
 	}
 
-	void update0A(DraftSchematic* draftSchematic) {
+	void update0A(ManufactureSchematic* manufactureSchematic) {
 
-		/*DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
 		startUpdate(0x0A);
 
@@ -350,12 +383,12 @@ public:
 
 		for (int i = 0; i < titleCount; i++) {
 			removeListFloatElement(i, 1.0f);
-		}*/
+		}
 	}
 	// I think this is usually 1.0
-	void update0B(DraftSchematic* draftSchematic) {
+	void update0B(ManufactureSchematic* manufactureSchematic) {
 
-		/*DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
 		startUpdate(0x0B);
 
@@ -365,12 +398,12 @@ public:
 
 		for (int i = 0; i < titleCount; i++) {
 			removeListFloatElement(i, 1.0f);
-		}*/
+		}
 	}
 	// This is the MAX experimental value.  How many bars
-	void update0C(DraftSchematic* draftSchematic) {
+	void update0C(ManufactureSchematic* manufactureSchematic) {
 
-		/*DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
 		startUpdate(0x0C);
 
@@ -386,10 +419,10 @@ public:
 
 			removeListFloatElement(i, value);
 
-		}*/
+		}
 	}
 
-	void update0D(DraftSchematic* draftSchematic) {
+	void update0D(ManufactureSchematic* manufactureSchematic) {
 
 		/*int count = draftSchematic->getCustomizationOptionCount();
 
@@ -407,7 +440,7 @@ public:
 	}
 
 	// Starting COlor chooser position
-	void update0E(DraftSchematic* draftSchematic) {
+	void update0E(ManufactureSchematic* manufactureSchematic) {
 
 		/*int count = draftSchematic->getCustomizationOptionCount();
 
@@ -423,7 +456,7 @@ public:
 		}*/
 	}
 
-	void update0F(DraftSchematic* draftSchematic) {
+	void update0F(ManufactureSchematic* manufactureSchematic) {
 
 		/*int count = draftSchematic->getCustomizationOptionCount();
 
@@ -439,7 +472,7 @@ public:
 	}
 
 	// Number of palette colors
-	void update10(DraftSchematic* draftSchematic, int custpoints) {
+	void update10(ManufactureSchematic* manufactureSchematic, int custpoints) {
 
 		/*int count = draftSchematic->getCustomizationOptionCount();
 
@@ -460,9 +493,9 @@ public:
 		insertByte(1);
 	}
 
-	void update12(DraftSchematic* draftSchematic){
-		/*startUpdate(0x12);
-		insertFloat(draftSchematic->getExpFailure());*/
+	void update12(float failureRate){
+		startUpdate(0x12);
+		insertFloat(failureRate);
 	}
 
 	void update14() {
