@@ -43,21 +43,16 @@
 
 object_tangible_survey_tool_survey_tool_solar = object_tangible_survey_tool_shared_survey_tool_solar:new {
 
-   templateType = 32770,
+   templateType = SURVEYTOOL,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
    customizationDefaults = {},
 
-   range = 64,
-   type = 1
+   toolType = 1,
+   toolAnimation = "clienteffect/survey_tool_moisture.cef",
+   sampleAnimation = "clienteffect/survey_sample_moisture.cef",
+   surveyType = "energy_renewable_unlimited_solar"
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_solar, "object/tangible/survey_tool/survey_tool_solar.iff")
-
--- Items in previous file
--- 	templateType = SURVEYTOOL,
--- 	toolType = 1,
--- 	toolAnimation = "clienteffect/survey_tool_moisture.cef",
--- 	sampleAnimation = "clienteffect/survey_sample_moisture.cef",
--- 	surveyType = "energy_renewable_unlimited_solar"

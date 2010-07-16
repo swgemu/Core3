@@ -43,21 +43,14 @@
 
 object_tangible_crafting_station_weapon_tool = object_tangible_crafting_station_shared_weapon_tool:new {
 
-   templateType = 32769,
+   templateType = CRAFTINGTOOL,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
    customizationDefaults = {},
 
-   effectiveness = -15,
-   type = 7,
-   craftingTabs = {"1","16","32","4096","65536","524288"},
-   status = {"tool_status_ready"}
+   toolType = 7,
+   enabledTabs = {1,16,32,4096,65536,524288}
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_weapon_tool, "object/tangible/crafting/station/weapon_tool.iff")
-
--- Items in previous file
--- 	templateType = CRAFTINGTOOL,
--- 	toolType = 7,
--- 	enabledTabs = {1,16,32,4096,65536,524288}

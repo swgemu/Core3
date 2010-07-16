@@ -43,18 +43,13 @@
 
 object_tangible_crafting_station_jedi_tool = object_tangible_crafting_station_shared_jedi_tool:new {
 
-   templateType = 32769,
+   templateType = CRAFTINGTOOL,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
-   customizationDefaults = {}
-
-
+   customizationDefaults = {},
+   toolType = 4,
+   enabledTabs = {2048}
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_jedi_tool, "object/tangible/crafting/station/jedi_tool.iff")
-
--- Items in previous file
--- 	templateType = CRAFTINGTOOL,
--- 	toolType = 4,
--- 	enabledTabs = {2048}

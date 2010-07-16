@@ -43,21 +43,14 @@
 
 object_tangible_crafting_station_clothing_tool = object_tangible_crafting_station_shared_clothing_tool:new {
 
-   templateType = 32769,
+   templateType = CRAFTINGTOOL,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
    customizationDefaults = {},
 
-   effectiveness = -15,
-   type = 1,
-   craftingTabs = {"2","8","16384","32768"},
-   status = {"tool_status_ready"}
+   toolType = 1,
+   enabledTabs = {2,8,16384,32768}
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_clothing_tool, "object/tangible/crafting/station/clothing_tool.iff")
-
--- Items in previous file
--- 	templateType = CRAFTINGTOOL,
--- 	toolType = 1,
--- 	enabledTabs = {2,8,16384,32768}

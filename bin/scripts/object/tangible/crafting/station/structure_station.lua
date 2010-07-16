@@ -43,17 +43,13 @@
 
 object_tangible_crafting_station_structure_station = object_tangible_crafting_station_shared_structure_station:new {
 
-   templateType = 8198,
+   templateType = CRAFTINGSTATION,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
-   customizationDefaults = {}
+   customizationDefaults = {},
 
-
+   stationType = 6
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_structure_station, "object/tangible/crafting/station/structure_station.iff")
-
--- Items in previous file
--- 	templateType = CRAFTINGSTATION,
--- 	stationType = 6
