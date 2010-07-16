@@ -43,6 +43,15 @@
 
 object_tangible_crafting_station_armor_repair = object_tangible_crafting_station_shared_armor_repair:new {
 
-}
+   templateType = 32771,
 
+   itemMask = 65535,
+
+   customizationOptions = {},
+   customizationDefaults = {}
+
+
+}
 ObjectTemplates:addTemplate(object_tangible_crafting_station_armor_repair, "object/tangible/crafting/station/armor_repair.iff")
+
+-- Items in previous file
