@@ -43,21 +43,16 @@
 
 object_tangible_survey_tool_survey_tool_gas = object_tangible_survey_tool_shared_survey_tool_gas:new {
 
-   templateType = 32770,
+   templateType = SURVEYTOOL,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
    customizationDefaults = {},
 
-   range = 64,
-   type = 4
+   toolType = 4,
+   toolAnimation = "clienteffect/survey_tool_gas.cef",
+   sampleAnimation = "clienteffect/survey_sample_gas.cef",
+   surveyType = "gas"
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_gas, "object/tangible/survey_tool/survey_tool_gas.iff")
-
--- Items in previous file
--- 	templateType = SURVEYTOOL,
--- 	toolType = 4,
--- 	toolAnimation = "clienteffect/survey_tool_gas.cef",
--- 	sampleAnimation = "clienteffect/survey_sample_gas.cef",
--- 	surveyType = "gas"

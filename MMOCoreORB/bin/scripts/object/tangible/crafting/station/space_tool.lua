@@ -43,21 +43,14 @@
 
 object_tangible_crafting_station_space_tool = object_tangible_crafting_station_shared_space_tool:new {
 
-   templateType = 32769,
+   templateType = CRAFTINGTOOL,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
    customizationDefaults = {},
 
-   effectiveness = -15,
-   type = 5,
-   craftingTabs = {"131072","262144"},
-   status = {"tool_status_ready"}
+   toolType = 5,
+   enabledTabs = {131072,262144}
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_space_tool, "object/tangible/crafting/station/space_tool.iff")
-
--- Items in previous file
--- 	templateType = CRAFTINGTOOL,
--- 	toolType = 5,
--- 	enabledTabs = {131072,262144}

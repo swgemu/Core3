@@ -43,26 +43,14 @@
 
 object_tangible_crafting_station_food_tool = object_tangible_crafting_station_shared_food_tool:new {
 
-   templateType = 32769,
+   templateType = CRAFTINGTOOL,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
    customizationDefaults = {},
 
-   effectiveness = -15,
-   type = 2,
-   craftingTabs = {"4","64","128","256","8192"},
-   status = {"tool_status_ready"}
+   toolType = 3,
+   enabledTabs = {4,64,128,256,8192}
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_food_tool, "object/tangible/crafting/station/food_tool.iff")
-
--- Items in previous file
---    templateType = 32769,
---    itemMask = 65535,
---    customizationOptions = {},
---    customizationDefaults = {},
---    effectiveness = -15,
---    type = 2,
---    craftingTabs = {"4","64","128","256","8192"},
---    status = {"tool_status_ready"}

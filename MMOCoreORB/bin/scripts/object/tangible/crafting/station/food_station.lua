@@ -43,17 +43,13 @@
 
 object_tangible_crafting_station_food_station = object_tangible_crafting_station_shared_food_station:new {
 
-   templateType = 8198,
+   templateType = CRAFTINGSTATION,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
-   customizationDefaults = {}
+   customizationDefaults = {},
 
-
+   stationType = 2
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_food_station, "object/tangible/crafting/station/food_station.iff")
-
--- Items in previous file
--- 	templateType = CRAFTINGSTATION,
--- 	stationType = 2
