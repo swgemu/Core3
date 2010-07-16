@@ -43,9 +43,9 @@
 
 object_tangible_crafting_station_armor_repair = object_tangible_crafting_station_shared_armor_repair:new {
 
-   templateType = 32771,
+   --templateType = 0,
 
-   itemMask = 65535,
+   playerUseMask = 65535,
 
    customizationOptions = {},
    customizationDefaults = {}
