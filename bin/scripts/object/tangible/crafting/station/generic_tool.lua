@@ -42,11 +42,22 @@
 
 
 object_tangible_crafting_station_generic_tool = object_tangible_crafting_station_shared_generic_tool:new {
-	templateType = CRAFTINGTOOL,
-	toolType = 3,
-	enabledTabs = {1,2,4,8,1024,4096,524288}
 
+   templateType = 32769,
 
+   itemMask = 65535,
+
+   customizationOptions = {},
+   customizationDefaults = {},
+
+   effectiveness = -15,
+   type = 3,
+   craftingTabs = {"1","2","4","8","1024","4096","524288"},
+   status = {"tool_status_ready"}
 }
-
 ObjectTemplates:addTemplate(object_tangible_crafting_station_generic_tool, "object/tangible/crafting/station/generic_tool.iff")
+
+-- Items in previous file
+-- 	templateType = CRAFTINGTOOL,
+-- 	toolType = 3,
+-- 	enabledTabs = {1,2,4,8,1024,4096,524288}
