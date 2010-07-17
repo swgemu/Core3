@@ -123,6 +123,8 @@ Vector<uint32>* CraftingToolImplementation::getToolTabs() {
 void CraftingToolImplementation::requestCraftingSession(PlayerCreature* player,
 		CraftingStation* station) {
 
+	/// pre: _this locked
+
 	if(status == "@crafting:tool_status_finished") {
 		player->sendSystemMessage("system_msg", "crafting_tool_full");
 		sendToolStartFailure(player);
@@ -136,7 +138,6 @@ void CraftingToolImplementation::requestCraftingSession(PlayerCreature* player,
 	}
 
 	Locker _locker(player);
-	Locker locker(_this);
 
 	craftingStation = station;
 
@@ -237,7 +238,7 @@ void CraftingToolImplementation::sendToolStartFailure(PlayerCreature* player) {
 
 void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 
-	Locker _locker(_this);
+	/// pre: _this locked
 
 	if (manufactureSchematic != NULL) {
 		removeObject(manufactureSchematic);
@@ -323,7 +324,7 @@ void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
 void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 		int index) {
 
-	Locker locker(_this);
+	/// pre: _this locked
 
 	DraftSchematic* draftschematic = player->getPlayerObject()->getSchematic(
 			index);
@@ -1059,6 +1060,8 @@ void CraftingToolImplementation::depositObject(PlayerCreature* player, bool prac
 		player->sendSystemMessage("system_msg", "prototype_transferred");
 		removeObject(prototype);
 		inventory->addObject(prototype, -1, true);
+		prototype->setPersistent(2);
+		prototype->updateToDatabase();
 
 		status = "@crafting:tool_status_ready";
 

@@ -71,9 +71,12 @@ public:
 
 		ManagedReference<CraftingTool* > craftingTool = player->getLastCraftingToolUsed();
 
-		if(craftingTool != NULL)
+		if(craftingTool != NULL) {
+
+			Locker _locker(craftingTool);
+
 			craftingTool->cancelCraftingSession(player);
-		else
+		} else
 			return GENERALERROR;
 
 		return SUCCESS;

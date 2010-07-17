@@ -218,32 +218,34 @@ CraftingStationImplementation::CraftingStationImplementation() {
 	Logger::setLoggingName("CraftingStation");
 	// server/zone/objects/tangible/tool/CraftingStation.idl(63):  		complexityLevel = 100;
 	complexityLevel = 100;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(64):  		effectiveness = 0;
+	effectiveness = 0;
 }
 
 void CraftingStationImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(67):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingStation.idl(68):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingStation.idl(69):  		Logger.setLoggingName("CraftingStation");
+	// server/zone/objects/tangible/tool/CraftingStation.idl(70):  		Logger.setLoggingName("CraftingStation");
 	Logger::setLoggingName("CraftingStation");
 }
 
 bool CraftingStationImplementation::isCraftingStation() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(97):  		return true;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(98):  		return true;
 	return true;
 }
 
 int CraftingStationImplementation::getComplexityLevel() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(101):  		return complexityLevel;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(102):  		return complexityLevel;
 	return complexityLevel;
 }
 
 int CraftingStationImplementation::getStationType() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(105):  		return type;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(106):  		return type;
 	return type;
 }
 
 void CraftingStationImplementation::setComplexityLevel(int level) {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(109):  		complexityLevel = level;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(110):  		complexityLevel = level;
 	complexityLevel = level;
 }
 

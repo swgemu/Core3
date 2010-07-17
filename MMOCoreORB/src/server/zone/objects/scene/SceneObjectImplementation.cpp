@@ -978,6 +978,17 @@ float SceneObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 	return Math::sqrt(deltaX * deltaX + deltaY * deltaY);
 }
 
+float SceneObjectImplementation::getDistanceTo(Coordinate* coordinate) {
+	// TEMP till
+	float x = coordinate->getPositionX();
+	float y = coordinate->getPositionY();
+
+	float deltaX = x - getWorldPositionX();
+	float deltaY = y - getWorldPositionY();
+
+	return Math::sqrt(deltaX * deltaX + deltaY * deltaY);
+}
+
 Quaternion* SceneObjectImplementation::getDirection() {
 	return &direction;
 }

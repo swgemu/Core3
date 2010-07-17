@@ -80,6 +80,9 @@ public:
 		if(object->isCraftingTool()) {
 
 			CraftingTool* craftingTool = (CraftingTool*) object.get();
+
+			Locker locker(craftingTool);
+
 			craftingTool->requestCraftingSession((PlayerCreature*)creature);
 
 		/// Logic for if target oid is crafting station
@@ -90,8 +93,12 @@ public:
 			ManagedReference<CraftingTool* > craftingTool = (CraftingTool*)
 					craftingStation->findCraftingTool((PlayerCreature*)creature);
 
-			if(craftingTool != NULL)
+			if(craftingTool != NULL) {
+
+				Locker locker(craftingTool);
+
 				craftingTool->requestCraftingSession((PlayerCreature*)creature, craftingStation);
+			}
 
 		} else
 			return INVALIDTARGET;
