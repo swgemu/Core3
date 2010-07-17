@@ -45,6 +45,8 @@ object_draft_schematic_instrument_instrument_mandoviol = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "a Mandoviol",
+
    groupName = "craftInstrumentGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

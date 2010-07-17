@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_kimogila = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Kimogila",
+
    groupName = "craftAdvancedCreatureGroup", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

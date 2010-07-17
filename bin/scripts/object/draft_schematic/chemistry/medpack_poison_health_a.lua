@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_poison_health_a = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Health Poison Delivery Unit - A",
+
    groupName = "craftApplyPoisonGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

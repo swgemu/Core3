@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_power_supply_redundant_advanced = object_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Redundant Power Supply",
+
    groupName = "craftDroidRepairCompB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

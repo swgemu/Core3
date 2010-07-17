@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_med_stimpack_state_dizzy_a = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Dizzy State Stimpack - A",
+
    groupName = "craftStimpackStateGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

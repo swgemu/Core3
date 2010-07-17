@@ -45,6 +45,8 @@ object_draft_schematic_food_drink_ithorian_mist = object_draft_schematic_food_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ithorian Mist",
+
    groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

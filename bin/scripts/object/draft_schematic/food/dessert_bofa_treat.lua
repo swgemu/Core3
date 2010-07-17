@@ -45,6 +45,8 @@ object_draft_schematic_food_dessert_bofa_treat = object_draft_schematic_food_sha
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bofa Treat",
+
    groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

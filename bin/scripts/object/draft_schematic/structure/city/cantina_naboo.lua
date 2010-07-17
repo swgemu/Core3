@@ -45,6 +45,8 @@ object_draft_schematic_structure_city_cantina_naboo = object_draft_schematic_str
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Naboo Cantina",
+
    groupName = "craftPlayerCityC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

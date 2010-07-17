@@ -45,6 +45,8 @@ object_draft_schematic_weapon_pistol_blaster_power5 = object_draft_schematic_wea
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Power5 Pistol",
+
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

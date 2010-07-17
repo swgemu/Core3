@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_padded_gloves = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Padded Armor Gloves",
+
    groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

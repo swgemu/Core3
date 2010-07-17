@@ -45,6 +45,8 @@ object_draft_schematic_scout_item_trap_webber = object_draft_schematic_scout_sha
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Adhesive Mesh",
+
    groupName = "craftScoutTrapGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

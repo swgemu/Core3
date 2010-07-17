@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_bone_leggings = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bone Armor Leggings",
+
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

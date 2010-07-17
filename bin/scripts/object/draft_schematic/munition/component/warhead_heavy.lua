@@ -45,6 +45,8 @@ object_draft_schematic_munition_component_warhead_heavy = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Heavy Warhead Mechanism",
+
    groupName = "craftMunitionsGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

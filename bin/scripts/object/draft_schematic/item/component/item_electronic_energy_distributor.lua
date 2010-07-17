@@ -45,6 +45,8 @@ object_draft_schematic_item_component_item_electronic_energy_distributor = objec
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Energy Distributor",
+
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

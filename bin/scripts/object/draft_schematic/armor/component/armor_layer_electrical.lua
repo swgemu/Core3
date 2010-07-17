@@ -45,6 +45,8 @@ object_draft_schematic_armor_component_armor_layer_electrical = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Electrical Protection Armor Layer",
+
    groupName = "craftArmorLightLayersGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

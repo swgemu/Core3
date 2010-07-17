@@ -45,6 +45,8 @@ object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Dough",
+
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

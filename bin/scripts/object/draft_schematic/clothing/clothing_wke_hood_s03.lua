@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_wke_hood_s03 = object_draft_schematic_c
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Weighted Wookiee Hood",
+
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

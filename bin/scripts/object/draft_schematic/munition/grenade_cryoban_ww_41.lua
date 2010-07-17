@@ -45,6 +45,8 @@ object_draft_schematic_munition_grenade_cryoban_ww_41 = object_draft_schematic_m
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "CryoBan Grenade",
+
    groupName = "craftMunitionsGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_terminal_freestanding = object_draft_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Data Terminal",
+
    groupName = "craftFurnitureGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deflector Shield Projector Plate",
+
    groupName = "craftArmorShieldsGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

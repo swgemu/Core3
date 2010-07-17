@@ -45,6 +45,8 @@ object_draft_schematic_structure_city_shuttleport_corellia = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Corellia Shuttleport",
+
    groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

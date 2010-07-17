@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_wound_strength_c = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Strength Wound Medpack - C",
+
    groupName = "craftMedpackBGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

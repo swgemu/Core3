@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_backpack_field_06 = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Spec-Ops Pack",
+
    groupName = "craftClothingFieldGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

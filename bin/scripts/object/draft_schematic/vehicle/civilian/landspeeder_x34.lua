@@ -45,6 +45,8 @@ object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "X34 Landspeeder",
+
    groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 16, -- (See DraftSchemticImplementation.h)

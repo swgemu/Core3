@@ -45,6 +45,8 @@ object_draft_schematic_scout_item_camokit_talus = object_draft_schematic_scout_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Camo Kit: Talus",
+
    groupName = "craftRangerCamoGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

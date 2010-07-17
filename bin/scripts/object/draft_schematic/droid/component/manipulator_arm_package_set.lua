@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_manipulator_arm_package_set = object_draf
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Manipulator Arm Package Set",
+
    groupName = "craftdroidGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

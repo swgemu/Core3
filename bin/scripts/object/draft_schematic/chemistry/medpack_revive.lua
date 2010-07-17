@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_revive = object_draft_schematic_chemist
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Resuscitation Kit",
+
    groupName = "craftMedpackGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

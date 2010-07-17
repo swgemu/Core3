@@ -45,6 +45,8 @@ object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen1 = object_draft_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Double-Bladed First Generation Lightsaber",
+
    groupName = "craftSaberNovice", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)

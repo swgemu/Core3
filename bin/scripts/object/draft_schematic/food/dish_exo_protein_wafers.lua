@@ -45,6 +45,8 @@ object_draft_schematic_food_dish_exo_protein_wafers = object_draft_schematic_foo
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Exo-Protein Wafers",
+
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

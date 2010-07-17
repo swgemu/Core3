@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_toolchest_medium = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Toolchest",
+
    groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

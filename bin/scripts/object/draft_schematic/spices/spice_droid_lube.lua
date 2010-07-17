@@ -45,6 +45,8 @@ object_draft_schematic_spices_spice_droid_lube = object_draft_schematic_spices_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Zypolene Droid Lubricant",
+
    groupName = "craftSmugglerSpiceB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

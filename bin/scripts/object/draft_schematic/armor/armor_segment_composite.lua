@@ -45,6 +45,8 @@ object_draft_schematic_armor_armor_segment_composite = object_draft_schematic_ar
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Composite Armor Segment",
+
    groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

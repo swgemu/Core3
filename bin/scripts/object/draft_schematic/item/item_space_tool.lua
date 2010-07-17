@@ -45,6 +45,8 @@ object_draft_schematic_item_item_space_tool = object_draft_schematic_item_shared
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Starship Crafting Tool",
+
    groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

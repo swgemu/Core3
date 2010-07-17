@@ -45,6 +45,8 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism = object_d
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chemical-dispersion Mechanism",
+
    groupName = "craftWeaponRangedGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

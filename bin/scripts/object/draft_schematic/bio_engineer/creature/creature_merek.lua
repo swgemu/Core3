@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_merek = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Merek",
+
    groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Interplanetary Survey Droid",
+
    groupName = "craftdroidGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

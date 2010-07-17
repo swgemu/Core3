@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_vir_vur = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Vir Vur",
+
    groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

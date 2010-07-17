@@ -45,6 +45,8 @@ object_draft_schematic_structure_corellia_house_guild_hall = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Corellian Guild Hall",
+
    groupName = "craftStructureGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

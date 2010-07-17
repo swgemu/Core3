@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_lamp_freestanding = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Free-standing Lamp 'Blueleaf'",
+
    groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

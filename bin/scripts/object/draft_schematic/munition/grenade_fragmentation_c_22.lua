@@ -45,6 +45,8 @@ object_draft_schematic_munition_grenade_fragmentation_c_22 = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "C22 Fragmentation Grenade",
+
    groupName = "craftMunitionsGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

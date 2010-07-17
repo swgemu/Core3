@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_disease_area_quickness_a = object_draft
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Quickness Area Disease Delivery Unit - A",
+
    groupName = "craftApplyDiseaseAreaGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

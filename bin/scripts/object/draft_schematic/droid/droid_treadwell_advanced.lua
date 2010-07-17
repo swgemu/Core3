@@ -45,6 +45,8 @@ object_draft_schematic_droid_droid_treadwell_advanced = object_draft_schematic_d
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: WED Treadwell, Advanced Model",
+
    groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

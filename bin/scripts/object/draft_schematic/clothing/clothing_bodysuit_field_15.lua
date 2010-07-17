@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_bodysuit_field_15 = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Tactical Skinsuit",
+
    groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

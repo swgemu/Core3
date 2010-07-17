@@ -45,6 +45,8 @@ object_draft_schematic_structure_installation_mining_organic_flora_light = objec
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Micro Flora Farm",
+
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

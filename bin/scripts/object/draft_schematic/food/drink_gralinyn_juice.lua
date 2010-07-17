@@ -45,6 +45,8 @@ object_draft_schematic_food_drink_gralinyn_juice = object_draft_schematic_food_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Gralinyn Juice",
+
    groupName = "craftFoodDrinkGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

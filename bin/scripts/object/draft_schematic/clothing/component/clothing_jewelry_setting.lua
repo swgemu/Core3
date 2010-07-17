@@ -45,6 +45,8 @@ object_draft_schematic_clothing_component_clothing_jewelry_setting = object_draf
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Jewelry Setting",
+
    groupName = "craftClothingFormalGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_droid_droid_3p0 = object_draft_schematic_droid_shared_dro
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Protocol Droid",
+
    groupName = "craftdroidGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

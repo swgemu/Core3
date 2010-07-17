@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_table_coffee_modern = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Cafe Table",
+
    groupName = "craftFurnitureGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

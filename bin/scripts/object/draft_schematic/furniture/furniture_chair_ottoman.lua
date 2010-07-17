@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_chair_ottoman = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ottoman",
+
    groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

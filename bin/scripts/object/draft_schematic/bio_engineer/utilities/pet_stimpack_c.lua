@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_c = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Pet Stimpack - C",
+
    groupName = "craftTissueGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

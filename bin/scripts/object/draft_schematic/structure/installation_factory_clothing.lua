@@ -45,6 +45,8 @@ object_draft_schematic_structure_installation_factory_clothing = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Wearables Factory",
+
    groupName = "craftInstallationGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

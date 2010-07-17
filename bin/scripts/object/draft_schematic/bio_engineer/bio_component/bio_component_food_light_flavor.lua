@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_flavo
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Multisaccharide Dimate",
+
    groupName = "craftBasicTissueGroup", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

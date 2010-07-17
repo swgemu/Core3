@@ -45,6 +45,8 @@ object_draft_schematic_weapon_component_scope_weapon = object_draft_schematic_we
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Weapon Scope",
+
    groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_droid_detector = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Droid Detection Device",
+
    groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

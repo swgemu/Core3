@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_i
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Confidence Cloth",
+
    groupName = "craftTissueGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

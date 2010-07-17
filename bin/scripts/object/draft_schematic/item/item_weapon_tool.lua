@@ -45,6 +45,8 @@ object_draft_schematic_item_item_weapon_tool = object_draft_schematic_item_share
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Weapon, Droid, and General Item Crafting Tool",
+
    groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

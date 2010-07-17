@@ -45,6 +45,8 @@ object_draft_schematic_instrument_instrument_omni_box = object_draft_schematic_i
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "an Ommni Box",
+
    groupName = "craftInstrumentGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

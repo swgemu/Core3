@@ -45,6 +45,8 @@ object_draft_schematic_weapon_component_blaster_rifle_barrel_advanced = object_d
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Blaster Rifle Barrel",
+
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

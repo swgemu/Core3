@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_dress_casual_09 = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Loose Dress",
+
    groupName = "craftClothingCasualGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

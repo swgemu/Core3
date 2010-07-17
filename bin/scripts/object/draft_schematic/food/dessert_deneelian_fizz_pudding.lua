@@ -45,6 +45,8 @@ object_draft_schematic_food_dessert_deneelian_fizz_pudding = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deneelian Fizz Pudding",
+
    groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

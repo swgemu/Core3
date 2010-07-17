@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_droid_brain_advanced = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Droid Brain",
+
    groupName = "craftdroidGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

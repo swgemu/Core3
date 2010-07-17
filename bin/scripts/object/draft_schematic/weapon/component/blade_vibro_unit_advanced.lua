@@ -45,6 +45,8 @@ object_draft_schematic_weapon_component_blade_vibro_unit_advanced = object_draft
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Vibro Blade Unit",
+
    groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

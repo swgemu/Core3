@@ -45,6 +45,8 @@ object_draft_schematic_food_drink_durindfire = object_draft_schematic_food_share
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Durindfire",
+
    groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

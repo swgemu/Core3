@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_ith_vest_field_01 = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ithorian Lifejacket",
+
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

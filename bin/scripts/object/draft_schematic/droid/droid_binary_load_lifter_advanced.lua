@@ -45,6 +45,8 @@ object_draft_schematic_droid_droid_binary_load_lifter_advanced = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Binary Load Lifter Droid, Advanced Model",
+
    groupName = "craftdroidGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

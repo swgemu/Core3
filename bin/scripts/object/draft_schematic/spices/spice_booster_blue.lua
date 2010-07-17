@@ -45,6 +45,8 @@ object_draft_schematic_spices_spice_booster_blue = object_draft_schematic_spices
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Booster Blue",
+
    groupName = "craftSmugglerSpiceD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

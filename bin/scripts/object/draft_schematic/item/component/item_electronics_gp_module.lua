@@ -45,6 +45,8 @@ object_draft_schematic_item_component_item_electronics_gp_module = object_draft_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Electronics GP Module",
+
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

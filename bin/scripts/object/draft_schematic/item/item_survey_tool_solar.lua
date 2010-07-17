@@ -45,6 +45,8 @@ object_draft_schematic_item_item_survey_tool_solar = object_draft_schematic_item
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ambient Solar Energy Surveying Tool",
+
    groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

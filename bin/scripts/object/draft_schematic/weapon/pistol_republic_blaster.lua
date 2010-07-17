@@ -45,6 +45,8 @@ object_draft_schematic_weapon_pistol_republic_blaster = object_draft_schematic_w
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Republic Blaster",
+
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

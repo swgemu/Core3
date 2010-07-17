@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_diagnostic_circuit = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Diagnostic Circuit",
+
    groupName = "craftDroidRepairCompA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

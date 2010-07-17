@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_hat_field_04 = object_draft_schematic_c
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Swoop Helm",
+
    groupName = "craftClothingFieldGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_enhance_quickness_b = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Enhance Quickness Medpack - B",
+
    groupName = "craftMedpackBEnhanceGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

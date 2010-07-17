@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_ith_jacket_formal_08 = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ithorian Tech Jacket",
+
    groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

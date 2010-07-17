@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_ith_shirt_casual_09 = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ithorian Fade Dyed Shirt",
+
    groupName = "craftClothingCasualGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

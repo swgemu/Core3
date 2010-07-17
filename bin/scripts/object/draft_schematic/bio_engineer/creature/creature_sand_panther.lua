@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_sand_panther = object_draf
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Razor Cat",
+
    groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

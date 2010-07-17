@@ -45,6 +45,8 @@ object_draft_schematic_item_item_powerup_weapon_ranged_three = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Muzzle",
+
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

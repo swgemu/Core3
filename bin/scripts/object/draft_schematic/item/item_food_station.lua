@@ -45,6 +45,8 @@ object_draft_schematic_item_item_food_station = object_draft_schematic_item_shar
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Food and Chemical Crafting Station",
+
    groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_structure_city_garden_exotic_dantooine = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Dantooine Meditation Area (Garden)",
+
    groupName = "craftPlayerCityE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

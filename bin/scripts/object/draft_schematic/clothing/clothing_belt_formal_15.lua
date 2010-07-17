@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_belt_formal_15 = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Strap Belt",
+
    groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

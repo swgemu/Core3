@@ -45,6 +45,8 @@ object_draft_schematic_structure_installation_factory_food = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Food Factory",
+
    groupName = "craftInstallationGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

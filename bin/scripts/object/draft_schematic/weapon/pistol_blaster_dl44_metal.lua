@@ -45,6 +45,8 @@ object_draft_schematic_weapon_pistol_blaster_dl44_metal = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "DL44 Metal Pistol",
+
    groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

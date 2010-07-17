@@ -45,6 +45,8 @@ object_draft_schematic_droid_droid_surgical_advanced = object_draft_schematic_dr
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Surgical Droid, Advanced Model",
+
    groupName = "craftdroidGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

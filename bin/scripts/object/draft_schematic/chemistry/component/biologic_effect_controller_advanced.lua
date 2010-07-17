@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_component_biologic_effect_controller_advanced =
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Biological Effect Controller",
+
    groupName = "craftMedicineComponentGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

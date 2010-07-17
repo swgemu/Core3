@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_ubese_bracer_l = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ubese Armor Left Bracer",
+
    groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

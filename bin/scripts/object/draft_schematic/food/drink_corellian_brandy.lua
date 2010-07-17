@@ -45,6 +45,8 @@ object_draft_schematic_food_drink_corellian_brandy = object_draft_schematic_food
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Corellian Brandy",
+
    groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

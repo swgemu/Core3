@@ -45,6 +45,8 @@ object_draft_schematic_food_additive_additive_light = object_draft_schematic_foo
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Light Food Additive",
+
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

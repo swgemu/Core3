@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_cure_disease_area_b = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Cure Disease Medpack Area - B",
+
    groupName = "craftCureDiseaseGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

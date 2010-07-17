@@ -45,6 +45,8 @@ object_draft_schematic_structure_corellia_house_player_small_floorplan_02 = obje
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Small Corellia House (Floorplan 2)",
+
    groupName = "craftStructureGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

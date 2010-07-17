@@ -45,6 +45,8 @@ object_draft_schematic_item_item_clothing_tool = object_draft_schematic_item_sha
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Clothing and Armor Crafting Tool",
+
    groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_acid_beam = object_draft_schematic_weapon_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Heavy Acid Rifle",
+
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

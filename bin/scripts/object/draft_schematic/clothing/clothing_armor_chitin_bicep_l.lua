@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_chitin_bicep_l = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chitin Armor Left Bicep",
+
    groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

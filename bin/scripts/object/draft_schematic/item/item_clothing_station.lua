@@ -45,6 +45,8 @@ object_draft_schematic_item_item_clothing_station = object_draft_schematic_item_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Clothing and Armor Crafting Station",
+
    groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

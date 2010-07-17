@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_dune_lizard = object_draft
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Dune Lizard",
+
    groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

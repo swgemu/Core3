@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_bookcase_cheap = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bookcase",
+
    groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

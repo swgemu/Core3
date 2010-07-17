@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_chair_upholstered = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Upholstered Chair",
+
    groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

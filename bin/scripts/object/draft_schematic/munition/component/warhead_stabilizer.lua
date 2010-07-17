@@ -45,6 +45,8 @@ object_draft_schematic_munition_component_warhead_stabilizer = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Warhead Stabilizing Device",
+
    groupName = "craftMunitionsGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

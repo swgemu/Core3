@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Active Biosensors",
+
    groupName = "craftTissueGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

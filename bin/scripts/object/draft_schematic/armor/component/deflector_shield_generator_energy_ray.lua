@@ -45,6 +45,8 @@ object_draft_schematic_armor_component_deflector_shield_generator_energy_ray = o
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deflector Shield Generator - Energy Ray",
+
    groupName = "craftArmorShieldsGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_blaster_cdef = object_draft_schematic_weapon
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "CDEF Rifle",
+
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

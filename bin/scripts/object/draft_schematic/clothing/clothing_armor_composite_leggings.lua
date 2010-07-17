@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_composite_leggings = object_draft
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Composite Armor Pants",
+
    groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

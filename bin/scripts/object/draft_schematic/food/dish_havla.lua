@@ -45,6 +45,8 @@ object_draft_schematic_food_dish_havla = object_draft_schematic_food_shared_dish
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Havla",
+
    groupName = "craftFoodDishGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

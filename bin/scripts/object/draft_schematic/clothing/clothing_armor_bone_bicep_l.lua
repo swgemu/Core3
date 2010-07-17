@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_bone_bicep_l = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bone Armor Left Bicep",
+
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
