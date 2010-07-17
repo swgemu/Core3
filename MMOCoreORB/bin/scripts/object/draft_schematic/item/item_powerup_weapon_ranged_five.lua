@@ -45,6 +45,8 @@ object_draft_schematic_item_item_powerup_weapon_ranged_five = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Scope",
+
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

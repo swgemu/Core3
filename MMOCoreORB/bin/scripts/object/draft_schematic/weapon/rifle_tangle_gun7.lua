@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_tangle_gun7 = object_draft_schematic_weapon_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Tangle Pistol",
+
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

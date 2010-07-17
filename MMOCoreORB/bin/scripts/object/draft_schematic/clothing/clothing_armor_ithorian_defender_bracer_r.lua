@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_ithorian_defender_bracer_r = obje
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ithorian Defender Bracer (Right)",
+
    groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_blaster_ionization_jawa = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Jawa Ion Rifle",
+
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

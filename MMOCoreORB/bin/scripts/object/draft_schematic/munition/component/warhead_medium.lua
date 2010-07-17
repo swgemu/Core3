@@ -45,6 +45,8 @@ object_draft_schematic_munition_component_warhead_medium = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Medium Warhead Mechanism",
+
    groupName = "craftMunitionsGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

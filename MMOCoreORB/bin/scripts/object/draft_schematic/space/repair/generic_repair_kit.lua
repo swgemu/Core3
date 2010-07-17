@@ -45,6 +45,8 @@ object_draft_schematic_space_repair_generic_repair_kit = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "All Purpose Ship Repair Kit",
+
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)

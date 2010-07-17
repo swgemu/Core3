@@ -45,6 +45,8 @@ object_draft_schematic_weapon_pistol_flechette_fwg5 = object_draft_schematic_wea
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "FWG5 Pistol",
+
    groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

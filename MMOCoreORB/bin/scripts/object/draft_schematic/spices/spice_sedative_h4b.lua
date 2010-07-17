@@ -45,6 +45,8 @@ object_draft_schematic_spices_spice_sedative_h4b = object_draft_schematic_spices
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Sedative H4b",
+
    groupName = "craftSmugglerSpiceB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

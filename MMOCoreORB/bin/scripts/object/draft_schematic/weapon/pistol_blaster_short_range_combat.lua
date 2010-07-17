@@ -45,6 +45,8 @@ object_draft_schematic_weapon_pistol_blaster_short_range_combat = object_draft_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "SR Combat Pistol",
+
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_structure_installation_factory_structure = object_draft_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Structure Factory",
+
    groupName = "craftInstallationGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_food_dish_soypro = object_draft_schematic_food_shared_dis
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Soypro",
+
    groupName = "craftFoodNoviceGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

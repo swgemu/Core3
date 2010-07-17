@@ -45,6 +45,8 @@ object_draft_schematic_item_item_repairkit_weapon = object_draft_schematic_item_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Weapon Repair Tool",
+
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

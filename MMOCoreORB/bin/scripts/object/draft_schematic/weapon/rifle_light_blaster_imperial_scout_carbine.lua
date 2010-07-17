@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_light_blaster_imperial_scout_carbine = objec
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Elite Carbine",
+
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

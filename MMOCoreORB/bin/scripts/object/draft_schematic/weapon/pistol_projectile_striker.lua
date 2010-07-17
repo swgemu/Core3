@@ -45,6 +45,8 @@ object_draft_schematic_weapon_pistol_projectile_striker = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Striker Pistol",
+
    groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

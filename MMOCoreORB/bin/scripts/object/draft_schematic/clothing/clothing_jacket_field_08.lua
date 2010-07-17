@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_jacket_field_08 = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Rugged Jacket",
+
    groupName = "craftClothingNoviceGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

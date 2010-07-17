@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_item_storage_module_3 = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Level 3 Droid Item Storage Module",
+
    groupName = "craftdroidgenmodGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

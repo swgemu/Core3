@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_roba = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Roba",
+
    groupName = "craftDomesticCreatureGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

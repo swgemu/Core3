@@ -45,6 +45,8 @@ object_draft_schematic_structure_component_structure_heavy_harvesting_mechanism 
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Heavy Harvesting Mechanism",
+
    groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

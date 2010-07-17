@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_bed_small = object_draft_schematic_fu
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Small Bed",
+
    groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

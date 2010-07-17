@@ -45,6 +45,8 @@ object_draft_schematic_structure_installation_generator_solar = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Solar Power Generator",
+
    groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

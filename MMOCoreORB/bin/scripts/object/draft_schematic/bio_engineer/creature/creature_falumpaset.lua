@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_falumpaset = object_draft_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Falumpaset",
+
    groupName = "craftDomesticCreatureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

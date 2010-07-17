@@ -45,6 +45,8 @@ object_draft_schematic_structure_naboo_house_player_large = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Large Naboo House",
+
    groupName = "craftStructureGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

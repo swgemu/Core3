@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_flame_thrower = object_draft_schematic_weapo
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Flame Thrower",
+
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

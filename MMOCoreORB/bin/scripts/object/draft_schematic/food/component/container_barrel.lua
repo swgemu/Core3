@@ -45,6 +45,8 @@ object_draft_schematic_food_component_container_barrel = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Barrel",
+
    groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

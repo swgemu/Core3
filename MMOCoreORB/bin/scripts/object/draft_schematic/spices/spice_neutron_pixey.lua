@@ -45,6 +45,8 @@ object_draft_schematic_spices_spice_neutron_pixey = object_draft_schematic_spice
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Neutron Pixie",
+
    groupName = "craftSmugglerSpiceD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

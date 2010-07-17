@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_pants_field_22 = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Infiltrator Leggings",
+
    groupName = "craftClothingFieldGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_structure_installation_mining_gas_light = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Personal Natural Gas Processor",
+
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

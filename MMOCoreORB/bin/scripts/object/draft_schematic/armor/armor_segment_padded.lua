@@ -45,6 +45,8 @@ object_draft_schematic_armor_armor_segment_padded = object_draft_schematic_armor
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Padded Armor Segment",
+
    groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

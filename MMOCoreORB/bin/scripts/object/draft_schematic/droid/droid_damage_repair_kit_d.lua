@@ -45,6 +45,8 @@ object_draft_schematic_droid_droid_damage_repair_kit_d = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Droid Repair Kit - D",
+
    groupName = "craftDroidDamageRepairD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

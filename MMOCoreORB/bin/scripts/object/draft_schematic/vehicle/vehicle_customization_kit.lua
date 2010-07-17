@@ -45,6 +45,8 @@ object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Vehicle Customization Kit",
+
    groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 16, -- (See DraftSchemticImplementation.h)

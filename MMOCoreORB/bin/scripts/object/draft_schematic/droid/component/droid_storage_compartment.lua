@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_droid_storage_compartment = object_draft_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Droid Storage Compartment",
+
    groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

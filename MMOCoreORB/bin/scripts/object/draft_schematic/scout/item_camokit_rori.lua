@@ -45,6 +45,8 @@ object_draft_schematic_scout_item_camokit_rori = object_draft_schematic_scout_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Camo Kit: Rori",
+
    groupName = "craftRangerCamoGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

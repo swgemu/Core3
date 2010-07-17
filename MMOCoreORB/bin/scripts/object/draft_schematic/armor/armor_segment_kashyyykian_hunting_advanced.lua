@@ -45,6 +45,8 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting_advanced = object
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Kashyyykian Hunting Armor Segment",
+
    groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

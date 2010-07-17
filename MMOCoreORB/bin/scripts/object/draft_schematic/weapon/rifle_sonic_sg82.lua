@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_sonic_sg82 = object_draft_schematic_weapon_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "SG82 Rifle",
+
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

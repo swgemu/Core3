@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_ith_shirt_casual_04 = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ithorian Half Sweater",
+
    groupName = "craftClothingCasualGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

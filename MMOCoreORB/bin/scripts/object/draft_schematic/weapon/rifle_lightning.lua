@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_lightning = object_draft_schematic_weapon_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Light Lightning Cannon",
+
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

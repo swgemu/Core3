@@ -45,6 +45,8 @@ object_draft_schematic_scout_item_trap_melee_ranged_def_1 = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Glow-Wire Trap",
+
    groupName = "craftScoutTrapGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

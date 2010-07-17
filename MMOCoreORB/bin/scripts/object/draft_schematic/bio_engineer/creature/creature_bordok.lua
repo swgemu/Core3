@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_bordok = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bordok",
+
    groupName = "craftDomesticCreatureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

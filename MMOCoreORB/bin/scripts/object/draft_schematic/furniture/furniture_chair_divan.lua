@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_chair_divan = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Divan",
+
    groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

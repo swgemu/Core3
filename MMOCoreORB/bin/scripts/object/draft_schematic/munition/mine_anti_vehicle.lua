@@ -45,6 +45,8 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Anti-Vehicular Mine",
+
    groupName = "craftMunitionsGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

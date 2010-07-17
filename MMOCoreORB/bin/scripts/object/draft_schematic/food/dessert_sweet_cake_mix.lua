@@ -45,6 +45,8 @@ object_draft_schematic_food_dessert_sweet_cake_mix = object_draft_schematic_food
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Sweet Cake Mix",
+
    groupName = "craftFoodDessertGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

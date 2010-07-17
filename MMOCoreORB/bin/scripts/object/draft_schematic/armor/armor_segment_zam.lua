@@ -45,6 +45,8 @@ object_draft_schematic_armor_armor_segment_zam = object_draft_schematic_armor_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Armorweave Segment",
+
    groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

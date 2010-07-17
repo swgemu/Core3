@@ -45,6 +45,8 @@ object_draft_schematic_food_drink_deuterium_pyro = object_draft_schematic_food_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deuterium-pyro",
+
    groupName = "craftFoodDrinkGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

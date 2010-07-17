@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_projectile_tusken = object_draft_schematic_w
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Tusken Rifle",
+
    groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

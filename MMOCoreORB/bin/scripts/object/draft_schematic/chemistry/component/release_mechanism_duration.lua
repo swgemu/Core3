@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_component_release_mechanism_duration = object_d
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chemical Release Duration Mechanism",
+
    groupName = "craftMedicineComponentGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

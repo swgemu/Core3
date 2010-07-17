@@ -45,6 +45,8 @@ object_draft_schematic_food_dessert_air_cake = object_draft_schematic_food_share
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Air Cake",
+
    groupName = "craftFoodNoviceGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

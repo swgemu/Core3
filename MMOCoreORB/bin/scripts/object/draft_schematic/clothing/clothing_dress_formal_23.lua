@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_dress_formal_23 = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Councilman's Robe",
+
    groupName = "craftClothingNoviceGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

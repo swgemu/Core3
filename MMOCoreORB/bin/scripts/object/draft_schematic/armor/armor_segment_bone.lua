@@ -45,6 +45,8 @@ object_draft_schematic_armor_armor_segment_bone = object_draft_schematic_armor_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bone Armor Segment",
+
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

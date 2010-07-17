@@ -45,6 +45,8 @@ object_draft_schematic_food_drink_tilla_tiil = object_draft_schematic_food_share
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "T'illa-T'iil",
+
    groupName = "craftFoodDrinkGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

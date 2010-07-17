@@ -45,6 +45,8 @@ object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Vibroblade",
+
    groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

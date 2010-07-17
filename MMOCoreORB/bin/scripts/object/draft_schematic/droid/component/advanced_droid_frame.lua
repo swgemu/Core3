@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_advanced_droid_frame = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Droid Frame Unit",
+
    groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

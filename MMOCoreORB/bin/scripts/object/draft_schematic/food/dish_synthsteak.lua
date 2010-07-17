@@ -45,6 +45,8 @@ object_draft_schematic_food_dish_synthsteak = object_draft_schematic_food_shared
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Synthsteak",
+
    groupName = "craftFoodDishGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Manufacturing Mechanism",
+
    groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

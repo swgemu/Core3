@@ -45,6 +45,8 @@ object_draft_schematic_scout_item_trap_drowsy_dart = object_draft_schematic_scou
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Lecepanine Dart",
+
    groupName = "craftScoutTrapGroupNovice", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

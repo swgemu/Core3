@@ -45,6 +45,8 @@ object_draft_schematic_clothing_component_clothing_synthetic_cloth = object_draf
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Synthetic Cloth",
+
    groupName = "craftClothingNoviceGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

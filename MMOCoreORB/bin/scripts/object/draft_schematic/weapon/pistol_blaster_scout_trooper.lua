@@ -45,6 +45,8 @@ object_draft_schematic_weapon_pistol_blaster_scout_trooper = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Scout Blaster",
+
    groupName = "craftWeaponRangedGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

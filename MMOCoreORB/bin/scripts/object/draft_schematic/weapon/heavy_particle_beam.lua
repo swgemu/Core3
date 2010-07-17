@@ -45,6 +45,8 @@ object_draft_schematic_weapon_heavy_particle_beam = object_draft_schematic_weapo
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Heavy Particle Beam Cannon",
+
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

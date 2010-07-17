@@ -45,6 +45,8 @@ object_draft_schematic_food_drink_starshine_surprise = object_draft_schematic_fo
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Starshine Surprise",
+
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_instrument_instrument_slitherhorn = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "a Slitherhorn",
+
    groupName = "craftInstrumentGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

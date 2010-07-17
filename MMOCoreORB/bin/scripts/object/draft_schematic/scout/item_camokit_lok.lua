@@ -45,6 +45,8 @@ object_draft_schematic_scout_item_camokit_lok = object_draft_schematic_scout_sha
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Camo Kit: Lok",
+
    groupName = "craftRangerCamoGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

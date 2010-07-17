@@ -45,6 +45,8 @@ object_draft_schematic_structure_generic_house_guild_hall = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Generic Planet Guild Hall",
+
    groupName = "craftStructureGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

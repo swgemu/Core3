@@ -45,6 +45,8 @@ object_draft_schematic_droid_droid_mse_advanced = object_draft_schematic_droid_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: MSE Droid, Advanced Model",
+
    groupName = "craftdroidGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

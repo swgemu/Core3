@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_wke_gloves_s04 = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Wookiee Strapped Gloves",
+
    groupName = "craftClothingCasualGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

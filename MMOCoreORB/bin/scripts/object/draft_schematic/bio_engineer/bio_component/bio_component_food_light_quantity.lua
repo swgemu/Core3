@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_quant
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Hyper Yeast Additive",
+
    groupName = "craftTissueGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

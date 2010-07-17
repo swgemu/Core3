@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_chair_love_seat = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Loveseat",
+
    groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

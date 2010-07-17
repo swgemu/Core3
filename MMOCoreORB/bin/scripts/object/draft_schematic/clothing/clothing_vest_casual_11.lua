@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_vest_casual_11 = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Long Vest",
+
    groupName = "craftClothingCasualGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

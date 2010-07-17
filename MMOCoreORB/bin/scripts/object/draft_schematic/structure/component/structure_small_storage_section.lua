@@ -45,6 +45,8 @@ object_draft_schematic_structure_component_structure_small_storage_section = obj
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Small Structure Storage Module",
+
    groupName = "craftStructureGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

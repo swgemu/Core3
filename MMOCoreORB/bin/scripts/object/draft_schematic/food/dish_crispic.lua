@@ -45,6 +45,8 @@ object_draft_schematic_food_dish_crispic = object_draft_schematic_food_shared_di
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Crispic",
+
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

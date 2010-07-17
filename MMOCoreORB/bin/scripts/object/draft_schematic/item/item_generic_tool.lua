@@ -45,6 +45,8 @@ object_draft_schematic_item_item_generic_tool = object_draft_schematic_item_shar
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Generic Crafting Tool",
+
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_weapon_component_sword_core = object_draft_schematic_weap
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Sword Core",
+
    groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

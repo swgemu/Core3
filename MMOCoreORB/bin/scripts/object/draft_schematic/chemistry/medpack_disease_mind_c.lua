@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_disease_mind_c = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mind Disease Delivery Unit - C",
+
    groupName = "craftApplyDiseaseGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

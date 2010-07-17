@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_padded_bracer_r = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Padded Armor Right Bracer",
+
    groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

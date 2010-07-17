@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_padded_boots = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Padded Armor Boots",
+
    groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

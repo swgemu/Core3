@@ -45,6 +45,8 @@ object_draft_schematic_spices_spice_yarrock = object_draft_schematic_spices_shar
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Yarrock",
+
    groupName = "craftSmugglerSpiceA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

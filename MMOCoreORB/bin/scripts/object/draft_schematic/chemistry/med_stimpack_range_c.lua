@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_med_stimpack_range_c = object_draft_schematic_c
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ranged Stimpack - C",
+
    groupName = "craftStimpackRangeGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

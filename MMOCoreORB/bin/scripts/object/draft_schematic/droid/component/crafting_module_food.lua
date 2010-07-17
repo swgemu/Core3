@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_crafting_module_food = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Food Droid Crafting Station Module",
+
    groupName = "craftdroiddefmodGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

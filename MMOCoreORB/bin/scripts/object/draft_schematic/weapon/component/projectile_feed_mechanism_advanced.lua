@@ -45,6 +45,8 @@ object_draft_schematic_weapon_component_projectile_feed_mechanism_advanced = obj
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Projectile Feed Mechanism",
+
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

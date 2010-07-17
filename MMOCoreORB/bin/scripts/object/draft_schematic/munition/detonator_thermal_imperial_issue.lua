@@ -45,6 +45,8 @@ object_draft_schematic_munition_detonator_thermal_imperial_issue = object_draft_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Imperial Detonator",
+
    groupName = "craftMunitionsGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

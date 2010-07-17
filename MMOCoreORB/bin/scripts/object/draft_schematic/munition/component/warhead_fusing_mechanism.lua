@@ -45,6 +45,8 @@ object_draft_schematic_munition_component_warhead_fusing_mechanism = object_draf
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Warhead Fusing Mechanism",
+
    groupName = "craftMunitionsGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Creature Habitat",
+
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

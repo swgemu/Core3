@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_blaster_laser_rifle = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Laser Rifle",
+
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

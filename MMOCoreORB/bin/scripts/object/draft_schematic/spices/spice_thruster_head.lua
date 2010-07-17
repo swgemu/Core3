@@ -45,6 +45,8 @@ object_draft_schematic_spices_spice_thruster_head = object_draft_schematic_spice
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Thruster Head",
+
    groupName = "craftSmugglerSpiceC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_droid_droid_r4 = object_draft_schematic_droid_shared_droi
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: R4 Droid",
+
    groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

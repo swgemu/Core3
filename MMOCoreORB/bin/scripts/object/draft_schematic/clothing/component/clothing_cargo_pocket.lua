@@ -45,6 +45,8 @@ object_draft_schematic_clothing_component_clothing_cargo_pocket = object_draft_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Cargo Pocket",
+
    groupName = "craftClothingFieldGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_instrument_instrument_flute_droopy = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "a Chidinkalu Horn",
+
    groupName = "craftInstrumentGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

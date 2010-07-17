@@ -45,6 +45,8 @@ object_draft_schematic_structure_installation_mining_ore_light = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Personal Mineral Extractor",
+
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

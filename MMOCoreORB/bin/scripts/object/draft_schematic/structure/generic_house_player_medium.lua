@@ -45,6 +45,8 @@ object_draft_schematic_structure_generic_house_player_medium = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Medium Generic Planet House",
+
    groupName = "craftStructureGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
