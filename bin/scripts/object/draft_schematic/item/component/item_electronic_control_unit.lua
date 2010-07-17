@@ -45,6 +45,8 @@ object_draft_schematic_item_component_item_electronic_control_unit = object_draf
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Control Unit",
+
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_bone_bracer_r = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bone Armor Right Bracer",
+
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

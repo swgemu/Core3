@@ -45,6 +45,8 @@ object_draft_schematic_munition_detonator_thermal_class_a = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Thermal Detonator",
+
    groupName = "craftMunitionsGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

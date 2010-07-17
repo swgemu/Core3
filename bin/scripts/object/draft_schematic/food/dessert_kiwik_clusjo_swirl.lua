@@ -45,6 +45,8 @@ object_draft_schematic_food_dessert_kiwik_clusjo_swirl = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Kiwik Clusjo Swirl",
+
    groupName = "craftFoodDessertGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

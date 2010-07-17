@@ -45,6 +45,8 @@ object_draft_schematic_structure_installation_mining_liquid_heavy = object_draft
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Deep Crust Chemical Extractor",
+
    groupName = "craftInstallationGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

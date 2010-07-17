@@ -45,6 +45,8 @@ object_draft_schematic_armor_shield_generator_personal_c = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Personal Shield Generator Mk.3",
+
    groupName = "craftArmorShieldsGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

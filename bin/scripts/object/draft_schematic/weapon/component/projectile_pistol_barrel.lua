@@ -45,6 +45,8 @@ object_draft_schematic_weapon_component_projectile_pistol_barrel = object_draft_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Projectile Pistol Barrel",
+
    groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_durni = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Durni",
+
    groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

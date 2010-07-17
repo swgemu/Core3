@@ -45,6 +45,8 @@ object_draft_schematic_structure_generic_house_player_small = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Small Generic Planet House",
+
    groupName = "craftStructureGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

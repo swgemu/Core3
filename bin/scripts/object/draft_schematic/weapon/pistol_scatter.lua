@@ -45,6 +45,8 @@ object_draft_schematic_weapon_pistol_scatter = object_draft_schematic_weapon_sha
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Scatter Pistol",
+
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

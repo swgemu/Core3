@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_lamp_free_s02_on = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Free-standing Lamp 'Razorcoil'",
+
    groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

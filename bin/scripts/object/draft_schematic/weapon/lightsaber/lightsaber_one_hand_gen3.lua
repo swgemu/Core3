@@ -45,6 +45,8 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen3 = object_draft
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Third Generation Lightsaber",
+
    groupName = "craftSaberOneHand3", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)

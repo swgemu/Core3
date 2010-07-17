@@ -45,6 +45,8 @@ object_draft_schematic_food_drink_garrmorl = object_draft_schematic_food_shared_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Garrmorl",
+
    groupName = "craftFoodDrinkGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

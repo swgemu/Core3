@@ -45,6 +45,8 @@ object_draft_schematic_scout_item_camokit_corellia = object_draft_schematic_scou
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Camo Kit: Corellia",
+
    groupName = "craftRangerCamoGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

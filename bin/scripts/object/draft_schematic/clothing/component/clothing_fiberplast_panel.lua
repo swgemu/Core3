@@ -45,6 +45,8 @@ object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_dra
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Fiberplast Panel",
+
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

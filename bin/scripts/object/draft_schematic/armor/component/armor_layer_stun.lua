@@ -45,6 +45,8 @@ object_draft_schematic_armor_component_armor_layer_stun = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Stun Protection Armor Layer",
+
    groupName = "craftArmorLightLayersGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

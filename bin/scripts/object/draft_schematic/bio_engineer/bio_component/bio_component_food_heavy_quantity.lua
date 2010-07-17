@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_quant
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Edible Nano Constructors",
+
    groupName = "craftTissueGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

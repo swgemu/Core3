@@ -45,6 +45,8 @@ object_draft_schematic_scout_item_camp_multi = object_draft_schematic_scout_shar
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Multiperson Camp Kit",
+
    groupName = "craftScoutCampGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

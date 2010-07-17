@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_bustier_casual_02 = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Small Bustier",
+
    groupName = "craftClothingCasualGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

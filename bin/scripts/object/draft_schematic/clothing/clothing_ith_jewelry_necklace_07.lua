@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_07 = object_draft_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ithorian Emerald Pendant",
+
    groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

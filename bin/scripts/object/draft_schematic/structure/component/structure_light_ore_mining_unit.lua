@@ -45,6 +45,8 @@ object_draft_schematic_structure_component_structure_light_ore_mining_unit = obj
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Light Ore Mining Unit",
+
    groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

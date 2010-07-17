@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_chest_elegant = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chest",
+
    groupName = "craftFurnitureGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

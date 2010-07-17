@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_ubese_pants = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ubese Armor Pants",
+
    groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

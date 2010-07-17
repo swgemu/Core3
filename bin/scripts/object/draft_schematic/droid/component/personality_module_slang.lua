@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_personality_module_slang = object_draft_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Slang Droid Personality Chip",
+
    groupName = "craftdroidgenmodGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

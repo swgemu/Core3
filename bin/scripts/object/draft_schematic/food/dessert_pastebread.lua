@@ -45,6 +45,8 @@ object_draft_schematic_food_dessert_pastebread = object_draft_schematic_food_sha
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Pastebread",
+
    groupName = "craftFoodDessertGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_component_dispersal_mechanism_advanced = object
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Dispersal Mechanism",
+
    groupName = "craftMedicineComponentGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

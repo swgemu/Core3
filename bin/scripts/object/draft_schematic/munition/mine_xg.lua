@@ -45,6 +45,8 @@ object_draft_schematic_munition_mine_xg = object_draft_schematic_munition_shared
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "XG Mine",
+
    groupName = "craftMunitionsGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

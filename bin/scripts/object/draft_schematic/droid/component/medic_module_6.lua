@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_medic_module_6 = object_draft_schematic_d
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Level 6 Droid Medical Module",
+
    groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

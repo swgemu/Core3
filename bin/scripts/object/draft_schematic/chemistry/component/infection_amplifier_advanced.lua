@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_component_infection_amplifier_advanced = object
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Infection Amplifier",
+
    groupName = "craftMedicineComponentGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

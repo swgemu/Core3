@@ -45,6 +45,8 @@ object_draft_schematic_food_dessert_chandad = object_draft_schematic_food_shared
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chandad",
+
    groupName = "craftFoodDessertGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

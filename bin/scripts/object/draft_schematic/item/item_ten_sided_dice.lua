@@ -45,6 +45,8 @@ object_draft_schematic_item_item_ten_sided_dice = object_draft_schematic_item_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ten Sided Dice Set",
+
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

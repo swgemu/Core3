@@ -45,6 +45,8 @@ object_draft_schematic_structure_city_shuttleport_naboo = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Naboo Shuttleport",
+
    groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

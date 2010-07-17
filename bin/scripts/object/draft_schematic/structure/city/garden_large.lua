@@ -45,6 +45,8 @@ object_draft_schematic_structure_city_garden_large = object_draft_schematic_stru
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Large Garden",
+
    groupName = "craftPlayerCityD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

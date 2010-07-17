@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_apron_chef_01 = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chef's Apron",
+
    groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

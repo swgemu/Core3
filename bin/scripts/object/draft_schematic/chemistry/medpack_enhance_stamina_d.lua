@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_enhance_stamina_d = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Enhance Stamina Medpack - D",
+
    groupName = "craftMedpackBEnhanceGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_detonation_module = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Detonation Module",
+
    groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

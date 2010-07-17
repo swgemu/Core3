@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_lamp_table_s02_on = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Table-top Lamp 'Corellia'",
+
    groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

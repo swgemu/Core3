@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_beam = object_draft_schematic_weapon_shared_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Beam Rifle",
+
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

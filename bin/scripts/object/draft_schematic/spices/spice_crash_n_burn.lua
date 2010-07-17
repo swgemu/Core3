@@ -45,6 +45,8 @@ object_draft_schematic_spices_spice_crash_n_burn = object_draft_schematic_spices
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Crash n' Burn",
+
    groupName = "craftSmugglerSpiceC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

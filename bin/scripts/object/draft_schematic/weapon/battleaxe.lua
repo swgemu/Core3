@@ -45,6 +45,8 @@ object_draft_schematic_weapon_battleaxe = object_draft_schematic_weapon_shared_b
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Two-handed Axe",
+
    groupName = "craftWeaponMeleeGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

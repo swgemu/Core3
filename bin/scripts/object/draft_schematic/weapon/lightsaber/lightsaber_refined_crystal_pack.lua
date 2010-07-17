@@ -45,6 +45,8 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "A Refined Crystal Pack",
+
    groupName = "craftJediTool", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)

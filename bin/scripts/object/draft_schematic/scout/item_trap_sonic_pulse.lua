@@ -45,6 +45,8 @@ object_draft_schematic_scout_item_trap_sonic_pulse = object_draft_schematic_scou
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Sonic Pulse",
+
    groupName = "craftRangerTrapGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

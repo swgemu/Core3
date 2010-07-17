@@ -45,6 +45,8 @@ object_draft_schematic_item_item_configurable_sided_dice = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Configurable Dice",
+
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

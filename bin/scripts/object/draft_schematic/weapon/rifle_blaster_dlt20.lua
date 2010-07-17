@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_blaster_dlt20 = object_draft_schematic_weapo
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "DLT20 Rifle",
+
    groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

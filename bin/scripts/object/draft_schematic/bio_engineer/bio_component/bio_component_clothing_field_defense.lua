@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_d
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Toughened Fibers",
+
    groupName = "craftTissueGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)

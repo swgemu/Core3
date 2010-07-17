@@ -45,6 +45,8 @@ object_draft_schematic_instrument_instrument_nalargon = object_draft_schematic_i
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "a Nalargon",
+
    groupName = "craftInstrumentGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

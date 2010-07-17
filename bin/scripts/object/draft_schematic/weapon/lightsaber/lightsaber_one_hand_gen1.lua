@@ -45,6 +45,8 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen1 = object_draft
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "First Generation Lightsaber",
+
    groupName = "craftSaberNovice", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)

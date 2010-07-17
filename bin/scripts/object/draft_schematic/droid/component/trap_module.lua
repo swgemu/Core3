@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_trap_module = object_draft_schematic_droi
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Scout Trap Projectile Unit",
+
    groupName = "craftdroidgenmodGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

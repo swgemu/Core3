@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_enhance_constitution_a = object_draft_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Enhance Constitution Medpack - A",
+
    groupName = "craftMedpackBEnhanceGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

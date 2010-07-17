@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_wke_hood_s01 = object_draft_schematic_c
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Tree-Dweller's Hood",
+
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

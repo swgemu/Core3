@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_chitin_bracer_r = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chitin Armor Right Bracer",
+
    groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

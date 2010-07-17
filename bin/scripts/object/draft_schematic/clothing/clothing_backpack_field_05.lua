@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_backpack_field_05 = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bounty Hunter Pack",
+
    groupName = "craftClothingFieldGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

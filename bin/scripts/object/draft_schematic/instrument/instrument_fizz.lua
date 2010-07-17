@@ -45,6 +45,8 @@ object_draft_schematic_instrument_instrument_fizz = object_draft_schematic_instr
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "a Fizzz",
+
    groupName = "craftInstrumentGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

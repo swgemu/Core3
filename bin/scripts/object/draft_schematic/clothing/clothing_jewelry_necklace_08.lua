@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_08 = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Large Pendant",
+
    groupName = "craftClothingNoviceGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

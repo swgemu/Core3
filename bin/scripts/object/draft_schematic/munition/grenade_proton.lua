@@ -45,6 +45,8 @@ object_draft_schematic_munition_grenade_proton = object_draft_schematic_munition
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Proton Grenade",
+
    groupName = "craftMunitionsGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

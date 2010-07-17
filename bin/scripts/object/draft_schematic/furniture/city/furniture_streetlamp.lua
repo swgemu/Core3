@@ -45,6 +45,8 @@ object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Streetlamp",
+
    groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

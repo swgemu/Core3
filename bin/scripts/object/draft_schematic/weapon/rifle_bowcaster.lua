@@ -45,6 +45,8 @@ object_draft_schematic_weapon_rifle_bowcaster = object_draft_schematic_weapon_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bowcaster",
+
    groupName = "craftWookieItems", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

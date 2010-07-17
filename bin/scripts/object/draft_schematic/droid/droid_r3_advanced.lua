@@ -45,6 +45,8 @@ object_draft_schematic_droid_droid_r3_advanced = object_draft_schematic_droid_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: R3 Droid, Advanced Model",
+
    groupName = "craftdroidGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

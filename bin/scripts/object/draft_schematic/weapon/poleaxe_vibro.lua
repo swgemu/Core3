@@ -45,6 +45,8 @@ object_draft_schematic_weapon_poleaxe_vibro = object_draft_schematic_weapon_shar
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Long Vibro Axe",
+
    groupName = "craftWeaponMeleeGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

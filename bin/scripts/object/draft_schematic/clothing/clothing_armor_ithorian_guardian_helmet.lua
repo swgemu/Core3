@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_helmet = object
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ithorian Guardian Helmet",
+
    groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

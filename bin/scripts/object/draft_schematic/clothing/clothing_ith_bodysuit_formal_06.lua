@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_formal_06 = object_draft_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Ithorian Leather Gear",
+
    groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

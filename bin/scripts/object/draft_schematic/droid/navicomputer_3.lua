@@ -45,6 +45,8 @@ object_draft_schematic_droid_navicomputer_3 = object_draft_schematic_droid_share
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "v3 Flight Computer",
+
    groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_repair_unit_casing = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Repair Unit Casing",
+
    groupName = "craftDroidRepairCompA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

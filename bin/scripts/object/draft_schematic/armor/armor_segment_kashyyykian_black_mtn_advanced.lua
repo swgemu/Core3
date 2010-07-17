@@ -45,6 +45,8 @@ object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn_advanced = obje
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Kashyyykian Black Mountain Armor Segment",
+
    groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

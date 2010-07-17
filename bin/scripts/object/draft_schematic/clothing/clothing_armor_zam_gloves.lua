@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_zam_gloves = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mabari Armorweave Gloves",
+
    groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

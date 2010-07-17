@@ -45,6 +45,8 @@ object_draft_schematic_spices_spice_scramjet = object_draft_schematic_spices_sha
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Scramjet",
+
    groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

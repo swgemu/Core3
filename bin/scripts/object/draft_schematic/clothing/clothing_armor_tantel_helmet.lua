@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_tantel_helmet = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Tantel Armor Helmet",
+
    groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_furniture_furniture_candle_free_s02_on = object_draft_sch
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Candle 'Dearic'",
+
    groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)

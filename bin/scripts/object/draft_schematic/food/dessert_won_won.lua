@@ -45,6 +45,8 @@ object_draft_schematic_food_dessert_won_won = object_draft_schematic_food_shared
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Won-Won",
+
    groupName = "craftFoodDessertGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_belt_field_03 = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Cartridge Belt",
+
    groupName = "craftClothingFieldGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

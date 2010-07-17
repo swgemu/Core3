@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_med_stimpack_state_intimidated_a = object_draft
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Intimidated State Stimpack - A",
+
    groupName = "craftStimpackStateGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

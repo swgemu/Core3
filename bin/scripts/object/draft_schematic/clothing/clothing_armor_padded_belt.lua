@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_padded_belt = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Padded Armor Belt",
+
    groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

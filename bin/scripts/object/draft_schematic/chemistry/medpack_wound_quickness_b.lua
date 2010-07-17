@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_wound_quickness_b = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Quickness Wound Medpack - B",
+
    groupName = "craftMedpackBGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_food_dish_bivoli_tempari = object_draft_schematic_food_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Bivoli Tempari",
+
    groupName = "craftFoodDishGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

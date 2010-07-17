@@ -45,6 +45,8 @@ object_draft_schematic_slicing_slicing_armor_upgrade_kit = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Armor Upgrade Kit",
+
    groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)

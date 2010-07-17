@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_medpack_enhance_poison_b = object_draft_schemat
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Enhance Poison Resist Medpack - B",
+
    groupName = "craftMedpackBEnhanceGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

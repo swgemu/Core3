@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_component_liquid_delivery_suspension_advanced =
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Liquid Suspension",
+
    groupName = "craftMedicineComponentGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)

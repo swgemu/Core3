@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_skirt_formal_06 = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Belted Skirt",
+
    groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

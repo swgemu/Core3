@@ -45,6 +45,8 @@ object_draft_schematic_food_drink_accarragm = object_draft_schematic_food_shared
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Accarragm",
+
    groupName = "craftFoodDrinkGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

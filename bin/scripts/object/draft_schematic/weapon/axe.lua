@@ -45,6 +45,8 @@ object_draft_schematic_weapon_axe = object_draft_schematic_weapon_shared_axe:new
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Heavy Axe",
+
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_structure_installation_generator_fusion = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Fusion Power Generator",
+
    groupName = "craftInstallationGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

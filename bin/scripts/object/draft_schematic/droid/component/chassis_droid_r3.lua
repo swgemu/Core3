@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_chassis_droid_r3 = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "R3 ADV Droid Chassis",
+
    groupName = "craftdroidGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

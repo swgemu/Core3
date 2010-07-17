@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_chitin_chest = object_draft_schem
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chitin Armor Chest Plate",
+
    groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_spices_spice_pyrepenol = object_draft_schematic_spices_sh
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Pyrepenol",
+
    groupName = "craftSmugglerSpiceB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)

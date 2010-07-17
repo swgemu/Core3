@@ -45,6 +45,8 @@ object_draft_schematic_armor_component_armor_layer_blast = object_draft_schemati
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Blast Protection Armor Layer",
+
    groupName = "craftArmorLightLayersGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

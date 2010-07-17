@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_personality_module_stupid = object_draft_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Stupid Droid Personality Chip",
+
    groupName = "craftdroidgenmodGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

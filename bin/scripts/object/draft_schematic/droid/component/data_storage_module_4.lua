@@ -45,6 +45,8 @@ object_draft_schematic_droid_component_data_storage_module_4 = object_draft_sche
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Level 4 Droid Data Module",
+
    groupName = "craftdroidgenmodGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)

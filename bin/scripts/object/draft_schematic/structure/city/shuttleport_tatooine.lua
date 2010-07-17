@@ -45,6 +45,8 @@ object_draft_schematic_structure_city_shuttleport_tatooine = object_draft_schema
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Deed for: Tatooine Shuttleport",
+
    groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)

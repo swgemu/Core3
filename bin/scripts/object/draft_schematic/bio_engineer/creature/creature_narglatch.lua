@@ -45,6 +45,8 @@ object_draft_schematic_bio_engineer_creature_creature_narglatch = object_draft_s
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Narglatch",
+
    groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)

@@ -45,6 +45,8 @@ object_draft_schematic_weapon_lance_vibro_controller_fp = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Lance",
+
    groupName = "craftWeaponMeleeGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

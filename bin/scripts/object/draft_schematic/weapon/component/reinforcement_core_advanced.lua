@@ -45,6 +45,8 @@ object_draft_schematic_weapon_component_reinforcement_core_advanced = object_dra
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Reinforcement Core",
+
    groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)

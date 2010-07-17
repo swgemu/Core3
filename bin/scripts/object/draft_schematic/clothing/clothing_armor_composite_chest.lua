@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_armor_composite_chest = object_draft_sc
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Composite Armor Chest Plate",
+
    groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

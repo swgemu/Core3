@@ -45,6 +45,8 @@ object_draft_schematic_clothing_clothing_wke_shirt_s01 = object_draft_schematic_
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Wookiee Hide Jerkin",
+
    groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)

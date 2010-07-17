@@ -45,6 +45,8 @@ object_draft_schematic_armor_armor_segment_zam_advanced = object_draft_schematic
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Advanced Armorweave Segment",
+
    groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)

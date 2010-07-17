@@ -45,6 +45,8 @@ object_draft_schematic_chemistry_med_stimpack_area_a = object_draft_schematic_ch
 
    templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Area Stimpack - A",
+
    groupName = "craftStimpackRangeGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
