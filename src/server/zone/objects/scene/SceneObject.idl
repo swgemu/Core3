@@ -911,6 +911,9 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	
 	public native float getDistanceTo(SceneObject object);
 	
+	@local
+	public native float getDistanceTo(Coordinate coordinate);
+	
 	public native void updateVehiclePosition();
 	
 	

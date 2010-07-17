@@ -94,6 +94,8 @@ private:
 	int shiftDuration, lowerGateOverride, maxSpawnAmount;
 	float spawnThrottling;
 
+	int samplingMultiplier;
+
 public:
 	ResourceSpawner(ManagedReference<ZoneServer* > serv,
 			ZoneProcessServerImplementation* impl, ObjectManager* objMan);
@@ -117,11 +119,11 @@ public:
 
 	ResourceSpawn* manualCreateResourceSpawn(const String& type);
 
-	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
+	void sendResourceListForSurvey(PlayerCreature* player, const int toolType, const String& surveyType);
 
-	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
-	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
-	void sendSampleResults(PlayerCreature* playerCreature, const float density, const String& resname);
+	void sendSurvey(PlayerCreature* player, const String& resname);
+	void sendSample(PlayerCreature* player, const String& resname, const String& sampleAnimation);
+	void sendSampleResults(PlayerCreature* player, const float density, const String& resname);
 
 	ResourceSpawn* getFromRandomPool(const String& type);
 

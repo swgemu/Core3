@@ -67,6 +67,8 @@ using namespace server::zone;
 
 #include "engine/lua/LuaObject.h"
 
+#include "engine/util/Coordinate.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -109,19 +111,35 @@ public:
 
 	bool canSampleRadioactive();
 
+	bool tryGamble();
+
+	void clearGamble();
+
 	void consentRadioactiveSample();
 
-	void sendRadioactiveWarning(PlayerCreature* playerCreature);
+	void sendRadioactiveWarning(PlayerCreature* player);
 
-	void sendRangeSui(PlayerCreature* playerCreature);
+	void sendRangeSui(PlayerCreature* player);
+
+	void surveyCnodeMinigameSui(PlayerCreature* player);
+
+	void surveyCnodeMinigame(PlayerCreature* player, int value);
+
+	Coordinate* getRichSampleLocation();
+
+	void clearRichSampleLocation();
+
+	void surveyGnodeMinigameSui(PlayerCreature* player);
+
+	void surveyGnodeMinigame(PlayerCreature* player, int value);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void sendResourceListTo(PlayerCreature* playerCreature);
+	void sendResourceListTo(PlayerCreature* player);
 
-	void sendSurveyTo(PlayerCreature* playerCreature, const String& resname);
+	void sendSurveyTo(PlayerCreature* player, const String& resname);
 
-	void sendSampleTo(PlayerCreature* playerCreature, const String& resname);
+	void sendSampleTo(PlayerCreature* player, const String& resname);
 
 protected:
 	SurveyTool(DummyConstructorParameter* param);
@@ -163,6 +181,10 @@ protected:
 
 	bool radioactiveOk;
 
+	Coordinate* richSampleLocation;
+
+	bool doGamble;
+
 public:
 	static const int SOLAR = 1;
 
@@ -200,19 +222,35 @@ public:
 
 	bool canSampleRadioactive();
 
+	bool tryGamble();
+
+	void clearGamble();
+
 	void consentRadioactiveSample();
 
-	void sendRadioactiveWarning(PlayerCreature* playerCreature);
+	void sendRadioactiveWarning(PlayerCreature* player);
 
-	void sendRangeSui(PlayerCreature* playerCreature);
+	void sendRangeSui(PlayerCreature* player);
+
+	void surveyCnodeMinigameSui(PlayerCreature* player);
+
+	void surveyCnodeMinigame(PlayerCreature* player, int value);
+
+	Coordinate* getRichSampleLocation();
+
+	void clearRichSampleLocation();
+
+	void surveyGnodeMinigameSui(PlayerCreature* player);
+
+	void surveyGnodeMinigame(PlayerCreature* player, int value);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void sendResourceListTo(PlayerCreature* playerCreature);
+	void sendResourceListTo(PlayerCreature* player);
 
-	void sendSurveyTo(PlayerCreature* playerCreature, const String& resname);
+	void sendSurveyTo(PlayerCreature* player, const String& resname);
 
-	void sendSampleTo(PlayerCreature* playerCreature, const String& resname);
+	void sendSampleTo(PlayerCreature* player, const String& resname);
 
 	SurveyTool* _this;
 
@@ -263,19 +301,33 @@ public:
 
 	bool canSampleRadioactive();
 
+	bool tryGamble();
+
+	void clearGamble();
+
 	void consentRadioactiveSample();
 
-	void sendRadioactiveWarning(PlayerCreature* playerCreature);
+	void sendRadioactiveWarning(PlayerCreature* player);
 
-	void sendRangeSui(PlayerCreature* playerCreature);
+	void sendRangeSui(PlayerCreature* player);
+
+	void surveyCnodeMinigameSui(PlayerCreature* player);
+
+	void surveyCnodeMinigame(PlayerCreature* player, int value);
+
+	void clearRichSampleLocation();
+
+	void surveyGnodeMinigameSui(PlayerCreature* player);
+
+	void surveyGnodeMinigame(PlayerCreature* player, int value);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void sendResourceListTo(PlayerCreature* playerCreature);
+	void sendResourceListTo(PlayerCreature* player);
 
-	void sendSurveyTo(PlayerCreature* playerCreature, const String& resname);
+	void sendSurveyTo(PlayerCreature* player, const String& resname);
 
-	void sendSampleTo(PlayerCreature* playerCreature, const String& resname);
+	void sendSampleTo(PlayerCreature* player, const String& resname);
 
 protected:
 	String _param1_sendSurveyTo__PlayerCreature_String_;

@@ -85,6 +85,8 @@ namespace server {
 
 	  	void handleSurveyToolRange(uint32 boxID, PlayerCreature* player, uint32 cancel, int range);
 	  	void handleSampleRadioactiveConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleSurveyConcentratedMinigame(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleSurveyConcentratedMinigame2(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
 
 	  	void handleRepairWeapon(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
 	  	void handleRepairArmor(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);

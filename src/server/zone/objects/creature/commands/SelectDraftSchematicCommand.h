@@ -86,6 +86,7 @@ public:
 
 			int index = tokenizer.getIntToken();
 
+			Locker locker(craftingTool);
 			craftingTool->selectDraftSchematic(player, index);
 
 		} else {
