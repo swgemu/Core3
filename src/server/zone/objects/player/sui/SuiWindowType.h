@@ -138,6 +138,8 @@ public:
 	static const int CHARACTERBUILDERITEMSELECT = 100;
 
 	static const int SAMPLERADIOACTIVECONFIRM = 110;
+	static const int SURVEY_TOOL_CONCENTRATED_MINIGAME = 111;
+	static const int SURVEY_TOOL_CONCENTRATED_MINIGAME2 = 112;
 };
 
 #endif /*SuiWindowType_H_*/

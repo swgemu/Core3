@@ -716,6 +716,8 @@ public:
 
 	float getDistanceTo(SceneObject* object);
 
+	float getDistanceTo(Coordinate* coordinate);
+
 	void updateVehiclePosition();
 
 	int notifyObjectInserted(SceneObject* object);
@@ -1532,6 +1534,8 @@ public:
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	float getDistanceTo(SceneObject* object);
+
+	float getDistanceTo(Coordinate* coordinate);
 
 	void updateVehiclePosition();
 
