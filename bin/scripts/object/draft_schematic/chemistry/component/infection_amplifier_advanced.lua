@@ -61,8 +61,7 @@ object_draft_schematic_chemistry_component_infection_amplifier_advanced = object
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"delivery_medium", "body_shell"},
    ingredientSlotType = {0, 0},

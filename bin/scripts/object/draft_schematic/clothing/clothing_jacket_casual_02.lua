@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_jacket_casual_02 = object_draft_schemat
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2},
-   customizationDefaults = {180}
-
+   customizationDefaults = {180},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"binding_and_hardware", "liner", "shell"},
    ingredientSlotType = {0, 0, 2},

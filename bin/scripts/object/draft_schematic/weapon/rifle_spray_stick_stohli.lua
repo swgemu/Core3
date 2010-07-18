@@ -62,7 +62,6 @@ object_draft_schematic_weapon_rifle_spray_stick_stohli = object_draft_schematic_
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "chemical_dispersion_controller", "cartridge_feed_unit", "firing_mechanism"},
    ingredientSlotType = {0, 0, 0, 2, 4, 2},

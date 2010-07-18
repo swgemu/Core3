@@ -62,7 +62,6 @@ object_draft_schematic_food_dessert_bofa_treat = object_draft_schematic_food_sha
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dried_fruit", "crust", "additive"},
    ingredientSlotType = {0, 0, 4},

@@ -62,7 +62,6 @@ object_draft_schematic_clothing_clothing_armor_bone_chest = object_draft_schemat
 
    customizationOptions = {2, 1},
    customizationDefaults = {7, 0},
-
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"auxilary_coverage", "body", "liner", "hardware_and_attachments", "binding_and_reinforcement", "padding", "armor", "load_bearing_harness", "reinforcement", "auxiliary_coverage_2"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 2, 2, 2, 2},

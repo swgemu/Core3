@@ -61,8 +61,7 @@ object_draft_schematic_weapon_component_blaster_power_handler_advanced = object_
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"module_assembly", "xciter_circuitry", "circuitry_substrate", "gas_containment_unit", "reactant_source", "weapon_enhancement"},
    ingredientSlotType = {0, 0, 0, 0, 0, 4},

@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_wke_hat_s01 = object_draft_schematic_cl
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell_half", "shell_half2", "binding_and_weatherproofing"},
    ingredientSlotType = {2, 2, 0},

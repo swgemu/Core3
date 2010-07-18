@@ -62,7 +62,6 @@ object_draft_schematic_spices_spice_scramjet = object_draft_schematic_spices_sha
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"protein_base", "reactant_additive"},
    ingredientSlotType = {0, 0},

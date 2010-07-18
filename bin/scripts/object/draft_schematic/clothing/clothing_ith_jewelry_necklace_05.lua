@@ -62,7 +62,6 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_05 = object_draft_
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"clasp", "band", "massive_jewelry_setting"},
    ingredientSlotType = {0, 0, 2},

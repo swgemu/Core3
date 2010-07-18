@@ -62,7 +62,6 @@ object_draft_schematic_food_dessert_pkneb = object_draft_schematic_food_shared_d
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"carbosyrup", "sweet_meat", "bone_fragments", "additive"},
    ingredientSlotType = {2, 0, 0, 4},

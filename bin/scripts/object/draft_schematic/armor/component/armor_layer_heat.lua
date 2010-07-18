@@ -61,8 +61,7 @@ object_draft_schematic_armor_component_armor_layer_heat = object_draft_schematic
    customizationSkill = "armor_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_layer_frame", "secondary_insulator_microsheath", "primary_insulator_micro_layer"},
    ingredientSlotType = {0, 0, 0},

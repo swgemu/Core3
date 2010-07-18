@@ -62,7 +62,6 @@ object_draft_schematic_food_dish_cho_nor_hoola = object_draft_schematic_food_sha
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"soured_milk", "bone_powder", "protato", "additive"},
    ingredientSlotType = {0, 0, 2, 4},

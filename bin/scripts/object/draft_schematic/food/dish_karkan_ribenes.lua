@@ -62,7 +62,6 @@ object_draft_schematic_food_dish_karkan_ribenes = object_draft_schematic_food_sh
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"artificial_ribenes_meat", "seasoning", "spit", "additive"},
    ingredientSlotType = {2, 0, 0, 4},

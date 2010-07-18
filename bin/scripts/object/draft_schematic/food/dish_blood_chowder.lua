@@ -62,7 +62,6 @@ object_draft_schematic_food_dish_blood_chowder = object_draft_schematic_food_sha
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"water", "purified_blood", "flavored_soypro", "additive"},
    ingredientSlotType = {0, 0, 2, 4},

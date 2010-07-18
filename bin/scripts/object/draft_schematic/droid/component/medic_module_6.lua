@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_medic_module_6 = object_draft_schematic_d
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "med_assist_module", "medical_database"},
    ingredientSlotType = {0, 0, 2, 2},

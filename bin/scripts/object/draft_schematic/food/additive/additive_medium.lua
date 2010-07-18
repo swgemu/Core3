@@ -61,8 +61,7 @@ object_draft_schematic_food_additive_additive_medium = object_draft_schematic_fo
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"suspension_agent", "bio_component"},
    ingredientSlotType = {0, 4},

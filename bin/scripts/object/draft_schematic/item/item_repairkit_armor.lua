@@ -61,8 +61,7 @@ object_draft_schematic_item_item_repairkit_armor = object_draft_schematic_item_s
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "thermal_shielding"},
    ingredientSlotType = {0, 0},

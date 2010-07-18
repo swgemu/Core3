@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_chair_kitchen = object_draft_schemati
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"seat", "frame"},
    ingredientSlotType = {0, 0},

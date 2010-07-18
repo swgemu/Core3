@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_belt_formal_19 = object_draft_schematic
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1},
-   customizationDefaults = {0, 0}
-
+   customizationDefaults = {0, 0},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_reinforcement", "hardware"},
    ingredientSlotType = {0, 0, 0},

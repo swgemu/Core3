@@ -62,7 +62,6 @@ object_draft_schematic_weapon_rifle_flame_thrower = object_draft_schematic_weapo
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_munition_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "barrel", "ignition_pulse_generator", "stock"},
    ingredientSlotType = {0, 0, 0, 2, 2, 0, 4},

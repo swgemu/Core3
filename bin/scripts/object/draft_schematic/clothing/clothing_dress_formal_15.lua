@@ -62,7 +62,6 @@ object_draft_schematic_clothing_clothing_dress_formal_15 = object_draft_schemati
 
    customizationOptions = {2, 1},
    customizationDefaults = {46, 46},
-
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "extra_trim", "jewelry_setting", "hardware", "skirt", "bodice"},
    ingredientSlotType = {2, 2, 2, 0, 2, 0},

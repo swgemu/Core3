@@ -62,7 +62,6 @@ object_draft_schematic_clothing_component_clothing_shoe_sole = object_draft_sche
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_reinforcement"},
    ingredientSlotType = {0, 0},

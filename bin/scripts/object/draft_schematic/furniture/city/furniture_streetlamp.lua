@@ -61,8 +61,7 @@ object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schema
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "light_housing", "lighting_module"},
    ingredientSlotType = {0, 0, 2},

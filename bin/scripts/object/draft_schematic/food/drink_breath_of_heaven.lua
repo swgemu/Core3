@@ -62,7 +62,6 @@ object_draft_schematic_food_drink_breath_of_heaven = object_draft_schematic_food
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"first_alcohol", "second_alcohol", "first_mash", "second_mash", "glass", "additive"},
    ingredientSlotType = {2, 2, 0, 0, 2, 4},

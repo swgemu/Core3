@@ -62,7 +62,6 @@ object_draft_schematic_clothing_clothing_ith_robe_formal_02 = object_draft_schem
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "extra_trim", "jewelry_setting", "hardware", "inner_gown", "outer_gown"},
    ingredientSlotType = {0, 2, 2, 0, 2, 2},

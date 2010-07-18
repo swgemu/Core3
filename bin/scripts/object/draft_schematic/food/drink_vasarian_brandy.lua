@@ -62,7 +62,6 @@ object_draft_schematic_food_drink_vasarian_brandy = object_draft_schematic_food_
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "talusian_fruit", "talusian_berries", "glass", "additive"},
    ingredientSlotType = {2, 0, 0, 2, 4},

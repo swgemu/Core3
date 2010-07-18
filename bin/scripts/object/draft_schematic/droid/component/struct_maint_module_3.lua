@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_struct_maint_module_3 = object_draft_sche
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "maintenance_module", "transport_database"},
    ingredientSlotType = {0, 0, 2, 2},

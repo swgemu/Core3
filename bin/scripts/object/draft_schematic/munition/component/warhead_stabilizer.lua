@@ -61,8 +61,7 @@ object_draft_schematic_munition_component_warhead_stabilizer = object_draft_sche
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"thermal_insulation", "interdiction_coil_substrate", "field_interdiction_coil", "fuse_warhead_interface", "contaminent_preventor", "module_casing"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0},

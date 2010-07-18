@@ -62,7 +62,6 @@ object_draft_schematic_food_dish_kanali_wafers = object_draft_schematic_food_sha
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"carbosyrup", "fruit_core", "preservative_wrap", "additive"},
    ingredientSlotType = {2, 0, 0, 4},

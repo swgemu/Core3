@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_couch_cheap = object_draft_schematic_
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"cushions", "frame"},
    ingredientSlotType = {0, 0},

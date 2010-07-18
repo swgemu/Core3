@@ -62,7 +62,6 @@ object_draft_schematic_food_dish_vegeparsine = object_draft_schematic_food_share
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"veghash", "tuber_filling", "shell_glaze", "additive"},
    ingredientSlotType = {2, 0, 2, 4},

@@ -61,8 +61,7 @@ object_draft_schematic_structure_installation_factory_food = object_draft_schema
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_frame_and_reinforcement", "body_shell_and_casing", "structure_foundation", "thermal_noise_and_charge_proof_shielding", "power_supply_unit", "ouput_storage_unit", "semi_automated_assembly_mechanism"},
    ingredientSlotType = {0, 2, 0, 0, 2, 2, 2},

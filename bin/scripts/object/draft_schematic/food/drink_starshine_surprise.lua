@@ -62,7 +62,6 @@ object_draft_schematic_food_drink_starshine_surprise = object_draft_schematic_fo
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "reactive_element", "glass", "additive"},
    ingredientSlotType = {0, 0, 2, 4},

@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_pants_casual_11 = object_draft_schemati
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1, 29},
-   customizationDefaults = {106, 61, 22}
-
+   customizationDefaults = {106, 61, 22},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_reinforcement", "metal_fasteners", "synthetic_cloth"},
    ingredientSlotType = {2, 0, 2, 2},

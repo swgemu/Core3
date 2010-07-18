@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_advanced_droid_frame = object_draft_schem
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell"},
    ingredientSlotType = {0, 0},

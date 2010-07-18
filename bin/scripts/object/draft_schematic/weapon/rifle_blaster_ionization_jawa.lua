@@ -62,7 +62,6 @@ object_draft_schematic_weapon_rifle_blaster_ionization_jawa = object_draft_schem
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"stock", "receiver_assembly", "grip_assembly", "powerhandler", "barrel"},
    ingredientSlotType = {0, 0, 0, 2, 2},
