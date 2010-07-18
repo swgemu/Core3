@@ -61,7 +61,9 @@ object_draft_schematic_droid_component_crafting_module_food = object_draft_schem
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "crafting_tools"},
    ingredientSlotType = {0, 0, 0},

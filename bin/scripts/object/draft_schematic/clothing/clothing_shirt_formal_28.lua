@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_shirt_formal_28 = object_draft_schemati
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {34},
+   customizationStringNames = {"/private/index_color_0"},
    customizationDefaults = {81},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "trim", "binding_and_hardware"},
    ingredientSlotType = {0, 2, 0},

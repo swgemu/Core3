@@ -61,7 +61,9 @@ object_draft_schematic_weapon_rifle_t21 = object_draft_schematic_weapon_shared_r
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "enhanced_cooling_mechanism", "powerhandler", "thermal_control_unit", "barrel", "stock"},
    ingredientSlotType = {0, 0, 0, 0, 2, 0, 2, 4},

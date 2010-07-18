@@ -61,7 +61,9 @@ object_draft_schematic_armor_armor_segment_bone = object_draft_schematic_armor_s
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_bone", "segment_mounting_tabs", "segment_enhancement"},
    ingredientSlotType = {0, 0, 4},

@@ -61,7 +61,9 @@ object_draft_schematic_bio_engineer_creature_creature_ikopi = object_draft_schem
    customizationSkill = "bio_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
    ingredientTitleNames = {"dna_template", "protein_base", "organic_nutrition_materials"},
    ingredientSlotType = {2, 0, 0},

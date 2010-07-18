@@ -61,7 +61,9 @@ object_draft_schematic_item_item_configurable_sided_dice = object_draft_schemati
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"cube_core", "hardened_shell", "logic_unit", "color_actuator", "parallel_logic_unit", "interface_pad", "power_unit"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},

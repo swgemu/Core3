@@ -61,7 +61,9 @@ object_draft_schematic_chemistry_medpack_wound_action_a = object_draft_schematic
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element"},
    ingredientSlotType = {0, 0},

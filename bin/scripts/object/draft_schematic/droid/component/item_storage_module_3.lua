@@ -61,7 +61,9 @@ object_draft_schematic_droid_component_item_storage_module_3 = object_draft_sche
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "thermal_shielding", "cargo_management_unit", "cargo_restraints"},
    ingredientSlotType = {0, 0, 0, 0},

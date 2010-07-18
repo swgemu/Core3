@@ -61,7 +61,9 @@ object_draft_schematic_food_drink_corellian_brandy = object_draft_schematic_food
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"double_aged_berries", "fermented_fruit", "alcohol", "glass", "additive"},
    ingredientSlotType = {0, 0, 2, 2, 4},

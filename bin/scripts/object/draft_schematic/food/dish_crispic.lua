@@ -61,7 +61,9 @@ object_draft_schematic_food_dish_crispic = object_draft_schematic_food_shared_di
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"flaky_crust", "meaty_core", "additive"},
    ingredientSlotType = {0, 0, 4},

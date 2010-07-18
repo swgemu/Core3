@@ -61,7 +61,9 @@ object_draft_schematic_structure_installation_mining_ore_light = object_draft_sc
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "bore_mechanism", "ore_storage_tank"},
    ingredientSlotType = {0, 0, 0, 0, 0},

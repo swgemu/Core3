@@ -61,7 +61,9 @@ object_draft_schematic_slicing_slicing_weapon_upgrade_kit = object_draft_schemat
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "tools", "chemicals"},
    ingredientSlotType = {0, 0, 0},

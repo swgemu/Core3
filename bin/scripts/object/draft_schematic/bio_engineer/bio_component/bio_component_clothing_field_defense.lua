@@ -61,7 +61,9 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_d
    customizationSkill = "bio_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"protein_base", "strengthening_compound", "heat_resistant_compound"},
    ingredientSlotType = {0, 0, 0},

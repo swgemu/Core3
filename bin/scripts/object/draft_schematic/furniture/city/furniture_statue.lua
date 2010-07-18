@@ -61,7 +61,9 @@ object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"artistic_medium", "decorative_trim"},
    ingredientSlotType = {0, 0},

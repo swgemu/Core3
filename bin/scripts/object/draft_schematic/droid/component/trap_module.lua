@@ -61,7 +61,9 @@ object_draft_schematic_droid_component_trap_module = object_draft_schematic_droi
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "ammunition_processor", "projectile_compressor"},
    ingredientSlotType = {0, 0, 0, 0},

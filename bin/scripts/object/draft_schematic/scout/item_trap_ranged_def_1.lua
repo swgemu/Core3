@@ -61,7 +61,9 @@ object_draft_schematic_scout_item_trap_ranged_def_1 = object_draft_schematic_sco
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"trap_housing", "bioluminescence", "thickener"},
    ingredientSlotType = {0, 0, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_item_item_clothing_station = object_draft_schematic_item_
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "electronic_control_unit", "micro_sensor_suite", "storage_compartment"},
    ingredientSlotType = {0, 0, 4, 4, 4},

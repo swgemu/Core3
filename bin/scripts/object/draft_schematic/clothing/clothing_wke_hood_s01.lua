@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_wke_hood_s01 = object_draft_schematic_c
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1},
+   customizationStringNames = {"/private/index_color_1", "/private/index_color_2"},
    customizationDefaults = {11, 20},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_hardware"},
    ingredientSlotType = {0, 0},

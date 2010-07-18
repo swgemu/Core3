@@ -61,7 +61,9 @@ object_draft_schematic_item_item_powerup_weapon_ranged_one = object_draft_schema
    customizationSkill = "general_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"resource_one", "resource_two"},
    ingredientSlotType = {0, 0},

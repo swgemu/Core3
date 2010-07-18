@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_jacket_formal_25 = object_draft_schemat
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1, 29},
+   customizationStringNames = {"/private/index_color_1", "/private/index_color_2", "/private/index_color_3"},
    customizationDefaults = {27, 90, 63},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"binding_and_hardware", "liner", "trim", "shell"},
    ingredientSlotType = {0, 0, 2, 2},

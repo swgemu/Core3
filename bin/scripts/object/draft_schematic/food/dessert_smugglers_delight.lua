@@ -61,7 +61,9 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dough", "bantha_butter", "filling_tubers", "succulent_fruit", "additive"},
    ingredientSlotType = {2, 2, 0, 0, 4},

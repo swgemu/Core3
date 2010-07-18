@@ -61,7 +61,9 @@ object_draft_schematic_droid_navicomputer_2 = object_draft_schematic_droid_share
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "droid_brain", "engine_unit", "sensor_suite"},
    ingredientSlotType = {0, 0, 0, 0, 0},

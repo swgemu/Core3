@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_robe_casual_04 = object_draft_schematic
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1},
+   customizationStringNames = {"/private/index_color_1", "/private/index_color_2"},
    customizationDefaults = {55, 40},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "trim"},
    ingredientSlotType = {0, 0},

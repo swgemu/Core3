@@ -61,7 +61,9 @@ object_draft_schematic_weapon_baton_stun = object_draft_schematic_weapon_shared_
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"grip_unit", "conductive_strike_face", "power_cell_brackets", "charge_accumulator", "shock_pulsor", "reinforcement_core"},
    ingredientSlotType = {0, 0, 0, 0, 2, 2},

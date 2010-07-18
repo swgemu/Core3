@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_shirt_casual_30 = object_draft_schemati
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1},
+   customizationStringNames = {"/private/index_color_1", "/private/index_color_2"},
    customizationDefaults = {57, 13},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "trim", "binding_and_hardware"},
    ingredientSlotType = {2, 2, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_item_item_chance_cube = object_draft_schematic_item_share
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"cube_core", "hardened_shell", "logic_unit", "color_actuator"},
    ingredientSlotType = {0, 0, 0, 0},

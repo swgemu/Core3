@@ -61,7 +61,9 @@ object_draft_schematic_food_drink_durindfire = object_draft_schematic_food_share
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"phosphorescent_core", "phosphorescent_reactive", "alcohol", "glass", "additive"},
    ingredientSlotType = {0, 0, 2, 2, 4},

@@ -61,7 +61,9 @@ object_draft_schematic_food_dish_travel_biscuits = object_draft_schematic_food_s
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dried_bread", "preservative_wrap", "additive"},
    ingredientSlotType = {0, 0, 4},

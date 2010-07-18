@@ -61,7 +61,9 @@ object_draft_schematic_munition_component_warhead_light = object_draft_schematic
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"warhead_module_casing", "casing_brackets", "fuse_coupling", "reaction_medium"},
    ingredientSlotType = {0, 0, 0, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_furniture_furniture_tree_potted = object_draft_schematic_
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"pot", "tree", "greenery"},
    ingredientSlotType = {0, 0, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_08 = object_draft_sche
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2},
+   customizationStringNames = {"/private/index_color_1"},
    customizationDefaults = {0},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"clasp", "band", "jewelry_setting"},
    ingredientSlotType = {0, 0, 0},

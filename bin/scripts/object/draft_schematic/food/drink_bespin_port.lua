@@ -61,7 +61,9 @@ object_draft_schematic_food_drink_bespin_port = object_draft_schematic_food_shar
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "aged_fruit_additive", "sugarized_tubers", "berry_mixer", "glass", "additive"},
    ingredientSlotType = {2, 0, 0, 0, 2, 4},

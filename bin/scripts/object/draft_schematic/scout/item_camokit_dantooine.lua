@@ -61,7 +61,9 @@ object_draft_schematic_scout_item_camokit_dantooine = object_draft_schematic_sco
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"musk_extract", "native_animal_skins"},
    ingredientSlotType = {0, 0},

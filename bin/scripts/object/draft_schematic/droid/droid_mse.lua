@@ -61,7 +61,9 @@ object_draft_schematic_droid_droid_mse = object_draft_schematic_droid_shared_dro
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "droid_brain", "engine_unit", "sensor_suite", "general_droid_module"},
    ingredientSlotType = {0, 0, 0, 0, 0, 4},

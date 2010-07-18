@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_gloves_field_13 = object_draft_schemati
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2},
+   customizationStringNames = {"/private/index_color_1"},
    customizationDefaults = {132},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "liner", "grip_pads", "reinforcement"},
    ingredientSlotType = {0, 0, 0, 0},

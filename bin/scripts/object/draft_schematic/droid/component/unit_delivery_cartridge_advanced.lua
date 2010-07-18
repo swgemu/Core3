@@ -61,7 +61,9 @@ object_draft_schematic_droid_component_unit_delivery_cartridge_advanced = object
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"cartridge_housing", "contact_mechanism"},
    ingredientSlotType = {0, 0},

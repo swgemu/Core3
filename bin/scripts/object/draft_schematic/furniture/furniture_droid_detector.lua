@@ -61,7 +61,9 @@ object_draft_schematic_furniture_furniture_droid_detector = object_draft_schemat
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"housing", "frame"},
    ingredientSlotType = {0, 0},
