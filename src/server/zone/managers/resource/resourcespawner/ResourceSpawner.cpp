@@ -69,7 +69,7 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 
 	nameManager = processor->getNameManager();
 	objectManager = objMan;
-	samplingMultiplier = 1;  /// This should be 1 for normal use
+	samplingMultiplier = 100; //should be 1 for normal use
 
 	resourceTree = new ResourceTree();
 	resourceMap = new ResourceMap();

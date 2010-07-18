@@ -108,12 +108,38 @@ int CraftingManager::calculateAssemblySuccess(PlayerCreature* player, DraftSchem
 		return ((CraftingManagerImplementation*) _impl)->calculateAssemblySuccess(player, draftSchematic, effectiveness);
 }
 
-int CraftingManager::calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
+float CraftingManager::calculateAssemblyValueModifier(int assemblyResult) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addSignedIntParameter(assemblyResult);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((CraftingManagerImplementation*) _impl)->calculateAssemblyValueModifier(assemblyResult);
+}
+
+float CraftingManager::getAssemblyPercentage(float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addFloatParameter(value);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((CraftingManagerImplementation*) _impl)->getAssemblyPercentage(value);
+}
+
+int CraftingManager::calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 		method.addObjectParameter(manufactureSchematic);
 		method.addSignedIntParameter(pointsUsed);
@@ -123,12 +149,55 @@ int CraftingManager::calculateExperimentationFailureRate(PlayerCreature* player,
 		return ((CraftingManagerImplementation*) _impl)->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
 }
 
+int CraftingManager::calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+		method.addObjectParameter(draftSchematic);
+		method.addFloatParameter(effectiveness);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CraftingManagerImplementation*) _impl)->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
+}
+
+float CraftingManager::calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addSignedIntParameter(experimentationResult);
+		method.addSignedIntParameter(pointsAttempted);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((CraftingManagerImplementation*) _impl)->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
+}
+
+float CraftingManager::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addObjectParameter(manufactureSchematic);
+		method.addSignedIntParameter(type);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((CraftingManagerImplementation*) _impl)->getWeightedValue(manufactureSchematic, type);
+}
+
 String CraftingManager::generateSerial() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 16);
 
 		method.executeWithAsciiReturn(_return_generateSerial);
 		return _return_generateSerial;
@@ -250,9 +319,24 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertSignedInt(calculateAssemblySuccess((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
 		break;
 	case 10:
-		resp->insertSignedInt(calculateExperimentationFailureRate((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		resp->insertFloat(calculateAssemblyValueModifier(inv->getSignedIntParameter()));
 		break;
 	case 11:
+		resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
+		break;
+	case 12:
+		resp->insertSignedInt(calculateExperimentationFailureRate((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		break;
+	case 13:
+		resp->insertSignedInt(calculateExperimentationSuccess((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
+		break;
+	case 14:
+		resp->insertFloat(calculateExperimentationValueModifier(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
+		break;
+	case 15:
+		resp->insertFloat(getWeightedValue((ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		break;
+	case 16:
 		resp->insertAscii(generateSerial());
 		break;
 	default:
@@ -278,8 +362,28 @@ int CraftingManagerAdapter::calculateAssemblySuccess(PlayerCreature* player, Dra
 	return ((CraftingManagerImplementation*) impl)->calculateAssemblySuccess(player, draftSchematic, effectiveness);
 }
 
+float CraftingManagerAdapter::calculateAssemblyValueModifier(int assemblyResult) {
+	return ((CraftingManagerImplementation*) impl)->calculateAssemblyValueModifier(assemblyResult);
+}
+
+float CraftingManagerAdapter::getAssemblyPercentage(float value) {
+	return ((CraftingManagerImplementation*) impl)->getAssemblyPercentage(value);
+}
+
 int CraftingManagerAdapter::calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
 	return ((CraftingManagerImplementation*) impl)->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
+}
+
+int CraftingManagerAdapter::calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
+	return ((CraftingManagerImplementation*) impl)->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
+}
+
+float CraftingManagerAdapter::calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted) {
+	return ((CraftingManagerImplementation*) impl)->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
+}
+
+float CraftingManagerAdapter::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
+	return ((CraftingManagerImplementation*) impl)->getWeightedValue(manufactureSchematic, type);
 }
 
 String CraftingManagerAdapter::generateSerial() {

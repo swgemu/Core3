@@ -56,6 +56,7 @@ import server.zone.objects.creature.CreatureObject;
 
 include server.zone.objects.scene.variables.CustomizationVariables;
 include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.templates.SharedObjectTemplate;
 
 class TangibleObject extends SceneObject {
@@ -327,6 +328,11 @@ class TangibleObject extends SceneObject {
 	public native void setCustomizationVariable(byte type, byte value, boolean notifyClient = true);
 	
 	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
+	
+	@local
+	public abstract void updateCraftingValues(CraftingValues craftingValues) {
+		error("Unhandled updateCraftingValues for this object type");
+	}
 	
 	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	

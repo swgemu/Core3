@@ -26,7 +26,7 @@ public:
 	void getSchematicIDList(Vector<uint32>& schematics);
 	void loadFromSchematicIDs(Vector<uint32>& schematics);
 
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<uint32>* enabledTabs);
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<uint32>* enabledTabs, int complexityLevel);
 
 	void insertToMessage(BaseMessage* msg);
 };

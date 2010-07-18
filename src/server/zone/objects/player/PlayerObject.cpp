@@ -607,12 +607,12 @@ DraftSchematic* PlayerObject::getSchematic(int i) {
 		return ((PlayerObjectImplementation*) _impl)->getSchematic(i);
 }
 
-Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(Vector<unsigned int>* enabledTabs) {
+Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(Vector<unsigned int>* enabledTabs, int complexityLevel) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerObjectImplementation*) _impl)->filterSchematicList(enabledTabs);
+		return ((PlayerObjectImplementation*) _impl)->filterSchematicList(enabledTabs, complexityLevel);
 }
 
 int PlayerObject::getFoodFilling() {

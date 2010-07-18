@@ -50,6 +50,7 @@ object_tangible_crafting_station_jedi_tool = object_tangible_crafting_station_sh
    customizationOptions = {},
    customizationDefaults = {},
    toolType = 4,
+   complexityLevel = 20,
    enabledTabs = {2048}
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_jedi_tool, "object/tangible/crafting/station/jedi_tool.iff")

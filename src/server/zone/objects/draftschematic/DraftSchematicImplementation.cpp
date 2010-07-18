@@ -201,6 +201,10 @@ String DraftSchematicImplementation::getCustomizationSkill() {
 	return schematicTemplate->getCustomizationSkill();
 }
 
+String DraftSchematicImplementation::getCustomName() {
+	return schematicTemplate->getCustomObjectName();
+}
+
 uint32 DraftSchematicImplementation::getTanoCRC() {
 	return schematicTemplate->getTanoCRC();
 }

@@ -52,6 +52,7 @@ private:
 
 	Vector<uint8> properties;
 	Vector<short> weights;
+	Vector<float> percentages;
 
 	String experimentalTitle;
 	String propertyName;
@@ -80,6 +81,7 @@ public:
 	}
 
 	void addWeight(String property, int weight) {
+
 		short propertyValue = convertStringValue(property);
 		properties.add(propertyValue);
 
@@ -87,6 +89,24 @@ public:
 			weights.add(weight % 16);
 		else
 			weights.add(0x00);
+
+		recalculatePercentages();
+	}
+
+	void recalculatePercentages() {
+
+		float denominator = 0;
+
+		percentages.removeAll();
+
+		for (int i = 0; i < weights.size(); i++) {
+			denominator += weights.get(i);
+		}
+
+		for (int i = 0; i < weights.size(); i++) {
+			float weight = weights.get(i);
+			percentages.add(weight / denominator);
+		}
 	}
 
 	uint8 convertStringValue(String property) {
@@ -161,8 +181,12 @@ public:
 		}
 	}
 
+	int getPropertyListSize() {
+		return properties.size();
+	}
+
 	// Zero is returned if index is out of bounds
-	uint8 getTypeAndWeight(uint32 index) {
+	uint8 getTypeAndWeight(int index) {
 		if (index < properties.size()) {
 			uint8 typeAndWeight =  properties.get(index);
 
@@ -174,7 +198,7 @@ public:
 			return 0x00;  // 0
 	}
 
-	uint8 getBatchTypeAndWeight(uint32 index) {
+	uint8 getBatchTypeAndWeight(int index) {
 		if (index < properties.size()) {
 			uint8 typeAndWeight =  properties.get(index);
 
@@ -186,8 +210,37 @@ public:
 			return 0x00;  // 0
 	}
 
+	float getPropertyPercentage(int index) {
+
+		if (index < percentages.size()) {
+			return percentages.get(index);
+
+		} else
+			return 0x00;  // 0
+	}
+
 	String getExperimentalTitle() {
 		return experimentalTitle;
+	}
+
+	String getPropertyName() {
+		return propertyName;
+	}
+
+	float getMinValue() {
+		return minValue;
+	}
+
+	float getMaxValue() {
+		return maxValue;
+	}
+
+	int getPrecision() {
+		return precision;
+	}
+
+	bool isFiller() {
+		return filler == true;
 	}
 };
 

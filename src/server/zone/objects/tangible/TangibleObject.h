@@ -67,6 +67,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -199,6 +201,8 @@ public:
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
+
+	void updateCraftingValues(CraftingValues* craftingValues);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
@@ -429,6 +433,8 @@ public:
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
+
+	virtual void updateCraftingValues(CraftingValues* craftingValues);
 
 	virtual int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
