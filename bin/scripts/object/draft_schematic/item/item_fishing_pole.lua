@@ -60,6 +60,9 @@ object_draft_schematic_item_item_fishing_pole = object_draft_schematic_item_shar
    experimentingSkill = "general_experimentation", 
    customizationSkill = "general_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"rod", "cable_guides", "cable", "reel"},
    ingredientSlotType = {0, 0, 0, 0},

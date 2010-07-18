@@ -60,6 +60,9 @@ object_draft_schematic_droid_component_chassis_droid_le_repair = object_draft_sc
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"frame", "broadband_transceiver_unit", "droid_brain", "manipulator_arm", "motivator", "sensor_suite"},
    ingredientSlotType = {2, 0, 2, 2, 2, 2},

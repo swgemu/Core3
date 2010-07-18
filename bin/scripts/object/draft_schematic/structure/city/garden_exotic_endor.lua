@@ -60,6 +60,9 @@ object_draft_schematic_structure_city_garden_exotic_endor = object_draft_schemat
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"decorative_flora", "foundation", "wall_sections"},
    ingredientSlotType = {0, 0, 2},

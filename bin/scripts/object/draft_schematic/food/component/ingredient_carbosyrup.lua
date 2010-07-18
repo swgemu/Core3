@@ -60,6 +60,9 @@ object_draft_schematic_food_component_ingredient_carbosyrup = object_draft_schem
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_food_ingredients_n"},
    ingredientTitleNames = {"tubers"},
    ingredientSlotType = {0},

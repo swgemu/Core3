@@ -60,6 +60,9 @@ object_draft_schematic_furniture_furniture_chair_recliner = object_draft_schemat
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "recliner_mechanism", "upholstery"},
    ingredientSlotType = {0, 0, 0},

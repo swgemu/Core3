@@ -60,6 +60,9 @@ object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_dr
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "colors", "electronic_control_unit", "color_stowage"},
    ingredientSlotType = {0, 0, 0, 0, 0},

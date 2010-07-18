@@ -60,6 +60,9 @@ object_draft_schematic_food_dessert_dweezel = object_draft_schematic_food_shared
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dough", "berry_filling", "starchy_filling", "glaze", "additive"},
    ingredientSlotType = {2, 0, 0, 0, 4},

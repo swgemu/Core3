@@ -60,6 +60,9 @@ object_draft_schematic_clothing_component_clothing_synthetic_cloth = object_draf
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"fiber_stock", "strengthening_polymer", "enhancement"},
    ingredientSlotType = {0, 0, 4},

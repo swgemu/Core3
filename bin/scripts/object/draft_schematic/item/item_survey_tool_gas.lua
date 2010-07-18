@@ -60,6 +60,9 @@ object_draft_schematic_item_item_survey_tool_gas = object_draft_schematic_item_s
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "controller", "scanner_assembly", "storage_unit"},
    ingredientSlotType = {0, 0, 0, 0},

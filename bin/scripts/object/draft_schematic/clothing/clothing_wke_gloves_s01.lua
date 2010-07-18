@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_wke_gloves_s01 = object_draft_schematic
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {2, 1},
+   customizationDefaults = {67, 21}
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "liner", "grip_pads"},
    ingredientSlotType = {0, 0, 0},

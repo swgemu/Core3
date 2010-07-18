@@ -60,6 +60,9 @@ object_draft_schematic_structure_component_structure_heavy_harvesting_mechanism 
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"manipulator_unit", "bio_controller", "fluid_hoses", "pump_unit", "sealant_and_shock_absorbing_buffers"},
    ingredientSlotType = {0, 0, 0, 0, 0},

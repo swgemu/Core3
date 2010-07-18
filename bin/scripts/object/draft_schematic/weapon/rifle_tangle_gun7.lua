@@ -60,6 +60,9 @@ object_draft_schematic_weapon_rifle_tangle_gun7 = object_draft_schematic_weapon_
    experimentingSkill = "weapon_experimentation", 
    customizationSkill = "weapon_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "targeting_assist", "cartridge_feed_unit", "firing_mechanism"},
    ingredientSlotType = {0, 0, 0, 2, 2, 2},

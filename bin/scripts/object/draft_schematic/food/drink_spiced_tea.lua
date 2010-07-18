@@ -60,6 +60,9 @@ object_draft_schematic_food_drink_spiced_tea = object_draft_schematic_food_share
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"water", "flavoring_extract", "glass", "additive"},
    ingredientSlotType = {0, 0, 2, 4},

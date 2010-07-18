@@ -60,6 +60,9 @@ object_draft_schematic_weapon_rifle_bowcaster = object_draft_schematic_weapon_sh
    experimentingSkill = "weapon_experimentation", 
    customizationSkill = "weapon_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "barrel", "cartridge_feed_unit", "scope"},
    ingredientSlotType = {0, 0, 0, 2, 2, 2, 4},

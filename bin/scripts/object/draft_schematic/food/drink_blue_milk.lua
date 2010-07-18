@@ -60,6 +60,9 @@ object_draft_schematic_food_drink_blue_milk = object_draft_schematic_food_shared
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"milk", "protein_fortifier", "glass", "additive"},
    ingredientSlotType = {0, 0, 2, 4},

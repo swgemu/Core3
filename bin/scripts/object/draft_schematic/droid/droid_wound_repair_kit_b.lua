@@ -60,6 +60,9 @@ object_draft_schematic_droid_droid_wound_repair_kit_b = object_draft_schematic_d
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"reconstructive_rigging", "insulated_cement", "diagnostic_circuit", "backup_power_supply", "unit_casing"},
    ingredientSlotType = {0, 0, 0, 0, 0},

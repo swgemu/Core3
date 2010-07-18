@@ -60,6 +60,9 @@ object_draft_schematic_weapon_component_projectile_feed_mechanism = object_draft
    experimentingSkill = "weapon_experimentation", 
    customizationSkill = "weapon_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"cartridge_feed_mechanisme", "feed_tray_and_frame", "weapon_enhancement"},
    ingredientSlotType = {0, 0, 4},

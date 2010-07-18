@@ -60,6 +60,9 @@ object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n"},
    ingredientTitleNames = {"vehicle_body", "structural_frame"},
    ingredientSlotType = {0, 0},

@@ -60,6 +60,9 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"container", "life_support", "creature_sample"},
    ingredientSlotType = {0, 0, 2},

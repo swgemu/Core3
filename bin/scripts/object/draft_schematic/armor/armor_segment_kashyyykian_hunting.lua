@@ -60,6 +60,9 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting = object_draft_sc
    experimentingSkill = "armor_experimentation", 
    customizationSkill = "armor_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_kashyyykian_hunting", "armor_layer_track", "segment_mounting_tabs", "defensive_layer", "defensive_layer_2", "defensive_layer_3", "segment_enhancement"},
    ingredientSlotType = {0, 0, 0, 4, 4, 4, 4},

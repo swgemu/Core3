@@ -60,6 +60,9 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "contaminent_neutralization_medium", "thermal_shielding", "circuit_mounting_unit", "memory_circuit"},
    ingredientSlotType = {0, 0, 0, 0, 0},

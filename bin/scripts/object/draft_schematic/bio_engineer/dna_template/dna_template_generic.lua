@@ -60,6 +60,9 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
    experimentingSkill = "bio_engineer_experimentation", 
    customizationSkill = "bio_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
    ingredientTitleNames = {"physique_profile", "prowess_profile", "mental_profile", "psychological_profile", "aggression_profile"},
    ingredientSlotType = {0, 0, 0, 0, 0},

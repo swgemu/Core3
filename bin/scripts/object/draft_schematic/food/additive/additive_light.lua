@@ -60,6 +60,9 @@ object_draft_schematic_food_additive_additive_light = object_draft_schematic_foo
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"suspension_agent", "bio_component"},
    ingredientSlotType = {0, 4},

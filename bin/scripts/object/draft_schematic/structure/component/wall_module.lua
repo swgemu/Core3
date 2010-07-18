@@ -60,6 +60,9 @@ object_draft_schematic_structure_component_wall_module = object_draft_schematic_
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_truss", "section_joints", "wall_foundation", "structure_modules"},
    ingredientSlotType = {0, 0, 0, 2},

@@ -60,6 +60,9 @@ object_draft_schematic_furniture_furniture_bed_large = object_draft_schematic_fu
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "mattress"},
    ingredientSlotType = {0, 0},

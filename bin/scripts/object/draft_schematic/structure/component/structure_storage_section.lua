@@ -60,6 +60,9 @@ object_draft_schematic_structure_component_structure_storage_section = object_dr
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"storage_unit_frame", "storage_unit"},
    ingredientSlotType = {0, 0},

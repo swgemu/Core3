@@ -60,6 +60,9 @@ object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"greens", "fungi_spice", "water_base", "soft_wood_chutes", "additive"},
    ingredientSlotType = {0, 0, 0, 0, 4},

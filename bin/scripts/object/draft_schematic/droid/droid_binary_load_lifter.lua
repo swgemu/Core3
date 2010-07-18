@@ -60,6 +60,9 @@ object_draft_schematic_droid_droid_binary_load_lifter = object_draft_schematic_d
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "secondary_frame", "support_struts", "frame_sub_assembly", "leg_struts", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "droid_defensive_module"},
    ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 2, 2, 4},

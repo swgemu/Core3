@@ -60,6 +60,9 @@ object_draft_schematic_droid_component_personality_module_prissy = object_draft_
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "thermal_shielding", "data_smart_indexer", "primary_phrase_database"},
    ingredientSlotType = {0, 0, 0, 0},

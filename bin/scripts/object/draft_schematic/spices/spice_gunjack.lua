@@ -60,6 +60,9 @@ object_draft_schematic_spices_spice_gunjack = object_draft_schematic_spices_shar
    experimentingSkill = "spice_experimentation", 
    customizationSkill = "spice_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"pemoloxyline", "methylphenatox", "glucose_concentrate"},
    ingredientSlotType = {0, 0, 2},

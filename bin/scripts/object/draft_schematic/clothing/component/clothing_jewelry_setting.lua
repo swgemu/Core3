@@ -60,6 +60,9 @@ object_draft_schematic_clothing_component_clothing_jewelry_setting = object_draf
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"jewel", "setting", "trim"},
    ingredientSlotType = {0, 0, 0},

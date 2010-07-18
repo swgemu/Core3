@@ -60,6 +60,9 @@ object_draft_schematic_armor_armor_segment_zam = object_draft_schematic_armor_sh
    experimentingSkill = "armor_experimentation", 
    customizationSkill = "armor_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_zam", "segment_mounting_tabs", "segment_enhancement"},
    ingredientSlotType = {0, 0, 4},

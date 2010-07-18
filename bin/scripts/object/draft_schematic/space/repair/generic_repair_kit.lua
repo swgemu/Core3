@@ -60,6 +60,9 @@ object_draft_schematic_space_repair_generic_repair_kit = object_draft_schematic_
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"repair_parts", "fiberplast_patches"},
    ingredientSlotType = {0, 0},
