@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_armor_ubese_bandolier = object_draft_sc
    customizationSkill = "armor_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"auxilary_coverage", "body", "liner"},
    ingredientSlotType = {0, 0, 2},

@@ -61,7 +61,9 @@ object_draft_schematic_weapon_axe = object_draft_schematic_weapon_shared_axe:new
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"axe_head", "shaft", "axe_head_fastener"},
    ingredientSlotType = {0, 0, 0},

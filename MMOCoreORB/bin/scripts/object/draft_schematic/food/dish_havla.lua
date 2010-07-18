@@ -61,7 +61,9 @@ object_draft_schematic_food_dish_havla = object_draft_schematic_food_shared_dish
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dough", "starchy_flavoring", "oat_crust", "additive"},
    ingredientSlotType = {2, 0, 0, 4},

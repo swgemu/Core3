@@ -61,7 +61,9 @@ object_draft_schematic_droid_component_playback_module = object_draft_schematic_
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"recording_material", "wave_synthesis", "sound_emission_device"},
    ingredientSlotType = {0, 0, 0},

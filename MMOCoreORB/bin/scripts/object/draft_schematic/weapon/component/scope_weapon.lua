@@ -61,7 +61,9 @@ object_draft_schematic_weapon_component_scope_weapon = object_draft_schematic_we
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"scope_shell", "shock_proofing_and_gasket_seals", "scope_bracket", "light_accumulators", "targeting_aid_circuitry"},
    ingredientSlotType = {0, 0, 0, 0, 0},

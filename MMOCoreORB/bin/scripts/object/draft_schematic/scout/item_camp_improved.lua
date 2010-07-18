@@ -61,7 +61,9 @@ object_draft_schematic_scout_item_camp_improved = object_draft_schematic_scout_s
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"shelter_canvas", "shelter_structure"},
    ingredientSlotType = {0, 0},

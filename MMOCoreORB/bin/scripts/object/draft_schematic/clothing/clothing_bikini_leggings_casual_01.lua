@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_bikini_leggings_casual_01 = object_draf
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1},
+   customizationStringNames = {"/private/index_color_1", "/private/index_color_2"},
    customizationDefaults = {63, 227},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"bikini_fabric", "bikini_reinforcement"},
    ingredientSlotType = {2, 0},

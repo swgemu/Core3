@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_hat_twilek_formal_04 = object_draft_sch
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1},
+   customizationStringNames = {"/private/index_color_1", "/private/index_color_2"},
    customizationDefaults = {65, 100},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "second_shell", "binding_and_weatherproofing", "liner", "decorative_gemstone_lining"},
    ingredientSlotType = {2, 2, 0, 2, 0},

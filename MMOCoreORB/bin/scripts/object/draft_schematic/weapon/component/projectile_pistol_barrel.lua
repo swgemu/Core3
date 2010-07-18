@@ -61,7 +61,9 @@ object_draft_schematic_weapon_component_projectile_pistol_barrel = object_draft_
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"lining", "bore"},
    ingredientSlotType = {0, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_spices_spice_sedative_h4b = object_draft_schematic_spices
    customizationSkill = "spice_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"h4b_concentrate", "coagulant", "delivery_mechanism"},
    ingredientSlotType = {0, 0, 0},

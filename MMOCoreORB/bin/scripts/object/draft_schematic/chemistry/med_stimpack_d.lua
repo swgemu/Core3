@@ -61,7 +61,9 @@ object_draft_schematic_chemistry_med_stimpack_d = object_draft_schematic_chemist
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
    ingredientSlotType = {0, 0, 2, 2, 2},

@@ -61,7 +61,9 @@ object_draft_schematic_food_drink_tssolok = object_draft_schematic_food_shared_d
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "flavoring_extract", "glass", "additive"},
    ingredientSlotType = {2, 0, 2, 4},

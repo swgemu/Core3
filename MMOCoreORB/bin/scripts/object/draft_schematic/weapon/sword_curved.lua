@@ -61,7 +61,9 @@ object_draft_schematic_weapon_sword_curved = object_draft_schematic_weapon_share
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"sword_core_jacket", "grip", "jacketed_sword_core"},
    ingredientSlotType = {0, 0, 4},

@@ -61,7 +61,9 @@ object_draft_schematic_weapon_component_stock_advanced = object_draft_schematic_
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"stock_unit", "butt_cap_and_receiver_attachment_point"},
    ingredientSlotType = {0, 0},

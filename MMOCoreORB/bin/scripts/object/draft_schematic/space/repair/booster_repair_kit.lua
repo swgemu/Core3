@@ -61,7 +61,9 @@ object_draft_schematic_space_repair_booster_repair_kit = object_draft_schematic_
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"repair_parts", "fiberplast_patches"},
    ingredientSlotType = {0, 0},

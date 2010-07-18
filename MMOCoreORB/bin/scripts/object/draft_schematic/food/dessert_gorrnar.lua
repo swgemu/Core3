@@ -61,7 +61,9 @@ object_draft_schematic_food_dessert_gorrnar = object_draft_schematic_food_shared
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"berry_topping", "dough", "carbosyrup", "oats", "additive"},
    ingredientSlotType = {0, 2, 2, 0, 4},

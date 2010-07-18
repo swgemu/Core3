@@ -61,7 +61,9 @@ object_draft_schematic_furniture_furniture_lamp_tatt_s01_on = object_draft_schem
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"lamp_body", "neck", "lamp_assembly", "shade"},
    ingredientSlotType = {0, 0, 0, 0},

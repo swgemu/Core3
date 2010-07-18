@@ -61,7 +61,9 @@ object_draft_schematic_spices_spice_sweetblossom = object_draft_schematic_spices
    customizationSkill = "spice_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"sweetblossom_nectar", "thinner", "distilling_vat"},
    ingredientSlotType = {0, 0, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_quant
    customizationSkill = "bio_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"nutrient_base", "hyper_yeast", "yeast_catalyst", "secrets"},
    ingredientSlotType = {0, 0, 0, 4},

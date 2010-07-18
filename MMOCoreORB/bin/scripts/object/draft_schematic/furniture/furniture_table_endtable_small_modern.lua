@@ -61,7 +61,9 @@ object_draft_schematic_furniture_furniture_table_endtable_small_modern = object_
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "table_top"},
    ingredientSlotType = {0, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_droid_component_manipulator_arm_package_set = object_draf
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "servo_motors", "auxilary_servos", "attachment_bracket", "shock_buffering", "support_struts", "secondary_struts"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},

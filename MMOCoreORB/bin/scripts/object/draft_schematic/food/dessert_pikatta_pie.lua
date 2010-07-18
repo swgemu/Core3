@@ -61,7 +61,9 @@ object_draft_schematic_food_dessert_pikatta_pie = object_draft_schematic_food_sh
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"wheat", "fruit_filling", "water", "sweet_glaze", "additive"},
    ingredientSlotType = {0, 0, 0, 2, 4},

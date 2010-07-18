@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_pants_field_12 = object_draft_schematic
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2},
+   customizationStringNames = {"/private/index_color_1"},
    customizationDefaults = {59},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_reinforcement", "hardware", "liner"},
    ingredientSlotType = {0, 0, 2, 2},

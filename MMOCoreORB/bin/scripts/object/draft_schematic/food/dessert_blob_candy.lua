@@ -61,7 +61,9 @@ object_draft_schematic_food_dessert_blob_candy = object_draft_schematic_food_sha
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"carbosyrup", "fruit_core", "additive"},
    ingredientSlotType = {2, 0, 4},

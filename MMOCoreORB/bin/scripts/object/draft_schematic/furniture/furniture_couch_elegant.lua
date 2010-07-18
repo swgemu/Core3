@@ -61,7 +61,9 @@ object_draft_schematic_furniture_furniture_couch_elegant = object_draft_schemati
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "cushions", "upholstery"},
    ingredientSlotType = {0, 0, 2},

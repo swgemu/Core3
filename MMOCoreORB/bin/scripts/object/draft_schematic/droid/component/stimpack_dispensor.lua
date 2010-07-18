@@ -61,7 +61,9 @@ object_draft_schematic_droid_component_stimpack_dispensor = object_draft_schemat
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "medical_tools"},
    ingredientSlotType = {0, 0, 0},

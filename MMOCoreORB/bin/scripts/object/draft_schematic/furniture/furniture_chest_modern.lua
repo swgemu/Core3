@@ -61,7 +61,9 @@ object_draft_schematic_furniture_furniture_chest_modern = object_draft_schematic
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "panelling"},
    ingredientSlotType = {0, 0},

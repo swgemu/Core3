@@ -61,7 +61,9 @@ object_draft_schematic_item_item_survey_tool_wind = object_draft_schematic_item_
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "controller", "scanner_assembly"},
    ingredientSlotType = {0, 0, 0},

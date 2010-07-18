@@ -61,7 +61,9 @@ object_draft_schematic_weapon_lance_vibro_controller_fp = object_draft_schematic
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"staff_shaft", "vibro_unit_and_power_cell_brackets", "power_circuits", "vibration_generator"},
    ingredientSlotType = {0, 0, 2, 2},

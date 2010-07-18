@@ -61,7 +61,9 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"sub_assembly_frame", "assembly_machinery", "shock_and_vibration_isolation_assembly", "thermal_insulator_and_charge_leakage_preventor", "mini_turbo_generator"},
    ingredientSlotType = {0, 0, 0, 0, 2},

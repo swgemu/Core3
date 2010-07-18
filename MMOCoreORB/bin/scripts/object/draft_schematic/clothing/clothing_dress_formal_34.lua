@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_dress_formal_34 = object_draft_schemati
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {34, 2, 1},
+   customizationStringNames = {"/private/index_color_0", "/private/index_color_1", "/private/index_color_2"},
    customizationDefaults = {0, 71, 31},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "extra_trim", "jewelry_setting", "hardware", "skirt", "bodice"},
    ingredientSlotType = {0, 2, 2, 0, 2, 2},

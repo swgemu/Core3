@@ -61,7 +61,9 @@ object_draft_schematic_spices_spice_thruster_head = object_draft_schematic_spice
    customizationSkill = "spice_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"antianxiolytic", "hyperemetic", "synaptic_accelerant"},
    ingredientSlotType = {0, 0, 0},

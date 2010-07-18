@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_bandolier_field_08 = object_draft_schem
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1},
+   customizationStringNames = {"/private/index_color_1", "/private/index_color_2"},
    customizationDefaults = {0, 0},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"hardware", "load_bearing_harness", "reinforcement"},
    ingredientSlotType = {2, 0, 2},

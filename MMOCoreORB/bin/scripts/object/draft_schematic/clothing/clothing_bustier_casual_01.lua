@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_bustier_casual_01 = object_draft_schema
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {34, 2},
+   customizationStringNames = {"/private/index_color_0", "/private/index_color_1"},
    customizationDefaults = {0, 246},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"bodice", "binding_and_reinforcement", "trim"},
    ingredientSlotType = {2, 0, 0},

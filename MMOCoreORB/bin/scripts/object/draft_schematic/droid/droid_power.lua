@@ -61,7 +61,9 @@ object_draft_schematic_droid_droid_power = object_draft_schematic_droid_shared_d
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "thermal_shielding", "generator_shell_hardening", "droid_brain", "engine_unit", "power_module", "sensor_suite", "general_droid_module"},
    ingredientSlotType = {0, 0, 0, 0, 2, 2, 2, 2, 4},

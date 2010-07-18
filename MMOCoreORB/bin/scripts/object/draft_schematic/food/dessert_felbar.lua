@@ -61,7 +61,9 @@ object_draft_schematic_food_dessert_felbar = object_draft_schematic_food_shared_
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dough", "fruit_filling", "spice", "additive"},
    ingredientSlotType = {2, 0, 0, 4},
