@@ -60,6 +60,9 @@ object_draft_schematic_droid_component_armor_module_3 = object_draft_schematic_d
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "armor_filler", "stress_resist_plate"},
    ingredientSlotType = {0, 0, 0},

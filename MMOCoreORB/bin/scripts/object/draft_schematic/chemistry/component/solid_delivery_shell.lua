@@ -60,6 +60,9 @@ object_draft_schematic_chemistry_component_solid_delivery_shell = object_draft_s
    experimentingSkill = "medicine_experimentation", 
    customizationSkill = "medicine_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"purified_organic_element", "shell_material_seed_matrix"},
    ingredientSlotType = {0, 0},

@@ -60,6 +60,9 @@ object_draft_schematic_chemistry_medpack_disease_area_focus_a = object_draft_sch
    experimentingSkill = "combat_medicine_experimentation", 
    customizationSkill = "medicine_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"body_shell", "organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
    ingredientSlotType = {0, 0, 0, 2, 2, 2},

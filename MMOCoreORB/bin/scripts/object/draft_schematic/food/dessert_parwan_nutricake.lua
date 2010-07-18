@@ -60,6 +60,9 @@ object_draft_schematic_food_dessert_parwan_nutricake = object_draft_schematic_fo
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"wheat", "rice", "spice", "fruit", "additive"},
    ingredientSlotType = {0, 0, 0, 0, 4},

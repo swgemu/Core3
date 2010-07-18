@@ -60,6 +60,9 @@ object_draft_schematic_scout_item_trap_webber = object_draft_schematic_scout_sha
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"device_housing", "device_systems", "webbing_fluid"},
    ingredientSlotType = {0, 0, 0},

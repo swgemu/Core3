@@ -60,6 +60,9 @@ object_draft_schematic_droid_bounty_seeker_transmitter = object_draft_schematic_
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "search_parameter_storage_circuit", "command_interpreter", "autonomous_searcher_logic_unit"},
    ingredientSlotType = {0, 0, 2, 2, 2},

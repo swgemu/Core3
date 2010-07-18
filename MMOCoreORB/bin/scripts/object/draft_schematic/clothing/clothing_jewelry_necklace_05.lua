@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_05 = object_draft_sche
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {2},
+   customizationDefaults = {0},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"clasp", "band", "massive_jewelry_setting"},
    ingredientSlotType = {0, 0, 2},

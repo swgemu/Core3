@@ -60,6 +60,9 @@ object_draft_schematic_furniture_furniture_bookcase_elegant = object_draft_schem
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "shelves"},
    ingredientSlotType = {0, 0},

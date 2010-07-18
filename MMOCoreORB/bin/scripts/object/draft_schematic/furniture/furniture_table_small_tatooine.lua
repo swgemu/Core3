@@ -60,6 +60,9 @@ object_draft_schematic_furniture_furniture_table_small_tatooine = object_draft_s
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"table_top", "frame"},
    ingredientSlotType = {0, 0},

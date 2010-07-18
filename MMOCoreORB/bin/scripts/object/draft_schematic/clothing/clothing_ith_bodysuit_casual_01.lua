@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_casual_01 = object_draft_s
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"flex_layer_one", "flex_layer_two", "wiring_and_reinforcement", "hardware"},
    ingredientSlotType = {2, 2, 0, 2},

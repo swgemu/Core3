@@ -60,6 +60,9 @@ object_draft_schematic_food_drink_garrmorl = object_draft_schematic_food_shared_
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "hide_extract", "bone_extract", "glass", "additive"},
    ingredientSlotType = {2, 0, 0, 2, 4},

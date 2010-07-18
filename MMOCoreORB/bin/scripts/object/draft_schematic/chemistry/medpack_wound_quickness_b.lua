@@ -60,6 +60,9 @@ object_draft_schematic_chemistry_medpack_wound_quickness_b = object_draft_schema
    experimentingSkill = "medicine_experimentation", 
    customizationSkill = "medicine_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strenth_compound_2"},
    ingredientSlotType = {0, 0, 2, 2, 2},

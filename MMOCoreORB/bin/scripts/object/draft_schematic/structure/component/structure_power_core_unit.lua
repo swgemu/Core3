@@ -60,6 +60,9 @@ object_draft_schematic_structure_component_structure_power_core_unit = object_dr
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"sub_assembly_frame", "micro_turbine_and_charge_accumulator", "shock_and_vibration_isolation_assembly", "thermal_insulator_and_charge_leakage_preventor", "mini_turbo_generator", "energy_flow_modulator_and_filter", "energy_distribution_net"},
    ingredientSlotType = {0, 0, 0, 0, 2, 2, 2},

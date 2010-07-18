@@ -60,6 +60,9 @@ object_draft_schematic_weapon_pistol_blaster_cdef = object_draft_schematic_weapo
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly"},
    ingredientSlotType = {0, 0, 0},

@@ -60,6 +60,9 @@ object_draft_schematic_food_dish_terratta = object_draft_schematic_food_shared_d
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"hide_strips", "meat_strips", "sweet_oil", "mild_milk", "additive"},
    ingredientSlotType = {0, 0, 2, 0, 4},

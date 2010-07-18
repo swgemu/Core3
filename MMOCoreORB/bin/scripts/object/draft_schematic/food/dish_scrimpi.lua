@@ -60,6 +60,9 @@ object_draft_schematic_food_dish_scrimpi = object_draft_schematic_food_shared_di
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"meat", "soypro", "water", "exotic_spices", "additive"},
    ingredientSlotType = {0, 2, 0, 0, 4},

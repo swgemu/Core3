@@ -60,6 +60,9 @@ object_draft_schematic_item_item_parrot_cage = object_draft_schematic_item_share
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"cage_base", "cage_support", "enclosure_structure", "access_points"},
    ingredientSlotType = {0, 0, 0, 0},

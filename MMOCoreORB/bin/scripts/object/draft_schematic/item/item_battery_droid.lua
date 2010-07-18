@@ -60,6 +60,9 @@ object_draft_schematic_item_item_battery_droid = object_draft_schematic_item_sha
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"battery_enclosure", "charge_retention", "thermal_shielding"},
    ingredientSlotType = {0, 0, 0},

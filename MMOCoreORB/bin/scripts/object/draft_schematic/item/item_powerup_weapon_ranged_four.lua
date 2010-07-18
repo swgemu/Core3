@@ -60,6 +60,9 @@ object_draft_schematic_item_item_powerup_weapon_ranged_four = object_draft_schem
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"resource_one", "resource_two"},
    ingredientSlotType = {0, 0},

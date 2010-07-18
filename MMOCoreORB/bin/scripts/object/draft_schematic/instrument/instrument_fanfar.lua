@@ -60,6 +60,9 @@ object_draft_schematic_instrument_instrument_fanfar = object_draft_schematic_ins
    experimentingSkill = "general_experimentation", 
    customizationSkill = "instrument_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "valving"},
    ingredientSlotType = {0, 0},

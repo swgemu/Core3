@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_pants_formal_31 = object_draft_schemati
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {2, 1},
+   customizationDefaults = {89, 13}
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_reinforcement", "hardware", "lining"},
    ingredientSlotType = {2, 0, 2, 2},

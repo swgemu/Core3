@@ -60,6 +60,9 @@ object_draft_schematic_food_dish_exo_protein_wafers = object_draft_schematic_foo
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"protein_source", "preservative_wrap", "additive"},
    ingredientSlotType = {0, 0, 4},

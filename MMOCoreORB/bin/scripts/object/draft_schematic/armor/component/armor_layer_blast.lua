@@ -60,6 +60,9 @@ object_draft_schematic_armor_component_armor_layer_blast = object_draft_schemati
    experimentingSkill = "armor_experimentation", 
    customizationSkill = "armor_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_layer_frame", "defensive_layer_microlattice", "shockwave_repulsion_compound", "blast_harmonics_absorbtion_medium"},
    ingredientSlotType = {0, 0, 0, 0},

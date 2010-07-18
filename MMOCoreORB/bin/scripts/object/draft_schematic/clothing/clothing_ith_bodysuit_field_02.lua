@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_field_02 = object_draft_sc
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"flightsuit_fabric_layer_one", "flightsuit_fabric_layer_two", "flightsuit_fabric_layer_three", "wiring_and_reinforcement", "hardware"},
    ingredientSlotType = {2, 2, 2, 0, 2},

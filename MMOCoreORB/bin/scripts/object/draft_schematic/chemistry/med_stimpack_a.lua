@@ -60,6 +60,9 @@ object_draft_schematic_chemistry_med_stimpack_a = object_draft_schematic_chemist
    experimentingSkill = "medicine_experimentation", 
    customizationSkill = "medicine_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element"},
    ingredientSlotType = {0, 0},

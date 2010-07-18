@@ -60,6 +60,9 @@ object_draft_schematic_food_dessert_blap_biscuit = object_draft_schematic_food_s
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"first_carbosyrup", "second_carbosyrup", "dough", "berry_mix", "additive"},
    ingredientSlotType = {2, 2, 2, 0, 4},

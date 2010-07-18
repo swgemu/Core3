@@ -60,6 +60,9 @@ object_draft_schematic_furniture_furniture_terminal_wall = object_draft_schemati
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"load_bearing_truss", "memory_module", "processing_module"},
    ingredientSlotType = {0, 2, 2},

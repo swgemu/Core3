@@ -60,6 +60,9 @@ object_draft_schematic_droid_component_personality_module_slang = object_draft_s
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "thermal_shielding", "data_smart_indexer", "ancillary_heuristic_processor", "primary_phrase_database", "secondary_phrase_database"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0},

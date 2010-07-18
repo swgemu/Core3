@@ -60,6 +60,9 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
    experimentingSkill = "weapon_experimentation", 
    customizationSkill = "weapon_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"weapon_casing", "trigger_mechanism", "warhead_compartment", "grounding_pile", "warhead_insulator", "warhead_assembly", "null_field_generator", "warhead_fusing", "warhead_booster"},
    ingredientSlotType = {0, 0, 0, 0, 0, 2, 2, 2, 4},
