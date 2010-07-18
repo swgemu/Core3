@@ -62,7 +62,6 @@ object_draft_schematic_weapon_staff = object_draft_schematic_weapon_shared_staff
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n"},
    ingredientTitleNames = {"staff_shaft"},
    ingredientSlotType = {0},

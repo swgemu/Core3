@@ -61,8 +61,7 @@ object_draft_schematic_food_dish_rations = object_draft_schematic_food_shared_di
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"protein_source", "fruit_additive", "preservative_wrap", "additive"},
    ingredientSlotType = {0, 0, 0, 4},

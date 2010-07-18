@@ -62,7 +62,6 @@ object_draft_schematic_structure_installation_mining_ore_heavy = object_draft_sc
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_frame", "body_shell_structure", "body_casing", "structure_foundation", "bore_mechanism", "ore_storage_tank", "boreing_mechanism_buffers_and_bushings", "power_supply_unit", "ore_storage_unit", "resource_handling_system"},
    ingredientSlotType = {0, 0, 2, 0, 0, 2, 0, 2, 2, 2},

@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_toolchest_large = object_draft_schema
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "panels"},
    ingredientSlotType = {0, 0},

@@ -61,8 +61,7 @@ object_draft_schematic_weapon_component_projectile_rifle_barrel_advanced = objec
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"lining", "bore"},
    ingredientSlotType = {0, 0},

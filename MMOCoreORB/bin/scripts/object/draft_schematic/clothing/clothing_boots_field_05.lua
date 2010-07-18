@@ -62,7 +62,6 @@ object_draft_schematic_clothing_clothing_boots_field_05 = object_draft_schematic
 
    customizationOptions = {2, 1},
    customizationDefaults = {28, 11},
-
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "hardware", "liner", "sole", "reinforcement"},
    ingredientSlotType = {0, 2, 0, 0, 0},

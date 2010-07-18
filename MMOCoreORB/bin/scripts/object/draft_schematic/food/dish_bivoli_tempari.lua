@@ -62,7 +62,6 @@ object_draft_schematic_food_dish_bivoli_tempari = object_draft_schematic_food_sh
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"protato", "carbosyrup", "tough_meat", "vegetables", "additive"},
    ingredientSlotType = {2, 2, 0, 0, 4},

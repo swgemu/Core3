@@ -62,7 +62,6 @@ object_draft_schematic_armor_shield_generator_personal_b = object_draft_schemati
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"assembly_containment_module", "charge_insulator_shield", "personal_mounting_clip", "feed_power_regulator_unit", "field_transmission_substrate_assembly", "ray_shielding_generator", "particle_shielding_generators", "shield_unit_energy_distributor", "field_emitter_matrix"},
    ingredientSlotType = {0, 0, 0, 2, 2, 2, 2, 2, 2},

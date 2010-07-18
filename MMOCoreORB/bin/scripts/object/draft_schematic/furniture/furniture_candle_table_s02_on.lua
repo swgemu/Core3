@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_candle_table_s02_on = object_draft_sc
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"candle", "wick", "candle_holder"},
    ingredientSlotType = {0, 0, 0},

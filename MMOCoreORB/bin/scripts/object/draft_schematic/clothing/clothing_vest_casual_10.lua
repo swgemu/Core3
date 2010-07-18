@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_vest_casual_10 = object_draft_schematic
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2},
-   customizationDefaults = {66}
-
+   customizationDefaults = {66},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "decorative_trim", "metal_fasteners"},
    ingredientSlotType = {4, 0, 2},

@@ -62,7 +62,6 @@ object_draft_schematic_food_drink_deuterium_pyro = object_draft_schematic_food_s
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"reactive_element", "alcohol", "glass", "additive"},
    ingredientSlotType = {0, 0, 2, 4},

@@ -61,8 +61,7 @@ object_draft_schematic_droid_droid_3p0 = object_draft_schematic_droid_shared_dro
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"frame", "appendage_assemblies", "intermotor_actuating_coupling", "droid_brain", "manipulator_arm", "droid_motive_system_advanced", "sensor_suite", "droid_personality_chip", "general_droid_module"},
    ingredientSlotType = {2, 0, 0, 2, 2, 2, 2, 4, 4},

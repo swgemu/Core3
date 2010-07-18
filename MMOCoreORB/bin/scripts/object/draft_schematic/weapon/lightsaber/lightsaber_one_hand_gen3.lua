@@ -61,8 +61,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen3 = object_draft
    customizationSkill = "jedi_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"emitter_shroud", "primary_crystal", "activator", "handgrip", "focusing_crystals", "power_field_insulator", "energizers"},
    ingredientSlotType = {0, 2, 0, 0, 2, 0, 0},

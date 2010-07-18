@@ -61,8 +61,7 @@ object_draft_schematic_weapon_component_blaster_rifle_barrel = object_draft_sche
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"emitter_nozzle", "actuating_blaster_module", "barrel_to_receiver_coupling", "prismatic_crystal", "barrel_shroud"},
    ingredientSlotType = {0, 0, 0, 0, 0},

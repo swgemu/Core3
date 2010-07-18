@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_combat_socket_bank = object_draft_schemat
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"expansion_board", "high_speed_bus", "connector_socket", "attachment_bracket", "shock_buffering", "support_strut", "general_droid_module", "general_droid_module2", "general_droid_module3"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0, 0},

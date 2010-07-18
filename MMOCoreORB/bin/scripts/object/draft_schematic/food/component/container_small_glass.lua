@@ -61,8 +61,7 @@ object_draft_schematic_food_component_container_small_glass = object_draft_schem
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_food_ingredients_n"},
    ingredientTitleNames = {"crystal"},
    ingredientSlotType = {0},

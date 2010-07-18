@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_chassis_droid_r4 = object_draft_schematic
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "leg_struts", "intellex_vi_computer", "manipulator_arm", "motivator", "sensor_suite"},
    ingredientSlotType = {0, 0, 0, 2, 2, 2, 2},

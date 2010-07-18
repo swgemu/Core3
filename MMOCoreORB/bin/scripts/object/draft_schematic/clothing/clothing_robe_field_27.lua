@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_robe_field_27 = object_draft_schematic_
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2},
-   customizationDefaults = {4}
-
+   customizationDefaults = {4},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "linksteel_reinforcement"},
    ingredientSlotType = {2, 0},

@@ -61,8 +61,7 @@ object_draft_schematic_bio_engineer_creature_creature_mott = object_draft_schema
    customizationSkill = "bio_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
    ingredientTitleNames = {"dna_template", "protein_base", "organic_nutrition_materials"},
    ingredientSlotType = {0, 0, 0},

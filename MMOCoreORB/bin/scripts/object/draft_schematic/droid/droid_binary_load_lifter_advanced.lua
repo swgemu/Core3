@@ -61,8 +61,7 @@ object_draft_schematic_droid_droid_binary_load_lifter_advanced = object_draft_sc
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"old_shell_reinforcement", "upgrade_electronics_bay", "base_chassis", "adaptor_electronics", "general_droid_module", "droid_defensive_module", "droid_defensive_module2", "droid_defensive_module3"},
    ingredientSlotType = {0, 0, 2, 2, 4, 4, 4, 4},

@@ -62,7 +62,6 @@ object_draft_schematic_food_dish_ormachek = object_draft_schematic_food_shared_d
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"meat", "dough", "beans", "spiney_wrap"},
    ingredientSlotType = {0, 2, 0, 0},

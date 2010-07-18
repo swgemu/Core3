@@ -62,7 +62,6 @@ object_draft_schematic_food_dessert_vagnerian_canape = object_draft_schematic_fo
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dough", "first_filling", "second_filling", "carbosyrup", "additive"},
    ingredientSlotType = {2, 0, 0, 2, 4},

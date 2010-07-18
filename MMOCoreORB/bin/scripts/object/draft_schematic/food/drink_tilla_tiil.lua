@@ -62,7 +62,6 @@ object_draft_schematic_food_drink_tilla_tiil = object_draft_schematic_food_share
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "first_carbonation", "second_carbonation", "third_carbonation", "glass", "additive"},
    ingredientSlotType = {2, 0, 0, 0, 2, 4},

@@ -62,7 +62,6 @@ object_draft_schematic_clothing_clothing_hat_twilek_formal_03 = object_draft_sch
 
    customizationOptions = {2, 1},
    customizationDefaults = {32, 63},
-
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_weatherproofing", "liner", "green_diamond_crusting", "green_diamond_support"},
    ingredientSlotType = {2, 0, 2, 0, 0},

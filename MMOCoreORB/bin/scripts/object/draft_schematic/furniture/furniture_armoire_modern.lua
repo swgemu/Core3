@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_armoire_modern = object_draft_schemat
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame"},
    ingredientSlotType = {0},

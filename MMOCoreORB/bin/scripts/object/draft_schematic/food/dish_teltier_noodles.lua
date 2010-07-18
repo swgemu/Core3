@@ -62,7 +62,6 @@ object_draft_schematic_food_dish_teltier_noodles = object_draft_schematic_food_s
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"thickening_agent", "vegetable_mix", "noodle_dough", "additive"},
    ingredientSlotType = {0, 0, 2, 4},

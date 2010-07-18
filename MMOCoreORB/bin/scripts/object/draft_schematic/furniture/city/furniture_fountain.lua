@@ -61,8 +61,7 @@ object_draft_schematic_furniture_city_furniture_fountain = object_draft_schemati
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"fountain", "water_pump", "water"},
    ingredientSlotType = {0, 0, 0},

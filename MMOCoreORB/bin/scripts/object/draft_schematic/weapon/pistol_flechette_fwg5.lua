@@ -62,7 +62,6 @@ object_draft_schematic_weapon_pistol_flechette_fwg5 = object_draft_schematic_wea
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "cartridge_feed_unit", "barrel", "scope"},
    ingredientSlotType = {0, 0, 0, 2, 2, 2, 4},

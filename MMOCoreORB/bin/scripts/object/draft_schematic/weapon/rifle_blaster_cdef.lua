@@ -62,7 +62,6 @@ object_draft_schematic_weapon_rifle_blaster_cdef = object_draft_schematic_weapon
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly"},
    ingredientSlotType = {0, 0, 0},

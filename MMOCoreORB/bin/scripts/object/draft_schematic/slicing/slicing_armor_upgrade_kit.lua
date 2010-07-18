@@ -62,7 +62,6 @@ object_draft_schematic_slicing_slicing_armor_upgrade_kit = object_draft_schemati
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "tools", "chemicals"},
    ingredientSlotType = {0, 0, 0},

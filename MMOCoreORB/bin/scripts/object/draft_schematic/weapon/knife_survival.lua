@@ -62,7 +62,6 @@ object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_sha
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"knife_shaft", "cutting_edge", "grip_cap", "grip"},
    ingredientSlotType = {0, 0, 0, 0},
