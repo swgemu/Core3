@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_hat_field_04 = object_draft_schematic_c
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1},
-   customizationDefaults = {19, 7}
-
+   customizationDefaults = {19, 7},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_weatherproofing", "liner"},
    ingredientSlotType = {0, 0, 2},

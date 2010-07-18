@@ -62,7 +62,6 @@ object_draft_schematic_clothing_clothing_pants_casual_09 = object_draft_schemati
 
    customizationOptions = {2, 1},
    customizationDefaults = {96, 140},
-
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_hardware", "colorizable_cloth_panel"},
    ingredientSlotType = {0, 2, 0},

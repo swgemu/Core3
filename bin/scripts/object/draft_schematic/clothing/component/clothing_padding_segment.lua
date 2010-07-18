@@ -61,8 +61,7 @@ object_draft_schematic_clothing_component_clothing_padding_segment = object_draf
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "stuffing", "binding"},
    ingredientSlotType = {0, 0, 0},

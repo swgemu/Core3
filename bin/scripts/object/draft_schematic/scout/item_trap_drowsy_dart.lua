@@ -61,8 +61,7 @@ object_draft_schematic_scout_item_trap_drowsy_dart = object_draft_schematic_scou
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"dart_housing", "dart_tip"},
    ingredientSlotType = {0, 0},

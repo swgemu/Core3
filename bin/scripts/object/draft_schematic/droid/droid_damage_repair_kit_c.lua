@@ -61,8 +61,7 @@ object_draft_schematic_droid_droid_damage_repair_kit_c = object_draft_schematic_
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"electronics_patch_assembly", "electronic_sealant_light", "diagnostic_circuit", "capacitor_discharge_unit", "delivery_cartridge"},
    ingredientSlotType = {0, 0, 0, 0, 0},

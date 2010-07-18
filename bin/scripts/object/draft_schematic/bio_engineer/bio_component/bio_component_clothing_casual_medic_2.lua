@@ -61,8 +61,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_
    customizationSkill = "bio_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"protein_base", "suspension_compound", "hormone_reactive_agent", "pheromone_enhancers"},
    ingredientSlotType = {0, 0, 0, 0},

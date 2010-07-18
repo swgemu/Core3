@@ -62,7 +62,6 @@ object_draft_schematic_spices_spice_shadowpaw = object_draft_schematic_spices_sh
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"crushed_root", "container"},
    ingredientSlotType = {0, 0},

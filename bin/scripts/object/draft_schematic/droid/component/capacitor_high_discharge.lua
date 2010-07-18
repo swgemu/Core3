@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_capacitor_high_discharge = object_draft_s
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"conductive_surface", "core_plates", "resistor_material"},
    ingredientSlotType = {0, 0, 0},

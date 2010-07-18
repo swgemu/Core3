@@ -62,7 +62,6 @@ object_draft_schematic_munition_grenade_glop = object_draft_schematic_munition_s
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"body_shell", "chem_jet_assembly", "shield_doors", "gel_canister", "warhead_assembly", "chemical_diffusion_assembly", "warhead_fusing", "warhead_booster"},
    ingredientSlotType = {0, 0, 0, 0, 2, 2, 2, 4},

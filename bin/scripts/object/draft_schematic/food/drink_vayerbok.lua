@@ -62,7 +62,6 @@ object_draft_schematic_food_drink_vayerbok = object_draft_schematic_food_shared_
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "deep_green_extract", "freshwater_fungus", "flavoring", "thickener", "glass", "additive"},
    ingredientSlotType = {2, 0, 0, 0, 0, 2, 4},

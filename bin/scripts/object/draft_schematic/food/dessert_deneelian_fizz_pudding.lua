@@ -62,7 +62,6 @@ object_draft_schematic_food_dessert_deneelian_fizz_pudding = object_draft_schema
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"carbosyrup", "milk", "first_gelatin", "second_gelatin", "additive"},
    ingredientSlotType = {2, 0, 0, 0, 4},

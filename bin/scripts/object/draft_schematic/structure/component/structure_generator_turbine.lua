@@ -61,8 +61,7 @@ object_draft_schematic_structure_component_structure_generator_turbine = object_
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"energy_gathering_array", "turbine_cradle", "magnetic_reaction_mass", "cradle_fittings", "charge_leakage_insulation_material", "turbine_rotor", "reaction_mass"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},

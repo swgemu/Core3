@@ -61,8 +61,7 @@ object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_sc
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_food_ingredients_n"},
    ingredientTitleNames = {"wheat"},
    ingredientSlotType = {0},

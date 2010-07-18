@@ -61,8 +61,7 @@ object_draft_schematic_item_component_item_electronic_control_unit = object_draf
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_lattice", "mechanism_stabilization_and_insulation_material", "shock_reflective_substrate", "switching_mechanism_and_logic_circuitry", "coolant", "circuitry_mount_and_harness"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0},

@@ -61,8 +61,7 @@ object_draft_schematic_scout_item_trap_state_def_1 = object_draft_schematic_scou
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"trap_housing", "musk"},
    ingredientSlotType = {0, 0},

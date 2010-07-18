@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_boots_casual_04 = object_draft_schemati
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2},
-   customizationDefaults = {19}
-
+   customizationDefaults = {19},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"boots", "binding_and_hardware", "sole"},
    ingredientSlotType = {0, 0, 0},

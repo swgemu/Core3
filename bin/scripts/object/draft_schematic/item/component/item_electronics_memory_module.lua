@@ -61,8 +61,7 @@ object_draft_schematic_item_component_item_electronics_memory_module = object_dr
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"module_brackets", "mechanism_stabilization_and_insulation_material", "data_lattice_sheath", "data_storage_lattice", "thermal_and_contaminant_shield"},
    ingredientSlotType = {0, 0, 0, 0, 0},

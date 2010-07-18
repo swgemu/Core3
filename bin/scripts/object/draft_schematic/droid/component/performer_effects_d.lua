@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_performer_effects_d = object_draft_schema
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "light_crystals"},
    ingredientSlotType = {0, 0, 0},

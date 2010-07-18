@@ -62,7 +62,6 @@ object_draft_schematic_spices_spice_giggledust = object_draft_schematic_spices_s
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"powdered_organic", "crushed_bone", "crushed_flowers"},
    ingredientSlotType = {0, 0, 0},

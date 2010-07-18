@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_chair_tatooine_cafe = object_draft_sc
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "seat"},
    ingredientSlotType = {0, 0},

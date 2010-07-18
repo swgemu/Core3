@@ -61,8 +61,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial = object_draft
    customizationSkill = "armor_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_ceremonial", "segment_mounting_tabs", "segment_enhancement"},
    ingredientSlotType = {0, 0, 4},

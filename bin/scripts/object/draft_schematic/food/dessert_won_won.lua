@@ -62,7 +62,6 @@ object_draft_schematic_food_dessert_won_won = object_draft_schematic_food_shared
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"wheat", "water", "fruit_topping", "slimy_glaze", "additive"},
    ingredientSlotType = {0, 0, 0, 0, 4},

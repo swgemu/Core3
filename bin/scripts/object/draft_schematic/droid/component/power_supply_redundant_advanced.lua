@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_power_supply_redundant_advanced = object_
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"power_supply_housing", "reactive_energy_core", "reaction_catalyst"},
    ingredientSlotType = {0, 0, 0},

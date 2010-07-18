@@ -61,8 +61,7 @@ object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft
    customizationSkill = "instrument_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"synthesis_data_storage", "wave_translation_head", "io_interface"},
    ingredientSlotType = {0, 0, 0},

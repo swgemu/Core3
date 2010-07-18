@@ -61,8 +61,7 @@ object_draft_schematic_structure_component_structure_light_ore_mining_unit = obj
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"bore_head", "bore_positioning_arm", "ore_transport_auger_and_conveyors", "load_bearing_joints_and_fittings", "charge_and_thermal_regulation_medium"},
    ingredientSlotType = {0, 0, 0, 0, 0},

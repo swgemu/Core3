@@ -62,7 +62,6 @@ object_draft_schematic_food_drink_gralinyn_juice = object_draft_schematic_food_s
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"fermented_fruit", "fermented_vegetables", "alcohol", "glass", "additive"},
    ingredientSlotType = {0, 0, 2, 2, 4},

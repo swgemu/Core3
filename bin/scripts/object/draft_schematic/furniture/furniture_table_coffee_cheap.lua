@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_table_coffee_cheap = object_draft_sch
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "table_top"},
    ingredientSlotType = {0, 0},

@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_ith_apron_chef_01 = object_draft_schema
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"apron", "binding_and_reinforcement", "binding_and_hardware", "chef_suit", "bow_tie"},
    ingredientSlotType = {2, 0, 2, 2, 0},

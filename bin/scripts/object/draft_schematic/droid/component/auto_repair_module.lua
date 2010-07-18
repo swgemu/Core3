@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_auto_repair_module = object_draft_schemat
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "repair_tools"},
    ingredientSlotType = {0, 0, 0},

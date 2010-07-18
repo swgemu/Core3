@@ -61,8 +61,7 @@ object_draft_schematic_clothing_component_clothing_reinforced_fiber_panels = obj
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding", "padding", "reinforcement", "enhancement"},
    ingredientSlotType = {0, 0, 0, 0, 4},

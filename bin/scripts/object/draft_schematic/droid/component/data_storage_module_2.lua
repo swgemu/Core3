@@ -61,8 +61,7 @@ object_draft_schematic_droid_component_data_storage_module_2 = object_draft_sche
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "contaminent_neutralization_medium", "thermal_shielding", "data_storage_matrix"},
    ingredientSlotType = {0, 0, 0, 0},

@@ -61,8 +61,7 @@ object_draft_schematic_structure_component_structural_module = object_draft_sche
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"reinforcement_rods", "body_material", "insulation"},
    ingredientSlotType = {0, 0, 0},

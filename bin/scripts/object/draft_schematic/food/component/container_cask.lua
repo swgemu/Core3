@@ -61,8 +61,7 @@ object_draft_schematic_food_component_container_cask = object_draft_schematic_fo
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"crystal", "cask_trim"},
    ingredientSlotType = {0, 2},

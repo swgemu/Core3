@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_tiki_torch = object_draft_schematic_f
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "lighting_module", "torch_module"},
    ingredientSlotType = {0, 2, 0},

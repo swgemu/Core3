@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_wke_hood_s03 = object_draft_schematic_c
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell_half", "shell_half2"},
    ingredientSlotType = {0, 0},

@@ -61,8 +61,7 @@ object_draft_schematic_food_component_container_barrel = object_draft_schematic_
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"barrel_body", "power_conditioner", "coolant_control"},
    ingredientSlotType = {0, 2, 2},

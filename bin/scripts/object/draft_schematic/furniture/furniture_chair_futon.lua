@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_chair_futon = object_draft_schematic_
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame"},
    ingredientSlotType = {0},

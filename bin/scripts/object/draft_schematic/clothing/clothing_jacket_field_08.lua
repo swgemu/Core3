@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_jacket_field_08 = object_draft_schemati
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1},
-   customizationDefaults = {219, 144}
-
+   customizationDefaults = {219, 144},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"heavy_shell", "binding_and_weatherproofing", "hardware", "liner"},
    ingredientSlotType = {0, 0, 2, 2},

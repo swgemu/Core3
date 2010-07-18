@@ -62,7 +62,6 @@ object_draft_schematic_food_drink_accarragm = object_draft_schematic_food_shared
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "fungus_extract", "glass", "additive"},
    ingredientSlotType = {2, 0, 2, 4},

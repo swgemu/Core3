@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_ith_hat_casual_01 = object_draft_schema
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_weatherproofing", "liner"},
    ingredientSlotType = {2, 0, 2},

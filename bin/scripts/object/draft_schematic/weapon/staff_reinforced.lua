@@ -62,7 +62,6 @@ object_draft_schematic_weapon_staff_reinforced = object_draft_schematic_weapon_s
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"staff_shaft", "flex_core", "balance_tabs", "impact_face"},
    ingredientSlotType = {0, 0, 0, 0},

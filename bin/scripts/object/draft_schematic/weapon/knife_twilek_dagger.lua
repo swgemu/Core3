@@ -62,7 +62,6 @@ object_draft_schematic_weapon_knife_twilek_dagger = object_draft_schematic_weapo
 
    customizationOptions = {},
    customizationDefaults = {},
-
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"knife_shaft", "cutting_edge", "grip"},
    ingredientSlotType = {0, 0, 0},

@@ -61,8 +61,7 @@ object_draft_schematic_munition_component_warhead_heavy = object_draft_schematic
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"warhead_module_casing", "casing_brackets", "fuse_coupling", "reaction_medium", "reaction_mass", "exploder_carriage", "charge_neutralization_agent"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},

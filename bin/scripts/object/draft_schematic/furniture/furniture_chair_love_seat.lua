@@ -61,8 +61,7 @@ object_draft_schematic_furniture_furniture_chair_love_seat = object_draft_schema
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"upholstery", "frame"},
    ingredientSlotType = {0, 0},

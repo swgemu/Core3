@@ -61,8 +61,7 @@ object_draft_schematic_scout_item_trap_flash_bomb = object_draft_schematic_scout
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"device_housing", "device_interior"},
    ingredientSlotType = {0, 0},

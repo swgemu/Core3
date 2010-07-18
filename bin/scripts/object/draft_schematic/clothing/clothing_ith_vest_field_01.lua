@@ -61,8 +61,7 @@ object_draft_schematic_clothing_clothing_ith_vest_field_01 = object_draft_schema
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
-   customizationDefaults = {}
-
+   customizationDefaults = {},
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_hardware"},
    ingredientSlotType = {0, 0},
