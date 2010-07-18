@@ -42,7 +42,14 @@
 
 
 object_tangible_crafting_station_public_food_station = object_tangible_crafting_station_shared_public_food_station:new {
+   templateType = CRAFTINGSTATION,
 
+   playerUseMask = 65535,
+
+   customizationOptions = {},
+   customizationDefaults = {},
+
+   stationType = 2,   complexityLevel = 25
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_public_food_station, "object/tangible/crafting/station/public_food_station.iff")

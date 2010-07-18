@@ -14,6 +14,7 @@ class CraftingStationTemplate : public SharedTangibleObjectTemplate {
 private:
 
 	int stationType;
+	int complexityLevel;
 
 public:
 	CraftingStationTemplate() {
@@ -28,10 +29,15 @@ public:
 		SharedTangibleObjectTemplate::readObject(templateData);
 
 		stationType = templateData->getIntField("stationType");
+		complexityLevel = templateData->getIntField("complexityLevel");
 	}
 
 	int getStationType() {
 		return stationType;
+	}
+
+	int getComplexityLevel() {
+		return complexityLevel;
 	}
 
 

@@ -77,7 +77,7 @@ int CraftingManagerImplementation::calculateAssemblySuccess(PlayerCreature* play
 
 	// Get assembly points from skill
 	String assemblySkill = draftSchematic->getAssemblySkill();
-	float assemblyPoints = float(player->getSkillMod(assemblySkill) / 10);
+	float assemblyPoints = float(player->getSkillMod(assemblySkill));
 
 	// Get modifier from tool to modify success
 	float toolModifier = 1.0f + (effectiveness / 100);
@@ -129,6 +129,37 @@ int CraftingManagerImplementation::calculateAssemblySuccess(PlayerCreature* play
 	return BARELYSUCCESSFUL;
 }
 
+float CraftingManagerImplementation::calculateAssemblyValueModifier(int assemblyResult) {
+
+	float results = ((3.4 / Math::ln(assemblyResult + 4)) - 1.1111);
+
+	// Unless we want amazing assemblies to get a bonus, we cap the madifier at 1
+
+	if (results > 1.00) {
+
+		if (results < 1.05) {
+
+			results = 1.0f;
+
+		} else {
+
+			results = 1.2f;
+
+		}
+
+	}
+
+	return results;
+
+}
+
+float CraftingManagerImplementation::getAssemblyPercentage(float value) {
+
+	float percentage = (value * (0.000015f * value + .015f)) * 0.01f;
+
+	return percentage;
+}
+
 int CraftingManagerImplementation::calculateExperimentationFailureRate(PlayerCreature* player,
 		ManufactureSchematic* manufactureSchematic, int pointsUsed) {
 
@@ -142,6 +173,116 @@ int CraftingManagerImplementation::calculateExperimentationFailureRate(PlayerCre
 	int failure = int((50.0f + (ma - 500.0f) / 40.0f + expPoints - 5.0f * float(pointsUsed)));
 
 	return failure;
+}
+
+int CraftingManagerImplementation::calculateExperimentationSuccess(PlayerCreature* player,
+		DraftSchematic* draftSchematic, float effectiveness) {
+
+	// Skill + Luck roll and crafting tool effectiveness determine the
+	// Success of the crafting result
+
+	int preresult, result;
+
+	// Get assembly points from skill
+	String assemblySkill = draftSchematic->getAssemblySkill();
+	float assemblyPoints = float(player->getSkillMod(assemblySkill));
+
+	// Get modifier from tool to modify success
+	float toolModifier = 1.0f + (effectiveness / 300);
+
+	//Pyollian Cake
+	/*
+	if (player->hasBuff(BuffCRC::FOOD_EXPERIMENT_BONUS)) {
+		Buff* buff = player->getBuff(BuffCRC::FOOD_EXPERIMENT_BONUS);
+
+		if (buff != NULL) {
+			float expbonus = buff->getSkillModifierValue("experiment_bonus");
+			stationModifier *= 1.0f + (expbonus / 100.0f);
+			player->removeBuff(buff);
+		}
+	}*/
+
+	// Gets failure rate * 10  3.5% to 6.5% = 35 - 65
+	int failureRate = 50 - effectiveness;
+
+	int luck = System::random(1000) + player->getSkillMod("luck") * 10;
+
+	// The assembly roll is based on 0-1000 result
+	if (luck < failureRate)
+		return CRITICALFAILURE;
+
+	if (luck >= 950)
+		return AMAZINGSUCCESS;
+
+	// We will use a scale of 0-200 for the rest of results
+	luck = (luck / 5) + int(toolModifier * (assemblyPoints * 10));
+
+	if (luck > 160)
+		return GREATSUCCESS;
+
+	if (luck > 140)
+		return GOODSUCCESS;
+
+	if (luck > 110)
+		return MODERATESUCCESS;
+
+	if (luck > 90)
+		return SUCCESS;
+
+	if (luck > 75)
+		return MARGINALSUCCESS;
+
+	if (luck > 60)
+		return OK;
+
+	return BARELYSUCCESSFUL;
+}
+
+float CraftingManagerImplementation::calculateExperimentationValueModifier(
+		int experimentationResult, int pointsAttempted) {
+
+	// Make it so failure detract
+
+	float results;
+
+	switch (experimentationResult) {
+
+	case 0:
+		results = 0.08f;
+		break;
+	case 1:
+		results = 0.07f;
+		break;
+	case 2:
+		results = 0.055f;
+		break;
+	case 3:
+		results = 0.015f;
+		break;
+	case 4:
+		results = 0.01f;
+		break;
+	case 5:
+		results = 0.00f;
+		break;
+	case 6:
+		results = -0.04f;
+		break;
+	case 7:
+		results = -0.07f;
+		break;
+	case 8:
+		results = -0.08f;
+		break;
+	default:
+		results = 0;
+		break;
+	}
+
+	results *= pointsAttempted;
+
+	return results;
+
 }
 
 float CraftingManagerImplementation::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {

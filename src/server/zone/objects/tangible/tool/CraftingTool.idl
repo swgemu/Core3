@@ -60,11 +60,15 @@ class CraftingTool extends ToolTangibleObject {
 	protected int type;
 	protected float effectiveness;
 	protected string status;
+	protected int complexityLevel;
 	
 	protected transient CraftingManager craftingManager;
 	
 	@dereferenced
 	protected Vector<unsigned int> enabledTabs;
+	
+	@dereferenced
+	protected transient Vector<DraftSchematic> currentSchematicList;
 
 	protected transient CraftingStation craftingStation;
 	
@@ -75,9 +79,11 @@ class CraftingTool extends ToolTangibleObject {
 	
 	protected transient TangibleObject prototype;
 	
-	protected transient int experimentationPoints;
+	protected transient int experimentationPointsTotal;
+	protected transient int experimentationPointsUsed;
 	
 	protected transient int assemblyResult;
+	protected transient int experimentationResult;
 	
 	protected transient int experimentalFailureRate;
 	
@@ -91,16 +97,12 @@ class CraftingTool extends ToolTangibleObject {
 	
 	public CraftingTool() {
 		Logger.setLoggingName("CraftingTool");
+		status = "@crafting:tool_status_ready";
+		state = 1;
 	}
 	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
-		Logger.setLoggingName("CraftingTool");
-		
-		state = 1;
-		
-		status = "@crafting:tool_status_ready";
 	}
 	
 	@local
@@ -126,6 +128,9 @@ class CraftingTool extends ToolTangibleObject {
 	 */
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	@local
+	public native void updateCraftingValues(CraftingValues craftingValues);
 	
 	public boolean isCraftingTool() {
 		return true;
@@ -167,7 +172,17 @@ class CraftingTool extends ToolTangibleObject {
 	public native void nextCraftingStage(PlayerCreature player, int clientCounter);
 
 	private native void initialAssembly(PlayerCreature player, int counter);
+	
+	private native void finishAssembly(PlayerCreature player, int clientCounter);
+	
+	private native void setInitialCraftingValues();
+	
+	public native void experiment(PlayerCreature player, int numRowsAttempted, string expString, int clientCounter);
 
+	@local
+	private native void experimentRow(CraftingValues craftingValues, int rowEffected, int pointsAttempted, 
+			float failure);
+	
 	public native void customization(PlayerCreature player, string name, int schematicCount, string customization);
 
 	private native void finishStage1(PlayerCreature player, int clientCounter);

@@ -52,7 +52,6 @@ include server.zone.objects.intangible.IntangibleObject;
 
 include server.zone.objects.draftschematic.draftslot.DraftSlot;
 include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
-include server.zone.objects.scene.variables.StringId;
 include server.zone.templates.SharedObjectTemplate;
 
 include server.zone.objects.player.PlayerCreature;
@@ -188,6 +187,8 @@ class DraftSchematic extends IntangibleObject {
 	public native string getExperimentationSkill();
 	
 	public native string getCustomizationSkill();
+
+	public native string getCustomName();
 	
 	public native unsigned int getTanoCRC();
 

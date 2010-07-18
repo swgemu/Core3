@@ -124,9 +124,17 @@ class CraftingManager extends ManagedObject implements Lua {
 	
 	public native int calculateAssemblySuccess(PlayerCreature player, DraftSchematic draftSchematic, float effectiveness);
 	
+	public native float calculateAssemblyValueModifier(int assemblyResult);
+	
+	public native float getAssemblyPercentage(float value);
+	
 	public native int calculateExperimentationFailureRate(PlayerCreature player, ManufactureSchematic manufactureSchematic, int pointsUsed);
 	
-	private native float getWeightedValue(ManufactureSchematic manufactureSchematic, int type);
+	public native int calculateExperimentationSuccess(PlayerCreature player, DraftSchematic draftSchematic, float effectiveness);
+	
+	public native float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
+	
+	public native float getWeightedValue(ManufactureSchematic manufactureSchematic, int type);
 	
 	public native string generateSerial();
 }

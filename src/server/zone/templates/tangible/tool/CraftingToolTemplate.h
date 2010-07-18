@@ -13,7 +13,7 @@
 class CraftingToolTemplate : public SharedTangibleObjectTemplate {
 private:
 
-	int toolType;
+	int toolType, complexityLevel;
 	Vector<uint32> tabs;
 
 public:
@@ -29,6 +29,7 @@ public:
 		SharedTangibleObjectTemplate::readObject(templateData);
 
 		toolType = templateData->getIntField("toolType");
+		complexityLevel = templateData->getIntField("complexityLevel");
 
 		LuaObject tabList = templateData->getObjectField("enabledTabs");
 
@@ -41,6 +42,10 @@ public:
 
 	int getToolType() {
 		return toolType;
+	}
+
+	int getComplexityLevel() {
+		return complexityLevel;
 	}
 
 	Vector<uint32> getTabs() {

@@ -99,6 +99,11 @@ class SurveyTool extends ToolTangibleObject {
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
 	
+	@local
+	public void updateCraftingValues(CraftingValues craftingValues) {
+		
+	}
+	
 	/**
 	 * Set the surveying range on tool
 	 * Values should be:

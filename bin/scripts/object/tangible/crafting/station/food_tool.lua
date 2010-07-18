@@ -51,6 +51,7 @@ object_tangible_crafting_station_food_tool = object_tangible_crafting_station_sh
    customizationDefaults = {},
 
    toolType = 3,
+   complexityLevel = 20,
    enabledTabs = {4,64,128,256,8192}
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_food_tool, "object/tangible/crafting/station/food_tool.iff")

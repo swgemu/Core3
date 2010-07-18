@@ -359,7 +359,6 @@ void StructureManagerImplementation::loadStaticCraftingStations() {
 				continue;
 			}
 
-			file = file.replaceAll("shared_public_", "");
 			file = file.replaceAll("shared_", "");
 			serverCRC = file.hashCode();
 
@@ -394,7 +393,6 @@ void StructureManagerImplementation::loadStaticCraftingStations() {
 			}
 
 			craftingStation->setStaticObject(true);
-			craftingStation->setComplexityLevel(20);
 
 			if (cell != NULL)
 				cell->addObject(craftingStation, -1);

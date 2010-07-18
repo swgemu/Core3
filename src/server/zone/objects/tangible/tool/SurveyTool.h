@@ -103,6 +103,8 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
+	void updateCraftingValues(CraftingValues* craftingValues);
+
 	void setRange(int r);
 
 	int getRange();
@@ -213,6 +215,8 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	void updateCraftingValues(CraftingValues* craftingValues);
 
 	void setRange(int r);
 

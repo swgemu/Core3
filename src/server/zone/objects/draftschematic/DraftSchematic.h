@@ -23,8 +23,6 @@
 
 #include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
 
-#include "server/zone/objects/scene/variables/StringId.h"
-
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -83,6 +81,8 @@ public:
 
 	String getCustomizationSkill();
 
+	String getCustomName();
+
 	unsigned int getTanoCRC();
 
 	String getGroupName();
@@ -93,6 +93,7 @@ protected:
 	virtual ~DraftSchematic();
 
 	String _return_getAssemblySkill;
+	String _return_getCustomName;
 	String _return_getCustomizationSkill;
 	String _return_getExperimentationSkill;
 	String _return_getGroupName;
@@ -171,6 +172,8 @@ public:
 
 	String getCustomizationSkill();
 
+	String getCustomName();
+
 	unsigned int getTanoCRC();
 
 	String getGroupName();
@@ -247,6 +250,8 @@ public:
 	String getExperimentationSkill();
 
 	String getCustomizationSkill();
+
+	String getCustomName();
 
 	unsigned int getTanoCRC();
 

@@ -78,6 +78,14 @@ void CraftingTool::fillAttributeList(AttributeListMessage* msg, PlayerCreature* 
 		((CraftingToolImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
+void CraftingTool::updateCraftingValues(CraftingValues* craftingValues) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((CraftingToolImplementation*) _impl)->updateCraftingValues(craftingValues);
+}
+
 bool CraftingTool::isCraftingTool() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -210,12 +218,28 @@ void CraftingTool::nextCraftingStage(PlayerCreature* player, int clientCounter) 
 		((CraftingToolImplementation*) _impl)->nextCraftingStage(player, clientCounter);
 }
 
-void CraftingTool::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {
+void CraftingTool::experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+		method.addSignedIntParameter(numRowsAttempted);
+		method.addAsciiParameter(expString);
+		method.addSignedIntParameter(clientCounter);
+
+		method.executeWithVoidReturn();
+	} else
+		((CraftingToolImplementation*) _impl)->experiment(player, numRowsAttempted, expString, clientCounter);
+}
+
+void CraftingTool::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(schematicCount);
@@ -231,7 +255,7 @@ void CraftingTool::createPrototype(PlayerCreature* player, int clientCounter, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 		method.addSignedIntParameter(practice);
@@ -246,7 +270,7 @@ void CraftingTool::createObject(PlayerCreature* player, int timer, bool create) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(timer);
 		method.addBooleanParameter(create);
@@ -261,7 +285,7 @@ void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(practice);
 
@@ -340,33 +364,32 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 	addSerializableVariable("type", &type);
 	addSerializableVariable("effectiveness", &effectiveness);
 	addSerializableVariable("status", &status);
+	addSerializableVariable("complexityLevel", &complexityLevel);
 	addSerializableVariable("enabledTabs", &enabledTabs);
 }
 
 CraftingToolImplementation::CraftingToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(93):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(99):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(100):  		status = "@crafting:tool_status_ready";
+	status = "@crafting:tool_status_ready";
+	// server/zone/objects/tangible/tool/CraftingTool.idl(101):  		state = 1;
+	state = 1;
 }
 
 void CraftingToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(97):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingTool.idl(105):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(99):  		Logger.setLoggingName("CraftingTool");
-	Logger::setLoggingName("CraftingTool");
-	// server/zone/objects/tangible/tool/CraftingTool.idl(101):  		state = 1;
-	state = 1;
-	// server/zone/objects/tangible/tool/CraftingTool.idl(103):  		status = "@crafting:tool_status_ready";
-	status = "@crafting:tool_status_ready";
 }
 
 bool CraftingToolImplementation::isCraftingTool() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(131):  		return true;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(136):  		return true;
 	return true;
 }
 
 int CraftingToolImplementation::getToolType() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(135):  		return type;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(140):  		return type;
 	return type;
 }
 
@@ -415,15 +438,18 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		nextCraftingStage((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 17:
-		customization((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_customization__PlayerCreature_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_customization__PlayerCreature_String_int_String_));
+		experiment((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_experiment__PlayerCreature_int_String_int_), inv->getSignedIntParameter());
 		break;
 	case 18:
-		createPrototype((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		customization((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_customization__PlayerCreature_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_customization__PlayerCreature_String_int_String_));
 		break;
 	case 19:
-		createObject((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		createPrototype((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 20:
+		createObject((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 21:
 		depositObject((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	default:
@@ -475,6 +501,10 @@ void CraftingToolAdapter::removeIngredient(PlayerCreature* player, TangibleObjec
 
 void CraftingToolAdapter::nextCraftingStage(PlayerCreature* player, int clientCounter) {
 	((CraftingToolImplementation*) impl)->nextCraftingStage(player, clientCounter);
+}
+
+void CraftingToolAdapter::experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter) {
+	((CraftingToolImplementation*) impl)->experiment(player, numRowsAttempted, expString, clientCounter);
 }
 
 void CraftingToolAdapter::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {

@@ -50,6 +50,6 @@ object_tangible_crafting_station_food_station = object_tangible_crafting_station
    customizationOptions = {},
    customizationDefaults = {},
 
-   stationType = 2
+   stationType = 2,   complexityLevel = 100
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_food_station, "object/tangible/crafting/station/food_station.iff")

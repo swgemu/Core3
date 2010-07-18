@@ -144,7 +144,17 @@ public:
 
 	int calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
 
+	float calculateAssemblyValueModifier(int assemblyResult);
+
+	float getAssemblyPercentage(float value);
+
 	int calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
+
+	int calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+
+	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
+
+	float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
 
 	String generateSerial();
 
@@ -242,12 +252,18 @@ public:
 
 	int calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
 
+	float calculateAssemblyValueModifier(int assemblyResult);
+
+	float getAssemblyPercentage(float value);
+
 	int calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
 
-private:
+	int calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+
+	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
+
 	float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
 
-public:
 	String generateSerial();
 
 	CraftingManager* _this;
@@ -297,7 +313,17 @@ public:
 
 	int calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
 
+	float calculateAssemblyValueModifier(int assemblyResult);
+
+	float getAssemblyPercentage(float value);
+
 	int calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
+
+	int calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+
+	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
+
+	float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
 
 	String generateSerial();
 
