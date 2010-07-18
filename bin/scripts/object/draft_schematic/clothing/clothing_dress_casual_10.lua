@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_dress_casual_10 = object_draft_schemati
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {2},
+   customizationDefaults = {116}
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "fiberplast_panel"},
    ingredientSlotType = {0, 2},

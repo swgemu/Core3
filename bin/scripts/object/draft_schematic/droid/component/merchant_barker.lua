@@ -60,6 +60,9 @@ object_draft_schematic_droid_component_merchant_barker = object_draft_schematic_
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "voice_modulator"},
    ingredientSlotType = {0, 0, 0},

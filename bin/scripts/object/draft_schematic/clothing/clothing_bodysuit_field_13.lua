@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_bodysuit_field_13 = object_draft_schema
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {2, 1},
+   customizationDefaults = {14, 14}
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "polymer_hardware"},
    ingredientSlotType = {2, 0},

@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_armor_zam_boots = object_draft_schemati
    experimentingSkill = "armor_experimentation", 
    customizationSkill = "armor_customization", 
 
+   customizationOptions = {2, 1},
+   customizationDefaults = {20, 29},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"auxilary_coverage", "body", "liner", "hardware_and_attachments", "binding_and_reinforcement", "padding", "armor", "load_bearing_harness"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 2, 2},

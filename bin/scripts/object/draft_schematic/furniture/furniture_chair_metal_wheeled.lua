@@ -60,6 +60,9 @@ object_draft_schematic_furniture_furniture_chair_metal_wheeled = object_draft_sc
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "seat", "roller_mechanism"},
    ingredientSlotType = {0, 0, 0},

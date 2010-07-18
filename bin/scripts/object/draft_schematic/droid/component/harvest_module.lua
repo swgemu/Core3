@@ -60,6 +60,9 @@ object_draft_schematic_droid_component_harvest_module = object_draft_schematic_d
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_storage_matrix", "micro_harvesters"},
    ingredientSlotType = {0, 0, 0},

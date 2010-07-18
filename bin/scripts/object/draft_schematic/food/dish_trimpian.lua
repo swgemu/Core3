@@ -60,6 +60,9 @@ object_draft_schematic_food_dish_trimpian = object_draft_schematic_food_shared_d
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"trimpian_meat", "miasra_sauce_base", "miasra_sauce_seasoning", "additive"},
    ingredientSlotType = {0, 0, 0, 4},

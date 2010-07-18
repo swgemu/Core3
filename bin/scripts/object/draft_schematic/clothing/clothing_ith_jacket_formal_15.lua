@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_ith_jacket_formal_15 = object_draft_sch
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"binding_and_hardware", "liner", "trim", "shell"},
    ingredientSlotType = {0, 0, 2, 2},

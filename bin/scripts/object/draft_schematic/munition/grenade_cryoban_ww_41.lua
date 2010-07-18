@@ -60,6 +60,9 @@ object_draft_schematic_munition_grenade_cryoban_ww_41 = object_draft_schematic_m
    experimentingSkill = "weapon_experimentation", 
    customizationSkill = "weapon_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"trigger_and_timer_mechanism", "activation_agent_mechanism", "warhead_assembly", "warhead_fusing", "warhead_booster"},
    ingredientSlotType = {0, 0, 2, 2, 4},

@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_ith_pants_field_04 = object_draft_schem
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_reinforcement", "hardware", "liner"},
    ingredientSlotType = {0, 0, 2, 2},

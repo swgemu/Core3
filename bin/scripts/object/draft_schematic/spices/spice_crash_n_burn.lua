@@ -60,6 +60,9 @@ object_draft_schematic_spices_spice_crash_n_burn = object_draft_schematic_spices
    experimentingSkill = "spice_experimentation", 
    customizationSkill = "spice_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"cytrinamphetamine", "allophynabarbital", "delivery_mechanism"},
    ingredientSlotType = {0, 0, 0},

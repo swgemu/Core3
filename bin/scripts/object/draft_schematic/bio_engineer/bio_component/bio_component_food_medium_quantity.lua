@@ -60,6 +60,9 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_medium_quan
    experimentingSkill = "bio_engineer_experimentation", 
    customizationSkill = "bio_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"nutrient_base", "hyper_yeast", "yeast_catalyst", "secrets"},
    ingredientSlotType = {0, 0, 0, 4},

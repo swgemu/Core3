@@ -60,6 +60,9 @@ object_draft_schematic_droid_component_repair_unit_casing_advanced = object_draf
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"main_unit_housing", "fiber_unit_housing"},
    ingredientSlotType = {0, 0},

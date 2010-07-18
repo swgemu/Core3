@@ -60,6 +60,9 @@ object_draft_schematic_spices_spice_droid_lube = object_draft_schematic_spices_s
    experimentingSkill = "spice_experimentation", 
    customizationSkill = "spice_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"xr81_lube", "gas_filter", "delivery_mechanism"},
    ingredientSlotType = {0, 0, 0},

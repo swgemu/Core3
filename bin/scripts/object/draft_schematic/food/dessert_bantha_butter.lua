@@ -60,6 +60,9 @@ object_draft_schematic_food_dessert_bantha_butter = object_draft_schematic_food_
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"bantha_milk", "fruit"},
    ingredientSlotType = {0, 0},

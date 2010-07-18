@@ -60,6 +60,9 @@ object_draft_schematic_munition_component_warhead_fusing_mechanism = object_draf
    experimentingSkill = "weapon_experimentation", 
    customizationSkill = "weapon_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"trigger_pulse_prism", "prism_mount", "fusing_module_casing", "insulation", "warhead_and_control_coupling"},
    ingredientSlotType = {0, 0, 0, 0, 0},

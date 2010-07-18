@@ -60,6 +60,9 @@ object_draft_schematic_chemistry_component_liquid_delivery_suspension = object_d
    experimentingSkill = "medicine_experimentation", 
    customizationSkill = "medicine_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"purified_organic_suspension", "suspension_base"},
    ingredientSlotType = {0, 0},

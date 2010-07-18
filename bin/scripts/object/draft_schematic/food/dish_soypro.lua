@@ -60,6 +60,9 @@ object_draft_schematic_food_dish_soypro = object_draft_schematic_food_shared_dis
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"cereal_concentrate", "vegetable_mash"},
    ingredientSlotType = {0, 0},

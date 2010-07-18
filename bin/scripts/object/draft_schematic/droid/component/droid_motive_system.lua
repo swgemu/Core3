@@ -60,6 +60,9 @@ object_draft_schematic_droid_component_droid_motive_system = object_draft_schema
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "module_shroud", "primary_chassis_brackets", "shock_buffering", "thermal_shielding", "propulsion_sub_controller"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0},

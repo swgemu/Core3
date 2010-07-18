@@ -60,6 +60,9 @@ object_draft_schematic_scout_item_camp_multi = object_draft_schematic_scout_shar
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"shelter_canvas", "shelter_structure"},
    ingredientSlotType = {0, 0},

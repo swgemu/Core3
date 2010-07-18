@@ -60,6 +60,9 @@ object_draft_schematic_clothing_clothing_bikini_casual_03 = object_draft_schemat
    experimentingSkill = "clothing_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {2, 1},
+   customizationDefaults = {122, 54},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"bikini_fabric", "bikini_reinforcement", "padded_straps"},
    ingredientSlotType = {2, 2, 0},

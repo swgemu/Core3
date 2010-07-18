@@ -60,6 +60,9 @@ object_draft_schematic_droid_droid_r5 = object_draft_schematic_droid_shared_droi
    experimentingSkill = "droid_experimentation", 
    customizationSkill = "droid_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "body_shell", "leg_struts", "droid_brain", "manipulator_arm", "motivator", "sensor_suite", "general_droid_module"},
    ingredientSlotType = {0, 0, 0, 0, 2, 2, 2, 4},

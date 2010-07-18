@@ -60,6 +60,9 @@ object_draft_schematic_munition_detonator_thermal_imperial_issue = object_draft_
    experimentingSkill = "weapon_experimentation", 
    customizationSkill = "weapon_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
    ingredientTitleNames = {"shell", "thumb_trigger", "activation_indicator", "warhead_assembly", "null_field_generator", "warhead_fusing", "warhead_booster"},
    ingredientSlotType = {0, 0, 0, 2, 2, 2, 4},

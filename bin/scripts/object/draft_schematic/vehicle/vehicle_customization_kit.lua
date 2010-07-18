@@ -60,6 +60,9 @@ object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schemati
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_item_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "colors", "electronic_control_unit", "color_stowage"},
    ingredientSlotType = {0, 0, 0, 2, 2},

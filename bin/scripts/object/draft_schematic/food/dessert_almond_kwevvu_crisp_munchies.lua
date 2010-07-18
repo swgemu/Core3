@@ -60,6 +60,9 @@ object_draft_schematic_food_dessert_almond_kwevvu_crisp_munchies = object_draft_
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"toasted_crust", "protein_fortifier", "fruit_filling", "additive"},
    ingredientSlotType = {0, 0, 0, 4},

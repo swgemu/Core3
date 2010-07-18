@@ -60,6 +60,9 @@ object_draft_schematic_furniture_furniture_chair_cheap = object_draft_schematic_
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"seat", "frame"},
    ingredientSlotType = {0, 0},

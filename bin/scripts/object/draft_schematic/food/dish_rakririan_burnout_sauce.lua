@@ -60,6 +60,9 @@ object_draft_schematic_food_dish_rakririan_burnout_sauce = object_draft_schemati
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"base", "carbosyrup", "hot_spice", "meltdown_spice", "additive"},
    ingredientSlotType = {0, 2, 0, 0, 4},

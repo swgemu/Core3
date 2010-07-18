@@ -60,6 +60,9 @@ object_draft_schematic_bio_engineer_utilities_pet_vitapack_c = object_draft_sche
    experimentingSkill = "bio_engineer_experimentation", 
    customizationSkill = "bio_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_strength_compound"},
    ingredientSlotType = {0, 0, 2, 2},

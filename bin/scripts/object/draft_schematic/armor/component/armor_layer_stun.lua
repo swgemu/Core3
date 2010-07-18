@@ -60,6 +60,9 @@ object_draft_schematic_armor_component_armor_layer_stun = object_draft_schematic
    experimentingSkill = "armor_experimentation", 
    customizationSkill = "armor_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_layer_frame", "multi_frequency_shock_absorbtion_media", "multi_frequency_shock_absorbtion_media_2"},
    ingredientSlotType = {0, 0, 0},

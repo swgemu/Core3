@@ -60,6 +60,9 @@ object_draft_schematic_spices_spice_pyrepenol = object_draft_schematic_spices_sh
    experimentingSkill = "spice_experimentation", 
    customizationSkill = "spice_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"thinner", "pyrepenol", "pyrepenol_filter"},
    ingredientSlotType = {0, 0, 0},

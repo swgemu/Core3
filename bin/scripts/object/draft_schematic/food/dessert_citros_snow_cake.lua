@@ -60,6 +60,9 @@ object_draft_schematic_food_dessert_citros_snow_cake = object_draft_schematic_fo
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"sweet_cake_mix", "fruit_filling", "filling_mixture", "additive"},
    ingredientSlotType = {2, 0, 0, 4},

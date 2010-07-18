@@ -60,6 +60,9 @@ object_draft_schematic_chemistry_component_dispersal_mechanism = object_draft_sc
    experimentingSkill = "combat_medicine_experimentation", 
    customizationSkill = "medicine_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {}
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"delivery_medium", "body_shell"},
    ingredientSlotType = {0, 0},

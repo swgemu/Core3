@@ -60,6 +60,9 @@ object_draft_schematic_food_dessert_air_cake = object_draft_schematic_food_share
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 
 
+   customizationOptions = {},
+   customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"carbosyrup", "dough", "fruit_core", "additive"},
    ingredientSlotType = {2, 2, 0, 4},
