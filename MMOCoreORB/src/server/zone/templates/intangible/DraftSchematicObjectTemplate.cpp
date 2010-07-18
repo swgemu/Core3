@@ -22,6 +22,8 @@ DraftSchematicObjectTemplate::~DraftSchematicObjectTemplate() {
 void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 	SharedDraftSchematicObjectTemplate::readObject(templateData);
 
+	customObjectName = templateData->getStringField("customObjectName");
+
 	groupName = templateData->getStringField("groupName");
 
 	craftingToolTab = templateData->getIntField("craftingToolTab");

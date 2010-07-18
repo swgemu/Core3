@@ -329,6 +329,14 @@ void TangibleObject::setOptionsBitmask(unsigned int bitmask, bool notifyClient) 
 		((TangibleObjectImplementation*) _impl)->setOptionsBitmask(bitmask, notifyClient);
 }
 
+void TangibleObject::updateCraftingValues(CraftingValues* craftingValues) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((TangibleObjectImplementation*) _impl)->updateCraftingValues(craftingValues);
+}
+
 int TangibleObject::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -753,9 +761,9 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 
 TangibleObjectImplementation::TangibleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/TangibleObject.idl(135):  		faction = 0;
+	// server/zone/objects/tangible/TangibleObject.idl(136):  		faction = 0;
 	faction = 0;
-	// server/zone/objects/tangible/TangibleObject.idl(137):  		Logger.setLoggingName("TangibleObject");
+	// server/zone/objects/tangible/TangibleObject.idl(138):  		Logger.setLoggingName("TangibleObject");
 	Logger::setLoggingName("TangibleObject");
 }
 
@@ -763,167 +771,172 @@ void TangibleObjectImplementation::setCombatState() {
 }
 
 void TangibleObjectImplementation::clearCombatState(bool clearDefenders) {
-	// server/zone/objects/tangible/TangibleObject.idl(254):  	}
-	if (clearDefenders)	// server/zone/objects/tangible/TangibleObject.idl(255):  			removeDefenders();
+	// server/zone/objects/tangible/TangibleObject.idl(255):  	}
+	if (clearDefenders)	// server/zone/objects/tangible/TangibleObject.idl(256):  			removeDefenders();
 	removeDefenders();
 }
 
 bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
-	// server/zone/objects/tangible/TangibleObject.idl(265):  
-	for (	// server/zone/objects/tangible/TangibleObject.idl(265):  		for (int i = 0;
+	// server/zone/objects/tangible/TangibleObject.idl(266):  
+	for (	// server/zone/objects/tangible/TangibleObject.idl(266):  		for (int i = 0;
 	int i = 0;
 	i < (&defenderList)->size();
  ++i) {
-	// server/zone/objects/tangible/TangibleObject.idl(266):  		}
-	if ((&defenderList)->get(i) == defender)	// server/zone/objects/tangible/TangibleObject.idl(267):  				return true;
+	// server/zone/objects/tangible/TangibleObject.idl(267):  		}
+	if ((&defenderList)->get(i) == defender)	// server/zone/objects/tangible/TangibleObject.idl(268):  				return true;
 	return true;
 }
-	// server/zone/objects/tangible/TangibleObject.idl(270):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(271):  		return false;
 	return false;
 }
 
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/tangible/TangibleObject.idl(280):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(281):  		return false;
 	return false;
 }
 
 bool TangibleObjectImplementation::isAggressiveTo(PlayerCreature* object) {
-	// server/zone/objects/tangible/TangibleObject.idl(290):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(291):  		return false;
 	return false;
 }
 
+void TangibleObjectImplementation::updateCraftingValues(CraftingValues* craftingValues) {
+	// server/zone/objects/tangible/TangibleObject.idl(334):  		error("Unhandled updateCraftingValues for this object type");
+	error("Unhandled updateCraftingValues for this object type");
+}
+
 byte TangibleObjectImplementation::getUnknownByte() {
-	// server/zone/objects/tangible/TangibleObject.idl(334):  		return unknownByte;
+	// server/zone/objects/tangible/TangibleObject.idl(340):  		return unknownByte;
 	return unknownByte;
 }
 
 bool TangibleObjectImplementation::isTicketCollector() {
-	// server/zone/objects/tangible/TangibleObject.idl(338):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(344):  		return false;
 	return false;
 }
 
 bool TangibleObjectImplementation::isTicketObject() {
-	// server/zone/objects/tangible/TangibleObject.idl(342):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl(348):  		return false;
 	return false;
 }
 
 CustomizationVariables* TangibleObjectImplementation::getCustomizationVariables() {
-	// server/zone/objects/tangible/TangibleObject.idl(347):  		return customizationVariables;
+	// server/zone/objects/tangible/TangibleObject.idl(353):  		return customizationVariables;
 	return (&customizationVariables);
 }
 
 int TangibleObjectImplementation::getUseCount() {
-	// server/zone/objects/tangible/TangibleObject.idl(351):  		return useCount;
+	// server/zone/objects/tangible/TangibleObject.idl(357):  		return useCount;
 	return useCount;
 }
 
 int TangibleObjectImplementation::getMaxCondition() {
-	// server/zone/objects/tangible/TangibleObject.idl(355):  		return maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl(361):  		return maxCondition;
 	return maxCondition;
 }
 
 void TangibleObjectImplementation::setMaxCondition(int maxCond) {
-	// server/zone/objects/tangible/TangibleObject.idl(359):  		maxCondition = maxCond;
+	// server/zone/objects/tangible/TangibleObject.idl(365):  		maxCondition = maxCond;
 	maxCondition = maxCond;
 }
 
 int TangibleObjectImplementation::getConditionDamage() {
-	// server/zone/objects/tangible/TangibleObject.idl(363):  		return conditionDamage;
+	// server/zone/objects/tangible/TangibleObject.idl(369):  		return conditionDamage;
 	return conditionDamage;
 }
 
 int TangibleObjectImplementation::getVolume() {
-	// server/zone/objects/tangible/TangibleObject.idl(367):  		return volume;
+	// server/zone/objects/tangible/TangibleObject.idl(373):  		return volume;
 	return volume;
 }
 
 float TangibleObjectImplementation::getComplexity() {
-	// server/zone/objects/tangible/TangibleObject.idl(371):  		return complexity;
+	// server/zone/objects/tangible/TangibleObject.idl(377):  		return complexity;
 	return complexity;
 }
 
 unsigned int TangibleObjectImplementation::getOptionsBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(375):  		return optionsBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(381):  		return optionsBitmask;
 	return optionsBitmask;
 }
 
 unsigned int TangibleObjectImplementation::getPvpStatusBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(379):  		return pvpStatusBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(385):  		return pvpStatusBitmask;
 	return pvpStatusBitmask;
 }
 
 bool TangibleObjectImplementation::isTangibleObject() {
-	// server/zone/objects/tangible/TangibleObject.idl(383):  		return true;
+	// server/zone/objects/tangible/TangibleObject.idl(389):  		return true;
 	return true;
 }
 
 void TangibleObjectImplementation::getCustomizationString(String& variables) {
-	// server/zone/objects/tangible/TangibleObject.idl(387):  		customizationVariables.getData(variables);
+	// server/zone/objects/tangible/TangibleObject.idl(393):  		customizationVariables.getData(variables);
 	(&customizationVariables)->getData(variables);
 }
 
 DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::getDefenderList() {
-	// server/zone/objects/tangible/TangibleObject.idl(392):  		return defenderList;
+	// server/zone/objects/tangible/TangibleObject.idl(398):  		return defenderList;
 	return (&defenderList);
 }
 
 bool TangibleObjectImplementation::isDestroyed() {
-	// server/zone/objects/tangible/TangibleObject.idl(396):  		return conditionDamage > maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl(402):  		return conditionDamage > maxCondition;
 	return conditionDamage > maxCondition;
 }
 
 unsigned int TangibleObjectImplementation::getPlayerUseMask() {
-	// server/zone/objects/tangible/TangibleObject.idl(400):  		return playerUseMask;
+	// server/zone/objects/tangible/TangibleObject.idl(406):  		return playerUseMask;
 	return playerUseMask;
 }
 
 int TangibleObjectImplementation::getFaction() {
-	// server/zone/objects/tangible/TangibleObject.idl(404):  		return faction;
+	// server/zone/objects/tangible/TangibleObject.idl(410):  		return faction;
 	return faction;
 }
 
 bool TangibleObjectImplementation::isRebel() {
-	// server/zone/objects/tangible/TangibleObject.idl(408):  		return faction == 0x16148850;
+	// server/zone/objects/tangible/TangibleObject.idl(414):  		return faction == 0x16148850;
 	return faction == 0x16148850;
 }
 
 bool TangibleObjectImplementation::isImperial() {
-	// server/zone/objects/tangible/TangibleObject.idl(412):  		return faction == 0xDB4ACC54;
+	// server/zone/objects/tangible/TangibleObject.idl(418):  		return faction == 0xDB4ACC54;
 	return faction == 0xDB4ACC54;
 }
 
 bool TangibleObjectImplementation::isNeutral() {
-	// server/zone/objects/tangible/TangibleObject.idl(416):  		return faction == 0;
+	// server/zone/objects/tangible/TangibleObject.idl(422):  		return faction == 0;
 	return faction == 0;
 }
 
 bool TangibleObjectImplementation::isSliced() {
-	// server/zone/objects/tangible/TangibleObject.idl(420):  		return sliced;
+	// server/zone/objects/tangible/TangibleObject.idl(426):  		return sliced;
 	return sliced;
 }
 
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
-	// server/zone/objects/tangible/TangibleObject.idl(424):  		customizationVariables.parseFromClientString(vars);
+	// server/zone/objects/tangible/TangibleObject.idl(430):  		customizationVariables.parseFromClientString(vars);
 	(&customizationVariables)->parseFromClientString(vars);
 }
 
 void TangibleObjectImplementation::setCraftersName(String& name) {
-	// server/zone/objects/tangible/TangibleObject.idl(428):  		craftersName = name;
+	// server/zone/objects/tangible/TangibleObject.idl(434):  		craftersName = name;
 	craftersName = name;
 }
 
 String TangibleObjectImplementation::getCraftersName() {
-	// server/zone/objects/tangible/TangibleObject.idl(432):  		return craftersName;
+	// server/zone/objects/tangible/TangibleObject.idl(438):  		return craftersName;
 	return craftersName;
 }
 
 void TangibleObjectImplementation::setCraftersSerial(String& serial) {
-	// server/zone/objects/tangible/TangibleObject.idl(436):  		craftersSerial = serial;
+	// server/zone/objects/tangible/TangibleObject.idl(442):  		craftersSerial = serial;
 	craftersSerial = serial;
 }
 
 String TangibleObjectImplementation::getCraftersSerial() {
-	// server/zone/objects/tangible/TangibleObject.idl(440):  		return craftersSerial;
+	// server/zone/objects/tangible/TangibleObject.idl(446):  		return craftersSerial;
 	return craftersSerial;
 }
 

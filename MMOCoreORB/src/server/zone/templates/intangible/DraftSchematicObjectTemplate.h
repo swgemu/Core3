@@ -15,6 +15,7 @@
 class DraftSchematicObjectTemplate : public SharedDraftSchematicObjectTemplate {
 protected:
 
+	String customObjectName;
 	String groupName;
 
 	int craftingToolTab;
@@ -173,6 +174,10 @@ public:
 
     String getXpType() {
         return xpType;
+    }
+
+    String getCustomObjectName() {
+        return customObjectName;
     }
 
 };

@@ -260,7 +260,7 @@ public:
 
 	DraftSchematic* getSchematic(int i);
 
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs, int complexityLevel);
 
 	int getFoodFilling();
 
@@ -465,7 +465,7 @@ public:
 
 	DraftSchematic* getSchematic(int i);
 
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs);
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(Vector<unsigned int>* enabledTabs, int complexityLevel);
 
 	int getFoodFilling();
 

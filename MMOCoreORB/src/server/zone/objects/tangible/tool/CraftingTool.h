@@ -111,6 +111,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void updateCraftingValues(CraftingValues* craftingValues);
+
 	bool isCraftingTool();
 
 	int getToolType();
@@ -130,6 +132,8 @@ public:
 	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
 
 	void nextCraftingStage(PlayerCreature* player, int clientCounter);
+
+	void experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter);
 
 	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
 
@@ -169,9 +173,13 @@ protected:
 
 	String status;
 
+	int complexityLevel;
+
 	ManagedReference<CraftingManager* > craftingManager;
 
 	Vector<unsigned int> enabledTabs;
+
+	Vector<ManagedReference<DraftSchematic* > > currentSchematicList;
 
 	ManagedReference<CraftingStation* > craftingStation;
 
@@ -183,9 +191,13 @@ protected:
 
 	ManagedReference<TangibleObject* > prototype;
 
-	int experimentationPoints;
+	int experimentationPointsTotal;
+
+	int experimentationPointsUsed;
 
 	int assemblyResult;
+
+	int experimentationResult;
 
 	int experimentalFailureRate;
 
@@ -217,6 +229,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void updateCraftingValues(CraftingValues* craftingValues);
 
 	bool isCraftingTool();
 
@@ -262,6 +276,16 @@ public:
 
 private:
 	void initialAssembly(PlayerCreature* player, int counter);
+
+	void finishAssembly(PlayerCreature* player, int clientCounter);
+
+	void setInitialCraftingValues();
+
+public:
+	void experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter);
+
+private:
+	void experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure);
 
 public:
 	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
@@ -339,6 +363,8 @@ public:
 
 	void nextCraftingStage(PlayerCreature* player, int clientCounter);
 
+	void experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter);
+
 	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
 
 	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
@@ -348,6 +374,7 @@ public:
 	void depositObject(PlayerCreature* player, bool practice);
 
 protected:
+	String _param2_experiment__PlayerCreature_int_String_int_;
 	String _param1_customization__PlayerCreature_String_int_String_;
 	String _param3_customization__PlayerCreature_String_int_String_;
 };

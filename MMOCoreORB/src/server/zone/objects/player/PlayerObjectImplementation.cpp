@@ -479,11 +479,11 @@ System::out << schematic->getObjectNameStringIdName() << endl;
 }
 
 Vector<ManagedReference<DraftSchematic* > > PlayerObjectImplementation::filterSchematicList(
-		Vector<uint32>* enabledTabs) {
+		Vector<uint32>* enabledTabs, int complexityLevel) {
 
 	Locker _locker(_this);
 
-	return schematicList.filterSchematicList(enabledTabs);
+	return schematicList.filterSchematicList(enabledTabs, complexityLevel);
 }
 
 void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient) {

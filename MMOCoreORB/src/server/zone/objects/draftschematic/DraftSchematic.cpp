@@ -264,12 +264,25 @@ String DraftSchematic::getCustomizationSkill() {
 		return ((DraftSchematicImplementation*) _impl)->getCustomizationSkill();
 }
 
-unsigned int DraftSchematic::getTanoCRC() {
+String DraftSchematic::getCustomName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 23);
+
+		method.executeWithAsciiReturn(_return_getCustomName);
+		return _return_getCustomName;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getCustomName();
+}
+
+unsigned int DraftSchematic::getTanoCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -281,7 +294,7 @@ String DraftSchematic::getGroupName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 
 		method.executeWithAsciiReturn(_return_getGroupName);
 		return _return_getGroupName;
@@ -361,17 +374,17 @@ void DraftSchematicImplementation::_serializationHelperMethod() {
 
 DraftSchematicImplementation::DraftSchematicImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/draftschematic/DraftSchematic.idl(69):  		Logger.setLoggingName("DraftSchematic");
+	// server/zone/objects/draftschematic/DraftSchematic.idl(68):  		Logger.setLoggingName("DraftSchematic");
 	Logger::setLoggingName("DraftSchematic");
 }
 
 void DraftSchematicImplementation::setSchematicID(unsigned int id) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(127):  		schematicID = id;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(126):  		schematicID = id;
 	schematicID = id;
 }
 
 unsigned int DraftSchematicImplementation::getSchematicID() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(135):  		return schematicID;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(134):  		return schematicID;
 	return schematicID;
 }
 
@@ -438,9 +451,12 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getCustomizationSkill());
 		break;
 	case 23:
-		resp->insertInt(getTanoCRC());
+		resp->insertAscii(getCustomName());
 		break;
 	case 24:
+		resp->insertInt(getTanoCRC());
+		break;
+	case 25:
 		resp->insertAscii(getGroupName());
 		break;
 	default:
@@ -516,6 +532,10 @@ String DraftSchematicAdapter::getExperimentationSkill() {
 
 String DraftSchematicAdapter::getCustomizationSkill() {
 	return ((DraftSchematicImplementation*) impl)->getCustomizationSkill();
+}
+
+String DraftSchematicAdapter::getCustomName() {
+	return ((DraftSchematicImplementation*) impl)->getCustomName();
 }
 
 unsigned int DraftSchematicAdapter::getTanoCRC() {

@@ -42,7 +42,14 @@
 
 
 object_tangible_crafting_station_public_structure_station = object_tangible_crafting_station_shared_public_structure_station:new {
+   templateType = CRAFTINGSTATION,
 
+   playerUseMask = 65535,
+
+   customizationOptions = {},
+   customizationDefaults = {},
+
+   stationType = 6,   complexityLevel = 25
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_public_structure_station, "object/tangible/crafting/station/public_structure_station.iff")

@@ -60,8 +60,8 @@ class CraftingStation extends ToolTangibleObject {
 
 	public CraftingStation() {
 		Logger.setLoggingName("CraftingStation");
-		complexityLevel = 100;
-		effectiveness = 0;
+		complexityLevel = 0;
+		effectiveness = 25;
 	}
 	
 	public void initializeTransientMembers() {

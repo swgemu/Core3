@@ -59,6 +59,7 @@ void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templ
 	CraftingStationTemplate* craftingStationData = dynamic_cast<CraftingStationTemplate*>(templateData);
 
 	type = craftingStationData->getStationType();
+	complexityLevel = craftingStationData->getComplexityLevel();
 }
 
 void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
@@ -80,7 +81,7 @@ void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm,
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	alm->insertAttribute("craft_tool_effectiveness", Math::getPrecision(effectiveness, 2));
-	alm->insertAttribute("craft_tool_status", "@crafting:tool_status_ready");
+	alm->insertAttribute("complexity", complexityLevel);
 
 	if (craftersName != ""){
 

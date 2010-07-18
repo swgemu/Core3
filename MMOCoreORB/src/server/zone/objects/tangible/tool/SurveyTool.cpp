@@ -56,6 +56,14 @@ void SurveyTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Player
 		((SurveyToolImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
+void SurveyTool::updateCraftingValues(CraftingValues* craftingValues) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((SurveyToolImplementation*) _impl)->updateCraftingValues(craftingValues);
+}
+
 void SurveyTool::setRange(int r) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -392,43 +400,46 @@ void SurveyToolImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("SurveyTool");
 }
 
+void SurveyToolImplementation::updateCraftingValues(CraftingValues* craftingValues) {
+}
+
 int SurveyToolImplementation::getRange() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(110):  		return range;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(115):  		return range;
 	return range;
 }
 
 int SurveyToolImplementation::getPoints() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(114):  		return points;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(119):  		return points;
 	return points;
 }
 
 bool SurveyToolImplementation::canSampleRadioactive() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(118):  		return radioactiveOk;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(123):  		return radioactiveOk;
 	return radioactiveOk;
 }
 
 bool SurveyToolImplementation::tryGamble() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(122):  		return doGamble == true;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(127):  		return doGamble == true;
 	return doGamble == true;
 }
 
 void SurveyToolImplementation::clearGamble() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(126):  		doGamble = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(131):  		doGamble = false;
 	doGamble = false;
 }
 
 void SurveyToolImplementation::consentRadioactiveSample() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(130):  		radioactiveOk = true;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(135):  		radioactiveOk = true;
 	radioactiveOk = true;
 }
 
 Coordinate* SurveyToolImplementation::getRichSampleLocation() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(142):  		return richSampleLocation;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(147):  		return richSampleLocation;
 	return richSampleLocation;
 }
 
 void SurveyToolImplementation::clearRichSampleLocation() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(146):  		richSampleLocation = null;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(151):  		richSampleLocation = null;
 	richSampleLocation = NULL;
 }
 

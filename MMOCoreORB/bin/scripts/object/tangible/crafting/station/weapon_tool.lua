@@ -51,6 +51,7 @@ object_tangible_crafting_station_weapon_tool = object_tangible_crafting_station_
    customizationDefaults = {},
 
    toolType = 7,
+   complexityLevel = 20,
    enabledTabs = {1,16,32,4096,65536,524288}
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_weapon_tool, "object/tangible/crafting/station/weapon_tool.iff")

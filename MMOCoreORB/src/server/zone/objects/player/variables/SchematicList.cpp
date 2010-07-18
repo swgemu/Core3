@@ -97,7 +97,7 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 }
 
 Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
-		Vector<uint32>* enabledTabs) {
+		Vector<uint32>* enabledTabs, int complexityLevel) {
 
 	Vector<ManagedReference<DraftSchematic* > > filteredschematics;
 
@@ -105,7 +105,8 @@ Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
 		ManagedReference<DraftSchematic*> schematic = get(i);
 
 		for(int j = 0; j < enabledTabs->size(); ++j) {
-			if(enabledTabs->get(j) == schematic->getToolTab()) {
+			if(enabledTabs->get(j) == schematic->getToolTab() &&
+					schematic->getComplexity() <= complexityLevel) {
 				filteredschematics.add(schematic);
 				break;
 			}

@@ -216,10 +216,10 @@ CraftingStationImplementation::CraftingStationImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/tool/CraftingStation.idl(62):  		Logger.setLoggingName("CraftingStation");
 	Logger::setLoggingName("CraftingStation");
-	// server/zone/objects/tangible/tool/CraftingStation.idl(63):  		complexityLevel = 100;
-	complexityLevel = 100;
-	// server/zone/objects/tangible/tool/CraftingStation.idl(64):  		effectiveness = 0;
-	effectiveness = 0;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(63):  		complexityLevel = 0;
+	complexityLevel = 0;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(64):  		effectiveness = 25;
+	effectiveness = 25;
 }
 
 void CraftingStationImplementation::initializeTransientMembers() {
