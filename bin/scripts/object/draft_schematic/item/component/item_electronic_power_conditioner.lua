@@ -61,7 +61,9 @@ object_draft_schematic_item_component_item_electronic_power_conditioner = object
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"module_brackets_and_frame", "circuit_stabilization_medium", "circuit_shielding_and_substrate", "stage_1_energy_filter", "stage_2_energy_filter", "charge_leakage_and_contaminant_arrestor", "charge_filtering_prism"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_slicing_slicing_laser_knife = object_draft_schematic_slic
    customizationSkill = "spice_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "controller", "laser_assembly"},
    ingredientSlotType = {0, 0, 0},

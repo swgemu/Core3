@@ -61,7 +61,9 @@ object_draft_schematic_weapon_rifle_sonic_sg82 = object_draft_schematic_weapon_s
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "firing_mechanism"},
    ingredientSlotType = {0, 0, 0, 2, 2},

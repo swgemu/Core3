@@ -61,7 +61,9 @@ object_draft_schematic_armor_armor_segment_chitin_advanced = object_draft_schema
    customizationSkill = "armor_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_segment_chitin", "segment_mounting_tabs", "segment_enhancement"},
    ingredientSlotType = {0, 0, 4},

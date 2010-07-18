@@ -61,7 +61,9 @@ object_draft_schematic_droid_component_personality_module_geek = object_draft_sc
    customizationSkill = "droid_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "thermal_shielding", "data_smart_indexer", "ancillary_heuristic_processor", "primary_phrase_database", "secondary_phrase_database", "phrase_index_tree"},
    ingredientSlotType = {0, 0, 2, 2, 2, 2, 2},

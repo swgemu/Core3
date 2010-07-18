@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_wke_skirt_s02 = object_draft_schematic_
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {2, 1, 29},
+   customizationStringNames = {"/private/index_color_1", "/private/index_color_2", "/private/index_color_3"},
    customizationDefaults = {32, 16, 3},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_reinforcement", "hardware", "lining"},
    ingredientSlotType = {2, 0, 2, 2},

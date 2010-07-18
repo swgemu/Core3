@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_wke_skirt_s03 = object_draft_schematic_
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "extra_trim", "hardware", "skirt_section"},
    ingredientSlotType = {0, 2, 2, 2},

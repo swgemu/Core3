@@ -61,7 +61,9 @@ object_draft_schematic_instrument_instrument_bandfill = object_draft_schematic_i
    customizationSkill = "instrument_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "valving"},
    ingredientSlotType = {0, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_item_item_firework_one = object_draft_schematic_item_shar
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"canister", "booster_charge", "burster_charge", "effect_generator"},
    ingredientSlotType = {0, 0, 0, 0},

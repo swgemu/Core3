@@ -61,7 +61,9 @@ object_draft_schematic_chemistry_component_release_mechanism_duration_advanced =
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "chemical_element"},
    ingredientSlotType = {0, 0},

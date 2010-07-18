@@ -61,7 +61,9 @@ object_draft_schematic_food_dish_dustcrepe = object_draft_schematic_food_shared_
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dried_bread", "meat_filling", "additive"},
    ingredientSlotType = {0, 0, 4},

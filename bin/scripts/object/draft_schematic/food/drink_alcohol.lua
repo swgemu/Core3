@@ -61,7 +61,9 @@ object_draft_schematic_food_drink_alcohol = object_draft_schematic_food_shared_d
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n"},
    ingredientTitleNames = {"mash"},
    ingredientSlotType = {0},

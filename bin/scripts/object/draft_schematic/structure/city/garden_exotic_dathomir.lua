@@ -61,7 +61,9 @@ object_draft_schematic_structure_city_garden_exotic_dathomir = object_draft_sche
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"decorative_flora", "foundation", "wall_sections"},
    ingredientSlotType = {0, 0, 2},

@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_ith_dress_formal_03 = object_draft_sche
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "extra_trim", "hardware", "skirt", "bodice"},
    ingredientSlotType = {0, 2, 0, 2, 2},

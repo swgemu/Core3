@@ -61,7 +61,9 @@ object_draft_schematic_food_dish_gruuvan_shaal = object_draft_schematic_food_sha
    customizationSkill = "food_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"lizard_meat", "desert_seasoning", "vegetables", "additive"},
    ingredientSlotType = {0, 0, 0, 4},

@@ -61,7 +61,9 @@ object_draft_schematic_item_item_ballot_box_terminal = object_draft_schematic_it
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"terminal_stand_mount", "terminal_stand_base", "basic_logic_unit", "basic_data_unit", "electronics_casing", "interface_pad", "power_unit"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},

@@ -61,7 +61,9 @@ object_draft_schematic_clothing_clothing_ith_hat_chef_02 = object_draft_schemati
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_weatherproofing", "liner"},
    ingredientSlotType = {2, 0, 2},

@@ -61,7 +61,9 @@ object_draft_schematic_furniture_furniture_armoire_cheap = object_draft_schemati
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"ingredients"},
    ingredientTitleNames = {"frame"},
    ingredientSlotType = {0},

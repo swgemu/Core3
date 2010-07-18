@@ -61,7 +61,9 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism = object_d
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"chemical_barrel_coupling", "emitter_nozzle", "sealant_gaskets"},
    ingredientSlotType = {0, 0, 0},

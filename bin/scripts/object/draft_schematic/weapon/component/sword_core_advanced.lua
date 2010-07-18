@@ -61,7 +61,9 @@ object_draft_schematic_weapon_component_sword_core_advanced = object_draft_schem
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_weapon_ingredients_n"},
    ingredientTitleNames = {"sword_core"},
    ingredientSlotType = {0},

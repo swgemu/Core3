@@ -61,7 +61,9 @@ object_draft_schematic_vehicle_civilian_speeder_bike_swoop = object_draft_schema
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n"},
    ingredientTitleNames = {"vehicle_body", "structural_frame"},
    ingredientSlotType = {0, 0},

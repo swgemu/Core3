@@ -61,7 +61,9 @@ object_draft_schematic_armor_component_armor_layer_kinetic = object_draft_schema
    customizationSkill = "armor_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"armor_layer_shock_casing", "ablative_damage_absorbtion_medium", "shockwave_repulsion_compound"},
    ingredientSlotType = {0, 0, 0},

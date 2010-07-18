@@ -61,7 +61,9 @@ object_draft_schematic_spices_spice_grey_gabaki = object_draft_schematic_spices_
    customizationSkill = "spice_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"dried_leaf", "preservative"},
    ingredientSlotType = {0, 0},

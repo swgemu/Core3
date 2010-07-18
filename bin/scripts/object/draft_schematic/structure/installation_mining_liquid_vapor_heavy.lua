@@ -61,7 +61,9 @@ object_draft_schematic_structure_installation_mining_liquid_vapor_heavy = object
    customizationSkill = "structure_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n", "craft_structure_ingredients_n"},
    ingredientTitleNames = {"load_bearing_frame", "body_shell_and_casing", "structure_foundation", "chiller_bar_structure", "subterannean_storage_tank", "gaskets_and_storage_tank_lining", "power_supply_unit", "liquid_storage_unit", "condensor_system"},
    ingredientSlotType = {0, 0, 0, 0, 2, 0, 2, 2, 2},

@@ -61,7 +61,9 @@ object_draft_schematic_spices_spice_muon_gold = object_draft_schematic_spices_sh
    customizationSkill = "spice_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"suspension_liquid", "muon_source", "lepton_agitator"},
    ingredientSlotType = {0, 0, 0},

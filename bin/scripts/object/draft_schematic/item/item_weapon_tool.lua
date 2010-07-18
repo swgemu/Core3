@@ -61,7 +61,9 @@ object_draft_schematic_item_item_weapon_tool = object_draft_schematic_item_share
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "electronic_control_unit"},
    ingredientSlotType = {0, 0, 0},

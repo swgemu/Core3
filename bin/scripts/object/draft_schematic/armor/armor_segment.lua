@@ -61,7 +61,9 @@ object_draft_schematic_armor_armor_segment = object_draft_schematic_armor_shared
    customizationSkill = "armor_customization", 
 
    customizationOptions = {},
+   customizationStringNames = {},
    customizationDefaults = {},
+
    ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"segment_layer_assembly_plate", "armor_layer_weld_tabs", "segment_mounting_tabs", "defensive_layer", "segment_enhancement"},
    ingredientSlotType = {0, 0, 0, 4, 4},
