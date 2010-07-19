@@ -68,6 +68,7 @@ class SurveyTool extends ToolTangibleObject {
 	
 	protected transient Coordinate richSampleLocation;
 	protected transient boolean doGamble;
+	protected transient boolean inUse;
 	
 	public static final int SOLAR = 1;
 	public static final int CHEMICAL = 2;
@@ -149,6 +150,14 @@ class SurveyTool extends ToolTangibleObject {
 	
 	public void clearRichSampleLocation() {
 		richSampleLocation = null;
+	}
+	
+	public void setInUse(boolean use) {
+		inUse = use;
+	}
+	
+	public boolean isInUse() {
+		return inUse;
 	}
 	
 	public native void surveyGnodeMinigameSui(PlayerCreature player);

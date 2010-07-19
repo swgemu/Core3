@@ -55,6 +55,8 @@ public:
 
 		if(object != NULL && object->isTangibleObject()) {
 
+			Locker _locker(craftingTool);
+
 			TangibleObject* tano = (TangibleObject*) object.get();
 			craftingTool->addIngredient(player, tano, slot, counter);
 

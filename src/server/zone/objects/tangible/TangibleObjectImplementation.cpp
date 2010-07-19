@@ -78,7 +78,7 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	unknownByte = 1;
 
-	useCount = 0;
+	useCount = 1;
 
 	conditionDamage = 0;
 	maxCondition = tanoData->getMaxCondition();
@@ -271,6 +271,9 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 		return;
 
 	useCount = newUseCount;
+
+	if(useCount < 1)
+		error("My use count is zero, please implement destroy");
 
 	if (!notifyClient)
 		return;

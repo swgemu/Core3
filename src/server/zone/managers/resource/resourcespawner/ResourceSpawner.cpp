@@ -472,6 +472,14 @@ void ResourceSpawner::sendSample(PlayerCreature* player, const String& resname, 
 		return;
 	}
 
+	if(player->getHAM(CreatureAttribute::ACTION) < 200) {
+		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
+		return;
+	}
+
+	player->inflictDamage(player, CreatureAttribute::ACTION, 200, false, true);
+
+
 	PlayClientEffectLoc* effect = new PlayClientEffectLoc
 			(sampleAnimation, player->getZone()->getZoneID(),
 			player->getPositionX(), player->getPositionZ(),
@@ -486,11 +494,6 @@ void ResourceSpawner::sendSample(PlayerCreature* player, const String& resname, 
 
 	// Get resource Density ay players position
 	float density = resourceMap->getDensityAt(resname, zoneid, posX, posY);
-
-	// Send survey start message
-	ParameterizedStringId message("survey","start_sampling");
-	message.setTO(resname);
-	player->sendSystemMessage(message);
 
 	// Add sampleresultstask
 	SampleResultsTask* sampleResultsTask = new SampleResultsTask(player, this, density, resname);
@@ -638,10 +641,10 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player, const float dens
 	inventory->addObject(harvestedResource, -1, true);
 	harvestedResource->updateToDatabase();
 
-	if (harvestedResource->getGameObjectType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
+	if (resourceSpawn->isType("radioactive")) {
 		int wound = int((sampleRate / 70) - System::random(9));
 
-		if (wound> 0) {
+		if (wound > 0) {
 			player->addWounds(CreatureAttribute::HEALTH, wound, true);
 			player->addWounds(CreatureAttribute::ACTION, wound, true);
 			player->addWounds(CreatureAttribute::MIND, wound, true);

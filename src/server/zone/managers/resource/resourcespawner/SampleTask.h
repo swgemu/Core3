@@ -91,6 +91,7 @@ public:
 
 	void stopSampling() {
 		cancelled = true;
+		surveyTool->setInUse(false);
 	}
 
 	bool isCancelled() {

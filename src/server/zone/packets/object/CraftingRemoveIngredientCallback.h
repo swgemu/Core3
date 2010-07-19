@@ -53,6 +53,8 @@ public:
 
 		if(object != NULL && object->isTangibleObject()) {
 
+			Locker _locker(craftingTool);
+
 			TangibleObject* tano = (TangibleObject*) object.get();
 			craftingTool->removeIngredient(player, tano, slot, counter);
 

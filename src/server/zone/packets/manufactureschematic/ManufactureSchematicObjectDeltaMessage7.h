@@ -322,53 +322,6 @@ public:
 			removeListFloatElement(i, value);
 
 		}
-
-		/*startUpdate(9);
-
-		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
-		int count, linenum;
-		String title, subtitle;
-		float value;
-		bool hidden;
-		VectorMap<int, String> updatedLines;
-
-		for (int i = 0; i < craftingValues->getValuesToSendSize(); ++i) {
-
-			subtitle = craftingValues->getValuesToSend(i);
-
-			title = craftingValues->getExperimentalPropertyTitle(subtitle);
-
-			linenum = craftingValues->getTitleLine(title);
-
-			hidden = craftingValues->isHidden(subtitle);
-
-			if (((!initial && !hidden) || initial) && linenum != -1 && !updatedLines.contains(linenum)
-					&& title != "" && title != "null") {
-//System::out << "dmsco7 End: " << linenum << " " << title << endl;
-				updatedLines.put(linenum, title);
-			}
-		}
-
-		if (initial) {
-			manufactureSchematic->setExperimentingCounter(updatedLines.size() * 2);
-			count = updatedLines.size() * 2;
-		} else {
-			count = manufactureSchematic->getExperimentingCounter();
-		}
-
-		startList(updatedLines.size(), count);
-//System::out << "dmsco7 updateLines: " << updatedLines.size() << " counter " << draftSchematic->getExpCounter() << " props " << craftingValues->getVisibleExperimentalPropertyTitleSize() << " count sent " << count << endl;
-		for (int i = 0; i < updatedLines.size(); ++i) {
-
-			linenum = (&(updatedLines.elementAt(i)))->getKey();
-
-			value = craftingValues->getCurrentPercentageAverage((&(updatedLines.elementAt(i)))->getValue());
-
-			removeListFloatElement(linenum, value);
-//System::out << "dmsco7 End: " << linenum << " " << value << endl;
-		}
-
-		updatedLines.removeAll();*/
 	}
 
 	void update0A(ManufactureSchematic* manufactureSchematic) {
@@ -424,67 +377,82 @@ public:
 
 	void update0D(ManufactureSchematic* manufactureSchematic) {
 
-		/*int count = draftSchematic->getCustomizationOptionCount();
+		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
+		if(draftSchematic == NULL)
+			return;
+
+		Vector<String>* customizationStringNames = draftSchematic->getCustomizationStringNames();
 
 		startUpdate(0x0D);
 
-		startList(count, count);
+		startList(customizationStringNames->size(), customizationStringNames->size());
 
-		for (int i = 0; i < count; ++i) {
+		for (int i = 0; i < customizationStringNames->size(); ++i) {
 
 			insertByte(0x01);
 			insertShort(i);
-			insertAscii(draftSchematic->getCustomizationOption(i));
-		}*/
-
+			insertAscii(customizationStringNames->get(i));
+		}
 	}
 
 	// Starting COlor chooser position
 	void update0E(ManufactureSchematic* manufactureSchematic) {
 
-		/*int count = draftSchematic->getCustomizationOptionCount();
+		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
+		if(draftSchematic == NULL)
+			return;
+
+		Vector<byte>* customizationDefaultValues = draftSchematic->getCustomizationDefaultValues();
 
 		startUpdate(0x0E);
 
-		startList(count, count);
+		startList(customizationDefaultValues->size(), customizationDefaultValues->size());
 
-		for (int i = 0; i < count; ++i) {
+		for (int i = 0; i < customizationDefaultValues->size(); ++i) {
 
 			insertByte(0x01);
 			insertShort(i);
-			insertInt(draftSchematic->getCustomizationDefaultValue(i));
-		}*/
+			insertInt(customizationDefaultValues->get(i));
+		}
 	}
 
 	void update0F(ManufactureSchematic* manufactureSchematic) {
 
-		/*int count = draftSchematic->getCustomizationOptionCount();
+		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
+		if(draftSchematic == NULL)
+			return;
+
+		Vector<byte>* customizationOptions = draftSchematic->getCustomizationOptions();
 
 		startUpdate(0x0F);
 
-		startList(count, count);
+		startList(customizationOptions->size(), customizationOptions->size());
 
-		for (int i = 0; i < count; ++i) {
+		for (int i = 0; i < customizationOptions->size(); ++i) {
 			insertByte(0x01);
 			insertShort(i);
 			insertInt(0);
-		}*/
+		}
 	}
 
 	// Number of palette colors
 	void update10(ManufactureSchematic* manufactureSchematic, int custpoints) {
 
-		/*int count = draftSchematic->getCustomizationOptionCount();
+		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
+		if(draftSchematic == NULL)
+			return;
+
+		Vector<byte>* customizationOptions = draftSchematic->getCustomizationOptions();
 
 		startUpdate(0x10);
 
-		startList(count, count);
+		startList(customizationOptions->size(), customizationOptions->size());
 
-		for (int i = 0; i < count; ++i) {
+		for (int i = 0; i < customizationOptions->size(); ++i) {
 			insertByte(0x01);
 			insertShort(i);
 			insertInt(custpoints);
-		}*/
+		}
 	}
 
 	void update11() {

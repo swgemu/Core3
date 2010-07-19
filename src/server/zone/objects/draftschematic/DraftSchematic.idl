@@ -187,6 +187,15 @@ class DraftSchematic extends IntangibleObject {
 	public native string getExperimentationSkill();
 	
 	public native string getCustomizationSkill();
+	
+	@local
+	public native Vector<byte> getCustomizationOptions();
+	
+	@local
+	public native Vector<string> getCustomizationStringNames();
+	
+	@local
+	public native Vector<byte> getCustomizationDefaultValues();
 
 	public native string getCustomName();
 	

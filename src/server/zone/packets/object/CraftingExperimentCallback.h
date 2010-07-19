@@ -61,6 +61,8 @@ public:
 			return;
 		}
 
+		Locker _locker(craftingTool);
+
 		craftingTool->experiment(player, numRowsAttempted, expString, clientCounter);
 	}
 };

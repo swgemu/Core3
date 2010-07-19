@@ -73,6 +73,8 @@ public:
 			return;
 		}
 
+		Locker _locker(craftingTool);
+
 		craftingTool->customization(player, name, schematicCount, customizationString);
 
 
