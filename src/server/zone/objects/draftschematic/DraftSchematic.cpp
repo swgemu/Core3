@@ -264,6 +264,30 @@ String DraftSchematic::getCustomizationSkill() {
 		return ((DraftSchematicImplementation*) _impl)->getCustomizationSkill();
 }
 
+Vector<byte>* DraftSchematic::getCustomizationOptions() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getCustomizationOptions();
+}
+
+Vector<String>* DraftSchematic::getCustomizationStringNames() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getCustomizationStringNames();
+}
+
+Vector<byte>* DraftSchematic::getCustomizationDefaultValues() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getCustomizationDefaultValues();
+}
+
 String DraftSchematic::getCustomName() {
 	if (_impl == NULL) {
 		if (!deployed)

@@ -103,8 +103,6 @@ public:
 
 	int getManufactureLimit();
 
-	byte getCustomizationType();
-
 protected:
 	ManufactureSchematic(DummyConstructorParameter* param);
 
@@ -146,6 +144,10 @@ protected:
 	IngredientSlots ingredientSlots;
 
 	CraftingValues craftingValues;
+
+	Vector<byte> customizationOptions;
+
+	Vector<byte> customizationDefaultValues;
 
 public:
 	ManufactureSchematicImplementation();
@@ -201,8 +203,6 @@ public:
 	void setManufactureLimit(int limit);
 
 	int getManufactureLimit();
-
-	byte getCustomizationType();
 
 	ManufactureSchematic* _this;
 
@@ -286,8 +286,6 @@ public:
 	void setManufactureLimit(int limit);
 
 	int getManufactureLimit();
-
-	byte getCustomizationType();
 
 };
 

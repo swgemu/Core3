@@ -222,12 +222,37 @@ void SurveyTool::clearRichSampleLocation() {
 		((SurveyToolImplementation*) _impl)->clearRichSampleLocation();
 }
 
-void SurveyTool::surveyGnodeMinigameSui(PlayerCreature* player) {
+void SurveyTool::setInUse(bool use) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 19);
+		method.addBooleanParameter(use);
+
+		method.executeWithVoidReturn();
+	} else
+		((SurveyToolImplementation*) _impl)->setInUse(use);
+}
+
+bool SurveyTool::isInUse() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SurveyToolImplementation*) _impl)->isInUse();
+}
+
+void SurveyTool::surveyGnodeMinigameSui(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -240,7 +265,7 @@ void SurveyTool::surveyGnodeMinigame(PlayerCreature* player, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -254,7 +279,7 @@ int SurveyTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -268,7 +293,7 @@ void SurveyTool::sendResourceListTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -281,7 +306,7 @@ void SurveyTool::sendSurveyTo(PlayerCreature* player, const String& resname) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(resname);
 
@@ -295,7 +320,7 @@ void SurveyTool::sendSampleTo(PlayerCreature* player, const String& resname) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(resname);
 
@@ -381,22 +406,22 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 
 SurveyToolImplementation::SurveyToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(83):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(84):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
-	// server/zone/objects/tangible/tool/SurveyTool.idl(84):  		radioactiveOk = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(85):  		radioactiveOk = false;
 	radioactiveOk = false;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(85):  		range = 0;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(86):  		range = 0;
 	range = 0;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(86):  		doGamble = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(87):  		doGamble = false;
 	doGamble = false;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(87):  		richSampleLocation = null;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(88):  		richSampleLocation = null;
 	richSampleLocation = NULL;
 }
 
 void SurveyToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(91):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/SurveyTool.idl(92):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(93):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(94):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
 }
 
@@ -404,43 +429,53 @@ void SurveyToolImplementation::updateCraftingValues(CraftingValues* craftingValu
 }
 
 int SurveyToolImplementation::getRange() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(115):  		return range;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(116):  		return range;
 	return range;
 }
 
 int SurveyToolImplementation::getPoints() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(119):  		return points;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(120):  		return points;
 	return points;
 }
 
 bool SurveyToolImplementation::canSampleRadioactive() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(123):  		return radioactiveOk;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(124):  		return radioactiveOk;
 	return radioactiveOk;
 }
 
 bool SurveyToolImplementation::tryGamble() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(127):  		return doGamble == true;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(128):  		return doGamble == true;
 	return doGamble == true;
 }
 
 void SurveyToolImplementation::clearGamble() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(131):  		doGamble = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(132):  		doGamble = false;
 	doGamble = false;
 }
 
 void SurveyToolImplementation::consentRadioactiveSample() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(135):  		radioactiveOk = true;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(136):  		radioactiveOk = true;
 	radioactiveOk = true;
 }
 
 Coordinate* SurveyToolImplementation::getRichSampleLocation() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(147):  		return richSampleLocation;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(148):  		return richSampleLocation;
 	return richSampleLocation;
 }
 
 void SurveyToolImplementation::clearRichSampleLocation() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(151):  		richSampleLocation = null;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(152):  		richSampleLocation = null;
 	richSampleLocation = NULL;
+}
+
+void SurveyToolImplementation::setInUse(bool use) {
+	// server/zone/objects/tangible/tool/SurveyTool.idl(156):  		inUse = use;
+	inUse = use;
+}
+
+bool SurveyToolImplementation::isInUse() {
+	// server/zone/objects/tangible/tool/SurveyTool.idl(160):  		return inUse;
+	return inUse;
 }
 
 /*
@@ -494,21 +529,27 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		clearRichSampleLocation();
 		break;
 	case 19:
-		surveyGnodeMinigameSui((PlayerCreature*) inv->getObjectParameter());
+		setInUse(inv->getBooleanParameter());
 		break;
 	case 20:
-		surveyGnodeMinigame((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		resp->insertBoolean(isInUse());
 		break;
 	case 21:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		surveyGnodeMinigameSui((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 22:
-		sendResourceListTo((PlayerCreature*) inv->getObjectParameter());
+		surveyGnodeMinigame((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 23:
-		sendSurveyTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyTo__PlayerCreature_String_));
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 24:
+		sendResourceListTo((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 25:
+		sendSurveyTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyTo__PlayerCreature_String_));
+		break;
+	case 26:
 		sendSampleTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleTo__PlayerCreature_String_));
 		break;
 	default:
@@ -568,6 +609,14 @@ void SurveyToolAdapter::surveyCnodeMinigame(PlayerCreature* player, int value) {
 
 void SurveyToolAdapter::clearRichSampleLocation() {
 	((SurveyToolImplementation*) impl)->clearRichSampleLocation();
+}
+
+void SurveyToolAdapter::setInUse(bool use) {
+	((SurveyToolImplementation*) impl)->setInUse(use);
+}
+
+bool SurveyToolAdapter::isInUse() {
+	return ((SurveyToolImplementation*) impl)->isInUse();
 }
 
 void SurveyToolAdapter::surveyGnodeMinigameSui(PlayerCreature* player) {

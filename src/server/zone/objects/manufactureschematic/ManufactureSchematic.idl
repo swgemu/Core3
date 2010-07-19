@@ -72,6 +72,12 @@ class ManufactureSchematic extends SceneObject {
 	@dereferenced
 	protected transient CraftingValues craftingValues;
 	
+	@dereferenced
+	protected transient Vector<byte> customizationOptions;
+	
+	@dereferenced
+	protected transient Vector<byte> customizationDefaultValues;
+	
 	public ManufactureSchematic() {
 		Logger.setLoggingName("ManufactureSchematic");	
 	}
@@ -199,9 +205,4 @@ class ManufactureSchematic extends SceneObject {
 	public int getManufactureLimit() {
 		return manufactureLimit;
 	}
-	
-	public byte getCustomizationType() {
-		
-	}
-
 }

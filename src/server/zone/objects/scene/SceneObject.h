@@ -850,6 +850,8 @@ public:
 
 	bool isResourceContainer();
 
+	bool isComponent();
+
 	bool isInstrument();
 
 	bool isInstallationObject();
@@ -1669,6 +1671,8 @@ public:
 
 	virtual bool isResourceContainer();
 
+	virtual bool isComponent();
+
 	bool isInstrument();
 
 	virtual bool isInstallationObject();
@@ -2007,6 +2011,8 @@ public:
 	bool isTangibleObject();
 
 	bool isResourceContainer();
+
+	bool isComponent();
 
 	bool isInstrument();
 

@@ -131,6 +131,10 @@ public:
 
 	void clearRichSampleLocation();
 
+	void setInUse(bool use);
+
+	bool isInUse();
+
 	void surveyGnodeMinigameSui(PlayerCreature* player);
 
 	void surveyGnodeMinigame(PlayerCreature* player, int value);
@@ -186,6 +190,8 @@ protected:
 	Coordinate* richSampleLocation;
 
 	bool doGamble;
+
+	bool inUse;
 
 public:
 	static const int SOLAR = 1;
@@ -243,6 +249,10 @@ public:
 	Coordinate* getRichSampleLocation();
 
 	void clearRichSampleLocation();
+
+	void setInUse(bool use);
+
+	bool isInUse();
 
 	void surveyGnodeMinigameSui(PlayerCreature* player);
 
@@ -320,6 +330,10 @@ public:
 	void surveyCnodeMinigame(PlayerCreature* player, int value);
 
 	void clearRichSampleLocation();
+
+	void setInUse(bool use);
+
+	bool isInUse();
 
 	void surveyGnodeMinigameSui(PlayerCreature* player);
 

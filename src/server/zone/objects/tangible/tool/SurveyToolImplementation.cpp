@@ -262,8 +262,17 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* player, const String
 	}
 
 	// Player must be kneeling to sample
-	if (!player->isKneeling())
+	if (!player->isKneeling()) {
 		player->setPosture(CreaturePosture::CROUCHED, true);
+	}
+
+		// Send sample start message
+	if(!isInUse()) {
+		ParameterizedStringId message("survey","start_sampling");
+		message.setTO(resname);
+		player->sendSystemMessage(message);
+		setInUse(true);
+	}
 
 	if (!doGamble && richSampleLocation == NULL && System::random(20) == 7) {
 

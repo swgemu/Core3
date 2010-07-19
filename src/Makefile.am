@@ -140,6 +140,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/managers/bazaar/BazaarAuctionsMap.cpp \
 				server/zone/managers/mission/MissionManager.cpp \
 				server/zone/objects/resource/ResourceContainer.cpp \
+				server/zone/objects/tangible/component/Component.cpp \
 				server/zone/objects/tangible/tool/CraftingTool.cpp \
 				server/zone/objects/tangible/tool/CraftingStation.cpp \
 				server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
@@ -234,6 +235,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.cpp \
 		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
+		server/zone/objects/tangible/component/ComponentImplementation.cpp \
 		server/zone/objects/tangible/tool/SurveyToolImplementation.cpp \
 		server/zone/objects/tangible/tool/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/tool/CraftingStationImplementation.cpp \

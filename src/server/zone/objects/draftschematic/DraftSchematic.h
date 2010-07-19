@@ -81,6 +81,12 @@ public:
 
 	String getCustomizationSkill();
 
+	Vector<byte>* getCustomizationOptions();
+
+	Vector<String>* getCustomizationStringNames();
+
+	Vector<byte>* getCustomizationDefaultValues();
+
 	String getCustomName();
 
 	unsigned int getTanoCRC();
@@ -171,6 +177,12 @@ public:
 	String getExperimentationSkill();
 
 	String getCustomizationSkill();
+
+	Vector<byte>* getCustomizationOptions();
+
+	Vector<String>* getCustomizationStringNames();
+
+	Vector<byte>* getCustomizationDefaultValues();
 
 	String getCustomName();
 
