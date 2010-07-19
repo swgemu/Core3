@@ -103,12 +103,12 @@ void DraftSchematicImplementation::sendDraftSlotsTo(PlayerCreature* player) {
 
 void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* msg) {
 
-	Vector<Reference<DraftSlot* >  >draftSlots = schematicTemplate->getDraftSlots();
+	Vector<Reference<DraftSlot* > >* draftSlots = schematicTemplate->getDraftSlots();
 
-	msg->insertInt(draftSlots.size());
+	msg->insertInt(draftSlots->size());
 
-	for(int i = 0; i < draftSlots.size(); ++i) {
-		draftSlots.get(i)->insertToMessage(msg);
+	for(int i = 0; i < draftSlots->size(); ++i) {
+		draftSlots->get(i)->insertToMessage(msg);
 	}
 
 	msg->insertShort(0);
@@ -116,24 +116,24 @@ void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* ms
 
 void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player) {
 
-	Vector<Reference<ResourceWeight* > > resourceWeights = schematicTemplate->getResourceWeights();
+	Vector<Reference<ResourceWeight* > >* resourceWeights = schematicTemplate->getResourceWeights();
 
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x0207);
 
 	msg->insertInt(schematicID);
 	msg->insertInt(clientObjectCRC);
 
-	msg->insertByte(resourceWeights.size());
+	msg->insertByte(resourceWeights->size());
 
 	//Send all the resource batch property data
-	for (int i = 0; i < resourceWeights.size(); i++)
-		resourceWeights.get(i)->insertBatchToMessage(msg);
+	for (int i = 0; i < resourceWeights->size(); i++)
+		resourceWeights->get(i)->insertBatchToMessage(msg);
 
-	msg->insertByte(resourceWeights.size());
+	msg->insertByte(resourceWeights->size());
 
 	//Send all the resource property data
-	for (int i = 0; i < resourceWeights.size(); i++)
-		resourceWeights.get(i)->insertToMessage(msg);
+	for (int i = 0; i < resourceWeights->size(); i++)
+		resourceWeights->get(i)->insertToMessage(msg);
 
 	player->sendMessage(msg);
 }
@@ -153,19 +153,19 @@ SceneObject* DraftSchematicImplementation::createManufactureSchematic() {
 }
 
 int DraftSchematicImplementation::getDraftSlotCount() {
-	return schematicTemplate->getDraftSlots().size();
+	return schematicTemplate->getDraftSlots()->size();
 }
 
 DraftSlot* DraftSchematicImplementation::getDraftSlot(int i) {
-	return schematicTemplate->getDraftSlots().get(i);
+	return schematicTemplate->getDraftSlots()->get(i);
 }
 
 int DraftSchematicImplementation::getResourceWeightCount() {
-	return schematicTemplate->getResourceWeights().size();
+	return schematicTemplate->getResourceWeights()->size();
 }
 
 ResourceWeight* DraftSchematicImplementation::getResourceWeight(int i) {
-	return schematicTemplate->getResourceWeights().get(i);
+	return schematicTemplate->getResourceWeights()->get(i);
 }
 
 
@@ -199,6 +199,18 @@ String DraftSchematicImplementation::getExperimentationSkill() {
 
 String DraftSchematicImplementation::getCustomizationSkill() {
 	return schematicTemplate->getCustomizationSkill();
+}
+
+Vector<String>* DraftSchematicImplementation::getCustomizationStringNames() {
+	return schematicTemplate->getCustomizationStringNames();
+}
+
+Vector<byte>* DraftSchematicImplementation::getCustomizationOptions() {
+	return schematicTemplate->getCustomizationOptions();
+}
+
+Vector<byte>* DraftSchematicImplementation::getCustomizationDefaultValues() {
+	return schematicTemplate->getCustomizationDefaultValues();
 }
 
 String DraftSchematicImplementation::getCustomName() {

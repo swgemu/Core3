@@ -1198,6 +1198,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return false;
 	}
 	
+	public abstract boolean isComponent() {
+		return false;
+	}
+	
 	public boolean isInstrument() {
 		return gameObjectType == INSTRUMENT;
 	}

@@ -52,19 +52,17 @@ class ResourceSlot: public IngredientSlot {
 
 	ManagedReference<ResourceContainer* > contents;
 
-	String type;
-
 public:
 	ResourceSlot(String t, int q) :
-		IngredientSlot() {
+		IngredientSlot(t, q) {
 
-		type = t;
-		quantity = q;
 
 		slottype = RESOURCESLOT;
 		contents = NULL;
 
 		setLoggingName("ResourceSlot");
+
+		optional = false;
 	}
 
 	~ResourceSlot() {
@@ -87,7 +85,7 @@ public:
 	bool add(PlayerCreature* player, TangibleObject* tano) {
 
 		/// Must be a resource container to proceed
-		if (tano->isResourceContainer()) {
+		if (tano->isResourceContainer() && getQuantity() < requiredQuantity) {
 
 			previousParent = tano->getParent();
 
@@ -100,7 +98,7 @@ public:
 			bool removeFromParent = false;
 
 			if (contents != NULL) {
-				int needs = quantity - contents->getQuantity();
+				int needs = requiredQuantity - contents->getQuantity();
 
 				if(needs < incomingResource->getQuantity()) {
 
@@ -115,13 +113,14 @@ public:
 				}
 			}
 
-			if (contents == NULL && incomingResource->getQuantity() > quantity) {
+			if (contents == NULL && incomingResource->getQuantity() > requiredQuantity) {
 
 				ResourceSpawn* spawn = incomingResource->getSpawnObject();
 
-				incomingResource->setQuantity(incomingResource->getQuantity() - quantity, player);
+				incomingResource->setQuantity(incomingResource->getQuantity() - requiredQuantity, player);
 
-				contents = spawn->createResource(quantity);
+				contents = spawn->createResource(requiredQuantity);
+
 				contents->sendTo(player, true);
 				contents->sendAttributeListTo(player);
 
@@ -152,7 +151,7 @@ public:
 	}
 
 	inline bool isComplete() {
-		return (contents->getQuantity() == quantity);
+		return (contents->getQuantity() == requiredQuantity);
 	}
 
 	inline bool hasItem() {

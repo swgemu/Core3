@@ -134,7 +134,7 @@ class TangibleObject extends SceneObject {
 	 */
 	public TangibleObject() {
 		faction = 0;
-		
+		useCount = 1;
 		Logger.setLoggingName("TangibleObject");
 	}
 	

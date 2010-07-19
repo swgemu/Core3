@@ -56,10 +56,7 @@ which carries forward this exception.
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
 
 #include "ingredientslots/ResourceSlot.h"
-//#include "ingredientslots/IdenticalSlot.h"
-//#include "ingredientslots/MixedSlot.h"
-//#include "ingredientslots/OptionalIdenticalSlot.h"
-//#include "ingredientslots/OptionalMixedSlot.h"
+#include "ingredientslots/ComponentSlot.h"
 
 /*#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
@@ -177,16 +174,16 @@ void ManufactureSchematicImplementation::initializeIngredientSlots(
 			ingredientSlot = new ResourceSlot(type, quantity);
 			break;
 		case IngredientSlot::IDENTICALSLOT:
-			//ingredientSlot = new IdenticalSlot();
+			ingredientSlot = new ComponentSlot(type, quantity, true, false, IngredientSlot::IDENTICALSLOT);
 			break;
 		case IngredientSlot::MIXEDSLOT:
-			//ingredientSlot = new MixedSlot();
+			ingredientSlot = new ComponentSlot(type, quantity, false, false, IngredientSlot::MIXEDSLOT);
 			break;
 		case IngredientSlot::OPTIONALIDENTICALSLOT:
-			//ingredientSlot = new OptionalIdenticalSlot();
+			ingredientSlot = new ComponentSlot(type, quantity, true, true, IngredientSlot::OPTIONALIDENTICALSLOT);
 			break;
 		case IngredientSlot::OPTIONALMIXEDSLOT:
-			//ingredientSlot = new OptionalMixedSlot();
+			ingredientSlot = new ComponentSlot(type, quantity, false, true, IngredientSlot::OPTIONALMIXEDSLOT);
 			break;
 		}
 

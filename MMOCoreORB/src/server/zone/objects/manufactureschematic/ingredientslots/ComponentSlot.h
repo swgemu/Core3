@@ -42,77 +42,142 @@
  which carries forward this exception.
  */
 
-#ifndef OPTIONALMIXEDSLOT_H_
-#define OPTIONALMIXEDSLOT_H_
+#ifndef COMPONENTSLOT_H_
+#define COMPONENTSLOT_H_
 
 #include "IngredientSlot.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
-class OptionalMixedSlot : public IngredientSlot {
+class ComponentSlot: public IngredientSlot {
 
-	TangibleObject* contents;
+	ManagedReference<TangibleObject* > contents;
 
 public:
-	OptionalMixedSlot() : IngredientSlot() {
+	ComponentSlot(String t, int quant, bool ident, bool option, int type) : IngredientSlot(t, quant) {
 
-		slottype = RESOURCESLOT;
+		slottype = type;
 		contents = NULL;
+		serial = "";
+		requiresIdentical = ident;
+		optional = option;
+
+		setLoggingName("ComponentSlot");
+
 	}
 
-	~OptionalMixedSlot() {
+	~ComponentSlot() {
 
 		cleanup();
 	}
 
 	inline void cleanup() {
 
-		if (contents != NULL) {
-			contents->finalize();
-		}
+		contents = NULL;
 	}
 
-	inline int size() {
+	inline int getQuantity() {
 
-		if (contents != NULL) {
-			int count = contents->getUseCount();
-			if (count == 0)
-				count = 1;
-			return count;
-		}
+		if (contents != NULL)
+			return contents->getUseCount();
 		else
 			return 0;
 	}
 
-	inline bool add(TangibleObject* tano) {
-/*
-		if(contents == NULL){
-			contents = tano;
-		} else {
-			if(tano->isComponent() && contents->isComponent()) {
+	inline bool add(PlayerCreature* player, TangibleObject* tano) {
 
-				TangibleObject* incomingComponent = (TangibleObject*) tano;
-				int contentsCount = contents->getObjectCount();
-				int incomingCount = incomingComponent->getObjectCount();
+		int itemsInSlot = getQuantity();
 
-				if(contentsCount == 0)
-					contentsCount = 1;
-				if(incomingCount == 0)
-					incomingCount = 1;
+		if(requiresIdentical && serial != "" && itemsInSlot > 0) {
+			if(tano->getCraftersSerial() != contents->getCraftersSerial())
+				return false;
+		}
 
-				contents->setObjectCount(contentsCount + incomingCount);
+		/// Must be a resource container to proceed
+		if (tano->isComponent() && itemsInSlot < requiredQuantity) {
+
+			if(serial = "")
+				serial = tano->getCraftersSerial();
+
+			ObjectManager* objectManager = ObjectManager::instance();
+
+			previousParent = tano->getParent();
+
+			bool removeFromParent = false;
+
+			int needs = requiredQuantity - itemsInSlot;
+
+			if (contents == NULL) {
+
+				if (needs <= tano->getUseCount()) {
+
+					contents = tano;
+					previousParent->removeObject(tano, true);
+
+				} else {
+
+					tano->setUseCount(tano->getUseCount() - needs, player);
+
+					contents = (TangibleObject*) objectManager->cloneObject(tano);
+					contents->setUseCount(needs, player);
+				}
+
+				contents->sendTo(player, true);
+				contents->sendAttributeListTo(player);
+
+			} else {
+
+				if (needs < tano->getUseCount()) {
+
+					tano->setUseCount(tano->getUseCount() - needs, player);
+					contents->setUseCount(contents->getUseCount() + needs, player);
+
+				} else {
+
+					contents->setUseCount(contents->getUseCount() + tano->getUseCount(), player);
+					previousParent->removeObject(tano, true);
+					tano = NULL;
+				}
 			}
-		}*/
 
-		return true;
+			return true;
+		}
+
+		return false;
 	}
 
-	inline void clear() {
+	inline bool remove(PlayerCreature* player) {
 
+		return returnObjectToParent();
+	}
+
+	inline bool returnObjectToParent() {
+
+		if(contents == NULL || previousParent == NULL)
+			return false;
+
+		previousParent->addObject(contents, -1, true);
 		contents = NULL;
+		return true;
 	}
 
 	inline TangibleObject* get() {
 
 		return (TangibleObject*) contents;
+	}
+
+	inline bool isComplete() {
+		return (contents->getUseCount() == requiredQuantity);
+	}
+
+	inline bool hasItem() {
+		return contents != NULL;
+	}
+
+	inline uint64 getObjectID() {
+		if(contents == NULL)
+			return 0;
+		else
+			return contents->getObjectID();
 	}
 
 	void toString() {
@@ -127,4 +192,4 @@ public:
 		}
 	}
 };
-#endif /*OPTIONALMIXEDSLOT_H_*/
+#endif /*COMPONENTSLOT_H_*/

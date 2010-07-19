@@ -254,7 +254,10 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 	/// pre: _this locked
 
 	if (manufactureSchematic != NULL) {
-		removeObject(manufactureSchematic);
+
+		if(manufactureSchematic->getParent() != NULL)
+			removeObject(manufactureSchematic);
+
 		manufactureSchematic->cleanupIngredientSlots();
 		manufactureSchematic->setDraftSchematic(NULL);
 		manufactureSchematic = NULL;
@@ -262,7 +265,10 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 
 	if (prototype != NULL) {
 		if(status == "@crafting:tool_status_ready") {
-			removeObject(prototype);
+
+			if(prototype->getParent() != NULL)
+				removeObject(prototype);
+
 			prototype = NULL;
 		}
 	}
@@ -275,9 +281,9 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 		state = 0;
 		dplay9->close();
 		player->sendMessage(dplay9);
-	}
 
-	player->setLastCraftingToolUsed(NULL);
+		player->setLastCraftingToolUsed(NULL);
+	}
 }
 
 void CraftingToolImplementation::closeCraftingWindow(PlayerCreature* player, int clientCounter) {
@@ -690,7 +696,7 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 
 	// Get the level of customization
 	String custskill = draftSchematic->getCustomizationSkill();
-	int custpoints = 0;//int(player->getSkillMod(custskill));
+	int custpoints = int(player->getSkillMod(custskill));
 
 	// Start DPLAY9 ***********************************************************
 	// Updates the stage of crafting, sets the number of experimentation points
@@ -718,6 +724,14 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 
 	// Update the prototype with new values
 	prototype->updateCraftingValues(manufactureSchematic->getCraftingValues());
+
+	// Set default customization
+	Vector<byte>* customizationOptions = draftSchematic->getCustomizationOptions();
+	Vector<byte>* customizationDefaultValues = draftSchematic->getCustomizationDefaultValues();
+
+	for (int i = 0; i < customizationOptions->size(); ++i) {
+		prototype->setCustomizationVariable(customizationOptions->get(i), customizationDefaultValues->get(i));
+	}
 
 	// Start DMSCO3 ***********************************************************
 	// Sends the updated values to the crafting screen
@@ -1060,30 +1074,24 @@ void CraftingToolImplementation::customization(PlayerCreature* player, String& n
 	manufactureSchematic->setManufactureLimit(schematicCount);
 
 	StringTokenizer tokenizer(customization);
-	byte customizationnumber, customizationvalue, customizationtype;
+	byte customizationindex, customizationvalue, customizationtype;
 
 	Database::escapeString(name);
 
 	UnicodeString customName(name);
 	prototype->setCustomObjectName(customName, false);
 
-	VectorMap<byte, byte> customizationMap;
-
+	Vector<byte>* customizationOptions = manufactureSchematic->getDraftSchematic()->getCustomizationOptions();
 
 		while (tokenizer.hasMoreTokens()) {
 
-			customizationnumber = tokenizer.getIntToken();
-			//customizationtype = manufactureSchematic->getCustomizationType(customizationnumber);
+			customizationindex = (byte)tokenizer.getIntToken();
+			customizationtype = customizationOptions->get(customizationindex);
 
-			customizationvalue = tokenizer.getIntToken();
+			customizationvalue = (byte)tokenizer.getIntToken();
 
-			customizationMap.put(customizationtype, customizationvalue);
+			prototype->setCustomizationVariable(customizationtype, customizationvalue);
 		}
-
-
-	for (int i = 0; i < customizationMap.size(); ++i) {
-		prototype->setCustomizationVariable(customizationMap.elementAt(i).getKey(), customizationMap.get(i));
-	}
 
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(prototype);
 	dtano3->updateName(name);
@@ -1303,7 +1311,7 @@ void CraftingToolImplementation::createObject(PlayerCreature* player,
 		}
 
 		if (timer < 0) {
-			timer2 += timer;// * 1000;
+			timer2 += (timer * 1000);
 			timer = 0;
 		}
 

@@ -51,10 +51,15 @@ class IngredientSlot : public Serializable, public Logger {
 
 protected:
 
-	int quantity;
+
+	String type;
+	int requiredQuantity;
 	int slottype;
 	String serial;
 	ManagedReference<SceneObject* > previousParent;
+
+	bool requiresIdentical;
+	bool optional;
 
 public:
 
@@ -97,8 +102,10 @@ public:
 	static const short WEIRDFAILEDMESSAGE = 0x1D; // Hey nonny nonny tra la la!
 
 public:
-	IngredientSlot(){
+	IngredientSlot(String t, int q){
 
+		type = t;
+		requiredQuantity = q;
 	}
 
 	~IngredientSlot(){

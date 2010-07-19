@@ -763,6 +763,8 @@ TangibleObjectImplementation::TangibleObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/TangibleObject.idl(136):  		faction = 0;
 	faction = 0;
+	// server/zone/objects/tangible/TangibleObject.idl(137):  		useCount = 1;
+	useCount = 1;
 	// server/zone/objects/tangible/TangibleObject.idl(138):  		Logger.setLoggingName("TangibleObject");
 	Logger::setLoggingName("TangibleObject");
 }
