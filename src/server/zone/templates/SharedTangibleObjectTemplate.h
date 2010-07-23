@@ -24,6 +24,8 @@ protected:
 
 	uint16 playerUseMask;
 
+	int level;
+
 	Vector<String> certificationsRequired;
 
 	int maxCondition;
@@ -70,6 +72,10 @@ public:
 
 	inline Vector<String> getCertificationsRequired() const {
 		return certificationsRequired;
+	}
+
+	inline int getLevel() const {
+		return level;
 	}
 
     inline uint16 getPlayerUseMask() const {

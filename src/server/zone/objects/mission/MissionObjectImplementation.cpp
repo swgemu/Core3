@@ -157,11 +157,15 @@ void MissionObjectImplementation::setRewardCredits(int creds, bool notifyClient)
 	}
 }
 
-void MissionObjectImplementation::setTargetTemplateCRC(uint32 crc, bool notifyClient) {
-	if (targetTemplateCRC == crc)
+SharedObjectTemplate* MissionObjectImplementation::getTargetTemplate() {
+	return targetTemplate;
+}
+
+void MissionObjectImplementation::setTargetTemplate(SharedObjectTemplate* templateObject, bool notifyClient) {
+	if (targetTemplate == templateObject)
 		return;
 
-	targetTemplateCRC = crc;
+	targetTemplate = templateObject;
 
 	if (!notifyClient)
 		return;
@@ -170,18 +174,33 @@ void MissionObjectImplementation::setTargetTemplateCRC(uint32 crc, bool notifyCl
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
-		delta->updateTemplateCRC(targetTemplateCRC);
+		delta->updateTemplateCRC(targetTemplate->getClientObjectCRC());
 		delta->close();
 
 		player->sendMessage(delta);
 	}
 }
 
-void MissionObjectImplementation::createWaypoint() {
+WaypointObject* MissionObjectImplementation::createWaypoint() {
 	waypointToMission = (WaypointObject*) getZoneServer()->createObject(0xc456e788, 1);
 	//obj->setPlanetCRC(planet.hashCode());
 	//obj->setPosition(positionX, 0, positionY);
 	waypointToMission->setActive(false);
+	waypointToMission->setColor(3);
+
+	return waypointToMission;
+}
+
+void MissionObjectImplementation::updateMissionLocation() {
+	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+
+	if (player != NULL) {
+		MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3((MissionObject*)_this);
+		dmiso3->updateWaypoint(waypointToMission);
+		dmiso3->close();
+
+		player->sendMessage(dmiso3);
+	}
 }
 
 void MissionObjectImplementation::updateToDatabaseAllObjects(bool startTask) {

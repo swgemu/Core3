@@ -103,56 +103,12 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(destructedObject);
 	despawn->schedule(10000);
 
-	disseminateExperience(destructor, destructedObject);
+	PlayerManager* playerManager = server->getPlayerManager();
+	playerManager->disseminateExperience(destructor, destructedObject, destructedObject->getDamageMap());
 
 	CombatManager::instance()->attemptPeace(destructedObject);
 
 	return 1;
-}
-
-void CreatureManagerImplementation::disseminateExperience(TangibleObject* destructor, AiAgent* creature) {
-	DamageMap* damageMap = creature->getDamageMap();
-
-	uint32 totalDamage = damageMap->getTotalDamage();
-
-	PlayerManager* playerManager = server->getPlayerManager();
-
-	int level = creature->getLevel();
-
-	//info("level: " + String::valueOf(level), true);
-
-	for (int i = 0; i < damageMap->size(); ++i) {
-		ManagedReference<PlayerCreature*> player = damageMap->elementAt(i).getKey();
-
-		DamageMapEntry* entry = &damageMap->elementAt(i).getValue();
-
-		Locker crossLocker(player, destructor);
-
-		uint32 totalPlayerDamage = 0;
-		uint32 playerWeaponXp = 0;
-
-		for (int j = 0; j < entry->size(); ++j) {
-			ManagedReference<WeaponObject*> weapon = entry->elementAt(j).getKey();
-
-			uint32 damage = entry->elementAt(j).getValue();
-
-			totalPlayerDamage += damage;
-
-			String xpType = weapon->getXpType();
-
-			int xpAmmount = (int) (float((float(damage) / float(totalDamage))) * 40.f * level);
-
-			//info("xpAmmount: " + String::valueOf(xpAmmount), true);
-
-			playerWeaponXp += xpAmmount;
-
-			playerManager->awardExperience(player, xpType, xpAmmount);
-		}
-
-		playerManager->awardExperience(player, "combat_general", playerWeaponXp / 10);
-	}
-
-	damageMap->removeAll();
 }
 
 void CreatureManagerImplementation::loadTrainers() {

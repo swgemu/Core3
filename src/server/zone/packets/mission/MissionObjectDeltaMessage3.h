@@ -121,6 +121,26 @@ public:
 		insertInt(crc);
 	}
 
+	void updateWaypoint(WaypointObject* way) {
+		startUpdate(0x10);
+
+		//Waypoint Info
+
+		way->insertToMessage(this);
+		/*
+		 * insertInt(0); // ?
+		insertFloat(miso->getDestX()); //x
+		insertFloat(miso->getDestZ()); //z
+		insertFloat(miso->getDestY()); //y
+		insertLong(0); //Target ID
+		insertInt(miso->getDestPlanetCrc()); //planet crc
+		UnicodeString title = "@" + miso->getTitleStf() + ":" + miso->getTitle();
+		insertUnicode(title); //Name
+		insertLong(miso->getWaypointID()); //waypoint obj id
+		insertByte(0x03); //color
+		insertByte(0x01); //active*/
+	}
+
 	//Description Key
 	/*void updateDescKey() {
 		startUpdate(0x04);

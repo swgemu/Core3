@@ -81,6 +81,20 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "system/util/SortedVector.h"
 
 namespace server {
@@ -105,6 +119,8 @@ public:
 	MissionObject* getMissionObject();
 
 	unsigned int getObjectiveType();
+
+	PlayerCreature* getPlayerOwner();
 
 protected:
 	MissionObjective(DummyConstructorParameter* param);
@@ -152,6 +168,8 @@ public:
 	MissionObject* getMissionObject();
 
 	unsigned int getObjectiveType();
+
+	PlayerCreature* getPlayerOwner();
 
 	MissionObjective* _this;
 
@@ -205,6 +223,8 @@ public:
 	MissionObject* getMissionObject();
 
 	unsigned int getObjectiveType();
+
+	PlayerCreature* getPlayerOwner();
 
 };
 

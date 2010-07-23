@@ -93,6 +93,10 @@ using namespace server::zone::objects::mission;
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -130,7 +134,7 @@ public:
 
 	MissionObject();
 
-	void createWaypoint();
+	WaypointObject* createWaypoint();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
@@ -154,13 +158,17 @@ public:
 
 	void setRewardCredits(int creds, bool notifyClient = true);
 
-	void setTargetTemplateCRC(unsigned int crc, bool notifyClient = true);
+	void setTargetTemplate(SharedObjectTemplate* templ, bool notifyClient = true);
 
 	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+
+	void updateMissionLocation();
 
 	void abort();
 
 	void setMissionObjective(MissionObjective* obj);
+
+	void setStartPlanetCRC(unsigned int crc);
 
 	float getStartPositionX();
 
@@ -186,7 +194,7 @@ public:
 
 	int getRefreshCounter();
 
-	unsigned int getTargetTemplateCRC();
+	SharedObjectTemplate* getTargetTemplate();
 
 	bool isSurveyMission();
 
@@ -244,7 +252,7 @@ protected:
 
 	String targetName;
 
-	unsigned int targetTemplateCRC;
+	TemplateReference<SharedObjectTemplate*> targetTemplate;
 
 public:
 	static const int DESTROY = 0x74EF9BE3;
@@ -273,7 +281,7 @@ public:
 
 	MissionObjectImplementation(DummyConstructorParameter* param);
 
-	void createWaypoint();
+	WaypointObject* createWaypoint();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
@@ -297,13 +305,17 @@ public:
 
 	void setRewardCredits(int creds, bool notifyClient = true);
 
-	void setTargetTemplateCRC(unsigned int crc, bool notifyClient = true);
+	void setTargetTemplate(SharedObjectTemplate* templ, bool notifyClient = true);
 
 	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+
+	void updateMissionLocation();
 
 	void abort();
 
 	void setMissionObjective(MissionObjective* obj);
+
+	void setStartPlanetCRC(unsigned int crc);
 
 	float getStartPositionX();
 
@@ -329,7 +341,7 @@ public:
 
 	int getRefreshCounter();
 
-	unsigned int getTargetTemplateCRC();
+	SharedObjectTemplate* getTargetTemplate();
 
 	bool isSurveyMission();
 
@@ -374,7 +386,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void createWaypoint();
+	WaypointObject* createWaypoint();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
@@ -398,13 +410,15 @@ public:
 
 	void setRewardCredits(int creds, bool notifyClient);
 
-	void setTargetTemplateCRC(unsigned int crc, bool notifyClient);
-
 	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient);
+
+	void updateMissionLocation();
 
 	void abort();
 
 	void setMissionObjective(MissionObjective* obj);
+
+	void setStartPlanetCRC(unsigned int crc);
 
 	float getStartPositionX();
 
@@ -425,8 +439,6 @@ public:
 	String getTargetName();
 
 	int getRefreshCounter();
-
-	unsigned int getTargetTemplateCRC();
 
 	bool isSurveyMission();
 

@@ -16,6 +16,7 @@
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
 #include "server/conf/ConfigManager.h"
@@ -918,6 +919,47 @@ void PlayerManagerImplementation::sendPlayerToCloner(PlayerCreature* player, uin
 	Zone* zone = player->getZone();
 
 	player->switchZone(zone->getZoneID(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
+}
+
+void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap) {
+	uint32 totalDamage = damageMap->getTotalDamage();
+
+	int level = destructedObject->getLevel();
+
+	//info("level: " + String::valueOf(level), true);
+
+	for (int i = 0; i < damageMap->size(); ++i) {
+		ManagedReference<PlayerCreature*> player = damageMap->elementAt(i).getKey();
+
+		DamageMapEntry* entry = &damageMap->elementAt(i).getValue();
+
+		Locker crossLocker(player, destructor);
+
+		uint32 totalPlayerDamage = 0;
+		uint32 playerWeaponXp = 0;
+
+		for (int j = 0; j < entry->size(); ++j) {
+			ManagedReference<WeaponObject*> weapon = entry->elementAt(j).getKey();
+
+			uint32 damage = entry->elementAt(j).getValue();
+
+			totalPlayerDamage += damage;
+
+			String xpType = weapon->getXpType();
+
+			int xpAmmount = (int) (float((float(damage) / float(totalDamage))) * 40.f * level);
+
+			//info("xpAmmount: " + String::valueOf(xpAmmount), true);
+
+			playerWeaponXp += xpAmmount;
+
+			awardExperience(player, xpType, xpAmmount);
+		}
+
+		awardExperience(player, "combat_general", playerWeaponXp / 10);
+	}
+
+	damageMap->removeAll();
 }
 
 bool PlayerManagerImplementation::checkEncumbrancies(PlayerCreature* player, ArmorObject* armor) {

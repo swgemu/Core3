@@ -55,6 +55,8 @@ using namespace server::zone::objects::tangible::lair;
 
 #include "server/zone/templates/tangible/LairObjectTemplate.h"
 
+#include "server/zone/objects/tangible/DamageMap.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -124,6 +126,8 @@ protected:
 	Vector<ManagedReference<CreatureObject* > > spawnedCreatures;
 
 	Reference<HealLairEvent*> healLairEvent;
+
+	DamageMap damageMap;
 
 public:
 	LairObjectImplementation();

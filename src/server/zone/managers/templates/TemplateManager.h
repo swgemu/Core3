@@ -9,15 +9,18 @@
 #define TEMPLATEMANAGER_H_
 
 #include "engine/engine.h"
-#include "TemplateCRCMap.h"
 
 #include "engine/util/ObjectFactory.h"
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+class TemplateCRCMap;
+class ClientTemplateCRCMap;
 
 class TemplateManager : public Singleton<TemplateManager>, public Logger {
-	TemplateCRCMap templateCRCMap;
+	TemplateCRCMap* templateCRCMap;
 
 	ObjectFactory<SharedObjectTemplate* (), uint32> templateFactory;
-	ClientTemplateCRCMap clientTemplateCRCMap;
+	ClientTemplateCRCMap* clientTemplateCRCMap;
 
 public:
 	static Lua* luaTemplatesInstance;
@@ -45,28 +48,11 @@ public:
 
 	void addTemplate(uint32 key, const String& fullName, LuaObject* templateData);
 
-	String getTemplateFile(uint32 key) {
-		SharedObjectTemplate* templateData = templateCRCMap.get(key);
+	String getTemplateFile(uint32 key);
 
-		if (templateData == NULL) {
-			String ascii = clientTemplateCRCMap.get(key);
+	SharedObjectTemplate* getTemplate(uint32 key);
 
-			if (ascii.isEmpty())
-				throw Exception("TemplateManager::getTemplateFile exception unknown template key 0x" + String::hexvalueOf((int)key));
-			else
-				return ascii;
-		}
-
-		return templateData->getFullTemplateString();
-	}
-
-	SharedObjectTemplate* getTemplate(uint32 key) {
-		return templateCRCMap.get(key);
-	}
-
-	bool existsTemplate(uint32 key) {
-		return templateCRCMap.containsKey(key);
-	}
+	bool existsTemplate(uint32 key);
 
 	// LUA
 	void registerFunctions();

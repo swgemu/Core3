@@ -54,6 +54,7 @@ import system.util.Vector;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.lair.HealLairEvent;
 import system.lang.ref.Reference;
+include server.zone.objects.tangible.DamageMap;
 
 class LairObject extends TangibleObject {
 	protected transient LairObjectTemplate lairTemplate;
@@ -63,6 +64,9 @@ class LairObject extends TangibleObject {
 	
 	@dereferenced
 	protected transient Reference<HealLairEvent> healLairEvent;
+	
+	@dereferenced
+	protected DamageMap damageMap;
 
 	public LairObject() {
 		lairTemplate = null;

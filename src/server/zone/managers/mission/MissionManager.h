@@ -69,6 +69,8 @@ using namespace server::zone;
 
 #include "engine/core/ManagedObject.h"
 
+#include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
+
 #include "server/zone/objects/scene/Observer.h"
 
 namespace server {
@@ -79,6 +81,8 @@ namespace mission {
 class MissionManager : public Observer {
 public:
 	MissionManager(ZoneServer* srv);
+
+	void loadLairObjectsToSpawn();
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
@@ -99,6 +103,8 @@ public:
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -126,10 +132,14 @@ class MissionManagerImplementation : public ObserverImplementation, public Logge
 protected:
 	ManagedWeakReference<ZoneServer* > server;
 
+	LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
+
 public:
 	MissionManagerImplementation(ZoneServer* srv);
 
 	MissionManagerImplementation(DummyConstructorParameter* param);
+
+	void loadLairObjectsToSpawn();
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
@@ -150,6 +160,8 @@ public:
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -192,6 +204,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void loadLairObjectsToSpawn();
+
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
@@ -211,6 +225,8 @@ public:
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 

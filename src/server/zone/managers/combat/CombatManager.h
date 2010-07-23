@@ -58,6 +58,14 @@ public:
 	bool attemptPeace(CreatureObject* attacker);
 
 	/**
+	 * Forces clear combat
+	 * @pre { attacker locked }
+	 * @post { attacker locked }
+	 * @param attacker CreatureObject clears combat
+	 */
+	void forcePeace(CreatureObject* attacker);
+
+	/**
 	 * Attempts combat action
 	 * @pre { attacker locked, defender unlocked }
 	 * @post { attacker locked, defender unlocked }

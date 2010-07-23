@@ -67,9 +67,9 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
 #include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
@@ -228,6 +228,8 @@ public:
 
 	unsigned int getOptionsBitmask();
 
+	int getLevel();
+
 	unsigned int getPvpStatusBitmask();
 
 	bool isTangibleObject();
@@ -300,6 +302,8 @@ protected:
 	int maxCondition;
 
 	int useCount;
+
+	short level;
 
 	unsigned int optionsBitmask;
 
@@ -460,6 +464,8 @@ public:
 
 	unsigned int getOptionsBitmask();
 
+	int getLevel();
+
 	unsigned int getPvpStatusBitmask();
 
 	bool isTangibleObject();
@@ -594,6 +600,8 @@ public:
 	float getComplexity();
 
 	unsigned int getOptionsBitmask();
+
+	int getLevel();
 
 	unsigned int getPvpStatusBitmask();
 

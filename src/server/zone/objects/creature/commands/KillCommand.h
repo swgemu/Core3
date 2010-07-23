@@ -46,6 +46,7 @@ which carries forward this exception.
 #define KILLCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 
 class KillCommand : public QueueCommand {
 public:
@@ -66,6 +67,18 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		ManagedReference<TangibleObject*> targetToKill = NULL;
+
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
+		if (obj == NULL || !obj->isTangibleObject())
+			return INVALIDTARGET;
+
+		targetToKill = (TangibleObject*) obj.get();
+
+		Locker clocker(targetToKill, creature);
+
+		targetToKill->inflictDamage(creature, 0, 99999999, true, true);
 
 		return SUCCESS;
 	}

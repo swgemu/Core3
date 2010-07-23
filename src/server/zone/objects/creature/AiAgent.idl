@@ -59,10 +59,10 @@ import server.zone.objects.tangible.weapon.WeaponObject;
 include server.zone.templates.tangible.NonPlayerCreatureObjectTemplate;
 include server.zone.objects.creature.PatrolPointsVector;
 include server.zone.objects.creature.PatrolPoint;
-include server.zone.objects.creature.DamageMap;
 import engine.core.ManagedObject;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.tangible.DamageMap;
 import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
 
 class AiAgent extends CreatureObject {
@@ -131,7 +131,7 @@ class AiAgent extends CreatureObject {
 	
 	public abstract native void activateMovementEvent();
 	
-	public native void retreat();
+	public native boolean tryRetreat();
 	
 	public native void doRecovery();
 	
@@ -221,6 +221,14 @@ class AiAgent extends CreatureObject {
 	 */
 	public native void removeDefender(SceneObject defender);
 	
+	public native void setDespawnOnNoPlayerInRange(boolean val);
+	
+	public void setHomeLocation(float x, float z, float y, SceneObject cell = null) {
+		homeLocation.setPosition(x, z, y);
+		homeLocation.setCell(cell);
+		homeLocation.setReached(true);
+	}
+	
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
 	 * @pre { this object is locked }
@@ -229,6 +237,9 @@ class AiAgent extends CreatureObject {
 	 */
 	public boolean isAttackableBy(CreatureObject object) {
 		if (object == this)
+			return false;
+		
+		if (this.isRetreating())
 			return false;
 		
 		if (this.isDead())
@@ -247,12 +258,11 @@ class AiAgent extends CreatureObject {
 		}
 	}
 	
-	public native void clearDespawnEvent();
-	
-	@local
-	public DamageMap getDamageMap() {
-		return damageMap;
+	public boolean isRetreating() {
+		return !homeLocation.isReached();
 	}
+	
+	public native void clearDespawnEvent();
 	
 	public float getKinetic() {
 		if (npcTemplate == null)
@@ -405,17 +415,22 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.getArmor();
 	}
 	
+	public boolean getDespawnOnNoPlayerInRange() {
+		return despawnOnNoPlayerInRange;
+	}
+	
 	public int getNumberOfPlayersInRange() {
 		return numberOfPlayersInRange;
 	}
 	
 	@local
-	public PatrolPoint getHomeLocation() {
-		return homeLocation;
+	public DamageMap getDamageMap() {
+		return damageMap;
 	}
 	
-	public void setDespawnOnNoPlayerInRange(boolean val) {
-		despawnOnNoPlayerInRange = val;
+	@local
+	public PatrolPoint getHomeLocation() {
+		return homeLocation;
 	}
 
 	public native boolean hasOrganics();

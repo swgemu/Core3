@@ -6,6 +6,7 @@
  */
 
 #include "TemplateManager.h"
+#include "TemplateCRCMap.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedConstructionContractObjectTemplate.h"
@@ -62,15 +63,24 @@ TemplateManager::TemplateManager() {
 	luaTemplatesInstance = new Lua();
 	luaTemplatesInstance->init();
 
+	templateCRCMap = new TemplateCRCMap();
+	clientTemplateCRCMap = new ClientTemplateCRCMap();
+
 	registerFunctions();
 	registerGlobals();
 }
 
 TemplateManager::~TemplateManager() {
-	HashTableIterator<uint32, SharedObjectTemplate*> iterator(&templateCRCMap);
+	/*HashTableIterator<uint32, SharedObjectTemplate*> iterator(&templateCRCMap);
 
 	while (iterator.hasNext())
-		delete iterator.getNextValue();
+		delete iterator.getNextValue();*/
+
+	delete templateCRCMap;
+	templateCRCMap = NULL;
+
+	delete clientTemplateCRCMap;
+	clientTemplateCRCMap = NULL;
 
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = NULL;
@@ -94,7 +104,7 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 
 	//info("loaded " + fullName);
 
-	if (templateCRCMap.put(key, templateObject) != NULL) {
+	if (templateCRCMap->put(key, templateObject) != NULL) {
 		error("duplicate template for " + fullName);
 	}
 }
@@ -248,6 +258,29 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("LAIRTEMPLATE", SharedObjectTemplate::LAIRTEMPLATE);
 }
 
+String TemplateManager::getTemplateFile(uint32 key) {
+	SharedObjectTemplate* templateData = templateCRCMap->get(key);
+
+	if (templateData == NULL) {
+		String ascii = clientTemplateCRCMap->get(key);
+
+		if (ascii.isEmpty())
+			throw Exception("TemplateManager::getTemplateFile exception unknown template key 0x" + String::hexvalueOf((int)key));
+		else
+			return ascii;
+	}
+
+	return templateData->getFullTemplateString();
+}
+
+SharedObjectTemplate* TemplateManager::getTemplate(uint32 key) {
+	return templateCRCMap->get(key);
+}
+
+bool TemplateManager::existsTemplate(uint32 key) {
+	return templateCRCMap->containsKey(key);
+}
+
 int TemplateManager::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
 
@@ -285,7 +318,7 @@ int TemplateManager::addClientTemplate(lua_State* L) {
 
 	uint32 crc = (uint32) ascii.hashCode();
 
-	TemplateManager::instance()->clientTemplateCRCMap.put(crc, ascii);
+	TemplateManager::instance()->clientTemplateCRCMap->put(crc, ascii);
 
 	return 0;
 }

@@ -226,16 +226,21 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 	if (!destroyContainedObjects)
 		return;
 
+	SortedVector<ManagedReference<SceneObject*> > destroyedObjects;
+	destroyedObjects.setNoDuplicateInsertPlan();
+
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		ManagedReference<SceneObject*> object = slottedObjects.get(i);
 
-		object->destroyObjectFromDatabase(true);
+		if (destroyedObjects.put(object) != -1)
+			object->destroyObjectFromDatabase(true);
 	}
 
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		ManagedReference<SceneObject*> object = containerObjects.get(j);
 
-		object->destroyObjectFromDatabase(true);
+		if (destroyedObjects.put(object) != -1)
+			object->destroyObjectFromDatabase(true);
 	}
 }
 
@@ -1073,6 +1078,17 @@ Vector3 SceneObjectImplementation::getWorldPosition() {
 	Vector3 position(posX, posY, posZ);
 
 	return position;
+}
+
+Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegrees) {
+	float angleRads = angleDegrees * (M_PI / 180.0f);
+	float newAngle = angleRads + direction.getRadians();
+
+	float newX = positionX + (cos(newAngle) * distance); // client has x/y inverted
+	float newY = positionY + (sin(newAngle) * distance);
+	float newZ = zone->getHeight(newX, newY);
+
+	return Vector3(newX, newY, newZ);
 }
 
 float SceneObjectImplementation::getWorldPositionX() {

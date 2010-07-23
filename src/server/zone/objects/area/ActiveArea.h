@@ -25,6 +25,20 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveAreaEvent;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "engine/util/QuadTreeEntry.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -39,6 +53,10 @@ public:
 	ActiveArea();
 
 	void sendTo(SceneObject* player, bool doClose);
+
+	void enqueueEnterEvent(SceneObject* obj);
+
+	void enqueueExitEvent(SceneObject* obj);
 
 	void notifyEnter(SceneObject* object);
 
@@ -90,6 +108,10 @@ public:
 	ActiveAreaImplementation(DummyConstructorParameter* param);
 
 	void sendTo(SceneObject* player, bool doClose);
+
+	void enqueueEnterEvent(SceneObject* obj);
+
+	void enqueueExitEvent(SceneObject* obj);
 
 	virtual void notifyEnter(SceneObject* object);
 
@@ -149,6 +171,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void sendTo(SceneObject* player, bool doClose);
+
+	void enqueueEnterEvent(SceneObject* obj);
+
+	void enqueueExitEvent(SceneObject* obj);
 
 	void notifyEnter(SceneObject* object);
 

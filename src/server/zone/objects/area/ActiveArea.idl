@@ -46,6 +46,7 @@ package server.zone.objects.area;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.area.ActiveAreaEvent;
 include engine.util.QuadTreeEntry;
 
 class ActiveArea extends SceneObject {
@@ -69,6 +70,9 @@ class ActiveArea extends SceneObject {
 	public native void sendTo(SceneObject player, boolean doClose) {
 		
 	}
+	
+	public native void enqueueEnterEvent(SceneObject obj);
+	public native void enqueueExitEvent(SceneObject obj);
 	
 	public abstract void notifyEnter(SceneObject object) {
 		

@@ -7,6 +7,7 @@
 
 #include "MissionObjective.h"
 #include "MissionObserver.h"
+#include "MissionObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
@@ -17,5 +18,11 @@ void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	}
 
 	ObjectManager::instance()->destroyObjectFromDatabase(_this->_getObjectID());
+}
+
+PlayerCreature* MissionObjectiveImplementation::getPlayerOwner() {
+	PlayerCreature* player = (PlayerCreature*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
+
+	return player;
 }
 

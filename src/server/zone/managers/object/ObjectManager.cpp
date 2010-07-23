@@ -77,6 +77,7 @@
 
 #include "server/zone/objects/area/BadgeActiveArea.h"
 #include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/area/MissionSpawnActiveArea.h"
 
 #include "server/db/ServerDatabase.h"
 
@@ -125,6 +126,7 @@ void ObjectManager::registerObjectTypes() {
 	//objectFactory.registerObject<SceneObject>(0);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERALTANGIBLEOBJECT);
 	objectFactory.registerObject<BadgeActiveArea>(SceneObject::BADGEAREA);
+	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObject::MISSIONSPAWNAREA);
 	objectFactory.registerObject<Region>(SceneObject::REGIONAREA);
 	objectFactory.registerObject<StaticObject>(SceneObject::STATICOBJECT);
 	objectFactory.registerObject<Creature>(SceneObject::CREATURE);
