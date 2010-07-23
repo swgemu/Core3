@@ -20,6 +20,8 @@
 
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
 
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"

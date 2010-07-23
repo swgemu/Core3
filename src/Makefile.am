@@ -66,6 +66,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/scene/Observable.cpp \
 				server/zone/objects/area/ActiveArea.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
+				server/zone/objects/area/MissionSpawnActiveArea.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \
 				server/zone/objects/staticobject/StaticObject.cpp \
@@ -164,6 +165,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/mission/MissionObjective.cpp \
 				server/zone/objects/mission/SurveyMissionObjective.cpp \
+				server/zone/objects/mission/GeneralMissionObjective.cpp \
 				server/zone/objects/mission/MissionObserver.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
@@ -243,7 +245,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/NonPlayerCreatureObjectImplementation.cpp \
 		server/zone/objects/creature/AiAgentImplementation.cpp \
-		server/zone/objects/creature/DamageMap.cpp \
+		server/zone/objects/tangible/DamageMap.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
 		server/zone/objects/creature/buffs/BuffImplementation.cpp \
@@ -312,6 +314,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		server/zone/objects/mission/MissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/SurveyMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/GeneralMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \

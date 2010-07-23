@@ -408,6 +408,8 @@ public:
 
 	bool hasAttackDelay();
 
+	void updateLastSuccessfulCombatAction();
+
 	void updateKnockdownRecovery();
 
 	void queueDizzyFallEvent();
@@ -497,8 +499,6 @@ public:
 	float getRunAcceleration();
 
 	float getWalkAcceleration();
-
-	int getLevel();
 
 	String getPerformanceAnimation();
 
@@ -691,8 +691,6 @@ protected:
 
 	unsigned long long listenToID;
 
-	short level;
-
 	String performanceAnimation;
 
 	String moodString;
@@ -736,6 +734,8 @@ protected:
 	BuffList creatureBuffs;
 
 	DamageOverTimeList damageOverTimeList;
+
+	Time lastSuccessfulCombatAction;
 
 public:
 	static const int HUMAN = 0;
@@ -940,6 +940,8 @@ public:
 
 	bool hasAttackDelay();
 
+	void updateLastSuccessfulCombatAction();
+
 	void updateKnockdownRecovery();
 
 	void queueDizzyFallEvent();
@@ -1029,8 +1031,6 @@ public:
 	float getRunAcceleration();
 
 	float getWalkAcceleration();
-
-	int getLevel();
 
 	String getPerformanceAnimation();
 
@@ -1351,6 +1351,8 @@ public:
 
 	bool hasAttackDelay();
 
+	void updateLastSuccessfulCombatAction();
+
 	void updateKnockdownRecovery();
 
 	void queueDizzyFallEvent();
@@ -1432,8 +1434,6 @@ public:
 	float getRunAcceleration();
 
 	float getWalkAcceleration();
-
-	int getLevel();
 
 	String getPerformanceAnimation();
 

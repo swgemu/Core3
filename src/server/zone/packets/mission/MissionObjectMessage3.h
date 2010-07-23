@@ -99,7 +99,11 @@ public:
 		insertInt(0);//insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
 
 		//Target Object IFF crc
-		insertInt(mi->getTargetTemplateCRC());
+		SharedObjectTemplate* templateObject = mi->getTargetTemplate();
+		if (templateObject != NULL)
+			insertInt(templateObject->getClientObjectCRC());
+		else
+			insertInt(0);
 
 		//Mission Description
 		StringId* strId = mi->getMissionDescription();

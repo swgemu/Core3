@@ -10,10 +10,41 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/SurveyMissionObjective.h"
+#include "server/zone/objects/mission/GeneralMissionObjective.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/templates/tangible/LairObjectTemplate.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/Zone.h"
+#include "server/db/ServerDatabase.h"
+
+void MissionManagerImplementation::loadLairObjectsToSpawn() {
+	info("loading lair objects to spawn...", true);
+
+	String query = "SELECT * FROM mission_manager_spawn_lairs";
+
+	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+	while (res->next()) {
+		String templateObject = res->getString(1);
+		String planets = res->getString(2);
+
+		StringTokenizer tokenizer(planets);
+		tokenizer.setDelimeter((","));
+
+		while (tokenizer.hasMoreTokens()) {
+			int planetID = tokenizer.getIntToken();
+
+			lairObjectTemplatesToSpawn.addTemplate(planetID, templateObject.hashCode());
+		}
+	}
+
+	delete res;
+
+	/*StringBuffer msg;
+	msg << "loaded " << lairObjectTemplatesToSpawn.size() << " lairs to spawn";
+	info(msg.toString(), true);*/
+}
 
 void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
 	SceneObject* missionBag = player->getSlottedObject("mission_bag");
@@ -102,8 +133,18 @@ bool MissionManagerImplementation::hasSurveyMission(PlayerCreature* player, cons
 	return false;
 }
 
+void MissionManagerImplementation::createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	ManagedReference<GeneralMissionObjective*> objective = new GeneralMissionObjective(mission);
+	objective->setLairTemplateToSpawn(mission->getTargetTemplate());
+
+	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
+
+	mission->setMissionObjective(objective);
+	objective->activate();
+}
+
 void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	ManagedReference<SurveyMissionObjective*> objective = new  SurveyMissionObjective(mission);
+	ManagedReference<SurveyMissionObjective*> objective = new SurveyMissionObjective(mission);
 	objective->setEfficiency(mission->getDifficultyLevel());
 
 	String spawnName = mission->getTargetName();
@@ -128,8 +169,11 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 	uint32 missionType = mission->getTypeCRC();
 
 	switch (missionType) {
-	case 0x19C9FAC1: // survey
+	case MissionObject::SURVEY: // survey
 		createSurveyMissionObjectives(mission, missionTerminal, player);
+		break;
+	case MissionObject::DESTROY:
+		createGeneralMissionObjectives(mission, missionTerminal, player);
 		break;
 	default:
 		break;
@@ -172,6 +216,32 @@ void MissionManagerImplementation::populateGeneralMissionList(MissionTerminal* m
 void MissionManagerImplementation::randomizeGeneralMission(PlayerCreature* player, MissionObject* mission) {
 
 	//String mission = "mission/mission_destroy_neutral_easy_creature_naboo";
+	int zoneID = player->getZone()->getZoneID();
+
+	uint32 templateCRC = lairObjectTemplatesToSpawn.getRandomTemplate(zoneID);
+	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(templateCRC);
+
+	if (templateObject == NULL || !templateObject->isLairObjectTemplate()) {
+		error("incorrect template object in randomizeGeneralMission " + String::valueOf(templateCRC));
+		return;
+	}
+
+	LairObjectTemplate* lairObjectTemplate = (LairObjectTemplate*) templateObject;
+
+	int randTexts = System::random(35);
+
+	Vector3 startPos = player->getCoordinate(System::random(1000) + 700, (float)System::random(360));
+	//mission->setMissionTarget(lairObjectTemplate->getObjectName());
+	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
+	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getPlanetCRC());
+
+	mission->setMissionTargetName(lairObjectTemplate->getObjectName());
+	mission->setTargetTemplate(lairObjectTemplate);
+	mission->setRewardCredits(500 + System::random(500));
+
+	mission->setMissionDifficulty(5);
+	mission->setMissionTitle("mission/mission_destroy_neutral_easy_creature", "m" + String::valueOf(randTexts) + "t");
+	mission->setMissionDescription("mission/mission_destroy_neutral_easy_creature", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(0x74EF9BE3);
 }
@@ -227,10 +297,6 @@ void MissionManagerImplementation::randomizeSurveyMission(PlayerCreature* player
 	uint32 containerCRC = spawn->getContainerCRC();
 	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(containerCRC);
 
-	if (templateObject != NULL) {
-		containerCRC = templateObject->getClientObjectCRC();
-	}
-
 	int texts = System::random(50);
 
 	if (texts == 0)
@@ -239,7 +305,7 @@ void MissionManagerImplementation::randomizeSurveyMission(PlayerCreature* player
 	//mission->setMissionTarget(spawn);
 	//mission->setStartPosition(0, 0, player->getPlanetCRC());
 	mission->setMissionTargetName(spawn->getName());
-	mission->setTargetTemplateCRC(containerCRC);
+	mission->setTargetTemplate(templateObject);
 	mission->setRewardCredits(500 + System::random(500));
 	mission->setMissionDifficulty(randLevel);
 	mission->setMissionTitle("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "t");

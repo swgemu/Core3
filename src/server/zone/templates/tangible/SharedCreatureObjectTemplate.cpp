@@ -27,7 +27,6 @@ void SharedCreatureObjectTemplate::readObject(LuaObject* templateData) {
 	collisionOffsetZ = templateData->getFloatField("collisionOffsetZ");
 	collisionLength = templateData->getFloatField("collisionLength");
 	cameraHeight = templateData->getFloatField("cameraHeight");
-	level = templateData->getIntField("level");
 
 	animationMapFilename = templateData->getStringField("animationMapFilename");
 	movementDatatable = templateData->getStringField("movementDatatable");

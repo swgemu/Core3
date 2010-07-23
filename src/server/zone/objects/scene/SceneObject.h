@@ -594,6 +594,8 @@ public:
 
 	static const int REGIONAREA = 0x200001;
 
+	static const int MISSIONSPAWNAREA = 0x200002;
+
 	SceneObject();
 
 	void initializePrivateData();
@@ -733,6 +735,8 @@ public:
 	unsigned long long getObjectID();
 
 	Vector3 getPosition();
+
+	Vector3 getCoordinate(float distance, float angleDegrees);
 
 	float getWorldPositionX();
 
@@ -1411,6 +1415,8 @@ public:
 
 	static const int REGIONAREA = 0x200001;
 
+	static const int MISSIONSPAWNAREA = 0x200002;
+
 	SceneObjectImplementation();
 
 	SceneObjectImplementation(DummyConstructorParameter* param);
@@ -1554,6 +1560,8 @@ public:
 	unsigned long long getObjectID();
 
 	Vector3 getPosition();
+
+	Vector3 getCoordinate(float distance, float angleDegrees);
 
 	float getWorldPositionX();
 

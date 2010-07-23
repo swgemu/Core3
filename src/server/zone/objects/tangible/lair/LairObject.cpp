@@ -217,28 +217,29 @@ void LairObjectImplementation::_serializationHelperMethod() {
 	_setClassName("LairObject");
 
 	addSerializableVariable("spawnedCreatures", &spawnedCreatures);
+	addSerializableVariable("damageMap", &damageMap);
 }
 
 LairObjectImplementation::LairObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/lair/LairObject.idl(68):  		lairTemplate = null;
+	// server/zone/objects/tangible/lair/LairObject.idl(72):  		lairTemplate = null;
 	lairTemplate = NULL;
-	// server/zone/objects/tangible/lair/LairObject.idl(70):  		Logger.setLoggingName("LairObject");
+	// server/zone/objects/tangible/lair/LairObject.idl(74):  		Logger.setLoggingName("LairObject");
 	Logger::setLoggingName("LairObject");
 }
 
 bool LairObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/tangible/lair/LairObject.idl(106):  		return true;
+	// server/zone/objects/tangible/lair/LairObject.idl(110):  		return true;
 	return true;
 }
 
 int LairObjectImplementation::getMaxObjectsToSpawn() {
-	// server/zone/objects/tangible/lair/LairObject.idl(110):  		return lairTemplate.getMaxObjectsToSpawn();
+	// server/zone/objects/tangible/lair/LairObject.idl(114):  		return lairTemplate.getMaxObjectsToSpawn();
 	return lairTemplate->getMaxObjectsToSpawn();
 }
 
 SortedVector<unsigned int>* LairObjectImplementation::getObjectsToSpawn() {
-	// server/zone/objects/tangible/lair/LairObject.idl(115):  		return lairTemplate.getObjectsToSpawn();
+	// server/zone/objects/tangible/lair/LairObject.idl(119):  		return lairTemplate.getObjectsToSpawn();
 	return lairTemplate->getObjectsToSpawn();
 }
 

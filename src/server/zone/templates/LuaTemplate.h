@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class LuaTemplate {
+class LuaTemplate : public virtual Object {
 public:
 	virtual void readObject(LuaObject* templateData) = 0;
 

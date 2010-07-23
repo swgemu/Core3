@@ -14,6 +14,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	MissionObjectiveStub
  */
@@ -119,6 +121,18 @@ unsigned int MissionObjective::getObjectiveType() {
 		return ((MissionObjectiveImplementation*) _impl)->getObjectiveType();
 }
 
+PlayerCreature* MissionObjective::getPlayerOwner() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return (PlayerCreature*) method.executeWithObjectReturn();
+	} else
+		return ((MissionObjectiveImplementation*) _impl)->getPlayerOwner();
+}
+
 /*
  *	MissionObjectiveImplementation
  */
@@ -193,14 +207,14 @@ void MissionObjectiveImplementation::_serializationHelperMethod() {
 
 MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* parent) {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObjective.idl(64):  		mission = parent;
+	// server/zone/objects/mission/MissionObjective.idl(65):  		mission = parent;
 	mission = parent;
-	// server/zone/objects/mission/MissionObjective.idl(66):  		Logger.setLoggingName("MissionObjective");
+	// server/zone/objects/mission/MissionObjective.idl(67):  		Logger.setLoggingName("MissionObjective");
 	Logger::setLoggingName("MissionObjective");
 }
 
 int MissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/mission/MissionObjective.idl(77):  		return 1;
+	// server/zone/objects/mission/MissionObjective.idl(78):  		return 1;
 	return 1;
 }
 
@@ -214,12 +228,12 @@ void MissionObjectiveImplementation::complete() {
 }
 
 MissionObject* MissionObjectiveImplementation::getMissionObject() {
-	// server/zone/objects/mission/MissionObjective.idl(93):  		return mission;
+	// server/zone/objects/mission/MissionObjective.idl(94):  		return mission;
 	return mission;
 }
 
 unsigned int MissionObjectiveImplementation::getObjectiveType() {
-	// server/zone/objects/mission/MissionObjective.idl(97):  		return objectiveType;
+	// server/zone/objects/mission/MissionObjective.idl(98):  		return objectiveType;
 	return objectiveType;
 }
 
@@ -255,6 +269,9 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case 12:
 		resp->insertInt(getObjectiveType());
 		break;
+	case 13:
+		resp->insertLong(getPlayerOwner()->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -288,6 +305,10 @@ MissionObject* MissionObjectiveAdapter::getMissionObject() {
 
 unsigned int MissionObjectiveAdapter::getObjectiveType() {
 	return ((MissionObjectiveImplementation*) impl)->getObjectiveType();
+}
+
+PlayerCreature* MissionObjectiveAdapter::getPlayerOwner() {
+	return ((MissionObjectiveImplementation*) impl)->getPlayerOwner();
 }
 
 /*

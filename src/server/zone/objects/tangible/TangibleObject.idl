@@ -56,8 +56,8 @@ import server.zone.objects.creature.CreatureObject;
 
 include server.zone.objects.scene.variables.CustomizationVariables;
 include server.zone.objects.scene.variables.DeltaVector;
-include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -73,6 +73,8 @@ class TangibleObject extends SceneObject {
 	protected int conditionDamage;
 	protected int maxCondition;
 	protected int useCount;
+	
+	protected short level;
 	
 	protected unsigned int optionsBitmask;
 	protected unsigned int pvpStatusBitmask;
@@ -134,7 +136,9 @@ class TangibleObject extends SceneObject {
 	 */
 	public TangibleObject() {
 		faction = 0;
+		level = 1;
 		useCount = 1;
+		
 		Logger.setLoggingName("TangibleObject");
 	}
 	
@@ -379,6 +383,10 @@ class TangibleObject extends SceneObject {
 	
 	public unsigned int getOptionsBitmask() {
 		return optionsBitmask;
+	}
+	
+	public int getLevel() {
+		return level;
 	}
 	
 	public unsigned int getPvpStatusBitmask() {

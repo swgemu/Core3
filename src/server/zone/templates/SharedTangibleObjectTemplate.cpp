@@ -25,6 +25,7 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 	playerUseMask = templateData->getShortField("playerUseMask");
 
 	maxCondition = templateData->getIntField("maxCondition");
+	level = templateData->getIntField("level");
 
 	optionsBitmask = templateData->getIntField("optionsBitmask");
 	pvpStatusBitmask = templateData->getIntField("pvpStatusBitmask");

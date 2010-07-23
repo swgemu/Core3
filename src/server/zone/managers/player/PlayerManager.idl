@@ -63,6 +63,7 @@ import server.zone.ZoneServer;
 import server.zone.objects.tangible.wearables.ArmorObject;
 
 include server.zone.managers.player.StartingItemList;
+include server.zone.objects.tangible.DamageMap;
 
 class PlayerManager extends ManagedObject implements Logger {
 	transient ZoneProcessServerImplementation processor;
@@ -128,6 +129,9 @@ class PlayerManager extends ManagedObject implements Logger {
 	public native void handleUnAcceptTransactionMessage(PlayerCreature player);
 	public native void handleVerifyTradeMessage(PlayerCreature player);
 	public native boolean checkTradeItems(PlayerCreature player, PlayerCreature receiver);
+	
+	@local
+	public native void disseminateExperience(TangibleObject destructor, TangibleObject destructedObject, DamageMap damageMap);
 	
 	public native void sendMessageOfTheDay(PlayerCreature player);
 	

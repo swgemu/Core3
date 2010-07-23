@@ -116,8 +116,6 @@ class CreatureObject extends TangibleObject {
 	
 	protected unsigned long listenToID;
 	
-	protected short level;
-	
 	protected string performanceAnimation;
 	protected string moodString;
 	
@@ -164,6 +162,9 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected DamageOverTimeList damageOverTimeList;
 	
+	@dereferenced
+	protected Time lastSuccessfulCombatAction;
+	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
 	public static final int TRANDOSHAN = 2;
@@ -191,8 +192,6 @@ class CreatureObject extends TangibleObject {
 		
 		linkedCreature = null;
 		controlDevice = null;
-		
-		level = 0;
 		
 		skillModList.setNullValue(0);
 	}
@@ -737,6 +736,10 @@ class CreatureObject extends TangibleObject {
 		return !cooldownTimerMap.isPast("nextAttackDelay");
 	}
 	
+	public void updateLastSuccessfulCombatAction() {
+		lastSuccessfulCombatAction.updateToCurrentTime();
+	}
+	
 	public void updateKnockdownRecovery() {
 		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 30000);
 	}
@@ -910,10 +913,6 @@ class CreatureObject extends TangibleObject {
 	
 	public float getWalkAcceleration() {
 		return walkAcceleration;
-	}
-	
-	public int getLevel() {
-		return level;
 	}
 	
 	public string getPerformanceAnimation() {

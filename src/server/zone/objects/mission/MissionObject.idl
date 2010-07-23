@@ -51,10 +51,12 @@ import server.zone.objects.waypoint.WaypointObject;
 import server.zone.Zone;
 
 include server.zone.objects.scene.variables.StringId;
+include server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.player.PlayerCreature;
 import system.util.SortedVector;
 import server.zone.objects.mission.MissionObjective;
+include server.zone.templates.TemplateReference;
 
 class MissionObject extends IntangibleObject {
 	protected WaypointObject waypointToMission;
@@ -80,7 +82,9 @@ class MissionObject extends IntangibleObject {
 	
 	protected string targetName;
 	
-	protected unsigned int targetTemplateCRC;	
+	//protected unsigned int targetTemplateCRC;
+	@dereferenced
+	protected TemplateReference<SharedObjectTemplate> targetTemplate;
 	
 	public static final int DESTROY = 0x74EF9BE3;
 	public static final int BOUNTY = 0x2904F372;
@@ -99,7 +103,8 @@ class MissionObject extends IntangibleObject {
 		
 		refreshCounter = 0;
 		
-		targetTemplateCRC = 2640304325;
+		//targetTemplateCRC = 2640304325;
+		//targetTemplate = null;
 		
 		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
 		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
@@ -115,7 +120,7 @@ class MissionObject extends IntangibleObject {
 		Logger.setLoggingName("MissionObject");
 	}
 	
-	public native void createWaypoint();
+	public native WaypointObject createWaypoint();
 	
 	/**
 	 * Destroys this object from database
@@ -144,9 +149,12 @@ class MissionObject extends IntangibleObject {
 	public native void setMissionTargetName(final string target, boolean notifyClient = true);
 	public native void setMissionDifficulty(int difficulty, boolean notifyClient = true);
 	public native void setRewardCredits(int creds, boolean notifyClient = true);
-	public native void setTargetTemplateCRC(unsigned int crc, boolean notifyClient = true);
+	@local
+	public native void setTargetTemplate(SharedObjectTemplate templ, boolean notifyClient = true);
 	//public native void setMissionTarget(SceneObject target);
 	public native void setStartPosition(float posX, float posY, unsigned int planetCRC, boolean notifyClient = true);
+	
+	public native void updateMissionLocation();
 	
 	public void abort() {
 		if (missionObjective != null)
@@ -155,6 +163,10 @@ class MissionObject extends IntangibleObject {
 	
 	public void setMissionObjective(MissionObjective obj) {
 		missionObjective = obj;
+	}
+	
+	public void setStartPlanetCRC(unsigned int crc) {
+		startPlanetCRC = crc;
 	}
 	
 	public float getStartPositionX() {
@@ -211,9 +223,8 @@ class MissionObject extends IntangibleObject {
 		return refreshCounter;
 	}
 	
-	public unsigned int getTargetTemplateCRC() {
-		return targetTemplateCRC;
-	}
+	@local
+	public native SharedObjectTemplate getTargetTemplate();
 	
 	public boolean isSurveyMission() {
 		return typeCRC == this.SURVEY;

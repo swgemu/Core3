@@ -115,6 +115,40 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 	}
 }
 
+void CombatManager::forcePeace(CreatureObject* attacker) {
+	DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
+
+	for (int i = 0; i < defenderList->size(); ++i) {
+		ManagedReference<SceneObject*> object = defenderList->get(i);
+
+		if (!object->isTangibleObject())
+			continue;
+
+		TangibleObject* defender = (TangibleObject*) object.get();
+
+		try {
+			Locker clocker(defender, attacker);
+
+			if (defender->hasDefender(attacker)) {
+				attacker->removeDefender(defender);
+				defender->removeDefender(attacker);
+			} else {
+				attacker->removeDefender(defender);
+			}
+
+			--i;
+
+			clocker.release();
+
+		} catch (...) {
+			error("unknown exception in PlayerImplementation::doPeace()\n");
+		}
+
+	}
+
+	attacker->clearCombatState(false);
+}
+
 int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command) {
 	//info("entering doCombat action", true);
 
@@ -169,6 +203,9 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	if (!effect.isEmpty())
 		attacker->playEffect(effect);
+
+	if (hit == 1)
+		attacker->updateLastSuccessfulCombatAction();
 
 	return damage;
 }

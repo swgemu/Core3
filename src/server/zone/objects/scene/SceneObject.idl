@@ -364,6 +364,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	
 	public static final int BADGEAREA = 0x200000;
 	public static final int REGIONAREA = 0x200001;
+	public static final int MISSIONSPAWNAREA = 0x200002;
 	
 	/**
 	 * SceneObject constructor, used to initialize the object.
@@ -952,6 +953,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public Vector3 getPosition() {
 		return QuadTreeEntry.getPosition();
 	}
+	
+	@local
+	@dereferenced
+	public native Vector3 getCoordinate(float distance, float angleDegrees);
 	
 	public native float getWorldPositionX();
 	public native float getWorldPositionY();

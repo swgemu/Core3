@@ -34,8 +34,6 @@ protected:
 
 	Vector<bool> postureAlignToTerrain;
 
-	int level;
-
 	float swimHeight;
 	float warpTolerance;
 	float collisionOffsetX;
@@ -114,10 +112,6 @@ public:
 
 	inline float getSlopeModAngle() const {
 		return slopeModAngle;
-	}
-
-	inline int getLevel() const {
-		return level;
 	}
 
 	inline float getSlopeModPercent() const {

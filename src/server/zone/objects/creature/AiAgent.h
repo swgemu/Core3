@@ -133,9 +133,9 @@ using namespace server::zone::objects::creature::events;
 
 #include "server/zone/objects/creature/PatrolPoint.h"
 
-#include "server/zone/objects/creature/DamageMap.h"
-
 #include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/tangible/DamageMap.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -168,7 +168,7 @@ public:
 
 	void activateMovementEvent();
 
-	void retreat();
+	bool tryRetreat();
 
 	void doRecovery();
 
@@ -208,13 +208,17 @@ public:
 
 	void removeDefender(SceneObject* defender);
 
+	void setDespawnOnNoPlayerInRange(bool val);
+
+	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	void setFollowObject(SceneObject* obj);
 
-	void clearDespawnEvent();
+	bool isRetreating();
 
-	DamageMap* getDamageMap();
+	void clearDespawnEvent();
 
 	float getKinetic();
 
@@ -260,11 +264,13 @@ public:
 
 	unsigned int getArmor();
 
+	bool getDespawnOnNoPlayerInRange();
+
 	int getNumberOfPlayersInRange();
 
-	PatrolPoint* getHomeLocation();
+	DamageMap* getDamageMap();
 
-	void setDespawnOnNoPlayerInRange(bool val);
+	PatrolPoint* getHomeLocation();
 
 	bool hasOrganics();
 
@@ -337,7 +343,7 @@ public:
 
 	virtual void activateMovementEvent();
 
-	void retreat();
+	bool tryRetreat();
 
 	void doRecovery();
 
@@ -377,13 +383,17 @@ public:
 
 	void removeDefender(SceneObject* defender);
 
+	void setDespawnOnNoPlayerInRange(bool val);
+
+	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	void setFollowObject(SceneObject* obj);
 
-	void clearDespawnEvent();
+	bool isRetreating();
 
-	DamageMap* getDamageMap();
+	void clearDespawnEvent();
 
 	float getKinetic();
 
@@ -429,11 +439,13 @@ public:
 
 	unsigned int getArmor();
 
+	bool getDespawnOnNoPlayerInRange();
+
 	int getNumberOfPlayersInRange();
 
-	PatrolPoint* getHomeLocation();
+	DamageMap* getDamageMap();
 
-	void setDespawnOnNoPlayerInRange(bool val);
+	PatrolPoint* getHomeLocation();
 
 	bool hasOrganics();
 
@@ -484,7 +496,7 @@ public:
 
 	void activateMovementEvent();
 
-	void retreat();
+	bool tryRetreat();
 
 	void doRecovery();
 
@@ -512,9 +524,15 @@ public:
 
 	void removeDefender(SceneObject* defender);
 
+	void setDespawnOnNoPlayerInRange(bool val);
+
+	void setHomeLocation(float x, float z, float y, SceneObject* cell);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	void setFollowObject(SceneObject* obj);
+
+	bool isRetreating();
 
 	void clearDespawnEvent();
 
@@ -562,9 +580,9 @@ public:
 
 	unsigned int getArmor();
 
-	int getNumberOfPlayersInRange();
+	bool getDespawnOnNoPlayerInRange();
 
-	void setDespawnOnNoPlayerInRange(bool val);
+	int getNumberOfPlayersInRange();
 
 	bool hasOrganics();
 
