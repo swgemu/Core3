@@ -11,8 +11,7 @@ CREATE TABLE `mission_manager_spawn_lairs` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO `mission_manager_spawn_lairs`
-(`template`)mission_manager_spawn_lairs
-VALUES
+(`template`) VALUES
 (
 'object/tangible/lair/cu_pa/lair_cu_pa.iff'
 );
