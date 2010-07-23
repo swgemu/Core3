@@ -109,6 +109,8 @@ using namespace server::zone::objects::tangible::wearables;
 
 #include "server/zone/managers/player/StartingItemList.h"
 
+#include "server/zone/objects/tangible/DamageMap.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -165,6 +167,8 @@ public:
 	void handleVerifyTradeMessage(PlayerCreature* player);
 
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+
+	void disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 
@@ -273,6 +277,8 @@ public:
 	void handleVerifyTradeMessage(PlayerCreature* player);
 
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+
+	void disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 

@@ -50,15 +50,25 @@ import server.zone.objects.scene.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.ZoneServer;
+include server.zone.managers.mission.LairObjectsToSpawnMap;
 
 class MissionManager extends Observer implements Logger {
 	@weakReference
 	protected ZoneServer server;
 	
+	@dereferenced
+	protected LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
+	
 	public MissionManager(ZoneServer srv) {
 		server = srv;
 		Logger.setLoggingName("MissionManager");
-	}	
+		
+		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
+		
+		loadLairObjectsToSpawn();
+	}
+	
+	public native void loadLairObjectsToSpawn();
 	
 	public native void handleMissionListRequest(MissionTerminal missionTerminal, PlayerCreature player, int counter);
 	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, PlayerCreature player);
@@ -75,6 +85,7 @@ class MissionManager extends Observer implements Logger {
 	
 	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createGeneralMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	
 	public native boolean hasSurveyMission(PlayerCreature player, final string spawn);
 }

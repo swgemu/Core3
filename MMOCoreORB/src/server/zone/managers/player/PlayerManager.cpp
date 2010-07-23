@@ -300,6 +300,14 @@ bool PlayerManager::checkTradeItems(PlayerCreature* player, PlayerCreature* rece
 		return ((PlayerManagerImplementation*) _impl)->checkTradeItems(player, receiver);
 }
 
+void PlayerManager::disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((PlayerManagerImplementation*) _impl)->disseminateExperience(destructor, destructedObject, damageMap);
+}
+
 void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)

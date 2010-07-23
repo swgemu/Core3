@@ -8,6 +8,7 @@
 #include "LairObject.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/NonPlayerCreatureObject.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
@@ -33,6 +34,13 @@ int LairObjectImplementation::inflictDamage(TangibleObject* attacker, int damage
 	checkForNewSpawns();
 	checkForHeal(attacker);
 
+	if (attacker->isPlayerCreature()) {
+		PlayerCreature* player = (PlayerCreature*) attacker;
+
+		if (damage > 0)
+			damageMap.addDamage(player, damage);
+	}
+
 	return 0;
 }
 
@@ -50,7 +58,19 @@ int LairObjectImplementation::notifyObjectDestructionObservers(TangibleObject* a
 
 	removeFromZone();
 
+	for (int i = 0; i < spawnedCreatures.size(); ++i) {
+		CreatureObject* obj = spawnedCreatures.get(i);
+
+		if (obj->isAiAgent())
+			((AiAgent*)obj)->setDespawnOnNoPlayerInRange(true);
+	}
+
+	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
+	playerManager->disseminateExperience(attacker, _this, &damageMap);
+
 	spawnedCreatures.removeAll();
+
+	damageMap.removeAll();
 
 	return ret;
 }
@@ -62,7 +82,7 @@ void LairObjectImplementation::checkForHeal(TangibleObject* attacker, bool force
 	bool doUpdate = forceNewUpdate;
 
 	if (!doUpdate)
-		doUpdate = conditionDamage >= 1000 && System::random(5) == 1;
+		doUpdate = (conditionDamage >= maxCondition / 3);
 
 	if (!doUpdate)
 		return;
@@ -145,6 +165,7 @@ void LairObjectImplementation::checkForNewSpawns() {
 		Locker clocker(npc, _this);
 
 		npc->setDespawnOnNoPlayerInRange(false);
+		npc->setHomeLocation(x, z, y);
 
 		spawnedCreatures.add(creature);
 	}

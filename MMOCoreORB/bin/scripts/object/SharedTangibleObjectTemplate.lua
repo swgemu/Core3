@@ -72,6 +72,8 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	
 	playerUseMask = ALL,
 	
+	level = 10,
+	
 	maxCondition = 1000,
 	
 	optionsBitmask = 0,

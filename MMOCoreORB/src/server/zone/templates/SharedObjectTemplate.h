@@ -228,6 +228,10 @@ public:
 		return clientObjectCRC;
 	}
 
+    inline uint32 getServerObjectCRC() {
+    	return fullTemplateString.hashCode();
+    }
+
     inline String getFullTemplateString() {
 		return fullTemplateString;
 	}

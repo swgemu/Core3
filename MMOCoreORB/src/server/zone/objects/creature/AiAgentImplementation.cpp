@@ -59,12 +59,12 @@ void AiAgentImplementation::doRecovery() {
 	if (isInCombat() && defenderList.size() > 0) {
 		SceneObject* targetToAttack = defenderList.get(0);
 
-		if (targetToAttack->isCreatureObject()) {
+		if (!tryRetreat() && targetToAttack->isCreatureObject()) {
 			CreatureObject* creo = (CreatureObject*) targetToAttack;
 
-			if (creo->isPeaced()) {
+			/*if (creo->isPeaced()) {
 				CombatManager::instance()->attemptPeace(_this);
-			} else {
+			} else {*/
 				setTargetID(creo->getObjectID(), true);
 
 				setFollowObject(creo);
@@ -73,15 +73,57 @@ void AiAgentImplementation::doRecovery() {
 
 				if (commandQueue.size() == 0)
 					enqueueCommand(0xA8FEF90A, 0, creo->getObjectID(), ""); // Do default attack
-			}
+			//}
 		}
 	}
 
 	activateRecovery();
 }
 
-void AiAgentImplementation::retreat() {
+void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
+	if (despawnOnNoPlayerInRange == val)
+		return;
 
+	despawnOnNoPlayerInRange = val;
+
+	if (val && numberOfPlayersInRange <= 0) {
+		if (despawnEvent == NULL) {
+			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this);
+		}
+
+		if (!despawnEvent->isScheduled())
+			despawnEvent->schedule(30000);
+	}
+}
+
+bool AiAgentImplementation::tryRetreat() {
+	try {
+		if (homeLocation.getPositionX() == 0 && homeLocation.getPositionY() == 0 && homeLocation.getPositionZ() == 0)
+			return false;
+
+		if (lastSuccessfulCombatAction.miliDifference() <= 30000) {
+			return false;
+		} else if (homeLocation.isInRange(_this, 100))
+			return false;
+
+		homeLocation.setReached(false);
+
+		damageMap.removeAll();
+
+		patrolPoints.removeAll();
+		patrolPoints.add(homeLocation);
+
+		CombatManager::instance()->forcePeace(_this);
+
+		activateMovementEvent();
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		error("unreported exception caught in AiAgentImplementation::tryRetreat()");
+	}
+
+	return true;
 }
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
@@ -235,6 +277,12 @@ void AiAgentImplementation::doMovement() {
 	if (currentSpeed != 0) {
 		updateCurrentPosition(&nextStepPosition);
 		nextStepPosition.setReached(true);
+
+		if (isRetreating()) {
+			if (nextStepPosition.isInRange(&homeLocation, 0.5))
+				homeLocation.setReached(true);
+		}
+
 	}
 
 	if (patrolPoints.size() == 0) {

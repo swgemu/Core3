@@ -352,6 +352,8 @@ void CreatureObjectImplementation::setCombatState() {
 	if (!(stateBitmask & CreatureState::COMBAT)) {
 		stateBitmask |= CreatureState::COMBAT;
 
+		lastSuccessfulCombatAction.updateToCurrentTime();
+
 		if (stateBitmask & CreatureState::PEACE)
 			stateBitmask &= ~CreatureState::PEACE;
 

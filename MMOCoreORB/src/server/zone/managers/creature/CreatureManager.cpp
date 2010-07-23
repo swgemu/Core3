@@ -77,26 +77,12 @@ int CreatureManager::notifyDestruction(TangibleObject* destructor, AiAgent* dest
 		return ((CreatureManagerImplementation*) _impl)->notifyDestruction(destructor, destructedObject, condition);
 }
 
-void CreatureManager::disseminateExperience(TangibleObject* destructor, AiAgent* creature) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addObjectParameter(destructor);
-		method.addObjectParameter(creature);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureManagerImplementation*) _impl)->disseminateExperience(destructor, creature);
-}
-
 void CreatureManager::loadDynamicSpawnAreas() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 8);
 
 		method.executeWithVoidReturn();
 	} else
@@ -108,7 +94,7 @@ void CreatureManager::loadTrainers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 
 		method.executeWithVoidReturn();
 	} else
@@ -225,12 +211,9 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 8:
-		disseminateExperience((TangibleObject*) inv->getObjectParameter(), (AiAgent*) inv->getObjectParameter());
-		break;
-	case 9:
 		loadDynamicSpawnAreas();
 		break;
-	case 10:
+	case 9:
 		loadTrainers();
 		break;
 	default:
@@ -246,10 +229,6 @@ void CreatureManagerAdapter::initialize() {
 
 CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID) {
 	return ((CreatureManagerImplementation*) impl)->spawnCreature(templateCRC, x, z, y, parentID);
-}
-
-void CreatureManagerAdapter::disseminateExperience(TangibleObject* destructor, AiAgent* creature) {
-	((CreatureManagerImplementation*) impl)->disseminateExperience(destructor, creature);
 }
 
 void CreatureManagerAdapter::loadDynamicSpawnAreas() {
