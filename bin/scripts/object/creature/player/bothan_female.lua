@@ -42,7 +42,8 @@
 
 
 object_creature_player_bothan_female = object_creature_player_shared_bothan_female:new {
-	gameObjectType = 1033
+	gameObjectType = 1033,
+	baseHAM = { 0, 0, 0, 300, 300, 100, 100, 100, 0 }
 }
 
 ObjectTemplates:addTemplate(object_creature_player_bothan_female, "object/creature/player/bothan_female.iff")
