@@ -42,6 +42,7 @@
 
 
 object_creature_player_zabrak_female = object_creature_player_shared_zabrak_female:new {
+	baseHAM = { 200, 0, 0, 300, 0, 0, 0, 0, 400 },
 	gameObjectType = 1033
 }
 

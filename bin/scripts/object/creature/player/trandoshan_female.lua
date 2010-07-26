@@ -42,6 +42,7 @@
 
 
 object_creature_player_trandoshan_female = object_creature_player_shared_trandoshan_female:new {
+ 	baseHAM = { 250, 300, 400, 0, 0, 0, 0, 0, 100 },
 	gameObjectType = 1033
 }
 
