@@ -50,7 +50,7 @@ import system.util.Vector;
 import system.lang.Time;
 import server.zone.Zone;
 import system.util.SortedVector;
-import server.zone.objects.creature.NonPlayerCreatureObject;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.tangible.ticket.TicketObject;
 import system.lang.ref.Reference;
@@ -60,7 +60,7 @@ import server.zone.ZoneServer;
 import server.zone.objects.creature.shuttle.ShuttleLandingEvent;
 import server.zone.objects.creature.shuttle.ShuttleTakeOffEvent;
 
-class ShuttleCreature extends NonPlayerCreatureObject {
+class ShuttleCreature extends CreatureObject {
 	protected string planet;
 	protected string city;
 	protected unsigned int tax;
