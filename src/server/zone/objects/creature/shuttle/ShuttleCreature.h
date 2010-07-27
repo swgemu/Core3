@@ -127,7 +127,7 @@ using namespace server::zone::objects::creature::shuttle;
 
 #include "system/util/SortedVector.h"
 
-#include "server/zone/objects/creature/NonPlayerCreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "system/lang/ref/Reference.h"
 
@@ -137,7 +137,7 @@ namespace objects {
 namespace creature {
 namespace shuttle {
 
-class ShuttleCreature : public NonPlayerCreatureObject {
+class ShuttleCreature : public CreatureObject {
 public:
 	ShuttleCreature();
 
@@ -202,7 +202,7 @@ namespace objects {
 namespace creature {
 namespace shuttle {
 
-class ShuttleCreatureImplementation : public NonPlayerCreatureObjectImplementation {
+class ShuttleCreatureImplementation : public CreatureObjectImplementation {
 protected:
 	String planet;
 
@@ -296,7 +296,7 @@ protected:
 	friend class ShuttleCreature;
 };
 
-class ShuttleCreatureAdapter : public NonPlayerCreatureObjectAdapter {
+class ShuttleCreatureAdapter : public CreatureObjectAdapter {
 public:
 	ShuttleCreatureAdapter(ShuttleCreatureImplementation* impl);
 

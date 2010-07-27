@@ -24,12 +24,12 @@
  *	ShuttleCreatureStub
  */
 
-ShuttleCreature::ShuttleCreature() : NonPlayerCreatureObject(DummyConstructorParameter::instance()) {
+ShuttleCreature::ShuttleCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	_impl = new ShuttleCreatureImplementation();
 	_impl->_setStub(this);
 }
 
-ShuttleCreature::ShuttleCreature(DummyConstructorParameter* param) : NonPlayerCreatureObject(param) {
+ShuttleCreature::ShuttleCreature(DummyConstructorParameter* param) : CreatureObject(param) {
 }
 
 ShuttleCreature::~ShuttleCreature() {
@@ -264,7 +264,7 @@ bool ShuttleCreature::isShuttleCreature() {
  *	ShuttleCreatureImplementation
  */
 
-ShuttleCreatureImplementation::ShuttleCreatureImplementation(DummyConstructorParameter* param) : NonPlayerCreatureObjectImplementation(param) {
+ShuttleCreatureImplementation::ShuttleCreatureImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -283,7 +283,7 @@ void ShuttleCreatureImplementation::_initializeImplementation() {
 
 void ShuttleCreatureImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (ShuttleCreature*) stub;
-	NonPlayerCreatureObjectImplementation::_setStub(stub);
+	CreatureObjectImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* ShuttleCreatureImplementation::_getStub() {
@@ -323,7 +323,7 @@ void ShuttleCreatureImplementation::runlock(bool doLock) {
 }
 
 void ShuttleCreatureImplementation::_serializationHelperMethod() {
-	NonPlayerCreatureObjectImplementation::_serializationHelperMethod();
+	CreatureObjectImplementation::_serializationHelperMethod();
 
 	_setClassName("ShuttleCreature");
 
@@ -356,7 +356,7 @@ bool ShuttleCreatureImplementation::isAttackableBy(CreatureObject* object) {
 
 int ShuttleCreatureImplementation::getArrivalTime() {
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(110):  		PlanetManager planetManager = super.zone.getPlanetManager();
-	PlanetManager* planetManager = NonPlayerCreatureObjectImplementation::zone->getPlanetManager();
+	PlanetManager* planetManager = CreatureObjectImplementation::zone->getPlanetManager();
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(111):  		long land = getLandingTime();
 	long long land = getLandingTime();
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(113):  		int t = (land / 1000) * -1;
@@ -432,7 +432,7 @@ bool ShuttleCreatureImplementation::isShuttleCreature() {
  *	ShuttleCreatureAdapter
  */
 
-ShuttleCreatureAdapter::ShuttleCreatureAdapter(ShuttleCreatureImplementation* obj) : NonPlayerCreatureObjectAdapter(obj) {
+ShuttleCreatureAdapter::ShuttleCreatureAdapter(ShuttleCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
 }
 
 Packet* ShuttleCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
