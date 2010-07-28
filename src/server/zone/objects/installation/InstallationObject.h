@@ -83,6 +83,18 @@ using namespace server::zone::packets::object;
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace installation {
 
@@ -124,8 +136,6 @@ class ResourceContainer;
 using namespace server::zone::objects::resource;
 
 #include "server/zone/objects/building/StructurePermissionList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/installation/HopperList.h"
 

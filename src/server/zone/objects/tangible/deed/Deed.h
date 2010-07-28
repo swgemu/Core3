@@ -35,7 +35,17 @@ class AttributeListMessage;
 
 using namespace server::zone::packets::scene;
 
-#include "server/zone/templates/SharedObjectTemplate.h"
+namespace server {
+namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
 
 #include "engine/lua/LuaObject.h"
 

@@ -49,7 +49,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.Zone;
 import server.zone.packets.scene.AttributeListMessage;
 
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 
 class Deed extends TangibleObject {
 	protected string generatedObjectTemplate;

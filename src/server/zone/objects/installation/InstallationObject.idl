@@ -55,7 +55,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 import engine.service.proto.BasePacket;
 import system.lang.ref.Reference;
 include server.zone.objects.building.StructurePermissionList;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.installation.SyncrhonizedUiListenInstallationTask;
 import system.util.VectorMap;
 import server.zone.objects.resource.ResourceSpawn;

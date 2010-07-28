@@ -123,6 +123,18 @@ using namespace server::zone::packets::scene;
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace area {
 
@@ -142,8 +154,6 @@ using namespace server::zone::objects::area;
 #include "server/zone/objects/scene/TransferErrorCode.h"
 
 #include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/scene/ObserverEventType.h"
 

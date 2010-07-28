@@ -18,6 +18,8 @@
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
 
 /*

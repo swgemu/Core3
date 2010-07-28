@@ -103,6 +103,18 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
 #include "server/zone/objects/creature/professions/Certification.h"
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
@@ -124,8 +136,6 @@ using namespace server::zone;
 #include "server/zone/objects/player/variables/IgnoreList.h"
 
 #include "server/zone/objects/player/variables/SchematicList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "engine/lua/LuaObject.h"
 

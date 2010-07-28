@@ -14,6 +14,8 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
 
 #include "server/zone/objects/resource/ResourceSpawn.h"

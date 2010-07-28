@@ -77,11 +77,21 @@ class ManufactureSchematic;
 
 using namespace server::zone::objects::manufactureschematic;
 
+namespace server {
+namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 

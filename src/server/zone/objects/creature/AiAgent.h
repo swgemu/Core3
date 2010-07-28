@@ -113,6 +113,18 @@ using namespace server::zone::objects::tangible;
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace creature {
 namespace events {
@@ -132,8 +144,6 @@ using namespace server::zone::objects::creature::events;
 #include "server/zone/objects/creature/PatrolPointsVector.h"
 
 #include "server/zone/objects/creature/PatrolPoint.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/tangible/DamageMap.h"
 
