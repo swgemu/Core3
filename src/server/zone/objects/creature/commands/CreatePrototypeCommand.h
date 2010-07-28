@@ -98,6 +98,11 @@ public:
 		else
 			practice = 1;
 
+
+		String type;
+
+		Locker _locker(craftingTool);
+
 		craftingTool->createPrototype(player, clientCounter, practice);
 
 		return SUCCESS;

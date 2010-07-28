@@ -43,6 +43,7 @@
  */
 
 #include "CraftingManager.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 
 void CraftingManagerImplementation::initialize() {
 

@@ -1215,6 +1215,14 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return false;
 	}
 	
+	public abstract boolean isFactory() {
+		return false;
+	}
+	
+	public abstract boolean isFactoryCrate() {
+		return false;
+	}
+	
 	public boolean isFishingPoleObject() {
 		return gameObjectType == FISHINGPOLE;
 	}
@@ -1236,6 +1244,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	}
 	
 	public abstract boolean isCraftingStation() {
+		return false;
+	}
+	
+	public abstract boolean isManufactureSchematic() {
 		return false;
 	}
 	
@@ -1363,6 +1375,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 
 	public int getMapLocationsType3() {
 		return templateObject.getMapLocationsType3();
+	}
+	
+	public abstract void createChildObjects() {
+		return;
 	}
 }
 

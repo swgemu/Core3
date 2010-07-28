@@ -42,11 +42,11 @@
 
 
 object_installation_manufacture_clothing_factory = object_installation_manufacture_shared_clothing_factory:new {
+	templateType = FACTORY,
 	lotSize = 1,
 	baseMaintenanceRate = 50,
-	basePowerRate = 50
-
-
+	basePowerRate = 50,
+	craftingTabsSupported = {2,8,16384,32768} -- See DraftSchematicObjectTemplate,h for list
 }
 
 ObjectTemplates:addTemplate(object_installation_manufacture_clothing_factory, "object/installation/manufacture/clothing_factory.iff")

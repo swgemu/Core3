@@ -47,6 +47,7 @@
 
 #include "IngredientSlot.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 
 class ResourceSlot: public IngredientSlot {
 

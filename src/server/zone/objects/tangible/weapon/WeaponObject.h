@@ -63,6 +63,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
@@ -137,6 +151,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	bool isCertifiedFor(PlayerCreature* object);
 
 	Vector<String>* getDamageModifiers();
@@ -157,31 +173,55 @@ public:
 
 	int getPointBlankAccuracy();
 
+	void setPointBlankAccuracy(int value);
+
 	int getPointBlankRange();
 
 	int getIdealRange();
 
+	void setIdealRange(int value);
+
 	int getMaxRange();
 
+	void setMaxRange(int value);
+
 	int getIdealAccuracy();
+
+	void setIdealAccuracy(int value);
 
 	int getArmorPiercing();
 
 	int getMaxRangeAccuracy();
 
+	void setMaxRangeAccuracy(int value);
+
 	float getAttackSpeed();
+
+	void setAttackSpeed(float value);
 
 	float getMaxDamage();
 
+	void setMaxDamage(float value);
+
 	float getMinDamage();
+
+	void setMinDamage(float value);
 
 	float getWoundsRatio();
 
+	void setWoundsRatio(float value);
+
 	int getHealthAttackCost();
+
+	void setHealthAttackCost(int value);
 
 	int getActionAttackCost();
 
+	void setActionAttackCost(int value);
+
 	int getMindAttackCost();
+
+	void setMindAttackCost(int value);
 
 	int getForceCost();
 
@@ -342,6 +382,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	bool isCertifiedFor(PlayerCreature* object);
 
 	Vector<String>* getDamageModifiers();
@@ -362,31 +404,55 @@ public:
 
 	int getPointBlankAccuracy();
 
+	void setPointBlankAccuracy(int value);
+
 	int getPointBlankRange();
 
 	int getIdealRange();
 
+	void setIdealRange(int value);
+
 	int getMaxRange();
 
+	void setMaxRange(int value);
+
 	int getIdealAccuracy();
+
+	void setIdealAccuracy(int value);
 
 	int getArmorPiercing();
 
 	int getMaxRangeAccuracy();
 
+	void setMaxRangeAccuracy(int value);
+
 	float getAttackSpeed();
+
+	void setAttackSpeed(float value);
 
 	float getMaxDamage();
 
+	void setMaxDamage(float value);
+
 	float getMinDamage();
+
+	void setMinDamage(float value);
 
 	float getWoundsRatio();
 
+	void setWoundsRatio(float value);
+
 	int getHealthAttackCost();
+
+	void setHealthAttackCost(int value);
 
 	int getActionAttackCost();
 
+	void setActionAttackCost(int value);
+
 	int getMindAttackCost();
+
+	void setMindAttackCost(int value);
 
 	int getForceCost();
 
@@ -459,6 +525,8 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	bool isCertifiedFor(PlayerCreature* object);
 
 	void setCertified(bool cert);
@@ -469,31 +537,55 @@ public:
 
 	int getPointBlankAccuracy();
 
+	void setPointBlankAccuracy(int value);
+
 	int getPointBlankRange();
 
 	int getIdealRange();
 
+	void setIdealRange(int value);
+
 	int getMaxRange();
 
+	void setMaxRange(int value);
+
 	int getIdealAccuracy();
+
+	void setIdealAccuracy(int value);
 
 	int getArmorPiercing();
 
 	int getMaxRangeAccuracy();
 
+	void setMaxRangeAccuracy(int value);
+
 	float getAttackSpeed();
+
+	void setAttackSpeed(float value);
 
 	float getMaxDamage();
 
+	void setMaxDamage(float value);
+
 	float getMinDamage();
+
+	void setMinDamage(float value);
 
 	float getWoundsRatio();
 
+	void setWoundsRatio(float value);
+
 	int getHealthAttackCost();
+
+	void setHealthAttackCost(int value);
 
 	int getActionAttackCost();
 
+	void setActionAttackCost(int value);
+
 	int getMindAttackCost();
+
+	void setMindAttackCost(int value);
 
 	int getForceCost();
 

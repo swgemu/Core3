@@ -387,6 +387,8 @@ void StructureManagerImplementation::loadStaticCraftingStations() {
 
 			craftingStation = (CraftingStation*) zoneServer->createStaticObject(serverCRC, objectID);
 
+			craftingStation->createChildObjects();
+
 			if(craftingStation == NULL) {
 				error("craftingstation '" + file + "' not created from template");
 				continue;
@@ -936,6 +938,7 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 
 	ManagedReference<BuildingObject*> buio = (BuildingObject*) objectManager->createObject(buioCRC, 1, "playerstructures");
 	buio->createCellObjects();
+	buio->createChildObjects();
 	buio->setOwnerObjectID(player->getObjectID());
 	buio->initializePosition(x, z, y);
 	buio->setDirection(direction);
@@ -1017,8 +1020,10 @@ int StructureManagerImplementation::placeInstallation(PlayerCreature* player, Sh
 
 	ManagedReference<InstallationObject*> installation = (InstallationObject*) objectManager->createObject(installationTemplateCRC, 1, "playerstructures");
 	installation->setOwnerObjectID(player->getObjectID());
+	installation->createChildObjects();
 	installation->initializePosition(x, z, y);
 	installation->setDirection(direction);
+
 	installation->insertToZone(zone);
 
 	//Store the deed's objectid so that if the player redeed's the structure, he/she can retrieve the deed from the database.

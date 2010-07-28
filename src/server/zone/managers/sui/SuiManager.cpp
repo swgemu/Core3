@@ -72,6 +72,9 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/factory/FactoryObject.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 
 /*#include "../item/ItemManager.h"
 #include "../../objects/creature/bluefrog/BlueFrogVector.h"
@@ -294,10 +297,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::SET_MOTD:
 		returnString = value;
 		handleSetMOTD(boxID, player, cancel, returnString);
-		break;
+		break;*/
 	case SuiWindowType::FACTORY_SCHEMATIC:
 		handleInsertFactorySchem(boxID, player, cancel, atoi(value.toCharArray()));
-		break;*/
+		break;
 	default:
 		//Clean up players sui box:
 
@@ -2145,76 +2148,40 @@ void SuiManager::handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, cons
 		player->unlock();
 	}
 }
+*/
+void SuiManager::handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
 
-void SuiManager::handleInsertFactorySchem(uint32 boxID, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
+	Locker _locker(player);
 
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
+	if (player->hasSuiBox(boxID)) {
+
+		ManagedReference<SuiListBox*> sui = (SuiListBox*) player->getSuiBox(boxID);
+
+		/// Cancel = Remove
+		if (sui != NULL) {
+
+			if(index == -1 && cancel != 1)
+				return;
+
+			ManagedReference<FactoryObject* > factory =  (FactoryObject*) server->getZoneServer()->getObject(sui->getUsingObjectID());
+
+			if(factory == NULL || !factory->isFactory())
+				return;
+
+			ManagedReference<ManufactureSchematic* > schematic = (ManufactureSchematic*) server->getZoneServer()->getObject(sui->getMenuObjectID(index));
+			Locker _locker2(factory);
+
+			if(cancel != 1)
+				factory->handleInsertFactorySchem(player, schematic);
+			else if(cancel == 1)
+				factory->handleRemoveFactorySchem(player);
+
+			player->removeSuiBox(boxID, true);
 			return;
 		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if(cancel !=1) {
-			if(index != -1) {
-				if(sui->isListBox()) {
-					SuiListBox* listBox = (SuiListBox*) sui;
-					uint64 oid = listBox->getMenuObjectID(index);
-
-					Datapad* datapad = player->getDatapad();
-					ManagedReference<SceneObject*> scno2 = datapad->getObject(oid);
-					if(scno2->isManufactureSchematic()){
-						ManufactureSchematic* manSchem = (ManufactureSchematic*) scno2.get();
-						if(manSchem == NULL){
-							player->removeSuiBox(boxID);
-							sui->finalize();
-							player->unlock();
-							return;
-						}
-
-						if (server != NULL){
-							uint64 factOid = listBox->getUsingObjectID();
-							ManagedReference<SceneObject*> scno = server->getZoneServer()->getObject(factOid);
-							if (scno == NULL){
-								player->removeSuiBox(boxID);
-								sui->finalize();
-								player->unlock();
-								return;
-							}
-
-							if (scno->isTangible()){
-								TangibleObject* tano = (TangibleObject*) scno.get();
-								if (tano->isInstallation()){
-									InstallationObject* inst = (InstallationObject*) scno.get();
-									if (inst->isFactory()){
-										FactoryObject* fact = (FactoryObject*) scno.get();
-
-										fact->setManufactureSchem(manSchem);
-										datapad->removeObject(oid);
-										manSchem->sendDestroyTo(player);
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		player->removeSuiBox(boxID);
-		sui->finalize();
-		player->unlock();
-
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleInsertFactorySchem");
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleInsertFactorySchem");
-		player->unlock();
 	}
 }
-
+/*
 void SuiManager::handleTuneCrystal(uint32 boxID, Player* player, uint32 cancel) {
 	try {
 		player->wlock();

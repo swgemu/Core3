@@ -50,6 +50,8 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+
 include server.zone.templates.SharedObjectTemplate;
 include server.zone.templates.tangible.SharedWeaponObjectTemplate;
 
@@ -187,6 +189,8 @@ class WeaponObject extends TangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 	
+	public native void updateCraftingValues(ManufactureSchematic schematic);
+	
 	/**
 	 * Returns true if the player has the required certifications for this weapon
 	 * @pre { }
@@ -236,6 +240,10 @@ class WeaponObject extends TangibleObject {
 		return pointBlankAccuracy;
 	}
 	
+	public void setPointBlankAccuracy(int value) {
+		pointBlankAccuracy = value;
+	}
+	
 	public int getPointBlankRange() {
 		return pointBlankRange;
 	}
@@ -244,12 +252,24 @@ class WeaponObject extends TangibleObject {
 		return idealRange;
 	}
 	
+	public void setIdealRange(int value) {
+		idealRange = value;
+	}
+	
 	public int getMaxRange() {
 		return maxRange;
 	}
 	
+	public void setMaxRange(int value) {
+		maxRange = value;
+	}
+	
 	public int getIdealAccuracy() {
 		return idealAccuracy;
+	}
+	
+	public void setIdealAccuracy(int value) {
+		idealAccuracy = value;
 	}
 	
 	public int getArmorPiercing() {
@@ -260,32 +280,64 @@ class WeaponObject extends TangibleObject {
 		return maxRangeAccuracy;
 	}
 	
+	public void setMaxRangeAccuracy(int value) {
+		maxRangeAccuracy = value;
+	}
+	
 	public float getAttackSpeed() {
 		return attackSpeed;
+	}
+	
+	public void setAttackSpeed(float value) {
+		attackSpeed = value;
 	}
 	
 	public float getMaxDamage() {
 		return maxDamage;
 	}
 	
+	public void setMaxDamage(float value) {
+		maxDamage = value;
+	}
+	
 	public float getMinDamage() {
 		return minDamage;
+	}
+	
+	public void setMinDamage(float value) {
+		minDamage = value;
 	}
 	
 	public float getWoundsRatio() {
 		return woundsRatio;
 	}
 	
+	public void setWoundsRatio(float value) {
+		woundsRatio = value;
+	}
+	
 	public int getHealthAttackCost() {
 		return healthAttackCost;
+	}
+	
+	public void setHealthAttackCost(int value) {
+		healthAttackCost = value;
 	}
 	
 	public int getActionAttackCost() {
 		return actionAttackCost;
 	}
 	
+	public void setActionAttackCost(int value) {
+		actionAttackCost = value;
+	}
+	
 	public int getMindAttackCost() {
 		return mindAttackCost;
+	}
+	
+	public void setMindAttackCost(int value) {
+		mindAttackCost = value;
 	}
 	
 	public int getForceCost() {

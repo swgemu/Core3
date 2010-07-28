@@ -860,6 +860,10 @@ public:
 
 	bool isInstallationObject();
 
+	bool isFactory();
+
+	bool isFactoryCrate();
+
 	bool isFishingPoleObject();
 
 	bool isDeedObject();
@@ -871,6 +875,8 @@ public:
 	bool isCraftingTool();
 
 	bool isCraftingStation();
+
+	bool isManufactureSchematic();
 
 	bool isBazaarTerminal();
 
@@ -935,6 +941,8 @@ public:
 	int getMapLocationsType2();
 
 	int getMapLocationsType3();
+
+	void createChildObjects();
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -1685,6 +1693,10 @@ public:
 
 	virtual bool isInstallationObject();
 
+	virtual bool isFactory();
+
+	virtual bool isFactoryCrate();
+
 	bool isFishingPoleObject();
 
 	virtual bool isDeedObject();
@@ -1696,6 +1708,8 @@ public:
 	virtual bool isCraftingTool();
 
 	virtual bool isCraftingStation();
+
+	virtual bool isManufactureSchematic();
 
 	bool isBazaarTerminal();
 
@@ -1760,6 +1774,8 @@ public:
 	int getMapLocationsType2();
 
 	int getMapLocationsType3();
+
+	virtual void createChildObjects();
 
 	SceneObject* _this;
 
@@ -2026,6 +2042,10 @@ public:
 
 	bool isInstallationObject();
 
+	bool isFactory();
+
+	bool isFactoryCrate();
+
 	bool isFishingPoleObject();
 
 	bool isDeedObject();
@@ -2037,6 +2057,8 @@ public:
 	bool isCraftingTool();
 
 	bool isCraftingStation();
+
+	bool isManufactureSchematic();
 
 	bool isBazaarTerminal();
 
@@ -2093,6 +2115,8 @@ public:
 	int getMapLocationsType2();
 
 	int getMapLocationsType3();
+
+	void createChildObjects();
 
 protected:
 	String _param0_info__String_bool_;

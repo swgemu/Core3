@@ -12,6 +12,10 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
 /*
  *	CraftingManagerStub
  */

@@ -20,6 +20,212 @@ FactoryObject::~FactoryObject() {
 }
 
 
+void FactoryObject::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((FactoryObjectImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+void FactoryObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((FactoryObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+}
+
+int FactoryObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((FactoryObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+bool FactoryObject::isFactory() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((FactoryObjectImplementation*) _impl)->isFactory();
+}
+
+void FactoryObject::createChildObjects() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->createChildObjects();
+}
+
+void FactoryObject::synchronizedUIListen(SceneObject* player, int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->synchronizedUIListen(player, value);
+}
+
+void FactoryObject::synchronizedUIStopListen(SceneObject* player, int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
+}
+
+void FactoryObject::updateInstallationWork() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->updateInstallationWork();
+}
+
+void FactoryObject::updateHoppers(Time& workingTime, bool shutdownAfterUpdate) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((FactoryObjectImplementation*) _impl)->updateHoppers(workingTime, shutdownAfterUpdate);
+}
+
+void FactoryObject::sendInsertManuSui(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->sendInsertManuSui(player);
+}
+
+void FactoryObject::sendIngredientsNeededSui(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->sendIngredientsNeededSui(player);
+}
+
+void FactoryObject::sendIngredientHopper(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->sendIngredientHopper(player);
+}
+
+void FactoryObject::sendOutputHopper(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->sendOutputHopper(player);
+}
+
+void FactoryObject::handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addObjectParameter(player);
+		method.addObjectParameter(schematic);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->handleInsertFactorySchem(player, schematic);
+}
+
+void FactoryObject::handleRemoveFactorySchem(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->handleRemoveFactorySchem(player);
+}
+
+void FactoryObject::handleOperateToggle(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->handleOperateToggle(player);
+}
+
+void FactoryObject::createNewObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->createNewObject();
+}
+
 /*
  *	FactoryObjectImplementation
  */
@@ -87,12 +293,19 @@ void FactoryObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("FactoryObject");
 
+	addSerializableVariable("craftingTabsSupported", &craftingTabsSupported);
+	addSerializableVariable("timer", &timer);
 }
 
 FactoryObjectImplementation::FactoryObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/factory/FactoryObject.idl(7):  		Logger.setLoggingName("FactoryObject");
+	// server/zone/objects/installation/factory/FactoryObject.idl(14):  		Logger.setLoggingName("FactoryObject");
 	Logger::setLoggingName("FactoryObject");
+}
+
+bool FactoryObjectImplementation::isFactory() {
+	// server/zone/objects/installation/factory/FactoryObject.idl(40):  		return true;
+	return true;
 }
 
 /*
@@ -106,11 +319,109 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 7:
+		resp->insertBoolean(isFactory());
+		break;
+	case 8:
+		createChildObjects();
+		break;
+	case 9:
+		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		break;
+	case 10:
+		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		break;
+	case 11:
+		updateInstallationWork();
+		break;
+	case 12:
+		sendInsertManuSui((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 13:
+		sendIngredientsNeededSui((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 14:
+		sendIngredientHopper((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 15:
+		sendOutputHopper((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 16:
+		handleInsertFactorySchem((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter());
+		break;
+	case 17:
+		handleRemoveFactorySchem((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 18:
+		handleOperateToggle((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 19:
+		createNewObject();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+int FactoryObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((FactoryObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+bool FactoryObjectAdapter::isFactory() {
+	return ((FactoryObjectImplementation*) impl)->isFactory();
+}
+
+void FactoryObjectAdapter::createChildObjects() {
+	((FactoryObjectImplementation*) impl)->createChildObjects();
+}
+
+void FactoryObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
+	((FactoryObjectImplementation*) impl)->synchronizedUIListen(player, value);
+}
+
+void FactoryObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
+	((FactoryObjectImplementation*) impl)->synchronizedUIStopListen(player, value);
+}
+
+void FactoryObjectAdapter::updateInstallationWork() {
+	((FactoryObjectImplementation*) impl)->updateInstallationWork();
+}
+
+void FactoryObjectAdapter::sendInsertManuSui(PlayerCreature* player) {
+	((FactoryObjectImplementation*) impl)->sendInsertManuSui(player);
+}
+
+void FactoryObjectAdapter::sendIngredientsNeededSui(PlayerCreature* player) {
+	((FactoryObjectImplementation*) impl)->sendIngredientsNeededSui(player);
+}
+
+void FactoryObjectAdapter::sendIngredientHopper(PlayerCreature* player) {
+	((FactoryObjectImplementation*) impl)->sendIngredientHopper(player);
+}
+
+void FactoryObjectAdapter::sendOutputHopper(PlayerCreature* player) {
+	((FactoryObjectImplementation*) impl)->sendOutputHopper(player);
+}
+
+void FactoryObjectAdapter::handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic) {
+	((FactoryObjectImplementation*) impl)->handleInsertFactorySchem(player, schematic);
+}
+
+void FactoryObjectAdapter::handleRemoveFactorySchem(PlayerCreature* player) {
+	((FactoryObjectImplementation*) impl)->handleRemoveFactorySchem(player);
+}
+
+void FactoryObjectAdapter::handleOperateToggle(PlayerCreature* player) {
+	((FactoryObjectImplementation*) impl)->handleOperateToggle(player);
+}
+
+void FactoryObjectAdapter::createNewObject() {
+	((FactoryObjectImplementation*) impl)->createNewObject();
 }
 
 /*

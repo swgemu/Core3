@@ -48,6 +48,8 @@
 #include "server/zone/templates/tangible/DeedTemplate.h"
 #include "server/zone/templates/tangible/MissionTerminalTemplate.h"
 
+#include "server/zone/templates/installation/FactoryObjectTemplate.h"
+
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
@@ -149,6 +151,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<DraftSchematicObjectTemplate>(SharedObjectTemplate::DRAFTSCHEMATIC);
 	templateFactory.registerObject<NonPlayerCreatureObjectTemplate>(SharedObjectTemplate::NPCCREATURE);
 	templateFactory.registerObject<LairObjectTemplate>(SharedObjectTemplate::LAIRTEMPLATE);
+	templateFactory.registerObject<FactoryObjectTemplate>(SharedObjectTemplate::FACTORY);
 }
 
 
@@ -256,6 +259,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("DRAFTSCHEMATIC", SharedObjectTemplate::DRAFTSCHEMATIC);
 	luaTemplatesInstance->setGlobalInt("NPCCREATURE", SharedObjectTemplate::NPCCREATURE);
 	luaTemplatesInstance->setGlobalInt("LAIRTEMPLATE", SharedObjectTemplate::LAIRTEMPLATE);
+	luaTemplatesInstance->setGlobalInt("FACTORY", SharedObjectTemplate::FACTORY);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

@@ -113,8 +113,8 @@ class ResourceSpawn extends SceneObject {
     }
     
     public native void finalize() {
-    	if (!dbDestroyed && (containerReferenceCount == 0))
-    		decreaseContainerReferenceCount();
+    	//if (!dbDestroyed && (containerReferenceCount == 0))
+    	//	decreaseContainerReferenceCount();
     }
     
     public native void initializeTransientMembers();

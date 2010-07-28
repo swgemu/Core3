@@ -42,67 +42,29 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATEMANFSCHEMATICCOMMAND_H_
-#define CREATEMANFSCHEMATICCOMMAND_H_
+#ifndef FACTORYCRATEOBJECTDELTAMESSAGE3_H_
+#define FACTORYCRATEOBJECTDELTAMESSAGE3_H_
 
-#include "../../scene/SceneObject.h"
+#include "../../packets/DeltaMessage.h"
 
-class CreateManfSchematicCommand : public QueueCommand {
+#include "../../objects/factorycrate/FactoryCrate.h"
+
+class FactoryCrateObjectDeltaMessage3 : public DeltaMessage {
+	FactoryCrate* tano;
+
 public:
-
-	CreateManfSchematicCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
-
+	FactoryCrateObjectDeltaMessage3(FactoryCrate* ta, uint32 objType = 0x46435954)
+			: DeltaMessage(ta->getObjectID(), objType, 3) {
+		tano = ta;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	void setQuantity(int quantity) {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		if (quantity == 1)
+			quantity = 0;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		/**
-		 * Arguments
-		 *
-		 * 1 Unicode String
-		 * Contains clientCounter and int for practice
-		 *
-		 */
-
-		if (!creature->isPlayerCreature())
-			return INVALIDTARGET;
-
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
-
-		ManagedReference<CraftingTool*> craftingTool =
-				player->getLastCraftingToolUsed();
-
-		if (craftingTool == NULL) {
-			player->sendSystemMessage("ui_craft", "err_no_crafting_tool");
-			return GENERALERROR;
-		}
-
-		int clientCounter;
-
-		StringTokenizer tokenizer(arguments.toString());
-
-		if(tokenizer.hasMoreTokens())
-			clientCounter = tokenizer.getIntToken();
-		else
-			return GENERALERROR;
-
-
-		String type;
-
-		Locker _locker(craftingTool);
-
-		craftingTool->createManfSchematic(player, clientCounter);
-
-		return SUCCESS;
+		addIntUpdate(7, quantity);
 	}
-
 };
 
-#endif //CREATEMANFSCHEMATICCOMMAND_H_
+#endif /*FACTORYCRATEOBJECTDELTAMESSAGE3_H_*/

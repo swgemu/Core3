@@ -618,9 +618,6 @@ ResourceSpawnImplementation::ResourceSpawnImplementation() {
 }
 
 void ResourceSpawnImplementation::finalize() {
-	// server/zone/objects/resource/ResourceSpawn.idl(116):   }
-	if (!dbDestroyed && (containerReferenceCount == 0))	// server/zone/objects/resource/ResourceSpawn.idl(117):   		decreaseContainerReferenceCount();
-	decreaseContainerReferenceCount();
 }
 
 void ResourceSpawnImplementation::setName(const String& name) {

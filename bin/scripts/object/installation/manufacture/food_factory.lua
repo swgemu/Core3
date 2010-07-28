@@ -42,11 +42,11 @@
 
 
 object_installation_manufacture_food_factory = object_installation_manufacture_shared_food_factory:new {
+	templateType = FACTORY,
 	lotSize = 1,
 	baseMaintenanceRate = 50,
-	basePowerRate = 50
-
-
+	basePowerRate = 50,
+	craftingTabsSupported = {4,64,128,256,8192} -- See DraftSchematicObjectTemplate,h for list
 }
 
 ObjectTemplates:addTemplate(object_installation_manufacture_food_factory, "object/installation/manufacture/food_factory.iff")
