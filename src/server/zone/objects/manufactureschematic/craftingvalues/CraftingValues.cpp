@@ -48,6 +48,7 @@ CraftingValues::CraftingValues() {
 	EMPTY = "";
 	experimentalValuesMap.setNullValue(NULL);
 	doHide = true;
+	setLoggingName("CraftingValues");
 }
 
 CraftingValues::~CraftingValues() {
@@ -58,6 +59,7 @@ CraftingValues::~CraftingValues() {
 	experimentalValuesMap.removeAll();
 
 	valuesToSend.removeAll();
+	info("Deleting CraftingValues");
 }
 
 void CraftingValues::addExperimentalProperty(const String& title, const String& subtitle,
@@ -810,7 +812,6 @@ void CraftingValues::recalculateValues(bool initial) {
 	}
 	//toString();
 }
-
 
 void CraftingValues::toString() {
 	Subclasses* tempSubclasses;

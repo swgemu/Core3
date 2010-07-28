@@ -43,6 +43,8 @@ which carries forward this exception.
 */
 
 #include "Component.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 
 void ComponentImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -121,36 +123,42 @@ bool ComponentImplementation::getAttributeHidden(String& attributeName){
 	return hiddenMap.get(attributeName);
 }
 
-void ComponentImplementation::updateCraftingValues(CraftingValues* craftingValues){
+void ComponentImplementation::updateCraftingValues(SceneObject* schematic) {
 
-	String attribute;
-	float value;
-	int precision;
-	String title;
-	bool hidden;
+	/*if (schematic->isManufactureSchematic()) {
 
-	attributeMap.removeAll();
-	precisionMap.removeAll();
-	titleMap.removeAll();
-	keyList.removeAll();
+		CraftingValues* craftingValues =
+				((ManufactureSchematic*) schematic)->getCraftingValues();
 
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i){
-		attribute = craftingValues->getExperimentalPropertySubtitle(i);
+		String attribute;
+		float value;
+		int precision;
+		String title;
+		bool hidden;
 
-		value = craftingValues->getCurrentValue(attribute);
-		precision = craftingValues->getPrecision(attribute);
-		title = craftingValues->getExperimentalPropertyTitle(attribute);
-		hidden = craftingValues->isHidden(attribute);
+		attributeMap.removeAll();
+		precisionMap.removeAll();
+		titleMap.removeAll();
+		keyList.removeAll();
 
-		if (!hasKey(attribute))
-			keyList.add(attribute);
+		for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
+			attribute = craftingValues->getExperimentalPropertySubtitle(i);
 
-		attributeMap.put(attribute, value);
-		precisionMap.put(attribute, precision);
-		titleMap.put(attribute, title);
-		hiddenMap.put(attribute, hidden);
+			value = craftingValues->getCurrentValue(attribute);
+			precision = craftingValues->getPrecision(attribute);
+			title = craftingValues->getExperimentalPropertyTitle(attribute);
+			hidden = craftingValues->isHidden(attribute);
 
-	}
+			if (!hasKey(attribute))
+				keyList.add(attribute);
+
+			attributeMap.put(attribute, value);
+			precisionMap.put(attribute, precision);
+			titleMap.put(attribute, title);
+			hiddenMap.put(attribute, hidden);
+
+		}
+	}*/
 }
 
 void ComponentImplementation::addProperty(const String& attributeName, const float value,

@@ -27,17 +27,17 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
-namespace packets {
-namespace scene {
+namespace objects {
+namespace draftschematic {
 
-class AttributeListMessage;
+class DraftSchematic;
 
-} // namespace scene
-} // namespace packets
+} // namespace draftschematic
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::packets::scene;
+using namespace server::zone::objects::draftschematic;
 
 namespace server {
 namespace zone {
@@ -67,11 +67,19 @@ class CraftingManager;
 
 using namespace server::zone::managers::crafting;
 
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+class ManufactureSchematic;
 
-#include "server/zone/objects/player/PlayerCreature.h"
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
 
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
 
@@ -111,7 +119,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	void updateCraftingValues(CraftingValues* craftingValues);
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isCraftingTool();
 
@@ -138,6 +146,8 @@ public:
 	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
 
 	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
+
+	void createManfSchematic(PlayerCreature* player, int clientCounter);
 
 	void createObject(PlayerCreature* player, int timer, bool create);
 
@@ -230,7 +240,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	void updateCraftingValues(CraftingValues* craftingValues);
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isCraftingTool();
 
@@ -298,6 +308,8 @@ private:
 public:
 	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
 
+	void createManfSchematic(PlayerCreature* player, int clientCounter);
+
 	void createObject(PlayerCreature* player, int timer, bool create);
 
 	void depositObject(PlayerCreature* player, bool practice);
@@ -345,6 +357,8 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	bool isCraftingTool();
 
 	int getToolType();
@@ -368,6 +382,8 @@ public:
 	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
 
 	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
+
+	void createManfSchematic(PlayerCreature* player, int clientCounter);
 
 	void createObject(PlayerCreature* player, int timer, bool create);
 

@@ -122,6 +122,7 @@ public:
 	static const int CAMP_INFO = 51;
 
 	static const int FACTORY_SCHEMATIC = 52;
+	static const int FACTORY_INGREDIENTS = 53;
 
 	static const int TUNE_CRYSTAL = 60;
 	static const int INSERT_COLOR_CRYSTAL = 61;

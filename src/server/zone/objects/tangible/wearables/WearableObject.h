@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -35,9 +49,13 @@ namespace wearables {
 
 class WearableObject : public TangibleObject {
 public:
+	static const int MAXSOCKETS = 4;
+
 	WearableObject();
 
 	void initializeTransientMembers();
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isWearableObject();
 
@@ -75,6 +93,12 @@ class WearableObjectImplementation : public TangibleObjectImplementation {
 protected:
 	int socketCount;
 
+	bool socketsGenerated;
+
+public:
+	static const int MAXSOCKETS = 4;
+
+protected:
 	WearableSkillModMap wearableSkillModMap;
 
 public:
@@ -83,6 +107,8 @@ public:
 	WearableObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isWearableObject();
 
@@ -94,6 +120,10 @@ public:
 
 	void setMaxSockets(int sockets);
 
+private:
+	void generateSockets(ManufactureSchematic* schematic);
+
+public:
 	WearableObject* _this;
 
 	operator const WearableObject*();
@@ -134,6 +164,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isWearableObject();
 

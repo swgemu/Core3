@@ -63,6 +63,20 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
@@ -70,6 +84,8 @@ using namespace server::zone::objects::creature;
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
@@ -202,7 +218,7 @@ public:
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
 
-	void updateCraftingValues(CraftingValues* craftingValues);
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
@@ -261,6 +277,8 @@ public:
 	void setCraftersSerial(String& serial);
 
 	String getCraftersSerial();
+
+	void createChildObjects();
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
@@ -438,7 +456,7 @@ public:
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
 
-	virtual void updateCraftingValues(CraftingValues* craftingValues);
+	virtual void updateCraftingValues(ManufactureSchematic* schematic);
 
 	virtual int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
@@ -497,6 +515,8 @@ public:
 	void setCraftersSerial(String& serial);
 
 	String getCraftersSerial();
+
+	virtual void createChildObjects();
 
 	TangibleObject* _this;
 
@@ -632,6 +652,8 @@ public:
 	void setCraftersSerial(String& serial);
 
 	String getCraftersSerial();
+
+	void createChildObjects();
 
 protected:
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;

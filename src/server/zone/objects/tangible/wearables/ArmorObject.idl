@@ -48,6 +48,7 @@ import server.zone.objects.tangible.wearables.WearableObject;
 import engine.lua.LuaObject;
 import system.util.SortedVector;
 import server.zone.Zone;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 class ArmorObject extends WearableObject {
 	protected int healthEncumbrance;
@@ -122,6 +123,12 @@ class ArmorObject extends WearableObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 	
+	public native void updateCraftingValues(ManufactureSchematic schematic);
+	
+	private native void setProtection(ManufactureSchematic schematic, final string type, float base);
+	
+	private native void setProtectionValue(final string type, float value);
+	
 	public boolean isSpecial(final string special) {
 		return specialResistsVector.contains(special);
 	}
@@ -134,6 +141,11 @@ class ArmorObject extends WearableObject {
 		return true;
 	}
 	
+	
+	public void setRating(int rate) {
+		rating = rate;
+	}
+	
 	public int getRating() {
 		return rating;
 	}
@@ -141,48 +153,96 @@ class ArmorObject extends WearableObject {
 	public float getKinetic() {
 		return kinetic;
 	}
+	
+	public void setKinetic(float value) {
+		kinetic = value;
+	}
 
 	public float getEnergy() {
 		return energy;
+	}
+	
+	public void setEnergy(float value) {
+		energy = value;
 	}
 
 	public float getElectricity() {
 		return electricity;
 	}
+	
+	public void setElectricity(float value) {
+		electricity = value;
+	}
 
 	public float getStun() {
 		return stun;
+	}
+	
+	public void setStun(float value) {
+		stun = value;
 	}
 
 	public float getBlast() {
 		return blast;
 	}
+	
+	public void setBlast(float value) {
+		blast = value;
+	}
 
 	public float getHeat() {
 		return heat;
+	}
+	
+	public void setHeat(float value) {
+		heat = value;
 	}
 
 	public float getCold() {
 		return cold;
 	}
+	
+	public void setCold(float value) {
+		cold = value;
+	}
 
 	public float getAcid() {
 		return acid;
+	}
+	
+	public void setAcid(float value) {
+		acid = value;
 	}
 
 	public float getLightSaber() {
 		return lightSaber;
 	}
 	
+	public void setLightSaber(float value) {
+		lightSaber = value;
+	}
+	
 	public int getHealthEncumbrance() {
 		return healthEncumbrance;
+	}
+	
+	public void setHealthEncumbrance(int encumber) {
+		healthEncumbrance = encumber;
 	}
 	
 	public int getActionEncumbrance() {
 		return actionEncumbrance;
 	}
 	
+	public void setActionEncumbrance(int encumber) {
+		actionEncumbrance = encumber;
+	}
+	
 	public int getMindEncumbrance() {
 		return mindEncumbrance;
+	}
+	
+	public void setMindEncumbrance(int encumber) {
+		mindEncumbrance = encumber;
 	}
 }

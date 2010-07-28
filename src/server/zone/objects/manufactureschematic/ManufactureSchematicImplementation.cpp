@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "server/zone/packets/scene/SceneObjectCloseMessage.h"
@@ -64,7 +65,49 @@ which carries forward this exception.
 
 void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 
+	alm->insertAttribute("data_volume", dataSize);
 
+	String resourceHead = "cat_manf_schem_ing_resource.\"";
+
+	String name;
+	int value;
+
+	for (int i = 0; i < factoryIngredients.size(); ++i) {
+
+		ManagedReference<SceneObject* > ingredient = factoryIngredients.get(i);
+
+		if (ingredient == NULL)
+			continue;
+
+		if (ingredient->isResourceContainer()) {
+			ManagedReference<ResourceContainer*> rcno = (ResourceContainer*) ingredient.get();
+			name = resourceHead + rcno->getSpawnObject()->getName();
+			value = rcno->getQuantity();
+
+			alm->insertAttribute(name, value);
+
+		} else {
+
+			ManagedReference<TangibleObject*> component = (TangibleObject*) ingredient.get();
+
+			if (component->getCustomObjectName().isEmpty())
+				name = "@" + component->getObjectNameStringIdFile() + ":"
+						+ component->getObjectNameStringIdName() + " ";
+			else
+				name = component->getCustomObjectName().toString();
+
+			name = resourceHead + name.concat(component->getCraftersSerial());
+
+			value = component->getUseCount();
+
+			alm->insertAttribute(name, value);
+		}
+	}
+
+	alm->insertAttribute("manf_limit", manufactureLimit);
+
+	if(prototype != NULL)
+		prototype->fillAttributeList(alm, object);
 }
 
 void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClose) {
@@ -97,14 +140,18 @@ void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 
 	PlayerCreature* playerCreature = (PlayerCreature*) player;
 
-	ManufactureSchematicObjectMessage3* msco3 =
-			new ManufactureSchematicObjectMessage3(getObjectID(),
-					draftSchematic->getComplexity(), playerCreature->getFirstName());
+	ManufactureSchematicObjectMessage3* msco3;
+
+	if(prototype != NULL)
+		msco3 = new ManufactureSchematicObjectMessage3(_this, playerCreature->getFirstName());
+	 else
+		msco3 = new ManufactureSchematicObjectMessage3(getObjectID(), complexity, playerCreature->getFirstName());
+
 	player->sendMessage(msco3);
 
 	// MSCO6
 	ManufactureSchematicObjectMessage6* msco6 =
-		new ManufactureSchematicObjectMessage6(getObjectID(), getClientObjectCRC());
+		new ManufactureSchematicObjectMessage6(getObjectID(), crcToSend);
 	player->sendMessage(msco6);
 
 	// MSCO8
@@ -126,6 +173,15 @@ Reference<IngredientSlot*> ManufactureSchematicImplementation::getIngredientSlot
 	return NULL;
 }
 
+void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schematic) {
+	draftSchematic = schematic;
+
+	if(draftSchematic != NULL) {
+		initializeIngredientSlots(draftSchematic);
+		crcToSend = draftSchematic->getClientObjectCRC();
+	}
+}
+
 int ManufactureSchematicImplementation::getSlotCount() {
 	return ingredientSlots.size();
 }
@@ -141,8 +197,6 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 
 	if(craftingTool != NULL)
 		craftingTool->synchronizedUIListenForSchematic(playerCreature);
-	else
-		playerCreature->sendSystemMessage("ui_craft", "err_no_crafting_tool");
 }
 
 void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
@@ -216,4 +270,31 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 			return false;
 	}
 	return true;
+}
+
+void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {
+	/// We clean up all the unnecessary objects here
+	/// This is where the schematic gets sent to the datapad, so wee need
+	/// To initialize all the values
+	prototype = tano;
+	crafter = NULL;
+	dataSize = draftSchematic->getSize();
+
+	initializeFactoryIngredients();
+
+	cleanupIngredientSlots();
+
+	updateToDatabaseAllObjects(true);
+}
+
+void ManufactureSchematicImplementation::initializeFactoryIngredients() {
+
+	for (int i = 0; i < ingredientSlots.size(); ++i) {
+		Reference<IngredientSlot*> ingredientSlot = getIngredientSlot(i);
+
+		if (ingredientSlot == NULL || ingredientSlot->get() == NULL)
+			continue;
+
+		factoryIngredients.add(ingredientSlot->get());
+	}
 }

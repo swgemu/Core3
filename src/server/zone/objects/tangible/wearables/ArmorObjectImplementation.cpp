@@ -7,6 +7,7 @@
 
 #include "ArmorObject.h"
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 void ArmorObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -229,5 +230,102 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pla
 
 	if (sliced)
 		alm->insertAttribute("arm_attr", "@obj_attr_n:hacked");
+
+}
+
+void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+
+	WearableObjectImplementation::updateCraftingValues(schematic);
+
+	/*
+	 * Incoming Values:					Ranges:
+	 * sockets							All depend on type of armor
+	 * hit_points
+	 * armor_effectiveness
+	 * armor_integrity
+	 * armor_health_encumbrance
+	 * armor_action_encumbrance
+	 * armor_mind_encumbrance
+	 * armor_rating
+	 * armor_special_type
+	 * armor_special_effectiveness
+	 * armor_special_integrity
+	 */
+	CraftingValues* craftingValues = schematic->getCraftingValues();
+	//craftingValues->toString();
+
+	setRating((int) craftingValues->getCurrentValue("armor_rating"));
+
+	setHealthEncumbrance((int) craftingValues->getCurrentValue(
+			"armor_health_encumbrance"));
+	setActionEncumbrance((int) craftingValues->getCurrentValue(
+			"armor_action_encumbrance"));
+	setMindEncumbrance((int) craftingValues->getCurrentValue(
+			"armor_mind_encumbrance"));
+
+	float base = craftingValues->getCurrentValue("armor_effectiveness");
+
+	setProtection(schematic, "kineticeffectiveness", base);
+	setProtection(schematic, "energyeffectiveness", base);
+	setProtection(schematic, "electricaleffectiveness", base);
+	setProtection(schematic, "stuneffectiveness", base);
+	setProtection(schematic, "blasteffectiveness", base);
+	setProtection(schematic, "heateffectiveness", base);
+	setProtection(schematic, "coldeffectiveness", base);
+	setProtection(schematic, "acideffectiveness", base);
+	setProtection(schematic, "restraineffectiveness", base);
+
+	setMaxCondition((int) craftingValues->getCurrentValue("armor_integrity"));
+	setConditionDamage(0);
+
+	schematic->setFirstCraftingUpdate();
+}
+
+void ArmorObjectImplementation::setProtection(ManufactureSchematic* schematic,
+		const String& type, float base) {
+
+	CraftingValues* craftingValues = schematic->getCraftingValues();
+
+	float value = craftingValues->getCurrentValue(type);
+
+	if (value == CraftingValues::VALUENOTFOUND
+			&& schematic->getFirstCraftingUpdate()) {
+		craftingValues->lockValue(type);
+	}
+
+	if (value == CraftingValues::VALUENOTFOUND) {
+		if (isVulnerable(type))
+			setProtectionValue(type, 0.0f);
+		else
+			setProtectionValue(type, base);
+	} else {
+		if (value + base > 80.0f)
+			setProtectionValue(type, 80.0f);
+		else
+			setProtectionValue(type, value + base);
+	}
+}
+
+void ArmorObjectImplementation::setProtectionValue(const String& type, float value) {
+
+	if (type == "kineticeffectiveness") {
+		setKinetic(value);
+	} else if (type == "energyeffectiveness") {
+		setEnergy(value);
+	} else if (type == "electricaleffectiveness") {
+		setElectricity(value);
+	} else if (type == "stuneffectiveness") {
+		setStun(value);
+	} else if (type == "blasteffectiveness") {
+		setBlast(value);
+	} else if (type == "heateffectiveness") {
+		setHeat(value);
+	} else if (type == "coldeffectiveness") {
+		setCold(value);
+	} else if (type == "acideffectiveness") {
+		setAcid(value);
+	} else if (type == "restraineffectiveness") {
+		setLightSaber(value);
+	}
 
 }

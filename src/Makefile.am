@@ -67,6 +67,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/area/ActiveArea.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/area/MissionSpawnActiveArea.cpp \
+				server/zone/objects/factorycrate/FactoryCrate.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \
 				server/zone/objects/staticobject/StaticObject.cpp \
@@ -212,6 +213,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/resourcespawner/resourcepool/NativePool.cpp \
 		server/zone/managers/resource/resourcespawner/resourcepool/ManualPool.cpp \
 		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
+		server/zone/objects/factorycrate/FactoryCrateImplementation.cpp \
 		server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/scene/ObserverImplementation.cpp \
@@ -235,6 +237,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
 		server/zone/objects/tangible/deed/building/BuildingDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.cpp \
+		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
 		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
 		server/zone/objects/tangible/component/ComponentImplementation.cpp \

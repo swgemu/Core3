@@ -42,9 +42,11 @@
 
 
 object_installation_manufacture_structure_factory = object_installation_manufacture_shared_structure_factory:new {
+	templateType = FACTORY,
 	lotSize = 1,
 	baseMaintenanceRate = 50,
-	basePowerRate = 50
+	basePowerRate = 50,
+	craftingTabsSupported = {512,1024} -- See DraftSchematicObjectTemplate,h for list
 
 
 }

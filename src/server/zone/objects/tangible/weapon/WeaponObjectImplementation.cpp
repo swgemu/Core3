@@ -12,6 +12,8 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 
 void WeaponObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -229,6 +231,75 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 		alm->insertAttribute("wpn_attr", "@obj_attr_n:hacked1");
 
 	//generatePowerup(alm);
+}
+
+void WeaponObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+	/*
+	 * Incoming Values:					Ranges:
+	 * mindamage						Differs between weapons
+	 * maxdamage
+	 * attackspeed
+	 * woundchance
+	 * roundsused
+	 * hitpoints
+	 * zerorangemod
+	 * maxrange
+	 * maxrangemod
+	 * midrange
+	 * midrangemod
+	 * charges
+	 * attackhealthcost
+	 * attackactioncost
+	 * attackmindcost
+	 */
+	CraftingValues* craftingValues = schematic->getCraftingValues();
+
+	float value = 0.f;
+	setMinDamage(craftingValues->getCurrentValue("mindamage"));
+	setMaxDamage(craftingValues->getCurrentValue("maxdamage"));
+
+	setAttackSpeed(craftingValues->getCurrentValue("attackspeed"));
+	setHealthAttackCost((int)craftingValues->getCurrentValue("attackhealthcost"));
+	setActionAttackCost((int)craftingValues->getCurrentValue("attackactioncost"));
+	setMindAttackCost((int)craftingValues->getCurrentValue("attackmindcost"));
+
+	value = craftingValues->getCurrentValue("woundchance");
+	if(value != CraftingValues::VALUENOTFOUND)
+		setWoundsRatio(value);
+
+	//value = craftingValues->getCurrentValue("roundsused");
+	//if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+		//_this->set_______(value);
+
+	value = craftingValues->getCurrentValue("zerorangemod");
+	if(value != CraftingValues::VALUENOTFOUND)
+		setPointBlankAccuracy((int)value);
+
+	value = craftingValues->getCurrentValue("maxrange");
+	if(value != CraftingValues::VALUENOTFOUND)
+		setMaxRange((int)value);
+
+	value = craftingValues->getCurrentValue("maxrangemod");
+	if(value != CraftingValues::VALUENOTFOUND)
+		setMaxRangeAccuracy((int)value);
+
+	value = craftingValues->getCurrentValue("midrange");
+	if(value != CraftingValues::VALUENOTFOUND)
+		setIdealRange((int)value);
+
+	value = craftingValues->getCurrentValue("midrangemod");
+	if(value != CraftingValues::VALUENOTFOUND)
+		setIdealAccuracy((int)value);
+
+	//value = craftingValues->getCurrentValue("charges");
+	//if(value != CraftingValues::VALUENOTFOUND)
+	//	setUsesRemaining((int)value);
+
+	value = craftingValues->getCurrentValue("hitpoints");
+	if(value != CraftingValues::VALUENOTFOUND)
+		setMaxCondition((int)value);
+
+	setConditionDamage(0);
 }
 
 bool WeaponObjectImplementation::isCertifiedFor(PlayerCreature* object) {

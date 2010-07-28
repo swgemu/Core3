@@ -21,6 +21,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -36,6 +50,8 @@ public:
 	ClothingObject();
 
 	void initializeTransientMembers();
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 protected:
 	ClothingObject(DummyConstructorParameter* param);
@@ -67,6 +83,8 @@ public:
 	ClothingObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	ClothingObject* _this;
 
@@ -108,6 +126,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 };
 

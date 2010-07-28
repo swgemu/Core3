@@ -6,8 +6,6 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
 #include "server/zone/Zone.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -140,6 +138,18 @@ SceneObject* CraftingStation::findCraftingTool(PlayerCreature* player) {
 		return ((CraftingStationImplementation*) _impl)->findCraftingTool(player);
 }
 
+void CraftingStation::createChildObjects() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		method.executeWithVoidReturn();
+	} else
+		((CraftingStationImplementation*) _impl)->createChildObjects();
+}
+
 /*
  *	CraftingStationImplementation
  */
@@ -214,38 +224,38 @@ void CraftingStationImplementation::_serializationHelperMethod() {
 
 CraftingStationImplementation::CraftingStationImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingStation.idl(62):  		Logger.setLoggingName("CraftingStation");
+	// server/zone/objects/tangible/tool/CraftingStation.idl(61):  		Logger.setLoggingName("CraftingStation");
 	Logger::setLoggingName("CraftingStation");
-	// server/zone/objects/tangible/tool/CraftingStation.idl(63):  		complexityLevel = 0;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(62):  		complexityLevel = 0;
 	complexityLevel = 0;
-	// server/zone/objects/tangible/tool/CraftingStation.idl(64):  		effectiveness = 25;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(63):  		effectiveness = 25;
 	effectiveness = 25;
 }
 
 void CraftingStationImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(68):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingStation.idl(67):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingStation.idl(70):  		Logger.setLoggingName("CraftingStation");
+	// server/zone/objects/tangible/tool/CraftingStation.idl(69):  		Logger.setLoggingName("CraftingStation");
 	Logger::setLoggingName("CraftingStation");
 }
 
 bool CraftingStationImplementation::isCraftingStation() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(98):  		return true;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(97):  		return true;
 	return true;
 }
 
 int CraftingStationImplementation::getComplexityLevel() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(102):  		return complexityLevel;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(101):  		return complexityLevel;
 	return complexityLevel;
 }
 
 int CraftingStationImplementation::getStationType() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(106):  		return type;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(105):  		return type;
 	return type;
 }
 
 void CraftingStationImplementation::setComplexityLevel(int level) {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(110):  		complexityLevel = level;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(109):  		complexityLevel = level;
 	complexityLevel = level;
 }
 
@@ -281,6 +291,9 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 12:
 		resp->insertLong(findCraftingTool((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
 		break;
+	case 13:
+		createChildObjects();
+		break;
 	default:
 		return NULL;
 	}
@@ -314,6 +327,10 @@ void CraftingStationAdapter::setComplexityLevel(int level) {
 
 SceneObject* CraftingStationAdapter::findCraftingTool(PlayerCreature* player) {
 	return ((CraftingStationImplementation*) impl)->findCraftingTool(player);
+}
+
+void CraftingStationAdapter::createChildObjects() {
+	((CraftingStationImplementation*) impl)->createChildObjects();
 }
 
 /*

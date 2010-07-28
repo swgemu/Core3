@@ -11,13 +11,37 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
-#include "server/zone/packets/scene/AttributeListMessage.h"
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
 
 #include "server/zone/packets/object/ObjectControllerMessage.h"
 
 #include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
-
-#include "server/zone/objects/intangible/IntangibleObject.h"
 
 #include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
 
@@ -25,15 +49,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
-
 #include "engine/service/proto/BaseMessage.h"
+
+#include "server/zone/objects/intangible/IntangibleObject.h"
 
 namespace server {
 namespace zone {
-namespace object {
+namespace objects {
 namespace draftschematic {
-namespace DraftSchematic {
 
 class DraftSchematic : public IntangibleObject {
 public:
@@ -108,19 +131,17 @@ protected:
 	friend class DraftSchematicHelper;
 };
 
-} // namespace DraftSchematic
 } // namespace draftschematic
-} // namespace object
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::object::draftschematic::DraftSchematic;
+using namespace server::zone::objects::draftschematic;
 
 namespace server {
 namespace zone {
-namespace object {
+namespace objects {
 namespace draftschematic {
-namespace DraftSchematic {
 
 class DraftSchematicImplementation : public IntangibleObjectImplementation {
 	unsigned int schematicID;
@@ -288,12 +309,11 @@ public:
 	friend class Singleton<DraftSchematicHelper>;
 };
 
-} // namespace DraftSchematic
 } // namespace draftschematic
-} // namespace object
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::object::draftschematic::DraftSchematic;
+using namespace server::zone::objects::draftschematic;
 
 #endif /*DRAFTSCHEMATIC_H_*/

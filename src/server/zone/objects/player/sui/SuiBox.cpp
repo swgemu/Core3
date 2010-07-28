@@ -577,6 +577,8 @@ void SuiBoxImplementation::initialize() {
 }
 
 void SuiBoxImplementation::finalize() {
+	// server/zone/objects/player/sui/SuiBox.idl(131):  		Logger.info("deleting", true);
+	Logger::info("deleting", true);
 }
 
 void SuiBoxImplementation::initializeTransientMembers() {

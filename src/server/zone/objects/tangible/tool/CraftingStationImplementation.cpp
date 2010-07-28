@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
 
 void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -120,4 +121,12 @@ SceneObject* CraftingStationImplementation::findCraftingTool(PlayerCreature* pla
 
 	}
 	return craftingTool;
+}
+
+void CraftingStationImplementation::createChildObjects() {
+
+	String ingredientHopperName = "object/tangible/hopper/crafting_station_ingredient_hopper_1.iff";
+	ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), 1);
+
+	addObject(ingredientHopper, 4);
 }

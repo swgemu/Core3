@@ -53,8 +53,8 @@ import server.zone.managers.object.ObjectManager;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.player.PlayerCreature;
 
-include server.zone.objects.manufactureschematic.ManufactureSchematic;
-include server.zone.objects.draftschematic.DraftSchematic;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.managers.crafting.schematicmap.SchematicMap;
 
 

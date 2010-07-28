@@ -21,6 +21,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -49,37 +63,65 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	bool isSpecial(const String& special);
 
 	bool isVulnerable(const String& vulnerability);
 
 	bool isArmorObject();
 
+	void setRating(int rate);
+
 	int getRating();
 
 	float getKinetic();
 
+	void setKinetic(float value);
+
 	float getEnergy();
+
+	void setEnergy(float value);
 
 	float getElectricity();
 
+	void setElectricity(float value);
+
 	float getStun();
+
+	void setStun(float value);
 
 	float getBlast();
 
+	void setBlast(float value);
+
 	float getHeat();
+
+	void setHeat(float value);
 
 	float getCold();
 
+	void setCold(float value);
+
 	float getAcid();
+
+	void setAcid(float value);
 
 	float getLightSaber();
 
+	void setLightSaber(float value);
+
 	int getHealthEncumbrance();
+
+	void setHealthEncumbrance(int encumber);
 
 	int getActionEncumbrance();
 
+	void setActionEncumbrance(int encumber);
+
 	int getMindEncumbrance();
+
+	void setMindEncumbrance(int encumber);
 
 protected:
 	ArmorObject(DummyConstructorParameter* param);
@@ -154,37 +196,71 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+private:
+	void setProtection(ManufactureSchematic* schematic, const String& type, float base);
+
+	void setProtectionValue(const String& type, float value);
+
+public:
 	bool isSpecial(const String& special);
 
 	bool isVulnerable(const String& vulnerability);
 
 	bool isArmorObject();
 
+	void setRating(int rate);
+
 	int getRating();
 
 	float getKinetic();
 
+	void setKinetic(float value);
+
 	float getEnergy();
+
+	void setEnergy(float value);
 
 	float getElectricity();
 
+	void setElectricity(float value);
+
 	float getStun();
+
+	void setStun(float value);
 
 	float getBlast();
 
+	void setBlast(float value);
+
 	float getHeat();
+
+	void setHeat(float value);
 
 	float getCold();
 
+	void setCold(float value);
+
 	float getAcid();
+
+	void setAcid(float value);
 
 	float getLightSaber();
 
+	void setLightSaber(float value);
+
 	int getHealthEncumbrance();
+
+	void setHealthEncumbrance(int encumber);
 
 	int getActionEncumbrance();
 
+	void setActionEncumbrance(int encumber);
+
 	int getMindEncumbrance();
+
+	void setMindEncumbrance(int encumber);
 
 	ArmorObject* _this;
 
@@ -227,37 +303,65 @@ public:
 
 	void initializeTransientMembers();
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	bool isSpecial(const String& special);
 
 	bool isVulnerable(const String& vulnerability);
 
 	bool isArmorObject();
 
+	void setRating(int rate);
+
 	int getRating();
 
 	float getKinetic();
 
+	void setKinetic(float value);
+
 	float getEnergy();
+
+	void setEnergy(float value);
 
 	float getElectricity();
 
+	void setElectricity(float value);
+
 	float getStun();
+
+	void setStun(float value);
 
 	float getBlast();
 
+	void setBlast(float value);
+
 	float getHeat();
+
+	void setHeat(float value);
 
 	float getCold();
 
+	void setCold(float value);
+
 	float getAcid();
+
+	void setAcid(float value);
 
 	float getLightSaber();
 
+	void setLightSaber(float value);
+
 	int getHealthEncumbrance();
+
+	void setHealthEncumbrance(int encumber);
 
 	int getActionEncumbrance();
 
+	void setActionEncumbrance(int encumber);
+
 	int getMindEncumbrance();
+
+	void setMindEncumbrance(int encumber);
 
 protected:
 	String _param0_isSpecial__String_;
