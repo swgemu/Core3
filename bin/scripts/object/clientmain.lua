@@ -1,6 +1,6 @@
 ObjectTemplates = { }
 
-function ObjectTemplates:addTemplate(obj, file)
+function ObjectTemplates:addClientTemplate(obj, file)
 	crc = crcString(file)
 	
 	--addTemplateCRC(file, obj)
