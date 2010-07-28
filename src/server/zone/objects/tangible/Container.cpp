@@ -8,6 +8,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 /*
  *	ContainerStub
  */

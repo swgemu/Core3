@@ -68,7 +68,7 @@ import system.util.Vector;
 import system.lang.Time;
 import server.zone.Zone;
 import system.util.SortedVector;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.creature.variables.CooldownTimerMap;
 include server.zone.objects.creature.buffs.BuffList;
 include server.zone.objects.creature.damageovertime.DamageOverTimeList;

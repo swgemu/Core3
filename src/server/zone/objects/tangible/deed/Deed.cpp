@@ -8,6 +8,8 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 /*
  *	DeedStub
  */

@@ -48,7 +48,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 
 class Container extends TangibleObject {
 	public Container() {

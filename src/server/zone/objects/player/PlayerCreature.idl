@@ -71,7 +71,7 @@ import server.zone.objects.group.GroupObject;
 import server.zone.objects.waypoint.WaypointObject;
 import system.lang.ref.Reference;
 import server.zone.objects.tangible.TangibleObject;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.player.TradeContainer;
 import server.zone.objects.area.ActiveArea;
 import server.zone.packets.object.ObjectMenuResponse;

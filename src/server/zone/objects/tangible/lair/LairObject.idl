@@ -47,7 +47,7 @@ package server.zone.objects.tangible.lair;
 import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.Zone;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 include server.zone.templates.tangible.LairObjectTemplate;
 import system.util.SortedVector;
 import system.util.Vector;

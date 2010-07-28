@@ -52,7 +52,7 @@ import server.zone.objects.intangible.IntangibleObject;
 include server.zone.templates.intangible.DraftSchematicObjectTemplate;
 include server.zone.objects.draftschematic.draftslot.DraftSlot;
 include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 
 import server.zone.objects.player.PlayerCreature;
 

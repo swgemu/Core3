@@ -141,6 +141,18 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace creature {
 namespace buffs {
@@ -182,8 +194,6 @@ using namespace server::zone::objects::tangible::weapon;
 #include "server/zone/objects/creature/CreaturePosture.h"
 
 #include "server/zone/objects/creature/CreatureState.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 

@@ -11,6 +11,12 @@
 #include "engine/engine.h"
 
 #include "LuaTemplate.h"
+#include "ChildObject.h"
+
+namespace server {
+ namespace zone {
+  namespace templates {
+
 
 class SharedObjectTemplate : public LuaTemplate {
 protected:
@@ -54,6 +60,8 @@ protected:
 	String fullTemplateString;
 
 	int templateType;
+
+	Vector<ChildObject> childObjects;
 
 public:
 	const static int SHOT = 0x1;
@@ -393,5 +401,11 @@ public:
 
 };
 
+
+  }
+ }
+}
+
+using namespace server::zone::templates;
 
 #endif /* SHAREDOBJECTTEMPLATE_H_ */

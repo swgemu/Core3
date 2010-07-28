@@ -51,6 +51,18 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace mission {
 
@@ -92,8 +104,6 @@ class MissionObjective;
 using namespace server::zone::objects::mission;
 
 #include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/templates/TemplateReference.h"
 

@@ -54,7 +54,7 @@ import engine.core.ManagedObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
 import server.zone.Zone;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 
 class VehicleObject extends CreatureObject {
 	protected int vehicleType;

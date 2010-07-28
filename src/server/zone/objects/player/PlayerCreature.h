@@ -207,6 +207,18 @@ using namespace server::zone::objects::tangible;
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace area {
 
@@ -258,8 +270,6 @@ using namespace server::zone::objects::creature::professions;
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/player/TradeContainer.h"
 

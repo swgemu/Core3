@@ -22,6 +22,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/creature/buffs/Buff.h"
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"

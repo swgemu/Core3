@@ -51,7 +51,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "engine/util/ObjectFactory.h"
+#include "SceneObjectFactory.h"
 
 class TemplateManager;
 
@@ -71,7 +71,7 @@ namespace zone {
 		TemplateManager* templateManager;
 
 	public:
-		ObjectFactory<SceneObject* (), uint32> objectFactory;
+		SceneObjectFactory<SceneObject* (), uint32> objectFactory;
 
 	private:
 		/**
