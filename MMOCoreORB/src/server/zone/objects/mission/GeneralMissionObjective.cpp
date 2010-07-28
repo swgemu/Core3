@@ -14,6 +14,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 
 #include "server/zone/objects/tangible/lair/LairObject.h"

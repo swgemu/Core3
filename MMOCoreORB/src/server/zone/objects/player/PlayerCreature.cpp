@@ -32,6 +32,8 @@
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/area/ActiveArea.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"

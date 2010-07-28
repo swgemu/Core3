@@ -79,7 +79,7 @@ import server.zone.objects.scene.Observable;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.variables.PendingTasksMap;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.scene.ObserverEventType;
 import server.zone.objects.area.ActiveArea;
 

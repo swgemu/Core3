@@ -27,6 +27,18 @@ using namespace server::zone::packets::scene;
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace player {
 
@@ -46,8 +58,6 @@ using namespace server::zone::objects::player;
 #include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
 
 #include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "engine/service/proto/BaseMessage.h"
 

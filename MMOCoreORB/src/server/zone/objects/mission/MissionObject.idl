@@ -51,7 +51,7 @@ import server.zone.objects.waypoint.WaypointObject;
 import server.zone.Zone;
 
 include server.zone.objects.scene.variables.StringId;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.player.PlayerCreature;
 import system.util.SortedVector;

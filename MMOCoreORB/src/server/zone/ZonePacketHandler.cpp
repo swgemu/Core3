@@ -110,7 +110,6 @@ which carries forward this exception.
 #include "packets/trade/AddItemMessageCallback.h"
 #include "packets/trade/GiveMoneyMessageCallback.h"
 
-
 #include "packets/auction/IsVendorOwnerMessageCallback.h"
 
 
@@ -124,6 +123,8 @@ ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplement
 
 	registerMessages();
 	registerObjectControllerMessages();
+
+	MessageCallbackFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServerImplementation*), uint32> messageCallbackFactory2;
 }
 
 void ZonePacketHandler::registerMessages() {
@@ -176,8 +177,8 @@ void ZonePacketHandler::registerMessages() {
 void ZonePacketHandler::registerObjectControllerMessages() {
 	info("registering ObjectController Messages");
 
-	ObjectControllerMessageCallback::objectMessageControllerFactory = new ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>();
-	ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory = ObjectControllerMessageCallback::objectMessageControllerFactory;
+	ObjectControllerMessageCallback::objectMessageControllerFactory = new MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>();
+	MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory = ObjectControllerMessageCallback::objectMessageControllerFactory;
 
 	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
 	objectMessageControllerFactory->registerObject<DataTransformWithParentCallback>(0xF1);

@@ -57,7 +57,7 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 include server.zone.objects.scene.variables.CustomizationVariables;
 include server.zone.objects.scene.variables.DeltaVector;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.templates.SharedObjectTemplate;
 

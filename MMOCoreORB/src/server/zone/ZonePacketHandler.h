@@ -46,7 +46,7 @@ which carries forward this exception.
 #define ZONEPACKETHANDLER_H_
 
 #include "engine/engine.h"
-#include "engine/util/ObjectFactory.h"
+#include "MessageCallbackFactory.h"
 
 #include "packets/MessageCallback.h"
 
@@ -61,7 +61,7 @@ class ZoneServer;
 
 		ZoneServer* server;
 
-		ObjectFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServerImplementation*), uint32> messageCallbackFactory;
+		MessageCallbackFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServerImplementation*), uint32> messageCallbackFactory;
 
 	public:
 		ZonePacketHandler() : Logger() {

@@ -10,6 +10,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/mission/MissionObserver.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"

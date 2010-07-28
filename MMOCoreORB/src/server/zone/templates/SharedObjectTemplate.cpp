@@ -65,4 +65,26 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	mapLocationsType1 = templateData->getIntField("mapLocationsType1");
 	mapLocationsType2 = templateData->getIntField("mapLocationsType2");
 	mapLocationsType3 = templateData->getIntField("mapLocationsType3");
+
+	LuaObject luaItemList = templateData->getObjectField("childObjects");
+
+	int size = luaItemList.getTableSize();
+
+	lua_State* L = luaItemList.getLuaState();
+
+	for (int i = 0; i < size; ++i) {
+		lua_rawgeti(L, -1, i + 1);
+		LuaObject a(L);
+
+		ChildObject object;
+		object.parseFromLua(&a);
+
+		//System::out << "adding spawning point" << endl;
+
+		childObjects.add(object);
+
+		a.pop();
+	}
+
+	luaItemList.pop();
 }

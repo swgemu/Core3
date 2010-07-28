@@ -47,7 +47,7 @@ package server.zone.objects.staticobject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 
 class StaticObject extends SceneObject {
 	public StaticObject() {

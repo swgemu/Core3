@@ -23,6 +23,18 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace creature {
 
@@ -50,8 +62,6 @@ class HealLairEvent;
 } // namespace server
 
 using namespace server::zone::objects::tangible::lair;
-
-#include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/templates/tangible/LairObjectTemplate.h"
 

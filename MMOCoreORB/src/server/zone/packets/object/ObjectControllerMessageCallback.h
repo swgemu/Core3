@@ -8,7 +8,7 @@
 #ifndef OBJECTCONTROLLERMESSAGECALLBACK_H_
 #define OBJECTCONTROLLERMESSAGECALLBACK_H_
 
-#include "engine/util/ObjectFactory.h"
+#include "server/zone/MessageCallbackFactory.h"
 
 #include "../MessageCallback.h"
 
@@ -28,7 +28,7 @@ public:
 		objectControllerCallback = NULL;
 	}
 
-	static ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory;
+	static MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory;
 
 	void parse(Message* message);
 

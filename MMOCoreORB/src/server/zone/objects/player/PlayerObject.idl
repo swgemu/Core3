@@ -64,7 +64,7 @@ include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
 import server.zone.Zone;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;

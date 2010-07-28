@@ -51,7 +51,7 @@ import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
 include server.zone.templates.TemplateReference;
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
 import server.zone.objects.tangible.lair.LairObject;
 

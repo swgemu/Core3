@@ -52,7 +52,7 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
-include server.zone.templates.SharedObjectTemplate;
+import server.zone.templates.SharedObjectTemplate;
 include server.zone.templates.tangible.SharedWeaponObjectTemplate;
 
 class WeaponObject extends TangibleObject {

@@ -91,7 +91,17 @@ class Zone;
 
 using namespace server::zone;
 
-#include "server/zone/templates/SharedObjectTemplate.h"
+namespace server {
+namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
