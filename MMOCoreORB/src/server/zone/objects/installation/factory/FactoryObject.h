@@ -11,16 +11,53 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 #include "server/zone/objects/installation/InstallationObject.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace installation {
+namespace factory {
 
 class FactoryObject : public InstallationObject {
 public:
 	FactoryObject();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	bool isFactory();
+
+	void createChildObjects();
+
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	void updateInstallationWork();
+
+	void updateHoppers(Time& workingTime, bool shutdownAfterUpdate);
+
+	void sendInsertManuSui(PlayerCreature* player);
+
+	void sendIngredientsNeededSui(PlayerCreature* player);
+
+	void sendIngredientHopper(PlayerCreature* player);
+
+	void sendOutputHopper(PlayerCreature* player);
+
+	void handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic);
+
+	void handleRemoveFactorySchem(PlayerCreature* player);
+
+	void handleOperateToggle(PlayerCreature* player);
+
+	void createNewObject();
 
 protected:
 	FactoryObject(DummyConstructorParameter* param);
@@ -30,24 +67,70 @@ protected:
 	friend class FactoryObjectHelper;
 };
 
+} // namespace factory
 } // namespace installation
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::installation;
+using namespace server::zone::objects::installation::factory;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace installation {
+namespace factory {
 
 class FactoryObjectImplementation : public InstallationObjectImplementation {
+protected:
+	Vector<int> craftingTabsSupported;
+
+	int timer;
 
 public:
 	FactoryObjectImplementation();
 
 	FactoryObjectImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	bool isFactory();
+
+	void createChildObjects();
+
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	void updateInstallationWork();
+
+	void updateHoppers(Time& workingTime, bool shutdownAfterUpdate);
+
+	void sendInsertManuSui(PlayerCreature* player);
+
+	void sendIngredientsNeededSui(PlayerCreature* player);
+
+	void sendIngredientHopper(PlayerCreature* player);
+
+	void sendOutputHopper(PlayerCreature* player);
+
+	void handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic);
+
+	void handleRemoveFactorySchem(PlayerCreature* player);
+
+	void handleOperateToggle(PlayerCreature* player);
+
+private:
+	void startFactory(PlayerCreature* player);
+
+	void stopFactory(PlayerCreature* player);
+
+public:
+	void createNewObject();
 
 	FactoryObject* _this;
 
@@ -88,6 +171,34 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	bool isFactory();
+
+	void createChildObjects();
+
+	void synchronizedUIListen(SceneObject* player, int value);
+
+	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	void updateInstallationWork();
+
+	void sendInsertManuSui(PlayerCreature* player);
+
+	void sendIngredientsNeededSui(PlayerCreature* player);
+
+	void sendIngredientHopper(PlayerCreature* player);
+
+	void sendOutputHopper(PlayerCreature* player);
+
+	void handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic);
+
+	void handleRemoveFactorySchem(PlayerCreature* player);
+
+	void handleOperateToggle(PlayerCreature* player);
+
+	void createNewObject();
+
 };
 
 class FactoryObjectHelper : public DistributedObjectClassHelper, public Singleton<FactoryObjectHelper> {
@@ -107,11 +218,12 @@ public:
 	friend class Singleton<FactoryObjectHelper>;
 };
 
+} // namespace factory
 } // namespace installation
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::installation;
+using namespace server::zone::objects::installation::factory;
 
 #endif /*FACTORYOBJECT_H_*/

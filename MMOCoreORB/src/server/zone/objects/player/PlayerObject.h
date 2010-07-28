@@ -109,8 +109,6 @@ using namespace server::zone;
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-#include "server/zone/managers/crafting/schematicmap/DraftSchematicGroup.h"
-
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"

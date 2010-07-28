@@ -53,11 +53,13 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 include server.zone.objects.scene.variables.CustomizationVariables;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.templates.SharedObjectTemplate;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -138,7 +140,6 @@ class TangibleObject extends SceneObject {
 		faction = 0;
 		level = 1;
 		useCount = 1;
-		
 		Logger.setLoggingName("TangibleObject");
 	}
 	
@@ -334,7 +335,7 @@ class TangibleObject extends SceneObject {
 	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
 	
 	@local
-	public abstract void updateCraftingValues(CraftingValues craftingValues) {
+	public abstract void updateCraftingValues(ManufactureSchematic schematic) {
 		error("Unhandled updateCraftingValues for this object type");
 	}
 	
@@ -452,6 +453,10 @@ class TangibleObject extends SceneObject {
 	
 	public string getCraftersSerial() {
 		return craftersSerial;
+	}
+	
+	public abstract void createChildObjects() {
+		return;
 	}
 }
 

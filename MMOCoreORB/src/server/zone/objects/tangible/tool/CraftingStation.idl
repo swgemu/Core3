@@ -48,7 +48,6 @@ import server.zone.objects.tangible.tool.ToolTangibleObject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.player.PlayerCreature;
-import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 
@@ -112,4 +111,5 @@ class CraftingStation extends ToolTangibleObject {
 	
 	public native SceneObject findCraftingTool(PlayerCreature player);
 	
+	public native void createChildObjects();
 }

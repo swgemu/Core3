@@ -13,19 +13,61 @@
 
 namespace server {
 namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
 namespace objects {
-namespace player {
+namespace draftschematic {
 
-class PlayerCreature;
+class DraftSchematic;
 
-} // namespace player
+} // namespace draftschematic
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::draftschematic;
 
-#include "server/zone/packets/scene/AttributeListMessage.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
+#include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/packets/object/ObjectControllerMessage.h"
 
@@ -35,21 +77,16 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
-#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/intangible/IntangibleObject.h"
 
 #include "system/lang/ref/Reference.h"
 
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
 namespace server {
 namespace zone {
-namespace object {
+namespace objects {
 namespace manufactureschematic {
-namespace ManufactureSchematic {
 
-class ManufactureSchematic : public SceneObject {
+class ManufactureSchematic : public IntangibleObject {
 public:
 	ManufactureSchematic();
 
@@ -62,6 +99,8 @@ public:
 	void synchronizedUIListen(SceneObject* player, int value);
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	bool isManufactureSchematic();
 
 	void setDraftSchematic(DraftSchematic* schematic);
 
@@ -81,6 +120,10 @@ public:
 
 	float getComplexity();
 
+	bool getFirstCraftingUpdate();
+
+	void setFirstCraftingUpdate();
+
 	bool isReadyForAssembly();
 
 	void setAssembled();
@@ -90,6 +133,10 @@ public:
 	void setCompleted();
 
 	bool isCompleted();
+
+	void setCrafter(PlayerCreature* player);
+
+	PlayerCreature* getCrafter();
 
 	CraftingValues* getCraftingValues();
 
@@ -103,6 +150,14 @@ public:
 
 	int getManufactureLimit();
 
+	void setPrototype(TangibleObject* tano);
+
+	void initializeFactoryIngredients();
+
+	int getFactoryIngredientsSize();
+
+	SceneObject* getFactoryIngredient(int i);
+
 protected:
 	ManufactureSchematic(DummyConstructorParameter* param);
 
@@ -111,25 +166,39 @@ protected:
 	friend class ManufactureSchematicHelper;
 };
 
-} // namespace ManufactureSchematic
 } // namespace manufactureschematic
-} // namespace object
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::object::manufactureschematic::ManufactureSchematic;
+using namespace server::zone::objects::manufactureschematic;
 
 namespace server {
 namespace zone {
-namespace object {
+namespace objects {
 namespace manufactureschematic {
-namespace ManufactureSchematic {
 
-class ManufactureSchematicImplementation : public SceneObjectImplementation {
+class ManufactureSchematicImplementation : public IntangibleObjectImplementation {
 protected:
+	ManagedReference<DraftSchematic* > draftSchematic;
+
+	ManagedReference<TangibleObject* > prototype;
+
+	float dataSize;
+
+	int manufactureLimit;
+
 	float complexity;
 
-	ManagedReference<DraftSchematic* > draftSchematic;
+	unsigned int crcToSend;
+
+	ManagedReference<PlayerCreature* > crafter;
+
+	bool firstCraftingUpdate;
+
+	Vector<ManagedReference<SceneObject* > > factoryIngredients;
+
+	IngredientSlots ingredientSlots;
 
 	bool assembled;
 
@@ -138,10 +207,6 @@ protected:
 	int experimentingCounter;
 
 	int experimentingCounterPrevious;
-
-	int manufactureLimit;
-
-	IngredientSlots ingredientSlots;
 
 	CraftingValues craftingValues;
 
@@ -164,6 +229,8 @@ public:
 
 	virtual void synchronizedUIStopListen(SceneObject* player, int value);
 
+	bool isManufactureSchematic();
+
 	void setDraftSchematic(DraftSchematic* schematic);
 
 	void initializeIngredientSlots(DraftSchematic* schematic);
@@ -182,6 +249,10 @@ public:
 
 	float getComplexity();
 
+	bool getFirstCraftingUpdate();
+
+	void setFirstCraftingUpdate();
+
 	bool isReadyForAssembly();
 
 	void setAssembled();
@@ -191,6 +262,10 @@ public:
 	void setCompleted();
 
 	bool isCompleted();
+
+	void setCrafter(PlayerCreature* player);
+
+	PlayerCreature* getCrafter();
 
 	CraftingValues* getCraftingValues();
 
@@ -203,6 +278,14 @@ public:
 	void setManufactureLimit(int limit);
 
 	int getManufactureLimit();
+
+	void setPrototype(TangibleObject* tano);
+
+	void initializeFactoryIngredients();
+
+	int getFactoryIngredientsSize();
+
+	SceneObject* getFactoryIngredient(int i);
 
 	ManufactureSchematic* _this;
 
@@ -237,7 +320,7 @@ protected:
 	friend class ManufactureSchematic;
 };
 
-class ManufactureSchematicAdapter : public SceneObjectAdapter {
+class ManufactureSchematicAdapter : public IntangibleObjectAdapter {
 public:
 	ManufactureSchematicAdapter(ManufactureSchematicImplementation* impl);
 
@@ -250,6 +333,8 @@ public:
 	void synchronizedUIListen(SceneObject* player, int value);
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	bool isManufactureSchematic();
 
 	void setDraftSchematic(DraftSchematic* schematic);
 
@@ -267,6 +352,10 @@ public:
 
 	float getComplexity();
 
+	bool getFirstCraftingUpdate();
+
+	void setFirstCraftingUpdate();
+
 	bool isReadyForAssembly();
 
 	void setAssembled();
@@ -277,6 +366,10 @@ public:
 
 	bool isCompleted();
 
+	void setCrafter(PlayerCreature* player);
+
+	PlayerCreature* getCrafter();
+
 	void setExperimentingCounter(int value);
 
 	int getExperimentingCounter();
@@ -286,6 +379,14 @@ public:
 	void setManufactureLimit(int limit);
 
 	int getManufactureLimit();
+
+	void setPrototype(TangibleObject* tano);
+
+	void initializeFactoryIngredients();
+
+	int getFactoryIngredientsSize();
+
+	SceneObject* getFactoryIngredient(int i);
 
 };
 
@@ -306,12 +407,11 @@ public:
 	friend class Singleton<ManufactureSchematicHelper>;
 };
 
-} // namespace ManufactureSchematic
 } // namespace manufactureschematic
-} // namespace object
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::object::manufactureschematic::ManufactureSchematic;
+using namespace server::zone::objects::manufactureschematic;
 
 #endif /*MANUFACTURESCHEMATIC_H_*/

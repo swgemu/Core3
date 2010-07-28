@@ -27,20 +27,6 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
-namespace packets {
-namespace scene {
-
-class AttributeListMessage;
-
-} // namespace scene
-} // namespace packets
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::packets::scene;
-
-namespace server {
-namespace zone {
 
 class Zone;
 
@@ -99,6 +85,8 @@ public:
 
 	SceneObject* findCraftingTool(PlayerCreature* player);
 
+	void createChildObjects();
+
 protected:
 	CraftingStation(DummyConstructorParameter* param);
 
@@ -153,6 +141,8 @@ public:
 
 	SceneObject* findCraftingTool(PlayerCreature* player);
 
+	void createChildObjects();
+
 	CraftingStation* _this;
 
 	operator const CraftingStation*();
@@ -205,6 +195,8 @@ public:
 	void setComplexityLevel(int level);
 
 	SceneObject* findCraftingTool(PlayerCreature* player);
+
+	void createChildObjects();
 
 };
 

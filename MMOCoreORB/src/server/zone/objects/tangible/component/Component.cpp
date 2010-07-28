@@ -106,12 +106,17 @@ bool Component::hasKey(const String& key) {
 		return ((ComponentImplementation*) _impl)->hasKey(key);
 }
 
-void Component::updateCraftingValues(CraftingValues* craftingValues) {
+void Component::updateCraftingValues(SceneObject* schematic) {
 	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, 11);
+		method.addObjectParameter(schematic);
+
+		method.executeWithVoidReturn();
 	} else
-		((ComponentImplementation*) _impl)->updateCraftingValues(craftingValues);
+		((ComponentImplementation*) _impl)->updateCraftingValues(schematic);
 }
 
 void Component::addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden) {
@@ -119,7 +124,7 @@ void Component::addProperty(const String& attributeName, const float value, cons
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addAsciiParameter(attributeName);
 		method.addFloatParameter(value);
 		method.addSignedIntParameter(precision);
@@ -136,7 +141,7 @@ float Component::getAttributeValue(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithFloatReturn();
@@ -149,7 +154,7 @@ int Component::getAttributePrecision(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithSignedIntReturn();
@@ -162,7 +167,7 @@ String Component::getAttributeTitle(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addAsciiParameter(attributeName);
 
 		method.executeWithAsciiReturn(_return_getAttributeTitle);
@@ -176,7 +181,7 @@ bool Component::getAttributeHidden(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithBooleanReturn();
@@ -189,7 +194,7 @@ void Component::addProperty(String& attribute, float value, int precision, Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addAsciiParameter(attribute);
 		method.addFloatParameter(value);
 		method.addSignedIntParameter(precision);
@@ -205,7 +210,7 @@ int Component::getPropertyCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -217,7 +222,7 @@ String Component::getProperty(const int j) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addSignedIntParameter(j);
 
 		method.executeWithAsciiReturn(_return_getProperty);
@@ -231,7 +236,7 @@ bool Component::changeAttributeValue(String& property, float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addAsciiParameter(property);
 		method.addFloatParameter(value);
 
@@ -364,30 +369,33 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(hasKey(inv->getAsciiParameter(_param0_hasKey__String_)));
 		break;
 	case 11:
-		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_bool_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_bool_), inv->getBooleanParameter());
+		updateCraftingValues((SceneObject*) inv->getObjectParameter());
 		break;
 	case 12:
-		resp->insertFloat(getAttributeValue(inv->getAsciiParameter(_param0_getAttributeValue__String_)));
+		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_bool_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_bool_), inv->getBooleanParameter());
 		break;
 	case 13:
-		resp->insertSignedInt(getAttributePrecision(inv->getAsciiParameter(_param0_getAttributePrecision__String_)));
+		resp->insertFloat(getAttributeValue(inv->getAsciiParameter(_param0_getAttributeValue__String_)));
 		break;
 	case 14:
-		resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(_param0_getAttributeTitle__String_)));
+		resp->insertSignedInt(getAttributePrecision(inv->getAsciiParameter(_param0_getAttributePrecision__String_)));
 		break;
 	case 15:
-		resp->insertBoolean(getAttributeHidden(inv->getAsciiParameter(_param0_getAttributeHidden__String_)));
+		resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(_param0_getAttributeTitle__String_)));
 		break;
 	case 16:
-		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
+		resp->insertBoolean(getAttributeHidden(inv->getAsciiParameter(_param0_getAttributeHidden__String_)));
 		break;
 	case 17:
-		resp->insertSignedInt(getPropertyCount());
+		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
 		break;
 	case 18:
-		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getPropertyCount());
 		break;
 	case 19:
+		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
+		break;
+	case 20:
 		resp->insertBoolean(changeAttributeValue(inv->getAsciiParameter(_param0_changeAttributeValue__String_float_), inv->getFloatParameter()));
 		break;
 	default:
@@ -415,6 +423,10 @@ bool ComponentAdapter::compare(Component* inCmpo) {
 
 bool ComponentAdapter::hasKey(const String& key) {
 	return ((ComponentImplementation*) impl)->hasKey(key);
+}
+
+void ComponentAdapter::updateCraftingValues(SceneObject* schematic) {
+	((ComponentImplementation*) impl)->updateCraftingValues(schematic);
 }
 
 void ComponentAdapter::addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden) {

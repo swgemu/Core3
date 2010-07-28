@@ -4,6 +4,10 @@
 
 #include "DraftSchematic.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	DraftSchematicStub
  */

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef INGREDIENTSLOT_H_
 #define INGREDIENTSLOT_H_
 
-#include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 class IngredientSlot : public Serializable, public Logger {
 

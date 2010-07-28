@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "ResourceManager.h"
 #include "ResourceShiftTask.h"
 #include "resourcespawner/SampleTask.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 
 void ResourceManagerImplementation::initialize() {
 	Lua::init();

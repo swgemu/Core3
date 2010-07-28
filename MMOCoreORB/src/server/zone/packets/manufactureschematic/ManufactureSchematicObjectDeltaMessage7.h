@@ -183,6 +183,12 @@ public:
 
 	}
 
+	void updateQuantity(int quantity) {
+
+		startUpdate(3);
+		insertInt(quantity);
+	}
+
 	void update4(int size, int counter, int slot) {
 
 		startUpdate(4);

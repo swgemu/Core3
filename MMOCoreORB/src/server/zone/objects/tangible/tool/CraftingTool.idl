@@ -47,13 +47,11 @@ package server.zone.objects.tangible.tool;
 
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-include server.zone.objects.draftschematic.DraftSchematic;
-include server.zone.objects.manufactureschematic.ManufactureSchematic;
-include server.zone.objects.player.PlayerCreature;
+import server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.tangible.tool.CraftingStation;
-import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.managers.crafting.CraftingManager;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 class CraftingTool extends ToolTangibleObject {
 	
@@ -129,8 +127,7 @@ class CraftingTool extends ToolTangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 	
-	@local
-	public native void updateCraftingValues(CraftingValues craftingValues);
+	public native void updateCraftingValues(ManufactureSchematic schematic);
 	
 	public boolean isCraftingTool() {
 		return true;
@@ -191,6 +188,8 @@ class CraftingTool extends ToolTangibleObject {
 
 	public native void createPrototype(PlayerCreature player, int clientCounter, int practice);
 
+	public native void createManfSchematic(PlayerCreature player, int clientCounter);
+	
 	public native void createObject(PlayerCreature player, int timer, boolean create);
 	
 	public native void depositObject(PlayerCreature player, boolean practice);

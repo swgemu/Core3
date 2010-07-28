@@ -47,7 +47,7 @@ package server.zone.objects.tangible.wearables;
 import server.zone.objects.tangible.wearables.WearableObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
-
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 class ClothingObject extends WearableObject {
 	public ClothingObject() {		
@@ -59,4 +59,9 @@ class ClothingObject extends WearableObject {
 		
 		Logger.setLoggingName("ClothingObject");
 	}
+	
+	public void updateCraftingValues(ManufactureSchematic schematic) {
+		super.updateCraftingValues(schematic);
+	}
+
 }

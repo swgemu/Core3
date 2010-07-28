@@ -69,7 +69,7 @@ int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* pla
 		return 1;
 
 	switch (selectedID) {
-	/*case 122:
+	/*case 121:
 		sendPermissionListTo(player, "ADMIN");
 		break;*/
 

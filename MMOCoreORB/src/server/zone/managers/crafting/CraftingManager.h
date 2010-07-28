@@ -63,9 +63,33 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
 
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace draftschematic {
+
+class DraftSchematic;
+
+} // namespace draftschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::draftschematic;
 
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 

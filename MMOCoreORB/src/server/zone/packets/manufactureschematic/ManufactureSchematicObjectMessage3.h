@@ -80,18 +80,18 @@ public:
 		setSize();
 	}
 
-	/*ManufactureSchematicObjectMessage3(DraftSchematic* draftSchematic, UnicodeString& playerName)
-			: BaseLineMessage(draftSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
+	ManufactureSchematicObjectMessage3(ManufactureSchematic* manufactureSchematic,
+			String playerName) : BaseLineMessage(manufactureSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
 
-		insertFloat(draftSchematic->getComplexity());
-		insertAscii(draftSchematic->getStfFile());
+		insertFloat(manufactureSchematic->getComplexity());
+		insertAscii(manufactureSchematic->getObjectNameStringIdFile());
 		insertInt(0);
-		insertAscii(draftSchematic->getStfName());
+		insertAscii(manufactureSchematic->getObjectNameStringIdName());
 
-		insertUnicode(draftSchematic->getCustomName());
+		insertUnicode(manufactureSchematic->getCustomObjectName());
 
 		insertInt(0);  // Unknown
-		insertInt(draftSchematic->getManufacturingLimit()); // Manufacturing Count
+		insertInt(manufactureSchematic->getManufactureLimit()); // Manufacturing Count
 		insertInt(1);
 		insertInt(1);
 		insertByte(0);
@@ -99,7 +99,7 @@ public:
 		insertAscii("crafting");
 		insertInt(0);
 		insertAscii("complexity");
-		insertFloat(draftSchematic->getComplexity());
+		insertFloat(manufactureSchematic->getComplexity());
 
 		//UnicodeString playerName = "Link";
 		insertUnicode(playerName);
@@ -109,7 +109,7 @@ public:
 		setSize();
 	}
 
-	ManufactureSchematicObjectMessage3(ManufactureSchematic* manufactureSchematic, UnicodeString& playerName)
+	/*ManufactureSchematicObjectMessage3(ManufactureSchematic* manufactureSchematic, UnicodeString& playerName)
 			: BaseLineMessage(manufactureSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
 
 		insertFloat(manufactureSchematic->getComplexity());

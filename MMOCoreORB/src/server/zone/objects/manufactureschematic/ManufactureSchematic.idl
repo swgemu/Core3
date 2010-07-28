@@ -42,32 +42,42 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.object.manufactureschematic.ManufactureSchematic;
+package server.zone.objects.manufactureschematic;
 
-include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.intangible.IntangibleObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.player.PlayerCreature;
+import system.lang.ref.Reference;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.TangibleObject;
+
 include server.zone.packets.object.ObjectControllerMessage;
 include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
 include server.zone.objects.manufactureschematic.IngredientSlots;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
-include server.zone.objects.tangible.TangibleObject;
-include system.lang.ref.Reference;
 
-import server.zone.objects.scene.SceneObject;
-include server.zone.objects.draftschematic.DraftSchematic;
-import server.zone.objects.player.PlayerCreature;
+class ManufactureSchematic extends IntangibleObject {
 
-class ManufactureSchematic extends SceneObject {
+	protected DraftSchematic draftSchematic;
+	protected TangibleObject prototype;
+	protected float dataSize;
+	protected int manufactureLimit;
+	protected float complexity;
+	protected unsigned int crcToSend; 
+	protected PlayerCreature crafter;
+	protected boolean firstCraftingUpdate;
+	
+	@dereferenced
+	protected Vector<SceneObject> factoryIngredients;
 
-	protected transient float complexity;
-	protected transient DraftSchematic draftSchematic;
+	@dereferenced
+	protected transient IngredientSlots ingredientSlots;
+	
 	protected transient boolean assembled;
 	protected transient boolean completed;
 	protected transient int experimentingCounter;
 	protected transient int experimentingCounterPrevious;
-	protected transient int manufactureLimit;
-	
-	@dereferenced
-	protected transient IngredientSlots ingredientSlots;
 	
 	@dereferenced
 	protected transient CraftingValues craftingValues;
@@ -79,7 +89,9 @@ class ManufactureSchematic extends SceneObject {
 	protected transient Vector<byte> customizationDefaultValues;
 	
 	public ManufactureSchematic() {
-		Logger.setLoggingName("ManufactureSchematic");	
+		Logger.setLoggingName("ManufactureSchematic");
+		prototype = null;
+		firstCraftingUpdate = false;
 	}
 
 	/**
@@ -127,13 +139,11 @@ class ManufactureSchematic extends SceneObject {
 	 */
 	public native abstract void synchronizedUIStopListen(SceneObject player, int value);
 	
-	
-	public void setDraftSchematic(DraftSchematic schematic) {
-		draftSchematic = schematic;
-		
-		if(draftSchematic != null)
-			initializeIngredientSlots(draftSchematic);
+	public boolean isManufactureSchematic() {
+		return true;
 	}
+	
+	public native void setDraftSchematic(DraftSchematic schematic);
 	
 	public native void initializeIngredientSlots(DraftSchematic schematic);
 	
@@ -162,6 +172,14 @@ class ManufactureSchematic extends SceneObject {
 		return complexity;
 	}
 	
+	public boolean getFirstCraftingUpdate() {
+		return firstCraftingUpdate;
+	}
+	
+	public void setFirstCraftingUpdate() {
+		firstCraftingUpdate = true;
+	}
+	
 	public native boolean isReadyForAssembly();
 	
 	public void setAssembled() {
@@ -178,6 +196,14 @@ class ManufactureSchematic extends SceneObject {
 	
 	public boolean isCompleted() {
 		return completed;
+	}
+	
+	public void setCrafter(PlayerCreature player) {
+		crafter = player;
+	}
+	
+	public PlayerCreature getCrafter() {
+		return crafter;
 	}
 	
 	@local
@@ -204,5 +230,17 @@ class ManufactureSchematic extends SceneObject {
 	
 	public int getManufactureLimit() {
 		return manufactureLimit;
+	}
+	
+	public native void setPrototype(TangibleObject tano);
+	
+	public native void initializeFactoryIngredients();
+	
+	public int getFactoryIngredientsSize() {
+		return factoryIngredients.size();
+	}
+	
+	public SceneObject getFactoryIngredient(int i) {
+		return factoryIngredients.get(i);
 	}
 }

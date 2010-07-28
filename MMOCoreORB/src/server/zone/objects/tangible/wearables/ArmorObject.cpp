@@ -6,6 +6,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 /*
  *	ArmorObjectStub
  */
@@ -50,12 +52,25 @@ void ArmorObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* o
 		((ArmorObjectImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
-bool ArmorObject::isSpecial(const String& special) {
+void ArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(schematic);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->updateCraftingValues(schematic);
+}
+
+bool ArmorObject::isSpecial(const String& special) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addAsciiParameter(special);
 
 		return method.executeWithBooleanReturn();
@@ -68,7 +83,7 @@ bool ArmorObject::isVulnerable(const String& vulnerability) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(vulnerability);
 
 		return method.executeWithBooleanReturn();
@@ -81,11 +96,24 @@ bool ArmorObject::isArmorObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((ArmorObjectImplementation*) _impl)->isArmorObject();
+}
+
+void ArmorObject::setRating(int rate) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addSignedIntParameter(rate);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setRating(rate);
 }
 
 int ArmorObject::getRating() {
@@ -93,7 +121,7 @@ int ArmorObject::getRating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -105,50 +133,27 @@ float ArmorObject::getKinetic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithFloatReturn();
 	} else
 		return ((ArmorObjectImplementation*) _impl)->getKinetic();
 }
 
-float ArmorObject::getEnergy() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((ArmorObjectImplementation*) _impl)->getEnergy();
-}
-
-float ArmorObject::getElectricity() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((ArmorObjectImplementation*) _impl)->getElectricity();
-}
-
-float ArmorObject::getStun() {
+void ArmorObject::setKinetic(float value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+		method.addFloatParameter(value);
 
-		return method.executeWithFloatReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getStun();
+		((ArmorObjectImplementation*) _impl)->setKinetic(value);
 }
 
-float ArmorObject::getBlast() {
+float ArmorObject::getEnergy() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -157,22 +162,23 @@ float ArmorObject::getBlast() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getBlast();
+		return ((ArmorObjectImplementation*) _impl)->getEnergy();
 }
 
-float ArmorObject::getHeat() {
+void ArmorObject::setEnergy(float value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
+		method.addFloatParameter(value);
 
-		return method.executeWithFloatReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getHeat();
+		((ArmorObjectImplementation*) _impl)->setEnergy(value);
 }
 
-float ArmorObject::getCold() {
+float ArmorObject::getElectricity() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -181,22 +187,23 @@ float ArmorObject::getCold() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getCold();
+		return ((ArmorObjectImplementation*) _impl)->getElectricity();
 }
 
-float ArmorObject::getAcid() {
+void ArmorObject::setElectricity(float value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
+		method.addFloatParameter(value);
 
-		return method.executeWithFloatReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getAcid();
+		((ArmorObjectImplementation*) _impl)->setElectricity(value);
 }
 
-float ArmorObject::getLightSaber() {
+float ArmorObject::getStun() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -205,7 +212,145 @@ float ArmorObject::getLightSaber() {
 
 		return method.executeWithFloatReturn();
 	} else
+		return ((ArmorObjectImplementation*) _impl)->getStun();
+}
+
+void ArmorObject::setStun(float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setStun(value);
+}
+
+float ArmorObject::getBlast() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getBlast();
+}
+
+void ArmorObject::setBlast(float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setBlast(value);
+}
+
+float ArmorObject::getHeat() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getHeat();
+}
+
+void ArmorObject::setHeat(float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setHeat(value);
+}
+
+float ArmorObject::getCold() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getCold();
+}
+
+void ArmorObject::setCold(float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setCold(value);
+}
+
+float ArmorObject::getAcid() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ArmorObjectImplementation*) _impl)->getAcid();
+}
+
+void ArmorObject::setAcid(float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setAcid(value);
+}
+
+float ArmorObject::getLightSaber() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+
+		return method.executeWithFloatReturn();
+	} else
 		return ((ArmorObjectImplementation*) _impl)->getLightSaber();
+}
+
+void ArmorObject::setLightSaber(float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setLightSaber(value);
 }
 
 int ArmorObject::getHealthEncumbrance() {
@@ -213,11 +358,24 @@ int ArmorObject::getHealthEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((ArmorObjectImplementation*) _impl)->getHealthEncumbrance();
+}
+
+void ArmorObject::setHealthEncumbrance(int encumber) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addSignedIntParameter(encumber);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setHealthEncumbrance(encumber);
 }
 
 int ArmorObject::getActionEncumbrance() {
@@ -225,11 +383,24 @@ int ArmorObject::getActionEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((ArmorObjectImplementation*) _impl)->getActionEncumbrance();
+}
+
+void ArmorObject::setActionEncumbrance(int encumber) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+		method.addSignedIntParameter(encumber);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setActionEncumbrance(encumber);
 }
 
 int ArmorObject::getMindEncumbrance() {
@@ -237,11 +408,24 @@ int ArmorObject::getMindEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((ArmorObjectImplementation*) _impl)->getMindEncumbrance();
+}
+
+void ArmorObject::setMindEncumbrance(int encumber) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 36);
+		method.addSignedIntParameter(encumber);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->setMindEncumbrance(encumber);
 }
 
 /*
@@ -331,114 +515,179 @@ void ArmorObjectImplementation::_serializationHelperMethod() {
 
 ArmorObjectImplementation::ArmorObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(81):  		healthEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(82):  		healthEncumbrance = 100;
 	healthEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(82):  		actionEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(83):  		actionEncumbrance = 100;
 	actionEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(83):  		mindEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(84):  		mindEncumbrance = 100;
 	mindEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(85):  		rating = LIGHT;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(86):  		rating = LIGHT;
 	rating = LIGHT;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(87):  		kinetic = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(88):  		kinetic = 0;
 	kinetic = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(88):  		energy = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(89):  		energy = 0;
 	energy = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(89):  		electricity = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(90):  		electricity = 0;
 	electricity = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(90):  		stun = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(91):  		stun = 0;
 	stun = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(91):  		blast = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(92):  		blast = 0;
 	blast = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(92):  		heat = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(93):  		heat = 0;
 	heat = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(93):  		cold = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(94):  		cold = 0;
 	cold = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(94):  		acid = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(95):  		acid = 0;
 	acid = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(95):  		lightSaber = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(96):  		lightSaber = 0;
 	lightSaber = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(101):  		Logger.setLoggingName("ArmorObject");
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(102):  		Logger.setLoggingName("ArmorObject");
 	Logger::setLoggingName("ArmorObject");
 }
 
 bool ArmorObjectImplementation::isSpecial(const String& special) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(126):  		return specialResistsVector.contains(special);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(133):  		return specialResistsVector.contains(special);
 	return (&specialResistsVector)->contains(special);
 }
 
 bool ArmorObjectImplementation::isVulnerable(const String& vulnerability) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(130):  		return vulnerabilitesVector.contains(vulnerability);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(137):  		return vulnerabilitesVector.contains(vulnerability);
 	return (&vulnerabilitesVector)->contains(vulnerability);
 }
 
 bool ArmorObjectImplementation::isArmorObject() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(134):  		return true;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(141):  		return true;
 	return true;
 }
 
+void ArmorObjectImplementation::setRating(int rate) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(146):  		rating = rate;
+	rating = rate;
+}
+
 int ArmorObjectImplementation::getRating() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(138):  		return rating;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(150):  		return rating;
 	return rating;
 }
 
 float ArmorObjectImplementation::getKinetic() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(142):  		return kinetic;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(154):  		return kinetic;
 	return kinetic;
 }
 
+void ArmorObjectImplementation::setKinetic(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(158):  		kinetic = value;
+	kinetic = value;
+}
+
 float ArmorObjectImplementation::getEnergy() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(146):  		return energy;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(162):  		return energy;
 	return energy;
 }
 
+void ArmorObjectImplementation::setEnergy(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(166):  		energy = value;
+	energy = value;
+}
+
 float ArmorObjectImplementation::getElectricity() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(150):  		return electricity;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(170):  		return electricity;
 	return electricity;
 }
 
+void ArmorObjectImplementation::setElectricity(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(174):  		electricity = value;
+	electricity = value;
+}
+
 float ArmorObjectImplementation::getStun() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(154):  		return stun;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(178):  		return stun;
 	return stun;
 }
 
+void ArmorObjectImplementation::setStun(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(182):  		stun = value;
+	stun = value;
+}
+
 float ArmorObjectImplementation::getBlast() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(158):  		return blast;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(186):  		return blast;
 	return blast;
 }
 
+void ArmorObjectImplementation::setBlast(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(190):  		blast = value;
+	blast = value;
+}
+
 float ArmorObjectImplementation::getHeat() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(162):  		return heat;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(194):  		return heat;
 	return heat;
 }
 
+void ArmorObjectImplementation::setHeat(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(198):  		heat = value;
+	heat = value;
+}
+
 float ArmorObjectImplementation::getCold() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(166):  		return cold;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(202):  		return cold;
 	return cold;
 }
 
+void ArmorObjectImplementation::setCold(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(206):  		cold = value;
+	cold = value;
+}
+
 float ArmorObjectImplementation::getAcid() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(170):  		return acid;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(210):  		return acid;
 	return acid;
 }
 
+void ArmorObjectImplementation::setAcid(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(214):  		acid = value;
+	acid = value;
+}
+
 float ArmorObjectImplementation::getLightSaber() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(174):  		return lightSaber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(218):  		return lightSaber;
 	return lightSaber;
 }
 
+void ArmorObjectImplementation::setLightSaber(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(222):  		lightSaber = value;
+	lightSaber = value;
+}
+
 int ArmorObjectImplementation::getHealthEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(178):  		return healthEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(226):  		return healthEncumbrance;
 	return healthEncumbrance;
 }
 
+void ArmorObjectImplementation::setHealthEncumbrance(int encumber) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(230):  		healthEncumbrance = encumber;
+	healthEncumbrance = encumber;
+}
+
 int ArmorObjectImplementation::getActionEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(182):  		return actionEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(234):  		return actionEncumbrance;
 	return actionEncumbrance;
 }
 
+void ArmorObjectImplementation::setActionEncumbrance(int encumber) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(238):  		actionEncumbrance = encumber;
+	actionEncumbrance = encumber;
+}
+
 int ArmorObjectImplementation::getMindEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(186):  		return mindEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(242):  		return mindEncumbrance;
 	return mindEncumbrance;
+}
+
+void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(246):  		mindEncumbrance = encumber;
+	mindEncumbrance = encumber;
 }
 
 /*
@@ -456,52 +705,94 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		initializeTransientMembers();
 		break;
 	case 7:
-		resp->insertBoolean(isSpecial(inv->getAsciiParameter(_param0_isSpecial__String_)));
+		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertBoolean(isVulnerable(inv->getAsciiParameter(_param0_isVulnerable__String_)));
+		resp->insertBoolean(isSpecial(inv->getAsciiParameter(_param0_isSpecial__String_)));
 		break;
 	case 9:
-		resp->insertBoolean(isArmorObject());
+		resp->insertBoolean(isVulnerable(inv->getAsciiParameter(_param0_isVulnerable__String_)));
 		break;
 	case 10:
-		resp->insertSignedInt(getRating());
+		resp->insertBoolean(isArmorObject());
 		break;
 	case 11:
-		resp->insertFloat(getKinetic());
+		setRating(inv->getSignedIntParameter());
 		break;
 	case 12:
-		resp->insertFloat(getEnergy());
+		resp->insertSignedInt(getRating());
 		break;
 	case 13:
-		resp->insertFloat(getElectricity());
+		resp->insertFloat(getKinetic());
 		break;
 	case 14:
-		resp->insertFloat(getStun());
+		setKinetic(inv->getFloatParameter());
 		break;
 	case 15:
-		resp->insertFloat(getBlast());
+		resp->insertFloat(getEnergy());
 		break;
 	case 16:
-		resp->insertFloat(getHeat());
+		setEnergy(inv->getFloatParameter());
 		break;
 	case 17:
-		resp->insertFloat(getCold());
+		resp->insertFloat(getElectricity());
 		break;
 	case 18:
-		resp->insertFloat(getAcid());
+		setElectricity(inv->getFloatParameter());
 		break;
 	case 19:
-		resp->insertFloat(getLightSaber());
+		resp->insertFloat(getStun());
 		break;
 	case 20:
-		resp->insertSignedInt(getHealthEncumbrance());
+		setStun(inv->getFloatParameter());
 		break;
 	case 21:
-		resp->insertSignedInt(getActionEncumbrance());
+		resp->insertFloat(getBlast());
 		break;
 	case 22:
+		setBlast(inv->getFloatParameter());
+		break;
+	case 23:
+		resp->insertFloat(getHeat());
+		break;
+	case 24:
+		setHeat(inv->getFloatParameter());
+		break;
+	case 25:
+		resp->insertFloat(getCold());
+		break;
+	case 26:
+		setCold(inv->getFloatParameter());
+		break;
+	case 27:
+		resp->insertFloat(getAcid());
+		break;
+	case 28:
+		setAcid(inv->getFloatParameter());
+		break;
+	case 29:
+		resp->insertFloat(getLightSaber());
+		break;
+	case 30:
+		setLightSaber(inv->getFloatParameter());
+		break;
+	case 31:
+		resp->insertSignedInt(getHealthEncumbrance());
+		break;
+	case 32:
+		setHealthEncumbrance(inv->getSignedIntParameter());
+		break;
+	case 33:
+		resp->insertSignedInt(getActionEncumbrance());
+		break;
+	case 34:
+		setActionEncumbrance(inv->getSignedIntParameter());
+		break;
+	case 35:
 		resp->insertSignedInt(getMindEncumbrance());
+		break;
+	case 36:
+		setMindEncumbrance(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -512,6 +803,10 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 void ArmorObjectAdapter::initializeTransientMembers() {
 	((ArmorObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void ArmorObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
+	((ArmorObjectImplementation*) impl)->updateCraftingValues(schematic);
 }
 
 bool ArmorObjectAdapter::isSpecial(const String& special) {
@@ -526,6 +821,10 @@ bool ArmorObjectAdapter::isArmorObject() {
 	return ((ArmorObjectImplementation*) impl)->isArmorObject();
 }
 
+void ArmorObjectAdapter::setRating(int rate) {
+	((ArmorObjectImplementation*) impl)->setRating(rate);
+}
+
 int ArmorObjectAdapter::getRating() {
 	return ((ArmorObjectImplementation*) impl)->getRating();
 }
@@ -534,48 +833,96 @@ float ArmorObjectAdapter::getKinetic() {
 	return ((ArmorObjectImplementation*) impl)->getKinetic();
 }
 
+void ArmorObjectAdapter::setKinetic(float value) {
+	((ArmorObjectImplementation*) impl)->setKinetic(value);
+}
+
 float ArmorObjectAdapter::getEnergy() {
 	return ((ArmorObjectImplementation*) impl)->getEnergy();
+}
+
+void ArmorObjectAdapter::setEnergy(float value) {
+	((ArmorObjectImplementation*) impl)->setEnergy(value);
 }
 
 float ArmorObjectAdapter::getElectricity() {
 	return ((ArmorObjectImplementation*) impl)->getElectricity();
 }
 
+void ArmorObjectAdapter::setElectricity(float value) {
+	((ArmorObjectImplementation*) impl)->setElectricity(value);
+}
+
 float ArmorObjectAdapter::getStun() {
 	return ((ArmorObjectImplementation*) impl)->getStun();
+}
+
+void ArmorObjectAdapter::setStun(float value) {
+	((ArmorObjectImplementation*) impl)->setStun(value);
 }
 
 float ArmorObjectAdapter::getBlast() {
 	return ((ArmorObjectImplementation*) impl)->getBlast();
 }
 
+void ArmorObjectAdapter::setBlast(float value) {
+	((ArmorObjectImplementation*) impl)->setBlast(value);
+}
+
 float ArmorObjectAdapter::getHeat() {
 	return ((ArmorObjectImplementation*) impl)->getHeat();
+}
+
+void ArmorObjectAdapter::setHeat(float value) {
+	((ArmorObjectImplementation*) impl)->setHeat(value);
 }
 
 float ArmorObjectAdapter::getCold() {
 	return ((ArmorObjectImplementation*) impl)->getCold();
 }
 
+void ArmorObjectAdapter::setCold(float value) {
+	((ArmorObjectImplementation*) impl)->setCold(value);
+}
+
 float ArmorObjectAdapter::getAcid() {
 	return ((ArmorObjectImplementation*) impl)->getAcid();
+}
+
+void ArmorObjectAdapter::setAcid(float value) {
+	((ArmorObjectImplementation*) impl)->setAcid(value);
 }
 
 float ArmorObjectAdapter::getLightSaber() {
 	return ((ArmorObjectImplementation*) impl)->getLightSaber();
 }
 
+void ArmorObjectAdapter::setLightSaber(float value) {
+	((ArmorObjectImplementation*) impl)->setLightSaber(value);
+}
+
 int ArmorObjectAdapter::getHealthEncumbrance() {
 	return ((ArmorObjectImplementation*) impl)->getHealthEncumbrance();
+}
+
+void ArmorObjectAdapter::setHealthEncumbrance(int encumber) {
+	((ArmorObjectImplementation*) impl)->setHealthEncumbrance(encumber);
 }
 
 int ArmorObjectAdapter::getActionEncumbrance() {
 	return ((ArmorObjectImplementation*) impl)->getActionEncumbrance();
 }
 
+void ArmorObjectAdapter::setActionEncumbrance(int encumber) {
+	((ArmorObjectImplementation*) impl)->setActionEncumbrance(encumber);
+}
+
 int ArmorObjectAdapter::getMindEncumbrance() {
 	return ((ArmorObjectImplementation*) impl)->getMindEncumbrance();
+}
+
+void ArmorObjectAdapter::setMindEncumbrance(int encumber) {
+	((ArmorObjectImplementation*) impl)->setMindEncumbrance(encumber);
 }
 
 /*

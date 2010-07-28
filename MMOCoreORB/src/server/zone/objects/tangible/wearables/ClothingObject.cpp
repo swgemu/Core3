@@ -6,6 +6,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 /*
  *	ClothingObjectStub
  */
@@ -32,6 +34,19 @@ void ClothingObject::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		((ClothingObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
+void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(schematic);
+
+		method.executeWithVoidReturn();
+	} else
+		((ClothingObjectImplementation*) _impl)->updateCraftingValues(schematic);
 }
 
 /*
@@ -116,6 +131,11 @@ void ClothingObjectImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("ClothingObject");
 }
 
+void ClothingObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+	// server/zone/objects/tangible/wearables/ClothingObject.idl(64):  		super.updateCraftingValues(schematic);
+	WearableObjectImplementation::updateCraftingValues(schematic);
+}
+
 /*
  *	ClothingObjectAdapter
  */
@@ -130,6 +150,9 @@ Packet* ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -139,6 +162,10 @@ Packet* ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void ClothingObjectAdapter::initializeTransientMembers() {
 	((ClothingObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void ClothingObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
+	((ClothingObjectImplementation*) impl)->updateCraftingValues(schematic);
 }
 
 /*

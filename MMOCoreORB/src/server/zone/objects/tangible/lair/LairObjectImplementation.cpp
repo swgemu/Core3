@@ -12,7 +12,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/NonPlayerCreatureObject.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
-#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"+
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "HealLairEvent.h"
 
 void LairObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

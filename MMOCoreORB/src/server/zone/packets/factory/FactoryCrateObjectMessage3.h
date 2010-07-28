@@ -49,11 +49,11 @@ which carries forward this exception.
 
 #include "../tangible/TangibleObjectMessage3.h"
 
-#include "../../objects/tangible/TangibleObject.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 
 class FactoryCrateObjectMessage3 : public TangibleObjectMessage3 {
 public:
-	FactoryCrateObjectMessage3(TangibleObject* tano)
+	FactoryCrateObjectMessage3(FactoryCrate* tano)
 			: TangibleObjectMessage3(tano, 0x46435954, 0x0B) {
 
 		setSize();
