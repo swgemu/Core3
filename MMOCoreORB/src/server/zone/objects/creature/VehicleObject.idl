@@ -140,6 +140,9 @@ class VehicleObject extends CreatureObject {
 	 * @return returns true if the creature object can attack this 
 	 */
 	public boolean isAttackableBy(CreatureObject object) {
+		if (super.linkedCreature == null)
+			return false;
+			
 		return super.linkedCreature.isAttackableBy(object);
 	}
 	

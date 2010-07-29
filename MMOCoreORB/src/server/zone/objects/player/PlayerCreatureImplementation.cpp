@@ -253,6 +253,9 @@ void PlayerCreatureImplementation::activateRecovery() {
 void PlayerCreatureImplementation::unloadSpawnedChildren() {
 	SceneObject* datapad = getSlottedObject("datapad");
 
+	if (datapad == NULL)
+		return;
+
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		SceneObject* object = datapad->getContainerObject(i);
 
@@ -269,7 +272,10 @@ void PlayerCreatureImplementation::unload() {
 
 	SceneObject* savedParent = NULL;
 
-	getPlayerObject()->notifyOffline();
+	PlayerObject* ghost = getPlayerObject();
+
+	if (ghost != NULL)
+		ghost->notifyOffline();
 
 	if (isRidingMount()) {
 		executeObjectControllerAction(String("dismount").hashCode());
@@ -510,6 +516,9 @@ void PlayerCreatureImplementation::notifySceneReady() {
 	sendMessage(msg);
 
 	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
+	if (playerObject == NULL)
+		return;
+
 	playerObject->sendFriendLists();
 }
 

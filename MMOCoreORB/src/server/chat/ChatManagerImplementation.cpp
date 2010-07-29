@@ -356,6 +356,9 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		String firstName = playerCreature->getFirstName().toLowerCase();
 		PlayerObject* myGhost = playerCreature->getPlayerObject();
 
+		if (myGhost == NULL)
+			return;
+
 		Locker zoneLocker(zone);
 
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
@@ -367,6 +370,9 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 				if (player->isInRange(creature, 128) || player->getParent() != NULL || creature->getParent() != NULL) {
 
 					PlayerObject* ghost = creature->getPlayerObject();
+
+					if (ghost == NULL)
+						continue;
 
 					if (!ghost->isIgnoring(firstName)) {
 						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2, myGhost->getLanguageID());

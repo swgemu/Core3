@@ -305,6 +305,9 @@ void WeaponObjectImplementation::updateCraftingValues(ManufactureSchematic* sche
 bool WeaponObjectImplementation::isCertifiedFor(PlayerCreature* object) {
 	PlayerObject* ghost = object->getPlayerObject();
 
+	if (ghost == NULL)
+		return false;
+
 	Vector<String>* certificationsRequired = weaponTemplate->getCertificationsRequired();
 
 	for (int i = 0; i < certificationsRequired->size(); ++i) {
