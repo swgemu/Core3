@@ -114,6 +114,10 @@ void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClos
 	if (isStaticObject())
 		return;
 
+
+	if (getParent() == NULL)
+		return;
+
 	// Scene Create
 	BaseMessage* create = new SceneObjectCreateMessage(getObjectID(), 0x3819C409);
 	player->sendMessage(create);

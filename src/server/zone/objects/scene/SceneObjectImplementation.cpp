@@ -696,7 +696,7 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 
 		movementCounter = 0;
 
-		if (parent == NULL || !parent->isCellObject()) {
+		if (parent == NULL || !parent->isCellObject() || parent->getParent() == NULL) {
 			zone->insert(this);
 			zone->inRange(this, 256);
 		} else if (parent->isCellObject()) {
@@ -768,8 +768,10 @@ void SceneObjectImplementation::removeFromZone() {
 		BuildingObject* building = (BuildingObject*)parent->getParent();
 
 		//par = parent;
-
-		removeFromBuilding(building);
+		if (building != NULL)
+			removeFromBuilding(building);
+		else
+			zone->remove(this);
 	} else
 		zone->remove(this);
 
@@ -779,7 +781,7 @@ void SceneObjectImplementation::removeFromZone() {
 		if (obj != this)
 			obj->removeInRangeObject(this);
 
-		removeInRangeObject(obj);
+		QuadTreeEntry::removeInRangeObject((int)0);
 	}
 
 	zone->dropSceneObject(_this);
@@ -858,7 +860,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
 	ManagedReference<SceneObject*> objectKeeper = object;
 
-	if (object->getParent() != _this) {
+	if (object->getParent() != _this && object->getParent() != NULL) {
 		error("trying to remove an object but i am not the parent");
 		object->getParent()->info("i am the parent", true);
 		return false;

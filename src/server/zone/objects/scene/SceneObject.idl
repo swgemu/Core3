@@ -86,7 +86,6 @@ import server.zone.objects.area.ActiveArea;
 class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
 
-	@weakReference
 	protected Zone zone;
 
 	@weakReference

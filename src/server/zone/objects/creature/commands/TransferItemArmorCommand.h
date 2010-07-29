@@ -123,6 +123,9 @@ public:
 
 					ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 
+					if (objectToRemove == NULL)
+						return GENERALERROR;
+
 					if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
 						return GENERALERROR;
 				}

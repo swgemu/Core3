@@ -370,7 +370,13 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 		prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
 				draftschematic->getTanoCRC(), 0));
+
+		if (prototype == NULL )
+			return;
+
+
 		prototype->createChildObjects();
+
 
 		if (manufactureSchematic == NULL) {
 			player->sendSystemMessage("ui_craft", "err_no_manf_schematic");

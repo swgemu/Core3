@@ -36,7 +36,7 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 }
 
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	info("building sendto..", true);
+	info("building sendto..");
 
 	if (!isStaticBuilding()) { // send Baselines etc..
 		info("sending building object create");
@@ -59,9 +59,11 @@ void BuildingObjectImplementation::removeFromZone() {
 		CellObject* cell = cells.get(i);
 
 		while (cell->getContainerObjectsSize() > 0) {
-			SceneObject* obj = cell->getContainerObject(0);
+			ManagedReference<SceneObject*> obj = cell->getContainerObject(0);
 
 			obj->removeFromZone();
+
+			cell->removeObject(obj);
 		}
 	}
 
