@@ -110,6 +110,8 @@ void GeneralMissionObjectiveImplementation::abort() {
 		PlayerCreature* player = getPlayerOwner();
 
 		if (lairObject != NULL) {
+			ManagedReference<SceneObject*> lairH = lairObject.get();
+
 			Locker locker(lairObject);
 
 			lairObject->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
