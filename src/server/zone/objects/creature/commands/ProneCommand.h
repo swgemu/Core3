@@ -71,7 +71,7 @@ public:
 			ZoneServer* zserv = server->getZoneServer();
 
 			String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";
-			CharacterBuilderTerminal* blueFrog = (CharacterBuilderTerminal*) zserv->createObject(blueFrogTemplate.hashCode(), 0);
+			ManagedReference<CharacterBuilderTerminal*> blueFrog = (CharacterBuilderTerminal*) zserv->createObject(blueFrogTemplate.hashCode(), 0);
 
 			if (blueFrog == NULL)
 				return GENERALERROR;
@@ -80,7 +80,7 @@ public:
 			float y = creature->getPositionY();
 			float z = creature->getPositionZ();//creature->getZone()->getHeight(x, y);
 
-			SceneObject* parent = creature->getParent();
+			ManagedReference<SceneObject*> parent = creature->getParent();
 
 			if (parent != NULL && parent->isCellObject())
 				parent->addObject(blueFrog, -1);

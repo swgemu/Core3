@@ -842,6 +842,9 @@ void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* playe
 	CloningBuildingObject* closestCloning = zone->getNearestCloningBuilding(player);
 	CloningBuildingObject* preDesignatedFacility = NULL;
 
+	if (closestCloning == NULL)
+		return;
+
 	UnicodeString name;
 	StringId* objectName = closestCloning->getObjectName();
 

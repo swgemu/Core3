@@ -41,6 +41,13 @@ public:
 
 			Locker _locker(player);
 
+			if (player->getPlayerObject() == NULL) {
+				_locker.release();
+
+				//oldClient->disconnect(),
+				return;
+			}
+
 			ManagedReference<ZoneClientSession*> oldClient = player->getClient();
 
 			if (oldClient != NULL && client != oldClient) {
@@ -102,6 +109,9 @@ public:
 			chatManager->loadMail(player);
 
 			PlayerObject* ghost = player->getPlayerObject();
+			if (ghost == NULL)
+				return;
+
 			ghost->notifyOnline();
 
 			PlayerManager* playerManager = zoneServer->getPlayerManager();

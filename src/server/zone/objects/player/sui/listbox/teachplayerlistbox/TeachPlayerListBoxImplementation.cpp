@@ -78,6 +78,9 @@ bool TeachPlayerListBoxImplementation::generateSkillList(PlayerCreature* teacher
 		if (student->hasSkillBox(sBox->getName()))
 			continue;
 
+		if (student->getSlottedObject("ghost") == NULL)
+			continue;
+
 		/*
 		 * Cannot teach them a skill that they dont have enough xp for
 		 */
