@@ -77,6 +77,9 @@ public:
 
 		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
+		if (object == NULL)
+			return INVALIDTARGET;
+
 		if (!object->isVehicleObject() /* && !object->isPetObject() */)
 			return GENERALERROR;
 
