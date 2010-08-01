@@ -11,7 +11,33 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace factorycrate {
+
+class FactoryCrate;
+
+} // namespace factorycrate
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::factorycrate;
 
 #include "server/zone/objects/installation/InstallationObject.h"
 
@@ -87,6 +113,10 @@ protected:
 
 	int timer;
 
+	ManagedReference<PlayerCreature* > currentUser;
+
+	int currentRunCount;
+
 public:
 	FactoryObjectImplementation();
 
@@ -125,13 +155,23 @@ public:
 	void handleOperateToggle(PlayerCreature* player);
 
 private:
-	void startFactory(PlayerCreature* player);
+	void startFactory();
 
-	void stopFactory(PlayerCreature* player);
+	void stopFactory(const String& message, const String& tt, const String& to, const int di);
 
 public:
 	void createNewObject();
 
+private:
+	FactoryCrate* locateCrateInOutputHopper(TangibleObject* prototype);
+
+	FactoryCrate* createNewFactoryCrate(int type);
+
+	bool removeIngredientsFromHopper(ManufactureSchematic* schematic);
+
+	void updateOperators(ManufactureSchematic* schematic, FactoryCrate* crate);
+
+public:
 	FactoryObject* _this;
 
 	operator const FactoryObject*();

@@ -129,14 +129,17 @@ void ResourceContainerImplementation::split(PlayerCreature* playerCreature, int 
 void ResourceContainerImplementation::combine(PlayerCreature* player, ResourceContainer* fromContainer) {
 	Locker _locker(_this);
 
-	ManagedReference<SceneObject*> inventory =
-			player->getSlottedObject("inventory");
+	ManagedReference<SceneObject*> parent =
+			fromContainer->getParent();
 
 	setQuantity(getQuantity() + fromContainer->getQuantity(), player);
 	fromContainer->setQuantity(0);
 
-	Locker _inventorylocker(inventory);
-	inventory->removeObject(fromContainer, true);
+	if(parent != NULL) {
+		Locker _parentlocker(parent);
+		parent->removeObject(fromContainer, true);
+	}
+
 	fromContainer->destroyObjectFromDatabase(true);
 }
 

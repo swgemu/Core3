@@ -68,6 +68,10 @@ public:
 		addIntUpdate(4, condition);
 	}
 
+	void updateManufactureLimit(int limit) {
+		addIntUpdate(5, limit);
+	}
+
 	void updateCraftingValues(ManufactureSchematic* manufactureSchematic){
 
 		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();

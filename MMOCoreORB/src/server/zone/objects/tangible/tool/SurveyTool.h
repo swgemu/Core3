@@ -95,6 +95,8 @@ public:
 
 	static const int FUSION = 9;
 
+	static const int CREATURE = -1;
+
 	SurveyTool();
 
 	void initializeTransientMembers();
@@ -211,6 +213,8 @@ public:
 	static const int WIND = 8;
 
 	static const int FUSION = 9;
+
+	static const int CREATURE = -1;
 
 	SurveyToolImplementation();
 

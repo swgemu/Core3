@@ -65,7 +65,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //PLACEBATTLEFIELDSTRUCTURECOMMAND_H_

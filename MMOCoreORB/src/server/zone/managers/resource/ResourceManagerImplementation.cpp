@@ -263,7 +263,7 @@ uint64 ResourceManagerImplementation::getAvailablePowerFromPlayer(PlayerCreature
 			ResourceSpawn* spawn = rcno->getSpawnObject();
 
 			if (spawn->isEnergy()) {
-				int PE = spawn->getAttributeValue(3); // potential energy
+				int PE = spawn->getValueOf(3); // potential energy
 
 				if (PE > 500)
 					power += (unsigned long long) ( (PE /* * 1.0 */) / 500.0 * (rcno->getQuantity() /* * 1.0 */) );
