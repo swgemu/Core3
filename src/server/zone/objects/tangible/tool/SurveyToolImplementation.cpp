@@ -207,6 +207,10 @@ void SurveyToolImplementation::setRange(int r) {
 	}
 
 	if (range >= 320) {
+		points = 5;
+	}
+
+	if (range >= 384) {
 		points = 6;
 	}
 }
@@ -363,11 +367,10 @@ void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int v
 	newwaypoint->setCustomName(UnicodeString("Resource Survey"));
 	newwaypoint->setPlanetCRC(Planet::getPlanetCRC(Planet::getPlanetName(player->getZone()->getZoneID())));
 	newwaypoint->setPosition(richSampleLocation->getPositionX(), 0, richSampleLocation->getPositionY());
-	newwaypoint->setColor(WaypointObject::COLOR_ORANGE);
+	newwaypoint->setColor(WaypointObject::COLOR_BLUE);
 	newwaypoint->setActive(true);
 
 	player->getPlayerObject()->addWaypoint(newwaypoint, true);
-	player->setSurveyWaypoint(newwaypoint);
 	player->sendSystemMessage("survey", "node_waypoint");
 
 	// Player must be kneeling to sample

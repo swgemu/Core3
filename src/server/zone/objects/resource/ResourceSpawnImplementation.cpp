@@ -228,9 +228,6 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
 
    	++containerReferenceCount;
 
-   	newResource->updateToDatabaseWithoutChildren();
-   	updateToDatabaseWithoutChildren();
-
    	return newResource;
 }
 

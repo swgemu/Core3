@@ -69,12 +69,25 @@ bool FactoryCrate::isFactoryCrate() {
 		return ((FactoryCrateImplementation*) _impl)->isFactoryCrate();
 }
 
-TangibleObject* FactoryCrate::getPrototype() {
+void FactoryCrate::setPrototype(TangibleObject* object) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryCrateImplementation*) _impl)->setPrototype(object);
+}
+
+TangibleObject* FactoryCrate::getPrototype() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -162,8 +175,13 @@ bool FactoryCrateImplementation::isFactoryCrate() {
 	return true;
 }
 
+void FactoryCrateImplementation::setPrototype(TangibleObject* object) {
+	// server/zone/objects/factorycrate/FactoryCrate.idl(76):  		prototype = object;
+	prototype = object;
+}
+
 TangibleObject* FactoryCrateImplementation::getPrototype() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(76):  		return prototype;
+	// server/zone/objects/factorycrate/FactoryCrate.idl(80):  		return prototype;
 	return prototype;
 }
 
@@ -188,6 +206,9 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isFactoryCrate());
 		break;
 	case 9:
+		setPrototype((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 10:
 		resp->insertLong(getPrototype()->_getObjectID());
 		break;
 	default:
@@ -207,6 +228,10 @@ void FactoryCrateAdapter::sendBaselinesTo(SceneObject* player) {
 
 bool FactoryCrateAdapter::isFactoryCrate() {
 	return ((FactoryCrateImplementation*) impl)->isFactoryCrate();
+}
+
+void FactoryCrateAdapter::setPrototype(TangibleObject* object) {
+	((FactoryCrateImplementation*) impl)->setPrototype(object);
 }
 
 TangibleObject* FactoryCrateAdapter::getPrototype() {

@@ -102,12 +102,25 @@ void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* pla
 		harvestedResource->updateToDatabase();
 	}
 
-	ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(_this);
+	if (stackQuantity > 0) {
 
-	rcnod3->setQuantity(stackQuantity);
-	rcnod3->close();
+		ResourceContainerObjectDeltaMessage3* rcnod3 =
+				new ResourceContainerObjectDeltaMessage3(_this);
 
-	player->sendMessage(rcnod3);
+		rcnod3->setQuantity(stackQuantity);
+		rcnod3->close();
+
+		player->sendMessage(rcnod3);
+
+	} else {
+
+		if(getParent() != NULL) {
+			getParent()->removeObject(_this, true);
+			setParent(NULL);
+		}
+
+		destroyObjectFromDatabase(true);
+	}
 }
 
 void ResourceContainerImplementation::split(PlayerCreature* playerCreature, int newStackSize) {
@@ -121,7 +134,9 @@ void ResourceContainerImplementation::split(PlayerCreature* playerCreature, int 
 
 	newResource->sendTo(playerCreature, true);
 	inventory->addObject(newResource, -1, true);
-	newResource->updateToDatabase();
+
+   	newResource->updateToDatabaseAllObjects(true);
+   	updateToDatabaseAllObjects(true);
 
 	setQuantity(getQuantity() - newStackSize, playerCreature);
 }

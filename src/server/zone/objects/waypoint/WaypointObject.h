@@ -72,6 +72,8 @@ public:
 
 	void setCustomName(const UnicodeString& name);
 
+	UnicodeString getCustomName();
+
 	void setColor(byte newColor);
 
 	void setActive(byte newStatus);
@@ -82,6 +84,8 @@ protected:
 	WaypointObject(DummyConstructorParameter* param);
 
 	virtual ~WaypointObject();
+
+	UnicodeString _return_getCustomName;
 
 	friend class WaypointObjectHelper;
 };
@@ -139,6 +143,8 @@ public:
 
 	void setCustomName(const UnicodeString& name);
 
+	UnicodeString getCustomName();
+
 	void setColor(byte newColor);
 
 	void setActive(byte newStatus);
@@ -189,6 +195,8 @@ public:
 	void setPlanetCRC(unsigned int crc);
 
 	void setCustomName(const UnicodeString& name);
+
+	UnicodeString getCustomName();
 
 	void setColor(byte newColor);
 

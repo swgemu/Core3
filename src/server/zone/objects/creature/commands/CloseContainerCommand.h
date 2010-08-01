@@ -80,7 +80,7 @@ public:
 		try {
 			Locker clocker(container, creature);
 
-
+			container->closeContainerTo((PlayerCreature*)creature, false);
 			container->notifyCloseContainer((PlayerCreature*)creature);
 
 

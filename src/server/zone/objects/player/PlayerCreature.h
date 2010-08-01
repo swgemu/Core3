@@ -514,8 +514,6 @@ public:
 
 	SurveyTool* getSurveyTool();
 
-	void setSurveyWaypoint(WaypointObject* waypoint);
-
 	void clearTradeContainer();
 
 	void setTeachingOrLearning(bool value);
@@ -621,8 +619,6 @@ protected:
 	SortedVector<ManagedReference<PlayerCreature* > > duelList;
 
 	ManagedWeakReference<SurveyTool* > surveyTool;
-
-	ManagedWeakReference<WaypointObject* > surveyWaypoint;
 
 	ManagedReference<CraftingTool* > lastCraftingToolUsed;
 
@@ -860,8 +856,6 @@ public:
 	void setSurveyTool(SurveyTool* tool);
 
 	SurveyTool* getSurveyTool();
-
-	void setSurveyWaypoint(WaypointObject* waypoint);
 
 	void clearTradeContainer();
 
@@ -1117,8 +1111,6 @@ public:
 	void setSurveyTool(SurveyTool* tool);
 
 	SurveyTool* getSurveyTool();
-
-	void setSurveyWaypoint(WaypointObject* waypoint);
 
 	void setTeachingOrLearning(bool value);
 
