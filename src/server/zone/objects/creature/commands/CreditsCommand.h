@@ -72,18 +72,22 @@ public:
 
 			StringTokenizer args(arguments.toString());
 
-			if(!object->isPlayerCreature()) {
+			if(object == NULL || !object->isPlayerCreature()) {
 
 				String firstName;
-				args.getStringToken(firstName);
-				player = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+				if(args.hasMoreTokens()) {
+					args.getStringToken(firstName);
+					player = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+				}
 
 			} else {
 				player = (PlayerCreature*) object.get();
 			}
 
-			if (player == NULL)
+			if (player == NULL) {
+				creature->sendSystemMessage("invalid arguments for credits command:  /credits <firstname> <add/subtract> <amount> <bank/cash>");
 				return GENERALERROR;
+			}
 
 			String action;
 			args.getStringToken(action);

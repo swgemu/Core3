@@ -60,6 +60,12 @@ public:
 	DraftSchematicGroup() {
 
 	}
+
+	void print() {
+		for(int i = 0; i < size(); ++i) {
+			System::out << get(i)->getCustomName() << endl;
+		}
+	}
 };
 
 #endif /* DRAFTSCHEMATICGROUP_H_ */

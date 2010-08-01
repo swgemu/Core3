@@ -62,6 +62,8 @@ public:
 
 	bool isFactoryCrate();
 
+	void setPrototype(TangibleObject* object);
+
 	TangibleObject* getPrototype();
 
 protected:
@@ -102,6 +104,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	virtual bool isFactoryCrate();
+
+	void setPrototype(TangibleObject* object);
 
 	TangibleObject* getPrototype();
 
@@ -149,6 +153,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	bool isFactoryCrate();
+
+	void setPrototype(TangibleObject* object);
 
 	TangibleObject* getPrototype();
 

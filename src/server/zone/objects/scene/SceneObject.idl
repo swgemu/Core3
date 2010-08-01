@@ -727,7 +727,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	/**
 	 * Closes the container of a player
 	 */
-	public abstract native void closeContainerTo(PlayerCreature player);
+	public abstract native void closeContainerTo(PlayerCreature player, boolean notify = true);
 	
 	/**
 	 * Inserts this object into zone

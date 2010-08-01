@@ -17,6 +17,9 @@
 #include "server/zone/packets/installation/InstallationObjectMessage6.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
+#include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+
 
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
@@ -187,42 +190,13 @@ void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 	player->sendMessage(schematics->generateMessage());
 }
 
-void FactoryObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
-	if (!player->isPlayerCreature() || !isOnAdminList((CreatureObject*)player))
-		return;
-
-	if(getContainerObjectsSize() == 0) {
-		stopFactory("manf_error", "", "", -1);
-		return;
-	}
-
-	addOperator((PlayerCreature*) player);
-
-	updateInstallationWork();
-
-	activateUiSync();
-}
-
-void FactoryObjectImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
-	if (!player->isPlayerCreature())
-		return;
-
-	removeOperator((PlayerCreature*) player);
-}
-
 void FactoryObjectImplementation::updateInstallationWork() {
 	Time timeToWorkTill;
 	bool shutdownAfterWork = updateMaintenance(timeToWorkTill);
 
-	updateHoppers(timeToWorkTill, shutdownAfterWork);
-}
-
-void FactoryObjectImplementation::updateHoppers(Time& workingTime, bool shutdownAfterUpdate) {
-
-	if(shutdownAfterUpdate)
+	if(shutdownAfterWork)
 		stopFactory("", "", "", -1);
 }
-
 /*
  * Opens a SUI with all manufacturing schematics available for the player to insert into factory
  */
@@ -375,9 +349,10 @@ void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
 		startFactory();
 		player->sendSystemMessage("manf_station", "activated");
 	} else {
-		currentUser = NULL;
+
 		stopFactory("manf_done", getObjectName()->getStringID(), "", currentRunCount);
 		player->sendSystemMessage("manf_station", "deactivated");
+		currentUser = NULL;
 	}
 }
 
@@ -399,7 +374,7 @@ void FactoryObjectImplementation::startFactory() {
 	createFactoryObjectTask->setReentrant();
 	addPendingTask("createFactoryObject", createFactoryObjectTask);
 
-	updateToDatabaseAllObjects(false);
+	updateToDatabaseAllObjects(true);
 }
 
 void FactoryObjectImplementation::stopFactory(const String& message, const String& tt, const String& to, const int di) {
@@ -428,6 +403,8 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 		UnicodeString subject = "@system_msg:manf_done_sub";
 		chatManager->sendMail(getObjectName()->getStringID(), subject, emailBody, currentUser->getFirstName());
 	}
+
+	updateToDatabaseAllObjects(true);
 }
 
 void FactoryObjectImplementation::createNewObject() {
@@ -452,28 +429,27 @@ void FactoryObjectImplementation::createNewObject() {
 		return;
 	}
 
-	ManagedReference<FactoryCrate* > crate = locateCrateInOutputHopper(prototype);
-
-	if(crate == NULL)
-		crate = createNewFactoryCrate(prototype->getGameObjectType());
-
-	if(crate == NULL) {
-		stopFactory("manf_error_7", "", "", -1);
-		return;
-	}
-
 	if(removeIngredientsFromHopper(schematic)) {
 
-		crate->setUseCount(crate->getUseCount() + 1);
+		ManagedReference<FactoryCrate* > crate = locateCrateInOutputHopper(prototype);
+
+		if(crate == NULL)
+			crate = createNewFactoryCrate(prototype->getGameObjectType(), prototype);
+		else
+			crate->setUseCount(crate->getUseCount() + 1);
+
+		if(crate == NULL) {
+			stopFactory("manf_error_7", "", "", -1);
+			return;
+		}
 
 		Reference<Task* > pending = getPendingTask("createFactoryObject");
 
-		if(pending != NULL && pending->isQueued())
-			pending->reschedule(timer);
+		if(pending != NULL)
+			pending->reschedule(timer * 1000);
 		else
 			stopFactory("manf_error", "", "", -1);
 
-		updateOperators(schematic, crate);
 		currentRunCount++;
 	}
 
@@ -508,7 +484,7 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 	return NULL;
 }
 
-FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(int type) {
+FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, TangibleObject* prototype) {
 
 	String file;
 
@@ -531,7 +507,23 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(int type) {
 	else
 		file = "object/factory/factory_crate_generic_items.iff";
 
-	ManagedReference<FactoryCrate* > crate = (FactoryCrate*) server->getZoneServer()->createObject(file.hashCode(), 2);
+	ObjectManager* objectManager = ObjectManager::instance();
+
+	FactoryCrate* crate = (FactoryCrate*) server->getZoneServer()->createObject(file.hashCode(), 2);
+
+	TangibleObject* protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
+
+	crate->setPrototype(protoclone);
+
+	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
+
+	if(outputHopper == NULL) {
+		stopFactory("manf_error_6", "", "", -1);
+		return false;
+	}
+
+	outputHopper->addObject(crate, -1, false);
+	broadcastObject(crate, true);
 
 	return crate;
 }
@@ -567,7 +559,11 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 				ResourceContainer* rcnoIngredient = (ResourceContainer*) ingredient.get();
 				ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
 
+				if(rcnoIngredient == NULL || rcnoObject == NULL)
+					continue;
+
 				if(rcnoIngredient->getSpawnName() == rcnoObject->getSpawnName()) {
+System::out << "Needs: " << rcnoIngredient->getSpawnName() << ":" << rcnoIngredient->getQuantity() << " Found: " << rcnoObject->getSpawnName() << " " << rcnoObject->getQuantity() << endl;
 
 					if(rcnoObject->getQuantity() < rcnoIngredient->getQuantity()) {
 						if(rcnoObject->getSpawnName() != "")
@@ -578,7 +574,13 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 					}
 
 					found = true;
-					alteredObjects.put(rcnoObject, rcnoIngredient->getQuantity());
+					int quantity = rcnoIngredient->getQuantity();
+
+					if(alteredObjects.contains(rcnoObject)) {
+						quantity += alteredObjects.get(rcnoObject);
+					}
+
+					alteredObjects.put(rcnoObject, quantity);
 					break;
 				}
 
@@ -590,7 +592,7 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 					TangibleObject* tanoObject = (TangibleObject*) object.get();
 
 					if(tanoIngredient->getCraftersSerial() == tanoObject->getCraftersSerial()) {
-
+System::out << tanoObject->getObjectNameStringIdName() << " " << tanoObject->getUseCount() << endl;
 						if(tanoObject->getUseCount() < tanoIngredient->getUseCount()) {
 							if(tanoObject->getCustomObjectName().toString() == "")
 								stopFactory("manf_no_component", getObjectName()->getStringID(), tanoObject->getObjectName()->getStringID(), -1);
@@ -621,25 +623,24 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 			ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
 			int currentQuantity = rcnoObject->getQuantity();
 			rcnoObject->setQuantity(currentQuantity - quantity);
+System::out << rcnoObject->getSpawnName() << " " << currentQuantity << "->" << rcnoObject->getQuantity() << endl;
+			ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(rcnoObject);
+			rcnod3->setQuantity(rcnoObject->getQuantity());
+			rcnod3->close();
+			broadcastMessage(rcnod3, true);
 
 		} else {
 
 			TangibleObject* tanoObject = (TangibleObject*) object.get();
 			int currentQuantity = tanoObject->getUseCount();
 			tanoObject->setUseCount(currentQuantity - quantity);
+System::out << tanoObject->getObjectNameStringIdName() << " " << currentQuantity << "->" << tanoObject->getUseCount() << endl;
+			TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(tanoObject);
+			dtano3->setQuantity(tanoObject->getUseCount());
+			dtano3->close();
+			broadcastMessage(dtano3, true);
 		}
 	}
 
 	return true;
-}
-
-void FactoryObjectImplementation::updateOperators(ManufactureSchematic* schematic, FactoryCrate* crate) {
-
-	ManufactureSchematicObjectDeltaMessage3* msco3 = new ManufactureSchematicObjectDeltaMessage3(schematic->getObjectID());
-	msco3->updateManufactureLimit(schematic->getManufactureLimit());
-	broadcastToOperators(msco3);
-
-	FactoryCrateObjectDeltaMessage3* fcty3 = new FactoryCrateObjectDeltaMessage3(crate);
-	fcty3->setQuantity(crate->getUseCount());
-	broadcastToOperators(fcty3);
 }

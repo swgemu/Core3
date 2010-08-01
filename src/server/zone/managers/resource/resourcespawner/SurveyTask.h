@@ -77,8 +77,6 @@ public:
 
 		if (waypoint != NULL) {
 			Locker playerLocker(playerCreature);
-			// Add and display new waypoint
-			playerCreature->setSurveyWaypoint(waypoint);
 
 			playerCreature->getPlayerObject()->addWaypoint(waypoint, true);
 
