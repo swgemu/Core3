@@ -375,7 +375,8 @@ void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* player, const in
 
 void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) {
 
-	if(player->getHAM(CreatureAttribute::MIND) < 100 || resname == "") {
+	if(player->getHAM(CreatureAttribute::MIND) < 100) {
+		player->setPosture(CreaturePosture::UPRIGHT, true);
 		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
 	}
@@ -473,6 +474,7 @@ void ResourceSpawner::sendSample(PlayerCreature* player, const String& resname, 
 	}
 
 	if(player->getHAM(CreatureAttribute::ACTION) < 200) {
+		player->setPosture(CreaturePosture::UPRIGHT, true);
 		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
 	}
