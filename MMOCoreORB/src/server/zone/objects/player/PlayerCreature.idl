@@ -137,8 +137,6 @@ class PlayerCreature extends CreatureObject {
 	/// Reference to last used Survey Tool
 	@weakReference
 	protected SurveyTool surveyTool;
-	@weakReference
-	protected WaypointObject surveyWaypoint;
 
 	protected transient CraftingTool lastCraftingToolUsed;
 	
@@ -670,14 +668,6 @@ class PlayerCreature extends CreatureObject {
 		return surveyTool;
 	}
 	
-	/**
-	 * Set active survey waypoint, this is set whenever
-	 * a SurveyTool is used and a deposit > 10% is found
-	 */
-	public void setSurveyWaypoint(WaypointObject waypoint) {
-		surveyWaypoint = waypoint;
-	}
-	
 	@local
 	public void clearTradeContainer() {
 		tradeContainer.clear();
@@ -695,9 +685,7 @@ class PlayerCreature extends CreatureObject {
 	/**
 	 * Returns the active SurveyWaypoint
 	 */
-	public WaypointObject getSurveyWaypoint() {
-		return surveyWaypoint;
-	}
+	public native WaypointObject getSurveyWaypoint();
 	
 	public CreatureObject getConversatingCreature() {
 		return conversatingCreature;

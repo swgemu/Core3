@@ -79,12 +79,25 @@ void WaypointObject::setCustomName(const UnicodeString& name) {
 		((WaypointObjectImplementation*) _impl)->setCustomName(name);
 }
 
-void WaypointObject::setColor(byte newColor) {
+UnicodeString WaypointObject::getCustomName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+
+		method.executeWithUnicodeReturn(_return_getCustomName);
+		return _return_getCustomName;
+	} else
+		return ((WaypointObjectImplementation*) _impl)->getCustomName();
+}
+
+void WaypointObject::setColor(byte newColor) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addByteParameter(newColor);
 
 		method.executeWithVoidReturn();
@@ -97,7 +110,7 @@ void WaypointObject::setActive(byte newStatus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addByteParameter(newStatus);
 
 		method.executeWithVoidReturn();
@@ -110,7 +123,7 @@ void WaypointObject::setUnknown(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -214,18 +227,23 @@ void WaypointObjectImplementation::setCustomName(const UnicodeString& name) {
 	customName = name;
 }
 
+UnicodeString WaypointObjectImplementation::getCustomName() {
+	// server/zone/objects/waypoint/WaypointObject.idl(51):  		return customName;
+	return customName;
+}
+
 void WaypointObjectImplementation::setColor(byte newColor) {
-	// server/zone/objects/waypoint/WaypointObject.idl(51):  		color = newColor;
+	// server/zone/objects/waypoint/WaypointObject.idl(55):  		color = newColor;
 	color = newColor;
 }
 
 void WaypointObjectImplementation::setActive(byte newStatus) {
-	// server/zone/objects/waypoint/WaypointObject.idl(55):  		active = newStatus;
+	// server/zone/objects/waypoint/WaypointObject.idl(59):  		active = newStatus;
 	active = newStatus;
 }
 
 void WaypointObjectImplementation::setUnknown(unsigned long long id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(59):  		unknown = id;
+	// server/zone/objects/waypoint/WaypointObject.idl(63):  		unknown = id;
 	unknown = id;
 }
 
@@ -250,12 +268,15 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setCustomName(inv->getUnicodeParameter(_param0_setCustomName__UnicodeString_));
 		break;
 	case 9:
-		setColor(inv->getByteParameter());
+		resp->insertUnicode(getCustomName());
 		break;
 	case 10:
-		setActive(inv->getByteParameter());
+		setColor(inv->getByteParameter());
 		break;
 	case 11:
+		setActive(inv->getByteParameter());
+		break;
+	case 12:
 		setUnknown(inv->getUnsignedLongParameter());
 		break;
 	default:
@@ -275,6 +296,10 @@ void WaypointObjectAdapter::setPlanetCRC(unsigned int crc) {
 
 void WaypointObjectAdapter::setCustomName(const UnicodeString& name) {
 	((WaypointObjectImplementation*) impl)->setCustomName(name);
+}
+
+UnicodeString WaypointObjectAdapter::getCustomName() {
+	return ((WaypointObjectImplementation*) impl)->getCustomName();
 }
 
 void WaypointObjectAdapter::setColor(byte newColor) {

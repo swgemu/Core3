@@ -47,6 +47,10 @@ class WaypointObject extends IntangibleObject {
 		customName = name;
 	}
 	
+	public unicode getCustomName() {
+		return customName;
+	}
+	
 	public void setColor(byte newColor) {
 		color = newColor;
 	}

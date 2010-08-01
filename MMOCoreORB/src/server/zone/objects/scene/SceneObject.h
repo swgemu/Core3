@@ -686,7 +686,7 @@ public:
 
 	void openContainerTo(PlayerCreature* player);
 
-	void closeContainerTo(PlayerCreature* player);
+	void closeContainerTo(PlayerCreature* player, bool notify = true);
 
 	void insertToZone(Zone* zone);
 
@@ -1519,7 +1519,7 @@ public:
 
 	virtual void openContainerTo(PlayerCreature* player);
 
-	virtual void closeContainerTo(PlayerCreature* player);
+	virtual void closeContainerTo(PlayerCreature* player, bool notify = true);
 
 	virtual void insertToZone(Zone* zone);
 
@@ -1892,7 +1892,7 @@ public:
 
 	void openContainerTo(PlayerCreature* player);
 
-	void closeContainerTo(PlayerCreature* player);
+	void closeContainerTo(PlayerCreature* player, bool notify);
 
 	void insertToZone(Zone* zone);
 

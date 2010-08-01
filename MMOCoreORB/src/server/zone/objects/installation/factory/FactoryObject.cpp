@@ -78,52 +78,16 @@ void FactoryObject::createChildObjects() {
 		((FactoryObjectImplementation*) _impl)->createChildObjects();
 }
 
-void FactoryObject::synchronizedUIListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(value);
-
-		method.executeWithVoidReturn();
-	} else
-		((FactoryObjectImplementation*) _impl)->synchronizedUIListen(player, value);
-}
-
-void FactoryObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(value);
-
-		method.executeWithVoidReturn();
-	} else
-		((FactoryObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
-}
-
 void FactoryObject::updateInstallationWork() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 9);
 
 		method.executeWithVoidReturn();
 	} else
 		((FactoryObjectImplementation*) _impl)->updateInstallationWork();
-}
-
-void FactoryObject::updateHoppers(Time& workingTime, bool shutdownAfterUpdate) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((FactoryObjectImplementation*) _impl)->updateHoppers(workingTime, shutdownAfterUpdate);
 }
 
 void FactoryObject::sendInsertManuSui(PlayerCreature* player) {
@@ -131,7 +95,7 @@ void FactoryObject::sendInsertManuSui(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -144,7 +108,7 @@ void FactoryObject::sendIngredientsNeededSui(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -157,7 +121,7 @@ void FactoryObject::sendIngredientHopper(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -170,7 +134,7 @@ void FactoryObject::sendOutputHopper(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -183,7 +147,7 @@ void FactoryObject::handleInsertFactorySchem(PlayerCreature* player, Manufacture
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addObjectParameter(schematic);
 
@@ -197,7 +161,7 @@ void FactoryObject::handleRemoveFactorySchem(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -210,7 +174,7 @@ void FactoryObject::handleOperateToggle(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -223,7 +187,7 @@ void FactoryObject::createNewObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 17);
 
 		method.executeWithVoidReturn();
 	} else
@@ -335,36 +299,30 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		createChildObjects();
 		break;
 	case 9:
-		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
-		break;
-	case 10:
-		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
-		break;
-	case 11:
 		updateInstallationWork();
 		break;
-	case 12:
+	case 10:
 		sendInsertManuSui((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 13:
+	case 11:
 		sendIngredientsNeededSui((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 14:
+	case 12:
 		sendIngredientHopper((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 15:
+	case 13:
 		sendOutputHopper((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 16:
+	case 14:
 		handleInsertFactorySchem((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case 17:
+	case 15:
 		handleRemoveFactorySchem((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 18:
+	case 16:
 		handleOperateToggle((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 19:
+	case 17:
 		createNewObject();
 		break;
 	default:
@@ -384,14 +342,6 @@ bool FactoryObjectAdapter::isFactory() {
 
 void FactoryObjectAdapter::createChildObjects() {
 	((FactoryObjectImplementation*) impl)->createChildObjects();
-}
-
-void FactoryObjectAdapter::synchronizedUIListen(SceneObject* player, int value) {
-	((FactoryObjectImplementation*) impl)->synchronizedUIListen(player, value);
-}
-
-void FactoryObjectAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
-	((FactoryObjectImplementation*) impl)->synchronizedUIStopListen(player, value);
 }
 
 void FactoryObjectAdapter::updateInstallationWork() {

@@ -157,6 +157,18 @@ void SchematicMap::mapDraftSchematic(DraftSchematic* schematic) {
 	}
 
 	schematicIdMap.put(schematic->getSchematicID(), schematic);
+
+	/// Food tool exception, stupid SOE
+	if(schematic->getTanoCRC() == 1552915488) {
+		DraftSchematicGroup* group = groupMap.get("craftArtisanToolGroupA");
+
+		if (group == NULL) {
+			group = new DraftSchematicGroup();
+			groupMap.put("craftArtisanToolGroupA", group);
+		}
+
+		group->add(schematic);
+	}
 }
 
 void SchematicMap::addSchematics(PlayerObject* playerObject,

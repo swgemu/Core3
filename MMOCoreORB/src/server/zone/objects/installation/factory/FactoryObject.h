@@ -61,13 +61,7 @@ public:
 
 	void createChildObjects();
 
-	void synchronizedUIListen(SceneObject* player, int value);
-
-	void synchronizedUIStopListen(SceneObject* player, int value);
-
 	void updateInstallationWork();
-
-	void updateHoppers(Time& workingTime, bool shutdownAfterUpdate);
 
 	void sendInsertManuSui(PlayerCreature* player);
 
@@ -132,13 +126,7 @@ public:
 
 	void createChildObjects();
 
-	void synchronizedUIListen(SceneObject* player, int value);
-
-	void synchronizedUIStopListen(SceneObject* player, int value);
-
 	void updateInstallationWork();
-
-	void updateHoppers(Time& workingTime, bool shutdownAfterUpdate);
 
 	void sendInsertManuSui(PlayerCreature* player);
 
@@ -165,11 +153,9 @@ public:
 private:
 	FactoryCrate* locateCrateInOutputHopper(TangibleObject* prototype);
 
-	FactoryCrate* createNewFactoryCrate(int type);
+	FactoryCrate* createNewFactoryCrate(unsigned int type, TangibleObject* prototype);
 
 	bool removeIngredientsFromHopper(ManufactureSchematic* schematic);
-
-	void updateOperators(ManufactureSchematic* schematic, FactoryCrate* crate);
 
 public:
 	FactoryObject* _this;
@@ -216,10 +202,6 @@ public:
 	bool isFactory();
 
 	void createChildObjects();
-
-	void synchronizedUIListen(SceneObject* player, int value);
-
-	void synchronizedUIStopListen(SceneObject* player, int value);
 
 	void updateInstallationWork();
 

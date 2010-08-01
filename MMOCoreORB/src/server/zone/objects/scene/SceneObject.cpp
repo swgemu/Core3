@@ -526,17 +526,18 @@ void SceneObject::openContainerTo(PlayerCreature* player) {
 		((SceneObjectImplementation*) _impl)->openContainerTo(player);
 }
 
-void SceneObject::closeContainerTo(PlayerCreature* player) {
+void SceneObject::closeContainerTo(PlayerCreature* player, bool notify) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 39);
 		method.addObjectParameter(player);
+		method.addBooleanParameter(notify);
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _impl)->closeContainerTo(player);
+		((SceneObjectImplementation*) _impl)->closeContainerTo(player, notify);
 }
 
 void SceneObject::insertToZone(Zone* zone) {
@@ -2946,7 +2947,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		openContainerTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 40:
-		closeContainerTo((PlayerCreature*) inv->getObjectParameter());
+		closeContainerTo((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 41:
 		insertToZone((Zone*) inv->getObjectParameter());
@@ -3442,8 +3443,8 @@ void SceneObjectAdapter::openContainerTo(PlayerCreature* player) {
 	((SceneObjectImplementation*) impl)->openContainerTo(player);
 }
 
-void SceneObjectAdapter::closeContainerTo(PlayerCreature* player) {
-	((SceneObjectImplementation*) impl)->closeContainerTo(player);
+void SceneObjectAdapter::closeContainerTo(PlayerCreature* player, bool notify) {
+	((SceneObjectImplementation*) impl)->closeContainerTo(player, notify);
 }
 
 void SceneObjectAdapter::insertToZone(Zone* zone) {

@@ -48,16 +48,9 @@ class FactoryObject extends InstallationObject {
 	 * Handles creating the hoppers
 	 */
 	public native void createChildObjects();
-	
-	public native void synchronizedUIListen(SceneObject player, int value);
-	
-	public native void synchronizedUIStopListen(SceneObject player, int value);
 
 	public native void updateInstallationWork();
 
-	@local
-	public native void updateHoppers(@dereferenced Time workingTime, boolean shutdownAfterUpdate);
-	
 	/**
 	 * Handles sending the SUI full of manufacturing schematics
 	 * that will work in this station
@@ -91,9 +84,7 @@ class FactoryObject extends InstallationObject {
 	
 	private native FactoryCrate locateCrateInOutputHopper(TangibleObject prototype);
 
-	private native FactoryCrate createNewFactoryCrate(int type);
+	private native FactoryCrate createNewFactoryCrate(unsigned int type, TangibleObject prototype);
 
 	private native boolean removeIngredientsFromHopper(ManufactureSchematic schematic);
-	
-	private native void updateOperators(ManufactureSchematic schematic, FactoryCrate crate);
 }

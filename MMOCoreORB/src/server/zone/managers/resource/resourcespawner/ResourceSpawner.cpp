@@ -443,7 +443,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 		newwaypoint->setCustomName(UnicodeString("Resource Survey"));
 		newwaypoint->setPlanetCRC(Planet::getPlanetCRC(Planet::getPlanetName(player->getZone()->getZoneID())));
 		newwaypoint->setPosition(maxX, 0, maxY);
-		newwaypoint->setColor(WaypointObject::COLOR_ORANGE);
+		newwaypoint->setColor(WaypointObject::COLOR_BLUE);
 		newwaypoint->setActive(true);
 	}
 
