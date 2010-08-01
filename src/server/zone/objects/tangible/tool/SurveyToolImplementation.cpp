@@ -246,9 +246,12 @@ void SurveyToolImplementation::sendSurveyTo(PlayerCreature* player, const String
 
 	if (player->isMounted()) {
 		float height = player->getZone()->getHeight(player->getPositionX(), player->getPositionY());
+		float waterHeight;
 
-		if(player->getZone()->getPlanetManager()->getTerrainManager()->getWaterHeight(player->getPositionX(), player->getPositionY(), height)) {
-			return;
+		if(player->getZone()->getPlanetManager()->getTerrainManager()->getWaterHeight(player->getPositionX(), player->getPositionY(), waterHeight)) {
+
+			if(waterHeight > height)
+				return;
 		}
 	}
 
