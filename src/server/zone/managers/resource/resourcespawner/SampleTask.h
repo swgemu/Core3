@@ -80,8 +80,11 @@ public:
 		if (!cancelled && playerCreature->getPendingTask("sample") != NULL) {
 			playerCreature->removePendingTask("sample");
 
+			playerCreature->setSurveyTool(surveyTool);
+
 			// Activate requestcoresample command
 			playerCreature->getZoneServer()->getObjectController()->activateCommand(playerCreature, 0x9223c634, 0, 0, "");
+
 			return;
 		}
 
