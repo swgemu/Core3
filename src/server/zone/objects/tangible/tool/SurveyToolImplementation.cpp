@@ -59,6 +59,8 @@ which carries forward this exception.
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/templates/tangible/tool/SurveyToolTemplate.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -237,6 +239,19 @@ void SurveyToolImplementation::sendSurveyTo(PlayerCreature* player, const String
 		return;
 	}
 
+	if (player->isSwimming()) {
+		player->sendSystemMessage("error_message", "survey_swimming");
+		return;
+	}
+
+	if (player->isMounted()) {
+		float height = player->getZone()->getHeight(player->getPositionX(), player->getPositionY());
+
+		if(player->getZone()->getPlanetManager()->getTerrainManager()->getWaterHeight(player->getPositionX(), player->getPositionY(), height)) {
+			return;
+		}
+	}
+
 	PlayClientEffectLoc* effect = new PlayClientEffectLoc(surveyAnimation,
 			player->getZone()->getZoneID(),
 			player->getPositionX(), player->getPositionZ(),
@@ -258,6 +273,15 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* player, const String
 
 	if (player->getParent() != NULL && player->getParent()->isCellObject()) {
 		player->sendSystemMessage("error_message", "survey_in_structure"); //You cannot perform survey-related actions inside a structure.
+		return;
+	}
+
+	if (player->isSwimming()) {
+		player->sendSystemMessage("error_message", "survey_swimming");
+		return;
+	}
+
+	if (player->isMounted()) {
 		return;
 	}
 

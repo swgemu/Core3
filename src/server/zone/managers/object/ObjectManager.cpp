@@ -45,6 +45,7 @@
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/objects/installation/generator/GeneratorObject.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/tangible/component/Component.h"
@@ -271,6 +272,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<DraftSchematic>(SceneObject::DRAFTSCHEMATIC);
 	objectFactory.registerObject<ManufactureSchematic>(SceneObject::MANUFACTURINGSCHEMATIC);
 	objectFactory.registerObject<Component>(SceneObject::COMPONENT);
+
+	objectFactory.registerObject<FactoryCrate>(SceneObject::FACTORYCRATE);
 
 }
 

@@ -53,6 +53,10 @@ include server.zone.templates.SharedObjectTemplate;
 
 class FactoryCrate extends TangibleObject {
 	
+	protected TangibleObject prototype;
+	
+	public final static int MAXCAPACITY = 100;
+	
 	public FactoryCrate() {
 		Logger.setLoggingName("FactoryCrate");
 	}
@@ -66,5 +70,9 @@ class FactoryCrate extends TangibleObject {
 	
 	public abstract boolean isFactoryCrate() {
 		return true;
+	}
+	
+	public TangibleObject getPrototype() {
+		return prototype;
 	}
 }

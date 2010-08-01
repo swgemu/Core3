@@ -234,6 +234,10 @@ class ManufactureSchematic extends IntangibleObject {
 	
 	public native void setPrototype(TangibleObject tano);
 	
+	public native TangibleObject getPrototype() {
+		return prototype;
+	}
+	
 	public native void initializeFactoryIngredients();
 	
 	public int getFactoryIngredientsSize() {

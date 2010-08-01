@@ -68,29 +68,38 @@ public:
 
 		try {
 
+			ManagedReference<SceneObject* > object =
+					server->getZoneServer()->getObject(target);
+
+			ManagedReference<PlayerCreature*> player = NULL;
+
 			StringTokenizer args(arguments.toString());
 
-			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+			if(!object->isPlayerCreature()) {
 
-			if (object == NULL)
+				String firstName;
+				args.getStringToken(firstName);
+				player = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+
+			} else {
+				player = (PlayerCreature*) object.get();
+			}
+
+			if (player == NULL)
 				return GENERALERROR;
 
+			String xpType;
+			args.getStringToken(xpType);
+			int amount = args.getIntToken();
 
-			if (object->isPlayerCreature()) {
+			int num = ((PlayerObject*)player->getSlottedObject("ghost"))->getExperience(xpType);
+			amount -= num;
+			player->getZoneServer()->getPlayerManager()->awardExperience(player, xpType, amount);
 
-				PlayerCreature* player = (PlayerCreature*) object.get();
+			creature->sendSystemMessage("Experience Successfully changed");
 
-				String xpType;
-				args.getStringToken(xpType);
-				int amount = args.getIntToken();
-
-				int num = ((PlayerObject*)player->getSlottedObject("ghost"))->getExperience(xpType);
-				amount -= num;
-				player->getZoneServer()->getPlayerManager()->awardExperience(player, xpType, amount);
-
-			}
 		} catch (...) {
-			creature->sendSystemMessage("invalid arguments for setExperience command");
+			creature->sendSystemMessage("invalid arguments for setExperience command. usage: setExperience <firstName> <experienceType> <amount>");
 		}
 
 

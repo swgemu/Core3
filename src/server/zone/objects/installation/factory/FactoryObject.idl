@@ -1,7 +1,8 @@
 package server.zone.objects.installation.factory;
 
 import server.zone.objects.installation.InstallationObject;
-include server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.factorycrate.FactoryCrate;
 
 class FactoryObject extends InstallationObject {
 
@@ -9,6 +10,9 @@ class FactoryObject extends InstallationObject {
 	protected Vector<int> craftingTabsSupported;
 	
 	protected int timer;
+	
+	protected PlayerCreature currentUser;
+	protected int currentRunCount;
 	
 	public FactoryObject() {
 		Logger.setLoggingName("FactoryObject");
@@ -79,9 +83,17 @@ class FactoryObject extends InstallationObject {
 
 	public native void handleOperateToggle(PlayerCreature player);
 	
-	private native void startFactory(PlayerCreature player);
+	private native void startFactory();
 	
-	private native void stopFactory(PlayerCreature player);
+	private native void stopFactory(final string message, final string tt, final string to, final int di);
 
 	public native void createNewObject();
+	
+	private native FactoryCrate locateCrateInOutputHopper(TangibleObject prototype);
+
+	private native FactoryCrate createNewFactoryCrate(int type);
+
+	private native boolean removeIngredientsFromHopper(ManufactureSchematic schematic);
+	
+	private native void updateOperators(ManufactureSchematic schematic, FactoryCrate crate);
 }

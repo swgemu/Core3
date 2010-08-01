@@ -194,6 +194,7 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 		dplay9->setClosestCraftingStation(craftingStation->getObjectID());
 	else
 		dplay9->setClosestCraftingStation(0);
+
 	dplay9->setExperimentationPoints(experimentationPointsTotal);
 	dplay9->close();
 	player->sendMessage(dplay9);

@@ -50,6 +50,8 @@ namespace factorycrate {
 
 class FactoryCrate : public TangibleObject {
 public:
+	static const int MAXCAPACITY = 100;
+
 	FactoryCrate();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -59,6 +61,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	bool isFactoryCrate();
+
+	TangibleObject* getPrototype();
 
 protected:
 	FactoryCrate(DummyConstructorParameter* param);
@@ -81,8 +85,12 @@ namespace objects {
 namespace factorycrate {
 
 class FactoryCrateImplementation : public TangibleObjectImplementation {
+protected:
+	ManagedReference<TangibleObject* > prototype;
 
 public:
+	static const int MAXCAPACITY = 100;
+
 	FactoryCrateImplementation();
 
 	FactoryCrateImplementation(DummyConstructorParameter* param);
@@ -94,6 +102,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	virtual bool isFactoryCrate();
+
+	TangibleObject* getPrototype();
 
 	FactoryCrate* _this;
 
@@ -139,6 +149,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	bool isFactoryCrate();
+
+	TangibleObject* getPrototype();
 
 };
 

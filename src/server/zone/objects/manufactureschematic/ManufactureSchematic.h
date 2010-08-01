@@ -152,6 +152,8 @@ public:
 
 	void setPrototype(TangibleObject* tano);
 
+	TangibleObject* getPrototype();
+
 	void initializeFactoryIngredients();
 
 	int getFactoryIngredientsSize();
@@ -281,6 +283,8 @@ public:
 
 	void setPrototype(TangibleObject* tano);
 
+	TangibleObject* getPrototype();
+
 	void initializeFactoryIngredients();
 
 	int getFactoryIngredientsSize();
@@ -381,6 +385,8 @@ public:
 	int getManufactureLimit();
 
 	void setPrototype(TangibleObject* tano);
+
+	TangibleObject* getPrototype();
 
 	void initializeFactoryIngredients();
 

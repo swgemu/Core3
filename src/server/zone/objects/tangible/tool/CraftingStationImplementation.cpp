@@ -65,7 +65,6 @@ void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templ
 
 void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
-
 }
 
 int CraftingStationImplementation::handleObjectMenuSelect(PlayerCreature* playerCreature, byte selectedID) {
