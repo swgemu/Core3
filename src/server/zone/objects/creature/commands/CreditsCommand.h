@@ -63,6 +63,73 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		try {
+
+			ManagedReference<SceneObject* > object =
+					server->getZoneServer()->getObject(target);
+
+			ManagedReference<PlayerCreature*> player = NULL;
+
+			StringTokenizer args(arguments.toString());
+
+			if(!object->isPlayerCreature()) {
+
+				String firstName;
+				args.getStringToken(firstName);
+				player = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+
+			} else {
+				player = (PlayerCreature*) object.get();
+			}
+
+			if (player == NULL)
+				return GENERALERROR;
+
+			String action;
+			args.getStringToken(action);
+
+			int amount;
+			amount = args.getIntToken();
+
+			String location;
+			args.getStringToken(location);
+
+			bool success = false;
+
+			if (action == "add") {
+
+				if (location.toLowerCase() == "cash") {
+					player->addCashCredits(amount);
+					success = true;
+				}
+
+				if (location.toLowerCase() == "bank") {
+					player->addBankCredits(amount);
+					success = true;
+				}
+
+			} else if (action == "subtract") {
+
+				if (location.toLowerCase() == "cash") {
+					player->substractCashCredits(amount);
+					success = true;
+				}
+
+				if (location.toLowerCase() == "bank") {
+					player->substractBankCredits(amount);
+					success = true;
+				}
+			}
+
+			if(success)
+				creature->sendSystemMessage("Credits have been deposited successfully for " + player->getFirstName());
+			else
+				creature->sendSystemMessage("invalid arguments for credits command:  /credits <firstname> <add/subtract> <amount> <bank/cash>");
+
+		} catch (...) {
+			creature->sendSystemMessage("invalid arguments for credits command:  /credits <firstname> <add/subtract> <amount> <bank/cash>");
+		}
+
 		return SUCCESS;
 	}
 

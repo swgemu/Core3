@@ -401,12 +401,24 @@ void ManufactureSchematic::setPrototype(TangibleObject* tano) {
 		((ManufactureSchematicImplementation*) _impl)->setPrototype(tano);
 }
 
-void ManufactureSchematic::initializeFactoryIngredients() {
+TangibleObject* ManufactureSchematic::getPrototype() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 34);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getPrototype();
+}
+
+void ManufactureSchematic::initializeFactoryIngredients() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
 
 		method.executeWithVoidReturn();
 	} else
@@ -418,7 +430,7 @@ int ManufactureSchematic::getFactoryIngredientsSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -430,7 +442,7 @@ SceneObject* ManufactureSchematic::getFactoryIngredient(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addSignedIntParameter(i);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -624,13 +636,18 @@ int ManufactureSchematicImplementation::getManufactureLimit() {
 	return manufactureLimit;
 }
 
+TangibleObject* ManufactureSchematicImplementation::getPrototype() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(238):  		return prototype;
+	return prototype;
+}
+
 int ManufactureSchematicImplementation::getFactoryIngredientsSize() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(240):  		return factoryIngredients.size();
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(244):  		return factoryIngredients.size();
 	return (&factoryIngredients)->size();
 }
 
 SceneObject* ManufactureSchematicImplementation::getFactoryIngredient(int i) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(244):  		return factoryIngredients.get(i);
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(248):  		return factoryIngredients.get(i);
 	return (&factoryIngredients)->get(i);
 }
 
@@ -730,12 +747,15 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		setPrototype((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 34:
-		initializeFactoryIngredients();
+		resp->insertLong(getPrototype()->_getObjectID());
 		break;
 	case 35:
-		resp->insertSignedInt(getFactoryIngredientsSize());
+		initializeFactoryIngredients();
 		break;
 	case 36:
+		resp->insertSignedInt(getFactoryIngredientsSize());
+		break;
+	case 37:
 		resp->insertLong(getFactoryIngredient(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
@@ -855,6 +875,10 @@ int ManufactureSchematicAdapter::getManufactureLimit() {
 
 void ManufactureSchematicAdapter::setPrototype(TangibleObject* tano) {
 	((ManufactureSchematicImplementation*) impl)->setPrototype(tano);
+}
+
+TangibleObject* ManufactureSchematicAdapter::getPrototype() {
+	return ((ManufactureSchematicImplementation*) impl)->getPrototype();
 }
 
 void ManufactureSchematicAdapter::initializeFactoryIngredients() {

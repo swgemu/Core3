@@ -80,7 +80,7 @@ public:
 		if (!tokenizer.hasMoreTokens())
 			return false;
 
-		int dist = tokenizer.getIntToken();
+		float dist = tokenizer.getFloatToken();
 
 		if (dist < 1 || dist > 100)
 			return false;
@@ -100,15 +100,19 @@ public:
 		float y = obj->getPositionY();
 		float z = obj->getPositionZ();
 
-		if (dir == "forward" || dir == "back") {
+		if (dir == "forward") {
 			x += (offsetX / 10.0f);
 			y += (offsetY / 10.0f);
-		} else {
-			if (dir == "up")
-				z += ((float) dist / 10.0f);
-			else
-				z -= ((float) dist / 10.0f);
 		}
+		if (dir == "back") {
+			x -= (offsetX / 10.0f);
+			y -= (offsetY / 10.0f);
+		}
+		if (dir == "up")
+			z += ((float) dist / 10.0f);
+		if (dir == "down")
+			z -= ((float) dist / 10.0f);
+
 
 		//TODO: Check to make sure the item is not being moved outside the range of the cell.
 

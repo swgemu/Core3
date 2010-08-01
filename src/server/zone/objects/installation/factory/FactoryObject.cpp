@@ -4,6 +4,10 @@
 
 #include "FactoryObject.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
+
 /*
  *	FactoryObjectStub
  */
@@ -295,16 +299,18 @@ void FactoryObjectImplementation::_serializationHelperMethod() {
 
 	addSerializableVariable("craftingTabsSupported", &craftingTabsSupported);
 	addSerializableVariable("timer", &timer);
+	addSerializableVariable("currentUser", &currentUser);
+	addSerializableVariable("currentRunCount", &currentRunCount);
 }
 
 FactoryObjectImplementation::FactoryObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/factory/FactoryObject.idl(14):  		Logger.setLoggingName("FactoryObject");
+	// server/zone/objects/installation/factory/FactoryObject.idl(18):  		Logger.setLoggingName("FactoryObject");
 	Logger::setLoggingName("FactoryObject");
 }
 
 bool FactoryObjectImplementation::isFactory() {
-	// server/zone/objects/installation/factory/FactoryObject.idl(40):  		return true;
+	// server/zone/objects/installation/factory/FactoryObject.idl(44):  		return true;
 	return true;
 }
 

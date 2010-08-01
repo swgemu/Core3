@@ -9,12 +9,13 @@
 #include "tasks/CreateFactoryObjectTask.h"
 
 #include "server/zone/managers/resource/ResourceManager.h"
+#include "server/chat/ChatManager.h"
 
 #include "server/zone/packets/installation/InstallationObjectMessage3.h"
 #include "server/zone/packets/installation/InstallationObjectDeltaMessage3.h"
 #include "server/zone/packets/installation/InstallationObjectDeltaMessage7.h"
 #include "server/zone/packets/installation/InstallationObjectMessage6.h"
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
+#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
 
 #include "server/zone/packets/chat/ChatSystemMessage.h"
@@ -29,6 +30,7 @@
 #include "server/zone/Zone.h"
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
@@ -190,7 +192,7 @@ void FactoryObjectImplementation::synchronizedUIListen(SceneObject* player, int 
 		return;
 
 	if(getContainerObjectsSize() == 0) {
-		stopFactory((PlayerCreature*)player);
+		stopFactory("manf_error", "", "", -1);
 		return;
 	}
 
@@ -217,16 +219,8 @@ void FactoryObjectImplementation::updateInstallationWork() {
 
 void FactoryObjectImplementation::updateHoppers(Time& workingTime, bool shutdownAfterUpdate) {
 
-	ManagedReference<ManufactureSchematic* > schematic = (ManufactureSchematic*) getContainerObject(0);
-
-
-	ManufactureSchematicObjectDeltaMessage7* msg = new ManufactureSchematicObjectDeltaMessage7(schematic->getObjectID());
-	msg->updateQuantity(schematic->getManufactureLimit());
-	broadcastToOperators(msg);
-
-	/*FactoryCrateObjectDeltaMessage3* msg = new HarvesterObjectMessage7(_this);
-	broadcastToOperators(msg);*/
-
+	if(shutdownAfterUpdate)
+		stopFactory("", "", "", -1);
 }
 
 /*
@@ -375,54 +369,277 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(PlayerCreature* playe
 
 void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
 
-	if(!operating)
-		startFactory(player);
-	 else
-		stopFactory(player);
+	if(!operating) {
+		currentUser = player;
+		currentRunCount = 0;
+		startFactory();
+		player->sendSystemMessage("manf_station", "activated");
+	} else {
+		currentUser = NULL;
+		stopFactory("manf_done", getObjectName()->getStringID(), "", currentRunCount);
+		player->sendSystemMessage("manf_station", "deactivated");
+	}
 }
 
-void FactoryObjectImplementation::startFactory(PlayerCreature* player) {
+void FactoryObjectImplementation::startFactory() {
 
 	if(getContainerObjectsSize() == 0) {
 		return;
 	}
 
-	player->sendSystemMessage("manf_station", "activated");
+	Locker _locker(_this);
+
 	operating = true;
 
 	timer = (int)((ManufactureSchematic*) getContainerObject(0))->getComplexity() * 2;
 
 	// Add sampletask
-	CreateFactoryObjectTask* createFactoryObjectTask = new CreateFactoryObjectTask(_this);
-	createFactoryObjectTask->schedule(timer);
+	Reference<CreateFactoryObjectTask* > createFactoryObjectTask = new CreateFactoryObjectTask(_this);
+	createFactoryObjectTask->schedule(timer * 1000);
+	createFactoryObjectTask->setReentrant();
 	addPendingTask("createFactoryObject", createFactoryObjectTask);
 
 	updateToDatabaseAllObjects(false);
 }
 
-void FactoryObjectImplementation::stopFactory(PlayerCreature* player) {
+void FactoryObjectImplementation::stopFactory(const String& message, const String& tt, const String& to, const int di) {
 
-	player->sendSystemMessage("manf_station", "deactivated");
+	Locker _locker(_this);
+
 	operating = false;
-
+	Reference<Task* > pending = getPendingTask("createFactoryObject");
 	removePendingTask("createFactoryObject");
+
+	if(pending != NULL && pending->isScheduled())
+		pending->cancel();
+
+	//Send out email informing them why their factory stopped
+	ManagedReference<ChatManager*> chatManager = server->getChatManager();
+
+	if (chatManager != NULL && currentUser != NULL) {
+		ParameterizedStringId emailBody;
+		emailBody.setStringId("@system_msg:" + message);
+		if(tt != "")
+			emailBody.setTT(tt);
+		if(to != "")
+			emailBody.setTO(to);
+		if(di != -1)
+			emailBody.setDI(di);
+		UnicodeString subject = "@system_msg:manf_done_sub";
+		chatManager->sendMail(getObjectName()->getStringID(), subject, emailBody, currentUser->getFirstName());
+	}
 }
 
 void FactoryObjectImplementation::createNewObject() {
 
+/// Pre: _this locked
 	if(getContainerObjectsSize() == 0) {
-		operating = false;
-		removePendingTask("createFactoryObject");
+		stopFactory("manf_error", "", "", -1);
 		return;
 	}
 
-	/*if(removeIngredientsFromHopper()) {
+	ManagedReference<ManufactureSchematic* > schematic = (ManufactureSchematic*) getContainerObject(0);
 
-	} else {
-		operating = false;
-		removePendingTask("createFactoryObject");
-	}*/
+	if(schematic == NULL) {
+		stopFactory("manf_error_4", "", "", -1);
+		return;
+	}
 
-	//this->getPendingTask()->
+	ManagedReference<TangibleObject* > prototype = (TangibleObject*) schematic->getPrototype();
+
+	if(prototype == NULL) {
+		stopFactory("manf_error_2", "", "", -1);
+		return;
+	}
+
+	ManagedReference<FactoryCrate* > crate = locateCrateInOutputHopper(prototype);
+
+	if(crate == NULL)
+		crate = createNewFactoryCrate(prototype->getGameObjectType());
+
+	if(crate == NULL) {
+		stopFactory("manf_error_7", "", "", -1);
+		return;
+	}
+
+	if(removeIngredientsFromHopper(schematic)) {
+
+		crate->setUseCount(crate->getUseCount() + 1);
+
+		Reference<Task* > pending = getPendingTask("createFactoryObject");
+
+		if(pending != NULL && pending->isQueued())
+			pending->reschedule(timer);
+		else
+			stopFactory("manf_error", "", "", -1);
+
+		updateOperators(schematic, crate);
+		currentRunCount++;
+	}
+
 	updateToDatabaseAllObjects(false);
+}
+
+FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObject* prototype) {
+
+	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
+
+	if(outputHopper == NULL || prototype == NULL) {
+		stopFactory("manf_error_6", "", "", -1);
+		return false;
+	}
+
+	for (int i = 0; i < outputHopper->getContainerObjectsSize(); ++i) {
+
+		ManagedReference<SceneObject* > object = outputHopper->getContainerObject(i);
+
+		if(object == NULL || !object->isFactoryCrate())
+			continue;
+
+		FactoryCrate* crate = (FactoryCrate*) object.get();
+
+		if(crate->getPrototype() != NULL && crate->getPrototype()->getCraftersSerial() ==
+				prototype->getCraftersSerial() && crate->getUseCount() < FactoryCrate::MAXCAPACITY) {
+
+			return crate;
+		}
+
+	}
+	return NULL;
+}
+
+FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(int type) {
+
+	String file;
+
+	if(type & SceneObject::ARMOR)
+		file = "object/factory/factory_crate_armor.iff";
+	else if(type == SceneObject::CHEMICAL || type == SceneObject::PHARMACEUTICAL || type == SceneObject::PETMEDECINE)
+		file = "object/factory/factory_crate_chemicals.iff";
+	else if(type & SceneObject::CLOTHING)
+		file = "object/factory/factory_crate_clothing.iff";
+	else if(type == SceneObject::ELECTRONICS)
+		file = "object/factory/factory_crate_electronics.iff";
+	else if(type == SceneObject::FOOD || type == SceneObject::DRINK)
+		file = "object/factory/factory_crate_food.iff";
+	else if(type == SceneObject::FURNITURE)
+		file = "object/factory/factory_crate_furniture.iff";
+	else if(type & SceneObject::INSTALLATION)
+		file = "object/factory/factory_crate_installation.iff";
+	else if(type == SceneObject::WEAPON)
+		file = "object/factory/factory_crate_weapon.iff";
+	else
+		file = "object/factory/factory_crate_generic_items.iff";
+
+	ManagedReference<FactoryCrate* > crate = (FactoryCrate*) server->getZoneServer()->createObject(file.hashCode(), 2);
+
+	return crate;
+}
+
+bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchematic* schematic) {
+	/// List Ingredients
+
+	VectorMap<SceneObject*, int> alteredObjects;
+	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
+
+	if(inputHopper == NULL)
+		return false;
+
+	for (int i = 0; i < schematic->getFactoryIngredientsSize(); ++i) {
+
+		ManagedReference<SceneObject*> ingredient =
+				(SceneObject*) schematic->getFactoryIngredient(i);
+
+		if (ingredient == NULL)
+			return false;
+
+		bool found = false;
+
+		for(int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
+
+			ManagedReference<SceneObject* > object = inputHopper->getContainerObject(i);
+
+			if(object == NULL)
+				continue;
+
+			if(ingredient->isResourceContainer() && object->isResourceContainer()) {
+
+				ResourceContainer* rcnoIngredient = (ResourceContainer*) ingredient.get();
+				ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
+
+				if(rcnoIngredient->getSpawnName() == rcnoObject->getSpawnName()) {
+
+					if(rcnoObject->getQuantity() < rcnoIngredient->getQuantity()) {
+						if(rcnoObject->getSpawnName() != "")
+							stopFactory("manf_no_named_resource", getObjectName()->getStringID(), rcnoObject->getSpawnName(), -1);
+						else
+							stopFactory("manf_no_unknown_resource", getObjectName()->getStringID(), "", -1);
+						return false;
+					}
+
+					found = true;
+					alteredObjects.put(rcnoObject, rcnoIngredient->getQuantity());
+					break;
+				}
+
+			} else {
+
+				if(ingredient->isTangibleObject() && object->isTangibleObject()) {
+
+					TangibleObject* tanoIngredient = (TangibleObject*) ingredient.get();
+					TangibleObject* tanoObject = (TangibleObject*) object.get();
+
+					if(tanoIngredient->getCraftersSerial() == tanoObject->getCraftersSerial()) {
+
+						if(tanoObject->getUseCount() < tanoIngredient->getUseCount()) {
+							if(tanoObject->getCustomObjectName().toString() == "")
+								stopFactory("manf_no_component", getObjectName()->getStringID(), tanoObject->getObjectName()->getStringID(), -1);
+							else
+								stopFactory("manf_no_component", getObjectName()->getStringID(), tanoObject->getCustomObjectName().toString(), -1);
+							return false;
+						}
+
+						found = true;
+						alteredObjects.put(tanoObject, tanoObject->getUseCount());
+						break;
+					}
+				}
+			}
+		}
+
+		if(!found)
+			return false;
+	}
+
+	for(int i = 0; i < alteredObjects.size(); ++i) {
+
+		ManagedReference<SceneObject* > object = alteredObjects.elementAt(i).getKey();
+		int quantity = alteredObjects.get(i);
+
+		if(object->isResourceContainer()) {
+
+			ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
+			int currentQuantity = rcnoObject->getQuantity();
+			rcnoObject->setQuantity(currentQuantity - quantity);
+
+		} else {
+
+			TangibleObject* tanoObject = (TangibleObject*) object.get();
+			int currentQuantity = tanoObject->getUseCount();
+			tanoObject->setUseCount(currentQuantity - quantity);
+		}
+	}
+
+	return true;
+}
+
+void FactoryObjectImplementation::updateOperators(ManufactureSchematic* schematic, FactoryCrate* crate) {
+
+	ManufactureSchematicObjectDeltaMessage3* msco3 = new ManufactureSchematicObjectDeltaMessage3(schematic->getObjectID());
+	msco3->updateManufactureLimit(schematic->getManufactureLimit());
+	broadcastToOperators(msco3);
+
+	FactoryCrateObjectDeltaMessage3* fcty3 = new FactoryCrateObjectDeltaMessage3(crate);
+	fcty3->setQuantity(crate->getUseCount());
+	broadcastToOperators(fcty3);
 }

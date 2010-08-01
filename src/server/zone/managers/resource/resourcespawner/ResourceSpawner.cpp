@@ -375,7 +375,7 @@ void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* player, const in
 
 void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) {
 
-	if(player->getHAM(CreatureAttribute::MIND) < 100) {
+	if(player->getHAM(CreatureAttribute::MIND) < 100 || resname == "") {
 		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
 	}
