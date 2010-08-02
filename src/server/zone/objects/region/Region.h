@@ -43,8 +43,8 @@ using namespace server::zone::objects::tangible::terminal::bazaar;
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace bazaar {
+namespace objects {
+namespace region {
 
 class Region : public ActiveArea {
 public:
@@ -70,17 +70,17 @@ protected:
 	friend class RegionHelper;
 };
 
-} // namespace bazaar
-} // namespace managers
+} // namespace region
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::managers::bazaar;
+using namespace server::zone::objects::region;
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace bazaar {
+namespace objects {
+namespace region {
 
 class RegionImplementation : public ActiveAreaImplementation {
 protected:
@@ -173,11 +173,11 @@ public:
 	friend class Singleton<RegionHelper>;
 };
 
-} // namespace bazaar
-} // namespace managers
+} // namespace region
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::managers::bazaar;
+using namespace server::zone::objects::region;
 
 #endif /*REGION_H_*/

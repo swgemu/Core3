@@ -74,6 +74,7 @@ which carries forward this exception.
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/building/city/CityHallObject.h"
 
 
 /*#include "../item/ItemManager.h"
@@ -300,6 +301,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;*/
 	case SuiWindowType::FACTORY_SCHEMATIC:
 		handleInsertFactorySchem(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::CREATE_CITY_HALL_NAME:
+		handleSetCityHallName(boxID, player, cancel, value);
 		break;
 	default:
 		//Clean up players sui box:
@@ -2701,3 +2705,38 @@ void SuiManager::handleCharacterListSelection(uint32 boxid, Player* player, uint
 	}
 }
 */
+
+void SuiManager::handleSetCityHallName(int boxID, PlayerCreature* player, int cancel, const String& input) {
+	Locker locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+
+	if (!box->isInputBox())
+		return;
+
+	SuiInputBox* inputBox = (SuiInputBox*) box.get();
+
+	ManagedReference<SceneObject*> usingObject = inputBox->getUsingObject();
+
+	if (usingObject == NULL)
+		return;
+
+	if (!usingObject->isBuildingObject())
+		return;
+
+	BuildingObject* building = (BuildingObject*) usingObject.get();
+
+	if (!building->isCityHallBuilding())
+		return;
+
+	CityHallObject* cityHall = (CityHallObject*) building;
+
+	Locker clocker(cityHall, player);
+
+	cityHall->trySetCityName(player, input);
+}

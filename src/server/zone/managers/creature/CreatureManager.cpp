@@ -89,12 +89,24 @@ void CreatureManager::loadDynamicSpawnAreas() {
 		((CreatureManagerImplementation*) _impl)->loadDynamicSpawnAreas();
 }
 
-void CreatureManager::loadTrainers() {
+void CreatureManager::loadSingleSpawns() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureManagerImplementation*) _impl)->loadSingleSpawns();
+}
+
+void CreatureManager::loadTrainers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		method.executeWithVoidReturn();
 	} else
@@ -191,6 +203,8 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet, ZoneP
 void CreatureManagerImplementation::initialize() {
 	// server/zone/managers/creature/CreatureManager.idl(40):  		loadTrainers();
 	loadTrainers();
+	// server/zone/managers/creature/CreatureManager.idl(41):  		loadSingleSpawns();
+	loadSingleSpawns();
 }
 
 /*
@@ -214,6 +228,9 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		loadDynamicSpawnAreas();
 		break;
 	case 9:
+		loadSingleSpawns();
+		break;
+	case 10:
 		loadTrainers();
 		break;
 	default:
@@ -233,6 +250,10 @@ CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, 
 
 void CreatureManagerAdapter::loadDynamicSpawnAreas() {
 	((CreatureManagerImplementation*) impl)->loadDynamicSpawnAreas();
+}
+
+void CreatureManagerAdapter::loadSingleSpawns() {
+	((CreatureManagerImplementation*) impl)->loadSingleSpawns();
 }
 
 void CreatureManagerAdapter::loadTrainers() {

@@ -46,6 +46,7 @@ object_building_player_city_shuttleport_naboo = object_building_player_city_shar
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
 	cityRankRequired = 4,
+	gameObjectType = 4103,
 	abilitiesRequired = {"placeShuttleport"}
 
 
