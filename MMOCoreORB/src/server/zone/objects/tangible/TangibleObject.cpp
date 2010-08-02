@@ -638,12 +638,25 @@ void TangibleObject::setCustomizationString(const String& vars) {
 		((TangibleObjectImplementation*) _impl)->setCustomizationString(vars);
 }
 
-void TangibleObject::setCraftersName(String& name) {
+void TangibleObject::setPvpStatusBitmask(int bitmask) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 50);
+		method.addSignedIntParameter(bitmask);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setPvpStatusBitmask(bitmask);
+}
+
+void TangibleObject::setCraftersName(String& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 51);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -656,7 +669,7 @@ String TangibleObject::getCraftersName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 
 		method.executeWithAsciiReturn(_return_getCraftersName);
 		return _return_getCraftersName;
@@ -669,7 +682,7 @@ void TangibleObject::setCraftersSerial(String& serial) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 		method.addAsciiParameter(serial);
 
 		method.executeWithVoidReturn();
@@ -677,12 +690,25 @@ void TangibleObject::setCraftersSerial(String& serial) {
 		((TangibleObjectImplementation*) _impl)->setCraftersSerial(serial);
 }
 
+void TangibleObject::setLevel(int lev) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 54);
+		method.addSignedIntParameter(lev);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setLevel(lev);
+}
+
 String TangibleObject::getCraftersSerial() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 55);
 
 		method.executeWithAsciiReturn(_return_getCraftersSerial);
 		return _return_getCraftersSerial;
@@ -695,7 +721,7 @@ void TangibleObject::createChildObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 56);
 
 		method.executeWithVoidReturn();
 	} else
@@ -958,28 +984,38 @@ void TangibleObjectImplementation::setCustomizationString(const String& vars) {
 	(&customizationVariables)->parseFromClientString(vars);
 }
 
+void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask) {
+	// server/zone/objects/tangible/TangibleObject.idl(443):  		pvpStatusBitmask = bitmask;
+	pvpStatusBitmask = bitmask;
+}
+
 void TangibleObjectImplementation::setCraftersName(String& name) {
-	// server/zone/objects/tangible/TangibleObject.idl(443):  		craftersName = name;
+	// server/zone/objects/tangible/TangibleObject.idl(447):  		craftersName = name;
 	craftersName = name;
 }
 
 String TangibleObjectImplementation::getCraftersName() {
-	// server/zone/objects/tangible/TangibleObject.idl(447):  		return craftersName;
+	// server/zone/objects/tangible/TangibleObject.idl(451):  		return craftersName;
 	return craftersName;
 }
 
 void TangibleObjectImplementation::setCraftersSerial(String& serial) {
-	// server/zone/objects/tangible/TangibleObject.idl(451):  		craftersSerial = serial;
+	// server/zone/objects/tangible/TangibleObject.idl(455):  		craftersSerial = serial;
 	craftersSerial = serial;
 }
 
+void TangibleObjectImplementation::setLevel(int lev) {
+	// server/zone/objects/tangible/TangibleObject.idl(459):  		level = lev;
+	level = lev;
+}
+
 String TangibleObjectImplementation::getCraftersSerial() {
-	// server/zone/objects/tangible/TangibleObject.idl(455):  		return craftersSerial;
+	// server/zone/objects/tangible/TangibleObject.idl(463):  		return craftersSerial;
 	return craftersSerial;
 }
 
 void TangibleObjectImplementation::createChildObjects() {
-	// server/zone/objects/tangible/TangibleObject.idl(459):  		return;
+	// server/zone/objects/tangible/TangibleObject.idl(467):  		return;
 	return;
 }
 
@@ -1127,18 +1163,24 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
 	case 50:
-		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
+		setPvpStatusBitmask(inv->getSignedIntParameter());
 		break;
 	case 51:
-		resp->insertAscii(getCraftersName());
+		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
 		break;
 	case 52:
-		setCraftersSerial(inv->getAsciiParameter(_param0_setCraftersSerial__String_));
+		resp->insertAscii(getCraftersName());
 		break;
 	case 53:
-		resp->insertAscii(getCraftersSerial());
+		setCraftersSerial(inv->getAsciiParameter(_param0_setCraftersSerial__String_));
 		break;
 	case 54:
+		setLevel(inv->getSignedIntParameter());
+		break;
+	case 55:
+		resp->insertAscii(getCraftersSerial());
+		break;
+	case 56:
 		createChildObjects();
 		break;
 	default:
@@ -1324,6 +1366,10 @@ void TangibleObjectAdapter::setCustomizationString(const String& vars) {
 	((TangibleObjectImplementation*) impl)->setCustomizationString(vars);
 }
 
+void TangibleObjectAdapter::setPvpStatusBitmask(int bitmask) {
+	((TangibleObjectImplementation*) impl)->setPvpStatusBitmask(bitmask);
+}
+
 void TangibleObjectAdapter::setCraftersName(String& name) {
 	((TangibleObjectImplementation*) impl)->setCraftersName(name);
 }
@@ -1334,6 +1380,10 @@ String TangibleObjectAdapter::getCraftersName() {
 
 void TangibleObjectAdapter::setCraftersSerial(String& serial) {
 	((TangibleObjectImplementation*) impl)->setCraftersSerial(serial);
+}
+
+void TangibleObjectAdapter::setLevel(int lev) {
+	((TangibleObjectImplementation*) impl)->setLevel(lev);
 }
 
 String TangibleObjectAdapter::getCraftersSerial() {

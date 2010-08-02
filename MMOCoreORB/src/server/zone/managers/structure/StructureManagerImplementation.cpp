@@ -914,7 +914,7 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Share
 		return placeInstallation(player, siot, deedID, x, y, direction);
 	}
 
-	player->info("no right template", true);
+	player->error("no right template");
 
 	return 1;
 }
@@ -944,6 +944,10 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 	buio->setDirection(direction);
 	buio->insertToZone(zone);
 
+	StringBuffer msg;
+	msg << "inserted to zone (posX, posZ, posY) = (" << x << ", " << z << ", " << y << ") dir rad = " << buio->getDirection()->getDegrees();
+	info(msg.toString(), true);
+
 	/*
 	//Create a sign
 	String signTemplate = buildingTemplate->getSignTemplate();
@@ -960,7 +964,7 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 	}*/
 
 	//Create a structure terminal
-	String terminalTemplate = "object/tangible/terminal/shared_terminal_player_structure.iff";
+	String terminalTemplate = "object/tangible/terminal/terminal_player_structure.iff";
 	StructureTerminalLocation* structureTerminalLocation = buildingTemplate->getStructureTerminalLocation();
 
 	if (structureTerminalLocation != NULL) {
@@ -983,6 +987,7 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 
 	//Store the deed's objectid so that if the player redeed's the structure, he/she can retrieve the deed from the database.
 	buio->setDeedObjectID(deedID);
+	buio->notifyStructurePlaced(player);
 
 	buio->updateToDatabase();
 
@@ -1026,9 +1031,13 @@ int StructureManagerImplementation::placeInstallation(PlayerCreature* player, Sh
 
 	installation->insertToZone(zone);
 
+	StringBuffer msg;
+	msg << "inserted to zone (posX, posZ, posY) = (" << x << ", " << z << ", " << y << ") dir rad = " << installation->getDirection()->getDegrees();
+	info(msg.toString(), true);
+
 	//Store the deed's objectid so that if the player redeed's the structure, he/she can retrieve the deed from the database.
 	installation->setDeedObjectID(deedID);
-
+	installation->notifyStructurePlaced(player);
 	installation->updateToDatabase();
 
 	//Send out email informing the user that their construction has completed successfully.

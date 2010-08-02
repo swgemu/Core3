@@ -42,10 +42,12 @@
 #include "server/zone/objects/building/recreation/RecreationBuildingObject.h"
 #include "server/zone/objects/building/travel/TravelBuildingObject.h"
 #include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
+#include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
 #include "server/zone/objects/installation/generator/GeneratorObject.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/tangible/component/Component.h"
@@ -109,6 +111,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	databaseManager->loadDatabase("buffs", true);
 	databaseManager->loadDatabase("missionobjectives", true);
 	databaseManager->loadDatabase("missionobservers", true);
+	databaseManager->loadDatabase("cityregions", true);
 
 	loadLastUsedObjectID();
 
@@ -185,10 +188,12 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BuildingObject>(SceneObject::COMMERCEBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObject::UNIVERSITYBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObject::GARAGEBUILDING);
+	objectFactory.registerObject<CityHallObject>(SceneObject::CITYHALLBUILDING);
 
 
 	objectFactory.registerObject<InstallationObject>(SceneObject::INSTALLATION);
 	objectFactory.registerObject<InstallationObject>(SceneObject::GARAGEINSTALLATION);
+	objectFactory.registerObject<ShuttleInstallation>(SceneObject::SHUTTLEINSTALLATION);
 	objectFactory.registerObject<HarvesterObject>(SceneObject::HARVESTER);
 	objectFactory.registerObject<FactoryObject>(SceneObject::FACTORY);
 	objectFactory.registerObject<GeneratorObject>(SceneObject::GENERATOR);
@@ -272,8 +277,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<DraftSchematic>(SceneObject::DRAFTSCHEMATIC);
 	objectFactory.registerObject<ManufactureSchematic>(SceneObject::MANUFACTURINGSCHEMATIC);
 	objectFactory.registerObject<Component>(SceneObject::COMPONENT);
-
-	objectFactory.registerObject<FactoryCrate>(SceneObject::FACTORYCRATE);
 
 }
 

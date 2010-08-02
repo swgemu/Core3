@@ -19,12 +19,18 @@
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
+#include "server/zone/packets/object/StringList.h"
+#include "server/zone/packets/object/NpcConversationMessage.h"
+#include "server/zone/packets/object/StartNpcConversation.h"
+#include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/Zone.h"
 #include "PatrolPoint.h"
 
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
+
+	pvpStatusBitmask = CreatureFlag::ATTACKABLE;
 
 	if (templateData->isNonPlayerCreatureObjectTemplate())
 		npcTemplate = (NonPlayerCreatureObjectTemplate*) templateData;
@@ -132,6 +138,8 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
 	CreatureObjectImplementation::setDefender(defender);
+
+	followObject = defender;
 
 	activateRecovery();
 }
@@ -295,6 +303,10 @@ void AiAgentImplementation::doMovement() {
 	}
 
 	float maxDistance = getWeapon()->getMaxRange();
+
+	if (isRetreating())
+		maxDistance = 0;
+
 	float dist = 0;
 
 	float dx, dy;
@@ -665,4 +677,106 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerC
 		alm->insertAttribute("cat_wpn_damage", damageMsg.toString());
 	}
 
+}
+
+
+void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
+	if (!player->isPlayerCreature())
+		return;
+
+	PlayerCreature* playerCreature = (PlayerCreature*) player;
+
+	//player->setLastNpcConvStr(("npc_" + getFu().toString()));
+	playerCreature->setLastNpcConvMessStr("0,init");
+
+	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
+	player->sendMessage(conv);
+
+	String responseFile, responseAttitude;
+
+	if (responseFile == "") {
+		if (isImperial()) {
+			responseFile = "npc_reaction/stormtrooper";
+		} else if (isRebel()) {
+			responseFile = "npc_reaction/military";
+		} else {
+			short file = System::random(2);
+			if (file == 0)
+				responseFile = "npc_reaction/fancy";
+			else if (file == 1)
+				responseFile = "npc_reaction/slang";
+			else
+				responseFile = "npc_reaction/townperson";
+		}
+	}
+
+	if (responseAttitude == "") {
+		short type = System::random(2);
+		if (type == 0)
+			responseAttitude = "mean";
+		else if (type == 1)
+			responseAttitude = "mid";
+		else
+			responseAttitude = "nice";
+	}
+
+	StringBuffer convoChoice;
+	convoChoice << "hi_" <<  responseAttitude << "_" << (System::random(15) + 1);
+
+	NpcConversationMessage* initial = new NpcConversationMessage(
+			playerCreature, responseFile, convoChoice.toString());
+	player->sendMessage(initial);
+
+	// Parse and send the options:
+	StringList* slist = new StringList(playerCreature);
+
+	String test = "I'm looking for work";
+	slist->insertOption(test);
+
+	player->sendMessage(slist);
+
+	playerCreature->setLastNpcConvMessStr("chitchat");
+}
+
+void AiAgentImplementation::selectConversationOption(int option, SceneObject* obj) {
+	if (!obj->isPlayerCreature())
+		return;
+
+	PlayerCreature* player = (PlayerCreature*) obj;
+
+	String chk = player->getLastNpcConvMessStr();
+
+	if (chk != "chitchat") {
+		return;
+	}
+
+	UnicodeString saying = "";
+	switch(System::random(5)) {
+	case 0:
+		saying = "Why the heck would you want to work when welfare is free.";
+		break;
+	case 1:
+		saying = "Pfft, work in this economy?  I'm waiting for the government to bail me out.";
+		break;
+	case 2:
+		saying = "Check the missions terminals, they are overflowing with work.";
+		break;
+	case 3:
+		saying = "Huh, work?  Whats that?";
+		break;
+	case 4:
+		saying = "Did you check the mission terminals?";
+		break;
+	case 5:
+		saying = "Me too.";
+		break;
+	}
+
+	NpcConversationMessage* response = new NpcConversationMessage(
+			player, saying);
+	player->sendMessage(response);
+
+	// Parse and send the options:
+	StringList* slist = new StringList(player);
+	player->sendMessage(slist);
 }

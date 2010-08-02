@@ -46,6 +46,7 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	baseMaintenanceRate = 0,
 	mapLocationsType1 = 50,
 	allowedZones = {0,7},
+	gameObjectType = 529,
 	cityRankRequired = 0
 
 

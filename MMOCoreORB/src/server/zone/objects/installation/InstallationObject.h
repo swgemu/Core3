@@ -170,6 +170,8 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	int notifyStructurePlaced(PlayerCreature* player);
+
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
 
 	void updateToDatabaseAllObjects(bool startTask);
@@ -357,6 +359,8 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	virtual int notifyStructurePlaced(PlayerCreature* player);
+
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
 
 	virtual void updateToDatabaseAllObjects(bool startTask);
@@ -511,6 +515,8 @@ public:
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	int notifyStructurePlaced(PlayerCreature* player);
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient);
 

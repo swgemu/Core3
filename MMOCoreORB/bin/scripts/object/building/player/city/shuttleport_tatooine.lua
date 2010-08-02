@@ -46,6 +46,7 @@ object_building_player_city_shuttleport_tatooine = object_building_player_city_s
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
 	cityRankRequired = 4,
+	gameObjectType = 4103,
 	abilitiesRequired = {"placeShuttleport"}
 
 

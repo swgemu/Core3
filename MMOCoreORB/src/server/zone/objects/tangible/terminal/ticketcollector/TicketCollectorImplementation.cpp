@@ -144,6 +144,14 @@ void TicketCollectorImplementation::useTicket(PlayerCreature* player, TicketObje
 	String city = shuttle->getCity();
 	String planet = shuttle->getPlanet();
 
+	/*PlanetManager* planetManager = zone->getPlanetManager();
+	ShuttleCreature* arrivalShuttle = planetManager->getShuttle(shuttle);
+
+	if (zone != arrivalShuttle) {
+		if (!shuttle->isStarport() || !arrivalShuttle->isStarport())
+			return;
+	}*/
+
 	if ((ticket->getDeparturePoint() == city) &&  (ticket->getDeparturePlanet() == planet)) {
 		SceneObject* objectParent = ticket->getParent();
 

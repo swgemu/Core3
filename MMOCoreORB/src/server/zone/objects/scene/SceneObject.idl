@@ -174,6 +174,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public static final int COMMERCEBUILDING = 0x20E;
 	public static final int UNIVERSITYBUILDING = 0x20F;
 	public static final int GARAGEBUILDING = 0x210;
+	public static final int CITYHALLBUILDING = 0x211;
 
 	public static final int CREATURE = 0x400;
 	public static final int NPCCREATURE = 0x401;
@@ -202,6 +203,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public static final int TURRET = 0x1004;
 	public static final int MINEFIELD = 0x1005;
 	public static final int GARAGEINSTALLATION = 0x1006;
+	public static final int SHUTTLEINSTALLATION = 0x1007;
 
 	public static final int TANGIBLE = 0x2000;
 	public static final int AMMUNITION = 0x2001;

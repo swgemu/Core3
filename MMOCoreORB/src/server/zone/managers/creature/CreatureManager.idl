@@ -38,6 +38,7 @@ class CreatureManager extends ManagedObject implements Logger {
 	
 	public void initialize() {
 		loadTrainers();
+		loadSingleSpawns();
 	}
 	
 	/**
@@ -61,6 +62,8 @@ class CreatureManager extends ManagedObject implements Logger {
 	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
 	
 	public native void loadDynamicSpawnAreas();
+	
+	public native void loadSingleSpawns();
 	
 	public native void loadTrainers();
 	

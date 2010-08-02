@@ -46,6 +46,7 @@ object_building_player_city_cityhall_naboo = object_building_player_city_shared_
 	baseMaintenanceRate = 0,
 	mapLocationsType1 = 50,
 	allowedZones = {1,5,6},
+	gameObjectType = 529,
 	cityRankRequired = 0
 
 

@@ -14,6 +14,7 @@
 #include "server/zone/objects/creature/trainer/TrainerCreature.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -94,7 +95,96 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 }
 
 void CreatureManagerImplementation::loadDynamicSpawnAreas() {
-	info("loading random spawn regions...", true);
+	info("loading dynamic spawn regions...", true);
+}
+
+void CreatureManagerImplementation::loadSingleSpawns() {
+	info("loading single spawns...", true);
+
+	int planetid = zone->getZoneID();
+
+	ResultSet* result = NULL;
+	StringBuffer query;
+	query << "SELECT * FROM world_server_static_spawns WHERE zoneid = " << planetid << ";";
+
+	int i = 0;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		while (result->next()) {
+			uint64 parentid = result->getUnsignedLong(2);
+			String templateFile = result->getString(3);
+			float ox = result->getFloat(4);
+			float oy = result->getFloat(5);
+			float oz = result->getFloat(6);
+			float ow = result->getFloat(7);
+			float x = result->getFloat(8);
+			float z = result->getFloat(9);
+			float y = result->getFloat(10);
+			int level = result->getInt(11);
+			String anim = result->getString(12);
+			int creatureBitmask = result->getInt(13);
+			int combatFlags = result->getInt(14);
+			float respawnTimer = result->getFloat(15);
+
+			ManagedReference<CreatureObject*> creature = spawnCreature(templateFile.hashCode(), x, z, y, parentid);
+
+			if (creature == NULL) {
+				error("trying to spawn unknown creature " + templateFile);
+			} else {
+				ManagedReference<SceneObject*> parentObject;
+
+				if (parentid != 0)
+					parentObject = server->getObject(parentid);
+
+				creature->setDirection(ow, ox, oy, oz);
+				creature->setLevel(level);
+				creature->setMoodString(anim);
+				creature->setPvpStatusBitmask(combatFlags);
+				creature->setOptionsBitmask(creatureBitmask);
+
+				if (creature->isAiAgent()) {
+					AiAgent* aiAgent = (AiAgent*)creature.get();
+					aiAgent->setHomeLocation(x, z, y, parentObject);
+					aiAgent->setRespawnTimer(respawnTimer);
+					aiAgent->setDespawnOnNoPlayerInRange(false);
+				}
+			}
+
+			/*int id = result->getInt(0);
+
+			String templateFile = result->getString(3);
+
+			uint32 templateCRC = UnsignedInteger::valueOf(templateFile);
+			String fullString;
+
+			try {
+				fullString = TemplateManager::instance()->getTemplateFile(templateCRC);
+			} catch (...) {
+				error("wrong crc " + String::valueOf(templateCRC));
+				continue;
+			}
+
+			fullString = fullString.replaceAll("shared_", "");
+
+			StringBuffer query;
+			query << "UPDATE world_server_static_spawns SET file = '" << fullString << "' WHERE id = " << id;
+			ServerDatabase::instance()->executeStatement(query);*/
+
+			++i;
+
+		}
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in CreatureManagerImplementation::loadSingleSpawns()");
+	}
+
+	info("static creatures spawned: " + String::valueOf(i), true);
+
+	delete result;
 }
 
 int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {

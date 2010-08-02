@@ -439,6 +439,10 @@ class TangibleObject extends SceneObject {
 		customizationVariables.parseFromClientString(vars);
 	}
 	
+	public void setPvpStatusBitmask(int bitmask) {
+		pvpStatusBitmask = bitmask;
+	}
+	
 	public void setCraftersName(string name) {
 		craftersName = name;
 	}
@@ -449,6 +453,10 @@ class TangibleObject extends SceneObject {
 	
 	public void setCraftersSerial(string serial) {
 		craftersSerial = serial;
+	}
+	
+	public void setLevel(int lev) {
+		level = lev;
 	}
 	
 	public string getCraftersSerial() {

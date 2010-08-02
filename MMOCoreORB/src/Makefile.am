@@ -101,11 +101,13 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/group/GroupObject.cpp \
 				server/zone/objects/region/Region.cpp \
 				server/zone/objects/installation/InstallationObject.cpp \
+				server/zone/objects/installation/shuttle/ShuttleInstallation.cpp \
 				server/zone/objects/installation/factory/FactoryObject.cpp \
 				server/zone/objects/installation/generator/GeneratorObject.cpp \
 				server/zone/objects/installation/harvester/HarvesterObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
 				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
+				server/zone/objects/building/city/CityHallObject.cpp \
 				server/zone/objects/building/medical/MedicalBuildingObject.cpp \
 				server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
 				server/zone/objects/building/travel/TravelBuildingObject.cpp \
@@ -238,6 +240,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/building/BuildingDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
+		server/zone/objects/installation/shuttle/ShuttleInstallationImplementation.cpp \
 		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
 		server/zone/objects/tangible/component/ComponentImplementation.cpp \
@@ -274,6 +277,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
+		server/zone/objects/building/city/CityHallObjectImplementation.cpp \
 		server/zone/objects/building/StructurePermissionList.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
