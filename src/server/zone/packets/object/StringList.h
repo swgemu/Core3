@@ -70,12 +70,12 @@ public:
 		updateOptionCount();
 	}
 
-	void insertOption(String& option) {
+	void insertOption(const String& option) {
 		insertUnicode(UnicodeString(option));
 		updateOptionCount();
 	}
 
-	void insertOption(UnicodeString& option) {
+	void insertOption(const UnicodeString& option) {
 		insertUnicode(option);
 		updateOptionCount();
 	}

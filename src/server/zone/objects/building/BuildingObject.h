@@ -156,11 +156,15 @@ class BuildingObject : public TangibleObject {
 public:
 	BuildingObject();
 
+	void createChildObjects();
+
 	void createCellObjects();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
+
+	int notifyStructurePlaced(PlayerCreature* player);
 
 	void removeFromZone();
 
@@ -226,6 +230,8 @@ public:
 
 	int getRedeedCost();
 
+	bool isCityHallBuilding();
+
 	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
@@ -277,11 +283,15 @@ public:
 
 	BuildingObjectImplementation(DummyConstructorParameter* param);
 
+	void createChildObjects();
+
 	void createCellObjects();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
+
+	virtual int notifyStructurePlaced(PlayerCreature* player);
 
 	void removeFromZone();
 
@@ -347,6 +357,8 @@ public:
 
 	int getRedeedCost();
 
+	virtual bool isCityHallBuilding();
+
 	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
@@ -390,9 +402,13 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void createChildObjects();
+
 	void createCellObjects();
 
 	void initializeTransientMembers();
+
+	int notifyStructurePlaced(PlayerCreature* player);
 
 	void removeFromZone();
 
@@ -445,6 +461,8 @@ public:
 	int getBaseMaintenanceRate();
 
 	int getRedeedCost();
+
+	bool isCityHallBuilding();
 
 	bool isOnAdminList(CreatureObject* creature);
 

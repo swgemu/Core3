@@ -40,6 +40,10 @@ public:
 		regions.put(region);
 	}
 
+	void addRegion(Region* region) {
+		regions.put(region);
+	}
+
 	Region* getRegion(float x, float y) {
 		Region* region = NULL;
 
@@ -52,6 +56,27 @@ public:
 		}
 
 		return NULL;
+	}
+
+	bool containsRegion(const String& name) {
+		for (int i = 0; i < regions.size(); ++i) {
+			Region* region = regions.get(i);
+
+			StringId* objectName = region->getObjectName();
+			UnicodeString custom = objectName->getCustomString();
+
+			String lowName = name.toLowerCase();
+			String customName = custom.toString().toLowerCase();
+			String file = objectName->getStringID();
+
+			if (customName.indexOf(lowName) != -1)
+				return true;
+
+			if (file.indexOf(lowName) != -1)
+				return true;
+		}
+
+		return false;
 	}
 
 	inline Region* getRegion(int index) {

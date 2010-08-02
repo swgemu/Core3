@@ -121,6 +121,20 @@ ShuttleCreature* PlanetManager::getShuttle(const String& arrivalPoint) {
 		return ((PlanetManagerImplementation*) _impl)->getShuttle(arrivalPoint);
 }
 
+void PlanetManager::addShuttle(const String& city, ShuttleCreature* shuttle) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addAsciiParameter(city);
+		method.addObjectParameter(shuttle);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->addShuttle(city, shuttle);
+}
+
 bool PlanetManager::isNoBuildArea(float x, float y, StringId& fullAreaName) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -134,7 +148,7 @@ unsigned int PlanetManager::getTravelFare(const String& departurePlanet, const S
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addAsciiParameter(departurePlanet);
 		method.addAsciiParameter(arrivalPlanet);
 
@@ -148,7 +162,7 @@ void PlanetManager::sendPlanetTravelPointListResponse(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -161,7 +175,7 @@ StructureManager* PlanetManager::getStructureManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return (StructureManager*) method.executeWithObjectReturn();
 	} else
@@ -181,7 +195,7 @@ Region* PlanetManager::getRegion(float x, float y) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -195,7 +209,7 @@ int PlanetManager::getRegionCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -207,12 +221,38 @@ Region* PlanetManager::getRegion(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addSignedIntParameter(index);
 
 		return (Region*) method.executeWithObjectReturn();
 	} else
 		return ((PlanetManagerImplementation*) _impl)->getRegion(index);
+}
+
+void PlanetManager::addRegion(Region* region) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addObjectParameter(region);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->addRegion(region);
+}
+
+bool PlanetManager::hasRegion(const String& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addAsciiParameter(name);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlanetManagerImplementation*) _impl)->hasRegion(name);
 }
 
 /*
@@ -304,33 +344,50 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 }
 
 ShuttleCreature* PlanetManagerImplementation::getShuttle(const String& arrivalPoint) {
+	Locker _locker(_this);
 	// server/zone/managers/planet/PlanetManager.idl(109):  		return shuttleMap.get(arrivalPoint);
 	return (&shuttleMap)->get(arrivalPoint);
 }
 
+void PlanetManagerImplementation::addShuttle(const String& city, ShuttleCreature* shuttle) {
+	Locker _locker(_this);
+	// server/zone/managers/planet/PlanetManager.idl(113):  		shuttleMap.put(city, shuttle);
+	(&shuttleMap)->put(city, shuttle);
+}
+
 StructureManager* PlanetManagerImplementation::getStructureManager() {
-	// server/zone/managers/planet/PlanetManager.idl(125):  		return structureManager;
+	// server/zone/managers/planet/PlanetManager.idl(129):  		return structureManager;
 	return structureManager;
 }
 
 TerrainManager* PlanetManagerImplementation::getTerrainManager() {
-	// server/zone/managers/planet/PlanetManager.idl(130):  		return terrainManager;
+	// server/zone/managers/planet/PlanetManager.idl(134):  		return terrainManager;
 	return terrainManager;
 }
 
 Region* PlanetManagerImplementation::getRegion(float x, float y) {
-	// server/zone/managers/planet/PlanetManager.idl(134):  		return regionMap.getRegion(x, y);
+	// server/zone/managers/planet/PlanetManager.idl(138):  		return regionMap.getRegion(x, y);
 	return (&regionMap)->getRegion(x, y);
 }
 
 int PlanetManagerImplementation::getRegionCount() {
-	// server/zone/managers/planet/PlanetManager.idl(138):  		return regionMap.size();
+	// server/zone/managers/planet/PlanetManager.idl(142):  		return regionMap.size();
 	return (&regionMap)->size();
 }
 
 Region* PlanetManagerImplementation::getRegion(int index) {
-	// server/zone/managers/planet/PlanetManager.idl(142):  		return regionMap.getRegion(index);
+	// server/zone/managers/planet/PlanetManager.idl(146):  		return regionMap.getRegion(index);
 	return (&regionMap)->getRegion(index);
+}
+
+void PlanetManagerImplementation::addRegion(Region* region) {
+	// server/zone/managers/planet/PlanetManager.idl(150):  		regionMap.addRegion(region);
+	(&regionMap)->addRegion(region);
+}
+
+bool PlanetManagerImplementation::hasRegion(const String& name) {
+	// server/zone/managers/planet/PlanetManager.idl(154):  		return regionMap.containsRegion(name);
+	return (&regionMap)->containsRegion(name);
 }
 
 /*
@@ -369,22 +426,31 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__String_))->_getObjectID());
 		break;
 	case 14:
-		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_String_), inv->getAsciiParameter(_param1_getTravelFare__String_String_)));
+		addShuttle(inv->getAsciiParameter(_param0_addShuttle__String_ShuttleCreature_), (ShuttleCreature*) inv->getObjectParameter());
 		break;
 	case 15:
-		sendPlanetTravelPointListResponse((PlayerCreature*) inv->getObjectParameter());
+		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_String_), inv->getAsciiParameter(_param1_getTravelFare__String_String_)));
 		break;
 	case 16:
-		resp->insertLong(getStructureManager()->_getObjectID());
+		sendPlanetTravelPointListResponse((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 17:
-		resp->insertLong(getRegion(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		resp->insertLong(getStructureManager()->_getObjectID());
 		break;
 	case 18:
-		resp->insertSignedInt(getRegionCount());
+		resp->insertLong(getRegion(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
 	case 19:
+		resp->insertSignedInt(getRegionCount());
+		break;
+	case 20:
 		resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 21:
+		addRegion((Region*) inv->getObjectParameter());
+		break;
+	case 22:
+		resp->insertBoolean(hasRegion(inv->getAsciiParameter(_param0_hasRegion__String_)));
 		break;
 	default:
 		return NULL;
@@ -425,6 +491,10 @@ ShuttleCreature* PlanetManagerAdapter::getShuttle(const String& arrivalPoint) {
 	return ((PlanetManagerImplementation*) impl)->getShuttle(arrivalPoint);
 }
 
+void PlanetManagerAdapter::addShuttle(const String& city, ShuttleCreature* shuttle) {
+	((PlanetManagerImplementation*) impl)->addShuttle(city, shuttle);
+}
+
 unsigned int PlanetManagerAdapter::getTravelFare(const String& departurePlanet, const String& arrivalPlanet) {
 	return ((PlanetManagerImplementation*) impl)->getTravelFare(departurePlanet, arrivalPlanet);
 }
@@ -447,6 +517,14 @@ int PlanetManagerAdapter::getRegionCount() {
 
 Region* PlanetManagerAdapter::getRegion(int index) {
 	return ((PlanetManagerImplementation*) impl)->getRegion(index);
+}
+
+void PlanetManagerAdapter::addRegion(Region* region) {
+	((PlanetManagerImplementation*) impl)->addRegion(region);
+}
+
+bool PlanetManagerAdapter::hasRegion(const String& name) {
+	return ((PlanetManagerImplementation*) impl)->hasRegion(name);
 }
 
 /*

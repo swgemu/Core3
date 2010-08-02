@@ -46,6 +46,7 @@ object_building_player_city_cityhall_tatooine = object_building_player_city_shar
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
 	mapLocationsType1 = 50,
+	gameObjectType = 529,
 	cityRankRequired = 0
 
 

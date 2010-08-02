@@ -206,6 +206,10 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
+	void sendConversationStartTo(SceneObject* player);
+
+	void selectConversationOption(int option, SceneObject* obj);
+
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	void activatePostureRecovery();
@@ -221,6 +225,8 @@ public:
 	void setDespawnOnNoPlayerInRange(bool val);
 
 	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
+
+	void setRespawnTimer(float resp);
 
 	bool isAttackableBy(CreatureObject* object);
 
@@ -279,6 +285,8 @@ public:
 	int getNumberOfPlayersInRange();
 
 	DamageMap* getDamageMap();
+
+	float getRespawnTimer();
 
 	PatrolPoint* getHomeLocation();
 
@@ -336,6 +344,8 @@ protected:
 
 	ManagedWeakReference<SceneObject* > followObject;
 
+	float respawnTimer;
+
 	int numberOfPlayersInRange;
 
 	Reference<DespawnCreatureOnPlayerDissappear*> despawnEvent;
@@ -381,6 +391,10 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
+	void sendConversationStartTo(SceneObject* player);
+
+	void selectConversationOption(int option, SceneObject* obj);
+
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	void activatePostureRecovery();
@@ -396,6 +410,8 @@ public:
 	void setDespawnOnNoPlayerInRange(bool val);
 
 	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
+
+	void setRespawnTimer(float resp);
 
 	bool isAttackableBy(CreatureObject* object);
 
@@ -454,6 +470,8 @@ public:
 	int getNumberOfPlayersInRange();
 
 	DamageMap* getDamageMap();
+
+	float getRespawnTimer();
 
 	PatrolPoint* getHomeLocation();
 
@@ -522,6 +540,10 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 
+	void sendConversationStartTo(SceneObject* player);
+
+	void selectConversationOption(int option, SceneObject* obj);
+
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	void activatePostureRecovery();
@@ -537,6 +559,8 @@ public:
 	void setDespawnOnNoPlayerInRange(bool val);
 
 	void setHomeLocation(float x, float z, float y, SceneObject* cell);
+
+	void setRespawnTimer(float resp);
 
 	bool isAttackableBy(CreatureObject* object);
 
@@ -593,6 +617,8 @@ public:
 	bool getDespawnOnNoPlayerInRange();
 
 	int getNumberOfPlayersInRange();
+
+	float getRespawnTimer();
 
 	bool hasOrganics();
 

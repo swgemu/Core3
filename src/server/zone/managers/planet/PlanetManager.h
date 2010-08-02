@@ -160,6 +160,8 @@ public:
 
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
+	void addShuttle(const String& city, ShuttleCreature* shuttle);
+
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
 	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
@@ -175,6 +177,10 @@ public:
 	int getRegionCount();
 
 	Region* getRegion(int index);
+
+	void addRegion(Region* region);
+
+	bool hasRegion(const String& name);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -233,6 +239,8 @@ public:
 
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
+	void addShuttle(const String& city, ShuttleCreature* shuttle);
+
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
 	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
@@ -248,6 +256,10 @@ public:
 	int getRegionCount();
 
 	Region* getRegion(int index);
+
+	void addRegion(Region* region);
+
+	bool hasRegion(const String& name);
 
 	PlanetManager* _this;
 
@@ -302,6 +314,8 @@ public:
 
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
+	void addShuttle(const String& city, ShuttleCreature* shuttle);
+
 	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
@@ -314,10 +328,16 @@ public:
 
 	Region* getRegion(int index);
 
+	void addRegion(Region* region);
+
+	bool hasRegion(const String& name);
+
 protected:
 	String _param0_getShuttle__String_;
+	String _param0_addShuttle__String_ShuttleCreature_;
 	String _param0_getTravelFare__String_String_;
 	String _param1_getTravelFare__String_String_;
+	String _param0_hasRegion__String_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {

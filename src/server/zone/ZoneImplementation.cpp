@@ -124,11 +124,12 @@ void ZoneImplementation::startManagers() {
 		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 	}
 
+	creatureManager = new CreatureManager(_this, processor);
+	creatureManager->deploy("CreatureManager", zoneID);
+
 	planetManager = new PlanetManager(_this, processor);
 	planetManager->initialize();
 
-	creatureManager = new CreatureManager(_this, processor);
-	creatureManager->deploy("CreatureManager", zoneID);
 	creatureManager->initialize();
 	planetManager->loadShuttles();
 

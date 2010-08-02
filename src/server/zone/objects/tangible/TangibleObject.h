@@ -280,11 +280,15 @@ public:
 
 	void setCustomizationString(const String& vars);
 
+	void setPvpStatusBitmask(int bitmask);
+
 	void setCraftersName(String& name);
 
 	String getCraftersName();
 
 	void setCraftersSerial(String& serial);
+
+	void setLevel(int lev);
 
 	String getCraftersSerial();
 
@@ -518,11 +522,15 @@ public:
 
 	void setCustomizationString(const String& vars);
 
+	void setPvpStatusBitmask(int bitmask);
+
 	void setCraftersName(String& name);
 
 	String getCraftersName();
 
 	void setCraftersSerial(String& serial);
+
+	void setLevel(int lev);
 
 	String getCraftersSerial();
 
@@ -655,11 +663,15 @@ public:
 
 	void setCustomizationString(const String& vars);
 
+	void setPvpStatusBitmask(int bitmask);
+
 	void setCraftersName(String& name);
 
 	String getCraftersName();
 
 	void setCraftersSerial(String& serial);
+
+	void setLevel(int lev);
 
 	String getCraftersSerial();
 

@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.managers.bazaar;
+package server.zone.objects.region;
 
 import system.util.VectorMap;
 import engine.core.ManagedObject;

@@ -49,14 +49,14 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 
-class ShuttleMap : public HashTable<String, ShuttleCreature*>, public HashTableIterator<String, ShuttleCreature*>  {
+class ShuttleMap : public HashTable<String, ManagedReference<ShuttleCreature*> >, public HashTableIterator<String, ManagedReference<ShuttleCreature*> >  {
 
 	int hash(const String& key) {
         return key.hashCode();
 	}
 
 public:
-	ShuttleMap() : HashTable<String, ShuttleCreature*>(2000), HashTableIterator<String, ShuttleCreature*>(this)  {
+	ShuttleMap() : HashTable<String,  ManagedReference<ShuttleCreature*> >(2000), HashTableIterator<String,  ManagedReference<ShuttleCreature*> >(this)  {
 		setNullValue(NULL);
 	}
 };

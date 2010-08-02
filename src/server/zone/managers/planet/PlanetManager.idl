@@ -105,8 +105,12 @@ class PlanetManager extends ManagedObject implements Logger {
 	public native void loadShuttles();
 	public native void loadBadgeAreas();
 	
-	public ShuttleCreature getShuttle(final string arrivalPoint) {
+	public synchronized ShuttleCreature getShuttle(final string arrivalPoint) {
 		return shuttleMap.get(arrivalPoint);
+	}
+	
+	public synchronized void addShuttle(final string city, ShuttleCreature shuttle) {
+		shuttleMap.put(city, shuttle);
 	}
 	
 	@local
@@ -140,6 +144,14 @@ class PlanetManager extends ManagedObject implements Logger {
 	
 	public Region getRegion(int index) {
 		return regionMap.getRegion(index);
+	}
+	
+	public void addRegion(Region region) {
+		regionMap.addRegion(region);
+	}
+	
+	public boolean hasRegion(final string name) {
+		return regionMap.containsRegion(name);
 	}
 	
 	/*public Region getRegion(final string regionName) {

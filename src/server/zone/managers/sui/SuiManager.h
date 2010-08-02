@@ -139,6 +139,8 @@ namespace server {
 	  	void handleCharacterListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
 
 	  	void handleCharacterBuilderSelectItem(uint32 boxid, PlayerCreature* player, int cancel, int index);
+
+	  	void handleSetCityHallName(int boxID, PlayerCreature* player, int cancel, const String& input);
 	  };
 	  }
   }

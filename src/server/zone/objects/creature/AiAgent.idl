@@ -98,6 +98,7 @@ class AiAgent extends CreatureObject {
 	@weakReference
 	protected SceneObject followObject;
 	
+	protected float respawnTimer;
 	protected int numberOfPlayersInRange;
 	
 	@dereferenced
@@ -109,6 +110,7 @@ class AiAgent extends CreatureObject {
 		baby = false;
 
 		currentSpeed = 0;
+		respawnTimer = 0;
 		
 		despawnOnNoPlayerInRange = true;
 		numberOfPlayersInRange = 0;
@@ -179,6 +181,19 @@ class AiAgent extends CreatureObject {
 	 */
 	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
 	
+	/**
+	 * sends the conversation list 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
+	public native void sendConversationStartTo(SceneObject player);
+	
+	/**
+	 * sends the conversation list 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
+	public native void selectConversationOption(int option, SceneObject obj);
 	
 	/**
 	 * Is called when this object is destroyed
@@ -229,6 +244,10 @@ class AiAgent extends CreatureObject {
 		homeLocation.setReached(true);
 	}
 	
+	public void setRespawnTimer(float resp) {
+		respawnTimer = resp;
+	}
+	
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
 	 * @pre { this object is locked }
@@ -237,6 +256,9 @@ class AiAgent extends CreatureObject {
 	 */
 	public boolean isAttackableBy(CreatureObject object) {
 		if (object == this)
+			return false;
+		
+		if (super.pvpStatusBitmask == 0)
 			return false;
 		
 		if (this.isRetreating())
@@ -426,6 +448,10 @@ class AiAgent extends CreatureObject {
 	@local
 	public DamageMap getDamageMap() {
 		return damageMap;
+	}
+	
+	public float getRespawnTimer() {
+		return respawnTimer;
 	}
 	
 	@local

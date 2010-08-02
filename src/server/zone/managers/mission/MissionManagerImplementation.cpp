@@ -230,7 +230,10 @@ void MissionManagerImplementation::randomizeGeneralMission(PlayerCreature* playe
 
 	int randTexts = System::random(35);
 
-	Vector3 startPos = player->getCoordinate(System::random(1000) + 700, (float)System::random(360));
+	if (randTexts == 0)
+		randTexts = 1;
+
+	Vector3 startPos = player->getCoordinate(System::random(1000) + 1000, (float)System::random(360));
 	//mission->setMissionTarget(lairObjectTemplate->getObjectName());
 	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
 	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getPlanetCRC());

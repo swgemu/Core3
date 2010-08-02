@@ -160,6 +160,8 @@ public:
 
 	void loadDynamicSpawnAreas();
 
+	void loadSingleSpawns();
+
 	void loadTrainers();
 
 protected:
@@ -202,6 +204,8 @@ public:
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
 	void loadDynamicSpawnAreas();
+
+	void loadSingleSpawns();
 
 	void loadTrainers();
 
@@ -253,6 +257,8 @@ public:
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID);
 
 	void loadDynamicSpawnAreas();
+
+	void loadSingleSpawns();
 
 	void loadTrainers();
 
