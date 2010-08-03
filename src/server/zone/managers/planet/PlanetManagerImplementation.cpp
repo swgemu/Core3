@@ -72,6 +72,7 @@ void PlanetManagerImplementation::loadNoBuildAreas() {
 		Region* region = (Region*) ObjectManager::instance()->createObject(crc, 0, "");
 		region->initializePosition(x, 0, y);
 		region->setRadius(radius);
+		region->setStaticObject(true);
 		StringId* objectName = region->getObjectName();
 		objectName->setStringId(fullName);
 

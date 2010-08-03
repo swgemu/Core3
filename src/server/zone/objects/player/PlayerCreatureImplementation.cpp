@@ -155,12 +155,12 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 	if (scno->isBuildingObject())
 		((BuildingObject*)scno)->addNotifiedSentObject(_this);*/
 
-	if (notifiedSentObjects.put(scno) != -1) {
+	/*if (notifiedSentObjects.put(scno) != -1) {*/
 		if (scno->getParent() != NULL && scno->getParent()->isVehicleObject())
 			return;
 
 		scno->sendTo(_this, true);
-	}
+	//}
 }
 
 bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
@@ -189,7 +189,7 @@ void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
 
 	scno->sendDestroyTo(_this);
 
-	notifiedSentObjects.drop(scno);
+	//notifiedSentObjects.drop(scno);
 }
 
 void PlayerCreatureImplementation::logout(bool doLock) {
