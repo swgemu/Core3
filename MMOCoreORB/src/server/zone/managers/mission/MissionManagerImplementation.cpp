@@ -219,6 +219,10 @@ void MissionManagerImplementation::randomizeGeneralMission(PlayerCreature* playe
 	int zoneID = player->getZone()->getZoneID();
 
 	uint32 templateCRC = lairObjectTemplatesToSpawn.getRandomTemplate(zoneID);
+
+	if (templateCRC == 0)
+		return;
+
 	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(templateCRC);
 
 	if (templateObject == NULL || !templateObject->isLairObjectTemplate()) {

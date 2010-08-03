@@ -248,6 +248,8 @@ public:
 
 	CreatureObject();
 
+	void initializeMembers();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
@@ -778,6 +780,8 @@ public:
 
 	CreatureObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeMembers();
+
 	void finalize();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -1196,6 +1200,8 @@ public:
 	CreatureObjectAdapter(CreatureObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeMembers();
 
 	void finalize();
 

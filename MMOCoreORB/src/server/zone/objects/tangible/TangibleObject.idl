@@ -137,10 +137,27 @@ class TangibleObject extends SceneObject {
 	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize TangibleObject members
 	 */
 	public TangibleObject() {
+		Logger.setLoggingName("TangibleObject");
+		
+		initializeMembers();
+	}
+	
+	public void initializeMembers() {
 		faction = 0;
 		level = 1;
 		useCount = 1;
-		Logger.setLoggingName("TangibleObject");
+		
+		complexity = 100.f;
+
+		volume = 1;
+
+		unknownByte = 1;
+
+		useCount = 1;
+
+		conditionDamage = 0;
+		
+		sliced = false;
 	}
 	
 	/**

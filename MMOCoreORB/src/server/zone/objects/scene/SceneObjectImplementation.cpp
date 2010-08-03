@@ -104,6 +104,8 @@ void SceneObjectImplementation::initializePrivateData() {
 
 	templateObject = NULL;
 
+	parent = NULL;
+
 	movementCounter = 0;
 
 	serverObjectCRC = 0;
@@ -114,6 +116,16 @@ void SceneObjectImplementation::initializePrivateData() {
 	gameObjectType = 0;
 	containmentType = 0;
 
+	zone = NULL;
+
+	containmentType = 4;
+
+	initializePosition(0.f, 0.f, 0.f);
+
+	movementCounter = 0;
+
+	staticObject = false;
+
 	setGlobalLogging(true);
 	setLogging(false);
 
@@ -121,8 +133,6 @@ void SceneObjectImplementation::initializePrivateData() {
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	SceneObjectImplementation::parent = NULL;
-
 	slottedObjects.setNullValue(NULL);
 	objectName.setStringId(templateData->getObjectName());
 
@@ -138,16 +148,6 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	arrangementDescriptors = templateData->getArrangementDescriptors();
 
 	slotDescriptors = templateData->getSlotDescriptors();
-
-	zone = NULL;
-
-	containmentType = 4;
-
-	initializePosition(0.f, 0.f, 0.f);
-
-	movementCounter = 0;
-
-	staticObject = false;
 
 	templateObject = templateData;
 }
@@ -303,7 +303,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	//sending all slotted objects by default
-	SortedVector<SceneObject*> objects(1, slottedObjects.size());
+	SortedVector<SceneObject*> objects(slottedObjects.size(), slottedObjects.size());
 	objects.setNoDuplicateInsertPlan();
 
 	for (int i = 0; i < slottedObjects.size(); ++i) {
@@ -996,7 +996,9 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 
 bool SceneObjectImplementation::isInRange(SceneObject* object, float range) {
 	Vector3 worldPos = object->getWorldPosition();
+	worldPos.setZ(0);
 	Vector3 thisPos = getWorldPosition();
+	thisPos.setZ(0);
 
 	if (thisPos.squaredDistanceTo(worldPos) <= range * range)
 		return true;

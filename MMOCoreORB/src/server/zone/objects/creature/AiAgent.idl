@@ -238,6 +238,16 @@ class AiAgent extends CreatureObject {
 	
 	public native void setDespawnOnNoPlayerInRange(boolean val);
 	
+	/**
+	 * Gets called when the creature was despawned
+	 */
+	public native void notifyDespawn(Zone zone);
+	
+	/**
+	 * Respawns creature to specified zone with home location position
+	 */
+	public native void respawn(Zone zone, int level);
+	
 	public void setHomeLocation(float x, float z, float y, SceneObject cell = null) {
 		homeLocation.setPosition(x, z, y);
 		homeLocation.setCell(cell);

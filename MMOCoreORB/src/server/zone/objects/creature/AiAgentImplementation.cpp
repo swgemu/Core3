@@ -9,6 +9,7 @@
 
 #include "events/AiThinkEvent.h"
 #include "events/AiMoveEvent.h"
+#include "events/RespawnCreatureTask.h"
 #include "events/DespawnCreatureOnPlayerDissappear.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
@@ -186,6 +187,41 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 
 void AiAgentImplementation::clearDespawnEvent() {
 	despawnEvent = NULL;
+}
+
+void AiAgentImplementation::respawn(Zone* zone, int level) {
+	if (this->zone != NULL)
+		return;
+
+	setLevel(level);
+
+	initializePosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
+
+	SceneObject* cell = homeLocation.getCell();
+
+	Locker zoneLocker(zone);
+
+	if (cell != NULL)
+		cell->addObject(_this, -1);
+
+	insertToZone(zone);
+}
+
+void AiAgentImplementation::notifyDespawn(Zone* zone) {
+	if (respawnTimer == 0)
+		return;
+
+	if (npcTemplate == NULL)
+		return;
+
+	Reference<Task*> task = new RespawnCreatureTask(_this, zone, level);
+
+	loadTemplateData(npcTemplate);
+	stateBitmask = 0;
+	posture = CreaturePosture::UPRIGHT;
+	shockWounds = 0;
+
+	task->schedule(respawnTimer * 1000);
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
