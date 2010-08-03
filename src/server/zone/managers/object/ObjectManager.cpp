@@ -29,6 +29,7 @@
 #include "server/zone/objects/tangible/weapon/RangedWeaponObject.h"
 #include "server/zone/objects/tangible/weapon/PistolWeaponObject.h"
 #include "server/zone/objects/tangible/weapon/RifleWeaponObject.h"
+#include "server/zone/objects/tangible/weapon/CarbineWeaponObject.h"
 #include "server/zone/objects/tangible/weapon/OneHandMeleeWeapon.h"
 #include "server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.h"
 #include "server/zone/objects/tangible/weapon/PolearmWeaponObject.h"
@@ -204,6 +205,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<RangedWeaponObject>(SceneObject::RANGEDWEAPON);
 	objectFactory.registerObject<OneHandMeleeWeapon>(SceneObject::ONEHANDMELEEWEAPON);
 	objectFactory.registerObject<RifleWeaponObject>(SceneObject::RIFLE);
+	objectFactory.registerObject<CarbineWeaponObject>(SceneObject::CARBINE);
 	objectFactory.registerObject<PolearmWeaponObject>(SceneObject::POLEARM);
 	objectFactory.registerObject<TwoHandMeleeWeapon>(SceneObject::TWOHANDMELEEWEAPON);
 
