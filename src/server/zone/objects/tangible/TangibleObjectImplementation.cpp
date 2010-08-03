@@ -72,18 +72,7 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	playerUseMask = tanoData->getPlayerUseMask();
 
-	complexity = 100.f;
-
-	volume = 1;
-
-	unknownByte = 1;
-
-	useCount = 1;
-
-	conditionDamage = 0;
 	maxCondition = tanoData->getMaxCondition();
-
-	sliced = false;
 
 	optionsBitmask = tanoData->getOptionsBitmask();
 	pvpStatusBitmask = tanoData->getPvpStatusBitmask();

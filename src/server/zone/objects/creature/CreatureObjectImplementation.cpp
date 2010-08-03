@@ -79,6 +79,7 @@ which carries forward this exception.
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "events/DizzyFallDownEvent.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -101,10 +102,11 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	setLoggingName("CreatureObject");
 }
 
-void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	TangibleObjectImplementation::loadTemplateData(templateData);
+void CreatureObjectImplementation::initializeMembers() {
+	linkedCreature = NULL;
+	controlDevice = NULL;
 
-	SharedCreatureObjectTemplate* creoData = dynamic_cast<SharedCreatureObjectTemplate*>(templateData);
+	skillModList.setNullValue(0);
 
 	bankCredits = 1000;
 	cashCredits = 100;
@@ -115,22 +117,10 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	factionRank = 0;
 	faction = 0;
 
-	height = 1;
-
-	shockWounds = 0.f;
-
-	gender = creoData->getGender();
-	species = creoData->getSpecies();
-	slopeModPercent = creoData->getSlopeModPercent();
-	slopeModAngle = creoData->getSlopeModAngle();
-	swimHeight = creoData->getSwimHeight();
-
 	stateBitmask = 0;
 	terrainNegotiation = 0.f;
 
 	listenToID = 0;
-
-	level = creoData->getLevel();
 
 	weapon = NULL;
 	group = NULL;
@@ -144,23 +134,48 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	optionsBitmask = 0x80;
 
+	height = 1;
+
+	shockWounds = 0;
+}
+
+void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	SharedCreatureObjectTemplate* creoData = dynamic_cast<SharedCreatureObjectTemplate*>(templateData);
+
+	gender = creoData->getGender();
+	species = creoData->getSpecies();
+	slopeModPercent = creoData->getSlopeModPercent();
+	slopeModAngle = creoData->getSlopeModAngle();
+	swimHeight = creoData->getSwimHeight();
+
+	level = creoData->getLevel();
+
+	encumbrances.removeAll();
+
 	for (int i = 0; i < 3; ++i) {
 		encumbrances.add(0);
 	}
 
 	Vector<int> base = creoData->getBaseHAM();
 
+	baseHAM.removeAll();
+
 	for (int i = 0; i < base.size(); ++i)
 		baseHAM.add(base.get(i));
 
+	wounds.removeAll();
 	for (int i = 0; i < 9; ++i) {
 		wounds.add(0);
 	}
 
+	hamList.removeAll();
 	for (int i = 0; i < 9; ++i) {
 		hamList.add(baseHAM.get(i));
 	}
 
+	maxHamList.removeAll();
 	for (int i = 0; i < 9; ++i) {
 		maxHamList.add(baseHAM.get(i));
 	}
@@ -223,26 +238,28 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
-	SortedVector<SceneObject*> objects(1, slottedObjects.size());
+	SortedVector<SceneObject*> objects(slottedObjects.size(), slottedObjects.size());
 	objects.setNoDuplicateInsertPlan();
 
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		SceneObject* object = slottedObjects.get(i);
 
-		if (objects.put(object) == -1)
-			continue;
-
 		int arrangementSize = object->getArrangementDescriptorSize();
+
+		bool send = true;
 
 		for (int i = 0; i < arrangementSize; ++i) {
 			String childArrangement = object->getArrangementDescriptor(i);
 
 			if (player != _this && ((childArrangement == "bank") || (childArrangement == "inventory")
-					|| (childArrangement == "datapad") || (childArrangement == "mission_bag")))
-				continue;
-			else
-				object->sendTo(player, true);
+					|| (childArrangement == "datapad") || (childArrangement == "mission_bag"))) {
+				send = false;
+				break;
+			}
 		}
+
+		if (send && (objects.put(object) != -1))
+			object->sendTo(player, true);
 	}
 }
 

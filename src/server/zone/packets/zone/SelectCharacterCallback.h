@@ -11,6 +11,7 @@
 #include "../MessageCallback.h"
 
 #include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -76,21 +77,29 @@ public:
 
 				ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
 
-				if (parent != NULL && (parent->isCellObject() || parent->isVehicleObject())) {
-					try {
-						Locker clocker(parent, player);
-
-						parent->addObject(player, -1);
-
-					} catch (...) {
-
-					}
-				}
-
 				try {
 					zone = zoneServer->getZone(zoneID);
 				} catch (...) {
 					zone = NULL;
+				}
+
+				if (zone == NULL)
+					return;
+
+				Locker zlocker(zone);
+
+				if (parent != NULL && (parent->isCellObject() || parent->isVehicleObject())) {
+					try {
+						Locker clocker(parent, player);
+
+						if (parent->isCellObject())
+							parent->addObject(player, -1, false);
+						else if (parent->isVehicleObject())
+							parent->addObject(player, 4, false);
+
+					} catch (...) {
+
+					}
 				}
 
 				if (zone == NULL && parent != NULL)

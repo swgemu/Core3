@@ -128,6 +128,9 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 			int combatFlags = result->getInt(14);
 			float respawnTimer = result->getFloat(15);
 
+			if (z == 0 && parentid == 0)
+				z = zone->getHeight(x, y);
+
 			ManagedReference<CreatureObject*> creature = spawnCreature(templateFile.hashCode(), x, z, y, parentid);
 
 			if (creature == NULL) {
@@ -135,8 +138,9 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 			} else {
 				ManagedReference<SceneObject*> parentObject;
 
-				if (parentid != 0)
+				if (parentid != 0) {
 					parentObject = server->getObject(parentid);
+				}
 
 				creature->setDirection(ow, ox, oy, oz);
 				creature->setLevel(level);

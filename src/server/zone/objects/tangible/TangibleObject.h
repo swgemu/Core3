@@ -182,6 +182,8 @@ public:
 
 	TangibleObject();
 
+	void initializeMembers();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
@@ -424,6 +426,8 @@ public:
 
 	TangibleObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeMembers();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
@@ -574,6 +578,8 @@ public:
 	TangibleObjectAdapter(TangibleObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeMembers();
 
 	void initializeTransientMembers();
 
