@@ -681,14 +681,16 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			SceneObjectImplementation* object = (SceneObjectImplementation*) getInRangeObject(i);
 
-			if (object->getParent() == NULL)
+			//if (object->getParent() == NULL)
 				notifyInsert(object);
 
 			//teleport(positionX, positionZ, positionY, getParentID());
 
 			if (object != this) {
-				sendDestroyTo((SceneObject*) object->_getStub());
-				sendTo((SceneObject*) object->_getStub(), true);
+				object->notifyDissapear(this);
+				object->notifyInsert(this);
+				//sendDestroyTo((SceneObject*) object->_getStub());
+				//sendTo((SceneObject*) object->_getStub(), true);
 			}
 		}
 	} else {
