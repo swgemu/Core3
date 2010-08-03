@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	RegionStub
  */
@@ -35,12 +37,38 @@ void Region::notifyEnter(SceneObject* object) {
 		((RegionImplementation*) _impl)->notifyEnter(object);
 }
 
-void Region::notifyExit(SceneObject* object) {
+void Region::sendGreetingMessage(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((RegionImplementation*) _impl)->sendGreetingMessage(player);
+}
+
+void Region::sendDepartingMessage(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((RegionImplementation*) _impl)->sendDepartingMessage(player);
+}
+
+void Region::notifyExit(SceneObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -53,7 +81,7 @@ void Region::addBazaar(BazaarTerminal* ter) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(ter);
 
 		method.executeWithVoidReturn();
@@ -66,7 +94,7 @@ BazaarTerminal* Region::getBazaar(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 		method.addSignedIntParameter(idx);
 
 		return (BazaarTerminal*) method.executeWithObjectReturn();
@@ -79,7 +107,7 @@ int Region::getBazaarCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -91,7 +119,7 @@ bool Region::isRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -170,41 +198,47 @@ void RegionImplementation::_serializationHelperMethod() {
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/Region.idl(62):  		bazaars.setNoDuplicateInsertPlan();
+	// server/zone/objects/region/Region.idl(63):  		bazaars.setNoDuplicateInsertPlan();
 	(&bazaars)->setNoDuplicateInsertPlan();
-	// server/zone/objects/region/Region.idl(63):  		bazaars.setNullValue(null);
+	// server/zone/objects/region/Region.idl(64):  		bazaars.setNullValue(null);
 	(&bazaars)->setNullValue(NULL);
 }
 
 void RegionImplementation::notifyEnter(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(67):  	}
-	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(68):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+	// server/zone/objects/region/Region.idl(68):  		if 
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(69):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
 	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
+	// server/zone/objects/region/Region.idl(71):  	}
+	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(72):  			sendGreetingMessage((PlayerCreature) object);
+	sendGreetingMessage((PlayerCreature*) object);
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(72):  	}
-	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(73):  			bazaars.drop(object.getObjectID());
+	// server/zone/objects/region/Region.idl(79):  		if 
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(80):  			bazaars.drop(object.getObjectID());
 	(&bazaars)->drop(object->getObjectID());
+	// server/zone/objects/region/Region.idl(82):  	}
+	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(83):  			sendDepartingMessage((PlayerCreature) object);
+	sendDepartingMessage((PlayerCreature*) object);
 }
 
 void RegionImplementation::addBazaar(BazaarTerminal* ter) {
-	// server/zone/objects/region/Region.idl(77):  		bazaars.put(ter.getObjectID(), ter);
+	// server/zone/objects/region/Region.idl(87):  		bazaars.put(ter.getObjectID(), ter);
 	(&bazaars)->put(ter->getObjectID(), ter);
 }
 
 BazaarTerminal* RegionImplementation::getBazaar(int idx) {
-	// server/zone/objects/region/Region.idl(81):  		return bazaars.get(idx);
+	// server/zone/objects/region/Region.idl(91):  		return bazaars.get(idx);
 	return (&bazaars)->get(idx);
 }
 
 int RegionImplementation::getBazaarCount() {
-	// server/zone/objects/region/Region.idl(85):  		return bazaars.size();
+	// server/zone/objects/region/Region.idl(95):  		return bazaars.size();
 	return (&bazaars)->size();
 }
 
 bool RegionImplementation::isRegion() {
-	// server/zone/objects/region/Region.idl(89):  		return true;
+	// server/zone/objects/region/Region.idl(99):  		return true;
 	return true;
 }
 
@@ -223,18 +257,24 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		notifyExit((SceneObject*) inv->getObjectParameter());
+		sendGreetingMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 8:
-		addBazaar((BazaarTerminal*) inv->getObjectParameter());
+		sendDepartingMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
+		notifyExit((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		resp->insertSignedInt(getBazaarCount());
+		addBazaar((BazaarTerminal*) inv->getObjectParameter());
 		break;
 	case 11:
+		resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 12:
+		resp->insertSignedInt(getBazaarCount());
+		break;
+	case 13:
 		resp->insertBoolean(isRegion());
 		break;
 	default:
@@ -246,6 +286,14 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void RegionAdapter::notifyEnter(SceneObject* object) {
 	((RegionImplementation*) impl)->notifyEnter(object);
+}
+
+void RegionAdapter::sendGreetingMessage(PlayerCreature* player) {
+	((RegionImplementation*) impl)->sendGreetingMessage(player);
+}
+
+void RegionAdapter::sendDepartingMessage(PlayerCreature* player) {
+	((RegionImplementation*) impl)->sendDepartingMessage(player);
 }
 
 void RegionAdapter::notifyExit(SceneObject* object) {

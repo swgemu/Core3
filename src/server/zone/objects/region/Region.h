@@ -29,6 +29,20 @@ class BazaarTerminal;
 
 using namespace server::zone::objects::tangible::terminal::bazaar;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/objects/region/RegionCenterPoint.h"
@@ -51,6 +65,10 @@ public:
 	Region();
 
 	void notifyEnter(SceneObject* object);
+
+	void sendGreetingMessage(PlayerCreature* player);
+
+	void sendDepartingMessage(PlayerCreature* player);
 
 	void notifyExit(SceneObject* object);
 
@@ -92,6 +110,10 @@ public:
 	RegionImplementation(DummyConstructorParameter* param);
 
 	void notifyEnter(SceneObject* object);
+
+	void sendGreetingMessage(PlayerCreature* player);
+
+	void sendDepartingMessage(PlayerCreature* player);
 
 	void notifyExit(SceneObject* object);
 
@@ -143,6 +165,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void notifyEnter(SceneObject* object);
+
+	void sendGreetingMessage(PlayerCreature* player);
+
+	void sendDepartingMessage(PlayerCreature* player);
 
 	void notifyExit(SceneObject* object);
 
