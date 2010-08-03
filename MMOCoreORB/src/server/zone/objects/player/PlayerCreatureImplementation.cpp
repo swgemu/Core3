@@ -99,6 +99,8 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 
 		grandParent->sendTo(_this, true);
 
+		notifiedSentObjects.put(grandParent);
+
 		//info("parent not null", true);
 
 		/*if (grandParent->isBuildingObject())
@@ -155,12 +157,20 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 	if (scno->isBuildingObject())
 		((BuildingObject*)scno)->addNotifiedSentObject(_this);*/
 
-	/*if (notifiedSentObjects.put(scno) != -1) {*/
-		if (scno->getParent() != NULL && scno->getParent()->isVehicleObject())
-			return;
+	if (notifiedSentObjects.put(scno) != -1) {
+		SceneObject* rootParent = scno->getRootParent();
 
-		scno->sendTo(_this, true);
-	//}
+		if (rootParent != NULL) {
+			if (notifiedSentObjects.contains(rootParent))
+				scno->sendTo(_this, true);
+			else {
+				rootParent->sendTo(_this, true);
+
+				notifiedSentObjects.put(rootParent);
+			}
+		} else
+			scno->sendTo(_this, true);
+	}
 }
 
 bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
@@ -189,7 +199,7 @@ void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
 
 	scno->sendDestroyTo(_this);
 
-	//notifiedSentObjects.drop(scno);
+	notifiedSentObjects.drop(scno);
 }
 
 void PlayerCreatureImplementation::logout(bool doLock) {
@@ -347,6 +357,8 @@ void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
 	setOnline();
 
 	movementCounter = 0;
+
+	//notifiedSentObjects.removeAll();
 
 	insertToZone(zone);
 }
