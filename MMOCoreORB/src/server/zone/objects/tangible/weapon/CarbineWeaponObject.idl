@@ -42,52 +42,24 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef HEADSHOT2COMMAND_H_
-#define HEADSHOT2COMMAND_H_
+package server.zone.objects.tangible.weapon;
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "CombatQueueCommand.h"
+import server.zone.objects.tangible.weapon.RangedWeaponObject;
+import engine.lua.LuaObject;
+import server.zone.Zone;
 
-
-class HeadShot2Command : public CombatQueueCommand {
-public:
-
-	HeadShot2Command(const String& name, ZoneProcessServerImplementation* server)
-		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.5;
-		speedMultiplier = 1.75;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		poolsToDamage = CombatManager::MIND;
-
-		animationCRC = String("fire_1_special_single_medium_face").hashCode();
-
-		combatSpam = "expertheadshot";
-
-		range = -1;
-
+class CarbineWeaponObject extends RangedWeaponObject {
+	public CarbineWeaponObject() {		
+		Logger.setLoggingName("CarbineWeaponObject");
 	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!weapon->isRifleWeapon()) {
-			return INVALIDWEAPON;
-		}
-
-		return doCombatAction(creature, target);
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("CarbineWeaponObject");
 	}
-
-};
-
-#endif //HEADSHOT2COMMAND_H_
+	
+	public boolean isCarbineWeapon() {
+		return true;
+	}
+}

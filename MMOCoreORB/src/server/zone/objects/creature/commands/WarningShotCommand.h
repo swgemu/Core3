@@ -45,13 +45,28 @@ which carries forward this exception.
 #ifndef WARNINGSHOTCOMMAND_H_
 #define WARNINGSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class WarningShotCommand : public QueueCommand {
+class WarningShotCommand : public CombatQueueCommand {
 public:
 
 	WarningShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 1.15;
+		speedMultiplier = 1.5;
+		healthCostMultiplier = 1.9;
+		actionCostMultiplier = 1.4;
+		mindCostMultiplier = 0.6;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("fire_area_light").hashCode();
+
+		combatSpam = "warningshot";
+
+		range = -1;
 
 	}
 
@@ -63,7 +78,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRangedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

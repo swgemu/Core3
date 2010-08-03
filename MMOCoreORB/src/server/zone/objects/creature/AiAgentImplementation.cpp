@@ -140,7 +140,7 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 void AiAgentImplementation::setDefender(SceneObject* defender) {
 	CreatureObjectImplementation::setDefender(defender);
 
-	followObject = defender;
+	//followObject = defender;
 
 	activateRecovery();
 }

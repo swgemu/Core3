@@ -45,14 +45,28 @@ which carries forward this exception.
 #ifndef POINTBLANKAREA1COMMAND_H_
 #define POINTBLANKAREA1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class PointBlankArea1Command : public QueueCommand {
+class PointBlankArea1Command : public CombatQueueCommand {
 public:
 
 	PointBlankArea1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 1.5;
+		speedMultiplier = 1.05;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+		coneAngle = 60;
+		coneAction = true;
+
+		animationCRC = String("fire_area_no_trails_light").hashCode();
+
+		combatSpam = "coveringfire";
+
+		range = 10;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +77,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRangedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

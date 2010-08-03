@@ -45,13 +45,30 @@ which carries forward this exception.
 #ifndef SUPPRESSIONFIRE1COMMAND_H_
 #define SUPPRESSIONFIRE1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class SuppressionFire1Command : public QueueCommand {
+class SuppressionFire1Command : public CombatQueueCommand {
 public:
 
 	SuppressionFire1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 2.3;
+		speedMultiplier = 2.0;
+		healthCostMultiplier = 1.9;
+		actionCostMultiplier = 1.4;
+		mindCostMultiplier = 0.6;
+
+		postureDownStateChance = 1;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("fire_area_light").hashCode();
+
+		combatSpam = "suppressionfire";
+
+		range = -1;
 
 	}
 
@@ -63,7 +80,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRangedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

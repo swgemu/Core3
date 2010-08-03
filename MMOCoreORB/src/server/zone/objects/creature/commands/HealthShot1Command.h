@@ -45,13 +45,33 @@ which carries forward this exception.
 #ifndef HEALTHSHOT1COMMAND_H_
 #define HEALTHSHOT1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class HealthShot1Command : public QueueCommand {
+class HealthShot1Command : public CombatQueueCommand {
 public:
 
 	HealthShot1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 2.0;
+		speedMultiplier = 1.0;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		poolsToDamage = CombatManager::HEALTH;
+
+		animationCRC = String("fire_1_special_single_light").hashCode();
+
+		combatSpam = "sapshot";
+
+		dotType = CreatureState::BLEEDING;
+		dotPool = CombatManager::HEALTH;
+		dotDamageOfHit = true;
+		dotDuration = 30;
+
+		range = -1;
 
 	}
 
@@ -63,7 +83,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

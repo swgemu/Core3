@@ -41,6 +41,7 @@ protected:
 	uint8 dotPool;
 	uint32 dotStrength;
 	float dotPotency;
+	bool dotDamageOfHit;
 
 	int range;
 
@@ -85,6 +86,7 @@ public:
 		dotPotency = 0;
 
 		coneAngle = 30;
+		dotDamageOfHit = false;
 
 		//for weapon set -1
 		range = -1;
@@ -225,6 +227,10 @@ public:
 
 	inline bool isConeAction() const {
 		return coneAction;
+	}
+
+	inline bool isDotDamageOfHit() const {
+		return dotDamageOfHit;
 	}
 
 	inline int getConeAngle() const {

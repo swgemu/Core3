@@ -45,14 +45,33 @@ which carries forward this exception.
 #ifndef KIPUPSHOTCOMMAND_H_
 #define KIPUPSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class KipUpShotCommand : public QueueCommand {
+class KipUpShotCommand : public CombatQueueCommand {
 public:
 
 	KipUpShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.5;
+		speedMultiplier = 1.5;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		animationCRC = String("fire_1_special_single_light").hashCode();
+
+		combatSpam = "kipup";
+
+		poolsToDamage = CombatManager::HEALTH;
+
+		dotType = CreatureState::BLEEDING;
+		dotPool = CombatManager::HEALTH;
+		dotDamageOfHit = true;
+		dotDuration = 30;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -62,6 +81,20 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		int ret = doCombatAction(creature, target);
+
+		if (ret != SUCCESS)
+			return ret;
+
+		creature->setPosture(CreaturePosture::UPRIGHT);
+		creature->doAnimation("tumble_to_kneeling");
 
 		return SUCCESS;
 	}
