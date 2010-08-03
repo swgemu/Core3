@@ -45,13 +45,28 @@ which carries forward this exception.
 #ifndef LEGSHOT2COMMAND_H_
 #define LEGSHOT2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class LegShot2Command : public QueueCommand {
+class LegShot2Command : public CombatQueueCommand {
 public:
 
 	LegShot2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 3.0;
+		speedMultiplier = 1.5;
+		healthCostMultiplier = 0.5;
+		actionCostMultiplier = 1.3;
+		mindCostMultiplier = 1.2;
+
+		poolsToDamage = CombatManager::ACTION;
+
+		animationCRC = String("test_homing").hashCode();
+
+		combatSpam = "legshot";
+
+		range = -1;
 
 	}
 
@@ -63,7 +78,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

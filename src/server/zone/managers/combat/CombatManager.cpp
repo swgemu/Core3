@@ -279,14 +279,14 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	}
 
 	applyStates(attacker, defender, command);
-	attemptApplyDot(attacker, defender, command);
+	attemptApplyDot(attacker, defender, command, damage);
 
 	broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, combatSpam + "_hit");
 
 	return 0;
 }
 
-bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CombatQueueCommand* command) {
+bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CombatQueueCommand* command, int appliedDamage) {
 	uint32 duration = command->getDotDuration();
 
 	if (duration == 0)
@@ -296,6 +296,14 @@ bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* de
 	uint8 dotPool = command->getDotPool();
 	uint32 strength = command->getDotStrength();
 	float potency = command->getDotPotency();
+	bool dotDamageOfHit = command->isDotDamageOfHit();
+
+	if (dotDamageOfHit) {
+		if (appliedDamage < 1)
+			return false;
+
+		strength = appliedDamage;
+	}
 
 	int resist = 0;
 

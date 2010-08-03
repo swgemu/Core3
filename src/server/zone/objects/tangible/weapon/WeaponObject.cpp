@@ -609,12 +609,24 @@ bool WeaponObject::isRifleWeapon() {
 		return ((WeaponObjectImplementation*) _impl)->isRifleWeapon();
 }
 
-bool WeaponObject::isPistolWeapon() {
+bool WeaponObject::isCarbineWeapon() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 48);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WeaponObjectImplementation*) _impl)->isCarbineWeapon();
+}
+
+bool WeaponObject::isPistolWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 49);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -626,7 +638,7 @@ bool WeaponObject::isOneHandMeleeWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -638,7 +650,7 @@ bool WeaponObject::isPolearmWeaponObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -650,7 +662,7 @@ bool WeaponObject::isTwoHandMeleeWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -662,7 +674,7 @@ bool WeaponObject::isWeaponObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1018,28 +1030,33 @@ bool WeaponObjectImplementation::isRifleWeapon() {
 	return false;
 }
 
-bool WeaponObjectImplementation::isPistolWeapon() {
+bool WeaponObjectImplementation::isCarbineWeapon() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl(380):  		return false;
 	return false;
 }
 
-bool WeaponObjectImplementation::isOneHandMeleeWeapon() {
+bool WeaponObjectImplementation::isPistolWeapon() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl(384):  		return false;
 	return false;
 }
 
-bool WeaponObjectImplementation::isPolearmWeaponObject() {
+bool WeaponObjectImplementation::isOneHandMeleeWeapon() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl(388):  		return false;
 	return false;
 }
 
-bool WeaponObjectImplementation::isTwoHandMeleeWeapon() {
+bool WeaponObjectImplementation::isPolearmWeaponObject() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl(392):  		return false;
 	return false;
 }
 
+bool WeaponObjectImplementation::isTwoHandMeleeWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(396):  		return false;
+	return false;
+}
+
 bool WeaponObjectImplementation::isWeaponObject() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(396):  		return true;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(400):  		return true;
 	return true;
 }
 
@@ -1181,18 +1198,21 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isRifleWeapon());
 		break;
 	case 48:
-		resp->insertBoolean(isPistolWeapon());
+		resp->insertBoolean(isCarbineWeapon());
 		break;
 	case 49:
-		resp->insertBoolean(isOneHandMeleeWeapon());
+		resp->insertBoolean(isPistolWeapon());
 		break;
 	case 50:
-		resp->insertBoolean(isPolearmWeaponObject());
+		resp->insertBoolean(isOneHandMeleeWeapon());
 		break;
 	case 51:
-		resp->insertBoolean(isTwoHandMeleeWeapon());
+		resp->insertBoolean(isPolearmWeaponObject());
 		break;
 	case 52:
+		resp->insertBoolean(isTwoHandMeleeWeapon());
+		break;
+	case 53:
 		resp->insertBoolean(isWeaponObject());
 		break;
 	default:
@@ -1368,6 +1388,10 @@ bool WeaponObjectAdapter::isRangedWeapon() {
 
 bool WeaponObjectAdapter::isRifleWeapon() {
 	return ((WeaponObjectImplementation*) impl)->isRifleWeapon();
+}
+
+bool WeaponObjectAdapter::isCarbineWeapon() {
+	return ((WeaponObjectImplementation*) impl)->isCarbineWeapon();
 }
 
 bool WeaponObjectAdapter::isPistolWeapon() {
