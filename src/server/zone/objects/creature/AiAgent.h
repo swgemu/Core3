@@ -224,6 +224,10 @@ public:
 
 	void setDespawnOnNoPlayerInRange(bool val);
 
+	void notifyDespawn(Zone* zone);
+
+	void respawn(Zone* zone, int level);
+
 	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
 
 	void setRespawnTimer(float resp);
@@ -409,6 +413,10 @@ public:
 
 	void setDespawnOnNoPlayerInRange(bool val);
 
+	void notifyDespawn(Zone* zone);
+
+	void respawn(Zone* zone, int level);
+
 	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
 
 	void setRespawnTimer(float resp);
@@ -557,6 +565,10 @@ public:
 	void removeDefender(SceneObject* defender);
 
 	void setDespawnOnNoPlayerInRange(bool val);
+
+	void notifyDespawn(Zone* zone);
+
+	void respawn(Zone* zone, int level);
 
 	void setHomeLocation(float x, float z, float y, SceneObject* cell);
 

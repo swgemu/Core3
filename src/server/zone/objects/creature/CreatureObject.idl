@@ -190,11 +190,10 @@ class CreatureObject extends TangibleObject {
 	public CreatureObject() {
 		Logger.setLoggingName("CreatureObject");
 		
-		linkedCreature = null;
-		controlDevice = null;
-		
-		skillModList.setNullValue(0);
+		initializeMembers();
 	}
+	
+	public native void initializeMembers();
 	
 	public native void finalize();
 

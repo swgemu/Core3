@@ -8,20 +8,26 @@
 #ifndef DESPAWNCREATURETASK_H_
 #define DESPAWNCREATURETASK_H_
 
-#include "../CreatureObject.h"
+#include "../AiAgent.h"
 
 class DespawnCreatureTask : public Task {
-	ManagedReference<CreatureObject*> creature;
+	ManagedReference<AiAgent*> creature;
 
 public:
-	DespawnCreatureTask(CreatureObject* cr) {
+	DespawnCreatureTask(AiAgent* cr) {
 		creature = cr;
 	}
 
 	void run() {
 		Locker locker(creature);
 
+		Zone* zone = creature->getZone();
+
+		if (zone == NULL)
+			return;
+
 		creature->removeFromZone();
+		creature->notifyDespawn(zone);
 
 		//creature->printReferenceHolders();
 

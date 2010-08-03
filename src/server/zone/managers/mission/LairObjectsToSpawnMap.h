@@ -53,6 +53,9 @@ public:
 			lairs = &elementAt(idx).getValue();
 		}
 
+		if (lairs->size() == 0)
+			return 0;
+
 		return lairs->get(System::random(lairs->size() - 1));
 	}
 };

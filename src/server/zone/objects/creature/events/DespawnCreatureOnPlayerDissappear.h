@@ -35,11 +35,17 @@ public:
 
 		creature->clearDespawnEvent();
 
+		Zone* zone = creature->getZone();
+
+		if (zone == NULL)
+			return;
+
 		if (!creature->getDespawnOnNoPlayerInRange())
 			return;
 
 		if (strongRef->inRangeObjects(SceneObject::PLAYERCREATURE, 128) == 0 && strongRef->getNumberOfPlayersInRange() <= 0) {
 			creature->removeFromZone();
+			creature->notifyDespawn(zone);
 		}
 	}
 };
