@@ -129,17 +129,17 @@ class StructureManager extends ManagedObject implements Logger {
 	 * @param direction The quaternion representation of the direction.
 	 */
 	@local
-	public native int placeStructure(PlayerCreature player, SharedStructureObjectTemplate structureTemplate, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
+	public native int placeStructure(PlayerCreature player, SharedStructureObjectTemplate structureTemplate, SceneObject structure, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
 
 	@local
-	public native int placeBuilding(PlayerCreature player, SharedBuildingObjectTemplate buildingTemplate, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
+	public native int placeBuilding(PlayerCreature player, SharedBuildingObjectTemplate buildingTemplate, SceneObject structure, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
 	
 	@local
-	public native int placeInstallation(PlayerCreature player, SharedInstallationObjectTemplate installationTemplate, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
+	public native int placeInstallation(PlayerCreature player, SharedInstallationObjectTemplate installationTemplate, SceneObject structure, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
 	
 	
 	@local
-	public native int constructStructure(PlayerCreature player, SharedStructureObjectTemplate structureTemplate, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
+	public native int constructStructure(PlayerCreature player, SharedStructureObjectTemplate structureTemplate, SceneObject structure, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
 	
 	/**
 	 * Destroys the structure after the confirmation of the player.

@@ -63,12 +63,25 @@ void CityHallObject::trySetCityName(PlayerCreature* player, const String& name) 
 		((CityHallObjectImplementation*) _impl)->trySetCityName(player, name);
 }
 
-void CityHallObject::setCityName(const String& name) {
+bool CityHallObject::checkRequisitesForPlacement(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CityHallObjectImplementation*) _impl)->checkRequisitesForPlacement(player);
+}
+
+void CityHallObject::setCityName(const String& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -81,7 +94,7 @@ String CityHallObject::getCityName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		method.executeWithAsciiReturn(_return_getCityName);
 		return _return_getCityName;
@@ -94,7 +107,7 @@ int CityHallObject::notifyStructurePlaced(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -107,7 +120,7 @@ bool CityHallObject::isCityHallBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -201,17 +214,17 @@ void CityHallObjectImplementation::insertToZone(Zone* zone) {
 }
 
 void CityHallObjectImplementation::setCityName(const String& name) {
-	// server/zone/objects/building/city/CityHallObject.idl(79):  		cityName = name;
+	// server/zone/objects/building/city/CityHallObject.idl(81):  		cityName = name;
 	cityName = name;
 }
 
 String CityHallObjectImplementation::getCityName() {
-	// server/zone/objects/building/city/CityHallObject.idl(83):  		return cityName;
+	// server/zone/objects/building/city/CityHallObject.idl(85):  		return cityName;
 	return cityName;
 }
 
 bool CityHallObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/city/CityHallObject.idl(92):  		return true;
+	// server/zone/objects/building/city/CityHallObject.idl(94):  		return true;
 	return true;
 }
 
@@ -236,15 +249,18 @@ Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		trySetCityName((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_trySetCityName__PlayerCreature_String_));
 		break;
 	case 9:
-		setCityName(inv->getAsciiParameter(_param0_setCityName__String_));
+		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 10:
-		resp->insertAscii(getCityName());
+		setCityName(inv->getAsciiParameter(_param0_setCityName__String_));
 		break;
 	case 11:
-		resp->insertSignedInt(notifyStructurePlaced((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertAscii(getCityName());
 		break;
 	case 12:
+		resp->insertSignedInt(notifyStructurePlaced((PlayerCreature*) inv->getObjectParameter()));
+		break;
+	case 13:
 		resp->insertBoolean(isCityHallBuilding());
 		break;
 	default:
@@ -264,6 +280,10 @@ void CityHallObjectAdapter::spawnCityHallObjects() {
 
 void CityHallObjectAdapter::trySetCityName(PlayerCreature* player, const String& name) {
 	((CityHallObjectImplementation*) impl)->trySetCityName(player, name);
+}
+
+bool CityHallObjectAdapter::checkRequisitesForPlacement(PlayerCreature* player) {
+	return ((CityHallObjectImplementation*) impl)->checkRequisitesForPlacement(player);
 }
 
 void CityHallObjectAdapter::setCityName(const String& name) {

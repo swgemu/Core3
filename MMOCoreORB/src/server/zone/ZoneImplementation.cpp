@@ -330,6 +330,43 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 	return cloning.get();
 }
 
+SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, uint32 mapObjectLocationType) {
+	ManagedReference<SceneObject*> planetaryObject = NULL;
+
+	mapLocations.rlock();
+
+	try {
+		//cloning type 5
+
+		int index = mapLocations.find(mapObjectLocationType);
+
+		float distance = 16000.f;
+
+		if (index != -1) {
+			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(index).getValue();
+
+			for (int i = 0; i < sortedVector->size(); ++i) {
+				SceneObject* vectorObject = sortedVector->get(i).getObject();
+
+				float objDistance = vectorObject->getDistanceTo(object);
+
+				if (objDistance < distance) {
+					planetaryObject = vectorObject;
+					distance = objDistance;
+				}
+			}
+
+		}
+	} catch (...) {
+
+	}
+
+	mapLocations.runlock();
+
+	return planetaryObject.get();
+}
+
+
 
 String ZoneImplementation::getPlanetName() {
 	String planetName = Planet::getPlanetName(getZoneID());

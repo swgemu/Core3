@@ -187,17 +187,17 @@ void CellObjectImplementation::finalize() {
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(81):  		return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(90):  		return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(85):  		cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(94):  		cellNumber = number;
 	cellNumber = number;
 }
 
 bool CellObjectImplementation::isCellObject() {
-	// server/zone/objects/cell/CellObject.idl(89):  		return true;
+	// server/zone/objects/cell/CellObject.idl(98):  		return true;
 	return true;
 }
 

@@ -164,7 +164,11 @@ public:
 
 	void initializeTransientMembers();
 
+	void sendContainerObjectsTo(SceneObject* player);
+
 	int notifyStructurePlaced(PlayerCreature* player);
+
+	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	void removeFromZone();
 
@@ -291,7 +295,11 @@ public:
 
 	void initializeTransientMembers();
 
+	void sendContainerObjectsTo(SceneObject* player);
+
 	virtual int notifyStructurePlaced(PlayerCreature* player);
+
+	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	void removeFromZone();
 
@@ -408,7 +416,11 @@ public:
 
 	void initializeTransientMembers();
 
+	void sendContainerObjectsTo(SceneObject* player);
+
 	int notifyStructurePlaced(PlayerCreature* player);
+
+	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	void removeFromZone();
 

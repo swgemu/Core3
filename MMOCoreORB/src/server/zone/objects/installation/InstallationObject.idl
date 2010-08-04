@@ -181,6 +181,10 @@ class InstallationObject extends TangibleObject {
 	public abstract int notifyStructurePlaced(PlayerCreature player) {
 		return 0;
 	}
+	
+	public abstract boolean checkRequisitesForPlacement(PlayerCreature player) {
+		return true;
+	}
 
 	public native void updateResourceContainerQuantity(ResourceContainer container, int newQuantity, boolean notifyClient = true);
 

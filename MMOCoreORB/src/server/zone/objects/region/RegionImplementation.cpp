@@ -15,7 +15,22 @@ void RegionImplementation::sendGreetingMessage(PlayerCreature* player) {
 
 	ParameterizedStringId stringId("city/city", "city_enter_city");
 	stringId.setTT(objectName.getCustomString());
-	stringId.setTO(zone->getPlanetName());
+
+	String type;
+
+	if (radius == 150.f) {
+		type = "Outpost";
+	} else if (radius == 200.f) {
+		type = "Village";
+	} else if (radius == 300.f) {
+		type = "Township";
+	} else if (radius == 400.f) {
+		type = "City";
+	} else {
+		type = "Metropolis";
+	}
+
+	stringId.setTO(type);
 
 	player->sendSystemMessage(stringId);
 }
@@ -25,8 +40,7 @@ void RegionImplementation::sendDepartingMessage(PlayerCreature* player) {
 		return;
 
 	ParameterizedStringId stringId("city/city", "city_leave_city");
-	stringId.setTT(objectName.getCustomString());
-	stringId.setTO(zone->getPlanetName());
+	stringId.setTO(objectName.getCustomString());
 
 	player->sendSystemMessage(stringId);
 }

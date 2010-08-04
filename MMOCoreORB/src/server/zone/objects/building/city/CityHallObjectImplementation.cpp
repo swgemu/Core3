@@ -44,7 +44,7 @@ void CityHallObjectImplementation::trySetCityName(PlayerCreature* player, const 
 
 	cityRegion = (Region*) ObjectManager::instance()->createObject(crc, 2, "cityregions");
 	cityRegion->initializePosition(positionX, 0, positionY);
-	cityRegion->setRadius(450);
+	cityRegion->setRadius(150);
 	StringId* objectName = cityRegion->getObjectName();
 	objectName->setCustomString(cityName);
 
@@ -54,6 +54,29 @@ void CityHallObjectImplementation::trySetCityName(PlayerCreature* player, const 
 	updateToDatabase();
 
 	zone->getPlanetManager()->addRegion(cityRegion);
+}
+
+bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
+	Zone* zone = player->getZone();
+
+	ManagedReference<SceneObject*> object = zone->getNearestPlanetaryObject(player, 50);
+
+	if (object == NULL)
+		return true;
+
+	if (object->isInRange(player, 1000.f)) {
+		ParameterizedStringId stringID("player_structure", "city_too_close");
+		StringId* name = object->getObjectName();
+		UnicodeString cityName = name->getCustomString();
+
+		stringID.setTO(cityName);
+
+		player->sendSystemMessage(stringID);
+
+		return false;
+	}
+
+	return true;
 }
 
 int CityHallObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
@@ -69,5 +92,4 @@ int CityHallObjectImplementation::notifyStructurePlaced(PlayerCreature* player) 
 	player->sendMessage(setTheName->generateMessage());
 
 	return 0;
-	//regions.put(region);
 }

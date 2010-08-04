@@ -55,6 +55,8 @@ public:
 
 	void trySetCityName(PlayerCreature* player, const String& name);
 
+	bool checkRequisitesForPlacement(PlayerCreature* player);
+
 	void setCityName(const String& name);
 
 	String getCityName();
@@ -103,6 +105,8 @@ public:
 	void spawnCityHallObjects();
 
 	void trySetCityName(PlayerCreature* player, const String& name);
+
+	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	void setCityName(const String& name);
 
@@ -156,6 +160,8 @@ public:
 	void spawnCityHallObjects();
 
 	void trySetCityName(PlayerCreature* player, const String& name);
+
+	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	void setCityName(const String& name);
 
