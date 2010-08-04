@@ -160,7 +160,7 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 	if (notifiedSentObjects.put(scno) != -1) {
 		SceneObject* rootParent = scno->getRootParent();
 
-		if (rootParent != NULL) {
+		if (rootParent != NULL && rootParent->isInQuadTree()) {
 			if (notifiedSentObjects.contains(rootParent))
 				scno->sendTo(_this, true);
 			else {
