@@ -71,3 +71,23 @@ void ShuttleInstallationImplementation::spawnShuttleObjects() {
 	travelTerminal->initializePosition(newX, positionZ + 1, newY);
 	travelTerminal->insertToZone(zone);
 }
+
+bool ShuttleInstallationImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
+	ManagedReference<ActiveArea*> playerArea = player->getActiveArea();
+
+	if (playerArea == NULL || !playerArea->isRegion()) {
+		//TODO: find correct string
+		player->sendSystemMessage("You need to be in a city to place a shuttleport");
+		return false;
+	}
+
+	Region* region = (Region*) playerArea.get();
+
+	if (region->getShuttle() != NULL) {
+		//TODO: find correct string
+		player->sendSystemMessage("This city has a shuttleport already");
+		return false;
+	}
+
+	return true;
+}

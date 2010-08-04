@@ -294,11 +294,14 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 	sendBaselinesTo(player);
 
-	sendSlottedObjectsTo(player);
 	sendContainerObjectsTo(player);
 
-	if (doClose)
+	sendSlottedObjectsTo(player);
+
+	if (doClose) {
 		SceneObjectImplementation::close(client);
+		//info("sending close", true);
+	}
 }
 
 void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
@@ -310,17 +313,30 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 		SceneObject* object = slottedObjects.get(i);
 
 		if (objects.put(object) != -1) {
-			object->sendTo(player, true);
+			if (object->isInQuadTree()) {
+				notifyInsert((QuadTreeEntry*) object->_getImplementation());
+			} else {
+				object->sendTo(player, true);
+			}
 		}
 	}
 }
 
 void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	//sending all objects by default
+	SortedVector<uint64> objects(containerObjects.size(), containerObjects.size());
+	objects.setNoDuplicateInsertPlan();
+
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		SceneObject* containerObject = containerObjects.get(j);
 
-		containerObject->sendTo(player, true);
+		if (objects.put(containerObject->getObjectID()) != -1) {
+			if (containerObject->isInQuadTree()) {
+				notifyInsert((QuadTreeEntry*) containerObject->_getImplementation());
+			} else {
+				containerObject->sendTo(player, true);
+			}
+		}
 	}
 }
 
@@ -874,21 +890,27 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 	int containedType = object->getContainmentType();
 
+	//info("trying to remove object with containedType " + String::valueOf(containedType), true);
+
 	if (containedType == 4/*containerType == 1 || containerType == 5*/) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
 			String childArrangement = object->getArrangementDescriptor(i);
 
-			if (slottedObjects.get(childArrangement) != object)
+			if (slottedObjects.get(childArrangement) != object) {
+				//info("sloted objects contains a different object", true);
 				return false;
+			}
 		}
 
 		for (int i = 0; i < arrangementSize; ++i)
 			slottedObjects.drop(object->getArrangementDescriptor(i));
 	} else if (containedType == -1/*containerType == 2 || containerType == 3*/) {
-		if (!containerObjects.contains(object->getObjectID()))
+		if (!containerObjects.contains(object->getObjectID())) {
+			//info("containerObjects doesnt contain specified object", true);
 			return false;
+		}
 
 		containerObjects.drop(object->getObjectID());
 	} else {
@@ -904,6 +926,7 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 	notifyObjectRemoved(object);
 
 	updateToDatabaseAllObjects(true);
+	object->updateToDatabaseWithoutChildren();
 
 	return true;
 }

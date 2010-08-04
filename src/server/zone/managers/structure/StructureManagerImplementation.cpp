@@ -866,21 +866,42 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
+	ObjectManager* objectManager = ObjectManager::instance();
+	ManagedReference<SceneObject*> structure = objectManager->createObject(ssot->getServerObjectCRC(), 1, "playerstructures");
+
+	bool success = false;
+
+	if (structure->isBuildingObject()) {
+		success = ((BuildingObject*)structure.get())->checkRequisitesForPlacement(player);
+
+	} else if (structure->isInstallationObject()) {
+		success = ((InstallationObject*)structure.get())->checkRequisitesForPlacement(player);
+	} else {
+		error("structure not a building object nor a installation object for deed " + TemplateManager::instance()->getTemplateFile(deed->getServerObjectCRC()));
+
+		return 1;
+	}
+
+	if (!success) {
+		structure->destroyObjectFromDatabase(true);
+
+		return 1;
+	}
+
 	player->setLotsRemaining(lotsRemaining - lotsRequired);
 
-	//player->sendDestroyTo(player);
 	inventory->removeObject(obj, true);
 
 	Quaternion direction;
 	Vector3 unity(0, 1, 0);
 	direction.rotate(unity, angle);
 
-	constructStructure(player, ssot, deedID, x, y, direction);
+	constructStructure(player, ssot, structure, deedID, x, y, direction);
 
 	return 0;
 }
 
-int StructureManagerImplementation::constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+int StructureManagerImplementation::constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, uint64 deedID, float x, float y, const Quaternion& direction) {
 	player->info("constructing structure", true);
 	String constructionMarkerTemplateString;
 	uint64 constructionMarkerTemplateCRC = constructionMarkerTemplateString.hashCode();
@@ -889,29 +910,29 @@ int StructureManagerImplementation::constructStructure(PlayerCreature* player, S
 
 	if (constructionMarkerTemplate == NULL) {
 		//Then skip the construction phase and go straight to placement.
-		placeStructure(player, structureTemplate, deedID, x, y, direction);
+		placeStructure(player, structureTemplate, structure, deedID, x, y, direction);
 		return 1;
 	}
 
 	//Create the construction object, insert it to zone.
 
-	StructureConstructionCompleteTask* task = new StructureConstructionCompleteTask(_this, player, structureTemplate, deedID, x, y, direction);
+	StructureConstructionCompleteTask* task = new StructureConstructionCompleteTask(_this, player, structureTemplate, deedID, x, y, direction, structure);
 	task->schedule(3000 * structureTemplate->getLotSize());
 	player->info("scheduled place structure in " + String::valueOf(3000 * structureTemplate->getLotSize()) , true);
 
 	return 0;
 }
 
-int StructureManagerImplementation::placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+int StructureManagerImplementation::placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure,  uint64 deedID, float x, float y, const Quaternion& direction) {
 	//Check to see what type of structure is being placed, then pass off execution.
 
 	if (structureTemplate->isSharedBuildingObjectTemplate()) {
 		SharedBuildingObjectTemplate* sbot = (SharedBuildingObjectTemplate*) structureTemplate;
-		return placeBuilding(player, sbot, deedID, x, y, direction);
+		return placeBuilding(player, sbot, structure, deedID, x, y, direction);
 
 	} else if (structureTemplate->isSharedInstallationObjectTemplate()) {
 		SharedInstallationObjectTemplate* siot = (SharedInstallationObjectTemplate*) structureTemplate;
-		return placeInstallation(player, siot, deedID, x, y, direction);
+		return placeInstallation(player, siot, structure, deedID, x, y, direction);
 	}
 
 	player->error("no right template");
@@ -919,7 +940,7 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Share
 	return 1;
 }
 
-int StructureManagerImplementation::placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+int StructureManagerImplementation::placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate,  SceneObject* structure, uint64 deedID, float x, float y, const Quaternion& direction) {
 	ZoneServer* zserv = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
@@ -936,7 +957,12 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 
 	int buioCRC = buildingTemplate->getFullTemplateString().hashCode();
 
-	ManagedReference<BuildingObject*> buio = (BuildingObject*) objectManager->createObject(buioCRC, 1, "playerstructures");
+	if (!structure->isBuildingObject()) {
+		error("structure is not a building object in StructureManagerImplementation::placeBuilding");
+		return 1;
+	}
+
+	ManagedReference<BuildingObject*> buio = (BuildingObject*) structure;
 	buio->createCellObjects();
 	buio->createChildObjects();
 	buio->setOwnerObjectID(player->getObjectID());
@@ -1006,7 +1032,7 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 	return 0;
 }
 
-int StructureManagerImplementation::placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+int StructureManagerImplementation::placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, SceneObject* structure, uint64 deedID, float x, float y, const Quaternion& direction) {
 	ZoneServer* zserv = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
@@ -1023,7 +1049,12 @@ int StructureManagerImplementation::placeInstallation(PlayerCreature* player, Sh
 
 	int installationTemplateCRC = installationTemplate->getFullTemplateString().hashCode();
 
-	ManagedReference<InstallationObject*> installation = (InstallationObject*) objectManager->createObject(installationTemplateCRC, 1, "playerstructures");
+	if (!structure->isInstallationObject()) {
+		error("structure is not an installation object in StructureManagerImplementation::placeInstallation");
+		return 1;
+	}
+
+	ManagedReference<InstallationObject*> installation = (InstallationObject*) structure;
 	installation->setOwnerObjectID(player->getObjectID());
 	installation->createChildObjects();
 	installation->initializePosition(x, z, y);

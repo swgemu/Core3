@@ -43,6 +43,36 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace shuttle {
+
+class ShuttleCreature;
+
+} // namespace shuttle
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::shuttle;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/objects/region/RegionCenterPoint.h"
@@ -76,6 +106,8 @@ public:
 
 	BazaarTerminal* getBazaar(int idx);
 
+	ShuttleCreature* getShuttle();
+
 	int getBazaarCount();
 
 	bool isRegion();
@@ -104,6 +136,8 @@ class RegionImplementation : public ActiveAreaImplementation {
 protected:
 	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
 
+	ManagedWeakReference<ShuttleCreature* > shuttle;
+
 public:
 	RegionImplementation();
 
@@ -120,6 +154,8 @@ public:
 	void addBazaar(BazaarTerminal* ter);
 
 	BazaarTerminal* getBazaar(int idx);
+
+	ShuttleCreature* getShuttle();
 
 	int getBazaarCount();
 
@@ -175,6 +211,8 @@ public:
 	void addBazaar(BazaarTerminal* ter);
 
 	BazaarTerminal* getBazaar(int idx);
+
+	ShuttleCreature* getShuttle();
 
 	int getBazaarCount();
 

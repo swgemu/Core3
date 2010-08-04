@@ -114,6 +114,8 @@ class BuildingObject extends TangibleObject implements QuadTree {
 
 			addCell((CellObject)newCell);
 		}
+		
+		updateToDatabase();
 	}
 	
 	@local
@@ -122,10 +124,22 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	public native void initializeTransientMembers();
 	
 	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
+	public native void sendContainerObjectsTo(SceneObject player);
+	
+	/**
 	 * Gets called when the structure has been created;
 	 */
 	public abstract int notifyStructurePlaced(PlayerCreature player) {
 		return 0;
+	}
+	
+	public abstract boolean checkRequisitesForPlacement(PlayerCreature player) {
+		return true;
 	}
 	
 	public native void removeFromZone();/* {

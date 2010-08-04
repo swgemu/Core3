@@ -75,6 +75,8 @@ class CityHallObject extends BuildingObject {
 	
 	public native void trySetCityName(PlayerCreature player, final string name);
 	
+	public native boolean checkRequisitesForPlacement(PlayerCreature player);
+	
 	public void setCityName(final string name) {
 		cityName = name;
 	}

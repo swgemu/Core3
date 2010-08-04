@@ -181,6 +181,8 @@ public:
 
 	void spawnShuttleObjects();
 
+	bool checkRequisitesForPlacement(PlayerCreature* player);
+
 protected:
 	ShuttleInstallation(DummyConstructorParameter* param);
 
@@ -219,6 +221,8 @@ public:
 	void insertToZone(Zone* zone);
 
 	void spawnShuttleObjects();
+
+	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	ShuttleInstallation* _this;
 
@@ -262,6 +266,8 @@ public:
 	void insertToZone(Zone* zone);
 
 	void spawnShuttleObjects();
+
+	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 };
 

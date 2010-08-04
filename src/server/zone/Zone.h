@@ -162,6 +162,8 @@ public:
 
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
+	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
+
 	void insert(QuadTreeEntry* entry);
 
 	void remove(QuadTreeEntry* entry);
@@ -274,6 +276,8 @@ public:
 
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
+	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
+
 	void insert(QuadTreeEntry* entry);
 
 	void remove(QuadTreeEntry* entry);
@@ -374,6 +378,8 @@ public:
 	void initializeTransientMembers();
 
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
+
+	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
 
 	void startManagers();
 

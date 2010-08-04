@@ -26,18 +26,20 @@ void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 }
 
 void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
+	//SceneObjectImplementation::sendContainerObjectsTo(player);
 	//info("sending cell containers", true);
+
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		SceneObject* containerObject = containerObjects.get(j);
 
-		/*if (containerObject->isCreatureObject()
-				|| (player->getRootParent() == parent) && (player->isInRange(containerObject, 128))) {*/
-
-			//info("sending cell container contents", true);
+		if (!containerObject->isInQuadTree() && !containerObject->isPlayerCreature())
 			containerObject->sendTo(player, true);
-		//}
 	}
 }
+
+/*void CellObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	SceneObjectImplementation::sendTo(player, true);
+}*/
 
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	/*StringBuffer msg;

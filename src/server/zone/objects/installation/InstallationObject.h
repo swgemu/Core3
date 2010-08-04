@@ -172,6 +172,8 @@ public:
 
 	int notifyStructurePlaced(PlayerCreature* player);
 
+	bool checkRequisitesForPlacement(PlayerCreature* player);
+
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
 
 	void updateToDatabaseAllObjects(bool startTask);
@@ -361,6 +363,8 @@ public:
 
 	virtual int notifyStructurePlaced(PlayerCreature* player);
 
+	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
+
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
 
 	virtual void updateToDatabaseAllObjects(bool startTask);
@@ -517,6 +521,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	int notifyStructurePlaced(PlayerCreature* player);
+
+	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient);
 

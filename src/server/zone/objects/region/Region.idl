@@ -49,6 +49,8 @@ import engine.core.ManagedObject;
 import server.zone.objects.tangible.terminal.bazaar.BazaarTerminal;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.shuttle.ShuttleCreature;
+import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.region.RegionCenterPoint;
 include server.zone.objects.region.RegionCenterPointList;
@@ -56,6 +58,9 @@ include server.zone.objects.region.RegionCenterPointList;
 class Region extends ActiveArea {	
 	@dereferenced
 	protected VectorMap<unsigned long, BazaarTerminal> bazaars;
+	
+	@weakReference
+	protected ShuttleCreature shuttle;
 	
 	public Region() {
 		super();
@@ -70,6 +75,14 @@ class Region extends ActiveArea {
 		
 		if (object.isPlayerCreature())
 			sendGreetingMessage((PlayerCreature) object);
+		
+		if (object.isCreatureObject()) {
+			CreatureObject creature = (CreatureObject) object;
+			
+			if (creature.isShuttleCreature()) {
+				shuttle = (ShuttleCreature) creature;
+			}
+		}
 	}
 	
 	public native void sendGreetingMessage(PlayerCreature player);
@@ -81,6 +94,17 @@ class Region extends ActiveArea {
 		
 		if (object.isPlayerCreature())
 			sendDepartingMessage((PlayerCreature) object);
+		
+		if (shuttle != null && object.isCreatureObject()) {
+			CreatureObject creature = (CreatureObject) object;
+			
+			if (creature.isShuttleCreature()) {
+				ShuttleCreature shuttleObject = (ShuttleCreature) creature;
+				
+				if (shuttle == shuttleObject)
+					shuttle = null;
+			}
+		}
 	}
 
 	public void addBazaar(BazaarTerminal ter) {
@@ -89,6 +113,10 @@ class Region extends ActiveArea {
 
 	public BazaarTerminal getBazaar(int idx) {
 		return bazaars.get(idx);
+	}
+	
+	public ShuttleCreature getShuttle() {
+		return shuttle;
 	}
 
 	public int getBazaarCount() {
