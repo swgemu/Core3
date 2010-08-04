@@ -83,4 +83,6 @@ class ShuttleInstallation extends InstallationObject {
 	}
 	
 	public native void spawnShuttleObjects();
+	
+	public native boolean checkRequisitesForPlacement(PlayerCreature player);
 }

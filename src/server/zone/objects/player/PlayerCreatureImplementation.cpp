@@ -105,10 +105,9 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 
 		/*if (grandParent->isBuildingObject())
 			((BuildingObject*)grandParent)->addNotifiedSentObject(_this);*/
-	} else {
-		//info("parent null", true);
-		sendTo(_this, doClose);
 	}
+
+	sendTo(_this, doClose);
 
 	if (group != NULL)
 		group->sendTo(_this, true);

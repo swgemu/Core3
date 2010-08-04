@@ -65,6 +65,19 @@ void ShuttleInstallation::spawnShuttleObjects() {
 		((ShuttleInstallationImplementation*) _impl)->spawnShuttleObjects();
 }
 
+bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ShuttleInstallationImplementation*) _impl)->checkRequisitesForPlacement(player);
+}
+
 /*
  *	ShuttleInstallationImplementation
  */
@@ -167,6 +180,9 @@ Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMetho
 	case 7:
 		spawnShuttleObjects();
 		break;
+	case 8:
+		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -180,6 +196,10 @@ void ShuttleInstallationAdapter::insertToZone(Zone* zone) {
 
 void ShuttleInstallationAdapter::spawnShuttleObjects() {
 	((ShuttleInstallationImplementation*) impl)->spawnShuttleObjects();
+}
+
+bool ShuttleInstallationAdapter::checkRequisitesForPlacement(PlayerCreature* player) {
+	return ((ShuttleInstallationImplementation*) impl)->checkRequisitesForPlacement(player);
 }
 
 /*

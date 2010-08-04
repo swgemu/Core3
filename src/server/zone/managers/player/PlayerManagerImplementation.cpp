@@ -859,7 +859,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* playe
 
 	name = objectName->getCustomString();
 
-	if (name.length() == 0) {
+	if (name.length() < 2) {
 		String fullPath;
 		objectName->getFullPath(fullPath);
 

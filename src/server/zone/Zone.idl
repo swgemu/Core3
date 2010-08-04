@@ -104,6 +104,8 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	public native CloningBuildingObject getNearestCloningBuilding(CreatureObject creature);
 	
+	public native SceneObject getNearestPlanetaryObject(SceneObject object, unsigned int mapObjectLocationType);
+	
 	@local
 	public native void insert(QuadTreeEntry entry);
 	

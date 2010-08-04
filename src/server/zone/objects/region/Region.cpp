@@ -8,6 +8,10 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
 /*
  *	RegionStub
  */
@@ -102,12 +106,24 @@ BazaarTerminal* Region::getBazaar(int idx) {
 		return ((RegionImplementation*) _impl)->getBazaar(idx);
 }
 
-int Region::getBazaarCount() {
+ShuttleCreature* Region::getShuttle() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
+
+		return (ShuttleCreature*) method.executeWithObjectReturn();
+	} else
+		return ((RegionImplementation*) _impl)->getShuttle();
+}
+
+int Region::getBazaarCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -119,7 +135,7 @@ bool Region::isRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -194,51 +210,80 @@ void RegionImplementation::_serializationHelperMethod() {
 	_setClassName("Region");
 
 	addSerializableVariable("bazaars", &bazaars);
+	addSerializableVariable("shuttle", &shuttle);
 }
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/Region.idl(63):  		bazaars.setNoDuplicateInsertPlan();
+	// server/zone/objects/region/Region.idl(68):  		bazaars.setNoDuplicateInsertPlan();
 	(&bazaars)->setNoDuplicateInsertPlan();
-	// server/zone/objects/region/Region.idl(64):  		bazaars.setNullValue(null);
+	// server/zone/objects/region/Region.idl(69):  		bazaars.setNullValue(null);
 	(&bazaars)->setNullValue(NULL);
 }
 
 void RegionImplementation::notifyEnter(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(68):  		if 
-	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(69):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+	// server/zone/objects/region/Region.idl(73):  		if 
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(74):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
 	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
-	// server/zone/objects/region/Region.idl(71):  	}
-	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(72):  			sendGreetingMessage((PlayerCreature) object);
+	// server/zone/objects/region/Region.idl(76):  		if 
+	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(77):  			sendGreetingMessage((PlayerCreature) object);
 	sendGreetingMessage((PlayerCreature*) object);
+	// server/zone/objects/region/Region.idl(79):  	}
+	if (object->isCreatureObject()){
+	// server/zone/objects/region/Region.idl(80):  			CreatureObject creature = (CreatureObject) object;
+	CreatureObject* creature = (CreatureObject*) object;
+	// server/zone/objects/region/Region.idl(82):  		}
+	if (creature->isShuttleCreature()){
+	// server/zone/objects/region/Region.idl(83):  				shuttle = (ShuttleCreature) creature;
+	shuttle = (ShuttleCreature*) creature;
+}
+}
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(79):  		if 
-	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(80):  			bazaars.drop(object.getObjectID());
+	// server/zone/objects/region/Region.idl(92):  		if 
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(93):  			bazaars.drop(object.getObjectID());
 	(&bazaars)->drop(object->getObjectID());
-	// server/zone/objects/region/Region.idl(82):  	}
-	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(83):  			sendDepartingMessage((PlayerCreature) object);
+	// server/zone/objects/region/Region.idl(95):  		if 
+	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(96):  			sendDepartingMessage((PlayerCreature) object);
 	sendDepartingMessage((PlayerCreature*) object);
+	// server/zone/objects/region/Region.idl(98):  	}
+	if (shuttle != NULL && object->isCreatureObject()){
+	// server/zone/objects/region/Region.idl(99):  			CreatureObject creature = (CreatureObject) object;
+	CreatureObject* creature = (CreatureObject*) object;
+	// server/zone/objects/region/Region.idl(101):  		}
+	if (creature->isShuttleCreature()){
+	// server/zone/objects/region/Region.idl(102):  				ShuttleCreature shuttleObject = (ShuttleCreature) creature;
+	ShuttleCreature* shuttleObject = (ShuttleCreature*) creature;
+	// server/zone/objects/region/Region.idl(104):  			}
+	if (shuttle == shuttleObject)	// server/zone/objects/region/Region.idl(105):  					shuttle = null;
+	shuttle = NULL;
+}
+}
 }
 
 void RegionImplementation::addBazaar(BazaarTerminal* ter) {
-	// server/zone/objects/region/Region.idl(87):  		bazaars.put(ter.getObjectID(), ter);
+	// server/zone/objects/region/Region.idl(111):  		bazaars.put(ter.getObjectID(), ter);
 	(&bazaars)->put(ter->getObjectID(), ter);
 }
 
 BazaarTerminal* RegionImplementation::getBazaar(int idx) {
-	// server/zone/objects/region/Region.idl(91):  		return bazaars.get(idx);
+	// server/zone/objects/region/Region.idl(115):  		return bazaars.get(idx);
 	return (&bazaars)->get(idx);
 }
 
+ShuttleCreature* RegionImplementation::getShuttle() {
+	// server/zone/objects/region/Region.idl(119):  		return shuttle;
+	return shuttle;
+}
+
 int RegionImplementation::getBazaarCount() {
-	// server/zone/objects/region/Region.idl(95):  		return bazaars.size();
+	// server/zone/objects/region/Region.idl(123):  		return bazaars.size();
 	return (&bazaars)->size();
 }
 
 bool RegionImplementation::isRegion() {
-	// server/zone/objects/region/Region.idl(99):  		return true;
+	// server/zone/objects/region/Region.idl(127):  		return true;
 	return true;
 }
 
@@ -272,9 +317,12 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 12:
-		resp->insertSignedInt(getBazaarCount());
+		resp->insertLong(getShuttle()->_getObjectID());
 		break;
 	case 13:
+		resp->insertSignedInt(getBazaarCount());
+		break;
+	case 14:
 		resp->insertBoolean(isRegion());
 		break;
 	default:
@@ -306,6 +354,10 @@ void RegionAdapter::addBazaar(BazaarTerminal* ter) {
 
 BazaarTerminal* RegionAdapter::getBazaar(int idx) {
 	return ((RegionImplementation*) impl)->getBazaar(idx);
+}
+
+ShuttleCreature* RegionAdapter::getShuttle() {
+	return ((RegionImplementation*) impl)->getShuttle();
 }
 
 int RegionAdapter::getBazaarCount() {

@@ -9,13 +9,14 @@ class StructureConstructionCompleteTask : public Task {
 	StructureManager* structureManager;
 	ManagedReference<PlayerCreature*> player;
 	SharedStructureObjectTemplate* structureTemplate;
+	ManagedReference<SceneObject*> structure;
 	uint64 deedID;
 	float positionX;
 	float positionY;
 	Quaternion direction;
 
 public:
-	StructureConstructionCompleteTask(StructureManager* structManager, PlayerCreature* play, SharedStructureObjectTemplate* ssot, uint64 deedid, float x, float y, const Quaternion& dir) : Task() {
+	StructureConstructionCompleteTask(StructureManager* structManager, PlayerCreature* play, SharedStructureObjectTemplate* ssot, uint64 deedid, float x, float y, const Quaternion& dir, SceneObject* structure) : Task() {
 		structureManager = structManager;
 		player = play;
 		structureTemplate = ssot;
@@ -23,13 +24,14 @@ public:
 		positionX = x;
 		positionY = y;
 		direction = dir;
+		this->structure = structure;
 	}
 
 	void run() {
 		try {
 			player->wlock();
 
-			structureManager->placeStructure(player, structureTemplate, deedID, positionX, positionY, direction);
+			structureManager->placeStructure(player, structureTemplate, structure, deedID, positionX, positionY, direction);
 			//else
 			//Report an error?
 

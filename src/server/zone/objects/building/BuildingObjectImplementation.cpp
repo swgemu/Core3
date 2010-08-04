@@ -33,6 +33,16 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	containerType = 2;
 
 	lotSize = buildingData->getLotSize();
+
+	optionsBitmask = 0x00000100;
+}
+
+void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		cell->sendTo(player, true);
+	}
 }
 
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
@@ -48,7 +58,9 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				SceneObject* childStub = cell->getContainerObject(j);
-				childStub->sendTo(player, true);
+
+				if (!childStub->isInQuadTree())
+					childStub->sendTo(player, true);
 			}
 		}
 	}
@@ -115,13 +127,18 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 			//if (childStub->isInRange(object, 128)) {
 				child->addInRangeObject(creoImpl, false);
 
-				if (childStub != object)
-					child->sendTo(object, true);
+				if (childStub != object) {
+					creoImpl->notifyInsert(child);
+					//child->sendTo(object, true);
+				}
 
 				creoImpl->addInRangeObject(child, false);
 
-				if (childStub != object)
-					object->sendTo(childStub, true);
+				if (childStub != object) {
+					//object->sendTo(childStub, true);
+					child->notifyInsert(creoImpl);
+				}
+
 			//}
 		}
 	}
