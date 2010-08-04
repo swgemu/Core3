@@ -78,7 +78,7 @@ void AiAgentImplementation::doRecovery() {
 
 				checkNewAngle();
 
-				if (commandQueue.size() == 0)
+				if (commandQueue.size() == 0 && weapon != NULL)
 					enqueueCommand(0xA8FEF90A, 0, creo->getObjectID(), ""); // Do default attack
 			//}
 		}

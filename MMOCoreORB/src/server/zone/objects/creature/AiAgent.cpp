@@ -863,8 +863,6 @@ void AiAgentImplementation::_serializationHelperMethod() {
 
 	_setClassName("AiAgent");
 
-	addSerializableVariable("thinkEvent", &thinkEvent);
-	addSerializableVariable("moveEvent", &moveEvent);
 	addSerializableVariable("skillCommands", &skillCommands);
 	addSerializableVariable("patrolPoints", &patrolPoints);
 	addSerializableVariable("homeLocation", &homeLocation);
