@@ -41,6 +41,7 @@ void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
+		cell->setCellNumber(i + 1);
 		cell->sendTo(player, true);
 	}
 }

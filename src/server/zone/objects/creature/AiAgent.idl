@@ -67,10 +67,10 @@ import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
 
 class AiAgent extends CreatureObject {
 	@dereferenced
-	protected Reference<AiThinkEvent> thinkEvent;
+	protected transient Reference<AiThinkEvent> thinkEvent;
 	
 	@dereferenced
-	protected Reference<AiMoveEvent> moveEvent;
+	protected transient Reference<AiMoveEvent> moveEvent;
 	
 	@dereferenced
 	protected Vector<string> skillCommands;
