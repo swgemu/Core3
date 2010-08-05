@@ -45,6 +45,24 @@ void FactoryObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 	craftingTabsSupported = factory->getCraftingTabsSupported();
 }
 
+void FactoryObjectImplementation::initializeTransientMembers() {
+	InstallationObjectImplementation::initializeTransientMembers();
+
+	if(operating)
+		startFactory();
+
+	setLoggingName("FactoryObject");
+}
+
+void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+
+	InstallationObjectImplementation::fillAttributeList(alm, object);
+
+	if(operating && isOnAdminList(object) ) {
+		alm->insertAttribute("test", 1);
+	}
+}
+
 void FactoryObjectImplementation::createChildObjects() {
 
 	String ingredientHopperName = "object/tangible/hopper/manufacture_installation_ingredient_hopper_1.iff";
@@ -295,10 +313,10 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 
 	datapad->removeObject(schematic, true);
 	schematic->sendDestroyTo(player);
-	datapad->updateToDatabaseAllObjects(true);
+	datapad->updateToDatabase();
 
 	addObject(schematic, -1, true);
-	updateToDatabaseAllObjects(true);
+	updateToDatabase();
 
 	ParameterizedStringId message("manf_station", "schematic_added");
 
@@ -327,9 +345,9 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(PlayerCreature* playe
 		return;
 
 	datapad->addObject(schematic, -1, true);
-	datapad->updateToDatabaseAllObjects(true);
+	datapad->updateToDatabase();
 
-	updateToDatabaseAllObjects(true);
+	updateToDatabase();
 
 	ParameterizedStringId message("manf_station", "schematic_removed");
 
@@ -374,7 +392,7 @@ void FactoryObjectImplementation::startFactory() {
 	createFactoryObjectTask->setReentrant();
 	addPendingTask("createFactoryObject", createFactoryObjectTask);
 
-	updateToDatabaseAllObjects(true);
+	updateToDatabase();
 }
 
 void FactoryObjectImplementation::stopFactory(const String& message, const String& tt, const String& to, const int di) {
@@ -404,56 +422,66 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 		chatManager->sendMail(getObjectName()->getStringID(), subject, emailBody, currentUser->getFirstName());
 	}
 
-	updateToDatabaseAllObjects(true);
+	updateToDatabase();
 }
 
 void FactoryObjectImplementation::createNewObject() {
 
-/// Pre: _this locked
-	if(getContainerObjectsSize() == 0) {
+	/// Pre: _this locked
+	if (getContainerObjectsSize() == 0) {
 		stopFactory("manf_error", "", "", -1);
 		return;
 	}
 
-	ManagedReference<ManufactureSchematic* > schematic = (ManufactureSchematic*) getContainerObject(0);
+	ManagedReference<ManufactureSchematic*> schematic =
+			(ManufactureSchematic*) getContainerObject(0);
 
-	if(schematic == NULL) {
+	if (schematic == NULL) {
 		stopFactory("manf_error_4", "", "", -1);
 		return;
 	}
 
-	ManagedReference<TangibleObject* > prototype = (TangibleObject*) schematic->getPrototype();
+	ManagedReference<TangibleObject*> prototype =
+			(TangibleObject*) schematic->getPrototype();
 
-	if(prototype == NULL) {
+	if (prototype == NULL) {
 		stopFactory("manf_error_2", "", "", -1);
 		return;
 	}
 
-	if(removeIngredientsFromHopper(schematic)) {
+	try {
 
-		ManagedReference<FactoryCrate* > crate = locateCrateInOutputHopper(prototype);
+		if (removeIngredientsFromHopper(schematic)) {
 
-		if(crate == NULL)
-			crate = createNewFactoryCrate(prototype->getGameObjectType(), prototype);
-		else
-			crate->setUseCount(crate->getUseCount() + 1);
+			ManagedReference<FactoryCrate*> crate = locateCrateInOutputHopper(
+					prototype);
 
-		if(crate == NULL) {
-			stopFactory("manf_error_7", "", "", -1);
-			return;
+			if (crate == NULL)
+				crate = createNewFactoryCrate(prototype->getGameObjectType(),
+						prototype);
+			else
+				crate->setUseCount(crate->getUseCount() + 1);
+
+			if (crate == NULL) {
+				stopFactory("manf_error_7", "", "", -1);
+				return;
+			}
+
+			Reference<Task*> pending = getPendingTask("createFactoryObject");
+
+			if (pending != NULL)
+				pending->reschedule(timer * 1000);
+			else
+				stopFactory("manf_error", "", "", -1);
+
+			currentRunCount++;
 		}
 
-		Reference<Task* > pending = getPendingTask("createFactoryObject");
-
-		if(pending != NULL)
-			pending->reschedule(timer * 1000);
-		else
-			stopFactory("manf_error", "", "", -1);
-
-		currentRunCount++;
+		updateToDatabase();
+	} catch (...) {
+		error(
+				"unhandled exception in FactoryObjectImplementation::createNewObject()");
 	}
-
-	updateToDatabaseAllObjects(false);
 }
 
 FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObject* prototype) {
@@ -511,7 +539,17 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 
 	FactoryCrate* crate = (FactoryCrate*) server->getZoneServer()->createObject(file.hashCode(), 2);
 
+	if (crate == NULL) {
+		stopFactory("manf_error_7", "", "", -1);
+		return NULL;
+	}
+
 	TangibleObject* protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
+
+	if (protoclone == NULL) {
+		stopFactory("manf_error", "", "", -1);
+		return NULL;
+	}
 
 	crate->setPrototype(protoclone);
 
@@ -559,28 +597,36 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 				ResourceContainer* rcnoIngredient = (ResourceContainer*) ingredient.get();
 				ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
 
-				if(rcnoIngredient == NULL || rcnoObject == NULL)
+				if(rcnoIngredient == NULL || rcnoObject == NULL) {
+					error("NULL ingredient in removeIngredientsFromHopper");
 					continue;
+				}
+
+				if(rcnoIngredient->getSpawnObject() == NULL || rcnoObject->getSpawnObject() == NULL) {
+					error("NULL resource SpawnObject in removeIngredientsFromHopper");
+					continue;
+				}
 
 				if(rcnoIngredient->getSpawnName() == rcnoObject->getSpawnName()) {
 System::out << "Needs: " << rcnoIngredient->getSpawnName() << ":" << rcnoIngredient->getQuantity() << " Found: " << rcnoObject->getSpawnName() << " " << rcnoObject->getQuantity() << endl;
 
-					if(rcnoObject->getQuantity() < rcnoIngredient->getQuantity()) {
+					int neededQuantity = rcnoIngredient->getQuantity();
+
+					if(alteredObjects.contains(rcnoObject))
+						neededQuantity += alteredObjects.get(rcnoObject);
+
+					if(neededQuantity > rcnoObject->getQuantity()) {
+
 						if(rcnoObject->getSpawnName() != "")
 							stopFactory("manf_no_named_resource", getObjectName()->getStringID(), rcnoObject->getSpawnName(), -1);
 						else
 							stopFactory("manf_no_unknown_resource", getObjectName()->getStringID(), "", -1);
+
 						return false;
 					}
 
 					found = true;
-					int quantity = rcnoIngredient->getQuantity();
-
-					if(alteredObjects.contains(rcnoObject)) {
-						quantity += alteredObjects.get(rcnoObject);
-					}
-
-					alteredObjects.put(rcnoObject, quantity);
+					alteredObjects.put(rcnoObject, neededQuantity);
 					break;
 				}
 
@@ -593,16 +639,24 @@ System::out << "Needs: " << rcnoIngredient->getSpawnName() << ":" << rcnoIngredi
 
 					if(tanoIngredient->getCraftersSerial() == tanoObject->getCraftersSerial()) {
 System::out << tanoObject->getObjectNameStringIdName() << " " << tanoObject->getUseCount() << endl;
-						if(tanoObject->getUseCount() < tanoIngredient->getUseCount()) {
+
+						int neededQuantity = tanoIngredient->getUseCount();
+
+						if(alteredObjects.contains(tanoObject))
+							neededQuantity += alteredObjects.get(tanoObject);
+
+						if(neededQuantity >= tanoObject->getUseCount()) {
+
 							if(tanoObject->getCustomObjectName().toString() == "")
 								stopFactory("manf_no_component", getObjectName()->getStringID(), tanoObject->getObjectName()->getStringID(), -1);
 							else
 								stopFactory("manf_no_component", getObjectName()->getStringID(), tanoObject->getCustomObjectName().toString(), -1);
+
 							return false;
 						}
 
 						found = true;
-						alteredObjects.put(tanoObject, tanoObject->getUseCount());
+						alteredObjects.put(tanoObject, neededQuantity);
 						break;
 					}
 				}

@@ -94,7 +94,7 @@ public:
 				harvester->updateResourceContainerQuantity(container, newQuantity, true);
 			} else if (byte1 == 0) {
 				if (!inventory->hasFullContainerObjects()) {
-					container->split(player, quantity);
+					container->split(quantity);
 					harvester->updateResourceContainerQuantity(container, container->getQuantity(), true);
 
 				} else {

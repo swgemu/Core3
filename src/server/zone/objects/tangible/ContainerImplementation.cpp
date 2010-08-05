@@ -55,9 +55,7 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 }
 
 void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
-	if (isASubChildOf(player)) {
-		info("sending container objects to parent player");
 
-		SceneObjectImplementation::sendContainerObjectsTo(player);
-	}
+	SceneObjectImplementation::sendContainerObjectsTo(player);
+
 }

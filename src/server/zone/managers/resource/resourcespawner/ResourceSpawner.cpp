@@ -625,7 +625,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player, const float dens
 			if (resource->getSpawnName() == resname) {
 				int newStackSize = resource->getQuantity() + unitsExtracted;
 
-				resource->setQuantity(newStackSize, player);
+				resource->setQuantity(newStackSize);
 				return;
 			}
 		}

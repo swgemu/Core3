@@ -60,30 +60,30 @@ class CraftingTool extends ToolTangibleObject {
 	protected string status;
 	protected int complexityLevel;
 	
-	protected transient CraftingManager craftingManager;
+	protected CraftingManager craftingManager;
 	
 	@dereferenced
 	protected Vector<unsigned int> enabledTabs;
 	
 	@dereferenced
-	protected transient Vector<DraftSchematic> currentSchematicList;
+	protected Vector<DraftSchematic> currentSchematicList;
 
-	protected transient CraftingStation craftingStation;
+	protected CraftingStation craftingStation;
 	
-	protected transient int state;
-	protected transient int insertCounter;
+	protected int state;
+	protected int insertCounter;
 	
-	protected transient ManufactureSchematic manufactureSchematic;
+	protected ManufactureSchematic manufactureSchematic;
 	
-	protected transient TangibleObject prototype;
+	protected TangibleObject prototype;
 	
-	protected transient int experimentationPointsTotal;
-	protected transient int experimentationPointsUsed;
+	protected int experimentationPointsTotal;
+	protected int experimentationPointsUsed;
 	
-	protected transient int assemblyResult;
-	protected transient int experimentationResult;
+	protected int assemblyResult;
+	protected int experimentationResult;
 	
-	protected transient int experimentalFailureRate;
+	protected int experimentalFailureRate;
 	
 	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
 	public static final int FOOD = 2; // Food and Chemical Crafting Tool

@@ -96,6 +96,28 @@ int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* pla
 	return 0;
 }
 
+void InstallationObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
+	if (zone == NULL)
+		return;
+
+	Locker zoneLocker(zone);
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+		if (!sendSelf && scno == this)
+			continue;
+
+		if(!scno->isPlayerCreature())
+			continue;
+
+		if(isOnAdminList(scno->getObjectID()))
+			scno->sendMessage(message->clone());
+	}
+
+	delete message;
+}
+
 void InstallationObjectImplementation::setOperating(bool value, bool notifyClient) {
 	//updateInstallationWork();
 

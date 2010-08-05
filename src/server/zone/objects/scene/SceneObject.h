@@ -712,6 +712,8 @@ public:
 
 	void broadcastObject(SceneObject* object, bool sendSelf);
 
+	void broadcastDestroy(SceneObject* object, bool sendSelf);
+
 	void broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf);
 
 	void sendMessage(BasePacket* msg);
@@ -1549,6 +1551,8 @@ public:
 
 	void broadcastObject(SceneObject* object, bool sendSelf);
 
+	void broadcastDestroy(SceneObject* object, bool sendSelf);
+
 	void broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf);
 
 	virtual void sendMessage(BasePacket* msg);
@@ -1921,6 +1925,8 @@ public:
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	void broadcastObject(SceneObject* object, bool sendSelf);
+
+	void broadcastDestroy(SceneObject* object, bool sendSelf);
 
 	void sendMessage(BasePacket* msg);
 

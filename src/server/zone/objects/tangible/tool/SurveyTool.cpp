@@ -402,26 +402,36 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 	addSerializableVariable("surveyType", &surveyType);
 	addSerializableVariable("surveyAnimation", &surveyAnimation);
 	addSerializableVariable("sampleAnimation", &sampleAnimation);
+	addSerializableVariable("lastResourceSampleName", &lastResourceSampleName);
+	addSerializableVariable("radioactiveOk", &radioactiveOk);
+	addSerializableVariable("doGamble", &doGamble);
+	addSerializableVariable("inUse", &inUse);
 }
 
 SurveyToolImplementation::SurveyToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(87):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(88):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
-	// server/zone/objects/tangible/tool/SurveyTool.idl(88):  		radioactiveOk = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(89):  		radioactiveOk = false;
 	radioactiveOk = false;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(89):  		range = 0;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(90):  		range = 0;
 	range = 0;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(90):  		doGamble = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(91):  		doGamble = false;
 	doGamble = false;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(91):  		richSampleLocation = null;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(92):  		richSampleLocation = null;
 	richSampleLocation = NULL;
 }
 
 void SurveyToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(95):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/SurveyTool.idl(96):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(97):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl(98):  		richSampleLocation = null;
+	richSampleLocation = NULL;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(99):  		doGamble = false;
+	doGamble = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(100):  		inUse = false;
+	inUse = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(101):  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
 }
 
@@ -429,52 +439,52 @@ void SurveyToolImplementation::updateCraftingValues(ManufactureSchematic* schema
 }
 
 int SurveyToolImplementation::getRange() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(119):  		return range;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(123):  		return range;
 	return range;
 }
 
 int SurveyToolImplementation::getPoints() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(123):  		return points;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(127):  		return points;
 	return points;
 }
 
 bool SurveyToolImplementation::canSampleRadioactive() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(127):  		return radioactiveOk;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(131):  		return radioactiveOk;
 	return radioactiveOk;
 }
 
 bool SurveyToolImplementation::tryGamble() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(131):  		return doGamble == true;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(135):  		return doGamble == true;
 	return doGamble == true;
 }
 
 void SurveyToolImplementation::clearGamble() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(135):  		doGamble = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(139):  		doGamble = false;
 	doGamble = false;
 }
 
 void SurveyToolImplementation::consentRadioactiveSample() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(139):  		radioactiveOk = true;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(143):  		radioactiveOk = true;
 	radioactiveOk = true;
 }
 
 Coordinate* SurveyToolImplementation::getRichSampleLocation() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(151):  		return richSampleLocation;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(155):  		return richSampleLocation;
 	return richSampleLocation;
 }
 
 void SurveyToolImplementation::clearRichSampleLocation() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(155):  		richSampleLocation = null;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(159):  		richSampleLocation = null;
 	richSampleLocation = NULL;
 }
 
 void SurveyToolImplementation::setInUse(bool use) {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(159):  		inUse = use;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(163):  		inUse = use;
 	inUse = use;
 }
 
 bool SurveyToolImplementation::isInUse() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(163):  		return inUse;
+	// server/zone/objects/tangible/tool/SurveyTool.idl(167):  		return inUse;
 	return inUse;
 }
 

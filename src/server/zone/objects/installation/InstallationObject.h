@@ -174,6 +174,8 @@ public:
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
+	void broadcastMessage(BasePacket* message, bool sendSelf);
+
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
 
 	void updateToDatabaseAllObjects(bool startTask);
@@ -224,7 +226,9 @@ public:
 
 	void broadcastToOperators(BasePacket* packet);
 
-	bool isOnAdminList(CreatureObject* creature);
+	bool isOnAdminList(SceneObject* scno);
+
+	bool isOnAdminList(unsigned long long oid);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
@@ -365,6 +369,8 @@ public:
 
 	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
 
+	void broadcastMessage(BasePacket* message, bool sendSelf);
+
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
 
 	virtual void updateToDatabaseAllObjects(bool startTask);
@@ -415,7 +421,9 @@ public:
 
 	void broadcastToOperators(BasePacket* packet);
 
-	bool isOnAdminList(CreatureObject* creature);
+	bool isOnAdminList(SceneObject* scno);
+
+	bool isOnAdminList(unsigned long long oid);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
@@ -524,6 +532,8 @@ public:
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
+	void broadcastMessage(BasePacket* message, bool sendSelf);
+
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient);
 
 	void updateToDatabaseAllObjects(bool startTask);
@@ -570,7 +580,9 @@ public:
 
 	void broadcastToOperators(BasePacket* packet);
 
-	bool isOnAdminList(CreatureObject* creature);
+	bool isOnAdminList(SceneObject* scno);
+
+	bool isOnAdminList(unsigned long long oid);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 

@@ -397,6 +397,34 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 
 }
 
+void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendSelf) {
+	if (zone == NULL) {
+		SceneObject* grandParent = getRootParent();
+
+		if (grandParent != NULL) {
+			grandParent->broadcastObject(object, sendSelf);
+
+			return;
+		} else {
+			return;
+		}
+	}
+
+	Locker zoneLocker(zone);
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+		if (!sendSelf && scno == this)
+			continue;
+
+		if (scno->isPlayerCreature()) {
+			object->sendDestroyTo((SceneObject*) scno->_getStub());
+		}
+	}
+
+}
+
 void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
 	if (zone == NULL) {
 		SceneObject* grandParent = getRootParent();
@@ -874,7 +902,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 
 	notifyObjectInserted(object);
 
-	updateToDatabaseAllObjects(true);
+	updateToDatabase();
 
 	return true;
 }
@@ -925,7 +953,7 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 	notifyObjectRemoved(object);
 
-	updateToDatabaseAllObjects(true);
+	updateToDatabase();
 	object->updateToDatabaseWithoutChildren();
 
 	return true;
@@ -936,15 +964,6 @@ void SceneObjectImplementation::openContainerTo(PlayerCreature* player) {
 	player->sendMessage(cont);
 
 	sendContainerObjectsTo(player);
-
-	ManagedReference<Zone* > zone = player->getZone();
-	Locker locker(zone);
-
-	SceneObjectImplementation* playerimpl = (SceneObjectImplementation*) player->_getImplementation();
-	SceneObjectImplementation* impl = (SceneObjectImplementation*) _this->_getImplementation();
-
-	addInRangeObject((QuadTreeEntry*) playerimpl);
-	playerimpl->addInRangeObject((QuadTreeEntry*)impl);
 }
 
 void SceneObjectImplementation::closeContainerTo(PlayerCreature* player, bool notify) {
@@ -953,16 +972,6 @@ void SceneObjectImplementation::closeContainerTo(PlayerCreature* player, bool no
 		ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this, true);
 		player->sendMessage(cont);
 	}
-
-	ManagedReference<Zone* > zone = player->getZone();
-	Locker locker(zone);
-
-	SceneObjectImplementation* playerimpl = (SceneObjectImplementation*) player->_getImplementation();
-	SceneObjectImplementation* impl = (SceneObjectImplementation*) _this->_getImplementation();
-
-	removeInRangeObject((QuadTreeEntry*)playerimpl);
-
-	playerimpl->removeInRangeObject((QuadTreeEntry*)impl);
 }
 
 void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {

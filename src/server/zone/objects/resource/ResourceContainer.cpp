@@ -68,18 +68,17 @@ void ResourceContainer::sendBaselinesTo(SceneObject* player) {
 		((ResourceContainerImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-void ResourceContainer::setQuantity(int quantity, SceneObject* player) {
+void ResourceContainer::setQuantity(int quantity) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(quantity);
-		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->setQuantity(quantity, player);
+		((ResourceContainerImplementation*) _impl)->setQuantity(quantity);
 }
 
 bool ResourceContainer::isResourceContainer() {
@@ -169,32 +168,30 @@ ResourceSpawn* ResourceContainer::getSpawnObject() {
 		return ((ResourceContainerImplementation*) _impl)->getSpawnObject();
 }
 
-void ResourceContainer::split(PlayerCreature* player, int newStackSize) {
+void ResourceContainer::split(int newStackSize) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
-		method.addObjectParameter(player);
 		method.addSignedIntParameter(newStackSize);
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->split(player, newStackSize);
+		((ResourceContainerImplementation*) _impl)->split(newStackSize);
 }
 
-void ResourceContainer::combine(PlayerCreature* player, ResourceContainer* fromContainer) {
+void ResourceContainer::combine(ResourceContainer* fromContainer) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
-		method.addObjectParameter(player);
 		method.addObjectParameter(fromContainer);
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->combine(player, fromContainer);
+		((ResourceContainerImplementation*) _impl)->combine(fromContainer);
 }
 
 /*
@@ -339,7 +336,7 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		setQuantity(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
+		setQuantity(inv->getSignedIntParameter());
 		break;
 	case 10:
 		resp->insertBoolean(isResourceContainer());
@@ -363,10 +360,10 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertLong(getSpawnObject()->_getObjectID());
 		break;
 	case 17:
-		split((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		split(inv->getSignedIntParameter());
 		break;
 	case 18:
-		combine((PlayerCreature*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter());
+		combine((ResourceContainer*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -387,8 +384,8 @@ void ResourceContainerAdapter::sendBaselinesTo(SceneObject* player) {
 	((ResourceContainerImplementation*) impl)->sendBaselinesTo(player);
 }
 
-void ResourceContainerAdapter::setQuantity(int quantity, SceneObject* player) {
-	((ResourceContainerImplementation*) impl)->setQuantity(quantity, player);
+void ResourceContainerAdapter::setQuantity(int quantity) {
+	((ResourceContainerImplementation*) impl)->setQuantity(quantity);
 }
 
 bool ResourceContainerAdapter::isResourceContainer() {
@@ -419,12 +416,12 @@ ResourceSpawn* ResourceContainerAdapter::getSpawnObject() {
 	return ((ResourceContainerImplementation*) impl)->getSpawnObject();
 }
 
-void ResourceContainerAdapter::split(PlayerCreature* player, int newStackSize) {
-	((ResourceContainerImplementation*) impl)->split(player, newStackSize);
+void ResourceContainerAdapter::split(int newStackSize) {
+	((ResourceContainerImplementation*) impl)->split(newStackSize);
 }
 
-void ResourceContainerAdapter::combine(PlayerCreature* player, ResourceContainer* fromContainer) {
-	((ResourceContainerImplementation*) impl)->combine(player, fromContainer);
+void ResourceContainerAdapter::combine(ResourceContainer* fromContainer) {
+	((ResourceContainerImplementation*) impl)->combine(fromContainer);
 }
 
 /*

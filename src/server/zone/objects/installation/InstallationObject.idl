@@ -75,7 +75,7 @@ class InstallationObject extends TangibleObject {
 	
 	protected boolean operating;
 	
-	protected unsigned long deedObjectID;
+	protected unsigned long deedObjectID; 
 	
 	protected int baseMaintenanceRate;
 	protected int basePowerRate;
@@ -184,8 +184,17 @@ class InstallationObject extends TangibleObject {
 	
 	public abstract boolean checkRequisitesForPlacement(PlayerCreature player) {
 		return true;
-	}
+	}  
 
+	/**
+	 * Broadcasts the message to the in range objects
+	 * @pre {this object is locked, message is not null }
+	 * @post {this object is locked, in range objects received a copy of the message, message is deleted }
+	 * @param sendSelf if true the owner if this object receives the message too
+	 */
+	public native void broadcastMessage(BasePacket message, boolean sendSelf);
+
+	
 	public native void updateResourceContainerQuantity(ResourceContainer container, int newQuantity, boolean notifyClient = true);
 
 	/**
@@ -252,8 +261,12 @@ class InstallationObject extends TangibleObject {
 	 * @param creature The creature to check for admin permissions on.
 	 * @return boolean True if the creature is on the admin list.
 	 */
-	public boolean isOnAdminList(CreatureObject creature) {
-		return structurePermissionList.isOnAdminList(creature.getObjectID());
+	public boolean isOnAdminList(SceneObject scno) {
+		return structurePermissionList.isOnAdminList(scno.getObjectID());
+	}
+	
+	public boolean isOnAdminList(unsigned long oid) {
+		return structurePermissionList.isOnAdminList(oid);
 	}
 	
 	public void sendPermissionListTo(PlayerCreature player, final string listName) {

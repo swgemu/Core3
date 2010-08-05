@@ -304,7 +304,7 @@ void ResourceManagerImplementation::removePowerFromPlayer(PlayerCreature* player
 					uint64 consumedUnits = (unsigned long long) ( (power /* * 1.0 */) / ( (containerPower /* * 1.0*/) / rcno->getQuantity() ) );
 					power = 0; // zero it down
 
-					rcno->setQuantity(rcno->getQuantity() - consumedUnits, player);
+					rcno->setQuantity(rcno->getQuantity() - consumedUnits);
 				} else {
 					power -= containerPower;
 
