@@ -84,7 +84,10 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 	} catch (...) {
 	}
 
-	wlock(attacker);
+	if (attacker != _this)
+		wlock(attacker);
+	else
+		wlock();
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }

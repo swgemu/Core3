@@ -119,11 +119,28 @@ void ResourceContainerImplementation::split(int newStackSize) {
 
 	ResourceContainer* newResource = spawnObject->createResource(newStackSize);
 
-	if(newResource == NULL || newResource->getSpawnObject() == NULL)
+	if(parent == NULL || newResource == NULL || newResource->getSpawnObject() == NULL)
 		return;
 
 	parent->addObject(newResource, -1, true);
 	parent->broadcastObject(newResource, true);
+
+	setQuantity(getQuantity() - newStackSize);
+
+   	newResource->updateToDatabase();
+   	updateToDatabase();
+}
+
+void ResourceContainerImplementation::split(int newStackSize, PlayerCreature* player) {
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	ResourceContainer* newResource = spawnObject->createResource(newStackSize);
+
+	if (newResource == NULL || newResource->getSpawnObject() == NULL)
+		return;
+
+	newResource->sendTo(player, true);
+	inventory->addObject(newResource, -1, true);
 
 	setQuantity(getQuantity() - newStackSize);
 
