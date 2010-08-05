@@ -689,11 +689,11 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	if (parent != NULL && parent->isCellObject())
 		parent->addObject(_this, -1, false);
 
+	notifiedSentObjects.removeAll();
+
 	sendToOwner(true);
 
 	if (isInQuadTree()) {
-		notifiedSentObjects.removeAll();
-
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			SceneObjectImplementation* object = (SceneObjectImplementation*) getInRangeObject(i);
 

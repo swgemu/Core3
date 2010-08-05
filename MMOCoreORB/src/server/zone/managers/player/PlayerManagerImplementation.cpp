@@ -766,6 +766,10 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	PlayerCreature* playerCreature = (PlayerCreature*) destructedObject;
 
+	if (playerCreature->isRidingMount()) {
+		playerCreature->executeObjectControllerAction(String("dismount").hashCode());
+	}
+
 	int AI = playerCreature->getSkillMod("avoid_incapacitation");
 
 	if (AI > 0)
@@ -811,6 +815,10 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCre
 		stringId.setStringId("base_player", "prose_target_dead");
 		stringId.setTT(player->getObjectID());
 		((CreatureObject*)attacker)->sendSystemMessage(stringId);
+	}
+
+	if (player->isRidingMount()) {
+		player->executeObjectControllerAction(String("dismount").hashCode());
 	}
 
 	player->setPosture(CreaturePosture::DEAD, true);
