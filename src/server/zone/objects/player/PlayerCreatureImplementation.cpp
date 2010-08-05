@@ -359,6 +359,10 @@ void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
 
 	//notifiedSentObjects.removeAll();
 
+	if (isRidingMount() && parent == NULL) {
+		clearState(CreatureState::RIDINGMOUNT);
+	}
+
 	insertToZone(zone);
 }
 
