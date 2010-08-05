@@ -67,47 +67,70 @@ void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage*
 
 	alm->insertAttribute("data_volume", dataSize);
 
-	String resourceHead = "cat_manf_schem_ing_resource.\"";
+	try {
 
-	String name;
-	int value;
+		String resourceHead = "cat_manf_schem_ing_resource.\"";
 
-	for (int i = 0; i < factoryIngredients.size(); ++i) {
+		String name;
+		int value;
 
-		ManagedReference<SceneObject* > ingredient = factoryIngredients.get(i);
+		for (int i = 0; i < factoryIngredients.size(); ++i) {
 
-		if (ingredient == NULL)
-			continue;
+			ManagedReference<SceneObject*> ingredient = factoryIngredients.get(
+					i);
 
-		if (ingredient->isResourceContainer()) {
-			ManagedReference<ResourceContainer*> rcno = (ResourceContainer*) ingredient.get();
-			name = resourceHead + rcno->getSpawnObject()->getName();
-			value = rcno->getQuantity();
+			if (ingredient == NULL)
+				continue;
 
-			alm->insertAttribute(name, value);
+			if (ingredient->isResourceContainer()) {
+				ManagedReference<ResourceContainer*> rcno =
+						(ResourceContainer*) ingredient.get();
 
-		} else {
+				name = resourceHead + rcno->getSpawnObject()->getName();
+				value = rcno->getQuantity();
 
-			ManagedReference<TangibleObject*> component = (TangibleObject*) ingredient.get();
+				alm->insertAttribute(name, value);
 
-			if (component->getCustomObjectName().isEmpty())
-				name = "@" + component->getObjectNameStringIdFile() + ":"
-						+ component->getObjectNameStringIdName() + " ";
-			else
-				name = component->getCustomObjectName().toString();
+			} else {
 
-			name = resourceHead + name.concat(component->getCraftersSerial());
+				ManagedReference<TangibleObject*> component =
+						(TangibleObject*) ingredient.get();
 
-			value = component->getUseCount();
+				if (component->getCustomObjectName().isEmpty())
+					name = "@" + component->getObjectNameStringIdFile() + ":"
+							+ component->getObjectNameStringIdName() + " ";
+				else
+					name = component->getCustomObjectName().toString();
 
-			alm->insertAttribute(name, value);
+				name = resourceHead + name.concat(
+						component->getCraftersSerial());
+
+				value = component->getUseCount();
+
+				alm->insertAttribute(name, value);
+			}
 		}
-	}
 
-	alm->insertAttribute("manf_limit", manufactureLimit);
+		alm->insertAttribute("manf_limit", manufactureLimit);
+
+		if (prototype != NULL)
+			prototype->fillAttributeList(alm, object);
+	} catch (...) {
+		error(
+				"Unhandled Exception in ManufactureSchematicImplementation::fillAttributeList");
+	}
+}
+
+void ManufactureSchematicImplementation::updateToDatabaseAllObjects(bool startTask) {
 
 	if(prototype != NULL)
-		prototype->fillAttributeList(alm, object);
+		prototype->updateToDatabase();
+
+	for(int i = 0; i < factoryIngredients.size(); ++i) {
+		factoryIngredients.get(i)->updateToDatabase();
+	}
+
+	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
 }
 
 void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClose) {
@@ -288,7 +311,7 @@ void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {
 
 	cleanupIngredientSlots();
 
-	updateToDatabaseAllObjects(true);
+	updateToDatabase();
 }
 
 void ManufactureSchematicImplementation::initializeFactoryIngredients() {
@@ -299,6 +322,9 @@ void ManufactureSchematicImplementation::initializeFactoryIngredients() {
 		if (ingredientSlot == NULL || ingredientSlot->get() == NULL)
 			continue;
 
-		factoryIngredients.add(ingredientSlot->get());
+		SceneObject* scno = ingredientSlot->get();
+
+		scno->setParent(_this);
+		factoryIngredients.add(scno);
 	}
 }

@@ -72,26 +72,31 @@ class ManufactureSchematic extends IntangibleObject {
 	protected Vector<SceneObject> factoryIngredients;
 
 	@dereferenced
-	protected transient IngredientSlots ingredientSlots;
+	protected IngredientSlots ingredientSlots;
 	
-	protected transient boolean assembled;
-	protected transient boolean completed;
-	protected transient int experimentingCounter;
-	protected transient int experimentingCounterPrevious;
-	
-	@dereferenced
-	protected transient CraftingValues craftingValues;
+	protected boolean assembled;
+	protected boolean completed;
+	protected int experimentingCounter;
+	protected int experimentingCounterPrevious;
 	
 	@dereferenced
-	protected transient Vector<byte> customizationOptions;
+	protected CraftingValues craftingValues;
 	
 	@dereferenced
-	protected transient Vector<byte> customizationDefaultValues;
+	protected Vector<byte> customizationOptions;
+	
+	@dereferenced
+	protected Vector<byte> customizationDefaultValues;
 	
 	public ManufactureSchematic() {
 		Logger.setLoggingName("ManufactureSchematic");
 		prototype = null;
 		firstCraftingUpdate = false;
+	}
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
 	}
 
 	/**
@@ -138,6 +143,8 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @param value value from packet
 	 */
 	public native abstract void synchronizedUIStopListen(SceneObject player, int value);
+	
+	public native void updateToDatabaseAllObjects(boolean startTask);
 	
 	public boolean isManufactureSchematic() {
 		return true;

@@ -46,6 +46,8 @@ which carries forward this exception.
 #define EXTRACTOBJECTCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../factorycrate/FactoryCrate.h"
+#include "../../tangible/TangibleObject.h"
 
 class ExtractObjectCommand : public QueueCommand {
 public:
@@ -62,6 +64,28 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		try {
+
+			ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
+
+			if(object == NULL || !object->isFactoryCrate()) {
+				creature->sendSystemMessage("Trying to 'ExtractObjectCommand' on item that isn't a factory crate");
+				return GENERALERROR;
+			}
+
+			ManagedReference<FactoryCrate*> crate = (FactoryCrate*) object.get();
+
+			if(!crate->extractObject()) {
+				error("Error extracting object in ExtractObjectCommand");
+				creature->sendSystemMessage("Error extracting object in ExtractObjectCommand");
+			}
+
+		} catch (...) {
+			error("Unhandled Exception in ExtractObjectCommand");
+			creature->sendSystemMessage("Unhandled Exception in ExtractObjectCommand");
+		}
+
 
 		return SUCCESS;
 	}

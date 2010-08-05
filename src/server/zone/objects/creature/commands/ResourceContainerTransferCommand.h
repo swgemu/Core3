@@ -74,9 +74,7 @@ public:
 				|| !toContainer->isResourceContainer() || !creature->isPlayerCreature()))
 			return INVALIDTARGET;
 
-		PlayerCreature* playerCreature = (PlayerCreature*) creature;
-
-		toContainer->combine(playerCreature, fromContainer);
+		toContainer->combine(fromContainer);
 
 		return SUCCESS;
 	}

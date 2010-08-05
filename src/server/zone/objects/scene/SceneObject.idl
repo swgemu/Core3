@@ -809,6 +809,15 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 */
 	public native void broadcastObject(SceneObject object, boolean sendSelf);
 
+	/**
+	 * Broadcasts an object to the in range objects
+	 * @pre {this object is locked, object is not null }
+	 * @post {this object is locked, in range objects received the object }
+	 * @param object SceneObject that will be sent to the in range objects
+	 * @param sendSelf if true the owner of this object receives the object too
+	 */
+	public native void broadcastDestroy(SceneObject object, boolean sendSelf);
+
 
 	/**
 	 * Broadcasts a vector of messages to the in range objects

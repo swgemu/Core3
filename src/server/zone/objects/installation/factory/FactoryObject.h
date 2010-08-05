@@ -53,6 +53,10 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void initializeTransientMembers();
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
@@ -117,6 +121,10 @@ public:
 	FactoryObjectImplementation(DummyConstructorParameter* param);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void initializeTransientMembers();
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -196,6 +204,8 @@ public:
 	FactoryObjectAdapter(FactoryObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
