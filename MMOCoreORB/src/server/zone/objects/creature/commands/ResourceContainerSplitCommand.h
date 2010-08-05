@@ -72,9 +72,7 @@ public:
 		if((resourceContainer == NULL || !resourceContainer->isResourceContainer() ||!creature->isPlayerCreature()))
 			return INVALIDTARGET;
 
-		PlayerCreature* playerCreature = (PlayerCreature*) creature;
-
-		resourceContainer->split(playerCreature, newStackSize);
+		resourceContainer->split(newStackSize);
 
 		return SUCCESS;
 	}

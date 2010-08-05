@@ -103,7 +103,7 @@ public:
 
 				if(needs < incomingResource->getQuantity()) {
 
-					incomingResource->setQuantity(incomingResource->getQuantity() - needs, player);
+					incomingResource->setQuantity(incomingResource->getQuantity() - needs);
 					contents->setQuantity(contents->getQuantity() + needs);
 
 				} else {
@@ -118,7 +118,7 @@ public:
 
 				ResourceSpawn* spawn = incomingResource->getSpawnObject();
 
-				incomingResource->setQuantity(incomingResource->getQuantity() - requiredQuantity, player);
+				incomingResource->setQuantity(incomingResource->getQuantity() - requiredQuantity);
 
 				contents = spawn->createResource(requiredQuantity);
 
@@ -185,7 +185,7 @@ public:
 				if (resource->getSpawnName() == contents->getSpawnName()) {
 					int newStackSize = resource->getQuantity() + contents->getQuantity();
 
-					resource->setQuantity(newStackSize, player);
+					resource->setQuantity(newStackSize);
 					contents = NULL;
 					return true;
 				}

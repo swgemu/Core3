@@ -8,6 +8,12 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
 /*
  *	FactoryCrateStub
  */
@@ -57,12 +63,55 @@ void FactoryCrate::sendBaselinesTo(SceneObject* player) {
 		((FactoryCrateImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-bool FactoryCrate::isFactoryCrate() {
+void FactoryCrate::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((FactoryCrateImplementation*) _impl)->fillAttributeList(msg, object);
+}
+
+void FactoryCrate::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((FactoryCrateImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+}
+
+int FactoryCrate::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((FactoryCrateImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void FactoryCrate::updateToDatabaseAllObjects(bool startTask) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addBooleanParameter(startTask);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryCrateImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
+}
+
+bool FactoryCrate::isFactoryCrate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -74,7 +123,7 @@ void FactoryCrate::setPrototype(TangibleObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -87,11 +136,23 @@ TangibleObject* FactoryCrate::getPrototype() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
 		return ((FactoryCrateImplementation*) _impl)->getPrototype();
+}
+
+bool FactoryCrate::extractObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((FactoryCrateImplementation*) _impl)->extractObject();
 }
 
 /*
@@ -166,22 +227,29 @@ void FactoryCrateImplementation::_serializationHelperMethod() {
 
 FactoryCrateImplementation::FactoryCrateImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/factorycrate/FactoryCrate.idl(61):  		Logger.setLoggingName("FactoryCrate");
+	// server/zone/objects/factorycrate/FactoryCrate.idl(65):  		Logger.setLoggingName("FactoryCrate");
 	Logger::setLoggingName("FactoryCrate");
 }
 
+void FactoryCrateImplementation::updateToDatabaseAllObjects(bool startTask) {
+	// server/zone/objects/factorycrate/FactoryCrate.idl(106):  		prototype.updateToDatabase();
+	prototype->updateToDatabase();
+	// server/zone/objects/factorycrate/FactoryCrate.idl(108):  		super.updateToDatabaseAllObjects(startTask);
+	TangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
+}
+
 bool FactoryCrateImplementation::isFactoryCrate() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(72):  		return true;
+	// server/zone/objects/factorycrate/FactoryCrate.idl(112):  		return true;
 	return true;
 }
 
 void FactoryCrateImplementation::setPrototype(TangibleObject* object) {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(76):  		prototype = object;
+	// server/zone/objects/factorycrate/FactoryCrate.idl(116):  		prototype = object;
 	prototype = object;
 }
 
 TangibleObject* FactoryCrateImplementation::getPrototype() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(80):  		return prototype;
+	// server/zone/objects/factorycrate/FactoryCrate.idl(120):  		return prototype;
 	return prototype;
 }
 
@@ -203,13 +271,22 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertBoolean(isFactoryCrate());
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 9:
-		setPrototype((TangibleObject*) inv->getObjectParameter());
+		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
 	case 10:
+		resp->insertBoolean(isFactoryCrate());
+		break;
+	case 11:
+		setPrototype((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 12:
 		resp->insertLong(getPrototype()->_getObjectID());
+		break;
+	case 13:
+		resp->insertBoolean(extractObject());
 		break;
 	default:
 		return NULL;
@@ -226,6 +303,14 @@ void FactoryCrateAdapter::sendBaselinesTo(SceneObject* player) {
 	((FactoryCrateImplementation*) impl)->sendBaselinesTo(player);
 }
 
+int FactoryCrateAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((FactoryCrateImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void FactoryCrateAdapter::updateToDatabaseAllObjects(bool startTask) {
+	((FactoryCrateImplementation*) impl)->updateToDatabaseAllObjects(startTask);
+}
+
 bool FactoryCrateAdapter::isFactoryCrate() {
 	return ((FactoryCrateImplementation*) impl)->isFactoryCrate();
 }
@@ -236,6 +321,10 @@ void FactoryCrateAdapter::setPrototype(TangibleObject* object) {
 
 TangibleObject* FactoryCrateAdapter::getPrototype() {
 	return ((FactoryCrateImplementation*) impl)->getPrototype();
+}
+
+bool FactoryCrateAdapter::extractObject() {
+	return ((FactoryCrateImplementation*) impl)->extractObject();
 }
 
 /*

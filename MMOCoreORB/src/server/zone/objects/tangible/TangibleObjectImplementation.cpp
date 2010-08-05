@@ -261,8 +261,20 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 
 	useCount = newUseCount;
 
-	if(useCount < 1)
-		error("My use count is zero, please implement destroy");
+	if(useCount < 1) {
+
+		if(parent != NULL) {
+
+			parent->removeObject(_this, true);
+
+		} else {
+
+			broadcastDestroy(_this, true);
+
+		}
+
+		destroyObjectFromDatabase(true);
+	}
 
 	if (!notifyClient)
 		return;

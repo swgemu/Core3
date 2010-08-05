@@ -386,7 +386,19 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 	addSerializableVariable("effectiveness", &effectiveness);
 	addSerializableVariable("status", &status);
 	addSerializableVariable("complexityLevel", &complexityLevel);
+	addSerializableVariable("craftingManager", &craftingManager);
 	addSerializableVariable("enabledTabs", &enabledTabs);
+	addSerializableVariable("currentSchematicList", &currentSchematicList);
+	addSerializableVariable("craftingStation", &craftingStation);
+	addSerializableVariable("state", &state);
+	addSerializableVariable("insertCounter", &insertCounter);
+	addSerializableVariable("manufactureSchematic", &manufactureSchematic);
+	addSerializableVariable("prototype", &prototype);
+	addSerializableVariable("experimentationPointsTotal", &experimentationPointsTotal);
+	addSerializableVariable("experimentationPointsUsed", &experimentationPointsUsed);
+	addSerializableVariable("assemblyResult", &assemblyResult);
+	addSerializableVariable("experimentationResult", &experimentationResult);
+	addSerializableVariable("experimentalFailureRate", &experimentalFailureRate);
 }
 
 CraftingToolImplementation::CraftingToolImplementation() {

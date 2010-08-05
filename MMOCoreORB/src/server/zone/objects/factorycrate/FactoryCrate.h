@@ -35,6 +35,48 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "engine/lua/LuaObject.h"
@@ -60,11 +102,21 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
 	bool isFactoryCrate();
 
 	void setPrototype(TangibleObject* object);
 
 	TangibleObject* getPrototype();
+
+	bool extractObject();
 
 protected:
 	FactoryCrate(DummyConstructorParameter* param);
@@ -103,11 +155,21 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
 	virtual bool isFactoryCrate();
 
 	void setPrototype(TangibleObject* object);
 
 	TangibleObject* getPrototype();
+
+	bool extractObject();
 
 	FactoryCrate* _this;
 
@@ -152,11 +214,17 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void updateToDatabaseAllObjects(bool startTask);
+
 	bool isFactoryCrate();
 
 	void setPrototype(TangibleObject* object);
 
 	TangibleObject* getPrototype();
+
+	bool extractObject();
 
 };
 

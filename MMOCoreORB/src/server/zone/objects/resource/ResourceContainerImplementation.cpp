@@ -75,13 +75,20 @@ void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(rnco6);
 }
 
-void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* player) {
+void ResourceContainerImplementation::setQuantity(int quantity) {
 	Locker _locker(_this);
 
 	stackQuantity = quantity;
 
-	if (player == NULL)
-		return;
+	 if(stackQuantity < 0) {
+
+		if(parent != NULL) {
+			parent->removeObject(_this, true);
+			setParent(NULL);
+		}
+
+		destroyObjectFromDatabase(true);
+	}
 
 	int newStackSize = 0;
 
@@ -92,62 +99,45 @@ void ResourceContainerImplementation::setQuantity(int quantity, SceneObject* pla
 	}
 
 	if (newStackSize > 0) {
-
-		// Add resource to inventory
-		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
 		ResourceContainer* harvestedResource = spawnObject->createResource(newStackSize);
-		harvestedResource->sendTo(player, true);
-		inventory->addObject(harvestedResource, -1, true);
+
+		parent->addObject(harvestedResource, -1, true);
+		parent->broadcastObject(harvestedResource, true);
 		harvestedResource->updateToDatabase();
 	}
 
-	if (stackQuantity > 0) {
+	ResourceContainerObjectDeltaMessage3* rcnod3 =
+			new ResourceContainerObjectDeltaMessage3(_this);
 
-		ResourceContainerObjectDeltaMessage3* rcnod3 =
-				new ResourceContainerObjectDeltaMessage3(_this);
+	rcnod3->setQuantity(stackQuantity);
+	rcnod3->close();
 
-		rcnod3->setQuantity(stackQuantity);
-		rcnod3->close();
-
-		player->sendMessage(rcnod3);
-
-	} else {
-
-		if(getParent() != NULL) {
-			getParent()->removeObject(_this, true);
-			setParent(NULL);
-		}
-
-		destroyObjectFromDatabase(true);
-	}
+	broadcastMessage(rcnod3, true);
 }
 
-void ResourceContainerImplementation::split(PlayerCreature* playerCreature, int newStackSize) {
-	ManagedReference<SceneObject*> inventory =
-			playerCreature->getSlottedObject("inventory");
+void ResourceContainerImplementation::split(int newStackSize) {
 
 	ResourceContainer* newResource = spawnObject->createResource(newStackSize);
 
-	if(newResource == NULL)
+	if(newResource == NULL || newResource->getSpawnObject() == NULL)
 		return;
 
-	newResource->sendTo(playerCreature, true);
-	inventory->addObject(newResource, -1, true);
+	parent->addObject(newResource, -1, true);
+	parent->broadcastObject(newResource, true);
 
-   	newResource->updateToDatabaseAllObjects(true);
-   	updateToDatabaseAllObjects(true);
+	setQuantity(getQuantity() - newStackSize);
 
-	setQuantity(getQuantity() - newStackSize, playerCreature);
+   	newResource->updateToDatabase();
+   	updateToDatabase();
 }
 
-void ResourceContainerImplementation::combine(PlayerCreature* player, ResourceContainer* fromContainer) {
+void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) {
 	Locker _locker(_this);
 
 	ManagedReference<SceneObject*> parent =
 			fromContainer->getParent();
 
-	setQuantity(getQuantity() + fromContainer->getQuantity(), player);
+	setQuantity(getQuantity() + fromContainer->getQuantity());
 	fromContainer->setQuantity(0);
 
 	if(parent != NULL) {

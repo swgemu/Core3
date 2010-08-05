@@ -98,7 +98,7 @@ class ResourceContainer extends TangibleObject {
 	 */
 	public native void sendBaselinesTo(SceneObject player);
 	
-	public native void setQuantity(int quantity, SceneObject player = null);
+	public native void setQuantity(int quantity);
 	
 	public boolean isResourceContainer() {
 		return true;
@@ -128,7 +128,7 @@ class ResourceContainer extends TangibleObject {
 		return spawnObject;
 	}
 	
-	public native void split(PlayerCreature player, int newStackSize);
+	public native void split(int newStackSize);
 
-	public native void combine(PlayerCreature player, ResourceContainer fromContainer);
+	public native void combine(ResourceContainer fromContainer);
 }

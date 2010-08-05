@@ -90,6 +90,8 @@ class ManufactureSchematic : public IntangibleObject {
 public:
 	ManufactureSchematic();
 
+	void initializeTransientMembers();
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void sendTo(SceneObject* player, bool doClose);
@@ -99,6 +101,8 @@ public:
 	void synchronizedUIListen(SceneObject* player, int value);
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	void updateToDatabaseAllObjects(bool startTask);
 
 	bool isManufactureSchematic();
 
@@ -221,6 +225,8 @@ public:
 
 	ManufactureSchematicImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	virtual void sendTo(SceneObject* player, bool doClose);
@@ -230,6 +236,8 @@ public:
 	virtual void synchronizedUIListen(SceneObject* player, int value);
 
 	virtual void synchronizedUIStopListen(SceneObject* player, int value);
+
+	void updateToDatabaseAllObjects(bool startTask);
 
 	bool isManufactureSchematic();
 
@@ -330,6 +338,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
 	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -337,6 +347,8 @@ public:
 	void synchronizedUIListen(SceneObject* player, int value);
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
+
+	void updateToDatabaseAllObjects(bool startTask);
 
 	bool isManufactureSchematic();
 

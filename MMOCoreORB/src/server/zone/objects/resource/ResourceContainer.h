@@ -56,7 +56,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(int quantity, SceneObject* player = NULL);
+	void setQuantity(int quantity);
 
 	bool isResourceContainer();
 
@@ -72,9 +72,9 @@ public:
 
 	ResourceSpawn* getSpawnObject();
 
-	void split(PlayerCreature* player, int newStackSize);
+	void split(int newStackSize);
 
-	void combine(PlayerCreature* player, ResourceContainer* fromContainer);
+	void combine(ResourceContainer* fromContainer);
 
 protected:
 	ResourceContainer(DummyConstructorParameter* param);
@@ -120,7 +120,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(int quantity, SceneObject* player = NULL);
+	void setQuantity(int quantity);
 
 	bool isResourceContainer();
 
@@ -136,9 +136,9 @@ public:
 
 	ResourceSpawn* getSpawnObject();
 
-	void split(PlayerCreature* player, int newStackSize);
+	void split(int newStackSize);
 
-	void combine(PlayerCreature* player, ResourceContainer* fromContainer);
+	void combine(ResourceContainer* fromContainer);
 
 	ResourceContainer* _this;
 
@@ -185,7 +185,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(int quantity, SceneObject* player);
+	void setQuantity(int quantity);
 
 	bool isResourceContainer();
 
@@ -201,9 +201,9 @@ public:
 
 	ResourceSpawn* getSpawnObject();
 
-	void split(PlayerCreature* player, int newStackSize);
+	void split(int newStackSize);
 
-	void combine(PlayerCreature* player, ResourceContainer* fromContainer);
+	void combine(ResourceContainer* fromContainer);
 
 };
 

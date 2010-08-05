@@ -280,6 +280,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ManufactureSchematic>(SceneObject::MANUFACTURINGSCHEMATIC);
 	objectFactory.registerObject<Component>(SceneObject::COMPONENT);
 
+	objectFactory.registerObject<FactoryCrate>(SceneObject::FACTORYCRATE);
 }
 
 

@@ -171,7 +171,12 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 
 	insertCounter = 1;
 	experimentationPointsTotal = 0;
+	experimentationPointsUsed = 0;
 	assemblyResult = 8;
+	experimentationResult = 8;
+	experimentalFailureRate = 0;
+	manufactureSchematic = NULL;
+	prototype = NULL;
 
 	PlayerObject* playerObject = player->getPlayerObject();
 	int complexity = complexityLevel;  ///
@@ -1273,8 +1278,8 @@ void CraftingToolImplementation::createManfSchematic(PlayerCreature* player,
 		manufactureSchematic->updateToDatabase();
 		prototype->updateToDatabase();
 
-		updateToDatabaseAllObjects(true);
-		datapad->updateToDatabaseAllObjects(true);
+		updateToDatabase();
+		datapad->updateToDatabase();
 
 	} else {
 
@@ -1337,13 +1342,13 @@ void CraftingToolImplementation::depositObject(PlayerCreature* player, bool prac
 
 		player->sendSystemMessage("system_msg", "prototype_transferred");
 		removeObject(prototype);
-		updateToDatabaseAllObjects(true);
+		updateToDatabase();
 
 		inventory->addObject(prototype, -1, true);
 		prototype->setPersistent(2);
 
 		prototype->updateToDatabase();
-		inventory->updateToDatabaseAllObjects(true);
+		inventory->updateToDatabase();
 
 		status = "@crafting:tool_status_ready";
 
