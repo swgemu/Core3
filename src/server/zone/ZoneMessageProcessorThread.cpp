@@ -60,6 +60,8 @@ void ZoneMessageProcessorThread::processMessage(Message* message) {
 		error(e.getMessage());
 		e.printStackTrace();
 	}
+
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
 }
 
 bool ZoneMessageProcessorThread::handleError(Message* msg, Exception& e) {

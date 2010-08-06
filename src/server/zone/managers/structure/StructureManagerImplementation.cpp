@@ -741,6 +741,8 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	StringBuffer msg;
 	msg << "StructureManagerImplementation::loadPlayerStructures()";
 	info(msg.toString());
+	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+	//dbManager->loadDatabases();
 
 	ObjectDatabase* playerStructuresDatabase = ObjectDatabaseManager::instance()->loadDatabase("playerstructures", true);
 

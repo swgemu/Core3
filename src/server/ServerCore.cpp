@@ -97,7 +97,7 @@ void ServerCore::init() {
 			forumDatabase = new ForumsDatabase(configManager);
 
 		String& orbaddr = configManager->getORBNamingDirectoryAddress();
-		orb = DistributedObjectBroker::initialize(orbaddr);
+		orb = DistributedObjectBroker::initialize(orbaddr, 44434);
 
 		orb->setCustomObjectManager(ObjectManager::instance());
 
@@ -134,6 +134,9 @@ void ServerCore::run() {
 
 	if (zoneServer != NULL) {
 		int zoneAllowedConnections = configManager->getZoneAllowedConnections();
+
+		ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+		dbManager->loadDatabases();
 
 		zoneServer->start(44463, zoneAllowedConnections);
 	}
@@ -204,6 +207,8 @@ void ServerCore::shutdown() {
 		delete database;
 		database = NULL;
 	}
+
+	ObjectManager::instance()->savePersistentObjects();
 
 	ObjectManager::finalize();
 

@@ -34,6 +34,7 @@ void BazaarManagerImplementation::initialize() {
 	auctionMap = new BazaarAuctionsMap();
 
 	ObjectDatabase* auctionDatabase = ObjectDatabaseManager::instance()->loadDatabase("auctions", true);
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 	ObjectDatabaseIterator iterator(auctionDatabase);
 
@@ -41,6 +42,7 @@ void BazaarManagerImplementation::initialize() {
 
 	while (iterator.getNextKey(objectID)) {
 		AuctionItem* auctionItem = (AuctionItem*) DistributedObjectBroker::instance()->lookUp(objectID);
+		ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		auctionMap->addAuction(auctionItem->getAuctionedItemObjectID(), auctionItem);
 	}
@@ -751,6 +753,9 @@ void BazaarManagerImplementation::getItemAttributes(PlayerCreature* player, uint
 	_locker.release();
 
 	ManagedReference<SceneObject*> object = zoneServer->getObject(objectid);
+
+	if (object == NULL)
+		return;
 
 	if (!object->isTangibleObject()) {
 		error("non tangible object");

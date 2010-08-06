@@ -75,7 +75,7 @@
 #include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
 #include "server/zone/objects/tangible/fishing/FishObject.h"
 #include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
- 
+
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 
@@ -101,6 +101,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	server = NULL;
 
 	databaseManager = ObjectDatabaseManager::instance();
+	databaseManager->loadDatabases();
 	templateManager = TemplateManager::instance();
 	templateManager->loadLuaTemplates();
 
@@ -113,6 +114,8 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	databaseManager->loadDatabase("missionobjectives", true);
 	databaseManager->loadDatabase("missionobservers", true);
 	databaseManager->loadDatabase("cityregions", true);
+
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 	loadLastUsedObjectID();
 
@@ -183,6 +186,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TravelBuildingObject>(SceneObject::TRAVELBUILDING);
 	objectFactory.registerObject<RecreationBuildingObject>(SceneObject::RECREATIONBUILDING);
 	objectFactory.registerObject<TravelBuildingObject>(SceneObject::STARPORTBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::FACTIONPERKBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObject::HOTELBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObject::THEATERBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObject::COMBATBUILDING);
@@ -354,6 +358,9 @@ void ObjectManager::loadStaticObjects() {
 }
 
 int ObjectManager::updatePersistentObject(DistributedObject* object) {
+	if (!((ManagedObject*)object)->isPersistent())
+		return 1;
+
 	try {
 		ObjectOutputStream objectData(500);
 

@@ -74,6 +74,8 @@ class BazaarManager extends ManagedObject implements Logger {
 		zoneServer = server;
 		
 		Logger.setLoggingName("BazaarManager");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
 	}
 	
 	public native void initialize();

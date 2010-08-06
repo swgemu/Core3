@@ -673,6 +673,8 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		}
 	}
 
+	zoneLocker.release();
+
 	notifySelfPositionUpdate();
 }
 
@@ -902,7 +904,8 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 
 	notifyObjectInserted(object);
 
-	updateToDatabase();
+	updateToDatabaseWithoutChildren();
+	object->updateToDatabaseWithoutChildren();
 
 	return true;
 }
@@ -953,7 +956,7 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 	notifyObjectRemoved(object);
 
-	updateToDatabase();
+	updateToDatabaseWithoutChildren();
 	object->updateToDatabaseWithoutChildren();
 
 	return true;
