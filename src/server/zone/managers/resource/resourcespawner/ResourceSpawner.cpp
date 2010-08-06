@@ -145,13 +145,15 @@ void ResourceSpawner::loadResourceSpawns() {
 
 	ObjectDatabase* resourceDatabase = ObjectDatabaseManager::instance()->loadDatabase("resourcespawns", true);
 
-	ObjectDatabaseIterator iterator(resourceDatabase);
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
+	ObjectDatabaseIterator iterator(resourceDatabase, true);
 
 	uint64 objectID = 0;
 
 	while (iterator.getNextKey(objectID)) {
 
 		ManagedReference<ResourceSpawn* > resourceSpawn = dynamic_cast<ResourceSpawn*>(DistributedObjectBroker::instance()->lookUp(objectID));
+		//ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		if (resourceSpawn == NULL || !resourceSpawn->inShift()) {
 			if(resourceSpawn == NULL)
@@ -182,6 +184,8 @@ void ResourceSpawner::loadResourceSpawns() {
 			}
 		}
 	}
+
+	//ObjectDatabaseManager::instance()->commitLocalTransaction();
 
     String built = "Resource Map Built with " + String::valueOf(resourceMap->size()) + " resources";
 	info(built);

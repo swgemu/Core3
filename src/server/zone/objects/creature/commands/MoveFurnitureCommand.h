@@ -70,26 +70,26 @@ public:
 
 		//TODO: Return a usage message?
 		if (!tokenizer.hasMoreTokens())
-			return false;
+			return GENERALERROR;
 
 		tokenizer.getStringToken(dir);
 
 		if (dir != "up" && dir != "down" && dir != "forward" && dir != "back")
-			return false;
+			return GENERALERROR;
 
 		if (!tokenizer.hasMoreTokens())
-			return false;
+			return GENERALERROR;
 
 		float dist = tokenizer.getFloatToken();
 
 		if (dist < 1 || dist > 100)
-			return false;
+			return GENERALERROR;
 
 		ZoneServer* zoneServer = creature->getZoneServer();
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
 		if (obj == NULL)
-			return false;
+			return GENERALERROR;
 
 		int degrees = (int) creature->getDirectionAngle();
 

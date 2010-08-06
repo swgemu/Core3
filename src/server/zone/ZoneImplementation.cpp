@@ -133,6 +133,8 @@ void ZoneImplementation::startManagers() {
 	creatureManager->initialize();
 	planetManager->loadShuttles();
 
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
+
 	/*creatureManager->init();
 
 	planetManager = new PlanetManager(_this, processor);
