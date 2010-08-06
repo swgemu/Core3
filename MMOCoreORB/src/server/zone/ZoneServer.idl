@@ -210,20 +210,11 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 	public native int getConnectionCount();
 	
-	public synchronized void increaseOnlinePlayers() {
-		if (++currentPlayers > maximumPlayers)
-			maximumPlayers = currentPlayers;
-
-		++totalPlayers;
-	}
+	public native void increaseOnlinePlayers();
 	
-	public synchronized void decreaseOnlinePlayers() {
-		currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
-	}
+	public native void decreaseOnlinePlayers();
 
-	public synchronized void increaseTotalDeletedPlayers() {
-		++totalDeletedPlayers;
-	}
+	public native void increaseTotalDeletedPlayers();
 
 	public int getGalaxyID() {
 		return galaxyID;

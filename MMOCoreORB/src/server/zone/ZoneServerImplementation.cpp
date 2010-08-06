@@ -359,26 +359,11 @@ void ZoneServerImplementation::init() {
 	startZones();
 
 	startManagers();
-/*
-	userManager = NULL;
-	itemManager = NULL;
-	itemConfigManager = NULL;
-	playerManager = NULL;
-	guildManager = NULL;
-	resourceManager = NULL;
-	lootTableManager = NULL;
-	bazaarManager = NULL;
-	bankManager = NULL;
-	chatManager = NULL;
-
-	startManagers();
-
-	loadMessageoftheDay();*/
-
-	//startTimestamp = time(NULL);
 
 	//serverState = LOCKED;
 	serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
+
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 	return;
 }
@@ -565,6 +550,8 @@ void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* mess
 	} catch (Exception& e) {
 		error(e.getMessage());
 	}
+
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
 }
 
 bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) {
@@ -875,4 +862,23 @@ void ZoneServerImplementation::printEvents() {
 	//scheduler->printEvents();
 
 	unlock();
+}
+
+void ZoneServerImplementation::increaseOnlinePlayers() {
+	Atomic::incrementInt((uint32*)&currentPlayers);
+
+	if (currentPlayers > maximumPlayers)
+		maximumPlayers = currentPlayers;
+
+	Atomic::incrementInt((uint32*)&totalPlayers);
+}
+
+void ZoneServerImplementation::decreaseOnlinePlayers() {
+	Atomic::decrementInt((uint32*)&currentPlayers);
+//currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
+}
+
+void ZoneServerImplementation::increaseTotalDeletedPlayers() {
+	Atomic::incrementInt((uint32*)&totalDeletedPlayers);
+	//++totalDeletedPlayers;
 }

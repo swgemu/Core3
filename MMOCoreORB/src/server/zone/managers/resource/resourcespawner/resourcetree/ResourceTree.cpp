@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "ResourceTree.h"
 #include "ResourceTreeEntry.h"
 #include "ResourceAttribute.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 ResourceTree::ResourceTree() {
 
@@ -122,7 +123,16 @@ bool ResourceTree::buildTreeFromDatabase() {
 				entry->setJTL(res->getInt(50));
 				entry->setSurveyToolType(res->getInt(51));
 				String containerFile = res->getString(52);
-				entry->setContainerCRC(containerFile.hashCode());
+
+				uint32 hashCode = containerFile.hashCode();
+				entry->setContainerCRC(hashCode);
+
+				try {
+					if (hashCode != 0)
+						TemplateManager::instance()->getTemplateFile(hashCode);
+				} catch (Exception& e) {
+					System::out << e.getMessage() << " for file " << containerFile << endl;
+				}
 
 				/// Add entry to the tree
 				baseNode->add(entry);
