@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef MOVEFURNITURECOMMAND_H_
 #define MOVEFURNITURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 class MoveFurnitureCommand : public QueueCommand {
 public:
@@ -62,6 +63,9 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
 
 		StringTokenizer tokenizer(arguments.toString());
 		tokenizer.setDelimeter(" ");
@@ -89,6 +93,27 @@ public:
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
 		if (obj == NULL)
+			return GENERALERROR;
+
+		if (!obj->isTangibleObject())
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> parent = obj->getParent();
+
+		if (parent == NULL)
+			return GENERALERROR;
+
+		if (!parent->isCellObject())
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> building = parent->getParent();
+
+		if (building == NULL || !building->isBuildingObject())
+			return GENERALERROR;
+
+		BuildingObject* buio = (BuildingObject*) building.get();
+
+		if (!buio->isOnAdminList((PlayerCreature*)creature))
 			return GENERALERROR;
 
 		int degrees = (int) creature->getDirectionAngle();
