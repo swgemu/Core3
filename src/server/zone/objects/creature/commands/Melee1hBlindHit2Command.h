@@ -45,14 +45,30 @@ which carries forward this exception.
 #ifndef MELEE1HBLINDHIT2COMMAND_H_
 #define MELEE1HBLINDHIT2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class Melee1hBlindHit2Command : public QueueCommand {
+class Melee1hBlindHit2Command : public CombatQueueCommand {
 public:
 
 	Melee1hBlindHit2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.45;
+		speedMultiplier = 1.45;
+		areaRange = 7;
+		areaAction = true;
+
+		blindStateChance = 40;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("combo_2b_medium").hashCode();
+
+		combatSpam = "blindingslash";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +79,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isOneHandMeleeWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
