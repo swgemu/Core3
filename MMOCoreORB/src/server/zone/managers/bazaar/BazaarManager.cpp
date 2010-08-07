@@ -379,6 +379,10 @@ BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) {
 	zoneServer = server;
 	// server/zone/managers/bazaar/BazaarManager.idl(76):  		Logger.setLoggingName("BazaarManager");
 	Logger::setLoggingName("BazaarManager");
+	// server/zone/managers/bazaar/BazaarManager.idl(77):  		Logger.setLogging(false);
+	Logger::setLogging(false);
+	// server/zone/managers/bazaar/BazaarManager.idl(78):  		Logger.setGlobalLogging(true);
+	Logger::setGlobalLogging(true);
 }
 
 /*

@@ -212,6 +212,8 @@ public:
 
 	void deletePersistentMessage(PlayerCreature* player, unsigned int mailID);
 
+	void broadcastGalaxy(PlayerCreature* player, const String& message);
+
 	void setPlayerManager(PlayerManager* manager);
 
 	ChatRoom* getChatRoom(unsigned int id);
@@ -316,6 +318,8 @@ public:
 
 	void deletePersistentMessage(PlayerCreature* player, unsigned int mailID);
 
+	void broadcastGalaxy(PlayerCreature* player, const String& message);
+
 	void setPlayerManager(PlayerManager* manager);
 
 	ChatRoom* getChatRoom(unsigned int id);
@@ -413,6 +417,8 @@ public:
 
 	void deletePersistentMessage(PlayerCreature* player, unsigned int mailID);
 
+	void broadcastGalaxy(PlayerCreature* player, const String& message);
+
 	void setPlayerManager(PlayerManager* manager);
 
 	ChatRoom* getChatRoom(unsigned int id);
@@ -439,6 +445,7 @@ protected:
 	UnicodeString _param1_sendMail__String_UnicodeString_UnicodeString_String_;
 	UnicodeString _param2_sendMail__String_UnicodeString_UnicodeString_String_;
 	String _param3_sendMail__String_UnicodeString_UnicodeString_String_;
+	String _param1_broadcastGalaxy__PlayerCreature_String_;
 	String _param0_getGameRoom__String_;
 };
 

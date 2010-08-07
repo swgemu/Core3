@@ -27,7 +27,7 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 void VehicleObjectImplementation::insertToZone(Zone* zone) {
 	SceneObjectImplementation::insertToZone(zone);
 
-	inflictDamage(_this, 0, System::random(50), true);
+	//inflictDamage(_this, 0, System::random(50), true);
 }
 
 bool VehicleObjectImplementation::checkInRangeGarage() {

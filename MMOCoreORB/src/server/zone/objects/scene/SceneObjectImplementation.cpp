@@ -904,8 +904,8 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 
 	notifyObjectInserted(object);
 
-	updateToDatabaseWithoutChildren();
-	object->updateToDatabaseWithoutChildren();
+	updateToDatabase();
+	//object->updateToDatabase();
 
 	return true;
 }
@@ -956,8 +956,8 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 	notifyObjectRemoved(object);
 
-	updateToDatabaseWithoutChildren();
-	object->updateToDatabaseWithoutChildren();
+	updateToDatabase();
+	object->updateToDatabase();
 
 	return true;
 }

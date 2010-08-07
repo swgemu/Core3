@@ -34,11 +34,11 @@ DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
 }
 
 DraftSchematicObjectTemplate::~DraftSchematicObjectTemplate() {
-	while(draftSlots->size() > 0)
+	/*while(draftSlots->size() > 0)
 		delete draftSlots->remove(0);
 
 	while(resourceWeights->size() > 0)
-		delete resourceWeights->remove(0);
+		delete resourceWeights->remove(0);*/
 
 	delete customizationOptions;
 	delete customizationDefaultValues;

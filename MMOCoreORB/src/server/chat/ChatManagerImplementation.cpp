@@ -338,8 +338,10 @@ void ChatManagerImplementation::broadcastGalaxy(PlayerCreature* player, const St
 	StringBuffer fullMessage;
 	fullMessage << "[" << firstName << "] " << message;
 
-	Locker locker(playerMap);
+	Locker locker(_this);
 	//playerMap->lock();
+
+	playerMap->resetIterator(false);
 
 	while (playerMap->hasNext(false)) {
 		ManagedReference<PlayerCreature*> playerObject = playerMap->getNextValue(false);
@@ -587,7 +589,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 		player->sendMessage(mmsg);
 	}
 
-	player->updateToDatabaseWithoutChildren();
+	player->updateToDatabase();
 }
 
 void ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& header, ParameterizedStringId& body, const String& name) {
@@ -639,7 +641,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 		player->sendMessage(mmsg);
 	}
 
-	player->updateToDatabaseWithoutChildren();
+	player->updateToDatabase();
 }
 
 void ChatManagerImplementation::loadMail(PlayerCreature* player) {
