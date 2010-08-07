@@ -45,14 +45,30 @@ which carries forward this exception.
 #ifndef MULTITARGETPISTOLSHOTCOMMAND_H_
 #define MULTITARGETPISTOLSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class MultiTargetPistolShotCommand : public QueueCommand {
+class MultiTargetPistolShotCommand : public CombatQueueCommand {
 public:
 
 	MultiTargetPistolShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 4.2;
+		speedMultiplier = 3.5;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+		coneAngle = 30;
+		coneAction = true;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("fire_5_special_single_light").hashCode();
+
+		combatSpam = "pistolmultishot";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +79,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

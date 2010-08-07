@@ -45,14 +45,26 @@ which carries forward this exception.
 #ifndef DISARMINGSHOT2COMMAND_H_
 #define DISARMINGSHOT2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class DisarmingShot2Command : public QueueCommand {
+class DisarmingShot2Command : public CombatQueueCommand {
 public:
 
 	DisarmingShot2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.7;
+		speedMultiplier = 2.5;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		animationCRC = String("fire_3_single_light_face").hashCode();
+
+		combatSpam = "disarmblast";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +75,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
