@@ -45,14 +45,36 @@ which carries forward this exception.
 #ifndef ACTIONSHOT2COMMAND_H_
 #define ACTIONSHOT2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class ActionShot2Command : public QueueCommand {
+class ActionShot2Command : public CombatQueueCommand {
 public:
 
 	ActionShot2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.0;
+		speedMultiplier = 1.7;
+		healthCostMultiplier = 2.1;
+		actionCostMultiplier = 1.4;
+		mindCostMultiplier = 0.6;
+
+		coneAngle = 30;
+		coneAction = true;
+
+		poolsToDamage = CombatManager::ACTION;
+
+		animationCRC = String("fire_area_medium").hashCode();
+
+		combatSpam = "legshot";
+
+		dotType = CreatureState::BLEEDING;
+		dotPool = CombatManager::ACTION;
+		dotDamageOfHit = true;
+		dotDuration = 60;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +85,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

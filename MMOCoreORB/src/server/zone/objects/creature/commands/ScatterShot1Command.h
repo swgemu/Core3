@@ -45,14 +45,28 @@ which carries forward this exception.
 #ifndef SCATTERSHOT1COMMAND_H_
 #define SCATTERSHOT1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class ScatterShot1Command : public QueueCommand {
+class ScatterShot1Command : public CombatQueueCommand {
 public:
 
 	ScatterShot1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 3.3;
+		speedMultiplier = 2;
+		healthCostMultiplier = 1.4;
+		actionCostMultiplier = 1.1;
+		mindCostMultiplier = 0.5;
+
+		animationCRC = String("fire_5_single_medium").hashCode();
+
+		combatSpam = "scattershot";
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +77,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

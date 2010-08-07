@@ -45,14 +45,30 @@ which carries forward this exception.
 #ifndef WILDSHOT1COMMAND_H_
 #define WILDSHOT1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class WildShot1Command : public QueueCommand {
+class WildShot1Command : public CombatQueueCommand {
 public:
 
 	WildShot1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 3.5;
+		speedMultiplier = 2;
+		healthCostMultiplier = 1.4;
+		actionCostMultiplier = 1.1;
+		mindCostMultiplier = 0.5;
+
+		animationCRC = String("fire_7_single_medium").hashCode();
+
+		combatSpam = "wildshot";
+
+		stunStateChance = 1;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +79,14 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
+
 	}
 
 };

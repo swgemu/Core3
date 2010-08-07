@@ -69,7 +69,6 @@ public:
 		combatSpam = "suppressionfire";
 
 		range = -1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
