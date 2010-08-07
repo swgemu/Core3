@@ -67,7 +67,7 @@ public:
 	}
 
 	int compareTo(CharacterBuilderMenuNode* obj) {
-		return (displayName.compareTo(obj->getDisplayName()) * -1);
+		return displayName.compareTo(obj->getDisplayName());
 	}
 
 	inline void setTemplatePath(const String& tplPath) {

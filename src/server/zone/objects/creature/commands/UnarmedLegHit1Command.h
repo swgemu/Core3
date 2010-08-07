@@ -45,14 +45,29 @@ which carries forward this exception.
 #ifndef UNARMEDLEGHIT1COMMAND_H_
 #define UNARMEDLEGHIT1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class UnarmedLegHit1Command : public QueueCommand {
+class UnarmedLegHit1Command : public CombatQueueCommand {
 public:
 
 	UnarmedLegHit1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.5;
+		speedMultiplier = 2.0;
+
+		healthCostMultiplier = 1.75;
+		actionCostMultiplier = 1.75;
+		mindCostMultiplier = 1.75;
+
+		poolsToDamage = CombatManager::ACTION;
+
+		animationCRC = String("attack_special_foot_stomp_medium").hashCode();
+
+		combatSpam = "melee";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +78,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isUnarmedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
