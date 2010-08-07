@@ -146,7 +146,7 @@ int FactoryObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
  */
 void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 
-	SuiListBox* schematics = new SuiListBox(player, SuiWindowType::FACTORY_SCHEMATIC);
+	ManagedReference<SuiListBox*> schematics = new SuiListBox(player, SuiWindowType::FACTORY_SCHEMATIC);
 	schematics->setPromptTitle("STAR WARS GALAXIES");//found a SS with this as the title so....
 
 	if(getContainerObjectsSize() == 0)
@@ -173,9 +173,14 @@ void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 
-		ManagedReference<ManufactureSchematic* > manSchem = (ManufactureSchematic*) datapad->getContainerObject(i);
+		ManagedReference<SceneObject* > datapadObject = datapad->getContainerObject(i);
 
-		if(manSchem != NULL && manSchem->isManufactureSchematic() && manSchem->getDraftSchematic() != NULL){
+		if (datapadObject != NULL && datapadObject->isManufactureSchematic()) {
+
+			ManagedReference<ManufactureSchematic* > manSchem = (ManufactureSchematic*) datapadObject.get();
+
+			 if (manSchem->getDraftSchematic() == NULL)
+				 continue;
 
 			uint32 craftingTabId = manSchem->getDraftSchematic()->getToolTab();
 
@@ -223,7 +228,7 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* playe
 	if(getContainerObjectsSize() == 0)
 		return;
 
-	SuiListBox* ingredientList = new SuiListBox(player, SuiWindowType::FACTORY_INGREDIENTS);
+	ManagedReference<SuiListBox*> ingredientList = new SuiListBox(player, SuiWindowType::FACTORY_INGREDIENTS);
 	ingredientList->setPromptTitle("STAR WARS GALAXIES");//found a SS with this as the title so....
 
 	ingredientList->setPromptText("Ingredients required to manufacture an item at this station.");
@@ -544,7 +549,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 		return NULL;
 	}
 
-	TangibleObject* protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
+	ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
 
 	if (protoclone == NULL) {
 		stopFactory("manf_error", "", "", -1);

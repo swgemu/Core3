@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef MEDITATECOMMAND_H_
 #define MEDITATECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/events/MeditateTask.h"
 
 class MeditateCommand : public QueueCommand {
 public:
@@ -63,7 +65,33 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+					return GENERALERROR;
+
+		// Meditate
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		Reference<Task*> task = player->getPendingTask("meditate");
+
+		if (task != NULL) {
+			player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
+			return GENERALERROR;
+		}
+
+		player->sendSystemMessage("teraskasi", "med_begin");
+		player->setMeditateState();
+
+		// Meditate Task
+		Reference<MeditateTask*> meditateTask = new MeditateTask(player);
+		meditateTask->schedule(5000); // healing Time?...
+		player->addPendingTask("meditate", meditateTask);
+
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+		player->registerObserver(ObserverEventType::POSTURECHANGED, playerManager);
+
+
 		return SUCCESS;
+
 	}
 
 };
