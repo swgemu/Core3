@@ -843,6 +843,22 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
+	ManagedReference<ActiveArea*> area = player->getActiveArea();
+
+
+	if (area != NULL) {
+		if (area->isRegion()) {
+
+			if (area->isStaticObject()) {
+				player->sendSystemMessage("You cant place a structure here");
+				return 1;
+			}
+		} else {
+			player->sendSystemMessage("You cant place a structure here");
+			return 1;
+		}
+	}
+
 	if (!ssot->isAllowedZone(zone->getZoneID())) {
 		//Message about wrong planet.
 		player->error("invalid planet");
