@@ -52,6 +52,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
+import system.lang.System;
 include server.zone.managers.radial.RadialOptions;
 
 
@@ -64,26 +65,7 @@ class VehicleControlDevice extends ControlDevice {
 	
 	public native void storeObject(PlayerCreature player);
 	
-	public void generateObject(PlayerCreature player) {
-		if (player.getParent() != null)
-			return;
-		
-		if (super.controlledObject.isInQuadTree())
-			return;
-		
-		if (player.isInCombat())
-			return;
-		
-		ZoneServer zoneServer = getZoneServer();
-
-		super.controlledObject.initializePosition(player.getPositionX(), player.getPositionZ(), player.getPositionY());
-		super.controlledObject.setCreatureLink(player);
-		super.controlledObject.setControlDevice(this);
-
-		super.controlledObject.insertToZone(player.getZone());
-		
-		super.updateStatus(1);
-	}
+	public native void generateObject(PlayerCreature player);
 	
 	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
 		Logger.info("selected call", true);

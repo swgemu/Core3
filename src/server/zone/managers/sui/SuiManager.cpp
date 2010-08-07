@@ -541,14 +541,14 @@ void SuiManager::handleManageMaintenance(uint32 boxID, PlayerCreature* player,
 				<< "Maintenance is now at " << inso->getSurplusMaintenance() << " credits.";*/
 
 		player->sendSystemMessage(stringId);
-		installation->updateToDatabaseWithoutChildren();
+		installation->updateToDatabase();
 
 		installation->unlock();
 	} catch (...) {
 		installation->unlock();
 	}
 
-	player->updateToDatabaseWithoutChildren();
+	player->updateToDatabase();
 }
 
 

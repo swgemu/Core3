@@ -97,6 +97,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/intangible/ControlDevice.h"
 
+#include "system/lang/System.h"
+
 namespace server {
 namespace zone {
 namespace objects {

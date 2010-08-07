@@ -551,6 +551,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 
 	 /**
 	  * Updates only this object to database without updating children
+	  * WARNING use only when necessary
 	  */
 	 public native void updateToDatabaseWithoutChildren();
 
