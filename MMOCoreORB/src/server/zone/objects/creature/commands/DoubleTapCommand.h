@@ -45,14 +45,28 @@ which carries forward this exception.
 #ifndef DOUBLETAPCOMMAND_H_
 #define DOUBLETAPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class DoubleTapCommand : public QueueCommand {
+class DoubleTapCommand : public CombatQueueCommand {
 public:
 
 	DoubleTapCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.8;
+		speedMultiplier = 2.1;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		poolsToDamage = CombatManager::ACTION | CombatManager::HEALTH;
+
+		animationCRC = String("fire_7_single_light_face").hashCode();
+
+		combatSpam = "doubletap";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +77,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

@@ -45,14 +45,28 @@ which carries forward this exception.
 #ifndef STOPPINGSHOTCOMMAND_H_
 #define STOPPINGSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class StoppingShotCommand : public QueueCommand {
+class StoppingShotCommand : public CombatQueueCommand {
 public:
 
 	StoppingShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 5;
+		speedMultiplier = 4;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("fire_1_special_single_light").hashCode();
+
+		combatSpam = "stoppingshot";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +77,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

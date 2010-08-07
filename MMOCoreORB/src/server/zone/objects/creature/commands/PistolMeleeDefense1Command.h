@@ -45,14 +45,30 @@ which carries forward this exception.
 #ifndef PISTOLMELEEDEFENSE1COMMAND_H_
 #define PISTOLMELEEDEFENSE1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class PistolMeleeDefense1Command : public QueueCommand {
+class PistolMeleeDefense1Command : public CombatQueueCommand {
 public:
 
 	PistolMeleeDefense1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.9;
+		speedMultiplier = 2.3;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		knockdownStateChance = 10;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("ranged_melee_light").hashCode();
+
+		combatSpam = "pistolwhip";
+
+		range = 5;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +79,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
