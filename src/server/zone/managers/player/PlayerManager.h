@@ -101,6 +101,20 @@ class ArmorObject;
 
 using namespace server::zone::objects::tangible::wearables;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class Observable;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/managers/player/PlayerMap.h"
@@ -119,12 +133,14 @@ using namespace server::zone::objects::tangible::wearables;
 
 #include "engine/core/ManagedObject.h"
 
+#include "server/zone/objects/scene/Observer.h"
+
 namespace server {
 namespace zone {
 namespace managers {
 namespace player {
 
-class PlayerManager : public ManagedObject {
+class PlayerManager : public Observer {
 public:
 	PlayerManager(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl);
 
@@ -133,6 +149,8 @@ public:
 	bool createPlayer(MessageCallback* callback);
 
 	bool checkPlayerName(MessageCallback* callback);
+
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
@@ -214,7 +232,7 @@ namespace zone {
 namespace managers {
 namespace player {
 
-class PlayerManagerImplementation : public ManagedObjectImplementation, public Logger {
+class PlayerManagerImplementation : public ObserverImplementation, public Logger {
 	ZoneProcessServerImplementation* processor;
 
 	ManagedReference<ZoneServer* > server;
@@ -243,6 +261,8 @@ public:
 	bool createPlayer(MessageCallback* callback);
 
 	bool checkPlayerName(MessageCallback* callback);
+
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
@@ -335,7 +355,7 @@ protected:
 	friend class PlayerManager;
 };
 
-class PlayerManagerAdapter : public ManagedObjectAdapter {
+class PlayerManagerAdapter : public ObserverAdapter {
 public:
 	PlayerManagerAdapter(PlayerManagerImplementation* impl);
 
@@ -344,6 +364,8 @@ public:
 	void loadNameMap();
 
 	void finalize();
+
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 

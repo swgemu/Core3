@@ -220,6 +220,7 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	stateBitmask = 0;
 	posture = CreaturePosture::UPRIGHT;
 	shockWounds = 0;
+	damageMap.removeAll();
 
 	task->schedule(respawnTimer * 1000);
 }

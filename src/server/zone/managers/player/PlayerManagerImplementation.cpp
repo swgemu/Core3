@@ -30,7 +30,10 @@
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
+
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
+#include "server/zone/objects/player/events/MeditateTask.h"
+
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/cell/CellObject.h"
@@ -49,7 +52,7 @@
 #include "server/zone/Zone.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) :
-	ManagedObjectImplementation(), Logger("PlayerManager") {
+	Logger("PlayerManager") {
 	server = zoneServer;
 	processor = impl;
 
@@ -1439,4 +1442,22 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(PlayerCreature* playe
 	} catch (...) {
 		System::out << "Unreported exception caught in PlayerManagerImplementation::handleVerifyTradeMessage(Player* player)\n";
 	}
+}
+int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	if (eventType == ObserverEventType::POSTURECHANGED) {
+		CreatureObject* creature = (CreatureObject*) observable;
+
+		// Check POSTERCHANGE on Meditate...
+		Reference<MeditateTask*> meditateTask = (MeditateTask*) creature->getPendingTask("meditate");
+		if (meditateTask != NULL) {
+			creature->removePendingTask("meditate");
+			creature->sendSystemMessage("teraskasi", "med_end");
+			creature->clearState(CreatureState::ALERT);
+
+			if (meditateTask->isScheduled())
+				meditateTask->cancel();
+		}
+	}
+
+	return 1;
 }
