@@ -45,14 +45,30 @@ which carries forward this exception.
 #ifndef SUPPRESSIONFIRE2COMMAND_H_
 #define SUPPRESSIONFIRE2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class SuppressionFire2Command : public QueueCommand {
+class SuppressionFire2Command : public CombatQueueCommand {
 public:
 
 	SuppressionFire2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.47;
+		speedMultiplier = 2.8;
+		healthCostMultiplier = 2.1;
+		actionCostMultiplier = 1.4;
+		mindCostMultiplier = 0.6;
+
+		postureDownStateChance = 40;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("fire_area_medium").hashCode();
+
+		combatSpam = "sup_fire";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +79,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

@@ -45,14 +45,35 @@ which carries forward this exception.
 #ifndef FULLAUTOAREA1COMMAND_H_
 #define FULLAUTOAREA1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class FullAutoArea1Command : public QueueCommand {
+class FullAutoArea1Command : public CombatQueueCommand {
 public:
 
 	FullAutoArea1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 3.5;
+		speedMultiplier = 2;
+		healthCostMultiplier = 1.4;
+		actionCostMultiplier = 2;
+		mindCostMultiplier = 0.5;
+
+		animationCRC = String("fire_defender_posture_change_down").hashCode();
+
+		combatSpam = "a_auto";
+
+		coneAngle = 30;
+		coneAction = true;
+
+		dizzyStateChance = 30;
+		blindStateChance = 30;
+		stunStateChance = 30;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +84,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
