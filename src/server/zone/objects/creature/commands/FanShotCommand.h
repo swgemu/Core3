@@ -45,14 +45,29 @@ which carries forward this exception.
 #ifndef FANSHOTCOMMAND_H_
 #define FANSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class FanShotCommand : public QueueCommand {
+class FanShotCommand : public CombatQueueCommand {
 public:
 
 	FanShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+		damageMultiplier = 4;
+		speedMultiplier = 2.4;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+		coneAngle = 60;
+		coneAction = true;
 
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("fire_area_light").hashCode();
+
+		combatSpam = "fanshot";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +78,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

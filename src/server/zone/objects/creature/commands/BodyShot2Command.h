@@ -85,7 +85,6 @@ public:
 		}
 
 		return doCombatAction(creature, target);
-
 	}
 
 };

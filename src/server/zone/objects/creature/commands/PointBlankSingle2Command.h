@@ -52,7 +52,17 @@ public:
 
 	PointBlankSingle2Command(const String& name, ZoneProcessServerImplementation* server)
 		: QueueCommand(name, server) {
+		damageMultiplier = 2.9;
+		speedMultiplier = 1.8;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
 
+		animationCRC = String("fire_5_single_light").hashCode();
+
+		combatSpam = "pointblankblast";
+
+		range = 10;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +73,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
