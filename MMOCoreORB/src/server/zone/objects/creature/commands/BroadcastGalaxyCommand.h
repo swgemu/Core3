@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef BROADCASTGALAXYCOMMAND_H_
 #define BROADCASTGALAXYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/ZoneServer.h"
+#include "server/chat/ChatManager.h"
 
 class BroadcastGalaxyCommand : public QueueCommand {
 public:
@@ -62,6 +64,12 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ChatManager* chatManager = server->getZoneServer()->getChatManager();
+		chatManager->broadcastGalaxy((PlayerCreature*)creature, arguments.toString());
 
 		return SUCCESS;
 	}

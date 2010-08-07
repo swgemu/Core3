@@ -139,6 +139,8 @@ class ChatManager extends ManagedObject implements Logger {
 	public native void handleRequestPersistentMsg(PlayerCreature player, unsigned int mailID);
 	public native void deletePersistentMessage(PlayerCreature player, unsigned int mailID);
 	
+	public native void broadcastGalaxy(PlayerCreature player, final string message);
+	
 	/*public native void sendMailBody(PlayerCreature receiver, unsigned int mailid);
 	public native void listMail(PlayerCreature ply);
 	public native void deleteMail(unsigned int mailid);
