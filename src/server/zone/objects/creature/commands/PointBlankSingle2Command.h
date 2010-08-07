@@ -45,13 +45,14 @@ which carries forward this exception.
 #ifndef POINTBLANKSINGLE2COMMAND_H_
 #define POINTBLANKSINGLE2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class PointBlankSingle2Command : public QueueCommand {
+class PointBlankSingle2Command : public CombatQueueCommand {
 public:
 
 	PointBlankSingle2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 		damageMultiplier = 2.9;
 		speedMultiplier = 1.8;
 		healthCostMultiplier = 1;
