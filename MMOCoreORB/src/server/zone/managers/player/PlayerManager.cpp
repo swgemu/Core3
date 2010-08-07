@@ -18,16 +18,18 @@
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 
+#include "server/zone/objects/scene/Observable.h"
+
 /*
  *	PlayerManagerStub
  */
 
-PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
+PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) : Observer(DummyConstructorParameter::instance()) {
 	_impl = new PlayerManagerImplementation(zoneServer, impl);
 	_impl->_setStub(this);
 }
 
-PlayerManager::PlayerManager(DummyConstructorParameter* param) : ManagedObject(param) {
+PlayerManager::PlayerManager(DummyConstructorParameter* param) : Observer(param) {
 }
 
 PlayerManager::~PlayerManager() {
@@ -62,12 +64,28 @@ bool PlayerManager::checkPlayerName(MessageCallback* callback) {
 		return ((PlayerManagerImplementation*) _impl)->checkPlayerName(callback);
 }
 
-int PlayerManager::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
+int PlayerManager::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addUnsignedIntParameter(eventType);
+		method.addObjectParameter(observable);
+		method.addObjectParameter(arg1);
+		method.addSignedLongParameter(arg2);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerManagerImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+}
+
+int PlayerManager::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(destructor);
 		method.addObjectParameter(destructedObject);
 		method.addSignedIntParameter(condition);
@@ -82,7 +100,7 @@ int PlayerManager::notifyDefendersOfIncapacitation(TangibleObject* destructor, T
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(destructor);
 		method.addObjectParameter(destructedObject);
 
@@ -96,7 +114,7 @@ void PlayerManager::killPlayer(TangibleObject* attacker, PlayerCreature* player)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(attacker);
 		method.addObjectParameter(player);
 
@@ -110,7 +128,7 @@ byte PlayerManager::calculateIncapacitationTimer(PlayerCreature* player, int con
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(condition);
 
@@ -124,7 +142,7 @@ bool PlayerManager::checkEncumbrancies(PlayerCreature* player, ArmorObject* armo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 		method.addObjectParameter(armor);
 
@@ -138,7 +156,7 @@ void PlayerManager::applyEncumbrancies(PlayerCreature* player, ArmorObject* armo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 		method.addObjectParameter(armor);
 
@@ -152,7 +170,7 @@ void PlayerManager::removeEncumbrancies(PlayerCreature* player, ArmorObject* arm
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addObjectParameter(armor);
 
@@ -166,7 +184,7 @@ void PlayerManager::awardBadge(PlayerCreature* player, unsigned int badge) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(badge);
 
@@ -180,7 +198,7 @@ void PlayerManager::setExperienceMultiplier(float globalMultiplier) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addFloatParameter(globalMultiplier);
 
 		method.executeWithVoidReturn();
@@ -193,7 +211,7 @@ void PlayerManager::awardExperience(PlayerCreature* player, const String& xpType
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(xpType);
 		method.addSignedIntParameter(amount);
@@ -210,7 +228,7 @@ void PlayerManager::handleAbortTradeMessage(PlayerCreature* player, bool doLock)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -224,7 +242,7 @@ void PlayerManager::handleAddItemToTradeWindow(PlayerCreature* player, unsigned 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(itemID);
 
@@ -238,7 +256,7 @@ void PlayerManager::handleGiveMoneyMessage(PlayerCreature* player, unsigned int 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(value);
 
@@ -252,7 +270,7 @@ void PlayerManager::handleAcceptTransactionMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -265,7 +283,7 @@ void PlayerManager::handleUnAcceptTransactionMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -278,7 +296,7 @@ void PlayerManager::handleVerifyTradeMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -291,7 +309,7 @@ bool PlayerManager::checkTradeItems(PlayerCreature* player, PlayerCreature* rece
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(player);
 		method.addObjectParameter(receiver);
 
@@ -313,7 +331,7 @@ void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -326,7 +344,7 @@ void PlayerManager::sendActivateCloneRequest(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -339,7 +357,7 @@ void PlayerManager::sendPlayerToCloner(PlayerCreature* player, unsigned long lon
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(clonerID);
 
@@ -353,7 +371,7 @@ bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
@@ -366,7 +384,7 @@ TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, co
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addAsciiParameter(hairObjectFile);
 		method.addAsciiParameter(hairCustomization);
 
@@ -380,7 +398,7 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -393,7 +411,7 @@ void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(profession);
 		method.addAsciiParameter(templateFile);
@@ -408,7 +426,7 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -421,7 +439,7 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -434,7 +452,7 @@ bool PlayerManager::existsName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -447,7 +465,7 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addAsciiParameter(name);
 
 		return method.executeWithUnsignedLongReturn();
@@ -460,7 +478,7 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addAsciiParameter(name);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -472,7 +490,7 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
  *	PlayerManagerImplementation
  */
 
-PlayerManagerImplementation::PlayerManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+PlayerManagerImplementation::PlayerManagerImplementation(DummyConstructorParameter* param) : ObserverImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -489,7 +507,7 @@ void PlayerManagerImplementation::_initializeImplementation() {
 
 void PlayerManagerImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (PlayerManager*) stub;
-	ManagedObjectImplementation::_setStub(stub);
+	ObserverImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* PlayerManagerImplementation::_getStub() {
@@ -529,7 +547,7 @@ void PlayerManagerImplementation::runlock(bool doLock) {
 }
 
 void PlayerManagerImplementation::_serializationHelperMethod() {
-	ManagedObjectImplementation::_serializationHelperMethod();
+	ObserverImplementation::_serializationHelperMethod();
 
 	_setClassName("PlayerManager");
 
@@ -541,7 +559,7 @@ void PlayerManagerImplementation::_serializationHelperMethod() {
  *	PlayerManagerAdapter
  */
 
-PlayerManagerAdapter::PlayerManagerAdapter(PlayerManagerImplementation* obj) : ManagedObjectAdapter(obj) {
+PlayerManagerAdapter::PlayerManagerAdapter(PlayerManagerImplementation* obj) : ObserverAdapter(obj) {
 }
 
 Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -555,90 +573,93 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		finalize();
 		break;
 	case 8:
-		resp->insertSignedInt(notifyDestruction((TangibleObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	case 9:
-		resp->insertSignedInt(notifyDefendersOfIncapacitation((TangibleObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(notifyDestruction((TangibleObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
 	case 10:
-		killPlayer((TangibleObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		resp->insertSignedInt(notifyDefendersOfIncapacitation((TangibleObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter()));
 		break;
 	case 11:
-		resp->insertByte(calculateIncapacitationTimer((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		killPlayer((TangibleObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 12:
-		resp->insertBoolean(checkEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter()));
+		resp->insertByte(calculateIncapacitationTimer((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
 	case 13:
-		applyEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
+		resp->insertBoolean(checkEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter()));
 		break;
 	case 14:
-		removeEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
+		applyEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
 		break;
 	case 15:
-		awardBadge((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		removeEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
 		break;
 	case 16:
-		setExperienceMultiplier(inv->getFloatParameter());
+		awardBadge((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 17:
-		awardExperience((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_awardExperience__PlayerCreature_String_int_bool_float_), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getFloatParameter());
+		setExperienceMultiplier(inv->getFloatParameter());
 		break;
 	case 18:
-		handleAbortTradeMessage((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		awardExperience((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_awardExperience__PlayerCreature_String_int_bool_float_), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getFloatParameter());
 		break;
 	case 19:
-		handleAddItemToTradeWindow((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		handleAbortTradeMessage((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 20:
-		handleGiveMoneyMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		handleAddItemToTradeWindow((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 21:
-		handleAcceptTransactionMessage((PlayerCreature*) inv->getObjectParameter());
+		handleGiveMoneyMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 22:
-		handleUnAcceptTransactionMessage((PlayerCreature*) inv->getObjectParameter());
+		handleAcceptTransactionMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 23:
-		handleVerifyTradeMessage((PlayerCreature*) inv->getObjectParameter());
+		handleUnAcceptTransactionMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 24:
-		resp->insertBoolean(checkTradeItems((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
+		handleVerifyTradeMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 25:
-		sendMessageOfTheDay((PlayerCreature*) inv->getObjectParameter());
+		resp->insertBoolean(checkTradeItems((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 26:
-		sendActivateCloneRequest((PlayerCreature*) inv->getObjectParameter());
+		sendMessageOfTheDay((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 27:
-		sendPlayerToCloner((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		sendActivateCloneRequest((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 28:
-		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
+		sendPlayerToCloner((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 29:
-		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
+		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
 		break;
 	case 30:
-		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
 		break;
 	case 31:
-		createDefaultPlayerItems((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__PlayerCreature_String_String_));
+		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 32:
-		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		createDefaultPlayerItems((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__PlayerCreature_String_String_));
 		break;
 	case 33:
-		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 34:
-		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
+		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 35:
-		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
+		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
 		break;
 	case 36:
+		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
+		break;
+	case 37:
 		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
 	default:
@@ -654,6 +675,10 @@ void PlayerManagerAdapter::loadNameMap() {
 
 void PlayerManagerAdapter::finalize() {
 	((PlayerManagerImplementation*) impl)->finalize();
+}
+
+int PlayerManagerAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
+	return ((PlayerManagerImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 int PlayerManagerAdapter::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {

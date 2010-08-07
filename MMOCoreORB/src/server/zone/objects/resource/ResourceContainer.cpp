@@ -181,12 +181,26 @@ void ResourceContainer::split(int newStackSize) {
 		((ResourceContainerImplementation*) _impl)->split(newStackSize);
 }
 
-void ResourceContainer::combine(ResourceContainer* fromContainer) {
+void ResourceContainer::split(int newStackSize, PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
+		method.addSignedIntParameter(newStackSize);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceContainerImplementation*) _impl)->split(newStackSize, player);
+}
+
+void ResourceContainer::combine(ResourceContainer* fromContainer) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(fromContainer);
 
 		method.executeWithVoidReturn();
@@ -363,6 +377,9 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		split(inv->getSignedIntParameter());
 		break;
 	case 18:
+		split(inv->getSignedIntParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 19:
 		combine((ResourceContainer*) inv->getObjectParameter());
 		break;
 	default:
@@ -418,6 +435,10 @@ ResourceSpawn* ResourceContainerAdapter::getSpawnObject() {
 
 void ResourceContainerAdapter::split(int newStackSize) {
 	((ResourceContainerImplementation*) impl)->split(newStackSize);
+}
+
+void ResourceContainerAdapter::split(int newStackSize, PlayerCreature* player) {
+	((ResourceContainerImplementation*) impl)->split(newStackSize, player);
 }
 
 void ResourceContainerAdapter::combine(ResourceContainer* fromContainer) {

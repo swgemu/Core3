@@ -74,6 +74,8 @@ public:
 
 	void split(int newStackSize);
 
+	void split(int newStackSize, PlayerCreature* player);
+
 	void combine(ResourceContainer* fromContainer);
 
 protected:
@@ -137,6 +139,8 @@ public:
 	ResourceSpawn* getSpawnObject();
 
 	void split(int newStackSize);
+
+	void split(int newStackSize, PlayerCreature* player);
 
 	void combine(ResourceContainer* fromContainer);
 
@@ -202,6 +206,8 @@ public:
 	ResourceSpawn* getSpawnObject();
 
 	void split(int newStackSize);
+
+	void split(int newStackSize, PlayerCreature* player);
 
 	void combine(ResourceContainer* fromContainer);
 
