@@ -329,6 +329,26 @@ PlayerCreature* ChatManagerImplementation::removePlayer(const String& name) {
 	return player;
 }
 
+void ChatManagerImplementation::broadcastGalaxy(PlayerCreature* player, const String& message) {
+	String firstName = "SKYNET";
+
+	if (player != NULL)
+		firstName = player->getFirstName();
+
+	StringBuffer fullMessage;
+	fullMessage << "[" << firstName << "] " << message;
+
+	Locker locker(playerMap);
+	//playerMap->lock();
+
+	while (playerMap->hasNext(false)) {
+		ManagedReference<PlayerCreature*> playerObject = playerMap->getNextValue(false);
+
+		playerObject->sendSystemMessage(fullMessage.toString());
+	}
+
+}
+
 void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
 	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
 		PlayerCreature* playerCreature = (PlayerCreature*) player;
