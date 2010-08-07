@@ -45,14 +45,30 @@ which carries forward this exception.
 #ifndef STARTLESHOT1COMMAND_H_
 #define STARTLESHOT1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class StartleShot1Command : public QueueCommand {
+class StartleShot1Command : public CombatQueueCommand {
 public:
 
 	StartleShot1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2;
+		speedMultiplier = 2.1;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		postureUpStateChance = 25;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("fire_defender_posture_change_up").hashCode();
+
+		combatSpam = "startleshot";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +79,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRifleWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

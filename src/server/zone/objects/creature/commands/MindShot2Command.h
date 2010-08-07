@@ -45,14 +45,33 @@ which carries forward this exception.
 #ifndef MINDSHOT2COMMAND_H_
 #define MINDSHOT2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class MindShot2Command : public QueueCommand {
+class MindShot2Command : public CombatQueueCommand {
 public:
 
 	MindShot2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2;
+		speedMultiplier = 2;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		poolsToDamage = CombatManager::MIND;
+
+		animationCRC = String("fire_1_special_single_medium_face").hashCode();
+
+		combatSpam = "headshot";
+
+		dotType = CreatureState::BLEEDING;
+		dotPool = CombatManager::MIND;
+		dotDamageOfHit = true;
+		dotDuration = 60;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +82,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRifleWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
