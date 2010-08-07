@@ -68,28 +68,36 @@ public:
 		args.setDelimeter(" ");
 
 		if (args.hasMoreTokens()) {
-			ZoneServer* zserv = server->getZoneServer();
 
-			String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";
-			ManagedReference<CharacterBuilderTerminal*> blueFrog = (CharacterBuilderTerminal*) zserv->createObject(blueFrogTemplate.hashCode(), 0);
+			if (creature->isPlayerCreature()) {
+				PlayerCreature* player = (PlayerCreature*) creature;
 
-			if (blueFrog == NULL)
-				return GENERALERROR;
+				/*if (player->getFirstName() != "TheAnswer")
+					return GENERALERROR;*/
 
-			float x = creature->getPositionX();
-			float y = creature->getPositionY();
-			float z = creature->getPositionZ();//creature->getZone()->getHeight(x, y);
+				ZoneServer* zserv = server->getZoneServer();
 
-			ManagedReference<SceneObject*> parent = creature->getParent();
+				String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";
+				ManagedReference<CharacterBuilderTerminal*> blueFrog = (CharacterBuilderTerminal*) zserv->createObject(blueFrogTemplate.hashCode(), 0);
 
-			if (parent != NULL && parent->isCellObject())
-				parent->addObject(blueFrog, -1);
+				if (blueFrog == NULL)
+					return GENERALERROR;
 
-			blueFrog->initializePosition(x, z, y);
-			blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
-			blueFrog->insertToZone(creature->getZone());
+				float x = creature->getPositionX();
+				float y = creature->getPositionY();
+				float z = creature->getPositionZ();//creature->getZone()->getHeight(x, y);
 
-			info("blue frog created", true);
+				ManagedReference<SceneObject*> parent = creature->getParent();
+
+				if (parent != NULL && parent->isCellObject())
+					parent->addObject(blueFrog, -1);
+
+				blueFrog->initializePosition(x, z, y);
+				blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
+				blueFrog->insertToZone(creature->getZone());
+
+				info("blue frog created", true);
+			}
 		} else {
 			/*if (creature->isDizzied()) {
 				if (creature->getPosture() != CreaturePosture::PRONE) {

@@ -98,7 +98,7 @@ void BazaarManagerImplementation::checkAuctions() {
 
 					Locker _locker(player);
 					player->addBankCredits(item->getPrice());
-					player->updateToDatabaseWithoutChildren();
+					player->updateToDatabase();
 
 					String sender = "Auctioner";
 					//StringBuffer message1;
@@ -325,7 +325,7 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 		seller->sendSystemMessage(body2);
 		seller->addBankCredits(price1);
 
-		seller->updateToDatabaseWithoutChildren();
+		seller->updateToDatabase();
 
 	} catch (...) {
 
@@ -362,7 +362,7 @@ void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionIt
 			priorBidder->sendSystemMessage(body);
 			priorBidder->addBankCredits(item->getPrice());
 
-			priorBidder->updateToDatabaseWithoutChildren();
+			priorBidder->updateToDatabase();
 
 			clocker.release();
 		} catch (...) {

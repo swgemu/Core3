@@ -86,6 +86,8 @@ public:
 	Zone(int instance, uint64 characterObjectID, uint32 account, uint32 session);
 	~Zone();
 
+	static int createdChar;
+
 	void run();
 	//void initConnection();
 

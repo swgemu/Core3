@@ -338,11 +338,11 @@ void ShuttleCreatureImplementation::_serializationHelperMethod() {
 
 ShuttleCreatureImplementation::ShuttleCreatureImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(79):  		Logger.setLoggingName("ShuttleCreature");
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(80):  		Logger.setLoggingName("ShuttleCreature");
 	Logger::setLoggingName("ShuttleCreature");
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(80):  		Logger.setLogging(false);
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(81):  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(81):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(82):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
@@ -350,81 +350,81 @@ void ShuttleCreatureImplementation::activateRecovery() {
 }
 
 bool ShuttleCreatureImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(99):  		return false;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(100):  		return false;
 	return false;
 }
 
 int ShuttleCreatureImplementation::getArrivalTime() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(110):  		PlanetManager planetManager = super.zone.getPlanetManager();
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(111):  		PlanetManager planetManager = super.zone.getPlanetManager();
 	PlanetManager* planetManager = CreatureObjectImplementation::zone->getPlanetManager();
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(111):  		long land = getLandingTime();
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(112):  		long land = getLandingTime();
 	long long land = getLandingTime();
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(113):  		int t = (land / 1000) * -1;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(114):  		int t = (land / 1000) * -1;
 	int t = (land / 1000) * -1;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(115):  		return t;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(116):  		return t;
 	return t;
 }
 
 void ShuttleCreatureImplementation::getArrivalPoint(float& x, float& y, float& z) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(122):  		x = arrivalPositionX;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(123):  		x = arrivalPositionX;
 	x = arrivalPositionX;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(123):  		y = arrivalPositionY;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(124):  		y = arrivalPositionY;
 	y = arrivalPositionY;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(124):  		z = arrivalPositionZ;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(125):  		z = arrivalPositionZ;
 	z = arrivalPositionZ;
 }
 
 void ShuttleCreatureImplementation::setArrivalPoint(float x, float y, float z) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(128):  		arrivalPositionX = x;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(129):  		arrivalPositionX = x;
 	arrivalPositionX = x;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(129):  		arrivalPositionY = y;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(130):  		arrivalPositionY = y;
 	arrivalPositionY = y;
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(130):  		arrivalPositionZ = z;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(131):  		arrivalPositionZ = z;
 	arrivalPositionZ = z;
 }
 
 void ShuttleCreatureImplementation::setStarport(bool st) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(134):  		starport = st;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(135):  		starport = st;
 	starport = st;
 }
 
 void ShuttleCreatureImplementation::setPlanet(const String& plan) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(138):  		planet = plan;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(139):  		planet = plan;
 	planet = plan;
 }
 
 void ShuttleCreatureImplementation::setCity(const String& cit) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(142):  		city = cit;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(143):  		city = cit;
 	city = cit;
 }
 
 void ShuttleCreatureImplementation::setTax(unsigned int t) {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(146):  		tax = t;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(147):  		tax = t;
 	tax = t;
 }
 
 String ShuttleCreatureImplementation::getPlanet() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(150):  		return planet;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(151):  		return planet;
 	return planet;
 }
 
 String ShuttleCreatureImplementation::getCity() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(154):  		return city;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(155):  		return city;
 	return city;
 }
 
 unsigned int ShuttleCreatureImplementation::getTax() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(158):  		return tax;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(159):  		return tax;
 	return tax;
 }
 
 bool ShuttleCreatureImplementation::isStarport() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(162):  		return starport;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(163):  		return starport;
 	return starport;
 }
 
 bool ShuttleCreatureImplementation::isShuttleCreature() {
-	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(166):  		return true;
+	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(167):  		return true;
 	return true;
 }
 

@@ -53,7 +53,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 		SceneObject* mission = server->createObject(0x18e19914, 1); // empty mission
 		missionBag->addObject(mission, -1, false);
 		mission->sendTo(player, true);
-		missionBag->updateToDatabaseWithoutChildren();
+		//missionBag->updateToDatabaseWithoutChildren();
 	}
 
 	if (missionTerminal->isGeneralTerminal()) {

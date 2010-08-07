@@ -362,11 +362,19 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 		return 1;
 
 	try {
+		ManagedObject* managedObject = ((ManagedObject*)object);
 		ObjectOutputStream objectData(500);
 
 		((ManagedObject*)object)->writeObject(&objectData);
 
 		uint64 oid = object->_getObjectID();
+
+		uint32 lastSaveCRC = managedObject->getLastCRCSave();
+
+		uint32 currentCRC = BaseProtocol::generateCRC(&objectData);
+
+		if (lastSaveCRC == currentCRC)
+			return 1;
 
 		ObjectDatabase* database = getTable(oid);
 
@@ -379,7 +387,9 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 			msg << "saving to database with table " << dbName << " and object id 0x" << hex << oid;
 			info(msg.toString());
 
-			database->putData(oid, &objectData);
+			database->putData(oid, &objectData, object);
+
+			managedObject->setLastCRCSave(currentCRC);
 		} else {
 			StringBuffer err;
 			err << "unknown database id of objectID 0x" << hex << oid;

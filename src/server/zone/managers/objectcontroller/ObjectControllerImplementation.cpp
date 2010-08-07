@@ -93,8 +93,8 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		}
 	}
 
-	parent->updateToDatabaseWithoutChildren();
-	destinationObject->updateToDatabaseAllObjects(false);
+	parent->updateToDatabase();
+	//destinationObject->updateToDatabaseAllObjects(false);
 
 	return true;
 }
@@ -115,14 +115,14 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		return 0.f;
 	}
 
-	StringBuffer infoMsg;
+	/*StringBuffer infoMsg;
 	infoMsg << "activating queue command 0x" << hex << actionCRC << " " << queueCommand->getQueueCommandName() << " arguments='" << arguments.toString() << "'";
-	object->info(infoMsg.toString(), true);
+	object->info(infoMsg.toString(), true);*/
 
 	String characterAbility = queueCommand->getCharacterAbility();
 
 	if (characterAbility.length() > 1) {
-		object->info("activating characterAbility " + characterAbility, true);
+		object->info("activating characterAbility " + characterAbility);
 
 		if (object->isPlayerCreature()) {
 			PlayerObject* playerObject = (PlayerObject*) object->getSlottedObject("ghost");

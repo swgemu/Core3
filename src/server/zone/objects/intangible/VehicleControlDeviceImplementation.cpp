@@ -11,6 +11,30 @@
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/ZoneServer.h"
 
+void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) {
+	if (player->getParent() != NULL)
+		return;
+
+	if (controlledObject->isInQuadTree())
+		return;
+
+	if (player->isInCombat())
+		return;
+
+	ZoneServer* zoneServer = getZoneServer();
+
+	Locker clocker(controlledObject, player);
+
+	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
+	controlledObject->setCreatureLink(player);
+	controlledObject->setControlDevice(_this);
+
+	controlledObject->insertToZone(player->getZone());
+	controlledObject->inflictDamage(player, 0, System::random(50), true);
+
+	updateStatus(1);
+}
+
 void VehicleControlDeviceImplementation::storeObject(PlayerCreature* player) {
 	if (!controlledObject->isInQuadTree())
 		return;

@@ -129,6 +129,8 @@ using namespace server::zone::objects::creature::shuttle;
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "system/lang/ref/Reference.h"
 
 namespace server {
