@@ -45,14 +45,31 @@ which carries forward this exception.
 #ifndef POLEARMSWEEP2COMMAND_H_
 #define POLEARMSWEEP2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class PolearmSweep2Command : public QueueCommand {
+
+class PolearmSweep2Command : public CombatQueueCommand {
 public:
 
 	PolearmSweep2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.5;
+		speedMultiplier = 3;
+
+		knockdownStateChance = 30;
+		areaRange = 7;
+		areaAction = true;
+
+		animationCRC = String("combo_3d_medium").hashCode();
+
+		combatSpam = "melee";
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +80,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPolearmWeaponObject()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
