@@ -45,14 +45,26 @@ which carries forward this exception.
 #ifndef MELEE1HBODYHIT3COMMAND_H_
 #define MELEE1HBODYHIT3COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class Melee1hBodyHit3Command : public QueueCommand {
+class Melee1hBodyHit3Command : public CombatQueueCommand {
 public:
 
 	Melee1hBodyHit3Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 3.5;
+		speedMultiplier = 1.45;
+
+		poolsToDamage = CombatManager::HEALTH;
+
+		animationCRC = String("combo_3a_light").hashCode();
+
+		combatSpam = "saitok";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +75,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isOneHandMeleeWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
