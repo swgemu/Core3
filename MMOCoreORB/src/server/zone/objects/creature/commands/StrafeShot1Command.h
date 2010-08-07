@@ -45,14 +45,30 @@ which carries forward this exception.
 #ifndef STRAFESHOT1COMMAND_H_
 #define STRAFESHOT1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class StrafeShot1Command : public QueueCommand {
+class StrafeShot1Command : public CombatQueueCommand {
 public:
 
 	StrafeShot1Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.0;
+		speedMultiplier = 2.0;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+		coneAngle = 60;
+		coneAction = true;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("fire_5_special_single_medium").hashCode();
+
+		combatSpam = "strafeshot";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +79,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRifleWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

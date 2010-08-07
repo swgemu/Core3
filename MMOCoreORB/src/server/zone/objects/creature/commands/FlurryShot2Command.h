@@ -45,14 +45,32 @@ which carries forward this exception.
 #ifndef FLURRYSHOT2COMMAND_H_
 #define FLURRYSHOT2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class FlurryShot2Command : public QueueCommand {
+class FlurryShot2Command : public CombatQueueCommand {
 public:
 
 	FlurryShot2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2;
+		speedMultiplier = 2.3;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+		coneAngle = 60;
+		coneAction = true;
+
+		dizzyStateChance = 30;
+
+		poolsToDamage = CombatManager::RANDOM;
+
+		animationCRC = String("fire_area_medium").hashCode();
+
+		combatSpam = "flurry";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +81,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRifleWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
