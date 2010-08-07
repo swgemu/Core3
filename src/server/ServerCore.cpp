@@ -47,6 +47,8 @@ which carries forward this exception.
 #include "db/ServerDatabase.h"
 #include "db/ForumsDatabase.h"
 
+#include "chat/ChatManager.h"
+
 #include "login/LoginServer.h"
 
 #include "features/Features.h"
@@ -235,6 +237,11 @@ void ServerCore::handleCommands() {
 			command = command.replaceFirst("\n", "");
 
 			if (command == "exit") {
+				if (zoneServer != NULL) {
+					ChatManager* chatManager = zoneServer->getChatManager();
+					chatManager->broadcastGalaxy(NULL, "Server is shutting down NOW!");
+				}
+
 				return;
 			} else if (command == "dumpmem") {
 				#ifdef DEBUG_MEMORY
