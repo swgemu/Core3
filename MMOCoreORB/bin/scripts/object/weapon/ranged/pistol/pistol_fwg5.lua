@@ -51,7 +51,7 @@ object_weapon_ranged_pistol_pistol_fwg5 = object_weapon_ranged_pistol_shared_pis
 	attackType = RANGEDATTACK,
 
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
-	damageType = HEAT
+	damageType = HEAT,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = NONE,

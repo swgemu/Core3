@@ -42,15 +42,22 @@
 
 
 object_tangible_wearables_armor_composite_armor_composite_bicep_l = object_tangible_wearables_armor_composite_shared_armor_composite_bicep_l:new {
-	templateType = ARMOROBJECT, 
 	
+	templateType = ARMOROBJECT,
+
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS,
+	
+	-- kineticeffectiveness, energyeffectiveness, electricaleffectiveness, stuneffectiveness, blasteffectiveness, heateffectiveness, coldeffectiveness, acideffectiveness, restraineffectiveness
+	specialProtection = { "electricaleffectiveness" },
+	vunerability = {"stuneffectiveness","restraineffectiveness" },
+
+	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
 
-	--int rating;
-	
-	playerUseMask = HUMANOIDS,
+	rating = 0,
 
 	kinetic = 50,
 	energy = 50,
@@ -61,8 +68,6 @@ object_tangible_wearables_armor_composite_armor_composite_bicep_l = object_tangi
 	cold = 25,
 	acid = 25,
 	lightSaber = 0
-
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_armor_composite_bicep_l, "object/tangible/wearables/armor/composite/armor_composite_bicep_l.iff")
