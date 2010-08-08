@@ -37,6 +37,8 @@ public:
 
 	void initializeTransientMembers();
 
+	bool isPistolWeapon();
+
 protected:
 	PistolWeaponObject(DummyConstructorParameter* param);
 
@@ -67,6 +69,8 @@ public:
 	PistolWeaponObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	bool isPistolWeapon();
 
 	PistolWeaponObject* _this;
 
@@ -108,6 +112,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	bool isPistolWeapon();
 
 };
 
