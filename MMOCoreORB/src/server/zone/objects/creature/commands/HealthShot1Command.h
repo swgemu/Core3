@@ -67,7 +67,7 @@ public:
 		combatSpam = "sapshot";
 
 		dotType = CreatureState::BLEEDING;
-		dotPool = CombatManager::HEALTH;
+		dotPool = CreatureAttribute::HEALTH;
 		dotDamageOfHit = true;
 		dotDuration = 30;
 

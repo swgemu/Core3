@@ -67,12 +67,11 @@ public:
 		combatSpam = "headshot";
 
 		dotType = CreatureState::BLEEDING;
-		dotPool = CombatManager::MIND;
+		dotPool = CreatureAttribute::MIND;
 		dotDamageOfHit = true;
 		dotDuration = 30;
 
 		range = -1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

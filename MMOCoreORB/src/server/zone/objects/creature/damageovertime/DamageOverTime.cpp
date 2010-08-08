@@ -53,7 +53,7 @@ which carries forward this exception.
 DamageOverTime::DamageOverTime() {
 	setType(CreatureState::BLEEDING);
 	setAttribute(CreatureAttribute::HEALTH);
-	setStrength(0);
+	strength = 0;
 	setDuration(0);
 	setPotency(0.0f);
 	setExpires(0);
@@ -64,12 +64,39 @@ DamageOverTime::DamageOverTime() {
 DamageOverTime::DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency) {
 	setType(tp);
 	setAttribute(attrib);
-	setStrength(str);
+	strength = str;
 	setDuration(dur);
 	setPotency(potency);
 	activate();
 
 	addSerializableVariables();
+}
+
+DamageOverTime::DamageOverTime(const DamageOverTime& dot) : Object(), Serializable() {
+	addSerializableVariables();
+
+	type = dot.type;
+	attribute = dot.attribute;
+	strength = dot.strength;
+	duration = dot.duration;
+	potency = dot.potency;
+	expires = dot.expires;
+	nextTick = dot.nextTick;
+}
+
+DamageOverTime& DamageOverTime::operator=(const DamageOverTime& dot) {
+	if (this == &dot)
+		return *this;
+
+	type = dot.type;
+	attribute = dot.attribute;
+	strength = dot.strength;
+	duration = dot.duration;
+	potency = dot.potency;
+	expires = dot.expires;
+	nextTick = dot.nextTick;
+
+	return *this;
 }
 
 void DamageOverTime::addSerializableVariables() {
@@ -168,8 +195,10 @@ uint32 DamageOverTime::initDot(CreatureObject* victim) {
 uint32 DamageOverTime::doBleedingTick(CreatureObject* victim) {
 	uint32 attr = victim->getHAM(attribute);
 
-	if (attr < strength)
+	if (attr < strength) {
+		//System::out << "setting strength to " << attr -1 << endl;
 		strength = attr - 1;
+	}
 
 	victim->inflictDamage(victim, attribute, strength, false);
 
@@ -221,6 +250,8 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
 }
 
 float DamageOverTime::reduceTick(float reduction) {
+	//System::out << "reducing tick with reduction " << reduction << endl;
+	//System::out << "reducing tick with reduction " << reduction << endl;
 	if (reduction < 0)
 		return reduction;
 
@@ -231,7 +262,9 @@ float DamageOverTime::reduceTick(float reduction) {
 		expires.updateToCurrentTime();
 	} else {
 		float dotReduction = effReduction / potency;
+		//System::out << "strength before dotRed " << strength << endl;
 		strength *= (int)dotReduction;
+		//System::out << "strength after dotRed " << strength << endl;
 		potency -= reduction;
 	}
 

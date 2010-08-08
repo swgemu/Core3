@@ -51,7 +51,7 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	int templateMaxRange = weaponTemplate->getMaxRange();
 
-	if (templateMaxRange != 0)
+	if (templateMaxRange > 5 )
 		maxRange = templateMaxRange;
 
 	maxRangeAccuracy = weaponTemplate->getMaxRangeAccuracy();

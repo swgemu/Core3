@@ -36,32 +36,8 @@ public:
 	DamageOverTime();
 	DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency);
 
-	DamageOverTime(const DamageOverTime& dot) : Object(), Serializable() {
-		type = dot.type;
-		attribute = dot.attribute;
-		strength = dot.strength;
-		duration = dot.duration;
-		potency = dot.potency;
-		expires = dot.expires;
-		nextTick = dot.nextTick;
-
-		addSerializableVariables();
-	}
-
-	DamageOverTime& operator=(const DamageOverTime& dot) {
-		if (this == &dot)
-			return *this;
-
-		type = dot.type;
-		attribute = dot.attribute;
-		strength = dot.strength;
-		duration = dot.duration;
-		potency = dot.potency;
-		expires = dot.expires;
-		nextTick = dot.nextTick;
-
-		return *this;
-	}
+	DamageOverTime(const DamageOverTime& dot);
+	DamageOverTime& operator=(const DamageOverTime& dot);
 
 	void addSerializableVariables();
 

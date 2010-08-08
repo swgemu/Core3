@@ -155,21 +155,17 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 
 	if (scno->isBuildingObject())
 		((BuildingObject*)scno)->addNotifiedSentObject(_this);*/
+	SceneObject* rootParent = scno->getRootParent();
 
-	if (notifiedSentObjects.put(scno) != -1) {
-		SceneObject* rootParent = scno->getRootParent();
-
-		if (rootParent != NULL && rootParent->isInQuadTree()) {
-			if (notifiedSentObjects.contains(rootParent))
-				scno->sendTo(_this, true);
-			else {
-				rootParent->sendTo(_this, true);
-
-				notifiedSentObjects.put(rootParent);
-			}
-		} else
+	if (rootParent != NULL && rootParent->isInQuadTree()) {
+		if (notifiedSentObjects.contains(rootParent) && notifiedSentObjects.put(scno) != -1)
 			scno->sendTo(_this, true);
-	}
+		else {
+			if (notifiedSentObjects.put(rootParent) != -1)
+				rootParent->sendTo(_this, true);
+		}
+	} else if (notifiedSentObjects.put(scno) != -1)
+		scno->sendTo(_this, true);
 }
 
 bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
@@ -250,7 +246,7 @@ void PlayerCreatureImplementation::doRecovery() {
 	}
 
 	if (isInCombat() && getTargetID() != 0 && !isPeaced()
-			&& (commandQueue.size() == 0)) {
+			&& (commandQueue.size() == 0) && nextAction.isPast()) {
 		enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack
 	}
 
