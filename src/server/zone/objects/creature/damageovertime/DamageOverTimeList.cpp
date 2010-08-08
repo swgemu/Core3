@@ -73,8 +73,12 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint32 duration, uint6
 	//System::out << "Potency: " << potency << " => " << redPotency << "\n";
 
 	// hitChance may need modification when poison resist packs are added, include 5% hit and 5% miss
-	if (!(redPotency > System::random(125) || redPotency > System::random(125)))
+	if (!(redPotency > System::random(125) || redPotency > System::random(125))) {
+		//info("potency % miss", true);
 		return 0;
+	}
+
+	//System::out << "Adding dot strength " << redStrength << endl;
 
 	DamageOverTime newDot(dotType, pool, redStrength, duration, redPotency);
 

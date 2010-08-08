@@ -67,7 +67,7 @@ public:
 		combatSpam = "kneecapshot";
 
 		dotType = CreatureState::BLEEDING;
-		dotPool = CombatManager::ACTION;
+		dotPool = CreatureAttribute::ACTION;
 		dotDamageOfHit = true;
 		dotDuration = 30;
 

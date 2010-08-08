@@ -299,6 +299,9 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 	playerCreature->setRaceID((byte)raceID);
 
+	playerCreature->setCashCredits(10000000); // TODO: fix when not in testing
+	playerCreature->setBankCredits(10000000);
+
 	String playerCustomization;
 	callback->getCustomizationString(playerCustomization);
 	playerCreature->setCustomizationString(playerCustomization);

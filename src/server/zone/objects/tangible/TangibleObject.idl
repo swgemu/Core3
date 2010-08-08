@@ -424,6 +424,10 @@ class TangibleObject extends SceneObject {
 		return defenderList;
 	}
 	
+	public SceneObject getMainDefender() {
+		return defenderList.get(0);
+	}
+	
 	public boolean isDestroyed() {
 		return conditionDamage > maxCondition;
 	}

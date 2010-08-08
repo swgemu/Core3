@@ -67,7 +67,7 @@ public:
 
 		dotDuration = 60;
 		dotType = CreatureState::BLEEDING;
-		dotPool = CombatManager::HEALTH;
+		dotPool = CreatureAttribute::HEALTH;
 		dotDamageOfHit = true;
 
 		range = -1;

@@ -69,9 +69,11 @@ void AiAgentImplementation::doRecovery() {
 		if (!tryRetreat() && targetToAttack->isCreatureObject()) {
 			CreatureObject* creo = (CreatureObject*) targetToAttack;
 
-			/*if (creo->isPeaced()) {
-				CombatManager::instance()->attemptPeace(_this);
-			} else {*/
+			if (creo->isPeaced() || !creo->isInRange(_this, 128) || !creo->isAttackableBy(_this)) {
+				removeDefender(creo);
+				setFollowObject(NULL);
+				//CombatManager::instance()->attemptPeace(_this);
+			} else {
 				setTargetID(creo->getObjectID(), true);
 
 				setFollowObject(creo);
@@ -80,7 +82,7 @@ void AiAgentImplementation::doRecovery() {
 
 				if (commandQueue.size() == 0 && weapon != NULL)
 					enqueueCommand(0xA8FEF90A, 0, creo->getObjectID(), ""); // Do default attack
-			//}
+			}
 		}
 	}
 
@@ -158,7 +160,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 	CreatureObjectImplementation::removeDefender(defender);
 
 	if (followObject == defender)
-		followObject = NULL;
+		setFollowObject(NULL);
 }
 
 /**
@@ -172,7 +174,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 
 	damageMap.removeAll();
 
-	followObject = NULL;
+	setFollowObject(NULL);
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
@@ -478,8 +480,14 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 	if (attacker->isPlayerCreature()) {
 		PlayerCreature* player = (PlayerCreature*) attacker;
 
-		if (damage > 0)
+		if (damage > 0) {
 			damageMap.addDamage(player, damage);
+
+			if (System::random(5) == 1) {
+				setFollowObject(player);
+				setDefender(player);
+			}
+		}
 	}
 
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);

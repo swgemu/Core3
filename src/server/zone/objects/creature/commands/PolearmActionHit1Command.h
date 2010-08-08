@@ -65,7 +65,7 @@ public:
 		dotType = CreatureState::BLEEDING;
 		dotDamageOfHit = true;
 		dotDuration = 30;
-		dotPool = CombatManager::ACTION;
+		dotPool = CreatureAttribute::ACTION;
 
 		poolsToDamage = CombatManager::ACTION;
 
