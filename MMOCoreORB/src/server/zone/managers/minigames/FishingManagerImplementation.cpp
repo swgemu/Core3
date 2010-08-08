@@ -512,7 +512,12 @@ uint32 FishingManagerImplementation::createWindow(PlayerCreature* player, uint32
 	int veg = vegetation(marker);
 	int den = density(marker);
 
-	int freshness = getBait(player)->getFreshness();
+	ManagedReference<FishingBaitObject*> bait = getBait(player);
+
+	if (bait == NULL)
+		return -1;
+
+	int freshness = bait->getFreshness();
 
 	if (freshness >= MUSH) {
 		freshness = 2;
@@ -647,6 +652,8 @@ FishingPoleObject* FishingManagerImplementation::getPole(PlayerCreature* player)
 FishingBaitObject* FishingManagerImplementation::getBait(PlayerCreature* player) {
 	if (player == NULL)
 		return NULL;
+
+	Locker locker(_this);
 
 	ManagedReference<FishingPoleObject*> pole = getPole(player);
 
