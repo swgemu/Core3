@@ -43,6 +43,7 @@
 
 object_weapon_ranged_pistol_pistol_cdef = object_weapon_ranged_pistol_shared_pistol_cdef:new {
 
+
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -80,9 +81,11 @@ object_weapon_ranged_pistol_pistol_cdef = object_weapon_ranged_pistol_shared_pis
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 1,
-	actionAttackCost = 1,
-	mindAttackCost = 1,
+
+	healthAttackCost = 10,
+	actionAttackCost = 22,
+	mindAttackCost = 10,
+
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -91,10 +94,15 @@ object_weapon_ranged_pistol_pistol_cdef = object_weapon_ranged_pistol_shared_pis
 	idealRange = 15,
 	idealAccuracy = 25,
 
-	maxRange = 45,
-	maxRangeAccuracy = 15,
+	maxRange = 65,
+	maxRangeAccuracy = 0,
 
-	attackSpeed = 1
+
+	minDamage = 12,
+	maxDamage = 29,
+
+	attackSpeed = 4.6
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_cdef, "object/weapon/ranged/pistol/pistol_cdef.iff")

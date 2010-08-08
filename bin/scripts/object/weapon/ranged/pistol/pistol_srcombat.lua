@@ -80,9 +80,9 @@ object_weapon_ranged_pistol_pistol_srcombat = object_weapon_ranged_pistol_shared
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 30,
+	actionAttackCost = 47,
+	mindAttackCost = 17,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -91,10 +91,13 @@ object_weapon_ranged_pistol_pistol_srcombat = object_weapon_ranged_pistol_shared
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 32,
+	maxDamage = 70,
+
+	attackSpeed = 4.9
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_srcombat, "object/weapon/ranged/pistol/pistol_srcombat.iff")

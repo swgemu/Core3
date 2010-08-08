@@ -80,9 +80,9 @@ object_weapon_ranged_pistol_pistol_scout_blaster_ammo_test_2 = object_weapon_ran
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 13,
+	actionAttackCost = 26,
+	mindAttackCost = 13,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -91,10 +91,13 @@ object_weapon_ranged_pistol_pistol_scout_blaster_ammo_test_2 = object_weapon_ran
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 25,
+	maxDamage = 56,
+
+	attackSpeed = 4
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_scout_blaster_ammo_test_2, "object/weapon/ranged/pistol/pistol_scout_blaster_ammo_test_2.iff")

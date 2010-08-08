@@ -61,7 +61,7 @@ object_weapon_ranged_carbine_carbine_dh17_black = object_weapon_ranged_carbine_s
 	xpType = "combat_rangedspecialize_carbine",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_carbine_dh17" },
+	certificationsRequired = { "cert_carbine_cdef" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "carbine_accuracy" },
 
@@ -79,9 +79,9 @@ object_weapon_ranged_carbine_carbine_dh17_black = object_weapon_ranged_carbine_s
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 39,
+	actionAttackCost = 31,
+	mindAttackCost = 16,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -90,10 +90,13 @@ object_weapon_ranged_carbine_carbine_dh17_black = object_weapon_ranged_carbine_s
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 28,
+	maxDamage = 81,
+
+	attackSpeed = 4.5
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_carbine_dh17_black, "object/weapon/ranged/carbine/carbine_dh17_black.iff")

@@ -47,7 +47,7 @@ object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_r
 
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, 
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
-	attackType = HEAVYACIDBEAMATTACK,
+	attackType = RANGEDATTACK,
 
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = ACID,
@@ -79,21 +79,24 @@ object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_r
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 103,
+	actionAttackCost = 65,
+	mindAttackCost = 20,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 0,
+	pointBlankAccuracy = 9,
+	pointBlankRange = 15,
 
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
-	maxRangeAccuracy = 0,
-
-	attackSpeed = 0
+	maxRange = 65,
+	maxRangeAccuracy = -121,
+	
+	minDamage = 200,
+	maxDamage = 470,
+	
+	attackSpeed = 7.7
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_acid_beam, "object/weapon/ranged/rifle/rifle_acid_beam.iff")

@@ -61,7 +61,7 @@ object_weapon_ranged_rifle_rifle_ewok_crossbow = object_weapon_ranged_rifle_shar
 	xpType = "combat_rangedspecialize_rifle",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "" },
+	certificationsRequired = { "cert_rifle_dlt20a" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "rifle_accuracy" },
 
@@ -79,9 +79,9 @@ object_weapon_ranged_rifle_rifle_ewok_crossbow = object_weapon_ranged_rifle_shar
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 34,
+	actionAttackCost = 34,
+	mindAttackCost = 48,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -89,11 +89,14 @@ object_weapon_ranged_rifle_rifle_ewok_crossbow = object_weapon_ranged_rifle_shar
 
 	idealRange = 0,
 	idealAccuracy = 0,
+	
+	minDamage = 77,
+	maxDamage = 131,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
-
-	attackSpeed = 0
+		
+	attackSpeed = 8
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_ewok_crossbow, "object/weapon/ranged/rifle/rifle_ewok_crossbow.iff")
