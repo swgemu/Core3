@@ -239,6 +239,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots(
 	completed = false;
 	complexity = schematic->getComplexity();
 	manufactureLimit = 0;
+	firstCraftingUpdate = false;
 
 	Reference<IngredientSlot* > ingredientSlot = NULL;
 	Reference<DraftSlot* > draftSlot = NULL;

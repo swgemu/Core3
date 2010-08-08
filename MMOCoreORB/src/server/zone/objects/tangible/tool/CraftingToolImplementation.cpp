@@ -56,6 +56,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/tool/events/CreateObjectTask.h"
 #include "server/zone/objects/tangible/tool/events/UpdateToolCountdownTask.h"
+#include "server/zone/objects/tangible/component/Component.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
@@ -807,6 +808,7 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 	// If the window is closed now, this sets the resources to no be recoverable
 	manufactureSchematic->setAssembled();
 
+	manufactureSchematic->setFirstCraftingUpdate();
 
 	// Remove all resources - Not recovering them
 	if (assemblyResult == CraftingManager::CRITICALFAILURE) {
@@ -906,10 +908,86 @@ void CraftingToolImplementation::setInitialCraftingValues() {
 
 	craftingValues->recalculateValues(true);
 
-	//if (applyComponentBoost(draftSchematic, craftingTool))
-	//	craftingValues->recalculateValues(draftSchematic, true);
+	if (applyComponentBoost())
+		craftingValues->recalculateValues(true);
 
 	//craftingValues->toString();
+}
+
+bool CraftingToolImplementation::applyComponentBoost() {
+
+	float max, min, currentvalue, propertyvalue;
+	int precision;
+	bool modified = false;
+	bool hidden;
+	String experimentalTitle, property;
+
+	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
+	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
+
+	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
+
+		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getIngredientSlot(i);
+		Reference<DraftSlot* > draftSlot = draftSchematic->getDraftSlot(i);
+
+		if (ingredientSlot != NULL) {
+
+			ManagedReference<TangibleObject*> tano = ingredientSlot->get();
+
+			if (tano != NULL && tano->isComponent()) {
+
+				ManagedReference<Component*> component = (Component*) tano.get();
+
+				for (int j = 0; j < component->getPropertyCount(); ++j) {
+
+					property = component->getProperty(j); // charges
+
+					modified = true;
+
+					if (craftingValues->hasProperty(property) && !component->getAttributeHidden(property)) {
+
+						max = craftingValues->getMaxValue(property);
+
+						min = craftingValues->getMinValue(property);
+
+						hidden = craftingValues->isHidden(property);
+
+						currentvalue = craftingValues->getCurrentValue(property);
+
+						propertyvalue = component->getAttributeValue(property) * draftSlot->getContribution();
+
+						currentvalue += propertyvalue;
+						min += propertyvalue;
+						max += propertyvalue;
+
+						craftingValues->setMinValue(property, min);
+						craftingValues->setMaxValue(property, max);
+
+						if (draftSlot->getCombineType() == CraftingManager::COMPONENTLINEAR) {
+
+							craftingValues->setCurrentValue(property, currentvalue);
+
+						} else if (draftSlot->getCombineType() == CraftingManager::COMPONENTPERCENTAGE) {
+
+							craftingValues->setCurrentPercentage(property, currentvalue);
+
+						}
+					} else if(!component->getAttributeHidden(property)) {
+
+						currentvalue = component->getAttributeValue(property);
+						precision = component->getAttributePrecision(property);
+						experimentalTitle = component->getAttributeTitle(property);
+
+						craftingValues->addExperimentalProperty(experimentalTitle, property, currentvalue, currentvalue, precision, false);
+						craftingValues->setCurrentPercentage(property, .5f);
+						craftingValues->setMaxPercentage(property, 1.0f);
+						craftingValues->setCurrentValue(property, currentvalue);
+					}
+				}
+			}
+		}
+	}
+	return modified;
 }
 
 void CraftingToolImplementation::finishAssembly(PlayerCreature* player, int clientCounter) {
@@ -1230,7 +1308,7 @@ void CraftingToolImplementation::createPrototype(PlayerCreature* player,
 		}
 
 		PlayerManager* playerManager = server->getPlayerManager();
-		playerManager->awardExperience(player, xpType, xp, false);
+		playerManager->awardExperience(player, xpType, xp, true);
 
 		manufactureSchematic->setCompleted();
 

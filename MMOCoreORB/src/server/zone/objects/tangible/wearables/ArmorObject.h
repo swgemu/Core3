@@ -65,9 +65,9 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
-	bool isSpecial(const String& special);
+	bool isSpecial(int type);
 
-	bool isVulnerable(const String& vulnerability);
+	bool isVulnerable(int type);
 
 	bool isArmorObject();
 
@@ -173,9 +173,9 @@ protected:
 
 	float lightSaber;
 
-	SortedVector<String> specialResistsVector;
+	int specialResists;
 
-	SortedVector<String> vulnerabilitesVector;
+	int vulnerabilites;
 
 	float specialBase;
 
@@ -199,14 +199,16 @@ public:
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
 private:
-	void setProtection(ManufactureSchematic* schematic, const String& type, float base);
+	void setProtection(ManufactureSchematic* schematic, int type, float base);
 
-	void setProtectionValue(const String& type, float value);
+	String getStringType(int type);
+
+	void setProtectionValue(int type, float value);
 
 public:
-	bool isSpecial(const String& special);
+	bool isSpecial(int type);
 
-	bool isVulnerable(const String& vulnerability);
+	bool isVulnerable(int type);
 
 	bool isArmorObject();
 
@@ -305,9 +307,9 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
-	bool isSpecial(const String& special);
+	bool isSpecial(int type);
 
-	bool isVulnerable(const String& vulnerability);
+	bool isVulnerable(int type);
 
 	bool isArmorObject();
 
@@ -363,9 +365,6 @@ public:
 
 	void setMindEncumbrance(int encumber);
 
-protected:
-	String _param0_isSpecial__String_;
-	String _param0_isVulnerable__String_;
 };
 
 class ArmorObjectHelper : public DistributedObjectClassHelper, public Singleton<ArmorObjectHelper> {

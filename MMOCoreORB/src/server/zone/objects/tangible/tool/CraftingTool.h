@@ -291,6 +291,8 @@ private:
 
 	void setInitialCraftingValues();
 
+	bool applyComponentBoost();
+
 public:
 	void experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter);
 

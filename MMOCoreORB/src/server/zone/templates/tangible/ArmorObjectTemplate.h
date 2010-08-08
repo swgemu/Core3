@@ -28,8 +28,7 @@ class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 	float acid;
 	float lightSaber;
 
-	SortedVector<String> specialResistsVector;
-	SortedVector<String> vulnerabilitesVector;
+	int vulnerabilites;
 
 	float specialBase;
 
@@ -45,21 +44,7 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 
-		LuaObject specialProtection = templateData->getObjectField("specialProtection");
-
-		for (int i = 1; i <= specialProtection.getTableSize(); ++i) {
-			specialResistsVector.add(specialProtection.getStringAt(i));
-		}
-
-		specialProtection.pop();
-
-		LuaObject vunerabilities = templateData->getObjectField("vunerability");
-
-		for (int i = 1; i <= vunerabilities.getTableSize(); ++i) {
-			vulnerabilitesVector.add(vunerabilities.getStringAt(i));
-		}
-
-		vunerabilities.pop();
+		vulnerabilites = templateData->getIntField("vunerability");
 
 		healthEncumbrance = templateData->getIntField("healthEncumbrance");
 		actionEncumbrance = templateData->getIntField("actionEncumbrance");
@@ -132,16 +117,12 @@ public:
 		return specialBase;
 	}
 
-	SortedVector<String> getSpecialResistsVector() const {
-		return specialResistsVector;
-	}
-
 	float getStun() const {
 		return stun;
 	}
 
-	SortedVector<String> getVulnerabilitesVector() const {
-		return vulnerabilitesVector;
+	int getVulnerabilites() const {
+		return vulnerabilites;
 	}
 
 	void setAcid(float acid) {
@@ -196,18 +177,9 @@ public:
 		this->specialBase = specialBase;
 	}
 
-	void setSpecialResistsVector(SortedVector<String> specialResistsVector) {
-		this->specialResistsVector = specialResistsVector;
-	}
-
 	void setStun(float stun) {
 		this->stun = stun;
 	}
-
-	void setVulnerabilitesVector(SortedVector<String> vulnerabilitesVector) {
-		this->vulnerabilitesVector = vulnerabilitesVector;
-	}
-
 };
 
 
