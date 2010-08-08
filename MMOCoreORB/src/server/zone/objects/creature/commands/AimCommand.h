@@ -45,14 +45,20 @@ which carries forward this exception.
 #ifndef AIMCOMMAND_H_
 #define AIMCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class AimCommand : public QueueCommand {
+class AimCommand : public CombatQueueCommand {
 public:
 
 	AimCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 0;
+		healthCostMultiplier = 3;
+
+		combatSpam = "aim";
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +69,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		int ret = doCombatAction(creature, target);
+
+		if (ret == SUCCESS) {
+			creature->setAimingState();
+		}
+
+		return ret;
 	}
 
 };

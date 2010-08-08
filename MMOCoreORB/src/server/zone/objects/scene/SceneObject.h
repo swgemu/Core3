@@ -314,6 +314,8 @@ public:
 
 	static const int SHUTTLEINSTALLATION = 0x1007;
 
+	static const int BANKINSTALLATION = 0x1008;
+
 	static const int TANGIBLE = 0x2000;
 
 	static const int AMMUNITION = 0x2001;
@@ -1148,6 +1150,8 @@ public:
 	static const int GARAGEINSTALLATION = 0x1006;
 
 	static const int SHUTTLEINSTALLATION = 0x1007;
+
+	static const int BANKINSTALLATION = 0x1008;
 
 	static const int TANGIBLE = 0x2000;
 
