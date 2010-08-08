@@ -18,6 +18,11 @@ int TravelTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player,
 	if (selectedID != 20)
 		return 0;
 
+	if (!player->isInRange(_this, 5)) {
+		player->sendSystemMessage("travel", "too_far");
+		return 1;
+	}
+
 	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(shuttle->getPlanet(), shuttle->getCity());
 	player->sendMessage(etpm);
 

@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef TUMBLETOSTANDINGCOMMAND_H_
 #define TUMBLETOSTANDINGCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/events/AnimationTask.h"
 
 class TumbleToStandingCommand : public QueueCommand {
 public:
@@ -62,6 +63,11 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		creature->setPosture(CreaturePosture::UPRIGHT);
+
+		Reference<Task*> task = new AnimationTask(creature, "tumble_to_kneeling");
+		task->schedule(500);
 
 		return SUCCESS;
 	}

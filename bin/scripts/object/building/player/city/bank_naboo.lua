@@ -46,6 +46,7 @@ object_building_player_city_bank_naboo = object_building_player_city_shared_bank
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
 	mapLocationsType1 = 2,
+	gameObjectType = 4104,
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeBank"}
 
