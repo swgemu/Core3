@@ -42,7 +42,58 @@
 
 
 object_weapon_ranged_rifle_rifle_dlt20 = object_weapon_ranged_rifle_shared_rifle_dlt20:new {
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	playerUseMask = ALL,
 
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, 
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	attackType = RANGEDATTACK,
+
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	damageType = ENERGY,
+
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = NONE,
+
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	xpType = "combat_rangedspecialize_rifle",
+	
+	-- See http://www.ocdsoft.com/files/certifications.xls
+	certificationsRequired = { "cert_rifle_dlt20" },
+	-- See http://www.ocdsoft.com/files/accuracy.xls
+	creatureAccuracyModifiers = { "rifle_accuracy" },
+
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "ranged_defense" },
+
+	-- Leave as "dodge" for now, may have additions later
+	defenderSecondaryDefenseModifiers = { "block" },
+
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "rifle_speed" },
+
+	-- Leave blank for now
+	damageModifiers = { },
+	
+
+	-- The values below are the default values.  To be used for blue frog objects primarily
+	healthAttackCost = 0,
+	actionAttackCost = 0,
+	mindAttackCost = 0,
+	forceCost = 0,
+
+	pointBlankAccuracy = 0,
+	pointBlankRange = 0,
+
+	idealRange = 0,
+	idealAccuracy = 0,
+
+	maxRange = 0,
+	maxRangeAccuracy = 0,
+
+	attackSpeed = 0
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_dlt20, "object/weapon/ranged/rifle/rifle_dlt20.iff")
