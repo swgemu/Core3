@@ -22,12 +22,24 @@ MeleeWeaponObject::~MeleeWeaponObject() {
 }
 
 
-void MeleeWeaponObject::initializeTransientMembers() {
+void MeleeWeaponObject::initializePrivateData() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((MeleeWeaponObjectImplementation*) _impl)->initializePrivateData();
+}
+
+void MeleeWeaponObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		method.executeWithVoidReturn();
 	} else
@@ -39,7 +51,7 @@ bool MeleeWeaponObject::isMeleeWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -119,10 +131,17 @@ MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(54):  		Logger.setLoggingName("MeleeWeaponObject");
 	Logger::setLoggingName("MeleeWeaponObject");
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(56):  		initializePrivateData();
+	initializePrivateData();
+}
+
+void MeleeWeaponObjectImplementation::initializePrivateData() {
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(60):  		super.maxRange = 5;
+	WeaponObjectImplementation::maxRange = 5;
 }
 
 bool MeleeWeaponObjectImplementation::isMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(60):  		return true;
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(66):  		return true;
 	return true;
 }
 
@@ -138,9 +157,12 @@ Packet* MeleeWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		initializePrivateData();
 		break;
 	case 7:
+		initializeTransientMembers();
+		break;
+	case 8:
 		resp->insertBoolean(isMeleeWeapon());
 		break;
 	default:
@@ -148,6 +170,10 @@ Packet* MeleeWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	}
 
 	return resp;
+}
+
+void MeleeWeaponObjectAdapter::initializePrivateData() {
+	((MeleeWeaponObjectImplementation*) impl)->initializePrivateData();
 }
 
 void MeleeWeaponObjectAdapter::initializeTransientMembers() {

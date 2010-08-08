@@ -34,12 +34,24 @@ void RifleWeaponObject::initializeTransientMembers() {
 		((RifleWeaponObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
-bool RifleWeaponObject::isRifleWeapon() {
+void RifleWeaponObject::initializePrivateData() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+
+		method.executeWithVoidReturn();
+	} else
+		((RifleWeaponObjectImplementation*) _impl)->initializePrivateData();
+}
+
+bool RifleWeaponObject::isRifleWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -119,17 +131,24 @@ RifleWeaponObjectImplementation::RifleWeaponObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(54):  		Logger.setLoggingName("RifleWeaponObject");
 	Logger::setLoggingName("RifleWeaponObject");
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(56):  		initializePrivateData();
+	initializePrivateData();
 }
 
 void RifleWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(58):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(60):  		super.initializeTransientMembers();
 	RangedWeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(60):  		Logger.setLoggingName("RifleWeaponObject");
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(62):  		Logger.setLoggingName("RifleWeaponObject");
 	Logger::setLoggingName("RifleWeaponObject");
 }
 
+void RifleWeaponObjectImplementation::initializePrivateData() {
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(66):  		super.maxRange = 65;
+	RangedWeaponObjectImplementation::maxRange = 65;
+}
+
 bool RifleWeaponObjectImplementation::isRifleWeapon() {
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(64):  		return true;
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(70):  		return true;
 	return true;
 }
 
@@ -148,6 +167,9 @@ Packet* RifleWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		initializeTransientMembers();
 		break;
 	case 7:
+		initializePrivateData();
+		break;
+	case 8:
 		resp->insertBoolean(isRifleWeapon());
 		break;
 	default:
@@ -159,6 +181,10 @@ Packet* RifleWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 void RifleWeaponObjectAdapter::initializeTransientMembers() {
 	((RifleWeaponObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void RifleWeaponObjectAdapter::initializePrivateData() {
+	((RifleWeaponObjectImplementation*) impl)->initializePrivateData();
 }
 
 bool RifleWeaponObjectAdapter::isRifleWeapon() {
