@@ -153,7 +153,8 @@ void SchematicMap::mapDraftSchematic(DraftSchematic* schematic) {
 			groupMap.put(schematic->getGroupName(), group);
 		}
 
-		group->add(schematic);
+		if(!group->contains(schematic))
+			group->add(schematic);
 	}
 
 	schematicIdMap.put(schematic->getSchematicID(), schematic);
@@ -167,7 +168,8 @@ void SchematicMap::mapDraftSchematic(DraftSchematic* schematic) {
 			groupMap.put("craftArtisanToolGroupA", group);
 		}
 
-		group->add(schematic);
+		if(!group->contains(schematic))
+			group->add(schematic);
 	}
 }
 

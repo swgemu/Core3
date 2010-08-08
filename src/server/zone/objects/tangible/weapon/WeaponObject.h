@@ -115,21 +115,21 @@ public:
 
 	static const int ENERGY = 2;
 
-	static const int ELECTRICITY = 3;
+	static const int BLAST = 4;
 
-	static const int STUN = 4;
+	static const int STUN = 8;
 
-	static const int BLAST = 5;
+	static const int LIGHTSABER = 16;
 
-	static const int HEAT = 6;
+	static const int HEAT = 32;
 
-	static const int COLD = 7;
+	static const int COLD = 64;
 
-	static const int ACID = 8;
+	static const int ACID = 128;
 
-	static const int LIGHTSABER = 9;
+	static const int ELECTRICITY = 256;
 
-	static const int FORCE = 10;
+	static const int FORCE = 512;
 
 	static const int MELEEATTACK = 0;
 
@@ -346,21 +346,21 @@ public:
 
 	static const int ENERGY = 2;
 
-	static const int ELECTRICITY = 3;
+	static const int BLAST = 4;
 
-	static const int STUN = 4;
+	static const int STUN = 8;
 
-	static const int BLAST = 5;
+	static const int LIGHTSABER = 16;
 
-	static const int HEAT = 6;
+	static const int HEAT = 32;
 
-	static const int COLD = 7;
+	static const int COLD = 64;
 
-	static const int ACID = 8;
+	static const int ACID = 128;
 
-	static const int LIGHTSABER = 9;
+	static const int ELECTRICITY = 256;
 
-	static const int FORCE = 10;
+	static const int FORCE = 512;
 
 	static const int MELEEATTACK = 0;
 

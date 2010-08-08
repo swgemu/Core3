@@ -8,6 +8,7 @@
 #include "ArmorObject.h"
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void ArmorObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -22,6 +23,8 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 		return;
 
 	ArmorObjectTemplate* armorTemplate = (ArmorObjectTemplate*) templateData;
+
+	vulnerabilites = armorTemplate->getVulnerabilites();
 
 	healthEncumbrance = armorTemplate->getHealthEncumbrance();
 	actionEncumbrance = armorTemplate->getActionEncumbrance();
@@ -62,59 +65,59 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pla
 		alm->insertAttribute("armorrating", "@obj_attr_n:armor_pierce_none"); //None
 
 	//Check for special protections
-	if (isSpecial("kineticeffectiveness") && kinetic >= 0.5) {
+	if (isSpecial(WeaponObject::KINETIC) && kinetic >= 0.5) {
 		StringBuffer txt;
 		txt << round(kinetic) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic",
 				txt.toString());
 	}
-	if (isSpecial("energyeffectiveness") && energy >= 0.5) {
+	if (isSpecial(WeaponObject::ENERGY) && energy >= 0.5) {
 		StringBuffer txt;
 		txt << round(energy) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy",
 				txt.toString());
 	}
-	if (isSpecial("electricaleffectiveness") && electricity >= 0.5) {
+	if (isSpecial(WeaponObject::ELECTRICITY) && electricity >= 0.5) {
 		StringBuffer txt;
 		txt << round(electricity) << "%";
 		alm->insertAttribute(
 				"cat_armor_special_protection.armor_eff_elemental_electrical",
 				txt.toString());
 	}
-	if (isSpecial("stuneffectiveness") && stun >= 0.5) {
+	if (isSpecial(WeaponObject::STUN) && stun >= 0.5) {
 		StringBuffer txt;
 		txt << round(stun) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun",
 				txt.toString());
 	}
-	if (isSpecial("blasteffectiveness") && blast >= 0.5) {
+	if (isSpecial(WeaponObject::BLAST) && blast >= 0.5) {
 		StringBuffer txt;
 		txt << round(blast) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast",
 				txt.toString());
 	}
-	if (isSpecial("heateffectiveness") && heat >= 0.5) {
+	if (isSpecial(WeaponObject::HEAT) && heat >= 0.5) {
 		StringBuffer txt;
 		txt << round(heat) << "%";
 		alm->insertAttribute(
 				"cat_armor_special_protection.armor_eff_elemental_heat",
 				txt.toString());
 	}
-	if (isSpecial("coldeffectiveness") && cold >= 0.5) {
+	if (isSpecial(WeaponObject::COLD) && cold >= 0.5) {
 		StringBuffer txt;
 		txt << round(cold) << "%";
 		alm->insertAttribute(
 				"cat_armor_special_protection.armor_eff_elemental_cold",
 				txt.toString());
 	}
-	if (isSpecial("acideffectiveness") && acid >= 0.5) {
+	if (isSpecial(WeaponObject::ACID) && acid >= 0.5) {
 		StringBuffer txt;
 		txt << round(acid) << "%";
 		alm->insertAttribute(
 				"cat_armor_special_protection.armor_eff_elemental_acid",
 				txt.toString());
 	}
-	if (isSpecial("restraineffectiveness") && lightSaber >= 0.5) {
+	if (isSpecial(WeaponObject::LIGHTSABER) && lightSaber >= 0.5) {
 		StringBuffer txt;
 		txt << round(lightSaber) << "%";
 		alm->insertAttribute(
@@ -122,59 +125,59 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pla
 				txt.toString());
 	}
 	//Check for Effectiveness protections(Normal)
-	if (!isSpecial("kineticeffectiveness") && kinetic >= 0.5) {
+	if (!isSpecial(WeaponObject::KINETIC) && kinetic >= 0.5) {
 		StringBuffer txt;
 		txt << round(kinetic) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic",
 				txt.toString());
 	}
-	if (!isSpecial("energyeffectiveness") && energy >= 0.5) {
+	if (!isSpecial(WeaponObject::ENERGY) && energy >= 0.5) {
 		StringBuffer txt;
 		txt << round(energy) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy",
 				txt.toString());
 	}
-	if (!isSpecial("electricaleffectiveness") && electricity >= 0.5) {
+	if (!isSpecial(WeaponObject::ELECTRICITY) && electricity >= 0.5) {
 		StringBuffer txt;
 		txt << round(electricity) << "%";
 		alm->insertAttribute(
 				"cat_armor_effectiveness.armor_eff_elemental_electrical",
 				txt.toString());
 	}
-	if (!isSpecial("stuneffectiveness") && stun >= 0.5) {
+	if (!isSpecial(WeaponObject::STUN) && stun >= 0.5) {
 		StringBuffer txt;
 		txt << round(stun) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun",
 				txt.toString());
 	}
-	if (!isSpecial("blasteffectiveness") && blast >= 0.5) {
+	if (!isSpecial(WeaponObject::BLAST) && blast >= 0.5) {
 		StringBuffer txt;
 		txt << round(blast) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast",
 				txt.toString());
 	}
-	if (!isSpecial("heateffectiveness") && heat >= 0.5) {
+	if (!isSpecial(WeaponObject::HEAT) && heat >= 0.5) {
 		StringBuffer txt;
 		txt << round(heat) << "%";
 		alm->insertAttribute(
 				"cat_armor_effectiveness.armor_eff_elemental_heat",
 				txt.toString());
 	}
-	if (!isSpecial("coldeffectiveness") && cold >= 0.5) {
+	if (!isSpecial(WeaponObject::COLD) && cold >= 0.5) {
 		StringBuffer txt;
 		txt << round(cold) << "%";
 		alm->insertAttribute(
 				"cat_armor_effectiveness.armor_eff_elemental_cold",
 				txt.toString());
 	}
-	if (!isSpecial("acideffectiveness") && acid >= 0.5) {
+	if (!isSpecial(WeaponObject::ACID) && acid >= 0.5) {
 		StringBuffer txt;
 		txt << round(acid) << "%";
 		alm->insertAttribute(
 				"cat_armor_effectiveness.armor_eff_elemental_acid",
 				txt.toString());
 	}
-	if (!isSpecial("restraineffectiveness") && lightSaber >= 0.5) {
+	if (!isSpecial(WeaponObject::LIGHTSABER) && lightSaber >= 0.5) {
 		StringBuffer txt;
 		txt << round(lightSaber) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint",
@@ -254,7 +257,16 @@ void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schem
 	CraftingValues* craftingValues = schematic->getCraftingValues();
 	//craftingValues->toString();
 
-	setRating((int) craftingValues->getCurrentValue("armor_rating"));
+	if(schematic->getFirstCraftingUpdate()) {
+
+		int special = craftingValues->getCurrentValue("armor_special_type");
+		specialResists = special;
+
+		setRating((int) craftingValues->getCurrentValue("armor_rating"));
+
+		setMaxCondition((int) craftingValues->getCurrentValue("armor_integrity"));
+		setConditionDamage(0);
+	}
 
 	setHealthEncumbrance((int) craftingValues->getCurrentValue(
 			"armor_health_encumbrance"));
@@ -265,24 +277,19 @@ void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schem
 
 	float base = craftingValues->getCurrentValue("armor_effectiveness");
 
-	setProtection(schematic, "kineticeffectiveness", base);
-	setProtection(schematic, "energyeffectiveness", base);
-	setProtection(schematic, "electricaleffectiveness", base);
-	setProtection(schematic, "stuneffectiveness", base);
-	setProtection(schematic, "blasteffectiveness", base);
-	setProtection(schematic, "heateffectiveness", base);
-	setProtection(schematic, "coldeffectiveness", base);
-	setProtection(schematic, "acideffectiveness", base);
-	setProtection(schematic, "restraineffectiveness", base);
-
-	setMaxCondition((int) craftingValues->getCurrentValue("armor_integrity"));
-	setConditionDamage(0);
-
-	schematic->setFirstCraftingUpdate();
+	setProtection(schematic, WeaponObject::KINETIC, base);
+	setProtection(schematic, WeaponObject::ENERGY, base);
+	setProtection(schematic, WeaponObject::ELECTRICITY, base);
+	setProtection(schematic, WeaponObject::STUN, base);
+	setProtection(schematic, WeaponObject::BLAST, base);
+	setProtection(schematic, WeaponObject::HEAT, base);
+	setProtection(schematic, WeaponObject::COLD, base);
+	setProtection(schematic, WeaponObject::ACID, base);
+	setProtection(schematic, WeaponObject::LIGHTSABER, base);
 }
 
 void ArmorObjectImplementation::setProtection(ManufactureSchematic* schematic,
-		const String& type, float base) {
+		int type, float base) {
 
 	CraftingValues* craftingValues = schematic->getCraftingValues();
 
@@ -290,7 +297,7 @@ void ArmorObjectImplementation::setProtection(ManufactureSchematic* schematic,
 
 	if (value == CraftingValues::VALUENOTFOUND
 			&& schematic->getFirstCraftingUpdate()) {
-		craftingValues->lockValue(type);
+		craftingValues->lockValue(getStringType(type));
 	}
 
 	if (value == CraftingValues::VALUENOTFOUND) {
@@ -306,26 +313,59 @@ void ArmorObjectImplementation::setProtection(ManufactureSchematic* schematic,
 	}
 }
 
-void ArmorObjectImplementation::setProtectionValue(const String& type, float value) {
+String ArmorObjectImplementation::getStringType(int type) {
 
-	if (type == "kineticeffectiveness") {
-		setKinetic(value);
-	} else if (type == "energyeffectiveness") {
-		setEnergy(value);
-	} else if (type == "electricaleffectiveness") {
-		setElectricity(value);
-	} else if (type == "stuneffectiveness") {
-		setStun(value);
-	} else if (type == "blasteffectiveness") {
-		setBlast(value);
-	} else if (type == "heateffectiveness") {
-		setHeat(value);
-	} else if (type == "coldeffectiveness") {
-		setCold(value);
-	} else if (type == "acideffectiveness") {
-		setAcid(value);
-	} else if (type == "restraineffectiveness") {
-		setLightSaber(value);
+	switch(type) {
+	case WeaponObject::KINETIC:
+		return "kineticeffectiveness";
+		break;
+	case WeaponObject::ENERGY:
+		return "energyeffectiveness";
+	break;
+	case WeaponObject::ELECTRICITY:
+		return "electricaleffectiveness";
+		break;
+	case WeaponObject::STUN:
+		return "stuneffectiveness";
+		break;
+	case WeaponObject::BLAST:
+		return "blasteffectiveness";
+		break;
+	case WeaponObject::HEAT:
+		return "heateffectiveness";
+		break;
+	case WeaponObject::COLD:
+		return "coldeffectiveness";
+		break;
+	case WeaponObject::ACID:
+		return "acideffectiveness";
+		break;
+	case WeaponObject::LIGHTSABER:
+		return "restraineffectiveness";
+		break;
+	default:
+		return "";
 	}
+}
 
+void ArmorObjectImplementation::setProtectionValue(int type, float value) {
+
+	if (type & 0x1)
+		setKinetic(value);
+	if (type & 0x2)
+		setEnergy(value);
+	if (type & 0x4)
+		setBlast(value);
+	if (type & 0x8)
+		setStun(value);
+	if (type & 0x10)
+		setLightSaber(value);
+	if (type & 0x20)
+		setHeat(value);
+	if (type & 0x40)
+		setCold(value);
+	if (type & 0x80)
+		setAcid(value);
+	if (type & 0x100)
+		setElectricity(value);
 }

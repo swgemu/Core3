@@ -80,6 +80,9 @@ void SchematicList::loadFromSchematicIDs(Vector<uint32>& schematics) {
 
 bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int updates) {
 
+	if(contains(schematic))
+		return false;
+
 	bool val = vector.add(schematic);
 
 	if (message != NULL) {
@@ -94,6 +97,27 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 	}
 
 	return val;
+}
+
+bool SchematicList::contains(DraftSchematic* schematic) {
+
+	if(schematic == NULL)
+		return false;
+
+	for(int i = 0; i < vector.size(); ++i) {
+
+		DraftSchematic* existingSchematic = vector.get(i);
+
+		if(existingSchematic == NULL)
+			continue;
+
+		if(existingSchematic->getClientObjectCRC() ==
+				schematic->getClientObjectCRC())
+
+			return true;
+	}
+
+	return false;
 }
 
 Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(

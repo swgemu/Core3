@@ -89,7 +89,7 @@ object_weapon_melee_2h_sword_2h_sword_blacksun_hack = object_weapon_melee_2h_swo
 	        pointBlankRange = -8,
 	
 	        idealRange = 11,
-	        idealAccuracy = 6
+	        idealAccuracy = 6,
 	
 	        maxRange = -8,
 	        maxRangeAccuracy = 5,

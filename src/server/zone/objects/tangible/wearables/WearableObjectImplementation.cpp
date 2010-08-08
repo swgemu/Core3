@@ -59,4 +59,6 @@ void WearableObjectImplementation::generateSockets(ManufactureSchematic* schemat
 
 		setMaxSockets(generatedCount);
 	}
+
+	socketsGenerated = true;
 }

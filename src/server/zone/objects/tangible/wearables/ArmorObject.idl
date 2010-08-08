@@ -67,10 +67,8 @@ class ArmorObject extends WearableObject {
 	protected float acid;
 	protected float lightSaber;
 
-	@dereferenced
-	protected SortedVector<string> specialResistsVector;
-	@dereferenced
-	protected SortedVector<string> vulnerabilitesVector;
+	protected int specialResists;
+	protected int vulnerabilites;
 
 	protected float specialBase;
 	
@@ -125,16 +123,19 @@ class ArmorObject extends WearableObject {
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 	
-	private native void setProtection(ManufactureSchematic schematic, final string type, float base);
+	private native void setProtection(ManufactureSchematic schematic, int type, float base);
 	
-	private native void setProtectionValue(final string type, float value);
+	native string getStringType(int type);
+
 	
-	public boolean isSpecial(final string special) {
-		return specialResistsVector.contains(special);
+	private native void setProtectionValue(int type, float value);
+	
+	public boolean isSpecial(int type) {
+		return specialResists & type;
 	}
 	
-	public boolean isVulnerable(final string vulnerability) {
-		return vulnerabilitesVector.contains(vulnerability);
+	public boolean isVulnerable(int type) {
+		return vulnerabilites & type;
 	}
 	
 	public boolean isArmorObject() {
