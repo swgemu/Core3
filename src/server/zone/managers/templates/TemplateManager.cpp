@@ -208,6 +208,10 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("LIGHTSABER", WeaponObject::LIGHTSABER);
 	luaTemplatesInstance->setGlobalInt("FORCE", WeaponObject::FORCE);
 
+	luaTemplatesInstance->setGlobalInt("NONE", WeaponObject::NONE);
+	luaTemplatesInstance->setGlobalInt("LIGHT", WeaponObject::LIGHT);
+	luaTemplatesInstance->setGlobalInt("MEDIUM", WeaponObject::MEDIUM);
+	luaTemplatesInstance->setGlobalInt("HEAVY", WeaponObject::HEAVY);
 
 	luaTemplatesInstance->setGlobalInt("MELEEATTACK", WeaponObject::MELEEATTACK);
 	luaTemplatesInstance->setGlobalInt("RANGEDATTACK", WeaponObject::RANGEDATTACK);
