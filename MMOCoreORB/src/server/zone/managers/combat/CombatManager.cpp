@@ -902,24 +902,24 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, CombatQueue
 	int mind = (int) (weapon->getMindAttackCost() * command->getMindCostMultiplier());
 	int force = (int) (weapon->getForceCost() * command->getForceCostMultiplier());
 
-	if (health > 0) {
-		if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
-			return false;
+	if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
+		return false;
 
+	if (attacker->getHAM(CreatureAttribute::ACTION) <= action)
+		return false;
+
+	if (attacker->getHAM(CreatureAttribute::MIND) <= mind)
+		return false;
+
+	if (health > 0) {
 		attacker->inflictDamage(attacker, CreatureAttribute::HEALTH, health, true);
 	}
 
 	if (action > 0) {
-		if (attacker->getHAM(CreatureAttribute::ACTION) <= action)
-			return false;
-
 		attacker->inflictDamage(attacker, CreatureAttribute::ACTION, action, true);
 	}
 
 	if (mind > 0) {
-		if (attacker->getHAM(CreatureAttribute::MIND) <= mind)
-			return false;
-
 		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true);
 	}
 
