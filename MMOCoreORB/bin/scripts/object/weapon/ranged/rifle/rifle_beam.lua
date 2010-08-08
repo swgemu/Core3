@@ -58,10 +58,10 @@ object_weapon_ranged_rifle_rifle_beam = object_weapon_ranged_rifle_shared_rifle_
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
 	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
-	xpType = "combat_rangedspecialize_heavy",
+	xpType = "combat_rangedspecialize_rifle",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_rifle_beam" },
+	certificationsRequired = { "cert_rifle_cdef" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "rifle_accuracy" },
 
@@ -79,9 +79,9 @@ object_weapon_ranged_rifle_rifle_beam = object_weapon_ranged_rifle_shared_rifle_
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 26,
+	actionAttackCost = 58,
+	mindAttackCost = 55,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -90,10 +90,13 @@ object_weapon_ranged_rifle_rifle_beam = object_weapon_ranged_rifle_shared_rifle_
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
-
-	attackSpeed = 0
+	
+	minDamage = 53,
+	maxDamage = 95,
+	
+	attackSpeed = 6.2
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_beam, "object/weapon/ranged/rifle/rifle_beam.iff")

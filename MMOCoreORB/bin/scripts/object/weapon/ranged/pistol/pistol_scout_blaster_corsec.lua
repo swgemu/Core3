@@ -62,7 +62,7 @@ object_weapon_ranged_pistol_pistol_scout_blaster_corsec = object_weapon_ranged_p
 	xpType = "combat_rangedspecialize_pistol",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "" },
+	certificationsRequired = { "cert_pistol_scout_blaster" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "pistol_accuracy" },
 
@@ -80,9 +80,9 @@ object_weapon_ranged_pistol_pistol_scout_blaster_corsec = object_weapon_ranged_p
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 13,
+	actionAttackCost = 26,
+	mindAttackCost = 13,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -91,10 +91,13 @@ object_weapon_ranged_pistol_pistol_scout_blaster_corsec = object_weapon_ranged_p
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 25,
+	maxDamage = 56,
+
+	attackSpeed = 4
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_scout_blaster_corsec, "object/weapon/ranged/pistol/pistol_scout_blaster_corsec.iff")

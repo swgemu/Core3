@@ -79,9 +79,9 @@ object_weapon_ranged_carbine_carbine_ee3 = object_weapon_ranged_carbine_shared_c
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 44,
+	actionAttackCost = 36,
+	mindAttackCost = 20,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -90,10 +90,13 @@ object_weapon_ranged_carbine_carbine_ee3 = object_weapon_ranged_carbine_shared_c
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 35,
+	maxDamage = 91,
+
+	attackSpeed = 4.7
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_carbine_ee3, "object/weapon/ranged/carbine/carbine_ee3.iff")
