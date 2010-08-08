@@ -51,11 +51,15 @@ public:
 			specialResistsVector.add(specialProtection.getStringAt(i));
 		}
 
+		specialProtection.pop();
+
 		LuaObject vunerabilities = templateData->getObjectField("vunerability");
 
 		for (int i = 1; i <= vunerabilities.getTableSize(); ++i) {
 			vulnerabilitesVector.add(vunerabilities.getStringAt(i));
 		}
+
+		vunerabilities.pop();
 
 		healthEncumbrance = templateData->getIntField("healthEncumbrance");
 		actionEncumbrance = templateData->getIntField("actionEncumbrance");
