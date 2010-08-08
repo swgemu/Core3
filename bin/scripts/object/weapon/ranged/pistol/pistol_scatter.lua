@@ -87,14 +87,17 @@ object_weapon_ranged_pistol_pistol_scatter = object_weapon_ranged_pistol_shared_
 
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	
+	minDamage = 100,
+	maxDamage = 200,
 
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 45,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	attackSpeed = 1
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_scatter, "object/weapon/ranged/pistol/pistol_scatter.iff")

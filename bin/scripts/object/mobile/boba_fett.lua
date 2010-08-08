@@ -46,15 +46,16 @@ object_mobile_boba_fett = object_mobile_shared_boba_fett:new {
 	
 	armor = 3,
 
-	kinetic = 50,
-	energy = 10,
-	electricity = 10,
-	stun = 10,
-	blast = 10,
-	heat = 10,
-	cold = 10,
-	acid = 10,
-	lightSaber = 10,
+	kinetic = 90,
+	energy = 90,
+	electricity = 90,
+	stun = 90,
+	blast = 90,
+	heat = 90,
+	cold = 90,
+	acid = 90,
+	
+	baseHAM = { 300000, 300, 300, 300000, 300, 300, 300000, 300, 300 },
 	
 	level = 300,
 	
