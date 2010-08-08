@@ -43,6 +43,59 @@
 
 object_weapon_melee_2h_sword_2h_sword_maul = object_weapon_melee_2h_sword_shared_2h_sword_maul:new {
 
+-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	        playerUseMask = ALL,
+	
+	        -- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	        -- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	        attackType = MELEEATTACK,
+	
+	        -- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	        damageType = BLAST,
+	
+	        -- NONE, LIGHT, MEDIUM, HEAVY
+	        armorPiercing = MEDIUM,
+	
+	        -- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	        -- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	        -- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	        xpType = "combat_meleespecialize_twohand",
+	       
+	        -- See http://www.ocdsoft.com/files/certifications.xls
+	        certificationsRequired = { "cert_sword_2h_maul" },
+	        -- See http://www.ocdsoft.com/files/accuracy.xls
+	        creatureAccuracyModifiers = { "twohandedmelee_accuracy" },
+	
+	        -- See http://www.ocdsoft.com/files/defense.xls
+	        defenderDefenseModifiers = { "melee_defense" },
+	
+	        -- Leave as "dodge" for now, may have additions later
+	        defenderSecondaryDefenseModifiers = { "dodge" },
+	
+	        -- See http://www.ocdsoft.com/files/speed.xls
+	        speedModifiers = { "twohandmelee_speed" },
+	
+	        -- Leave blank for now
+	        damageModifiers = { },
+	       
+	
+	        -- The values below are the default values.  To be used for blue frog objects primarily
+	        healthAttackCost = 116,
+	        actionAttackCost = 37,
+	        mindAttackCost = 25,
+	        forceCost = 0,
+	
+	        pointBlankAccuracy = 0,
+	        pointBlankRange = -19,
+	
+	        idealRange = -20,
+	        idealAccuracy = 3,
+	
+	        maxRange = -19,
+	        maxRangeAccuracy = 5,
+	
+	        attackSpeed = 5.4
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_2h_sword_maul, "object/weapon/melee/2h_sword/2h_sword_maul.iff")

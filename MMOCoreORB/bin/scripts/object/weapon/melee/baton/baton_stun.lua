@@ -43,6 +43,60 @@
 
 object_weapon_melee_baton_baton_stun = object_weapon_melee_baton_shared_baton_stun:new {
 
+-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	        playerUseMask = ALL,
+	
+	        -- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	        -- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	        attackType = MELEEATTACK,
+	
+	        -- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	        damageType = STUN,
+	
+	        -- NONE, LIGHT, MEDIUM, HEAVY
+	        armorPiercing = NONE,
+	
+	        -- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	        -- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	        -- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	        xpType = "combat_meleespecialize_onehand",
+	       
+	        -- See http://www.ocdsoft.com/files/certifications.xls
+	        certificationsRequired = { "cert_baton_stun" },
+	        -- See http://www.ocdsoft.com/files/accuracy.xls
+	        creatureAccuracyModifiers = { "onehandmelee_accuracy" },
+	
+	        -- See http://www.ocdsoft.com/files/defense.xls
+	        defenderDefenseModifiers = { "melee_defense" },
+	
+	        -- Leave as "dodge" for now, may have additions later
+	        defenderSecondaryDefenseModifiers = { "dodge" },
+	
+	        -- See http://www.ocdsoft.com/files/speed.xls
+	        speedModifiers = { "onehandmelee_speed" },
+	
+	        -- Leave blank for now
+	        damageModifiers = { },
+	       
+	
+	        -- The values below are the default values.  To be used for blue frog objects primarily
+	        healthAttackCost = 20,
+	        actionAttackCost = 51,
+	        mindAttackCost = 45,
+	        forceCost = 0,
+	
+	        pointBlankAccuracy = 0,
+	        pointBlankRange = 9,
+	
+	        idealRange = 9,
+	        idealAccuracy = 2,
+	
+	        maxRange = 9,
+	        maxRangeAccuracy = 4,
+	
+	        attackSpeed = 2.5
+
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_baton_baton_stun, "object/weapon/melee/baton/baton_stun.iff")
