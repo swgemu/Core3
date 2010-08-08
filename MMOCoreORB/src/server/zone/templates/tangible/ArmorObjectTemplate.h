@@ -45,6 +45,18 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 
+		LuaObject specialProtection = templateData->getObjectField("specialProtection");
+
+		for (int i = 1; i <= specialProtection.getTableSize(); ++i) {
+			specialResistsVector.add(specialProtection.getStringAt(i));
+		}
+
+		LuaObject vunerabilities = templateData->getObjectField("vunerability");
+
+		for (int i = 1; i <= vunerabilities.getTableSize(); ++i) {
+			vulnerabilitesVector.add(vunerabilities.getStringAt(i));
+		}
+
 		healthEncumbrance = templateData->getIntField("healthEncumbrance");
 		actionEncumbrance = templateData->getIntField("actionEncumbrance");
 		mindEncumbrance = templateData->getIntField("mindEncumbrance");
