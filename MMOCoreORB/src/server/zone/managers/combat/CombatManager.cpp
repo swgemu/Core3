@@ -830,7 +830,12 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 	if (rand <= (int) accTotal) // Hit, not defended
 		return 0;
 
-	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
+	ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
+
+	if (targetWeapon == NULL)
+		return 0;
+
+	Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
 
 	int selectOption = defenseAccMods->size();
 

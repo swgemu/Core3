@@ -69,7 +69,7 @@ object_weapon_ranged_carbine_carbine_dxr6 = object_weapon_ranged_carbine_shared_
 	defenderDefenseModifiers = { "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "block" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "carbine_speed" },
@@ -79,21 +79,24 @@ object_weapon_ranged_carbine_carbine_dxr6 = object_weapon_ranged_carbine_shared_
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 34,
+	actionAttackCost = 49,
+	mindAttackCost = 25,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	
+	minDamage = 116,
+	maxDamage = 216,
 
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	attackSpeed = 2.4
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_carbine_dxr6, "object/weapon/ranged/carbine/carbine_dxr6.iff")
