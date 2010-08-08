@@ -91,26 +91,6 @@ class WeaponObject extends TangibleObject {
 	
 	protected transient SharedWeaponObjectTemplate weaponTemplate;
 	
-	/*protected string xpType;
-	
-	@dereferenced
-	protected Vector<string> damageModifiers;
-	
-	@dereferenced
-	protected Vector<string> speedModifiers;
-	
-	@dereferenced
-	protected Vector<string> creatureAccuracyModifiers;
-	
-	@dereferenced
-	protected Vector<string> defenderDefenseModifiers;
-	
-	@dereferenced
-	protected Vector<string> certificationsRequired;
-	
-	@dereferenced
-	protected Vector<string> defenderSecondaryDefenseModifiers;*/
-	
 	public static final int NONE = 0;
 	public static final int LIGHT = 1;
 	public static final int MEDIUM = 2;

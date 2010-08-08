@@ -35,6 +35,8 @@ class PistolWeaponObject : public RangedWeaponObject {
 public:
 	PistolWeaponObject();
 
+	void initializePrivateData();
+
 	void initializeTransientMembers();
 
 	bool isPistolWeapon();
@@ -67,6 +69,8 @@ public:
 	PistolWeaponObjectImplementation();
 
 	PistolWeaponObjectImplementation(DummyConstructorParameter* param);
+
+	void initializePrivateData();
 
 	void initializeTransientMembers();
 
@@ -110,6 +114,8 @@ public:
 	PistolWeaponObjectAdapter(PistolWeaponObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializePrivateData();
 
 	void initializeTransientMembers();
 

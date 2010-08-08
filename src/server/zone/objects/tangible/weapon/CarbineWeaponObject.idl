@@ -51,6 +51,12 @@ import server.zone.Zone;
 class CarbineWeaponObject extends RangedWeaponObject {
 	public CarbineWeaponObject() {		
 		Logger.setLoggingName("CarbineWeaponObject");
+		
+		initializePrivateData();
+	}
+	
+	public void initializePrivateData() {
+		super.maxRange = 65;
 	}
 	
 	public void initializeTransientMembers() {

@@ -50,8 +50,14 @@ import server.zone.Zone;
 
 
 class PistolWeaponObject extends RangedWeaponObject {
-	public PistolWeaponObject() {		
+	public PistolWeaponObject() {
 		Logger.setLoggingName("PistolWeaponObject");
+		
+		initializePrivateData();
+	}
+	
+	public void initializePrivateData() {
+		super.maxRange = 45;
 	}
 	
 	public void initializeTransientMembers() {

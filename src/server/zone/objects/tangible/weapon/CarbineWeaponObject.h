@@ -35,6 +35,8 @@ class CarbineWeaponObject : public RangedWeaponObject {
 public:
 	CarbineWeaponObject();
 
+	void initializePrivateData();
+
 	void initializeTransientMembers();
 
 	bool isCarbineWeapon();
@@ -67,6 +69,8 @@ public:
 	CarbineWeaponObjectImplementation();
 
 	CarbineWeaponObjectImplementation(DummyConstructorParameter* param);
+
+	void initializePrivateData();
 
 	void initializeTransientMembers();
 
@@ -110,6 +114,8 @@ public:
 	CarbineWeaponObjectAdapter(CarbineWeaponObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializePrivateData();
 
 	void initializeTransientMembers();
 

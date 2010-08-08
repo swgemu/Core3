@@ -773,290 +773,290 @@ void WeaponObjectImplementation::_serializationHelperMethod() {
 
 WeaponObjectImplementation::WeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(142):  		certified = false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(122):  		certified = false;
 	certified = false;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(143):  		armorPiercing = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(123):  		armorPiercing = 0;
 	armorPiercing = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(145):  		healthAttackCost = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(125):  		healthAttackCost = 0;
 	healthAttackCost = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(146):  		actionAttackCost = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(126):  		actionAttackCost = 0;
 	actionAttackCost = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(147):  		mindAttackCost = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(127):  		mindAttackCost = 0;
 	mindAttackCost = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(148):  		forceCost = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(128):  		forceCost = 0;
 	forceCost = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(150):  		pointBlankAccuracy = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(130):  		pointBlankAccuracy = 0;
 	pointBlankAccuracy = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(151):  		pointBlankRange = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(131):  		pointBlankRange = 0;
 	pointBlankRange = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(153):  		idealRange = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(133):  		idealRange = 0;
 	idealRange = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(154):  		idealAccuracy = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(134):  		idealAccuracy = 0;
 	idealAccuracy = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(156):  		maxRange = 5;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(136):  		maxRange = 5;
 	maxRange = 5;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(157):  		maxRangeAccuracy = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(137):  		maxRangeAccuracy = 0;
 	maxRangeAccuracy = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(159):  		damageType = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(139):  		damageType = 0;
 	damageType = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(161):  		minDamage = 1;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(141):  		minDamage = 1;
 	minDamage = 1;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(162):  		maxDamage = 10;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(142):  		maxDamage = 10;
 	maxDamage = 10;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(164):  		woundsRatio = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(144):  		woundsRatio = 0;
 	woundsRatio = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(166):  		area = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(146):  		area = 0;
 	area = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(168):  		attackSpeed = 1;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(148):  		attackSpeed = 1;
 	attackSpeed = 1;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(170):  		weaponTemplate = null;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(150):  		weaponTemplate = null;
 	weaponTemplate = NULL;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(172):  		Logger.setLoggingName("WeaponObject");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(152):  		Logger.setLoggingName("WeaponObject");
 	Logger::setLoggingName("WeaponObject");
 }
 
 Vector<String>* WeaponObjectImplementation::getDamageModifiers() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(204):  		return weaponTemplate.getDamageModifiers();
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(184):  		return weaponTemplate.getDamageModifiers();
 	return weaponTemplate->getDamageModifiers();
 }
 
 Vector<String>* WeaponObjectImplementation::getSpeedModifiers() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(209):  		return weaponTemplate.getSpeedModifiers();
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(189):  		return weaponTemplate.getSpeedModifiers();
 	return weaponTemplate->getSpeedModifiers();
 }
 
 Vector<String>* WeaponObjectImplementation::getCreatureAccuracyModifiers() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(214):  		return weaponTemplate.getCreatureAccuracyModifiers();
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(194):  		return weaponTemplate.getCreatureAccuracyModifiers();
 	return weaponTemplate->getCreatureAccuracyModifiers();
 }
 
 Vector<String>* WeaponObjectImplementation::getDefenderDefenseModifiers() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(219):  		return weaponTemplate.getDefenderDefenseModifiers();
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(199):  		return weaponTemplate.getDefenderDefenseModifiers();
 	return weaponTemplate->getDefenderDefenseModifiers();
 }
 
 Vector<String>* WeaponObjectImplementation::getDefenderSecondaryDefenseModifiers() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(224):  		return weaponTemplate.getDefenderSecondaryDefenseModifiers();
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(204):  		return weaponTemplate.getDefenderSecondaryDefenseModifiers();
 	return weaponTemplate->getDefenderSecondaryDefenseModifiers();
 }
 
 void WeaponObjectImplementation::setCertified(bool cert) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(228):  		certified = cert;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(208):  		certified = cert;
 	certified = cert;
 }
 
 int WeaponObjectImplementation::getAttackType() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(232):  		return attackType;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(212):  		return attackType;
 	return attackType;
 }
 
 bool WeaponObjectImplementation::isCertified() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(236):  		return certified;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(216):  		return certified;
 	return certified;
 }
 
 int WeaponObjectImplementation::getPointBlankAccuracy() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(240):  		return pointBlankAccuracy;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(220):  		return pointBlankAccuracy;
 	return pointBlankAccuracy;
 }
 
 void WeaponObjectImplementation::setPointBlankAccuracy(int value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(244):  		pointBlankAccuracy = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(224):  		pointBlankAccuracy = value;
 	pointBlankAccuracy = value;
 }
 
 int WeaponObjectImplementation::getPointBlankRange() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(248):  		return pointBlankRange;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(228):  		return pointBlankRange;
 	return pointBlankRange;
 }
 
 int WeaponObjectImplementation::getIdealRange() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(252):  		return idealRange;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(232):  		return idealRange;
 	return idealRange;
 }
 
 void WeaponObjectImplementation::setIdealRange(int value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(256):  		idealRange = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(236):  		idealRange = value;
 	idealRange = value;
 }
 
 int WeaponObjectImplementation::getMaxRange() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(260):  		return maxRange;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(240):  		return maxRange;
 	return maxRange;
 }
 
 void WeaponObjectImplementation::setMaxRange(int value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(264):  		maxRange = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(244):  		maxRange = value;
 	maxRange = value;
 }
 
 int WeaponObjectImplementation::getIdealAccuracy() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(268):  		return idealAccuracy;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(248):  		return idealAccuracy;
 	return idealAccuracy;
 }
 
 void WeaponObjectImplementation::setIdealAccuracy(int value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(272):  		idealAccuracy = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(252):  		idealAccuracy = value;
 	idealAccuracy = value;
 }
 
 int WeaponObjectImplementation::getArmorPiercing() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(276):  		return armorPiercing;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(256):  		return armorPiercing;
 	return armorPiercing;
 }
 
 int WeaponObjectImplementation::getMaxRangeAccuracy() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(280):  		return maxRangeAccuracy;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(260):  		return maxRangeAccuracy;
 	return maxRangeAccuracy;
 }
 
 void WeaponObjectImplementation::setMaxRangeAccuracy(int value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(284):  		maxRangeAccuracy = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(264):  		maxRangeAccuracy = value;
 	maxRangeAccuracy = value;
 }
 
 float WeaponObjectImplementation::getAttackSpeed() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(288):  		return attackSpeed;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(268):  		return attackSpeed;
 	return attackSpeed;
 }
 
 void WeaponObjectImplementation::setAttackSpeed(float value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(292):  		attackSpeed = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(272):  		attackSpeed = value;
 	attackSpeed = value;
 }
 
 float WeaponObjectImplementation::getMaxDamage() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(296):  		return maxDamage;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(276):  		return maxDamage;
 	return maxDamage;
 }
 
 void WeaponObjectImplementation::setMaxDamage(float value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(300):  		maxDamage = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(280):  		maxDamage = value;
 	maxDamage = value;
 }
 
 float WeaponObjectImplementation::getMinDamage() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(304):  		return minDamage;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(284):  		return minDamage;
 	return minDamage;
 }
 
 void WeaponObjectImplementation::setMinDamage(float value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(308):  		minDamage = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(288):  		minDamage = value;
 	minDamage = value;
 }
 
 float WeaponObjectImplementation::getWoundsRatio() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(312):  		return woundsRatio;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(292):  		return woundsRatio;
 	return woundsRatio;
 }
 
 void WeaponObjectImplementation::setWoundsRatio(float value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(316):  		woundsRatio = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(296):  		woundsRatio = value;
 	woundsRatio = value;
 }
 
 int WeaponObjectImplementation::getHealthAttackCost() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(320):  		return healthAttackCost;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(300):  		return healthAttackCost;
 	return healthAttackCost;
 }
 
 void WeaponObjectImplementation::setHealthAttackCost(int value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(324):  		healthAttackCost = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(304):  		healthAttackCost = value;
 	healthAttackCost = value;
 }
 
 int WeaponObjectImplementation::getActionAttackCost() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(328):  		return actionAttackCost;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(308):  		return actionAttackCost;
 	return actionAttackCost;
 }
 
 void WeaponObjectImplementation::setActionAttackCost(int value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(332):  		actionAttackCost = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(312):  		actionAttackCost = value;
 	actionAttackCost = value;
 }
 
 int WeaponObjectImplementation::getMindAttackCost() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(336):  		return mindAttackCost;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(316):  		return mindAttackCost;
 	return mindAttackCost;
 }
 
 void WeaponObjectImplementation::setMindAttackCost(int value) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(340):  		mindAttackCost = value;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(320):  		mindAttackCost = value;
 	mindAttackCost = value;
 }
 
 int WeaponObjectImplementation::getForceCost() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(344):  		return forceCost;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(324):  		return forceCost;
 	return forceCost;
 }
 
 int WeaponObjectImplementation::getDamageType() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(348):  		return damageType;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(328):  		return damageType;
 	return damageType;
 }
 
 String WeaponObjectImplementation::getXpType() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(352):  		return weaponTemplate.getXpType();
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(332):  		return weaponTemplate.getXpType();
 	return weaponTemplate->getXpType();
 }
 
 bool WeaponObjectImplementation::hasMeleeAttack() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(356):  		return attackType == MELEEATTACK;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(336):  		return attackType == MELEEATTACK;
 	return attackType == MELEEATTACK;
 }
 
 bool WeaponObjectImplementation::hasRangedAttack() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(360):  		return attackType == RANGEDATTACK;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(340):  		return attackType == RANGEDATTACK;
 	return attackType == RANGEDATTACK;
 }
 
 bool WeaponObjectImplementation::isUnarmedWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(364):  		return super.gameObjectType == SceneObject.WEAPON || super.gameObjectType == SceneObject.MELEEWEAPON;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(344):  		return super.gameObjectType == SceneObject.WEAPON || super.gameObjectType == SceneObject.MELEEWEAPON;
 	return TangibleObjectImplementation::gameObjectType == SceneObject::WEAPON || TangibleObjectImplementation::gameObjectType == SceneObject::MELEEWEAPON;
 }
 
 bool WeaponObjectImplementation::isMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(368):  		return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(348):  		return false;
 	return false;
 }
 
 bool WeaponObjectImplementation::isRangedWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(372):  		return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(352):  		return false;
 	return false;
 }
 
 bool WeaponObjectImplementation::isRifleWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(376):  		return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(356):  		return false;
 	return false;
 }
 
 bool WeaponObjectImplementation::isCarbineWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(380):  		return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(360):  		return false;
 	return false;
 }
 
 bool WeaponObjectImplementation::isPistolWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(384):  		return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(364):  		return false;
 	return false;
 }
 
 bool WeaponObjectImplementation::isOneHandMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(388):  		return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(368):  		return false;
 	return false;
 }
 
 bool WeaponObjectImplementation::isPolearmWeaponObject() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(392):  		return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(372):  		return false;
 	return false;
 }
 
 bool WeaponObjectImplementation::isTwoHandMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(396):  		return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(376):  		return false;
 	return false;
 }
 
 bool WeaponObjectImplementation::isWeaponObject() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(400):  		return true;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(380):  		return true;
 	return true;
 }
 

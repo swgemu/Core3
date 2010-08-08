@@ -52,12 +52,18 @@ import server.zone.Zone;
 class RifleWeaponObject extends RangedWeaponObject {
 	public RifleWeaponObject() {		
 		Logger.setLoggingName("RifleWeaponObject");
+		
+		initializePrivateData();
 	}
 	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
 		Logger.setLoggingName("RifleWeaponObject");
+	}
+	
+	public void initializePrivateData() {
+		super.maxRange = 65;
 	}
 	
 	public boolean isRifleWeapon() {
