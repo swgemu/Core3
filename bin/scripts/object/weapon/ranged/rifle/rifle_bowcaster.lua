@@ -79,9 +79,9 @@ object_weapon_ranged_rifle_rifle_bowcaster = object_weapon_ranged_rifle_shared_r
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 34,
+	actionAttackCost = 34,
+	mindAttackCost = 48,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -90,14 +90,13 @@ object_weapon_ranged_rifle_rifle_bowcaster = object_weapon_ranged_rifle_shared_r
 	idealRange = 0,
 	idealAccuracy = 0,
 	
-
-	minDamage = 50,
-	maxDamage = 100,
+	minDamage = 77,
+	maxDamage = 131,
 
 	maxRange = 65,
 	maxRangeAccuracy = 0,
-
-	attackSpeed = 0
+		
+	attackSpeed = 8
 	
 
 

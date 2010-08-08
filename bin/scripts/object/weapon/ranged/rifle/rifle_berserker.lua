@@ -61,7 +61,7 @@ object_weapon_ranged_rifle_rifle_berserker = object_weapon_ranged_rifle_shared_r
 	xpType = "combat_rangedspecialize_rifle",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "" },
+	certificationsRequired = { "cert_rifle_cdef" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "rifle_accuracy" },
 
@@ -90,7 +90,7 @@ object_weapon_ranged_rifle_rifle_berserker = object_weapon_ranged_rifle_shared_r
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
 
 	attackSpeed = 0

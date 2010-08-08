@@ -79,9 +79,9 @@ object_weapon_ranged_carbine_carbine_laser = object_weapon_ranged_carbine_shared
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 33,
+	actionAttackCost = 52,
+	mindAttackCost = 26,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -90,10 +90,13 @@ object_weapon_ranged_carbine_carbine_laser = object_weapon_ranged_carbine_shared
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 7,
+	maxDamage = 130,
+
+	attackSpeed = 6
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_carbine_laser, "object/weapon/ranged/carbine/carbine_laser.iff")
