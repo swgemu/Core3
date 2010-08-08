@@ -43,20 +43,63 @@
 
 object_weapon_creature_creature_default_weapon = object_weapon_creature_shared_creature_default_weapon:new {
 
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	playerUseMask = ALL,
+	
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = MELEEATTACK,
+	
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = KINETIC,
 	
-	maxRange = 5,
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = NONE, 
 	
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	xpType = "combat_meleespecialize_unarmed",
+	       
+	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = {  },
-	
-	creatureAccuracyModifiers = { "unarmed_accuracy" },
-	defenderDefenseModifiers = { "unarmed_passive_defense", "melee_defense" },
-	defenderSecondaryDefenseModifiers = { "dodge", "counterattack" },
-	speedModifiers = { "unarmed_speed" },
-	damageModifiers = { "unarmed_damage" }
-	
 
+	-- See http://www.ocdsoft.com/files/accuracy.xls
+	creatureAccuracyModifiers = { "unarmed_accuracy" },
+	
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "unarmed_passive_defense", "melee_defense" },
+	
+	-- can be dodge, counterattack, or block or a combination
+	-- Secondary defense when equipped
+	defenderSecondaryDefenseModifiers = { "dodge", "counterattack" },
+	
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "unarmed_speed" },
+	
+	-- carbine_damage, onehandmelee_damage, pistol_damage, rifle_damage, twohandmelee_damage, unarmed_damage
+	damageModifiers = { "unarmed_damage" },
+	       
+	
+	-- The values below are the default values.  To be used for blue frog objects primarily
+	healthAttackCost = 57,
+	actionAttackCost = 26,
+        mindAttackCost = 20,
+	forceCost = 0,
+	
+	pointBlankAccuracy = 0,
+	pointBlankRange = 15,
+	
+	idealRange = 15,
+	idealAccuracy = 3,
+	
+	maxRange = 15,
+	maxRangeAccuracy = 5,
+
+	minDamage = 20,
+	maxDamage = 90,
+	
+	attackSpeed = 3.7
 
 }
 
