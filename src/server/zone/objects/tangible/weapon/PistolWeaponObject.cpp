@@ -22,12 +22,24 @@ PistolWeaponObject::~PistolWeaponObject() {
 }
 
 
-void PistolWeaponObject::initializeTransientMembers() {
+void PistolWeaponObject::initializePrivateData() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((PistolWeaponObjectImplementation*) _impl)->initializePrivateData();
+}
+
+void PistolWeaponObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		method.executeWithVoidReturn();
 	} else
@@ -39,7 +51,7 @@ bool PistolWeaponObject::isPistolWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -119,17 +131,24 @@ PistolWeaponObjectImplementation::PistolWeaponObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(54):  		Logger.setLoggingName("PistolWeaponObject");
 	Logger::setLoggingName("PistolWeaponObject");
+	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(56):  		initializePrivateData();
+	initializePrivateData();
+}
+
+void PistolWeaponObjectImplementation::initializePrivateData() {
+	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(60):  		super.maxRange = 45;
+	RangedWeaponObjectImplementation::maxRange = 45;
 }
 
 void PistolWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(58):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(64):  		super.initializeTransientMembers();
 	RangedWeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(60):  		Logger.setLoggingName("PistolWeaponObject");
+	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(66):  		Logger.setLoggingName("PistolWeaponObject");
 	Logger::setLoggingName("PistolWeaponObject");
 }
 
 bool PistolWeaponObjectImplementation::isPistolWeapon() {
-	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(64):  		return true;
+	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(70):  		return true;
 	return true;
 }
 
@@ -145,9 +164,12 @@ Packet* PistolWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		initializePrivateData();
 		break;
 	case 7:
+		initializeTransientMembers();
+		break;
+	case 8:
 		resp->insertBoolean(isPistolWeapon());
 		break;
 	default:
@@ -155,6 +177,10 @@ Packet* PistolWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	}
 
 	return resp;
+}
+
+void PistolWeaponObjectAdapter::initializePrivateData() {
+	((PistolWeaponObjectImplementation*) impl)->initializePrivateData();
 }
 
 void PistolWeaponObjectAdapter::initializeTransientMembers() {

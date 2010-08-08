@@ -34,16 +34,7 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	weaponEffect =  weaponTemplate->getWeaponEffect();
 	weaponEffectIndex = weaponTemplate->getWeaponEffectIndex();
 
-	//xpType = weaponTemplate->getXpType();
-
 	damageType = weaponTemplate->getDamageType();
-
-	//certificationsRequired = weaponTemplate->getCertificationsRequired();
-	//creatureAccuracyModifiers = weaponTemplate->getCreatureAccuracyModifiers();
-	//defenderDefenseModifiers = weaponTemplate->getDefenderDefenseModifiers();
-	//damageModifiers = weaponTemplate->getDamageModifiers();
-	//speedModifiers = weaponTemplate->getSpeedModifiers();
-	//defenderSecondaryDefenseModifiers = weaponTemplate->getDefenderSecondaryDefenseModifiers();
 
 	armorPiercing = weaponTemplate->getArmorPiercing();
 
@@ -58,7 +49,11 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	idealRange = weaponTemplate->getIdealRange();
 	idealAccuracy = weaponTemplate->getIdealAccuracy();
 
-	maxRange = weaponTemplate->getMaxRange();
+	int templateMaxRange = weaponTemplate->getMaxRange();
+
+	if (templateMaxRange != 0)
+		maxRange = templateMaxRange;
+
 	maxRangeAccuracy = weaponTemplate->getMaxRangeAccuracy();
 
 	minDamage = weaponTemplate->getMinDamage();
@@ -68,7 +63,10 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	area = weaponTemplate->getArea();
 
-	attackSpeed = weaponTemplate->getAttackSpeed();
+	float templateAttackSpeed = weaponTemplate->getAttackSpeed();
+
+	if (templateAttackSpeed > 1)
+		attackSpeed = templateAttackSpeed;
 }
 
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {

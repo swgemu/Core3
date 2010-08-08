@@ -52,6 +52,12 @@ import server.zone.Zone;
 class MeleeWeaponObject extends WeaponObject {
 	public MeleeWeaponObject() {
 		Logger.setLoggingName("MeleeWeaponObject");
+		
+		initializePrivateData();
+	}
+	
+	public void initializePrivateData() {
+		super.maxRange = 5;
 	}
 	
 	public native void initializeTransientMembers();

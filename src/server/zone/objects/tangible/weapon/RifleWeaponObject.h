@@ -37,6 +37,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void initializePrivateData();
+
 	bool isRifleWeapon();
 
 protected:
@@ -69,6 +71,8 @@ public:
 	RifleWeaponObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void initializePrivateData();
 
 	bool isRifleWeapon();
 
@@ -112,6 +116,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void initializePrivateData();
 
 	bool isRifleWeapon();
 

@@ -61,7 +61,7 @@ SharedWeaponObjectTemplate = SharedTangibleObjectTemplate:new {
 	idealRange = 0,
 	idealAccuracy = 0,
 		
-	maxRange = 5,
+	maxRange = 0,
 	maxRangeAccuracy = 0,	
 		
 	minDamage = 1,

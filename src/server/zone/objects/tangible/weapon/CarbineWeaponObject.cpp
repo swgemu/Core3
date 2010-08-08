@@ -22,12 +22,24 @@ CarbineWeaponObject::~CarbineWeaponObject() {
 }
 
 
-void CarbineWeaponObject::initializeTransientMembers() {
+void CarbineWeaponObject::initializePrivateData() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((CarbineWeaponObjectImplementation*) _impl)->initializePrivateData();
+}
+
+void CarbineWeaponObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		method.executeWithVoidReturn();
 	} else
@@ -39,7 +51,7 @@ bool CarbineWeaponObject::isCarbineWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -119,17 +131,24 @@ CarbineWeaponObjectImplementation::CarbineWeaponObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/weapon/CarbineWeaponObject.idl(53):  		Logger.setLoggingName("CarbineWeaponObject");
 	Logger::setLoggingName("CarbineWeaponObject");
+	// server/zone/objects/tangible/weapon/CarbineWeaponObject.idl(55):  		initializePrivateData();
+	initializePrivateData();
+}
+
+void CarbineWeaponObjectImplementation::initializePrivateData() {
+	// server/zone/objects/tangible/weapon/CarbineWeaponObject.idl(59):  		super.maxRange = 65;
+	RangedWeaponObjectImplementation::maxRange = 65;
 }
 
 void CarbineWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/CarbineWeaponObject.idl(57):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/CarbineWeaponObject.idl(63):  		super.initializeTransientMembers();
 	RangedWeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/CarbineWeaponObject.idl(59):  		Logger.setLoggingName("CarbineWeaponObject");
+	// server/zone/objects/tangible/weapon/CarbineWeaponObject.idl(65):  		Logger.setLoggingName("CarbineWeaponObject");
 	Logger::setLoggingName("CarbineWeaponObject");
 }
 
 bool CarbineWeaponObjectImplementation::isCarbineWeapon() {
-	// server/zone/objects/tangible/weapon/CarbineWeaponObject.idl(63):  		return true;
+	// server/zone/objects/tangible/weapon/CarbineWeaponObject.idl(69):  		return true;
 	return true;
 }
 
@@ -145,9 +164,12 @@ Packet* CarbineWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		initializePrivateData();
 		break;
 	case 7:
+		initializeTransientMembers();
+		break;
+	case 8:
 		resp->insertBoolean(isCarbineWeapon());
 		break;
 	default:
@@ -155,6 +177,10 @@ Packet* CarbineWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMetho
 	}
 
 	return resp;
+}
+
+void CarbineWeaponObjectAdapter::initializePrivateData() {
+	((CarbineWeaponObjectImplementation*) impl)->initializePrivateData();
 }
 
 void CarbineWeaponObjectAdapter::initializeTransientMembers() {

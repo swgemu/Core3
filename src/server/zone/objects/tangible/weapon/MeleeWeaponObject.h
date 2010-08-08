@@ -35,6 +35,8 @@ class MeleeWeaponObject : public WeaponObject {
 public:
 	MeleeWeaponObject();
 
+	void initializePrivateData();
+
 	void initializeTransientMembers();
 
 	bool isMeleeWeapon();
@@ -67,6 +69,8 @@ public:
 	MeleeWeaponObjectImplementation();
 
 	MeleeWeaponObjectImplementation(DummyConstructorParameter* param);
+
+	void initializePrivateData();
 
 	void initializeTransientMembers();
 
@@ -110,6 +114,8 @@ public:
 	MeleeWeaponObjectAdapter(MeleeWeaponObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializePrivateData();
 
 	void initializeTransientMembers();
 
