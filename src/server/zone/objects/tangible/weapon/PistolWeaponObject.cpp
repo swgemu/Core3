@@ -34,6 +34,18 @@ void PistolWeaponObject::initializeTransientMembers() {
 		((PistolWeaponObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
+bool PistolWeaponObject::isPistolWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PistolWeaponObjectImplementation*) _impl)->isPistolWeapon();
+}
+
 /*
  *	PistolWeaponObjectImplementation
  */
@@ -116,6 +128,11 @@ void PistolWeaponObjectImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("PistolWeaponObject");
 }
 
+bool PistolWeaponObjectImplementation::isPistolWeapon() {
+	// server/zone/objects/tangible/weapon/PistolWeaponObject.idl(64):  		return true;
+	return true;
+}
+
 /*
  *	PistolWeaponObjectAdapter
  */
@@ -130,6 +147,9 @@ Packet* PistolWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isPistolWeapon());
+		break;
 	default:
 		return NULL;
 	}
@@ -139,6 +159,10 @@ Packet* PistolWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 void PistolWeaponObjectAdapter::initializeTransientMembers() {
 	((PistolWeaponObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+bool PistolWeaponObjectAdapter::isPistolWeapon() {
+	return ((PistolWeaponObjectImplementation*) impl)->isPistolWeapon();
 }
 
 /*

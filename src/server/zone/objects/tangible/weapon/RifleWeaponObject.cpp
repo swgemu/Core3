@@ -34,6 +34,18 @@ void RifleWeaponObject::initializeTransientMembers() {
 		((RifleWeaponObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
+bool RifleWeaponObject::isRifleWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((RifleWeaponObjectImplementation*) _impl)->isRifleWeapon();
+}
+
 /*
  *	RifleWeaponObjectImplementation
  */
@@ -116,6 +128,11 @@ void RifleWeaponObjectImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("RifleWeaponObject");
 }
 
+bool RifleWeaponObjectImplementation::isRifleWeapon() {
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(64):  		return true;
+	return true;
+}
+
 /*
  *	RifleWeaponObjectAdapter
  */
@@ -130,6 +147,9 @@ Packet* RifleWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isRifleWeapon());
+		break;
 	default:
 		return NULL;
 	}
@@ -139,6 +159,10 @@ Packet* RifleWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 void RifleWeaponObjectAdapter::initializeTransientMembers() {
 	((RifleWeaponObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+bool RifleWeaponObjectAdapter::isRifleWeapon() {
+	return ((RifleWeaponObjectImplementation*) impl)->isRifleWeapon();
 }
 
 /*
