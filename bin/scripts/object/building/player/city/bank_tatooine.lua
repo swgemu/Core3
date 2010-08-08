@@ -47,6 +47,7 @@ object_building_player_city_bank_tatooine = object_building_player_city_shared_b
 	mapLocationsType1 = 2,
 	allowedZones = {1,4,8},
 	cityRankRequired = 2,
+	gameObjectType = 4104,
 	abilitiesRequired = {"placeBank"}
 
 

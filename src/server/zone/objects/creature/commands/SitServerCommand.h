@@ -86,53 +86,20 @@ public:
 			if (z < -8192 || z > 8192)
 				z = 0;
 
+			Vector3 position(x, y, z);
+			Vector3 playerPosition = creature->getPosition();
+
+			/*if (position.squaredDistanceTo(playerPosition) > 9.f) {
+				creature->sendSystemMessage("ui", "chair_out_of_range");
+				return GENERALERROR;
+			}*/
+
 			creature->setState(CreatureState::SITTINGONCHAIR);
 			SitOnObject* soo = new SitOnObject(creature, x, y, z);
 			creature->broadcastMessage(soo, true);
 
 			creature->setPosture(CreaturePosture::SITTING);
 		}
-
-		/*
-				packet->shiftOffset(8); //Shift past the blank long.
-
-				UnicodeString waypoint;
-				packet->parseUnicode(waypoint);
-
-				if (waypoint.isEmpty()) {
-					player->changePosture(CreaturePosture::SITTING);
-				} else {
-					Zone* zone = player->getZone();
-
-					if (zone == NULL)
-						return false;
-
-					ZoneServer* server = zone->getZoneServer();
-
-					try {
-						StringTokenizer tokenizer(waypoint.toString());
-						tokenizer.setDelimeter(",");
-						float x = tokenizer.getFloatToken();
-						float y = tokenizer.getFloatToken();
-						float z = tokenizer.getFloatToken();
-
-						uint64 coID;
-						if (tokenizer.hasMoreTokens())
-							coID = tokenizer.getLongToken();
-
-						if (x < -8192 || x > 8192)
-							x = 0;
-						if (y < -8192 || y > 8192)
-							y = 0;
-						if (z < -8192 || z > 8192)
-							z = 0;
-
-						player->setPosture(CreaturePosture::SITTING, false, true, x, y, z);
-					} catch (...) {
-						System::out
-								<< "Unreported exception in ObjectControllerMessage::parseServerSit\n";
-					}
-				}*/
 
 		return SUCCESS;
 	}

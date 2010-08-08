@@ -36,7 +36,7 @@ protected:
 	int nextAttackDelayChance;
 	int durationStateTime;
 
-	float dotDuration;
+	uint32 dotDuration;
 	uint64 dotType;
 	uint8 dotPool;
 	uint32 dotStrength;
