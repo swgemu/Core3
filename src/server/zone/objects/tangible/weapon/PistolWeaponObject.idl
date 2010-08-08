@@ -59,4 +59,8 @@ class PistolWeaponObject extends RangedWeaponObject {
 		
 		Logger.setLoggingName("PistolWeaponObject");
 	}
+	
+	public boolean isPistolWeapon() {
+		return true;
+	}
 }
