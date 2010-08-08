@@ -43,6 +43,59 @@
 
 object_weapon_melee_knife_knife_janta = object_weapon_melee_knife_shared_knife_janta:new {
 
+-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	        playerUseMask = ALL,
+	
+	        -- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	        -- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	        attackType = MELEEATTACK,
+	
+	        -- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	        damageType = KINETIC,
+	
+	        -- NONE, LIGHT, MEDIUM, HEAVY
+	        armorPiercing = NONE,
+	
+	        -- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	        -- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	        -- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	        xpType = "combat_meleespecialize_onehand",
+	       
+	        -- See http://www.ocdsoft.com/files/certifications.xls
+	        certificationsRequired = { "cert_knife_dagger" },
+	        -- See http://www.ocdsoft.com/files/accuracy.xls
+	        creatureAccuracyModifiers = { "onehandmelee_accuracy" },
+	
+	        -- See http://www.ocdsoft.com/files/defense.xls
+	        defenderDefenseModifiers = { "melee_defense" },
+	
+	        -- Leave as "dodge" for now, may have additions later
+	        defenderSecondaryDefenseModifiers = { "dodge" },
+	
+	        -- See http://www.ocdsoft.com/files/speed.xls
+	        speedModifiers = { "onehandmelee_speed" },
+	
+	        -- Leave blank for now
+	        damageModifiers = { },
+	       
+	
+	        -- The values below are the default values.  To be used for blue frog objects primarily
+	        healthAttackCost = 6,
+	        actionAttackCost = 15,
+	        mindAttackCost = 6,
+	        forceCost = 0,
+	
+	        pointBlankAccuracy = 0,
+	        pointBlankRange = 3,
+	
+	        idealRange = 3,
+	        idealAccuracy = 3,
+	
+	        maxRange = 3,
+	        maxRangeAccuracy = 4,
+	
+	        attackSpeed = 4.0
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_knife_janta, "object/weapon/melee/knife/knife_janta.iff")
