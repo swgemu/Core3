@@ -79,21 +79,24 @@ object_weapon_melee_sword_sword_blade_ryyk = object_weapon_melee_sword_shared_sw
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 10,
+	actionAttackCost = 10,
+	mindAttackCost = 10,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	
+	minDamage = 100,
+	maxDamage = 200,
 
 	idealRange = 0,
 	idealAccuracy = 0,
 
-	maxRange = 0,
+	maxRange = 5,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	attackSpeed = 2
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_sword_blade_ryyk, "object/weapon/melee/sword/sword_blade_ryyk.iff")

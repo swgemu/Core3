@@ -69,7 +69,7 @@ object_weapon_ranged_rifle_rifle_t21 = object_weapon_ranged_rifle_shared_rifle_t
 	defenderDefenseModifiers = { "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "block" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "rifle_speed" },
@@ -79,9 +79,9 @@ object_weapon_ranged_rifle_rifle_t21 = object_weapon_ranged_rifle_shared_rifle_t
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 10,
+	actionAttackCost = 10,
+	mindAttackCost = 10,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
@@ -89,11 +89,14 @@ object_weapon_ranged_rifle_rifle_t21 = object_weapon_ranged_rifle_shared_rifle_t
 
 	idealRange = 0,
 	idealAccuracy = 0,
+	
+	minDamage = 500,
+	maxDamage = 600,
 
-	maxRange = 0,
+	maxRange = 65,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	attackSpeed = 4
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_t21, "object/weapon/ranged/rifle/rifle_t21.iff")

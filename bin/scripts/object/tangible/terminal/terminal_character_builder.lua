@@ -72,6 +72,29 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Composite Leggings", "object/tangible/wearables/armor/composite/armor_composite_leggings.iff"
 			}
 		},
+		"Weapons",
+		{
+			"Rifles",
+			{
+				"T21", "object/weapon/ranged/rifle/rifle_t21.iff"
+			},
+			"Pistols",
+			{
+				"Scatter", "object/weapon/ranged/pistol/pistol_scatter.iff"
+			},
+			"Carbines",
+			{
+				"DXR6", "object/weapon/ranged/carbine/carbine_dxr6.iff"
+			},
+			"Swords",
+			{
+				"Ryyk", "object/weapon/melee/sword/sword_blade_ryyk.iff"
+			},
+			"Poleam",
+			{
+				"Lance", "object/weapon/melee/polearm/lance_staff_metal.iff"
+			}
+		},
 		"Clothes",
 		{
 			"Jedi Robes",
