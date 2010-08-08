@@ -42,7 +42,31 @@
 
 
 object_tangible_wearables_armor_bone_armor_bone_s01_bicep_r = object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_r:new {
+	templateType = ARMOROBJECT,
 
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS,
+	
+	-- kineticeffectiveness, energyeffectiveness, electricaleffectiveness, stuneffectiveness, blasteffectiveness, heateffectiveness, coldeffectiveness, acideffectiveness, restraineffectiveness
+	vunerability = KINETIC + BLAST + STUN + HEAT + LIGHTSABER,
+
+	-- These are default Blue Frog stats
+	healthEncumbrance = 1,
+	actionEncumbrance = 1,
+	mindEncumbrance = 1,
+
+	-- LIGHT, MEDIUM, HEAVY
+	rating = LIGHT,
+
+	kinetic = 15,
+	energy = 15,
+	electricity = 15,
+	stun = 15,
+	blast = 15,
+	heat = 15,
+	cold = 15,
+	acid = 15,
+	lightSaber = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_armor_bone_s01_bicep_r, "object/tangible/wearables/armor/bone/armor_bone_s01_bicep_r.iff")

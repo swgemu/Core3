@@ -65,30 +65,30 @@ void ArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
 		((ArmorObjectImplementation*) _impl)->updateCraftingValues(schematic);
 }
 
-bool ArmorObject::isSpecial(const String& special) {
+bool ArmorObject::isSpecial(int type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
-		method.addAsciiParameter(special);
+		method.addSignedIntParameter(type);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->isSpecial(special);
+		return ((ArmorObjectImplementation*) _impl)->isSpecial(type);
 }
 
-bool ArmorObject::isVulnerable(const String& vulnerability) {
+bool ArmorObject::isVulnerable(int type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
-		method.addAsciiParameter(vulnerability);
+		method.addSignedIntParameter(type);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->isVulnerable(vulnerability);
+		return ((ArmorObjectImplementation*) _impl)->isVulnerable(type);
 }
 
 bool ArmorObject::isArmorObject() {
@@ -508,185 +508,185 @@ void ArmorObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("cold", &cold);
 	addSerializableVariable("acid", &acid);
 	addSerializableVariable("lightSaber", &lightSaber);
-	addSerializableVariable("specialResistsVector", &specialResistsVector);
-	addSerializableVariable("vulnerabilitesVector", &vulnerabilitesVector);
+	addSerializableVariable("specialResists", &specialResists);
+	addSerializableVariable("vulnerabilites", &vulnerabilites);
 	addSerializableVariable("specialBase", &specialBase);
 }
 
 ArmorObjectImplementation::ArmorObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(82):  		healthEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(80):  		healthEncumbrance = 100;
 	healthEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(83):  		actionEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(81):  		actionEncumbrance = 100;
 	actionEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(84):  		mindEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(82):  		mindEncumbrance = 100;
 	mindEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(86):  		rating = LIGHT;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(84):  		rating = LIGHT;
 	rating = LIGHT;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(88):  		kinetic = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(86):  		kinetic = 0;
 	kinetic = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(89):  		energy = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(87):  		energy = 0;
 	energy = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(90):  		electricity = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(88):  		electricity = 0;
 	electricity = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(91):  		stun = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(89):  		stun = 0;
 	stun = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(92):  		blast = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(90):  		blast = 0;
 	blast = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(93):  		heat = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(91):  		heat = 0;
 	heat = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(94):  		cold = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(92):  		cold = 0;
 	cold = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(95):  		acid = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(93):  		acid = 0;
 	acid = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(96):  		lightSaber = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(94):  		lightSaber = 0;
 	lightSaber = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(102):  		Logger.setLoggingName("ArmorObject");
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(100):  		Logger.setLoggingName("ArmorObject");
 	Logger::setLoggingName("ArmorObject");
 }
 
-bool ArmorObjectImplementation::isSpecial(const String& special) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(133):  		return specialResistsVector.contains(special);
-	return (&specialResistsVector)->contains(special);
+bool ArmorObjectImplementation::isSpecial(int type) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(134):  		return specialResists & type;
+	return specialResists & type;
 }
 
-bool ArmorObjectImplementation::isVulnerable(const String& vulnerability) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(137):  		return vulnerabilitesVector.contains(vulnerability);
-	return (&vulnerabilitesVector)->contains(vulnerability);
+bool ArmorObjectImplementation::isVulnerable(int type) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(138):  		return vulnerabilites & type;
+	return vulnerabilites & type;
 }
 
 bool ArmorObjectImplementation::isArmorObject() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(141):  		return true;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(142):  		return true;
 	return true;
 }
 
 void ArmorObjectImplementation::setRating(int rate) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(146):  		rating = rate;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(147):  		rating = rate;
 	rating = rate;
 }
 
 int ArmorObjectImplementation::getRating() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(150):  		return rating;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(151):  		return rating;
 	return rating;
 }
 
 float ArmorObjectImplementation::getKinetic() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(154):  		return kinetic;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(155):  		return kinetic;
 	return kinetic;
 }
 
 void ArmorObjectImplementation::setKinetic(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(158):  		kinetic = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(159):  		kinetic = value;
 	kinetic = value;
 }
 
 float ArmorObjectImplementation::getEnergy() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(162):  		return energy;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(163):  		return energy;
 	return energy;
 }
 
 void ArmorObjectImplementation::setEnergy(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(166):  		energy = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(167):  		energy = value;
 	energy = value;
 }
 
 float ArmorObjectImplementation::getElectricity() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(170):  		return electricity;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(171):  		return electricity;
 	return electricity;
 }
 
 void ArmorObjectImplementation::setElectricity(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(174):  		electricity = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(175):  		electricity = value;
 	electricity = value;
 }
 
 float ArmorObjectImplementation::getStun() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(178):  		return stun;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(179):  		return stun;
 	return stun;
 }
 
 void ArmorObjectImplementation::setStun(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(182):  		stun = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(183):  		stun = value;
 	stun = value;
 }
 
 float ArmorObjectImplementation::getBlast() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(186):  		return blast;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(187):  		return blast;
 	return blast;
 }
 
 void ArmorObjectImplementation::setBlast(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(190):  		blast = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(191):  		blast = value;
 	blast = value;
 }
 
 float ArmorObjectImplementation::getHeat() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(194):  		return heat;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(195):  		return heat;
 	return heat;
 }
 
 void ArmorObjectImplementation::setHeat(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(198):  		heat = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(199):  		heat = value;
 	heat = value;
 }
 
 float ArmorObjectImplementation::getCold() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(202):  		return cold;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(203):  		return cold;
 	return cold;
 }
 
 void ArmorObjectImplementation::setCold(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(206):  		cold = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(207):  		cold = value;
 	cold = value;
 }
 
 float ArmorObjectImplementation::getAcid() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(210):  		return acid;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(211):  		return acid;
 	return acid;
 }
 
 void ArmorObjectImplementation::setAcid(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(214):  		acid = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(215):  		acid = value;
 	acid = value;
 }
 
 float ArmorObjectImplementation::getLightSaber() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(218):  		return lightSaber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(219):  		return lightSaber;
 	return lightSaber;
 }
 
 void ArmorObjectImplementation::setLightSaber(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(222):  		lightSaber = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(223):  		lightSaber = value;
 	lightSaber = value;
 }
 
 int ArmorObjectImplementation::getHealthEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(226):  		return healthEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(227):  		return healthEncumbrance;
 	return healthEncumbrance;
 }
 
 void ArmorObjectImplementation::setHealthEncumbrance(int encumber) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(230):  		healthEncumbrance = encumber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(231):  		healthEncumbrance = encumber;
 	healthEncumbrance = encumber;
 }
 
 int ArmorObjectImplementation::getActionEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(234):  		return actionEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(235):  		return actionEncumbrance;
 	return actionEncumbrance;
 }
 
 void ArmorObjectImplementation::setActionEncumbrance(int encumber) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(238):  		actionEncumbrance = encumber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(239):  		actionEncumbrance = encumber;
 	actionEncumbrance = encumber;
 }
 
 int ArmorObjectImplementation::getMindEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(242):  		return mindEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(243):  		return mindEncumbrance;
 	return mindEncumbrance;
 }
 
 void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(246):  		mindEncumbrance = encumber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(247):  		mindEncumbrance = encumber;
 	mindEncumbrance = encumber;
 }
 
@@ -708,10 +708,10 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertBoolean(isSpecial(inv->getAsciiParameter(_param0_isSpecial__String_)));
+		resp->insertBoolean(isSpecial(inv->getSignedIntParameter()));
 		break;
 	case 9:
-		resp->insertBoolean(isVulnerable(inv->getAsciiParameter(_param0_isVulnerable__String_)));
+		resp->insertBoolean(isVulnerable(inv->getSignedIntParameter()));
 		break;
 	case 10:
 		resp->insertBoolean(isArmorObject());
@@ -809,12 +809,12 @@ void ArmorObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
 	((ArmorObjectImplementation*) impl)->updateCraftingValues(schematic);
 }
 
-bool ArmorObjectAdapter::isSpecial(const String& special) {
-	return ((ArmorObjectImplementation*) impl)->isSpecial(special);
+bool ArmorObjectAdapter::isSpecial(int type) {
+	return ((ArmorObjectImplementation*) impl)->isSpecial(type);
 }
 
-bool ArmorObjectAdapter::isVulnerable(const String& vulnerability) {
-	return ((ArmorObjectImplementation*) impl)->isVulnerable(vulnerability);
+bool ArmorObjectAdapter::isVulnerable(int type) {
+	return ((ArmorObjectImplementation*) impl)->isVulnerable(type);
 }
 
 bool ArmorObjectAdapter::isArmorObject() {

@@ -98,14 +98,14 @@ class WeaponObject extends TangibleObject {
 
 	public static final int KINETIC = 1;
 	public static final int ENERGY = 2;
-	public static final int ELECTRICITY = 3;
-	public static final int STUN = 4;
-	public static final int BLAST = 5;
-	public static final int HEAT = 6;
-	public static final int COLD = 7;
-	public static final int ACID = 8;
-	public static final int LIGHTSABER = 9;
-	public static final int FORCE = 10;
+	public static final int BLAST = 4;
+	public static final int STUN = 8;
+	public static final int LIGHTSABER = 16;
+	public static final int HEAT = 32;
+	public static final int COLD = 64;
+	public static final int ACID = 128;
+	public static final int ELECTRICITY = 256;
+	public static final int FORCE = 512;
 
 	public static final int MELEEATTACK = 0;
 	public static final int RANGEDATTACK = 1;

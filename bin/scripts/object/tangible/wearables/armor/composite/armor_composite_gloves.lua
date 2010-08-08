@@ -42,27 +42,32 @@
 
 
 object_tangible_wearables_armor_composite_armor_composite_gloves = object_tangible_wearables_armor_composite_shared_armor_composite_gloves:new {
-	templateType = ARMOROBJECT, 
+
+	templateType = ARMOROBJECT,
+
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS,
 	
+	-- Damage types in WeaponObject
+	vunerability = STUN + LIGHTSABER,
+
+	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
 
-	--int rating;
-	
-	playerUseMask = HUMANOIDS,
+	-- LIGHT, MEDIUM, HEAVY
+	rating = LIGHT,
 
-	kinetic = 50,
-	energy = 50,
-	electricity = 50,
-	stun = 25,
-	blast = 25,
-	heat = 25,
-	cold = 25,
-	acid = 25,
+	kinetic = 15,
+	energy = 15,
+	electricity = 15,
+	stun = 15,
+	blast = 15,
+	heat = 15,
+	cold = 15,
+	acid = 15,
 	lightSaber = 0
-
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_armor_composite_gloves, "object/tangible/wearables/armor/composite/armor_composite_gloves.iff")
