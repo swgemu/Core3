@@ -61,15 +61,25 @@ object_weapon_ranged_pistol_pistol_cdef = object_weapon_ranged_pistol_shared_pis
 	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
 	xpType = "combat_rangedspecialize_pistol",
 	
-	certificationsRequired = { "cert_pistol_cdef" },
+	-- See http://www.ocdsoft.com/files/certifications.xls
+	certificationsRequired = { "cert_pistol_cdef" },
+	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "pistol_accuracy" },
-	defenderDefenseModifiers = { "ranged_defense" },
-	defenderSecondaryDefenseModifiers = { "dodge" },
-	speedModifiers = { "pistol_speed" },
-	damageModifiers = { }
-	
-	-- The values below are the default values.  To be used for blue frog objects primarily
 
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "ranged_defense" },
+
+	-- Leave as "dodge" for now, may have additions later
+	defenderSecondaryDefenseModifiers = { "dodge" },
+
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "pistol_speed" },
+
+	-- Leave blank for now
+	damageModifiers = { },
+	
+
+	-- The values below are the default values.  To be used for blue frog objects primarily
 	healthAttackCost = 0,
 	actionAttackCost = 0,
 	mindAttackCost = 0,
