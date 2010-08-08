@@ -66,7 +66,7 @@ public:
 		combatSpam = "sapblast";
 
 		dotType = CreatureState::BLEEDING;
-		dotPool = CombatManager::HEALTH;
+		dotPool = CreatureAttribute::HEALTH;
 		dotDamageOfHit = true;
 		dotDuration = 60;
 

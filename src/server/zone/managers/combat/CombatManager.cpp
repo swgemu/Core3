@@ -77,7 +77,12 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 				if (defender->isCreatureObject()) {
 					CreatureObject* creature = (CreatureObject*) defender;
 
-					if (creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead()) {
+					if (creature->getMainDefender() != attacker) {
+						attacker->removeDefender(defender);
+						defender->removeDefender(attacker);
+
+						--i;
+					} else if (creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead()) {
 						attacker->removeDefender(defender);
 						defender->removeDefender(attacker);
 
@@ -289,8 +294,10 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CombatQueueCommand* command, int appliedDamage) {
 	uint32 duration = command->getDotDuration();
 
-	if (duration == 0)
+	if (duration == 0) {
+		//info("dot duration 0", true);
 		return false;
+	}
 
 	uint64 type = command->getDotType();
 	uint8 dotPool = command->getDotPool();
@@ -299,8 +306,10 @@ bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* de
 	bool dotDamageOfHit = command->isDotDamageOfHit();
 
 	if (dotDamageOfHit) {
-		if (appliedDamage < 1)
+		if (appliedDamage < 1) {
+			//info("applieddamage < 1", true);
 			return false;
+		}
 
 		strength = appliedDamage;
 	}
@@ -321,6 +330,8 @@ bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* de
 		resist = defender->getSkillMod("resistance_fire");
 		break;
 	}
+
+	//info("entering addDotState", true);
 
 	int applied = defender->addDotState(type, strength, dotPool, duration, potency, resist);
 
@@ -434,12 +445,12 @@ float CombatManager::hitChanceEquation(float attackerAccuracy,
 	float accTotal = 66.0 + (attackerAccuracy + accuracyBonus - targetDefense
 			- defenseBonus) / 2.0;
 
-	StringBuffer msg;
+	/*StringBuffer msg;
 	msg << "HitChance\n";
 	msg << "\tTarget Defense " << targetDefense << "\n";
 	msg << "\tTarget Defense Bonus" << defenseBonus << "\n";
 
-	info(msg.toString());
+	info(msg.toString());*/
 
 	return accTotal;
 }
@@ -718,7 +729,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	int hitChance = 0;
 	int attackType = weapon->getAttackType();
 
-	info("Calculating hit chance");
+	//info("Calculating hit chance");
 
 	float weaponAccuracy = 0;
 	if (attackType == WeaponObject::MELEEATTACK || attackType == WeaponObject::RANGEDATTACK) {
@@ -727,7 +738,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		weaponAccuracy += calculatePostureModifier(creature, targetCreature);
 	}
 
-	info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy));
+	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy));
 
 	float aimMod = 0.0;
 	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
@@ -736,11 +747,11 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		attackerAccuracy -= 10;
 	}
 
-	info("Base attacker accuracy is " + String::valueOf(attackerAccuracy));
+	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy));
 
 	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
 
-	info("Base target defense is " + String::valueOf(targetDefense));
+	//info("Base target defense is " + String::valueOf(targetDefense));
 
 	targetDefense = applyDefensePenalties(targetCreature, attackType, targetDefense);
 
@@ -758,7 +769,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (targetDefense > 125)
 		targetDefense = 125;
 
-	info("Target defense after state affects and cap is " +  String::valueOf(targetDefense));
+	//info("Target defense after state affects and cap is " +  String::valueOf(targetDefense));
 
 	float defenseBonus = 0.0f; // TODO: Food/drink defense bonuses go here
 
@@ -773,7 +784,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy
 			+ accuracyBonus + aimMod, targetDefense, defenseBonus);
 
-	info("Final hit chance is " + String::valueOf(accTotal));
+	//info("Final hit chance is " + String::valueOf(accTotal));
 
 	if (accTotal > 100)
 		accTotal = 100.0;
@@ -789,7 +800,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 	int hitChance = 0;
 	int attackType = weapon->getAttackType();
 
-	info("Calculating secondary hit chance");
+	//info("Calculating secondary hit chance");
 
 	float weaponAccuracy = 0;
 	if (attackType == WeaponObject::MELEEATTACK || attackType == WeaponObject::RANGEDATTACK) {
@@ -798,18 +809,18 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		weaponAccuracy += calculatePostureModifier(creature, targetCreature);
 	}
 
-	info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy));
+	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy));
 
 	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
 
-	info("Base attacker accuracy is " + String::valueOf(attackerAccuracy));
+	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy));
 
 	int targetDefense = getDefenderSecondaryDefenseModifier(targetCreature, weapon);
 
 	if (targetCreature->isPlayerCreature())
 		targetDefense += ((PlayerCreature*)targetCreature)->getCenteredBonus();
 
-	info("Base target secondary defense is " + String::valueOf(targetDefense));
+	//info("Base target secondary defense is " + String::valueOf(targetDefense));
 
 	targetDefense = applyDefensePenalties(targetCreature, attackType, targetDefense);
 
@@ -818,7 +829,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 	if (targetDefense > 125)
 		targetDefense = 125;
 
-	info("Target secondary defense after state affects and cap is " +  String::valueOf(targetDefense));
+	//info("Target secondary defense after state affects and cap is " +  String::valueOf(targetDefense));
 
 	if (targetDefense <= 0)
 		return 0;
@@ -1193,32 +1204,53 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 	int range = command->getAreaRange();
 
+	if (command->isConeAction()) {
+		range = command->getRange();
+
+		if (range == -1) {
+			WeaponObject* weapon = attacker->getWeapon();
+			range = weapon->getMaxRange();
+		}
+	}
+
 	try {
 		zone->rlock();
 
-		for (int i = 0; i < attacker->inRangeObjectCount(); i++) {
+		for (int i = 0; i < attacker->inRangeObjectCount(); ++i) {
 			ManagedReference<SceneObject*> object = (SceneObject*) (((SceneObjectImplementation*) attacker->getInRangeObject(i))->_this);
 
-			if (!object->isTangibleObject())
+			if (!object->isTangibleObject()) {
+				//error("object is not tangible");
 				continue;
+			}
 
 			TangibleObject* tano = (TangibleObject*) object.get();
 
-			if (object == attacker)
+			if (object == attacker) {
+				//error("object is attacker");
 				continue;
+			}
 
-			if (!attacker->isInRange(object, range))
+			if (!attacker->isInRange(object, range)) {
+				//error("not in range " + String::valueOf(range));
 				continue;
+			}
 
-			if (!tano->isAttackableBy(attacker))
+			if (!tano->isAttackableBy(attacker)) {
+				//error("object is not attackeble");
 				continue;
+			}
 
-			if (tano->isCreatureObject() && ((CreatureObject*)tano)->isIncapacitated())
+			if (tano->isCreatureObject() && ((CreatureObject*)tano)->isIncapacitated()) {
+				//error("object is incapacitated");
 				continue;
+			}
 
 			if (command->isConeAction() && !checkConeAngle(tano, command->getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX,
-					directionVectorY))
+					directionVectorY)) {
+				//error("object is not in cone angle");
 				continue;
+			}
 
 			zone->runlock();
 
@@ -1456,8 +1488,9 @@ bool CombatManager::checkConeAngle(SceneObject* target, float angle,
 
 	float coneAngle = angle / 2;
 
-	if (angle > coneAngle || angle < -coneAngle)
+	if (degrees > coneAngle || degrees < -coneAngle) {
 		return false;
+	}
 
 	return true;
 }

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TELEPORTTOCOMMAND_H_
 #define TELEPORTTOCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneServer.h"
 

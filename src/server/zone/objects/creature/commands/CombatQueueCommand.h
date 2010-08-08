@@ -36,7 +36,7 @@ protected:
 	int nextAttackDelayChance;
 	int durationStateTime;
 
-	uint32 dotDuration;
+	float dotDuration;
 	uint64 dotType;
 	uint8 dotPool;
 	uint32 dotStrength;
@@ -83,7 +83,7 @@ public:
 		dotType = 0;
 		dotPool = 0;
 		dotStrength = 0;
-		dotPotency = 0;
+		dotPotency = 80;
 
 		coneAngle = 30;
 		dotDamageOfHit = false;

@@ -67,7 +67,7 @@ public:
 		combatSpam = "headshot";
 
 		dotType = CreatureState::BLEEDING;
-		dotPool = CombatManager::MIND;
+		dotPool = CreatureAttribute::MIND;
 		dotDamageOfHit = true;
 		dotDuration = 60;
 

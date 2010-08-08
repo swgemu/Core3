@@ -62,7 +62,7 @@ public:
 		dotType = CreatureState::BLEEDING;
 		dotDamageOfHit = true;
 		dotDuration = 60;
-		dotPool = CombatManager::MIND;
+		dotPool = CreatureAttribute::MIND;
 
 		animationCRC = String("combo_3c_light").hashCode();
 

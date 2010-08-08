@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef TELEPORTTARGETCOMMAND_H_
 #define TELEPORTTARGETCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/ZoneServer.h"
 
 class TeleportTargetCommand : public QueueCommand {
 public:
@@ -62,6 +64,47 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		StringTokenizer args(arguments.toString());
+
+		try {
+			String name;
+			args.getStringToken(name);
+
+			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+			ManagedReference<PlayerCreature*> player = playerManager->getPlayer(name);
+
+			if (player != NULL) {
+
+				int zoneid = 0;
+				float posx = 0, posy = 0, posz = 0;
+				uint64 parentid = 0;
+
+				try {
+					Locker clocker(player, creature);
+
+					Zone* targetZone = creature->getZone();
+
+					if (targetZone == NULL) {
+						return GENERALERROR;
+					}
+
+					zoneid = targetZone->getZoneID();
+					posx = creature->getPositionX();
+					posy = creature->getPositionY();
+					posz = creature->getPositionZ();
+					parentid = creature->getParentID();
+
+					player->switchZone(zoneid, posx, posz, posy, parentid);
+
+				} catch (...) {
+
+				}
+			}
+
+		} catch (...) {
+			creature->sendSystemMessage("invalid arguments for teleport command");
+		}
 
 		return SUCCESS;
 	}

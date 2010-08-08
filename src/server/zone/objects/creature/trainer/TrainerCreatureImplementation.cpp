@@ -322,11 +322,11 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 						player->sendSystemMessage(params);
 					} else
 						player->sendSystemMessage(stffile, "no_skill_points");
-				} /*else if (!player->verifyCashCredits(money)) { TODO: uncomment when credits are working
+				} else if (!player->verifyCashCredits(money)) {
 					params.setDI(money);
 					params.setStringId(stffile, "prose_nsf");
 					player->sendSystemMessage(params);
-				} */else {
+				} else {
 					params.setDI(money);
 
 					bool res = ProfessionManager::instance()->trainSkillBox(sBox, player, true);
