@@ -304,6 +304,25 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	}
 }
 
+void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* player) {
+	if (isStaticObject())
+		return;
+
+	ManagedReference<ZoneClientSession*> client = player->getClient();
+
+	if (client == NULL)
+		return;
+
+	create(client);
+
+	if (parent != NULL)
+		link(client.get(), containmentType);
+
+	sendBaselinesTo(player);
+
+	SceneObjectImplementation::close(client);
+}
+
 void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	//sending all slotted objects by default
 	SortedVector<SceneObject*> objects(slottedObjects.size(), slottedObjects.size());

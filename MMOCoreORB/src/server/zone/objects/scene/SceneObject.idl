@@ -639,6 +639,8 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * Sends the object without linking to its actual parent and without sending its children (f.e trade)
 	 */
 	public native abstract void sendWithoutParentTo(SceneObject player);
+	
+	public native abstract void sendWithoutContainerObjectsTo(SceneObject player);
 
 	/**
 	 * Sends a SceneObjectDestroyMessage of this object to client
