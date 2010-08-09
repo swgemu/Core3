@@ -194,6 +194,8 @@ int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool
 	if (xp == 0)
 		return 0;
 
+	int valueToAdd = xp;
+
 	Locker locker(_this);
 
 	if (experienceList.contains(xpType)) {
@@ -213,11 +215,10 @@ int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool
 	if (xpCap < 0)
 		xpCap = 2000;
 
-	if (xp > xpCap)
+	if (xp > xpCap) {
+		valueToAdd = xpCap - (xp - valueToAdd);
 		xp = xpCap;
-
-	if (xp == 0)
-		return 0;
+	}
 
 	if (notifyClient) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
@@ -230,7 +231,7 @@ int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool
 		experienceList.set(xpType, xp);
 	}
 
-	return xp;
+	return valueToAdd;
 }
 
 void PlayerObjectImplementation::removeExperience(const String& xpType, bool notifyClient) {
