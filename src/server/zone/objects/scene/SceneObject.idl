@@ -508,7 +508,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @param notifyClient not used currently
 	 * @return returns true if the object has been successfully removed
 	 */
-	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = true);
+	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
 
 	/**
 	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject

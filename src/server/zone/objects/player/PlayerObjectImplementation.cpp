@@ -190,9 +190,9 @@ bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient
 		return false;
 }
 
-void PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {
+int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {
 	if (xp == 0)
-		return;
+		return 0;
 
 	Locker locker(_this);
 
@@ -201,7 +201,7 @@ void PlayerObjectImplementation::addExperience(const String& xpType, int xp, boo
 
 		if (xp <= 0) {
 			removeExperience(xpType, notifyClient);
-			return;
+			return 0;
 		}
 	}
 
@@ -213,8 +213,11 @@ void PlayerObjectImplementation::addExperience(const String& xpType, int xp, boo
 	if (xpCap < 0)
 		xpCap = 2000;
 
-	if(xp > xpCap)
+	if (xp > xpCap)
 		xp = xpCap;
+
+	if (xp == 0)
+		return 0;
 
 	if (notifyClient) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
@@ -226,6 +229,8 @@ void PlayerObjectImplementation::addExperience(const String& xpType, int xp, boo
 	} else {
 		experienceList.set(xpType, xp);
 	}
+
+	return xp;
 }
 
 void PlayerObjectImplementation::removeExperience(const String& xpType, bool notifyClient) {

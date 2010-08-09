@@ -139,8 +139,9 @@ class PlayerObject extends IntangibleObject {
 	 * @param xpType The string value for the type of experience to add.
 	 * @param xp The value of experience to add.
 	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience gain.
+	 * @return returns total experience awarded
 	 */
-	public native void addExperience(final string xpType, int xp, boolean notifyClient = true);
+	public native int addExperience(final string xpType, int xp, boolean notifyClient = true);
 
     /**
 	 * Removes experience of a type from the player's experience pool.

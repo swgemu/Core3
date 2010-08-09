@@ -137,7 +137,7 @@ public:
 		if (roundTrip)
 			totalFee *= 2;
 
-		/*if (player->verifyCashCredits(totalFee)) {
+		if (player->verifyCashCredits(totalFee)) {
 
 			player->substractCashCredits(totalFee);
 
@@ -155,7 +155,7 @@ public:
 
 			player->sendMessage(sui->generateMessage());
 			return SUCCESS;
-		}*/
+		}
 
 		//
 
