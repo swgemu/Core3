@@ -640,7 +640,7 @@ public:
 
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
-	bool removeObject(SceneObject* object, bool notifyClient = true);
+	bool removeObject(SceneObject* object, bool notifyClient = false);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
 
@@ -1483,7 +1483,7 @@ public:
 
 	virtual bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
-	virtual bool removeObject(SceneObject* object, bool notifyClient = true);
+	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
 
 	virtual int canAddObject(SceneObject* object, String& errorDescription);
 

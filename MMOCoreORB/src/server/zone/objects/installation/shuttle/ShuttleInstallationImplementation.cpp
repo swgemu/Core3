@@ -33,6 +33,8 @@ void ShuttleInstallationImplementation::spawnShuttleObjects() {
 
 	shuttle = (ShuttleCreature*) creatureObject.get();
 
+	Locker locker(shuttle);
+
 	String shuttleName = activeArea->getCustomObjectName().toString();
 
 	shuttle->setDirection(direction.getW(), 0, direction.getY(), 0);
@@ -48,6 +50,8 @@ void ShuttleInstallationImplementation::spawnShuttleObjects() {
 
 	shuttle->doTakeOff();
 
+	locker.release();
+
 	float directionRadians = direction.getRadians();
 
 	float newX = ((14.41) * Math::sin(directionRadians) + 7.64 * Math::cos(directionRadians)) + positionX;
@@ -55,16 +59,22 @@ void ShuttleInstallationImplementation::spawnShuttleObjects() {
 
 	ticketCollector = (TicketCollector*) zone->getZoneServer()->createObject(String("object/tangible/travel/ticket_collector/ticket_collector.iff").hashCode(), 0);
 
+	Locker tlocker(ticketCollector);
+
 	ticketCollector->setDirection(direction.getW(), 0, direction.getY(), 0);
 
 	ticketCollector->initializePosition(newX, positionZ + 1, newY);
 	ticketCollector->insertToZone(zone);
 	ticketCollector->setShuttle(shuttle);
 
+	tlocker.release();
+
 	travelTerminal = (TravelTerminal*) zone->getZoneServer()->createObject(String("object/tangible/terminal/terminal_travel.iff").hashCode(), 0);
 
 	newX = ((14.41) * Math::sin(directionRadians) + -7.64 * Math::cos(directionRadians)) + positionX;
 	newY = ((14.41) * Math::cos(directionRadians) - -7.64 * Math::sin(directionRadians)) + positionY;
+
+	Locker t2locker(travelTerminal);
 
 	travelTerminal->setShuttle(shuttle);
 	travelTerminal->setDirection(direction.getW(), 0, direction.getY(), 0);
