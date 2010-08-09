@@ -82,9 +82,9 @@ object_weapon_creature_creature_default_weapon = object_weapon_creature_shared_c
 	       
 	
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 57,
-	actionAttackCost = 26,
-        mindAttackCost = 20,
+	healthAttackCost = 0,
+	actionAttackCost = 0,
+        mindAttackCost = 0,
 	forceCost = 0,
 	
 	pointBlankAccuracy = 0,
@@ -93,7 +93,7 @@ object_weapon_creature_creature_default_weapon = object_weapon_creature_shared_c
 	idealRange = 15,
 	idealAccuracy = 3,
 	
-	maxRange = 15,
+	maxRange = 5,
 	maxRangeAccuracy = 5,
 
 	minDamage = 20,

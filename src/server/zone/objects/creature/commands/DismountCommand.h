@@ -80,6 +80,7 @@ public:
 				vehicle->error("could not remove creature from mount creature");
 
 			creature->clearState(CreatureState::RIDINGMOUNT);
+			creature->updateToDatabase();
 
 
 		} catch (...) {

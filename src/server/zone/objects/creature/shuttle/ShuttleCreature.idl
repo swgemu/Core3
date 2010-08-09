@@ -107,7 +107,10 @@ class ShuttleCreature extends CreatureObject {
 	 */
 	public native void sendPlayerTo(PlayerCreature player, TicketObject ticket);
 	
-	public int getArrivalTime() {
+	public synchronized int getArrivalTime() {
+		if (super.zone == null)
+			return 0;
+			
 		PlanetManager planetManager = super.zone.getPlanetManager();
 		long land = getLandingTime();
 		
