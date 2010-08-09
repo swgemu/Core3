@@ -66,9 +66,9 @@ object_draft_schematic_furniture_furniture_terminal_freestanding = object_draft_
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "memory_module", "processing_module"},
-   ingredientSlotType = {0, 2, 2},
+   ingredientSlotType = {0, 1, 1},
    resourceTypes = {"aluminum", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
-   resourceQuantities = {250, 1, 1},
+   resourceQuantities = {250, 6, 3},
    combineTypes = {0, 1, 1},
    contribution = {100, 100, 100},
 

@@ -68,7 +68,7 @@ object_draft_schematic_food_drink_breath_of_heaven = object_draft_schematic_food
    ingredientTitleNames = {"first_alcohol", "second_alcohol", "first_mash", "second_mash", "glass", "additive"},
    ingredientSlotType = {2, 2, 0, 0, 2, 4},
    resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "object/tangible/food/crafted/shared_drink_alcohol.iff", "oats", "rice", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
-   resourceQuantities = {1, 1, 15, 15, 1, 1},
+   resourceQuantities = {3, 3, 15, 15, 1, 1},
    combineTypes = {1, 1, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 

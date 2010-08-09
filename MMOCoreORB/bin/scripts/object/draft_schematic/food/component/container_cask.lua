@@ -68,7 +68,7 @@ object_draft_schematic_food_component_container_cask = object_draft_schematic_fo
    ingredientTitleNames = {"crystal", "cask_trim"},
    ingredientSlotType = {0, 2},
    resourceTypes = {"gemstone_crystalline", "object/tangible/component/clothing/shared_trim.iff"},
-   resourceQuantities = {150, 1},
+   resourceQuantities = {150, 2},
    combineTypes = {0, 1},
    contribution = {100, 100},
 

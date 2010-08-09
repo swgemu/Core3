@@ -68,7 +68,7 @@ object_draft_schematic_food_drink_elshandruu_pica_thundercloud = object_draft_sc
    ingredientTitleNames = {"alcohol", "radioactive_core", "neutronium_thinner", "fruit_twist", "glass", "additive"},
    ingredientSlotType = {2, 0, 0, 0, 2, 4},
    resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "radioactive", "steel_neutronium", "fruit_fruits", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
-   resourceQuantities = {1, 30, 30, 10, 1, 1},
+   resourceQuantities = {4, 30, 30, 10, 1, 1},
    combineTypes = {1, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 

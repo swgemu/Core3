@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_robe_formal_12 = object_draft_schematic
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "extra_trim", "jewelry_setting", "hardware", "inner_gown", "outer_gown"},
-   ingredientSlotType = {2, 2, 2, 0, 0, 0},
+   ingredientSlotType = {1, 1, 1, 0, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_trim.iff", "***BAD NAME***", "metal", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "hide"},
-   resourceQuantities = {1, 1, 2, 160, 1, 120},
+   resourceQuantities = {4, 4, 2, 160, 2, 120},
    combineTypes = {1, 1, 1, 0, 1, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 

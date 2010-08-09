@@ -66,9 +66,9 @@ object_draft_schematic_furniture_furniture_terminal_wall = object_draft_schemati
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"load_bearing_truss", "memory_module", "processing_module"},
-   ingredientSlotType = {0, 2, 2},
+   ingredientSlotType = {0, 1, 1},
    resourceTypes = {"metal_nonferrous", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
-   resourceQuantities = {80, 1, 1},
+   resourceQuantities = {80, 6, 3},
    combineTypes = {0, 1, 1},
    contribution = {100, 100, 100},
 

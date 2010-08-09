@@ -66,9 +66,9 @@ object_draft_schematic_weapon_lance_vibro = object_draft_schematic_weapon_shared
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"lance_shaft", "vibro_unit_and_power_cell_brackets", "grip", "vibration_generator"},
-   ingredientSlotType = {0, 0, 0, 2},
+   ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"steel_ditanium", "copper_polysteel", "metal", "object/tangible/component/weapon/shared_vibro_unit.iff"},
-   resourceQuantities = {38, 17, 6, 1},
+   resourceQuantities = {38, 17, 6, 2},
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 

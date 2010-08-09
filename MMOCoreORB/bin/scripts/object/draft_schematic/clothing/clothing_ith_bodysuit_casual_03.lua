@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_casual_03 = object_draft_s
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"flex_layer_one", "flex_layer_two", "wiring_and_reinforcement", "hardware"},
-   ingredientSlotType = {2, 2, 0, 2},
+   ingredientSlotType = {1, 1, 0, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
-   resourceQuantities = {1, 1, 80, 1},
+   resourceQuantities = {2, 4, 80, 3},
    combineTypes = {1, 1, 0, 1},
    contribution = {100, 100, 100, 100},
 

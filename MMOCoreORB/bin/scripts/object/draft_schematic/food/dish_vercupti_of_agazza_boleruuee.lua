@@ -68,7 +68,7 @@ object_draft_schematic_food_dish_vercupti_of_agazza_boleruuee = object_draft_sch
    ingredientTitleNames = {"dexters_secret_ingredient", "insect_meat", "tubers", "dough", "additive"},
    ingredientSlotType = {0, 0, 0, 2, 4},
    resourceTypes = {"petrochem_inert_lubricating_oil", "meat_insect", "vegetable_tubers", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
-   resourceQuantities = {20, 20, 10, 1, 1},
+   resourceQuantities = {20, 20, 10, 2, 1},
    combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 

@@ -68,7 +68,7 @@ object_draft_schematic_structure_city_garden_large = object_draft_schematic_stru
    ingredientTitleNames = {"decorative_flora", "foundation", "wall_sections"},
    ingredientSlotType = {0, 0, 2},
    resourceTypes = {"flora_resources", "ore", "object/tangible/component/structure/shared_wall_module.iff"},
-   resourceQuantities = {5000, 2000, 1},
+   resourceQuantities = {5000, 2000, 16},
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
