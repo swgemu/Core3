@@ -176,7 +176,7 @@ public:
 
 	void sendMessage(BasePacket* msg);
 
-	void addExperience(const String& xpType, int xp, bool notifyClient = true);
+	int addExperience(const String& xpType, int xp, bool notifyClient = true);
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
@@ -381,7 +381,7 @@ public:
 
 	void sendMessage(BasePacket* msg);
 
-	void addExperience(const String& xpType, int xp, bool notifyClient = true);
+	int addExperience(const String& xpType, int xp, bool notifyClient = true);
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
@@ -538,7 +538,7 @@ public:
 
 	void sendMessage(BasePacket* msg);
 
-	void addExperience(const String& xpType, int xp, bool notifyClient);
+	int addExperience(const String& xpType, int xp, bool notifyClient);
 
 	void removeExperience(const String& xpType, bool notifyClient);
 

@@ -1137,12 +1137,15 @@ void PlayerManagerImplementation::setExperienceMultiplier(float globalMultiplier
 void PlayerManagerImplementation::awardExperience(PlayerCreature* player, const String& xpType,
 													int amount, bool sendSystemMessage, float localMultiplier) {
 
-	player->getPlayerObject()->addExperience(xpType, (int) (amount * localMultiplier * globalExpMultiplier));
+	PlayerObject* playerObject = player->getPlayerObject();
+	int xp = playerObject->addExperience(xpType, (int) (amount * localMultiplier * globalExpMultiplier));
 
+	if (xp <= 0)
+		return;
 	//You receive 30 points of Surveying experience.
 	if (sendSystemMessage) {
 		ParameterizedStringId message("base_player","prose_grant_xp");
-		message.setDI((int) (amount * localMultiplier * globalExpMultiplier));
+		message.setDI(xp);
 		message.setTO("exp_n", xpType);
 		player->sendSystemMessage(message);
 	}
