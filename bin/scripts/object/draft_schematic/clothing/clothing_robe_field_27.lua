@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_robe_field_27 = object_draft_schematic_
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "linksteel_reinforcement"},
-   ingredientSlotType = {2, 0},
+   ingredientSlotType = {1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "metal"},
-   resourceQuantities = {1, 40},
+   resourceQuantities = {4, 40},
    combineTypes = {1, 0},
    contribution = {100, 100},
 

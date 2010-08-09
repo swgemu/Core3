@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_bikini_casual_01 = object_draft_schemat
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"bikini_fabric", "bikini_reinforcement", "padded_straps"},
-   ingredientSlotType = {2, 0, 0},
+   ingredientSlotType = {1, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "copper", "hide_wooly"},
-   resourceQuantities = {1, 50, 50},
+   resourceQuantities = {2, 50, 50},
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 

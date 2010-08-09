@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_bodysuit_field_16 = object_draft_schema
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "polymer_hardware"},
-   ingredientSlotType = {2, 0},
+   ingredientSlotType = {1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "petrochem_inert"},
-   resourceQuantities = {1, 40},
+   resourceQuantities = {6, 40},
    combineTypes = {1, 0},
    contribution = {100, 100},
 

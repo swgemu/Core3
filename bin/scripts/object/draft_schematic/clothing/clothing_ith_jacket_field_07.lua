@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_ith_jacket_field_07 = object_draft_sche
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"heavy_shell", "binding_and_weatherproofing", "liner", "reinforcement"},
-   ingredientSlotType = {2, 0, 2, 0},
+   ingredientSlotType = {1, 0, 2, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "petrochem_inert", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "metal"},
-   resourceQuantities = {1, 20, 1, 35},
+   resourceQuantities = {2, 20, 1, 35},
    combineTypes = {1, 0, 1, 0},
    contribution = {100, 100, 100, 100},
 

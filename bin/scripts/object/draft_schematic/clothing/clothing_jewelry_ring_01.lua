@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_jewelry_ring_01 = object_draft_schemati
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim", "ring", "jewelry_setting"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"metal", "metal", "object/tangible/component/clothing/shared_jewelry_setting.iff"},
-   resourceQuantities = {20, 20, 1},
+   resourceQuantities = {20, 20, 3},
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 

@@ -66,9 +66,9 @@ object_draft_schematic_weapon_cleaver = object_draft_schematic_weapon_shared_cle
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"sword_core_jacket", "grip", "jacketed_sword_core"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"iron_colat", "metal", "object/tangible/component/weapon/shared_sword_core.iff"},
-   resourceQuantities = {42, 18, 1},
+   resourceQuantities = {42, 18, 2},
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 

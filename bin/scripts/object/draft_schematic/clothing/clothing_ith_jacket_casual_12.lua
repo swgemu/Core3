@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_ith_jacket_casual_12 = object_draft_sch
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"binding_and_hardware", "liner", "shell"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"petrochem_inert", "hide_bristley", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
-   resourceQuantities = {25, 50, 1},
+   resourceQuantities = {25, 50, 3},
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 

@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_04 = object_draft_
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"clasp", "band", "decorative_plates", "jewelry_setting"},
-   ingredientSlotType = {0, 0, 0, 2},
+   ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"iron", "iron", "copper", "object/tangible/component/clothing/shared_jewelry_setting.iff"},
-   resourceQuantities = {40, 40, 20, 1},
+   resourceQuantities = {40, 40, 20, 3},
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 

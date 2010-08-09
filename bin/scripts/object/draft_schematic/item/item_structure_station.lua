@@ -68,7 +68,7 @@ object_draft_schematic_item_item_structure_station = object_draft_schematic_item
    ingredientTitleNames = {"assembly_enclosure", "thermal_shielding", "electronic_control_unit", "micro_sensor_suite", "storage_compartment"},
    ingredientSlotType = {0, 0, 4, 4, 4},
    resourceTypes = {"metal", "mineral", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/item/shared_micro_sensor_suite.iff", "object/tangible/component/droid/shared_droid_storage_compartment.iff"},
-   resourceQuantities = {400, 50, 1, 1, 1},
+   resourceQuantities = {400, 50, 2, 2, 5},
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 

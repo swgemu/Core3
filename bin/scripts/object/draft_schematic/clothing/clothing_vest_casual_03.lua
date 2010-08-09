@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_vest_casual_03 = object_draft_schematic
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "decorative_trim", "hardware"},
-   ingredientSlotType = {2, 0, 2},
+   ingredientSlotType = {1, 0, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "hide", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
-   resourceQuantities = {1, 45, 1},
+   resourceQuantities = {2, 45, 2},
    combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 

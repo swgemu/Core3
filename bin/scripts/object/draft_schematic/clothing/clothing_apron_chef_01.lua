@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_apron_chef_01 = object_draft_schematic_
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"apron", "binding_and_reinforcement", "binding_and_hardware", "chef_suit", "bow_tie"},
-   ingredientSlotType = {2, 0, 2, 2, 0},
+   ingredientSlotType = {1, 0, 1, 1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_fiberplast_panel.iff", "chemical", "object/tangible/component/clothing/shared_metal_fasteners.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "fiberplast"},
-   resourceQuantities = {1, 40, 1, 1, 20},
+   resourceQuantities = {4, 40, 2, 2, 20},
    combineTypes = {1, 0, 1, 1, 0},
    contribution = {100, 100, 100, 100, 100},
 
