@@ -246,20 +246,24 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 
 		int arrangementSize = object->getArrangementDescriptorSize();
 
-		bool send = true;
+		bool sendWithoutContents = false;
 
 		for (int i = 0; i < arrangementSize; ++i) {
 			String childArrangement = object->getArrangementDescriptor(i);
 
 			if (player != _this && ((childArrangement == "bank") || (childArrangement == "inventory")
 					|| (childArrangement == "datapad") || (childArrangement == "mission_bag"))) {
-				send = false;
+				sendWithoutContents = true;
 				break;
 			}
 		}
 
-		if (send && (objects.put(object) != -1))
-			object->sendTo(player, true);
+		if (objects.put(object) != -1) {
+			if (sendWithoutContents)
+				object->sendWithoutContainerObjectsTo(player);
+			else
+				object->sendTo(player, true);
+		}
 	}
 }
 
@@ -1176,9 +1180,9 @@ void CreatureObjectImplementation::setCoverState() {
 		showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "cover_success_single");
 
-		uint32 sneakSkill = 0x3903080B;
+		/*uint32 sneakSkill = 0x3903080B;
 
-		/*if (hasSkill(sneakSkill)) {
+		if (hasSkill(sneakSkill)) {
 			float proneModifier = calculateProneSpeedModifier();
 
 			updateSpeed(0.35f * proneModifier, 0.7745f / proneModifier);
