@@ -67,8 +67,10 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	CreatureObjectImplementation::notifyLoadFromDatabase();
 
 	surveyTool = NULL;
+	group = NULL;
 	centeredBonus = 0;
 	tradeContainer.clear();
+	chatRooms.removeAll();
 
 	if (zone != NULL && !isInQuadTree())
 		zone = NULL;

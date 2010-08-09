@@ -24,6 +24,9 @@ int64 ShuttleCreatureImplementation::getLandingTime() {
 
 
 void ShuttleCreatureImplementation::sendPlayerTo(PlayerCreature* player, TicketObject* ticket) {
+	if (zone == NULL)
+		return;
+
 	try {
 		String planet = ticket->getArrivalPlanet();
 		String shuttle = ticket->getArrivalPoint();

@@ -389,7 +389,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 			if (object->isPlayerCreature()) {
 				PlayerCreature* creature = (PlayerCreature*) object;
 
-				if (player->isInRange(creature, 128) || player->getParent() != NULL || creature->getParent() != NULL) {
+				if (player->isInRange(creature, 128)) {
 
 					PlayerObject* ghost = creature->getPlayerObject();
 

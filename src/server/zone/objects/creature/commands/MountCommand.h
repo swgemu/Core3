@@ -106,6 +106,7 @@ public:
 				vehicle->error("could not add creature");
 
 			creature->setState(CreatureState::RIDINGMOUNT);
+			creature->updateToDatabase();
 
 
 		} catch (...) {
