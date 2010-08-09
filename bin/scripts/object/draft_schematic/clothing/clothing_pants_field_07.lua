@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_pants_field_07 = object_draft_schematic
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"shell", "binding_and_hardware", "colorizable_cloth_panel"},
-   ingredientSlotType = {0, 2, 0},
+   ingredientSlotType = {0, 1, 0},
    resourceTypes = {"hide", "object/tangible/component/clothing/shared_metal_fasteners.iff", "hide"},
-   resourceQuantities = {50, 1, 50},
+   resourceQuantities = {50, 2, 50},
    combineTypes = {0, 1, 0},
    contribution = {100, 100, 100},
 

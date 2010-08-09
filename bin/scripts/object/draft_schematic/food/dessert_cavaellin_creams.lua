@@ -68,7 +68,7 @@ object_draft_schematic_food_dessert_cavaellin_creams = object_draft_schematic_fo
    ingredientTitleNames = {"carbosyrup", "pastebread", "fruit_flavor", "water", "additive"},
    ingredientSlotType = {2, 2, 0, 0, 4},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "object/tangible/food/crafted/shared_dessert_pastebread.iff", "fruit_fruits", "water", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
-   resourceQuantities = {1, 1, 20, 20, 1},
+   resourceQuantities = {2, 2, 20, 20, 1},
    combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 

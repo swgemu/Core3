@@ -68,7 +68,7 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
    ingredientTitleNames = {"dough", "bantha_butter", "filling_tubers", "succulent_fruit", "additive"},
    ingredientSlotType = {2, 2, 0, 0, 4},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "object/tangible/food/crafted/shared_dessert_bantha_butter.iff", "vegetable_tubers", "fruit_fruits", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
-   resourceQuantities = {1, 1, 20, 20, 1},
+   resourceQuantities = {1, 2, 20, 20, 1},
    combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 

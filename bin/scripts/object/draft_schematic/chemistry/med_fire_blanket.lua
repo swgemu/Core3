@@ -66,9 +66,9 @@ object_draft_schematic_chemistry_med_fire_blanket = object_draft_schematic_chemi
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"coolent_gel", "fire_suppression_lining", "delivery_medium", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 2, 2},
+   ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"vegetable_fungi_rori", "aluminum", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
-   resourceQuantities = {26, 44, 1, 1},
+   resourceQuantities = {26, 44, 2, 2},
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 

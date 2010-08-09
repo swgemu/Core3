@@ -66,9 +66,9 @@ object_draft_schematic_furniture_furniture_chair_loveseat_elegant = object_draft
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "seat", "upholstery"},
-   ingredientSlotType = {0, 0, 2},
+   ingredientSlotType = {0, 0, 1},
    resourceTypes = {"aluminum", "hide_leathery_dathomir", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
-   resourceQuantities = {350, 250, 1},
+   resourceQuantities = {350, 250, 8},
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 

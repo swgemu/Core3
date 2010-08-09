@@ -58,7 +58,7 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
-   customizationSkill = "clothing_customization", 
+   customizationSkill = "general_customization", 
 
    customizationOptions = {},
    customizationStringNames = {},
@@ -67,7 +67,7 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"container", "life_support", "creature_sample"},
    ingredientSlotType = {0, 0, 2},
-   resourceTypes = {"metal", "chemical", "object/tangible/component/base/shared_base_dna_sample.iff"},
+   resourceTypes = {"metal", "chemical", "object/tangible/container/jar/shared_jar_bugs_s01.iff"},
    resourceQuantities = {20, 10, 1},
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},

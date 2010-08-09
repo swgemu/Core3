@@ -66,9 +66,9 @@ object_draft_schematic_furniture_furniture_chair_elegant = object_draft_schemati
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"frame", "upholstery"},
-   ingredientSlotType = {0, 2},
+   ingredientSlotType = {0, 1},
    resourceTypes = {"copper_thallium", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
-   resourceQuantities = {150, 1},
+   resourceQuantities = {150, 8},
    combineTypes = {0, 1},
    contribution = {100, 100},
 

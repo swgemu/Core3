@@ -66,9 +66,9 @@ object_draft_schematic_droid_component_droid_brain_advanced = object_draft_schem
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"primary_frame", "contaminent_neutralization_medium", "thermal_shielding", "circuit_mounting_unit", "processing_units", "memory_circuits"},
-   ingredientSlotType = {0, 0, 0, 0, 2, 2},
+   ingredientSlotType = {0, 0, 0, 0, 1, 1},
    resourceTypes = {"copper", "gas_inert", "ore_siliclastic", "chemical", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
-   resourceQuantities = {25, 10, 10, 12, 1, 1},
+   resourceQuantities = {25, 10, 10, 12, 4, 4},
    combineTypes = {0, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 

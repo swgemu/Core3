@@ -66,9 +66,9 @@ object_draft_schematic_clothing_clothing_robe_casual_18 = object_draft_schematic
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "trim"},
-   ingredientSlotType = {2, 0},
+   ingredientSlotType = {1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "hide"},
-   resourceQuantities = {1, 50},
+   resourceQuantities = {3, 50},
    combineTypes = {1, 0},
    contribution = {100, 100},
 
