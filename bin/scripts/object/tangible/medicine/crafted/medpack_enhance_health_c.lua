@@ -42,6 +42,12 @@
 
 
 object_tangible_medicine_crafted_medpack_enhance_health_c = object_tangible_medicine_crafted_shared_medpack_enhance_health_c:new {
+	gameObjectType = 8238,
+	templateType = ENHANCEPACK,
+	medicineUse = 15,
+	effectiveness = 400,
+	duration = 1800,
+	attribute = 0
 
 }
 

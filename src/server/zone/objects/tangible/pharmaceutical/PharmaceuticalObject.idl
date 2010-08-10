@@ -88,4 +88,8 @@ class PharmaceuticalObject extends TangibleObject {
 	public abstract boolean isRangedStimPack() {
 		return false;
 	}
+	
+	public abstract boolean isEnhancePack() {
+		return false;
+	}
 }

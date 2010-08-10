@@ -360,12 +360,24 @@ bool BuildingObject::isBuildingObject() {
 		return ((BuildingObjectImplementation*) _impl)->isBuildingObject();
 }
 
-void BuildingObject::setDeedObjectID(unsigned long long deedid) {
+bool BuildingObject::isMedicalBuildingObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 27);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isMedicalBuildingObject();
+}
+
+void BuildingObject::setDeedObjectID(unsigned long long deedid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
 		method.addUnsignedLongParameter(deedid);
 
 		method.executeWithVoidReturn();
@@ -378,7 +390,7 @@ unsigned long long BuildingObject::getDeedObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -390,7 +402,7 @@ void BuildingObject::setOwnerObjectID(unsigned long long ownerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 		method.addUnsignedLongParameter(ownerID);
 
 		method.executeWithVoidReturn();
@@ -403,7 +415,7 @@ unsigned long long BuildingObject::getOwnerObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -415,7 +427,7 @@ void BuildingObject::setSignObject(SignObject* sign) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(sign);
 
 		method.executeWithVoidReturn();
@@ -428,7 +440,7 @@ SignObject* BuildingObject::getSignObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 
 		return (SignObject*) method.executeWithObjectReturn();
 	} else
@@ -440,7 +452,7 @@ void BuildingObject::setMaintenancePool(unsigned int maintenance) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addUnsignedIntParameter(maintenance);
 
 		method.executeWithVoidReturn();
@@ -453,7 +465,7 @@ unsigned int BuildingObject::getMaintenancePool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -465,7 +477,7 @@ void BuildingObject::setBaseMaintenanceRate(int maintenanceRate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addSignedIntParameter(maintenanceRate);
 
 		method.executeWithVoidReturn();
@@ -478,7 +490,7 @@ int BuildingObject::getBaseMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -490,7 +502,7 @@ int BuildingObject::getRedeedCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -502,7 +514,7 @@ bool BuildingObject::isCityHallBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -514,7 +526,7 @@ bool BuildingObject::isOnAdminList(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 		method.addObjectParameter(creature);
 
 		return method.executeWithBooleanReturn();
@@ -527,7 +539,7 @@ void BuildingObject::sendPermissionListTo(PlayerCreature* player, const String& 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(listName);
 
@@ -705,75 +717,80 @@ bool BuildingObjectImplementation::isBuildingObject() {
 	return true;
 }
 
+bool BuildingObjectImplementation::isMedicalBuildingObject() {
+	// server/zone/objects/building/BuildingObject.idl(239):  		return false;
+	return false;
+}
+
 void BuildingObjectImplementation::setDeedObjectID(unsigned long long deedid) {
-	// server/zone/objects/building/BuildingObject.idl(239):  		deedObjectID = deedid;
+	// server/zone/objects/building/BuildingObject.idl(243):  		deedObjectID = deedid;
 	deedObjectID = deedid;
 }
 
 unsigned long long BuildingObjectImplementation::getDeedObjectID() {
-	// server/zone/objects/building/BuildingObject.idl(243):  		return deedObjectID;
+	// server/zone/objects/building/BuildingObject.idl(247):  		return deedObjectID;
 	return deedObjectID;
 }
 
 void BuildingObjectImplementation::setOwnerObjectID(unsigned long long ownerID) {
-	// server/zone/objects/building/BuildingObject.idl(247):  		ownerObjectID = ownerID;
+	// server/zone/objects/building/BuildingObject.idl(251):  		ownerObjectID = ownerID;
 	ownerObjectID = ownerID;
-	// server/zone/objects/building/BuildingObject.idl(248):  		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
+	// server/zone/objects/building/BuildingObject.idl(252):  		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
 	(&structurePermissionList)->grantPermission(ownerID, StructurePermissionList::OWNER);
 }
 
 unsigned long long BuildingObjectImplementation::getOwnerObjectID() {
-	// server/zone/objects/building/BuildingObject.idl(252):  		return ownerObjectID;
+	// server/zone/objects/building/BuildingObject.idl(256):  		return ownerObjectID;
 	return ownerObjectID;
 }
 
 void BuildingObjectImplementation::setSignObject(SignObject* sign) {
-	// server/zone/objects/building/BuildingObject.idl(256):  		signObject = sign;
+	// server/zone/objects/building/BuildingObject.idl(260):  		signObject = sign;
 	signObject = sign;
 }
 
 SignObject* BuildingObjectImplementation::getSignObject() {
-	// server/zone/objects/building/BuildingObject.idl(260):  		return signObject;
+	// server/zone/objects/building/BuildingObject.idl(264):  		return signObject;
 	return signObject;
 }
 
 void BuildingObjectImplementation::setMaintenancePool(unsigned int maintenance) {
-	// server/zone/objects/building/BuildingObject.idl(264):  		maintenancePool = maintenance;
+	// server/zone/objects/building/BuildingObject.idl(268):  		maintenancePool = maintenance;
 	maintenancePool = maintenance;
 }
 
 unsigned int BuildingObjectImplementation::getMaintenancePool() {
-	// server/zone/objects/building/BuildingObject.idl(268):  		return maintenancePool;
+	// server/zone/objects/building/BuildingObject.idl(272):  		return maintenancePool;
 	return maintenancePool;
 }
 
 void BuildingObjectImplementation::setBaseMaintenanceRate(int maintenanceRate) {
-	// server/zone/objects/building/BuildingObject.idl(276):  		baseMaintenanceRate = maintenanceRate;
+	// server/zone/objects/building/BuildingObject.idl(280):  		baseMaintenanceRate = maintenanceRate;
 	baseMaintenanceRate = maintenanceRate;
 }
 
 int BuildingObjectImplementation::getBaseMaintenanceRate() {
-	// server/zone/objects/building/BuildingObject.idl(285):  		return baseMaintenanceRate;
+	// server/zone/objects/building/BuildingObject.idl(289):  		return baseMaintenanceRate;
 	return baseMaintenanceRate;
 }
 
 int BuildingObjectImplementation::getRedeedCost() {
-	// server/zone/objects/building/BuildingObject.idl(293):  		return baseMaintenanceRate * 50;
+	// server/zone/objects/building/BuildingObject.idl(297):  		return baseMaintenanceRate * 50;
 	return baseMaintenanceRate * 50;
 }
 
 bool BuildingObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(297):  		return false;
+	// server/zone/objects/building/BuildingObject.idl(301):  		return false;
 	return false;
 }
 
 bool BuildingObjectImplementation::isOnAdminList(CreatureObject* creature) {
-	// server/zone/objects/building/BuildingObject.idl(306):  		return structurePermissionList.isOnAdminList(creature.getObjectID());
+	// server/zone/objects/building/BuildingObject.idl(310):  		return structurePermissionList.isOnAdminList(creature.getObjectID());
 	return (&structurePermissionList)->isOnAdminList(creature->getObjectID());
 }
 
 void BuildingObjectImplementation::sendPermissionListTo(PlayerCreature* player, const String& listName) {
-	// server/zone/objects/building/BuildingObject.idl(310):  		structurePermissionList.sendTo(player, listName);
+	// server/zone/objects/building/BuildingObject.idl(314):  		structurePermissionList.sendTo(player, listName);
 	(&structurePermissionList)->sendTo(player, listName);
 }
 
@@ -852,45 +869,48 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isBuildingObject());
 		break;
 	case 27:
-		setDeedObjectID(inv->getUnsignedLongParameter());
+		resp->insertBoolean(isMedicalBuildingObject());
 		break;
 	case 28:
-		resp->insertLong(getDeedObjectID());
+		setDeedObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 29:
-		setOwnerObjectID(inv->getUnsignedLongParameter());
+		resp->insertLong(getDeedObjectID());
 		break;
 	case 30:
-		resp->insertLong(getOwnerObjectID());
+		setOwnerObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 31:
-		setSignObject((SignObject*) inv->getObjectParameter());
+		resp->insertLong(getOwnerObjectID());
 		break;
 	case 32:
-		resp->insertLong(getSignObject()->_getObjectID());
+		setSignObject((SignObject*) inv->getObjectParameter());
 		break;
 	case 33:
-		setMaintenancePool(inv->getUnsignedIntParameter());
+		resp->insertLong(getSignObject()->_getObjectID());
 		break;
 	case 34:
-		resp->insertInt(getMaintenancePool());
+		setMaintenancePool(inv->getUnsignedIntParameter());
 		break;
 	case 35:
-		setBaseMaintenanceRate(inv->getSignedIntParameter());
+		resp->insertInt(getMaintenancePool());
 		break;
 	case 36:
-		resp->insertSignedInt(getBaseMaintenanceRate());
+		setBaseMaintenanceRate(inv->getSignedIntParameter());
 		break;
 	case 37:
-		resp->insertSignedInt(getRedeedCost());
+		resp->insertSignedInt(getBaseMaintenanceRate());
 		break;
 	case 38:
-		resp->insertBoolean(isCityHallBuilding());
+		resp->insertSignedInt(getRedeedCost());
 		break;
 	case 39:
-		resp->insertBoolean(isOnAdminList((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isCityHallBuilding());
 		break;
 	case 40:
+		resp->insertBoolean(isOnAdminList((CreatureObject*) inv->getObjectParameter()));
+		break;
+	case 41:
 		sendPermissionListTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__PlayerCreature_String_));
 		break;
 	default:
@@ -982,6 +1002,10 @@ void BuildingObjectAdapter::onExit(PlayerCreature* player) {
 
 bool BuildingObjectAdapter::isBuildingObject() {
 	return ((BuildingObjectImplementation*) impl)->isBuildingObject();
+}
+
+bool BuildingObjectAdapter::isMedicalBuildingObject() {
+	return ((BuildingObjectImplementation*) impl)->isMedicalBuildingObject();
 }
 
 void BuildingObjectAdapter::setDeedObjectID(unsigned long long deedid) {

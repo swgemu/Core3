@@ -1,26 +1,31 @@
 /*
- * StimPackTemplate.h
+ * EnhancePackTemplate.h
  *
  *  Created on: 10/08/2010
  *      Author: victor
  */
 
-#ifndef STIMPACKTEMPLATE_H_
-#define STIMPACKTEMPLATE_H_
+#ifndef ENHANCEPACKTEMPLATE_H_
+#define ENHANCEPACKTEMPLATE_H_
+
 
 #include "../SharedTangibleObjectTemplate.h"
 
-class StimPackTemplate : public SharedTangibleObjectTemplate {
+class EnhancePackTemplate : public SharedTangibleObjectTemplate {
 	int medicineUse;
 	float effectiveness;
+	float duration;
+	byte attribute;
 
 public:
-	StimPackTemplate() {
+	EnhancePackTemplate() {
 		medicineUse = 0;
 		effectiveness = 0;
+		duration = 0;
+		attribute = 0;
 	}
 
-	~StimPackTemplate() {
+	~EnhancePackTemplate() {
 
 	}
 
@@ -29,6 +34,8 @@ public:
 
 		medicineUse = templateData->getIntField("medicineUse");
 		effectiveness = templateData->getFloatField("effectiveness");
+		duration = templateData->getFloatField("duration");
+		attribute = templateData->getIntField("attribute");
     }
 
 	inline int getMedicineUse() {
@@ -39,9 +46,17 @@ public:
 		return effectiveness;
 	}
 
-	bool isStimPackTemplate() {
+	inline byte getAttribute() {
+		return attribute;
+	}
+
+	inline float getDuration() {
+		return duration;
+	}
+
+	bool isEnhancePackTemplate() {
 		return true;
 	}
 };
 
-#endif
+#endif /* ENHANCEPACKTEMPLATE_H_ */

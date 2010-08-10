@@ -18,6 +18,8 @@
 
 #include "server/zone/ZoneServer.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 /*
  *	StimPackStub
  */
@@ -33,6 +35,14 @@ StimPack::StimPack(DummyConstructorParameter* param) : PharmaceuticalObject(para
 StimPack::~StimPack() {
 }
 
+
+void StimPack::updateCraftingValues(ManufactureSchematic* schematic) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((StimPackImplementation*) _impl)->updateCraftingValues(schematic);
+}
 
 void StimPack::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
@@ -175,80 +185,91 @@ void StimPackImplementation::_serializationHelperMethod() {
 
 StimPackImplementation::StimPackImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(64):  		setLoggingName("StimPack");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(66):  		setLoggingName("StimPack");
 	setLoggingName("StimPack");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(66):  		effectiveness = 0;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(68):  		effectiveness = 0;
 	effectiveness = 0;
 }
 
+void StimPackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(73):  		CraftingValues craftingValues = schematic.getCraftingValues();
+	CraftingValues* craftingValues = schematic->getCraftingValues();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(75):  		effectiveness = craftingValues.getCurrentValue("power");
+	effectiveness = craftingValues->getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(76):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(77):  		super.useCount = craftingValues.getCurrentValue("charges");
+	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+}
+
 void StimPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(77):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(88):  		super.loadTemplateData(templateData);
 	PharmaceuticalObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(79):  		StimPackTemplate 
-	if (!templateData->isStimPackTemplate())	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(80):  			return;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(90):  		StimPackTemplate 
+	if (!templateData->isStimPackTemplate())	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(91):  			return;
 	return;
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(82):  stimPackTemplate = (StimPackTemplate) templateData;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(93):  stimPackTemplate = (StimPackTemplate) templateData;
 	StimPackTemplate* stimPackTemplate = (StimPackTemplate*) templateData;
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(84):  		effectiveness = stimPackTemplate.getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(95):  		effectiveness = stimPackTemplate.getEffectiveness();
 	effectiveness = stimPackTemplate->getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(85):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(96):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 	PharmaceuticalObjectImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
 }
 
 unsigned int StimPackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(89):  		float power = getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(100):  		float power = getEffectiveness();
 	float power = getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(91):  		float 
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(102):  		float 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(92):  			power = power - power * patient.calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(103):  			power = power - power * patient.calculateBFRatio();
 	power = power - power * patient->calculateBFRatio();
 }
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(95):  modSkill = (float) healer.getSkillMod("healing_injury_treatment");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(106):  modSkill = (float) healer.getSkillMod("healing_injury_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_injury_treatment");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(97):  		return (100 + modSkill) / 100 * power;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(108):  		return (100 + modSkill) / 100 * power;
 	return (100 + modSkill) / 100 * power;
 }
 
 int StimPackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(109):  		if 
-	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(110):  			return 1;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(120):  		if 
+	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(121):  			return 1;
 	return 1;
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(112):  
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(123):  
 	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(113):  			player.sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(124):  			player.sendSystemMessage("error_message", "insufficient_skill");
 	player->sendSystemMessage("error_message", "insufficient_skill");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(115):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(126):  			return 0;
 	return 0;
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(117):  			string command = "/healdamage ";
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(128):  			string command = "/healdamage ";
 	String command = "/healdamage ";
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(118):  			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(129):  			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
 	player->sendExecuteConsoleCommand(command + String::valueOf(PharmaceuticalObjectImplementation::getObjectID()));
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(120):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(131):  			return 0;
 	return 0;
 }
 }
 
 void StimPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(134):  		super.fillAttributeList(msg, object);
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(145):  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(136):  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(147):  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_health", Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(137):  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(148):  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_action", Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(138):  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(149):  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::medicineUseRequired);
 }
 
 float StimPackImplementation::getEffectiveness() {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(142):  		return effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(153):  		return effectiveness;
 	return effectiveness;
 }
 
 bool StimPackImplementation::isStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(146):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(157):  		return true;
 	return true;
 }
 
