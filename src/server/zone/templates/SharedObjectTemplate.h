@@ -107,6 +107,7 @@ public:
 	const static int FACTORY = 0x400000E;
 	const static int STIMPACK = 0x400000F;
 	const static int RANGEDSTIMPACK = 0x4000010;
+	const static int ENHANCEPACK = 0x4000011;
 
 public:
 	SharedObjectTemplate() {
@@ -402,6 +403,10 @@ public:
 	}
 
 	virtual bool isRangedStimPackTemplate() {
+		return false;
+	}
+
+	virtual bool isEnhancePackTemplate() {
 		return false;
 	}
 

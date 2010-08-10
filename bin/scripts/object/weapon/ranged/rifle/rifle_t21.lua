@@ -101,7 +101,7 @@ object_weapon_ranged_rifle_rifle_t21 = object_weapon_ranged_rifle_shared_rifle_t
 	minDamage = 80,
 	maxDamage = 200,
 
-	attackSpeed = 10.5
+	attackSpeed = 4.5
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_t21, "object/weapon/ranged/rifle/rifle_t21.iff")

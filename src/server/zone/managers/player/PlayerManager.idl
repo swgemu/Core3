@@ -105,7 +105,7 @@ class PlayerManager extends Observer implements Logger {
 	public native int notifyDefendersOfIncapacitation(TangibleObject destructor, TangibleObject destructedObject); 
 	
 	/**
-	 * @pre {Êattacker and player locked }
+	 * @pre {ï¿½attacker and player locked }
 	 * @post { attacker and player locked }
 	 */
 	public native void killPlayer(TangibleObject attacker, PlayerCreature player);
@@ -150,7 +150,7 @@ class PlayerManager extends Observer implements Logger {
 	public native int healEnhance(CreatureObject enhancer, CreatureObject patient, byte attribute, int buffvalue, float duration);
 	
 	@local
-	public native void disseminateExperience(TangibleObject destructor, TangibleObject destructedObject, DamageMap damageMap);
+	public native void disseminateExperience(TangibleObject destructedObject, DamageMap damageMap);
 	
 	public native void sendMessageOfTheDay(PlayerCreature player);
 	

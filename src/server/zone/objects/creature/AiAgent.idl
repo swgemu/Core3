@@ -281,6 +281,9 @@ class AiAgent extends CreatureObject {
 	}
 	
 	public void setFollowObject(SceneObject obj) {
+		if (this.isRetreating())
+			return;
+			
 		if (followObject != obj) {
 			clearPatrolPoints();
 
