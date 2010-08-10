@@ -454,6 +454,8 @@ public:
 
 	bool checkCooldownRecovery(const String& cooldown);
 
+	void addCooldown(const String& name, unsigned int miliseconds);
+
 	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void doAnimation(const String& animation);
@@ -998,6 +1000,8 @@ public:
 
 	bool checkCooldownRecovery(const String& cooldown);
 
+	void addCooldown(const String& name, unsigned int miliseconds);
+
 	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void doAnimation(const String& animation);
@@ -1421,6 +1425,8 @@ public:
 
 	bool checkCooldownRecovery(const String& cooldown);
 
+	void addCooldown(const String& name, unsigned int miliseconds);
+
 	int canAddObject(SceneObject* object, String& errorDescription);
 
 	void doAnimation(const String& animation);
@@ -1607,6 +1613,7 @@ protected:
 	UnicodeString _param2_executeObjectControllerAction__int_long_UnicodeString_;
 	String _param0_updateCooldownTimer__String_int_;
 	String _param0_checkCooldownRecovery__String_;
+	String _param0_addCooldown__String_int_;
 	String _param1_canAddObject__SceneObject_String_;
 	String _param0_doAnimation__String_;
 	String _param0_playEffect__String_String_;

@@ -101,9 +101,27 @@ class ZoneServer;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
 #include "server/zone/objects/creature/CreatureState.h"
 
 #include "server/zone/objects/creature/CreatureAttribute.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/templates/tangible/DotPackTemplate.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -119,7 +137,19 @@ class DotPack : public PharmaceuticalObject {
 public:
 	DotPack();
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	int calculatePower(CreatureObject* creature);
+
+	bool isPoisonDeliveryUnit();
+
+	bool isDiseaseDeliveryUnit();
 
 	float getEffectiveness();
 
@@ -173,6 +203,8 @@ protected:
 
 	float potency;
 
+	String commandToExecute;
+
 	unsigned int duration;
 
 	unsigned int pool;
@@ -184,7 +216,19 @@ public:
 
 	DotPackImplementation(DummyConstructorParameter* param);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	int calculatePower(CreatureObject* creature);
+
+	bool isPoisonDeliveryUnit();
+
+	bool isDiseaseDeliveryUnit();
 
 	float getEffectiveness();
 
@@ -242,6 +286,14 @@ public:
 	DotPackAdapter(DotPackImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	int calculatePower(CreatureObject* creature);
+
+	bool isPoisonDeliveryUnit();
+
+	bool isDiseaseDeliveryUnit();
 
 	float getEffectiveness();
 

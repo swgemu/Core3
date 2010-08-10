@@ -396,8 +396,12 @@ public:
 		if (targetCreature != creature)
 			awardXp(creature, "medical", 50); //No experience for healing yourself.
 
-		if (curePack->isArea())
+		if (curePack->isArea()) {
+			if (creature != targetCreature)
+				clocker.release();
+
 			handleArea(creature, targetCreature, curePack, curePack->getArea());
+		}
 
 		doAnimations(creature, targetCreature);
 

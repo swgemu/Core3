@@ -33,6 +33,7 @@
 #include "server/zone/templates/tangible/RangedStimPackTemplate.h"
 #include "server/zone/templates/tangible/EnhancePackTemplate.h"
 #include "server/zone/templates/tangible/CurePackTemplate.h"
+#include "server/zone/templates/tangible/DotPackTemplate.h"
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "server/zone/templates/tangible/LairObjectTemplate.h"
@@ -161,6 +162,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<RangedStimPackTemplate>(SharedObjectTemplate::RANGEDSTIMPACK);
 	templateFactory.registerObject<EnhancePackTemplate>(SharedObjectTemplate::ENHANCEPACK);
 	templateFactory.registerObject<CurePackTemplate>(SharedObjectTemplate::CUREPACK);
+	templateFactory.registerObject<DotPackTemplate>(SharedObjectTemplate::DOTPACK);
 
 }
 
@@ -282,6 +284,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("RANGEDSTIMPACK", SharedObjectTemplate::RANGEDSTIMPACK);
 	luaTemplatesInstance->setGlobalInt("ENHANCEPACK", SharedObjectTemplate::ENHANCEPACK);
 	luaTemplatesInstance->setGlobalInt("CUREPACK", SharedObjectTemplate::CUREPACK);
+	luaTemplatesInstance->setGlobalInt("DOTPACK", SharedObjectTemplate::DOTPACK);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

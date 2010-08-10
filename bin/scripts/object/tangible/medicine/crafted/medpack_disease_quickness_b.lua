@@ -42,7 +42,18 @@
 
 
 object_tangible_medicine_crafted_medpack_disease_quickness_b = object_tangible_medicine_crafted_shared_medpack_disease_quickness_b:new {
-
+	gameObjectType = 8240,
+	templateType = DOTPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	duration = 300,
+	range = 15,
+	rangeMod = 0.6,
+	pool = 4,
+	dotType = DISEASED,
+	potency = 250,
+	commandToExecute = "/applydisease",
+	area = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_disease_quickness_b, "object/tangible/medicine/crafted/medpack_disease_quickness_b.iff")

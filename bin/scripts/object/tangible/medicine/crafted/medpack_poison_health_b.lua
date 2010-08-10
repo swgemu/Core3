@@ -42,7 +42,18 @@
 
 
 object_tangible_medicine_crafted_medpack_poison_health_b = object_tangible_medicine_crafted_shared_medpack_poison_health_b:new {
-
+	gameObjectType = 8240,
+	templateType = DOTPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	duration = 300,
+	range = 15,
+	rangeMod = 0.6,
+	pool = 0,
+	dotType = POISONED,
+	potency = 250,
+	commandToExecute = "/applypoison",
+	area = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_poison_health_b, "object/tangible/medicine/crafted/medpack_poison_health_b.iff")

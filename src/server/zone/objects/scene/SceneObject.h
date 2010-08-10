@@ -404,6 +404,8 @@ public:
 
 	static const int CUREPACK = 0x202F;
 
+	static const int DOTPACK = 0x2030;
+
 	static const int TERMINAL = 0x4000;
 
 	static const int BANK = 0x4001;
@@ -1250,6 +1252,8 @@ public:
 	static const int ENHANCEPACK = 0x202E;
 
 	static const int CUREPACK = 0x202F;
+
+	static const int DOTPACK = 0x2030;
 
 	static const int TERMINAL = 0x4000;
 
