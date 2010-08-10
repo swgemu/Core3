@@ -57,5 +57,4 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
 
 	SceneObjectImplementation::sendContainerObjectsTo(player);
-
 }

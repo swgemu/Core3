@@ -42,7 +42,7 @@
 
 
 object_tangible_medicine_medpack_damage = object_tangible_medicine_shared_medpack_damage:new {
-
+	
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_medpack_damage, "object/tangible/medicine/medpack_damage.iff")

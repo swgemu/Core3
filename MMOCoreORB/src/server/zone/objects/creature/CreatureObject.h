@@ -280,6 +280,8 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
+	bool hasDamage(int attribute);
+
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
@@ -317,6 +319,8 @@ public:
 	void removeBuff(Buff* buff);
 
 	void clearBuffs(bool updateclient);
+
+	Buff* getBuff(unsigned int buffcrc);
 
 	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
 
@@ -387,6 +391,8 @@ public:
 	void sendConversationStartTo(SceneObject* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
+
+	bool canTreatInjuries();
 
 	void dismount();
 
@@ -814,6 +820,8 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
+	bool hasDamage(int attribute);
+
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
@@ -851,6 +859,8 @@ public:
 	void removeBuff(Buff* buff);
 
 	void clearBuffs(bool updateclient);
+
+	Buff* getBuff(unsigned int buffcrc);
 
 	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
 
@@ -921,6 +931,8 @@ public:
 	virtual void sendConversationStartTo(SceneObject* player);
 
 	virtual void selectConversationOption(int option, SceneObject* obj);
+
+	bool canTreatInjuries();
 
 	void dismount();
 
@@ -1231,6 +1243,8 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 
+	bool hasDamage(int attribute);
+
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient);
 
 	void setBaseHAM(int type, int value, bool notifyClient);
@@ -1268,6 +1282,8 @@ public:
 	void removeBuff(Buff* buff);
 
 	void clearBuffs(bool updateclient);
+
+	Buff* getBuff(unsigned int buffcrc);
 
 	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
 
@@ -1334,6 +1350,8 @@ public:
 	void sendConversationStartTo(SceneObject* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
+
+	bool canTreatInjuries();
 
 	void dismount();
 

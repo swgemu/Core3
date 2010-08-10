@@ -186,6 +186,8 @@ public:
 
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
 
+	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
+
 	void disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
@@ -298,6 +300,8 @@ public:
 
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
 
+	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
+
 	void disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
@@ -400,6 +404,8 @@ public:
 	void handleVerifyTradeMessage(PlayerCreature* player);
 
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+
+	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 

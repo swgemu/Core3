@@ -258,6 +258,11 @@ class TangibleObject extends SceneObject {
 	public native void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
 	
 	/**
+	 * Decreases use count, when reaches 0 destroys itself
+	 */
+	public native void decreaseUseCount(PlayerCreature player = null);
+	
+	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
 	 * @post { }
@@ -454,6 +459,10 @@ class TangibleObject extends SceneObject {
 	
 	public boolean isSliced() {
 		return sliced;
+	}
+	
+	public abstract boolean isPharmaceuticalObject() {
+		return false;
 	}
 	
 	public void setCustomizationString(final string vars) {

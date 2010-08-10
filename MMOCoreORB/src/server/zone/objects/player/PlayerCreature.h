@@ -350,6 +350,8 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	void sendExecuteConsoleCommand(const String& command);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
@@ -693,6 +695,8 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	void sendExecuteConsoleCommand(const String& command);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
@@ -950,6 +954,8 @@ public:
 
 	bool isAggressiveTo(PlayerCreature* object);
 
+	void sendExecuteConsoleCommand(const String& command);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
@@ -1129,6 +1135,7 @@ public:
 	void setLastCraftingToolUsed(CraftingTool* tool);
 
 protected:
+	String _param0_sendExecuteConsoleCommand__String_;
 	String _param1_canAddObject__SceneObject_String_;
 	String _param0_setLastNpcConvStr__String_;
 	String _param0_setLastNpcConvMessStr__String_;

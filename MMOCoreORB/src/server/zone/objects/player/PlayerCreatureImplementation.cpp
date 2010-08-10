@@ -17,6 +17,7 @@
 #include "server/zone/packets/player/BadgesResponseMessage.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/packets/ui/ExecuteConsoleCommand.h"
 
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
@@ -249,7 +250,8 @@ void PlayerCreatureImplementation::doRecovery() {
 
 	if (isInCombat() && getTargetID() != 0 && !isPeaced()
 			&& (commandQueue.size() == 0) && nextAction.isPast()) {
-		enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack
+		sendExecuteConsoleCommand("/attack");
+		//enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack
 	}
 
 	activateRecovery();
@@ -624,6 +626,11 @@ int PlayerCreatureImplementation::notifyObjectRemoved(SceneObject* object) {
 void PlayerCreatureImplementation::awardBadge(uint32 badge) {
 	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 	playerManager->awardBadge(_this, badge);
+}
+
+void PlayerCreatureImplementation::sendExecuteConsoleCommand(const String& command) {
+	BaseMessage* msg = new ExecuteConsoleCommand(command);
+	sendMessage(msg);
 }
 
 WaypointObject* PlayerCreatureImplementation::getSurveyWaypoint() {

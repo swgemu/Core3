@@ -85,9 +85,11 @@ void BuffImplementation::sendDestroyTo(PlayerCreature* player) {
 	player->sendMessage(rbm);
 }
 
-void BuffImplementation::activate() {
-	applyAttributeModifiers();
-	applySkillModifiers();
+void BuffImplementation::activate(bool applyModifiers) {
+	if (applyModifiers) {
+		applyAttributeModifiers();
+		applySkillModifiers();
+	}
 
 	buffEvent = new BuffDurationEvent(creature, _this);
 	buffEvent->schedule((int) (buffDuration * 1000));
@@ -100,9 +102,11 @@ void BuffImplementation::activate() {
 		creature->sendSystemMessage(startMessage);
 }
 
-void BuffImplementation::deactivate() {
-	removeAttributeModifiers();
-	removeSkillModifiers();
+void BuffImplementation::deactivate(bool removeModifiers) {
+	if (removeModifiers) {
+		removeAttributeModifiers();
+		removeSkillModifiers();
+	}
 
 	if (creature->isPlayerCreature())
 		sendDestroyTo((PlayerCreature*) creature.get());
