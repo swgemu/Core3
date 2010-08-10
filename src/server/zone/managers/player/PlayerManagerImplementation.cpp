@@ -1521,8 +1521,11 @@ int PlayerManagerImplementation::getMedicalFacilityRating(CreatureObject* creatu
 
 		if (building->isCloningBuildingObject() || building->isMedicalBuildingObject())
 			return 100;
+		else
+			return 0;
 
-	}
+	} else
+		return 0;
 
 	// check for camps
 

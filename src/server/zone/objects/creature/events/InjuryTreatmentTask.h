@@ -13,17 +13,19 @@
 class InjuryTreatmentTask : public Task {
 	ManagedReference<CreatureObject*> creature;
 	ParameterizedStringId message;
+	String pendingTask;
 
 public:
-	InjuryTreatmentTask(CreatureObject* creo, const ParameterizedStringId& msg) {
+	InjuryTreatmentTask(CreatureObject* creo, const ParameterizedStringId& msg, const String& task) {
 		creature = creo;
 		message = msg;
+		pendingTask = task;
 	}
 
 	void run() {
 		Locker locker(creature);
 
-		creature->removePendingTask("injuryTreatment");
+		creature->removePendingTask(pendingTask);
 		//creature->sendSystemMessage("healing_response", "healing_response_58"); //You are now ready to heal more damage.
 		creature->sendSystemMessage(message);
 	}
