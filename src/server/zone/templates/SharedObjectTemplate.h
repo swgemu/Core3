@@ -109,6 +109,7 @@ public:
 	const static int RANGEDSTIMPACK = 0x4000010;
 	const static int ENHANCEPACK = 0x4000011;
 	const static int CUREPACK = 0x4000012;
+	const static int DOTPACK = 0x4000013;
 
 public:
 	SharedObjectTemplate() {
@@ -412,6 +413,10 @@ public:
 	}
 
 	virtual bool isCurePackTemplate() {
+		return false;
+	}
+
+	virtual bool isDotPackTemplate() {
 		return false;
 	}
 

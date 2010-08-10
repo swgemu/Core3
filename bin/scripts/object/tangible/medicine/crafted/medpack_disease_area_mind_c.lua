@@ -42,7 +42,18 @@
 
 
 object_tangible_medicine_crafted_medpack_disease_area_mind_c = object_tangible_medicine_crafted_shared_medpack_disease_area_mind_c:new {
-
+	gameObjectType = 8240,
+	templateType = DOTPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	duration = 300,
+	range = 15,
+	rangeMod = 0.3,
+	pool = 6,
+	dotType = DISEASED,
+	potency = 350,
+	commandToExecute = "/applydisease",
+	area = 10
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_disease_area_mind_c, "object/tangible/medicine/crafted/medpack_disease_area_mind_c.iff")

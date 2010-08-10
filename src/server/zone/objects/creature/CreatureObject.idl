@@ -809,6 +809,10 @@ class CreatureObject extends TangibleObject {
 		return cooldownTimerMap.isPast(cooldown);
 	}
 	
+	public void addCooldown(final string name, unsigned int miliseconds) {
+		cooldownTimerMap.updateToCurrentAndAddMili(name, miliseconds);
+	}
+	
 	public native int canAddObject(SceneObject object, string errorDescription);
 	
 	public native void doAnimation(final string animation);
