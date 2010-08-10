@@ -398,6 +398,8 @@ public:
 
 	static const int STIMPACK = 0x202C;
 
+	static const int RANGEDSTIMPACK = 0x202D;
+
 	static const int TERMINAL = 0x4000;
 
 	static const int BANK = 0x4001;
@@ -1238,6 +1240,8 @@ public:
 	static const int LAIR = 0x202B;
 
 	static const int STIMPACK = 0x202C;
+
+	static const int RANGEDSTIMPACK = 0x202D;
 
 	static const int TERMINAL = 0x4000;
 

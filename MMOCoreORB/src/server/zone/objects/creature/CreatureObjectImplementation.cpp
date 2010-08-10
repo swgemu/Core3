@@ -542,13 +542,20 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 		return 0;
 	}
 
+	int returnValue = damage;
+
 	int currentValue = hamList.get(damageType);
 
 	int newValue = currentValue + damage;
 
-	setHAM(damageType, MIN(newValue, maxHamList.get(damageType)), notifyClient);
+	int maxValue = maxHamList.get(damageType);
 
-	return 0;
+	if (newValue > maxValue)
+		returnValue = maxValue - currentValue;
+
+	setHAM(damageType, MIN(newValue, maxValue), notifyClient);
+
+	return returnValue;
 }
 
 void CreatureObjectImplementation::setBaseHAM(int type, int value, bool notifyClient) {

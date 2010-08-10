@@ -326,9 +326,17 @@ int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
 	int newConditionDamage = conditionDamage - damageToHeal;
 
+	int returnValue = damageToHeal;
+
+	if (newConditionDamage < 0)
+		returnValue = damageToHeal + newConditionDamage;
+
+	if (returnValue < 0)
+		returnValue = 0;
+
 	setConditionDamage(MAX(0, newConditionDamage), notifyClient);
 
-	return 0;
+	return returnValue;
 }
 
 void TangibleObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {

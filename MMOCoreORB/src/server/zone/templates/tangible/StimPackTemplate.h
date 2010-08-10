@@ -5,6 +5,9 @@
  *      Author: victor
  */
 
+#ifndef STIMPACKTEMPLATE_H_
+#define STIMPACKTEMPLATE_H_
+
 #include "../SharedTangibleObjectTemplate.h"
 
 class StimPackTemplate : public SharedTangibleObjectTemplate {
@@ -40,3 +43,5 @@ public:
 		return true;
 	}
 };
+
+#endif
