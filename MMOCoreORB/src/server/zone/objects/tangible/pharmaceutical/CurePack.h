@@ -101,7 +101,25 @@ class ZoneServer;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
 #include "server/zone/objects/creature/CreatureState.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/templates/tangible/CurePackTemplate.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -119,7 +137,15 @@ class CurePack : public PharmaceuticalObject {
 public:
 	CurePack();
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	int calculatePower(CreatureObject* creature);
 
 	bool isArea();
 
@@ -128,6 +154,8 @@ public:
 	unsigned long long getState();
 
 	float getEffectiveness();
+
+	bool isCurePack();
 
 protected:
 	CurePack(DummyConstructorParameter* param);
@@ -159,12 +187,22 @@ protected:
 
 	unsigned long long state;
 
+	String commandToExecute;
+
 public:
 	CurePackImplementation();
 
 	CurePackImplementation(DummyConstructorParameter* param);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	int calculatePower(CreatureObject* creature);
 
 	bool isArea();
 
@@ -173,6 +211,8 @@ public:
 	unsigned long long getState();
 
 	float getEffectiveness();
+
+	bool isCurePack();
 
 	CurePack* _this;
 
@@ -213,6 +253,10 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	int calculatePower(CreatureObject* creature);
+
 	bool isArea();
 
 	float getArea();
@@ -220,6 +264,8 @@ public:
 	unsigned long long getState();
 
 	float getEffectiveness();
+
+	bool isCurePack();
 
 };
 

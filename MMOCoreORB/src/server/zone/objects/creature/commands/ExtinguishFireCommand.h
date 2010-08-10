@@ -45,25 +45,15 @@ which carries forward this exception.
 #ifndef EXTINGUISHFIRECOMMAND_H_
 #define EXTINGUISHFIRECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CurePackCommand.h"
 
-class ExtinguishFireCommand : public QueueCommand {
+class ExtinguishFireCommand : public CurePackCommand {
 public:
 
 	ExtinguishFireCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
-
-	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		return SUCCESS;
+		: CurePackCommand(name, server) {
+		state = CreatureState::ONFIRE;
 	}
 
 };

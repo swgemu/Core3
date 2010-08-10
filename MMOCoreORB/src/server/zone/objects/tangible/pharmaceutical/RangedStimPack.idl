@@ -95,7 +95,7 @@ class RangedStimPack extends StimPack {
 	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
 	 */
 	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData) {
+	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
 		
 		if (!templateData.isRangedStimPackTemplate())

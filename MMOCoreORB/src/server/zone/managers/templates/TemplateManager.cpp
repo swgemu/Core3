@@ -32,6 +32,7 @@
 #include "server/zone/templates/tangible/StimPackTemplate.h"
 #include "server/zone/templates/tangible/RangedStimPackTemplate.h"
 #include "server/zone/templates/tangible/EnhancePackTemplate.h"
+#include "server/zone/templates/tangible/CurePackTemplate.h"
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "server/zone/templates/tangible/LairObjectTemplate.h"
@@ -55,6 +56,7 @@
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/creature/CreatureState.h"
 
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
@@ -158,6 +160,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<StimPackTemplate>(SharedObjectTemplate::STIMPACK);
 	templateFactory.registerObject<RangedStimPackTemplate>(SharedObjectTemplate::RANGEDSTIMPACK);
 	templateFactory.registerObject<EnhancePackTemplate>(SharedObjectTemplate::ENHANCEPACK);
+	templateFactory.registerObject<CurePackTemplate>(SharedObjectTemplate::CUREPACK);
 
 }
 
@@ -185,6 +188,10 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalShort("WOOKIEE", WearableObject::WOOKIEE);
 	luaTemplatesInstance->setGlobalShort("SULLUSTAN", WearableObject::SULLUSTAN);
 	luaTemplatesInstance->setGlobalShort("ITHORIAN", WearableObject::ITHORIAN);
+
+	luaTemplatesInstance->setGlobalLong("DISEASED", CreatureState::DISEASED);
+	luaTemplatesInstance->setGlobalLong("ONFIRE", CreatureState::ONFIRE);
+	luaTemplatesInstance->setGlobalLong("POISONED", CreatureState::POISONED);
 
 	luaTemplatesInstance->setGlobalShort("NEUTRAL", WearableObject::NEUTRAL);
 	luaTemplatesInstance->setGlobalShort("IMPERIAL", WearableObject::IMPERIAL);
@@ -274,6 +281,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("STIMPACK", SharedObjectTemplate::STIMPACK);
 	luaTemplatesInstance->setGlobalInt("RANGEDSTIMPACK", SharedObjectTemplate::RANGEDSTIMPACK);
 	luaTemplatesInstance->setGlobalInt("ENHANCEPACK", SharedObjectTemplate::ENHANCEPACK);
+	luaTemplatesInstance->setGlobalInt("CUREPACK", SharedObjectTemplate::CUREPACK);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

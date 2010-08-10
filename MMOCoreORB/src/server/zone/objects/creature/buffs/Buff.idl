@@ -56,7 +56,7 @@ import server.zone.objects.creature.buffs.BuffDurationEvent;
 include server.zone.objects.creature.buffs.BuffType;
 include server.zone.objects.scene.variables.ParameterizedStringId;
 
-class Buff extends ManagedObject {
+class Buff extends ManagedObject implements Logger {
 	@weakReference
 	protected CreatureObject creature;
 	
@@ -89,6 +89,8 @@ class Buff extends ManagedObject {
 		buffDuration = duration;
 		buffType = bufftype;
 		speedModifier = 0;
+		
+		Logger.setLoggingName("Buff");
 		
 		init();
 	}
