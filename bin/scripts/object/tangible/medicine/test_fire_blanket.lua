@@ -42,7 +42,13 @@
 
 
 object_tangible_medicine_test_fire_blanket = object_tangible_medicine_shared_test_fire_blanket:new {
-
+	gameObjectType = 8239,
+	templateType = CUREPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	state = ONFIRE,
+	commandToExecute = "/extinguishfire",
+	area = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_test_fire_blanket, "object/tangible/medicine/test_fire_blanket.iff")

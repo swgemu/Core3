@@ -396,6 +396,8 @@ public:
 
 	bool canTreatWounds();
 
+	bool canTreatConditions();
+
 	void dismount();
 
 	float calculateBFRatio();
@@ -938,6 +940,8 @@ public:
 
 	bool canTreatWounds();
 
+	bool canTreatConditions();
+
 	void dismount();
 
 	float calculateBFRatio();
@@ -1358,6 +1362,8 @@ public:
 	bool canTreatInjuries();
 
 	bool canTreatWounds();
+
+	bool canTreatConditions();
 
 	void dismount();
 

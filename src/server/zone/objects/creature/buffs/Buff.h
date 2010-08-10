@@ -171,7 +171,7 @@ namespace objects {
 namespace creature {
 namespace buffs {
 
-class BuffImplementation : public ManagedObjectImplementation {
+class BuffImplementation : public ManagedObjectImplementation, public Logger {
 protected:
 	ManagedWeakReference<CreatureObject* > creature;
 

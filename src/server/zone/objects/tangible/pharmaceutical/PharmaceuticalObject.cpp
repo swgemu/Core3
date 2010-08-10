@@ -131,6 +131,18 @@ bool PharmaceuticalObject::isEnhancePack() {
 		return ((PharmaceuticalObjectImplementation*) _impl)->isEnhancePack();
 }
 
+bool PharmaceuticalObject::isCurePack() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalObjectImplementation*) _impl)->isCurePack();
+}
+
 /*
  *	PharmaceuticalObjectImplementation
  */
@@ -247,6 +259,11 @@ bool PharmaceuticalObjectImplementation::isEnhancePack() {
 	return false;
 }
 
+bool PharmaceuticalObjectImplementation::isCurePack() {
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(97):  		return false;
+	return false;
+}
+
 /*
  *	PharmaceuticalObjectAdapter
  */
@@ -281,6 +298,9 @@ Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 		break;
 	case 13:
 		resp->insertBoolean(isEnhancePack());
+		break;
+	case 14:
+		resp->insertBoolean(isCurePack());
 		break;
 	default:
 		return NULL;
@@ -319,6 +339,10 @@ bool PharmaceuticalObjectAdapter::isRangedStimPack() {
 
 bool PharmaceuticalObjectAdapter::isEnhancePack() {
 	return ((PharmaceuticalObjectImplementation*) impl)->isEnhancePack();
+}
+
+bool PharmaceuticalObjectAdapter::isCurePack() {
+	return ((PharmaceuticalObjectImplementation*) impl)->isCurePack();
 }
 
 /*
