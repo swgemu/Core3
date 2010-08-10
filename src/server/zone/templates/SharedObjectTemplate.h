@@ -105,6 +105,7 @@ public:
 	const static int NPCCREATURE = 0x400000C;
 	const static int LAIRTEMPLATE = 0x400000D;
 	const static int FACTORY = 0x400000E;
+	const static int STIMPACK = 0x400000F;
 
 public:
 	SharedObjectTemplate() {
@@ -392,6 +393,10 @@ public:
 	}
 
 	virtual bool isNonPlayerCreatureObjectTemplate() {
+		return false;
+	}
+
+	virtual bool isStimPackTemplate() {
 		return false;
 	}
 

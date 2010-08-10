@@ -323,6 +323,10 @@ class CreatureObject extends TangibleObject {
 	 * @return unused for now
 	 */
 	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
+
+	public boolean hasDamage(int attribute) {
+		return maxHamList.get(attribute) - hamList.get(attribute); // should we include woundS?
+	}
 	
 	/**
 	 * Heals damage
@@ -457,6 +461,13 @@ class CreatureObject extends TangibleObject {
 	 * @param updateclient Should packets be sent to the player?
 	 */
 	public native void clearBuffs(boolean updateclient);
+	
+	public Buff getBuff(unsigned int buffcrc) {
+		if (creatureBuffs.hasBuff(buffcrc))
+			return creatureBuffs.getBuffByCRC(buffcrc);
+
+		return null;
+	}
 	
 	public int addDotState(unsigned long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense) {
 		return damageOverTimeList.addDot(this, duration, dotType, type, strength, potency, defense);
@@ -701,6 +712,10 @@ class CreatureObject extends TangibleObject {
 	 */
 	public abstract void selectConversationOption(int option, SceneObject obj) {
 		
+	}
+	
+	public boolean canTreatInjuries() {
+		return super.getPendingTask("injuryTreatment") == null;
 	}
 	
 	public native void dismount();

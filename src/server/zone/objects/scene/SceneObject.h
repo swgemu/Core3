@@ -396,6 +396,8 @@ public:
 
 	static const int LAIR = 0x202B;
 
+	static const int STIMPACK = 0x202C;
+
 	static const int TERMINAL = 0x4000;
 
 	static const int BANK = 0x4001;
@@ -1234,6 +1236,8 @@ public:
 	static const int FISH = 0x202A;
 
 	static const int LAIR = 0x202B;
+
+	static const int STIMPACK = 0x202C;
 
 	static const int TERMINAL = 0x4000;
 

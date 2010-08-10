@@ -261,19 +261,16 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 
 	useCount = newUseCount;
 
-	if(useCount < 1) {
-
-		if(parent != NULL) {
-
+	if (useCount < 1) {
+		if (parent != NULL) {
 			parent->removeObject(_this, true);
-
-		} else {
-
-			broadcastDestroy(_this, true);
-
 		}
 
+		broadcastDestroy(_this, true);
+
 		destroyObjectFromDatabase(true);
+
+		return;
 	}
 
 	if (!notifyClient)
@@ -284,6 +281,10 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 	dtano3->close();
 
 	broadcastMessage(dtano3, true);
+}
+
+void TangibleObjectImplementation::decreaseUseCount(PlayerCreature* player) {
+	setUseCount(useCount - 1);
 }
 
 void TangibleObjectImplementation::setConditionDamage(int condDamage, bool notifyClient) {

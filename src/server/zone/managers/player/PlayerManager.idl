@@ -135,6 +135,8 @@ class PlayerManager extends Observer implements Logger {
 	public native void handleVerifyTradeMessage(PlayerCreature player);
 	public native boolean checkTradeItems(PlayerCreature player, PlayerCreature receiver);
 	
+	public native void sendBattleFatigueMessage(PlayerCreature player, PlayerCreature target);
+	
 	@local
 	public native void disseminateExperience(TangibleObject destructor, TangibleObject destructedObject, DamageMap damageMap);
 	

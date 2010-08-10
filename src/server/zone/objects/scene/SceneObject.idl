@@ -246,6 +246,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public static final int LOOTKIT = 0x2029;
 	public static final int FISH = 0x202A;
 	public static final int LAIR = 0x202B;
+	public static final int STIMPACK = 0x202C;
 
 	public static final int TERMINAL = 0x4000;
 	public static final int BANK = 0x4001;

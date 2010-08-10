@@ -42,7 +42,10 @@
 
 
 object_tangible_medicine_stimpack_sm_s1 = object_tangible_medicine_shared_stimpack_sm_s1:new {
-
+	gameObjectType = 8236,
+	templateType = STIMPACK,
+	medicineUse = 5,
+	effectiveness = 100
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_stimpack_sm_s1, "object/tangible/medicine/stimpack_sm_s1.iff")

@@ -1467,3 +1467,32 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 
 	return 1;
 }
+
+void PlayerManagerImplementation::sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target) {
+	uint32 battleFatigue = target->getShockWounds();
+
+	String targetName = target->getFirstName();
+
+	StringBuffer msgPlayer, msgTarget;
+
+	if (battleFatigue < 250) {
+		return;
+	} else if (battleFatigue < 500) {
+		msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
+		msgTarget << "Your battle fatigue is reducing the effectiveness of the medicine.";
+	} else if (battleFatigue < 750) {
+		msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
+		msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
+	} else if (battleFatigue < 1000) {
+		msgPlayer << targetName << "'s battle fatigue is greatly reducing the effectiveness of the medicine.";
+		msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
+	} else {
+		msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
+		msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
+	}
+
+	target->sendSystemMessage(msgTarget.toString());
+
+	if (player != target)
+		player->sendSystemMessage(msgPlayer.toString());
+}
