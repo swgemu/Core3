@@ -42,7 +42,13 @@
 
 
 object_tangible_medicine_crafted_medpack_cure_disease_area_c = object_tangible_medicine_crafted_shared_medpack_cure_disease_area_c:new {
-
+	gameObjectType = 8239,
+	templateType = CUREPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	state = DISEASED,
+	commandToExecute = "/curedisease",
+	area = 5
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_cure_disease_area_c, "object/tangible/medicine/crafted/medpack_cure_disease_area_c.iff")

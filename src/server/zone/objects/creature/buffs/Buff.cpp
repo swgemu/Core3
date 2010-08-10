@@ -522,92 +522,94 @@ BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcr
 	buffType = bufftype;
 	// server/zone/objects/creature/buffs/Buff.idl(91):  		speedModifier = 0;
 	speedModifier = 0;
-	// server/zone/objects/creature/buffs/Buff.idl(93):  		init();
+	// server/zone/objects/creature/buffs/Buff.idl(93):  		Logger.setLoggingName("Buff");
+	Logger::setLoggingName("Buff");
+	// server/zone/objects/creature/buffs/Buff.idl(95):  		init();
 	init();
 }
 
 void BuffImplementation::init() {
-	// server/zone/objects/creature/buffs/Buff.idl(99):  		attributeModifiers.setNoDuplicateInsertPlan();
+	// server/zone/objects/creature/buffs/Buff.idl(101):  		attributeModifiers.setNoDuplicateInsertPlan();
 	(&attributeModifiers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/creature/buffs/Buff.idl(100):  		attributeModifiers.setNullValue(0);
+	// server/zone/objects/creature/buffs/Buff.idl(102):  		attributeModifiers.setNullValue(0);
 	(&attributeModifiers)->setNullValue(0);
-	// server/zone/objects/creature/buffs/Buff.idl(101):  		skillModifiers.setNoDuplicateInsertPlan();
+	// server/zone/objects/creature/buffs/Buff.idl(103):  		skillModifiers.setNoDuplicateInsertPlan();
 	(&skillModifiers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/creature/buffs/Buff.idl(102):  		skillModifiers.setNullValue(0);
+	// server/zone/objects/creature/buffs/Buff.idl(104):  		skillModifiers.setNullValue(0);
 	(&skillModifiers)->setNullValue(0);
 }
 
 void BuffImplementation::activate() {
-	// server/zone/objects/creature/buffs/Buff.idl(112):  		activate(true);
+	// server/zone/objects/creature/buffs/Buff.idl(114):  		activate(true);
 	activate(true);
 }
 
 void BuffImplementation::deactivate() {
-	// server/zone/objects/creature/buffs/Buff.idl(116):  		deactivate(true);
+	// server/zone/objects/creature/buffs/Buff.idl(118):  		deactivate(true);
 	deactivate(true);
 }
 
 void BuffImplementation::setAttributeModifier(byte attribute, int value) {
-	// server/zone/objects/creature/buffs/Buff.idl(140):  
-	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(141):  			attributeModifiers.get(attribute) = value;
+	// server/zone/objects/creature/buffs/Buff.idl(142):  
+	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(143):  			attributeModifiers.get(attribute) = value;
 	(&attributeModifiers)->get(attribute) = value;
 
-	else 	// server/zone/objects/creature/buffs/Buff.idl(143):  			attributeModifiers.put(attribute, value);
+	else 	// server/zone/objects/creature/buffs/Buff.idl(145):  			attributeModifiers.put(attribute, value);
 	(&attributeModifiers)->put(attribute, value);
 }
 
 void BuffImplementation::setSkillModifier(const String& modname, int value) {
-	// server/zone/objects/creature/buffs/Buff.idl(147):  
-	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(148):  			skillModifiers.get(modname) = value;
+	// server/zone/objects/creature/buffs/Buff.idl(149):  
+	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(150):  			skillModifiers.get(modname) = value;
 	(&skillModifiers)->get(modname) = value;
 
-	else 	// server/zone/objects/creature/buffs/Buff.idl(150):  			skillModifiers.put(modname, value);
+	else 	// server/zone/objects/creature/buffs/Buff.idl(152):  			skillModifiers.put(modname, value);
 	(&skillModifiers)->put(modname, value);
 }
 
 void BuffImplementation::setSpeedModifier(float speed) {
-	// server/zone/objects/creature/buffs/Buff.idl(154):  		speedModifier = speed;
+	// server/zone/objects/creature/buffs/Buff.idl(156):  		speedModifier = speed;
 	speedModifier = speed;
 }
 
 String BuffImplementation::getBuffName() {
-	// server/zone/objects/creature/buffs/Buff.idl(159):  		return buffName;
+	// server/zone/objects/creature/buffs/Buff.idl(161):  		return buffName;
 	return buffName;
 }
 
 int BuffImplementation::getBuffCRC() {
-	// server/zone/objects/creature/buffs/Buff.idl(163):  		return buffCRC;
+	// server/zone/objects/creature/buffs/Buff.idl(165):  		return buffCRC;
 	return buffCRC;
 }
 
 float BuffImplementation::getBuffDuration() {
-	// server/zone/objects/creature/buffs/Buff.idl(167):  		return buffDuration;
+	// server/zone/objects/creature/buffs/Buff.idl(169):  		return buffDuration;
 	return buffDuration;
 }
 
 int BuffImplementation::getBuffType() {
-	// server/zone/objects/creature/buffs/Buff.idl(171):  		return buffType;
+	// server/zone/objects/creature/buffs/Buff.idl(173):  		return buffType;
 	return buffType;
 }
 
 int BuffImplementation::getAttributeModifierValue(byte attribute) {
-	// server/zone/objects/creature/buffs/Buff.idl(175):  		return 
-	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(176):  			return attributeModifiers.get(attribute);
+	// server/zone/objects/creature/buffs/Buff.idl(177):  		return 
+	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(178):  			return attributeModifiers.get(attribute);
 	return (&attributeModifiers)->get(attribute);
-	// server/zone/objects/creature/buffs/Buff.idl(178):  0;
+	// server/zone/objects/creature/buffs/Buff.idl(180):  0;
 	return 0;
 }
 
 int BuffImplementation::getSkillModifierValue(const String& modname) {
-	// server/zone/objects/creature/buffs/Buff.idl(182):  		return 
-	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(183):  			return skillModifiers.get(modname);
+	// server/zone/objects/creature/buffs/Buff.idl(184):  		return 
+	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(185):  			return skillModifiers.get(modname);
 	return (&skillModifiers)->get(modname);
-	// server/zone/objects/creature/buffs/Buff.idl(185):  0;
+	// server/zone/objects/creature/buffs/Buff.idl(187):  0;
 	return 0;
 }
 
 bool BuffImplementation::isSpiceBuff() {
-	// server/zone/objects/creature/buffs/Buff.idl(191):  		return (buffType == BuffType.SPICE);
+	// server/zone/objects/creature/buffs/Buff.idl(193):  		return (buffType == BuffType.SPICE);
 	return (buffType == BuffType::SPICE);
 }
 

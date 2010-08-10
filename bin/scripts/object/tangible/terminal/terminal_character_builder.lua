@@ -95,7 +95,12 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Medpack Enhance Poison A", "object/tangible/medicine/crafted/medpack_enhance_poison_a.iff",
 			"Medpack Enhance Quickness A", "object/tangible/medicine/crafted/medpack_enhance_quickness_a.iff",
 			"Medpack Enhance Stamina A", "object/tangible/medicine/crafted/medpack_enhance_stamina_a.iff",
-			"Medpack Enhance Strength A", "object/tangible/medicine/crafted/medpack_enhance_strength_a.iff"
+			"Medpack Enhance Strength A", "object/tangible/medicine/crafted/medpack_enhance_strength_a.iff",
+			"Fire blanket", "object/tangible/medicine/crafted/medic_fire_blanket.iff",
+			"Medpack Cure Disease A", "object/tangible/medicine/crafted/medpack_cure_disease_a.iff",
+			"Medpack Cure Disease Area A", "object/tangible/medicine/crafted/medpack_cure_disease_area_a.iff",
+			"Medpack Cure Poison A", "object/tangible/medicine/crafted/medpack_cure_poison_a.iff",
+			"Medpack Cure Poison Area A", "object/tangible/medicine/crafted/medpack_cure_poison_area_a.iff",
 		},	
 		"Weapons",
 		{

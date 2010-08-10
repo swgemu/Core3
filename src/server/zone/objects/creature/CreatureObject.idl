@@ -722,6 +722,10 @@ class CreatureObject extends TangibleObject {
 		return super.getPendingTask("woundTreatment") == null;
 	}
 	
+	public boolean canTreatConditions() {
+		return super.getPendingTask("conditionTreatment") == null;
+	}
+	
 	public native void dismount();
 	public native float calculateBFRatio();
 

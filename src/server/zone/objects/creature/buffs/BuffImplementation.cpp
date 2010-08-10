@@ -86,35 +86,50 @@ void BuffImplementation::sendDestroyTo(PlayerCreature* player) {
 }
 
 void BuffImplementation::activate(bool applyModifiers) {
-	if (applyModifiers) {
-		applyAttributeModifiers();
-		applySkillModifiers();
+	try {
+		if (applyModifiers) {
+			applyAttributeModifiers();
+			applySkillModifiers();
+		}
+
+		buffEvent = new BuffDurationEvent(creature, _this);
+		buffEvent->schedule((int) (buffDuration * 1000));
+		nextExecutionTime = buffEvent->getNextExecutionTime();
+
+		if (creature->isPlayerCreature())
+			sendTo(((PlayerCreature*) creature.get()));
+
+		if (!startMessage.isEmpty())
+			creature->sendSystemMessage(startMessage);
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		error("unreported exception caught in void BuffImplementation::activate(bool applyModifiers)");
 	}
-
-	buffEvent = new BuffDurationEvent(creature, _this);
-	buffEvent->schedule((int) (buffDuration * 1000));
-	nextExecutionTime = buffEvent->getNextExecutionTime();
-
-	if (creature->isPlayerCreature())
-		sendTo(((PlayerCreature*) creature.get()));
-
-	if (!startMessage.isEmpty())
-		creature->sendSystemMessage(startMessage);
 }
 
 void BuffImplementation::deactivate(bool removeModifiers) {
-	if (removeModifiers) {
-		removeAttributeModifiers();
-		removeSkillModifiers();
+	try {
+		if (removeModifiers) {
+			removeAttributeModifiers();
+			removeSkillModifiers();
+		}
+
+		if (creature->isPlayerCreature())
+			sendDestroyTo((PlayerCreature*) creature.get());
+
+		if (!endMessage.isEmpty())
+			creature->sendSystemMessage(endMessage);
+
+		clearBuffEvent();
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		error("unreported exception caught in void BuffImplementation::deactivate(bool removeModifiers)");
 	}
-
-	if (creature->isPlayerCreature())
-		sendDestroyTo((PlayerCreature*) creature.get());
-
-	if (!endMessage.isEmpty())
-		creature->sendSystemMessage(endMessage);
-
-	clearBuffEvent();
 }
 
 void BuffImplementation::parseAttributeModifierString(const String& modifierstring) {

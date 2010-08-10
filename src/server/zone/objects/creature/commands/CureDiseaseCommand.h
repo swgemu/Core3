@@ -45,26 +45,19 @@ which carries forward this exception.
 #ifndef CUREDISEASECOMMAND_H_
 #define CUREDISEASECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CurePackCommand.h"
 
-class CureDiseaseCommand : public QueueCommand {
+class CureDiseaseCommand : public CurePackCommand {
+
 public:
 
 	CureDiseaseCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CurePackCommand(name, server) {
 
+		state = CreatureState::DISEASED;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		return SUCCESS;
-	}
 
 };
 

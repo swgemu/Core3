@@ -108,6 +108,7 @@ public:
 	const static int STIMPACK = 0x400000F;
 	const static int RANGEDSTIMPACK = 0x4000010;
 	const static int ENHANCEPACK = 0x4000011;
+	const static int CUREPACK = 0x4000012;
 
 public:
 	SharedObjectTemplate() {
@@ -407,6 +408,10 @@ public:
 	}
 
 	virtual bool isEnhancePackTemplate() {
+		return false;
+	}
+
+	virtual bool isCurePackTemplate() {
 		return false;
 	}
 
