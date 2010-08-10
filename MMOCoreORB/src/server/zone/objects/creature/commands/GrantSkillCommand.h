@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef GRANTSKILLCOMMAND_H_
 #define GRANTSKILLCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
 
 class GrantSkillCommand : public QueueCommand {
 public:
@@ -62,6 +63,18 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isPlayerCreature())
+			return INVALIDTARGET;
+
+		PlayerCreature* targetPlayer = (PlayerCreature*) creature;
+
+		Locker clocker(targetPlayer, creature);
+
+		ProfessionManager* professionManager = ProfessionManager::instance();
+		professionManager->awardSkillBox(arguments.toString(), targetPlayer, true, true);
 
 		return SUCCESS;
 	}

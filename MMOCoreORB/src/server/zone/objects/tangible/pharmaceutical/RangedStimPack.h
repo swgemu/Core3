@@ -115,7 +115,23 @@ class ZoneServer;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
 #include "server/zone/templates/tangible/RangedStimPackTemplate.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -130,6 +146,8 @@ namespace pharmaceutical {
 class RangedStimPack : public StimPack {
 public:
 	RangedStimPack();
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -183,6 +201,8 @@ public:
 	RangedStimPackImplementation();
 
 	RangedStimPackImplementation(DummyConstructorParameter* param);
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 

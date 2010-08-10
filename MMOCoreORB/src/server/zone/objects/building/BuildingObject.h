@@ -212,6 +212,8 @@ public:
 
 	bool isBuildingObject();
 
+	bool isMedicalBuildingObject();
+
 	void setDeedObjectID(unsigned long long deedid);
 
 	unsigned long long getDeedObjectID();
@@ -343,6 +345,8 @@ public:
 
 	bool isBuildingObject();
 
+	virtual bool isMedicalBuildingObject();
+
 	void setDeedObjectID(unsigned long long deedid);
 
 	unsigned long long getDeedObjectID();
@@ -451,6 +455,8 @@ public:
 	void onExit(PlayerCreature* player);
 
 	bool isBuildingObject();
+
+	bool isMedicalBuildingObject();
 
 	void setDeedObjectID(unsigned long long deedid);
 

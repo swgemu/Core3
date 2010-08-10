@@ -63,6 +63,22 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+		if (ghost == NULL)
+			return GENERALERROR;
+
+		String newTitle = arguments.toString();
+
+		if (newTitle.length() > 0) {
+			if (!creature->hasSkillBox(newTitle))
+				return GENERALERROR;
+		}
+
+		ghost->setTitle(newTitle, true);
+
 		return SUCCESS;
 	}
 

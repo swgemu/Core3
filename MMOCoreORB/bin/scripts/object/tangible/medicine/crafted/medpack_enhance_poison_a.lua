@@ -42,7 +42,12 @@
 
 
 object_tangible_medicine_crafted_medpack_enhance_poison_a = object_tangible_medicine_crafted_shared_medpack_enhance_poison_a:new {
-
+	gameObjectType = 8238,
+	templateType = ENHANCEPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	duration = 1800,
+	attribute = 9
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_enhance_poison_a, "object/tangible/medicine/crafted/medpack_enhance_poison_a.iff")

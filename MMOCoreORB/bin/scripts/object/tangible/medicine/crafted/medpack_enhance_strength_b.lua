@@ -42,7 +42,12 @@
 
 
 object_tangible_medicine_crafted_medpack_enhance_strength_b = object_tangible_medicine_crafted_shared_medpack_enhance_strength_b:new {
-
+	gameObjectType = 8238,
+	templateType = ENHANCEPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	duration = 1800,
+	attribute = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_enhance_strength_b, "object/tangible/medicine/crafted/medpack_enhance_strength_b.iff")

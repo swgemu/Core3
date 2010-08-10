@@ -47,7 +47,7 @@ TransferItemWeaponCommand = {
 
         invalidStateMask = 2097152, --glowingJedi, 
         invalidPostures = "13,14",
-        defaultPriority = "normal",
+        defaultPriority = "immediate",
         scriptHook = " ",
         failScriptHook = " ",
         cppHook = "transferItemWeapon",

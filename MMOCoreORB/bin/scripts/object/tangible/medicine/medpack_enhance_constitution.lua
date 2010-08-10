@@ -42,7 +42,12 @@
 
 
 object_tangible_medicine_medpack_enhance_constitution = object_tangible_medicine_shared_medpack_enhance_constitution:new {
-
+	gameObjectType = 8238,
+	templateType = ENHANCEPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	duration = 1800,
+	attribute = 2
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_medpack_enhance_constitution, "object/tangible/medicine/medpack_enhance_constitution.iff")

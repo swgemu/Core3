@@ -160,7 +160,7 @@ namespace server {
 			SkillBox* sBox = skillBoxMap.get(skillBox);
 
 			if (sBox != NULL)
-				awardSkillBox(skillBox, player, awardRequired, updateClient);
+				awardSkillBox(sBox, player, awardRequired, updateClient);
 		}
 
 		void loadXpTypeCap(PlayerCreature* player);

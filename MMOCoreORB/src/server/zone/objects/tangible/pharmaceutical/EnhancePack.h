@@ -101,6 +101,68 @@ class ZoneServer;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace building {
+
+class BuildingObject;
+
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace player {
+
+class PlayerManager;
+
+} // namespace player
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::player;
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/templates/tangible/EnhancePackTemplate.h"
+
+#include "server/zone/objects/creature/BuffAttribute.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.h"
@@ -115,11 +177,21 @@ class EnhancePack : public PharmaceuticalObject {
 public:
 	EnhancePack();
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
+
 	float getEffectiveness();
 
 	byte getAttribute();
 
 	float getDuration();
+
+	bool isEnhancePack();
 
 protected:
 	EnhancePack(DummyConstructorParameter* param);
@@ -156,11 +228,21 @@ public:
 
 	EnhancePackImplementation(DummyConstructorParameter* param);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
+
 	float getEffectiveness();
 
 	byte getAttribute();
 
 	float getDuration();
+
+	bool isEnhancePack();
 
 	EnhancePack* _this;
 
@@ -201,11 +283,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue);
+
 	float getEffectiveness();
 
 	byte getAttribute();
 
 	float getDuration();
+
+	bool isEnhancePack();
 
 };
 

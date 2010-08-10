@@ -394,6 +394,8 @@ public:
 
 	bool canTreatInjuries();
 
+	bool canTreatWounds();
+
 	void dismount();
 
 	float calculateBFRatio();
@@ -934,6 +936,8 @@ public:
 
 	bool canTreatInjuries();
 
+	bool canTreatWounds();
+
 	void dismount();
 
 	float calculateBFRatio();
@@ -1352,6 +1356,8 @@ public:
 	void selectConversationOption(int option, SceneObject* obj);
 
 	bool canTreatInjuries();
+
+	bool canTreatWounds();
 
 	void dismount();
 

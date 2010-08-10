@@ -235,6 +235,10 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		return true;
 	}
 	
+	public abstract boolean isMedicalBuildingObject() {
+		return false;
+	}
+	
 	public void setDeedObjectID(unsigned long deedid) {
 		deedObjectID = deedid;
 	}

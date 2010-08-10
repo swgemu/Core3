@@ -314,7 +314,7 @@ void PlayerCreatureImplementation::unload() {
 	}
 
 	clearUpdateToDatabaseTask();
-	updateToDatabaseAllObjects(false);
+	//updateToDatabaseAllObjects(false);
 
 	if (savedParent != NULL) {
 		//savedParent->updateToDatabaseWithoutChildren();
@@ -331,6 +331,7 @@ void PlayerCreatureImplementation::unload() {
 	if (group != NULL)
 		GroupManager::instance()->leaveGroup(group, _this);
 
+	updateToDatabase();
 	/*StringBuffer msg;
 	msg << "remaining ref count: " << _this->getReferenceCount();
 	info(msg.toString(), true);

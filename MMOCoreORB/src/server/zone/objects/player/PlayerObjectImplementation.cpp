@@ -661,6 +661,20 @@ void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyCli
 	}
 }
 
+void PlayerObjectImplementation::setTitle(const String& characterTitle, bool notifyClient) {
+	if (title == characterTitle)
+		return;
+
+	title = characterTitle;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage3* dplay3 = new PlayerObjectDeltaMessage3(_this);
+		dplay3->setCurrentTitle(title);
+		dplay3->close();
+		broadcastMessage(dplay3, true); //update the zone.
+	}
+}
+
 void PlayerObjectImplementation::notifyOnline() {
 	ChatManager* chatManager = server->getChatManager();
 
