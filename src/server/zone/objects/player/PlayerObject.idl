@@ -279,6 +279,8 @@ class PlayerObject extends IntangibleObject {
 	 */
 	public native void removeIgnore(final string name, boolean notifyClient = true);
 	
+	public native void setTitle(final string characterTitle, boolean notifyClient = true);
+	
 	/**
 	 * Notifies all reverse friends online status
 	 * @pre { }
@@ -352,10 +354,6 @@ class PlayerObject extends IntangibleObject {
 	
 	public native boolean setCharacterBit(unsigned int bit, boolean notifyClient = false);
 	public native boolean clearCharacterBit(unsigned int bit, boolean notifyClient = false);
-	
-	public void setTitle(final string characterTitle) {
-		title = characterTitle;
-	}
 	
 	@local 
 	public VectorMap<string, int> getXpTypeCapList() {

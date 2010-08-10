@@ -129,6 +129,8 @@ public:
 
 	bool isRangedStimPack();
 
+	bool isEnhancePack();
+
 protected:
 	PharmaceuticalObject(DummyConstructorParameter* param);
 
@@ -173,6 +175,8 @@ public:
 	virtual bool isStimPack();
 
 	virtual bool isRangedStimPack();
+
+	virtual bool isEnhancePack();
 
 	PharmaceuticalObject* _this;
 
@@ -226,6 +230,8 @@ public:
 	bool isStimPack();
 
 	bool isRangedStimPack();
+
+	bool isEnhancePack();
 
 };
 

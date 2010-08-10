@@ -34,7 +34,7 @@ public:
 		range = templateData->getFloatField("range");
 		rangeMod = templateData->getFloatField("rangeMod");
 		area = templateData->getFloatField("area");
-		effectiveness = templateData->getIntField("effectiveness");
+		effectiveness = templateData->getFloatField("effectiveness");
     }
 
 	inline float getEffectiveness() {

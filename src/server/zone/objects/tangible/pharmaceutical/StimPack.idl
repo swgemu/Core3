@@ -56,6 +56,8 @@ import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 import system.lang.Math;
 import system.lang.String;
 include server.zone.templates.tangible.StimPackTemplate;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class StimPack extends PharmaceuticalObject {
 	protected float effectiveness;
@@ -64,6 +66,15 @@ class StimPack extends PharmaceuticalObject {
 		setLoggingName("StimPack");
 		
 		effectiveness = 0;
+	}
+	
+	@local
+	public void updateCraftingValues(ManufactureSchematic schematic) {
+		CraftingValues craftingValues = schematic.getCraftingValues();
+		
+		effectiveness = craftingValues.getCurrentValue("power");
+		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+		super.useCount = craftingValues.getCurrentValue("charges");
 	}
 	
 	/**

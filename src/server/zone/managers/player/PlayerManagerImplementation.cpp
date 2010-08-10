@@ -1496,3 +1496,59 @@ void PlayerManagerImplementation::sendBattleFatigueMessage(PlayerCreature* playe
 	if (player != target)
 		player->sendSystemMessage(msgPlayer.toString());
 }
+
+int PlayerManagerImplementation::getMedicalFacilityRating(CreatureObject* creature) {
+	/*if (!isInBuilding() && !isInCamp()) //TODO: Add in search for nearby surgical droid
+		return 0;
+
+	int buildingType = getBuildingType();
+
+	if (buildingType == BuildingObjectImplementation::MEDICAL_CENTER || buildingType == BuildingObjectImplementation::CLONING_FACILITY)
+		return 100;
+
+	if (isInCamp())
+		return getCampModifier();*/
+
+	SceneObject* rootParent = creature->getRootParent();
+
+	if (rootParent == NULL)
+		return 0;
+
+	if (rootParent->isBuildingObject()) {
+		BuildingObject* building = (BuildingObject*) rootParent;
+
+		if (building->isCloningBuildingObject() || building->isMedicalBuildingObject())
+			return 100;
+
+	}
+
+	// check for camps
+
+	return 65;
+}
+
+int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
+	String buffname = "medical_enhance_" + BuffAttribute::getName(attribute);
+	uint32 buffcrc = buffname.hashCode();
+	uint32 buffdiff = buffvalue;
+
+	//If a stronger buff already exists, then we don't buff the patient.
+	if (patient->hasBuff(buffcrc)) {
+		Buff* buff = patient->getBuff(buffcrc);
+
+		if (buff != NULL) {
+			int value = buff->getAttributeModifierValue(attribute);
+
+			if (value > buffvalue)
+				return 0;
+
+			buffdiff -= value;
+		}
+	}
+
+	Reference<Buff*> buff = new Buff(patient, buffname.hashCode(), duration, BuffType::MEDICAL);
+	buff->setAttributeModifier(attribute, buffvalue);
+	patient->addBuff(buff);
+
+	return buffdiff;
+}

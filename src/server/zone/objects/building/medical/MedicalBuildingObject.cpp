@@ -24,6 +24,18 @@ MedicalBuildingObject::~MedicalBuildingObject() {
 }
 
 
+bool MedicalBuildingObject::isMedicalBuildingObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MedicalBuildingObjectImplementation*) _impl)->isMedicalBuildingObject();
+}
+
 /*
  *	MedicalBuildingObjectImplementation
  */
@@ -99,6 +111,11 @@ MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation() {
 	Logger::setLoggingName("MedicalBuildingObject");
 }
 
+bool MedicalBuildingObjectImplementation::isMedicalBuildingObject() {
+	// server/zone/objects/building/medical/MedicalBuildingObject.idl(59):  		return true;
+	return true;
+}
+
 /*
  *	MedicalBuildingObjectAdapter
  */
@@ -110,11 +127,18 @@ Packet* MedicalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMet
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertBoolean(isMedicalBuildingObject());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+bool MedicalBuildingObjectAdapter::isMedicalBuildingObject() {
+	return ((MedicalBuildingObjectImplementation*) impl)->isMedicalBuildingObject();
 }
 
 /*

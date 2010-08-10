@@ -137,6 +137,18 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native void sendBattleFatigueMessage(PlayerCreature player, PlayerCreature target);
 	
+	public native int getMedicalFacilityRating(CreatureObject creature);
+	
+	/**
+	 * Enhances the patients attribute by a specified amount for a specified duration.
+	 * @param patient The patient to enhance.
+	 * @param attribute The attribute to enhance.
+	 * @param buffvalue The amount to enhance the attribute.
+	 * @param duration The duration in seconds the enhancement will last.
+	 * @return The amount that was enhanced. If a buff existed, this is the amount exceeding the previous buff.
+	 */
+	public native int healEnhance(CreatureObject enhancer, CreatureObject patient, byte attribute, int buffvalue, float duration);
+	
 	@local
 	public native void disseminateExperience(TangibleObject destructor, TangibleObject destructedObject, DamageMap damageMap);
 	

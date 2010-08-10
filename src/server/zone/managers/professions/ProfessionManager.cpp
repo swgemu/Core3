@@ -293,7 +293,7 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 
 	for (int i = 0; i < skillBox->requiredSkills.size(); i++) {
 		skillBoxReq = skillBox->requiredSkills.get(i);
-		awardSkillBox(skillBoxReq, player, true, false);
+		awardSkillBox(skillBoxReq, player, true, updateClient);
 	}
 }
 

@@ -55,6 +55,8 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.StimPack;
 include server.zone.templates.tangible.RangedStimPackTemplate;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class RangedStimPack extends StimPack {
 	protected float effectiveness;
@@ -69,6 +71,21 @@ class RangedStimPack extends StimPack {
 		area = 0;
 		range = 0;
 		rangeMod = 0;
+	}
+	
+	@local
+	public void updateCraftingValues(ManufactureSchematic schematic) {
+		CraftingValues craftingValues = schematic.getCraftingValues();
+		
+		effectiveness = craftingValues.getCurrentValue("power");
+		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+		super.useCount = craftingValues.getCurrentValue("charges");
+		
+		range = craftingValues.getCurrentValue("range");
+		
+		if (craftingValues.hasProperty("area")) {
+			area = craftingValues.getCurrentValue("area");
+		}
 	}
 	
 	/**

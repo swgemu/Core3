@@ -47,7 +47,7 @@ SpatialChatInternalCommand = {
 
         invalidStateMask = 0, --
         invalidPostures = "13,14",
-        defaultPriority = "front",
+        defaultPriority = "immediate",
         scriptHook = " ",
         failScriptHook = " ",
         cppHook = "spatialChatInternal",

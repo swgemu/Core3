@@ -188,6 +188,10 @@ public:
 
 	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
 
+	int getMedicalFacilityRating(CreatureObject* creature);
+
+	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
+
 	void disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
@@ -302,6 +306,10 @@ public:
 
 	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
 
+	int getMedicalFacilityRating(CreatureObject* creature);
+
+	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
+
 	void disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
@@ -406,6 +414,10 @@ public:
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
 
 	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
+
+	int getMedicalFacilityRating(CreatureObject* creature);
+
+	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 

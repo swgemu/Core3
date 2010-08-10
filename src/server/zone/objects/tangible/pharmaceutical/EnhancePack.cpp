@@ -18,6 +18,14 @@
 
 #include "server/zone/ZoneServer.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
+#include "server/zone/objects/building/BuildingObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
 /*
  *	EnhancePackStub
  */
@@ -34,12 +42,57 @@ EnhancePack::~EnhancePack() {
 }
 
 
-float EnhancePack::getEffectiveness() {
+void EnhancePack::updateCraftingValues(ManufactureSchematic* schematic) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((EnhancePackImplementation*) _impl)->updateCraftingValues(schematic);
+}
+
+void EnhancePack::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((EnhancePackImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+int EnhancePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((EnhancePackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+unsigned int EnhancePack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(healer);
+		method.addObjectParameter(patient);
+		method.addBooleanParameter(applyBattleFatigue);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((EnhancePackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
+}
+
+float EnhancePack::getEffectiveness() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -51,7 +104,7 @@ byte EnhancePack::getAttribute() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithByteReturn();
 	} else
@@ -63,11 +116,23 @@ float EnhancePack::getDuration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithFloatReturn();
 	} else
 		return ((EnhancePackImplementation*) _impl)->getDuration();
+}
+
+bool EnhancePack::isEnhancePack() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((EnhancePackImplementation*) _impl)->isEnhancePack();
 }
 
 /*
@@ -144,29 +209,113 @@ void EnhancePackImplementation::_serializationHelperMethod() {
 
 EnhancePackImplementation::EnhancePackImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(63):  		setLoggingName("EnhancePack");
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(70):  		setLoggingName("EnhancePack");
 	setLoggingName("EnhancePack");
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(65):  		effectiveness = 0;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(72):  		effectiveness = 0;
 	effectiveness = 0;
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(66):  		duration = 0;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(73):  		duration = 0;
 	duration = 0;
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(67):  		attribute = 0;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(74):  		attribute = 0;
 	attribute = 0;
 }
 
+void EnhancePackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(79):  		CraftingValues craftingValues = schematic.getCraftingValues();
+	CraftingValues* craftingValues = schematic->getCraftingValues();
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(81):  		effectiveness = craftingValues.getCurrentValue("power");
+	effectiveness = craftingValues->getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(82):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(83):  		super.useCount = craftingValues.getCurrentValue("charges");
+	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(85):  		duration = craftingValues.getCurrentValue("duration");
+	duration = craftingValues->getCurrentValue("duration");
+}
+
+void EnhancePackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(96):  		super.loadTemplateData(templateData);
+	PharmaceuticalObjectImplementation::loadTemplateData(templateData);
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(98):  		EnhancePackTemplate 
+	if (!templateData->isEnhancePackTemplate())	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(99):  			return;
+	return;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(101):  stimPackTemplate = (EnhancePackTemplate) templateData;
+	EnhancePackTemplate* stimPackTemplate = (EnhancePackTemplate*) templateData;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(103):  		effectiveness = stimPackTemplate.getEffectiveness();
+	effectiveness = stimPackTemplate->getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(104):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	PharmaceuticalObjectImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(105):  		duration = stimPackTemplate.getDuration();
+	duration = stimPackTemplate->getDuration();
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(106):  		attribute = stimPackTemplate.getAttribute();
+	attribute = stimPackTemplate->getAttribute();
+}
+
+int EnhancePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(118):  		if 
+	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(119):  			return 1;
+	return 1;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(121):  
+	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(122):  			player.sendSystemMessage("error_message", "insufficient_skill");
+	player->sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(124):  			return 0;
+	return 0;
+}
+
+	else {
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(126):  			string command = "/healenhance ";
+	String command = "/healenhance ";
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(127):  			command = command + BuffAttribute.getName(attribute);
+	command = command + BuffAttribute::getName(attribute);
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(128):  			command = command + "|";
+	command = command + "|";
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(129):  			command = command + String.valueOf(super.getObjectID());
+	command = command + String::valueOf(PharmaceuticalObjectImplementation::getObjectID());
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(131):  			player.sendExecuteConsoleCommand(command);
+	player->sendExecuteConsoleCommand(command);
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(133):  			return 0;
+	return 0;
+}
+}
+
+unsigned int EnhancePackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(139):  		float power = getEffectiveness();
+	float power = getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(141):  		ZoneServer 
+	if (applyBattleFatigue)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(142):  			power = power - power * patient.calculateBFRatio();
+	power = power - power * patient->calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(144):  zoneServer = super.getZoneServer();
+	ZoneServer* zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(145):  		PlayerManager playerManager = zoneServer.getPlayerManager();
+	PlayerManager* playerManager = zoneServer->getPlayerManager();
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(147):  		float modEnvironment = playerManager.getMedicalFacilityRating(healer);
+	float modEnvironment = playerManager->getMedicalFacilityRating(healer);
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(149):  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
+	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(150):  		float modCityBonus = 1.0f;
+	float modCityBonus = 1.0f;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(153):  		return power * modCityBonus * modEnvironment * (100 + modSkill) / 10000;
+	return power * modCityBonus * modEnvironment * (100 + modSkill) / 10000;
+}
+
 float EnhancePackImplementation::getEffectiveness() {
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(71):  		return effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(157):  		return effectiveness;
 	return effectiveness;
 }
 
 byte EnhancePackImplementation::getAttribute() {
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(75):  		return attribute;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(161):  		return attribute;
 	return attribute;
 }
 
 float EnhancePackImplementation::getDuration() {
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(79):  		return duration;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(165):  		return duration;
 	return duration;
+}
+
+bool EnhancePackImplementation::isEnhancePack() {
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(169):  		return true;
+	return true;
 }
 
 /*
@@ -181,19 +330,36 @@ Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case 6:
-		resp->insertFloat(getEffectiveness());
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 7:
-		resp->insertByte(getAttribute());
+		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 8:
+		resp->insertFloat(getEffectiveness());
+		break;
+	case 9:
+		resp->insertByte(getAttribute());
+		break;
+	case 10:
 		resp->insertFloat(getDuration());
+		break;
+	case 11:
+		resp->insertBoolean(isEnhancePack());
 		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+int EnhancePackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((EnhancePackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+unsigned int EnhancePackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
+	return ((EnhancePackImplementation*) impl)->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float EnhancePackAdapter::getEffectiveness() {
@@ -206,6 +372,10 @@ byte EnhancePackAdapter::getAttribute() {
 
 float EnhancePackAdapter::getDuration() {
 	return ((EnhancePackImplementation*) impl)->getDuration();
+}
+
+bool EnhancePackAdapter::isEnhancePack() {
+	return ((EnhancePackImplementation*) impl)->isEnhancePack();
 }
 
 /*

@@ -92,7 +92,8 @@ public:
 		//Force the delay to be at least 3 seconds.
 		delay = (delay < 3) ? 3 : delay;
 
-		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature);
+		ParameterizedStringId message("healing_response", "healing_response_58");
+		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message);
 		creature->addPendingTask("injuryTreatment", task);
 		task->schedule(delay * 1000);
 	}

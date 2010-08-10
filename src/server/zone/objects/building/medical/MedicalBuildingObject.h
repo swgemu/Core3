@@ -49,6 +49,8 @@ class MedicalBuildingObject : public BuildingObject {
 public:
 	MedicalBuildingObject();
 
+	bool isMedicalBuildingObject();
+
 protected:
 	MedicalBuildingObject(DummyConstructorParameter* param);
 
@@ -77,6 +79,8 @@ public:
 	MedicalBuildingObjectImplementation();
 
 	MedicalBuildingObjectImplementation(DummyConstructorParameter* param);
+
+	bool isMedicalBuildingObject();
 
 	MedicalBuildingObject* _this;
 
@@ -116,6 +120,8 @@ public:
 	MedicalBuildingObjectAdapter(MedicalBuildingObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	bool isMedicalBuildingObject();
 
 };
 

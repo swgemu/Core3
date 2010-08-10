@@ -54,4 +54,8 @@ class MedicalBuildingObject extends BuildingObject {
 	public MedicalBuildingObject() {
 		Logger.setLoggingName("MedicalBuildingObject");
 	}
+	
+	public boolean isMedicalBuildingObject() {
+		return true;
+	}
 }

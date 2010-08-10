@@ -212,6 +212,8 @@ public:
 
 	void removeIgnore(const String& name, bool notifyClient = true);
 
+	void setTitle(const String& characterTitle, bool notifyClient = true);
+
 	void notifyOnline();
 
 	void notifyOffline();
@@ -249,8 +251,6 @@ public:
 	bool setCharacterBit(unsigned int bit, bool notifyClient = false);
 
 	bool clearCharacterBit(unsigned int bit, bool notifyClient = false);
-
-	void setTitle(const String& characterTitle);
 
 	VectorMap<String, int>* getXpTypeCapList();
 
@@ -417,6 +417,8 @@ public:
 
 	void removeIgnore(const String& name, bool notifyClient = true);
 
+	void setTitle(const String& characterTitle, bool notifyClient = true);
+
 	void notifyOnline();
 
 	void notifyOffline();
@@ -454,8 +456,6 @@ public:
 	bool setCharacterBit(unsigned int bit, bool notifyClient = false);
 
 	bool clearCharacterBit(unsigned int bit, bool notifyClient = false);
-
-	void setTitle(const String& characterTitle);
 
 	VectorMap<String, int>* getXpTypeCapList();
 
@@ -556,6 +556,8 @@ public:
 
 	void removeIgnore(const String& name, bool notifyClient);
 
+	void setTitle(const String& characterTitle, bool notifyClient);
+
 	void notifyOnline();
 
 	void notifyOffline();
@@ -592,8 +594,6 @@ public:
 
 	bool clearCharacterBit(unsigned int bit, bool notifyClient);
 
-	void setTitle(const String& characterTitle);
-
 	int getForcePower();
 
 	int getForcePowerMax();
@@ -622,12 +622,12 @@ protected:
 	String _param0_removeFriend__String_bool_;
 	String _param0_addIgnore__String_bool_;
 	String _param0_removeIgnore__String_bool_;
+	String _param0_setTitle__String_bool_;
 	String _param0_hasFriend__String_;
 	String _param0_isIgnoring__String_;
 	String _param0_addReverseFriend__String_;
 	String _param0_removeReverseFriend__String_;
 	String _param0_hasSkill__String_;
-	String _param0_setTitle__String_;
 	String _param0_getExperience__String_;
 };
 
