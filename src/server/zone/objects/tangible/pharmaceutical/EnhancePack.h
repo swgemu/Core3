@@ -179,6 +179,8 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
@@ -229,6 +231,8 @@ public:
 	EnhancePackImplementation(DummyConstructorParameter* param);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
