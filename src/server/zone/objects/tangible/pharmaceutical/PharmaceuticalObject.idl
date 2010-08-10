@@ -69,6 +69,14 @@ class PharmaceuticalObject extends TangibleObject {
 		return 5;
 	}
 	
+	public abstract boolean isArea() {
+		return false;
+	}
+	
+	public abstract float getArea() {
+		return 0;
+	}
+	
 	public boolean isPharmaceuticalObject() {
 		return true;
 	}

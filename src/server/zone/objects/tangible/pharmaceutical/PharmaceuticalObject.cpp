@@ -59,12 +59,36 @@ float PharmaceuticalObject::getRange(CreatureObject* creature) {
 		return ((PharmaceuticalObjectImplementation*) _impl)->getRange(creature);
 }
 
-bool PharmaceuticalObject::isPharmaceuticalObject() {
+bool PharmaceuticalObject::isArea() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalObjectImplementation*) _impl)->isArea();
+}
+
+float PharmaceuticalObject::getArea() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((PharmaceuticalObjectImplementation*) _impl)->getArea();
+}
+
+bool PharmaceuticalObject::isPharmaceuticalObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -76,7 +100,7 @@ bool PharmaceuticalObject::isStimPack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -88,7 +112,7 @@ bool PharmaceuticalObject::isRangedStimPack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -181,18 +205,28 @@ float PharmaceuticalObjectImplementation::getRange(CreatureObject* creature) {
 	return 5;
 }
 
+bool PharmaceuticalObjectImplementation::isArea() {
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(73):  		return false;
+	return false;
+}
+
+float PharmaceuticalObjectImplementation::getArea() {
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(77):  		return 0;
+	return 0;
+}
+
 bool PharmaceuticalObjectImplementation::isPharmaceuticalObject() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(73):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(81):  		return true;
 	return true;
 }
 
 bool PharmaceuticalObjectImplementation::isStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(77):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(85):  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isRangedStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(81):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(89):  		return false;
 	return false;
 }
 
@@ -214,12 +248,18 @@ Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertFloat(getRange((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 8:
-		resp->insertBoolean(isPharmaceuticalObject());
+		resp->insertBoolean(isArea());
 		break;
 	case 9:
-		resp->insertBoolean(isStimPack());
+		resp->insertFloat(getArea());
 		break;
 	case 10:
+		resp->insertBoolean(isPharmaceuticalObject());
+		break;
+	case 11:
+		resp->insertBoolean(isStimPack());
+		break;
+	case 12:
 		resp->insertBoolean(isRangedStimPack());
 		break;
 	default:
@@ -235,6 +275,14 @@ int PharmaceuticalObjectAdapter::getMedicineUseRequired() {
 
 float PharmaceuticalObjectAdapter::getRange(CreatureObject* creature) {
 	return ((PharmaceuticalObjectImplementation*) impl)->getRange(creature);
+}
+
+bool PharmaceuticalObjectAdapter::isArea() {
+	return ((PharmaceuticalObjectImplementation*) impl)->isArea();
+}
+
+float PharmaceuticalObjectAdapter::getArea() {
+	return ((PharmaceuticalObjectImplementation*) impl)->getArea();
 }
 
 bool PharmaceuticalObjectAdapter::isPharmaceuticalObject() {

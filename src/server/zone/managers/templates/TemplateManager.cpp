@@ -30,6 +30,7 @@
 #include "server/zone/templates/tangible/SharedShipObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/templates/tangible/StimPackTemplate.h"
+#include "server/zone/templates/tangible/RangedStimPackTemplate.h"
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "server/zone/templates/tangible/LairObjectTemplate.h"
@@ -154,6 +155,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<LairObjectTemplate>(SharedObjectTemplate::LAIRTEMPLATE);
 	templateFactory.registerObject<FactoryObjectTemplate>(SharedObjectTemplate::FACTORY);
 	templateFactory.registerObject<StimPackTemplate>(SharedObjectTemplate::STIMPACK);
+	templateFactory.registerObject<RangedStimPackTemplate>(SharedObjectTemplate::RANGEDSTIMPACK);
 }
 
 
@@ -267,6 +269,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("LAIRTEMPLATE", SharedObjectTemplate::LAIRTEMPLATE);
 	luaTemplatesInstance->setGlobalInt("FACTORY", SharedObjectTemplate::FACTORY);
 	luaTemplatesInstance->setGlobalInt("STIMPACK", SharedObjectTemplate::STIMPACK);
+	luaTemplatesInstance->setGlobalInt("RANGEDSTIMPACK", SharedObjectTemplate::RANGEDSTIMPACK);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

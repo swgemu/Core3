@@ -42,7 +42,13 @@
 
 
 object_tangible_medicine_crafted_medpack_grenade_damage_b = object_tangible_medicine_crafted_shared_medpack_grenade_damage_b:new {
-
+	gameObjectType = 8237,
+	templateType = RANGEDSTIMPACK,
+	medicineUse = 10,
+	rangeMod = 0.8,
+	area = 0,
+	range = 10,
+	effectiveness = 200
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_grenade_damage_b, "object/tangible/medicine/crafted/medpack_grenade_damage_b.iff")

@@ -164,6 +164,22 @@ public:
 		return NULL;
 	}
 
+	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
+		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
+			/*if (creatureTarget == creature) {
+				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
+			} else {
+				ParameterizedStringId stringId("healing_response", "healing_response_63");
+				stringId.setTO(creatureTarget->getObjectID());
+				//creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
+				creature->sendSystemMessage(stringId);
+			}*/
+			return false;
+		}
+
+		return true;
+	}
+
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack) {
 		if (!creature->canTreatInjuries()) {
 			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
@@ -220,7 +236,7 @@ public:
 				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
 			} else {
 				ParameterizedStringId stringId("healing_response", "healing_response_63");
-				stringId.setTO(creatureTarget->getObjectID());
+				stringId.setTT(creatureTarget->getObjectID());
 				//creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
 				creature->sendSystemMessage(stringId);
 			}
@@ -280,6 +296,84 @@ public:
 		playerManager->awardExperience(player, type, amount, true);
 	}
 
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* targetCreature, PharmaceuticalObject* pharma) {
+		if (pharma->isRangedStimPack()) {
+			RangedStimPack* rangeStim = (RangedStimPack*) pharma;
+
+			if (pharma == NULL)
+				return;
+
+			uint32 stimPower = rangeStim->calculatePower(creature, targetCreature);
+
+			uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
+			uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower);
+
+			if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
+				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+				playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)targetCreature);
+			}
+
+			sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
+
+			if (targetCreature != creature)
+				awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
+		}
+	}
+
+	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, StimPack* pharma,
+			float range) {
+
+		Zone* zone = creature->getZone();
+
+		if (zone == NULL)
+			return;
+
+		try {
+			zone->rlock();
+
+			for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
+				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) areaCenter->getInRangeObject(i))->_this);
+
+				if (!object->isPlayerCreature())
+					continue;
+
+				if (object == areaCenter || object == creature)
+					continue;
+
+				if (!areaCenter->isInRange(object, range))
+					continue;
+
+				CreatureObject* creatureTarget = (CreatureObject*) object;
+
+				if (creatureTarget->isAttackableBy(creature))
+					continue;
+
+				zone->runlock();
+
+				try {
+
+					Locker crossLocker(creatureTarget, creature);
+
+					if (checkTarget(creature, creatureTarget)) {
+						doAreaMedicActionTarget(creature, creatureTarget, pharma);
+					}
+
+				} catch (...) {
+
+				}
+
+				zone->rlock();
+
+			}
+
+			zone->runlock();
+		} catch (...) {
+			zone->runlock();
+		}
+
+
+	}
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -292,7 +386,7 @@ public:
 
 		if (object != NULL && !object->isCreatureObject()) {
 			return INVALIDTARGET;
-		} else
+		} else if (object == NULL)
 			object = creature;
 
 		CreatureObject* targetCreature = (CreatureObject*) object.get();
@@ -344,17 +438,12 @@ public:
 		if (targetCreature != creature)
 			awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
 
-		/*if (stimPack->isArea()) {
-					if (creature == creatureTarget && target != creature) {
-						target->unlock();
-					}
+		if (targetCreature != creature)
+			clocker.release();
 
-					handleArea(creature, creatureTarget, stimPack, stimPack->getArea());
-
-					if (creature == creatureTarget && target != creature) {
-						target->wlock(creature);
-					}
-				}*/
+		if (stimPack->isArea()) {
+			handleArea(creature, targetCreature, stimPack, stimPack->getArea());
+		}
 
 		if (stimPack->isRangedStimPack()) {
 			doAnimationsRange(creature, targetCreature, stimPack->getObjectID(), creature->getDistanceTo(targetCreature));

@@ -69,6 +69,12 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRangedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
 		int ret = doCombatAction(creature, target);
 
 		if (ret == SUCCESS) {

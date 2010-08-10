@@ -119,6 +119,10 @@ public:
 
 	float getRange(CreatureObject* creature = NULL);
 
+	bool isArea();
+
+	float getArea();
+
 	bool isPharmaceuticalObject();
 
 	bool isStimPack();
@@ -159,6 +163,10 @@ public:
 	int getMedicineUseRequired();
 
 	virtual float getRange(CreatureObject* creature = NULL);
+
+	virtual bool isArea();
+
+	virtual float getArea();
 
 	bool isPharmaceuticalObject();
 
@@ -208,6 +216,10 @@ public:
 	int getMedicineUseRequired();
 
 	float getRange(CreatureObject* creature);
+
+	bool isArea();
+
+	float getArea();
 
 	bool isPharmaceuticalObject();
 
