@@ -1331,7 +1331,7 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 		cbSui->clearOptions();
 		player->sendMessage(cbSui->generateMessage());
 	} else {
-		SceneObject* item = zserv->createObject(node->getTemplateCRC(), 1);
+		ManagedReference<SceneObject*> item = zserv->createObject(node->getTemplateCRC(), 1);
 
 		if (item == NULL) {
 			player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
