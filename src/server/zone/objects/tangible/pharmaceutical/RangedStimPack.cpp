@@ -36,6 +36,14 @@ RangedStimPack::~RangedStimPack() {
 }
 
 
+void RangedStimPack::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((RangedStimPackImplementation*) _impl)->loadTemplateData(templateData);
+}
+
 unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -88,12 +96,24 @@ float RangedStimPack::getArea() {
 		return ((RangedStimPackImplementation*) _impl)->getArea();
 }
 
-float RangedStimPack::getRangeMod() {
+bool RangedStimPack::isArea() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((RangedStimPackImplementation*) _impl)->isArea();
+}
+
+float RangedStimPack::getRangeMod() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -105,7 +125,7 @@ bool RangedStimPack::isRangedStimPack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -187,63 +207,88 @@ void RangedStimPackImplementation::_serializationHelperMethod() {
 
 RangedStimPackImplementation::RangedStimPackImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(65):  		setLoggingName("RangedStimPack");
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(66):  		setLoggingName("RangedStimPack");
 	setLoggingName("RangedStimPack");
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(67):  		effectiveness = 0;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(68):  		effectiveness = 0;
 	effectiveness = 0;
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(68):  		area = 0;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(69):  		area = 0;
 	area = 0;
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(69):  		range = 0;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(70):  		range = 0;
 	range = 0;
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(70):  		rangeMod = 0;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(71):  		rangeMod = 0;
 	rangeMod = 0;
 }
 
+void RangedStimPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(82):  		super.loadTemplateData(templateData);
+	StimPackImplementation::loadTemplateData(templateData);
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(84):  		RangedStimPackTemplate 
+	if (!templateData->isRangedStimPackTemplate())	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(85):  			return;
+	return;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(87):  stimPackTemplate = (RangedStimPackTemplate) templateData;
+	RangedStimPackTemplate* stimPackTemplate = (RangedStimPackTemplate*) templateData;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(89):  		effectiveness = stimPackTemplate.getEffectiveness();
+	effectiveness = stimPackTemplate->getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(90):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	StimPackImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(91):  		area = stimPackTemplate.getArea();
+	area = stimPackTemplate->getArea();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(92):  		range = stimPackTemplate.getRange();
+	range = stimPackTemplate->getRange();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(93):  		rangeMod = stimPackTemplate.getRangeMod();
+	rangeMod = stimPackTemplate->getRangeMod();
+}
+
 unsigned int RangedStimPackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(74):  		float power = getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(97):  		float power = getEffectiveness();
 	float power = getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(76):  		float 
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(99):  		float 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(77):  			power = power - power * patient.calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(100):  			power = power - power * patient.calculateBFRatio();
 	power = power - power * patient->calculateBFRatio();
 }
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(80):  modSkill = (float) healer.getSkillMod("combat_medic_effectiveness");
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(103):  modSkill = (float) healer.getSkillMod("combat_medic_effectiveness");
 	float modSkill = (float) healer->getSkillMod("combat_medic_effectiveness");
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(82):  		return (100 + modSkill) / 100 * power;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(105):  		return (100 + modSkill) / 100 * power;
 	return (100 + modSkill) / 100 * power;
 }
 
 float RangedStimPackImplementation::getRange(CreatureObject* creature) {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(86):  		float modSkill = 0;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(109):  		float modSkill = 0;
 	float modSkill = 0;
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(88):  		float 
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(111):  		float 
 	if (creature != NULL){
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(89):  			modSkill = creature.getSkillMod("healing_range");
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(112):  			modSkill = creature.getSkillMod("healing_range");
 	modSkill = creature->getSkillMod("healing_range");
 }
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(92):  value = (100 + rangeMod * modSkill) / 100 * range;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(115):  value = (100 + rangeMod * modSkill) / 100 * range;
 	float value = (100 + rangeMod * modSkill) / 100 * range;
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(94):  		return value;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(117):  		return value;
 	return value;
 }
 
 float RangedStimPackImplementation::getEffectiveness() {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(98):  		return effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(121):  		return effectiveness;
 	return effectiveness;
 }
 
 float RangedStimPackImplementation::getArea() {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(102):  		return area;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(125):  		return area;
 	return area;
 }
 
+bool RangedStimPackImplementation::isArea() {
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(129):  		return area != 0;
+	return area != 0;
+}
+
 float RangedStimPackImplementation::getRangeMod() {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(106):  		return rangeMod;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(133):  		return rangeMod;
 	return rangeMod;
 }
 
 bool RangedStimPackImplementation::isRangedStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(110):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(137):  		return true;
 	return true;
 }
 
@@ -271,9 +316,12 @@ Packet* RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertFloat(getArea());
 		break;
 	case 10:
-		resp->insertFloat(getRangeMod());
+		resp->insertBoolean(isArea());
 		break;
 	case 11:
+		resp->insertFloat(getRangeMod());
+		break;
+	case 12:
 		resp->insertBoolean(isRangedStimPack());
 		break;
 	default:
@@ -297,6 +345,10 @@ float RangedStimPackAdapter::getEffectiveness() {
 
 float RangedStimPackAdapter::getArea() {
 	return ((RangedStimPackImplementation*) impl)->getArea();
+}
+
+bool RangedStimPackAdapter::isArea() {
+	return ((RangedStimPackImplementation*) impl)->isArea();
 }
 
 float RangedStimPackAdapter::getRangeMod() {

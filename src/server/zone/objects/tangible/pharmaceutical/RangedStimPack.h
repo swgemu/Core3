@@ -115,6 +115,8 @@ class ZoneServer;
 
 using namespace server::zone;
 
+#include "server/zone/templates/tangible/RangedStimPackTemplate.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
@@ -129,6 +131,8 @@ class RangedStimPack : public StimPack {
 public:
 	RangedStimPack();
 
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
 
 	float getRange(CreatureObject* creature = NULL);
@@ -136,6 +140,8 @@ public:
 	float getEffectiveness();
 
 	float getArea();
+
+	bool isArea();
 
 	float getRangeMod();
 
@@ -178,6 +184,8 @@ public:
 
 	RangedStimPackImplementation(DummyConstructorParameter* param);
 
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
 	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
 
 	float getRange(CreatureObject* creature = NULL);
@@ -185,6 +193,8 @@ public:
 	float getEffectiveness();
 
 	float getArea();
+
+	bool isArea();
 
 	float getRangeMod();
 
@@ -236,6 +246,8 @@ public:
 	float getEffectiveness();
 
 	float getArea();
+
+	bool isArea();
 
 	float getRangeMod();
 

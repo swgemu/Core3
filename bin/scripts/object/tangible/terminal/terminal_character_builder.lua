@@ -79,7 +79,15 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"StimPack B", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_b.iff",
 			"StimPack C", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_c.iff",
 			"StimPack D", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_d.iff",
-			"StimPack E", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_e.iff"
+			"StimPack E", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_e.iff",
+			"Medpack Grenade Damage A", "object/tangible/medicine/crafted/medpack_grenade_damage_a.iff",
+			"Medpack Grenade Damage B", "object/tangible/medicine/crafted/medpack_grenade_damage_b.iff",
+			"Medpack Grenade Damage C", "object/tangible/medicine/crafted/medpack_grenade_damage_c.iff",
+			"Medpack Grenade Damage D", "object/tangible/medicine/crafted/medpack_grenade_damage_d.iff",
+			"Medpack Grenade Damage E", "object/tangible/medicine/crafted/medpack_grenade_damage_e.iff",
+			"Medpack Grenade Area A", "object/tangible/medicine/crafted/medpack_grenade_area_a.iff",
+			"Medpack Grenade Area B", "object/tangible/medicine/crafted/medpack_grenade_area_b.iff",
+			"Medpack Grenade Area C", "object/tangible/medicine/crafted/medpack_grenade_area_c.iff" 
 		},	
 		"Weapons",
 		{

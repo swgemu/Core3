@@ -67,6 +67,7 @@
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
+#include "server/zone/objects/tangible/pharmaceutical/RangedStimPack.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
@@ -241,6 +242,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
 
 	objectFactory.registerObject<StimPack>(SceneObject::STIMPACK);
+	objectFactory.registerObject<RangedStimPack>(SceneObject::RANGEDSTIMPACK);
 
 	//clothing
 	objectFactory.registerObject<ClothingObject>(SceneObject::CLOTHING);

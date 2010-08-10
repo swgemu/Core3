@@ -84,6 +84,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/creature/AiAgent.cpp \
 				server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 				server/zone/objects/creature/buffs/Buff.cpp \
+				server/zone/objects/creature/buffs/DelayedBuff.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
@@ -125,6 +126,15 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
 				server/zone/objects/tangible/fishing/FishObject.cpp \
+				server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
+				server/zone/objects/tangible/pharmaceutical/DotPack.cpp \
+				server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
+				server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.cpp \
+				server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp \
+				server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
+				server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
+				server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
+				server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
