@@ -42,7 +42,18 @@
 
 
 object_tangible_medicine_medpack_disease_health = object_tangible_medicine_shared_medpack_disease_health:new {
-
+	gameObjectType = 8240,
+	templateType = DOTPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	duration = 300,
+	range = 15,
+	rangeMod = 1.0,
+	pool = 0,
+	dotType = DISEASED,
+	potency = 150,
+	commandToExecute = "/applydisease",
+	area = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_medpack_disease_health, "object/tangible/medicine/medpack_disease_health.iff")
