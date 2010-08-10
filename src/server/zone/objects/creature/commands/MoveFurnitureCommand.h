@@ -86,7 +86,7 @@ public:
 
 		float dist = tokenizer.getFloatToken();
 
-		if (dist < 1 || dist > 100)
+		if (dist < 1 || dist > 1000)
 			return GENERALERROR;
 
 		ZoneServer* zoneServer = creature->getZoneServer();
@@ -142,16 +142,17 @@ public:
 		//TODO: Check to make sure the item is not being moved outside the range of the cell.
 
 		obj->setPosition(x, z, y);
+		obj->incrementMovementCounter();
 
 		if (obj->getParent() != NULL)
-			obj->updateZoneWithParent(obj->getParent(), true);
+			obj->updateZoneWithParent(obj->getParent(), false);
 		else
-			obj->updateZone(true);
+			obj->updateZone(false);
 
 		if (obj->getParent() != NULL)
-			obj->updateZoneWithParent(obj->getParent(), true);
+			obj->updateZoneWithParent(obj->getParent(), false);
 		else
-			obj->updateZone(true);
+			obj->updateZone(false);
 
 		return SUCCESS;
 	}

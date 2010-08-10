@@ -192,7 +192,7 @@ public:
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
-	void disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap);
+	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 
@@ -310,7 +310,7 @@ public:
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
-	void disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap);
+	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 

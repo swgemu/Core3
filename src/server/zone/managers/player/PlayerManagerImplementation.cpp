@@ -740,7 +740,8 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(PlayerCreature* 
 }
 
 int PlayerManagerImplementation::notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject) {
-	destructor->unlock();
+	if (destructor != destructedObject)
+		destructor->unlock();
 
 	try {
 		DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructedObject->getDefenderList();
@@ -761,7 +762,8 @@ int PlayerManagerImplementation::notifyDefendersOfIncapacitation(TangibleObject*
 		error("unreported exception caught in int PlayerManagerImplementation::notifyDefendersOfIncapacitation");
 	}
 
-	destructor->wlock();
+	if (destructor != destructedObject)
+		destructor->wlock(destructedObject);
 
 	return 0;
 }
@@ -938,7 +940,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(PlayerCreature* player, uin
 	player->switchZone(zone->getZoneID(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 }
 
-void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap) {
+void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap) {
 	uint32 totalDamage = damageMap->getTotalDamage();
 
 	int level = destructedObject->getLevel();
@@ -950,7 +952,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 		DamageMapEntry* entry = &damageMap->elementAt(i).getValue();
 
-		Locker crossLocker(player, destructor);
+		Locker crossLocker(player, destructedObject);
 
 		uint32 totalPlayerDamage = 0;
 		uint32 playerWeaponXp = 0;
