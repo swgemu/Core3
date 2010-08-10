@@ -115,8 +115,6 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 	if (group != NULL)
 		group->sendTo(_this, true);
 
-	creatureBuffs.sendTo(_this);
-
 	owner->resetPacketCheckupTime();
 }
 
@@ -540,6 +538,8 @@ void PlayerCreatureImplementation::notifySceneReady() {
 	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
 	if (playerObject == NULL)
 		return;
+
+	creatureBuffs.sendTo(_this);
 
 	playerObject->sendFriendLists();
 }
