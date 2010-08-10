@@ -115,6 +115,8 @@ bool AiAgentImplementation::tryRetreat() {
 		} else if (homeLocation.isInRange(_this, 100))
 			return false;
 
+		setFollowObject(NULL);
+
 		homeLocation.setReached(false);
 
 		damageMap.removeAll();

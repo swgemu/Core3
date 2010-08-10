@@ -362,12 +362,12 @@ int PlayerManager::healEnhance(CreatureObject* enhancer, CreatureObject* patient
 		return ((PlayerManagerImplementation*) _impl)->healEnhance(enhancer, patient, attribute, buffvalue, duration);
 }
 
-void PlayerManager::disseminateExperience(TangibleObject* destructor, TangibleObject* destructedObject, DamageMap* damageMap) {
+void PlayerManager::disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PlayerManagerImplementation*) _impl)->disseminateExperience(destructor, destructedObject, damageMap);
+		((PlayerManagerImplementation*) _impl)->disseminateExperience(destructedObject, damageMap);
 }
 
 void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {

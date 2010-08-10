@@ -198,9 +198,24 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	despawn->schedule(10000);
 
 	PlayerManager* playerManager = server->getPlayerManager();
-	playerManager->disseminateExperience(destructor, destructedObject, destructedObject->getDamageMap());
 
-	CombatManager::instance()->attemptPeace(destructedObject);
+	// lets unlock destructor so we dont get into complicated deadlocks
+
+	if (destructedObject != destructor)
+		destructor->unlock();
+
+	try {
+		playerManager->disseminateExperience(destructedObject, destructedObject->getDamageMap());
+
+		CombatManager::instance()->attemptPeace(destructedObject);
+
+	} catch (...) {
+
+	}
+
+	// now we can safely lock destructor again
+	if (destructedObject != destructor)
+		destructor->wlock(destructedObject);
 
 	return 1;
 }

@@ -71,6 +71,10 @@ public:
 		setNoDuplicateInsertPlan();
 	}
 
+	DamageMap(const DamageMap& map) : VectorMap<ManagedReference<PlayerCreature*> , DamageMapEntry>(map) {
+		setNoDuplicateInsertPlan();
+	}
+
 	void addDamage(PlayerCreature* player, uint32 damage);
 
 	void dropDamage(PlayerCreature* player);

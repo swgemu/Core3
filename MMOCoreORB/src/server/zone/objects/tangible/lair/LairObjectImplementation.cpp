@@ -66,7 +66,7 @@ int LairObjectImplementation::notifyObjectDestructionObservers(TangibleObject* a
 	}
 
 	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
-	playerManager->disseminateExperience(attacker, _this, &damageMap);
+	playerManager->disseminateExperience(_this, &damageMap);
 
 	spawnedCreatures.removeAll();
 
