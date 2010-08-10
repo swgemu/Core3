@@ -87,6 +87,10 @@ public:
 
 	void sendDestroyTo(PlayerCreature* player);
 
+	void activate(bool applyModifiers);
+
+	void deactivate(bool removeModifiers);
+
 	void activate();
 
 	void deactivate();
@@ -206,6 +210,10 @@ public:
 
 	virtual void sendDestroyTo(PlayerCreature* player);
 
+	virtual void activate(bool applyModifiers);
+
+	virtual void deactivate(bool removeModifiers);
+
 	virtual void activate();
 
 	virtual void deactivate();
@@ -306,6 +314,10 @@ public:
 	void sendTo(PlayerCreature* player);
 
 	void sendDestroyTo(PlayerCreature* player);
+
+	void activate(bool applyModifiers);
+
+	void deactivate(bool removeModifiers);
 
 	void activate();
 

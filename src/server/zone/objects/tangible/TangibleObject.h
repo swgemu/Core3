@@ -208,6 +208,8 @@ public:
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
+	void decreaseUseCount(PlayerCreature* player = NULL);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void clearCombatState(bool clearDefenders = true);
@@ -281,6 +283,8 @@ public:
 	bool isNeutral();
 
 	bool isSliced();
+
+	bool isPharmaceuticalObject();
 
 	void setCustomizationString(const String& vars);
 
@@ -454,6 +458,8 @@ public:
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
+	void decreaseUseCount(PlayerCreature* player = NULL);
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	virtual void clearCombatState(bool clearDefenders = true);
@@ -527,6 +533,8 @@ public:
 	bool isNeutral();
 
 	bool isSliced();
+
+	virtual bool isPharmaceuticalObject();
 
 	void setCustomizationString(const String& vars);
 
@@ -607,6 +615,8 @@ public:
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient);
 
+	void decreaseUseCount(PlayerCreature* player);
+
 	void clearCombatState(bool clearDefenders);
 
 	bool hasDefender(SceneObject* defender);
@@ -672,6 +682,8 @@ public:
 	bool isNeutral();
 
 	bool isSliced();
+
+	bool isPharmaceuticalObject();
 
 	void setCustomizationString(const String& vars);
 

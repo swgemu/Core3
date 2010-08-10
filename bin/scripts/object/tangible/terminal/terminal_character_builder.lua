@@ -72,6 +72,15 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Composite Leggings", "object/tangible/wearables/armor/composite/armor_composite_leggings.iff"
 			}
 		},
+		"Pharmaceutical",
+		{
+			"Small StimPack", "object/tangible/medicine/stimpack_sm_s1.iff",
+			"StimPack A", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_a.iff",
+			"StimPack B", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_b.iff",
+			"StimPack C", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_c.iff",
+			"StimPack D", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_d.iff",
+			"StimPack E", "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_e.iff"
+		},	
 		"Weapons",
 		{
 			"Rifles",

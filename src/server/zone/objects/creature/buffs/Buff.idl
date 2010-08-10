@@ -105,8 +105,16 @@ class Buff extends ManagedObject {
 	public native abstract void sendTo(PlayerCreature player);
 	public native abstract void sendDestroyTo(PlayerCreature player);
 
-	public native abstract void activate();
-	public native abstract void deactivate();
+	public native abstract void activate(boolean applyModifiers);
+	public native abstract void deactivate(boolean removeModifiers);
+	
+	public abstract void activate() {
+		activate(true);
+	}
+	
+	public abstract void deactivate() {
+		deactivate(true);
+	}
 
 	public native abstract void applyAttributeModifiers();
 	public native abstract void applySkillModifiers();
