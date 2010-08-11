@@ -131,12 +131,24 @@ bool PharmaceuticalObject::isEnhancePack() {
 		return ((PharmaceuticalObjectImplementation*) _impl)->isEnhancePack();
 }
 
-bool PharmaceuticalObject::isCurePack() {
+bool PharmaceuticalObject::isWoundPack() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalObjectImplementation*) _impl)->isWoundPack();
+}
+
+bool PharmaceuticalObject::isCurePack() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -259,8 +271,13 @@ bool PharmaceuticalObjectImplementation::isEnhancePack() {
 	return false;
 }
 
-bool PharmaceuticalObjectImplementation::isCurePack() {
+bool PharmaceuticalObjectImplementation::isWoundPack() {
 	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(97):  		return false;
+	return false;
+}
+
+bool PharmaceuticalObjectImplementation::isCurePack() {
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(101):  		return false;
 	return false;
 }
 
@@ -300,6 +317,9 @@ Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertBoolean(isEnhancePack());
 		break;
 	case 14:
+		resp->insertBoolean(isWoundPack());
+		break;
+	case 15:
 		resp->insertBoolean(isCurePack());
 		break;
 	default:
@@ -339,6 +359,10 @@ bool PharmaceuticalObjectAdapter::isRangedStimPack() {
 
 bool PharmaceuticalObjectAdapter::isEnhancePack() {
 	return ((PharmaceuticalObjectImplementation*) impl)->isEnhancePack();
+}
+
+bool PharmaceuticalObjectAdapter::isWoundPack() {
+	return ((PharmaceuticalObjectImplementation*) impl)->isWoundPack();
 }
 
 bool PharmaceuticalObjectAdapter::isCurePack() {

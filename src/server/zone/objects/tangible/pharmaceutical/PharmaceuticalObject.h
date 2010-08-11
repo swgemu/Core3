@@ -131,6 +131,8 @@ public:
 
 	bool isEnhancePack();
 
+	bool isWoundPack();
+
 	bool isCurePack();
 
 protected:
@@ -179,6 +181,8 @@ public:
 	virtual bool isRangedStimPack();
 
 	virtual bool isEnhancePack();
+
+	virtual bool isWoundPack();
 
 	virtual bool isCurePack();
 
@@ -236,6 +240,8 @@ public:
 	bool isRangedStimPack();
 
 	bool isEnhancePack();
+
+	bool isWoundPack();
 
 	bool isCurePack();
 

@@ -110,6 +110,7 @@ public:
 	const static int ENHANCEPACK = 0x4000011;
 	const static int CUREPACK = 0x4000012;
 	const static int DOTPACK = 0x4000013;
+	const static int WOUNDPACK = 0x4000014;
 
 public:
 	SharedObjectTemplate() {
@@ -417,6 +418,10 @@ public:
 	}
 
 	virtual bool isDotPackTemplate() {
+		return false;
+	}
+
+	virtual bool isWoundPackTemplate() {
 		return false;
 	}
 

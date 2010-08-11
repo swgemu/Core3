@@ -71,6 +71,7 @@
 #include "server/zone/objects/tangible/pharmaceutical/EnhancePack.h"
 #include "server/zone/objects/tangible/pharmaceutical/CurePack.h"
 #include "server/zone/objects/tangible/pharmaceutical/DotPack.h"
+#include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
@@ -249,6 +250,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<EnhancePack>(SceneObject::ENHANCEPACK);
 	objectFactory.registerObject<CurePack>(SceneObject::CUREPACK);
 	objectFactory.registerObject<DotPack>(SceneObject::DOTPACK);
+	objectFactory.registerObject<WoundPack>(SceneObject::WOUNDPACK);
 
 	//clothing
 	objectFactory.registerObject<ClothingObject>(SceneObject::CLOTHING);

@@ -42,7 +42,11 @@
 
 
 object_tangible_medicine_medpack_wound_strength = object_tangible_medicine_shared_medpack_wound_strength:new {
-
+	gameObjectType = 8241,
+	templateType = WOUNDPACK,
+	medicineUse = 5,
+	effectiveness = 100,
+	attribute = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_medpack_wound_strength, "object/tangible/medicine/medpack_wound_strength.iff")
