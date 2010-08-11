@@ -65,6 +65,7 @@ public:
 
 		range = 5;
 		mindCost = 50;
+		defaultTime = 0;
 	}
 
 	void deactivateInjuryTreatment(CreatureObject* creature, bool isRangedStim) {

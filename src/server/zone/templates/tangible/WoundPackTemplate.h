@@ -1,30 +1,28 @@
 /*
- * EnhancePackTemplate.h
+ * WoundPackTemplate.h
  *
- *  Created on: 10/08/2010
+ *  Created on: 11/08/2010
  *      Author: victor
  */
 
-#ifndef ENHANCEPACKTEMPLATE_H_
-#define ENHANCEPACKTEMPLATE_H_
+#ifndef WOUNDPACKTEMPLATE_H_
+#define WOUNDPACKTEMPLATE_H_
 
 #include "../SharedTangibleObjectTemplate.h"
 
-class EnhancePackTemplate : public SharedTangibleObjectTemplate {
+class WoundPackTemplate : public SharedTangibleObjectTemplate {
 	int medicineUse;
 	float effectiveness;
-	float duration;
 	byte attribute;
 
 public:
-	EnhancePackTemplate() {
+	WoundPackTemplate() {
 		medicineUse = 0;
 		effectiveness = 0;
-		duration = 0;
 		attribute = 0;
 	}
 
-	~EnhancePackTemplate() {
+	~WoundPackTemplate() {
 
 	}
 
@@ -33,7 +31,6 @@ public:
 
 		medicineUse = templateData->getIntField("medicineUse");
 		effectiveness = templateData->getFloatField("effectiveness");
-		duration = templateData->getFloatField("duration");
 		attribute = templateData->getIntField("attribute");
     }
 
@@ -49,13 +46,9 @@ public:
 		return attribute;
 	}
 
-	inline float getDuration() {
-		return duration;
-	}
-
-	bool isEnhancePackTemplate() {
+	bool isWoundPackTemplate() {
 		return true;
 	}
 };
 
-#endif /* ENHANCEPACKTEMPLATE_H_ */
+#endif /* WOUNDPACKTEMPLATE_H_ */

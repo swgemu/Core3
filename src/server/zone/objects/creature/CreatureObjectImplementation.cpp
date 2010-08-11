@@ -366,6 +366,18 @@ void CreatureObjectImplementation::setShockWounds(int newShock, bool notifyClien
 	}
 }
 
+void CreatureObjectImplementation::addShockWounds(int shockToAdd, bool notifyClient) {
+	int newShockWounds = shockWounds + shockToAdd;
+
+	if (newShockWounds < 0) {
+		newShockWounds = 0;
+	} else if (newShockWounds > 1000) {
+		newShockWounds = 1000;
+	}
+
+	setShockWounds(newShockWounds, notifyClient);
+}
+
 
 void CreatureObjectImplementation::setCombatState() {
 	//lastCombatAction.update();
@@ -548,12 +560,12 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 
 	int newValue = currentValue + damage;
 
-	int maxValue = maxHamList.get(damageType);
+	int maxValue = maxHamList.get(damageType) - wounds.get(damageType);
 
 	if (newValue > maxValue)
 		returnValue = maxValue - currentValue;
 
-	setHAM(damageType, MIN(newValue, maxValue), notifyClient);
+	setHAM(damageType, MIN(newValue, maxValue) , notifyClient);
 
 	return returnValue;
 }
@@ -579,6 +591,12 @@ void CreatureObjectImplementation::setBaseHAM(int type, int value, bool notifyCl
 }
 
 void CreatureObjectImplementation::setWounds(int type, int value, bool notifyClient) {
+	if (value < 0)
+		value = 0;
+
+	if (value >= maxHamList.get(type))
+		value = maxHamList.get(type) - 1;
+
 	if (wounds.get(type) == value)
 		return;
 
@@ -592,18 +610,33 @@ void CreatureObjectImplementation::setWounds(int type, int value, bool notifyCli
 	} else {
 		wounds.set(type, value, NULL);
 	}
-}
 
-void CreatureObjectImplementation::addWounds(int type, int value, bool notifyClient) {
-	if (type < 0 || type >= wounds.size()) {
-		error("unknown wound type in changeWounds");
-		return;
+	int maxHamValue = maxHamList.get(type) - wounds.get(type);
+
+	if (getHAM(type) > maxHamValue) {
+		setHAM(type, maxHamValue, notifyClient);
 	}
 
+}
+
+int CreatureObjectImplementation::addWounds(int type, int value, bool notifyClient) {
+	if (type < 0 || type >= wounds.size()) {
+		error("unknown wound type in changeWounds");
+		return 0;
+	}
+
+	int returnValue = value;
+
 	int currentValue = wounds.get(type);
+
 	int newValue = currentValue + value;
 
+	if (newValue < 0)
+		returnValue = value - newValue;
+
 	setWounds(type, newValue, notifyClient);
+
+	return returnValue;
 }
 
 void CreatureObjectImplementation::setMaxHAM(int type, int value, bool notifyClient) {
