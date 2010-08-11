@@ -1473,6 +1473,9 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 void PlayerManagerImplementation::sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target) {
 	uint32 battleFatigue = target->getShockWounds();
 
+	if (battleFatigue == 0)
+		return;
+
 	String targetName = target->getFirstName();
 
 	StringBuffer msgPlayer, msgTarget;

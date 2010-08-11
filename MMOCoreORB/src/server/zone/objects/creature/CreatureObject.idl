@@ -355,7 +355,11 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void setWounds(int type, int value, boolean notifyClient = true);
-	public native void addWounds(int type, int value, boolean notifyClient = true);
+	
+	/**
+	 * @return returns wounds added
+	 */
+	public native int addWounds(int type, int value, boolean notifyClient = true);
 	
 	/**
 	 * Updates a specific type of the Max HAM
@@ -411,15 +415,8 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void setShockWounds(int newShock, boolean notifyClient = true);
-	public void addShockWounds(int shockToAdd, boolean notiyClient = true) {
-		shockWounds = shockWounds + shockToAdd;
-
-		if (shockWounds < 0)
-			shockWounds = 0;
-		else if (shockWounds > 1000)
-			shockWounds = 1000;
-	}
 	
+	public native void addShockWounds(int shockToAdd, boolean notiyClient = true);	
 	/**
 	 * Updates the target id to the specified object id
 	 * @pre { this object is locked }

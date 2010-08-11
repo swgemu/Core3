@@ -288,7 +288,7 @@ public:
 
 	void setWounds(int type, int value, bool notifyClient = true);
 
-	void addWounds(int type, int value, bool notifyClient = true);
+	int addWounds(int type, int value, bool notifyClient = true);
 
 	void setMaxHAM(int type, int value, bool notifyClient = true);
 
@@ -834,7 +834,7 @@ public:
 
 	void setWounds(int type, int value, bool notifyClient = true);
 
-	void addWounds(int type, int value, bool notifyClient = true);
+	int addWounds(int type, int value, bool notifyClient = true);
 
 	void setMaxHAM(int type, int value, bool notifyClient = true);
 
@@ -1263,7 +1263,7 @@ public:
 
 	void setWounds(int type, int value, bool notifyClient);
 
-	void addWounds(int type, int value, bool notifyClient);
+	int addWounds(int type, int value, bool notifyClient);
 
 	void setMaxHAM(int type, int value, bool notifyClient);
 

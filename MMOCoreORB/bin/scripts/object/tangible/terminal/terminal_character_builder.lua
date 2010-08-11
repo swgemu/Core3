@@ -102,7 +102,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Medpack Cure Poison A", "object/tangible/medicine/crafted/medpack_cure_poison_a.iff",
 			"Medpack Cure Poison Area A", "object/tangible/medicine/crafted/medpack_cure_poison_area_a.iff",
 			"Disease Health Area A", "object/tangible/medicine/crafted/medpack_disease_area_health_a.iff",
-			"Poison Health Area A", "object/tangible/medicine/crafted/medpack_poison_area_health_a.iff"
+			"Poison Health Area A", "object/tangible/medicine/crafted/medpack_poison_area_health_a.iff",
+			"Medpack Health Wound", "object/tangible/medicine/medpack_wound_health.iff"
 		},	
 		"Weapons",
 		{
