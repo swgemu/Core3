@@ -155,6 +155,18 @@ bool PharmaceuticalObject::isCurePack() {
 		return ((PharmaceuticalObjectImplementation*) _impl)->isCurePack();
 }
 
+bool PharmaceuticalObject::isStatePack() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalObjectImplementation*) _impl)->isStatePack();
+}
+
 /*
  *	PharmaceuticalObjectImplementation
  */
@@ -281,6 +293,11 @@ bool PharmaceuticalObjectImplementation::isCurePack() {
 	return false;
 }
 
+bool PharmaceuticalObjectImplementation::isStatePack() {
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(105):  		return false;
+	return false;
+}
+
 /*
  *	PharmaceuticalObjectAdapter
  */
@@ -321,6 +338,9 @@ Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 		break;
 	case 15:
 		resp->insertBoolean(isCurePack());
+		break;
+	case 16:
+		resp->insertBoolean(isStatePack());
 		break;
 	default:
 		return NULL;
@@ -367,6 +387,10 @@ bool PharmaceuticalObjectAdapter::isWoundPack() {
 
 bool PharmaceuticalObjectAdapter::isCurePack() {
 	return ((PharmaceuticalObjectImplementation*) impl)->isCurePack();
+}
+
+bool PharmaceuticalObjectAdapter::isStatePack() {
+	return ((PharmaceuticalObjectImplementation*) impl)->isStatePack();
 }
 
 /*

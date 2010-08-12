@@ -111,6 +111,7 @@ public:
 	const static int CUREPACK = 0x4000012;
 	const static int DOTPACK = 0x4000013;
 	const static int WOUNDPACK = 0x4000014;
+	const static int STATEPACK = 0x4000015;
 
 public:
 	SharedObjectTemplate() {
@@ -402,6 +403,10 @@ public:
 	}
 
 	virtual bool isStimPackTemplate() {
+		return false;
+	}
+
+	virtual bool isStatePackTemplate() {
 		return false;
 	}
 

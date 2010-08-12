@@ -443,7 +443,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 }
 
 
-void CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
+bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 	if (stateBitmask & state) {
 		stateBitmask &= ~state;
 
@@ -504,6 +504,10 @@ void CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 		default:
 			break;
 		}
+
+		return true;
+	} else {
+		return false;
 	}
 }
 

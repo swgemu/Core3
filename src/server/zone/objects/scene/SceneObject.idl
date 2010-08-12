@@ -252,6 +252,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public static final int CUREPACK = 0x202F;
 	public static final int DOTPACK = 0x2030;
 	public static final int WOUNDPACK = 0x2031;
+	public static final int STATEPACK = 0x2032;
 
 	public static final int TERMINAL = 0x4000;
 	public static final int BANK = 0x4001;

@@ -656,7 +656,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked, stateBitmask doesnt have the specified state }
 	 * @param state state to clear
 	 */
-	public native void clearState(unsigned long state, boolean notifyClient = true);
+	public native boolean clearState(unsigned long state, boolean notifyClient = true);
 	
 	public void setControlDevice(ControlDevice device) {
 		controlDevice = device;
@@ -713,6 +713,10 @@ class CreatureObject extends TangibleObject {
 	
 	public boolean canTreatInjuries() {
 		return super.getPendingTask("injuryTreatment") == null;
+	}
+	
+	public boolean canTreatStates() {
+		return super.getPendingTask("stateTreatment") == null;
 	}
 	
 	public boolean canTreatWounds() {
