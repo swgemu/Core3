@@ -48,11 +48,24 @@ which carries forward this exception.
 #include "../../scene/SceneObject.h"
 
 class FirstAidCommand : public QueueCommand {
+	float mindCost;
+	float range;
 public:
 
 	FirstAidCommand(const String& name, ZoneProcessServerImplementation* server)
 		: QueueCommand(name, server) {
+		mindCost = 0;
+		range = 6;
+		defaultTime = 3;
+	}
 
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+		creatureTarget->playEffect("clienteffect/healing_healdamage.cef", "");
+
+		if (creature == creatureTarget)
+			creature->doAnimation("heal_self");
+		else
+			creature->doAnimation("heal_other");
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -62,6 +75,99 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object != NULL && !object->isCreatureObject()) {
+			return INVALIDTARGET;
+		} else if (object == NULL)
+			object = creature;
+
+		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+
+		Locker clocker(creatureTarget, creature);
+
+		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
+			creatureTarget = creature;
+
+		if (!creatureTarget->isInRange(creature, range))
+			return TOOFAR;
+
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot apply First Aid while prone.");
+			return GENERALERROR;
+		}
+
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You cannot apply First Aid while Meditating.");
+			return GENERALERROR;
+		}
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+			return GENERALERROR;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return GENERALERROR;
+		}
+
+		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
+			Player * pt = (Player *) creatureTarget;
+			Player * p = (Player *) creature;
+
+			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
+				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				return GENERALERROR;
+			}
+
+			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
+				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				return GENERALERROR;
+			}
+		}*/
+
+		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
+			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			return GENERALERROR;
+		}
+
+
+		if (creatureTarget->isBleeding()) {
+
+			if (creatureTarget != creature) {
+				if (creatureTarget->isPlayerCreature()) {
+					StringBuffer message;
+					message << "You apply first aid to " << ((PlayerCreature*)creatureTarget)->getFirstName() << ".";
+					creature->sendSystemMessage(message.toString());
+				}
+			} else {
+				creature->sendSystemMessage("healing_response","first_aid_self"); //You apply first aid to yourself.
+			}
+
+			creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+
+			doAnimations(creature, creatureTarget);
+
+			uint32 skillMod = creature->getSkillMod("healing_injury_treatment");
+			creatureTarget->healDot(CreatureState::BLEEDING, skillMod);
+			/*if (creatureTarget->healDot(CreatureState::BLEEDING,skillMod))
+							creatureTarget->sendSystemMessage("Bleed stop");
+						else
+							creatureTarget->sendSystemMessage("Bleed reduced");
+			 */
+		} else {
+			creature->error("Failed clearing bleeding state on player for unknown reason.");
+		}
+
+		if (creatureTarget != creature) {
+			ParameterizedStringId stringId("healing_response", "healing_response_80");
+			stringId.setTT(creatureTarget->getObjectID());
+		} else {
+			creature->sendSystemMessage("healing_response", "healing_response_78"); //You are not bleeding.
+		}
+
 
 		return SUCCESS;
 	}

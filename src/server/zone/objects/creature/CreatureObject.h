@@ -246,6 +246,8 @@ public:
 
 	static const float DEFAULTRUNSPEED = 5.376;
 
+	unsigned static const long long DEAD_TOO_LONG = 1800000;
+
 	CreatureObject();
 
 	void initializeMembers();
@@ -333,6 +335,8 @@ public:
 	void notifyPostureChange(int newPosture);
 
 	void updateToDatabaseAllObjects(bool startTask);
+
+	bool isResuscitable();
 
 	void addBankCredits(int credits, bool notifyClient = true);
 
@@ -429,6 +433,8 @@ public:
 	void activateHAMRegeneration();
 
 	void activateStateRecovery();
+
+	void updateTimeOfDeath();
 
 	bool hasAttackDelay();
 
@@ -763,6 +769,8 @@ protected:
 
 	Time lastSuccessfulCombatAction;
 
+	Time timeOfDeath;
+
 public:
 	static const int HUMAN = 0;
 
@@ -789,6 +797,8 @@ public:
 	static const int FEMALE = 1;
 
 	static const float DEFAULTRUNSPEED = 5.376;
+
+	unsigned static const long long DEAD_TOO_LONG = 1800000;
 
 	CreatureObjectImplementation();
 
@@ -881,6 +891,8 @@ public:
 	void notifyPostureChange(int newPosture);
 
 	void updateToDatabaseAllObjects(bool startTask);
+
+	bool isResuscitable();
 
 	void addBankCredits(int credits, bool notifyClient = true);
 
@@ -977,6 +989,8 @@ public:
 	virtual void activateHAMRegeneration();
 
 	virtual void activateStateRecovery();
+
+	void updateTimeOfDeath();
 
 	bool hasAttackDelay();
 
@@ -1313,6 +1327,8 @@ public:
 
 	void updateToDatabaseAllObjects(bool startTask);
 
+	bool isResuscitable();
+
 	void addBankCredits(int credits, bool notifyClient);
 
 	void addCashCredits(int credits, bool notifyClient);
@@ -1404,6 +1420,8 @@ public:
 	void activateHAMRegeneration();
 
 	void activateStateRecovery();
+
+	void updateTimeOfDeath();
 
 	bool hasAttackDelay();
 

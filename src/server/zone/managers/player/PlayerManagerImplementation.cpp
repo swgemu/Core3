@@ -839,8 +839,10 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCre
 	stringId.setTT(attacker->getObjectID());
 	player->sendSystemMessage(stringId);
 
-	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
-	task->schedule(10 * 1000);
+	player->updateTimeOfDeath();
+
+	/*Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
+	task->schedule(10 * 1000);*/
 }
 
 void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* player) {
@@ -870,8 +872,9 @@ void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* playe
 		objectName = area->getObjectName();
 
 		//info("area found", true);
-	} else
+	} else {
 		//info("area not found, true");
+	}
 
 	name = objectName->getCustomString();
 

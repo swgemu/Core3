@@ -282,6 +282,9 @@ public:
 		if (!canPerformSkill(creature, creatureTarget, statePack))
 			return GENERALERROR;
 
+		if (!creatureTarget->isInRange(creature, range))
+			return TOOFAR;
+
 		if (!creatureTarget->clearState(state)) {
 			if (creature == creatureTarget)
 				creature->sendSystemMessage("healing_response", "healing_response_72"); //You have no state of that type to heal.

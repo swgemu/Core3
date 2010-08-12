@@ -70,6 +70,7 @@
 #include "server/zone/objects/tangible/pharmaceutical/RangedStimPack.h"
 #include "server/zone/objects/tangible/pharmaceutical/EnhancePack.h"
 #include "server/zone/objects/tangible/pharmaceutical/CurePack.h"
+#include "server/zone/objects/tangible/pharmaceutical/RevivePack.h"
 #include "server/zone/objects/tangible/pharmaceutical/StatePack.h"
 #include "server/zone/objects/tangible/pharmaceutical/DotPack.h"
 #include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
@@ -253,6 +254,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<DotPack>(SceneObject::DOTPACK);
 	objectFactory.registerObject<WoundPack>(SceneObject::WOUNDPACK);
 	objectFactory.registerObject<StatePack>(SceneObject::STATEPACK);
+	objectFactory.registerObject<RevivePack>(SceneObject::REVIVEPACK);
 
 	//clothing
 	objectFactory.registerObject<ClothingObject>(SceneObject::CLOTHING);

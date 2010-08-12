@@ -165,6 +165,9 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected Time lastSuccessfulCombatAction;
 	
+	@dereferenced
+	protected Time timeOfDeath;
+	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
 	public static final int TRANDOSHAN = 2;
@@ -180,6 +183,8 @@ class CreatureObject extends TangibleObject {
 	public static final int FEMALE = 1;
 	
 	public static final float DEFAULTRUNSPEED = 5.376;
+	
+	public static final unsigned long DEAD_TOO_LONG = 1800000; //30 minutes - How long can someone be dead and still be resuscitated in Miliseconds 
 
 	/**
 	 * CreatureObject constructor, used to initialized the object
@@ -483,6 +488,8 @@ class CreatureObject extends TangibleObject {
 	
 	public native void updateToDatabaseAllObjects(boolean startTask);
 
+	public native boolean isResuscitable();
+	
 	public void addBankCredits(int credits, boolean notifyClient = true) {
 		int newCredits = bankCredits + credits;
 		setBankCredits(newCredits);
@@ -754,6 +761,10 @@ class CreatureObject extends TangibleObject {
 	
 	public abstract native void activateHAMRegeneration();
 	public abstract native void activateStateRecovery();
+	
+	public void updateTimeOfDeath() {
+		timeOfDeath.updateToCurrentTime();
+	}
 	
 	public boolean hasAttackDelay() {
 		return !cooldownTimerMap.isPast("nextAttackDelay");

@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
+#include "server/zone/objects/creature/commands/UnconsentCommand.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
@@ -126,10 +127,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::INSERT_COLOR_CRYSTAL:
 		handleChangeColorCrystal(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
+		break;*/
 	case SuiWindowType::CONSENT:
 		handleConsentBox(boxID, player, cancel, atoi(value.toCharArray()));
-		break;*/
+		break;
 	case SuiWindowType::CLONE_REQUEST:
 		handleCloneRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;/*
@@ -1672,40 +1673,25 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 	}
 
 }
+*/
+void SuiManager::handleConsentBox(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
+	Locker locker(player);
 
-void SuiManager::handleConsentBox(uint32 boxID, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui != NULL && cancel != 1) {
-			SuiListBox* suiList = (SuiListBox*) sui;
-			String name = suiList->getMenuItemName(index);
-			player->unconsent(name);
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleDiagnose ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleDiagnose");
-		player->unlock();
+	if (!player->hasSuiBox(boxID)) {
+		return;
 	}
-}
 
+	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+
+	if (sui != NULL && cancel != 1 && sui->isListBox()) {
+		SuiListBox* suiList = (SuiListBox*) sui.get();
+		String name = suiList->getMenuItemName(index);
+		UnconsentCommand::unconscent(player, name);
+	}
+
+	player->removeSuiBox(boxID);
+}
+/*
 void SuiManager::handleDenyTrainingList(uint32 boxID, Player* player) {
         try {
                player->wlock();
