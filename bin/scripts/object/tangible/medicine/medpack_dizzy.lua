@@ -42,7 +42,10 @@
 
 
 object_tangible_medicine_medpack_dizzy = object_tangible_medicine_shared_medpack_dizzy:new {
-
+	gameObjectType = 8242,
+	templateType = STATEPACK,
+	medicineUse = 5,
+	state = DIZZY
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_medpack_dizzy, "object/tangible/medicine/medpack_dizzy.iff")

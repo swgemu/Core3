@@ -33,6 +33,7 @@
 #include "server/zone/templates/tangible/RangedStimPackTemplate.h"
 #include "server/zone/templates/tangible/EnhancePackTemplate.h"
 #include "server/zone/templates/tangible/CurePackTemplate.h"
+#include "server/zone/templates/tangible/StatePackTemplate.h"
 #include "server/zone/templates/tangible/DotPackTemplate.h"
 #include "server/zone/templates/tangible/WoundPackTemplate.h"
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
@@ -165,6 +166,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<CurePackTemplate>(SharedObjectTemplate::CUREPACK);
 	templateFactory.registerObject<DotPackTemplate>(SharedObjectTemplate::DOTPACK);
 	templateFactory.registerObject<WoundPackTemplate>(SharedObjectTemplate::WOUNDPACK);
+	templateFactory.registerObject<StatePackTemplate>(SharedObjectTemplate::STATEPACK);
 
 }
 
@@ -196,6 +198,10 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalLong("DISEASED", CreatureState::DISEASED);
 	luaTemplatesInstance->setGlobalLong("ONFIRE", CreatureState::ONFIRE);
 	luaTemplatesInstance->setGlobalLong("POISONED", CreatureState::POISONED);
+	luaTemplatesInstance->setGlobalLong("BLINDED", CreatureState::BLINDED);
+	luaTemplatesInstance->setGlobalLong("STUNNED", CreatureState::STUNNED);
+	luaTemplatesInstance->setGlobalLong("DIZZY", CreatureState::DIZZY);
+	luaTemplatesInstance->setGlobalLong("INTIMIDATED", CreatureState::INTIMIDATED);
 
 	luaTemplatesInstance->setGlobalShort("NEUTRAL", WearableObject::NEUTRAL);
 	luaTemplatesInstance->setGlobalShort("IMPERIAL", WearableObject::IMPERIAL);
@@ -288,6 +294,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CUREPACK", SharedObjectTemplate::CUREPACK);
 	luaTemplatesInstance->setGlobalInt("DOTPACK", SharedObjectTemplate::DOTPACK);
 	luaTemplatesInstance->setGlobalInt("WOUNDPACK", SharedObjectTemplate::WOUNDPACK);
+	luaTemplatesInstance->setGlobalInt("STATEPACK", SharedObjectTemplate::STATEPACK);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

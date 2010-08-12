@@ -374,7 +374,7 @@ public:
 
 	bool setState(unsigned long long state, bool notifyClient = true);
 
-	void clearState(unsigned long long state, bool notifyClient = true);
+	bool clearState(unsigned long long state, bool notifyClient = true);
 
 	void setControlDevice(ControlDevice* device);
 
@@ -393,6 +393,8 @@ public:
 	void selectConversationOption(int option, SceneObject* obj);
 
 	bool canTreatInjuries();
+
+	bool canTreatStates();
 
 	bool canTreatWounds();
 
@@ -920,7 +922,7 @@ public:
 
 	bool setState(unsigned long long state, bool notifyClient = true);
 
-	void clearState(unsigned long long state, bool notifyClient = true);
+	bool clearState(unsigned long long state, bool notifyClient = true);
 
 	void setControlDevice(ControlDevice* device);
 
@@ -939,6 +941,8 @@ public:
 	virtual void selectConversationOption(int option, SceneObject* obj);
 
 	bool canTreatInjuries();
+
+	bool canTreatStates();
 
 	bool canTreatWounds();
 
@@ -1345,7 +1349,7 @@ public:
 
 	bool setState(unsigned long long state, bool notifyClient);
 
-	void clearState(unsigned long long state, bool notifyClient);
+	bool clearState(unsigned long long state, bool notifyClient);
 
 	void setControlDevice(ControlDevice* device);
 
@@ -1364,6 +1368,8 @@ public:
 	void selectConversationOption(int option, SceneObject* obj);
 
 	bool canTreatInjuries();
+
+	bool canTreatStates();
 
 	bool canTreatWounds();
 

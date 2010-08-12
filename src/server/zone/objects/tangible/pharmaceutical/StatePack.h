@@ -101,6 +101,26 @@ class ZoneServer;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
+#include "server/zone/templates/tangible/StatePackTemplate.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/objects/creature/CreatureState.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.h"
@@ -115,7 +135,17 @@ class StatePack : public PharmaceuticalObject {
 public:
 	StatePack();
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
 	unsigned long long getState();
+
+	bool isStatePack();
 
 protected:
 	StatePack(DummyConstructorParameter* param);
@@ -148,7 +178,17 @@ public:
 
 	StatePackImplementation(DummyConstructorParameter* param);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
 	unsigned long long getState();
+
+	bool isStatePack();
 
 	StatePack* _this;
 
@@ -189,7 +229,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	unsigned long long getState();
+
+	bool isStatePack();
 
 };
 

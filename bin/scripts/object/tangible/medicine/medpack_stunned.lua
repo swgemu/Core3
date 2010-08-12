@@ -42,7 +42,10 @@
 
 
 object_tangible_medicine_medpack_stunned = object_tangible_medicine_shared_medpack_stunned:new {
-
+	gameObjectType = 8242,
+	templateType = STATEPACK,
+	medicineUse = 5,
+	state = STUNNED
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_medpack_stunned, "object/tangible/medicine/medpack_stunned.iff")

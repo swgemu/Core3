@@ -100,4 +100,8 @@ class PharmaceuticalObject extends TangibleObject {
 	public abstract boolean isCurePack() {
 		return false;
 	}
+	
+	public abstract boolean isStatePack() {
+		return false;
+	}
 }
