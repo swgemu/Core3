@@ -53,6 +53,10 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
+include server.zone.templates.tangible.StatePackTemplate;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.objects.creature.CreatureState;
 
 class StatePack extends PharmaceuticalObject {
 	protected unsigned long state;
@@ -63,8 +67,90 @@ class StatePack extends PharmaceuticalObject {
 		state = 0;
 	}
 	
+	@local
+	public void updateCraftingValues(ManufactureSchematic schematic) {
+		CraftingValues craftingValues = schematic.getCraftingValues();
+		
+		craftingValues.setHidden("power");
+		craftingValues.setHidden("range");
+		
+		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+		super.useCount = craftingValues.getCurrentValue("charges");
+	}
+	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+		
+		if (!templateData.isStatePackTemplate())
+			return;
+		
+		StatePackTemplate stimPackTemplate = (StatePackTemplate) templateData;
+		
+		state = stimPackTemplate.getState();
+		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	}
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
+		if (selectedID != 20)
+			return 1;
+
+		if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
+			player.sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
+			
+			return 0;
+		} else {
+			string command = "/healstate ";
+			command = command + CreatureState.getName(state);
+			command = command + "|";
+			command = command + String.valueOf(super.getObjectID());
+			
+			player.sendExecuteConsoleCommand(command);
+			
+			return 0;
+		}
+
+	}
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public void fillAttributeList(AttributeListMessage msg, PlayerCreature object) {
+		super.fillAttributeList(msg, object);
+		
+		string attributeName = CreatureState.getName(state);
+		string enhace = "@obj_attr_n:state_type_" + attributeName;
+		
+		msg.insertAttribute("examine_heal_state", enhace);
+		
+		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+	}
+	
 	public unsigned long getState() {
 		return state;
+	}
+	
+	public boolean isStatePack() {
+		return true;
 	}
 
 }

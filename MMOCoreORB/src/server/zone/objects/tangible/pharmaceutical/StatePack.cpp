@@ -18,6 +18,8 @@
 
 #include "server/zone/ZoneServer.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 /*
  *	StatePackStub
  */
@@ -34,16 +36,66 @@ StatePack::~StatePack() {
 }
 
 
-unsigned long long StatePack::getState() {
+void StatePack::updateCraftingValues(ManufactureSchematic* schematic) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((StatePackImplementation*) _impl)->updateCraftingValues(schematic);
+}
+
+void StatePack::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((StatePackImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+int StatePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((StatePackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void StatePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((StatePackImplementation*) _impl)->fillAttributeList(msg, object);
+}
+
+unsigned long long StatePack::getState() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
 		return ((StatePackImplementation*) _impl)->getState();
+}
+
+bool StatePack::isStatePack() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((StatePackImplementation*) _impl)->isStatePack();
 }
 
 /*
@@ -118,15 +170,88 @@ void StatePackImplementation::_serializationHelperMethod() {
 
 StatePackImplementation::StatePackImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(61):  		setLoggingName("StatePack");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(65):  		setLoggingName("StatePack");
 	setLoggingName("StatePack");
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(63):  		state = 0;
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(67):  		state = 0;
 	state = 0;
 }
 
+void StatePackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(72):  		CraftingValues craftingValues = schematic.getCraftingValues();
+	CraftingValues* craftingValues = schematic->getCraftingValues();
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(74):  		craftingValues.setHidden("power");
+	craftingValues->setHidden("power");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(75):  		craftingValues.setHidden("range");
+	craftingValues->setHidden("range");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(77):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(78):  		super.useCount = craftingValues.getCurrentValue("charges");
+	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+}
+
+void StatePackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(89):  		super.loadTemplateData(templateData);
+	PharmaceuticalObjectImplementation::loadTemplateData(templateData);
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(91):  		StatePackTemplate 
+	if (!templateData->isStatePackTemplate())	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(92):  			return;
+	return;
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(94):  stimPackTemplate = (StatePackTemplate) templateData;
+	StatePackTemplate* stimPackTemplate = (StatePackTemplate*) templateData;
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(96):  		state = stimPackTemplate.getState();
+	state = stimPackTemplate->getState();
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(97):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	PharmaceuticalObjectImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
+}
+
+int StatePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(109):  		if 
+	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(110):  			return 1;
+	return 1;
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(112):  
+	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(113):  			player.sendSystemMessage("error_message", "insufficient_skill");
+	player->sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(115):  			return 0;
+	return 0;
+}
+
+	else {
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(117):  			string command = "/healstate ";
+	String command = "/healstate ";
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(118):  			command = command + CreatureState.getName(state);
+	command = command + CreatureState::getName(state);
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(119):  			command = command + "|";
+	command = command + "|";
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(120):  			command = command + String.valueOf(super.getObjectID());
+	command = command + String::valueOf(PharmaceuticalObjectImplementation::getObjectID());
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(122):  			player.sendExecuteConsoleCommand(command);
+	player->sendExecuteConsoleCommand(command);
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(124):  			return 0;
+	return 0;
+}
+}
+
+void StatePackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(138):  		super.fillAttributeList(msg, object);
+	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(140):  		string attributeName = CreatureState.getName(state);
+	String attributeName = CreatureState::getName(state);
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(141):  		string enhace = "@obj_attr_n:state_type_" + attributeName;
+	String enhace = "@obj_attr_n:state_type_" + attributeName;
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(143):  		msg.insertAttribute("examine_heal_state", enhace);
+	msg->insertAttribute("examine_heal_state", enhace);
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(145):  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::medicineUseRequired);
+}
+
 unsigned long long StatePackImplementation::getState() {
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(67):  		return state;
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(149):  		return state;
 	return state;
+}
+
+bool StatePackImplementation::isStatePack() {
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(153):  		return true;
+	return true;
 }
 
 /*
@@ -141,7 +266,13 @@ Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 7:
 		resp->insertLong(getState());
+		break;
+	case 8:
+		resp->insertBoolean(isStatePack());
 		break;
 	default:
 		return NULL;
@@ -150,8 +281,16 @@ Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
+int StatePackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((StatePackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
 unsigned long long StatePackAdapter::getState() {
 	return ((StatePackImplementation*) impl)->getState();
+}
+
+bool StatePackAdapter::isStatePack() {
+	return ((StatePackImplementation*) impl)->isStatePack();
 }
 
 /*

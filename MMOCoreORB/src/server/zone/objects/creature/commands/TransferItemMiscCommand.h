@@ -90,6 +90,16 @@ public:
 			return GENERALERROR;
 		}
 
+		SceneObject* objectsParent = objectToTransfer->getParent();
+
+		if (objectsParent != NULL && objectsParent->isCellObject()) {
+			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
+
+			if (!building->isOnAdminList(creature)) {
+				return false;
+			}
+		}
+
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {

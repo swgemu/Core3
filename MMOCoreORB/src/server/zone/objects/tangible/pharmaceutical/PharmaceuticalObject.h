@@ -135,6 +135,8 @@ public:
 
 	bool isCurePack();
 
+	bool isStatePack();
+
 protected:
 	PharmaceuticalObject(DummyConstructorParameter* param);
 
@@ -185,6 +187,8 @@ public:
 	virtual bool isWoundPack();
 
 	virtual bool isCurePack();
+
+	virtual bool isStatePack();
 
 	PharmaceuticalObject* _this;
 
@@ -244,6 +248,8 @@ public:
 	bool isWoundPack();
 
 	bool isCurePack();
+
+	bool isStatePack();
 
 };
 

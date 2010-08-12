@@ -42,7 +42,10 @@
 
 
 object_tangible_medicine_crafted_medpack_blinded_a = object_tangible_medicine_crafted_shared_medpack_blinded_a:new {
-
+	gameObjectType = 8242,
+	templateType = STATEPACK,
+	medicineUse = 5,
+	state = BLINDED
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_blinded_a, "object/tangible/medicine/crafted/medpack_blinded_a.iff")

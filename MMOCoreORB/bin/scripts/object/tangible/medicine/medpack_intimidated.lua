@@ -42,7 +42,10 @@
 
 
 object_tangible_medicine_medpack_intimidated = object_tangible_medicine_shared_medpack_intimidated:new {
-
+	gameObjectType = 8242,
+	templateType = STATEPACK,
+	medicineUse = 5,
+	state = INTIMIDATED
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_medpack_intimidated, "object/tangible/medicine/medpack_intimidated.iff")

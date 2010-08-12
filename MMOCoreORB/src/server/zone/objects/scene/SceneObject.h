@@ -408,6 +408,8 @@ public:
 
 	static const int WOUNDPACK = 0x2031;
 
+	static const int STATEPACK = 0x2032;
+
 	static const int TERMINAL = 0x4000;
 
 	static const int BANK = 0x4001;
@@ -1258,6 +1260,8 @@ public:
 	static const int DOTPACK = 0x2030;
 
 	static const int WOUNDPACK = 0x2031;
+
+	static const int STATEPACK = 0x2032;
 
 	static const int TERMINAL = 0x4000;
 
