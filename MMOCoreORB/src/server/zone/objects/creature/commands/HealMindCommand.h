@@ -48,11 +48,57 @@ which carries forward this exception.
 #include "../../scene/SceneObject.h"
 
 class HealMindCommand : public QueueCommand {
+	float mindCost;
+	float mindWoundCost;
+	float range;
 public:
 
 	HealMindCommand(const String& name, ZoneProcessServerImplementation* server)
 		: QueueCommand(name, server) {
+		mindCost = 250;
+		mindWoundCost = 250;
+		defaultTime = 6;
+		range = 5;
+	}
 
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+		creatureTarget->playEffect("clienteffect/healing_healenhance.cef", "");
+
+		if (creature == creatureTarget)
+			creature->doAnimation("heal_self");
+		else
+			creature->doAnimation("heal_other");
+	}
+
+	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int mindDamage) {
+		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
+			return;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+		PlayerCreature* playerTarget = (PlayerCreature*) creatureTarget;
+
+		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
+
+		if (mindDamage > 0) {
+			msgBody << mindDamage << " mind";
+		} else {
+			return; //No damage to heal.
+		}
+
+		msgTail << " damage.";
+
+		if (creatureTarget) {
+			msgPlayer << "You heal " << playerTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
+			msgTarget << player->getFirstName() << " heals you for " << msgBody.toString() << msgTail.toString();
+
+			player->sendSystemMessage(msgPlayer.toString());
+			playerTarget->sendSystemMessage(msgTarget.toString());
+		}
+	}
+
+	int calculateWound(int wound, int poolWounds, int poolMax) {
+		int maxWound = poolMax - poolWounds - 1;
+		return (MAX(0,MIN(maxWound,wound)));
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -62,6 +108,113 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object != NULL && !object->isCreatureObject()) {
+			creature->sendSystemMessage("healing", "heal_mind_invalid_target");
+			return INVALIDTARGET;
+		} else if (object == NULL)
+			object = creature;
+
+		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+
+		Locker clocker(creatureTarget, creature);
+
+		/*if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
+			creatureTarget = creature;*/
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		if (creatureTarget == creature) {
+			creature->sendSystemMessage("healing", "no_heal_mind_self");
+			return GENERALERROR;
+		}
+
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot Heal Mind while prone.");
+			return GENERALERROR;
+		}
+
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You cannot Heal Mind while Meditating.");
+			return GENERALERROR;
+		}
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+			return GENERALERROR;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return GENERALERROR;
+		}
+
+		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted()) {
+			creature->sendSystemMessage("You cannot Heal the Mind of your Target in their current state.");
+			return GENERALERROR;
+		}
+
+		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
+			Player * pt = (Player *) creatureTarget;
+			Player * p = (Player *) creature;
+
+			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
+				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				return GENERALERROR;
+			}
+
+			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
+				creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+				return GENERALERROR;
+			}
+		}*/
+
+		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
+			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			return GENERALERROR;
+		}
+
+		if (creatureTarget->getHAM(CreatureAttribute::MIND) == 0) {
+			if (creatureTarget) {
+				ParameterizedStringId stringId("healing", "no_mind_to_heal_target");
+				stringId.setTT(creatureTarget->getObjectID());
+				creature->sendSystemMessage(stringId); //%NT has no mind to heal.
+			}
+
+			return GENERALERROR;
+		}
+
+		if (!creatureTarget->isInRange(creature, range))
+			return TOOFAR;
+
+		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
+		int healPower = (int) round((100.0f + modSkill) / 100.0f * creatureTarget->getMaxHAM(CreatureAttribute::MIND) / 2);
+
+		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, healPower);
+
+		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
+			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+			playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)creatureTarget);
+		}
+
+		sendHealMessage(creature, creatureTarget, healedMind);
+		int mindWound = (int) round(500.0f * healedMind / healPower) ;
+
+		creature->addWounds(CreatureAttribute::MIND, mindWound);
+		creature->addWounds(CreatureAttribute::FOCUS, mindWound);
+		creature->addWounds(CreatureAttribute::WILLPOWER, mindWound);
+		/*creature->changeMindWoundsBar(calculateWound(mindWound,creature->getMindWounds(),creature->getBaseMind()));
+		creature->changeFocusWoundsBar(calculateWound(mindWound,creature->getFocusWounds(),creature->getBaseFocus()));
+		creature->changeWillpowerWoundsBar(calculateWound(mindWound,creature->getWillpowerWounds(),creature->getBaseWillpower()));*/
+
+		creature->addShockWounds(25);
+
+		doAnimations(creature, creatureTarget);
 
 		return SUCCESS;
 	}

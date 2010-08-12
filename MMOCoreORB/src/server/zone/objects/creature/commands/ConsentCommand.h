@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef CONSENTCOMMAND_H_
 #define CONSENTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class ConsentCommand : public QueueCommand {
 public:
@@ -55,13 +56,56 @@ public:
 
 	}
 
+	static void consent(PlayerCreature* player, const String& name) {
+		player->addToConsentList(name);
+
+		ParameterizedStringId stringId("base_player", "prose_consent");
+		stringId.setTO(name);
+		player->sendSystemMessage(stringId);
+	}
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
+		//System::out << "entering ConsentCommand" << endl;
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		//System::out << "past initiali checks ConsentCommand" << endl;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		if (!arguments.isEmpty()) {
+			StringTokenizer tokenizer(arguments.toString());
+			tokenizer.setDelimeter(",");
+
+			while (tokenizer.hasMoreTokens()) {
+				String name = "";
+				tokenizer.getStringToken(name);
+				name = name.toLowerCase();
+
+				if (server->getZoneServer()->getPlayerManager()->existsName(name))
+					consent(player, name);
+			}
+		} else {
+			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+			if (object == NULL || !object->isPlayerCreature() || object == creature) {
+				//System::out << "invalid target" << endl;
+				return INVALIDTARGET;
+			}
+
+			PlayerCreature* playerTarget = (PlayerCreature*) object.get();
+
+			ParameterizedStringId stringId2("base_player", "prose_got_consent");
+			stringId2.setTO(player->getObjectID());
+			playerTarget->sendSystemMessage(stringId2);
+		}
 
 		return SUCCESS;
 	}

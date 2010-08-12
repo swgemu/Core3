@@ -42,7 +42,7 @@
 
 
 object_tangible_medicine_medpack_revive = object_tangible_medicine_shared_medpack_revive:new {
-
+	gameObjectType = 8243
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_medpack_revive, "object/tangible/medicine/medpack_revive.iff")

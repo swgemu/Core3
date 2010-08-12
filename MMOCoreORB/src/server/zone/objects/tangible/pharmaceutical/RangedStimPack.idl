@@ -89,6 +89,29 @@ class RangedStimPack extends StimPack {
 	}
 	
 	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public void fillAttributeList(AttributeListMessage msg, PlayerCreature object) {
+		super.fillAttributeList(msg, object);
+		
+		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
+		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
+		msg.insertAttribute("examine_heal_range", Math.getPrecision(range, 0));
+		
+		if (isArea()) {
+			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));
+			msg.insertAttribute("combat_healing_ability", super.medicineUseRequired);
+		} else {
+			msg.insertAttribute("combat_healing_ability", super.medicineUseRequired);
+		}
+	}
+	
+	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
 	 * @post { TangibleObject members are initialized }

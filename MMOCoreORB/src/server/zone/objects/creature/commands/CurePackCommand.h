@@ -379,6 +379,9 @@ public:
 			}
 		}
 
+		if (!creature->isInRange(targetCreature, range))
+			return TOOFAR;
+
 		if (!canPerformSkill(creature, targetCreature, curePack))
 			return GENERALERROR;
 

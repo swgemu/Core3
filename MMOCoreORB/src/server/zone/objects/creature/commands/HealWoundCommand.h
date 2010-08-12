@@ -303,6 +303,9 @@ public:
 		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
 
+		if (!creature->isInRange(creatureTarget, range))
+			return TOOFAR;
+
 		uint8 attribute = CreatureAttribute::UNKNOWN;
 		uint64 objectId = 0;
 
