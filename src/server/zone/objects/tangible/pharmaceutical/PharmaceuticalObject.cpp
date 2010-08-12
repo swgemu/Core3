@@ -167,6 +167,18 @@ bool PharmaceuticalObject::isStatePack() {
 		return ((PharmaceuticalObjectImplementation*) _impl)->isStatePack();
 }
 
+bool PharmaceuticalObject::isRevivePack() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalObjectImplementation*) _impl)->isRevivePack();
+}
+
 /*
  *	PharmaceuticalObjectImplementation
  */
@@ -241,60 +253,67 @@ PharmaceuticalObjectImplementation::PharmaceuticalObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(61):  		setLoggingName("PharmaceuticalObject");
 	setLoggingName("PharmaceuticalObject");
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(63):  		medicineUseRequired = 0;
+	medicineUseRequired = 0;
 }
 
 int PharmaceuticalObjectImplementation::getMedicineUseRequired() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(65):  		return medicineUseRequired;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(67):  		return medicineUseRequired;
 	return medicineUseRequired;
 }
 
 float PharmaceuticalObjectImplementation::getRange(CreatureObject* creature) {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(69):  		return 5;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(71):  		return 5;
 	return 5;
 }
 
 bool PharmaceuticalObjectImplementation::isArea() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(73):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(75):  		return false;
 	return false;
 }
 
 float PharmaceuticalObjectImplementation::getArea() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(77):  		return 0;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(79):  		return 0;
 	return 0;
 }
 
 bool PharmaceuticalObjectImplementation::isPharmaceuticalObject() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(81):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(83):  		return true;
 	return true;
 }
 
 bool PharmaceuticalObjectImplementation::isStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(85):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(87):  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isRangedStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(89):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(91):  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isEnhancePack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(93):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(95):  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isWoundPack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(97):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(99):  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isCurePack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(101):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(103):  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isStatePack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(105):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(107):  		return false;
+	return false;
+}
+
+bool PharmaceuticalObjectImplementation::isRevivePack() {
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(111):  		return false;
 	return false;
 }
 
@@ -341,6 +360,9 @@ Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 		break;
 	case 16:
 		resp->insertBoolean(isStatePack());
+		break;
+	case 17:
+		resp->insertBoolean(isRevivePack());
 		break;
 	default:
 		return NULL;
@@ -391,6 +413,10 @@ bool PharmaceuticalObjectAdapter::isCurePack() {
 
 bool PharmaceuticalObjectAdapter::isStatePack() {
 	return ((PharmaceuticalObjectImplementation*) impl)->isStatePack();
+}
+
+bool PharmaceuticalObjectAdapter::isRevivePack() {
+	return ((PharmaceuticalObjectImplementation*) impl)->isRevivePack();
 }
 
 /*

@@ -537,6 +537,9 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		return 0;
 	}
 
+	if (this->isIncapacitated())
+		return 0;
+
 	int currentValue = hamList.get(damageType);
 
 	int newValue = currentValue - damage;
@@ -553,7 +556,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 }
 
 int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient) {
-	if (damageType < 0 || damageType >= hamList.size()) {
+	if (damageType < 0 || damageType >= hamList.size() || damage == 0) {
 		error("incorrect damage type in CreatureObjectImplementation::inflictDamage");
 		return 0;
 	}
@@ -569,7 +572,14 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 	if (newValue > maxValue)
 		returnValue = maxValue - currentValue;
 
-	setHAM(damageType, MIN(newValue, maxValue) , notifyClient);
+	newValue = MIN(newValue, maxValue);
+
+	if (currentValue <= 0 && newValue <= 0 && isIncapacitated()) {
+		newValue = 1;
+		setPosture(CreaturePosture::UPRIGHT);
+	}
+
+	setHAM(damageType, newValue, notifyClient);
 
 	return returnValue;
 }
@@ -1485,4 +1495,8 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 		changeHAMBars(healthTick, actionTick, mindTick, true);
 	else if(returningHome)
 		changeHAMBars(healthTick * 20, actionTick * 20, mindTick * 20, true);*/
+}
+
+bool CreatureObjectImplementation::isResuscitable() {
+	return (isDead() && (timeOfDeath.miliDifference()) < DEAD_TOO_LONG);
 }

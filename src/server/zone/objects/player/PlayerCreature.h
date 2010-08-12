@@ -400,6 +400,16 @@ public:
 
 	void clearLastNpcConvOptions();
 
+	void addToConsentList(const String& name);
+
+	bool hasInConsentList(const String& name);
+
+	void removeFromConsentList(const String& name);
+
+	String getConsentName(int i);
+
+	int getConsentListSize();
+
 	void addToDuelList(PlayerCreature* targetPlayer);
 
 	void removeFromDuelList(PlayerCreature* targetPlayer);
@@ -498,6 +508,8 @@ public:
 
 	bool hasSuiBoxWindowType(unsigned int windowType);
 
+	void closeSuiWindowType(unsigned int windowType);
+
 	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
 
 	void addSuiBox(SuiBox* sui);
@@ -543,6 +555,7 @@ protected:
 
 	virtual ~PlayerCreature();
 
+	String _return_getConsentName;
 	String _return_getFirstName;
 	String _return_getLastName;
 	String _return_getLastNpcConvMessStr;
@@ -635,6 +648,8 @@ protected:
 	int centeredBonus;
 
 	TradeContainer tradeContainer;
+
+	SortedVector<String> consentList;
 
 public:
 	static const int ONLINE = 1;
@@ -745,6 +760,16 @@ public:
 
 	void clearLastNpcConvOptions();
 
+	void addToConsentList(const String& name);
+
+	bool hasInConsentList(const String& name);
+
+	void removeFromConsentList(const String& name);
+
+	String getConsentName(int i);
+
+	int getConsentListSize();
+
 	void addToDuelList(PlayerCreature* targetPlayer);
 
 	void removeFromDuelList(PlayerCreature* targetPlayer);
@@ -842,6 +867,8 @@ public:
 	void removeSuiBoxType(unsigned int windowType);
 
 	bool hasSuiBoxWindowType(unsigned int windowType);
+
+	void closeSuiWindowType(unsigned int windowType);
 
 	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
 
@@ -1004,6 +1031,16 @@ public:
 
 	void clearLastNpcConvOptions();
 
+	void addToConsentList(const String& name);
+
+	bool hasInConsentList(const String& name);
+
+	void removeFromConsentList(const String& name);
+
+	String getConsentName(int i);
+
+	int getConsentListSize();
+
 	void addToDuelList(PlayerCreature* targetPlayer);
 
 	void removeFromDuelList(PlayerCreature* targetPlayer);
@@ -1100,6 +1137,8 @@ public:
 
 	bool hasSuiBoxWindowType(unsigned int windowType);
 
+	void closeSuiWindowType(unsigned int windowType);
+
 	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
 
 	void addSuiBox(SuiBox* sui);
@@ -1140,6 +1179,9 @@ protected:
 	String _param0_setLastNpcConvStr__String_;
 	String _param0_setLastNpcConvMessStr__String_;
 	String _param0_addLastNpcConvOptions__String_;
+	String _param0_addToConsentList__String_;
+	String _param0_hasInConsentList__String_;
+	String _param0_removeFromConsentList__String_;
 	UnicodeString _param0_setBiography__UnicodeString_;
 };
 

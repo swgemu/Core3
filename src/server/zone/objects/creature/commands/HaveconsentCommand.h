@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef HAVECONSENTCOMMAND_H_
 #define HAVECONSENTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 class HaveconsentCommand : public QueueCommand {
 public:
@@ -62,6 +63,34 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		player->closeSuiWindowType(SuiWindowType::CLONE_REQUEST);
+
+		if (player->getConsentListSize() <= 0) {
+			player->sendSystemMessage("error_message", "consent_to_empty"); //You have not granted consent to anyone.
+			return GENERALERROR;
+		}
+
+		Reference<SuiListBox*> consentBox = new SuiListBox(player, SuiWindowType::CONSENT);
+
+		consentBox->setPromptTitle("@ui:consent_title");
+		consentBox->setPromptText("All players whom you have given your consent to are listed below.\n\nHighlight a player's name and click OK to revoke consent.");
+		consentBox->setCancelButton(true, "");
+
+		for (int i = 0; i < player->getConsentListSize(); ++i) {
+			String entryName = player->getConsentName(i);
+
+			if (!entryName.isEmpty())
+				consentBox->addMenuItem(entryName);
+		}
+
+		player->addSuiBox(consentBox);
+		player->sendMessage(consentBox->generateMessage());
 
 		return SUCCESS;
 	}

@@ -149,6 +149,8 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
@@ -203,6 +205,8 @@ public:
 	RangedStimPackImplementation(DummyConstructorParameter* param);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 

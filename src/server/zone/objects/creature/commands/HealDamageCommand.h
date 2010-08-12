@@ -420,6 +420,17 @@ public:
 		if (!canPerformSkill(creature, targetCreature, stimPack))
 			return GENERALERROR;
 
+		float rangeToCheck = 5;
+
+		if (stimPack->isRangedStimPack())
+			rangeToCheck = ((RangedStimPack*)stimPack.get())->getRange();
+		/*} else {
+
+		}*/
+
+		if (!creature->isInRange(targetCreature, rangeToCheck))
+			return TOOFAR;
+
 		uint32 stimPower = stimPack->calculatePower(creature, targetCreature);
 
 		uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);

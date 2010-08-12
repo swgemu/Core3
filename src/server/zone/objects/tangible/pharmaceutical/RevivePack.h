@@ -101,6 +101,22 @@ class ZoneServer;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.h"
@@ -115,6 +131,12 @@ class RevivePack : public PharmaceuticalObject {
 public:
 	RevivePack();
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	float getHealthWoundHealed();
 
 	float getHealthHealed();
@@ -126,6 +148,8 @@ public:
 	float getMindWoundHealed();
 
 	float getMindHealed();
+
+	bool isRevivePack();
 
 protected:
 	RevivePack(DummyConstructorParameter* param);
@@ -168,6 +192,12 @@ public:
 
 	RevivePackImplementation(DummyConstructorParameter* param);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	float getHealthWoundHealed();
 
 	float getHealthHealed();
@@ -179,6 +209,8 @@ public:
 	float getMindWoundHealed();
 
 	float getMindHealed();
+
+	bool isRevivePack();
 
 	RevivePack* _this;
 
@@ -219,6 +251,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	float getHealthWoundHealed();
 
 	float getHealthHealed();
@@ -230,6 +264,8 @@ public:
 	float getMindWoundHealed();
 
 	float getMindHealed();
+
+	bool isRevivePack();
 
 };
 

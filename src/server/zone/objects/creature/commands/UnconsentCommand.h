@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef UNCONSENTCOMMAND_H_
 #define UNCONSENTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "QueueCommand.h"
 
 class UnconsentCommand : public QueueCommand {
 public:
@@ -55,6 +57,14 @@ public:
 
 	}
 
+	static void unconscent(PlayerCreature* player, const String& name) {
+		player->removeFromConsentList(name);
+
+		ParameterizedStringId stringId("base_player", "prose_unconsent");
+		stringId.setTO(name);
+		player->sendSystemMessage(stringId);
+	}
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -62,6 +72,38 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		if (!arguments.isEmpty()) {
+			StringTokenizer tokenizer(arguments.toString());
+			tokenizer.setDelimeter(",");
+
+			while (tokenizer.hasMoreTokens()) {
+				String name = "";
+				tokenizer.getStringToken(name);
+				name = name.toLowerCase();
+
+				unconscent(player, name);
+			}
+		} else {
+
+			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+			if (object == NULL || !object->isPlayerCreature() || object == creature)
+				return INVALIDTARGET;
+
+			PlayerCreature* playerTarget = (PlayerCreature*) object.get();
+
+			unconscent(player, playerTarget->getFirstName().toLowerCase());
+
+			ParameterizedStringId stringId2("base_player", "prose_lost_consent");
+			stringId2.setTO(creature->getObjectID());
+			playerTarget->sendSystemMessage(stringId2);
+		}
 
 		return SUCCESS;
 	}

@@ -194,6 +194,8 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
 	destructedObject->setPosture(CreaturePosture::DEAD, true);
 
+	destructedObject->updateTimeOfDeath();
+
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(destructedObject);
 	despawn->schedule(10000);
 

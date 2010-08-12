@@ -59,6 +59,8 @@ class PharmaceuticalObject extends TangibleObject {
 	
 	public PharmaceuticalObject() {
 		setLoggingName("PharmaceuticalObject");
+		
+		medicineUseRequired = 0;
 	}
 	
 	public int getMedicineUseRequired() {
@@ -102,6 +104,10 @@ class PharmaceuticalObject extends TangibleObject {
 	}
 	
 	public abstract boolean isStatePack() {
+		return false;
+	}
+	
+	public abstract boolean isRevivePack() {
 		return false;
 	}
 }
