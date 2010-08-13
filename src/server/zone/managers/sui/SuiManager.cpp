@@ -247,10 +247,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::STATE_TERMINAL_REQUEST:
 		handleStateTerminalRequest(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
+		break;*/
 	case SuiWindowType::DIAGNOSE:
 		handleDiagnose(boxID, player);
-		break;
+		break;/*
 	case SuiWindowType::FREE_RESOURCE:
 		handleFreeResource(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
@@ -1424,34 +1424,19 @@ void SuiManager::handleCloneRequest(uint32 boxID, PlayerCreature* player, uint32
 	player->removeSuiBox(boxID);
 
 }
-/*
-void SuiManager::handleDiagnose(uint32 boxID, Player* player) {
-	try {
-		player->wlock();
 
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
+void SuiManager::handleDiagnose(uint32 boxID, PlayerCreature* player) {
+	Locker locker(player);
 
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleDiagnose ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleDiagnose");
-		player->unlock();
+	if (!player->hasSuiBox(boxID)) {
+		return;
 	}
-}
 
+	//Reference<SuiBox*> sui = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+}
+/*
 void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel, int index) {
 	try{
 		player->wlock();
@@ -1685,8 +1670,11 @@ void SuiManager::handleConsentBox(uint32 boxID, PlayerCreature* player, uint32 c
 
 	if (sui != NULL && cancel != 1 && sui->isListBox()) {
 		SuiListBox* suiList = (SuiListBox*) sui.get();
-		String name = suiList->getMenuItemName(index);
-		UnconsentCommand::unconscent(player, name);
+
+		if (index != -1) {
+			String name = suiList->getMenuItemName(index);
+			UnconsentCommand::unconscent(player, name);
+		}
 	}
 
 	player->removeSuiBox(boxID);

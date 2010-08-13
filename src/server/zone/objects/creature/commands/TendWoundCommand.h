@@ -45,26 +45,28 @@ which carries forward this exception.
 #ifndef TENDWOUNDCOMMAND_H_
 #define TENDWOUNDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "TendCommand.h"
 
-class TendWoundCommand : public QueueCommand {
+class TendWoundCommand : public TendCommand {
 public:
 
 	TendWoundCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: TendCommand(name, server) {
+		effectName = "clienteffect/healing_healwound.cef";
 
+		mindCost = 100;
+		mindWoundCost = 10;
+
+		woundPool = 1;
+		woundsHealed = 25;
+
+		tendWound = true;
+
+		defaultTime = 5.0;
+		range = 6.0;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		return SUCCESS;
-	}
 
 };
 

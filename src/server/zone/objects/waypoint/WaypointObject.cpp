@@ -131,6 +131,18 @@ void WaypointObject::setUnknown(unsigned long long id) {
 		((WaypointObjectImplementation*) _impl)->setUnknown(id);
 }
 
+void WaypointObject::toggleStatus() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		method.executeWithVoidReturn();
+	} else
+		((WaypointObjectImplementation*) _impl)->toggleStatus();
+}
+
 /*
  *	WaypointObjectImplementation
  */
@@ -247,6 +259,11 @@ void WaypointObjectImplementation::setUnknown(unsigned long long id) {
 	unknown = id;
 }
 
+void WaypointObjectImplementation::toggleStatus() {
+	// server/zone/objects/waypoint/WaypointObject.idl(67):  		active = !active;
+	active = !active;
+}
+
 /*
  *	WaypointObjectAdapter
  */
@@ -278,6 +295,9 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 12:
 		setUnknown(inv->getUnsignedLongParameter());
+		break;
+	case 13:
+		toggleStatus();
 		break;
 	default:
 		return NULL;
@@ -312,6 +332,10 @@ void WaypointObjectAdapter::setActive(byte newStatus) {
 
 void WaypointObjectAdapter::setUnknown(unsigned long long id) {
 	((WaypointObjectImplementation*) impl)->setUnknown(id);
+}
+
+void WaypointObjectAdapter::toggleStatus() {
+	((WaypointObjectImplementation*) impl)->toggleStatus();
 }
 
 /*

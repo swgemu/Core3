@@ -63,6 +63,33 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* playerCreature = (PlayerCreature*) creature;
+		PlayerObject* ghost = playerCreature->getPlayerObject();
+
+		if (ghost == NULL)
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isWaypointObject())
+			return INVALIDTARGET;
+
+		if (arguments.isEmpty() || arguments.length() > 20)
+			return GENERALERROR;
+
+		WaypointObject* waypoint = (WaypointObject*) object.get();
+
+		if (!ghost->hasWaypoint(waypoint->getObjectID()))
+			return GENERALERROR;
+
+		waypoint->setCustomName(arguments);
+		waypoint->toggleStatus();
+
+		ghost->setWaypoint(waypoint, true);
+
 		return SUCCESS;
 	}
 

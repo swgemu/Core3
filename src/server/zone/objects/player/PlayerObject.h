@@ -182,6 +182,8 @@ public:
 
 	void addWaypoint(WaypointObject* waypoint, bool notifyClient = true);
 
+	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
+
 	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
@@ -387,6 +389,8 @@ public:
 
 	void addWaypoint(WaypointObject* waypoint, bool notifyClient = true);
 
+	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
+
 	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
@@ -541,6 +545,10 @@ public:
 	int addExperience(const String& xpType, int xp, bool notifyClient);
 
 	void removeExperience(const String& xpType, bool notifyClient);
+
+	void addWaypoint(WaypointObject* waypoint, bool notifyClient);
+
+	void setWaypoint(WaypointObject* waypoint, bool notifyClient);
 
 	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient);
 

@@ -80,6 +80,8 @@ public:
 
 	void setUnknown(unsigned long long id);
 
+	void toggleStatus();
+
 protected:
 	WaypointObject(DummyConstructorParameter* param);
 
@@ -151,6 +153,8 @@ public:
 
 	void setUnknown(unsigned long long id);
 
+	void toggleStatus();
+
 	WaypointObject* _this;
 
 	operator const WaypointObject*();
@@ -203,6 +207,8 @@ public:
 	void setActive(byte newStatus);
 
 	void setUnknown(unsigned long long id);
+
+	void toggleStatus();
 
 protected:
 	UnicodeString _param0_setCustomName__UnicodeString_;
