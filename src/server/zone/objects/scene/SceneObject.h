@@ -728,7 +728,7 @@ public:
 
 	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
 
-	void broadcastMessage(BasePacket* message, bool sendSelf);
+	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone = true);
 
 	void broadcastObject(SceneObject* object, bool sendSelf);
 
@@ -1587,7 +1587,7 @@ public:
 
 	virtual void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
 
-	void broadcastMessage(BasePacket* message, bool sendSelf);
+	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone = true);
 
 	void broadcastObject(SceneObject* object, bool sendSelf);
 
@@ -1964,7 +1964,7 @@ public:
 
 	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets);
 
-	void broadcastMessage(BasePacket* message, bool sendSelf);
+	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone);
 
 	void broadcastObject(SceneObject* object, bool sendSelf);
 

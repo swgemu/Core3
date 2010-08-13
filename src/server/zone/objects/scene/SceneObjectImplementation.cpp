@@ -444,12 +444,12 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 
 }
 
-void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
+void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
 	if (zone == NULL) {
 		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastMessage(message, sendSelf);
+			grandParent->broadcastMessage(message, sendSelf, lockZone);
 
 			return;
 		} else {
@@ -459,18 +459,26 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 		}
 	}
 
-	Locker zoneLocker(zone);
+	//Locker zoneLocker(zone);
 
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+	zone->rlock(lockZone);
 
-		if (!sendSelf && scno == this)
-			continue;
+	try {
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
 
-		if (scno->isPlayerCreature()) {
-			scno->sendMessage(message->clone());
+			if (!sendSelf && scno == this)
+				continue;
+
+			if (scno->isPlayerCreature()) {
+				scno->sendMessage(message->clone());
+			}
 		}
+	} catch (...) {
+
 	}
+
+	zone->runlock(lockZone);
 
 	delete message;
 }
@@ -492,21 +500,29 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 		}
 	}
 
-	Locker zoneLocker(zone);
+	zone->rlock();
 
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+	try {
 
-		if (!sendSelf && scno == this)
-			continue;
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
 
-		if (scno->isPlayerCreature()) {
-			for (int j = 0; j < messages->size(); ++j) {
-				BasePacket* msg = messages->get(j);
-				scno->sendMessage(msg->clone());
+			if (!sendSelf && scno == this)
+				continue;
+
+			if (scno->isPlayerCreature()) {
+				for (int j = 0; j < messages->size(); ++j) {
+					BasePacket* msg = messages->get(j);
+					scno->sendMessage(msg->clone());
+				}
 			}
 		}
+
+	} catch (...) {
+
 	}
+
+	zone->runlock();
 
 	while (!messages->isEmpty()) {
 		delete messages->remove(0);
@@ -544,7 +560,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 		return;
 	}
 
-    broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), true);
+    broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), true, false);
 
     parent->removeObject(_this);
 
@@ -594,6 +610,9 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 
 	zone->inRange(this, 512);
 
+	zoneLocker.release();
+
+
 	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
 		if (lightUpdate) {
 			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
@@ -603,8 +622,6 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 			broadcastMessage(message, false);
 		}
 	}
-
-	zoneLocker.release();
 
 	notifySelfPositionUpdate();
 }
@@ -657,7 +674,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 				// remove from old cell
 				if (parent != NULL)
-					parent->removeObject(_this);
+					parent->removeObject(_this, false);
 			} else
 				insert = true;
 		}
@@ -665,11 +682,11 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
 		// add to new cell
 		//parent = newParent;
-		if (!newParent->addObject(_this, -1)) {
+		if (!newParent->addObject(_this, -1, false)) {
 			error("could not add to parent " + newParent->getLoggingName());
 		}
 
-		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true);
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 	}
 
 	BuildingObject* building = (BuildingObject*) parent->getParent();
@@ -682,6 +699,8 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		building->inRange(this, 512);
 	}
 
+	zoneLocker.release();
+
 	if (sendPackets) {
 		if (lightUpdate) {
 			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
@@ -691,8 +710,6 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 			broadcastMessage(message, false);
 		}
 	}
-
-	zoneLocker.release();
 
 	notifySelfPositionUpdate();
 }
@@ -723,6 +740,9 @@ void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ,
 
 void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	info("inserting to zone");
+
+	if (newZone == NULL)
+		return;
 
 	Locker zoneLocker(newZone);
 
@@ -781,19 +801,23 @@ void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, flo
 	if (zone == NULL)
 		return;
 
+	Zone* newZone = getZoneServer()->getZone(newZoneID);
+
+	if (newZone == NULL)
+		return;
+
 	removeFromZone();
 
-	ZoneServer* server = getZoneServer();
-	SceneObject* newParent = server->getObject(parentID);
+	SceneObject* newParent = getZoneServer()->getObject(parentID);
+
+	Locker locker(newZone);
 
 	if (newParent != NULL && newParent->isCellObject())
 		newParent->addObject(_this, -1, false);
 
-	Zone* zone = server->getZone(newZoneID);
-
 	initializePosition(newPostionX, newPositionZ, newPositionY);
 
-	insertToZone(zone);
+	insertToZone(newZone);
 }
 
 void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
@@ -808,7 +832,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 		building->insert(this);
 		building->inRange(this, 512);
 
-		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true);
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 
 		//info("sent cell link to everyone else");
 	} catch (Exception& e) {

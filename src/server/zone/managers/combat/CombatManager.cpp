@@ -247,7 +247,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	int poolsToDamage = calculatePoolsToDamage(command->getPoolsToDamage());
 
-	if (poolsToDamage != 0 && rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
+	if (poolsToDamage != 0 && !attacker->isAiAgent() && rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
 		//better luck next time
 		doMiss(attacker, defender, 0, command->getCombatSpam() + "_miss");
 		return 0;
@@ -261,7 +261,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	if (damageMultiplier != 0 && poolsToDamage != 0) {
 		int secondaryDefense = checkSecondaryDefenses(attacker, defender, attacker->getWeapon());
 
-		if (secondaryDefense != 0) {
+		if (secondaryDefense != 0 && !attacker->isAiAgent()) {
 			switch (secondaryDefense) {
 			case BLOCK:
 				damageMultiplier /= 2.f;
@@ -411,6 +411,9 @@ int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponO
 	for (int i = 0; i < creatureAccMods->size(); ++i) {
 		attackerAccuracy += attacker->getSkillMod(creatureAccMods->get(i));
 	}
+
+	if (attacker->isAiAgent())
+		attackerAccuracy += attacker->getLevel();
 
 	return attackerAccuracy;
 }

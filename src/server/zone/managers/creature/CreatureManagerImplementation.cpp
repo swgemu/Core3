@@ -203,11 +203,16 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	// lets unlock destructor so we dont get into complicated deadlocks
 
+	// lets copy the damage map before we remove it all
+	DamageMap* damageMap = destructedObject->getDamageMap();
+	DamageMap copyDamageMap(*damageMap);
+	damageMap->removeAll(); // we can clear the original one
+
 	if (destructedObject != destructor)
 		destructor->unlock();
 
 	try {
-		playerManager->disseminateExperience(destructedObject, destructedObject->getDamageMap());
+		playerManager->disseminateExperience(destructedObject, &copyDamageMap);
 
 		CombatManager::instance()->attemptPeace(destructedObject);
 

@@ -306,7 +306,7 @@ public:
 		uint8 attribute = BuffAttribute::UNKNOWN;
 		uint64 objectId = 0;
 
-		if (targetCreature->isInRange(creature, range))
+		if (!targetCreature->isInRange(creature, range))
 			return TOOFAR;
 
 		parseModifier(arguments.toString(), attribute, objectId);

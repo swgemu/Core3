@@ -465,9 +465,11 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 }
 
 int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	CreatureManager* creatureManager = zone->getCreatureManager();
+	if (zone != NULL) {
+		CreatureManager* creatureManager = zone->getCreatureManager();
 
-	creatureManager->notifyDestruction(attacker, _this, condition);
+		creatureManager->notifyDestruction(attacker, _this, condition);
+	}
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }

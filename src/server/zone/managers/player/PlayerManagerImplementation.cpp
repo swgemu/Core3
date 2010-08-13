@@ -949,6 +949,9 @@ void PlayerManagerImplementation::sendPlayerToCloner(PlayerCreature* player, uin
 	Zone* zone = player->getZone();
 
 	player->switchZone(zone->getZoneID(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
+
+	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
+	task->schedule(3 * 1000);
 }
 
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap) {
@@ -970,6 +973,9 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 		for (int j = 0; j < entry->size(); ++j) {
 			ManagedReference<WeaponObject*> weapon = entry->elementAt(j).getKey();
+
+			if (weapon == NULL)
+				continue;
 
 			uint32 damage = entry->elementAt(j).getValue();
 
