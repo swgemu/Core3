@@ -128,12 +128,11 @@ public:
 		//Target Name
 		insertAscii(mi->getTargetName());
 
-		insertInt(0); //??
-
 		WaypointObject* waypoint = mi->getWaypointToMission();
 
 		if (waypoint == NULL) {
 			//Waypoint Info
+			insertInt(0); //??
 			insertFloat(0);//insertFloat(mi->getDestX()); //x
 			insertFloat(0); //z
 			insertFloat(0);//insertFloat(mi->getDestY()); //y
