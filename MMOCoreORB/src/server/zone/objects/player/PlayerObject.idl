@@ -159,8 +159,8 @@ class PlayerObject extends IntangibleObject {
 	 * @param waypoint waypoint object to add
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
-	@local
 	public native void addWaypoint(WaypointObject waypoint, boolean notifyClient = true);
+	public native void setWaypoint(WaypointObject waypoint, boolean notifyClient = true);
 	
 	/** 
 	 * Adds a new waypoint with the specified coordinates

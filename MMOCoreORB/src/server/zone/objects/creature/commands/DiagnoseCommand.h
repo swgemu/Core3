@@ -45,14 +45,17 @@ which carries forward this exception.
 #ifndef DIAGNOSECOMMAND_H_
 #define DIAGNOSECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 class DiagnoseCommand : public QueueCommand {
+	float range;
 public:
 
 	DiagnoseCommand(const String& name, ZoneProcessServerImplementation* server)
 		: QueueCommand(name, server) {
-
+		range = 6;
+		defaultTime = 0;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -62,6 +65,98 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isCreatureObject()) {
+			creature->sendSystemMessage("You can only diagnose a player or a creature.");
+			return GENERALERROR;
+		}
+
+		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+
+		Locker clocker(creatureTarget, creature);
+
+		if (!creatureTarget->isInRange(creature, range))
+			return TOOFAR;
+
+		if (creatureTarget == creature) {
+			creature->sendSystemMessage("You can't diagnose yourself.");
+			return GENERALERROR;
+		}
+
+		/*TODO: Close an already opened Diagnose box before sending a new one??
+				if (player->hasSuiBox(SuiWindowType::DIAGNOSE))
+					player->removeSuiBox(SuiWindowType::DIAGNOSE);
+		 */
+
+		/*UnicodeString UnicodeStringName = UnicodeString("");
+		UnicodeStringName = creatureTarget->getFirstName();*/
+		StringId* objectName = creatureTarget->getObjectName();
+
+		String targetName = objectName->getCustomString().toString();
+
+		if (targetName.isEmpty()) {
+			 objectName->getFullPath(targetName);
+		}
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::DIAGNOSE);
+		StringBuffer title;
+		title << "Patient " << targetName.toCharArray();
+		sui->setPromptTitle(title.toString());
+
+		StringBuffer text;
+		text << "Below is a listing of the wound and Battle Fatigue levels of " << targetName.toCharArray() << ". Wounds are healed through /tendwound or use of wound Medpacks. High levels of Battle Fatigue can inhibit the healing process, and Battle Fatigue can only be healed by the patient choosing to watch performing entertainers.";
+		sui->setPromptText(text.toString());
+		sui->setCancelButton(false, "");
+
+		StringBuffer health;
+		health << "Health -- " << creatureTarget->getWounds(CreatureAttribute::HEALTH);
+		sui->addMenuItem(health.toString());
+
+		StringBuffer strength;
+		strength << "Strength -- " << creatureTarget->getWounds(CreatureAttribute::STRENGTH);
+		sui->addMenuItem(strength.toString());
+
+		StringBuffer constitution;
+		constitution << "Constitution -- " << creatureTarget->getWounds(CreatureAttribute::CONSTITUTION);
+		sui->addMenuItem(constitution.toString());
+
+		StringBuffer action;
+		action << "Action -- " << creatureTarget->getWounds(CreatureAttribute::ACTION);
+		sui->addMenuItem(action.toString());
+
+		StringBuffer quickness;
+		quickness << "Quickness -- " << creatureTarget->getWounds(CreatureAttribute::QUICKNESS);
+		sui->addMenuItem(quickness.toString());
+
+		StringBuffer stamina;
+		stamina << "Stamina -- " << creatureTarget->getWounds(CreatureAttribute::STAMINA);
+		sui->addMenuItem(stamina.toString());
+
+		StringBuffer mind;
+		mind << "Mind -- " << creatureTarget->getWounds(CreatureAttribute::MIND);
+		sui->addMenuItem(mind.toString());
+
+		StringBuffer focus;
+		focus << "Focus -- " << creatureTarget->getWounds(CreatureAttribute::FOCUS);
+		sui->addMenuItem(focus.toString());
+
+		StringBuffer willpower;
+		willpower << "Willpower -- " << creatureTarget->getWounds(CreatureAttribute::WILLPOWER);
+		sui->addMenuItem(willpower.toString());
+
+		StringBuffer battlefatigue;
+		battlefatigue << "Battle Fatigue -- " << creatureTarget->getShockWounds();
+		sui->addMenuItem(battlefatigue.toString());
+
+		player->addSuiBox(sui);
+		player->sendMessage(sui->generateMessage());
 
 		return SUCCESS;
 	}
