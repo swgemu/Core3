@@ -65,12 +65,13 @@ int LairObjectImplementation::notifyObjectDestructionObservers(TangibleObject* a
 			((AiAgent*)obj)->setDespawnOnNoPlayerInRange(true);
 	}
 
-	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
-	playerManager->disseminateExperience(_this, &damageMap);
+	DamageMap copyDamageMap(damageMap);
+	damageMap.removeAll(); // we can clear the original one
 
 	spawnedCreatures.removeAll();
 
-	damageMap.removeAll();
+	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
+	playerManager->disseminateExperience(_this, &copyDamageMap);
 
 	return ret;
 }

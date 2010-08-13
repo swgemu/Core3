@@ -72,8 +72,13 @@ public:
 			if (creature->isPlayerCreature()) {
 				PlayerCreature* player = (PlayerCreature*) creature;
 
-				/*if (player->getFirstName() != "TheAnswer")
-					return GENERALERROR;*/
+				if (player->getFirstName() != "TheAnswer") {
+					if (player->hasSpawnedBlueFrog()) {
+						player->sendSystemMessage("You are only allowed to spawn 1 blue frog per session");
+						return GENERALERROR;
+					} else
+						player->setSpawnedBlueFrog();
+				}
 
 				ZoneServer* zserv = server->getZoneServer();
 

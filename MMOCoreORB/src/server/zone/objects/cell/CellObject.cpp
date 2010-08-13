@@ -45,12 +45,41 @@ void CellObject::sendContainerObjectsTo(SceneObject* player) {
 		((CellObjectImplementation*) _impl)->sendContainerObjectsTo(player);
 }
 
-void CellObject::initializeTransientMembers() {
+bool CellObject::addObject(SceneObject* object, int containmentType, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(object);
+		method.addSignedIntParameter(containmentType);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->addObject(object, containmentType, notifyClient);
+}
+
+bool CellObject::removeObject(SceneObject* object, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(object);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->removeObject(object, notifyClient);
+}
+
+void CellObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 
 		method.executeWithVoidReturn();
 	} else
@@ -62,7 +91,7 @@ void CellObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -75,7 +104,7 @@ int CellObject::getCellNumber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -87,7 +116,7 @@ void CellObject::setCellNumber(int number) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 		method.addSignedIntParameter(number);
 
 		method.executeWithVoidReturn();
@@ -100,7 +129,7 @@ bool CellObject::isCellObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -187,17 +216,17 @@ void CellObjectImplementation::finalize() {
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(90):  		return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(111):  		return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(94):  		cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(115):  		cellNumber = number;
 	cellNumber = number;
 }
 
 bool CellObjectImplementation::isCellObject() {
-	// server/zone/objects/cell/CellObject.idl(98):  		return true;
+	// server/zone/objects/cell/CellObject.idl(119):  		return true;
 	return true;
 }
 
@@ -216,21 +245,27 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		initializeTransientMembers();
+		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 8:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 9:
-		finalize();
+		initializeTransientMembers();
 		break;
 	case 10:
-		resp->insertSignedInt(getCellNumber());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		setCellNumber(inv->getSignedIntParameter());
+		finalize();
 		break;
 	case 12:
+		resp->insertSignedInt(getCellNumber());
+		break;
+	case 13:
+		setCellNumber(inv->getSignedIntParameter());
+		break;
+	case 14:
 		resp->insertBoolean(isCellObject());
 		break;
 	default:
@@ -242,6 +277,14 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void CellObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
 	((CellObjectImplementation*) impl)->sendContainerObjectsTo(player);
+}
+
+bool CellObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+	return ((CellObjectImplementation*) impl)->addObject(object, containmentType, notifyClient);
+}
+
+bool CellObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
+	return ((CellObjectImplementation*) impl)->removeObject(object, notifyClient);
 }
 
 void CellObjectAdapter::initializeTransientMembers() {

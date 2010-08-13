@@ -381,28 +381,36 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		if (myGhost == NULL)
 			return;
 
-		Locker zoneLocker(zone);
+		//Locker zoneLocker(zone);
+		zone->rlock();
 
-		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+		try {
 
-			if (object->isPlayerCreature()) {
-				PlayerCreature* creature = (PlayerCreature*) object;
+			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
 
-				if (player->isInRange(creature, 128)) {
+				if (object->isPlayerCreature()) {
+					PlayerCreature* creature = (PlayerCreature*) object;
 
-					PlayerObject* ghost = creature->getPlayerObject();
+					if (player->isInRange(creature, 128)) {
 
-					if (ghost == NULL)
-						continue;
+						PlayerObject* ghost = creature->getPlayerObject();
 
-					if (!ghost->isIgnoring(firstName)) {
-						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2, myGhost->getLanguageID());
-						creature->sendMessage(cmsg);
+						if (ghost == NULL)
+							continue;
+
+						if (!ghost->isIgnoring(firstName)) {
+							SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2, myGhost->getLanguageID());
+							creature->sendMessage(cmsg);
+						}
 					}
 				}
 			}
+		} catch (...) {
+
 		}
+
+		zone->runlock();
 
 	}
 }
@@ -448,6 +456,10 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature*
 
 void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
 	ManagedReference<PlayerCreature*> sender = (PlayerCreature*) message->getClient()->getPlayer();
+
+	if (sender == NULL)
+		return;
+
 	PlayerCreature* receiver = getPlayer(message->getName());
 
 	if (receiver == NULL || !receiver->isOnline()) {

@@ -52,6 +52,10 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
+	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
+
+	bool removeObject(SceneObject* object, bool notifyClient = false);
+
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
@@ -94,6 +98,10 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void sendContainerObjectsTo(SceneObject* player);
+
+	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
+
+	bool removeObject(SceneObject* object, bool notifyClient = false);
 
 	void initializeTransientMembers();
 
@@ -145,6 +153,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void sendContainerObjectsTo(SceneObject* player);
+
+	bool addObject(SceneObject* object, int containmentType, bool notifyClient);
+
+	bool removeObject(SceneObject* object, bool notifyClient);
 
 	void initializeTransientMembers();
 

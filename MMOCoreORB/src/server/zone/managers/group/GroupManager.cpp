@@ -136,11 +136,14 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	try {
 		Locker clocker(inviter, player);
 
-
 		group = inviter->getGroup();
 
-		if (group == NULL)
+		if (group == NULL) {
 			group = createGroup(inviter);
+
+			if (group == NULL)
+				return;
+		}
 
 
 	} catch (Exception& e) {
@@ -191,6 +194,10 @@ void GroupManager::joinGroup(CreatureObject* player) {
 GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	// Pre: leader locked
 	// Post: GroupObject is a new group with leader, leader locked.
+	Zone* zone = leader->getZone();
+
+	if (zone == NULL)
+		return NULL;
 
 	ZoneServer* server = leader->getZone()->getZoneServer();
 

@@ -54,6 +54,8 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	recoveryEvent = NULL;
 	owner = NULL;
 
+	spawnedBlueFrog = false;
+
 	persistentMessages.setNoDuplicateInsertPlan();
 	duelList.setNoDuplicateInsertPlan();
 
@@ -78,6 +80,9 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 
 	if (owner == NULL)
 		setLinkDead();
+
+	clearCombatState(true);
+	clearState(CreatureState::ALERT);
 
 	activateRecovery();
 }
@@ -119,7 +124,12 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 }
 
 void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
+	SceneObjectImplementation* implementation =(SceneObjectImplementation*) entry;
+
+	SceneObject* scno = implementation->_this;/*(SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());*/
+
+	if (scno == NULL)
+		return;
 
 	if (scno == _this)
 		return;
@@ -188,7 +198,11 @@ bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 }
 
 void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
+	SceneObjectImplementation* implementation =(SceneObjectImplementation*) entry;
+	SceneObject* scno = implementation->_this;/*(SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());*/
+
+	if (scno == NULL)
+		return;
 
 	if (scno == _this)
 		return;

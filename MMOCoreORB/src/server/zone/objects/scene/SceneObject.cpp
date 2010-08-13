@@ -666,7 +666,7 @@ void SceneObject::updateZoneWithParent(SceneObject* newParent, bool lightUpdate,
 		((SceneObjectImplementation*) _impl)->updateZoneWithParent(newParent, lightUpdate, sendPackets);
 }
 
-void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf) {
+void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -674,10 +674,11 @@ void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf) {
 		DistributedMethod method(this, 49);
 		method.addObjectParameter(message);
 		method.addBooleanParameter(sendSelf);
+		method.addBooleanParameter(lockZone);
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _impl)->broadcastMessage(message, sendSelf);
+		((SceneObjectImplementation*) _impl)->broadcastMessage(message, sendSelf, lockZone);
 }
 
 void SceneObject::broadcastObject(SceneObject* object, bool sendSelf) {
@@ -3004,7 +3005,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		updateZoneWithParent((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 50:
-		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter());
+		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 51:
 		broadcastObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
@@ -3516,8 +3517,8 @@ void SceneObjectAdapter::updateZoneWithParent(SceneObject* newParent, bool light
 	((SceneObjectImplementation*) impl)->updateZoneWithParent(newParent, lightUpdate, sendPackets);
 }
 
-void SceneObjectAdapter::broadcastMessage(BasePacket* message, bool sendSelf) {
-	((SceneObjectImplementation*) impl)->broadcastMessage(message, sendSelf);
+void SceneObjectAdapter::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
+	((SceneObjectImplementation*) impl)->broadcastMessage(message, sendSelf, lockZone);
 }
 
 void SceneObjectAdapter::broadcastObject(SceneObject* object, bool sendSelf) {

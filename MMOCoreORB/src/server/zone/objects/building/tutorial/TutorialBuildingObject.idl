@@ -59,6 +59,8 @@ class TutorialBuildingObject extends BuildingObject {
 		initializeTransientMembers();
 	}
 	
+	public native void removeFromZone();
+	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		

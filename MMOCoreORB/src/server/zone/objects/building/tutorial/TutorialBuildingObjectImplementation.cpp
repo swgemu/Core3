@@ -44,9 +44,37 @@ which carries forward this exception.
 
 #include "TutorialBuildingObject.h"
 #include "events/UnloadBuildingTask.h"
-
+#include "server/zone/objects/cell/CellObject.h"
 
 void TutorialBuildingObjectImplementation::enqueueUnloadEvent() {
 	unloadTask = new UnloadBuildingTask(_this);
 	unloadTask->schedule(1000);
 }
+
+void TutorialBuildingObjectImplementation::removeFromZone() {
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		Vector<ManagedReference<SceneObject*> > terminalsToSave;
+
+		while (cell->getContainerObjectsSize() > 0) {
+			ManagedReference<SceneObject*> obj = cell->getContainerObject(0);
+
+			obj->removeFromZone();
+
+			cell->removeObject(obj);
+
+			if (!obj->isPlayerCreature())
+				terminalsToSave.add(obj);
+		}
+
+		for (int j = 0; j < terminalsToSave.size(); ++j) {
+			SceneObject* obj = terminalsToSave.get(j);
+
+			cell->addObject(obj, -1, false);
+		}
+	}
+
+	TangibleObjectImplementation::removeFromZone();
+}
+
