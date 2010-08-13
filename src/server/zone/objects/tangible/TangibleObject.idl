@@ -381,7 +381,7 @@ class TangibleObject extends SceneObject {
 		return customizationVariables;
 	}
 	
-	public int getUseCount() {
+	public abstract int getUseCount() {
 		return useCount;
 	}
 	

@@ -64,15 +64,6 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 		PlayerCreature* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
-	String attribute;
-
-	float value;
-	double power;
-	int precision;
-	bool hidden;
-
-	String footer;
-
 	if (craftersName != "") {
 		alm->insertAttribute("crafter", craftersName);
 	}
@@ -81,6 +72,15 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 		if (gameObjectType != LIGHTSABERCRYSTAL)
 			alm->insertAttribute("serial_number", craftersSerial);
 	}
+
+	String attribute;
+
+	float value;
+	double power;
+	int precision;
+	bool hidden;
+
+	String footer;
 
 	for (int i = 0; i < keyList.size(); ++i) {
 		footer = "";
@@ -123,42 +123,46 @@ bool ComponentImplementation::getAttributeHidden(String& attributeName){
 	return hiddenMap.get(attributeName);
 }
 
-void ComponentImplementation::updateCraftingValues(SceneObject* schematic) {
-
-	/*if (schematic->isManufactureSchematic()) {
-
-		CraftingValues* craftingValues =
-				((ManufactureSchematic*) schematic)->getCraftingValues();
-
-		String attribute;
-		float value;
-		int precision;
-		String title;
-		bool hidden;
-
-		attributeMap.removeAll();
-		precisionMap.removeAll();
-		titleMap.removeAll();
-		keyList.removeAll();
-
-		for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-			attribute = craftingValues->getExperimentalPropertySubtitle(i);
-
-			value = craftingValues->getCurrentValue(attribute);
-			precision = craftingValues->getPrecision(attribute);
-			title = craftingValues->getExperimentalPropertyTitle(attribute);
-			hidden = craftingValues->isHidden(attribute);
-
-			if (!hasKey(attribute))
-				keyList.add(attribute);
-
-			attributeMap.put(attribute, value);
-			precisionMap.put(attribute, precision);
-			titleMap.put(attribute, title);
-			hiddenMap.put(attribute, hidden);
-
+void ComponentImplementation::setPropertyToHidden(const String& property) {
+	for (int i = 0; i < keyList.size(); ++i) {
+		if (keyList.get(i) == property) {
+			hiddenMap.drop(property);
+			hiddenMap.put(property, true);
 		}
-	}*/
+	}
+}
+
+void ComponentImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+
+	CraftingValues* craftingValues = schematic->getCraftingValues();
+
+	String attribute;
+	float value;
+	int precision;
+	String title;
+	bool hidden;
+
+	attributeMap.removeAll();
+	precisionMap.removeAll();
+	titleMap.removeAll();
+	keyList.removeAll();
+
+	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
+		attribute = craftingValues->getExperimentalPropertySubtitle(i);
+
+		value = craftingValues->getCurrentValue(attribute);
+		precision = craftingValues->getPrecision(attribute);
+		title = craftingValues->getExperimentalPropertyTitle(attribute);
+		hidden = craftingValues->isHidden(attribute);
+
+		if (!hasKey(attribute))
+			keyList.add(attribute);
+
+		attributeMap.put(attribute, value);
+		precisionMap.put(attribute, precision);
+		titleMap.put(attribute, title);
+		hiddenMap.put(attribute, hidden);
+	}
 }
 
 void ComponentImplementation::addProperty(const String& attributeName, const float value,
@@ -173,7 +177,7 @@ void ComponentImplementation::addProperty(const String& attributeName, const flo
 	hiddenMap.put(attributeName, hidden);
 }
 
-void ComponentImplementation::addProperty(String& attribute, float value, int precision, String& title) {
+void ComponentImplementation::addProperty(const String& attribute, const float value, const int precision, const String& title) {
 
 	if (!attributeMap.contains(attribute)) {
 

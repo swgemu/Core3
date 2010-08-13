@@ -10,6 +10,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 /*
  *	ComponentStub
  */
@@ -106,7 +108,7 @@ bool Component::hasKey(const String& key) {
 		return ((ComponentImplementation*) _impl)->hasKey(key);
 }
 
-void Component::updateCraftingValues(SceneObject* schematic) {
+void Component::updateCraftingValues(ManufactureSchematic* schematic) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -189,12 +191,25 @@ bool Component::getAttributeHidden(String& attributeName) {
 		return ((ComponentImplementation*) _impl)->getAttributeHidden(attributeName);
 }
 
-void Component::addProperty(String& attribute, float value, int precision, String& title) {
+void Component::setPropertyToHidden(const String& property) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+		method.addAsciiParameter(property);
+
+		method.executeWithVoidReturn();
+	} else
+		((ComponentImplementation*) _impl)->setPropertyToHidden(property);
+}
+
+void Component::addProperty(const String& attribute, const float value, const int precision, const String& title) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addAsciiParameter(attribute);
 		method.addFloatParameter(value);
 		method.addSignedIntParameter(precision);
@@ -210,7 +225,7 @@ int Component::getPropertyCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -222,7 +237,7 @@ String Component::getProperty(const int j) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addSignedIntParameter(j);
 
 		method.executeWithAsciiReturn(_return_getProperty);
@@ -236,7 +251,7 @@ bool Component::changeAttributeValue(String& property, float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addAsciiParameter(property);
 		method.addFloatParameter(value);
 
@@ -321,24 +336,24 @@ void ComponentImplementation::_serializationHelperMethod() {
 
 ComponentImplementation::ComponentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/component/Component.idl(73):  		Logger.setLoggingName("Component");
+	// server/zone/objects/tangible/component/Component.idl(74):  		Logger.setLoggingName("Component");
 	Logger::setLoggingName("Component");
 }
 
 bool ComponentImplementation::isComponent() {
-	// server/zone/objects/tangible/component/Component.idl(91):  		return true;
+	// server/zone/objects/tangible/component/Component.idl(92):  		return true;
 	return true;
 }
 
 bool ComponentImplementation::hasKey(const String& key) {
-	// server/zone/objects/tangible/component/Component.idl(99):  
-	for (	// server/zone/objects/tangible/component/Component.idl(99):  		for (int i = 0;
+	// server/zone/objects/tangible/component/Component.idl(100):  
+	for (	// server/zone/objects/tangible/component/Component.idl(100):  		for (int i = 0;
 	int i = 0;
 	i < (&keyList)->size();
- ++i) 	// server/zone/objects/tangible/component/Component.idl(100):  		return 
-	if ((&keyList)->get(i) == key)	// server/zone/objects/tangible/component/Component.idl(101):  				return true;
+ ++i) 	// server/zone/objects/tangible/component/Component.idl(101):  		return 
+	if ((&keyList)->get(i) == key)	// server/zone/objects/tangible/component/Component.idl(102):  				return true;
 	return true;
-	// server/zone/objects/tangible/component/Component.idl(102):  false;
+	// server/zone/objects/tangible/component/Component.idl(103):  false;
 	return false;
 }
 
@@ -369,7 +384,7 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(hasKey(inv->getAsciiParameter(_param0_hasKey__String_)));
 		break;
 	case 11:
-		updateCraftingValues((SceneObject*) inv->getObjectParameter());
+		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
 	case 12:
 		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_bool_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_bool_), inv->getBooleanParameter());
@@ -387,15 +402,18 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(getAttributeHidden(inv->getAsciiParameter(_param0_getAttributeHidden__String_)));
 		break;
 	case 17:
-		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
+		setPropertyToHidden(inv->getAsciiParameter(_param0_setPropertyToHidden__String_));
 		break;
 	case 18:
-		resp->insertSignedInt(getPropertyCount());
+		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
 		break;
 	case 19:
-		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getPropertyCount());
 		break;
 	case 20:
+		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
+		break;
+	case 21:
 		resp->insertBoolean(changeAttributeValue(inv->getAsciiParameter(_param0_changeAttributeValue__String_float_), inv->getFloatParameter()));
 		break;
 	default:
@@ -425,7 +443,7 @@ bool ComponentAdapter::hasKey(const String& key) {
 	return ((ComponentImplementation*) impl)->hasKey(key);
 }
 
-void ComponentAdapter::updateCraftingValues(SceneObject* schematic) {
+void ComponentAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
 	((ComponentImplementation*) impl)->updateCraftingValues(schematic);
 }
 
@@ -449,7 +467,11 @@ bool ComponentAdapter::getAttributeHidden(String& attributeName) {
 	return ((ComponentImplementation*) impl)->getAttributeHidden(attributeName);
 }
 
-void ComponentAdapter::addProperty(String& attribute, float value, int precision, String& title) {
+void ComponentAdapter::setPropertyToHidden(const String& property) {
+	((ComponentImplementation*) impl)->setPropertyToHidden(property);
+}
+
+void ComponentAdapter::addProperty(const String& attribute, const float value, const int precision, const String& title) {
 	((ComponentImplementation*) impl)->addProperty(attribute, value, precision, title);
 }
 

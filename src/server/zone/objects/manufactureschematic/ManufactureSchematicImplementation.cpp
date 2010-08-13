@@ -239,7 +239,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots(
 	completed = false;
 	complexity = schematic->getComplexity();
 	manufactureLimit = 0;
-	firstCraftingUpdate = false;
+	firstCraftingUpdate = true;
 
 	Reference<IngredientSlot* > ingredientSlot = NULL;
 	Reference<DraftSlot* > draftSlot = NULL;
@@ -293,6 +293,9 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 	for (int i = 0; i < ingredientSlots.size(); ++i) {
 
 		Reference<IngredientSlot* > slot = ingredientSlots.get(i);
+
+		if(slot->isOptional())
+			continue;
 
 		if(slot == NULL || !slot->hasItem() || !slot->isComplete())
 			return false;

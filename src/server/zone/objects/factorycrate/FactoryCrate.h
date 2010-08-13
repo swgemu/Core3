@@ -108,6 +108,8 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void sendTo(SceneObject* player, bool doClose);
+
 	void updateToDatabaseAllObjects(bool startTask);
 
 	bool isFactoryCrate();
@@ -116,12 +118,19 @@ public:
 
 	TangibleObject* getPrototype();
 
+	String getCraftersName();
+
+	String getCraftersSerial(String& serial);
+
 	bool extractObject();
 
 protected:
 	FactoryCrate(DummyConstructorParameter* param);
 
 	virtual ~FactoryCrate();
+
+	String _return_getCraftersName;
+	String _return_getCraftersSerial;
 
 	friend class FactoryCrateHelper;
 };
@@ -161,6 +170,8 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	virtual void sendTo(SceneObject* player, bool doClose);
+
 	void updateToDatabaseAllObjects(bool startTask);
 
 	virtual bool isFactoryCrate();
@@ -168,6 +179,10 @@ public:
 	void setPrototype(TangibleObject* object);
 
 	TangibleObject* getPrototype();
+
+	String getCraftersName();
+
+	String getCraftersSerial(String& serial);
 
 	bool extractObject();
 
@@ -216,6 +231,8 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void sendTo(SceneObject* player, bool doClose);
+
 	void updateToDatabaseAllObjects(bool startTask);
 
 	bool isFactoryCrate();
@@ -224,8 +241,14 @@ public:
 
 	TangibleObject* getPrototype();
 
+	String getCraftersName();
+
+	String getCraftersSerial(String& serial);
+
 	bool extractObject();
 
+protected:
+	String _param0_getCraftersSerial__String_;
 };
 
 class FactoryCrateHelper : public DistributedObjectClassHelper, public Singleton<FactoryCrateHelper> {

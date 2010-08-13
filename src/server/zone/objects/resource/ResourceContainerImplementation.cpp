@@ -80,7 +80,7 @@ void ResourceContainerImplementation::setQuantity(int quantity) {
 
 	stackQuantity = quantity;
 
-	 if(stackQuantity < 0) {
+	 if(stackQuantity < 1) {
 
 		if(parent != NULL) {
 			parent->removeObject(_this, true);
@@ -88,6 +88,7 @@ void ResourceContainerImplementation::setQuantity(int quantity) {
 		}
 
 		destroyObjectFromDatabase(true);
+		return;
 	}
 
 	int newStackSize = 0;

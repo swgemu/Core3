@@ -105,12 +105,24 @@ int ResourceContainer::getQuantity() {
 		return ((ResourceContainerImplementation*) _impl)->getQuantity();
 }
 
-void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
+int ResourceContainer::getUseCount() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ResourceContainerImplementation*) _impl)->getUseCount();
+}
+
+void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(spawn);
 
 		method.executeWithVoidReturn();
@@ -123,7 +135,7 @@ String ResourceContainer::getSpawnName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithAsciiReturn(_return_getSpawnName);
 		return _return_getSpawnName;
@@ -136,7 +148,7 @@ String ResourceContainer::getSpawnType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		method.executeWithAsciiReturn(_return_getSpawnType);
 		return _return_getSpawnType;
@@ -149,7 +161,7 @@ unsigned long long ResourceContainer::getSpawnID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -161,7 +173,7 @@ ResourceSpawn* ResourceContainer::getSpawnObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return (ResourceSpawn*) method.executeWithObjectReturn();
 	} else
@@ -173,7 +185,7 @@ void ResourceContainer::split(int newStackSize) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addSignedIntParameter(newStackSize);
 
 		method.executeWithVoidReturn();
@@ -186,7 +198,7 @@ void ResourceContainer::split(int newStackSize, PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addSignedIntParameter(newStackSize);
 		method.addObjectParameter(player);
 
@@ -200,7 +212,7 @@ void ResourceContainer::combine(ResourceContainer* fromContainer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(fromContainer);
 
 		method.executeWithVoidReturn();
@@ -304,28 +316,33 @@ int ResourceContainerImplementation::getQuantity() {
 	return stackQuantity;
 }
 
+int ResourceContainerImplementation::getUseCount() {
+	// server/zone/objects/resource/ResourceContainer.idl(112):  		return getQuantity();
+	return getQuantity();
+}
+
 void ResourceContainerImplementation::setSpawnObject(ResourceSpawn* spawn) {
-	// server/zone/objects/resource/ResourceContainer.idl(112):  		spawnObject = spawn;
+	// server/zone/objects/resource/ResourceContainer.idl(116):  		spawnObject = spawn;
 	spawnObject = spawn;
 }
 
 String ResourceContainerImplementation::getSpawnName() {
-	// server/zone/objects/resource/ResourceContainer.idl(116):  		return spawnObject.getName();
+	// server/zone/objects/resource/ResourceContainer.idl(120):  		return spawnObject.getName();
 	return spawnObject->getName();
 }
 
 String ResourceContainerImplementation::getSpawnType() {
-	// server/zone/objects/resource/ResourceContainer.idl(120):  		return spawnObject.getType();
+	// server/zone/objects/resource/ResourceContainer.idl(124):  		return spawnObject.getType();
 	return spawnObject->getType();
 }
 
 unsigned long long ResourceContainerImplementation::getSpawnID() {
-	// server/zone/objects/resource/ResourceContainer.idl(124):  		return spawnObject.getObjectID();
+	// server/zone/objects/resource/ResourceContainer.idl(128):  		return spawnObject.getObjectID();
 	return spawnObject->getObjectID();
 }
 
 ResourceSpawn* ResourceContainerImplementation::getSpawnObject() {
-	// server/zone/objects/resource/ResourceContainer.idl(128):  		return spawnObject;
+	// server/zone/objects/resource/ResourceContainer.idl(132):  		return spawnObject;
 	return spawnObject;
 }
 
@@ -359,27 +376,30 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertSignedInt(getQuantity());
 		break;
 	case 12:
-		setSpawnObject((ResourceSpawn*) inv->getObjectParameter());
+		resp->insertSignedInt(getUseCount());
 		break;
 	case 13:
-		resp->insertAscii(getSpawnName());
+		setSpawnObject((ResourceSpawn*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertAscii(getSpawnType());
+		resp->insertAscii(getSpawnName());
 		break;
 	case 15:
-		resp->insertLong(getSpawnID());
+		resp->insertAscii(getSpawnType());
 		break;
 	case 16:
-		resp->insertLong(getSpawnObject()->_getObjectID());
+		resp->insertLong(getSpawnID());
 		break;
 	case 17:
-		split(inv->getSignedIntParameter());
+		resp->insertLong(getSpawnObject()->_getObjectID());
 		break;
 	case 18:
-		split(inv->getSignedIntParameter(), (PlayerCreature*) inv->getObjectParameter());
+		split(inv->getSignedIntParameter());
 		break;
 	case 19:
+		split(inv->getSignedIntParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 20:
 		combine((ResourceContainer*) inv->getObjectParameter());
 		break;
 	default:
@@ -411,6 +431,10 @@ bool ResourceContainerAdapter::isResourceContainer() {
 
 int ResourceContainerAdapter::getQuantity() {
 	return ((ResourceContainerImplementation*) impl)->getQuantity();
+}
+
+int ResourceContainerAdapter::getUseCount() {
+	return ((ResourceContainerImplementation*) impl)->getUseCount();
 }
 
 void ResourceContainerAdapter::setSpawnObject(ResourceSpawn* spawn) {
