@@ -116,6 +116,10 @@ public:
 		return type == slottype;
 	}
 
+	bool isOptional() {
+		return optional;
+	}
+
 	virtual inline void init(const int size){
 
 	}

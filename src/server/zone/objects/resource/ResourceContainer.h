@@ -62,6 +62,8 @@ public:
 
 	int getQuantity();
 
+	int getUseCount();
+
 	void setSpawnObject(ResourceSpawn* spawn);
 
 	String getSpawnName();
@@ -127,6 +129,8 @@ public:
 	bool isResourceContainer();
 
 	int getQuantity();
+
+	int getUseCount();
 
 	void setSpawnObject(ResourceSpawn* spawn);
 
@@ -194,6 +198,8 @@ public:
 	bool isResourceContainer();
 
 	int getQuantity();
+
+	int getUseCount();
 
 	void setSpawnObject(ResourceSpawn* spawn);
 

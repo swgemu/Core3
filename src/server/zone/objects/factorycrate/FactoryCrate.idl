@@ -101,6 +101,16 @@ class FactoryCrate extends TangibleObject {
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
+	public native abstract void sendTo(SceneObject player, boolean doClose);
+	
+	
 	public void updateToDatabaseAllObjects(boolean startTask) {
 
 		prototype.updateToDatabase();
@@ -114,10 +124,19 @@ class FactoryCrate extends TangibleObject {
 	
 	public void setPrototype(TangibleObject object) {
 		prototype = object;
+		setCustom
 	}
 	
 	public TangibleObject getPrototype() {
 		return prototype;
+	}
+	
+	public string getCraftersName() {
+		return prototype.getCraftersName();
+	}
+	
+	public string getCraftersSerial(string serial) {
+		return prototype.getCraftersSerial();
 	}
 	
 	public native boolean extractObject();

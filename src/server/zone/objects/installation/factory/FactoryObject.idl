@@ -92,6 +92,8 @@ class FactoryObject extends InstallationObject {
 	
 	private native void stopFactory(final string message, final string tt, final string to, final int di);
 
+	private native void stopFactory(TangibleObject ingredient);
+	
 	public native void createNewObject();
 	
 	private native FactoryCrate locateCrateInOutputHopper(TangibleObject prototype);
@@ -99,4 +101,9 @@ class FactoryObject extends InstallationObject {
 	private native FactoryCrate createNewFactoryCrate(unsigned int type, TangibleObject prototype);
 
 	private native boolean removeIngredientsFromHopper(ManufactureSchematic schematic);
+	
+	@dereferenced
+	private native VectorMap<TangibleObject, int> collectUniqueIngredients(ManufactureSchematic schematic);
+
+	private native TangibleObject findMatchInInputHopper(SceneObject inputHopper, TangibleObject ingredient);
 }

@@ -467,7 +467,7 @@ void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature
 		if (slot != NULL)
 			slot->insertToMessage(objMsg);
 	}
-	objMsg->insertShort(0);
+	//objMsg->insertShort(0);
 
 	player->sendMessage(objMsg);
 }
@@ -908,10 +908,12 @@ void CraftingToolImplementation::setInitialCraftingValues() {
 
 	craftingValues->recalculateValues(true);
 
+	craftingValues->toString();
+
 	if (applyComponentBoost())
 		craftingValues->recalculateValues(true);
 
-	//craftingValues->toString();
+
 }
 
 bool CraftingToolImplementation::applyComponentBoost() {
@@ -987,6 +989,8 @@ bool CraftingToolImplementation::applyComponentBoost() {
 			}
 		}
 	}
+	craftingValues->toString();
+
 	return modified;
 }
 
