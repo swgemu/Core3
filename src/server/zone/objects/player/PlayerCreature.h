@@ -400,6 +400,10 @@ public:
 
 	void clearLastNpcConvOptions();
 
+	void setSpawnedBlueFrog();
+
+	bool hasSpawnedBlueFrog();
+
 	void addToConsentList(const String& name);
 
 	bool hasInConsentList(const String& name);
@@ -637,6 +641,10 @@ protected:
 
 	ManagedReference<CraftingTool* > lastCraftingToolUsed;
 
+	bool spawnedBlueFrog;
+
+	SortedVector<String> consentList;
+
 	String lastNpcConvoMessage;
 
 	String lastNpcConvo;
@@ -648,8 +656,6 @@ protected:
 	int centeredBonus;
 
 	TradeContainer tradeContainer;
-
-	SortedVector<String> consentList;
 
 public:
 	static const int ONLINE = 1;
@@ -759,6 +765,10 @@ public:
 	int countLastNpcConvOptions();
 
 	void clearLastNpcConvOptions();
+
+	void setSpawnedBlueFrog();
+
+	bool hasSpawnedBlueFrog();
 
 	void addToConsentList(const String& name);
 
@@ -1030,6 +1040,10 @@ public:
 	int countLastNpcConvOptions();
 
 	void clearLastNpcConvOptions();
+
+	void setSpawnedBlueFrog();
+
+	bool hasSpawnedBlueFrog();
 
 	void addToConsentList(const String& name);
 

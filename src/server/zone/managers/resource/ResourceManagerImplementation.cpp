@@ -193,10 +193,14 @@ void ResourceManagerImplementation::createResourceSpawn(PlayerCreature* playerCr
 
 	ResourceSpawn* resourceSpawn = resourceSpawner->manualCreateResourceSpawn(restype);
 
-	StringBuffer buffer;
-	buffer << "Spawned " << resourceSpawn->getName() << " of type " << resourceSpawn->getType();
+	if (resourceSpawn != NULL) {
+		StringBuffer buffer;
+		buffer << "Spawned " << resourceSpawn->getName() << " of type " << resourceSpawn->getType();
 
-	playerCreature->sendSystemMessage(buffer.toString());
+		playerCreature->sendSystemMessage(buffer.toString());
+	} else {
+		playerCreature->sendSystemMessage("Could not create spawn " + restype);
+	}
 
 }
 

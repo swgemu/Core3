@@ -81,6 +81,8 @@ class TutorialBuildingObject : public BuildingObject {
 public:
 	TutorialBuildingObject();
 
+	void removeFromZone();
+
 	void initializeTransientMembers();
 
 	void onEnter(PlayerCreature* player);
@@ -119,6 +121,8 @@ public:
 	TutorialBuildingObjectImplementation();
 
 	TutorialBuildingObjectImplementation(DummyConstructorParameter* param);
+
+	void removeFromZone();
 
 	void initializeTransientMembers();
 
@@ -172,6 +176,8 @@ public:
 	TutorialBuildingObjectAdapter(TutorialBuildingObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void removeFromZone();
 
 	void initializeTransientMembers();
 

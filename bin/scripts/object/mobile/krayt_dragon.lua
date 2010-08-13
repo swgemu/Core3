@@ -56,6 +56,8 @@ object_mobile_krayt_dragon = object_mobile_shared_krayt_dragon:new {
 	acid = 90,
 	lightSaber = 10,
 	
+	level = 300,
+	
 	stalker = 0,
 	killer = 0,
 	

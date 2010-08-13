@@ -10,6 +10,7 @@
 #include "server/zone/packets/cell/CellObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/Zone.h"
 
 void CellObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -54,4 +55,16 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID());
 	player->sendMessage(perm);
+}
+
+bool CellObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+	Locker locker(_this);
+
+	return SceneObjectImplementation::addObject(object, containmentType, notifyClient);
+}
+
+bool CellObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
+	Locker locker(_this);
+
+	return SceneObjectImplementation::removeObject(object, notifyClient);
 }

@@ -140,6 +140,11 @@ class PlayerCreature extends CreatureObject {
 
 	protected transient CraftingTool lastCraftingToolUsed;
 	
+	protected transient boolean spawnedBlueFrog;
+	
+	@dereferenced
+	protected SortedVector<string> consentList;
+	
 	//npc conversation
 	protected string lastNpcConvoMessage;
 	protected string lastNpcConvo;
@@ -152,9 +157,6 @@ class PlayerCreature extends CreatureObject {
 	
 	@dereferenced
 	protected TradeContainer tradeContainer;
-	
-	@dereferenced
-	protected SortedVector<string> consentList;
 	
 	//protected BankTerminal registeredBank;
 
@@ -196,7 +198,6 @@ class PlayerCreature extends CreatureObject {
 		
 		persistentMessages.setNoDuplicateInsertPlan();
 		duelList.setNoDuplicateInsertPlan();
-		
 		consentList.setNoDuplicateInsertPlan();
 
 		setOffline();
@@ -426,6 +427,14 @@ class PlayerCreature extends CreatureObject {
 		lastNpcConvoOptions.removeAll();
 	}
 	
+	public void setSpawnedBlueFrog() {
+		spawnedBlueFrog = true;
+	}
+	
+	public boolean hasSpawnedBlueFrog() {
+		return spawnedBlueFrog;
+	}
+	
 	public void addToConsentList(final string name) {
 		consentList.put(name);
 	}
@@ -645,16 +654,10 @@ class PlayerCreature extends CreatureObject {
 		return false;
 	}
 	
-	/**
-	 * This method will send the close packet to the client,
-	 * closing any open sui box of the suiBoxType,
-	 * and removing it from the player's list of SuiBoxes.
-	 * \param boxTypeID The box type id to search for, and close.
-	 */
 	public void closeSuiWindowType(unsigned int windowType) {
 		if (hasSuiBoxWindowType(windowType)) {
 			SuiBox sui = getSuiBoxFromWindowType(windowType);
-
+			
 			if (sui != null) {
 				sendMessage(sui.generateCloseMessage());
 				removeSuiBox(sui.getBoxID());

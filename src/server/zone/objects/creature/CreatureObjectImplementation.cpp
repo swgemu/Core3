@@ -574,8 +574,10 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 
 	newValue = MIN(newValue, maxValue);
 
-	if (currentValue <= 0 && newValue <= 0 && isIncapacitated()) {
-		newValue = 1;
+	if (currentValue <= 0 && isIncapacitated()) {
+		if (newValue <= 0)
+			newValue = 1;
+
 		setPosture(CreaturePosture::UPRIGHT);
 	}
 
