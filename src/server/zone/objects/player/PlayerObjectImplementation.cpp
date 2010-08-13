@@ -250,13 +250,8 @@ void PlayerObjectImplementation::removeExperience(const String& xpType, bool not
 	}
 }
 
-void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool notifyClient) {
+void PlayerObjectImplementation::setWaypoint(WaypointObject* waypoint, bool notifyClient) {
 	uint64 waypointID = waypoint->getObjectID();
-
-	if (waypointList.contains(waypointID)) {
-		error("this contains this waypoint ID");
-		return;
-	}
 
 	if (notifyClient) {
 		PlayerObjectDeltaMessage8* msg = new PlayerObjectDeltaMessage8(this);
@@ -270,6 +265,17 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool noti
 	}
 
 	waypoint->updateToDatabase();
+}
+
+void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool notifyClient) {
+	uint64 waypointID = waypoint->getObjectID();
+
+	if (waypointList.contains(waypointID)) {
+		error("this contains this waypoint ID");
+		return;
+	}
+
+	setWaypoint(waypoint, notifyClient);
 }
 
 void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyClient) {

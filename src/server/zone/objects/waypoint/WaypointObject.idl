@@ -63,4 +63,8 @@ class WaypointObject extends IntangibleObject {
 		unknown = id;
 	}
 	
+	public void toggleStatus() {
+		active = !active;
+	}
+	
 }

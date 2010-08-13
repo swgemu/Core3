@@ -791,8 +791,16 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
 		playerCreature->setUseCount(incapTime);
 
+		Reference<Task*> oldTask = playerCreature->getPendingTask("incapacitationRecovery");
+
+		if (oldTask != NULL && oldTask->isScheduled()) {
+			oldTask->cancel();
+			playerCreature->removePendingTask("incapacitationRecovery");
+		}
+
 		Reference<Task*> task = new PlayerIncapacitationRecoverTask(playerCreature, false);
 		task->schedule(incapTime * 1000);
+		playerCreature->addPendingTask("incapacitationRecovery", task);
 
 		ParameterizedStringId stringId;
 

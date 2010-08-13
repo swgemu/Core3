@@ -40,6 +40,11 @@ public:
 		try {
 			Locker playerLocker(player);
 
+			player->removePendingTask("incapacitationRecovery");
+
+			if (!player->isIncapacitated())
+				return;
+
 			int health = player->getHAM(CreatureAttribute::HEALTH);
 
 			if (health < 0)
