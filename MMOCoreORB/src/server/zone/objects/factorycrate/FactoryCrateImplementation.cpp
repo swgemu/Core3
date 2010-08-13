@@ -36,7 +36,7 @@ void FactoryCrateImplementation::sendTo(SceneObject* player, bool doClose) {
 		return;
 
 	// Scene Create
-	BaseMessage* create = new SceneObjectCreateMessage(getObjectID(), 0xAB8F5876);
+	BaseMessage* create = new SceneObjectCreateMessage(_this);
 	player->sendMessage(create);
 
 	if (parent != NULL) {
