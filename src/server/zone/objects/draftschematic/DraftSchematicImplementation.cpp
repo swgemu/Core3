@@ -93,7 +93,7 @@ void DraftSchematicImplementation::sendDraftSlotsTo(PlayerCreature* player) {
 
 	msg->insertInt(schematicTemplate->getComplexity()); // ex: 3
 	msg->insertInt(schematicTemplate->getSize()); // ex: 1
-	msg->insertByte(1);
+	msg->insertByte(2);
 
 	insertIngredients(msg);
 

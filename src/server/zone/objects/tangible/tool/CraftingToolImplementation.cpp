@@ -467,7 +467,7 @@ void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature
 		if (slot != NULL)
 			slot->insertToMessage(objMsg);
 	}
-	//objMsg->insertShort(0);
+	insertShort(0);
 
 	player->sendMessage(objMsg);
 }
