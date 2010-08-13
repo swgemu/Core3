@@ -47,14 +47,39 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../tangible/TangibleObjectMessage3.h"
-
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 
-class FactoryCrateObjectMessage3 : public TangibleObjectMessage3 {
+class FactoryCrateObjectMessage3 : public BaseLineMessage {
 public:
-	FactoryCrateObjectMessage3(FactoryCrate* tano)
-			: TangibleObjectMessage3(tano, 0x46435954, 0x0B) {
+	FactoryCrateObjectMessage3(FactoryCrate* crate, uint32 objType = 0x46435954, uint16 opcnt = 0x0B)
+		: BaseLineMessage(crate->getObjectID(), objType, 3, opcnt) {
+
+		insertFloat(crate->getComplexity());
+
+		insertStringId(crate->getObjectName());
+
+		insertInt(crate->getVolume());
+
+		String app;
+		crate->getCustomizationString(app);
+		insertAscii(app);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(crate->getOptionsBitmask());
+
+		int count = crate->getUseCount();
+
+		if (count <= 1)
+			count = 0;
+
+		insertInt(count); //item count
+
+		insertInt(int(crate->getConditionDamage()));
+		insertInt(crate->getMaxCondition());
+
+		insertByte(crate->getUnknownByte());
 
 		setSize();
 	}

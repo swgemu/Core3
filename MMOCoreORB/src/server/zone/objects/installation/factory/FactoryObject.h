@@ -155,6 +155,8 @@ private:
 
 	void stopFactory(const String& message, const String& tt, const String& to, const int di);
 
+	void stopFactory(TangibleObject* ingredient);
+
 public:
 	void createNewObject();
 
@@ -164,6 +166,10 @@ private:
 	FactoryCrate* createNewFactoryCrate(unsigned int type, TangibleObject* prototype);
 
 	bool removeIngredientsFromHopper(ManufactureSchematic* schematic);
+
+	VectorMap<ManagedReference<TangibleObject* >, int> collectUniqueIngredients(ManufactureSchematic* schematic);
+
+	TangibleObject* findMatchInInputHopper(SceneObject* inputHopper, TangibleObject* ingredient);
 
 public:
 	FactoryObject* _this;

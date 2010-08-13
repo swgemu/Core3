@@ -430,6 +430,26 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 	updateToDatabase();
 }
 
+void FactoryObjectImplementation::stopFactory(TangibleObject* ingredient) {
+
+	if(ingredient->isResourceContainer()) {
+
+		ResourceContainer* rcnoObject = (ResourceContainer*) ingredient;
+
+		if(rcnoObject->getSpawnName() == "")
+			stopFactory("manf_no_unknown_resource", getObjectName()->getStringID(), "", -1);
+		else
+			stopFactory("manf_no_named_resource", getObjectName()->getStringID(), rcnoObject->getSpawnName(), -1);
+
+	} else {
+
+		if(ingredient->getCustomObjectName().toString() == "")
+			stopFactory("manf_no_component", getObjectName()->getStringID(), ingredient->getObjectName()->getStringID(), -1);
+		else
+			stopFactory("manf_no_component", getObjectName()->getStringID(), ingredient->getCustomObjectName().toString(), -1);
+	}
+}
+
 void FactoryObjectImplementation::createNewObject() {
 
 	/// Pre: _this locked
@@ -480,6 +500,8 @@ void FactoryObjectImplementation::createNewObject() {
 				stopFactory("manf_error", "", "", -1);
 
 			currentRunCount++;
+		} else {
+
 		}
 
 		updateToDatabase();
@@ -557,6 +579,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 	}
 
 	crate->setPrototype(protoclone);
+	crate->setCustomObjectName(protoclone->getCustomObjectName(), false);
 
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
@@ -574,115 +597,44 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchematic* schematic) {
 	/// List Ingredients
 
-	VectorMap<SceneObject*, int> alteredObjects;
 	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
 
-	if(inputHopper == NULL)
+	if(inputHopper == NULL) {
+		stopFactory("manf_error_5", "", "", -1);
 		return false;
-
-	for (int i = 0; i < schematic->getFactoryIngredientsSize(); ++i) {
-
-		ManagedReference<SceneObject*> ingredient =
-				(SceneObject*) schematic->getFactoryIngredient(i);
-
-		if (ingredient == NULL)
-			return false;
-
-		bool found = false;
-
-		for(int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
-
-			ManagedReference<SceneObject* > object = inputHopper->getContainerObject(i);
-
-			if(object == NULL)
-				continue;
-
-			if(ingredient->isResourceContainer() && object->isResourceContainer()) {
-
-				ResourceContainer* rcnoIngredient = (ResourceContainer*) ingredient.get();
-				ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
-
-				if(rcnoIngredient == NULL || rcnoObject == NULL) {
-					error("NULL ingredient in removeIngredientsFromHopper");
-					continue;
-				}
-
-				if(rcnoIngredient->getSpawnObject() == NULL || rcnoObject->getSpawnObject() == NULL) {
-					error("NULL resource SpawnObject in removeIngredientsFromHopper");
-					continue;
-				}
-
-				if(rcnoIngredient->getSpawnName() == rcnoObject->getSpawnName()) {
-System::out << "Needs: " << rcnoIngredient->getSpawnName() << ":" << rcnoIngredient->getQuantity() << " Found: " << rcnoObject->getSpawnName() << " " << rcnoObject->getQuantity() << endl;
-
-					int neededQuantity = rcnoIngredient->getQuantity();
-
-					if(alteredObjects.contains(rcnoObject))
-						neededQuantity += alteredObjects.get(rcnoObject);
-
-					if(neededQuantity > rcnoObject->getQuantity()) {
-
-						if(rcnoObject->getSpawnName() != "")
-							stopFactory("manf_no_named_resource", getObjectName()->getStringID(), rcnoObject->getSpawnName(), -1);
-						else
-							stopFactory("manf_no_unknown_resource", getObjectName()->getStringID(), "", -1);
-
-						return false;
-					}
-
-					found = true;
-					alteredObjects.put(rcnoObject, neededQuantity);
-					break;
-				}
-
-			} else {
-
-				if(ingredient->isTangibleObject() && object->isTangibleObject()) {
-
-					TangibleObject* tanoIngredient = (TangibleObject*) ingredient.get();
-					TangibleObject* tanoObject = (TangibleObject*) object.get();
-
-					if(tanoIngredient->getCraftersSerial() == tanoObject->getCraftersSerial()) {
-System::out << tanoObject->getObjectNameStringIdName() << " " << tanoObject->getUseCount() << endl;
-
-						int neededQuantity = tanoIngredient->getUseCount();
-
-						if(alteredObjects.contains(tanoObject))
-							neededQuantity += alteredObjects.get(tanoObject);
-
-						if(neededQuantity >= tanoObject->getUseCount()) {
-
-							if(tanoObject->getCustomObjectName().toString() == "")
-								stopFactory("manf_no_component", getObjectName()->getStringID(), tanoObject->getObjectName()->getStringID(), -1);
-							else
-								stopFactory("manf_no_component", getObjectName()->getStringID(), tanoObject->getCustomObjectName().toString(), -1);
-
-							return false;
-						}
-
-						found = true;
-						alteredObjects.put(tanoObject, neededQuantity);
-						break;
-					}
-				}
-			}
-		}
-
-		if(!found)
-			return false;
 	}
 
-	for(int i = 0; i < alteredObjects.size(); ++i) {
+	VectorMap<ManagedReference<TangibleObject* >, int> uniqueIngredients = collectUniqueIngredients(schematic);
+	VectorMap<TangibleObject*, int> usableIngredients;
 
-		ManagedReference<SceneObject* > object = alteredObjects.elementAt(i).getKey();
-		int quantity = alteredObjects.get(i);
+	for (int i = 0; i < uniqueIngredients.size(); ++i) {
 
-		if(object->isResourceContainer()) {
+		ManagedReference<TangibleObject* > ingredient = uniqueIngredients.elementAt(i).getKey();
 
-			ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
-			int currentQuantity = rcnoObject->getQuantity();
-			rcnoObject->setQuantity(currentQuantity - quantity);
-System::out << rcnoObject->getSpawnName() << " " << currentQuantity << "->" << rcnoObject->getQuantity() << endl;
+		if(ingredient == NULL) {
+			error("NULL ingredient in removeIngredientsFromHopper");
+			continue;
+		}
+
+		ManagedReference<TangibleObject*> usableObject = findMatchInInputHopper(inputHopper, ingredient);
+
+		if(usableObject == NULL || !usableObject->isTangibleObject()) {
+			stopFactory(ingredient);
+			return false;
+		}
+
+		usableIngredients.put(usableObject, ingredient->getUseCount());
+	}
+
+	for(int i = 0; i < usableIngredients.size(); ++i) {
+
+		ManagedReference<TangibleObject* > ingredient = usableIngredients.elementAt(i).getKey();
+
+		if(ingredient->isResourceContainer()) {
+
+			ResourceContainer* rcnoObject = (ResourceContainer*) ingredient.get();
+			rcnoObject->setQuantity(rcnoObject->getQuantity() - usableIngredients.get(i));
+
 			ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(rcnoObject);
 			rcnod3->setQuantity(rcnoObject->getQuantity());
 			rcnod3->close();
@@ -690,16 +642,83 @@ System::out << rcnoObject->getSpawnName() << " " << currentQuantity << "->" << r
 
 		} else {
 
-			TangibleObject* tanoObject = (TangibleObject*) object.get();
-			int currentQuantity = tanoObject->getUseCount();
-			tanoObject->setUseCount(currentQuantity - quantity);
-System::out << tanoObject->getObjectNameStringIdName() << " " << currentQuantity << "->" << tanoObject->getUseCount() << endl;
-			TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(tanoObject);
-			dtano3->setQuantity(tanoObject->getUseCount());
+			ingredient->setUseCount(ingredient->getUseCount() - usableIngredients.get(i));
+
+			TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(ingredient);
+			dtano3->setQuantity(ingredient->getUseCount());
 			dtano3->close();
 			broadcastMessage(dtano3, true);
 		}
 	}
 
 	return true;
+}
+
+VectorMap<ManagedReference<TangibleObject* >, int>  FactoryObjectImplementation::collectUniqueIngredients(ManufactureSchematic* schematic) {
+
+	VectorMap<ManagedReference<TangibleObject* >, int> uniqueIngredients;
+
+	for (int i = 0; i < schematic->getFactoryIngredientsSize(); ++i) {
+
+		ManagedReference<TangibleObject*> ingredient = (TangibleObject*) schematic->getFactoryIngredient(i);
+
+		if (ingredient == NULL) {
+			error("NULL ingredient in FactoryObjectImplementation::removeIngredientsFromHopper");
+			continue;
+		}
+
+		int needed = 0;
+
+		if(uniqueIngredients.contains(ingredient))
+			needed += uniqueIngredients.get(ingredient);
+
+		uniqueIngredients.put(ingredient, ingredient->getUseCount());
+	}
+
+	return uniqueIngredients;
+}
+
+TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
+		SceneObject* inputHopper, TangibleObject* ingredient) {
+
+	try {
+
+		ResourceContainer* rcnoIngredient = (ResourceContainer*) ingredient;
+		int quantity = 0;
+
+		for (int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
+
+			ManagedReference<TangibleObject*> object =
+					(TangibleObject*) inputHopper->getContainerObject(i);
+
+			if (object == NULL) {
+				error("NULL hopper object in FactoryObjectImplementation::countItemInInputHopper");
+				continue;
+			}
+
+			if (object->isResourceContainer()) {
+
+				ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
+
+				String test = rcnoIngredient->getSpawnName();
+				String test2 = rcnoObject->getSpawnName();
+
+				if (rcnoIngredient->getSpawnName() == rcnoObject->getSpawnName()
+						&& rcnoIngredient->getQuantity() <= rcnoObject->getQuantity())
+					return object;
+
+			} else {
+
+				if (ingredient->getCraftersSerial() == object->getCraftersSerial()
+						&& ingredient->getUseCount() <= object->getUseCount())
+					return object;
+			}
+		}
+
+		return NULL;
+
+	} catch (...) {
+
+		return NULL;
+	}
 }

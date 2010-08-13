@@ -10,6 +10,10 @@
 #include "server/zone/packets/factory/FactoryCrateObjectMessage6.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/packets/scene/SceneObjectCreateMessage.h"
+#include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
+#include "server/zone/packets/scene/SceneObjectCloseMessage.h"
+#include "server/zone/packets/scene/UpdateContainmentMessage.h"
 
 void FactoryCrateImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -19,6 +23,36 @@ void FactoryCrateImplementation::initializeTransientMembers() {
 
 void FactoryCrateImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	setOptionsBitmask(0x2100);
+}
+
+void FactoryCrateImplementation::sendTo(SceneObject* player, bool doClose) {
+	if (isStaticObject())
+		return;
+
+
+	if (getParent() == NULL)
+		return;
+
+	// Scene Create
+	BaseMessage* create = new SceneObjectCreateMessage(getObjectID(), 0xAB8F5876);
+	player->sendMessage(create);
+
+	if (parent != NULL) {
+		BaseMessage* link = new UpdateContainmentMessage(getObjectID(), getParent()->getObjectID(), 0xFFFFFFFF);
+		player->sendMessage(link);
+	}
+
+	sendBaselinesTo(player);
+
+	sendSlottedObjectsTo(player);
+	sendContainerObjectsTo(player);
+
+	if(doClose) {
+		BaseMessage* msg = new SceneObjectCloseMessage(_this);
+		player->sendMessage(msg);
+	}
 
 }
 
@@ -37,7 +71,7 @@ void FactoryCrateImplementation::sendBaselinesTo(SceneObject* player) {
 
 void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 
-	TangibleObjectImplementation::fillAttributeList(alm, object);
+	//TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	if(prototype != NULL)
 		prototype->fillAttributeList(alm, object);
@@ -70,6 +104,8 @@ bool FactoryCrateImplementation::extractObject() {
 	if(protoclone != NULL) {
 		parent->addObject(protoclone, -1, true);
 		parent->broadcastObject(protoclone, true);
+
+		protoclone->setOptionsBitmask(0x2100);
 
 		setUseCount(getUseCount() - 1);
 		return true;

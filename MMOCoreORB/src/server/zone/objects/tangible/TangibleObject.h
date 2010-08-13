@@ -494,7 +494,7 @@ public:
 
 	CustomizationVariables* getCustomizationVariables();
 
-	int getUseCount();
+	virtual int getUseCount();
 
 	int getMaxCondition();
 

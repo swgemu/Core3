@@ -227,9 +227,9 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pla
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	/*if (craftedSerial != "") {
-		alm->insertAttribute("serial_number", craftedSerial);
-	}*/
+	if (craftersSerial != "") {
+		alm->insertAttribute("serial_number", craftersSerial);
+	}
 
 	if (sliced)
 		alm->insertAttribute("arm_attr", "@obj_attr_n:hacked");
@@ -350,22 +350,22 @@ String ArmorObjectImplementation::getStringType(int type) {
 
 void ArmorObjectImplementation::setProtectionValue(int type, float value) {
 
-	if (type & 0x1)
+	if (type & WeaponObject::KINETIC)
 		setKinetic(value);
-	if (type & 0x2)
+	if (type & WeaponObject::ENERGY)
 		setEnergy(value);
-	if (type & 0x4)
+	if (type & WeaponObject::BLAST)
 		setBlast(value);
-	if (type & 0x8)
+	if (type & WeaponObject::STUN)
 		setStun(value);
-	if (type & 0x10)
+	if (type & WeaponObject::LIGHTSABER)
 		setLightSaber(value);
-	if (type & 0x20)
+	if (type & WeaponObject::HEAT)
 		setHeat(value);
-	if (type & 0x40)
+	if (type & WeaponObject::COLD)
 		setCold(value);
-	if (type & 0x80)
+	if (type & WeaponObject::ACID)
 		setAcid(value);
-	if (type & 0x100)
+	if (type & WeaponObject::ELECTRICITY)
 		setElectricity(value);
 }

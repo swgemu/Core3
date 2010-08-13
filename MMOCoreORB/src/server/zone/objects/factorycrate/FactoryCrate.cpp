@@ -93,12 +93,26 @@ int FactoryCrate::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		return ((FactoryCrateImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void FactoryCrate::updateToDatabaseAllObjects(bool startTask) {
+void FactoryCrate::sendTo(SceneObject* player, bool doClose) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+		method.addBooleanParameter(doClose);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryCrateImplementation*) _impl)->sendTo(player, doClose);
+}
+
+void FactoryCrate::updateToDatabaseAllObjects(bool startTask) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addBooleanParameter(startTask);
 
 		method.executeWithVoidReturn();
@@ -111,7 +125,7 @@ bool FactoryCrate::isFactoryCrate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -123,7 +137,7 @@ void FactoryCrate::setPrototype(TangibleObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -136,11 +150,38 @@ TangibleObject* FactoryCrate::getPrototype() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
 		return ((FactoryCrateImplementation*) _impl)->getPrototype();
+}
+
+String FactoryCrate::getCraftersName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		method.executeWithAsciiReturn(_return_getCraftersName);
+		return _return_getCraftersName;
+	} else
+		return ((FactoryCrateImplementation*) _impl)->getCraftersName();
+}
+
+String FactoryCrate::getCraftersSerial(String& serial) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addAsciiParameter(serial);
+
+		method.executeWithAsciiReturn(_return_getCraftersSerial);
+		return _return_getCraftersSerial;
+	} else
+		return ((FactoryCrateImplementation*) _impl)->getCraftersSerial(serial);
 }
 
 bool FactoryCrate::extractObject() {
@@ -148,7 +189,7 @@ bool FactoryCrate::extractObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -232,25 +273,35 @@ FactoryCrateImplementation::FactoryCrateImplementation() {
 }
 
 void FactoryCrateImplementation::updateToDatabaseAllObjects(bool startTask) {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(106):  		prototype.updateToDatabase();
+	// server/zone/objects/factorycrate/FactoryCrate.idl(116):  		prototype.updateToDatabase();
 	prototype->updateToDatabase();
-	// server/zone/objects/factorycrate/FactoryCrate.idl(108):  		super.updateToDatabaseAllObjects(startTask);
+	// server/zone/objects/factorycrate/FactoryCrate.idl(118):  		super.updateToDatabaseAllObjects(startTask);
 	TangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
 }
 
 bool FactoryCrateImplementation::isFactoryCrate() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(112):  		return true;
+	// server/zone/objects/factorycrate/FactoryCrate.idl(122):  		return true;
 	return true;
 }
 
 void FactoryCrateImplementation::setPrototype(TangibleObject* object) {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(116):  		prototype = object;
+	// server/zone/objects/factorycrate/FactoryCrate.idl(126):  		prototype = object;
 	prototype = object;
 }
 
 TangibleObject* FactoryCrateImplementation::getPrototype() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(120):  		return prototype;
+	// server/zone/objects/factorycrate/FactoryCrate.idl(130):  		return prototype;
 	return prototype;
+}
+
+String FactoryCrateImplementation::getCraftersName() {
+	// server/zone/objects/factorycrate/FactoryCrate.idl(134):  		return prototype.getCraftersName();
+	return prototype->getCraftersName();
+}
+
+String FactoryCrateImplementation::getCraftersSerial(String& serial) {
+	// server/zone/objects/factorycrate/FactoryCrate.idl(138):  		return prototype.getCraftersSerial();
+	return prototype->getCraftersSerial();
 }
 
 /*
@@ -274,18 +325,27 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 9:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
+		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 10:
-		resp->insertBoolean(isFactoryCrate());
+		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
 	case 11:
-		setPrototype((TangibleObject*) inv->getObjectParameter());
+		resp->insertBoolean(isFactoryCrate());
 		break;
 	case 12:
-		resp->insertLong(getPrototype()->_getObjectID());
+		setPrototype((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 13:
+		resp->insertLong(getPrototype()->_getObjectID());
+		break;
+	case 14:
+		resp->insertAscii(getCraftersName());
+		break;
+	case 15:
+		resp->insertAscii(getCraftersSerial(inv->getAsciiParameter(_param0_getCraftersSerial__String_)));
+		break;
+	case 16:
 		resp->insertBoolean(extractObject());
 		break;
 	default:
@@ -307,6 +367,10 @@ int FactoryCrateAdapter::handleObjectMenuSelect(PlayerCreature* player, byte sel
 	return ((FactoryCrateImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
+void FactoryCrateAdapter::sendTo(SceneObject* player, bool doClose) {
+	((FactoryCrateImplementation*) impl)->sendTo(player, doClose);
+}
+
 void FactoryCrateAdapter::updateToDatabaseAllObjects(bool startTask) {
 	((FactoryCrateImplementation*) impl)->updateToDatabaseAllObjects(startTask);
 }
@@ -321,6 +385,14 @@ void FactoryCrateAdapter::setPrototype(TangibleObject* object) {
 
 TangibleObject* FactoryCrateAdapter::getPrototype() {
 	return ((FactoryCrateImplementation*) impl)->getPrototype();
+}
+
+String FactoryCrateAdapter::getCraftersName() {
+	return ((FactoryCrateImplementation*) impl)->getCraftersName();
+}
+
+String FactoryCrateAdapter::getCraftersSerial(String& serial) {
+	return ((FactoryCrateImplementation*) impl)->getCraftersSerial(serial);
 }
 
 bool FactoryCrateAdapter::extractObject() {

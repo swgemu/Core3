@@ -49,6 +49,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -79,7 +93,7 @@ public:
 
 	bool hasKey(const String& key);
 
-	void updateCraftingValues(SceneObject* schematic);
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden);
 
@@ -91,7 +105,9 @@ public:
 
 	bool getAttributeHidden(String& attributeName);
 
-	void addProperty(String& attribute, float value, int precision, String& title);
+	void setPropertyToHidden(const String& property);
+
+	void addProperty(const String& attribute, const float value, const int precision, const String& title);
 
 	int getPropertyCount();
 
@@ -155,7 +171,7 @@ public:
 
 	bool hasKey(const String& key);
 
-	void updateCraftingValues(SceneObject* schematic);
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden);
 
@@ -167,7 +183,9 @@ public:
 
 	bool getAttributeHidden(String& attributeName);
 
-	void addProperty(String& attribute, float value, int precision, String& title);
+	void setPropertyToHidden(const String& property);
+
+	void addProperty(const String& attribute, const float value, const int precision, const String& title);
 
 	int getPropertyCount();
 
@@ -224,7 +242,7 @@ public:
 
 	bool hasKey(const String& key);
 
-	void updateCraftingValues(SceneObject* schematic);
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden);
 
@@ -236,7 +254,9 @@ public:
 
 	bool getAttributeHidden(String& attributeName);
 
-	void addProperty(String& attribute, float value, int precision, String& title);
+	void setPropertyToHidden(const String& property);
+
+	void addProperty(const String& attribute, const float value, const int precision, const String& title);
 
 	int getPropertyCount();
 
@@ -253,6 +273,7 @@ protected:
 	String _param0_getAttributePrecision__String_;
 	String _param0_getAttributeTitle__String_;
 	String _param0_getAttributeHidden__String_;
+	String _param0_setPropertyToHidden__String_;
 	String _param0_addProperty__String_float_int_String_;
 	String _param3_addProperty__String_float_int_String_;
 	String _param0_changeAttributeValue__String_float_;

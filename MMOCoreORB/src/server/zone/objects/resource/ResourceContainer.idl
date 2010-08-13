@@ -108,6 +108,10 @@ class ResourceContainer extends TangibleObject {
 		return stackQuantity;
 	}
 	
+	public int getUseCount() {
+		return getQuantity();
+	}
+	
 	public void setSpawnObject(ResourceSpawn spawn) {
 		spawnObject = spawn;
 	}
