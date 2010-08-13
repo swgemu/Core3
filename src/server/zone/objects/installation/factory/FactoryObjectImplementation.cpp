@@ -557,7 +557,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 		file = "object/factory/factory_crate_furniture.iff";
 	else if(type & SceneObject::INSTALLATION)
 		file = "object/factory/factory_crate_installation.iff";
-	else if(type == SceneObject::WEAPON)
+	else if(type & SceneObject::WEAPON)
 		file = "object/factory/factory_crate_weapon.iff";
 	else
 		file = "object/factory/factory_crate_generic_items.iff";
