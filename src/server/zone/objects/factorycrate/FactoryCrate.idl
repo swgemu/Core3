@@ -124,7 +124,6 @@ class FactoryCrate extends TangibleObject {
 	
 	public void setPrototype(TangibleObject object) {
 		prototype = object;
-		setCustom
 	}
 	
 	public TangibleObject getPrototype() {
