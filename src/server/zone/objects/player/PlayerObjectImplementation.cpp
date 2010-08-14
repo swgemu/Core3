@@ -743,5 +743,12 @@ void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient)
 		dplay9->close();
 		parent->sendMessage(dplay9);
 	}
+}
 
+void PlayerObjectImplementation::toggleCharacterBit(uint32 bit) {
+	if (characterBitmask & bit) {
+		clearCharacterBit(bit, true);
+	} else {
+		setCharacterBit(bit, true);
+	}
 }

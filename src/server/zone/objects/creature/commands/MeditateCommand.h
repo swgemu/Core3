@@ -66,7 +66,7 @@ public:
 			return INVALIDPOSTURE;
 
 		if (!creature->isPlayerCreature())
-					return GENERALERROR;
+			return GENERALERROR;
 
 		// Meditate
 		PlayerCreature* player = (PlayerCreature*) creature;
@@ -78,12 +78,13 @@ public:
 			return GENERALERROR;
 		}
 
+
 		player->sendSystemMessage("teraskasi", "med_begin");
 		player->setMeditateState();
 
 		// Meditate Task
 		Reference<MeditateTask*> meditateTask = new MeditateTask(player);
-		meditateTask->schedule(5000); // healing Time?...
+		meditateTask->schedule(3500); // healing Time?...
 		player->addPendingTask("meditate", meditateTask);
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
