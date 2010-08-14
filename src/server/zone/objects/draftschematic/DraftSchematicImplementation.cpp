@@ -110,6 +110,8 @@ void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* ms
 	for(int i = 0; i < draftSlots->size(); ++i) {
 		draftSlots->get(i)->insertToMessage(msg);
 	}
+
+	msg->insertShort(0);
 }
 
 void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player) {
