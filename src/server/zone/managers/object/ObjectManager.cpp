@@ -605,10 +605,10 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 			object->queueUpdateToDatabaseTask();
 
 	} catch (Exception& e) {
-
+		error(e.getMessage());
+		e.printStackTrace();
 		error("could not deserialize object from DB");
 	} catch (...) {
-		object->unlock();
 		error("could not deserialize object from DB");
 	}
 }
@@ -628,6 +628,8 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 		object->notifyLoadFromDatabase();
 
 	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
 		error("could not deserialize object from DB");
 	} catch (...) {
 		error("could not deserialize object from DB");
