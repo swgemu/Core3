@@ -46,6 +46,7 @@ which carries forward this exception.
 #define ANONCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class AnonCommand : public QueueCommand {
 public:
@@ -62,6 +63,15 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+
+		if (ghost != NULL)
+			ghost->toggleCharacterBit(PlayerObject::ANONYMOUS);
+
 
 		return SUCCESS;
 	}

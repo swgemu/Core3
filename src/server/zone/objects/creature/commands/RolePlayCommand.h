@@ -46,6 +46,8 @@ which carries forward this exception.
 #define ROLEPLAYCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+
 
 class RolePlayCommand : public QueueCommand {
 public:
@@ -62,6 +64,14 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+
+		if (ghost != NULL)
+			ghost->toggleCharacterBit(PlayerObject::ROLEPLAYER);
 
 		return SUCCESS;
 	}

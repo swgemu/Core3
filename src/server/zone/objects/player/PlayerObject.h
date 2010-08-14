@@ -254,6 +254,8 @@ public:
 
 	bool clearCharacterBit(unsigned int bit, bool notifyClient = false);
 
+	void toggleCharacterBit(unsigned int bit);
+
 	VectorMap<String, int>* getXpTypeCapList();
 
 	DeltaVectorMap<String, int>* getExperienceList();
@@ -461,6 +463,8 @@ public:
 
 	bool clearCharacterBit(unsigned int bit, bool notifyClient = false);
 
+	void toggleCharacterBit(unsigned int bit);
+
 	VectorMap<String, int>* getXpTypeCapList();
 
 	DeltaVectorMap<String, int>* getExperienceList();
@@ -601,6 +605,8 @@ public:
 	bool setCharacterBit(unsigned int bit, bool notifyClient);
 
 	bool clearCharacterBit(unsigned int bit, bool notifyClient);
+
+	void toggleCharacterBit(unsigned int bit);
 
 	int getForcePower();
 

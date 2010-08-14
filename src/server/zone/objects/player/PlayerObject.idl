@@ -354,6 +354,7 @@ class PlayerObject extends IntangibleObject {
 	
 	public native boolean setCharacterBit(unsigned int bit, boolean notifyClient = false);
 	public native boolean clearCharacterBit(unsigned int bit, boolean notifyClient = false);
+	public native void toggleCharacterBit(unsigned int bit);
 	
 	@local 
 	public VectorMap<string, int> getXpTypeCapList() {
