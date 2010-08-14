@@ -931,6 +931,9 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 */
 	public native abstract int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
+	public native void notifyAddedToCloseObjects();
+	public native void notifyRemovedFromCloseObjects();
+	
 	
 	public native float getDistanceTo(SceneObject object);
 	

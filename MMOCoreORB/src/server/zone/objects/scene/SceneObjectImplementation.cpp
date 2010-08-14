@@ -875,13 +875,25 @@ void SceneObjectImplementation::removeFromZone() {
 		QuadTreeEntry::removeInRangeObject((int)0);
 	}
 
-	zone->dropSceneObject(_this);
+	//removeInRangeObjects();
 
 	notifiedSentObjects.removeAll();
 
+	Zone* oldZone = zone;
 	zone = NULL;
 
+	oldZone->dropSceneObject(_this);
+
+
 	info("removed from zone");
+}
+
+void SceneObjectImplementation::notifyAddedToCloseObjects() {
+	_this->acquire();
+}
+
+void SceneObjectImplementation::notifyRemovedFromCloseObjects() {
+	_this->release();
 }
 
 int SceneObjectImplementation::canAddObject(SceneObject* object, String& errorDescription) {
