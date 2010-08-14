@@ -384,10 +384,17 @@ void ZoneServerImplementation::startZones() {
 
 			zone->deploy("Zone", i);
 
-			zone->startManagers();
+			//zone->startManagers();
 		}
 
 		zones.add(zone);
+	}
+
+	for (int i = 0; i < zones.size(); ++i) {
+		Zone* zone = zones.get(i);
+
+		if (zone != NULL)
+			zone->startManagers();
 	}
 
 }
@@ -811,19 +818,19 @@ void ZoneServerImplementation::changeUserCap(int amount) {
 }
 
 void ZoneServerImplementation::addTotalSentPacket(int count) {
-	lock();
+//	lock();
 
 	totalSentPackets += count;
 
-	unlock();
+//	unlock();
 }
 
 void ZoneServerImplementation::addTotalResentPacket(int count) {
-	lock();
+	//lock();
 
 	totalResentPackets += count;
 
-	unlock();
+	//unlock();
 }
 
 int ZoneServerImplementation::getConnectionCount() {

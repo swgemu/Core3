@@ -752,6 +752,10 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void notifyAddedToCloseObjects();
+
+	void notifyRemovedFromCloseObjects();
+
 	float getDistanceTo(SceneObject* object);
 
 	float getDistanceTo(Coordinate* coordinate);
@@ -1611,6 +1615,10 @@ public:
 
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void notifyAddedToCloseObjects();
+
+	void notifyRemovedFromCloseObjects();
+
 	float getDistanceTo(SceneObject* object);
 
 	float getDistanceTo(Coordinate* coordinate);
@@ -1977,6 +1985,10 @@ public:
 	unsigned long long getParentID();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void notifyAddedToCloseObjects();
+
+	void notifyRemovedFromCloseObjects();
 
 	float getDistanceTo(SceneObject* object);
 
