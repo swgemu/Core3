@@ -42,7 +42,29 @@
 
 
 object_tangible_food_crafted_dish_vercupti_of_agazza_boleruuee = object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+
+	fillingMin = 72,
+	fillingMax = 48,
+	flavorMin = 360,
+	flavorMax = 720,
+	nutritionMin = 370,
+	nutritionMax = 600,
+	quantityMin = 1,
+	quantityMax = 3,
+	--speciesRestriction = "pets",
+
+	modifiers = { "health", 0, "action", 0, "mind", 0 },
+
+	buffName = "vercupti_of_agazza_boleruuee",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_vercupti_of_agazza_boleruuee, "object/tangible/food/crafted/dish_vercupti_of_agazza_boleruuee.iff")

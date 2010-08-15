@@ -74,6 +74,8 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	maxCondition = tanoData->getMaxCondition();
 
+	useCount = tanoData->getUseCount();
+
 	optionsBitmask = tanoData->getOptionsBitmask();
 	pvpStatusBitmask = tanoData->getPvpStatusBitmask();
 }

@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_drink_vasarian_brandy = object_tangible_food_crafted_shared_drink_vasarian_brandy:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+
+	fillingMin = 55,
+	fillingMax = 33,
+	flavorMin = 1800,
+	flavorMax = 3600,
+	nutritionMin = 150,
+	nutritionMax = 240,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "mind", 0 , "focus", 0 , "willpower", 0 },
+
+	buffName = "food.drink_vasarian_brandy",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_vasarian_brandy, "object/tangible/food/crafted/drink_vasarian_brandy.iff")

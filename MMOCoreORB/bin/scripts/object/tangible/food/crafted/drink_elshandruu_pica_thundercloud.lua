@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_drink_elshandruu_pica_thundercloud = object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 17,
+	fillingMax = 10,
+	flavorMin = 720,
+	flavorMax = 1440,
+	nutritionMin = 7.5,
+	nutritionMax = 12,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "ranged_defense", 0 },
+
+	buffName = "food.drink_elshandruu_pica_thundercloud",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_elshandruu_pica_thundercloud, "object/tangible/food/crafted/drink_elshandruu_pica_thundercloud.iff")

@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_deneelian_fizz_pudding = object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 2,
+
+	fillingMin = 75,
+	fillingMax = 50,
+	flavorMin = 60,
+	flavorMax = 120,
+	nutritionMin = 30,
+	nutritionMax = 45,
+	quantityMin = 1,
+	quantityMax = 4,
+
+	modifiers = { "dodge_attack", 0 },
+
+	buffName = "food.dodge_attack",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_deneelian_fizz_pudding, "object/tangible/food/crafted/dessert_deneelian_fizz_pudding.iff")

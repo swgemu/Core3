@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_synthsteak = object_tangible_food_crafted_shared_dish_synthsteak:new {
+	templateType = CONSUMABLE,
+	
+	duration = 30,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 3,
+
+	fillingMin = 29,
+	fillingMax = 20,
+	flavorMin = 22,
+	flavorMax = 50,
+	nutritionMin = 17,
+	nutritionMax = 31,
+	quantityMin = 4,
+	quantityMax = 7,
+
+	modifiers = { "mitigate_damage", 0 },
+
+	buffName = "food.mitigate_damage",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_synthsteak, "object/tangible/food/crafted/dish_synthsteak.iff")

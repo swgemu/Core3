@@ -42,7 +42,28 @@
 
 
 object_tangible_food_spice_spice_crash_n_burn = object_tangible_food_spice_shared_spice_crash_n_burn:new {
+	templateType = CONSUMABLE,
+	
+	duration = 600,
+	filling = 0,
+	nutrition = 0,
 
+	effectType = 5,
+
+	fillingMin = 0,
+	fillingMax = 0,
+	flavorMin = 0,
+	flavorMax = 0,
+	nutritionMin = 0,
+	nutritionMax = 0,
+	quantityMin = 0,
+	quantityMax = 0,
+
+	modifiers = { "action", -200, "quickness" , -200, "mind", 400, "focus", 200 },
+
+	buffName = "crash_n_burn",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_crash_n_burn, "object/tangible/food/spice/spice_crash_n_burn.iff")

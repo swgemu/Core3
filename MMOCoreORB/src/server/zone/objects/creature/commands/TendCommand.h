@@ -293,7 +293,7 @@ public:
 
 			//TODO: Battle Fatigue
 
-			int healedWounds = creatureTarget->addWounds(attribute, healPower);
+			int healedWounds = creatureTarget->addWounds(attribute, -healPower);
 
 			if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();

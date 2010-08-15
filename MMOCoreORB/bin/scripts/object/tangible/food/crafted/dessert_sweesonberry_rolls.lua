@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_sweesonberry_rolls = object_tangible_food_crafted_shared_dessert_sweesonberry_rolls:new {
+	templateType = CONSUMABLE,
+	
+	duration = 45,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+
+	fillingMin = 22,
+	fillingMax = 18,
+	flavorMin = 1800,
+	flavorMax = 3600,
+	nutritionMin = 375,
+	nutritionMax = 625,
+	quantityMin = 3,
+	quantityMax = 4,
+	speciesRestriction = "pets",
+
+	modifiers = { "health", 0, "action", 0, "mind", 0 },
+
+	buffName = "food.reduce_spice_downtime",
+	buffCRC = 0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_sweesonberry_rolls, "object/tangible/food/crafted/dessert_sweesonberry_rolls.iff")

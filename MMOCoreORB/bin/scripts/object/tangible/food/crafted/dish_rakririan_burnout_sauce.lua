@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_rakririan_burnout_sauce = object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 55,
+	fillingMax = 33,
+	flavorMin = 720,
+	flavorMax = 1560,
+	nutritionMin =7.5,
+	nutritionMax = 12,
+	quantityMin = 2,
+	quantityMax = 5,
+
+	modifiers = { "unarmed_damage", 0 },
+
+	buffName = "food.dish_rakririan_burnout_sauce",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_rakririan_burnout_sauce, "object/tangible/food/crafted/dish_rakririan_burnout_sauce.iff")

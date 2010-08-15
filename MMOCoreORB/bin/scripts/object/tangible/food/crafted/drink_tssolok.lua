@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_drink_tssolok = object_tangible_food_crafted_shared_drink_tssolok:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 2,
+
+	fillingMin = 46,
+	fillingMax = 32,
+	flavorMin = 360,
+	flavorMax = 720,
+	nutritionMin = 15,
+	nutritionMax = 24,
+	quantityMin = 3,
+	quantityMax = 4,
+
+	modifiers = { "accelerate_entertainer_buff", 0,  },
+
+	buffName = "food.accelerate_entertainer_buff",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_tssolok, "object/tangible/food/crafted/drink_tssolok.iff")

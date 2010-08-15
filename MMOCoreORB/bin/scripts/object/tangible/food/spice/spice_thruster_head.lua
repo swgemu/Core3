@@ -42,7 +42,28 @@
 
 
 object_tangible_food_spice_spice_thruster_head = object_tangible_food_spice_shared_spice_thruster_head:new {
+	templateType = CONSUMABLE,
+	
+	duration = 400,
+	filling = 0,
+	nutrition = 0,
 
+	effectType = 5,
+
+	fillingMin = 0,
+	fillingMax = 0,
+	flavorMin = 0,
+	flavorMax = 0,
+	nutritionMin = 0,
+	nutritionMax = 0,
+	quantityMin = 0,
+	quantityMax = 0,
+
+	modifiers = { "mind", 600, "focus" , 200 },
+
+	buffName = "thruster_head",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_thruster_head, "object/tangible/food/spice/spice_thruster_head.iff")

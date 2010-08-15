@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_ahrisa = object_tangible_food_crafted_shared_dish_ahrisa:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+
+	fillingMin = 16,
+	fillingMax = 13,
+	flavorMin = 540,
+	flavorMax = 1080,
+	nutritionMin = 11,
+	nutritionMax = 18,
+	quantityMin = 4,
+	quantityMax = 9,
+
+	modifiers = { "focus", 0 },
+
+	buffName = "food.dish_ahrisa",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_ahrisa, "object/tangible/food/crafted/dish_ahrisa.iff")
