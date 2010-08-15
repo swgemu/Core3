@@ -44,9 +44,8 @@
 object_building_player_player_house_generic_large_style_02 = object_building_player_shared_player_house_generic_large_style_02:new {
 	lotSize = 5,
 	baseMaintenanceRate = 50,
-	allowedZones = {0,1,4,5,6,7,8}
-
-
+	allowedZones = {0,1,4,5,6,7,8},
+	terminalLocation = {6, -6.22, -3.85, -4.4, 0, 1, 0, 0}
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_house_generic_large_style_02, "object/building/player/player_house_generic_large_style_02.iff")

@@ -45,9 +45,8 @@ object_building_player_player_guildhall_generic_style_01 = object_building_playe
 	lotSize = 5,
 	baseMaintenanceRate = 100,
 	mapLocationsType1 = 7,
-	allowedZones = {0,1,4,5,6,7,8}
-
-
+	allowedZones = {0,1,4,5,6,7,8},
+	terminalLocation = {}
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_guildhall_generic_style_01, "object/building/player/player_guildhall_generic_style_01.iff")
