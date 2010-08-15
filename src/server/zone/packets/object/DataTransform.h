@@ -101,7 +101,10 @@ public:
 	}
 
 	void run() {
-		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
+		ManagedReference<PlayerCreature*> object = (PlayerCreature*) client->getPlayer();
+
+		if (object == NULL)
+			return;
 
 		//object->info("received data transform");
 

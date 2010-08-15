@@ -32,7 +32,7 @@ public:
 	}
 
 	void run() {
-		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(targetToTrade);
 

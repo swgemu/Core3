@@ -1692,489 +1692,491 @@ PlayerCreatureImplementation::PlayerCreatureImplementation() {
 	CreatureObjectImplementation::pvpStatusBitmask = CreatureFlag::PLAYER;
 	// server/zone/objects/player/PlayerCreature.idl(197):  		conversatingCreature = null;
 	conversatingCreature = NULL;
-	// server/zone/objects/player/PlayerCreature.idl(199):  		persistentMessages.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerCreature.idl(199):  		spawnedBlueFrog = false;
+	spawnedBlueFrog = false;
+	// server/zone/objects/player/PlayerCreature.idl(201):  		persistentMessages.setNoDuplicateInsertPlan();
 	(&persistentMessages)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/PlayerCreature.idl(200):  		duelList.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerCreature.idl(202):  		duelList.setNoDuplicateInsertPlan();
 	(&duelList)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/PlayerCreature.idl(201):  		consentList.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerCreature.idl(203):  		consentList.setNoDuplicateInsertPlan();
 	(&consentList)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/PlayerCreature.idl(203):  		setOffline();
+	// server/zone/objects/player/PlayerCreature.idl(205):  		setOffline();
 	setOffline();
 }
 
 void PlayerCreatureImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/player/PlayerCreature.idl(210):  		super.loadTemplateData(templateData);
+	// server/zone/objects/player/PlayerCreature.idl(212):  		super.loadTemplateData(templateData);
 	CreatureObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/player/PlayerCreature.idl(212):  		super.pvpStatusBitmask = CreatureFlag.PLAYER;
+	// server/zone/objects/player/PlayerCreature.idl(214):  		super.pvpStatusBitmask = CreatureFlag.PLAYER;
 	CreatureObjectImplementation::pvpStatusBitmask = CreatureFlag::PLAYER;
 }
 
 bool PlayerCreatureImplementation::isAggressiveTo(PlayerCreature* object) {
-	// server/zone/objects/player/PlayerCreature.idl(317):  		return 
-	if ((&duelList)->contains(object) && object->requestedDuelTo(_this))	// server/zone/objects/player/PlayerCreature.idl(318):  			return true;
+	// server/zone/objects/player/PlayerCreature.idl(319):  		return 
+	if ((&duelList)->contains(object) && object->requestedDuelTo(_this))	// server/zone/objects/player/PlayerCreature.idl(320):  			return true;
 	return true;
-	// server/zone/objects/player/PlayerCreature.idl(320):  false;
+	// server/zone/objects/player/PlayerCreature.idl(322):  false;
 	return false;
 }
 
 void PlayerCreatureImplementation::setBadge(unsigned int badge) {
-	// server/zone/objects/player/PlayerCreature.idl(361):  		badges.setBadge(badge);
+	// server/zone/objects/player/PlayerCreature.idl(363):  		badges.setBadge(badge);
 	(&badges)->setBadge(badge);
 }
 
 int PlayerCreatureImplementation::getNumBadges() {
-	// server/zone/objects/player/PlayerCreature.idl(367):  		return badges.getNumBadges();
+	// server/zone/objects/player/PlayerCreature.idl(369):  		return badges.getNumBadges();
 	return (&badges)->getNumBadges();
 }
 
 int PlayerCreatureImplementation::getBadgeTypeCount(byte type) {
-	// server/zone/objects/player/PlayerCreature.idl(371):  		return badges.getTypeCount(type);
+	// server/zone/objects/player/PlayerCreature.idl(373):  		return badges.getTypeCount(type);
 	return (&badges)->getTypeCount(type);
 }
 
 void PlayerCreatureImplementation::resetIncapacitationCounter() {
-	// server/zone/objects/player/PlayerCreature.idl(377):  		incapacitationCounter = 0;
+	// server/zone/objects/player/PlayerCreature.idl(379):  		incapacitationCounter = 0;
 	incapacitationCounter = 0;
 }
 
 void PlayerCreatureImplementation::updateIncapacitationCounter() {
-	// server/zone/objects/player/PlayerCreature.idl(383):  		incapacitationCounter++;
+	// server/zone/objects/player/PlayerCreature.idl(385):  		incapacitationCounter++;
 	incapacitationCounter ++;
-	// server/zone/objects/player/PlayerCreature.idl(385):  	}
-	if (isFirstIncapacitation() || isFirstIncapacitationExpired())	// server/zone/objects/player/PlayerCreature.idl(386):  			resetFirstIncapacitationTime();
+	// server/zone/objects/player/PlayerCreature.idl(387):  	}
+	if (isFirstIncapacitation() || isFirstIncapacitationExpired())	// server/zone/objects/player/PlayerCreature.idl(388):  			resetFirstIncapacitationTime();
 	resetFirstIncapacitationTime();
 }
 
 bool PlayerCreatureImplementation::isFirstIncapacitation() {
-	// server/zone/objects/player/PlayerCreature.idl(390):  		return incapacitationCounter == 1;
+	// server/zone/objects/player/PlayerCreature.idl(392):  		return incapacitationCounter == 1;
 	return incapacitationCounter == 1;
 }
 
 byte PlayerCreatureImplementation::getIncapacitationCounter() {
-	// server/zone/objects/player/PlayerCreature.idl(394):  		return incapacitationCounter;
+	// server/zone/objects/player/PlayerCreature.idl(396):  		return incapacitationCounter;
 	return incapacitationCounter;
 }
 
 void PlayerCreatureImplementation::setLastNpcConvStr(const String& conv) {
-	// server/zone/objects/player/PlayerCreature.idl(399):  		lastNpcConvo = conv;
+	// server/zone/objects/player/PlayerCreature.idl(401):  		lastNpcConvo = conv;
 	lastNpcConvo = conv;
 }
 
 void PlayerCreatureImplementation::setLastNpcConvMessStr(const String& mess) {
-	// server/zone/objects/player/PlayerCreature.idl(403):  		lastNpcConvoMessage = mess;
+	// server/zone/objects/player/PlayerCreature.idl(405):  		lastNpcConvoMessage = mess;
 	lastNpcConvoMessage = mess;
 }
 
 String PlayerCreatureImplementation::getLastNpcConvStr() {
-	// server/zone/objects/player/PlayerCreature.idl(407):  		return lastNpcConvo;
+	// server/zone/objects/player/PlayerCreature.idl(409):  		return lastNpcConvo;
 	return lastNpcConvo;
 }
 
 String PlayerCreatureImplementation::getLastNpcConvMessStr() {
-	// server/zone/objects/player/PlayerCreature.idl(411):  		return lastNpcConvoMessage;
+	// server/zone/objects/player/PlayerCreature.idl(413):  		return lastNpcConvoMessage;
 	return lastNpcConvoMessage;
 }
 
 String PlayerCreatureImplementation::getLastNpcConvOption(int idx) {
-	// server/zone/objects/player/PlayerCreature.idl(415):  		return lastNpcConvoOptions.get(idx);
+	// server/zone/objects/player/PlayerCreature.idl(417):  		return lastNpcConvoOptions.get(idx);
 	return (&lastNpcConvoOptions)->get(idx);
 }
 
 void PlayerCreatureImplementation::addLastNpcConvOptions(const String& option) {
-	// server/zone/objects/player/PlayerCreature.idl(419):  		lastNpcConvoOptions.add(option);
+	// server/zone/objects/player/PlayerCreature.idl(421):  		lastNpcConvoOptions.add(option);
 	(&lastNpcConvoOptions)->add(option);
 }
 
 int PlayerCreatureImplementation::countLastNpcConvOptions() {
-	// server/zone/objects/player/PlayerCreature.idl(423):  		return lastNpcConvoOptions.size();
+	// server/zone/objects/player/PlayerCreature.idl(425):  		return lastNpcConvoOptions.size();
 	return (&lastNpcConvoOptions)->size();
 }
 
 void PlayerCreatureImplementation::clearLastNpcConvOptions() {
-	// server/zone/objects/player/PlayerCreature.idl(427):  		lastNpcConvoOptions.removeAll();
+	// server/zone/objects/player/PlayerCreature.idl(429):  		lastNpcConvoOptions.removeAll();
 	(&lastNpcConvoOptions)->removeAll();
 }
 
 void PlayerCreatureImplementation::setSpawnedBlueFrog() {
-	// server/zone/objects/player/PlayerCreature.idl(431):  		spawnedBlueFrog = true;
+	// server/zone/objects/player/PlayerCreature.idl(433):  		spawnedBlueFrog = true;
 	spawnedBlueFrog = true;
 }
 
 bool PlayerCreatureImplementation::hasSpawnedBlueFrog() {
-	// server/zone/objects/player/PlayerCreature.idl(435):  		return spawnedBlueFrog;
+	// server/zone/objects/player/PlayerCreature.idl(437):  		return spawnedBlueFrog;
 	return spawnedBlueFrog;
 }
 
 void PlayerCreatureImplementation::addToConsentList(const String& name) {
-	// server/zone/objects/player/PlayerCreature.idl(439):  		consentList.put(name);
+	// server/zone/objects/player/PlayerCreature.idl(441):  		consentList.put(name);
 	(&consentList)->put(name);
 }
 
 bool PlayerCreatureImplementation::hasInConsentList(const String& name) {
-	// server/zone/objects/player/PlayerCreature.idl(443):  		return consentList.contains(name);
+	// server/zone/objects/player/PlayerCreature.idl(445):  		return consentList.contains(name);
 	return (&consentList)->contains(name);
 }
 
 void PlayerCreatureImplementation::removeFromConsentList(const String& name) {
-	// server/zone/objects/player/PlayerCreature.idl(447):  		consentList.drop(name);
+	// server/zone/objects/player/PlayerCreature.idl(449):  		consentList.drop(name);
 	(&consentList)->drop(name);
 }
 
 String PlayerCreatureImplementation::getConsentName(int i) {
-	// server/zone/objects/player/PlayerCreature.idl(451):  		return consentList.get(i);
+	// server/zone/objects/player/PlayerCreature.idl(453):  		return consentList.get(i);
 	return (&consentList)->get(i);
 }
 
 int PlayerCreatureImplementation::getConsentListSize() {
-	// server/zone/objects/player/PlayerCreature.idl(455):  		return consentList.size();
+	// server/zone/objects/player/PlayerCreature.idl(457):  		return consentList.size();
 	return (&consentList)->size();
 }
 
 void PlayerCreatureImplementation::addToDuelList(PlayerCreature* targetPlayer) {
-	// server/zone/objects/player/PlayerCreature.idl(460):  		duelList.put(targetPlayer);
+	// server/zone/objects/player/PlayerCreature.idl(462):  		duelList.put(targetPlayer);
 	(&duelList)->put(targetPlayer);
 }
 
 void PlayerCreatureImplementation::removeFromDuelList(PlayerCreature* targetPlayer) {
-	// server/zone/objects/player/PlayerCreature.idl(464):  		duelList.drop(targetPlayer);
+	// server/zone/objects/player/PlayerCreature.idl(466):  		duelList.drop(targetPlayer);
 	(&duelList)->drop(targetPlayer);
 }
 
 PlayerCreature* PlayerCreatureImplementation::getDuelListObject(int index) {
-	// server/zone/objects/player/PlayerCreature.idl(468):  		return duelList.get(index);
+	// server/zone/objects/player/PlayerCreature.idl(470):  		return duelList.get(index);
 	return (&duelList)->get(index);
 }
 
 bool PlayerCreatureImplementation::requestedDuelTo(PlayerCreature* targetPlayer) {
-	// server/zone/objects/player/PlayerCreature.idl(472):  		return duelList.contains(targetPlayer);
+	// server/zone/objects/player/PlayerCreature.idl(474):  		return duelList.contains(targetPlayer);
 	return (&duelList)->contains(targetPlayer);
 }
 
 bool PlayerCreatureImplementation::isDuelListEmpty() {
-	// server/zone/objects/player/PlayerCreature.idl(476):  		return duelList.isEmpty();
+	// server/zone/objects/player/PlayerCreature.idl(478):  		return duelList.isEmpty();
 	return (&duelList)->isEmpty();
 }
 
 int PlayerCreatureImplementation::getDuelListSize() {
-	// server/zone/objects/player/PlayerCreature.idl(480):  		return duelList.size();
+	// server/zone/objects/player/PlayerCreature.idl(482):  		return duelList.size();
 	return (&duelList)->size();
 }
 
 SortedVector<unsigned long long>* PlayerCreatureImplementation::getPersistentMessages() {
-	// server/zone/objects/player/PlayerCreature.idl(487):  		return persistentMessages;
+	// server/zone/objects/player/PlayerCreature.idl(489):  		return persistentMessages;
 	return (&persistentMessages);
 }
 
 void PlayerCreatureImplementation::addPersistentMessage(unsigned long long id) {
-	// server/zone/objects/player/PlayerCreature.idl(491):  		persistentMessages.put(id);
+	// server/zone/objects/player/PlayerCreature.idl(493):  		persistentMessages.put(id);
 	(&persistentMessages)->put(id);
 }
 
 void PlayerCreatureImplementation::dropPersistentMessage(unsigned long long id) {
-	// server/zone/objects/player/PlayerCreature.idl(495):  		persistentMessages.drop(id);
+	// server/zone/objects/player/PlayerCreature.idl(497):  		persistentMessages.drop(id);
 	(&persistentMessages)->drop(id);
 }
 
 PlayerObject* PlayerCreatureImplementation::getPlayerObject() {
-	// server/zone/objects/player/PlayerCreature.idl(499):  		return (PlayerObject) super.getSlottedObject("ghost");
+	// server/zone/objects/player/PlayerCreature.idl(501):  		return (PlayerObject) super.getSlottedObject("ghost");
 	return (PlayerObject*) CreatureObjectImplementation::getSlottedObject("ghost");
 }
 
 bool PlayerCreatureImplementation::isOnline() {
-	// server/zone/objects/player/PlayerCreature.idl(503):  		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
+	// server/zone/objects/player/PlayerCreature.idl(505):  		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
 	return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
 }
 
 bool PlayerCreatureImplementation::isOffline() {
-	// server/zone/objects/player/PlayerCreature.idl(507):  		return onlineStatus == OFFLINE;
+	// server/zone/objects/player/PlayerCreature.idl(509):  		return onlineStatus == OFFLINE;
 	return onlineStatus == OFFLINE;
 }
 
 bool PlayerCreatureImplementation::isLoading() {
-	// server/zone/objects/player/PlayerCreature.idl(511):  		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
+	// server/zone/objects/player/PlayerCreature.idl(513):  		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
 	return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
 }
 
 bool PlayerCreatureImplementation::isLinkDead() {
-	// server/zone/objects/player/PlayerCreature.idl(515):  		return onlineStatus == LINKDEAD;
+	// server/zone/objects/player/PlayerCreature.idl(517):  		return onlineStatus == LINKDEAD;
 	return onlineStatus == LINKDEAD;
 }
 
 bool PlayerCreatureImplementation::isLoggingIn() {
-	// server/zone/objects/player/PlayerCreature.idl(519):  		return onlineStatus == LOGGINGIN;
+	// server/zone/objects/player/PlayerCreature.idl(521):  		return onlineStatus == LOGGINGIN;
 	return onlineStatus == LOGGINGIN;
 }
 
 bool PlayerCreatureImplementation::isLoggingOut() {
-	// server/zone/objects/player/PlayerCreature.idl(523):  		return onlineStatus == LOGGINGOUT;
+	// server/zone/objects/player/PlayerCreature.idl(525):  		return onlineStatus == LOGGINGOUT;
 	return onlineStatus == LOGGINGOUT;
 }
 
 unsigned int PlayerCreatureImplementation::getAccountID() {
-	// server/zone/objects/player/PlayerCreature.idl(527):  		return accountID;
+	// server/zone/objects/player/PlayerCreature.idl(529):  		return accountID;
 	return accountID;
 }
 
 ZoneClientSession* PlayerCreatureImplementation::getClient() {
-	// server/zone/objects/player/PlayerCreature.idl(531):  		return owner;
+	// server/zone/objects/player/PlayerCreature.idl(533):  		return owner;
 	return owner;
 }
 
 byte PlayerCreatureImplementation::getRaceID() {
-	// server/zone/objects/player/PlayerCreature.idl(535):  		return raceID;
+	// server/zone/objects/player/PlayerCreature.idl(537):  		return raceID;
 	return raceID;
 }
 
 unsigned long long PlayerCreatureImplementation::getSavedParentID() {
-	// server/zone/objects/player/PlayerCreature.idl(539):  		return savedParentID;
+	// server/zone/objects/player/PlayerCreature.idl(541):  		return savedParentID;
 	return savedParentID;
 }
 
 int PlayerCreatureImplementation::getSavedZoneID() {
-	// server/zone/objects/player/PlayerCreature.idl(543):  		return savedZoneID;
+	// server/zone/objects/player/PlayerCreature.idl(545):  		return savedZoneID;
 	return savedZoneID;
 }
 
 void PlayerCreatureImplementation::setSavedParentID(unsigned long long id) {
-	// server/zone/objects/player/PlayerCreature.idl(550):  		savedParentID = id;
+	// server/zone/objects/player/PlayerCreature.idl(552):  		savedParentID = id;
 	savedParentID = id;
 }
 
 void PlayerCreatureImplementation::setSavedZoneID(int id) {
-	// server/zone/objects/player/PlayerCreature.idl(554):  		savedZoneID = id;
+	// server/zone/objects/player/PlayerCreature.idl(556):  		savedZoneID = id;
 	savedZoneID = id;
 }
 
 void PlayerCreatureImplementation::setSkillPoints(int points) {
-	// server/zone/objects/player/PlayerCreature.idl(558):  		skillPoints = points;
+	// server/zone/objects/player/PlayerCreature.idl(560):  		skillPoints = points;
 	skillPoints = points;
 }
 
 void PlayerCreatureImplementation::addSkillPoints(int points) {
-	// server/zone/objects/player/PlayerCreature.idl(562):  		skillPoints += points;
+	// server/zone/objects/player/PlayerCreature.idl(564):  		skillPoints += points;
 	skillPoints += points;
 }
 
 void PlayerCreatureImplementation::setClient(ZoneClientSession* cli) {
-	// server/zone/objects/player/PlayerCreature.idl(566):  		owner = cli;
+	// server/zone/objects/player/PlayerCreature.idl(568):  		owner = cli;
 	owner = cli;
 }
 
 void PlayerCreatureImplementation::setBiography(const UnicodeString& bio) {
-	// server/zone/objects/player/PlayerCreature.idl(570):  		biography = bio;
+	// server/zone/objects/player/PlayerCreature.idl(572):  		biography = bio;
 	biography = bio;
 }
 
 void PlayerCreatureImplementation::setRaceID(byte id) {
-	// server/zone/objects/player/PlayerCreature.idl(574):  		raceID = id;
+	// server/zone/objects/player/PlayerCreature.idl(576):  		raceID = id;
 	raceID = id;
 }
 
 void PlayerCreatureImplementation::setConversatingCreature(CreatureObject* creature) {
-	// server/zone/objects/player/PlayerCreature.idl(578):  		conversatingCreature = creature;
+	// server/zone/objects/player/PlayerCreature.idl(580):  		conversatingCreature = creature;
 	conversatingCreature = creature;
 }
 
 void PlayerCreatureImplementation::setClientLastMovementStamp(unsigned int stamp) {
-	// server/zone/objects/player/PlayerCreature.idl(582):  		clientLastMovementStamp = stamp;
+	// server/zone/objects/player/PlayerCreature.idl(584):  		clientLastMovementStamp = stamp;
 	clientLastMovementStamp = stamp;
 }
 
 void PlayerCreatureImplementation::setOffline() {
-	// server/zone/objects/player/PlayerCreature.idl(586):  		onlineStatus 
+	// server/zone/objects/player/PlayerCreature.idl(588):  		onlineStatus 
 	if (isLinkDead()){
 }
-	// server/zone/objects/player/PlayerCreature.idl(590):  = OFFLINE;
+	// server/zone/objects/player/PlayerCreature.idl(592):  = OFFLINE;
 	onlineStatus = OFFLINE;
 }
 
 void PlayerCreatureImplementation::setLoggingOut() {
-	// server/zone/objects/player/PlayerCreature.idl(598):  		onlineStatus = LOGGINGOUT;
+	// server/zone/objects/player/PlayerCreature.idl(600):  		onlineStatus = LOGGINGOUT;
 	onlineStatus = LOGGINGOUT;
 }
 
 void PlayerCreatureImplementation::setAccountID(unsigned int id) {
-	// server/zone/objects/player/PlayerCreature.idl(602):  		accountID = id;
+	// server/zone/objects/player/PlayerCreature.idl(604):  		accountID = id;
 	accountID = id;
 }
 
 void PlayerCreatureImplementation::clearDisconnectEvent() {
-	// server/zone/objects/player/PlayerCreature.idl(606):  		disconnectEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(608):  		disconnectEvent = null;
 	disconnectEvent = NULL;
 }
 
 void PlayerCreatureImplementation::clearRecoveryEvent() {
-	// server/zone/objects/player/PlayerCreature.idl(610):  		recoveryEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(612):  		recoveryEvent = null;
 	recoveryEvent = NULL;
 }
 
 void PlayerCreatureImplementation::addChatRoom(ChatRoom* room) {
-	// server/zone/objects/player/PlayerCreature.idl(614):  		chatRooms.put(room);
+	// server/zone/objects/player/PlayerCreature.idl(616):  		chatRooms.put(room);
 	(&chatRooms)->put(room);
 }
 
 void PlayerCreatureImplementation::removeChatRoom(ChatRoom* room) {
-	// server/zone/objects/player/PlayerCreature.idl(618):  		chatRooms.drop(room);
+	// server/zone/objects/player/PlayerCreature.idl(620):  		chatRooms.drop(room);
 	(&chatRooms)->drop(room);
 }
 
 int PlayerCreatureImplementation::getSkillPoints() {
-	// server/zone/objects/player/PlayerCreature.idl(622):  		return skillPoints;
+	// server/zone/objects/player/PlayerCreature.idl(624):  		return skillPoints;
 	return skillPoints;
 }
 
 bool PlayerCreatureImplementation::hasSuiBox(unsigned int boxID) {
-	// server/zone/objects/player/PlayerCreature.idl(628):  		return suiBoxes.contains(boxID);
+	// server/zone/objects/player/PlayerCreature.idl(630):  		return suiBoxes.contains(boxID);
 	return (&suiBoxes)->contains(boxID);
 }
 
 SuiBox* PlayerCreatureImplementation::getSuiBox(unsigned int boxID) {
-	// server/zone/objects/player/PlayerCreature.idl(632):  		return suiBoxes.get(boxID);
+	// server/zone/objects/player/PlayerCreature.idl(634):  		return suiBoxes.get(boxID);
 	return (&suiBoxes)->get(boxID);
 }
 
 bool PlayerCreatureImplementation::hasSuiBoxWindowType(unsigned int windowType) {
-	// server/zone/objects/player/PlayerCreature.idl(643):  		unsigned int type = 0;
+	// server/zone/objects/player/PlayerCreature.idl(645):  		unsigned int type = 0;
 	unsigned int type = 0;
-	// server/zone/objects/player/PlayerCreature.idl(645):  
-	for (	// server/zone/objects/player/PlayerCreature.idl(645):  		for (int i = 0;
+	// server/zone/objects/player/PlayerCreature.idl(647):  
+	for (	// server/zone/objects/player/PlayerCreature.idl(647):  		for (int i = 0;
 	int i = 0;
 	i < (&suiBoxes)->size();
  ++i) {
-	// server/zone/objects/player/PlayerCreature.idl(646):  			SuiBox sui = suiBoxes.get(i);
+	// server/zone/objects/player/PlayerCreature.idl(648):  			SuiBox sui = suiBoxes.get(i);
 	SuiBox* sui = (&suiBoxes)->get(i);
-	// server/zone/objects/player/PlayerCreature.idl(648):  			type = sui.getWindowType();
+	// server/zone/objects/player/PlayerCreature.idl(650):  			type = sui.getWindowType();
 	type = sui->getWindowType();
-	// server/zone/objects/player/PlayerCreature.idl(650):  		}
-	if (windowType == type)	// server/zone/objects/player/PlayerCreature.idl(651):  				return true;
+	// server/zone/objects/player/PlayerCreature.idl(652):  		}
+	if (windowType == type)	// server/zone/objects/player/PlayerCreature.idl(653):  				return true;
 	return true;
 }
-	// server/zone/objects/player/PlayerCreature.idl(654):  		return false;
+	// server/zone/objects/player/PlayerCreature.idl(656):  		return false;
 	return false;
 }
 
 void PlayerCreatureImplementation::closeSuiWindowType(unsigned int windowType) {
-	// server/zone/objects/player/PlayerCreature.idl(658):  	}
+	// server/zone/objects/player/PlayerCreature.idl(660):  	}
 	if (hasSuiBoxWindowType(windowType)){
-	// server/zone/objects/player/PlayerCreature.idl(659):  			SuiBox sui = getSuiBoxFromWindowType(windowType);
+	// server/zone/objects/player/PlayerCreature.idl(661):  			SuiBox sui = getSuiBoxFromWindowType(windowType);
 	SuiBox* sui = getSuiBoxFromWindowType(windowType);
-	// server/zone/objects/player/PlayerCreature.idl(661):  		}
+	// server/zone/objects/player/PlayerCreature.idl(663):  		}
 	if (sui != NULL){
-	// server/zone/objects/player/PlayerCreature.idl(662):  				sendMessage(sui.generateCloseMessage());
+	// server/zone/objects/player/PlayerCreature.idl(664):  				sendMessage(sui.generateCloseMessage());
 	sendMessage(sui->generateCloseMessage());
-	// server/zone/objects/player/PlayerCreature.idl(663):  				removeSuiBox(sui.getBoxID());
+	// server/zone/objects/player/PlayerCreature.idl(665):  				removeSuiBox(sui.getBoxID());
 	removeSuiBox(sui->getBoxID());
 }
 }
 }
 
 SuiBox* PlayerCreatureImplementation::getSuiBoxFromWindowType(unsigned int windowType) {
-	// server/zone/objects/player/PlayerCreature.idl(669):  		unsigned int type = 0;
+	// server/zone/objects/player/PlayerCreature.idl(671):  		unsigned int type = 0;
 	unsigned int type = 0;
-	// server/zone/objects/player/PlayerCreature.idl(671):  
-	for (	// server/zone/objects/player/PlayerCreature.idl(671):  		for (int i = 0;
+	// server/zone/objects/player/PlayerCreature.idl(673):  
+	for (	// server/zone/objects/player/PlayerCreature.idl(673):  		for (int i = 0;
 	int i = 0;
 	i < (&suiBoxes)->size();
  ++i) {
-	// server/zone/objects/player/PlayerCreature.idl(672):  			SuiBox sui = suiBoxes.get(i);
+	// server/zone/objects/player/PlayerCreature.idl(674):  			SuiBox sui = suiBoxes.get(i);
 	SuiBox* sui = (&suiBoxes)->get(i);
-	// server/zone/objects/player/PlayerCreature.idl(674):  		}
-	if (windowType == sui->getWindowType())	// server/zone/objects/player/PlayerCreature.idl(675):  				return sui;
+	// server/zone/objects/player/PlayerCreature.idl(676):  		}
+	if (windowType == sui->getWindowType())	// server/zone/objects/player/PlayerCreature.idl(677):  				return sui;
 	return sui;
 }
-	// server/zone/objects/player/PlayerCreature.idl(678):  		return null;
+	// server/zone/objects/player/PlayerCreature.idl(680):  		return null;
 	return NULL;
 }
 
 void PlayerCreatureImplementation::addSuiBox(SuiBox* sui) {
-	// server/zone/objects/player/PlayerCreature.idl(682):  		unsigned int key = sui.getBoxID();
+	// server/zone/objects/player/PlayerCreature.idl(684):  		unsigned int key = sui.getBoxID();
 	unsigned int key = sui->getBoxID();
-	// server/zone/objects/player/PlayerCreature.idl(683):  		suiBoxes.put(key, sui);
+	// server/zone/objects/player/PlayerCreature.idl(685):  		suiBoxes.put(key, sui);
 	(&suiBoxes)->put(key, sui);
 }
 
 int PlayerCreatureImplementation::getLotsRemaining() {
-	// server/zone/objects/player/PlayerCreature.idl(687):  		return lotsRemaining;
+	// server/zone/objects/player/PlayerCreature.idl(689):  		return lotsRemaining;
 	return lotsRemaining;
 }
 
 void PlayerCreatureImplementation::setLotsRemaining(int lots) {
-	// server/zone/objects/player/PlayerCreature.idl(691):  		lotsRemaining = lots;
+	// server/zone/objects/player/PlayerCreature.idl(693):  		lotsRemaining = lots;
 	lotsRemaining = lots;
 }
 
 int PlayerCreatureImplementation::getFactionStatus() {
-	// server/zone/objects/player/PlayerCreature.idl(695):  		return factionStatus;
+	// server/zone/objects/player/PlayerCreature.idl(697):  		return factionStatus;
 	return factionStatus;
 }
 
 UnicodeString PlayerCreatureImplementation::getBiography() {
-	// server/zone/objects/player/PlayerCreature.idl(699):  		return biography;
+	// server/zone/objects/player/PlayerCreature.idl(701):  		return biography;
 	return biography;
 }
 
 unsigned int PlayerCreatureImplementation::getClientLastMovementStamp() {
-	// server/zone/objects/player/PlayerCreature.idl(703):  		return clientLastMovementStamp;
+	// server/zone/objects/player/PlayerCreature.idl(705):  		return clientLastMovementStamp;
 	return clientLastMovementStamp;
 }
 
 void PlayerCreatureImplementation::setSurveyTool(SurveyTool* tool) {
-	// server/zone/objects/player/PlayerCreature.idl(711):  		surveyTool = tool;
+	// server/zone/objects/player/PlayerCreature.idl(713):  		surveyTool = tool;
 	surveyTool = tool;
 }
 
 SurveyTool* PlayerCreatureImplementation::getSurveyTool() {
-	// server/zone/objects/player/PlayerCreature.idl(718):  		return surveyTool;
+	// server/zone/objects/player/PlayerCreature.idl(720):  		return surveyTool;
 	return surveyTool;
 }
 
 void PlayerCreatureImplementation::clearTradeContainer() {
-	// server/zone/objects/player/PlayerCreature.idl(723):  		tradeContainer.clear();
+	// server/zone/objects/player/PlayerCreature.idl(725):  		tradeContainer.clear();
 	(&tradeContainer)->clear();
 }
 
 void PlayerCreatureImplementation::setTeachingOrLearning(bool value) {
-	// server/zone/objects/player/PlayerCreature.idl(727):  	 teachingOrLearning = value;
+	// server/zone/objects/player/PlayerCreature.idl(729):  	 teachingOrLearning = value;
 	teachingOrLearning = value;
 }
 
 bool PlayerCreatureImplementation::isTeachingOrLearning() {
-	// server/zone/objects/player/PlayerCreature.idl(732):  	 return teachingOrLearning;
+	// server/zone/objects/player/PlayerCreature.idl(734):  	 return teachingOrLearning;
 	return teachingOrLearning;
 }
 
 CreatureObject* PlayerCreatureImplementation::getConversatingCreature() {
-	// server/zone/objects/player/PlayerCreature.idl(741):  		return conversatingCreature;
+	// server/zone/objects/player/PlayerCreature.idl(743):  		return conversatingCreature;
 	return conversatingCreature;
 }
 
 int PlayerCreatureImplementation::getCenteredBonus() {
-	// server/zone/objects/player/PlayerCreature.idl(745):  		return centeredBonus;
+	// server/zone/objects/player/PlayerCreature.idl(747):  		return centeredBonus;
 	return centeredBonus;
 }
 
 void PlayerCreatureImplementation::setCenteredBonus(int bonus) {
-	// server/zone/objects/player/PlayerCreature.idl(749):  		centeredBonus = bonus;
+	// server/zone/objects/player/PlayerCreature.idl(751):  		centeredBonus = bonus;
 	centeredBonus = bonus;
 }
 
 TradeContainer* PlayerCreatureImplementation::getTradeContainer() {
-	// server/zone/objects/player/PlayerCreature.idl(754):  		return tradeContainer;
+	// server/zone/objects/player/PlayerCreature.idl(756):  		return tradeContainer;
 	return (&tradeContainer);
 }
 
 bool PlayerCreatureImplementation::hasBadge(unsigned int badge) {
-	// server/zone/objects/player/PlayerCreature.idl(758):  		return badges.hasBadge(badge);
+	// server/zone/objects/player/PlayerCreature.idl(760):  		return badges.hasBadge(badge);
 	return (&badges)->hasBadge(badge);
 }
 
 CraftingTool* PlayerCreatureImplementation::getLastCraftingToolUsed() {
-	// server/zone/objects/player/PlayerCreature.idl(762):  		return lastCraftingToolUsed;
+	// server/zone/objects/player/PlayerCreature.idl(764):  		return lastCraftingToolUsed;
 	return lastCraftingToolUsed;
 }
 
 void PlayerCreatureImplementation::setLastCraftingToolUsed(CraftingTool* tool) {
-	// server/zone/objects/player/PlayerCreature.idl(766):  		lastCraftingToolUsed = tool;
+	// server/zone/objects/player/PlayerCreature.idl(768):  		lastCraftingToolUsed = tool;
 	lastCraftingToolUsed = tool;
 }
 

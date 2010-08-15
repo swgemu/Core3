@@ -39,7 +39,7 @@ public:
 	}
 
 	void run() {
-		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
 
 		ManagedReference<SceneObject*> terminal = server->getZoneServer()->getObject(terminalObjectID);
 

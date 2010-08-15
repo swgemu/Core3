@@ -196,6 +196,8 @@ class PlayerCreature extends CreatureObject {
 		
 		conversatingCreature = null;
 		
+		spawnedBlueFrog = false;
+		
 		persistentMessages.setNoDuplicateInsertPlan();
 		duelList.setNoDuplicateInsertPlan();
 		consentList.setNoDuplicateInsertPlan();
