@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_thakitillo = object_tangible_food_crafted_shared_dish_thakitillo:new {
+	templateType = CONSUMABLE,
+	
+	duration = 30,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 47,
+	fillingMax = 33,
+	flavorMin = 540,
+	flavorMax = 1080,
+	nutritionMin = 30,
+	nutritionMax = 50,
+	quantityMin = 1,
+	quantityMax = 3,
+
+	modifiers = { "knockdown_defense", 0 },
+
+	buffName = "food.dish_thakitillo",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_thakitillo, "object/tangible/food/crafted/dish_thakitillo.iff")

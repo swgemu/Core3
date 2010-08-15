@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_kiwik_clusjo_swirl = object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl:new {
+	templateType = CONSUMABLE,
+	
+	duration = 45,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+	
+	fillingMin = 41,
+	fillingMax = 28,
+	flavorMin = 450,
+	flavorMax = 1050,
+	nutritionMin = 225,
+	nutritionMax = 375,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "quickness", 0, "stamina", 0 },
+
+	buffName = "food.dessert_kiwik_clusjo_swirl",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_kiwik_clusjo_swirl, "object/tangible/food/crafted/dessert_kiwik_clusjo_swirl.iff")

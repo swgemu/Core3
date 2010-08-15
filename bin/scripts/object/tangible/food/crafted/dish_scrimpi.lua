@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_scrimpi = object_tangible_food_crafted_shared_dish_scrimpi:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+
+	fillingMin = 35,
+	fillingMax = 25,
+	flavorMin = 1800,
+	flavorMax = 3600,
+	nutritionMin = 1580,
+	nutritionMax = 240,
+	quantityMin = 3,
+	quantityMax = 4,
+
+	modifiers = { "quickness", 0 },
+
+	buffName = "food.dish_scrimpi",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_scrimpi, "object/tangible/food/crafted/dish_scrimpi.iff")

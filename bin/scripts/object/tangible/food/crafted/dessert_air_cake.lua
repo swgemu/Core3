@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_air_cake = object_tangible_food_crafted_shared_dessert_air_cake:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 2,
+
+	fillingMin = 11,
+	fillingMax = 7,
+	flavorMin = 720,
+	flavorMax = 1440,
+	nutritionMin = 15,
+	nutritionMax = 25,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "dodge_attack", 0 },
+
+	buffName = "food.dodge_attack",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_air_cake, "object/tangible/food/crafted/dessert_air_cake.iff")

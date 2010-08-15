@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_terratta = object_tangible_food_crafted_shared_dish_terratta:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 29,
+	fillingMax = 20,
+	flavorMin = 720,
+	flavorMax = 1440,
+	nutritionMin = 7.5,
+	nutritionMax = 12,
+	quantityMin = 2,
+	quantityMax = 4,
+
+	modifiers = { "camouflage", 0 },
+
+	buffName = "food.dish_terratta",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_terratta, "object/tangible/food/crafted/dish_terratta.iff")

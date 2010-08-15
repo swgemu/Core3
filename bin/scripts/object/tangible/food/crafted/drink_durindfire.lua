@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_drink_durindfire = object_tangible_food_crafted_shared_drink_durindfire:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 17,
+	fillingMax = 10,
+	flavorMin = 720,
+	flavorMax = 1440,
+	nutritionMin = 7.5,
+	utritionMax = 12,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "stun_defense", 0 },
+
+	buffName = "food.drink_durindfire",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_durindfire, "object/tangible/food/crafted/drink_durindfire.iff")

@@ -211,13 +211,13 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 		String attribute = modifiers.elementAt(i).getKey();
 		float value = modifiers.elementAt(i).getValue();
 
-		uint8 attribtue = CreatureAttribute::getAttribute(attribute);
+		uint8 hamAttribute = CreatureAttribute::getAttribute(attribute);
 
 		if (!isSpice())
 			value = nutrition;
 
 		if (!skillModifiers)
-			buff->setAttributeModifier(Integer::valueOf(attribute), (int)value);
+			buff->setAttributeModifier(hamAttribute, (int)value);
 		else
 			buff->setSkillModifier(attribute, (int)value);
 	}

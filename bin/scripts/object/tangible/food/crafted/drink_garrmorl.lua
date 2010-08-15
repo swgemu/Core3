@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_drink_garrmorl = object_tangible_food_crafted_shared_drink_garrmorl:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+
+	fillingMin = 55,
+	fillingMax = 33,
+	flavorMin = 1800,
+	flavorMax = 3600,
+	nutritionMin = 150,
+	nutritionMax = 240,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "health", 0, "strength", 0, "constitution", 0 },
+
+	buffName = "food.drink_garrmorl",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_garrmorl, "object/tangible/food/crafted/drink_garrmorl.iff")

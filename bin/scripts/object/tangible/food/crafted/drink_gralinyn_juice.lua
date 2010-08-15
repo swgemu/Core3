@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_drink_gralinyn_juice = object_tangible_food_crafted_shared_drink_gralinyn_juice:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 29,
+	fillingMax = 19,
+	flavorMin = 720,
+	flavorMax = 1440,
+	nutritionMin = 7.5,
+	nutritionMax = 12,
+	quantityMin = 6,
+	quantityMax = 12,
+
+	modifiers = { "creature_hit_bonus", 0 },
+
+	buffName = "food.drink_gralinyn_juice",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_gralinyn_juice, "object/tangible/food/crafted/drink_gralinyn_juice.iff")

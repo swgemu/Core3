@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_cavaellin_creams = object_tangible_food_crafted_shared_dessert_cavaellin_creams:new {
+	templateType = CONSUMABLE,
+	
+	duration = 45,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 3,
+
+	fillingMin = 29,
+	fillingMax = 19,
+	flavorMin = 1,
+	flavorMax = 1,
+	nutritionMin = 44,
+	nutritionMax = 72,
+	quantityMin = 1,
+	quantityMax = 6,
+
+	modifiers = { "incap_recovery", 0 },
+
+	buffName = "food.incap_recovery",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_cavaellin_creams, "object/tangible/food/crafted/dessert_cavaellin_creams.iff")

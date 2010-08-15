@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_karkan_ribenes = object_tangible_food_crafted_shared_dish_karkan_ribenes:new {
+	templateType = CONSUMABLE,
+	
+	duration = 30,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 0,
+
+	fillingMin = 3,
+	fillingMax = 2,
+	flavorMin = 0,
+	flavorMax = 0,
+	nutritionMin = 55,
+	nutritionMax = 90,
+	quantityMin = 2,
+	quantityMax = 5,
+	speciesRestriction = "2",
+
+	modifiers = { "enhanced_regen", 0 },
+
+	buffName = "",
+	buffCRC = 0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_karkan_ribenes, "object/tangible/food/crafted/dish_karkan_ribenes.iff")

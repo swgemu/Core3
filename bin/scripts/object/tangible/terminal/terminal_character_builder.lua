@@ -113,7 +113,9 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 		"Consumable",
 		{
 			"Dweezel", "object/tangible/food/crafted/dessert_dweezel.iff",
-			"Pikatta Pie", "object/tangible/food/crafted/dessert_pikatta_pie.iff"
+			"Pikatta Pie", "object/tangible/food/crafted/dessert_pikatta_pie.iff",
+			"Muon Gold", "object/tangible/food/spice/spice_muon_gold.iff", 
+			"Neutron Pixie", "object/tangible/food/spice/spice_neutron_pixey.iff"
 		},
 		"Weapons",
 		{

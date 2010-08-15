@@ -42,7 +42,28 @@
 
 
 object_tangible_food_spice_spice_gunjack = object_tangible_food_spice_shared_spice_gunjack:new {
+	templateType = CONSUMABLE,
+	
+	duration = 600,
+	filling = 0,
+	nutrition = 0,
 
+	effectType = 5,
+
+	fillingMin = 0,
+	fillingMax = 0,
+	flavorMin = 0,
+	flavorMax = 0,
+	nutritionMin = 0,
+	nutritionMax = 0,
+	quantityMin = 0,
+	quantityMax = 0,
+
+	modifiers = { "strength", 500, "quickness" , -200, "focus", -100 },
+
+	buffName = "gunjack",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_gunjack, "object/tangible/food/spice/spice_gunjack.iff")

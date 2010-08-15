@@ -33,6 +33,8 @@ protected:
 	uint32 optionsBitmask;
 	uint32 pvpStatusBitmask;
 
+	int useCount;
+
 	//CustomizationVariableMapping customizationVariableMapping;
 
 public:
@@ -76,6 +78,10 @@ public:
 
 	inline int getLevel() const {
 		return level;
+	}
+
+	inline int getUseCount() const {
+		return useCount;
 	}
 
     inline uint16 getPlayerUseMask() const {

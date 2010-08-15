@@ -42,7 +42,28 @@
 
 
 object_tangible_food_spice_spice_sedative_h4b = object_tangible_food_spice_shared_spice_sedative_h4b:new {
+	templateType = CONSUMABLE,
+	
+	duration = 600,
+	filling = 0,
+	nutrition = 0,
 
+	effectType = 5,
+
+	fillingMin = 0,
+	fillingMax = 0,
+	flavorMin = 0,
+	flavorMax = 0,
+	nutritionMin = 0,
+	nutritionMax = 0,
+	quantityMin = 0,
+	quantityMax = 0,
+
+	modifiers = { "health" , 400, "constitution" , 300, "mind", -100, "focus", -100 },
+
+	buffName = "sedative_h4b",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_sedative_h4b, "object/tangible/food/spice/spice_sedative_h4b.iff")

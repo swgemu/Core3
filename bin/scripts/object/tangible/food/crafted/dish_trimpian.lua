@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_trimpian = object_tangible_food_crafted_shared_dish_trimpian:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 2,
+
+	fillingMin = 17,
+	fillingMax = 10,
+	flavorMin = 1200,
+	flavorMax = 2400,
+	nutritionMin = 14,
+	nutritionMax = 26,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "fire_resist", 0 },
+
+	buffName = "food.fire_resist",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_trimpian, "object/tangible/food/crafted/dish_trimpian.iff")
