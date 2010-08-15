@@ -13,8 +13,8 @@
  */
 
 SuiTransferBox::SuiTransferBox(PlayerCreature* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiTransferBoxImplementation(player, windowType);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new SuiTransferBoxImplementation(player, windowType));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SuiTransferBox::SuiTransferBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -25,7 +25,7 @@ SuiTransferBox::~SuiTransferBox() {
 
 
 BaseMessage* SuiTransferBox::generateMessage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +33,11 @@ BaseMessage* SuiTransferBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiTransferBoxImplementation*) _impl)->generateMessage();
+		return ((SuiTransferBoxImplementation*) _getImplementation())->generateMessage();
 }
 
 void SuiTransferBox::addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +49,11 @@ void SuiTransferBox::addFrom(const String& from, const String& startingFrom, con
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiTransferBoxImplementation*) _impl)->addFrom(from, startingFrom, inputFrom, rFrom);
+		((SuiTransferBoxImplementation*) _getImplementation())->addFrom(from, startingFrom, inputFrom, rFrom);
 }
 
 void SuiTransferBox::addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -65,11 +65,11 @@ void SuiTransferBox::addTo(const String& to, const String& startingTo, const Str
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiTransferBoxImplementation*) _impl)->addTo(to, startingTo, inputTo, rTo);
+		((SuiTransferBoxImplementation*) _getImplementation())->addTo(to, startingTo, inputTo, rTo);
 }
 
 void SuiTransferBox::setUsingObject(SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -78,11 +78,11 @@ void SuiTransferBox::setUsingObject(SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiTransferBoxImplementation*) _impl)->setUsingObject(obj);
+		((SuiTransferBoxImplementation*) _getImplementation())->setUsingObject(obj);
 }
 
 SceneObject* SuiTransferBox::getUsingObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +90,11 @@ SceneObject* SuiTransferBox::getUsingObject() {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SuiTransferBoxImplementation*) _impl)->getUsingObject();
+		return ((SuiTransferBoxImplementation*) _getImplementation())->getUsingObject();
 }
 
 bool SuiTransferBox::isTransferBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,7 +102,7 @@ bool SuiTransferBox::isTransferBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiTransferBoxImplementation*) _impl)->isTransferBox();
+		return ((SuiTransferBoxImplementation*) _getImplementation())->isTransferBox();
 }
 
 /*
@@ -112,6 +112,7 @@ bool SuiTransferBox::isTransferBox() {
 SuiTransferBoxImplementation::SuiTransferBoxImplementation(DummyConstructorParameter* param) : SuiBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiTransferBoxImplementation::~SuiTransferBoxImplementation() {
 }
@@ -138,6 +139,11 @@ DistributedObjectStub* SuiTransferBoxImplementation::_getStub() {
 SuiTransferBoxImplementation::operator const SuiTransferBox*() {
 	return _this;
 }
+
+TransactionalObject* SuiTransferBoxImplementation::clone() {
+	return (TransactionalObject*) new SuiTransferBoxImplementation(*this);
+}
+
 
 void SuiTransferBoxImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -27,8 +27,8 @@
  */
 
 BuildingObject::BuildingObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new BuildingObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BuildingObject::BuildingObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -39,7 +39,7 @@ BuildingObject::~BuildingObject() {
 
 
 void BuildingObject::createChildObjects() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +47,11 @@ void BuildingObject::createChildObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->createChildObjects();
+		((BuildingObjectImplementation*) _getImplementation())->createChildObjects();
 }
 
 void BuildingObject::createCellObjects() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,19 +59,19 @@ void BuildingObject::createCellObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->createCellObjects();
+		((BuildingObjectImplementation*) _getImplementation())->createCellObjects();
 }
 
 void BuildingObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((BuildingObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void BuildingObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +79,11 @@ void BuildingObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->initializeTransientMembers();
+		((BuildingObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +92,11 @@ void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->sendContainerObjectsTo(player);
+		((BuildingObjectImplementation*) _getImplementation())->sendContainerObjectsTo(player);
 }
 
 int BuildingObject::notifyStructurePlaced(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,11 +105,11 @@ int BuildingObject::notifyStructurePlaced(PlayerCreature* player) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->notifyStructurePlaced(player);
+		return ((BuildingObjectImplementation*) _getImplementation())->notifyStructurePlaced(player);
 }
 
 bool BuildingObject::checkRequisitesForPlacement(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -118,11 +118,11 @@ bool BuildingObject::checkRequisitesForPlacement(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->checkRequisitesForPlacement(player);
+		return ((BuildingObjectImplementation*) _getImplementation())->checkRequisitesForPlacement(player);
 }
 
 void BuildingObject::removeFromZone() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -130,27 +130,27 @@ void BuildingObject::removeFromZone() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->removeFromZone();
+		((BuildingObjectImplementation*) _getImplementation())->removeFromZone();
 }
 
 void BuildingObject::notifyInsert(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->notifyInsert(obj);
+		((BuildingObjectImplementation*) _getImplementation())->notifyInsert(obj);
 }
 
 void BuildingObject::notifyDissapear(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->notifyDissapear(obj);
+		((BuildingObjectImplementation*) _getImplementation())->notifyDissapear(obj);
 }
 
 void BuildingObject::notifyInsertToZone(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -159,43 +159,43 @@ void BuildingObject::notifyInsertToZone(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->notifyInsertToZone(object);
+		((BuildingObjectImplementation*) _getImplementation())->notifyInsertToZone(object);
 }
 
 void BuildingObject::insert(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->insert(obj);
+		((BuildingObjectImplementation*) _getImplementation())->insert(obj);
 }
 
 void BuildingObject::remove(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->remove(obj);
+		((BuildingObjectImplementation*) _getImplementation())->remove(obj);
 }
 
 void BuildingObject::update(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->update(obj);
+		((BuildingObjectImplementation*) _getImplementation())->update(obj);
 }
 
 void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->inRange(obj, range);
+		((BuildingObjectImplementation*) _getImplementation())->inRange(obj, range);
 }
 
 void BuildingObject::sendTo(SceneObject* player, bool doClose) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -205,11 +205,11 @@ void BuildingObject::sendTo(SceneObject* player, bool doClose) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->sendTo(player, doClose);
+		((BuildingObjectImplementation*) _getImplementation())->sendTo(player, doClose);
 }
 
 void BuildingObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -218,11 +218,11 @@ void BuildingObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((BuildingObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 void BuildingObject::sendDestroyTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -231,11 +231,11 @@ void BuildingObject::sendDestroyTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->sendDestroyTo(player);
+		((BuildingObjectImplementation*) _getImplementation())->sendDestroyTo(player);
 }
 
 void BuildingObject::addCell(CellObject* cell) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -244,11 +244,11 @@ void BuildingObject::addCell(CellObject* cell) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->addCell(cell);
+		((BuildingObjectImplementation*) _getImplementation())->addCell(cell);
 }
 
 bool BuildingObject::isStaticBuilding() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -256,11 +256,11 @@ bool BuildingObject::isStaticBuilding() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isStaticBuilding();
+		return ((BuildingObjectImplementation*) _getImplementation())->isStaticBuilding();
 }
 
 CellObject* BuildingObject::getCell(int idx) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -269,11 +269,11 @@ CellObject* BuildingObject::getCell(int idx) {
 
 		return (CellObject*) method.executeWithObjectReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getCell(idx);
+		return ((BuildingObjectImplementation*) _getImplementation())->getCell(idx);
 }
 
 int BuildingObject::getTotalCellNumber() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -281,11 +281,11 @@ int BuildingObject::getTotalCellNumber() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getTotalCellNumber();
+		return ((BuildingObjectImplementation*) _getImplementation())->getTotalCellNumber();
 }
 
 void BuildingObject::setLotSize(int lotsize) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -294,11 +294,11 @@ void BuildingObject::setLotSize(int lotsize) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setLotSize(lotsize);
+		((BuildingObjectImplementation*) _getImplementation())->setLotSize(lotsize);
 }
 
 int BuildingObject::getLotSize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -306,11 +306,11 @@ int BuildingObject::getLotSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getLotSize();
+		return ((BuildingObjectImplementation*) _getImplementation())->getLotSize();
 }
 
 void BuildingObject::setStaticBuilding(bool value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -319,11 +319,11 @@ void BuildingObject::setStaticBuilding(bool value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setStaticBuilding(value);
+		((BuildingObjectImplementation*) _getImplementation())->setStaticBuilding(value);
 }
 
 void BuildingObject::onEnter(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -332,11 +332,11 @@ void BuildingObject::onEnter(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->onEnter(player);
+		((BuildingObjectImplementation*) _getImplementation())->onEnter(player);
 }
 
 void BuildingObject::onExit(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -345,11 +345,11 @@ void BuildingObject::onExit(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->onExit(player);
+		((BuildingObjectImplementation*) _getImplementation())->onExit(player);
 }
 
 bool BuildingObject::isBuildingObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -357,11 +357,11 @@ bool BuildingObject::isBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isBuildingObject();
+		return ((BuildingObjectImplementation*) _getImplementation())->isBuildingObject();
 }
 
 bool BuildingObject::isMedicalBuildingObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -369,11 +369,11 @@ bool BuildingObject::isMedicalBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isMedicalBuildingObject();
+		return ((BuildingObjectImplementation*) _getImplementation())->isMedicalBuildingObject();
 }
 
 void BuildingObject::setDeedObjectID(unsigned long long deedid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -382,11 +382,11 @@ void BuildingObject::setDeedObjectID(unsigned long long deedid) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setDeedObjectID(deedid);
+		((BuildingObjectImplementation*) _getImplementation())->setDeedObjectID(deedid);
 }
 
 unsigned long long BuildingObject::getDeedObjectID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -394,11 +394,11 @@ unsigned long long BuildingObject::getDeedObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getDeedObjectID();
+		return ((BuildingObjectImplementation*) _getImplementation())->getDeedObjectID();
 }
 
 void BuildingObject::setOwnerObjectID(unsigned long long ownerID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -407,11 +407,11 @@ void BuildingObject::setOwnerObjectID(unsigned long long ownerID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setOwnerObjectID(ownerID);
+		((BuildingObjectImplementation*) _getImplementation())->setOwnerObjectID(ownerID);
 }
 
 unsigned long long BuildingObject::getOwnerObjectID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -419,11 +419,11 @@ unsigned long long BuildingObject::getOwnerObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getOwnerObjectID();
+		return ((BuildingObjectImplementation*) _getImplementation())->getOwnerObjectID();
 }
 
 void BuildingObject::setSignObject(SignObject* sign) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -432,11 +432,11 @@ void BuildingObject::setSignObject(SignObject* sign) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setSignObject(sign);
+		((BuildingObjectImplementation*) _getImplementation())->setSignObject(sign);
 }
 
 SignObject* BuildingObject::getSignObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -444,11 +444,11 @@ SignObject* BuildingObject::getSignObject() {
 
 		return (SignObject*) method.executeWithObjectReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getSignObject();
+		return ((BuildingObjectImplementation*) _getImplementation())->getSignObject();
 }
 
 void BuildingObject::setMaintenancePool(unsigned int maintenance) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -457,11 +457,11 @@ void BuildingObject::setMaintenancePool(unsigned int maintenance) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setMaintenancePool(maintenance);
+		((BuildingObjectImplementation*) _getImplementation())->setMaintenancePool(maintenance);
 }
 
 unsigned int BuildingObject::getMaintenancePool() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -469,11 +469,11 @@ unsigned int BuildingObject::getMaintenancePool() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getMaintenancePool();
+		return ((BuildingObjectImplementation*) _getImplementation())->getMaintenancePool();
 }
 
 void BuildingObject::setBaseMaintenanceRate(int maintenanceRate) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -482,11 +482,11 @@ void BuildingObject::setBaseMaintenanceRate(int maintenanceRate) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setBaseMaintenanceRate(maintenanceRate);
+		((BuildingObjectImplementation*) _getImplementation())->setBaseMaintenanceRate(maintenanceRate);
 }
 
 int BuildingObject::getBaseMaintenanceRate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -494,11 +494,11 @@ int BuildingObject::getBaseMaintenanceRate() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getBaseMaintenanceRate();
+		return ((BuildingObjectImplementation*) _getImplementation())->getBaseMaintenanceRate();
 }
 
 int BuildingObject::getRedeedCost() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -506,11 +506,11 @@ int BuildingObject::getRedeedCost() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getRedeedCost();
+		return ((BuildingObjectImplementation*) _getImplementation())->getRedeedCost();
 }
 
 bool BuildingObject::isCityHallBuilding() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -518,11 +518,11 @@ bool BuildingObject::isCityHallBuilding() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isCityHallBuilding();
+		return ((BuildingObjectImplementation*) _getImplementation())->isCityHallBuilding();
 }
 
 bool BuildingObject::isOnAdminList(CreatureObject* creature) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -531,11 +531,11 @@ bool BuildingObject::isOnAdminList(CreatureObject* creature) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isOnAdminList(creature);
+		return ((BuildingObjectImplementation*) _getImplementation())->isOnAdminList(creature);
 }
 
 void BuildingObject::sendPermissionListTo(PlayerCreature* player, const String& listName) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -545,7 +545,7 @@ void BuildingObject::sendPermissionListTo(PlayerCreature* player, const String& 
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->sendPermissionListTo(player, listName);
+		((BuildingObjectImplementation*) _getImplementation())->sendPermissionListTo(player, listName);
 }
 
 /*
@@ -555,6 +555,7 @@ void BuildingObject::sendPermissionListTo(PlayerCreature* player, const String& 
 BuildingObjectImplementation::BuildingObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BuildingObjectImplementation::~BuildingObjectImplementation() {
 }
@@ -581,6 +582,11 @@ DistributedObjectStub* BuildingObjectImplementation::_getStub() {
 BuildingObjectImplementation::operator const BuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* BuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new BuildingObjectImplementation(*this);
+}
+
 
 void BuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

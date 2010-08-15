@@ -11,8 +11,8 @@
  */
 
 SignObject::SignObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new SignObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new SignObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SignObject::SignObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -29,6 +29,7 @@ SignObject::~SignObject() {
 SignObjectImplementation::SignObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SignObjectImplementation::~SignObjectImplementation() {
 }
@@ -55,6 +56,11 @@ DistributedObjectStub* SignObjectImplementation::_getStub() {
 SignObjectImplementation::operator const SignObject*() {
 	return _this;
 }
+
+TransactionalObject* SignObjectImplementation::clone() {
+	return (TransactionalObject*) new SignObjectImplementation(*this);
+}
+
 
 void SignObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

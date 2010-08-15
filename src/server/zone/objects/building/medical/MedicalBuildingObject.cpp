@@ -13,8 +13,8 @@
  */
 
 MedicalBuildingObject::MedicalBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new MedicalBuildingObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new MedicalBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MedicalBuildingObject::MedicalBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -25,7 +25,7 @@ MedicalBuildingObject::~MedicalBuildingObject() {
 
 
 bool MedicalBuildingObject::isMedicalBuildingObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,7 +33,7 @@ bool MedicalBuildingObject::isMedicalBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MedicalBuildingObjectImplementation*) _impl)->isMedicalBuildingObject();
+		return ((MedicalBuildingObjectImplementation*) _getImplementation())->isMedicalBuildingObject();
 }
 
 /*
@@ -43,6 +43,7 @@ bool MedicalBuildingObject::isMedicalBuildingObject() {
 MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MedicalBuildingObjectImplementation::~MedicalBuildingObjectImplementation() {
 }
@@ -69,6 +70,11 @@ DistributedObjectStub* MedicalBuildingObjectImplementation::_getStub() {
 MedicalBuildingObjectImplementation::operator const MedicalBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* MedicalBuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new MedicalBuildingObjectImplementation(*this);
+}
+
 
 void MedicalBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -13,8 +13,8 @@
  */
 
 WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WaypointObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new WaypointObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 WaypointObject::WaypointObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -25,23 +25,23 @@ WaypointObject::~WaypointObject() {
 
 
 void WaypointObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WaypointObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((WaypointObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void WaypointObject::insertToMessage(BaseMessage* msg) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WaypointObjectImplementation*) _impl)->insertToMessage(msg);
+		((WaypointObjectImplementation*) _getImplementation())->insertToMessage(msg);
 }
 
 void WaypointObject::setCellID(unsigned int id) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -50,11 +50,11 @@ void WaypointObject::setCellID(unsigned int id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setCellID(id);
+		((WaypointObjectImplementation*) _getImplementation())->setCellID(id);
 }
 
 void WaypointObject::setPlanetCRC(unsigned int crc) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -63,11 +63,11 @@ void WaypointObject::setPlanetCRC(unsigned int crc) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setPlanetCRC(crc);
+		((WaypointObjectImplementation*) _getImplementation())->setPlanetCRC(crc);
 }
 
 void WaypointObject::setCustomName(const UnicodeString& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -76,11 +76,11 @@ void WaypointObject::setCustomName(const UnicodeString& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setCustomName(name);
+		((WaypointObjectImplementation*) _getImplementation())->setCustomName(name);
 }
 
 UnicodeString WaypointObject::getCustomName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -89,11 +89,11 @@ UnicodeString WaypointObject::getCustomName() {
 		method.executeWithUnicodeReturn(_return_getCustomName);
 		return _return_getCustomName;
 	} else
-		return ((WaypointObjectImplementation*) _impl)->getCustomName();
+		return ((WaypointObjectImplementation*) _getImplementation())->getCustomName();
 }
 
 void WaypointObject::setColor(byte newColor) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,11 +102,11 @@ void WaypointObject::setColor(byte newColor) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setColor(newColor);
+		((WaypointObjectImplementation*) _getImplementation())->setColor(newColor);
 }
 
 void WaypointObject::setActive(byte newStatus) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +115,11 @@ void WaypointObject::setActive(byte newStatus) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setActive(newStatus);
+		((WaypointObjectImplementation*) _getImplementation())->setActive(newStatus);
 }
 
 void WaypointObject::setUnknown(unsigned long long id) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,7 +128,7 @@ void WaypointObject::setUnknown(unsigned long long id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setUnknown(id);
+		((WaypointObjectImplementation*) _getImplementation())->setUnknown(id);
 }
 
 /*
@@ -138,6 +138,7 @@ void WaypointObject::setUnknown(unsigned long long id) {
 WaypointObjectImplementation::WaypointObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 WaypointObjectImplementation::~WaypointObjectImplementation() {
 }
@@ -164,6 +165,11 @@ DistributedObjectStub* WaypointObjectImplementation::_getStub() {
 WaypointObjectImplementation::operator const WaypointObject*() {
 	return _this;
 }
+
+TransactionalObject* WaypointObjectImplementation::clone() {
+	return (TransactionalObject*) new WaypointObjectImplementation(*this);
+}
+
 
 void WaypointObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

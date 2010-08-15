@@ -17,8 +17,8 @@
  */
 
 BuildingDeed::BuildingDeed() : Deed(DummyConstructorParameter::instance()) {
-	_impl = new BuildingDeedImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BuildingDeedImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BuildingDeed::BuildingDeed(DummyConstructorParameter* param) : Deed(param) {
@@ -29,15 +29,15 @@ BuildingDeed::~BuildingDeed() {
 
 
 void BuildingDeed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingDeedImplementation*) _impl)->fillAttributeList(alm, object);
+		((BuildingDeedImplementation*) _getImplementation())->fillAttributeList(alm, object);
 }
 
 void BuildingDeed::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +45,11 @@ void BuildingDeed::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingDeedImplementation*) _impl)->initializeTransientMembers();
+		((BuildingDeedImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int BuildingDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +59,11 @@ int BuildingDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingDeedImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((BuildingDeedImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void BuildingDeed::setSurplusMaintenance(unsigned int surplusMaint) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +72,11 @@ void BuildingDeed::setSurplusMaintenance(unsigned int surplusMaint) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingDeedImplementation*) _impl)->setSurplusMaintenance(surplusMaint);
+		((BuildingDeedImplementation*) _getImplementation())->setSurplusMaintenance(surplusMaint);
 }
 
 unsigned int BuildingDeed::getSurplusMaintenance() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,11 +84,11 @@ unsigned int BuildingDeed::getSurplusMaintenance() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((BuildingDeedImplementation*) _impl)->getSurplusMaintenance();
+		return ((BuildingDeedImplementation*) _getImplementation())->getSurplusMaintenance();
 }
 
 bool BuildingDeed::isBuildingDeed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,7 +96,7 @@ bool BuildingDeed::isBuildingDeed() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingDeedImplementation*) _impl)->isBuildingDeed();
+		return ((BuildingDeedImplementation*) _getImplementation())->isBuildingDeed();
 }
 
 /*
@@ -106,6 +106,7 @@ bool BuildingDeed::isBuildingDeed() {
 BuildingDeedImplementation::BuildingDeedImplementation(DummyConstructorParameter* param) : DeedImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BuildingDeedImplementation::~BuildingDeedImplementation() {
 }
@@ -132,6 +133,11 @@ DistributedObjectStub* BuildingDeedImplementation::_getStub() {
 BuildingDeedImplementation::operator const BuildingDeed*() {
 	return _this;
 }
+
+TransactionalObject* BuildingDeedImplementation::clone() {
+	return (TransactionalObject*) new BuildingDeedImplementation(*this);
+}
+
 
 void BuildingDeedImplementation::lock(bool doLock) {
 	_this->lock(doLock);

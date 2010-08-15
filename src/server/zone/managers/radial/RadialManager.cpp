@@ -17,8 +17,8 @@
  */
 
 RadialManager::RadialManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new RadialManagerImplementation(server);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new RadialManagerImplementation(server));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 RadialManager::RadialManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -29,7 +29,7 @@ RadialManager::~RadialManager() {
 
 
 void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,11 +40,11 @@ void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID
 
 		method.executeWithVoidReturn();
 	} else
-		((RadialManagerImplementation*) _impl)->handleObjectMenuSelect(player, selectID, objectID);
+		((RadialManagerImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectID, objectID);
 }
 
 void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,7 +55,7 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 
 		method.executeWithVoidReturn();
 	} else
-		((RadialManagerImplementation*) _impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
+		((RadialManagerImplementation*) _getImplementation())->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
 }
 
 /*
@@ -65,6 +65,7 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 RadialManagerImplementation::RadialManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RadialManagerImplementation::~RadialManagerImplementation() {
 }
@@ -91,6 +92,11 @@ DistributedObjectStub* RadialManagerImplementation::_getStub() {
 RadialManagerImplementation::operator const RadialManager*() {
 	return _this;
 }
+
+TransactionalObject* RadialManagerImplementation::clone() {
+	return (TransactionalObject*) new RadialManagerImplementation(*this);
+}
+
 
 void RadialManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -15,8 +15,8 @@
  */
 
 MissionSpawnActiveArea::MissionSpawnActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
-	_impl = new MissionSpawnActiveAreaImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new MissionSpawnActiveAreaImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MissionSpawnActiveArea::MissionSpawnActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -27,7 +27,7 @@ MissionSpawnActiveArea::~MissionSpawnActiveArea() {
 
 
 void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -36,11 +36,11 @@ void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionSpawnActiveAreaImplementation*) _impl)->notifyEnter(player);
+		((MissionSpawnActiveAreaImplementation*) _getImplementation())->notifyEnter(player);
 }
 
 void MissionSpawnActiveArea::setMissionObjective(GeneralMissionObjective* mission) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,7 +49,7 @@ void MissionSpawnActiveArea::setMissionObjective(GeneralMissionObjective* missio
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionSpawnActiveAreaImplementation*) _impl)->setMissionObjective(mission);
+		((MissionSpawnActiveAreaImplementation*) _getImplementation())->setMissionObjective(mission);
 }
 
 /*
@@ -59,6 +59,7 @@ void MissionSpawnActiveArea::setMissionObjective(GeneralMissionObjective* missio
 MissionSpawnActiveAreaImplementation::MissionSpawnActiveAreaImplementation(DummyConstructorParameter* param) : ActiveAreaImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MissionSpawnActiveAreaImplementation::~MissionSpawnActiveAreaImplementation() {
 }
@@ -85,6 +86,11 @@ DistributedObjectStub* MissionSpawnActiveAreaImplementation::_getStub() {
 MissionSpawnActiveAreaImplementation::operator const MissionSpawnActiveArea*() {
 	return _this;
 }
+
+TransactionalObject* MissionSpawnActiveAreaImplementation::clone() {
+	return (TransactionalObject*) new MissionSpawnActiveAreaImplementation(*this);
+}
+
 
 void MissionSpawnActiveAreaImplementation::lock(bool doLock) {
 	_this->lock(doLock);

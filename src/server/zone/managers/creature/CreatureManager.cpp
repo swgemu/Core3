@@ -29,8 +29,8 @@
  */
 
 CreatureManager::CreatureManager(Zone* planet, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new CreatureManagerImplementation(planet, impl);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new CreatureManagerImplementation(planet, impl));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CreatureManager::CreatureManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -41,7 +41,7 @@ CreatureManager::~CreatureManager() {
 
 
 void CreatureManager::initialize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +49,11 @@ void CreatureManager::initialize() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _impl)->initialize();
+		((CreatureManagerImplementation*) _getImplementation())->initialize();
 }
 
 CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,19 +66,19 @@ CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
-		return ((CreatureManagerImplementation*) _impl)->spawnCreature(templateCRC, x, z, y, parentID);
+		return ((CreatureManagerImplementation*) _getImplementation())->spawnCreature(templateCRC, x, z, y, parentID);
 }
 
 int CreatureManager::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((CreatureManagerImplementation*) _impl)->notifyDestruction(destructor, destructedObject, condition);
+		return ((CreatureManagerImplementation*) _getImplementation())->notifyDestruction(destructor, destructedObject, condition);
 }
 
 void CreatureManager::loadDynamicSpawnAreas() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,11 +86,11 @@ void CreatureManager::loadDynamicSpawnAreas() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _impl)->loadDynamicSpawnAreas();
+		((CreatureManagerImplementation*) _getImplementation())->loadDynamicSpawnAreas();
 }
 
 void CreatureManager::loadSingleSpawns() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -98,11 +98,11 @@ void CreatureManager::loadSingleSpawns() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _impl)->loadSingleSpawns();
+		((CreatureManagerImplementation*) _getImplementation())->loadSingleSpawns();
 }
 
 void CreatureManager::loadTrainers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,7 +110,7 @@ void CreatureManager::loadTrainers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _impl)->loadTrainers();
+		((CreatureManagerImplementation*) _getImplementation())->loadTrainers();
 }
 
 /*
@@ -120,6 +120,7 @@ void CreatureManager::loadTrainers() {
 CreatureManagerImplementation::CreatureManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CreatureManagerImplementation::~CreatureManagerImplementation() {
 }
@@ -146,6 +147,11 @@ DistributedObjectStub* CreatureManagerImplementation::_getStub() {
 CreatureManagerImplementation::operator const CreatureManager*() {
 	return _this;
 }
+
+TransactionalObject* CreatureManagerImplementation::clone() {
+	return (TransactionalObject*) new CreatureManagerImplementation(*this);
+}
+
 
 void CreatureManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

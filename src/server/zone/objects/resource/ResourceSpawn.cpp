@@ -13,8 +13,8 @@
  */
 
 ResourceSpawn::ResourceSpawn() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new ResourceSpawnImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ResourceSpawnImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ResourceSpawn::ResourceSpawn(DummyConstructorParameter* param) : SceneObject(param) {
@@ -25,7 +25,7 @@ ResourceSpawn::~ResourceSpawn() {
 
 
 void ResourceSpawn::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,19 +33,19 @@ void ResourceSpawn::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->initializeTransientMembers();
+		((ResourceSpawnImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void ResourceSpawn::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ResourceSpawnImplementation*) _impl)->fillAttributeList(msg, object);
+		((ResourceSpawnImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 void ResourceSpawn::decreaseContainerReferenceCount() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +53,11 @@ void ResourceSpawn::decreaseContainerReferenceCount() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->decreaseContainerReferenceCount();
+		((ResourceSpawnImplementation*) _getImplementation())->decreaseContainerReferenceCount();
 }
 
 void ResourceSpawn::setName(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +66,11 @@ void ResourceSpawn::setName(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->setName(name);
+		((ResourceSpawnImplementation*) _getImplementation())->setName(name);
 }
 
 void ResourceSpawn::setType(const String& type) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +79,11 @@ void ResourceSpawn::setType(const String& type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->setType(type);
+		((ResourceSpawnImplementation*) _getImplementation())->setType(type);
 }
 
 void ResourceSpawn::setSpawnPool(int pool) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +92,11 @@ void ResourceSpawn::setSpawnPool(int pool) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->setSpawnPool(pool);
+		((ResourceSpawnImplementation*) _getImplementation())->setSpawnPool(pool);
 }
 
 void ResourceSpawn::setZoneRestriction(int zone) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,11 +105,11 @@ void ResourceSpawn::setZoneRestriction(int zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->setZoneRestriction(zone);
+		((ResourceSpawnImplementation*) _getImplementation())->setZoneRestriction(zone);
 }
 
 void ResourceSpawn::addClass(const String& newclass) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -118,11 +118,11 @@ void ResourceSpawn::addClass(const String& newclass) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->addClass(newclass);
+		((ResourceSpawnImplementation*) _getImplementation())->addClass(newclass);
 }
 
 void ResourceSpawn::addStfClass(const String& newclass) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -131,11 +131,11 @@ void ResourceSpawn::addStfClass(const String& newclass) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->addStfClass(newclass);
+		((ResourceSpawnImplementation*) _getImplementation())->addStfClass(newclass);
 }
 
 void ResourceSpawn::addAttribute(const String& attribute, int value, int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -146,11 +146,11 @@ void ResourceSpawn::addAttribute(const String& attribute, int value, int index) 
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->addAttribute(attribute, value, index);
+		((ResourceSpawnImplementation*) _getImplementation())->addAttribute(attribute, value, index);
 }
 
 bool ResourceSpawn::isType(const String& type) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -159,11 +159,11 @@ bool ResourceSpawn::isType(const String& type) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->isType(type);
+		return ((ResourceSpawnImplementation*) _getImplementation())->isType(type);
 }
 
 void ResourceSpawn::setSurveyToolType(int type) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,11 +172,11 @@ void ResourceSpawn::setSurveyToolType(int type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->setSurveyToolType(type);
+		((ResourceSpawnImplementation*) _getImplementation())->setSurveyToolType(type);
 }
 
 void ResourceSpawn::setIsEnergy(bool val) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -185,11 +185,11 @@ void ResourceSpawn::setIsEnergy(bool val) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->setIsEnergy(val);
+		((ResourceSpawnImplementation*) _getImplementation())->setIsEnergy(val);
 }
 
 String ResourceSpawn::getName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -198,11 +198,11 @@ String ResourceSpawn::getName() {
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getName();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getName();
 }
 
 String ResourceSpawn::getType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -211,11 +211,11 @@ String ResourceSpawn::getType() {
 		method.executeWithAsciiReturn(_return_getType);
 		return _return_getType;
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getType();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getType();
 }
 
 String ResourceSpawn::getClass(int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -225,11 +225,11 @@ String ResourceSpawn::getClass(int index) {
 		method.executeWithAsciiReturn(_return_getClass);
 		return _return_getClass;
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getClass(index);
+		return ((ResourceSpawnImplementation*) _getImplementation())->getClass(index);
 }
 
 String ResourceSpawn::getFinalClass() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -238,11 +238,11 @@ String ResourceSpawn::getFinalClass() {
 		method.executeWithAsciiReturn(_return_getFinalClass);
 		return _return_getFinalClass;
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getFinalClass();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getFinalClass();
 }
 
 String ResourceSpawn::getFamilyName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -251,11 +251,11 @@ String ResourceSpawn::getFamilyName() {
 		method.executeWithAsciiReturn(_return_getFamilyName);
 		return _return_getFamilyName;
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getFamilyName();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getFamilyName();
 }
 
 void ResourceSpawn::setSpawned(unsigned long long t) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -264,11 +264,11 @@ void ResourceSpawn::setSpawned(unsigned long long t) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->setSpawned(t);
+		((ResourceSpawnImplementation*) _getImplementation())->setSpawned(t);
 }
 
 void ResourceSpawn::setDespawned(unsigned long long t) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -277,11 +277,11 @@ void ResourceSpawn::setDespawned(unsigned long long t) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->setDespawned(t);
+		((ResourceSpawnImplementation*) _getImplementation())->setDespawned(t);
 }
 
 unsigned long long ResourceSpawn::getDespawned() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -289,11 +289,11 @@ unsigned long long ResourceSpawn::getDespawned() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getDespawned();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getDespawned();
 }
 
 void ResourceSpawn::setContainerCRC(unsigned int crc) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -302,11 +302,11 @@ void ResourceSpawn::setContainerCRC(unsigned int crc) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->setContainerCRC(crc);
+		((ResourceSpawnImplementation*) _getImplementation())->setContainerCRC(crc);
 }
 
 unsigned int ResourceSpawn::getContainerCRC() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -314,11 +314,11 @@ unsigned int ResourceSpawn::getContainerCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getContainerCRC();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getContainerCRC();
 }
 
 int ResourceSpawn::getSpawnPool() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -326,11 +326,11 @@ int ResourceSpawn::getSpawnPool() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getSpawnPool();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getSpawnPool();
 }
 
 bool ResourceSpawn::isEnergy() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -338,11 +338,11 @@ bool ResourceSpawn::isEnergy() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->isEnergy();
+		return ((ResourceSpawnImplementation*) _getImplementation())->isEnergy();
 }
 
 int ResourceSpawn::getZoneRestriction() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -350,11 +350,11 @@ int ResourceSpawn::getZoneRestriction() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getZoneRestriction();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getZoneRestriction();
 }
 
 int ResourceSpawn::getSurveyToolType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -362,11 +362,11 @@ int ResourceSpawn::getSurveyToolType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getSurveyToolType();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getSurveyToolType();
 }
 
 int ResourceSpawn::getSpawnMapSize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -374,11 +374,11 @@ int ResourceSpawn::getSpawnMapSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getSpawnMapSize();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getSpawnMapSize();
 }
 
 void ResourceSpawn::extractResource(int zoneid, int units) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -388,11 +388,11 @@ void ResourceSpawn::extractResource(int zoneid, int units) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceSpawnImplementation*) _impl)->extractResource(zoneid, units);
+		((ResourceSpawnImplementation*) _getImplementation())->extractResource(zoneid, units);
 }
 
 ResourceContainer* ResourceSpawn::createResource(int units) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -401,35 +401,35 @@ ResourceContainer* ResourceSpawn::createResource(int units) {
 
 		return (ResourceContainer*) method.executeWithObjectReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->createResource(units);
+		return ((ResourceSpawnImplementation*) _getImplementation())->createResource(units);
 }
 
 int ResourceSpawn::getSpawnMapZone(int i) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getSpawnMapZone(i);
+		return ((ResourceSpawnImplementation*) _getImplementation())->getSpawnMapZone(i);
 }
 
 bool ResourceSpawn::isUnknownType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->isUnknownType();
+		return ((ResourceSpawnImplementation*) _getImplementation())->isUnknownType();
 }
 
 void ResourceSpawn::createSpawnMaps(bool jtl, int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ResourceSpawnImplementation*) _impl)->createSpawnMaps(jtl, minpool, maxpool, zonerestriction, activeZones);
+		((ResourceSpawnImplementation*) _getImplementation())->createSpawnMaps(jtl, minpool, maxpool, zonerestriction, activeZones);
 }
 
 unsigned int ResourceSpawn::getPlanetCRC() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -437,35 +437,35 @@ unsigned int ResourceSpawn::getPlanetCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getPlanetCRC();
+		return ((ResourceSpawnImplementation*) _getImplementation())->getPlanetCRC();
 }
 
 float ResourceSpawn::getDensityAt(int zoneid, float x, float y) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getDensityAt(zoneid, x, y);
+		return ((ResourceSpawnImplementation*) _getImplementation())->getDensityAt(zoneid, x, y);
 }
 
 bool ResourceSpawn::inShift() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->inShift();
+		return ((ResourceSpawnImplementation*) _getImplementation())->inShift();
 }
 
 int ResourceSpawn::getAttributeAndValue(String& attribute, int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getAttributeAndValue(attribute, index);
+		return ((ResourceSpawnImplementation*) _getImplementation())->getAttributeAndValue(attribute, index);
 }
 
 int ResourceSpawn::getAttributeValue(int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -474,11 +474,11 @@ int ResourceSpawn::getAttributeValue(int index) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getAttributeValue(index);
+		return ((ResourceSpawnImplementation*) _getImplementation())->getAttributeValue(index);
 }
 
 int ResourceSpawn::getValueOf(int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -487,15 +487,15 @@ int ResourceSpawn::getValueOf(int index) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceSpawnImplementation*) _impl)->getValueOf(index);
+		return ((ResourceSpawnImplementation*) _getImplementation())->getValueOf(index);
 }
 
 void ResourceSpawn::print() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ResourceSpawnImplementation*) _impl)->print();
+		((ResourceSpawnImplementation*) _getImplementation())->print();
 }
 
 /*
@@ -505,6 +505,7 @@ void ResourceSpawn::print() {
 ResourceSpawnImplementation::ResourceSpawnImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ResourceSpawnImplementation::~ResourceSpawnImplementation() {
 	ResourceSpawnImplementation::finalize();
@@ -529,6 +530,11 @@ DistributedObjectStub* ResourceSpawnImplementation::_getStub() {
 ResourceSpawnImplementation::operator const ResourceSpawn*() {
 	return _this;
 }
+
+TransactionalObject* ResourceSpawnImplementation::clone() {
+	return (TransactionalObject*) new ResourceSpawnImplementation(*this);
+}
+
 
 void ResourceSpawnImplementation::lock(bool doLock) {
 	_this->lock(doLock);

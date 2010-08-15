@@ -88,6 +88,8 @@ public:
 protected:
 	virtual ~HarvesterObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -111,6 +113,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class HarvesterObject;
+	friend class TransactionalObjectHandle<HarvesterObjectImplementation*>;
 };
 
 class HarvesterObjectAdapter : public InstallationObjectAdapter {

@@ -13,8 +13,8 @@
  */
 
 Food::Food() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FoodImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new FoodImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Food::Food(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -25,7 +25,7 @@ Food::~Food() {
 
 
 void Food::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,7 +33,7 @@ void Food::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FoodImplementation*) _impl)->initializeTransientMembers();
+		((FoodImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -43,6 +43,7 @@ void Food::initializeTransientMembers() {
 FoodImplementation::FoodImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FoodImplementation::~FoodImplementation() {
 }
@@ -69,6 +70,11 @@ DistributedObjectStub* FoodImplementation::_getStub() {
 FoodImplementation::operator const Food*() {
 	return _this;
 }
+
+TransactionalObject* FoodImplementation::clone() {
+	return (TransactionalObject*) new FoodImplementation(*this);
+}
+
 
 void FoodImplementation::lock(bool doLock) {
 	_this->lock(doLock);

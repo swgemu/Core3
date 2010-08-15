@@ -25,8 +25,8 @@
  */
 
 CurePack::CurePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new CurePackImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new CurePackImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CurePack::CurePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -37,23 +37,23 @@ CurePack::~CurePack() {
 
 
 void CurePack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CurePackImplementation*) _impl)->updateCraftingValues(schematic);
+		((CurePackImplementation*) _getImplementation())->updateCraftingValues(schematic);
 }
 
 void CurePack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CurePackImplementation*) _impl)->loadTemplateData(templateData);
+		((CurePackImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 int CurePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -63,19 +63,19 @@ int CurePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CurePackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((CurePackImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void CurePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CurePackImplementation*) _impl)->fillAttributeList(msg, object);
+		((CurePackImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 int CurePack::calculatePower(CreatureObject* creature) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,11 +84,11 @@ int CurePack::calculatePower(CreatureObject* creature) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CurePackImplementation*) _impl)->calculatePower(creature);
+		return ((CurePackImplementation*) _getImplementation())->calculatePower(creature);
 }
 
 bool CurePack::isArea() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +96,11 @@ bool CurePack::isArea() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CurePackImplementation*) _impl)->isArea();
+		return ((CurePackImplementation*) _getImplementation())->isArea();
 }
 
 float CurePack::getArea() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,11 +108,11 @@ float CurePack::getArea() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((CurePackImplementation*) _impl)->getArea();
+		return ((CurePackImplementation*) _getImplementation())->getArea();
 }
 
 unsigned long long CurePack::getState() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -120,11 +120,11 @@ unsigned long long CurePack::getState() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((CurePackImplementation*) _impl)->getState();
+		return ((CurePackImplementation*) _getImplementation())->getState();
 }
 
 float CurePack::getEffectiveness() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -132,11 +132,11 @@ float CurePack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((CurePackImplementation*) _impl)->getEffectiveness();
+		return ((CurePackImplementation*) _getImplementation())->getEffectiveness();
 }
 
 bool CurePack::isCurePack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -144,7 +144,7 @@ bool CurePack::isCurePack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CurePackImplementation*) _impl)->isCurePack();
+		return ((CurePackImplementation*) _getImplementation())->isCurePack();
 }
 
 /*
@@ -154,6 +154,7 @@ bool CurePack::isCurePack() {
 CurePackImplementation::CurePackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CurePackImplementation::~CurePackImplementation() {
 }
@@ -180,6 +181,11 @@ DistributedObjectStub* CurePackImplementation::_getStub() {
 CurePackImplementation::operator const CurePack*() {
 	return _this;
 }
+
+TransactionalObject* CurePackImplementation::clone() {
+	return (TransactionalObject*) new CurePackImplementation(*this);
+}
+
 
 void CurePackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

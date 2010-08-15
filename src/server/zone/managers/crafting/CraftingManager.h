@@ -298,6 +298,8 @@ public:
 protected:
 	virtual ~CraftingManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -321,6 +323,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CraftingManager;
+	friend class TransactionalObjectHandle<CraftingManagerImplementation*>;
 };
 
 class CraftingManagerAdapter : public ManagedObjectAdapter {

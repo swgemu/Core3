@@ -13,8 +13,8 @@
  */
 
 ToolTangibleObject::ToolTangibleObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ToolTangibleObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ToolTangibleObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ToolTangibleObject::ToolTangibleObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -25,7 +25,7 @@ ToolTangibleObject::~ToolTangibleObject() {
 
 
 void ToolTangibleObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,7 +33,7 @@ void ToolTangibleObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ToolTangibleObjectImplementation*) _impl)->initializeTransientMembers();
+		((ToolTangibleObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -43,6 +43,7 @@ void ToolTangibleObject::initializeTransientMembers() {
 ToolTangibleObjectImplementation::ToolTangibleObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ToolTangibleObjectImplementation::~ToolTangibleObjectImplementation() {
 }
@@ -69,6 +70,11 @@ DistributedObjectStub* ToolTangibleObjectImplementation::_getStub() {
 ToolTangibleObjectImplementation::operator const ToolTangibleObject*() {
 	return _this;
 }
+
+TransactionalObject* ToolTangibleObjectImplementation::clone() {
+	return (TransactionalObject*) new ToolTangibleObjectImplementation(*this);
+}
+
 
 void ToolTangibleObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

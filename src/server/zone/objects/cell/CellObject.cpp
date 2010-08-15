@@ -13,8 +13,8 @@
  */
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new CellObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new CellObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -25,15 +25,15 @@ CellObject::~CellObject() {
 
 
 void CellObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CellObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((CellObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void CellObject::sendContainerObjectsTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,11 +42,11 @@ void CellObject::sendContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->sendContainerObjectsTo(player);
+		((CellObjectImplementation*) _getImplementation())->sendContainerObjectsTo(player);
 }
 
 void CellObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -54,11 +54,11 @@ void CellObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->initializeTransientMembers();
+		((CellObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void CellObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +67,11 @@ void CellObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((CellObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 int CellObject::getCellNumber() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +79,11 @@ int CellObject::getCellNumber() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CellObjectImplementation*) _impl)->getCellNumber();
+		return ((CellObjectImplementation*) _getImplementation())->getCellNumber();
 }
 
 void CellObject::setCellNumber(int number) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +92,11 @@ void CellObject::setCellNumber(int number) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->setCellNumber(number);
+		((CellObjectImplementation*) _getImplementation())->setCellNumber(number);
 }
 
 bool CellObject::isCellObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,7 +104,7 @@ bool CellObject::isCellObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CellObjectImplementation*) _impl)->isCellObject();
+		return ((CellObjectImplementation*) _getImplementation())->isCellObject();
 }
 
 /*
@@ -114,6 +114,7 @@ bool CellObject::isCellObject() {
 CellObjectImplementation::CellObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CellObjectImplementation::~CellObjectImplementation() {
 	CellObjectImplementation::finalize();
@@ -138,6 +139,11 @@ DistributedObjectStub* CellObjectImplementation::_getStub() {
 CellObjectImplementation::operator const CellObject*() {
 	return _this;
 }
+
+TransactionalObject* CellObjectImplementation::clone() {
+	return (TransactionalObject*) new CellObjectImplementation(*this);
+}
+
 
 void CellObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

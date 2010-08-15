@@ -13,8 +13,8 @@
  */
 
 SuiBankTransferBox::SuiBankTransferBox(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiBankTransferBoxImplementation(bankObject, player, windowtype);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new SuiBankTransferBoxImplementation(bankObject, player, windowtype));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SuiBankTransferBox::SuiBankTransferBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -25,7 +25,7 @@ SuiBankTransferBox::~SuiBankTransferBox() {
 
 
 void SuiBankTransferBox::addCash(int cash) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -34,11 +34,11 @@ void SuiBankTransferBox::addCash(int cash) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBankTransferBoxImplementation*) _impl)->addCash(cash);
+		((SuiBankTransferBoxImplementation*) _getImplementation())->addCash(cash);
 }
 
 void SuiBankTransferBox::addBank(int bank) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +47,11 @@ void SuiBankTransferBox::addBank(int bank) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBankTransferBoxImplementation*) _impl)->addBank(bank);
+		((SuiBankTransferBoxImplementation*) _getImplementation())->addBank(bank);
 }
 
 SceneObject* SuiBankTransferBox::getBank() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +59,11 @@ SceneObject* SuiBankTransferBox::getBank() {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SuiBankTransferBoxImplementation*) _impl)->getBank();
+		return ((SuiBankTransferBoxImplementation*) _getImplementation())->getBank();
 }
 
 BaseMessage* SuiBankTransferBox::generateMessage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +71,11 @@ BaseMessage* SuiBankTransferBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiBankTransferBoxImplementation*) _impl)->generateMessage();
+		return ((SuiBankTransferBoxImplementation*) _getImplementation())->generateMessage();
 }
 
 bool SuiBankTransferBox::isBankTransferBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,7 +83,7 @@ bool SuiBankTransferBox::isBankTransferBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBankTransferBoxImplementation*) _impl)->isBankTransferBox();
+		return ((SuiBankTransferBoxImplementation*) _getImplementation())->isBankTransferBox();
 }
 
 /*
@@ -93,6 +93,7 @@ bool SuiBankTransferBox::isBankTransferBox() {
 SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(DummyConstructorParameter* param) : SuiBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiBankTransferBoxImplementation::~SuiBankTransferBoxImplementation() {
 }
@@ -119,6 +120,11 @@ DistributedObjectStub* SuiBankTransferBoxImplementation::_getStub() {
 SuiBankTransferBoxImplementation::operator const SuiBankTransferBox*() {
 	return _this;
 }
+
+TransactionalObject* SuiBankTransferBoxImplementation::clone() {
+	return (TransactionalObject*) new SuiBankTransferBoxImplementation(*this);
+}
+
 
 void SuiBankTransferBoxImplementation::lock(bool doLock) {
 	_this->lock(doLock);

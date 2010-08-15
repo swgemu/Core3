@@ -13,8 +13,8 @@
  */
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WearableObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new WearableObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -25,7 +25,7 @@ WearableObject::~WearableObject() {
 
 
 void WearableObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +33,11 @@ void WearableObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((WearableObjectImplementation*) _impl)->initializeTransientMembers();
+		((WearableObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void WearableObject::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,11 +46,11 @@ void WearableObject::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WearableObjectImplementation*) _impl)->updateCraftingValues(schematic);
+		((WearableObjectImplementation*) _getImplementation())->updateCraftingValues(schematic);
 }
 
 bool WearableObject::isWearableObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,11 +58,11 @@ bool WearableObject::isWearableObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WearableObjectImplementation*) _impl)->isWearableObject();
+		return ((WearableObjectImplementation*) _getImplementation())->isWearableObject();
 }
 
 int WearableObject::getMaxSockets() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -70,11 +70,11 @@ int WearableObject::getMaxSockets() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WearableObjectImplementation*) _impl)->getMaxSockets();
+		return ((WearableObjectImplementation*) _getImplementation())->getMaxSockets();
 }
 
 int WearableObject::socketsUsed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -82,11 +82,11 @@ int WearableObject::socketsUsed() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WearableObjectImplementation*) _impl)->socketsUsed();
+		return ((WearableObjectImplementation*) _getImplementation())->socketsUsed();
 }
 
 int WearableObject::socketsLeft() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,11 +94,11 @@ int WearableObject::socketsLeft() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WearableObjectImplementation*) _impl)->socketsLeft();
+		return ((WearableObjectImplementation*) _getImplementation())->socketsLeft();
 }
 
 void WearableObject::setMaxSockets(int sockets) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -107,7 +107,7 @@ void WearableObject::setMaxSockets(int sockets) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WearableObjectImplementation*) _impl)->setMaxSockets(sockets);
+		((WearableObjectImplementation*) _getImplementation())->setMaxSockets(sockets);
 }
 
 /*
@@ -117,6 +117,7 @@ void WearableObject::setMaxSockets(int sockets) {
 WearableObjectImplementation::WearableObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 WearableObjectImplementation::~WearableObjectImplementation() {
 }
@@ -143,6 +144,11 @@ DistributedObjectStub* WearableObjectImplementation::_getStub() {
 WearableObjectImplementation::operator const WearableObject*() {
 	return _this;
 }
+
+TransactionalObject* WearableObjectImplementation::clone() {
+	return (TransactionalObject*) new WearableObjectImplementation(*this);
+}
+
 
 void WearableObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -15,8 +15,8 @@
  */
 
 DelayedBuff::DelayedBuff(CreatureObject* creo, unsigned int buffcrc, int duration) : Buff(DummyConstructorParameter::instance()) {
-	_impl = new DelayedBuffImplementation(creo, buffcrc, duration);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new DelayedBuffImplementation(creo, buffcrc, duration));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 DelayedBuff::DelayedBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -27,7 +27,7 @@ DelayedBuff::~DelayedBuff() {
 
 
 void DelayedBuff::activate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,11 +35,11 @@ void DelayedBuff::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DelayedBuffImplementation*) _impl)->activate();
+		((DelayedBuffImplementation*) _getImplementation())->activate();
 }
 
 void DelayedBuff::deactivate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +47,11 @@ void DelayedBuff::deactivate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DelayedBuffImplementation*) _impl)->deactivate();
+		((DelayedBuffImplementation*) _getImplementation())->deactivate();
 }
 
 void DelayedBuff::useCharge(CreatureObject* creature) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -60,11 +60,11 @@ void DelayedBuff::useCharge(CreatureObject* creature) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DelayedBuffImplementation*) _impl)->useCharge(creature);
+		((DelayedBuffImplementation*) _getImplementation())->useCharge(creature);
 }
 
 void DelayedBuff::setUsesRemaining(int uses) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -73,7 +73,7 @@ void DelayedBuff::setUsesRemaining(int uses) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DelayedBuffImplementation*) _impl)->setUsesRemaining(uses);
+		((DelayedBuffImplementation*) _getImplementation())->setUsesRemaining(uses);
 }
 
 /*
@@ -83,6 +83,7 @@ void DelayedBuff::setUsesRemaining(int uses) {
 DelayedBuffImplementation::DelayedBuffImplementation(DummyConstructorParameter* param) : BuffImplementation(param) {
 	_initializeImplementation();
 }
+
 
 DelayedBuffImplementation::~DelayedBuffImplementation() {
 }
@@ -109,6 +110,11 @@ DistributedObjectStub* DelayedBuffImplementation::_getStub() {
 DelayedBuffImplementation::operator const DelayedBuff*() {
 	return _this;
 }
+
+TransactionalObject* DelayedBuffImplementation::clone() {
+	return (TransactionalObject*) new DelayedBuffImplementation(*this);
+}
+
 
 void DelayedBuffImplementation::lock(bool doLock) {
 	_this->lock(doLock);

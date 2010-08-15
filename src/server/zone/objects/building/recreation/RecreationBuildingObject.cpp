@@ -13,8 +13,8 @@
  */
 
 RecreationBuildingObject::RecreationBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new RecreationBuildingObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new RecreationBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 RecreationBuildingObject::RecreationBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -31,6 +31,7 @@ RecreationBuildingObject::~RecreationBuildingObject() {
 RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RecreationBuildingObjectImplementation::~RecreationBuildingObjectImplementation() {
 }
@@ -57,6 +58,11 @@ DistributedObjectStub* RecreationBuildingObjectImplementation::_getStub() {
 RecreationBuildingObjectImplementation::operator const RecreationBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* RecreationBuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new RecreationBuildingObjectImplementation(*this);
+}
+
 
 void RecreationBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

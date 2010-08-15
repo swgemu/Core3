@@ -17,8 +17,8 @@
  */
 
 CharacterBuilderTerminal::CharacterBuilderTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new CharacterBuilderTerminalImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new CharacterBuilderTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CharacterBuilderTerminal::CharacterBuilderTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -29,15 +29,15 @@ CharacterBuilderTerminal::~CharacterBuilderTerminal() {
 
 
 void CharacterBuilderTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CharacterBuilderTerminalImplementation*) _impl)->loadTemplateData(templateData);
+		((CharacterBuilderTerminalImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void CharacterBuilderTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +45,11 @@ void CharacterBuilderTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CharacterBuilderTerminalImplementation*) _impl)->initializeTransientMembers();
+		((CharacterBuilderTerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int CharacterBuilderTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +59,11 @@ int CharacterBuilderTerminal::handleObjectMenuSelect(PlayerCreature* player, byt
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CharacterBuilderTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((CharacterBuilderTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,7 +72,7 @@ void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CharacterBuilderTerminalImplementation*) _impl)->sendInitialChoices(player);
+		((CharacterBuilderTerminalImplementation*) _getImplementation())->sendInitialChoices(player);
 }
 
 /*
@@ -82,6 +82,7 @@ void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
 CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CharacterBuilderTerminalImplementation::~CharacterBuilderTerminalImplementation() {
 }
@@ -108,6 +109,11 @@ DistributedObjectStub* CharacterBuilderTerminalImplementation::_getStub() {
 CharacterBuilderTerminalImplementation::operator const CharacterBuilderTerminal*() {
 	return _this;
 }
+
+TransactionalObject* CharacterBuilderTerminalImplementation::clone() {
+	return (TransactionalObject*) new CharacterBuilderTerminalImplementation(*this);
+}
+
 
 void CharacterBuilderTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -19,8 +19,8 @@
  */
 
 BazaarTerminal::BazaarTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new BazaarTerminalImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BazaarTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BazaarTerminal::BazaarTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -31,7 +31,7 @@ BazaarTerminal::~BazaarTerminal() {
 
 
 void BazaarTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,11 +39,11 @@ void BazaarTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarTerminalImplementation*) _impl)->initializeTransientMembers();
+		((BazaarTerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int BazaarTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +53,11 @@ int BazaarTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selected
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BazaarTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((BazaarTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void BazaarTerminal::addAuction(AuctionItem* item) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +66,11 @@ void BazaarTerminal::addAuction(AuctionItem* item) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarTerminalImplementation*) _impl)->addAuction(item);
+		((BazaarTerminalImplementation*) _getImplementation())->addAuction(item);
 }
 
 void BazaarTerminal::dropAuction(unsigned long long auctionItemID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,15 +79,15 @@ void BazaarTerminal::dropAuction(unsigned long long auctionItemID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarTerminalImplementation*) _impl)->dropAuction(auctionItemID);
+		((BazaarTerminalImplementation*) _getImplementation())->dropAuction(auctionItemID);
 }
 
 VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminal::getAuctions() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((BazaarTerminalImplementation*) _impl)->getAuctions();
+		return ((BazaarTerminalImplementation*) _getImplementation())->getAuctions();
 }
 
 /*
@@ -97,6 +97,7 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminal:
 BazaarTerminalImplementation::BazaarTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BazaarTerminalImplementation::~BazaarTerminalImplementation() {
 }
@@ -123,6 +124,11 @@ DistributedObjectStub* BazaarTerminalImplementation::_getStub() {
 BazaarTerminalImplementation::operator const BazaarTerminal*() {
 	return _this;
 }
+
+TransactionalObject* BazaarTerminalImplementation::clone() {
+	return (TransactionalObject*) new BazaarTerminalImplementation(*this);
+}
+
 
 void BazaarTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

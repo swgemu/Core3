@@ -13,8 +13,8 @@
  */
 
 StaticObject::StaticObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new StaticObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new StaticObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StaticObject::StaticObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -25,15 +25,15 @@ StaticObject::~StaticObject() {
 
 
 void StaticObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StaticObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((StaticObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void StaticObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,7 +42,7 @@ void StaticObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StaticObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((StaticObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 /*
@@ -52,6 +52,7 @@ void StaticObject::sendBaselinesTo(SceneObject* player) {
 StaticObjectImplementation::StaticObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 StaticObjectImplementation::~StaticObjectImplementation() {
 }
@@ -78,6 +79,11 @@ DistributedObjectStub* StaticObjectImplementation::_getStub() {
 StaticObjectImplementation::operator const StaticObject*() {
 	return _this;
 }
+
+TransactionalObject* StaticObjectImplementation::clone() {
+	return (TransactionalObject*) new StaticObjectImplementation(*this);
+}
+
 
 void StaticObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

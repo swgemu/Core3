@@ -17,8 +17,8 @@
  */
 
 StructureTerminal::StructureTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new StructureTerminalImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new StructureTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StructureTerminal::StructureTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -29,7 +29,7 @@ StructureTerminal::~StructureTerminal() {
 
 
 void StructureTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,11 +37,11 @@ void StructureTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureTerminalImplementation*) _impl)->initializeTransientMembers();
+		((StructureTerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -51,19 +51,19 @@ int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selec
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((StructureTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void StructureTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StructureTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		((StructureTerminalImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
 }
 
 void StructureTerminal::setBuildingObject(BuildingObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +72,11 @@ void StructureTerminal::setBuildingObject(BuildingObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureTerminalImplementation*) _impl)->setBuildingObject(obj);
+		((StructureTerminalImplementation*) _getImplementation())->setBuildingObject(obj);
 }
 
 BuildingObject* StructureTerminal::getBuildingObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,7 +84,7 @@ BuildingObject* StructureTerminal::getBuildingObject() {
 
 		return (BuildingObject*) method.executeWithObjectReturn();
 	} else
-		return ((StructureTerminalImplementation*) _impl)->getBuildingObject();
+		return ((StructureTerminalImplementation*) _getImplementation())->getBuildingObject();
 }
 
 /*
@@ -94,6 +94,7 @@ BuildingObject* StructureTerminal::getBuildingObject() {
 StructureTerminalImplementation::StructureTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 StructureTerminalImplementation::~StructureTerminalImplementation() {
 }
@@ -120,6 +121,11 @@ DistributedObjectStub* StructureTerminalImplementation::_getStub() {
 StructureTerminalImplementation::operator const StructureTerminal*() {
 	return _this;
 }
+
+TransactionalObject* StructureTerminalImplementation::clone() {
+	return (TransactionalObject*) new StructureTerminalImplementation(*this);
+}
+
 
 void StructureTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -23,8 +23,8 @@
  */
 
 PharmaceuticalObject::PharmaceuticalObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new PharmaceuticalObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new PharmaceuticalObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 PharmaceuticalObject::PharmaceuticalObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -35,7 +35,7 @@ PharmaceuticalObject::~PharmaceuticalObject() {
 
 
 int PharmaceuticalObject::getMedicineUseRequired() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +43,11 @@ int PharmaceuticalObject::getMedicineUseRequired() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PharmaceuticalObjectImplementation*) _impl)->getMedicineUseRequired();
+		return ((PharmaceuticalObjectImplementation*) _getImplementation())->getMedicineUseRequired();
 }
 
 float PharmaceuticalObject::getRange(CreatureObject* creature) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -56,11 +56,11 @@ float PharmaceuticalObject::getRange(CreatureObject* creature) {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((PharmaceuticalObjectImplementation*) _impl)->getRange(creature);
+		return ((PharmaceuticalObjectImplementation*) _getImplementation())->getRange(creature);
 }
 
 bool PharmaceuticalObject::isArea() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -68,11 +68,11 @@ bool PharmaceuticalObject::isArea() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PharmaceuticalObjectImplementation*) _impl)->isArea();
+		return ((PharmaceuticalObjectImplementation*) _getImplementation())->isArea();
 }
 
 float PharmaceuticalObject::getArea() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +80,11 @@ float PharmaceuticalObject::getArea() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((PharmaceuticalObjectImplementation*) _impl)->getArea();
+		return ((PharmaceuticalObjectImplementation*) _getImplementation())->getArea();
 }
 
 bool PharmaceuticalObject::isPharmaceuticalObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +92,11 @@ bool PharmaceuticalObject::isPharmaceuticalObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PharmaceuticalObjectImplementation*) _impl)->isPharmaceuticalObject();
+		return ((PharmaceuticalObjectImplementation*) _getImplementation())->isPharmaceuticalObject();
 }
 
 bool PharmaceuticalObject::isStimPack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,11 +104,11 @@ bool PharmaceuticalObject::isStimPack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PharmaceuticalObjectImplementation*) _impl)->isStimPack();
+		return ((PharmaceuticalObjectImplementation*) _getImplementation())->isStimPack();
 }
 
 bool PharmaceuticalObject::isRangedStimPack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +116,11 @@ bool PharmaceuticalObject::isRangedStimPack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PharmaceuticalObjectImplementation*) _impl)->isRangedStimPack();
+		return ((PharmaceuticalObjectImplementation*) _getImplementation())->isRangedStimPack();
 }
 
 bool PharmaceuticalObject::isEnhancePack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +128,11 @@ bool PharmaceuticalObject::isEnhancePack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PharmaceuticalObjectImplementation*) _impl)->isEnhancePack();
+		return ((PharmaceuticalObjectImplementation*) _getImplementation())->isEnhancePack();
 }
 
 bool PharmaceuticalObject::isCurePack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,7 +140,7 @@ bool PharmaceuticalObject::isCurePack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PharmaceuticalObjectImplementation*) _impl)->isCurePack();
+		return ((PharmaceuticalObjectImplementation*) _getImplementation())->isCurePack();
 }
 
 /*
@@ -150,6 +150,7 @@ bool PharmaceuticalObject::isCurePack() {
 PharmaceuticalObjectImplementation::PharmaceuticalObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 PharmaceuticalObjectImplementation::~PharmaceuticalObjectImplementation() {
 }
@@ -176,6 +177,11 @@ DistributedObjectStub* PharmaceuticalObjectImplementation::_getStub() {
 PharmaceuticalObjectImplementation::operator const PharmaceuticalObject*() {
 	return _this;
 }
+
+TransactionalObject* PharmaceuticalObjectImplementation::clone() {
+	return (TransactionalObject*) new PharmaceuticalObjectImplementation(*this);
+}
+
 
 void PharmaceuticalObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -29,8 +29,8 @@
  */
 
 ShuttleInstallation::ShuttleInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
-	_impl = new ShuttleInstallationImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ShuttleInstallationImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ShuttleInstallation::ShuttleInstallation(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -41,7 +41,7 @@ ShuttleInstallation::~ShuttleInstallation() {
 
 
 void ShuttleInstallation::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -50,11 +50,11 @@ void ShuttleInstallation::insertToZone(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleInstallationImplementation*) _impl)->insertToZone(zone);
+		((ShuttleInstallationImplementation*) _getImplementation())->insertToZone(zone);
 }
 
 void ShuttleInstallation::spawnShuttleObjects() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -62,11 +62,11 @@ void ShuttleInstallation::spawnShuttleObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleInstallationImplementation*) _impl)->spawnShuttleObjects();
+		((ShuttleInstallationImplementation*) _getImplementation())->spawnShuttleObjects();
 }
 
 bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -75,7 +75,7 @@ bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ShuttleInstallationImplementation*) _impl)->checkRequisitesForPlacement(player);
+		return ((ShuttleInstallationImplementation*) _getImplementation())->checkRequisitesForPlacement(player);
 }
 
 /*
@@ -85,6 +85,7 @@ bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 ShuttleInstallationImplementation::ShuttleInstallationImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ShuttleInstallationImplementation::~ShuttleInstallationImplementation() {
 }
@@ -111,6 +112,11 @@ DistributedObjectStub* ShuttleInstallationImplementation::_getStub() {
 ShuttleInstallationImplementation::operator const ShuttleInstallation*() {
 	return _this;
 }
+
+TransactionalObject* ShuttleInstallationImplementation::clone() {
+	return (TransactionalObject*) new ShuttleInstallationImplementation(*this);
+}
+
 
 void ShuttleInstallationImplementation::lock(bool doLock) {
 	_this->lock(doLock);

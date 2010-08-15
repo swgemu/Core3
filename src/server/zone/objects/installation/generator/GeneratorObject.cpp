@@ -9,8 +9,8 @@
  */
 
 GeneratorObject::GeneratorObject() : InstallationObject(DummyConstructorParameter::instance()) {
-	_impl = new GeneratorObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new GeneratorObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 GeneratorObject::GeneratorObject(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -21,15 +21,15 @@ GeneratorObject::~GeneratorObject() {
 
 
 void GeneratorObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((GeneratorObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		((GeneratorObjectImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
 }
 
 int GeneratorObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,11 +39,11 @@ int GeneratorObject::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GeneratorObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((GeneratorObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void GeneratorObject::synchronizedUIListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +53,11 @@ void GeneratorObject::synchronizedUIListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneratorObjectImplementation*) _impl)->synchronizedUIListen(player, value);
+		((GeneratorObjectImplementation*) _getImplementation())->synchronizedUIListen(player, value);
 }
 
 void GeneratorObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +67,11 @@ void GeneratorObject::synchronizedUIStopListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneratorObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
+		((GeneratorObjectImplementation*) _getImplementation())->synchronizedUIStopListen(player, value);
 }
 
 bool GeneratorObject::isGeneratorObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,7 +79,7 @@ bool GeneratorObject::isGeneratorObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GeneratorObjectImplementation*) _impl)->isGeneratorObject();
+		return ((GeneratorObjectImplementation*) _getImplementation())->isGeneratorObject();
 }
 
 /*
@@ -89,6 +89,7 @@ bool GeneratorObject::isGeneratorObject() {
 GeneratorObjectImplementation::GeneratorObjectImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 GeneratorObjectImplementation::~GeneratorObjectImplementation() {
 }
@@ -115,6 +116,11 @@ DistributedObjectStub* GeneratorObjectImplementation::_getStub() {
 GeneratorObjectImplementation::operator const GeneratorObject*() {
 	return _this;
 }
+
+TransactionalObject* GeneratorObjectImplementation::clone() {
+	return (TransactionalObject*) new GeneratorObjectImplementation(*this);
+}
+
 
 void GeneratorObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

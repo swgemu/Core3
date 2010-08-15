@@ -17,8 +17,8 @@
  */
 
 ElevatorTerminal::ElevatorTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new ElevatorTerminalImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ElevatorTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ElevatorTerminal::ElevatorTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -29,7 +29,7 @@ ElevatorTerminal::~ElevatorTerminal() {
 
 
 int ElevatorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,7 +39,7 @@ int ElevatorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte select
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ElevatorTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((ElevatorTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -49,6 +49,7 @@ int ElevatorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte select
 ElevatorTerminalImplementation::ElevatorTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ElevatorTerminalImplementation::~ElevatorTerminalImplementation() {
 }
@@ -75,6 +76,11 @@ DistributedObjectStub* ElevatorTerminalImplementation::_getStub() {
 ElevatorTerminalImplementation::operator const ElevatorTerminal*() {
 	return _this;
 }
+
+TransactionalObject* ElevatorTerminalImplementation::clone() {
+	return (TransactionalObject*) new ElevatorTerminalImplementation(*this);
+}
+
 
 void ElevatorTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

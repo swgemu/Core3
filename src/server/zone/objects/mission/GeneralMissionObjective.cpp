@@ -25,8 +25,8 @@
  */
 
 GeneralMissionObjective::GeneralMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new GeneralMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new GeneralMissionObjectiveImplementation(mission));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 GeneralMissionObjective::GeneralMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -37,7 +37,7 @@ GeneralMissionObjective::~GeneralMissionObjective() {
 
 
 void GeneralMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +45,11 @@ void GeneralMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneralMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		((GeneralMissionObjectiveImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void GeneralMissionObjective::activate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +57,11 @@ void GeneralMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneralMissionObjectiveImplementation*) _impl)->activate();
+		((GeneralMissionObjectiveImplementation*) _getImplementation())->activate();
 }
 
 void GeneralMissionObjective::abort() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +69,11 @@ void GeneralMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneralMissionObjectiveImplementation*) _impl)->abort();
+		((GeneralMissionObjectiveImplementation*) _getImplementation())->abort();
 }
 
 void GeneralMissionObjective::complete() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -81,11 +81,11 @@ void GeneralMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneralMissionObjectiveImplementation*) _impl)->complete();
+		((GeneralMissionObjectiveImplementation*) _getImplementation())->complete();
 }
 
 void GeneralMissionObjective::spawnLair() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -93,11 +93,11 @@ void GeneralMissionObjective::spawnLair() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneralMissionObjectiveImplementation*) _impl)->spawnLair();
+		((GeneralMissionObjectiveImplementation*) _getImplementation())->spawnLair();
 }
 
 void GeneralMissionObjective::destroyObjectFromDatabase() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,11 +105,11 @@ void GeneralMissionObjective::destroyObjectFromDatabase() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneralMissionObjectiveImplementation*) _impl)->destroyObjectFromDatabase();
+		((GeneralMissionObjectiveImplementation*) _getImplementation())->destroyObjectFromDatabase();
 }
 
 int GeneralMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,15 +122,15 @@ int GeneralMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GeneralMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return ((GeneralMissionObjectiveImplementation*) _getImplementation())->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void GeneralMissionObjective::setLairTemplateToSpawn(SharedObjectTemplate* sp) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((GeneralMissionObjectiveImplementation*) _impl)->setLairTemplateToSpawn(sp);
+		((GeneralMissionObjectiveImplementation*) _getImplementation())->setLairTemplateToSpawn(sp);
 }
 
 /*
@@ -140,6 +140,7 @@ void GeneralMissionObjective::setLairTemplateToSpawn(SharedObjectTemplate* sp) {
 GeneralMissionObjectiveImplementation::GeneralMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 GeneralMissionObjectiveImplementation::~GeneralMissionObjectiveImplementation() {
 	GeneralMissionObjectiveImplementation::finalize();
@@ -164,6 +165,11 @@ DistributedObjectStub* GeneralMissionObjectiveImplementation::_getStub() {
 GeneralMissionObjectiveImplementation::operator const GeneralMissionObjective*() {
 	return _this;
 }
+
+TransactionalObject* GeneralMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new GeneralMissionObjectiveImplementation(*this);
+}
+
 
 void GeneralMissionObjectiveImplementation::lock(bool doLock) {
 	_this->lock(doLock);

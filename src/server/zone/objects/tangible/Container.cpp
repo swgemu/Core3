@@ -15,8 +15,8 @@
  */
 
 Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ContainerImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ContainerImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -27,15 +27,15 @@ Container::~Container() {
 
 
 void Container::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ContainerImplementation*) _impl)->loadTemplateData(templateData);
+		((ContainerImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void Container::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +43,11 @@ void Container::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ContainerImplementation*) _impl)->initializeTransientMembers();
+		((ContainerImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void Container::sendContainerObjectsTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -56,7 +56,7 @@ void Container::sendContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ContainerImplementation*) _impl)->sendContainerObjectsTo(player);
+		((ContainerImplementation*) _getImplementation())->sendContainerObjectsTo(player);
 }
 
 /*
@@ -66,6 +66,7 @@ void Container::sendContainerObjectsTo(SceneObject* player) {
 ContainerImplementation::ContainerImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ContainerImplementation::~ContainerImplementation() {
 }
@@ -92,6 +93,11 @@ DistributedObjectStub* ContainerImplementation::_getStub() {
 ContainerImplementation::operator const Container*() {
 	return _this;
 }
+
+TransactionalObject* ContainerImplementation::clone() {
+	return (TransactionalObject*) new ContainerImplementation(*this);
+}
+
 
 void ContainerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

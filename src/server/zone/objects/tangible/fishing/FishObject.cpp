@@ -21,8 +21,8 @@
  */
 
 FishObject::FishObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FishObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new FishObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 FishObject::FishObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -33,7 +33,7 @@ FishObject::~FishObject() {
 
 
 void FishObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +41,11 @@ void FishObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->initializeTransientMembers();
+		((FishObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void FishObject::setAttributes(String& playerName, int planetID, String& timestamp, float fishLength) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +57,11 @@ void FishObject::setAttributes(String& playerName, int planetID, String& timesta
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->setAttributes(playerName, planetID, timestamp, fishLength);
+		((FishObjectImplementation*) _getImplementation())->setAttributes(playerName, planetID, timestamp, fishLength);
 }
 
 void FishObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +71,11 @@ void FishObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Player
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		((FishObjectImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
 }
 
 int FishObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -85,11 +85,11 @@ int FishObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((FishObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void FishObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -99,11 +99,11 @@ void FishObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* ob
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		((FishObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 void FishObject::filet(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -112,7 +112,7 @@ void FishObject::filet(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->filet(player);
+		((FishObjectImplementation*) _getImplementation())->filet(player);
 }
 
 /*
@@ -122,6 +122,7 @@ void FishObject::filet(PlayerCreature* player) {
 FishObjectImplementation::FishObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FishObjectImplementation::~FishObjectImplementation() {
 }
@@ -148,6 +149,11 @@ DistributedObjectStub* FishObjectImplementation::_getStub() {
 FishObjectImplementation::operator const FishObject*() {
 	return _this;
 }
+
+TransactionalObject* FishObjectImplementation::clone() {
+	return (TransactionalObject*) new FishObjectImplementation(*this);
+}
+
 
 void FishObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

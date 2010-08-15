@@ -25,8 +25,8 @@
  */
 
 StimPack::StimPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new StimPackImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new StimPackImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StimPack::StimPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -37,23 +37,23 @@ StimPack::~StimPack() {
 
 
 void StimPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StimPackImplementation*) _impl)->updateCraftingValues(schematic);
+		((StimPackImplementation*) _getImplementation())->updateCraftingValues(schematic);
 }
 
 void StimPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StimPackImplementation*) _impl)->loadTemplateData(templateData);
+		((StimPackImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 unsigned int StimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -64,11 +64,11 @@ unsigned int StimPack::calculatePower(CreatureObject* healer, CreatureObject* pa
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((StimPackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
+		return ((StimPackImplementation*) _getImplementation())->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 int StimPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -78,19 +78,19 @@ int StimPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StimPackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((StimPackImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void StimPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StimPackImplementation*) _impl)->fillAttributeList(msg, object);
+		((StimPackImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 float StimPack::getEffectiveness() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -98,11 +98,11 @@ float StimPack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((StimPackImplementation*) _impl)->getEffectiveness();
+		return ((StimPackImplementation*) _getImplementation())->getEffectiveness();
 }
 
 bool StimPack::isStimPack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,7 +110,7 @@ bool StimPack::isStimPack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StimPackImplementation*) _impl)->isStimPack();
+		return ((StimPackImplementation*) _getImplementation())->isStimPack();
 }
 
 /*
@@ -120,6 +120,7 @@ bool StimPack::isStimPack() {
 StimPackImplementation::StimPackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 StimPackImplementation::~StimPackImplementation() {
 }
@@ -146,6 +147,11 @@ DistributedObjectStub* StimPackImplementation::_getStub() {
 StimPackImplementation::operator const StimPack*() {
 	return _this;
 }
+
+TransactionalObject* StimPackImplementation::clone() {
+	return (TransactionalObject*) new StimPackImplementation(*this);
+}
+
 
 void StimPackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -13,8 +13,8 @@
  */
 
 SuiInputBox::SuiInputBox(PlayerCreature* player, unsigned int windowType, int inputtype) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiInputBoxImplementation(player, windowType, inputtype);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new SuiInputBoxImplementation(player, windowType, inputtype));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SuiInputBox::SuiInputBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -25,7 +25,7 @@ SuiInputBox::~SuiInputBox() {
 
 
 BaseMessage* SuiInputBox::generateMessage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +33,11 @@ BaseMessage* SuiInputBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiInputBoxImplementation*) _impl)->generateMessage();
+		return ((SuiInputBoxImplementation*) _getImplementation())->generateMessage();
 }
 
 void SuiInputBox::setMaxInputSize(int size) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,11 +46,11 @@ void SuiInputBox::setMaxInputSize(int size) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiInputBoxImplementation*) _impl)->setMaxInputSize(size);
+		((SuiInputBoxImplementation*) _getImplementation())->setMaxInputSize(size);
 }
 
 void SuiInputBox::setUsingObject(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +59,11 @@ void SuiInputBox::setUsingObject(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiInputBoxImplementation*) _impl)->setUsingObject(object);
+		((SuiInputBoxImplementation*) _getImplementation())->setUsingObject(object);
 }
 
 void SuiInputBox::setDefaultInput(const String& text) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +72,11 @@ void SuiInputBox::setDefaultInput(const String& text) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiInputBoxImplementation*) _impl)->setDefaultInput(text);
+		((SuiInputBoxImplementation*) _getImplementation())->setDefaultInput(text);
 }
 
 bool SuiInputBox::isFilterBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,11 +84,11 @@ bool SuiInputBox::isFilterBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiInputBoxImplementation*) _impl)->isFilterBox();
+		return ((SuiInputBoxImplementation*) _getImplementation())->isFilterBox();
 }
 
 SceneObject* SuiInputBox::getUsingObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +96,11 @@ SceneObject* SuiInputBox::getUsingObject() {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SuiInputBoxImplementation*) _impl)->getUsingObject();
+		return ((SuiInputBoxImplementation*) _getImplementation())->getUsingObject();
 }
 
 bool SuiInputBox::isInputBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,7 +108,7 @@ bool SuiInputBox::isInputBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiInputBoxImplementation*) _impl)->isInputBox();
+		return ((SuiInputBoxImplementation*) _getImplementation())->isInputBox();
 }
 
 /*
@@ -118,6 +118,7 @@ bool SuiInputBox::isInputBox() {
 SuiInputBoxImplementation::SuiInputBoxImplementation(DummyConstructorParameter* param) : SuiBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiInputBoxImplementation::~SuiInputBoxImplementation() {
 }
@@ -144,6 +145,11 @@ DistributedObjectStub* SuiInputBoxImplementation::_getStub() {
 SuiInputBoxImplementation::operator const SuiInputBox*() {
 	return _this;
 }
+
+TransactionalObject* SuiInputBoxImplementation::clone() {
+	return (TransactionalObject*) new SuiInputBoxImplementation(*this);
+}
+
 
 void SuiInputBoxImplementation::lock(bool doLock) {
 	_this->lock(doLock);

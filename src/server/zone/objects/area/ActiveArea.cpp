@@ -13,8 +13,8 @@
  */
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new ActiveAreaImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ActiveAreaImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ActiveArea::ActiveArea(DummyConstructorParameter* param) : SceneObject(param) {
@@ -25,7 +25,7 @@ ActiveArea::~ActiveArea() {
 
 
 void ActiveArea::sendTo(SceneObject* player, bool doClose) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,11 +35,11 @@ void ActiveArea::sendTo(SceneObject* player, bool doClose) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ActiveAreaImplementation*) _impl)->sendTo(player, doClose);
+		((ActiveAreaImplementation*) _getImplementation())->sendTo(player, doClose);
 }
 
 void ActiveArea::enqueueEnterEvent(SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -48,11 +48,11 @@ void ActiveArea::enqueueEnterEvent(SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ActiveAreaImplementation*) _impl)->enqueueEnterEvent(obj);
+		((ActiveAreaImplementation*) _getImplementation())->enqueueEnterEvent(obj);
 }
 
 void ActiveArea::enqueueExitEvent(SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +61,11 @@ void ActiveArea::enqueueExitEvent(SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ActiveAreaImplementation*) _impl)->enqueueExitEvent(obj);
+		((ActiveAreaImplementation*) _getImplementation())->enqueueExitEvent(obj);
 }
 
 void ActiveArea::notifyEnter(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,11 +74,11 @@ void ActiveArea::notifyEnter(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ActiveAreaImplementation*) _impl)->notifyEnter(object);
+		((ActiveAreaImplementation*) _getImplementation())->notifyEnter(object);
 }
 
 void ActiveArea::notifyExit(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -87,11 +87,11 @@ void ActiveArea::notifyExit(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ActiveAreaImplementation*) _impl)->notifyExit(object);
+		((ActiveAreaImplementation*) _getImplementation())->notifyExit(object);
 }
 
 bool ActiveArea::isRegion() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -99,11 +99,11 @@ bool ActiveArea::isRegion() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ActiveAreaImplementation*) _impl)->isRegion();
+		return ((ActiveAreaImplementation*) _getImplementation())->isRegion();
 }
 
 bool ActiveArea::containsPoint(float x, float y) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -113,35 +113,35 @@ bool ActiveArea::containsPoint(float x, float y) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ActiveAreaImplementation*) _impl)->containsPoint(x, y);
+		return ((ActiveAreaImplementation*) _getImplementation())->containsPoint(x, y);
 }
 
 void ActiveArea::notifyPositionUpdate(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ActiveAreaImplementation*) _impl)->notifyPositionUpdate(obj);
+		((ActiveAreaImplementation*) _getImplementation())->notifyPositionUpdate(obj);
 }
 
 void ActiveArea::notifyInsert(QuadTreeEntry* entry) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ActiveAreaImplementation*) _impl)->notifyInsert(entry);
+		((ActiveAreaImplementation*) _getImplementation())->notifyInsert(entry);
 }
 
 void ActiveArea::notifyDissapear(QuadTreeEntry* entry) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ActiveAreaImplementation*) _impl)->notifyDissapear(entry);
+		((ActiveAreaImplementation*) _getImplementation())->notifyDissapear(entry);
 }
 
 float ActiveArea::getRadius() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,11 +149,11 @@ float ActiveArea::getRadius() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ActiveAreaImplementation*) _impl)->getRadius();
+		return ((ActiveAreaImplementation*) _getImplementation())->getRadius();
 }
 
 void ActiveArea::setRadius(float r) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -162,7 +162,7 @@ void ActiveArea::setRadius(float r) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ActiveAreaImplementation*) _impl)->setRadius(r);
+		((ActiveAreaImplementation*) _getImplementation())->setRadius(r);
 }
 
 /*
@@ -172,6 +172,7 @@ void ActiveArea::setRadius(float r) {
 ActiveAreaImplementation::ActiveAreaImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ActiveAreaImplementation::~ActiveAreaImplementation() {
 }
@@ -198,6 +199,11 @@ DistributedObjectStub* ActiveAreaImplementation::_getStub() {
 ActiveAreaImplementation::operator const ActiveArea*() {
 	return _this;
 }
+
+TransactionalObject* ActiveAreaImplementation::clone() {
+	return (TransactionalObject*) new ActiveAreaImplementation(*this);
+}
+
 
 void ActiveAreaImplementation::lock(bool doLock) {
 	_this->lock(doLock);

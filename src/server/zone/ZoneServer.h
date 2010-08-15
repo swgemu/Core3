@@ -199,23 +199,25 @@ using namespace server::zone::managers::mission;
 
 #include "engine/service/DatagramServiceThread.h"
 
-#include "system/net/Socket.h"
-
-#include "system/net/SocketAddress.h"
-
-#include "system/net/Packet.h"
-
 #include "engine/service/ServiceClient.h"
 
 #include "engine/core/ManagedObject.h"
 
 #include "engine/core/TaskManager.h"
 
+#include "engine/log/Logger.h"
+
 #include "system/lang/Exception.h"
 
 #include "system/util/Vector.h"
 
-#include "engine/log/Logger.h"
+#include "system/net/Socket.h"
+
+#include "system/net/SocketAddress.h"
+
+#include "system/net/Packet.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
 
 namespace server {
 namespace zone {
@@ -402,13 +404,13 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 
 	int totalResentPackets;
 
-	int currentPlayers;
+	AtomicInteger currentPlayers;
 
-	int maximumPlayers;
+	AtomicInteger maximumPlayers;
 
-	int totalPlayers;
+	AtomicInteger totalPlayers;
 
-	int totalDeletedPlayers;
+	AtomicInteger totalDeletedPlayers;
 
 	int serverState;
 
@@ -559,6 +561,8 @@ public:
 protected:
 	virtual ~ZoneServerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -568,6 +572,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ZoneServer;
+	friend class TransactionalObjectHandle<ZoneServerImplementation*>;
 };
 
 class ZoneServerAdapter : public ManagedObjectAdapter {

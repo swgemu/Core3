@@ -19,8 +19,8 @@
  */
 
 TravelTerminal::TravelTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new TravelTerminalImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TravelTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TravelTerminal::TravelTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -31,7 +31,7 @@ TravelTerminal::~TravelTerminal() {
 
 
 void TravelTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,11 +39,11 @@ void TravelTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TravelTerminalImplementation*) _impl)->initializeTransientMembers();
+		((TravelTerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int TravelTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +53,11 @@ int TravelTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selected
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TravelTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((TravelTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void TravelTerminal::setShuttle(ShuttleCreature* shut) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,7 +66,7 @@ void TravelTerminal::setShuttle(ShuttleCreature* shut) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TravelTerminalImplementation*) _impl)->setShuttle(shut);
+		((TravelTerminalImplementation*) _getImplementation())->setShuttle(shut);
 }
 
 /*
@@ -76,6 +76,7 @@ void TravelTerminal::setShuttle(ShuttleCreature* shut) {
 TravelTerminalImplementation::TravelTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TravelTerminalImplementation::~TravelTerminalImplementation() {
 }
@@ -102,6 +103,11 @@ DistributedObjectStub* TravelTerminalImplementation::_getStub() {
 TravelTerminalImplementation::operator const TravelTerminal*() {
 	return _this;
 }
+
+TransactionalObject* TravelTerminalImplementation::clone() {
+	return (TransactionalObject*) new TravelTerminalImplementation(*this);
+}
+
 
 void TravelTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

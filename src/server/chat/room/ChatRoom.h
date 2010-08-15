@@ -272,6 +272,8 @@ public:
 protected:
 	virtual ~ChatRoomImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -295,6 +297,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ChatRoom;
+	friend class TransactionalObjectHandle<ChatRoomImplementation*>;
 };
 
 class ChatRoomAdapter : public ManagedObjectAdapter {

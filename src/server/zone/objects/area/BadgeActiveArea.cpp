@@ -13,8 +13,8 @@
  */
 
 BadgeActiveArea::BadgeActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
-	_impl = new BadgeActiveAreaImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BadgeActiveAreaImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BadgeActiveArea::BadgeActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -25,7 +25,7 @@ BadgeActiveArea::~BadgeActiveArea() {
 
 
 void BadgeActiveArea::notifyEnter(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -34,11 +34,11 @@ void BadgeActiveArea::notifyEnter(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BadgeActiveAreaImplementation*) _impl)->notifyEnter(player);
+		((BadgeActiveAreaImplementation*) _getImplementation())->notifyEnter(player);
 }
 
 void BadgeActiveArea::setBadge(unsigned int a) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +47,11 @@ void BadgeActiveArea::setBadge(unsigned int a) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BadgeActiveAreaImplementation*) _impl)->setBadge(a);
+		((BadgeActiveAreaImplementation*) _getImplementation())->setBadge(a);
 }
 
 unsigned int BadgeActiveArea::getBadge() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,7 +59,7 @@ unsigned int BadgeActiveArea::getBadge() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((BadgeActiveAreaImplementation*) _impl)->getBadge();
+		return ((BadgeActiveAreaImplementation*) _getImplementation())->getBadge();
 }
 
 /*
@@ -69,6 +69,7 @@ unsigned int BadgeActiveArea::getBadge() {
 BadgeActiveAreaImplementation::BadgeActiveAreaImplementation(DummyConstructorParameter* param) : ActiveAreaImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BadgeActiveAreaImplementation::~BadgeActiveAreaImplementation() {
 }
@@ -95,6 +96,11 @@ DistributedObjectStub* BadgeActiveAreaImplementation::_getStub() {
 BadgeActiveAreaImplementation::operator const BadgeActiveArea*() {
 	return _this;
 }
+
+TransactionalObject* BadgeActiveAreaImplementation::clone() {
+	return (TransactionalObject*) new BadgeActiveAreaImplementation(*this);
+}
+
 
 void BadgeActiveAreaImplementation::lock(bool doLock) {
 	_this->lock(doLock);

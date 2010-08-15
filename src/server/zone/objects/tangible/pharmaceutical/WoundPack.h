@@ -164,6 +164,8 @@ public:
 protected:
 	virtual ~WoundPackImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -187,6 +189,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class WoundPack;
+	friend class TransactionalObjectHandle<WoundPackImplementation*>;
 };
 
 class WoundPackAdapter : public PharmaceuticalObjectAdapter {

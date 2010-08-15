@@ -15,8 +15,8 @@
  */
 
 TrainerCreature::TrainerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
-	_impl = new TrainerCreatureImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TrainerCreatureImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TrainerCreature::TrainerCreature(DummyConstructorParameter* param) : CreatureObject(param) {
@@ -27,15 +27,15 @@ TrainerCreature::~TrainerCreature() {
 
 
 void TrainerCreature::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((TrainerCreatureImplementation*) _impl)->loadTemplateData(templateData);
+		((TrainerCreatureImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void TrainerCreature::activateRecovery() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +43,11 @@ void TrainerCreature::activateRecovery() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->activateRecovery();
+		((TrainerCreatureImplementation*) _getImplementation())->activateRecovery();
 }
 
 void TrainerCreature::sendInitialMessage(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -56,11 +56,11 @@ void TrainerCreature::sendInitialMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->sendInitialMessage(player);
+		((TrainerCreatureImplementation*) _getImplementation())->sendInitialMessage(player);
 }
 
 void TrainerCreature::sendInitialChoices(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +69,11 @@ void TrainerCreature::sendInitialChoices(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->sendInitialChoices(player);
+		((TrainerCreatureImplementation*) _getImplementation())->sendInitialChoices(player);
 }
 
 void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -82,11 +82,11 @@ void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->sendConversationStartTo(obj);
+		((TrainerCreatureImplementation*) _getImplementation())->sendConversationStartTo(obj);
 }
 
 void TrainerCreature::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +96,11 @@ void TrainerCreature::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->sendSkillBoxes(player, checkXp);
+		((TrainerCreatureImplementation*) _getImplementation())->sendSkillBoxes(player, checkXp);
 }
 
 void TrainerCreature::sendSkillBoxList(PlayerCreature* player, bool checkLearned) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,11 +110,11 @@ void TrainerCreature::sendSkillBoxList(PlayerCreature* player, bool checkLearned
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->sendSkillBoxList(player, checkLearned);
+		((TrainerCreatureImplementation*) _getImplementation())->sendSkillBoxList(player, checkLearned);
 }
 
 void TrainerCreature::sendConfirmation(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -123,11 +123,11 @@ void TrainerCreature::sendConfirmation(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->sendConfirmation(player);
+		((TrainerCreatureImplementation*) _getImplementation())->sendConfirmation(player);
 }
 
 void TrainerCreature::selectConversationOption(int option, SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -137,11 +137,11 @@ void TrainerCreature::selectConversationOption(int option, SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->selectConversationOption(option, obj);
+		((TrainerCreatureImplementation*) _getImplementation())->selectConversationOption(option, obj);
 }
 
 void TrainerCreature::setTrainerID(int id) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -150,19 +150,19 @@ void TrainerCreature::setTrainerID(int id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->setTrainerID(id);
+		((TrainerCreatureImplementation*) _getImplementation())->setTrainerID(id);
 }
 
 void TrainerCreature::setProfession(Profession* prof) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((TrainerCreatureImplementation*) _impl)->setProfession(prof);
+		((TrainerCreatureImplementation*) _getImplementation())->setProfession(prof);
 }
 
 int TrainerCreature::getTrainerID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -170,11 +170,11 @@ int TrainerCreature::getTrainerID() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TrainerCreatureImplementation*) _impl)->getTrainerID();
+		return ((TrainerCreatureImplementation*) _getImplementation())->getTrainerID();
 }
 
 String TrainerCreature::getLocation() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -183,11 +183,11 @@ String TrainerCreature::getLocation() {
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
 	} else
-		return ((TrainerCreatureImplementation*) _impl)->getLocation();
+		return ((TrainerCreatureImplementation*) _getImplementation())->getLocation();
 }
 
 void TrainerCreature::setLocation(const String& loc) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -196,11 +196,11 @@ void TrainerCreature::setLocation(const String& loc) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->setLocation(loc);
+		((TrainerCreatureImplementation*) _getImplementation())->setLocation(loc);
 }
 
 bool TrainerCreature::isTrainerCreature() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -208,11 +208,11 @@ bool TrainerCreature::isTrainerCreature() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TrainerCreatureImplementation*) _impl)->isTrainerCreature();
+		return ((TrainerCreatureImplementation*) _getImplementation())->isTrainerCreature();
 }
 
 bool TrainerCreature::isAttackableBy(CreatureObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -221,7 +221,7 @@ bool TrainerCreature::isAttackableBy(CreatureObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TrainerCreatureImplementation*) _impl)->isAttackableBy(object);
+		return ((TrainerCreatureImplementation*) _getImplementation())->isAttackableBy(object);
 }
 
 /*
@@ -231,6 +231,7 @@ bool TrainerCreature::isAttackableBy(CreatureObject* object) {
 TrainerCreatureImplementation::TrainerCreatureImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TrainerCreatureImplementation::~TrainerCreatureImplementation() {
 }
@@ -257,6 +258,11 @@ DistributedObjectStub* TrainerCreatureImplementation::_getStub() {
 TrainerCreatureImplementation::operator const TrainerCreature*() {
 	return _this;
 }
+
+TransactionalObject* TrainerCreatureImplementation::clone() {
+	return (TransactionalObject*) new TrainerCreatureImplementation(*this);
+}
+
 
 void TrainerCreatureImplementation::lock(bool doLock) {
 	_this->lock(doLock);

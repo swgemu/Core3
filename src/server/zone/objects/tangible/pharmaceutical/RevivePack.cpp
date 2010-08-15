@@ -23,8 +23,8 @@
  */
 
 RevivePack::RevivePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new RevivePackImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new RevivePackImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 RevivePack::RevivePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -35,7 +35,7 @@ RevivePack::~RevivePack() {
 
 
 float RevivePack::getHealthWoundHealed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +43,11 @@ float RevivePack::getHealthWoundHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _impl)->getHealthWoundHealed();
+		return ((RevivePackImplementation*) _getImplementation())->getHealthWoundHealed();
 }
 
 float RevivePack::getHealthHealed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +55,11 @@ float RevivePack::getHealthHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _impl)->getHealthHealed();
+		return ((RevivePackImplementation*) _getImplementation())->getHealthHealed();
 }
 
 float RevivePack::getActionWoundHealed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +67,11 @@ float RevivePack::getActionWoundHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _impl)->getActionWoundHealed();
+		return ((RevivePackImplementation*) _getImplementation())->getActionWoundHealed();
 }
 
 float RevivePack::getActionHealed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +79,11 @@ float RevivePack::getActionHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _impl)->getActionHealed();
+		return ((RevivePackImplementation*) _getImplementation())->getActionHealed();
 }
 
 float RevivePack::getMindWoundHealed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -91,11 +91,11 @@ float RevivePack::getMindWoundHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _impl)->getMindWoundHealed();
+		return ((RevivePackImplementation*) _getImplementation())->getMindWoundHealed();
 }
 
 float RevivePack::getMindHealed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,7 +103,7 @@ float RevivePack::getMindHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _impl)->getMindHealed();
+		return ((RevivePackImplementation*) _getImplementation())->getMindHealed();
 }
 
 /*
@@ -113,6 +113,7 @@ float RevivePack::getMindHealed() {
 RevivePackImplementation::RevivePackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RevivePackImplementation::~RevivePackImplementation() {
 }
@@ -139,6 +140,11 @@ DistributedObjectStub* RevivePackImplementation::_getStub() {
 RevivePackImplementation::operator const RevivePack*() {
 	return _this;
 }
+
+TransactionalObject* RevivePackImplementation::clone() {
+	return (TransactionalObject*) new RevivePackImplementation(*this);
+}
+
 
 void RevivePackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

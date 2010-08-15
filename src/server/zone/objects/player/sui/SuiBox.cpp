@@ -13,8 +13,8 @@
  */
 
 SuiBox::SuiBox(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new SuiBoxImplementation(play, windowtype, boxtype);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new SuiBoxImplementation(play, windowtype, boxtype));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SuiBox::SuiBox(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -25,7 +25,7 @@ SuiBox::~SuiBox() {
 
 
 void SuiBox::initialize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +33,11 @@ void SuiBox::initialize() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->initialize();
+		((SuiBoxImplementation*) _getImplementation())->initialize();
 }
 
 void SuiBox::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +45,11 @@ void SuiBox::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->initializeTransientMembers();
+		((SuiBoxImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void SuiBox::generateHeader(SuiCreatePageMessage* message, const String& handlerStr) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +59,11 @@ void SuiBox::generateHeader(SuiCreatePageMessage* message, const String& handler
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->generateHeader(message, handlerStr);
+		((SuiBoxImplementation*) _getImplementation())->generateHeader(message, handlerStr);
 }
 
 void SuiBox::generateBody(SuiCreatePageMessage* message) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +72,11 @@ void SuiBox::generateBody(SuiCreatePageMessage* message) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->generateBody(message);
+		((SuiBoxImplementation*) _getImplementation())->generateBody(message);
 }
 
 void SuiBox::generateFooter(SuiCreatePageMessage* message, int type) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,11 +86,11 @@ void SuiBox::generateFooter(SuiCreatePageMessage* message, int type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->generateFooter(message, type);
+		((SuiBoxImplementation*) _getImplementation())->generateFooter(message, type);
 }
 
 BaseMessage* SuiBox::generateMessage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -98,11 +98,11 @@ BaseMessage* SuiBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->generateMessage();
+		return ((SuiBoxImplementation*) _getImplementation())->generateMessage();
 }
 
 BaseMessage* SuiBox::generateCloseMessage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,11 +110,11 @@ BaseMessage* SuiBox::generateCloseMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->generateCloseMessage();
+		return ((SuiBoxImplementation*) _getImplementation())->generateCloseMessage();
 }
 
 void SuiBox::addSetting(const String& optType, const String& variable, const String& setting, const String& value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -126,11 +126,11 @@ void SuiBox::addSetting(const String& optType, const String& variable, const Str
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->addSetting(optType, variable, setting, value);
+		((SuiBoxImplementation*) _getImplementation())->addSetting(optType, variable, setting, value);
 }
 
 void SuiBox::addHeader(const String& variable, const String& type) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,11 +140,11 @@ void SuiBox::addHeader(const String& variable, const String& type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->addHeader(variable, type);
+		((SuiBoxImplementation*) _getImplementation())->addHeader(variable, type);
 }
 
 void SuiBox::clearOptions() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -152,11 +152,11 @@ void SuiBox::clearOptions() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->clearOptions();
+		((SuiBoxImplementation*) _getImplementation())->clearOptions();
 }
 
 int SuiBox::compareTo(SuiBox* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -165,11 +165,11 @@ int SuiBox::compareTo(SuiBox* obj) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->compareTo(obj);
+		return ((SuiBoxImplementation*) _getImplementation())->compareTo(obj);
 }
 
 bool SuiBox::hasGeneratedMessage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -177,11 +177,11 @@ bool SuiBox::hasGeneratedMessage() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->hasGeneratedMessage();
+		return ((SuiBoxImplementation*) _getImplementation())->hasGeneratedMessage();
 }
 
 void SuiBox::setPromptTitle(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -190,11 +190,11 @@ void SuiBox::setPromptTitle(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->setPromptTitle(name);
+		((SuiBoxImplementation*) _getImplementation())->setPromptTitle(name);
 }
 
 void SuiBox::setPromptText(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -203,11 +203,11 @@ void SuiBox::setPromptText(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->setPromptText(name);
+		((SuiBoxImplementation*) _getImplementation())->setPromptText(name);
 }
 
 void SuiBox::setUsingObjectID(unsigned long long oid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -216,11 +216,11 @@ void SuiBox::setUsingObjectID(unsigned long long oid) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->setUsingObjectID(oid);
+		((SuiBoxImplementation*) _getImplementation())->setUsingObjectID(oid);
 }
 
 void SuiBox::setWindowType(unsigned int type) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -229,11 +229,11 @@ void SuiBox::setWindowType(unsigned int type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->setWindowType(type);
+		((SuiBoxImplementation*) _getImplementation())->setWindowType(type);
 }
 
 void SuiBox::setBoxType(int type) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -242,11 +242,11 @@ void SuiBox::setBoxType(int type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->setBoxType(type);
+		((SuiBoxImplementation*) _getImplementation())->setBoxType(type);
 }
 
 void SuiBox::setIntValue(int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -255,11 +255,11 @@ void SuiBox::setIntValue(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->setIntValue(value);
+		((SuiBoxImplementation*) _getImplementation())->setIntValue(value);
 }
 
 bool SuiBox::isInputBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -267,11 +267,11 @@ bool SuiBox::isInputBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->isInputBox();
+		return ((SuiBoxImplementation*) _getImplementation())->isInputBox();
 }
 
 bool SuiBox::isListBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -279,11 +279,11 @@ bool SuiBox::isListBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->isListBox();
+		return ((SuiBoxImplementation*) _getImplementation())->isListBox();
 }
 
 bool SuiBox::isMessageBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -291,11 +291,11 @@ bool SuiBox::isMessageBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->isMessageBox();
+		return ((SuiBoxImplementation*) _getImplementation())->isMessageBox();
 }
 
 bool SuiBox::isTransferBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -303,11 +303,11 @@ bool SuiBox::isTransferBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->isTransferBox();
+		return ((SuiBoxImplementation*) _getImplementation())->isTransferBox();
 }
 
 bool SuiBox::isBankTransferBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -315,11 +315,11 @@ bool SuiBox::isBankTransferBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->isBankTransferBox();
+		return ((SuiBoxImplementation*) _getImplementation())->isBankTransferBox();
 }
 
 bool SuiBox::isSlicingBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -327,11 +327,11 @@ bool SuiBox::isSlicingBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->isSlicingBox();
+		return ((SuiBoxImplementation*) _getImplementation())->isSlicingBox();
 }
 
 bool SuiBox::isCharacterBuilderBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -339,11 +339,11 @@ bool SuiBox::isCharacterBuilderBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->isCharacterBuilderBox();
+		return ((SuiBoxImplementation*) _getImplementation())->isCharacterBuilderBox();
 }
 
 bool SuiBox::isColorPicker() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -351,11 +351,11 @@ bool SuiBox::isColorPicker() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->isColorPicker();
+		return ((SuiBoxImplementation*) _getImplementation())->isColorPicker();
 }
 
 void SuiBox::setCancelButton(bool value, const String& cancelText) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -365,11 +365,11 @@ void SuiBox::setCancelButton(bool value, const String& cancelText) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->setCancelButton(value, cancelText);
+		((SuiBoxImplementation*) _getImplementation())->setCancelButton(value, cancelText);
 }
 
 void SuiBox::setBackButton(bool value, const String& backText) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -379,11 +379,11 @@ void SuiBox::setBackButton(bool value, const String& backText) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->setBackButton(value, backText);
+		((SuiBoxImplementation*) _getImplementation())->setBackButton(value, backText);
 }
 
 void SuiBox::setOkButton(bool value, const String& okText) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -393,11 +393,11 @@ void SuiBox::setOkButton(bool value, const String& okText) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBoxImplementation*) _impl)->setOkButton(value, okText);
+		((SuiBoxImplementation*) _getImplementation())->setOkButton(value, okText);
 }
 
 unsigned long long SuiBox::getUsingObjectID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -405,11 +405,11 @@ unsigned long long SuiBox::getUsingObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->getUsingObjectID();
+		return ((SuiBoxImplementation*) _getImplementation())->getUsingObjectID();
 }
 
 int SuiBox::getIntValue() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -417,11 +417,11 @@ int SuiBox::getIntValue() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->getIntValue();
+		return ((SuiBoxImplementation*) _getImplementation())->getIntValue();
 }
 
 PlayerCreature* SuiBox::getPlayer() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -429,11 +429,11 @@ PlayerCreature* SuiBox::getPlayer() {
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->getPlayer();
+		return ((SuiBoxImplementation*) _getImplementation())->getPlayer();
 }
 
 unsigned int SuiBox::getBoxID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -441,11 +441,11 @@ unsigned int SuiBox::getBoxID() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->getBoxID();
+		return ((SuiBoxImplementation*) _getImplementation())->getBoxID();
 }
 
 int SuiBox::getWindowType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -453,7 +453,7 @@ int SuiBox::getWindowType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->getWindowType();
+		return ((SuiBoxImplementation*) _getImplementation())->getWindowType();
 }
 
 /*
@@ -463,6 +463,7 @@ int SuiBox::getWindowType() {
 SuiBoxImplementation::SuiBoxImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiBoxImplementation::~SuiBoxImplementation() {
 	SuiBoxImplementation::finalize();
@@ -487,6 +488,11 @@ DistributedObjectStub* SuiBoxImplementation::_getStub() {
 SuiBoxImplementation::operator const SuiBox*() {
 	return _this;
 }
+
+TransactionalObject* SuiBoxImplementation::clone() {
+	return (TransactionalObject*) new SuiBoxImplementation(*this);
+}
+
 
 void SuiBoxImplementation::lock(bool doLock) {
 	_this->lock(doLock);

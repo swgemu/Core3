@@ -11,8 +11,8 @@
  */
 
 NonPlayerCreatureObject::NonPlayerCreatureObject() : AiAgent(DummyConstructorParameter::instance()) {
-	_impl = new NonPlayerCreatureObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new NonPlayerCreatureObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 NonPlayerCreatureObject::NonPlayerCreatureObject(DummyConstructorParameter* param) : AiAgent(param) {
@@ -23,7 +23,7 @@ NonPlayerCreatureObject::~NonPlayerCreatureObject() {
 
 
 bool NonPlayerCreatureObject::isNonPlayerCreature() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,7 +31,7 @@ bool NonPlayerCreatureObject::isNonPlayerCreature() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((NonPlayerCreatureObjectImplementation*) _impl)->isNonPlayerCreature();
+		return ((NonPlayerCreatureObjectImplementation*) _getImplementation())->isNonPlayerCreature();
 }
 
 /*
@@ -41,6 +41,7 @@ bool NonPlayerCreatureObject::isNonPlayerCreature() {
 NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation(DummyConstructorParameter* param) : AiAgentImplementation(param) {
 	_initializeImplementation();
 }
+
 
 NonPlayerCreatureObjectImplementation::~NonPlayerCreatureObjectImplementation() {
 }
@@ -67,6 +68,11 @@ DistributedObjectStub* NonPlayerCreatureObjectImplementation::_getStub() {
 NonPlayerCreatureObjectImplementation::operator const NonPlayerCreatureObject*() {
 	return _this;
 }
+
+TransactionalObject* NonPlayerCreatureObjectImplementation::clone() {
+	return (TransactionalObject*) new NonPlayerCreatureObjectImplementation(*this);
+}
+
 
 void NonPlayerCreatureObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

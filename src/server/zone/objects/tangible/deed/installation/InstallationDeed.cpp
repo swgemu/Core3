@@ -13,8 +13,8 @@
  */
 
 InstallationDeed::InstallationDeed() : Deed(DummyConstructorParameter::instance()) {
-	_impl = new InstallationDeedImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new InstallationDeedImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 InstallationDeed::InstallationDeed(DummyConstructorParameter* param) : Deed(param) {
@@ -25,15 +25,15 @@ InstallationDeed::~InstallationDeed() {
 
 
 void InstallationDeed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((InstallationDeedImplementation*) _impl)->fillAttributeList(alm, object);
+		((InstallationDeedImplementation*) _getImplementation())->fillAttributeList(alm, object);
 }
 
 void InstallationDeed::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +41,11 @@ void InstallationDeed::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationDeedImplementation*) _impl)->initializeTransientMembers();
+		((InstallationDeedImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int InstallationDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +55,11 @@ int InstallationDeed::handleObjectMenuSelect(PlayerCreature* player, byte select
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((InstallationDeedImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstallationDeed::setSurplusMaintenance(unsigned int surplusMaint) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -68,11 +68,11 @@ void InstallationDeed::setSurplusMaintenance(unsigned int surplusMaint) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationDeedImplementation*) _impl)->setSurplusMaintenance(surplusMaint);
+		((InstallationDeedImplementation*) _getImplementation())->setSurplusMaintenance(surplusMaint);
 }
 
 unsigned int InstallationDeed::getSurplusMaintenance() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +80,11 @@ unsigned int InstallationDeed::getSurplusMaintenance() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->getSurplusMaintenance();
+		return ((InstallationDeedImplementation*) _getImplementation())->getSurplusMaintenance();
 }
 
 unsigned int InstallationDeed::getSurplusPower() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +92,11 @@ unsigned int InstallationDeed::getSurplusPower() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->getSurplusPower();
+		return ((InstallationDeedImplementation*) _getImplementation())->getSurplusPower();
 }
 
 void InstallationDeed::setSurplusPower(unsigned int power) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,11 +105,11 @@ void InstallationDeed::setSurplusPower(unsigned int power) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationDeedImplementation*) _impl)->setSurplusPower(power);
+		((InstallationDeedImplementation*) _getImplementation())->setSurplusPower(power);
 }
 
 bool InstallationDeed::isInstallationDeed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -117,7 +117,7 @@ bool InstallationDeed::isInstallationDeed() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->isInstallationDeed();
+		return ((InstallationDeedImplementation*) _getImplementation())->isInstallationDeed();
 }
 
 /*
@@ -127,6 +127,7 @@ bool InstallationDeed::isInstallationDeed() {
 InstallationDeedImplementation::InstallationDeedImplementation(DummyConstructorParameter* param) : DeedImplementation(param) {
 	_initializeImplementation();
 }
+
 
 InstallationDeedImplementation::~InstallationDeedImplementation() {
 }
@@ -153,6 +154,11 @@ DistributedObjectStub* InstallationDeedImplementation::_getStub() {
 InstallationDeedImplementation::operator const InstallationDeed*() {
 	return _this;
 }
+
+TransactionalObject* InstallationDeedImplementation::clone() {
+	return (TransactionalObject*) new InstallationDeedImplementation(*this);
+}
+
 
 void InstallationDeedImplementation::lock(bool doLock) {
 	_this->lock(doLock);

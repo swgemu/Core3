@@ -11,8 +11,8 @@
  */
 
 RifleWeaponObject::RifleWeaponObject() : RangedWeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new RifleWeaponObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new RifleWeaponObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 RifleWeaponObject::RifleWeaponObject(DummyConstructorParameter* param) : RangedWeaponObject(param) {
@@ -23,7 +23,7 @@ RifleWeaponObject::~RifleWeaponObject() {
 
 
 void RifleWeaponObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +31,11 @@ void RifleWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((RifleWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+		((RifleWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void RifleWeaponObject::initializePrivateData() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +43,11 @@ void RifleWeaponObject::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((RifleWeaponObjectImplementation*) _impl)->initializePrivateData();
+		((RifleWeaponObjectImplementation*) _getImplementation())->initializePrivateData();
 }
 
 bool RifleWeaponObject::isRifleWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,7 +55,7 @@ bool RifleWeaponObject::isRifleWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RifleWeaponObjectImplementation*) _impl)->isRifleWeapon();
+		return ((RifleWeaponObjectImplementation*) _getImplementation())->isRifleWeapon();
 }
 
 /*
@@ -65,6 +65,7 @@ bool RifleWeaponObject::isRifleWeapon() {
 RifleWeaponObjectImplementation::RifleWeaponObjectImplementation(DummyConstructorParameter* param) : RangedWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RifleWeaponObjectImplementation::~RifleWeaponObjectImplementation() {
 }
@@ -91,6 +92,11 @@ DistributedObjectStub* RifleWeaponObjectImplementation::_getStub() {
 RifleWeaponObjectImplementation::operator const RifleWeaponObject*() {
 	return _this;
 }
+
+TransactionalObject* RifleWeaponObjectImplementation::clone() {
+	return (TransactionalObject*) new RifleWeaponObjectImplementation(*this);
+}
+
 
 void RifleWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

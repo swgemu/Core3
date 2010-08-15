@@ -13,8 +13,8 @@
  */
 
 TravelBuildingObject::TravelBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new TravelBuildingObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TravelBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TravelBuildingObject::TravelBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -31,6 +31,7 @@ TravelBuildingObject::~TravelBuildingObject() {
 TravelBuildingObjectImplementation::TravelBuildingObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TravelBuildingObjectImplementation::~TravelBuildingObjectImplementation() {
 }
@@ -57,6 +58,11 @@ DistributedObjectStub* TravelBuildingObjectImplementation::_getStub() {
 TravelBuildingObjectImplementation::operator const TravelBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* TravelBuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new TravelBuildingObjectImplementation(*this);
+}
+
 
 void TravelBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -17,8 +17,8 @@
  */
 
 FishingBaitObject::FishingBaitObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FishingBaitObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new FishingBaitObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 FishingBaitObject::FishingBaitObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -29,7 +29,7 @@ FishingBaitObject::~FishingBaitObject() {
 
 
 void FishingBaitObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,11 +37,11 @@ void FishingBaitObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingBaitObjectImplementation*) _impl)->initializeTransientMembers();
+		((FishingBaitObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int FishingBaitObject::getFreshness() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +49,11 @@ int FishingBaitObject::getFreshness() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingBaitObjectImplementation*) _impl)->getFreshness();
+		return ((FishingBaitObjectImplementation*) _getImplementation())->getFreshness();
 }
 
 void FishingBaitObject::setFreshness(int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -62,11 +62,11 @@ void FishingBaitObject::setFreshness(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingBaitObjectImplementation*) _impl)->setFreshness(value);
+		((FishingBaitObjectImplementation*) _getImplementation())->setFreshness(value);
 }
 
 void FishingBaitObject::lessFresh() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,11 +74,11 @@ void FishingBaitObject::lessFresh() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingBaitObjectImplementation*) _impl)->lessFresh();
+		((FishingBaitObjectImplementation*) _getImplementation())->lessFresh();
 }
 
 void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -88,7 +88,7 @@ void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingBaitObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		((FishingBaitObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 /*
@@ -98,6 +98,7 @@ void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 FishingBaitObjectImplementation::FishingBaitObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FishingBaitObjectImplementation::~FishingBaitObjectImplementation() {
 }
@@ -124,6 +125,11 @@ DistributedObjectStub* FishingBaitObjectImplementation::_getStub() {
 FishingBaitObjectImplementation::operator const FishingBaitObject*() {
 	return _this;
 }
+
+TransactionalObject* FishingBaitObjectImplementation::clone() {
+	return (TransactionalObject*) new FishingBaitObjectImplementation(*this);
+}
+
 
 void FishingBaitObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

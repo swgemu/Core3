@@ -11,8 +11,8 @@
  */
 
 TwoHandMeleeWeapon::TwoHandMeleeWeapon() : MeleeWeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new TwoHandMeleeWeaponImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TwoHandMeleeWeaponImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TwoHandMeleeWeapon::TwoHandMeleeWeapon(DummyConstructorParameter* param) : MeleeWeaponObject(param) {
@@ -23,7 +23,7 @@ TwoHandMeleeWeapon::~TwoHandMeleeWeapon() {
 
 
 void TwoHandMeleeWeapon::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +31,11 @@ void TwoHandMeleeWeapon::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TwoHandMeleeWeaponImplementation*) _impl)->initializeTransientMembers();
+		((TwoHandMeleeWeaponImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 bool TwoHandMeleeWeapon::isTwoHandMeleeWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,7 +43,7 @@ bool TwoHandMeleeWeapon::isTwoHandMeleeWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TwoHandMeleeWeaponImplementation*) _impl)->isTwoHandMeleeWeapon();
+		return ((TwoHandMeleeWeaponImplementation*) _getImplementation())->isTwoHandMeleeWeapon();
 }
 
 /*
@@ -53,6 +53,7 @@ bool TwoHandMeleeWeapon::isTwoHandMeleeWeapon() {
 TwoHandMeleeWeaponImplementation::TwoHandMeleeWeaponImplementation(DummyConstructorParameter* param) : MeleeWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TwoHandMeleeWeaponImplementation::~TwoHandMeleeWeaponImplementation() {
 }
@@ -79,6 +80,11 @@ DistributedObjectStub* TwoHandMeleeWeaponImplementation::_getStub() {
 TwoHandMeleeWeaponImplementation::operator const TwoHandMeleeWeapon*() {
 	return _this;
 }
+
+TransactionalObject* TwoHandMeleeWeaponImplementation::clone() {
+	return (TransactionalObject*) new TwoHandMeleeWeaponImplementation(*this);
+}
+
 
 void TwoHandMeleeWeaponImplementation::lock(bool doLock) {
 	_this->lock(doLock);

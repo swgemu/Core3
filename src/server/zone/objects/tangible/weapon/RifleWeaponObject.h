@@ -84,6 +84,8 @@ public:
 protected:
 	virtual ~RifleWeaponObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -107,6 +109,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class RifleWeaponObject;
+	friend class TransactionalObjectHandle<RifleWeaponObjectImplementation*>;
 };
 
 class RifleWeaponObjectAdapter : public RangedWeaponObjectAdapter {

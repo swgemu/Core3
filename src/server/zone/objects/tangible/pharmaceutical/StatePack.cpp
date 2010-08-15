@@ -23,8 +23,8 @@
  */
 
 StatePack::StatePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new StatePackImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new StatePackImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StatePack::StatePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -35,7 +35,7 @@ StatePack::~StatePack() {
 
 
 unsigned long long StatePack::getState() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,7 +43,7 @@ unsigned long long StatePack::getState() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((StatePackImplementation*) _impl)->getState();
+		return ((StatePackImplementation*) _getImplementation())->getState();
 }
 
 /*
@@ -53,6 +53,7 @@ unsigned long long StatePack::getState() {
 StatePackImplementation::StatePackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 StatePackImplementation::~StatePackImplementation() {
 }
@@ -79,6 +80,11 @@ DistributedObjectStub* StatePackImplementation::_getStub() {
 StatePackImplementation::operator const StatePack*() {
 	return _this;
 }
+
+TransactionalObject* StatePackImplementation::clone() {
+	return (TransactionalObject*) new StatePackImplementation(*this);
+}
+
 
 void StatePackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

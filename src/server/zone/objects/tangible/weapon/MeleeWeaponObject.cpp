@@ -11,8 +11,8 @@
  */
 
 MeleeWeaponObject::MeleeWeaponObject() : WeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new MeleeWeaponObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new MeleeWeaponObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MeleeWeaponObject::MeleeWeaponObject(DummyConstructorParameter* param) : WeaponObject(param) {
@@ -23,7 +23,7 @@ MeleeWeaponObject::~MeleeWeaponObject() {
 
 
 void MeleeWeaponObject::initializePrivateData() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +31,11 @@ void MeleeWeaponObject::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MeleeWeaponObjectImplementation*) _impl)->initializePrivateData();
+		((MeleeWeaponObjectImplementation*) _getImplementation())->initializePrivateData();
 }
 
 void MeleeWeaponObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +43,11 @@ void MeleeWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MeleeWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+		((MeleeWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 bool MeleeWeaponObject::isMeleeWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,7 +55,7 @@ bool MeleeWeaponObject::isMeleeWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MeleeWeaponObjectImplementation*) _impl)->isMeleeWeapon();
+		return ((MeleeWeaponObjectImplementation*) _getImplementation())->isMeleeWeapon();
 }
 
 /*
@@ -65,6 +65,7 @@ bool MeleeWeaponObject::isMeleeWeapon() {
 MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(DummyConstructorParameter* param) : WeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
 }
@@ -91,6 +92,11 @@ DistributedObjectStub* MeleeWeaponObjectImplementation::_getStub() {
 MeleeWeaponObjectImplementation::operator const MeleeWeaponObject*() {
 	return _this;
 }
+
+TransactionalObject* MeleeWeaponObjectImplementation::clone() {
+	return (TransactionalObject*) new MeleeWeaponObjectImplementation(*this);
+}
+
 
 void MeleeWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

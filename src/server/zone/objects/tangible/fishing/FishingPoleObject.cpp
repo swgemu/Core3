@@ -21,8 +21,8 @@
  */
 
 FishingPoleObject::FishingPoleObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FishingPoleObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new FishingPoleObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 FishingPoleObject::FishingPoleObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -33,7 +33,7 @@ FishingPoleObject::~FishingPoleObject() {
 
 
 void FishingPoleObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +41,11 @@ void FishingPoleObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->initializeTransientMembers();
+		((FishingPoleObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int FishingPoleObject::getQuality() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +53,11 @@ int FishingPoleObject::getQuality() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingPoleObjectImplementation*) _impl)->getQuality();
+		return ((FishingPoleObjectImplementation*) _getImplementation())->getQuality();
 }
 
 void FishingPoleObject::setQuality(int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +66,11 @@ void FishingPoleObject::setQuality(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->setQuality(value);
+		((FishingPoleObjectImplementation*) _getImplementation())->setQuality(value);
 }
 
 void FishingPoleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +80,11 @@ void FishingPoleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse,
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		((FishingPoleObjectImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
 }
 
 int FishingPoleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,11 +94,11 @@ int FishingPoleObject::handleObjectMenuSelect(PlayerCreature* player, byte selec
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingPoleObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((FishingPoleObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 int FishingPoleObject::canAddObject(SceneObject* object, String& errorDescription) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,11 +108,11 @@ int FishingPoleObject::canAddObject(SceneObject* object, String& errorDescriptio
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingPoleObjectImplementation*) _impl)->canAddObject(object, errorDescription);
+		return ((FishingPoleObjectImplementation*) _getImplementation())->canAddObject(object, errorDescription);
 }
 
 void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +122,11 @@ void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		((FishingPoleObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 void FishingPoleObject::doFishing(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +135,11 @@ void FishingPoleObject::doFishing(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->doFishing(player);
+		((FishingPoleObjectImplementation*) _getImplementation())->doFishing(player);
 }
 
 String FishingPoleObject::getText(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,7 +149,7 @@ String FishingPoleObject::getText(PlayerCreature* player) {
 		method.executeWithAsciiReturn(_return_getText);
 		return _return_getText;
 	} else
-		return ((FishingPoleObjectImplementation*) _impl)->getText(player);
+		return ((FishingPoleObjectImplementation*) _getImplementation())->getText(player);
 }
 
 /*
@@ -159,6 +159,7 @@ String FishingPoleObject::getText(PlayerCreature* player) {
 FishingPoleObjectImplementation::FishingPoleObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FishingPoleObjectImplementation::~FishingPoleObjectImplementation() {
 }
@@ -185,6 +186,11 @@ DistributedObjectStub* FishingPoleObjectImplementation::_getStub() {
 FishingPoleObjectImplementation::operator const FishingPoleObject*() {
 	return _this;
 }
+
+TransactionalObject* FishingPoleObjectImplementation::clone() {
+	return (TransactionalObject*) new FishingPoleObjectImplementation(*this);
+}
+
 
 void FishingPoleObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

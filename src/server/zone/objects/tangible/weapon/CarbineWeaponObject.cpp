@@ -11,8 +11,8 @@
  */
 
 CarbineWeaponObject::CarbineWeaponObject() : RangedWeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new CarbineWeaponObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new CarbineWeaponObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CarbineWeaponObject::CarbineWeaponObject(DummyConstructorParameter* param) : RangedWeaponObject(param) {
@@ -23,7 +23,7 @@ CarbineWeaponObject::~CarbineWeaponObject() {
 
 
 void CarbineWeaponObject::initializePrivateData() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +31,11 @@ void CarbineWeaponObject::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CarbineWeaponObjectImplementation*) _impl)->initializePrivateData();
+		((CarbineWeaponObjectImplementation*) _getImplementation())->initializePrivateData();
 }
 
 void CarbineWeaponObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +43,11 @@ void CarbineWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CarbineWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+		((CarbineWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 bool CarbineWeaponObject::isCarbineWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,7 +55,7 @@ bool CarbineWeaponObject::isCarbineWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CarbineWeaponObjectImplementation*) _impl)->isCarbineWeapon();
+		return ((CarbineWeaponObjectImplementation*) _getImplementation())->isCarbineWeapon();
 }
 
 /*
@@ -65,6 +65,7 @@ bool CarbineWeaponObject::isCarbineWeapon() {
 CarbineWeaponObjectImplementation::CarbineWeaponObjectImplementation(DummyConstructorParameter* param) : RangedWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CarbineWeaponObjectImplementation::~CarbineWeaponObjectImplementation() {
 }
@@ -91,6 +92,11 @@ DistributedObjectStub* CarbineWeaponObjectImplementation::_getStub() {
 CarbineWeaponObjectImplementation::operator const CarbineWeaponObject*() {
 	return _this;
 }
+
+TransactionalObject* CarbineWeaponObjectImplementation::clone() {
+	return (TransactionalObject*) new CarbineWeaponObjectImplementation(*this);
+}
+
 
 void CarbineWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -13,8 +13,8 @@
  */
 
 CloningBuildingObject::CloningBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new CloningBuildingObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new CloningBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CloningBuildingObject::CloningBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -25,15 +25,15 @@ CloningBuildingObject::~CloningBuildingObject() {
 
 
 void CloningBuildingObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CloningBuildingObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((CloningBuildingObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 bool CloningBuildingObject::isCloningBuildingObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,15 +41,15 @@ bool CloningBuildingObject::isCloningBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CloningBuildingObjectImplementation*) _impl)->isCloningBuildingObject();
+		return ((CloningBuildingObjectImplementation*) _getImplementation())->isCloningBuildingObject();
 }
 
 CloneSpawnPoint* CloningBuildingObject::getRandomSpawnPoint() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((CloningBuildingObjectImplementation*) _impl)->getRandomSpawnPoint();
+		return ((CloningBuildingObjectImplementation*) _getImplementation())->getRandomSpawnPoint();
 }
 
 /*
@@ -59,6 +59,7 @@ CloneSpawnPoint* CloningBuildingObject::getRandomSpawnPoint() {
 CloningBuildingObjectImplementation::CloningBuildingObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CloningBuildingObjectImplementation::~CloningBuildingObjectImplementation() {
 }
@@ -85,6 +86,11 @@ DistributedObjectStub* CloningBuildingObjectImplementation::_getStub() {
 CloningBuildingObjectImplementation::operator const CloningBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* CloningBuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new CloningBuildingObjectImplementation(*this);
+}
+
 
 void CloningBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

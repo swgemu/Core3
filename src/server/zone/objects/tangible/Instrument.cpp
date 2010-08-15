@@ -13,8 +13,8 @@
  */
 
 Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new InstrumentImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new InstrumentImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Instrument::Instrument(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -25,7 +25,7 @@ Instrument::~Instrument() {
 
 
 void Instrument::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,7 +33,7 @@ void Instrument::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstrumentImplementation*) _impl)->initializeTransientMembers();
+		((InstrumentImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -43,6 +43,7 @@ void Instrument::initializeTransientMembers() {
 InstrumentImplementation::InstrumentImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 InstrumentImplementation::~InstrumentImplementation() {
 }
@@ -69,6 +70,11 @@ DistributedObjectStub* InstrumentImplementation::_getStub() {
 InstrumentImplementation::operator const Instrument*() {
 	return _this;
 }
+
+TransactionalObject* InstrumentImplementation::clone() {
+	return (TransactionalObject*) new InstrumentImplementation(*this);
+}
+
 
 void InstrumentImplementation::lock(bool doLock) {
 	_this->lock(doLock);

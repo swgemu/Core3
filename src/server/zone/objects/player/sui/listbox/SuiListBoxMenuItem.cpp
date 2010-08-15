@@ -11,8 +11,8 @@
  */
 
 SuiListBoxMenuItem::SuiListBoxMenuItem(const String& name, unsigned long long oid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new SuiListBoxMenuItemImplementation(name, oid);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new SuiListBoxMenuItemImplementation(name, oid));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SuiListBoxMenuItem::SuiListBoxMenuItem(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -23,7 +23,7 @@ SuiListBoxMenuItem::~SuiListBoxMenuItem() {
 
 
 unsigned long long SuiListBoxMenuItem::getObjectID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +31,11 @@ unsigned long long SuiListBoxMenuItem::getObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SuiListBoxMenuItemImplementation*) _impl)->getObjectID();
+		return ((SuiListBoxMenuItemImplementation*) _getImplementation())->getObjectID();
 }
 
 String SuiListBoxMenuItem::getOptionName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -44,7 +44,7 @@ String SuiListBoxMenuItem::getOptionName() {
 		method.executeWithAsciiReturn(_return_getOptionName);
 		return _return_getOptionName;
 	} else
-		return ((SuiListBoxMenuItemImplementation*) _impl)->getOptionName();
+		return ((SuiListBoxMenuItemImplementation*) _getImplementation())->getOptionName();
 }
 
 /*
@@ -54,6 +54,7 @@ String SuiListBoxMenuItem::getOptionName() {
 SuiListBoxMenuItemImplementation::SuiListBoxMenuItemImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiListBoxMenuItemImplementation::~SuiListBoxMenuItemImplementation() {
 }
@@ -80,6 +81,11 @@ DistributedObjectStub* SuiListBoxMenuItemImplementation::_getStub() {
 SuiListBoxMenuItemImplementation::operator const SuiListBoxMenuItem*() {
 	return _this;
 }
+
+TransactionalObject* SuiListBoxMenuItemImplementation::clone() {
+	return (TransactionalObject*) new SuiListBoxMenuItemImplementation(*this);
+}
+
 
 void SuiListBoxMenuItemImplementation::lock(bool doLock) {
 	_this->lock(doLock);

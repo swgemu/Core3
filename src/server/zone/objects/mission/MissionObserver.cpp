@@ -17,8 +17,8 @@
  */
 
 MissionObserver::MissionObserver(MissionObjective* objective) : Observer(DummyConstructorParameter::instance()) {
-	_impl = new MissionObserverImplementation(objective);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new MissionObserverImplementation(objective));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MissionObserver::MissionObserver(DummyConstructorParameter* param) : Observer(param) {
@@ -29,7 +29,7 @@ MissionObserver::~MissionObserver() {
 
 
 int MissionObserver::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +41,11 @@ int MissionObserver::notifyObserverEvent(unsigned int eventType, Observable* obs
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((MissionObserverImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+		return ((MissionObserverImplementation*) _getImplementation())->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void MissionObserver::destroyObjectFromDatabase() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,7 +53,7 @@ void MissionObserver::destroyObjectFromDatabase() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObserverImplementation*) _impl)->destroyObjectFromDatabase();
+		((MissionObserverImplementation*) _getImplementation())->destroyObjectFromDatabase();
 }
 
 /*
@@ -63,6 +63,7 @@ void MissionObserver::destroyObjectFromDatabase() {
 MissionObserverImplementation::MissionObserverImplementation(DummyConstructorParameter* param) : ObserverImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MissionObserverImplementation::~MissionObserverImplementation() {
 }
@@ -89,6 +90,11 @@ DistributedObjectStub* MissionObserverImplementation::_getStub() {
 MissionObserverImplementation::operator const MissionObserver*() {
 	return _this;
 }
+
+TransactionalObject* MissionObserverImplementation::clone() {
+	return (TransactionalObject*) new MissionObserverImplementation(*this);
+}
+
 
 void MissionObserverImplementation::lock(bool doLock) {
 	_this->lock(doLock);

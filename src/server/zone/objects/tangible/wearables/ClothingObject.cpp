@@ -13,8 +13,8 @@
  */
 
 ClothingObject::ClothingObject() : WearableObject(DummyConstructorParameter::instance()) {
-	_impl = new ClothingObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ClothingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ClothingObject::ClothingObject(DummyConstructorParameter* param) : WearableObject(param) {
@@ -25,7 +25,7 @@ ClothingObject::~ClothingObject() {
 
 
 void ClothingObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +33,11 @@ void ClothingObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ClothingObjectImplementation*) _impl)->initializeTransientMembers();
+		((ClothingObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,7 +46,7 @@ void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ClothingObjectImplementation*) _impl)->updateCraftingValues(schematic);
+		((ClothingObjectImplementation*) _getImplementation())->updateCraftingValues(schematic);
 }
 
 /*
@@ -56,6 +56,7 @@ void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
 ClothingObjectImplementation::ClothingObjectImplementation(DummyConstructorParameter* param) : WearableObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ClothingObjectImplementation::~ClothingObjectImplementation() {
 }
@@ -82,6 +83,11 @@ DistributedObjectStub* ClothingObjectImplementation::_getStub() {
 ClothingObjectImplementation::operator const ClothingObject*() {
 	return _this;
 }
+
+TransactionalObject* ClothingObjectImplementation::clone() {
+	return (TransactionalObject*) new ClothingObjectImplementation(*this);
+}
+
 
 void ClothingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

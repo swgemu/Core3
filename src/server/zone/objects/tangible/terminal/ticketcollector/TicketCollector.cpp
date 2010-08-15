@@ -19,8 +19,8 @@
  */
 
 TicketCollector::TicketCollector() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new TicketCollectorImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TicketCollectorImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TicketCollector::TicketCollector(DummyConstructorParameter* param) : Terminal(param) {
@@ -31,7 +31,7 @@ TicketCollector::~TicketCollector() {
 
 
 void TicketCollector::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,11 +39,11 @@ void TicketCollector::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TicketCollectorImplementation*) _impl)->initializeTransientMembers();
+		((TicketCollectorImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int TicketCollector::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +53,11 @@ int TicketCollector::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TicketCollectorImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((TicketCollectorImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void TicketCollector::useTicket(PlayerCreature* player, TicketObject* ticket) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +67,11 @@ void TicketCollector::useTicket(PlayerCreature* player, TicketObject* ticket) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TicketCollectorImplementation*) _impl)->useTicket(player, ticket);
+		((TicketCollectorImplementation*) _getImplementation())->useTicket(player, ticket);
 }
 
 bool TicketCollector::checkTime(ShuttleCreature* shuttle, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -81,11 +81,11 @@ bool TicketCollector::checkTime(ShuttleCreature* shuttle, PlayerCreature* player
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TicketCollectorImplementation*) _impl)->checkTime(shuttle, player);
+		return ((TicketCollectorImplementation*) _getImplementation())->checkTime(shuttle, player);
 }
 
 bool TicketCollector::isTicketCollector() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -93,11 +93,11 @@ bool TicketCollector::isTicketCollector() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TicketCollectorImplementation*) _impl)->isTicketCollector();
+		return ((TicketCollectorImplementation*) _getImplementation())->isTicketCollector();
 }
 
 void TicketCollector::setShuttle(ShuttleCreature* shut) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -106,7 +106,7 @@ void TicketCollector::setShuttle(ShuttleCreature* shut) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TicketCollectorImplementation*) _impl)->setShuttle(shut);
+		((TicketCollectorImplementation*) _getImplementation())->setShuttle(shut);
 }
 
 /*
@@ -116,6 +116,7 @@ void TicketCollector::setShuttle(ShuttleCreature* shut) {
 TicketCollectorImplementation::TicketCollectorImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TicketCollectorImplementation::~TicketCollectorImplementation() {
 }
@@ -142,6 +143,11 @@ DistributedObjectStub* TicketCollectorImplementation::_getStub() {
 TicketCollectorImplementation::operator const TicketCollector*() {
 	return _this;
 }
+
+TransactionalObject* TicketCollectorImplementation::clone() {
+	return (TransactionalObject*) new TicketCollectorImplementation(*this);
+}
+
 
 void TicketCollectorImplementation::lock(bool doLock) {
 	_this->lock(doLock);

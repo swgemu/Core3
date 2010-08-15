@@ -17,8 +17,8 @@
  */
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
-	_impl = new RegionImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new RegionImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Region::Region(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -29,7 +29,7 @@ Region::~Region() {
 
 
 void Region::notifyEnter(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -38,11 +38,11 @@ void Region::notifyEnter(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->notifyEnter(object);
+		((RegionImplementation*) _getImplementation())->notifyEnter(object);
 }
 
 void Region::sendGreetingMessage(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -51,11 +51,11 @@ void Region::sendGreetingMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->sendGreetingMessage(player);
+		((RegionImplementation*) _getImplementation())->sendGreetingMessage(player);
 }
 
 void Region::sendDepartingMessage(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -64,11 +64,11 @@ void Region::sendDepartingMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->sendDepartingMessage(player);
+		((RegionImplementation*) _getImplementation())->sendDepartingMessage(player);
 }
 
 void Region::notifyExit(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -77,11 +77,11 @@ void Region::notifyExit(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->notifyExit(object);
+		((RegionImplementation*) _getImplementation())->notifyExit(object);
 }
 
 void Region::addBazaar(BazaarTerminal* ter) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +90,11 @@ void Region::addBazaar(BazaarTerminal* ter) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->addBazaar(ter);
+		((RegionImplementation*) _getImplementation())->addBazaar(ter);
 }
 
 BazaarTerminal* Region::getBazaar(int idx) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,11 +103,11 @@ BazaarTerminal* Region::getBazaar(int idx) {
 
 		return (BazaarTerminal*) method.executeWithObjectReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getBazaar(idx);
+		return ((RegionImplementation*) _getImplementation())->getBazaar(idx);
 }
 
 ShuttleCreature* Region::getShuttle() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +115,11 @@ ShuttleCreature* Region::getShuttle() {
 
 		return (ShuttleCreature*) method.executeWithObjectReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getShuttle();
+		return ((RegionImplementation*) _getImplementation())->getShuttle();
 }
 
 int Region::getBazaarCount() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -127,11 +127,11 @@ int Region::getBazaarCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getBazaarCount();
+		return ((RegionImplementation*) _getImplementation())->getBazaarCount();
 }
 
 bool Region::isRegion() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -139,7 +139,7 @@ bool Region::isRegion() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RegionImplementation*) _impl)->isRegion();
+		return ((RegionImplementation*) _getImplementation())->isRegion();
 }
 
 /*
@@ -149,6 +149,7 @@ bool Region::isRegion() {
 RegionImplementation::RegionImplementation(DummyConstructorParameter* param) : ActiveAreaImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RegionImplementation::~RegionImplementation() {
 }
@@ -175,6 +176,11 @@ DistributedObjectStub* RegionImplementation::_getStub() {
 RegionImplementation::operator const Region*() {
 	return _this;
 }
+
+TransactionalObject* RegionImplementation::clone() {
+	return (TransactionalObject*) new RegionImplementation(*this);
+}
+
 
 void RegionImplementation::lock(bool doLock) {
 	_this->lock(doLock);

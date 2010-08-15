@@ -11,8 +11,8 @@
  */
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
-	_impl = new CreatureImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new CreatureImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Creature::Creature(DummyConstructorParameter* param) : AiAgent(param) {
@@ -23,7 +23,7 @@ Creature::~Creature() {
 
 
 bool Creature::isCreature() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,7 +31,7 @@ bool Creature::isCreature() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CreatureImplementation*) _impl)->isCreature();
+		return ((CreatureImplementation*) _getImplementation())->isCreature();
 }
 
 /*
@@ -41,6 +41,7 @@ bool Creature::isCreature() {
 CreatureImplementation::CreatureImplementation(DummyConstructorParameter* param) : AiAgentImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CreatureImplementation::~CreatureImplementation() {
 }
@@ -67,6 +68,11 @@ DistributedObjectStub* CreatureImplementation::_getStub() {
 CreatureImplementation::operator const Creature*() {
 	return _this;
 }
+
+TransactionalObject* CreatureImplementation::clone() {
+	return (TransactionalObject*) new CreatureImplementation(*this);
+}
+
 
 void CreatureImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -11,8 +11,8 @@
  */
 
 Terminal::Terminal() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new TerminalImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Terminal::Terminal(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -23,7 +23,7 @@ Terminal::~Terminal() {
 
 
 void Terminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,7 +31,7 @@ void Terminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TerminalImplementation*) _impl)->initializeTransientMembers();
+		((TerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 /*
@@ -41,6 +41,7 @@ void Terminal::initializeTransientMembers() {
 TerminalImplementation::TerminalImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TerminalImplementation::~TerminalImplementation() {
 }
@@ -67,6 +68,11 @@ DistributedObjectStub* TerminalImplementation::_getStub() {
 TerminalImplementation::operator const Terminal*() {
 	return _this;
 }
+
+TransactionalObject* TerminalImplementation::clone() {
+	return (TransactionalObject*) new TerminalImplementation(*this);
+}
+
 
 void TerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

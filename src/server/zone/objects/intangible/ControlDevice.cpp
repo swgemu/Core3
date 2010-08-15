@@ -19,8 +19,8 @@
  */
 
 ControlDevice::ControlDevice() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ControlDeviceImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ControlDeviceImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ControlDevice::ControlDevice(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -31,7 +31,7 @@ ControlDevice::~ControlDevice() {
 
 
 void ControlDevice::updateToDatabaseAllObjects(bool startTask) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,11 +40,11 @@ void ControlDevice::updateToDatabaseAllObjects(bool startTask) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ControlDeviceImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
+		((ControlDeviceImplementation*) _getImplementation())->updateToDatabaseAllObjects(startTask);
 }
 
 void ControlDevice::storeObject(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +53,11 @@ void ControlDevice::storeObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ControlDeviceImplementation*) _impl)->storeObject(player);
+		((ControlDeviceImplementation*) _getImplementation())->storeObject(player);
 }
 
 void ControlDevice::generateObject(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +66,11 @@ void ControlDevice::generateObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ControlDeviceImplementation*) _impl)->generateObject(player);
+		((ControlDeviceImplementation*) _getImplementation())->generateObject(player);
 }
 
 void ControlDevice::setControlledObject(CreatureObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +79,11 @@ void ControlDevice::setControlledObject(CreatureObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ControlDeviceImplementation*) _impl)->setControlledObject(object);
+		((ControlDeviceImplementation*) _getImplementation())->setControlledObject(object);
 }
 
 CreatureObject* ControlDevice::getControlledObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -91,11 +91,11 @@ CreatureObject* ControlDevice::getControlledObject() {
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
-		return ((ControlDeviceImplementation*) _impl)->getControlledObject();
+		return ((ControlDeviceImplementation*) _getImplementation())->getControlledObject();
 }
 
 bool ControlDevice::isControlDevice() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,7 +103,7 @@ bool ControlDevice::isControlDevice() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ControlDeviceImplementation*) _impl)->isControlDevice();
+		return ((ControlDeviceImplementation*) _getImplementation())->isControlDevice();
 }
 
 /*
@@ -113,6 +113,7 @@ bool ControlDevice::isControlDevice() {
 ControlDeviceImplementation::ControlDeviceImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ControlDeviceImplementation::~ControlDeviceImplementation() {
 }
@@ -139,6 +140,11 @@ DistributedObjectStub* ControlDeviceImplementation::_getStub() {
 ControlDeviceImplementation::operator const ControlDevice*() {
 	return _this;
 }
+
+TransactionalObject* ControlDeviceImplementation::clone() {
+	return (TransactionalObject*) new ControlDeviceImplementation(*this);
+}
+
 
 void ControlDeviceImplementation::lock(bool doLock) {
 	_this->lock(doLock);

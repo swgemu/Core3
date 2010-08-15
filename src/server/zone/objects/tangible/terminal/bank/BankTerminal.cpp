@@ -21,8 +21,8 @@
  */
 
 BankTerminal::BankTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new BankTerminalImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BankTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BankTerminal::BankTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -33,7 +33,7 @@ BankTerminal::~BankTerminal() {
 
 
 void BankTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +41,11 @@ void BankTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BankTerminalImplementation*) _impl)->initializeTransientMembers();
+		((BankTerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +55,11 @@ void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Play
 
 		method.executeWithVoidReturn();
 	} else
-		((BankTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		((BankTerminalImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
 }
 
 int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,7 +69,7 @@ int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BankTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((BankTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -79,6 +79,7 @@ int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 BankTerminalImplementation::BankTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BankTerminalImplementation::~BankTerminalImplementation() {
 }
@@ -105,6 +106,11 @@ DistributedObjectStub* BankTerminalImplementation::_getStub() {
 BankTerminalImplementation::operator const BankTerminal*() {
 	return _this;
 }
+
+TransactionalObject* BankTerminalImplementation::clone() {
+	return (TransactionalObject*) new BankTerminalImplementation(*this);
+}
+
 
 void BankTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

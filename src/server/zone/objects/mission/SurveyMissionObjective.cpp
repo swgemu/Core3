@@ -21,8 +21,8 @@
  */
 
 SurveyMissionObjective::SurveyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new SurveyMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new SurveyMissionObjectiveImplementation(mission));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SurveyMissionObjective::SurveyMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -33,7 +33,7 @@ SurveyMissionObjective::~SurveyMissionObjective() {
 
 
 void SurveyMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +41,11 @@ void SurveyMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		((SurveyMissionObjectiveImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void SurveyMissionObjective::activate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +53,11 @@ void SurveyMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->activate();
+		((SurveyMissionObjectiveImplementation*) _getImplementation())->activate();
 }
 
 void SurveyMissionObjective::abort() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -65,11 +65,11 @@ void SurveyMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->abort();
+		((SurveyMissionObjectiveImplementation*) _getImplementation())->abort();
 }
 
 void SurveyMissionObjective::complete() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -77,11 +77,11 @@ void SurveyMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->complete();
+		((SurveyMissionObjectiveImplementation*) _getImplementation())->complete();
 }
 
 int SurveyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,11 +94,11 @@ int SurveyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsig
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SurveyMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return ((SurveyMissionObjectiveImplementation*) _getImplementation())->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void SurveyMissionObjective::setSpawn(ResourceSpawn* sp) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -107,11 +107,11 @@ void SurveyMissionObjective::setSpawn(ResourceSpawn* sp) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->setSpawn(sp);
+		((SurveyMissionObjectiveImplementation*) _getImplementation())->setSpawn(sp);
 }
 
 void SurveyMissionObjective::setMissionGiver(SceneObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -120,11 +120,11 @@ void SurveyMissionObjective::setMissionGiver(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->setMissionGiver(object);
+		((SurveyMissionObjectiveImplementation*) _getImplementation())->setMissionGiver(object);
 }
 
 void SurveyMissionObjective::setEfficiency(unsigned int eff) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -133,7 +133,7 @@ void SurveyMissionObjective::setEfficiency(unsigned int eff) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->setEfficiency(eff);
+		((SurveyMissionObjectiveImplementation*) _getImplementation())->setEfficiency(eff);
 }
 
 /*
@@ -143,6 +143,7 @@ void SurveyMissionObjective::setEfficiency(unsigned int eff) {
 SurveyMissionObjectiveImplementation::SurveyMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SurveyMissionObjectiveImplementation::~SurveyMissionObjectiveImplementation() {
 	SurveyMissionObjectiveImplementation::finalize();
@@ -167,6 +168,11 @@ DistributedObjectStub* SurveyMissionObjectiveImplementation::_getStub() {
 SurveyMissionObjectiveImplementation::operator const SurveyMissionObjective*() {
 	return _this;
 }
+
+TransactionalObject* SurveyMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new SurveyMissionObjectiveImplementation(*this);
+}
+
 
 void SurveyMissionObjectiveImplementation::lock(bool doLock) {
 	_this->lock(doLock);

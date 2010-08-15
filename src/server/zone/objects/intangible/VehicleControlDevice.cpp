@@ -21,8 +21,8 @@
  */
 
 VehicleControlDevice::VehicleControlDevice() : ControlDevice(DummyConstructorParameter::instance()) {
-	_impl = new VehicleControlDeviceImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new VehicleControlDeviceImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 VehicleControlDevice::VehicleControlDevice(DummyConstructorParameter* param) : ControlDevice(param) {
@@ -33,7 +33,7 @@ VehicleControlDevice::~VehicleControlDevice() {
 
 
 void VehicleControlDevice::storeObject(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,11 +42,11 @@ void VehicleControlDevice::storeObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleControlDeviceImplementation*) _impl)->storeObject(player);
+		((VehicleControlDeviceImplementation*) _getImplementation())->storeObject(player);
 }
 
 void VehicleControlDevice::generateObject(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +55,11 @@ void VehicleControlDevice::generateObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleControlDeviceImplementation*) _impl)->generateObject(player);
+		((VehicleControlDeviceImplementation*) _getImplementation())->generateObject(player);
 }
 
 int VehicleControlDevice::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +69,11 @@ int VehicleControlDevice::handleObjectMenuSelect(PlayerCreature* player, byte se
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleControlDeviceImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((VehicleControlDeviceImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void VehicleControlDevice::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -82,11 +82,11 @@ void VehicleControlDevice::destroyObjectFromDatabase(bool destroyContainedObject
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleControlDeviceImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
+		((VehicleControlDeviceImplementation*) _getImplementation())->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -95,7 +95,7 @@ int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleControlDeviceImplementation*) _impl)->canBeDestroyed(player);
+		return ((VehicleControlDeviceImplementation*) _getImplementation())->canBeDestroyed(player);
 }
 
 /*
@@ -105,6 +105,7 @@ int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
 VehicleControlDeviceImplementation::VehicleControlDeviceImplementation(DummyConstructorParameter* param) : ControlDeviceImplementation(param) {
 	_initializeImplementation();
 }
+
 
 VehicleControlDeviceImplementation::~VehicleControlDeviceImplementation() {
 }
@@ -131,6 +132,11 @@ DistributedObjectStub* VehicleControlDeviceImplementation::_getStub() {
 VehicleControlDeviceImplementation::operator const VehicleControlDevice*() {
 	return _this;
 }
+
+TransactionalObject* VehicleControlDeviceImplementation::clone() {
+	return (TransactionalObject*) new VehicleControlDeviceImplementation(*this);
+}
+
 
 void VehicleControlDeviceImplementation::lock(bool doLock) {
 	_this->lock(doLock);

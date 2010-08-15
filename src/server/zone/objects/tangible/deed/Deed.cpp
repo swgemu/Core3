@@ -15,8 +15,8 @@
  */
 
 Deed::Deed() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new DeedImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new DeedImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Deed::Deed(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -27,7 +27,7 @@ Deed::~Deed() {
 
 
 void Deed::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,27 +35,27 @@ void Deed::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeedImplementation*) _impl)->initializeTransientMembers();
+		((DeedImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void Deed::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DeedImplementation*) _impl)->loadTemplateData(templateData);
+		((DeedImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void Deed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DeedImplementation*) _impl)->fillAttributeList(alm, object);
+		((DeedImplementation*) _getImplementation())->fillAttributeList(alm, object);
 }
 
 void Deed::setGeneratedObjectTemplate(const String& templ) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -64,11 +64,11 @@ void Deed::setGeneratedObjectTemplate(const String& templ) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeedImplementation*) _impl)->setGeneratedObjectTemplate(templ);
+		((DeedImplementation*) _getImplementation())->setGeneratedObjectTemplate(templ);
 }
 
 String Deed::getGeneratedObjectTemplate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -77,11 +77,11 @@ String Deed::getGeneratedObjectTemplate() {
 		method.executeWithAsciiReturn(_return_getGeneratedObjectTemplate);
 		return _return_getGeneratedObjectTemplate;
 	} else
-		return ((DeedImplementation*) _impl)->getGeneratedObjectTemplate();
+		return ((DeedImplementation*) _getImplementation())->getGeneratedObjectTemplate();
 }
 
 bool Deed::isDeedObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -89,7 +89,7 @@ bool Deed::isDeedObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DeedImplementation*) _impl)->isDeedObject();
+		return ((DeedImplementation*) _getImplementation())->isDeedObject();
 }
 
 /*
@@ -99,6 +99,7 @@ bool Deed::isDeedObject() {
 DeedImplementation::DeedImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 DeedImplementation::~DeedImplementation() {
 }
@@ -125,6 +126,11 @@ DistributedObjectStub* DeedImplementation::_getStub() {
 DeedImplementation::operator const Deed*() {
 	return _this;
 }
+
+TransactionalObject* DeedImplementation::clone() {
+	return (TransactionalObject*) new DeedImplementation(*this);
+}
+
 
 void DeedImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -16,7 +16,7 @@ Observable::~Observable() {
 
 
 void Observable::notifyObservers(unsigned int eventType, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -27,11 +27,11 @@ void Observable::notifyObservers(unsigned int eventType, ManagedObject* arg1, lo
 
 		method.executeWithVoidReturn();
 	} else
-		((ObservableImplementation*) _impl)->notifyObservers(eventType, arg1, arg2);
+		((ObservableImplementation*) _getImplementation())->notifyObservers(eventType, arg1, arg2);
 }
 
 void Observable::registerObserver(unsigned int eventType, Observer* observer) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +41,11 @@ void Observable::registerObserver(unsigned int eventType, Observer* observer) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ObservableImplementation*) _impl)->registerObserver(eventType, observer);
+		((ObservableImplementation*) _getImplementation())->registerObserver(eventType, observer);
 }
 
 void Observable::dropObserver(unsigned int eventType, Observer* observer) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,7 +55,7 @@ void Observable::dropObserver(unsigned int eventType, Observer* observer) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ObservableImplementation*) _impl)->dropObserver(eventType, observer);
+		((ObservableImplementation*) _getImplementation())->dropObserver(eventType, observer);
 }
 
 /*
@@ -69,6 +69,7 @@ ObservableImplementation::ObservableImplementation() : ManagedObjectImplementati
 ObservableImplementation::ObservableImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ObservableImplementation::~ObservableImplementation() {
 }
@@ -95,6 +96,11 @@ DistributedObjectStub* ObservableImplementation::_getStub() {
 ObservableImplementation::operator const Observable*() {
 	return _this;
 }
+
+TransactionalObject* ObservableImplementation::clone() {
+	return (TransactionalObject*) new ObservableImplementation(*this);
+}
+
 
 void ObservableImplementation::lock(bool doLock) {
 	_this->lock(doLock);

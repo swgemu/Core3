@@ -11,8 +11,8 @@
  */
 
 PistolWeaponObject::PistolWeaponObject() : RangedWeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new PistolWeaponObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new PistolWeaponObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 PistolWeaponObject::PistolWeaponObject(DummyConstructorParameter* param) : RangedWeaponObject(param) {
@@ -23,7 +23,7 @@ PistolWeaponObject::~PistolWeaponObject() {
 
 
 void PistolWeaponObject::initializePrivateData() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +31,11 @@ void PistolWeaponObject::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PistolWeaponObjectImplementation*) _impl)->initializePrivateData();
+		((PistolWeaponObjectImplementation*) _getImplementation())->initializePrivateData();
 }
 
 void PistolWeaponObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +43,11 @@ void PistolWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PistolWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+		((PistolWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 bool PistolWeaponObject::isPistolWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,7 +55,7 @@ bool PistolWeaponObject::isPistolWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PistolWeaponObjectImplementation*) _impl)->isPistolWeapon();
+		return ((PistolWeaponObjectImplementation*) _getImplementation())->isPistolWeapon();
 }
 
 /*
@@ -65,6 +65,7 @@ bool PistolWeaponObject::isPistolWeapon() {
 PistolWeaponObjectImplementation::PistolWeaponObjectImplementation(DummyConstructorParameter* param) : RangedWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 PistolWeaponObjectImplementation::~PistolWeaponObjectImplementation() {
 }
@@ -91,6 +92,11 @@ DistributedObjectStub* PistolWeaponObjectImplementation::_getStub() {
 PistolWeaponObjectImplementation::operator const PistolWeaponObject*() {
 	return _this;
 }
+
+TransactionalObject* PistolWeaponObjectImplementation::clone() {
+	return (TransactionalObject*) new PistolWeaponObjectImplementation(*this);
+}
+
 
 void PistolWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -13,8 +13,8 @@
  */
 
 TeachPlayerListBox::TeachPlayerListBox(PlayerCreature* player) : SuiListBox(DummyConstructorParameter::instance()) {
-	_impl = new TeachPlayerListBoxImplementation(player);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TeachPlayerListBoxImplementation(player));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TeachPlayerListBox::TeachPlayerListBox(DummyConstructorParameter* param) : SuiListBox(param) {
@@ -25,7 +25,7 @@ TeachPlayerListBox::~TeachPlayerListBox() {
 
 
 void TeachPlayerListBox::setStudent(PlayerCreature* student) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -34,27 +34,27 @@ void TeachPlayerListBox::setStudent(PlayerCreature* student) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TeachPlayerListBoxImplementation*) _impl)->setStudent(student);
+		((TeachPlayerListBoxImplementation*) _getImplementation())->setStudent(student);
 }
 
 PlayerCreature* TeachPlayerListBox::getStudent() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((TeachPlayerListBoxImplementation*) _impl)->getStudent();
+		return ((TeachPlayerListBoxImplementation*) _getImplementation())->getStudent();
 }
 
 const String TeachPlayerListBox::getTeachingSkillOption(int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((TeachPlayerListBoxImplementation*) _impl)->getTeachingSkillOption(index);
+		return ((TeachPlayerListBoxImplementation*) _getImplementation())->getTeachingSkillOption(index);
 }
 
 bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreature* student) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -64,7 +64,7 @@ bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreatu
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TeachPlayerListBoxImplementation*) _impl)->generateSkillList(teacher, student);
+		return ((TeachPlayerListBoxImplementation*) _getImplementation())->generateSkillList(teacher, student);
 }
 
 /*
@@ -74,6 +74,7 @@ bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreatu
 TeachPlayerListBoxImplementation::TeachPlayerListBoxImplementation(DummyConstructorParameter* param) : SuiListBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TeachPlayerListBoxImplementation::~TeachPlayerListBoxImplementation() {
 }
@@ -100,6 +101,11 @@ DistributedObjectStub* TeachPlayerListBoxImplementation::_getStub() {
 TeachPlayerListBoxImplementation::operator const TeachPlayerListBox*() {
 	return _this;
 }
+
+TransactionalObject* TeachPlayerListBoxImplementation::clone() {
+	return (TransactionalObject*) new TeachPlayerListBoxImplementation(*this);
+}
+
 
 void TeachPlayerListBoxImplementation::lock(bool doLock) {
 	_this->lock(doLock);

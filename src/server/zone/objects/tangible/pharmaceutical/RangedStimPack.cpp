@@ -27,8 +27,8 @@
  */
 
 RangedStimPack::RangedStimPack() : StimPack(DummyConstructorParameter::instance()) {
-	_impl = new RangedStimPackImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new RangedStimPackImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 RangedStimPack::RangedStimPack(DummyConstructorParameter* param) : StimPack(param) {
@@ -39,23 +39,23 @@ RangedStimPack::~RangedStimPack() {
 
 
 void RangedStimPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RangedStimPackImplementation*) _impl)->updateCraftingValues(schematic);
+		((RangedStimPackImplementation*) _getImplementation())->updateCraftingValues(schematic);
 }
 
 void RangedStimPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RangedStimPackImplementation*) _impl)->loadTemplateData(templateData);
+		((RangedStimPackImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +66,11 @@ unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObje
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
+		return ((RangedStimPackImplementation*) _getImplementation())->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float RangedStimPack::getRange(CreatureObject* creature) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +79,11 @@ float RangedStimPack::getRange(CreatureObject* creature) {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->getRange(creature);
+		return ((RangedStimPackImplementation*) _getImplementation())->getRange(creature);
 }
 
 float RangedStimPack::getEffectiveness() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -91,11 +91,11 @@ float RangedStimPack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->getEffectiveness();
+		return ((RangedStimPackImplementation*) _getImplementation())->getEffectiveness();
 }
 
 float RangedStimPack::getArea() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,11 +103,11 @@ float RangedStimPack::getArea() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->getArea();
+		return ((RangedStimPackImplementation*) _getImplementation())->getArea();
 }
 
 bool RangedStimPack::isArea() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +115,11 @@ bool RangedStimPack::isArea() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->isArea();
+		return ((RangedStimPackImplementation*) _getImplementation())->isArea();
 }
 
 float RangedStimPack::getRangeMod() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -127,11 +127,11 @@ float RangedStimPack::getRangeMod() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->getRangeMod();
+		return ((RangedStimPackImplementation*) _getImplementation())->getRangeMod();
 }
 
 bool RangedStimPack::isRangedStimPack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -139,7 +139,7 @@ bool RangedStimPack::isRangedStimPack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->isRangedStimPack();
+		return ((RangedStimPackImplementation*) _getImplementation())->isRangedStimPack();
 }
 
 /*
@@ -149,6 +149,7 @@ bool RangedStimPack::isRangedStimPack() {
 RangedStimPackImplementation::RangedStimPackImplementation(DummyConstructorParameter* param) : StimPackImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RangedStimPackImplementation::~RangedStimPackImplementation() {
 }
@@ -175,6 +176,11 @@ DistributedObjectStub* RangedStimPackImplementation::_getStub() {
 RangedStimPackImplementation::operator const RangedStimPack*() {
 	return _this;
 }
+
+TransactionalObject* RangedStimPackImplementation::clone() {
+	return (TransactionalObject*) new RangedStimPackImplementation(*this);
+}
+
 
 void RangedStimPackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

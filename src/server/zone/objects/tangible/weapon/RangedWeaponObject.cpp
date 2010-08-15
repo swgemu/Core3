@@ -11,8 +11,8 @@
  */
 
 RangedWeaponObject::RangedWeaponObject() : WeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new RangedWeaponObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new RangedWeaponObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 RangedWeaponObject::RangedWeaponObject(DummyConstructorParameter* param) : WeaponObject(param) {
@@ -23,7 +23,7 @@ RangedWeaponObject::~RangedWeaponObject() {
 
 
 void RangedWeaponObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +31,11 @@ void RangedWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((RangedWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+		((RangedWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 bool RangedWeaponObject::isRangedWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,7 +43,7 @@ bool RangedWeaponObject::isRangedWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RangedWeaponObjectImplementation*) _impl)->isRangedWeapon();
+		return ((RangedWeaponObjectImplementation*) _getImplementation())->isRangedWeapon();
 }
 
 /*
@@ -53,6 +53,7 @@ bool RangedWeaponObject::isRangedWeapon() {
 RangedWeaponObjectImplementation::RangedWeaponObjectImplementation(DummyConstructorParameter* param) : WeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RangedWeaponObjectImplementation::~RangedWeaponObjectImplementation() {
 }
@@ -79,6 +80,11 @@ DistributedObjectStub* RangedWeaponObjectImplementation::_getStub() {
 RangedWeaponObjectImplementation::operator const RangedWeaponObject*() {
 	return _this;
 }
+
+TransactionalObject* RangedWeaponObjectImplementation::clone() {
+	return (TransactionalObject*) new RangedWeaponObjectImplementation(*this);
+}
+
 
 void RangedWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

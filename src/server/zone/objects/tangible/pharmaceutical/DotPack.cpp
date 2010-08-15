@@ -25,8 +25,8 @@
  */
 
 DotPack::DotPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new DotPackImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new DotPackImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 DotPack::DotPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -37,31 +37,31 @@ DotPack::~DotPack() {
 
 
 void DotPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DotPackImplementation*) _impl)->updateCraftingValues(schematic);
+		((DotPackImplementation*) _getImplementation())->updateCraftingValues(schematic);
 }
 
 void DotPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DotPackImplementation*) _impl)->loadTemplateData(templateData);
+		((DotPackImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void DotPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DotPackImplementation*) _impl)->fillAttributeList(msg, object);
+		((DotPackImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 int DotPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +71,11 @@ int DotPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((DotPackImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 int DotPack::calculatePower(CreatureObject* creature) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,11 +84,11 @@ int DotPack::calculatePower(CreatureObject* creature) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->calculatePower(creature);
+		return ((DotPackImplementation*) _getImplementation())->calculatePower(creature);
 }
 
 bool DotPack::isPoisonDeliveryUnit() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +96,11 @@ bool DotPack::isPoisonDeliveryUnit() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->isPoisonDeliveryUnit();
+		return ((DotPackImplementation*) _getImplementation())->isPoisonDeliveryUnit();
 }
 
 bool DotPack::isDiseaseDeliveryUnit() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,11 +108,11 @@ bool DotPack::isDiseaseDeliveryUnit() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->isDiseaseDeliveryUnit();
+		return ((DotPackImplementation*) _getImplementation())->isDiseaseDeliveryUnit();
 }
 
 float DotPack::getEffectiveness() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -120,11 +120,11 @@ float DotPack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getEffectiveness();
+		return ((DotPackImplementation*) _getImplementation())->getEffectiveness();
 }
 
 float DotPack::getRange() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -132,11 +132,11 @@ float DotPack::getRange() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getRange();
+		return ((DotPackImplementation*) _getImplementation())->getRange();
 }
 
 float DotPack::getArea() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -144,11 +144,11 @@ float DotPack::getArea() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getArea();
+		return ((DotPackImplementation*) _getImplementation())->getArea();
 }
 
 float DotPack::getRangeMod() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -156,11 +156,11 @@ float DotPack::getRangeMod() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getRangeMod();
+		return ((DotPackImplementation*) _getImplementation())->getRangeMod();
 }
 
 float DotPack::getPotency() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -168,11 +168,11 @@ float DotPack::getPotency() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getPotency();
+		return ((DotPackImplementation*) _getImplementation())->getPotency();
 }
 
 unsigned int DotPack::getDuration() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -180,11 +180,11 @@ unsigned int DotPack::getDuration() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getDuration();
+		return ((DotPackImplementation*) _getImplementation())->getDuration();
 }
 
 bool DotPack::isArea() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -192,11 +192,11 @@ bool DotPack::isArea() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->isArea();
+		return ((DotPackImplementation*) _getImplementation())->isArea();
 }
 
 unsigned int DotPack::getPool() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -204,11 +204,11 @@ unsigned int DotPack::getPool() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getPool();
+		return ((DotPackImplementation*) _getImplementation())->getPool();
 }
 
 unsigned int DotPack::getDotType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -216,7 +216,7 @@ unsigned int DotPack::getDotType() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getDotType();
+		return ((DotPackImplementation*) _getImplementation())->getDotType();
 }
 
 /*
@@ -226,6 +226,7 @@ unsigned int DotPack::getDotType() {
 DotPackImplementation::DotPackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 DotPackImplementation::~DotPackImplementation() {
 }
@@ -252,6 +253,11 @@ DistributedObjectStub* DotPackImplementation::_getStub() {
 DotPackImplementation::operator const DotPack*() {
 	return _this;
 }
+
+TransactionalObject* DotPackImplementation::clone() {
+	return (TransactionalObject*) new DotPackImplementation(*this);
+}
+
 
 void DotPackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

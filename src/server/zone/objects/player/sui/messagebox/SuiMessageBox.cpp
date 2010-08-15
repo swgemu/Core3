@@ -13,8 +13,8 @@
  */
 
 SuiMessageBox::SuiMessageBox(PlayerCreature* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiMessageBoxImplementation(player, windowType);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new SuiMessageBoxImplementation(player, windowType));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SuiMessageBox::SuiMessageBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -25,7 +25,7 @@ SuiMessageBox::~SuiMessageBox() {
 
 
 BaseMessage* SuiMessageBox::generateMessage() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +33,11 @@ BaseMessage* SuiMessageBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiMessageBoxImplementation*) _impl)->generateMessage();
+		return ((SuiMessageBoxImplementation*) _getImplementation())->generateMessage();
 }
 
 bool SuiMessageBox::isMessageBox() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,7 +45,7 @@ bool SuiMessageBox::isMessageBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiMessageBoxImplementation*) _impl)->isMessageBox();
+		return ((SuiMessageBoxImplementation*) _getImplementation())->isMessageBox();
 }
 
 /*
@@ -55,6 +55,7 @@ bool SuiMessageBox::isMessageBox() {
 SuiMessageBoxImplementation::SuiMessageBoxImplementation(DummyConstructorParameter* param) : SuiBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiMessageBoxImplementation::~SuiMessageBoxImplementation() {
 }
@@ -81,6 +82,11 @@ DistributedObjectStub* SuiMessageBoxImplementation::_getStub() {
 SuiMessageBoxImplementation::operator const SuiMessageBox*() {
 	return _this;
 }
+
+TransactionalObject* SuiMessageBoxImplementation::clone() {
+	return (TransactionalObject*) new SuiMessageBoxImplementation(*this);
+}
+
 
 void SuiMessageBoxImplementation::lock(bool doLock) {
 	_this->lock(doLock);

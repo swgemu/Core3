@@ -23,8 +23,8 @@
  */
 
 WoundPack::WoundPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new WoundPackImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new WoundPackImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 WoundPack::WoundPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -35,7 +35,7 @@ WoundPack::~WoundPack() {
 
 
 float WoundPack::getEffectiveness() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +43,11 @@ float WoundPack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((WoundPackImplementation*) _impl)->getEffectiveness();
+		return ((WoundPackImplementation*) _getImplementation())->getEffectiveness();
 }
 
 byte WoundPack::getAttribute() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,7 +55,7 @@ byte WoundPack::getAttribute() {
 
 		return method.executeWithByteReturn();
 	} else
-		return ((WoundPackImplementation*) _impl)->getAttribute();
+		return ((WoundPackImplementation*) _getImplementation())->getAttribute();
 }
 
 /*
@@ -65,6 +65,7 @@ byte WoundPack::getAttribute() {
 WoundPackImplementation::WoundPackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 WoundPackImplementation::~WoundPackImplementation() {
 }
@@ -91,6 +92,11 @@ DistributedObjectStub* WoundPackImplementation::_getStub() {
 WoundPackImplementation::operator const WoundPack*() {
 	return _this;
 }
+
+TransactionalObject* WoundPackImplementation::clone() {
+	return (TransactionalObject*) new WoundPackImplementation(*this);
+}
+
 
 void WoundPackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

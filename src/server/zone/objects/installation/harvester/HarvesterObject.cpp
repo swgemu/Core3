@@ -9,8 +9,8 @@
  */
 
 HarvesterObject::HarvesterObject() : InstallationObject(DummyConstructorParameter::instance()) {
-	_impl = new HarvesterObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new HarvesterObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 HarvesterObject::HarvesterObject(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -21,23 +21,23 @@ HarvesterObject::~HarvesterObject() {
 
 
 void HarvesterObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((HarvesterObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((HarvesterObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((HarvesterObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		((HarvesterObjectImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
 }
 
 int HarvesterObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +47,11 @@ int HarvesterObject::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((HarvesterObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((HarvesterObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void HarvesterObject::synchronizedUIListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +61,11 @@ void HarvesterObject::synchronizedUIListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->synchronizedUIListen(player, value);
+		((HarvesterObjectImplementation*) _getImplementation())->synchronizedUIListen(player, value);
 }
 
 void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -75,11 +75,11 @@ void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
+		((HarvesterObjectImplementation*) _getImplementation())->synchronizedUIStopListen(player, value);
 }
 
 void HarvesterObject::updateOperators() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -87,11 +87,11 @@ void HarvesterObject::updateOperators() {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->updateOperators();
+		((HarvesterObjectImplementation*) _getImplementation())->updateOperators();
 }
 
 bool HarvesterObject::isHarvesterObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -99,7 +99,7 @@ bool HarvesterObject::isHarvesterObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((HarvesterObjectImplementation*) _impl)->isHarvesterObject();
+		return ((HarvesterObjectImplementation*) _getImplementation())->isHarvesterObject();
 }
 
 /*
@@ -109,6 +109,7 @@ bool HarvesterObject::isHarvesterObject() {
 HarvesterObjectImplementation::HarvesterObjectImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 HarvesterObjectImplementation::~HarvesterObjectImplementation() {
 }
@@ -135,6 +136,11 @@ DistributedObjectStub* HarvesterObjectImplementation::_getStub() {
 HarvesterObjectImplementation::operator const HarvesterObject*() {
 	return _this;
 }
+
+TransactionalObject* HarvesterObjectImplementation::clone() {
+	return (TransactionalObject*) new HarvesterObjectImplementation(*this);
+}
+
 
 void HarvesterObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

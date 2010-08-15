@@ -186,6 +186,8 @@ public:
 protected:
 	virtual ~SuiListBoxImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -209,6 +211,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiListBox;
+	friend class TransactionalObjectHandle<SuiListBoxImplementation*>;
 };
 
 class SuiListBoxAdapter : public SuiBoxAdapter {

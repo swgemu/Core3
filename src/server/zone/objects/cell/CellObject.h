@@ -115,6 +115,8 @@ public:
 protected:
 	virtual ~CellObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -136,6 +138,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CellObject;
+	friend class TransactionalObjectHandle<CellObjectImplementation*>;
 };
 
 class CellObjectAdapter : public SceneObjectAdapter {

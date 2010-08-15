@@ -25,8 +25,8 @@
  */
 
 BankInstallation::BankInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
-	_impl = new BankInstallationImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BankInstallationImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BankInstallation::BankInstallation(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -37,7 +37,7 @@ BankInstallation::~BankInstallation() {
 
 
 void BankInstallation::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,11 +46,11 @@ void BankInstallation::insertToZone(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BankInstallationImplementation*) _impl)->insertToZone(zone);
+		((BankInstallationImplementation*) _getImplementation())->insertToZone(zone);
 }
 
 void BankInstallation::spawnBankObjects() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,7 +58,7 @@ void BankInstallation::spawnBankObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BankInstallationImplementation*) _impl)->spawnBankObjects();
+		((BankInstallationImplementation*) _getImplementation())->spawnBankObjects();
 }
 
 /*
@@ -68,6 +68,7 @@ void BankInstallation::spawnBankObjects() {
 BankInstallationImplementation::BankInstallationImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BankInstallationImplementation::~BankInstallationImplementation() {
 }
@@ -94,6 +95,11 @@ DistributedObjectStub* BankInstallationImplementation::_getStub() {
 BankInstallationImplementation::operator const BankInstallation*() {
 	return _this;
 }
+
+TransactionalObject* BankInstallationImplementation::clone() {
+	return (TransactionalObject*) new BankInstallationImplementation(*this);
+}
+
 
 void BankInstallationImplementation::lock(bool doLock) {
 	_this->lock(doLock);
