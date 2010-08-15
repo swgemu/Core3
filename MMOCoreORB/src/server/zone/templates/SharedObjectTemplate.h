@@ -112,6 +112,7 @@ public:
 	const static int DOTPACK = 0x4000013;
 	const static int WOUNDPACK = 0x4000014;
 	const static int STATEPACK = 0x4000015;
+	const static int CONSUMABLE = 0x4000016;
 
 public:
 	SharedObjectTemplate() {

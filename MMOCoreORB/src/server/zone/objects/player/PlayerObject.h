@@ -216,7 +216,15 @@ public:
 
 	void setTitle(const String& characterTitle, bool notifyClient = true);
 
+	void setFoodFilling(int newValue, bool notifyClient = true);
+
+	void setDrinkFilling(int newValue, bool notifyClient = true);
+
 	void notifyOnline();
+
+	void doDigest();
+
+	bool isDigesting();
 
 	void notifyOffline();
 
@@ -425,7 +433,15 @@ public:
 
 	void setTitle(const String& characterTitle, bool notifyClient = true);
 
+	void setFoodFilling(int newValue, bool notifyClient = true);
+
+	void setDrinkFilling(int newValue, bool notifyClient = true);
+
 	void notifyOnline();
+
+	void doDigest();
+
+	bool isDigesting();
 
 	void notifyOffline();
 
@@ -570,7 +586,15 @@ public:
 
 	void setTitle(const String& characterTitle, bool notifyClient);
 
+	void setFoodFilling(int newValue, bool notifyClient);
+
+	void setDrinkFilling(int newValue, bool notifyClient);
+
 	void notifyOnline();
+
+	void doDigest();
+
+	bool isDigesting();
 
 	void notifyOffline();
 

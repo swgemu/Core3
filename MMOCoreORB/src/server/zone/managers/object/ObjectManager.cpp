@@ -17,7 +17,8 @@
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/Instrument.h"
-#include "server/zone/objects/tangible/Food.h"
+#include "server/zone/objects/tangible/consumable/Food.h"
+#include "server/zone/objects/tangible/consumable/Drink.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/trainer/TrainerCreature.h"
@@ -179,6 +180,7 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<Instrument>(SceneObject::INSTRUMENT);
 	objectFactory.registerObject<Food>(SceneObject::FOOD);
+	objectFactory.registerObject<Drink>(SceneObject::DRINK);
 	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
