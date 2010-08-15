@@ -166,6 +166,20 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
+	void handleStructureStatus(PlayerCreature* player);
+
+	void handleStructureDestroyRequest(PlayerCreature* player);
+
+	void handleStructureDestroyConfirm(PlayerCreature* player, bool confirm);
+
+	void handlePayMaintenance(PlayerCreature* player);
+
+	void handlePrivacyChange(PlayerCreature* player);
+
+	void handleDeclareResidency(PlayerCreature* player);
+
+	void handleSetObjectName(PlayerCreature* player);
+
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
@@ -226,9 +240,9 @@ public:
 
 	SignObject* getSignObject();
 
-	void setMaintenancePool(unsigned int maintenance);
+	void setSurplusMaintenance(unsigned int maintenance);
 
-	unsigned int getMaintenancePool();
+	unsigned int getSurplusMaintenance();
 
 	void setBaseMaintenanceRate(int maintenanceRate);
 
@@ -241,6 +255,14 @@ public:
 	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+
+	bool isPublicStructure();
+
+	void setPublicStructure(bool value);
+
+	bool isDeclaredResidency();
+
+	void setDeclaredResidency(bool value);
 
 protected:
 	BuildingObject(DummyConstructorParameter* param);
@@ -268,6 +290,8 @@ protected:
 
 	StructurePermissionList structurePermissionList;
 
+	ManagedReference<StructureTerminal* > structureTerminal;
+
 	unsigned long long ownerObjectID;
 
 	int totalCellNumber;
@@ -280,9 +304,13 @@ protected:
 
 	int baseMaintenanceRate;
 
-	unsigned int maintenancePool;
+	unsigned int surplusMaintenance;
 
 	int accessFee;
+
+	bool publicStructure;
+
+	bool declaredResidency;
 
 public:
 	BuildingObjectImplementation();
@@ -298,6 +326,20 @@ public:
 	void initializeTransientMembers();
 
 	void sendContainerObjectsTo(SceneObject* player);
+
+	void handleStructureStatus(PlayerCreature* player);
+
+	void handleStructureDestroyRequest(PlayerCreature* player);
+
+	void handleStructureDestroyConfirm(PlayerCreature* player, bool confirm);
+
+	void handlePayMaintenance(PlayerCreature* player);
+
+	void handlePrivacyChange(PlayerCreature* player);
+
+	void handleDeclareResidency(PlayerCreature* player);
+
+	void handleSetObjectName(PlayerCreature* player);
 
 	virtual int notifyStructurePlaced(PlayerCreature* player);
 
@@ -359,9 +401,9 @@ public:
 
 	SignObject* getSignObject();
 
-	void setMaintenancePool(unsigned int maintenance);
+	void setSurplusMaintenance(unsigned int maintenance);
 
-	unsigned int getMaintenancePool();
+	unsigned int getSurplusMaintenance();
 
 	void setBaseMaintenanceRate(int maintenanceRate);
 
@@ -374,6 +416,14 @@ public:
 	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+
+	bool isPublicStructure();
+
+	void setPublicStructure(bool value);
+
+	bool isDeclaredResidency();
+
+	void setDeclaredResidency(bool value);
 
 	BuildingObject* _this;
 
@@ -421,6 +471,20 @@ public:
 	void initializeTransientMembers();
 
 	void sendContainerObjectsTo(SceneObject* player);
+
+	void handleStructureStatus(PlayerCreature* player);
+
+	void handleStructureDestroyRequest(PlayerCreature* player);
+
+	void handleStructureDestroyConfirm(PlayerCreature* player, bool confirm);
+
+	void handlePayMaintenance(PlayerCreature* player);
+
+	void handlePrivacyChange(PlayerCreature* player);
+
+	void handleDeclareResidency(PlayerCreature* player);
+
+	void handleSetObjectName(PlayerCreature* player);
 
 	int notifyStructurePlaced(PlayerCreature* player);
 
@@ -470,9 +534,9 @@ public:
 
 	SignObject* getSignObject();
 
-	void setMaintenancePool(unsigned int maintenance);
+	void setSurplusMaintenance(unsigned int maintenance);
 
-	unsigned int getMaintenancePool();
+	unsigned int getSurplusMaintenance();
 
 	void setBaseMaintenanceRate(int maintenanceRate);
 
@@ -485,6 +549,14 @@ public:
 	bool isOnAdminList(CreatureObject* creature);
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+
+	bool isPublicStructure();
+
+	void setPublicStructure(bool value);
+
+	bool isDeclaredResidency();
+
+	void setDeclaredResidency(bool value);
 
 protected:
 	String _param1_sendPermissionListTo__PlayerCreature_String_;

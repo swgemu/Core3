@@ -1012,20 +1012,23 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 	StructureTerminalLocation* structureTerminalLocation = buildingTemplate->getStructureTerminalLocation();
 
 	if (structureTerminalLocation != NULL) {
-		ManagedReference<StructureTerminal*> structureTerminal = (StructureTerminal*) zserv->createObject(terminalTemplate.hashCode(), 1);
+		ManagedReference<CellObject*> cell = buio->getCell(structureTerminalLocation->getCellNumber());
 
-		if (structureTerminal != NULL) {
-			structureTerminal->initializePosition(structureTerminalLocation->getPositionX(), structureTerminalLocation->getPositionZ(), structureTerminalLocation->getPositionY());
-			structureTerminal->setDirection(structureTerminalLocation->getDirection());
-			structureTerminal->setBuildingObject(buio);
+		if (cell != NULL) {
+			ManagedReference<StructureTerminal*> structureTerminal = (StructureTerminal*) zserv->createObject(terminalTemplate.hashCode(), 1);
 
-			//Add the structure terminal to the cell
-			ManagedReference<CellObject*> cell = buio->getCell(structureTerminalLocation->getCellNumber());
-			cell->addObject(structureTerminal, -1, true);
-			cell->broadcastObject(structureTerminal, false);
-			structureTerminal->insertToZone(zone);
+			if (structureTerminal != NULL) {
+				structureTerminal->initializePosition(structureTerminalLocation->getPositionX(), structureTerminalLocation->getPositionZ(), structureTerminalLocation->getPositionY());
+				structureTerminal->setDirection(structureTerminalLocation->getDirection());
+				structureTerminal->setBuildingObject(buio);
 
-			structureTerminal->updateToDatabase();
+				//Add the structure terminal to the cell
+				cell->addObject(structureTerminal, -1, true);
+				cell->broadcastObject(structureTerminal, false);
+				structureTerminal->insertToZone(zone);
+
+				structureTerminal->updateToDatabase();
+			}
 		}
 	}
 
