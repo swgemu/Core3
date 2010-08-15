@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_parwan_nutricake = object_tangible_food_crafted_shared_dessert_parwan_nutricake:new {
+	templateType = CONSUMABLE,
+	
+	duration = 45,
+	filling = 10,
+	nutrition = 50,
 
+	effectType = 0,
+	
+	fillingMin = 29,
+	fillingMax = 19,
+	flavorMin = 40,
+	flavorMax = 75,
+	nutritionMin = 48,
+	nutritionMax = 88,
+	quantityMin = 5,
+	quantityMax = 8,
+
+	modifiers = { "burst_run", 0 },
+
+	buffName = "",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_parwan_nutricake, "object/tangible/food/crafted/dessert_parwan_nutricake.iff")

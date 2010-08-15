@@ -109,7 +109,12 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Medpack Intimidated", "object/tangible/medicine/crafted/medpack_intimidated_a.iff",
 			"Medpack Stunned", "object/tangible/medicine/crafted/medpack_stunned_a.iff",
 			"Revive Pack", "object/tangible/medicine/medpack_revive.iff"
-		},	
+		},
+		"Consumable",
+		{
+			"Dweezel", "object/tangible/food/crafted/dessert_dweezel.iff",
+			"Pikatta Pie", "object/tangible/food/crafted/dessert_pikatta_pie.iff"
+		},
 		"Weapons",
 		{
 			"Rifles",

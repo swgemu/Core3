@@ -328,6 +328,8 @@ public:
 
 	bool healDot(unsigned long long dotType, int reduction);
 
+	void clearDots();
+
 	bool hasBuff(unsigned int buffcrc);
 
 	void notifySelfPositionUpdate();
@@ -437,6 +439,8 @@ public:
 	void updateTimeOfDeath();
 
 	bool hasAttackDelay();
+
+	bool hasSpice();
 
 	void updateLastSuccessfulCombatAction();
 
@@ -884,6 +888,8 @@ public:
 
 	bool healDot(unsigned long long dotType, int reduction);
 
+	void clearDots();
+
 	bool hasBuff(unsigned int buffcrc);
 
 	void notifySelfPositionUpdate();
@@ -993,6 +999,8 @@ public:
 	void updateTimeOfDeath();
 
 	bool hasAttackDelay();
+
+	bool hasSpice();
 
 	void updateLastSuccessfulCombatAction();
 
@@ -1319,6 +1327,8 @@ public:
 
 	bool healDot(unsigned long long dotType, int reduction);
 
+	void clearDots();
+
 	bool hasBuff(unsigned int buffcrc);
 
 	void notifySelfPositionUpdate();
@@ -1424,6 +1434,8 @@ public:
 	void updateTimeOfDeath();
 
 	bool hasAttackDelay();
+
+	bool hasSpice();
 
 	void updateLastSuccessfulCombatAction();
 

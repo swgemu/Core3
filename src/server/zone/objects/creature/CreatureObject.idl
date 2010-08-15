@@ -479,6 +479,10 @@ class CreatureObject extends TangibleObject {
 		return damageOverTimeList.healState(this, dotType, reduction);
 	}
 	
+	public void clearDots() {
+		damageOverTimeList.clear();
+	}
+	
 	public boolean hasBuff(unsigned int buffcrc) {
 		return creatureBuffs.hasBuff(buffcrc);
 	}
@@ -768,6 +772,10 @@ class CreatureObject extends TangibleObject {
 	
 	public boolean hasAttackDelay() {
 		return !cooldownTimerMap.isPast("nextAttackDelay");
+	}
+	
+	public boolean hasSpice() {
+		return creatureBuffs.hasSpice();
 	}
 	
 	public void updateLastSuccessfulCombatAction() {

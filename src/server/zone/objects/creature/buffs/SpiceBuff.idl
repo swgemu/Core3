@@ -42,21 +42,38 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible;
+package server.zone.objects.creature.buffs;
 
-import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import engine.lua.LuaObject;
-import server.zone.Zone;
+import engine.core.ManagedObject;
+import system.util.VectorMap;
+import system.lang.ref.Reference;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import system.lang.Time;
 
-class Food extends TangibleObject {
-	public Food() {		
-		Logger.setLoggingName("Food");
+include server.zone.ZoneProcessServerImplementation;
+import server.zone.objects.creature.buffs.BuffDurationEvent;
+import server.zone.objects.creature.buffs.Buff;
+import server.zone.objects.creature.buffs.SpiceDownerBuff;
+include server.zone.objects.creature.buffs.BuffType;
+include server.zone.objects.creature.buffs.BuffCRC;
+include server.zone.objects.scene.variables.ParameterizedStringId;
+
+
+class SpiceBuff extends Buff {	
+	public SpiceBuff(CreatureObject creo, final string name, unsigned int buffCRC, int duration) {
+		super(creo, buffCRC, duration, BuffType.SPICE);
+		
+		super.buffName = name;
 	}
 	
-	public void initializeTransientMembers() {
-		super.initializeTransientMembers();
+	public void activate(boolean applyModifiers) { 
+		super.creature.sendSystemMessage("spice/spice", super.buffName + "_consume");
 		
-		Logger.setLoggingName("Food");
+		super.activate(true);
 	}
+	
+	public native void deactivate(boolean removeModifiers);
+	
+	public native void setDownerAttributes(CreatureObject creature, Buff buff);
 }

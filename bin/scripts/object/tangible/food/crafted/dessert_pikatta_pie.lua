@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_pikatta_pie = object_tangible_food_crafted_shared_dessert_pikatta_pie:new {
+	templateType = CONSUMABLE,
+	
+	duration = 45,
+	filling = 19,
+	nutrition = 15,
 
+	effectType = 2,
+	
+	fillingMin = 29,
+	fillingMax = 19,
+	flavorMin = 960,
+	flavorMax = 1920,
+	nutritionMin = 16,
+	nutritionMax = 30,
+	quantityMin = 5,
+	quantityMax = 7,
+
+	modifiers = { "dodge_attack", 0 },
+
+	buffName = "food.dodge_attack",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_pikatta_pie, "object/tangible/food/crafted/dessert_pikatta_pie.iff")

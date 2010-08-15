@@ -75,7 +75,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/TangibleObject.cpp \
 				server/zone/objects/tangible/Container.cpp \
 				server/zone/objects/tangible/Instrument.cpp \
-				server/zone/objects/tangible/Food.cpp \
+				server/zone/objects/tangible/consumable/Food.cpp \
+				server/zone/objects/tangible/consumable/Drink.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/creature/trainer/TrainerCreature.cpp \
 				server/zone/objects/creature/VehicleObject.cpp \
@@ -85,6 +86,9 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 				server/zone/objects/creature/buffs/Buff.cpp \
 				server/zone/objects/creature/buffs/DelayedBuff.cpp \
+				server/zone/objects/creature/buffs/SpiceBuff.cpp \
+				server/zone/objects/creature/buffs/DurationBuff.cpp \
+				server/zone/objects/creature/buffs/SpiceDownerBuff.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
@@ -126,6 +130,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
 				server/zone/objects/tangible/fishing/FishObject.cpp \
+				server/zone/objects/tangible/consumable/Consumable.cpp \
 				server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
 				server/zone/objects/tangible/pharmaceutical/DotPack.cpp \
 				server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
@@ -249,6 +254,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.cpp \
+		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
 		server/zone/objects/tangible/deed/building/BuildingDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.cpp \
@@ -270,6 +276,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
 		server/zone/objects/creature/buffs/BuffImplementation.cpp \
+		server/zone/objects/creature/buffs/SpiceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \

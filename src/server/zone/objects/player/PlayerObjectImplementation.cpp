@@ -78,6 +78,9 @@ which carries forward this exception.
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
 
+	foodFillingMax = 100;
+	drinkFillingMax = 100;
+
 	setLoggingName("PlayerObject");
 }
 
@@ -92,10 +95,10 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	forcePowerMax = 0;
 
 	foodFilling = 0;
-	foodFillingMax = 0;
+	foodFillingMax = 100;
 
 	drinkFilling = 0;
-	drinkFillingMax = 0;
+	drinkFillingMax = 100;
 
 	jediState = 4;
 
@@ -472,6 +475,17 @@ void PlayerObjectImplementation::addSchematic(DraftSchematic* schematic, bool no
 	}
 }
 
+void PlayerObjectImplementation::doDigest() {
+	if (!isDigesting())
+		return;
+
+	if (foodFilling > 0)
+		setFoodFilling(foodFilling - 1);
+
+	if (drinkFilling > 0)
+		setDrinkFilling(drinkFilling - 1);
+}
+
 void PlayerObjectImplementation::removeSchematic(DraftSchematic* schematic, bool notifyClient) {
 	if (schematic == NULL)
 		return;
@@ -750,5 +764,33 @@ void PlayerObjectImplementation::toggleCharacterBit(uint32 bit) {
 		clearCharacterBit(bit, true);
 	} else {
 		setCharacterBit(bit, true);
+	}
+}
+
+void PlayerObjectImplementation::setFoodFilling(int newValue, bool notifyClient) {
+	if (foodFilling == newValue)
+		return;
+
+	foodFilling = newValue;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(_this);
+		dplay9->updateFoodFilling(newValue);
+		dplay9->close();
+		parent->sendMessage(dplay9);
+	}
+}
+
+void PlayerObjectImplementation::setDrinkFilling(int newValue, bool notifyClient) {
+	if (drinkFilling == newValue)
+		return;
+
+	drinkFilling = newValue;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(_this);
+		dplay9->updateDrinkFilling(drinkFilling);
+		dplay9->close();
+		parent->sendMessage(dplay9);
 	}
 }
