@@ -281,12 +281,25 @@ class PlayerObject extends IntangibleObject {
 	
 	public native void setTitle(final string characterTitle, boolean notifyClient = true);
 	
+	public native void setFoodFilling(int newValue, boolean notifyClient = true);
+	public native void setDrinkFilling(int newValue, boolean notifyClient = true);
+	
 	/**
 	 * Notifies all reverse friends online status
 	 * @pre { }
 	 * @post { }
 	 */
 	public native void notifyOnline();
+	
+	public native void doDigest();
+	
+	public boolean isDigesting() {
+		if (getDrinkFilling() > 0 || getFoodFilling() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	/**
 	 * Notifies all reverse friends offline status

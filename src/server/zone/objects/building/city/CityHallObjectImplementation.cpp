@@ -69,7 +69,11 @@ bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* p
 		StringId* name = object->getObjectName();
 		UnicodeString cityName = name->getCustomString();
 
-		stringID.setTO(cityName);
+		if (cityName.length() > 0) {
+			stringID.setTO(cityName);
+		} else {
+			stringID.setTO(name->getFile(), name->getStringID());
+		}
 
 		player->sendSystemMessage(stringID);
 

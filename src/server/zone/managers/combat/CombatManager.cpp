@@ -777,12 +777,12 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	float defenseBonus = 0.0f; // TODO: Food/drink defense bonuses go here
 
 	//Food dodge bonus.
-	/*if (targetCreature->hasBuff(BuffCRC::FOOD_DODGE_ATTACK)) {
+	if (targetCreature->hasBuff(BuffCRC::FOOD_DODGE_ATTACK)) {
 		Buff* buff = targetCreature->getBuff(BuffCRC::FOOD_DODGE_ATTACK);
 
 		if (buff != NULL)
 			defenseBonus += buff->getSkillModifierValue("dodge_attack");
-	}*/
+	}
 
 	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy
 			+ accuracyBonus + aimMod, targetDefense, defenseBonus);

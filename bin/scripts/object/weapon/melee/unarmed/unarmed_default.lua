@@ -90,7 +90,7 @@ object_weapon_melee_unarmed_unarmed_default = object_weapon_melee_unarmed_shared
 	pointBlankAccuracy = 0,
 	pointBlankRange = 15,
 	
-	idealRange = 15,
+	idealRange = 5,
 	idealAccuracy = 3,
 	
 	maxRange = 5,

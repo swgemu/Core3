@@ -267,17 +267,27 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	if (unkint2 == 0)
 		showtext = false;
 
+	String firstName;
+
+	if (sender->isPlayerCreature())
+		firstName = ((PlayerCreature*)sender)->getFirstName();
+
 	for (int i = 0; i < sender->inRangeObjectCount(); ++i) {
 		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) sender->getInRangeObject(i))->_this);
 
 		if (object->isPlayerCreature()) {
 			PlayerCreature* creature = (PlayerCreature*) object;
 
-			//if (!creature->isIgnoring(player)) {
+			PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+
+			if (ghost == NULL)
+				continue;
+
+			if (!ghost->isIgnoring(firstName) && creature->isInRange(sender, 128)) {
 				Emote* emsg = new Emote(creature, sender, targetid,
 						emoteid, showtext);
 				creature->sendMessage(emsg);
-			//}
+			}
 		}
 	}
 

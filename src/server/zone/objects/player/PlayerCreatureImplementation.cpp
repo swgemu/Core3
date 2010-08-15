@@ -256,6 +256,13 @@ void PlayerCreatureImplementation::doRecovery() {
 	activateHAMRegeneration();
 	activateStateRecovery();
 
+	PlayerObject* playerObject = getPlayerObject();
+
+	if (playerObject != NULL && cooldownTimerMap.isPast("digestEvent")) {
+		playerObject->doDigest();
+		cooldownTimerMap.updateToCurrentAndAddMili("digestEvent", 18000);
+	}
+
 	if (damageOverTimeList.hasDot() && damageOverTimeList.isNextTickPast()) {
 		damageOverTimeList.activateDots(_this);
 	}

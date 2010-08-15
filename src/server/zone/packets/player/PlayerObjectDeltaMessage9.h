@@ -71,6 +71,14 @@ public:
 		addIntUpdate(0x0D, play->getDrinkFillingMax());
 	}
 
+	void updateFoodFilling(int newVal) {
+		addIntUpdate(0x0A, newVal);
+	}
+
+	void updateDrinkFilling(int newVal) {
+		addIntUpdate(0x0C, newVal);
+	}
+
 	void setLanguageID(uint8 lid) {
 		startUpdate(9);
 		insertInt((uint32)lid);
