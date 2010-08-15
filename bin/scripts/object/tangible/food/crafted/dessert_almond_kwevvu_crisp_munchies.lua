@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_almond_kwevvu_crisp_munchies = object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 23,
+	fillingMax = 20,
+	flavorMin = 720,
+	flavorMax = 1440,
+	nutritionMin = 7.5,
+	nutritionMax = 12,
+	quantityMin = 3,
+	quantityMax = 4,
+
+	modifiers = { "tame_bonus", 0 },
+
+	buffName = "food.dessert_almond_kwevvu_crisp_munchies",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_almond_kwevvu_crisp_munchies, "object/tangible/food/crafted/dessert_almond_kwevvu_crisp_munchies.iff")

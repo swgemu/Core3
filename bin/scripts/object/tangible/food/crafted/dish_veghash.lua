@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_veghash = object_tangible_food_crafted_shared_dish_veghash:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 16,
+	fillingMax = 13,
+	flavorMin = 540,
+	flavorMax = 1080,
+	nutritionMin = 11,
+	nutritionMax = 18,
+	quantityMin = 4,
+	quantityMax = 9,
+
+	modifiers = { "creature_harvesting", 0 },
+
+	buffName = "food.dish_veghash",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_veghash, "object/tangible/food/crafted/dish_veghash.iff")

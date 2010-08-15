@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_havla = object_tangible_food_crafted_shared_dish_havla:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 3,
+
+	fillingMin = 35,
+	fillingMax = 25,
+	flavorMin = 17,
+	flavorMax = 37,
+	nutritionMin = 38,
+	nutritionMax = 60,
+	quantityMin = 3,
+	quantityMax = 9,
+
+	modifiers = { "heal_recovery", 0 },
+
+	buffName = "food.heal_recovery",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_havla, "object/tangible/food/crafted/dish_havla.iff")

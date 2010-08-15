@@ -76,6 +76,8 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	
 	maxCondition = 1000,
 	
+	useCount = 1,
+	
 	optionsBitmask = 0,
 	pvpStatusBitmask = 0,
 

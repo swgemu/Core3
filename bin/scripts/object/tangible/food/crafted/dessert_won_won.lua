@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_won_won = object_tangible_food_crafted_shared_dessert_won_won:new {
+	templateType = CONSUMABLE,
+	
+	duration = 45,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+	
+	fillingMin = 41,
+	fillingMax = 27,
+	flavorMin = 450,
+	flavorMax = 1050,
+	nutritionMin = 225,
+	nutritionMax = 375,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "strength", 0, "constitution", 0 },
+
+	buffName = "food.dessert_won_won",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_won_won, "object/tangible/food/crafted/dessert_won_won.iff")

@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_blap_biscuit = object_tangible_food_crafted_shared_dessert_blap_biscuit:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+
+	fillingMin = 24,
+	fillingMax = 10,
+	flavorMin = 1800,
+	flavorMax = 3600,
+	nutritionMin = 550,
+	nutritionMax = 875,
+	quantityMin = 3,
+	quantityMax = 6,
+	speciesRestriction = "pets",
+
+	modifiers = { "health", 0 },
+
+	buffName = "",
+	buffCRC = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_blap_biscuit, "object/tangible/food/crafted/dessert_blap_biscuit.iff")

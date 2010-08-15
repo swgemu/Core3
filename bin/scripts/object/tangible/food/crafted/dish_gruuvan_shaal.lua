@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_gruuvan_shaal = object_tangible_food_crafted_shared_dish_gruuvan_shaal:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+
+	fillingMin = 35,
+	fillingMax = 25,
+	flavorMin = 1800,
+	flavorMax = 3600,
+	nutritionMin = 150,
+	nutritionMax = 240,
+	quantityMin = 3,
+	quantityMax = 4,
+
+	modifiers = { "strength", 0 },
+
+	buffName = "food.dish_gruuvan_shaal",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_gruuvan_shaal, "object/tangible/food/crafted/dish_gruuvan_shaal.iff")

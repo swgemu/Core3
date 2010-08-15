@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_bivoli_tempari = object_tangible_food_crafted_shared_dish_bivoli_tempari:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 29,
+	fillingMax = 19,
+	flavorMin = 720,
+	flavorMax = 1440,
+	nutritionMin = 7.5,
+	nutritionMax = 12,
+	quantityMin = 2,
+	quantityMax = 5,
+
+	modifiers = { "healing_wound_treatment", 0 },
+
+	buffName = "food.dish_bivoli_tempari",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_bivoli_tempari, "object/tangible/food/crafted/dish_bivoli_tempari.iff")

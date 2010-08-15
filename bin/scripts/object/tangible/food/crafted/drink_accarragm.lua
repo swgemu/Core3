@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_drink_accarragm = object_tangible_food_crafted_shared_drink_accarragm:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 1,
+
+	fillingMin = 55,
+	fillingMax = 33,
+	flavorMin = 1800,
+	flavorMax = 3600,
+	nutritionMin = 150,
+	nutritionMax = 240,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = {"action", 0, "quickness", 0, "stamina", 0 },
+
+	buffName = "food.drink_accarragm",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_accarragm, "object/tangible/food/crafted/drink_accarragm.iff")

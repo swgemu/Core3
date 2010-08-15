@@ -24,6 +24,8 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 
 	playerUseMask = templateData->getShortField("playerUseMask");
 
+	useCount = templateData->getIntField("useCount");
+
 	maxCondition = templateData->getIntField("maxCondition");
 	level = templateData->getIntField("level");
 

@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_drink_vayerbok = object_tangible_food_crafted_shared_drink_vayerbok:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 24,
+	fillingMax = 13,
+	flavorMin = 720,
+	flavorMax = 1440,
+	nutritionMin = 7.5,
+	nutritionMax = 12,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "block", 0 },
+
+	buffName = "food.drink_vayerbok",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_vayerbok, "object/tangible/food/crafted/drink_vayerbok.iff")

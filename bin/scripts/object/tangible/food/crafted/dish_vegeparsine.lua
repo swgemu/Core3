@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_vegeparsine = object_tangible_food_crafted_shared_dish_vegeparsine:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 4,
+
+	fillingMin = 29,
+	fillingMax = 19,
+	flavorMin = 780,
+	flavorMax = 1200,
+	nutritionMin = 7.5,
+	nutritionMax = 12,
+	quantityMin = 2,
+	quantityMax = 4,
+
+	modifiers = { "melee_defense", 0 },
+
+	buffName = "food.dish_vegeparsine",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_vegeparsine, "object/tangible/food/crafted/dish_vegeparsine.iff")

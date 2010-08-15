@@ -42,7 +42,28 @@
 
 
 object_tangible_food_crafted_dish_cho_nor_hoola = object_tangible_food_crafted_shared_dish_cho_nor_hoola:new {
+	templateType = CONSUMABLE,
+	
+	duration = 45,
+	filling = 10,
+	nutrition = 10,
 
+	effectType = 2,
+
+	fillingMin = 17,
+	fillingMax = 10,
+	flavorMin = 1200,
+	flavorMax = 2400,
+	nutritionMin = 10,
+	nutritionMax = 20,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "poison_disease_resist", 0 },
+
+	buffName = "food.poison_disease_resist",
+	buffCRC = 0,
+	speciesRestriction = ""
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_cho_nor_hoola, "object/tangible/food/crafted/dish_cho_nor_hoola.iff")
