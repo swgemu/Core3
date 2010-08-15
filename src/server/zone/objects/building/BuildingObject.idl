@@ -68,6 +68,8 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	@dereferenced
 	protected StructurePermissionList structurePermissionList;
 	
+	protected StructureTerminal structureTerminal;
+
 	protected unsigned long ownerObjectID;
 	
 	protected int totalCellNumber;
@@ -79,9 +81,14 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	protected unsigned long deedObjectID;
 	
 	protected int baseMaintenanceRate;
-	protected unsigned int maintenancePool;
+	protected unsigned int surplusMaintenance;
 	
 	protected int accessFee;
+	
+	protected boolean publicStructure;
+	
+	//TODO: This should probably be handled differently...
+	protected boolean declaredResidency;
 	
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
@@ -100,10 +107,15 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		
 		baseMaintenanceRate = 0;
 		
+		surplusMaintenance = 0;
 		
 		deedObjectID = 0;
 		
 		accessFee = 0;
+		
+		publicStructure = false;
+		
+		declaredResidency = false;
 	}
 	
 	public native void createChildObjects();
@@ -130,6 +142,14 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	 * @param player SceneObject that will receive the objects 
 	 */
 	public native void sendContainerObjectsTo(SceneObject player);
+	
+	public native void handleStructureStatus(PlayerCreature player);
+	public native void handleStructureDestroyRequest(PlayerCreature player);
+	public native void handleStructureDestroyConfirm(PlayerCreature player, boolean confirm);
+	public native void handlePayMaintenance(PlayerCreature player);
+	public native void handlePrivacyChange(PlayerCreature player);
+	public native void handleDeclareResidency(PlayerCreature player);
+	public native void handleSetObjectName(PlayerCreature player);
 	
 	/**
 	 * Gets called when the structure has been created;
@@ -264,12 +284,12 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		return signObject;
 	}
 	
-	public void setMaintenancePool (unsigned int maintenance) {
-		maintenancePool = maintenance;
+	public void setSurplusMaintenance (unsigned int maintenance) {
+		surplusMaintenance = maintenance;
 	}
 	
-	public unsigned int getMaintenancePool() {
-		return maintenancePool;
+	public unsigned int getSurplusMaintenance() {
+		return surplusMaintenance;
 	}
 	
 	/**
@@ -312,5 +332,21 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	
 	public void sendPermissionListTo(PlayerCreature player, final string listName) {
 		structurePermissionList.sendTo(player, listName);
+	}
+	
+	public boolean isPublicStructure() {
+		return publicStructure;
+	}
+	
+	public void setPublicStructure(boolean value) {
+		publicStructure = value;
+	}
+	
+	public boolean isDeclaredResidency() {
+		return declaredResidency;
+	}
+	
+	public void setDeclaredResidency(boolean value) {
+		declaredResidency = value;
 	}
 }

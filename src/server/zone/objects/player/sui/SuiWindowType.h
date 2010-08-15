@@ -143,6 +143,8 @@ public:
 	static const int SURVEY_TOOL_CONCENTRATED_MINIGAME2 = 112;
 
 	static const int CREATE_CITY_HALL_NAME = 113;
+
+	static const int STRUCTURE_STATUS = 115;
 };
 
 #endif /*SuiWindowType_H_*/
