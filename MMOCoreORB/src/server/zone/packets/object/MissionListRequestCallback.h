@@ -37,7 +37,7 @@ public:
 	}
 
 	void run() {
-		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
 
 		if (player == NULL)
 			return;

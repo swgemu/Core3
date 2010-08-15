@@ -143,7 +143,7 @@ public:
 		ZoneServer* zoneServer = server->getZoneServer();
 		ChatManager* chatManager = zoneServer->getChatManager();
 
-		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
 
 		if (player != NULL)
 			chatManager->sendRoomList(player);

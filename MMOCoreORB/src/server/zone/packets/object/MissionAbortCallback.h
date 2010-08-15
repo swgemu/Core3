@@ -35,7 +35,7 @@ public:
 	}
 
 	void run() {
-		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
 
 		ManagedReference<SceneObject*> mission = server->getZoneServer()->getObject(missionObjectID);
 
