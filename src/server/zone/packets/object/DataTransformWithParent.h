@@ -109,7 +109,10 @@ public:
 	}
 
 	void run() {
-		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
+		ManagedReference<PlayerCreature*> object = (PlayerCreature*) client->getPlayer();
+
+		if (object == NULL)
+			return;
 
 		if (positionX > 1024.0f || positionX < -1024.0f || positionY > 1024.0f || positionY < -1024.0f) {
 			StringBuffer msg;

@@ -56,7 +56,7 @@ public:
 			//String bazaarRegion = ((BazaarTerminal*) bazaar.get())->getBazaarRegion();
 			String planetString = Planet::getPlanetName(zone->getZoneID());
 
-			client->getPlayer()->info(String("sending for bazaar region ") + bazaarRegion, true);
+			//client->getPlayer()->info(String("sending for bazaar region ") + bazaarRegion, true);
 			IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(false, oid, planetString, bazaarRegion, 0, 0);
 			client->sendMessage(msg);
 		}

@@ -104,7 +104,7 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected transient Reference<DespawnCreatureOnPlayerDissappear> despawnEvent;
 	
-	public static final int UPDATEMOVEMENTINTERVAL = 250; // msec
+	public static final int UPDATEMOVEMENTINTERVAL = 1000; // msec
 	
 	public AiAgent() {
 		baby = false;

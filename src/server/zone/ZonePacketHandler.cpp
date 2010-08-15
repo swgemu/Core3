@@ -209,7 +209,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	info(buffer);
 
 	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
-	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
+	ManagedReference<ZoneClientSession*> client = (ZoneClientSession*) clientimpl->_getStub();
 
 	MessageCallback* messageCallback = messageCallbackFactory.createObject(opcode, client, processServer);
 
