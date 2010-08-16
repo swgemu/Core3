@@ -608,7 +608,7 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	} else
 		zone->update(this);
 
-	zone->inRange(this, 512);
+	zone->inRange(this, 256);
 
 	zoneLocker.release();
 
@@ -696,7 +696,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		insertToBuilding(building);
 	} else {
 		building->update(this);
-		building->inRange(this, 512);
+		building->inRange(this, 256);
 	}
 
 	zoneLocker.release();
@@ -785,7 +785,7 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 
 		if (parent == NULL || !parent->isCellObject() || parent->getParent() == NULL) {
 			zone->insert(this);
-			zone->inRange(this, 512);
+			zone->inRange(this, 256);
 		} else if (parent->isCellObject()) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
 			insertToBuilding(building);
@@ -830,7 +830,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 		//parent->addObject(_this, 0xFFFFFFFF);
 
 		building->insert(this);
-		building->inRange(this, 512);
+		building->inRange(this, 256);
 
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 

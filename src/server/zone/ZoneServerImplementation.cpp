@@ -840,8 +840,12 @@ int ZoneServerImplementation::getConnectionCount() {
 void ZoneServerImplementation::printInfo(bool forcedLog) {
 	lock();
 
+	StringBuffer sched;
+	sched << "TaskManager - scheduled task size = " << TaskManager::instance()->getScheduledTaskSize();
+	info(sched, forcedLog);
+
 	StringBuffer msg;
-	msg << "MessageQueue - size = " << messageQueue.size();
+	msg << "MessageQueue - size = " << processor->getMessageQueue()->size();
 	info(msg, forcedLog);
 
 	float packetloss;
