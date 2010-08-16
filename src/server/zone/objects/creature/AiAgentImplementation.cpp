@@ -343,7 +343,10 @@ void AiAgentImplementation::doMovement() {
 		}
 	}
 
-	float maxDistance = getWeapon()->getMaxRange();
+	float maxDistance = 5;
+
+	if (weapon != NULL )
+		maxDistance = weapon->getMaxRange();
 
 	if (isRetreating())
 		maxDistance = 0;

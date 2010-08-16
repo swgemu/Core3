@@ -84,6 +84,9 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	clearCombatState(true);
 	clearState(CreatureState::ALERT);
 
+	if (hasState(CreatureState::RIDINGMOUNT) && parent == NULL)
+		clearState(CreatureState::RIDINGMOUNT);
+
 	activateRecovery();
 }
 
