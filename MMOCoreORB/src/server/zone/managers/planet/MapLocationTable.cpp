@@ -13,7 +13,7 @@ void MapLocationTable::addObject(SceneObject* object) {
 	uint8 type2 = object->getMapLocationsType2();
 	uint8 type3 = object->getMapLocationsType3();
 
-	if ((type1 == 0) && (type2 == 0) && (type3 == 0) && !object->isPlayerCreature())
+	if ((type1 == 0) && (type2 == 0) && (type3 == 0) /*&& !object->isPlayerCreature()*/)
 		return;
 
 	uint8 typeToRegister = type2;
