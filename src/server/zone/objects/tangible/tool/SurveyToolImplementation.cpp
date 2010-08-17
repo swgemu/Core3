@@ -259,6 +259,8 @@ void SurveyToolImplementation::sendSurveyTo(PlayerCreature* player, const String
 		}
 	}
 
+	lastResourceSurveyName = resname;
+
 	PlayClientEffectLoc* effect = new PlayClientEffectLoc(surveyAnimation,
 			player->getZone()->getZoneID(),
 			player->getPositionX(), player->getPositionZ(),
@@ -290,6 +292,18 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* player, const String
 
 	if (player->isMounted()) {
 		return;
+	}
+
+	if(!resname.isEmpty() && !canSampleRadioactive()) {
+		ManagedReference<ResourceSpawn* > resourceSpawn = resourceManager->getResourceSpawn(resname);
+		if (resourceSpawn == NULL) {
+			return;
+		}
+
+		if(resourceSpawn->isType("radioactive") && !canSampleRadioactive()) {
+			sendRadioactiveWarning(player);
+			return;
+		}
 	}
 
 	// Player must be kneeling to sample
@@ -333,6 +347,20 @@ void SurveyToolImplementation::sendRadioactiveWarning(PlayerCreature* player) {
 	player->addSuiBox(messageBox);
 	player->sendMessage(messageBox->generateMessage());
 
+}
+
+void SurveyToolImplementation::consentRadioactiveSample(PlayerCreature* player) {
+	radioactiveOk = true;
+
+	StringBuffer buffer;
+	buffer << "You have chosen to override safety measures and may now sample ";
+
+	if(lastResourceSurveyName != "")
+		buffer << lastResourceSurveyName;
+	else
+		buffer << "the chosen radioactive";
+
+	player->sendSystemMessage(buffer.toString());
 }
 
 void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int value) {

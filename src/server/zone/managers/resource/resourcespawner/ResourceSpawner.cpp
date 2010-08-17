@@ -69,7 +69,7 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer* > serv,
 
 	nameManager = processor->getNameManager();
 	objectManager = objMan;
-	samplingMultiplier = 100; //should be 1 for normal use
+	samplingMultiplier = 1; //should be 1 for normal use
 
 	resourceTree = new ResourceTree();
 	resourceMap = new ResourceMap();
@@ -457,7 +457,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
 	player->sendMessage(sysMessage);
 
-	SurveyTask* surveyTask = new SurveyTask(player, surveyMessage, newwaypoint);
+	Reference<SurveyTask*> surveyTask = new SurveyTask(player, surveyMessage, newwaypoint);
 	surveyTask->schedule(3000);
 	player->addPendingTask("survey", surveyTask);
 }
@@ -470,12 +470,6 @@ void ResourceSpawner::sendSample(PlayerCreature* player, const String& resname, 
 	if(surveyTool == NULL || !resourceMap->contains(resname) ||
 			player == NULL || player->getZone() == NULL)
 		return;
-
-	ManagedReference<ResourceSpawn* > resourceSpawn = resourceMap->get(resname);
-	if(resourceSpawn->isType("radioactive") && !surveyTool->canSampleRadioactive()) {
-		surveyTool->sendRadioactiveWarning(player);
-		return;
-	}
 
 	if(player->getHAM(CreatureAttribute::ACTION) < 200) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
@@ -502,12 +496,12 @@ void ResourceSpawner::sendSample(PlayerCreature* player, const String& resname, 
 	float density = resourceMap->getDensityAt(resname, zoneid, posX, posY);
 
 	// Add sampleresultstask
-	SampleResultsTask* sampleResultsTask = new SampleResultsTask(player, this, density, resname);
+	Reference<SampleResultsTask*> sampleResultsTask = new SampleResultsTask(player, this, density, resname);
 	sampleResultsTask->schedule(3000);
 	player->addPendingTask("sampleresults", sampleResultsTask);
 
 	// Add sampletask
-	SampleTask* sampleTask = new SampleTask(player, surveyTool);
+	Reference<SampleTask*> sampleTask = new SampleTask(player, surveyTool);
 	sampleTask->schedule(18000);
 	player->addPendingTask("sample", sampleTask);
 }
@@ -556,7 +550,9 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player, const float dens
 		return;
 	}
 
-	int unitsExtracted = int((density * 25 + System::random(3)) * (float(surveySkill)/100.0f)) * samplingMultiplier;
+	int maxUnitsExtracted = (int)(density * (25 + System::random(3)));
+
+	int unitsExtracted = (maxUnitsExtracted * (float(surveySkill)/100.0f)) * samplingMultiplier;
 	int xpcap = 40;
 
 
@@ -608,7 +604,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player, const float dens
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname);
 	resourceSpawn->extractResource(zoneid, unitsExtracted);
 
-	int xp = System::random(20) + (xpcap - 20);
+	int xp = (int)(((float)unitsExtracted / (float)maxUnitsExtracted) * xpcap);
 	PlayerManager* playerManager = server->getPlayerManager();
 	playerManager->awardExperience(player, "resource_harvesting_inorganic", xp, true);
 
@@ -617,6 +613,13 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player, const float dens
 	// Add resource to inventory
 	ManagedReference<SceneObject*> inventory =
 			player->getSlottedObject("inventory");
+
+	if (inventory->hasFullContainerObjects()) {
+		ParameterizedStringId err("survey", "no_inv_space");
+		player->sendSystemMessage(err);
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+		return;
+	}
 
 	// Check inventory for resource and add if existing
 	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
@@ -633,12 +636,6 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player, const float dens
 				return;
 			}
 		}
-	}
-
-	if (inventory->hasFullContainerObjects()) {
-		ParameterizedStringId err("survey", "no_inv_space");
-		player->sendSystemMessage(err);
-		return;
 	}
 
 	// Create New resource container if one isn't found in inventory
