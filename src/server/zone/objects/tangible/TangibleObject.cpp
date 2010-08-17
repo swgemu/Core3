@@ -765,12 +765,24 @@ String TangibleObject::getCraftersSerial() {
 		return ((TangibleObjectImplementation*) _impl)->getCraftersSerial();
 }
 
-void TangibleObject::createChildObjects() {
+bool TangibleObject::isFromFactoryCrate() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 60);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isFromFactoryCrate();
+}
+
+void TangibleObject::createChildObjects() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 61);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1090,8 +1102,13 @@ String TangibleObjectImplementation::getCraftersSerial() {
 	return craftersSerial;
 }
 
+bool TangibleObjectImplementation::isFromFactoryCrate() {
+	// server/zone/objects/tangible/TangibleObject.idl(498):  		return optionsBitmask & 0x2100;
+	return optionsBitmask & 0x2100;
+}
+
 void TangibleObjectImplementation::createChildObjects() {
-	// server/zone/objects/tangible/TangibleObject.idl(498):  		return;
+	// server/zone/objects/tangible/TangibleObject.idl(502):  		return;
 	return;
 }
 
@@ -1269,6 +1286,9 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getCraftersSerial());
 		break;
 	case 60:
+		resp->insertBoolean(isFromFactoryCrate());
+		break;
+	case 61:
 		createChildObjects();
 		break;
 	default:
@@ -1492,6 +1512,10 @@ void TangibleObjectAdapter::setLevel(int lev) {
 
 String TangibleObjectAdapter::getCraftersSerial() {
 	return ((TangibleObjectImplementation*) impl)->getCraftersSerial();
+}
+
+bool TangibleObjectAdapter::isFromFactoryCrate() {
+	return ((TangibleObjectImplementation*) impl)->isFromFactoryCrate();
 }
 
 void TangibleObjectAdapter::createChildObjects() {

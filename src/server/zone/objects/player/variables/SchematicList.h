@@ -16,7 +16,7 @@ class SchematicList : public DeltaVector<ManagedReference<DraftSchematic* > > {
 
 public:
 	bool add(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);
-	bool contains(DraftSchematic* schematic);
+	bool contains(Vector<ManagedReference<DraftSchematic* > > filteredschematics, DraftSchematic* schematic);
 
 	bool toString(String& str);
 	bool parseFromString(const String& str, int version = 0);

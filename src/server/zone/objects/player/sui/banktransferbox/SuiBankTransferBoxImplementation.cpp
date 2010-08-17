@@ -33,8 +33,10 @@ BaseMessage* SuiBankTransferBoxImplementation::generateMessage() {
 	addSetting("3", "transaction", "ConversionRatioFrom", convertRatioFrom);
 	addSetting("3", "transaction", "ConversionRatioTo", convertRatioTo);
 
+	setHandlerText("handleDepositWithdraw");
+
 	//Generate Packet:
-	generateHeader(message, "handleDepositWithdraw");
+	generateHeader(message);
 	generateBody(message);
 	generateFooter(message, 1); //special banktransferbox footer? nfi
 	hasGenerated = true;

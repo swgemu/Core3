@@ -51,7 +51,7 @@ class IngredientSlot : public Serializable, public Logger {
 
 protected:
 
-
+	ManagedReference<SceneObject* > craftingTool;
 	String type;
 	int requiredQuantity;
 	int slottype;

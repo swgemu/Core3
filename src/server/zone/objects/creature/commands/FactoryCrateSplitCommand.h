@@ -63,6 +63,16 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		StringTokenizer tokenizer(arguments.toString());
+		int newStackSize = tokenizer.getIntToken();
+
+		ManagedReference<FactoryCrate* > factoryCrate = (FactoryCrate*) server->getZoneServer()->getObject(target);
+
+		if((factoryCrate == NULL || !factoryCrate->isFactoryCrate() ||!creature->isPlayerCreature()))
+			return INVALIDTARGET;
+
+		factoryCrate->split(newStackSize);
+
 		return SUCCESS;
 	}
 
