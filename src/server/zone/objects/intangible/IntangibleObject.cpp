@@ -8,13 +8,56 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	IntangibleObjectStub
  */
 
 IntangibleObject::IntangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new IntangibleObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new IntangibleObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -25,7 +68,7 @@ IntangibleObject::~IntangibleObject() {
 
 
 void IntangibleObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,19 +76,19 @@ void IntangibleObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((IntangibleObjectImplementation*) _impl)->initializeTransientMembers();
+		((IntangibleObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void IntangibleObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((IntangibleObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((IntangibleObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void IntangibleObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -54,11 +97,11 @@ void IntangibleObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((IntangibleObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((IntangibleObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 void IntangibleObject::updateStatus(int newStatus, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -68,11 +111,11 @@ void IntangibleObject::updateStatus(int newStatus, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((IntangibleObjectImplementation*) _impl)->updateStatus(newStatus, notifyClient);
+		((IntangibleObjectImplementation*) _getImplementation())->updateStatus(newStatus, notifyClient);
 }
 
 unsigned int IntangibleObject::getStatus() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,7 +123,7 @@ unsigned int IntangibleObject::getStatus() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((IntangibleObjectImplementation*) _impl)->getStatus();
+		return ((IntangibleObjectImplementation*) _getImplementation())->getStatus();
 }
 
 /*
@@ -90,6 +133,7 @@ unsigned int IntangibleObject::getStatus() {
 IntangibleObjectImplementation::IntangibleObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 IntangibleObjectImplementation::~IntangibleObjectImplementation() {
 	IntangibleObjectImplementation::finalize();
@@ -114,6 +158,11 @@ DistributedObjectStub* IntangibleObjectImplementation::_getStub() {
 IntangibleObjectImplementation::operator const IntangibleObject*() {
 	return _this;
 }
+
+TransactionalObject* IntangibleObjectImplementation::clone() {
+	return (TransactionalObject*) new IntangibleObjectImplementation(*this);
+}
+
 
 void IntangibleObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

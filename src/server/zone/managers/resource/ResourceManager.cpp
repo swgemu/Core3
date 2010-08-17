@@ -18,13 +18,90 @@
 
 #include "server/zone/objects/scene/Observable.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/resource/ResourceSpawn.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	ResourceManagerStub
  */
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
-	_impl = new ResourceManagerImplementation(server, impl, objectMan);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ResourceManagerImplementation(server, impl, objectMan));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ResourceManager::ResourceManager(DummyConstructorParameter* param) : Observer(param) {
@@ -35,7 +112,7 @@ ResourceManager::~ResourceManager() {
 
 
 void ResourceManager::stop() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +120,11 @@ void ResourceManager::stop() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->stop();
+		((ResourceManagerImplementation*) _getImplementation())->stop();
 }
 
 void ResourceManager::initialize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +132,11 @@ void ResourceManager::initialize() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->initialize();
+		((ResourceManagerImplementation*) _getImplementation())->initialize();
 }
 
 void ResourceManager::shiftResources() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +144,11 @@ void ResourceManager::shiftResources() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->shiftResources();
+		((ResourceManagerImplementation*) _getImplementation())->shiftResources();
 }
 
 int ResourceManager::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,11 +160,11 @@ int ResourceManager::notifyObserverEvent(unsigned int eventType, Observable* obs
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+		return ((ResourceManagerImplementation*) _getImplementation())->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -98,11 +175,11 @@ void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, 
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->sendResourceListForSurvey(playerCreature, toolType, surveyType);
+		((ResourceManagerImplementation*) _getImplementation())->sendResourceListForSurvey(playerCreature, toolType, surveyType);
 }
 
 void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -112,11 +189,11 @@ void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& r
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->sendSurvey(playerCreature, resname);
+		((ResourceManagerImplementation*) _getImplementation())->sendSurvey(playerCreature, resname);
 }
 
 void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -127,11 +204,11 @@ void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& r
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->sendSample(playerCreature, resname, sampleAnimation);
+		((ResourceManagerImplementation*) _getImplementation())->sendSample(playerCreature, resname, sampleAnimation);
 }
 
 ResourceContainer* ResourceManager::harvestResource(PlayerCreature* player, const String& type, const int quantity) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -142,11 +219,11 @@ ResourceContainer* ResourceManager::harvestResource(PlayerCreature* player, cons
 
 		return (ResourceContainer*) method.executeWithObjectReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->harvestResource(player, type, quantity);
+		return ((ResourceManagerImplementation*) _getImplementation())->harvestResource(player, type, quantity);
 }
 
 unsigned long long ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -155,11 +232,11 @@ unsigned long long ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* 
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->getAvailablePowerFromPlayer(player);
+		return ((ResourceManagerImplementation*) _getImplementation())->getAvailablePowerFromPlayer(player);
 }
 
 void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned long long power) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -169,19 +246,19 @@ void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned lon
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->removePowerFromPlayer(player, power);
+		((ResourceManagerImplementation*) _getImplementation())->removePowerFromPlayer(player, power);
 }
 
 void ResourceManager::getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ResourceManagerImplementation*) _impl)->getResourceListByType(list, type, zoneid);
+		((ResourceManagerImplementation*) _getImplementation())->getResourceListByType(list, type, zoneid);
 }
 
 void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -191,11 +268,11 @@ void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const 
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->createResourceSpawn(playerCreature, restype);
+		((ResourceManagerImplementation*) _getImplementation())->createResourceSpawn(playerCreature, restype);
 }
 
 ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -204,7 +281,7 @@ ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 
 		return (ResourceSpawn*) method.executeWithObjectReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->getResourceSpawn(spawnName);
+		return ((ResourceManagerImplementation*) _getImplementation())->getResourceSpawn(spawnName);
 }
 
 /*
@@ -214,6 +291,7 @@ ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 ResourceManagerImplementation::ResourceManagerImplementation(DummyConstructorParameter* param) : ObserverImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ResourceManagerImplementation::~ResourceManagerImplementation() {
 }
@@ -240,6 +318,11 @@ DistributedObjectStub* ResourceManagerImplementation::_getStub() {
 ResourceManagerImplementation::operator const ResourceManager*() {
 	return _this;
 }
+
+TransactionalObject* ResourceManagerImplementation::clone() {
+	return (TransactionalObject*) new ResourceManagerImplementation(*this);
+}
+
 
 void ResourceManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

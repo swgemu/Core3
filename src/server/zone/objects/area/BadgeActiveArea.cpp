@@ -8,13 +8,60 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
 /*
  *	BadgeActiveAreaStub
  */
 
 BadgeActiveArea::BadgeActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
-	_impl = new BadgeActiveAreaImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BadgeActiveAreaImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BadgeActiveArea::BadgeActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -25,7 +72,7 @@ BadgeActiveArea::~BadgeActiveArea() {
 
 
 void BadgeActiveArea::notifyEnter(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -34,11 +81,11 @@ void BadgeActiveArea::notifyEnter(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BadgeActiveAreaImplementation*) _impl)->notifyEnter(player);
+		((BadgeActiveAreaImplementation*) _getImplementation())->notifyEnter(player);
 }
 
 void BadgeActiveArea::setBadge(unsigned int a) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +94,11 @@ void BadgeActiveArea::setBadge(unsigned int a) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BadgeActiveAreaImplementation*) _impl)->setBadge(a);
+		((BadgeActiveAreaImplementation*) _getImplementation())->setBadge(a);
 }
 
 unsigned int BadgeActiveArea::getBadge() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,7 +106,7 @@ unsigned int BadgeActiveArea::getBadge() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((BadgeActiveAreaImplementation*) _impl)->getBadge();
+		return ((BadgeActiveAreaImplementation*) _getImplementation())->getBadge();
 }
 
 /*
@@ -69,6 +116,7 @@ unsigned int BadgeActiveArea::getBadge() {
 BadgeActiveAreaImplementation::BadgeActiveAreaImplementation(DummyConstructorParameter* param) : ActiveAreaImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BadgeActiveAreaImplementation::~BadgeActiveAreaImplementation() {
 }
@@ -95,6 +143,11 @@ DistributedObjectStub* BadgeActiveAreaImplementation::_getStub() {
 BadgeActiveAreaImplementation::operator const BadgeActiveArea*() {
 	return _this;
 }
+
+TransactionalObject* BadgeActiveAreaImplementation::clone() {
+	return (TransactionalObject*) new BadgeActiveAreaImplementation(*this);
+}
+
 
 void BadgeActiveAreaImplementation::lock(bool doLock) {
 	_this->lock(doLock);

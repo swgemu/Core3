@@ -182,6 +182,8 @@ public:
 protected:
 	virtual ~ZoneClientSessionImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -191,6 +193,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ZoneClientSession;
+	friend class TransactionalObjectHandle<ZoneClientSessionImplementation*>;
 };
 
 class ZoneClientSessionAdapter : public ManagedObjectAdapter {

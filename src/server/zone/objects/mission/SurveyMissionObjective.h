@@ -181,6 +181,8 @@ public:
 protected:
 	virtual ~SurveyMissionObjectiveImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -202,6 +204,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SurveyMissionObjective;
+	friend class TransactionalObjectHandle<SurveyMissionObjectiveImplementation*>;
 };
 
 class SurveyMissionObjectiveAdapter : public MissionObjectiveAdapter {

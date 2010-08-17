@@ -8,13 +8,60 @@
 
 #include "server/zone/Zone.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	FoodStub
  */
 
 Food::Food() : Consumable(DummyConstructorParameter::instance()) {
-	_impl = new FoodImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new FoodImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Food::Food(DummyConstructorParameter* param) : Consumable(param) {
@@ -25,7 +72,7 @@ Food::~Food() {
 
 
 void Food::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +80,11 @@ void Food::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FoodImplementation*) _impl)->initializeTransientMembers();
+		((FoodImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void Food::initializePrivateData() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,7 +92,7 @@ void Food::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FoodImplementation*) _impl)->initializePrivateData();
+		((FoodImplementation*) _getImplementation())->initializePrivateData();
 }
 
 /*
@@ -55,6 +102,7 @@ void Food::initializePrivateData() {
 FoodImplementation::FoodImplementation(DummyConstructorParameter* param) : ConsumableImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FoodImplementation::~FoodImplementation() {
 }
@@ -81,6 +129,11 @@ DistributedObjectStub* FoodImplementation::_getStub() {
 FoodImplementation::operator const Food*() {
 	return _this;
 }
+
+TransactionalObject* FoodImplementation::clone() {
+	return (TransactionalObject*) new FoodImplementation(*this);
+}
+
 
 void FoodImplementation::lock(bool doLock) {
 	_this->lock(doLock);

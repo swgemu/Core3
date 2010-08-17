@@ -365,6 +365,8 @@ public:
 protected:
 	virtual ~MissionObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -388,6 +390,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionObject;
+	friend class TransactionalObjectHandle<MissionObjectImplementation*>;
 };
 
 class MissionObjectAdapter : public IntangibleObjectAdapter {

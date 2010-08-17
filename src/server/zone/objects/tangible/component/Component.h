@@ -201,6 +201,8 @@ public:
 protected:
 	virtual ~ComponentImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -224,6 +226,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Component;
+	friend class TransactionalObjectHandle<ComponentImplementation*>;
 };
 
 class ComponentAdapter : public TangibleObjectAdapter {

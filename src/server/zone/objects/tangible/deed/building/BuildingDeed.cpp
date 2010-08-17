@@ -12,13 +12,76 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	BuildingDeedStub
  */
 
 BuildingDeed::BuildingDeed() : Deed(DummyConstructorParameter::instance()) {
-	_impl = new BuildingDeedImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BuildingDeedImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BuildingDeed::BuildingDeed(DummyConstructorParameter* param) : Deed(param) {
@@ -29,15 +92,15 @@ BuildingDeed::~BuildingDeed() {
 
 
 void BuildingDeed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingDeedImplementation*) _impl)->fillAttributeList(alm, object);
+		((BuildingDeedImplementation*) _getImplementation())->fillAttributeList(alm, object);
 }
 
 void BuildingDeed::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +108,11 @@ void BuildingDeed::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingDeedImplementation*) _impl)->initializeTransientMembers();
+		((BuildingDeedImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int BuildingDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +122,11 @@ int BuildingDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingDeedImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((BuildingDeedImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void BuildingDeed::setSurplusMaintenance(unsigned int surplusMaint) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +135,11 @@ void BuildingDeed::setSurplusMaintenance(unsigned int surplusMaint) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingDeedImplementation*) _impl)->setSurplusMaintenance(surplusMaint);
+		((BuildingDeedImplementation*) _getImplementation())->setSurplusMaintenance(surplusMaint);
 }
 
 unsigned int BuildingDeed::getSurplusMaintenance() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,11 +147,11 @@ unsigned int BuildingDeed::getSurplusMaintenance() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((BuildingDeedImplementation*) _impl)->getSurplusMaintenance();
+		return ((BuildingDeedImplementation*) _getImplementation())->getSurplusMaintenance();
 }
 
 bool BuildingDeed::isBuildingDeed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,7 +159,7 @@ bool BuildingDeed::isBuildingDeed() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingDeedImplementation*) _impl)->isBuildingDeed();
+		return ((BuildingDeedImplementation*) _getImplementation())->isBuildingDeed();
 }
 
 /*
@@ -106,6 +169,7 @@ bool BuildingDeed::isBuildingDeed() {
 BuildingDeedImplementation::BuildingDeedImplementation(DummyConstructorParameter* param) : DeedImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BuildingDeedImplementation::~BuildingDeedImplementation() {
 }
@@ -132,6 +196,11 @@ DistributedObjectStub* BuildingDeedImplementation::_getStub() {
 BuildingDeedImplementation::operator const BuildingDeed*() {
 	return _this;
 }
+
+TransactionalObject* BuildingDeedImplementation::clone() {
+	return (TransactionalObject*) new BuildingDeedImplementation(*this);
+}
+
 
 void BuildingDeedImplementation::lock(bool doLock) {
 	_this->lock(doLock);
