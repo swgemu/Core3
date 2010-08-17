@@ -56,9 +56,6 @@ class SuiInputBox extends SuiBox {
 	protected string defaultInput;
 
 	protected int inputType;
-	
-	@weakReference
-	protected SceneObject usingObject;
 
 	public final static int DEFAULT = 0;
 	public final static int FILTER = 1;
@@ -76,10 +73,6 @@ class SuiInputBox extends SuiBox {
 	public void setMaxInputSize(int size) {
 		maxInputSize = size;
 	}
-	
-	public void setUsingObject(SceneObject object) {
-		usingObject = object;
-	}
 
 	public void setDefaultInput(final string text) {
 		defaultInput = text;
@@ -87,10 +80,6 @@ class SuiInputBox extends SuiBox {
 
 	public boolean isFilterBox() {
 		return inputType == FILTER;
-	}
-	
-	public SceneObject getUsingObject() {
-		return usingObject;
 	}
 	
 	public boolean isInputBox() {

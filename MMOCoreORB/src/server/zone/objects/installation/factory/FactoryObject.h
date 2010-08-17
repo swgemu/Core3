@@ -39,6 +39,20 @@ class FactoryCrate;
 
 using namespace server::zone::objects::factorycrate;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
 #include "server/zone/objects/installation/InstallationObject.h"
 
 namespace server {

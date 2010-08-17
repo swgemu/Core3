@@ -217,7 +217,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_dee
 	containerVolumeLimit = 1,
 	customizationVariableMapping = {},
 
-	detailedDescription = "@deed_detail:corellia_house_medium_style_2_deed",
+	detailedDescription = "@deed_detail:corellia_house_medium_deed",
 
 	gameObjectType = 8388609,
 

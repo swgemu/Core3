@@ -60,6 +60,8 @@ which carries forward this exception.
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -128,6 +130,18 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::INSERT_COLOR_CRYSTAL:
 		handleChangeColorCrystal(boxID, player, cancel, atoi(value.toCharArray()));
 		break;*/
+	case SuiWindowType::STRUCTURE_STATUS:
+		handleStructureStatus(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::STRUCTURE_DESTROY_CONFIRM:
+		handleStructureDestroyConfirm(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::STRUCTURE_DESTROY_CODE:
+		handleStructureDestroyCode(boxID, player, cancel, value);
+		break;
+	case SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE:
+		handleManageMaintenance(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
 	case SuiWindowType::CONSENT:
 		handleConsentBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
@@ -268,9 +282,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;*/
 	case SuiWindowType::OBJECT_NAME:   // Set Object Name
 		handleSetObjectName(boxID, player, cancel, value.toCharArray());
-		break;
-	case SuiWindowType::MANAGE_MAINTENANCE:    // Add/Remove Maintenance
-		handleManageMaintenance(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case SuiWindowType::ADD_ENERGY:    // Add Energy
 		handleAddEnergy(boxID, player, cancel, atoi(value.toCharArray()));
@@ -514,10 +525,10 @@ void SuiManager::handleManageMaintenance(uint32 boxID, PlayerCreature* player,
 
 	ManagedReference<SceneObject*> usingObject = transferBox->getUsingObject();
 
-	if (usingObject == NULL || !usingObject->isInstallationObject())
+	if (usingObject == NULL || !usingObject->isStructureObject())
 		return;
 
-	InstallationObject* installation = (InstallationObject*) usingObject.get();
+	StructureObject* structureObject = (StructureObject*) usingObject.get();
 
 	int currentCash = player->getCashCredits();
 
@@ -525,15 +536,15 @@ void SuiManager::handleManageMaintenance(uint32 boxID, PlayerCreature* player,
 		return;
 
 	try {
-		installation->wlock(player);
+		structureObject->wlock(player);
 
 		int maint = currentCash - newCashVal;
 
-		installation->addMaintenance(maint);
+		structureObject->addMaintenance(maint);
 		player->substractCashCredits(maint);
 
 		ParameterizedStringId stringId("base_player", "prose_pay_success");
-		stringId.setTT(installation->getObjectID());
+		stringId.setTT(structureObject->getObjectID());
 		stringId.setDI(maint);
 
 		/*StringBuffer report;
@@ -542,11 +553,11 @@ void SuiManager::handleManageMaintenance(uint32 boxID, PlayerCreature* player,
 				<< "Maintenance is now at " << inso->getSurplusMaintenance() << " credits.";*/
 
 		player->sendSystemMessage(stringId);
-		installation->updateToDatabase();
+		structureObject->updateToDatabase();
 
-		installation->unlock();
+		structureObject->unlock();
 	} catch (...) {
-		installation->unlock();
+		structureObject->unlock();
 	}
 
 	player->updateToDatabase();
@@ -2679,6 +2690,99 @@ void SuiManager::handleCharacterListSelection(uint32 boxid, Player* player, uint
 	}
 }
 */
+
+void SuiManager::handleStructureStatus(uint32 boxID, PlayerCreature* player, uint32 cancel, int value) {
+
+}
+
+void SuiManager::handleStructureDestroyConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value) {
+	Locker locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+
+	if (!box->isListBox())
+		return;
+
+	SuiListBox* listBox = (SuiListBox*) box.get();
+
+	ManagedReference<SceneObject*> usingObject = listBox->getUsingObject();
+
+	if (usingObject == NULL || !usingObject->isStructureObject())
+		return;
+
+	ManagedReference<StructureObject*> structureObject = (StructureObject*) usingObject.get();
+
+	Zone* zone = structureObject->getZone();
+
+	if (zone == NULL)
+		return;
+
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	if (planetManager == NULL)
+		return;
+
+	StructureManager* structureManager = planetManager->getStructureManager();
+
+	if (structureManager == NULL)
+		return;
+
+	Locker structureLocker(structureObject, player);
+
+	structureManager->sendDestroyCodeTo(player, structureObject);
+}
+
+void SuiManager::handleStructureDestroyCode(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& input) {
+	Locker locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+
+	if (!box->isInputBox())
+		return;
+
+	SuiInputBox* inputBox = (SuiInputBox*) box.get();
+
+	ManagedReference<SceneObject*> usingObject = inputBox->getUsingObject();
+
+	if (usingObject == NULL || !usingObject->isStructureObject())
+		return;
+
+	ManagedReference<StructureObject*> structureObject = (StructureObject*) usingObject.get();
+
+	Zone* zone = structureObject->getZone();
+
+	if (zone == NULL)
+		return;
+
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	if (planetManager == NULL)
+		return;
+
+	StructureManager* structureManager = planetManager->getStructureManager();
+
+	if (structureManager == NULL)
+		return;
+
+	Locker structureLocker(structureObject, player);
+
+	if (structureObject->getDestroyCode() == Integer::valueOf(input)) {
+		structureManager->redeedStructure(player, structureObject);
+	} else {
+		player->sendSystemMessage("@player_structure:incorrect_destroy_code"); //You have entered an incorrect code. You will have to issue the /destroyStructure again if you wish to continue.
+		return;
+	}
+}
 
 void SuiManager::handleSetCityHallName(int boxID, PlayerCreature* player, int cancel, const String& input) {
 	Locker locker(player);

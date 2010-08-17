@@ -66,13 +66,9 @@ public:
 
 	void setMaxInputSize(int size);
 
-	void setUsingObject(SceneObject* object);
-
 	void setDefaultInput(const String& text);
 
 	bool isFilterBox();
-
-	SceneObject* getUsingObject();
 
 	bool isInputBox();
 
@@ -108,8 +104,6 @@ protected:
 
 	int inputType;
 
-	ManagedWeakReference<SceneObject* > usingObject;
-
 public:
 	static const int DEFAULT = 0;
 
@@ -123,13 +117,9 @@ public:
 
 	void setMaxInputSize(int size);
 
-	void setUsingObject(SceneObject* object);
-
 	void setDefaultInput(const String& text);
 
 	bool isFilterBox();
-
-	SceneObject* getUsingObject();
 
 	bool isInputBox();
 
@@ -176,13 +166,9 @@ public:
 
 	void setMaxInputSize(int size);
 
-	void setUsingObject(SceneObject* object);
-
 	void setDefaultInput(const String& text);
 
 	bool isFilterBox();
-
-	SceneObject* getUsingObject();
 
 	bool isInputBox();
 

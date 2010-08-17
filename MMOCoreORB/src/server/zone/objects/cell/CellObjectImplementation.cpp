@@ -6,6 +6,7 @@
  */
 
 #include "CellObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/cell/CellObjectMessage3.h"
 #include "server/zone/packets/cell/CellObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
@@ -53,7 +54,19 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* cellMsg6 = new CellObjectMessage6(getObjectID());
 	player->sendMessage(cellMsg6);
 
-	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID());
+	//Check if the player has permission to enter the cell.
+	bool allowEntry = true;
+
+	if (parent != NULL && parent->isBuildingObject()) {
+		ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) parent.get();
+
+		if (!buildingObject->isPublicStructure()) {
+			if (!buildingObject->isOnEntryList(player) && !buildingObject->isOnAccessList(player))
+				allowEntry = false;
+		}
+	}
+
+	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
 	player->sendMessage(perm);
 }
 

@@ -14,16 +14,16 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace building {
+namespace structure {
 
-class BuildingObject;
+class StructureObject;
 
-} // namespace building
+} // namespace structure
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::building;
+using namespace server::zone::objects::structure;
 
 namespace server {
 namespace zone {
@@ -84,9 +84,9 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
-	void setBuildingObject(BuildingObject* obj);
+	void setStructureObject(StructureObject* obj);
 
-	BuildingObject* getBuildingObject();
+	StructureObject* getStructureObject();
 
 protected:
 	StructureTerminal(DummyConstructorParameter* param);
@@ -114,7 +114,7 @@ namespace structure {
 
 class StructureTerminalImplementation : public TerminalImplementation {
 protected:
-	ManagedWeakReference<BuildingObject* > buildingObject;
+	ManagedWeakReference<StructureObject* > structureObject;
 
 public:
 	StructureTerminalImplementation();
@@ -127,9 +127,9 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
-	void setBuildingObject(BuildingObject* obj);
+	void setStructureObject(StructureObject* obj);
 
-	BuildingObject* getBuildingObject();
+	StructureObject* getStructureObject();
 
 	StructureTerminal* _this;
 
@@ -174,9 +174,9 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void setBuildingObject(BuildingObject* obj);
+	void setStructureObject(StructureObject* obj);
 
-	BuildingObject* getBuildingObject();
+	StructureObject* getStructureObject();
 
 };
 

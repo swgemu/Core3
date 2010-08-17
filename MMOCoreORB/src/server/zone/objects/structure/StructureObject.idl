@@ -1,0 +1,293 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.structure;
+
+import server.zone.objects.tangible.TangibleObject;
+include server.zone.objects.structure.StructurePermissionList;
+
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.templates.SharedObjectTemplate;
+
+class StructureObject extends TangibleObject {
+	@dereferenced
+	protected StructurePermissionList structurePermissionList;
+	
+	protected unsigned long ownerObjectID;
+	protected unsigned long deedObjectID;
+	
+	protected int lotSize;
+	
+	protected unsigned int destroyCode;
+	
+	protected int baseMaintenanceRate;
+	protected int basePowerRate;
+	
+	protected float surplusMaintenance;
+	protected float surplusPower;
+	
+	protected boolean publicStructure;
+	
+	public StructureObject() {
+		Logger.setLoggingName("StructureObject");
+		
+		super.staticObject = false;
+		
+		lotSize = 0;
+		
+		ownerObjectID = 0;
+		
+		deedObjectID = 0;
+		
+		destroyCode = 0;
+		
+		baseMaintenanceRate = 0;
+		
+		basePowerRate = 0;
+		
+		surplusMaintenance = 0;
+		
+		surplusPower = 0;
+		
+		publicStructure = false;
+	}
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("StructureObject");
+	}
+	
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	/**
+	 * Gets called when the structure has been created;
+	 */
+	public abstract int notifyStructurePlaced(PlayerCreature player) {
+		return 0;
+	}
+	
+	public abstract boolean checkRequisitesForPlacement(PlayerCreature player) {
+		return true;
+	}
+	
+	/**
+	 * Generates and sets a random 6 digit code to be confirmed before allowing a player to destroy a structure.
+	 * @return int The generated 6 digit destroy code.
+	 */
+	public abstract unsigned int generateDestroyCode() {
+		destroyCode = System.random(899999) + 100000;
+		return destroyCode;
+	}
+	
+	public boolean isValidDestroyCode(unsigned int code) {
+		return (destroyCode == code);
+	}
+	
+	/**
+	 * Returns if the object is on the admin list or not for this structure.
+	 * @param obj The object to check for admin permissions on.
+	 * @return boolean True if the object is on the admin list.
+	 */
+	public boolean isOnAdminList(SceneObject obj) {
+		return structurePermissionList.isOnAdminList(obj.getObjectID());
+	}
+	
+	public boolean isOnAdminList(unsigned long oid) {
+		return structurePermissionList.isOnAdminList(oid);
+	}
+	
+	public boolean isOnEntryList(SceneObject obj) {
+		return structurePermissionList.isOnEntryList(obj.getObjectID());
+	}
+	
+	public boolean isOnEntryList(unsigned long oid) {
+		return structurePermissionList.isOnEntryList(oid);
+	}
+	
+	public boolean isOnBanList(SceneObject obj) {
+		return structurePermissionList.isOnBanList(obj.getObjectID());
+	}
+	
+	public boolean isOnBanList(unsigned long oid) {
+		return structurePermissionList.isOnBanList(oid);
+	}
+	
+	public boolean isOwnerOf(SceneObject obj) {
+		return obj.getObjectID() == ownerObjectID;
+	}
+	
+	public boolean isOwnerOf(unsigned long oid) {
+		return oid == ownerObjectID;
+	}
+	
+	public boolean isOnAccessList(SceneObject obj) {
+		//TODO: Vector of objects that have temporary access to the structure.
+		return false;
+	}
+	
+	public boolean isOnAccessList(unsigned long oid) {
+		//TODO: See above.
+		return false;
+	}
+
+	public void sendPermissionListTo(PlayerCreature player, final string listName) {
+		structurePermissionList.sendTo(player, listName);
+	}
+	
+	public boolean grantPermission(unsigned long objectID, final string listName) {
+		return structurePermissionList.grantPermission(objectID, structurePermissionList.getPermissionFromListName(listName));
+	}
+	
+	public boolean revokePermission(unsigned long objectID, final string listName) {
+		return structurePermissionList.revokePermission(objectID, structurePermissionList.getPermissionFromListName(listName));
+	}
+	
+	/**
+	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
+	 * @return int The cost to redeed this building.
+	 */
+	public int getRedeedCost() {
+		return (baseMaintenanceRate * 50);
+	}
+	
+	public unsigned long getOwnerObjectID() {
+		return ownerObjectID;
+	}
+	
+	public unsigned long getDeedObjectID() {
+		return deedObjectID;
+	}
+	
+	public int getLotSize() {
+		return lotSize;
+	}
+	
+	public unsigned int getDestroyCode() {
+		return destroyCode;
+	}
+	
+	public int getBaseMaintenanceRate() {
+		return baseMaintenanceRate;
+	}
+	
+	public int getBasePowerRate() {
+		return basePowerRate;
+	}
+	
+	public int getSurplusMaintenance() {
+		return surplusMaintenance;
+	}
+	
+	public int getSurplusPower() {
+		return surplusPower;
+	}
+	
+	public boolean isPublicStructure() {
+		return publicStructure;
+	}
+	
+	public void setOwnerObjectID(unsigned long objectID) {
+		ownerObjectID = objectID;
+		structurePermissionList.grantPermission(objectID, StructurePermissionList.OWNER);
+	}
+	
+	public void setDeedObjectID(unsigned long deedID) {
+		deedObjectID = deedID;
+	}
+	
+	public void setLotSize(int lots) {
+		lotSize = lots;
+	}
+	
+	public void setDestroyCode(unsigned int code) {
+		destroyCode = code;
+	}
+	
+	public void setBaseMaintenanceRate(int rate) {
+		baseMaintenanceRate = rate;
+	}
+	
+	public void setBasePowerRate(int rate) {
+		basePowerRate = rate;
+	}
+	
+	public void setSurplusMaintenance(int surplus) {
+		surplusMaintenance = surplus;
+	}
+	
+	public void addMaintenance(int add) {
+		surplusMaintenance += add;
+	}
+	
+	public void setSurplusPower(int surplus) {
+		surplusPower = surplus;
+	}
+	
+	public void addPower(int add) {
+		surplusPower += add;
+	}
+	
+	public void setPublicStructure(boolean privacy) {
+		publicStructure = privacy;
+	}
+	
+	public boolean isStructureObject() {
+		return true;
+	}
+	
+	//The + 1 is for a bug with IDL where <= throws an error...
+	public boolean isRedeedable() {
+		return (getRedeedCost() < (surplusMaintenance + 1));
+	}
+}

@@ -4,7 +4,7 @@
 
 #include "StructureTerminal.h"
 
-#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
@@ -62,7 +62,7 @@ void StructureTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse,
 		((StructureTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
-void StructureTerminal::setBuildingObject(BuildingObject* obj) {
+void StructureTerminal::setStructureObject(StructureObject* obj) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -72,19 +72,19 @@ void StructureTerminal::setBuildingObject(BuildingObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureTerminalImplementation*) _impl)->setBuildingObject(obj);
+		((StructureTerminalImplementation*) _impl)->setStructureObject(obj);
 }
 
-BuildingObject* StructureTerminal::getBuildingObject() {
+StructureObject* StructureTerminal::getStructureObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
 
-		return (BuildingObject*) method.executeWithObjectReturn();
+		return (StructureObject*) method.executeWithObjectReturn();
 	} else
-		return ((StructureTerminalImplementation*) _impl)->getBuildingObject();
+		return ((StructureTerminalImplementation*) _impl)->getStructureObject();
 }
 
 /*
@@ -154,7 +154,7 @@ void StructureTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("StructureTerminal");
 
-	addSerializableVariable("buildingObject", &buildingObject);
+	addSerializableVariable("structureObject", &structureObject);
 }
 
 StructureTerminalImplementation::StructureTerminalImplementation() {
@@ -170,14 +170,14 @@ void StructureTerminalImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("StructureTerminal");
 }
 
-void StructureTerminalImplementation::setBuildingObject(BuildingObject* obj) {
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(95):  		buildingObject = obj;
-	buildingObject = obj;
+void StructureTerminalImplementation::setStructureObject(StructureObject* obj) {
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(95):  		structureObject = obj;
+	structureObject = obj;
 }
 
-BuildingObject* StructureTerminalImplementation::getBuildingObject() {
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(99):  		return buildingObject;
-	return buildingObject;
+StructureObject* StructureTerminalImplementation::getStructureObject() {
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(99):  		return structureObject;
+	return structureObject;
 }
 
 /*
@@ -198,10 +198,10 @@ Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 8:
-		setBuildingObject((BuildingObject*) inv->getObjectParameter());
+		setStructureObject((StructureObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertLong(getBuildingObject()->_getObjectID());
+		resp->insertLong(getStructureObject()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -218,12 +218,12 @@ int StructureTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byt
 	return ((StructureTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void StructureTerminalAdapter::setBuildingObject(BuildingObject* obj) {
-	((StructureTerminalImplementation*) impl)->setBuildingObject(obj);
+void StructureTerminalAdapter::setStructureObject(StructureObject* obj) {
+	((StructureTerminalImplementation*) impl)->setStructureObject(obj);
 }
 
-BuildingObject* StructureTerminalAdapter::getBuildingObject() {
-	return ((StructureTerminalImplementation*) impl)->getBuildingObject();
+StructureObject* StructureTerminalAdapter::getStructureObject() {
+	return ((StructureTerminalImplementation*) impl)->getStructureObject();
 }
 
 /*
