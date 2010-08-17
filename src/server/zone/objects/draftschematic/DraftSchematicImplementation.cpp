@@ -138,7 +138,7 @@ void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player)
 	player->sendMessage(msg);
 }
 
-SceneObject* DraftSchematicImplementation::createManufactureSchematic() {
+SceneObject* DraftSchematicImplementation::createManufactureSchematic(SceneObject* craftingTool) {
 
 	ManufactureSchematic* manuSchematic =
 			dynamic_cast<ManufactureSchematic* > (getZoneServer()->createObject(0xF75E04C2, 0));
@@ -148,7 +148,7 @@ SceneObject* DraftSchematicImplementation::createManufactureSchematic() {
 		return NULL;
 	}
 
-	manuSchematic->setDraftSchematic(_this);
+	manuSchematic->setDraftSchematic(craftingTool, _this);
 	return manuSchematic;
 }
 

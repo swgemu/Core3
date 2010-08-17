@@ -200,11 +200,11 @@ Reference<IngredientSlot*> ManufactureSchematicImplementation::getIngredientSlot
 	return NULL;
 }
 
-void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schematic) {
+void ManufactureSchematicImplementation::setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic) {
 	draftSchematic = schematic;
 
 	if(draftSchematic != NULL) {
-		initializeIngredientSlots(draftSchematic);
+		initializeIngredientSlots(craftingTool, draftSchematic);
 		crcToSend = draftSchematic->getClientObjectCRC();
 	}
 }
@@ -231,7 +231,7 @@ void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* p
 }
 
 void ManufactureSchematicImplementation::initializeIngredientSlots(
-		DraftSchematic* schematic) {
+		SceneObject* tool, DraftSchematic* schematic) {
 
 	cleanupIngredientSlots();
 
@@ -253,19 +253,19 @@ void ManufactureSchematicImplementation::initializeIngredientSlots(
 
 		switch (draftSlot->getSlotType()) {
 		case IngredientSlot::RESOURCESLOT:
-			ingredientSlot = new ResourceSlot(type, quantity);
+			ingredientSlot = new ResourceSlot(tool, type, quantity);
 			break;
 		case IngredientSlot::IDENTICALSLOT:
-			ingredientSlot = new ComponentSlot(type, quantity, true, false, IngredientSlot::IDENTICALSLOT);
+			ingredientSlot = new ComponentSlot(tool, type, quantity, true, false, IngredientSlot::IDENTICALSLOT);
 			break;
 		case IngredientSlot::MIXEDSLOT:
-			ingredientSlot = new ComponentSlot(type, quantity, false, false, IngredientSlot::MIXEDSLOT);
+			ingredientSlot = new ComponentSlot(tool, type, quantity, false, false, IngredientSlot::MIXEDSLOT);
 			break;
 		case IngredientSlot::OPTIONALIDENTICALSLOT:
-			ingredientSlot = new ComponentSlot(type, quantity, true, true, IngredientSlot::OPTIONALIDENTICALSLOT);
+			ingredientSlot = new ComponentSlot(tool, type, quantity, true, true, IngredientSlot::OPTIONALIDENTICALSLOT);
 			break;
 		case IngredientSlot::OPTIONALMIXEDSLOT:
-			ingredientSlot = new ComponentSlot(type, quantity, false, true, IngredientSlot::OPTIONALMIXEDSLOT);
+			ingredientSlot = new ComponentSlot(tool, type, quantity, false, true, IngredientSlot::OPTIONALMIXEDSLOT);
 			break;
 		}
 

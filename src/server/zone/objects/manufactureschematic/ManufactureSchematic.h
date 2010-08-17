@@ -106,9 +106,9 @@ public:
 
 	bool isManufactureSchematic();
 
-	void setDraftSchematic(DraftSchematic* schematic);
+	void setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic);
 
-	void initializeIngredientSlots(DraftSchematic* schematic);
+	void initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic);
 
 	void cleanupIngredientSlots();
 
@@ -241,9 +241,9 @@ public:
 
 	bool isManufactureSchematic();
 
-	void setDraftSchematic(DraftSchematic* schematic);
+	void setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic);
 
-	void initializeIngredientSlots(DraftSchematic* schematic);
+	void initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic);
 
 	void cleanupIngredientSlots();
 
@@ -352,9 +352,9 @@ public:
 
 	bool isManufactureSchematic();
 
-	void setDraftSchematic(DraftSchematic* schematic);
+	void setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic);
 
-	void initializeIngredientSlots(DraftSchematic* schematic);
+	void initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic);
 
 	void cleanupIngredientSlots();
 

@@ -54,7 +54,7 @@ public:
 	FactoryCrateObjectMessage3(FactoryCrate* crate, uint32 objType = 0x46435954, uint16 opcnt = 0x0B)
 		: BaseLineMessage(crate->getObjectID(), objType, 3, opcnt) {
 
-		insertFloat(crate->getComplexity());
+		insertFloat(1.0);
 
 		insertStringId(crate->getObjectName());
 
@@ -70,9 +70,6 @@ public:
 		insertInt(crate->getOptionsBitmask());
 
 		int count = crate->getUseCount();
-
-		if (count <= 1)
-			count = 0;
 
 		insertInt(count); //item count
 

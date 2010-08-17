@@ -93,16 +93,17 @@ void DraftSchematic::sendResourceWeightsTo(PlayerCreature* player) {
 		((DraftSchematicImplementation*) _impl)->sendResourceWeightsTo(player);
 }
 
-SceneObject* DraftSchematic::createManufactureSchematic() {
+SceneObject* DraftSchematic::createManufactureSchematic(SceneObject* craftingTool) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addObjectParameter(craftingTool);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->createManufactureSchematic();
+		return ((DraftSchematicImplementation*) _impl)->createManufactureSchematic(craftingTool);
 }
 
 void DraftSchematic::setSchematicID(unsigned int id) {
@@ -442,7 +443,7 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		sendResourceWeightsTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 10:
-		resp->insertLong(createManufactureSchematic()->_getObjectID());
+		resp->insertLong(createManufactureSchematic((SceneObject*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 11:
 		setSchematicID(inv->getUnsignedIntParameter());
@@ -512,8 +513,8 @@ void DraftSchematicAdapter::sendResourceWeightsTo(PlayerCreature* player) {
 	((DraftSchematicImplementation*) impl)->sendResourceWeightsTo(player);
 }
 
-SceneObject* DraftSchematicAdapter::createManufactureSchematic() {
-	return ((DraftSchematicImplementation*) impl)->createManufactureSchematic();
+SceneObject* DraftSchematicAdapter::createManufactureSchematic(SceneObject* craftingTool) {
+	return ((DraftSchematicImplementation*) impl)->createManufactureSchematic(craftingTool);
 }
 
 void DraftSchematicAdapter::setSchematicID(unsigned int id) {

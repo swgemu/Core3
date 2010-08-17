@@ -76,9 +76,11 @@ class SuiListBox : public SuiBox {
 public:
 	static const int MSGSELECTED = 0;
 
-	static const int HANDLESTATUSUI = 1;
+	static const int HANDLESINGLEBUTTON = 1;
 
-	static const int HANDLEDESTROYUI = 2;
+	static const int HANDLETWOBUTTON = 2;
+
+	static const int HANDLETHREEBUTTON = 3;
 
 	SuiListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType = 0);
 
@@ -146,9 +148,11 @@ private:
 public:
 	static const int MSGSELECTED = 0;
 
-	static const int HANDLESTATUSUI = 1;
+	static const int HANDLESINGLEBUTTON = 1;
 
-	static const int HANDLEDESTROYUI = 2;
+	static const int HANDLETWOBUTTON = 2;
+
+	static const int HANDLETHREEBUTTON = 3;
 
 	SuiListBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType = 0);
 

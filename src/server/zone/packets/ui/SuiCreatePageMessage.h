@@ -131,13 +131,16 @@ public:
 	 */
 	void insertFooter(int type = 0) {
 		insertLong(0);
-		if(type > 0) {
+		if(type == 0) {
+			insertInt(0);
+			insertLong(0);
+		} else if(type == 1){
 			insertInt(0x7F7FFFFF);
 			insertInt(0x7F7FFFFF);
 			insertInt(0x7F7FFFFF);
 			insertInt(0);
-		} else {
-			insertInt(0);
+		} else if(type == 2){
+			insertFloat(10);
 			insertLong(0);
 		}
 	}

@@ -54,9 +54,11 @@ BaseMessage* SuiInputBoxImplementation::generateMessage() {
 
 	//Generate Packet:
 	if (isFilterBox()) {
-		generateHeader(message, "handleFilterInput");
+		setHandlerText("handleFilterInput");
+		generateHeader(message);
 	} else {
-		generateHeader(message, "handleAutoLevelSelect");
+		setHandlerText("handleAutoLevelSelect");
+		generateHeader(message);
 	}
 
 	generateBody(message);

@@ -146,12 +146,14 @@ int FactoryObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
  */
 void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 
-	ManagedReference<SuiListBox*> schematics = new SuiListBox(player, SuiWindowType::FACTORY_SCHEMATIC);
-	schematics->setPromptTitle("STAR WARS GALAXIES");//found a SS with this as the title so....
-
-	if(getContainerObjectsSize() == 0)
+	ManagedReference<SuiListBox*> schematics = NULL;
+	if(getContainerObjectsSize() == 0) {
+		schematics = new SuiListBox(player, SuiWindowType::FACTORY_SCHEMATIC, SuiListBox::HANDLETWOBUTTON);
 		schematics->setPromptText("Choose a schematic to be added to the factory.");
-	else {
+	} else {
+
+		schematics = new SuiListBox(player, SuiWindowType::FACTORY_SCHEMATIC, SuiListBox::HANDLETHREEBUTTON);
+
 		StringBuffer message;
 		message << "Current Schematic Installed: ";
 
@@ -161,10 +163,15 @@ void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 			message << getContainerObject(0)->getCustomObjectName().toString();
 
 		schematics->setPromptText(message.toString());
+
+		schematics->setOtherButton(true, "@remove_schematic");
 	}
 
+	schematics->setHandlerText("handleUpdateSchematic");
+	schematics->setPromptTitle("@base_player_swg");//found a SS with this as the title so...
+
 	schematics->setOkButton(true, "@use_schematic");
-	schematics->setCancelButton(true, "@remove_schematic");
+	schematics->setCancelButton(true, "@cancel");
 
 	/*
 	 * Insert only the schematics that can be used in this type of factory
@@ -578,7 +585,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 		return NULL;
 	}
 
-	crate->setPrototype(protoclone);
+	crate->addObject(protoclone, -1, false);
 	crate->setCustomObjectName(protoclone->getCustomObjectName(), false);
 
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");

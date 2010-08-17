@@ -10,7 +10,7 @@
 #include "server/zone/packets/ui/SuiForceClosePage.h"
 
 
-void SuiBoxImplementation::generateHeader(SuiCreatePageMessage* message, const String& handlerStr) {
+void SuiBoxImplementation::generateHeader(SuiCreatePageMessage* message) {
 	//[UI DECLARATION HEADER]
 	String hdrVar = "";
 	String hdrType = "";
@@ -118,11 +118,11 @@ void SuiBoxImplementation::setCancelButton(bool value, const String& cancelText)
 	cancelButton = value;
 }
 
-void SuiBoxImplementation::setBackButton(bool value, const String& backText) {
+void SuiBoxImplementation::setOtherButton(bool value, const String& backText) {
 	if(backText.length() > 0)
-		backButtonText = backText;
+		otherButtonText = backText;
 
-	backButton = value;
+	otherButton = value;
 }
 
 void SuiBoxImplementation::setOkButton(bool value, const String& okText) {

@@ -252,79 +252,79 @@ void SuiListBoxImplementation::_serializationHelperMethod() {
 
 SuiListBoxImplementation::SuiListBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiBoxImplementation(player, windowType, SuiBox::LISTBOX) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(72):  		type = listBoxType;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(73):  		type = listBoxType;
 	type = listBoxType;
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(74):  		init();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(75):  		init();
 	init();
 }
 
 void SuiListBoxImplementation::init() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(78):  		next = 0;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(79):  		next = 0;
 	next = 0;
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(79):  		previous = 0;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(80):  		previous = 0;
 	previous = 0;
 }
 
 void SuiListBoxImplementation::addMenuItem(const String& name, unsigned long long objectID) {
 	ManagedReference<SuiListBoxMenuItem*> _ref0;
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(86):  		SuiListBoxMenuItem item = new SuiListBoxMenuItem(name, objectID);
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(87):  		SuiListBoxMenuItem item = new SuiListBoxMenuItem(name, objectID);
 	SuiListBoxMenuItem* item = _ref0 = new SuiListBoxMenuItem(name, objectID);
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(87):  		menuItems.add(item);
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(88):  		menuItems.add(item);
 	(&menuItems)->add(item);
 }
 
 String SuiListBoxImplementation::getMenuItemName(int index) {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(91):  		SuiListBoxMenuItem menuItem = menuItems.get(index);
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(92):  		SuiListBoxMenuItem menuItem = menuItems.get(index);
 	SuiListBoxMenuItem* menuItem = (&menuItems)->get(index);
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(93):  		return menuItem.getOptionName();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(94):  		return menuItem.getOptionName();
 	return menuItem->getOptionName();
 }
 
 void SuiListBoxImplementation::removeAllMenuItems() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(101):  		menuItems.removeAll();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(102):  		menuItems.removeAll();
 	(&menuItems)->removeAll();
 }
 
 unsigned long long SuiListBoxImplementation::getMenuObjectID(unsigned int idx) {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(105):  		return 
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(106):  		return 
 	if (idx < (&menuItems)->size()){
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(107):  			SuiListBoxMenuItem menuItem = menuItems.get(idx);
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(108):  			SuiListBoxMenuItem menuItem = menuItems.get(idx);
 	SuiListBoxMenuItem* menuItem = (&menuItems)->get(idx);
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(109):  		}
-	if (menuItem != NULL)	// server/zone/objects/player/sui/listbox/SuiListBox.idl(110):  				return menuItem.getObjectID();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(110):  		}
+	if (menuItem != NULL)	// server/zone/objects/player/sui/listbox/SuiListBox.idl(111):  				return menuItem.getObjectID();
 	return menuItem->getObjectID();
 }
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(113):  0;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(114):  0;
 	return 0;
 }
 
 int SuiListBoxImplementation::getMenuSize() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(117):  		return menuItems.size();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(118):  		return menuItems.size();
 	return (&menuItems)->size();
 }
 
 void SuiListBoxImplementation::setNextBox(unsigned int boxID) {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(123):  		next = boxID;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(124):  		next = boxID;
 	next = boxID;
 }
 
 void SuiListBoxImplementation::setPreviousBox(unsigned int boxID) {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(127):  		previous = boxID;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(128):  		previous = boxID;
 	previous = boxID;
 }
 
 unsigned long long SuiListBoxImplementation::getNextBox() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(131):  		return next;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(132):  		return next;
 	return next;
 }
 
 unsigned long long SuiListBoxImplementation::getPreviousBox() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(135):  		return previous;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(136):  		return previous;
 	return previous;
 }
 
 bool SuiListBoxImplementation::isListBox() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(139):  		return true;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl(140):  		return true;
 	return true;
 }
 

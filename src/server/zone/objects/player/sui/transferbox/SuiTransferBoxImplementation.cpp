@@ -30,8 +30,10 @@ BaseMessage* SuiTransferBoxImplementation::generateMessage() {
 	addSetting("3", "transaction", "ConversionRatioFrom", convertRatioFrom);
 	addSetting("3", "transaction", "ConversionRatioTo", convertRatioTo);
 
+	setHandlerText("msgPayMaintenance");
+
 	//Generate Packet:
-	generateHeader(message, "msgPayMaintenance");
+	generateHeader(message);
 	generateBody(message);
 	generateFooter(message);
 	hasGenerated = true;

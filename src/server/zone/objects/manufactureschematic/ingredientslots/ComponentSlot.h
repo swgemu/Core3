@@ -47,14 +47,17 @@
 
 #include "IngredientSlot.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 
 class ComponentSlot: public IngredientSlot {
 
 	ManagedReference<TangibleObject* > contents;
 
 public:
-	ComponentSlot(String t, int quant, bool ident, bool option, int type) : IngredientSlot(t, quant) {
+	ComponentSlot(SceneObject* manu, String t, int quant, bool ident, bool option, int type) : IngredientSlot(t, quant) {
 
+		craftingTool = manu;
 		slottype = type;
 		contents = NULL;
 		serial = "";
@@ -83,42 +86,65 @@ public:
 			return 0;
 	}
 
-	inline bool add(PlayerCreature* player, TangibleObject* tano) {
+	inline bool add(PlayerCreature* player, TangibleObject* incomingTano) {
 
 		int itemsInSlot = getQuantity();
 
 		if(requiresIdentical && serial != "" && itemsInSlot > 0) {
-			if(tano->getCraftersSerial() != contents->getCraftersSerial())
+			if(incomingTano->getCraftersSerial() != contents->getCraftersSerial())
 				return false;
 		}
 
-		/// Must be a resource container to proceed
-		if (tano->isComponent() && itemsInSlot < requiredQuantity) {
+		int needs = requiredQuantity - itemsInSlot;
 
-			if(serial = "")
-				serial = tano->getCraftersSerial();
+		previousParent = incomingTano->getParent();
+
+		if(incomingTano->isFactoryCrate()) {
+
+			FactoryCrate* crate = (FactoryCrate*) incomingTano;
+
+			if(incomingTano->getUseCount() >= needs)
+				incomingTano = crate->extractObject(needs);
+			else
+				incomingTano = crate->extractObject(incomingTano->getUseCount());
+		}
+
+		if(serial = "")
+			serial = incomingTano->getCraftersSerial();
+
+		/// Must be a component to proceed
+		if (incomingTano->isComponent() && itemsInSlot < requiredQuantity) {
 
 			ObjectManager* objectManager = ObjectManager::instance();
 
-			previousParent = tano->getParent();
-
-			bool removeFromParent = false;
-
-			int needs = requiredQuantity - itemsInSlot;
-
 			if (contents == NULL) {
 
-				if (needs <= tano->getUseCount()) {
+				if (incomingTano->getUseCount() <= needs) {
 
-					contents = tano;
-					previousParent->removeObject(tano, true);
+					contents = incomingTano;
+
+					if(contents->getParent() != NULL)
+						contents->getParent()->removeObject(contents, true);
+					craftingTool->addObject(contents, -1, false);
+
+					previousParent->removeObject(incomingTano, true);
 
 				} else {
 
-					tano->setUseCount(tano->getUseCount() - needs, player);
+					int newCount = incomingTano->getUseCount() - needs;
+					incomingTano->setUseCount(newCount, true);
 
-					contents = (TangibleObject*) objectManager->cloneObject(tano);
-					contents->setUseCount(needs, player);
+					TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(incomingTano);
+					dtano3->setQuantity(newCount);
+					dtano3->close();
+					incomingTano->getParent()->broadcastMessage(dtano3, true);
+
+					contents = (TangibleObject*) objectManager->cloneObject(incomingTano);
+
+					contents->setParent(NULL);
+					craftingTool->addObject(contents, -1, false);
+
+					contents->setUseCount(needs, false);
 				}
 
 				contents->sendTo(player, true);
@@ -126,16 +152,15 @@ public:
 
 			} else {
 
-				if (needs < tano->getUseCount()) {
+				if (incomingTano->getUseCount() <= needs) {
 
-					tano->setUseCount(tano->getUseCount() - needs, player);
-					contents->setUseCount(contents->getUseCount() + needs, player);
+					incomingTano->setUseCount(incomingTano->getUseCount() - needs, true);
+					contents->setUseCount(contents->getUseCount() + needs, true);
 
 				} else {
 
-					contents->setUseCount(contents->getUseCount() + tano->getUseCount(), player);
-					previousParent->removeObject(tano, true);
-					tano = NULL;
+					contents->setUseCount(contents->getUseCount() + incomingTano->getUseCount(), true);
+					previousParent->removeObject(incomingTano, true);
 				}
 			}
 
@@ -155,7 +180,16 @@ public:
 		if(contents == NULL || previousParent == NULL)
 			return false;
 
+		if(contents->getParent() != NULL)
+			contents->getParent()->removeObject(contents, true);
+
 		previousParent->addObject(contents, -1, true);
+
+		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(contents);
+		dtano3->setQuantity(contents->getUseCount());
+		dtano3->close();
+		previousParent->broadcastMessage(dtano3, true);
+
 		contents = NULL;
 		return true;
 	}

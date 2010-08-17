@@ -270,7 +270,7 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 
 		if(manufactureSchematic->getParent() == _this) {
 			removeObject(manufactureSchematic);
-			manufactureSchematic->setDraftSchematic(NULL);
+			manufactureSchematic->setDraftSchematic(NULL, NULL);
 		}
 
 		manufactureSchematic = NULL;
@@ -285,6 +285,9 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 			prototype = NULL;
 		}
 	}
+
+	while(getContainerObjectsSize() > 0)
+		removeObject(getContainerObject(0));
 
 	if (player != NULL) {
 		// DPlay9
@@ -371,7 +374,7 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 	try {
 
 		manufactureSchematic
-				= (ManufactureSchematic*) draftschematic->createManufactureSchematic();
+				= (ManufactureSchematic*) draftschematic->createManufactureSchematic(_this);
 		manufactureSchematic->createChildObjects();
 
 
@@ -493,14 +496,18 @@ void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleO
 
 		sendIngredientAddSuccess(player, slot, clientCounter);
 
+		// Increment the insert counter
+		insertCounter++;
+
 	} else {
 
-		sendSlotMessage(player, clientCounter, IngredientSlot::INVALIDINGREDIENT);
-
+		if(ingredientSlot->isComplete())
+			sendSlotMessage(player, clientCounter, IngredientSlot::FULL);
+		else
+			sendSlotMessage(player, clientCounter, IngredientSlot::INVALIDINGREDIENT);
 	}
 
-	// Increment the insert counter
-	insertCounter++;
+
 }
 
 void CraftingToolImplementation::sendIngredientAddSuccess(PlayerCreature* player, int slot, int clientCounter) {
@@ -532,8 +539,6 @@ void CraftingToolImplementation::sendIngredientAddSuccess(PlayerCreature* player
 		// If it's not the first resources, slots are updates, and only insert needs done
 		dMsco7->partialUpdate(manufactureSchematic, slot, insertCounter);
 
-
-	manufactureSchematic->increaseComplexity();
 	dMsco7->close();
 
 	player->sendMessage(dMsco7);
@@ -614,9 +619,6 @@ void CraftingToolImplementation::sendIngredientRemoveSuccess(PlayerCreature* pla
 
 	player->sendMessage(objMsg);
 	// End Object Controller *****************************************
-
-	if (insertCounter > 0)
-		manufactureSchematic->decreaseComplexity();
 
 	// Start DMSCO3 ***********************************************************
 	// Updates the Complexity
@@ -819,7 +821,7 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 
 		// re-setup the slots and ingredients
 		manufactureSchematic->synchronizedUIListen(player, 0);
-		manufactureSchematic->initializeIngredientSlots(manufactureSchematic->getDraftSchematic());
+		manufactureSchematic->initializeIngredientSlots(_this, manufactureSchematic->getDraftSchematic());
 
 		// Start Dplay9 **************************************
 		// Reset crafting state

@@ -107,42 +107,30 @@ void FactoryCrate::sendTo(SceneObject* player, bool doClose) {
 		((FactoryCrateImplementation*) _impl)->sendTo(player, doClose);
 }
 
-void FactoryCrate::updateToDatabaseAllObjects(bool startTask) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addBooleanParameter(startTask);
-
-		method.executeWithVoidReturn();
-	} else
-		((FactoryCrateImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
-}
-
 bool FactoryCrate::isFactoryCrate() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((FactoryCrateImplementation*) _impl)->isFactoryCrate();
 }
 
-void FactoryCrate::setPrototype(TangibleObject* object) {
+void FactoryCrate::setUseCount(unsigned int newUseCount, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
-		method.addObjectParameter(object);
+		DistributedMethod method(this, 11);
+		method.addUnsignedIntParameter(newUseCount);
+		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryCrateImplementation*) _impl)->setPrototype(object);
+		((FactoryCrateImplementation*) _impl)->setUseCount(newUseCount, notifyClient);
 }
 
 TangibleObject* FactoryCrate::getPrototype() {
@@ -150,7 +138,7 @@ TangibleObject* FactoryCrate::getPrototype() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -162,7 +150,7 @@ String FactoryCrate::getCraftersName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 
 		method.executeWithAsciiReturn(_return_getCraftersName);
 		return _return_getCraftersName;
@@ -170,30 +158,56 @@ String FactoryCrate::getCraftersName() {
 		return ((FactoryCrateImplementation*) _impl)->getCraftersName();
 }
 
-String FactoryCrate::getCraftersSerial(String& serial) {
+String FactoryCrate::getCraftersSerial() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		method.executeWithAsciiReturn(_return_getCraftersSerial);
+		return _return_getCraftersSerial;
+	} else
+		return ((FactoryCrateImplementation*) _impl)->getCraftersSerial();
+}
+
+bool FactoryCrate::extractObjectToParent(int count) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
-		method.addAsciiParameter(serial);
+		method.addSignedIntParameter(count);
 
-		method.executeWithAsciiReturn(_return_getCraftersSerial);
-		return _return_getCraftersSerial;
+		return method.executeWithBooleanReturn();
 	} else
-		return ((FactoryCrateImplementation*) _impl)->getCraftersSerial(serial);
+		return ((FactoryCrateImplementation*) _impl)->extractObjectToParent(count);
 }
 
-bool FactoryCrate::extractObject() {
+TangibleObject* FactoryCrate::extractObject(int count) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
+		method.addSignedIntParameter(count);
 
-		return method.executeWithBooleanReturn();
+		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((FactoryCrateImplementation*) _impl)->extractObject();
+		return ((FactoryCrateImplementation*) _impl)->extractObject(count);
+}
+
+void FactoryCrate::split(int newStackSize) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addSignedIntParameter(newStackSize);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryCrateImplementation*) _impl)->split(newStackSize);
 }
 
 /*
@@ -263,45 +277,17 @@ void FactoryCrateImplementation::_serializationHelperMethod() {
 
 	_setClassName("FactoryCrate");
 
-	addSerializableVariable("prototype", &prototype);
 }
 
 FactoryCrateImplementation::FactoryCrateImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/factorycrate/FactoryCrate.idl(65):  		Logger.setLoggingName("FactoryCrate");
+	// server/zone/objects/factorycrate/FactoryCrate.idl(63):  		Logger.setLoggingName("FactoryCrate");
 	Logger::setLoggingName("FactoryCrate");
 }
 
-void FactoryCrateImplementation::updateToDatabaseAllObjects(bool startTask) {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(116):  		prototype.updateToDatabase();
-	prototype->updateToDatabase();
-	// server/zone/objects/factorycrate/FactoryCrate.idl(118):  		super.updateToDatabaseAllObjects(startTask);
-	TangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
-}
-
 bool FactoryCrateImplementation::isFactoryCrate() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(122):  		return true;
+	// server/zone/objects/factorycrate/FactoryCrate.idl(113):  		return true;
 	return true;
-}
-
-void FactoryCrateImplementation::setPrototype(TangibleObject* object) {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(126):  		prototype = object;
-	prototype = object;
-}
-
-TangibleObject* FactoryCrateImplementation::getPrototype() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(130):  		return prototype;
-	return prototype;
-}
-
-String FactoryCrateImplementation::getCraftersName() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(134):  		return prototype.getCraftersName();
-	return prototype->getCraftersName();
-}
-
-String FactoryCrateImplementation::getCraftersSerial(String& serial) {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(138):  		return prototype.getCraftersSerial();
-	return prototype->getCraftersSerial();
 }
 
 /*
@@ -328,25 +314,28 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 10:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
-		break;
-	case 11:
 		resp->insertBoolean(isFactoryCrate());
 		break;
-	case 12:
-		setPrototype((TangibleObject*) inv->getObjectParameter());
+	case 11:
+		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 13:
+	case 12:
 		resp->insertLong(getPrototype()->_getObjectID());
 		break;
-	case 14:
+	case 13:
 		resp->insertAscii(getCraftersName());
 		break;
+	case 14:
+		resp->insertAscii(getCraftersSerial());
+		break;
 	case 15:
-		resp->insertAscii(getCraftersSerial(inv->getAsciiParameter(_param0_getCraftersSerial__String_)));
+		resp->insertBoolean(extractObjectToParent(inv->getSignedIntParameter()));
 		break;
 	case 16:
-		resp->insertBoolean(extractObject());
+		resp->insertLong(extractObject(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 17:
+		split(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -371,16 +360,12 @@ void FactoryCrateAdapter::sendTo(SceneObject* player, bool doClose) {
 	((FactoryCrateImplementation*) impl)->sendTo(player, doClose);
 }
 
-void FactoryCrateAdapter::updateToDatabaseAllObjects(bool startTask) {
-	((FactoryCrateImplementation*) impl)->updateToDatabaseAllObjects(startTask);
-}
-
 bool FactoryCrateAdapter::isFactoryCrate() {
 	return ((FactoryCrateImplementation*) impl)->isFactoryCrate();
 }
 
-void FactoryCrateAdapter::setPrototype(TangibleObject* object) {
-	((FactoryCrateImplementation*) impl)->setPrototype(object);
+void FactoryCrateAdapter::setUseCount(unsigned int newUseCount, bool notifyClient) {
+	((FactoryCrateImplementation*) impl)->setUseCount(newUseCount, notifyClient);
 }
 
 TangibleObject* FactoryCrateAdapter::getPrototype() {
@@ -391,12 +376,20 @@ String FactoryCrateAdapter::getCraftersName() {
 	return ((FactoryCrateImplementation*) impl)->getCraftersName();
 }
 
-String FactoryCrateAdapter::getCraftersSerial(String& serial) {
-	return ((FactoryCrateImplementation*) impl)->getCraftersSerial(serial);
+String FactoryCrateAdapter::getCraftersSerial() {
+	return ((FactoryCrateImplementation*) impl)->getCraftersSerial();
 }
 
-bool FactoryCrateAdapter::extractObject() {
-	return ((FactoryCrateImplementation*) impl)->extractObject();
+bool FactoryCrateAdapter::extractObjectToParent(int count) {
+	return ((FactoryCrateImplementation*) impl)->extractObjectToParent(count);
+}
+
+TangibleObject* FactoryCrateAdapter::extractObject(int count) {
+	return ((FactoryCrateImplementation*) impl)->extractObject(count);
+}
+
+void FactoryCrateAdapter::split(int newStackSize) {
+	((FactoryCrateImplementation*) impl)->split(newStackSize);
 }
 
 /*
