@@ -269,6 +269,8 @@ public:
 protected:
 	virtual ~PlanetManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -290,6 +292,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PlanetManager;
+	friend class TransactionalObjectHandle<PlanetManagerImplementation*>;
 };
 
 class PlanetManagerAdapter : public ManagedObjectAdapter {

@@ -6,13 +6,80 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/creature/PatrolPoint.h"
+
+#include "server/zone/objects/creature/events/AiThinkEvent.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/creature/events/AiMoveEvent.h"
+
+#include "server/zone/objects/creature/PatrolPointsVector.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/tangible/DamageMap.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	NonPlayerCreatureObjectStub
  */
 
 NonPlayerCreatureObject::NonPlayerCreatureObject() : AiAgent(DummyConstructorParameter::instance()) {
-	_impl = new NonPlayerCreatureObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new NonPlayerCreatureObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 NonPlayerCreatureObject::NonPlayerCreatureObject(DummyConstructorParameter* param) : AiAgent(param) {
@@ -23,7 +90,7 @@ NonPlayerCreatureObject::~NonPlayerCreatureObject() {
 
 
 bool NonPlayerCreatureObject::isNonPlayerCreature() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,7 +98,7 @@ bool NonPlayerCreatureObject::isNonPlayerCreature() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((NonPlayerCreatureObjectImplementation*) _impl)->isNonPlayerCreature();
+		return ((NonPlayerCreatureObjectImplementation*) _getImplementation())->isNonPlayerCreature();
 }
 
 /*
@@ -41,6 +108,7 @@ bool NonPlayerCreatureObject::isNonPlayerCreature() {
 NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation(DummyConstructorParameter* param) : AiAgentImplementation(param) {
 	_initializeImplementation();
 }
+
 
 NonPlayerCreatureObjectImplementation::~NonPlayerCreatureObjectImplementation() {
 }
@@ -67,6 +135,11 @@ DistributedObjectStub* NonPlayerCreatureObjectImplementation::_getStub() {
 NonPlayerCreatureObjectImplementation::operator const NonPlayerCreatureObject*() {
 	return _this;
 }
+
+TransactionalObject* NonPlayerCreatureObjectImplementation::clone() {
+	return (TransactionalObject*) new NonPlayerCreatureObjectImplementation(*this);
+}
+
 
 void NonPlayerCreatureObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

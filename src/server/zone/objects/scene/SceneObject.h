@@ -1859,6 +1859,8 @@ public:
 protected:
 	virtual ~SceneObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -1880,6 +1882,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SceneObject;
+	friend class TransactionalObjectHandle<SceneObjectImplementation*>;
 };
 
 class SceneObjectAdapter : public ObservableAdapter {

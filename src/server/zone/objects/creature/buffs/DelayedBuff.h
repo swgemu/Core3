@@ -136,6 +136,8 @@ public:
 protected:
 	virtual ~DelayedBuffImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -159,6 +161,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DelayedBuff;
+	friend class TransactionalObjectHandle<DelayedBuffImplementation*>;
 };
 
 class DelayedBuffAdapter : public BuffAdapter {

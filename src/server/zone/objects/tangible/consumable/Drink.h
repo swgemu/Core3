@@ -94,6 +94,8 @@ public:
 protected:
 	virtual ~DrinkImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -117,6 +119,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Drink;
+	friend class TransactionalObjectHandle<DrinkImplementation*>;
 };
 
 class DrinkAdapter : public ConsumableAdapter {

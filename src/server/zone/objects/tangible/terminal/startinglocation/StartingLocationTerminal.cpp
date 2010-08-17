@@ -10,13 +10,76 @@
 
 #include "server/zone/Zone.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	StartingLocationTerminalStub
  */
 
 StartingLocationTerminal::StartingLocationTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new StartingLocationTerminalImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new StartingLocationTerminalImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StartingLocationTerminal::StartingLocationTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -27,7 +90,7 @@ StartingLocationTerminal::~StartingLocationTerminal() {
 
 
 void StartingLocationTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,11 +98,11 @@ void StartingLocationTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StartingLocationTerminalImplementation*) _impl)->initializeTransientMembers();
+		((StartingLocationTerminalImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int StartingLocationTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,7 +112,7 @@ int StartingLocationTerminal::handleObjectMenuSelect(PlayerCreature* player, byt
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StartingLocationTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((StartingLocationTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 /*
@@ -59,6 +122,7 @@ int StartingLocationTerminal::handleObjectMenuSelect(PlayerCreature* player, byt
 StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 StartingLocationTerminalImplementation::~StartingLocationTerminalImplementation() {
 }
@@ -85,6 +149,11 @@ DistributedObjectStub* StartingLocationTerminalImplementation::_getStub() {
 StartingLocationTerminalImplementation::operator const StartingLocationTerminal*() {
 	return _this;
 }
+
+TransactionalObject* StartingLocationTerminalImplementation::clone() {
+	return (TransactionalObject*) new StartingLocationTerminalImplementation(*this);
+}
+
 
 void StartingLocationTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -20,13 +20,110 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
 /*
  *	StatePackStub
  */
 
 StatePack::StatePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new StatePackImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new StatePackImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StatePack::StatePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -37,23 +134,23 @@ StatePack::~StatePack() {
 
 
 void StatePack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StatePackImplementation*) _impl)->updateCraftingValues(schematic);
+		((StatePackImplementation*) _getImplementation())->updateCraftingValues(schematic);
 }
 
 void StatePack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StatePackImplementation*) _impl)->loadTemplateData(templateData);
+		((StatePackImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 int StatePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -63,19 +160,19 @@ int StatePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StatePackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((StatePackImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void StatePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StatePackImplementation*) _impl)->fillAttributeList(msg, object);
+		((StatePackImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 unsigned long long StatePack::getState() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,11 +180,11 @@ unsigned long long StatePack::getState() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((StatePackImplementation*) _impl)->getState();
+		return ((StatePackImplementation*) _getImplementation())->getState();
 }
 
 bool StatePack::isStatePack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -95,7 +192,7 @@ bool StatePack::isStatePack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StatePackImplementation*) _impl)->isStatePack();
+		return ((StatePackImplementation*) _getImplementation())->isStatePack();
 }
 
 /*
@@ -105,6 +202,7 @@ bool StatePack::isStatePack() {
 StatePackImplementation::StatePackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 StatePackImplementation::~StatePackImplementation() {
 }
@@ -131,6 +229,11 @@ DistributedObjectStub* StatePackImplementation::_getStub() {
 StatePackImplementation::operator const StatePack*() {
 	return _this;
 }
+
+TransactionalObject* StatePackImplementation::clone() {
+	return (TransactionalObject*) new StatePackImplementation(*this);
+}
+
 
 void StatePackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

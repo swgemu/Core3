@@ -86,6 +86,8 @@ public:
 protected:
 	virtual ~RecreationBuildingObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -109,6 +111,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class RecreationBuildingObject;
+	friend class TransactionalObjectHandle<RecreationBuildingObjectImplementation*>;
 };
 
 class RecreationBuildingObjectAdapter : public BuildingObjectAdapter {

@@ -14,20 +14,6 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace cell {
-
-class CellObject;
-
-} // namespace cell
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::cell;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -132,6 +118,8 @@ class SharedObjectTemplate;
 } // namespace server
 
 using namespace server::zone::templates;
+
+#include "server/zone/objects/cell/CellObject.h"
 
 #include "server/zone/objects/structure/StructureObject.h"
 
@@ -339,6 +327,8 @@ public:
 protected:
 	virtual ~BuildingObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -362,6 +352,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BuildingObject;
+	friend class TransactionalObjectHandle<BuildingObjectImplementation*>;
 };
 
 class BuildingObjectAdapter : public StructureObjectAdapter {

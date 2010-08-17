@@ -344,6 +344,8 @@ public:
 protected:
 	virtual ~PlayerManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -365,6 +367,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PlayerManager;
+	friend class TransactionalObjectHandle<PlayerManagerImplementation*>;
 };
 
 class PlayerManagerAdapter : public ObserverAdapter {

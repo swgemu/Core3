@@ -8,13 +8,68 @@
 
 #include "server/zone/objects/region/Region.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	CityHallObjectStub
  */
 
 CityHallObject::CityHallObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new CityHallObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new CityHallObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CityHallObject::CityHallObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -25,7 +80,7 @@ CityHallObject::~CityHallObject() {
 
 
 void CityHallObject::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -34,11 +89,11 @@ void CityHallObject::insertToZone(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->insertToZone(zone);
+		((CityHallObjectImplementation*) _getImplementation())->insertToZone(zone);
 }
 
 void CityHallObject::spawnCityHallObjects() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,11 +101,11 @@ void CityHallObject::spawnCityHallObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->spawnCityHallObjects();
+		((CityHallObjectImplementation*) _getImplementation())->spawnCityHallObjects();
 }
 
 void CityHallObject::trySetCityName(PlayerCreature* player, const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -60,11 +115,11 @@ void CityHallObject::trySetCityName(PlayerCreature* player, const String& name) 
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->trySetCityName(player, name);
+		((CityHallObjectImplementation*) _getImplementation())->trySetCityName(player, name);
 }
 
 bool CityHallObject::checkRequisitesForPlacement(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -73,11 +128,11 @@ bool CityHallObject::checkRequisitesForPlacement(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->checkRequisitesForPlacement(player);
+		return ((CityHallObjectImplementation*) _getImplementation())->checkRequisitesForPlacement(player);
 }
 
 void CityHallObject::setCityName(const String& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,11 +141,11 @@ void CityHallObject::setCityName(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->setCityName(name);
+		((CityHallObjectImplementation*) _getImplementation())->setCityName(name);
 }
 
 String CityHallObject::getCityName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -99,11 +154,11 @@ String CityHallObject::getCityName() {
 		method.executeWithAsciiReturn(_return_getCityName);
 		return _return_getCityName;
 	} else
-		return ((CityHallObjectImplementation*) _impl)->getCityName();
+		return ((CityHallObjectImplementation*) _getImplementation())->getCityName();
 }
 
 int CityHallObject::notifyStructurePlaced(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -112,11 +167,11 @@ int CityHallObject::notifyStructurePlaced(PlayerCreature* player) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->notifyStructurePlaced(player);
+		return ((CityHallObjectImplementation*) _getImplementation())->notifyStructurePlaced(player);
 }
 
 bool CityHallObject::isCityHallBuilding() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -124,7 +179,7 @@ bool CityHallObject::isCityHallBuilding() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->isCityHallBuilding();
+		return ((CityHallObjectImplementation*) _getImplementation())->isCityHallBuilding();
 }
 
 /*
@@ -134,6 +189,7 @@ bool CityHallObject::isCityHallBuilding() {
 CityHallObjectImplementation::CityHallObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CityHallObjectImplementation::~CityHallObjectImplementation() {
 }
@@ -160,6 +216,11 @@ DistributedObjectStub* CityHallObjectImplementation::_getStub() {
 CityHallObjectImplementation::operator const CityHallObject*() {
 	return _this;
 }
+
+TransactionalObject* CityHallObjectImplementation::clone() {
+	return (TransactionalObject*) new CityHallObjectImplementation(*this);
+}
+
 
 void CityHallObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

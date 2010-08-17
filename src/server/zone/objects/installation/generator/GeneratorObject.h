@@ -77,6 +77,8 @@ public:
 protected:
 	virtual ~GeneratorObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -100,6 +102,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class GeneratorObject;
+	friend class TransactionalObjectHandle<GeneratorObjectImplementation*>;
 };
 
 class GeneratorObjectAdapter : public InstallationObjectAdapter {

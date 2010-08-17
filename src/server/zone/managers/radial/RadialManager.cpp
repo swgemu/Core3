@@ -12,13 +12,82 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "system/util/Vector.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
 /*
  *	RadialManagerStub
  */
 
 RadialManager::RadialManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new RadialManagerImplementation(server);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new RadialManagerImplementation(server));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 RadialManager::RadialManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -29,7 +98,7 @@ RadialManager::~RadialManager() {
 
 
 void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,11 +109,11 @@ void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID
 
 		method.executeWithVoidReturn();
 	} else
-		((RadialManagerImplementation*) _impl)->handleObjectMenuSelect(player, selectID, objectID);
+		((RadialManagerImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectID, objectID);
 }
 
 void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,7 +124,7 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 
 		method.executeWithVoidReturn();
 	} else
-		((RadialManagerImplementation*) _impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
+		((RadialManagerImplementation*) _getImplementation())->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
 }
 
 /*
@@ -65,6 +134,7 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 RadialManagerImplementation::RadialManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RadialManagerImplementation::~RadialManagerImplementation() {
 }
@@ -91,6 +161,11 @@ DistributedObjectStub* RadialManagerImplementation::_getStub() {
 RadialManagerImplementation::operator const RadialManager*() {
 	return _this;
 }
+
+TransactionalObject* RadialManagerImplementation::clone() {
+	return (TransactionalObject*) new RadialManagerImplementation(*this);
+}
+
 
 void RadialManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

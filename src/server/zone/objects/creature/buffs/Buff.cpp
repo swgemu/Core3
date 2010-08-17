@@ -10,13 +10,60 @@
 
 #include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
 /*
  *	BuffStub
  */
 
 Buff::Buff(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new BuffImplementation(creo, buffcrc, duration, bufftype);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BuffImplementation(creo, buffcrc, duration, bufftype));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 Buff::Buff(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -27,7 +74,7 @@ Buff::~Buff() {
 
 
 void Buff::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,11 +82,11 @@ void Buff::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->initializeTransientMembers();
+		((BuffImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void Buff::init() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +94,11 @@ void Buff::init() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->init();
+		((BuffImplementation*) _getImplementation())->init();
 }
 
 void Buff::sendTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -60,11 +107,11 @@ void Buff::sendTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->sendTo(player);
+		((BuffImplementation*) _getImplementation())->sendTo(player);
 }
 
 void Buff::sendDestroyTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -73,11 +120,11 @@ void Buff::sendDestroyTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->sendDestroyTo(player);
+		((BuffImplementation*) _getImplementation())->sendDestroyTo(player);
 }
 
 void Buff::activate(bool applyModifiers) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,11 +133,11 @@ void Buff::activate(bool applyModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->activate(applyModifiers);
+		((BuffImplementation*) _getImplementation())->activate(applyModifiers);
 }
 
 void Buff::deactivate(bool removeModifiers) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -99,11 +146,11 @@ void Buff::deactivate(bool removeModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->deactivate(removeModifiers);
+		((BuffImplementation*) _getImplementation())->deactivate(removeModifiers);
 }
 
 void Buff::activate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -111,11 +158,11 @@ void Buff::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->activate();
+		((BuffImplementation*) _getImplementation())->activate();
 }
 
 void Buff::deactivate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -123,11 +170,11 @@ void Buff::deactivate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->deactivate();
+		((BuffImplementation*) _getImplementation())->deactivate();
 }
 
 void Buff::applyAttributeModifiers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +182,11 @@ void Buff::applyAttributeModifiers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->applyAttributeModifiers();
+		((BuffImplementation*) _getImplementation())->applyAttributeModifiers();
 }
 
 void Buff::applySkillModifiers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -147,11 +194,11 @@ void Buff::applySkillModifiers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->applySkillModifiers();
+		((BuffImplementation*) _getImplementation())->applySkillModifiers();
 }
 
 void Buff::removeAttributeModifiers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -159,11 +206,11 @@ void Buff::removeAttributeModifiers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->removeAttributeModifiers();
+		((BuffImplementation*) _getImplementation())->removeAttributeModifiers();
 }
 
 void Buff::removeSkillModifiers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -171,11 +218,11 @@ void Buff::removeSkillModifiers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->removeSkillModifiers();
+		((BuffImplementation*) _getImplementation())->removeSkillModifiers();
 }
 
 void Buff::clearBuffEvent() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -183,11 +230,11 @@ void Buff::clearBuffEvent() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->clearBuffEvent();
+		((BuffImplementation*) _getImplementation())->clearBuffEvent();
 }
 
 void Buff::setBuffEventNull() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -195,11 +242,11 @@ void Buff::setBuffEventNull() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->setBuffEventNull();
+		((BuffImplementation*) _getImplementation())->setBuffEventNull();
 }
 
 void Buff::scheduleBuffEvent() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -207,11 +254,11 @@ void Buff::scheduleBuffEvent() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->scheduleBuffEvent();
+		((BuffImplementation*) _getImplementation())->scheduleBuffEvent();
 }
 
 void Buff::parseAttributeModifierString(const String& modifierstring) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -220,11 +267,11 @@ void Buff::parseAttributeModifierString(const String& modifierstring) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->parseAttributeModifierString(modifierstring);
+		((BuffImplementation*) _getImplementation())->parseAttributeModifierString(modifierstring);
 }
 
 void Buff::parseSkillModifierString(const String& modifierstring) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -233,11 +280,11 @@ void Buff::parseSkillModifierString(const String& modifierstring) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->parseSkillModifierString(modifierstring);
+		((BuffImplementation*) _getImplementation())->parseSkillModifierString(modifierstring);
 }
 
 String Buff::getAttributeModifierString() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -246,11 +293,11 @@ String Buff::getAttributeModifierString() {
 		method.executeWithAsciiReturn(_return_getAttributeModifierString);
 		return _return_getAttributeModifierString;
 	} else
-		return ((BuffImplementation*) _impl)->getAttributeModifierString();
+		return ((BuffImplementation*) _getImplementation())->getAttributeModifierString();
 }
 
 String Buff::getSkillModifierString() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -259,11 +306,11 @@ String Buff::getSkillModifierString() {
 		method.executeWithAsciiReturn(_return_getSkillModifierString);
 		return _return_getSkillModifierString;
 	} else
-		return ((BuffImplementation*) _impl)->getSkillModifierString();
+		return ((BuffImplementation*) _getImplementation())->getSkillModifierString();
 }
 
 float Buff::getTimeLeft() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -271,11 +318,11 @@ float Buff::getTimeLeft() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((BuffImplementation*) _impl)->getTimeLeft();
+		return ((BuffImplementation*) _getImplementation())->getTimeLeft();
 }
 
 void Buff::setAttributeModifier(byte attribute, int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -285,11 +332,11 @@ void Buff::setAttributeModifier(byte attribute, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->setAttributeModifier(attribute, value);
+		((BuffImplementation*) _getImplementation())->setAttributeModifier(attribute, value);
 }
 
 void Buff::setSkillModifier(const String& modname, int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -299,11 +346,11 @@ void Buff::setSkillModifier(const String& modname, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->setSkillModifier(modname, value);
+		((BuffImplementation*) _getImplementation())->setSkillModifier(modname, value);
 }
 
 void Buff::setSpeedModifier(float speed) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -312,11 +359,11 @@ void Buff::setSpeedModifier(float speed) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->setSpeedModifier(speed);
+		((BuffImplementation*) _getImplementation())->setSpeedModifier(speed);
 }
 
 String Buff::getBuffName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -325,11 +372,11 @@ String Buff::getBuffName() {
 		method.executeWithAsciiReturn(_return_getBuffName);
 		return _return_getBuffName;
 	} else
-		return ((BuffImplementation*) _impl)->getBuffName();
+		return ((BuffImplementation*) _getImplementation())->getBuffName();
 }
 
 int Buff::getBuffCRC() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -337,11 +384,11 @@ int Buff::getBuffCRC() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuffImplementation*) _impl)->getBuffCRC();
+		return ((BuffImplementation*) _getImplementation())->getBuffCRC();
 }
 
 float Buff::getBuffDuration() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -349,11 +396,11 @@ float Buff::getBuffDuration() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((BuffImplementation*) _impl)->getBuffDuration();
+		return ((BuffImplementation*) _getImplementation())->getBuffDuration();
 }
 
 int Buff::getBuffType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -361,11 +408,11 @@ int Buff::getBuffType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuffImplementation*) _impl)->getBuffType();
+		return ((BuffImplementation*) _getImplementation())->getBuffType();
 }
 
 int Buff::getAttributeModifierValue(byte attribute) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -374,11 +421,11 @@ int Buff::getAttributeModifierValue(byte attribute) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuffImplementation*) _impl)->getAttributeModifierValue(attribute);
+		return ((BuffImplementation*) _getImplementation())->getAttributeModifierValue(attribute);
 }
 
 int Buff::getSkillModifierValue(const String& modname) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -387,11 +434,11 @@ int Buff::getSkillModifierValue(const String& modname) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuffImplementation*) _impl)->getSkillModifierValue(modname);
+		return ((BuffImplementation*) _getImplementation())->getSkillModifierValue(modname);
 }
 
 bool Buff::isActive() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -399,11 +446,11 @@ bool Buff::isActive() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuffImplementation*) _impl)->isActive();
+		return ((BuffImplementation*) _getImplementation())->isActive();
 }
 
 bool Buff::isSpiceBuff() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -411,23 +458,23 @@ bool Buff::isSpiceBuff() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuffImplementation*) _impl)->isSpiceBuff();
+		return ((BuffImplementation*) _getImplementation())->isSpiceBuff();
 }
 
 void Buff::setStartMessage(ParameterizedStringId& start) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuffImplementation*) _impl)->setStartMessage(start);
+		((BuffImplementation*) _getImplementation())->setStartMessage(start);
 }
 
 void Buff::setEndMessage(ParameterizedStringId& start) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuffImplementation*) _impl)->setEndMessage(start);
+		((BuffImplementation*) _getImplementation())->setEndMessage(start);
 }
 
 /*
@@ -437,6 +484,7 @@ void Buff::setEndMessage(ParameterizedStringId& start) {
 BuffImplementation::BuffImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BuffImplementation::~BuffImplementation() {
 }
@@ -463,6 +511,11 @@ DistributedObjectStub* BuffImplementation::_getStub() {
 BuffImplementation::operator const Buff*() {
 	return _this;
 }
+
+TransactionalObject* BuffImplementation::clone() {
+	return (TransactionalObject*) new BuffImplementation(*this);
+}
+
 
 void BuffImplementation::lock(bool doLock) {
 	_this->lock(doLock);

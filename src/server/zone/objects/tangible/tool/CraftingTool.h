@@ -85,6 +85,8 @@ using namespace server::zone::objects::manufactureschematic;
 
 #include "engine/lua/LuaObject.h"
 
+#include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -324,6 +326,8 @@ public:
 protected:
 	virtual ~CraftingToolImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -347,6 +351,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CraftingTool;
+	friend class TransactionalObjectHandle<CraftingToolImplementation*>;
 };
 
 class CraftingToolAdapter : public ToolTangibleObjectAdapter {

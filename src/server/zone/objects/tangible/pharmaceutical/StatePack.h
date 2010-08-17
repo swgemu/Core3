@@ -198,6 +198,8 @@ public:
 protected:
 	virtual ~StatePackImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -221,6 +223,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StatePack;
+	friend class TransactionalObjectHandle<StatePackImplementation*>;
 };
 
 class StatePackAdapter : public PharmaceuticalObjectAdapter {

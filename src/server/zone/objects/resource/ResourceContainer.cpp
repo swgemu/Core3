@@ -6,13 +6,64 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
 /*
  *	ResourceContainerStub
  */
 
 ResourceContainer::ResourceContainer() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ResourceContainerImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ResourceContainerImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ResourceContainer::ResourceContainer(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -23,7 +74,7 @@ ResourceContainer::~ResourceContainer() {
 
 
 void ResourceContainer::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +82,11 @@ void ResourceContainer::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->initializeTransientMembers();
+		((ResourceContainerImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void ResourceContainer::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -44,19 +95,19 @@ void ResourceContainer::destroyObjectFromDatabase(bool destroyContainedObjects) 
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
+		((ResourceContainerImplementation*) _getImplementation())->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void ResourceContainer::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ResourceContainerImplementation*) _impl)->fillAttributeList(msg, object);
+		((ResourceContainerImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 void ResourceContainer::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -65,11 +116,11 @@ void ResourceContainer::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->sendBaselinesTo(player);
+		((ResourceContainerImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 void ResourceContainer::setQuantity(int quantity) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -78,11 +129,11 @@ void ResourceContainer::setQuantity(int quantity) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->setQuantity(quantity);
+		((ResourceContainerImplementation*) _getImplementation())->setQuantity(quantity);
 }
 
 bool ResourceContainer::isResourceContainer() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +141,11 @@ bool ResourceContainer::isResourceContainer() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ResourceContainerImplementation*) _impl)->isResourceContainer();
+		return ((ResourceContainerImplementation*) _getImplementation())->isResourceContainer();
 }
 
 int ResourceContainer::getQuantity() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,11 +153,11 @@ int ResourceContainer::getQuantity() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceContainerImplementation*) _impl)->getQuantity();
+		return ((ResourceContainerImplementation*) _getImplementation())->getQuantity();
 }
 
 int ResourceContainer::getUseCount() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -114,11 +165,11 @@ int ResourceContainer::getUseCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceContainerImplementation*) _impl)->getUseCount();
+		return ((ResourceContainerImplementation*) _getImplementation())->getUseCount();
 }
 
 void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -127,11 +178,11 @@ void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->setSpawnObject(spawn);
+		((ResourceContainerImplementation*) _getImplementation())->setSpawnObject(spawn);
 }
 
 String ResourceContainer::getSpawnName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,11 +191,11 @@ String ResourceContainer::getSpawnName() {
 		method.executeWithAsciiReturn(_return_getSpawnName);
 		return _return_getSpawnName;
 	} else
-		return ((ResourceContainerImplementation*) _impl)->getSpawnName();
+		return ((ResourceContainerImplementation*) _getImplementation())->getSpawnName();
 }
 
 String ResourceContainer::getSpawnType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -153,11 +204,11 @@ String ResourceContainer::getSpawnType() {
 		method.executeWithAsciiReturn(_return_getSpawnType);
 		return _return_getSpawnType;
 	} else
-		return ((ResourceContainerImplementation*) _impl)->getSpawnType();
+		return ((ResourceContainerImplementation*) _getImplementation())->getSpawnType();
 }
 
 unsigned long long ResourceContainer::getSpawnID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -165,11 +216,11 @@ unsigned long long ResourceContainer::getSpawnID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((ResourceContainerImplementation*) _impl)->getSpawnID();
+		return ((ResourceContainerImplementation*) _getImplementation())->getSpawnID();
 }
 
 ResourceSpawn* ResourceContainer::getSpawnObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -177,11 +228,11 @@ ResourceSpawn* ResourceContainer::getSpawnObject() {
 
 		return (ResourceSpawn*) method.executeWithObjectReturn();
 	} else
-		return ((ResourceContainerImplementation*) _impl)->getSpawnObject();
+		return ((ResourceContainerImplementation*) _getImplementation())->getSpawnObject();
 }
 
 void ResourceContainer::split(int newStackSize) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -190,11 +241,11 @@ void ResourceContainer::split(int newStackSize) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->split(newStackSize);
+		((ResourceContainerImplementation*) _getImplementation())->split(newStackSize);
 }
 
 void ResourceContainer::split(int newStackSize, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -204,11 +255,11 @@ void ResourceContainer::split(int newStackSize, PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->split(newStackSize, player);
+		((ResourceContainerImplementation*) _getImplementation())->split(newStackSize, player);
 }
 
 void ResourceContainer::combine(ResourceContainer* fromContainer) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -217,7 +268,7 @@ void ResourceContainer::combine(ResourceContainer* fromContainer) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->combine(fromContainer);
+		((ResourceContainerImplementation*) _getImplementation())->combine(fromContainer);
 }
 
 /*
@@ -227,6 +278,7 @@ void ResourceContainer::combine(ResourceContainer* fromContainer) {
 ResourceContainerImplementation::ResourceContainerImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ResourceContainerImplementation::~ResourceContainerImplementation() {
 }
@@ -253,6 +305,11 @@ DistributedObjectStub* ResourceContainerImplementation::_getStub() {
 ResourceContainerImplementation::operator const ResourceContainer*() {
 	return _this;
 }
+
+TransactionalObject* ResourceContainerImplementation::clone() {
+	return (TransactionalObject*) new ResourceContainerImplementation(*this);
+}
+
 
 void ResourceContainerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

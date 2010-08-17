@@ -132,6 +132,8 @@ public:
 protected:
 	virtual ~WearableObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -155,6 +157,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class WearableObject;
+	friend class TransactionalObjectHandle<WearableObjectImplementation*>;
 };
 
 class WearableObjectAdapter : public TangibleObjectAdapter {
