@@ -344,6 +344,8 @@ public:
 protected:
 	virtual ~ZoneImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -367,6 +369,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Zone;
+	friend class TransactionalObjectHandle<ZoneImplementation*>;
 };
 
 class ZoneAdapter : public ManagedObjectAdapter {

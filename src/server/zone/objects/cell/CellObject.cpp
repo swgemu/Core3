@@ -8,13 +8,56 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	CellObjectStub
  */
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new CellObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new CellObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -25,15 +68,15 @@ CellObject::~CellObject() {
 
 
 void CellObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CellObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((CellObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void CellObject::sendContainerObjectsTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,11 +85,11 @@ void CellObject::sendContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->sendContainerObjectsTo(player);
+		((CellObjectImplementation*) _getImplementation())->sendContainerObjectsTo(player);
 }
 
 bool CellObject::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +100,11 @@ bool CellObject::addObject(SceneObject* object, int containmentType, bool notify
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CellObjectImplementation*) _impl)->addObject(object, containmentType, notifyClient);
+		return ((CellObjectImplementation*) _getImplementation())->addObject(object, containmentType, notifyClient);
 }
 
 bool CellObject::removeObject(SceneObject* object, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +114,11 @@ bool CellObject::removeObject(SceneObject* object, bool notifyClient) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CellObjectImplementation*) _impl)->removeObject(object, notifyClient);
+		return ((CellObjectImplementation*) _getImplementation())->removeObject(object, notifyClient);
 }
 
 void CellObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,11 +126,11 @@ void CellObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->initializeTransientMembers();
+		((CellObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void CellObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +139,11 @@ void CellObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((CellObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 int CellObject::getCellNumber() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,11 +151,11 @@ int CellObject::getCellNumber() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CellObjectImplementation*) _impl)->getCellNumber();
+		return ((CellObjectImplementation*) _getImplementation())->getCellNumber();
 }
 
 void CellObject::setCellNumber(int number) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -121,11 +164,11 @@ void CellObject::setCellNumber(int number) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->setCellNumber(number);
+		((CellObjectImplementation*) _getImplementation())->setCellNumber(number);
 }
 
 bool CellObject::isCellObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -133,7 +176,7 @@ bool CellObject::isCellObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CellObjectImplementation*) _impl)->isCellObject();
+		return ((CellObjectImplementation*) _getImplementation())->isCellObject();
 }
 
 /*
@@ -143,6 +186,7 @@ bool CellObject::isCellObject() {
 CellObjectImplementation::CellObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CellObjectImplementation::~CellObjectImplementation() {
 	CellObjectImplementation::finalize();
@@ -167,6 +211,11 @@ DistributedObjectStub* CellObjectImplementation::_getStub() {
 CellObjectImplementation::operator const CellObject*() {
 	return _this;
 }
+
+TransactionalObject* CellObjectImplementation::clone() {
+	return (TransactionalObject*) new CellObjectImplementation(*this);
+}
+
 
 void CellObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

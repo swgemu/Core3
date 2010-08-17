@@ -116,6 +116,8 @@ public:
 protected:
 	virtual ~PlayerLearnListBoxImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -139,6 +141,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PlayerLearnListBox;
+	friend class TransactionalObjectHandle<PlayerLearnListBoxImplementation*>;
 };
 
 class PlayerLearnListBoxAdapter : public SuiListBoxAdapter {

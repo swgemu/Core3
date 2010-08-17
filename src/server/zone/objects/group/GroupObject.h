@@ -156,6 +156,8 @@ public:
 protected:
 	virtual ~GroupObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -179,6 +181,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class GroupObject;
+	friend class TransactionalObjectHandle<GroupObjectImplementation*>;
 };
 
 class GroupObjectAdapter : public SceneObjectAdapter {

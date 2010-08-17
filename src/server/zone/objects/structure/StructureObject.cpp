@@ -12,13 +12,80 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	StructureObjectStub
  */
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new StructureObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new StructureObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StructureObject::StructureObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -29,7 +96,7 @@ StructureObject::~StructureObject() {
 
 
 void StructureObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,19 +104,19 @@ void StructureObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->initializeTransientMembers();
+		((StructureObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void StructureObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StructureObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((StructureObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 int StructureObject::notifyStructurePlaced(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,11 +125,11 @@ int StructureObject::notifyStructurePlaced(PlayerCreature* player) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->notifyStructurePlaced(player);
+		return ((StructureObjectImplementation*) _getImplementation())->notifyStructurePlaced(player);
 }
 
 bool StructureObject::checkRequisitesForPlacement(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +138,11 @@ bool StructureObject::checkRequisitesForPlacement(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->checkRequisitesForPlacement(player);
+		return ((StructureObjectImplementation*) _getImplementation())->checkRequisitesForPlacement(player);
 }
 
 unsigned int StructureObject::generateDestroyCode() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,11 +150,11 @@ unsigned int StructureObject::generateDestroyCode() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->generateDestroyCode();
+		return ((StructureObjectImplementation*) _getImplementation())->generateDestroyCode();
 }
 
 bool StructureObject::isValidDestroyCode(unsigned int code) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +163,11 @@ bool StructureObject::isValidDestroyCode(unsigned int code) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isValidDestroyCode(code);
+		return ((StructureObjectImplementation*) _getImplementation())->isValidDestroyCode(code);
 }
 
 bool StructureObject::isOnAdminList(SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -109,11 +176,11 @@ bool StructureObject::isOnAdminList(SceneObject* obj) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOnAdminList(obj);
+		return ((StructureObjectImplementation*) _getImplementation())->isOnAdminList(obj);
 }
 
 bool StructureObject::isOnAdminList(unsigned long long oid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +189,11 @@ bool StructureObject::isOnAdminList(unsigned long long oid) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOnAdminList(oid);
+		return ((StructureObjectImplementation*) _getImplementation())->isOnAdminList(oid);
 }
 
 bool StructureObject::isOnEntryList(SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +202,11 @@ bool StructureObject::isOnEntryList(SceneObject* obj) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOnEntryList(obj);
+		return ((StructureObjectImplementation*) _getImplementation())->isOnEntryList(obj);
 }
 
 bool StructureObject::isOnEntryList(unsigned long long oid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -148,11 +215,11 @@ bool StructureObject::isOnEntryList(unsigned long long oid) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOnEntryList(oid);
+		return ((StructureObjectImplementation*) _getImplementation())->isOnEntryList(oid);
 }
 
 bool StructureObject::isOnBanList(SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -161,11 +228,11 @@ bool StructureObject::isOnBanList(SceneObject* obj) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOnBanList(obj);
+		return ((StructureObjectImplementation*) _getImplementation())->isOnBanList(obj);
 }
 
 bool StructureObject::isOnBanList(unsigned long long oid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -174,11 +241,11 @@ bool StructureObject::isOnBanList(unsigned long long oid) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOnBanList(oid);
+		return ((StructureObjectImplementation*) _getImplementation())->isOnBanList(oid);
 }
 
 bool StructureObject::isOwnerOf(SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -187,11 +254,11 @@ bool StructureObject::isOwnerOf(SceneObject* obj) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOwnerOf(obj);
+		return ((StructureObjectImplementation*) _getImplementation())->isOwnerOf(obj);
 }
 
 bool StructureObject::isOwnerOf(unsigned long long oid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -200,11 +267,11 @@ bool StructureObject::isOwnerOf(unsigned long long oid) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOwnerOf(oid);
+		return ((StructureObjectImplementation*) _getImplementation())->isOwnerOf(oid);
 }
 
 bool StructureObject::isOnAccessList(SceneObject* obj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -213,11 +280,11 @@ bool StructureObject::isOnAccessList(SceneObject* obj) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOnAccessList(obj);
+		return ((StructureObjectImplementation*) _getImplementation())->isOnAccessList(obj);
 }
 
 bool StructureObject::isOnAccessList(unsigned long long oid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -226,11 +293,11 @@ bool StructureObject::isOnAccessList(unsigned long long oid) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isOnAccessList(oid);
+		return ((StructureObjectImplementation*) _getImplementation())->isOnAccessList(oid);
 }
 
 void StructureObject::sendPermissionListTo(PlayerCreature* player, const String& listName) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -240,11 +307,11 @@ void StructureObject::sendPermissionListTo(PlayerCreature* player, const String&
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->sendPermissionListTo(player, listName);
+		((StructureObjectImplementation*) _getImplementation())->sendPermissionListTo(player, listName);
 }
 
 bool StructureObject::grantPermission(unsigned long long objectID, const String& listName) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -254,11 +321,11 @@ bool StructureObject::grantPermission(unsigned long long objectID, const String&
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->grantPermission(objectID, listName);
+		return ((StructureObjectImplementation*) _getImplementation())->grantPermission(objectID, listName);
 }
 
 bool StructureObject::revokePermission(unsigned long long objectID, const String& listName) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -268,11 +335,11 @@ bool StructureObject::revokePermission(unsigned long long objectID, const String
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->revokePermission(objectID, listName);
+		return ((StructureObjectImplementation*) _getImplementation())->revokePermission(objectID, listName);
 }
 
 int StructureObject::getRedeedCost() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -280,11 +347,11 @@ int StructureObject::getRedeedCost() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->getRedeedCost();
+		return ((StructureObjectImplementation*) _getImplementation())->getRedeedCost();
 }
 
 unsigned long long StructureObject::getOwnerObjectID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -292,11 +359,11 @@ unsigned long long StructureObject::getOwnerObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->getOwnerObjectID();
+		return ((StructureObjectImplementation*) _getImplementation())->getOwnerObjectID();
 }
 
 unsigned long long StructureObject::getDeedObjectID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -304,11 +371,11 @@ unsigned long long StructureObject::getDeedObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->getDeedObjectID();
+		return ((StructureObjectImplementation*) _getImplementation())->getDeedObjectID();
 }
 
 int StructureObject::getLotSize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -316,11 +383,11 @@ int StructureObject::getLotSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->getLotSize();
+		return ((StructureObjectImplementation*) _getImplementation())->getLotSize();
 }
 
 unsigned int StructureObject::getDestroyCode() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -328,11 +395,11 @@ unsigned int StructureObject::getDestroyCode() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->getDestroyCode();
+		return ((StructureObjectImplementation*) _getImplementation())->getDestroyCode();
 }
 
 int StructureObject::getBaseMaintenanceRate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -340,11 +407,11 @@ int StructureObject::getBaseMaintenanceRate() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->getBaseMaintenanceRate();
+		return ((StructureObjectImplementation*) _getImplementation())->getBaseMaintenanceRate();
 }
 
 int StructureObject::getBasePowerRate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -352,11 +419,11 @@ int StructureObject::getBasePowerRate() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->getBasePowerRate();
+		return ((StructureObjectImplementation*) _getImplementation())->getBasePowerRate();
 }
 
 int StructureObject::getSurplusMaintenance() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -364,11 +431,11 @@ int StructureObject::getSurplusMaintenance() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->getSurplusMaintenance();
+		return ((StructureObjectImplementation*) _getImplementation())->getSurplusMaintenance();
 }
 
 int StructureObject::getSurplusPower() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -376,11 +443,11 @@ int StructureObject::getSurplusPower() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->getSurplusPower();
+		return ((StructureObjectImplementation*) _getImplementation())->getSurplusPower();
 }
 
 bool StructureObject::isPublicStructure() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -388,11 +455,11 @@ bool StructureObject::isPublicStructure() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isPublicStructure();
+		return ((StructureObjectImplementation*) _getImplementation())->isPublicStructure();
 }
 
 void StructureObject::setOwnerObjectID(unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -401,11 +468,11 @@ void StructureObject::setOwnerObjectID(unsigned long long objectID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->setOwnerObjectID(objectID);
+		((StructureObjectImplementation*) _getImplementation())->setOwnerObjectID(objectID);
 }
 
 void StructureObject::setDeedObjectID(unsigned long long deedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -414,11 +481,11 @@ void StructureObject::setDeedObjectID(unsigned long long deedID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->setDeedObjectID(deedID);
+		((StructureObjectImplementation*) _getImplementation())->setDeedObjectID(deedID);
 }
 
 void StructureObject::setLotSize(int lots) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -427,11 +494,11 @@ void StructureObject::setLotSize(int lots) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->setLotSize(lots);
+		((StructureObjectImplementation*) _getImplementation())->setLotSize(lots);
 }
 
 void StructureObject::setDestroyCode(unsigned int code) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -440,11 +507,11 @@ void StructureObject::setDestroyCode(unsigned int code) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->setDestroyCode(code);
+		((StructureObjectImplementation*) _getImplementation())->setDestroyCode(code);
 }
 
 void StructureObject::setBaseMaintenanceRate(int rate) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -453,11 +520,11 @@ void StructureObject::setBaseMaintenanceRate(int rate) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->setBaseMaintenanceRate(rate);
+		((StructureObjectImplementation*) _getImplementation())->setBaseMaintenanceRate(rate);
 }
 
 void StructureObject::setBasePowerRate(int rate) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -466,11 +533,11 @@ void StructureObject::setBasePowerRate(int rate) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->setBasePowerRate(rate);
+		((StructureObjectImplementation*) _getImplementation())->setBasePowerRate(rate);
 }
 
 void StructureObject::setSurplusMaintenance(int surplus) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -479,11 +546,11 @@ void StructureObject::setSurplusMaintenance(int surplus) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->setSurplusMaintenance(surplus);
+		((StructureObjectImplementation*) _getImplementation())->setSurplusMaintenance(surplus);
 }
 
 void StructureObject::addMaintenance(int add) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -492,11 +559,11 @@ void StructureObject::addMaintenance(int add) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->addMaintenance(add);
+		((StructureObjectImplementation*) _getImplementation())->addMaintenance(add);
 }
 
 void StructureObject::setSurplusPower(int surplus) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -505,11 +572,11 @@ void StructureObject::setSurplusPower(int surplus) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->setSurplusPower(surplus);
+		((StructureObjectImplementation*) _getImplementation())->setSurplusPower(surplus);
 }
 
 void StructureObject::addPower(int add) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -518,11 +585,11 @@ void StructureObject::addPower(int add) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->addPower(add);
+		((StructureObjectImplementation*) _getImplementation())->addPower(add);
 }
 
 void StructureObject::setPublicStructure(bool privacy) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -531,11 +598,11 @@ void StructureObject::setPublicStructure(bool privacy) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureObjectImplementation*) _impl)->setPublicStructure(privacy);
+		((StructureObjectImplementation*) _getImplementation())->setPublicStructure(privacy);
 }
 
 bool StructureObject::isStructureObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -543,11 +610,11 @@ bool StructureObject::isStructureObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isStructureObject();
+		return ((StructureObjectImplementation*) _getImplementation())->isStructureObject();
 }
 
 bool StructureObject::isRedeedable() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -555,7 +622,7 @@ bool StructureObject::isRedeedable() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StructureObjectImplementation*) _impl)->isRedeedable();
+		return ((StructureObjectImplementation*) _getImplementation())->isRedeedable();
 }
 
 /*
@@ -565,6 +632,7 @@ bool StructureObject::isRedeedable() {
 StructureObjectImplementation::StructureObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 StructureObjectImplementation::~StructureObjectImplementation() {
 }
@@ -591,6 +659,11 @@ DistributedObjectStub* StructureObjectImplementation::_getStub() {
 StructureObjectImplementation::operator const StructureObject*() {
 	return _this;
 }
+
+TransactionalObject* StructureObjectImplementation::clone() {
+	return (TransactionalObject*) new StructureObjectImplementation(*this);
+}
+
 
 void StructureObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

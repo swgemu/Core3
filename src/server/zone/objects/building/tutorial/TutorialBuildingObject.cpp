@@ -12,13 +12,82 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	TutorialBuildingObjectStub
  */
 
 TutorialBuildingObject::TutorialBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new TutorialBuildingObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TutorialBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TutorialBuildingObject::TutorialBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -29,7 +98,7 @@ TutorialBuildingObject::~TutorialBuildingObject() {
 
 
 void TutorialBuildingObject::removeFromZone() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,11 +106,11 @@ void TutorialBuildingObject::removeFromZone() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TutorialBuildingObjectImplementation*) _impl)->removeFromZone();
+		((TutorialBuildingObjectImplementation*) _getImplementation())->removeFromZone();
 }
 
 void TutorialBuildingObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +118,11 @@ void TutorialBuildingObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TutorialBuildingObjectImplementation*) _impl)->initializeTransientMembers();
+		((TutorialBuildingObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void TutorialBuildingObject::onEnter(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -62,11 +131,11 @@ void TutorialBuildingObject::onEnter(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TutorialBuildingObjectImplementation*) _impl)->onEnter(player);
+		((TutorialBuildingObjectImplementation*) _getImplementation())->onEnter(player);
 }
 
 void TutorialBuildingObject::onExit(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -75,11 +144,11 @@ void TutorialBuildingObject::onExit(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TutorialBuildingObjectImplementation*) _impl)->onExit(player);
+		((TutorialBuildingObjectImplementation*) _getImplementation())->onExit(player);
 }
 
 void TutorialBuildingObject::clearUnloadEvent() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -87,7 +156,7 @@ void TutorialBuildingObject::clearUnloadEvent() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TutorialBuildingObjectImplementation*) _impl)->clearUnloadEvent();
+		((TutorialBuildingObjectImplementation*) _getImplementation())->clearUnloadEvent();
 }
 
 /*
@@ -97,6 +166,7 @@ void TutorialBuildingObject::clearUnloadEvent() {
 TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TutorialBuildingObjectImplementation::~TutorialBuildingObjectImplementation() {
 }
@@ -123,6 +193,11 @@ DistributedObjectStub* TutorialBuildingObjectImplementation::_getStub() {
 TutorialBuildingObjectImplementation::operator const TutorialBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* TutorialBuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new TutorialBuildingObjectImplementation(*this);
+}
+
 
 void TutorialBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

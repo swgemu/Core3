@@ -202,6 +202,8 @@ public:
 protected:
 	virtual ~PharmaceuticalObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -225,6 +227,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PharmaceuticalObject;
+	friend class TransactionalObjectHandle<PharmaceuticalObjectImplementation*>;
 };
 
 class PharmaceuticalObjectAdapter : public TangibleObjectAdapter {

@@ -99,6 +99,8 @@ public:
 protected:
 	virtual ~SuiCharacterBuilderBoxImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -122,6 +124,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiCharacterBuilderBox;
+	friend class TransactionalObjectHandle<SuiCharacterBuilderBoxImplementation*>;
 };
 
 class SuiCharacterBuilderBoxAdapter : public SuiListBoxAdapter {

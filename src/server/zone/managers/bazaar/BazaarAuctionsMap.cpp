@@ -6,13 +6,20 @@
 
 #include "server/zone/objects/tangible/terminal/bazaar/AuctionItem.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
 /*
  *	BazaarAuctionsMapStub
  */
 
 BazaarAuctionsMap::BazaarAuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new BazaarAuctionsMapImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BazaarAuctionsMapImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BazaarAuctionsMap::BazaarAuctionsMap(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -23,7 +30,7 @@ BazaarAuctionsMap::~BazaarAuctionsMap() {
 
 
 int BazaarAuctionsMap::getAuctionCount() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +38,11 @@ int BazaarAuctionsMap::getAuctionCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BazaarAuctionsMapImplementation*) _impl)->getAuctionCount();
+		return ((BazaarAuctionsMapImplementation*) _getImplementation())->getAuctionCount();
 }
 
 bool BazaarAuctionsMap::containsAuction(unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -44,11 +51,11 @@ bool BazaarAuctionsMap::containsAuction(unsigned long long objectID) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BazaarAuctionsMapImplementation*) _impl)->containsAuction(objectID);
+		return ((BazaarAuctionsMapImplementation*) _getImplementation())->containsAuction(objectID);
 }
 
 void BazaarAuctionsMap::addAuction(unsigned long long objectID, AuctionItem* item) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,11 +65,11 @@ void BazaarAuctionsMap::addAuction(unsigned long long objectID, AuctionItem* ite
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarAuctionsMapImplementation*) _impl)->addAuction(objectID, item);
+		((BazaarAuctionsMapImplementation*) _getImplementation())->addAuction(objectID, item);
 }
 
 int BazaarAuctionsMap::getPlayerAuctionCount(unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +78,11 @@ int BazaarAuctionsMap::getPlayerAuctionCount(unsigned long long objectID) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BazaarAuctionsMapImplementation*) _impl)->getPlayerAuctionCount(objectID);
+		return ((BazaarAuctionsMapImplementation*) _getImplementation())->getPlayerAuctionCount(objectID);
 }
 
 void BazaarAuctionsMap::dropAuction(unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,11 +91,11 @@ void BazaarAuctionsMap::dropAuction(unsigned long long objectID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarAuctionsMapImplementation*) _impl)->dropAuction(objectID);
+		((BazaarAuctionsMapImplementation*) _getImplementation())->dropAuction(objectID);
 }
 
 AuctionItem* BazaarAuctionsMap::getAuction(unsigned long long objectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -97,11 +104,11 @@ AuctionItem* BazaarAuctionsMap::getAuction(unsigned long long objectID) {
 
 		return (AuctionItem*) method.executeWithObjectReturn();
 	} else
-		return ((BazaarAuctionsMapImplementation*) _impl)->getAuction(objectID);
+		return ((BazaarAuctionsMapImplementation*) _getImplementation())->getAuction(objectID);
 }
 
 AuctionItem* BazaarAuctionsMap::getAuction(int index) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,15 +117,15 @@ AuctionItem* BazaarAuctionsMap::getAuction(int index) {
 
 		return (AuctionItem*) method.executeWithObjectReturn();
 	} else
-		return ((BazaarAuctionsMapImplementation*) _impl)->getAuction(index);
+		return ((BazaarAuctionsMapImplementation*) _getImplementation())->getAuction(index);
 }
 
 VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarAuctionsMap::getAuctions() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((BazaarAuctionsMapImplementation*) _impl)->getAuctions();
+		return ((BazaarAuctionsMapImplementation*) _getImplementation())->getAuctions();
 }
 
 /*
@@ -128,6 +135,7 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarAuctionsM
 BazaarAuctionsMapImplementation::BazaarAuctionsMapImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BazaarAuctionsMapImplementation::~BazaarAuctionsMapImplementation() {
 }
@@ -154,6 +162,11 @@ DistributedObjectStub* BazaarAuctionsMapImplementation::_getStub() {
 BazaarAuctionsMapImplementation::operator const BazaarAuctionsMap*() {
 	return _this;
 }
+
+TransactionalObject* BazaarAuctionsMapImplementation::clone() {
+	return (TransactionalObject*) new BazaarAuctionsMapImplementation(*this);
+}
+
 
 void BazaarAuctionsMapImplementation::lock(bool doLock) {
 	_this->lock(doLock);

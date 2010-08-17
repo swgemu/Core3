@@ -12,13 +12,64 @@
 
 #include "server/zone/objects/creature/buffs/SpiceDownerBuff.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
 /*
  *	SpiceBuffStub
  */
 
 SpiceBuff::SpiceBuff(CreatureObject* creo, const String& name, unsigned int buffCRC, int duration) : Buff(DummyConstructorParameter::instance()) {
-	_impl = new SpiceBuffImplementation(creo, name, buffCRC, duration);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new SpiceBuffImplementation(creo, name, buffCRC, duration));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 SpiceBuff::SpiceBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -29,7 +80,7 @@ SpiceBuff::~SpiceBuff() {
 
 
 void SpiceBuff::activate(bool applyModifiers) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -38,11 +89,11 @@ void SpiceBuff::activate(bool applyModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SpiceBuffImplementation*) _impl)->activate(applyModifiers);
+		((SpiceBuffImplementation*) _getImplementation())->activate(applyModifiers);
 }
 
 void SpiceBuff::deactivate(bool removeModifiers) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -51,11 +102,11 @@ void SpiceBuff::deactivate(bool removeModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SpiceBuffImplementation*) _impl)->deactivate(removeModifiers);
+		((SpiceBuffImplementation*) _getImplementation())->deactivate(removeModifiers);
 }
 
 void SpiceBuff::setDownerAttributes(CreatureObject* creature, Buff* buff) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -65,7 +116,7 @@ void SpiceBuff::setDownerAttributes(CreatureObject* creature, Buff* buff) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SpiceBuffImplementation*) _impl)->setDownerAttributes(creature, buff);
+		((SpiceBuffImplementation*) _getImplementation())->setDownerAttributes(creature, buff);
 }
 
 /*
@@ -75,6 +126,7 @@ void SpiceBuff::setDownerAttributes(CreatureObject* creature, Buff* buff) {
 SpiceBuffImplementation::SpiceBuffImplementation(DummyConstructorParameter* param) : BuffImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SpiceBuffImplementation::~SpiceBuffImplementation() {
 }
@@ -101,6 +153,11 @@ DistributedObjectStub* SpiceBuffImplementation::_getStub() {
 SpiceBuffImplementation::operator const SpiceBuff*() {
 	return _this;
 }
+
+TransactionalObject* SpiceBuffImplementation::clone() {
+	return (TransactionalObject*) new SpiceBuffImplementation(*this);
+}
+
 
 void SpiceBuffImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -4,13 +4,18 @@
 
 #include "PersistentMessage.h"
 
+
+// Imported class dependencies
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
 /*
  *	PersistentMessageStub
  */
 
 PersistentMessage::PersistentMessage() : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new PersistentMessageImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new PersistentMessageImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 PersistentMessage::PersistentMessage(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -21,7 +26,7 @@ PersistentMessage::~PersistentMessage() {
 
 
 int PersistentMessage::getMailID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -29,11 +34,11 @@ int PersistentMessage::getMailID() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PersistentMessageImplementation*) _impl)->getMailID();
+		return ((PersistentMessageImplementation*) _getImplementation())->getMailID();
 }
 
 unsigned long long PersistentMessage::getObjectID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +46,11 @@ unsigned long long PersistentMessage::getObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((PersistentMessageImplementation*) _impl)->getObjectID();
+		return ((PersistentMessageImplementation*) _getImplementation())->getObjectID();
 }
 
 UnicodeString PersistentMessage::getSenderName() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -54,11 +59,11 @@ UnicodeString PersistentMessage::getSenderName() {
 		method.executeWithUnicodeReturn(_return_getSenderName);
 		return _return_getSenderName;
 	} else
-		return ((PersistentMessageImplementation*) _impl)->getSenderName();
+		return ((PersistentMessageImplementation*) _getImplementation())->getSenderName();
 }
 
 unsigned long long PersistentMessage::getReceiverObjectID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +71,11 @@ unsigned long long PersistentMessage::getReceiverObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((PersistentMessageImplementation*) _impl)->getReceiverObjectID();
+		return ((PersistentMessageImplementation*) _getImplementation())->getReceiverObjectID();
 }
 
 byte PersistentMessage::getStatus() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -78,11 +83,11 @@ byte PersistentMessage::getStatus() {
 
 		return method.executeWithByteReturn();
 	} else
-		return ((PersistentMessageImplementation*) _impl)->getStatus();
+		return ((PersistentMessageImplementation*) _getImplementation())->getStatus();
 }
 
 int PersistentMessage::getTimeStamp() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +95,11 @@ int PersistentMessage::getTimeStamp() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PersistentMessageImplementation*) _impl)->getTimeStamp();
+		return ((PersistentMessageImplementation*) _getImplementation())->getTimeStamp();
 }
 
 UnicodeString PersistentMessage::getBody() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,11 +108,11 @@ UnicodeString PersistentMessage::getBody() {
 		method.executeWithUnicodeReturn(_return_getBody);
 		return _return_getBody;
 	} else
-		return ((PersistentMessageImplementation*) _impl)->getBody();
+		return ((PersistentMessageImplementation*) _getImplementation())->getBody();
 }
 
 UnicodeString PersistentMessage::getSubject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +121,11 @@ UnicodeString PersistentMessage::getSubject() {
 		method.executeWithUnicodeReturn(_return_getSubject);
 		return _return_getSubject;
 	} else
-		return ((PersistentMessageImplementation*) _impl)->getSubject();
+		return ((PersistentMessageImplementation*) _getImplementation())->getSubject();
 }
 
 void PersistentMessage::setSenderName(const UnicodeString& name) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -129,11 +134,11 @@ void PersistentMessage::setSenderName(const UnicodeString& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PersistentMessageImplementation*) _impl)->setSenderName(name);
+		((PersistentMessageImplementation*) _getImplementation())->setSenderName(name);
 }
 
 void PersistentMessage::setReceiverObjectID(unsigned long long oid) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -142,11 +147,11 @@ void PersistentMessage::setReceiverObjectID(unsigned long long oid) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PersistentMessageImplementation*) _impl)->setReceiverObjectID(oid);
+		((PersistentMessageImplementation*) _getImplementation())->setReceiverObjectID(oid);
 }
 
 void PersistentMessage::setStatus(byte stat) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -155,11 +160,11 @@ void PersistentMessage::setStatus(byte stat) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PersistentMessageImplementation*) _impl)->setStatus(stat);
+		((PersistentMessageImplementation*) _getImplementation())->setStatus(stat);
 }
 
 void PersistentMessage::setTimeStamp(int stamp) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -168,11 +173,11 @@ void PersistentMessage::setTimeStamp(int stamp) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PersistentMessageImplementation*) _impl)->setTimeStamp(stamp);
+		((PersistentMessageImplementation*) _getImplementation())->setTimeStamp(stamp);
 }
 
 void PersistentMessage::setBody(const UnicodeString& message) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -181,11 +186,11 @@ void PersistentMessage::setBody(const UnicodeString& message) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PersistentMessageImplementation*) _impl)->setBody(message);
+		((PersistentMessageImplementation*) _getImplementation())->setBody(message);
 }
 
 void PersistentMessage::setSubject(const UnicodeString& subj) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -194,23 +199,23 @@ void PersistentMessage::setSubject(const UnicodeString& subj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PersistentMessageImplementation*) _impl)->setSubject(subj);
+		((PersistentMessageImplementation*) _getImplementation())->setSubject(subj);
 }
 
 void PersistentMessage::setParameterizedBody(ParameterizedStringId& body) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PersistentMessageImplementation*) _impl)->setParameterizedBody(body);
+		((PersistentMessageImplementation*) _getImplementation())->setParameterizedBody(body);
 }
 
 ParameterizedStringId* PersistentMessage::getParameterizedBody() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PersistentMessageImplementation*) _impl)->getParameterizedBody();
+		return ((PersistentMessageImplementation*) _getImplementation())->getParameterizedBody();
 }
 
 /*
@@ -220,6 +225,7 @@ ParameterizedStringId* PersistentMessage::getParameterizedBody() {
 PersistentMessageImplementation::PersistentMessageImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 PersistentMessageImplementation::~PersistentMessageImplementation() {
 }
@@ -246,6 +252,11 @@ DistributedObjectStub* PersistentMessageImplementation::_getStub() {
 PersistentMessageImplementation::operator const PersistentMessage*() {
 	return _this;
 }
+
+TransactionalObject* PersistentMessageImplementation::clone() {
+	return (TransactionalObject*) new PersistentMessageImplementation(*this);
+}
+
 
 void PersistentMessageImplementation::lock(bool doLock) {
 	_this->lock(doLock);

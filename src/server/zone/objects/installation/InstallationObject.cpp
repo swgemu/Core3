@@ -22,13 +22,86 @@
 
 #include "server/zone/objects/resource/ResourceContainer.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/resource/SpawnMap.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/resource/ResourceSpawn.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	InstallationObjectStub
  */
 
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
-	_impl = new InstallationObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new InstallationObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 InstallationObject::InstallationObject(DummyConstructorParameter* param) : StructureObject(param) {
@@ -39,7 +112,7 @@ InstallationObject::~InstallationObject() {
 
 
 void InstallationObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +120,11 @@ void InstallationObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->initializeTransientMembers();
+		((InstallationObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void InstallationObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -60,27 +133,27 @@ void InstallationObject::destroyObjectFromDatabase(bool destroyContainedObjects)
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
+		((InstallationObjectImplementation*) _getImplementation())->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void InstallationObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((InstallationObjectImplementation*) _impl)->loadTemplateData(templateData);
+		((InstallationObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 void InstallationObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((InstallationObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		((InstallationObjectImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
 }
 
 int InstallationObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +163,11 @@ int InstallationObject::handleObjectMenuSelect(PlayerCreature* player, byte sele
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((InstallationObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstallationObject::broadcastMessage(BasePacket* message, bool sendSelf) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,11 +177,11 @@ void InstallationObject::broadcastMessage(BasePacket* message, bool sendSelf) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->broadcastMessage(message, sendSelf);
+		((InstallationObjectImplementation*) _getImplementation())->broadcastMessage(message, sendSelf);
 }
 
 void InstallationObject::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -119,11 +192,11 @@ void InstallationObject::updateResourceContainerQuantity(ResourceContainer* cont
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->updateResourceContainerQuantity(container, newQuantity, notifyClient);
+		((InstallationObjectImplementation*) _getImplementation())->updateResourceContainerQuantity(container, newQuantity, notifyClient);
 }
 
 void InstallationObject::updateToDatabaseAllObjects(bool startTask) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -132,11 +205,11 @@ void InstallationObject::updateToDatabaseAllObjects(bool startTask) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
+		((InstallationObjectImplementation*) _getImplementation())->updateToDatabaseAllObjects(startTask);
 }
 
 void InstallationObject::setOperating(bool operating, bool notifyClient) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -146,11 +219,11 @@ void InstallationObject::setOperating(bool operating, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->setOperating(operating, notifyClient);
+		((InstallationObjectImplementation*) _getImplementation())->setOperating(operating, notifyClient);
 }
 
 void InstallationObject::activateUiSync() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -158,11 +231,11 @@ void InstallationObject::activateUiSync() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->activateUiSync();
+		((InstallationObjectImplementation*) _getImplementation())->activateUiSync();
 }
 
 void InstallationObject::updateOperators() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -170,11 +243,11 @@ void InstallationObject::updateOperators() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->updateOperators();
+		((InstallationObjectImplementation*) _getImplementation())->updateOperators();
 }
 
 void InstallationObject::verifyOperators() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -182,11 +255,11 @@ void InstallationObject::verifyOperators() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->verifyOperators();
+		((InstallationObjectImplementation*) _getImplementation())->verifyOperators();
 }
 
 void InstallationObject::updateInstallationWork() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -194,11 +267,11 @@ void InstallationObject::updateInstallationWork() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->updateInstallationWork();
+		((InstallationObjectImplementation*) _getImplementation())->updateInstallationWork();
 }
 
 void InstallationObject::handleStructureAddEnergy(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -207,11 +280,11 @@ void InstallationObject::handleStructureAddEnergy(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->handleStructureAddEnergy(player);
+		((InstallationObjectImplementation*) _getImplementation())->handleStructureAddEnergy(player);
 }
 
 void InstallationObject::setActiveResource(ResourceContainer* container) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -220,11 +293,11 @@ void InstallationObject::setActiveResource(ResourceContainer* container) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->setActiveResource(container);
+		((InstallationObjectImplementation*) _getImplementation())->setActiveResource(container);
 }
 
 void InstallationObject::changeActiveResourceID(unsigned long long spawnObjectID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -233,11 +306,11 @@ void InstallationObject::changeActiveResourceID(unsigned long long spawnObjectID
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->changeActiveResourceID(spawnObjectID);
+		((InstallationObjectImplementation*) _getImplementation())->changeActiveResourceID(spawnObjectID);
 }
 
 void InstallationObject::addResourceToHopper(ResourceContainer* container) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -246,11 +319,11 @@ void InstallationObject::addResourceToHopper(ResourceContainer* container) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->addResourceToHopper(container);
+		((InstallationObjectImplementation*) _getImplementation())->addResourceToHopper(container);
 }
 
 void InstallationObject::removeResourceFromHopper(ResourceContainer* container) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -259,11 +332,11 @@ void InstallationObject::removeResourceFromHopper(ResourceContainer* container) 
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->removeResourceFromHopper(container);
+		((InstallationObjectImplementation*) _getImplementation())->removeResourceFromHopper(container);
 }
 
 void InstallationObject::clearResourceHopper() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -271,11 +344,11 @@ void InstallationObject::clearResourceHopper() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->clearResourceHopper();
+		((InstallationObjectImplementation*) _getImplementation())->clearResourceHopper();
 }
 
 float InstallationObject::getHopperSize() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -283,27 +356,27 @@ float InstallationObject::getHopperSize() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->getHopperSize();
+		return ((InstallationObjectImplementation*) _getImplementation())->getHopperSize();
 }
 
 bool InstallationObject::updateMaintenance(Time& workingTime) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((InstallationObjectImplementation*) _impl)->updateMaintenance(workingTime);
+		return ((InstallationObjectImplementation*) _getImplementation())->updateMaintenance(workingTime);
 }
 
 void InstallationObject::updateHopper(Time& workingTime, bool shutdownAfterUpdate) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((InstallationObjectImplementation*) _impl)->updateHopper(workingTime, shutdownAfterUpdate);
+		((InstallationObjectImplementation*) _getImplementation())->updateHopper(workingTime, shutdownAfterUpdate);
 }
 
 int InstallationObject::getHopperItemQuantity(ResourceSpawn* spawn) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -312,11 +385,11 @@ int InstallationObject::getHopperItemQuantity(ResourceSpawn* spawn) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->getHopperItemQuantity(spawn);
+		return ((InstallationObjectImplementation*) _getImplementation())->getHopperItemQuantity(spawn);
 }
 
 ResourceContainer* InstallationObject::getContainerFromHopper(ResourceSpawn* spawn) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -325,11 +398,11 @@ ResourceContainer* InstallationObject::getContainerFromHopper(ResourceSpawn* spa
 
 		return (ResourceContainer*) method.executeWithObjectReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->getContainerFromHopper(spawn);
+		return ((InstallationObjectImplementation*) _getImplementation())->getContainerFromHopper(spawn);
 }
 
 unsigned long long InstallationObject::getActiveResourceSpawnID() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -337,11 +410,11 @@ unsigned long long InstallationObject::getActiveResourceSpawnID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->getActiveResourceSpawnID();
+		return ((InstallationObjectImplementation*) _getImplementation())->getActiveResourceSpawnID();
 }
 
 float InstallationObject::getActualRate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -349,11 +422,11 @@ float InstallationObject::getActualRate() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->getActualRate();
+		return ((InstallationObjectImplementation*) _getImplementation())->getActualRate();
 }
 
 void InstallationObject::broadcastToOperators(BasePacket* packet) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -362,11 +435,11 @@ void InstallationObject::broadcastToOperators(BasePacket* packet) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->broadcastToOperators(packet);
+		((InstallationObjectImplementation*) _getImplementation())->broadcastToOperators(packet);
 }
 
 void InstallationObject::addOperator(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -375,11 +448,11 @@ void InstallationObject::addOperator(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->addOperator(player);
+		((InstallationObjectImplementation*) _getImplementation())->addOperator(player);
 }
 
 void InstallationObject::removeOperator(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -388,11 +461,11 @@ void InstallationObject::removeOperator(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->removeOperator(player);
+		((InstallationObjectImplementation*) _getImplementation())->removeOperator(player);
 }
 
 void InstallationObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -401,11 +474,11 @@ void InstallationObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->sendBaselinesTo(player);
+		((InstallationObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
 }
 
 bool InstallationObject::isInstallationObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -413,11 +486,11 @@ bool InstallationObject::isInstallationObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->isInstallationObject();
+		return ((InstallationObjectImplementation*) _getImplementation())->isInstallationObject();
 }
 
 bool InstallationObject::isOperating() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -425,11 +498,11 @@ bool InstallationObject::isOperating() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->isOperating();
+		return ((InstallationObjectImplementation*) _getImplementation())->isOperating();
 }
 
 int InstallationObject::getInstallationType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -437,11 +510,11 @@ int InstallationObject::getInstallationType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->getInstallationType();
+		return ((InstallationObjectImplementation*) _getImplementation())->getInstallationType();
 }
 
 float InstallationObject::getExtractionRate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -449,11 +522,11 @@ float InstallationObject::getExtractionRate() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->getExtractionRate();
+		return ((InstallationObjectImplementation*) _getImplementation())->getExtractionRate();
 }
 
 float InstallationObject::getHopperSizeMax() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -461,19 +534,19 @@ float InstallationObject::getHopperSizeMax() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->getHopperSizeMax();
+		return ((InstallationObjectImplementation*) _getImplementation())->getHopperSizeMax();
 }
 
 HopperList* InstallationObject::getHopperList() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((InstallationObjectImplementation*) _impl)->getHopperList();
+		return ((InstallationObjectImplementation*) _getImplementation())->getHopperList();
 }
 
 bool InstallationObject::isHarvesterObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -481,11 +554,11 @@ bool InstallationObject::isHarvesterObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->isHarvesterObject();
+		return ((InstallationObjectImplementation*) _getImplementation())->isHarvesterObject();
 }
 
 bool InstallationObject::isGeneratorObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -493,7 +566,7 @@ bool InstallationObject::isGeneratorObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((InstallationObjectImplementation*) _impl)->isGeneratorObject();
+		return ((InstallationObjectImplementation*) _getImplementation())->isGeneratorObject();
 }
 
 /*
@@ -503,6 +576,7 @@ bool InstallationObject::isGeneratorObject() {
 InstallationObjectImplementation::InstallationObjectImplementation(DummyConstructorParameter* param) : StructureObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 InstallationObjectImplementation::~InstallationObjectImplementation() {
 }
@@ -529,6 +603,11 @@ DistributedObjectStub* InstallationObjectImplementation::_getStub() {
 InstallationObjectImplementation::operator const InstallationObject*() {
 	return _this;
 }
+
+TransactionalObject* InstallationObjectImplementation::clone() {
+	return (TransactionalObject*) new InstallationObjectImplementation(*this);
+}
+
 
 void InstallationObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

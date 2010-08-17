@@ -80,6 +80,8 @@ public:
 protected:
 	virtual ~PolearmWeaponObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -103,6 +105,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PolearmWeaponObject;
+	friend class TransactionalObjectHandle<PolearmWeaponObjectImplementation*>;
 };
 
 class PolearmWeaponObjectAdapter : public MeleeWeaponObjectAdapter {
