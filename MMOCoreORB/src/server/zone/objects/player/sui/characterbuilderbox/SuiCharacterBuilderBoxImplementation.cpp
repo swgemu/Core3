@@ -42,7 +42,8 @@ BaseMessage* SuiCharacterBuilderBoxImplementation::generateMessage() {
 		addSetting("3", "List.dataList." + String::valueOf(i), "Text", node->getDisplayName());
 	}
 
-	generateHeader(message, "msgSelected");
+	setHandlerText("msgSelected");
+	generateHeader(message);
 	generateBody(message);
 	generateFooter(message);
 

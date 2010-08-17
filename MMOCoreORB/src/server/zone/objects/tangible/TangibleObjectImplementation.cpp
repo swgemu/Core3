@@ -279,7 +279,7 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 		return;
 
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
-	dtano3->setQuantity(newUseCount);
+	dtano3->setQuantity(useCount);
 	dtano3->close();
 
 	broadcastMessage(dtano3, true);

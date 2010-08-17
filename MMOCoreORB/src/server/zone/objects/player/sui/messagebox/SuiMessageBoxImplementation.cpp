@@ -66,8 +66,10 @@ BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 	addSetting("3", "btnRevert", "Enabled", "False");
 	addSetting("3", "btnRevert", "Visible", "False");
 
+	setHandlerText("handleSUI");
+
 	//Generate Packet:
-	generateHeader(message, "handleSUI");
+	generateHeader(message);
 	generateBody(message);
 	generateFooter(message);
 	hasGenerated = true;

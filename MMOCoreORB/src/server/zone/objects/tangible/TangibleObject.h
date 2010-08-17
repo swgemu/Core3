@@ -300,6 +300,8 @@ public:
 
 	String getCraftersSerial();
 
+	bool isFromFactoryCrate();
+
 	void createChildObjects();
 
 protected:
@@ -550,6 +552,8 @@ public:
 
 	String getCraftersSerial();
 
+	bool isFromFactoryCrate();
+
 	virtual void createChildObjects();
 
 	TangibleObject* _this;
@@ -698,6 +702,8 @@ public:
 	void setLevel(int lev);
 
 	String getCraftersSerial();
+
+	bool isFromFactoryCrate();
 
 	void createChildObjects();
 

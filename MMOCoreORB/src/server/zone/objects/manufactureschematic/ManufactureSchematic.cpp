@@ -128,30 +128,32 @@ bool ManufactureSchematic::isManufactureSchematic() {
 		return ((ManufactureSchematicImplementation*) _impl)->isManufactureSchematic();
 }
 
-void ManufactureSchematic::setDraftSchematic(DraftSchematic* schematic) {
+void ManufactureSchematic::setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _impl)->setDraftSchematic(schematic);
+		((ManufactureSchematicImplementation*) _impl)->setDraftSchematic(craftingTool, schematic);
 }
 
-void ManufactureSchematic::initializeIngredientSlots(DraftSchematic* schematic) {
+void ManufactureSchematic::initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _impl)->initializeIngredientSlots(schematic);
+		((ManufactureSchematicImplementation*) _impl)->initializeIngredientSlots(craftingTool, schematic);
 }
 
 void ManufactureSchematic::cleanupIngredientSlots() {
@@ -722,10 +724,10 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertBoolean(isManufactureSchematic());
 		break;
 	case 13:
-		setDraftSchematic((DraftSchematic*) inv->getObjectParameter());
+		setDraftSchematic((SceneObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 14:
-		initializeIngredientSlots((DraftSchematic*) inv->getObjectParameter());
+		initializeIngredientSlots((SceneObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 15:
 		cleanupIngredientSlots();
@@ -837,12 +839,12 @@ bool ManufactureSchematicAdapter::isManufactureSchematic() {
 	return ((ManufactureSchematicImplementation*) impl)->isManufactureSchematic();
 }
 
-void ManufactureSchematicAdapter::setDraftSchematic(DraftSchematic* schematic) {
-	((ManufactureSchematicImplementation*) impl)->setDraftSchematic(schematic);
+void ManufactureSchematicAdapter::setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic) {
+	((ManufactureSchematicImplementation*) impl)->setDraftSchematic(craftingTool, schematic);
 }
 
-void ManufactureSchematicAdapter::initializeIngredientSlots(DraftSchematic* schematic) {
-	((ManufactureSchematicImplementation*) impl)->initializeIngredientSlots(schematic);
+void ManufactureSchematicAdapter::initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic) {
+	((ManufactureSchematicImplementation*) impl)->initializeIngredientSlots(craftingTool, schematic);
 }
 
 void ManufactureSchematicAdapter::cleanupIngredientSlots() {

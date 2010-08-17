@@ -56,9 +56,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.templates.SharedObjectTemplate;
 
 class FactoryCrate extends TangibleObject {
-	
-	protected TangibleObject prototype;
-	
+
 	public final static int MAXCAPACITY = 100;
 	
 	public FactoryCrate() {
@@ -100,7 +98,7 @@ class FactoryCrate extends TangibleObject {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
-	
+	 
 	/**
 	 * Sends the necessary messages to player in order to create this object
 	 * @pre { this object is locked }
@@ -111,33 +109,21 @@ class FactoryCrate extends TangibleObject {
 	public native abstract void sendTo(SceneObject player, boolean doClose);
 	
 	
-	public void updateToDatabaseAllObjects(boolean startTask) {
-
-		prototype.updateToDatabase();
-		
-		super.updateToDatabaseAllObjects(startTask);
-	}
-	
 	public abstract boolean isFactoryCrate() {
 		return true;
 	}
 	
-	public void setPrototype(TangibleObject object) {
-		prototype = object;
-	}
+	public native void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
+
+	public native TangibleObject getPrototype();
 	
-	public TangibleObject getPrototype() {
-		return prototype;
-	}
+	public native string getCraftersName();
 	
-	public string getCraftersName() {
-		return prototype.getCraftersName();
-	}
+	public native string getCraftersSerial();
 	
-	public string getCraftersSerial(string serial) {
-		return prototype.getCraftersSerial();
-	}
+	public native boolean extractObjectToParent(int count = 1);
 	
-	public native boolean extractObject();
+	public native TangibleObject extractObject(int count = 1);
 	
+	public native void split(int newStackSize);
 }

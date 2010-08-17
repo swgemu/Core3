@@ -76,7 +76,7 @@ public:
 
 			ManagedReference<FactoryCrate*> crate = (FactoryCrate*) object.get();
 
-			if(!crate->extractObject()) {
+			if(!crate->extractObjectToParent()) {
 				error("Error extracting object in ExtractObjectCommand");
 				creature->sendSystemMessage("Error extracting object in ExtractObjectCommand");
 			}

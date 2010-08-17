@@ -16,36 +16,26 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 	//Declare Headers:
 	addHeader("List.lstList", "SelectedRow");
 	addHeader("bg.caption.lblTitle", "Text");
-	//addHeader("Prompt.lblPrompt", "Text"); //note: the list ui script doesnt need this...not sure why
+
+	/// This crashes the client, but is what makes the third button
+	/// Report info
+	//if(otherButton)
+	//	addHeader("this", "otherPressed");
 
 	//Set Body Options:
 	addSetting("3", "bg.caption.lblTitle", "Text", promptTitle);
 	addSetting("3", "Prompt.lblPrompt", "Text", promptText);
 
-	switch(type) {
-	case HANDLESTATUSUI:
-		if (!backButton)
-			addSetting("3", "btnCancel", "Text", cancelButtonText);
-		else
-			addSetting("3", "btnCancel", "Text", backButtonText);
-		addSetting("3", "btnOk", "Text", "@refresh");
-		break;
-	case HANDLEDESTROYUI:
-		addSetting("3", "btnCancel", "Text", "@no");
-		addSetting("3", "btnOk", "Text", "@yes");
-		break;
-	default:
-		if (cancelButton)
-			addSetting("3", "btnCancel", "Text", cancelButtonText);
-		else if (backButton)
-			addSetting("3", "btnCancel", "Text", backButtonText);
-		else {
-			addSetting("3", "btnCancel", "Enabled", "False");
-			addSetting("3", "btnCancel", "Visible", "False");
-		}
+	if(cancelButton)
+		addSetting("3", "btnCancel", "Text", cancelButtonText);
 
-		if(okButton)
-			addSetting("3", "btnOk", "Text", okButtonText);
+	if(okButton)
+		addSetting("3", "btnOk", "Text", okButtonText);
+
+	if(otherButton) {
+		addSetting("3", "btnOther", "visible", "true");
+		addSetting("3", "btnOther", "Enabled", "true");
+		addSetting("3", "btnOther", "Text", otherButtonText);
 	}
 
 	//Data Container Option
@@ -66,19 +56,9 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 		addSetting("3", tempStr, "Text", tempVal);
 	}
 
-	//Generate Packet:
-	switch(type) {
-	case HANDLESTATUSUI:
-		generateHeader(message, "handleStatusUi");
-		break;
-	case HANDLEDESTROYUI:
-		generateHeader(message, "handleDestroyUi");
-		break;
-	default:
-		generateHeader(message, "msgSelected");
-	}
+	generateHeader(message);
 	generateBody(message);
-	generateFooter(message);
+	generateFooter(message, 2);
 	hasGenerated = true;
 
 	return message;

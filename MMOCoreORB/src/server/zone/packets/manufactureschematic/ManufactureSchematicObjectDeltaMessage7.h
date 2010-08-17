@@ -63,8 +63,8 @@ public:
 
 		updateIngredientList(manufactureSchematic);
 		updateSlot(size+1, size+1, slot);
-		updateResource(size+1, size+1, slot, ingredientSlot->getObjectID());
-		updateQuantity(size+1, size+1, slot, ingredientSlot->getQuantity());
+		updateResource(size+1, size+1, slot, ingredientSlot);
+		updateQuantity(size+1, size+1, slot, ingredientSlot);
 		update4(size, size, slot);
 		update5(size+1, size+1, slot);
 		update6(size, size, slot);
@@ -79,8 +79,8 @@ public:
 		counter += manufactureSchematic->getSlotCount();
 
 		updateSlot(1, counter, slot);
-		updateResource(1, counter, slot, ingredientSlot->getObjectID());
-		updateQuantity(1, counter, slot, ingredientSlot->getQuantity());
+		updateResource(1, counter, slot, ingredientSlot);
+		updateQuantity(1, counter, slot, ingredientSlot);
 		update5(1, counter, slot);
 		update7();
 	}
@@ -157,7 +157,7 @@ public:
 		removeListIntElement(slot, 4);
 	}
 
-	void updateResource(int size, int counter, int slot, uint64 resourceID) {
+	void updateResource(int size, int counter, int slot, Reference<IngredientSlot* > ingredientSlot) {
 		startUpdate(2);
 
 		startList(size, counter);
@@ -165,11 +165,22 @@ public:
 		for (int i = 0; i < size - 1; i++) {
 			addListIntElement(i, 0);
 		}
-		removeListIntElement(slot, 1);
-		insertLong(resourceID);
 
+		if(ingredientSlot->isType(IngredientSlot::RESOURCESLOT)) {
+
+			removeListIntElement(slot, 1);
+			insertLong(ingredientSlot->getObjectID());
+
+		} else {
+
+			removeListIntElement(slot, ingredientSlot->getQuantity());
+
+			for(int i = 1; i <= ingredientSlot->getQuantity(); ++i) {
+				insertLong(ingredientSlot->getObjectID());
+			}
+		}
 	}
-	void updateQuantity(int size, int counter, int slot, int quantity) {
+	void updateQuantity(int size, int counter, int slot, Reference<IngredientSlot* > ingredientSlot) {
 
 		startUpdate(3);
 
@@ -178,8 +189,23 @@ public:
 		for (int i = 0; i < size-1; i++) {
 			addListIntElement(i, 0);
 		}
-		removeListIntElement(slot, 1);
-		insertInt(quantity);
+
+		if(ingredientSlot->isType(IngredientSlot::RESOURCESLOT)) {
+
+			removeListIntElement(slot, 1);
+			insertInt(ingredientSlot->getQuantity());
+
+		} else {
+
+			removeListIntElement(slot, ingredientSlot->getQuantity());
+
+			for(int i = 1; i <= ingredientSlot->getQuantity(); ++i) {
+				insertInt(1);
+			}
+		}
+
+		//removeListIntElement(slot, 1);
+		//insertInt(quantity);
 
 	}
 

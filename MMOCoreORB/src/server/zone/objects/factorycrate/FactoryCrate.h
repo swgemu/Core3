@@ -110,19 +110,21 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose);
 
-	void updateToDatabaseAllObjects(bool startTask);
-
 	bool isFactoryCrate();
 
-	void setPrototype(TangibleObject* object);
+	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
 	TangibleObject* getPrototype();
 
 	String getCraftersName();
 
-	String getCraftersSerial(String& serial);
+	String getCraftersSerial();
 
-	bool extractObject();
+	bool extractObjectToParent(int count = 1);
+
+	TangibleObject* extractObject(int count = 1);
+
+	void split(int newStackSize);
 
 protected:
 	FactoryCrate(DummyConstructorParameter* param);
@@ -148,9 +150,6 @@ namespace objects {
 namespace factorycrate {
 
 class FactoryCrateImplementation : public TangibleObjectImplementation {
-protected:
-	ManagedReference<TangibleObject* > prototype;
-
 public:
 	static const int MAXCAPACITY = 100;
 
@@ -172,19 +171,21 @@ public:
 
 	virtual void sendTo(SceneObject* player, bool doClose);
 
-	void updateToDatabaseAllObjects(bool startTask);
-
 	virtual bool isFactoryCrate();
 
-	void setPrototype(TangibleObject* object);
+	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
 	TangibleObject* getPrototype();
 
 	String getCraftersName();
 
-	String getCraftersSerial(String& serial);
+	String getCraftersSerial();
 
-	bool extractObject();
+	bool extractObjectToParent(int count = 1);
+
+	TangibleObject* extractObject(int count = 1);
+
+	void split(int newStackSize);
 
 	FactoryCrate* _this;
 
@@ -233,22 +234,22 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose);
 
-	void updateToDatabaseAllObjects(bool startTask);
-
 	bool isFactoryCrate();
 
-	void setPrototype(TangibleObject* object);
+	void setUseCount(unsigned int newUseCount, bool notifyClient);
 
 	TangibleObject* getPrototype();
 
 	String getCraftersName();
 
-	String getCraftersSerial(String& serial);
+	String getCraftersSerial();
 
-	bool extractObject();
+	bool extractObjectToParent(int count);
 
-protected:
-	String _param0_getCraftersSerial__String_;
+	TangibleObject* extractObject(int count);
+
+	void split(int newStackSize);
+
 };
 
 class FactoryCrateHelper : public DistributedObjectClassHelper, public Singleton<FactoryCrateHelper> {

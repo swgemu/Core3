@@ -54,10 +54,10 @@ class ResourceSlot: public IngredientSlot {
 	ManagedReference<ResourceContainer* > contents;
 
 public:
-	ResourceSlot(String t, int q) :
+	ResourceSlot(SceneObject* tool, String t, int q) :
 		IngredientSlot(t, q) {
 
-
+		craftingTool = tool;
 		slottype = RESOURCESLOT;
 		contents = NULL;
 
@@ -110,7 +110,6 @@ public:
 
 					contents->setQuantity(contents->getQuantity() + incomingResource->getQuantity());
 					removeFromParent = true;
-
 				}
 			}
 
@@ -122,12 +121,20 @@ public:
 
 				contents = spawn->createResource(requiredQuantity);
 
+				contents->setParent(NULL);
+				craftingTool->addObject(contents, -1, false);
+
 				contents->sendTo(player, true);
 				contents->sendAttributeListTo(player);
 
 			} else {
 
 				contents = incomingResource;
+
+				if(contents->getParent() != NULL)
+					contents->getParent()->removeObject(contents, true);
+				craftingTool->addObject(contents, -1, false);
+
 				removeFromParent = true;
 
 			}
@@ -171,8 +178,8 @@ public:
 		if(contents == NULL || previousParent == NULL)
 			return false;
 
-		/// Find out where the item was located
-		ManagedReference<PlayerCreature* > player = (PlayerCreature*)previousParent->getParentRecursively(SceneObject::PLAYERCREATURE);
+		if(contents->getParent() != NULL)
+			contents->getParent()->removeObject(contents, true);
 
 		// Check inventory for resource and add if existing
 		for (int i = 0; i < previousParent->getContainerObjectsSize(); ++i) {

@@ -65,12 +65,15 @@ class SuiBox extends ManagedObject implements Logger {
 
 	protected unsigned long usingObjectID;
 
+	protected string handlerStr;
+	
 	protected string cancelButtonText;
 	protected boolean cancelButton;
-	protected string backButtonText;
-	protected boolean backButton;
 	protected string okButtonText;
 	protected boolean okButton;
+	
+	protected string otherButtonText;
+	protected boolean otherButton;
 
 	protected string promptTitle;
 	protected string promptText;
@@ -117,11 +120,13 @@ class SuiBox extends ManagedObject implements Logger {
 
 		boxID = player.getNewSuiBoxID(windowType);
 
+		handlerStr = "msgSelected";
+		
 		cancelButtonText = "@cancel";
 		cancelButton = false;
 
-		backButtonText = "@back";
-		backButton = false;
+		otherButtonText = "@back";
+		otherButton = false;
 
 		okButtonText = "@ok";
 		okButton = true;
@@ -148,7 +153,7 @@ class SuiBox extends ManagedObject implements Logger {
 	 * the object with clearOptions()
 	 * \sa addHeader(), clearOptions()
 	 */
-	public native void generateHeader(SuiCreatePageMessage message, final string handlerStr);
+	public native void generateHeader(SuiCreatePageMessage message);
 	
 	/**
 	 * Call after all Body Settings have been added with addSetting() and the header has been generated
@@ -229,6 +234,10 @@ class SuiBox extends ManagedObject implements Logger {
 	public void setPromptText(final string name) {
 		promptText = name;
 	}
+	
+	public void setHandlerText(final string text) {
+		handlerStr = text;
+	}
 
 	public void setUsingObjectID(unsigned long oid) {
 		usingObjectID = oid;
@@ -280,7 +289,7 @@ class SuiBox extends ManagedObject implements Logger {
 
 	public native void setCancelButton(boolean value, final string cancelText);
 
-	public native void setBackButton(boolean value, final string backText);
+	public native void setOtherButton(boolean value, final string backText);
 
 	public native void setOkButton(boolean value, final string okText);
 

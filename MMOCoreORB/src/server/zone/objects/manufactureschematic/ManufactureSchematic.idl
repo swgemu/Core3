@@ -150,9 +150,9 @@ class ManufactureSchematic extends IntangibleObject {
 		return true;
 	}
 	
-	public native void setDraftSchematic(DraftSchematic schematic);
+	public native void setDraftSchematic(SceneObject craftingTool, DraftSchematic schematic);
 	
-	public native void initializeIngredientSlots(DraftSchematic schematic);
+	public native void initializeIngredientSlots(SceneObject craftingTool, DraftSchematic schematic);
 	
 	public native void cleanupIngredientSlots();
 	
