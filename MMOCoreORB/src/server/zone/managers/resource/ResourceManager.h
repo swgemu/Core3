@@ -76,6 +76,20 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
+namespace resource {
+
+class ResourceContainer;
+
+} // namespace resource
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::resource;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class Observable;
@@ -125,6 +139,8 @@ public:
 	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+
+	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
 
 	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
 
@@ -185,6 +201,8 @@ public:
 	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+
+	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
 
 	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
 
@@ -259,6 +277,8 @@ public:
 
 	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
 
+	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
+
 	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
 
 	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
@@ -272,6 +292,7 @@ protected:
 	String _param1_sendSurvey__PlayerCreature_String_;
 	String _param1_sendSample__PlayerCreature_String_String_;
 	String _param2_sendSample__PlayerCreature_String_String_;
+	String _param1_harvestResource__PlayerCreature_String_int_;
 	String _param1_createResourceSpawn__PlayerCreature_String_;
 	String _param0_getResourceSpawn__String_;
 };
