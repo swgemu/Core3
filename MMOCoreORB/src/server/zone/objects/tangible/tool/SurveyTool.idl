@@ -65,6 +65,7 @@ class SurveyTool extends ToolTangibleObject {
 	protected string sampleAnimation;
 	
 	protected string lastResourceSampleName;
+	protected string lastResourceSurveyName;
 	protected boolean radioactiveOk;
 	
 	protected transient Coordinate richSampleLocation;
@@ -139,9 +140,7 @@ class SurveyTool extends ToolTangibleObject {
 		doGamble = false;
 	}
 	
-	public void consentRadioactiveSample() {
-		radioactiveOk = true;
-	}
+	public native void consentRadioactiveSample(PlayerCreature player);
 	
 	public native void sendRadioactiveWarning(PlayerCreature player);
 	

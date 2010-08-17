@@ -119,7 +119,7 @@ public:
 
 	void clearGamble();
 
-	void consentRadioactiveSample();
+	void consentRadioactiveSample(PlayerCreature* player);
 
 	void sendRadioactiveWarning(PlayerCreature* player);
 
@@ -187,6 +187,8 @@ protected:
 
 	String lastResourceSampleName;
 
+	String lastResourceSurveyName;
+
 	bool radioactiveOk;
 
 	Coordinate* richSampleLocation;
@@ -240,7 +242,7 @@ public:
 
 	void clearGamble();
 
-	void consentRadioactiveSample();
+	void consentRadioactiveSample(PlayerCreature* player);
 
 	void sendRadioactiveWarning(PlayerCreature* player);
 
@@ -323,7 +325,7 @@ public:
 
 	void clearGamble();
 
-	void consentRadioactiveSample();
+	void consentRadioactiveSample(PlayerCreature* player);
 
 	void sendRadioactiveWarning(PlayerCreature* player);
 
