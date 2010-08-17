@@ -178,6 +178,10 @@ void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* pl
 	runlock();
 }
 
+ResourceContainer* ResourceManagerImplementation::harvestResource(PlayerCreature* player, const String& type, const int quantity) {
+	return resourceSpawner->harvestResource(player, type, quantity);
+}
+
 void ResourceManagerImplementation::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
 	resourceSpawner->sendSurvey(playerCreature, resname);
 }

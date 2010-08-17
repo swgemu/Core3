@@ -658,6 +658,28 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player, const float dens
 	}
 }
 
+ResourceContainer* ResourceSpawner::harvestResource(PlayerCreature* player, const String& type, const int quantity) {
+	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(player->getZone()->getZoneID());
+	if (zoneMap == NULL) {
+		player->sendSystemMessage("Failed to locate any resources");
+		return NULL;
+	}
+
+
+	ManagedReference<ResourceSpawn* > resourceSpawn;
+
+	for (int i = 0; i < zoneMap->size(); ++i) {
+		resourceSpawn = zoneMap->get(i);
+
+		if (resourceSpawn != NULL && resourceSpawn->getType() == type) {
+			resourceSpawn->extractResource(player->getZone()->getZoneID(), quantity);
+			return resourceSpawn->createResource(quantity);
+		}
+	}
+	player->sendSystemMessage("Failed to locate any suitable resources");
+	return NULL;
+}
+
 ResourceSpawn* ResourceSpawner::getFromRandomPool(const String& type) {
 	return randomPool->removeSpawn(type);
 }

@@ -125,6 +125,9 @@ public:
 	void sendSample(PlayerCreature* player, const String& resname, const String& sampleAnimation);
 	void sendSampleResults(PlayerCreature* player, const float density, const String& resname);
 
+	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
+
+
 	ResourceSpawn* getFromRandomPool(const String& type);
 
 	inline ResourceMap* getResourceMap() {
