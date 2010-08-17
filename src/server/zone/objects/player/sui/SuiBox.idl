@@ -59,6 +59,9 @@ class SuiBox extends ManagedObject implements Logger {
 	protected PlayerCreature player;
 
 	protected unsigned int boxID;
+	
+	@weakReference
+	protected SceneObject usingObject;
 
 	protected unsigned long usingObjectID;
 
@@ -300,5 +303,12 @@ class SuiBox extends ManagedObject implements Logger {
 	public int getWindowType() {
 		return windowType;
 	}
-
+	
+	public SceneObject getUsingObject() {
+		return usingObject;
+	}
+	
+	public void setUsingObject(SceneObject object) {
+		usingObject = object;
+	}
 }

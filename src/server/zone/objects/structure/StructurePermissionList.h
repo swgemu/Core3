@@ -36,6 +36,7 @@ public:
 	bool revokePermission(uint64 playerID, uint8 permission);
 
 	String getListName(uint8 permission);
+	uint8 getPermissionFromListName(const String& listName);
 
 	bool hasPermission(uint64 playerID, uint8 permission) {
 		if (!contains(playerID))

@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 
+#include "server/zone/objects/tangible/TangibleObject.h"
+
 /*
  *	FactoryObjectStub
  */
@@ -289,12 +291,12 @@ void FactoryObjectImplementation::_serializationHelperMethod() {
 
 FactoryObjectImplementation::FactoryObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/factory/FactoryObject.idl(18):  		Logger.setLoggingName("FactoryObject");
+	// server/zone/objects/installation/factory/FactoryObject.idl(19):  		Logger.setLoggingName("FactoryObject");
 	Logger::setLoggingName("FactoryObject");
 }
 
 bool FactoryObjectImplementation::isFactory() {
-	// server/zone/objects/installation/factory/FactoryObject.idl(56):  		return true;
+	// server/zone/objects/installation/factory/FactoryObject.idl(57):  		return true;
 	return true;
 }
 

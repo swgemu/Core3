@@ -44,7 +44,7 @@ which carries forward this exception.
 
 package server.zone.objects.building;
 
-import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.structure.StructureObject;
 import engine.lua.LuaObject;
 import engine.util.QuadTree;
 import engine.util.QuadTreeEntry;
@@ -59,33 +59,20 @@ import server.zone.objects.tangible.terminal.structure.StructureTerminal;
 import server.zone.ZoneServer;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
-include server.zone.objects.building.StructurePermissionList;
 
-class BuildingObject extends TangibleObject implements QuadTree {
+class BuildingObject extends StructureObject implements QuadTree {
 	@dereferenced
 	protected Vector<CellObject> cells;
-	
-	@dereferenced
-	protected StructurePermissionList structurePermissionList;
-	
+
 	protected StructureTerminal structureTerminal;
 
-	protected unsigned long ownerObjectID;
-	
 	protected int totalCellNumber;
 	
 	protected SignObject signObject;
 	
-	protected int lotSize;
-	
 	protected unsigned long deedObjectID;
-	
-	protected int baseMaintenanceRate;
-	protected unsigned int surplusMaintenance;
-	
+
 	protected int accessFee;
-	
-	protected boolean publicStructure;
 	
 	//TODO: This should probably be handled differently...
 	protected boolean declaredResidency;
@@ -103,17 +90,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		
 		totalCellNumber = 0;
 		
-		lotSize = 0;
-		
-		baseMaintenanceRate = 0;
-		
-		surplusMaintenance = 0;
-		
-		deedObjectID = 0;
-		
 		accessFee = 0;
-		
-		publicStructure = false;
 		
 		declaredResidency = false;
 	}
@@ -130,6 +107,8 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		updateToDatabase();
 	}
 	
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 		
@@ -143,13 +122,11 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	 */
 	public native void sendContainerObjectsTo(SceneObject player);
 	
-	public native void handleStructureStatus(PlayerCreature player);
-	public native void handleStructureDestroyRequest(PlayerCreature player);
-	public native void handleStructureDestroyConfirm(PlayerCreature player, boolean confirm);
-	public native void handlePayMaintenance(PlayerCreature player);
-	public native void handlePrivacyChange(PlayerCreature player);
-	public native void handleDeclareResidency(PlayerCreature player);
-	public native void handleSetObjectName(PlayerCreature player);
+	/**
+	 * Updates the cell permissions to the player based on the players permission in the StructurePermissionList.
+	 * @param player The player to update cell permissions to.
+	 */
+	public native void updateCellPermissionsTo(SceneObject player);
 	
 	/**
 	 * Gets called when the structure has been created;
@@ -215,14 +192,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		return totalCellNumber;
 	}
 	
-	public void setLotSize(int lotsize) {
-		lotSize = lotsize;
-	}
-	
-	public int getLotSize() {
-		return lotSize;
-	}
-	
 	public void setStaticBuilding(boolean value) {
 		super.staticObject = value;
 	}
@@ -259,23 +228,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		return false;
 	}
 	
-	public void setDeedObjectID(unsigned long deedid) {
-		deedObjectID = deedid;
-	}
-	
-	public unsigned long getDeedObjectID() {
-		return deedObjectID;
-	}
-	
-	public void setOwnerObjectID(unsigned long ownerID) {
-		ownerObjectID = ownerID;
-		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
-	}
-	
-	public unsigned long getOwnerObjectID() {
-		return ownerObjectID;
-	}
-	
 	public void setSignObject(SignObject sign) {
 		signObject = sign;
 	}
@@ -283,65 +235,11 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	public SignObject getSignObject() {
 		return signObject;
 	}
-	
-	public void setSurplusMaintenance (unsigned int maintenance) {
-		surplusMaintenance = maintenance;
-	}
-	
-	public unsigned int getSurplusMaintenance() {
-		return surplusMaintenance;
-	}
-	
-	/**
-	 * Sets the base maintenance rate for this building. This is the rate before any bonuses are applied.
-	 * @param maintenanceRate The new maintenance rate to set for this building.
-	 */
-	public void setBaseMaintenanceRate(int maintenanceRate) {
-		baseMaintenanceRate = maintenanceRate;
-	}
-	
-	/**
-	 * Returns the base maintenance rate for the building.
-	 * This value is the rate before any bonuses from the merchant skills are added.
-	 * @return The base maintenance rate for the building.
-	 */
-	public int getBaseMaintenanceRate() {
-		return baseMaintenanceRate;
-	}
-	
-	/**
-	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
-	 * @return The cost to redeed this building.
-	 */
-	public int getRedeedCost() {
-		return baseMaintenanceRate * 50;
-	}
-	
+
 	public abstract boolean isCityHallBuilding() {
 		return false;
 	}
-	
-	/**
-	 * Returns if the creature is on the admin list or not for this structure.
-	 * @param creature The creature to check for admin permissions on.
-	 * @return boolean True if the creature is on the admin list.
-	 */
-	public boolean isOnAdminList(CreatureObject creature) {
-		return structurePermissionList.isOnAdminList(creature.getObjectID());
-	}
-	
-	public void sendPermissionListTo(PlayerCreature player, final string listName) {
-		structurePermissionList.sendTo(player, listName);
-	}
-	
-	public boolean isPublicStructure() {
-		return publicStructure;
-	}
-	
-	public void setPublicStructure(boolean value) {
-		publicStructure = value;
-	}
-	
+
 	public boolean isDeclaredResidency() {
 		return declaredResidency;
 	}

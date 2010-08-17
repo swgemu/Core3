@@ -99,12 +99,8 @@ public:
 	static const int DENY_TRAINING_LIST = 37;
 
 	static const int OBJECT_NAME = 38;
-	static const int MANAGE_MAINTENANCE = 39;
 	static const int ADD_ENERGY = 40;
 	static const int INSTALLATION_STATUS = 41;
-
-	static const int INSTALLATION_REDEED = 42;
-	static const int INSTALLATION_REDEED_CONFIRM = 43;
 
 	static const int INSURANCE_MENU = 44;
 	static const int INSURE_ALL_CONFIRM = 45;
@@ -145,6 +141,9 @@ public:
 	static const int CREATE_CITY_HALL_NAME = 113;
 
 	static const int STRUCTURE_STATUS = 115;
+	static const int STRUCTURE_DESTROY_CONFIRM = 116;
+	static const int STRUCTURE_DESTROY_CODE = 117;
+	static const int STRUCTURE_MANAGE_MAINTENANCE = 118;
 };
 
 #endif /*SuiWindowType_H_*/

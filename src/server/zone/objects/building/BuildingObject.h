@@ -133,9 +133,7 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
-#include "server/zone/objects/building/StructurePermissionList.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -152,7 +150,7 @@ namespace zone {
 namespace objects {
 namespace building {
 
-class BuildingObject : public TangibleObject {
+class BuildingObject : public StructureObject {
 public:
 	BuildingObject();
 
@@ -160,25 +158,15 @@ public:
 
 	void createCellObjects();
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
 	void sendContainerObjectsTo(SceneObject* player);
 
-	void handleStructureStatus(PlayerCreature* player);
-
-	void handleStructureDestroyRequest(PlayerCreature* player);
-
-	void handleStructureDestroyConfirm(PlayerCreature* player, bool confirm);
-
-	void handlePayMaintenance(PlayerCreature* player);
-
-	void handlePrivacyChange(PlayerCreature* player);
-
-	void handleDeclareResidency(PlayerCreature* player);
-
-	void handleSetObjectName(PlayerCreature* player);
+	void updateCellPermissionsTo(SceneObject* player);
 
 	int notifyStructurePlaced(PlayerCreature* player);
 
@@ -214,10 +202,6 @@ public:
 
 	int getTotalCellNumber();
 
-	void setLotSize(int lotsize);
-
-	int getLotSize();
-
 	void setStaticBuilding(bool value);
 
 	void onEnter(PlayerCreature* player);
@@ -228,37 +212,11 @@ public:
 
 	bool isMedicalBuildingObject();
 
-	void setDeedObjectID(unsigned long long deedid);
-
-	unsigned long long getDeedObjectID();
-
-	void setOwnerObjectID(unsigned long long ownerID);
-
-	unsigned long long getOwnerObjectID();
-
 	void setSignObject(SignObject* sign);
 
 	SignObject* getSignObject();
 
-	void setSurplusMaintenance(unsigned int maintenance);
-
-	unsigned int getSurplusMaintenance();
-
-	void setBaseMaintenanceRate(int maintenanceRate);
-
-	int getBaseMaintenanceRate();
-
-	int getRedeedCost();
-
 	bool isCityHallBuilding();
-
-	bool isOnAdminList(CreatureObject* creature);
-
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
-
-	bool isPublicStructure();
-
-	void setPublicStructure(bool value);
 
 	bool isDeclaredResidency();
 
@@ -284,31 +242,19 @@ namespace zone {
 namespace objects {
 namespace building {
 
-class BuildingObjectImplementation : public TangibleObjectImplementation, public QuadTree {
+class BuildingObjectImplementation : public StructureObjectImplementation, public QuadTree {
 protected:
 	Vector<ManagedReference<CellObject* > > cells;
 
-	StructurePermissionList structurePermissionList;
-
 	ManagedReference<StructureTerminal* > structureTerminal;
-
-	unsigned long long ownerObjectID;
 
 	int totalCellNumber;
 
 	ManagedReference<SignObject* > signObject;
 
-	int lotSize;
-
 	unsigned long long deedObjectID;
 
-	int baseMaintenanceRate;
-
-	unsigned int surplusMaintenance;
-
 	int accessFee;
-
-	bool publicStructure;
 
 	bool declaredResidency;
 
@@ -321,25 +267,15 @@ public:
 
 	void createCellObjects();
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
 	void sendContainerObjectsTo(SceneObject* player);
 
-	void handleStructureStatus(PlayerCreature* player);
-
-	void handleStructureDestroyRequest(PlayerCreature* player);
-
-	void handleStructureDestroyConfirm(PlayerCreature* player, bool confirm);
-
-	void handlePayMaintenance(PlayerCreature* player);
-
-	void handlePrivacyChange(PlayerCreature* player);
-
-	void handleDeclareResidency(PlayerCreature* player);
-
-	void handleSetObjectName(PlayerCreature* player);
+	void updateCellPermissionsTo(SceneObject* player);
 
 	virtual int notifyStructurePlaced(PlayerCreature* player);
 
@@ -375,10 +311,6 @@ public:
 
 	int getTotalCellNumber();
 
-	void setLotSize(int lotsize);
-
-	int getLotSize();
-
 	void setStaticBuilding(bool value);
 
 	virtual void onEnter(PlayerCreature* player);
@@ -389,37 +321,11 @@ public:
 
 	virtual bool isMedicalBuildingObject();
 
-	void setDeedObjectID(unsigned long long deedid);
-
-	unsigned long long getDeedObjectID();
-
-	void setOwnerObjectID(unsigned long long ownerID);
-
-	unsigned long long getOwnerObjectID();
-
 	void setSignObject(SignObject* sign);
 
 	SignObject* getSignObject();
 
-	void setSurplusMaintenance(unsigned int maintenance);
-
-	unsigned int getSurplusMaintenance();
-
-	void setBaseMaintenanceRate(int maintenanceRate);
-
-	int getBaseMaintenanceRate();
-
-	int getRedeedCost();
-
 	virtual bool isCityHallBuilding();
-
-	bool isOnAdminList(CreatureObject* creature);
-
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
-
-	bool isPublicStructure();
-
-	void setPublicStructure(bool value);
 
 	bool isDeclaredResidency();
 
@@ -458,7 +364,7 @@ protected:
 	friend class BuildingObject;
 };
 
-class BuildingObjectAdapter : public TangibleObjectAdapter {
+class BuildingObjectAdapter : public StructureObjectAdapter {
 public:
 	BuildingObjectAdapter(BuildingObjectImplementation* impl);
 
@@ -468,23 +374,13 @@ public:
 
 	void createCellObjects();
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
+
 	void initializeTransientMembers();
 
 	void sendContainerObjectsTo(SceneObject* player);
 
-	void handleStructureStatus(PlayerCreature* player);
-
-	void handleStructureDestroyRequest(PlayerCreature* player);
-
-	void handleStructureDestroyConfirm(PlayerCreature* player, bool confirm);
-
-	void handlePayMaintenance(PlayerCreature* player);
-
-	void handlePrivacyChange(PlayerCreature* player);
-
-	void handleDeclareResidency(PlayerCreature* player);
-
-	void handleSetObjectName(PlayerCreature* player);
+	void updateCellPermissionsTo(SceneObject* player);
 
 	int notifyStructurePlaced(PlayerCreature* player);
 
@@ -508,10 +404,6 @@ public:
 
 	int getTotalCellNumber();
 
-	void setLotSize(int lotsize);
-
-	int getLotSize();
-
 	void setStaticBuilding(bool value);
 
 	void onEnter(PlayerCreature* player);
@@ -522,44 +414,16 @@ public:
 
 	bool isMedicalBuildingObject();
 
-	void setDeedObjectID(unsigned long long deedid);
-
-	unsigned long long getDeedObjectID();
-
-	void setOwnerObjectID(unsigned long long ownerID);
-
-	unsigned long long getOwnerObjectID();
-
 	void setSignObject(SignObject* sign);
 
 	SignObject* getSignObject();
 
-	void setSurplusMaintenance(unsigned int maintenance);
-
-	unsigned int getSurplusMaintenance();
-
-	void setBaseMaintenanceRate(int maintenanceRate);
-
-	int getBaseMaintenanceRate();
-
-	int getRedeedCost();
-
 	bool isCityHallBuilding();
-
-	bool isOnAdminList(CreatureObject* creature);
-
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
-
-	bool isPublicStructure();
-
-	void setPublicStructure(bool value);
 
 	bool isDeclaredResidency();
 
 	void setDeclaredResidency(bool value);
 
-protected:
-	String _param1_sendPermissionListTo__PlayerCreature_String_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

@@ -49,25 +49,12 @@ void SuiInputBox::setMaxInputSize(int size) {
 		((SuiInputBoxImplementation*) _impl)->setMaxInputSize(size);
 }
 
-void SuiInputBox::setUsingObject(SceneObject* object) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addObjectParameter(object);
-
-		method.executeWithVoidReturn();
-	} else
-		((SuiInputBoxImplementation*) _impl)->setUsingObject(object);
-}
-
 void SuiInputBox::setDefaultInput(const String& text) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 8);
 		method.addAsciiParameter(text);
 
 		method.executeWithVoidReturn();
@@ -80,23 +67,11 @@ bool SuiInputBox::isFilterBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((SuiInputBoxImplementation*) _impl)->isFilterBox();
-}
-
-SceneObject* SuiInputBox::getUsingObject() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-
-		return (SceneObject*) method.executeWithObjectReturn();
-	} else
-		return ((SuiInputBoxImplementation*) _impl)->getUsingObject();
 }
 
 bool SuiInputBox::isInputBox() {
@@ -104,7 +79,7 @@ bool SuiInputBox::isInputBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -181,44 +156,33 @@ void SuiInputBoxImplementation::_serializationHelperMethod() {
 	addSerializableVariable("maxInputSize", &maxInputSize);
 	addSerializableVariable("defaultInput", &defaultInput);
 	addSerializableVariable("inputType", &inputType);
-	addSerializableVariable("usingObject", &usingObject);
 }
 
 SuiInputBoxImplementation::SuiInputBoxImplementation(PlayerCreature* player, unsigned int windowType, int inputtype) : SuiBoxImplementation(player, windowType, SuiBox::INPUTBOX) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(69):  		maxInputSize = 25;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(66):  		maxInputSize = 25;
 	maxInputSize = 25;
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(71):  		inputType = inputtype;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(68):  		inputType = inputtype;
 	inputType = inputtype;
 }
 
 void SuiInputBoxImplementation::setMaxInputSize(int size) {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(77):  		maxInputSize = size;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(74):  		maxInputSize = size;
 	maxInputSize = size;
 }
 
-void SuiInputBoxImplementation::setUsingObject(SceneObject* object) {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(81):  		usingObject = object;
-	usingObject = object;
-}
-
 void SuiInputBoxImplementation::setDefaultInput(const String& text) {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(85):  		defaultInput = text;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(78):  		defaultInput = text;
 	defaultInput = text;
 }
 
 bool SuiInputBoxImplementation::isFilterBox() {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(89):  		return inputType == FILTER;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(82):  		return inputType == FILTER;
 	return inputType == FILTER;
 }
 
-SceneObject* SuiInputBoxImplementation::getUsingObject() {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(93):  		return usingObject;
-	return usingObject;
-}
-
 bool SuiInputBoxImplementation::isInputBox() {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(97):  		return true;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(86):  		return true;
 	return true;
 }
 
@@ -240,18 +204,12 @@ Packet* SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setMaxInputSize(inv->getSignedIntParameter());
 		break;
 	case 8:
-		setUsingObject((SceneObject*) inv->getObjectParameter());
-		break;
-	case 9:
 		setDefaultInput(inv->getAsciiParameter(_param0_setDefaultInput__String_));
 		break;
-	case 10:
+	case 9:
 		resp->insertBoolean(isFilterBox());
 		break;
-	case 11:
-		resp->insertLong(getUsingObject()->_getObjectID());
-		break;
-	case 12:
+	case 10:
 		resp->insertBoolean(isInputBox());
 		break;
 	default:
@@ -269,20 +227,12 @@ void SuiInputBoxAdapter::setMaxInputSize(int size) {
 	((SuiInputBoxImplementation*) impl)->setMaxInputSize(size);
 }
 
-void SuiInputBoxAdapter::setUsingObject(SceneObject* object) {
-	((SuiInputBoxImplementation*) impl)->setUsingObject(object);
-}
-
 void SuiInputBoxAdapter::setDefaultInput(const String& text) {
 	((SuiInputBoxImplementation*) impl)->setDefaultInput(text);
 }
 
 bool SuiInputBoxAdapter::isFilterBox() {
 	return ((SuiInputBoxImplementation*) impl)->isFilterBox();
-}
-
-SceneObject* SuiInputBoxAdapter::getUsingObject() {
-	return ((SuiInputBoxImplementation*) impl)->getUsingObject();
 }
 
 bool SuiInputBoxAdapter::isInputBox() {

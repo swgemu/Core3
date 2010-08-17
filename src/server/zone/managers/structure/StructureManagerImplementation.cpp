@@ -23,6 +23,9 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
@@ -41,6 +44,8 @@
 #include "tasks/StructureConstructionCompleteTask.h"
 
 #include "StructureManager.h"
+
+#include "server/zone/objects/structure/StructureObject.h"
 
 SortedVector<String> StructureManagerImplementation::listOfStaticBuildings;
 SortedVector<String> StructureManagerImplementation::createdFiles;
@@ -1020,7 +1025,7 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 			if (structureTerminal != NULL) {
 				structureTerminal->initializePosition(structureTerminalLocation->getPositionX(), structureTerminalLocation->getPositionZ(), structureTerminalLocation->getPositionY());
 				structureTerminal->setDirection(structureTerminalLocation->getDirection());
-				structureTerminal->setBuildingObject(buio);
+				structureTerminal->setStructureObject(buio);
 
 				//Add the structure terminal to the cell
 				cell->addObject(structureTerminal, -1, true);
@@ -1048,6 +1053,25 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 		emailBody.setDI(player->getLotsRemaining());
 		UnicodeString subject = "@player_structure:construction_complete_subject";
 		chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, player->getFirstName());
+	}
+
+	//Waypoint
+	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
+
+	if (playerObject != NULL) {
+		String full;
+		if (buio->getCustomObjectName().isEmpty())
+			buio->getObjectName()->getFullPath(full);
+		else
+			full = buio->getCustomObjectName().toString();
+
+		String waypointTemplate("object/waypoint/world_waypoint_blue.iff");
+		ManagedReference<WaypointObject*> waypointObject = (WaypointObject*) zserv->createObject(waypointTemplate.hashCode(), 1);
+		waypointObject->setCustomName(full);
+		waypointObject->setActive(true);
+		waypointObject->setPosition(x, z, y);
+		waypointObject->setPlanetCRC(zone->getPlanetName().hashCode());
+		playerObject->addWaypoint(waypointObject, true);
 	}
 
 	return 0;
@@ -1092,6 +1116,25 @@ int StructureManagerImplementation::placeInstallation(PlayerCreature* player, Sh
 	installation->notifyStructurePlaced(player);
 	installation->updateToDatabase();
 
+	//Waypoint
+	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
+
+	if (playerObject != NULL) {
+		String full;
+		if (installation->getCustomObjectName().isEmpty())
+			installation->getObjectName()->getFullPath(full);
+		else
+			full = installation->getCustomObjectName().toString();
+
+		String waypointTemplate("object/waypoint/world_waypoint_blue.iff");
+		ManagedReference<WaypointObject*> waypointObject = (WaypointObject*) zserv->createObject(waypointTemplate.hashCode(), 1);
+		waypointObject->setCustomName(full);
+		waypointObject->setActive(true);
+		waypointObject->setPosition(x, z, y);
+		waypointObject->setPlanetCRC(zone->getPlanetName().hashCode());
+		playerObject->addWaypoint(waypointObject, true);
+	}
+
 	//Send out email informing the user that their construction has completed successfully.
 	ManagedReference<ChatManager*> chatManager = zserv->getChatManager();
 
@@ -1107,10 +1150,317 @@ int StructureManagerImplementation::placeInstallation(PlayerCreature* player, Sh
 	return 0;
 }
 
-int StructureManagerImplementation::destroyStructure(PlayerCreature* player, SceneObject* structure) {
+int StructureManagerImplementation::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return 0;
+
+	float x = structureObject->getPositionX();
+	float y = structureObject->getPositionY();
+	float z = structureObject->getZone()->getHeight(x, y);
+
+	if (structureObject->isBuildingObject()) {
+		ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
+
+		for (int i = 0; i < buildingObject->getTotalCellNumber(); ++i) {
+			ManagedReference<CellObject*> cellObject = buildingObject->getCell(i);
+
+			int childObjects = cellObject->getContainerObjectsSize();
+
+			if (cellObject == NULL || childObjects <= 0)
+				continue;
+
+			//Traverse the vector backwards since the size will change as objects are removed.
+			for (int j = childObjects - 1; j >= 0; --j) {
+				ManagedReference<SceneObject*> obj = cellObject->getContainerObject(j);
+
+				if (obj->isPlayerCreature()) {
+					ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) obj.get();
+
+					playerCreature->teleport(x, z, y, 0);
+				}
+			}
+		}
+	}
+
+	structureObject->removeFromZone();
+
+	int lotsRemaining = player->getLotsRemaining();
+
+	player->setLotsRemaining(lotsRemaining + structureObject->getLotSize());
+
+	structureObject->destroyObjectFromDatabase(true);
+
+	player->sendSystemMessage("@player_structure:structure_destroyed"); //Structure destroyed.
+
 	return 0;
 }
 
-int StructureManagerImplementation::redeedStructure(PlayerCreature* player, SceneObject* structure) {
+int StructureManagerImplementation::redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy) {
+	if (structureObject->getDeedObjectID() == 0) {
+		//No deed exists for this structure.
+		return 0;
+	}
+
+	ZoneServer* zoneServer = player->getZoneServer();
+
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(structureObject->getDeedObjectID());
+
+	if (obj != NULL && obj->isDeedObject()) {
+		ManagedReference<Deed*> deed = (Deed*) obj.get();
+
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+		if (inventory != NULL) {
+			inventory->addObject(deed, -1, true);
+		}
+	}
+
+	//Since we have retrieved the deed, set the structures deed id to 0 so that it doesn't get deleted.
+	structureObject->setDeedObjectID(0);
+
+	if (destroy)
+		destroyStructure(player, structureObject);
+
+	return 0;
+}
+
+int StructureManagerImplementation::sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject) {
+	if (structureObject == NULL)
+		return 0;
+
+	if (!structureObject->isOwnerOf(player)) {
+		player->sendSystemMessage("@player_structure:destroy_must_be_owner"); //You must be the owner to destroy a structure.
+		return 0;
+	}
+
+	String full;
+	if (structureObject->getCustomObjectName().isEmpty())
+		structureObject->getObjectName()->getFullPath(full);
+	else
+		full = structureObject->getCustomObjectName().toString();
+
+	String red = "\\#FF6347";
+	String green = "\\#32CD32";
+	String close = "\\#.";
+
+	String no = red + " @player_structure:can_redeed_no_suffix " + close;
+	String yes = green + " @player_structure:can_redeed_yes_suffix " + close;
+
+	String redeed = (structureObject->isRedeedable()) ? yes : no;
+
+	StringBuffer maint;
+	maint << "@player_structure:redeed_maintenance " << ((structureObject->isRedeedable()) ? green : red) << structureObject->getSurplusMaintenance() << "/" << structureObject->getRedeedCost() << close;
+
+	StringBuffer entry;
+	entry << "@player_structure:confirm_destruction_d1 ";
+	entry << "@player_structure:confirm_destruction_d2 \n\n";
+	entry << "@player_structure:confirm_destruction_d3a ";
+	entry << green << " @player_structure:confirm_destruction_d3b " << close << " ";
+	entry << "@player_structure:confirm_destruction_d4 \n";
+	entry << "@player_structure:redeed_confirmation " << redeed;
+
+	StringBuffer cond;
+	cond << "@player_structure:redeed_condition \\#32CD32 " << (structureObject->getMaxCondition() - structureObject->getConditionDamage()) << "/" << structureObject->getMaxCondition() << "\\#.";
+
+	SuiListBox* destroybox = new SuiListBox(player, SuiWindowType::STRUCTURE_DESTROY_CONFIRM);
+	destroybox->setCancelButton(true, "@no");
+	destroybox->setOkButton(true, "@yes");
+	destroybox->setUsingObject(structureObject);
+	destroybox->setPromptTitle(full);
+	destroybox->setPromptText(entry.toString());
+	destroybox->addMenuItem("@player_structure:can_redeed_alert " + redeed);
+	destroybox->addMenuItem(cond.toString());
+	destroybox->addMenuItem(maint.toString());
+
+	player->addSuiBox(destroybox);
+	player->sendMessage(destroybox->generateMessage());
+
+	return 0;
+}
+
+int StructureManagerImplementation::sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject) {
+	if (structureObject == NULL)
+		return 0;
+
+	if (!structureObject->isOwnerOf(player)) {
+		player->sendSystemMessage("@player_structure:destroy_must_be_owner"); //You must be the owner to destroy a structure.
+		return 0;
+	}
+
+	//Generate a new destroy code.
+	uint32 destroyCode = structureObject->generateDestroyCode();
+
+	String red = "\\#FF6347";
+	String green = "\\#32CD32";
+	String close = "\\#.";
+
+	String no = red + " @player_structure:will_not_redeed_confirm " + close;
+	String yes = green + " @player_structure:will_redeed_confirm " + close;
+
+	String redeed = (structureObject->isRedeedable()) ? yes : no;
+
+	StringBuffer entry;
+	entry << "@player_structure:your_structure_prefix ";
+	entry << redeed << " @player_structure:will_redeed_suffix \n\n";
+	entry << "Code: " << destroyCode;
+
+	SuiInputBox* destroycodebox = new SuiInputBox(player, SuiWindowType::STRUCTURE_DESTROY_CODE, 0);
+	destroycodebox->setUsingObject(structureObject);
+	destroycodebox->setPromptTitle("@player_structure:confirm_destruction_t"); //Confirm Structure Deletion
+	destroycodebox->setPromptText(entry.toString());
+	destroycodebox->setCancelButton(true, "@cancel");
+	destroycodebox->setMaxInputSize(6);
+
+	player->addSuiBox(destroycodebox);
+	player->sendMessage(destroycodebox->generateMessage());
+	return 0;
+}
+
+int StructureManagerImplementation::sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject) {
+	//TODO: Add in extra status information for administrators.
+	ManagedReference<SuiListBox*> statusBox = new SuiListBox(player, SuiWindowType::STRUCTURE_STATUS);
+	statusBox->setPromptTitle("@player_structure:structure_status_t"); //Structure Status
+
+	if (structureObject->isInstallationObject())
+		((InstallationObject*) structureObject)->updateInstallationWork();
+
+	String full;
+	if (structureObject->getCustomObjectName().isEmpty())
+		structureObject->getObjectName()->getFullPath(full);
+	else
+		full = structureObject->getCustomObjectName().toString();
+
+	statusBox->setPromptText("@player_structure:structure_name_prompt " + full); //Structure Name:
+
+	ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) structureObject->getZoneServer()->getObject(structureObject->getOwnerObjectID());
+	statusBox->addMenuItem("@player_structure:owner_prompt  " + playerCreature->getFirstName());
+
+	if (structureObject->isBuildingObject()) {
+		ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
+
+		if (buildingObject->isDeclaredResidency())
+			statusBox->addMenuItem("@player_structure:declared_residency"); //You have declared your residency here.
+	}
+
+	if (structureObject->isPublicStructure())
+		statusBox->addMenuItem("@player_structure:structure_public"); //This structure is public
+	else
+		statusBox->addMenuItem("@player_structure:structure_private"); //This structure is private
+
+	StringBuffer sscond, ssmpool, ssmrate, ssppool, ssprate, ssnitems;
+
+	sscond << dec << "@player_structure:condition_prompt " << ((int) (((structureObject->getMaxCondition() - structureObject->getConditionDamage()) / structureObject->getMaxCondition()) * 100)) << "%";
+	statusBox->addMenuItem(sscond.toString());
+
+	ssmpool << dec << "@player_structure:maintenance_pool_prompt " << (int) structureObject->getSurplusMaintenance(); //Maintenance Pool:
+	statusBox->addMenuItem(ssmpool.toString());
+
+	ssmrate << dec << "@player_structure:maintenance_rate_prompt " << (int) structureObject->getBaseMaintenanceRate() << " @player_structure:units_per_hour";
+	statusBox->addMenuItem(ssmrate.toString());
+
+	if (structureObject->isInstallationObject() && !((InstallationObject*) structureObject)->isGeneratorObject()) {
+		ssppool << dec << "@player_structure:power_reserve_prompt " << (int) structureObject->getSurplusPower();
+		statusBox->addMenuItem(ssppool.toString());
+
+		ssprate << dec << "@player_structure:power_consumption_prompt " << (int) structureObject->getBasePowerRate() << " @player_structure:units_per_hour";
+		statusBox->addMenuItem(ssprate.toString());
+	}
+
+	if (structureObject->isBuildingObject())
+		//TODO: Count items that can be picked up by the player (exclude terminals like structure, elevator, guild)...
+		ssnitems << dec << "@player_structure:items_in_building_prompt " << (int) 0; //Number of Items in Building:
+
+	player->addSuiBox(statusBox);
+	player->sendMessage(statusBox->generateMessage());
+
+	return 0;
+}
+
+int StructureManagerImplementation::handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject) {
+	try {
+		StringBuffer sstext, sscash, ssmaintenance;
+
+		ManagedReference<SuiTransferBox*> maintenanceBox = new SuiTransferBox(player, SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE);
+		maintenanceBox->setUsingObject(structureObject);
+		maintenanceBox->setPromptTitle("@player_structure:select_amount");
+
+		sstext << "@player_structure:select_maint_amount \n"
+			   << "@player_structure:current_maint_pool " << (int) structureObject->getSurplusMaintenance();
+		maintenanceBox->setPromptText(sstext.toString());
+
+		sscash << player->getCashCredits();
+		ssmaintenance << structureObject->getSurplusMaintenance();
+
+		maintenanceBox->addFrom("@player_structure:total_funds", sscash.toString(), sscash.toString(), "1");
+		maintenanceBox->addTo("@player_structure:to_pay", ssmaintenance.toString(), ssmaintenance.toString(), "1");
+
+		player->addSuiBox(maintenanceBox);
+		player->sendMessage(maintenanceBox->generateMessage());
+
+	} catch(...) {
+		error("unreported exception in InstallationObjectImplementation::handleStructureManageMaintenance");
+	}
+
+	return 0;
+}
+
+int StructureManagerImplementation::handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject) {
+	return 0;
+}
+
+int StructureManagerImplementation::handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject) {
+	if (!structureObject->isBuildingObject()) {
+		player->sendSystemMessage("@player_structure:residence_must_be_building"); //Your declared residence must be a building.
+		return 1;
+	}
+
+	ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
+
+	//TODO: Register the building with the city if possible...
+
+	if (buildingObject->isOwnerOf(player)) {
+		player->sendSystemMessage("@player_structure:declare_must_be_owner"); //You must be the owner of the building to declare residence.
+		return 1;
+	}
+
+	if (buildingObject->isDeclaredResidency()) {
+		player->sendSystemMessage("@player_structure:already_residence"); //This building is already your residence.
+		return 1;
+	}
+
+	buildingObject->setDeclaredResidency(true);
+
+	player->sendSystemMessage("@player_structure:change_residence"); //You change your residence to this building.
+
+	//TODO: Input time limit on changing residence.
+
+	return 0;
+}
+
+int StructureManagerImplementation::handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject) {
+	structureObject->setPublicStructure(!structureObject->isPublicStructure());
+
+	if (structureObject->isPublicStructure())
+		player->sendSystemMessage("@player_structure:structure_now_public"); //This structure is now public
+	else
+		player->sendSystemMessage("@player_structure:structure_now_private"); //This structure is now private
+
+	//TODO: Update all players in the area with the cell permission changes...
+
+	return 0;
+}
+
+int StructureManagerImplementation::sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject) {
+	ManagedReference<SuiInputBox*> setTheName = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
+
+	setTheName->setPromptTitle("@sui:set_name_title");
+	setTheName->setPromptText("@sui:set_name_prompt");
+	setTheName->setUsingObject(structureObject);
+
+	player->addSuiBox(setTheName);
+	player->sendMessage(setTheName->generateMessage());
+
 	return 0;
 }

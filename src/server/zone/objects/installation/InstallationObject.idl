@@ -44,7 +44,7 @@ which carries forward this exception.
 
 package server.zone.objects.installation;
 
-import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.structure.StructureObject;
 import engine.lua.LuaObject;
 import system.util.SortedVector;
 import server.zone.objects.creature.CreatureObject;
@@ -54,7 +54,6 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
 import engine.service.proto.BasePacket;
 import system.lang.ref.Reference;
-include server.zone.objects.building.StructurePermissionList;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.installation.SyncrhonizedUiListenInstallationTask;
 import system.util.VectorMap;
@@ -63,30 +62,10 @@ import server.zone.objects.resource.ResourceContainer;
 include server.zone.objects.installation.HopperList;
 
 
-class InstallationObject extends TangibleObject {
-	@dereferenced
-	protected StructurePermissionList structurePermissionList;
-	
+class InstallationObject extends StructureObject {
 	@dereferenced
 	protected transient Reference<SyncrhonizedUiListenInstallationTask> syncUiTask;
-	
-	protected unsigned long ownerObjectID;
-	protected int lotSize;
-	
 	protected boolean operating;
-	
-	protected unsigned long deedObjectID; 
-	
-	protected int baseMaintenanceRate;
-	protected int basePowerRate;
-	
-	protected unsigned int maintenancePool;
-	protected unsigned int powerPool;
-	
-	protected float surplusMaintenance;
-	protected float surplusPower;
-	
-	protected boolean publicStructure;
 	
 	@dereferenced
 	protected SortedVector<PlayerCreature> operatorList;
@@ -110,21 +89,10 @@ class InstallationObject extends TangibleObject {
 		
 		super.staticObject = false;
 		
-		publicStructure = true;
-		
 		operating = false;
 		
-		lotSize = 0;
-		
 		installationType = 0;
-		
-		baseMaintenanceRate = 0;
-		basePowerRate = 0;
-		maintenancePool = 0;
-		powerPool = 0;
-		deedObjectID = 0;
-		surplusMaintenance = 0;
-		surplusPower = 0;
+
 		operatorList.setNoDuplicateInsertPlan();
 		
 		hopperSizeMax = 10000;
@@ -175,16 +143,9 @@ class InstallationObject extends TangibleObject {
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
-	/**
-	 * Gets called when the structure has been created;
-	 */
-	public abstract int notifyStructurePlaced(PlayerCreature player) {
-		return 0;
-	}
+
 	
-	public abstract boolean checkRequisitesForPlacement(PlayerCreature player) {
-		return true;
-	}  
+ 
 
 	/**
 	 * Broadcasts the message to the in range objects
@@ -217,10 +178,6 @@ class InstallationObject extends TangibleObject {
 	
 	public abstract native void updateInstallationWork();
 	
-	public native void handleStructureStatus(PlayerCreature player);
-	public native void handleStructureManageMaintenance(PlayerCreature player);
-	public native void handleSetObjectName(PlayerCreature player);
-	public native void handleStructureDestroy(PlayerCreature player);
 	public native void handleStructureAddEnergy(PlayerCreature player);
 	
 	public native void setActiveResource(ResourceContainer container);
@@ -252,26 +209,7 @@ class InstallationObject extends TangibleObject {
 	
 	public native float getActualRate();
 	
-	
-	
 	public native void broadcastToOperators(BasePacket packet);
-	
-	/**
-	 * Returns if the creature is on the admin list or not for this structure.
-	 * @param creature The creature to check for admin permissions on.
-	 * @return boolean True if the creature is on the admin list.
-	 */
-	public boolean isOnAdminList(SceneObject scno) {
-		return structurePermissionList.isOnAdminList(scno.getObjectID());
-	}
-	
-	public boolean isOnAdminList(unsigned long oid) {
-		return structurePermissionList.isOnAdminList(oid);
-	}
-	
-	public void sendPermissionListTo(PlayerCreature player, final string listName) {
-		structurePermissionList.sendTo(player, listName);
-	}
 	
 	public void addOperator(PlayerCreature player) {
 		operatorList.put(player);
@@ -283,96 +221,7 @@ class InstallationObject extends TangibleObject {
 	
 	public native void sendBaselinesTo(SceneObject player);
 	
-	public void setLotSize(int lotsize) {
-		lotSize = lotsize;
-	}
 	
-	public int getLotSize() {
-		return lotSize;
-	}
-
-	public void setDeedObjectID(unsigned long deedid) {
-		deedObjectID = deedid;
-	}
-	
-	public unsigned long getDeedObjectID() {
-		return deedObjectID;
-	}
-	
-	public void setOwnerObjectID(unsigned long ownerID) {
-		ownerObjectID = ownerID;
-		structurePermissionList.grantPermission(ownerID, StructurePermissionList.OWNER);
-	}
-	
-	public unsigned long getOwnerObjectID() {
-		return ownerObjectID;
-	}
-	
-	public void setMaintenancePool(unsigned int maintenance) {
-		maintenancePool = maintenance;
-	}
-	
-	public unsigned int getMaintenancePool() {
-		return maintenancePool;
-	}
-	
-	public void setPowerPool(unsigned int power) {
-		powerPool = power;
-	}
-	
-	public unsigned int getPowerPool() {
-		return powerPool;
-	}
-	
-	public void addPower(int add) {
-		surplusPower = surplusPower + add;
-	}
-	
-	public void addMaintenance(float maint) {
-		surplusMaintenance = surplusMaintenance + maint;
-	}
-	
-	/**
-	 * Returns the base power rate for the installation.
-	 * This value is the rate before any bonuses from the merchant skills are added.
-	 * @return int The base power rate for the installation.
-	 */
-	public int getBasePowerRate() {
-		return basePowerRate;
-	}
-	
-	/**
-	 * Sets the base power rate for this installation. This is the rate before any bonuses are applied.
-	 * @param powerRate The new power rate to set for this installation.
-	 */
-	public void setBasePowerRate(int powerRate) {
-		basePowerRate = powerRate;
-	}
-	
-	/**
-	 * Sets the base maintenance rate for this building. This is the rate before any bonuses are applied.
-	 * @param maintenanceRate The new maintenance rate to set for this building.
-	 */
-	public void setBaseMaintenanceRate(int maintenanceRate) {
-		baseMaintenanceRate = maintenanceRate;
-	}
-	
-	/**
-	 * Returns the base maintenance rate for the building.
-	 * This value is the rate before any bonuses from the merchant skills are added.
-	 * @return int The base maintenance rate for the building.
-	 */
-	public int getBaseMaintenanceRate() {
-		return baseMaintenanceRate;
-	}
-	
-	/**
-	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
-	 * @return int The cost to redeed this building.
-	 */
-	public int getRedeedCost() {
-		return baseMaintenanceRate * 50;
-	}
 	
 	public boolean isInstallationObject() {
 		return true;

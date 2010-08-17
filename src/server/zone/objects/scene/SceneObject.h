@@ -918,6 +918,8 @@ public:
 
 	bool isManufactureSchematic();
 
+	bool isStructureObject();
+
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
@@ -1781,6 +1783,8 @@ public:
 
 	virtual bool isManufactureSchematic();
 
+	virtual bool isStructureObject();
+
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
@@ -2137,6 +2141,8 @@ public:
 	bool isCraftingStation();
 
 	bool isManufactureSchematic();
+
+	bool isStructureObject();
 
 	bool isBazaarTerminal();
 

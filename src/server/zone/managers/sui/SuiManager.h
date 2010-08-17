@@ -91,6 +91,11 @@ namespace server {
 	  	void handleRepairWeapon(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
 	  	void handleRepairArmor(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
 
+	  	//Structure Stuff
+	  	void handleStructureStatus(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleStructureDestroyConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleStructureDestroyCode(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& input);
+
 	  	void handleTicketPurchaseMessageBox(uint32 boxID, PlayerCreature* player);
 	  	void handleTicketCollectorRespones(uint32 boxID, PlayerCreature* player, uint32 cancel, int ticketIndex);
 

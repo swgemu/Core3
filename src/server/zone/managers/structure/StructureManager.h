@@ -75,6 +75,20 @@ using namespace server::zone::objects::player;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace structure {
+
+class StructureObject;
+
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
+namespace server {
+namespace zone {
 namespace managers {
 namespace objectcontroller {
 
@@ -126,9 +140,25 @@ public:
 
 	int constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
 
-	int destroyStructure(PlayerCreature* player, SceneObject* structure);
+	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
 
-	int redeedStructure(PlayerCreature* player, SceneObject* structure);
+	int redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy = true);
+
+	int sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject);
+
+	int sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject);
+
+	int sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject);
+
+	int handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject);
+
+	int handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject);
+
+	int handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject);
+
+	int handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject);
+
+	int sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject);
 
 protected:
 	StructureManager(DummyConstructorParameter* param);
@@ -203,9 +233,25 @@ public:
 
 	int constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
 
-	int destroyStructure(PlayerCreature* player, SceneObject* structure);
+	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
 
-	int redeedStructure(PlayerCreature* player, SceneObject* structure);
+	int redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy = true);
+
+	int sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject);
+
+	int sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject);
+
+	int sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject);
+
+	int handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject);
+
+	int handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject);
+
+	int handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject);
+
+	int handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject);
+
+	int sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject);
 
 	StructureManager* _this;
 
@@ -250,9 +296,25 @@ public:
 
 	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
 
-	int destroyStructure(PlayerCreature* player, SceneObject* structure);
+	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
 
-	int redeedStructure(PlayerCreature* player, SceneObject* structure);
+	int redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy);
+
+	int sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject);
+
+	int sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject);
+
+	int sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject);
+
+	int handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject);
+
+	int handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject);
+
+	int handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject);
+
+	int handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject);
+
+	int sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject);
 
 };
 

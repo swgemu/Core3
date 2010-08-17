@@ -52,6 +52,7 @@ import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.structure.StructureObject;
 import system.thread.Thread;
 import server.zone.managers.objectcontroller.ObjectController;
 import system.util.SortedVector;
@@ -149,7 +150,7 @@ class StructureManager extends ManagedObject implements Logger {
 	 * @param player The player who confimed structure destruction.
 	 * @param structure The structure that is being destroyed.
 	 */
-	public native int destroyStructure(PlayerCreature player, SceneObject structure);
+	public native int destroyStructure(PlayerCreature player, StructureObject structureObject);
 	
 	/**
 	 * Redeeds the structure, returning it to the player in deed form with any surplus maintenance and power attached.
@@ -158,7 +159,37 @@ class StructureManager extends ManagedObject implements Logger {
 	 * post: player locked, building locked
 	 * @param player The player who is redeeding the structure.
 	 * @param building The building being redeeded.
+	 * @param destroy Should the structure be destroyed after the deed is retrieved?
 	 */
-	public native int redeedStructure(PlayerCreature player, SceneObject structure);
+	public native int redeedStructure(PlayerCreature player, StructureObject structureObject, boolean destroy = true);
+	
+	/**
+	 * Sends a SUI List box containing information regarding the redeed status of this structure, and asking the player
+	 * if they wish to continue with the destruction process.
+	 * pre: player locked, building locked
+	 * post: player locked, building locked
+	 * @param player The player who is destroying the structure.
+	 * @param building the structure being destroyed.
+	 */
+	public native int sendDestroyConfirmTo(PlayerCreature player, StructureObject structureObject);
+	
+	/**
+	 * Sends a SUI Input box requesting a destroy code be entered for final confirmation.
+	 * pre: player locked, building locked
+	 * post: player locked, building locked
+	 */
+	public native int sendDestroyCodeTo(PlayerCreature player, StructureObject structureObject);
+	
+	public native int sendStructureStatusTo(PlayerCreature player, StructureObject structureObject);
+	
+	public native int handlePayMaintenance(PlayerCreature player, StructureObject structureObject);
+	
+	public native int handleWithdrawMaintenance(PlayerCreature player, StructureObject structureObject);
+	
+	public native int handleDeclareResidency(PlayerCreature player, StructureObject structureObject);
+	
+	public native int handlePrivacyChange(PlayerCreature player, StructureObject structureObject);
+	
+	public native int sendStructureNamePromptTo(PlayerCreature player, StructureObject structureObject);
 }
 

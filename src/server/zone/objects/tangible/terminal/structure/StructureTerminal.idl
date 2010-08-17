@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.tangible.terminal.structure;
 
 import server.zone.objects.tangible.terminal.Terminal;
-import server.zone.objects.building.BuildingObject;
+import server.zone.objects.structure.StructureObject;
 import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
@@ -53,9 +53,9 @@ import server.zone.packets.object.ObjectMenuResponse;
 
 class StructureTerminal extends Terminal {
 	@weakReference
-	protected BuildingObject buildingObject;
+	protected StructureObject structureObject;
 	
-	public StructureTerminal() {		
+	public StructureTerminal() {
 		Logger.setLoggingName("StructureTerminal");
 	}
 	
@@ -91,11 +91,11 @@ class StructureTerminal extends Terminal {
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
 	
-	public void setBuildingObject(BuildingObject obj) {
-		buildingObject = obj;
+	public void setStructureObject(StructureObject obj) {
+		structureObject = obj;
 	}
 	
-	public BuildingObject getBuildingObject() {
-		return buildingObject;
+	public StructureObject getStructureObject() {
+		return structureObject;
 	}
 }

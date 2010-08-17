@@ -127,6 +127,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
 				server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
 				server/zone/objects/resource/ResourceSpawn.cpp \
+				server/zone/objects/structure/StructureObject.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
 				server/zone/objects/tangible/fishing/FishObject.cpp \
@@ -300,7 +301,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
 		server/zone/objects/building/city/CityHallObjectImplementation.cpp \
-		server/zone/objects/building/StructurePermissionList.cpp \
+		server/zone/objects/structure/StructurePermissionList.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
@@ -326,6 +327,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/MeleeWeaponObjectImplementation.cpp \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
+		server/zone/objects/structure/StructureObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp \
 		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
