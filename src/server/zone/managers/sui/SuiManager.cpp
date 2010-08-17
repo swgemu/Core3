@@ -717,7 +717,7 @@ void SuiManager::handleSampleRadioactiveConfirm(uint32 boxID, PlayerCreature* pl
 
 			if(surveyTool != NULL && cancel == 0) {
 				Locker _locker2(surveyTool);
-				surveyTool->consentRadioactiveSample();
+				surveyTool->consentRadioactiveSample(player);
 			}
 
 			player->removeSuiBox(boxID, true);
