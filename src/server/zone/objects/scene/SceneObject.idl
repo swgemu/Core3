@@ -1276,6 +1276,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return false;
 	}
 	
+	public abstract boolean isStructureObject() {
+		return false;
+	}
+	
 	public boolean isBazaarTerminal() {
 		return gameObjectType == BAZAAR;
 	}

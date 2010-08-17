@@ -46,6 +46,9 @@ which carries forward this exception.
 #define PERMISSIONLISTMODIFYCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class PermissionListModifyCommand : public QueueCommand {
 public:
@@ -62,6 +65,87 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ZoneServer* zoneServer = creature->getZoneServer();
+
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
+
+		ManagedReference<StructureObject*> structureObject = NULL;
+
+		//Try to find the target of the command...
+		if (obj->isInstallationObject()) {
+			structureObject = (StructureObject*) obj.get();
+		} else if (creature->getParent() != NULL && creature->getParent()->isCellObject()) {
+			ManagedReference<CellObject*> cell = (CellObject*) creature->getParent();
+
+			if (cell->getParent() != NULL && cell->getParent()->isBuildingObject())
+				structureObject = (StructureObject*) cell->getParent();
+		}
+
+		if (structureObject == NULL)
+			return INVALIDPARAMETERS;
+
+		StringTokenizer tokenizer(arguments.toString());
+		tokenizer.setDelimeter(" ");
+
+		String playerName;
+		tokenizer.getStringToken(playerName);
+
+		if (!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
+
+		String listName;
+		tokenizer.getStringToken(listName);
+
+		if (!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
+
+		String action;
+		tokenizer.getStringToken(action);
+
+		PlayerManager* playerManager = zoneServer->getPlayerManager();
+
+		if (!playerManager->existsName(playerName)) {
+			ParameterizedStringId params;
+			params.setStringId("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
+			params.setTO(playerName);
+			creature->sendSystemMessage(params);
+			return INVALIDPARAMETERS;
+		}
+
+		uint64 targetPlayerID = playerManager->getObjectID(playerName);
+
+		if (listName != "ADMIN" && listName != "ENTRY" && listName != "BAN" && listName != "HOPPER" && listName != "VENDOR")
+			return INVALIDPARAMETERS;
+
+		if (action == "add") {
+			if (structureObject->grantPermission(targetPlayerID, listName)) {
+				ParameterizedStringId params;
+				params.setStringId("@player_structure:player_added"); //%NO added to the list.
+				params.setTO(playerName);
+				creature->sendSystemMessage(params);
+			}
+		} else if (action == "remove") {
+			if (structureObject->revokePermission(targetPlayerID, listName)) {
+				ParameterizedStringId params;
+				params.setStringId("@player_structure:player_removed"); //%NO removed from the list.
+				params.setTO(playerName);
+				creature->sendSystemMessage(params);
+			}
+		}
+
+		ChatManager* chatManager = zoneServer->getChatManager();
+
+		if (chatManager == NULL)
+			return SUCCESS;
+
+		ManagedReference<PlayerCreature*> targetPlayer = chatManager->getPlayer(playerName);
+
+		//Update the cell permissions in case the player is in the building currently.
+		if (targetPlayer != NULL && structureObject->isBuildingObject()) {
+			BuildingObject* buildingObject = (BuildingObject*) structureObject.get();
+			buildingObject->updateCellPermissionsTo(targetPlayer);
+		}
 
 		return SUCCESS;
 	}

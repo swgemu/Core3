@@ -7,15 +7,19 @@
 
 
 #include "StructureTerminal.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (buildingObject == NULL)
+	if (structureObject == NULL)
 		return;
 
-	if (buildingObject->isOnAdminList(player)) {
+	if (structureObject->isOnAdminList(player)) {
 		menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
 		menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
 		menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
@@ -35,37 +39,54 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 }
 
 int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (structureObject == NULL)
+		return 0;
+
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+	if (planetManager == NULL)
+		return 0;
+
+	ManagedReference<StructureManager*> structureManager = planetManager->getStructureManager();
+
+	if (structureManager == NULL)
+		return 0;
+
+	Locker structureLocker(structureObject, player);
+
+	if (!structureObject->isOnAdminList(player))
+		return 1;
 
 	switch (selectedID) {
 	case 121:
-		buildingObject->sendPermissionListTo(player, "ADMIN");
+		structureObject->sendPermissionListTo(player, "ADMIN");
 		break;
 	case 119:
-		buildingObject->sendPermissionListTo(player, "ENTRY");
+		structureObject->sendPermissionListTo(player, "ENTRY");
 		break;
 	case 120:
-		buildingObject->sendPermissionListTo(player, "BAN");
+		structureObject->sendPermissionListTo(player, "BAN");
 		break;
 	case 128:
 		//Destroy Structure
-		buildingObject->handleStructureDestroyRequest(player);
+		structureManager->sendDestroyConfirmTo(player, structureObject);
 		break;
 	case 129:
 		//Pay Maintenance
-		buildingObject->handlePayMaintenance(player);
+		structureManager->handlePayMaintenance(player, structureObject);
 		break;
 	case 124:
 		//Structure Status
-		buildingObject->handleStructureStatus(player);
+		structureManager->sendStructureStatusTo(player, structureObject);
 		break;
 	case 127:
-		buildingObject->handleDeclareResidency(player);
+		structureManager->handleDeclareResidency(player, structureObject);
 		break;
 	case 125:
-		buildingObject->handlePrivacyChange(player);
+		structureManager->handlePrivacyChange(player, structureObject);
 		break;
 	case 50:
-		buildingObject->handleSetObjectName(player);
+		structureManager->sendStructureNamePromptTo(player, structureObject);
 		break;
 	}
 

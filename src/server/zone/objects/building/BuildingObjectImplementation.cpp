@@ -9,6 +9,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 #include "../../templates/tangible/SharedBuildingObjectTemplate.h"
 #include "../tangible/terminal/structure/StructureTerminal.h"
@@ -18,6 +19,7 @@
 
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
+#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -26,7 +28,7 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 }
 
 void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	TangibleObjectImplementation::loadTemplateData(templateData);
+	StructureObjectImplementation::loadTemplateData(templateData);
 
 	SharedBuildingObjectTemplate* buildingData = dynamic_cast<SharedBuildingObjectTemplate*>(templateData);
 
@@ -35,8 +37,6 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	containerVolumeLimit = 0xFFFFFFFF;
 
 	containerType = 2;
-
-	lotSize = buildingData->getLotSize();
 
 	optionsBitmask = 0x00000100;
 }
@@ -219,112 +219,42 @@ void BuildingObjectImplementation::addCell(CellObject* cell) {
 		error("could not add cell");
 }
 
-void BuildingObjectImplementation::handleSetObjectName(PlayerCreature* player) {
-	ManagedReference<SuiInputBox*> setTheName = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
+void BuildingObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	StructureObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 
-	setTheName->setPromptTitle("@sui:set_name_title");
-	setTheName->setPromptText("@sui:set_name_prompt");
-	setTheName->setUsingObject(_this);
 
-	player->addSuiBox(setTheName);
-	player->sendMessage(setTheName->generateMessage());
-}
-
-void BuildingObjectImplementation::handlePrivacyChange(PlayerCreature* player) {
-	//Toggle privacy.
-	publicStructure = !publicStructure;
-
-	if (publicStructure)
-		player->sendSystemMessage("@player_structure:structure_now_public"); //This structure is now public
-	else
-		player->sendSystemMessage("@player_structure:structure_now_private"); //This structure is now private
-}
-
-void BuildingObjectImplementation::handleDeclareResidency(PlayerCreature* player) {
-	//Register the building with the city if possible...
-
-	if (player->getObjectID() != ownerObjectID) {
-		player->sendSystemMessage("@player_structure:declare_must_be_owner"); //You must be the owner of the building to declare residence.
+	if (!destroyContainedObjects)
 		return;
+
+	ManagedReference<SceneObject*> deed = getZoneServer()->getObject(deedObjectID);
+
+	if (deed != NULL)
+		deed->destroyObjectFromDatabase(true);
+
+	//Loop through the cells and delete all objects from the database.
+}
+
+void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) {
+	if (player->isInRange(_this, 256)) {
+		bool allowEntry = true;
+
+		if (!isPublicStructure()) {
+			if (isOnBanList(player) || (!isOnEntryList(player) && !isOnAccessList(player))) {
+				allowEntry = false;
+
+				//TODO: Boot the player out of the building to the front door if they no longer have permission to be inside.
+				player->teleport(positionX, zone->getHeight(positionX, positionY), positionY, 0);
+			}
+		}
+
+		for (int i = 0; i < totalCellNumber; ++i) {
+			ManagedReference<CellObject*> cell = getCell(i);
+
+			if (cell == NULL)
+				continue;
+
+			BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
+			player->sendMessage(perm);
+		}
 	}
-
-	if (declaredResidency) {
-		player->sendSystemMessage("@player_structure:already_residence"); //This building is already your residence.
-		return;
-	}
-
-	declaredResidency = true;
-
-	player->sendSystemMessage("@player_structure:change_residence"); //You change your residence to this building.
-
-	//TODO: Input time limit on changing residence.
-}
-
-void BuildingObjectImplementation::handleStructureStatus(PlayerCreature* player) {
-	//Close any existing structure status window.
-	//Create a status sui and send it to the player.
-	ManagedReference<SuiListBox*> statusBox = new SuiListBox(player, SuiWindowType::STRUCTURE_STATUS);
-	statusBox->setPromptTitle("@player_structure:structure_status_t"); //Structure Status
-
-	String full;
-	if (getCustomObjectName().isEmpty())
-		objectName.getFullPath(full);
-	else
-		full = getCustomObjectName().toString();
-
-	statusBox->setPromptText("@player_structure:structure_name_prompt " + full); //Structure Name:
-
-	ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) getZoneServer()->getObject(ownerObjectID);
-	statusBox->addMenuItem("@player_structure:owner_prompt  " + playerCreature->getFirstName());
-
-	if (declaredResidency)
-		statusBox->addMenuItem("@player_structure:declared_residency"); //You have declared your residency here.
-
-	if (publicStructure)
-		statusBox->addMenuItem("@player_structure:structure_public"); //This structure is public
-	else
-		statusBox->addMenuItem("@player_structure:structure_private"); //This structure is private
-
-	StringBuffer sscond, ssmpool, ssmrate, ssppool, ssnitems;
-
-	sscond << dec << "@player_structure:condition_prompt " << ((int) (((maxCondition - conditionDamage) / maxCondition) * 100)) << "%";
-	statusBox->addMenuItem(sscond.toString());
-
-	ssmpool << dec << "@player_structure:maintenance_pool_prompt " << (int) surplusMaintenance; //Maintenance Pool:
-	statusBox->addMenuItem(ssmpool.toString());
-
-	ssmrate << dec << "@player_structure:maintenance_rate_prompt " << (int) baseMaintenanceRate << " @player_structure:units_per_hour";
-	statusBox->addMenuItem(ssmrate.toString());
-
-	//TODO: Count items that can be picked up by the player (exclude terminals like structure, elevator, guild)...
-	ssnitems << dec << "@player_structure:items_in_building_prompt " << (int) 0; //Number of Items in Building:
-
-	player->addSuiBox(statusBox);
-	player->sendMessage(statusBox->generateMessage());
-}
-
-void BuildingObjectImplementation::handleStructureDestroyRequest(PlayerCreature* player) {
-	//This should send the confirm box. If confirmed, then destroy in sui/structure manager?
-
-	if (ownerObjectID != player->getObjectID()) {
-		player->sendSystemMessage("@player_structure:destroy_must_be_owner"); //You must be the owner to destroy a structure.
-		return;
-	}
-
-	//ManagedReference<SuiBox*> destroyBox = new SuiBox(player, SuiWindowType::)
-
-	//removeFromZone();
-
-	//int lotsRemaining = player->getLotsRemaining();
-
-	//player->setLotsRemaining(lotsRemaining + lotSize);
-
-	//destroyObjectFromDatabase(true);
-}
-
-void BuildingObjectImplementation::handleStructureDestroyConfirm(PlayerCreature* player, bool confirm) {
-
-}
-
-void BuildingObjectImplementation::handlePayMaintenance(PlayerCreature* player) {
 }

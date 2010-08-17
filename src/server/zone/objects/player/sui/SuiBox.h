@@ -143,6 +143,10 @@ public:
 
 	int getWindowType();
 
+	SceneObject* getUsingObject();
+
+	void setUsingObject(SceneObject* object);
+
 protected:
 	SuiBox(DummyConstructorParameter* param);
 
@@ -170,6 +174,8 @@ protected:
 	ManagedWeakReference<PlayerCreature* > player;
 
 	unsigned int boxID;
+
+	ManagedWeakReference<SceneObject* > usingObject;
 
 	unsigned long long usingObjectID;
 
@@ -294,6 +300,10 @@ public:
 
 	int getWindowType();
 
+	SceneObject* getUsingObject();
+
+	void setUsingObject(SceneObject* object);
+
 	SuiBox* _this;
 
 	operator const SuiBox*();
@@ -400,6 +410,10 @@ public:
 	unsigned int getBoxID();
 
 	int getWindowType();
+
+	SceneObject* getUsingObject();
+
+	void setUsingObject(SceneObject* object);
 
 protected:
 	String _param1_generateHeader__SuiCreatePageMessage_String_;

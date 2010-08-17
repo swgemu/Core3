@@ -25,6 +25,9 @@ void StructurePermissionList::sendTo(PlayerCreature* player, const String& listN
 		uint64 playerID = entry->getKey();
 		uint8 permission = entry->getValue();
 
+		if (!(permission & getPermissionFromListName(listName)))
+			continue;
+
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(playerID);
 
 		if (obj == NULL || !obj->isPlayerCreature())
@@ -46,17 +49,23 @@ void StructurePermissionList::sendTo(PlayerCreature* player, uint8 permission) {
 }
 
 bool StructurePermissionList::grantPermission(uint64 playerID, uint8 permission) {
-	if (!contains(playerID))
+	if (!contains(playerID)) {
 		put(playerID, permission);
-	else
-		get(playerID) |= permission;
+	} else {
+		uint8& playerPermissions = get(playerID);
+
+		if (playerPermissions & BANLIST)
+			return false;
+
+		playerPermissions |= permission;
+	}
 
 	return true;
 }
 
 bool StructurePermissionList::revokePermission(uint64 playerID, uint8 permission) {
 	if (contains(playerID))
-		get(playerID) |= ~permission;
+		get(playerID) &= ~permission;
 
 	return true;
 }
@@ -74,4 +83,17 @@ String StructurePermissionList::getListName(uint8 permission) {
 	}
 
 	return "ADMIN";
+}
+
+uint8 StructurePermissionList::getPermissionFromListName(const String& listName) {
+	if (listName == "BAN")
+		return BANLIST;
+	else if (listName == "ENTRY")
+		return ENTRYLIST;
+	else if (listName == "VENDOR")
+		return VENDOR;
+	else if (listName == "HOPPER")
+		return HOPPERLIST;
+	else
+		return ADMIN;
 }

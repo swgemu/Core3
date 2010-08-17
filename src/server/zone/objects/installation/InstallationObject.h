@@ -135,11 +135,9 @@ class ResourceContainer;
 
 using namespace server::zone::objects::resource;
 
-#include "server/zone/objects/building/StructurePermissionList.h"
-
 #include "server/zone/objects/installation/HopperList.h"
 
-#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -156,7 +154,7 @@ namespace zone {
 namespace objects {
 namespace installation {
 
-class InstallationObject : public TangibleObject {
+class InstallationObject : public StructureObject {
 public:
 	InstallationObject();
 
@@ -169,10 +167,6 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	int notifyStructurePlaced(PlayerCreature* player);
-
-	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
@@ -189,14 +183,6 @@ public:
 	void verifyOperators();
 
 	void updateInstallationWork();
-
-	void handleStructureStatus(PlayerCreature* player);
-
-	void handleStructureManageMaintenance(PlayerCreature* player);
-
-	void handleSetObjectName(PlayerCreature* player);
-
-	void handleStructureDestroy(PlayerCreature* player);
 
 	void handleStructureAddEnergy(PlayerCreature* player);
 
@@ -226,51 +212,11 @@ public:
 
 	void broadcastToOperators(BasePacket* packet);
 
-	bool isOnAdminList(SceneObject* scno);
-
-	bool isOnAdminList(unsigned long long oid);
-
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
-
 	void addOperator(PlayerCreature* player);
 
 	void removeOperator(PlayerCreature* player);
 
 	void sendBaselinesTo(SceneObject* player);
-
-	void setLotSize(int lotsize);
-
-	int getLotSize();
-
-	void setDeedObjectID(unsigned long long deedid);
-
-	unsigned long long getDeedObjectID();
-
-	void setOwnerObjectID(unsigned long long ownerID);
-
-	unsigned long long getOwnerObjectID();
-
-	void setMaintenancePool(unsigned int maintenance);
-
-	unsigned int getMaintenancePool();
-
-	void setPowerPool(unsigned int power);
-
-	unsigned int getPowerPool();
-
-	void addPower(int add);
-
-	void addMaintenance(float maint);
-
-	int getBasePowerRate();
-
-	void setBasePowerRate(int powerRate);
-
-	void setBaseMaintenanceRate(int maintenanceRate);
-
-	int getBaseMaintenanceRate();
-
-	int getRedeedCost();
 
 	bool isInstallationObject();
 
@@ -308,33 +254,11 @@ namespace zone {
 namespace objects {
 namespace installation {
 
-class InstallationObjectImplementation : public TangibleObjectImplementation {
+class InstallationObjectImplementation : public StructureObjectImplementation {
 protected:
-	StructurePermissionList structurePermissionList;
-
 	Reference<SyncrhonizedUiListenInstallationTask*> syncUiTask;
 
-	unsigned long long ownerObjectID;
-
-	int lotSize;
-
 	bool operating;
-
-	unsigned long long deedObjectID;
-
-	int baseMaintenanceRate;
-
-	int basePowerRate;
-
-	unsigned int maintenancePool;
-
-	unsigned int powerPool;
-
-	float surplusMaintenance;
-
-	float surplusPower;
-
-	bool publicStructure;
 
 	SortedVector<ManagedReference<PlayerCreature* > > operatorList;
 
@@ -365,10 +289,6 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	virtual int notifyStructurePlaced(PlayerCreature* player);
-
-	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
-
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
@@ -384,14 +304,6 @@ public:
 	void verifyOperators();
 
 	virtual void updateInstallationWork();
-
-	void handleStructureStatus(PlayerCreature* player);
-
-	void handleStructureManageMaintenance(PlayerCreature* player);
-
-	void handleSetObjectName(PlayerCreature* player);
-
-	void handleStructureDestroy(PlayerCreature* player);
 
 	void handleStructureAddEnergy(PlayerCreature* player);
 
@@ -421,51 +333,11 @@ public:
 
 	void broadcastToOperators(BasePacket* packet);
 
-	bool isOnAdminList(SceneObject* scno);
-
-	bool isOnAdminList(unsigned long long oid);
-
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
-
 	void addOperator(PlayerCreature* player);
 
 	void removeOperator(PlayerCreature* player);
 
 	void sendBaselinesTo(SceneObject* player);
-
-	void setLotSize(int lotsize);
-
-	int getLotSize();
-
-	void setDeedObjectID(unsigned long long deedid);
-
-	unsigned long long getDeedObjectID();
-
-	void setOwnerObjectID(unsigned long long ownerID);
-
-	unsigned long long getOwnerObjectID();
-
-	void setMaintenancePool(unsigned int maintenance);
-
-	unsigned int getMaintenancePool();
-
-	void setPowerPool(unsigned int power);
-
-	unsigned int getPowerPool();
-
-	void addPower(int add);
-
-	void addMaintenance(float maint);
-
-	int getBasePowerRate();
-
-	void setBasePowerRate(int powerRate);
-
-	void setBaseMaintenanceRate(int maintenanceRate);
-
-	int getBaseMaintenanceRate();
-
-	int getRedeedCost();
 
 	bool isInstallationObject();
 
@@ -516,7 +388,7 @@ protected:
 	friend class InstallationObject;
 };
 
-class InstallationObjectAdapter : public TangibleObjectAdapter {
+class InstallationObjectAdapter : public StructureObjectAdapter {
 public:
 	InstallationObjectAdapter(InstallationObjectImplementation* impl);
 
@@ -527,10 +399,6 @@ public:
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	int notifyStructurePlaced(PlayerCreature* player);
-
-	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
@@ -547,14 +415,6 @@ public:
 	void verifyOperators();
 
 	void updateInstallationWork();
-
-	void handleStructureStatus(PlayerCreature* player);
-
-	void handleStructureManageMaintenance(PlayerCreature* player);
-
-	void handleSetObjectName(PlayerCreature* player);
-
-	void handleStructureDestroy(PlayerCreature* player);
 
 	void handleStructureAddEnergy(PlayerCreature* player);
 
@@ -580,51 +440,11 @@ public:
 
 	void broadcastToOperators(BasePacket* packet);
 
-	bool isOnAdminList(SceneObject* scno);
-
-	bool isOnAdminList(unsigned long long oid);
-
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
-
 	void addOperator(PlayerCreature* player);
 
 	void removeOperator(PlayerCreature* player);
 
 	void sendBaselinesTo(SceneObject* player);
-
-	void setLotSize(int lotsize);
-
-	int getLotSize();
-
-	void setDeedObjectID(unsigned long long deedid);
-
-	unsigned long long getDeedObjectID();
-
-	void setOwnerObjectID(unsigned long long ownerID);
-
-	unsigned long long getOwnerObjectID();
-
-	void setMaintenancePool(unsigned int maintenance);
-
-	unsigned int getMaintenancePool();
-
-	void setPowerPool(unsigned int power);
-
-	unsigned int getPowerPool();
-
-	void addPower(int add);
-
-	void addMaintenance(float maint);
-
-	int getBasePowerRate();
-
-	void setBasePowerRate(int powerRate);
-
-	void setBaseMaintenanceRate(int maintenanceRate);
-
-	int getBaseMaintenanceRate();
-
-	int getRedeedCost();
 
 	bool isInstallationObject();
 
@@ -640,8 +460,6 @@ public:
 
 	bool isGeneratorObject();
 
-protected:
-	String _param1_sendPermissionListTo__PlayerCreature_String_;
 };
 
 class InstallationObjectHelper : public DistributedObjectClassHelper, public Singleton<InstallationObjectHelper> {

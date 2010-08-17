@@ -8,6 +8,8 @@
 #include "InstallationObject.h"
 
 #include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 #include "server/zone/packets/installation/InstallationObjectMessage3.h"
 #include "server/zone/packets/installation/InstallationObjectDeltaMessage3.h"
@@ -30,13 +32,11 @@
 #include "SyncrhonizedUiListenInstallationTask.h"
 
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	TangibleObjectImplementation::loadTemplateData(templateData);
+	StructureObjectImplementation::loadTemplateData(templateData);
 
 	SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(templateData);
 
 	installationType = inso->getInstallationType();
-	lotSize = inso->getLotSize();
-	baseMaintenanceRate = inso->getBaseMaintenanceRate();
 }
 
 void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -68,25 +68,37 @@ int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* pla
 	if (!isOnAdminList(player))
 		return 1;
 
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+	if (planetManager == NULL)
+		return 0;
+
+	ManagedReference<StructureManager*> structureManager = planetManager->getStructureManager();
+
+	if (structureManager == NULL)
+		return 0;
+
+	Locker structureLocker(_this, player);
+
 	switch (selectedID) {
 	/*case 121:
 		sendPermissionListTo(player, "ADMIN");
 		break;*/
 
 	case 124:
-		handleStructureStatus(player);
+		structureManager->sendStructureStatusTo(player, _this);
 		break;
 
 	case 129:
-		handleStructureManageMaintenance(player);
+		structureManager->handlePayMaintenance(player, _this);
 		break;
 
 	case 128:
-		handleStructureDestroy(player);
+		structureManager->sendDestroyConfirmTo(player, _this);
 		break;
 
 	case 50:
-		handleSetObjectName(player);
+		structureManager->sendStructureNamePromptTo(player, _this);
 		break;
 
 	default:
@@ -555,7 +567,7 @@ void InstallationObjectImplementation::verifyOperators() {
 }
 
 void InstallationObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+	StructureObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 
 	if (!destroyContainedObjects)
 		return;
@@ -569,92 +581,6 @@ void InstallationObjectImplementation::destroyObjectFromDatabase(bool destroyCon
 		ResourceContainer* container = resourceHopper.get(i);
 
 		container->destroyObjectFromDatabase(true);
-	}
-}
-
-void InstallationObjectImplementation::handleStructureDestroy(PlayerCreature* player) {
-	removeFromZone();
-
-	int lotsRemaining = player->getLotsRemaining();
-
-	player->setLotsRemaining(lotsRemaining + lotSize);
-
-	destroyObjectFromDatabase(true);
-}
-
-void InstallationObjectImplementation::handleSetObjectName(PlayerCreature* player) {
-	ManagedReference<SuiInputBox*> setTheName = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
-
-	setTheName->setPromptTitle("@sui:set_name_title");
-	setTheName->setPromptText("@sui:set_name_prompt");
-	setTheName->setUsingObject(_this);
-
-	player->addSuiBox(setTheName);
-	player->sendMessage(setTheName->generateMessage());
-}
-
-void InstallationObjectImplementation::handleStructureStatus(PlayerCreature* player) {
-	updateInstallationWork();
-
-	StringBuffer sscond, ssmpool, ssmrate, ssppool, ssprate;
-
-	ManagedReference<SuiListBox*> statusBox = new SuiListBox(player, SuiWindowType::INSTALLATION_STATUS, 0x01);
-	statusBox->setPromptTitle("@player_structure:structure_status_t");
-	String full;
-	objectName.getFullPath(full);
-	statusBox->setPromptText("@player_structure:structure_name_prompt " + full);
-
-	ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) getZoneServer()->getObject(ownerObjectID);
-	statusBox->addMenuItem("@player_structure:owner_prompt  " + playerCreature->getFirstName());
-
-	if (publicStructure)
-		statusBox->addMenuItem("@player_structure:structure_now_public");
-	else
-		statusBox->addMenuItem("@player_structure:structure_now_private");
-
-	sscond << dec << "@player_structure:condition_prompt " << ((int) (((maxCondition - conditionDamage) / maxCondition) * 100)) << "%";
-	statusBox->addMenuItem(sscond.toString());
-
-	ssmpool << dec << "@player_structure:maintenance_pool_prompt " << (int) surplusMaintenance;
-	statusBox->addMenuItem(ssmpool.toString());
-
-	ssmrate << dec << "@player_structure:maintenance_rate_prompt " << (int) baseMaintenanceRate << " @player_structure:units_per_hour";
-	statusBox->addMenuItem(ssmrate.toString());
-
-	ssppool << dec << "@player_structure:power_reserve_prompt " << (int) surplusPower;
-	statusBox->addMenuItem(ssppool.toString());
-
-	ssprate << dec << "@player_structure:power_consumption_prompt " << (int) basePowerRate << " @player_structure:units_per_hour";
-	statusBox->addMenuItem(ssprate.toString());
-
-	player->addSuiBox(statusBox);
-	player->sendMessage(statusBox->generateMessage());
-}
-
-
-void InstallationObjectImplementation::handleStructureManageMaintenance(PlayerCreature* player) {
-	try {
-		StringBuffer sstext, sscash, ssmaintenance;
-
-		ManagedReference<SuiTransferBox*> maintenanceBox = new SuiTransferBox(player, SuiWindowType::MANAGE_MAINTENANCE);
-		maintenanceBox->setUsingObject(_this);
-		maintenanceBox->setPromptTitle("@player_structure:select_amount");
-
-		sstext << "@player_structure:select_maint_amount \n"
-			   << "@player_structure:current_maint_pool " << (int)surplusMaintenance;
-		maintenanceBox->setPromptText(sstext.toString());
-
-		sscash << player->getCashCredits();
-		ssmaintenance << surplusMaintenance;
-
-		maintenanceBox->addFrom("@player_structure:total_funds", sscash.toString(), sscash.toString(), "1");
-		maintenanceBox->addTo("@player_structure:to_pay", ssmaintenance.toString(), ssmaintenance.toString(), "1");
-
-		player->addSuiBox(maintenanceBox);
-		player->sendMessage(maintenanceBox->generateMessage());
-
-	} catch(...) {
-		error("unreported exception in InstallationObjectImplementation::handleStructureManageMaintenance");
 	}
 }
 
