@@ -20,13 +20,110 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
 /*
  *	StimPackStub
  */
 
 StimPack::StimPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new StimPackImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new StimPackImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 StimPack::StimPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -37,23 +134,23 @@ StimPack::~StimPack() {
 
 
 void StimPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StimPackImplementation*) _impl)->updateCraftingValues(schematic);
+		((StimPackImplementation*) _getImplementation())->updateCraftingValues(schematic);
 }
 
 void StimPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StimPackImplementation*) _impl)->loadTemplateData(templateData);
+		((StimPackImplementation*) _getImplementation())->loadTemplateData(templateData);
 }
 
 unsigned int StimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -64,11 +161,11 @@ unsigned int StimPack::calculatePower(CreatureObject* healer, CreatureObject* pa
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((StimPackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
+		return ((StimPackImplementation*) _getImplementation())->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 int StimPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -78,19 +175,19 @@ int StimPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StimPackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((StimPackImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void StimPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StimPackImplementation*) _impl)->fillAttributeList(msg, object);
+		((StimPackImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 float StimPack::getEffectiveness() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -98,11 +195,11 @@ float StimPack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((StimPackImplementation*) _impl)->getEffectiveness();
+		return ((StimPackImplementation*) _getImplementation())->getEffectiveness();
 }
 
 bool StimPack::isStimPack() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,7 +207,7 @@ bool StimPack::isStimPack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((StimPackImplementation*) _impl)->isStimPack();
+		return ((StimPackImplementation*) _getImplementation())->isStimPack();
 }
 
 /*
@@ -120,6 +217,7 @@ bool StimPack::isStimPack() {
 StimPackImplementation::StimPackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 StimPackImplementation::~StimPackImplementation() {
 }
@@ -146,6 +244,11 @@ DistributedObjectStub* StimPackImplementation::_getStub() {
 StimPackImplementation::operator const StimPack*() {
 	return _this;
 }
+
+TransactionalObject* StimPackImplementation::clone() {
+	return (TransactionalObject*) new StimPackImplementation(*this);
+}
+
 
 void StimPackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

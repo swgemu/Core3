@@ -127,6 +127,8 @@ public:
 protected:
 	virtual ~MissionTerminalImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -150,6 +152,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionTerminal;
+	friend class TransactionalObjectHandle<MissionTerminalImplementation*>;
 };
 
 class MissionTerminalAdapter : public TerminalAdapter {

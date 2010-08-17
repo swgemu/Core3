@@ -8,13 +8,64 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
 /*
  *	InstallationDeedStub
  */
 
 InstallationDeed::InstallationDeed() : Deed(DummyConstructorParameter::instance()) {
-	_impl = new InstallationDeedImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new InstallationDeedImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 InstallationDeed::InstallationDeed(DummyConstructorParameter* param) : Deed(param) {
@@ -25,15 +76,15 @@ InstallationDeed::~InstallationDeed() {
 
 
 void InstallationDeed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((InstallationDeedImplementation*) _impl)->fillAttributeList(alm, object);
+		((InstallationDeedImplementation*) _getImplementation())->fillAttributeList(alm, object);
 }
 
 void InstallationDeed::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +92,11 @@ void InstallationDeed::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationDeedImplementation*) _impl)->initializeTransientMembers();
+		((InstallationDeedImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int InstallationDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +106,11 @@ int InstallationDeed::handleObjectMenuSelect(PlayerCreature* player, byte select
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((InstallationDeedImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstallationDeed::setSurplusMaintenance(unsigned int surplusMaint) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -68,11 +119,11 @@ void InstallationDeed::setSurplusMaintenance(unsigned int surplusMaint) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationDeedImplementation*) _impl)->setSurplusMaintenance(surplusMaint);
+		((InstallationDeedImplementation*) _getImplementation())->setSurplusMaintenance(surplusMaint);
 }
 
 unsigned int InstallationDeed::getSurplusMaintenance() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +131,11 @@ unsigned int InstallationDeed::getSurplusMaintenance() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->getSurplusMaintenance();
+		return ((InstallationDeedImplementation*) _getImplementation())->getSurplusMaintenance();
 }
 
 unsigned int InstallationDeed::getSurplusPower() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +143,11 @@ unsigned int InstallationDeed::getSurplusPower() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->getSurplusPower();
+		return ((InstallationDeedImplementation*) _getImplementation())->getSurplusPower();
 }
 
 void InstallationDeed::setSurplusPower(unsigned int power) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,11 +156,11 @@ void InstallationDeed::setSurplusPower(unsigned int power) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationDeedImplementation*) _impl)->setSurplusPower(power);
+		((InstallationDeedImplementation*) _getImplementation())->setSurplusPower(power);
 }
 
 bool InstallationDeed::isInstallationDeed() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -117,7 +168,7 @@ bool InstallationDeed::isInstallationDeed() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->isInstallationDeed();
+		return ((InstallationDeedImplementation*) _getImplementation())->isInstallationDeed();
 }
 
 /*
@@ -127,6 +178,7 @@ bool InstallationDeed::isInstallationDeed() {
 InstallationDeedImplementation::InstallationDeedImplementation(DummyConstructorParameter* param) : DeedImplementation(param) {
 	_initializeImplementation();
 }
+
 
 InstallationDeedImplementation::~InstallationDeedImplementation() {
 }
@@ -153,6 +205,11 @@ DistributedObjectStub* InstallationDeedImplementation::_getStub() {
 InstallationDeedImplementation::operator const InstallationDeed*() {
 	return _this;
 }
+
+TransactionalObject* InstallationDeedImplementation::clone() {
+	return (TransactionalObject*) new InstallationDeedImplementation(*this);
+}
+
 
 void InstallationDeedImplementation::lock(bool doLock) {
 	_this->lock(doLock);

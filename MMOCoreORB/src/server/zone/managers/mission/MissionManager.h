@@ -173,6 +173,8 @@ public:
 protected:
 	virtual ~MissionManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -196,6 +198,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionManager;
+	friend class TransactionalObjectHandle<MissionManagerImplementation*>;
 };
 
 class MissionManagerAdapter : public ObserverAdapter {

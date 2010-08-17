@@ -107,6 +107,8 @@ public:
 protected:
 	virtual ~ContainerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -130,6 +132,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Container;
+	friend class TransactionalObjectHandle<ContainerImplementation*>;
 };
 
 class ContainerAdapter : public TangibleObjectAdapter {

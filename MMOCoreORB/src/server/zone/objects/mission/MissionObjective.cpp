@@ -16,13 +16,66 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	MissionObjectiveStub
  */
 
 MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new MissionObjectiveImplementation(parent);
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new MissionObjectiveImplementation(parent));
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MissionObjective::MissionObjective(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -33,7 +86,7 @@ MissionObjective::~MissionObjective() {
 
 
 void MissionObjective::destroyObjectFromDatabase() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +94,11 @@ void MissionObjective::destroyObjectFromDatabase() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectiveImplementation*) _impl)->destroyObjectFromDatabase();
+		((MissionObjectiveImplementation*) _getImplementation())->destroyObjectFromDatabase();
 }
 
 int MissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,11 +111,11 @@ int MissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned in
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((MissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return ((MissionObjectiveImplementation*) _getImplementation())->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void MissionObjective::activate() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -70,11 +123,11 @@ void MissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectiveImplementation*) _impl)->activate();
+		((MissionObjectiveImplementation*) _getImplementation())->activate();
 }
 
 void MissionObjective::abort() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -82,11 +135,11 @@ void MissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectiveImplementation*) _impl)->abort();
+		((MissionObjectiveImplementation*) _getImplementation())->abort();
 }
 
 void MissionObjective::complete() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,11 +147,11 @@ void MissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectiveImplementation*) _impl)->complete();
+		((MissionObjectiveImplementation*) _getImplementation())->complete();
 }
 
 MissionObject* MissionObjective::getMissionObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -106,11 +159,11 @@ MissionObject* MissionObjective::getMissionObject() {
 
 		return (MissionObject*) method.executeWithObjectReturn();
 	} else
-		return ((MissionObjectiveImplementation*) _impl)->getMissionObject();
+		return ((MissionObjectiveImplementation*) _getImplementation())->getMissionObject();
 }
 
 unsigned int MissionObjective::getObjectiveType() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -118,11 +171,11 @@ unsigned int MissionObjective::getObjectiveType() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((MissionObjectiveImplementation*) _impl)->getObjectiveType();
+		return ((MissionObjectiveImplementation*) _getImplementation())->getObjectiveType();
 }
 
 PlayerCreature* MissionObjective::getPlayerOwner() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -130,7 +183,7 @@ PlayerCreature* MissionObjective::getPlayerOwner() {
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
-		return ((MissionObjectiveImplementation*) _impl)->getPlayerOwner();
+		return ((MissionObjectiveImplementation*) _getImplementation())->getPlayerOwner();
 }
 
 /*
@@ -140,6 +193,7 @@ PlayerCreature* MissionObjective::getPlayerOwner() {
 MissionObjectiveImplementation::MissionObjectiveImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MissionObjectiveImplementation::~MissionObjectiveImplementation() {
 }
@@ -166,6 +220,11 @@ DistributedObjectStub* MissionObjectiveImplementation::_getStub() {
 MissionObjectiveImplementation::operator const MissionObjective*() {
 	return _this;
 }
+
+TransactionalObject* MissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new MissionObjectiveImplementation(*this);
+}
+
 
 void MissionObjectiveImplementation::lock(bool doLock) {
 	_this->lock(doLock);

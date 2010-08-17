@@ -8,13 +8,66 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	MedicalBuildingObjectStub
  */
 
 MedicalBuildingObject::MedicalBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new MedicalBuildingObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new MedicalBuildingObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 MedicalBuildingObject::MedicalBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -25,7 +78,7 @@ MedicalBuildingObject::~MedicalBuildingObject() {
 
 
 bool MedicalBuildingObject::isMedicalBuildingObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,7 +86,7 @@ bool MedicalBuildingObject::isMedicalBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MedicalBuildingObjectImplementation*) _impl)->isMedicalBuildingObject();
+		return ((MedicalBuildingObjectImplementation*) _getImplementation())->isMedicalBuildingObject();
 }
 
 /*
@@ -43,6 +96,7 @@ bool MedicalBuildingObject::isMedicalBuildingObject() {
 MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MedicalBuildingObjectImplementation::~MedicalBuildingObjectImplementation() {
 }
@@ -69,6 +123,11 @@ DistributedObjectStub* MedicalBuildingObjectImplementation::_getStub() {
 MedicalBuildingObjectImplementation::operator const MedicalBuildingObject*() {
 	return _this;
 }
+
+TransactionalObject* MedicalBuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new MedicalBuildingObjectImplementation(*this);
+}
+
 
 void MedicalBuildingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

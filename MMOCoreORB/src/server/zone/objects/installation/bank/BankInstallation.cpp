@@ -20,13 +20,98 @@
 
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/installation/HopperList.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	BankInstallationStub
  */
 
 BankInstallation::BankInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
-	_impl = new BankInstallationImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new BankInstallationImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 BankInstallation::BankInstallation(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -37,7 +122,7 @@ BankInstallation::~BankInstallation() {
 
 
 void BankInstallation::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,11 +131,11 @@ void BankInstallation::insertToZone(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BankInstallationImplementation*) _impl)->insertToZone(zone);
+		((BankInstallationImplementation*) _getImplementation())->insertToZone(zone);
 }
 
 void BankInstallation::spawnBankObjects() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,7 +143,7 @@ void BankInstallation::spawnBankObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BankInstallationImplementation*) _impl)->spawnBankObjects();
+		((BankInstallationImplementation*) _getImplementation())->spawnBankObjects();
 }
 
 /*
@@ -68,6 +153,7 @@ void BankInstallation::spawnBankObjects() {
 BankInstallationImplementation::BankInstallationImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BankInstallationImplementation::~BankInstallationImplementation() {
 }
@@ -94,6 +180,11 @@ DistributedObjectStub* BankInstallationImplementation::_getStub() {
 BankInstallationImplementation::operator const BankInstallation*() {
 	return _this;
 }
+
+TransactionalObject* BankInstallationImplementation::clone() {
+	return (TransactionalObject*) new BankInstallationImplementation(*this);
+}
+
 
 void BankInstallationImplementation::lock(bool doLock) {
 	_this->lock(doLock);

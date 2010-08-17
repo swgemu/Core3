@@ -20,13 +20,126 @@
 
 #include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/managers/planet/ShuttleMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/structure/StructureManager.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/NoBuildAreaMap.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/VectorMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/managers/planet/RegionMap.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/managers/terrain/TerrainManager.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
 /*
  *	ShuttleCreatureStub
  */
 
 ShuttleCreature::ShuttleCreature() : CreatureObject(DummyConstructorParameter::instance()) {
-	_impl = new ShuttleCreatureImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new ShuttleCreatureImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 ShuttleCreature::ShuttleCreature(DummyConstructorParameter* param) : CreatureObject(param) {
@@ -37,7 +150,7 @@ ShuttleCreature::~ShuttleCreature() {
 
 
 void ShuttleCreature::doTakeOff() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +158,11 @@ void ShuttleCreature::doTakeOff() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->doTakeOff();
+		((ShuttleCreatureImplementation*) _getImplementation())->doTakeOff();
 }
 
 void ShuttleCreature::doLanding() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +170,11 @@ void ShuttleCreature::doLanding() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->doLanding();
+		((ShuttleCreatureImplementation*) _getImplementation())->doLanding();
 }
 
 void ShuttleCreature::activateRecovery() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +182,11 @@ void ShuttleCreature::activateRecovery() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->activateRecovery();
+		((ShuttleCreatureImplementation*) _getImplementation())->activateRecovery();
 }
 
 bool ShuttleCreature::isAttackableBy(CreatureObject* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -82,11 +195,11 @@ bool ShuttleCreature::isAttackableBy(CreatureObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ShuttleCreatureImplementation*) _impl)->isAttackableBy(object);
+		return ((ShuttleCreatureImplementation*) _getImplementation())->isAttackableBy(object);
 }
 
 void ShuttleCreature::sendPlayerTo(PlayerCreature* player, TicketObject* ticket) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +209,11 @@ void ShuttleCreature::sendPlayerTo(PlayerCreature* player, TicketObject* ticket)
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->sendPlayerTo(player, ticket);
+		((ShuttleCreatureImplementation*) _getImplementation())->sendPlayerTo(player, ticket);
 }
 
 int ShuttleCreature::getArrivalTime() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,11 +221,11 @@ int ShuttleCreature::getArrivalTime() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ShuttleCreatureImplementation*) _impl)->getArrivalTime();
+		return ((ShuttleCreatureImplementation*) _getImplementation())->getArrivalTime();
 }
 
 long long ShuttleCreature::getLandingTime() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -120,19 +233,19 @@ long long ShuttleCreature::getLandingTime() {
 
 		return method.executeWithSignedLongReturn();
 	} else
-		return ((ShuttleCreatureImplementation*) _impl)->getLandingTime();
+		return ((ShuttleCreatureImplementation*) _getImplementation())->getLandingTime();
 }
 
 void ShuttleCreature::getArrivalPoint(float& x, float& y, float& z) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ShuttleCreatureImplementation*) _impl)->getArrivalPoint(x, y, z);
+		((ShuttleCreatureImplementation*) _getImplementation())->getArrivalPoint(x, y, z);
 }
 
 void ShuttleCreature::setArrivalPoint(float x, float y, float z) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -143,11 +256,11 @@ void ShuttleCreature::setArrivalPoint(float x, float y, float z) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->setArrivalPoint(x, y, z);
+		((ShuttleCreatureImplementation*) _getImplementation())->setArrivalPoint(x, y, z);
 }
 
 void ShuttleCreature::setStarport(bool st) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -156,11 +269,11 @@ void ShuttleCreature::setStarport(bool st) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->setStarport(st);
+		((ShuttleCreatureImplementation*) _getImplementation())->setStarport(st);
 }
 
 void ShuttleCreature::setPlanet(const String& plan) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -169,11 +282,11 @@ void ShuttleCreature::setPlanet(const String& plan) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->setPlanet(plan);
+		((ShuttleCreatureImplementation*) _getImplementation())->setPlanet(plan);
 }
 
 void ShuttleCreature::setCity(const String& cit) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -182,11 +295,11 @@ void ShuttleCreature::setCity(const String& cit) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->setCity(cit);
+		((ShuttleCreatureImplementation*) _getImplementation())->setCity(cit);
 }
 
 void ShuttleCreature::setTax(unsigned int t) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -195,11 +308,11 @@ void ShuttleCreature::setTax(unsigned int t) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->setTax(t);
+		((ShuttleCreatureImplementation*) _getImplementation())->setTax(t);
 }
 
 String ShuttleCreature::getPlanet() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -208,11 +321,11 @@ String ShuttleCreature::getPlanet() {
 		method.executeWithAsciiReturn(_return_getPlanet);
 		return _return_getPlanet;
 	} else
-		return ((ShuttleCreatureImplementation*) _impl)->getPlanet();
+		return ((ShuttleCreatureImplementation*) _getImplementation())->getPlanet();
 }
 
 String ShuttleCreature::getCity() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -221,11 +334,11 @@ String ShuttleCreature::getCity() {
 		method.executeWithAsciiReturn(_return_getCity);
 		return _return_getCity;
 	} else
-		return ((ShuttleCreatureImplementation*) _impl)->getCity();
+		return ((ShuttleCreatureImplementation*) _getImplementation())->getCity();
 }
 
 unsigned int ShuttleCreature::getTax() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -233,11 +346,11 @@ unsigned int ShuttleCreature::getTax() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((ShuttleCreatureImplementation*) _impl)->getTax();
+		return ((ShuttleCreatureImplementation*) _getImplementation())->getTax();
 }
 
 bool ShuttleCreature::isStarport() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -245,11 +358,11 @@ bool ShuttleCreature::isStarport() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ShuttleCreatureImplementation*) _impl)->isStarport();
+		return ((ShuttleCreatureImplementation*) _getImplementation())->isStarport();
 }
 
 bool ShuttleCreature::isShuttleCreature() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -257,7 +370,7 @@ bool ShuttleCreature::isShuttleCreature() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ShuttleCreatureImplementation*) _impl)->isShuttleCreature();
+		return ((ShuttleCreatureImplementation*) _getImplementation())->isShuttleCreature();
 }
 
 /*
@@ -267,6 +380,7 @@ bool ShuttleCreature::isShuttleCreature() {
 ShuttleCreatureImplementation::ShuttleCreatureImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ShuttleCreatureImplementation::~ShuttleCreatureImplementation() {
 }
@@ -293,6 +407,11 @@ DistributedObjectStub* ShuttleCreatureImplementation::_getStub() {
 ShuttleCreatureImplementation::operator const ShuttleCreature*() {
 	return _this;
 }
+
+TransactionalObject* ShuttleCreatureImplementation::clone() {
+	return (TransactionalObject*) new ShuttleCreatureImplementation(*this);
+}
+
 
 void ShuttleCreatureImplementation::lock(bool doLock) {
 	_this->lock(doLock);

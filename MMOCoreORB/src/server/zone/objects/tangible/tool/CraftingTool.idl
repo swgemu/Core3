@@ -52,6 +52,7 @@ include server.zone.objects.tangible.tool.CraftingStation;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.managers.crafting.CraftingManager;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.tangible.tool.ToolTangibleObject;
 
 class CraftingTool extends ToolTangibleObject {
 	

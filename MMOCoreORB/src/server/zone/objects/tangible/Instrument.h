@@ -87,6 +87,8 @@ public:
 protected:
 	virtual ~InstrumentImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -110,6 +112,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Instrument;
+	friend class TransactionalObjectHandle<InstrumentImplementation*>;
 };
 
 class InstrumentAdapter : public TangibleObjectAdapter {

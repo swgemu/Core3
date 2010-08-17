@@ -309,6 +309,8 @@ public:
 protected:
 	virtual ~ResourceSpawnImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -330,6 +332,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ResourceSpawn;
+	friend class TransactionalObjectHandle<ResourceSpawnImplementation*>;
 };
 
 class ResourceSpawnAdapter : public SceneObjectAdapter {

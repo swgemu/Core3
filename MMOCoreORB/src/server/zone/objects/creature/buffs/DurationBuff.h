@@ -140,6 +140,8 @@ public:
 protected:
 	virtual ~DurationBuffImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -163,6 +165,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DurationBuff;
+	friend class TransactionalObjectHandle<DurationBuffImplementation*>;
 };
 
 class DurationBuffAdapter : public BuffAdapter {

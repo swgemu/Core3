@@ -525,6 +525,8 @@ public:
 protected:
 	virtual ~PlayerObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -546,6 +548,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PlayerObject;
+	friend class TransactionalObjectHandle<PlayerObjectImplementation*>;
 };
 
 class PlayerObjectAdapter : public IntangibleObjectAdapter {

@@ -16,13 +16,100 @@
 
 #include "server/zone/ZoneServer.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/Vector.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
 /*
  *	FishingPoleObjectStub
  */
 
 FishingPoleObject::FishingPoleObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FishingPoleObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new FishingPoleObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 FishingPoleObject::FishingPoleObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -33,7 +120,7 @@ FishingPoleObject::~FishingPoleObject() {
 
 
 void FishingPoleObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +128,11 @@ void FishingPoleObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->initializeTransientMembers();
+		((FishingPoleObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 int FishingPoleObject::getQuality() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +140,11 @@ int FishingPoleObject::getQuality() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingPoleObjectImplementation*) _impl)->getQuality();
+		return ((FishingPoleObjectImplementation*) _getImplementation())->getQuality();
 }
 
 void FishingPoleObject::setQuality(int value) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +153,11 @@ void FishingPoleObject::setQuality(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->setQuality(value);
+		((FishingPoleObjectImplementation*) _getImplementation())->setQuality(value);
 }
 
 void FishingPoleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +167,11 @@ void FishingPoleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse,
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		((FishingPoleObjectImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
 }
 
 int FishingPoleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,11 +181,11 @@ int FishingPoleObject::handleObjectMenuSelect(PlayerCreature* player, byte selec
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingPoleObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((FishingPoleObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 int FishingPoleObject::canAddObject(SceneObject* object, String& errorDescription) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,11 +195,11 @@ int FishingPoleObject::canAddObject(SceneObject* object, String& errorDescriptio
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingPoleObjectImplementation*) _impl)->canAddObject(object, errorDescription);
+		return ((FishingPoleObjectImplementation*) _getImplementation())->canAddObject(object, errorDescription);
 }
 
 void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +209,11 @@ void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		((FishingPoleObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 void FishingPoleObject::doFishing(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +222,11 @@ void FishingPoleObject::doFishing(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingPoleObjectImplementation*) _impl)->doFishing(player);
+		((FishingPoleObjectImplementation*) _getImplementation())->doFishing(player);
 }
 
 String FishingPoleObject::getText(PlayerCreature* player) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,7 +236,7 @@ String FishingPoleObject::getText(PlayerCreature* player) {
 		method.executeWithAsciiReturn(_return_getText);
 		return _return_getText;
 	} else
-		return ((FishingPoleObjectImplementation*) _impl)->getText(player);
+		return ((FishingPoleObjectImplementation*) _getImplementation())->getText(player);
 }
 
 /*
@@ -159,6 +246,7 @@ String FishingPoleObject::getText(PlayerCreature* player) {
 FishingPoleObjectImplementation::FishingPoleObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FishingPoleObjectImplementation::~FishingPoleObjectImplementation() {
 }
@@ -185,6 +273,11 @@ DistributedObjectStub* FishingPoleObjectImplementation::_getStub() {
 FishingPoleObjectImplementation::operator const FishingPoleObject*() {
 	return _this;
 }
+
+TransactionalObject* FishingPoleObjectImplementation::clone() {
+	return (TransactionalObject*) new FishingPoleObjectImplementation(*this);
+}
+
 
 void FishingPoleObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

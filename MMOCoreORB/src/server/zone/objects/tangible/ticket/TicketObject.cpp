@@ -14,13 +14,76 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	TicketObjectStub
  */
 
 TicketObject::TicketObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new TicketObjectImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TicketObjectImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TicketObject::TicketObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -31,7 +94,7 @@ TicketObject::~TicketObject() {
 
 
 void TicketObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,19 +102,19 @@ void TicketObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TicketObjectImplementation*) _impl)->initializeTransientMembers();
+		((TicketObjectImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 void TicketObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((TicketObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		((TicketObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
 }
 
 int TicketObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +124,11 @@ int TicketObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TicketObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return ((TicketObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
 }
 
 void TicketObject::setDeparturePlanet(const String& departureplanet) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,11 +137,11 @@ void TicketObject::setDeparturePlanet(const String& departureplanet) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TicketObjectImplementation*) _impl)->setDeparturePlanet(departureplanet);
+		((TicketObjectImplementation*) _getImplementation())->setDeparturePlanet(departureplanet);
 }
 
 void TicketObject::setDeparturePoint(const String& departurepoint) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -87,11 +150,11 @@ void TicketObject::setDeparturePoint(const String& departurepoint) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TicketObjectImplementation*) _impl)->setDeparturePoint(departurepoint);
+		((TicketObjectImplementation*) _getImplementation())->setDeparturePoint(departurepoint);
 }
 
 void TicketObject::setArrivalPlanet(const String& arrival) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -100,11 +163,11 @@ void TicketObject::setArrivalPlanet(const String& arrival) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TicketObjectImplementation*) _impl)->setArrivalPlanet(arrival);
+		((TicketObjectImplementation*) _getImplementation())->setArrivalPlanet(arrival);
 }
 
 void TicketObject::setArrivalPoint(const String& arrival) {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -113,11 +176,11 @@ void TicketObject::setArrivalPoint(const String& arrival) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TicketObjectImplementation*) _impl)->setArrivalPoint(arrival);
+		((TicketObjectImplementation*) _getImplementation())->setArrivalPoint(arrival);
 }
 
 String TicketObject::getDeparturePlanet() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -126,11 +189,11 @@ String TicketObject::getDeparturePlanet() {
 		method.executeWithAsciiReturn(_return_getDeparturePlanet);
 		return _return_getDeparturePlanet;
 	} else
-		return ((TicketObjectImplementation*) _impl)->getDeparturePlanet();
+		return ((TicketObjectImplementation*) _getImplementation())->getDeparturePlanet();
 }
 
 String TicketObject::getDeparturePoint() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -139,11 +202,11 @@ String TicketObject::getDeparturePoint() {
 		method.executeWithAsciiReturn(_return_getDeparturePoint);
 		return _return_getDeparturePoint;
 	} else
-		return ((TicketObjectImplementation*) _impl)->getDeparturePoint();
+		return ((TicketObjectImplementation*) _getImplementation())->getDeparturePoint();
 }
 
 String TicketObject::getArrivalPlanet() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -152,11 +215,11 @@ String TicketObject::getArrivalPlanet() {
 		method.executeWithAsciiReturn(_return_getArrivalPlanet);
 		return _return_getArrivalPlanet;
 	} else
-		return ((TicketObjectImplementation*) _impl)->getArrivalPlanet();
+		return ((TicketObjectImplementation*) _getImplementation())->getArrivalPlanet();
 }
 
 String TicketObject::getArrivalPoint() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -165,11 +228,11 @@ String TicketObject::getArrivalPoint() {
 		method.executeWithAsciiReturn(_return_getArrivalPoint);
 		return _return_getArrivalPoint;
 	} else
-		return ((TicketObjectImplementation*) _impl)->getArrivalPoint();
+		return ((TicketObjectImplementation*) _getImplementation())->getArrivalPoint();
 }
 
 bool TicketObject::isTicketObject() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -177,7 +240,7 @@ bool TicketObject::isTicketObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TicketObjectImplementation*) _impl)->isTicketObject();
+		return ((TicketObjectImplementation*) _getImplementation())->isTicketObject();
 }
 
 /*
@@ -187,6 +250,7 @@ bool TicketObject::isTicketObject() {
 TicketObjectImplementation::TicketObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TicketObjectImplementation::~TicketObjectImplementation() {
 }
@@ -213,6 +277,11 @@ DistributedObjectStub* TicketObjectImplementation::_getStub() {
 TicketObjectImplementation::operator const TicketObject*() {
 	return _this;
 }
+
+TransactionalObject* TicketObjectImplementation::clone() {
+	return (TransactionalObject*) new TicketObjectImplementation(*this);
+}
+
 
 void TicketObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

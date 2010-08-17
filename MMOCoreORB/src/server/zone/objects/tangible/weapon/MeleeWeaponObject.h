@@ -84,6 +84,8 @@ public:
 protected:
 	virtual ~MeleeWeaponObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -107,6 +109,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MeleeWeaponObject;
+	friend class TransactionalObjectHandle<MeleeWeaponObjectImplementation*>;
 };
 
 class MeleeWeaponObjectAdapter : public WeaponObjectAdapter {

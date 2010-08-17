@@ -6,13 +6,62 @@
 
 #include "server/zone/Zone.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
 /*
  *	TwoHandMeleeWeaponStub
  */
 
 TwoHandMeleeWeapon::TwoHandMeleeWeapon() : MeleeWeaponObject(DummyConstructorParameter::instance()) {
-	_impl = new TwoHandMeleeWeaponImplementation();
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(new TwoHandMeleeWeaponImplementation());
+	ManagedObject::_getImplementation()->_setStub(this);
 }
 
 TwoHandMeleeWeapon::TwoHandMeleeWeapon(DummyConstructorParameter* param) : MeleeWeaponObject(param) {
@@ -23,7 +72,7 @@ TwoHandMeleeWeapon::~TwoHandMeleeWeapon() {
 
 
 void TwoHandMeleeWeapon::initializeTransientMembers() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +80,11 @@ void TwoHandMeleeWeapon::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TwoHandMeleeWeaponImplementation*) _impl)->initializeTransientMembers();
+		((TwoHandMeleeWeaponImplementation*) _getImplementation())->initializeTransientMembers();
 }
 
 bool TwoHandMeleeWeapon::isTwoHandMeleeWeapon() {
-	if (_impl == NULL) {
+	if (isNull()) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,7 +92,7 @@ bool TwoHandMeleeWeapon::isTwoHandMeleeWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TwoHandMeleeWeaponImplementation*) _impl)->isTwoHandMeleeWeapon();
+		return ((TwoHandMeleeWeaponImplementation*) _getImplementation())->isTwoHandMeleeWeapon();
 }
 
 /*
@@ -53,6 +102,7 @@ bool TwoHandMeleeWeapon::isTwoHandMeleeWeapon() {
 TwoHandMeleeWeaponImplementation::TwoHandMeleeWeaponImplementation(DummyConstructorParameter* param) : MeleeWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TwoHandMeleeWeaponImplementation::~TwoHandMeleeWeaponImplementation() {
 }
@@ -79,6 +129,11 @@ DistributedObjectStub* TwoHandMeleeWeaponImplementation::_getStub() {
 TwoHandMeleeWeaponImplementation::operator const TwoHandMeleeWeapon*() {
 	return _this;
 }
+
+TransactionalObject* TwoHandMeleeWeaponImplementation::clone() {
+	return (TransactionalObject*) new TwoHandMeleeWeaponImplementation(*this);
+}
+
 
 void TwoHandMeleeWeaponImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -1222,6 +1222,8 @@ public:
 protected:
 	virtual ~CreatureObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -1243,6 +1245,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CreatureObject;
+	friend class TransactionalObjectHandle<CreatureObjectImplementation*>;
 };
 
 class CreatureObjectAdapter : public TangibleObjectAdapter {
