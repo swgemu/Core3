@@ -18,76 +18,13 @@
 
 #include "server/zone/objects/mission/MissionObjective.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/mission/MissionObject.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/Vector.h"
-
 /*
  *	MissionObjectStub
  */
 
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new MissionObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new MissionObjectImplementation();
+	_impl->_setStub(this);
 }
 
 MissionObject::MissionObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -98,7 +35,7 @@ MissionObject::~MissionObject() {
 
 
 WaypointObject* MissionObject::createWaypoint() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -106,11 +43,11 @@ WaypointObject* MissionObject::createWaypoint() {
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->createWaypoint();
+		return ((MissionObjectImplementation*) _impl)->createWaypoint();
 }
 
 void MissionObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -119,11 +56,11 @@ void MissionObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->destroyObjectFromDatabase(destroyContainedObjects);
+		((MissionObjectImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void MissionObject::updateToDatabaseAllObjects(bool startTask) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -132,11 +69,11 @@ void MissionObject::updateToDatabaseAllObjects(bool startTask) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->updateToDatabaseAllObjects(startTask);
+		((MissionObjectImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
 }
 
 void MissionObject::setRefreshCounter(int ctr, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -146,11 +83,11 @@ void MissionObject::setRefreshCounter(int ctr, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setRefreshCounter(ctr, notifyClient);
+		((MissionObjectImplementation*) _impl)->setRefreshCounter(ctr, notifyClient);
 }
 
 void MissionObject::setTypeCRC(unsigned int crc, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,11 +97,11 @@ void MissionObject::setTypeCRC(unsigned int crc, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setTypeCRC(crc, notifyClient);
+		((MissionObjectImplementation*) _impl)->setTypeCRC(crc, notifyClient);
 }
 
 void MissionObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,11 +109,11 @@ void MissionObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((MissionObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 void MissionObject::sendBaselinesTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -185,11 +122,11 @@ void MissionObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
+		((MissionObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
 void MissionObject::setMissionDescription(const String& file, const String& id, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -200,11 +137,11 @@ void MissionObject::setMissionDescription(const String& file, const String& id, 
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setMissionDescription(file, id, notifyClient);
+		((MissionObjectImplementation*) _impl)->setMissionDescription(file, id, notifyClient);
 }
 
 void MissionObject::setMissionTitle(const String& file, const String& id, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -215,11 +152,11 @@ void MissionObject::setMissionTitle(const String& file, const String& id, bool n
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setMissionTitle(file, id, notifyClient);
+		((MissionObjectImplementation*) _impl)->setMissionTitle(file, id, notifyClient);
 }
 
 void MissionObject::setMissionTargetName(const String& target, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -229,11 +166,11 @@ void MissionObject::setMissionTargetName(const String& target, bool notifyClient
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setMissionTargetName(target, notifyClient);
+		((MissionObjectImplementation*) _impl)->setMissionTargetName(target, notifyClient);
 }
 
 void MissionObject::setMissionDifficulty(int difficulty, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -243,11 +180,11 @@ void MissionObject::setMissionDifficulty(int difficulty, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setMissionDifficulty(difficulty, notifyClient);
+		((MissionObjectImplementation*) _impl)->setMissionDifficulty(difficulty, notifyClient);
 }
 
 void MissionObject::setRewardCredits(int creds, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -257,19 +194,19 @@ void MissionObject::setRewardCredits(int creds, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setRewardCredits(creds, notifyClient);
+		((MissionObjectImplementation*) _impl)->setRewardCredits(creds, notifyClient);
 }
 
 void MissionObject::setTargetTemplate(SharedObjectTemplate* templ, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setTargetTemplate(templ, notifyClient);
+		((MissionObjectImplementation*) _impl)->setTargetTemplate(templ, notifyClient);
 }
 
 void MissionObject::setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -281,11 +218,11 @@ void MissionObject::setStartPosition(float posX, float posY, unsigned int planet
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setStartPosition(posX, posY, planetCRC, notifyClient);
+		((MissionObjectImplementation*) _impl)->setStartPosition(posX, posY, planetCRC, notifyClient);
 }
 
 void MissionObject::updateMissionLocation() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -293,11 +230,11 @@ void MissionObject::updateMissionLocation() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->updateMissionLocation();
+		((MissionObjectImplementation*) _impl)->updateMissionLocation();
 }
 
 void MissionObject::abort() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -305,11 +242,11 @@ void MissionObject::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->abort();
+		((MissionObjectImplementation*) _impl)->abort();
 }
 
 void MissionObject::setMissionObjective(MissionObjective* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -318,11 +255,11 @@ void MissionObject::setMissionObjective(MissionObjective* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setMissionObjective(obj);
+		((MissionObjectImplementation*) _impl)->setMissionObjective(obj);
 }
 
 void MissionObject::setStartPlanetCRC(unsigned int crc) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -331,11 +268,11 @@ void MissionObject::setStartPlanetCRC(unsigned int crc) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _getImplementation())->setStartPlanetCRC(crc);
+		((MissionObjectImplementation*) _impl)->setStartPlanetCRC(crc);
 }
 
 float MissionObject::getStartPositionX() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -343,11 +280,11 @@ float MissionObject::getStartPositionX() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getStartPositionX();
+		return ((MissionObjectImplementation*) _impl)->getStartPositionX();
 }
 
 float MissionObject::getStartPositionY() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -355,11 +292,11 @@ float MissionObject::getStartPositionY() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getStartPositionY();
+		return ((MissionObjectImplementation*) _impl)->getStartPositionY();
 }
 
 unsigned int MissionObject::getStartPlanetCRC() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -367,11 +304,11 @@ unsigned int MissionObject::getStartPlanetCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getStartPlanetCRC();
+		return ((MissionObjectImplementation*) _impl)->getStartPlanetCRC();
 }
 
 WaypointObject* MissionObject::getWaypointToMission() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -379,11 +316,11 @@ WaypointObject* MissionObject::getWaypointToMission() {
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getWaypointToMission();
+		return ((MissionObjectImplementation*) _impl)->getWaypointToMission();
 }
 
 unsigned int MissionObject::getTypeCRC() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -391,11 +328,11 @@ unsigned int MissionObject::getTypeCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getTypeCRC();
+		return ((MissionObjectImplementation*) _impl)->getTypeCRC();
 }
 
 int MissionObject::getRewardCredits() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -403,11 +340,11 @@ int MissionObject::getRewardCredits() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getRewardCredits();
+		return ((MissionObjectImplementation*) _impl)->getRewardCredits();
 }
 
 UnicodeString MissionObject::getCreatorName() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -416,11 +353,11 @@ UnicodeString MissionObject::getCreatorName() {
 		method.executeWithUnicodeReturn(_return_getCreatorName);
 		return _return_getCreatorName;
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getCreatorName();
+		return ((MissionObjectImplementation*) _impl)->getCreatorName();
 }
 
 int MissionObject::getDifficultyLevel() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -428,27 +365,27 @@ int MissionObject::getDifficultyLevel() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getDifficultyLevel();
+		return ((MissionObjectImplementation*) _impl)->getDifficultyLevel();
 }
 
 StringId* MissionObject::getMissionDescription() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getMissionDescription();
+		return ((MissionObjectImplementation*) _impl)->getMissionDescription();
 }
 
 StringId* MissionObject::getMissionTitle() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getMissionTitle();
+		return ((MissionObjectImplementation*) _impl)->getMissionTitle();
 }
 
 String MissionObject::getTargetName() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -457,11 +394,11 @@ String MissionObject::getTargetName() {
 		method.executeWithAsciiReturn(_return_getTargetName);
 		return _return_getTargetName;
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getTargetName();
+		return ((MissionObjectImplementation*) _impl)->getTargetName();
 }
 
 int MissionObject::getRefreshCounter() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -469,19 +406,19 @@ int MissionObject::getRefreshCounter() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getRefreshCounter();
+		return ((MissionObjectImplementation*) _impl)->getRefreshCounter();
 }
 
 SharedObjectTemplate* MissionObject::getTargetTemplate() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->getTargetTemplate();
+		return ((MissionObjectImplementation*) _impl)->getTargetTemplate();
 }
 
 bool MissionObject::isSurveyMission() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -489,11 +426,11 @@ bool MissionObject::isSurveyMission() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->isSurveyMission();
+		return ((MissionObjectImplementation*) _impl)->isSurveyMission();
 }
 
 bool MissionObject::isMissionObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -501,7 +438,7 @@ bool MissionObject::isMissionObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionObjectImplementation*) _getImplementation())->isMissionObject();
+		return ((MissionObjectImplementation*) _impl)->isMissionObject();
 }
 
 /*
@@ -511,7 +448,6 @@ bool MissionObject::isMissionObject() {
 MissionObjectImplementation::MissionObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 MissionObjectImplementation::~MissionObjectImplementation() {
 }
@@ -538,11 +474,6 @@ DistributedObjectStub* MissionObjectImplementation::_getStub() {
 MissionObjectImplementation::operator const MissionObject*() {
 	return _this;
 }
-
-TransactionalObject* MissionObjectImplementation::clone() {
-	return (TransactionalObject*) new MissionObjectImplementation(*this);
-}
-
 
 void MissionObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

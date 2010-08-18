@@ -10,60 +10,13 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	ContainerStub
  */
 
 Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new ContainerImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new ContainerImplementation();
+	_impl->_setStub(this);
 }
 
 Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -74,15 +27,15 @@ Container::~Container() {
 
 
 void Container::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ContainerImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((ContainerImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 void Container::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +43,11 @@ void Container::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ContainerImplementation*) _getImplementation())->initializeTransientMembers();
+		((ContainerImplementation*) _impl)->initializeTransientMembers();
 }
 
 void Container::sendContainerObjectsTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,7 +56,7 @@ void Container::sendContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ContainerImplementation*) _getImplementation())->sendContainerObjectsTo(player);
+		((ContainerImplementation*) _impl)->sendContainerObjectsTo(player);
 }
 
 /*
@@ -113,7 +66,6 @@ void Container::sendContainerObjectsTo(SceneObject* player) {
 ContainerImplementation::ContainerImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 ContainerImplementation::~ContainerImplementation() {
 }
@@ -140,11 +92,6 @@ DistributedObjectStub* ContainerImplementation::_getStub() {
 ContainerImplementation::operator const Container*() {
 	return _this;
 }
-
-TransactionalObject* ContainerImplementation::clone() {
-	return (TransactionalObject*) new ContainerImplementation(*this);
-}
-
 
 void ContainerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

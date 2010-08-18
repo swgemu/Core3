@@ -20,56 +20,13 @@
 
 #include "server/zone/objects/scene/Observable.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
 /*
  *	PlayerManagerStub
  */
 
 PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) : Observer(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new PlayerManagerImplementation(zoneServer, impl));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new PlayerManagerImplementation(zoneServer, impl);
+	_impl->_setStub(this);
 }
 
 PlayerManager::PlayerManager(DummyConstructorParameter* param) : Observer(param) {
@@ -80,7 +37,7 @@ PlayerManager::~PlayerManager() {
 
 
 void PlayerManager::loadNameMap() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -88,27 +45,27 @@ void PlayerManager::loadNameMap() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->loadNameMap();
+		((PlayerManagerImplementation*) _impl)->loadNameMap();
 }
 
 bool PlayerManager::createPlayer(MessageCallback* callback) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->createPlayer(callback);
+		return ((PlayerManagerImplementation*) _impl)->createPlayer(callback);
 }
 
 bool PlayerManager::checkPlayerName(MessageCallback* callback) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->checkPlayerName(callback);
+		return ((PlayerManagerImplementation*) _impl)->checkPlayerName(callback);
 }
 
 int PlayerManager::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -120,11 +77,11 @@ int PlayerManager::notifyObserverEvent(unsigned int eventType, Observable* obser
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->notifyObserverEvent(eventType, observable, arg1, arg2);
+		return ((PlayerManagerImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 int PlayerManager::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +92,11 @@ int PlayerManager::notifyDestruction(TangibleObject* destructor, TangibleObject*
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->notifyDestruction(destructor, destructedObject, condition);
+		return ((PlayerManagerImplementation*) _impl)->notifyDestruction(destructor, destructedObject, condition);
 }
 
 int PlayerManager::notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,11 +106,11 @@ int PlayerManager::notifyDefendersOfIncapacitation(TangibleObject* destructor, T
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->notifyDefendersOfIncapacitation(destructor, destructedObject);
+		return ((PlayerManagerImplementation*) _impl)->notifyDefendersOfIncapacitation(destructor, destructedObject);
 }
 
 void PlayerManager::killPlayer(TangibleObject* attacker, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -163,11 +120,11 @@ void PlayerManager::killPlayer(TangibleObject* attacker, PlayerCreature* player)
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->killPlayer(attacker, player);
+		((PlayerManagerImplementation*) _impl)->killPlayer(attacker, player);
 }
 
 byte PlayerManager::calculateIncapacitationTimer(PlayerCreature* player, int condition) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -177,11 +134,11 @@ byte PlayerManager::calculateIncapacitationTimer(PlayerCreature* player, int con
 
 		return method.executeWithByteReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->calculateIncapacitationTimer(player, condition);
+		return ((PlayerManagerImplementation*) _impl)->calculateIncapacitationTimer(player, condition);
 }
 
 bool PlayerManager::checkEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -191,11 +148,11 @@ bool PlayerManager::checkEncumbrancies(PlayerCreature* player, ArmorObject* armo
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->checkEncumbrancies(player, armor);
+		return ((PlayerManagerImplementation*) _impl)->checkEncumbrancies(player, armor);
 }
 
 void PlayerManager::applyEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -205,11 +162,11 @@ void PlayerManager::applyEncumbrancies(PlayerCreature* player, ArmorObject* armo
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->applyEncumbrancies(player, armor);
+		((PlayerManagerImplementation*) _impl)->applyEncumbrancies(player, armor);
 }
 
 void PlayerManager::removeEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -219,11 +176,11 @@ void PlayerManager::removeEncumbrancies(PlayerCreature* player, ArmorObject* arm
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->removeEncumbrancies(player, armor);
+		((PlayerManagerImplementation*) _impl)->removeEncumbrancies(player, armor);
 }
 
 void PlayerManager::awardBadge(PlayerCreature* player, unsigned int badge) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -233,11 +190,11 @@ void PlayerManager::awardBadge(PlayerCreature* player, unsigned int badge) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->awardBadge(player, badge);
+		((PlayerManagerImplementation*) _impl)->awardBadge(player, badge);
 }
 
 void PlayerManager::setExperienceMultiplier(float globalMultiplier) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -246,11 +203,11 @@ void PlayerManager::setExperienceMultiplier(float globalMultiplier) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->setExperienceMultiplier(globalMultiplier);
+		((PlayerManagerImplementation*) _impl)->setExperienceMultiplier(globalMultiplier);
 }
 
 void PlayerManager::awardExperience(PlayerCreature* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -263,11 +220,11 @@ void PlayerManager::awardExperience(PlayerCreature* player, const String& xpType
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->awardExperience(player, xpType, amount, sendSystemMessage, localMultiplier);
+		((PlayerManagerImplementation*) _impl)->awardExperience(player, xpType, amount, sendSystemMessage, localMultiplier);
 }
 
 void PlayerManager::handleAbortTradeMessage(PlayerCreature* player, bool doLock) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -277,11 +234,11 @@ void PlayerManager::handleAbortTradeMessage(PlayerCreature* player, bool doLock)
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->handleAbortTradeMessage(player, doLock);
+		((PlayerManagerImplementation*) _impl)->handleAbortTradeMessage(player, doLock);
 }
 
 void PlayerManager::handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -291,11 +248,11 @@ void PlayerManager::handleAddItemToTradeWindow(PlayerCreature* player, unsigned 
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->handleAddItemToTradeWindow(player, itemID);
+		((PlayerManagerImplementation*) _impl)->handleAddItemToTradeWindow(player, itemID);
 }
 
 void PlayerManager::handleGiveMoneyMessage(PlayerCreature* player, unsigned int value) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -305,11 +262,11 @@ void PlayerManager::handleGiveMoneyMessage(PlayerCreature* player, unsigned int 
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->handleGiveMoneyMessage(player, value);
+		((PlayerManagerImplementation*) _impl)->handleGiveMoneyMessage(player, value);
 }
 
 void PlayerManager::handleAcceptTransactionMessage(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -318,11 +275,11 @@ void PlayerManager::handleAcceptTransactionMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->handleAcceptTransactionMessage(player);
+		((PlayerManagerImplementation*) _impl)->handleAcceptTransactionMessage(player);
 }
 
 void PlayerManager::handleUnAcceptTransactionMessage(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -331,11 +288,11 @@ void PlayerManager::handleUnAcceptTransactionMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->handleUnAcceptTransactionMessage(player);
+		((PlayerManagerImplementation*) _impl)->handleUnAcceptTransactionMessage(player);
 }
 
 void PlayerManager::handleVerifyTradeMessage(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -344,11 +301,11 @@ void PlayerManager::handleVerifyTradeMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->handleVerifyTradeMessage(player);
+		((PlayerManagerImplementation*) _impl)->handleVerifyTradeMessage(player);
 }
 
 bool PlayerManager::checkTradeItems(PlayerCreature* player, PlayerCreature* receiver) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -358,11 +315,11 @@ bool PlayerManager::checkTradeItems(PlayerCreature* player, PlayerCreature* rece
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->checkTradeItems(player, receiver);
+		return ((PlayerManagerImplementation*) _impl)->checkTradeItems(player, receiver);
 }
 
 void PlayerManager::sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -372,11 +329,11 @@ void PlayerManager::sendBattleFatigueMessage(PlayerCreature* player, PlayerCreat
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->sendBattleFatigueMessage(player, target);
+		((PlayerManagerImplementation*) _impl)->sendBattleFatigueMessage(player, target);
 }
 
 int PlayerManager::getMedicalFacilityRating(CreatureObject* creature) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -385,11 +342,11 @@ int PlayerManager::getMedicalFacilityRating(CreatureObject* creature) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->getMedicalFacilityRating(creature);
+		return ((PlayerManagerImplementation*) _impl)->getMedicalFacilityRating(creature);
 }
 
 int PlayerManager::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -402,19 +359,19 @@ int PlayerManager::healEnhance(CreatureObject* enhancer, CreatureObject* patient
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->healEnhance(enhancer, patient, attribute, buffvalue, duration);
+		return ((PlayerManagerImplementation*) _impl)->healEnhance(enhancer, patient, attribute, buffvalue, duration);
 }
 
 void PlayerManager::disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->disseminateExperience(destructedObject, damageMap);
+		((PlayerManagerImplementation*) _impl)->disseminateExperience(destructedObject, damageMap);
 }
 
 void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -423,11 +380,11 @@ void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->sendMessageOfTheDay(player);
+		((PlayerManagerImplementation*) _impl)->sendMessageOfTheDay(player);
 }
 
 void PlayerManager::sendActivateCloneRequest(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -436,11 +393,11 @@ void PlayerManager::sendActivateCloneRequest(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->sendActivateCloneRequest(player);
+		((PlayerManagerImplementation*) _impl)->sendActivateCloneRequest(player);
 }
 
 void PlayerManager::sendPlayerToCloner(PlayerCreature* player, unsigned long long clonerID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -450,11 +407,11 @@ void PlayerManager::sendPlayerToCloner(PlayerCreature* player, unsigned long lon
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->sendPlayerToCloner(player, clonerID);
+		((PlayerManagerImplementation*) _impl)->sendPlayerToCloner(player, clonerID);
 }
 
 bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -463,11 +420,11 @@ bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->checkExistentNameInDatabase(firstName);
+		return ((PlayerManagerImplementation*) _impl)->checkExistentNameInDatabase(firstName);
 }
 
 TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -477,11 +434,11 @@ TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, co
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->createHairObject(hairObjectFile, hairCustomization);
+		return ((PlayerManagerImplementation*) _impl)->createHairObject(hairObjectFile, hairCustomization);
 }
 
 bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -490,11 +447,11 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->createAllPlayerObjects(player);
+		return ((PlayerManagerImplementation*) _impl)->createAllPlayerObjects(player);
 }
 
 void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -505,11 +462,11 @@ void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const Strin
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->createDefaultPlayerItems(player, profession, templateFile);
+		((PlayerManagerImplementation*) _impl)->createDefaultPlayerItems(player, profession, templateFile);
 }
 
 void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -518,11 +475,11 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->createTutorialBuilding(player);
+		((PlayerManagerImplementation*) _impl)->createTutorialBuilding(player);
 }
 
 void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -531,11 +488,11 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _getImplementation())->createSkippedTutorialBuilding(player);
+		((PlayerManagerImplementation*) _impl)->createSkippedTutorialBuilding(player);
 }
 
 bool PlayerManager::existsName(const String& name) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -544,11 +501,11 @@ bool PlayerManager::existsName(const String& name) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->existsName(name);
+		return ((PlayerManagerImplementation*) _impl)->existsName(name);
 }
 
 unsigned long long PlayerManager::getObjectID(const String& name) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -557,11 +514,11 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->getObjectID(name);
+		return ((PlayerManagerImplementation*) _impl)->getObjectID(name);
 }
 
 PlayerCreature* PlayerManager::getPlayer(const String& name) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -570,7 +527,7 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
-		return ((PlayerManagerImplementation*) _getImplementation())->getPlayer(name);
+		return ((PlayerManagerImplementation*) _impl)->getPlayer(name);
 }
 
 /*
@@ -580,7 +537,6 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 PlayerManagerImplementation::PlayerManagerImplementation(DummyConstructorParameter* param) : ObserverImplementation(param) {
 	_initializeImplementation();
 }
-
 
 PlayerManagerImplementation::~PlayerManagerImplementation() {
 	PlayerManagerImplementation::finalize();
@@ -605,11 +561,6 @@ DistributedObjectStub* PlayerManagerImplementation::_getStub() {
 PlayerManagerImplementation::operator const PlayerManager*() {
 	return _this;
 }
-
-TransactionalObject* PlayerManagerImplementation::clone() {
-	return (TransactionalObject*) new PlayerManagerImplementation(*this);
-}
-
 
 void PlayerManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

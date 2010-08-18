@@ -12,76 +12,13 @@
 
 #include "server/zone/ZoneServer.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/Vector.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
 /*
  *	MissionManagerStub
  */
 
 MissionManager::MissionManager(ZoneServer* srv) : Observer(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new MissionManagerImplementation(srv));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new MissionManagerImplementation(srv);
+	_impl->_setStub(this);
 }
 
 MissionManager::MissionManager(DummyConstructorParameter* param) : Observer(param) {
@@ -92,7 +29,7 @@ MissionManager::~MissionManager() {
 
 
 void MissionManager::loadLairObjectsToSpawn() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -100,11 +37,11 @@ void MissionManager::loadLairObjectsToSpawn() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->loadLairObjectsToSpawn();
+		((MissionManagerImplementation*) _impl)->loadLairObjectsToSpawn();
 }
 
 void MissionManager::handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +52,11 @@ void MissionManager::handleMissionListRequest(MissionTerminal* missionTerminal, 
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->handleMissionListRequest(missionTerminal, player, counter);
+		((MissionManagerImplementation*) _impl)->handleMissionListRequest(missionTerminal, player, counter);
 }
 
 void MissionManager::handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -130,11 +67,11 @@ void MissionManager::handleMissionAccept(MissionTerminal* missionTerminal, Missi
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->handleMissionAccept(missionTerminal, mission, player);
+		((MissionManagerImplementation*) _impl)->handleMissionAccept(missionTerminal, mission, player);
 }
 
 void MissionManager::handleMissionAbort(MissionObject* mission, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -144,11 +81,11 @@ void MissionManager::handleMissionAbort(MissionObject* mission, PlayerCreature* 
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->handleMissionAbort(mission, player);
+		((MissionManagerImplementation*) _impl)->handleMissionAbort(mission, player);
 }
 
 void MissionManager::removeMission(MissionObject* mission, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -158,11 +95,11 @@ void MissionManager::removeMission(MissionObject* mission, PlayerCreature* playe
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->removeMission(mission, player);
+		((MissionManagerImplementation*) _impl)->removeMission(mission, player);
 }
 
 void MissionManager::populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -173,11 +110,11 @@ void MissionManager::populateGeneralMissionList(MissionTerminal* missionTerminal
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->populateGeneralMissionList(missionTerminal, player, counter);
+		((MissionManagerImplementation*) _impl)->populateGeneralMissionList(missionTerminal, player, counter);
 }
 
 void MissionManager::populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -188,11 +125,11 @@ void MissionManager::populateArtisanMissionList(MissionTerminal* missionTerminal
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->populateArtisanMissionList(missionTerminal, player, counter);
+		((MissionManagerImplementation*) _impl)->populateArtisanMissionList(missionTerminal, player, counter);
 }
 
 void MissionManager::randomizeSurveyMission(PlayerCreature* player, MissionObject* mission) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -202,11 +139,11 @@ void MissionManager::randomizeSurveyMission(PlayerCreature* player, MissionObjec
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->randomizeSurveyMission(player, mission);
+		((MissionManagerImplementation*) _impl)->randomizeSurveyMission(player, mission);
 }
 
 void MissionManager::randomizeGeneralMission(PlayerCreature* player, MissionObject* mission) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -216,11 +153,11 @@ void MissionManager::randomizeGeneralMission(PlayerCreature* player, MissionObje
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->randomizeGeneralMission(player, mission);
+		((MissionManagerImplementation*) _impl)->randomizeGeneralMission(player, mission);
 }
 
 void MissionManager::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -231,11 +168,11 @@ void MissionManager::createMissionObjectives(MissionObject* mission, MissionTerm
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->createMissionObjectives(mission, missionTerminal, player);
+		((MissionManagerImplementation*) _impl)->createMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManager::createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -246,11 +183,11 @@ void MissionManager::createSurveyMissionObjectives(MissionObject* mission, Missi
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->createSurveyMissionObjectives(mission, missionTerminal, player);
+		((MissionManagerImplementation*) _impl)->createSurveyMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManager::createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -261,11 +198,11 @@ void MissionManager::createGeneralMissionObjectives(MissionObject* mission, Miss
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _getImplementation())->createGeneralMissionObjectives(mission, missionTerminal, player);
+		((MissionManagerImplementation*) _impl)->createGeneralMissionObjectives(mission, missionTerminal, player);
 }
 
 bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spawn) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -275,7 +212,7 @@ bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spaw
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionManagerImplementation*) _getImplementation())->hasSurveyMission(player, spawn);
+		return ((MissionManagerImplementation*) _impl)->hasSurveyMission(player, spawn);
 }
 
 /*
@@ -285,7 +222,6 @@ bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spaw
 MissionManagerImplementation::MissionManagerImplementation(DummyConstructorParameter* param) : ObserverImplementation(param) {
 	_initializeImplementation();
 }
-
 
 MissionManagerImplementation::~MissionManagerImplementation() {
 }
@@ -312,11 +248,6 @@ DistributedObjectStub* MissionManagerImplementation::_getStub() {
 MissionManagerImplementation::operator const MissionManager*() {
 	return _this;
 }
-
-TransactionalObject* MissionManagerImplementation::clone() {
-	return (TransactionalObject*) new MissionManagerImplementation(*this);
-}
-
 
 void MissionManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -267,8 +267,6 @@ public:
 protected:
 	virtual ~BazaarManagerImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -292,7 +290,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BazaarManager;
-	friend class TransactionalObjectHandle<BazaarManagerImplementation*>;
 };
 
 class BazaarManagerAdapter : public ManagedObjectAdapter {

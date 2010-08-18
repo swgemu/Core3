@@ -12,48 +12,13 @@
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	ManufactureSchematicStub
  */
 
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new ManufactureSchematicImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new ManufactureSchematicImplementation();
+	_impl->_setStub(this);
 }
 
 ManufactureSchematic::ManufactureSchematic(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -64,7 +29,7 @@ ManufactureSchematic::~ManufactureSchematic() {
 
 
 void ManufactureSchematic::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,19 +37,19 @@ void ManufactureSchematic::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->initializeTransientMembers();
+		((ManufactureSchematicImplementation*) _impl)->initializeTransientMembers();
 }
 
 void ManufactureSchematic::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->fillAttributeList(msg, object);
+		((ManufactureSchematicImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
 void ManufactureSchematic::sendTo(SceneObject* player, bool doClose) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,11 +59,11 @@ void ManufactureSchematic::sendTo(SceneObject* player, bool doClose) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->sendTo(player, doClose);
+		((ManufactureSchematicImplementation*) _impl)->sendTo(player, doClose);
 }
 
 void ManufactureSchematic::sendBaselinesTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -107,11 +72,11 @@ void ManufactureSchematic::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->sendBaselinesTo(player);
+		((ManufactureSchematicImplementation*) _impl)->sendBaselinesTo(player);
 }
 
 void ManufactureSchematic::synchronizedUIListen(SceneObject* player, int value) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -121,11 +86,11 @@ void ManufactureSchematic::synchronizedUIListen(SceneObject* player, int value) 
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->synchronizedUIListen(player, value);
+		((ManufactureSchematicImplementation*) _impl)->synchronizedUIListen(player, value);
 }
 
 void ManufactureSchematic::synchronizedUIStopListen(SceneObject* player, int value) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +100,11 @@ void ManufactureSchematic::synchronizedUIStopListen(SceneObject* player, int val
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->synchronizedUIStopListen(player, value);
+		((ManufactureSchematicImplementation*) _impl)->synchronizedUIStopListen(player, value);
 }
 
 void ManufactureSchematic::updateToDatabaseAllObjects(bool startTask) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -148,11 +113,11 @@ void ManufactureSchematic::updateToDatabaseAllObjects(bool startTask) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->updateToDatabaseAllObjects(startTask);
+		((ManufactureSchematicImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
 }
 
 bool ManufactureSchematic::isManufactureSchematic() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,11 +125,11 @@ bool ManufactureSchematic::isManufactureSchematic() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->isManufactureSchematic();
+		return ((ManufactureSchematicImplementation*) _impl)->isManufactureSchematic();
 }
 
 void ManufactureSchematic::setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -174,11 +139,11 @@ void ManufactureSchematic::setDraftSchematic(SceneObject* craftingTool, DraftSch
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->setDraftSchematic(craftingTool, schematic);
+		((ManufactureSchematicImplementation*) _impl)->setDraftSchematic(craftingTool, schematic);
 }
 
 void ManufactureSchematic::initializeIngredientSlots(SceneObject* craftingTool, DraftSchematic* schematic) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -188,11 +153,11 @@ void ManufactureSchematic::initializeIngredientSlots(SceneObject* craftingTool, 
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->initializeIngredientSlots(craftingTool, schematic);
+		((ManufactureSchematicImplementation*) _impl)->initializeIngredientSlots(craftingTool, schematic);
 }
 
 void ManufactureSchematic::cleanupIngredientSlots() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -200,11 +165,11 @@ void ManufactureSchematic::cleanupIngredientSlots() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->cleanupIngredientSlots();
+		((ManufactureSchematicImplementation*) _impl)->cleanupIngredientSlots();
 }
 
 DraftSchematic* ManufactureSchematic::getDraftSchematic() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -212,19 +177,19 @@ DraftSchematic* ManufactureSchematic::getDraftSchematic() {
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getDraftSchematic();
+		return ((ManufactureSchematicImplementation*) _impl)->getDraftSchematic();
 }
 
 Reference<IngredientSlot*> ManufactureSchematic::getIngredientSlot(int index) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getIngredientSlot(index);
+		return ((ManufactureSchematicImplementation*) _impl)->getIngredientSlot(index);
 }
 
 int ManufactureSchematic::getSlotCount() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -232,11 +197,11 @@ int ManufactureSchematic::getSlotCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getSlotCount();
+		return ((ManufactureSchematicImplementation*) _impl)->getSlotCount();
 }
 
 void ManufactureSchematic::increaseComplexity() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -244,11 +209,11 @@ void ManufactureSchematic::increaseComplexity() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->increaseComplexity();
+		((ManufactureSchematicImplementation*) _impl)->increaseComplexity();
 }
 
 void ManufactureSchematic::decreaseComplexity() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -256,11 +221,11 @@ void ManufactureSchematic::decreaseComplexity() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->decreaseComplexity();
+		((ManufactureSchematicImplementation*) _impl)->decreaseComplexity();
 }
 
 float ManufactureSchematic::getComplexity() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -268,11 +233,11 @@ float ManufactureSchematic::getComplexity() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getComplexity();
+		return ((ManufactureSchematicImplementation*) _impl)->getComplexity();
 }
 
 bool ManufactureSchematic::getFirstCraftingUpdate() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -280,11 +245,11 @@ bool ManufactureSchematic::getFirstCraftingUpdate() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getFirstCraftingUpdate();
+		return ((ManufactureSchematicImplementation*) _impl)->getFirstCraftingUpdate();
 }
 
 void ManufactureSchematic::setFirstCraftingUpdate() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -292,11 +257,11 @@ void ManufactureSchematic::setFirstCraftingUpdate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->setFirstCraftingUpdate();
+		((ManufactureSchematicImplementation*) _impl)->setFirstCraftingUpdate();
 }
 
 bool ManufactureSchematic::isReadyForAssembly() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -304,11 +269,11 @@ bool ManufactureSchematic::isReadyForAssembly() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->isReadyForAssembly();
+		return ((ManufactureSchematicImplementation*) _impl)->isReadyForAssembly();
 }
 
 void ManufactureSchematic::setAssembled() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -316,11 +281,11 @@ void ManufactureSchematic::setAssembled() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->setAssembled();
+		((ManufactureSchematicImplementation*) _impl)->setAssembled();
 }
 
 bool ManufactureSchematic::isAssembled() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -328,11 +293,11 @@ bool ManufactureSchematic::isAssembled() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->isAssembled();
+		return ((ManufactureSchematicImplementation*) _impl)->isAssembled();
 }
 
 void ManufactureSchematic::setCompleted() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -340,11 +305,11 @@ void ManufactureSchematic::setCompleted() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->setCompleted();
+		((ManufactureSchematicImplementation*) _impl)->setCompleted();
 }
 
 bool ManufactureSchematic::isCompleted() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -352,11 +317,11 @@ bool ManufactureSchematic::isCompleted() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->isCompleted();
+		return ((ManufactureSchematicImplementation*) _impl)->isCompleted();
 }
 
 void ManufactureSchematic::setCrafter(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -365,11 +330,11 @@ void ManufactureSchematic::setCrafter(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->setCrafter(player);
+		((ManufactureSchematicImplementation*) _impl)->setCrafter(player);
 }
 
 PlayerCreature* ManufactureSchematic::getCrafter() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -377,19 +342,19 @@ PlayerCreature* ManufactureSchematic::getCrafter() {
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getCrafter();
+		return ((ManufactureSchematicImplementation*) _impl)->getCrafter();
 }
 
 CraftingValues* ManufactureSchematic::getCraftingValues() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getCraftingValues();
+		return ((ManufactureSchematicImplementation*) _impl)->getCraftingValues();
 }
 
 void ManufactureSchematic::setExperimentingCounter(int value) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -398,11 +363,11 @@ void ManufactureSchematic::setExperimentingCounter(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->setExperimentingCounter(value);
+		((ManufactureSchematicImplementation*) _impl)->setExperimentingCounter(value);
 }
 
 int ManufactureSchematic::getExperimentingCounter() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -410,11 +375,11 @@ int ManufactureSchematic::getExperimentingCounter() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getExperimentingCounter();
+		return ((ManufactureSchematicImplementation*) _impl)->getExperimentingCounter();
 }
 
 int ManufactureSchematic::getExperimentingCounterPrevious() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -422,11 +387,11 @@ int ManufactureSchematic::getExperimentingCounterPrevious() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getExperimentingCounterPrevious();
+		return ((ManufactureSchematicImplementation*) _impl)->getExperimentingCounterPrevious();
 }
 
 void ManufactureSchematic::setManufactureLimit(int limit) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -435,11 +400,11 @@ void ManufactureSchematic::setManufactureLimit(int limit) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->setManufactureLimit(limit);
+		((ManufactureSchematicImplementation*) _impl)->setManufactureLimit(limit);
 }
 
 int ManufactureSchematic::getManufactureLimit() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -447,11 +412,11 @@ int ManufactureSchematic::getManufactureLimit() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getManufactureLimit();
+		return ((ManufactureSchematicImplementation*) _impl)->getManufactureLimit();
 }
 
 void ManufactureSchematic::setPrototype(TangibleObject* tano) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -460,11 +425,11 @@ void ManufactureSchematic::setPrototype(TangibleObject* tano) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->setPrototype(tano);
+		((ManufactureSchematicImplementation*) _impl)->setPrototype(tano);
 }
 
 TangibleObject* ManufactureSchematic::getPrototype() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -472,11 +437,11 @@ TangibleObject* ManufactureSchematic::getPrototype() {
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getPrototype();
+		return ((ManufactureSchematicImplementation*) _impl)->getPrototype();
 }
 
 void ManufactureSchematic::initializeFactoryIngredients() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -484,11 +449,11 @@ void ManufactureSchematic::initializeFactoryIngredients() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _getImplementation())->initializeFactoryIngredients();
+		((ManufactureSchematicImplementation*) _impl)->initializeFactoryIngredients();
 }
 
 int ManufactureSchematic::getFactoryIngredientsSize() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -496,11 +461,11 @@ int ManufactureSchematic::getFactoryIngredientsSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getFactoryIngredientsSize();
+		return ((ManufactureSchematicImplementation*) _impl)->getFactoryIngredientsSize();
 }
 
 SceneObject* ManufactureSchematic::getFactoryIngredient(int i) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -509,7 +474,7 @@ SceneObject* ManufactureSchematic::getFactoryIngredient(int i) {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _getImplementation())->getFactoryIngredient(i);
+		return ((ManufactureSchematicImplementation*) _impl)->getFactoryIngredient(i);
 }
 
 /*
@@ -519,7 +484,6 @@ SceneObject* ManufactureSchematic::getFactoryIngredient(int i) {
 ManufactureSchematicImplementation::ManufactureSchematicImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 ManufactureSchematicImplementation::~ManufactureSchematicImplementation() {
 }
@@ -546,11 +510,6 @@ DistributedObjectStub* ManufactureSchematicImplementation::_getStub() {
 ManufactureSchematicImplementation::operator const ManufactureSchematic*() {
 	return _this;
 }
-
-TransactionalObject* ManufactureSchematicImplementation::clone() {
-	return (TransactionalObject*) new ManufactureSchematicImplementation(*this);
-}
-
 
 void ManufactureSchematicImplementation::lock(bool doLock) {
 	_this->lock(doLock);

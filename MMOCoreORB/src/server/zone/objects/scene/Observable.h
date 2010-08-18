@@ -76,8 +76,6 @@ public:
 protected:
 	virtual ~ObservableImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -101,7 +99,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Observable;
-	friend class TransactionalObjectHandle<ObservableImplementation*>;
 };
 
 class ObservableAdapter : public ManagedObjectAdapter {

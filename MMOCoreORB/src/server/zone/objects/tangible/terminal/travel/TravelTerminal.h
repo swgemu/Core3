@@ -149,8 +149,6 @@ public:
 protected:
 	virtual ~TravelTerminalImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -174,7 +172,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TravelTerminal;
-	friend class TransactionalObjectHandle<TravelTerminalImplementation*>;
 };
 
 class TravelTerminalAdapter : public TerminalAdapter {

@@ -12,82 +12,13 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	RegionStub
  */
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new RegionImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new RegionImplementation();
+	_impl->_setStub(this);
 }
 
 Region::Region(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -98,7 +29,7 @@ Region::~Region() {
 
 
 void Region::notifyEnter(SceneObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -107,11 +38,11 @@ void Region::notifyEnter(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _getImplementation())->notifyEnter(object);
+		((RegionImplementation*) _impl)->notifyEnter(object);
 }
 
 void Region::sendGreetingMessage(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -120,11 +51,11 @@ void Region::sendGreetingMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _getImplementation())->sendGreetingMessage(player);
+		((RegionImplementation*) _impl)->sendGreetingMessage(player);
 }
 
 void Region::sendDepartingMessage(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -133,11 +64,11 @@ void Region::sendDepartingMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _getImplementation())->sendDepartingMessage(player);
+		((RegionImplementation*) _impl)->sendDepartingMessage(player);
 }
 
 void Region::notifyExit(SceneObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -146,11 +77,11 @@ void Region::notifyExit(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _getImplementation())->notifyExit(object);
+		((RegionImplementation*) _impl)->notifyExit(object);
 }
 
 void Region::addBazaar(BazaarTerminal* ter) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -159,11 +90,11 @@ void Region::addBazaar(BazaarTerminal* ter) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _getImplementation())->addBazaar(ter);
+		((RegionImplementation*) _impl)->addBazaar(ter);
 }
 
 BazaarTerminal* Region::getBazaar(int idx) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,11 +103,11 @@ BazaarTerminal* Region::getBazaar(int idx) {
 
 		return (BazaarTerminal*) method.executeWithObjectReturn();
 	} else
-		return ((RegionImplementation*) _getImplementation())->getBazaar(idx);
+		return ((RegionImplementation*) _impl)->getBazaar(idx);
 }
 
 ShuttleCreature* Region::getShuttle() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -184,11 +115,11 @@ ShuttleCreature* Region::getShuttle() {
 
 		return (ShuttleCreature*) method.executeWithObjectReturn();
 	} else
-		return ((RegionImplementation*) _getImplementation())->getShuttle();
+		return ((RegionImplementation*) _impl)->getShuttle();
 }
 
 int Region::getBazaarCount() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -196,11 +127,11 @@ int Region::getBazaarCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((RegionImplementation*) _getImplementation())->getBazaarCount();
+		return ((RegionImplementation*) _impl)->getBazaarCount();
 }
 
 bool Region::isRegion() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -208,7 +139,7 @@ bool Region::isRegion() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RegionImplementation*) _getImplementation())->isRegion();
+		return ((RegionImplementation*) _impl)->isRegion();
 }
 
 /*
@@ -218,7 +149,6 @@ bool Region::isRegion() {
 RegionImplementation::RegionImplementation(DummyConstructorParameter* param) : ActiveAreaImplementation(param) {
 	_initializeImplementation();
 }
-
 
 RegionImplementation::~RegionImplementation() {
 }
@@ -245,11 +175,6 @@ DistributedObjectStub* RegionImplementation::_getStub() {
 RegionImplementation::operator const Region*() {
 	return _this;
 }
-
-TransactionalObject* RegionImplementation::clone() {
-	return (TransactionalObject*) new RegionImplementation(*this);
-}
-
 
 void RegionImplementation::lock(bool doLock) {
 	_this->lock(doLock);

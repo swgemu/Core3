@@ -8,56 +8,13 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	StaticObjectStub
  */
 
 StaticObject::StaticObject() : SceneObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new StaticObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new StaticObjectImplementation();
+	_impl->_setStub(this);
 }
 
 StaticObject::StaticObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -68,15 +25,15 @@ StaticObject::~StaticObject() {
 
 
 void StaticObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StaticObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((StaticObjectImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 void StaticObject::sendBaselinesTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -85,7 +42,7 @@ void StaticObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StaticObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
+		((StaticObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
 /*
@@ -95,7 +52,6 @@ void StaticObject::sendBaselinesTo(SceneObject* player) {
 StaticObjectImplementation::StaticObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 StaticObjectImplementation::~StaticObjectImplementation() {
 }
@@ -122,11 +78,6 @@ DistributedObjectStub* StaticObjectImplementation::_getStub() {
 StaticObjectImplementation::operator const StaticObject*() {
 	return _this;
 }
-
-TransactionalObject* StaticObjectImplementation::clone() {
-	return (TransactionalObject*) new StaticObjectImplementation(*this);
-}
-
 
 void StaticObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

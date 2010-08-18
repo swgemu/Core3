@@ -22,94 +22,13 @@
 
 #include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	AiAgentStub
  */
 
 AiAgent::AiAgent() : CreatureObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new AiAgentImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new AiAgentImplementation();
+	_impl->_setStub(this);
 }
 
 AiAgent::AiAgent(DummyConstructorParameter* param) : CreatureObject(param) {
@@ -120,7 +39,7 @@ AiAgent::~AiAgent() {
 
 
 void AiAgent::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +47,11 @@ void AiAgent::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->initializeTransientMembers();
+		((AiAgentImplementation*) _impl)->initializeTransientMembers();
 }
 
 void AiAgent::activateRecovery() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,11 +59,11 @@ void AiAgent::activateRecovery() {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->activateRecovery();
+		((AiAgentImplementation*) _impl)->activateRecovery();
 }
 
 void AiAgent::activateMovementEvent() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -152,11 +71,11 @@ void AiAgent::activateMovementEvent() {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->activateMovementEvent();
+		((AiAgentImplementation*) _impl)->activateMovementEvent();
 }
 
 bool AiAgent::tryRetreat() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -164,11 +83,11 @@ bool AiAgent::tryRetreat() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->tryRetreat();
+		return ((AiAgentImplementation*) _impl)->tryRetreat();
 }
 
 void AiAgent::doRecovery() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -176,11 +95,11 @@ void AiAgent::doRecovery() {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->doRecovery();
+		((AiAgentImplementation*) _impl)->doRecovery();
 }
 
 void AiAgent::doMovement() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -188,11 +107,11 @@ void AiAgent::doMovement() {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->doMovement();
+		((AiAgentImplementation*) _impl)->doMovement();
 }
 
 void AiAgent::checkNewAngle() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -200,11 +119,11 @@ void AiAgent::checkNewAngle() {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->checkNewAngle();
+		((AiAgentImplementation*) _impl)->checkNewAngle();
 }
 
 void AiAgent::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -214,11 +133,11 @@ void AiAgent::fillAttributeList(AttributeListMessage* msg, PlayerCreature* objec
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->fillAttributeList(msg, object);
+		((AiAgentImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
 void AiAgent::setNextPosition(float x, float z, float y, SceneObject* cell) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -230,27 +149,27 @@ void AiAgent::setNextPosition(float x, float z, float y, SceneObject* cell) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->setNextPosition(x, z, y, cell);
+		((AiAgentImplementation*) _impl)->setNextPosition(x, z, y, cell);
 }
 
 void AiAgent::updateCurrentPosition(PatrolPoint* point) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((AiAgentImplementation*) _getImplementation())->updateCurrentPosition(point);
+		((AiAgentImplementation*) _impl)->updateCurrentPosition(point);
 }
 
 void AiAgent::broadcastNextPositionUpdate(PatrolPoint* point) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((AiAgentImplementation*) _getImplementation())->broadcastNextPositionUpdate(point);
+		((AiAgentImplementation*) _impl)->broadcastNextPositionUpdate(point);
 }
 
 void AiAgent::clearPatrolPoints() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -258,43 +177,43 @@ void AiAgent::clearPatrolPoints() {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->clearPatrolPoints();
+		((AiAgentImplementation*) _impl)->clearPatrolPoints();
 }
 
 void AiAgent::notifyInsert(QuadTreeEntry* entry) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((AiAgentImplementation*) _getImplementation())->notifyInsert(entry);
+		((AiAgentImplementation*) _impl)->notifyInsert(entry);
 }
 
 void AiAgent::notifyDissapear(QuadTreeEntry* entry) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((AiAgentImplementation*) _getImplementation())->notifyDissapear(entry);
+		((AiAgentImplementation*) _impl)->notifyDissapear(entry);
 }
 
 void AiAgent::notifyPositionUpdate(QuadTreeEntry* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((AiAgentImplementation*) _getImplementation())->notifyPositionUpdate(obj);
+		((AiAgentImplementation*) _impl)->notifyPositionUpdate(obj);
 }
 
 void AiAgent::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((AiAgentImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((AiAgentImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 int AiAgent::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -307,11 +226,11 @@ int AiAgent::inflictDamage(TangibleObject* attacker, int damageType, int damage,
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+		return ((AiAgentImplementation*) _impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 void AiAgent::sendConversationStartTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -320,11 +239,11 @@ void AiAgent::sendConversationStartTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->sendConversationStartTo(player);
+		((AiAgentImplementation*) _impl)->sendConversationStartTo(player);
 }
 
 void AiAgent::selectConversationOption(int option, SceneObject* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -334,11 +253,11 @@ void AiAgent::selectConversationOption(int option, SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->selectConversationOption(option, obj);
+		((AiAgentImplementation*) _impl)->selectConversationOption(option, obj);
 }
 
 int AiAgent::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -348,11 +267,11 @@ int AiAgent::notifyObjectDestructionObservers(TangibleObject* attacker, int cond
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->notifyObjectDestructionObservers(attacker, condition);
+		return ((AiAgentImplementation*) _impl)->notifyObjectDestructionObservers(attacker, condition);
 }
 
 void AiAgent::activatePostureRecovery() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -360,11 +279,11 @@ void AiAgent::activatePostureRecovery() {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->activatePostureRecovery();
+		((AiAgentImplementation*) _impl)->activatePostureRecovery();
 }
 
 void AiAgent::clearCombatState(bool clearDefenders) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -373,11 +292,11 @@ void AiAgent::clearCombatState(bool clearDefenders) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->clearCombatState(clearDefenders);
+		((AiAgentImplementation*) _impl)->clearCombatState(clearDefenders);
 }
 
 void AiAgent::setDefender(SceneObject* defender) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -386,11 +305,11 @@ void AiAgent::setDefender(SceneObject* defender) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->setDefender(defender);
+		((AiAgentImplementation*) _impl)->setDefender(defender);
 }
 
 void AiAgent::addDefender(SceneObject* defender) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -399,11 +318,11 @@ void AiAgent::addDefender(SceneObject* defender) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->addDefender(defender);
+		((AiAgentImplementation*) _impl)->addDefender(defender);
 }
 
 void AiAgent::removeDefender(SceneObject* defender) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -412,11 +331,11 @@ void AiAgent::removeDefender(SceneObject* defender) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->removeDefender(defender);
+		((AiAgentImplementation*) _impl)->removeDefender(defender);
 }
 
 void AiAgent::setDespawnOnNoPlayerInRange(bool val) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -425,11 +344,11 @@ void AiAgent::setDespawnOnNoPlayerInRange(bool val) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->setDespawnOnNoPlayerInRange(val);
+		((AiAgentImplementation*) _impl)->setDespawnOnNoPlayerInRange(val);
 }
 
 void AiAgent::notifyDespawn(Zone* zone) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -438,11 +357,11 @@ void AiAgent::notifyDespawn(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->notifyDespawn(zone);
+		((AiAgentImplementation*) _impl)->notifyDespawn(zone);
 }
 
 void AiAgent::respawn(Zone* zone, int level) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -452,11 +371,11 @@ void AiAgent::respawn(Zone* zone, int level) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->respawn(zone, level);
+		((AiAgentImplementation*) _impl)->respawn(zone, level);
 }
 
 void AiAgent::setHomeLocation(float x, float z, float y, SceneObject* cell) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -468,11 +387,11 @@ void AiAgent::setHomeLocation(float x, float z, float y, SceneObject* cell) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->setHomeLocation(x, z, y, cell);
+		((AiAgentImplementation*) _impl)->setHomeLocation(x, z, y, cell);
 }
 
 void AiAgent::setRespawnTimer(float resp) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -481,11 +400,11 @@ void AiAgent::setRespawnTimer(float resp) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->setRespawnTimer(resp);
+		((AiAgentImplementation*) _impl)->setRespawnTimer(resp);
 }
 
 bool AiAgent::isAttackableBy(CreatureObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -494,11 +413,11 @@ bool AiAgent::isAttackableBy(CreatureObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->isAttackableBy(object);
+		return ((AiAgentImplementation*) _impl)->isAttackableBy(object);
 }
 
 void AiAgent::setFollowObject(SceneObject* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -507,11 +426,11 @@ void AiAgent::setFollowObject(SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->setFollowObject(obj);
+		((AiAgentImplementation*) _impl)->setFollowObject(obj);
 }
 
 bool AiAgent::isRetreating() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -519,11 +438,11 @@ bool AiAgent::isRetreating() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->isRetreating();
+		return ((AiAgentImplementation*) _impl)->isRetreating();
 }
 
 void AiAgent::clearDespawnEvent() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -531,11 +450,11 @@ void AiAgent::clearDespawnEvent() {
 
 		method.executeWithVoidReturn();
 	} else
-		((AiAgentImplementation*) _getImplementation())->clearDespawnEvent();
+		((AiAgentImplementation*) _impl)->clearDespawnEvent();
 }
 
 float AiAgent::getKinetic() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -543,11 +462,11 @@ float AiAgent::getKinetic() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getKinetic();
+		return ((AiAgentImplementation*) _impl)->getKinetic();
 }
 
 float AiAgent::getEnergy() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -555,11 +474,11 @@ float AiAgent::getEnergy() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getEnergy();
+		return ((AiAgentImplementation*) _impl)->getEnergy();
 }
 
 float AiAgent::getElectricity() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -567,11 +486,11 @@ float AiAgent::getElectricity() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getElectricity();
+		return ((AiAgentImplementation*) _impl)->getElectricity();
 }
 
 float AiAgent::getStun() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -579,11 +498,11 @@ float AiAgent::getStun() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getStun();
+		return ((AiAgentImplementation*) _impl)->getStun();
 }
 
 float AiAgent::getBlast() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -591,11 +510,11 @@ float AiAgent::getBlast() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getBlast();
+		return ((AiAgentImplementation*) _impl)->getBlast();
 }
 
 float AiAgent::getHeat() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -603,11 +522,11 @@ float AiAgent::getHeat() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getHeat();
+		return ((AiAgentImplementation*) _impl)->getHeat();
 }
 
 float AiAgent::getCold() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -615,11 +534,11 @@ float AiAgent::getCold() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getCold();
+		return ((AiAgentImplementation*) _impl)->getCold();
 }
 
 float AiAgent::getAcid() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -627,11 +546,11 @@ float AiAgent::getAcid() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getAcid();
+		return ((AiAgentImplementation*) _impl)->getAcid();
 }
 
 float AiAgent::getLightSaber() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -639,11 +558,11 @@ float AiAgent::getLightSaber() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getLightSaber();
+		return ((AiAgentImplementation*) _impl)->getLightSaber();
 }
 
 bool AiAgent::isStalker() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -651,11 +570,11 @@ bool AiAgent::isStalker() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->isStalker();
+		return ((AiAgentImplementation*) _impl)->isStalker();
 }
 
 bool AiAgent::isBaby() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -663,11 +582,11 @@ bool AiAgent::isBaby() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->isBaby();
+		return ((AiAgentImplementation*) _impl)->isBaby();
 }
 
 bool AiAgent::isKiller() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -675,11 +594,11 @@ bool AiAgent::isKiller() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->isKiller();
+		return ((AiAgentImplementation*) _impl)->isKiller();
 }
 
 float AiAgent::getTame() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -687,11 +606,11 @@ float AiAgent::getTame() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getTame();
+		return ((AiAgentImplementation*) _impl)->getTame();
 }
 
 String AiAgent::getMeatType() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -700,11 +619,11 @@ String AiAgent::getMeatType() {
 		method.executeWithAsciiReturn(_return_getMeatType);
 		return _return_getMeatType;
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getMeatType();
+		return ((AiAgentImplementation*) _impl)->getMeatType();
 }
 
 String AiAgent::getBoneType() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -713,11 +632,11 @@ String AiAgent::getBoneType() {
 		method.executeWithAsciiReturn(_return_getBoneType);
 		return _return_getBoneType;
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getBoneType();
+		return ((AiAgentImplementation*) _impl)->getBoneType();
 }
 
 String AiAgent::getHideType() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -726,11 +645,11 @@ String AiAgent::getHideType() {
 		method.executeWithAsciiReturn(_return_getHideType);
 		return _return_getHideType;
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getHideType();
+		return ((AiAgentImplementation*) _impl)->getHideType();
 }
 
 float AiAgent::getMilk() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -738,11 +657,11 @@ float AiAgent::getMilk() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getMilk();
+		return ((AiAgentImplementation*) _impl)->getMilk();
 }
 
 float AiAgent::getHideMax() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -750,11 +669,11 @@ float AiAgent::getHideMax() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getHideMax();
+		return ((AiAgentImplementation*) _impl)->getHideMax();
 }
 
 float AiAgent::getBoneMax() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -762,11 +681,11 @@ float AiAgent::getBoneMax() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getBoneMax();
+		return ((AiAgentImplementation*) _impl)->getBoneMax();
 }
 
 float AiAgent::getMeatMax() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -774,11 +693,11 @@ float AiAgent::getMeatMax() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getMeatMax();
+		return ((AiAgentImplementation*) _impl)->getMeatMax();
 }
 
 unsigned int AiAgent::getFerocity() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -786,11 +705,11 @@ unsigned int AiAgent::getFerocity() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getFerocity();
+		return ((AiAgentImplementation*) _impl)->getFerocity();
 }
 
 unsigned int AiAgent::getArmor() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -798,11 +717,11 @@ unsigned int AiAgent::getArmor() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getArmor();
+		return ((AiAgentImplementation*) _impl)->getArmor();
 }
 
 bool AiAgent::getDespawnOnNoPlayerInRange() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -810,11 +729,11 @@ bool AiAgent::getDespawnOnNoPlayerInRange() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getDespawnOnNoPlayerInRange();
+		return ((AiAgentImplementation*) _impl)->getDespawnOnNoPlayerInRange();
 }
 
 int AiAgent::getNumberOfPlayersInRange() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -822,19 +741,19 @@ int AiAgent::getNumberOfPlayersInRange() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getNumberOfPlayersInRange();
+		return ((AiAgentImplementation*) _impl)->getNumberOfPlayersInRange();
 }
 
 DamageMap* AiAgent::getDamageMap() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getDamageMap();
+		return ((AiAgentImplementation*) _impl)->getDamageMap();
 }
 
 float AiAgent::getRespawnTimer() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -842,19 +761,19 @@ float AiAgent::getRespawnTimer() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getRespawnTimer();
+		return ((AiAgentImplementation*) _impl)->getRespawnTimer();
 }
 
 PatrolPoint* AiAgent::getHomeLocation() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->getHomeLocation();
+		return ((AiAgentImplementation*) _impl)->getHomeLocation();
 }
 
 bool AiAgent::hasOrganics() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -862,11 +781,11 @@ bool AiAgent::hasOrganics() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->hasOrganics();
+		return ((AiAgentImplementation*) _impl)->hasOrganics();
 }
 
 bool AiAgent::isAiAgent() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -874,7 +793,7 @@ bool AiAgent::isAiAgent() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AiAgentImplementation*) _getImplementation())->isAiAgent();
+		return ((AiAgentImplementation*) _impl)->isAiAgent();
 }
 
 /*
@@ -884,7 +803,6 @@ bool AiAgent::isAiAgent() {
 AiAgentImplementation::AiAgentImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 AiAgentImplementation::~AiAgentImplementation() {
 }
@@ -911,11 +829,6 @@ DistributedObjectStub* AiAgentImplementation::_getStub() {
 AiAgentImplementation::operator const AiAgent*() {
 	return _this;
 }
-
-TransactionalObject* AiAgentImplementation::clone() {
-	return (TransactionalObject*) new AiAgentImplementation(*this);
-}
-
 
 void AiAgentImplementation::lock(bool doLock) {
 	_this->lock(doLock);

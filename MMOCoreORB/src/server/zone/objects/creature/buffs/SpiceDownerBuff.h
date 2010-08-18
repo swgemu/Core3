@@ -126,8 +126,6 @@ public:
 protected:
 	virtual ~SpiceDownerBuffImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -151,7 +149,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SpiceDownerBuff;
-	friend class TransactionalObjectHandle<SpiceDownerBuffImplementation*>;
 };
 
 class SpiceDownerBuffAdapter : public BuffAdapter {

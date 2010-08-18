@@ -126,8 +126,6 @@ public:
 protected:
 	virtual ~InstallationDeedImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -151,7 +149,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class InstallationDeed;
-	friend class TransactionalObjectHandle<InstallationDeedImplementation*>;
 };
 
 class InstallationDeedAdapter : public DeedAdapter {

@@ -6,62 +6,13 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
 /*
  *	MeleeWeaponObjectStub
  */
 
 MeleeWeaponObject::MeleeWeaponObject() : WeaponObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new MeleeWeaponObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new MeleeWeaponObjectImplementation();
+	_impl->_setStub(this);
 }
 
 MeleeWeaponObject::MeleeWeaponObject(DummyConstructorParameter* param) : WeaponObject(param) {
@@ -72,7 +23,7 @@ MeleeWeaponObject::~MeleeWeaponObject() {
 
 
 void MeleeWeaponObject::initializePrivateData() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +31,11 @@ void MeleeWeaponObject::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MeleeWeaponObjectImplementation*) _getImplementation())->initializePrivateData();
+		((MeleeWeaponObjectImplementation*) _impl)->initializePrivateData();
 }
 
 void MeleeWeaponObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +43,11 @@ void MeleeWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MeleeWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((MeleeWeaponObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 bool MeleeWeaponObject::isMeleeWeapon() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,7 +55,7 @@ bool MeleeWeaponObject::isMeleeWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MeleeWeaponObjectImplementation*) _getImplementation())->isMeleeWeapon();
+		return ((MeleeWeaponObjectImplementation*) _impl)->isMeleeWeapon();
 }
 
 /*
@@ -114,7 +65,6 @@ bool MeleeWeaponObject::isMeleeWeapon() {
 MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(DummyConstructorParameter* param) : WeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
 }
@@ -141,11 +91,6 @@ DistributedObjectStub* MeleeWeaponObjectImplementation::_getStub() {
 MeleeWeaponObjectImplementation::operator const MeleeWeaponObject*() {
 	return _this;
 }
-
-TransactionalObject* MeleeWeaponObjectImplementation::clone() {
-	return (TransactionalObject*) new MeleeWeaponObjectImplementation(*this);
-}
-
 
 void MeleeWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

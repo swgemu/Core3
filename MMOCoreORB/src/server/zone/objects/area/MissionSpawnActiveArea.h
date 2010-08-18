@@ -109,8 +109,6 @@ public:
 protected:
 	virtual ~MissionSpawnActiveAreaImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -134,7 +132,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionSpawnActiveArea;
-	friend class TransactionalObjectHandle<MissionSpawnActiveAreaImplementation*>;
 };
 
 class MissionSpawnActiveAreaAdapter : public ActiveAreaAdapter {

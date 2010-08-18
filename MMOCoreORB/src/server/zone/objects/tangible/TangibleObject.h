@@ -564,8 +564,6 @@ public:
 protected:
 	virtual ~TangibleObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -589,7 +587,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TangibleObject;
-	friend class TransactionalObjectHandle<TangibleObjectImplementation*>;
 };
 
 class TangibleObjectAdapter : public SceneObjectAdapter {

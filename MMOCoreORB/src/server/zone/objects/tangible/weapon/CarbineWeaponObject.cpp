@@ -6,62 +6,13 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
 /*
  *	CarbineWeaponObjectStub
  */
 
 CarbineWeaponObject::CarbineWeaponObject() : RangedWeaponObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new CarbineWeaponObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new CarbineWeaponObjectImplementation();
+	_impl->_setStub(this);
 }
 
 CarbineWeaponObject::CarbineWeaponObject(DummyConstructorParameter* param) : RangedWeaponObject(param) {
@@ -72,7 +23,7 @@ CarbineWeaponObject::~CarbineWeaponObject() {
 
 
 void CarbineWeaponObject::initializePrivateData() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +31,11 @@ void CarbineWeaponObject::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CarbineWeaponObjectImplementation*) _getImplementation())->initializePrivateData();
+		((CarbineWeaponObjectImplementation*) _impl)->initializePrivateData();
 }
 
 void CarbineWeaponObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +43,11 @@ void CarbineWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CarbineWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((CarbineWeaponObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 bool CarbineWeaponObject::isCarbineWeapon() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,7 +55,7 @@ bool CarbineWeaponObject::isCarbineWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CarbineWeaponObjectImplementation*) _getImplementation())->isCarbineWeapon();
+		return ((CarbineWeaponObjectImplementation*) _impl)->isCarbineWeapon();
 }
 
 /*
@@ -114,7 +65,6 @@ bool CarbineWeaponObject::isCarbineWeapon() {
 CarbineWeaponObjectImplementation::CarbineWeaponObjectImplementation(DummyConstructorParameter* param) : RangedWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 CarbineWeaponObjectImplementation::~CarbineWeaponObjectImplementation() {
 }
@@ -141,11 +91,6 @@ DistributedObjectStub* CarbineWeaponObjectImplementation::_getStub() {
 CarbineWeaponObjectImplementation::operator const CarbineWeaponObject*() {
 	return _this;
 }
-
-TransactionalObject* CarbineWeaponObjectImplementation::clone() {
-	return (TransactionalObject*) new CarbineWeaponObjectImplementation(*this);
-}
-
 
 void CarbineWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

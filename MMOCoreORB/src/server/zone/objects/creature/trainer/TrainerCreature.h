@@ -184,8 +184,6 @@ public:
 protected:
 	virtual ~TrainerCreatureImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -209,7 +207,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TrainerCreature;
-	friend class TransactionalObjectHandle<TrainerCreatureImplementation*>;
 };
 
 class TrainerCreatureAdapter : public CreatureObjectAdapter {

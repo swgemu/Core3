@@ -6,46 +6,13 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
 /*
  *	SuiCharacterBuilderBoxStub
  */
 
 SuiCharacterBuilderBox::SuiCharacterBuilderBox(PlayerCreature* player, CharacterBuilderMenuNode* root) : SuiListBox(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new SuiCharacterBuilderBoxImplementation(player, root));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new SuiCharacterBuilderBoxImplementation(player, root);
+	_impl->_setStub(this);
 }
 
 SuiCharacterBuilderBox::SuiCharacterBuilderBox(DummyConstructorParameter* param) : SuiListBox(param) {
@@ -56,7 +23,7 @@ SuiCharacterBuilderBox::~SuiCharacterBuilderBox() {
 
 
 BaseMessage* SuiCharacterBuilderBox::generateMessage() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -64,27 +31,27 @@ BaseMessage* SuiCharacterBuilderBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiCharacterBuilderBoxImplementation*) _getImplementation())->generateMessage();
+		return ((SuiCharacterBuilderBoxImplementation*) _impl)->generateMessage();
 }
 
 CharacterBuilderMenuNode* SuiCharacterBuilderBox::getCurrentNode() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SuiCharacterBuilderBoxImplementation*) _getImplementation())->getCurrentNode();
+		return ((SuiCharacterBuilderBoxImplementation*) _impl)->getCurrentNode();
 }
 
 void SuiCharacterBuilderBox::setCurrentNode(CharacterBuilderMenuNode* node) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SuiCharacterBuilderBoxImplementation*) _getImplementation())->setCurrentNode(node);
+		((SuiCharacterBuilderBoxImplementation*) _impl)->setCurrentNode(node);
 }
 
 bool SuiCharacterBuilderBox::isCharacterBuilderBox() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,7 +59,7 @@ bool SuiCharacterBuilderBox::isCharacterBuilderBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiCharacterBuilderBoxImplementation*) _getImplementation())->isCharacterBuilderBox();
+		return ((SuiCharacterBuilderBoxImplementation*) _impl)->isCharacterBuilderBox();
 }
 
 /*
@@ -102,7 +69,6 @@ bool SuiCharacterBuilderBox::isCharacterBuilderBox() {
 SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(DummyConstructorParameter* param) : SuiListBoxImplementation(param) {
 	_initializeImplementation();
 }
-
 
 SuiCharacterBuilderBoxImplementation::~SuiCharacterBuilderBoxImplementation() {
 }
@@ -129,11 +95,6 @@ DistributedObjectStub* SuiCharacterBuilderBoxImplementation::_getStub() {
 SuiCharacterBuilderBoxImplementation::operator const SuiCharacterBuilderBox*() {
 	return _this;
 }
-
-TransactionalObject* SuiCharacterBuilderBoxImplementation::clone() {
-	return (TransactionalObject*) new SuiCharacterBuilderBoxImplementation(*this);
-}
-
 
 void SuiCharacterBuilderBoxImplementation::lock(bool doLock) {
 	_this->lock(doLock);

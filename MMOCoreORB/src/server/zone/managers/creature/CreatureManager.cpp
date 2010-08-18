@@ -24,102 +24,13 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/creature/PatrolPoint.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/creature/events/AiThinkEvent.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/objects/creature/events/AiMoveEvent.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/objects/creature/PatrolPointsVector.h"
-
-#include "server/zone/objects/tangible/DamageMap.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	CreatureManagerStub
  */
 
 CreatureManager::CreatureManager(Zone* planet, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new CreatureManagerImplementation(planet, impl));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new CreatureManagerImplementation(planet, impl);
+	_impl->_setStub(this);
 }
 
 CreatureManager::CreatureManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -130,7 +41,7 @@ CreatureManager::~CreatureManager() {
 
 
 void CreatureManager::initialize() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -138,11 +49,11 @@ void CreatureManager::initialize() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _getImplementation())->initialize();
+		((CreatureManagerImplementation*) _impl)->initialize();
 }
 
 CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -155,19 +66,19 @@ CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
-		return ((CreatureManagerImplementation*) _getImplementation())->spawnCreature(templateCRC, x, z, y, parentID);
+		return ((CreatureManagerImplementation*) _impl)->spawnCreature(templateCRC, x, z, y, parentID);
 }
 
 int CreatureManager::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((CreatureManagerImplementation*) _getImplementation())->notifyDestruction(destructor, destructedObject, condition);
+		return ((CreatureManagerImplementation*) _impl)->notifyDestruction(destructor, destructedObject, condition);
 }
 
 void CreatureManager::loadDynamicSpawnAreas() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -175,11 +86,11 @@ void CreatureManager::loadDynamicSpawnAreas() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _getImplementation())->loadDynamicSpawnAreas();
+		((CreatureManagerImplementation*) _impl)->loadDynamicSpawnAreas();
 }
 
 void CreatureManager::loadSingleSpawns() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -187,11 +98,11 @@ void CreatureManager::loadSingleSpawns() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _getImplementation())->loadSingleSpawns();
+		((CreatureManagerImplementation*) _impl)->loadSingleSpawns();
 }
 
 void CreatureManager::loadTrainers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -199,7 +110,7 @@ void CreatureManager::loadTrainers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _getImplementation())->loadTrainers();
+		((CreatureManagerImplementation*) _impl)->loadTrainers();
 }
 
 /*
@@ -209,7 +120,6 @@ void CreatureManager::loadTrainers() {
 CreatureManagerImplementation::CreatureManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 CreatureManagerImplementation::~CreatureManagerImplementation() {
 }
@@ -236,11 +146,6 @@ DistributedObjectStub* CreatureManagerImplementation::_getStub() {
 CreatureManagerImplementation::operator const CreatureManager*() {
 	return _this;
 }
-
-TransactionalObject* CreatureManagerImplementation::clone() {
-	return (TransactionalObject*) new CreatureManagerImplementation(*this);
-}
-
 
 void CreatureManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

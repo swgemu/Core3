@@ -18,86 +18,13 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	ObjectControllerStub
  */
 
 ObjectController::ObjectController(ZoneProcessServerImplementation* srv) : ManagedObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new ObjectControllerImplementation(srv));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new ObjectControllerImplementation(srv);
+	_impl->_setStub(this);
 }
 
 ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -108,7 +35,7 @@ ObjectController::~ObjectController() {
 
 
 void ObjectController::loadCommands() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +43,11 @@ void ObjectController::loadCommands() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ObjectControllerImplementation*) _getImplementation())->loadCommands();
+		((ObjectControllerImplementation*) _impl)->loadCommands();
 }
 
 bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -132,11 +59,11 @@ bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ObjectControllerImplementation*) _getImplementation())->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
+		return ((ObjectControllerImplementation*) _impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
 float ObjectController::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,31 +76,31 @@ float ObjectController::activateCommand(CreatureObject* object, unsigned int act
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ObjectControllerImplementation*) _getImplementation())->activateCommand(object, actionCRC, actionCount, targetID, arguments);
+		return ((ObjectControllerImplementation*) _impl)->activateCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 void ObjectController::addQueueCommand(QueueCommand* command) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ObjectControllerImplementation*) _getImplementation())->addQueueCommand(command);
+		((ObjectControllerImplementation*) _impl)->addQueueCommand(command);
 }
 
 QueueCommand* ObjectController::getQueueCommand(const String& name) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ObjectControllerImplementation*) _getImplementation())->getQueueCommand(name);
+		return ((ObjectControllerImplementation*) _impl)->getQueueCommand(name);
 }
 
 QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ObjectControllerImplementation*) _getImplementation())->getQueueCommand(crc);
+		return ((ObjectControllerImplementation*) _impl)->getQueueCommand(crc);
 }
 
 /*
@@ -183,7 +110,6 @@ QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
 ObjectControllerImplementation::ObjectControllerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 ObjectControllerImplementation::~ObjectControllerImplementation() {
 	ObjectControllerImplementation::finalize();
@@ -208,11 +134,6 @@ DistributedObjectStub* ObjectControllerImplementation::_getStub() {
 ObjectControllerImplementation::operator const ObjectController*() {
 	return _this;
 }
-
-TransactionalObject* ObjectControllerImplementation::clone() {
-	return (TransactionalObject*) new ObjectControllerImplementation(*this);
-}
-
 
 void ObjectControllerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

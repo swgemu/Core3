@@ -504,8 +504,6 @@ public:
 protected:
 	virtual ~WeaponObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -529,7 +527,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class WeaponObject;
-	friend class TransactionalObjectHandle<WeaponObjectImplementation*>;
 };
 
 class WeaponObjectAdapter : public TangibleObjectAdapter {

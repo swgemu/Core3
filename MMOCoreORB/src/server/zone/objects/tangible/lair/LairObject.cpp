@@ -12,78 +12,13 @@
 
 #include "server/zone/objects/tangible/lair/HealLairEvent.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	LairObjectStub
  */
 
 LairObject::LairObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new LairObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new LairObjectImplementation();
+	_impl->_setStub(this);
 }
 
 LairObject::LairObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -94,15 +29,15 @@ LairObject::~LairObject() {
 
 
 void LairObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((LairObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((LairObjectImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 void LairObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,11 +45,11 @@ void LairObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((LairObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((LairObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 int LairObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -127,11 +62,11 @@ int LairObject::inflictDamage(TangibleObject* attacker, int damageType, int dama
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((LairObjectImplementation*) _getImplementation())->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+		return ((LairObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 void LairObject::checkForNewSpawns() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -139,11 +74,11 @@ void LairObject::checkForNewSpawns() {
 
 		method.executeWithVoidReturn();
 	} else
-		((LairObjectImplementation*) _getImplementation())->checkForNewSpawns();
+		((LairObjectImplementation*) _impl)->checkForNewSpawns();
 }
 
 void LairObject::checkForHeal(TangibleObject* attacker, bool forceNewUpdate) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -153,11 +88,11 @@ void LairObject::checkForHeal(TangibleObject* attacker, bool forceNewUpdate) {
 
 		method.executeWithVoidReturn();
 	} else
-		((LairObjectImplementation*) _getImplementation())->checkForHeal(attacker, forceNewUpdate);
+		((LairObjectImplementation*) _impl)->checkForHeal(attacker, forceNewUpdate);
 }
 
 void LairObject::healLair(TangibleObject* attacker) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -166,11 +101,11 @@ void LairObject::healLair(TangibleObject* attacker) {
 
 		method.executeWithVoidReturn();
 	} else
-		((LairObjectImplementation*) _getImplementation())->healLair(attacker);
+		((LairObjectImplementation*) _impl)->healLair(attacker);
 }
 
 int LairObject::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -180,11 +115,11 @@ int LairObject::notifyObjectDestructionObservers(TangibleObject* attacker, int c
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((LairObjectImplementation*) _getImplementation())->notifyObjectDestructionObservers(attacker, condition);
+		return ((LairObjectImplementation*) _impl)->notifyObjectDestructionObservers(attacker, condition);
 }
 
 bool LairObject::isAttackableBy(CreatureObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -193,11 +128,11 @@ bool LairObject::isAttackableBy(CreatureObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((LairObjectImplementation*) _getImplementation())->isAttackableBy(object);
+		return ((LairObjectImplementation*) _impl)->isAttackableBy(object);
 }
 
 int LairObject::getMaxObjectsToSpawn() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -205,15 +140,15 @@ int LairObject::getMaxObjectsToSpawn() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((LairObjectImplementation*) _getImplementation())->getMaxObjectsToSpawn();
+		return ((LairObjectImplementation*) _impl)->getMaxObjectsToSpawn();
 }
 
 SortedVector<unsigned int>* LairObject::getObjectsToSpawn() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((LairObjectImplementation*) _getImplementation())->getObjectsToSpawn();
+		return ((LairObjectImplementation*) _impl)->getObjectsToSpawn();
 }
 
 /*
@@ -223,7 +158,6 @@ SortedVector<unsigned int>* LairObject::getObjectsToSpawn() {
 LairObjectImplementation::LairObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 LairObjectImplementation::~LairObjectImplementation() {
 }
@@ -250,11 +184,6 @@ DistributedObjectStub* LairObjectImplementation::_getStub() {
 LairObjectImplementation::operator const LairObject*() {
 	return _this;
 }
-
-TransactionalObject* LairObjectImplementation::clone() {
-	return (TransactionalObject*) new LairObjectImplementation(*this);
-}
-
 
 void LairObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

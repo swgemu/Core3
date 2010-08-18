@@ -20,110 +20,13 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
 /*
  *	CurePackStub
  */
 
 CurePack::CurePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new CurePackImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new CurePackImplementation();
+	_impl->_setStub(this);
 }
 
 CurePack::CurePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -134,23 +37,23 @@ CurePack::~CurePack() {
 
 
 void CurePack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CurePackImplementation*) _getImplementation())->updateCraftingValues(schematic);
+		((CurePackImplementation*) _impl)->updateCraftingValues(schematic);
 }
 
 void CurePack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CurePackImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((CurePackImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 int CurePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,19 +63,19 @@ int CurePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CurePackImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
+		return ((CurePackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 void CurePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CurePackImplementation*) _getImplementation())->fillAttributeList(msg, object);
+		((CurePackImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
 int CurePack::calculatePower(CreatureObject* creature) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -181,11 +84,11 @@ int CurePack::calculatePower(CreatureObject* creature) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CurePackImplementation*) _getImplementation())->calculatePower(creature);
+		return ((CurePackImplementation*) _impl)->calculatePower(creature);
 }
 
 bool CurePack::isArea() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -193,11 +96,11 @@ bool CurePack::isArea() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CurePackImplementation*) _getImplementation())->isArea();
+		return ((CurePackImplementation*) _impl)->isArea();
 }
 
 float CurePack::getArea() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -205,11 +108,11 @@ float CurePack::getArea() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((CurePackImplementation*) _getImplementation())->getArea();
+		return ((CurePackImplementation*) _impl)->getArea();
 }
 
 unsigned long long CurePack::getState() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -217,11 +120,11 @@ unsigned long long CurePack::getState() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((CurePackImplementation*) _getImplementation())->getState();
+		return ((CurePackImplementation*) _impl)->getState();
 }
 
 float CurePack::getEffectiveness() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -229,11 +132,11 @@ float CurePack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((CurePackImplementation*) _getImplementation())->getEffectiveness();
+		return ((CurePackImplementation*) _impl)->getEffectiveness();
 }
 
 bool CurePack::isCurePack() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -241,7 +144,7 @@ bool CurePack::isCurePack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CurePackImplementation*) _getImplementation())->isCurePack();
+		return ((CurePackImplementation*) _impl)->isCurePack();
 }
 
 /*
@@ -251,7 +154,6 @@ bool CurePack::isCurePack() {
 CurePackImplementation::CurePackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 CurePackImplementation::~CurePackImplementation() {
 }
@@ -278,11 +180,6 @@ DistributedObjectStub* CurePackImplementation::_getStub() {
 CurePackImplementation::operator const CurePack*() {
 	return _this;
 }
-
-TransactionalObject* CurePackImplementation::clone() {
-	return (TransactionalObject*) new CurePackImplementation(*this);
-}
-
 
 void CurePackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

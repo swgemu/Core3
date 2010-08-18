@@ -105,8 +105,6 @@ public:
 protected:
 	virtual ~IntangibleObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -128,7 +126,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class IntangibleObject;
-	friend class TransactionalObjectHandle<IntangibleObjectImplementation*>;
 };
 
 class IntangibleObjectAdapter : public SceneObjectAdapter {

@@ -8,60 +8,13 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	InstrumentStub
  */
 
 Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new InstrumentImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new InstrumentImplementation();
+	_impl->_setStub(this);
 }
 
 Instrument::Instrument(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -72,7 +25,7 @@ Instrument::~Instrument() {
 
 
 void Instrument::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,7 +33,7 @@ void Instrument::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstrumentImplementation*) _getImplementation())->initializeTransientMembers();
+		((InstrumentImplementation*) _impl)->initializeTransientMembers();
 }
 
 /*
@@ -90,7 +43,6 @@ void Instrument::initializeTransientMembers() {
 InstrumentImplementation::InstrumentImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 InstrumentImplementation::~InstrumentImplementation() {
 }
@@ -117,11 +69,6 @@ DistributedObjectStub* InstrumentImplementation::_getStub() {
 InstrumentImplementation::operator const Instrument*() {
 	return _this;
 }
-
-TransactionalObject* InstrumentImplementation::clone() {
-	return (TransactionalObject*) new InstrumentImplementation(*this);
-}
-
 
 void InstrumentImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -876,21 +876,20 @@ void ZoneServerImplementation::printEvents() {
 }
 
 void ZoneServerImplementation::increaseOnlinePlayers() {
-	currentPlayers.increment();
+	Atomic::incrementInt((uint32*)&currentPlayers);
 
 	if (currentPlayers > maximumPlayers)
 		maximumPlayers = currentPlayers;
 
-	totalPlayers.increment();
+	Atomic::incrementInt((uint32*)&totalPlayers);
 }
 
 void ZoneServerImplementation::decreaseOnlinePlayers() {
-	currentPlayers.decrement();
-
-	//currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
+	Atomic::decrementInt((uint32*)&currentPlayers);
+//currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
 }
 
 void ZoneServerImplementation::increaseTotalDeletedPlayers() {
-	totalDeletedPlayers.increment();
+	Atomic::incrementInt((uint32*)&totalDeletedPlayers);
 	//++totalDeletedPlayers;
 }

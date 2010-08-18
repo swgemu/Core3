@@ -120,8 +120,6 @@ public:
 protected:
 	virtual ~RadialManagerImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -145,7 +143,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class RadialManager;
-	friend class TransactionalObjectHandle<RadialManagerImplementation*>;
 };
 
 class RadialManagerAdapter : public ManagedObjectAdapter {

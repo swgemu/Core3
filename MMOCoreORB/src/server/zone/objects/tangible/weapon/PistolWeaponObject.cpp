@@ -6,62 +6,13 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
 /*
  *	PistolWeaponObjectStub
  */
 
 PistolWeaponObject::PistolWeaponObject() : RangedWeaponObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new PistolWeaponObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new PistolWeaponObjectImplementation();
+	_impl->_setStub(this);
 }
 
 PistolWeaponObject::PistolWeaponObject(DummyConstructorParameter* param) : RangedWeaponObject(param) {
@@ -72,7 +23,7 @@ PistolWeaponObject::~PistolWeaponObject() {
 
 
 void PistolWeaponObject::initializePrivateData() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +31,11 @@ void PistolWeaponObject::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PistolWeaponObjectImplementation*) _getImplementation())->initializePrivateData();
+		((PistolWeaponObjectImplementation*) _impl)->initializePrivateData();
 }
 
 void PistolWeaponObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +43,11 @@ void PistolWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PistolWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((PistolWeaponObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 bool PistolWeaponObject::isPistolWeapon() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,7 +55,7 @@ bool PistolWeaponObject::isPistolWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PistolWeaponObjectImplementation*) _getImplementation())->isPistolWeapon();
+		return ((PistolWeaponObjectImplementation*) _impl)->isPistolWeapon();
 }
 
 /*
@@ -114,7 +65,6 @@ bool PistolWeaponObject::isPistolWeapon() {
 PistolWeaponObjectImplementation::PistolWeaponObjectImplementation(DummyConstructorParameter* param) : RangedWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 PistolWeaponObjectImplementation::~PistolWeaponObjectImplementation() {
 }
@@ -141,11 +91,6 @@ DistributedObjectStub* PistolWeaponObjectImplementation::_getStub() {
 PistolWeaponObjectImplementation::operator const PistolWeaponObject*() {
 	return _this;
 }
-
-TransactionalObject* PistolWeaponObjectImplementation::clone() {
-	return (TransactionalObject*) new PistolWeaponObjectImplementation(*this);
-}
-
 
 void PistolWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);
