@@ -152,6 +152,20 @@ String FishingPoleObject::getText(PlayerCreature* player) {
 		return ((FishingPoleObjectImplementation*) _impl)->getText(player);
 }
 
+bool FishingPoleObject::removeObject(SceneObject* object, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addObjectParameter(object);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((FishingPoleObjectImplementation*) _impl)->removeObject(object, notifyClient);
+}
+
 /*
  *	FishingPoleObjectImplementation
  */
@@ -293,6 +307,9 @@ Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case 14:
 		resp->insertAscii(getText((PlayerCreature*) inv->getObjectParameter()));
 		break;
+	case 15:
+		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -334,6 +351,10 @@ void FishingPoleObjectAdapter::doFishing(PlayerCreature* player) {
 
 String FishingPoleObjectAdapter::getText(PlayerCreature* player) {
 	return ((FishingPoleObjectImplementation*) impl)->getText(player);
+}
+
+bool FishingPoleObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
+	return ((FishingPoleObjectImplementation*) impl)->removeObject(object, notifyClient);
 }
 
 /*

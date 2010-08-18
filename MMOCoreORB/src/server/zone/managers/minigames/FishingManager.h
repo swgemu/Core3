@@ -137,6 +137,20 @@ class Observable;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+
+class FishingSession;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
 #include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "engine/core/ManagedObject.h"
@@ -208,9 +222,9 @@ public:
 
 	static const int NOEVENT = 0;
 
-	static const int PROCEED = 20;
+	static const int PROCEED = 17;
 
-	static const int MISHAP = 40;
+	static const int MISHAP = 45;
 
 	FishingManager(ZoneServer* server);
 
@@ -223,6 +237,8 @@ public:
 	void initializeState();
 
 	void initializeFishType();
+
+	void initializeFishLength();
 
 	void initializeLoot();
 
@@ -240,7 +256,7 @@ public:
 
 	void stopFishing(PlayerCreature* player, unsigned int boxID, bool rem);
 
-	void fishingStep(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, String& moodString);
+	void fishingStep(PlayerCreature* player);
 
 	void success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID);
 
@@ -278,8 +294,6 @@ public:
 
 	void setFishMarker(PlayerCreature* player, SceneObject* marker);
 
-	void cheat(PlayerCreature* player, int value);
-
 	void freeBait(PlayerCreature* player);
 
 	void fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
@@ -296,6 +310,8 @@ public:
 
 	bool checkUpdateMarker(PlayerCreature* player, float& x, float& y, float& z);
 
+	bool isPlaying(PlayerCreature* player);
+
 	SceneObject* updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer);
 
 	void removeMarker(PlayerCreature* player, SceneObject* container);
@@ -304,7 +320,9 @@ public:
 
 	void createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash);
 
-	void createFishingEvent(PlayerCreature* player, int nextAction, ZoneServer* zoneServer, SceneObject* marker, int sum, unsigned int boxID, int state, String& moodString);
+	void createFishingSession(PlayerCreature* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
+
+	FishingEvent* createFishingEvent(PlayerCreature* player, ZoneServer* zoneServer, int state);
 
 	void stopFishingEvent(PlayerCreature* player);
 
@@ -342,6 +360,8 @@ protected:
 
 	Vector<int> color;
 
+	Vector<int> fishLength;
+
 	Vector<String> fishType;
 
 	Vector<String> state;
@@ -351,6 +371,8 @@ protected:
 	Vector<String> property;
 
 	Vector<String> baitStatus;
+
+	VectorMap<ManagedReference<PlayerCreature* >, FishingSession*> sessions;
 
 public:
 	static const int NOTFISHING = 0;
@@ -403,9 +425,9 @@ public:
 
 	static const int NOEVENT = 0;
 
-	static const int PROCEED = 20;
+	static const int PROCEED = 17;
 
-	static const int MISHAP = 40;
+	static const int MISHAP = 45;
 
 	FishingManagerImplementation(ZoneServer* server);
 
@@ -420,6 +442,8 @@ public:
 	void initializeState();
 
 	void initializeFishType();
+
+	void initializeFishLength();
 
 	void initializeLoot();
 
@@ -437,7 +461,7 @@ public:
 
 	void stopFishing(PlayerCreature* player, unsigned int boxID, bool rem);
 
-	void fishingStep(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, String& moodString);
+	void fishingStep(PlayerCreature* player);
 
 	void success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID);
 
@@ -475,8 +499,6 @@ public:
 
 	void setFishMarker(PlayerCreature* player, SceneObject* marker);
 
-	void cheat(PlayerCreature* player, int value);
-
 	void freeBait(PlayerCreature* player);
 
 	void fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
@@ -493,6 +515,8 @@ public:
 
 	bool checkUpdateMarker(PlayerCreature* player, float& x, float& y, float& z);
 
+	bool isPlaying(PlayerCreature* player);
+
 	SceneObject* updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer);
 
 	void removeMarker(PlayerCreature* player, SceneObject* container);
@@ -501,7 +525,9 @@ public:
 
 	void createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash);
 
-	void createFishingEvent(PlayerCreature* player, int nextAction, ZoneServer* zoneServer, SceneObject* marker, int sum, unsigned int boxID, int state, String& moodString);
+	void createFishingSession(PlayerCreature* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
+
+	FishingEvent* createFishingEvent(PlayerCreature* player, ZoneServer* zoneServer, int state);
 
 	void stopFishingEvent(PlayerCreature* player);
 
@@ -556,6 +582,8 @@ public:
 
 	void initializeFishType();
 
+	void initializeFishLength();
+
 	void initializeLoot();
 
 	void initializeColor();
@@ -570,7 +598,7 @@ public:
 
 	void stopFishing(PlayerCreature* player, unsigned int boxID, bool rem);
 
-	void fishingStep(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, String& moodString);
+	void fishingStep(PlayerCreature* player);
 
 	void success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID);
 
@@ -608,8 +636,6 @@ public:
 
 	void setFishMarker(PlayerCreature* player, SceneObject* marker);
 
-	void cheat(PlayerCreature* player, int value);
-
 	void freeBait(PlayerCreature* player);
 
 	void fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
@@ -624,6 +650,8 @@ public:
 
 	void createSplash(float x, float y, float z, Zone* zone, PlayerCreature* player);
 
+	bool isPlaying(PlayerCreature* player);
+
 	SceneObject* updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer);
 
 	void removeMarker(PlayerCreature* player, SceneObject* container);
@@ -632,16 +660,12 @@ public:
 
 	void createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash);
 
-	void createFishingEvent(PlayerCreature* player, int nextAction, ZoneServer* zoneServer, SceneObject* marker, int sum, unsigned int boxID, int state, String& moodString);
-
 	void stopFishingEvent(PlayerCreature* player);
 
 protected:
-	String _param5_fishingStep__PlayerCreature_int_SceneObject_int_int_String_;
 	String _param7_fishingProceed__PlayerCreature_int_SceneObject_int_int_int_bool_String_;
 	String _param0_mishapEvent__String_PlayerCreature_int_bool_String_;
 	String _param4_mishapEvent__String_PlayerCreature_int_bool_String_;
-	String _param7_createFishingEvent__PlayerCreature_int_ZoneServer_SceneObject_int_int_int_String_;
 };
 
 class FishingManagerHelper : public DistributedObjectClassHelper, public Singleton<FishingManagerHelper> {

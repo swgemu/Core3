@@ -37,11 +37,11 @@ void FishObjectImplementation::filet(PlayerCreature* player) {
 	if (containerObjects.size() > 0) {
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		if (inventory->hasFullContainerObjects()) {
-			player->sendSystemMessage("@fishing:toss_trash");
-			while (containerObjects.size() > 0) {
-				removeObject(containerObjects.get(0), true);
-			}
+		if ((inventory->hasFullContainerObjects()) || ((inventory->getContainerObjectsSize() + containerObjects.size()) > 80)) {
+			ParameterizedStringId body("fishing","units_inventory");
+			body.setDI(containerObjects.size());
+			player->sendSystemMessage(body);
+
 		} else {
 			ManagedReference<SceneObject*> item;
 

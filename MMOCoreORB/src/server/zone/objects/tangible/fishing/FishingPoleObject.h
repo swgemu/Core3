@@ -119,6 +119,8 @@ public:
 
 	String getText(PlayerCreature* player);
 
+	bool removeObject(SceneObject* object, bool notifyClient = false);
+
 protected:
 	FishingPoleObject(DummyConstructorParameter* param);
 
@@ -169,6 +171,8 @@ public:
 	void doFishing(PlayerCreature* player);
 
 	String getText(PlayerCreature* player);
+
+	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
 
 	FishingPoleObject* _this;
 
@@ -226,6 +230,8 @@ public:
 	void doFishing(PlayerCreature* player);
 
 	String getText(PlayerCreature* player);
+
+	bool removeObject(SceneObject* object, bool notifyClient);
 
 protected:
 	String _param1_canAddObject__SceneObject_String_;

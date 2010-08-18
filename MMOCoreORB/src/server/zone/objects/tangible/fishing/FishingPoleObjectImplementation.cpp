@@ -13,6 +13,8 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/managers/minigames/FishingManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 
 
 void FishingPoleObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
@@ -47,7 +49,7 @@ void FishingPoleObjectImplementation::doFishing(PlayerCreature* player) {
 		manager->stopFishing(player, manager->getFishBoxID(player), true);
 	} else {
 		//manager->freeBait(player);
-		manager->startFishing(player);
+		player->executeObjectControllerAction(String("fish").hashCode());
 	}
 }
 
@@ -60,4 +62,21 @@ String FishingPoleObjectImplementation::getText(PlayerCreature* player) {
 	}
 
 	return text;
+}
+
+bool FishingPoleObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
+	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
+	if ((parent.get() != NULL) && (parent.get()->isPlayerCreature())) {
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*)parent.get();
+		if ((player != NULL) && (object->isFishingBait())) {
+			if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
+				player->sendSystemMessage("Cannot remove bait while fishing pole is in use.");
+
+				return false;
+			}
+
+			return TangibleObjectImplementation::removeObject(object, notifyClient);
+		}
+	}
+	return false;
 }
