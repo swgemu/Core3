@@ -308,8 +308,11 @@ void FactoryObjectImplementation::sendOutputHopper(PlayerCreature* player) {
 void FactoryObjectImplementation::handleInsertFactorySchem(
 		PlayerCreature* player, ManufactureSchematic* schematic) {
 
+	if (schematic == NULL)
+		return;
+
 	/// pre: player and _this are locked
-	if(schematic == NULL || !schematic->isManufactureSchematic()) {
+	if (!schematic->isManufactureSchematic()) {
 		ParameterizedStringId message("manf_station", "schematic_not_added");
 
 		if(schematic->getCustomObjectName().isEmpty())
@@ -318,6 +321,7 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 			message.setTT(schematic->getCustomObjectName().toString());
 
 		player->sendSystemMessage(message);
+
 		return;
 	}
 
