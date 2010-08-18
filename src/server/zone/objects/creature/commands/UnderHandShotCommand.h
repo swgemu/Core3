@@ -46,13 +46,27 @@ which carries forward this exception.
 #define UNDERHANDSHOTCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class UnderHandShotCommand : public QueueCommand {
+class UnderHandShotCommand : public CombatQueueCommand {
 public:
 
 	UnderHandShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 3.0;
+		speedMultiplier = 1.5;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		knockdownStateChance = 30;
+
+		animationCRC = String("fire_5_single_medium_face").hashCode();
+
+		combatSpam = "underhandshot";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +77,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

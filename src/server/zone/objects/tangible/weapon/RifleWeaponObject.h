@@ -21,6 +21,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/objects/tangible/weapon/RangedWeaponObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -40,6 +54,8 @@ public:
 	void initializePrivateData();
 
 	bool isRifleWeapon();
+
+	bool isLightningRifle();
 
 protected:
 	RifleWeaponObject(DummyConstructorParameter* param);
@@ -75,6 +91,8 @@ public:
 	void initializePrivateData();
 
 	bool isRifleWeapon();
+
+	bool isLightningRifle();
 
 	RifleWeaponObject* _this;
 
@@ -120,6 +138,8 @@ public:
 	void initializePrivateData();
 
 	bool isRifleWeapon();
+
+	bool isLightningRifle();
 
 };
 

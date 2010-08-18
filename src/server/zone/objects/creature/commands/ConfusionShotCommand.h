@@ -46,12 +46,28 @@ which carries forward this exception.
 #define CONFUSIONSHOTCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class ConfusionShotCommand : public QueueCommand {
+class ConfusionShotCommand : public CombatQueueCommand {
 public:
 
 	ConfusionShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 3.0;
+		speedMultiplier = 2.3;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		stunStateChance = 40;
+		dizzyStateChance = 30;
+
+		animationCRC = String("fire_5_special_single_medium_face").hashCode();
+
+		combatSpam = "confusionshot";
+
+		range = -1;
 
 	}
 
@@ -63,7 +79,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

@@ -47,6 +47,7 @@ package server.zone.objects.tangible.weapon;
 import server.zone.objects.tangible.weapon.RangedWeaponObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
+import server.zone.objects.scene.SceneObject;
 
 
 class RifleWeaponObject extends RangedWeaponObject {
@@ -69,4 +70,9 @@ class RifleWeaponObject extends RangedWeaponObject {
 	public boolean isRifleWeapon() {
 		return true;
 	}
+	
+	public boolean isLightningRifle() {
+		return super.gameObjectType == SceneObject.LIGHTNINGRIFLE;
+	}
+
 }

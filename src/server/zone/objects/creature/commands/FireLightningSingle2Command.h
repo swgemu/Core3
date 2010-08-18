@@ -46,13 +46,25 @@ which carries forward this exception.
 #define FIRELIGHTNINGSINGLE2COMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class FireLightningSingle2Command : public QueueCommand {
+class FireLightningSingle2Command : public CombatQueueCommand {
 public:
 
 	FireLightningSingle2Command(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 5.0;
+		speedMultiplier = 2.0;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		animationCRC = String("fire_1_special_single_medium_face").hashCode();
+
+		combatSpam = "firelightningsingle2";
+
+		range = 16;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +75,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isLightningRifle()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

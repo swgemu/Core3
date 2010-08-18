@@ -488,6 +488,8 @@ public:
 
 	static const int GRENADE = 0x2000E;
 
+	static const int LIGHTNINGRIFLE = 0x2000F;
+
 	static const int COMPONENT = 0x40000;
 
 	static const int ARMORCOMPONENT = 0x40001;
@@ -1348,6 +1350,8 @@ public:
 	static const int RIFLE = 0x2000C;
 
 	static const int GRENADE = 0x2000E;
+
+	static const int LIGHTNINGRIFLE = 0x2000F;
 
 	static const int COMPONENT = 0x40000;
 

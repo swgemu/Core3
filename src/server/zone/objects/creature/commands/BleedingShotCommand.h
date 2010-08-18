@@ -46,12 +46,30 @@ which carries forward this exception.
 #define BLEEDINGSHOTCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class BleedingShotCommand : public QueueCommand {
+class BleedingShotCommand : public CombatQueueCommand {
 public:
 
 	BleedingShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
+
+		damageMultiplier = 2.0;
+		speedMultiplier = 1.5;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		animationCRC = String("fire_3_single_light").hashCode();
+
+		combatSpam = "bleedingshot";
+
+		dotType = CreatureState::BLEEDING;
+		dotPool = CreatureAttribute::MIND;
+		dotDamageOfHit = true;
+		dotDuration = 30;
+
+		range = -1;
 
 	}
 
@@ -63,7 +81,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
