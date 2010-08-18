@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_sword_sword_02 = object_weapon_melee_sword_shared_sword_02:new {
+
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -85,15 +86,18 @@ object_weapon_melee_sword_sword_02 = object_weapon_melee_sword_shared_sword_02:n
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
-	pointBlankRange = 0,
+	pointBlankRange = 5,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 5,
+	idealAccuracy = 3,
 
-	maxRange = 0,
-	maxRangeAccuracy = 0,
+	maxRange = 5,
+	maxRangeAccuracy = 5,
 
-	attackSpeed = 0
+	minDamage = 25,
+	maxDamage = 100,
+
+	attackSpeed = 3.1
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_sword_02, "object/weapon/melee/sword/sword_02.iff")

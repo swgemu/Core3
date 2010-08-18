@@ -62,7 +62,7 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen5 = ob
 	xpType = "combat_meleespecialize_twohandlightsaber",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_twohandlightsaber_gen5" },
+	certificationsRequired = { "cert_twohandlightsaber_gen4" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "twohandlightsaber_accuracy" },
 

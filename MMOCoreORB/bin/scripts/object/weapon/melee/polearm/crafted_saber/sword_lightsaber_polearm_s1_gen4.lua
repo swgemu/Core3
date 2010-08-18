@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s1_gen4 = object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen4:new {
+
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -79,10 +80,10 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s1_gen4 = obj
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
-	forceCost = 0,
+	healthAttackCost = 60,
+	actionAttackCost = 95,
+	mindAttackCost = 45,
+	forceCost = 48,
 
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
@@ -93,7 +94,11 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s1_gen4 = obj
 	maxRange = 0,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 225,
+	maxDamage = 305,
+
+	attackSpeed = 5.1
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s1_gen4, "object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_s1_gen4.iff")

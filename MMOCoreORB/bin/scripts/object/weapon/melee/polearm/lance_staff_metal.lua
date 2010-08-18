@@ -80,24 +80,27 @@ object_weapon_melee_polearm_lance_staff_metal = object_weapon_melee_polearm_shar
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 10,
-	actionAttackCost = 10,
-	mindAttackCost = 10,
+	healthAttackCost = 9,
+	actionAttackCost = 66,
+	mindAttackCost = 39,
 	forceCost = 0,
-	
-	minDamage = 100,
-	maxDamage = 200,
 
 	pointBlankAccuracy = 0,
-	pointBlankRange = 0,
+	pointBlankRange = -5,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = -5,
+	idealAccuracy = 3,
 
-	maxRange = 5,
-	maxRangeAccuracy = 0,
+	maxRange = -5,
+	maxRangeAccuracy = 5,
 
-	attackSpeed = 2
+
+	minDamage = 56,
+	
+	maxDamage = 95,
+
+
+	attackSpeed = 6
 
 }
 

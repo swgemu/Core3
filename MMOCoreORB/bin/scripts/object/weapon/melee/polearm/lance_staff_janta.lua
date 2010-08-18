@@ -62,7 +62,7 @@ object_weapon_melee_polearm_lance_staff_janta = object_weapon_melee_polearm_shar
 	xpType = "combat_meleespecialize_polearm",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "" },
+	certificationsRequired = { "cert_lance_staff_wood_s1" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "polearm_accuracy" },
 
@@ -80,21 +80,27 @@ object_weapon_melee_polearm_lance_staff_janta = object_weapon_melee_polearm_shar
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 16,
+	actionAttackCost = 46,
+	mindAttackCost = 15,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
-	pointBlankRange = 0,
+	pointBlankRange = 6,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 6,
+	idealAccuracy = 3,
 
-	maxRange = 0,
-	maxRangeAccuracy = 0,
+	maxRange = 6,
+	maxRangeAccuracy = 5,
 
-	attackSpeed = 0
+	
+	minDamage = 25,
+	
+	maxDamage = 56,
+
+	
+	attackSpeed = 5.8
 
 }
 
