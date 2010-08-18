@@ -1090,8 +1090,11 @@ int StructureManagerImplementation::placeInstallation(PlayerCreature* player, Sh
 	float floraRadius = installationTemplate->getClearFloraRadius();
 	bool snapToTerrain = installationTemplate->getSnapToTerrain();
 
+	int width = installationTemplate->getWidth() + 1;
+	int length = installationTemplate->getLength() + 1;
+
 	if (floraRadius > 0 && !snapToTerrain) {
-		float maxZ = terrainManager->getHighestHeight(x - floraRadius, y - floraRadius, x + floraRadius, y + floraRadius , 4); // checking default 24x24 area with 4 stepping
+		float maxZ = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 4); // checking default 24x24 area with 4 stepping
 		z = maxZ;
 	}
 
