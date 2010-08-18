@@ -74,6 +74,15 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 Vector3 BuildingObjectImplementation::getEjectionPoint() {
 	Vector3 ejectionPoint = getWorldPosition();
 
+	float x = ejectionPoint.getX();
+	float y = ejectionPoint.getY();
+
+	float halfLength = ((float) (length) * 8.0f) / 2.0f; //Half the length of the structure in meters.
+	float radians = getDirection()->getRadians() + Math::deg2rad(270); //Ejection point should be on south side of structure.
+
+	ejectionPoint.setX(x + (Math::cos(radians) * halfLength));
+	ejectionPoint.setY(y + (Math::sin(radians) * halfLength));
+
 	return ejectionPoint;
 }
 
@@ -244,23 +253,26 @@ void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) 
 	if (player->isInRange(_this, 256)) {
 		bool allowEntry = true;
 
+		//If the building is private, check the permission lists to see if they have permission or not.
 		if (!isPublicStructure()) {
 			if (isOnBanList(player) || (!isOnEntryList(player) && !isOnAccessList(player))) {
 				allowEntry = false;
 
-				//TODO: Boot the player out of the building to the front door if they no longer have permission to be inside.
-				player->teleport(positionX, zone->getHeight(positionX, positionY), positionY, 0);
+				//If the player is in the structure, kick them out.
+				if (player->getParentRecursively(SceneObject::BUILDING) == _this) {
+					Vector3 ejectionPoint = getEjectionPoint();
+					player->teleport(ejectionPoint.getX(), zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
+				}
 			}
 		}
 
-		for (int i = 0; i < totalCellNumber; ++i) {
-			ManagedReference<CellObject*> cell = getCell(i);
+		//Update the permissions on just the first cell since it should be the entry...
+		ManagedReference<CellObject*> cell = getCell(0);
 
-			if (cell == NULL)
-				continue;
+		if (cell == NULL)
+			return;
 
-			BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
-			player->sendMessage(perm);
-		}
+		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
+		player->sendMessage(perm);
 	}
 }

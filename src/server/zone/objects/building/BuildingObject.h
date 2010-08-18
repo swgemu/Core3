@@ -133,8 +133,6 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
-#include "engine/util/Vector3.h"
-
 #include "server/zone/objects/structure/StructureObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -146,6 +144,8 @@ using namespace server::zone::templates;
 #include "system/util/SortedVector.h"
 
 #include "system/util/Vector.h"
+
+#include "engine/util/Vector3.h"
 
 namespace server {
 namespace zone {
@@ -174,7 +174,7 @@ public:
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
-	Vector3* getEjectionPoint();
+	Vector3 getEjectionPoint();
 
 	void removeFromZone();
 
@@ -285,7 +285,7 @@ public:
 
 	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
 
-	Vector3* getEjectionPoint();
+	Vector3 getEjectionPoint();
 
 	void removeFromZone();
 
