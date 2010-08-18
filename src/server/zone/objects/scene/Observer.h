@@ -84,8 +84,6 @@ public:
 protected:
 	virtual ~ObserverImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -109,7 +107,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Observer;
-	friend class TransactionalObjectHandle<ObserverImplementation*>;
 };
 
 class ObserverAdapter : public ManagedObjectAdapter {

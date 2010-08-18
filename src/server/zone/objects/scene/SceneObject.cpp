@@ -26,92 +26,13 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
 /*
  *	SceneObjectStub
  */
 
 SceneObject::SceneObject() : Observable(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new SceneObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new SceneObjectImplementation();
+	_impl->_setStub(this);
 }
 
 SceneObject::SceneObject(DummyConstructorParameter* param) : Observable(param) {
@@ -122,7 +43,7 @@ SceneObject::~SceneObject() {
 
 
 void SceneObject::initializePrivateData() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -130,19 +51,19 @@ void SceneObject::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->initializePrivateData();
+		((SceneObjectImplementation*) _impl)->initializePrivateData();
 }
 
 void SceneObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((SceneObjectImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 void SceneObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -150,11 +71,11 @@ void SceneObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((SceneObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 void SceneObject::notifyLoadFromDatabase() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -162,11 +83,11 @@ void SceneObject::notifyLoadFromDatabase() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->notifyLoadFromDatabase();
+		((SceneObjectImplementation*) _impl)->notifyLoadFromDatabase();
 }
 
 void SceneObject::info(const String& msg, bool forced) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -176,11 +97,11 @@ void SceneObject::info(const String& msg, bool forced) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->info(msg, forced);
+		((SceneObjectImplementation*) _impl)->info(msg, forced);
 }
 
 void SceneObject::error(const String& msg) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -189,11 +110,11 @@ void SceneObject::error(const String& msg) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->error(msg);
+		((SceneObjectImplementation*) _impl)->error(msg);
 }
 
 int SceneObject::inRangeObjectCount() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -201,19 +122,19 @@ int SceneObject::inRangeObjectCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->inRangeObjectCount();
+		return ((SceneObjectImplementation*) _impl)->inRangeObjectCount();
 }
 
 QuadTreeEntry* SceneObject::getInRangeObject(int index) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getInRangeObject(index);
+		return ((SceneObjectImplementation*) _impl)->getInRangeObject(index);
 }
 
 int SceneObject::inRangeObjects(unsigned int gameObjectType, float range) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -223,11 +144,11 @@ int SceneObject::inRangeObjects(unsigned int gameObjectType, float range) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->inRangeObjects(gameObjectType, range);
+		return ((SceneObjectImplementation*) _impl)->inRangeObjects(gameObjectType, range);
 }
 
 bool SceneObject::isInRange(SceneObject* obj, float range) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -237,27 +158,27 @@ bool SceneObject::isInRange(SceneObject* obj, float range) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isInRange(obj, range);
+		return ((SceneObjectImplementation*) _impl)->isInRange(obj, range);
 }
 
 bool SceneObject::isInRange(QuadTreeEntry* obj, float range) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isInRange(obj, range);
+		return ((SceneObjectImplementation*) _impl)->isInRange(obj, range);
 }
 
 void SceneObject::removeInRangeObject(QuadTreeEntry* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->removeInRangeObject(obj);
+		((SceneObjectImplementation*) _impl)->removeInRangeObject(obj);
 }
 
 bool SceneObject::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -268,11 +189,11 @@ bool SceneObject::addObject(SceneObject* object, int containmentType, bool notif
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->addObject(object, containmentType, notifyClient);
+		return ((SceneObjectImplementation*) _impl)->addObject(object, containmentType, notifyClient);
 }
 
 bool SceneObject::removeObject(SceneObject* object, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -282,11 +203,11 @@ bool SceneObject::removeObject(SceneObject* object, bool notifyClient) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->removeObject(object, notifyClient);
+		return ((SceneObjectImplementation*) _impl)->removeObject(object, notifyClient);
 }
 
 int SceneObject::canAddObject(SceneObject* object, String& errorDescription) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -296,11 +217,11 @@ int SceneObject::canAddObject(SceneObject* object, String& errorDescription) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->canAddObject(object, errorDescription);
+		return ((SceneObjectImplementation*) _impl)->canAddObject(object, errorDescription);
 }
 
 void SceneObject::synchronizedUIListen(SceneObject* player, int value) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -310,11 +231,11 @@ void SceneObject::synchronizedUIListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->synchronizedUIListen(player, value);
+		((SceneObjectImplementation*) _impl)->synchronizedUIListen(player, value);
 }
 
 void SceneObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -324,11 +245,11 @@ void SceneObject::synchronizedUIStopListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->synchronizedUIStopListen(player, value);
+		((SceneObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
 }
 
 void SceneObject::updateToDatabase() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -336,11 +257,11 @@ void SceneObject::updateToDatabase() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->updateToDatabase();
+		((SceneObjectImplementation*) _impl)->updateToDatabase();
 }
 
 void SceneObject::updateToDatabaseWithoutChildren() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -348,11 +269,11 @@ void SceneObject::updateToDatabaseWithoutChildren() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->updateToDatabaseWithoutChildren();
+		((SceneObjectImplementation*) _impl)->updateToDatabaseWithoutChildren();
 }
 
 void SceneObject::updateToDatabaseAllObjects(bool startTask) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -361,11 +282,11 @@ void SceneObject::updateToDatabaseAllObjects(bool startTask) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->updateToDatabaseAllObjects(startTask);
+		((SceneObjectImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
 }
 
 void SceneObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -374,11 +295,11 @@ void SceneObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->destroyObjectFromDatabase(destroyContainedObjects);
+		((SceneObjectImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int SceneObject::canBeDestroyed(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -387,11 +308,11 @@ int SceneObject::canBeDestroyed(PlayerCreature* player) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->canBeDestroyed(player);
+		return ((SceneObjectImplementation*) _impl)->canBeDestroyed(player);
 }
 
 void SceneObject::create(ZoneClientSession* client) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -400,11 +321,11 @@ void SceneObject::create(ZoneClientSession* client) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->create(client);
+		((SceneObjectImplementation*) _impl)->create(client);
 }
 
 void SceneObject::destroy(ZoneClientSession* client) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -413,11 +334,11 @@ void SceneObject::destroy(ZoneClientSession* client) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->destroy(client);
+		((SceneObjectImplementation*) _impl)->destroy(client);
 }
 
 void SceneObject::close(ZoneClientSession* client) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -426,11 +347,11 @@ void SceneObject::close(ZoneClientSession* client) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->close(client);
+		((SceneObjectImplementation*) _impl)->close(client);
 }
 
 void SceneObject::link(ZoneClientSession* client, unsigned int containmentType) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -440,11 +361,11 @@ void SceneObject::link(ZoneClientSession* client, unsigned int containmentType) 
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->link(client, containmentType);
+		((SceneObjectImplementation*) _impl)->link(client, containmentType);
 }
 
 BaseMessage* SceneObject::link(unsigned long long objectID, unsigned int containmentType) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -454,11 +375,11 @@ BaseMessage* SceneObject::link(unsigned long long objectID, unsigned int contain
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->link(objectID, containmentType);
+		return ((SceneObjectImplementation*) _impl)->link(objectID, containmentType);
 }
 
 void SceneObject::sendTo(SceneObject* player, bool doClose) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -468,11 +389,11 @@ void SceneObject::sendTo(SceneObject* player, bool doClose) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendTo(player, doClose);
+		((SceneObjectImplementation*) _impl)->sendTo(player, doClose);
 }
 
 void SceneObject::sendWithoutParentTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -481,11 +402,11 @@ void SceneObject::sendWithoutParentTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendWithoutParentTo(player);
+		((SceneObjectImplementation*) _impl)->sendWithoutParentTo(player);
 }
 
 void SceneObject::sendWithoutContainerObjectsTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -494,11 +415,11 @@ void SceneObject::sendWithoutContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendWithoutContainerObjectsTo(player);
+		((SceneObjectImplementation*) _impl)->sendWithoutContainerObjectsTo(player);
 }
 
 void SceneObject::sendDestroyTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -507,11 +428,11 @@ void SceneObject::sendDestroyTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendDestroyTo(player);
+		((SceneObjectImplementation*) _impl)->sendDestroyTo(player);
 }
 
 void SceneObject::sendBaselinesTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -520,11 +441,11 @@ void SceneObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendBaselinesTo(player);
+		((SceneObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
 void SceneObject::sendContainerObjectsTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -533,11 +454,11 @@ void SceneObject::sendContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendContainerObjectsTo(player);
+		((SceneObjectImplementation*) _impl)->sendContainerObjectsTo(player);
 }
 
 void SceneObject::sendSlottedObjectsTo(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -546,11 +467,11 @@ void SceneObject::sendSlottedObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendSlottedObjectsTo(player);
+		((SceneObjectImplementation*) _impl)->sendSlottedObjectsTo(player);
 }
 
 void SceneObject::sendToOwner(bool doClose) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -559,11 +480,11 @@ void SceneObject::sendToOwner(bool doClose) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendToOwner(doClose);
+		((SceneObjectImplementation*) _impl)->sendToOwner(doClose);
 }
 
 void SceneObject::sendAttributeListTo(PlayerCreature* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -572,19 +493,19 @@ void SceneObject::sendAttributeListTo(PlayerCreature* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendAttributeListTo(object);
+		((SceneObjectImplementation*) _impl)->sendAttributeListTo(object);
 }
 
 void SceneObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
+		((SceneObjectImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
 void SceneObject::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -594,19 +515,19 @@ void SceneObject::setCustomObjectName(const UnicodeString& name, bool notifyClie
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setCustomObjectName(name, notifyClient);
+		((SceneObjectImplementation*) _impl)->setCustomObjectName(name, notifyClient);
 }
 
 void SceneObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
+		((SceneObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
 void SceneObject::openContainerTo(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -615,11 +536,11 @@ void SceneObject::openContainerTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->openContainerTo(player);
+		((SceneObjectImplementation*) _impl)->openContainerTo(player);
 }
 
 void SceneObject::closeContainerTo(PlayerCreature* player, bool notify) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -629,11 +550,11 @@ void SceneObject::closeContainerTo(PlayerCreature* player, bool notify) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->closeContainerTo(player, notify);
+		((SceneObjectImplementation*) _impl)->closeContainerTo(player, notify);
 }
 
 void SceneObject::insertToZone(Zone* zone) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -642,11 +563,11 @@ void SceneObject::insertToZone(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->insertToZone(zone);
+		((SceneObjectImplementation*) _impl)->insertToZone(zone);
 }
 
 void SceneObject::insertToBuilding(BuildingObject* building) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -655,11 +576,11 @@ void SceneObject::insertToBuilding(BuildingObject* building) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->insertToBuilding(building);
+		((SceneObjectImplementation*) _impl)->insertToBuilding(building);
 }
 
 void SceneObject::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -672,11 +593,11 @@ void SceneObject::switchZone(int newZoneID, float newPostionX, float newPosition
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->switchZone(newZoneID, newPostionX, newPositionZ, newPositionY, parentID);
+		((SceneObjectImplementation*) _impl)->switchZone(newZoneID, newPostionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObject::teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -688,11 +609,11 @@ void SceneObject::teleport(float newPositionX, float newPositionZ, float newPosi
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->teleport(newPositionX, newPositionZ, newPositionY, parentID);
+		((SceneObjectImplementation*) _impl)->teleport(newPositionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObject::removeFromZone() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -700,11 +621,11 @@ void SceneObject::removeFromZone() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->removeFromZone();
+		((SceneObjectImplementation*) _impl)->removeFromZone();
 }
 
 void SceneObject::removeFromBuilding(BuildingObject* building) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -713,11 +634,11 @@ void SceneObject::removeFromBuilding(BuildingObject* building) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->removeFromBuilding(building);
+		((SceneObjectImplementation*) _impl)->removeFromBuilding(building);
 }
 
 void SceneObject::updateZone(bool lightUpdate, bool sendPackets) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -727,11 +648,11 @@ void SceneObject::updateZone(bool lightUpdate, bool sendPackets) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->updateZone(lightUpdate, sendPackets);
+		((SceneObjectImplementation*) _impl)->updateZone(lightUpdate, sendPackets);
 }
 
 void SceneObject::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -742,11 +663,11 @@ void SceneObject::updateZoneWithParent(SceneObject* newParent, bool lightUpdate,
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->updateZoneWithParent(newParent, lightUpdate, sendPackets);
+		((SceneObjectImplementation*) _impl)->updateZoneWithParent(newParent, lightUpdate, sendPackets);
 }
 
 void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -757,11 +678,11 @@ void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf, bool lock
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->broadcastMessage(message, sendSelf, lockZone);
+		((SceneObjectImplementation*) _impl)->broadcastMessage(message, sendSelf, lockZone);
 }
 
 void SceneObject::broadcastObject(SceneObject* object, bool sendSelf) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -771,11 +692,11 @@ void SceneObject::broadcastObject(SceneObject* object, bool sendSelf) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->broadcastObject(object, sendSelf);
+		((SceneObjectImplementation*) _impl)->broadcastObject(object, sendSelf);
 }
 
 void SceneObject::broadcastDestroy(SceneObject* object, bool sendSelf) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -785,19 +706,19 @@ void SceneObject::broadcastDestroy(SceneObject* object, bool sendSelf) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->broadcastDestroy(object, sendSelf);
+		((SceneObjectImplementation*) _impl)->broadcastDestroy(object, sendSelf);
 }
 
 void SceneObject::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->broadcastMessages(messages, sendSelf);
+		((SceneObjectImplementation*) _impl)->broadcastMessages(messages, sendSelf);
 }
 
 void SceneObject::sendMessage(BasePacket* msg) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -806,11 +727,11 @@ void SceneObject::sendMessage(BasePacket* msg) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->sendMessage(msg);
+		((SceneObjectImplementation*) _impl)->sendMessage(msg);
 }
 
 int SceneObject::compareTo(SceneObject* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -819,19 +740,19 @@ int SceneObject::compareTo(SceneObject* obj) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->compareTo(obj);
+		return ((SceneObjectImplementation*) _impl)->compareTo(obj);
 }
 
 void SceneObject::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->getContainmentObjects(objects);
+		((SceneObjectImplementation*) _impl)->getContainmentObjects(objects);
 }
 
 unsigned long long SceneObject::getParentID() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -839,35 +760,35 @@ unsigned long long SceneObject::getParentID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getParentID();
+		return ((SceneObjectImplementation*) _impl)->getParentID();
 }
 
 void SceneObject::addPendingTask(const String& name, Task* task) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->addPendingTask(name, task);
+		((SceneObjectImplementation*) _impl)->addPendingTask(name, task);
 }
 
 void SceneObject::removePendingTask(const String& name) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->removePendingTask(name);
+		((SceneObjectImplementation*) _impl)->removePendingTask(name);
 }
 
 Task* SceneObject::getPendingTask(const String& name) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getPendingTask(name);
+		return ((SceneObjectImplementation*) _impl)->getPendingTask(name);
 }
 
 int SceneObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -877,11 +798,11 @@ int SceneObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID)
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
+		return ((SceneObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 void SceneObject::notifyAddedToCloseObjects() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -889,11 +810,11 @@ void SceneObject::notifyAddedToCloseObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->notifyAddedToCloseObjects();
+		((SceneObjectImplementation*) _impl)->notifyAddedToCloseObjects();
 }
 
 void SceneObject::notifyRemovedFromCloseObjects() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -901,11 +822,11 @@ void SceneObject::notifyRemovedFromCloseObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->notifyRemovedFromCloseObjects();
+		((SceneObjectImplementation*) _impl)->notifyRemovedFromCloseObjects();
 }
 
 float SceneObject::getDistanceTo(SceneObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -914,19 +835,19 @@ float SceneObject::getDistanceTo(SceneObject* object) {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getDistanceTo(object);
+		return ((SceneObjectImplementation*) _impl)->getDistanceTo(object);
 }
 
 float SceneObject::getDistanceTo(Coordinate* coordinate) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getDistanceTo(coordinate);
+		return ((SceneObjectImplementation*) _impl)->getDistanceTo(coordinate);
 }
 
 void SceneObject::updateVehiclePosition() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -934,11 +855,11 @@ void SceneObject::updateVehiclePosition() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->updateVehiclePosition();
+		((SceneObjectImplementation*) _impl)->updateVehiclePosition();
 }
 
 int SceneObject::notifyObjectInserted(SceneObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -947,11 +868,11 @@ int SceneObject::notifyObjectInserted(SceneObject* object) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->notifyObjectInserted(object);
+		return ((SceneObjectImplementation*) _impl)->notifyObjectInserted(object);
 }
 
 int SceneObject::notifyObjectRemoved(SceneObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -960,11 +881,11 @@ int SceneObject::notifyObjectRemoved(SceneObject* object) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->notifyObjectRemoved(object);
+		return ((SceneObjectImplementation*) _impl)->notifyObjectRemoved(object);
 }
 
 bool SceneObject::hasNotifiedSentObject(SceneObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -973,11 +894,11 @@ bool SceneObject::hasNotifiedSentObject(SceneObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->hasNotifiedSentObject(object);
+		return ((SceneObjectImplementation*) _impl)->hasNotifiedSentObject(object);
 }
 
 void SceneObject::addNotifiedSentObject(SceneObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -986,11 +907,11 @@ void SceneObject::addNotifiedSentObject(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->addNotifiedSentObject(object);
+		((SceneObjectImplementation*) _impl)->addNotifiedSentObject(object);
 }
 
 void SceneObject::removeNotifiedSentObject(SceneObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -999,11 +920,11 @@ void SceneObject::removeNotifiedSentObject(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->removeNotifiedSentObject(object);
+		((SceneObjectImplementation*) _impl)->removeNotifiedSentObject(object);
 }
 
 unsigned long long SceneObject::getObjectID() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1011,27 +932,27 @@ unsigned long long SceneObject::getObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getObjectID();
+		return ((SceneObjectImplementation*) _impl)->getObjectID();
 }
 
 Vector3 SceneObject::getPosition() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getPosition();
+		return ((SceneObjectImplementation*) _impl)->getPosition();
 }
 
 Vector3 SceneObject::getCoordinate(float distance, float angleDegrees) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getCoordinate(distance, angleDegrees);
+		return ((SceneObjectImplementation*) _impl)->getCoordinate(distance, angleDegrees);
 }
 
 float SceneObject::getWorldPositionX() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1039,11 +960,11 @@ float SceneObject::getWorldPositionX() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getWorldPositionX();
+		return ((SceneObjectImplementation*) _impl)->getWorldPositionX();
 }
 
 float SceneObject::getWorldPositionY() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1051,11 +972,11 @@ float SceneObject::getWorldPositionY() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getWorldPositionY();
+		return ((SceneObjectImplementation*) _impl)->getWorldPositionY();
 }
 
 float SceneObject::getWorldPositionZ() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1063,19 +984,19 @@ float SceneObject::getWorldPositionZ() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getWorldPositionZ();
+		return ((SceneObjectImplementation*) _impl)->getWorldPositionZ();
 }
 
 Vector3 SceneObject::getWorldPosition() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getWorldPosition();
+		return ((SceneObjectImplementation*) _impl)->getWorldPosition();
 }
 
 float SceneObject::getPositionX() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1083,11 +1004,11 @@ float SceneObject::getPositionX() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getPositionX();
+		return ((SceneObjectImplementation*) _impl)->getPositionX();
 }
 
 float SceneObject::getPositionZ() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1095,11 +1016,11 @@ float SceneObject::getPositionZ() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getPositionZ();
+		return ((SceneObjectImplementation*) _impl)->getPositionZ();
 }
 
 float SceneObject::getPositionY() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1107,11 +1028,11 @@ float SceneObject::getPositionY() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getPositionY();
+		return ((SceneObjectImplementation*) _impl)->getPositionY();
 }
 
 float SceneObject::getDirectionX() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1119,11 +1040,11 @@ float SceneObject::getDirectionX() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getDirectionX();
+		return ((SceneObjectImplementation*) _impl)->getDirectionX();
 }
 
 float SceneObject::getDirectionZ() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1131,11 +1052,11 @@ float SceneObject::getDirectionZ() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getDirectionZ();
+		return ((SceneObjectImplementation*) _impl)->getDirectionZ();
 }
 
 float SceneObject::getDirectionY() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1143,11 +1064,11 @@ float SceneObject::getDirectionY() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getDirectionY();
+		return ((SceneObjectImplementation*) _impl)->getDirectionY();
 }
 
 float SceneObject::getDirectionW() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1155,19 +1076,19 @@ float SceneObject::getDirectionW() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getDirectionW();
+		return ((SceneObjectImplementation*) _impl)->getDirectionW();
 }
 
 Quaternion* SceneObject::getDirection() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getDirection();
+		return ((SceneObjectImplementation*) _impl)->getDirection();
 }
 
 unsigned int SceneObject::getClientObjectCRC() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1175,11 +1096,11 @@ unsigned int SceneObject::getClientObjectCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getClientObjectCRC();
+		return ((SceneObjectImplementation*) _impl)->getClientObjectCRC();
 }
 
 unsigned int SceneObject::getServerObjectCRC() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1187,11 +1108,11 @@ unsigned int SceneObject::getServerObjectCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getServerObjectCRC();
+		return ((SceneObjectImplementation*) _impl)->getServerObjectCRC();
 }
 
 bool SceneObject::isWaypointObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1199,19 +1120,19 @@ bool SceneObject::isWaypointObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isWaypointObject();
+		return ((SceneObjectImplementation*) _impl)->isWaypointObject();
 }
 
 StringId* SceneObject::getObjectName() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getObjectName();
+		return ((SceneObjectImplementation*) _impl)->getObjectName();
 }
 
 String SceneObject::getObjectNameStringIdFile() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1220,11 +1141,11 @@ String SceneObject::getObjectNameStringIdFile() {
 		method.executeWithAsciiReturn(_return_getObjectNameStringIdFile);
 		return _return_getObjectNameStringIdFile;
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getObjectNameStringIdFile();
+		return ((SceneObjectImplementation*) _impl)->getObjectNameStringIdFile();
 }
 
 String SceneObject::getObjectNameStringIdName() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1233,19 +1154,19 @@ String SceneObject::getObjectNameStringIdName() {
 		method.executeWithAsciiReturn(_return_getObjectNameStringIdName);
 		return _return_getObjectNameStringIdName;
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getObjectNameStringIdName();
+		return ((SceneObjectImplementation*) _impl)->getObjectNameStringIdName();
 }
 
 StringId* SceneObject::getDetailedDescription() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getDetailedDescription();
+		return ((SceneObjectImplementation*) _impl)->getDetailedDescription();
 }
 
 int SceneObject::getArrangementDescriptorSize() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1253,11 +1174,11 @@ int SceneObject::getArrangementDescriptorSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getArrangementDescriptorSize();
+		return ((SceneObjectImplementation*) _impl)->getArrangementDescriptorSize();
 }
 
 String SceneObject::getArrangementDescriptor(int idx) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1267,11 +1188,11 @@ String SceneObject::getArrangementDescriptor(int idx) {
 		method.executeWithAsciiReturn(_return_getArrangementDescriptor);
 		return _return_getArrangementDescriptor;
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getArrangementDescriptor(idx);
+		return ((SceneObjectImplementation*) _impl)->getArrangementDescriptor(idx);
 }
 
 String SceneObject::getSlotDescriptor(int idx) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1281,11 +1202,11 @@ String SceneObject::getSlotDescriptor(int idx) {
 		method.executeWithAsciiReturn(_return_getSlotDescriptor);
 		return _return_getSlotDescriptor;
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getSlotDescriptor(idx);
+		return ((SceneObjectImplementation*) _impl)->getSlotDescriptor(idx);
 }
 
 bool SceneObject::hasSlotDescriptor(const String& descr) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1294,11 +1215,11 @@ bool SceneObject::hasSlotDescriptor(const String& descr) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->hasSlotDescriptor(descr);
+		return ((SceneObjectImplementation*) _impl)->hasSlotDescriptor(descr);
 }
 
 SceneObject* SceneObject::getSlottedObject(const String& slot) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1307,11 +1228,11 @@ SceneObject* SceneObject::getSlottedObject(const String& slot) {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getSlottedObject(slot);
+		return ((SceneObjectImplementation*) _impl)->getSlottedObject(slot);
 }
 
 int SceneObject::getSlotDescriptorSize() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1319,11 +1240,11 @@ int SceneObject::getSlotDescriptorSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getSlotDescriptorSize();
+		return ((SceneObjectImplementation*) _impl)->getSlotDescriptorSize();
 }
 
 int SceneObject::getContainerObjectsSize() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1331,11 +1252,11 @@ int SceneObject::getContainerObjectsSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getContainerObjectsSize();
+		return ((SceneObjectImplementation*) _impl)->getContainerObjectsSize();
 }
 
 bool SceneObject::hasFullContainerObjects() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1343,11 +1264,11 @@ bool SceneObject::hasFullContainerObjects() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->hasFullContainerObjects();
+		return ((SceneObjectImplementation*) _impl)->hasFullContainerObjects();
 }
 
 SceneObject* SceneObject::getContainerObject(int idx) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1356,11 +1277,11 @@ SceneObject* SceneObject::getContainerObject(int idx) {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getContainerObject(idx);
+		return ((SceneObjectImplementation*) _impl)->getContainerObject(idx);
 }
 
 ZoneClientSession* SceneObject::getClient() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1368,11 +1289,11 @@ ZoneClientSession* SceneObject::getClient() {
 
 		return (ZoneClientSession*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getClient();
+		return ((SceneObjectImplementation*) _impl)->getClient();
 }
 
 unsigned int SceneObject::getGameObjectType() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1380,11 +1301,11 @@ unsigned int SceneObject::getGameObjectType() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getGameObjectType();
+		return ((SceneObjectImplementation*) _impl)->getGameObjectType();
 }
 
 unsigned int SceneObject::getContainmentType() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1392,11 +1313,11 @@ unsigned int SceneObject::getContainmentType() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getContainmentType();
+		return ((SceneObjectImplementation*) _impl)->getContainmentType();
 }
 
 Zone* SceneObject::getZone() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1404,11 +1325,11 @@ Zone* SceneObject::getZone() {
 
 		return (Zone*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getZone();
+		return ((SceneObjectImplementation*) _impl)->getZone();
 }
 
 float SceneObject::getDirectionAngle() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1416,11 +1337,11 @@ float SceneObject::getDirectionAngle() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getDirectionAngle();
+		return ((SceneObjectImplementation*) _impl)->getDirectionAngle();
 }
 
 float SceneObject::getSpecialDirectionAngle() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1428,11 +1349,11 @@ float SceneObject::getSpecialDirectionAngle() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getSpecialDirectionAngle();
+		return ((SceneObjectImplementation*) _impl)->getSpecialDirectionAngle();
 }
 
 void SceneObject::rotate(int degrees) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1441,11 +1362,11 @@ void SceneObject::rotate(int degrees) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->rotate(degrees);
+		((SceneObjectImplementation*) _impl)->rotate(degrees);
 }
 
 void SceneObject::notifySelfPositionUpdate() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1453,11 +1374,11 @@ void SceneObject::notifySelfPositionUpdate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->notifySelfPositionUpdate();
+		((SceneObjectImplementation*) _impl)->notifySelfPositionUpdate();
 }
 
 void SceneObject::notifyCloseContainer(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1466,11 +1387,11 @@ void SceneObject::notifyCloseContainer(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->notifyCloseContainer(player);
+		((SceneObjectImplementation*) _impl)->notifyCloseContainer(player);
 }
 
 unsigned int SceneObject::getMovementCounter() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1478,11 +1399,11 @@ unsigned int SceneObject::getMovementCounter() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getMovementCounter();
+		return ((SceneObjectImplementation*) _impl)->getMovementCounter();
 }
 
 SceneObject* SceneObject::getParent() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1490,11 +1411,11 @@ SceneObject* SceneObject::getParent() {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getParent();
+		return ((SceneObjectImplementation*) _impl)->getParent();
 }
 
 ZoneServer* SceneObject::getZoneServer() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1502,11 +1423,11 @@ ZoneServer* SceneObject::getZoneServer() {
 
 		return (ZoneServer*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getZoneServer();
+		return ((SceneObjectImplementation*) _impl)->getZoneServer();
 }
 
 SceneObject* SceneObject::getRootParent() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1514,11 +1435,11 @@ SceneObject* SceneObject::getRootParent() {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getRootParent();
+		return ((SceneObjectImplementation*) _impl)->getRootParent();
 }
 
 SceneObject* SceneObject::getParentRecursively(unsigned int gameObjectType) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1527,11 +1448,11 @@ SceneObject* SceneObject::getParentRecursively(unsigned int gameObjectType) {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getParentRecursively(gameObjectType);
+		return ((SceneObjectImplementation*) _impl)->getParentRecursively(gameObjectType);
 }
 
 bool SceneObject::isASubChildOf(SceneObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1540,11 +1461,11 @@ bool SceneObject::isASubChildOf(SceneObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isASubChildOf(object);
+		return ((SceneObjectImplementation*) _impl)->isASubChildOf(object);
 }
 
 UnicodeString SceneObject::getCustomObjectName() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1553,11 +1474,11 @@ UnicodeString SceneObject::getCustomObjectName() {
 		method.executeWithUnicodeReturn(_return_getCustomObjectName);
 		return _return_getCustomObjectName;
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getCustomObjectName();
+		return ((SceneObjectImplementation*) _impl)->getCustomObjectName();
 }
 
 bool SceneObject::isInQuadTree() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1565,11 +1486,11 @@ bool SceneObject::isInQuadTree() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isInQuadTree();
+		return ((SceneObjectImplementation*) _impl)->isInQuadTree();
 }
 
 String SceneObject::getLoggingName() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1578,11 +1499,11 @@ String SceneObject::getLoggingName() {
 		method.executeWithAsciiReturn(_return_getLoggingName);
 		return _return_getLoggingName;
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getLoggingName();
+		return ((SceneObjectImplementation*) _impl)->getLoggingName();
 }
 
 bool SceneObject::isPlayerCreature() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1590,11 +1511,11 @@ bool SceneObject::isPlayerCreature() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isPlayerCreature();
+		return ((SceneObjectImplementation*) _impl)->isPlayerCreature();
 }
 
 bool SceneObject::isCreatureObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1602,11 +1523,11 @@ bool SceneObject::isCreatureObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isCreatureObject();
+		return ((SceneObjectImplementation*) _impl)->isCreatureObject();
 }
 
 bool SceneObject::isVehicleObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1614,11 +1535,11 @@ bool SceneObject::isVehicleObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isVehicleObject();
+		return ((SceneObjectImplementation*) _impl)->isVehicleObject();
 }
 
 bool SceneObject::isBuildingObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1626,11 +1547,11 @@ bool SceneObject::isBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isBuildingObject();
+		return ((SceneObjectImplementation*) _impl)->isBuildingObject();
 }
 
 bool SceneObject::isCloningBuildingObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1638,11 +1559,11 @@ bool SceneObject::isCloningBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isCloningBuildingObject();
+		return ((SceneObjectImplementation*) _impl)->isCloningBuildingObject();
 }
 
 bool SceneObject::isGarage() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1650,11 +1571,11 @@ bool SceneObject::isGarage() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isGarage();
+		return ((SceneObjectImplementation*) _impl)->isGarage();
 }
 
 bool SceneObject::isWeaponObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1662,11 +1583,11 @@ bool SceneObject::isWeaponObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isWeaponObject();
+		return ((SceneObjectImplementation*) _impl)->isWeaponObject();
 }
 
 bool SceneObject::isWearableObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1674,11 +1595,11 @@ bool SceneObject::isWearableObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isWearableObject();
+		return ((SceneObjectImplementation*) _impl)->isWearableObject();
 }
 
 bool SceneObject::isArmorObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1686,11 +1607,11 @@ bool SceneObject::isArmorObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isArmorObject();
+		return ((SceneObjectImplementation*) _impl)->isArmorObject();
 }
 
 bool SceneObject::isCellObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1698,11 +1619,11 @@ bool SceneObject::isCellObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isCellObject();
+		return ((SceneObjectImplementation*) _impl)->isCellObject();
 }
 
 bool SceneObject::isTangibleObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1710,11 +1631,11 @@ bool SceneObject::isTangibleObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isTangibleObject();
+		return ((SceneObjectImplementation*) _impl)->isTangibleObject();
 }
 
 bool SceneObject::isResourceContainer() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1722,11 +1643,11 @@ bool SceneObject::isResourceContainer() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isResourceContainer();
+		return ((SceneObjectImplementation*) _impl)->isResourceContainer();
 }
 
 bool SceneObject::isComponent() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1734,11 +1655,11 @@ bool SceneObject::isComponent() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isComponent();
+		return ((SceneObjectImplementation*) _impl)->isComponent();
 }
 
 bool SceneObject::isInstrument() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1746,11 +1667,11 @@ bool SceneObject::isInstrument() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isInstrument();
+		return ((SceneObjectImplementation*) _impl)->isInstrument();
 }
 
 bool SceneObject::isInstallationObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1758,11 +1679,11 @@ bool SceneObject::isInstallationObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isInstallationObject();
+		return ((SceneObjectImplementation*) _impl)->isInstallationObject();
 }
 
 bool SceneObject::isFactory() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1770,11 +1691,11 @@ bool SceneObject::isFactory() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isFactory();
+		return ((SceneObjectImplementation*) _impl)->isFactory();
 }
 
 bool SceneObject::isFactoryCrate() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1782,11 +1703,11 @@ bool SceneObject::isFactoryCrate() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isFactoryCrate();
+		return ((SceneObjectImplementation*) _impl)->isFactoryCrate();
 }
 
 bool SceneObject::isFishingPoleObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1794,11 +1715,11 @@ bool SceneObject::isFishingPoleObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isFishingPoleObject();
+		return ((SceneObjectImplementation*) _impl)->isFishingPoleObject();
 }
 
 bool SceneObject::isDeedObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1806,11 +1727,11 @@ bool SceneObject::isDeedObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isDeedObject();
+		return ((SceneObjectImplementation*) _impl)->isDeedObject();
 }
 
 bool SceneObject::isBuildingDeed() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1818,11 +1739,11 @@ bool SceneObject::isBuildingDeed() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isBuildingDeed();
+		return ((SceneObjectImplementation*) _impl)->isBuildingDeed();
 }
 
 bool SceneObject::isInstallationDeed() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1830,11 +1751,11 @@ bool SceneObject::isInstallationDeed() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isInstallationDeed();
+		return ((SceneObjectImplementation*) _impl)->isInstallationDeed();
 }
 
 bool SceneObject::isCraftingTool() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1842,11 +1763,11 @@ bool SceneObject::isCraftingTool() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isCraftingTool();
+		return ((SceneObjectImplementation*) _impl)->isCraftingTool();
 }
 
 bool SceneObject::isCraftingStation() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1854,11 +1775,11 @@ bool SceneObject::isCraftingStation() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isCraftingStation();
+		return ((SceneObjectImplementation*) _impl)->isCraftingStation();
 }
 
 bool SceneObject::isManufactureSchematic() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1866,11 +1787,11 @@ bool SceneObject::isManufactureSchematic() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isManufactureSchematic();
+		return ((SceneObjectImplementation*) _impl)->isManufactureSchematic();
 }
 
 bool SceneObject::isStructureObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1878,11 +1799,11 @@ bool SceneObject::isStructureObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isStructureObject();
+		return ((SceneObjectImplementation*) _impl)->isStructureObject();
 }
 
 bool SceneObject::isBazaarTerminal() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1890,11 +1811,11 @@ bool SceneObject::isBazaarTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isBazaarTerminal();
+		return ((SceneObjectImplementation*) _impl)->isBazaarTerminal();
 }
 
 bool SceneObject::isFishingBait() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1902,11 +1823,11 @@ bool SceneObject::isFishingBait() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isFishingBait();
+		return ((SceneObjectImplementation*) _impl)->isFishingBait();
 }
 
 void SceneObject::setPosition(float x, float z, float y) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1917,11 +1838,11 @@ void SceneObject::setPosition(float x, float z, float y) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setPosition(x, z, y);
+		((SceneObjectImplementation*) _impl)->setPosition(x, z, y);
 }
 
 void SceneObject::initializePosition(float x, float z, float y) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1932,11 +1853,11 @@ void SceneObject::initializePosition(float x, float z, float y) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->initializePosition(x, z, y);
+		((SceneObjectImplementation*) _impl)->initializePosition(x, z, y);
 }
 
 void SceneObject::setGameObjectType(unsigned int type) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1945,11 +1866,11 @@ void SceneObject::setGameObjectType(unsigned int type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setGameObjectType(type);
+		((SceneObjectImplementation*) _impl)->setGameObjectType(type);
 }
 
 void SceneObject::setActiveArea(ActiveArea* area) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1958,11 +1879,11 @@ void SceneObject::setActiveArea(ActiveArea* area) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setActiveArea(area);
+		((SceneObjectImplementation*) _impl)->setActiveArea(area);
 }
 
 void SceneObject::setClientObjectCRC(unsigned int objCRC) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1971,11 +1892,11 @@ void SceneObject::setClientObjectCRC(unsigned int objCRC) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setClientObjectCRC(objCRC);
+		((SceneObjectImplementation*) _impl)->setClientObjectCRC(objCRC);
 }
 
 void SceneObject::setServerObjectCRC(unsigned int objCRC) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1984,11 +1905,11 @@ void SceneObject::setServerObjectCRC(unsigned int objCRC) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setServerObjectCRC(objCRC);
+		((SceneObjectImplementation*) _impl)->setServerObjectCRC(objCRC);
 }
 
 void SceneObject::setParent(SceneObject* par) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -1997,27 +1918,27 @@ void SceneObject::setParent(SceneObject* par) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setParent(par);
+		((SceneObjectImplementation*) _impl)->setParent(par);
 }
 
 void SceneObject::setZoneProcessServer(ZoneProcessServerImplementation* srv) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setZoneProcessServer(srv);
+		((SceneObjectImplementation*) _impl)->setZoneProcessServer(srv);
 }
 
 void SceneObject::setObjectName(StringId& stringID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setObjectName(stringID);
+		((SceneObjectImplementation*) _impl)->setObjectName(stringID);
 }
 
 void SceneObject::setZone(Zone* zon) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2026,11 +1947,11 @@ void SceneObject::setZone(Zone* zon) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setZone(zon);
+		((SceneObjectImplementation*) _impl)->setZone(zon);
 }
 
 void SceneObject::setDirection(float fw, float fx, float fy, float fz) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2042,11 +1963,11 @@ void SceneObject::setDirection(float fw, float fx, float fy, float fz) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setDirection(fw, fx, fy, fz);
+		((SceneObjectImplementation*) _impl)->setDirection(fw, fx, fy, fz);
 }
 
 void SceneObject::setDirection(float headingAngleRadians) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2055,19 +1976,19 @@ void SceneObject::setDirection(float headingAngleRadians) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setDirection(headingAngleRadians);
+		((SceneObjectImplementation*) _impl)->setDirection(headingAngleRadians);
 }
 
 void SceneObject::setDirection(const Quaternion& dir) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setDirection(dir);
+		((SceneObjectImplementation*) _impl)->setDirection(dir);
 }
 
 void SceneObject::setMovementCounter(unsigned int count) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2076,11 +1997,11 @@ void SceneObject::setMovementCounter(unsigned int count) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setMovementCounter(count);
+		((SceneObjectImplementation*) _impl)->setMovementCounter(count);
 }
 
 void SceneObject::incrementMovementCounter() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2088,11 +2009,11 @@ void SceneObject::incrementMovementCounter() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->incrementMovementCounter();
+		((SceneObjectImplementation*) _impl)->incrementMovementCounter();
 }
 
 void SceneObject::setContainmentType(unsigned int type) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2101,11 +2022,11 @@ void SceneObject::setContainmentType(unsigned int type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setContainmentType(type);
+		((SceneObjectImplementation*) _impl)->setContainmentType(type);
 }
 
 void SceneObject::setLoggingName(const String& name) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2114,11 +2035,11 @@ void SceneObject::setLoggingName(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setLoggingName(name);
+		((SceneObjectImplementation*) _impl)->setLoggingName(name);
 }
 
 void SceneObject::setStaticObject(bool val) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2127,19 +2048,19 @@ void SceneObject::setStaticObject(bool val) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->setStaticObject(val);
+		((SceneObjectImplementation*) _impl)->setStaticObject(val);
 }
 
 VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::getContainerObjects() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getContainerObjects();
+		return ((SceneObjectImplementation*) _impl)->getContainerObjects();
 }
 
 bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2148,11 +2069,11 @@ bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->hasObjectInContainer(objectID);
+		return ((SceneObjectImplementation*) _impl)->hasObjectInContainer(objectID);
 }
 
 SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2161,11 +2082,11 @@ SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getContainerObject(objectID);
+		return ((SceneObjectImplementation*) _impl)->getContainerObject(objectID);
 }
 
 unsigned int SceneObject::getPlanetCRC() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2173,11 +2094,11 @@ unsigned int SceneObject::getPlanetCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getPlanetCRC();
+		return ((SceneObjectImplementation*) _impl)->getPlanetCRC();
 }
 
 bool SceneObject::isStaticObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2185,11 +2106,11 @@ bool SceneObject::isStaticObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isStaticObject();
+		return ((SceneObjectImplementation*) _impl)->isStaticObject();
 }
 
 bool SceneObject::isControlDevice() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2197,11 +2118,11 @@ bool SceneObject::isControlDevice() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isControlDevice();
+		return ((SceneObjectImplementation*) _impl)->isControlDevice();
 }
 
 bool SceneObject::isMissionTerminal() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2209,11 +2130,11 @@ bool SceneObject::isMissionTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isMissionTerminal();
+		return ((SceneObjectImplementation*) _impl)->isMissionTerminal();
 }
 
 bool SceneObject::isMissionObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2221,11 +2142,11 @@ bool SceneObject::isMissionObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->isMissionObject();
+		return ((SceneObjectImplementation*) _impl)->isMissionObject();
 }
 
 ActiveArea* SceneObject::getActiveArea() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2233,11 +2154,11 @@ ActiveArea* SceneObject::getActiveArea() {
 
 		return (ActiveArea*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getActiveArea();
+		return ((SceneObjectImplementation*) _impl)->getActiveArea();
 }
 
 int SceneObject::getMapLocationsType1() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2245,11 +2166,11 @@ int SceneObject::getMapLocationsType1() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getMapLocationsType1();
+		return ((SceneObjectImplementation*) _impl)->getMapLocationsType1();
 }
 
 int SceneObject::getMapLocationsType2() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2257,11 +2178,11 @@ int SceneObject::getMapLocationsType2() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getMapLocationsType2();
+		return ((SceneObjectImplementation*) _impl)->getMapLocationsType2();
 }
 
 int SceneObject::getMapLocationsType3() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2269,11 +2190,11 @@ int SceneObject::getMapLocationsType3() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SceneObjectImplementation*) _getImplementation())->getMapLocationsType3();
+		return ((SceneObjectImplementation*) _impl)->getMapLocationsType3();
 }
 
 void SceneObject::createChildObjects() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -2281,7 +2202,7 @@ void SceneObject::createChildObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _getImplementation())->createChildObjects();
+		((SceneObjectImplementation*) _impl)->createChildObjects();
 }
 
 /*
@@ -2291,7 +2212,6 @@ void SceneObject::createChildObjects() {
 SceneObjectImplementation::SceneObjectImplementation(DummyConstructorParameter* param) : ObservableImplementation(param) {
 	_initializeImplementation();
 }
-
 
 SceneObjectImplementation::~SceneObjectImplementation() {
 	SceneObjectImplementation::finalize();
@@ -2316,11 +2236,6 @@ DistributedObjectStub* SceneObjectImplementation::_getStub() {
 SceneObjectImplementation::operator const SceneObject*() {
 	return _this;
 }
-
-TransactionalObject* SceneObjectImplementation::clone() {
-	return (TransactionalObject*) new SceneObjectImplementation(*this);
-}
-
 
 void SceneObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

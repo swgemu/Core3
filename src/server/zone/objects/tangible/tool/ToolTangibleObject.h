@@ -90,8 +90,6 @@ public:
 protected:
 	virtual ~ToolTangibleObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -115,7 +113,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ToolTangibleObject;
-	friend class TransactionalObjectHandle<ToolTangibleObjectImplementation*>;
 };
 
 class ToolTangibleObjectAdapter : public TangibleObjectAdapter {

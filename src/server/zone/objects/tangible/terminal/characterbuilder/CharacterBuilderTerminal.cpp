@@ -12,76 +12,13 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/Vector.h"
-
 /*
  *	CharacterBuilderTerminalStub
  */
 
 CharacterBuilderTerminal::CharacterBuilderTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new CharacterBuilderTerminalImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new CharacterBuilderTerminalImplementation();
+	_impl->_setStub(this);
 }
 
 CharacterBuilderTerminal::CharacterBuilderTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -92,15 +29,15 @@ CharacterBuilderTerminal::~CharacterBuilderTerminal() {
 
 
 void CharacterBuilderTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CharacterBuilderTerminalImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((CharacterBuilderTerminalImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 void CharacterBuilderTerminal::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,11 +45,11 @@ void CharacterBuilderTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CharacterBuilderTerminalImplementation*) _getImplementation())->initializeTransientMembers();
+		((CharacterBuilderTerminalImplementation*) _impl)->initializeTransientMembers();
 }
 
 int CharacterBuilderTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +59,11 @@ int CharacterBuilderTerminal::handleObjectMenuSelect(PlayerCreature* player, byt
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CharacterBuilderTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
+		return ((CharacterBuilderTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,7 +72,7 @@ void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CharacterBuilderTerminalImplementation*) _getImplementation())->sendInitialChoices(player);
+		((CharacterBuilderTerminalImplementation*) _impl)->sendInitialChoices(player);
 }
 
 /*
@@ -145,7 +82,6 @@ void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
 CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
-
 
 CharacterBuilderTerminalImplementation::~CharacterBuilderTerminalImplementation() {
 }
@@ -172,11 +108,6 @@ DistributedObjectStub* CharacterBuilderTerminalImplementation::_getStub() {
 CharacterBuilderTerminalImplementation::operator const CharacterBuilderTerminal*() {
 	return _this;
 }
-
-TransactionalObject* CharacterBuilderTerminalImplementation::clone() {
-	return (TransactionalObject*) new CharacterBuilderTerminalImplementation(*this);
-}
-
 
 void CharacterBuilderTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

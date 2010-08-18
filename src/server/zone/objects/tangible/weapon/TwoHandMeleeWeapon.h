@@ -80,8 +80,6 @@ public:
 protected:
 	virtual ~TwoHandMeleeWeaponImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -105,7 +103,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TwoHandMeleeWeapon;
-	friend class TransactionalObjectHandle<TwoHandMeleeWeaponImplementation*>;
 };
 
 class TwoHandMeleeWeaponAdapter : public MeleeWeaponObjectAdapter {

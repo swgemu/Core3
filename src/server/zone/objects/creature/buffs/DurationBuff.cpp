@@ -12,64 +12,13 @@
 
 #include "server/zone/objects/creature/buffs/SpiceDownerBuff.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
 /*
  *	DurationBuffStub
  */
 
 DurationBuff::DurationBuff(CreatureObject* creo, unsigned int buffcrc, float duration) : Buff(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new DurationBuffImplementation(creo, buffcrc, duration));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new DurationBuffImplementation(creo, buffcrc, duration);
+	_impl->_setStub(this);
 }
 
 DurationBuff::DurationBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -80,7 +29,7 @@ DurationBuff::~DurationBuff() {
 
 
 void DurationBuff::activate(bool applyModifiers) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -89,7 +38,7 @@ void DurationBuff::activate(bool applyModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DurationBuffImplementation*) _getImplementation())->activate(applyModifiers);
+		((DurationBuffImplementation*) _impl)->activate(applyModifiers);
 }
 
 /*
@@ -99,7 +48,6 @@ void DurationBuff::activate(bool applyModifiers) {
 DurationBuffImplementation::DurationBuffImplementation(DummyConstructorParameter* param) : BuffImplementation(param) {
 	_initializeImplementation();
 }
-
 
 DurationBuffImplementation::~DurationBuffImplementation() {
 }
@@ -126,11 +74,6 @@ DistributedObjectStub* DurationBuffImplementation::_getStub() {
 DurationBuffImplementation::operator const DurationBuff*() {
 	return _this;
 }
-
-TransactionalObject* DurationBuffImplementation::clone() {
-	return (TransactionalObject*) new DurationBuffImplementation(*this);
-}
-
 
 void DurationBuffImplementation::lock(bool doLock) {
 	_this->lock(doLock);

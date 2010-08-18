@@ -232,8 +232,6 @@ public:
 protected:
 	virtual ~ResourceManagerImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -257,7 +255,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ResourceManager;
-	friend class TransactionalObjectHandle<ResourceManagerImplementation*>;
 };
 
 class ResourceManagerAdapter : public ObserverAdapter {

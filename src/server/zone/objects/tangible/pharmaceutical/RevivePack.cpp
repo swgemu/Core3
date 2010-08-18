@@ -20,110 +20,13 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
 /*
  *	RevivePackStub
  */
 
 RevivePack::RevivePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new RevivePackImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new RevivePackImplementation();
+	_impl->_setStub(this);
 }
 
 RevivePack::RevivePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -134,23 +37,23 @@ RevivePack::~RevivePack() {
 
 
 void RevivePack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RevivePackImplementation*) _getImplementation())->updateCraftingValues(schematic);
+		((RevivePackImplementation*) _impl)->updateCraftingValues(schematic);
 }
 
 void RevivePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RevivePackImplementation*) _getImplementation())->fillAttributeList(msg, object);
+		((RevivePackImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
 int RevivePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,11 +63,11 @@ int RevivePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((RevivePackImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
+		return ((RevivePackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 float RevivePack::getHealthWoundHealed() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,11 +75,11 @@ float RevivePack::getHealthWoundHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _getImplementation())->getHealthWoundHealed();
+		return ((RevivePackImplementation*) _impl)->getHealthWoundHealed();
 }
 
 float RevivePack::getHealthHealed() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -184,11 +87,11 @@ float RevivePack::getHealthHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _getImplementation())->getHealthHealed();
+		return ((RevivePackImplementation*) _impl)->getHealthHealed();
 }
 
 float RevivePack::getActionWoundHealed() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -196,11 +99,11 @@ float RevivePack::getActionWoundHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _getImplementation())->getActionWoundHealed();
+		return ((RevivePackImplementation*) _impl)->getActionWoundHealed();
 }
 
 float RevivePack::getActionHealed() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -208,11 +111,11 @@ float RevivePack::getActionHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _getImplementation())->getActionHealed();
+		return ((RevivePackImplementation*) _impl)->getActionHealed();
 }
 
 float RevivePack::getMindWoundHealed() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -220,11 +123,11 @@ float RevivePack::getMindWoundHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _getImplementation())->getMindWoundHealed();
+		return ((RevivePackImplementation*) _impl)->getMindWoundHealed();
 }
 
 float RevivePack::getMindHealed() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -232,11 +135,11 @@ float RevivePack::getMindHealed() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RevivePackImplementation*) _getImplementation())->getMindHealed();
+		return ((RevivePackImplementation*) _impl)->getMindHealed();
 }
 
 bool RevivePack::isRevivePack() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -244,7 +147,7 @@ bool RevivePack::isRevivePack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RevivePackImplementation*) _getImplementation())->isRevivePack();
+		return ((RevivePackImplementation*) _impl)->isRevivePack();
 }
 
 /*
@@ -254,7 +157,6 @@ bool RevivePack::isRevivePack() {
 RevivePackImplementation::RevivePackImplementation(DummyConstructorParameter* param) : PharmaceuticalObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 RevivePackImplementation::~RevivePackImplementation() {
 }
@@ -281,11 +183,6 @@ DistributedObjectStub* RevivePackImplementation::_getStub() {
 RevivePackImplementation::operator const RevivePack*() {
 	return _this;
 }
-
-TransactionalObject* RevivePackImplementation::clone() {
-	return (TransactionalObject*) new RevivePackImplementation(*this);
-}
-
 
 void RevivePackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

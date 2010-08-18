@@ -8,46 +8,13 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
 /*
  *	TeachPlayerListBoxStub
  */
 
 TeachPlayerListBox::TeachPlayerListBox(PlayerCreature* player) : SuiListBox(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new TeachPlayerListBoxImplementation(player));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new TeachPlayerListBoxImplementation(player);
+	_impl->_setStub(this);
 }
 
 TeachPlayerListBox::TeachPlayerListBox(DummyConstructorParameter* param) : SuiListBox(param) {
@@ -58,7 +25,7 @@ TeachPlayerListBox::~TeachPlayerListBox() {
 
 
 void TeachPlayerListBox::setStudent(PlayerCreature* student) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,27 +34,27 @@ void TeachPlayerListBox::setStudent(PlayerCreature* student) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TeachPlayerListBoxImplementation*) _getImplementation())->setStudent(student);
+		((TeachPlayerListBoxImplementation*) _impl)->setStudent(student);
 }
 
 PlayerCreature* TeachPlayerListBox::getStudent() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((TeachPlayerListBoxImplementation*) _getImplementation())->getStudent();
+		return ((TeachPlayerListBoxImplementation*) _impl)->getStudent();
 }
 
 const String TeachPlayerListBox::getTeachingSkillOption(int index) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((TeachPlayerListBoxImplementation*) _getImplementation())->getTeachingSkillOption(index);
+		return ((TeachPlayerListBoxImplementation*) _impl)->getTeachingSkillOption(index);
 }
 
 bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreature* student) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -97,7 +64,7 @@ bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreatu
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TeachPlayerListBoxImplementation*) _getImplementation())->generateSkillList(teacher, student);
+		return ((TeachPlayerListBoxImplementation*) _impl)->generateSkillList(teacher, student);
 }
 
 /*
@@ -107,7 +74,6 @@ bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreatu
 TeachPlayerListBoxImplementation::TeachPlayerListBoxImplementation(DummyConstructorParameter* param) : SuiListBoxImplementation(param) {
 	_initializeImplementation();
 }
-
 
 TeachPlayerListBoxImplementation::~TeachPlayerListBoxImplementation() {
 }
@@ -134,11 +100,6 @@ DistributedObjectStub* TeachPlayerListBoxImplementation::_getStub() {
 TeachPlayerListBoxImplementation::operator const TeachPlayerListBox*() {
 	return _this;
 }
-
-TransactionalObject* TeachPlayerListBoxImplementation::clone() {
-	return (TransactionalObject*) new TeachPlayerListBoxImplementation(*this);
-}
-
 
 void TeachPlayerListBoxImplementation::lock(bool doLock) {
 	_this->lock(doLock);

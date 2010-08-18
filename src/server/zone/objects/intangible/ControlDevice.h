@@ -153,8 +153,6 @@ public:
 protected:
 	virtual ~ControlDeviceImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -178,7 +176,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ControlDevice;
-	friend class TransactionalObjectHandle<ControlDeviceImplementation*>;
 };
 
 class ControlDeviceAdapter : public IntangibleObjectAdapter {

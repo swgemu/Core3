@@ -93,8 +93,6 @@ public:
 protected:
 	virtual ~SuiListBoxMenuItemImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -118,7 +116,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiListBoxMenuItem;
-	friend class TransactionalObjectHandle<SuiListBoxMenuItemImplementation*>;
 };
 
 class SuiListBoxMenuItemAdapter : public ManagedObjectAdapter {

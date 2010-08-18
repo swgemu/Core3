@@ -16,90 +16,13 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	VehicleControlDeviceStub
  */
 
 VehicleControlDevice::VehicleControlDevice() : ControlDevice(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new VehicleControlDeviceImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new VehicleControlDeviceImplementation();
+	_impl->_setStub(this);
 }
 
 VehicleControlDevice::VehicleControlDevice(DummyConstructorParameter* param) : ControlDevice(param) {
@@ -110,7 +33,7 @@ VehicleControlDevice::~VehicleControlDevice() {
 
 
 void VehicleControlDevice::storeObject(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -119,11 +42,11 @@ void VehicleControlDevice::storeObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleControlDeviceImplementation*) _getImplementation())->storeObject(player);
+		((VehicleControlDeviceImplementation*) _impl)->storeObject(player);
 }
 
 void VehicleControlDevice::generateObject(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -132,11 +55,11 @@ void VehicleControlDevice::generateObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleControlDeviceImplementation*) _getImplementation())->generateObject(player);
+		((VehicleControlDeviceImplementation*) _impl)->generateObject(player);
 }
 
 int VehicleControlDevice::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -146,11 +69,11 @@ int VehicleControlDevice::handleObjectMenuSelect(PlayerCreature* player, byte se
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleControlDeviceImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
+		return ((VehicleControlDeviceImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 void VehicleControlDevice::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -159,11 +82,11 @@ void VehicleControlDevice::destroyObjectFromDatabase(bool destroyContainedObject
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleControlDeviceImplementation*) _getImplementation())->destroyObjectFromDatabase(destroyContainedObjects);
+		((VehicleControlDeviceImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,7 +95,7 @@ int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleControlDeviceImplementation*) _getImplementation())->canBeDestroyed(player);
+		return ((VehicleControlDeviceImplementation*) _impl)->canBeDestroyed(player);
 }
 
 /*
@@ -182,7 +105,6 @@ int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
 VehicleControlDeviceImplementation::VehicleControlDeviceImplementation(DummyConstructorParameter* param) : ControlDeviceImplementation(param) {
 	_initializeImplementation();
 }
-
 
 VehicleControlDeviceImplementation::~VehicleControlDeviceImplementation() {
 }
@@ -209,11 +131,6 @@ DistributedObjectStub* VehicleControlDeviceImplementation::_getStub() {
 VehicleControlDeviceImplementation::operator const VehicleControlDevice*() {
 	return _this;
 }
-
-TransactionalObject* VehicleControlDeviceImplementation::clone() {
-	return (TransactionalObject*) new VehicleControlDeviceImplementation(*this);
-}
-
 
 void VehicleControlDeviceImplementation::lock(bool doLock) {
 	_this->lock(doLock);

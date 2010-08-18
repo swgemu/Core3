@@ -273,8 +273,6 @@ public:
 protected:
 	virtual ~ShuttleCreatureImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -298,7 +296,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ShuttleCreature;
-	friend class TransactionalObjectHandle<ShuttleCreatureImplementation*>;
 };
 
 class ShuttleCreatureAdapter : public CreatureObjectAdapter {

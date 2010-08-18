@@ -139,8 +139,6 @@ public:
 protected:
 	virtual ~ActiveAreaImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -164,7 +162,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ActiveArea;
-	friend class TransactionalObjectHandle<ActiveAreaImplementation*>;
 };
 
 class ActiveAreaAdapter : public SceneObjectAdapter {

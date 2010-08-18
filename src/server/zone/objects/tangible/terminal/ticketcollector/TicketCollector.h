@@ -161,8 +161,6 @@ public:
 protected:
 	virtual ~TicketCollectorImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -186,7 +184,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TicketCollector;
-	friend class TransactionalObjectHandle<TicketCollectorImplementation*>;
 };
 
 class TicketCollectorAdapter : public TerminalAdapter {

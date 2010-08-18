@@ -24,104 +24,13 @@
 
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/installation/HopperList.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	ShuttleInstallationStub
  */
 
 ShuttleInstallation::ShuttleInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new ShuttleInstallationImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new ShuttleInstallationImplementation();
+	_impl->_setStub(this);
 }
 
 ShuttleInstallation::ShuttleInstallation(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -132,7 +41,7 @@ ShuttleInstallation::~ShuttleInstallation() {
 
 
 void ShuttleInstallation::insertToZone(Zone* zone) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -141,11 +50,11 @@ void ShuttleInstallation::insertToZone(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleInstallationImplementation*) _getImplementation())->insertToZone(zone);
+		((ShuttleInstallationImplementation*) _impl)->insertToZone(zone);
 }
 
 void ShuttleInstallation::spawnShuttleObjects() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -153,11 +62,11 @@ void ShuttleInstallation::spawnShuttleObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ShuttleInstallationImplementation*) _getImplementation())->spawnShuttleObjects();
+		((ShuttleInstallationImplementation*) _impl)->spawnShuttleObjects();
 }
 
 bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -166,7 +75,7 @@ bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ShuttleInstallationImplementation*) _getImplementation())->checkRequisitesForPlacement(player);
+		return ((ShuttleInstallationImplementation*) _impl)->checkRequisitesForPlacement(player);
 }
 
 /*
@@ -176,7 +85,6 @@ bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 ShuttleInstallationImplementation::ShuttleInstallationImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 ShuttleInstallationImplementation::~ShuttleInstallationImplementation() {
 }
@@ -203,11 +111,6 @@ DistributedObjectStub* ShuttleInstallationImplementation::_getStub() {
 ShuttleInstallationImplementation::operator const ShuttleInstallation*() {
 	return _this;
 }
-
-TransactionalObject* ShuttleInstallationImplementation::clone() {
-	return (TransactionalObject*) new ShuttleInstallationImplementation(*this);
-}
-
 
 void ShuttleInstallationImplementation::lock(bool doLock) {
 	_this->lock(doLock);

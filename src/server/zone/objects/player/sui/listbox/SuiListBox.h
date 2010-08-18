@@ -39,7 +39,23 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
-#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sui {
+namespace listbox {
+
+class SuiListBoxMenuItem;
+
+} // namespace listbox
+} // namespace sui
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::sui::listbox;
 
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 
@@ -174,8 +190,6 @@ public:
 protected:
 	virtual ~SuiListBoxImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -199,7 +213,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiListBox;
-	friend class TransactionalObjectHandle<SuiListBoxImplementation*>;
 };
 
 class SuiListBoxAdapter : public SuiBoxAdapter {

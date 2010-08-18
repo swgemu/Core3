@@ -8,60 +8,13 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	DrinkStub
  */
 
 Drink::Drink() : Consumable(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new DrinkImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new DrinkImplementation();
+	_impl->_setStub(this);
 }
 
 Drink::Drink(DummyConstructorParameter* param) : Consumable(param) {
@@ -72,7 +25,7 @@ Drink::~Drink() {
 
 
 void Drink::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +33,11 @@ void Drink::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DrinkImplementation*) _getImplementation())->initializeTransientMembers();
+		((DrinkImplementation*) _impl)->initializeTransientMembers();
 }
 
 void Drink::initializePrivateData() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,7 +45,7 @@ void Drink::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DrinkImplementation*) _getImplementation())->initializePrivateData();
+		((DrinkImplementation*) _impl)->initializePrivateData();
 }
 
 /*
@@ -102,7 +55,6 @@ void Drink::initializePrivateData() {
 DrinkImplementation::DrinkImplementation(DummyConstructorParameter* param) : ConsumableImplementation(param) {
 	_initializeImplementation();
 }
-
 
 DrinkImplementation::~DrinkImplementation() {
 }
@@ -129,11 +81,6 @@ DistributedObjectStub* DrinkImplementation::_getStub() {
 DrinkImplementation::operator const Drink*() {
 	return _this;
 }
-
-TransactionalObject* DrinkImplementation::clone() {
-	return (TransactionalObject*) new DrinkImplementation(*this);
-}
-
 
 void DrinkImplementation::lock(bool doLock) {
 	_this->lock(doLock);

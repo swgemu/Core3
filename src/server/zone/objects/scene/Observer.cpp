@@ -6,13 +6,6 @@
 
 #include "server/zone/objects/scene/Observable.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	ObserverStub
  */
@@ -25,7 +18,7 @@ Observer::~Observer() {
 
 
 int Observer::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,11 +30,11 @@ int Observer::notifyObserverEvent(unsigned int eventType, Observable* observable
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ObserverImplementation*) _getImplementation())->notifyObserverEvent(eventType, observable, arg1, arg2);
+		return ((ObserverImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 unsigned long long Observer::getObjectID() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +42,11 @@ unsigned long long Observer::getObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((ObserverImplementation*) _getImplementation())->getObjectID();
+		return ((ObserverImplementation*) _impl)->getObjectID();
 }
 
 int Observer::compareTo(Observer* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -62,7 +55,7 @@ int Observer::compareTo(Observer* obj) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ObserverImplementation*) _getImplementation())->compareTo(obj);
+		return ((ObserverImplementation*) _impl)->compareTo(obj);
 }
 
 /*
@@ -76,7 +69,6 @@ ObserverImplementation::ObserverImplementation() : ManagedObjectImplementation()
 ObserverImplementation::ObserverImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 ObserverImplementation::~ObserverImplementation() {
 }
@@ -103,11 +95,6 @@ DistributedObjectStub* ObserverImplementation::_getStub() {
 ObserverImplementation::operator const Observer*() {
 	return _this;
 }
-
-TransactionalObject* ObserverImplementation::clone() {
-	return (TransactionalObject*) new ObserverImplementation(*this);
-}
-
 
 void ObserverImplementation::lock(bool doLock) {
 	_this->lock(doLock);

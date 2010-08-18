@@ -928,8 +928,6 @@ public:
 protected:
 	virtual ~PlayerCreatureImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -951,7 +949,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PlayerCreature;
-	friend class TransactionalObjectHandle<PlayerCreatureImplementation*>;
 };
 
 class PlayerCreatureAdapter : public CreatureObjectAdapter {

@@ -6,20 +6,13 @@
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
-
-// Imported class dependencies
-
-#include "system/util/Vector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	SuiListBoxMenuItemStub
  */
 
 SuiListBoxMenuItem::SuiListBoxMenuItem(const String& name, unsigned long long oid) : ManagedObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new SuiListBoxMenuItemImplementation(name, oid));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new SuiListBoxMenuItemImplementation(name, oid);
+	_impl->_setStub(this);
 }
 
 SuiListBoxMenuItem::SuiListBoxMenuItem(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -30,7 +23,7 @@ SuiListBoxMenuItem::~SuiListBoxMenuItem() {
 
 
 unsigned long long SuiListBoxMenuItem::getObjectID() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -38,11 +31,11 @@ unsigned long long SuiListBoxMenuItem::getObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SuiListBoxMenuItemImplementation*) _getImplementation())->getObjectID();
+		return ((SuiListBoxMenuItemImplementation*) _impl)->getObjectID();
 }
 
 String SuiListBoxMenuItem::getOptionName() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -51,7 +44,7 @@ String SuiListBoxMenuItem::getOptionName() {
 		method.executeWithAsciiReturn(_return_getOptionName);
 		return _return_getOptionName;
 	} else
-		return ((SuiListBoxMenuItemImplementation*) _getImplementation())->getOptionName();
+		return ((SuiListBoxMenuItemImplementation*) _impl)->getOptionName();
 }
 
 /*
@@ -61,7 +54,6 @@ String SuiListBoxMenuItem::getOptionName() {
 SuiListBoxMenuItemImplementation::SuiListBoxMenuItemImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 SuiListBoxMenuItemImplementation::~SuiListBoxMenuItemImplementation() {
 }
@@ -88,11 +80,6 @@ DistributedObjectStub* SuiListBoxMenuItemImplementation::_getStub() {
 SuiListBoxMenuItemImplementation::operator const SuiListBoxMenuItem*() {
 	return _this;
 }
-
-TransactionalObject* SuiListBoxMenuItemImplementation::clone() {
-	return (TransactionalObject*) new SuiListBoxMenuItemImplementation(*this);
-}
-
 
 void SuiListBoxMenuItemImplementation::lock(bool doLock) {
 	_this->lock(doLock);

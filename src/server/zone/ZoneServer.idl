@@ -45,20 +45,17 @@ which carries forward this exception.
 package server.zone;
 
 import server.zone.objects.scene.SceneObject;
-
 import engine.service.proto.BasePacketHandler;
 import engine.service.DatagramServiceThread;
-import engine.service.ServiceClient;
-import engine.core.ManagedObject;
-import engine.core.TaskManager;
-import engine.log.Logger;
-
-import system.lang.Exception;
-import system.util.Vector;
 import system.net.Socket;
 import system.net.SocketAddress;
 import system.net.Packet;
-import system.thread.atomic.AtomicInteger;
+import engine.service.ServiceClient;
+import engine.core.ManagedObject;
+import engine.core.TaskManager;
+import system.lang.Exception;
+import system.util.Vector;
+import engine.log.Logger;
 
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
@@ -102,17 +99,10 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	private int totalResentPackets;
 
-	@dereferenced
-	private AtomicInteger currentPlayers;
-	
-	@dereferenced
-	private AtomicInteger maximumPlayers;
-	
-	@dereferenced
-	private AtomicInteger totalPlayers;
-	
-	@dereferenced
-	private AtomicInteger totalDeletedPlayers;
+	private int currentPlayers;
+	private int maximumPlayers;
+	private int totalPlayers;
+	private int totalDeletedPlayers;
 	
 	private int serverState;
 
@@ -257,15 +247,15 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	}
 
 	public int getMaxPlayers() {
-		return maximumPlayers.get();
+		return maximumPlayers;
 	}
 
 	public int getTotalPlayers() {
-		return totalPlayers.get();
+		return totalPlayers;
 	}
 
 	public int getDeletedPlayers() {
-		return totalDeletedPlayers.get();
+		return totalDeletedPlayers;
 	}
 	
 	public PlayerManager getPlayerManager() {
