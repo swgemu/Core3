@@ -42,63 +42,111 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FISHINGEVENT_H_
-#define FISHINGEVENT_H_
+#ifndef FISHINGSESSION_H_
+#define FISHINGSESSION_H_
 
 
 #include "server/zone/objects/player/PlayerCreature.h"
-#include "server/zone/ZoneServer.h"
-#include "../FishingManager.h"
 
 namespace server {
 namespace zone {
 namespace managers {
 namespace minigames {
 namespace events {
+class FishingEvent;
+}
+}
+}
+}
+}
 
-class FishingEvent : public Task {
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+
+class FishingSession {
 	ManagedReference<PlayerCreature*> player;
-	ManagedReference<ZoneServer*> zoneServer;
+	Reference<FishingEvent*> event;
+	ManagedReference<SceneObject*> marker;
+
+	int nextAction;
+	int fish;
+	uint32 boxID;
 	int fishingState;
+	String mood;
 
 public:
-	FishingEvent(PlayerCreature* player, ZoneServer* zoneServer, int fishingState) : Task(7000) {
+	FishingSession(PlayerCreature* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, uint32 boxID, int fishingState, String mood) {
 		this->player = player;
-		this->zoneServer = zoneServer;
+		this->event = event;
+		this->marker = marker;
+		this->nextAction = nextAction;
+		this->fish = fish;
+		this->boxID = boxID;
+		this->fishingState = fishingState;
+		this->mood = mood;
+	}
+
+	void setEvent(FishingEvent* event) {
+		this->event = event;
+	}
+
+	FishingEvent* getEvent() {
+		return event;
+	}
+
+	void setNextAction(int nextAction) {
+		this->nextAction = nextAction;
+	}
+
+	int getNextAction() {
+		return nextAction;
+	}
+
+	void setFishBoxID(uint32 boxID) {
+		this->boxID = boxID;
+	}
+
+	uint32 getFishBoxID() {
+		return boxID;
+	}
+
+	SceneObject* getMarker() {
+		return marker;
+	}
+
+	void setMarker(SceneObject* marker) {
+		this->marker = marker;
+	}
+
+	int getFish() {
+		return fish;
+	}
+
+	void setFish(int fish) {
+		this->fish = fish;
+	}
+
+	int getFishingState() {
+		return fishingState;
+	}
+
+	void setFishingState(int fishingState) {
 		this->fishingState = fishingState;
 	}
 
-	void run() {
-		try {
-			Locker _locker(player);
+	void update(int nextAction, SceneObject* marker, int fish, uint32 boxID, int fishingState) {
+		setNextAction(nextAction);
+		setMarker(marker);
+		setFish(fish);
+		setFishBoxID(boxID);
+		setFishingState(fishingState);
+	}
 
-			//player->info("activating command queue action");
-
-			ManagedReference<FishingManager*> manager = zoneServer->getFishingManager();
-			//Locker lockerManager(manager);
-			//player->removePendingTask("fishing");
-			if (fishingState != FishingManagerImplementation::NOTFISHING) {
-				manager->fishingStep(player);
-
-			} /*else if (marker != NULL) {
-					// new event
-				manager->createFishingEvent(player, nextAction, zoneServer, marker, fish, boxID, fishingState, mood);
-
-			}*/ else {
-
-				manager->stopFishingEvent(player);
-
-			}
-
-			//player->info("command queue action activated");
-
-
-		} catch (...) {
-			player->error("unreported exception on FishingEvent::fishingStep()");
-		}
-
-		player = NULL;
-
+	String getMoodString() {
+		return mood;
 	}
 };
 
@@ -106,8 +154,5 @@ public:
 }
 }
 }
-}
 
-using namespace server::zone::managers::minigames::events;
-
-#endif /* FISHINGEVENT_H_ */
+#endif /* FISHINGSESSION_H_ */

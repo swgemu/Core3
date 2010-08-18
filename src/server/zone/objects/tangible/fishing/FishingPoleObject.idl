@@ -112,4 +112,6 @@ class FishingPoleObject extends TangibleObject {
 	public native void doFishing(PlayerCreature player);
 	
 	public native string getText(PlayerCreature player); 
+	
+	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
 }

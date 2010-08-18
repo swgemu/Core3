@@ -59,6 +59,7 @@ import server.zone.managers.minigames.events.FishingSplashEvent;
 import system.lang.ref.Reference;
 import server.zone.objects.scene.Observer;
 import server.zone.objects.scene.Observable;
+import server.zone.managers.minigames.FishingSession;
 include server.zone.objects.scene.ObserverEventType;
 
 class FishingManager extends Observer implements Logger {
@@ -75,6 +76,9 @@ class FishingManager extends Observer implements Logger {
 	protected Vector<int> color;
 	
 	@dereferenced
+	protected Vector<int> fishLength;
+	
+	@dereferenced
 	protected Vector<string> fishType;
 	
 	@dereferenced
@@ -89,6 +93,8 @@ class FishingManager extends Observer implements Logger {
 	@dereferenced
 	protected Vector<string> baitStatus;
 
+	@dereferenced
+	protected VectorMap<PlayerCreature, FishingSession> sessions;
 
 	public static final int NOTFISHING = 0;
 	public static final int WAITING = 1;
@@ -119,13 +125,17 @@ class FishingManager extends Observer implements Logger {
 	public static final int STOPFISHING = 5;
 	
 	public static final int NOEVENT = 0;
-	public static final int PROCEED = 20;
-	public static final int MISHAP = 40;
+	public static final int PROCEED = 17;
+	public static final int MISHAP = 45;
 	
 	public FishingManager(ZoneServer server) {
 		zoneServer = server;
 		
+		sessions.setNullValue(null);
+		sessions.setNoDuplicateInsertPlan();
+		
 		initializeFishType();
+		initializeFishLength();
 		initializeLoot();
 		initializeColor();
 		initializeBaitStatus();
@@ -179,6 +189,16 @@ class FishingManager extends Observer implements Logger {
 		fishType.add("laa");
 		fishType.add("ray");
 		fishType.add("striped");
+	}
+	
+	public void initializeFishLength() {
+		fishLength.add(25);
+		fishLength.add(15);
+		fishLength.add(30);
+		fishLength.add(30);
+		fishLength.add(30);
+		fishLength.add(35);
+		fishLength.add(40);
 	}
 	
 	public void initializeLoot() {
@@ -283,14 +303,8 @@ class FishingManager extends Observer implements Logger {
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @param player PlayerCreature which is currently fishing
-	 * @param nextAction indicates what the player wants to do
-	 * @param marker The fishing marker
-	 * @param fish Integer carried along to know what fish is currently biting
-	 * @param boxID Fishing window being closed, new one is created in fishingProceed
-	 * @param moodString String taken from player before fishing to return to after fishing
-	 * @TODO { consider vegetation for the chance of a snagged line }
 	 */
-	public native void fishingStep(PlayerCreature player, int nextAction, SceneObject marker, int fish, unsigned int boxID, string moodString);
+	public native void fishingStep(PlayerCreature player);
 	
 	/**
 	 * success is called to give the Player his reward
@@ -491,18 +505,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param marker Marker sent to event
 	 */
 	public native void setFishMarker(PlayerCreature player, SceneObject marker);
-	
-	/**
-	 * Debug method to test fishing game result
-	 * cheat ignores the fishing game and immediately goes to success
-	 * @TODO { remove this method and it's call in FishCommand after testing }
-	 * @pre { this object is locked }
-	 * @post { this object is locked }
-	 * @param player PlayerCreature that is receiving a reward
-	 * @param value arbitrary parameter no longer in use, remove it together with the method when testing done
-	 */
-	public native void cheat(PlayerCreature player,int value);
-	
+		
 	/**
 	 * Hands out free Bait
 	 * freeBait is used for debugging: in case the Pole is empty, a bait will be created
@@ -608,6 +611,8 @@ class FishingManager extends Observer implements Logger {
 	@local
 	public native boolean checkUpdateMarker(PlayerCreature player, @dereferenced float x, @dereferenced float y, @dereferenced float z);
 	
+	public native boolean isPlaying(PlayerCreature player);
+	
 	/**
 	 * Updates the fishing Marker
 	 * updateMarker takes the player position and the marker position and halfes that distance creating
@@ -653,21 +658,34 @@ class FishingManager extends Observer implements Logger {
 	public native void createFishingSplashEvent(PlayerCreature player, ZoneServer zoneServer, SceneObject splash);
 	
 	/**
+	 * Creates a FishingSession
+	 * createFishingSession creates a new FishingSession given the player, event, nextAction,
+	 * the marker, the FishType as sum, the fishing window, the State and the mood and puts it into VectorMap sessions
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player PlayerCreature for which to create FishingSession
+	 * @param event Current FishingEvent
+	 * @param nextAction Action to be executed
+	 * @param marker The fish marker being used
+	 * @param sum Integer indicating fish
+	 * @param boxID Fishing window to later close
+	 * @param state FishingState the player is in
+	 * @param moodString String taken from player before fishing to return to after fishing
+	 */
+	@local
+	public native void createFishingSession(PlayerCreature player, FishingEvent event, SceneObject marker, int nextAction, int fish, unsigned int boxID, int fishingState, string mood);
+	
+	/**
 	 * Creates a Fishing Event schedule 7000
-	 * createFishingEvent creates a new Fishing Event given the nextAction,
-	 * the marker, the FishType as sum, the fishing window and the State
+	 * createFishingEvent creates a new Fishing Event given the State
 	 * @pre { object is locked }
 	 * @post { object is locked }
 	 * @param player PlayerCreature for which to create Fishing Event
-	 * @param nextAction Action to be executed after the 7 seconds
 	 * @param zoneServer ZoneServer used
-	 * @param marker The fish marker being used, when set to null event will stop fishing
-	 * @param sum Integer indicating fish
-	 * @param boxID Fishing window to later close
-	 * @param state FishingState the player is in, if set to 0 without setting marker to null, the event will recreate itself until the container is closed
-	 * @param moodString String taken from player before fishing to return to after fishing
+	 * @param state FishingState the player is in
 	 */
-	public native void createFishingEvent(PlayerCreature player, int nextAction, ZoneServer zoneServer, SceneObject marker, int sum, unsigned int boxID, int state, string moodString);
+	@local
+	public native FishingEvent createFishingEvent(PlayerCreature player, ZoneServer zoneServer, int state);
 	
 	/**
 	 * Stops Fishing Event

@@ -75,29 +75,19 @@ public:
 			manager->freeBait(player);
 			// ENDREMOVE
 
-			if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
+			if ((manager->getFishingState(player) != FishingManager::NOTFISHING) || (manager->isPlaying(player))) {
 				player->sendSystemMessage("You are already fishing.");
 
 				return GENERALERROR;
 			}
 
-			player->sendSystemMessage("++DEBUG INFO: Use /fish suc to jump to fishing rewards ++");
+			/*if (player->hasOpenContainer(bla)) {
+				player->sendSystemMessage("You are already fishing.");
+
+				return GENERALERROR;
+			}*/
 
 			manager->startFishing(player);
-
-			// REMOVE WHEN TESTED
-			int x = 0;
-			for (int i = 31; i >= 0; --i) {
-				if (arguments.indexOf(String::valueOf(i))) {
-					x = i;
-					break;
-				}
-			}
-
-			if (arguments.indexOf("suc")!=-1) {
-				manager->cheat(player,x);
-			}
-			// ENDREMOVE
 
 		}
 		return SUCCESS;

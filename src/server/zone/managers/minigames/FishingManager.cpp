@@ -22,6 +22,8 @@
 
 #include "server/zone/objects/scene/Observable.h"
 
+#include "server/zone/managers/minigames/FishingSession.h"
+
 /*
  *	FishingManagerStub
  */
@@ -98,12 +100,24 @@ void FishingManager::initializeFishType() {
 		((FishingManagerImplementation*) _impl)->initializeFishType();
 }
 
-void FishingManager::initializeLoot() {
+void FishingManager::initializeFishLength() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+
+		method.executeWithVoidReturn();
+	} else
+		((FishingManagerImplementation*) _impl)->initializeFishLength();
+}
+
+void FishingManager::initializeLoot() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
 
 		method.executeWithVoidReturn();
 	} else
@@ -115,7 +129,7 @@ void FishingManager::initializeColor() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		method.executeWithVoidReturn();
 	} else
@@ -127,7 +141,7 @@ int FishingManager::notifyObserverEvent(unsigned int eventType, Observable* obse
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -143,7 +157,7 @@ void FishingManager::checkFishingOnPositionUpdate(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -156,7 +170,7 @@ int FishingManager::notifyCloseContainer(PlayerCreature* player, SceneObject* co
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addObjectParameter(container);
 
@@ -178,7 +192,7 @@ int FishingManager::startFishing(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -191,7 +205,7 @@ void FishingManager::stopFishing(PlayerCreature* player, unsigned int boxID, boo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(boxID);
 		method.addBooleanParameter(rem);
@@ -201,22 +215,17 @@ void FishingManager::stopFishing(PlayerCreature* player, unsigned int boxID, boo
 		((FishingManagerImplementation*) _impl)->stopFishing(player, boxID, rem);
 }
 
-void FishingManager::fishingStep(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, String& moodString) {
+void FishingManager::fishingStep(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
-		method.addSignedIntParameter(nextAction);
-		method.addObjectParameter(marker);
-		method.addSignedIntParameter(fish);
-		method.addUnsignedIntParameter(boxID);
-		method.addAsciiParameter(moodString);
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingManagerImplementation*) _impl)->fishingStep(player, nextAction, marker, fish, boxID, moodString);
+		((FishingManagerImplementation*) _impl)->fishingStep(player);
 }
 
 void FishingManager::success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID) {
@@ -224,7 +233,7 @@ void FishingManager::success(PlayerCreature* player, int fish, SceneObject* mark
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(fish);
 		method.addObjectParameter(marker);
@@ -240,7 +249,7 @@ String FishingManager::getTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		method.executeWithAsciiReturn(_return_getTime);
 		return _return_getTime;
@@ -253,7 +262,7 @@ void FishingManager::sendReward(PlayerCreature* player, SceneObject* marker, Sce
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 		method.addObjectParameter(marker);
 		method.addObjectParameter(loot);
@@ -268,7 +277,7 @@ unsigned int FishingManager::createWindow(PlayerCreature* player, unsigned int b
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(boxID);
 
@@ -282,7 +291,7 @@ void FishingManager::closeMenu(PlayerCreature* player, unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(boxID);
 
@@ -296,7 +305,7 @@ int FishingManager::vegetation(SceneObject* marker) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(marker);
 
 		return method.executeWithSignedIntReturn();
@@ -309,7 +318,7 @@ int FishingManager::density(SceneObject* marker) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(marker);
 
 		return method.executeWithSignedIntReturn();
@@ -322,7 +331,7 @@ int FishingManager::getFish(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -335,7 +344,7 @@ int FishingManager::getNextAction(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -348,7 +357,7 @@ void FishingManager::setNextAction(PlayerCreature* player, int next) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(next);
 
@@ -362,7 +371,7 @@ FishingPoleObject* FishingManager::getPole(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(player);
 
 		return (FishingPoleObject*) method.executeWithObjectReturn();
@@ -375,7 +384,7 @@ FishingBaitObject* FishingManager::getBait(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addObjectParameter(player);
 
 		return (FishingBaitObject*) method.executeWithObjectReturn();
@@ -388,7 +397,7 @@ unsigned int FishingManager::getFishBoxID(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(player);
 
 		return method.executeWithUnsignedIntReturn();
@@ -401,7 +410,7 @@ void FishingManager::setFishBoxID(PlayerCreature* player, unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(boxID);
 
@@ -415,7 +424,7 @@ int FishingManager::getFishingState(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -428,7 +437,7 @@ void FishingManager::setFishingState(PlayerCreature* player, int state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(state);
 
@@ -442,7 +451,7 @@ SceneObject* FishingManager::getFishMarker(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(player);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -455,27 +464,13 @@ void FishingManager::setFishMarker(PlayerCreature* player, SceneObject* marker) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(player);
 		method.addObjectParameter(marker);
 
 		method.executeWithVoidReturn();
 	} else
 		((FishingManagerImplementation*) _impl)->setFishMarker(player, marker);
-}
-
-void FishingManager::cheat(PlayerCreature* player, int value) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 37);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(value);
-
-		method.executeWithVoidReturn();
-	} else
-		((FishingManagerImplementation*) _impl)->cheat(player, value);
 }
 
 void FishingManager::freeBait(PlayerCreature* player) {
@@ -596,12 +591,25 @@ bool FishingManager::checkUpdateMarker(PlayerCreature* player, float& x, float& 
 		return ((FishingManagerImplementation*) _impl)->checkUpdateMarker(player, x, y, z);
 }
 
-SceneObject* FishingManager::updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer) {
+bool FishingManager::isPlaying(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 45);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((FishingManagerImplementation*) _impl)->isPlaying(player);
+}
+
+SceneObject* FishingManager::updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
 		method.addObjectParameter(player);
 		method.addObjectParameter(marker);
 		method.addBooleanParameter(notifyPlayer);
@@ -616,7 +624,7 @@ void FishingManager::removeMarker(PlayerCreature* player, SceneObject* container
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 		method.addObjectParameter(player);
 		method.addObjectParameter(container);
 
@@ -630,7 +638,7 @@ void FishingManager::removeSplash(SceneObject* splash) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 		method.addObjectParameter(splash);
 
 		method.executeWithVoidReturn();
@@ -643,7 +651,7 @@ void FishingManager::createFishingSplashEvent(PlayerCreature* player, ZoneServer
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 		method.addObjectParameter(player);
 		method.addObjectParameter(zoneServer);
 		method.addObjectParameter(splash);
@@ -653,24 +661,20 @@ void FishingManager::createFishingSplashEvent(PlayerCreature* player, ZoneServer
 		((FishingManagerImplementation*) _impl)->createFishingSplashEvent(player, zoneServer, splash);
 }
 
-void FishingManager::createFishingEvent(PlayerCreature* player, int nextAction, ZoneServer* zoneServer, SceneObject* marker, int sum, unsigned int boxID, int state, String& moodString) {
+void FishingManager::createFishingSession(PlayerCreature* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 49);
-		method.addObjectParameter(player);
-		method.addSignedIntParameter(nextAction);
-		method.addObjectParameter(zoneServer);
-		method.addObjectParameter(marker);
-		method.addSignedIntParameter(sum);
-		method.addUnsignedIntParameter(boxID);
-		method.addSignedIntParameter(state);
-		method.addAsciiParameter(moodString);
-
-		method.executeWithVoidReturn();
 	} else
-		((FishingManagerImplementation*) _impl)->createFishingEvent(player, nextAction, zoneServer, marker, sum, boxID, state, moodString);
+		((FishingManagerImplementation*) _impl)->createFishingSession(player, event, marker, nextAction, fish, boxID, fishingState, mood);
+}
+
+FishingEvent* FishingManager::createFishingEvent(PlayerCreature* player, ZoneServer* zoneServer, int state) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((FishingManagerImplementation*) _impl)->createFishingEvent(player, zoneServer, state);
 }
 
 void FishingManager::stopFishingEvent(PlayerCreature* player) {
@@ -765,159 +769,184 @@ void FishingManagerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("miscLoot", &miscLoot);
 	addSerializableVariable("rareLoot", &rareLoot);
 	addSerializableVariable("color", &color);
+	addSerializableVariable("fishLength", &fishLength);
 	addSerializableVariable("fishType", &fishType);
 	addSerializableVariable("state", &state);
 	addSerializableVariable("action", &action);
 	addSerializableVariable("property", &property);
 	addSerializableVariable("baitStatus", &baitStatus);
+	addSerializableVariable("sessions", &sessions);
 }
 
 FishingManagerImplementation::FishingManagerImplementation(ZoneServer* server) {
 	_initializeImplementation();
-	// server/zone/managers/minigames/FishingManager.idl(126):  		zoneServer = server;
+	// server/zone/managers/minigames/FishingManager.idl(132):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/minigames/FishingManager.idl(128):  		initializeFishType();
+	// server/zone/managers/minigames/FishingManager.idl(134):  		sessions.setNullValue(null);
+	(&sessions)->setNullValue(NULL);
+	// server/zone/managers/minigames/FishingManager.idl(135):  		sessions.setNoDuplicateInsertPlan();
+	(&sessions)->setNoDuplicateInsertPlan();
+	// server/zone/managers/minigames/FishingManager.idl(137):  		initializeFishType();
 	initializeFishType();
-	// server/zone/managers/minigames/FishingManager.idl(129):  		initializeLoot();
+	// server/zone/managers/minigames/FishingManager.idl(138):  		initializeFishLength();
+	initializeFishLength();
+	// server/zone/managers/minigames/FishingManager.idl(139):  		initializeLoot();
 	initializeLoot();
-	// server/zone/managers/minigames/FishingManager.idl(130):  		initializeColor();
+	// server/zone/managers/minigames/FishingManager.idl(140):  		initializeColor();
 	initializeColor();
-	// server/zone/managers/minigames/FishingManager.idl(131):  		initializeBaitStatus();
+	// server/zone/managers/minigames/FishingManager.idl(141):  		initializeBaitStatus();
 	initializeBaitStatus();
-	// server/zone/managers/minigames/FishingManager.idl(132):  		initializeProperty();
+	// server/zone/managers/minigames/FishingManager.idl(142):  		initializeProperty();
 	initializeProperty();
-	// server/zone/managers/minigames/FishingManager.idl(133):  		initializeAction();
+	// server/zone/managers/minigames/FishingManager.idl(143):  		initializeAction();
 	initializeAction();
-	// server/zone/managers/minigames/FishingManager.idl(134):  		initializeState();
+	// server/zone/managers/minigames/FishingManager.idl(144):  		initializeState();
 	initializeState();
-	// server/zone/managers/minigames/FishingManager.idl(136):  		Logger.setLoggingName("FishingManager");
+	// server/zone/managers/minigames/FishingManager.idl(146):  		Logger.setLoggingName("FishingManager");
 	Logger::setLoggingName("FishingManager");
-	// server/zone/managers/minigames/FishingManager.idl(137):  		Logger.setLogging(true);
+	// server/zone/managers/minigames/FishingManager.idl(147):  		Logger.setLogging(true);
 	Logger::setLogging(true);
 }
 
 void FishingManagerImplementation::initializeBaitStatus() {
-	// server/zone/managers/minigames/FishingManager.idl(141):  		baitStatus.add("Fresh");
+	// server/zone/managers/minigames/FishingManager.idl(151):  		baitStatus.add("Fresh");
 	(&baitStatus)->add("Fresh");
-	// server/zone/managers/minigames/FishingManager.idl(142):  		baitStatus.add("Soggy");
+	// server/zone/managers/minigames/FishingManager.idl(152):  		baitStatus.add("Soggy");
 	(&baitStatus)->add("Soggy");
-	// server/zone/managers/minigames/FishingManager.idl(143):  		baitStatus.add("Mush");
+	// server/zone/managers/minigames/FishingManager.idl(153):  		baitStatus.add("Mush");
 	(&baitStatus)->add("Mush");
 }
 
 void FishingManagerImplementation::initializeProperty() {
-	// server/zone/managers/minigames/FishingManager.idl(147):  		property.add(" ");
+	// server/zone/managers/minigames/FishingManager.idl(157):  		property.add(" ");
 	(&property)->add(" ");
-	// server/zone/managers/minigames/FishingManager.idl(148):  		property.add("*");
+	// server/zone/managers/minigames/FishingManager.idl(158):  		property.add("*");
 	(&property)->add("*");
-	// server/zone/managers/minigames/FishingManager.idl(149):  		property.add("**");
+	// server/zone/managers/minigames/FishingManager.idl(159):  		property.add("**");
 	(&property)->add("**");
-	// server/zone/managers/minigames/FishingManager.idl(150):  		property.add("***");
+	// server/zone/managers/minigames/FishingManager.idl(160):  		property.add("***");
 	(&property)->add("***");
-	// server/zone/managers/minigames/FishingManager.idl(151):  		property.add("****");
+	// server/zone/managers/minigames/FishingManager.idl(161):  		property.add("****");
 	(&property)->add("****");
-	// server/zone/managers/minigames/FishingManager.idl(152):  		property.add("*****");
+	// server/zone/managers/minigames/FishingManager.idl(162):  		property.add("*****");
 	(&property)->add("*****");
 }
 
 void FishingManagerImplementation::initializeAction() {
-	// server/zone/managers/minigames/FishingManager.idl(156):  		action.add("None");
+	// server/zone/managers/minigames/FishingManager.idl(166):  		action.add("None");
 	(&action)->add("None");
-	// server/zone/managers/minigames/FishingManager.idl(157):  		action.add("Tug Up");
+	// server/zone/managers/minigames/FishingManager.idl(167):  		action.add("Tug Up");
 	(&action)->add("Tug Up");
-	// server/zone/managers/minigames/FishingManager.idl(158):  		action.add("Tug Right");
+	// server/zone/managers/minigames/FishingManager.idl(168):  		action.add("Tug Right");
 	(&action)->add("Tug Right");
-	// server/zone/managers/minigames/FishingManager.idl(159):  		action.add("Tug Left");
+	// server/zone/managers/minigames/FishingManager.idl(169):  		action.add("Tug Left");
 	(&action)->add("Tug Left");
-	// server/zone/managers/minigames/FishingManager.idl(160):  		action.add("Small Reel");
+	// server/zone/managers/minigames/FishingManager.idl(170):  		action.add("Small Reel");
 	(&action)->add("Small Reel");
-	// server/zone/managers/minigames/FishingManager.idl(161):  		action.add("Stop Fishing");
+	// server/zone/managers/minigames/FishingManager.idl(171):  		action.add("Stop Fishing");
 	(&action)->add("Stop Fishing");
 }
 
 void FishingManagerImplementation::initializeState() {
-	// server/zone/managers/minigames/FishingManager.idl(165):  		state.add("Nothing");
+	// server/zone/managers/minigames/FishingManager.idl(175):  		state.add("Nothing");
 	(&state)->add("Nothing");
-	// server/zone/managers/minigames/FishingManager.idl(166):  		state.add("Waiting...");
+	// server/zone/managers/minigames/FishingManager.idl(176):  		state.add("Waiting...");
 	(&state)->add("Waiting...");
-	// server/zone/managers/minigames/FishingManager.idl(167):  		state.add("Snagged!");
+	// server/zone/managers/minigames/FishingManager.idl(177):  		state.add("Snagged!");
 	(&state)->add("Snagged!");
-	// server/zone/managers/minigames/FishingManager.idl(168):  		state.add("Nibble...");
+	// server/zone/managers/minigames/FishingManager.idl(178):  		state.add("Nibble...");
 	(&state)->add("Nibble...");
-	// server/zone/managers/minigames/FishingManager.idl(169):  		state.add("BITE?");
+	// server/zone/managers/minigames/FishingManager.idl(179):  		state.add("BITE?");
 	(&state)->add("BITE?");
-	// server/zone/managers/minigames/FishingManager.idl(170):  		state.add("CAUGHT SOMETHING?!");
+	// server/zone/managers/minigames/FishingManager.idl(180):  		state.add("CAUGHT SOMETHING?!");
 	(&state)->add("CAUGHT SOMETHING?!");
-	// server/zone/managers/minigames/FishingManager.idl(171):  		state.add("CAUGHT SOMETHING?!");
+	// server/zone/managers/minigames/FishingManager.idl(181):  		state.add("CAUGHT SOMETHING?!");
 	(&state)->add("CAUGHT SOMETHING?!");
 }
 
 void FishingManagerImplementation::initializeFishType() {
-	// server/zone/managers/minigames/FishingManager.idl(175):  		fishType.add("blackfish");
+	// server/zone/managers/minigames/FishingManager.idl(185):  		fishType.add("blackfish");
 	(&fishType)->add("blackfish");
-	// server/zone/managers/minigames/FishingManager.idl(176):  		fishType.add("blowfish");
+	// server/zone/managers/minigames/FishingManager.idl(186):  		fishType.add("blowfish");
 	(&fishType)->add("blowfish");
-	// server/zone/managers/minigames/FishingManager.idl(177):  		fishType.add("bluefish");
+	// server/zone/managers/minigames/FishingManager.idl(187):  		fishType.add("bluefish");
 	(&fishType)->add("bluefish");
-	// server/zone/managers/minigames/FishingManager.idl(178):  		fishType.add("faa");
+	// server/zone/managers/minigames/FishingManager.idl(188):  		fishType.add("faa");
 	(&fishType)->add("faa");
-	// server/zone/managers/minigames/FishingManager.idl(179):  		fishType.add("laa");
+	// server/zone/managers/minigames/FishingManager.idl(189):  		fishType.add("laa");
 	(&fishType)->add("laa");
-	// server/zone/managers/minigames/FishingManager.idl(180):  		fishType.add("ray");
+	// server/zone/managers/minigames/FishingManager.idl(190):  		fishType.add("ray");
 	(&fishType)->add("ray");
-	// server/zone/managers/minigames/FishingManager.idl(181):  		fishType.add("striped");
+	// server/zone/managers/minigames/FishingManager.idl(191):  		fishType.add("striped");
 	(&fishType)->add("striped");
 }
 
+void FishingManagerImplementation::initializeFishLength() {
+	// server/zone/managers/minigames/FishingManager.idl(195):  		fishLength.add(25);
+	(&fishLength)->add(25);
+	// server/zone/managers/minigames/FishingManager.idl(196):  		fishLength.add(15);
+	(&fishLength)->add(15);
+	// server/zone/managers/minigames/FishingManager.idl(197):  		fishLength.add(30);
+	(&fishLength)->add(30);
+	// server/zone/managers/minigames/FishingManager.idl(198):  		fishLength.add(30);
+	(&fishLength)->add(30);
+	// server/zone/managers/minigames/FishingManager.idl(199):  		fishLength.add(30);
+	(&fishLength)->add(30);
+	// server/zone/managers/minigames/FishingManager.idl(200):  		fishLength.add(35);
+	(&fishLength)->add(35);
+	// server/zone/managers/minigames/FishingManager.idl(201):  		fishLength.add(40);
+	(&fishLength)->add(40);
+}
+
 void FishingManagerImplementation::initializeLoot() {
-	// server/zone/managers/minigames/FishingManager.idl(185):  		miscLoot.add("object/tangible/wearables/shoes/shoes_s07.iff");
+	// server/zone/managers/minigames/FishingManager.idl(205):  		miscLoot.add("object/tangible/wearables/shoes/shoes_s07.iff");
 	(&miscLoot)->add("object/tangible/wearables/shoes/shoes_s07.iff");
-	// server/zone/managers/minigames/FishingManager.idl(186):  		miscLoot.add("object/tangible/wearables/shoes/shoes_s02.iff");
+	// server/zone/managers/minigames/FishingManager.idl(206):  		miscLoot.add("object/tangible/wearables/shoes/shoes_s02.iff");
 	(&miscLoot)->add("object/tangible/wearables/shoes/shoes_s02.iff");
-	// server/zone/managers/minigames/FishingManager.idl(187):  		miscLoot.add("object/tangible/food/foraged/foraged_fruit_s1.iff");
+	// server/zone/managers/minigames/FishingManager.idl(207):  		miscLoot.add("object/tangible/food/foraged/foraged_fruit_s1.iff");
 	(&miscLoot)->add("object/tangible/food/foraged/foraged_fruit_s1.iff");
-	// server/zone/managers/minigames/FishingManager.idl(189):  		rareLoot.add("object/weapon/ranged/pistol/pistol_cdef.iff");
+	// server/zone/managers/minigames/FishingManager.idl(209):  		rareLoot.add("object/weapon/ranged/pistol/pistol_cdef.iff");
 	(&rareLoot)->add("object/weapon/ranged/pistol/pistol_cdef.iff");
 }
 
 void FishingManagerImplementation::initializeColor() {
-	// server/zone/managers/minigames/FishingManager.idl(193):  		color.add(61);
+	// server/zone/managers/minigames/FishingManager.idl(213):  		color.add(61);
 	(&color)->add(61);
-	// server/zone/managers/minigames/FishingManager.idl(194):  		color.add(51);
+	// server/zone/managers/minigames/FishingManager.idl(214):  		color.add(51);
 	(&color)->add(51);
-	// server/zone/managers/minigames/FishingManager.idl(195):  		color.add(21);
+	// server/zone/managers/minigames/FishingManager.idl(215):  		color.add(21);
 	(&color)->add(21);
-	// server/zone/managers/minigames/FishingManager.idl(196):  		color.add(32);
+	// server/zone/managers/minigames/FishingManager.idl(216):  		color.add(32);
 	(&color)->add(32);
-	// server/zone/managers/minigames/FishingManager.idl(197):  		color.add(8);
+	// server/zone/managers/minigames/FishingManager.idl(217):  		color.add(8);
 	(&color)->add(8);
-	// server/zone/managers/minigames/FishingManager.idl(198):  		color.add(14);
+	// server/zone/managers/minigames/FishingManager.idl(218):  		color.add(14);
 	(&color)->add(14);
-	// server/zone/managers/minigames/FishingManager.idl(199):  		color.add(55);
+	// server/zone/managers/minigames/FishingManager.idl(219):  		color.add(55);
 	(&color)->add(55);
-	// server/zone/managers/minigames/FishingManager.idl(200):  		color.add(0);
+	// server/zone/managers/minigames/FishingManager.idl(220):  		color.add(0);
 	(&color)->add(0);
-	// server/zone/managers/minigames/FishingManager.idl(201):  		color.add(7);
+	// server/zone/managers/minigames/FishingManager.idl(221):  		color.add(7);
 	(&color)->add(7);
-	// server/zone/managers/minigames/FishingManager.idl(202):  		color.add(41);
+	// server/zone/managers/minigames/FishingManager.idl(222):  		color.add(41);
 	(&color)->add(41);
 }
 
 int FishingManagerImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/managers/minigames/FishingManager.idl(206):  
+	// server/zone/managers/minigames/FishingManager.idl(226):  
 	if (eventType == ObserverEventType::POSITIONCHANGED){
-	// server/zone/managers/minigames/FishingManager.idl(207):  			checkFishingOnPositionUpdate((PlayerCreature) observable);
+	// server/zone/managers/minigames/FishingManager.idl(227):  			checkFishingOnPositionUpdate((PlayerCreature) observable);
 	checkFishingOnPositionUpdate((PlayerCreature*) observable);
-	// server/zone/managers/minigames/FishingManager.idl(209):  			return 0;
+	// server/zone/managers/minigames/FishingManager.idl(229):  			return 0;
 	return 0;
 }
 
-	else 	// server/zone/managers/minigames/FishingManager.idl(210):  		return 
+	else 	// server/zone/managers/minigames/FishingManager.idl(230):  		return 
 	if (eventType == ObserverEventType::CLOSECONTAINER){
-	// server/zone/managers/minigames/FishingManager.idl(211):  			return notifyCloseContainer((PlayerCreature)arg1, (SceneObject)observable);
+	// server/zone/managers/minigames/FishingManager.idl(231):  			return notifyCloseContainer((PlayerCreature)arg1, (SceneObject)observable);
 	return notifyCloseContainer((PlayerCreature*) arg1, (SceneObject*) observable);
 }
-	// server/zone/managers/minigames/FishingManager.idl(214):  1;
+	// server/zone/managers/minigames/FishingManager.idl(234):  1;
 	return 1;
 }
 
@@ -948,85 +977,85 @@ Packet* FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		initializeFishType();
 		break;
 	case 11:
-		initializeLoot();
+		initializeFishLength();
 		break;
 	case 12:
-		initializeColor();
+		initializeLoot();
 		break;
 	case 13:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		initializeColor();
 		break;
 	case 14:
-		checkFishingOnPositionUpdate((PlayerCreature*) inv->getObjectParameter());
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	case 15:
-		resp->insertSignedInt(notifyCloseContainer((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
+		checkFishingOnPositionUpdate((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 16:
-		resp->insertSignedInt(startFishing((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertSignedInt(notifyCloseContainer((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
 		break;
 	case 17:
-		stopFishing((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		resp->insertSignedInt(startFishing((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 18:
-		fishingStep((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param5_fishingStep__PlayerCreature_int_SceneObject_int_int_String_));
+		stopFishing((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 19:
-		success((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		fishingStep((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 20:
-		resp->insertAscii(getTime());
+		success((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 21:
-		sendReward((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+		resp->insertAscii(getTime());
 		break;
 	case 22:
-		resp->insertInt(createWindow((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
+		sendReward((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 23:
-		closeMenu((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		resp->insertInt(createWindow((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
 		break;
 	case 24:
-		resp->insertSignedInt(vegetation((SceneObject*) inv->getObjectParameter()));
+		closeMenu((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 25:
-		resp->insertSignedInt(density((SceneObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(vegetation((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 26:
-		resp->insertSignedInt(getFish((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertSignedInt(density((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 27:
-		resp->insertSignedInt(getNextAction((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertSignedInt(getFish((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 28:
-		setNextAction((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		resp->insertSignedInt(getNextAction((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 29:
-		resp->insertLong(getPole((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+		setNextAction((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 30:
-		resp->insertLong(getBait((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+		resp->insertLong(getPole((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 31:
-		resp->insertInt(getFishBoxID((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertLong(getBait((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 32:
-		setFishBoxID((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		resp->insertInt(getFishBoxID((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 33:
-		resp->insertSignedInt(getFishingState((PlayerCreature*) inv->getObjectParameter()));
+		setFishBoxID((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 34:
-		setFishingState((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		resp->insertSignedInt(getFishingState((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 35:
-		resp->insertLong(getFishMarker((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+		setFishingState((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 36:
-		setFishMarker((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+		resp->insertLong(getFishMarker((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 37:
-		cheat((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		setFishMarker((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 38:
 		freeBait((PlayerCreature*) inv->getObjectParameter());
@@ -1050,19 +1079,19 @@ Packet* FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		createSplash(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), (Zone*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 45:
-		resp->insertLong(updateMarker((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertBoolean(isPlaying((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 46:
-		removeMarker((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+		resp->insertLong(updateMarker((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 47:
-		removeSplash((SceneObject*) inv->getObjectParameter());
+		removeMarker((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 48:
-		createFishingSplashEvent((PlayerCreature*) inv->getObjectParameter(), (ZoneServer*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+		removeSplash((SceneObject*) inv->getObjectParameter());
 		break;
 	case 49:
-		createFishingEvent((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), (ZoneServer*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param7_createFishingEvent__PlayerCreature_int_ZoneServer_SceneObject_int_int_int_String_));
+		createFishingSplashEvent((PlayerCreature*) inv->getObjectParameter(), (ZoneServer*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 50:
 		stopFishingEvent((PlayerCreature*) inv->getObjectParameter());
@@ -1094,6 +1123,10 @@ void FishingManagerAdapter::initializeFishType() {
 	((FishingManagerImplementation*) impl)->initializeFishType();
 }
 
+void FishingManagerAdapter::initializeFishLength() {
+	((FishingManagerImplementation*) impl)->initializeFishLength();
+}
+
 void FishingManagerAdapter::initializeLoot() {
 	((FishingManagerImplementation*) impl)->initializeLoot();
 }
@@ -1122,8 +1155,8 @@ void FishingManagerAdapter::stopFishing(PlayerCreature* player, unsigned int box
 	((FishingManagerImplementation*) impl)->stopFishing(player, boxID, rem);
 }
 
-void FishingManagerAdapter::fishingStep(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, String& moodString) {
-	((FishingManagerImplementation*) impl)->fishingStep(player, nextAction, marker, fish, boxID, moodString);
+void FishingManagerAdapter::fishingStep(PlayerCreature* player) {
+	((FishingManagerImplementation*) impl)->fishingStep(player);
 }
 
 void FishingManagerAdapter::success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID) {
@@ -1198,10 +1231,6 @@ void FishingManagerAdapter::setFishMarker(PlayerCreature* player, SceneObject* m
 	((FishingManagerImplementation*) impl)->setFishMarker(player, marker);
 }
 
-void FishingManagerAdapter::cheat(PlayerCreature* player, int value) {
-	((FishingManagerImplementation*) impl)->cheat(player, value);
-}
-
 void FishingManagerAdapter::freeBait(PlayerCreature* player) {
 	((FishingManagerImplementation*) impl)->freeBait(player);
 }
@@ -1230,6 +1259,10 @@ void FishingManagerAdapter::createSplash(float x, float y, float z, Zone* zone, 
 	((FishingManagerImplementation*) impl)->createSplash(x, y, z, zone, player);
 }
 
+bool FishingManagerAdapter::isPlaying(PlayerCreature* player) {
+	return ((FishingManagerImplementation*) impl)->isPlaying(player);
+}
+
 SceneObject* FishingManagerAdapter::updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer) {
 	return ((FishingManagerImplementation*) impl)->updateMarker(player, marker, notifyPlayer);
 }
@@ -1244,10 +1277,6 @@ void FishingManagerAdapter::removeSplash(SceneObject* splash) {
 
 void FishingManagerAdapter::createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash) {
 	((FishingManagerImplementation*) impl)->createFishingSplashEvent(player, zoneServer, splash);
-}
-
-void FishingManagerAdapter::createFishingEvent(PlayerCreature* player, int nextAction, ZoneServer* zoneServer, SceneObject* marker, int sum, unsigned int boxID, int state, String& moodString) {
-	((FishingManagerImplementation*) impl)->createFishingEvent(player, nextAction, zoneServer, marker, sum, boxID, state, moodString);
 }
 
 void FishingManagerAdapter::stopFishingEvent(PlayerCreature* player) {
