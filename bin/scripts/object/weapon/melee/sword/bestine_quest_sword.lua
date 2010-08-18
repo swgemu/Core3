@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_sword_bestine_quest_sword = object_weapon_melee_sword_shared_bestine_quest_sword:new {
+
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -93,7 +94,10 @@ object_weapon_melee_sword_bestine_quest_sword = object_weapon_melee_sword_shared
 	maxRange = 0,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 20,
+	maxDamage = 90,
+
+	attackSpeed = 3.5
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_bestine_quest_sword, "object/weapon/melee/sword/bestine_quest_sword.iff")

@@ -43,7 +43,6 @@
 
 object_weapon_melee_polearm_lance_controllerfp = object_weapon_melee_polearm_shared_lance_controllerfp:new {
 
-
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -81,21 +80,24 @@ object_weapon_melee_polearm_lance_controllerfp = object_weapon_melee_polearm_sha
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 26,
+	actionAttackCost = 59,
+	mindAttackCost = 29,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
-	pointBlankRange = 0,
+	pointBlankRange = 5,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 5,
+	idealAccuracy = 3,
 
-	maxRange = 0,
-	maxRangeAccuracy = 0,
+	maxRange = 5,
+	maxRangeAccuracy = 5,
 
-	attackSpeed = 0
+	minDamage = 7,
+	maxDamage = 133,
+
+	attackSpeed = 7
 
 }
 

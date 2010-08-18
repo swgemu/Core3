@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_sword_sword_rantok = object_weapon_melee_sword_shared_sword_rantok:new {
+
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -79,21 +80,24 @@ object_weapon_melee_sword_sword_rantok = object_weapon_melee_sword_shared_sword_
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 27,
+	actionAttackCost = 40,
+	mindAttackCost = 25,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
-	pointBlankRange = 0,
+	pointBlankRange = 10,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 10,
+	idealAccuracy = 4,
 
-	maxRange = 0,
-	maxRangeAccuracy = 0,
+	maxRange = 10,
+	maxRangeAccuracy = 4,
 
-	attackSpeed = 0
+	minDamage = 45,
+	maxDamage = 150,
+
+	attackSpeed = 3.3
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_sword_rantok, "object/weapon/melee/sword/sword_rantok.iff")
