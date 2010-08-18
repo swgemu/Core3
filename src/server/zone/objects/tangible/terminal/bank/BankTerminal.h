@@ -165,8 +165,6 @@ public:
 protected:
 	virtual ~BankTerminalImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -190,7 +188,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BankTerminal;
-	friend class TransactionalObjectHandle<BankTerminalImplementation*>;
 };
 
 class BankTerminalAdapter : public TerminalAdapter {

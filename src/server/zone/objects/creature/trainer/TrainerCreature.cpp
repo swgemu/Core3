@@ -10,92 +10,13 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	TrainerCreatureStub
  */
 
 TrainerCreature::TrainerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new TrainerCreatureImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new TrainerCreatureImplementation();
+	_impl->_setStub(this);
 }
 
 TrainerCreature::TrainerCreature(DummyConstructorParameter* param) : CreatureObject(param) {
@@ -106,15 +27,15 @@ TrainerCreature::~TrainerCreature() {
 
 
 void TrainerCreature::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((TrainerCreatureImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 void TrainerCreature::activateRecovery() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +43,11 @@ void TrainerCreature::activateRecovery() {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->activateRecovery();
+		((TrainerCreatureImplementation*) _impl)->activateRecovery();
 }
 
 void TrainerCreature::sendInitialMessage(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +56,11 @@ void TrainerCreature::sendInitialMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->sendInitialMessage(player);
+		((TrainerCreatureImplementation*) _impl)->sendInitialMessage(player);
 }
 
 void TrainerCreature::sendInitialChoices(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -148,11 +69,11 @@ void TrainerCreature::sendInitialChoices(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->sendInitialChoices(player);
+		((TrainerCreatureImplementation*) _impl)->sendInitialChoices(player);
 }
 
 void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -161,11 +82,11 @@ void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->sendConversationStartTo(obj);
+		((TrainerCreatureImplementation*) _impl)->sendConversationStartTo(obj);
 }
 
 void TrainerCreature::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -175,11 +96,11 @@ void TrainerCreature::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->sendSkillBoxes(player, checkXp);
+		((TrainerCreatureImplementation*) _impl)->sendSkillBoxes(player, checkXp);
 }
 
 void TrainerCreature::sendSkillBoxList(PlayerCreature* player, bool checkLearned) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -189,11 +110,11 @@ void TrainerCreature::sendSkillBoxList(PlayerCreature* player, bool checkLearned
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->sendSkillBoxList(player, checkLearned);
+		((TrainerCreatureImplementation*) _impl)->sendSkillBoxList(player, checkLearned);
 }
 
 void TrainerCreature::sendConfirmation(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -202,11 +123,11 @@ void TrainerCreature::sendConfirmation(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->sendConfirmation(player);
+		((TrainerCreatureImplementation*) _impl)->sendConfirmation(player);
 }
 
 void TrainerCreature::selectConversationOption(int option, SceneObject* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -216,11 +137,11 @@ void TrainerCreature::selectConversationOption(int option, SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->selectConversationOption(option, obj);
+		((TrainerCreatureImplementation*) _impl)->selectConversationOption(option, obj);
 }
 
 void TrainerCreature::setTrainerID(int id) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -229,19 +150,19 @@ void TrainerCreature::setTrainerID(int id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->setTrainerID(id);
+		((TrainerCreatureImplementation*) _impl)->setTrainerID(id);
 }
 
 void TrainerCreature::setProfession(Profession* prof) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->setProfession(prof);
+		((TrainerCreatureImplementation*) _impl)->setProfession(prof);
 }
 
 int TrainerCreature::getTrainerID() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -249,11 +170,11 @@ int TrainerCreature::getTrainerID() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((TrainerCreatureImplementation*) _getImplementation())->getTrainerID();
+		return ((TrainerCreatureImplementation*) _impl)->getTrainerID();
 }
 
 String TrainerCreature::getLocation() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -262,11 +183,11 @@ String TrainerCreature::getLocation() {
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
 	} else
-		return ((TrainerCreatureImplementation*) _getImplementation())->getLocation();
+		return ((TrainerCreatureImplementation*) _impl)->getLocation();
 }
 
 void TrainerCreature::setLocation(const String& loc) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -275,11 +196,11 @@ void TrainerCreature::setLocation(const String& loc) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _getImplementation())->setLocation(loc);
+		((TrainerCreatureImplementation*) _impl)->setLocation(loc);
 }
 
 bool TrainerCreature::isTrainerCreature() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -287,11 +208,11 @@ bool TrainerCreature::isTrainerCreature() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TrainerCreatureImplementation*) _getImplementation())->isTrainerCreature();
+		return ((TrainerCreatureImplementation*) _impl)->isTrainerCreature();
 }
 
 bool TrainerCreature::isAttackableBy(CreatureObject* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -300,7 +221,7 @@ bool TrainerCreature::isAttackableBy(CreatureObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TrainerCreatureImplementation*) _getImplementation())->isAttackableBy(object);
+		return ((TrainerCreatureImplementation*) _impl)->isAttackableBy(object);
 }
 
 /*
@@ -310,7 +231,6 @@ bool TrainerCreature::isAttackableBy(CreatureObject* object) {
 TrainerCreatureImplementation::TrainerCreatureImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 TrainerCreatureImplementation::~TrainerCreatureImplementation() {
 }
@@ -337,11 +257,6 @@ DistributedObjectStub* TrainerCreatureImplementation::_getStub() {
 TrainerCreatureImplementation::operator const TrainerCreature*() {
 	return _this;
 }
-
-TransactionalObject* TrainerCreatureImplementation::clone() {
-	return (TransactionalObject*) new TrainerCreatureImplementation(*this);
-}
-
 
 void TrainerCreatureImplementation::lock(bool doLock) {
 	_this->lock(doLock);

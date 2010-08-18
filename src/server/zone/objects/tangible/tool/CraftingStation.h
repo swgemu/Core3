@@ -151,8 +151,6 @@ public:
 protected:
 	virtual ~CraftingStationImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -176,7 +174,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CraftingStation;
-	friend class TransactionalObjectHandle<CraftingStationImplementation*>;
 };
 
 class CraftingStationAdapter : public ToolTangibleObjectAdapter {

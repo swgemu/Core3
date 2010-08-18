@@ -211,8 +211,6 @@ public:
 protected:
 	virtual ~GeneralMissionObjectiveImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -234,7 +232,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class GeneralMissionObjective;
-	friend class TransactionalObjectHandle<GeneralMissionObjectiveImplementation*>;
 };
 
 class GeneralMissionObjectiveAdapter : public MissionObjectiveAdapter {

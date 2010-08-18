@@ -77,8 +77,6 @@ public:
 protected:
 	virtual ~NonPlayerCreatureObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -102,7 +100,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class NonPlayerCreatureObject;
-	friend class TransactionalObjectHandle<NonPlayerCreatureObjectImplementation*>;
 };
 
 class NonPlayerCreatureObjectAdapter : public AiAgentAdapter {

@@ -136,8 +136,6 @@ public:
 protected:
 	virtual ~CharacterBuilderTerminalImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -161,7 +159,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CharacterBuilderTerminal;
-	friend class TransactionalObjectHandle<CharacterBuilderTerminalImplementation*>;
 };
 
 class CharacterBuilderTerminalAdapter : public TerminalAdapter {

@@ -178,8 +178,6 @@ public:
 protected:
 	virtual ~FishingPoleObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -203,7 +201,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class FishingPoleObject;
-	friend class TransactionalObjectHandle<FishingPoleObjectImplementation*>;
 };
 
 class FishingPoleObjectAdapter : public TangibleObjectAdapter {

@@ -12,78 +12,13 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/Vector.h"
-
 /*
  *	StructureTerminalStub
  */
 
 StructureTerminal::StructureTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new StructureTerminalImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new StructureTerminalImplementation();
+	_impl->_setStub(this);
 }
 
 StructureTerminal::StructureTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -94,7 +29,7 @@ StructureTerminal::~StructureTerminal() {
 
 
 void StructureTerminal::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,11 +37,11 @@ void StructureTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureTerminalImplementation*) _getImplementation())->initializeTransientMembers();
+		((StructureTerminalImplementation*) _impl)->initializeTransientMembers();
 }
 
 int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,19 +51,19 @@ int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selec
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureTerminalImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
+		return ((StructureTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 void StructureTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StructureTerminalImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
+		((StructureTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
 void StructureTerminal::setStructureObject(StructureObject* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -137,11 +72,11 @@ void StructureTerminal::setStructureObject(StructureObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureTerminalImplementation*) _getImplementation())->setStructureObject(obj);
+		((StructureTerminalImplementation*) _impl)->setStructureObject(obj);
 }
 
 StructureObject* StructureTerminal::getStructureObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,7 +84,7 @@ StructureObject* StructureTerminal::getStructureObject() {
 
 		return (StructureObject*) method.executeWithObjectReturn();
 	} else
-		return ((StructureTerminalImplementation*) _getImplementation())->getStructureObject();
+		return ((StructureTerminalImplementation*) _impl)->getStructureObject();
 }
 
 /*
@@ -159,7 +94,6 @@ StructureObject* StructureTerminal::getStructureObject() {
 StructureTerminalImplementation::StructureTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
-
 
 StructureTerminalImplementation::~StructureTerminalImplementation() {
 }
@@ -186,11 +120,6 @@ DistributedObjectStub* StructureTerminalImplementation::_getStub() {
 StructureTerminalImplementation::operator const StructureTerminal*() {
 	return _this;
 }
-
-TransactionalObject* StructureTerminalImplementation::clone() {
-	return (TransactionalObject*) new StructureTerminalImplementation(*this);
-}
-
 
 void StructureTerminalImplementation::lock(bool doLock) {
 	_this->lock(doLock);

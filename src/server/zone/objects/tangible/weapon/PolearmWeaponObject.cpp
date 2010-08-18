@@ -6,62 +6,13 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
 /*
  *	PolearmWeaponObjectStub
  */
 
 PolearmWeaponObject::PolearmWeaponObject() : MeleeWeaponObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new PolearmWeaponObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new PolearmWeaponObjectImplementation();
+	_impl->_setStub(this);
 }
 
 PolearmWeaponObject::PolearmWeaponObject(DummyConstructorParameter* param) : MeleeWeaponObject(param) {
@@ -72,7 +23,7 @@ PolearmWeaponObject::~PolearmWeaponObject() {
 
 
 void PolearmWeaponObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +31,11 @@ void PolearmWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PolearmWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((PolearmWeaponObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 bool PolearmWeaponObject::isPolearmWeaponObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,7 +43,7 @@ bool PolearmWeaponObject::isPolearmWeaponObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PolearmWeaponObjectImplementation*) _getImplementation())->isPolearmWeaponObject();
+		return ((PolearmWeaponObjectImplementation*) _impl)->isPolearmWeaponObject();
 }
 
 /*
@@ -102,7 +53,6 @@ bool PolearmWeaponObject::isPolearmWeaponObject() {
 PolearmWeaponObjectImplementation::PolearmWeaponObjectImplementation(DummyConstructorParameter* param) : MeleeWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 PolearmWeaponObjectImplementation::~PolearmWeaponObjectImplementation() {
 }
@@ -129,11 +79,6 @@ DistributedObjectStub* PolearmWeaponObjectImplementation::_getStub() {
 PolearmWeaponObjectImplementation::operator const PolearmWeaponObject*() {
 	return _this;
 }
-
-TransactionalObject* PolearmWeaponObjectImplementation::clone() {
-	return (TransactionalObject*) new PolearmWeaponObjectImplementation(*this);
-}
-
 
 void PolearmWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

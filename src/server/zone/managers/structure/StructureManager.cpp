@@ -18,80 +18,13 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
 /*
  *	StructureManagerStub
  */
 
 StructureManager::StructureManager(Zone* zone, ZoneProcessServerImplementation* processor) : ManagedObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new StructureManagerImplementation(zone, processor));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new StructureManagerImplementation(zone, processor);
+	_impl->_setStub(this);
 }
 
 StructureManager::StructureManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -102,7 +35,7 @@ StructureManager::~StructureManager() {
 
 
 void StructureManager::loadStructures() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,11 +43,11 @@ void StructureManager::loadStructures() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureManagerImplementation*) _getImplementation())->loadStructures();
+		((StructureManagerImplementation*) _impl)->loadStructures();
 }
 
 int StructureManager::placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -127,43 +60,43 @@ int StructureManager::placeStructureFromDeed(PlayerCreature* player, unsigned lo
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->placeStructureFromDeed(player, deedID, x, y, angle);
+		return ((StructureManagerImplementation*) _impl)->placeStructureFromDeed(player, deedID, x, y, angle);
 }
 
 int StructureManager::placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->placeStructure(player, structureTemplate, structure, deedID, x, y, direction);
+		return ((StructureManagerImplementation*) _impl)->placeStructure(player, structureTemplate, structure, deedID, x, y, direction);
 }
 
 int StructureManager::placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->placeBuilding(player, buildingTemplate, structure, deedID, x, y, direction);
+		return ((StructureManagerImplementation*) _impl)->placeBuilding(player, buildingTemplate, structure, deedID, x, y, direction);
 }
 
 int StructureManager::placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->placeInstallation(player, installationTemplate, structure, deedID, x, y, direction);
+		return ((StructureManagerImplementation*) _impl)->placeInstallation(player, installationTemplate, structure, deedID, x, y, direction);
 }
 
 int StructureManager::constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->constructStructure(player, structureTemplate, structure, deedID, x, y, direction);
+		return ((StructureManagerImplementation*) _impl)->constructStructure(player, structureTemplate, structure, deedID, x, y, direction);
 }
 
 int StructureManager::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -173,11 +106,11 @@ int StructureManager::destroyStructure(PlayerCreature* player, StructureObject* 
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->destroyStructure(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->destroyStructure(player, structureObject);
 }
 
 int StructureManager::redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -188,11 +121,11 @@ int StructureManager::redeedStructure(PlayerCreature* player, StructureObject* s
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->redeedStructure(player, structureObject, destroy);
+		return ((StructureManagerImplementation*) _impl)->redeedStructure(player, structureObject, destroy);
 }
 
 int StructureManager::sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -202,11 +135,11 @@ int StructureManager::sendDestroyConfirmTo(PlayerCreature* player, StructureObje
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->sendDestroyConfirmTo(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->sendDestroyConfirmTo(player, structureObject);
 }
 
 int StructureManager::sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -216,11 +149,11 @@ int StructureManager::sendDestroyCodeTo(PlayerCreature* player, StructureObject*
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->sendDestroyCodeTo(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->sendDestroyCodeTo(player, structureObject);
 }
 
 int StructureManager::sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -230,11 +163,11 @@ int StructureManager::sendStructureStatusTo(PlayerCreature* player, StructureObj
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->sendStructureStatusTo(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->sendStructureStatusTo(player, structureObject);
 }
 
 int StructureManager::handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -244,11 +177,11 @@ int StructureManager::handlePayMaintenance(PlayerCreature* player, StructureObje
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->handlePayMaintenance(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->handlePayMaintenance(player, structureObject);
 }
 
 int StructureManager::handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -258,11 +191,11 @@ int StructureManager::handleWithdrawMaintenance(PlayerCreature* player, Structur
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->handleWithdrawMaintenance(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->handleWithdrawMaintenance(player, structureObject);
 }
 
 int StructureManager::handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -272,11 +205,11 @@ int StructureManager::handleDeclareResidency(PlayerCreature* player, StructureOb
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->handleDeclareResidency(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->handleDeclareResidency(player, structureObject);
 }
 
 int StructureManager::handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -286,11 +219,11 @@ int StructureManager::handlePrivacyChange(PlayerCreature* player, StructureObjec
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->handlePrivacyChange(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->handlePrivacyChange(player, structureObject);
 }
 
 int StructureManager::sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -300,7 +233,7 @@ int StructureManager::sendStructureNamePromptTo(PlayerCreature* player, Structur
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _getImplementation())->sendStructureNamePromptTo(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->sendStructureNamePromptTo(player, structureObject);
 }
 
 /*
@@ -310,7 +243,6 @@ int StructureManager::sendStructureNamePromptTo(PlayerCreature* player, Structur
 StructureManagerImplementation::StructureManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 StructureManagerImplementation::~StructureManagerImplementation() {
 }
@@ -337,11 +269,6 @@ DistributedObjectStub* StructureManagerImplementation::_getStub() {
 StructureManagerImplementation::operator const StructureManager*() {
 	return _this;
 }
-
-TransactionalObject* StructureManagerImplementation::clone() {
-	return (TransactionalObject*) new StructureManagerImplementation(*this);
-}
-
 
 void StructureManagerImplementation::lock(bool doLock) {
 	_this->lock(doLock);

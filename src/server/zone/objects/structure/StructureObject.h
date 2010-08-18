@@ -301,8 +301,6 @@ public:
 protected:
 	virtual ~StructureObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -326,7 +324,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StructureObject;
-	friend class TransactionalObjectHandle<StructureObjectImplementation*>;
 };
 
 class StructureObjectAdapter : public TangibleObjectAdapter {

@@ -10,64 +10,13 @@
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/installation/HopperList.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
 /*
  *	FactoryObjectStub
  */
 
 FactoryObject::FactoryObject() : InstallationObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new FactoryObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new FactoryObjectImplementation();
+	_impl->_setStub(this);
 }
 
 FactoryObject::FactoryObject(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -78,15 +27,15 @@ FactoryObject::~FactoryObject() {
 
 
 void FactoryObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((FactoryObjectImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 void FactoryObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,27 +43,27 @@ void FactoryObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((FactoryObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 void FactoryObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->fillAttributeList(msg, object);
+		((FactoryObjectImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
 void FactoryObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
+		((FactoryObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
 int FactoryObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -124,11 +73,11 @@ int FactoryObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedI
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FactoryObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
+		return ((FactoryObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 bool FactoryObject::isFactory() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -136,11 +85,11 @@ bool FactoryObject::isFactory() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((FactoryObjectImplementation*) _getImplementation())->isFactory();
+		return ((FactoryObjectImplementation*) _impl)->isFactory();
 }
 
 void FactoryObject::createChildObjects() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -148,11 +97,11 @@ void FactoryObject::createChildObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->createChildObjects();
+		((FactoryObjectImplementation*) _impl)->createChildObjects();
 }
 
 void FactoryObject::updateInstallationWork() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,11 +109,11 @@ void FactoryObject::updateInstallationWork() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->updateInstallationWork();
+		((FactoryObjectImplementation*) _impl)->updateInstallationWork();
 }
 
 void FactoryObject::sendInsertManuSui(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -173,11 +122,11 @@ void FactoryObject::sendInsertManuSui(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->sendInsertManuSui(player);
+		((FactoryObjectImplementation*) _impl)->sendInsertManuSui(player);
 }
 
 void FactoryObject::sendIngredientsNeededSui(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -186,11 +135,11 @@ void FactoryObject::sendIngredientsNeededSui(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->sendIngredientsNeededSui(player);
+		((FactoryObjectImplementation*) _impl)->sendIngredientsNeededSui(player);
 }
 
 void FactoryObject::sendIngredientHopper(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -199,11 +148,11 @@ void FactoryObject::sendIngredientHopper(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->sendIngredientHopper(player);
+		((FactoryObjectImplementation*) _impl)->sendIngredientHopper(player);
 }
 
 void FactoryObject::sendOutputHopper(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -212,11 +161,11 @@ void FactoryObject::sendOutputHopper(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->sendOutputHopper(player);
+		((FactoryObjectImplementation*) _impl)->sendOutputHopper(player);
 }
 
 void FactoryObject::handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -226,11 +175,11 @@ void FactoryObject::handleInsertFactorySchem(PlayerCreature* player, Manufacture
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->handleInsertFactorySchem(player, schematic);
+		((FactoryObjectImplementation*) _impl)->handleInsertFactorySchem(player, schematic);
 }
 
 void FactoryObject::handleRemoveFactorySchem(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -239,11 +188,11 @@ void FactoryObject::handleRemoveFactorySchem(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->handleRemoveFactorySchem(player);
+		((FactoryObjectImplementation*) _impl)->handleRemoveFactorySchem(player);
 }
 
 void FactoryObject::handleOperateToggle(PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -252,11 +201,11 @@ void FactoryObject::handleOperateToggle(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->handleOperateToggle(player);
+		((FactoryObjectImplementation*) _impl)->handleOperateToggle(player);
 }
 
 void FactoryObject::createNewObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -264,7 +213,7 @@ void FactoryObject::createNewObject() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryObjectImplementation*) _getImplementation())->createNewObject();
+		((FactoryObjectImplementation*) _impl)->createNewObject();
 }
 
 /*
@@ -274,7 +223,6 @@ void FactoryObject::createNewObject() {
 FactoryObjectImplementation::FactoryObjectImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 FactoryObjectImplementation::~FactoryObjectImplementation() {
 }
@@ -301,11 +249,6 @@ DistributedObjectStub* FactoryObjectImplementation::_getStub() {
 FactoryObjectImplementation::operator const FactoryObject*() {
 	return _this;
 }
-
-TransactionalObject* FactoryObjectImplementation::clone() {
-	return (TransactionalObject*) new FactoryObjectImplementation(*this);
-}
-
 
 void FactoryObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -22,126 +22,13 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
 /*
  *	RangedStimPackStub
  */
 
 RangedStimPack::RangedStimPack() : StimPack(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new RangedStimPackImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new RangedStimPackImplementation();
+	_impl->_setStub(this);
 }
 
 RangedStimPack::RangedStimPack(DummyConstructorParameter* param) : StimPack(param) {
@@ -152,31 +39,31 @@ RangedStimPack::~RangedStimPack() {
 
 
 void RangedStimPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RangedStimPackImplementation*) _getImplementation())->updateCraftingValues(schematic);
+		((RangedStimPackImplementation*) _impl)->updateCraftingValues(schematic);
 }
 
 void RangedStimPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RangedStimPackImplementation*) _getImplementation())->fillAttributeList(msg, object);
+		((RangedStimPackImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
 void RangedStimPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RangedStimPackImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((RangedStimPackImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -187,11 +74,11 @@ unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObje
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((RangedStimPackImplementation*) _getImplementation())->calculatePower(healer, patient, applyBattleFatigue);
+		return ((RangedStimPackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float RangedStimPack::getRange(CreatureObject* creature) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -200,11 +87,11 @@ float RangedStimPack::getRange(CreatureObject* creature) {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _getImplementation())->getRange(creature);
+		return ((RangedStimPackImplementation*) _impl)->getRange(creature);
 }
 
 float RangedStimPack::getEffectiveness() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -212,11 +99,11 @@ float RangedStimPack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _getImplementation())->getEffectiveness();
+		return ((RangedStimPackImplementation*) _impl)->getEffectiveness();
 }
 
 float RangedStimPack::getArea() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -224,11 +111,11 @@ float RangedStimPack::getArea() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _getImplementation())->getArea();
+		return ((RangedStimPackImplementation*) _impl)->getArea();
 }
 
 bool RangedStimPack::isArea() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -236,11 +123,11 @@ bool RangedStimPack::isArea() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RangedStimPackImplementation*) _getImplementation())->isArea();
+		return ((RangedStimPackImplementation*) _impl)->isArea();
 }
 
 float RangedStimPack::getRangeMod() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -248,11 +135,11 @@ float RangedStimPack::getRangeMod() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _getImplementation())->getRangeMod();
+		return ((RangedStimPackImplementation*) _impl)->getRangeMod();
 }
 
 bool RangedStimPack::isRangedStimPack() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -260,7 +147,7 @@ bool RangedStimPack::isRangedStimPack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RangedStimPackImplementation*) _getImplementation())->isRangedStimPack();
+		return ((RangedStimPackImplementation*) _impl)->isRangedStimPack();
 }
 
 /*
@@ -270,7 +157,6 @@ bool RangedStimPack::isRangedStimPack() {
 RangedStimPackImplementation::RangedStimPackImplementation(DummyConstructorParameter* param) : StimPackImplementation(param) {
 	_initializeImplementation();
 }
-
 
 RangedStimPackImplementation::~RangedStimPackImplementation() {
 }
@@ -297,11 +183,6 @@ DistributedObjectStub* RangedStimPackImplementation::_getStub() {
 RangedStimPackImplementation::operator const RangedStimPack*() {
 	return _this;
 }
-
-TransactionalObject* RangedStimPackImplementation::clone() {
-	return (TransactionalObject*) new RangedStimPackImplementation(*this);
-}
-
 
 void RangedStimPackImplementation::lock(bool doLock) {
 	_this->lock(doLock);

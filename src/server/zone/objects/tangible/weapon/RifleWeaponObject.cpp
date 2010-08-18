@@ -6,62 +6,13 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
 /*
  *	RifleWeaponObjectStub
  */
 
 RifleWeaponObject::RifleWeaponObject() : RangedWeaponObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new RifleWeaponObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new RifleWeaponObjectImplementation();
+	_impl->_setStub(this);
 }
 
 RifleWeaponObject::RifleWeaponObject(DummyConstructorParameter* param) : RangedWeaponObject(param) {
@@ -72,7 +23,7 @@ RifleWeaponObject::~RifleWeaponObject() {
 
 
 void RifleWeaponObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +31,11 @@ void RifleWeaponObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((RifleWeaponObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((RifleWeaponObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 void RifleWeaponObject::initializePrivateData() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +43,11 @@ void RifleWeaponObject::initializePrivateData() {
 
 		method.executeWithVoidReturn();
 	} else
-		((RifleWeaponObjectImplementation*) _getImplementation())->initializePrivateData();
+		((RifleWeaponObjectImplementation*) _impl)->initializePrivateData();
 }
 
 bool RifleWeaponObject::isRifleWeapon() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,7 +55,7 @@ bool RifleWeaponObject::isRifleWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RifleWeaponObjectImplementation*) _getImplementation())->isRifleWeapon();
+		return ((RifleWeaponObjectImplementation*) _impl)->isRifleWeapon();
 }
 
 /*
@@ -114,7 +65,6 @@ bool RifleWeaponObject::isRifleWeapon() {
 RifleWeaponObjectImplementation::RifleWeaponObjectImplementation(DummyConstructorParameter* param) : RangedWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 RifleWeaponObjectImplementation::~RifleWeaponObjectImplementation() {
 }
@@ -141,11 +91,6 @@ DistributedObjectStub* RifleWeaponObjectImplementation::_getStub() {
 RifleWeaponObjectImplementation::operator const RifleWeaponObject*() {
 	return _this;
 }
-
-TransactionalObject* RifleWeaponObjectImplementation::clone() {
-	return (TransactionalObject*) new RifleWeaponObjectImplementation(*this);
-}
-
 
 void RifleWeaponObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

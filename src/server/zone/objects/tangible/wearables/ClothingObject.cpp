@@ -8,72 +8,13 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
-
 /*
  *	ClothingObjectStub
  */
 
 ClothingObject::ClothingObject() : WearableObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new ClothingObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new ClothingObjectImplementation();
+	_impl->_setStub(this);
 }
 
 ClothingObject::ClothingObject(DummyConstructorParameter* param) : WearableObject(param) {
@@ -84,7 +25,7 @@ ClothingObject::~ClothingObject() {
 
 
 void ClothingObject::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +33,11 @@ void ClothingObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ClothingObjectImplementation*) _getImplementation())->initializeTransientMembers();
+		((ClothingObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
 void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,7 +46,7 @@ void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ClothingObjectImplementation*) _getImplementation())->updateCraftingValues(schematic);
+		((ClothingObjectImplementation*) _impl)->updateCraftingValues(schematic);
 }
 
 /*
@@ -115,7 +56,6 @@ void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
 ClothingObjectImplementation::ClothingObjectImplementation(DummyConstructorParameter* param) : WearableObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 ClothingObjectImplementation::~ClothingObjectImplementation() {
 }
@@ -142,11 +82,6 @@ DistributedObjectStub* ClothingObjectImplementation::_getStub() {
 ClothingObjectImplementation::operator const ClothingObject*() {
 	return _this;
 }
-
-TransactionalObject* ClothingObjectImplementation::clone() {
-	return (TransactionalObject*) new ClothingObjectImplementation(*this);
-}
-
 
 void ClothingObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -6,62 +6,13 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
 /*
  *	OneHandMeleeWeaponStub
  */
 
 OneHandMeleeWeapon::OneHandMeleeWeapon() : MeleeWeaponObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new OneHandMeleeWeaponImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new OneHandMeleeWeaponImplementation();
+	_impl->_setStub(this);
 }
 
 OneHandMeleeWeapon::OneHandMeleeWeapon(DummyConstructorParameter* param) : MeleeWeaponObject(param) {
@@ -72,7 +23,7 @@ OneHandMeleeWeapon::~OneHandMeleeWeapon() {
 
 
 void OneHandMeleeWeapon::initializeTransientMembers() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +31,11 @@ void OneHandMeleeWeapon::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((OneHandMeleeWeaponImplementation*) _getImplementation())->initializeTransientMembers();
+		((OneHandMeleeWeaponImplementation*) _impl)->initializeTransientMembers();
 }
 
 bool OneHandMeleeWeapon::isOneHandMeleeWeapon() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,7 +43,7 @@ bool OneHandMeleeWeapon::isOneHandMeleeWeapon() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((OneHandMeleeWeaponImplementation*) _getImplementation())->isOneHandMeleeWeapon();
+		return ((OneHandMeleeWeaponImplementation*) _impl)->isOneHandMeleeWeapon();
 }
 
 /*
@@ -102,7 +53,6 @@ bool OneHandMeleeWeapon::isOneHandMeleeWeapon() {
 OneHandMeleeWeaponImplementation::OneHandMeleeWeaponImplementation(DummyConstructorParameter* param) : MeleeWeaponObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 OneHandMeleeWeaponImplementation::~OneHandMeleeWeaponImplementation() {
 }
@@ -129,11 +79,6 @@ DistributedObjectStub* OneHandMeleeWeaponImplementation::_getStub() {
 OneHandMeleeWeaponImplementation::operator const OneHandMeleeWeapon*() {
 	return _this;
 }
-
-TransactionalObject* OneHandMeleeWeaponImplementation::clone() {
-	return (TransactionalObject*) new OneHandMeleeWeaponImplementation(*this);
-}
-
 
 void OneHandMeleeWeaponImplementation::lock(bool doLock) {
 	_this->lock(doLock);

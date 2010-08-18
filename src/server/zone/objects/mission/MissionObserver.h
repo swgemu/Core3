@@ -123,8 +123,6 @@ public:
 protected:
 	virtual ~MissionObserverImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -148,7 +146,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionObserver;
-	friend class TransactionalObjectHandle<MissionObserverImplementation*>;
 };
 
 class MissionObserverAdapter : public ObserverAdapter {

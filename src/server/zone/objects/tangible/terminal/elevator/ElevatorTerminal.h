@@ -129,8 +129,6 @@ public:
 protected:
 	virtual ~ElevatorTerminalImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -154,7 +152,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ElevatorTerminal;
-	friend class TransactionalObjectHandle<ElevatorTerminalImplementation*>;
 };
 
 class ElevatorTerminalAdapter : public TerminalAdapter {

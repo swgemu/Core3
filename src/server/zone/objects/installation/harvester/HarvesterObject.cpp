@@ -4,54 +4,13 @@
 
 #include "HarvesterObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/installation/HopperList.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	HarvesterObjectStub
  */
 
 HarvesterObject::HarvesterObject() : InstallationObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new HarvesterObjectImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new HarvesterObjectImplementation();
+	_impl->_setStub(this);
 }
 
 HarvesterObject::HarvesterObject(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -62,23 +21,23 @@ HarvesterObject::~HarvesterObject() {
 
 
 void HarvesterObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((HarvesterObjectImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((HarvesterObjectImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((HarvesterObjectImplementation*) _getImplementation())->fillObjectMenuResponse(menuResponse, player);
+		((HarvesterObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
 int HarvesterObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -88,11 +47,11 @@ int HarvesterObject::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((HarvesterObjectImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
+		return ((HarvesterObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 void HarvesterObject::synchronizedUIListen(SceneObject* player, int value) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,11 +61,11 @@ void HarvesterObject::synchronizedUIListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _getImplementation())->synchronizedUIListen(player, value);
+		((HarvesterObjectImplementation*) _impl)->synchronizedUIListen(player, value);
 }
 
 void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +75,11 @@ void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _getImplementation())->synchronizedUIStopListen(player, value);
+		((HarvesterObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
 }
 
 void HarvesterObject::updateOperators() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +87,11 @@ void HarvesterObject::updateOperators() {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _getImplementation())->updateOperators();
+		((HarvesterObjectImplementation*) _impl)->updateOperators();
 }
 
 bool HarvesterObject::isHarvesterObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,7 +99,7 @@ bool HarvesterObject::isHarvesterObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((HarvesterObjectImplementation*) _getImplementation())->isHarvesterObject();
+		return ((HarvesterObjectImplementation*) _impl)->isHarvesterObject();
 }
 
 /*
@@ -150,7 +109,6 @@ bool HarvesterObject::isHarvesterObject() {
 HarvesterObjectImplementation::HarvesterObjectImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 HarvesterObjectImplementation::~HarvesterObjectImplementation() {
 }
@@ -177,11 +135,6 @@ DistributedObjectStub* HarvesterObjectImplementation::_getStub() {
 HarvesterObjectImplementation::operator const HarvesterObject*() {
 	return _this;
 }
-
-TransactionalObject* HarvesterObjectImplementation::clone() {
-	return (TransactionalObject*) new HarvesterObjectImplementation(*this);
-}
-
 
 void HarvesterObjectImplementation::lock(bool doLock) {
 	_this->lock(doLock);

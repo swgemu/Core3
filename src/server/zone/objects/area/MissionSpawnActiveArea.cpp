@@ -10,66 +10,13 @@
 
 #include "server/zone/objects/mission/GeneralMissionObjective.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/tangible/lair/LairObject.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/area/MissionSpawnActiveArea.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/Vector.h"
-
 /*
  *	MissionSpawnActiveAreaStub
  */
 
 MissionSpawnActiveArea::MissionSpawnActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new MissionSpawnActiveAreaImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new MissionSpawnActiveAreaImplementation();
+	_impl->_setStub(this);
 }
 
 MissionSpawnActiveArea::MissionSpawnActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -80,7 +27,7 @@ MissionSpawnActiveArea::~MissionSpawnActiveArea() {
 
 
 void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -89,11 +36,11 @@ void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionSpawnActiveAreaImplementation*) _getImplementation())->notifyEnter(player);
+		((MissionSpawnActiveAreaImplementation*) _impl)->notifyEnter(player);
 }
 
 void MissionSpawnActiveArea::setMissionObjective(GeneralMissionObjective* mission) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,7 +49,7 @@ void MissionSpawnActiveArea::setMissionObjective(GeneralMissionObjective* missio
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionSpawnActiveAreaImplementation*) _getImplementation())->setMissionObjective(mission);
+		((MissionSpawnActiveAreaImplementation*) _impl)->setMissionObjective(mission);
 }
 
 /*
@@ -112,7 +59,6 @@ void MissionSpawnActiveArea::setMissionObjective(GeneralMissionObjective* missio
 MissionSpawnActiveAreaImplementation::MissionSpawnActiveAreaImplementation(DummyConstructorParameter* param) : ActiveAreaImplementation(param) {
 	_initializeImplementation();
 }
-
 
 MissionSpawnActiveAreaImplementation::~MissionSpawnActiveAreaImplementation() {
 }
@@ -139,11 +85,6 @@ DistributedObjectStub* MissionSpawnActiveAreaImplementation::_getStub() {
 MissionSpawnActiveAreaImplementation::operator const MissionSpawnActiveArea*() {
 	return _this;
 }
-
-TransactionalObject* MissionSpawnActiveAreaImplementation::clone() {
-	return (TransactionalObject*) new MissionSpawnActiveAreaImplementation(*this);
-}
-
 
 void MissionSpawnActiveAreaImplementation::lock(bool doLock) {
 	_this->lock(doLock);

@@ -8,60 +8,13 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
 /*
  *	SuiTransferBoxStub
  */
 
 SuiTransferBox::SuiTransferBox(PlayerCreature* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new SuiTransferBoxImplementation(player, windowType));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new SuiTransferBoxImplementation(player, windowType);
+	_impl->_setStub(this);
 }
 
 SuiTransferBox::SuiTransferBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -72,7 +25,7 @@ SuiTransferBox::~SuiTransferBox() {
 
 
 BaseMessage* SuiTransferBox::generateMessage() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +33,11 @@ BaseMessage* SuiTransferBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiTransferBoxImplementation*) _getImplementation())->generateMessage();
+		return ((SuiTransferBoxImplementation*) _impl)->generateMessage();
 }
 
 void SuiTransferBox::addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +49,11 @@ void SuiTransferBox::addFrom(const String& from, const String& startingFrom, con
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiTransferBoxImplementation*) _getImplementation())->addFrom(from, startingFrom, inputFrom, rFrom);
+		((SuiTransferBoxImplementation*) _impl)->addFrom(from, startingFrom, inputFrom, rFrom);
 }
 
 void SuiTransferBox::addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -112,11 +65,11 @@ void SuiTransferBox::addTo(const String& to, const String& startingTo, const Str
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiTransferBoxImplementation*) _getImplementation())->addTo(to, startingTo, inputTo, rTo);
+		((SuiTransferBoxImplementation*) _impl)->addTo(to, startingTo, inputTo, rTo);
 }
 
 void SuiTransferBox::setUsingObject(SceneObject* obj) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -125,11 +78,11 @@ void SuiTransferBox::setUsingObject(SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiTransferBoxImplementation*) _getImplementation())->setUsingObject(obj);
+		((SuiTransferBoxImplementation*) _impl)->setUsingObject(obj);
 }
 
 SceneObject* SuiTransferBox::getUsingObject() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -137,11 +90,11 @@ SceneObject* SuiTransferBox::getUsingObject() {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SuiTransferBoxImplementation*) _getImplementation())->getUsingObject();
+		return ((SuiTransferBoxImplementation*) _impl)->getUsingObject();
 }
 
 bool SuiTransferBox::isTransferBox() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,7 +102,7 @@ bool SuiTransferBox::isTransferBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiTransferBoxImplementation*) _getImplementation())->isTransferBox();
+		return ((SuiTransferBoxImplementation*) _impl)->isTransferBox();
 }
 
 /*
@@ -159,7 +112,6 @@ bool SuiTransferBox::isTransferBox() {
 SuiTransferBoxImplementation::SuiTransferBoxImplementation(DummyConstructorParameter* param) : SuiBoxImplementation(param) {
 	_initializeImplementation();
 }
-
 
 SuiTransferBoxImplementation::~SuiTransferBoxImplementation() {
 }
@@ -186,11 +138,6 @@ DistributedObjectStub* SuiTransferBoxImplementation::_getStub() {
 SuiTransferBoxImplementation::operator const SuiTransferBox*() {
 	return _this;
 }
-
-TransactionalObject* SuiTransferBoxImplementation::clone() {
-	return (TransactionalObject*) new SuiTransferBoxImplementation(*this);
-}
-
 
 void SuiTransferBoxImplementation::lock(bool doLock) {
 	_this->lock(doLock);

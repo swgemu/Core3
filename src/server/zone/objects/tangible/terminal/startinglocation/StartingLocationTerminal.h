@@ -111,8 +111,6 @@ public:
 protected:
 	virtual ~StartingLocationTerminalImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -136,7 +134,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StartingLocationTerminal;
-	friend class TransactionalObjectHandle<StartingLocationTerminalImplementation*>;
 };
 
 class StartingLocationTerminalAdapter : public TerminalAdapter {

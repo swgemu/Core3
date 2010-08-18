@@ -10,64 +10,13 @@
 
 #include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
 /*
  *	DelayedBuffStub
  */
 
 DelayedBuff::DelayedBuff(CreatureObject* creo, unsigned int buffcrc, int duration) : Buff(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new DelayedBuffImplementation(creo, buffcrc, duration));
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new DelayedBuffImplementation(creo, buffcrc, duration);
+	_impl->_setStub(this);
 }
 
 DelayedBuff::DelayedBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -78,7 +27,7 @@ DelayedBuff::~DelayedBuff() {
 
 
 void DelayedBuff::activate() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,11 +35,11 @@ void DelayedBuff::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DelayedBuffImplementation*) _getImplementation())->activate();
+		((DelayedBuffImplementation*) _impl)->activate();
 }
 
 void DelayedBuff::deactivate() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -98,11 +47,11 @@ void DelayedBuff::deactivate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DelayedBuffImplementation*) _getImplementation())->deactivate();
+		((DelayedBuffImplementation*) _impl)->deactivate();
 }
 
 void DelayedBuff::useCharge(CreatureObject* creature) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -111,11 +60,11 @@ void DelayedBuff::useCharge(CreatureObject* creature) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DelayedBuffImplementation*) _getImplementation())->useCharge(creature);
+		((DelayedBuffImplementation*) _impl)->useCharge(creature);
 }
 
 void DelayedBuff::setUsesRemaining(int uses) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -124,7 +73,7 @@ void DelayedBuff::setUsesRemaining(int uses) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DelayedBuffImplementation*) _getImplementation())->setUsesRemaining(uses);
+		((DelayedBuffImplementation*) _impl)->setUsesRemaining(uses);
 }
 
 /*
@@ -134,7 +83,6 @@ void DelayedBuff::setUsesRemaining(int uses) {
 DelayedBuffImplementation::DelayedBuffImplementation(DummyConstructorParameter* param) : BuffImplementation(param) {
 	_initializeImplementation();
 }
-
 
 DelayedBuffImplementation::~DelayedBuffImplementation() {
 }
@@ -161,11 +109,6 @@ DistributedObjectStub* DelayedBuffImplementation::_getStub() {
 DelayedBuffImplementation::operator const DelayedBuff*() {
 	return _this;
 }
-
-TransactionalObject* DelayedBuffImplementation::clone() {
-	return (TransactionalObject*) new DelayedBuffImplementation(*this);
-}
-
 
 void DelayedBuffImplementation::lock(bool doLock) {
 	_this->lock(doLock);

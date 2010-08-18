@@ -220,8 +220,6 @@ public:
 protected:
 	virtual ~RevivePackImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -245,7 +243,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class RevivePack;
-	friend class TransactionalObjectHandle<RevivePackImplementation*>;
 };
 
 class RevivePackAdapter : public PharmaceuticalObjectAdapter {

@@ -22,130 +22,13 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
 /*
  *	ConsumableStub
  */
 
 Consumable::Consumable() : TangibleObject(DummyConstructorParameter::instance()) {
-	ManagedObject::_setImplementation(new ConsumableImplementation());
-	ManagedObject::_getImplementation()->_setStub(this);
+	_impl = new ConsumableImplementation();
+	_impl->_setStub(this);
 }
 
 Consumable::Consumable(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -156,7 +39,7 @@ Consumable::~Consumable() {
 
 
 int Consumable::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -166,35 +49,35 @@ int Consumable::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ConsumableImplementation*) _getImplementation())->handleObjectMenuSelect(player, selectedID);
+		return ((ConsumableImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 void Consumable::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ConsumableImplementation*) _getImplementation())->updateCraftingValues(schematic);
+		((ConsumableImplementation*) _impl)->updateCraftingValues(schematic);
 }
 
 void Consumable::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ConsumableImplementation*) _getImplementation())->loadTemplateData(templateData);
+		((ConsumableImplementation*) _impl)->loadTemplateData(templateData);
 }
 
 void Consumable::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ConsumableImplementation*) _getImplementation())->fillAttributeList(msg, object);
+		((ConsumableImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
 void Consumable::setModifiers(Buff* buff, bool skillModifiers) {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -204,11 +87,11 @@ void Consumable::setModifiers(Buff* buff, bool skillModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ConsumableImplementation*) _getImplementation())->setModifiers(buff, skillModifiers);
+		((ConsumableImplementation*) _impl)->setModifiers(buff, skillModifiers);
 }
 
 bool Consumable::isSpiceEffect() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -216,11 +99,11 @@ bool Consumable::isSpiceEffect() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ConsumableImplementation*) _getImplementation())->isSpiceEffect();
+		return ((ConsumableImplementation*) _impl)->isSpiceEffect();
 }
 
 bool Consumable::isAttributeEffect() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -228,11 +111,11 @@ bool Consumable::isAttributeEffect() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ConsumableImplementation*) _getImplementation())->isAttributeEffect();
+		return ((ConsumableImplementation*) _impl)->isAttributeEffect();
 }
 
 bool Consumable::isDrink() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -240,11 +123,11 @@ bool Consumable::isDrink() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ConsumableImplementation*) _getImplementation())->isDrink();
+		return ((ConsumableImplementation*) _impl)->isDrink();
 }
 
 bool Consumable::isFood() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -252,11 +135,11 @@ bool Consumable::isFood() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ConsumableImplementation*) _getImplementation())->isFood();
+		return ((ConsumableImplementation*) _impl)->isFood();
 }
 
 bool Consumable::isSpice() {
-	if (isNull()) {
+	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -264,7 +147,7 @@ bool Consumable::isSpice() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ConsumableImplementation*) _getImplementation())->isSpice();
+		return ((ConsumableImplementation*) _impl)->isSpice();
 }
 
 /*
@@ -274,7 +157,6 @@ bool Consumable::isSpice() {
 ConsumableImplementation::ConsumableImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 ConsumableImplementation::~ConsumableImplementation() {
 }
@@ -301,11 +183,6 @@ DistributedObjectStub* ConsumableImplementation::_getStub() {
 ConsumableImplementation::operator const Consumable*() {
 	return _this;
 }
-
-TransactionalObject* ConsumableImplementation::clone() {
-	return (TransactionalObject*) new ConsumableImplementation(*this);
-}
-
 
 void ConsumableImplementation::lock(bool doLock) {
 	_this->lock(doLock);
