@@ -610,18 +610,18 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 
 	zone->inRange(this, 256);
 
-	zoneLocker.release();
-
 
 	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
 		if (lightUpdate) {
 			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
-			broadcastMessage(message, false);
+			broadcastMessage(message, false, false);
 		} else {
 			UpdateTransformMessage* message = new UpdateTransformMessage(_this);
-			broadcastMessage(message, false);
+			broadcastMessage(message, false, false);
 		}
 	}
+
+	zoneLocker.release();
 
 	notifySelfPositionUpdate();
 }
@@ -699,17 +699,17 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		building->inRange(this, 256);
 	}
 
-	zoneLocker.release();
-
 	if (sendPackets) {
 		if (lightUpdate) {
 			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
-			broadcastMessage(message, false);
+			broadcastMessage(message, false, false);
 		} else {
 			UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
-			broadcastMessage(message, false);
+			broadcastMessage(message, false, false);
 		}
 	}
+
+	zoneLocker.release();
 
 	notifySelfPositionUpdate();
 }
@@ -717,6 +717,11 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
 
 	ZoneServer* zoneServer = getZoneServer();
+
+	if (zone == NULL)
+		return;
+
+	Locker locker(zone);
 
 	if (parentID != 0) {
 		ManagedReference<SceneObject*> newParent = zoneServer->getObject(parentID);
@@ -728,13 +733,13 @@ void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ,
 		updateZoneWithParent(newParent, false);
 
 		DataTransformWithParent* pack = new DataTransformWithParent(_this);
-		broadcastMessage(pack , true);
+		broadcastMessage(pack, true, false);
 	} else {
 		setPosition(newPositionX, newPositionZ, newPositionY);
 		updateZone(false);
 
 		DataTransform* pack = new DataTransform(_this);
-		broadcastMessage(pack , true);
+		broadcastMessage(pack, true, false);
 	}
 }
 
