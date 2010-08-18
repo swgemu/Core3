@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen5 = object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5:new {
+
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -92,6 +93,9 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen5 = object
 
 	maxRange = 0,
 	maxRangeAccuracy = 0,
+
+	minDamage = 225,
+	maxDamage = 305,
 
 	attackSpeed = 0
 }

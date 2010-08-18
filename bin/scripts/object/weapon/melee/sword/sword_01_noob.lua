@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_sword_sword_01_noob = object_weapon_melee_sword_shared_sword_01_noob:new {
+
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -79,21 +80,24 @@ object_weapon_melee_sword_sword_01_noob = object_weapon_melee_sword_shared_sword
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
+	healthAttackCost = 27,
+	actionAttackCost = 29,
+	mindAttackCost = 29,
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
-	pointBlankRange = 0,
+	pointBlankRange = 5,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 5,
+	idealAccuracy = 3,
 
-	maxRange = 0,
-	maxRangeAccuracy = 0,
+	maxRange = 5,
+	maxRangeAccuracy = 5,
 
-	attackSpeed = 0
+	minDamage = 14,
+	maxDamage = 63,
+
+	attackSpeed = 4.6
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_sword_01_noob, "object/weapon/melee/sword/sword_01_noob.iff")

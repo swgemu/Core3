@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_sword_sword_lightsaber_sleeksilver = object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver:new {
+
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -61,7 +62,7 @@ object_weapon_melee_sword_sword_lightsaber_sleeksilver = object_weapon_melee_swo
 	xpType = "combat_meleespecialize_onehandlightsaber",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "" },
+	certificationsRequired = { "cert_onehandlightsaber" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "onehandlightsaber_accuracy" },
 
@@ -79,10 +80,10 @@ object_weapon_melee_sword_sword_lightsaber_sleeksilver = object_weapon_melee_swo
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
-	forceCost = 0,
+	healthAttackCost = 20,
+	actionAttackCost = 35,
+	mindAttackCost = 40,
+	forceCost = 15,
 
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
@@ -93,7 +94,11 @@ object_weapon_melee_sword_sword_lightsaber_sleeksilver = object_weapon_melee_swo
 	maxRange = 0,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 50,
+	maxDamage = 130,
+
+	attackSpeed = 4.8
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_sword_lightsaber_sleeksilver, "object/weapon/melee/sword/sword_lightsaber_sleeksilver.iff")

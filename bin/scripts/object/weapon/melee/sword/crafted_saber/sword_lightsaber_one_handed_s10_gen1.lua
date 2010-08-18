@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s10_gen1 = object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_one_handed_s10_gen1:new {
+
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
@@ -79,10 +80,10 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s10_gen1 = o
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 0,
-	actionAttackCost = 0,
-	mindAttackCost = 0,
-	forceCost = 0,
+	healthAttackCost = 20,
+	actionAttackCost = 35,
+	mindAttackCost = 40,
+	forceCost = 12,
 
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
@@ -93,7 +94,11 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s10_gen1 = o
 	maxRange = 0,
 	maxRangeAccuracy = 0,
 
-	attackSpeed = 0
+	minDamage = 70,
+	maxDamage = 160,
+
+	attackSpeed = 4.5
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s10_gen1, "object/weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s10_gen1.iff")
