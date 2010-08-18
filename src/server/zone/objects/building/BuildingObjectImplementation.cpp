@@ -71,6 +71,12 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	}
 }
 
+Vector3* BuildingObjectImplementation::getEjectionPoint() {
+	Vector3 ejectionPoint;
+
+	return &ejectionPoint;
+}
+
 void BuildingObjectImplementation::removeFromZone() {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);

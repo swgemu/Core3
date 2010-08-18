@@ -46,7 +46,9 @@ object_building_player_player_garage_naboo_style_01 = object_building_player_sha
 	mapLocationsType1 = 6,
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {1,5,6}
+	allowedZones = {1,5,6},
+	length = 5,
+	width = 5
 
 }
 

@@ -59,6 +59,7 @@ import server.zone.objects.tangible.terminal.structure.StructureTerminal;
 import server.zone.ZoneServer;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
+include engine.util.Vector3;
 
 class BuildingObject extends StructureObject implements QuadTree {
 	@dereferenced
@@ -138,6 +139,9 @@ class BuildingObject extends StructureObject implements QuadTree {
 	public abstract boolean checkRequisitesForPlacement(PlayerCreature player) {
 		return true;
 	}
+	
+	@local
+	public native Vector3 getEjectionPoint();
 	
 	public native void removeFromZone();/* {
 		for (int i = 0; i < cells.size(); ++i) {

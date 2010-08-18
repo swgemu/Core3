@@ -32,8 +32,8 @@ public:
 	void sendTo(PlayerCreature* player, uint8 permission);
 	void sendTo(PlayerCreature* player, const String& listName);
 
-	bool grantPermission(uint64 playerID, uint8 permission);
-	bool revokePermission(uint64 playerID, uint8 permission);
+	bool addPermission(uint64 playerID, uint8 permission);
+	bool removePermission(uint64 playerID, uint8 permission);
 
 	String getListName(uint8 permission);
 	uint8 getPermissionFromListName(const String& listName);
