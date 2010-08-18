@@ -44,9 +44,9 @@
 object_building_player_player_merchant_tent_style_01 = object_building_player_shared_player_merchant_tent_style_01:new {
 	lotSize = 1,
 	baseMaintenanceRate = 10,
-	allowedZones = {0,1,4,5,6,7,8}
-
-
+	allowedZones = {0,1,4,5,6,7,8},
+	length = 3,
+	width = 3
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_merchant_tent_style_01, "object/building/player/player_merchant_tent_style_01.iff")

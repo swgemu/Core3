@@ -160,10 +160,14 @@ public:
 
 	int sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject);
 
+	String getTimeString(unsigned int timestamp);
+
 protected:
 	StructureManager(DummyConstructorParameter* param);
 
 	virtual ~StructureManager();
+
+	String _return_getTimeString;
 
 	friend class StructureManagerHelper;
 };
@@ -253,6 +257,8 @@ public:
 
 	int sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject);
 
+	String getTimeString(unsigned int timestamp);
+
 	StructureManager* _this;
 
 	operator const StructureManager*();
@@ -315,6 +321,8 @@ public:
 	int handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject);
 
 	int sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject);
+
+	String getTimeString(unsigned int timestamp);
 
 };
 

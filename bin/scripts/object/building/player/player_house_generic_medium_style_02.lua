@@ -45,7 +45,9 @@ object_building_player_player_house_generic_medium_style_02 = object_building_pl
 	lotSize = 2,
 	baseMaintenanceRate = 34,
 	allowedZones = {0,1,4,5,6,7,8},
-	terminalLocation = {1, -7.15, 0.875, 5.59, 0, 1, 0, 0}
+	terminalLocation = {1, -7.15, 0.875, 5.59, 0, 1, 0, 0},
+	length = 3,
+	width = 4
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_house_generic_medium_style_02, "object/building/player/player_house_generic_medium_style_02.iff")

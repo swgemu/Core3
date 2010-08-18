@@ -20,6 +20,10 @@ protected:
 
 	int basePowerRate;
 
+	int length;
+
+	int width;
+
 public:
 	SharedStructureObjectTemplate() {
 
@@ -45,6 +49,14 @@ public:
 
 	inline int getBasePowerRate() {
 		return basePowerRate;
+	}
+
+	inline int getLength() {
+		return length;
+	}
+
+	inline int getWidth() {
+		return width;
 	}
 };
 

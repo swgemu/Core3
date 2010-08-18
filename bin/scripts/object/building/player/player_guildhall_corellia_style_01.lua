@@ -46,7 +46,9 @@ object_building_player_player_guildhall_corellia_style_01 = object_building_play
 	baseMaintenanceRate = 100,
 	mapLocationsType1 = 7,
 	allowedZones = {0,7},
-	terminalLocation = {6, 17.88, 2.75, 10.45, 0, 0.707107, 0, 0.707107}
+	terminalLocation = {6, 17.88, 2.75, 10.45, 0, 0.707107, 0, 0.707107},
+	length = 7,
+	width = 8
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_guildhall_corellia_style_01, "object/building/player/player_guildhall_corellia_style_01.iff")
