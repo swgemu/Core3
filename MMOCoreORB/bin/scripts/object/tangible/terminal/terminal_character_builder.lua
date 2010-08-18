@@ -121,7 +121,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 		{
 			"Rifles",
 			{
-				"T21", "object/weapon/ranged/rifle/rifle_t21.iff"
+				"T21", "object/weapon/ranged/rifle/rifle_t21.iff",
+				"Light Lightning Rifle", "object/weapon/ranged/rifle/rifle_lightning.iff"
 			},
 			"Pistols",
 			{

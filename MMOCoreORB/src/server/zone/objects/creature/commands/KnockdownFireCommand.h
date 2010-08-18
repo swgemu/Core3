@@ -46,13 +46,28 @@ which carries forward this exception.
 #define KNOCKDOWNFIRECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class KnockdownFireCommand : public QueueCommand {
+class KnockdownFireCommand : public CombatQueueCommand {
 public:
 
 	KnockdownFireCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.5;
+		speedMultiplier = 2.0;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		knockdownStateChance = 30;
+		dizzyStateChance = 30;
+
+		animationCRC = String("fire_1_special_single_medium").hashCode();
+
+		combatSpam = "knockdownfire";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +78,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

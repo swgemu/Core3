@@ -46,13 +46,29 @@ which carries forward this exception.
 #define SPRAYSHOTCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class SprayShotCommand : public QueueCommand {
+class SprayShotCommand : public CombatQueueCommand {
 public:
 
 	SprayShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 5.5;
+		speedMultiplier = 3.5;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		stunStateChance = 30;
+		dizzyStateChance = 30;
+		blindStateChance = 30;
+
+		animationCRC = String("fire_7_single_medium").hashCode();
+
+		combatSpam = "sprayshot";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +79,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isCarbineWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

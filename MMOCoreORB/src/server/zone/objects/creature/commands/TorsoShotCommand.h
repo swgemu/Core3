@@ -46,13 +46,32 @@ which carries forward this exception.
 #define TORSOSHOTCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class TorsoShotCommand : public QueueCommand {
+class TorsoShotCommand : public CombatQueueCommand {
 public:
 
 	TorsoShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 3.0;
+		speedMultiplier = 2.3;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		poolsToDamage = CombatManager::HEALTH;
+
+		animationCRC = String("fire_3_special_single_light_face").hashCode();
+
+		combatSpam = "torsoshot";
+
+		dotType = CreatureState::BLEEDING;
+		dotPool = CreatureAttribute::HEALTH;
+		dotDamageOfHit = true;
+		dotDuration = 30;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +82,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

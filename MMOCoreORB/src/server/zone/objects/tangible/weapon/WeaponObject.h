@@ -251,6 +251,8 @@ public:
 
 	bool isRifleWeapon();
 
+	bool isLightningRifle();
+
 	bool isCarbineWeapon();
 
 	bool isPistolWeapon();
@@ -484,6 +486,8 @@ public:
 
 	virtual bool isRifleWeapon();
 
+	virtual bool isLightningRifle();
+
 	virtual bool isCarbineWeapon();
 
 	virtual bool isPistolWeapon();
@@ -618,6 +622,8 @@ public:
 	bool isRangedWeapon();
 
 	bool isRifleWeapon();
+
+	bool isLightningRifle();
 
 	bool isCarbineWeapon();
 
