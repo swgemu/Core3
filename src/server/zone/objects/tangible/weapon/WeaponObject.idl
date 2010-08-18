@@ -356,6 +356,10 @@ class WeaponObject extends TangibleObject {
 		return false;
 	}
 	
+	public abstract boolean isLightningRifle() {
+		return false;
+	}
+	
 	public abstract boolean isCarbineWeapon() {
 		return false;
 	}

@@ -6,6 +6,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	RifleWeaponObjectStub
  */
@@ -56,6 +58,18 @@ bool RifleWeaponObject::isRifleWeapon() {
 		return method.executeWithBooleanReturn();
 	} else
 		return ((RifleWeaponObjectImplementation*) _impl)->isRifleWeapon();
+}
+
+bool RifleWeaponObject::isLightningRifle() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((RifleWeaponObjectImplementation*) _impl)->isLightningRifle();
 }
 
 /*
@@ -129,27 +143,32 @@ void RifleWeaponObjectImplementation::_serializationHelperMethod() {
 
 RifleWeaponObjectImplementation::RifleWeaponObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(54):  		Logger.setLoggingName("RifleWeaponObject");
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(55):  		Logger.setLoggingName("RifleWeaponObject");
 	Logger::setLoggingName("RifleWeaponObject");
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(56):  		initializePrivateData();
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(57):  		initializePrivateData();
 	initializePrivateData();
 }
 
 void RifleWeaponObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(60):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(61):  		super.initializeTransientMembers();
 	RangedWeaponObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(62):  		Logger.setLoggingName("RifleWeaponObject");
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(63):  		Logger.setLoggingName("RifleWeaponObject");
 	Logger::setLoggingName("RifleWeaponObject");
 }
 
 void RifleWeaponObjectImplementation::initializePrivateData() {
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(66):  		super.maxRange = 65;
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(67):  		super.maxRange = 65;
 	RangedWeaponObjectImplementation::maxRange = 65;
 }
 
 bool RifleWeaponObjectImplementation::isRifleWeapon() {
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(70):  		return true;
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(71):  		return true;
 	return true;
+}
+
+bool RifleWeaponObjectImplementation::isLightningRifle() {
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(75):  		return super.gameObjectType == SceneObject.LIGHTNINGRIFLE;
+	return RangedWeaponObjectImplementation::gameObjectType == SceneObject::LIGHTNINGRIFLE;
 }
 
 /*
@@ -172,6 +191,9 @@ Packet* RifleWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case 8:
 		resp->insertBoolean(isRifleWeapon());
 		break;
+	case 9:
+		resp->insertBoolean(isLightningRifle());
+		break;
 	default:
 		return NULL;
 	}
@@ -189,6 +211,10 @@ void RifleWeaponObjectAdapter::initializePrivateData() {
 
 bool RifleWeaponObjectAdapter::isRifleWeapon() {
 	return ((RifleWeaponObjectImplementation*) impl)->isRifleWeapon();
+}
+
+bool RifleWeaponObjectAdapter::isLightningRifle() {
+	return ((RifleWeaponObjectImplementation*) impl)->isLightningRifle();
 }
 
 /*
