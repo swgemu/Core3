@@ -71,10 +71,10 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	}
 }
 
-Vector3* BuildingObjectImplementation::getEjectionPoint() {
-	Vector3 ejectionPoint;
+Vector3 BuildingObjectImplementation::getEjectionPoint() {
+	Vector3 ejectionPoint = getWorldPosition();
 
-	return &ejectionPoint;
+	return ejectionPoint;
 }
 
 void BuildingObjectImplementation::removeFromZone() {

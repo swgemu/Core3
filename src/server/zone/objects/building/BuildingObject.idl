@@ -141,6 +141,7 @@ class BuildingObject extends StructureObject implements QuadTree {
 	}
 	
 	@local
+	@dereferenced
 	public native Vector3 getEjectionPoint();
 	
 	public native void removeFromZone();/* {
