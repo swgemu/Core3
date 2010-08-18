@@ -59,7 +59,7 @@ import server.zone.objects.tangible.terminal.structure.StructureTerminal;
 import server.zone.ZoneServer;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
-include engine.util.Vector3;
+import engine.util.Vector3;
 
 class BuildingObject extends StructureObject implements QuadTree {
 	@dereferenced
@@ -209,8 +209,24 @@ class BuildingObject extends StructureObject implements QuadTree {
 	 * @post { player is locked, zone is locked }
 	 * @param player PlayerCreature that entered the building
 	 */
-	public abstract void onEnter(PlayerCreature player) { 
-
+	public abstract void onEnter(PlayerCreature player) {
+		Vector3 ejectionPoint = getEjectionPoint();
+		
+		if (isOnBanList(player) || (!isOnEntryList(player) && !isPublicStructure())) {
+			player.sendSystemMessage(""); //Cannot enter.
+			
+			//Kick the player out.
+			player.teleport(ejectionPoint.getX(), zone.getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY());)
+			return;
+		}
+		
+		if (!isPublicStructure() && (getAccessFee() > 0 && !isOnAccessList(player))) {
+			player.sendSystemMessage(""); //Doesnt have access.
+			//Send access fee popup menu.
+			
+			//Kick the player out.
+			player.teleport(ejectionPoint.getX(), zone.getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY());)
+		}
 	}
 	
 	/**
