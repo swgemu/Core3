@@ -11,9 +11,11 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "engine/util/Vector3.h"
 
 void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	if (structureObject == NULL)
