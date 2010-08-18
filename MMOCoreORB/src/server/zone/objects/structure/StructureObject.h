@@ -112,9 +112,13 @@ public:
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
-	bool grantPermission(unsigned long long objectID, const String& listName);
+	bool addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
 
-	bool revokePermission(unsigned long long objectID, const String& listName);
+	bool addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
+
+	bool removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
+
+	bool removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
 
 	int getRedeedCost();
 
@@ -162,6 +166,14 @@ public:
 
 	bool isRedeedable();
 
+	int getLength();
+
+	void setLength(int len);
+
+	int getWidth();
+
+	void setWidth(int wid);
+
 protected:
 	StructureObject(DummyConstructorParameter* param);
 
@@ -201,6 +213,10 @@ protected:
 	float surplusMaintenance;
 
 	float surplusPower;
+
+	int length;
+
+	int width;
 
 	bool publicStructure;
 
@@ -243,9 +259,13 @@ public:
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
-	bool grantPermission(unsigned long long objectID, const String& listName);
+	bool addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
 
-	bool revokePermission(unsigned long long objectID, const String& listName);
+	bool addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
+
+	bool removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
+
+	bool removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
 
 	int getRedeedCost();
 
@@ -292,6 +312,14 @@ public:
 	bool isStructureObject();
 
 	bool isRedeedable();
+
+	int getLength();
+
+	void setLength(int len);
+
+	int getWidth();
+
+	void setWidth(int wid);
 
 	StructureObject* _this;
 
@@ -364,9 +392,13 @@ public:
 
 	void sendPermissionListTo(PlayerCreature* player, const String& listName);
 
-	bool grantPermission(unsigned long long objectID, const String& listName);
+	bool addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
 
-	bool revokePermission(unsigned long long objectID, const String& listName);
+	bool addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
+
+	bool removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
+
+	bool removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
 
 	int getRedeedCost();
 
@@ -414,10 +446,22 @@ public:
 
 	bool isRedeedable();
 
+	int getLength();
+
+	void setLength(int len);
+
+	int getWidth();
+
+	void setWidth(int wid);
+
 protected:
 	String _param1_sendPermissionListTo__PlayerCreature_String_;
-	String _param1_grantPermission__long_String_;
-	String _param1_revokePermission__long_String_;
+	String _param2_addPermission__PlayerCreature_PlayerCreature_String_;
+	String _param1_addPermission__PlayerCreature_String_String_;
+	String _param2_addPermission__PlayerCreature_String_String_;
+	String _param2_removePermission__PlayerCreature_PlayerCreature_String_;
+	String _param1_removePermission__PlayerCreature_String_String_;
+	String _param2_removePermission__PlayerCreature_String_String_;
 };
 
 class StructureObjectHelper : public DistributedObjectClassHelper, public Singleton<StructureObjectHelper> {

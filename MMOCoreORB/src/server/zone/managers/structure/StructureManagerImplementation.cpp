@@ -973,8 +973,11 @@ int StructureManagerImplementation::placeBuilding(PlayerCreature* player, Shared
 	float floraRadius = buildingTemplate->getClearFloraRadius();
 	bool snapToTerrain = buildingTemplate->getSnapToTerrain();
 
+	int width = buildingTemplate->getWidth() + 1;
+	int length = buildingTemplate->getLength() + 1;
+
 	if (floraRadius > 0 && !snapToTerrain) {
-		float maxZ = terrainManager->getHighestHeight(x - floraRadius, y - floraRadius, x + floraRadius, y + floraRadius , 4); // checking default 24x24 area with 4 stepping
+		float maxZ = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length , 4); // checking default 24x24 area with 4 stepping
 		z = maxZ;
 	}
 
@@ -1318,6 +1321,29 @@ int StructureManagerImplementation::sendDestroyCodeTo(PlayerCreature* player, St
 	return 0;
 }
 
+String StructureManagerImplementation::getTimeString(uint32 timestamp) {
+	String abbrvs[4] = {"seconds", "minutes", "hours", "days"};
+
+	int intervals[4] = {1, 60, 3600, 86400};
+	int values[4] = {0, 0, 0, 0};
+
+	StringBuffer str;
+
+	for (int i = 3; i > -1; --i) {
+		values[i] = floor(timestamp / intervals[i]);
+		timestamp -= values[i] * intervals[i];
+
+		if (values[i] > 0) {
+			if (str.length() > 0)
+				str << ",";
+
+			str << ((i == 0) ? " and " : " ") << values[i] << " " << abbrvs[i];
+		}
+	}
+
+	return str.toString();
+}
+
 int StructureManagerImplementation::sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject) {
 	//TODO: Add in extra status information for administrators.
 	ManagedReference<SuiListBox*> statusBox = new SuiListBox(player, SuiWindowType::STRUCTURE_STATUS);
@@ -1354,10 +1380,19 @@ int StructureManagerImplementation::sendStructureStatusTo(PlayerCreature* player
 	sscond << dec << "@player_structure:condition_prompt " << ((int) (((structureObject->getMaxCondition() - structureObject->getConditionDamage()) / structureObject->getMaxCondition()) * 100)) << "%";
 	statusBox->addMenuItem(sscond.toString());
 
-	ssmpool << dec << "@player_structure:maintenance_pool_prompt " << (int) structureObject->getSurplusMaintenance(); //Maintenance Pool:
+	int maintpool = structureObject->getSurplusMaintenance();
+	int maintrate = structureObject->getBaseMaintenanceRate();
+
+	ssmpool << dec << "@player_structure:maintenance_pool_prompt " << maintpool; //Maintenance Pool:
+
+	if (maintpool > 0) {
+		uint32 seconds = (uint32) floor(((float) maintpool) / (((float) maintrate) / 3600.0f));
+		ssmpool << dec << " (" << getTimeString(seconds) << ")";
+	}
+
 	statusBox->addMenuItem(ssmpool.toString());
 
-	ssmrate << dec << "@player_structure:maintenance_rate_prompt " << (int) structureObject->getBaseMaintenanceRate() << " @player_structure:units_per_hour";
+	ssmrate << dec << "@player_structure:maintenance_rate_prompt " << maintrate << " cr/hr";
 	statusBox->addMenuItem(ssmrate.toString());
 
 	if (structureObject->isInstallationObject() && !((InstallationObject*) structureObject)->isGeneratorObject()) {
@@ -1407,6 +1442,13 @@ int StructureManagerImplementation::handlePayMaintenance(PlayerCreature* player,
 }
 
 int StructureManagerImplementation::handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject) {
+	/**
+		string/en/player_structure.stf	withdrawal_failed		Withdrawal from treasury failed.
+		string/en/player_structure.stf	withdraw_admin_only		You must be an administrator to remove credits from the treasury.
+		string/en/player_structure.stf	withdraw_credits		You withdraw %DI credits from the treasury.
+		string/en/player_structure.stf	withdraw_maintenance	Withdraw From Treasury
+		string/en/player_structure.stf	withdraw_vendor_d		Enter the amount of credits you would like to withdraw from the maintenance account.
+	 */
 	return 0;
 }
 
@@ -1420,7 +1462,7 @@ int StructureManagerImplementation::handleDeclareResidency(PlayerCreature* playe
 
 	//TODO: Register the building with the city if possible...
 
-	if (buildingObject->isOwnerOf(player)) {
+	if (!buildingObject->isOwnerOf(player)) {
 		player->sendSystemMessage("@player_structure:declare_must_be_owner"); //You must be the owner of the building to declare residence.
 		return 1;
 	}

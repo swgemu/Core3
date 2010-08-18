@@ -45,7 +45,9 @@ object_building_player_player_house_corellia_small_style_01 = object_building_pl
 	lotSize = 2,
 	baseMaintenanceRate = 16,
 	allowedZones = {0,7},
-	terminalLocation = {0, -5, 0.74, -1.81, 0, 0.707107, 0, -0.707107}
+	terminalLocation = {0, -5, 0.74, -1.81, 0, 0.707107, 0, -0.707107},
+	length = 3,
+	width = 4
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_house_corellia_small_style_01, "object/building/player/player_house_corellia_small_style_01.iff")

@@ -191,5 +191,9 @@ class StructureManager extends ManagedObject implements Logger {
 	public native int handlePrivacyChange(PlayerCreature player, StructureObject structureObject);
 	
 	public native int sendStructureNamePromptTo(PlayerCreature player, StructureObject structureObject);
+	
+	
+	//TEMPORARY
+	public native string getTimeString(unsigned int timestamp);
 }
 

@@ -45,7 +45,9 @@ object_building_player_player_house_naboo_large_style_01 = object_building_playe
 	lotSize = 5,
 	baseMaintenanceRate = 50,
 	allowedZones = {1,5,6},
-	terminalLocation = {0, 14.85, 4.7, -1.76, 0, 0.707107, 0, -0.707107}
+	terminalLocation = {0, 14.85, 4.7, -1.76, 0, 0.707107, 0, -0.707107},
+	length = 7,
+	width = 6
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_house_naboo_large_style_01, "object/building/player/player_house_naboo_large_style_01.iff")

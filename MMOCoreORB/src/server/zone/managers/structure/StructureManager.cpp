@@ -236,6 +236,20 @@ int StructureManager::sendStructureNamePromptTo(PlayerCreature* player, Structur
 		return ((StructureManagerImplementation*) _impl)->sendStructureNamePromptTo(player, structureObject);
 }
 
+String StructureManager::getTimeString(unsigned int timestamp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addUnsignedIntParameter(timestamp);
+
+		method.executeWithAsciiReturn(_return_getTimeString);
+		return _return_getTimeString;
+	} else
+		return ((StructureManagerImplementation*) _impl)->getTimeString(timestamp);
+}
+
 /*
  *	StructureManagerImplementation
  */
@@ -374,6 +388,9 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case 17:
 		resp->insertSignedInt(sendStructureNamePromptTo((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
 		break;
+	case 18:
+		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -427,6 +444,10 @@ int StructureManagerAdapter::handlePrivacyChange(PlayerCreature* player, Structu
 
 int StructureManagerAdapter::sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject) {
 	return ((StructureManagerImplementation*) impl)->sendStructureNamePromptTo(player, structureObject);
+}
+
+String StructureManagerAdapter::getTimeString(unsigned int timestamp) {
+	return ((StructureManagerImplementation*) impl)->getTimeString(timestamp);
 }
 
 /*

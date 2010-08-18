@@ -24,4 +24,8 @@ void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 		allowedZones.add(allowzones.getIntAt(i));
 
 	allowzones.pop();
+
+	length = templateData->getIntField("length");
+
+	width = templateData->getIntField("width");
 }

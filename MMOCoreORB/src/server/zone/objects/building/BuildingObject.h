@@ -133,6 +133,8 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+#include "engine/util/Vector3.h"
+
 #include "server/zone/objects/structure/StructureObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -171,6 +173,8 @@ public:
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
+
+	Vector3* getEjectionPoint();
 
 	void removeFromZone();
 
@@ -280,6 +284,8 @@ public:
 	virtual int notifyStructurePlaced(PlayerCreature* player);
 
 	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
+
+	Vector3* getEjectionPoint();
 
 	void removeFromZone();
 

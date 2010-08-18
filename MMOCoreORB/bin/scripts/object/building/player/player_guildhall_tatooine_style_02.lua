@@ -45,9 +45,9 @@ object_building_player_player_guildhall_tatooine_style_02 = object_building_play
 	lotSize = 5,
 	baseMaintenanceRate = 100,
 	mapLocationsType1 = 7,
-	allowedZones = {1,4,8}
-
-
+	allowedZones = {1,4,8},
+	length = 5,
+	width = 9
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_guildhall_tatooine_style_02, "object/building/player/player_guildhall_tatooine_style_02.iff")

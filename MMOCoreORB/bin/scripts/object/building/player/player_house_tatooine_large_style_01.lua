@@ -44,9 +44,9 @@
 object_building_player_player_house_tatooine_large_style_01 = object_building_player_shared_player_house_tatooine_large_style_01:new {
 	lotSize = 5,
 	baseMaintenanceRate = 50,
-	allowedZones = {1,4,8}
-
-
+	allowedZones = {1,4,8},
+	length = 5,
+	width = 7
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_house_tatooine_large_style_01, "object/building/player/player_house_tatooine_large_style_01.iff")
