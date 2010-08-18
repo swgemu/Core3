@@ -242,7 +242,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 		return serverState;
 	}
 
-	public synchronized Zone getZone(int index) {
+	public Zone getZone(int index) {
 		return zones.get(index);
 	}
 
