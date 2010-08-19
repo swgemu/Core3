@@ -1100,6 +1100,7 @@ SceneObject* FishingManagerImplementation::updateMarker(PlayerCreature* player, 
 		setFishMarker(player, newMarker);
 
 		if (player->isInRange(newMarker, 2.0)) {
+			error("Ending early");
 			stopFishing(player, 0, true);
 			return NULL;
 		}
