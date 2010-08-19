@@ -46,13 +46,25 @@ which carries forward this exception.
 #define VOLLEYFIREATTACKCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class VolleyFireAttackCommand : public QueueCommand {
+class VolleyFireAttackCommand : public CombatQueueCommand {
 public:
 
 	VolleyFireAttackCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 1;
+		speedMultiplier = 1;
+
+		combatSpam = "volley";
+		animationCRC = 0;
+
+		healthCostMultiplier = 0;
+		actionCostMultiplier = 0;
+		mindCostMultiplier = 0;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +75,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		return doCombatAction(creature, target);
 	}
 
 };
