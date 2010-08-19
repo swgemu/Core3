@@ -282,6 +282,9 @@ void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
 	if (zone == NULL)
 		return;
 
+	if (isStaticObject())
+		return;
+
 	Vector3 ejectionPoint = getEjectionPoint();
 	float x = ejectionPoint.getX();
 	float y = ejectionPoint.getY();
