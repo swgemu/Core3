@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_necklace_necklace_crushed_brooch = object_tangible_wearables_necklace_shared_necklace_crushed_brooch:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_necklace_crushed_brooch, "object/tangible/wearables/necklace/necklace_crushed_brooch.iff")

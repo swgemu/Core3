@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_skirt_singing_mountain_clan_skirt_s01 = object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s01:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOID_FEMALES
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_skirt_singing_mountain_clan_skirt_s01, "object/tangible/wearables/skirt/singing_mountain_clan_skirt_s01.iff")

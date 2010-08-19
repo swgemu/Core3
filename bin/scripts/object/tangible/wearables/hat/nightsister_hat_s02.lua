@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_hat_nightsister_hat_s02 = object_tangible_wearables_hat_shared_nightsister_hat_s02:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOID_FEMALES
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_nightsister_hat_s02, "object/tangible/wearables/hat/nightsister_hat_s02.iff")

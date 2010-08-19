@@ -44,7 +44,7 @@
 object_tangible_wearables_armor_stormtrooper_armor_stormtrooper_leggings_quest = object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_quest:new {
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOID_IMPERIALS,
 	
 	-- Damage types in WeaponObject

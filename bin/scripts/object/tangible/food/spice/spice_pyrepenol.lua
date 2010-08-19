@@ -59,7 +59,7 @@ object_tangible_food_spice_spice_pyrepenol = object_tangible_food_spice_shared_s
 	quantityMin = 0,
 	quantityMax = 0,
 
-	modifiers = {  },
+	modifiers = { "strength" , 300, "quickness", -100, "focus", -50 },
 
 	buffName = "pyrepenol",
 	buffCRC = 0,

@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_pants_pants_s15 = object_tangible_wearables_pants_shared_pants_s15:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_pants_s15, "object/tangible/wearables/pants/pants_s15.iff")

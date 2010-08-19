@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_backpack_backpack_s03_quest = object_tangible_wearables_backpack_shared_backpack_s03_quest:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = ALL,
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_backpack_s03_quest, "object/tangible/wearables/backpack/backpack_s03_quest.iff")

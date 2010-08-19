@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_shirt_aakuan_shirt = object_tangible_wearables_shirt_shared_aakuan_shirt:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_shirt_aakuan_shirt, "object/tangible/wearables/shirt/aakuan_shirt.iff")

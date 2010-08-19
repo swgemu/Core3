@@ -44,7 +44,7 @@
 object_tangible_wearables_armor_bounty_hunter_armor_bounty_hunter_belt = object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt:new {
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
 	
 	-- The damage types in WeaponObject

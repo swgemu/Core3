@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_shirt_shirt_dera = object_tangible_wearables_shirt_shared_shirt_dera:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shirt_dera, "object/tangible/wearables/shirt/shirt_dera.iff")

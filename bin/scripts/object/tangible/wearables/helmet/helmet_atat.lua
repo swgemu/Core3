@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_helmet_helmet_atat = object_tangible_wearables_helmet_shared_helmet_atat:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_helmet_atat, "object/tangible/wearables/helmet/helmet_atat.iff")

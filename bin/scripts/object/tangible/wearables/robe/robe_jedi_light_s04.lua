@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_robe_robe_jedi_light_s04 = object_tangible_wearables_robe_shared_robe_jedi_light_s04:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = ALL
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_robe_jedi_light_s04, "object/tangible/wearables/robe/robe_jedi_light_s04.iff")

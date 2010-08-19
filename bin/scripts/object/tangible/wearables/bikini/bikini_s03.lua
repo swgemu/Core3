@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_bikini_bikini_s03 = object_tangible_wearables_bikini_shared_bikini_s03:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOID_FEMALES
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bikini_bikini_s03, "object/tangible/wearables/bikini/bikini_s03.iff")

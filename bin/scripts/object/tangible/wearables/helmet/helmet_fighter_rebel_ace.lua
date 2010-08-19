@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_helmet_helmet_fighter_rebel_ace = object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = ALL
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_helmet_fighter_rebel_ace, "object/tangible/wearables/helmet/helmet_fighter_rebel_ace.iff")

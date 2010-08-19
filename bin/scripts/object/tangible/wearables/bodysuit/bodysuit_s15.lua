@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_bodysuit_bodysuit_s15 = object_tangible_wearables_bodysuit_shared_bodysuit_s15:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_bodysuit_s15, "object/tangible/wearables/bodysuit/bodysuit_s15.iff")
