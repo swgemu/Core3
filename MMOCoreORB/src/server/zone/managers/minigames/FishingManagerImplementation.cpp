@@ -450,6 +450,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 
 				ManagedReference<PlayerManager*> playerManager = zone->getZoneServer()->getPlayerManager();
 
+				Locker playerLocker(player);
 				playerManager->awardExperience(player, "camp", xp, true);
 
 				lootFishObject->setCustomizationVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_1, color.get(zone->getZoneID()));
@@ -490,6 +491,8 @@ void FishingManagerImplementation::sendReward(PlayerCreature* player, SceneObjec
 		ParameterizedStringId body("fishing","prose_notify_catch");
 		String itemName;
 		loot->sendTo(player, true);
+
+		Locker markerLocker(marker);
 
 		if (marker->addObject(loot, -1, true)) {
 			marker->openContainerTo(player);
@@ -998,6 +1001,8 @@ bool FishingManagerImplementation::checkUpdateMarker(PlayerCreature* player, flo
 SceneObject* FishingManagerImplementation::updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer) {
 	if ((player == NULL) || (marker == NULL))
 		return NULL;
+
+	Locker markerLocker(marker);
 
 	// CALCULATING BOBBER POS
 	Zone* zone = player->getZone();
