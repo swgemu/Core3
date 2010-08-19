@@ -310,7 +310,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public static final int MELEEWEAPONCOMPONENT = 0x40009;
 	public static final int MUNITIONCOMPONENT = 0x4000A;
 	public static final int RANGEDWEAPONCOMPONENT = 0x4000B;
-	public static final int STRUVTURECOMPONENT = 0x4000C;
+	public static final int STRUCTURECOMPONENT = 0x4000C;
 	public static final int TISSUECOMPONENT = 0x4000D;
 
 	public static final int WEAPONPOWERUP = 0x80000;

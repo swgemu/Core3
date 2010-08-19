@@ -271,6 +271,7 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 		if(manufactureSchematic->getParent() == _this) {
 			removeObject(manufactureSchematic);
 			manufactureSchematic->setDraftSchematic(NULL, NULL);
+			manufactureSchematic->cleanupIngredientSlots();
 		}
 
 		manufactureSchematic = NULL;

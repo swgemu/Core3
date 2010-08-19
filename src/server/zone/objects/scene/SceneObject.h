@@ -514,7 +514,7 @@ public:
 
 	static const int RANGEDWEAPONCOMPONENT = 0x4000B;
 
-	static const int STRUVTURECOMPONENT = 0x4000C;
+	static const int STRUCTURECOMPONENT = 0x4000C;
 
 	static const int TISSUECOMPONENT = 0x4000D;
 
@@ -1377,7 +1377,7 @@ public:
 
 	static const int RANGEDWEAPONCOMPONENT = 0x4000B;
 
-	static const int STRUVTURECOMPONENT = 0x4000C;
+	static const int STRUCTURECOMPONENT = 0x4000C;
 
 	static const int TISSUECOMPONENT = 0x4000D;
 

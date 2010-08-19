@@ -307,6 +307,18 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ManufactureSchematic>(SceneObject::MANUFACTURINGSCHEMATIC);
 	objectFactory.registerObject<Component>(SceneObject::COMPONENT);
 	objectFactory.registerObject<ArmorComponent>(SceneObject::ARMORCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::CHEMISTRYCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::CLOTHINGCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::COMMUNITYCRAFTINGCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::DROIDCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::ELECTRONICSCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::GENETICCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::LIGHTSABERCRYSTAL);
+	objectFactory.registerObject<Component>(SceneObject::MELEEWEAPONCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::MUNITIONCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::RANGEDWEAPONCOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::STRUCTURECOMPONENT);
+	objectFactory.registerObject<Component>(SceneObject::TISSUECOMPONENT);
 
 	objectFactory.registerObject<FactoryCrate>(SceneObject::FACTORYCRATE);
 }

@@ -53,6 +53,8 @@ void ComponentImplementation::initializeTransientMembers() {
 	precisionMap.setAllowOverwriteInsertPlan();
 	titleMap.setAllowOverwriteInsertPlan();
 	hiddenMap.setAllowOverwriteInsertPlan();
+
+	setOptionsBitmask(0x2100);
 }
 
 void ComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {

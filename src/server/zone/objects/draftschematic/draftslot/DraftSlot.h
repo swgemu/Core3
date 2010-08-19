@@ -153,7 +153,7 @@ public:
 
     void setContribution(float contribution)
     {
-        this->contribution = contribution;
+        this->contribution = (contribution / 100.0f);
     }
 
     void setQuantity(uint32 quantity)
