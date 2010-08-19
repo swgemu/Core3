@@ -63,6 +63,43 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (creature->isPlayerCreature()) {
+
+			ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+			ManagedReference<GroupObject*> group = player->getGroup();
+
+			if (group == NULL) {
+				player->sendSystemMessage("@error_message:not_grouped");
+			}
+			else if (group->getLeader() == player) {
+
+				uint64 targetID = player->getTargetID();
+				String action = "volleyfireattack";
+				uint64 actionCRC = action.hashCode();
+
+				bool success = false;
+
+				for (int i = 0; i < group->getGroupSize(); i++) {
+					SceneObject* member = group->getGroupMember(i);
+					if (member->isPlayerCreature()) {
+						PlayerCreature* memberPlayer = (PlayerCreature*) member;
+						if ((memberPlayer->isInRange(player, 128.0)) && (memberPlayer->isInCombat())) {
+							if (!success)
+								player->sendSystemMessage("@cbt_spam:volley_success_single");
+
+							memberPlayer->enqueueCommand(actionCRC, 0, targetID, "");
+							success = true;
+						}
+					}
+
+				}
+
+
+			} else {
+				player->sendSystemMessage("@error_message:not_group_leader");
+			}
+		}
+
 		return SUCCESS;
 	}
 
