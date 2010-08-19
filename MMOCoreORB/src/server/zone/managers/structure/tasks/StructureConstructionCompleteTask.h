@@ -9,14 +9,14 @@ class StructureConstructionCompleteTask : public Task {
 	StructureManager* structureManager;
 	ManagedReference<PlayerCreature*> player;
 	SharedStructureObjectTemplate* structureTemplate;
-	ManagedReference<SceneObject*> structure;
+	ManagedReference<SceneObject*> constructionMarker;
 	uint64 deedID;
 	float positionX;
 	float positionY;
 	Quaternion direction;
 
 public:
-	StructureConstructionCompleteTask(StructureManager* structManager, PlayerCreature* play, SharedStructureObjectTemplate* ssot, uint64 deedid, float x, float y, const Quaternion& dir, SceneObject* structure) : Task() {
+	StructureConstructionCompleteTask(StructureManager* structManager, PlayerCreature* play, SharedStructureObjectTemplate* ssot, uint64 deedid, float x, float y, const Quaternion& dir, SceneObject* marker) : Task() {
 		structureManager = structManager;
 		player = play;
 		structureTemplate = ssot;
@@ -24,16 +24,19 @@ public:
 		positionX = x;
 		positionY = y;
 		direction = dir;
-		this->structure = structure;
+		constructionMarker = marker;
 	}
 
 	void run() {
 		try {
 			player->wlock();
 
-			structureManager->placeStructure(player, structureTemplate, structure, deedID, positionX, positionY, direction);
-			//else
-			//Report an error?
+			Locker _locker(constructionMarker, player);
+
+			constructionMarker->removeFromZone();
+			constructionMarker->destroyObjectFromDatabase(true);
+
+			structureManager->placeStructure(player, structureTemplate, deedID, positionX, positionY, direction);
 
 			player->unlock();
 		} catch (...) {

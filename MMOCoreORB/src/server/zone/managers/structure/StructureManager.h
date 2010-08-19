@@ -132,13 +132,9 @@ public:
 
 	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
 
-	int placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
+	int placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
 
-	int placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
-
-	int placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
-
-	int constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
+	int constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
 
 	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
 
@@ -229,13 +225,9 @@ public:
 
 	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
 
-	int placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
+	int placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
 
-	int placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
-
-	int placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
-
-	int constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, unsigned long long deedID, float x, float y, const Quaternion& direction);
+	int constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
 
 	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
 

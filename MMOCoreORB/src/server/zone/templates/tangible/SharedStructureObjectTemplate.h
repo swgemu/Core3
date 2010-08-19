@@ -14,6 +14,8 @@ class SharedStructureObjectTemplate : public SharedTangibleObjectTemplate {
 protected:
 	SortedVector<unsigned int> allowedZones;
 
+	String constructionMarkerTemplate;
+
 	int lotSize;
 
 	int baseMaintenanceRate;
@@ -57,6 +59,10 @@ public:
 
 	inline int getWidth() {
 		return width;
+	}
+
+	inline String& getConstructionMarkerTemplate() {
+		return constructionMarkerTemplate;
 	}
 };
 

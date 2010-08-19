@@ -46,6 +46,7 @@ object_building_player_player_house_naboo_medium_style_01 = object_building_play
 	baseMaintenanceRate = 34,
 	allowedZones = {1,5,6},
 	terminalLocation = {0, 9.89, 1.1, -10.75, 0, 0, 0, 1},
+	constructionMarker = "object/building/player/construction/construction_player_house_naboo_medium_style_01.iff",
 	length = 3,
 	width = 4
 }
