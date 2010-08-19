@@ -21,12 +21,12 @@ void FactoryCrateImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("FactoryCrate");
+
+	setOptionsBitmask(0x2100);
 }
 
 void FactoryCrateImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
-
-	setOptionsBitmask(0x2100);
 }
 
 void FactoryCrateImplementation::sendTo(SceneObject* player, bool doClose) {
