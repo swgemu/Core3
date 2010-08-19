@@ -209,25 +209,7 @@ class BuildingObject extends StructureObject implements QuadTree {
 	 * @post { player is locked, zone is locked }
 	 * @param player PlayerCreature that entered the building
 	 */
-	public abstract void onEnter(PlayerCreature player) {
-		Vector3 ejectionPoint = getEjectionPoint();
-		
-		if (isOnBanList(player) || (!isOnEntryList(player) && !isPublicStructure())) {
-			player.sendSystemMessage(""); //Cannot enter.
-			
-			//Kick the player out.
-			player.teleport(ejectionPoint.getX(), zone.getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY());)
-			return;
-		}
-		
-		if (!isPublicStructure() && (getAccessFee() > 0 && !isOnAccessList(player))) {
-			player.sendSystemMessage(""); //Doesnt have access.
-			//Send access fee popup menu.
-			
-			//Kick the player out.
-			player.teleport(ejectionPoint.getX(), zone.getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY());)
-		}
-	}
+	public native abstract void onEnter(PlayerCreature player);
 	
 	/**
 	 * Abstract function that is triggered when a player exits a building.
@@ -267,5 +249,13 @@ class BuildingObject extends StructureObject implements QuadTree {
 	
 	public void setDeclaredResidency(boolean value) {
 		declaredResidency = value;
+	}
+	
+	public void setAccessFee(int fee) {
+		accessFee = fee;
+	}
+	
+	public int getAccessFee() {
+		return accessFee;
 	}
 }

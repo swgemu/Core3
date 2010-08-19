@@ -49,23 +49,19 @@ void StructurePermissionList::sendTo(PlayerCreature* player, uint8 permission) {
 }
 
 bool StructurePermissionList::addPermission(uint64 playerID, uint8 permission) {
-	if (!contains(playerID)) {
+	if (!contains(playerID))
 		put(playerID, permission);
-	} else {
-		uint8& playerPermissions = get(playerID);
-
-		if (playerPermissions & BANLIST)
-			return false;
-
-		playerPermissions |= permission;
-	}
+	else
+		get(playerID) |= permission;
 
 	return true;
 }
 
 bool StructurePermissionList::removePermission(uint64 playerID, uint8 permission) {
-	if (contains(playerID))
-		get(playerID) &= ~permission;
+	if (!contains(playerID))
+		return false;
+
+	get(playerID) &= ~permission;
 
 	return true;
 }
