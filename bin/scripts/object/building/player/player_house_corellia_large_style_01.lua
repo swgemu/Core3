@@ -46,6 +46,7 @@ object_building_player_player_house_corellia_large_style_01 = object_building_pl
 	baseMaintenanceRate = 50,
 	allowedZones = {0,7},
 	terminalLocation = {7, 3.17, 4.585, -4.4, 0, 0, 0, 1},
+	constructionMarker = "object/building/player/construction/construction_player_house_corellia_large_style_01.iff",
 	length = 5,
 	width = 7
 }

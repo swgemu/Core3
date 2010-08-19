@@ -46,6 +46,7 @@ object_building_player_player_house_corellia_small_style_01_floorplan_02 = objec
 	baseMaintenanceRate = 16,
 	allowedZones = {0,7},
 	terminalLocation = {0, -5, 0.74, -1.81, 0, 0.707107, 0, -0.707107},
+	constructionMarker = "object/building/player/construction/construction_player_house_corellia_small_style_01.iff",
 	length = 3,
 	width = 4
 }

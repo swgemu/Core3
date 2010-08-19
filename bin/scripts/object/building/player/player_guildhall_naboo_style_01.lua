@@ -47,6 +47,7 @@ object_building_player_player_guildhall_naboo_style_01 = object_building_player_
 	mapLocationsType1 = 7,
 	allowedZones = {1,5,6},
 	terminalLocation = {6, 17.88, 2.75, 10.45, 0, 0.707107, 0, 0.707107},
+	constructionMarker = "object/building/player/construction/construction_player_guildhall_naboo_style_01.iff",
 	length = 7,
 	width = 8
 }
