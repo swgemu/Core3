@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_pants_nightsister_pants_s01 = object_tangible_wearables_pants_shared_nightsister_pants_s01:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOID_FEMALES
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_nightsister_pants_s01, "object/tangible/wearables/pants/nightsister_pants_s01.iff")

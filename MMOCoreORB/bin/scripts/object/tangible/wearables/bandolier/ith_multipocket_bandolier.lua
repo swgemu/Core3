@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_bandolier_ith_multipocket_bandolier = object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = ITHORIANS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_ith_multipocket_bandolier, "object/tangible/wearables/bandolier/ith_multipocket_bandolier.iff")

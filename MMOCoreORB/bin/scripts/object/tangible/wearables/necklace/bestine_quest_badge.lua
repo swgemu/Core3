@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_necklace_bestine_quest_badge = object_tangible_wearables_necklace_shared_bestine_quest_badge:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_bestine_quest_badge, "object/tangible/wearables/necklace/bestine_quest_badge.iff")

@@ -42,9 +42,8 @@
 
 
 object_tangible_wearables_ithorian_ith_shirt_s10 = object_tangible_wearables_ithorian_shared_ith_shirt_s10:new {
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = ITHORIANS
-
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_ith_shirt_s10, "object/tangible/wearables/ithorian/ith_shirt_s10.iff")

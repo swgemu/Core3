@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_bracelet_bracelet_s06_l = object_tangible_wearables_bracelet_shared_bracelet_s06_l:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_bracelet_s06_l, "object/tangible/wearables/bracelet/bracelet_s06_l.iff")

@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_robe_robe_tusken_raider_s02 = object_tangible_wearables_robe_shared_robe_tusken_raider_s02:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_robe_tusken_raider_s02, "object/tangible/wearables/robe/robe_tusken_raider_s02.iff")

@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_bodysuit_bodysuit_tie_fighter = object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_bodysuit_tie_fighter, "object/tangible/wearables/bodysuit/bodysuit_tie_fighter.iff")

@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_hat_hat_s04 = object_tangible_wearables_hat_shared_hat_s04:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_hat_s04, "object/tangible/wearables/hat/hat_s04.iff")

@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_ithorian_hat_chef_s02_ith = object_tangible_wearables_ithorian_shared_hat_chef_s02_ith:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = ITHORIANS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_hat_chef_s02_ith, "object/tangible/wearables/ithorian/hat_chef_s02_ith.iff")
