@@ -19,7 +19,7 @@
 class MissionAcceptCallback : public MessageCallback {
 	uint64 missionObjectID;
 	uint64 terminalObjectID;
-	uint8 unk;
+	uint8 terminalIndex;
 
 	ObjectControllerMessageCallback* objectControllerMain;
 public:
@@ -35,7 +35,7 @@ public:
 		missionObjectID = message->parseLong();
 		terminalObjectID = message->parseLong();
 
-		unk = message->parseByte();
+		terminalIndex = message->parseByte();
 	}
 
 	void run() {
@@ -65,6 +65,12 @@ public:
 		MissionManager* manager = server->getZoneServer()->getMissionManager();
 		manager->handleMissionAccept(missionTerminal, missionObject, player);
 
+		// MissionAcceptResponse
+		ObjectControllerMessage* mar = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0xFA);
+		mar->insertLong(missionObject->getObjectID());
+		mar->insertByte(0x01);
+		mar->insertByte(terminalIndex);
+		player->sendMessage(mar);
 	}
 };
 
