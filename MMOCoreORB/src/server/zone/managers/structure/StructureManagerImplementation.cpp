@@ -1070,8 +1070,8 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Share
 	float floraRadius = structureTemplate->getClearFloraRadius();
 	bool snapToTerrain = structureTemplate->getSnapToTerrain();
 
-	float width = (structureTemplate->getWidth() + 1) * 4.0f;
-	float length = (structureTemplate->getWidth() + 1) * 4.0f;
+	float width = structureTemplate->getWidth() * 4.0f;
+	float length = structureTemplate->getLength() * 4.0f;
 
 	if (floraRadius > 0 && !snapToTerrain)
 		z = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 4);
