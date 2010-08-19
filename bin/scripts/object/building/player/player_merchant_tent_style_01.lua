@@ -45,6 +45,7 @@ object_building_player_player_merchant_tent_style_01 = object_building_player_sh
 	lotSize = 1,
 	baseMaintenanceRate = 10,
 	allowedZones = {0,1,4,5,6,7,8},
+	terminalLocation = {0, -0.15, 0.267105, -2.76, 0, 0, 0, 1},
 	length = 3,
 	width = 3
 }

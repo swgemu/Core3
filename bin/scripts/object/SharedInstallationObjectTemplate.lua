@@ -54,7 +54,6 @@ SharedInstallationObjectTemplate = SharedTangibleObjectTemplate:new {
 	-- SOLAR = 1; CHEMICAL = 2; FLORA = 3; GAS = 4; GEOTHERMAL = 5; MINERAL = 6; WATER = 7; WIND = 8; FUSION = 9;
 	installationType = 0, 
 	
-	
 	--The object that is placed during the construction phase.
-	constructionTemplate = ""
+	constructionMarker = ""
 }

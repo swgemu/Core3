@@ -66,7 +66,7 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	signLocations = {0, 0, 0, 0, 0, 0, 1},
 	
 	--The object that is placed during the construction phase.
-	constructionTemplate = "",
+	constructionMarker = "",
 	
 	--Terminal Location is cell#, x, z, y, qx, qy, qz, qw
 	terminalLocation = {},

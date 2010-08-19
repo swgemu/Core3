@@ -45,6 +45,7 @@ object_building_player_player_house_tatooine_small_style_02 = object_building_pl
 	lotSize = 2,
 	baseMaintenanceRate = 16,
 	allowedZones = {1,4,8},
+	constructionMarker = "object/building/player/construction/construction_player_house_tatooine_small_style_01.iff",
 	length = 3,
 	width = 4
 }

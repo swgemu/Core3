@@ -28,4 +28,6 @@ void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 	length = templateData->getIntField("length");
 
 	width = templateData->getIntField("width");
+
+	constructionMarkerTemplate = templateData->getStringField("constructionMarker");
 }
