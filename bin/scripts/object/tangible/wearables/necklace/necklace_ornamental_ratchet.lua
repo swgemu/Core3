@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_necklace_necklace_ornamental_ratchet = object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_necklace_ornamental_ratchet, "object/tangible/wearables/necklace/necklace_ornamental_ratchet.iff")

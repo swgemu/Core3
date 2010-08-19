@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_boots_boots_s15 = object_tangible_wearables_boots_shared_boots_s15:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOID_FOOTWEAR
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_boots_s15, "object/tangible/wearables/boots/boots_s15.iff")

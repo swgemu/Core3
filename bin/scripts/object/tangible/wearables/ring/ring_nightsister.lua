@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_ring_ring_nightsister = object_tangible_wearables_ring_shared_ring_nightsister:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = ALL
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_ring_nightsister, "object/tangible/wearables/ring/ring_nightsister.iff")

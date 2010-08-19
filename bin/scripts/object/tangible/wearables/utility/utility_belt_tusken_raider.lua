@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_utility_utility_belt_tusken_raider = object_tangible_wearables_utility_shared_utility_belt_tusken_raider:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_utility_utility_belt_tusken_raider, "object/tangible/wearables/utility/utility_belt_tusken_raider.iff")

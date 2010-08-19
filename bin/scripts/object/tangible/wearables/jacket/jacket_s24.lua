@@ -42,9 +42,8 @@
 
 
 object_tangible_wearables_jacket_jacket_s24 = object_tangible_wearables_jacket_shared_jacket_s24:new {
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS
-
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_jacket_jacket_s24, "object/tangible/wearables/jacket/jacket_s24.iff")

@@ -53,7 +53,7 @@ object_tangible_medicine_crafted_medpack_disease_willpower_c = object_tangible_m
 	dotType = DISEASED,
 	potency = 350,
 	commandToExecute = "/applydisease",
-	area = 10
+	area = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_disease_willpower_c, "object/tangible/medicine/crafted/medpack_disease_willpower_c.iff")

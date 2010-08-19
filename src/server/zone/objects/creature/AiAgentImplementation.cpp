@@ -373,7 +373,7 @@ void AiAgentImplementation::doMovement() {
 
 		dist = sqrt(dx * dx + dy * dy);
 
-		if (dist < maxDistance && cellObject == parent) {
+		if (dist <= maxDistance && cellObject == parent) {
 			patrolPoints.remove(0);
 
 			nextPosition = NULL;

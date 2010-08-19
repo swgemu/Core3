@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_apron_apron_s01_quest = object_tangible_wearables_apron_shared_apron_s01_quest:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_apron_apron_s01_quest, "object/tangible/wearables/apron/apron_s01_quest.iff")

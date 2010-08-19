@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_bandolier_mercenary_bandolier = object_tangible_wearables_bandolier_shared_mercenary_bandolier:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_mercenary_bandolier, "object/tangible/wearables/bandolier/mercenary_bandolier.iff")

@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_goggles_goggles_s06 = object_tangible_wearables_goggles_shared_goggles_s06:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = ALL
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_goggles_goggles_s06, "object/tangible/wearables/goggles/goggles_s06.iff")

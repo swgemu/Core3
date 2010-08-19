@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_dress_dress_s09 = object_tangible_wearables_dress_shared_dress_s09:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_dress_dress_s09, "object/tangible/wearables/dress/dress_s09.iff")

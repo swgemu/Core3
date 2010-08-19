@@ -42,7 +42,8 @@
 
 
 object_tangible_wearables_robe_aakuan_robe = object_tangible_wearables_robe_shared_aakuan_robe:new {
-
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	playerUseMask = HUMANOIDS
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_aakuan_robe, "object/tangible/wearables/robe/aakuan_robe.iff")
