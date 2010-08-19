@@ -1094,10 +1094,19 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Share
 	if (structureObject->isBuildingObject()) {
 		BuildingObject* buildingObject = (BuildingObject*) structureObject;
 		buildingObject->createCellObjects();
+	}
 
+	//Finish setting up the structure.
+	structureObject->initializePosition(x, z, y);
+	structureObject->setDirection(direction);
+	structureObject->setOwnerObjectID(player->getObjectID());
+	structureObject->setDeedObjectID(deedID);
+	structureObject->createChildObjects();
+	structureObject->insertToZone(zone);
 
+	if (structureObject->isBuildingObject()) {
+		BuildingObject* buildingObject = (BuildingObject*) structureObject;
 		//Create a sign
-
 
 		//Create a structure terminal
 		if (structureTemplate->isSharedBuildingObjectTemplate()) {
@@ -1134,13 +1143,6 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Share
 		}
 	}
 
-	//Finish setting up the structure.
-	structureObject->initializePosition(x, z, y);
-	structureObject->setDirection(direction);
-	structureObject->setOwnerObjectID(player->getObjectID());
-	structureObject->setDeedObjectID(deedID);
-	structureObject->createChildObjects();
-	structureObject->insertToZone(zone);
 	structureObject->notifyStructurePlaced(player);
 	structureObject->updateToDatabase();
 
