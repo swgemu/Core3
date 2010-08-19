@@ -46,13 +46,31 @@ which carries forward this exception.
 #define PANICSHOTCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class PanicShotCommand : public QueueCommand {
+class PanicShotCommand : public CombatQueueCommand {
 public:
 
 	PanicShotCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 2.0;
+		speedMultiplier = 2.6;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		nextAttackDelayChance = 1;
+		durationStateTime = 30;
+
+		animationCRC = String("fire_1_special_single_light").hashCode();
+
+		combatSpam = "panicshot";
+
+		coneAction = true;
+		coneAngle = 45;
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +81,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
