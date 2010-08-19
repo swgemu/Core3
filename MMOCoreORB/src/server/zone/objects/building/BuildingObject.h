@@ -226,6 +226,10 @@ public:
 
 	void setDeclaredResidency(bool value);
 
+	void setAccessFee(int fee);
+
+	int getAccessFee();
+
 protected:
 	BuildingObject(DummyConstructorParameter* param);
 
@@ -337,6 +341,10 @@ public:
 
 	void setDeclaredResidency(bool value);
 
+	void setAccessFee(int fee);
+
+	int getAccessFee();
+
 	BuildingObject* _this;
 
 	operator const BuildingObject*();
@@ -429,6 +437,10 @@ public:
 	bool isDeclaredResidency();
 
 	void setDeclaredResidency(bool value);
+
+	void setAccessFee(int fee);
+
+	int getAccessFee();
 
 };
 

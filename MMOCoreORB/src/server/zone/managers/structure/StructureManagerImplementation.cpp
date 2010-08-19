@@ -39,6 +39,8 @@
 #include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
 
+#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
+
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 
 #include "tasks/StructureConstructionCompleteTask.h"
@@ -1492,7 +1494,69 @@ int StructureManagerImplementation::handlePrivacyChange(PlayerCreature* player, 
 	else
 		player->sendSystemMessage("@player_structure:structure_now_private"); //This structure is now private
 
-	//TODO: Update all players in the area with the cell permission changes...
+	if (!structureObject->isBuildingObject())
+		return 0;
+
+	ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
+
+	ManagedReference<CellObject*> firstCell = buildingObject->getCell(0);
+
+	if (firstCell == NULL)
+		return 1;
+
+	UpdateCellPermissionsMessage* cellMessage = new UpdateCellPermissionsMessage(firstCell->getObjectID(), buildingObject->isPublicStructure());
+
+	int inRangeObjectCount = buildingObject->inRangeObjectCount();
+
+	Locker _locker(zone);
+
+	//All players outside, that are in range...
+	for (int i = 0; i < inRangeObjectCount; ++i) {
+		ManagedReference<SceneObject*> obj = (SceneObject*) (((SceneObjectImplementation*) buildingObject->getInRangeObject(i))->_this);;
+
+		if (obj == NULL || !obj->isPlayerCreature() || obj == player)
+			continue;
+
+
+		PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
+
+		//Permissions shouldnt change for the player if they are on the entry, access, or ban list.
+		if (buildingObject->isOnBanList(targetPlayer))
+			continue;
+
+		if (buildingObject->isOnEntryList(targetPlayer))
+			continue;
+
+		if (buildingObject->isOnAccessList(targetPlayer))
+			continue;
+
+		targetPlayer->sendMessage(cellMessage->clone());
+	}
+
+	delete cellMessage;
+
+	//Send updates out to all players inside the building...
+	for (int i = 0; i < buildingObject->getTotalCellNumber(); ++i) {
+		ManagedReference<CellObject*> cellObject = (CellObject*) buildingObject->getCell(i);
+
+		if (cellObject == NULL)
+			continue;
+
+		int cellObjectCount = cellObject->getContainerObjectsSize();
+
+		for (int j = cellObjectCount - 1; j >= 0; --j) {
+			ManagedReference<SceneObject*> obj = cellObject->getContainerObject(j);
+
+			if (obj == NULL || !obj->isPlayerCreature() || obj == player)
+				continue;
+
+			PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
+
+			Locker _locker(targetPlayer);
+
+			buildingObject->updateCellPermissionsTo(targetPlayer);
+		}
+	}
 
 	return 0;
 }

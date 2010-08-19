@@ -250,29 +250,59 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(bool destroyContain
 }
 
 void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) {
-	if (player->isInRange(_this, 256)) {
-		bool allowEntry = true;
+	if (!player->isInRange(_this, 256))
+		return;
 
-		//If the building is private, check the permission lists to see if they have permission or not.
-		if (!isPublicStructure()) {
-			if (isOnBanList(player) || (!isOnEntryList(player) && !isOnAccessList(player))) {
-				allowEntry = false;
+	bool allowEntry = true;
 
-				//If the player is in the structure, kick them out.
-				if (player->getParentRecursively(SceneObject::BUILDING) == _this) {
-					Vector3 ejectionPoint = getEjectionPoint();
-					player->teleport(ejectionPoint.getX(), zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
-				}
+	//If the building is private, check the permission lists to see if they have permission or not.
+	if (!isPublicStructure()) {
+		if (isOnBanList(player) || (!isOnEntryList(player) && !isOnAccessList(player))) {
+			allowEntry = false;
+
+			//If the player is in the structure, kick them out.
+			if (player->getParentRecursively(SceneObject::BUILDING) == _this) {
+				Vector3 ejectionPoint = getEjectionPoint();
+				player->teleport(ejectionPoint.getX(), zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
 			}
 		}
+	}
 
-		//Update the permissions on just the first cell since it should be the entry...
-		ManagedReference<CellObject*> cell = getCell(0);
+	//Update the permissions on just the first cell since it should be the entry...
+	ManagedReference<CellObject*> cell = getCell(0);
 
-		if (cell == NULL)
-			return;
+	if (cell == NULL)
+		return;
 
-		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
-		player->sendMessage(perm);
+	BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
+	player->sendMessage(perm);
+}
+
+void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
+	if (zone == NULL)
+		return;
+
+	Vector3 ejectionPoint = getEjectionPoint();
+	float x = ejectionPoint.getX();
+	float y = ejectionPoint.getY();
+	float z = zone->getHeight(x, y);
+
+	Locker _locker(zone);
+
+	if (isOnBanList(player)) {
+		player->teleport(x, z, y, 0);
+		return;
+	}
+
+	if (!isPublicStructure()) {
+		if (!isOnEntryList(player))
+			player->teleport(x, z, y, 0);
+	} else {
+		if (getAccessFee() > 0 && !isOnAccessList(player)) {
+			//Send access fee popup menu.
+
+			//Kick the player out.
+			player->teleport(x, z, y, 0);
+		}
 	}
 }
