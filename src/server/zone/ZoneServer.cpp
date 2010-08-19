@@ -880,7 +880,6 @@ int ZoneServerImplementation::getServerState() {
 }
 
 Zone* ZoneServerImplementation::getZone(int index) {
-	Locker _locker(_this);
 	// server/zone/ZoneServer.idl(246):  		return zones.get(index);
 	return (&zones)->get(index);
 }

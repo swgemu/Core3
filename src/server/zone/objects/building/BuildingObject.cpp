@@ -443,6 +443,31 @@ void BuildingObject::setDeclaredResidency(bool value) {
 		((BuildingObjectImplementation*) _impl)->setDeclaredResidency(value);
 }
 
+void BuildingObject::setAccessFee(int fee) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addSignedIntParameter(fee);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setAccessFee(fee);
+}
+
+int BuildingObject::getAccessFee() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getAccessFee();
+}
+
 /*
  *	BuildingObjectImplementation
  */
@@ -584,45 +609,52 @@ void BuildingObjectImplementation::setStaticBuilding(bool value) {
 	StructureObjectImplementation::staticObject = value;
 }
 
-void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
-}
-
 void BuildingObjectImplementation::onExit(PlayerCreature* player) {
 }
 
 bool BuildingObjectImplementation::isBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(229):  		return true;
+	// server/zone/objects/building/BuildingObject.idl(227):  		return true;
 	return true;
 }
 
 bool BuildingObjectImplementation::isMedicalBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(233):  		return false;
+	// server/zone/objects/building/BuildingObject.idl(231):  		return false;
 	return false;
 }
 
 void BuildingObjectImplementation::setSignObject(SignObject* sign) {
-	// server/zone/objects/building/BuildingObject.idl(237):  		signObject = sign;
+	// server/zone/objects/building/BuildingObject.idl(235):  		signObject = sign;
 	signObject = sign;
 }
 
 SignObject* BuildingObjectImplementation::getSignObject() {
-	// server/zone/objects/building/BuildingObject.idl(241):  		return signObject;
+	// server/zone/objects/building/BuildingObject.idl(239):  		return signObject;
 	return signObject;
 }
 
 bool BuildingObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(245):  		return false;
+	// server/zone/objects/building/BuildingObject.idl(243):  		return false;
 	return false;
 }
 
 bool BuildingObjectImplementation::isDeclaredResidency() {
-	// server/zone/objects/building/BuildingObject.idl(249):  		return declaredResidency;
+	// server/zone/objects/building/BuildingObject.idl(247):  		return declaredResidency;
 	return declaredResidency;
 }
 
 void BuildingObjectImplementation::setDeclaredResidency(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(253):  		declaredResidency = value;
+	// server/zone/objects/building/BuildingObject.idl(251):  		declaredResidency = value;
 	declaredResidency = value;
+}
+
+void BuildingObjectImplementation::setAccessFee(int fee) {
+	// server/zone/objects/building/BuildingObject.idl(255):  		accessFee = fee;
+	accessFee = fee;
+}
+
+int BuildingObjectImplementation::getAccessFee() {
+	// server/zone/objects/building/BuildingObject.idl(259):  		return accessFee;
+	return accessFee;
 }
 
 /*
@@ -716,6 +748,12 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 32:
 		setDeclaredResidency(inv->getBooleanParameter());
+		break;
+	case 33:
+		setAccessFee(inv->getSignedIntParameter());
+		break;
+	case 34:
+		resp->insertSignedInt(getAccessFee());
 		break;
 	default:
 		return NULL;
@@ -830,6 +868,14 @@ bool BuildingObjectAdapter::isDeclaredResidency() {
 
 void BuildingObjectAdapter::setDeclaredResidency(bool value) {
 	((BuildingObjectImplementation*) impl)->setDeclaredResidency(value);
+}
+
+void BuildingObjectAdapter::setAccessFee(int fee) {
+	((BuildingObjectImplementation*) impl)->setAccessFee(fee);
+}
+
+int BuildingObjectAdapter::getAccessFee() {
+	return ((BuildingObjectImplementation*) impl)->getAccessFee();
 }
 
 /*
