@@ -46,13 +46,27 @@ which carries forward this exception.
 #define LASTDITCHCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class LastDitchCommand : public QueueCommand {
+class LastDitchCommand : public CombatQueueCommand {
 public:
 
 	LastDitchCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
+		damageMultiplier = 6.0;
+		speedMultiplier = 4.0;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
+
+		stunStateChance = 40;
+
+		animationCRC = String("fire_1_special_single_light").hashCode();
+
+		combatSpam = "lastditch";
+
+		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +77,19 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isPistolWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		creature->addSkillMod("pistol_accuracy",10,false);
+
+		int dmg = doCombatAction(creature, target);
+
+		creature->addSkillMod("pistol_accuracy",-10,false);
+
+		return dmg;
 	}
 
 };
