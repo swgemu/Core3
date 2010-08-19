@@ -293,7 +293,7 @@ void ArmorObjectImplementation::setProtection(ManufactureSchematic* schematic,
 
 	CraftingValues* craftingValues = schematic->getCraftingValues();
 
-	float value = craftingValues->getCurrentValue(type);
+	float value = craftingValues->getCurrentValue(getStringType(type));
 
 	if (value == CraftingValues::VALUENOTFOUND
 			&& schematic->getFirstCraftingUpdate()) {
