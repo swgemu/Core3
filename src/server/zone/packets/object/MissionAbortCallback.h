@@ -50,6 +50,10 @@ public:
 		MissionManager* manager = server->getZoneServer()->getMissionManager();
 		manager->handleMissionAbort(missionObject, player);
 
+		// MissionAbortResponse
+		ObjectControllerMessage* mar = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x142);
+		mar->insertLong(missionObject->getObjectID());
+		player->sendMessage(mar);
 	}
 };
 
