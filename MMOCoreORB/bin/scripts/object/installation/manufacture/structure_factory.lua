@@ -46,6 +46,8 @@ object_installation_manufacture_structure_factory = object_installation_manufact
 	lotSize = 1,
 	baseMaintenanceRate = 50,
 	basePowerRate = 50,
+	length = 5,
+	width = 5,
 	craftingTabsSupported = {512,1024} -- See DraftSchematicObjectTemplate,h for list
 
 

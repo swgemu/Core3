@@ -4,6 +4,8 @@
 
 #include "StructureObject.h"
 
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -99,12 +101,24 @@ bool StructureObject::isValidDestroyCode(unsigned int code) {
 		return ((StructureObjectImplementation*) _impl)->isValidDestroyCode(code);
 }
 
-bool StructureObject::isOnAdminList(SceneObject* obj) {
+void StructureObject::scheduleMaintenanceExpirationEvent() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureObjectImplementation*) _impl)->scheduleMaintenanceExpirationEvent();
+}
+
+bool StructureObject::isOnAdminList(SceneObject* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -117,7 +131,7 @@ bool StructureObject::isOnAdminList(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -130,7 +144,7 @@ bool StructureObject::isOnEntryList(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -143,7 +157,7 @@ bool StructureObject::isOnEntryList(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -156,7 +170,7 @@ bool StructureObject::isOnBanList(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -169,7 +183,7 @@ bool StructureObject::isOnBanList(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -182,7 +196,7 @@ bool StructureObject::isOwnerOf(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -195,7 +209,7 @@ bool StructureObject::isOwnerOf(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -208,7 +222,7 @@ bool StructureObject::isOnAccessList(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -221,7 +235,7 @@ bool StructureObject::isOnAccessList(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -234,7 +248,7 @@ void StructureObject::sendPermissionListTo(PlayerCreature* player, const String&
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(listName);
 
@@ -248,7 +262,7 @@ bool StructureObject::addPermission(PlayerCreature* player, PlayerCreature* targ
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 		method.addObjectParameter(targetPlayer);
 		method.addAsciiParameter(listName);
@@ -263,7 +277,7 @@ bool StructureObject::addPermission(PlayerCreature* player, const String& target
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetPlayerName);
 		method.addAsciiParameter(listName);
@@ -278,7 +292,7 @@ bool StructureObject::removePermission(PlayerCreature* player, PlayerCreature* t
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(player);
 		method.addObjectParameter(targetPlayer);
 		method.addAsciiParameter(listName);
@@ -293,7 +307,7 @@ bool StructureObject::removePermission(PlayerCreature* player, const String& tar
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetPlayerName);
 		method.addAsciiParameter(listName);
@@ -308,7 +322,7 @@ int StructureObject::getRedeedCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -320,7 +334,7 @@ unsigned long long StructureObject::getOwnerObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -332,7 +346,7 @@ unsigned long long StructureObject::getDeedObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -344,7 +358,7 @@ int StructureObject::getLotSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -356,7 +370,7 @@ unsigned int StructureObject::getDestroyCode() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -368,7 +382,7 @@ int StructureObject::getBaseMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -380,7 +394,7 @@ int StructureObject::getBasePowerRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -392,7 +406,7 @@ int StructureObject::getSurplusMaintenance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -404,7 +418,7 @@ int StructureObject::getSurplusPower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -416,7 +430,7 @@ bool StructureObject::isPublicStructure() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -428,7 +442,7 @@ void StructureObject::setOwnerObjectID(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addUnsignedLongParameter(objectID);
 
 		method.executeWithVoidReturn();
@@ -441,7 +455,7 @@ void StructureObject::setDeedObjectID(unsigned long long deedID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 		method.addUnsignedLongParameter(deedID);
 
 		method.executeWithVoidReturn();
@@ -454,7 +468,7 @@ void StructureObject::setLotSize(int lots) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 		method.addSignedIntParameter(lots);
 
 		method.executeWithVoidReturn();
@@ -467,7 +481,7 @@ void StructureObject::setDestroyCode(unsigned int code) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 		method.addUnsignedIntParameter(code);
 
 		method.executeWithVoidReturn();
@@ -480,7 +494,7 @@ void StructureObject::setBaseMaintenanceRate(int rate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 		method.addSignedIntParameter(rate);
 
 		method.executeWithVoidReturn();
@@ -493,7 +507,7 @@ void StructureObject::setBasePowerRate(int rate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 		method.addSignedIntParameter(rate);
 
 		method.executeWithVoidReturn();
@@ -506,7 +520,7 @@ void StructureObject::setSurplusMaintenance(int surplus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 		method.addSignedIntParameter(surplus);
 
 		method.executeWithVoidReturn();
@@ -519,7 +533,7 @@ void StructureObject::addMaintenance(int add) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 		method.addSignedIntParameter(add);
 
 		method.executeWithVoidReturn();
@@ -532,7 +546,7 @@ void StructureObject::setSurplusPower(int surplus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 		method.addSignedIntParameter(surplus);
 
 		method.executeWithVoidReturn();
@@ -545,7 +559,7 @@ void StructureObject::addPower(int add) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 		method.addSignedIntParameter(add);
 
 		method.executeWithVoidReturn();
@@ -558,7 +572,7 @@ void StructureObject::setPublicStructure(bool privacy) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 		method.addBooleanParameter(privacy);
 
 		method.executeWithVoidReturn();
@@ -571,7 +585,7 @@ bool StructureObject::isStructureObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -583,7 +597,7 @@ bool StructureObject::isRedeedable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -595,7 +609,7 @@ int StructureObject::getLength() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -607,7 +621,7 @@ void StructureObject::setLength(int len) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 		method.addSignedIntParameter(len);
 
 		method.executeWithVoidReturn();
@@ -620,7 +634,7 @@ int StructureObject::getWidth() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -632,7 +646,7 @@ void StructureObject::setWidth(int wid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 		method.addSignedIntParameter(wid);
 
 		method.executeWithVoidReturn();
@@ -708,6 +722,8 @@ void StructureObjectImplementation::_serializationHelperMethod() {
 	_setClassName("StructureObject");
 
 	addSerializableVariable("structurePermissionList", &structurePermissionList);
+	addSerializableVariable("maintenanceExpires", &maintenanceExpires);
+	addSerializableVariable("powerExpires", &powerExpires);
 	addSerializableVariable("ownerObjectID", &ownerObjectID);
 	addSerializableVariable("deedObjectID", &deedObjectID);
 	addSerializableVariable("lotSize", &lotSize);
@@ -723,252 +739,254 @@ void StructureObjectImplementation::_serializationHelperMethod() {
 
 StructureObjectImplementation::StructureObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/structure/StructureObject.idl(78):  		Logger.setLoggingName("StructureObject");
+	// server/zone/objects/structure/StructureObject.idl(89):  		Logger.setLoggingName("StructureObject");
 	Logger::setLoggingName("StructureObject");
-	// server/zone/objects/structure/StructureObject.idl(80):  		super.staticObject = false;
+	// server/zone/objects/structure/StructureObject.idl(91):  		super.staticObject = false;
 	TangibleObjectImplementation::staticObject = false;
-	// server/zone/objects/structure/StructureObject.idl(82):  		lotSize = 0;
+	// server/zone/objects/structure/StructureObject.idl(93):  		lotSize = 0;
 	lotSize = 0;
-	// server/zone/objects/structure/StructureObject.idl(84):  		ownerObjectID = 0;
+	// server/zone/objects/structure/StructureObject.idl(95):  		ownerObjectID = 0;
 	ownerObjectID = 0;
-	// server/zone/objects/structure/StructureObject.idl(86):  		deedObjectID = 0;
+	// server/zone/objects/structure/StructureObject.idl(97):  		deedObjectID = 0;
 	deedObjectID = 0;
-	// server/zone/objects/structure/StructureObject.idl(88):  		destroyCode = 0;
+	// server/zone/objects/structure/StructureObject.idl(99):  		destroyCode = 0;
 	destroyCode = 0;
-	// server/zone/objects/structure/StructureObject.idl(90):  		baseMaintenanceRate = 0;
+	// server/zone/objects/structure/StructureObject.idl(101):  		baseMaintenanceRate = 0;
 	baseMaintenanceRate = 0;
-	// server/zone/objects/structure/StructureObject.idl(92):  		basePowerRate = 0;
+	// server/zone/objects/structure/StructureObject.idl(103):  		basePowerRate = 0;
 	basePowerRate = 0;
-	// server/zone/objects/structure/StructureObject.idl(94):  		surplusMaintenance = 0;
+	// server/zone/objects/structure/StructureObject.idl(105):  		surplusMaintenance = 0;
 	surplusMaintenance = 0;
-	// server/zone/objects/structure/StructureObject.idl(96):  		surplusPower = 0;
+	// server/zone/objects/structure/StructureObject.idl(107):  		surplusPower = 0;
 	surplusPower = 0;
-	// server/zone/objects/structure/StructureObject.idl(98):  		publicStructure = false;
+	// server/zone/objects/structure/StructureObject.idl(109):  		publicStructure = false;
 	publicStructure = false;
-	// server/zone/objects/structure/StructureObject.idl(100):  		length = 0;
+	// server/zone/objects/structure/StructureObject.idl(111):  		length = 0;
 	length = 0;
-	// server/zone/objects/structure/StructureObject.idl(102):  		width = 0;
+	// server/zone/objects/structure/StructureObject.idl(113):  		width = 0;
 	width = 0;
+	// server/zone/objects/structure/StructureObject.idl(115):  		structureMaintenanceTask = null;
+	structureMaintenanceTask = NULL;
 }
 
 void StructureObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/structure/StructureObject.idl(106):  		super.initializeTransientMembers();
+	// server/zone/objects/structure/StructureObject.idl(119):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/structure/StructureObject.idl(108):  		Logger.setLoggingName("StructureObject");
+	// server/zone/objects/structure/StructureObject.idl(121):  		Logger.setLoggingName("StructureObject");
 	Logger::setLoggingName("StructureObject");
 }
 
 int StructureObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
-	// server/zone/objects/structure/StructureObject.idl(124):  		return 0;
+	// server/zone/objects/structure/StructureObject.idl(137):  		return 0;
 	return 0;
 }
 
 bool StructureObjectImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
-	// server/zone/objects/structure/StructureObject.idl(128):  		return true;
+	// server/zone/objects/structure/StructureObject.idl(141):  		return true;
 	return true;
 }
 
 unsigned int StructureObjectImplementation::generateDestroyCode() {
-	// server/zone/objects/structure/StructureObject.idl(136):  		destroyCode = System.random(899999) + 100000;
+	// server/zone/objects/structure/StructureObject.idl(149):  		destroyCode = System.random(899999) + 100000;
 	destroyCode = System::random(899999) + 100000;
-	// server/zone/objects/structure/StructureObject.idl(137):  		return destroyCode;
+	// server/zone/objects/structure/StructureObject.idl(150):  		return destroyCode;
 	return destroyCode;
 }
 
 bool StructureObjectImplementation::isValidDestroyCode(unsigned int code) {
-	// server/zone/objects/structure/StructureObject.idl(141):  		return (destroyCode == code);
+	// server/zone/objects/structure/StructureObject.idl(154):  		return (destroyCode == code);
 	return (destroyCode == code);
 }
 
 bool StructureObjectImplementation::isOnAdminList(SceneObject* obj) {
-	// server/zone/objects/structure/StructureObject.idl(150):  		return structurePermissionList.isOnAdminList(obj.getObjectID());
+	// server/zone/objects/structure/StructureObject.idl(165):  		return structurePermissionList.isOnAdminList(obj.getObjectID());
 	return (&structurePermissionList)->isOnAdminList(obj->getObjectID());
 }
 
 bool StructureObjectImplementation::isOnAdminList(unsigned long long oid) {
-	// server/zone/objects/structure/StructureObject.idl(154):  		return structurePermissionList.isOnAdminList(oid);
+	// server/zone/objects/structure/StructureObject.idl(169):  		return structurePermissionList.isOnAdminList(oid);
 	return (&structurePermissionList)->isOnAdminList(oid);
 }
 
 bool StructureObjectImplementation::isOnEntryList(SceneObject* obj) {
-	// server/zone/objects/structure/StructureObject.idl(158):  		return structurePermissionList.isOnEntryList(obj.getObjectID());
+	// server/zone/objects/structure/StructureObject.idl(173):  		return structurePermissionList.isOnEntryList(obj.getObjectID());
 	return (&structurePermissionList)->isOnEntryList(obj->getObjectID());
 }
 
 bool StructureObjectImplementation::isOnEntryList(unsigned long long oid) {
-	// server/zone/objects/structure/StructureObject.idl(162):  		return structurePermissionList.isOnEntryList(oid);
+	// server/zone/objects/structure/StructureObject.idl(177):  		return structurePermissionList.isOnEntryList(oid);
 	return (&structurePermissionList)->isOnEntryList(oid);
 }
 
 bool StructureObjectImplementation::isOnBanList(SceneObject* obj) {
-	// server/zone/objects/structure/StructureObject.idl(166):  		return structurePermissionList.isOnBanList(obj.getObjectID());
+	// server/zone/objects/structure/StructureObject.idl(181):  		return structurePermissionList.isOnBanList(obj.getObjectID());
 	return (&structurePermissionList)->isOnBanList(obj->getObjectID());
 }
 
 bool StructureObjectImplementation::isOnBanList(unsigned long long oid) {
-	// server/zone/objects/structure/StructureObject.idl(170):  		return structurePermissionList.isOnBanList(oid);
+	// server/zone/objects/structure/StructureObject.idl(185):  		return structurePermissionList.isOnBanList(oid);
 	return (&structurePermissionList)->isOnBanList(oid);
 }
 
 bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
-	// server/zone/objects/structure/StructureObject.idl(174):  		return obj.getObjectID() == ownerObjectID;
+	// server/zone/objects/structure/StructureObject.idl(189):  		return obj.getObjectID() == ownerObjectID;
 	return obj->getObjectID() == ownerObjectID;
 }
 
 bool StructureObjectImplementation::isOwnerOf(unsigned long long oid) {
-	// server/zone/objects/structure/StructureObject.idl(178):  		return oid == ownerObjectID;
+	// server/zone/objects/structure/StructureObject.idl(193):  		return oid == ownerObjectID;
 	return oid == ownerObjectID;
 }
 
 bool StructureObjectImplementation::isOnAccessList(SceneObject* obj) {
-	// server/zone/objects/structure/StructureObject.idl(183):  		return false;
+	// server/zone/objects/structure/StructureObject.idl(198):  		return false;
 	return false;
 }
 
 bool StructureObjectImplementation::isOnAccessList(unsigned long long oid) {
-	// server/zone/objects/structure/StructureObject.idl(188):  		return false;
+	// server/zone/objects/structure/StructureObject.idl(203):  		return false;
 	return false;
 }
 
 void StructureObjectImplementation::sendPermissionListTo(PlayerCreature* player, const String& listName) {
-	// server/zone/objects/structure/StructureObject.idl(192):  		structurePermissionList.sendTo(player, listName);
+	// server/zone/objects/structure/StructureObject.idl(207):  		structurePermissionList.sendTo(player, listName);
 	(&structurePermissionList)->sendTo(player, listName);
 }
 
 int StructureObjectImplementation::getRedeedCost() {
-	// server/zone/objects/structure/StructureObject.idl(205):  		return (baseMaintenanceRate * 50);
+	// server/zone/objects/structure/StructureObject.idl(220):  		return (baseMaintenanceRate * 50);
 	return (baseMaintenanceRate * 50);
 }
 
 unsigned long long StructureObjectImplementation::getOwnerObjectID() {
-	// server/zone/objects/structure/StructureObject.idl(209):  		return ownerObjectID;
+	// server/zone/objects/structure/StructureObject.idl(224):  		return ownerObjectID;
 	return ownerObjectID;
 }
 
 unsigned long long StructureObjectImplementation::getDeedObjectID() {
-	// server/zone/objects/structure/StructureObject.idl(213):  		return deedObjectID;
+	// server/zone/objects/structure/StructureObject.idl(228):  		return deedObjectID;
 	return deedObjectID;
 }
 
 int StructureObjectImplementation::getLotSize() {
-	// server/zone/objects/structure/StructureObject.idl(217):  		return lotSize;
+	// server/zone/objects/structure/StructureObject.idl(232):  		return lotSize;
 	return lotSize;
 }
 
 unsigned int StructureObjectImplementation::getDestroyCode() {
-	// server/zone/objects/structure/StructureObject.idl(221):  		return destroyCode;
+	// server/zone/objects/structure/StructureObject.idl(236):  		return destroyCode;
 	return destroyCode;
 }
 
 int StructureObjectImplementation::getBaseMaintenanceRate() {
-	// server/zone/objects/structure/StructureObject.idl(225):  		return baseMaintenanceRate;
+	// server/zone/objects/structure/StructureObject.idl(240):  		return baseMaintenanceRate;
 	return baseMaintenanceRate;
 }
 
 int StructureObjectImplementation::getBasePowerRate() {
-	// server/zone/objects/structure/StructureObject.idl(229):  		return basePowerRate;
+	// server/zone/objects/structure/StructureObject.idl(244):  		return basePowerRate;
 	return basePowerRate;
 }
 
 int StructureObjectImplementation::getSurplusMaintenance() {
-	// server/zone/objects/structure/StructureObject.idl(233):  		return surplusMaintenance;
+	// server/zone/objects/structure/StructureObject.idl(248):  		return surplusMaintenance;
 	return surplusMaintenance;
 }
 
 int StructureObjectImplementation::getSurplusPower() {
-	// server/zone/objects/structure/StructureObject.idl(237):  		return surplusPower;
+	// server/zone/objects/structure/StructureObject.idl(252):  		return surplusPower;
 	return surplusPower;
 }
 
 bool StructureObjectImplementation::isPublicStructure() {
-	// server/zone/objects/structure/StructureObject.idl(241):  		return publicStructure;
+	// server/zone/objects/structure/StructureObject.idl(256):  		return publicStructure;
 	return publicStructure;
 }
 
 void StructureObjectImplementation::setOwnerObjectID(unsigned long long objectID) {
-	// server/zone/objects/structure/StructureObject.idl(245):  		ownerObjectID = objectID;
+	// server/zone/objects/structure/StructureObject.idl(260):  		ownerObjectID = objectID;
 	ownerObjectID = objectID;
-	// server/zone/objects/structure/StructureObject.idl(246):  		structurePermissionList.addPermission(objectID, StructurePermissionList.OWNER);
+	// server/zone/objects/structure/StructureObject.idl(261):  		structurePermissionList.addPermission(objectID, StructurePermissionList.OWNER);
 	(&structurePermissionList)->addPermission(objectID, StructurePermissionList::OWNER);
 }
 
 void StructureObjectImplementation::setDeedObjectID(unsigned long long deedID) {
-	// server/zone/objects/structure/StructureObject.idl(250):  		deedObjectID = deedID;
+	// server/zone/objects/structure/StructureObject.idl(265):  		deedObjectID = deedID;
 	deedObjectID = deedID;
 }
 
 void StructureObjectImplementation::setLotSize(int lots) {
-	// server/zone/objects/structure/StructureObject.idl(254):  		lotSize = lots;
+	// server/zone/objects/structure/StructureObject.idl(269):  		lotSize = lots;
 	lotSize = lots;
 }
 
 void StructureObjectImplementation::setDestroyCode(unsigned int code) {
-	// server/zone/objects/structure/StructureObject.idl(258):  		destroyCode = code;
+	// server/zone/objects/structure/StructureObject.idl(273):  		destroyCode = code;
 	destroyCode = code;
 }
 
 void StructureObjectImplementation::setBaseMaintenanceRate(int rate) {
-	// server/zone/objects/structure/StructureObject.idl(262):  		baseMaintenanceRate = rate;
+	// server/zone/objects/structure/StructureObject.idl(277):  		baseMaintenanceRate = rate;
 	baseMaintenanceRate = rate;
 }
 
 void StructureObjectImplementation::setBasePowerRate(int rate) {
-	// server/zone/objects/structure/StructureObject.idl(266):  		basePowerRate = rate;
+	// server/zone/objects/structure/StructureObject.idl(281):  		basePowerRate = rate;
 	basePowerRate = rate;
 }
 
 void StructureObjectImplementation::setSurplusMaintenance(int surplus) {
-	// server/zone/objects/structure/StructureObject.idl(270):  		surplusMaintenance = surplus;
+	// server/zone/objects/structure/StructureObject.idl(285):  		surplusMaintenance = surplus;
 	surplusMaintenance = surplus;
 }
 
 void StructureObjectImplementation::addMaintenance(int add) {
-	// server/zone/objects/structure/StructureObject.idl(274):  		surplusMaintenance += add;
+	// server/zone/objects/structure/StructureObject.idl(289):  		surplusMaintenance += add;
 	surplusMaintenance += add;
 }
 
 void StructureObjectImplementation::setSurplusPower(int surplus) {
-	// server/zone/objects/structure/StructureObject.idl(278):  		surplusPower = surplus;
+	// server/zone/objects/structure/StructureObject.idl(293):  		surplusPower = surplus;
 	surplusPower = surplus;
 }
 
 void StructureObjectImplementation::addPower(int add) {
-	// server/zone/objects/structure/StructureObject.idl(282):  		surplusPower += add;
+	// server/zone/objects/structure/StructureObject.idl(297):  		surplusPower += add;
 	surplusPower += add;
 }
 
 void StructureObjectImplementation::setPublicStructure(bool privacy) {
-	// server/zone/objects/structure/StructureObject.idl(286):  		publicStructure = privacy;
+	// server/zone/objects/structure/StructureObject.idl(301):  		publicStructure = privacy;
 	publicStructure = privacy;
 }
 
 bool StructureObjectImplementation::isStructureObject() {
-	// server/zone/objects/structure/StructureObject.idl(290):  		return true;
+	// server/zone/objects/structure/StructureObject.idl(305):  		return true;
 	return true;
 }
 
 bool StructureObjectImplementation::isRedeedable() {
-	// server/zone/objects/structure/StructureObject.idl(295):  		return (getRedeedCost() < (surplusMaintenance + 1));
+	// server/zone/objects/structure/StructureObject.idl(310):  		return (getRedeedCost() < (surplusMaintenance + 1));
 	return (getRedeedCost() < (surplusMaintenance + 1));
 }
 
 int StructureObjectImplementation::getLength() {
-	// server/zone/objects/structure/StructureObject.idl(299):  		return length;
+	// server/zone/objects/structure/StructureObject.idl(314):  		return length;
 	return length;
 }
 
 void StructureObjectImplementation::setLength(int len) {
-	// server/zone/objects/structure/StructureObject.idl(303):  		length = len;
+	// server/zone/objects/structure/StructureObject.idl(318):  		length = len;
 	length = len;
 }
 
 int StructureObjectImplementation::getWidth() {
-	// server/zone/objects/structure/StructureObject.idl(307):  		return width;
+	// server/zone/objects/structure/StructureObject.idl(322):  		return width;
 	return width;
 }
 
 void StructureObjectImplementation::setWidth(int wid) {
-	// server/zone/objects/structure/StructureObject.idl(311):  		width = wid;
+	// server/zone/objects/structure/StructureObject.idl(326):  		width = wid;
 	width = wid;
 }
 
@@ -999,129 +1017,132 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(isValidDestroyCode(inv->getUnsignedIntParameter()));
 		break;
 	case 11:
-		resp->insertBoolean(isOnAdminList((SceneObject*) inv->getObjectParameter()));
+		scheduleMaintenanceExpirationEvent();
 		break;
 	case 12:
-		resp->insertBoolean(isOnAdminList(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(isOnAdminList((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 13:
-		resp->insertBoolean(isOnEntryList((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isOnAdminList(inv->getUnsignedLongParameter()));
 		break;
 	case 14:
-		resp->insertBoolean(isOnEntryList(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(isOnEntryList((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 15:
-		resp->insertBoolean(isOnBanList((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isOnEntryList(inv->getUnsignedLongParameter()));
 		break;
 	case 16:
-		resp->insertBoolean(isOnBanList(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(isOnBanList((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 17:
-		resp->insertBoolean(isOwnerOf((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isOnBanList(inv->getUnsignedLongParameter()));
 		break;
 	case 18:
-		resp->insertBoolean(isOwnerOf(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(isOwnerOf((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 19:
-		resp->insertBoolean(isOnAccessList((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isOwnerOf(inv->getUnsignedLongParameter()));
 		break;
 	case 20:
-		resp->insertBoolean(isOnAccessList(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(isOnAccessList((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 21:
-		sendPermissionListTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__PlayerCreature_String_));
+		resp->insertBoolean(isOnAccessList(inv->getUnsignedLongParameter()));
 		break;
 	case 22:
-		resp->insertBoolean(addPermission((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_addPermission__PlayerCreature_PlayerCreature_String_)));
+		sendPermissionListTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__PlayerCreature_String_));
 		break;
 	case 23:
-		resp->insertBoolean(addPermission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addPermission__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_addPermission__PlayerCreature_String_String_)));
+		resp->insertBoolean(addPermission((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_addPermission__PlayerCreature_PlayerCreature_String_)));
 		break;
 	case 24:
-		resp->insertBoolean(removePermission((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_removePermission__PlayerCreature_PlayerCreature_String_)));
+		resp->insertBoolean(addPermission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addPermission__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_addPermission__PlayerCreature_String_String_)));
 		break;
 	case 25:
-		resp->insertBoolean(removePermission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_removePermission__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_removePermission__PlayerCreature_String_String_)));
+		resp->insertBoolean(removePermission((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_removePermission__PlayerCreature_PlayerCreature_String_)));
 		break;
 	case 26:
-		resp->insertSignedInt(getRedeedCost());
+		resp->insertBoolean(removePermission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_removePermission__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_removePermission__PlayerCreature_String_String_)));
 		break;
 	case 27:
-		resp->insertLong(getOwnerObjectID());
+		resp->insertSignedInt(getRedeedCost());
 		break;
 	case 28:
-		resp->insertLong(getDeedObjectID());
+		resp->insertLong(getOwnerObjectID());
 		break;
 	case 29:
-		resp->insertSignedInt(getLotSize());
+		resp->insertLong(getDeedObjectID());
 		break;
 	case 30:
-		resp->insertInt(getDestroyCode());
+		resp->insertSignedInt(getLotSize());
 		break;
 	case 31:
-		resp->insertSignedInt(getBaseMaintenanceRate());
+		resp->insertInt(getDestroyCode());
 		break;
 	case 32:
-		resp->insertSignedInt(getBasePowerRate());
+		resp->insertSignedInt(getBaseMaintenanceRate());
 		break;
 	case 33:
-		resp->insertSignedInt(getSurplusMaintenance());
+		resp->insertSignedInt(getBasePowerRate());
 		break;
 	case 34:
-		resp->insertSignedInt(getSurplusPower());
+		resp->insertSignedInt(getSurplusMaintenance());
 		break;
 	case 35:
-		resp->insertBoolean(isPublicStructure());
+		resp->insertSignedInt(getSurplusPower());
 		break;
 	case 36:
-		setOwnerObjectID(inv->getUnsignedLongParameter());
+		resp->insertBoolean(isPublicStructure());
 		break;
 	case 37:
-		setDeedObjectID(inv->getUnsignedLongParameter());
+		setOwnerObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 38:
-		setLotSize(inv->getSignedIntParameter());
+		setDeedObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 39:
-		setDestroyCode(inv->getUnsignedIntParameter());
+		setLotSize(inv->getSignedIntParameter());
 		break;
 	case 40:
-		setBaseMaintenanceRate(inv->getSignedIntParameter());
+		setDestroyCode(inv->getUnsignedIntParameter());
 		break;
 	case 41:
-		setBasePowerRate(inv->getSignedIntParameter());
+		setBaseMaintenanceRate(inv->getSignedIntParameter());
 		break;
 	case 42:
-		setSurplusMaintenance(inv->getSignedIntParameter());
+		setBasePowerRate(inv->getSignedIntParameter());
 		break;
 	case 43:
-		addMaintenance(inv->getSignedIntParameter());
+		setSurplusMaintenance(inv->getSignedIntParameter());
 		break;
 	case 44:
-		setSurplusPower(inv->getSignedIntParameter());
+		addMaintenance(inv->getSignedIntParameter());
 		break;
 	case 45:
-		addPower(inv->getSignedIntParameter());
+		setSurplusPower(inv->getSignedIntParameter());
 		break;
 	case 46:
-		setPublicStructure(inv->getBooleanParameter());
+		addPower(inv->getSignedIntParameter());
 		break;
 	case 47:
-		resp->insertBoolean(isStructureObject());
+		setPublicStructure(inv->getBooleanParameter());
 		break;
 	case 48:
-		resp->insertBoolean(isRedeedable());
+		resp->insertBoolean(isStructureObject());
 		break;
 	case 49:
-		resp->insertSignedInt(getLength());
+		resp->insertBoolean(isRedeedable());
 		break;
 	case 50:
-		setLength(inv->getSignedIntParameter());
+		resp->insertSignedInt(getLength());
 		break;
 	case 51:
-		resp->insertSignedInt(getWidth());
+		setLength(inv->getSignedIntParameter());
 		break;
 	case 52:
+		resp->insertSignedInt(getWidth());
+		break;
+	case 53:
 		setWidth(inv->getSignedIntParameter());
 		break;
 	default:
@@ -1149,6 +1170,10 @@ unsigned int StructureObjectAdapter::generateDestroyCode() {
 
 bool StructureObjectAdapter::isValidDestroyCode(unsigned int code) {
 	return ((StructureObjectImplementation*) impl)->isValidDestroyCode(code);
+}
+
+void StructureObjectAdapter::scheduleMaintenanceExpirationEvent() {
+	((StructureObjectImplementation*) impl)->scheduleMaintenanceExpirationEvent();
 }
 
 bool StructureObjectAdapter::isOnAdminList(SceneObject* obj) {

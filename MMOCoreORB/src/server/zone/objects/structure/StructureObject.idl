@@ -45,7 +45,9 @@ which carries forward this exception.
 package server.zone.objects.structure;
 
 import server.zone.objects.tangible.TangibleObject;
+
 include server.zone.objects.structure.StructurePermissionList;
+import server.zone.objects.structure.events.StructureMaintenanceTask;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
@@ -53,8 +55,17 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.templates.SharedObjectTemplate;
 
 class StructureObject extends TangibleObject {
+	protected transient StructureMaintenanceTask structureMaintenanceTask;
+	//protected transient StructurePowerTask structurePowerTask;
+	
 	@dereferenced
 	protected StructurePermissionList structurePermissionList;
+	
+	@dereferenced
+	protected Time maintenanceExpires;
+	
+	@dereferenced
+	protected Time powerExpires;
 	
 	protected unsigned long ownerObjectID;
 	protected unsigned long deedObjectID;
@@ -100,6 +111,8 @@ class StructureObject extends TangibleObject {
 		length = 0;
 		
 		width = 0;
+		
+		structureMaintenanceTask = null;
 	}
 	
 	public void initializeTransientMembers() {
@@ -140,6 +153,8 @@ class StructureObject extends TangibleObject {
 	public boolean isValidDestroyCode(unsigned int code) {
 		return (destroyCode == code);
 	}
+	
+	public native void scheduleMaintenanceExpirationEvent();
 	
 	/**
 	 * Returns if the object is on the admin list or not for this structure.

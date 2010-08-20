@@ -72,5 +72,8 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	terminalLocation = {},
 		
 	--Elevator Terminals format is template_path, cell#, x, z, y, qx, qy, qz, qw, dz - where dz is the delta z.
-	elevatorTerminals = {}
+	elevatorTerminals = {},
+	
+	length = 1,
+	width = 1
 }

@@ -46,6 +46,8 @@ object_installation_manufacture_clothing_factory = object_installation_manufactu
 	lotSize = 1,
 	baseMaintenanceRate = 50,
 	basePowerRate = 50,
+	width = 3,
+	length = 3,
 	craftingTabsSupported = {2,8,16384,32768} -- See DraftSchematicObjectTemplate,h for list
 }
 
