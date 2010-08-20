@@ -81,15 +81,13 @@ public:
 					if (member->isPlayerCreature()) {
 						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
 
-						if (memberPlayer->isInRange(player, 128.0)) {
-							if (!arguments.toString().isEmpty())
-								memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
-							else
-								memberPlayer->sendSystemMessage("@cbt_spam:retreat_buff");
+						if (!arguments.toString().isEmpty())
+							memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
+						else
+							memberPlayer->sendSystemMessage("@cbt_spam:retreat_buff");
 
-							Locker clocker(memberPlayer, creature);
-							memberPlayer->enqueueCommand(actionCRC, 0, 0, "");
-						}
+						Locker clocker(memberPlayer, creature);
+						memberPlayer->enqueueCommand(actionCRC, 0, 0, "");
 					}
 
 				}

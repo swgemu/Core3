@@ -76,12 +76,6 @@ public:
 			return GENERALERROR;
 		}
 
-		uint32 retreatCRC = String("retreat").hashCode();
-
-		if (creature->hasBuff(retreatCRC)) {
-			return GENERALERROR;
-		}
-
 		float burstRunMod = (float) creature->getSkillMod("burst_run");
 
 		if (burstRunMod > 100.0f) {
@@ -147,7 +141,9 @@ public:
 			return false;
 		}
 
-		if (creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) {
+		uint32 retreatCRC = String("retreat").hashCode();
+
+		if ((creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) && (!creature->hasBuff(retreatCRC))) {
 			creature->sendSystemMessage("combat_effects", "burst_run_no");
 
 			return false;
