@@ -79,12 +79,18 @@ public:
 		}
 
 		float burstRunMod = (float) creature->getSkillMod("burst_run");
-		SceneObject* leaderObject = creature->getGroup()->getLeader();
 
-		if ((!leaderObject->isPlayerCreature()) || (leaderObject == NULL))
+		ManagedReference<GroupObject*> group = creature->getGroup();
+
+		if (group == NULL)
 			return GENERALERROR;
 
-		PlayerCreature* leader = (PlayerCreature*)leaderObject;
+		ManagedReference<SceneObject*> leaderObject = group->getLeader();
+
+		if (leaderObject == NULL || !leaderObject->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* leader = (PlayerCreature*) leaderObject.get();
 
 		burstRunMod += (float) leader->getSkillMod("group_burst_run");
 

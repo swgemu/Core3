@@ -80,12 +80,16 @@ public:
 				bool success = false;
 
 				for (int i = 0; i < group->getGroupSize(); i++) {
-					SceneObject* member = group->getGroupMember(i);
+					ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
 					if (member->isPlayerCreature()) {
-						PlayerCreature* memberPlayer = (PlayerCreature*) member;
+						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+
 						if ((memberPlayer->isInRange(player, 128.0)) && (memberPlayer->isInCombat())) {
 							if (!success)
 								player->sendSystemMessage("@cbt_spam:volley_success_single");
+
+							Locker clocker(memberPlayer, creature);
 
 							memberPlayer->enqueueCommand(actionCRC, 0, targetID, "");
 							success = true;
