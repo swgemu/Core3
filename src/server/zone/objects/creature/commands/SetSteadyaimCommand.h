@@ -63,6 +63,35 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRangedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		if (creature == NULL)
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> leaderObject = creature->getGroup()->getLeader();
+
+		if (!leaderObject->isPlayerCreature() || leaderObject == NULL)
+			return GENERALERROR;
+
+		PlayerCreature* leader = (PlayerCreature*) leaderObject.get();
+
+		int amount = 5;
+
+		amount += leader->getSkillMod("steadyaim");
+
+		uint32 steadyAim = String("steadyaim").hashCode();
+
+		int duration = 300;
+
+		ManagedReference<Buff*> buff = new Buff(creature, steadyAim, duration, BuffType::SKILL);
+		buff->setSkillModifier("aim", amount);
+
+		creature->addBuff(buff);
+
 		return SUCCESS;
 	}
 

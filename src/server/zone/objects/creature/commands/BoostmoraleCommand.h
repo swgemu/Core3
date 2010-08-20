@@ -46,6 +46,7 @@ which carries forward this exception.
 #define BOOSTMORALECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 
 class BoostmoraleCommand : public QueueCommand {
 public:
@@ -62,6 +63,77 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (creature->isPlayerCreature()) {
+
+			ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+			ManagedReference<GroupObject*> group = player->getGroup();
+
+			if (group == NULL) {
+				player->sendSystemMessage("@error_message:not_grouped");
+			}
+			else if (group->getLeader() == player) {
+
+				float groupMod = (float) group->getGroupSize() / 10.0f;
+				if (groupMod < 1.0)
+					groupMod += 1.0f;
+
+				int hamCost = (int) (100.0f * groupMod);
+
+				creature->inflictDamage(creature, CreatureAttribute::HEALTH, hamCost, true);
+				creature->inflictDamage(creature, CreatureAttribute::ACTION, hamCost, true);
+				creature->inflictDamage(creature, CreatureAttribute::MIND, hamCost, true);
+
+				String action = "setboostmorale";
+				uint64 actionCRC = action.hashCode();
+
+				int wounds[9] = {0,0,0,0,0,0,0,0,0};
+				String vector = "";
+
+				for (int i = 0; i < group->getGroupSize(); i++) {
+
+					ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
+					if (member->isPlayerCreature() && (member != NULL)) {
+
+						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+
+						if (!arguments.toString().isEmpty())
+							memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
+						else
+							memberPlayer->sendSystemMessage("@cbt_spam:formup_buff");
+
+						for (int j = 0; j < 9; j++) {
+							wounds[j] = wounds[j] + memberPlayer->getWounds(j);
+
+							if (i == group->getGroupSize() - 1) {
+								wounds[j] = (int) wounds[j] / group->getGroupSize();
+								vector += String::valueOf(wounds[j]);
+
+								if (j < 8)
+									vector += ",";
+							}
+						}
+					}
+				}
+
+				for (int i = 0; i < group->getGroupSize(); i++) {
+
+					ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
+					if (member->isPlayerCreature()) {
+
+						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+
+						Locker clocker(memberPlayer, creature);
+						memberPlayer->enqueueCommand(actionCRC, 0, 0, vector);
+					}
+				}
+
+			} else {
+				player->sendSystemMessage("@error_message:not_group_leader");
+			}
+		}
 
 		return SUCCESS;
 	}

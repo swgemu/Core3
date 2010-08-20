@@ -86,6 +86,16 @@ cdefPistol = {
 	template = "object/weapon/ranged/pistol/pistol_cdef.iff",
 	equipped = 0
 }
+	
+cdefRifle = {
+	template = "object/weapon/ranged/rifle/rifle_cdef.iff",
+	equipped = 0
+}
+
+cdefCarbine = {
+	template = "object/weapon/ranged/carbine/carbine_cdef.iff",
+	equipped = 0
+}
 
 survivalKnife = {
 	template = "object/weapon/melee/knife/knife_survival.iff",

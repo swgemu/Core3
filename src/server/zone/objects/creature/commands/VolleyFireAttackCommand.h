@@ -75,6 +75,23 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		SceneObject* leaderObject = creature->getGroup()->getLeader();
+
+		if ((!leaderObject->isPlayerCreature()) || (leaderObject == NULL))
+			return GENERALERROR;
+
+		PlayerCreature* leader = (PlayerCreature*)leaderObject;
+
+		if (leader->getSkillMod("volley") > 0) {
+			float skillMod = (float) leader->getSkillMod("volley");
+
+			if (skillMod > 50)
+				skillMod = 50.0f;
+
+			damageMultiplier += skillMod / 10;
+		}
+
+
 		return doCombatAction(creature, target);
 	}
 

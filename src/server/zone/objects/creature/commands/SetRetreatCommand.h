@@ -66,12 +66,6 @@ public:
 		if (!checkRetreat(creature))
 			return GENERALERROR;
 
-		uint32 crc = String("burstrun").hashCode();
-
-		if (creature->hasBuff(crc)) {
-			return GENERALERROR;
-		}
-
 		uint32 retreatCRC = String("retreat").hashCode();
 
 		if (creature->hasBuff(retreatCRC)) {
@@ -97,6 +91,26 @@ public:
 		if (burstRunMod > 100.0f) {
 			burstRunMod = 100.0f;
 		}
+
+		float hamCost = 100.0f;
+
+		float efficiency = 1.0f - (burstRunMod / 100.0f);
+		hamCost *= efficiency;
+		int newHamCost = (int) hamCost;
+
+		//Check for and deduct HAM cost.
+		if (creature->getHAM(CreatureAttribute::HEALTH) <= newHamCost
+				|| creature->getHAM(CreatureAttribute::ACTION) <= newHamCost
+				|| creature->getHAM(CreatureAttribute::MIND) <= newHamCost) {
+			creature->sendSystemMessage("combat_effects", "burst_run_wait"); //"You are too tired to Burst Run."
+
+			return GENERALERROR;
+
+		}
+
+		creature->inflictDamage(creature, CreatureAttribute::HEALTH, newHamCost, true);
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, newHamCost, true);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, newHamCost, true);
 
 		ParameterizedStringId startStringId("cbt_spam", "burstrun_start_single");
 		ParameterizedStringId endStringId("cbt_spam", "burstrun_stop_single");
@@ -135,7 +149,9 @@ public:
 			return false;
 		}
 
-		if (creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) {
+		uint32 crc = String("burstrun").hashCode();
+
+		if ((creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) && (!creature->hasBuff(crc))) {
 			creature->sendSystemMessage("combat_effects", "burst_run_no");
 
 			return false;
