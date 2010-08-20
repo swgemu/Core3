@@ -48,9 +48,8 @@ object_installation_mining_organic_mining_organic_flora_farm_medium = object_ins
 	installationType = 3,
 	basePowerRate = 50,
 	width = 3,
-	length = 3
-
-
+	length = 3,
+	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_2.iff"
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_organic_mining_organic_flora_farm_medium, "object/installation/mining_organic/mining_organic_flora_farm_medium.iff")

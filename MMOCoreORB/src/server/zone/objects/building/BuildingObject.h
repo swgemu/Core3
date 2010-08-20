@@ -172,8 +172,6 @@ public:
 
 	int notifyStructurePlaced(PlayerCreature* player);
 
-	bool checkRequisitesForPlacement(PlayerCreature* player);
-
 	Vector3 getEjectionPoint();
 
 	void removeFromZone();
@@ -287,8 +285,6 @@ public:
 
 	virtual int notifyStructurePlaced(PlayerCreature* player);
 
-	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
-
 	Vector3 getEjectionPoint();
 
 	void removeFromZone();
@@ -397,8 +393,6 @@ public:
 	void updateCellPermissionsTo(SceneObject* player);
 
 	int notifyStructurePlaced(PlayerCreature* player);
-
-	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	void removeFromZone();
 

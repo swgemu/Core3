@@ -48,7 +48,8 @@ object_installation_mining_ore_mining_ore_harvester_heavy = object_installation_
 	installationType = 6,
 	basePowerRate = 75,
 	width = 5,
-	length = 3
+	length = 3,
+	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_heavy.iff"
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_ore_mining_ore_harvester_heavy, "object/installation/mining_ore/mining_ore_harvester_heavy.iff")

@@ -30,8 +30,6 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, Player
 	if (player == NULL || targetPlayer == NULL)
 		return false;
 
-	//player->info("Adding entry to " + listName + " list.", true);
-
 	if ((listName == "ENTRY" || listName =="ADMIN") && isOnBanList(targetPlayer)) {
 		player->sendSystemMessage("@player_structure:no_banned"); //You cannot add a banned player to the entry list.
 		return false;

@@ -48,7 +48,8 @@ object_installation_mining_gas_mining_gas_harvester_style_1 = object_installatio
 	installationType = 4, 
 	basePowerRate = 25,
 	width = 1,
-	length = 1
+	length = 1,
+	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_1.iff"
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_gas_mining_gas_harvester_style_1, "object/installation/mining_gas/mining_gas_harvester_style_1.iff")
