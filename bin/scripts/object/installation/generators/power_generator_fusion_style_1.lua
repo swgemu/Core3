@@ -46,9 +46,9 @@ object_installation_generators_power_generator_fusion_style_1 = object_installat
 	baseMaintenanceRate = 60,
 	-- SOLAR = 1; CHEMICAL = 2; FLORA = 3; GAS = 4; GEOTHERMAL = 5; MINERAL = 6; WATER = 7; WIND = 8; FUSION = 9;
 	installationType = 9,
-	basePowerRate = 0
-
-
+	basePowerRate = 0,
+	width = 5,
+	length = 3
 }
 
 ObjectTemplates:addTemplate(object_installation_generators_power_generator_fusion_style_1, "object/installation/generators/power_generator_fusion_style_1.iff")

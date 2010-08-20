@@ -47,10 +47,8 @@ object_building_player_city_bank_corellia = object_building_player_city_shared_b
 	baseMaintenanceRate = 0,
 	mapLocationsType1 = 2,
 	allowedZones = {0,7},
-	
-	length = 3,
-	
-	width = 3,
+	length = 4,
+	width = 4,
 	cityRankRequired = 2,
 	gameObjectType = 4104,
 	abilitiesRequired = {"placeBank"}

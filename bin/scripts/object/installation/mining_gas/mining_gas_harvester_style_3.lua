@@ -46,9 +46,9 @@ object_installation_mining_gas_mining_gas_harvester_style_3 = object_installatio
 	baseMaintenanceRate = 90,
 	-- SOLAR = 1; CHEMICAL = 2; FLORA = 3; GAS = 4; GEOTHERMAL = 5; MINERAL = 6; WATER = 7; WIND = 8; FUSION = 9;
 	installationType = 4,
-	basePowerRate = 75
-
-
+	basePowerRate = 75,
+	length = 3,
+	width = 3
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_gas_mining_gas_harvester_style_3, "object/installation/mining_gas/mining_gas_harvester_style_3.iff")

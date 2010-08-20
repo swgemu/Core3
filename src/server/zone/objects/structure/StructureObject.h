@@ -14,6 +14,22 @@
 namespace server {
 namespace zone {
 namespace objects {
+namespace structure {
+namespace events {
+
+class StructureMaintenanceTask;
+
+} // namespace events
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure::events;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -89,6 +105,8 @@ public:
 	unsigned int generateDestroyCode();
 
 	bool isValidDestroyCode(unsigned int code);
+
+	void scheduleMaintenanceExpirationEvent();
 
 	bool isOnAdminList(SceneObject* obj);
 
@@ -196,7 +214,13 @@ namespace structure {
 
 class StructureObjectImplementation : public TangibleObjectImplementation {
 protected:
+	StructureMaintenanceTask* structureMaintenanceTask;
+
 	StructurePermissionList structurePermissionList;
+
+	Time maintenanceExpires;
+
+	Time powerExpires;
 
 	unsigned long long ownerObjectID;
 
@@ -236,6 +260,8 @@ public:
 	virtual unsigned int generateDestroyCode();
 
 	bool isValidDestroyCode(unsigned int code);
+
+	void scheduleMaintenanceExpirationEvent();
 
 	bool isOnAdminList(SceneObject* obj);
 
@@ -369,6 +395,8 @@ public:
 	unsigned int generateDestroyCode();
 
 	bool isValidDestroyCode(unsigned int code);
+
+	void scheduleMaintenanceExpirationEvent();
 
 	bool isOnAdminList(SceneObject* obj);
 

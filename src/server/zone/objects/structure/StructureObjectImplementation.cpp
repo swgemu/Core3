@@ -7,6 +7,7 @@
 
 #include "StructureObject.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -29,16 +30,18 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, Player
 	if (player == NULL || targetPlayer == NULL)
 		return false;
 
-	if (isOnBanList(targetPlayer)) {
+	//player->info("Adding entry to " + listName + " list.", true);
+
+	if ((listName == "ENTRY" || listName =="ADMIN") && isOnBanList(targetPlayer)) {
+		player->sendSystemMessage("@player_structure:no_banned"); //You cannot add a banned player to the entry list.
+		return false;
+	}
+
+	if (listName != "BAN" && isOnBanList(targetPlayer)) {
 		ParameterizedStringId params;
 		params.setStringId("@player_structure:cannot_add_banned"); //%NO must first be removed from the banned list.
 		params.setTO(targetPlayer);
 		player->sendSystemMessage(params);
-		return false;
-	}
-
-	if ((listName == "ENTRY" || listName =="ADMIN") && isOnBanList(targetPlayer)) {
-		player->sendSystemMessage("@player_structure:no_banned"); //You cannot add a banned player to the entry list.
 		return false;
 	}
 
@@ -61,16 +64,16 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, const 
 	if (player == NULL || targetPlayer == NULL)
 		return false;
 
-	if (isOnBanList(targetPlayer)) {
+	if ((listName == "ENTRY" || listName =="ADMIN") && isOnBanList(targetPlayer)) {
+		player->sendSystemMessage("@player_structure:no_banned"); //You cannot add a banned player to the entry list.
+		return false;
+	}
+
+	if (listName != "BAN" && isOnBanList(targetPlayer)) {
 		ParameterizedStringId params;
 		params.setStringId("@player_structure:cannot_add_banned"); //%NO must first be removed from the banned list.
 		params.setTO(targetPlayer);
 		player->sendSystemMessage(params);
-		return false;
-	}
-
-	if ((listName == "ENTRY" || listName =="ADMIN") && isOnBanList(targetPlayer)) {
-		player->sendSystemMessage("@player_structure:no_banned"); //You cannot add a banned player to the entry list.
 		return false;
 	}
 
@@ -122,4 +125,19 @@ bool StructureObjectImplementation::removePermission(PlayerCreature* player, con
 
 	return structurePermissionList.removePermission(targetPlayer->getObjectID(), structurePermissionList.getPermissionFromListName(listName));
 
+}
+
+void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
+	float timeRemaining = surplusMaintenance / baseMaintenanceRate / 3600000;
+
+	maintenanceExpires.updateToCurrentTime();
+	maintenanceExpires.addMiliTime(timeRemaining);
+
+	if (structureMaintenanceTask == NULL)
+		structureMaintenanceTask = new StructureMaintenanceTask(_this);
+
+	if (structureMaintenanceTask->isScheduled())
+		structureMaintenanceTask->reschedule();
+	else
+		structureMaintenanceTask->schedule(timeRemaining);
 }

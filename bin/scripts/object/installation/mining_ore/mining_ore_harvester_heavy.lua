@@ -46,9 +46,9 @@ object_installation_mining_ore_mining_ore_harvester_heavy = object_installation_
 	baseMaintenanceRate = 90,
 	-- SOLAR = 1; CHEMICAL = 2; FLORA = 3; GAS = 4; GEOTHERMAL = 5; MINERAL = 6; WATER = 7; WIND = 8; FUSION = 9;
 	installationType = 6,
-	basePowerRate = 75
-
-
+	basePowerRate = 75,
+	width = 5,
+	length = 3
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_ore_mining_ore_harvester_heavy, "object/installation/mining_ore/mining_ore_harvester_heavy.iff")
