@@ -42,12 +42,14 @@
 
 
 object_building_player_city_garden_naboo_med_01 = object_building_player_city_shared_garden_naboo_med_01:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
+	length = 5,
+	width = 5,
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeMediumGarden"}
-
 
 }
 

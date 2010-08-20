@@ -42,12 +42,16 @@
 
 
 object_building_player_city_hospital_tatooine = object_building_player_city_shared_hospital_tatooine:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
+	length = 5,
+	width = 5,
 	gameObjectType = 517,
 	mapLocationsType1 = 13,
 	cityRankRequired = 3
+
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_hospital_tatooine, "object/building/player/city/hospital_tatooine.iff")

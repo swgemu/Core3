@@ -42,12 +42,16 @@
 
 
 object_building_player_city_garden_corellia_lrg_01 = object_building_player_city_shared_garden_corellia_lrg_01:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {0,7},
+	
+	length = 7,
+	
+	width = 7,
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeLargeGarden"}
-
 
 }
 

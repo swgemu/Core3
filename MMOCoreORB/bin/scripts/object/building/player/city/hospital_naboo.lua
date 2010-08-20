@@ -42,12 +42,16 @@
 
 
 object_building_player_city_hospital_naboo = object_building_player_city_shared_hospital_naboo:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
+	length = 5,
+	width = 5,
 	gameObjectType = 517,
 	mapLocationsType1 = 13,
 	cityRankRequired = 3
+
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_hospital_naboo, "object/building/player/city/hospital_naboo.iff")

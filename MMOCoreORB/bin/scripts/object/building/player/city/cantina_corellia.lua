@@ -42,12 +42,18 @@
 
 
 object_building_player_city_cantina_corellia = object_building_player_city_shared_cantina_corellia:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	gameObjectType = 518,
 	mapLocationsType1 = 3,
 	allowedZones = {0,7},
+	
+	length = 7,
+	
+	width = 7,
 	cityRankRequired = 2
+
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cantina_corellia, "object/building/player/city/cantina_corellia.iff")
