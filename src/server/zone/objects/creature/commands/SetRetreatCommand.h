@@ -63,7 +63,86 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!checkRetreat(creature))
+			return GENERALERROR;
+
+		uint32 crc = String("burstrun").hashCode();
+
+		if (creature->hasBuff(crc)) {
+			return GENERALERROR;
+		}
+
+		uint32 retreatCRC = String("retreat").hashCode();
+
+		if (creature->hasBuff(retreatCRC)) {
+			return GENERALERROR;
+		}
+
+		float burstRunMod = (float) creature->getSkillMod("burst_run");
+		SceneObject* leaderObject = creature->getGroup()->getLeader();
+
+		if ((!leaderObject->isPlayerCreature()) || (leaderObject == NULL))
+			return GENERALERROR;
+
+		PlayerCreature* leader = (PlayerCreature*)leaderObject;
+
+		burstRunMod += (float) leader->getSkillMod("group_burst_run");
+
+		if (burstRunMod > 100.0f) {
+			burstRunMod = 100.0f;
+		}
+
+		ParameterizedStringId startStringId("cbt_spam", "burstrun_start_single");
+		ParameterizedStringId endStringId("cbt_spam", "burstrun_stop_single");
+
+		int duration = 30;
+
+		ManagedReference<Buff*> buff = new Buff(creature, retreatCRC, duration, BuffType::SKILL);
+
+		buff->setSpeedModifier(4.424f);
+		buff->setStartMessage(startStringId);
+		buff->setEndMessage(endStringId);
+
+		creature->addBuff(buff);
+
+		creature->updateCooldownTimer("retreat", (300 + duration) * 1000);
+
 		return SUCCESS;
+	}
+
+	bool checkRetreat(CreatureObject* creature) {
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("cbt_spam", "no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
+			return false;
+		}
+
+		Zone* zone = creature->getZone();
+
+		if (creature->getZone() == NULL) {
+			return false;
+		}
+
+		if (zone->getZoneID() == 39) {
+			creature->sendSystemMessage("cbt_spam", "burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
+
+			return false;
+		}
+
+		if (creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) {
+			creature->sendSystemMessage("combat_effects", "burst_run_no");
+
+			return false;
+		}
+
+		if (!creature->checkCooldownRecovery("retreat")) {
+			// is there a message for retreat?
+			creature->sendSystemMessage("combat_effects", "burst_run_no");
+
+			return false;
+		}
+
+		return true;
 	}
 
 };

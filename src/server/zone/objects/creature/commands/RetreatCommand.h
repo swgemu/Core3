@@ -63,6 +63,40 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (creature->isPlayerCreature()) {
+
+			ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+			ManagedReference<GroupObject*> group = player->getGroup();
+
+			if (group == NULL) {
+				player->sendSystemMessage("@error_message:not_grouped");
+			}
+			else if (group->getLeader() == player) {
+
+				String action = "setretreat";
+				uint64 actionCRC = action.hashCode();
+
+				for (int i = 0; i < group->getGroupSize(); i++) {
+					SceneObject* member = group->getGroupMember(i);
+					if (member->isPlayerCreature()) {
+						PlayerCreature* memberPlayer = (PlayerCreature*) member;
+						if (memberPlayer->isInRange(player, 128.0)) {
+							if (!arguments.toString().isEmpty())
+								memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
+							else
+								memberPlayer->sendSystemMessage("@cbt_spam:retreat_buff");
+							memberPlayer->enqueueCommand(actionCRC, 0, 0, "");
+						}
+					}
+
+				}
+
+
+			} else {
+				player->sendSystemMessage("@error_message:not_group_leader");
+			}
+		}
+
 		return SUCCESS;
 	}
 
