@@ -8,6 +8,7 @@
 class StructureConstructionCompleteTask : public Task {
 	StructureManager* structureManager;
 	ManagedReference<PlayerCreature*> player;
+	ManagedReference<StructureObject*> structureObject;
 	SharedStructureObjectTemplate* structureTemplate;
 	ManagedReference<SceneObject*> constructionMarker;
 	uint64 deedID;
@@ -16,9 +17,10 @@ class StructureConstructionCompleteTask : public Task {
 	Quaternion direction;
 
 public:
-	StructureConstructionCompleteTask(StructureManager* structManager, PlayerCreature* play, SharedStructureObjectTemplate* ssot, uint64 deedid, float x, float y, const Quaternion& dir, SceneObject* marker) : Task() {
+	StructureConstructionCompleteTask(StructureManager* structManager, PlayerCreature* play, StructureObject* structure, SharedStructureObjectTemplate* ssot, uint64 deedid, float x, float y, const Quaternion& dir, SceneObject* marker) : Task() {
 		structureManager = structManager;
 		player = play;
+		structureObject = structure;
 		structureTemplate = ssot;
 		deedID = deedid;
 		positionX = x;
@@ -36,7 +38,7 @@ public:
 			constructionMarker->removeFromZone();
 			constructionMarker->destroyObjectFromDatabase(true);
 
-			structureManager->placeStructure(player, structureTemplate, deedID, positionX, positionY, direction);
+			structureManager->placeStructure(player, structureObject, structureTemplate, deedID, positionX, positionY, direction);
 
 			player->unlock();
 		} catch (...) {

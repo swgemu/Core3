@@ -122,6 +122,8 @@ public:
 		if (listName != "ADMIN" && listName != "ENTRY" && listName != "BAN" && listName != "HOPPER" && listName != "VENDOR")
 			return INVALIDPARAMETERS;
 
+		creature->sendSystemMessage(arguments.toString());
+
 		if (action == "add") {
 			if (structureObject->addPermission(player, targetPlayerName, listName)) {
 				ParameterizedStringId params;

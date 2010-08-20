@@ -48,9 +48,8 @@ object_installation_mining_liquid_mining_liquid_harvester_style_2 = object_insta
 	installationType = 2,
 	basePowerRate = 50,
 	length = 3,
-	width = 5
-
-
+	width = 5,
+	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_2.iff"
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_mining_liquid_harvester_style_2, "object/installation/mining_liquid/mining_liquid_harvester_style_2.iff")
