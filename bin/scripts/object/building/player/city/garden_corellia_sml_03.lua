@@ -47,7 +47,7 @@ object_building_player_city_garden_corellia_sml_03 = object_building_player_city
 	baseMaintenanceRate = 0,
 	allowedZones = {0,7},
 	
-	length 3,
+	length = 3,
 	
 	width = 3,
 	cityRankRequired = 1,
