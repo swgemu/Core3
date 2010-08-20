@@ -907,159 +907,6 @@ int StructureManagerImplementation::constructStructure(PlayerCreature* player, S
 	return 0;
 }
 
-/*
-int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* player, uint64 deedID, float x, float y, int angle) {
-	ZoneServer* zoneServer = player->getZoneServer();
-
-	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-	ManagedReference<SceneObject*> obj = zoneServer->getObject(deedID);
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-	if (obj == NULL || !obj->isDeedObject()) {
-		//Invalid deed object message.
-		player->error("invalid deed object");
-		return 1;
-	}
-
-	if (inventory == NULL || !obj->isASubChildOf(inventory)) {
-		//No longer in possession of deed, or deed doesn't belong to you message.
-		player->error("deed is not in inventory");
-		return 1;
-	}
-
-	Deed* deed = (Deed*) obj.get();
-
-	String structureTemplateString = deed->getGeneratedObjectTemplate();
-	uint32 structureTemplateCRC = structureTemplateString.hashCode();
-
-	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(structureTemplateCRC));
-
-	if (ssot == NULL) {
-		//Invalid template type returned or it didn't exist.
-		player->error("invalid template");
-		return 1;
-	}
-
-	PlanetManager* planetManager = zone->getPlanetManager();
-	StringId errorStf;
-
-	if (planetManager->isNoBuildArea(x, y, errorStf)) {
-		ParameterizedStringId sendString("player_structure", "city_too_close");
-		sendString.setTO(errorStf.getFile(), errorStf.getStringID());
-
-		player->sendSystemMessage(sendString);
-
-		return 1;
-	}
-
-	ManagedReference<ActiveArea*> area = player->getActiveArea();
-
-
-	if (area != NULL) {
-		if (area->isRegion()) {
-
-			if (area->isStaticObject()) {
-				player->sendSystemMessage("@player_structure:no_room"); //There is no room to place the structure here.
-				return 1;
-			}
-		} else {
-			player->sendSystemMessage("@player_structure:no_room"); //There is no room to place the structure here.
-			return 1;
-		}
-	}
-
-	if (!ssot->isAllowedZone(zone->getZoneID())) {
-		//Message about wrong planet.
-		player->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
-		return 1;
-	}
-
-	int lotsRemaining = player->getLotsRemaining();
-	int lotsRequired = 0;
-
-	//If the player is not an admin, then find out how many lots are required.
-	if (playerObject != NULL && !playerObject->isPrivileged())
-		lotsRequired = ssot->getLotSize();
-
-	if (lotsRemaining < lotsRequired) {
-		ParameterizedStringId stringId;
-		stringId.setStringId("@player_structure:not_enough_lots"); //This structure requires %DI lots.
-		stringId.setDI(lotsRequired);
-
-		player->sendSystemMessage(stringId);
-		return 1;
-	}
-
-	ObjectManager* objectManager = ObjectManager::instance();
-	ManagedReference<SceneObject*> structure = objectManager->createObject(ssot->getServerObjectCRC(), 1, "playerstructures");
-
-	bool success = false;
-
-	if (structure->isBuildingObject()) {
-		success = ((BuildingObject*)structure.get())->checkRequisitesForPlacement(player);
-
-	} else if (structure->isInstallationObject()) {
-		success = ((InstallationObject*)structure.get())->checkRequisitesForPlacement(player);
-	} else {
-		error("structure not a building object nor a installation object for deed " + TemplateManager::instance()->getTemplateFile(deed->getServerObjectCRC()));
-
-		return 1;
-	}
-
-	if (!success) {
-		structure->destroyObjectFromDatabase(true);
-
-		return 1;
-	}
-
-	player->setLotsRemaining(lotsRemaining - lotsRequired);
-
-	inventory->removeObject(obj, true);
-
-	Quaternion direction;
-	Vector3 unity(0, 1, 0);
-	direction.rotate(unity, angle);
-
-	constructStructure(player, ssot, structure, deedID, x, y, direction);
-
-	return 0;
-}
-
-*/
-
-/*
-int StructureManagerImplementation::constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, SceneObject* structure, uint64 deedID, float x, float y, const Quaternion& direction) {
-	player->info("constructing structure", true);
-
-	String constructionMarkerTemplateString = structureTemplate->getConstructionMarkerTemplate();
-
-	if (!constructionMarkerTemplateString.isEmpty()) {
-		SharedObjectTemplate* constructionMarkerTemplate = templateManager->getTemplate(constructionMarkerTemplateString.hashCode());
-
-		if (constructionMarkerTemplate != NULL) {
-			uint32 constructionMarkerTemplateCRC = constructionMarkerTemplateString.hashCode();
-			player->info("Retrieved the construction marker template " +constructionMarkerTemplateString, true);
-
-			ManagedReference<SceneObject*> constructionMarker = server->getZoneServer()->createObject(constructionMarkerTemplateCRC, 1);
-			constructionMarker->setPosition(x, zone->getHeight(x, y), y);
-			constructionMarker->setDirection(direction);
-			constructionMarker->rotate(180); //Apparently the construction markers are flipped 180 degrees from what they spawn...
-			constructionMarker->insertToZone(zone);
-
-			StructureConstructionCompleteTask* task = new StructureConstructionCompleteTask(_this, player, structureTemplate, deedID, x, y, direction, structure);
-			task->schedule(3000 * structureTemplate->getLotSize());
-			player->info("scheduled place structure in " + String::valueOf(3000 * structureTemplate->getLotSize()) , true);
-			return 1;
-		}
-	}
-
-	//Then skip the construction phase and go straight to placement.
-	placeStructure(player, structureTemplate, structure, deedID, x, y, direction);
-
-	return 0;
-}
-*/
-
 int StructureManagerImplementation::placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
 	ZoneServer* zoneServer = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
@@ -1181,200 +1028,6 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Share
 
 	return 0;
 }
-
-/*
-int StructureManagerImplementation::placeBuilding(PlayerCreature* player, SharedBuildingObjectTemplate* buildingTemplate,  SceneObject* structure, uint64 deedID, float x, float y, const Quaternion& direction) {
-	ZoneServer* zserv = player->getZoneServer();
-	ObjectManager* objectManager = ObjectManager::instance();
-	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
-
-	float z = zone->getHeight(x, y);
-
-	float floraRadius = buildingTemplate->getClearFloraRadius();
-	bool snapToTerrain = buildingTemplate->getSnapToTerrain();
-
-	int width = buildingTemplate->getWidth() + 1;
-	int length = buildingTemplate->getLength() + 1;
-
-	if (floraRadius > 0 && !snapToTerrain) {
-		float maxZ = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length , 4); // checking default 24x24 area with 4 stepping
-		z = maxZ;
-	}
-
-	int buioCRC = buildingTemplate->getFullTemplateString().hashCode();
-
-	if (!structure->isBuildingObject()) {
-		error("structure is not a building object in StructureManagerImplementation::placeBuilding");
-		return 1;
-	}
-
-	ManagedReference<BuildingObject*> buio = (BuildingObject*) structure;
-	buio->createCellObjects();
-	buio->createChildObjects();
-	buio->setOwnerObjectID(player->getObjectID());
-	buio->initializePosition(x, z, y);
-	buio->setDirection(direction);
-	buio->insertToZone(zone);
-
-	StringBuffer msg;
-	msg << "inserted to zone (posX, posZ, posY) = (" << x << ", " << z << ", " << y << ") dir rad = " << buio->getDirection()->getDegrees();
-	info(msg.toString(), true);
-
-	//Create a sign
-	String signTemplate = buildingTemplate->getSignTemplate();
-	ManagedReference<SignObject*> structureSign = (SignObject*) zserv->createObject(signTemplate.hashCode(), 1);
-
-	if (structureSign != NULL) {
-		structureSign->initializePosition(buio->getPositionX() + 16.0f, buio->getPositionZ() + 1.0f, buio->getPositionY());
-		structureSign->setDirection(buio->getDirection());
-		UnicodeString signName = player->getFirstName() + "'s House";
-		structureSign->setObjectName(signName);
-		buio->setSignObject(structureSign);
-		structureSign->insertToZone(zone);
-		structureSign->updateToDatabase();
-	}*//*
-
-	//Create a structure terminal
-	String terminalTemplate = "object/tangible/terminal/terminal_player_structure.iff";
-	StructureTerminalLocation* structureTerminalLocation = buildingTemplate->getStructureTerminalLocation();
-
-	if (structureTerminalLocation != NULL) {
-		ManagedReference<CellObject*> cell = buio->getCell(structureTerminalLocation->getCellNumber());
-
-		if (cell != NULL) {
-			ManagedReference<StructureTerminal*> structureTerminal = (StructureTerminal*) zserv->createObject(terminalTemplate.hashCode(), 1);
-
-			if (structureTerminal != NULL) {
-				structureTerminal->initializePosition(structureTerminalLocation->getPositionX(), structureTerminalLocation->getPositionZ(), structureTerminalLocation->getPositionY());
-				structureTerminal->setDirection(structureTerminalLocation->getDirection());
-				structureTerminal->setStructureObject(buio);
-
-				//Add the structure terminal to the cell
-				cell->addObject(structureTerminal, -1, true);
-				cell->broadcastObject(structureTerminal, false);
-				structureTerminal->insertToZone(zone);
-
-				structureTerminal->updateToDatabase();
-			}
-		}
-	}
-
-	//Store the deed's objectid so that if the player redeed's the structure, he/she can retrieve the deed from the database.
-	buio->setDeedObjectID(deedID);
-	buio->notifyStructurePlaced(player);
-
-	buio->updateToDatabase();
-
-	//Send out email informing the user that their construction has completed successfully.
-	ManagedReference<ChatManager*> chatManager = zserv->getChatManager();
-
-	if (chatManager != NULL) {
-		ParameterizedStringId emailBody;
-		emailBody.setStringId("@player_structure:construction_complete");
-		emailBody.setTO(buio->getObjectName());
-		emailBody.setDI(player->getLotsRemaining());
-		UnicodeString subject = "@player_structure:construction_complete_subject";
-		chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, player->getFirstName());
-	}
-
-	//Waypoint
-	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-
-	if (playerObject != NULL) {
-		String full;
-		if (buio->getCustomObjectName().isEmpty())
-			buio->getObjectName()->getFullPath(full);
-		else
-			full = buio->getCustomObjectName().toString();
-
-		String waypointTemplate("object/waypoint/world_waypoint_blue.iff");
-		ManagedReference<WaypointObject*> waypointObject = (WaypointObject*) zserv->createObject(waypointTemplate.hashCode(), 1);
-		waypointObject->setCustomName(full);
-		waypointObject->setActive(true);
-		waypointObject->setPosition(x, z, y);
-		waypointObject->setPlanetCRC(zone->getPlanetName().hashCode());
-		playerObject->addWaypoint(waypointObject, true);
-	}
-
-	return 0;
-}
-
-int StructureManagerImplementation::placeInstallation(PlayerCreature* player, SharedInstallationObjectTemplate* installationTemplate, SceneObject* structure, uint64 deedID, float x, float y, const Quaternion& direction) {
-	ZoneServer* zserv = player->getZoneServer();
-	ObjectManager* objectManager = ObjectManager::instance();
-	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
-
-	float z = zone->getHeight(x, y);
-
-	float floraRadius = installationTemplate->getClearFloraRadius();
-	bool snapToTerrain = installationTemplate->getSnapToTerrain();
-
-	int width = installationTemplate->getWidth() + 1;
-	int length = installationTemplate->getLength() + 1;
-
-	if (floraRadius > 0 && !snapToTerrain) {
-		float maxZ = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 4); // checking default 24x24 area with 4 stepping
-		z = maxZ;
-	}
-
-	int installationTemplateCRC = installationTemplate->getFullTemplateString().hashCode();
-
-	if (!structure->isInstallationObject()) {
-		error("structure is not an installation object in StructureManagerImplementation::placeInstallation");
-		return 1;
-	}
-
-	ManagedReference<InstallationObject*> installation = (InstallationObject*) structure;
-	installation->setOwnerObjectID(player->getObjectID());
-	installation->createChildObjects();
-	installation->initializePosition(x, z, y);
-	installation->setDirection(direction);
-
-	installation->insertToZone(zone);
-
-	StringBuffer msg;
-	msg << "inserted to zone (posX, posZ, posY) = (" << x << ", " << z << ", " << y << ") dir rad = " << installation->getDirection()->getDegrees();
-	info(msg.toString(), true);
-
-	//Store the deed's objectid so that if the player redeed's the structure, he/she can retrieve the deed from the database.
-	installation->setDeedObjectID(deedID);
-	installation->notifyStructurePlaced(player);
-	installation->updateToDatabase();
-
-	//Waypoint
-	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-
-	if (playerObject != NULL) {
-		String full;
-		if (installation->getCustomObjectName().isEmpty())
-			installation->getObjectName()->getFullPath(full);
-		else
-			full = installation->getCustomObjectName().toString();
-
-		String waypointTemplate("object/waypoint/world_waypoint_blue.iff");
-		ManagedReference<WaypointObject*> waypointObject = (WaypointObject*) zserv->createObject(waypointTemplate.hashCode(), 1);
-		waypointObject->setCustomName(full);
-		waypointObject->setActive(true);
-		waypointObject->setPosition(x, z, y);
-		waypointObject->setPlanetCRC(zone->getPlanetName().hashCode());
-		playerObject->addWaypoint(waypointObject, true);
-	}
-
-	//Send out email informing the user that their construction has completed successfully.
-	ManagedReference<ChatManager*> chatManager = zserv->getChatManager();
-
-	if (chatManager != NULL) {
-		ParameterizedStringId emailBody;
-		emailBody.setStringId("@player_structure:construction_complete");
-		emailBody.setTO(installation->getObjectName());
-		emailBody.setDI(player->getLotsRemaining());
-		UnicodeString subject = "@player_structure:construction_complete_subject";
-		chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, player->getFirstName());
-	}
-
-	return 0;
-}
-*/
 
 int StructureManagerImplementation::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {
 	Zone* zone = player->getZone();
@@ -1637,41 +1290,51 @@ int StructureManagerImplementation::sendStructureStatusTo(PlayerCreature* player
 }
 
 int StructureManagerImplementation::handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject) {
-	try {
-		StringBuffer sstext, sscash, ssmaintenance;
+	int availableCredits = player->getCashCredits();
 
-		ManagedReference<SuiTransferBox*> maintenanceBox = new SuiTransferBox(player, SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE);
-		maintenanceBox->setUsingObject(structureObject);
-		maintenanceBox->setPromptTitle("@player_structure:select_amount");
-
-		sstext << "@player_structure:select_maint_amount \n"
-			   << "@player_structure:current_maint_pool " << (int) structureObject->getSurplusMaintenance();
-		maintenanceBox->setPromptText(sstext.toString());
-
-		sscash << player->getCashCredits();
-		ssmaintenance << structureObject->getSurplusMaintenance();
-
-		maintenanceBox->addFrom("@player_structure:total_funds", sscash.toString(), sscash.toString(), "1");
-		maintenanceBox->addTo("@player_structure:to_pay", ssmaintenance.toString(), ssmaintenance.toString(), "1");
-
-		player->addSuiBox(maintenanceBox);
-		player->sendMessage(maintenanceBox->generateMessage());
-
-	} catch(...) {
-		error("unreported exception in InstallationObjectImplementation::handleStructureManageMaintenance");
+	if (availableCredits <= 0) {
+		player->sendSystemMessage("@player_structure:no_money"); //You do not have any money to pay maintenance.
+		return 0;
 	}
+
+	StringBuffer sstext;
+
+	ManagedReference<SuiTransferBox*> maintenanceBox = new SuiTransferBox(player, SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE);
+	maintenanceBox->setPromptTitle("@player_structure:select_amount");
+	maintenanceBox->setUsingObject(structureObject);
+
+	int surplusMaintenance = structureObject->getSurplusMaintenance();
+
+	sstext << "@player_structure:select_maint_amount \n" << "@player_structure:current_maint_pool " << surplusMaintenance;
+	maintenanceBox->setPromptText(sstext.toString());
+
+	maintenanceBox->addFrom("@player_structure:total_funds", String::valueOf(availableCredits), String::valueOf(availableCredits), "1");
+	maintenanceBox->addTo("@player_structure:to_pay", "0", "0", "1");
+
+	player->addSuiBox(maintenanceBox);
+	player->sendMessage(maintenanceBox->generateMessage());
+
+	//Calculate how much time until the maintenance will expire.
+	//structureObject->scheduleMaintenanceExpirationEvent();
 
 	return 0;
 }
 
 int StructureManagerImplementation::handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject) {
+	if (structureObject->isOnAdminList(player)) {
+		player->sendSystemMessage("@player_structure:withdraw_admin_only"); //You must be an administrator to remove credits from the treasury.
+		return 1;
+	}
+
 	/**
 		string/en/player_structure.stf	withdrawal_failed		Withdrawal from treasury failed.
-		string/en/player_structure.stf	withdraw_admin_only		You must be an administrator to remove credits from the treasury.
 		string/en/player_structure.stf	withdraw_credits		You withdraw %DI credits from the treasury.
 		string/en/player_structure.stf	withdraw_maintenance	Withdraw From Treasury
 		string/en/player_structure.stf	withdraw_vendor_d		Enter the amount of credits you would like to withdraw from the maintenance account.
+		insufficient_funds_withdrawal	Insufficent funds for withdrawal.
 	 */
+
+
 	return 0;
 }
 

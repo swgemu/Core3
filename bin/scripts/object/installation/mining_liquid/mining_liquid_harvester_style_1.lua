@@ -46,8 +46,9 @@ object_installation_mining_liquid_mining_liquid_harvester_style_1 = object_insta
 	baseMaintenanceRate = 30,
 	-- SOLAR = 1; CHEMICAL = 2; FLORA = 3; GAS = 4; GEOTHERMAL = 5; MINERAL = 6; WATER = 7; WIND = 8; FUSION = 9;
 	installationType = 2,
-	basePowerRate = 25
-
+	basePowerRate = 25,
+	length = 1,
+	width = 1
 
 }
 

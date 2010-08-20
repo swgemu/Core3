@@ -55,5 +55,8 @@ SharedInstallationObjectTemplate = SharedTangibleObjectTemplate:new {
 	installationType = 0, 
 	
 	--The object that is placed during the construction phase.
-	constructionMarker = ""
+	constructionMarker = "",
+	
+	length = 1,
+	width = 1
 }
