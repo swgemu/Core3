@@ -42,13 +42,17 @@
 
 
 object_building_player_city_shuttleport_corellia = object_building_player_city_shared_shuttleport_corellia:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {0,7},
+	
+	length = 5,
+	
+	width = 5,
 	cityRankRequired = 4,
 	gameObjectType = 4103,
 	abilitiesRequired = {"placeShuttleport"}
-
 
 }
 

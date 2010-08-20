@@ -42,12 +42,14 @@
 
 
 object_building_player_city_garden_dathomir_med_01 = object_building_player_city_shared_garden_dathomir_med_01:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {0,1,4,5,6,7,8},
+	length = 5,
+	width = 5,
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeMediumGarden"}
-
 
 }
 

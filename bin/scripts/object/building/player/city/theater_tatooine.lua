@@ -42,12 +42,16 @@
 
 
 object_building_player_city_theater_tatooine = object_building_player_city_shared_theater_tatooine:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,8},
+	length = 5,
+	width = 6,
 	gameObjectType = 524,
 	mapLocationsType1 = 51,
 	cityRankRequired = 4
+
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_theater_tatooine, "object/building/player/city/theater_tatooine.iff")

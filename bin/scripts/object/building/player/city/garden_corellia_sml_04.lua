@@ -42,12 +42,16 @@
 
 
 object_building_player_city_garden_corellia_sml_04 = object_building_player_city_shared_garden_corellia_sml_04:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {0,7},
+	
+	length = 3,
+	
+	width = 3,
 	cityRankRequired = 1,
 	abilitiesRequired = {"placeSmallGarden"}
-
 
 }
 
