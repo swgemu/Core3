@@ -63,6 +63,26 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (creature == NULL)
+			return GENERALERROR;
+
+		if (arguments.toString().isEmpty())
+			return GENERALERROR;
+
+		StringTokenizer wounds(arguments.toString());
+		wounds.setDelimeter(",");
+
+		if (!wounds.hasMoreTokens())
+			return GENERALERROR;
+
+		for (int i = 0; i < 9; i++) {
+			creature->setWounds(i, wounds.getIntToken(), true);
+
+			if ((!wounds.hasMoreTokens()) && (i < 8))
+				return GENERALERROR;
+		}
+
+
 		return SUCCESS;
 	}
 

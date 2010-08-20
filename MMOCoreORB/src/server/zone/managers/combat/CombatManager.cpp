@@ -760,14 +760,18 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	attackerAccuracy = applyAccuracyPenalties(creature, attackType, attackerAccuracy);
 
-	/*if (creature->isAiming() && creature->getAimMod() > 0) {
-		aimMod = (float) creature->getAimMod();
+	uint32 steadyAim = String("steadyaim").hashCode();
 
-		if (DEBUG)
-			System::out << "\tAttacker aiming mod is " << aimMod << endl;
+	if ((creature->isAiming()) || (creature->hasBuff(steadyAim))) {
+		if (attackType == WeaponObject::RANGEDATTACK)
+			aimMod = (float) creature->getSkillMod("aim");
 
-		creature->clearState(CreatureState::AIMING);
-	}*/
+		if (creature->isAiming())
+			creature->clearState(CreatureState::AIMING);
+
+		if (creature->hasBuff(steadyAim))
+			creature->removeBuff(steadyAim);
+	}
 
 	if (targetDefense > 125)
 		targetDefense = 125;
