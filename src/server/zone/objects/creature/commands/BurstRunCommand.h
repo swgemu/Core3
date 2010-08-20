@@ -76,6 +76,12 @@ public:
 			return GENERALERROR;
 		}
 
+		uint32 retreatCRC = String("retreat").hashCode();
+
+		if (creature->hasBuff(retreatCRC)) {
+			return GENERALERROR;
+		}
+
 		float burstRunMod = (float) creature->getSkillMod("burst_run");
 
 		if (burstRunMod > 100.0f) {
