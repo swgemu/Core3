@@ -70,21 +70,24 @@ public:
 
 			if (group == NULL) {
 				player->sendSystemMessage("@error_message:not_grouped");
-			}
-			else if (group->getLeader() == player) {
+			} else if (group->getLeader() == player) {
 
 				String action = "setretreat";
 				uint64 actionCRC = action.hashCode();
 
-				for (int i = 0; i < group->getGroupSize(); i++) {
-					SceneObject* member = group->getGroupMember(i);
+				for (int i = 0; i < group->getGroupSize(); ++i) {
+					ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
 					if (member->isPlayerCreature()) {
-						PlayerCreature* memberPlayer = (PlayerCreature*) member;
+						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+
 						if (memberPlayer->isInRange(player, 128.0)) {
 							if (!arguments.toString().isEmpty())
 								memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
 							else
 								memberPlayer->sendSystemMessage("@cbt_spam:retreat_buff");
+
+							Locker clocker(memberPlayer, creature);
 							memberPlayer->enqueueCommand(actionCRC, 0, 0, "");
 						}
 					}
