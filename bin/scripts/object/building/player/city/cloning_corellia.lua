@@ -42,15 +42,21 @@
 
 
 object_building_player_city_cloning_corellia = object_building_player_city_shared_cloning_corellia:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	gameObjectType = 519,
 	mapLocationsType1 = 5,
 	allowedZones = {0,7},
+	
+	length = 5,
+	
+	width = 5,
 	cityRankRequired = 3,
 	spawningPoints = { {x = -9.7, z = -1.2, y = -6.2, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 4} }, -- { x, z, y, ow, ox, oy, oz, cellid }
 	templateType = CLONINGBUILDING,
 	abilitiesRequired = {"placeCloningFacility"}
+
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cloning_corellia, "object/building/player/city/cloning_corellia.iff")

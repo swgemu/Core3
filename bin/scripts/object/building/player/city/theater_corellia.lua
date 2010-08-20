@@ -42,12 +42,18 @@
 
 
 object_building_player_city_theater_corellia = object_building_player_city_shared_theater_corellia:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	gameObjectType = 524,
 	mapLocationsType1 = 51,
 	allowedZones = {0,7},
+	
+	length = 5,
+	
+	width = 6,
 	cityRankRequired = 4
+
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_theater_corellia, "object/building/player/city/theater_corellia.iff")

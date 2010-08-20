@@ -42,13 +42,15 @@
 
 
 object_building_player_city_cityhall_tatooine = object_building_player_city_shared_cityhall_tatooine:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
+	length = 7,
+	width = 9,
 	mapLocationsType1 = 50,
 	gameObjectType = 529,
 	cityRankRequired = 0
-
 
 }
 

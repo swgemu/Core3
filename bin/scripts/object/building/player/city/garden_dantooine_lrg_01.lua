@@ -42,12 +42,14 @@
 
 
 object_building_player_city_garden_dantooine_lrg_01 = object_building_player_city_shared_garden_dantooine_lrg_01:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {0,1,4,5,6,7,8},
+	length = 7,
+	width = 7,
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeLargeGarden"}
-
 
 }
 

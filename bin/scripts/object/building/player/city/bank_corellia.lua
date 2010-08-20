@@ -42,14 +42,18 @@
 
 
 object_building_player_city_bank_corellia = object_building_player_city_shared_bank_corellia:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	mapLocationsType1 = 2,
 	allowedZones = {0,7},
+	
+	length = 3,
+	
+	width = 3,
 	cityRankRequired = 2,
 	gameObjectType = 4104,
 	abilitiesRequired = {"placeBank"}
-
 
 }
 

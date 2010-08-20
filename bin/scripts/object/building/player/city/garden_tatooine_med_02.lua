@@ -42,12 +42,14 @@
 
 
 object_building_player_city_garden_tatooine_med_02 = object_building_player_city_shared_garden_tatooine_med_02:new {
+
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
+	length = 5,
+	width = 5,
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeMediumGarden"}
-
 
 }
 
