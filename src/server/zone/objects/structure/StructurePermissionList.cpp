@@ -20,12 +20,15 @@ void StructurePermissionList::sendTo(PlayerCreature* player, const String& listN
 
 	PermissionListCreateMessage* listMsg = new PermissionListCreateMessage(listName);
 
+	uint8 permission = getPermissionFromListName(listName);
+
 	for (int i = 0; i < size(); ++i) {
 		VectorMapEntry<uint64, uint8>* entry = &elementAt(i);
 		uint64 playerID = entry->getKey();
-		uint8 permission = entry->getValue();
+		uint8 playerPermission = entry->getValue();
 
-		if (!(permission & getPermissionFromListName(listName)))
+
+		if (!hasPermission(playerID, permission))
 			continue;
 
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(playerID);
@@ -61,7 +64,10 @@ bool StructurePermissionList::removePermission(uint64 playerID, uint8 permission
 	if (!contains(playerID))
 		return false;
 
-	get(playerID) &= ~permission;
+	if (permission == BANLIST || get(playerID) == permission)
+		drop(playerID);
+	else
+		get(playerID) &= ~permission;
 
 	return true;
 }

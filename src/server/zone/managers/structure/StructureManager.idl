@@ -130,7 +130,7 @@ class StructureManager extends ManagedObject implements Logger {
 	 * @param direction The quaternion representation of the direction.
 	 */
 	@local
-	public native int placeStructure(PlayerCreature player, SharedStructureObjectTemplate structureTemplate, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
+	public native int placeStructure(PlayerCreature player, StructureObject structureObject, SharedStructureObjectTemplate structureTemplate, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
 	//public native int placeStructure(PlayerCreature player, SharedStructureObjectTemplate structureTemplate, SceneObject structure, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
 
 	//@local
@@ -142,7 +142,7 @@ class StructureManager extends ManagedObject implements Logger {
 	
 	@local
 	//public native int constructStructure(PlayerCreature player, SharedStructureObjectTemplate structureTemplate, SceneObject structure, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
-	public native int constructStructure(PlayerCreature player, SharedStructureObjectTemplate structureTemplate, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
+	public native int constructStructure(PlayerCreature player, StructureObject structureObject, SharedStructureObjectTemplate structureTemplate, unsigned long deedID, float x, float y, @dereferenced final Quaternion direction);
 	
 	
 	/**

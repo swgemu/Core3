@@ -85,17 +85,16 @@ void ShuttleInstallationImplementation::spawnShuttleObjects() {
 bool ShuttleInstallationImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
 	ManagedReference<ActiveArea*> playerArea = player->getActiveArea();
 
+	//TODO: Check to make sure the player is the mayor of the city.
 	if (playerArea == NULL || !playerArea->isRegion()) {
-		//TODO: find correct string
-		player->sendSystemMessage("You need to be in a city to place a shuttleport");
+		player->sendSystemMessage("@player_structure:cant_place_civic"); //This structure must be placed within the borders of the city in which you are mayor.
 		return false;
 	}
 
 	Region* region = (Region*) playerArea.get();
 
 	if (region->getShuttle() != NULL) {
-		//TODO: find correct string
-		player->sendSystemMessage("This city has a shuttleport already");
+		player->sendSystemMessage("@player_structure:cant_place_unique"); //This city can only support a single structure of this type.
 		return false;
 	}
 

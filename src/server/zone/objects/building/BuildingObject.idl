@@ -136,10 +136,6 @@ class BuildingObject extends StructureObject implements QuadTree {
 		return 0;
 	}
 	
-	public abstract boolean checkRequisitesForPlacement(PlayerCreature player) {
-		return true;
-	}
-	
 	@local
 	@dereferenced
 	public native Vector3 getEjectionPoint();

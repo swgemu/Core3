@@ -48,9 +48,8 @@ object_installation_mining_liquid_mining_liquid_moisture_harvester = object_inst
 	installationType = 7,
 	basePowerRate = 25,
 	width = 1,
-	length = 1
-
-
+	length = 1,
+	constructionMarker = "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_1.iff"
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_mining_liquid_moisture_harvester, "object/installation/mining_liquid/mining_liquid_moisture_harvester.iff")

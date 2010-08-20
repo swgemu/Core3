@@ -255,17 +255,16 @@ void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) 
 
 	bool allowEntry = true;
 
-	//If the building is private, check the permission lists to see if they have permission or not.
-	if (!isPublicStructure()) {
-		if (isOnBanList(player) || (!isOnEntryList(player) && !isOnAccessList(player))) {
-			allowEntry = false;
+	if (!isPublicStructure() && (!isOnEntryList(player) && !isOnAccessList(player)))
+		allowEntry = false;
 
-			//If the player is in the structure, kick them out.
-			if (player->getParentRecursively(SceneObject::BUILDING) == _this) {
-				Vector3 ejectionPoint = getEjectionPoint();
-				player->teleport(ejectionPoint.getX(), zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
-			}
-		}
+	if (isOnBanList(player))
+		allowEntry = false;
+
+	//If they don't have permission to be inside, kick them out.
+	if (!allowEntry && player->getParentRecursively(SceneObject::BUILDING) == _this) {
+		Vector3 ejectionPoint = getEjectionPoint();
+		player->teleport(ejectionPoint.getX(), zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
 	}
 
 	//Update the permissions on just the first cell since it should be the entry...

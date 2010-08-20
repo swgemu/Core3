@@ -42,6 +42,9 @@ public:
 		if (!contains(playerID))
 			return false;
 
+		if (permission == BANLIST)
+			return (get(playerID) == BANLIST);
+
 		return (get(playerID) & permission);
 	}
 
@@ -63,7 +66,7 @@ public:
 		if (!contains(playerID))
 			return false;
 
-		return (get(playerID) & BANLIST);
+		return (get(playerID) == BANLIST);
 	}
 
 	inline bool isOnEntryList(uint64 playerID) {

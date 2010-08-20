@@ -808,6 +808,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 
 int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* player, uint64 deedID, float x, float y, int angle) {
 	ZoneServer* zoneServer = player->getZoneServer();
+	ObjectManager* objectManager = ObjectManager::instance();
 
 	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
@@ -866,6 +867,25 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
+	ManagedReference<SceneObject*> sobj = objectManager->createObject(structureTemplateCRC, 1, "playerstructures");
+
+	//Make sure its a valid Structure Object
+	if (sobj == NULL || !sobj->isStructureObject()) {
+		if (sobj != NULL)
+			sobj->destroyObjectFromDatabase(true);
+
+		player->error("Object created was not a valid structure object in placeStructure.");
+		return 1;
+	}
+
+	StructureObject* structureObject = (StructureObject*) sobj.get();
+
+	//Check requisites.
+	if (!structureObject->checkRequisitesForPlacement(player)) {
+		structureObject->destroyObjectFromDatabase(true);
+		return 1;
+	}
+
 	player->setLotsRemaining(lotsRemaining - lotsRequired);
 
 	//Remove the deed from inventory.
@@ -875,19 +895,19 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 	Vector3 unity(0, 1, 0);
 	direction.rotate(unity, angle);
 
-	constructStructure(player, ssot, deedID, x, y, direction);
+	constructStructure(player, structureObject, ssot, deedID, x, y, direction);
 
 	return 0;
 }
 
-int StructureManagerImplementation::constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* ssot, uint64 deedID, float x, float y, const Quaternion& direction) {
+int StructureManagerImplementation::constructStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* ssot, uint64 deedID, float x, float y, const Quaternion& direction) {
 	ZoneServer* zoneServer = player->getZoneServer();
 
 	String constructionMarkerTemplateString = ssot->getConstructionMarkerTemplate();
 	uint32 constructionMarkerTemplateCRC = constructionMarkerTemplateString.hashCode();
 
 	if (constructionMarkerTemplateString.isEmpty()) {
-		placeStructure(player, ssot, deedID, x, y, direction);
+		placeStructure(player, structureObject, ssot, deedID, x, y, direction);
 		return 1;
 	}
 
@@ -901,15 +921,14 @@ int StructureManagerImplementation::constructStructure(PlayerCreature* player, S
 
 	int buildTime = 3000 * ssot->getLotSize();
 
-	Task* task = new StructureConstructionCompleteTask(_this, player, ssot, deedID, x, y, direction, constructionMarker);
+	Task* task = new StructureConstructionCompleteTask(_this, player, structureObject, ssot, deedID, x, y, direction, constructionMarker);
 	task->schedule(buildTime);
 	player->info("Scheduled StructureConstructionCompleteTask in " + String::valueOf(buildTime) , true);
 	return 0;
 }
 
-int StructureManagerImplementation::placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
+int StructureManagerImplementation::placeStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
 	ZoneServer* zoneServer = player->getZoneServer();
-	ObjectManager* objectManager = ObjectManager::instance();
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
 
 	float z = zone->getHeight(x, y);
@@ -922,21 +941,6 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Share
 
 	if (floraRadius > 0 && !snapToTerrain)
 		z = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 4);
-
-	String structureTemplateString = structureTemplate->getFullTemplateString();
-	uint32 structureTemplateCRC = structureTemplateString.hashCode();
-
-	ManagedReference<SceneObject*> obj = objectManager->createObject(structureTemplateCRC, 1, "playerstructures");
-
-	if (obj == NULL || !obj->isStructureObject()) {
-		if (obj != NULL)
-			obj->destroyObjectFromDatabase(true);
-
-		player->error("Object created was not a valid structure object in placeStructure.");
-		return 1;
-	}
-
-	StructureObject* structureObject = (StructureObject*) obj.get();
 
 	if (structureObject->isBuildingObject()) {
 		BuildingObject* buildingObject = (BuildingObject*) structureObject;

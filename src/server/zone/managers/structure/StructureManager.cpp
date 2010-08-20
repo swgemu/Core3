@@ -63,20 +63,20 @@ int StructureManager::placeStructureFromDeed(PlayerCreature* player, unsigned lo
 		return ((StructureManagerImplementation*) _impl)->placeStructureFromDeed(player, deedID, x, y, angle);
 }
 
-int StructureManager::placeStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction) {
+int StructureManager::placeStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((StructureManagerImplementation*) _impl)->placeStructure(player, structureTemplate, deedID, x, y, direction);
+		return ((StructureManagerImplementation*) _impl)->placeStructure(player, structureObject, structureTemplate, deedID, x, y, direction);
 }
 
-int StructureManager::constructStructure(PlayerCreature* player, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction) {
+int StructureManager::constructStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((StructureManagerImplementation*) _impl)->constructStructure(player, structureTemplate, deedID, x, y, direction);
+		return ((StructureManagerImplementation*) _impl)->constructStructure(player, structureObject, structureTemplate, deedID, x, y, direction);
 }
 
 int StructureManager::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {
