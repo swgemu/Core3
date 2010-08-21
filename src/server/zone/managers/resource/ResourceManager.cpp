@@ -194,12 +194,27 @@ void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const 
 		((ResourceManagerImplementation*) _impl)->createResourceSpawn(playerCreature, restype);
 }
 
-ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
+void ResourceManager::givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+		method.addObjectParameter(playerCreature);
+		method.addAsciiParameter(restype);
+		method.addSignedIntParameter(quantity);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->givePlayerResource(playerCreature, restype, quantity);
+}
+
+ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addAsciiParameter(spawnName);
 
 		return (ResourceSpawn*) method.executeWithObjectReturn();
@@ -338,6 +353,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		createResourceSpawn((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createResourceSpawn__PlayerCreature_String_));
 		break;
 	case 17:
+		givePlayerResource((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_givePlayerResource__PlayerCreature_String_int_), inv->getSignedIntParameter());
+		break;
+	case 18:
 		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
 		break;
 	default:
@@ -389,6 +407,10 @@ void ResourceManagerAdapter::removePowerFromPlayer(PlayerCreature* player, unsig
 
 void ResourceManagerAdapter::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
 	((ResourceManagerImplementation*) impl)->createResourceSpawn(playerCreature, restype);
+}
+
+void ResourceManagerAdapter::givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity) {
+	((ResourceManagerImplementation*) impl)->givePlayerResource(playerCreature, restype, quantity);
 }
 
 ResourceSpawn* ResourceManagerAdapter::getResourceSpawn(const String& spawnName) {

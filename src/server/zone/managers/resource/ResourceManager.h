@@ -150,6 +150,8 @@ public:
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
+	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
+
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
 protected:
@@ -211,6 +213,8 @@ public:
 	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid);
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
+
+	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
@@ -285,6 +289,8 @@ public:
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
+	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
+
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
 protected:
@@ -294,6 +300,7 @@ protected:
 	String _param2_sendSample__PlayerCreature_String_String_;
 	String _param1_harvestResource__PlayerCreature_String_int_;
 	String _param1_createResourceSpawn__PlayerCreature_String_;
+	String _param1_givePlayerResource__PlayerCreature_String_int_;
 	String _param0_getResourceSpawn__String_;
 };
 

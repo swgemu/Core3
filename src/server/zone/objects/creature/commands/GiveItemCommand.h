@@ -46,6 +46,7 @@ which carries forward this exception.
 #define GIVEITEMCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/resource/ResourceManager.h"
 
 class GiveItemCommand : public QueueCommand {
 public:
@@ -63,7 +64,45 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		StringTokenizer tokenizer(arguments.toString());
+
+		if(!tokenizer.hasMoreTokens() || !creature->isPlayerCreature()) {
+			creature->sendSystemMessage("Invalid Parameters");
+			return INVALIDPARAMETERS;
+		}
+
+		try {
+
+
+			String itemtype;
+			tokenizer.getStringToken(itemtype);
+
+			if (itemtype.toLowerCase() == "resource") {
+				if (!tokenizer.hasMoreTokens()) {
+					creature->sendSystemMessage( "Invalid Parameters, missing resource name");
+					return INVALIDPARAMETERS;
+				}
+
+				String resname;
+				tokenizer.getStringToken(resname);
+
+				int quantity = 100000;
+
+				if (tokenizer.hasMoreTokens()) {
+					quantity = tokenizer.getIntToken();
+				}
+
+				ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
+				resourceManager->givePlayerResource((PlayerCreature*) creature, resname, quantity);
+
+			}
+
+			return SUCCESS;
+		} catch (...) {
+			creature->sendSystemMessage(
+					"Invalid Parameters, missing resource name");
+			return INVALIDPARAMETERS;
+		}
 	}
 
 };
