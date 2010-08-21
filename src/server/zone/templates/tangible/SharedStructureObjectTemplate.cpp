@@ -21,7 +21,7 @@ void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 	LuaObject allowzones = templateData->getObjectField("allowedZones");
 
 	for (int i = 1; i < allowzones.getTableSize() + 1; ++i)
-		allowedZones.add(allowzones.getIntAt(i));
+		allowedZones.put(allowzones.getIntAt(i));
 
 	allowzones.pop();
 
