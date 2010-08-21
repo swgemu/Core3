@@ -694,8 +694,11 @@ TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
 
 	try {
 
-		ResourceContainer* rcnoIngredient = (ResourceContainer*) ingredient;
+		ResourceContainer* rcnoIngredient = dynamic_cast<ResourceContainer*>(ingredient);
 		int quantity = 0;
+
+		if (rcnoIngredient == NULL)
+			return NULL;
 
 		for (int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
 
