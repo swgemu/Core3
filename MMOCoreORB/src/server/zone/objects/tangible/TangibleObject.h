@@ -302,8 +302,6 @@ public:
 
 	bool isFromFactoryCrate();
 
-	void createChildObjects();
-
 protected:
 	TangibleObject(DummyConstructorParameter* param);
 
@@ -554,8 +552,6 @@ public:
 
 	bool isFromFactoryCrate();
 
-	virtual void createChildObjects();
-
 	TangibleObject* _this;
 
 	operator const TangibleObject*();
@@ -704,8 +700,6 @@ public:
 	String getCraftersSerial();
 
 	bool isFromFactoryCrate();
-
-	void createChildObjects();
 
 protected:
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;

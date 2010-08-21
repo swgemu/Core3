@@ -27,6 +27,8 @@ public:
 		position = obj.position;
 		direction = obj.direction;
 		templateFile = obj.templateFile;
+		cellid = obj.cellid;
+		containmentType = obj.containmentType;
 	}
 
 	ChildObject& operator=(const ChildObject& obj) {
@@ -36,11 +38,14 @@ public:
 		position = obj.position;
 		direction = obj.direction;
 		templateFile = obj.templateFile;
+		cellid = obj.cellid;
+		containmentType = obj.containmentType;
 
 		return *this;
 	}
 
 	void parseFromLua(LuaObject* luaObject) {
+		templateFile = luaObject->getStringField("templateFile");
 		position.setX(luaObject->getFloatField("x"));
 		position.setZ(luaObject->getFloatField("z"));
 		position.setY(luaObject->getFloatField("y"));
@@ -80,7 +85,7 @@ public:
 		return direction;
 	}
 
-	inline String& getTemplate() {
+	inline String& getTemplateFile() {
 		return templateFile;
 	}
 

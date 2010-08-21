@@ -98,6 +98,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void createChildObjects();
+
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
@@ -253,6 +255,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void createChildObjects();
+
 	virtual int notifyStructurePlaced(PlayerCreature* player);
 
 	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
@@ -387,6 +391,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void createChildObjects();
 
 	int notifyStructurePlaced(PlayerCreature* player);
 

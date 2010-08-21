@@ -96,8 +96,6 @@ class BuildingObject extends StructureObject implements QuadTree {
 		declaredResidency = false;
 	}
 	
-	public native void createChildObjects();
-	
 	public void createCellObjects() {
 		for (int i = 0; i < totalCellNumber; ++i) {
 			SceneObject newCell = getZoneServer().createObject(2906855187, 2);

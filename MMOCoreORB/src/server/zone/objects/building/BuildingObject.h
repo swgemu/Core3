@@ -156,8 +156,6 @@ class BuildingObject : public StructureObject {
 public:
 	BuildingObject();
 
-	void createChildObjects();
-
 	void createCellObjects();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
@@ -269,8 +267,6 @@ public:
 
 	BuildingObjectImplementation(DummyConstructorParameter* param);
 
-	void createChildObjects();
-
 	void createCellObjects();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
@@ -379,8 +375,6 @@ public:
 	BuildingObjectAdapter(BuildingObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void createChildObjects();
 
 	void createCellObjects();
 

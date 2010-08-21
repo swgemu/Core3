@@ -42,51 +42,30 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible.terminal.elevator;
+package server.zone.objects.tangible.terminal.guild;
 
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
-import system.util.VectorMap;
 import server.zone.objects.player.PlayerCreature;
-import server.zone.Zone;
-import server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.Zone;
 
-class ElevatorTerminal extends Terminal {
-	protected float deltaZ;
-	
-	public ElevatorTerminal() {
-		Logger.setLoggingName("Elevator Terminal");
-		deltaZ = 0;
+class GuildTerminal extends Terminal {
+	public GuildTerminal() {
+		Logger.setLoggingName("GuildTerminal");
 	}
-	
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setLoggingName("GuildTerminal");
+	}
 	
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
 	
-	/**
-	 * Handles the radial selection sent by the client
-	 * @pre { this object is locked, player is locked }
-	 * @post { this object is locked, player is locked }
-	 * @returns 0 if successfull
-	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
-	/**
-	 * Sets how high/low to move the player.
-	 * @param dz The change in z-position relative to the player's current position.
-	 */
-	void setDeltaZ(float dz) {
-		deltaZ = dz;
-	}
-	
-	/**
-	 * Gets how high/low to move the player.
-	 * @return The change in z-position relative to the player's current position.
-	 */
-	float getDeltaZ() {
-		return deltaZ;
+	public boolean isGuildTerminal() {
+		return true;
 	}
 }

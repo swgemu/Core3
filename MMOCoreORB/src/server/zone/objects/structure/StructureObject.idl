@@ -130,6 +130,10 @@ class StructureObject extends TangibleObject {
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
+	public void createChildObjects() {
+		super.createChildObjects();
+	}
+	
 	/**
 	 * Gets called when the structure has been created;
 	 */

@@ -180,6 +180,10 @@ public:
 	void setStun(float stun) {
 		this->stun = stun;
 	}
+
+	bool isArmorObjectTemplate() {
+		return true;
+	}
 };
 
 

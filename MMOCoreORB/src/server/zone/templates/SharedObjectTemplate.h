@@ -113,6 +113,7 @@ public:
 	const static int WOUNDPACK = 0x4000014;
 	const static int STATEPACK = 0x4000015;
 	const static int CONSUMABLE = 0x4000016;
+	const static int ELEVATORTERMINAL = 0x4000017;
 
 public:
 	SharedObjectTemplate() {
@@ -124,10 +125,6 @@ public:
 	}
 
 	void readObject(LuaObject* templateData);
-
-	inline bool isArmorObjectTemplate() const {
-		return templateType == ARMOROBJECT;
-	}
 
     inline String getAppearanceFilename() const {
 		return appearanceFilename;
@@ -265,6 +262,14 @@ public:
 		return mapLocationsType3;
 	}
 
+	inline int getChildObjectsSize() {
+		return childObjects.size();
+	}
+
+	inline ChildObject* getChildObject(int idx) {
+		return &childObjects.get(idx);
+	}
+
 public:
 	void setAppearanceFilename(String appearanceFilename) {
 		this->appearanceFilename = appearanceFilename;
@@ -383,6 +388,10 @@ public:
 	}
 
 public:
+	virtual bool isArmorObjectTemplate() {
+		return false;
+	}
+
 	virtual bool isSharedBuildingObjectTemplate() {
 		return false;
 	}
@@ -432,6 +441,10 @@ public:
 	}
 
 	virtual bool isLairObjectTemplate() {
+		return false;
+	}
+
+	virtual bool isElevatorTerminalTemplate() {
 		return false;
 	}
 
