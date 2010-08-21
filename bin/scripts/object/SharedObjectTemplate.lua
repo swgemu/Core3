@@ -79,7 +79,7 @@ SharedObjectTemplate = Object:new {
 
 	 clientObjectCRC = 0,
 	 
-	 childObjects = { }, -- { { x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 0, containmentType = 0 }Ê}
+	 childObjects = { }, -- { { templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 0, containmentType = 0 } }
 	 
 	 templateType = SHOT
 }

@@ -497,10 +497,6 @@ class TangibleObject extends SceneObject {
 	public boolean isFromFactoryCrate() {
 		return optionsBitmask & 0x2100;
 	}
-	
-	public abstract void createChildObjects() {
-		return;
-	}
 }
 
 

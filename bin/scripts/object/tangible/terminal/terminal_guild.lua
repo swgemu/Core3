@@ -42,7 +42,8 @@
 
 
 object_tangible_terminal_terminal_guild = object_tangible_terminal_shared_terminal_guild:new {
-
+	gameObjectType = 16404,
+	maxCondition = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_guild, "object/tangible/terminal/terminal_guild.iff")

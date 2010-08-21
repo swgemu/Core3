@@ -55,6 +55,7 @@
 #include "server/zone/templates/resource_container/ResourceSpawnTemplate.h"
 #include "server/zone/templates/tangible/DeedTemplate.h"
 #include "server/zone/templates/tangible/MissionTerminalTemplate.h"
+#include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
@@ -169,6 +170,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<WoundPackTemplate>(SharedObjectTemplate::WOUNDPACK);
 	templateFactory.registerObject<StatePackTemplate>(SharedObjectTemplate::STATEPACK);
 	templateFactory.registerObject<ConsumableTemplate>(SharedObjectTemplate::CONSUMABLE);
+	templateFactory.registerObject<ElevatorTerminalTemplate>(SharedObjectTemplate::ELEVATORTERMINAL);
 
 }
 
@@ -298,6 +300,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("WOUNDPACK", SharedObjectTemplate::WOUNDPACK);
 	luaTemplatesInstance->setGlobalInt("STATEPACK", SharedObjectTemplate::STATEPACK);
 	luaTemplatesInstance->setGlobalInt("CONSUMABLE", SharedObjectTemplate::CONSUMABLE);
+	luaTemplatesInstance->setGlobalInt("ELEVATORTERMINAL", SharedObjectTemplate::ELEVATORTERMINAL);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

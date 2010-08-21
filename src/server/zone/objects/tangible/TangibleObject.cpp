@@ -777,18 +777,6 @@ bool TangibleObject::isFromFactoryCrate() {
 		return ((TangibleObjectImplementation*) _impl)->isFromFactoryCrate();
 }
 
-void TangibleObject::createChildObjects() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 61);
-
-		method.executeWithVoidReturn();
-	} else
-		((TangibleObjectImplementation*) _impl)->createChildObjects();
-}
-
 /*
  *	TangibleObjectImplementation
  */
@@ -1107,11 +1095,6 @@ bool TangibleObjectImplementation::isFromFactoryCrate() {
 	return optionsBitmask & 0x2100;
 }
 
-void TangibleObjectImplementation::createChildObjects() {
-	// server/zone/objects/tangible/TangibleObject.idl(502):  		return;
-	return;
-}
-
 /*
  *	TangibleObjectAdapter
  */
@@ -1287,9 +1270,6 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 60:
 		resp->insertBoolean(isFromFactoryCrate());
-		break;
-	case 61:
-		createChildObjects();
 		break;
 	default:
 		return NULL;
@@ -1516,10 +1496,6 @@ String TangibleObjectAdapter::getCraftersSerial() {
 
 bool TangibleObjectAdapter::isFromFactoryCrate() {
 	return ((TangibleObjectImplementation*) impl)->isFromFactoryCrate();
-}
-
-void TangibleObjectAdapter::createChildObjects() {
-	((TangibleObjectImplementation*) impl)->createChildObjects();
 }
 
 /*

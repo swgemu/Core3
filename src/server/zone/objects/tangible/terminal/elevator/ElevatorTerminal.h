@@ -61,6 +61,20 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
@@ -77,6 +91,10 @@ namespace elevator {
 class ElevatorTerminal : public Terminal {
 public:
 	ElevatorTerminal();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
@@ -112,6 +130,10 @@ public:
 	ElevatorTerminalImplementation();
 
 	ElevatorTerminalImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
@@ -159,6 +181,8 @@ public:
 	ElevatorTerminalAdapter(ElevatorTerminalImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 

@@ -2897,11 +2897,6 @@ int SceneObjectImplementation::getMapLocationsType3() {
 	return templateObject->getMapLocationsType3();
 }
 
-void SceneObjectImplementation::createChildObjects() {
-	// server/zone/objects/scene/SceneObject.idl(1411):  		return;
-	return;
-}
-
 /*
  *	SceneObjectAdapter
  */

@@ -12,6 +12,8 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
 /*
  *	ElevatorTerminalStub
  */
@@ -28,12 +30,34 @@ ElevatorTerminal::~ElevatorTerminal() {
 }
 
 
-int ElevatorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+void ElevatorTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ElevatorTerminalImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+void ElevatorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(menuResponse);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((ElevatorTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+}
+
+int ElevatorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -114,19 +138,19 @@ void ElevatorTerminalImplementation::_serializationHelperMethod() {
 
 ElevatorTerminalImplementation::ElevatorTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(59):  		Logger.setLoggingName("Elevator Terminal");
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(60):  		Logger.setLoggingName("Elevator Terminal");
 	Logger::setLoggingName("Elevator Terminal");
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(60):  		deltaZ = 0;
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(61):  		deltaZ = 0;
 	deltaZ = 0;
 }
 
 void ElevatorTerminalImplementation::setDeltaZ(float dz) {
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(76):  		deltaZ = dz;
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(82):  		deltaZ = dz;
 	deltaZ = dz;
 }
 
 float ElevatorTerminalImplementation::getDeltaZ() {
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(84):  		return deltaZ;
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(90):  		return deltaZ;
 	return deltaZ;
 }
 
@@ -142,6 +166,9 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case 6:
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 7:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:
@@ -149,6 +176,10 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	}
 
 	return resp;
+}
+
+void ElevatorTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	((ElevatorTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
 int ElevatorTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {

@@ -110,9 +110,6 @@ void BuildingObjectImplementation::sendDestroyTo(SceneObject* player) {
 	}
 }
 
-void BuildingObjectImplementation::createChildObjects() {
-}
-
 void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
 	info("sending building baselines");

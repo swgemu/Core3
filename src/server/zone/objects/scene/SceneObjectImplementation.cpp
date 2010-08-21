@@ -75,6 +75,7 @@ which carries forward this exception.
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/templates/ChildObject.h"
 
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -1262,3 +1263,42 @@ uint32 SceneObjectImplementation::getPlanetCRC() {
 	return zone->getPlanetName().hashCode();
 }
 
+void SceneObjectImplementation::createChildObjects() {
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
+		ChildObject* child = templateObject->getChildObject(i);
+
+		if (child == NULL)
+			continue;
+
+		ManagedReference<SceneObject*> obj = zoneServer->createObject(child->getTemplateFile().hashCode(), 1);
+
+		if (obj == NULL)
+			continue;
+
+		obj->initializePosition(child->getPosition().getX(), child->getPosition().getZ(), child->getPosition().getY());
+		obj->setDirection(child->getDirection());
+
+		if (isBuildingObject() && child->getCellId() >= 0) {
+			BuildingObject* buildingObject = (BuildingObject*) _this;
+
+			int totalCells = buildingObject->getTotalCellNumber();
+
+			if (totalCells > child->getCellId()) {
+				ManagedReference<CellObject*> cellObject = buildingObject->getCell(child->getCellId());
+
+				if (cellObject != NULL) {
+					cellObject->addObject(obj, child->getContainmentType(), true);
+					cellObject->broadcastObject(obj, false);
+				}
+			}
+		}
+
+		obj->insertToZone(zone);
+		obj->updateToDatabase();
+	}
+}

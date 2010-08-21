@@ -952,8 +952,9 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 	structureObject->setDirection(direction);
 	structureObject->setOwnerObjectID(player->getObjectID());
 	structureObject->setDeedObjectID(deedID);
-	structureObject->createChildObjects();
 	structureObject->insertToZone(zone);
+
+	structureObject->createChildObjects();
 
 	if (structureObject->isBuildingObject()) {
 		BuildingObject* buildingObject = (BuildingObject*) structureObject;
