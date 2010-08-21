@@ -83,6 +83,7 @@ void ResourceContainerImplementation::setQuantity(int quantity) {
 	 if(stackQuantity < 1) {
 
 		if(parent != NULL) {
+			parent->broadcastDestroy(_this, true);
 			parent->removeObject(_this, true);
 			setParent(NULL);
 		}
