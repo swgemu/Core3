@@ -264,11 +264,12 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 	useCount = newUseCount;
 
 	if (useCount < 1) {
+
+		broadcastDestroy(_this, true);
+
 		if (parent != NULL) {
 			parent->removeObject(_this, true);
 		}
-
-		broadcastDestroy(_this, true);
 
 		destroyObjectFromDatabase(true);
 

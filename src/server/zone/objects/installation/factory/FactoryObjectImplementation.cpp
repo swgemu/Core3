@@ -19,7 +19,7 @@
 #include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
 #include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
-
+#include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
 
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
@@ -505,14 +505,19 @@ void FactoryObjectImplementation::createNewObject() {
 
 			Reference<Task*> pending = getPendingTask("createFactoryObject");
 
-			if (pending != NULL)
+			schematic->setManufactureLimit(schematic->getManufactureLimit() - 1);
+
+			if(schematic->getManufactureLimit() == 0) {
+
+				removeObject(schematic);
+				stopFactory("manf_done", getObjectName()->getStringID(), "", currentRunCount);
+
+			} else if (pending != NULL)
 				pending->reschedule(timer * 1000);
 			else
 				stopFactory("manf_error", "", "", -1);
 
 			currentRunCount++;
-		} else {
-
 		}
 
 		updateToDatabase();
@@ -590,7 +595,13 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 	}
 
 	crate->addObject(protoclone, -1, false);
-	crate->setCustomObjectName(protoclone->getCustomObjectName(), false);
+
+	if(protoclone->getCustomObjectName().isEmpty()) {
+		UnicodeString newName = "@" + protoclone->getObjectNameStringIdFile()
+				+ ":" + protoclone->getObjectNameStringIdName();
+		crate->setCustomObjectName(newName, false);
+	} else
+		crate->setCustomObjectName(protoclone->getCustomObjectName(), false);
 
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
@@ -601,6 +612,8 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 
 	outputHopper->addObject(crate, -1, false);
 	broadcastObject(crate, true);
+
+
 
 	return crate;
 }
@@ -650,6 +663,15 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 			rcnod3->setQuantity(rcnoObject->getQuantity());
 			rcnod3->close();
 			broadcastMessage(rcnod3, true);
+
+		} else if(ingredient->isFactoryCrate()){
+
+			ingredient->setUseCount(ingredient->getUseCount() - usableIngredients.get(i));
+
+			FactoryCrateObjectDeltaMessage3* fcty3 = new FactoryCrateObjectDeltaMessage3((FactoryCrate*)ingredient.get());
+			fcty3->setQuantity(ingredient->getUseCount());
+			fcty3->close();
+			broadcastMessage(fcty3, true);
 
 		} else {
 
