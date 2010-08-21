@@ -502,7 +502,7 @@ void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleO
 
 	} else {
 
-		if(ingredientSlot->isComplete())
+		if(ingredientSlot->hasItem() && ingredientSlot->isComplete())
 			sendSlotMessage(player, clientCounter, IngredientSlot::FULL);
 		else
 			sendSlotMessage(player, clientCounter, IngredientSlot::INVALIDINGREDIENT);
