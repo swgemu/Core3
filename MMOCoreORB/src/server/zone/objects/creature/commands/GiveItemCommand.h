@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "server/zone/managers/resource/ResourceManager.h"
+#include "../../../managers/player/PlayerManager.h"
 
 class GiveItemCommand : public QueueCommand {
 public:
@@ -64,9 +65,33 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		StringTokenizer tokenizer(arguments.toString());
+		ManagedReference<SceneObject* > object =
+				server->getZoneServer()->getObject(target);
 
-		if(!tokenizer.hasMoreTokens() || !creature->isPlayerCreature()) {
+		ManagedReference<PlayerCreature*> player = NULL;
+
+		StringTokenizer args(arguments.toString());
+
+		if (object == NULL || !object->isPlayerCreature()) {
+
+			String firstName;
+
+			if (args.hasMoreTokens()) {
+				args.getStringToken(firstName);
+				player = server->getZoneServer()->getPlayerManager()->getPlayer(
+								firstName);
+			}
+
+		} else {
+			player = (PlayerCreature*) object.get();
+		}
+
+		if (player == NULL) {
+			creature->sendSystemMessage("invalid target for giveItem command");
+			return GENERALERROR;
+		}
+
+		if(!args.hasMoreTokens()) {
 			creature->sendSystemMessage("Invalid Parameters");
 			return INVALIDPARAMETERS;
 		}
@@ -75,25 +100,25 @@ public:
 
 
 			String itemtype;
-			tokenizer.getStringToken(itemtype);
+			args.getStringToken(itemtype);
 
 			if (itemtype.toLowerCase() == "resource") {
-				if (!tokenizer.hasMoreTokens()) {
+				if (!args.hasMoreTokens()) {
 					creature->sendSystemMessage( "Invalid Parameters, missing resource name");
 					return INVALIDPARAMETERS;
 				}
 
 				String resname;
-				tokenizer.getStringToken(resname);
+				args.getStringToken(resname);
 
 				int quantity = 100000;
 
-				if (tokenizer.hasMoreTokens()) {
-					quantity = tokenizer.getIntToken();
+				if (args.hasMoreTokens()) {
+					quantity = args.getIntToken();
 				}
 
 				ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
-				resourceManager->givePlayerResource((PlayerCreature*) creature, resname, quantity);
+				resourceManager->givePlayerResource(player, resname, quantity);
 
 			}
 

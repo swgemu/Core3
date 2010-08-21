@@ -337,7 +337,7 @@ void ResourceManagerImplementation::givePlayerResource(PlayerCreature* playerCre
 	ManagedReference<ResourceSpawn* > spawn = getResourceSpawn(restype);
 
 	if(spawn == NULL) {
-		playerCreature->sendSystemMessage("Selected spawn does not exist");
+		playerCreature->sendSystemMessage("Selected spawn does not exist, make sure to capitalize the first letter");
 		return;
 	}
 
