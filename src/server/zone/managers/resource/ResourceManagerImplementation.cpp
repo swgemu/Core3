@@ -333,3 +333,24 @@ void ResourceManagerImplementation::removePowerFromPlayer(PlayerCreature* player
 
 	}
 }
+void ResourceManagerImplementation::givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity) {
+	ManagedReference<ResourceSpawn* > spawn = getResourceSpawn(restype);
+
+	if(spawn == NULL) {
+		playerCreature->sendSystemMessage("Selected spawn does not exist");
+		return;
+	}
+
+	ManagedReference<SceneObject*> inventory = playerCreature->getSlottedObject("inventory");
+
+	if(inventory != NULL && !inventory->hasFullContainerObjects()) {
+
+		ResourceContainer* newResource = spawn->createResource(quantity);
+
+		if(newResource != NULL) {
+			spawn->extractResource(-1, quantity);
+			inventory->broadcastObject(newResource, true);
+			inventory->addObject(newResource, -1, true);
+		}
+	}
+}
