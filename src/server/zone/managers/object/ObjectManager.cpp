@@ -63,10 +63,12 @@
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
+#include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
+#include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
 #include "server/zone/objects/tangible/pharmaceutical/RangedStimPack.h"
@@ -243,6 +245,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TicketCollector>(SceneObject::TICKETCOLLECTOR);
 	objectFactory.registerObject<TicketObject>(SceneObject::TRAVELTICKET);
 	objectFactory.registerObject<TravelTerminal>(SceneObject::TRAVELTERMINAL);
+	objectFactory.registerObject<GuildTerminal>(SceneObject::GUILDTERMINAL);
+
 	objectFactory.registerObject<LairObject>(SceneObject::LAIR);
 
 	objectFactory.registerObject<Deed>(SceneObject::DEED);
