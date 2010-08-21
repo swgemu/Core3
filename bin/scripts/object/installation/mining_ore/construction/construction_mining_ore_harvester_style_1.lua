@@ -42,7 +42,7 @@
 
 
 object_installation_mining_ore_construction_construction_mining_ore_harvester_style_1 = object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1:new {
-
+	gameObjectType = 4096
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_ore_construction_construction_mining_ore_harvester_style_1, "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_1.iff")
