@@ -125,6 +125,10 @@ public:
 
 	int getToolType();
 
+	TangibleObject* getPrototype();
+
+	ManufactureSchematic* getManufactureSchematic();
+
 	Vector<unsigned int>* getToolTabs();
 
 	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation = NULL);
@@ -197,10 +201,6 @@ protected:
 
 	int insertCounter;
 
-	ManagedReference<ManufactureSchematic* > manufactureSchematic;
-
-	ManagedReference<TangibleObject* > prototype;
-
 	int experimentationPointsTotal;
 
 	int experimentationPointsUsed;
@@ -245,6 +245,10 @@ public:
 	bool isCraftingTool();
 
 	int getToolType();
+
+	TangibleObject* getPrototype();
+
+	ManufactureSchematic* getManufactureSchematic();
 
 	Vector<unsigned int>* getToolTabs();
 
@@ -364,6 +368,10 @@ public:
 	bool isCraftingTool();
 
 	int getToolType();
+
+	TangibleObject* getPrototype();
+
+	ManufactureSchematic* getManufactureSchematic();
 
 	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation);
 
