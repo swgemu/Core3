@@ -15,16 +15,15 @@
 class StructurePermissionList : public VectorMap<uint64, uint8> {
 public:
 	//List Permissions
-	static const uint8 BANLIST = 0x00;
-	static const uint8 HOPPERLIST = 0x01;
-	static const uint8 ENTRYLIST = 0x02;
-	static const uint8 VENDORLIST = 0x04;
-	static const uint8 ADMINLIST = 0x08;
-	static const uint8 OWNER = 0xFF;
+	static const uint8 BANLIST = 0x01;
+	static const uint8 HOPPERLIST = 0x02;
+	static const uint8 ENTRYLIST = 0x04;
+	static const uint8 VENDORLIST = 0x08;
+	static const uint8 ADMINLIST = 0x10;
 
-	//Super Permissions
-	static const uint8 VENDOR = ENTRYLIST | VENDORLIST;
-	static const uint8 ADMIN = HOPPERLIST | VENDOR | ADMINLIST;
+	static const uint8 OWNER = ~BANLIST;
+	static const uint8 VENDOR = VENDORLIST | ENTRYLIST;
+	static const uint8 ADMIN = ADMINLIST | VENDOR | HOPPERLIST;
 
 public:
 	StructurePermissionList();
@@ -39,54 +38,30 @@ public:
 	uint8 getPermissionFromListName(const String& listName);
 
 	bool hasPermission(uint64 playerID, uint8 permission) {
-		if (!contains(playerID))
-			return false;
-
-		if (permission == BANLIST)
-			return (get(playerID) == BANLIST);
-
 		return (get(playerID) & permission);
 	}
 
 	inline bool isOwner(uint64 playerID) {
-		if (!contains(playerID))
-			return false;
-
 		return (get(playerID) & OWNER);
 	}
 
 	inline bool isOnAdminList(uint64 playerID) {
-		if (!contains(playerID))
-			return false;
-
 		return (get(playerID) & ADMINLIST);
 	}
 
 	inline bool isOnBanList(uint64 playerID) {
-		if (!contains(playerID))
-			return false;
-
-		return (get(playerID) == BANLIST);
+		return (get(playerID) & BANLIST);
 	}
 
 	inline bool isOnEntryList(uint64 playerID) {
-		if (!contains(playerID))
-			return false;
-
 		return (get(playerID) & ENTRYLIST);
 	}
 
 	inline bool isOnVendorList(uint64 playerID) {
-		if (!contains(playerID))
-			return false;
-
 		return (get(playerID) & VENDORLIST);
 	}
 
 	inline bool isOnHopperList(uint64 playerID) {
-		if (!contains(playerID))
-			return false;
-
 		return (get(playerID) & HOPPERLIST);
 	}
 };

@@ -46,6 +46,11 @@ which carries forward this exception.
 #define DESTROYSTRUCTURECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../structure/StructureObject.h"
+#include "../../building/BuildingObject.h"
+#include "../../cell/CellObject.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 class DestroystructureCommand : public QueueCommand {
 public:
@@ -62,6 +67,47 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		if (creature->getZone() == NULL)
+			return GENERALERROR;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+
+		ZoneServer* zoneServer = creature->getZoneServer();
+
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
+
+		ManagedReference<StructureObject*> structureObject = NULL;
+
+		//Try to find the target of the command...
+		if (obj != NULL && obj->isInstallationObject()) {
+			structureObject = (StructureObject*) obj.get();
+		} else if (player->getParent() != NULL && player->getParent()->isCellObject()) {
+			ManagedReference<CellObject*> cell = (CellObject*) player->getParent();
+
+			if (cell->getParent() != NULL && cell->getParent()->isBuildingObject())
+				structureObject = (StructureObject*) cell->getParent();
+		}
+
+		if (structureObject == NULL) {
+			player->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
+			return INVALIDPARAMETERS;
+		}
+
+		PlanetManager* planetManager = creature->getZone()->getPlanetManager();
+
+		if (planetManager == NULL)
+			return GENERALERROR;
+
+		StructureManager* structureManager = planetManager->getStructureManager();
+
+		if (structureManager == NULL)
+			return GENERALERROR;
+
+		structureManager->sendDestroyConfirmTo(player, structureObject);
 
 		return SUCCESS;
 	}

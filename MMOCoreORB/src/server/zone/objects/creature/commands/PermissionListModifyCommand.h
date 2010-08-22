@@ -77,7 +77,7 @@ public:
 		ManagedReference<StructureObject*> structureObject = NULL;
 
 		//Try to find the target of the command...
-		if (obj->isInstallationObject()) {
+		if (obj != NULL && obj->isInstallationObject()) {
 			structureObject = (StructureObject*) obj.get();
 		} else if (player->getParent() != NULL && player->getParent()->isCellObject()) {
 			ManagedReference<CellObject*> cell = (CellObject*) player->getParent();
@@ -121,8 +121,6 @@ public:
 
 		if (listName != "ADMIN" && listName != "ENTRY" && listName != "BAN" && listName != "HOPPER" && listName != "VENDOR")
 			return INVALIDPARAMETERS;
-
-		creature->sendSystemMessage(arguments.toString());
 
 		if (action == "add") {
 			if (structureObject->addPermission(player, targetPlayerName, listName)) {
