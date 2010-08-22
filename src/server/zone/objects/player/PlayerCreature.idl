@@ -773,8 +773,8 @@ class PlayerCreature extends CreatureObject {
 	 * Finds the closest structure in range with Administration priveleges.
 	 * This is primarily used for commands that require a building or installation.
 	 * First checks the passed targetID, then checks if the player is inside a building. Finally searches for an installation in range.
-	 * @pre: player locked, zone locked
-	 * @post: player locked, zone locked
+	 * @pre: player locked, zone unlocked
+	 * @post: player locked, zone unlocked
 	 * @param targetID The object id of the players target.
 	 */
 	public native SceneObject getInRangeStructureWithAdminRights(unsigned long targetID = 0);
