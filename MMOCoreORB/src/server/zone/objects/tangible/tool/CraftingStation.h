@@ -49,6 +49,20 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
+
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
@@ -74,6 +88,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isCraftingStation();
 
@@ -131,6 +147,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	bool isCraftingStation();
 
 	int getComplexityLevel();
@@ -185,6 +203,8 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isCraftingStation();
 
