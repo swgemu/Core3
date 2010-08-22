@@ -59,8 +59,32 @@ using namespace server::zone::objects::player;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace region {
+
+class Region;
+
+} // namespace region
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::region;
+
+namespace server {
+namespace zone {
 
 class ZoneServer;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+
+class ZoneProcessServerImplementation;
 
 } // namespace zone
 } // namespace server
@@ -80,7 +104,7 @@ namespace mission {
 
 class MissionManager : public Observer {
 public:
-	MissionManager(ZoneServer* srv);
+	MissionManager(ZoneServer* srv, ZoneProcessServerImplementation* impl);
 
 	void loadLairObjectsToSpawn();
 
@@ -92,19 +116,41 @@ public:
 
 	void removeMission(MissionObject* mission, PlayerCreature* player);
 
-	void populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
-
-	void populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+	void populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
 
-	void randomizeGeneralMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeDestroyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeBountyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeDeliverMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeCraftingMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeDancerMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeMusicianMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeHuntingMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeReconMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission);
 
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
-	void createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -132,10 +178,14 @@ class MissionManagerImplementation : public ObserverImplementation, public Logge
 protected:
 	ManagedWeakReference<ZoneServer* > server;
 
+private:
+	ZoneProcessServerImplementation* processor;
+
+protected:
 	LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
 
 public:
-	MissionManagerImplementation(ZoneServer* srv);
+	MissionManagerImplementation(ZoneServer* srv, ZoneProcessServerImplementation* impl);
 
 	MissionManagerImplementation(DummyConstructorParameter* param);
 
@@ -149,19 +199,41 @@ public:
 
 	void removeMission(MissionObject* mission, PlayerCreature* player);
 
-	void populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
-
-	void populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+	void populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
 
-	void randomizeGeneralMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeDestroyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeBountyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeDeliverMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeCraftingMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeDancerMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeMusicianMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeHuntingMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeReconMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission);
 
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
-	void createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -214,19 +286,41 @@ public:
 
 	void removeMission(MissionObject* mission, PlayerCreature* player);
 
-	void populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
-
-	void populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+	void populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
 
-	void randomizeGeneralMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeDestroyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeBountyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeDeliverMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeCraftingMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeDancerMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeMusicianMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeHuntingMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeReconMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission);
+
+	void randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission);
 
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
-	void createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 

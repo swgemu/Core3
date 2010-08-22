@@ -94,4 +94,31 @@ class MissionTerminal extends Terminal {
 		return terminalType == "general";
 	}
 	
+	public boolean isBountyTerminal(){
+		return terminalType == "bounty";
+	}
+	
+	public boolean isEntertainerTerminal() {
+		return terminalType == "entertainer";
+	}
+	
+	public boolean isImperialTerminal() {
+		return terminalType == "imperial";
+	}
+	
+	public boolean isNewbieTerminal() {
+		return terminalType == "newbie";
+	}
+	
+	public boolean isRebelTerminal() {
+		return terminalType == "rebel";
+	}
+	
+	public boolean isScoutTerminal() {
+		return terminalType == "scout";
+	}
+	
+	public boolean isStatueTerminal() {
+		return terminalType == "statue";
+	}
 }

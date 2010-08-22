@@ -8,7 +8,7 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-#include "server/zone/objects/mission/GeneralMissionObjective.h"
+#include "server/zone/objects/mission/DestroyMissionObjective.h"
 
 /*
  *	MissionSpawnActiveAreaStub
@@ -39,7 +39,7 @@ void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
 		((MissionSpawnActiveAreaImplementation*) _impl)->notifyEnter(player);
 }
 
-void MissionSpawnActiveArea::setMissionObjective(GeneralMissionObjective* mission) {
+void MissionSpawnActiveArea::setMissionObjective(DestroyMissionObjective* mission) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -119,13 +119,13 @@ void MissionSpawnActiveAreaImplementation::_serializationHelperMethod() {
 
 	_setClassName("MissionSpawnActiveArea");
 
-	addSerializableVariable("generalMissionObjective", &generalMissionObjective);
+	addSerializableVariable("destroyMissionObjective", &destroyMissionObjective);
 }
 
 MissionSpawnActiveAreaImplementation::MissionSpawnActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(57):  		generalMissionObjective = null;
-	generalMissionObjective = NULL;
+	// server/zone/objects/area/MissionSpawnActiveArea.idl(57):  		destroyMissionObjective = null;
+	destroyMissionObjective = NULL;
 	// server/zone/objects/area/MissionSpawnActiveArea.idl(59):  		Logger.setLoggingName("MissionSpawnActiveArea");
 	Logger::setLoggingName("MissionSpawnActiveArea");
 }
@@ -141,13 +141,13 @@ void MissionSpawnActiveAreaImplementation::notifyEnter(SceneObject* player) {
 
 	else {
 	// server/zone/objects/area/MissionSpawnActiveArea.idl(68):  
-	if (generalMissionObjective != NULL){
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(71):  				PlayerCreature missionOwner = generalMissionObjective.getPlayerOwner();
-	PlayerCreature* missionOwner = generalMissionObjective->getPlayerOwner();
+	if (destroyMissionObjective != NULL){
+	// server/zone/objects/area/MissionSpawnActiveArea.idl(71):  				PlayerCreature missionOwner = destroyMissionObjective.getPlayerOwner();
+	PlayerCreature* missionOwner = destroyMissionObjective->getPlayerOwner();
 	// server/zone/objects/area/MissionSpawnActiveArea.idl(73):  			}
 	if ((PlayerCreature*) player == missionOwner){
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(75):  					generalMissionObjective.spawnLair();
-	generalMissionObjective->spawnLair();
+	// server/zone/objects/area/MissionSpawnActiveArea.idl(75):  					destroyMissionObjective.spawnLair();
+	destroyMissionObjective->spawnLair();
 }
 }
 
@@ -158,9 +158,9 @@ void MissionSpawnActiveAreaImplementation::notifyEnter(SceneObject* player) {
 }
 }
 
-void MissionSpawnActiveAreaImplementation::setMissionObjective(GeneralMissionObjective* mission) {
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(86):  		generalMissionObjective = mission;
-	generalMissionObjective = mission;
+void MissionSpawnActiveAreaImplementation::setMissionObjective(DestroyMissionObjective* mission) {
+	// server/zone/objects/area/MissionSpawnActiveArea.idl(86):  		destroyMissionObjective = mission;
+	destroyMissionObjective = mission;
 }
 
 /*
@@ -178,7 +178,7 @@ Packet* MissionSpawnActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMe
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		setMissionObjective((GeneralMissionObjective*) inv->getObjectParameter());
+		setMissionObjective((DestroyMissionObjective*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -191,7 +191,7 @@ void MissionSpawnActiveAreaAdapter::notifyEnter(SceneObject* player) {
 	((MissionSpawnActiveAreaImplementation*) impl)->notifyEnter(player);
 }
 
-void MissionSpawnActiveAreaAdapter::setMissionObjective(GeneralMissionObjective* mission) {
+void MissionSpawnActiveAreaAdapter::setMissionObjective(DestroyMissionObjective* mission) {
 	((MissionSpawnActiveAreaImplementation*) impl)->setMissionObjective(mission);
 }
 

@@ -53,20 +53,12 @@ import server.zone.objects.scene.SceneObject;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
-import server.zone.objects.tangible.lair.LairObject;
 
-class GeneralMissionObjective extends MissionObjective {
-	@dereferenced
-	protected TemplateReference<SharedObjectTemplate> lairTemplateToSpawn;
-	
-	protected MissionSpawnActiveArea spawnActiveArea;
-	
-	protected LairObject lairObject;
-	
-	public GeneralMissionObjective(MissionObject mission) {
+class BountyMissionObjective extends MissionObjective {
+	public BountyMissionObjective(MissionObject mission) {
 		super(mission);
 		
-		Logger.setLoggingName("GeneralMissionObjective");
+		Logger.setLoggingName("BountyMissionObjective");
 	}
 	
 	public native void finalize() {
@@ -85,8 +77,6 @@ class GeneralMissionObjective extends MissionObjective {
 	public native void abort();
 	public native void complete();
 	
-	public native void spawnLair();
-	
 	/**
 	 * Destroys this object from database
 	 * @pre { this is locked }
@@ -95,7 +85,4 @@ class GeneralMissionObjective extends MissionObjective {
 	public native void destroyObjectFromDatabase();
 	
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
-	@local
-	public native void setLairTemplateToSpawn(SharedObjectTemplate sp);
 }

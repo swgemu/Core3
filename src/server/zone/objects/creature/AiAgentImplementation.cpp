@@ -477,6 +477,12 @@ int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* atta
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
+int AiAgentImplementation::notifyConverseObservers(CreatureObject* converser) {
+	notifyObservers(ObserverEventType::CONVERSE, converser);
+
+	return 1;
+}
+
 bool AiAgentImplementation::hasOrganics() {
 	return ((getHideMax() + getBoneMax() + getMeatMax()) > 0);
 }
@@ -733,6 +739,18 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerC
 
 
 void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
+	if (!player->isPlayerCreature())
+		return;
+
+	SortedVector<ManagedReference<Observer*> >* observers = observerEventMap.getObservers(ObserverEventType::CONVERSE);
+
+	if (observers == NULL || (observers != NULL && observers->size() <= 0))
+		sendDefaultConversationTo(player);
+	else
+		notifyConverseObservers((CreatureObject*)player);
+}
+
+void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 

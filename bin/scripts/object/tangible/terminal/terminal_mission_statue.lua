@@ -42,6 +42,10 @@
 
 
 object_tangible_terminal_terminal_mission_statue = object_tangible_terminal_shared_terminal_mission_statue:new {
+	mapLocationsType1 = 41,
+	mapLocationsType2 = 44,
+	templateType = MISSIONTERMINAL,
+	missionTerminalType = "statue"
 
 }
 

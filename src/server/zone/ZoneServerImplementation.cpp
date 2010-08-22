@@ -413,7 +413,7 @@ void ZoneServerImplementation::startManagers() {
 	bazaarManager->deploy();
 	bazaarManager->initialize();
 
-	missionManager = new MissionManager(_this);
+	missionManager = new MissionManager(_this, processor);
 	missionManager->deploy("MissionManager");
 
 	radialManager = new RadialManager(_this);

@@ -182,11 +182,18 @@ class AiAgent extends CreatureObject {
 	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
 	
 	/**
-	 * sends the conversation list 
+	 * sends the conversation notification 
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
 	 */
 	public native void sendConversationStartTo(SceneObject player);
+	
+	/**
+	 * sends the default conversation list
+	 * @pre {this locked, player locked }
+	 * @post {this locked, player locked }
+	 */
+	public native void sendDefaultConversationTo(SceneObject player);
 	
 	/**
 	 * sends the conversation list 
@@ -201,6 +208,13 @@ class AiAgent extends CreatureObject {
 	 * @post { this, attacker locked }
 	 */
 	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	
+	/**
+	 * Is called when an object is talked to
+	 * @pre { this, converser locked }
+	 * @post {this, converser locked }
+	 */
+	public native int notifyConverseObservers(CreatureObject converser);
 	
 	public native void activatePostureRecovery();
 	

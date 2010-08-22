@@ -47,14 +47,14 @@ package server.zone.objects.area;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.area.ActiveArea;
-import server.zone.objects.mission.GeneralMissionObjective;
+import server.zone.objects.mission.DestroyMissionObjective;
 
 class MissionSpawnActiveArea extends ActiveArea {
 	@weakReference
-	protected GeneralMissionObjective generalMissionObjective;
+	protected DestroyMissionObjective destroyMissionObjective;
 	
 	public MissionSpawnActiveArea() {
-		generalMissionObjective = null;
+		destroyMissionObjective = null;
 		
 		Logger.setLoggingName("MissionSpawnActiveArea");
 	}
@@ -65,14 +65,14 @@ class MissionSpawnActiveArea extends ActiveArea {
 		if (!player.isPlayerCreature()) {
 			return;
 		} else {
-			if (generalMissionObjective != null) {
+			if (destroyMissionObjective != null) {
 				//Logger.info("objective not null", true);
 				
-				PlayerCreature missionOwner = generalMissionObjective.getPlayerOwner();
+				PlayerCreature missionOwner = destroyMissionObjective.getPlayerOwner();
 				
 				if ((PlayerCreature) player == missionOwner) {
 					//Logger.info("player == missionOwner", true);
-					generalMissionObjective.spawnLair();
+					destroyMissionObjective.spawnLair();
 					
 					//super.removeFromZone();
 				}
@@ -82,8 +82,8 @@ class MissionSpawnActiveArea extends ActiveArea {
 		}
 	}
 	
-	public void setMissionObjective(GeneralMissionObjective mission) {
-		generalMissionObjective = mission;
+	public void setMissionObjective(DestroyMissionObjective mission) {
+		destroyMissionObjective = mission;
 	}
 }
 
