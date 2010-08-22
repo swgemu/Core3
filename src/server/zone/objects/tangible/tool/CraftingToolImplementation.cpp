@@ -89,6 +89,10 @@ void CraftingToolImplementation::fillObjectMenuResponse(
 		ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
+	if(getContainerObjectsSize() > 0) {
+		menuResponse->addRadialMenuItem(132, 3, "@ui_radial:craft_hopper_output");
+	}
+
 }
 
 int CraftingToolImplementation::handleObjectMenuSelect(
@@ -96,6 +100,23 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 	PlayerObject* playerObject = playerCreature->getPlayerObject();
 
 	if (selectedID == 20) { // use object
+
+	}
+
+	if (selectedID == 132) { // use object
+
+		ManagedReference<SceneObject* > inventory = playerCreature->getSlottedObject("inventory");
+
+		if (inventory != NULL && inventory->getContainerObjectsSize() < 80) {
+			playerCreature->sendSystemMessage("system_msg", "prototype_transferred");
+			removeObject(prototype);
+
+			inventory->addObject(prototype, -1, true);
+
+			status = "@crafting:tool_status_ready";
+		} else {
+			playerCreature->sendSystemMessage("system_msg", "prototype_not_transferred");
+		}
 
 	}
 
@@ -277,6 +298,10 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 		manufactureSchematic = NULL;
 	}
 
+	// Remove all items that aren't the prototype
+	while(getContainerObjectsSize() > 1)
+		removeObject(getContainerObject(1));
+
 	if (prototype != NULL) {
 		if(status == "@crafting:tool_status_ready") {
 
@@ -287,8 +312,7 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 		}
 	}
 
-	while(getContainerObjectsSize() > 0)
-		removeObject(getContainerObject(0));
+
 
 	if (player != NULL) {
 		// DPlay9
@@ -402,7 +426,7 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 		addObject(manufactureSchematic, 0x4, false);
 		manufactureSchematic->sendTo(player, true);
 
-		addObject(prototype, 0xFFFFFFFF, false);
+		addObject(prototype, -1, false);
 		prototype->sendTo(player, true);
 
 		// Dplay9 ********************************************************
@@ -1427,13 +1451,8 @@ void CraftingToolImplementation::depositObject(PlayerCreature* player, bool prac
 
 		player->sendSystemMessage("system_msg", "prototype_transferred");
 		removeObject(prototype);
-		updateToDatabase();
 
 		inventory->addObject(prototype, -1, true);
-		prototype->setPersistent(2);
-
-		prototype->updateToDatabase();
-		inventory->updateToDatabase();
 
 		status = "@crafting:tool_status_ready";
 
@@ -1442,4 +1461,9 @@ void CraftingToolImplementation::depositObject(PlayerCreature* player, bool prac
 		player->sendSystemMessage("system_msg", "prototype_not_transferred");
 		status = "@crafting:tool_status_finished";
 	}
+
+	prototype->setPersistent(2);
+	prototype->updateToDatabase();
+
+	updateToDatabase();
 }
