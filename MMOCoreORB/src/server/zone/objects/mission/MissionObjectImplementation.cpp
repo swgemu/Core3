@@ -242,3 +242,39 @@ void MissionObjectImplementation::setStartPosition(float posX, float posY, uint3
 		player->sendMessage(delta);
 	}
 }
+
+void MissionObjectImplementation::setEndPosition(float posX, float posY, uint32 planetCRC, bool notifyClient) {
+	endPositionX = posX;
+	endPositionY = posY;
+	endPlanetCRC = planetCRC;
+
+	if (!notifyClient)
+		return;
+
+	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+
+	if (player != NULL) {
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		delta->updateDestination(posX, posY, planetCRC);
+		delta->close();
+
+		player->sendMessage(delta);
+	}
+}
+
+void MissionObjectImplementation::setCreatorName(const String& name, bool notifyClient) {
+	creatorName = name;
+
+	if (!notifyClient)
+		return;
+
+	SceneObject* player = getParentRecursively(SceneObject::PLAYERCREATURE);
+
+	if (player != NULL) {
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		delta->updateCreator();
+		delta->close();
+
+		player->sendMessage(delta);
+	}
+}

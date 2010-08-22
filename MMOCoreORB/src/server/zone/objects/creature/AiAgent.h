@@ -208,9 +208,13 @@ public:
 
 	void sendConversationStartTo(SceneObject* player);
 
+	void sendDefaultConversationTo(SceneObject* player);
+
 	void selectConversationOption(int option, SceneObject* obj);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	int notifyConverseObservers(CreatureObject* converser);
 
 	void activatePostureRecovery();
 
@@ -397,9 +401,13 @@ public:
 
 	void sendConversationStartTo(SceneObject* player);
 
+	void sendDefaultConversationTo(SceneObject* player);
+
 	void selectConversationOption(int option, SceneObject* obj);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	int notifyConverseObservers(CreatureObject* converser);
 
 	void activatePostureRecovery();
 
@@ -550,9 +558,13 @@ public:
 
 	void sendConversationStartTo(SceneObject* player);
 
+	void sendDefaultConversationTo(SceneObject* player);
+
 	void selectConversationOption(int option, SceneObject* obj);
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	int notifyConverseObservers(CreatureObject* converser);
 
 	void activatePostureRecovery();
 

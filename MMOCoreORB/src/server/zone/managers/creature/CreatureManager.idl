@@ -39,6 +39,7 @@ class CreatureManager extends ManagedObject implements Logger {
 	public void initialize() {
 		loadTrainers();
 		loadSingleSpawns();
+		loadMissionSpawns();
 	}
 	
 	/**
@@ -66,6 +67,8 @@ class CreatureManager extends ManagedObject implements Logger {
 	public native void loadSingleSpawns();
 	
 	public native void loadTrainers();
+	
+	public native void loadMissionSpawns();
 	
 	private native boolean createCreatureChildrenObjects(CreatureObject creature);
 	

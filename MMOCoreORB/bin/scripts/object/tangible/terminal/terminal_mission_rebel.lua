@@ -42,6 +42,10 @@
 
 
 object_tangible_terminal_terminal_mission_rebel = object_tangible_terminal_shared_terminal_mission_rebel:new {
+	mapLocationsType1 = 41,
+	mapLocationsType2 = 44,
+	templateType = MISSIONTERMINAL,
+	missionTerminalType = "rebel"
 
 }
 

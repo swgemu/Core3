@@ -11,11 +11,13 @@
 #include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/creature/trainer/TrainerCreature.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
+#include "server/zone/objects/region/Region.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
@@ -325,6 +327,83 @@ void CreatureManagerImplementation::loadTrainers() {
 		/*if (planetmapid > 0)
 			zone->addMapLocation(trainer->getObjectID(), trainername, worldx, worldy, 19, planetmapid, 0);*/
 	}
+
+	delete result;
+}
+
+void CreatureManagerImplementation::loadMissionSpawns() {
+	info("loading mission spawns...", true);
+
+	int planetid = zone->getZoneID();
+
+	ResultSet* result = NULL;
+	StringBuffer query;
+	query << "SELECT * FROM mission_manager_npcs WHERE zoneid = " << planetid << ";";
+
+	int i = 0;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		while (result->next()) {
+			uint64 parentid = result->getUnsignedLong(2);
+			String templateFile = result->getString(3);
+			float ox = result->getFloat(4);
+			float oy = result->getFloat(5);
+			float oz = result->getFloat(6);
+			float ow = result->getFloat(7);
+			float x = result->getFloat(8);
+			float z = result->getFloat(9);
+			float y = result->getFloat(10);
+			int level = result->getInt(11);
+			String anim = result->getString(12);
+			int creatureBitmask = result->getInt(13);
+
+			if (z == 0 && parentid == 0)
+				z = zone->getHeight(x, y);
+
+			ManagedReference<CreatureObject*> creature = spawnCreature(templateFile.hashCode(), x, z, y, parentid);
+
+			if (creature == NULL) {
+				error("trying to spawn unknown creature " + templateFile);
+			} else {
+				ManagedReference<SceneObject*> parentObject;
+
+				if (parentid != 0) {
+					parentObject = server->getObject(parentid);
+				}
+
+				creature->setDirection(ow, ox, oy, oz);
+				creature->setLevel(level);
+				creature->setMoodString(anim);
+				creature->setPvpStatusBitmask(0);
+				creature->setOptionsBitmask(creatureBitmask);
+
+				if (creature->isAiAgent()) {
+					AiAgent* aiAgent = (AiAgent*)creature.get();
+					aiAgent->setHomeLocation(x, z, y, parentObject);
+					aiAgent->setRespawnTimer(60);
+					aiAgent->setDespawnOnNoPlayerInRange(false);
+
+					PlanetManager* pmng = zone->getPlanetManager();
+
+					if (pmng != NULL) {
+						Region* reg = pmng->getRegion(x, y);
+						reg->addMissionNpc(aiAgent);
+					}
+				}
+			}
+
+			++i;
+		}
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in CreatureManagerImplementation::loadMissionSpawns()");
+	}
+
+	info("mission npcs spawned: " + String::valueOf(i), true);
 
 	delete result;
 }

@@ -33,7 +33,7 @@ public:
 
 		terminalObjectID = message->parseLong();
 
-		//System::out << "mission list request with unk1: " << unk1 << " unk2: " << unk2 << endl;
+		//System::out << "mission list request with unk1: " << unk1 << " unk2: " << unk2 << " oid: " << terminalObjectID << endl;
 	}
 
 	void run() {

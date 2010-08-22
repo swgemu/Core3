@@ -76,6 +76,20 @@ public:
 
 	bool isGeneralTerminal();
 
+	bool isBountyTerminal();
+
+	bool isEntertainerTerminal();
+
+	bool isImperialTerminal();
+
+	bool isNewbieTerminal();
+
+	bool isRebelTerminal();
+
+	bool isScoutTerminal();
+
+	bool isStatueTerminal();
+
 protected:
 	MissionTerminal(DummyConstructorParameter* param);
 
@@ -118,6 +132,20 @@ public:
 	bool isArtisanTerminal();
 
 	bool isGeneralTerminal();
+
+	bool isBountyTerminal();
+
+	bool isEntertainerTerminal();
+
+	bool isImperialTerminal();
+
+	bool isNewbieTerminal();
+
+	bool isRebelTerminal();
+
+	bool isScoutTerminal();
+
+	bool isStatueTerminal();
 
 	MissionTerminal* _this;
 
@@ -165,6 +193,20 @@ public:
 	bool isArtisanTerminal();
 
 	bool isGeneralTerminal();
+
+	bool isBountyTerminal();
+
+	bool isEntertainerTerminal();
+
+	bool isImperialTerminal();
+
+	bool isNewbieTerminal();
+
+	bool isRebelTerminal();
+
+	bool isScoutTerminal();
+
+	bool isStatueTerminal();
 
 };
 
