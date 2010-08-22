@@ -10,6 +10,8 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
 /*
  *	CraftingStationStub
  */
@@ -76,12 +78,25 @@ void CraftingStation::fillAttributeList(AttributeListMessage* msg, PlayerCreatur
 		((CraftingStationImplementation*) _impl)->fillAttributeList(msg, object);
 }
 
-bool CraftingStation::isCraftingStation() {
+void CraftingStation::updateCraftingValues(ManufactureSchematic* schematic) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(schematic);
+
+		method.executeWithVoidReturn();
+	} else
+		((CraftingStationImplementation*) _impl)->updateCraftingValues(schematic);
+}
+
+bool CraftingStation::isCraftingStation() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -93,7 +108,7 @@ int CraftingStation::getComplexityLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -105,7 +120,7 @@ int CraftingStation::getStationType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -117,7 +132,7 @@ void CraftingStation::setComplexityLevel(int level) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addSignedIntParameter(level);
 
 		method.executeWithVoidReturn();
@@ -130,7 +145,7 @@ SceneObject* CraftingStation::findCraftingTool(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -143,7 +158,7 @@ void CraftingStation::createChildObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithVoidReturn();
 	} else
@@ -224,38 +239,38 @@ void CraftingStationImplementation::_serializationHelperMethod() {
 
 CraftingStationImplementation::CraftingStationImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingStation.idl(61):  		Logger.setLoggingName("CraftingStation");
+	// server/zone/objects/tangible/tool/CraftingStation.idl(62):  		Logger.setLoggingName("CraftingStation");
 	Logger::setLoggingName("CraftingStation");
-	// server/zone/objects/tangible/tool/CraftingStation.idl(62):  		complexityLevel = 0;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(63):  		complexityLevel = 0;
 	complexityLevel = 0;
-	// server/zone/objects/tangible/tool/CraftingStation.idl(63):  		effectiveness = 25;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(64):  		effectiveness = 25;
 	effectiveness = 25;
 }
 
 void CraftingStationImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(67):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingStation.idl(68):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingStation.idl(69):  		Logger.setLoggingName("CraftingStation");
+	// server/zone/objects/tangible/tool/CraftingStation.idl(70):  		Logger.setLoggingName("CraftingStation");
 	Logger::setLoggingName("CraftingStation");
 }
 
 bool CraftingStationImplementation::isCraftingStation() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(97):  		return true;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(100):  		return true;
 	return true;
 }
 
 int CraftingStationImplementation::getComplexityLevel() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(101):  		return complexityLevel;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(104):  		return complexityLevel;
 	return complexityLevel;
 }
 
 int CraftingStationImplementation::getStationType() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(105):  		return type;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(108):  		return type;
 	return type;
 }
 
 void CraftingStationImplementation::setComplexityLevel(int level) {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(109):  		complexityLevel = level;
+	// server/zone/objects/tangible/tool/CraftingStation.idl(112):  		complexityLevel = level;
 	complexityLevel = level;
 }
 
@@ -277,21 +292,24 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 8:
-		resp->insertBoolean(isCraftingStation());
+		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertSignedInt(getComplexityLevel());
+		resp->insertBoolean(isCraftingStation());
 		break;
 	case 10:
-		resp->insertSignedInt(getStationType());
+		resp->insertSignedInt(getComplexityLevel());
 		break;
 	case 11:
-		setComplexityLevel(inv->getSignedIntParameter());
+		resp->insertSignedInt(getStationType());
 		break;
 	case 12:
-		resp->insertLong(findCraftingTool((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+		setComplexityLevel(inv->getSignedIntParameter());
 		break;
 	case 13:
+		resp->insertLong(findCraftingTool((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+		break;
+	case 14:
 		createChildObjects();
 		break;
 	default:
@@ -307,6 +325,10 @@ void CraftingStationAdapter::initializeTransientMembers() {
 
 int CraftingStationAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((CraftingStationImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void CraftingStationAdapter::updateCraftingValues(ManufactureSchematic* schematic) {
+	((CraftingStationImplementation*) impl)->updateCraftingValues(schematic);
 }
 
 bool CraftingStationAdapter::isCraftingStation() {

@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -128,4 +129,14 @@ void CraftingStationImplementation::createChildObjects() {
 	ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), 1);
 
 	addObject(ingredientHopper, 4);
+}
+
+void CraftingStationImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+	/// useModifer is the effectiveness
+
+
+	CraftingValues* craftingValues = schematic->getCraftingValues();
+
+	effectiveness = craftingValues->getCurrentValue("usemodifier");
+	//craftingValues->toString();
 }
