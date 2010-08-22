@@ -50,6 +50,7 @@ import server.zone.objects.scene.SceneObject;
 include server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 class CraftingStation extends ToolTangibleObject {
 	
@@ -92,6 +93,8 @@ class CraftingStation extends ToolTangibleObject {
 	 */
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	public native void updateCraftingValues(ManufactureSchematic schematic);
 	
 	public boolean isCraftingStation() {
 		return true;
