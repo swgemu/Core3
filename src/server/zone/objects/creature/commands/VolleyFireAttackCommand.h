@@ -75,22 +75,8 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		SceneObject* leaderObject = creature->getGroup()->getLeader();
-
-		if ((!leaderObject->isPlayerCreature()) || (leaderObject == NULL))
-			return GENERALERROR;
-
-		PlayerCreature* leader = (PlayerCreature*)leaderObject;
-
-		if (leader->getSkillMod("volley") > 0) {
-			float skillMod = (float) leader->getSkillMod("volley");
-
-			if (skillMod > 50)
-				skillMod = 50.0f;
-
-			damageMultiplier += skillMod / 10;
-		}
-
+		//@TODO: SkillMod 'volleyfire' has no effect atm. Description implies increased chance of volleyfire working, yet volleyfire is not reported to have had a fail chance
+		// Possible solution: Increased to-hit-chance through skill mod. Extend if proof is brought.
 
 		return doCombatAction(creature, target);
 	}

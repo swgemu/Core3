@@ -412,6 +412,8 @@ public:
 
 	void setDizziedState(int durationSeconds = 5);
 
+	void setRalliedState(int durationSeconds = 5);
+
 	void setAimingState(int durationSeconds = 5);
 
 	void setCoverState();
@@ -484,7 +486,7 @@ public:
 
 	UnicodeString getCreatureName();
 
-	bool isGroupped();
+	bool isGrouped();
 
 	int getBankCredits();
 
@@ -609,6 +611,8 @@ public:
 	bool isSitting();
 
 	bool isSkillAnimating();
+
+	bool isRallied();
 
 	bool isInCombat();
 
@@ -972,6 +976,8 @@ public:
 
 	void setDizziedState(int durationSeconds = 5);
 
+	void setRalliedState(int durationSeconds = 5);
+
 	void setAimingState(int durationSeconds = 5);
 
 	void setCoverState();
@@ -1044,7 +1050,7 @@ public:
 
 	UnicodeString getCreatureName();
 
-	bool isGroupped();
+	bool isGrouped();
 
 	int getBankCredits();
 
@@ -1169,6 +1175,8 @@ public:
 	bool isSitting();
 
 	bool isSkillAnimating();
+
+	bool isRallied();
 
 	bool isInCombat();
 
@@ -1407,6 +1415,8 @@ public:
 
 	void setDizziedState(int durationSeconds);
 
+	void setRalliedState(int durationSeconds);
+
 	void setAimingState(int durationSeconds);
 
 	void setCoverState();
@@ -1479,7 +1489,7 @@ public:
 
 	UnicodeString getCreatureName();
 
-	bool isGroupped();
+	bool isGrouped();
 
 	int getBankCredits();
 
@@ -1590,6 +1600,8 @@ public:
 	bool isSitting();
 
 	bool isSkillAnimating();
+
+	bool isRallied();
 
 	bool isInCombat();
 

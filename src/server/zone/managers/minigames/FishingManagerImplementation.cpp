@@ -202,12 +202,13 @@ void FishingManagerImplementation::fishingStep(PlayerCreature* player) {
 	ManagedReference<FishingBaitObject*> bait = getBait(player);
 
 	if (bait != NULL) {
+		if ((state < CATCH) && (bait->getFreshness() > SOGGY)) {
+			if (System::random(15) < bait->getFreshness()) {
 
-		if ((bait->getFreshness() >= MUSH) && (state < CATCH)) {
-			mishapEvent("@fishing:toss_bait", player, boxID, true, moodString);
-			return; // NOBAIT
+				mishapEvent("@fishing:toss_bait", player, boxID, true, moodString);
+				return; // NOBAIT
+			}
 		}
-
 	}
 
 	//debug player->sendSystemMessage("Event: " + String::valueOf(event) + " Mishap: " + String::valueOf(mishap) + " Next Action: " + String::valueOf(nextAction));
@@ -457,8 +458,10 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 
 				String baitString = "object/tangible/fishing/bait/bait_chum.iff";
 				ManagedReference<TangibleObject*> baitObject = (TangibleObject*)zoneServer->createObject(baitString.hashCode(), 2);
-				if (System::random(1)==1)
-					baitObject->setUseCount(2,true);
+
+				int useCount = System::random(5);
+				if (useCount > 1)
+					baitObject->setUseCount(useCount,true);
 
 
 				if (baitObject != NULL) {
@@ -852,7 +855,7 @@ void FishingManagerImplementation::fishingProceed(PlayerCreature* player, int ne
 		}
 	}
 
-	if ((nextAction > DONOTHING) && (nextAction < REEL)) {
+	if ((nextAction >= DONOTHING) && (nextAction < REEL)) {
 		ManagedReference<FishingBaitObject*> bait = getBait(player);
 
 		if (bait != NULL)
@@ -910,10 +913,20 @@ bool FishingManagerImplementation::loseBait(PlayerCreature* player) {
 			if (pole->getContainerObject(0) != NULL) {
 				ManagedReference<SceneObject*> bait = pole->getContainerObject(0);
 
-				pole->removeObject(bait, true);
+				if (!bait->isFishingBait())
+					return false;
 
-				if (bait->isPersistent())
-					bait->destroyObjectFromDatabase(true);
+				ManagedReference<FishingBaitObject*> fishBait = (FishingBaitObject*) bait.get();
+
+				if (fishBait->getUseCount() > 1)
+					fishBait->setUseCount(fishBait->getUseCount() - 1, true);
+				else {
+
+					pole->removeObject(bait, true);
+
+					if (bait->isPersistent())
+						bait->destroyObjectFromDatabase(true);
+				}
 
 				return true;
 			}

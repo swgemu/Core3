@@ -46,13 +46,16 @@ which carries forward this exception.
 #define SETSTEADYAIMCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "SquadLeaderCommand.h"
 
-class SetSteadyaimCommand : public QueueCommand {
+class SetSteadyaimCommand : public SquadLeaderCommand {
 public:
 
 	SetSteadyaimCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
 
+		action = "steadyaim";
+		actionCRC = action.hashCode();
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,34 +66,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!weapon->isRangedWeapon()) {
-			return INVALIDWEAPON;
-		}
-
 		if (creature == NULL)
 			return GENERALERROR;
 
-		ManagedReference<SceneObject*> leaderObject = creature->getGroup()->getLeader();
+		String message = arguments.toString();
 
-		if (!leaderObject->isPlayerCreature() || leaderObject == NULL)
+		if (!setCommandMessage(creature, message))
 			return GENERALERROR;
-
-		PlayerCreature* leader = (PlayerCreature*) leaderObject.get();
-
-		int amount = 5;
-
-		amount += leader->getSkillMod("steadyaim");
-
-		uint32 steadyAim = String("steadyaim").hashCode();
-
-		int duration = 300;
-
-		ManagedReference<Buff*> buff = new Buff(creature, steadyAim, duration, BuffType::SKILL);
-		buff->setSkillModifier("aim", amount);
-
-		creature->addBuff(buff);
 
 		return SUCCESS;
 	}

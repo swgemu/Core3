@@ -1228,6 +1228,14 @@ void CreatureObjectImplementation::setAimingState(int durationSeconds) {
 	}
 }
 
+void CreatureObjectImplementation::setRalliedState(int durationSeconds) {
+	if (setState(CreatureState::RALLIED)) {
+		showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
+
+		cooldownTimerMap.updateToCurrentAndAddMili("ralliedRecoveryTime", durationSeconds * 1000);
+	}
+}
+
 void CreatureObjectImplementation::setCoverState() {
 	setPosture(CreaturePosture::PRONE);
 
@@ -1359,6 +1367,10 @@ void CreatureObjectImplementation::activateStateRecovery() {
 
 	if (isAiming() && cooldownTimerMap.isPast("aimRecoveryTime")) {
 		clearState(CreatureState::AIMING);
+	}
+
+	if (isRallied() && cooldownTimerMap.isPast("ralliedRecoveryTime")) {
+		clearState(CreatureState::RALLIED);
 	}
 
 	//applyDots();

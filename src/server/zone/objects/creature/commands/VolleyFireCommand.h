@@ -46,12 +46,24 @@ which carries forward this exception.
 #define VOLLEYFIRECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "SquadLeaderCommand.h"
 
-class VolleyFireCommand : public QueueCommand {
+class VolleyFireCommand : public SquadLeaderCommand {
 public:
 
 	VolleyFireCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
+
+		damageMultiplier = 0;
+		healthCostMultiplier = 0;
+		actionCostMultiplier = 0;
+		mindCostMultiplier = 0;
+
+		combatSpam = "volleyfire";
+		range = -1;
+
+		action = "volleyfire";
+		actionCRC = action.hashCode();
 
 	}
 
@@ -63,48 +75,77 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (creature->isPlayerCreature()) {
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
 
-			ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
-			ManagedReference<GroupObject*> group = player->getGroup();
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<GroupObject*> group = player->getGroup();
 
-			if (group == NULL) {
-				player->sendSystemMessage("@error_message:not_grouped");
-			}
-			else if (group->getLeader() == player) {
+		if (!checkGroupLeader(player, group))
+			return GENERALERROR;
 
-				uint64 targetID = player->getTargetID();
-				String action = "volleyfireattack";
-				uint64 actionCRC = action.hashCode();
+		float skillMod = (float) creature->getSkillMod("volley");
+		int hamCost = (int) (100.0f * (1.0f - (skillMod / 100.0f))) * calculateGroupModifier(group);
 
-				bool success = false;
+		if (!inflictHAM(player, hamCost, hamCost, hamCost))
+			return GENERALERROR;
 
-				for (int i = 0; i < group->getGroupSize(); i++) {
-					ManagedReference<SceneObject*> member = group->getGroupMember(i);
+		uint64 targetID = target;
+		if (attemptVolleyFire(player, &targetID, skillMod))
+			if (!doVolleyFire(player, group, &targetID))
+				return GENERALERROR;
 
-					if (member->isPlayerCreature()) {
-						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+		return SUCCESS;
+	}
 
-						if ((memberPlayer->isInRange(player, 128.0)) && (memberPlayer->isInCombat())) {
-							if (!success)
-								player->sendSystemMessage("@cbt_spam:volley_success_single");
+	bool attemptVolleyFire(PlayerCreature* player, uint64* target, int skillMod) {
+		if (player == NULL)
+			return false;
 
-							Locker clocker(memberPlayer, creature);
+		ManagedReference<WeaponObject*> weapon = player->getWeapon();
 
-							memberPlayer->enqueueCommand(actionCRC, 0, targetID, "");
-							success = true;
-						}
-					}
+		String skillCRC;
 
-				}
+		if (weapon != NULL) {
+			if (!weapon->getCreatureAccuracyModifiers()->isEmpty()) {
+				skillCRC = weapon->getCreatureAccuracyModifiers()->get(0);
 
-
-			} else {
-				player->sendSystemMessage("@error_message:not_group_leader");
+				player->addSkillMod(skillCRC, (int) skillMod * 2, false);
 			}
 		}
 
-		return SUCCESS;
+		int ret = doCombatAction(player, (uint64)target);
+
+		if (!skillCRC.isEmpty())
+			player->addSkillMod(skillCRC, (int) skillMod * -2, false);
+
+		return ret == SUCCESS;
+	}
+
+	bool doVolleyFire(PlayerCreature* leader, GroupObject* group, uint64* target) {
+		if (leader == NULL || group == NULL)
+			return false;
+
+		for (int i = 0; i < group->getGroupSize(); i++) {
+			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
+			if (!member->isPlayerCreature() || !member->isInRange(leader, 128.0))
+				continue;
+
+			ManagedReference<PlayerCreature*> memberPlayer = (PlayerCreature*) member.get();
+
+			if (!memberPlayer->isInCombat())
+				continue;
+
+			Locker clocker(memberPlayer, leader);
+
+			String queueAction = "volleyfireattack";
+			uint64 queueActionCRC = queueAction.hashCode();
+
+			memberPlayer->enqueueCommand(queueActionCRC, 0, (uint64)target, "");
+		}
+
+		return true;
 	}
 
 };

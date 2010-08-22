@@ -78,5 +78,7 @@ class FishingBaitObject extends TangibleObject {
 		freshness += 1;
 	}
 	
+	public native int getUseCount();
+	
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 }

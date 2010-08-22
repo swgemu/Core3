@@ -220,6 +220,10 @@ public:
 
 	void setDrinkFilling(int newValue, bool notifyClient = true);
 
+	void setCommandMessageString(unsigned int actionCRC, String& message);
+
+	void removeCommandMessageString(unsigned int actionCRC);
+
 	void notifyOnline();
 
 	void doDigest();
@@ -243,6 +247,8 @@ public:
 	bool hasSkill(Skill* skill);
 
 	bool hasSkill(const String& skillName);
+
+	bool hasCommandMessageString(unsigned int actionCRC);
 
 	unsigned int getCharacterBitmask();
 
@@ -300,11 +306,14 @@ public:
 
 	int getExperience(const String& xp);
 
+	String getCommandMessageString(unsigned int actionCRC);
+
 protected:
 	PlayerObject(DummyConstructorParameter* param);
 
 	virtual ~PlayerObject();
 
+	String _return_getCommandMessageString;
 	String _return_getTitle;
 
 	friend class PlayerObjectHelper;
@@ -347,6 +356,8 @@ protected:
 	byte languageID;
 
 	VectorMap<String, int> xpTypeCapList;
+
+	VectorMap<unsigned int, String> commandMessageStrings;
 
 	DeltaVectorMap<String, int> experienceList;
 
@@ -437,6 +448,10 @@ public:
 
 	void setDrinkFilling(int newValue, bool notifyClient = true);
 
+	void setCommandMessageString(unsigned int actionCRC, String& message);
+
+	void removeCommandMessageString(unsigned int actionCRC);
+
 	void notifyOnline();
 
 	void doDigest();
@@ -460,6 +475,8 @@ public:
 	bool hasSkill(Skill* skill);
 
 	bool hasSkill(const String& skillName);
+
+	bool hasCommandMessageString(unsigned int actionCRC);
 
 	unsigned int getCharacterBitmask();
 
@@ -516,6 +533,8 @@ public:
 	DeltaVector<String>* getIgnoreList();
 
 	int getExperience(const String& xp);
+
+	String getCommandMessageString(unsigned int actionCRC);
 
 	PlayerObject* _this;
 
@@ -590,6 +609,10 @@ public:
 
 	void setDrinkFilling(int newValue, bool notifyClient);
 
+	void setCommandMessageString(unsigned int actionCRC, String& message);
+
+	void removeCommandMessageString(unsigned int actionCRC);
+
 	void notifyOnline();
 
 	void doDigest();
@@ -611,6 +634,8 @@ public:
 	bool hasWaypoint(unsigned long long objectID);
 
 	bool hasSkill(const String& skillName);
+
+	bool hasCommandMessageString(unsigned int actionCRC);
 
 	unsigned int getCharacterBitmask();
 
@@ -652,6 +677,8 @@ public:
 
 	int getExperience(const String& xp);
 
+	String getCommandMessageString(unsigned int actionCRC);
+
 protected:
 	String _param0_addExperience__String_int_bool_;
 	String _param0_removeExperience__String_bool_;
@@ -661,6 +688,7 @@ protected:
 	String _param0_addIgnore__String_bool_;
 	String _param0_removeIgnore__String_bool_;
 	String _param0_setTitle__String_bool_;
+	String _param1_setCommandMessageString__int_String_;
 	String _param0_hasFriend__String_;
 	String _param0_isIgnoring__String_;
 	String _param0_addReverseFriend__String_;

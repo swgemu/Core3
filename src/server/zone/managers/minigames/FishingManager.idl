@@ -114,8 +114,8 @@ class FishingManager extends Observer implements Logger {
 	public static final int STRIPED = 6;
 	
 	public static final int FRESH = 0;
-	public static final int SOGGY = 4;
-	public static final int MUSH = 6;
+	public static final int SOGGY = 6;
+	public static final int MUSH = 10;
 	
 	public static final int DONOTHING = 0;
 	public static final int TUGUP = 1;
@@ -313,7 +313,6 @@ class FishingManager extends Observer implements Logger {
 	 * "As for the drop rates of Fish Tank Items/Treasure maps/Junk Loot (not including collection fish) when fishing, each time you catch something, there is a 6% chance it will be one of the above mentioned items." -Millbarge - SWG Developer
 	 * So there is a 6% chance of an item, and another 5% change for a rare item => 0.3% chance for a rare item
 	 * Also, if you are unlucky (5% chance) the fish was too small and it is being tossed
-	 * @TODO { Remove Cheat Mode part after testing is done }
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @param player PlayerCreature that receives the reward
@@ -562,7 +561,6 @@ class FishingManager extends Observer implements Logger {
 	/**
 	 * Does Player Animations for different fishing actions
 	 * animate switches through nextAction and calls appropriate Animations
-	 * @TODO { Fishing_idle stance }
 	 * @pre { object is locked }
 	 * @post { object is locked }
 	 * @param player PlayerCreature for which to doAnimation()

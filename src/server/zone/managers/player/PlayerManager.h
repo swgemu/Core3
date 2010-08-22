@@ -27,6 +27,20 @@ using namespace server::zone::managers::objectcontroller;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace group {
+
+class GroupObject;
+
+} // namespace group
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::group;
+
+namespace server {
+namespace zone {
 
 class ZoneProcessServerImplementation;
 
@@ -194,6 +208,10 @@ public:
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
 
+	bool squadLeaderCheck(PlayerCreature* player, GroupObject* group);
+
+	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
+
 	void sendMessageOfTheDay(PlayerCreature* player);
 
 	void sendActivateCloneRequest(PlayerCreature* player);
@@ -312,6 +330,10 @@ public:
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
 
+	bool squadLeaderCheck(PlayerCreature* player, GroupObject* group);
+
+	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
+
 	void sendMessageOfTheDay(PlayerCreature* player);
 
 	void sendActivateCloneRequest(PlayerCreature* player);
@@ -418,6 +440,10 @@ public:
 	int getMedicalFacilityRating(CreatureObject* creature);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
+
+	bool squadLeaderCheck(PlayerCreature* player, GroupObject* group);
+
+	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
 	void sendMessageOfTheDay(PlayerCreature* player);
 

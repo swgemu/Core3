@@ -46,13 +46,16 @@ which carries forward this exception.
 #define SETRETREATCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "SquadLeaderCommand.h"
 
-class SetRetreatCommand : public QueueCommand {
+class SetRetreatCommand : public SquadLeaderCommand {
 public:
 
 	SetRetreatCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
 
+		action = "retreat";
+		actionCRC = action.hashCode();
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,108 +66,16 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!checkRetreat(creature))
+		if (creature == NULL)
 			return GENERALERROR;
 
-		uint32 retreatCRC = String("retreat").hashCode();
+		String message = arguments.toString();
 
-		if (creature->hasBuff(retreatCRC)) {
+		if (!setCommandMessage(creature, message))
 			return GENERALERROR;
-		}
-
-		float burstRunMod = (float) creature->getSkillMod("burst_run");
-
-		ManagedReference<GroupObject*> group = creature->getGroup();
-
-		if (group == NULL)
-			return GENERALERROR;
-
-		ManagedReference<SceneObject*> leaderObject = group->getLeader();
-
-		if (leaderObject == NULL || !leaderObject->isPlayerCreature())
-			return GENERALERROR;
-
-		PlayerCreature* leader = (PlayerCreature*) leaderObject.get();
-
-		burstRunMod += (float) leader->getSkillMod("group_burst_run");
-
-		if (burstRunMod > 100.0f) {
-			burstRunMod = 100.0f;
-		}
-
-		float hamCost = 100.0f;
-
-		float efficiency = 1.0f - (burstRunMod / 100.0f);
-		hamCost *= efficiency;
-		int newHamCost = (int) hamCost;
-
-		//Check for and deduct HAM cost.
-		if (creature->getHAM(CreatureAttribute::HEALTH) <= newHamCost
-				|| creature->getHAM(CreatureAttribute::ACTION) <= newHamCost
-				|| creature->getHAM(CreatureAttribute::MIND) <= newHamCost) {
-			creature->sendSystemMessage("combat_effects", "burst_run_wait"); //"You are too tired to Burst Run."
-
-			return GENERALERROR;
-
-		}
-
-		creature->inflictDamage(creature, CreatureAttribute::HEALTH, newHamCost, true);
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, newHamCost, true);
-		creature->inflictDamage(creature, CreatureAttribute::MIND, newHamCost, true);
-
-		ParameterizedStringId startStringId("cbt_spam", "burstrun_start_single");
-		ParameterizedStringId endStringId("cbt_spam", "burstrun_stop_single");
-
-		int duration = 30;
-
-		ManagedReference<Buff*> buff = new Buff(creature, retreatCRC, duration, BuffType::SKILL);
-
-		buff->setSpeedModifier(4.424f);
-		buff->setStartMessage(startStringId);
-		buff->setEndMessage(endStringId);
-
-		creature->addBuff(buff);
-
-		creature->updateCooldownTimer("retreat", (300 + duration) * 1000);
 
 		return SUCCESS;
-	}
 
-	bool checkRetreat(CreatureObject* creature) {
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("cbt_spam", "no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
-			return false;
-		}
-
-		Zone* zone = creature->getZone();
-
-		if (creature->getZone() == NULL) {
-			return false;
-		}
-
-		if (zone->getZoneID() == 39) {
-			creature->sendSystemMessage("cbt_spam", "burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
-
-			return false;
-		}
-
-		uint32 crc = String("burstrun").hashCode();
-
-		if ((creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) && (!creature->hasBuff(crc))) {
-			creature->sendSystemMessage("combat_effects", "burst_run_no");
-
-			return false;
-		}
-
-		if (!creature->checkCooldownRecovery("retreat")) {
-			// is there a message for retreat?
-			creature->sendSystemMessage("combat_effects", "burst_run_no");
-
-			return false;
-		}
-
-		return true;
 	}
 
 };

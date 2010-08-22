@@ -12,6 +12,20 @@
 #include "engine/core/ManagedWeakReference.h"
 
 namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
 namespace chat {
 namespace room {
 
@@ -84,6 +98,16 @@ public:
 
 	GroupList* getGroupList();
 
+	bool hasSquadLeader();
+
+	void addGroupModifiers();
+
+	void removeGroupModifiers();
+
+	void addGroupModifiers(PlayerCreature* player);
+
+	void removeGroupModifiers(PlayerCreature* player);
+
 protected:
 	GroupObject(DummyConstructorParameter* param);
 
@@ -147,6 +171,16 @@ public:
 	SceneObject* getLeader();
 
 	GroupList* getGroupList();
+
+	bool hasSquadLeader();
+
+	void addGroupModifiers();
+
+	void removeGroupModifiers();
+
+	void addGroupModifiers(PlayerCreature* player);
+
+	void removeGroupModifiers(PlayerCreature* player);
 
 	GroupObject* _this;
 
@@ -216,6 +250,16 @@ public:
 	void initializeLeader(SceneObject* player);
 
 	SceneObject* getLeader();
+
+	bool hasSquadLeader();
+
+	void addGroupModifiers();
+
+	void removeGroupModifiers();
+
+	void addGroupModifiers(PlayerCreature* player);
+
+	void removeGroupModifiers(PlayerCreature* player);
 
 };
 

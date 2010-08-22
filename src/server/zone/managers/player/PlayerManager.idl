@@ -53,7 +53,7 @@ include server.zone.objects.player.PlayerCreature;
 include server.zone.managers.player.PlayerMap;
 include server.zone.managers.player.CharacterNameMap;
 
-
+import server.zone.objects.group.GroupObject;
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
 import server.zone.packets.MessageCallback;
@@ -152,6 +152,10 @@ class PlayerManager extends Observer implements Logger {
 	@local
 	public native void disseminateExperience(TangibleObject destructedObject, DamageMap damageMap);
 	
+	public native boolean squadLeaderCheck(PlayerCreature player, GroupObject group);
+	
+	public native void awardSquadLeaderExperience(GroupObject group, int amount, TangibleObject source);
+	
 	public native void sendMessageOfTheDay(PlayerCreature player);
 	
 	public native void sendActivateCloneRequest(PlayerCreature player);
@@ -169,4 +173,6 @@ class PlayerManager extends Observer implements Logger {
 	public native boolean existsName(final string name);
 	public native unsigned long getObjectID(final string name);
 	public native PlayerCreature getPlayer(final string name);
+	
+	
 }

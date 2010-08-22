@@ -46,12 +46,17 @@ which carries forward this exception.
 #define RALLYCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "SquadLeaderCommand.h"
 
-class RallyCommand : public QueueCommand {
+class RallyCommand : public SquadLeaderCommand {
 public:
 
 	RallyCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
+
+		action = "rally";
+		actionCRC = action.hashCode();
+		combatSpam = "rally_success_single";
 
 	}
 
@@ -63,7 +68,73 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<GroupObject*> group = player->getGroup();
+
+		if (!checkGroupLeader(player, group))
+			return GENERALERROR;
+
+		int hamCost = (int) (100.0f * calculateGroupModifier(group));
+
+		if (!inflictHAM(player, hamCost, hamCost, hamCost))
+			return GENERALERROR;
+
+		int chance = 30;
+
+		if (!System::random(100) > chance)
+			player->sendSystemMessage("@cbt_spam:rally_fail_single");
+		else
+			if (!doRally(player, group))
+				return GENERALERROR;
+
 		return SUCCESS;
+	}
+
+	bool doRally(PlayerCreature* leader, GroupObject* group) {
+		if (leader == NULL || group == NULL)
+			return false;
+
+		int amount = 25;
+		int duration = 30;
+
+		sendCombatSpam(leader);
+
+		for (int i = 0; i < group->getGroupSize(); i++) {
+
+			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
+			if (!member->isPlayerCreature() || member == NULL || member->getZone() != leader->getZone())
+				continue;
+
+			ManagedReference<PlayerCreature*> memberPlayer = (PlayerCreature*) member.get();
+			Locker clocker(memberPlayer, leader);
+
+			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);
+
+			ManagedReference<WeaponObject*> weapon = memberPlayer->getWeapon();
+
+			if (weapon != NULL) {
+				if (!weapon->getCreatureAccuracyModifiers()->isEmpty()) {
+					String skillCRC = weapon->getCreatureAccuracyModifiers()->get(0);
+
+					buff->setSkillModifier(skillCRC, amount);
+				}
+			}
+
+			buff->setSkillModifier("ranged_defense", amount);
+			buff->setSkillModifier("melee_defense", amount);
+
+			memberPlayer->addBuff(buff);
+
+			memberPlayer->setRalliedState(duration);
+		}
+
+		leader->updateCooldownTimer("rally", (duration + 30) * 1000);
+
+		return true;
 	}
 
 };

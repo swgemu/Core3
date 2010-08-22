@@ -4,6 +4,8 @@
 
 #include "GroupObject.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 #include "server/chat/room/ChatRoom.h"
 
 #include "server/zone/Zone.h"
@@ -220,6 +222,68 @@ GroupList* GroupObject::getGroupList() {
 		return ((GroupObjectImplementation*) _impl)->getGroupList();
 }
 
+bool GroupObject::hasSquadLeader() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((GroupObjectImplementation*) _impl)->hasSquadLeader();
+}
+
+void GroupObject::addGroupModifiers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->addGroupModifiers();
+}
+
+void GroupObject::removeGroupModifiers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->removeGroupModifiers();
+}
+
+void GroupObject::addGroupModifiers(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->addGroupModifiers(player);
+}
+
+void GroupObject::removeGroupModifiers(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->removeGroupModifiers(player);
+}
+
 /*
  *	GroupObjectImplementation
  */
@@ -294,46 +358,46 @@ void GroupObjectImplementation::_serializationHelperMethod() {
 
 GroupObjectImplementation::GroupObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/group/GroupObject.idl(65):  		groupLevel = 0;
+	// server/zone/objects/group/GroupObject.idl(66):  		groupLevel = 0;
 	groupLevel = 0;
-	// server/zone/objects/group/GroupObject.idl(67):  		Logger.setLoggingName("GroupObject");
+	// server/zone/objects/group/GroupObject.idl(68):  		Logger.setLoggingName("GroupObject");
 	Logger::setLoggingName("GroupObject");
-	// server/zone/objects/group/GroupObject.idl(69):  		chatRoom = null;
+	// server/zone/objects/group/GroupObject.idl(70):  		chatRoom = null;
 	chatRoom = NULL;
 }
 
 int GroupObjectImplementation::getGroupLevel() {
-	// server/zone/objects/group/GroupObject.idl(98):  		return groupLevel;
+	// server/zone/objects/group/GroupObject.idl(99):  		return groupLevel;
 	return groupLevel;
 }
 
 ChatRoom* GroupObjectImplementation::getGroupChannel() {
-	// server/zone/objects/group/GroupObject.idl(102):  		return chatRoom;
+	// server/zone/objects/group/GroupObject.idl(103):  		return chatRoom;
 	return chatRoom;
 }
 
 int GroupObjectImplementation::getGroupSize() {
-	// server/zone/objects/group/GroupObject.idl(106):  		return groupMembers.size();
+	// server/zone/objects/group/GroupObject.idl(107):  		return groupMembers.size();
 	return (&groupMembers)->size();
 }
 
 SceneObject* GroupObjectImplementation::getGroupMember(int index) {
-	// server/zone/objects/group/GroupObject.idl(110):  		return groupMembers.get(index);
+	// server/zone/objects/group/GroupObject.idl(111):  		return groupMembers.get(index);
 	return (&groupMembers)->get(index);
 }
 
 void GroupObjectImplementation::initializeLeader(SceneObject* player) {
-	// server/zone/objects/group/GroupObject.idl(114):  		groupMembers.add(player);
+	// server/zone/objects/group/GroupObject.idl(115):  		groupMembers.add(player);
 	(&groupMembers)->add(player);
 }
 
 SceneObject* GroupObjectImplementation::getLeader() {
-	// server/zone/objects/group/GroupObject.idl(118):  		return groupMembers.get(0);
+	// server/zone/objects/group/GroupObject.idl(119):  		return groupMembers.get(0);
 	return (&groupMembers)->get(0);
 }
 
 GroupList* GroupObjectImplementation::getGroupList() {
-	// server/zone/objects/group/GroupObject.idl(123):  		return groupMembers;
+	// server/zone/objects/group/GroupObject.idl(124):  		return groupMembers;
 	return (&groupMembers);
 }
 
@@ -392,6 +456,21 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 20:
 		resp->insertLong(getLeader()->_getObjectID());
+		break;
+	case 21:
+		resp->insertBoolean(hasSquadLeader());
+		break;
+	case 22:
+		addGroupModifiers();
+		break;
+	case 23:
+		removeGroupModifiers();
+		break;
+	case 24:
+		addGroupModifiers((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 25:
+		removeGroupModifiers((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -458,6 +537,26 @@ void GroupObjectAdapter::initializeLeader(SceneObject* player) {
 
 SceneObject* GroupObjectAdapter::getLeader() {
 	return ((GroupObjectImplementation*) impl)->getLeader();
+}
+
+bool GroupObjectAdapter::hasSquadLeader() {
+	return ((GroupObjectImplementation*) impl)->hasSquadLeader();
+}
+
+void GroupObjectAdapter::addGroupModifiers() {
+	((GroupObjectImplementation*) impl)->addGroupModifiers();
+}
+
+void GroupObjectAdapter::removeGroupModifiers() {
+	((GroupObjectImplementation*) impl)->removeGroupModifiers();
+}
+
+void GroupObjectAdapter::addGroupModifiers(PlayerCreature* player) {
+	((GroupObjectImplementation*) impl)->addGroupModifiers(player);
+}
+
+void GroupObjectAdapter::removeGroupModifiers(PlayerCreature* player) {
+	((GroupObjectImplementation*) impl)->removeGroupModifiers(player);
 }
 
 /*
