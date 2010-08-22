@@ -53,7 +53,7 @@ public:
 			if (health < 0)
 				player->setHAM(CreatureAttribute::HEALTH, 1);
 
-			int action = player->getHAM(CreatureAttribute::HEALTH);
+			int action = player->getHAM(CreatureAttribute::ACTION);
 
 			if (action < 0)
 				player->setHAM(CreatureAttribute::ACTION, 1);
