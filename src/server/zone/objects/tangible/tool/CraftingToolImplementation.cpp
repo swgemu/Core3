@@ -105,9 +105,21 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 
 	if (selectedID == 132) { // use object
 
+		ManagedReference<TangibleObject *> prototype = getPrototype();
 		ManagedReference<SceneObject* > inventory = playerCreature->getSlottedObject("inventory");
 
-		if (inventory != NULL && inventory->getContainerObjectsSize() < 80 && prototype != NULL) {
+		if(prototype == NULL) {
+
+			while(getContainerObjectsSize() > 0)
+				removeObject(getContainerObject(0));
+
+			playerCreature->sendSystemMessage("Tool does not have a valid prototype, resetting tool.  Contact Kyle if you see this message");
+			status = "@crafting:tool_status_ready";
+			return 1;
+		}
+
+		if (inventory != NULL && inventory->getContainerObjectsSize() < 80) {
+
 			playerCreature->sendSystemMessage("system_msg", "prototype_transferred");
 			removeObject(prototype);
 
@@ -197,8 +209,6 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 	assemblyResult = 8;
 	experimentationResult = 8;
 	experimentalFailureRate = 0;
-	manufactureSchematic = NULL;
-	prototype = NULL;
 
 	PlayerObject* playerObject = player->getPlayerObject();
 	int complexity = complexityLevel;  ///
@@ -286,6 +296,8 @@ void CraftingToolImplementation::sendToolStartFailure(PlayerCreature* player) {
 void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 
 	/// pre: _this locked
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	if (manufactureSchematic != NULL) {
 
@@ -386,7 +398,6 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 	/// pre: _this locked
 
-
 	DraftSchematic* draftschematic = currentSchematicList.get(index);
 	//DraftSchematic* draftschematic = player->getPlayerObject()->getSchematic(
 	//		index);
@@ -398,12 +409,12 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 	try {
 
-		manufactureSchematic
+		ManagedReference<ManufactureSchematic* > manufactureSchematic
 				= (ManufactureSchematic*) draftschematic->createManufactureSchematic(_this);
 		manufactureSchematic->createChildObjects();
 
 
-		prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
+		ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
 				draftschematic->getTanoCRC(), 0));
 
 		if (prototype == NULL )
@@ -459,6 +470,9 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature* player) {
 
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
+
 	if(manufactureSchematic == NULL) {
 		player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
 		return;
@@ -504,6 +518,8 @@ void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleO
 	/// Tano can't be NULL
 
 	Locker locker(_this);
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	if(manufactureSchematic == NULL) {
 		sendSlotMessage(player, clientCounter, IngredientSlot::NOSCHEMATIC);
@@ -538,6 +554,8 @@ void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleO
 void CraftingToolImplementation::sendIngredientAddSuccess(PlayerCreature* player, int slot, int clientCounter) {
 
 	/// pre: _this locked
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	// DMSCO6 ***************************************************
 	// Prepares the slot for insert
@@ -587,6 +605,8 @@ void CraftingToolImplementation::removeIngredient(PlayerCreature* player, Tangib
 	/// Tano can't be NULL
 
 	Locker _locker(_this);
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	if(manufactureSchematic == NULL) {
 		sendSlotMessage(player, clientCounter, IngredientSlot::NOSCHEMATIC);
@@ -618,6 +638,8 @@ void CraftingToolImplementation::removeIngredient(PlayerCreature* player, Tangib
 void CraftingToolImplementation::sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int clientCounter) {
 
 	/// pre: _this locked
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	// DMCSO7 ******************************************************
 	// Removes resource from client slot
@@ -673,6 +695,9 @@ void CraftingToolImplementation::sendSlotMessage(PlayerCreature* player,
 }
 
 void CraftingToolImplementation::nextCraftingStage(PlayerCreature* player, int clientCounter) {
+
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	if(manufactureSchematic == NULL) {
 		sendSlotMessage(player, 0, IngredientSlot::NOSCHEMATIC);
@@ -735,6 +760,8 @@ void CraftingToolImplementation::nextCraftingStage(PlayerCreature* player, int c
 void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int clientCounter) {
 
 	/// pre: _this locked
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	// Get the appropriate number of Experimentation points from Skill
 	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
@@ -866,6 +893,9 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 
 void CraftingToolImplementation::setInitialCraftingValues() {
 
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
+
 	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
 	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
@@ -944,6 +974,9 @@ void CraftingToolImplementation::setInitialCraftingValues() {
 }
 
 bool CraftingToolImplementation::applyComponentBoost() {
+
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	float max, min, currentvalue, propertyvalue;
 	int precision;
@@ -1048,6 +1081,9 @@ void CraftingToolImplementation::finishAssembly(PlayerCreature* player, int clie
 }
 
 void CraftingToolImplementation::experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter) {
+
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	if(manufactureSchematic == NULL) {
 		sendSlotMessage(player, 0, IngredientSlot::NOSCHEMATIC);
@@ -1203,6 +1239,8 @@ void CraftingToolImplementation::experimentRow(CraftingValues* craftingValues,
 void CraftingToolImplementation::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {
 
 	Locker _locker(_this);
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	manufactureSchematic->setManufactureLimit(schematicCount);
 
@@ -1310,6 +1348,9 @@ void CraftingToolImplementation::finishStage2(PlayerCreature* player, int client
 void CraftingToolImplementation::createPrototype(PlayerCreature* player,
 		int clientCounter, int practice) {
 
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
+
 	if(manufactureSchematic == NULL) {
 		sendSlotMessage(player, 0, IngredientSlot::NOSCHEMATIC);
 		return;
@@ -1353,6 +1394,9 @@ void CraftingToolImplementation::createPrototype(PlayerCreature* player,
 
 void CraftingToolImplementation::createManfSchematic(PlayerCreature* player,
 		int clientCounter) {
+
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
 
 	if(manufactureSchematic == NULL) {
 		sendSlotMessage(player, 0, IngredientSlot::NOSCHEMATIC);
@@ -1438,9 +1482,11 @@ void CraftingToolImplementation::createObject(PlayerCreature* player,
 
 void CraftingToolImplementation::depositObject(PlayerCreature* player, bool practice) {
 
+	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
+	ManagedReference<TangibleObject *> prototype = getPrototype();
+
 	if(practice) {
 	    removeObject(prototype);
-		prototype = NULL;
 		status = "@crafting:tool_status_ready";
 		return;
 	}
