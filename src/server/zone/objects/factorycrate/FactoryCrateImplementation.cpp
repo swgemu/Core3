@@ -75,10 +75,15 @@ void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 
 	alm->insertAttribute("volume", volume);
 
-	TangibleObject* prototype = (TangibleObject*) getContainerObject(0);
+	TangibleObject* prototype = NULL;
 
-	if(prototype == NULL || !prototype->isTangibleObject())
+	if(getContainerObjectsSize() > 0)
+		prototype = (TangibleObject*) getContainerObject(0);
+
+	if(prototype == NULL || !prototype->isTangibleObject()) {
+		object->sendSystemMessage("This crate is broken, please contact Kyle if you get this message");
 		return;
+	}
 
 	if (prototype->getCraftersName() != "") {
 		alm->insertAttribute("crafter", prototype->getCraftersName());
