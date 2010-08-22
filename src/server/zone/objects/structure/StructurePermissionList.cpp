@@ -56,10 +56,14 @@ void StructurePermissionList::sendTo(PlayerCreature* player, uint8 permission) {
 }
 
 bool StructurePermissionList::addPermission(uint64 playerID, uint8 permission) {
-	if (!contains(playerID))
+	if (!contains(playerID)) {
 		put(playerID, permission);
-	else
+	} else {
+		if (permission == BANLIST)
+			get(playerID) = 0; //If adding to ban list, then remove all permissions first.
+
 		get(playerID) |= permission;
+	}
 
 	return true;
 }

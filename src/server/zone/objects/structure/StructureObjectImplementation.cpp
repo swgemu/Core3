@@ -30,9 +30,16 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, Player
 	if (player == NULL || targetPlayer == NULL)
 		return false;
 
-	if (listName == "BAN" && isOwnerOf(targetPlayer)) {
-		player->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
-		return false;
+	if (listName == "BAN") {
+		if (isOwnerOf(targetPlayer)) {
+			player->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
+			return false;
+		}
+
+		if (isOnAdminList(targetPlayer)) {
+			player->sendSystemMessage("You cannot ban an admin.");
+			return false;
+		}
 	}
 
 	if ((listName == "ENTRY" || listName == "ADMIN") && isOnBanList(targetPlayer)) {
@@ -62,9 +69,16 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, const 
 	if (player == NULL || targetPlayer == NULL)
 		return false;
 
-	if (listName == "BAN" && isOwnerOf(targetPlayer)) {
-		player->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
-		return false;
+	if (listName == "BAN") {
+		if (isOwnerOf(targetPlayer)) {
+			player->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
+			return false;
+		}
+
+		if (isOnAdminList(targetPlayer)) {
+			player->sendSystemMessage("You cannot ban an admin.");
+			return false;
+		}
 	}
 
 	if ((listName == "ENTRY" || listName =="ADMIN") && isOnBanList(targetPlayer)) {
