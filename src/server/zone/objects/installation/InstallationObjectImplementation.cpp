@@ -51,17 +51,18 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	//All objects in a cell can be picked up, if the player is on the structures permission list.
-	//This opens the door to allow admins to be able to drop/pickup items in public structures
-
 	if (!isOnAdminList(player))
 		return;
 
-	menuResponse->addRadialMenuItem(122, 1, "@player_structure:management");
-	menuResponse->addRadialMenuItemToRadialID(122, 128, 3, "@player_structure:permission_destroy");
-	menuResponse->addRadialMenuItemToRadialID(122, 124, 3, "@player_structure:management_status");
-	menuResponse->addRadialMenuItemToRadialID(122, 50, 3, "@ui_radial:set_name");
-	menuResponse->addRadialMenuItemToRadialID(122, 129, 3, "@player_structure:management_pay");
+	menuResponse->addRadialMenuItem(118, 3, "@player_structure:management");
+	menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
+	menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
+	menuResponse->addRadialMenuItemToRadialID(118, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
+	menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@base_player:set_name"); //Set Name
+
+	menuResponse->addRadialMenuItem(117, 3, "@player_structure:permissions"); //Structure Permissions
+	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:admin_permissions_list"); //Admin Permissions List
+	menuResponse->addRadialMenuItemToRadialID(117, 123, 3, "@player_structure:hopper_permissions_list"); //Hopper Permissions List
 }
 
 int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
@@ -81,10 +82,6 @@ int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* pla
 	Locker structureLocker(_this, player);
 
 	switch (selectedID) {
-	/*case 121:
-		sendPermissionListTo(player, "ADMIN");
-		break;*/
-
 	case 124:
 		structureManager->sendStructureStatusTo(player, _this);
 		break;
@@ -99,6 +96,14 @@ int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* pla
 
 	case 50:
 		structureManager->sendStructureNamePromptTo(player, _this);
+		break;
+
+	case 121:
+		sendPermissionListTo(player, "ADMIN");
+		break;
+
+	case 123:
+		sendPermissionListTo(player, "HOPPER");
 		break;
 
 	default:

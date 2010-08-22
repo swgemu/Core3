@@ -130,7 +130,7 @@ public:
 			if (item->getRadialID() == index)
 				return item;
 			else {
-				returnItem = item->getItem(index);
+				returnItem = item->getItemByRadialID(index);
 
 				if (returnItem != NULL)
 					return returnItem;
