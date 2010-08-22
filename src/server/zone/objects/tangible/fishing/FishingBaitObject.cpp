@@ -77,12 +77,24 @@ void FishingBaitObject::lessFresh() {
 		((FishingBaitObjectImplementation*) _impl)->lessFresh();
 }
 
-void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+int FishingBaitObject::getUseCount() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((FishingBaitObjectImplementation*) _impl)->getUseCount();
+}
+
+void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -216,6 +228,9 @@ Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		lessFresh();
 		break;
 	case 10:
+		resp->insertSignedInt(getUseCount());
+		break;
+	case 11:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
@@ -239,6 +254,10 @@ void FishingBaitObjectAdapter::setFreshness(int value) {
 
 void FishingBaitObjectAdapter::lessFresh() {
 	((FishingBaitObjectImplementation*) impl)->lessFresh();
+}
+
+int FishingBaitObjectAdapter::getUseCount() {
+	return ((FishingBaitObjectImplementation*) impl)->getUseCount();
 }
 
 void FishingBaitObjectAdapter::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {

@@ -46,13 +46,16 @@ which carries forward this exception.
 #define SETBOOSTMORALECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "SquadLeaderCommand.h"
 
-class SetBoostmoraleCommand : public QueueCommand {
+class SetBoostmoraleCommand : public SquadLeaderCommand {
 public:
 
 	SetBoostmoraleCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
 
+		action = "boostmorale";
+		actionCRC = action.hashCode();
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -66,22 +69,10 @@ public:
 		if (creature == NULL)
 			return GENERALERROR;
 
-		if (arguments.toString().isEmpty())
+		String message = arguments.toString();
+
+		if (!setCommandMessage(creature, message))
 			return GENERALERROR;
-
-		StringTokenizer wounds(arguments.toString());
-		wounds.setDelimeter(",");
-
-		if (!wounds.hasMoreTokens())
-			return GENERALERROR;
-
-		for (int i = 0; i < 9; i++) {
-			creature->setWounds(i, wounds.getIntToken(), true);
-
-			if ((!wounds.hasMoreTokens()) && (i < 8))
-				return GENERALERROR;
-		}
-
 
 		return SUCCESS;
 	}

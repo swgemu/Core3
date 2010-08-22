@@ -262,13 +262,6 @@ void FishingPoleObjectImplementation::setQuality(int value) {
 	quality = value;
 }
 
-void FishingPoleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(86):  		string text = getText(player);
-	String text = getText(player);
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(87):  		menuResponse.addRadialMenuItem(245, 3, text);
-	menuResponse->addRadialMenuItem(245, 3, text);
-}
-
 /*
  *	FishingPoleObjectAdapter
  */

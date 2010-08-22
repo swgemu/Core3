@@ -743,6 +743,8 @@ class CreatureObject extends TangibleObject {
 
 	public native void setDizziedState(int durationSeconds = 5);
 	
+	public native void setRalliedState(int durationSeconds = 5);
+	
 	public native void setAimingState(int durationSeconds = 5);
 
 	public native void setCoverState();
@@ -850,7 +852,7 @@ class CreatureObject extends TangibleObject {
 	
 	public native unicode getCreatureName();
 	
-	public boolean isGroupped() {
+	public boolean isGrouped() {
 		return group != null;
 	}
 	
@@ -1121,6 +1123,10 @@ class CreatureObject extends TangibleObject {
 		return posture == CreaturePosture.SKILLANIMATING;
 	}
 
+	public boolean isRallied() {
+		return stateBitmask & CreatureState.RALLIED;
+	}
+	
 	public boolean isInCombat() {
 		return stateBitmask & CreatureState.COMBAT;
 	}

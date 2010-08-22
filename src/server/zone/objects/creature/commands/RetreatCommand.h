@@ -46,13 +46,17 @@ which carries forward this exception.
 #define RETREATCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "SquadLeaderCommand.h"
 
-class RetreatCommand : public QueueCommand {
+class RetreatCommand : public SquadLeaderCommand {
 public:
 
 	RetreatCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
 
+		action = "retreat";
+		actionCRC = action.hashCode();
+		combatSpam = "retreat_buff";
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,42 +67,113 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (creature->isPlayerCreature()) {
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
 
-			ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
-			ManagedReference<GroupObject*> group = player->getGroup();
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<GroupObject*> group = player->getGroup();
 
-			if (group == NULL) {
-				player->sendSystemMessage("@error_message:not_grouped");
-			} else if (group->getLeader() == player) {
+		if (!checkGroupLeader(player, group))
+			return GENERALERROR;
 
-				String action = "setretreat";
-				uint64 actionCRC = action.hashCode();
+		float burstRunMod = (float) player->getSkillMod("group_burst_run");
+		int hamCost = (int) (100.0f * (1.0f - (burstRunMod / 100.0f))) * calculateGroupModifier(group);
 
-				for (int i = 0; i < group->getGroupSize(); ++i) {
-					ManagedReference<SceneObject*> member = group->getGroupMember(i);
+		if (!inflictHAM(player, 0, hamCost, hamCost))
+			return GENERALERROR;
 
-					if (member->isPlayerCreature()) {
-						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+		shoutCommand(player, group);
 
-						if (!arguments.toString().isEmpty())
-							memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
-						else
-							memberPlayer->sendSystemMessage("@cbt_spam:retreat_buff");
+		for (int i = 1; i < group->getGroupSize(); ++i) {
+			ManagedReference<SceneObject*> member = group->getGroupMember(i);
 
-						Locker clocker(memberPlayer, creature);
-						memberPlayer->enqueueCommand(actionCRC, 0, 0, "");
-					}
+			if (!member->isPlayerCreature())
+				continue;
 
-				}
+			ManagedReference<PlayerCreature*> memberPlayer = (PlayerCreature*) member.get();
 
+			Locker clocker(memberPlayer, player);
 
-			} else {
-				player->sendSystemMessage("@error_message:not_group_leader");
-			}
+			sendCombatSpam(memberPlayer);
+			doRetreat(memberPlayer);
 		}
 
 		return SUCCESS;
+	}
+
+	bool checkRetreat(CreatureObject* creature) {
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("cbt_spam", "no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
+			return false;
+		}
+
+		Zone* zone = creature->getZone();
+
+		if (creature->getZone() == NULL) {
+			return false;
+		}
+
+		if (zone->getZoneID() == 39) {
+			creature->sendSystemMessage("cbt_spam", "burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
+
+			return false;
+		}
+
+		uint32 crc = String("burstrun").hashCode();
+
+		if ((creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) && (!creature->hasBuff(crc))) {
+			creature->sendSystemMessage("combat_effects", "burst_run_no");
+
+			return false;
+		}
+
+		if (!creature->checkCooldownRecovery("retreat")) {
+			// is there a message for retreat?
+			creature->sendSystemMessage("combat_effects", "burst_run_no");
+
+			return false;
+		}
+
+		return true;
+	}
+
+	void doRetreat(PlayerCreature* player) {
+		if (player == NULL)
+			return;
+
+		if (!checkRetreat(player) || player->hasBuff(actionCRC))
+			return;
+
+		float runMod = (float) player->getSkillMod("burst_run");
+
+		if (runMod > 100.0f)
+			runMod = 100.0f;
+
+		int newHamCost = (int) (100.0f * (1.0f - (runMod / 100.0f)));
+
+		if (!inflictHAM(player, newHamCost, newHamCost, newHamCost)) {
+			player->sendSystemMessage("combat_effects", "burst_run_wait");
+			return;
+		}
+
+		ParameterizedStringId startStringId("cbt_spam", "burstrun_start_single");
+		ParameterizedStringId endStringId("cbt_spam", "burstrun_stop_single");
+
+		int duration = 30;
+
+		ManagedReference<Buff*> buff = new Buff(player, actionCRC, duration, BuffType::SKILL);
+
+		buff->setSpeedModifier(4.424f);
+		buff->setStartMessage(startStringId);
+		buff->setEndMessage(endStringId);
+
+		player->addBuff(buff);
+
+		player->updateCooldownTimer("retreat", (300 + duration) * 1000);
+
+		Reference<BurstRunNotifyAvailableEvent*> task = new BurstRunNotifyAvailableEvent(player);
+		task->schedule((300 + duration) * 1000);
 	}
 
 };

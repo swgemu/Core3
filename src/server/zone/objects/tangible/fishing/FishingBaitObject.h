@@ -85,6 +85,8 @@ public:
 
 	void lessFresh();
 
+	int getUseCount();
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 protected:
@@ -125,6 +127,8 @@ public:
 	void setFreshness(int value);
 
 	void lessFresh();
+
+	int getUseCount();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -174,6 +178,8 @@ public:
 	void setFreshness(int value);
 
 	void lessFresh();
+
+	int getUseCount();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 

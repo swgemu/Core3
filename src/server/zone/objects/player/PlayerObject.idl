@@ -88,6 +88,9 @@ class PlayerObject extends IntangibleObject {
 	protected VectorMap<string, int> xpTypeCapList;
 		
 	@dereferenced
+	protected VectorMap<unsigned int, string> commandMessageStrings;
+	
+	@dereferenced
 	protected DeltaVectorMap<string, int> experienceList;
 	
 	@dereferenced
@@ -117,6 +120,8 @@ class PlayerObject extends IntangibleObject {
 	public static final int DEV = 2;
 	
 	public PlayerObject() {
+		commandMessageStrings.setNoDuplicateInsertPlan();
+		
 		Logger.setLoggingName("PlayerObject");
 	}
 	
@@ -284,6 +289,14 @@ class PlayerObject extends IntangibleObject {
 	public native void setFoodFilling(int newValue, boolean notifyClient = true);
 	public native void setDrinkFilling(int newValue, boolean notifyClient = true);
 	
+	public void setCommandMessageString(unsigned int actionCRC, string message) {
+		commandMessageStrings.put(actionCRC, message);
+	}
+	
+	public void removeCommandMessageString(unsigned int actionCRC) {
+		commandMessageStrings.drop(actionCRC);
+	}
+	
 	/**
 	 * Notifies all reverse friends online status
 	 * @pre { }
@@ -337,6 +350,10 @@ class PlayerObject extends IntangibleObject {
 	
 	public native boolean hasSkill(final string skillName);
 
+	public boolean hasCommandMessageString(unsigned int actionCRC) {
+		return commandMessageStrings.contains(actionCRC);
+	}
+	
 	public unsigned int getCharacterBitmask() {
 		return characterBitmask;
 	}
@@ -446,6 +463,10 @@ class PlayerObject extends IntangibleObject {
 	
 	public int getExperience(final string xp) {
 		return experienceList.get(xp);
+	}
+	
+	public string getCommandMessageString(unsigned int actionCRC) {
+		return commandMessageStrings.get(actionCRC);
 	}
 	
 }
