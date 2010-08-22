@@ -104,6 +104,8 @@ public:
 		return customName;
 	}
 
+	String getDisplayedName();
+
 	inline uint32 size() const {
 		return customName.length() * 2 + file.length() + stringID.length();
 	}

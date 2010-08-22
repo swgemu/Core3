@@ -384,7 +384,7 @@ void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
 		player->sendSystemMessage("manf_station", "activated");
 	} else {
 
-		stopFactory("manf_done", getObjectName()->getStringID(), "", currentRunCount);
+		stopFactory("manf_done", getObjectName()->getDisplayedName(), "", currentRunCount);
 		player->sendSystemMessage("manf_station", "deactivated");
 		currentUser = NULL;
 	}
@@ -435,7 +435,7 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 		if(di != -1)
 			emailBody.setDI(di);
 		UnicodeString subject = "@system_msg:manf_done_sub";
-		chatManager->sendMail(getObjectName()->getStringID(), subject, emailBody, currentUser->getFirstName());
+		chatManager->sendMail(getObjectName()->getDisplayedName(), subject, emailBody, currentUser->getFirstName());
 	}
 
 	updateToDatabase();
@@ -448,16 +448,16 @@ void FactoryObjectImplementation::stopFactory(TangibleObject* ingredient) {
 		ResourceContainer* rcnoObject = (ResourceContainer*) ingredient;
 
 		if(rcnoObject->getSpawnName() == "")
-			stopFactory("manf_no_unknown_resource", getObjectName()->getStringID(), "", -1);
+			stopFactory("manf_no_unknown_resource", getObjectName()->getDisplayedName(), "", -1);
 		else
-			stopFactory("manf_no_named_resource", getObjectName()->getStringID(), rcnoObject->getSpawnName(), -1);
+			stopFactory("manf_no_named_resource", getObjectName()->getDisplayedName(), rcnoObject->getSpawnName(), -1);
 
 	} else {
 
 		if(ingredient->getCustomObjectName().toString() == "")
-			stopFactory("manf_no_component", getObjectName()->getStringID(), ingredient->getObjectName()->getStringID(), -1);
+			stopFactory("manf_no_component", getObjectName()->getDisplayedName(), ingredient->getObjectName()->getDisplayedName(), -1);
 		else
-			stopFactory("manf_no_component", getObjectName()->getStringID(), ingredient->getCustomObjectName().toString(), -1);
+			stopFactory("manf_no_component", getObjectName()->getDisplayedName(), ingredient->getCustomObjectName().toString(), -1);
 	}
 }
 
@@ -510,7 +510,7 @@ void FactoryObjectImplementation::createNewObject() {
 			if(schematic->getManufactureLimit() == 0) {
 
 				removeObject(schematic);
-				stopFactory("manf_done", getObjectName()->getStringID(), "", currentRunCount);
+				stopFactory("manf_done", getObjectName()->getDisplayedName(), "", currentRunCount);
 
 			} else if (pending != NULL)
 				pending->reschedule(timer * 1000);
