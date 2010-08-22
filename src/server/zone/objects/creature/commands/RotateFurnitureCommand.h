@@ -63,15 +63,26 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) creature->getParentRecursively(SceneObject::BUILDING);
+
+		if (buildingObject == NULL) {
+			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
+			return GENERALERROR;
+		}
+
+		if (!buildingObject->isOnAdminList(creature)) {
+			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
+			return GENERALERROR;
+		}
+
 		StringTokenizer tokenizer(arguments.toString());
 		tokenizer.setDelimeter(" ");
-
-		String dir;
 
 		//TODO: Return a usage message?
 		if (!tokenizer.hasMoreTokens())
 			return false;
 
+		String dir;
 		tokenizer.getStringToken(dir);
 
 		if (dir != "left" && dir != "right")
@@ -82,19 +93,30 @@ public:
 
 		int degrees = tokenizer.getIntToken();
 
-		if (degrees < 1 ||degrees > 359)
+		if (degrees < 1 || degrees > 180) {
+			creature->sendSystemMessage("@player_structure:rotate_params"); //The amount to rotate must be between 1 and 180.
 			return false;
+		}
 
 		ZoneServer* zoneServer = creature->getZoneServer();
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
-		if (obj == NULL)
+		if (obj == NULL || obj->getParentRecursively(SceneObject::BUILDING) != buildingObject) {
+			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 			return false;
+		}
 
-		if (dir == "right")
+		creature->info(String::valueOf(obj->getDirection()->getDegrees()), true);
+
+		if (dir == "right") {
+			creature->info("Rotating object " + String::valueOf(-degrees) + " degrees.", true);
 			obj->rotate(-degrees);
-		else
+		} else {
+			creature->info("Rotating object " + String::valueOf(degrees) + " degrees.", true);
 			obj->rotate(degrees);
+		}
+
+		creature->info(String::valueOf(obj->getDirection()->getDegrees()), true);
 
 		if (obj->getParent() != NULL)
 			obj->updateZoneWithParent(obj->getParent(), true);

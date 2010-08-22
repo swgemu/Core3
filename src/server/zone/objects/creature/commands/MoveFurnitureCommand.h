@@ -57,25 +57,31 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
+		ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) creature->getParentRecursively(SceneObject::BUILDING);
+
+		if (buildingObject == NULL) {
+			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
 			return GENERALERROR;
+		}
+
+		if (!buildingObject->isOnAdminList(creature)) {
+			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
+			return GENERALERROR;
+		}
 
 		StringTokenizer tokenizer(arguments.toString());
 		tokenizer.setDelimeter(" ");
 
-		String dir;
-
-		//TODO: Return a usage message?
 		if (!tokenizer.hasMoreTokens())
 			return GENERALERROR;
 
+		String dir;
 		tokenizer.getStringToken(dir);
 
 		if (dir != "up" && dir != "down" && dir != "forward" && dir != "back")
@@ -86,57 +92,52 @@ public:
 
 		float dist = tokenizer.getFloatToken();
 
-		if (dist < 1 || dist > 1000)
+		if (dist < 1 || dist > 500) {
+			creature->sendSystemMessage("@player_structure:movefurniture_params"); //The amount to move must be between 1 and 500.
 			return GENERALERROR;
+		}
 
 		ZoneServer* zoneServer = creature->getZoneServer();
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
-		if (obj == NULL)
-			return GENERALERROR;
+		if (obj == NULL || obj->getParentRecursively(SceneObject::BUILDING) != buildingObject) {
+			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
+			return false;
+		}
 
-		if (!obj->isTangibleObject())
-			return GENERALERROR;
+		float degrees = creature->getDirectionAngle();
+		int quadrant = (int) floor(degrees / 90);
+		float angle = degrees - ((float) (quadrant * 90));
 
-		ManagedReference<SceneObject*> parent = obj->getParent();
+		float offsetY = dist / 10.0f;
+		float offsetX = dist / 10.0f;
 
-		if (parent == NULL)
-			return GENERALERROR;
+		if (quadrant % 2 == 0) {
+			offsetX *= cos(Math::deg2rad(angle));
+			offsetY *= sin(Math::deg2rad(angle));
+		} else {
+			offsetY *= cos(Math::deg2rad(angle));
+			offsetX *= sin(Math::deg2rad(angle));
+		}
 
-		if (!parent->isCellObject())
-			return GENERALERROR;
-
-		ManagedReference<SceneObject*> building = parent->getParent();
-
-		if (building == NULL || !building->isBuildingObject())
-			return GENERALERROR;
-
-		BuildingObject* buio = (BuildingObject*) building.get();
-
-		if (!buio->isOnAdminList((PlayerCreature*)creature))
-			return GENERALERROR;
-
-		int degrees = (int) creature->getDirectionAngle();
-
-		float offsetX = dist * sin(Math::deg2rad(degrees));
-		float offsetY = dist * cos(Math::deg2rad(degrees));
+		System::out << "Offsetx: " << offsetX << " Offsety: " << offsetY << endl;
 
 		float x = obj->getPositionX();
 		float y = obj->getPositionY();
 		float z = obj->getPositionZ();
 
 		if (dir == "forward") {
-			x += (offsetX / 10.0f);
-			y += (offsetY / 10.0f);
+			x += (offsetX);
+			y += (offsetY);
 		}
 		if (dir == "back") {
-			x -= (offsetX / 10.0f);
-			y -= (offsetY / 10.0f);
+			x -= (offsetX);
+			y -= (offsetY);
 		}
 		if (dir == "up")
-			z += ((float) dist / 10.0f);
+			z += ((float) dist / 100.0f);
 		if (dir == "down")
-			z -= ((float) dist / 10.0f);
+			z -= ((float) dist / 100.0f);
 
 
 		//TODO: Check to make sure the item is not being moved outside the range of the cell.
