@@ -107,7 +107,7 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 
 		ManagedReference<SceneObject* > inventory = playerCreature->getSlottedObject("inventory");
 
-		if (inventory != NULL && inventory->getContainerObjectsSize() < 80) {
+		if (inventory != NULL && inventory->getContainerObjectsSize() < 80 && prototype != NULL) {
 			playerCreature->sendSystemMessage("system_msg", "prototype_transferred");
 			removeObject(prototype);
 
