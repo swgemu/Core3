@@ -542,13 +542,13 @@ public:
 
 	void setCraftersName(String& name);
 
-	String getCraftersName();
+	virtual String getCraftersName();
 
 	void setCraftersSerial(String& serial);
 
 	void setLevel(int lev);
 
-	String getCraftersSerial();
+	virtual String getCraftersSerial();
 
 	bool isFromFactoryCrate();
 
