@@ -59,6 +59,9 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+		ZoneServer* zoneServer = creature->getZoneServer();
+		Zone* zone = creature->getZone();
+
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -70,27 +73,20 @@ public:
 
 		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
 
-		ZoneServer* zoneServer = creature->getZoneServer();
+		ManagedReference<SceneObject*> obj = player->getInRangeStructureWithAdminRights();
 
-		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
-
-		ManagedReference<StructureObject*> structureObject = NULL;
-
-		//Try to find the target of the command...
-		if (obj != NULL && obj->isInstallationObject()) {
-			structureObject = (StructureObject*) obj.get();
-		} else if (player->getParent() != NULL && player->getParent()->isCellObject()) {
-			ManagedReference<CellObject*> cell = (CellObject*) player->getParent();
-
-			if (cell->getParent() != NULL && cell->getParent()->isBuildingObject())
-				structureObject = (StructureObject*) cell->getParent();
+		if (obj == NULL || !obj->isStructureObject()) {
+			player->sendSystemMessage("@player_structure:command_no_building"); //You must be in a building or near an installation to use that command.
+			return GENERALERROR;
 		}
 
-		if (structureObject == NULL)
-			return INVALIDPARAMETERS;
+		StructureObject* structureObject = (StructureObject*) obj.get();
 
 		StringTokenizer tokenizer(arguments.toString());
 		tokenizer.setDelimeter(" ");
+
+		if (!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
 
 		String targetPlayerName;
 		tokenizer.getStringToken(targetPlayerName);
@@ -147,7 +143,7 @@ public:
 
 		//Update the cell permissions in case the player is in the building currently.
 		if (targetPlayer != NULL && structureObject->isBuildingObject()) {
-			BuildingObject* buildingObject = (BuildingObject*) structureObject.get();
+			BuildingObject* buildingObject = (BuildingObject*) structureObject;
 			buildingObject->updateCellPermissionsTo(targetPlayer);
 		}
 
