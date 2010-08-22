@@ -143,10 +143,14 @@ public:
 
 		uint32 retreatCRC = String("retreat").hashCode();
 
-		if ((creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) && (!creature->hasBuff(retreatCRC))) {
-			creature->sendSystemMessage("combat_effects", "burst_run_no");
+		if (creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) {
 
-			return false;
+			if (!creature->hasBuff(retreatCRC)) {
+
+				creature->sendSystemMessage("combat_effects", "burst_run_no");
+
+				return false;
+			}
 		}
 
 		if (!creature->checkCooldownRecovery("burstrun")) {

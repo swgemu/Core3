@@ -82,12 +82,7 @@ class FishingPoleObject extends TangibleObject {
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
-	public void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player) {
-		string text = getText(player);
-		menuResponse.addRadialMenuItem(245, 3, text);
-		/*text = "@fishing:mnu_open_tackle";
-		menuResponse.addRadialMenuItem(20, 3, text);*/
-	}
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
 	
 	/**
 	 * Handles the radial selection sent by the client

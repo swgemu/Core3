@@ -204,9 +204,9 @@ public:
 
 	static const int FRESH = 0;
 
-	static const int SOGGY = 4;
+	static const int SOGGY = 6;
 
-	static const int MUSH = 6;
+	static const int MUSH = 10;
 
 	static const int DONOTHING = 0;
 
@@ -407,9 +407,9 @@ public:
 
 	static const int FRESH = 0;
 
-	static const int SOGGY = 4;
+	static const int SOGGY = 6;
 
-	static const int MUSH = 6;
+	static const int MUSH = 10;
 
 	static const int DONOTHING = 0;
 

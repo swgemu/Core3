@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.objects.group;
 
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
 import system.util.Vector;
 import server.chat.room.ChatRoom;
 //import server.zone.packets.object.StfParameter;
@@ -56,7 +57,7 @@ import server.zone.Zone;
 class GroupObject extends SceneObject {	
 	@dereferenced
 	GroupList groupMembers;
-		
+	
 	ChatRoom chatRoom;
 	
 	int groupLevel;
@@ -122,5 +123,14 @@ class GroupObject extends SceneObject {
 	public GroupList getGroupList() {
 		return groupMembers;
 	}
-
+	
+	public native boolean hasSquadLeader();
+	
+	public native void addGroupModifiers();
+	
+	public native void removeGroupModifiers();
+	
+	public native void addGroupModifiers(PlayerCreature player);
+	
+	public native void removeGroupModifiers(PlayerCreature player);
 }

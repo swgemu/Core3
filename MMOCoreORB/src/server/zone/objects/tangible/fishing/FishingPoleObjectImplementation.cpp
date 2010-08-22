@@ -9,6 +9,7 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/scene/TransferErrorCode.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
@@ -32,6 +33,14 @@ int FishingPoleObjectImplementation::canAddObject(SceneObject* object, String& e
 	errorDescription = "@fishing:bait_only";
 
 	return TransferErrorCode::BAITONLY;
+}
+
+void FishingPoleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
+	String text = getText(player);
+	menuResponse->addRadialMenuItem(245, 3, text);
+	/*text = "@fishing:mnu_open_tackle";
+	menuResponse.addRadialMenuItem(20, 3, text);*/
 }
 
 int FishingPoleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {

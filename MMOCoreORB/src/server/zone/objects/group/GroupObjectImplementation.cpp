@@ -16,6 +16,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/player/events/SquadLeaderBonusTask.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -74,6 +75,11 @@ void GroupObjectImplementation::addMember(SceneObject* player) {
 	broadcastMessage(grp);
 
 	sendTo(player, true);
+
+	if (hasSquadLeader() && player->isPlayerCreature()) {
+		ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) player;
+		addGroupModifiers(playerCreature);
+	}
 }
 
 void GroupObjectImplementation::removeMember(SceneObject* player) {
@@ -90,6 +96,11 @@ void GroupObjectImplementation::removeMember(SceneObject* player) {
 
 			broadcastMessage(grp);
 		}
+	}
+
+	if (hasSquadLeader() && player->isPlayerCreature()) {
+		ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) player;
+		removeGroupModifiers(playerCreature);
 	}
 }
 
@@ -118,12 +129,18 @@ void GroupObjectImplementation::makeLeader(SceneObject* player) {
 			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
 			grp->startUpdate(1);
 
+			if (hasSquadLeader())
+				removeGroupModifiers();
+
 			groupMembers.set(0, player, grp, 2);
 			groupMembers.set(i, temp.get(), grp, 0);
 
 			grp->close();
 
 			broadcastMessage(grp);
+
+			if (hasSquadLeader())
+				addGroupModifiers();
 
 			return;
 		}
@@ -166,9 +183,122 @@ void GroupObjectImplementation::disband() {
 
 	destroyChatRoom();
 
+	if (hasSquadLeader())
+		removeGroupModifiers();
+
 	groupMembers.removeAll();
 
 	//The mission waypoints should not be destroyed. They belong to the players.
 	//missionWaypoints.removeAll();
 }
 
+bool GroupObjectImplementation::hasSquadLeader() {
+	if (getLeader() == NULL)
+		return false;
+
+	if (getLeader()->isPlayerCreature()) {
+
+		ManagedReference<PlayerCreature*> leader = (PlayerCreature*) getLeader();
+
+		if (leader->hasSkillBox("outdoors_squadleader_novice"))
+			return true;
+	}
+
+	return false;
+}
+
+void GroupObjectImplementation::addGroupModifiers() {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		CreatureObject* crea = (CreatureObject*) ( (SceneObject*) groupMembers.get(i) );
+
+		if (crea == NULL)
+			continue;
+
+		if (!crea->isPlayerCreature())
+			continue;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) crea;
+		addGroupModifiers(player);
+	}
+
+	if (getLeader() != NULL) {
+		if (getLeader()->isPlayerCreature()) {
+
+			ManagedReference<PlayerCreature*> leader = (PlayerCreature*) getLeader();
+
+			Reference<SquadLeaderBonusTask*> bonusTask = new SquadLeaderBonusTask(leader);
+
+			bonusTask->schedule(300 * 1000);
+		}
+	}
+}
+
+void GroupObjectImplementation::removeGroupModifiers() {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		CreatureObject* crea = (CreatureObject*) ( (SceneObject*) groupMembers.get(i) );
+
+		if (crea == NULL)
+			continue;
+
+		if (!crea->isPlayerCreature())
+			continue;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) crea;
+		removeGroupModifiers(player);
+	}
+}
+
+void GroupObjectImplementation::addGroupModifiers(PlayerCreature* player) {
+	if (player == NULL)
+		return;
+
+	if (getLeader() == NULL)
+		return;
+
+	if (!getLeader()->isPlayerCreature())
+		return;
+
+	ManagedReference<PlayerCreature*> leader = (PlayerCreature*) getLeader();
+
+	if (leader == player)
+		return;
+
+	Locker locker(player);
+
+	int duration = 300;
+
+	String action = "squadleader";
+
+	if (player->hasBuff(action.hashCode()))
+		player->removeBuff(action.hashCode());
+
+	ManagedReference<Buff*> buff = new Buff(player, action.hashCode(), duration, BuffType::SKILL);
+	buff->setSkillModifier("slope_move", leader->getSkillMod("group_slope_move"));
+	buff->setSkillModifier("ranged_defense", leader->getSkillMod("group_ranged_defense"));
+	buff->setSkillModifier("melee_defense", leader->getSkillMod("group_melee_defense"));
+	buff->setSkillModifier("burst_run", leader->getSkillMod("group_burst_run"));
+
+	player->addBuff(buff);
+}
+
+void GroupObjectImplementation::removeGroupModifiers(PlayerCreature* player) {
+	if (player == NULL)
+		return;
+
+	if (getLeader() == NULL)
+		return;
+
+	if (!getLeader()->isPlayerCreature())
+		return;
+
+	ManagedReference<PlayerCreature*> leader = (PlayerCreature*) getLeader();
+
+	if (leader == player)
+		return;
+
+	Locker locker(player);
+	String action = "squadleader";
+
+	if (player->hasBuff(action.hashCode()))
+		player->removeBuff(action.hashCode());
+}

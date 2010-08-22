@@ -46,13 +46,16 @@ which carries forward this exception.
 #define SETFORMUPCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "SquadLeaderCommand.h"
 
-class SetFormupCommand : public QueueCommand {
+class SetFormupCommand : public SquadLeaderCommand {
 public:
 
 	SetFormupCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
 
+		action = "formup";
+		actionCRC = action.hashCode();
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -62,6 +65,14 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (creature == NULL)
+			return GENERALERROR;
+
+		String message = arguments.toString();
+
+		if (!setCommandMessage(creature, message))
+			return GENERALERROR;
 
 		return SUCCESS;
 	}

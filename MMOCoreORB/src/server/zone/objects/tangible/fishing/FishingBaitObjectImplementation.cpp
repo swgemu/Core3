@@ -15,3 +15,7 @@ void FishingBaitObjectImplementation::fillAttributeList(AttributeListMessage* al
 	TangibleObjectImplementation::fillAttributeList(alm,object);
 	// BAIT STATUS ONLY VISIBLE IN FISHING MENU
 }
+
+int FishingBaitObjectImplementation::getUseCount() {
+	return TangibleObjectImplementation::getUseCount();
+}

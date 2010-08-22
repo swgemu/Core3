@@ -46,12 +46,17 @@ which carries forward this exception.
 #define FORMUPCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "SquadLeaderCommand.h"
 
-class FormupCommand : public QueueCommand {
+class FormupCommand : public SquadLeaderCommand {
 public:
 
 	FormupCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
+
+		action = "formup";
+		actionCRC = action.hashCode();
+		combatSpam = "formup_buff";
 
 	}
 
@@ -63,7 +68,56 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<GroupObject*> group = player->getGroup();
+
+		if (!checkGroupLeader(player, group))
+			return GENERALERROR;
+
+		int hamCost = (int) (50.0f * calculateGroupModifier(group));
+
+		if (!inflictHAM(player, hamCost, hamCost, hamCost))
+			return GENERALERROR;
+
+		shoutCommand(player, group);
+
+		int chance = 30;
+
+		if (!doFormUp(player, group, chance))
+			return GENERALERROR;
+
 		return SUCCESS;
+	}
+
+	bool doFormUp(PlayerCreature* leader, GroupObject* group, int chance) {
+		if (leader == NULL || group == NULL || chance < 1 || chance > 99)
+			return false;
+
+		for (int i = 0; i < group->getGroupSize(); i++) {
+
+			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
+			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
+				continue;
+
+			PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+			Locker clocker(memberPlayer, leader);
+
+			sendCombatSpam(memberPlayer);
+
+			if (memberPlayer->isDizzied())
+				if (System::random(99) < chance)
+					memberPlayer->clearState(CreatureState::DIZZY, true);
+
+			if (memberPlayer->isStunned())
+				if (System::random(99) < chance)
+					memberPlayer->clearState(CreatureState::STUNNED, true);
+		}
+
+		return true;
 	}
 
 };

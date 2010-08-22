@@ -26,6 +26,8 @@
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 
+#include "server/zone/objects/group/GroupObject.h"
+
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -963,6 +965,9 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 	//info("level: " + String::valueOf(level), true);
 
+	VectorMap<GroupObject*, int> groups;
+	groups.setNullValue(NULL);
+
 	for (int i = 0; i < damageMap->size(); ++i) {
 		ManagedReference<PlayerCreature*> player = damageMap->elementAt(i).getKey();
 
@@ -995,10 +1000,70 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		}
 
 		awardExperience(player, "combat_general", playerWeaponXp / 10);
+
+		if (player->isGrouped()) {
+			ManagedReference<GroupObject*> group = player->getGroup();
+			if (!squadLeaderCheck(player, group))
+				continue;
+
+			int amount = playerWeaponXp;
+
+			if (groups.contains(group)) {
+				amount += groups.get(group);
+				groups.drop(group);
+			}
+
+			groups.put(group, amount);
+		}
+
 	}
+
+	if (!groups.isEmpty())
+		for (int x = 0; x < groups.size(); x++)
+			awardSquadLeaderExperience(groups.elementAt(x).getKey(), groups.get(x), destructedObject);
 
 	damageMap->removeAll();
 }
+
+void PlayerManagerImplementation::awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source) {
+	if (source == NULL || group == NULL || amount <= 0)
+		return;
+
+	ManagedReference<SceneObject*> leader = group->getLeader();
+
+	if (leader == NULL)
+		return;
+
+	if (!leader->isPlayerCreature())
+		return;
+
+	ManagedReference<PlayerCreature*> leaderPlayer = (PlayerCreature*) leader.get();
+
+	Locker clocker(leaderPlayer, source);
+
+	float groupModifier = group->getGroupSize() / 10.0f;
+	if (groupModifier < 1)
+		groupModifier += 1;
+
+	awardExperience(leaderPlayer, "squadleader", (int) amount * groupModifier * 0.75);
+}
+
+bool PlayerManagerImplementation::squadLeaderCheck(PlayerCreature* player, GroupObject* group) {
+	if (player == NULL || group == NULL)
+		return false;
+
+	if (!group->hasSquadLeader())
+		return false;
+
+	if (group->getLeader()->getZone() != player->getZone())
+		return false;
+
+	if (group->getLeader()->compareTo(player) == 0)
+		return false;
+
+	return true;
+}
+
 
 bool PlayerManagerImplementation::checkEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
 	int strength = player->getHAM(CreatureAttribute::STRENGTH);

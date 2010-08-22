@@ -46,13 +46,17 @@ which carries forward this exception.
 #define STEADYAIMCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "SquadLeaderCommand.h"
 
-class SteadyaimCommand : public QueueCommand {
+class SteadyaimCommand : public SquadLeaderCommand {
 public:
 
 	SteadyaimCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
 
+		action = "steadyaim";
+		actionCRC = action.hashCode();
+		combatSpam = "steadyaim_buff";
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,55 +67,61 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (creature->isPlayerCreature()) {
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
 
-			ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
-			ManagedReference<GroupObject*> group = player->getGroup();
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<GroupObject*> group = player->getGroup();
 
-			if (group == NULL) {
-				player->sendSystemMessage("@error_message:not_grouped");
-			}
-			else if (group->getLeader() == player) {
+		if (!checkGroupLeader(player, group))
+			return GENERALERROR;
 
-				float retreatMod = (float) creature->getSkillMod("steadyaim");
-				float groupMod = (float) group->getGroupSize() / 10.0f;
+		float skillMod = (float) creature->getSkillMod("steadyaim");
+		int hamCost = (int) (100.0f * (1.0f - (skillMod / 100.0f))) * calculateGroupModifier(group);
 
-				if (groupMod < 1.0)
-					groupMod += 1.0f;
+		if (!inflictHAM(player, hamCost, hamCost, hamCost))
+			return GENERALERROR;
 
-				int hamCost = (int) (100.0f * (1.0f - (retreatMod / 100.0f))) * groupMod;
+		shoutCommand(player, group);
 
-				creature->inflictDamage(creature, CreatureAttribute::HEALTH, hamCost, true);
-				creature->inflictDamage(creature, CreatureAttribute::ACTION, hamCost, true);
-				creature->inflictDamage(creature, CreatureAttribute::MIND, hamCost, true);
+		int amount = 5 + skillMod;
 
-				String action = "setsteadyaim";
-				uint64 actionCRC = action.hashCode();
-
-				for (int i = 0; i < group->getGroupSize(); i++) {
-
-					ManagedReference<SceneObject*> member = group->getGroupMember(i);
-
-					if (member->isPlayerCreature()) {
-
-						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
-
-						if (!arguments.toString().isEmpty())
-							memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
-						else
-							memberPlayer->sendSystemMessage("@cbt_spam:steadyaim_buff");
-
-						Locker clocker(memberPlayer, creature);
-						memberPlayer->enqueueCommand(actionCRC, 0, 0, "");
-					}
-				}
-
-			} else {
-				player->sendSystemMessage("@error_message:not_group_leader");
-			}
-		}
+		if (!doSteadyAim(player, group, amount))
+			return GENERALERROR;
 
 		return SUCCESS;
+	}
+
+	bool doSteadyAim(PlayerCreature* leader, GroupObject* group, int amount) {
+		if (leader == NULL || group == NULL)
+			return false;
+
+		for (int i = 0; i < group->getGroupSize(); i++) {
+
+			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
+			if (!member->isPlayerCreature() || member == NULL || member->getZone() != leader->getZone())
+				continue;
+
+			ManagedReference<PlayerCreature*> memberPlayer = (PlayerCreature*) member.get();
+			Locker clocker(memberPlayer, leader);
+
+			sendCombatSpam(memberPlayer);
+
+			ManagedReference<WeaponObject*> weapon = memberPlayer->getWeapon();
+
+			if (!weapon->isRangedWeapon())
+				continue;
+
+			int duration = 300;
+
+			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);
+			buff->setSkillModifier("aim", amount);
+
+			memberPlayer->addBuff(buff);
+		}
+
+		return true;
 	}
 
 };

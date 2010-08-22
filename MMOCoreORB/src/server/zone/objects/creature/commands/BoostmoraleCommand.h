@@ -47,13 +47,18 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/chat/ChatManager.h"
+#include "SquadLeaderCommand.h"
 
-class BoostmoraleCommand : public QueueCommand {
+class BoostmoraleCommand : public SquadLeaderCommand {
 public:
 
 	BoostmoraleCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: SquadLeaderCommand(name, server) {
 
+		action = "boostmorale";
+		actionCRC = action.hashCode();
+		combatSpam = "boostmorale_buff";
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -64,78 +69,82 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (creature->isPlayerCreature()) {
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
 
-			ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
-			ManagedReference<GroupObject*> group = player->getGroup();
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<GroupObject*> group = player->getGroup();
 
-			if (group == NULL) {
-				player->sendSystemMessage("@error_message:not_grouped");
-			}
-			else if (group->getLeader() == player) {
+		if (!checkGroupLeader(player, group))
+			return GENERALERROR;
 
-				float groupMod = (float) group->getGroupSize() / 10.0f;
-				if (groupMod < 1.0)
-					groupMod += 1.0f;
+		int hamCost = (int) (100.0f * calculateGroupModifier(group));
 
-				int hamCost = (int) (100.0f * groupMod);
+		if (!inflictHAM(player, hamCost, hamCost, hamCost))
+			return GENERALERROR;
 
-				creature->inflictDamage(creature, CreatureAttribute::HEALTH, hamCost, true);
-				creature->inflictDamage(creature, CreatureAttribute::ACTION, hamCost, true);
-				creature->inflictDamage(creature, CreatureAttribute::MIND, hamCost, true);
+		shoutCommand(player, group);
 
-				String action = "setboostmorale";
-				uint64 actionCRC = action.hashCode();
+		int wounds[9] = {0,0,0,0,0,0,0,0,0};
+		if (!getWounds(player, group, wounds))
+			return GENERALERROR;
 
-				int wounds[9] = {0,0,0,0,0,0,0,0,0};
-				String vector = "";
+		if (!distributeWounds(player, group, wounds))
+			return GENERALERROR;
 
-				for (int i = 0; i < group->getGroupSize(); i++) {
+		return SUCCESS;
+	}
 
-					ManagedReference<SceneObject*> member = group->getGroupMember(i);
+	bool getWounds(PlayerCreature* leader, GroupObject* group, int* wounds) {
+		if (group == NULL || leader == NULL || sizeof(wounds)/sizeof(wounds[0]) != 9)
+			return false;
 
-					if (member->isPlayerCreature() && (member != NULL)) {
+		for (int i = 0; i < group->getGroupSize(); i++) {
 
-						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+			ManagedReference<SceneObject*> member = group->getGroupMember(i);
 
-						if (!arguments.toString().isEmpty())
-							memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
-						else
-							memberPlayer->sendSystemMessage("@cbt_spam:formup_buff");
+			if (member == NULL)
+				continue;
 
-						for (int j = 0; j < 9; j++) {
-							wounds[j] = wounds[j] + memberPlayer->getWounds(j);
+			if (!member->isPlayerCreature())
+				continue;
 
-							if (i == group->getGroupSize() - 1) {
-								wounds[j] = (int) wounds[j] / group->getGroupSize();
-								vector += String::valueOf(wounds[j]);
+			PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+			Locker clocker(memberPlayer, leader);
 
-								if (j < 8)
-									vector += ",";
-							}
-						}
-					}
-				}
-
-				for (int i = 0; i < group->getGroupSize(); i++) {
-
-					ManagedReference<SceneObject*> member = group->getGroupMember(i);
-
-					if (member->isPlayerCreature()) {
-
-						PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
-
-						Locker clocker(memberPlayer, creature);
-						memberPlayer->enqueueCommand(actionCRC, 0, 0, vector);
-					}
-				}
-
-			} else {
-				player->sendSystemMessage("@error_message:not_group_leader");
+			for (int j = 0; j < 9; j++) {
+				wounds[j] = wounds[j] + memberPlayer->getWounds(j);
+				memberPlayer->setWounds(j, 0);
 			}
 		}
 
-		return SUCCESS;
+		return true;
+	}
+
+	bool distributeWounds(PlayerCreature* leader, GroupObject* group, int* wounds) {
+		if (group == NULL || leader == NULL || sizeof(wounds)/sizeof(wounds[0]) != 9)
+			return false;
+
+		int groupSize = group->getGroupSize();
+
+		for (int i = 0; i < groupSize; i++) {
+
+			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
+			if (!member->isPlayerCreature())
+				continue;
+
+			PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+
+			Locker clocker(memberPlayer, leader);
+
+			sendCombatSpam(memberPlayer);
+
+			for (int j = 0; j < 9; j++)
+				memberPlayer->addWounds(j, (int) wounds[j] / groupSize);
+		}
+
+		return true;
 	}
 
 };

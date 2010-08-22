@@ -66,7 +66,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 	try {
 		Locker clocker(player, leader);
 
-		if (leader->isGroupped()) {
+		if (leader->isGrouped()) {
 			ManagedReference<GroupObject*> group = leader->getGroup();
 
 			if (group->getLeader() != leader) {
@@ -75,7 +75,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 			}
 		}
 
-		if (player->isGroupped()) {
+		if (player->isGrouped()) {
 			ParameterizedStringId stringId;
 			stringId.setStringId("group", "already_grouped");
 			stringId.setTT(player);
