@@ -13,6 +13,7 @@
 StructurePermissionList::StructurePermissionList()
 		: VectorMap<uint64, uint8>() {
 	setInsertPlan(NO_DUPLICATE);
+	setNullValue(0);
 }
 
 void StructurePermissionList::sendTo(PlayerCreature* player, const String& listName) {
@@ -22,13 +23,16 @@ void StructurePermissionList::sendTo(PlayerCreature* player, const String& listN
 
 	uint8 permission = getPermissionFromListName(listName);
 
+	//Little hack that handles admin list displaying...
+	if (permission == ADMIN)
+		permission = ADMINLIST;
+
 	for (int i = 0; i < size(); ++i) {
 		VectorMapEntry<uint64, uint8>* entry = &elementAt(i);
 		uint64 playerID = entry->getKey();
 		uint8 playerPermission = entry->getValue();
 
-
-		if (!hasPermission(playerID, permission))
+		if (!(playerPermission & permission))
 			continue;
 
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(playerID);
@@ -64,10 +68,7 @@ bool StructurePermissionList::removePermission(uint64 playerID, uint8 permission
 	if (!contains(playerID))
 		return false;
 
-	if (permission == BANLIST || get(playerID) == permission)
-		drop(playerID);
-	else
-		get(playerID) &= ~permission;
+	get(playerID) &= ~permission;
 
 	return true;
 }
@@ -93,7 +94,7 @@ uint8 StructurePermissionList::getPermissionFromListName(const String& listName)
 	else if (listName == "ENTRY")
 		return ENTRYLIST;
 	else if (listName == "VENDOR")
-		return VENDOR;
+		return VENDORLIST;
 	else if (listName == "HOPPER")
 		return HOPPERLIST;
 	else
