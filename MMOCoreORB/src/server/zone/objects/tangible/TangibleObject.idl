@@ -478,7 +478,7 @@ class TangibleObject extends SceneObject {
 		craftersName = name;
 	}
 	
-	public string getCraftersName() {
+	public abstract string getCraftersName() {
 		return craftersName;
 	}
 	
@@ -490,7 +490,7 @@ class TangibleObject extends SceneObject {
 		level = lev;
 	}
 	
-	public string getCraftersSerial() {
+	public abstract string getCraftersSerial() {
 		return craftersSerial;
 	}
 	

@@ -719,9 +719,6 @@ TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
 		ResourceContainer* rcnoIngredient = dynamic_cast<ResourceContainer*>(ingredient);
 		int quantity = 0;
 
-		if (rcnoIngredient == NULL)
-			return NULL;
-
 		for (int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
 
 			ManagedReference<TangibleObject*> object =
@@ -734,6 +731,9 @@ TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
 
 			if (object->isResourceContainer()) {
 
+				if(rcnoIngredient == NULL)
+					continue;
+
 				ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
 
 				String test = rcnoIngredient->getSpawnName();
@@ -744,7 +744,6 @@ TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
 					return object;
 
 			} else {
-
 				if (ingredient->getCraftersSerial() == object->getCraftersSerial()
 						&& ingredient->getUseCount() <= object->getUseCount())
 					return object;
