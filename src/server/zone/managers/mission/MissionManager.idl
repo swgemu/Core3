@@ -49,18 +49,22 @@ include engine.core.ManagedObject;
 import server.zone.objects.scene.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.region.Region;
 import server.zone.ZoneServer;
+import server.zone.ZoneProcessServerImplementation;
 include server.zone.managers.mission.LairObjectsToSpawnMap;
 
 class MissionManager extends Observer implements Logger {
 	@weakReference
 	protected ZoneServer server;
+	transient ZoneProcessServerImplementation processor;
 	
 	@dereferenced
 	protected LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
 	
-	public MissionManager(ZoneServer srv) {
+	public MissionManager(ZoneServer srv, ZoneProcessServerImplementation impl) {
 		server = srv;
+		processor = impl;
 		Logger.setLoggingName("MissionManager");
 		
 		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
@@ -76,16 +80,27 @@ class MissionManager extends Observer implements Logger {
 	
 	public native void removeMission(MissionObject mission, PlayerCreature player);
 	
-	public native void populateGeneralMissionList(MissionTerminal missionTerminal, PlayerCreature player, int counter);
-	public native void populateArtisanMissionList(MissionTerminal missionTerminal, PlayerCreature player, int counter);
-	
+	public native void populateMissionList(MissionTerminal missionTerminal, PlayerCreature player, int counter);
 	
 	public native void randomizeSurveyMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeGeneralMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeDestroyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeBountyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeDeliverMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeCraftingMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeDancerMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeMusicianMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeHuntingMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeReconMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeImperialDestroyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeImperialDeliverMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeRebelDestroyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeRebelDeliverMission(PlayerCreature player, MissionObject mission);
+
 	
 	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
-	public native void createGeneralMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createDestroyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createDeliverMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	
 	public native boolean hasSurveyMission(PlayerCreature player, final string spawn);
 }

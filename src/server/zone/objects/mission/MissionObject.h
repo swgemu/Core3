@@ -138,6 +138,8 @@ public:
 
 	static const int MUSICIAN = 0x4AD93196;
 
+	static const int DANCER = 0xF067B37;
+
 	static const int RECON = 0x34F4C2E4;
 
 	static const int SURVEY = 0x19C9FAC1;
@@ -172,6 +174,10 @@ public:
 
 	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
 
+	void setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+
+	void setCreatorName(const String& name, bool notifyClient = true);
+
 	void updateMissionLocation();
 
 	void abort();
@@ -180,13 +186,31 @@ public:
 
 	void setStartPlanetCRC(unsigned int crc);
 
+	void setEndPlanetCRC(unsigned int crc);
+
+	void setMissionTarget(SceneObject* target);
+
+	void setMissionTargetDest(SceneObject* target);
+
+	void setMissionNumber(int num);
+
 	float getStartPositionX();
 
 	float getStartPositionY();
 
 	unsigned int getStartPlanetCRC();
 
+	float getEndPositionX();
+
+	float getEndPositionY();
+
+	unsigned int getEndPlanetCRC();
+
 	WaypointObject* getWaypointToMission();
+
+	SceneObject* getMissionTarget();
+
+	SceneObject* getMissionTargetDest();
 
 	unsigned int getTypeCRC();
 
@@ -203,6 +227,8 @@ public:
 	String getTargetName();
 
 	int getRefreshCounter();
+
+	int getMissionNumber();
 
 	SharedObjectTemplate* getTargetTemplate();
 
@@ -248,11 +274,19 @@ protected:
 
 	int rewardCredits;
 
+	int missionNumber;
+
 	float startPositionX;
 
 	float startPositionY;
 
 	unsigned int startPlanetCRC;
+
+	float endPositionX;
+
+	float endPositionY;
+
+	unsigned int endPlanetCRC;
 
 	StringId missionDescription;
 
@@ -261,6 +295,10 @@ protected:
 	unsigned int refreshCounter;
 
 	String targetName;
+
+	ManagedReference<SceneObject* > missionTarget;
+
+	ManagedReference<SceneObject* > missionTargetDest;
 
 	TemplateReference<SharedObjectTemplate*> targetTemplate;
 
@@ -282,6 +320,8 @@ public:
 	static const int HUNTING = 0x906999A2;
 
 	static const int MUSICIAN = 0x4AD93196;
+
+	static const int DANCER = 0xF067B37;
 
 	static const int RECON = 0x34F4C2E4;
 
@@ -319,6 +359,10 @@ public:
 
 	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
 
+	void setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient = true);
+
+	void setCreatorName(const String& name, bool notifyClient = true);
+
 	void updateMissionLocation();
 
 	void abort();
@@ -327,13 +371,31 @@ public:
 
 	void setStartPlanetCRC(unsigned int crc);
 
+	void setEndPlanetCRC(unsigned int crc);
+
+	void setMissionTarget(SceneObject* target);
+
+	void setMissionTargetDest(SceneObject* target);
+
+	void setMissionNumber(int num);
+
 	float getStartPositionX();
 
 	float getStartPositionY();
 
 	unsigned int getStartPlanetCRC();
 
+	float getEndPositionX();
+
+	float getEndPositionY();
+
+	unsigned int getEndPlanetCRC();
+
 	WaypointObject* getWaypointToMission();
+
+	SceneObject* getMissionTarget();
+
+	SceneObject* getMissionTargetDest();
 
 	unsigned int getTypeCRC();
 
@@ -350,6 +412,8 @@ public:
 	String getTargetName();
 
 	int getRefreshCounter();
+
+	int getMissionNumber();
 
 	SharedObjectTemplate* getTargetTemplate();
 
@@ -422,6 +486,10 @@ public:
 
 	void setStartPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient);
 
+	void setEndPosition(float posX, float posY, unsigned int planetCRC, bool notifyClient);
+
+	void setCreatorName(const String& name, bool notifyClient);
+
 	void updateMissionLocation();
 
 	void abort();
@@ -430,13 +498,31 @@ public:
 
 	void setStartPlanetCRC(unsigned int crc);
 
+	void setEndPlanetCRC(unsigned int crc);
+
+	void setMissionTarget(SceneObject* target);
+
+	void setMissionTargetDest(SceneObject* target);
+
+	void setMissionNumber(int num);
+
 	float getStartPositionX();
 
 	float getStartPositionY();
 
 	unsigned int getStartPlanetCRC();
 
+	float getEndPositionX();
+
+	float getEndPositionY();
+
+	unsigned int getEndPlanetCRC();
+
 	WaypointObject* getWaypointToMission();
+
+	SceneObject* getMissionTarget();
+
+	SceneObject* getMissionTargetDest();
 
 	unsigned int getTypeCRC();
 
@@ -450,6 +536,8 @@ public:
 
 	int getRefreshCounter();
 
+	int getMissionNumber();
+
 	bool isSurveyMission();
 
 	bool isMissionObject();
@@ -460,6 +548,7 @@ protected:
 	String _param0_setMissionTitle__String_String_bool_;
 	String _param1_setMissionTitle__String_String_bool_;
 	String _param0_setMissionTargetName__String_bool_;
+	String _param0_setCreatorName__String_bool_;
 };
 
 class MissionObjectHelper : public DistributedObjectClassHelper, public Singleton<MissionObjectHelper> {

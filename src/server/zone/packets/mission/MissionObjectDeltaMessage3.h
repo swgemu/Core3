@@ -121,6 +121,22 @@ public:
 		insertInt(crc);
 	}
 
+	void updateDestination(float posX, float posY, uint32 crc) {
+		startUpdate(0x06);
+
+		insertFloat(posX);
+		insertFloat(0.0f);
+		insertFloat(posY);
+		insertLong(0); //?
+		insertInt(crc);
+	}
+
+	void updateCreator() {
+		startUpdate(0x07);
+
+		insertUnicode(miso->getCreatorName());
+	}
+
 	void updateWaypoint(WaypointObject* way) {
 		startUpdate(0x10);
 

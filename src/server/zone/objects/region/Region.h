@@ -64,6 +64,20 @@ namespace zone {
 namespace objects {
 namespace creature {
 
+class AiAgent;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
 class CreatureObject;
 
 } // namespace creature
@@ -106,6 +120,12 @@ public:
 
 	BazaarTerminal* getBazaar(int idx);
 
+	void addMissionNpc(AiAgent* npc);
+
+	AiAgent* getMissionNpc(int idx);
+
+	int getMissionNpcCount();
+
 	ShuttleCreature* getShuttle();
 
 	int getBazaarCount();
@@ -136,6 +156,8 @@ class RegionImplementation : public ActiveAreaImplementation {
 protected:
 	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
 
+	Vector<ManagedReference<AiAgent* > > missionNpcs;
+
 	ManagedWeakReference<ShuttleCreature* > shuttle;
 
 public:
@@ -154,6 +176,12 @@ public:
 	void addBazaar(BazaarTerminal* ter);
 
 	BazaarTerminal* getBazaar(int idx);
+
+	void addMissionNpc(AiAgent* npc);
+
+	AiAgent* getMissionNpc(int idx);
+
+	int getMissionNpcCount();
 
 	ShuttleCreature* getShuttle();
 
@@ -211,6 +239,12 @@ public:
 	void addBazaar(BazaarTerminal* ter);
 
 	BazaarTerminal* getBazaar(int idx);
+
+	void addMissionNpc(AiAgent* npc);
+
+	AiAgent* getMissionNpc(int idx);
+
+	int getMissionNpcCount();
 
 	ShuttleCreature* getShuttle();
 

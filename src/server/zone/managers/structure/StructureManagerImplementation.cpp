@@ -262,7 +262,8 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 	StringBuffer query;
 
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
-	query << " AND (file = 'object/tangible/terminal/shared_terminal_mission.iff' OR file = 'object/tangible/terminal/shared_terminal_mission_artisan.iff');";
+	//query << " AND (file = 'object/tangible/terminal/shared_terminal_mission.iff' OR file = 'object/tangible/terminal/shared_terminal_mission_artisan.iff');";
+	query << " AND (file LIKE 'object/tangible/terminal/shared_terminal_mission%');";
 
 	ResultSet* result = NULL;
 
@@ -306,6 +307,20 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 
 			if (file.indexOf("artisan") != -1)
 				serverCRC = String("object/tangible/terminal/terminal_mission_artisan.iff").hashCode();
+			else if (file.indexOf("bounty") != -1)
+				serverCRC = String("object/tangible/terminal/terminal_mission_bounty.iff").hashCode();
+			else if (file.indexOf("entertainer") != -1)
+				serverCRC = String("object/tangible/terminal/terminal_mission_entertainer.iff").hashCode();
+			else if (file.indexOf("imperial") != -1)
+				serverCRC = String("object/tangible/terminal/terminal_mission_imperial.iff").hashCode();
+			else if (file.indexOf("newbie") != -1)
+				serverCRC = String("object/tangible/terminal/terminal_mission_newbie.iff").hashCode();
+			else if (file.indexOf("rebel") != -1)
+				serverCRC = String("object/tangible/terminal/terminal_mission_rebel.iff").hashCode();
+			else if (file.indexOf("scout") != -1)
+				serverCRC = String("object/tangible/terminal/terminal_mission_scout.iff").hashCode();
+			else if (file.indexOf("statue") != -1)
+				serverCRC = String("object/tangible/terminal/terminal_mission_statue.iff").hashCode();
 			else
 				serverCRC = String("object/tangible/terminal/terminal_mission.iff").hashCode();
 

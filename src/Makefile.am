@@ -47,7 +47,8 @@ ENGINE3_PATH=../../../../MMOEngine
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
 	    -I$(ENGINE3_PATH)/include -I/usr/include/lua5.1 -I/usr/include/mysql \
-	    -I/usr/local/BerkeleyDB.5.0/include
+	    -I/usr/local/BerkeleyDB.5.0/include \
+	    -I/usr/include/db5.0
 			
 LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
@@ -188,7 +189,13 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/mission/MissionObjective.cpp \
 				server/zone/objects/mission/SurveyMissionObjective.cpp \
-				server/zone/objects/mission/GeneralMissionObjective.cpp \
+				server/zone/objects/mission/DestroyMissionObjective.cpp \
+				server/zone/objects/mission/DeliverMissionObjective.cpp \
+				server/zone/objects/mission/BountyMissionObjective.cpp \
+				server/zone/objects/mission/CraftingMissionObjective.cpp \
+				server/zone/objects/mission/EntertainerMissionObjective.cpp \
+				server/zone/objects/mission/HuntingMissionObjective.cpp \
+				server/zone/objects/mission/ReconMissionObjective.cpp \
 				server/zone/objects/mission/MissionObserver.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
@@ -347,7 +354,13 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		server/zone/objects/mission/MissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/SurveyMissionObjectiveImplementation.cpp \
-		server/zone/objects/mission/GeneralMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/DestroyMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/DeliverMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/BountyMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/CraftingMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/EntertainerMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/HuntingMissionObjectiveImplementation.cpp \
+		server/zone/objects/mission/ReconMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \

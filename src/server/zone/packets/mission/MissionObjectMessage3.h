@@ -92,11 +92,11 @@ public:
 		insertInt(mi->getRewardCredits());
 
 		//Dest Location
-		insertFloat(0);//insertFloat(mi->getTargetX()); //x
+		insertFloat(mi->getEndPositionX());//insertFloat(mi->getTargetX()); //x
 		insertFloat(0); //z
-		insertFloat(0);//insertFloat(mi->getTargetY()); //y
+		insertFloat(mi->getEndPositionY());//insertFloat(mi->getTargetY()); //y
 		insertLong(0); //Start obj id
-		insertInt(0);//insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
+		insertInt(mi->getEndPlanetCRC());//insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
 
 		//Target Object IFF crc
 		SharedObjectTemplate* templateObject = mi->getTargetTemplate();

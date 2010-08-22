@@ -44,7 +44,7 @@ namespace zone {
 namespace objects {
 namespace mission {
 
-class GeneralMissionObjective;
+class DestroyMissionObjective;
 
 } // namespace mission
 } // namespace objects
@@ -66,7 +66,7 @@ public:
 
 	void notifyEnter(SceneObject* player);
 
-	void setMissionObjective(GeneralMissionObjective* mission);
+	void setMissionObjective(DestroyMissionObjective* mission);
 
 protected:
 	MissionSpawnActiveArea(DummyConstructorParameter* param);
@@ -90,7 +90,7 @@ namespace area {
 
 class MissionSpawnActiveAreaImplementation : public ActiveAreaImplementation {
 protected:
-	ManagedWeakReference<GeneralMissionObjective* > generalMissionObjective;
+	ManagedWeakReference<DestroyMissionObjective* > destroyMissionObjective;
 
 public:
 	MissionSpawnActiveAreaImplementation();
@@ -99,7 +99,7 @@ public:
 
 	void notifyEnter(SceneObject* player);
 
-	void setMissionObjective(GeneralMissionObjective* mission);
+	void setMissionObjective(DestroyMissionObjective* mission);
 
 	MissionSpawnActiveArea* _this;
 
@@ -142,7 +142,7 @@ public:
 
 	void notifyEnter(SceneObject* player);
 
-	void setMissionObjective(GeneralMissionObjective* mission);
+	void setMissionObjective(DestroyMissionObjective* mission);
 
 };
 

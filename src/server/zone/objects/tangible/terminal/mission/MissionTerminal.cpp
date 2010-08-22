@@ -82,6 +82,90 @@ bool MissionTerminal::isGeneralTerminal() {
 		return ((MissionTerminalImplementation*) _impl)->isGeneralTerminal();
 }
 
+bool MissionTerminal::isBountyTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isBountyTerminal();
+}
+
+bool MissionTerminal::isEntertainerTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isEntertainerTerminal();
+}
+
+bool MissionTerminal::isImperialTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isImperialTerminal();
+}
+
+bool MissionTerminal::isNewbieTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isNewbieTerminal();
+}
+
+bool MissionTerminal::isRebelTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isRebelTerminal();
+}
+
+bool MissionTerminal::isScoutTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isScoutTerminal();
+}
+
+bool MissionTerminal::isStatueTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionTerminalImplementation*) _impl)->isStatueTerminal();
+}
+
 /*
  *	MissionTerminalImplementation
  */
@@ -192,6 +276,41 @@ bool MissionTerminalImplementation::isGeneralTerminal() {
 	return terminalType == "general";
 }
 
+bool MissionTerminalImplementation::isBountyTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(98):  		return terminalType == "bounty";
+	return terminalType == "bounty";
+}
+
+bool MissionTerminalImplementation::isEntertainerTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(102):  		return terminalType == "entertainer";
+	return terminalType == "entertainer";
+}
+
+bool MissionTerminalImplementation::isImperialTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(106):  		return terminalType == "imperial";
+	return terminalType == "imperial";
+}
+
+bool MissionTerminalImplementation::isNewbieTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(110):  		return terminalType == "newbie";
+	return terminalType == "newbie";
+}
+
+bool MissionTerminalImplementation::isRebelTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(114):  		return terminalType == "rebel";
+	return terminalType == "rebel";
+}
+
+bool MissionTerminalImplementation::isScoutTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(118):  		return terminalType == "scout";
+	return terminalType == "scout";
+}
+
+bool MissionTerminalImplementation::isStatueTerminal() {
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(122):  		return terminalType == "statue";
+	return terminalType == "statue";
+}
+
 /*
  *	MissionTerminalAdapter
  */
@@ -215,6 +334,27 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 9:
 		resp->insertBoolean(isGeneralTerminal());
 		break;
+	case 10:
+		resp->insertBoolean(isBountyTerminal());
+		break;
+	case 11:
+		resp->insertBoolean(isEntertainerTerminal());
+		break;
+	case 12:
+		resp->insertBoolean(isImperialTerminal());
+		break;
+	case 13:
+		resp->insertBoolean(isNewbieTerminal());
+		break;
+	case 14:
+		resp->insertBoolean(isRebelTerminal());
+		break;
+	case 15:
+		resp->insertBoolean(isScoutTerminal());
+		break;
+	case 16:
+		resp->insertBoolean(isStatueTerminal());
+		break;
 	default:
 		return NULL;
 	}
@@ -236,6 +376,34 @@ bool MissionTerminalAdapter::isArtisanTerminal() {
 
 bool MissionTerminalAdapter::isGeneralTerminal() {
 	return ((MissionTerminalImplementation*) impl)->isGeneralTerminal();
+}
+
+bool MissionTerminalAdapter::isBountyTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isBountyTerminal();
+}
+
+bool MissionTerminalAdapter::isEntertainerTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isEntertainerTerminal();
+}
+
+bool MissionTerminalAdapter::isImperialTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isImperialTerminal();
+}
+
+bool MissionTerminalAdapter::isNewbieTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isNewbieTerminal();
+}
+
+bool MissionTerminalAdapter::isRebelTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isRebelTerminal();
+}
+
+bool MissionTerminalAdapter::isScoutTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isScoutTerminal();
+}
+
+bool MissionTerminalAdapter::isStatueTerminal() {
+	return ((MissionTerminalImplementation*) impl)->isStatueTerminal();
 }
 
 /*

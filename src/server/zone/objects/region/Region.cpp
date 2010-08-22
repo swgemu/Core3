@@ -10,6 +10,8 @@
 
 #include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 
+#include "server/zone/objects/creature/AiAgent.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 /*
@@ -106,12 +108,50 @@ BazaarTerminal* Region::getBazaar(int idx) {
 		return ((RegionImplementation*) _impl)->getBazaar(idx);
 }
 
-ShuttleCreature* Region::getShuttle() {
+void Region::addMissionNpc(AiAgent* npc) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
+		method.addObjectParameter(npc);
+
+		method.executeWithVoidReturn();
+	} else
+		((RegionImplementation*) _impl)->addMissionNpc(npc);
+}
+
+AiAgent* Region::getMissionNpc(int idx) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addSignedIntParameter(idx);
+
+		return (AiAgent*) method.executeWithObjectReturn();
+	} else
+		return ((RegionImplementation*) _impl)->getMissionNpc(idx);
+}
+
+int Region::getMissionNpcCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((RegionImplementation*) _impl)->getMissionNpcCount();
+}
+
+ShuttleCreature* Region::getShuttle() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 
 		return (ShuttleCreature*) method.executeWithObjectReturn();
 	} else
@@ -123,7 +163,7 @@ int Region::getBazaarCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -135,7 +175,7 @@ bool Region::isRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -210,80 +250,96 @@ void RegionImplementation::_serializationHelperMethod() {
 	_setClassName("Region");
 
 	addSerializableVariable("bazaars", &bazaars);
+	addSerializableVariable("missionNpcs", &missionNpcs);
 	addSerializableVariable("shuttle", &shuttle);
 }
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/Region.idl(68):  		bazaars.setNoDuplicateInsertPlan();
+	// server/zone/objects/region/Region.idl(72):  		bazaars.setNoDuplicateInsertPlan();
 	(&bazaars)->setNoDuplicateInsertPlan();
-	// server/zone/objects/region/Region.idl(69):  		bazaars.setNullValue(null);
+	// server/zone/objects/region/Region.idl(73):  		bazaars.setNullValue(null);
 	(&bazaars)->setNullValue(NULL);
 }
 
 void RegionImplementation::notifyEnter(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(73):  		if 
-	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(74):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+	// server/zone/objects/region/Region.idl(77):  		if 
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(78):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
 	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
-	// server/zone/objects/region/Region.idl(76):  		if 
-	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(77):  			sendGreetingMessage((PlayerCreature) object);
+	// server/zone/objects/region/Region.idl(80):  		if 
+	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(81):  			sendGreetingMessage((PlayerCreature) object);
 	sendGreetingMessage((PlayerCreature*) object);
-	// server/zone/objects/region/Region.idl(79):  	}
+	// server/zone/objects/region/Region.idl(83):  	}
 	if (object->isCreatureObject()){
-	// server/zone/objects/region/Region.idl(80):  			CreatureObject creature = (CreatureObject) object;
+	// server/zone/objects/region/Region.idl(84):  			CreatureObject creature = (CreatureObject) object;
 	CreatureObject* creature = (CreatureObject*) object;
-	// server/zone/objects/region/Region.idl(82):  		}
+	// server/zone/objects/region/Region.idl(86):  		}
 	if (creature->isShuttleCreature()){
-	// server/zone/objects/region/Region.idl(83):  				shuttle = (ShuttleCreature) creature;
+	// server/zone/objects/region/Region.idl(87):  				shuttle = (ShuttleCreature) creature;
 	shuttle = (ShuttleCreature*) creature;
 }
 }
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(92):  		if 
-	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(93):  			bazaars.drop(object.getObjectID());
+	// server/zone/objects/region/Region.idl(96):  		if 
+	if (object->isBazaarTerminal())	// server/zone/objects/region/Region.idl(97):  			bazaars.drop(object.getObjectID());
 	(&bazaars)->drop(object->getObjectID());
-	// server/zone/objects/region/Region.idl(95):  		if 
-	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(96):  			sendDepartingMessage((PlayerCreature) object);
+	// server/zone/objects/region/Region.idl(99):  		if 
+	if (object->isPlayerCreature())	// server/zone/objects/region/Region.idl(100):  			sendDepartingMessage((PlayerCreature) object);
 	sendDepartingMessage((PlayerCreature*) object);
-	// server/zone/objects/region/Region.idl(98):  	}
+	// server/zone/objects/region/Region.idl(102):  	}
 	if (shuttle != NULL && object->isCreatureObject()){
-	// server/zone/objects/region/Region.idl(99):  			CreatureObject creature = (CreatureObject) object;
+	// server/zone/objects/region/Region.idl(103):  			CreatureObject creature = (CreatureObject) object;
 	CreatureObject* creature = (CreatureObject*) object;
-	// server/zone/objects/region/Region.idl(101):  		}
+	// server/zone/objects/region/Region.idl(105):  		}
 	if (creature->isShuttleCreature()){
-	// server/zone/objects/region/Region.idl(102):  				ShuttleCreature shuttleObject = (ShuttleCreature) creature;
+	// server/zone/objects/region/Region.idl(106):  				ShuttleCreature shuttleObject = (ShuttleCreature) creature;
 	ShuttleCreature* shuttleObject = (ShuttleCreature*) creature;
-	// server/zone/objects/region/Region.idl(104):  			}
-	if (shuttle == shuttleObject)	// server/zone/objects/region/Region.idl(105):  					shuttle = null;
+	// server/zone/objects/region/Region.idl(108):  			}
+	if (shuttle == shuttleObject)	// server/zone/objects/region/Region.idl(109):  					shuttle = null;
 	shuttle = NULL;
 }
 }
 }
 
 void RegionImplementation::addBazaar(BazaarTerminal* ter) {
-	// server/zone/objects/region/Region.idl(111):  		bazaars.put(ter.getObjectID(), ter);
+	// server/zone/objects/region/Region.idl(115):  		bazaars.put(ter.getObjectID(), ter);
 	(&bazaars)->put(ter->getObjectID(), ter);
 }
 
 BazaarTerminal* RegionImplementation::getBazaar(int idx) {
-	// server/zone/objects/region/Region.idl(115):  		return bazaars.get(idx);
+	// server/zone/objects/region/Region.idl(119):  		return bazaars.get(idx);
 	return (&bazaars)->get(idx);
 }
 
+void RegionImplementation::addMissionNpc(AiAgent* npc) {
+	// server/zone/objects/region/Region.idl(123):  		missionNpcs.add(npc);
+	(&missionNpcs)->add(npc);
+}
+
+AiAgent* RegionImplementation::getMissionNpc(int idx) {
+	// server/zone/objects/region/Region.idl(127):  		return missionNpcs.get(idx);
+	return (&missionNpcs)->get(idx);
+}
+
+int RegionImplementation::getMissionNpcCount() {
+	// server/zone/objects/region/Region.idl(131):  		return missionNpcs.size();
+	return (&missionNpcs)->size();
+}
+
 ShuttleCreature* RegionImplementation::getShuttle() {
-	// server/zone/objects/region/Region.idl(119):  		return shuttle;
+	// server/zone/objects/region/Region.idl(135):  		return shuttle;
 	return shuttle;
 }
 
 int RegionImplementation::getBazaarCount() {
-	// server/zone/objects/region/Region.idl(123):  		return bazaars.size();
+	// server/zone/objects/region/Region.idl(139):  		return bazaars.size();
 	return (&bazaars)->size();
 }
 
 bool RegionImplementation::isRegion() {
-	// server/zone/objects/region/Region.idl(127):  		return true;
+	// server/zone/objects/region/Region.idl(143):  		return true;
 	return true;
 }
 
@@ -317,12 +373,21 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 12:
-		resp->insertLong(getShuttle()->_getObjectID());
+		addMissionNpc((AiAgent*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertSignedInt(getBazaarCount());
+		resp->insertLong(getMissionNpc(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 14:
+		resp->insertSignedInt(getMissionNpcCount());
+		break;
+	case 15:
+		resp->insertLong(getShuttle()->_getObjectID());
+		break;
+	case 16:
+		resp->insertSignedInt(getBazaarCount());
+		break;
+	case 17:
 		resp->insertBoolean(isRegion());
 		break;
 	default:
@@ -354,6 +419,18 @@ void RegionAdapter::addBazaar(BazaarTerminal* ter) {
 
 BazaarTerminal* RegionAdapter::getBazaar(int idx) {
 	return ((RegionImplementation*) impl)->getBazaar(idx);
+}
+
+void RegionAdapter::addMissionNpc(AiAgent* npc) {
+	((RegionImplementation*) impl)->addMissionNpc(npc);
+}
+
+AiAgent* RegionAdapter::getMissionNpc(int idx) {
+	return ((RegionImplementation*) impl)->getMissionNpc(idx);
+}
+
+int RegionAdapter::getMissionNpcCount() {
+	return ((RegionImplementation*) impl)->getMissionNpcCount();
 }
 
 ShuttleCreature* RegionAdapter::getShuttle() {

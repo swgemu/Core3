@@ -1,11 +1,11 @@
 /*
- * GeneralMissionObjectiveImplementation.cpp
+ * DestroyMissionObjectiveImplementation.cpp
  *
  *  Created on: 16/07/2010
  *      Author: victor
  */
 
-#include "GeneralMissionObjective.h"
+#include "DestroyMissionObjective.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -17,11 +17,11 @@
 #include "MissionObject.h"
 #include "MissionObserver.h"
 
-void GeneralMissionObjectiveImplementation::setLairTemplateToSpawn(SharedObjectTemplate* sp) {
+void DestroyMissionObjectiveImplementation::setLairTemplateToSpawn(SharedObjectTemplate* sp) {
 	lairTemplateToSpawn = sp;
 }
 
-void GeneralMissionObjectiveImplementation::destroyObjectFromDatabase() {
+void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 	MissionObjectiveImplementation::destroyObjectFromDatabase();
 
 	if (spawnActiveArea != NULL) {
@@ -32,7 +32,7 @@ void GeneralMissionObjectiveImplementation::destroyObjectFromDatabase() {
 	}
 }
 
-void GeneralMissionObjectiveImplementation::activate() {
+void DestroyMissionObjectiveImplementation::activate() {
 	if (observers.size() != 0 && lairObject != NULL)  {
 		return;
 	}
@@ -68,7 +68,7 @@ void GeneralMissionObjectiveImplementation::activate() {
 	mission->updateMissionLocation();
 }
 
-void GeneralMissionObjectiveImplementation::spawnLair() {
+void DestroyMissionObjectiveImplementation::spawnLair() {
 	if (lairObject != NULL && lairObject->isInQuadTree())
 		return;
 
@@ -103,7 +103,7 @@ void GeneralMissionObjectiveImplementation::spawnLair() {
 	}
 }
 
-void GeneralMissionObjectiveImplementation::abort() {
+void DestroyMissionObjectiveImplementation::abort() {
 	if (observers.size() != 0) {
 		ManagedReference<MissionObserver*> observer = observers.get(0);
 
@@ -129,7 +129,7 @@ void GeneralMissionObjectiveImplementation::abort() {
 		spawnActiveArea->removeFromZone();
 }
 
-void GeneralMissionObjectiveImplementation::complete() {
+void DestroyMissionObjectiveImplementation::complete() {
 	PlayerCreature* player = (PlayerCreature*) getPlayerOwner();
 
 	if (player == NULL)
@@ -154,7 +154,7 @@ void GeneralMissionObjectiveImplementation::complete() {
 	missionManager->removeMission(mission, player);
 }
 
-int GeneralMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+int DestroyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::OBJECTDESTRUCTION) {
 
 		complete();

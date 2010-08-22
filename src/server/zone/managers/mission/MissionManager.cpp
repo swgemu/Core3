@@ -10,14 +10,18 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/objects/region/Region.h"
+
 #include "server/zone/ZoneServer.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
 
 /*
  *	MissionManagerStub
  */
 
-MissionManager::MissionManager(ZoneServer* srv) : Observer(DummyConstructorParameter::instance()) {
-	_impl = new MissionManagerImplementation(srv);
+MissionManager::MissionManager(ZoneServer* srv, ZoneProcessServerImplementation* impl) : Observer(DummyConstructorParameter::instance()) {
+	_impl = new MissionManagerImplementation(srv, impl);
 	_impl->_setStub(this);
 }
 
@@ -98,7 +102,7 @@ void MissionManager::removeMission(MissionObject* mission, PlayerCreature* playe
 		((MissionManagerImplementation*) _impl)->removeMission(mission, player);
 }
 
-void MissionManager::populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
+void MissionManager::populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -110,25 +114,24 @@ void MissionManager::populateGeneralMissionList(MissionTerminal* missionTerminal
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->populateGeneralMissionList(missionTerminal, player, counter);
+		((MissionManagerImplementation*) _impl)->populateMissionList(missionTerminal, player, counter);
 }
 
-void MissionManager::populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
+void MissionManager::randomizeSurveyMission(PlayerCreature* player, MissionObject* mission) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
-		method.addObjectParameter(missionTerminal);
 		method.addObjectParameter(player);
-		method.addSignedIntParameter(counter);
+		method.addObjectParameter(mission);
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->populateArtisanMissionList(missionTerminal, player, counter);
+		((MissionManagerImplementation*) _impl)->randomizeSurveyMission(player, mission);
 }
 
-void MissionManager::randomizeSurveyMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManager::randomizeDestroyMission(PlayerCreature* player, MissionObject* mission) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -139,10 +142,10 @@ void MissionManager::randomizeSurveyMission(PlayerCreature* player, MissionObjec
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeSurveyMission(player, mission);
+		((MissionManagerImplementation*) _impl)->randomizeDestroyMission(player, mission);
 }
 
-void MissionManager::randomizeGeneralMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManager::randomizeBountyMission(PlayerCreature* player, MissionObject* mission) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -153,7 +156,147 @@ void MissionManager::randomizeGeneralMission(PlayerCreature* player, MissionObje
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeGeneralMission(player, mission);
+		((MissionManagerImplementation*) _impl)->randomizeBountyMission(player, mission);
+}
+
+void MissionManager::randomizeDeliverMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeDeliverMission(player, mission);
+}
+
+void MissionManager::randomizeCraftingMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeCraftingMission(player, mission);
+}
+
+void MissionManager::randomizeDancerMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeDancerMission(player, mission);
+}
+
+void MissionManager::randomizeMusicianMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeMusicianMission(player, mission);
+}
+
+void MissionManager::randomizeHuntingMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeHuntingMission(player, mission);
+}
+
+void MissionManager::randomizeReconMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeReconMission(player, mission);
+}
+
+void MissionManager::randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeImperialDestroyMission(player, mission);
+}
+
+void MissionManager::randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeImperialDeliverMission(player, mission);
+}
+
+void MissionManager::randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeRebelDestroyMission(player, mission);
+}
+
+void MissionManager::randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addObjectParameter(player);
+		method.addObjectParameter(mission);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->randomizeRebelDeliverMission(player, mission);
 }
 
 void MissionManager::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
@@ -161,7 +304,7 @@ void MissionManager::createMissionObjectives(MissionObject* mission, MissionTerm
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(mission);
 		method.addObjectParameter(missionTerminal);
 		method.addObjectParameter(player);
@@ -176,7 +319,7 @@ void MissionManager::createSurveyMissionObjectives(MissionObject* mission, Missi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(mission);
 		method.addObjectParameter(missionTerminal);
 		method.addObjectParameter(player);
@@ -186,19 +329,34 @@ void MissionManager::createSurveyMissionObjectives(MissionObject* mission, Missi
 		((MissionManagerImplementation*) _impl)->createSurveyMissionObjectives(mission, missionTerminal, player);
 }
 
-void MissionManager::createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManager::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(mission);
 		method.addObjectParameter(missionTerminal);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->createGeneralMissionObjectives(mission, missionTerminal, player);
+		((MissionManagerImplementation*) _impl)->createDestroyMissionObjectives(mission, missionTerminal, player);
+}
+
+void MissionManager::createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addObjectParameter(mission);
+		method.addObjectParameter(missionTerminal);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->createDeliverMissionObjectives(mission, missionTerminal, player);
 }
 
 bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spawn) {
@@ -206,7 +364,7 @@ bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spaw
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(spawn);
 
@@ -286,15 +444,17 @@ void MissionManagerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("lairObjectTemplatesToSpawn", &lairObjectTemplatesToSpawn);
 }
 
-MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv) {
+MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, ZoneProcessServerImplementation* impl) {
 	_initializeImplementation();
-	// server/zone/managers/mission/MissionManager.idl(63):  		server = srv;
+	// server/zone/managers/mission/MissionManager.idl(66):  		server = srv;
 	server = srv;
-	// server/zone/managers/mission/MissionManager.idl(64):  		Logger.setLoggingName("MissionManager");
+	// server/zone/managers/mission/MissionManager.idl(67):  		processor = impl;
+	processor = impl;
+	// server/zone/managers/mission/MissionManager.idl(68):  		Logger.setLoggingName("MissionManager");
 	Logger::setLoggingName("MissionManager");
-	// server/zone/managers/mission/MissionManager.idl(66):  		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
+	// server/zone/managers/mission/MissionManager.idl(70):  		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
 	(&lairObjectTemplatesToSpawn)->setNoDuplicateInsertPlan();
-	// server/zone/managers/mission/MissionManager.idl(68):  		loadLairObjectsToSpawn();
+	// server/zone/managers/mission/MissionManager.idl(72):  		loadLairObjectsToSpawn();
 	loadLairObjectsToSpawn();
 }
 
@@ -325,27 +485,60 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		removeMission((MissionObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 11:
-		populateGeneralMissionList((MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		populateMissionList((MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 12:
-		populateArtisanMissionList((MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
-		break;
-	case 13:
 		randomizeSurveyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
+	case 13:
+		randomizeDestroyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
+		break;
 	case 14:
-		randomizeGeneralMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
+		randomizeBountyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
 	case 15:
-		createMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		randomizeDeliverMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
 	case 16:
-		createSurveyMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		randomizeCraftingMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
 	case 17:
-		createGeneralMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		randomizeDancerMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
 	case 18:
+		randomizeMusicianMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
+		break;
+	case 19:
+		randomizeHuntingMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
+		break;
+	case 20:
+		randomizeReconMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
+		break;
+	case 21:
+		randomizeImperialDestroyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
+		break;
+	case 22:
+		randomizeImperialDeliverMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
+		break;
+	case 23:
+		randomizeRebelDestroyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
+		break;
+	case 24:
+		randomizeRebelDeliverMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
+		break;
+	case 25:
+		createMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 26:
+		createSurveyMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 27:
+		createDestroyMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 28:
+		createDeliverMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 29:
 		resp->insertBoolean(hasSurveyMission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_hasSurveyMission__PlayerCreature_String_)));
 		break;
 	default:
@@ -375,20 +568,60 @@ void MissionManagerAdapter::removeMission(MissionObject* mission, PlayerCreature
 	((MissionManagerImplementation*) impl)->removeMission(mission, player);
 }
 
-void MissionManagerAdapter::populateGeneralMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
-	((MissionManagerImplementation*) impl)->populateGeneralMissionList(missionTerminal, player, counter);
-}
-
-void MissionManagerAdapter::populateArtisanMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
-	((MissionManagerImplementation*) impl)->populateArtisanMissionList(missionTerminal, player, counter);
+void MissionManagerAdapter::populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
+	((MissionManagerImplementation*) impl)->populateMissionList(missionTerminal, player, counter);
 }
 
 void MissionManagerAdapter::randomizeSurveyMission(PlayerCreature* player, MissionObject* mission) {
 	((MissionManagerImplementation*) impl)->randomizeSurveyMission(player, mission);
 }
 
-void MissionManagerAdapter::randomizeGeneralMission(PlayerCreature* player, MissionObject* mission) {
-	((MissionManagerImplementation*) impl)->randomizeGeneralMission(player, mission);
+void MissionManagerAdapter::randomizeDestroyMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeDestroyMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeBountyMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeBountyMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeDeliverMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeDeliverMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeCraftingMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeCraftingMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeDancerMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeDancerMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeMusicianMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeMusicianMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeHuntingMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeHuntingMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeReconMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeReconMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeImperialDestroyMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeImperialDeliverMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeRebelDestroyMission(player, mission);
+}
+
+void MissionManagerAdapter::randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission) {
+	((MissionManagerImplementation*) impl)->randomizeRebelDeliverMission(player, mission);
 }
 
 void MissionManagerAdapter::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
@@ -399,8 +632,12 @@ void MissionManagerAdapter::createSurveyMissionObjectives(MissionObject* mission
 	((MissionManagerImplementation*) impl)->createSurveyMissionObjectives(mission, missionTerminal, player);
 }
 
-void MissionManagerAdapter::createGeneralMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	((MissionManagerImplementation*) impl)->createGeneralMissionObjectives(mission, missionTerminal, player);
+void MissionManagerAdapter::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	((MissionManagerImplementation*) impl)->createDestroyMissionObjectives(mission, missionTerminal, player);
+}
+
+void MissionManagerAdapter::createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	((MissionManagerImplementation*) impl)->createDeliverMissionObjectives(mission, missionTerminal, player);
 }
 
 bool MissionManagerAdapter::hasSurveyMission(PlayerCreature* player, const String& spawn) {
