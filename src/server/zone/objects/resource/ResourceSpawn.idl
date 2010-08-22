@@ -113,6 +113,7 @@ class ResourceSpawn extends SceneObject {
     }
     
     public native void finalize() {
+    	Logger.info("trying to delete ResourceSpawn: " + spawnName);
     	//if (!dbDestroyed && (containerReferenceCount == 0))
     	//	decreaseContainerReferenceCount();
     }
