@@ -261,6 +261,20 @@ class SkillBox;
 
 using namespace server::zone::objects::creature::professions;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace structure {
+
+class StructureObject;
+
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 #include "server/zone/objects/player/sui/SuiBox.h"
@@ -553,6 +567,8 @@ public:
 	CraftingTool* getLastCraftingToolUsed();
 
 	void setLastCraftingToolUsed(CraftingTool* tool);
+
+	SceneObject* getInRangeStructureWithAdminRights(unsigned long long targetID = 0);
 
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
@@ -920,6 +936,8 @@ public:
 
 	void setLastCraftingToolUsed(CraftingTool* tool);
 
+	SceneObject* getInRangeStructureWithAdminRights(unsigned long long targetID = 0);
+
 	PlayerCreature* _this;
 
 	operator const PlayerCreature*();
@@ -1186,6 +1204,8 @@ public:
 	CraftingTool* getLastCraftingToolUsed();
 
 	void setLastCraftingToolUsed(CraftingTool* tool);
+
+	SceneObject* getInRangeStructureWithAdminRights(unsigned long long targetID);
 
 protected:
 	String _param0_sendExecuteConsoleCommand__String_;

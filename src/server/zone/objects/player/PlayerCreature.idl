@@ -76,6 +76,7 @@ include server.zone.objects.player.TradeContainer;
 import server.zone.objects.area.ActiveArea;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.professions.SkillBox;
+import server.zone.objects.structure.StructureObject;
 
 class PlayerCreature extends CreatureObject {
 	protected transient ZoneClientSession owner;
@@ -767,4 +768,14 @@ class PlayerCreature extends CreatureObject {
 	public void setLastCraftingToolUsed(CraftingTool tool) {
 		lastCraftingToolUsed = tool;
 	}
+	
+	/**
+	 * Finds the closest structure in range with Administration priveleges.
+	 * This is primarily used for commands that require a building or installation.
+	 * First checks the passed targetID, then checks if the player is inside a building. Finally searches for an installation in range.
+	 * @pre: player locked, zone locked
+	 * @post: player locked, zone locked
+	 * @param targetID The object id of the players target.
+	 */
+	public native SceneObject getInRangeStructureWithAdminRights(unsigned long targetID = 0);
 }
