@@ -587,6 +587,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 		return NULL;
 	}
 
+	crate->setOptionsBitmask(0x2100);
 	ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
 
 	if (protoclone == NULL) {
@@ -594,6 +595,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 		return NULL;
 	}
 
+	protoclone->setOptionsBitmask(0x2100);
 	crate->addObject(protoclone, -1, false);
 
 	if(protoclone->getCustomObjectName().isEmpty()) {
@@ -612,8 +614,6 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 
 	outputHopper->addObject(crate, -1, false);
 	broadcastObject(crate, true);
-
-
 
 	return crate;
 }
