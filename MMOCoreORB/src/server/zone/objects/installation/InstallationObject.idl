@@ -115,6 +115,9 @@ class InstallationObject extends StructureObject {
 	 */
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 	
+	@local
+	public native void fillAttributeList(AttributeListMessage alm, PlayerCreature object);
+	
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
