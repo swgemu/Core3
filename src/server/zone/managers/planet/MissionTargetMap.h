@@ -24,17 +24,17 @@ public:
 		Zone* zone = origin->getZone();
 
 		float distance = 16000.f;
-		Coordinate* coord = new Coordinate(origin->getPositionX(), origin->getPositionZ(), origin->getPositionY());
-		coord->randomizePosition(1000 * pow(4, diff - 1));
+		Coordinate coord(origin->getPositionX(), origin->getPositionZ(), origin->getPositionY());
+		coord.randomizePosition(1000 * pow(4, diff - 1));
 
-		if (coord->getPositionX() > origin->getZone()->getMaxX())
-			coord->setPositionX(origin->getZone()->getMaxX());
-		if (coord->getPositionX() < origin->getZone()->getMinX())
-			coord->setPositionX(origin->getZone()->getMinX());
-		if (coord->getPositionY() > origin->getZone()->getMaxY())
-			coord->setPositionY(origin->getZone()->getMaxY());
-		if (coord->getPositionY() < origin->getZone()->getMinY())
-			coord->setPositionY(origin->getZone()->getMinY());
+		if (coord.getPositionX() > origin->getZone()->getMaxX())
+			coord.setPositionX(origin->getZone()->getMaxX());
+		if (coord.getPositionX() < origin->getZone()->getMinX())
+			coord.setPositionX(origin->getZone()->getMinX());
+		if (coord.getPositionY() > origin->getZone()->getMaxY())
+			coord.setPositionY(origin->getZone()->getMaxY());
+		if (coord.getPositionY() < origin->getZone()->getMinY())
+			coord.setPositionY(origin->getZone()->getMinY());
 
 		rlock();
 
@@ -44,7 +44,7 @@ public:
 				if (vectorObject == NULL)
 					continue;
 
-				float objDistance = vectorObject->getDistanceTo(coord);
+				float objDistance = vectorObject->getDistanceTo(&coord);
 
 				if (objDistance < distance) {
 					result = vectorObject;
