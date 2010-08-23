@@ -85,10 +85,10 @@ void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 	InstallationObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	menuResponse->addRadialMenuItemToRadialID(122, 77, 3, "@player_structure:management_power");
+	/*menuResponse->addRadialMenuItemToRadialID(122, 77, 3, "@player_structure:management_power");
 
 	menuResponse->addRadialMenuItem(117, 1, "@player_structure:permissions");
-	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:permission_admin");
+	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:permission_admin");*/
 
 	menuResponse->addRadialMenuItem(118, 3, "@manf_station:options");
 

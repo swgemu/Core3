@@ -88,8 +88,10 @@ public:
 
 			HarvesterObject* harvester = (HarvesterObject*) inso;
 
-			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 10))
+			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 20))
 				harvester->changeActiveResourceID(spawnId);
+			else
+				player->sendSystemMessage("You are too far.");
 
 		} catch (...) {
 		}
