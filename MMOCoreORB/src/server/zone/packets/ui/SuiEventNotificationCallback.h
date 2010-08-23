@@ -45,7 +45,6 @@ public:
 			return;
 
 		PlayerCreature* playerCreature = (PlayerCreature*) playerClient.get();
-System::out << 	opcode << " " << cancel << " " << unk1 << " " << unk2 << " " << value.toString() << " " << value2.toString() << endl;
 		server->getSuiManager()->handleSuiEventNotification(opcode, playerCreature, cancel, value.toString(), value2.toString());
 
 	}

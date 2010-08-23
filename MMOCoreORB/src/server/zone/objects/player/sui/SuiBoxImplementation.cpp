@@ -31,7 +31,7 @@ void SuiBoxImplementation::generateHeader(SuiCreatePageMessage* message) {
 			hdrTok.setDelimeter("~"); //Split & parse
 			hdrTok.getStringToken(hdrVar);
 			hdrTok.getStringToken(hdrType);
-			message->insertHeaderOption(hdrVar, hdrType, (i > 0));
+			message->insertHeaderOption(hdrVar, hdrType);//, (i->0));
 		}
 	}
 }

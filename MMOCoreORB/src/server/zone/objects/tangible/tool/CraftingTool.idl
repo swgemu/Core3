@@ -133,9 +133,7 @@ class CraftingTool extends ToolTangibleObject {
 		return type;
 	}
 	
-	public TangibleObject getPrototype() {
-		return (TangibleObject)getContainerObject(0);
-	}
+	public native TangibleObject getPrototype();
 	
 	public ManufactureSchematic getManufactureSchematic() {
 		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
