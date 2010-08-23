@@ -131,8 +131,6 @@ public:
 		if (dir == "down")
 			z -= dist;
 
-		System::out << "x: " << x << " y: " << y << endl;
-
 		//TODO: Check to make sure the item is not being moved outside the range of the cell.
 		//Need cell dimensions for this...
 

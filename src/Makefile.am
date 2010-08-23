@@ -179,6 +179,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
 				server/zone/objects/tangible/lair/LairObject.cpp \
 				server/zone/objects/tangible/terminal/bank/BankTerminal.cpp \
+				server/zone/objects/tangible/terminal/city/CityTerminal.cpp \
+				server/zone/objects/tangible/terminal/city/CityVoteTerminal.cpp \
 				server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.cpp \
@@ -261,6 +263,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
+		server/zone/objects/tangible/terminal/city/CityTerminalImplementation.cpp \
+		server/zone/objects/tangible/terminal/city/CityVoteTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.cpp \
