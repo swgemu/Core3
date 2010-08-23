@@ -228,9 +228,6 @@ void FactoryCrateImplementation::split(int newStackSize) {
 
 	parent->addObject(newCrate, -1, true);
 	parent->broadcastObject(newCrate, true);
-
-	newCrate->updateToDatabase();
-   	updateToDatabase();
 }
 
 void FactoryCrateImplementation::setUseCount(uint32 newUseCount, bool notifyClient) {
@@ -259,4 +256,6 @@ void FactoryCrateImplementation::setUseCount(uint32 newUseCount, bool notifyClie
 	dfcty3->close();
 
 	broadcastMessage(dfcty3, true);
+
+	updateToDatabase();
 }

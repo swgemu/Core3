@@ -312,7 +312,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		handleSetMOTD(boxID, player, cancel, returnString);
 		break;*/
 	case SuiWindowType::FACTORY_SCHEMATIC:
-		handleInsertFactorySchem(boxID, player, cancel, atoi(value.toCharArray()));
+		handleInsertFactorySchem(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
 		break;
 	case SuiWindowType::CREATE_CITY_HALL_NAME:
 		handleSetCityHallName(boxID, player, cancel, value);
@@ -2138,7 +2138,7 @@ void SuiManager::handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, cons
 	}
 }
 */
-void SuiManager::handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
+void SuiManager::handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
 
 	Locker _locker(player);
 
@@ -2149,22 +2149,22 @@ void SuiManager::handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, 
 		/// Cancel = Remove
 		if (sui != NULL) {
 
-			if(index == -1 && cancel != 1)
-				return;
+			if(cancel != 1) {
 
-			ManagedReference<FactoryObject* > factory =  (FactoryObject*) server->getZoneServer()->getObject(sui->getUsingObjectID());
+				ManagedReference<FactoryObject* > factory =  (FactoryObject*) server->getZoneServer()->getObject(sui->getUsingObjectID());
 
-			if(factory == NULL || !factory->isFactory())
-				return;
+					if(factory != NULL && factory->isFactory()) {
 
-			ManagedReference<ManufactureSchematic* > schematic = (ManufactureSchematic*) server->getZoneServer()->getObject(sui->getMenuObjectID(index));
-			Locker _locker2(factory);
+					Locker _locker2(factory);
 
-			if(cancel != 1)
-				factory->handleInsertFactorySchem(player, schematic);
-			else if(cancel == 1)
-				factory->handleRemoveFactorySchem(player);
+					factory->handleRemoveFactorySchem(player);
 
+					if(!otherPressed) {
+						ManagedReference<ManufactureSchematic* > schematic = (ManufactureSchematic*) server->getZoneServer()->getObject(sui->getMenuObjectID(index));
+						factory->handleInsertFactorySchem(player, schematic);
+					}
+				}
+			}
 			player->removeSuiBox(boxID, true);
 			return;
 		}

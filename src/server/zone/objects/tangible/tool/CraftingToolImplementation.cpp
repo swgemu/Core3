@@ -95,6 +95,13 @@ void CraftingToolImplementation::fillObjectMenuResponse(
 
 }
 
+TangibleObject* CraftingToolImplementation::getPrototype() {
+	if(getContainerObjectsSize() > 0)
+		return (TangibleObject*)getContainerObject(0);
+	else
+		return NULL;
+}
+
 int CraftingToolImplementation::handleObjectMenuSelect(
 		PlayerCreature* playerCreature, byte selectedID) {
 	PlayerObject* playerObject = playerCreature->getPlayerObject();
@@ -965,7 +972,7 @@ void CraftingToolImplementation::setInitialCraftingValues() {
 
 	craftingValues->recalculateValues(true);
 
-	craftingValues->toString();
+	//craftingValues->toString();
 
 	if (applyComponentBoost())
 		craftingValues->recalculateValues(true);
@@ -1049,7 +1056,7 @@ bool CraftingToolImplementation::applyComponentBoost() {
 			}
 		}
 	}
-	craftingValues->toString();
+	//craftingValues->toString();
 
 	return modified;
 }
