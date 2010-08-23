@@ -16,15 +16,12 @@
 #include "server/zone/managers/resource/ResourceManager.h"
 
 void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	//info("atrasdasd", true);
+	if (!isOnAdminList(player))
+		return;
 
 	InstallationObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	/*if (!isOnAdminList(player))
-		return;
-
-	menuResponse->addRadialMenuItemToRadialID(118, 78, 3, "@harvester:manage");
-	menuResponse->addRadialMenuItemToRadialID(118, 77, 3, "@player_structure:management_power");*/
+	menuResponse->addRadialMenuItemToRadialID(118, 78, 3, "@harvester:manage"); //Operate Machinery
 }
 
 void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {

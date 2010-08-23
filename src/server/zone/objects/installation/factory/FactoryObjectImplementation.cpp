@@ -77,35 +77,28 @@ void FactoryObjectImplementation::createChildObjects() {
 }
 
 void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	//All objects in a cell can be picked up, if the player is on the structures permission list.
-	//This opens the door to allow admins to be able to drop/pickup items in public structures
-
 	if (!isOnAdminList(player))
 		return;
 
 	InstallationObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	/*menuResponse->addRadialMenuItemToRadialID(122, 77, 3, "@player_structure:management_power");
 
-	menuResponse->addRadialMenuItem(117, 1, "@player_structure:permissions");
-	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:permission_admin");*/
-
-	menuResponse->addRadialMenuItem(118, 3, "@manf_station:options");
+	menuResponse->addRadialMenuItem(29, 3, "@manf_station:options"); //Options
 
 	if(getContainerObjectsSize() > 0) {
 		if(!operating)
-			menuResponse->addRadialMenuItemToRadialID(118, 254, 3, "@manf_station:activate");
+			menuResponse->addRadialMenuItemToRadialID(29, 30, 3, "@manf_station:activate"); //Start manufacturing objects.
 		else
-			menuResponse->addRadialMenuItemToRadialID(118, 254, 3, "@manf_station:deactivate");
+			menuResponse->addRadialMenuItemToRadialID(29, 30, 3, "@manf_station:deactivate"); //Stop manufacturing objects.
 
 		if(!operating)
-			menuResponse->addRadialMenuItemToRadialID(118, 253, 3, "@manf_station:ingredients");
+			menuResponse->addRadialMenuItemToRadialID(29, 68, 3, "@manf_station:ingredients"); //List ingredients needed for station
 	}
 
 	if(!operating) {
-		menuResponse->addRadialMenuItemToRadialID(118, 197, 3, "@manf_station:schematic");
-		menuResponse->addRadialMenuItemToRadialID(118, 195, 3, "@manf_station:input_hopper");
-		menuResponse->addRadialMenuItemToRadialID(118, 196, 3, "@manf_station:output_hopper");
+		menuResponse->addRadialMenuItemToRadialID(29, 197, 3, "@manf_station:schematic"); //Access schematic slot.
+		menuResponse->addRadialMenuItemToRadialID(29, 195, 3, "@manf_station:input_hopper"); //Access station ingredient hopper
+		menuResponse->addRadialMenuItemToRadialID(29, 196, 3, "@manf_station:output_hopper"); //Access station output hopper
 	}
 }
 
@@ -114,23 +107,20 @@ int FactoryObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 		return 1;
 
 	switch (selectedID) {
-	case 77:
-		handleStructureAddEnergy(player);
-		break;
 	case 195: /// Send ingredient Hopper
 		sendIngredientHopper(player);
 		break;
-	case 118:
+	case 29:
 	case 196: /// Send output Hopper
 		sendOutputHopper(player);
 		break;
 	case 197: /// Schematic Slot
 		sendInsertManuSui(player);
 		break;
-	case 253: /// Send schematic requirements
+	case 68: /// Send ingredients list
 		sendIngredientsNeededSui(player);
 		break;
-	case 254: /// Send schematic requirements
+	case 30: /// Send schematic requirements
 		handleOperateToggle(player);
 		break;
 
