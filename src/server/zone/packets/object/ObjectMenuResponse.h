@@ -113,7 +113,7 @@ public:
 			return root->getItem(index);
 	}
 
-	RadialMenuItem* getRadialItemByRadialID(int id) {
+	RadialMenuItem* getRadialItemByRadialID(uint8 id) {
 		if (id == root->getRadialID())
 			return root;
 		else
