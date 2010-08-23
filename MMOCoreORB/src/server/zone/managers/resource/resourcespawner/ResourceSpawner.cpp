@@ -264,7 +264,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
  	newSpawn->createSpawnMaps(resourceEntry->isJTL(), resourceEntry->getMinpool(),
  			resourceEntry->getMaxpool(), resourceEntry->getZoneRestriction(), activeZones);
 
- 	if (newSpawn->isType("energy"))
+ 	if (newSpawn->isType("energy") || newSpawn->isType("radioactive"))
  		newSpawn->setIsEnergy(true);
 
  	resourceMap->add(name, newSpawn);
