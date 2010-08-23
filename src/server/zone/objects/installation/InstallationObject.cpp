@@ -63,6 +63,14 @@ void InstallationObject::destroyObjectFromDatabase(bool destroyContainedObjects)
 		((InstallationObjectImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
+void InstallationObject::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((InstallationObjectImplementation*) _impl)->fillAttributeList(alm, object);
+}
+
 void InstallationObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -604,52 +612,52 @@ void InstallationObjectImplementation::updateOperators() {
 }
 
 void InstallationObjectImplementation::addOperator(PlayerCreature* player) {
-	// server/zone/objects/installation/InstallationObject.idl(215):  		operatorList.put(player);
+	// server/zone/objects/installation/InstallationObject.idl(218):  		operatorList.put(player);
 	(&operatorList)->put(player);
 }
 
 void InstallationObjectImplementation::removeOperator(PlayerCreature* player) {
-	// server/zone/objects/installation/InstallationObject.idl(219):  		operatorList.drop(player);
+	// server/zone/objects/installation/InstallationObject.idl(222):  		operatorList.drop(player);
 	(&operatorList)->drop(player);
 }
 
 bool InstallationObjectImplementation::isInstallationObject() {
-	// server/zone/objects/installation/InstallationObject.idl(227):  		return true;
+	// server/zone/objects/installation/InstallationObject.idl(230):  		return true;
 	return true;
 }
 
 bool InstallationObjectImplementation::isOperating() {
-	// server/zone/objects/installation/InstallationObject.idl(231):  		return operating;
+	// server/zone/objects/installation/InstallationObject.idl(234):  		return operating;
 	return operating;
 }
 
 int InstallationObjectImplementation::getInstallationType() {
-	// server/zone/objects/installation/InstallationObject.idl(235):  		return installationType;
+	// server/zone/objects/installation/InstallationObject.idl(238):  		return installationType;
 	return installationType;
 }
 
 float InstallationObjectImplementation::getExtractionRate() {
-	// server/zone/objects/installation/InstallationObject.idl(239):  		return extractionRate;
+	// server/zone/objects/installation/InstallationObject.idl(242):  		return extractionRate;
 	return extractionRate;
 }
 
 float InstallationObjectImplementation::getHopperSizeMax() {
-	// server/zone/objects/installation/InstallationObject.idl(243):  		return hopperSizeMax;
+	// server/zone/objects/installation/InstallationObject.idl(246):  		return hopperSizeMax;
 	return hopperSizeMax;
 }
 
 HopperList* InstallationObjectImplementation::getHopperList() {
-	// server/zone/objects/installation/InstallationObject.idl(248):  		return resourceHopper;
+	// server/zone/objects/installation/InstallationObject.idl(251):  		return resourceHopper;
 	return (&resourceHopper);
 }
 
 bool InstallationObjectImplementation::isHarvesterObject() {
-	// server/zone/objects/installation/InstallationObject.idl(252):  		return false;
+	// server/zone/objects/installation/InstallationObject.idl(255):  		return false;
 	return false;
 }
 
 bool InstallationObjectImplementation::isGeneratorObject() {
-	// server/zone/objects/installation/InstallationObject.idl(256):  		return false;
+	// server/zone/objects/installation/InstallationObject.idl(259):  		return false;
 	return false;
 }
 
