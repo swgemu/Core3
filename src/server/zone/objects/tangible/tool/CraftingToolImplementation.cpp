@@ -1492,6 +1492,9 @@ void CraftingToolImplementation::depositObject(PlayerCreature* player, bool prac
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();
 
+	if (prototype == NULL)
+		return;
+
 	if(practice) {
 	    removeObject(prototype);
 		status = "@crafting:tool_status_ready";
