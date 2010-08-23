@@ -73,6 +73,20 @@ using namespace server::zone::objects::region;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
 
 class ZoneServer;
 
@@ -95,6 +109,8 @@ using namespace server::zone;
 
 #include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
 
+#include "system/util/SortedVector.h"
+
 #include "server/zone/objects/scene/Observer.h"
 
 namespace server {
@@ -107,6 +123,8 @@ public:
 	MissionManager(ZoneServer* srv, ZoneProcessServerImplementation* impl);
 
 	void loadLairObjectsToSpawn();
+
+	void loadPerformanceLocations();
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
@@ -128,9 +146,7 @@ public:
 
 	void randomizeCraftingMission(PlayerCreature* player, MissionObject* mission);
 
-	void randomizeDancerMission(PlayerCreature* player, MissionObject* mission);
-
-	void randomizeMusicianMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission);
 
 	void randomizeHuntingMission(PlayerCreature* player, MissionObject* mission);
 
@@ -151,6 +167,8 @@ public:
 	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -191,6 +209,8 @@ public:
 
 	void loadLairObjectsToSpawn();
 
+	void loadPerformanceLocations();
+
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
@@ -211,9 +231,7 @@ public:
 
 	void randomizeCraftingMission(PlayerCreature* player, MissionObject* mission);
 
-	void randomizeDancerMission(PlayerCreature* player, MissionObject* mission);
-
-	void randomizeMusicianMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission);
 
 	void randomizeHuntingMission(PlayerCreature* player, MissionObject* mission);
 
@@ -234,6 +252,8 @@ public:
 	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -278,6 +298,8 @@ public:
 
 	void loadLairObjectsToSpawn();
 
+	void loadPerformanceLocations();
+
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
@@ -298,9 +320,7 @@ public:
 
 	void randomizeCraftingMission(PlayerCreature* player, MissionObject* mission);
 
-	void randomizeDancerMission(PlayerCreature* player, MissionObject* mission);
-
-	void randomizeMusicianMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission);
 
 	void randomizeHuntingMission(PlayerCreature* player, MissionObject* mission);
 
@@ -321,6 +341,8 @@ public:
 	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 

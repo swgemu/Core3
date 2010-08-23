@@ -245,6 +245,10 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public Zone getZone(int index) {
 		return zones.get(index);
 	}
+	
+	public int getZoneCount() {
+		return zones.size();
+	}
 
 	public int getMaxPlayers() {
 		return maximumPlayers;

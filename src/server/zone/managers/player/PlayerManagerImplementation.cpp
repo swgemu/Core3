@@ -966,7 +966,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 	//info("level: " + String::valueOf(level), true);
 
 	VectorMap<GroupObject*, int> groups;
-	groups.setNullValue(NULL);
+	groups.setNullValue(0);
 
 	for (int i = 0; i < damageMap->size(); ++i) {
 		ManagedReference<PlayerCreature*> player = damageMap->elementAt(i).getKey();

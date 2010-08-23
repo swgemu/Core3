@@ -368,7 +368,31 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 	return planetaryObject.get();
 }
 
+SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryObjectList(uint32 mapObjectLocationType) {
+	SortedVector<ManagedReference<SceneObject*> > retVector;
+	retVector.setNoDuplicateInsertPlan();
 
+	mapLocations.rlock();
+
+	try {
+		int index = mapLocations.find(mapObjectLocationType);
+
+		if (index != -1) {
+			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(index).getValue();
+
+			for (int i = 0; i < sortedVector->size(); ++i) {
+				SceneObject* vectorObject = sortedVector->get(i).getObject();
+				retVector.put(vectorObject);
+			}
+		}
+	} catch (...) {
+
+	}
+
+	mapLocations.runlock();
+
+	return retVector;
+}
 
 String ZoneImplementation::getPlanetName() {
 	String planetName = Planet::getPlanetName(getZoneID());
