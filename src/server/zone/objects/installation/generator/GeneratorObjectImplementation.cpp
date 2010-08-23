@@ -21,10 +21,10 @@ void GeneratorObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 
 	InstallationObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if (!isOnAdminList(player))
+	/*if (!isOnAdminList(player))
 		return;
 
-	menuResponse->addRadialMenuItemToRadialID(122, 78, 3, "@harvester:manage");
+	menuResponse->addRadialMenuItemToRadialID(122, 78, 3, "@harvester:manage");*/
 }
 
 void GeneratorObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
