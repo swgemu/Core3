@@ -12,11 +12,13 @@
 #include "server/zone/objects/mission/SurveyMissionObjective.h"
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
 #include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include "server/zone/objects/mission/EntertainerMissionObjective.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/planet/MissionTargetMap.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/templates/tangible/LairObjectTemplate.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
@@ -49,6 +51,45 @@ void MissionManagerImplementation::loadLairObjectsToSpawn() {
 	/*StringBuffer msg;
 	msg << "loaded " << lairObjectTemplatesToSpawn.size() << " lairs to spawn";
 	info(msg.toString(), true);*/
+}
+
+void MissionManagerImplementation::loadPerformanceLocations() {
+	info("loading performance locations...", true);
+
+	SortedVector<ManagedReference<SceneObject*> > planetaryLocs;
+	planetaryLocs.setNoDuplicateInsertPlan();
+
+	for (int i = 0; i < server->getZoneCount(); i++) {
+		Zone* zone = server->getZone(i);
+		if (zone == NULL)
+			continue;
+
+		PlanetManager* pmng = zone->getPlanetManager();
+		if (pmng == NULL)
+			continue;
+
+		// get hotels
+		planetaryLocs = zone->getPlanetaryObjectList(12);
+		for (int j = 0; j < planetaryLocs.size(); j++) {
+			SceneObject* obj = planetaryLocs.get(j);
+			pmng->addPerformanceLocation(obj);
+		}
+
+		// get theaters
+		planetaryLocs = zone->getPlanetaryObjectList(10);
+		for (int j = 0; j < planetaryLocs.size(); j++) {
+			SceneObject* obj = planetaryLocs.get(j);
+			pmng->addPerformanceLocation(obj);
+		}
+
+		// get cantinas
+		planetaryLocs.removeAll();
+		planetaryLocs = zone->getPlanetaryObjectList(3);
+		for (int j = 0; j < planetaryLocs.size(); j++) {
+			SceneObject* obj = planetaryLocs.get(j);
+			pmng->addPerformanceLocation(obj);
+		}
+	}
 }
 
 void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
@@ -181,6 +222,15 @@ void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* 
 	objective->activate();
 }
 
+void MissionManagerImplementation::createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	ManagedReference<EntertainerMissionObjective*> objective = new EntertainerMissionObjective(mission);
+
+	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
+
+	mission->setMissionObjective(objective);
+	objective->activate();
+}
+
 void MissionManagerImplementation::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
 	uint32 missionType = mission->getTypeCRC();
 
@@ -240,10 +290,9 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 			else
 				randomizeCraftingMission(player, mission);
 		} else if (missionTerminal->isEntertainerTerminal()) {
-			if (System::random(1) == 0)
-				randomizeMusicianMission(player, mission);
-			else
-				randomizeDancerMission(player, mission);
+			// TODO: implement entertainer missions after entertainer is implemented
+			//randomizeEntertainerMission(player, mission);
+			mission->setTypeCRC(0);
 		} else if (missionTerminal->isImperialTerminal()) {
 			if (System::random(1) == 0)
 				randomizeImperialDestroyMission(player, mission);
@@ -273,12 +322,15 @@ void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* playe
 
 	uint32 templateCRC = lairObjectTemplatesToSpawn.getRandomTemplate(zoneID);
 
-	if (templateCRC == 0)
+	if (templateCRC == 0) {
+		mission->setTypeCRC(0);
 		return;
+	}
 
 	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(templateCRC);
 
 	if (templateObject == NULL || !templateObject->isLairObjectTemplate()) {
+		mission->setTypeCRC(0);
 		error("incorrect template object in randomizeDestroyMission " + String::valueOf(templateCRC));
 		return;
 	}
@@ -382,18 +434,19 @@ void MissionManagerImplementation::randomizeBountyMission(PlayerCreature* player
 }
 
 void MissionManagerImplementation::randomizeDeliverMission(PlayerCreature* player, MissionObject* mission) {
-	Region* reg = player->getZone()->getPlanetManager()->getRegion(player->getPositionX(), player->getPositionY());
+	PlanetManager* pmng = player->getZone()->getPlanetManager();
+	MissionTargetMap* missionNpcs = pmng->getMissionNpcs();
 	// need at least 2 NPCs to have a delivery mission
-	if (reg == NULL || reg->getMissionNpcCount() <= 1) {
-		randomizeDestroyMission(player, mission);
+	if (missionNpcs->size() <= 1) {
+		mission->setTypeCRC(0);
 		return;
 	}
 
-	AiAgent* target = reg->getMissionNpc(System::random(reg->getMissionNpcCount() - 1));
-	AiAgent* targetDest = reg->getMissionNpc(System::random(reg->getMissionNpcCount() - 1));
+	SceneObject* target = missionNpcs->getRandomTarget(player, 1);
+	SceneObject* targetDest = missionNpcs->getRandomTarget(player, 1);
 
 	if (target == NULL || targetDest == NULL || target == targetDest) {
-		randomizeDestroyMission(player, mission);
+		mission->setTypeCRC(0);
 		return;
 	}
 
@@ -440,29 +493,55 @@ void MissionManagerImplementation::randomizeCraftingMission(PlayerCreature* play
 	mission->setTypeCRC(0xE5F6DC59);
 }
 
-void MissionManagerImplementation::randomizeDancerMission(PlayerCreature* player, MissionObject* mission) {
-	// TODO: add dancer logic (don't just overload destroy)
-	/*
-	 * get random cantina/hotel/theater nearby
-	 * give waypoint
-	 * generate timeToPerform
-	 * when character enters missionAA, time when performing, don't time when not
-	 * ???
-	 * profit!
-	 */
-	randomizeDestroyMission(player, mission);
+void MissionManagerImplementation::randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission) {
+	PlanetManager* pmng = player->getZone()->getPlanetManager();
+	MissionTargetMap* performanceLocations = pmng->getPerformanceLocations();
+	if (performanceLocations->size() <= 0) {
+		mission->setTypeCRC(0);
+		return;
+	}
 
-	mission->setTypeCRC(0xF067B37);
-}
+	// TODO: filter by distance (get closer locations for lower difficulties)
+	SceneObject* target = performanceLocations->getRandomTarget(player, 1);
+	if (target == NULL || !target->isStructureObject()) {
+		mission->setTypeCRC(0);
+		return;
+	}
 
-void MissionManagerImplementation::randomizeMusicianMission(PlayerCreature* player, MissionObject* mission) {
-	// TODO: add musician logic (don't just overload destroy)
-	/*
-	 * see dancer (can probably consolidate and just switch the CRC
-	 */
-	randomizeDestroyMission(player, mission);
+	NameManager* nm = processor->getNameManager();
 
-	mission->setTypeCRC(0x4AD93196);
+	bool dancing = false;
+	if (System::random(1) == 0)
+		dancing = true;
+
+	String missionType = "musician";
+	if (dancing)
+		missionType = "dancer";
+
+	int randTexts = System::random(50);
+	if (randTexts == 0)
+		randTexts = 1;
+
+	mission->setMissionNumber(randTexts);
+	mission->setMissionTarget(target);
+	mission->setCreatorName(nm->makeCreatureName());
+
+	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
+	mission->setStartPosition(target->getPositionX(), target->getPositionY(), target->getPlanetCRC());
+
+	// TODO: this all needs to change to be less static and use distance
+	mission->setMissionTargetName("Theater");
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/building/general/mun_all_guild_theater_s01.iff").hashCode()));
+
+	mission->setRewardCredits(100 + System::random(100));
+	mission->setMissionDifficulty(5);
+	mission->setMissionTitle("mission/mission_npc_" + missionType + "_neutral_easy", "m" + String::valueOf(randTexts) + "t");
+	mission->setMissionDescription("mission/mission_npc_" + missionType + "_neutral_easy", "m" + String::valueOf(randTexts) + "o");
+
+	if (!dancing)
+		mission->setTypeCRC(0x4AD93196); // musician
+	else
+		mission->setTypeCRC(0xF067B37); // dancer
 }
 
 void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* player, MissionObject* mission) {
@@ -509,4 +588,3 @@ void MissionManagerImplementation::randomizeRebelDeliverMission(PlayerCreature* 
 	// TODO: add faction-specific targets
 	randomizeDeliverMission(player, mission);
 }
-

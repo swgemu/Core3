@@ -77,6 +77,14 @@ SceneObject* Zone::getNearestPlanetaryObject(SceneObject* object, unsigned int m
 		return ((ZoneImplementation*) _impl)->getNearestPlanetaryObject(object, mapObjectLocationType);
 }
 
+SortedVector<ManagedReference<SceneObject* > > Zone::getPlanetaryObjectList(unsigned int mapObjectLocationType) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((ZoneImplementation*) _impl)->getPlanetaryObjectList(mapObjectLocationType);
+}
+
 void Zone::insert(QuadTreeEntry* entry) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -501,86 +509,86 @@ void ZoneImplementation::_serializationHelperMethod() {
 }
 
 int ZoneImplementation::getZoneID() {
-	// server/zone/Zone.idl(135):  		return zoneID;
+	// server/zone/Zone.idl(140):  		return zoneID;
 	return zoneID;
 }
 
 PlanetManager* ZoneImplementation::getPlanetManager() {
-	// server/zone/Zone.idl(143):  		return planetManager;
+	// server/zone/Zone.idl(148):  		return planetManager;
 	return planetManager;
 }
 
 ZoneServer* ZoneImplementation::getZoneServer() {
-	// server/zone/Zone.idl(147):  		return server;
+	// server/zone/Zone.idl(152):  		return server;
 	return server;
 }
 
 CreatureManager* ZoneImplementation::getCreatureManager() {
-	// server/zone/Zone.idl(151):  		return creatureManager;
+	// server/zone/Zone.idl(156):  		return creatureManager;
 	return creatureManager;
 }
 
 unsigned long long ZoneImplementation::getGalacticTime() {
-	// server/zone/Zone.idl(155):  		return galacticTime.miliDifference() / 1000;
+	// server/zone/Zone.idl(160):  		return galacticTime.miliDifference() / 1000;
 	return (&galacticTime)->miliDifference() / 1000;
 }
 
 unsigned int ZoneImplementation::getWeatherID() {
-	// server/zone/Zone.idl(159):  		return weatherID;
+	// server/zone/Zone.idl(164):  		return weatherID;
 	return weatherID;
 }
 
 void ZoneImplementation::setWeatherID(unsigned int value) {
-	// server/zone/Zone.idl(163):  		weatherID = value;
+	// server/zone/Zone.idl(168):  		weatherID = value;
 	weatherID = value;
 }
 
 void ZoneImplementation::changeWeatherID(int value) {
-	// server/zone/Zone.idl(167):  		weatherID 
+	// server/zone/Zone.idl(172):  		weatherID 
 	if (weatherID == 0 && value < 0){
-	// server/zone/Zone.idl(168):  			weatherID = 0;
+	// server/zone/Zone.idl(173):  			weatherID = 0;
 	weatherID = 0;
-	// server/zone/Zone.idl(169):  			return;
+	// server/zone/Zone.idl(174):  			return;
 	return;
 }
-	// server/zone/Zone.idl(172):  += value;
+	// server/zone/Zone.idl(177):  += value;
 	weatherID += value;
-	// server/zone/Zone.idl(174):  	}
+	// server/zone/Zone.idl(179):  	}
 	if (weatherID > 4){
-	// server/zone/Zone.idl(175):  			weatherID = 4;
+	// server/zone/Zone.idl(180):  			weatherID = 4;
 	weatherID = 4;
-	// server/zone/Zone.idl(176):  			return;
+	// server/zone/Zone.idl(181):  			return;
 	return;
 }
 }
 
 bool ZoneImplementation::isWeatherEnabled() {
-	// server/zone/Zone.idl(181):  		return weatherEnabled;
+	// server/zone/Zone.idl(186):  		return weatherEnabled;
 	return weatherEnabled;
 }
 
 void ZoneImplementation::setWeatherEnabled(bool value) {
-	// server/zone/Zone.idl(185):  		weatherEnabled = value;
+	// server/zone/Zone.idl(190):  		weatherEnabled = value;
 	weatherEnabled = value;
 }
 
 void ZoneImplementation::setWeatherWindX(float value) {
-	// server/zone/Zone.idl(189):  		weatherWindX = value;
+	// server/zone/Zone.idl(194):  		weatherWindX = value;
 	weatherWindX = value;
 }
 
 void ZoneImplementation::setWeatherWindY(float value) {
-	// server/zone/Zone.idl(193):  		weatherWindY = value;
+	// server/zone/Zone.idl(198):  		weatherWindY = value;
 	weatherWindY = value;
 }
 
 float ZoneImplementation::getWeatherWindX() {
-	// server/zone/Zone.idl(197):  		return weatherWindX;
+	// server/zone/Zone.idl(202):  		return weatherWindX;
 	return weatherWindX;
 }
 
 float ZoneImplementation::getWeatherWindY() {
-	// server/zone/Zone.idl(201):  		return weatherWindY;
+	// server/zone/Zone.idl(206):  		return weatherWindY;
 	return weatherWindY;
 }
 

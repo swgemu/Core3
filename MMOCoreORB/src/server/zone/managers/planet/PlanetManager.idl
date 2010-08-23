@@ -50,6 +50,7 @@ import server.zone.ZoneProcessServerImplementation;
 import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import system.thread.Thread;
+import system.util.SortedVector;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.structure.StructureManager;
 import server.zone.managers.objectcontroller.ObjectController;
@@ -62,6 +63,7 @@ include server.zone.objects.terrain.PlanetNames;
 include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.planet.ShuttleMap;
 include server.zone.managers.planet.NoBuildAreaMap;
+include server.zone.managers.planet.MissionTargetMap;
 
 
 class PlanetManager extends ManagedObject implements Logger {
@@ -81,6 +83,12 @@ class PlanetManager extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected transient NoBuildAreaMap noBuildAreaMap;
+	
+	@dereferenced
+	protected transient MissionTargetMap missionNpcs;
+	
+	@dereferenced
+	protected transient MissionTargetMap performanceLocations;
 	
 	public PlanetManager(Zone planet, ZoneProcessServerImplementation srv) {
 		zone = planet;
@@ -152,6 +160,24 @@ class PlanetManager extends ManagedObject implements Logger {
 	
 	public boolean hasRegion(final string name) {
 		return regionMap.containsRegion(name);
+	}
+	
+	public void addPerformanceLocation(SceneObject obj) {
+		performanceLocations.add(obj);
+	}
+	
+	@local
+	public MissionTargetMap getPerformanceLocations() {
+		return performanceLocations;
+	}
+	
+	public void addMissionNpc(SceneObject npc) {
+		missionNpcs.add(npc);
+	}
+	
+	@local
+	public MissionTargetMap getMissionNpcs() {
+		return missionNpcs;
 	}
 	
 	/*public Region getRegion(final string regionName) {

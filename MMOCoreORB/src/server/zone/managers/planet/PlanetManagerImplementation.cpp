@@ -315,4 +315,3 @@ void PlanetManagerImplementation::loadBadgeAreas() {
 	delete result;
 }
 
-

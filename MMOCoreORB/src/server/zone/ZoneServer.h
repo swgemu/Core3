@@ -310,6 +310,8 @@ public:
 
 	Zone* getZone(int index);
 
+	int getZoneCount();
+
 	int getMaxPlayers();
 
 	int getTotalPlayers();
@@ -509,6 +511,8 @@ public:
 
 	Zone* getZone(int index);
 
+	int getZoneCount();
+
 	int getMaxPlayers();
 
 	int getTotalPlayers();
@@ -647,6 +651,8 @@ public:
 	int getServerState();
 
 	Zone* getZone(int index);
+
+	int getZoneCount();
 
 	int getMaxPlayers();
 

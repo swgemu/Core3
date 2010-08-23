@@ -149,6 +149,8 @@ using namespace server::zone::objects::creature;
 
 #include "system/util/VectorMap.h"
 
+#include "system/util/SortedVector.h"
+
 #include "system/lang/System.h"
 
 namespace server {
@@ -163,6 +165,8 @@ public:
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
 	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
+
+	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(unsigned int mapObjectLocationType);
 
 	void insert(QuadTreeEntry* entry);
 
@@ -277,6 +281,8 @@ public:
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
 	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
+
+	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(unsigned int mapObjectLocationType);
 
 	void insert(QuadTreeEntry* entry);
 

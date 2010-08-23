@@ -46,10 +46,12 @@ package server.zone.managers.mission;
 
 import server.zone.objects.mission.MissionObject;
 include engine.core.ManagedObject;
+import system.util.SortedVector;
 import server.zone.objects.scene.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.region.Region;
+import server.zone.objects.scene.SceneObject;
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServerImplementation;
 include server.zone.managers.mission.LairObjectsToSpawnMap;
@@ -70,9 +72,12 @@ class MissionManager extends Observer implements Logger {
 		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
 		
 		loadLairObjectsToSpawn();
+		
+		loadPerformanceLocations();
 	}
 	
 	public native void loadLairObjectsToSpawn();
+	public native void loadPerformanceLocations();
 	
 	public native void handleMissionListRequest(MissionTerminal missionTerminal, PlayerCreature player, int counter);
 	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, PlayerCreature player);
@@ -87,8 +92,7 @@ class MissionManager extends Observer implements Logger {
 	public native void randomizeBountyMission(PlayerCreature player, MissionObject mission);
 	public native void randomizeDeliverMission(PlayerCreature player, MissionObject mission);
 	public native void randomizeCraftingMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeDancerMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeMusicianMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeEntertainerMission(PlayerCreature player, MissionObject mission);
 	public native void randomizeHuntingMission(PlayerCreature player, MissionObject mission);
 	public native void randomizeReconMission(PlayerCreature player, MissionObject mission);
 	public native void randomizeImperialDestroyMission(PlayerCreature player, MissionObject mission);
@@ -101,6 +105,7 @@ class MissionManager extends Observer implements Logger {
 	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	public native void createDestroyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	public native void createDeliverMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createEntertainerMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	
 	public native boolean hasSurveyMission(PlayerCreature player, final string spawn);
 }
