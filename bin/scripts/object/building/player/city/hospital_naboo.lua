@@ -50,7 +50,8 @@ object_building_player_city_hospital_naboo = object_building_player_city_shared_
 	width = 5,
 	gameObjectType = 517,
 	mapLocationsType1 = 13,
-	cityRankRequired = 3
+	cityRankRequired = 3,
+	terminalLocation = {2, 7.48, 0.188325, 1.5, 0, 0.707107, 0, -0.707107}
 
 }
 

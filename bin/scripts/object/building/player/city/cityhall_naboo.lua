@@ -49,7 +49,8 @@ object_building_player_city_cityhall_naboo = object_building_player_city_shared_
 	length = 7,
 	width = 9,
 	gameObjectType = 529,
-	cityRankRequired = 0
+	cityRankRequired = 0,
+	terminalLocation = {3, -16.78, 2.0, 7.9, 0, 1, 0, 0}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cityhall_naboo, "object/building/player/city/cityhall_naboo.iff")
