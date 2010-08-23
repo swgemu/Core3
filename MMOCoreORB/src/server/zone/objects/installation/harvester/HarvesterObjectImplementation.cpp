@@ -20,11 +20,11 @@ void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 
 	InstallationObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if (!isOnAdminList(player))
+	/*if (!isOnAdminList(player))
 		return;
 
-	menuResponse->addRadialMenuItemToRadialID(122, 78, 3, "@harvester:manage");
-	menuResponse->addRadialMenuItemToRadialID(122, 77, 3, "@player_structure:management_power");
+	menuResponse->addRadialMenuItemToRadialID(118, 78, 3, "@harvester:manage");
+	menuResponse->addRadialMenuItemToRadialID(118, 77, 3, "@player_structure:management_power");*/
 }
 
 void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
