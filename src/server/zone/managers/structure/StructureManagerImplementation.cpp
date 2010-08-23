@@ -35,6 +35,7 @@
 #include "server/chat/ChatManager.h"
 
 #include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
+#include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
@@ -901,6 +902,20 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
+	//Surplus Maintenance and Power
+	if (deed->isBuildingDeed()) {
+		BuildingDeed* buildingDeed = (BuildingDeed*) deed;
+
+		structureObject->setSurplusMaintenance(buildingDeed->getSurplusMaintenance());
+	}
+
+	if (deed->isInstallationDeed()) {
+		InstallationDeed* installationDeed = (InstallationDeed*) deed;
+
+		structureObject->setSurplusMaintenance(installationDeed->getSurplusMaintenance());
+		structureObject->setSurplusPower(installationDeed->getSurplusPower());
+	}
+
 	player->setLotsRemaining(lotsRemaining - lotsRequired);
 
 	//Remove the deed from inventory.
@@ -1089,35 +1104,64 @@ int StructureManagerImplementation::destroyStructure(PlayerCreature* player, Str
 
 	player->setLotsRemaining(lotsRemaining + structureObject->getLotSize());
 
-	structureObject->destroyObjectFromDatabase(true);
+	//If the deed object id is not 0, then the deed wasn't reclaimed.
+	//NOTICE: This could potentially give an erroneous message if the deed never existed when the structure was placed.
+	if (structureObject->getDeedObjectID() != 0)
+		player->sendSystemMessage("@player_structure:structure_destroyed"); //Structure destroyed.
+	else
+		player->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
 
-	player->sendSystemMessage("@player_structure:structure_destroyed"); //Structure destroyed.
+	structureObject->destroyObjectFromDatabase(true);
 
 	return 0;
 }
 
 int StructureManagerImplementation::redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy) {
-	if (structureObject->getDeedObjectID() == 0) {
-		//No deed exists for this structure.
-		return 0;
-	}
-
 	ZoneServer* zoneServer = player->getZoneServer();
+
+	int surplusMaintenance = structureObject->getSurplusMaintenance();
+	int redeedCost = structureObject->getRedeedCost();
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(structureObject->getDeedObjectID());
 
 	if (obj != NULL && obj->isDeedObject()) {
-		ManagedReference<Deed*> deed = (Deed*) obj.get();
+		Deed* deed = (Deed*) obj.get();
 
-		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+		if (surplusMaintenance >= redeedCost) {
+			//Enough surplus maintenance exists to redeed the structure.
+			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		if (inventory != NULL) {
-			inventory->addObject(deed, -1, true);
+			if (inventory != NULL) {
+				if (!inventory->hasFullContainerObjects()) {
+					//There is room in the inventory for the deed, set its values and put it in the inventory.
+					if (deed->isBuildingDeed()) {
+						BuildingDeed* buildingDeed = (BuildingDeed*) deed;
+
+						buildingDeed->setSurplusMaintenance(surplusMaintenance - redeedCost);
+					} else if (deed->isInstallationDeed()) {
+						InstallationDeed* installationDeed = (InstallationDeed*) deed;
+
+						installationDeed->setSurplusMaintenance(surplusMaintenance - redeedCost);
+
+						if (structureObject->isInstallationObject())
+							installationDeed->setSurplusPower(((InstallationObject*) structureObject)->getSurplusPower());
+					}
+
+					inventory->addObject(deed, -1, true);
+
+					//Since we have retrieved the deed, set the structures deed id to 0 so that it doesn't get deleted from the database.
+					structureObject->setDeedObjectID(0);
+				} else {
+					//The deed cant be returned to them because their inventory is full. Abort the deletion of the structure here.
+					player->sendSystemMessage("@player_structure:inventory_full"); //This installation can not be redeeded because your inventory does not have room to put the deed.
+					return 1;
+				}
+			}
+		} else {
+			//Not enough surplus maintenance existed to redeed the structure, destroy the deed but continue with structure destruction.
+			deed->destroyObjectFromDatabase(true);
 		}
 	}
-
-	//Since we have retrieved the deed, set the structures deed id to 0 so that it doesn't get deleted.
-	structureObject->setDeedObjectID(0);
 
 	if (destroy)
 		destroyStructure(player, structureObject);
