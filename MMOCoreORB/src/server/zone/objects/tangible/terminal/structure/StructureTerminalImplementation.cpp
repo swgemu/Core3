@@ -42,7 +42,7 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 
 	menuResponse->addRadialMenuItem(117, 3, "@player_structure:permissions"); //Structure Permissions
 	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:permission_admin"); //Administrator List
-	menuResponse->addRadialMenuItemToRadialID(117, 119, 3, "@player_structure:permission_entry"); //Entry List
+	menuResponse->addRadialMenuItemToRadialID(117, 119, 3, "@player_structure:permission_enter"); //Entry List
 	menuResponse->addRadialMenuItemToRadialID(117, 120, 3, "@player_structure:permission_banned"); //Ban List
 	//menuResponse->addRadialMenuItemToRadialID(118, 122, 3, "@player_structure:permission_vendor"); //Vendor List
 }
