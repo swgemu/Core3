@@ -448,13 +448,8 @@ int CraftingToolImplementation::getToolType() {
 	return type;
 }
 
-TangibleObject* CraftingToolImplementation::getPrototype() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(137):  		return (TangibleObject)getContainerObject(0);
-	return (TangibleObject*) getContainerObject(0);
-}
-
 ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(141):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(139):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
 	return (ManufactureSchematic*) getSlottedObject("test_manf_schematic");
 }
 

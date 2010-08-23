@@ -168,7 +168,7 @@ void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 	}
 
 	schematics->setHandlerText("handleUpdateSchematic");
-	schematics->setPromptTitle("@base_player_swg");//found a SS with this as the title so...
+	schematics->setPromptTitle("SCHEMATIC MANAGEMENT");//found a SS with this as the title so...
 
 	schematics->setOkButton(true, "@use_schematic");
 	schematics->setCancelButton(true, "@cancel");
@@ -328,7 +328,7 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
 	datapad->removeObject(schematic, true);
-	schematic->sendDestroyTo(player);
+
 	datapad->updateToDatabase();
 
 	addObject(schematic, -1, true);
@@ -361,6 +361,7 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(PlayerCreature* playe
 		return;
 
 	datapad->addObject(schematic, -1, true);
+	datapad->broadcastObject(schematic, true);
 	datapad->updateToDatabase();
 
 	updateToDatabase();
