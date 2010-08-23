@@ -48,12 +48,10 @@ object_building_player_city_hospital_corellia = object_building_player_city_shar
 	gameObjectType = 517,
 	mapLocationsType1 = 13,
 	allowedZones = {0,7},
-	
 	length = 5,
-	
 	width = 5,
-	cityRankRequired = 3
-
+	cityRankRequired = 3,
+	terminalLocation = {2, 7.48, 0.188325, 1.5, 0, 0.707107, 0, -0.707107}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_hospital_corellia, "object/building/player/city/hospital_corellia.iff")

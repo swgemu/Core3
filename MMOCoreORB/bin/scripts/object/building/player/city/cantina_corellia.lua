@@ -48,12 +48,10 @@ object_building_player_city_cantina_corellia = object_building_player_city_share
 	gameObjectType = 518,
 	mapLocationsType1 = 3,
 	allowedZones = {0,7},
-	
 	length = 7,
-	
 	width = 7,
-	cityRankRequired = 2
-
+	cityRankRequired = 2,
+	terminalLocation = {1, -4.1, 0.750001, 6.1, 0, 1, 0, 0}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cantina_corellia, "object/building/player/city/cantina_corellia.iff")

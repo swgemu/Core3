@@ -50,8 +50,8 @@ object_building_player_city_hospital_tatooine = object_building_player_city_shar
 	width = 5,
 	gameObjectType = 517,
 	mapLocationsType1 = 13,
-	cityRankRequired = 3
-
+	cityRankRequired = 3,
+	terminalLocation = {2, 7.48, 0.188325, 1.5, 0, 0.707107, 0, -0.707107}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_hospital_tatooine, "object/building/player/city/hospital_tatooine.iff")

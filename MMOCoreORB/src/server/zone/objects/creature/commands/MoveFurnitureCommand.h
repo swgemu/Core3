@@ -106,21 +106,11 @@ public:
 		}
 
 		float degrees = creature->getDirectionAngle();
-		int quadrant = (int) floor(degrees / 90);
-		float angle = degrees - ((float) (quadrant * 90));
 
-		float offsetY = dist / 10.0f;
-		float offsetX = dist / 10.0f;
+		dist /= 10.0f;
 
-		if (quadrant % 2 == 0) {
-			offsetX *= cos(Math::deg2rad(angle));
-			offsetY *= sin(Math::deg2rad(angle));
-		} else {
-			offsetY *= cos(Math::deg2rad(angle));
-			offsetX *= sin(Math::deg2rad(angle));
-		}
-
-		System::out << "Offsetx: " << offsetX << " Offsety: " << offsetY << endl;
+		float offsetX = dist * sin(Math::deg2rad(degrees));
+		float offsetY = dist * cos(Math::deg2rad(degrees));
 
 		float x = obj->getPositionX();
 		float y = obj->getPositionY();
@@ -130,17 +120,21 @@ public:
 			x += (offsetX);
 			y += (offsetY);
 		}
+
 		if (dir == "back") {
 			x -= (offsetX);
 			y -= (offsetY);
 		}
-		if (dir == "up")
-			z += ((float) dist / 100.0f);
-		if (dir == "down")
-			z -= ((float) dist / 100.0f);
 
+		if (dir == "up")
+			z += dist;
+		if (dir == "down")
+			z -= dist;
+
+		System::out << "x: " << x << " y: " << y << endl;
 
 		//TODO: Check to make sure the item is not being moved outside the range of the cell.
+		//Need cell dimensions for this...
 
 		obj->setPosition(x, z, y);
 		obj->incrementMovementCounter();

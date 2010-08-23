@@ -50,8 +50,8 @@ object_building_player_city_cantina_tatooine = object_building_player_city_share
 	width = 7,
 	gameObjectType = 518,
 	mapLocationsType1 = 3,
-	cityRankRequired = 2
-
+	cityRankRequired = 2,
+	terminalLocation = {1, -4.1, 0.750001, 6.1, 0, 1, 0, 0}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cantina_tatooine, "object/building/player/city/cantina_tatooine.iff")
