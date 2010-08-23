@@ -121,7 +121,7 @@ public:
 		return returnItem;
 	}
 
-	RadialMenuItem* getItemByRadialID(int index) {
+	RadialMenuItem* getItemByRadialID(uint8 index) {
 		RadialMenuItem* returnItem = NULL;
 
 		for (int i = 0; i < children.size(); ++i) {
