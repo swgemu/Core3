@@ -50,7 +50,6 @@ import server.zone.objects.tangible.terminal.bazaar.BazaarTerminal;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.creature.shuttle.ShuttleCreature;
-import server.zone.objects.creature.AiAgent;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.region.RegionCenterPoint;
@@ -59,9 +58,6 @@ include server.zone.objects.region.RegionCenterPointList;
 class Region extends ActiveArea {	
 	@dereferenced
 	protected VectorMap<unsigned long, BazaarTerminal> bazaars;
-	
-	@dereferenced
-	protected Vector<AiAgent> missionNpcs;
 	
 	@weakReference
 	protected ShuttleCreature shuttle;
@@ -117,18 +113,6 @@ class Region extends ActiveArea {
 
 	public BazaarTerminal getBazaar(int idx) {
 		return bazaars.get(idx);
-	}
-	
-	public void addMissionNpc(AiAgent npc) {
-		missionNpcs.add(npc);
-	}
-	
-	public AiAgent getMissionNpc(int idx) {
-		return missionNpcs.get(idx);
-	}
-	
-	public int getMissionNpcCount() {
-		return missionNpcs.size();
 	}
 	
 	public ShuttleCreature getShuttle() {

@@ -59,6 +59,7 @@ import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.creature.CreatureManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import system.util.VectorMap;
+import system.util.SortedVector;
 
 
 include server.zone.managers.planet.HeightMap;
@@ -105,6 +106,10 @@ class Zone extends ManagedObject implements QuadTree {
 	public native CloningBuildingObject getNearestCloningBuilding(CreatureObject creature);
 	
 	public native SceneObject getNearestPlanetaryObject(SceneObject object, unsigned int mapObjectLocationType);
+	
+	@local
+	@dereferenced
+	public native SortedVector<SceneObject> getPlanetaryObjectList(unsigned int mapObjectLocationType);
 	
 	@local
 	public native void insert(QuadTreeEntry entry);

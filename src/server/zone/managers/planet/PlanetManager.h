@@ -131,11 +131,15 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/managers/planet/NoBuildAreaMap.h"
 
+#include "server/zone/managers/planet/MissionTargetMap.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"
 
 #include "system/thread/Thread.h"
+
+#include "system/util/SortedVector.h"
 
 namespace server {
 namespace zone {
@@ -182,6 +186,14 @@ public:
 
 	bool hasRegion(const String& name);
 
+	void addPerformanceLocation(SceneObject* obj);
+
+	MissionTargetMap* getPerformanceLocations();
+
+	void addMissionNpc(SceneObject* npc);
+
+	MissionTargetMap* getMissionNpcs();
+
 protected:
 	PlanetManager(DummyConstructorParameter* param);
 
@@ -217,6 +229,10 @@ protected:
 	ShuttleMap shuttleMap;
 
 	NoBuildAreaMap noBuildAreaMap;
+
+	MissionTargetMap missionNpcs;
+
+	MissionTargetMap performanceLocations;
 
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv);
@@ -260,6 +276,14 @@ public:
 	void addRegion(Region* region);
 
 	bool hasRegion(const String& name);
+
+	void addPerformanceLocation(SceneObject* obj);
+
+	MissionTargetMap* getPerformanceLocations();
+
+	void addMissionNpc(SceneObject* npc);
+
+	MissionTargetMap* getMissionNpcs();
 
 	PlanetManager* _this;
 
@@ -331,6 +355,10 @@ public:
 	void addRegion(Region* region);
 
 	bool hasRegion(const String& name);
+
+	void addPerformanceLocation(SceneObject* obj);
+
+	void addMissionNpc(SceneObject* npc);
 
 protected:
 	String _param0_getShuttle__String_;

@@ -387,10 +387,8 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 
 					PlanetManager* pmng = zone->getPlanetManager();
 
-					if (pmng != NULL) {
-						Region* reg = pmng->getRegion(x, y);
-						reg->addMissionNpc(aiAgent);
-					}
+					if (pmng != NULL)
+						pmng->addMissionNpc(aiAgent);
 				}
 			}
 
