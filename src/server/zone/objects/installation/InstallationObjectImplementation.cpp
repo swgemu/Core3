@@ -59,12 +59,11 @@ void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse
 	menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
 	menuResponse->addRadialMenuItemToRadialID(118, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
 	menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@base_player:set_name"); //Set Name
-	menuResponse->addRadialMenuItemToRadialID(118, 78, 3, "@harvester:manage"); //Operate Machinery
 	menuResponse->addRadialMenuItemToRadialID(118, 51, 3, "@player_structure:management_power"); //Deposit Power
 
 	menuResponse->addRadialMenuItem(117, 3, "@player_structure:permissions"); //Structure Permissions
-	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:admin_permissions_list"); //Admin Permissions List
-	menuResponse->addRadialMenuItemToRadialID(117, 123, 3, "@player_structure:hopper_permissions_list"); //Hopper Permissions List
+	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:permission_admin"); //Administrator List
+	menuResponse->addRadialMenuItemToRadialID(117, 123, 3, "@player_structure:permission_hopper"); //Hopper List
 }
 
 int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
