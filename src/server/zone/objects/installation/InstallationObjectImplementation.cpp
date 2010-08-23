@@ -19,6 +19,7 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
@@ -48,6 +49,25 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* buio6 = new InstallationObjectMessage6(_this);
 	player->sendMessage(buio6);
+}
+
+void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	TangibleObjectImplementation::fillAttributeList(alm, object);
+
+	//Add the owner name to the examine window.
+	ManagedReference<SceneObject*> obj = object->getZoneServer()->getObject(ownerObjectID);
+
+	if (obj != NULL && obj->isCreatureObject()) {
+		CreatureObject* owner = (CreatureObject*) obj.get();
+
+		String fullName = owner->getCustomObjectName().toString();
+
+		if (fullName.isEmpty())
+			owner->getObjectName()->getFullPath(fullName);
+
+		alm->insertAttribute("owner", fullName);
+	}
+
 }
 
 void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {

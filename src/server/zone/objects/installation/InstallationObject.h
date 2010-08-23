@@ -162,6 +162,8 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
@@ -282,6 +284,8 @@ public:
 	void initializeTransientMembers();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 

@@ -54,15 +54,6 @@ void FactoryObjectImplementation::initializeTransientMembers() {
 	setLoggingName("FactoryObject");
 }
 
-void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-
-	InstallationObjectImplementation::fillAttributeList(alm, object);
-
-	if(operating && isOnAdminList(object) ) {
-		alm->insertAttribute("test", 1);
-	}
-}
-
 void FactoryObjectImplementation::createChildObjects() {
 
 	String ingredientHopperName = "object/tangible/hopper/manufacture_installation_ingredient_hopper_1.iff";
@@ -74,6 +65,18 @@ void FactoryObjectImplementation::createChildObjects() {
 	ManagedReference<SceneObject*> outputHopper = server->getZoneServer()->createObject(outputHopperName.hashCode(), 1);
 
 	addObject(outputHopper, 4);
+}
+
+void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	InstallationObjectImplementation::fillAttributeList(alm, object);
+
+	if (operating && isOnAdminList(object)) {
+		ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
+
+		if (outputHopper != NULL) {
+			alm->insertAttribute("manufacture_count", outputHopper->getContainerObjectsSize()); //Manufactured Items:
+		}
+	}
 }
 
 void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
@@ -226,9 +229,9 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* playe
 		return;
 
 	ManagedReference<SuiListBox*> ingredientList = new SuiListBox(player, SuiWindowType::FACTORY_INGREDIENTS);
-	ingredientList->setPromptTitle("STAR WARS GALAXIES");//found a SS with this as the title so....
+	ingredientList->setPromptTitle("@base_player:swg"); //STAR WARS GALAXIES - found a SS with this as the title so....
 
-	ingredientList->setPromptText("Ingredients required to manufacture an item at this station.");
+	ingredientList->setPromptText("@manf_station:examine_prompt"); //Ingredients required to manufacture an item at this station.
 
 	ingredientList->setOkButton(true, "@ok");
 
@@ -303,7 +306,7 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 
 	/// pre: player and _this are locked
 	if (!schematic->isManufactureSchematic()) {
-		ParameterizedStringId message("manf_station", "schematic_not_added");
+		ParameterizedStringId message("manf_station", "schematic_not_added"); //Schematic %TT was not added to the station.
 
 		if(schematic->getCustomObjectName().isEmpty())
 			message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
@@ -324,7 +327,7 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 	addObject(schematic, -1, true);
 	updateToDatabase();
 
-	ParameterizedStringId message("manf_station", "schematic_added");
+	ParameterizedStringId message("manf_station", "schematic_added"); //Schematic %TT has been inserted into the station. The station is now ready to manufacture items.
 
 	if(schematic->getCustomObjectName().isEmpty())
 		message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
@@ -356,7 +359,7 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(PlayerCreature* playe
 
 	updateToDatabase();
 
-	ParameterizedStringId message("manf_station", "schematic_removed");
+	ParameterizedStringId message("manf_station", "schematic_removed"); //Schematic %TT has been removed from the station and been placed in your datapad. Have a nice day!
 
 	if(schematic->getCustomObjectName().isEmpty())
 		message.setTT(schematic->getObjectNameStringIdFile(), getContainerObject(0)->getObjectNameStringIdName());
@@ -372,11 +375,11 @@ void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
 		currentUser = player;
 		currentRunCount = 0;
 		startFactory();
-		player->sendSystemMessage("manf_station", "activated");
+		player->sendSystemMessage("manf_station", "activated"); //Station activated
 	} else {
 
 		stopFactory("manf_done", getObjectName()->getDisplayedName(), "", currentRunCount);
-		player->sendSystemMessage("manf_station", "deactivated");
+		player->sendSystemMessage("manf_station", "deactivated"); //Station deactivated
 		currentUser = NULL;
 	}
 }
