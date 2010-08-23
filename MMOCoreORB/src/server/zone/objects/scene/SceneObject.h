@@ -444,6 +444,10 @@ public:
 
 	static const int GUILDTERMINAL = 0x4014;
 
+	static const int CITYTERMINAL = 0x4015;
+
+	static const int CITYVOTETERMINAL = 0x4016;
+
 	static const int TOOL = 0x8000;
 
 	static const int CRAFTINGTOOL = 0x8001;
@@ -902,6 +906,10 @@ public:
 
 	bool isInstallationObject();
 
+	bool isCityTerminal();
+
+	bool isCityVoteTerminal();
+
 	bool isFactory();
 
 	bool isFactoryCrate();
@@ -1306,6 +1314,10 @@ public:
 	static const int ELEVATORTERMINAL = 0x4013;
 
 	static const int GUILDTERMINAL = 0x4014;
+
+	static const int CITYTERMINAL = 0x4015;
+
+	static const int CITYVOTETERMINAL = 0x4016;
 
 	static const int TOOL = 0x8000;
 
@@ -1769,6 +1781,10 @@ public:
 
 	virtual bool isInstallationObject();
 
+	virtual bool isCityTerminal();
+
+	virtual bool isCityVoteTerminal();
+
 	virtual bool isFactory();
 
 	virtual bool isFactoryCrate();
@@ -2127,6 +2143,10 @@ public:
 	bool isInstrument();
 
 	bool isInstallationObject();
+
+	bool isCityTerminal();
+
+	bool isCityVoteTerminal();
 
 	bool isFactory();
 
