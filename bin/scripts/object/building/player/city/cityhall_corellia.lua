@@ -42,7 +42,6 @@
 
 
 object_building_player_city_cityhall_corellia = object_building_player_city_shared_cityhall_corellia:new {
-
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	mapLocationsType1 = 50,
@@ -51,7 +50,11 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	width = 9,
 	gameObjectType = 529,
 	cityRankRequired = 0,
-	terminalLocation = {3, -16.78, 2.0, 7.9, 0, 1, 0, 0}
+	terminalLocation = {3, -16.78, 2.0, 7.9, 0, 1, 0, 0},
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_city_vote.iff", x = 0.25, z = 2.0, y = -9.65, ow = 1, ox = 0, oy = 0, oz = 0, cellid = 2, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_city.iff", x = 17.07, z = 2.0, y = -8.7, ow = 1, ox = 0, oy = 0, oz = 0, cellid = 4, containmentType = -1}
+	}
 
 }
 

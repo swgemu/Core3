@@ -79,6 +79,8 @@
 #include "server/zone/objects/tangible/pharmaceutical/DotPack.h"
 #include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
+#include "server/zone/objects/tangible/terminal/city/CityTerminal.h"
+#include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
 #include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
@@ -246,6 +248,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TicketObject>(SceneObject::TRAVELTICKET);
 	objectFactory.registerObject<TravelTerminal>(SceneObject::TRAVELTERMINAL);
 	objectFactory.registerObject<GuildTerminal>(SceneObject::GUILDTERMINAL);
+	objectFactory.registerObject<CityTerminal>(SceneObject::CITYTERMINAL);
+	objectFactory.registerObject<CityVoteTerminal>(SceneObject::CITYVOTETERMINAL);
 
 	objectFactory.registerObject<LairObject>(SceneObject::LAIR);
 
