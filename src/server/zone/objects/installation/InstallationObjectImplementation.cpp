@@ -52,7 +52,7 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	TangibleObjectImplementation::fillAttributeList(alm, object);
+	//TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	//Add the owner name to the examine window.
 	ManagedReference<SceneObject*> obj = object->getZoneServer()->getObject(ownerObjectID);
