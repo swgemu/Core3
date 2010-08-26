@@ -42,7 +42,10 @@
 
 
 object_mobile_dressed_brawler_trainer_01 = object_mobile_shared_dressed_brawler_trainer_01:new {
-
+	gameObjectType = 1034,
+	mapLocationsType1 = 19,
+	mapLocationsType2 = 20
+	
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_brawler_trainer_01, "object/mobile/dressed_brawler_trainer_01.iff")
