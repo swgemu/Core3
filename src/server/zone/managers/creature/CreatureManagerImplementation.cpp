@@ -292,7 +292,15 @@ void CreatureManagerImplementation::loadTrainers() {
 			trainerCreature = spawnCreature(crc3, x, z, y, cell);
 		}*/
 
-		trainerCreature = spawnCreature(String("object/mobile/dressed_merchant_trainer_01.iff").hashCode(), x, z, y, cell);
+		uint64 CRC = 0;
+		if (rand == 0 && crc1 != 0)
+			CRC = crc1;
+		else if (rand == 1 && crc2 != 0)
+			CRC = crc2;
+		else
+			CRC = crc3;
+
+		trainerCreature = spawnCreature(CRC, x, z, y, cell);
 
 		//trainerCreature
 
