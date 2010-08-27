@@ -90,9 +90,9 @@ void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 	if(getContainerObjectsSize() > 0) {
 		if(!operating)
-			menuResponse->addRadialMenuItemToRadialID(29, 30, 3, "@manf_station:activate"); //Start manufacturing objects.
+			menuResponse->addRadialMenuItemToRadialID(29, 69, 3, "@manf_station:activate"); //Start manufacturing objects.
 		else
-			menuResponse->addRadialMenuItemToRadialID(29, 30, 3, "@manf_station:deactivate"); //Stop manufacturing objects.
+			menuResponse->addRadialMenuItemToRadialID(29, 69, 3, "@manf_station:deactivate"); //Stop manufacturing objects.
 
 		if(!operating)
 			menuResponse->addRadialMenuItemToRadialID(29, 68, 3, "@manf_station:ingredients"); //List ingredients needed for station
@@ -123,7 +123,7 @@ int FactoryObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 	case 68: /// Send ingredients list
 		sendIngredientsNeededSui(player);
 		break;
-	case 30: /// Send schematic requirements
+	case 69: /// Send schematic requirements
 		handleOperateToggle(player);
 		break;
 
