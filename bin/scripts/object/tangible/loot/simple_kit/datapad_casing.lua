@@ -43,6 +43,18 @@
 
 object_tangible_loot_simple_kit_datapad_casing = object_tangible_loot_simple_kit_shared_datapad_casing:new {
 
+	templateType = LOOTKIT,
+	
+	gameObjectType = 8233,
+	
+	--These are used to determine which components are necessary in the loot kit to finish the item
+	collectibleComponents = {"object/tangible/loot/simple_kit/datapad_battery.iff", "object/tangible/loot/simple_kit/datapad_backlight.iff", "object/tangible/loot/simple_kit/datapad_connectors.iff", "object/tangible/loot/tool/datapad_broken.iff"},
+	
+	collectibleReward = {"object/tangible/loot/simple_kit/empty_datapad.iff"},
+
+	deleteComponents = 0,
+
+	attributes = {}
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_datapad_casing, "object/tangible/loot/simple_kit/datapad_casing.iff")

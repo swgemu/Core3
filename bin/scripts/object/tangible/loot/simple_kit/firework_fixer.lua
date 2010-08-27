@@ -42,7 +42,18 @@
 
 
 object_tangible_loot_simple_kit_firework_fixer = object_tangible_loot_simple_kit_shared_firework_fixer:new {
+	templateType = LOOTKIT,
+	
+	gameObjectType = 8233,
+	
+	--These are used to determine which components are necessary in the loot kit to finish the item
+	collectibleComponents = {"object/tangible/loot/misc/firework_dud_s1.iff", "object/tangible/loot/simple_kit/firework_casing.iff", "object/tangible/loot/simple_kit/powder_pack.iff"},
+	
+	collectibleReward = {"object/tangible/firework/firework_one.iff"},
 
+	deleteComponents = 0,
+
+	attributes = {}
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_firework_fixer, "object/tangible/loot/simple_kit/firework_fixer.iff")

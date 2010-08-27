@@ -43,6 +43,19 @@
 
 object_tangible_loot_collectible_kits_blue_rug_kit = object_tangible_loot_collectible_kits_shared_blue_rug_kit:new {
 
+	templateType = LOOTKIT,
+
+	gameObjectType = 8233,
+	
+	--These are used to determine which components are necessary in the loot kit to finish the item
+	collectibleComponents = {"object/tangible/loot/collectible/collectible_parts/blue_rug_adhesive.iff", "object/tangible/loot/collectible/collectible_parts/blue_rug_dye.iff", "object/tangible/loot/collectible/collectible_parts/blue_rug_patches.iff", "object/tangible/loot/collectible/collectible_parts/blue_rug_thread_01.iff", "object/tangible/loot/collectible/collectible_parts/blue_rug_thread_02.iff", "object/tangible/loot/collectible/collectible_parts/blue_rug_thread_03.iff", "object/tangible/loot/collectible/collectible_parts/blue_rug_thread_04.iff", "object/tangible/loot/collectible/collectible_parts/blue_rug_thread_05.iff", "object/tangible/loot/collectible/collectible_parts/blue_rug_thread_06.iff", "object/tangible/loot/collectible/collectible_parts/blue_rug_thread_07.iff"},
+	
+	collectibleReward = {"object/tangible/loot/collectible/collectible_rewards/blue_rug.iff"},
+
+	deleteComponents = 1,
+
+	--These are used to display to the player which components he already added. Same order as above is used
+	attributes = {"blue_rug_adhesive","blue_rug_dye","blue_rug_cloth_patches","blue_rug_thread_01","blue_rug_thread_02","blue_rug_thread_03","blue_rug_thread_04","blue_rug_thread_05","blue_rug_thread_06","blue_rug_thread_07"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_blue_rug_kit, "object/tangible/loot/collectible/kits/blue_rug_kit.iff")

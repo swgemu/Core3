@@ -78,6 +78,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/Instrument.cpp \
 				server/zone/objects/tangible/consumable/Food.cpp \
 				server/zone/objects/tangible/consumable/Drink.cpp \
+				server/zone/objects/tangible/loot/LootkitObject.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/creature/trainer/TrainerCreature.cpp \
 				server/zone/objects/creature/VehicleObject.cpp \
@@ -260,6 +261,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/fishing/FishingPoleObjectImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishingBaitObjectImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishObjectImplementation.cpp \
+		server/zone/objects/tangible/loot/LootkitObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
