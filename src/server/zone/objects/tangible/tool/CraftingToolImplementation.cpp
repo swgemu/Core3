@@ -89,7 +89,7 @@ void CraftingToolImplementation::fillObjectMenuResponse(
 		ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if(getContainerObjectsSize() > 0) {
+	if(getContainerObjectsSize() > 0 && status == "@crafting:tool_status_finished") {
 		menuResponse->addRadialMenuItem(132, 3, "@ui_radial:craft_hopper_output");
 	}
 
