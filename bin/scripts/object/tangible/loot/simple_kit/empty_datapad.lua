@@ -42,7 +42,18 @@
 
 
 object_tangible_loot_simple_kit_empty_datapad = object_tangible_loot_simple_kit_shared_empty_datapad:new {
+	templateType = LOOTKIT,
+	
+	gameObjectType = 8233,
+	
+	--These are used to determine which components are necessary in the loot kit to finish the item
+	collectibleComponents = {"object/tangible/loot/simple_kit/datadisk.iff"},
+	
+	collectibleReward = {"object/tangible/loot/tool/usable_datapad.iff"},
 
+	deleteComponents = 0,
+
+	attributes = {}
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_empty_datapad, "object/tangible/loot/simple_kit/empty_datapad.iff")

@@ -42,7 +42,20 @@
 
 
 object_tangible_loot_collectible_kits_gong_kit = object_tangible_loot_collectible_kits_shared_gong_kit:new {
-
+	
+	templateType = LOOTKIT,
+	
+	gameObjectType = 8233,
+	
+	--These are used to determine which components are necessary in the loot kit to finish the item
+	collectibleComponents = {"object/tangible/loot/collectible/collectible_parts/gong_adhesive.iff", "object/tangible/loot/collectible/collectible_parts/gong_skin_back.iff", "object/tangible/loot/collectible/collectible_parts/gong_skin_front.iff", "object/tangible/loot/collectible/collectible_parts/gong_structure_01.iff", "object/tangible/loot/collectible/collectible_parts/gong_structure_02.iff", "object/tangible/loot/collectible/collectible_parts/gong_structure_03.iff", "object/tangible/loot/collectible/collectible_parts/gong_structure_04.iff", "object/tangible/loot/collectible/collectible_parts/gong_structure_05.iff", "object/tangible/loot/collectible/collectible_parts/gong_structure_06.iff", "object/tangible/loot/collectible/collectible_parts/gong_structure_07.iff"},
+	
+	collectibleReward =  {"object/tangible/loot/collectible/collectible_rewards/gong.iff"},
+	
+	deleteComponents = 1,
+	
+	--These are used to display to the player which components he already added. Same order as above is used
+	attributes = {"gong_adhesive","gong_skin_back","gong_skin_front","gong_structure_01","gong_structure_02","gong_structure_03","gong_structure_04","gong_structure_05","gong_structure_06","gong_structure_07"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_collectible_kits_gong_kit, "object/tangible/loot/collectible/kits/gong_kit.iff")

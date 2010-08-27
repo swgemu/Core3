@@ -42,7 +42,19 @@
 
 
 object_tangible_loot_simple_kit_viewscreen_printer = object_tangible_loot_simple_kit_shared_viewscreen_printer:new {
-
+		
+	templateType = LOOTKIT,
+	
+	gameObjectType = 8233,
+	
+	--These are used to determine which components are necessary in the loot kit to finish the item
+	collectibleComponents = {"object/tangible/loot/simple_kit/paint_cartridge.iff", "object/tangible/loot/simple_kit/flat_canvas.iff", "object/tangible/loot/simple_kit/paint_disperser.iff", "object/tangible/loot/tool/viewscreen_broken_s2.iff", "object/tangible/loot/simple_kit/viewscreen_reader.iff"},
+	
+	collectibleReward =  {"object/tangible/painting/painting_skyscraper.iff", "object/tangible/painting/painting_freedom.iff", "object/tangible/painting/painting_cargoport.iff"},
+	
+	deleteComponents = 0,
+	
+	attributes = {}
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_viewscreen_printer, "object/tangible/loot/simple_kit/viewscreen_printer.iff")
