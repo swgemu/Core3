@@ -90,6 +90,7 @@
 #include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
 #include "server/zone/objects/tangible/fishing/FishObject.h"
 #include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
+#include "server/zone/objects/tangible/loot/LootkitObject.h"
 
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
@@ -186,8 +187,11 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Food>(SceneObject::FOOD);
 	objectFactory.registerObject<Drink>(SceneObject::DRINK);
 	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
+	objectFactory.registerObject<TangibleObject>(SceneObject::FIREWORK);
+	objectFactory.registerObject<TangibleObject>(SceneObject::ITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
+	objectFactory.registerObject<LootkitObject>(SceneObject::LOOTKIT);
 
 	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
 	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);

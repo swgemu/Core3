@@ -42,6 +42,20 @@
 
 
 object_tangible_loot_collectible_kits_sculpture_kit = object_tangible_loot_collectible_kits_shared_sculpture_kit:new {
+		
+	templateType = LOOTKIT,
+	
+	gameObjectType = 8233,
+	
+	--These are used to determine which components are necessary in the loot kit to finish the item
+	collectibleComponents = {"object/tangible/loot/collectible/collectible_parts/sculpture_adhesive.iff", "object/tangible/loot/collectible/collectible_parts/sculpture_goldinlay_01.iff", "object/tangible/loot/collectible/collectible_parts/sculpture_goldinlay_02.iff", "object/tangible/loot/collectible/collectible_parts/sculpture_structure_01.iff", "object/tangible/loot/collectible/collectible_parts/sculpture_structure_02.iff", "object/tangible/loot/collectible/collectible_parts/sculpture_structure_03.iff", "object/tangible/loot/collectible/collectible_parts/sculpture_structure_04.iff", "object/tangible/loot/collectible/collectible_parts/sculpture_structure_05.iff", "object/tangible/loot/collectible/collectible_parts/sculpture_structure_06.iff", "object/tangible/loot/collectible/collectible_parts/sculpture_structure_07.iff"},
+	
+	collectibleReward =  {"object/tangible/loot/collectible/collectible_rewards/collectible_sculpture_s01.iff"},
+	
+	deleteComponents = 1,
+	
+	--These are used to display to the player which components he already added. Same order as above is used
+	attributes = {"sculpture_adhesive","sculpture_goldinlay_01","sculpture_goldinlay_02","sculpture_structure_01","sculpture_structure_02","sculpture_structure_03","sculpture_structure_04","sculpture_structure_05","sculpture_structure_06","sculpture_structure_07"}
 
 }
 

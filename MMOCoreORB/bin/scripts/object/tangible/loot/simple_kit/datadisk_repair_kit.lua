@@ -42,7 +42,18 @@
 
 
 object_tangible_loot_simple_kit_datadisk_repair_kit = object_tangible_loot_simple_kit_shared_datadisk_repair_kit:new {
+	templateType = LOOTKIT,
+	
+	gameObjectType = 8233,
+	
+	--These are used to determine which components are necessary in the loot kit to finish the item
+	collectibleComponents = {"object/tangible/loot/misc/datadisk_corrupt.iff", "object/tangible/loot/simple_kit/magnetic_reader.iff", "object/tangible/loot/simple_kit/magnetic_burner.iff", "object/tangible/loot/simple_kit/recovery_software.iff", "object/tangible/loot/simple_kit/wiring.iff"},
+	
+	collectibleReward = {"object/tangible/loot/simple_kit/datadisk.iff"},
 
+	deleteComponents = 0,
+
+	attributes = {}
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_datadisk_repair_kit, "object/tangible/loot/simple_kit/datadisk_repair_kit.iff")

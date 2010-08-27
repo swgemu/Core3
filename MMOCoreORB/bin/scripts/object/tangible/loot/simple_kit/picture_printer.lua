@@ -42,7 +42,19 @@
 
 
 object_tangible_loot_simple_kit_picture_printer = object_tangible_loot_simple_kit_shared_picture_printer:new {
-
+		
+	templateType = LOOTKIT,
+	
+	gameObjectType = 8233,
+	
+	--These are used to determine which components are necessary in the loot kit to finish the item
+	collectibleComponents = {"object/tangible/loot/simple_kit/paint_cartridge.iff", "object/tangible/loot/simple_kit/flat_canvas.iff", "object/tangible/loot/simple_kit/paint_disperser.iff", "object/tangible/loot/tool/viewscreen_broken_s1.iff"},
+	
+	collectibleReward =  {"object/tangible/painting/painting_droid_bright.iff", "object/tangible/painting/painting_double_helix.iff", "object/tangible/painting/painting_bioengineer_orange.iff", "object/tangible/painting/painting_cargoport.iff"},
+	
+	deleteComponents = 0,
+	
+	attributes = {}
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_picture_printer, "object/tangible/loot/simple_kit/picture_printer.iff")

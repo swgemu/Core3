@@ -114,6 +114,8 @@ public:
 	const static int STATEPACK = 0x4000015;
 	const static int CONSUMABLE = 0x4000016;
 	const static int ELEVATORTERMINAL = 0x4000017;
+	const static int GAMBLINGTERMINAL = 0x4000018;
+	const static int LOOTKIT = 0x4000019;
 
 public:
 	SharedObjectTemplate() {
