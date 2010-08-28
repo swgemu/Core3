@@ -121,15 +121,15 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::BANLIST:
 		handleBanListSelection(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiWindowType::JUNK_DEALER_SELL_LIST:
-		handleSellJunkLootSelection(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
 	case SuiWindowType::TUNE_CRYSTAL:
 		handleTuneCrystal(boxID, player, cancel);
 		break;
 	case SuiWindowType::INSERT_COLOR_CRYSTAL:
 		handleChangeColorCrystal(boxID, player, cancel, atoi(value.toCharArray()));
 		break;*/
+	case SuiWindowType::JUNK_DEALER_SELL_LIST:
+		handleSellJunkLootSelection(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
+		break;
 	case SuiWindowType::STRUCTURE_STATUS:
 		handleStructureStatus(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
@@ -2293,9 +2293,15 @@ void SuiManager::handleChangeColorCrystal(uint32 boxID, Player* player, uint32 c
 		player->unlock();
 	}
 }
+*/
+void SuiManager::handleSellJunkLootSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
+	if (otherPressed)
+		info("Sell All",true);
+	else if (cancel == 0)
+		info("Sell",true);
 
-void SuiManager::handleSellJunkLootSelection(uint32 boxid, Player* player, uint32 cancel, int index) {
-	try {
+	//player->sendSystemMessage("Index: " + String::valueOf(index) + " Cancel: " + String::valueOf(cancel) + " Other: " + String::valueOf(otherPressed));
+	/*try {
 		player->wlock();
 
 		SuiListBox* listbox = (SuiListBox*) player->getSuiBox(boxid);
@@ -2386,9 +2392,9 @@ void SuiManager::handleSellJunkLootSelection(uint32 boxid, Player* player, uint3
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleSellJunkLootSelection");
 		player->unlock();
-	}
+	}*/
 }
-
+/*
 void SuiManager::handleBanListSelection(uint32 boxid, Player* player, uint32 cancel, int index) {
 	try {
 		player->wlock();

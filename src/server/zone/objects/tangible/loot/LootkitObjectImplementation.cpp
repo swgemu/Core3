@@ -104,7 +104,7 @@ void LootkitObjectImplementation::createItem() {
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		ManagedReference<SceneObject*> rewardObject = zoneServer->createObject(reward.get(System::random(reward.size()-1)),0);
+		ManagedReference<SceneObject*> rewardObject = zoneServer->createObject(reward.get(System::random(reward.size()-1)), 2);
 
 		Locker clocker(inventory, player);
 		rewardObject->sendTo(player, true);
