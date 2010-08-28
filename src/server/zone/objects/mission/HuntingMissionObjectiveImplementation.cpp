@@ -14,6 +14,8 @@
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
 
@@ -22,19 +24,38 @@ void HuntingMissionObjectiveImplementation::destroyObjectFromDatabase() {
 }
 
 void HuntingMissionObjectiveImplementation::activate() {
-	WaypointObject* waypoint = mission->getWaypointToMission();
+	if (observers.size() != 0)
+		return;
 
-	if (waypoint == NULL)
-		waypoint = mission->createWaypoint();
+	targetsKilled = 15 * getMissionObject()->getDifficultyLevel();
 
-	waypoint->setPlanetCRC(mission->getStartPlanetCRC());
-	waypoint->setPosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
-	waypoint->setActive(true);
+	PlayerCreature* player = getPlayerOwner();
 
-	mission->updateMissionLocation();
+	ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
+	ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
+
+	Locker locker(player);
+	player->registerObserver(ObserverEventType::KILLEDCREATURE, observer);
+	observers.put(observer);
 }
 
 void HuntingMissionObjectiveImplementation::abort() {
+	if (observers.size() != 0) {
+		for (int i = 0; i < observers.size(); i++) {
+			ManagedReference<MissionObserver*> observer = observers.get(i);
+
+			PlayerCreature* player = getPlayerOwner();
+
+			if (player != NULL) {
+				Locker locker(player);
+
+				player->dropObserver(ObserverEventType::KILLEDCREATURE, observer);
+				observer->destroyObjectFromDatabase();
+
+				observers.drop(observer);
+			}
+		}
+	}
 }
 
 void HuntingMissionObjectiveImplementation::complete() {
@@ -63,8 +84,29 @@ void HuntingMissionObjectiveImplementation::complete() {
 }
 
 int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType == ObserverEventType::CONVERSE) {
+	if (eventType == ObserverEventType::KILLEDCREATURE) {
+		if ((PlayerCreature*)observable != getPlayerOwner())
+			return 0;
+
+		CreatureObject* creature = (CreatureObject*)arg1;
+		String temp1 = mission->getTemplateString1();
+		String temp2 = mission->getTemplateString2();
+
+		if (creature->getServerObjectCRC() == temp1.hashCode() || creature->getServerObjectCRC() == temp2.hashCode()) {
+			targetsKilled--;
+
+			if (targetsKilled <= 0) {
+				complete();
+				return 1;
+			}
+
+			ParameterizedStringId message("mission/mission_generic", "hunting_kills_remaining");
+			message.setDI(targetsKilled);
+			message.setTO(mission->getTargetName());
+
+			getPlayerOwner()->sendSystemMessage(message);
+		}
 	}
 
-	return 1;
+	return 0;
 }

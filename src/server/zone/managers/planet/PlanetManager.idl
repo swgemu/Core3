@@ -51,6 +51,7 @@ import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import system.thread.Thread;
 import system.util.SortedVector;
+import system.util.VectorMap;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.structure.StructureManager;
 import server.zone.managers.objectcontroller.ObjectController;
@@ -64,6 +65,8 @@ include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.planet.ShuttleMap;
 include server.zone.managers.planet.NoBuildAreaMap;
 include server.zone.managers.planet.MissionTargetMap;
+include server.zone.managers.planet.HuntingTargetMap;
+include server.zone.managers.planet.HuntingTargetEntry;
 
 
 class PlanetManager extends ManagedObject implements Logger {
@@ -90,6 +93,9 @@ class PlanetManager extends ManagedObject implements Logger {
 	@dereferenced
 	protected transient MissionTargetMap performanceLocations;
 	
+	@dereferenced
+	protected transient HuntingTargetMap huntingTargets;
+	
 	public PlanetManager(Zone planet, ZoneProcessServerImplementation srv) {
 		zone = planet;
 		server = srv;
@@ -112,6 +118,8 @@ class PlanetManager extends ManagedObject implements Logger {
 	public native void loadNoBuildAreas();
 	public native void loadShuttles();
 	public native void loadBadgeAreas();
+	public native void loadPerformanceLocations();
+	public native void loadHuntingTargets();
 	
 	public synchronized ShuttleCreature getShuttle(final string arrivalPoint) {
 		return shuttleMap.get(arrivalPoint);
@@ -178,6 +186,15 @@ class PlanetManager extends ManagedObject implements Logger {
 	@local
 	public MissionTargetMap getMissionNpcs() {
 		return missionNpcs;
+	}
+	
+	public void addHuntingTargetTemplate(final string temp1, final string temp2, int level) {
+		huntingTargets.addTarget(temp1, temp2, level);
+	}
+	
+	@local
+	public HuntingTargetEntry getHuntingTargetTemplate(int level) {
+		return huntingTargets.getRandomTarget(level);
 	}
 	
 	/*public Region getRegion(final string regionName) {

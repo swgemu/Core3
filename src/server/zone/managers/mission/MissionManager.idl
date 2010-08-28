@@ -72,12 +72,9 @@ class MissionManager extends Observer implements Logger {
 		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
 		
 		loadLairObjectsToSpawn();
-		
-		loadPerformanceLocations();
 	}
 	
 	public native void loadLairObjectsToSpawn();
-	public native void loadPerformanceLocations();
 	
 	public native void handleMissionListRequest(MissionTerminal missionTerminal, PlayerCreature player, int counter);
 	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, PlayerCreature player);
@@ -106,6 +103,7 @@ class MissionManager extends Observer implements Logger {
 	public native void createDestroyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	public native void createDeliverMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	public native void createEntertainerMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createHuntingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	
 	public native boolean hasSurveyMission(PlayerCreature player, final string spawn);
 }

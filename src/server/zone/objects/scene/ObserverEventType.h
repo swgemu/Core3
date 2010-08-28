@@ -16,6 +16,7 @@ public:
 	const static int OBJECTDESTRUCTION = 4;
 	const static int SAMPLE = 5;
 	const static int CONVERSE = 6;
+	const static int KILLEDCREATURE = 7;
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

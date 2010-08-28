@@ -194,6 +194,8 @@ public:
 
 	void setMissionNumber(int num);
 
+	void setTemplateStrings(const String& temp1, const String& temp2);
+
 	float getStartPositionX();
 
 	float getStartPositionY();
@@ -236,12 +238,18 @@ public:
 
 	bool isMissionObject();
 
+	String getTemplateString1();
+
+	String getTemplateString2();
+
 protected:
 	MissionObject(DummyConstructorParameter* param);
 
 	virtual ~MissionObject();
 
 	String _return_getTargetName;
+	String _return_getTemplateString1;
+	String _return_getTemplateString2;
 
 	UnicodeString _return_getCreatorName;
 
@@ -299,6 +307,10 @@ protected:
 	ManagedReference<SceneObject* > missionTarget;
 
 	ManagedReference<SceneObject* > missionTargetDest;
+
+	String templateString1;
+
+	String templateString2;
 
 	TemplateReference<SharedObjectTemplate*> targetTemplate;
 
@@ -379,6 +391,8 @@ public:
 
 	void setMissionNumber(int num);
 
+	void setTemplateStrings(const String& temp1, const String& temp2);
+
 	float getStartPositionX();
 
 	float getStartPositionY();
@@ -420,6 +434,10 @@ public:
 	bool isSurveyMission();
 
 	bool isMissionObject();
+
+	String getTemplateString1();
+
+	String getTemplateString2();
 
 	MissionObject* _this;
 
@@ -506,6 +524,8 @@ public:
 
 	void setMissionNumber(int num);
 
+	void setTemplateStrings(const String& temp1, const String& temp2);
+
 	float getStartPositionX();
 
 	float getStartPositionY();
@@ -542,6 +562,10 @@ public:
 
 	bool isMissionObject();
 
+	String getTemplateString1();
+
+	String getTemplateString2();
+
 protected:
 	String _param0_setMissionDescription__String_String_bool_;
 	String _param1_setMissionDescription__String_String_bool_;
@@ -549,6 +573,8 @@ protected:
 	String _param1_setMissionTitle__String_String_bool_;
 	String _param0_setMissionTargetName__String_bool_;
 	String _param0_setCreatorName__String_bool_;
+	String _param0_setTemplateStrings__String_String_;
+	String _param1_setTemplateStrings__String_String_;
 };
 
 class MissionObjectHelper : public DistributedObjectClassHelper, public Singleton<MissionObjectHelper> {

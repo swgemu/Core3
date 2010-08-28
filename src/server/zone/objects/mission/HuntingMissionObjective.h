@@ -153,6 +153,7 @@ namespace objects {
 namespace mission {
 
 class HuntingMissionObjectiveImplementation : public MissionObjectiveImplementation {
+	int targetsKilled;
 
 public:
 	HuntingMissionObjectiveImplementation(MissionObject* mission);

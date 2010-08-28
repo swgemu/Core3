@@ -176,25 +176,26 @@ void HuntingMissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("HuntingMissionObjective");
 
+	addSerializableVariable("targetsKilled", &targetsKilled);
 }
 
 HuntingMissionObjectiveImplementation::HuntingMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/HuntingMissionObjective.idl(61):  		Logger.setLoggingName("HuntingMissionObjective");
+	// server/zone/objects/mission/HuntingMissionObjective.idl(63):  		Logger.setLoggingName("HuntingMissionObjective");
 	Logger::setLoggingName("HuntingMissionObjective");
 }
 
 void HuntingMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/HuntingMissionObjective.idl(65):  		Logger.info("deleting from memory", true);
+	// server/zone/objects/mission/HuntingMissionObjective.idl(67):  		Logger.info("deleting from memory", true);
 	Logger::info("deleting from memory", true);
 }
 
 void HuntingMissionObjectiveImplementation::initializeTransientMembers() {
-	// server/zone/objects/mission/HuntingMissionObjective.idl(69):  		super.initializeTransientMembers();
+	// server/zone/objects/mission/HuntingMissionObjective.idl(71):  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/HuntingMissionObjective.idl(71):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/HuntingMissionObjective.idl(73):  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/HuntingMissionObjective.idl(73):  		activate();
+	// server/zone/objects/mission/HuntingMissionObjective.idl(75):  		activate();
 	activate();
 }
 
