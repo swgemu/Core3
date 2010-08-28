@@ -25,4 +25,3 @@ PlayerCreature* MissionObjectiveImplementation::getPlayerOwner() {
 
 	return player;
 }
-

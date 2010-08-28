@@ -13,6 +13,7 @@
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
 #include "server/zone/objects/mission/DeliverMissionObjective.h"
 #include "server/zone/objects/mission/EntertainerMissionObjective.h"
+#include "server/zone/objects/mission/HuntingMissionObjective.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/managers/resource/ResourceManager.h"
@@ -21,6 +22,7 @@
 #include "server/zone/managers/planet/MissionTargetMap.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/templates/tangible/LairObjectTemplate.h"
+#include "server/zone/managers/planet/HuntingTargetEntry.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/Zone.h"
 #include "server/db/ServerDatabase.h"
@@ -51,45 +53,6 @@ void MissionManagerImplementation::loadLairObjectsToSpawn() {
 	/*StringBuffer msg;
 	msg << "loaded " << lairObjectTemplatesToSpawn.size() << " lairs to spawn";
 	info(msg.toString(), true);*/
-}
-
-void MissionManagerImplementation::loadPerformanceLocations() {
-	info("loading performance locations...", true);
-
-	SortedVector<ManagedReference<SceneObject*> > planetaryLocs;
-	planetaryLocs.setNoDuplicateInsertPlan();
-
-	for (int i = 0; i < server->getZoneCount(); i++) {
-		Zone* zone = server->getZone(i);
-		if (zone == NULL)
-			continue;
-
-		PlanetManager* pmng = zone->getPlanetManager();
-		if (pmng == NULL)
-			continue;
-
-		// get hotels
-		planetaryLocs = zone->getPlanetaryObjectList(12);
-		for (int j = 0; j < planetaryLocs.size(); j++) {
-			SceneObject* obj = planetaryLocs.get(j);
-			pmng->addPerformanceLocation(obj);
-		}
-
-		// get theaters
-		planetaryLocs = zone->getPlanetaryObjectList(10);
-		for (int j = 0; j < planetaryLocs.size(); j++) {
-			SceneObject* obj = planetaryLocs.get(j);
-			pmng->addPerformanceLocation(obj);
-		}
-
-		// get cantinas
-		planetaryLocs.removeAll();
-		planetaryLocs = zone->getPlanetaryObjectList(3);
-		for (int j = 0; j < planetaryLocs.size(); j++) {
-			SceneObject* obj = planetaryLocs.get(j);
-			pmng->addPerformanceLocation(obj);
-		}
-	}
 }
 
 void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
@@ -231,6 +194,15 @@ void MissionManagerImplementation::createEntertainerMissionObjectives(MissionObj
 	objective->activate();
 }
 
+void MissionManagerImplementation::createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	ManagedReference<HuntingMissionObjective*> objective = new HuntingMissionObjective(mission);
+
+	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
+
+	mission->setMissionObjective(objective);
+	objective->activate();
+}
+
 void MissionManagerImplementation::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
 	uint32 missionType = mission->getTypeCRC();
 
@@ -243,6 +215,9 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 		break;
 	case MissionObject::DELIVER:
 		createDeliverMissionObjectives(mission, missionTerminal, player);
+		break;
+	case MissionObject::HUNTING:
+		createHuntingMissionObjectives(mission, missionTerminal, player);
 		break;
 	default:
 		break;
@@ -339,10 +314,7 @@ void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* playe
 
 	NameManager* nm = processor->getNameManager();
 
-	int randTexts = System::random(35);
-
-	if (randTexts == 0)
-		randTexts = 1;
+	int randTexts = System::random(34) + 1;
 
 	mission->setMissionNumber(randTexts);
 
@@ -452,9 +424,7 @@ void MissionManagerImplementation::randomizeDeliverMission(PlayerCreature* playe
 
 	NameManager* nm = processor->getNameManager();
 
-	int randTexts = System::random(30);
-	if (randTexts == 0)
-		randTexts = 1;
+	int randTexts = System::random(29) + 1;
 
 	mission->setMissionNumber(randTexts);
 	mission->setMissionTarget(target);
@@ -518,9 +488,7 @@ void MissionManagerImplementation::randomizeEntertainerMission(PlayerCreature* p
 	if (dancing)
 		missionType = "dancer";
 
-	int randTexts = System::random(50);
-	if (randTexts == 0)
-		randTexts = 1;
+	int randTexts = System::random(49) + 1;
 
 	mission->setMissionNumber(randTexts);
 	mission->setMissionTarget(target);
@@ -545,14 +513,30 @@ void MissionManagerImplementation::randomizeEntertainerMission(PlayerCreature* p
 }
 
 void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* player, MissionObject* mission) {
-	// TODO: add hunting logic (don't just overload destroy)
-	/*
-	 * get random local fauna of appropriate level
-	 * track number of said fauna killed
-	 * ???
-	 * profit!
-	 */
-	randomizeDestroyMission(player, mission);
+	PlanetManager* pmng = player->getZone()->getPlanetManager();
+
+	HuntingTargetEntry* entry = pmng->getHuntingTargetTemplate(1);
+	mission->setTemplateStrings(entry->getPrimary(), entry->getSecondary());
+	String targetTemp = entry->getPrimary();
+
+	NameManager* nm = processor->getNameManager();
+
+	int randTexts = System::random(7) + 1;
+
+	mission->setMissionNumber(randTexts);
+	mission->setCreatorName(nm->makeCreatureName());
+
+	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
+	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getPlanetCRC());
+
+	// TODO: this all needs to change to be less static and use distance
+	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(targetTemp.hashCode())->getObjectName());
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(targetTemp.hashCode()));
+
+	mission->setRewardCredits(100 + System::random(100));
+	mission->setMissionDifficulty(1);
+	mission->setMissionTitle("mission/mission_npc_hunting_neutral_easy", "m" + String::valueOf(randTexts) + "t");
+	mission->setMissionDescription("mission/mission_npc_hunting_neutral_easy", "m" + String::valueOf(randTexts) + "o");
 
 	mission->setTypeCRC(0x906999A2);
 }

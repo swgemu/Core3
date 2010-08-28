@@ -124,8 +124,6 @@ public:
 
 	void loadLairObjectsToSpawn();
 
-	void loadPerformanceLocations();
-
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
@@ -169,6 +167,8 @@ public:
 	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -209,8 +209,6 @@ public:
 
 	void loadLairObjectsToSpawn();
 
-	void loadPerformanceLocations();
-
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
@@ -254,6 +252,8 @@ public:
 	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -298,8 +298,6 @@ public:
 
 	void loadLairObjectsToSpawn();
 
-	void loadPerformanceLocations();
-
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
@@ -343,6 +341,8 @@ public:
 	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 

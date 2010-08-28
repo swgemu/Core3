@@ -214,6 +214,9 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		destructor->unlock();
 
 	try {
+		PlayerCreature* player = copyDamageMap.getHighestDamagePlayer();
+		player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+
 		playerManager->disseminateExperience(destructedObject, &copyDamageMap);
 
 		CombatManager::instance()->attemptPeace(destructedObject);

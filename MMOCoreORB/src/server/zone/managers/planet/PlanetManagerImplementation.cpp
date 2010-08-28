@@ -37,6 +37,8 @@ void PlanetManagerImplementation::initialize() {
 	loadRegions();
 	loadBadgeAreas();
 	loadNoBuildAreas();
+	loadPerformanceLocations();
+	loadHuntingTargets();
 
 	structureManager = new StructureManager(zone, server);
 	structureManager->loadStructures();
@@ -310,6 +312,52 @@ void PlanetManagerImplementation::loadBadgeAreas() {
 		area->setRadius(100);
 		area->initializePosition(x, z, y);
 		area->insertToZone(zone);
+	}
+
+	delete result;
+}
+
+void PlanetManagerImplementation::loadPerformanceLocations() {
+	info("loading performance locations...", true);
+
+	SortedVector<ManagedReference<SceneObject*> > planetaryLocs;
+	planetaryLocs.setNoDuplicateInsertPlan();
+
+	// get hotels
+	planetaryLocs = zone->getPlanetaryObjectList(12);
+	for (int j = 0; j < planetaryLocs.size(); j++) {
+		SceneObject* obj = planetaryLocs.get(j);
+		addPerformanceLocation(obj);
+	}
+
+	// get theaters
+	planetaryLocs = zone->getPlanetaryObjectList(10);
+	for (int j = 0; j < planetaryLocs.size(); j++) {
+		SceneObject* obj = planetaryLocs.get(j);
+		addPerformanceLocation(obj);
+	}
+
+	// get cantinas
+	planetaryLocs.removeAll();
+	planetaryLocs = zone->getPlanetaryObjectList(3);
+	for (int j = 0; j < planetaryLocs.size(); j++) {
+		SceneObject* obj = planetaryLocs.get(j);
+		addPerformanceLocation(obj);
+	}
+}
+
+void PlanetManagerImplementation::loadHuntingTargets() {
+	StringBuffer query;
+	query << "SELECT file1,file2,level from mission_manager_hunt_types WHERE zoneid=" << zone->getZoneID() << ";";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	while (result->next()) {
+		String templateName = result->getString(0);
+		String templateNameAlt = result->getString(1);
+		int level = result->getInt(2);
+
+		addHuntingTargetTemplate(templateName, templateNameAlt, level);
 	}
 
 	delete result;
