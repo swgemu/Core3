@@ -392,6 +392,7 @@ void MissionManagerImplementation::randomizeSurveyMission(PlayerCreature* player
 	mission->setTargetTemplate(templateObject);
 	mission->setRewardCredits(500 + System::random(500));
 	mission->setMissionDifficulty(randLevel);
+	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
 	mission->setMissionTitle("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "t");
 	mission->setMissionDescription("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "o");
 	mission->setCreatorName(nm->makeCreatureName());
@@ -515,7 +516,13 @@ void MissionManagerImplementation::randomizeEntertainerMission(PlayerCreature* p
 void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* player, MissionObject* mission) {
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 
+	// TODO: randomize difficulty (weighted by what?) once more missions are in the db
 	HuntingTargetEntry* entry = pmng->getHuntingTargetTemplate(1);
+	if (entry == NULL) {
+		mission->setTypeCRC(0);
+		return;
+	}
+
 	mission->setTemplateStrings(entry->getPrimary(), entry->getSecondary());
 	String targetTemp = entry->getPrimary();
 
@@ -542,13 +549,11 @@ void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* playe
 }
 
 void MissionManagerImplementation::randomizeReconMission(PlayerCreature* player, MissionObject* mission) {
-	// TODO: add recon logic (don't just overload destroy)
 	/*
 	 * generate waypoint in the middle of nowhere
 	 * give waypoint
 	 * when player enters active area, success
 	 */
-	randomizeDestroyMission(player, mission);
 
 	mission->setTypeCRC(0x34F4C2E4);
 }
