@@ -42,7 +42,10 @@
 
 
 object_mobile_junk_ollobo = object_mobile_shared_junk_ollobo:new {
-
+	gameObjectType = 1036,
+	mapLocationsType1 = 26,
+	lookAtText = "@mob/creature_names:junk_dealer",
+	objectName = "@mob/creature_names:junk_dealer"
 }
 
 ObjectTemplates:addTemplate(object_mobile_junk_ollobo, "object/mobile/junk_ollobo.iff")
