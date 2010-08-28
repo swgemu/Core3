@@ -133,6 +133,10 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/managers/planet/MissionTargetMap.h"
 
+#include "server/zone/managers/planet/HuntingTargetMap.h"
+
+#include "server/zone/managers/planet/HuntingTargetEntry.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"
@@ -140,6 +144,8 @@ using namespace server::zone::objects::player;
 #include "system/thread/Thread.h"
 
 #include "system/util/SortedVector.h"
+
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {
@@ -161,6 +167,10 @@ public:
 	void loadShuttles();
 
 	void loadBadgeAreas();
+
+	void loadPerformanceLocations();
+
+	void loadHuntingTargets();
 
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
@@ -193,6 +203,10 @@ public:
 	void addMissionNpc(SceneObject* npc);
 
 	MissionTargetMap* getMissionNpcs();
+
+	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
+
+	HuntingTargetEntry* getHuntingTargetTemplate(int level);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -234,6 +248,8 @@ protected:
 
 	MissionTargetMap performanceLocations;
 
+	HuntingTargetMap huntingTargets;
+
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv);
 
@@ -252,6 +268,10 @@ public:
 	void loadShuttles();
 
 	void loadBadgeAreas();
+
+	void loadPerformanceLocations();
+
+	void loadHuntingTargets();
 
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
@@ -284,6 +304,10 @@ public:
 	void addMissionNpc(SceneObject* npc);
 
 	MissionTargetMap* getMissionNpcs();
+
+	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
+
+	HuntingTargetEntry* getHuntingTargetTemplate(int level);
 
 	PlanetManager* _this;
 
@@ -336,6 +360,10 @@ public:
 
 	void loadBadgeAreas();
 
+	void loadPerformanceLocations();
+
+	void loadHuntingTargets();
+
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
 	void addShuttle(const String& city, ShuttleCreature* shuttle);
@@ -360,12 +388,16 @@ public:
 
 	void addMissionNpc(SceneObject* npc);
 
+	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
+
 protected:
 	String _param0_getShuttle__String_;
 	String _param0_addShuttle__String_ShuttleCreature_;
 	String _param0_getTravelFare__String_String_;
 	String _param1_getTravelFare__String_String_;
 	String _param0_hasRegion__String_;
+	String _param0_addHuntingTargetTemplate__String_String_int_;
+	String _param1_addHuntingTargetTemplate__String_String_int_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {

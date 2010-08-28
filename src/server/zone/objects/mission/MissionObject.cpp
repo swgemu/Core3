@@ -353,12 +353,26 @@ void MissionObject::setMissionNumber(int num) {
 		((MissionObjectImplementation*) _impl)->setMissionNumber(num);
 }
 
-float MissionObject::getStartPositionX() {
+void MissionObject::setTemplateStrings(const String& temp1, const String& temp2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 29);
+		method.addAsciiParameter(temp1);
+		method.addAsciiParameter(temp2);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setTemplateStrings(temp1, temp2);
+}
+
+float MissionObject::getStartPositionX() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -370,7 +384,7 @@ float MissionObject::getStartPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -382,7 +396,7 @@ unsigned int MissionObject::getStartPlanetCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -394,7 +408,7 @@ float MissionObject::getEndPositionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -406,7 +420,7 @@ float MissionObject::getEndPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -418,7 +432,7 @@ unsigned int MissionObject::getEndPlanetCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -430,7 +444,7 @@ WaypointObject* MissionObject::getWaypointToMission() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
@@ -442,7 +456,7 @@ SceneObject* MissionObject::getMissionTarget() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -454,7 +468,7 @@ SceneObject* MissionObject::getMissionTargetDest() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -466,7 +480,7 @@ unsigned int MissionObject::getTypeCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -478,7 +492,7 @@ int MissionObject::getRewardCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -490,7 +504,7 @@ UnicodeString MissionObject::getCreatorName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		method.executeWithUnicodeReturn(_return_getCreatorName);
 		return _return_getCreatorName;
@@ -503,7 +517,7 @@ int MissionObject::getDifficultyLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -531,7 +545,7 @@ String MissionObject::getTargetName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		method.executeWithAsciiReturn(_return_getTargetName);
 		return _return_getTargetName;
@@ -544,7 +558,7 @@ int MissionObject::getRefreshCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -556,7 +570,7 @@ int MissionObject::getMissionNumber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -576,7 +590,7 @@ bool MissionObject::isSurveyMission() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -588,11 +602,37 @@ bool MissionObject::isMissionObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((MissionObjectImplementation*) _impl)->isMissionObject();
+}
+
+String MissionObject::getTemplateString1() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 48);
+
+		method.executeWithAsciiReturn(_return_getTemplateString1);
+		return _return_getTemplateString1;
+	} else
+		return ((MissionObjectImplementation*) _impl)->getTemplateString1();
+}
+
+String MissionObject::getTemplateString2() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 49);
+
+		method.executeWithAsciiReturn(_return_getTemplateString2);
+		return _return_getTemplateString2;
+	} else
+		return ((MissionObjectImplementation*) _impl)->getTemplateString2();
 }
 
 /*
@@ -681,169 +721,188 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("targetName", &targetName);
 	addSerializableVariable("missionTarget", &missionTarget);
 	addSerializableVariable("missionTargetDest", &missionTargetDest);
+	addSerializableVariable("templateString1", &templateString1);
+	addSerializableVariable("templateString2", &templateString2);
 	addSerializableVariable("targetTemplate", &targetTemplate);
 }
 
 MissionObjectImplementation::MissionObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObject.idl(111):  		typeCRC = SURVEY;
+	// server/zone/objects/mission/MissionObject.idl(114):  		typeCRC = SURVEY;
 	typeCRC = SURVEY;
-	// server/zone/objects/mission/MissionObject.idl(113):  		refreshCounter = 0;
+	// server/zone/objects/mission/MissionObject.idl(116):  		refreshCounter = 0;
 	refreshCounter = 0;
-	// server/zone/objects/mission/MissionObject.idl(118):  		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
+	// server/zone/objects/mission/MissionObject.idl(121):  		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
 	(&missionDescription)->setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
-	// server/zone/objects/mission/MissionObject.idl(119):  		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
+	// server/zone/objects/mission/MissionObject.idl(122):  		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
 	(&missionTitle)->setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
-	// server/zone/objects/mission/MissionObject.idl(120):  		targetName = "Testing target name";
+	// server/zone/objects/mission/MissionObject.idl(123):  		targetName = "Testing target name";
 	targetName = "Testing target name";
-	// server/zone/objects/mission/MissionObject.idl(121):  		difficultyLevel = 50;
+	// server/zone/objects/mission/MissionObject.idl(124):  		difficultyLevel = 50;
 	difficultyLevel = 50;
-	// server/zone/objects/mission/MissionObject.idl(123):  		rewardCredits = 100;
+	// server/zone/objects/mission/MissionObject.idl(126):  		rewardCredits = 100;
 	rewardCredits = 100;
-	// server/zone/objects/mission/MissionObject.idl(125):  		startPositionX = 0;
+	// server/zone/objects/mission/MissionObject.idl(128):  		startPositionX = 0;
 	startPositionX = 0;
-	// server/zone/objects/mission/MissionObject.idl(126):  		startPositionY = 0;
+	// server/zone/objects/mission/MissionObject.idl(129):  		startPositionY = 0;
 	startPositionY = 0;
-	// server/zone/objects/mission/MissionObject.idl(127):  		startPlanetCRC = 0;
+	// server/zone/objects/mission/MissionObject.idl(130):  		startPlanetCRC = 0;
 	startPlanetCRC = 0;
-	// server/zone/objects/mission/MissionObject.idl(129):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/MissionObject.idl(132):  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
 }
 
 void MissionObjectImplementation::abort() {
-	// server/zone/objects/mission/MissionObject.idl(170):  	}
-	if (missionObjective != NULL)	// server/zone/objects/mission/MissionObject.idl(171):  			missionObjective.abort();
+	// server/zone/objects/mission/MissionObject.idl(173):  	}
+	if (missionObjective != NULL)	// server/zone/objects/mission/MissionObject.idl(174):  			missionObjective.abort();
 	missionObjective->abort();
 }
 
 void MissionObjectImplementation::setMissionObjective(MissionObjective* obj) {
-	// server/zone/objects/mission/MissionObject.idl(175):  		missionObjective = obj;
+	// server/zone/objects/mission/MissionObject.idl(178):  		missionObjective = obj;
 	missionObjective = obj;
 }
 
 void MissionObjectImplementation::setStartPlanetCRC(unsigned int crc) {
-	// server/zone/objects/mission/MissionObject.idl(179):  		startPlanetCRC = crc;
+	// server/zone/objects/mission/MissionObject.idl(182):  		startPlanetCRC = crc;
 	startPlanetCRC = crc;
 }
 
 void MissionObjectImplementation::setEndPlanetCRC(unsigned int crc) {
-	// server/zone/objects/mission/MissionObject.idl(183):  		endPlanetCRC = crc;
+	// server/zone/objects/mission/MissionObject.idl(186):  		endPlanetCRC = crc;
 	endPlanetCRC = crc;
 }
 
 void MissionObjectImplementation::setMissionTarget(SceneObject* target) {
-	// server/zone/objects/mission/MissionObject.idl(187):  		missionTarget = target;
+	// server/zone/objects/mission/MissionObject.idl(190):  		missionTarget = target;
 	missionTarget = target;
 }
 
 void MissionObjectImplementation::setMissionTargetDest(SceneObject* target) {
-	// server/zone/objects/mission/MissionObject.idl(191):  		missionTargetDest = target;
+	// server/zone/objects/mission/MissionObject.idl(194):  		missionTargetDest = target;
 	missionTargetDest = target;
 }
 
 void MissionObjectImplementation::setMissionNumber(int num) {
-	// server/zone/objects/mission/MissionObject.idl(195):  		missionNumber = num;
+	// server/zone/objects/mission/MissionObject.idl(198):  		missionNumber = num;
 	missionNumber = num;
 }
 
+void MissionObjectImplementation::setTemplateStrings(const String& temp1, const String& temp2) {
+	// server/zone/objects/mission/MissionObject.idl(202):  		templateString1 = temp1;
+	templateString1 = temp1;
+	// server/zone/objects/mission/MissionObject.idl(203):  		templateString2 = temp2;
+	templateString2 = temp2;
+}
+
 float MissionObjectImplementation::getStartPositionX() {
-	// server/zone/objects/mission/MissionObject.idl(199):  		return startPositionX;
+	// server/zone/objects/mission/MissionObject.idl(207):  		return startPositionX;
 	return startPositionX;
 }
 
 float MissionObjectImplementation::getStartPositionY() {
-	// server/zone/objects/mission/MissionObject.idl(203):  		return startPositionY;
+	// server/zone/objects/mission/MissionObject.idl(211):  		return startPositionY;
 	return startPositionY;
 }
 
 unsigned int MissionObjectImplementation::getStartPlanetCRC() {
-	// server/zone/objects/mission/MissionObject.idl(207):  		return startPlanetCRC;
+	// server/zone/objects/mission/MissionObject.idl(215):  		return startPlanetCRC;
 	return startPlanetCRC;
 }
 
 float MissionObjectImplementation::getEndPositionX() {
-	// server/zone/objects/mission/MissionObject.idl(211):  		return endPositionX;
+	// server/zone/objects/mission/MissionObject.idl(219):  		return endPositionX;
 	return endPositionX;
 }
 
 float MissionObjectImplementation::getEndPositionY() {
-	// server/zone/objects/mission/MissionObject.idl(215):  		return endPositionY;
+	// server/zone/objects/mission/MissionObject.idl(223):  		return endPositionY;
 	return endPositionY;
 }
 
 unsigned int MissionObjectImplementation::getEndPlanetCRC() {
-	// server/zone/objects/mission/MissionObject.idl(219):  		return endPlanetCRC;
+	// server/zone/objects/mission/MissionObject.idl(227):  		return endPlanetCRC;
 	return endPlanetCRC;
 }
 
 WaypointObject* MissionObjectImplementation::getWaypointToMission() {
-	// server/zone/objects/mission/MissionObject.idl(223):  		return waypointToMission;
+	// server/zone/objects/mission/MissionObject.idl(231):  		return waypointToMission;
 	return waypointToMission;
 }
 
 SceneObject* MissionObjectImplementation::getMissionTarget() {
-	// server/zone/objects/mission/MissionObject.idl(227):  		return missionTarget;
+	// server/zone/objects/mission/MissionObject.idl(235):  		return missionTarget;
 	return missionTarget;
 }
 
 SceneObject* MissionObjectImplementation::getMissionTargetDest() {
-	// server/zone/objects/mission/MissionObject.idl(231):  		return missionTargetDest;
+	// server/zone/objects/mission/MissionObject.idl(239):  		return missionTargetDest;
 	return missionTargetDest;
 }
 
 unsigned int MissionObjectImplementation::getTypeCRC() {
-	// server/zone/objects/mission/MissionObject.idl(235):  		return typeCRC;
+	// server/zone/objects/mission/MissionObject.idl(243):  		return typeCRC;
 	return typeCRC;
 }
 
 int MissionObjectImplementation::getRewardCredits() {
-	// server/zone/objects/mission/MissionObject.idl(239):  		return rewardCredits;
+	// server/zone/objects/mission/MissionObject.idl(247):  		return rewardCredits;
 	return rewardCredits;
 }
 
 UnicodeString MissionObjectImplementation::getCreatorName() {
-	// server/zone/objects/mission/MissionObject.idl(243):  		return creatorName;
+	// server/zone/objects/mission/MissionObject.idl(251):  		return creatorName;
 	return creatorName;
 }
 
 int MissionObjectImplementation::getDifficultyLevel() {
-	// server/zone/objects/mission/MissionObject.idl(247):  		return difficultyLevel;
+	// server/zone/objects/mission/MissionObject.idl(255):  		return difficultyLevel;
 	return difficultyLevel;
 }
 
 StringId* MissionObjectImplementation::getMissionDescription() {
-	// server/zone/objects/mission/MissionObject.idl(252):  		return missionDescription;
+	// server/zone/objects/mission/MissionObject.idl(260):  		return missionDescription;
 	return (&missionDescription);
 }
 
 StringId* MissionObjectImplementation::getMissionTitle() {
-	// server/zone/objects/mission/MissionObject.idl(257):  		return missionTitle;
+	// server/zone/objects/mission/MissionObject.idl(265):  		return missionTitle;
 	return (&missionTitle);
 }
 
 String MissionObjectImplementation::getTargetName() {
-	// server/zone/objects/mission/MissionObject.idl(261):  		return targetName;
+	// server/zone/objects/mission/MissionObject.idl(269):  		return targetName;
 	return targetName;
 }
 
 int MissionObjectImplementation::getRefreshCounter() {
-	// server/zone/objects/mission/MissionObject.idl(265):  		return refreshCounter;
+	// server/zone/objects/mission/MissionObject.idl(273):  		return refreshCounter;
 	return refreshCounter;
 }
 
 int MissionObjectImplementation::getMissionNumber() {
-	// server/zone/objects/mission/MissionObject.idl(269):  		return missionNumber;
+	// server/zone/objects/mission/MissionObject.idl(277):  		return missionNumber;
 	return missionNumber;
 }
 
 bool MissionObjectImplementation::isSurveyMission() {
-	// server/zone/objects/mission/MissionObject.idl(276):  		return typeCRC == this.SURVEY;
+	// server/zone/objects/mission/MissionObject.idl(284):  		return typeCRC == this.SURVEY;
 	return typeCRC == _this->SURVEY;
 }
 
 bool MissionObjectImplementation::isMissionObject() {
-	// server/zone/objects/mission/MissionObject.idl(280):  		return true;
+	// server/zone/objects/mission/MissionObject.idl(288):  		return true;
 	return true;
+}
+
+String MissionObjectImplementation::getTemplateString1() {
+	// server/zone/objects/mission/MissionObject.idl(292):  		return templateString1;
+	return templateString1;
+}
+
+String MissionObjectImplementation::getTemplateString2() {
+	// server/zone/objects/mission/MissionObject.idl(296):  		return templateString2;
+	return templateString2;
 }
 
 /*
@@ -927,58 +986,67 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		setMissionNumber(inv->getSignedIntParameter());
 		break;
 	case 29:
-		resp->insertFloat(getStartPositionX());
+		setTemplateStrings(inv->getAsciiParameter(_param0_setTemplateStrings__String_String_), inv->getAsciiParameter(_param1_setTemplateStrings__String_String_));
 		break;
 	case 30:
-		resp->insertFloat(getStartPositionY());
+		resp->insertFloat(getStartPositionX());
 		break;
 	case 31:
-		resp->insertInt(getStartPlanetCRC());
+		resp->insertFloat(getStartPositionY());
 		break;
 	case 32:
-		resp->insertFloat(getEndPositionX());
+		resp->insertInt(getStartPlanetCRC());
 		break;
 	case 33:
-		resp->insertFloat(getEndPositionY());
+		resp->insertFloat(getEndPositionX());
 		break;
 	case 34:
-		resp->insertInt(getEndPlanetCRC());
+		resp->insertFloat(getEndPositionY());
 		break;
 	case 35:
-		resp->insertLong(getWaypointToMission()->_getObjectID());
+		resp->insertInt(getEndPlanetCRC());
 		break;
 	case 36:
-		resp->insertLong(getMissionTarget()->_getObjectID());
+		resp->insertLong(getWaypointToMission()->_getObjectID());
 		break;
 	case 37:
-		resp->insertLong(getMissionTargetDest()->_getObjectID());
+		resp->insertLong(getMissionTarget()->_getObjectID());
 		break;
 	case 38:
-		resp->insertInt(getTypeCRC());
+		resp->insertLong(getMissionTargetDest()->_getObjectID());
 		break;
 	case 39:
-		resp->insertSignedInt(getRewardCredits());
+		resp->insertInt(getTypeCRC());
 		break;
 	case 40:
-		resp->insertUnicode(getCreatorName());
+		resp->insertSignedInt(getRewardCredits());
 		break;
 	case 41:
-		resp->insertSignedInt(getDifficultyLevel());
+		resp->insertUnicode(getCreatorName());
 		break;
 	case 42:
-		resp->insertAscii(getTargetName());
+		resp->insertSignedInt(getDifficultyLevel());
 		break;
 	case 43:
-		resp->insertSignedInt(getRefreshCounter());
+		resp->insertAscii(getTargetName());
 		break;
 	case 44:
-		resp->insertSignedInt(getMissionNumber());
+		resp->insertSignedInt(getRefreshCounter());
 		break;
 	case 45:
-		resp->insertBoolean(isSurveyMission());
+		resp->insertSignedInt(getMissionNumber());
 		break;
 	case 46:
+		resp->insertBoolean(isSurveyMission());
+		break;
+	case 47:
 		resp->insertBoolean(isMissionObject());
+		break;
+	case 48:
+		resp->insertAscii(getTemplateString1());
+		break;
+	case 49:
+		resp->insertAscii(getTemplateString2());
 		break;
 	default:
 		return NULL;
@@ -1079,6 +1147,10 @@ void MissionObjectAdapter::setMissionNumber(int num) {
 	((MissionObjectImplementation*) impl)->setMissionNumber(num);
 }
 
+void MissionObjectAdapter::setTemplateStrings(const String& temp1, const String& temp2) {
+	((MissionObjectImplementation*) impl)->setTemplateStrings(temp1, temp2);
+}
+
 float MissionObjectAdapter::getStartPositionX() {
 	return ((MissionObjectImplementation*) impl)->getStartPositionX();
 }
@@ -1149,6 +1221,14 @@ bool MissionObjectAdapter::isSurveyMission() {
 
 bool MissionObjectAdapter::isMissionObject() {
 	return ((MissionObjectImplementation*) impl)->isMissionObject();
+}
+
+String MissionObjectAdapter::getTemplateString1() {
+	return ((MissionObjectImplementation*) impl)->getTemplateString1();
+}
+
+String MissionObjectAdapter::getTemplateString2() {
+	return ((MissionObjectImplementation*) impl)->getTemplateString2();
 }
 
 /*

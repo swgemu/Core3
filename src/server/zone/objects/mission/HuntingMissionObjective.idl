@@ -55,6 +55,8 @@ include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 
 class HuntingMissionObjective extends MissionObjective {
+	private int targetsKilled;
+	
 	public HuntingMissionObjective(MissionObject mission) {
 		super(mission);
 		

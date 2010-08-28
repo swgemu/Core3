@@ -89,6 +89,9 @@ class MissionObject extends IntangibleObject {
 	protected SceneObject missionTarget;
 	protected SceneObject missionTargetDest;
 	
+	protected string templateString1;
+	protected string templateString2;
+	
 	//protected unsigned int targetTemplateCRC;
 	@dereferenced
 	protected TemplateReference<SharedObjectTemplate> targetTemplate;
@@ -191,8 +194,13 @@ class MissionObject extends IntangibleObject {
 		missionTargetDest = target;
 	}
 	
-	public native void setMissionNumber(int num) {
+	public void setMissionNumber(int num) {
 		missionNumber = num;
+	}
+	
+	public void setTemplateStrings(final string temp1, final string temp2) {
+		templateString1 = temp1;
+		templateString2 = temp2;
 	}
 	
 	public float getStartPositionX() {
@@ -278,5 +286,13 @@ class MissionObject extends IntangibleObject {
 	
 	public boolean isMissionObject() {
 		return true;
+	}
+	
+	public string getTemplateString1() {
+		return templateString1;
+	}
+	
+	public string getTemplateString2() {
+		return templateString2;
 	}
 }
