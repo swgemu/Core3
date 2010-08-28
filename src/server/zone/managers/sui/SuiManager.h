@@ -137,7 +137,7 @@ namespace server {
 
 	  	void handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
 
-	  	void handleSellJunkLootSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleSellJunkLootSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
 	  	void handleBanListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
 	  	void handleCommandsListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
 	  	void handleAccountListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
