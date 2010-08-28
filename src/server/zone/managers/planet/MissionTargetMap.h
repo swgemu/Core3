@@ -27,14 +27,14 @@ public:
 		Coordinate coord(origin->getPositionX(), origin->getPositionZ(), origin->getPositionY());
 		coord.randomizePosition(1000 * pow(4, diff - 1));
 
-		if (coord.getPositionX() > origin->getZone()->getMaxX())
-			coord.setPositionX(origin->getZone()->getMaxX());
-		if (coord.getPositionX() < origin->getZone()->getMinX())
-			coord.setPositionX(origin->getZone()->getMinX());
-		if (coord.getPositionY() > origin->getZone()->getMaxY())
-			coord.setPositionY(origin->getZone()->getMaxY());
-		if (coord.getPositionY() < origin->getZone()->getMinY())
-			coord.setPositionY(origin->getZone()->getMinY());
+		if (coord.getPositionX() > zone->getMaxX())
+			coord.setPositionX(zone->getMaxX());
+		if (coord.getPositionX() < zone->getMinX())
+			coord.setPositionX(zone->getMinX());
+		if (coord.getPositionY() > zone->getMaxY())
+			coord.setPositionY(zone->getMaxY());
+		if (coord.getPositionY() < zone->getMinY())
+			coord.setPositionY(zone->getMinY());
 
 		rlock();
 
