@@ -12,6 +12,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/building/city/CityHallObject.h"
+
 /*
  *	CityVoteTerminalStub
  */
@@ -78,6 +80,31 @@ bool CityVoteTerminal::isCityVoteTerminal() {
 		return method.executeWithBooleanReturn();
 	} else
 		return ((CityVoteTerminalImplementation*) _impl)->isCityVoteTerminal();
+}
+
+void CityVoteTerminal::setCityHallObject(CityHallObject* cityHall) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(cityHall);
+
+		method.executeWithVoidReturn();
+	} else
+		((CityVoteTerminalImplementation*) _impl)->setCityHallObject(cityHall);
+}
+
+CityHallObject* CityVoteTerminal::getCityHallObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return (CityHallObject*) method.executeWithObjectReturn();
+	} else
+		return ((CityVoteTerminalImplementation*) _impl)->getCityHallObject();
 }
 
 /*
@@ -147,24 +174,35 @@ void CityVoteTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("CityVoteTerminal");
 
+	addSerializableVariable("cityHallObject", &cityHallObject);
 }
 
 CityVoteTerminalImplementation::CityVoteTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(56):  		Logger.setLoggingName("CityVoteTerminal");
+	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(60):  		Logger.setLoggingName("CityVoteTerminal");
 	Logger::setLoggingName("CityVoteTerminal");
 }
 
 void CityVoteTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(63):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(61):  		Logger.setLoggingName("CityVoteTerminal");
+	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(65):  		Logger.setLoggingName("CityVoteTerminal");
 	Logger::setLoggingName("CityVoteTerminal");
 }
 
 bool CityVoteTerminalImplementation::isCityVoteTerminal() {
-	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(69):  		return true;
+	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(73):  		return true;
 	return true;
+}
+
+void CityVoteTerminalImplementation::setCityHallObject(CityHallObject* cityHall) {
+	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(77):  		cityHallObject = cityHall;
+	cityHallObject = cityHall;
+}
+
+CityHallObject* CityVoteTerminalImplementation::getCityHallObject() {
+	// server/zone/objects/tangible/terminal/city/CityVoteTerminal.idl(81):  		return cityHallObject;
+	return cityHallObject;
 }
 
 /*
@@ -190,6 +228,12 @@ Packet* CityVoteTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case 9:
 		resp->insertBoolean(isCityVoteTerminal());
 		break;
+	case 10:
+		setCityHallObject((CityHallObject*) inv->getObjectParameter());
+		break;
+	case 11:
+		resp->insertLong(getCityHallObject()->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -211,6 +255,14 @@ int CityVoteTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte
 
 bool CityVoteTerminalAdapter::isCityVoteTerminal() {
 	return ((CityVoteTerminalImplementation*) impl)->isCityVoteTerminal();
+}
+
+void CityVoteTerminalAdapter::setCityHallObject(CityHallObject* cityHall) {
+	((CityVoteTerminalImplementation*) impl)->setCityHallObject(cityHall);
+}
+
+CityHallObject* CityVoteTerminalAdapter::getCityHallObject() {
+	return ((CityVoteTerminalImplementation*) impl)->getCityHallObject();
 }
 
 /*

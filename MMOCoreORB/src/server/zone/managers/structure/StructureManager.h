@@ -140,21 +140,9 @@ public:
 
 	int redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy = true);
 
-	int sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject);
+	int declareResidence(PlayerCreature* player, StructureObject* structureObject);
 
-	int sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject);
-
-	int sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject);
-
-	int handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject);
-
-	int handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject);
-
-	int handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject);
-
-	int handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject);
-
-	int sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject);
+	int changePrivacy(PlayerCreature* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
 
@@ -233,21 +221,9 @@ public:
 
 	int redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy = true);
 
-	int sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject);
+	int declareResidence(PlayerCreature* player, StructureObject* structureObject);
 
-	int sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject);
-
-	int sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject);
-
-	int handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject);
-
-	int handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject);
-
-	int handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject);
-
-	int handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject);
-
-	int sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject);
+	int changePrivacy(PlayerCreature* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
 
@@ -298,21 +274,9 @@ public:
 
 	int redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy);
 
-	int sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject);
+	int declareResidence(PlayerCreature* player, StructureObject* structureObject);
 
-	int sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject);
-
-	int sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject);
-
-	int handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject);
-
-	int handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject);
-
-	int handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject);
-
-	int handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject);
-
-	int sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject);
+	int changePrivacy(PlayerCreature* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
 

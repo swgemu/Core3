@@ -12,6 +12,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/building/city/CityHallObject.h"
+
 /*
  *	CityTerminalStub
  */
@@ -78,6 +80,31 @@ bool CityTerminal::isCityTerminal() {
 		return method.executeWithBooleanReturn();
 	} else
 		return ((CityTerminalImplementation*) _impl)->isCityTerminal();
+}
+
+void CityTerminal::setCityHallObject(CityHallObject* cityHall) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(cityHall);
+
+		method.executeWithVoidReturn();
+	} else
+		((CityTerminalImplementation*) _impl)->setCityHallObject(cityHall);
+}
+
+CityHallObject* CityTerminal::getCityHallObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return (CityHallObject*) method.executeWithObjectReturn();
+	} else
+		return ((CityTerminalImplementation*) _impl)->getCityHallObject();
 }
 
 /*
@@ -147,24 +174,35 @@ void CityTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("CityTerminal");
 
+	addSerializableVariable("cityHallObject", &cityHallObject);
 }
 
 CityTerminalImplementation::CityTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(56):  		Logger.setLoggingName("CityTerminal");
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(60):  		Logger.setLoggingName("CityTerminal");
 	Logger::setLoggingName("CityTerminal");
 }
 
 void CityTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(63):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(61):  		Logger.setLoggingName("CityTerminal");
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(65):  		Logger.setLoggingName("CityTerminal");
 	Logger::setLoggingName("CityTerminal");
 }
 
 bool CityTerminalImplementation::isCityTerminal() {
-	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(69):  		return true;
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(73):  		return true;
 	return true;
+}
+
+void CityTerminalImplementation::setCityHallObject(CityHallObject* cityHall) {
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(77):  		cityHallObject = cityHall;
+	cityHallObject = cityHall;
+}
+
+CityHallObject* CityTerminalImplementation::getCityHallObject() {
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(81):  		return cityHallObject;
+	return cityHallObject;
 }
 
 /*
@@ -190,6 +228,12 @@ Packet* CityTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case 9:
 		resp->insertBoolean(isCityTerminal());
 		break;
+	case 10:
+		setCityHallObject((CityHallObject*) inv->getObjectParameter());
+		break;
+	case 11:
+		resp->insertLong(getCityHallObject()->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -211,6 +255,14 @@ int CityTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte sel
 
 bool CityTerminalAdapter::isCityTerminal() {
 	return ((CityTerminalImplementation*) impl)->isCityTerminal();
+}
+
+void CityTerminalAdapter::setCityHallObject(CityHallObject* cityHall) {
+	((CityTerminalImplementation*) impl)->setCityHallObject(cityHall);
+}
+
+CityHallObject* CityTerminalAdapter::getCityHallObject() {
+	return ((CityTerminalImplementation*) impl)->getCityHallObject();
 }
 
 /*

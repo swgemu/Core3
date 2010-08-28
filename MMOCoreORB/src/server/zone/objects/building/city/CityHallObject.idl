@@ -48,15 +48,28 @@ import server.zone.objects.building.BuildingObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
 import server.zone.objects.region.Region;
+import server.zone.objects.tangible.terminal.city.CityTerminal;
+import server.zone.objects.tangible.terminal.city.CityVoteTerminal;
+import system.util.SortedVector;
 
 class CityHallObject extends BuildingObject {
+	@dereferenced
+	protected SortedVector<unsigned long> declaredCitizens;
+	
 	protected Region cityRegion;
 	protected string cityName;
+	
+	protected unsigned long mayorObjectID;
+	
+	protected CityTerminal cityTerminal;
+	protected CityVoteTerminal cityVoteTerminal;
 	
 	public CityHallObject() {
 		setLoggingName("CityHallObject");
 		
 		cityName = "test city";
+		
+		mayorObjectID = 0;
 	}
 	
 	/**
@@ -85,6 +98,20 @@ class CityHallObject extends BuildingObject {
 		return cityName;
 	}
 	
+	public native void sendStatusTo(PlayerCreature player);
+	public native void sendCitizenshipReportTo(PlayerCreature player);
+	public native void sendStructureReportTo(PlayerCreature player);
+	public native void sendTreasuryReportTo(PlayerCreature player);
+	
+	public native void sendChangeCityNameTo(PlayerCreature player);
+	public native void sendManageMilitiaTo(PlayerCreature player);
+	public native void sendAdjustTaxesTo(PlayerCreature player);
+	public native void sendTreasuryDepositTo(PlayerCreature player);
+	public native void sendTreasuryWithdrawalTo(PlayerCreature player);
+	public native void sendCitySpecializationSelectionTo(PlayerCreature player);
+	
+	public native void toggleCityRegistration();
+	
 	/**
 	 * Gets called when the structure has been created;
 	 */
@@ -92,5 +119,77 @@ class CityHallObject extends BuildingObject {
 	
 	public boolean isCityHallBuilding() {
 		return true;
+	}
+	
+	/**
+	 * Adds a player to the declared citizens list, making them a citizen of the city.
+	 * @param player The player declaring citizenship
+	 */
+	public void declareCitizenship(PlayerCreature player) {
+		declaredCitizens.put(player.getObjectID());
+	}
+	
+	/**
+	 * Adds a player to the declared citizens list, making them a citizen of the city.
+	 * @param playerID The object id of the player declaring citizenship
+	 */
+	public void declareCitizenship(unsigned long playerID) {
+		declaredCitizens.put(playerID);
+	}
+	
+	/**
+	 * Remvoes a player from the declared citizens list
+	 * @param player The player losing citizenship
+	 */
+	public void revokeCitizenship(PlayerCreature player) {
+		declaredCitizens.drop(player.getObjectID());
+	}
+	
+	/**
+	 * Removes a player from the declared citizens list
+	 * @param playerID The object id of the player losing citizenship
+	 */
+	public void revokeCitizenship(unsigned long playerID) {
+		declaredCitizens.drop(playerID);
+	}
+	
+	public unsigned long getMayorObjectID() {
+		return mayorObjectID;
+	}
+	
+	public void setMayorObjectID(unsigned long oid) {
+		mayorObjectID = oid;
+	}
+	
+	public boolean isMayorOf(PlayerCreature player) {
+		return player.getObjectID() == mayorObjectID;
+	}
+	
+	public boolean isMayorOf(unsigned long playerID) {
+		return playerID == mayorObjectID;
+	}
+	
+	public boolean isCitizenOf(PlayerCreature player) {
+		return declaredCitizens.contains(player.getObjectID());
+	}
+	
+	public boolean isCitizenOf(unsigned long playerID) {
+		return declaredCitizens.contains(playerID);
+	}
+	
+	public CityTerminal getCityTerminal() {
+		return cityTerminal;
+	}
+	
+	public CityVoteTerminal getCityVoteTerminal() {
+		return cityVoteTerminal;
+	}
+	
+	public Region getCityRegion() {
+		return cityRegion;
+	}
+	
+	public void setCityRegion(Region region) {
+		cityRegion = region;
 	}
 }

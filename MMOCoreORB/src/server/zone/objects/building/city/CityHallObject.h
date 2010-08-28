@@ -35,9 +35,47 @@ class Region;
 
 using namespace server::zone::objects::region;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace terminal {
+namespace city {
+
+class CityTerminal;
+
+} // namespace city
+} // namespace terminal
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::terminal::city;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace terminal {
+namespace city {
+
+class CityVoteTerminal;
+
+} // namespace city
+} // namespace terminal
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::terminal::city;
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "engine/lua/LuaObject.h"
+
+#include "system/util/SortedVector.h"
 
 namespace server {
 namespace zone {
@@ -61,9 +99,59 @@ public:
 
 	String getCityName();
 
+	void sendStatusTo(PlayerCreature* player);
+
+	void sendCitizenshipReportTo(PlayerCreature* player);
+
+	void sendStructureReportTo(PlayerCreature* player);
+
+	void sendTreasuryReportTo(PlayerCreature* player);
+
+	void sendChangeCityNameTo(PlayerCreature* player);
+
+	void sendManageMilitiaTo(PlayerCreature* player);
+
+	void sendAdjustTaxesTo(PlayerCreature* player);
+
+	void sendTreasuryDepositTo(PlayerCreature* player);
+
+	void sendTreasuryWithdrawalTo(PlayerCreature* player);
+
+	void sendCitySpecializationSelectionTo(PlayerCreature* player);
+
+	void toggleCityRegistration();
+
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool isCityHallBuilding();
+
+	void declareCitizenship(PlayerCreature* player);
+
+	void declareCitizenship(unsigned long long playerID);
+
+	void revokeCitizenship(PlayerCreature* player);
+
+	void revokeCitizenship(unsigned long long playerID);
+
+	unsigned long long getMayorObjectID();
+
+	void setMayorObjectID(unsigned long long oid);
+
+	bool isMayorOf(PlayerCreature* player);
+
+	bool isMayorOf(unsigned long long playerID);
+
+	bool isCitizenOf(PlayerCreature* player);
+
+	bool isCitizenOf(unsigned long long playerID);
+
+	CityTerminal* getCityTerminal();
+
+	CityVoteTerminal* getCityVoteTerminal();
+
+	Region* getCityRegion();
+
+	void setCityRegion(Region* region);
 
 protected:
 	CityHallObject(DummyConstructorParameter* param);
@@ -91,9 +179,17 @@ namespace city {
 
 class CityHallObjectImplementation : public BuildingObjectImplementation {
 protected:
+	SortedVector<unsigned long long> declaredCitizens;
+
 	ManagedReference<Region* > cityRegion;
 
 	String cityName;
+
+	unsigned long long mayorObjectID;
+
+	ManagedReference<CityTerminal* > cityTerminal;
+
+	ManagedReference<CityVoteTerminal* > cityVoteTerminal;
 
 public:
 	CityHallObjectImplementation();
@@ -112,9 +208,59 @@ public:
 
 	String getCityName();
 
+	void sendStatusTo(PlayerCreature* player);
+
+	void sendCitizenshipReportTo(PlayerCreature* player);
+
+	void sendStructureReportTo(PlayerCreature* player);
+
+	void sendTreasuryReportTo(PlayerCreature* player);
+
+	void sendChangeCityNameTo(PlayerCreature* player);
+
+	void sendManageMilitiaTo(PlayerCreature* player);
+
+	void sendAdjustTaxesTo(PlayerCreature* player);
+
+	void sendTreasuryDepositTo(PlayerCreature* player);
+
+	void sendTreasuryWithdrawalTo(PlayerCreature* player);
+
+	void sendCitySpecializationSelectionTo(PlayerCreature* player);
+
+	void toggleCityRegistration();
+
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool isCityHallBuilding();
+
+	void declareCitizenship(PlayerCreature* player);
+
+	void declareCitizenship(unsigned long long playerID);
+
+	void revokeCitizenship(PlayerCreature* player);
+
+	void revokeCitizenship(unsigned long long playerID);
+
+	unsigned long long getMayorObjectID();
+
+	void setMayorObjectID(unsigned long long oid);
+
+	bool isMayorOf(PlayerCreature* player);
+
+	bool isMayorOf(unsigned long long playerID);
+
+	bool isCitizenOf(PlayerCreature* player);
+
+	bool isCitizenOf(unsigned long long playerID);
+
+	CityTerminal* getCityTerminal();
+
+	CityVoteTerminal* getCityVoteTerminal();
+
+	Region* getCityRegion();
+
+	void setCityRegion(Region* region);
 
 	CityHallObject* _this;
 
@@ -167,9 +313,59 @@ public:
 
 	String getCityName();
 
+	void sendStatusTo(PlayerCreature* player);
+
+	void sendCitizenshipReportTo(PlayerCreature* player);
+
+	void sendStructureReportTo(PlayerCreature* player);
+
+	void sendTreasuryReportTo(PlayerCreature* player);
+
+	void sendChangeCityNameTo(PlayerCreature* player);
+
+	void sendManageMilitiaTo(PlayerCreature* player);
+
+	void sendAdjustTaxesTo(PlayerCreature* player);
+
+	void sendTreasuryDepositTo(PlayerCreature* player);
+
+	void sendTreasuryWithdrawalTo(PlayerCreature* player);
+
+	void sendCitySpecializationSelectionTo(PlayerCreature* player);
+
+	void toggleCityRegistration();
+
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool isCityHallBuilding();
+
+	void declareCitizenship(PlayerCreature* player);
+
+	void declareCitizenship(unsigned long long playerID);
+
+	void revokeCitizenship(PlayerCreature* player);
+
+	void revokeCitizenship(unsigned long long playerID);
+
+	unsigned long long getMayorObjectID();
+
+	void setMayorObjectID(unsigned long long oid);
+
+	bool isMayorOf(PlayerCreature* player);
+
+	bool isMayorOf(unsigned long long playerID);
+
+	bool isCitizenOf(PlayerCreature* player);
+
+	bool isCitizenOf(unsigned long long playerID);
+
+	CityTerminal* getCityTerminal();
+
+	CityVoteTerminal* getCityVoteTerminal();
+
+	Region* getCityRegion();
+
+	void setCityRegion(Region* region);
 
 protected:
 	String _param1_trySetCityName__PlayerCreature_String_;

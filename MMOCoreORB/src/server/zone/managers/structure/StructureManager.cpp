@@ -108,7 +108,7 @@ int StructureManager::redeedStructure(PlayerCreature* player, StructureObject* s
 		return ((StructureManagerImplementation*) _impl)->redeedStructure(player, structureObject, destroy);
 }
 
-int StructureManager::sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject) {
+int StructureManager::declareResidence(PlayerCreature* player, StructureObject* structureObject) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -119,10 +119,10 @@ int StructureManager::sendDestroyConfirmTo(PlayerCreature* player, StructureObje
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _impl)->sendDestroyConfirmTo(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->declareResidence(player, structureObject);
 }
 
-int StructureManager::sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject) {
+int StructureManager::changePrivacy(PlayerCreature* player, StructureObject* structureObject) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,91 +133,7 @@ int StructureManager::sendDestroyCodeTo(PlayerCreature* player, StructureObject*
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureManagerImplementation*) _impl)->sendDestroyCodeTo(player, structureObject);
-}
-
-int StructureManager::sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-		method.addObjectParameter(player);
-		method.addObjectParameter(structureObject);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((StructureManagerImplementation*) _impl)->sendStructureStatusTo(player, structureObject);
-}
-
-int StructureManager::handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-		method.addObjectParameter(player);
-		method.addObjectParameter(structureObject);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((StructureManagerImplementation*) _impl)->handlePayMaintenance(player, structureObject);
-}
-
-int StructureManager::handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 14);
-		method.addObjectParameter(player);
-		method.addObjectParameter(structureObject);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((StructureManagerImplementation*) _impl)->handleWithdrawMaintenance(player, structureObject);
-}
-
-int StructureManager::handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addObjectParameter(player);
-		method.addObjectParameter(structureObject);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((StructureManagerImplementation*) _impl)->handleDeclareResidency(player, structureObject);
-}
-
-int StructureManager::handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 16);
-		method.addObjectParameter(player);
-		method.addObjectParameter(structureObject);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((StructureManagerImplementation*) _impl)->handlePrivacyChange(player, structureObject);
-}
-
-int StructureManager::sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
-		method.addObjectParameter(player);
-		method.addObjectParameter(structureObject);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((StructureManagerImplementation*) _impl)->sendStructureNamePromptTo(player, structureObject);
+		return ((StructureManagerImplementation*) _impl)->changePrivacy(player, structureObject);
 }
 
 String StructureManager::getTimeString(unsigned int timestamp) {
@@ -225,7 +141,7 @@ String StructureManager::getTimeString(unsigned int timestamp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 12);
 		method.addUnsignedIntParameter(timestamp);
 
 		method.executeWithAsciiReturn(_return_getTimeString);
@@ -349,30 +265,12 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		resp->insertSignedInt(redeedStructure((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 10:
-		resp->insertSignedInt(sendDestroyConfirmTo((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(declareResidence((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
 		break;
 	case 11:
-		resp->insertSignedInt(sendDestroyCodeTo((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(changePrivacy((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
 		break;
 	case 12:
-		resp->insertSignedInt(sendStructureStatusTo((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
-		break;
-	case 13:
-		resp->insertSignedInt(handlePayMaintenance((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
-		break;
-	case 14:
-		resp->insertSignedInt(handleWithdrawMaintenance((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
-		break;
-	case 15:
-		resp->insertSignedInt(handleDeclareResidency((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
-		break;
-	case 16:
-		resp->insertSignedInt(handlePrivacyChange((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
-		break;
-	case 17:
-		resp->insertSignedInt(sendStructureNamePromptTo((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
-		break;
-	case 18:
 		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
 		break;
 	default:
@@ -398,36 +296,12 @@ int StructureManagerAdapter::redeedStructure(PlayerCreature* player, StructureOb
 	return ((StructureManagerImplementation*) impl)->redeedStructure(player, structureObject, destroy);
 }
 
-int StructureManagerAdapter::sendDestroyConfirmTo(PlayerCreature* player, StructureObject* structureObject) {
-	return ((StructureManagerImplementation*) impl)->sendDestroyConfirmTo(player, structureObject);
+int StructureManagerAdapter::declareResidence(PlayerCreature* player, StructureObject* structureObject) {
+	return ((StructureManagerImplementation*) impl)->declareResidence(player, structureObject);
 }
 
-int StructureManagerAdapter::sendDestroyCodeTo(PlayerCreature* player, StructureObject* structureObject) {
-	return ((StructureManagerImplementation*) impl)->sendDestroyCodeTo(player, structureObject);
-}
-
-int StructureManagerAdapter::sendStructureStatusTo(PlayerCreature* player, StructureObject* structureObject) {
-	return ((StructureManagerImplementation*) impl)->sendStructureStatusTo(player, structureObject);
-}
-
-int StructureManagerAdapter::handlePayMaintenance(PlayerCreature* player, StructureObject* structureObject) {
-	return ((StructureManagerImplementation*) impl)->handlePayMaintenance(player, structureObject);
-}
-
-int StructureManagerAdapter::handleWithdrawMaintenance(PlayerCreature* player, StructureObject* structureObject) {
-	return ((StructureManagerImplementation*) impl)->handleWithdrawMaintenance(player, structureObject);
-}
-
-int StructureManagerAdapter::handleDeclareResidency(PlayerCreature* player, StructureObject* structureObject) {
-	return ((StructureManagerImplementation*) impl)->handleDeclareResidency(player, structureObject);
-}
-
-int StructureManagerAdapter::handlePrivacyChange(PlayerCreature* player, StructureObject* structureObject) {
-	return ((StructureManagerImplementation*) impl)->handlePrivacyChange(player, structureObject);
-}
-
-int StructureManagerAdapter::sendStructureNamePromptTo(PlayerCreature* player, StructureObject* structureObject) {
-	return ((StructureManagerImplementation*) impl)->sendStructureNamePromptTo(player, structureObject);
+int StructureManagerAdapter::changePrivacy(PlayerCreature* player, StructureObject* structureObject) {
+	return ((StructureManagerImplementation*) impl)->changePrivacy(player, structureObject);
 }
 
 String StructureManagerAdapter::getTimeString(unsigned int timestamp) {

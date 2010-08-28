@@ -63,6 +63,22 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace building {
+namespace city {
+
+class CityHallObject;
+
+} // namespace city
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building::city;
+
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
@@ -85,6 +101,10 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isCityTerminal();
+
+	void setCityHallObject(CityHallObject* cityHall);
+
+	CityHallObject* getCityHallObject();
 
 protected:
 	CityTerminal(DummyConstructorParameter* param);
@@ -111,6 +131,8 @@ namespace terminal {
 namespace city {
 
 class CityTerminalImplementation : public TerminalImplementation {
+protected:
+	ManagedWeakReference<CityHallObject* > cityHallObject;
 
 public:
 	CityTerminalImplementation();
@@ -124,6 +146,10 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isCityTerminal();
+
+	void setCityHallObject(CityHallObject* cityHall);
+
+	CityHallObject* getCityHallObject();
 
 	CityTerminal* _this;
 
@@ -171,6 +197,10 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isCityTerminal();
+
+	void setCityHallObject(CityHallObject* cityHall);
+
+	CityHallObject* getCityHallObject();
 
 };
 
