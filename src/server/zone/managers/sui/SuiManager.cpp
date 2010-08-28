@@ -2721,26 +2721,11 @@ void SuiManager::handleStructureDestroyConfirm(uint32 boxID, PlayerCreature* pla
 	if (usingObject == NULL || !usingObject->isStructureObject())
 		return;
 
-	ManagedReference<StructureObject*> structureObject = (StructureObject*) usingObject.get();
-
-	Zone* zone = structureObject->getZone();
-
-	if (zone == NULL)
-		return;
-
-	PlanetManager* planetManager = zone->getPlanetManager();
-
-	if (planetManager == NULL)
-		return;
-
-	StructureManager* structureManager = planetManager->getStructureManager();
-
-	if (structureManager == NULL)
-		return;
+	StructureObject* structureObject = (StructureObject*) usingObject.get();
 
 	Locker structureLocker(structureObject, player);
 
-	structureManager->sendDestroyCodeTo(player, structureObject);
+	structureObject->sendDestroyCodeTo(player);
 }
 
 void SuiManager::handleStructureDestroyCode(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& input) {

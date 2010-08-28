@@ -166,34 +166,9 @@ class StructureManager extends ManagedObject implements Logger {
 	 */
 	public native int redeedStructure(PlayerCreature player, StructureObject structureObject, boolean destroy = true);
 	
-	/**
-	 * Sends a SUI List box containing information regarding the redeed status of this structure, and asking the player
-	 * if they wish to continue with the destruction process.
-	 * pre: player locked, building locked
-	 * post: player locked, building locked
-	 * @param player The player who is destroying the structure.
-	 * @param building the structure being destroyed.
-	 */
-	public native int sendDestroyConfirmTo(PlayerCreature player, StructureObject structureObject);
+	public native int declareResidence(PlayerCreature player, StructureObject structureObject);
 	
-	/**
-	 * Sends a SUI Input box requesting a destroy code be entered for final confirmation.
-	 * pre: player locked, building locked
-	 * post: player locked, building locked
-	 */
-	public native int sendDestroyCodeTo(PlayerCreature player, StructureObject structureObject);
-	
-	public native int sendStructureStatusTo(PlayerCreature player, StructureObject structureObject);
-	
-	public native int handlePayMaintenance(PlayerCreature player, StructureObject structureObject);
-	
-	public native int handleWithdrawMaintenance(PlayerCreature player, StructureObject structureObject);
-	
-	public native int handleDeclareResidency(PlayerCreature player, StructureObject structureObject);
-	
-	public native int handlePrivacyChange(PlayerCreature player, StructureObject structureObject);
-	
-	public native int sendStructureNamePromptTo(PlayerCreature player, StructureObject structureObject);
+	public native int changePrivacy(PlayerCreature player, StructureObject structureObject);
 	
 	
 	//TEMPORARY

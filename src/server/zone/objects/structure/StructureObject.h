@@ -104,6 +104,18 @@ public:
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
+	void sendStatusTo(PlayerCreature* player);
+
+	void sendDestroyConfirmTo(PlayerCreature* player);
+
+	void sendDestroyCodeTo(PlayerCreature* player);
+
+	void sendManageMaintenanceTo(PlayerCreature* player);
+
+	void sendChangeNamePromptTo(PlayerCreature* player);
+
+	String getTimeString(unsigned int timestamp);
+
 	unsigned int generateDestroyCode();
 
 	bool isValidDestroyCode(unsigned int code);
@@ -199,6 +211,8 @@ protected:
 
 	virtual ~StructureObject();
 
+	String _return_getTimeString;
+
 	friend class StructureObjectHelper;
 };
 
@@ -260,6 +274,18 @@ public:
 	virtual int notifyStructurePlaced(PlayerCreature* player);
 
 	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
+
+	void sendStatusTo(PlayerCreature* player);
+
+	void sendDestroyConfirmTo(PlayerCreature* player);
+
+	void sendDestroyCodeTo(PlayerCreature* player);
+
+	void sendManageMaintenanceTo(PlayerCreature* player);
+
+	void sendChangeNamePromptTo(PlayerCreature* player);
+
+	String getTimeString(unsigned int timestamp);
 
 	virtual unsigned int generateDestroyCode();
 
@@ -397,6 +423,18 @@ public:
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
+
+	void sendStatusTo(PlayerCreature* player);
+
+	void sendDestroyConfirmTo(PlayerCreature* player);
+
+	void sendDestroyCodeTo(PlayerCreature* player);
+
+	void sendManageMaintenanceTo(PlayerCreature* player);
+
+	void sendChangeNamePromptTo(PlayerCreature* player);
+
+	String getTimeString(unsigned int timestamp);
 
 	unsigned int generateDestroyCode();
 

@@ -50,6 +50,7 @@ import server.zone.objects.tangible.terminal.bazaar.BazaarTerminal;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.creature.shuttle.ShuttleCreature;
+import server.zone.objects.building.city.CityHallObject;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.region.RegionCenterPoint;
@@ -61,6 +62,9 @@ class Region extends ActiveArea {
 	
 	@weakReference
 	protected ShuttleCreature shuttle;
+	
+	@weakReference
+	protected CityHallObject cityHall;
 	
 	public Region() {
 		super();
@@ -126,6 +130,13 @@ class Region extends ActiveArea {
 	public boolean isRegion() {
 		return true;
 	}
-
+	
+	public CityHallObject getCityHall() {
+		return cityHall;
+	}
+	
+	public void setCityHall(CityHallObject hall) {
+		cityHall = hall;
+	}
 }
 

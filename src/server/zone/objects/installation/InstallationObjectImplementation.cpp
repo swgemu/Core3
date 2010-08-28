@@ -90,42 +90,26 @@ int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* pla
 	if (!isOnAdminList(player))
 		return 1;
 
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
-
-	if (planetManager == NULL)
-		return 0;
-
-	ManagedReference<StructureManager*> structureManager = planetManager->getStructureManager();
-
-	if (structureManager == NULL)
-		return 0;
-
-	Locker structureLocker(_this, player);
-
 	switch (selectedID) {
 	case 124:
-		structureManager->sendStructureStatusTo(player, _this);
+		sendStatusTo(player);
 		break;
 
 	case 129:
-		structureManager->handlePayMaintenance(player, _this);
+		sendManageMaintenanceTo(player);
 		break;
 
 	case 128:
-		structureManager->sendDestroyConfirmTo(player, _this);
+		sendDestroyConfirmTo(player);
 		break;
 
 	case 50:
-		structureManager->sendStructureNamePromptTo(player, _this);
+		sendChangeNamePromptTo(player);
 		break;
 
 	case 51:
 		//TODO: Move to structure manager.
 		handleStructureAddEnergy(player);
-		break;
-
-	case 78:
-		//Gets handled client side apparently.
 		break;
 
 	case 121:

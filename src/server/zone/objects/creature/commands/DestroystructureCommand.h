@@ -61,7 +61,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -71,43 +70,18 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		if (creature->getZone() == NULL)
-			return GENERALERROR;
-
 		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
 
-		ZoneServer* zoneServer = creature->getZoneServer();
+		ManagedReference<SceneObject*> obj = player->getInRangeStructureWithAdminRights();
 
-		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
-
-		ManagedReference<StructureObject*> structureObject = NULL;
-
-		//Try to find the target of the command...
-		if (obj != NULL && obj->isInstallationObject()) {
-			structureObject = (StructureObject*) obj.get();
-		} else if (player->getParent() != NULL && player->getParent()->isCellObject()) {
-			ManagedReference<CellObject*> cell = (CellObject*) player->getParent();
-
-			if (cell->getParent() != NULL && cell->getParent()->isBuildingObject())
-				structureObject = (StructureObject*) cell->getParent();
-		}
-
-		if (structureObject == NULL) {
+		if (obj == NULL || obj->isStructureObject()) {
 			player->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
 			return INVALIDPARAMETERS;
 		}
 
-		PlanetManager* planetManager = creature->getZone()->getPlanetManager();
+		StructureObject* structureObject = (StructureObject*) obj.get();
 
-		if (planetManager == NULL)
-			return GENERALERROR;
-
-		StructureManager* structureManager = planetManager->getStructureManager();
-
-		if (structureManager == NULL)
-			return GENERALERROR;
-
-		structureManager->sendDestroyConfirmTo(player, structureObject);
+		structureObject->sendDestroyConfirmTo(player);
 
 		return SUCCESS;
 	}

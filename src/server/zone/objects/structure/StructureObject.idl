@@ -145,6 +145,14 @@ class StructureObject extends TangibleObject {
 		return true;
 	}
 	
+	public native void sendStatusTo(PlayerCreature player);
+	public native void sendDestroyConfirmTo(PlayerCreature player);
+	public native void sendDestroyCodeTo(PlayerCreature player);
+	public native void sendManageMaintenanceTo(PlayerCreature player);
+	public native void sendChangeNamePromptTo(PlayerCreature player);
+	
+	public native string getTimeString(unsigned int timestamp);
+	
 	/**
 	 * Generates and sets a random 6 digit code to be confirmed before allowing a player to destroy a structure.
 	 * @return int The generated 6 digit destroy code.

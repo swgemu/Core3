@@ -50,8 +50,12 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.Zone;
+import server.zone.objects.building.city.CityHallObject;
 
 class CityVoteTerminal extends Terminal {
+	@weakReference
+	protected CityHallObject cityHallObject;
+	
 	public CityVoteTerminal() {
 		Logger.setLoggingName("CityVoteTerminal");
 	}
@@ -67,5 +71,13 @@ class CityVoteTerminal extends Terminal {
 	
 	public boolean isCityVoteTerminal() {
 		return true;
+	}
+	
+	public void setCityHallObject(CityHallObject cityHall) {
+		cityHallObject = cityHall;
+	}
+	
+	public CityHallObject getCityHallObject() {
+		return cityHallObject;
 	}
 }

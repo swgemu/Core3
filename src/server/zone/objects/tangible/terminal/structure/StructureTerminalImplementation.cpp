@@ -77,25 +77,22 @@ int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* play
 		structureObject->sendPermissionListTo(player, "BAN");
 		break;
 	case 128:
-		//Destroy Structure
-		structureManager->sendDestroyConfirmTo(player, structureObject);
+		structureObject->sendDestroyConfirmTo(player);
 		break;
 	case 129:
-		//Pay Maintenance
-		structureManager->handlePayMaintenance(player, structureObject);
+		structureObject->sendManageMaintenanceTo(player);
 		break;
 	case 124:
-		//Structure Status
-		structureManager->sendStructureStatusTo(player, structureObject);
+		structureObject->sendStatusTo(player);
 		break;
 	case 127:
-		structureManager->handleDeclareResidency(player, structureObject);
+		structureManager->declareResidence(player, structureObject);
 		break;
 	case 125:
-		structureManager->handlePrivacyChange(player, structureObject);
+		structureManager->changePrivacy(player, structureObject);
 		break;
 	case 50:
-		structureManager->sendStructureNamePromptTo(player, structureObject);
+		structureObject->sendChangeNamePromptTo(player);
 		break;
 	}
 
