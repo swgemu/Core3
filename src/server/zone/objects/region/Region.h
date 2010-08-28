@@ -62,6 +62,22 @@ using namespace server::zone::objects::creature::shuttle;
 namespace server {
 namespace zone {
 namespace objects {
+namespace building {
+namespace city {
+
+class CityHallObject;
+
+} // namespace city
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building::city;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace creature {
 
 class CreatureObject;
@@ -112,6 +128,10 @@ public:
 
 	bool isRegion();
 
+	CityHallObject* getCityHall();
+
+	void setCityHall(CityHallObject* hall);
+
 protected:
 	Region(DummyConstructorParameter* param);
 
@@ -138,6 +158,8 @@ protected:
 
 	ManagedWeakReference<ShuttleCreature* > shuttle;
 
+	ManagedWeakReference<CityHallObject* > cityHall;
+
 public:
 	RegionImplementation();
 
@@ -160,6 +182,10 @@ public:
 	int getBazaarCount();
 
 	bool isRegion();
+
+	CityHallObject* getCityHall();
+
+	void setCityHall(CityHallObject* hall);
 
 	Region* _this;
 
@@ -217,6 +243,10 @@ public:
 	int getBazaarCount();
 
 	bool isRegion();
+
+	CityHallObject* getCityHall();
+
+	void setCityHall(CityHallObject* hall);
 
 };
 
