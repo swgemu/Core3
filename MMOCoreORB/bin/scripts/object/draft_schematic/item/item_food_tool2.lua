@@ -41,23 +41,23 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_draft_schematic_item_item_food_tool = object_draft_schematic_item_shared_item_food_tool:new {
+object_draft_schematic_item_item_food_tool2 = object_draft_schematic_item_shared_item_food_tool2:new {
 
    templateType = DRAFTSCHEMATIC,
 
    customObjectName = "Food and Chemical Crafting Tool",
 
-   groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
+   groupName = "craftMedicineComponentGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 2, 
 
-   xpType = "crafting_general", 
+   xpType = "crafting_medicine_general", 
    xp = 65, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
@@ -83,4 +83,4 @@ object_draft_schematic_item_item_food_tool = object_draft_schematic_item_shared_
 
    tanoCRC = 1552915488, -- Script: 'object/tangible/crafting/station/food_tool.iff'
 }
-ObjectTemplates:addTemplate(object_draft_schematic_item_item_food_tool, "object/draft_schematic/item/item_food_tool.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_item_item_food_tool2, "object/draft_schematic/item/item_food_tool2.iff")
