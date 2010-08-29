@@ -39,6 +39,7 @@ void PlanetManagerImplementation::initialize() {
 	loadNoBuildAreas();
 	loadPerformanceLocations();
 	loadHuntingTargets();
+	loadReconLocations();
 
 	structureManager = new StructureManager(zone, server);
 	structureManager->loadStructures();
@@ -350,16 +351,74 @@ void PlanetManagerImplementation::loadHuntingTargets() {
 	StringBuffer query;
 	query << "SELECT file1,file2,level from mission_manager_hunt_types WHERE zoneid=" << zone->getZoneID() << ";";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	ResultSet* result = NULL;
 
-	while (result->next()) {
-		String templateName = result->getString(0);
-		String templateNameAlt = result->getString(1);
-		int level = result->getInt(2);
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
 
-		addHuntingTargetTemplate(templateName, templateNameAlt, level);
+		while (result->next()) {
+			String templateName = result->getString(0);
+			String templateNameAlt = result->getString(1);
+			int level = result->getInt(2);
+
+			addHuntingTargetTemplate(templateName, templateNameAlt, level);
+		}
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadHuntingTargets()\n");
 	}
 
 	delete result;
 }
 
+
+void PlanetManagerImplementation::loadReconLocations() {
+	info("loading recon locations ...", true);
+
+	StringBuffer query;
+	query << "SELECT * from mission_manager_recon_locs WHERE zoneid=" << zone->getZoneID() << ";";
+
+	ResultSet* result = NULL;
+	ManagedReference<TangibleObject*> location = NULL;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+		int i = 0;
+
+		while (result->next()) {
+			String tempName = result->getString(2);
+			int tempType = result->getInt(3);
+			float ox = result->getFloat(4);
+			float oy = result->getFloat(5);
+			float oz = result->getFloat(6);
+			float ow = result->getFloat(7);
+			float x = result->getFloat(8);
+			float z = result->getFloat(9);
+			float y = result->getFloat(10);
+
+			location = (TangibleObject*) zone->getZoneServer()->createObject(tempName.hashCode(), 1);
+
+			location->initializePosition(x, zone->getHeight(x, y), y);
+			location->setDirection(ow, ox, oy, oz);
+			location->setOptionsBitmask(0x108);
+			location->setPvpStatusBitmask(0);
+			location->insertToZone(zone);
+
+			location->updateToDatabase();
+
+			addReconLoc(location);
+
+			++i;
+		}
+
+		if (i > 0)
+			info(String::valueOf(i) + " recon locations loaded", true);
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadHuntingTargets()\n");
+	}
+
+	delete result;
+}

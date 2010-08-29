@@ -264,7 +264,6 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 	StringBuffer query;
 
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
-	//query << " AND (file = 'object/tangible/terminal/shared_terminal_mission.iff' OR file = 'object/tangible/terminal/shared_terminal_mission_artisan.iff');";
 	query << " AND (file LIKE 'object/tangible/terminal/shared_terminal_mission%');";
 
 	ResultSet* result = NULL;

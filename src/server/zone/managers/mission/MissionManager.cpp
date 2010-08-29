@@ -377,12 +377,27 @@ void MissionManager::createHuntingMissionObjectives(MissionObject* mission, Miss
 		((MissionManagerImplementation*) _impl)->createHuntingMissionObjectives(mission, missionTerminal, player);
 }
 
-bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spawn) {
+void MissionManager::createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 30);
+		method.addObjectParameter(mission);
+		method.addObjectParameter(missionTerminal);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->createReconMissionObjectives(mission, missionTerminal, player);
+}
+
+bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spawn) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(spawn);
 
@@ -560,6 +575,9 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		createHuntingMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 30:
+		createReconMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 31:
 		resp->insertBoolean(hasSurveyMission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_hasSurveyMission__PlayerCreature_String_)));
 		break;
 	default:
@@ -663,6 +681,10 @@ void MissionManagerAdapter::createEntertainerMissionObjectives(MissionObject* mi
 
 void MissionManagerAdapter::createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
 	((MissionManagerImplementation*) impl)->createHuntingMissionObjectives(mission, missionTerminal, player);
+}
+
+void MissionManagerAdapter::createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	((MissionManagerImplementation*) impl)->createReconMissionObjectives(mission, missionTerminal, player);
 }
 
 bool MissionManagerAdapter::hasSurveyMission(PlayerCreature* player, const String& spawn) {
