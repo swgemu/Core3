@@ -115,8 +115,6 @@ void ServerCore::init() {
 		if (configManager->getMakePing()) {
 			pingServer = new PingServer();
 		}
-
-
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
@@ -156,6 +154,8 @@ void ServerCore::run() {
 
 		pingServer->start(pingPort, pingAllowedConnections);
 	}
+
+	Core::initialize();
 
 	info("initialized", true);
 
