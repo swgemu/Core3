@@ -76,9 +76,9 @@ void StructureManagerImplementation::createLuaIncludes() {
 	for (int i = 0; i < createdFiles.size(); ++i) {
 		String file = createdFiles.get(i);
 
-		String luaFile = file.replaceAll("iff", "aul");
-		luaFile = luaFile.replaceAll("object/", "");
-		luaFile = luaFile.replaceAll("shared_", "");
+		String luaFile = file.replaceFirst("iff", "aul");
+		luaFile = luaFile.replaceFirst("object/", "");
+		luaFile = luaFile.replaceFirst("shared_", "");
 
 
 		//includeFile("group/group_object.lua")
@@ -112,12 +112,12 @@ void StructureManagerImplementation::createNewLuas() {
 		if (createdFiles.contains(file))
 			continue;
 
-		String newFileName = file.replaceAll("shared_", "");
+		String newFileName = file.replaceFirst("shared_", "");
 
-		String clientObjectName = file.replaceAll("/", "_");
-		clientObjectName = clientObjectName.replaceAll(".iff", "");
-		String serverObjectName = newFileName.replaceAll("/", "_");
-		serverObjectName = serverObjectName.replaceAll(".iff", "");
+		String clientObjectName = file.replaceFirst("/", "_");
+		clientObjectName = clientObjectName.replaceFirst(".iff", "");
+		String serverObjectName = newFileName.replaceFirst("/", "_");
+		serverObjectName = serverObjectName.replaceFirst(".iff", "");
 
 		int mapType1 = 0, mapType2 = 0, mapType3 = 0, gameObjectType = -1;
 
@@ -164,7 +164,7 @@ void StructureManagerImplementation::createNewLuas() {
 		newLua << "ObjectTemplates:addTemplate(" << serverObjectName << ", \"" << newFileName << "\")";
 
 		String path = "scripts/";
-		String luaFileName = newFileName.replaceAll("iff", "aul");
+		String luaFileName = newFileName.replaceFirst("iff", "aul");
 
 		String completeName = path + luaFileName;
 
@@ -223,7 +223,7 @@ void StructureManagerImplementation::loadStaticGarages() {
 
 			templateFile = result->getString(3);
 
-			String serverTemplate = templateFile.replaceAll("shared_", "");
+			String serverTemplate = templateFile.replaceFirst("shared_", "");
 
 			positionX = result->getFloat(8);
 			positionZ = result->getFloat(9);
@@ -383,7 +383,7 @@ void StructureManagerImplementation::loadStaticCraftingStations() {
 				continue;
 			}
 
-			file = file.replaceAll("shared_", "");
+			file = file.replaceFirst("shared_", "");
 			serverCRC = file.hashCode();
 
 			SceneObject* savedObject = zoneServer->getObject(objectID);
@@ -726,7 +726,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 				float z = result->getFloat(9);
 				float y = result->getFloat(10);
 
-				file = file.replaceAll("shared_", "");
+				file = file.replaceFirst("shared_", "");
 
 				info("trying to create " + file);
 
