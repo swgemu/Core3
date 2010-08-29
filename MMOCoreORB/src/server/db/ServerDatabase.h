@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class ServerDatabase {
 	static Vector<Database*>* databases;
-	static uint32 currentDB;
+	static AtomicInteger currentDB;
 
 public:
 	ServerDatabase(ConfigManager* configManager) {
@@ -87,7 +87,8 @@ public:
 
 	inline static Database* instance() {
 		int i = currentDB % databases->size();
-		Atomic::incrementInt(&currentDB);
+
+		currentDB.increment();
 
 		return databases->get(i);
 	}
