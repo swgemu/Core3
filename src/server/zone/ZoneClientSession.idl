@@ -57,6 +57,7 @@ import engine.service.proto.events.BaseClientCleanupEvent;
 import engine.service.proto.events.BaseClientNetStatusRequestEvent;
 import engine.service.proto.events.BaseClientEvent;
 
+@nonTransactional
 class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	@weakReference
 	protected SceneObject player;

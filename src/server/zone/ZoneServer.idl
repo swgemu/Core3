@@ -45,17 +45,20 @@ which carries forward this exception.
 package server.zone;
 
 import server.zone.objects.scene.SceneObject;
+
 import engine.service.proto.BasePacketHandler;
 import engine.service.DatagramServiceThread;
-import system.net.Socket;
-import system.net.SocketAddress;
-import system.net.Packet;
 import engine.service.ServiceClient;
 import engine.core.ManagedObject;
 import engine.core.TaskManager;
+import engine.log.Logger;
+
 import system.lang.Exception;
 import system.util.Vector;
-import engine.log.Logger;
+import system.net.Socket;
+import system.net.SocketAddress;
+import system.net.Packet;
+import system.thread.atomic.AtomicInteger;
 
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
@@ -71,6 +74,7 @@ import server.zone.managers.bazaar.BazaarManager;
 import server.zone.managers.minigames.FishingManager;
 import server.zone.managers.mission.MissionManager;
 
+@nonTransactional
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private transient BasePacketHandler phandler;
 	
@@ -99,10 +103,17 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	private int totalResentPackets;
 
-	private int currentPlayers;
-	private int maximumPlayers;
-	private int totalPlayers;
-	private int totalDeletedPlayers;
+	@dereferenced
+	private AtomicInteger currentPlayers;
+	
+	@dereferenced
+	private AtomicInteger maximumPlayers;
+	
+	@dereferenced
+	private AtomicInteger totalPlayers;
+	
+	@dereferenced
+	private AtomicInteger totalDeletedPlayers;
 	
 	private int serverState;
 
@@ -115,11 +126,6 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public static final int LOADING = 1;
 	public static final int ONLINE = 2;
 	public static final int LOCKED = 3;
-	
-	public void test() {
-		Zone zone = new Zone(null, null, 0);
-		zone.getHeight(0, 1);
-	}
 	
 	public native ZoneServer(int processingThreads, int galaxyid = 2);/* {
 		//super(Dat)
@@ -197,11 +203,9 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 	
 	public native void lock(boolean doLock = true);
+
 	public native void unlock(boolean doLock = true);
 	
-	/*public native void lock();
-	public native void unlock();*/
-
 	public void fixScheduler() {
 		//scheduler.fixQueue();
 	}
@@ -251,15 +255,15 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	}
 
 	public int getMaxPlayers() {
-		return maximumPlayers;
+		return maximumPlayers.get();
 	}
 
 	public int getTotalPlayers() {
-		return totalPlayers;
+		return totalPlayers.get();
 	}
 
 	public int getDeletedPlayers() {
-		return totalDeletedPlayers;
+		return totalDeletedPlayers.get();
 	}
 	
 	public PlayerManager getPlayerManager() {

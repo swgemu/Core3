@@ -51,8 +51,19 @@ void ZoneMessageProcessorThread::processMessage(Message* message) {
 	try {
 		ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) message->getClient();
 
-		if (client->isAvailable())
+		if (client->isAvailable()) {
+		#ifdef WITH_STM
+			engine::stm::Transaction* transaction = engine::stm::Transaction::currentTransaction();
+
+			do {
+				phandler->handleMessage(message);
+			} while (!transaction->commit());
+
+			delete transaction;
+		#else
 			phandler->handleMessage(message);
+		#endif
+		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 		e.printStackTrace();

@@ -49,17 +49,6 @@ which carries forward this exception.
 #include "server/zone/managers/planet/HeightMap.h"
 
 int main(int argc, char* argv[]) {
-	/*TaskManager* taskManager = TaskManager::instance();
-	taskManager->initialize();
-
-	taskManager->testScheduler();
-
-	Thread::sleep(10000000);
-
-	taskManager->shutdown();
-
-	return 0;*/
-
 	try {
 		Vector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
@@ -77,7 +66,6 @@ int main(int argc, char* argv[]) {
 	} catch (...) {
 		System::out << "unreported exception caught main()\n";
 	}
-
 
 	return 0;
 }
