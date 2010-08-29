@@ -288,6 +288,43 @@ void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schem
 	setProtection(schematic, WeaponObject::LIGHTSABER, base);
 }
 
+void ArmorObjectImplementation::calculateSpecalProtection(
+		ManufactureSchematic* schematic) {
+
+	CraftingValues* craftingValues = schematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("armor_effectiveness");
+	float value, min, max, currentValue;
+	String title = "exp_resistance";
+	String subtitle;
+	//float min = craftingValues->getMinValue("armor_effectiveness");
+	//float max = craftingValues->getMaxValue("armor_effectiveness");
+	float currentPercentage = craftingValues->getCurrentPercentage("armor_effectiveness");
+	float maxPercentage = craftingValues->getMaxPercentage("armor_effectiveness");
+	int precision = craftingValues->getPrecision("armor_effectiveness");
+
+	for (int i = 0; i <= 8; ++i) {
+
+		int type = pow(2,i);
+
+		if(isSpecial(type)) {
+
+			subtitle = getStringType(type);
+
+			value = craftingValues->getCurrentValue(subtitle);
+			min = 2;
+			max = (value - min + (min * currentPercentage)) / currentPercentage;
+			currentValue = (currentPercentage * (max - min)) + min;
+
+			craftingValues->addExperimentalProperty(title, subtitle, min, max,
+				precision, false);
+			craftingValues->setMaxPercentage(subtitle, maxPercentage);
+			craftingValues->setCurrentPercentage(subtitle, currentPercentage);
+			craftingValues->setCurrentValue(subtitle, currentValue);
+		}
+	}
+}
+
 void ArmorObjectImplementation::setProtection(ManufactureSchematic* schematic,
 		int type, float base) {
 
