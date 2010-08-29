@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_draft_schematic_item_item_food_tool2 = object_draft_schematic_item_shared_item_food_tool2:new {
+object_draft_schematic_item_item_food_tool2 = object_draft_schematic_item_shared_item_food_tool:new {
 
    templateType = DRAFTSCHEMATIC,
 
