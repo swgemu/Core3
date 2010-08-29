@@ -419,9 +419,9 @@ void ZoneServerImplementation::startManagers() {
 	radialManager = new RadialManager(_this);
 	radialManager->deploy("RadialManager");
 
-	resourceManager = new ResourceManager(_this, processor, objectManager);
+	/*resourceManager = new ResourceManager(_this, processor, objectManager);
 	resourceManager->deploy("ResourceManager");
-	resourceManager->initialize();
+	resourceManager->initialize();*/
 
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();
@@ -876,20 +876,21 @@ void ZoneServerImplementation::printEvents() {
 }
 
 void ZoneServerImplementation::increaseOnlinePlayers() {
-	Atomic::incrementInt((uint32*)&currentPlayers);
+	currentPlayers.increment();
 
 	if (currentPlayers > maximumPlayers)
 		maximumPlayers = currentPlayers;
 
-	Atomic::incrementInt((uint32*)&totalPlayers);
+	totalPlayers.increment();
 }
 
 void ZoneServerImplementation::decreaseOnlinePlayers() {
-	Atomic::decrementInt((uint32*)&currentPlayers);
-//currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
+	currentPlayers.decrement();
+
+	//currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
 }
 
 void ZoneServerImplementation::increaseTotalDeletedPlayers() {
-	Atomic::incrementInt((uint32*)&totalDeletedPlayers);
+	totalDeletedPlayers.increment();
 	//++totalDeletedPlayers;
 }

@@ -182,15 +182,26 @@ public:
 protected:
 	virtual ~ZoneClientSessionImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 
+	void rlock(bool doLock = true);
+
+	void wlock(bool doLock = true);
+
+	void wlock(ManagedObject* obj);
+
+	void runlock(bool doLock = true);
+
 	void _serializationHelperMethod();
 
 	friend class ZoneClientSession;
+	friend class TransactionalObjectHandle<ZoneClientSessionImplementation*>;
 };
 
 class ZoneClientSessionAdapter : public ManagedObjectAdapter {
