@@ -123,6 +123,8 @@ class ArmorObject extends WearableObject {
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 	
+	private native void calculateSpecalProtection(ManufactureSchematic schematic);
+	
 	private native void setProtection(ManufactureSchematic schematic, int type, float base);
 	
 	native string getStringType(int type);
