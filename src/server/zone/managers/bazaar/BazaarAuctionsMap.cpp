@@ -169,31 +169,24 @@ TransactionalObject* BazaarAuctionsMapImplementation::clone() {
 
 
 void BazaarAuctionsMapImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void BazaarAuctionsMapImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void BazaarAuctionsMapImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::_serializationHelperMethod() {

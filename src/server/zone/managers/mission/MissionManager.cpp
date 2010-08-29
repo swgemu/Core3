@@ -15,65 +15,65 @@
 
 // Imported class dependencies
 
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "system/lang/Time.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
 #include "server/zone/ZoneClientSession.h"
 
 #include "system/util/SortedVector.h"
 
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
 #include "engine/core/TaskManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
 
 #include "system/util/Vector.h"
 
-#include "system/thread/atomic/AtomicInteger.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 /*
  *	MissionManagerStub
@@ -319,31 +319,24 @@ TransactionalObject* MissionManagerImplementation::clone() {
 
 
 void MissionManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void MissionManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void MissionManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void MissionManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void MissionManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void MissionManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void MissionManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void MissionManagerImplementation::_serializationHelperMethod() {

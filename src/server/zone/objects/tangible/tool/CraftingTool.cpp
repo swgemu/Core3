@@ -17,53 +17,53 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
-#include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
 
 #include "system/util/Vector.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
 
 /*
  *	CraftingToolStub
@@ -407,31 +407,24 @@ TransactionalObject* CraftingToolImplementation::clone() {
 
 
 void CraftingToolImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CraftingToolImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CraftingToolImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CraftingToolImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CraftingToolImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CraftingToolImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CraftingToolImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CraftingToolImplementation::_serializationHelperMethod() {

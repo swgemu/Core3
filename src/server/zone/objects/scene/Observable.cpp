@@ -108,31 +108,24 @@ TransactionalObject* ObservableImplementation::clone() {
 
 
 void ObservableImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ObservableImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ObservableImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ObservableImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ObservableImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ObservableImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ObservableImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ObservableImplementation::_serializationHelperMethod() {

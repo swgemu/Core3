@@ -9,9 +9,9 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
 
 /*
  *	ObserverStub
@@ -110,31 +110,24 @@ TransactionalObject* ObserverImplementation::clone() {
 
 
 void ObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ObserverImplementation::_serializationHelperMethod() {

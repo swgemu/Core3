@@ -11,61 +11,61 @@
 
 // Imported class dependencies
 
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/managers/planet/MapLocationTable.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/ZoneServer.h"
 
-#include "server/zone/managers/planet/PlanetManager.h"
+#include "system/lang/Time.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
-#include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/managers/object/ObjectMap.h"
 
 #include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/managers/planet/HeightMap.h"
 
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "system/util/Vector.h"
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-#include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 /*
  *	ClothingObjectStub
@@ -149,31 +149,24 @@ TransactionalObject* ClothingObjectImplementation::clone() {
 
 
 void ClothingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ClothingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ClothingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ClothingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ClothingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ClothingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ClothingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ClothingObjectImplementation::_serializationHelperMethod() {

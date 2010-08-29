@@ -11,53 +11,53 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "system/util/SortedVector.h"
+#include "system/thread/atomic/AtomicInteger.h"
 
 #include "server/zone/managers/crafting/CraftingManager.h"
 
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/managers/resource/ResourceManager.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/chat/ChatManager.h"
-
 #include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/util/VectorMap.h"
 
 #include "server/zone/managers/minigames/FishingManager.h"
 
+#include "server/chat/ChatManager.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "system/util/VectorMap.h"
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 /*
  *	ZoneClientSessionStub
@@ -352,7 +352,7 @@ ZoneClientSessionImplementation::operator const ZoneClientSession*() {
 }
 
 TransactionalObject* ZoneClientSessionImplementation::clone() {
-	return (TransactionalObject*) new ZoneClientSessionImplementation(*this);
+	return this;
 }
 
 
@@ -368,75 +368,75 @@ void ZoneClientSessionImplementation::_serializationHelperMethod() {
 }
 
 void ZoneClientSessionImplementation::balancePacketCheckupTime() {
-	// server/zone/ZoneClientSession.idl(77):  		BaseClientProxy.balancePacketCheckupTime();
+	// server/zone/ZoneClientSession.idl(78):  		BaseClientProxy.balancePacketCheckupTime();
 	BaseClientProxy::balancePacketCheckupTime();
 }
 
 void ZoneClientSessionImplementation::resetPacketCheckupTime() {
-	// server/zone/ZoneClientSession.idl(81):  		BaseClientProxy.resetPacketCheckupTime();
+	// server/zone/ZoneClientSession.idl(82):  		BaseClientProxy.resetPacketCheckupTime();
 	BaseClientProxy::resetPacketCheckupTime();
 }
 
 void ZoneClientSessionImplementation::info(const String& msg, bool force) {
-	// server/zone/ZoneClientSession.idl(90):  		Logger.info(msg, force);
+	// server/zone/ZoneClientSession.idl(91):  		Logger.info(msg, force);
 	Logger::info(msg, force);
 }
 
 void ZoneClientSessionImplementation::error(const String& msg) {
-	// server/zone/ZoneClientSession.idl(94):  		Logger.error(msg);
+	// server/zone/ZoneClientSession.idl(95):  		Logger.error(msg);
 	Logger::error(msg);
 }
 
 String ZoneClientSessionImplementation::getAddress() {
-	// server/zone/ZoneClientSession.idl(104):  		return BaseClientProxy.getAddress();
+	// server/zone/ZoneClientSession.idl(105):  		return BaseClientProxy.getAddress();
 	return BaseClientProxy::getAddress();
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
-	// server/zone/ZoneClientSession.idl(109):  		player 
+	// server/zone/ZoneClientSession.idl(110):  		player 
 	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl(110):  
+	// server/zone/ZoneClientSession.idl(111):  
 	if (playerCreature == NULL && player != NULL){
-	// server/zone/ZoneClientSession.idl(111):  				ZoneServer zoneServer = player.getZoneServer();
+	// server/zone/ZoneClientSession.idl(112):  				ZoneServer zoneServer = player.getZoneServer();
 	ZoneServer* zoneServer = player->getZoneServer();
-	// server/zone/ZoneClientSession.idl(113):  				zoneServer.decreaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl(114):  				zoneServer.decreaseOnlinePlayers();
 	zoneServer->decreaseOnlinePlayers();
 }
 
-	else 	// server/zone/ZoneClientSession.idl(114):  		}
+	else 	// server/zone/ZoneClientSession.idl(115):  		}
 	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl(115):  				ZoneServer zoneServer = playerCreature.getZoneServer();
+	// server/zone/ZoneClientSession.idl(116):  				ZoneServer zoneServer = playerCreature.getZoneServer();
 	ZoneServer* zoneServer = playerCreature->getZoneServer();
-	// server/zone/ZoneClientSession.idl(117):  				zoneServer.increaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl(118):  				zoneServer.increaseOnlinePlayers();
 	zoneServer->increaseOnlinePlayers();
 }
 }
-	// server/zone/ZoneClientSession.idl(121):  = playerCreature;
+	// server/zone/ZoneClientSession.idl(122):  = playerCreature;
 	player = playerCreature;
 }
 
 void ZoneClientSessionImplementation::setSessionKey(unsigned int key) {
-	// server/zone/ZoneClientSession.idl(125):  		sessionKey = key;
+	// server/zone/ZoneClientSession.idl(126):  		sessionKey = key;
 	sessionKey = key;
 }
 
 void ZoneClientSessionImplementation::setAccountID(unsigned int id) {
-	// server/zone/ZoneClientSession.idl(129):  		accountID = id;
+	// server/zone/ZoneClientSession.idl(130):  		accountID = id;
 	accountID = id;
 }
 
 SceneObject* ZoneClientSessionImplementation::getPlayer() {
-	// server/zone/ZoneClientSession.idl(133):  		return player;
+	// server/zone/ZoneClientSession.idl(134):  		return player;
 	return player;
 }
 
 unsigned int ZoneClientSessionImplementation::getSessionKey() {
-	// server/zone/ZoneClientSession.idl(137):  		return sessionKey;
+	// server/zone/ZoneClientSession.idl(138):  		return sessionKey;
 	return sessionKey;
 }
 
 unsigned int ZoneClientSessionImplementation::getAccountID() {
-	// server/zone/ZoneClientSession.idl(141):  		return accountID;
+	// server/zone/ZoneClientSession.idl(142):  		return accountID;
 	return accountID;
 }
 

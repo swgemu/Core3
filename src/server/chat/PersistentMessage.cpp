@@ -259,31 +259,24 @@ TransactionalObject* PersistentMessageImplementation::clone() {
 
 
 void PersistentMessageImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void PersistentMessageImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void PersistentMessageImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void PersistentMessageImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void PersistentMessageImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void PersistentMessageImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void PersistentMessageImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void PersistentMessageImplementation::_serializationHelperMethod() {

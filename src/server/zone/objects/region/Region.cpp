@@ -15,71 +15,71 @@
 
 // Imported class dependencies
 
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
 
 #include "system/lang/Time.h"
 
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
 
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "system/util/VectorMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
 #include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 /*
  *	RegionStub
@@ -252,31 +252,24 @@ TransactionalObject* RegionImplementation::clone() {
 
 
 void RegionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void RegionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void RegionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void RegionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void RegionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void RegionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void RegionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void RegionImplementation::_serializationHelperMethod() {

@@ -23,109 +23,109 @@
 
 // Imported class dependencies
 
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/structure/StructureObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
 #include "system/thread/atomic/AtomicInteger.h"
 
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/managers/planet/MapLocationTable.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/structure/StructureObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "system/util/Vector.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "system/lang/Time.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
 #include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
 
 #include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/zone/objects/group/GroupObject.h"
 
 /*
  *	BuildingObjectStub
@@ -581,31 +581,24 @@ TransactionalObject* BuildingObjectImplementation::clone() {
 
 
 void BuildingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void BuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void BuildingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void BuildingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void BuildingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void BuildingObjectImplementation::_serializationHelperMethod() {

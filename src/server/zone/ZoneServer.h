@@ -234,8 +234,6 @@ public:
 
 	ZoneServer(int processingThreads, int galaxyid = 2);
 
-	void test();
-
 	void initializeTransientMembers();
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
@@ -433,8 +431,6 @@ public:
 
 	ZoneServerImplementation(DummyConstructorParameter* param);
 
-	void test();
-
 	void initializeTransientMembers();
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
@@ -569,6 +565,14 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 
+	void rlock(bool doLock = true);
+
+	void wlock(bool doLock = true);
+
+	void wlock(ManagedObject* obj);
+
+	void runlock(bool doLock = true);
+
 	void _serializationHelperMethod();
 
 	friend class ZoneServer;
@@ -580,8 +584,6 @@ public:
 	ZoneServerAdapter(ZoneServerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void test();
 
 	void initializeTransientMembers();
 

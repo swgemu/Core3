@@ -11,45 +11,45 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "system/lang/Time.h"
 
 #include "engine/util/Quaternion.h"
 
 #include "server/zone/managers/object/ObjectMap.h"
 
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
 #include "system/util/SortedVector.h"
 
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "system/util/VectorMap.h"
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 /*
  *	StaticObjectStub
@@ -129,31 +129,24 @@ TransactionalObject* StaticObjectImplementation::clone() {
 
 
 void StaticObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void StaticObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void StaticObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void StaticObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void StaticObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void StaticObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void StaticObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void StaticObjectImplementation::_serializationHelperMethod() {

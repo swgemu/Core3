@@ -7,43 +7,43 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/installation/HopperList.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
+#include "system/util/VectorMap.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/installation/HopperList.h"
+
 #include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "system/util/VectorMap.h"
+#include "server/zone/Zone.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/ObserverEventMap.h"
 
-#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/objects/structure/StructurePermissionList.h"
 
 #include "system/util/Vector.h"
 
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 /*
  *	GeneratorObjectStub
@@ -164,31 +164,24 @@ TransactionalObject* GeneratorObjectImplementation::clone() {
 
 
 void GeneratorObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void GeneratorObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void GeneratorObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void GeneratorObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void GeneratorObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void GeneratorObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void GeneratorObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void GeneratorObjectImplementation::_serializationHelperMethod() {

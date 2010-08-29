@@ -13,49 +13,49 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
+#include "system/util/VectorMap.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
+#include "server/zone/ZoneServer.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "system/util/VectorMap.h"
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "system/util/Vector.h"
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 /*
  *	CraftingStationStub
@@ -238,31 +238,24 @@ TransactionalObject* CraftingStationImplementation::clone() {
 
 
 void CraftingStationImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CraftingStationImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CraftingStationImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CraftingStationImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CraftingStationImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CraftingStationImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CraftingStationImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CraftingStationImplementation::_serializationHelperMethod() {

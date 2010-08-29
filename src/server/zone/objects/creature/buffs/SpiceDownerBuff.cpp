@@ -13,53 +13,53 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
+#include "server/zone/objects/player/TradeContainer.h"
 
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
 
-#include "server/zone/ZoneClientSession.h"
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 
 #include "server/zone/objects/intangible/ControlDevice.h"
 
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
 #include "system/util/VectorMap.h"
 
 #include "server/zone/objects/group/GroupObject.h"
 
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 
 #include "server/zone/objects/creature/variables/SkillBoxList.h"
 
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
 #include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
 
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 /*
  *	SpiceDownerBuffStub
@@ -144,31 +144,24 @@ TransactionalObject* SpiceDownerBuffImplementation::clone() {
 
 
 void SpiceDownerBuffImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SpiceDownerBuffImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SpiceDownerBuffImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SpiceDownerBuffImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SpiceDownerBuffImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SpiceDownerBuffImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SpiceDownerBuffImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SpiceDownerBuffImplementation::_serializationHelperMethod() {

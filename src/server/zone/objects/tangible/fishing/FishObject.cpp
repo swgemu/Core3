@@ -19,89 +19,89 @@
 
 // Imported class dependencies
 
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "system/thread/atomic/AtomicInteger.h"
 
 #include "server/zone/managers/planet/MapLocationTable.h"
 
-#include "server/zone/managers/radial/RadialManager.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 
-#include "engine/core/TaskManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/chat/ChatManager.h"
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
 #include "server/zone/managers/minigames/FishingManager.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/ZoneServer.h"
 
-#include "system/util/VectorMap.h"
+#include "server/chat/ChatManager.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "engine/core/TaskManager.h"
+
 #include "system/util/Vector.h"
 
-#include "system/thread/atomic/AtomicInteger.h"
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 /*
  *	FishObjectStub
@@ -243,31 +243,24 @@ TransactionalObject* FishObjectImplementation::clone() {
 
 
 void FishObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void FishObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void FishObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void FishObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void FishObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void FishObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void FishObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void FishObjectImplementation::_serializationHelperMethod() {

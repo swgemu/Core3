@@ -9,51 +9,51 @@
 
 // Imported class dependencies
 
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
+#include "system/util/VectorMap.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/ZoneServer.h"
 
-#include "system/util/VectorMap.h"
+#include "engine/util/Quaternion.h"
 
-#include "server/zone/objects/scene/variables/StringId.h"
+#include "system/lang/Time.h"
 
-#include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 
-#include "system/util/Vector.h"
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "system/util/SortedVector.h"
 
 #include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
-#include "server/zone/managers/planet/MapLocationTable.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 /*
  *	CarbineWeaponObjectStub
@@ -148,31 +148,24 @@ TransactionalObject* CarbineWeaponObjectImplementation::clone() {
 
 
 void CarbineWeaponObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CarbineWeaponObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CarbineWeaponObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CarbineWeaponObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CarbineWeaponObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CarbineWeaponObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CarbineWeaponObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CarbineWeaponObjectImplementation::_serializationHelperMethod() {

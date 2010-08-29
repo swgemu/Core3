@@ -23,45 +23,45 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/scene/ObserverEventMap.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+#include "system/thread/atomic/AtomicInteger.h"
 
 #include "server/zone/managers/crafting/CraftingManager.h"
 
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
+#include "server/zone/managers/resource/ResourceManager.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
 #include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
 
 #include "server/chat/ChatManager.h"
 
-#include "server/zone/managers/minigames/FishingManager.h"
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/objectcontroller/command/CommandList.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
 
 #include "server/zone/managers/bazaar/BazaarManager.h"
 
 #include "system/util/Vector.h"
 
-#include "server/zone/managers/radial/RadialManager.h"
-
 #include "engine/core/TaskManager.h"
 
-#include "system/thread/atomic/AtomicInteger.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 #include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 /*
  *	PlayerManagerStub
@@ -612,31 +612,24 @@ TransactionalObject* PlayerManagerImplementation::clone() {
 
 
 void PlayerManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void PlayerManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void PlayerManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void PlayerManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void PlayerManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void PlayerManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void PlayerManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void PlayerManagerImplementation::_serializationHelperMethod() {

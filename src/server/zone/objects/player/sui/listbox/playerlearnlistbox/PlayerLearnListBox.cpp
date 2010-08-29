@@ -11,35 +11,35 @@
 
 // Imported class dependencies
 
-#include "server/zone/ZoneClientSession.h"
-
-#include "system/util/SortedVector.h"
-
 #include "server/zone/objects/player/TradeContainer.h"
 
-#include "system/lang/Time.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/util/VectorMap.h"
+
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+#include "system/lang/Time.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 /*
  *	PlayerLearnListBoxStub
@@ -140,31 +140,24 @@ TransactionalObject* PlayerLearnListBoxImplementation::clone() {
 
 
 void PlayerLearnListBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void PlayerLearnListBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void PlayerLearnListBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::_serializationHelperMethod() {

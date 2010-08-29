@@ -13,61 +13,61 @@
 
 // Imported class dependencies
 
-#include "server/zone/ZoneClientSession.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
+#include "system/thread/atomic/AtomicInteger.h"
 
 #include "server/zone/managers/crafting/CraftingManager.h"
 
-#include "server/zone/ZoneProcessServerImplementation.h"
-
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/chat/ChatManager.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
 #include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/objectcontroller/command/CommandList.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
 
 #include "system/util/VectorMap.h"
 
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
 #include "system/util/Vector.h"
 
-#include "system/thread/atomic/AtomicInteger.h"
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 /*
  *	ChatRoomStub
@@ -585,31 +585,24 @@ TransactionalObject* ChatRoomImplementation::clone() {
 
 
 void ChatRoomImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ChatRoomImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ChatRoomImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ChatRoomImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ChatRoomImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ChatRoomImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ChatRoomImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ChatRoomImplementation::_serializationHelperMethod() {

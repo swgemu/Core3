@@ -50,7 +50,7 @@ MakeStatus = 1
 ORB = ""
 
 
-DBHost = "127.0.0.1"
+DBHost = "192.168.1.100"
 DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"

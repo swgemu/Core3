@@ -11,57 +11,57 @@
 
 // Imported class dependencies
 
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
 #include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
 
 #include "engine/util/Quaternion.h"
 
-#include "server/zone/objects/scene/ObserverEventMap.h"
+#include "server/zone/objects/scene/variables/DeltaVector.h"
 
 #include "system/util/SortedVector.h"
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/objects/scene/ObserverEventMap.h"
 
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
+#include "system/util/Vector.h"
 
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/structure/StructurePermissionList.h"
 
 #include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 
 #include "server/zone/managers/creature/CreatureManager.h"
 
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/Vector.h"
 
 /*
  *	CityHallObjectStub
@@ -223,31 +223,24 @@ TransactionalObject* CityHallObjectImplementation::clone() {
 
 
 void CityHallObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CityHallObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CityHallObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CityHallObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CityHallObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CityHallObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CityHallObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CityHallObjectImplementation::_serializationHelperMethod() {

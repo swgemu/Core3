@@ -74,6 +74,7 @@ import server.zone.managers.bazaar.BazaarManager;
 import server.zone.managers.minigames.FishingManager;
 import server.zone.managers.mission.MissionManager;
 
+@nonTransactional
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private transient BasePacketHandler phandler;
 	
@@ -125,11 +126,6 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public static final int LOADING = 1;
 	public static final int ONLINE = 2;
 	public static final int LOCKED = 3;
-	
-	public void test() {
-		Zone zone = new Zone(null, null, 0);
-		zone.getHeight(0, 1);
-	}
 	
 	public native ZoneServer(int processingThreads, int galaxyid = 2);/* {
 		//super(Dat)
@@ -207,11 +203,9 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 	
 	public native void lock(boolean doLock = true);
+
 	public native void unlock(boolean doLock = true);
 	
-	/*public native void lock();
-	public native void unlock();*/
-
 	public void fixScheduler() {
 		//scheduler.fixQueue();
 	}

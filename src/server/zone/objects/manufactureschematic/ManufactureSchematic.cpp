@@ -15,37 +15,37 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/Zone.h"
+#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
-
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/util/VectorMap.h"
+
+#include "engine/util/Quaternion.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "system/util/VectorMap.h"
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "system/util/Vector.h"
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 /*
  *	ManufactureSchematicStub
@@ -553,31 +553,24 @@ TransactionalObject* ManufactureSchematicImplementation::clone() {
 
 
 void ManufactureSchematicImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ManufactureSchematicImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ManufactureSchematicImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ManufactureSchematicImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ManufactureSchematicImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ManufactureSchematicImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ManufactureSchematicImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ManufactureSchematicImplementation::_serializationHelperMethod() {

@@ -43,95 +43,95 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/group/GroupList.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
+#include "server/zone/managers/planet/MapLocationTable.h"
 
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
 
 #include "server/zone/managers/crafting/CraftingManager.h"
 
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/player/variables/IgnoreList.h"
-
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/variables/SkillList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
 
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 
-#include "server/zone/objects/player/variables/WaypointList.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/variables/SchematicList.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/player/variables/IgnoreList.h"
 
 #include "server/zone/objects/player/variables/FriendList.h"
 
+#include "server/zone/ZoneServer.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/objects/group/GroupList.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/player/variables/SchematicList.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/chat/room/ChatRoom.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
 #include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/variables/WaypointList.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/player/variables/SkillList.h"
 
 /*
  *	PlayerCreatureStub
@@ -1692,31 +1692,24 @@ TransactionalObject* PlayerCreatureImplementation::clone() {
 
 
 void PlayerCreatureImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void PlayerCreatureImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void PlayerCreatureImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void PlayerCreatureImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void PlayerCreatureImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void PlayerCreatureImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void PlayerCreatureImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void PlayerCreatureImplementation::_serializationHelperMethod() {

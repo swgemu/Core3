@@ -9,53 +9,53 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
 #include "server/zone/objects/player/TradeContainer.h"
 
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/lang/Time.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
 
 #include "server/zone/objects/player/badges/Badges.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "system/util/Vector.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
 
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 /*
  *	ResourceContainerStub
@@ -312,31 +312,24 @@ TransactionalObject* ResourceContainerImplementation::clone() {
 
 
 void ResourceContainerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ResourceContainerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ResourceContainerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ResourceContainerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ResourceContainerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ResourceContainerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ResourceContainerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ResourceContainerImplementation::_serializationHelperMethod() {

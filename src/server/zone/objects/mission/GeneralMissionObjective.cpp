@@ -23,47 +23,47 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/tangible/lair/HealLairEvent.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/templates/tangible/LairObjectTemplate.h"
-
-#include "server/zone/objects/mission/GeneralMissionObjective.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/mission/MissionObject.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "server/zone/objects/tangible/DamageMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/objects/mission/MissionObjective.h"
 
+#include "server/zone/objects/tangible/lair/HealLairEvent.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
 #include "system/util/VectorMap.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "server/zone/templates/tangible/LairObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/mission/GeneralMissionObjective.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/tangible/DamageMap.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "system/util/Vector.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 /*
  *	GeneralMissionObjectiveStub
@@ -217,31 +217,24 @@ TransactionalObject* GeneralMissionObjectiveImplementation::clone() {
 
 
 void GeneralMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void GeneralMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void GeneralMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void GeneralMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void GeneralMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void GeneralMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void GeneralMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void GeneralMissionObjectiveImplementation::_serializationHelperMethod() {

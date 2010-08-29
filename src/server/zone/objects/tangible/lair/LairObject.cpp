@@ -15,67 +15,67 @@
 
 // Imported class dependencies
 
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
 #include "server/zone/managers/planet/MapLocationTable.h"
 
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+#include "server/zone/ZoneServer.h"
 
 #include "system/lang/Time.h"
 
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+#include "server/zone/managers/object/ObjectMap.h"
 
-#include "server/zone/objects/scene/variables/DeltaVector.h"
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "system/util/VectorMap.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/managers/planet/HeightMap.h"
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
 #include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 /*
  *	LairObjectStub
@@ -257,31 +257,24 @@ TransactionalObject* LairObjectImplementation::clone() {
 
 
 void LairObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void LairObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void LairObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void LairObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void LairObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void LairObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void LairObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void LairObjectImplementation::_serializationHelperMethod() {

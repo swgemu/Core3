@@ -9,9 +9,9 @@
 
 // Imported class dependencies
 
-#include "system/util/VectorMap.h"
-
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/util/VectorMap.h"
 
 /*
  *	AuctionItemStub
@@ -476,31 +476,24 @@ TransactionalObject* AuctionItemImplementation::clone() {
 
 
 void AuctionItemImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void AuctionItemImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void AuctionItemImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void AuctionItemImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void AuctionItemImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void AuctionItemImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void AuctionItemImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void AuctionItemImplementation::_serializationHelperMethod() {

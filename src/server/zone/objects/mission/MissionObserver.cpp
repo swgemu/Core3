@@ -15,39 +15,39 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/mission/MissionObject.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/objects/mission/MissionObjective.h"
 
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
 #include "system/util/VectorMap.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "system/util/Vector.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 /*
  *	MissionObserverStub
@@ -134,31 +134,24 @@ TransactionalObject* MissionObserverImplementation::clone() {
 
 
 void MissionObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void MissionObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void MissionObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void MissionObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void MissionObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void MissionObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void MissionObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void MissionObserverImplementation::_serializationHelperMethod() {

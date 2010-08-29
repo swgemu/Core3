@@ -17,69 +17,69 @@
 
 // Imported class dependencies
 
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/Zone.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
 
 #include "server/zone/managers/planet/MapLocationTable.h"
 
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+#include "server/zone/ZoneServer.h"
 
 #include "system/lang/Time.h"
 
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/managers/object/ObjectMap.h"
 
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/VectorMap.h"
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
 #include "system/util/Vector.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 /*
  *	TicketCollectorStub
@@ -217,31 +217,24 @@ TransactionalObject* TicketCollectorImplementation::clone() {
 
 
 void TicketCollectorImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void TicketCollectorImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void TicketCollectorImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void TicketCollectorImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void TicketCollectorImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void TicketCollectorImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void TicketCollectorImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void TicketCollectorImplementation::_serializationHelperMethod() {

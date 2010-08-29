@@ -9,9 +9,9 @@
 
 // Imported class dependencies
 
-#include "system/util/Vector.h"
-
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/util/Vector.h"
 
 /*
  *	SuiListBoxMenuItemStub
@@ -95,31 +95,24 @@ TransactionalObject* SuiListBoxMenuItemImplementation::clone() {
 
 
 void SuiListBoxMenuItemImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SuiListBoxMenuItemImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SuiListBoxMenuItemImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::_serializationHelperMethod() {

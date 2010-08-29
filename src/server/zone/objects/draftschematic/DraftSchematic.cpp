@@ -13,49 +13,49 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/SortedVector.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
 #include "server/zone/objects/player/TradeContainer.h"
 
-#include "system/lang/Time.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "system/util/VectorMap.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/lang/Time.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
 
 #include "server/zone/objects/player/badges/Badges.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/VectorMap.h"
-
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "system/util/Vector.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
 
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 /*
  *	DraftSchematicStub
@@ -421,31 +421,24 @@ TransactionalObject* DraftSchematicImplementation::clone() {
 
 
 void DraftSchematicImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void DraftSchematicImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void DraftSchematicImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void DraftSchematicImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void DraftSchematicImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void DraftSchematicImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void DraftSchematicImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void DraftSchematicImplementation::_serializationHelperMethod() {
