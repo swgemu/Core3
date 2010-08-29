@@ -630,11 +630,13 @@ public:
 
 	static const int ITHOGARB = 0x1000013;
 
-	static const int BADGEAREA = 0x200000;
+	static const int BADGEAREA = 0x2000000;
 
-	static const int REGIONAREA = 0x200001;
+	static const int REGIONAREA = 0x2000001;
 
-	static const int MISSIONSPAWNAREA = 0x200002;
+	static const int MISSIONSPAWNAREA = 0x2000002;
+
+	static const int MISSIONRECONAREA = 0x2000003;
 
 	SceneObject();
 
@@ -1503,11 +1505,13 @@ public:
 
 	static const int ITHOGARB = 0x1000013;
 
-	static const int BADGEAREA = 0x200000;
+	static const int BADGEAREA = 0x2000000;
 
-	static const int REGIONAREA = 0x200001;
+	static const int REGIONAREA = 0x2000001;
 
-	static const int MISSIONSPAWNAREA = 0x200002;
+	static const int MISSIONSPAWNAREA = 0x2000002;
+
+	static const int MISSIONRECONAREA = 0x2000003;
 
 	SceneObjectImplementation();
 
