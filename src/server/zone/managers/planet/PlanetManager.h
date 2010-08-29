@@ -172,6 +172,8 @@ public:
 
 	void loadHuntingTargets();
 
+	void loadReconLocations();
+
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
 	void addShuttle(const String& city, ShuttleCreature* shuttle);
@@ -207,6 +209,10 @@ public:
 	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
 
 	HuntingTargetEntry* getHuntingTargetTemplate(int level);
+
+	void addReconLoc(SceneObject* obj);
+
+	MissionTargetMap* getReconLocs();
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -250,6 +256,8 @@ protected:
 
 	HuntingTargetMap huntingTargets;
 
+	MissionTargetMap reconLocs;
+
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv);
 
@@ -272,6 +280,8 @@ public:
 	void loadPerformanceLocations();
 
 	void loadHuntingTargets();
+
+	void loadReconLocations();
 
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
@@ -308,6 +318,10 @@ public:
 	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
 
 	HuntingTargetEntry* getHuntingTargetTemplate(int level);
+
+	void addReconLoc(SceneObject* obj);
+
+	MissionTargetMap* getReconLocs();
 
 	PlanetManager* _this;
 
@@ -364,6 +378,8 @@ public:
 
 	void loadHuntingTargets();
 
+	void loadReconLocations();
+
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
 	void addShuttle(const String& city, ShuttleCreature* shuttle);
@@ -389,6 +405,8 @@ public:
 	void addMissionNpc(SceneObject* npc);
 
 	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
+
+	void addReconLoc(SceneObject* obj);
 
 protected:
 	String _param0_getShuttle__String_;

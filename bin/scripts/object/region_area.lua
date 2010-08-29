@@ -1,5 +1,5 @@
 region_area = SharedObjectTemplate:new {
-	gameObjectType = 2097153,
+	gameObjectType = 33554433,
 	mapLocationsType1 = 17
 }
 	

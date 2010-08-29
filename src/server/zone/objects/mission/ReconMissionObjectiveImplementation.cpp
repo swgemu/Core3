@@ -6,7 +6,7 @@
  */
 
 #include "ReconMissionObjective.h"
-#include "server/zone/objects/area/MissionSpawnActiveArea.h"
+#include "server/zone/objects/area/MissionReconActiveArea.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
@@ -17,11 +17,26 @@
 #include "MissionObject.h"
 #include "MissionObserver.h"
 
-void ReconMissionObjectiveImplementation::destroyObjectFromDatabase() {
-	MissionObjectiveImplementation::destroyObjectFromDatabase();
-}
-
 void ReconMissionObjectiveImplementation::activate() {
+	if (locationActiveArea == NULL) {
+		locationActiveArea = (MissionReconActiveArea*) ZoneProcessServerImplementation::instance->getZoneServer()->createObject(String("object/mission_recon_area.iff").hashCode(), 1);
+		locationActiveArea->setMissionObjective(_this);
+	}
+
+	if (!locationActiveArea->isInQuadTree()) {
+		uint32 startPlanetCRC = mission->getStartPlanetCRC();
+
+		String planetName = Planet::getPlanetNameByCrc(startPlanetCRC);
+		int id = Planet::getPlanetID(planetName);
+
+		Zone* zone = ZoneProcessServerImplementation::instance->getZoneServer()->getZone(id);
+		locationActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
+		locationActiveArea->setRadius(32.f);
+		locationActiveArea->insertToZone(zone);
+
+		info("inserting to zone " + zone->getPlanetName(), true);
+	}
+
 	WaypointObject* waypoint = mission->getWaypointToMission();
 
 	if (waypoint == NULL)
@@ -35,6 +50,8 @@ void ReconMissionObjectiveImplementation::activate() {
 }
 
 void ReconMissionObjectiveImplementation::abort() {
+	if (locationActiveArea != NULL)
+		locationActiveArea->removeFromZone();
 }
 
 void ReconMissionObjectiveImplementation::complete() {
@@ -42,6 +59,8 @@ void ReconMissionObjectiveImplementation::complete() {
 
 	if (player == NULL)
 		return;
+
+	locationActiveArea->removeFromZone();
 
 	Locker locker(player);
 
@@ -60,11 +79,4 @@ void ReconMissionObjectiveImplementation::complete() {
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
 	missionManager->removeMission(mission, player);
-}
-
-int ReconMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType == ObserverEventType::CONVERSE) {
-	}
-
-	return 1;
 }

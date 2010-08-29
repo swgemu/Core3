@@ -96,6 +96,9 @@ class PlanetManager extends ManagedObject implements Logger {
 	@dereferenced
 	protected transient HuntingTargetMap huntingTargets;
 	
+	@dereferenced
+	protected transient MissionTargetMap reconLocs;
+	
 	public PlanetManager(Zone planet, ZoneProcessServerImplementation srv) {
 		zone = planet;
 		server = srv;
@@ -120,6 +123,7 @@ class PlanetManager extends ManagedObject implements Logger {
 	public native void loadBadgeAreas();
 	public native void loadPerformanceLocations();
 	public native void loadHuntingTargets();
+	public native void loadReconLocations();
 	
 	public synchronized ShuttleCreature getShuttle(final string arrivalPoint) {
 		return shuttleMap.get(arrivalPoint);
@@ -195,6 +199,15 @@ class PlanetManager extends ManagedObject implements Logger {
 	@local
 	public HuntingTargetEntry getHuntingTargetTemplate(int level) {
 		return huntingTargets.getRandomTarget(level);
+	}
+	
+	public void addReconLoc(SceneObject obj) {
+		reconLocs.add(obj);
+	}
+	
+	@local
+	public MissionTargetMap getReconLocs() {
+		return reconLocs;
 	}
 	
 	/*public Region getRegion(final string regionName) {

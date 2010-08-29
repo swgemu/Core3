@@ -68,6 +68,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/area/ActiveArea.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/area/MissionSpawnActiveArea.cpp \
+				server/zone/objects/area/MissionReconActiveArea.cpp \
 				server/zone/objects/factorycrate/FactoryCrate.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \

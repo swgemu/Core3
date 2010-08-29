@@ -70,20 +70,6 @@ using namespace server::zone::objects::mission;
 namespace server {
 namespace zone {
 namespace objects {
-namespace area {
-
-class MissionSpawnActiveArea;
-
-} // namespace area
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::area;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -107,6 +93,20 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class MissionReconActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/templates/TemplateReference.h"
 
 #include "server/zone/objects/mission/MissionObjective.h"
@@ -127,10 +127,6 @@ public:
 	void abort();
 
 	void complete();
-
-	void destroyObjectFromDatabase();
-
-	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 protected:
 	ReconMissionObjective(DummyConstructorParameter* param);
@@ -153,6 +149,8 @@ namespace objects {
 namespace mission {
 
 class ReconMissionObjectiveImplementation : public MissionObjectiveImplementation {
+protected:
+	ManagedReference<MissionReconActiveArea* > locationActiveArea;
 
 public:
 	ReconMissionObjectiveImplementation(MissionObject* mission);
@@ -168,10 +166,6 @@ public:
 	void abort();
 
 	void complete();
-
-	void destroyObjectFromDatabase();
-
-	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	ReconMissionObjective* _this;
 
@@ -219,10 +213,6 @@ public:
 	void abort();
 
 	void complete();
-
-	void destroyObjectFromDatabase();
-
-	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 };
 

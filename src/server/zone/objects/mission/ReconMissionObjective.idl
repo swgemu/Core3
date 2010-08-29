@@ -49,12 +49,14 @@ import server.zone.objects.scene.Observable;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
-import server.zone.objects.area.MissionSpawnActiveArea;
 import server.zone.objects.scene.SceneObject;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.MissionReconActiveArea;
 
 class ReconMissionObjective extends MissionObjective {
+	protected MissionReconActiveArea locationActiveArea;
+	
 	public ReconMissionObjective(MissionObject mission) {
 		super(mission);
 		
@@ -76,13 +78,4 @@ class ReconMissionObjective extends MissionObjective {
 	public native void activate();
 	public native void abort();
 	public native void complete();
-	
-	/**
-	 * Destroys this object from database
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 */
-	public native void destroyObjectFromDatabase();
-	
-	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 }

@@ -12,11 +12,11 @@
 
 #include "server/zone/objects/mission/MissionObserver.h"
 
-#include "server/zone/objects/area/MissionSpawnActiveArea.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/area/MissionReconActiveArea.h"
 
 /*
  *	ReconMissionObjectiveStub
@@ -80,35 +80,6 @@ void ReconMissionObjective::complete() {
 		method.executeWithVoidReturn();
 	} else
 		((ReconMissionObjectiveImplementation*) _impl)->complete();
-}
-
-void ReconMissionObjective::destroyObjectFromDatabase() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-
-		method.executeWithVoidReturn();
-	} else
-		((ReconMissionObjectiveImplementation*) _impl)->destroyObjectFromDatabase();
-}
-
-int ReconMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-		method.addObjectParameter(observer);
-		method.addUnsignedIntParameter(eventType);
-		method.addObjectParameter(observable);
-		method.addObjectParameter(arg1);
-		method.addSignedLongParameter(arg2);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((ReconMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
@@ -176,25 +147,26 @@ void ReconMissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("ReconMissionObjective");
 
+	addSerializableVariable("locationActiveArea", &locationActiveArea);
 }
 
 ReconMissionObjectiveImplementation::ReconMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/ReconMissionObjective.idl(61):  		Logger.setLoggingName("ReconMissionObjective");
+	// server/zone/objects/mission/ReconMissionObjective.idl(63):  		Logger.setLoggingName("ReconMissionObjective");
 	Logger::setLoggingName("ReconMissionObjective");
 }
 
 void ReconMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/ReconMissionObjective.idl(65):  		Logger.info("deleting from memory", true);
+	// server/zone/objects/mission/ReconMissionObjective.idl(67):  		Logger.info("deleting from memory", true);
 	Logger::info("deleting from memory", true);
 }
 
 void ReconMissionObjectiveImplementation::initializeTransientMembers() {
-	// server/zone/objects/mission/ReconMissionObjective.idl(69):  		super.initializeTransientMembers();
+	// server/zone/objects/mission/ReconMissionObjective.idl(71):  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/ReconMissionObjective.idl(71):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/ReconMissionObjective.idl(73):  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/ReconMissionObjective.idl(73):  		activate();
+	// server/zone/objects/mission/ReconMissionObjective.idl(75):  		activate();
 	activate();
 }
 
@@ -224,12 +196,6 @@ Packet* ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMet
 	case 10:
 		complete();
 		break;
-	case 11:
-		destroyObjectFromDatabase();
-		break;
-	case 12:
-		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
-		break;
 	default:
 		return NULL;
 	}
@@ -255,14 +221,6 @@ void ReconMissionObjectiveAdapter::abort() {
 
 void ReconMissionObjectiveAdapter::complete() {
 	((ReconMissionObjectiveImplementation*) impl)->complete();
-}
-
-void ReconMissionObjectiveAdapter::destroyObjectFromDatabase() {
-	((ReconMissionObjectiveImplementation*) impl)->destroyObjectFromDatabase();
-}
-
-int ReconMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((ReconMissionObjectiveImplementation*) impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 /*
