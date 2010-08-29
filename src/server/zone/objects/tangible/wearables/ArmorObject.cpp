@@ -546,147 +546,147 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 }
 
 bool ArmorObjectImplementation::isSpecial(int type) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(134):  		return specialResists & type;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(136):  		return specialResists & type;
 	return specialResists & type;
 }
 
 bool ArmorObjectImplementation::isVulnerable(int type) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(138):  		return vulnerabilites & type;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(140):  		return vulnerabilites & type;
 	return vulnerabilites & type;
 }
 
 bool ArmorObjectImplementation::isArmorObject() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(142):  		return true;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(144):  		return true;
 	return true;
 }
 
 void ArmorObjectImplementation::setRating(int rate) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(147):  		rating = rate;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(149):  		rating = rate;
 	rating = rate;
 }
 
 int ArmorObjectImplementation::getRating() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(151):  		return rating;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(153):  		return rating;
 	return rating;
 }
 
 float ArmorObjectImplementation::getKinetic() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(155):  		return kinetic;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(157):  		return kinetic;
 	return kinetic;
 }
 
 void ArmorObjectImplementation::setKinetic(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(159):  		kinetic = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(161):  		kinetic = value;
 	kinetic = value;
 }
 
 float ArmorObjectImplementation::getEnergy() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(163):  		return energy;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(165):  		return energy;
 	return energy;
 }
 
 void ArmorObjectImplementation::setEnergy(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(167):  		energy = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(169):  		energy = value;
 	energy = value;
 }
 
 float ArmorObjectImplementation::getElectricity() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(171):  		return electricity;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(173):  		return electricity;
 	return electricity;
 }
 
 void ArmorObjectImplementation::setElectricity(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(175):  		electricity = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(177):  		electricity = value;
 	electricity = value;
 }
 
 float ArmorObjectImplementation::getStun() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(179):  		return stun;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(181):  		return stun;
 	return stun;
 }
 
 void ArmorObjectImplementation::setStun(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(183):  		stun = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(185):  		stun = value;
 	stun = value;
 }
 
 float ArmorObjectImplementation::getBlast() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(187):  		return blast;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(189):  		return blast;
 	return blast;
 }
 
 void ArmorObjectImplementation::setBlast(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(191):  		blast = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(193):  		blast = value;
 	blast = value;
 }
 
 float ArmorObjectImplementation::getHeat() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(195):  		return heat;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(197):  		return heat;
 	return heat;
 }
 
 void ArmorObjectImplementation::setHeat(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(199):  		heat = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(201):  		heat = value;
 	heat = value;
 }
 
 float ArmorObjectImplementation::getCold() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(203):  		return cold;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(205):  		return cold;
 	return cold;
 }
 
 void ArmorObjectImplementation::setCold(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(207):  		cold = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(209):  		cold = value;
 	cold = value;
 }
 
 float ArmorObjectImplementation::getAcid() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(211):  		return acid;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(213):  		return acid;
 	return acid;
 }
 
 void ArmorObjectImplementation::setAcid(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(215):  		acid = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(217):  		acid = value;
 	acid = value;
 }
 
 float ArmorObjectImplementation::getLightSaber() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(219):  		return lightSaber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(221):  		return lightSaber;
 	return lightSaber;
 }
 
 void ArmorObjectImplementation::setLightSaber(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(223):  		lightSaber = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(225):  		lightSaber = value;
 	lightSaber = value;
 }
 
 int ArmorObjectImplementation::getHealthEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(227):  		return healthEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(229):  		return healthEncumbrance;
 	return healthEncumbrance;
 }
 
 void ArmorObjectImplementation::setHealthEncumbrance(int encumber) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(231):  		healthEncumbrance = encumber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(233):  		healthEncumbrance = encumber;
 	healthEncumbrance = encumber;
 }
 
 int ArmorObjectImplementation::getActionEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(235):  		return actionEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(237):  		return actionEncumbrance;
 	return actionEncumbrance;
 }
 
 void ArmorObjectImplementation::setActionEncumbrance(int encumber) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(239):  		actionEncumbrance = encumber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(241):  		actionEncumbrance = encumber;
 	actionEncumbrance = encumber;
 }
 
 int ArmorObjectImplementation::getMindEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(243):  		return mindEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(245):  		return mindEncumbrance;
 	return mindEncumbrance;
 }
 
 void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(247):  		mindEncumbrance = encumber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(249):  		mindEncumbrance = encumber;
 	mindEncumbrance = encumber;
 }
 
