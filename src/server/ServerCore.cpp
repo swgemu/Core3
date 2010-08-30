@@ -70,13 +70,13 @@ public:
 	}
 };
 
-ManagedReference<ZoneServer*> ServerCore::zoneServer = NULL;
+ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 
 ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	orb = NULL;
 
 	loginServer = NULL;
-	zoneServer = NULL;
+	zoneServerRef = NULL;
 	//statusServer = NULL;
 	pingServer = NULL;
 	forumDatabase = NULL;
@@ -108,8 +108,10 @@ void ServerCore::init() {
 		}
 
 		if (configManager->getMakeZone()) {
-			zoneServer = new ZoneServer(configManager->getZoneProcessingThreads(), configManager->getZoneGalaxyID());
+			ZoneServer* zoneServer = new ZoneServer(configManager->getZoneProcessingThreads(), configManager->getZoneGalaxyID());
 			zoneServer->deploy("ZoneServer");
+
+			zoneServerRef = zoneServer;
 		}
 
 		if (configManager->getMakePing()) {
