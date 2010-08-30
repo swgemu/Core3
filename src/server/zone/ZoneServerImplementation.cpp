@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "managers/radial/RadialManager.h"
 #include "managers/resource/ResourceManager.h"
 #include "managers/crafting/CraftingManager.h"
+#include "managers/loot/LootManager.h"
 #include "managers/professions/ProfessionManager.h"
 #include "managers/bazaar/BazaarManager.h"
 #include "managers/minigames/FishingManager.h"
@@ -84,6 +85,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	radialManager = NULL;
 	resourceManager = NULL;
 	craftingManager = NULL;
+	lootManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -426,6 +428,10 @@ void ZoneServerImplementation::startManagers() {
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();
 
+	lootManager = new LootManager(_this, processor, craftingManager);
+	lootManager->deploy("LootManager");
+	lootManager->initialize();
+
 	/*userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
 
@@ -441,23 +447,8 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
-
-	lootTableManager = new LootTableManager(_this, processor);
-	lootTableManager->deploy("LootTableManager");
-
-	craftingManager = new CraftingManager(_this, processor);
-	craftingManager->deploy("CraftingManager");
-
-
-
-	bazaarManager = new BazaarManager(_this, processor);
-	bazaarManager->deploy("BazaarManager");
-
 	bankManager = new BankManager(_this, processor);
-	bankManager->deploy("BankManager");
-
-	missionManager = new MissionManager(_this, processor);
-	missionManager->deploy("MissionManager");*/
+	bankManager->deploy("BankManager");*/
 }
 
 void ZoneServerImplementation::run() {
