@@ -71,5 +71,13 @@ void SharedCreatureObjectTemplate::readObject(LuaObject* templateData) {
 
 	speedTempl.pop();
 
+	LuaObject lootGroups = templateData->getObjectField("lootGroup");
+
+	for (int i = 1; i <= lootGroups.getTableSize(); ++i) {
+		lootGroup.add(lootGroups.getIntAt(i));
+	}
+
+	lootGroups.pop();
+
 }
 

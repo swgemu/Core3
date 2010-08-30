@@ -137,6 +137,9 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected DeltaVector<int> maxHamList;
 	
+	@dereferenced
+	protected Vector<unsigned int> lootGroup;
+	
 	protected byte frozen;
 	
 	protected string templateString;
