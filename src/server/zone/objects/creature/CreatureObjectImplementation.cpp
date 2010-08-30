@@ -202,6 +202,10 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 		walkSpeed = 0;
 	}
 
+	lootGroup = creoData->getLootGroup();
+
+
+
 }
 
 void CreatureObjectImplementation::finalize() {

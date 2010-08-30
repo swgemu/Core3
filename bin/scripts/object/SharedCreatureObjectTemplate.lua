@@ -74,6 +74,8 @@ SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
 	
 	level = 10,
 	
+	lootGroup = { },
+	
 	baseHAM = { 300, 300, 300, 300, 300, 300, 300, 300, 300 },
 	skillMods = { }
 	
