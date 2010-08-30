@@ -80,7 +80,7 @@ class ServerCore : public Core, public Logger {
 
 	PingServer* pingServer;
 
-	static ManagedReference<server::zone::ZoneServer*> zoneServer;
+	static ManagedReference<server::zone::ZoneServer*> zoneServerRef;
 
 public:
 	ServerCore();
@@ -97,7 +97,7 @@ public:
 
 	// getters
 	static server::zone::ZoneServer* getZoneServer() {
-		return zoneServer;
+		return zoneServerRef.get();
 	}
 
 };
