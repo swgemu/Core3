@@ -156,6 +156,20 @@ using namespace server::zone::managers::crafting;
 namespace server {
 namespace zone {
 namespace managers {
+namespace loot {
+
+class LootManager;
+
+} // namespace loot
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::loot;
+
+namespace server {
+namespace zone {
+namespace managers {
 namespace bazaar {
 
 class BazaarManager;
@@ -332,6 +346,8 @@ public:
 
 	CraftingManager* getCraftingManager();
 
+	LootManager* getLootManager();
+
 	BazaarManager* getBazaarManager();
 
 	FishingManager* getFishingManager();
@@ -393,6 +409,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<ResourceManager* > resourceManager;
 
 	ManagedReference<CraftingManager* > craftingManager;
+
+	ManagedReference<LootManager* > lootManager;
 
 	ManagedReference<BazaarManager* > bazaarManager;
 
@@ -530,6 +548,8 @@ public:
 	ResourceManager* getResourceManager();
 
 	CraftingManager* getCraftingManager();
+
+	LootManager* getLootManager();
 
 	BazaarManager* getBazaarManager();
 
@@ -669,6 +689,8 @@ public:
 	ResourceManager* getResourceManager();
 
 	CraftingManager* getCraftingManager();
+
+	LootManager* getLootManager();
 
 	BazaarManager* getBazaarManager();
 
