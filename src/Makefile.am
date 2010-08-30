@@ -156,6 +156,9 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.cpp \
 				server/zone/objects/tangible/weapon/PolearmWeaponObject.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
+				server/zone/managers/loot/LootManager.cpp \
+				server/zone/managers/loot/lootgroup/LootGroupObject.cpp \
+				server/zone/managers/loot/lootgroup/LootObject.cpp \
 				server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/managers/planet/PlanetManager.cpp \
@@ -225,6 +228,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
+		server/zone/managers/loot/LootManagerImplementation.cpp \
+		server/zone/managers/loot/lootgroup/LootGroupObjectImplementation.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \

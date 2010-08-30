@@ -92,6 +92,10 @@ namespace zone {
 
 		void loadStaticObjects();
 
+		bool contains(uint32 objectCRC) {
+			return objectFactory.containsObject(objectCRC);
+		}
+
 		// object methods
 		SceneObject* createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid = 0);
 
