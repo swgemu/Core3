@@ -127,6 +127,8 @@ void ServerCore::init() {
 }
 
 void ServerCore::run() {
+	ZoneServer* zoneServer = zoneServerRef.get();
+
 	if (loginServer != NULL) {
 		int loginPort = configManager->getLoginPort();
 		int loginAllowedConnections = configManager->getLoginAllowedConnections();
@@ -175,6 +177,8 @@ void ServerCore::shutdown() {
 		delete statusServer;
 		statusServer = NULL;
 	}*/
+
+	ZoneServer* zoneServer = zoneServerRef.getForUpdate();
 
 	if (zoneServer != NULL) {
 		zoneServer->stop();
@@ -237,6 +241,8 @@ void ServerCore::handleCommands() {
 
 			command = line;
 			command = command.replaceFirst("\n", "");
+
+			ZoneServer* zoneServer = zoneServerRef.get();
 
 			if (command == "exit") {
 				if (zoneServer != NULL) {
