@@ -757,6 +757,8 @@ protected:
 
 	DeltaVector<int> maxHamList;
 
+	Vector<unsigned int> lootGroup;
+
 	byte frozen;
 
 	String templateString;
