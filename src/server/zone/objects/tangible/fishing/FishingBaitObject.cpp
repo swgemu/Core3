@@ -111,6 +111,7 @@ FishingBaitObjectImplementation::FishingBaitObjectImplementation(DummyConstructo
 	_initializeImplementation();
 }
 
+
 FishingBaitObjectImplementation::~FishingBaitObjectImplementation() {
 }
 

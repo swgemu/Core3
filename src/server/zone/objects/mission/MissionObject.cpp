@@ -643,6 +643,7 @@ MissionObjectImplementation::MissionObjectImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
+
 MissionObjectImplementation::~MissionObjectImplementation() {
 }
 

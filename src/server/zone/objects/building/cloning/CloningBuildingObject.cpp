@@ -60,6 +60,7 @@ CloningBuildingObjectImplementation::CloningBuildingObjectImplementation(DummyCo
 	_initializeImplementation();
 }
 
+
 CloningBuildingObjectImplementation::~CloningBuildingObjectImplementation() {
 }
 

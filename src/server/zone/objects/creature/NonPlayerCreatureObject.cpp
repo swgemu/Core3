@@ -42,6 +42,7 @@ NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation(Dum
 	_initializeImplementation();
 }
 
+
 NonPlayerCreatureObjectImplementation::~NonPlayerCreatureObjectImplementation() {
 }
 

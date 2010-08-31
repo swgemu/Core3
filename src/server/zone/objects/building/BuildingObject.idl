@@ -48,7 +48,6 @@ import server.zone.objects.structure.StructureObject;
 import engine.lua.LuaObject;
 import engine.util.QuadTree;
 import engine.util.QuadTreeEntry;
-import server.zone.objects.cell.CellObject;
 import system.util.SortedVector;
 import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
@@ -60,6 +59,8 @@ import server.zone.ZoneServer;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 import engine.util.Vector3;
+
+include server.zone.objects.cell.CellObject;
 
 class BuildingObject extends StructureObject implements QuadTree {
 	@dereferenced

@@ -1583,6 +1583,7 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
+
 PlayerCreatureImplementation::~PlayerCreatureImplementation() {
 	PlayerCreatureImplementation::finalize();
 }

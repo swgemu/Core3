@@ -42,6 +42,7 @@ CreatureImplementation::CreatureImplementation(DummyConstructorParameter* param)
 	_initializeImplementation();
 }
 
+
 CreatureImplementation::~CreatureImplementation() {
 }
 

@@ -130,6 +130,7 @@ LootGroupObjectImplementation::LootGroupObjectImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
+
 LootGroupObjectImplementation::~LootGroupObjectImplementation() {
 }
 

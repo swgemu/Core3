@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "ChatRoom.h"
+
 namespace server {
 namespace chat {
 namespace room {

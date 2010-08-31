@@ -80,6 +80,7 @@ BankTerminalImplementation::BankTerminalImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
+
 BankTerminalImplementation::~BankTerminalImplementation() {
 }
 

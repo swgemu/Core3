@@ -4,8 +4,6 @@
 
 #include "BuildingObject.h"
 
-#include "server/zone/objects/cell/CellObject.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -451,6 +449,7 @@ BuildingObjectImplementation::BuildingObjectImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
+
 BuildingObjectImplementation::~BuildingObjectImplementation() {
 }
 
@@ -521,61 +520,61 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/BuildingObject.idl(82):  		Logger.setLoggingName("BuildingObject");
+	// server/zone/objects/building/BuildingObject.idl(83):  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl(84):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl(85):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
 	QuadTree::setSize(-1024, -1024, 1024, 1024);
-	// server/zone/objects/building/BuildingObject.idl(86):  		super.staticObject = false;
+	// server/zone/objects/building/BuildingObject.idl(87):  		super.staticObject = false;
 	StructureObjectImplementation::staticObject = false;
-	// server/zone/objects/building/BuildingObject.idl(88):  		super.containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/building/BuildingObject.idl(89):  		super.containerVolumeLimit = 0xFFFFFFFF;
 	StructureObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/building/BuildingObject.idl(90):  		super.containerType = 2;
+	// server/zone/objects/building/BuildingObject.idl(91):  		super.containerType = 2;
 	StructureObjectImplementation::containerType = 2;
-	// server/zone/objects/building/BuildingObject.idl(92):  		totalCellNumber = 0;
+	// server/zone/objects/building/BuildingObject.idl(93):  		totalCellNumber = 0;
 	totalCellNumber = 0;
-	// server/zone/objects/building/BuildingObject.idl(94):  		accessFee = 0;
+	// server/zone/objects/building/BuildingObject.idl(95):  		accessFee = 0;
 	accessFee = 0;
-	// server/zone/objects/building/BuildingObject.idl(96):  		declaredResidency = false;
+	// server/zone/objects/building/BuildingObject.idl(97):  		declaredResidency = false;
 	declaredResidency = false;
 }
 
 void BuildingObjectImplementation::createCellObjects() {
-	// server/zone/objects/building/BuildingObject.idl(100):  
-	for (	// server/zone/objects/building/BuildingObject.idl(100):  		for (int i = 0;
+	// server/zone/objects/building/BuildingObject.idl(101):  
+	for (	// server/zone/objects/building/BuildingObject.idl(101):  		for (int i = 0;
 	int i = 0;
 	i < totalCellNumber;
  ++i) {
-	// server/zone/objects/building/BuildingObject.idl(101):  			SceneObject newCell = getZoneServer().createObject(2906855187, 2);
+	// server/zone/objects/building/BuildingObject.idl(102):  			SceneObject newCell = getZoneServer().createObject(2906855187, 2);
 	SceneObject* newCell = getZoneServer()->createObject(2906855187, 2);
-	// server/zone/objects/building/BuildingObject.idl(103):  			addCell((CellObject)newCell);
+	// server/zone/objects/building/BuildingObject.idl(104):  			addCell((CellObject)newCell);
 	addCell((CellObject*) newCell);
 }
-	// server/zone/objects/building/BuildingObject.idl(106):  		updateToDatabase();
+	// server/zone/objects/building/BuildingObject.idl(107):  		updateToDatabase();
 	updateToDatabase();
 }
 
 int BuildingObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
-	// server/zone/objects/building/BuildingObject.idl(134):  		return 0;
+	// server/zone/objects/building/BuildingObject.idl(135):  		return 0;
 	return 0;
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(183):  		return super.staticObject;
+	// server/zone/objects/building/BuildingObject.idl(184):  		return super.staticObject;
 	return StructureObjectImplementation::staticObject;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(187):  		return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(188):  		return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 int BuildingObjectImplementation::getTotalCellNumber() {
-	// server/zone/objects/building/BuildingObject.idl(191):  		return totalCellNumber;
+	// server/zone/objects/building/BuildingObject.idl(192):  		return totalCellNumber;
 	return totalCellNumber;
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(195):  		super.staticObject = value;
+	// server/zone/objects/building/BuildingObject.idl(196):  		super.staticObject = value;
 	StructureObjectImplementation::staticObject = value;
 }
 
@@ -583,47 +582,47 @@ void BuildingObjectImplementation::onExit(PlayerCreature* player) {
 }
 
 bool BuildingObjectImplementation::isBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(221):  		return true;
+	// server/zone/objects/building/BuildingObject.idl(222):  		return true;
 	return true;
 }
 
 bool BuildingObjectImplementation::isMedicalBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(225):  		return false;
+	// server/zone/objects/building/BuildingObject.idl(226):  		return false;
 	return false;
 }
 
 void BuildingObjectImplementation::setSignObject(SignObject* sign) {
-	// server/zone/objects/building/BuildingObject.idl(229):  		signObject = sign;
+	// server/zone/objects/building/BuildingObject.idl(230):  		signObject = sign;
 	signObject = sign;
 }
 
 SignObject* BuildingObjectImplementation::getSignObject() {
-	// server/zone/objects/building/BuildingObject.idl(233):  		return signObject;
+	// server/zone/objects/building/BuildingObject.idl(234):  		return signObject;
 	return signObject;
 }
 
 bool BuildingObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(237):  		return false;
+	// server/zone/objects/building/BuildingObject.idl(238):  		return false;
 	return false;
 }
 
 bool BuildingObjectImplementation::isDeclaredResidency() {
-	// server/zone/objects/building/BuildingObject.idl(241):  		return declaredResidency;
+	// server/zone/objects/building/BuildingObject.idl(242):  		return declaredResidency;
 	return declaredResidency;
 }
 
 void BuildingObjectImplementation::setDeclaredResidency(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(245):  		declaredResidency = value;
+	// server/zone/objects/building/BuildingObject.idl(246):  		declaredResidency = value;
 	declaredResidency = value;
 }
 
 void BuildingObjectImplementation::setAccessFee(int fee) {
-	// server/zone/objects/building/BuildingObject.idl(249):  		accessFee = fee;
+	// server/zone/objects/building/BuildingObject.idl(250):  		accessFee = fee;
 	accessFee = fee;
 }
 
 int BuildingObjectImplementation::getAccessFee() {
-	// server/zone/objects/building/BuildingObject.idl(253):  		return accessFee;
+	// server/zone/objects/building/BuildingObject.idl(254):  		return accessFee;
 	return accessFee;
 }
 

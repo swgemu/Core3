@@ -208,6 +208,7 @@ VehicleObjectImplementation::VehicleObjectImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
+
 VehicleObjectImplementation::~VehicleObjectImplementation() {
 }
 

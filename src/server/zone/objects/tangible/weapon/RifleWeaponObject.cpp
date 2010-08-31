@@ -80,6 +80,7 @@ RifleWeaponObjectImplementation::RifleWeaponObjectImplementation(DummyConstructo
 	_initializeImplementation();
 }
 
+
 RifleWeaponObjectImplementation::~RifleWeaponObjectImplementation() {
 }
 

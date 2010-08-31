@@ -66,6 +66,7 @@ MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(DummyConstructo
 	_initializeImplementation();
 }
 
+
 MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
 }
 
