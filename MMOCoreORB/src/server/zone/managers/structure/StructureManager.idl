@@ -97,13 +97,13 @@ class StructureManager extends ManagedObject implements Logger {
 		
 		listOfStaticBuildings.setNoDuplicateInsertPlan();
 		
-		/*loadStaticBuildings();
+		loadStaticBuildings();
 		loadPlayerStructures();
 		loadStaticBanks();
 		loadStaticBazaars();
 		loadStaticMissionTerminals();
 		loadStaticCraftingStations();
-		loadStaticGarages();*/
+		loadStaticGarages();
 	}
 	
 	/**
