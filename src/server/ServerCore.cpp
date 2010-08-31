@@ -178,7 +178,7 @@ void ServerCore::shutdown() {
 		statusServer = NULL;
 	}*/
 
-	ZoneServer* zoneServer = zoneServerRef.getForUpdate();
+	ZoneServer* zoneServer = zoneServerRef.get();
 
 	if (zoneServer != NULL) {
 		zoneServer->stop();
