@@ -44,6 +44,7 @@ InstrumentImplementation::InstrumentImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
+
 InstrumentImplementation::~InstrumentImplementation() {
 }
 

@@ -56,6 +56,7 @@ DrinkImplementation::DrinkImplementation(DummyConstructorParameter* param) : Con
 	_initializeImplementation();
 }
 
+
 DrinkImplementation::~DrinkImplementation() {
 }
 

@@ -174,6 +174,7 @@ FishingPoleObjectImplementation::FishingPoleObjectImplementation(DummyConstructo
 	_initializeImplementation();
 }
 
+
 FishingPoleObjectImplementation::~FishingPoleObjectImplementation() {
 }
 

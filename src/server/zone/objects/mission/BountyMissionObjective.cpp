@@ -119,6 +119,7 @@ BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(Dummy
 	_initializeImplementation();
 }
 
+
 BountyMissionObjectiveImplementation::~BountyMissionObjectiveImplementation() {
 	BountyMissionObjectiveImplementation::finalize();
 }

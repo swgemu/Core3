@@ -59,6 +59,7 @@ ArmorComponentImplementation::ArmorComponentImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
+
 ArmorComponentImplementation::~ArmorComponentImplementation() {
 }
 

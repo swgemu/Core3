@@ -173,6 +173,7 @@ ActiveAreaImplementation::ActiveAreaImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
+
 ActiveAreaImplementation::~ActiveAreaImplementation() {
 }
 

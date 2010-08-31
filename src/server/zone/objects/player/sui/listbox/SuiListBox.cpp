@@ -8,8 +8,6 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
-
 /*
  *	SuiListBoxStub
  */
@@ -184,6 +182,7 @@ bool SuiListBox::isListBox() {
 SuiListBoxImplementation::SuiListBoxImplementation(DummyConstructorParameter* param) : SuiBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiListBoxImplementation::~SuiListBoxImplementation() {
 }

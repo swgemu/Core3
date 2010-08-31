@@ -113,6 +113,7 @@ SuiTransferBoxImplementation::SuiTransferBoxImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
+
 SuiTransferBoxImplementation::~SuiTransferBoxImplementation() {
 }
 

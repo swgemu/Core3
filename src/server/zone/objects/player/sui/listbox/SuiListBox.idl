@@ -49,8 +49,8 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import engine.service.proto.BaseMessage;
 import server.zone.objects.player.sui.SuiBox;
-import server.zone.objects.player.sui.listbox.SuiListBoxMenuItem;
 
+include server.zone.objects.player.sui.listbox.SuiListBoxMenuItem;
 include server.zone.packets.ui.SuiCreatePageMessage;
 
 class SuiListBox extends SuiBox {

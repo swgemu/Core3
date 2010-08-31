@@ -106,6 +106,7 @@ StatePackImplementation::StatePackImplementation(DummyConstructorParameter* para
 	_initializeImplementation();
 }
 
+
 StatePackImplementation::~StatePackImplementation() {
 }
 
