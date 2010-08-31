@@ -347,6 +347,7 @@ CraftingToolImplementation::CraftingToolImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
+
 CraftingToolImplementation::~CraftingToolImplementation() {
 }
 
@@ -425,31 +426,31 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 
 CraftingToolImplementation::CraftingToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(93):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(94):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
-	// server/zone/objects/tangible/tool/CraftingTool.idl(94):  		status = "@crafting:tool_status_ready";
+	// server/zone/objects/tangible/tool/CraftingTool.idl(95):  		status = "@crafting:tool_status_ready";
 	status = "@crafting:tool_status_ready";
-	// server/zone/objects/tangible/tool/CraftingTool.idl(95):  		state = 1;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(96):  		state = 1;
 	state = 1;
 }
 
 void CraftingToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(99):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingTool.idl(100):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
 }
 
 bool CraftingToolImplementation::isCraftingTool() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(129):  		return true;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(130):  		return true;
 	return true;
 }
 
 int CraftingToolImplementation::getToolType() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(133):  		return type;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(134):  		return type;
 	return type;
 }
 
 ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(139):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(140):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
 	return (ManufactureSchematic*) getSlottedObject("test_manf_schematic");
 }
 

@@ -37,8 +37,8 @@ class CreatureManager extends ManagedObject implements Logger {
 	}
 	
 	public void initialize() {
-		loadTrainers();
-		loadSingleSpawns();
+		//loadTrainers();
+		//loadSingleSpawns();
 		loadMissionSpawns();
 	}
 	

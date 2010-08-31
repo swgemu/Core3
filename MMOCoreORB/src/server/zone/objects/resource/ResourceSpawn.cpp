@@ -506,6 +506,7 @@ ResourceSpawnImplementation::ResourceSpawnImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
+
 ResourceSpawnImplementation::~ResourceSpawnImplementation() {
 	ResourceSpawnImplementation::finalize();
 }

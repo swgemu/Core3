@@ -158,6 +158,7 @@ RevivePackImplementation::RevivePackImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
+
 RevivePackImplementation::~RevivePackImplementation() {
 }
 

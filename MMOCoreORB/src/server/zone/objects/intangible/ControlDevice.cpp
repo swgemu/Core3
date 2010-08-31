@@ -114,6 +114,7 @@ ControlDeviceImplementation::ControlDeviceImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
+
 ControlDeviceImplementation::~ControlDeviceImplementation() {
 }
 

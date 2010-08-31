@@ -66,6 +66,7 @@ PistolWeaponObjectImplementation::PistolWeaponObjectImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
+
 PistolWeaponObjectImplementation::~PistolWeaponObjectImplementation() {
 }
 

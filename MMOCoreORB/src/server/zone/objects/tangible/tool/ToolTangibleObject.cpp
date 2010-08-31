@@ -44,6 +44,7 @@ ToolTangibleObjectImplementation::ToolTangibleObjectImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
+
 ToolTangibleObjectImplementation::~ToolTangibleObjectImplementation() {
 }
 

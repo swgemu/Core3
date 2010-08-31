@@ -158,6 +158,7 @@ StructureManagerImplementation::StructureManagerImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
+
 StructureManagerImplementation::~StructureManagerImplementation() {
 }
 
@@ -225,20 +226,6 @@ void StructureManagerImplementation::loadStructures() {
 	Logger::info("loading structures...", true);
 	// server/zone/managers/structure/StructureManager.idl(98):  		listOfStaticBuildings.setNoDuplicateInsertPlan();
 	(&listOfStaticBuildings)->setNoDuplicateInsertPlan();
-	// server/zone/managers/structure/StructureManager.idl(100):  		loadStaticBuildings();
-	loadStaticBuildings();
-	// server/zone/managers/structure/StructureManager.idl(101):  		loadPlayerStructures();
-	loadPlayerStructures();
-	// server/zone/managers/structure/StructureManager.idl(102):  		loadStaticBanks();
-	loadStaticBanks();
-	// server/zone/managers/structure/StructureManager.idl(103):  		loadStaticBazaars();
-	loadStaticBazaars();
-	// server/zone/managers/structure/StructureManager.idl(104):  		loadStaticMissionTerminals();
-	loadStaticMissionTerminals();
-	// server/zone/managers/structure/StructureManager.idl(105):  		loadStaticCraftingStations();
-	loadStaticCraftingStations();
-	// server/zone/managers/structure/StructureManager.idl(106):  		loadStaticGarages();
-	loadStaticGarages();
 }
 
 /*

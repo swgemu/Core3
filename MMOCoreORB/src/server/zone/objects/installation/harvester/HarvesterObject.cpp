@@ -110,6 +110,7 @@ HarvesterObjectImplementation::HarvesterObjectImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
+
 HarvesterObjectImplementation::~HarvesterObjectImplementation() {
 }
 

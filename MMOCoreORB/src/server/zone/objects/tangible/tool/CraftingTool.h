@@ -85,6 +85,8 @@ using namespace server::zone::objects::manufactureschematic;
 
 #include "engine/lua/LuaObject.h"
 
+#include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {

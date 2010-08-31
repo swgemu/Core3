@@ -436,6 +436,7 @@ ArmorObjectImplementation::ArmorObjectImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
+
 ArmorObjectImplementation::~ArmorObjectImplementation() {
 }
 

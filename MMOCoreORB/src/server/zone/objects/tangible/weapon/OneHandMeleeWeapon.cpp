@@ -54,6 +54,7 @@ OneHandMeleeWeaponImplementation::OneHandMeleeWeaponImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
+
 OneHandMeleeWeaponImplementation::~OneHandMeleeWeaponImplementation() {
 }
 

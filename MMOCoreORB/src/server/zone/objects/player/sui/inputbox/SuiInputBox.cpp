@@ -94,6 +94,7 @@ SuiInputBoxImplementation::SuiInputBoxImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
+
 SuiInputBoxImplementation::~SuiInputBoxImplementation() {
 }
 
