@@ -56,6 +56,22 @@ public:
 		creo = cr;
 	}
 
+	void updateAccelerationMultiplierBase() {
+		addFloatUpdate(0x00, creo->getAccelerationMultiplierBase());
+	}
+
+	void updateAccelerationMultiplierMod() {
+		addFloatUpdate(0x01, creo->getAccelerationMultiplierMod());
+	}
+
+	void updateSpeedMultiplierBase() {
+		addFloatUpdate(0x04, creo->getSpeedMultiplierBase());
+	}
+
+	void updateSpeedMultiplierMod() {
+		addFloatUpdate(0x05, creo->getSpeedMultiplierMod());
+	}
+
 	void updateRunSpeed() {
 		addFloatUpdate(0x07, creo->getRunSpeed());
 	}

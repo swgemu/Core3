@@ -276,6 +276,14 @@ public:
 
 	void setPosture(int newPosture, bool notifyClient = true);
 
+	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient = true);
+
+	void setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient = true);
+
+	void setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient = true);
+
+	void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient = true);
+
 	void setRunSpeed(float newSpeed, bool notifyClient = true);
 
 	void setHAM(int type, int value, bool notifyClient = true);
@@ -416,7 +424,7 @@ public:
 
 	void setAimingState(int durationSeconds = 5);
 
-	void setCoverState();
+	void setCoverState(int durationSeconds = 40);
 
 	void setBerserkedState(unsigned int duration);
 
@@ -527,6 +535,14 @@ public:
 	bool hasStates();
 
 	unsigned long long getListenID();
+
+	float getAccelerationMultiplierBase();
+
+	float getAccelerationMultiplierMod();
+
+	float getSpeedMultiplierBase();
+
+	float getSpeedMultiplierMod();
 
 	float getRunSpeed();
 
@@ -711,6 +727,14 @@ protected:
 
 	DeltaVector<int> encumbrances;
 
+	float accelerationMultiplierBase;
+
+	float accelerationMultiplierMod;
+
+	float speedMultiplierBase;
+
+	float speedMultiplierMod;
+
 	float runSpeed;
 
 	float walkSpeed;
@@ -841,6 +865,14 @@ public:
 	void clearCombatState(bool clearDefenders = true);
 
 	virtual void setPosture(int newPosture, bool notifyClient = true);
+
+	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient = true);
+
+	void setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient = true);
+
+	void setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient = true);
+
+	void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient = true);
 
 	void setRunSpeed(float newSpeed, bool notifyClient = true);
 
@@ -982,7 +1014,7 @@ public:
 
 	void setAimingState(int durationSeconds = 5);
 
-	void setCoverState();
+	void setCoverState(int durationSeconds = 40);
 
 	void setBerserkedState(unsigned int duration);
 
@@ -1093,6 +1125,14 @@ public:
 	bool hasStates();
 
 	unsigned long long getListenID();
+
+	float getAccelerationMultiplierBase();
+
+	float getAccelerationMultiplierMod();
+
+	float getSpeedMultiplierBase();
+
+	float getSpeedMultiplierMod();
 
 	float getRunSpeed();
 
@@ -1285,6 +1325,14 @@ public:
 
 	void setPosture(int newPosture, bool notifyClient);
 
+	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient);
+
+	void setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient);
+
+	void setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient);
+
+	void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient);
+
 	void setRunSpeed(float newSpeed, bool notifyClient);
 
 	void setHAM(int type, int value, bool notifyClient);
@@ -1421,7 +1469,7 @@ public:
 
 	void setAimingState(int durationSeconds);
 
-	void setCoverState();
+	void setCoverState(int durationSeconds);
 
 	void setBerserkedState(unsigned int duration);
 
@@ -1524,6 +1572,14 @@ public:
 	bool hasStates();
 
 	unsigned long long getListenID();
+
+	float getAccelerationMultiplierBase();
+
+	float getAccelerationMultiplierMod();
+
+	float getSpeedMultiplierBase();
+
+	float getSpeedMultiplierMod();
 
 	float getRunSpeed();
 

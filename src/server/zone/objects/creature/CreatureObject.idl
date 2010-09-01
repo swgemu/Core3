@@ -103,7 +103,11 @@ class CreatureObject extends TangibleObject {
 		
 	@dereferenced
 	protected DeltaVector<int> encumbrances;
-		
+	
+	protected float accelerationMultiplierBase;
+	protected float accelerationMultiplierMod;
+	protected float speedMultiplierBase;
+	protected float speedMultiplierMod;
 	protected float runSpeed;
 	protected float walkSpeed;
 	protected float terrainNegotiation;
@@ -306,6 +310,42 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native abstract void setPosture(int newPosture, boolean notifyClient = true);
 	
+	/**
+	 * Updates the acceleration speed multiplier base
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierBase new multiplier base to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setAccelerationMultiplierBase(float newMultiplierBase, boolean notifyClient = true);
+
+	/**
+	 * Updates the acceleration speed multiplier mod
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierMod new multiplier mod to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setAccelerationMultiplierMod(float newMultiplierMod, boolean notifyClient = true);
+
+	/**
+	 * Updates the speed multiplier base
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierBase new multiplier base to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setSpeedMultiplierBase(float newMultiplierBase, boolean notifyClient = true);
+
+	/**
+	 * Updates the speed multiplier mod
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierMod new multiplier mod to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setSpeedMultiplierMod(float newMultiplierMod, boolean notifyClient = true);
+
 	/**
 	 * Updates the run speed
 	 * @pre { this object is locked }
@@ -750,7 +790,7 @@ class CreatureObject extends TangibleObject {
 	
 	public native void setAimingState(int durationSeconds = 5);
 
-	public native void setCoverState();
+	public native void setCoverState(int durationSeconds = 40);
 
 	public native void setBerserkedState(unsigned int duration);
 	
@@ -946,6 +986,22 @@ class CreatureObject extends TangibleObject {
 		return listenToID;
 	}
 	
+	public float getAccelerationMultiplierBase() {
+		return accelerationMultiplierBase;
+	}
+
+	public float getAccelerationMultiplierMod() {
+		return accelerationMultiplierMod;
+	}
+
+	public float getSpeedMultiplierBase() {
+		return speedMultiplierBase;
+	}
+
+	public float getSpeedMultiplierMod() {
+		return speedMultiplierMod;
+	}
+
 	public float getRunSpeed() {
 		return runSpeed;
 	}
