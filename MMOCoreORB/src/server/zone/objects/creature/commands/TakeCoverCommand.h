@@ -46,6 +46,8 @@ which carries forward this exception.
 #define TAKECOVERCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "QueueCommand.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
 
 class TakeCoverCommand : public QueueCommand {
 public:
@@ -62,6 +64,47 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isRifleWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		int actioncost = 50;	
+		if (creature->getHAM(CreatureAttribute::ACTION)  < actioncost) {
+
+			if (creature->isPlayerCreature())
+				((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "cover_fail_single");
+
+			return GENERALERROR;
+		}
+
+		if (creature->isInCombat()) {
+			
+			//TODO: chance = 10 + creature->getSkillMod("cover");
+			//Correct system message
+			int chance = 75;
+			if (System::random(100)  > chance) {
+
+				if (creature->isPlayerCreature())
+					((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "cover_fail_single");
+
+				return GENERALERROR;
+			}
+		}
+
+		creature->setCoverState();
+
+		int duration = 40;
+		uint32 undercover = String("undercover").hashCode();
+		ManagedReference<Buff*> buff = new Buff(creature, undercover, duration, BuffType::SKILL);
+
+		buff->setSkillModifier("ranged_defense", 25);
+
+		creature->addBuff(buff);
+
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, actioncost, false);
 
 		return SUCCESS;
 	}

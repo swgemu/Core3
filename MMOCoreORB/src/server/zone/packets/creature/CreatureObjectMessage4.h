@@ -54,8 +54,8 @@ public:
 	CreatureObjectMessage4(CreatureObjectImplementation* creo)
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 4, 0x0E) {
 		//
-		insertFloat(1);
-		insertFloat(1);
+		insertFloat(creo->getAccelerationMultiplierBase());
+		insertFloat(creo->getAccelerationMultiplierMod());
 
 		//Encumbrances
 		DeltaVector<int>* encumbrances = creo->getEncumbrances();
@@ -66,8 +66,8 @@ public:
 		skillMods->insertToMessage(this);
 
 		//
-		insertFloat(1);
-		insertFloat(1);
+		insertFloat(creo->getSpeedMultiplierBase());
+		insertFloat(creo->getSpeedMultiplierMod());
 
 		// listenToID
 		insertLong(creo->getListenID());
