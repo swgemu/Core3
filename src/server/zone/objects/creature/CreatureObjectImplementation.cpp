@@ -137,6 +137,11 @@ void CreatureObjectImplementation::initializeMembers() {
 	height = 1;
 
 	shockWounds = 0;
+
+	accelerationMultiplierBase = 1.f;
+	accelerationMultiplierMod = 1.f;
+	speedMultiplierBase = 1.f;
+	speedMultiplierMod = 1.f;
 }
 
 void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -501,9 +506,18 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 			break;
 		case CreatureState::AIMING:
 			break;
-		case CreatureState::COVER:
+		case CreatureState::COVER: {
+
 			showFlyText("combat_effects", "no_cover", 0xFF, 0, 0);
-			//resetMovementSpeed();
+
+			uint32 undercover = String("undercover").hashCode();
+			if (hasBuff(undercover)) {
+				removeBuff(undercover);
+			}
+
+			setSpeedMultiplierMod(1.f);
+
+			}
 			break;
 		default:
 			break;
@@ -853,9 +867,12 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 		return;
 
 	if (newPosture == CreaturePosture::PRONE) {
-		setRunSpeed(runSpeed / 5.f);
+		setSpeedMultiplierBase(0.2f);
 	} else if (posture == CreaturePosture::PRONE) {
-		setRunSpeed(runSpeed * 5.f);
+		setSpeedMultiplierBase(1.f);
+		if (isInCover()) {
+			clearState(CreatureState::COVER);
+		}
 	}
 
 	posture = newPosture;
@@ -918,6 +935,66 @@ void CreatureObjectImplementation::setMood(byte mood, bool notifyClient) {
 		dcreo6->close();
 
 		broadcastMessage(dcreo6, true);
+	}
+}
+
+void CreatureObjectImplementation::setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient) {
+	if (accelerationMultiplierBase == newMultiplierBase)
+		return;
+
+	accelerationMultiplierBase = newMultiplierBase;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
+		dcreo4->updateAccelerationMultiplierBase();
+		dcreo4->close();
+
+		sendMessage(dcreo4);
+	}
+}
+
+void CreatureObjectImplementation::setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient) {
+	if (accelerationMultiplierMod == newMultiplierMod)
+		return;
+
+	accelerationMultiplierMod = newMultiplierMod;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
+		dcreo4->updateAccelerationMultiplierMod();
+		dcreo4->close();
+
+		sendMessage(dcreo4);
+	}
+}
+
+void CreatureObjectImplementation::setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient) {
+	if (speedMultiplierBase == newMultiplierBase)
+		return;
+
+	speedMultiplierBase = newMultiplierBase;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
+		dcreo4->updateSpeedMultiplierBase();
+		dcreo4->close();
+
+		sendMessage(dcreo4);
+	}
+}
+
+void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient) {
+	if (speedMultiplierMod == newMultiplierMod)
+		return;
+
+	speedMultiplierMod = newMultiplierMod;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
+		dcreo4->updateSpeedMultiplierMod();
+		dcreo4->close();
+
+		sendMessage(dcreo4);
 	}
 }
 
@@ -1240,7 +1317,7 @@ void CreatureObjectImplementation::setRalliedState(int durationSeconds) {
 	}
 }
 
-void CreatureObjectImplementation::setCoverState() {
+void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 	setPosture(CreaturePosture::PRONE);
 
 	if (setState(CreatureState::COVER)) {
@@ -1248,15 +1325,13 @@ void CreatureObjectImplementation::setCoverState() {
 		showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "cover_success_single");
 
-		/*uint32 sneakSkill = 0x3903080B;
-
-		if (hasSkill(sneakSkill)) {
-			float proneModifier = calculateProneSpeedModifier();
-
-			updateSpeed(0.35f * proneModifier, 0.7745f / proneModifier);
+		if(hasSkillBox("combat_rifleman_speed_03")) {
+			setSpeedMultiplierMod(0.5f);
 		} else {
-			updateSpeed(0.0f,0.0f);
-		}*/
+			setSpeedMultiplierMod(0.f);
+		}
+
+		cooldownTimerMap.updateToCurrentAndAddMili("coverRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1375,6 +1450,10 @@ void CreatureObjectImplementation::activateStateRecovery() {
 
 	if (isRallied() && cooldownTimerMap.isPast("ralliedRecoveryTime")) {
 		clearState(CreatureState::RALLIED);
+	}
+
+	if (isInCover() && cooldownTimerMap.isPast("coverRecoveryTime")) {
+		clearState(CreatureState::COVER);
 	}
 
 	//applyDots();
