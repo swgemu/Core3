@@ -230,7 +230,6 @@ ResourceManagerImplementation::ResourceManagerImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
-
 ResourceManagerImplementation::~ResourceManagerImplementation() {
 }
 

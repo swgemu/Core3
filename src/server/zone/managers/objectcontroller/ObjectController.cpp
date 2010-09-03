@@ -111,7 +111,6 @@ ObjectControllerImplementation::ObjectControllerImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
-
 ObjectControllerImplementation::~ObjectControllerImplementation() {
 	ObjectControllerImplementation::finalize();
 }

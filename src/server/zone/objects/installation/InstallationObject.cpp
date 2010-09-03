@@ -512,7 +512,6 @@ InstallationObjectImplementation::InstallationObjectImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
-
 InstallationObjectImplementation::~InstallationObjectImplementation() {
 }
 

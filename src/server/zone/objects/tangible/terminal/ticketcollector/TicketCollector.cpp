@@ -117,7 +117,6 @@ TicketCollectorImplementation::TicketCollectorImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
-
 TicketCollectorImplementation::~TicketCollectorImplementation() {
 }
 

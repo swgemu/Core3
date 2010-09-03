@@ -42,7 +42,6 @@ TerminalImplementation::TerminalImplementation(DummyConstructorParameter* param)
 	_initializeImplementation();
 }
 
-
 TerminalImplementation::~TerminalImplementation() {
 }
 

@@ -54,7 +54,6 @@ PolearmWeaponObjectImplementation::PolearmWeaponObjectImplementation(DummyConstr
 	_initializeImplementation();
 }
 
-
 PolearmWeaponObjectImplementation::~PolearmWeaponObjectImplementation() {
 }
 

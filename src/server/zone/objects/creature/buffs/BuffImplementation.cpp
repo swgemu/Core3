@@ -199,11 +199,12 @@ void BuffImplementation::applyAttributeModifiers() {
 	if (creature == NULL)
 		return;
 
-	if (speedModifier != 0) {
-		float originalSpeed = creature->getRunSpeed();
-		float newSpeed = originalSpeed + speedModifier;
+	if (speedMultiplierMod >= 0.f && speedMultiplierMod != creature->getSpeedMultiplierMod()){
+		creature->setSpeedMultiplierMod(speedMultiplierMod);
+	}
 
-		creature->setRunSpeed(newSpeed, true);
+	if (accelerationMultiplierMod >= 0.f &&  accelerationMultiplierMod != creature->getAccelerationMultiplierMod()){
+		creature->setAccelerationMultiplierMod(accelerationMultiplierMod);
 	}
 
 	int size = attributeModifiers.size();
@@ -249,11 +250,12 @@ void BuffImplementation::removeAttributeModifiers() {
 	if (creature == NULL)
 		return;
 
-	if (speedModifier != 0) {
-		float originalSpeed = creature->getRunSpeed();
-		float newSpeed = originalSpeed - speedModifier;
+	if (speedMultiplierMod >= 0.f &&  speedMultiplierMod == creature->getSpeedMultiplierMod()){
+		creature->setSpeedMultiplierMod(1.f);
+	}
 
-		creature->setRunSpeed(newSpeed, true);
+	if (accelerationMultiplierMod >= 0.f &&  accelerationMultiplierMod == creature->getAccelerationMultiplierMod()){
+		creature->setAccelerationMultiplierMod(1.f);
 	}
 
 	int size = attributeModifiers.size();

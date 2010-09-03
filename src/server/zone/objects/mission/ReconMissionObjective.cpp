@@ -90,7 +90,6 @@ ReconMissionObjectiveImplementation::ReconMissionObjectiveImplementation(DummyCo
 	_initializeImplementation();
 }
 
-
 ReconMissionObjectiveImplementation::~ReconMissionObjectiveImplementation() {
 	ReconMissionObjectiveImplementation::finalize();
 }

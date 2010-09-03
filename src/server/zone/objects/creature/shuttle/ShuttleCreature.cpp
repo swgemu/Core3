@@ -268,7 +268,6 @@ ShuttleCreatureImplementation::ShuttleCreatureImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
-
 ShuttleCreatureImplementation::~ShuttleCreatureImplementation() {
 }
 

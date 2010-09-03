@@ -98,7 +98,6 @@ TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(Dummy
 	_initializeImplementation();
 }
 
-
 TutorialBuildingObjectImplementation::~TutorialBuildingObjectImplementation() {
 }
 

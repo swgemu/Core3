@@ -302,17 +302,30 @@ void Buff::setSkillModifier(const String& modname, int value) {
 		((BuffImplementation*) _impl)->setSkillModifier(modname, value);
 }
 
-void Buff::setSpeedModifier(float speed) {
+void Buff::setSpeedMultiplierMod(float multiplier) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 28);
-		method.addFloatParameter(speed);
+		method.addFloatParameter(multiplier);
 
 		method.executeWithVoidReturn();
 	} else
-		((BuffImplementation*) _impl)->setSpeedModifier(speed);
+		((BuffImplementation*) _impl)->setSpeedMultiplierMod(multiplier);
+}
+
+void Buff::setAccelerationMultiplierMod(float multiplier) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addFloatParameter(multiplier);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuffImplementation*) _impl)->setAccelerationMultiplierMod(multiplier);
 }
 
 String Buff::getBuffName() {
@@ -320,7 +333,7 @@ String Buff::getBuffName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		method.executeWithAsciiReturn(_return_getBuffName);
 		return _return_getBuffName;
@@ -333,7 +346,7 @@ int Buff::getBuffCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -345,7 +358,7 @@ float Buff::getBuffDuration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -357,7 +370,7 @@ int Buff::getBuffType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -369,7 +382,7 @@ int Buff::getAttributeModifierValue(byte attribute) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addByteParameter(attribute);
 
 		return method.executeWithSignedIntReturn();
@@ -382,7 +395,7 @@ int Buff::getSkillModifierValue(const String& modname) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addAsciiParameter(modname);
 
 		return method.executeWithSignedIntReturn();
@@ -395,7 +408,7 @@ bool Buff::isActive() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -407,7 +420,7 @@ bool Buff::isSpiceBuff() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -437,7 +450,6 @@ void Buff::setEndMessage(ParameterizedStringId& start) {
 BuffImplementation::BuffImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 BuffImplementation::~BuffImplementation() {
 }
@@ -505,7 +517,8 @@ void BuffImplementation::_serializationHelperMethod() {
 	addSerializableVariable("buffDuration", &buffDuration);
 	addSerializableVariable("buffCRC", &buffCRC);
 	addSerializableVariable("buffType", &buffType);
-	addSerializableVariable("speedModifier", &speedModifier);
+	addSerializableVariable("speedMultiplierMod", &speedMultiplierMod);
+	addSerializableVariable("accelerationMultiplierMod", &accelerationMultiplierMod);
 	addSerializableVariable("startMessage", &startMessage);
 	addSerializableVariable("endMessage", &endMessage);
 	addSerializableVariable("nextExecutionTime", &nextExecutionTime);
@@ -513,104 +526,111 @@ void BuffImplementation::_serializationHelperMethod() {
 
 BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) {
 	_initializeImplementation();
-	// server/zone/objects/creature/buffs/Buff.idl(87):  		creature = creo;
+	// server/zone/objects/creature/buffs/Buff.idl(88):  		creature = creo;
 	creature = creo;
-	// server/zone/objects/creature/buffs/Buff.idl(88):  		buffCRC = buffcrc;
+	// server/zone/objects/creature/buffs/Buff.idl(89):  		buffCRC = buffcrc;
 	buffCRC = buffcrc;
-	// server/zone/objects/creature/buffs/Buff.idl(89):  		buffDuration = duration;
+	// server/zone/objects/creature/buffs/Buff.idl(90):  		buffDuration = duration;
 	buffDuration = duration;
-	// server/zone/objects/creature/buffs/Buff.idl(90):  		buffType = bufftype;
+	// server/zone/objects/creature/buffs/Buff.idl(91):  		buffType = bufftype;
 	buffType = bufftype;
-	// server/zone/objects/creature/buffs/Buff.idl(91):  		speedModifier = 0;
-	speedModifier = 0;
-	// server/zone/objects/creature/buffs/Buff.idl(93):  		Logger.setLoggingName("Buff");
+	// server/zone/objects/creature/buffs/Buff.idl(92):  		speedMultiplierMod = -1.f;
+	speedMultiplierMod = -1.f;
+	// server/zone/objects/creature/buffs/Buff.idl(93):  		accelerationMultiplierMod = -1.f;
+	accelerationMultiplierMod = -1.f;
+	// server/zone/objects/creature/buffs/Buff.idl(95):  		Logger.setLoggingName("Buff");
 	Logger::setLoggingName("Buff");
-	// server/zone/objects/creature/buffs/Buff.idl(95):  		init();
+	// server/zone/objects/creature/buffs/Buff.idl(97):  		init();
 	init();
 }
 
 void BuffImplementation::init() {
-	// server/zone/objects/creature/buffs/Buff.idl(101):  		attributeModifiers.setNoDuplicateInsertPlan();
+	// server/zone/objects/creature/buffs/Buff.idl(103):  		attributeModifiers.setNoDuplicateInsertPlan();
 	(&attributeModifiers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/creature/buffs/Buff.idl(102):  		attributeModifiers.setNullValue(0);
+	// server/zone/objects/creature/buffs/Buff.idl(104):  		attributeModifiers.setNullValue(0);
 	(&attributeModifiers)->setNullValue(0);
-	// server/zone/objects/creature/buffs/Buff.idl(103):  		skillModifiers.setNoDuplicateInsertPlan();
+	// server/zone/objects/creature/buffs/Buff.idl(105):  		skillModifiers.setNoDuplicateInsertPlan();
 	(&skillModifiers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/creature/buffs/Buff.idl(104):  		skillModifiers.setNullValue(0);
+	// server/zone/objects/creature/buffs/Buff.idl(106):  		skillModifiers.setNullValue(0);
 	(&skillModifiers)->setNullValue(0);
 }
 
 void BuffImplementation::activate() {
-	// server/zone/objects/creature/buffs/Buff.idl(114):  		activate(true);
+	// server/zone/objects/creature/buffs/Buff.idl(116):  		activate(true);
 	activate(true);
 }
 
 void BuffImplementation::deactivate() {
-	// server/zone/objects/creature/buffs/Buff.idl(118):  		deactivate(true);
+	// server/zone/objects/creature/buffs/Buff.idl(120):  		deactivate(true);
 	deactivate(true);
 }
 
 void BuffImplementation::setAttributeModifier(byte attribute, int value) {
-	// server/zone/objects/creature/buffs/Buff.idl(142):  
-	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(143):  			attributeModifiers.get(attribute) = value;
+	// server/zone/objects/creature/buffs/Buff.idl(144):  
+	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(145):  			attributeModifiers.get(attribute) = value;
 	(&attributeModifiers)->get(attribute) = value;
 
-	else 	// server/zone/objects/creature/buffs/Buff.idl(145):  			attributeModifiers.put(attribute, value);
+	else 	// server/zone/objects/creature/buffs/Buff.idl(147):  			attributeModifiers.put(attribute, value);
 	(&attributeModifiers)->put(attribute, value);
 }
 
 void BuffImplementation::setSkillModifier(const String& modname, int value) {
-	// server/zone/objects/creature/buffs/Buff.idl(149):  
-	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(150):  			skillModifiers.get(modname) = value;
+	// server/zone/objects/creature/buffs/Buff.idl(151):  
+	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(152):  			skillModifiers.get(modname) = value;
 	(&skillModifiers)->get(modname) = value;
 
-	else 	// server/zone/objects/creature/buffs/Buff.idl(152):  			skillModifiers.put(modname, value);
+	else 	// server/zone/objects/creature/buffs/Buff.idl(154):  			skillModifiers.put(modname, value);
 	(&skillModifiers)->put(modname, value);
 }
 
-void BuffImplementation::setSpeedModifier(float speed) {
-	// server/zone/objects/creature/buffs/Buff.idl(156):  		speedModifier = speed;
-	speedModifier = speed;
+void BuffImplementation::setSpeedMultiplierMod(float multiplier) {
+	// server/zone/objects/creature/buffs/Buff.idl(158):  		speedMultiplierMod = multiplier;
+	speedMultiplierMod = multiplier;
+}
+
+void BuffImplementation::setAccelerationMultiplierMod(float multiplier) {
+	// server/zone/objects/creature/buffs/Buff.idl(162):  		accelerationMultiplierMod = multiplier;
+	accelerationMultiplierMod = multiplier;
 }
 
 String BuffImplementation::getBuffName() {
-	// server/zone/objects/creature/buffs/Buff.idl(161):  		return buffName;
+	// server/zone/objects/creature/buffs/Buff.idl(168):  		return buffName;
 	return buffName;
 }
 
 int BuffImplementation::getBuffCRC() {
-	// server/zone/objects/creature/buffs/Buff.idl(165):  		return buffCRC;
+	// server/zone/objects/creature/buffs/Buff.idl(172):  		return buffCRC;
 	return buffCRC;
 }
 
 float BuffImplementation::getBuffDuration() {
-	// server/zone/objects/creature/buffs/Buff.idl(169):  		return buffDuration;
+	// server/zone/objects/creature/buffs/Buff.idl(176):  		return buffDuration;
 	return buffDuration;
 }
 
 int BuffImplementation::getBuffType() {
-	// server/zone/objects/creature/buffs/Buff.idl(173):  		return buffType;
+	// server/zone/objects/creature/buffs/Buff.idl(180):  		return buffType;
 	return buffType;
 }
 
 int BuffImplementation::getAttributeModifierValue(byte attribute) {
-	// server/zone/objects/creature/buffs/Buff.idl(177):  		return 
-	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(178):  			return attributeModifiers.get(attribute);
-	return (&attributeModifiers)->get(attribute);
-	// server/zone/objects/creature/buffs/Buff.idl(180):  0;
-	return 0;
-}
-
-int BuffImplementation::getSkillModifierValue(const String& modname) {
 	// server/zone/objects/creature/buffs/Buff.idl(184):  		return 
-	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(185):  			return skillModifiers.get(modname);
-	return (&skillModifiers)->get(modname);
+	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(185):  			return attributeModifiers.get(attribute);
+	return (&attributeModifiers)->get(attribute);
 	// server/zone/objects/creature/buffs/Buff.idl(187):  0;
 	return 0;
 }
 
+int BuffImplementation::getSkillModifierValue(const String& modname) {
+	// server/zone/objects/creature/buffs/Buff.idl(191):  		return 
+	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(192):  			return skillModifiers.get(modname);
+	return (&skillModifiers)->get(modname);
+	// server/zone/objects/creature/buffs/Buff.idl(194):  0;
+	return 0;
+}
+
 bool BuffImplementation::isSpiceBuff() {
-	// server/zone/objects/creature/buffs/Buff.idl(193):  		return (buffType == BuffType.SPICE);
+	// server/zone/objects/creature/buffs/Buff.idl(200):  		return (buffType == BuffType.SPICE);
 	return (buffType == BuffType::SPICE);
 }
 
@@ -692,30 +712,33 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setSkillModifier(inv->getAsciiParameter(_param0_setSkillModifier__String_int_), inv->getSignedIntParameter());
 		break;
 	case 28:
-		setSpeedModifier(inv->getFloatParameter());
+		setSpeedMultiplierMod(inv->getFloatParameter());
 		break;
 	case 29:
-		resp->insertAscii(getBuffName());
+		setAccelerationMultiplierMod(inv->getFloatParameter());
 		break;
 	case 30:
-		resp->insertSignedInt(getBuffCRC());
+		resp->insertAscii(getBuffName());
 		break;
 	case 31:
-		resp->insertFloat(getBuffDuration());
+		resp->insertSignedInt(getBuffCRC());
 		break;
 	case 32:
-		resp->insertSignedInt(getBuffType());
+		resp->insertFloat(getBuffDuration());
 		break;
 	case 33:
-		resp->insertSignedInt(getAttributeModifierValue(inv->getByteParameter()));
+		resp->insertSignedInt(getBuffType());
 		break;
 	case 34:
-		resp->insertSignedInt(getSkillModifierValue(inv->getAsciiParameter(_param0_getSkillModifierValue__String_)));
+		resp->insertSignedInt(getAttributeModifierValue(inv->getByteParameter()));
 		break;
 	case 35:
-		resp->insertBoolean(isActive());
+		resp->insertSignedInt(getSkillModifierValue(inv->getAsciiParameter(_param0_getSkillModifierValue__String_)));
 		break;
 	case 36:
+		resp->insertBoolean(isActive());
+		break;
+	case 37:
 		resp->insertBoolean(isSpiceBuff());
 		break;
 	default:
@@ -813,8 +836,12 @@ void BuffAdapter::setSkillModifier(const String& modname, int value) {
 	((BuffImplementation*) impl)->setSkillModifier(modname, value);
 }
 
-void BuffAdapter::setSpeedModifier(float speed) {
-	((BuffImplementation*) impl)->setSpeedModifier(speed);
+void BuffAdapter::setSpeedMultiplierMod(float multiplier) {
+	((BuffImplementation*) impl)->setSpeedMultiplierMod(multiplier);
+}
+
+void BuffAdapter::setAccelerationMultiplierMod(float multiplier) {
+	((BuffImplementation*) impl)->setAccelerationMultiplierMod(multiplier);
 }
 
 String BuffAdapter::getBuffName() {

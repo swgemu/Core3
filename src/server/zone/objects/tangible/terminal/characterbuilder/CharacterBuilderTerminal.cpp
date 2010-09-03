@@ -83,7 +83,6 @@ CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation(D
 	_initializeImplementation();
 }
 
-
 CharacterBuilderTerminalImplementation::~CharacterBuilderTerminalImplementation() {
 }
 
