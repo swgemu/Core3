@@ -86,7 +86,6 @@ ShuttleInstallationImplementation::ShuttleInstallationImplementation(DummyConstr
 	_initializeImplementation();
 }
 
-
 ShuttleInstallationImplementation::~ShuttleInstallationImplementation() {
 }
 

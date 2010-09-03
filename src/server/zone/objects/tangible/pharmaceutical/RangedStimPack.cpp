@@ -158,7 +158,6 @@ RangedStimPackImplementation::RangedStimPackImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 RangedStimPackImplementation::~RangedStimPackImplementation() {
 }
 

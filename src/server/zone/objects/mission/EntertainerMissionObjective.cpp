@@ -119,7 +119,6 @@ EntertainerMissionObjectiveImplementation::EntertainerMissionObjectiveImplementa
 	_initializeImplementation();
 }
 
-
 EntertainerMissionObjectiveImplementation::~EntertainerMissionObjectiveImplementation() {
 	EntertainerMissionObjectiveImplementation::finalize();
 }

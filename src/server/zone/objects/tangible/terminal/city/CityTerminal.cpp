@@ -115,7 +115,6 @@ CityTerminalImplementation::CityTerminalImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
-
 CityTerminalImplementation::~CityTerminalImplementation() {
 }
 

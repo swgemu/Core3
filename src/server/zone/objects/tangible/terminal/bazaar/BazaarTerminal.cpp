@@ -98,7 +98,6 @@ BazaarTerminalImplementation::BazaarTerminalImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 BazaarTerminalImplementation::~BazaarTerminalImplementation() {
 }
 

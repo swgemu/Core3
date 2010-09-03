@@ -173,7 +173,6 @@ CraftingStationImplementation::CraftingStationImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
-
 CraftingStationImplementation::~CraftingStationImplementation() {
 }
 

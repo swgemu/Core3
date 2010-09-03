@@ -164,7 +164,8 @@ public:
 
 		ManagedReference<Buff*> buff = new Buff(player, actionCRC, duration, BuffType::SKILL);
 
-		buff->setSpeedModifier(4.424f);
+		buff->setSpeedMultiplierMod(1.822f);
+		buff->setAccelerationMultiplierMod(1.822f);
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 

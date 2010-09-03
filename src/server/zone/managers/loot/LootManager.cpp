@@ -122,7 +122,6 @@ LootManagerImplementation::LootManagerImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
-
 LootManagerImplementation::~LootManagerImplementation() {
 }
 

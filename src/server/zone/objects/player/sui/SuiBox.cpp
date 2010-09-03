@@ -501,7 +501,6 @@ SuiBoxImplementation::SuiBoxImplementation(DummyConstructorParameter* param) : M
 	_initializeImplementation();
 }
 
-
 SuiBoxImplementation::~SuiBoxImplementation() {
 	SuiBoxImplementation::finalize();
 }

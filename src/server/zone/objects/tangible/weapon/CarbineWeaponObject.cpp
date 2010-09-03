@@ -66,7 +66,6 @@ CarbineWeaponObjectImplementation::CarbineWeaponObjectImplementation(DummyConstr
 	_initializeImplementation();
 }
 
-
 CarbineWeaponObjectImplementation::~CarbineWeaponObjectImplementation() {
 }
 

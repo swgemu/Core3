@@ -123,7 +123,9 @@ public:
 
 	void setSkillModifier(const String& modname, int value);
 
-	void setSpeedModifier(float speed);
+	void setSpeedMultiplierMod(float multiplier);
+
+	void setAccelerationMultiplierMod(float multiplier);
 
 	String getBuffName();
 
@@ -189,7 +191,9 @@ protected:
 
 	int buffType;
 
-	float speedModifier;
+	float speedMultiplierMod;
+
+	float accelerationMultiplierMod;
 
 	ParameterizedStringId startMessage;
 
@@ -246,7 +250,9 @@ public:
 
 	void setSkillModifier(const String& modname, int value);
 
-	void setSpeedModifier(float speed);
+	void setSpeedMultiplierMod(float multiplier);
+
+	void setAccelerationMultiplierMod(float multiplier);
 
 	String getBuffName();
 
@@ -351,7 +357,9 @@ public:
 
 	void setSkillModifier(const String& modname, int value);
 
-	void setSpeedModifier(float speed);
+	void setSpeedMultiplierMod(float multiplier);
+
+	void setAccelerationMultiplierMod(float multiplier);
 
 	String getBuffName();
 

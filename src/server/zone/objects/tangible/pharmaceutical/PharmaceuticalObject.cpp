@@ -187,7 +187,6 @@ PharmaceuticalObjectImplementation::PharmaceuticalObjectImplementation(DummyCons
 	_initializeImplementation();
 }
 
-
 PharmaceuticalObjectImplementation::~PharmaceuticalObjectImplementation() {
 }
 

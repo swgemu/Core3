@@ -94,7 +94,6 @@ SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
-
 SuiBankTransferBoxImplementation::~SuiBankTransferBoxImplementation() {
 }
 

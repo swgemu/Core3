@@ -159,7 +159,6 @@ JunkdealerCreatureImplementation::JunkdealerCreatureImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
-
 JunkdealerCreatureImplementation::~JunkdealerCreatureImplementation() {
 }
 

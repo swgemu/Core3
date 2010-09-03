@@ -151,7 +151,6 @@ WaypointObjectImplementation::WaypointObjectImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 WaypointObjectImplementation::~WaypointObjectImplementation() {
 }
 
