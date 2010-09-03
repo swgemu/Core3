@@ -470,7 +470,6 @@ ChatManagerImplementation::ChatManagerImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
-
 ChatManagerImplementation::~ChatManagerImplementation() {
 	ChatManagerImplementation::finalize();
 }

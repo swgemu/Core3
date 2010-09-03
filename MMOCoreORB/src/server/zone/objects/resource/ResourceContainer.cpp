@@ -228,7 +228,6 @@ ResourceContainerImplementation::ResourceContainerImplementation(DummyConstructo
 	_initializeImplementation();
 }
 
-
 ResourceContainerImplementation::~ResourceContainerImplementation() {
 }
 

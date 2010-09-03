@@ -54,7 +54,6 @@ TwoHandMeleeWeaponImplementation::TwoHandMeleeWeaponImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
-
 TwoHandMeleeWeaponImplementation::~TwoHandMeleeWeaponImplementation() {
 }
 

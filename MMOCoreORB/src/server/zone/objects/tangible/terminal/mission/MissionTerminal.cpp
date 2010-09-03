@@ -174,7 +174,6 @@ MissionTerminalImplementation::MissionTerminalImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
-
 MissionTerminalImplementation::~MissionTerminalImplementation() {
 }
 

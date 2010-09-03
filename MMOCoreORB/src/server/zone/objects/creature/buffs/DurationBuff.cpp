@@ -49,7 +49,6 @@ DurationBuffImplementation::DurationBuffImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
-
 DurationBuffImplementation::~DurationBuffImplementation() {
 }
 

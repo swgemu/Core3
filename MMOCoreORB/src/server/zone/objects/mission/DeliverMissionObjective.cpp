@@ -178,7 +178,6 @@ DeliverMissionObjectiveImplementation::DeliverMissionObjectiveImplementation(Dum
 	_initializeImplementation();
 }
 
-
 DeliverMissionObjectiveImplementation::~DeliverMissionObjectiveImplementation() {
 	DeliverMissionObjectiveImplementation::finalize();
 }

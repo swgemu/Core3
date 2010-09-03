@@ -135,7 +135,6 @@ WoundPackImplementation::WoundPackImplementation(DummyConstructorParameter* para
 	_initializeImplementation();
 }
 
-
 WoundPackImplementation::~WoundPackImplementation() {
 }
 

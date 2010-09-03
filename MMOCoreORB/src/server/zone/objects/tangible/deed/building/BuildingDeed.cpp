@@ -107,7 +107,6 @@ BuildingDeedImplementation::BuildingDeedImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
-
 BuildingDeedImplementation::~BuildingDeedImplementation() {
 }
 

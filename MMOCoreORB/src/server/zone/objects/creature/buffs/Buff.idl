@@ -73,7 +73,8 @@ class Buff extends ManagedObject implements Logger {
 	protected float buffDuration;
 	protected unsigned int buffCRC;
 	protected int buffType;
-	protected float speedModifier;
+	protected float speedMultiplierMod;
+	protected float accelerationMultiplierMod;
 	
 	@dereferenced
 	protected ParameterizedStringId startMessage;
@@ -88,7 +89,8 @@ class Buff extends ManagedObject implements Logger {
 		buffCRC = buffcrc;
 		buffDuration = duration;
 		buffType = bufftype;
-		speedModifier = 0;
+		speedMultiplierMod = -1.f;
+		accelerationMultiplierMod = -1.f;
 		
 		Logger.setLoggingName("Buff");
 		
@@ -152,9 +154,14 @@ class Buff extends ManagedObject implements Logger {
 			skillModifiers.put(modname, value);
 	}
 	
-	public void setSpeedModifier(float speed) {
-		speedModifier = speed;
+	public void setSpeedMultiplierMod(float multiplier) {
+		speedMultiplierMod = multiplier;
 	}
+
+	public void setAccelerationMultiplierMod(float multiplier) {
+		accelerationMultiplierMod = multiplier;
+	}
+
 
 	//Getters
 	public string getBuffName() {

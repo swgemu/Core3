@@ -54,7 +54,6 @@ RangedWeaponObjectImplementation::RangedWeaponObjectImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
-
 RangedWeaponObjectImplementation::~RangedWeaponObjectImplementation() {
 }
 

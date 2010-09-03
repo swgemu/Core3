@@ -217,7 +217,6 @@ CraftingManagerImplementation::CraftingManagerImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
-
 CraftingManagerImplementation::~CraftingManagerImplementation() {
 }
 

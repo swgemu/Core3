@@ -67,7 +67,6 @@ LootObjectImplementation::LootObjectImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
-
 LootObjectImplementation::~LootObjectImplementation() {
 }
 

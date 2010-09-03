@@ -133,7 +133,6 @@ CreatureManagerImplementation::CreatureManagerImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
-
 CreatureManagerImplementation::~CreatureManagerImplementation() {
 }
 
@@ -214,6 +213,10 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet, ZoneP
 }
 
 void CreatureManagerImplementation::initialize() {
+	// server/zone/managers/creature/CreatureManager.idl(40):  		loadTrainers();
+	loadTrainers();
+	// server/zone/managers/creature/CreatureManager.idl(41):  		loadSingleSpawns();
+	loadSingleSpawns();
 	// server/zone/managers/creature/CreatureManager.idl(42):  		loadMissionSpawns();
 	loadMissionSpawns();
 }

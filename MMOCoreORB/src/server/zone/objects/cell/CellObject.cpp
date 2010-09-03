@@ -144,7 +144,6 @@ CellObjectImplementation::CellObjectImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
-
 CellObjectImplementation::~CellObjectImplementation() {
 	CellObjectImplementation::finalize();
 }

@@ -141,7 +141,6 @@ MissionObjectiveImplementation::MissionObjectiveImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
-
 MissionObjectiveImplementation::~MissionObjectiveImplementation() {
 }
 
