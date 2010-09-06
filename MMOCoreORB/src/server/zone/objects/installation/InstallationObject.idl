@@ -60,6 +60,7 @@ import system.util.VectorMap;
 import server.zone.objects.resource.ResourceSpawn;
 import server.zone.objects.resource.ResourceContainer;
 include server.zone.objects.installation.HopperList;
+import system.lang.String;
 
 
 class InstallationObject extends StructureObject {
@@ -105,6 +106,10 @@ class InstallationObject extends StructureObject {
 		operatorList.setNoDuplicateInsertPlan();
 		
 		Logger.setLoggingName("InstallationObject");
+
+	if (resourceHopper.size() != 0) {
+		Logger.info("loaded with hopper size:" + String.valueOf(resourceHopper.size()), true);
+		}
 	}
 	
 	/**
@@ -167,7 +172,7 @@ class InstallationObject extends StructureObject {
 	 * @post { this object is locked }
 	 * @param startTask if true, queues a new update task
 	 */
-	public abstract native void updateToDatabaseAllObjects(boolean startTask);
+	public native void updateToDatabaseAllObjects(boolean startTask);
 	
 	public abstract native void setOperating(boolean operating, boolean notifyClient = true);
 	

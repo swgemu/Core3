@@ -285,7 +285,7 @@ void FactoryObjectImplementation::_serializationHelperMethod() {
 
 	addSerializableVariable("craftingTabsSupported", &craftingTabsSupported);
 	addSerializableVariable("timer", &timer);
-	addSerializableVariable("currentUser", &currentUser);
+	addSerializableVariable("currentUserName", &currentUserName);
 	addSerializableVariable("currentRunCount", &currentRunCount);
 }
 

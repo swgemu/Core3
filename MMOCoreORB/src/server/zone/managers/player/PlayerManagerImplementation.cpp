@@ -296,6 +296,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	callback->getProfession(profession);
 
 	PlayerCreature* playerCreature = (PlayerCreature*) player.get();
+	playerCreature->setCustomObjectName(name, false);
 	createAllPlayerObjects(playerCreature);
 	createDefaultPlayerItems(playerCreature, profession, race);
 
@@ -307,8 +308,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	String playerCustomization;
 	callback->getCustomizationString(playerCustomization);
 	playerCreature->setCustomizationString(playerCustomization);
-
-	playerCreature->setCustomObjectName(name, false);
 
 	String firstName = playerCreature->getFirstName();
 	String lastName = playerCreature->getLastName();
@@ -494,11 +493,13 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	inventory->addObject(backpackObject, -1);*/
 
 	//admin
-	ObjectController* objController = server->getObjectController();
-	QueueCommand* admin = objController->getQueueCommand("admin");
-	Vector<QueueCommand*> skills;
-	skills.add(admin);
-	((PlayerObject*)playerObject)->addSkills(skills, false);
+	//if (player->getFirstName() == "TheAnswer") {
+		ObjectController* objController = server->getObjectController();
+		QueueCommand* admin = objController->getQueueCommand("admin");
+		Vector<QueueCommand*> skills;
+		skills.add(admin);
+		((PlayerObject*)playerObject)->addSkills(skills, false);
+	//}
 
 	VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1);
 	VehicleObject* vehicle = (VehicleObject*) server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1);
@@ -852,6 +853,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCre
 	player->sendSystemMessage(stringId);
 
 	player->updateTimeOfDeath();
+	player->clearBuffs(true);
 
 	/*Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
 	task->schedule(10 * 1000);*/
@@ -878,7 +880,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* playe
 	UnicodeString name;
 	StringId* objectName = closestCloning->getObjectName();
 
-	ActiveArea* area = closestCloning->getActiveArea();
+	ActiveArea* area = closestCloning->getActiveRegion();
 
 	if (area != NULL) {
 		objectName = area->getObjectName();
@@ -1403,6 +1405,12 @@ bool PlayerManagerImplementation::checkTradeItems(PlayerCreature* player, Player
 
 	SceneObject* playerInventory = player->getSlottedObject("inventory");
 	SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
+
+	if (receiverInventory->getContainerObjectsSize() + tradeContainer->getTradeSize() >= receiverInventory->getContainerVolumeLimit())
+		return false;
+
+	if (playerInventory->getContainerObjectsSize() + receiverContainer->getTradeSize() >= playerInventory->getContainerVolumeLimit())
+		return false;
 
 	for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
 		ManagedReference<SceneObject*> scene = tradeContainer->getTradeItem(i);

@@ -801,9 +801,9 @@ void StructureManagerImplementation::loadPlayerStructures() {
 
 			SceneObject* object = server->getZoneServer()->getObject(objectID);
 
-			if (object != NULL)
-				object->info("loaded player structure into world", true);
-			else {
+			if (object != NULL) {
+				//object->info("loaded player structure into world");
+			} else {
 				error("could not load structure " + String::valueOf(objectID));
 			}
 
@@ -1212,7 +1212,7 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 		return 1;
 	}
 
-	ManagedReference<ActiveArea*> activeArea = buildingObject->getActiveArea();
+	ManagedReference<ActiveArea*> activeArea = buildingObject->getActiveRegion();
 
 	if (activeArea == NULL || !activeArea->isRegion()) {
 		//Not in a city.

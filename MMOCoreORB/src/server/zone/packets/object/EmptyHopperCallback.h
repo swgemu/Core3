@@ -60,7 +60,8 @@ public:
 				return;
 			}
 
-			if (!harvester->isInRange(player, 10)) {
+			if (!harvester->isInRange(player, 20)) {
+				player->sendSystemMessage("You are too far away");
 				return;
 			}
 

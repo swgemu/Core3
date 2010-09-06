@@ -242,6 +242,8 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 			broadcastToOperators(inso7);
 		}
 	}
+
+	updateToDatabase();
 }
 
 void InstallationObjectImplementation::handleStructureAddEnergy(PlayerCreature* player) {
@@ -362,6 +364,8 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 	lastMaintenanceTime.updateToCurrentTime();
 
+	updateToDatabase();
+
 	return shutdownWork;
 }
 
@@ -458,6 +462,8 @@ void InstallationObjectImplementation::clearResourceHopper() {
 	}*/
 
 	setOperating(false);
+
+	updateToDatabase();
 }
 
 void InstallationObjectImplementation::removeResourceFromHopper(ResourceContainer* container) {
@@ -484,6 +490,8 @@ void InstallationObjectImplementation::removeResourceFromHopper(ResourceContaine
 
 	if (resourceHopper.size() == 0)
 		setOperating(false);
+
+	updateToDatabase();
 }
 
 void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* container) {
@@ -498,6 +506,8 @@ void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* co
 	inso7->close();
 
 	broadcastToOperators(inso7);
+
+	updateToDatabase();
 }
 
 void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
@@ -540,6 +550,8 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 	inso7->close();
 
 	broadcastToOperators(inso7);
+
+	updateToDatabase();
 }
 
 void InstallationObjectImplementation::broadcastToOperators(BasePacket* packet) {
@@ -607,7 +619,7 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 	if (container->getQuantity() == newQuantity)
 		return;
 
-	container->setQuantity(newQuantity);
+	container->setQuantity(newQuantity, false);
 
 	if (!notifyClient)
 		return;
@@ -627,6 +639,8 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 			broadcastToOperators(inso7);
 		}
 	}
+
+	updateToDatabase();
 }
 
 void InstallationObjectImplementation::updateToDatabaseAllObjects(bool startTask) {

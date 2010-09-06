@@ -125,7 +125,7 @@ protected:
 
 	int timer;
 
-	ManagedReference<PlayerCreature* > currentUser;
+	String currentUserName;
 
 	int currentRunCount;
 

@@ -244,7 +244,7 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 				StringId* objectName = object->getObjectName();
 
 				if (object->isBuildingObject()) {
-					ActiveArea* area = object->getActiveArea();
+					ActiveArea* area = object->getActiveRegion();
 
 					if (area != NULL) {
 						objectName = area->getObjectName();

@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 
+
 class SetGodModeCommand : public QueueCommand {
 public:
 
@@ -62,6 +63,47 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		StringTokenizer args(arguments.toString());
+
+		if (object == NULL || !object->isPlayerCreature()) {
+			String firstName;
+
+			if (args.hasMoreTokens()) {
+				args.getStringToken(firstName);
+
+				object = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+			}
+
+			if (object == NULL || !object->isPlayerCreature())
+				return INVALIDTARGET;
+		}
+
+		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+
+		if (ghost == NULL)
+			return GENERALERROR;
+
+		if (!ghost->hasSkill("admin")) {
+			return GENERALERROR;
+		}
+
+		PlayerCreature* targetPlayer = (PlayerCreature*) object.get();
+
+		Locker clocker(targetPlayer, creature);
+
+		PlayerObject* playerObject = targetPlayer->getPlayerObject();
+
+		//admin
+		ObjectController* objController = server->getObjectController();
+		QueueCommand* admin = objController->getQueueCommand("admin");
+		Vector<QueueCommand*> skills;
+		skills.add(admin);
+
+		playerObject->addSkills(skills, true);
+
 
 		return SUCCESS;
 	}

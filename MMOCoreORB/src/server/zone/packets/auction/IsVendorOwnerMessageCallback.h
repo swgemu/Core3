@@ -44,7 +44,7 @@ public:
 			return;
 
 		if (bazaar->isBazaarTerminal()) {
-			ActiveArea* area = bazaar->getActiveArea();
+			ActiveArea* area = bazaar->getActiveRegion();
 
 			if (area == NULL) {
 				bazaar->error("NULL AREA FOR THIS BAZAAR");
