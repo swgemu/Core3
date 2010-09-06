@@ -70,6 +70,12 @@ void PlayerCreatureImplementation::finalize() {
 void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	CreatureObjectImplementation::notifyLoadFromDatabase();
 
+	/*StackTrace::printStackTrace();
+
+	if (parent != NULL) {
+		info("loading from database with parent not null", true);
+	}*/
+
 	surveyTool = NULL;
 	group = NULL;
 	centeredBonus = 0;
@@ -335,6 +341,9 @@ void PlayerCreatureImplementation::unload() {
 			removeFromZone();
 		}
 	}
+
+	if (parent != NULL)
+		parent->removeObject(_this);
 
 	clearUpdateToDatabaseTask();
 	//updateToDatabaseAllObjects(false);

@@ -132,7 +132,8 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	
 	protected boolean staticObject;
 	
-	protected ActiveArea activeArea;
+	@dereferenced
+	protected SortedVector<ActiveArea> activeAreas;
 
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
@@ -392,7 +393,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	}
 	
 	public void finalize() {
-		Logger.info("deleting object from memory", true);
+		//Logger.info("deleting object from memory", true);
 		//StackTrace.printStackTrace();
 	}
 	
@@ -1091,7 +1092,11 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	}
 	
 	public boolean hasFullContainerObjects() {
-		return containerObjects.size() == containerVolumeLimit;
+		return containerObjects.size() > containerVolumeLimit || containerObjects.size() == containerVolumeLimit;
+	}
+	
+	public int getContainerVolumeLimit() {
+		return containerVolumeLimit;
 	}
 
 	public SceneObject getContainerObject(int idx) {
@@ -1313,8 +1318,12 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		gameObjectType = type;
 	}
 	
-	public void setActiveArea(ActiveArea area) {
-		activeArea = area;
+	public void addActiveArea(ActiveArea area) {
+		activeAreas.put(area);
+	}
+	
+	public void dropActiveArea(ActiveArea area) {
+		activeAreas.drop(area);
 	}
 
 	public void setClientObjectCRC(unsigned int objCRC) {
@@ -1403,8 +1412,25 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return false;
 	}
 
-	public ActiveArea getActiveArea() {
-		return activeArea;
+	@local
+	public Vector<ActiveArea> getActiveAreas() {
+		return activeAreas;
+	}
+	
+	public ActiveArea getActiveRegion() {
+		for (int i = 0; i < activeAreas.size(); i++) {
+			ActiveArea region = activeAreas.get(i);
+			
+			if (region.isRegion()) {
+				return region;
+			}
+		}
+		
+		return null;
+	}
+	
+	public boolean hasActiveArea(ActiveArea area) {
+		return activeAreas.contains(area);
 	}
 
 	public int getMapLocationsType1() {

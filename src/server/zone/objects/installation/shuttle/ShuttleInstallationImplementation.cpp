@@ -15,7 +15,7 @@
 #include "server/zone/Zone.h"
 
 void ShuttleInstallationImplementation::spawnShuttleObjects() {
-	if (activeArea == NULL || zone == NULL) {
+	if (getActiveRegion() == NULL || zone == NULL) {
 		error("active area null");
 		return;
 	}
@@ -35,7 +35,7 @@ void ShuttleInstallationImplementation::spawnShuttleObjects() {
 
 	Locker locker(shuttle);
 
-	String shuttleName = activeArea->getCustomObjectName().toString();
+	String shuttleName = getActiveRegion()->getCustomObjectName().toString();
 
 	shuttle->setDirection(direction.getW(), 0, direction.getY(), 0);
 	shuttle->setArrivalPoint(positionX, positionY, positionZ);
@@ -83,7 +83,7 @@ void ShuttleInstallationImplementation::spawnShuttleObjects() {
 }
 
 bool ShuttleInstallationImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
-	ManagedReference<ActiveArea*> playerArea = player->getActiveArea();
+	ManagedReference<ActiveArea*> playerArea = player->getActiveRegion();
 
 	//TODO: Check to make sure the player is the mayor of the city.
 	if (playerArea == NULL || !playerArea->isRegion()) {

@@ -63,7 +63,7 @@ class VehicleObject extends CreatureObject {
 		vehicleType = SceneObject.HOVERVEHICLE;
 		
 		Logger.setLoggingName("VehicleObject");
-		Logger.setLogging(true);
+		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
 	

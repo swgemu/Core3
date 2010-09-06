@@ -276,8 +276,8 @@ VehicleObjectImplementation::VehicleObjectImplementation() {
 	vehicleType = SceneObject::HOVERVEHICLE;
 	// server/zone/objects/creature/VehicleObject.idl(65):  		Logger.setLoggingName("VehicleObject");
 	Logger::setLoggingName("VehicleObject");
-	// server/zone/objects/creature/VehicleObject.idl(66):  		Logger.setLogging(true);
-	Logger::setLogging(true);
+	// server/zone/objects/creature/VehicleObject.idl(66):  		Logger.setLogging(false);
+	Logger::setLogging(false);
 	// server/zone/objects/creature/VehicleObject.idl(67):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }

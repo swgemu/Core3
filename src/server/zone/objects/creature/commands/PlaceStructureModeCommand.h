@@ -142,12 +142,13 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<ActiveArea*> area = player->getActiveArea();
+		Vector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
 
-		if (area != NULL) {
-			if (area->isRegion()) {
+		if (areas->size() != 0) {
+			ManagedReference<ActiveArea*> region = player->getActiveRegion();
 
-				if (area->isStaticObject()) {
+			if (region != NULL) {
+				if (region->isStaticObject()) {
 					player->sendSystemMessage("You cant place a structure here");
 					return GENERALERROR;
 				}

@@ -319,6 +319,11 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 	// pay the seller
 	ManagedReference<PlayerCreature*> seller = pman->getPlayer(item->getOwnerName());
 
+	if (seller == NULL) {
+		error("SELLER NULL FOR NAME " + item->getOwnerName());
+		return;
+	}
+
 	try {
 		Locker clocker(seller, player);
 
@@ -447,7 +452,7 @@ int BazaarManagerImplementation::checkRetrieve(PlayerCreature* player, uint64 ob
 	if (item->isSold() && item->getBuyerID() != player->getObjectID())
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 
-	ActiveArea* area = terminal->getActiveArea();
+	ActiveArea* area = terminal->getActiveRegion();
 	String region = area->getObjectName()->getStringID();
 	//String region = terminal->getBazaarRegion();
 
@@ -547,7 +552,7 @@ AuctionItem* BazaarManagerImplementation::createAuctionItem(PlayerCreature* play
 	item->setPlanet(planet);
 	item->setBazaarTerminal(terminal);
 
-	ActiveArea* area = terminal->getActiveArea();
+	ActiveArea* area = terminal->getActiveRegion();
 	String region = area->getObjectName()->getStringID();
 	String planetStr = Planet::getPlanetName(planet);
 
@@ -716,7 +721,7 @@ void BazaarManagerImplementation::getRegionBazaarData(PlayerCreature* player, Ba
 	}
 
 	//String region = terminal->getBazaarRegion();
-	ActiveArea* area = terminal->getActiveArea();
+	ActiveArea* area = terminal->getActiveRegion();
 	String region = area->getObjectName()->getStringID();
 
 	if (area == NULL || !area->isRegion()) {

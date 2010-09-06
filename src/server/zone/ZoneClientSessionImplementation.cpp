@@ -81,6 +81,8 @@ void ZoneClientSessionImplementation::sendMessage(BasePacket* msg) {
 	BaseClientProxy::sendPacket(msg);
 }
 
+
+//this needs to be run in a different thread
 void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	lock(doLock);
 

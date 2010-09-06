@@ -12,7 +12,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
-class MissionTargetMap : public SortedVector<SceneObject*>, public ReadWriteLock {
+class MissionTargetMap : public SortedVector<ManagedReference<SceneObject*> >, public ReadWriteLock {
 public:
 	MissionTargetMap() {
 
@@ -36,7 +36,7 @@ public:
 		if (coord.getPositionY() < zone->getMinY())
 			coord.setPositionY(zone->getMinY());
 
-		rlock();
+		//rlock();
 
 		try {
 			for (int i = 0; i < size(); ++i) {
@@ -55,7 +55,7 @@ public:
 
 		}
 
-		runlock();
+		//runlock();
 
 		return result;
 	}
