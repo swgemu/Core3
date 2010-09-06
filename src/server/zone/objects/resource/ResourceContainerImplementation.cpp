@@ -75,12 +75,12 @@ void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(rnco6);
 }
 
-void ResourceContainerImplementation::setQuantity(int quantity) {
+void ResourceContainerImplementation::setQuantity(int quantity, bool destroyOnZero) {
 	Locker _locker(_this);
 
 	stackQuantity = quantity;
 
-	 if(stackQuantity < 1) {
+	 if(stackQuantity < 1 && destroyOnZero) {
 
 		if(parent != NULL) {
 			parent->broadcastDestroy(_this, true);
@@ -101,11 +101,14 @@ void ResourceContainerImplementation::setQuantity(int quantity) {
 	}
 
 	if (newStackSize > 0) {
-		ResourceContainer* harvestedResource = spawnObject->createResource(newStackSize);
+		if (parent != NULL) {
 
-		parent->addObject(harvestedResource, -1, true);
-		parent->broadcastObject(harvestedResource, true);
-		harvestedResource->updateToDatabase();
+			ResourceContainer* harvestedResource = spawnObject->createResource(newStackSize);
+
+			parent->addObject(harvestedResource, -1, true);
+			parent->broadcastObject(harvestedResource, true);
+			harvestedResource->updateToDatabase();
+		}
 	}
 
 	ResourceContainerObjectDeltaMessage3* rcnod3 =

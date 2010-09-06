@@ -583,81 +583,86 @@ void InstallationObjectImplementation::_serializationHelperMethod() {
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/InstallationObject.idl(88):  		Logger.setLoggingName("InstallationObject");
+	// server/zone/objects/installation/InstallationObject.idl(89):  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
-	// server/zone/objects/installation/InstallationObject.idl(90):  		super.staticObject = false;
+	// server/zone/objects/installation/InstallationObject.idl(91):  		super.staticObject = false;
 	StructureObjectImplementation::staticObject = false;
-	// server/zone/objects/installation/InstallationObject.idl(92):  		operating = false;
+	// server/zone/objects/installation/InstallationObject.idl(93):  		operating = false;
 	operating = false;
-	// server/zone/objects/installation/InstallationObject.idl(94):  		installationType = 0;
+	// server/zone/objects/installation/InstallationObject.idl(95):  		installationType = 0;
 	installationType = 0;
-	// server/zone/objects/installation/InstallationObject.idl(96):  		operatorList.setNoDuplicateInsertPlan();
+	// server/zone/objects/installation/InstallationObject.idl(97):  		operatorList.setNoDuplicateInsertPlan();
 	(&operatorList)->setNoDuplicateInsertPlan();
-	// server/zone/objects/installation/InstallationObject.idl(98):  		hopperSizeMax = 10000;
+	// server/zone/objects/installation/InstallationObject.idl(99):  		hopperSizeMax = 10000;
 	hopperSizeMax = 10000;
-	// server/zone/objects/installation/InstallationObject.idl(99):  		extractionRate = 100;
+	// server/zone/objects/installation/InstallationObject.idl(100):  		extractionRate = 100;
 	extractionRate = 100;
 }
 
 void InstallationObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/installation/InstallationObject.idl(103):  		super.initializeTransientMembers();
+	// server/zone/objects/installation/InstallationObject.idl(104):  		super.initializeTransientMembers();
 	StructureObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/installation/InstallationObject.idl(105):  		operatorList.setNoDuplicateInsertPlan();
+	// server/zone/objects/installation/InstallationObject.idl(106):  		operatorList.setNoDuplicateInsertPlan();
 	(&operatorList)->setNoDuplicateInsertPlan();
-	// server/zone/objects/installation/InstallationObject.idl(107):  		Logger.setLoggingName("InstallationObject");
+	// server/zone/objects/installation/InstallationObject.idl(108):  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
+	// server/zone/objects/installation/InstallationObject.idl(110):  	}
+	if ((&resourceHopper)->size() != 0){
+	// server/zone/objects/installation/InstallationObject.idl(111):  		Logger.info("loaded with hopper size:" + String.valueOf(resourceHopper.size()), true);
+	Logger::info("loaded with hopper size:" + String::valueOf((&resourceHopper)->size()), true);
+}
 }
 
 void InstallationObjectImplementation::updateOperators() {
 }
 
 void InstallationObjectImplementation::addOperator(PlayerCreature* player) {
-	// server/zone/objects/installation/InstallationObject.idl(218):  		operatorList.put(player);
+	// server/zone/objects/installation/InstallationObject.idl(223):  		operatorList.put(player);
 	(&operatorList)->put(player);
 }
 
 void InstallationObjectImplementation::removeOperator(PlayerCreature* player) {
-	// server/zone/objects/installation/InstallationObject.idl(222):  		operatorList.drop(player);
+	// server/zone/objects/installation/InstallationObject.idl(227):  		operatorList.drop(player);
 	(&operatorList)->drop(player);
 }
 
 bool InstallationObjectImplementation::isInstallationObject() {
-	// server/zone/objects/installation/InstallationObject.idl(230):  		return true;
+	// server/zone/objects/installation/InstallationObject.idl(235):  		return true;
 	return true;
 }
 
 bool InstallationObjectImplementation::isOperating() {
-	// server/zone/objects/installation/InstallationObject.idl(234):  		return operating;
+	// server/zone/objects/installation/InstallationObject.idl(239):  		return operating;
 	return operating;
 }
 
 int InstallationObjectImplementation::getInstallationType() {
-	// server/zone/objects/installation/InstallationObject.idl(238):  		return installationType;
+	// server/zone/objects/installation/InstallationObject.idl(243):  		return installationType;
 	return installationType;
 }
 
 float InstallationObjectImplementation::getExtractionRate() {
-	// server/zone/objects/installation/InstallationObject.idl(242):  		return extractionRate;
+	// server/zone/objects/installation/InstallationObject.idl(247):  		return extractionRate;
 	return extractionRate;
 }
 
 float InstallationObjectImplementation::getHopperSizeMax() {
-	// server/zone/objects/installation/InstallationObject.idl(246):  		return hopperSizeMax;
+	// server/zone/objects/installation/InstallationObject.idl(251):  		return hopperSizeMax;
 	return hopperSizeMax;
 }
 
 HopperList* InstallationObjectImplementation::getHopperList() {
-	// server/zone/objects/installation/InstallationObject.idl(251):  		return resourceHopper;
+	// server/zone/objects/installation/InstallationObject.idl(256):  		return resourceHopper;
 	return (&resourceHopper);
 }
 
 bool InstallationObjectImplementation::isHarvesterObject() {
-	// server/zone/objects/installation/InstallationObject.idl(255):  		return false;
+	// server/zone/objects/installation/InstallationObject.idl(260):  		return false;
 	return false;
 }
 
 bool InstallationObjectImplementation::isGeneratorObject() {
-	// server/zone/objects/installation/InstallationObject.idl(259):  		return false;
+	// server/zone/objects/installation/InstallationObject.idl(264):  		return false;
 	return false;
 }
 

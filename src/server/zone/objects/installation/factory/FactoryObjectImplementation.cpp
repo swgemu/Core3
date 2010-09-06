@@ -372,7 +372,7 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(PlayerCreature* playe
 void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
 
 	if(!operating) {
-		currentUser = player;
+		currentUserName = player->getFirstName();
 		currentRunCount = 0;
 		startFactory();
 		player->sendSystemMessage("manf_station", "activated"); //Station activated
@@ -380,7 +380,7 @@ void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
 
 		stopFactory("manf_done", getObjectName()->getDisplayedName(), "", currentRunCount);
 		player->sendSystemMessage("manf_station", "deactivated"); //Station deactivated
-		currentUser = NULL;
+		currentUserName = "";
 	}
 }
 
@@ -419,7 +419,7 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 	//Send out email informing them why their factory stopped
 	ManagedReference<ChatManager*> chatManager = server->getChatManager();
 
-	if (chatManager != NULL && currentUser != NULL) {
+	if (chatManager != NULL && currentUserName != "") {
 		ParameterizedStringId emailBody;
 		emailBody.setStringId("@system_msg:" + message);
 		if(tt != "")
@@ -429,7 +429,7 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 		if(di != -1)
 			emailBody.setDI(di);
 		UnicodeString subject = "@system_msg:manf_done_sub";
-		chatManager->sendMail(getObjectName()->getDisplayedName(), subject, emailBody, currentUser->getFirstName());
+		chatManager->sendMail(getObjectName()->getDisplayedName(), subject, emailBody, currentUserName);
 	}
 
 	updateToDatabase();

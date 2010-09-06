@@ -212,11 +212,11 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 	if (startTask)
 		queueUpdateToDatabaseTask();
 
-	info("saved in " + String::valueOf(start.miliDifference()) + " ms");
+	//info("saved in " + String::valueOf(start.miliDifference()) + " ms");
 }
 
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	info("deleting from database", true);
+	//info("deleting from database", true);
 
 	ZoneServer* server = getZoneServer();
 
@@ -553,7 +553,7 @@ void SceneObjectImplementation::sendMessage(BasePacket* msg) {
 }
 
 void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
-	if (!isInQuadTree() || !parent->isCellObject())
+	if (/*!isInQuadTree() || */!parent->isCellObject())
 		return;
 
 	if (building != parent->getParent()) {
@@ -609,7 +609,7 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	} else
 		zone->update(this);
 
-	zone->inRange(this, 256);
+	zone->inRange(this, 512);
 
 
 	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
@@ -697,7 +697,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		insertToBuilding(building);
 	} else {
 		building->update(this);
-		building->inRange(this, 256);
+		building->inRange(this, 512);
 	}
 
 	if (sendPackets) {
@@ -791,7 +791,7 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 
 		if (parent == NULL || !parent->isCellObject() || parent->getParent() == NULL) {
 			zone->insert(this);
-			zone->inRange(this, 256);
+			zone->inRange(this, 512);
 		} else if (parent->isCellObject()) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
 			insertToBuilding(building);
@@ -836,7 +836,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 		//parent->addObject(_this, 0xFFFFFFFF);
 
 		building->insert(this);
-		building->inRange(this, 256);
+		building->inRange(this, 512);
 
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 

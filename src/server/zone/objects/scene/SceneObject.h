@@ -842,6 +842,8 @@ public:
 
 	bool hasFullContainerObjects();
 
+	int getContainerVolumeLimit();
+
 	SceneObject* getContainerObject(int idx);
 
 	ZoneClientSession* getClient();
@@ -944,7 +946,9 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
-	void setActiveArea(ActiveArea* area);
+	void addActiveArea(ActiveArea* area);
+
+	void dropActiveArea(ActiveArea* area);
 
 	void setClientObjectCRC(unsigned int objCRC);
 
@@ -990,7 +994,11 @@ public:
 
 	bool isMissionObject();
 
-	ActiveArea* getActiveArea();
+	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
+
+	ActiveArea* getActiveRegion();
+
+	bool hasActiveArea(ActiveArea* area);
 
 	int getMapLocationsType1();
 
@@ -1062,7 +1070,7 @@ protected:
 
 	bool staticObject;
 
-	ManagedReference<ActiveArea* > activeArea;
+	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 
 	unsigned int containerType;
 
@@ -1721,6 +1729,8 @@ public:
 
 	bool hasFullContainerObjects();
 
+	int getContainerVolumeLimit();
+
 	SceneObject* getContainerObject(int idx);
 
 	virtual ZoneClientSession* getClient();
@@ -1823,7 +1833,9 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
-	void setActiveArea(ActiveArea* area);
+	void addActiveArea(ActiveArea* area);
+
+	void dropActiveArea(ActiveArea* area);
 
 	void setClientObjectCRC(unsigned int objCRC);
 
@@ -1869,7 +1881,11 @@ public:
 
 	virtual bool isMissionObject();
 
-	ActiveArea* getActiveArea();
+	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
+
+	ActiveArea* getActiveRegion();
+
+	bool hasActiveArea(ActiveArea* area);
 
 	int getMapLocationsType1();
 
@@ -2084,6 +2100,8 @@ public:
 
 	bool hasFullContainerObjects();
 
+	int getContainerVolumeLimit();
+
 	SceneObject* getContainerObject(int idx);
 
 	ZoneClientSession* getClient();
@@ -2186,7 +2204,9 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
-	void setActiveArea(ActiveArea* area);
+	void addActiveArea(ActiveArea* area);
+
+	void dropActiveArea(ActiveArea* area);
 
 	void setClientObjectCRC(unsigned int objCRC);
 
@@ -2224,7 +2244,9 @@ public:
 
 	bool isMissionObject();
 
-	ActiveArea* getActiveArea();
+	ActiveArea* getActiveRegion();
+
+	bool hasActiveArea(ActiveArea* area);
 
 	int getMapLocationsType1();
 

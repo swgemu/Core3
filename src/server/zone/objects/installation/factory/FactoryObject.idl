@@ -12,7 +12,7 @@ class FactoryObject extends InstallationObject {
 	
 	protected int timer;
 	
-	protected PlayerCreature currentUser;
+	protected string currentUserName;
 	protected int currentRunCount;
 	
 	public FactoryObject() {

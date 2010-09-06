@@ -56,7 +56,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(int quantity);
+	void setQuantity(int quantity, bool destroyOnZero = true);
 
 	bool isResourceContainer();
 
@@ -124,7 +124,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(int quantity);
+	void setQuantity(int quantity, bool destroyOnZero = true);
 
 	bool isResourceContainer();
 
@@ -193,7 +193,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(int quantity);
+	void setQuantity(int quantity, bool destroyOnZero);
 
 	bool isResourceContainer();
 

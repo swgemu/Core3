@@ -98,7 +98,7 @@ class ResourceContainer extends TangibleObject {
 	 */
 	public native void sendBaselinesTo(SceneObject player);
 	
-	public native void setQuantity(int quantity);
+	public native void setQuantity(int quantity, boolean destroyOnZero = true);
 	
 	public boolean isResourceContainer() {
 		return true;

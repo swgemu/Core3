@@ -19,12 +19,12 @@ void ActiveAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
-	if (scno->getActiveArea() != _this && containsPoint(scno->getPositionX(), scno->getPositionY())) {
-		scno->setActiveArea(_this);
+	if (!scno->hasActiveArea(_this) && containsPoint(scno->getPositionX(), scno->getPositionY())) {
+		scno->addActiveArea(_this);
 		enqueueEnterEvent(scno);
 
-	} else if (scno->getActiveArea() == _this && !containsPoint(scno->getPositionX(), scno->getPositionY())) {
-		scno->setActiveArea(NULL);
+	} else if (scno->hasActiveArea(_this) && !containsPoint(scno->getPositionX(), scno->getPositionY())) {
+		scno->dropActiveArea(_this);
 		enqueueExitEvent(scno);
 	}
 }
@@ -45,8 +45,8 @@ void ActiveAreaImplementation::notifyDissapear(QuadTreeEntry* obj) {
 
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
-	if (scno->getActiveArea() == _this) {
-		scno->setActiveArea(NULL);
+	if (scno->hasActiveArea(_this)) {
+		scno->dropActiveArea(_this);
 		enqueueExitEvent(scno);
 	}
 }

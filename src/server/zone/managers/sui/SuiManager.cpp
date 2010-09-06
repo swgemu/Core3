@@ -612,6 +612,8 @@ void SuiManager::handleAddEnergy(uint32 boxID, PlayerCreature* player,
 
 		player->sendSystemMessage(stringId);
 
+		installation->updateToDatabase();
+
 		installation->unlock();
 	} catch (...) {
 		installation->unlock();

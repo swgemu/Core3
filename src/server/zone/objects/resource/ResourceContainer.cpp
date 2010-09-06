@@ -68,17 +68,18 @@ void ResourceContainer::sendBaselinesTo(SceneObject* player) {
 		((ResourceContainerImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-void ResourceContainer::setQuantity(int quantity) {
+void ResourceContainer::setQuantity(int quantity, bool destroyOnZero) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(quantity);
+		method.addBooleanParameter(destroyOnZero);
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceContainerImplementation*) _impl)->setQuantity(quantity);
+		((ResourceContainerImplementation*) _impl)->setQuantity(quantity, destroyOnZero);
 }
 
 bool ResourceContainer::isResourceContainer() {
@@ -367,7 +368,7 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		setQuantity(inv->getSignedIntParameter());
+		setQuantity(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 10:
 		resp->insertBoolean(isResourceContainer());
@@ -421,8 +422,8 @@ void ResourceContainerAdapter::sendBaselinesTo(SceneObject* player) {
 	((ResourceContainerImplementation*) impl)->sendBaselinesTo(player);
 }
 
-void ResourceContainerAdapter::setQuantity(int quantity) {
-	((ResourceContainerImplementation*) impl)->setQuantity(quantity);
+void ResourceContainerAdapter::setQuantity(int quantity, bool destroyOnZero) {
+	((ResourceContainerImplementation*) impl)->setQuantity(quantity, destroyOnZero);
 }
 
 bool ResourceContainerAdapter::isResourceContainer() {

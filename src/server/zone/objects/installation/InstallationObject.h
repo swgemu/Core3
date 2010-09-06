@@ -149,6 +149,8 @@ using namespace server::zone::objects::resource;
 
 #include "system/util/VectorMap.h"
 
+#include "system/lang/String.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -297,7 +299,7 @@ public:
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
 
-	virtual void updateToDatabaseAllObjects(bool startTask);
+	void updateToDatabaseAllObjects(bool startTask);
 
 	virtual void setOperating(bool operating, bool notifyClient = true);
 
