@@ -26,6 +26,7 @@ int FishObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 }
 
 void FishObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 	if (containerObjects.size() > 0) {
 		String text = "@fishing:mnu_filet";
 
