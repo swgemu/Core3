@@ -2,7 +2,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
-
+#include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "CharacterBuilderMenuNode.h"
 
@@ -89,4 +89,34 @@ void CharacterBuilderTerminalImplementation::enhanceCharacter(PlayerCreature* pl
 
 	if (message)
 		player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
+}
+
+void CharacterBuilderTerminalImplementation::giveLanguages(PlayerCreature* player) {
+	if (player == NULL)
+		return;
+
+	ProfessionManager* professionManager = server->getProfessionManager();
+
+	professionManager->awardSkillBox("social_language_basic_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_basic_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_rodian_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_rodian_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_trandoshan_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_trandoshan_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_moncalamari_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_moncalamari_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_wookiee_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_wookiee_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_bothan_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_bothan_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_twilek_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_twilek_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_zabrak_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_zabrak_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_lekku_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_lekku_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_ithorian_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_ithorian_comprehend", player, true, true);
+	professionManager->awardSkillBox("social_language_sullustan_speak", player, true, true);
+	professionManager->awardSkillBox("social_language_sullustan_comprehend", player, true, true);
 }

@@ -88,6 +88,8 @@ public:
 
 	void sendInitialChoices(PlayerCreature* player);
 
+	void giveLanguages(PlayerCreature* player);
+
 	void enhanceCharacter(PlayerCreature* player);
 
 protected:
@@ -137,6 +139,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void sendInitialChoices(PlayerCreature* player);
+
+	void giveLanguages(PlayerCreature* player);
 
 	void enhanceCharacter(PlayerCreature* player);
 
@@ -188,6 +192,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void sendInitialChoices(PlayerCreature* player);
+
+	void giveLanguages(PlayerCreature* player);
 
 	void enhanceCharacter(PlayerCreature* player);
 
