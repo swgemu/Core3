@@ -56,98 +56,43 @@ void CharacterBuilderTerminalImplementation::sendInitialChoices(PlayerCreature* 
 	player->addSuiBox(sui);
 }
 
+bool CharacterBuilderTerminalImplementation::doEnhanceCharacter(uint32 crc, PlayerCreature* player, int amount, int duration, int buffType, uint8 attribute) {
+	if (player == NULL)
+		return false;
+
+	if (player->hasBuff(crc))
+		return false;
+
+	ManagedReference<Buff*> buff = new Buff(player, crc, duration, buffType);
+	buff->setAttributeModifier(attribute, amount);
+	player->addBuff(buff);
+
+	return true;
+}
+
 void CharacterBuilderTerminalImplementation::enhanceCharacter(PlayerCreature* player) {
 	if (player == NULL)
 		return;
 
-	String buffName;
-	uint32 buffCRC;
-	ManagedReference<Buff*> buff;
+	int duration = medicalDuration;
+	int buffType = BuffType::MEDICAL;
 
-	int duration = 60 * medicalDuration;
+	bool message = true;
 
-	buffName = "medical_enhance_health";
-	buffCRC = buffName.hashCode();
+	message = message && doEnhanceCharacter(0x98321369, player, medicalBuff, duration, buffType, 0); // medical_enhance_health
+	message = message && doEnhanceCharacter(0x815D85C5, player, medicalBuff, duration, buffType, 1); // medical_enhance_strength
+	message = message && doEnhanceCharacter(0x7F86D2C6, player, medicalBuff, duration, buffType, 2); // medical_enhance_constitution
+	message = message && doEnhanceCharacter(0x4BF616E2, player, medicalBuff, duration, buffType, 3); // medical_enhance_action
+	message = message && doEnhanceCharacter(0x71B5C842, player, medicalBuff, duration, buffType, 4); // medical_enhance_quickness
+	message = message && doEnhanceCharacter(0xED0040D9, player, medicalBuff, duration, buffType, 5); // medical_enhance_stamina
 
-	if (!player->hasBuff(buffCRC)) {
-		buff = new Buff(player, buffCRC, duration, BuffType::MEDICAL);
-		buff->setAttributeModifier(0, medicalBuff);
-		player->addBuff(buff);
-	}
+	duration = performanceDuration;
+	buffType = BuffType::PERFORMANCE;
 
-	buffName = "medical_enhance_strength";
-	buffCRC = buffName.hashCode();
+	message = message && doEnhanceCharacter(0x11C1772E, player, performanceBuff, duration, buffType, 6); // performance_enhance_dance_mind
+	message = message && doEnhanceCharacter(0x2E77F586, player, performanceBuff, duration, buffType, 7); // performance_enhance_music_focus
+	message = message && doEnhanceCharacter(0x3EC6FCB6, player, performanceBuff, duration, buffType, 8); // performance_enhance_music_willpower
 
-	if (!player->hasBuff(buffCRC)) {
-		buff = new Buff(player, buffCRC, duration, BuffType::MEDICAL);
-		buff->setAttributeModifier(1, medicalBuff);
-		player->addBuff(buff);
-	}
-
-	buffName = "medical_enhance_constitution";
-	buffCRC = buffName.hashCode();
-
-	if (!player->hasBuff(buffCRC)) {
-		buff = new Buff(player, buffCRC, duration, BuffType::MEDICAL);
-		buff->setAttributeModifier(2, medicalBuff);
-		player->addBuff(buff);
-	}
-
-	buffName = "medical_enhance_action";
-	buffCRC = buffName.hashCode();
-
-	if (!player->hasBuff(buffCRC)) {
-		buff = new Buff(player, buffCRC, duration, BuffType::MEDICAL);
-		buff->setAttributeModifier(3, medicalBuff);
-		player->addBuff(buff);
-	}
-
-	buffName = "medical_enhance_quickness";
-	buffCRC = buffName.hashCode();
-
-	if (!player->hasBuff(buffCRC)) {
-		buff = new Buff(player, buffCRC, duration, BuffType::MEDICAL);
-		buff->setAttributeModifier(4, medicalBuff);
-		player->addBuff(buff);
-	}
-
-	buffName = "medical_enhance_stamina";
-	buffCRC = buffName.hashCode();
-
-	if (!player->hasBuff(buffCRC)) {
-		buff = new Buff(player, buffCRC, duration, BuffType::MEDICAL);
-		buff->setAttributeModifier(5, medicalBuff);
-		player->addBuff(buff);
-	}
-
-	duration = 60 * performanceDuration;
-
-	buffName = "performance_enhance_dance_mind";
-	buffCRC = buffName.hashCode();
-
-	if (!player->hasBuff(buffCRC)) {
-		buff = new Buff(player, buffCRC, duration, BuffType::PERFORMANCE);
-		buff->setAttributeModifier(6, performanceBuff);
-		player->addBuff(buff);
-	}
-
-	buffName = "performance_enhance_music_focus";
-	buffCRC = buffName.hashCode();
-
-	if (!player->hasBuff(buffCRC)) {
-		buff = new Buff(player, buffCRC, duration, BuffType::PERFORMANCE);
-		buff->setAttributeModifier(7, performanceBuff);
-		player->addBuff(buff);
-	}
-
-	buffName = "performance_enhance_music_willpower";
-	buffCRC = buffName.hashCode();
-
-	if (!player->hasBuff(buffCRC)) {
-		buff = new Buff(player, buffCRC, duration, BuffType::PERFORMANCE);
-		buff->setAttributeModifier(8, performanceBuff);
-		player->addBuff(buff);
-	}
-
-	player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
+	if (message)
+		player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
 }

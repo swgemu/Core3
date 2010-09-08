@@ -90,6 +90,8 @@ public:
 
 	void enhanceCharacter(PlayerCreature* player);
 
+	bool doEnhanceCharacter(unsigned int crc, PlayerCreature* player, int amount, int duration, int buffType, byte attribute);
+
 protected:
 	CharacterBuilderTerminal(DummyConstructorParameter* param);
 
@@ -140,6 +142,8 @@ public:
 
 	void enhanceCharacter(PlayerCreature* player);
 
+	bool doEnhanceCharacter(unsigned int crc, PlayerCreature* player, int amount, int duration, int buffType, byte attribute);
+
 	CharacterBuilderTerminal* _this;
 
 	operator const CharacterBuilderTerminal*();
@@ -186,6 +190,8 @@ public:
 	void sendInitialChoices(PlayerCreature* player);
 
 	void enhanceCharacter(PlayerCreature* player);
+
+	bool doEnhanceCharacter(unsigned int crc, PlayerCreature* player, int amount, int duration, int buffType, byte attribute);
 
 };
 
