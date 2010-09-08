@@ -124,6 +124,8 @@ namespace resource {
 
 class ResourceManager : public Observer {
 public:
+	static const int RESOURCE_DEED_QUANTITY = 100000;
+
 	ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan);
 
 	void stop();
@@ -186,6 +188,8 @@ class ResourceManagerImplementation : public ObserverImplementation, public Lua 
 	int shiftInterval;
 
 public:
+	static const int RESOURCE_DEED_QUANTITY = 100000;
+
 	ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan);
 
 	ResourceManagerImplementation(DummyConstructorParameter* param);
