@@ -85,7 +85,19 @@ class CharacterBuilderTerminal extends Terminal {
 	
 	public native void sendInitialChoices(PlayerCreature player);
 	
+	/**
+	 * Enhances the target character with doc/ent buffs
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
 	public native void enhanceCharacter(PlayerCreature player);
 	
-	public native boolean doEnhanceCharacter(unsigned int crc, PlayerCreature player, int amount, int duration, int buffType, byte attribute);
+	/**
+	 * Creates and adds buff to Player
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 * @returns true if it was added
+	 * @param crc CRC of the buff, player target of buff, amount is the attribute modifier for the buff, duration of the buff, buffType specifies whether medical or performance and attribute sets the creature attribute to modify
+	 */
+	private native boolean doEnhanceCharacter(unsigned int crc, PlayerCreature player, int amount, int duration, int buffType, byte attribute);
 }

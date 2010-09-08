@@ -1378,6 +1378,10 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 					bluefrog->enhanceCharacter(player);
 				}
 
+			} else if (templatePath == "credits") {
+
+				player->addCashCredits(50000, true);
+				player->sendSystemMessage("You have received 50.000 Credits");
 
 			} else {
 
