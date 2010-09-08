@@ -75,12 +75,25 @@ void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
 		((CharacterBuilderTerminalImplementation*) _impl)->sendInitialChoices(player);
 }
 
-void CharacterBuilderTerminal::enhanceCharacter(PlayerCreature* player) {
+void CharacterBuilderTerminal::giveLanguages(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((CharacterBuilderTerminalImplementation*) _impl)->giveLanguages(player);
+}
+
+void CharacterBuilderTerminal::enhanceCharacter(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -184,6 +197,9 @@ Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, Distributed
 		sendInitialChoices((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 9:
+		giveLanguages((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 10:
 		enhanceCharacter((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
@@ -203,6 +219,10 @@ int CharacterBuilderTerminalAdapter::handleObjectMenuSelect(PlayerCreature* play
 
 void CharacterBuilderTerminalAdapter::sendInitialChoices(PlayerCreature* player) {
 	((CharacterBuilderTerminalImplementation*) impl)->sendInitialChoices(player);
+}
+
+void CharacterBuilderTerminalAdapter::giveLanguages(PlayerCreature* player) {
+	((CharacterBuilderTerminalImplementation*) impl)->giveLanguages(player);
 }
 
 void CharacterBuilderTerminalAdapter::enhanceCharacter(PlayerCreature* player) {

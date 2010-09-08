@@ -86,6 +86,13 @@ class CharacterBuilderTerminal extends Terminal {
 	public native void sendInitialChoices(PlayerCreature player);
 	
 	/**
+	 * Player gets all languages available
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
+	public native void giveLanguages(PlayerCreature player);
+	
+	/**
 	 * Enhances the target character with doc/ent buffs
 	 * @pre { player is locked }
 	 * @post { player is locked }

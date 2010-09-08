@@ -1206,6 +1206,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Unlearn All Skills", "unlearn_all_skills",
 			"Cleanse Character", "cleanse_character",
 			"Enhance Character", "enhance_character",
+			"Learn Languages", "language",
 			"Credits", "credits"
 		},
 		"Items",
@@ -1461,7 +1462,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					--"Landspeeder av21", "object/tangible/deed/vehicle_deed/landspeeder_av21_deed.iff",
 					--"Landspeeder x31", "object/tangible/deed/vehicle_deed/landspeeder_x31_deed.iff",
 					--"Landspeeder x34", "object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff"
-				--},
+					--},
 				"Structure Deeds",
 				{
 					--"Factional Bases",
@@ -1912,10 +1913,10 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Medpack Stunned", "object/tangible/medicine/crafted/medpack_stunned_a.iff",
 				"Revive Pack", "object/tangible/medicine/medpack_revive.iff"
 			},
-			"Resources",
-			{
-				"Resource Deed", "object/tangible/veteran_reward/resource.iff"
-			},
+			--"Resources",
+			--{
+				--"Resource Deed", "object/tangible/veteran_reward/resource.iff"
+			--},
 			--"Scout Equipment",
 			--{
 				--"Camokit",

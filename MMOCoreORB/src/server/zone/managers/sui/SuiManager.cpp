@@ -1373,15 +1373,29 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 			} else if (templatePath == "enhance_character") {
 
 				SceneObject* scob = cbSui->getUsingObject();
-				if (scob->getGameObjectType() == SceneObjectImplementation::CHARACTERBUILDERTERMINAL) {
-					CharacterBuilderTerminal* bluefrog = (CharacterBuilderTerminal*) scob;
-					bluefrog->enhanceCharacter(player);
+				if (scob != NULL) {
+
+					if (scob->getGameObjectType() == SceneObjectImplementation::CHARACTERBUILDERTERMINAL) {
+						CharacterBuilderTerminal* bluefrog = (CharacterBuilderTerminal*) scob;
+						bluefrog->enhanceCharacter(player);
+					}
 				}
 
 			} else if (templatePath == "credits") {
 
 				player->addCashCredits(50000, true);
 				player->sendSystemMessage("You have received 50.000 Credits");
+
+			} else if (templatePath == "language") {
+
+				SceneObject* scob = cbSui->getUsingObject();
+				if (scob != NULL) {
+
+					if (scob->getGameObjectType() == SceneObjectImplementation::CHARACTERBUILDERTERMINAL) {
+						CharacterBuilderTerminal* bluefrog = (CharacterBuilderTerminal*) scob;
+						bluefrog->giveLanguages(player);
+					}
+				}
 
 			} else {
 
