@@ -68,7 +68,7 @@ class RifleWeaponObject extends RangedWeaponObject {
 	}
 	
 	public boolean isRifleWeapon() {
-		return true;
+		return true && super.gameObjectType != SceneObject.LIGHTNINGRIFLE;
 	}
 	
 	public boolean isLightningRifle() {
