@@ -58,9 +58,11 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 	
 	medicalBuff = 1000,
 	
-	performanceDuration = 30,
+	-- Duration in seconds
+	performanceDuration = 1800,
 	
-	medicalDuration = 30,
+	-- Duration in seconds
+	medicalDuration = 1800,
 	
 	templateType = CHARACTERBUILDERTERMINAL,
 

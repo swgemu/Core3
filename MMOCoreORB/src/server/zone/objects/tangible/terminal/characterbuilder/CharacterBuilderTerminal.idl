@@ -86,4 +86,6 @@ class CharacterBuilderTerminal extends Terminal {
 	public native void sendInitialChoices(PlayerCreature player);
 	
 	public native void enhanceCharacter(PlayerCreature player);
+	
+	public native boolean doEnhanceCharacter(unsigned int crc, PlayerCreature player, int amount, int duration, int buffType, byte attribute);
 }
