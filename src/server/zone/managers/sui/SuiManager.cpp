@@ -78,6 +78,7 @@ which carries forward this exception.
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
+#include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 
 
 /*#include "../item/ItemManager.h"
@@ -1371,33 +1372,11 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 
 			} else if (templatePath == "enhance_character") {
 
-				String buffName = "Blue Frog Buff";
-				uint32 buffCRC = buffName.hashCode();
-				if (player->hasBuff(buffCRC)) {
-					player->sendSystemMessage("You are already enhanced.");
-
-					cbSui->clearOptions();
-					player->sendMessage(cbSui->generateMessage());
-
-					return;
+				SceneObject* scob = cbSui->getUsingObject();
+				if (scob->getGameObjectType() == SceneObjectImplementation::CHARACTERBUILDERTERMINAL) {
+					CharacterBuilderTerminal* bluefrog = (CharacterBuilderTerminal*) scob;
+					bluefrog->enhanceCharacter(player);
 				}
-
-				int duration = 60 * 30;
-
-				ManagedReference<Buff*> buff = new Buff(player, buffCRC, duration, BuffType::OTHER);
-				buff->setAttributeModifier((uint8) 0, 1000);
-				buff->setAttributeModifier((uint8) 3, 1000);
-				buff->setAttributeModifier((uint8) 6, 1000);
-				buff->setAttributeModifier((uint8) 1, 500);
-				buff->setAttributeModifier((uint8) 2, 500);
-				buff->setAttributeModifier((uint8) 4, 500);
-				buff->setAttributeModifier((uint8) 5, 500);
-				buff->setAttributeModifier((uint8) 7, 500);
-				buff->setAttributeModifier((uint8) 8, 500);
-
-				player->addBuff(buff);
-
-				player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
 
 
 			} else {

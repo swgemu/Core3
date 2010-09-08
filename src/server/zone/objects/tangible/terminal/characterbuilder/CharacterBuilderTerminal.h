@@ -88,6 +88,8 @@ public:
 
 	void sendInitialChoices(PlayerCreature* player);
 
+	void enhanceCharacter(PlayerCreature* player);
+
 protected:
 	CharacterBuilderTerminal(DummyConstructorParameter* param);
 
@@ -116,6 +118,14 @@ class CharacterBuilderTerminalImplementation : public TerminalImplementation {
 public:
 	CharacterBuilderMenuNode* rootNode;
 
+	int performanceBuff;
+
+	int medicalBuff;
+
+	int performanceDuration;
+
+	int medicalDuration;
+
 	CharacterBuilderTerminalImplementation();
 
 	CharacterBuilderTerminalImplementation(DummyConstructorParameter* param);
@@ -127,6 +137,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void sendInitialChoices(PlayerCreature* player);
+
+	void enhanceCharacter(PlayerCreature* player);
 
 	CharacterBuilderTerminal* _this;
 
@@ -172,6 +184,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void sendInitialChoices(PlayerCreature* player);
+
+	void enhanceCharacter(PlayerCreature* player);
 
 };
 

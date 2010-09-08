@@ -54,6 +54,14 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			
 	maxCondition = 0,
 	
+	performanceBuff = 500,
+	
+	medicalBuff = 1000,
+	
+	performanceDuration = 30,
+	
+	medicalDuration = 30,
+	
 	templateType = CHARACTERBUILDERTERMINAL,
 
 	itemList = {
