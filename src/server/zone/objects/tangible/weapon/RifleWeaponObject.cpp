@@ -162,8 +162,8 @@ void RifleWeaponObjectImplementation::initializePrivateData() {
 }
 
 bool RifleWeaponObjectImplementation::isRifleWeapon() {
-	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(71):  		return true;
-	return true;
+	// server/zone/objects/tangible/weapon/RifleWeaponObject.idl(71):  		return true && super.gameObjectType != SceneObject.LIGHTNINGRIFLE;
+	return true && RangedWeaponObjectImplementation::gameObjectType != SceneObject::LIGHTNINGRIFLE;
 }
 
 bool RifleWeaponObjectImplementation::isLightningRifle() {
