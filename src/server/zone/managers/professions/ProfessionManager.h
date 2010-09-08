@@ -133,7 +133,7 @@ namespace server {
 		void awardDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 		void removeDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
 
-		bool checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player);
+		bool checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player, bool removeChildren);
 
 		uint8 getLangFromRace(int race);
 
@@ -165,8 +165,10 @@ namespace server {
 
 		void loadXpTypeCap(PlayerCreature* player);
 
-		bool surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
-		bool surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
+		bool surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool removeChildren, bool updateClient);
+		bool surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool removeChildren, bool updateClient);
+
+		void surrenderAll(PlayerCreature* player);
 
 		Skill* getSkill(const String& name);
 

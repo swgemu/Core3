@@ -274,9 +274,26 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 	if (playerSkillBoxList->contains(skillBox))
 		return;
 
-	SkillBox* skillBoxReq = NULL;
-
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
+
+	if (awardRequired) {
+
+		if ((player->getSkillPoints() + skillBox->skillPointsRequired) > 250)
+			return;
+
+		SkillBox* skillBoxReq = NULL;
+
+
+		for (int i = 0; i < skillBox->requiredSkills.size(); i++) {
+			skillBoxReq = skillBox->requiredSkills.get(i);
+
+			awardSkillBox(skillBoxReq, player, true, true);
+		}
+
+		if (!checkPrerequisites(skillBox, player))
+			return;
+
+	}
 
 	player->addSkillBox(skillBox, updateClient);
 	player->addSkillPoints(skillBox->getSkillPointsRequired());
@@ -287,14 +304,6 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 
 	awardSkillMods(skillBox, player, updateClient);
 	awardDraftSchematics(skillBox, player, updateClient);
-
-	if (!awardRequired)
-		return;
-
-	for (int i = 0; i < skillBox->requiredSkills.size(); i++) {
-		skillBoxReq = skillBox->requiredSkills.get(i);
-		awardSkillBox(skillBoxReq, player, true, updateClient);
-	}
 }
 
 
@@ -550,7 +559,7 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 
 }
 
-bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player) {
+bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player, bool removeChildren) {
 	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
 
 	if (!playerSkillBoxList->contains(skillBox)) {
@@ -563,22 +572,22 @@ bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, PlayerCre
 
 	Vector<SkillBox*>* children = skillBox->getChildren();
 
-	System::out << "trying to check children..." << endl;
+	//System::out << "trying to check children..." << endl;
 
 	for (int i = 0; i < children->size(); ++i) {
 		SkillBox* box = children->get(i);
 
-		System::out << "checking child box " << box->getName() << endl;
+		//System::out << "checking child box " << box->getName() << endl;
 
-		if (playerSkillBoxList->contains(box))
+		if (playerSkillBoxList->contains(box) && !removeChildren)
 			return false;
 	}
 
 	return true;
 }
 
-bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
-	if (!checkRequisitesToSurrender(skillBox, player))
+bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool removeChildren, bool updateClient) {
+	if (!checkRequisitesToSurrender(skillBox, player, removeChildren))
 		return false;
 
 	player->removeSkillBox(skillBox, updateClient);
@@ -593,6 +602,17 @@ bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* pl
 	removeSkillMods(skillBox, player, updateClient);
 	removeDraftSchematics(skillBox, player, updateClient);
 
+	/*if (removeChildren) {
+		SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
+
+		Vector<SkillBox*>* children = skillBox->getChildren();
+
+		for (int i = 0; i < children->size(); ++i) {
+			SkillBox* box = children->get(i);
+			if (playerSkillBoxList->contains(box))
+				surrenderSkillBox(box, player, removeChildren, updateClient);
+		}
+	}*/
 
 	/*
 
@@ -631,23 +651,27 @@ bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* pl
 
 }
 
-bool ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient) {
+bool ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool removeChildren, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
 
 	if (sBox != NULL) {
-		return surrenderSkillBox(sBox, player, updateClient);
+		return surrenderSkillBox(sBox, player, removeChildren, updateClient);
 	}
 
 	return false;
 }
-/*
-void ProfessionManager::surrenderAll(PlayerImplementation* player) {
-	while (player->skillBoxesToSave.size() > 0) {
-		surrenderSkillBox(player->skillBoxesToSave.get(0), player, false);
-	}
 
-	player->sendTo(player->_this);
-}*/
+void ProfessionManager::surrenderAll(PlayerCreature* player) {
+	if (player == NULL)
+		return;
+
+	if (player->getSkillBoxList()->size() == 0)
+		return;
+
+	while (player->getSkillBoxList()->size() > 0) {
+		surrenderSkillBox(player->getSkillBoxList()->get(0), player, true, true);
+	}
+}
 
 void ProfessionManager::loadProfessionsFromDatabase() {
 	info("Loading professions...", true);

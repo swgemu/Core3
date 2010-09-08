@@ -1345,26 +1345,101 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 		cbSui->clearOptions();
 		player->sendMessage(cbSui->generateMessage());
 	} else {
-		ManagedReference<SceneObject*> item = zserv->createObject(node->getTemplateCRC(), 1);
 
-		if (item == NULL) {
-			player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
+		String templatePath = node->getTemplatePath();
+
+		if (templatePath.indexOf(".iff") < 0) { // Non-item selections
+
+			if (templatePath == "unlearn_all_skills") {
+
+				player->sendSystemMessage("All skills unlearned.");
+				server->getProfessionManager()->surrenderAll(player);
+
+			} else if (templatePath == "cleanse_character") {
+
+				if (!player->isInCombat()) {
+					player->sendSystemMessage("You have been cleansed from the signs of previous battles.");
+
+					for (int i=0; i<9; i++) {
+						player->setWounds(i, 0);
+					}
+
+					player->setShockWounds(0);
+				} else {
+					player->sendSystemMessage("Not within combat.");
+				}
+
+			} else if (templatePath == "enhance_character") {
+
+				String buffName = "Blue Frog Buff";
+				uint32 buffCRC = buffName.hashCode();
+				if (player->hasBuff(buffCRC)) {
+					player->sendSystemMessage("You are already enhanced.");
+
+					cbSui->clearOptions();
+					player->sendMessage(cbSui->generateMessage());
+
+					return;
+				}
+
+				int duration = 60 * 30;
+
+				ManagedReference<Buff*> buff = new Buff(player, buffCRC, duration, BuffType::OTHER);
+				buff->setAttributeModifier((uint8) 0, 1000);
+				buff->setAttributeModifier((uint8) 3, 1000);
+				buff->setAttributeModifier((uint8) 6, 1000);
+				buff->setAttributeModifier((uint8) 1, 500);
+				buff->setAttributeModifier((uint8) 2, 500);
+				buff->setAttributeModifier((uint8) 4, 500);
+				buff->setAttributeModifier((uint8) 5, 500);
+				buff->setAttributeModifier((uint8) 7, 500);
+				buff->setAttributeModifier((uint8) 8, 500);
+
+				player->addBuff(buff);
+
+				player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
+
+
+			} else {
+
+				if (templatePath.length() > 0) {
+
+					server->getProfessionManager()->awardSkillBox(templatePath, player, true, true);
+					if (player->hasSkillBox(templatePath))
+						player->sendSystemMessage("You have learned a skill.");
+
+				} else {
+
+					player->sendSystemMessage("Unknown selection.");
+
+				}
+			}
+
 			cbSui->clearOptions();
 			player->sendMessage(cbSui->generateMessage());
-			return;
+		} else { // Items
+
+			ManagedReference<SceneObject*> item = zserv->createObject(node->getTemplateCRC(), 1);
+
+			if (item == NULL) {
+				player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
+				cbSui->clearOptions();
+				player->sendMessage(cbSui->generateMessage());
+				return;
+			}
+
+			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+			item->sendTo(player, true);
+			inventory->addObject(item, -1, true);
+
+			ParameterizedStringId stringId;
+			stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
+			stringId.setTO(item);
+			player->sendSystemMessage(stringId);
+
+			cbSui->clearOptions();
+			player->sendMessage(cbSui->generateMessage());
 		}
-
-		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-		item->sendTo(player, true);
-		inventory->addObject(item, -1, true);
-
-		ParameterizedStringId stringId;
-		stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
-		stringId.setTO(item);
-		player->sendSystemMessage(stringId);
-
-		cbSui->clearOptions();
-		player->sendMessage(cbSui->generateMessage());
 	}
 }
 /*
