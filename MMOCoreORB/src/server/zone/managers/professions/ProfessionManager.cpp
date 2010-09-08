@@ -668,8 +668,28 @@ void ProfessionManager::surrenderAll(PlayerCreature* player) {
 	if (player->getSkillBoxList()->size() == 0)
 		return;
 
+	Vector<SkillBox*> languages;
+
+	SkillBox* skillBox;
+
 	while (player->getSkillBoxList()->size() > 0) {
-		surrenderSkillBox(player->getSkillBoxList()->get(0), player, true, true);
+		skillBox = player->getSkillBoxList()->get(0);
+
+		if (skillBox != NULL) {
+			if (skillBox->getName().indexOf("social_language_") >= 0 || skillBox->getName().indexOf("species_") >= 0)
+				languages.add(skillBox);
+
+			surrenderSkillBox(skillBox, player, true, true);
+		}
+	}
+
+	while (languages.size() > 0) {
+		skillBox = languages.get(0);
+
+		if (skillBox != NULL)
+			awardSkillBox(skillBox, player, true, true);
+
+		languages.removeElementAt(0);
 	}
 }
 
