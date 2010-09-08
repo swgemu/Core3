@@ -13,6 +13,10 @@
 
 class CharacterBuilderTerminalTemplate : public SharedTangibleObjectTemplate {
 	CharacterBuilderMenuNode* rootNode;
+	int performanceBuff;
+	int medicalBuff;
+	int	performanceDuration;
+	int	medicalDuration;
 
 public:
 	CharacterBuilderTerminalTemplate() {
@@ -28,6 +32,11 @@ public:
 
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
+
+		performanceBuff = templateData->getIntField("performanceBuff");
+		medicalBuff = templateData->getIntField("medicalBuff");
+		performanceDuration = templateData->getIntField("performanceDuration");
+		medicalDuration = templateData->getIntField("medicalDuration");
 
 		LuaObject luaItemList = templateData->getObjectField("itemList");
 
@@ -46,6 +55,22 @@ public:
 
     inline CharacterBuilderMenuNode* getItemList() const {
         return rootNode;
+    }
+
+    inline int getPerformanceBuff() const {
+    	return performanceBuff;
+    }
+
+    inline int getMedicalBuff() const {
+    	return medicalBuff;
+    }
+
+    inline int getPerformanceDuration() const {
+    	return performanceDuration;
+    }
+
+    inline int getMedicalDuration() const {
+    	return medicalDuration;
     }
 
 };

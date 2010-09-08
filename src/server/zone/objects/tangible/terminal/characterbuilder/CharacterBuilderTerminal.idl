@@ -55,6 +55,10 @@ include server.zone.objects.tangible.terminal.characterbuilder.CharacterBuilderM
 
 class CharacterBuilderTerminal extends Terminal {
 	public transient CharacterBuilderMenuNode rootNode;
+	public transient int performanceBuff;
+	public transient int medicalBuff;
+	public transient int performanceDuration;
+	public transient int medicalDuration;
 	
 	public CharacterBuilderTerminal() {
 		Logger.setLoggingName("CharacterBuilderTerminal");
@@ -80,4 +84,6 @@ class CharacterBuilderTerminal extends Terminal {
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
 	public native void sendInitialChoices(PlayerCreature player);
+	
+	public native void enhanceCharacter(PlayerCreature player);
 }
