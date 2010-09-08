@@ -75,6 +75,19 @@ void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
 		((CharacterBuilderTerminalImplementation*) _impl)->sendInitialChoices(player);
 }
 
+void CharacterBuilderTerminal::enhanceCharacter(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((CharacterBuilderTerminalImplementation*) _impl)->enhanceCharacter(player);
+}
+
 /*
  *	CharacterBuilderTerminalImplementation
  */
@@ -146,7 +159,7 @@ void CharacterBuilderTerminalImplementation::_serializationHelperMethod() {
 
 CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.idl(60):  		Logger.setLoggingName("CharacterBuilderTerminal");
+	// server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.idl(64):  		Logger.setLoggingName("CharacterBuilderTerminal");
 	Logger::setLoggingName("CharacterBuilderTerminal");
 }
 
@@ -170,6 +183,9 @@ Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, Distributed
 	case 8:
 		sendInitialChoices((PlayerCreature*) inv->getObjectParameter());
 		break;
+	case 9:
+		enhanceCharacter((PlayerCreature*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -187,6 +203,10 @@ int CharacterBuilderTerminalAdapter::handleObjectMenuSelect(PlayerCreature* play
 
 void CharacterBuilderTerminalAdapter::sendInitialChoices(PlayerCreature* player) {
 	((CharacterBuilderTerminalImplementation*) impl)->sendInitialChoices(player);
+}
+
+void CharacterBuilderTerminalAdapter::enhanceCharacter(PlayerCreature* player) {
+	((CharacterBuilderTerminalImplementation*) impl)->enhanceCharacter(player);
 }
 
 /*
