@@ -181,6 +181,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/deed/Deed.cpp \
 				server/zone/objects/tangible/deed/building/BuildingDeed.cpp \
 				server/zone/objects/tangible/deed/installation/InstallationDeed.cpp \
+				server/zone/objects/tangible/deed/resource/ResourceDeed.cpp \
 				server/zone/objects/tangible/sign/SignObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
 				server/zone/objects/tangible/lair/LairObject.cpp \
@@ -281,6 +282,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
 		server/zone/objects/tangible/deed/building/BuildingDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
 		server/zone/objects/installation/shuttle/ShuttleInstallationImplementation.cpp \
 		server/zone/objects/installation/bank/BankInstallationImplementation.cpp \

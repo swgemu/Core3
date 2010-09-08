@@ -72,6 +72,8 @@ class ResourceManager extends Observer implements Lua {
 	private transient ObjectManager objectManager;
 	private transient int shiftInterval;
 	
+	public static final int RESOURCE_DEED_QUANTITY = 100000;
+	
 	public ResourceManager(ZoneServer server, ZoneProcessServerImplementation impl, 
 			ObjectManager objectMan) {
 
