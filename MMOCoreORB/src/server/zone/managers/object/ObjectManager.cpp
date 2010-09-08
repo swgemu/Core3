@@ -59,6 +59,7 @@
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
 #include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
+#include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/wearables/ClothingObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
@@ -264,6 +265,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Deed>(SceneObject::DEED);
 	objectFactory.registerObject<BuildingDeed>(SceneObject::BUILDINGDEED);
 	objectFactory.registerObject<InstallationDeed>(SceneObject::INSTALLATIONDEED);
+	objectFactory.registerObject<ResourceDeed>(SceneObject::RESOURCEDEED);
 
 	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
 
