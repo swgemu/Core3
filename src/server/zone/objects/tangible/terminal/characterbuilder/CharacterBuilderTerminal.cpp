@@ -88,6 +88,24 @@ void CharacterBuilderTerminal::enhanceCharacter(PlayerCreature* player) {
 		((CharacterBuilderTerminalImplementation*) _impl)->enhanceCharacter(player);
 }
 
+bool CharacterBuilderTerminal::doEnhanceCharacter(unsigned int crc, PlayerCreature* player, int amount, int duration, int buffType, byte attribute) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addUnsignedIntParameter(crc);
+		method.addObjectParameter(player);
+		method.addSignedIntParameter(amount);
+		method.addSignedIntParameter(duration);
+		method.addSignedIntParameter(buffType);
+		method.addByteParameter(attribute);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CharacterBuilderTerminalImplementation*) _impl)->doEnhanceCharacter(crc, player, amount, duration, buffType, attribute);
+}
+
 /*
  *	CharacterBuilderTerminalImplementation
  */
@@ -186,6 +204,9 @@ Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, Distributed
 	case 9:
 		enhanceCharacter((PlayerCreature*) inv->getObjectParameter());
 		break;
+	case 10:
+		resp->insertBoolean(doEnhanceCharacter(inv->getUnsignedIntParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getByteParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -207,6 +228,10 @@ void CharacterBuilderTerminalAdapter::sendInitialChoices(PlayerCreature* player)
 
 void CharacterBuilderTerminalAdapter::enhanceCharacter(PlayerCreature* player) {
 	((CharacterBuilderTerminalImplementation*) impl)->enhanceCharacter(player);
+}
+
+bool CharacterBuilderTerminalAdapter::doEnhanceCharacter(unsigned int crc, PlayerCreature* player, int amount, int duration, int buffType, byte attribute) {
+	return ((CharacterBuilderTerminalImplementation*) impl)->doEnhanceCharacter(crc, player, amount, duration, buffType, attribute);
 }
 
 /*
