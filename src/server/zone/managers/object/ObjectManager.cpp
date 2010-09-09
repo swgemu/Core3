@@ -27,14 +27,6 @@
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/tangible/weapon/MeleeWeaponObject.h"
-#include "server/zone/objects/tangible/weapon/RangedWeaponObject.h"
-#include "server/zone/objects/tangible/weapon/PistolWeaponObject.h"
-#include "server/zone/objects/tangible/weapon/RifleWeaponObject.h"
-#include "server/zone/objects/tangible/weapon/CarbineWeaponObject.h"
-#include "server/zone/objects/tangible/weapon/OneHandMeleeWeapon.h"
-#include "server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.h"
-#include "server/zone/objects/tangible/weapon/PolearmWeaponObject.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
@@ -230,15 +222,15 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<GeneratorObject>(SceneObject::GENERATOR);
 
 	objectFactory.registerObject<WeaponObject>(SceneObject::WEAPON);
-	objectFactory.registerObject<MeleeWeaponObject>(SceneObject::MELEEWEAPON);
-	objectFactory.registerObject<PistolWeaponObject>(SceneObject::PISTOL);
-	objectFactory.registerObject<RangedWeaponObject>(SceneObject::RANGEDWEAPON);
-	objectFactory.registerObject<OneHandMeleeWeapon>(SceneObject::ONEHANDMELEEWEAPON);
-	objectFactory.registerObject<RifleWeaponObject>(SceneObject::RIFLE);
-	objectFactory.registerObject<CarbineWeaponObject>(SceneObject::CARBINE);
-	objectFactory.registerObject<PolearmWeaponObject>(SceneObject::POLEARM);
-	objectFactory.registerObject<TwoHandMeleeWeapon>(SceneObject::TWOHANDMELEEWEAPON);
-	objectFactory.registerObject<RifleWeaponObject>(SceneObject::LIGHTNINGRIFLE);
+	objectFactory.registerObject<WeaponObject>(SceneObject::MELEEWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObject::PISTOL);
+	objectFactory.registerObject<WeaponObject>(SceneObject::RANGEDWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObject::ONEHANDMELEEWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObject::RIFLE);
+	objectFactory.registerObject<WeaponObject>(SceneObject::CARBINE);
+	objectFactory.registerObject<WeaponObject>(SceneObject::POLEARM);
+	objectFactory.registerObject<WeaponObject>(SceneObject::TWOHANDMELEEWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObject::LIGHTNINGRIFLE);
 
 	objectFactory.registerObject<MissionObject>(SceneObject::MISSIONOBJECT);
 
