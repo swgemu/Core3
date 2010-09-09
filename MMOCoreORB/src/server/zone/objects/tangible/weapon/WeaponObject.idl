@@ -332,52 +332,56 @@ class WeaponObject extends TangibleObject {
 		return weaponTemplate.getXpType();
 	}
 	
-	public boolean hasMeleeAttack() {
-		return attackType == MELEEATTACK;
-	}
-	
-	public boolean hasRangedAttack() {
-		return attackType == RANGEDATTACK;
-	}
-	
 	public boolean isUnarmedWeapon() {
 		return super.gameObjectType == SceneObject.WEAPON || super.gameObjectType == SceneObject.MELEEWEAPON;
 	}
 	
-	public abstract boolean isMeleeWeapon() {
-		return false;
+	public boolean isMeleeWeapon() {
+		return attackType == MELEEATTACK;
 	}
 	
-	public abstract boolean isRangedWeapon() {
-		return false;
+	public boolean isRangedWeapon() {
+		return attackType == RANGEDATTACK;
 	}
 	
-	public abstract boolean isRifleWeapon() {
-		return false;
+	public boolean isRifleWeapon() {
+		return super.gameObjectType == SceneObject.RIFLE;
+	}
+
+	public boolean isThrownWeapon() {
+		return super.gameObjectType == SceneObject.THROWNWEAPON;
 	}
 	
-	public abstract boolean isLightningRifle() {
-		return false;
+	public boolean isHeavyWeapon() {
+		return super.gameObjectType == SceneObject.HEAVYWEAPON;
 	}
 	
-	public abstract boolean isCarbineWeapon() {
-		return false;
+	public boolean isSpecialHeavyWeapon() {
+		return super.gameObjectType == SceneObject.SPECIALHEAVYWEAPON;
 	}
 	
-	public abstract boolean isPistolWeapon() {
-		return false;
+	public boolean isLightningRifle() {
+		return super.gameObjectType == SceneObject.LIGHTNINGRIFLE;
 	}
 	
-	public abstract boolean isOneHandMeleeWeapon() {
-		return false;
+	public boolean isCarbineWeapon() {
+		return super.gameObjectType == SceneObject.CARBINE;
 	}
 	
-	public abstract boolean isPolearmWeaponObject() {
-		return false;
+	public boolean isPistolWeapon() {
+		return super.gameObjectType == SceneObject.PISTOL;
 	}
 	
-	public abstract boolean isTwoHandMeleeWeapon() {
-		return false;
+	public boolean isOneHandMeleeWeapon() {
+		return super.gameObjectType == SceneObject.ONEHANDMELEEWEAPON;
+	}
+	
+	public boolean isPolearmWeaponObject() {
+		return super.gameObjectType == SceneObject.POLEARM;
+	}
+	
+	public boolean isTwoHandMeleeWeapon() {
+		return super.gameObjectType == SceneObject.TWOHANDMELEEWEAPON;
 	}
 	
 	public boolean isWeaponObject() {

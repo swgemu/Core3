@@ -537,36 +537,12 @@ String WeaponObject::getXpType() {
 		return ((WeaponObjectImplementation*) _impl)->getXpType();
 }
 
-bool WeaponObject::hasMeleeAttack() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 42);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((WeaponObjectImplementation*) _impl)->hasMeleeAttack();
-}
-
-bool WeaponObject::hasRangedAttack() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 43);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((WeaponObjectImplementation*) _impl)->hasRangedAttack();
-}
-
 bool WeaponObject::isUnarmedWeapon() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -578,7 +554,7 @@ bool WeaponObject::isMeleeWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -590,7 +566,7 @@ bool WeaponObject::isRangedWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -602,11 +578,47 @@ bool WeaponObject::isRifleWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((WeaponObjectImplementation*) _impl)->isRifleWeapon();
+}
+
+bool WeaponObject::isThrownWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WeaponObjectImplementation*) _impl)->isThrownWeapon();
+}
+
+bool WeaponObject::isHeavyWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 47);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WeaponObjectImplementation*) _impl)->isHeavyWeapon();
+}
+
+bool WeaponObject::isSpecialHeavyWeapon() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 48);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WeaponObjectImplementation*) _impl)->isSpecialHeavyWeapon();
 }
 
 bool WeaponObject::isLightningRifle() {
@@ -614,7 +626,7 @@ bool WeaponObject::isLightningRifle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -626,7 +638,7 @@ bool WeaponObject::isCarbineWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -638,7 +650,7 @@ bool WeaponObject::isPistolWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -650,7 +662,7 @@ bool WeaponObject::isOneHandMeleeWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -662,7 +674,7 @@ bool WeaponObject::isPolearmWeaponObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -674,7 +686,7 @@ bool WeaponObject::isTwoHandMeleeWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -686,7 +698,7 @@ bool WeaponObject::isWeaponObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 55);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1012,68 +1024,73 @@ String WeaponObjectImplementation::getXpType() {
 	return weaponTemplate->getXpType();
 }
 
-bool WeaponObjectImplementation::hasMeleeAttack() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(336):  		return attackType == MELEEATTACK;
-	return attackType == MELEEATTACK;
-}
-
-bool WeaponObjectImplementation::hasRangedAttack() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(340):  		return attackType == RANGEDATTACK;
-	return attackType == RANGEDATTACK;
-}
-
 bool WeaponObjectImplementation::isUnarmedWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(344):  		return super.gameObjectType == SceneObject.WEAPON || super.gameObjectType == SceneObject.MELEEWEAPON;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(336):  		return super.gameObjectType == SceneObject.WEAPON || super.gameObjectType == SceneObject.MELEEWEAPON;
 	return TangibleObjectImplementation::gameObjectType == SceneObject::WEAPON || TangibleObjectImplementation::gameObjectType == SceneObject::MELEEWEAPON;
 }
 
 bool WeaponObjectImplementation::isMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(348):  		return false;
-	return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(340):  		return attackType == MELEEATTACK;
+	return attackType == MELEEATTACK;
 }
 
 bool WeaponObjectImplementation::isRangedWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(352):  		return false;
-	return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(344):  		return attackType == RANGEDATTACK;
+	return attackType == RANGEDATTACK;
 }
 
 bool WeaponObjectImplementation::isRifleWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(356):  		return false;
-	return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(348):  		return super.gameObjectType == SceneObject.RIFLE;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::RIFLE;
+}
+
+bool WeaponObjectImplementation::isThrownWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(352):  		return super.gameObjectType == SceneObject.THROWNWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::THROWNWEAPON;
+}
+
+bool WeaponObjectImplementation::isHeavyWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(356):  		return super.gameObjectType == SceneObject.HEAVYWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::HEAVYWEAPON;
+}
+
+bool WeaponObjectImplementation::isSpecialHeavyWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(360):  		return super.gameObjectType == SceneObject.SPECIALHEAVYWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::SPECIALHEAVYWEAPON;
 }
 
 bool WeaponObjectImplementation::isLightningRifle() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(360):  		return false;
-	return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(364):  		return super.gameObjectType == SceneObject.LIGHTNINGRIFLE;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::LIGHTNINGRIFLE;
 }
 
 bool WeaponObjectImplementation::isCarbineWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(364):  		return false;
-	return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(368):  		return super.gameObjectType == SceneObject.CARBINE;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::CARBINE;
 }
 
 bool WeaponObjectImplementation::isPistolWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(368):  		return false;
-	return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(372):  		return super.gameObjectType == SceneObject.PISTOL;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::PISTOL;
 }
 
 bool WeaponObjectImplementation::isOneHandMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(372):  		return false;
-	return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(376):  		return super.gameObjectType == SceneObject.ONEHANDMELEEWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::ONEHANDMELEEWEAPON;
 }
 
 bool WeaponObjectImplementation::isPolearmWeaponObject() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(376):  		return false;
-	return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(380):  		return super.gameObjectType == SceneObject.POLEARM;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::POLEARM;
 }
 
 bool WeaponObjectImplementation::isTwoHandMeleeWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(380):  		return false;
-	return false;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(384):  		return super.gameObjectType == SceneObject.TWOHANDMELEEWEAPON;
+	return TangibleObjectImplementation::gameObjectType == SceneObject::TWOHANDMELEEWEAPON;
 }
 
 bool WeaponObjectImplementation::isWeaponObject() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(384):  		return true;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(388):  		return true;
 	return true;
 }
 
@@ -1197,42 +1214,45 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertAscii(getXpType());
 		break;
 	case 42:
-		resp->insertBoolean(hasMeleeAttack());
-		break;
-	case 43:
-		resp->insertBoolean(hasRangedAttack());
-		break;
-	case 44:
 		resp->insertBoolean(isUnarmedWeapon());
 		break;
-	case 45:
+	case 43:
 		resp->insertBoolean(isMeleeWeapon());
 		break;
-	case 46:
+	case 44:
 		resp->insertBoolean(isRangedWeapon());
 		break;
-	case 47:
+	case 45:
 		resp->insertBoolean(isRifleWeapon());
 		break;
+	case 46:
+		resp->insertBoolean(isThrownWeapon());
+		break;
+	case 47:
+		resp->insertBoolean(isHeavyWeapon());
+		break;
 	case 48:
-		resp->insertBoolean(isLightningRifle());
+		resp->insertBoolean(isSpecialHeavyWeapon());
 		break;
 	case 49:
-		resp->insertBoolean(isCarbineWeapon());
+		resp->insertBoolean(isLightningRifle());
 		break;
 	case 50:
-		resp->insertBoolean(isPistolWeapon());
+		resp->insertBoolean(isCarbineWeapon());
 		break;
 	case 51:
-		resp->insertBoolean(isOneHandMeleeWeapon());
+		resp->insertBoolean(isPistolWeapon());
 		break;
 	case 52:
-		resp->insertBoolean(isPolearmWeaponObject());
+		resp->insertBoolean(isOneHandMeleeWeapon());
 		break;
 	case 53:
-		resp->insertBoolean(isTwoHandMeleeWeapon());
+		resp->insertBoolean(isPolearmWeaponObject());
 		break;
 	case 54:
+		resp->insertBoolean(isTwoHandMeleeWeapon());
+		break;
+	case 55:
 		resp->insertBoolean(isWeaponObject());
 		break;
 	default:
@@ -1386,14 +1406,6 @@ String WeaponObjectAdapter::getXpType() {
 	return ((WeaponObjectImplementation*) impl)->getXpType();
 }
 
-bool WeaponObjectAdapter::hasMeleeAttack() {
-	return ((WeaponObjectImplementation*) impl)->hasMeleeAttack();
-}
-
-bool WeaponObjectAdapter::hasRangedAttack() {
-	return ((WeaponObjectImplementation*) impl)->hasRangedAttack();
-}
-
 bool WeaponObjectAdapter::isUnarmedWeapon() {
 	return ((WeaponObjectImplementation*) impl)->isUnarmedWeapon();
 }
@@ -1408,6 +1420,18 @@ bool WeaponObjectAdapter::isRangedWeapon() {
 
 bool WeaponObjectAdapter::isRifleWeapon() {
 	return ((WeaponObjectImplementation*) impl)->isRifleWeapon();
+}
+
+bool WeaponObjectAdapter::isThrownWeapon() {
+	return ((WeaponObjectImplementation*) impl)->isThrownWeapon();
+}
+
+bool WeaponObjectAdapter::isHeavyWeapon() {
+	return ((WeaponObjectImplementation*) impl)->isHeavyWeapon();
+}
+
+bool WeaponObjectAdapter::isSpecialHeavyWeapon() {
+	return ((WeaponObjectImplementation*) impl)->isSpecialHeavyWeapon();
 }
 
 bool WeaponObjectAdapter::isLightningRifle() {
