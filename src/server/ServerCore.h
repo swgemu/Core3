@@ -62,6 +62,7 @@ class LoginServer;
 class StatusServer;
 class Features;
 class PingServer;
+class StatusServer;
 
 class ServerCore : public Core, public Logger {
 	ConfigManager* configManager;
@@ -74,7 +75,7 @@ class ServerCore : public Core, public Logger {
 
 	LoginServer* loginServer;
 
-	//StatusServer * statusServer;
+	StatusServer* statusServer;
 
 	Features* features;
 

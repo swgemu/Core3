@@ -54,6 +54,7 @@ import engine.core.TaskManager;
 import engine.log.Logger;
 
 import system.lang.Exception;
+import system.lang.Time;
 import system.util.Vector;
 import system.net.Socket;
 import system.net.SocketAddress;
@@ -123,6 +124,9 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private string messageoftheDay;
 
 	private int galaxyID;
+	
+	@dereferenced
+	private Time startTimestamp;
 	
 	public static final int OFFLINE = 0;
 	public static final int LOADING = 1;
@@ -313,9 +317,10 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 		return processor.getProfessionManager();
 	}
 
-	/*public time_t getStartTimestamp() {
+	@local
+	public Time getStartTimestamp() {
 		return startTimestamp;
-	}*/
+	}
 	
 	public native void setServerName(final string servername);
 
