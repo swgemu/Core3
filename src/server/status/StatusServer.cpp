@@ -114,7 +114,7 @@ Packet* StatusServer::getStatusXMLPacket() {
 		str << "<total>" << zoneServer->getTotalPlayers() << "</total>" << endl;
 		str << "<deleted>" << zoneServer->getDeletedPlayers() << "</deleted>" << endl;
 		str << "</users>" << endl;
-		str << "<uptime>" << /*time(NULL) - zoneServer->getStartTimestamp()*/ timestamp.miliDifference(*zoneServer->getStartTimestamp()) / 100 << "</uptime>" << endl;
+		str << "<uptime>" << zoneServer->getStartTimestamp()->miliDifference(timestamp) / 1000 << "</uptime>" << endl;
 	} else
 		str << "<status>down</status>";
 
