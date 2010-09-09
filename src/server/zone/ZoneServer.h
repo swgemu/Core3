@@ -223,6 +223,8 @@ using namespace server::zone::managers::mission;
 
 #include "system/lang/Exception.h"
 
+#include "system/lang/Time.h"
+
 #include "system/util/Vector.h"
 
 #include "system/net/Socket.h"
@@ -354,6 +356,8 @@ public:
 
 	ProfessionManager* getProfessionManager();
 
+	Time* getStartTimestamp();
+
 	void setServerName(const String& servername);
 
 	void setGalaxyID(int galaxyid);
@@ -437,6 +441,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	String messageoftheDay;
 
 	int galaxyID;
+
+	Time startTimestamp;
 
 public:
 	static const int OFFLINE = 0;
@@ -556,6 +562,8 @@ public:
 	FishingManager* getFishingManager();
 
 	ProfessionManager* getProfessionManager();
+
+	Time* getStartTimestamp();
 
 	void setServerName(const String& servername);
 

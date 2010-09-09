@@ -55,7 +55,7 @@ which carries forward this exception.
 
 #include "ping/PingServer.h"
 
-//#include "status/StatusServer.h"
+#include "status/StatusServer.h"
 
 #include "zone/ZoneServer.h"
 
@@ -77,7 +77,7 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 
 	loginServer = NULL;
 	zoneServerRef = NULL;
-	//statusServer = NULL;
+	statusServer = NULL;
 	pingServer = NULL;
 	forumDatabase = NULL;
 	database = NULL;
@@ -117,6 +117,10 @@ void ServerCore::init() {
 		if (configManager->getMakePing()) {
 			pingServer = new PingServer();
 		}
+
+		if (configManager->getMakeStatus()) {
+			statusServer = new StatusServer(configManager, zoneServerRef);
+		}
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
@@ -142,15 +146,15 @@ void ServerCore::run() {
 		ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 		dbManager->loadDatabases();
 
-		zoneServer->start(44463, zoneAllowedConnections);
+		zoneServer->start(44464, zoneAllowedConnections);
 	}
 
-	/*if (statusServer != NULL) {
+	if (statusServer != NULL) {
 		int statusPort = configManager->getStatusPort();
 		int statusAllowedConnections = configManager->getStatusAllowedConnections();
 
 		statusServer->start(statusPort);
-	}*/
+	}
 
 	if (pingServer != NULL) {
 		int pingPort = configManager->getPingPort();
@@ -171,12 +175,14 @@ void ServerCore::run() {
 void ServerCore::shutdown() {
 	info("shutting down server..");
 
-	/*if (statusServer != NULL) {
+	ObjectDatabaseManager::instance()->checkpoint();
+
+	if (statusServer != NULL) {
 		statusServer->stop();
 
 		delete statusServer;
 		statusServer = NULL;
-	}*/
+	}
 
 	ZoneServer* zoneServer = zoneServerRef.get();
 
@@ -216,7 +222,7 @@ void ServerCore::shutdown() {
 		database = NULL;
 	}
 
-	ObjectManager::instance()->savePersistentObjects();
+	//ObjectManager::instance()->savePersistentObjects();
 
 	ObjectManager::finalize();
 

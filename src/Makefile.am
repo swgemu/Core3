@@ -220,6 +220,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginServer.cpp \
 		server/ping/PingServer.cpp \
+		server/status/StatusServer.cpp \
 		server/proxy/LoginProxyServer.cpp \
 		server/ServerCore.cpp \
 		server/zone/ZoneServerImplementation.cpp \
