@@ -147,14 +147,6 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
-				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
-				server/zone/objects/tangible/weapon/RangedWeaponObject.cpp \
-				server/zone/objects/tangible/weapon/PistolWeaponObject.cpp \
-				server/zone/objects/tangible/weapon/RifleWeaponObject.cpp \
-				server/zone/objects/tangible/weapon/CarbineWeaponObject.cpp \
-				server/zone/objects/tangible/weapon/OneHandMeleeWeapon.cpp \
-				server/zone/objects/tangible/weapon/TwoHandMeleeWeapon.cpp \
-				server/zone/objects/tangible/weapon/PolearmWeaponObject.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
 				server/zone/managers/loot/LootManager.cpp \
 				server/zone/managers/loot/lootgroup/LootGroupObject.cpp \
@@ -351,7 +343,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
-		server/zone/objects/tangible/weapon/MeleeWeaponObjectImplementation.cpp \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
 		server/zone/objects/structure/StructureObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \

@@ -377,24 +377,24 @@ int CombatManager::calculatePostureModifier(CreatureObject* creature, CreatureOb
 	WeaponObject* weapon = creature->getWeapon();
 
 	if (targetCreature->isKneeling()) {
-		if (weapon->hasMeleeAttack())
+		if (weapon->isMeleeWeapon())
 			accuracy += 16;
 		else
 			accuracy -= 16;
 	} else if (targetCreature->isProne()) {
-		if (weapon->hasMeleeAttack())
+		if (weapon->isMeleeWeapon())
 			accuracy += 25;
 		else
 			accuracy -= 25;
 	}
 
 	if (creature->isKneeling()) {
-		if (weapon->hasMeleeAttack())
+		if (weapon->isMeleeWeapon())
 			accuracy -= 16;
 		else
 			accuracy += 16;
 	} else if (creature->isProne()) {
-		if (weapon->hasMeleeAttack())
+		if (weapon->isMeleeWeapon())
 			accuracy -= 50;
 		else
 			accuracy += 50;

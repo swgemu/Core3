@@ -239,10 +239,6 @@ public:
 
 	String getXpType();
 
-	bool hasMeleeAttack();
-
-	bool hasRangedAttack();
-
 	bool isUnarmedWeapon();
 
 	bool isMeleeWeapon();
@@ -250,6 +246,12 @@ public:
 	bool isRangedWeapon();
 
 	bool isRifleWeapon();
+
+	bool isThrownWeapon();
+
+	bool isHeavyWeapon();
+
+	bool isSpecialHeavyWeapon();
 
 	bool isLightningRifle();
 
@@ -474,29 +476,31 @@ public:
 
 	String getXpType();
 
-	bool hasMeleeAttack();
-
-	bool hasRangedAttack();
-
 	bool isUnarmedWeapon();
 
-	virtual bool isMeleeWeapon();
+	bool isMeleeWeapon();
 
-	virtual bool isRangedWeapon();
+	bool isRangedWeapon();
 
-	virtual bool isRifleWeapon();
+	bool isRifleWeapon();
 
-	virtual bool isLightningRifle();
+	bool isThrownWeapon();
 
-	virtual bool isCarbineWeapon();
+	bool isHeavyWeapon();
 
-	virtual bool isPistolWeapon();
+	bool isSpecialHeavyWeapon();
 
-	virtual bool isOneHandMeleeWeapon();
+	bool isLightningRifle();
 
-	virtual bool isPolearmWeaponObject();
+	bool isCarbineWeapon();
 
-	virtual bool isTwoHandMeleeWeapon();
+	bool isPistolWeapon();
+
+	bool isOneHandMeleeWeapon();
+
+	bool isPolearmWeaponObject();
+
+	bool isTwoHandMeleeWeapon();
 
 	bool isWeaponObject();
 
@@ -611,10 +615,6 @@ public:
 
 	String getXpType();
 
-	bool hasMeleeAttack();
-
-	bool hasRangedAttack();
-
 	bool isUnarmedWeapon();
 
 	bool isMeleeWeapon();
@@ -622,6 +622,12 @@ public:
 	bool isRangedWeapon();
 
 	bool isRifleWeapon();
+
+	bool isThrownWeapon();
+
+	bool isHeavyWeapon();
+
+	bool isSpecialHeavyWeapon();
 
 	bool isLightningRifle();
 
