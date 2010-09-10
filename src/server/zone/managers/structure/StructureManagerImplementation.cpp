@@ -1045,7 +1045,7 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 		waypointObject->setPosition(x, z, y);
 		waypointObject->setPlanetCRC(zone->getPlanetName().hashCode());
 
-		playerObject->addWaypoint(waypointObject, true);
+		playerObject->addWaypoint(waypointObject, false, true);
 	}
 
 	//Create an email

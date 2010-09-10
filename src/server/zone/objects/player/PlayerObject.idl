@@ -162,9 +162,10 @@ class PlayerObject extends IntangibleObject {
 	 * @pre { this is locked }
 	 * @post { this is locked, waypoint object is in the list }
 	 * @param waypoint waypoint object to add
+	 * @param checkName determines whether to remove existing Waypoint with equal customName
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
-	public native void addWaypoint(WaypointObject waypoint, boolean notifyClient = true);
+	public native void addWaypoint(WaypointObject waypoint, boolean checkName, boolean notifyClient = true);
 	public native void setWaypoint(WaypointObject waypoint, boolean notifyClient = true);
 	
 	/** 
