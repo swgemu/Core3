@@ -398,7 +398,7 @@ void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int v
 	newwaypoint->setColor(WaypointObject::COLOR_BLUE);
 	newwaypoint->setActive(true);
 
-	player->getPlayerObject()->addWaypoint(newwaypoint, true);
+	player->getPlayerObject()->addWaypoint(newwaypoint, false, true); // Should second argument be true, and waypoints with the same name thus remove their old version?
 	player->sendSystemMessage("survey", "node_waypoint");
 
 	// Player must be kneeling to sample

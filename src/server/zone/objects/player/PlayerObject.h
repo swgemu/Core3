@@ -180,7 +180,7 @@ public:
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
-	void addWaypoint(WaypointObject* waypoint, bool notifyClient = true);
+	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient = true);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
 
@@ -408,7 +408,7 @@ public:
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
-	void addWaypoint(WaypointObject* waypoint, bool notifyClient = true);
+	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient = true);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
 
@@ -585,7 +585,7 @@ public:
 
 	void removeExperience(const String& xpType, bool notifyClient);
 
-	void addWaypoint(WaypointObject* waypoint, bool notifyClient);
+	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient);
 

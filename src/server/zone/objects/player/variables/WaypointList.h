@@ -103,6 +103,22 @@ public:
 		}
 	}
 
+	uint64 find(const String& name) {
+		if (name.isEmpty())
+			return 0;
+
+		for (int i = 0; i < size(); ++i) {
+			uint64& key = getKeyAt(i);
+			ManagedReference<WaypointObject*> value = getValueAt(i);
+
+			if (name == value->getCustomName().toString())
+				return key;
+		}
+
+		return 0;
+	}
+
+
 };
 
 
