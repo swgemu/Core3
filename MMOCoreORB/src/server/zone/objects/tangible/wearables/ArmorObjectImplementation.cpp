@@ -259,8 +259,7 @@ void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schem
 
 	if(schematic->getFirstCraftingUpdate()) {
 
-		int special = craftingValues->getCurrentValue("armor_special_type");
-		specialResists = special;
+		specialResists |= craftingValues->getCurrentValue("armor_special_type");
 		calculateSpecalProtection(schematic);
 
 		setRating((int) craftingValues->getCurrentValue("armor_rating"));
