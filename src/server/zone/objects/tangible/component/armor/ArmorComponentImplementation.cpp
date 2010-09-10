@@ -60,7 +60,7 @@ void ArmorComponentImplementation::updateCraftingValues(ManufactureSchematic* sc
 	if(schematic->getFirstCraftingUpdate()) {
 
 		setPropertyToHidden("armor_special_effectiveness");
-		specialResists = craftingValues->getCurrentValue("armor_special_type");
+		specialResists |= craftingValues->getCurrentValue("armor_special_type");
 	}
 
 	String expProp = "exp_resistance";
