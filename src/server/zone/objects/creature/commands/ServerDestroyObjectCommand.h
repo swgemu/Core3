@@ -66,7 +66,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		creature->info("serverdestroy arguments: " + arguments.toString(), true);
+		//creature->info("serverdestroy arguments: " + arguments.toString(), true);
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
@@ -94,46 +94,16 @@ public:
 		}
 
 		SceneObject* inventory = creature->getSlottedObject("inventory");
-
-		if (inventory != NULL) {
-			if (inventory->hasObjectInContainer(target)) {
-				inventory->removeObject(object);
-
-				object->sendDestroyTo(creature);
-
-				//destroy object from database
-				object->destroyObjectFromDatabase(true);
-
-				return SUCCESS;
-			}
-		}
-
 		SceneObject* datapad = creature->getSlottedObject("datapad");
-
-		if (datapad != NULL) {
-			if (datapad->hasObjectInContainer(target)) {
-				datapad->removeObject(object);
-
-				object->sendDestroyTo(creature);
-
-				//destroy object from database
-				object->destroyObjectFromDatabase(true);
-
-				return SUCCESS;
-			}
-		}
-
 		SceneObject* bank = creature->getSlottedObject("bank");
 
-		if (bank != NULL) {
-			if (bank->hasObjectInContainer(target)) {
-				bank->removeObject(object);
+		if (object->isASubChildOf(inventory) || object->isASubChildOf(datapad) || object->isASubChildOf(bank)) {
+			ManagedReference<SceneObject*> parent = object->getParent();
 
-				object->sendDestroyTo(creature);
-				object->destroyObjectFromDatabase(true);
+			parent->removeObject(object);
+			object->sendDestroyTo(creature);
 
-				return SUCCESS;
-			}
+			object->destroyObjectFromDatabase(true);
 		}
 
 		return SUCCESS;
