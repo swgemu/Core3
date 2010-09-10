@@ -197,7 +197,7 @@ public:
 		obj->setCustomName(waypointName);
 		obj->setActive(true);
 
-		playerObject->addWaypoint(obj, true);
+		playerObject->addWaypoint(obj, false, true); // Should second argument be true, and waypoints with the same name thus remove their old version?
 
 		return SUCCESS;
 	}

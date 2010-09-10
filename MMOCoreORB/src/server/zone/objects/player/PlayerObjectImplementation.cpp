@@ -270,12 +270,21 @@ void PlayerObjectImplementation::setWaypoint(WaypointObject* waypoint, bool noti
 	waypoint->updateToDatabase();
 }
 
-void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool notifyClient) {
+void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient) {
 	uint64 waypointID = waypoint->getObjectID();
 
 	if (waypointList.contains(waypointID)) {
 		error("this contains this waypoint ID");
 		return;
+	}
+
+	if (checkName) {
+		String name = waypoint->getCustomName().toString();
+		uint64 index = waypointList.find(name);
+
+		if (index != 0)
+			removeWaypoint(index, notifyClient);
+
 	}
 
 	setWaypoint(waypoint, notifyClient);
@@ -307,7 +316,7 @@ void PlayerObjectImplementation::addWaypoint(const String& planet, float positio
 	obj->setPosition(positionX, 0, positionY);
 	obj->setActive(true);
 
-	addWaypoint(obj, notifyClient);
+	addWaypoint(obj, false, notifyClient);
 }
 
 void PlayerObjectImplementation::addSkills(Vector<QueueCommand*>& skills, bool notifyClient) {

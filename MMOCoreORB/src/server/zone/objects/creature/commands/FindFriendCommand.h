@@ -122,7 +122,7 @@ public:
 		obj->setCustomName(name);
 		obj->setActive(true);
 
-		ghost->addWaypoint(obj, true);
+		ghost->addWaypoint(obj, true, true);
 
 		return SUCCESS;
 	}
