@@ -82,24 +82,12 @@ void CraftingMissionObjective::complete() {
 		((CraftingMissionObjectiveImplementation*) _impl)->complete();
 }
 
-void CraftingMissionObjective::destroyObjectFromDatabase() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-
-		method.executeWithVoidReturn();
-	} else
-		((CraftingMissionObjectiveImplementation*) _impl)->destroyObjectFromDatabase();
-}
-
 int CraftingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -225,9 +213,6 @@ Packet* CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, Distributed
 		complete();
 		break;
 	case 11:
-		destroyObjectFromDatabase();
-		break;
-	case 12:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:
@@ -255,10 +240,6 @@ void CraftingMissionObjectiveAdapter::abort() {
 
 void CraftingMissionObjectiveAdapter::complete() {
 	((CraftingMissionObjectiveImplementation*) impl)->complete();
-}
-
-void CraftingMissionObjectiveAdapter::destroyObjectFromDatabase() {
-	((CraftingMissionObjectiveImplementation*) impl)->destroyObjectFromDatabase();
 }
 
 int CraftingMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

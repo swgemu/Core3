@@ -674,6 +674,8 @@ public:
 
 	bool isAiAgent();
 
+	bool isInformantCreature();
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -1264,6 +1266,8 @@ public:
 
 	virtual bool isAiAgent();
 
+	virtual bool isInformantCreature();
+
 	CreatureObject* _this;
 
 	operator const CreatureObject*();
@@ -1704,6 +1708,8 @@ public:
 	bool isCreature();
 
 	bool isAiAgent();
+
+	bool isInformantCreature();
 
 protected:
 	String _param0_sendSystemMessage__String_;

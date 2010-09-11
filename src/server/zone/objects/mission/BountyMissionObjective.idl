@@ -50,11 +50,16 @@ import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.AiAgent;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
-import server.zone.objects.area.MissionSpawnActiveArea;
 
 class BountyMissionObjective extends MissionObjective {
+	@dereferenced
+	protected TemplateReference<SharedObjectTemplate> npcTemplateToSpawn;
+	
+	protected AiAgent npcTarget;
+	
 	public BountyMissionObjective(MissionObject mission) {
 		super(mission);
 		
@@ -77,12 +82,10 @@ class BountyMissionObjective extends MissionObjective {
 	public native void abort();
 	public native void complete();
 	
-	/**
-	 * Destroys this object from database
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 */
-	public native void destroyObjectFromDatabase();
+	public native void spawnTarget(int zoneID);
 	
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+	
+	@local
+	public native void setNpcTemplateToSpawn(SharedObjectTemplate sp);
 }

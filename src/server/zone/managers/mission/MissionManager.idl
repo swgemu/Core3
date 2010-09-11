@@ -64,6 +64,9 @@ class MissionManager extends Observer implements Logger {
 	@dereferenced
 	protected LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
 	
+	@dereferenced
+	protected SortedVector<unsigned int> npcObjectTemplatesToSpawn;
+	
 	public MissionManager(ZoneServer srv, ZoneProcessServerImplementation impl) {
 		server = srv;
 		processor = impl;
@@ -72,9 +75,11 @@ class MissionManager extends Observer implements Logger {
 		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
 		
 		loadLairObjectsToSpawn();
+		loadNpcObjectsToSpawn();
 	}
 	
 	public native void loadLairObjectsToSpawn();
+	public native void loadNpcObjectsToSpawn();
 	
 	public native void handleMissionListRequest(MissionTerminal missionTerminal, PlayerCreature player, int counter);
 	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, PlayerCreature player);
@@ -105,6 +110,7 @@ class MissionManager extends Observer implements Logger {
 	public native void createEntertainerMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	public native void createHuntingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	public native void createReconMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
 	
 	public native boolean hasSurveyMission(PlayerCreature player, final string spawn);
 }

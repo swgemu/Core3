@@ -14,9 +14,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
-#include "server/zone/objects/area/MissionSpawnActiveArea.h"
+#include "server/zone/templates/SharedObjectTemplate.h"
 
 /*
  *	BountyMissionObjectiveStub
@@ -82,16 +82,17 @@ void BountyMissionObjective::complete() {
 		((BountyMissionObjectiveImplementation*) _impl)->complete();
 }
 
-void BountyMissionObjective::destroyObjectFromDatabase() {
+void BountyMissionObjective::spawnTarget(int zoneID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addSignedIntParameter(zoneID);
 
 		method.executeWithVoidReturn();
 	} else
-		((BountyMissionObjectiveImplementation*) _impl)->destroyObjectFromDatabase();
+		((BountyMissionObjectiveImplementation*) _impl)->spawnTarget(zoneID);
 }
 
 int BountyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
@@ -109,6 +110,14 @@ int BountyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsig
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((BountyMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+}
+
+void BountyMissionObjective::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((BountyMissionObjectiveImplementation*) _impl)->setNpcTemplateToSpawn(sp);
 }
 
 /*
@@ -176,25 +185,27 @@ void BountyMissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("BountyMissionObjective");
 
+	addSerializableVariable("npcTemplateToSpawn", &npcTemplateToSpawn);
+	addSerializableVariable("npcTarget", &npcTarget);
 }
 
 BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/BountyMissionObjective.idl(61):  		Logger.setLoggingName("BountyMissionObjective");
+	// server/zone/objects/mission/BountyMissionObjective.idl(66):  		Logger.setLoggingName("BountyMissionObjective");
 	Logger::setLoggingName("BountyMissionObjective");
 }
 
 void BountyMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/BountyMissionObjective.idl(65):  		Logger.info("deleting from memory", true);
+	// server/zone/objects/mission/BountyMissionObjective.idl(70):  		Logger.info("deleting from memory", true);
 	Logger::info("deleting from memory", true);
 }
 
 void BountyMissionObjectiveImplementation::initializeTransientMembers() {
-	// server/zone/objects/mission/BountyMissionObjective.idl(69):  		super.initializeTransientMembers();
+	// server/zone/objects/mission/BountyMissionObjective.idl(74):  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/BountyMissionObjective.idl(71):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/BountyMissionObjective.idl(76):  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/BountyMissionObjective.idl(73):  		activate();
+	// server/zone/objects/mission/BountyMissionObjective.idl(78):  		activate();
 	activate();
 }
 
@@ -225,7 +236,7 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 		complete();
 		break;
 	case 11:
-		destroyObjectFromDatabase();
+		spawnTarget(inv->getSignedIntParameter());
 		break;
 	case 12:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
@@ -257,8 +268,8 @@ void BountyMissionObjectiveAdapter::complete() {
 	((BountyMissionObjectiveImplementation*) impl)->complete();
 }
 
-void BountyMissionObjectiveAdapter::destroyObjectFromDatabase() {
-	((BountyMissionObjectiveImplementation*) impl)->destroyObjectFromDatabase();
+void BountyMissionObjectiveAdapter::spawnTarget(int zoneID) {
+	((BountyMissionObjectiveImplementation*) impl)->spawnTarget(zoneID);
 }
 
 int BountyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

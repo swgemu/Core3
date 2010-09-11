@@ -166,6 +166,8 @@ public:
 
 	void loadMissionSpawns();
 
+	void loadInformants();
+
 protected:
 	CreatureManager(DummyConstructorParameter* param);
 
@@ -212,6 +214,8 @@ public:
 	void loadTrainers();
 
 	void loadMissionSpawns();
+
+	void loadInformants();
 
 private:
 	bool createCreatureChildrenObjects(CreatureObject* creature);
@@ -267,6 +271,8 @@ public:
 	void loadTrainers();
 
 	void loadMissionSpawns();
+
+	void loadInformants();
 
 };
 

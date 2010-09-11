@@ -82,24 +82,12 @@ void EntertainerMissionObjective::complete() {
 		((EntertainerMissionObjectiveImplementation*) _impl)->complete();
 }
 
-void EntertainerMissionObjective::destroyObjectFromDatabase() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-
-		method.executeWithVoidReturn();
-	} else
-		((EntertainerMissionObjectiveImplementation*) _impl)->destroyObjectFromDatabase();
-}
-
 int EntertainerMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -225,9 +213,6 @@ Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, Distribu
 		complete();
 		break;
 	case 11:
-		destroyObjectFromDatabase();
-		break;
-	case 12:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:
@@ -255,10 +240,6 @@ void EntertainerMissionObjectiveAdapter::abort() {
 
 void EntertainerMissionObjectiveAdapter::complete() {
 	((EntertainerMissionObjectiveImplementation*) impl)->complete();
-}
-
-void EntertainerMissionObjectiveAdapter::destroyObjectFromDatabase() {
-	((EntertainerMissionObjectiveImplementation*) impl)->destroyObjectFromDatabase();
 }
 
 int EntertainerMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

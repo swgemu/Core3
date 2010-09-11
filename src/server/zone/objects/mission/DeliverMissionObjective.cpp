@@ -128,24 +128,12 @@ void DeliverMissionObjective::complete() {
 		((DeliverMissionObjectiveImplementation*) _impl)->complete();
 }
 
-void DeliverMissionObjective::destroyObjectFromDatabase() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-
-		method.executeWithVoidReturn();
-	} else
-		((DeliverMissionObjectiveImplementation*) _impl)->destroyObjectFromDatabase();
-}
-
 int DeliverMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -162,7 +150,7 @@ bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -312,12 +300,9 @@ Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 		complete();
 		break;
 	case 14:
-		destroyObjectFromDatabase();
-		break;
-	case 15:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 16:
+	case 15:
 		resp->insertBoolean(updateMissionTarget((CreatureObject*) inv->getObjectParameter()));
 		break;
 	default:
@@ -357,10 +342,6 @@ void DeliverMissionObjectiveAdapter::abort() {
 
 void DeliverMissionObjectiveAdapter::complete() {
 	((DeliverMissionObjectiveImplementation*) impl)->complete();
-}
-
-void DeliverMissionObjectiveAdapter::destroyObjectFromDatabase() {
-	((DeliverMissionObjectiveImplementation*) impl)->destroyObjectFromDatabase();
 }
 
 int DeliverMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

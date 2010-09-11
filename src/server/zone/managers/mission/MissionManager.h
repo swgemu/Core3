@@ -124,6 +124,8 @@ public:
 
 	void loadLairObjectsToSpawn();
 
+	void loadNpcObjectsToSpawn();
+
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
@@ -171,6 +173,8 @@ public:
 	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -204,12 +208,16 @@ private:
 protected:
 	LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
 
+	SortedVector<unsigned int> npcObjectTemplatesToSpawn;
+
 public:
 	MissionManagerImplementation(ZoneServer* srv, ZoneProcessServerImplementation* impl);
 
 	MissionManagerImplementation(DummyConstructorParameter* param);
 
 	void loadLairObjectsToSpawn();
+
+	void loadNpcObjectsToSpawn();
 
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
@@ -258,6 +266,8 @@ public:
 	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
@@ -302,6 +312,8 @@ public:
 
 	void loadLairObjectsToSpawn();
 
+	void loadNpcObjectsToSpawn();
+
 	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
 
 	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
@@ -349,6 +361,8 @@ public:
 	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+
+	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 

@@ -13,10 +13,10 @@ public:
 	const static int POSITIONCHANGED = 1;
 	const static int CLOSECONTAINER = 2;
 	const static int POSTURECHANGED = 3;
-	const static int OBJECTDESTRUCTION = 4;
+	const static int OBJECTDESTRUCTION = 4; // used when a certain object is destroyed
 	const static int SAMPLE = 5;
 	const static int CONVERSE = 6;
-	const static int KILLEDCREATURE = 7;
+	const static int KILLEDCREATURE = 7; // used when a player kills any creature
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */
