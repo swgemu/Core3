@@ -49,13 +49,13 @@ which carries forward this exception.
 
 class ErrorMessage : public BaseMessage {
 public:
-	ErrorMessage(const String& ErrorType, const String& ErrorMsg, uint8 Fatal) : BaseMessage() {
+	ErrorMessage(const String& errorType, const String& errorMsg, uint8 fatal) : BaseMessage() {
     	insertShort(0x03);
     	insertInt(0xB5ABF91A);
     	
-        insertAscii(ErrorType);
-        insertAscii(ErrorMsg);
-        insertByte(Fatal);
+        insertAscii(errorType);
+        insertAscii(errorMsg);
+        insertByte(fatal);
       }
 
 };

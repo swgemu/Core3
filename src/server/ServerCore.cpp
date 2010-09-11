@@ -141,12 +141,23 @@ void ServerCore::run() {
 	}
 
 	if (zoneServer != NULL) {
+		int zonePort = 44463;
 		int zoneAllowedConnections = configManager->getZoneAllowedConnections();
 
 		ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 		dbManager->loadDatabases();
 
-		zoneServer->start(44464, zoneAllowedConnections);
+		int galaxyID = configManager->getZoneGalaxyID();
+
+		String query = "SELECT port FROM galaxy WHERE galaxy_id = " + String::valueOf(galaxyID);
+		ResultSet* result = database->instance()->executeQuery(query);
+
+		if (result != NULL && result->next()) {
+			zonePort = result->getInt(0);
+			delete result;
+		}
+
+		zoneServer->start(zonePort, zoneAllowedConnections);
 	}
 
 	if (statusServer != NULL) {

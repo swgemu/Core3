@@ -75,6 +75,7 @@ import server.zone.managers.loot.LootManager;
 import server.zone.managers.bazaar.BazaarManager;
 import server.zone.managers.minigames.FishingManager;
 import server.zone.managers.mission.MissionManager;
+import server.zone.managers.account.AccountManager;
 
 @nonTransactional
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
@@ -101,6 +102,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private MissionManager missionManager;
 	
 	private FishingManager fishingManager;
+	
+	private AccountManager accountManager;
 
 	private int totalSentPackets;
 	
@@ -310,6 +313,10 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	public FishingManager getFishingManager() {
 		return fishingManager;
+	}
+	
+	public AccountManager getAccountManager() {
+		return accountManager;
 	}
 	
 	@local

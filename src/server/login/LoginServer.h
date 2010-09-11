@@ -62,6 +62,11 @@ class LoginServer : public DatagramServiceThread {
 	LoginMessageProcessorThread** processors;
 	int procThreadCount;
 
+	LoginEnumCluster* enumClusterMessage;
+	LoginClusterStatus* clusterStatusMessage;
+
+public:
+
 public:
 	LoginServer(ConfigManager* configManager);
 
@@ -79,7 +84,17 @@ public:
 
 	bool handleError(ServiceClient* client, Exception& e);
 
+	void populateGalaxyList();
+
 	void printInfo();
+
+	inline LoginEnumCluster* getLoginEnumClusterMessage() {
+		return (LoginEnumCluster*) enumClusterMessage->clone();
+	}
+
+	inline LoginClusterStatus* getLoginClusterStatusMessage() {
+		return (LoginClusterStatus*) clusterStatusMessage->clone();
+	}
 
 };
 
