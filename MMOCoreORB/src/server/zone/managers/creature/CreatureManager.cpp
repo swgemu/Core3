@@ -125,6 +125,18 @@ void CreatureManager::loadMissionSpawns() {
 		((CreatureManagerImplementation*) _impl)->loadMissionSpawns();
 }
 
+void CreatureManager::loadInformants() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureManagerImplementation*) _impl)->loadInformants();
+}
+
 /*
  *	CreatureManagerImplementation
  */
@@ -219,6 +231,8 @@ void CreatureManagerImplementation::initialize() {
 	loadSingleSpawns();
 	// server/zone/managers/creature/CreatureManager.idl(42):  		loadMissionSpawns();
 	loadMissionSpawns();
+	// server/zone/managers/creature/CreatureManager.idl(43):  		loadInformants();
+	loadInformants();
 }
 
 /*
@@ -250,6 +264,9 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case 11:
 		loadMissionSpawns();
 		break;
+	case 12:
+		loadInformants();
+		break;
 	default:
 		return NULL;
 	}
@@ -279,6 +296,10 @@ void CreatureManagerAdapter::loadTrainers() {
 
 void CreatureManagerAdapter::loadMissionSpawns() {
 	((CreatureManagerImplementation*) impl)->loadMissionSpawns();
+}
+
+void CreatureManagerAdapter::loadInformants() {
+	((CreatureManagerImplementation*) impl)->loadInformants();
 }
 
 /*

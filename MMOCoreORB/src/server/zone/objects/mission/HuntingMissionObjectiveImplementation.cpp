@@ -6,7 +6,6 @@
  */
 
 #include "HuntingMissionObjective.h"
-#include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
@@ -18,10 +17,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
-
-void HuntingMissionObjectiveImplementation::destroyObjectFromDatabase() {
-	MissionObjectiveImplementation::destroyObjectFromDatabase();
-}
 
 void HuntingMissionObjectiveImplementation::activate() {
 	if (observers.size() != 0)

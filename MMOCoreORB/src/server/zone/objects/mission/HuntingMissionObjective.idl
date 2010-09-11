@@ -79,12 +79,5 @@ class HuntingMissionObjective extends MissionObjective {
 	public native void abort();
 	public native void complete();
 	
-	/**
-	 * Destroys this object from database
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 */
-	public native void destroyObjectFromDatabase();
-	
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 }

@@ -23,6 +23,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/trainer/TrainerCreature.h"
 #include "server/zone/objects/creature/junkdealer/JunkdealerCreature.h"
+#include "server/zone/objects/creature/informant/InformantCreature.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/objects/group/GroupObject.h"
@@ -156,6 +157,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
 	objectFactory.registerObject<TrainerCreature>(SceneObject::TRAINERCREATURE);
+	objectFactory.registerObject<InformantCreature>(SceneObject::INFORMANTCREATURE);
 
 	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
 

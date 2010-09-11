@@ -40,36 +40,51 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
- */
+*/
 
-package server.zone.objects.scene;
+package server.zone.objects.creature.trainer;
 
-include engine.core.ManagedObject;
+import engine.core.ManagedObject;
+import server.zone.Zone;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.AiAgent;
+import server.zone.objects.scene.SceneObject;
 
-import engine.log.Logger;
-import engine.core.ManagedReference;
-include server.zone.objects.scene.Observer;
-include server.zone.objects.scene.ObserverEventMap;
+class InformantCreature extends AiAgent {
+	protected int level;
 
-class Observable extends ManagedObject {
-	@dereferenced
-	protected ObserverEventMap observerEventMap;
-	
-	
-	public void notifyObservers(unsigned int eventType, ManagedObject arg1 = null, long arg2 = 0) {
-		observerEventMap.notifyObservers(eventType, this, arg1, arg2);
+	public InformantCreature() {
+		Logger.setLoggingName("InformantCreature");
+		level = 0;
 	}
 	
-	public void registerObserver(unsigned int eventType, Observer observer) {
-		observerEventMap.registerObserver(eventType, observer);
-	}
-	
-	public void dropObserver(unsigned int eventType, Observer observer) {
-		observerEventMap.dropObserver(eventType, observer);
-	}
-	
-	public int getObserverCount(unsigned int eventType) {
-		return observerEventMap.getObserverCount(eventType);
-	}
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
 		
+		super.optionsBitmask = 0x108;
+		super.pvpStatusBitmask = 0;
+	}
+	
+	public void activateRecovery() {
+		
+	}
+
+	public void setLevel(int l) {
+		level = l;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+	
+	public boolean isInformantCreature() {
+		return true;
+	}
+	
+	public boolean isAttackableBy(CreatureObject object) {
+		return false;
+	}
+	
+	public native void sendConversationStartTo(SceneObject player);
 }

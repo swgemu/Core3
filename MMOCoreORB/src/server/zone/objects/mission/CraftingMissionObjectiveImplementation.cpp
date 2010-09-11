@@ -6,7 +6,6 @@
  */
 
 #include "CraftingMissionObjective.h"
-#include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
@@ -16,10 +15,6 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
-
-void CraftingMissionObjectiveImplementation::destroyObjectFromDatabase() {
-	MissionObjectiveImplementation::destroyObjectFromDatabase();
-}
 
 void CraftingMissionObjectiveImplementation::activate() {
 	WaypointObject* waypoint = mission->getWaypointToMission();

@@ -82,24 +82,12 @@ void HuntingMissionObjective::complete() {
 		((HuntingMissionObjectiveImplementation*) _impl)->complete();
 }
 
-void HuntingMissionObjective::destroyObjectFromDatabase() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-
-		method.executeWithVoidReturn();
-	} else
-		((HuntingMissionObjectiveImplementation*) _impl)->destroyObjectFromDatabase();
-}
-
 int HuntingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -226,9 +214,6 @@ Packet* HuntingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 		complete();
 		break;
 	case 11:
-		destroyObjectFromDatabase();
-		break;
-	case 12:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:
@@ -256,10 +241,6 @@ void HuntingMissionObjectiveAdapter::abort() {
 
 void HuntingMissionObjectiveAdapter::complete() {
 	((HuntingMissionObjectiveImplementation*) impl)->complete();
-}
-
-void HuntingMissionObjectiveAdapter::destroyObjectFromDatabase() {
-	((HuntingMissionObjectiveImplementation*) impl)->destroyObjectFromDatabase();
 }
 
 int HuntingMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

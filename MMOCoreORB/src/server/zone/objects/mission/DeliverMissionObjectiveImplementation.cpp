@@ -9,7 +9,6 @@
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/Zone.h"
@@ -22,10 +21,6 @@
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
-
-void DeliverMissionObjectiveImplementation::destroyObjectFromDatabase() {
-	MissionObjectiveImplementation::destroyObjectFromDatabase();
-}
 
 void DeliverMissionObjectiveImplementation::activate() {
 	if (observers.size() != 0)  {
@@ -122,7 +117,7 @@ int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 	if (eventType == ObserverEventType::CONVERSE) {
 		CreatureObject* player = (CreatureObject*)arg1;
 		if (!player->isPlayerCreature())
-			return 1;
+			return 0;
 
 		AiAgent* converser = (AiAgent*)observable;
 		SceneObject* targetNpc = target;
@@ -150,7 +145,7 @@ int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 			   	// just create a datadisk for now... not many missions that use something else and can add in a table lookup later
 			   	item = (TangibleObject*) player->getZoneServer()->createObject(String("object/tangible/mission/mission_datadisk.iff").hashCode(), 2);
 			   	if (item == NULL)
-			   			return 1;
+			   			return 0;
 
 			   	itemName.setStringId("mission/mission_deliver_neutral_easy", itemEntry.toString());
 			   	item->setObjectName(itemName);
@@ -167,7 +162,7 @@ int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 				response << "r";
 				// check for item, then remove item
 				if (item == NULL || !inventory->hasObjectInContainer(item->getObjectID()))
-					return 1;
+					return 0;
 
 				inventory->removeObject(item, true);
 

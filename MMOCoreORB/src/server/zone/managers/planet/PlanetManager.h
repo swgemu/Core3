@@ -214,6 +214,10 @@ public:
 
 	MissionTargetMap* getReconLocs();
 
+	void addInformant(SceneObject* obj);
+
+	MissionTargetMap* getInformants();
+
 protected:
 	PlanetManager(DummyConstructorParameter* param);
 
@@ -257,6 +261,8 @@ protected:
 	HuntingTargetMap huntingTargets;
 
 	MissionTargetMap reconLocs;
+
+	MissionTargetMap informants;
 
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* srv);
@@ -322,6 +328,10 @@ public:
 	void addReconLoc(SceneObject* obj);
 
 	MissionTargetMap* getReconLocs();
+
+	void addInformant(SceneObject* obj);
+
+	MissionTargetMap* getInformants();
 
 	PlanetManager* _this;
 
@@ -407,6 +417,8 @@ public:
 	void addHuntingTargetTemplate(const String& temp1, const String& temp2, int level);
 
 	void addReconLoc(SceneObject* obj);
+
+	void addInformant(SceneObject* obj);
 
 protected:
 	String _param0_getShuttle__String_;

@@ -70,3 +70,14 @@ SortedVector<ManagedReference<Observer*> >* ObserverEventMap::getObservers(uint3
 
 	return observers;
 }
+
+int ObserverEventMap::getObserverCount(uint32 eventType) {
+	int index = find(eventType);
+
+	if (index == -1)
+		return 0;
+
+	SortedVector<ManagedReference<Observer*> >* observers = &elementAt(index).getValue();
+
+	return observers->size();
+}
