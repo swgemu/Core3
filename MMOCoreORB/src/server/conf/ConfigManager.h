@@ -84,6 +84,7 @@ class ConfigManager : public Singleton<ConfigManager>, public Lua {
 	int zoneProcessingThreads;
 	int zoneAllowedConnections;
 	int zoneGalaxyID;
+	int zoneOnlineCharactersPerAccount;
 
 	int statusAllowedConnections;
 	unsigned int statusInterval;
@@ -131,6 +132,7 @@ public:
 		zoneProcessingThreads = 10;
 		zoneAllowedConnections = 300;
 		zoneGalaxyID = 2;
+		zoneOnlineCharactersPerAccount = 1;
 
 		statusAllowedConnections = 100;
 		statusInterval = 60;
@@ -280,6 +282,10 @@ public:
 
 	inline int getZoneGalaxyID() {
 		return zoneGalaxyID;
+	}
+
+	inline int getZoneOnlineCharactersPerAccount() {
+		return zoneOnlineCharactersPerAccount;
 	}
 
 };

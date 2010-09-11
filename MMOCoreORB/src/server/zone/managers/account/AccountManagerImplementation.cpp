@@ -37,7 +37,7 @@ void AccountManagerImplementation::registerSession(ZoneClientSession* client) {
 
 	account->addSession(client);
 
-	info("Registered session with account map. Account now as " + String::valueOf(account->getSessionCount()) + " total sessions.", true);
+	info("Registered session with account map. Account now has " + String::valueOf(account->getSessionCount()) + " total sessions.");
 }
 
 void AccountManagerImplementation::unregisterSession(ZoneClientSession* client) {
@@ -50,9 +50,18 @@ void AccountManagerImplementation::unregisterSession(ZoneClientSession* client) 
 
 	account->removeSession(client);
 
-	info("Unregistered session with account map. Account now as " + String::valueOf(account->getSessionCount()) + " total sessions.", true);
+	info("Unregistered session with account map. Account now has " + String::valueOf(account->getSessionCount()) + " total sessions.");
 
 	//If the account has no more sessions associated with it, drop it from the map.
 	if (account->getSessionCount() < 1)
 		accountMap.drop(accountid);
+}
+
+int AccountManagerImplementation::getTotalOnlineCharacters(uint32 accountid) {
+	ZoneAccount* account = accountMap.get(accountid);
+
+	if (account == NULL)
+		return 0;
+
+	return account->getSessionCount();
 }

@@ -52,6 +52,12 @@ public:
 
 	void unregisterSession(ZoneClientSession* client);
 
+	int getOnlineCharactersPerAccount();
+
+	void setOnlineCharactersPerAccount(int total);
+
+	int getTotalOnlineCharacters(unsigned int accountid);
+
 protected:
 	AccountManager(DummyConstructorParameter* param);
 
@@ -75,6 +81,8 @@ namespace account {
 class AccountManagerImplementation : public ManagedObjectImplementation, public Logger {
 	ManagedReference<ZoneServer* > zoneServer;
 
+	int onlineCharactersPerAccount;
+
 	VectorMap<unsigned int, ZoneAccount*> accountMap;
 
 public:
@@ -85,6 +93,12 @@ public:
 	void registerSession(ZoneClientSession* client);
 
 	void unregisterSession(ZoneClientSession* client);
+
+	int getOnlineCharactersPerAccount();
+
+	void setOnlineCharactersPerAccount(int total);
+
+	int getTotalOnlineCharacters(unsigned int accountid);
 
 	AccountManager* _this;
 
@@ -128,6 +142,12 @@ public:
 	void registerSession(ZoneClientSession* client);
 
 	void unregisterSession(ZoneClientSession* client);
+
+	int getOnlineCharactersPerAccount();
+
+	void setOnlineCharactersPerAccount(int total);
+
+	int getTotalOnlineCharacters(unsigned int accountid);
 
 };
 

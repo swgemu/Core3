@@ -63,6 +63,8 @@ which carries forward this exception.
 
 #include "zone/objects/creature/CreatureObject.h"
 
+#include "zone/managers/account/AccountManager.h"
+
 class TestManager : public ThreadLocal<ZoneServer> {
 public:
 	ZoneServer* initValue() {
@@ -158,6 +160,8 @@ void ServerCore::run() {
 		}
 
 		zoneServer->start(zonePort, zoneAllowedConnections);
+
+		zoneServer->getAccountManager()->setOnlineCharactersPerAccount(configManager->getZoneOnlineCharactersPerAccount());
 	}
 
 	if (statusServer != NULL) {

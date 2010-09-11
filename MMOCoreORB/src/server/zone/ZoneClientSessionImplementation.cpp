@@ -54,8 +54,6 @@ which carries forward this exception.
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr)
 		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
-
-	System::out << "Creating ZoneClientSession" << endl;
 	player = NULL;
 	sessionKey = 0;
 	accountID = 0;
