@@ -61,7 +61,7 @@ import engine.service.proto.events.BaseClientEvent;
 class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	@weakReference
 	protected SceneObject player;
-	
+
 	protected unsigned int sessionKey;
 	protected unsigned int accountID;
 	

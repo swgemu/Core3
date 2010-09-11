@@ -56,6 +56,9 @@ LoginServer::LoginServer(ConfigManager* configMan) : DatagramServiceThread("Logi
 
 	configManager = configMan;
 
+	enumClusterMessage = NULL;
+	clusterStatusMessage = NULL;
+
 	setLogging(false);
 }
 
@@ -73,6 +76,16 @@ LoginServer::~LoginServer() {
 	if (processors != NULL) {
 		free(processors);
 		processors = NULL;
+	}
+
+	if (enumClusterMessage != NULL) {
+		delete enumClusterMessage;
+		enumClusterMessage = NULL;
+	}
+
+	if (clusterStatusMessage != NULL) {
+		delete clusterStatusMessage;
+		clusterStatusMessage = NULL;
 	}
 }
 
@@ -95,6 +108,8 @@ void LoginServer::init() {
 
 		processors[i] = new LoginMessageProcessorThread(name.toString(), phandler);
 	}
+
+	populateGalaxyList();
 
 	return;
 }
@@ -168,4 +183,38 @@ void LoginServer::printInfo() {
 	info(msg, true);
 
 	unlock();
+}
+
+void LoginServer::populateGalaxyList() {
+	//Populate the galaxies list for the login server.
+	GalaxyList galaxies;
+	uint32 galaxyCount = galaxies.size();
+
+	//In case we want to add the functionality to update the lists while the server is running...
+	if (enumClusterMessage != NULL) {
+		delete enumClusterMessage;
+		enumClusterMessage = NULL;
+	}
+
+	if (clusterStatusMessage != NULL) {
+		delete enumClusterMessage;
+		enumClusterMessage = NULL;
+	}
+
+	enumClusterMessage = new LoginEnumCluster(galaxyCount);
+	clusterStatusMessage = new LoginClusterStatus(galaxyCount);
+
+    while (galaxies.next()) {
+    	uint32 galaxyID = galaxies.getGalaxyID();
+
+    	String name;
+    	galaxies.getGalaxyName(name);
+
+    	enumClusterMessage->addGalaxy(galaxyID, name);
+
+		String address;
+    	galaxies.getGalaxyAddress(address);
+
+    	clusterStatusMessage->addGalaxy(galaxyID, address, galaxies.getGalaxyPort(), galaxies.getGalaxyPingPort());
+    }
 }

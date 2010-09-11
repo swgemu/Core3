@@ -85,76 +85,17 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 void LoginPacketHandler::handleLoginClientID(Message* pack) {
 	LoginClient* client = (LoginClient*) pack->getClient();
 
-	String errtype, errmsg;
-	Message* ver;
-
 	Account account(pack);
 
+	//Don't allow the client to connect if it is invalid.
 	if (!account.checkVersion()) {
-		errtype = "Login Error";
-		errmsg = "The client you are using is out of date. Go to the SWGEmu Updates forum and read the 11/03/07 Client Notice.";
-		ver = new ErrorMessage(errtype, errmsg, 0x00);
-		client->sendMessage(ver);
-	} else {
-		int validateResult = account.validate(configManager);
-
-		if (validateResult != ACCOUNTOK){
-
-			validateResult = account.create(configManager);
-
-			if (validateResult == ACCOUNTOK){
-
-				account.validate(configManager);
-
-			}
-		}
-
-		switch (validateResult) {
-		case ACCOUNTOK:
-			account.login(client);
-			return;
-		case ACCOUNTINUSE:
-			errtype = "Bad Password";
-			errmsg= "Either you have mistyped your password, or this account is already in use.";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTBADPW:
-			errtype = "Password Error";
-			errmsg= "Incorrect password entered.  Try again";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTBANNED:
-			errtype = "User Banned";
-			errmsg = "Your Account is Banned.";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTAUTOREGDISABLED:
-			errtype = "Login Error";
-			errmsg = "Auto Registration is disabled, please obtain an account from a server administrator";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTDOESNTEXIST:
-			errtype = "Invalid Account";
-			errmsg = "The specified user is not a registered forum user, please register on the forums to access this server.";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTNOTACTIVE:
-			errtype = "Inactive Account";
-			errmsg = "Your forum account is not active.  Please respond to your activation email.  "
-					"If you have already responded to the email, it can take up to 24 hours for "
-					"your game account to activate";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		default:
-			break;
-		}
+		account.sendErrorMessageTo(client, "Invalid Client", "The client you are using is out of date, and is not allowed to connect to this server.");
+		return;
 	}
+
+	//Make sure the account validates before logging it in.
+	if (account.validate(configManager, client))
+		account.login(client, server);
 }
 
 void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {

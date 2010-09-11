@@ -80,6 +80,7 @@ PingAllowedConnections = 3000
 ZoneProcessingThreads = 10
 ZoneAllowedConnections = 30000
 ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with your login server.
+ZoneOnlineCharactersPerAccount = 2
 
 --Status Server Config
 StatusPort = 44455

@@ -51,38 +51,21 @@ which carries forward this exception.
 #include "../LoginClient.h"
 #include "../objects.h"
 
-#include "GalaxyList.h"
 #include "CharacterList.h"
 
 #include "../../conf/ConfigManager.h"
 
-class Account {
-	uint32 stationID;
+class LoginServer;
 
+class Account {
 	String username;
 	String password;
 	String version;
 
-	String forumUserID;
-	String forumUserGroupID;
-	String forumUser;
-	String forumPass;
-	String forumSalt;
-	bool isBanned;
+	uint32 stationID;
+	uint32 accountID;
 
 public:
-
-	static const int ACCOUNTOK = 0;
-	static const int ACCOUNTINUSE = 1;
-	static const int ACCOUNTBADPW = 2;
-	static const int ACCOUNTBANNED = 3;
-	static const int ACCOUNTAUTOREGDISABLED = 4;
-	static const int ACCOUNTDOESNTEXIST = 5;
-	static const int ACCOUNTNOTACTIVE = 6;
-
-public:
-	int accountID;
-
 	Account(Packet* pack) {
 		AccountVersionMessage::parse(pack, username, password, version);
 
@@ -92,210 +75,44 @@ public:
 
 	//Checks for publish 14 clients. To disable: have the function return true all the time.
 	//Disabling Version check could be hazardous in game.
-	bool checkVersion() {
+	inline bool checkVersion() {
 		if (version == "20050408-18:00")
 			return true;
-		else
-			return false;
+
+		return false;
 	}
 
-	int validate(ConfigManager* configManager) {
-		if (configManager->getUseVBIngeration() == 1){
+	/**
+	 * Attempts to verify that an account is valid, and exists.
+	 * If auto creation is enabled, and the account fails to authenticate, it will attempt to create it.
+	 * @param configManager The configuration manager containing information about how accounts are handled by the server.
+	 * @param client The client attempting to login. Any error messages will be sent to this client.
+	 * @return Returns true if validation succeeds and the user has permission to continue logging in.
+	 */
+	bool validate(ConfigManager* configManager, LoginClient* client);
 
-			int validateResult = validateForumAccount(configManager);
+	bool create(ConfigManager* configManager, LoginClient* client);
 
-			if (validateResult != 0)
-				return validateResult;
+	void login(LoginClient* client, LoginServer* loginServer);
 
-		} else if (configManager->getAutoReg() == 0 && !validateForumAccount(configManager)){
-			return ACCOUNTAUTOREGDISABLED;
-		}
-
-		String query = "SELECT * FROM account WHERE username = \'" + username + "\'";
-
-		if (configManager->getUseVBIngeration() == 0)
-			query += " and password = sha1(\'" + password + "\')";
-
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-
-		accountID = -1;
-		if (res->next()) {
-			accountID = res->getInt(0);
-			stationID = res->getUnsignedInt(3);
-		}
-
-		delete res;
-
-		if ( accountID != -1)
-			return ACCOUNTOK;
-		else
-			return ACCOUNTINUSE;
+	/**
+	 * Sends an error message to the client attempting to login to the server.
+	 * @param client The LoginClient attempting to login.
+	 * @param title The title for the message box that appears.
+	 * @param msg The message to be displayed in the message box.
+	 * @param fatal [optional] Should the message cause the client to close on a fatal error. Defaults to false.
+	 */
+	void sendErrorMessageTo(LoginClient* client, const String& title, const String& msg, bool fatal = false) {
+		ErrorMessage* errmsg = new ErrorMessage(title, msg, (byte) fatal);
+		client->sendMessage(errmsg);
 	}
 
-	int create(ConfigManager* configManager) {
-		try {
-			if (configManager->getUseVBIngeration() == 1){
-				int validateResult = validateForumAccount(configManager);
-
-				if (validateResult != 0)
-					return validateResult;
-			} else if (configManager->getAutoReg() == 0 && configManager->getUseVBIngeration() == 0) {
-				return ACCOUNTAUTOREGDISABLED; // Auto Reg Disabled
-			}
-
-			StringBuffer query;
-
-			query << "INSERT INTO `account` (username,password,station_id,gm,banned,email,joindate,lastlogin) "
-               	  << "VALUES ('" << username.toCharArray() << "',SHA1('" << password.toCharArray() << "'),"
-               	  << System::random() << ",0,0,'ChangeMe@email.com',NOW(),NOW())";
-
-			ServerDatabase::instance()->executeStatement(query);
-
-			return ACCOUNTOK;
-		} catch(DatabaseException& e) {
-			System::out << e.getMessage() << endl;
-			return ACCOUNTINUSE;
-		}
-	}
-
-	int validateForumAccount(ConfigManager* configManager){
-		if (configManager->getUseVBIngeration() == 0 || configManager->getAutoReg() == 1)
-			return 0;
-
-		try {
-			StringBuffer query, query2;
-
-			query << "SELECT "
-				  << ForumsDatabase::userTable() << ".userid, "
-				  << ForumsDatabase::userTable() << ".usergroupid, "
-				  << ForumsDatabase::userTable() << ".username, "
-				  << ForumsDatabase::userTable() << ".password, "
-				  << ForumsDatabase::userTable() << ".salt, "
-				  << "(SELECT userid FROM "
-				  << ForumsDatabase::bannedTable()
-			      << " WHERE userid = (SELECT "
-			      << ForumsDatabase::userTable() << ".userid "
-			      << "FROM " << ForumsDatabase::userTable()
-			      << " WHERE username = \'" << username << "\' LIMIT 1 ) LIMIT 1 ) as banned, "
-				  << "(SELECT userid FROM "
-				  << ForumsDatabase::newActivationTable()
-			      << " WHERE userid = (SELECT "
-			      << ForumsDatabase::userTable() << ".userid "
-			      << "FROM " << ForumsDatabase::userTable()
-			      << " WHERE username = \'" << username << "\' LIMIT 1 ) LIMIT 1 ) as newuser "
-				  << " FROM " << ForumsDatabase::userTable()
-			      << " WHERE "
-			      << ForumsDatabase::userTable() << ".username = \'" << username << "\'";
-
-			ResultSet* res = ForumsDatabase::instance()->executeQuery(query);
-
-			if (res->next()){
-				forumUserID = res->getString(0);
-				forumUserGroupID = res->getString(1);
-				forumUser = res->getString(2);
-				forumPass = res->getString(3);
-				forumSalt = res->getString(4);
-
-				try {
-					String test = res->getString(5);
-					isBanned = true;
-				} catch (...) {
-					isBanned = false;
-				}
-
-				if (isBanned){
-					delete res;
-					return ACCOUNTBANNED;
-				}
-
-
-				try {
-					String test = res->getString(6);
-					isBanned = true;
-				} catch (...) {
-					isBanned = false;
-				}
-
-				if (isBanned){
-					delete res;
-					return ACCOUNTNOTACTIVE;
-				}
-
-				String forSalt = forumSalt;
-				Database::escapeString(forSalt);
-
-				query2 << "SELECT MD5(CONCAT(MD5(\'" + password + "\'), \'" + forSalt + "\'))";
-				ResultSet* res2 = ForumsDatabase::instance()->executeQuery(query2);
-
-				if (res2->next()){
-					String tempPass = res2->getString(0);
-
-					if (tempPass == forumPass){
-						delete res;
-						delete res2;
-						return ACCOUNTOK; // Good Account
-					} else {
-						return ACCOUNTBADPW; // Bad Password
-					}
-				}
-				delete res2;
-			}
-
-			delete res;
-
-			return ACCOUNTDOESNTEXIST;
-		} catch(DatabaseException& e) {
-			System::out << e.getMessage() << endl;
-			return ACCOUNTINUSE;
-		}
-
-	}
-
-	void login(LoginClient* client) {
-		if (accountID > 0) {
-			//uint32 sessionKey = System::random();
-			uint32 sessionKey = 0; //temp until we store the session key in the db and check on zone server
-			Message* lct = new LoginClientToken(username, sessionKey, accountID, stationID);
-			client->sendMessage(lct);
-
-			//System::out << "send client token" << endl;
-			//send the sessionkey to the DB here
-
-			loadGalaxies(client);
-
-			CharacterList characters(accountID);
-
-			Message* eci = new EnumerateCharacterID(&characters);
-			client->sendMessage(eci);
-
-			//System::out << "sent character list" << endl;
-		}
-	}
-
-	void loadGalaxies(LoginClient* client) {
-		GalaxyList galaxies;
-		uint32 galaxyCount = galaxies.size();
-
-		LoginEnumCluster* lec = new LoginEnumCluster(galaxyCount);
-		LoginClusterStatus* lcs = new LoginClusterStatus(galaxyCount);
-
-	    while (galaxies.next()) {
-	    	uint32 galaxyID = galaxies.getGalaxyID();
-
-	    	String name;
-	    	galaxies.getGalaxyName(name);
-
-	    	lec->addGalaxy(galaxyID, name);
-
-   		    String address;
-	    	galaxies.getGalaxyAddress(address);
-
-	    	lcs->addGalaxy(galaxyID, address, galaxies.getGalaxyPort(), galaxies.getGalaxyPingPort());
-	    }
-
-		client->sendMessage(lec);
-		client->sendMessage(lcs);
-	}
+	/**
+	 * Sends a message containing information about a ban to the client.
+	 * @param client The client that will receive the information about the ban.
+	 * @param banID The ban id of the ban to send information about.
+	 */
+	void sendBanMessageTo(LoginClient* client, uint32 banID);
 
 	friend class AccountVersionMessage;
 };

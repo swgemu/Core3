@@ -57,17 +57,6 @@ class LoginPacketHandler : public Logger {
 	LoginServer* server;
 	ConfigManager* configManager;
 
-
-public:
-
-	static const int ACCOUNTOK = 0;
-	static const int ACCOUNTINUSE = 1;
-	static const int ACCOUNTBADPW = 2;
-	static const int ACCOUNTBANNED = 3;
-	static const int ACCOUNTAUTOREGDISABLED = 4;
-	static const int ACCOUNTDOESNTEXIST = 5;
-	static const int ACCOUNTNOTACTIVE = 6;
-
 public:
 
 	LoginPacketHandler() : Logger() {
