@@ -12,7 +12,9 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/objects/creature/trainer/TrainerCreature.h"
+#include "server/zone/objects/creature/informant/InformantCreature.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -351,7 +353,7 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 	StringBuffer query;
 	query << "SELECT * FROM mission_manager_npcs WHERE zoneid = " << planetid << ";";
 
-	int i = 0;
+	//int i = 0;
 
 	try {
 		result = ServerDatabase::instance()->executeQuery(query);
@@ -396,6 +398,10 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 					aiAgent->setRespawnTimer(60);
 					aiAgent->setDespawnOnNoPlayerInRange(false);
 
+					NameManager* nm = processor->getNameManager();
+					if (nm != NULL)
+						aiAgent->setCustomObjectName(nm->makeCreatureName(true), false);
+
 					PlanetManager* pmng = zone->getPlanetManager();
 
 					if (pmng != NULL)
@@ -403,7 +409,7 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 				}
 			}
 
-			++i;
+			//++i;
 		}
 
 	} catch (Exception& e) {
@@ -412,7 +418,54 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 		error("unreported exception caught in CreatureManagerImplementation::loadMissionSpawns()");
 	}
 
-	info("mission npcs spawned: " + String::valueOf(i), true);
+	//info("mission npcs spawned: " + String::valueOf(i), true);
+
+	delete result;
+}
+
+void CreatureManagerImplementation::loadInformants() {
+	info("loading informants...", true);
+
+	int planetid = zone->getZoneID();
+
+	ResultSet* result;
+	StringBuffer query;
+	query << "SELECT * FROM mission_manager_informants WHERE planet = " << planetid << ";";
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		while (result->next()) {
+			uint64 cell = result->getUnsignedLong(2);
+			float x = result->getFloat(3);
+			float y = result->getFloat(4);
+			float z = result->getFloat(5);
+			float oY = result->getFloat(6);
+			float oW = result->getFloat(7);
+			int level = result->getInt(8);
+
+			InformantCreature* informant = NULL;
+			ManagedReference<CreatureObject*> informantCreature = NULL;
+
+			// is this the only informant CRC?
+			informantCreature = spawnCreature(String("object/mobile/dressed_hutt_informant_quest.iff").hashCode(), x, z, y, cell);
+
+			if (informantCreature->isInformantCreature()) {
+				informant = (InformantCreature*) informantCreature.get();
+				informant->setLevel(level);
+
+				informant->setDirection(oW, 0, oY, 0);
+			}
+
+			NameManager* nm = processor->getNameManager();
+			if (nm != NULL && informant != NULL)
+				informant->setCustomObjectName(nm->makeCreatureName(true), false);
+		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in CreatureManagerImplementation::loadInformants()");
+	}
 
 	delete result;
 }

@@ -58,6 +58,19 @@ void Observable::dropObserver(unsigned int eventType, Observer* observer) {
 		((ObservableImplementation*) _impl)->dropObserver(eventType, observer);
 }
 
+int Observable::getObserverCount(unsigned int eventType) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addUnsignedIntParameter(eventType);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ObservableImplementation*) _impl)->getObserverCount(eventType);
+}
+
 /*
  *	ObservableImplementation
  */
@@ -147,6 +160,11 @@ void ObservableImplementation::dropObserver(unsigned int eventType, Observer* ob
 	(&observerEventMap)->dropObserver(eventType, observer);
 }
 
+int ObservableImplementation::getObserverCount(unsigned int eventType) {
+	// server/zone/objects/scene/Observable.idl(72):  		return observerEventMap.getObserverCount(eventType);
+	return (&observerEventMap)->getObserverCount(eventType);
+}
+
 /*
  *	ObservableAdapter
  */
@@ -167,6 +185,9 @@ Packet* ObservableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 8:
 		dropObserver(inv->getUnsignedIntParameter(), (Observer*) inv->getObjectParameter());
 		break;
+	case 9:
+		resp->insertSignedInt(getObserverCount(inv->getUnsignedIntParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -184,6 +205,10 @@ void ObservableAdapter::registerObserver(unsigned int eventType, Observer* obser
 
 void ObservableAdapter::dropObserver(unsigned int eventType, Observer* observer) {
 	((ObservableImplementation*) impl)->dropObserver(eventType, observer);
+}
+
+int ObservableAdapter::getObserverCount(unsigned int eventType) {
+	return ((ObservableImplementation*) impl)->getObserverCount(eventType);
 }
 
 /*

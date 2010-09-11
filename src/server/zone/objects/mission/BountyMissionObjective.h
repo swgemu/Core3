@@ -83,6 +83,20 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class AiAgent;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -92,20 +106,6 @@ class SharedObjectTemplate;
 } // namespace server
 
 using namespace server::zone::templates;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace area {
-
-class MissionSpawnActiveArea;
-
-} // namespace area
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::area;
 
 #include "server/zone/templates/TemplateReference.h"
 
@@ -128,9 +128,11 @@ public:
 
 	void complete();
 
-	void destroyObjectFromDatabase();
+	void spawnTarget(int zoneID);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+
+	void setNpcTemplateToSpawn(SharedObjectTemplate* sp);
 
 protected:
 	BountyMissionObjective(DummyConstructorParameter* param);
@@ -153,6 +155,10 @@ namespace objects {
 namespace mission {
 
 class BountyMissionObjectiveImplementation : public MissionObjectiveImplementation {
+protected:
+	TemplateReference<SharedObjectTemplate*> npcTemplateToSpawn;
+
+	ManagedReference<AiAgent* > npcTarget;
 
 public:
 	BountyMissionObjectiveImplementation(MissionObject* mission);
@@ -169,9 +175,11 @@ public:
 
 	void complete();
 
-	void destroyObjectFromDatabase();
+	void spawnTarget(int zoneID);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+
+	void setNpcTemplateToSpawn(SharedObjectTemplate* sp);
 
 	BountyMissionObjective* _this;
 
@@ -220,7 +228,7 @@ public:
 
 	void complete();
 
-	void destroyObjectFromDatabase();
+	void spawnTarget(int zoneID);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 

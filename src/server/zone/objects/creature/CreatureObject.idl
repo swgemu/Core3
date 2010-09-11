@@ -1273,5 +1273,9 @@ class CreatureObject extends TangibleObject {
 	public abstract boolean isAiAgent() {
 		return false;
 	}
+	
+	public abstract boolean isInformantCreature() {
+		return false;
+	}
 
 }

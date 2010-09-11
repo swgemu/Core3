@@ -278,6 +278,8 @@ public:
 
 	static const int JUNKDEALERCREATURE = 0x40C;
 
+	static const int INFORMANTCREATURE = 0x40D;
+
 	static const int INTANGIBLE = 0x800;
 
 	static const int DRAFTSCHEMATIC = 0x801;
@@ -1160,6 +1162,8 @@ public:
 	static const int SHUTTLECREATURE = 0x40B;
 
 	static const int JUNKDEALERCREATURE = 0x40C;
+
+	static const int INFORMANTCREATURE = 0x40D;
 
 	static const int INTANGIBLE = 0x800;
 

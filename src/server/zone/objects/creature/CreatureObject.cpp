@@ -2719,6 +2719,18 @@ bool CreatureObject::isAiAgent() {
 		return ((CreatureObjectImplementation*) _impl)->isAiAgent();
 }
 
+bool CreatureObject::isInformantCreature() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 207);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isInformantCreature();
+}
+
 /*
  *	CreatureObjectImplementation
  */
@@ -3521,6 +3533,11 @@ bool CreatureObjectImplementation::isAiAgent() {
 	return false;
 }
 
+bool CreatureObjectImplementation::isInformantCreature() {
+	// server/zone/objects/creature/CreatureObject.idl(1278):  		return false;
+	return false;
+}
+
 /*
  *	CreatureObjectAdapter
  */
@@ -4137,6 +4154,9 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 207:
 		resp->insertBoolean(isAiAgent());
+		break;
+	case 208:
+		resp->insertBoolean(isInformantCreature());
 		break;
 	default:
 		return NULL;
@@ -4951,6 +4971,10 @@ bool CreatureObjectAdapter::isCreature() {
 
 bool CreatureObjectAdapter::isAiAgent() {
 	return ((CreatureObjectImplementation*) impl)->isAiAgent();
+}
+
+bool CreatureObjectAdapter::isInformantCreature() {
+	return ((CreatureObjectImplementation*) impl)->isInformantCreature();
 }
 
 /*

@@ -128,8 +128,6 @@ public:
 
 	void complete();
 
-	void destroyObjectFromDatabase();
-
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 protected:
@@ -169,8 +167,6 @@ public:
 	void abort();
 
 	void complete();
-
-	void destroyObjectFromDatabase();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -220,8 +216,6 @@ public:
 	void abort();
 
 	void complete();
-
-	void destroyObjectFromDatabase();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 

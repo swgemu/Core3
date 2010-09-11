@@ -99,6 +99,9 @@ class PlanetManager extends ManagedObject implements Logger {
 	@dereferenced
 	protected transient MissionTargetMap reconLocs;
 	
+	@dereferenced
+	protected transient MissionTargetMap informants;
+	
 	public PlanetManager(Zone planet, ZoneProcessServerImplementation srv) {
 		zone = planet;
 		server = srv;
@@ -208,6 +211,15 @@ class PlanetManager extends ManagedObject implements Logger {
 	@local
 	public MissionTargetMap getReconLocs() {
 		return reconLocs;
+	}
+	
+	public void addInformant(SceneObject obj) {
+		informants.add(obj);
+	}
+	
+	@local
+	public MissionTargetMap getInformants() {
+		return informants;
 	}
 	
 	/*public Region getRegion(final string regionName) {

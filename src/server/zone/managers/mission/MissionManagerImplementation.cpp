@@ -15,6 +15,7 @@
 #include "server/zone/objects/mission/EntertainerMissionObjective.h"
 #include "server/zone/objects/mission/HuntingMissionObjective.h"
 #include "server/zone/objects/mission/ReconMissionObjective.h"
+#include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/managers/resource/ResourceManager.h"
@@ -54,6 +55,28 @@ void MissionManagerImplementation::loadLairObjectsToSpawn() {
 	/*StringBuffer msg;
 	msg << "loaded " << lairObjectTemplatesToSpawn.size() << " lairs to spawn";
 	info(msg.toString(), true);*/
+}
+
+void MissionManagerImplementation::loadNpcObjectsToSpawn() {
+	info("loading npc objects to spawn...", true);
+
+	String query = "SELECT * FROM mission_manager_spawn_bounty";
+
+	ResultSet* res = NULL;
+
+	try {
+		res = ServerDatabase::instance()->executeQuery(query);
+
+		while (res->next()) {
+			String templateName = res->getString(1);
+
+			npcObjectTemplatesToSpawn.add(templateName.hashCode());
+		}
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in MissionManagerImplementation::loadNpcObjectsToSpawn()\n");
+	}
 }
 
 void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
@@ -108,14 +131,15 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 		return;
 	}
 
-	if (mission->isSurveyMission()) {
+	// why are we limiting to one survey mission?
+	/*if (mission->isSurveyMission()) {
 		if (hasSurveyMission(player, mission->getTargetName())) {
 			ParameterizedStringId stringId("mission/mission_generic", "npc_job_request_already_have");
 			player->sendSystemMessage(stringId);
 
 			return;
 		}
-	}
+	}*/
 
 	missionBag->removeObject(mission);
 
@@ -213,6 +237,16 @@ void MissionManagerImplementation::createReconMissionObjectives(MissionObject* m
 	objective->activate();
 }
 
+void MissionManagerImplementation::createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	ManagedReference<BountyMissionObjective*> objective = new BountyMissionObjective(mission);
+	objective->setNpcTemplateToSpawn(mission->getTargetTemplate());
+
+	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
+
+	mission->setMissionObjective(objective);
+	objective->activate();
+}
+
 void MissionManagerImplementation::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
 	uint32 missionType = mission->getTypeCRC();
 
@@ -231,6 +265,9 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 		break;
 	case MissionObject::RECON:
 		createReconMissionObjectives(mission, missionTerminal, player);
+		break;
+	case MissionObject::BOUNTY:
+		createBountyMissionObjectives(mission, missionTerminal, player);
 		break;
 	default:
 		break;
@@ -261,38 +298,42 @@ void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, Pl
 
 void MissionManagerImplementation::populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
 	SceneObject* missionBag = player->getSlottedObject("mission_bag");
+	int bagSize = missionBag->getContainerObjectsSize();
 
-	for (int i = 0; i < missionBag->getContainerObjectsSize(); ++i) {
+	for (int i = 0; i < bagSize; ++i) {
 		MissionObject* mission = (MissionObject*) missionBag->getContainerObject(i);
-		//randomizeDestroyMission(player, mission);
 
 		// TODO: make mission distribution function more like live
 		if (missionTerminal->isGeneralTerminal()) {
-			if (System::random(1) == 0)
+			if (i < bagSize / 2)
 				randomizeDestroyMission(player, mission);
 			else
 				randomizeDeliverMission(player, mission);
 		} else if (missionTerminal->isArtisanTerminal()) {
-			if (System::random(1) == 0)
+			if (i < bagSize / 2)
 				randomizeSurveyMission(player, mission);
 			else
 				randomizeCraftingMission(player, mission);
 		} else if (missionTerminal->isEntertainerTerminal()) {
 			// TODO: implement entertainer missions after entertainer is implemented
-			//randomizeEntertainerMission(player, mission);
-			mission->setTypeCRC(0);
+			/*randomizeEntertainerMission(player, mission);if (!dancing)
+			if (i < bagSize / 2)
+				mission->setTypeCRC(MissionObject::MUSICIAN);
+			else
+				mission->setTypeCRC(MissionObject::DANCER);*/
+			mission->setTypeCRC(0); // missions won't show on terminals
 		} else if (missionTerminal->isImperialTerminal()) {
-			if (System::random(1) == 0)
+			if (i < bagSize / 2)
 				randomizeImperialDestroyMission(player, mission);
 			else
 				randomizeImperialDeliverMission(player, mission);
 		} else if (missionTerminal->isRebelTerminal()) {
-			if (System::random(1) == 0)
+			if (i < bagSize / 2)
 				randomizeRebelDestroyMission(player, mission);
 			else
 				randomizeRebelDeliverMission(player, mission);
 		} else if (missionTerminal->isScoutTerminal()) {
-			if (System::random(1) == 0)
+			if (i < bagSize / 2)
 				randomizeReconMission(player, mission);
 			else
 				randomizeHuntingMission(player, mission);
@@ -414,8 +455,47 @@ void MissionManagerImplementation::randomizeSurveyMission(PlayerCreature* player
 }
 
 void MissionManagerImplementation::randomizeBountyMission(PlayerCreature* player, MissionObject* mission) {
-	// TODO: add bounty targets (don't just overload destroy)
-	randomizeDestroyMission(player, mission);
+	int zoneID = player->getZone()->getZoneID();
+
+	// TODO: switch difficulties in here
+	if (!player->hasSkillBox("combat_bountyhunter_novice")) {
+		mission->setTypeCRC(0);
+		return;
+	}
+
+	uint32 templateCRC = npcObjectTemplatesToSpawn.get(System::random(npcObjectTemplatesToSpawn.size() - 1));
+
+	if (templateCRC == 0) {
+		mission->setTypeCRC(0);
+		return;
+	}
+
+	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(templateCRC);
+
+	if (templateObject == NULL) {
+		mission->setTypeCRC(0);
+		error("incorrect template object in randomizeBountyMission " + String::valueOf(templateCRC));
+		return;
+	}
+
+	NameManager* nm = processor->getNameManager();
+
+	int randTexts = System::random(24) + 1;
+
+	mission->setMissionNumber(randTexts);
+
+	Vector3 startPos = player->getCoordinate(System::random(1000) + 1000, (float)System::random(360));
+	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
+	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getPositionZ());
+	mission->setCreatorName(nm->makeCreatureName());
+
+	mission->setMissionTargetName("???");
+	mission->setTargetTemplate(templateObject);
+
+	mission->setRewardCredits(500 + System::random(500));
+	mission->setMissionDifficulty(1);
+	mission->setMissionTitle("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "t");
+	mission->setMissionDescription("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::BOUNTY);
 }
@@ -473,9 +553,8 @@ void MissionManagerImplementation::randomizeCraftingMission(PlayerCreature* play
 	 * onConversation() --
 	 *   check for completed item, success if there
 	 */
-	randomizeDestroyMission(player, mission);
-
-	mission->setTypeCRC(MissionObject::CRAFTING);
+	//mission->setTypeCRC(MissionObject::CRAFTING);
+	mission->setTypeCRC(0);
 }
 
 void MissionManagerImplementation::randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission) {
@@ -533,6 +612,7 @@ void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* playe
 	// TODO: randomize difficulty (weighted by what?) once more missions are in the db
 	HuntingTargetEntry* entry = pmng->getHuntingTargetTemplate(1);
 	if (entry == NULL) {
+		System::out << "NULL Hunting entry!" << endl;
 		mission->setTypeCRC(0);
 		return;
 	}
@@ -567,12 +647,14 @@ void MissionManagerImplementation::randomizeReconMission(PlayerCreature* player,
 
 	MissionTargetMap* reconlocs = pmng->getReconLocs();
 	if (reconlocs->size() <= 0) {
+		System::out << "No recon locations!" << endl;
 		mission->setTypeCRC(0);
 		return;
 	}
 
-	SceneObject* target = reconlocs->getRandomTarget(player, 3);
+	SceneObject* target = reconlocs->getRandomTarget(player, 2);
 	if (target == NULL) {
+		System::out << "Failed to get recon target!" << endl;
 		mission->setTypeCRC(0);
 		return;
 	}

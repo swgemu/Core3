@@ -36,6 +36,8 @@ public:
 	void dropObserver(uint32 eventType, Observer* observer);
 
 	SortedVector<ManagedReference<Observer*> >* getObservers(uint32 eventType);
+
+	int getObserverCount(uint32 eventType);
 };
 
 

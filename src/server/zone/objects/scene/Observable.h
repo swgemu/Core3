@@ -34,6 +34,8 @@ public:
 
 	void dropObserver(unsigned int eventType, Observer* observer);
 
+	int getObserverCount(unsigned int eventType);
+
 protected:
 	Observable(DummyConstructorParameter* param);
 
@@ -67,6 +69,8 @@ public:
 	void registerObserver(unsigned int eventType, Observer* observer);
 
 	void dropObserver(unsigned int eventType, Observer* observer);
+
+	int getObserverCount(unsigned int eventType);
 
 	Observable* _this;
 
@@ -112,6 +116,8 @@ public:
 	void registerObserver(unsigned int eventType, Observer* observer);
 
 	void dropObserver(unsigned int eventType, Observer* observer);
+
+	int getObserverCount(unsigned int eventType);
 
 };
 
