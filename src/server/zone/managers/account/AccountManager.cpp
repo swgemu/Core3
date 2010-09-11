@@ -50,6 +50,44 @@ void AccountManager::unregisterSession(ZoneClientSession* client) {
 		((AccountManagerImplementation*) _impl)->unregisterSession(client);
 }
 
+int AccountManager::getOnlineCharactersPerAccount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((AccountManagerImplementation*) _impl)->getOnlineCharactersPerAccount();
+}
+
+void AccountManager::setOnlineCharactersPerAccount(int total) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addSignedIntParameter(total);
+
+		method.executeWithVoidReturn();
+	} else
+		((AccountManagerImplementation*) _impl)->setOnlineCharactersPerAccount(total);
+}
+
+int AccountManager::getTotalOnlineCharacters(unsigned int accountid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addUnsignedIntParameter(accountid);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((AccountManagerImplementation*) _impl)->getTotalOnlineCharacters(accountid);
+}
+
 /*
  *	AccountManagerImplementation
  */
@@ -117,23 +155,36 @@ void AccountManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("AccountManager");
 
+	addSerializableVariable("onlineCharactersPerAccount", &onlineCharactersPerAccount);
 	addSerializableVariable("accountMap", &accountMap);
 }
 
 AccountManagerImplementation::AccountManagerImplementation(ZoneServer* zserv) {
 	_initializeImplementation();
-	// server/zone/managers/account/AccountManager.idl(17):  		Logger.setLoggingName("AccountManager");
+	// server/zone/managers/account/AccountManager.idl(19):  		Logger.setLoggingName("AccountManager");
 	Logger::setLoggingName("AccountManager");
-	// server/zone/managers/account/AccountManager.idl(18):  		Logger.setLogging(true);
+	// server/zone/managers/account/AccountManager.idl(20):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/account/AccountManager.idl(19):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/account/AccountManager.idl(21):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/account/AccountManager.idl(21):  		accountMap.setNullValue(null);
+	// server/zone/managers/account/AccountManager.idl(23):  		accountMap.setNullValue(null);
 	(&accountMap)->setNullValue(NULL);
-	// server/zone/managers/account/AccountManager.idl(22):  		accountMap.setNoDuplicateInsertPlan();
+	// server/zone/managers/account/AccountManager.idl(24):  		accountMap.setNoDuplicateInsertPlan();
 	(&accountMap)->setNoDuplicateInsertPlan();
-	// server/zone/managers/account/AccountManager.idl(24):  		zoneServer = zserv;
+	// server/zone/managers/account/AccountManager.idl(26):  		zoneServer = zserv;
 	zoneServer = zserv;
+	// server/zone/managers/account/AccountManager.idl(28):  		onlineCharactersPerAccount = 1;
+	onlineCharactersPerAccount = 1;
+}
+
+int AccountManagerImplementation::getOnlineCharactersPerAccount() {
+	// server/zone/managers/account/AccountManager.idl(46):  		return onlineCharactersPerAccount;
+	return onlineCharactersPerAccount;
+}
+
+void AccountManagerImplementation::setOnlineCharactersPerAccount(int total) {
+	// server/zone/managers/account/AccountManager.idl(50):  		onlineCharactersPerAccount = total;
+	onlineCharactersPerAccount = total;
 }
 
 /*
@@ -153,6 +204,15 @@ Packet* AccountManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case 7:
 		unregisterSession((ZoneClientSession*) inv->getObjectParameter());
 		break;
+	case 8:
+		resp->insertSignedInt(getOnlineCharactersPerAccount());
+		break;
+	case 9:
+		setOnlineCharactersPerAccount(inv->getSignedIntParameter());
+		break;
+	case 10:
+		resp->insertSignedInt(getTotalOnlineCharacters(inv->getUnsignedIntParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -166,6 +226,18 @@ void AccountManagerAdapter::registerSession(ZoneClientSession* client) {
 
 void AccountManagerAdapter::unregisterSession(ZoneClientSession* client) {
 	((AccountManagerImplementation*) impl)->unregisterSession(client);
+}
+
+int AccountManagerAdapter::getOnlineCharactersPerAccount() {
+	return ((AccountManagerImplementation*) impl)->getOnlineCharactersPerAccount();
+}
+
+void AccountManagerAdapter::setOnlineCharactersPerAccount(int total) {
+	((AccountManagerImplementation*) impl)->setOnlineCharactersPerAccount(total);
+}
+
+int AccountManagerAdapter::getTotalOnlineCharacters(unsigned int accountid) {
+	return ((AccountManagerImplementation*) impl)->getTotalOnlineCharacters(accountid);
 }
 
 /*

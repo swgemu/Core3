@@ -10,6 +10,8 @@ import server.zone.ZoneClientSession;
 class AccountManager extends ManagedObject implements Logger {
 	private transient ZoneServer zoneServer;
 	
+	private int onlineCharactersPerAccount;
+	
 	@dereferenced
 	private VectorMap<unsigned int, ZoneAccount> accountMap;
 	
@@ -22,6 +24,8 @@ class AccountManager extends ManagedObject implements Logger {
 		accountMap.setNoDuplicateInsertPlan();
 		
 		zoneServer = zserv;
+		
+		onlineCharactersPerAccount = 1;
 	}
 	
 	/**
@@ -37,4 +41,14 @@ class AccountManager extends ManagedObject implements Logger {
 	 * @param client The client that is being unregistered.
 	 */
 	public native void unregisterSession(ZoneClientSession client);
+	
+	public int getOnlineCharactersPerAccount() {
+		return onlineCharactersPerAccount;
+	}
+	
+	public void setOnlineCharactersPerAccount(int total) {
+		onlineCharactersPerAccount = total;
+	}
+	
+	public native int getTotalOnlineCharacters(unsigned int accountid);
 }
