@@ -146,6 +146,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
 				server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
+				server/zone/managers/account/AccountManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
 				server/zone/managers/loot/LootManager.cpp \
@@ -211,6 +212,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginServer.cpp \
+		server/login/objects/Account.cpp \
 		server/ping/PingServer.cpp \
 		server/status/StatusServer.cpp \
 		server/proxy/LoginProxyServer.cpp \
@@ -221,6 +223,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneMessageProcessorThread.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
+		server/zone/managers/account/AccountManagerImplementation.cpp \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
 		server/zone/managers/loot/LootManagerImplementation.cpp \
 		server/zone/managers/loot/lootgroup/LootGroupObjectImplementation.cpp \

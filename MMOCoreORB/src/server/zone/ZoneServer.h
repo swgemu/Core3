@@ -209,6 +209,20 @@ class MissionManager;
 
 using namespace server::zone::managers::mission;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace account {
+
+class AccountManager;
+
+} // namespace account
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::account;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -354,6 +368,8 @@ public:
 
 	FishingManager* getFishingManager();
 
+	AccountManager* getAccountManager();
+
 	ProfessionManager* getProfessionManager();
 
 	Time* getStartTimestamp();
@@ -421,6 +437,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<MissionManager* > missionManager;
 
 	ManagedReference<FishingManager* > fishingManager;
+
+	ManagedReference<AccountManager* > accountManager;
 
 	int totalSentPackets;
 
@@ -560,6 +578,8 @@ public:
 	BazaarManager* getBazaarManager();
 
 	FishingManager* getFishingManager();
+
+	AccountManager* getAccountManager();
 
 	ProfessionManager* getProfessionManager();
 
@@ -703,6 +723,8 @@ public:
 	BazaarManager* getBazaarManager();
 
 	FishingManager* getFishingManager();
+
+	AccountManager* getAccountManager();
 
 	void setServerName(const String& servername);
 
