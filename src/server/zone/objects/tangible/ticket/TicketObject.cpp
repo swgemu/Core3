@@ -188,6 +188,7 @@ TicketObjectImplementation::TicketObjectImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
+
 TicketObjectImplementation::~TicketObjectImplementation() {
 }
 

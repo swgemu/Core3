@@ -32,6 +32,7 @@ RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(D
 	_initializeImplementation();
 }
 
+
 RecreationBuildingObjectImplementation::~RecreationBuildingObjectImplementation() {
 }
 

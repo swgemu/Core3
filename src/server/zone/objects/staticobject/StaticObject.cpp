@@ -53,6 +53,7 @@ StaticObjectImplementation::StaticObjectImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
+
 StaticObjectImplementation::~StaticObjectImplementation() {
 }
 

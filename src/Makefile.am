@@ -92,6 +92,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/creature/buffs/Buff.cpp \
 				server/zone/objects/creature/buffs/DelayedBuff.cpp \
 				server/zone/objects/creature/buffs/SpiceBuff.cpp \
+				server/zone/objects/creature/buffs/PowerBoostBuff.cpp \
 				server/zone/objects/creature/buffs/DurationBuff.cpp \
 				server/zone/objects/creature/buffs/SpiceDownerBuff.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
@@ -299,6 +300,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
 		server/zone/objects/creature/buffs/BuffImplementation.cpp \
 		server/zone/objects/creature/buffs/SpiceBuffImplementation.cpp \
+		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/informant/InformantCreatureImplementation.cpp \

@@ -106,6 +106,7 @@ VehicleControlDeviceImplementation::VehicleControlDeviceImplementation(DummyCons
 	_initializeImplementation();
 }
 
+
 VehicleControlDeviceImplementation::~VehicleControlDeviceImplementation() {
 }
 

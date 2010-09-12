@@ -117,6 +117,7 @@ InformantCreatureImplementation::InformantCreatureImplementation(DummyConstructo
 	_initializeImplementation();
 }
 
+
 InformantCreatureImplementation::~InformantCreatureImplementation() {
 }
 

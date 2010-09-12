@@ -118,6 +118,7 @@ WearableObjectImplementation::WearableObjectImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
+
 WearableObjectImplementation::~WearableObjectImplementation() {
 }
 

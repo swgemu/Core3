@@ -145,6 +145,7 @@ CreatureManagerImplementation::CreatureManagerImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
+
 CreatureManagerImplementation::~CreatureManagerImplementation() {
 }
 

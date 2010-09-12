@@ -2295,6 +2295,7 @@ SceneObjectImplementation::SceneObjectImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
+
 SceneObjectImplementation::~SceneObjectImplementation() {
 	SceneObjectImplementation::finalize();
 }

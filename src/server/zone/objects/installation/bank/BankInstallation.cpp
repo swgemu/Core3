@@ -69,6 +69,7 @@ BankInstallationImplementation::BankInstallationImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
+
 BankInstallationImplementation::~BankInstallationImplementation() {
 }
 

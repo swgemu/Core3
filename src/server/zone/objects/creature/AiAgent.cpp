@@ -830,6 +830,7 @@ AiAgentImplementation::AiAgentImplementation(DummyConstructorParameter* param) :
 	_initializeImplementation();
 }
 
+
 AiAgentImplementation::~AiAgentImplementation() {
 }
 

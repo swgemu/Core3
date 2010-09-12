@@ -2739,6 +2739,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
+
 CreatureObjectImplementation::~CreatureObjectImplementation() {
 	CreatureObjectImplementation::finalize();
 }

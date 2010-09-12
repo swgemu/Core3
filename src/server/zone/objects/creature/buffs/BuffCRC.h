@@ -158,6 +158,7 @@ public:
 	static const uint32 FORCE_RANK_SERENITY = 0xA09E5934;
 	static const uint32 SKILL_BUFF_POLEARM_ACCURACY = 0xF0C5EEED;
 	static const uint32 SKILL_BUFF_POLEARM_SPEED = 0x6F675FB6;
+	static const uint32 SKILL_BUFF_POWERBOOST = 0x7C0CCF17;
 
 	uint32 static getMedicalBuff(uint8 attribute) {
 		uint32 buffCRC = MEDICAL_ENHANCE_HEALTH;
