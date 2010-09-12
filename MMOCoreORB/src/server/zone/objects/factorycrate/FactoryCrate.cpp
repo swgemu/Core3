@@ -218,6 +218,7 @@ FactoryCrateImplementation::FactoryCrateImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
+
 FactoryCrateImplementation::~FactoryCrateImplementation() {
 }
 

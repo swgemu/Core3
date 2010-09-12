@@ -70,6 +70,7 @@ BadgeActiveAreaImplementation::BadgeActiveAreaImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
+
 BadgeActiveAreaImplementation::~BadgeActiveAreaImplementation() {
 }
 

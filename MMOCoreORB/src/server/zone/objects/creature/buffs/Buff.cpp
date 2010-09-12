@@ -451,6 +451,7 @@ BuffImplementation::BuffImplementation(DummyConstructorParameter* param) : Manag
 	_initializeImplementation();
 }
 
+
 BuffImplementation::~BuffImplementation() {
 }
 

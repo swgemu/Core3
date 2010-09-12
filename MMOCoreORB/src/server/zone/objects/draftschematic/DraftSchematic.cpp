@@ -392,6 +392,7 @@ DraftSchematicImplementation::DraftSchematicImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
+
 DraftSchematicImplementation::~DraftSchematicImplementation() {
 }
 

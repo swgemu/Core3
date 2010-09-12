@@ -753,6 +753,7 @@ StructureObjectImplementation::StructureObjectImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
+
 StructureObjectImplementation::~StructureObjectImplementation() {
 }
 

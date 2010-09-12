@@ -45,14 +45,17 @@ which carries forward this exception.
 #ifndef POWERBOOSTCOMMAND_H_
 #define POWERBOOSTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
+
+#include "server/zone/objects/creature/buffs/PowerBoostBuff.h"
 
 class PowerBoostCommand : public QueueCommand {
 public:
 
 	PowerBoostCommand(const String& name, ZoneProcessServerImplementation* server)
 		: QueueCommand(name, server) {
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -60,8 +63,44 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		if(!creature->isMeditating()){
+			creature->sendSystemMessage("teraskasi", "powerboost_fail");
+			return GENERALERROR;
+		}
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		uint32 buffcrc = BuffCRC::SKILL_BUFF_POWERBOOST;
+
+		if(player->hasBuff(buffcrc)){
+			if(player->isMeditating()){
+				player->sendSystemMessage("teraskasi", "powerboost_active");
+				return GENERALERROR;
+			}
+		}
+
+		if(player->isMeditating()){
+			int baseMind = player->getBaseHAM(CreatureAttribute::MIND);
+
+			float hamBonus = (float)baseMind * 0.5;
+			int pbBonus = (int)hamBonus;
+
+			int meditateMod = player->getSkillMod("meditate");
+			int duration = 300 + (3 * meditateMod);
+
+			if(player->getHAM(CreatureAttribute::MIND) <= pbBonus){
+				player->sendSystemMessage("teraskasi", "powerboost_mind");
+				return GENERALERROR;
+			}
+
+			player->addMaxHAM(CreatureAttribute::MIND, -pbBonus, true);
+			const String buffname = "skill.buff.powerboost";
+			ManagedReference<Buff*> buff = new PowerBoostBuff(player, buffname, buffname.hashCode(), pbBonus, duration);
+			player->addBuff(buff);
+		}
 
 		return SUCCESS;
 	}

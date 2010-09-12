@@ -115,6 +115,7 @@ CityVoteTerminalImplementation::CityVoteTerminalImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
+
 CityVoteTerminalImplementation::~CityVoteTerminalImplementation() {
 }
 

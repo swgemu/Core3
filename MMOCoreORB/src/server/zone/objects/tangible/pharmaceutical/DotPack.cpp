@@ -227,6 +227,7 @@ DotPackImplementation::DotPackImplementation(DummyConstructorParameter* param) :
 	_initializeImplementation();
 }
 
+
 DotPackImplementation::~DotPackImplementation() {
 }
 

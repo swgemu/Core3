@@ -121,6 +121,7 @@ StimPackImplementation::StimPackImplementation(DummyConstructorParameter* param)
 	_initializeImplementation();
 }
 
+
 StimPackImplementation::~StimPackImplementation() {
 }
 

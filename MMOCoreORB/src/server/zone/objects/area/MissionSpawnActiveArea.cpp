@@ -60,6 +60,7 @@ MissionSpawnActiveAreaImplementation::MissionSpawnActiveAreaImplementation(Dummy
 	_initializeImplementation();
 }
 
+
 MissionSpawnActiveAreaImplementation::~MissionSpawnActiveAreaImplementation() {
 }
 

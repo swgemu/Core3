@@ -88,6 +88,7 @@ GuildTerminalImplementation::GuildTerminalImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
+
 GuildTerminalImplementation::~GuildTerminalImplementation() {
 }
 

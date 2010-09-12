@@ -128,6 +128,7 @@ InstallationDeedImplementation::InstallationDeedImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
+
 InstallationDeedImplementation::~InstallationDeedImplementation() {
 }
 

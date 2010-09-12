@@ -76,6 +76,7 @@ SpiceBuffImplementation::SpiceBuffImplementation(DummyConstructorParameter* para
 	_initializeImplementation();
 }
 
+
 SpiceBuffImplementation::~SpiceBuffImplementation() {
 }
 

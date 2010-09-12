@@ -70,6 +70,7 @@ SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(Dummy
 	_initializeImplementation();
 }
 
+
 SuiCharacterBuilderBoxImplementation::~SuiCharacterBuilderBoxImplementation() {
 }
 

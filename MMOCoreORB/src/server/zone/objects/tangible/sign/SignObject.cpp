@@ -30,6 +30,7 @@ SignObjectImplementation::SignObjectImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
+
 SignObjectImplementation::~SignObjectImplementation() {
 }
 

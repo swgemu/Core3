@@ -232,6 +232,7 @@ TrainerCreatureImplementation::TrainerCreatureImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
+
 TrainerCreatureImplementation::~TrainerCreatureImplementation() {
 }
 
