@@ -64,6 +64,8 @@ class DraftSchematic extends IntangibleObject {
 	/// SharedDraftSchematicTemplate
 	private transient DraftSchematicObjectTemplate schematicTemplate;
 	
+	private int useCount;
+	
 	public DraftSchematic() {	
 		Logger.setLoggingName("DraftSchematic");
 	}
@@ -202,4 +204,20 @@ class DraftSchematic extends IntangibleObject {
 	public native unsigned int getTanoCRC();
 
 	public native string getGroupName();
+	
+	public int getUseCount() {
+		return useCount;
+	}
+	
+	public void setUseCount(int count) {
+		useCount = count;
+	}
+	
+	public void decreaseUseCount(int count = 1) {
+		setUseCount(useCount - 1);
+	}
+	
+	public void increaseUseCount(int count) {
+		setUseCount(useCount + count);
+	}
 }

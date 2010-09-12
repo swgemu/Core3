@@ -37,6 +37,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
 
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 
@@ -61,6 +62,20 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	duelList.setNoDuplicateInsertPlan();
 
 	setLoggingName("PlayerCreature");
+
+	/**
+	 * Here we are loading the schematics based on the skills that the
+	 * player has, we do this incase we change the items
+	 * in the schematic group.
+	 */
+	ZoneServer* zoneServer = server->getZoneServer();
+	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+
+	SkillBoxList* playerSkillBoxList = getSkillBoxList();
+	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
+		SkillBox* skillBox = playerSkillBoxList->get(i);
+		professionManager->awardDraftSchematics(skillBox, getPlayerObject(), false);
+	}
 }
 
 void PlayerCreatureImplementation::finalize() {
