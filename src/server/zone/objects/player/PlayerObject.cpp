@@ -736,12 +736,12 @@ DraftSchematic* PlayerObject::getSchematic(int i) {
 		return ((PlayerObjectImplementation*) _impl)->getSchematic(i);
 }
 
-Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(Vector<unsigned int>* enabledTabs, int complexityLevel) {
+Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(PlayerCreature* player, Vector<unsigned int>* enabledTabs, int complexityLevel) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((PlayerObjectImplementation*) _impl)->filterSchematicList(enabledTabs, complexityLevel);
+		return ((PlayerObjectImplementation*) _impl)->filterSchematicList(player, enabledTabs, complexityLevel);
 }
 
 int PlayerObject::getFoodFilling() {
@@ -866,7 +866,6 @@ String PlayerObject::getCommandMessageString(unsigned int actionCRC) {
 PlayerObjectImplementation::PlayerObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {
 	PlayerObjectImplementation::finalize();

@@ -221,7 +221,12 @@ void ProfessionManager::awardSkillMods(SkillBox* skillBox, PlayerCreature* playe
 void ProfessionManager::awardDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
-	ManagedReference<CraftingManager* > craftingManager = player->getZoneServer()->getCraftingManager();
+	awardDraftSchematics(skillBox, playerObject, updateClient);
+}
+
+void ProfessionManager::awardDraftSchematics(SkillBox* skillBox, PlayerObject* playerObject, bool updateClient) {
+
+	ManagedReference<CraftingManager* > craftingManager = playerObject->getZoneServer()->getCraftingManager();
 	if(craftingManager == NULL)
 		return;
 

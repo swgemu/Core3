@@ -107,7 +107,7 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected SchematicList schematicList;
-	
+
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
 	public static final int ROLEPLAYER = 4;
@@ -426,7 +426,7 @@ class PlayerObject extends IntangibleObject {
 	
 	@local
 	@dereferenced
-	public native Vector<DraftSchematic> filterSchematicList(Vector<unsigned int> enabledTabs, int complexityLevel);
+	public native Vector<DraftSchematic> filterSchematicList(PlayerCreature player, Vector<unsigned int> enabledTabs, int complexityLevel);
 	
 	public int getFoodFilling() {
 		return foodFilling;

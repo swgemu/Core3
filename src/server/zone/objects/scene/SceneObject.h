@@ -886,6 +886,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isPlayerObject();
+
 	bool isCreatureObject();
 
 	bool isVehicleObject();
@@ -1775,6 +1777,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isPlayerObject();
+
 	virtual bool isCreatureObject();
 
 	virtual bool isVehicleObject();
@@ -2145,6 +2149,8 @@ public:
 	String getLoggingName();
 
 	bool isPlayerCreature();
+
+	bool isPlayerObject();
 
 	bool isCreatureObject();
 

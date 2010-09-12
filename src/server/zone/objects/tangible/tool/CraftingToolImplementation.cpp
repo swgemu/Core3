@@ -224,7 +224,7 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 		complexity = craftingStation->getComplexityLevel();
 
 	currentSchematicList.removeAll();
-	currentSchematicList = playerObject->filterSchematicList(getToolTabs(), complexity);
+	currentSchematicList = playerObject->filterSchematicList(player, getToolTabs(), complexity);
 
 	/// Packet Sending Start
 	/// DPlay9

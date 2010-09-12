@@ -422,46 +422,31 @@ void PlayerObjectImplementation::addSchematics(Vector<ManagedReference<DraftSche
 	if (schematics.size() == 0)
 		return;
 
-	if (notifyClient) {
-		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
-		msg->startUpdate(4);
+	Vector<ManagedReference<DraftSchematic* > > schematicsToSend;
+	for (int i = 0; i < schematics.size(); ++i) {
 
-		schematicList.add(schematics.get(0), msg, schematics.size());
-
-		for (int i = 1; i < schematics.size(); ++i)
-			schematicList.add(schematics.get(i), msg, 0);
-
-		msg->close();
-
-		sendMessage(msg);
-	} else {
-		for (int i = 0; i < schematics.size(); ++i)
-			schematicList.add(schematics.get(i));
+		/// If schematic is not already in the schematic list, we want to send it
+		/// if not, we don't want to send it to the datapad
+		if(!schematicList.contains(schematics.get(i)))
+			schematicsToSend.add(schematics.get(i));
 	}
-}
-
-void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
-
-	if (schematics.size() == 0)
-		return;
 
 	if (notifyClient) {
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
 		msg->startUpdate(4);
 
-		schematicList.remove(schematicList.find(schematics.get(0)), msg, schematics.size());
+		schematicList.add(schematicsToSend.get(0), msg, schematicsToSend.size());
 
-		for (int i = 1; i < schematics.size(); ++i)
-			schematicList.remove(schematicList.find(schematics.get(i)), msg, 0);
+		for (int i = 1; i < schematicsToSend.size(); ++i)
+			schematicList.add(schematicsToSend.get(i),  msg, 0);
 
 		msg->close();
 
 		sendMessage(msg);
-
 	} else {
 
-		for (int i = 0; i < schematics.size(); ++i)
-			schematicList.remove(schematicList.find(schematics.get(i)));
+		for (int i = 0; i < schematicsToSend.size(); ++i)
+			schematicList.add(schematicsToSend.get(i));
 
 	}
 }
@@ -469,6 +454,10 @@ void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftS
 void PlayerObjectImplementation::addSchematic(DraftSchematic* schematic, bool notifyClient) {
 	if (schematic == NULL)
 		return;
+
+	if(schematicList.updateUseCount(schematic)) {
+		return;
+	}
 
 	if (notifyClient) {
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
@@ -484,6 +473,84 @@ void PlayerObjectImplementation::addSchematic(DraftSchematic* schematic, bool no
 	}
 }
 
+void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
+
+	if (schematics.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(4);
+
+		schematicList.removeAll(msg);
+
+		msg->close();
+
+		sendMessage(msg);
+
+	} else {
+
+		schematicList.removeAll();
+	}
+
+	/**
+	 * Here we are loading the schematics based on the skills that the
+	 * player has, we do this incase we change the items
+	 * in the schematic group.
+	 */
+	ZoneServer* zoneServer = server->getZoneServer();
+	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+	PlayerCreature* player = (PlayerCreature*) getParentRecursively(SceneObject::PLAYERCREATURE);
+
+	if(player == NULL)
+		return;
+
+	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
+	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
+		SkillBox* skillBox = playerSkillBoxList->get(i);
+		professionManager->awardDraftSchematics(skillBox, _this, true);
+	}
+
+	schematicList.awardLimitedUseSchematics();
+}
+
+void PlayerObjectImplementation::removeSchematic(DraftSchematic* schematic, bool notifyClient) {
+	if (schematic == NULL)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(4);
+
+		schematicList.removeAll(msg);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		schematicList.removeAll();
+	}
+
+	/**
+	 * Here we are loading the schematics based on the skills that the
+	 * player has, we do this incase we change the items
+	 * in the schematic group.
+	 */
+	ZoneServer* zoneServer = server->getZoneServer();
+	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+	PlayerCreature* player = (PlayerCreature*) getParentRecursively(SceneObject::PLAYERCREATURE);
+
+	if(player == NULL)
+		return;
+
+	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
+	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
+		SkillBox* skillBox = playerSkillBoxList->get(i);
+		professionManager->awardDraftSchematics(skillBox, _this, true);
+	}
+
+	schematicList.awardLimitedUseSchematics();
+}
 void PlayerObjectImplementation::doDigest() {
 	if (!isDigesting())
 		return;
@@ -495,30 +562,12 @@ void PlayerObjectImplementation::doDigest() {
 		setDrinkFilling(drinkFilling - 1);
 }
 
-void PlayerObjectImplementation::removeSchematic(DraftSchematic* schematic, bool notifyClient) {
-	if (schematic == NULL)
-		return;
-System::out << schematic->getObjectNameStringIdName() << endl;
-	if (notifyClient) {
-		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
-		msg->startUpdate(4);
-
-		schematicList.remove(schematicList.find(schematic), msg, 1);
-
-		msg->close();
-
-		sendMessage(msg);
-	} else {
-		schematicList.remove(schematicList.find(schematic));
-	}
-}
-
 Vector<ManagedReference<DraftSchematic* > > PlayerObjectImplementation::filterSchematicList(
-		Vector<uint32>* enabledTabs, int complexityLevel) {
+		PlayerCreature* player, Vector<uint32>* enabledTabs, int complexityLevel) {
 
 	Locker _locker(_this);
 
-	return schematicList.filterSchematicList(enabledTabs, complexityLevel);
+	return schematicList.filterSchematicList(player, enabledTabs, complexityLevel);
 }
 
 void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient) {
