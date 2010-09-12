@@ -11,69 +11,72 @@
 #include "server/ServerCore.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 
-
-void SchematicList::getSchematicIDList(Vector<uint32>& schematics) {
-	for (int i = 0; i < vector.size(); ++i) {
-		DraftSchematic* schematic = vector.get(i);
-
-		uint32 crc = schematic->getSchematicID();
-
-		schematics.add(crc);
-	}
-}
-
 bool SchematicList::toString(String& str) {
-	Vector<uint32> names;
-	getSchematicIDList(names);
+	Vector<ManagedReference<DraftSchematic*> > schematics;
+	getLimitedUseSchematicList(schematics);
 
-	TypeInfo<uint32>::toString(&updateCounter, str);
-	names.toString(str);
+	TypeInfo<DraftSchematic*>::toString(&updateCounter, str);
+	schematics.toString(str);
 
 	return true;
 }
 
 bool SchematicList::toBinaryStream(ObjectOutputStream* stream) {
-	Vector<uint32> names;
-	getSchematicIDList(names);
+	Vector<ManagedReference<DraftSchematic*> > schematics;
+	getLimitedUseSchematicList(schematics);
 
-	TypeInfo<uint32>::toBinaryStream(&updateCounter, stream);
-	names.toBinaryStream(stream);
+	TypeInfo<DraftSchematic*>::toBinaryStream(&updateCounter, stream);
+	schematics.toBinaryStream(stream);
 
 	return true;
 }
 
 
 bool SchematicList::parseFromString(const String& str, int version) {
-	Vector<uint32> schematics;
+	Vector<ManagedReference<DraftSchematic*> > schematics;
 
-	TypeInfo<uint32>::parseFromString(&updateCounter, str, version);
+	TypeInfo<DraftSchematic*>::parseFromString(&updateCounter, str, version);
 	schematics.parseFromString(str, version);
 
-	loadFromSchematicIDs(schematics);
+	loadLimitedUseSchematics(schematics);
 
 	return true;
 }
 
 bool SchematicList::parseFromBinaryStream(ObjectInputStream* stream) {
-	Vector<uint32> schematics;
+	Vector<ManagedReference<DraftSchematic*> > schematics;
 
-	TypeInfo<uint32>::parseFromBinaryStream(&updateCounter, stream);
+	TypeInfo<DraftSchematic*>::parseFromBinaryStream(&updateCounter, stream);
 	schematics.parseFromBinaryStream(stream);
 
-	loadFromSchematicIDs(schematics);
+	loadLimitedUseSchematics(schematics);
 
 	return true;
 }
 
-void SchematicList::loadFromSchematicIDs(Vector<uint32>& schematics) {
-	ZoneServer* server = ServerCore::getZoneServer();
-	CraftingManager* craftingManager = server->getCraftingManager();
+void SchematicList::getLimitedUseSchematicList(Vector<ManagedReference<DraftSchematic*> >& schematics) {
+	for (int i = 0; i < vector.size(); ++i) {
+		DraftSchematic* schematic = vector.get(i);
+
+		if(schematic->getGroupName().isEmpty()) {
+			schematics.add(schematic);
+		}
+	}
+}
+
+void SchematicList::loadLimitedUseSchematics(Vector<ManagedReference<DraftSchematic*> >& schematics) {
 
 	for (int i = 0; i < schematics.size(); ++i) {
-		uint32 schematicID = schematics.get(i);
+		ManagedReference<DraftSchematic*>  schematic = schematics.get(i);
+		limitedUseSchematics.add(schematic);
+	}
+	awardLimitedUseSchematics();
+}
 
-		DraftSchematic* schematic = craftingManager->getSchematic(schematicID);
+void SchematicList::awardLimitedUseSchematics() {
 
+	for (int i = 0; i < limitedUseSchematics.size(); ++i) {
+		ManagedReference<DraftSchematic*>  schematic = limitedUseSchematics.get(i);
 		add(schematic);
 	}
 }
@@ -82,7 +85,10 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 
 	bool val = vector.add(schematic);
 
-	if (message != NULL) {
+	if(schematic->getGroupName().isEmpty())
+		limitedUseSchematics.add(schematic);
+
+	if (val && message != NULL) {
 		if (updates != 0)
 			message->startList(updates, updateCounter += updates);
 
@@ -96,6 +102,46 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 	return val;
 }
 
+bool SchematicList::contains(DraftSchematic* schematic) {
+
+	for(int i = 0; i < size(); ++i) {
+
+		DraftSchematic* existingSchematic = get(i);
+
+		if(existingSchematic == NULL)
+			continue;
+
+		if((existingSchematic->getClientObjectCRC() == schematic->getClientObjectCRC()) &&
+				(existingSchematic->getCustomName() == schematic->getCustomName()))
+
+			return true;
+	}
+
+	return false;
+}
+
+bool SchematicList::updateUseCount(DraftSchematic* schematic) {
+
+	for(int i = 0; i < size(); ++i) {
+
+		DraftSchematic* existingSchematic = get(i);
+
+		if(existingSchematic == NULL)
+			continue;
+
+		if((existingSchematic->getClientObjectCRC() == schematic->getClientObjectCRC()) &&
+				(existingSchematic->getCustomName() == schematic->getCustomName())) {
+
+			if(existingSchematic->getUseCount() > 0)
+				existingSchematic->increaseUseCount(schematic->getUseCount());
+
+			return true;
+		}
+	}
+
+	return false;
+}
+
 bool SchematicList::contains(Vector<ManagedReference<DraftSchematic* > > filteredschematics, DraftSchematic* schematic) {
 
 	for(int i = 0; i < filteredschematics.size(); ++i) {
@@ -105,8 +151,8 @@ bool SchematicList::contains(Vector<ManagedReference<DraftSchematic* > > filtere
 		if(existingSchematic == NULL)
 			continue;
 
-		if(existingSchematic->getClientObjectCRC() ==
-				schematic->getClientObjectCRC())
+		if((existingSchematic->getClientObjectCRC() == schematic->getClientObjectCRC()) &&
+				(existingSchematic->getCustomName() == schematic->getCustomName()))
 
 			return true;
 	}
@@ -115,7 +161,7 @@ bool SchematicList::contains(Vector<ManagedReference<DraftSchematic* > > filtere
 }
 
 Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
-		Vector<uint32>* enabledTabs, int complexityLevel) {
+		PlayerCreature* player, Vector<uint32>* enabledTabs, int complexityLevel) {
 
 	Vector<ManagedReference<DraftSchematic* > > filteredschematics;
 
@@ -124,9 +170,10 @@ Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
 
 		for(int j = 0; j < enabledTabs->size(); ++j) {
 			if(enabledTabs->get(j) == schematic->getToolTab() &&
-					schematic->getComplexity() <= complexityLevel &&
-					!contains(filteredschematics, schematic)) {
-				filteredschematics.add(schematic);
+					schematic->getComplexity() <= complexityLevel) {
+
+					filteredschematics.add(schematic);
+
 				break;
 			}
 		}
@@ -135,6 +182,7 @@ Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
 }
 
 void SchematicList::insertToMessage(BaseMessage* msg) {
+
 	msg->insertInt(size());
 	msg->insertInt(updateCounter);
 

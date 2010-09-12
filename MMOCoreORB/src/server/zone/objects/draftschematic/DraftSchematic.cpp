@@ -333,6 +333,57 @@ String DraftSchematic::getGroupName() {
 		return ((DraftSchematicImplementation*) _impl)->getGroupName();
 }
 
+int DraftSchematic::getUseCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getUseCount();
+}
+
+void DraftSchematic::setUseCount(int count) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+		method.addSignedIntParameter(count);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setUseCount(count);
+}
+
+void DraftSchematic::decreaseUseCount(int count) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addSignedIntParameter(count);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->decreaseUseCount(count);
+}
+
+void DraftSchematic::increaseUseCount(int count) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addSignedIntParameter(count);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->increaseUseCount(count);
+}
+
 /*
  *	DraftSchematicImplementation
  */
@@ -401,22 +452,43 @@ void DraftSchematicImplementation::_serializationHelperMethod() {
 	_setClassName("DraftSchematic");
 
 	addSerializableVariable("schematicID", &schematicID);
+	addSerializableVariable("useCount", &useCount);
 }
 
 DraftSchematicImplementation::DraftSchematicImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/draftschematic/DraftSchematic.idl(68):  		Logger.setLoggingName("DraftSchematic");
+	// server/zone/objects/draftschematic/DraftSchematic.idl(70):  		Logger.setLoggingName("DraftSchematic");
 	Logger::setLoggingName("DraftSchematic");
 }
 
 void DraftSchematicImplementation::setSchematicID(unsigned int id) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(126):  		schematicID = id;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(128):  		schematicID = id;
 	schematicID = id;
 }
 
 unsigned int DraftSchematicImplementation::getSchematicID() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(134):  		return schematicID;
+	// server/zone/objects/draftschematic/DraftSchematic.idl(136):  		return schematicID;
 	return schematicID;
+}
+
+int DraftSchematicImplementation::getUseCount() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(209):  		return useCount;
+	return useCount;
+}
+
+void DraftSchematicImplementation::setUseCount(int count) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(213):  		useCount = count;
+	useCount = count;
+}
+
+void DraftSchematicImplementation::decreaseUseCount(int count) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(217):  		setUseCount(useCount - 1);
+	setUseCount(useCount - 1);
+}
+
+void DraftSchematicImplementation::increaseUseCount(int count) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl(221):  		setUseCount(useCount + count);
+	setUseCount(useCount + count);
 }
 
 /*
@@ -489,6 +561,18 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 25:
 		resp->insertAscii(getGroupName());
+		break;
+	case 26:
+		resp->insertSignedInt(getUseCount());
+		break;
+	case 27:
+		setUseCount(inv->getSignedIntParameter());
+		break;
+	case 28:
+		decreaseUseCount(inv->getSignedIntParameter());
+		break;
+	case 29:
+		increaseUseCount(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -575,6 +659,22 @@ unsigned int DraftSchematicAdapter::getTanoCRC() {
 
 String DraftSchematicAdapter::getGroupName() {
 	return ((DraftSchematicImplementation*) impl)->getGroupName();
+}
+
+int DraftSchematicAdapter::getUseCount() {
+	return ((DraftSchematicImplementation*) impl)->getUseCount();
+}
+
+void DraftSchematicAdapter::setUseCount(int count) {
+	((DraftSchematicImplementation*) impl)->setUseCount(count);
+}
+
+void DraftSchematicAdapter::decreaseUseCount(int count) {
+	((DraftSchematicImplementation*) impl)->decreaseUseCount(count);
+}
+
+void DraftSchematicAdapter::increaseUseCount(int count) {
+	((DraftSchematicImplementation*) impl)->increaseUseCount(count);
 }
 
 /*

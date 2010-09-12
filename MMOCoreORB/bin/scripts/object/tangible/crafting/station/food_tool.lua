@@ -50,7 +50,7 @@ object_tangible_crafting_station_food_tool = object_tangible_crafting_station_sh
    customizationOptions = {},
    customizationDefaults = {},
 
-   toolType = 3,
+   toolType = 2,
    complexityLevel = 20,
    enabledTabs = {4,64,128,256,8192}
 }

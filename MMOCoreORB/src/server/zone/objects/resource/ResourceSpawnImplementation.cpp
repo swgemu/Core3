@@ -236,11 +236,11 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
 }
 
 void ResourceSpawnImplementation::decreaseContainerReferenceCount() {
-	/*if (--containerReferenceCount < 1 && !inShift()) {
+	if (--containerReferenceCount < 1 && !inShift()) {
 		destroyObjectFromDatabase(true);
 
 		dbDestroyed = true;
-	}*/
+	}
 }
 
 void ResourceSpawnImplementation::print() {

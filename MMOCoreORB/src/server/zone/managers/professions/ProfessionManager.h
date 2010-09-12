@@ -71,6 +71,7 @@ namespace zone {
 namespace objects {
 namespace player {
 class PlayerCreature;
+class PlayerObject;
 }
 }
 }
@@ -155,6 +156,7 @@ namespace server {
 		bool playerTeachSkill(const String& name, PlayerCreature* player, PlayerCreature* teacher);
 
 		void awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient);
+		void awardDraftSchematics(SkillBox* skillBox, PlayerObject* player, bool updateClient);
 
 		inline void awardSkillBox(const String& skillBox, PlayerCreature* player, bool awardRequired, bool updateClient) {
 			SkillBox* sBox = skillBoxMap.get(skillBox);

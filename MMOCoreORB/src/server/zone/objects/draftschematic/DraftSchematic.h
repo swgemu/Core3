@@ -126,6 +126,14 @@ public:
 
 	String getGroupName();
 
+	int getUseCount();
+
+	void setUseCount(int count);
+
+	void decreaseUseCount(int count = 1);
+
+	void increaseUseCount(int count);
+
 protected:
 	DraftSchematic(DummyConstructorParameter* param);
 
@@ -157,6 +165,8 @@ class DraftSchematicImplementation : public IntangibleObjectImplementation {
 	unsigned int schematicID;
 
 	DraftSchematicObjectTemplate* schematicTemplate;
+
+	int useCount;
 
 public:
 	DraftSchematicImplementation();
@@ -220,6 +230,14 @@ public:
 	unsigned int getTanoCRC();
 
 	String getGroupName();
+
+	int getUseCount();
+
+	void setUseCount(int count);
+
+	void decreaseUseCount(int count = 1);
+
+	void increaseUseCount(int count);
 
 	DraftSchematic* _this;
 
@@ -299,6 +317,14 @@ public:
 	unsigned int getTanoCRC();
 
 	String getGroupName();
+
+	int getUseCount();
+
+	void setUseCount(int count);
+
+	void decreaseUseCount(int count);
+
+	void increaseUseCount(int count);
 
 };
 

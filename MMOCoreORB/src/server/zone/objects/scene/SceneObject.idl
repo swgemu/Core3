@@ -1194,6 +1194,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public boolean isPlayerCreature() {
 		return gameObjectType == PLAYERCREATURE;
 	}
+	
+	public boolean isPlayerObject() {
+		return gameObjectType == PLAYEROBJECT;
+	}
 
 	public abstract boolean isCreatureObject() {
 		return false;

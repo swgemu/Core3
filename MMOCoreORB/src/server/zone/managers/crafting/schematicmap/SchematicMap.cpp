@@ -135,10 +135,11 @@ void SchematicMap::loadDraftSchematicFile() {
 
 			schematic->setSchematicID(id);
 			schematic->updateToDatabase();
-
 			mapDraftSchematic(schematic);
 		}
 	}
+
+	info("Loaded " + String::valueOf(size) + " schematics from scripts");
 
 	serverScriptCRCList.pop();
 }
@@ -158,19 +159,6 @@ void SchematicMap::mapDraftSchematic(DraftSchematic* schematic) {
 	}
 
 	schematicIdMap.put(schematic->getSchematicID(), schematic);
-
-	/// Food tool exception, stupid SOE
-	if(schematic->getTanoCRC() == 1552915488) {
-		DraftSchematicGroup* group = groupMap.get("craftArtisanToolGroupA");
-
-		if (group == NULL) {
-			group = new DraftSchematicGroup();
-			groupMap.put("craftArtisanToolGroupA", group);
-		}
-
-		if(!group->contains(schematic))
-			group->add(schematic);
-	}
 }
 
 void SchematicMap::addSchematics(PlayerObject* playerObject,
@@ -186,8 +174,9 @@ void SchematicMap::addSchematics(PlayerObject* playerObject,
 
 			DraftSchematicGroup* dsg = groupMap.get(groupName);
 
-			for(int j = 0; j < dsg->size(); ++j)
+			for(int j = 0; j < dsg->size(); ++j) {
 				schematics.add(dsg->get(j));
+			}
 		}
 	}
 
