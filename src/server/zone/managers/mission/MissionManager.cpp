@@ -441,6 +441,7 @@ MissionManagerImplementation::MissionManagerImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
+
 MissionManagerImplementation::~MissionManagerImplementation() {
 }
 

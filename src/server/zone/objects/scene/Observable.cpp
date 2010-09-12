@@ -83,6 +83,7 @@ ObservableImplementation::ObservableImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
+
 ObservableImplementation::~ObservableImplementation() {
 }
 

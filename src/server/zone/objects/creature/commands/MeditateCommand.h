@@ -78,18 +78,18 @@ public:
 			return GENERALERROR;
 		}
 
-
-		player->sendSystemMessage("teraskasi", "med_begin");
-		player->setMeditateState();
-
 		// Meditate Task
 		Reference<MeditateTask*> meditateTask = new MeditateTask(player);
-		meditateTask->schedule(3500); // healing Time?...
+		meditateTask->moodString = player->getMoodString();
+		player->sendSystemMessage("teraskasi", "med_begin");
+
+		player->setMeditateState();
+
+		meditateTask->schedule(3500);
 		player->addPendingTask("meditate", meditateTask);
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		player->registerObserver(ObserverEventType::POSTURECHANGED, playerManager);
-
 
 		return SUCCESS;
 

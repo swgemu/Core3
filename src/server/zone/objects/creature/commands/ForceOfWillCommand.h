@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2010 <SWGEmu>
 
 This File is part of Core3.
 
@@ -45,7 +45,12 @@ which carries forward this exception.
 #ifndef FORCEOFWILLCOMMAND_H_
 #define FORCEOFWILLCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
+
+#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/BuffAttribute.h"
 
 class ForceOfWillCommand : public QueueCommand {
 public:
@@ -55,17 +60,99 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	void doCooldown(CreatureObject* player, String cooldownName, int duration){
+		player->addCooldown(cooldownName, duration * 1000);
+	}
 
+	void doDowner(CreatureObject* player, int buffDownerValue, String buffName, float duration){
+		String buffname = "skill.buff." + buffName;
+		uint32 buffcrc = buffname.hashCode();
+		ParameterizedStringId startMsg;
+
+		Reference<Buff*> buff = new Buff(player, buffname.hashCode(), duration, BuffType::SKILL);
+		buff->setAttributeModifier(CreatureAttribute::HEALTH, -buffDownerValue);
+		buff->setAttributeModifier(CreatureAttribute::STRENGTH, -buffDownerValue);
+		buff->setAttributeModifier(CreatureAttribute::CONSTITUTION, -buffDownerValue);
+		buff->setAttributeModifier(CreatureAttribute::ACTION, -buffDownerValue);
+		buff->setAttributeModifier(CreatureAttribute::QUICKNESS, -buffDownerValue);
+		buff->setAttributeModifier(CreatureAttribute::STAMINA, -buffDownerValue);
+		buff->setAttributeModifier(CreatureAttribute::MIND, -buffDownerValue);
+		buff->setAttributeModifier(CreatureAttribute::FOCUS, -buffDownerValue);
+		buff->setAttributeModifier(CreatureAttribute::WILLPOWER, -buffDownerValue);
+		buff->setStartMessage(startMsg);
+		player->addBuff(buff);
+	}
+
+	void setRecovery(CreatureObject* player){
+		player->setHAM(CreatureAttribute::HEALTH, 10, true);
+		player->setHAM(CreatureAttribute::ACTION, 10, true);
+		player->setHAM(CreatureAttribute::MIND, 10, true);
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+		Reference<Task*> incapTask = player->getPendingTask("incapacitationRecovery");
+		if (incapTask != NULL && incapTask->isScheduled()) {
+			incapTask->cancel();
+			player->removePendingTask("incapacitationRecovery");
+		}
+		doCooldown(player, "tkaForceOfWill", 3600);
+		player->sendSystemMessage("teraskasi", "forceofwill");
+	}
+
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
+		if(!creature->isIncapacitated()){
+			creature->sendSystemMessage("teraskasi", "forceofwill_fail");
+			return GENERALERROR;
+		}else if(!checkInvalidPostures(creature) && creature->isIncapacitated())
 			return INVALIDPOSTURE;
+		if(!creature->checkCooldownRecovery("tkaForceOfWill")){
+			creature->sendSystemMessage("teraskasi", "forceofwill_lost");
+			return GENERALERROR;
+		}
+		PlayerCreature* player = (PlayerCreature*) creature;
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+
+		if(player == NULL || playerManager == NULL)
+			return GENERALERROR;
+
+		int roll = System::random(100);
+		int meditateMod = player->getSkillMod("meditate");
+
+		if(roll <= meditateMod){
+			doCooldown(player, "tkaForceOfWill", 3600);
+			setRecovery(player);
+		}else if(roll > meditateMod){
+			player->sendSystemMessage("teraskasi", "forceofwill_unsuccessful");
+			doCooldown(player, "tkaForceOfWill", 3600);
+		}else if(roll < 5){
+			player->sendSystemMessage("teraskasi", "forceofwill_unsuccessful");
+			doCooldown(player, "tkaForceOfWill", 3600);
+		}else if(roll >= 5 && roll <= 10){
+			player->addWounds(CreatureAttribute::HEALTH, 100, true);
+			player->addWounds(CreatureAttribute::STRENGTH, 100, true);
+			player->addWounds(CreatureAttribute::CONSTITUTION, 100, true);
+			player->addWounds(CreatureAttribute::ACTION, 100, true);
+			player->addWounds(CreatureAttribute::QUICKNESS, 100, true);
+			player->addWounds(CreatureAttribute::STAMINA, 100, true);
+			player->addWounds(CreatureAttribute::MIND, 100, true);
+			player->addWounds(CreatureAttribute::FOCUS, 100, true);
+			player->addWounds(CreatureAttribute::WILLPOWER, 100, true);
+			player->addShockWounds(100, true);
+			setRecovery(player);
+		}else if(roll >= 10 && roll <= 40){
+			player->addShockWounds(100, true);
+			doDowner(player, 200, "forceofwill2", 300);
+			setRecovery(player);
+		}else if(roll >= 40 && roll <= 70){
+			doDowner(player, 100, "forceofwill3", 120);
+			setRecovery(player);
+		}else if(roll >= 70 && roll <= 100){
+			setRecovery(player);
+		}
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //FORCEOFWILLCOMMAND_H_

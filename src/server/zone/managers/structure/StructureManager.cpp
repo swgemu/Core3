@@ -158,6 +158,7 @@ StructureManagerImplementation::StructureManagerImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
+
 StructureManagerImplementation::~StructureManagerImplementation() {
 }
 

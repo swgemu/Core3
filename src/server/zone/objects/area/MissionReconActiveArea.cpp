@@ -60,6 +60,7 @@ MissionReconActiveAreaImplementation::MissionReconActiveAreaImplementation(Dummy
 	_initializeImplementation();
 }
 
+
 MissionReconActiveAreaImplementation::~MissionReconActiveAreaImplementation() {
 }
 

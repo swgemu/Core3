@@ -100,6 +100,7 @@ DeedImplementation::DeedImplementation(DummyConstructorParameter* param) : Tangi
 	_initializeImplementation();
 }
 
+
 DeedImplementation::~DeedImplementation() {
 }
 

@@ -55,6 +55,7 @@ SuiListBoxMenuItemImplementation::SuiListBoxMenuItemImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
+
 SuiListBoxMenuItemImplementation::~SuiListBoxMenuItemImplementation() {
 }
 

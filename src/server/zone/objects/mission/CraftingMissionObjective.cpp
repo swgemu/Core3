@@ -107,6 +107,7 @@ CraftingMissionObjectiveImplementation::CraftingMissionObjectiveImplementation(D
 	_initializeImplementation();
 }
 
+
 CraftingMissionObjectiveImplementation::~CraftingMissionObjectiveImplementation() {
 	CraftingMissionObjectiveImplementation::finalize();
 }

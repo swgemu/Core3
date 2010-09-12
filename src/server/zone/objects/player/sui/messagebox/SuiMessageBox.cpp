@@ -56,6 +56,7 @@ SuiMessageBoxImplementation::SuiMessageBoxImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
+
 SuiMessageBoxImplementation::~SuiMessageBoxImplementation() {
 }
 

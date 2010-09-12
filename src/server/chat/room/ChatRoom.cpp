@@ -493,6 +493,7 @@ ChatRoomImplementation::ChatRoomImplementation(DummyConstructorParameter* param)
 	_initializeImplementation();
 }
 
+
 ChatRoomImplementation::~ChatRoomImplementation() {
 }
 

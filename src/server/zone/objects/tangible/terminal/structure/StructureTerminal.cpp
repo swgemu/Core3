@@ -95,6 +95,7 @@ StructureTerminalImplementation::StructureTerminalImplementation(DummyConstructo
 	_initializeImplementation();
 }
 
+
 StructureTerminalImplementation::~StructureTerminalImplementation() {
 }
 

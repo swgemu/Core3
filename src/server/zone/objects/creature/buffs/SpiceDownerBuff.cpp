@@ -60,6 +60,7 @@ SpiceDownerBuffImplementation::SpiceDownerBuffImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
+
 SpiceDownerBuffImplementation::~SpiceDownerBuffImplementation() {
 }
 

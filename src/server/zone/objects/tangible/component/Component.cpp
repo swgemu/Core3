@@ -268,6 +268,7 @@ ComponentImplementation::ComponentImplementation(DummyConstructorParameter* para
 	_initializeImplementation();
 }
 
+
 ComponentImplementation::~ComponentImplementation() {
 }
 

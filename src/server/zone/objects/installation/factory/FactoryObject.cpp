@@ -224,6 +224,7 @@ FactoryObjectImplementation::FactoryObjectImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
+
 FactoryObjectImplementation::~FactoryObjectImplementation() {
 }
 

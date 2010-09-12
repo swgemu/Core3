@@ -158,6 +158,7 @@ ConsumableImplementation::ConsumableImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
+
 ConsumableImplementation::~ConsumableImplementation() {
 }
 

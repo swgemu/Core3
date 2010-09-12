@@ -436,6 +436,7 @@ AuctionItemImplementation::AuctionItemImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
+
 AuctionItemImplementation::~AuctionItemImplementation() {
 }
 
