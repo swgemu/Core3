@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS swgemu;
 USE swgemu;
 
-DROP TABLE IF EXISTS `swgemu`.`informants`;
+DROP TABLE IF EXISTS `swgemu`.`mission_manager_informants`;
 
 CREATE TABLE `swgemu`.`mission_manager_informants` (
   `id` smallint(6) NOT NULL auto_increment,
@@ -16,7 +16,7 @@ CREATE TABLE `swgemu`.`mission_manager_informants` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO `swgemu`.`informants` (`planet`,`cell`,`X`,`Y`,`Z`,`oY`,`oW`,`level`) VALUES 
+INSERT INTO `swgemu`.`mission_manager_informants` (`planet`,`cell`,`X`,`Y`,`Z`,`oY`,`oW`,`level`) VALUES 
  (0,0,-5559,-6220,23.4,0.723214,0.690624,2),
  (0,0,6871,-5752,315,0.933756,-0.357911,2),
  (8,1154123,0.2,8.6,1,0,1,2),
