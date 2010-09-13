@@ -236,7 +236,7 @@ float ManufactureSchematic::getComplexity() {
 		return ((ManufactureSchematicImplementation*) _impl)->getComplexity();
 }
 
-bool ManufactureSchematic::getFirstCraftingUpdate() {
+bool ManufactureSchematic::isFirstCraftingUpdate() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -245,10 +245,10 @@ bool ManufactureSchematic::getFirstCraftingUpdate() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ManufactureSchematicImplementation*) _impl)->getFirstCraftingUpdate();
+		return ((ManufactureSchematicImplementation*) _impl)->isFirstCraftingUpdate();
 }
 
-void ManufactureSchematic::setFirstCraftingUpdate() {
+void ManufactureSchematic::setFirstCraftingUpdateComplete() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -257,7 +257,7 @@ void ManufactureSchematic::setFirstCraftingUpdate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ManufactureSchematicImplementation*) _impl)->setFirstCraftingUpdate();
+		((ManufactureSchematicImplementation*) _impl)->setFirstCraftingUpdateComplete();
 }
 
 bool ManufactureSchematic::isReadyForAssembly() {
@@ -570,8 +570,8 @@ ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
 	Logger::setLoggingName("ManufactureSchematic");
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(93):  		prototype = null;
 	prototype = NULL;
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(94):  		firstCraftingUpdate = false;
-	firstCraftingUpdate = false;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(94):  		firstCraftingUpdate = true;
+	firstCraftingUpdate = true;
 }
 
 void ManufactureSchematicImplementation::initializeTransientMembers() {
@@ -605,14 +605,14 @@ float ManufactureSchematicImplementation::getComplexity() {
 	return complexity;
 }
 
-bool ManufactureSchematicImplementation::getFirstCraftingUpdate() {
+bool ManufactureSchematicImplementation::isFirstCraftingUpdate() {
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(183):  		return firstCraftingUpdate;
 	return firstCraftingUpdate;
 }
 
-void ManufactureSchematicImplementation::setFirstCraftingUpdate() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(187):  		firstCraftingUpdate = true;
-	firstCraftingUpdate = true;
+void ManufactureSchematicImplementation::setFirstCraftingUpdateComplete() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(187):  		firstCraftingUpdate = false;
+	firstCraftingUpdate = false;
 }
 
 void ManufactureSchematicImplementation::setAssembled() {
@@ -749,10 +749,10 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertFloat(getComplexity());
 		break;
 	case 21:
-		resp->insertBoolean(getFirstCraftingUpdate());
+		resp->insertBoolean(isFirstCraftingUpdate());
 		break;
 	case 22:
-		setFirstCraftingUpdate();
+		setFirstCraftingUpdateComplete();
 		break;
 	case 23:
 		resp->insertBoolean(isReadyForAssembly());
@@ -872,12 +872,12 @@ float ManufactureSchematicAdapter::getComplexity() {
 	return ((ManufactureSchematicImplementation*) impl)->getComplexity();
 }
 
-bool ManufactureSchematicAdapter::getFirstCraftingUpdate() {
-	return ((ManufactureSchematicImplementation*) impl)->getFirstCraftingUpdate();
+bool ManufactureSchematicAdapter::isFirstCraftingUpdate() {
+	return ((ManufactureSchematicImplementation*) impl)->isFirstCraftingUpdate();
 }
 
-void ManufactureSchematicAdapter::setFirstCraftingUpdate() {
-	((ManufactureSchematicImplementation*) impl)->setFirstCraftingUpdate();
+void ManufactureSchematicAdapter::setFirstCraftingUpdateComplete() {
+	((ManufactureSchematicImplementation*) impl)->setFirstCraftingUpdateComplete();
 }
 
 bool ManufactureSchematicAdapter::isReadyForAssembly() {

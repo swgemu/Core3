@@ -55,6 +55,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isWearableObject();
@@ -107,6 +109,8 @@ public:
 	WearableObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
