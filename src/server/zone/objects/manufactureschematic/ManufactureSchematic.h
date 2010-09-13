@@ -124,9 +124,9 @@ public:
 
 	float getComplexity();
 
-	bool getFirstCraftingUpdate();
+	bool isFirstCraftingUpdate();
 
-	void setFirstCraftingUpdate();
+	void setFirstCraftingUpdateComplete();
 
 	bool isReadyForAssembly();
 
@@ -259,9 +259,9 @@ public:
 
 	float getComplexity();
 
-	bool getFirstCraftingUpdate();
+	bool isFirstCraftingUpdate();
 
-	void setFirstCraftingUpdate();
+	void setFirstCraftingUpdateComplete();
 
 	bool isReadyForAssembly();
 
@@ -368,9 +368,9 @@ public:
 
 	float getComplexity();
 
-	bool getFirstCraftingUpdate();
+	bool isFirstCraftingUpdate();
 
-	void setFirstCraftingUpdate();
+	void setFirstCraftingUpdateComplete();
 
 	bool isReadyForAssembly();
 

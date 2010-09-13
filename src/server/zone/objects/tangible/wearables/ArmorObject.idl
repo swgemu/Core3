@@ -93,6 +93,8 @@ class ArmorObject extends WearableObject {
 		acid = 0;
 		lightSaber = 0;
 		
+		specialResists = 0;
+		
 		/*super.customizationVariables.setVariable(3, 0);
 		super.customizationVariables.setVariable(2, 0);
 		super.customizationVariables.setVariable(1, 0);*/
@@ -123,7 +125,7 @@ class ArmorObject extends WearableObject {
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 	
-	private native void calculateSpecalProtection(ManufactureSchematic schematic);
+	private native void calculateSpecialProtection(ManufactureSchematic schematic);
 	
 	private native void setProtection(ManufactureSchematic schematic, int type, float base);
 	

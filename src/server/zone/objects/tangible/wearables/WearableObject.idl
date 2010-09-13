@@ -68,6 +68,17 @@ class WearableObject extends TangibleObject {
 	
 	public native void initializeTransientMembers();
 	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 	
 	public boolean isWearableObject() {

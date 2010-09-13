@@ -773,6 +773,9 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 	// Get the appropriate number of Experimentation points from Skill
 	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
 
+	// Set crafter
+	manufactureSchematic->setCrafter(player);
+
 	String expskill = draftSchematic->getExperimentationSkill();
 	experimentationPointsTotal = int(player->getSkillMod(expskill) / 10);
 	experimentationPointsUsed = 0;
@@ -807,9 +810,6 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 
 	// Update the prototype with new values
 	prototype->updateCraftingValues(manufactureSchematic);
-
-	// Set crafter
-	manufactureSchematic->setCrafter(player);
 
 	// Set default customization
 	Vector<byte>* customizationOptions = draftSchematic->getCustomizationOptions();
@@ -869,7 +869,7 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 	// If the window is closed now, this sets the resources to no be recoverable
 	manufactureSchematic->setAssembled();
 
-	manufactureSchematic->setFirstCraftingUpdate();
+	manufactureSchematic->setFirstCraftingUpdateComplete();
 
 	// Remove all resources - Not recovering them
 	if (assemblyResult == CraftingManager::CRITICALFAILURE) {
@@ -1138,7 +1138,7 @@ void CraftingToolImplementation::experiment(PlayerCreature* player, int numRowsA
 		// Do the experimenting - sets new percentages
 		experimentRow(craftingValues, rowEffected, pointsAttempted, failure);
 
-		}
+	}
 
 	manufactureSchematic->setExperimentingCounter(manufactureSchematic->getExperimentingCounter() + numRowsAttempted);
 
