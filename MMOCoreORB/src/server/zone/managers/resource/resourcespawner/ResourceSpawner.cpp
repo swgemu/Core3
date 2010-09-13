@@ -268,6 +268,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
  		newSpawn->setIsEnergy(true);
 
  	resourceMap->add(name, newSpawn);
+ 	newSpawn->updateToDatabase();
 
 	return newSpawn;
 }

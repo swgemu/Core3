@@ -126,6 +126,8 @@ ArmorComponentImplementation::ArmorComponentImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/component/armor/ArmorComponent.idl(58):  		Logger.setLoggingName("ArmorComponent");
 	Logger::setLoggingName("ArmorComponent");
+	// server/zone/objects/tangible/component/armor/ArmorComponent.idl(59):  		specialResists = 0;
+	specialResists = 0;
 }
 
 /*

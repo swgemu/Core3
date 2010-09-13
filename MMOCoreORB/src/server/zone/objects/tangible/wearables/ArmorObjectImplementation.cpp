@@ -257,10 +257,13 @@ void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schem
 	CraftingValues* craftingValues = schematic->getCraftingValues();
 	//craftingValues->toString();
 
-	if(schematic->getFirstCraftingUpdate()) {
+	if(schematic->isFirstCraftingUpdate()) {
 
-		specialResists += craftingValues->getCurrentValue("armor_special_type");
-		calculateSpecalProtection(schematic);
+		int special = craftingValues->getCurrentValue("armor_special_type");
+		specialResists = specialResists | special;
+		craftingValues->setCurrentValue("armor_special_type", specialResists);
+
+		calculateSpecialProtection(schematic);
 
 		setRating((int) craftingValues->getCurrentValue("armor_rating"));
 
@@ -288,7 +291,7 @@ void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schem
 	setProtection(schematic, WeaponObject::LIGHTSABER, base);
 }
 
-void ArmorObjectImplementation::calculateSpecalProtection(
+void ArmorObjectImplementation::calculateSpecialProtection(
 		ManufactureSchematic* schematic) {
 
 	CraftingValues* craftingValues = schematic->getCraftingValues();
@@ -333,7 +336,7 @@ void ArmorObjectImplementation::setProtection(ManufactureSchematic* schematic,
 	float value = craftingValues->getCurrentValue(getStringType(type));
 
 	if (value == CraftingValues::VALUENOTFOUND
-			&& schematic->getFirstCraftingUpdate()) {
+			&& schematic->isFirstCraftingUpdate()) {
 		craftingValues->lockValue(getStringType(type));
 	}
 

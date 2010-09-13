@@ -36,6 +36,14 @@ void WearableObject::initializeTransientMembers() {
 		((WearableObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
+void WearableObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((WearableObjectImplementation*) _impl)->fillAttributeList(msg, object);
+}
+
 void WearableObject::updateCraftingValues(ManufactureSchematic* schematic) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -194,27 +202,27 @@ WearableObjectImplementation::WearableObjectImplementation() {
 }
 
 bool WearableObjectImplementation::isWearableObject() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(74):  		return true;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(85):  		return true;
 	return true;
 }
 
 int WearableObjectImplementation::getMaxSockets() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(78):  		return socketCount;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(89):  		return socketCount;
 	return socketCount;
 }
 
 int WearableObjectImplementation::socketsUsed() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(82):  		return wearableSkillModMap.getUsedSocketCount();
+	// server/zone/objects/tangible/wearables/WearableObject.idl(93):  		return wearableSkillModMap.getUsedSocketCount();
 	return (&wearableSkillModMap)->getUsedSocketCount();
 }
 
 int WearableObjectImplementation::socketsLeft() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(86):  		return socketCount - socketsUsed();
+	// server/zone/objects/tangible/wearables/WearableObject.idl(97):  		return socketCount - socketsUsed();
 	return socketCount - socketsUsed();
 }
 
 void WearableObjectImplementation::setMaxSockets(int sockets) {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(90):  		socketCount = sockets;
+	// server/zone/objects/tangible/wearables/WearableObject.idl(101):  		socketCount = sockets;
 	socketCount = sockets;
 }
 

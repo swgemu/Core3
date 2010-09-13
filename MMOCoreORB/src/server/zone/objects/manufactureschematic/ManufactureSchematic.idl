@@ -91,7 +91,7 @@ class ManufactureSchematic extends IntangibleObject {
 	public ManufactureSchematic() {
 		Logger.setLoggingName("ManufactureSchematic");
 		prototype = null;
-		firstCraftingUpdate = false;
+		firstCraftingUpdate = true;
 	}
 	
 	public void initializeTransientMembers() {
@@ -179,12 +179,12 @@ class ManufactureSchematic extends IntangibleObject {
 		return complexity;
 	}
 	
-	public boolean getFirstCraftingUpdate() {
+	public boolean isFirstCraftingUpdate() {
 		return firstCraftingUpdate;
 	}
 	
-	public void setFirstCraftingUpdate() {
-		firstCraftingUpdate = true;
+	public void setFirstCraftingUpdateComplete() {
+		firstCraftingUpdate = false;
 	}
 	
 	public native boolean isReadyForAssembly();

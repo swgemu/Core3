@@ -199,7 +199,7 @@ public:
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
 private:
-	void calculateSpecalProtection(ManufactureSchematic* schematic);
+	void calculateSpecialProtection(ManufactureSchematic* schematic);
 
 	void setProtection(ManufactureSchematic* schematic, int type, float base);
 

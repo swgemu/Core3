@@ -17,6 +17,13 @@ void WearableObjectImplementation::initializeTransientMembers() {
 	setLoggingName("WearableObject");
 }
 
+void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+	TangibleObjectImplementation::fillAttributeList(alm, object);
+
+	if (socketsLeft() > 0)
+		alm->insertAttribute("sockets", socketsLeft());
+}
+
 void WearableObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
 	/*
 	 * Values available:	Range:
@@ -24,7 +31,7 @@ void WearableObjectImplementation::updateCraftingValues(ManufactureSchematic* sc
 	 * hitpoints			1000-1000 (Don't Use)
 	 */
 
-	if(!socketsGenerated) {
+	if(schematic->isFirstCraftingUpdate()) {
 		generateSockets(schematic);
 	}
 

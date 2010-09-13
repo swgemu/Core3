@@ -162,7 +162,9 @@ void ComponentImplementation::updateCraftingValues(ManufactureSchematic* schemat
 		attributeMap.put(attribute, value);
 		precisionMap.put(attribute, precision);
 		titleMap.put(attribute, title);
-		hiddenMap.put(attribute, hidden);
+
+		if(schematic->isFirstCraftingUpdate())
+			hiddenMap.put(attribute, hidden);
 	}
 }
 
