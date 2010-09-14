@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_med_stimpack_c = object_draft_schematic_chemist
    experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
    experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "null"},
    experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 100, 20, 20, 1000},
-   experimentalMax = {0, 0, 400, 40, 35, 1000},
+   experimentalMin = {0, 0, 100, 20, 35, 1000},
+   experimentalMax = {0, 0, 400, 40, 20, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0},
 
    tanoCRC = 254485160, -- Script: 'object/tangible/medicine/crafted/crafted_stimpack_sm_s1_c.iff'
