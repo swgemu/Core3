@@ -10,7 +10,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 
-void PowerBoostBuffImplementation::initializeTransientMembers(){
+void PowerBoostBuffImplementation::initializeTransientMembers() {
 	BuffImplementation::initializeTransientMembers();
 
 	if (pbBuffEvent != NULL)
@@ -25,9 +25,9 @@ void PowerBoostBuffImplementation::initializeTransientMembers(){
 		}
 }
 
-void PowerBoostBuffImplementation::activate(bool applyModifiers){
-	if(creature != NULL){
-		if(counter == 0){
+void PowerBoostBuffImplementation::activate(bool applyModifiers) {
+	if(creature != NULL) {
+		if(counter == 0) {
 			BuffImplementation::activate(false);
 			creature->sendSystemMessage("teraskasi", "powerboost_begin");
 
@@ -40,23 +40,23 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers){
 			counter++;
 			pbBuffEvent->schedule(3000); // 1st time its run so we need to schedule Event. (before we can reschedule)
 
-		}else if(counter <= 19){
+		} else if(counter <= 19) {
 			doHealthAndActionTick(true); // 2-20
 			doMindTick(true);
 
 			counter++;
 			pbBuffEvent->reschedule(3000); // counter is not 20 ... reschedule
 
-		}else if(counter >= 20 && counter <= 39){
+		} else if(counter >= 20 && counter <= 39) {
 			doMindTick(true); // 20-40
 			counter++;
 			pbBuffEvent->reschedule(3000);
 
-		}else if(counter == 40){
+		} else if(counter == 40) {
 			counter = 45; // increase counter to 45 (to tick Down)..
 			pbBuffEvent->reschedule(time - (180 * 1000)); // schedule for duration of the buff. (minus the tick time);
 
-		}else if(counter >= 45 && counter < 65){
+		} else if(counter >= 45 && counter < 65) {
 			doHealthAndActionTick(false);
 			doMindTick(false);
 			counter++;
@@ -66,14 +66,14 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers){
 }
 
 void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
-	if(creature != NULL){
-		if(counter <= 40){
+	if(creature != NULL) {
+		if(counter <= 40) {
 			activate(false);
-		}else if(counter >= 45 && counter < 65){
+		} else if(counter >= 45 && counter < 65) {
 			if(counter == 45)
 				creature->sendSystemMessage("teraskasi", "powerboost_wane");
 			activate(false);
-		}else if(counter >= 65){
+		} else if(counter >= 65) {
 			creature->sendSystemMessage("teraskasi", "powerboost_end");
 			clearBuffEvent();
 			BuffImplementation::deactivate(false);
@@ -82,19 +82,19 @@ void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
 }
 
 void PowerBoostBuffImplementation::doHealthAndActionTick(bool up) {
-	if(up){
+	if(up) {
 		creature->addMaxHAM(CreatureAttribute::HEALTH, pbBonus/20 ,true);
 		creature->addMaxHAM(CreatureAttribute::ACTION, pbBonus/20 ,true);
-	}else{
+	} else {
 		creature->addMaxHAM(CreatureAttribute::HEALTH, -pbBonus/20 ,true);
 		creature->addMaxHAM(CreatureAttribute::ACTION, -pbBonus/20 ,true);
 	}
 }
 
 void PowerBoostBuffImplementation::doMindTick(bool up) {
-	if(up){
+	if(up) {
 		creature->addMaxHAM(CreatureAttribute::MIND, pbBonus/20 ,true);
-	}else{
+	} else {
 		creature->addMaxHAM(CreatureAttribute::MIND, -pbBonus/20 ,true);
 	}
 }
