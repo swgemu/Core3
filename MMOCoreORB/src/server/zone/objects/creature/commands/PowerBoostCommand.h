@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		if(!creature->isMeditating()){
+		if(!creature->isMeditating()) {
 			creature->sendSystemMessage("teraskasi", "powerboost_fail");
 			return GENERALERROR;
 		}
@@ -75,14 +75,14 @@ public:
 
 		uint32 buffcrc = BuffCRC::SKILL_BUFF_POWERBOOST;
 
-		if(player->hasBuff(buffcrc)){
-			if(player->isMeditating()){
+		if(player->hasBuff(buffcrc)) {
+			if(player->isMeditating()) {
 				player->sendSystemMessage("teraskasi", "powerboost_active");
 				return GENERALERROR;
 			}
 		}
 
-		if(player->isMeditating()){
+		if(player->isMeditating()) {
 			int baseMind = player->getBaseHAM(CreatureAttribute::MIND);
 
 			float hamBonus = (float)baseMind * 0.5;
@@ -91,7 +91,7 @@ public:
 			int meditateMod = player->getSkillMod("meditate");
 			int duration = 300 + (3 * meditateMod);
 
-			if(player->getHAM(CreatureAttribute::MIND) <= pbBonus){
+			if(player->getHAM(CreatureAttribute::MIND) <= pbBonus) {
 				player->sendSystemMessage("teraskasi", "powerboost_mind");
 				return GENERALERROR;
 			}

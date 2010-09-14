@@ -80,7 +80,7 @@ public:
 
 		// Meditate Task
 		Reference<MeditateTask*> meditateTask = new MeditateTask(player);
-		meditateTask->moodString = player->getMoodString();
+		meditateTask->setMoodString(player->getMoodString());
 		player->sendSystemMessage("teraskasi", "med_begin");
 
 		player->setMeditateState();
