@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_med_stimpack_state_blinded_a = object_draft_sch
    experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
    experimentalGroupTitles = {"null", "null", "expCharges", "expEaseOfUse", "expRange", "null"},
    experimentalSubGroupTitles = {"null", "null", "charges", "skillmodmin", "range", "hitpoints"},
-   experimentalMin = {0, 0, 10, 20, 15, 1000},
-   experimentalMax = {0, 0, 30, 40, 20, 1000},
+   experimentalMin = {0, 0, 10, 40, 15, 1000},
+   experimentalMax = {0, 0, 30, 20, 20, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0},
 
    tanoCRC = 273431060, -- Script: 'object/tangible/medicine/crafted/medpack_blinded_a.iff'

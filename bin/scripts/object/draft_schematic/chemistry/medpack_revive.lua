@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_medpack_revive = object_draft_schematic_chemist
    experimentalWeights = {1, 1, 2, 1, 2, 1, 1},
    experimentalGroupTitles = {"null", "null", "expCharges", "expEaseOfUse", "null"},
    experimentalSubGroupTitles = {"null", "null", "charges", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 1, 30, 1000},
-   experimentalMax = {0, 0, 10, 60, 1000},
+   experimentalMin = {0, 0, 1, 60, 1000},
+   experimentalMax = {0, 0, 10, 30, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0},
 
    tanoCRC = 794688942, -- Script: 'object/tangible/medicine/crafted/medpack_revive.iff'

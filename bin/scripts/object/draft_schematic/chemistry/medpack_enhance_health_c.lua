@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_medpack_enhance_health_c = object_draft_schemat
    experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1},
    experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "exp_effectiveness", "expEaseOfUse", "null"},
    experimentalSubGroupTitles = {"null", "null", "power", "charges", "duration", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 30, 5, 1200, 60, 1000},
-   experimentalMax = {0, 0, 400, 20, 10800, 80, 1000},
+   experimentalMin = {0, 0, 30, 5, 1200, 80, 1000},
+   experimentalMax = {0, 0, 400, 20, 10800, 60, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 3926886115, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_health_c.iff'

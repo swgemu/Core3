@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_med_stimpack_area_b = object_draft_schematic_ch
    experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1},
    experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "expCharges", "exp_effectiveness", "null"},
    experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "range", "area", "hitpoints"},
-   experimentalMin = {0, 0, 100, 15, 45, 15, 30, 1000},
-   experimentalMax = {0, 0, 500, 30, 60, 30, 10, 1000},
+   experimentalMin = {0, 0, 100, 15, 60, 15, 30, 1000},
+   experimentalMax = {0, 0, 500, 30, 45, 30, 10, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 330370569, -- Script: 'object/tangible/medicine/crafted/medpack_grenade_area_b.iff'

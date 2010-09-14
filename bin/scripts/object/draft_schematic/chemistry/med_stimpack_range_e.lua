@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_med_stimpack_range_e = object_draft_schematic_c
    experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1},
    experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "expCharges", "null"},
    experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "range", "hitpoints"},
-   experimentalMin = {0, 0, 200, 30, 70, 15, 1000},
-   experimentalMax = {0, 0, 1000, 60, 100, 40, 1000},
+   experimentalMin = {0, 0, 200, 30, 100, 15, 1000},
+   experimentalMax = {0, 0, 1000, 60, 70, 40, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 583938567, -- Script: 'object/tangible/medicine/crafted/medpack_grenade_damage_e.iff'
