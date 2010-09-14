@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_medpack_wound_strength_e = object_draft_schemat
    experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
    experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "null"},
    experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 30, 30, 60, 1000},
-   experimentalMax = {0, 0, 400, 60, 90, 1000},
+   experimentalMin = {0, 0, 30, 30, 90, 1000},
+   experimentalMax = {0, 0, 400, 60, 60, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0},
 
    tanoCRC = 1007826571, -- Script: 'object/tangible/medicine/crafted/medpack_wound_strength_e.iff'

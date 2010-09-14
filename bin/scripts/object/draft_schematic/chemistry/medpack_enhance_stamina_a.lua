@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_medpack_enhance_stamina_a = object_draft_schema
    experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1},
    experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "exp_effectiveness", "expEaseOfUse", "null"},
    experimentalSubGroupTitles = {"null", "null", "power", "charges", "duration", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 10, 5, 1200, 50, 1000},
-   experimentalMax = {0, 0, 100, 10, 3600, 60, 1000},
+   experimentalMin = {0, 0, 10, 5, 1200, 60, 1000},
+   experimentalMax = {0, 0, 100, 10, 3600, 50, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 1570302478, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_stamina_a.iff'

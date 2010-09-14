@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_medpack_disease_mind_c = object_draft_schematic
    experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 1, 1},
    experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expCharges", "expEaseOfUse", "expEaseOfUse", "exp_effectiveness", "null"},
    experimentalSubGroupTitles = {"null", "null", "power", "charges", "range", "skillmodmin", "potency", "duration", "hitpoints"},
-   experimentalMin = {0, 0, 10, 15, 15, 40, 25, 120, 1000},
-   experimentalMax = {0, 0, 60, 35, 30, 80, 150, 1000, 1000},
+   experimentalMin = {0, 0, 10, 15, 15, 80, 25, 120, 1000},
+   experimentalMax = {0, 0, 60, 35, 30, 40, 150, 1000, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 1388113371, -- Script: 'object/tangible/medicine/crafted/medpack_disease_mind_c.iff'

@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_medpack_disease_strength_b = object_draft_schem
    experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 1, 1},
    experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expCharges", "expEaseOfUse", "expEaseOfUse", "exp_effectiveness", "null"},
    experimentalSubGroupTitles = {"null", "null", "power", "charges", "range", "skillmodmin", "potency", "duration", "hitpoints"},
-   experimentalMin = {0, 0, 10, 10, 15, 30, 25, 120, 1000},
-   experimentalMax = {0, 0, 40, 25, 30, 50, 100, 800, 1000},
+   experimentalMin = {0, 0, 10, 10, 15, 50, 25, 120, 1000},
+   experimentalMax = {0, 0, 40, 25, 30, 30, 100, 800, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 4088499080, -- Script: 'object/tangible/medicine/crafted/medpack_disease_strength_b.iff'

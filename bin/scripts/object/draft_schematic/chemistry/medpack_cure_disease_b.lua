@@ -77,8 +77,8 @@ object_draft_schematic_chemistry_medpack_cure_disease_b = object_draft_schematic
    experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
    experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "null"},
    experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 10, 15, 51, 1000},
-   experimentalMax = {0, 0, 50, 30, 80, 1000},
+   experimentalMin = {0, 0, 10, 15, 80, 1000},
+   experimentalMax = {0, 0, 50, 30, 51, 1000},
    experimentalPrecision = {0, 0, 0, 0, 0, 0},
 
    tanoCRC = 3530750072, -- Script: 'object/tangible/medicine/crafted/medpack_cure_disease_b.iff'
