@@ -132,13 +132,21 @@ namespace loot {
 
 class LootManager : public ManagedObject {
 public:
-	unsigned static const int FORAGE = 4;
+	unsigned static const int FORAGEGENERAL = 4;
 
-	unsigned static const int MEDICALFORAGE = 5;
+	unsigned static const int MEDICALFORAGEBASIC = 5;
 
-	unsigned static const int FISHING = 6;
+	unsigned static const int MEDICALFORAGEADVANCED = 6;
 
-	unsigned static const int FISHINGRARE = 7;
+	unsigned static const int MEDICALFORAGEEXCEPTIONAL = 7;
+
+	unsigned static const int FORAGEBAIT = 8;
+
+	unsigned static const int FORAGERARE = 9;
+
+	unsigned static const int FISHING = 13;
+
+	unsigned static const int FISHINGRARE = 14;
 
 	LootManager(ZoneServer* serv, ZoneProcessServerImplementation* proc, CraftingManager* craftman);
 
@@ -146,11 +154,9 @@ public:
 
 	bool contains(unsigned int lootGroup);
 
-	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup);
+	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount = 0);
 
 	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, Vector<unsigned int>* lootGroup);
-
-	bool attachLoot(PlayerCreature* receiver, LootObject* loot, SceneObject* container);
 
 	void testLoot(PlayerCreature* receiver, SceneObject* container);
 
@@ -182,13 +188,21 @@ class LootManagerImplementation : public ManagedObjectImplementation, public Log
 	ManagedReference<CraftingManager* > craftingManager;
 
 public:
-	unsigned static const int FORAGE = 4;
+	unsigned static const int FORAGEGENERAL = 4;
 
-	unsigned static const int MEDICALFORAGE = 5;
+	unsigned static const int MEDICALFORAGEBASIC = 5;
 
-	unsigned static const int FISHING = 6;
+	unsigned static const int MEDICALFORAGEADVANCED = 6;
 
-	unsigned static const int FISHINGRARE = 7;
+	unsigned static const int MEDICALFORAGEEXCEPTIONAL = 7;
+
+	unsigned static const int FORAGEBAIT = 8;
+
+	unsigned static const int FORAGERARE = 9;
+
+	unsigned static const int FISHING = 13;
+
+	unsigned static const int FISHINGRARE = 14;
 
 protected:
 	VectorMap<unsigned int, ManagedReference<LootGroupObject* > > lootGroups;
@@ -206,12 +220,14 @@ protected:
 public:
 	bool contains(unsigned int lootGroup);
 
-	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup);
+	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount = 0);
 
 	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, Vector<unsigned int>* lootGroup);
 
-	bool attachLoot(PlayerCreature* receiver, LootObject* loot, SceneObject* container);
+protected:
+	bool attachLoot(PlayerCreature* receiver, LootObject* loot, SceneObject* container, int objectCount = 0);
 
+public:
 	void testLoot(PlayerCreature* receiver, SceneObject* container);
 
 	LootManager* _this;
@@ -257,9 +273,7 @@ public:
 
 	bool contains(unsigned int lootGroup);
 
-	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup);
-
-	bool attachLoot(PlayerCreature* receiver, LootObject* loot, SceneObject* container);
+	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount);
 
 	void testLoot(PlayerCreature* receiver, SceneObject* container);
 

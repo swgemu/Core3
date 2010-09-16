@@ -64,10 +64,14 @@ class LootManager extends ManagedObject implements Logger {
 	private transient ZoneProcessServerImplementation zoneProcessor;
 	private transient CraftingManager craftingManager;
 	
-	public static final unsigned int FORAGE = 4;
-	public static final unsigned int MEDICALFORAGE = 5;
-	public static final unsigned int FISHING = 6;
-	public static final unsigned int FISHINGRARE = 7;
+	public static final unsigned int FORAGEGENERAL = 4;
+	public static final unsigned int MEDICALFORAGEBASIC = 5;
+	public static final unsigned int MEDICALFORAGEADVANCED = 6;
+	public static final unsigned int MEDICALFORAGEEXCEPTIONAL = 7;
+	public static final unsigned int FORAGEBAIT = 8;
+	public static final unsigned int FORAGERARE = 9;
+	public static final unsigned int FISHING = 13;
+	public static final unsigned int FISHINGRARE = 14;
 	
 	@dereferenced
 	protected VectorMap<unsigned int, LootGroupObject> lootGroups;
@@ -96,12 +100,15 @@ class LootManager extends ManagedObject implements Logger {
 		return (lootGroups.contains(lootGroup));
 	}
 	
-	public native void createLoot(PlayerCreature receiver, SceneObject container, int level, unsigned int lootGroup);
+	public native void createLoot(PlayerCreature receiver, SceneObject container, int level, unsigned int lootGroup, int objectCount = 0);
 	
 	@local
 	public native void createLoot(PlayerCreature receiver, SceneObject container, int level, Vector<unsigned int> lootGroup);
 	
-	public native boolean attachLoot(PlayerCreature receiver, LootObject loot, SceneObject container);
+	protected native boolean attachLoot(PlayerCreature receiver, LootObject loot, SceneObject container, int objectCount = 0);
 	
+	/*
+	 * @TODO: Remove this
+	 */
 	public native void testLoot(PlayerCreature receiver, SceneObject container);
 }
