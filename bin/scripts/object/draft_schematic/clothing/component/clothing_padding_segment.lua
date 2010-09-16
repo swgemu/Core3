@@ -79,7 +79,7 @@ object_draft_schematic_clothing_component_clothing_padding_segment = object_draf
    experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating"},
    experimentalMin = {0, 0, 1000, 1, 50, 9, 11, 9, 1},
    experimentalMax = {0, 0, 1000, 5, 500, 1, 1, 1, 1},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0},
 
    tanoCRC = 349677024, -- Script: 'object/tangible/component/clothing/padding_segment.iff'
 }

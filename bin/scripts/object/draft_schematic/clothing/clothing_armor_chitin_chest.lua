@@ -79,7 +79,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_chest = object_draft_schem
    experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
    experimentalMin = {0, 0, 0, 1000, 5, 15000, 125, 38, 16, 1, 1, 5, 15000},
    experimentalMax = {0, 0, 0, 1000, 30, 25000, 75, 23, 9, 1, 1, 40, 25000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 725211246, -- Script: 'object/tangible/wearables/armor/chitin/armor_chitin_s01_chest_plate.iff'
 }
