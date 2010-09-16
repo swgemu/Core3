@@ -49,11 +49,6 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 	WearableObjectImplementation::fillAttributeList(alm, object);
 
-	if (socketsLeft() > 0)
-		alm->insertAttribute("sockets", socketsLeft());
-
-	wearableSkillModMap.insertStatMods(alm);
-
 	//Armor Rating
 	if (rating == LIGHT)
 		alm->insertAttribute("armorrating", "@obj_attr_n:armor_pierce_light"); //Light
@@ -259,10 +254,6 @@ void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schem
 
 	if(schematic->isFirstCraftingUpdate()) {
 
-		int special = craftingValues->getCurrentValue("armor_special_type");
-		specialResists = specialResists | special;
-		craftingValues->setCurrentValue("armor_special_type", specialResists);
-
 		calculateSpecialProtection(schematic);
 
 		setRating((int) craftingValues->getCurrentValue("armor_rating"));
@@ -310,11 +301,13 @@ void ArmorObjectImplementation::calculateSpecialProtection(
 
 		int type = pow(2,i);
 
-		if(isSpecial(type)) {
+		subtitle = getStringType(type);
+		value = craftingValues->getCurrentValue(subtitle);
 
-			subtitle = getStringType(type);
+		if(value != CraftingValues::VALUENOTFOUND) {
 
-			value = craftingValues->getCurrentValue(subtitle);
+			specialResists = specialResists | type;
+
 			min = 2;
 			max = (value - min + (min * currentPercentage)) / currentPercentage;
 			currentValue = (currentPercentage * (max - min)) + min;

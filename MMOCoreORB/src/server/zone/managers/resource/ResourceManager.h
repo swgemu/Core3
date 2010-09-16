@@ -101,6 +101,24 @@ class Observable;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sui {
+namespace listbox {
+
+class SuiListBox;
+
+} // namespace listbox
+} // namespace sui
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::sui::listbox;
+
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
@@ -155,6 +173,8 @@ public:
 	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
+
+	void addChildrenToDeedListBox(String& name, SuiListBox* suil);
 
 protected:
 	ResourceManager(DummyConstructorParameter* param);
@@ -232,6 +252,8 @@ private:
 	void startResourceSpawner();
 
 public:
+	void addChildrenToDeedListBox(String& name, SuiListBox* suil);
+
 	ResourceManager* _this;
 
 	operator const ResourceManager*();
@@ -297,6 +319,8 @@ public:
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
+	void addChildrenToDeedListBox(String& name, SuiListBox* suil);
+
 protected:
 	String _param2_sendResourceListForSurvey__PlayerCreature_int_String_;
 	String _param1_sendSurvey__PlayerCreature_String_;
@@ -306,6 +330,7 @@ protected:
 	String _param1_createResourceSpawn__PlayerCreature_String_;
 	String _param1_givePlayerResource__PlayerCreature_String_int_;
 	String _param0_getResourceSpawn__String_;
+	String _param0_addChildrenToDeedListBox__String_SuiListBox_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

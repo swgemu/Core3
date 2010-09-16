@@ -125,6 +125,8 @@ public:
 
 	bool isCraftingTool();
 
+	bool isReady();
+
 	int getToolType();
 
 	TangibleObject* getPrototype();
@@ -245,6 +247,8 @@ public:
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isCraftingTool();
+
+	bool isReady();
 
 	int getToolType();
 
@@ -368,6 +372,8 @@ public:
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isCraftingTool();
+
+	bool isReady();
 
 	int getToolType();
 

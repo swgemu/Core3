@@ -107,7 +107,12 @@ SceneObject* CraftingStationImplementation::findCraftingTool(PlayerCreature* pla
 
 		if (object != NULL && object->isCraftingTool()) {
 
-			int toolType = ((CraftingTool*) object)->getToolType();
+			CraftingTool* tool = (CraftingTool*) object;
+
+			if(!tool->isReady())
+				continue;
+
+			int toolType = tool->getToolType();
 
 			if (toolType == type) {
 				return object;
