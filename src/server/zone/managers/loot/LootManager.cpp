@@ -61,7 +61,7 @@ bool LootManager::contains(unsigned int lootGroup) {
 		return ((LootManagerImplementation*) _impl)->contains(lootGroup);
 }
 
-void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup) {
+void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,10 +71,11 @@ void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, i
 		method.addObjectParameter(container);
 		method.addSignedIntParameter(level);
 		method.addUnsignedIntParameter(lootGroup);
+		method.addSignedIntParameter(objectCount);
 
 		method.executeWithVoidReturn();
 	} else
-		((LootManagerImplementation*) _impl)->createLoot(receiver, container, level, lootGroup);
+		((LootManagerImplementation*) _impl)->createLoot(receiver, container, level, lootGroup, objectCount);
 }
 
 void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, int level, Vector<unsigned int>* lootGroup) {
@@ -85,27 +86,12 @@ void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, i
 		((LootManagerImplementation*) _impl)->createLoot(receiver, container, level, lootGroup);
 }
 
-bool LootManager::attachLoot(PlayerCreature* receiver, LootObject* loot, SceneObject* container) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addObjectParameter(receiver);
-		method.addObjectParameter(loot);
-		method.addObjectParameter(container);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((LootManagerImplementation*) _impl)->attachLoot(receiver, loot, container);
-}
-
 void LootManager::testLoot(PlayerCreature* receiver, SceneObject* container) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(receiver);
 		method.addObjectParameter(container);
 
@@ -187,26 +173,26 @@ void LootManagerImplementation::_serializationHelperMethod() {
 
 LootManagerImplementation::LootManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc, CraftingManager* craftman) {
 	_initializeImplementation();
-	// server/zone/managers/loot/LootManager.idl(77):  		Logger.setLoggingName("LootManager");
+	// server/zone/managers/loot/LootManager.idl(81):  		Logger.setLoggingName("LootManager");
 	Logger::setLoggingName("LootManager");
-	// server/zone/managers/loot/LootManager.idl(79):  		Logger.setLogging(true);
+	// server/zone/managers/loot/LootManager.idl(83):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/loot/LootManager.idl(80):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/loot/LootManager.idl(84):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/loot/LootManager.idl(82):  		lootGroups.setNullValue(null);
+	// server/zone/managers/loot/LootManager.idl(86):  		lootGroups.setNullValue(null);
 	(&lootGroups)->setNullValue(NULL);
-	// server/zone/managers/loot/LootManager.idl(83):  		lootGroups.setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl(87):  		lootGroups.setNoDuplicateInsertPlan();
 	(&lootGroups)->setNoDuplicateInsertPlan();
-	// server/zone/managers/loot/LootManager.idl(85):  		zoneServer = serv;
+	// server/zone/managers/loot/LootManager.idl(89):  		zoneServer = serv;
 	zoneServer = serv;
-	// server/zone/managers/loot/LootManager.idl(86):  		zoneProcessor = proc;
+	// server/zone/managers/loot/LootManager.idl(90):  		zoneProcessor = proc;
 	zoneProcessor = proc;
-	// server/zone/managers/loot/LootManager.idl(87):  		craftingManager = craftman;
+	// server/zone/managers/loot/LootManager.idl(91):  		craftingManager = craftman;
 	craftingManager = craftman;
 }
 
 bool LootManagerImplementation::contains(unsigned int lootGroup) {
-	// server/zone/managers/loot/LootManager.idl(96):  		return (lootGroups.contains(lootGroup));
+	// server/zone/managers/loot/LootManager.idl(100):  		return (lootGroups.contains(lootGroup));
 	return ((&lootGroups)->contains(lootGroup));
 }
 
@@ -228,12 +214,9 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(contains(inv->getUnsignedIntParameter()));
 		break;
 	case 8:
-		createLoot((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter());
+		createLoot((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 9:
-		resp->insertBoolean(attachLoot((PlayerCreature*) inv->getObjectParameter(), (LootObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
-		break;
-	case 10:
 		testLoot((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -251,12 +234,8 @@ bool LootManagerAdapter::contains(unsigned int lootGroup) {
 	return ((LootManagerImplementation*) impl)->contains(lootGroup);
 }
 
-void LootManagerAdapter::createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup) {
-	((LootManagerImplementation*) impl)->createLoot(receiver, container, level, lootGroup);
-}
-
-bool LootManagerAdapter::attachLoot(PlayerCreature* receiver, LootObject* loot, SceneObject* container) {
-	return ((LootManagerImplementation*) impl)->attachLoot(receiver, loot, container);
+void LootManagerAdapter::createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount) {
+	((LootManagerImplementation*) impl)->createLoot(receiver, container, level, lootGroup, objectCount);
 }
 
 void LootManagerAdapter::testLoot(PlayerCreature* receiver, SceneObject* container) {
