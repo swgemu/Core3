@@ -70,7 +70,7 @@ class ResourceDeed extends Deed {
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
 	public native int useObject(PlayerCreature player);
-	
+	 
 	/**
 	 * Removes this object from parent container
 	 * @pre { this object is locked, player is locked }

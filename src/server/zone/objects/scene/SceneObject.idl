@@ -1230,6 +1230,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public abstract boolean isArmorObject() {
 		return false;
 	}
+	
+	public abstract boolean isPsgArmorObject() {
+		return false;
+	}
 
 	public abstract boolean isCellObject() {
 		return false;

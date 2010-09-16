@@ -105,12 +105,24 @@ bool CraftingTool::isCraftingTool() {
 		return ((CraftingToolImplementation*) _impl)->isCraftingTool();
 }
 
-int CraftingTool::getToolType() {
+bool CraftingTool::isReady() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CraftingToolImplementation*) _impl)->isReady();
+}
+
+int CraftingTool::getToolType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -122,7 +134,7 @@ TangibleObject* CraftingTool::getPrototype() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -134,7 +146,7 @@ ManufactureSchematic* CraftingTool::getManufactureSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return (ManufactureSchematic*) method.executeWithObjectReturn();
 	} else
@@ -154,7 +166,7 @@ void CraftingTool::requestCraftingSession(PlayerCreature* player, CraftingStatio
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addObjectParameter(craftingStation);
 
@@ -168,7 +180,7 @@ void CraftingTool::cancelCraftingSession(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -181,7 +193,7 @@ void CraftingTool::selectDraftSchematic(PlayerCreature* player, int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(index);
 
@@ -195,7 +207,7 @@ void CraftingTool::synchronizedUIListenForSchematic(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -208,7 +220,7 @@ void CraftingTool::addIngredient(PlayerCreature* player, TangibleObject* tano, i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
@@ -224,7 +236,7 @@ void CraftingTool::removeIngredient(PlayerCreature* player, TangibleObject* tano
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
@@ -240,7 +252,7 @@ void CraftingTool::nextCraftingStage(PlayerCreature* player, int clientCounter) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 
@@ -254,7 +266,7 @@ void CraftingTool::experiment(PlayerCreature* player, int numRowsAttempted, Stri
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(numRowsAttempted);
 		method.addAsciiParameter(expString);
@@ -270,7 +282,7 @@ void CraftingTool::customization(PlayerCreature* player, String& name, int schem
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(schematicCount);
@@ -286,7 +298,7 @@ void CraftingTool::createPrototype(PlayerCreature* player, int clientCounter, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 		method.addSignedIntParameter(practice);
@@ -301,7 +313,7 @@ void CraftingTool::createManfSchematic(PlayerCreature* player, int clientCounter
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 
@@ -315,7 +327,7 @@ void CraftingTool::createObject(PlayerCreature* player, int timer, bool create) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(timer);
 		method.addBooleanParameter(create);
@@ -330,7 +342,7 @@ void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(practice);
 
@@ -346,7 +358,6 @@ void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
 CraftingToolImplementation::CraftingToolImplementation(DummyConstructorParameter* param) : ToolTangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 CraftingToolImplementation::~CraftingToolImplementation() {
 }
@@ -444,13 +455,18 @@ bool CraftingToolImplementation::isCraftingTool() {
 	return true;
 }
 
+bool CraftingToolImplementation::isReady() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl(134):  		return status == "@crafting:tool_status_ready";
+	return status == "@crafting:tool_status_ready";
+}
+
 int CraftingToolImplementation::getToolType() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(134):  		return type;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(138):  		return type;
 	return type;
 }
 
 ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(140):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(144):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
 	return (ManufactureSchematic*) getSlottedObject("test_manf_schematic");
 }
 
@@ -478,51 +494,54 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isCraftingTool());
 		break;
 	case 10:
-		resp->insertSignedInt(getToolType());
+		resp->insertBoolean(isReady());
 		break;
 	case 11:
-		resp->insertLong(getPrototype()->_getObjectID());
+		resp->insertSignedInt(getToolType());
 		break;
 	case 12:
-		resp->insertLong(getManufactureSchematic()->_getObjectID());
+		resp->insertLong(getPrototype()->_getObjectID());
 		break;
 	case 13:
-		requestCraftingSession((PlayerCreature*) inv->getObjectParameter(), (CraftingStation*) inv->getObjectParameter());
+		resp->insertLong(getManufactureSchematic()->_getObjectID());
 		break;
 	case 14:
-		cancelCraftingSession((PlayerCreature*) inv->getObjectParameter());
+		requestCraftingSession((PlayerCreature*) inv->getObjectParameter(), (CraftingStation*) inv->getObjectParameter());
 		break;
 	case 15:
-		selectDraftSchematic((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		cancelCraftingSession((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 16:
-		synchronizedUIListenForSchematic((PlayerCreature*) inv->getObjectParameter());
+		selectDraftSchematic((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 17:
-		addIngredient((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		synchronizedUIListenForSchematic((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 18:
-		removeIngredient((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		addIngredient((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 19:
-		nextCraftingStage((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		removeIngredient((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 20:
-		experiment((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_experiment__PlayerCreature_int_String_int_), inv->getSignedIntParameter());
+		nextCraftingStage((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 21:
-		customization((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_customization__PlayerCreature_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_customization__PlayerCreature_String_int_String_));
+		experiment((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_experiment__PlayerCreature_int_String_int_), inv->getSignedIntParameter());
 		break;
 	case 22:
-		createPrototype((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		customization((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_customization__PlayerCreature_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_customization__PlayerCreature_String_int_String_));
 		break;
 	case 23:
-		createManfSchematic((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		createPrototype((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 24:
-		createObject((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		createManfSchematic((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 25:
+		createObject((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 26:
 		depositObject((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	default:
@@ -546,6 +565,10 @@ void CraftingToolAdapter::updateCraftingValues(ManufactureSchematic* schematic) 
 
 bool CraftingToolAdapter::isCraftingTool() {
 	return ((CraftingToolImplementation*) impl)->isCraftingTool();
+}
+
+bool CraftingToolAdapter::isReady() {
+	return ((CraftingToolImplementation*) impl)->isReady();
 }
 
 int CraftingToolAdapter::getToolType() {

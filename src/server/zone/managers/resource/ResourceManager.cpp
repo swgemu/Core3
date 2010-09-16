@@ -18,6 +18,8 @@
 
 #include "server/zone/objects/scene/Observable.h"
 
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+
 /*
  *	ResourceManagerStub
  */
@@ -222,6 +224,20 @@ ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 		return ((ResourceManagerImplementation*) _impl)->getResourceSpawn(spawnName);
 }
 
+void ResourceManager::addChildrenToDeedListBox(String& name, SuiListBox* suil) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addAsciiParameter(name);
+		method.addObjectParameter(suil);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->addChildrenToDeedListBox(name, suil);
+}
+
 /*
  *	ResourceManagerImplementation
  */
@@ -229,7 +245,6 @@ ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 ResourceManagerImplementation::ResourceManagerImplementation(DummyConstructorParameter* param) : ObserverImplementation(param) {
 	_initializeImplementation();
 }
-
 
 ResourceManagerImplementation::~ResourceManagerImplementation() {
 }
@@ -295,17 +310,17 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(80):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(81):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(82):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(83):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(83):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(84):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(85):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(86):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(86):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(87):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/resource/ResourceManager.idl(87):  		objectManager = objectMan;
+	// server/zone/managers/resource/ResourceManager.idl(88):  		objectManager = objectMan;
 	objectManager = objectMan;
 }
 
@@ -358,6 +373,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 18:
 		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
+		break;
+	case 19:
+		addChildrenToDeedListBox(inv->getAsciiParameter(_param0_addChildrenToDeedListBox__String_SuiListBox_), (SuiListBox*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -416,6 +434,10 @@ void ResourceManagerAdapter::givePlayerResource(PlayerCreature* playerCreature, 
 
 ResourceSpawn* ResourceManagerAdapter::getResourceSpawn(const String& spawnName) {
 	return ((ResourceManagerImplementation*) impl)->getResourceSpawn(spawnName);
+}
+
+void ResourceManagerAdapter::addChildrenToDeedListBox(String& name, SuiListBox* suil) {
+	((ResourceManagerImplementation*) impl)->addChildrenToDeedListBox(name, suil);
 }
 
 /*

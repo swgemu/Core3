@@ -904,6 +904,8 @@ public:
 
 	bool isArmorObject();
 
+	bool isPsgArmorObject();
+
 	bool isCellObject();
 
 	bool isTangibleObject();
@@ -1795,6 +1797,8 @@ public:
 
 	virtual bool isArmorObject();
 
+	virtual bool isPsgArmorObject();
+
 	virtual bool isCellObject();
 
 	virtual bool isTangibleObject();
@@ -2167,6 +2171,8 @@ public:
 	bool isWearableObject();
 
 	bool isArmorObject();
+
+	bool isPsgArmorObject();
 
 	bool isCellObject();
 

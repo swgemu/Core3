@@ -54,6 +54,7 @@
 #include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
 #include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "server/zone/objects/tangible/wearables/PsgArmorObject.h"
 #include "server/zone/objects/tangible/wearables/ClothingObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
@@ -171,6 +172,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ArmorObject>(SceneObject::ARMARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObject::HANDARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObject::FOOTARMOR);
+	objectFactory.registerObject<PsgArmorObject>(SceneObject::SHIELDGENERATOR);
 
 	objectFactory.registerObject<ToolTangibleObject>(SceneObject::TOOL);
 	objectFactory.registerObject<CraftingTool>(SceneObject::CRAFTINGTOOL);

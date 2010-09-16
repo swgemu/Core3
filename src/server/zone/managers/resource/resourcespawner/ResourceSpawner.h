@@ -66,6 +66,8 @@ which carries forward this exception.
 #include "resourcepool/NativePool.h"
 #include "resourcepool/ManualPool.h"
 
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+
 /**
  * The ResourceSpawner class represents all the functions related to ResourceSpawns
  * Including spawning, despawning rules,
@@ -127,8 +129,9 @@ public:
 
 	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
 
-
 	ResourceSpawn* getFromRandomPool(const String& type);
+
+	void addToListBox(String& name, SuiListBox* suil);
 
 	inline ResourceMap* getResourceMap() {
 		return resourceMap;

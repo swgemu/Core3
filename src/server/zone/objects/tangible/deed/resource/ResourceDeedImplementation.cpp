@@ -38,12 +38,11 @@ int ResourceDeedImplementation::useObject(PlayerCreature* player) {
 	sui1->setPromptText("Choose resource class.");
 	sui1->setCancelButton(true, "");
 	player->addSuiBox(sui1);
-	//resourceManager->addChildrenToListBox("resource", sui1);
+	String base = "resource";
+	resourceManager->addChildrenToDeedListBox(base, sui1);
 
 	sui1->setUsingObject(_this);
 
-	/*player->setResourceDeedID(_this->getObjectID());
-	uint64 objID = player->getResourceDeedID();*/
 	player->sendMessage(sui1->generateMessage());
 
 	return 1;
