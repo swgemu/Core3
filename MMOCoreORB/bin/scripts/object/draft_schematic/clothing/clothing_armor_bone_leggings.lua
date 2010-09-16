@@ -79,7 +79,7 @@ object_draft_schematic_clothing_clothing_armor_bone_leggings = object_draft_sche
    experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
    experimentalMin = {0, 0, 0, 1000, 5, 7500, 18, 60, 4, 1, 2, 5, 7500},
    experimentalMax = {0, 0, 0, 1000, 20, 12500, 10, 36, 2, 1, 2, 30, 12500},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 3381208818, -- Script: 'object/tangible/wearables/armor/bone/armor_bone_s01_leggings.iff'
 }

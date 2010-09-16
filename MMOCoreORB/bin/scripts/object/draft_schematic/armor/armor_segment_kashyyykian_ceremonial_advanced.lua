@@ -79,7 +79,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial_advanced = obj
    experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
    experimentalMin = {0, 0, 1000, 1, 500, 13, 16, 13, 1, 1, 1, 100},
    experimentalMax = {0, 0, 1000, 15, 2000, 1, 1, 1, 1, 1, 30, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 901906289, -- Script: 'object/tangible/component/armor/armor_segment_kashyyykian_ceremonial_advanced.iff'
 }

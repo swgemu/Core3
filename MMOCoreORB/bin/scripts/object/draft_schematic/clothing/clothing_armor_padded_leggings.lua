@@ -79,7 +79,7 @@ object_draft_schematic_clothing_clothing_armor_padded_leggings = object_draft_sc
    experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
    experimentalMin = {0, 0, 0, 1000, 1, 18750, 52, 175, 23, 1, 4, 1, 18750},
    experimentalMax = {0, 0, 0, 1000, 30, 31250, 31, 105, 14, 1, 4, 40, 31250},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 182484822, -- Script: 'object/tangible/wearables/armor/padded/armor_padded_s01_leggings.iff'
 }
