@@ -200,7 +200,7 @@ void LootManagerImplementation::createLoot(PlayerCreature* receiver, SceneObject
  * if container is a creature, you'll get it once you loot the corpse
  * if container is an inventory, you'll get it immediately there (forage/medical forage)
 */
-void LootManagerImplementation::createLoot(PlayerCreature* receiver, SceneObject* container, int level, uint32 lootGroup) {
+void LootManagerImplementation::createLoot(PlayerCreature* receiver, SceneObject* container, int level, uint32 lootGroup, int objectCount) {
 	if (!contains(lootGroup) || container == NULL || level <= 0 || receiver == NULL)
 		return;
 
@@ -221,7 +221,7 @@ void LootManagerImplementation::createLoot(PlayerCreature* receiver, SceneObject
 	}
 
 	while (lootVector.size()>0) {
-		attachLoot(receiver, lootVector.get(0), container);
+		attachLoot(receiver, lootVector.get(0), container, objectCount);
 		//SceneObject* loot = craftingManager->createLootItem(lootVector.get(0)->getTemplateCRC(), level);
 		//loot->sendTo(zone, true);
 		//container->addObject(loot, -1, true);
@@ -230,7 +230,7 @@ void LootManagerImplementation::createLoot(PlayerCreature* receiver, SceneObject
 	}
 }
 
-bool LootManagerImplementation::attachLoot(PlayerCreature* receiver, LootObject* loot, SceneObject* container) {
+bool LootManagerImplementation::attachLoot(PlayerCreature* receiver, LootObject* loot, SceneObject* container, int objectCount) {
 	if (loot == NULL || container == NULL || receiver == NULL)
 		return false;
 
@@ -252,6 +252,14 @@ bool LootManagerImplementation::attachLoot(PlayerCreature* receiver, LootObject*
 		return true;
 	}
 	SceneObject* item = zoneServer->createObject(loot->getTemplateCRC(), 2);
+
+	if (objectCount > 0) {
+		if (item->isTangibleObject()) {
+			TangibleObject* tangibleItem = (TangibleObject*) item;
+			tangibleItem->setUseCount(objectCount, true);
+		}
+	}
+
 	item->sendTo(receiver, true);
 
 	Locker clocker(container);
@@ -317,6 +325,6 @@ void LootManagerImplementation::testLoot(PlayerCreature* receiver, SceneObject* 
 
 	info("testing " + String::valueOf(groups.size()) + " cases", true);
 
-	createLoot(receiver, container, level, &groups);
+	createLoot(receiver, container, level, 1, 2);
 	info("finished testing", true);
 }
