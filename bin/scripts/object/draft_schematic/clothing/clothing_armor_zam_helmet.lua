@@ -79,7 +79,7 @@ object_draft_schematic_clothing_clothing_armor_zam_helmet = object_draft_schemat
    experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
    experimentalMin = {0, 0, 0, 1000, 1, 11250, 8, 4, 68, 1, 32, 1, 18750},
    experimentalMax = {0, 0, 0, 1000, 20, 18750, 5, 2, 41, 1, 32, 40, 31250},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 1289593246, -- Script: 'object/tangible/wearables/armor/zam/armor_zam_wesell_helmet.iff'
 }

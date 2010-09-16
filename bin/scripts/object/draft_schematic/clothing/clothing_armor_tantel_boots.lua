@@ -79,7 +79,7 @@ object_draft_schematic_clothing_clothing_armor_tantel_boots = object_draft_schem
    experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
    experimentalMin = {0, 0, 0, 1000, 1, 11250, 9, 22, 9, 1, 2, 5, 11250},
    experimentalMax = {0, 0, 0, 1000, 20, 18750, 6, 13, 5, 1, 2, 30, 18750},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 2233569603, -- Script: 'object/tangible/wearables/armor/tantel/armor_tantel_skreej_boots.iff'
 }

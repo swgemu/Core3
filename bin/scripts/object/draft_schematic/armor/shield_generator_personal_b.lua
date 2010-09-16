@@ -79,7 +79,7 @@ object_draft_schematic_armor_shield_generator_personal_b = object_draft_schemati
    experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
    experimentalMin = {0, 0, 1000, 1, 1000, 0, 0, 0, 1, 2, 1, 1000},
    experimentalMax = {0, 0, 1000, 30, 2000, 0, 0, 0, 1, 2, 45, 2000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 
    tanoCRC = 4256080763, -- Script: 'object/tangible/component/armor/shield_generator_personal_b.iff'
 }
