@@ -681,3 +681,7 @@ ResourceContainer* ResourceSpawner::harvestResource(PlayerCreature* player, cons
 ResourceSpawn* ResourceSpawner::getFromRandomPool(const String& type) {
 	return randomPool->removeSpawn(type);
 }
+
+void ResourceSpawner::addToListBox(String& name, SuiListBox* suil) {
+
+}

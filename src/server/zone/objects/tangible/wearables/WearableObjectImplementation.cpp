@@ -22,6 +22,8 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 	if (socketsLeft() > 0)
 		alm->insertAttribute("sockets", socketsLeft());
+
+	wearableSkillModMap.insertStatMods(alm);
 }
 
 void WearableObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {

@@ -355,3 +355,8 @@ void ResourceManagerImplementation::givePlayerResource(PlayerCreature* playerCre
 		}
 	}
 }
+
+/// Resource Deed Methods
+void ResourceManagerImplementation::addChildrenToDeedListBox(String& name, SuiListBox* suil) {
+	resourceSpawner->addToListBox(name, suil);
+}

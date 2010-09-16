@@ -130,6 +130,10 @@ class CraftingTool extends ToolTangibleObject {
 		return true;
 	}
 	
+	public boolean isReady() {
+		return status == "@crafting:tool_status_ready";
+	}
+	
 	public int getToolType() {
 		return type;
 	}
