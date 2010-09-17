@@ -63,6 +63,40 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+	try {
+
+		ManagedReference<SceneObject* > object =
+				server->getZoneServer()->getObject(target);
+
+		ManagedReference<PlayerCreature*> player = NULL;
+
+		StringTokenizer args(arguments.toString());
+
+		if(object == NULL || !object->isPlayerCreature()) {
+
+			String firstName;
+			if(args.hasMoreTokens()) {
+				args.getStringToken(firstName);
+				player = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+			}
+
+		} else {
+			player = (PlayerCreature*) object.get();
+		}
+
+		if (player == NULL) {
+			creature->sendSystemMessage("invalid arguments for grantBadge command:  /grantBadge <firstname> <badgeId>");
+			return GENERALERROR;
+		}
+
+		int badgeId;
+		badgeId = args.getIntToken();
+
+		server->getPlayerManager()->awardBadge(player,badgeId);
+
+	} catch (...) {
+		creature->sendSystemMessage("invalid arguments for grantBadge command:  /grantBadge <firstname> <badgeId>");
+	}
 		return SUCCESS;
 	}
 
