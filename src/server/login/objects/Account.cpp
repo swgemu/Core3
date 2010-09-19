@@ -90,7 +90,7 @@ bool Account::create(ConfigManager* configManager, LoginClient* client) {
 
 bool Account::validate(ConfigManager* configManager, LoginClient* client) {
 	StringBuffer query;
-	query << "SELECT account_id, station_id, active, ban_id FROM accounts WHERE username = '" << username << "' AND password = SHA1('" << password << "') LIMIT 1;";
+	query << "SELECT account_id, station_id, active, ban_id, password, SHA1('" << password << "') FROM accounts WHERE username = '" << username << "' LIMIT 1;";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
@@ -119,6 +119,17 @@ bool Account::validate(ConfigManager* configManager, LoginClient* client) {
 			delete result;
 			return false;
 		}
+
+		String passwordHash = result->getString(4);
+		String enteredPassword = result->getString(5);
+
+		if (passwordHash != enteredPassword) {
+			delete result,
+
+			client->sendMessage(new ErrorMessage("Password Error", "Incorrect password entered.", 0));
+			return false;
+		}
+
 	} else {
 		delete result;
 		//The account couldn't be found, so we attempt to create one.
