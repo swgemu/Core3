@@ -136,7 +136,7 @@ class SuiBox extends ManagedObject implements Logger {
 	}
 	
 	public void finalize() {
-		//Logger.info("deleting", true);
+		Logger.info("deleting sui box", true);
 	}
 	
 	public void initializeTransientMembers() {
@@ -233,6 +233,10 @@ class SuiBox extends ManagedObject implements Logger {
 
 	public void setPromptText(final string name) {
 		promptText = name;
+	}
+	
+	public string getPromptTitle() {
+		return promptTitle;
 	}
 	
 	public void setHandlerText(final string text) {

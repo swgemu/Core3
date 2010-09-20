@@ -18,7 +18,7 @@
 
 #include "server/zone/objects/scene/Observable.h"
 
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
 
 /*
  *	ResourceManagerStub
@@ -224,7 +224,7 @@ ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 		return ((ResourceManagerImplementation*) _impl)->getResourceSpawn(spawnName);
 }
 
-void ResourceManager::addChildrenToDeedListBox(String& name, SuiListBox* suil) {
+void ResourceManager::addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -232,10 +232,11 @@ void ResourceManager::addChildrenToDeedListBox(String& name, SuiListBox* suil) {
 		DistributedMethod method(this, 19);
 		method.addAsciiParameter(name);
 		method.addObjectParameter(suil);
+		method.addBooleanParameter(parent);
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->addChildrenToDeedListBox(name, suil);
+		((ResourceManagerImplementation*) _impl)->addChildrenToDeedListBox(name, suil, parent);
 }
 
 /*
@@ -375,7 +376,7 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
 		break;
 	case 19:
-		addChildrenToDeedListBox(inv->getAsciiParameter(_param0_addChildrenToDeedListBox__String_SuiListBox_), (SuiListBox*) inv->getObjectParameter());
+		addChildrenToDeedListBox(inv->getAsciiParameter(_param0_addChildrenToDeedListBox__String_ResourceDeedListBox_bool_), (ResourceDeedListBox*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -436,8 +437,8 @@ ResourceSpawn* ResourceManagerAdapter::getResourceSpawn(const String& spawnName)
 	return ((ResourceManagerImplementation*) impl)->getResourceSpawn(spawnName);
 }
 
-void ResourceManagerAdapter::addChildrenToDeedListBox(String& name, SuiListBox* suil) {
-	((ResourceManagerImplementation*) impl)->addChildrenToDeedListBox(name, suil);
+void ResourceManagerAdapter::addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent) {
+	((ResourceManagerImplementation*) impl)->addChildrenToDeedListBox(name, suil, parent);
 }
 
 /*

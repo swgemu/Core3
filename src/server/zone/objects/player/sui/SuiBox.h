@@ -103,6 +103,8 @@ public:
 
 	void setPromptText(const String& name);
 
+	String getPromptTitle();
+
 	void setHandlerText(const String& text);
 
 	void setUsingObjectID(unsigned long long oid);
@@ -153,6 +155,8 @@ protected:
 	SuiBox(DummyConstructorParameter* param);
 
 	virtual ~SuiBox();
+
+	String _return_getPromptTitle;
 
 	friend class SuiBoxHelper;
 };
@@ -263,6 +267,8 @@ public:
 	void setPromptTitle(const String& name);
 
 	void setPromptText(const String& name);
+
+	String getPromptTitle();
 
 	void setHandlerText(const String& text);
 
@@ -376,6 +382,8 @@ public:
 	void setPromptTitle(const String& name);
 
 	void setPromptText(const String& name);
+
+	String getPromptTitle();
 
 	void setHandlerText(const String& text);
 

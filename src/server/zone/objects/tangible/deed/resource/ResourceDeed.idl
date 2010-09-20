@@ -62,6 +62,16 @@ class ResourceDeed extends Deed {
 	public native void initializeTransientMembers();
 	
 	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	
+	
+	/**
 	 * Handles the radial selection sent by the client
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }

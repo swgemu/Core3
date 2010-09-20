@@ -117,7 +117,7 @@ namespace server {
 
 	  	void handleDiagnose(uint32 boxID, PlayerCreature* player);
 	  	void handleFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
-	  	void handleGiveFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleGiveFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
 
 	  	void handleCloneConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
 	  	void handleCloneRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
