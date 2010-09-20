@@ -205,12 +205,25 @@ void SuiBox::setPromptText(const String& name) {
 		((SuiBoxImplementation*) _impl)->setPromptText(name);
 }
 
-void SuiBox::setHandlerText(const String& text) {
+String SuiBox::getPromptTitle() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 20);
+
+		method.executeWithAsciiReturn(_return_getPromptTitle);
+		return _return_getPromptTitle;
+	} else
+		return ((SuiBoxImplementation*) _impl)->getPromptTitle();
+}
+
+void SuiBox::setHandlerText(const String& text) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
 		method.addAsciiParameter(text);
 
 		method.executeWithVoidReturn();
@@ -223,7 +236,7 @@ void SuiBox::setUsingObjectID(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -236,7 +249,7 @@ void SuiBox::setWindowType(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addUnsignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -249,7 +262,7 @@ void SuiBox::setBoxType(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -262,7 +275,7 @@ void SuiBox::setIntValue(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -275,7 +288,7 @@ bool SuiBox::isInputBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -287,7 +300,7 @@ bool SuiBox::isListBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -299,7 +312,7 @@ bool SuiBox::isMessageBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -311,7 +324,7 @@ bool SuiBox::isTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -323,7 +336,7 @@ bool SuiBox::isBankTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -335,7 +348,7 @@ bool SuiBox::isSlicingBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -347,7 +360,7 @@ bool SuiBox::isCharacterBuilderBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -359,7 +372,7 @@ bool SuiBox::isColorPicker() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -371,7 +384,7 @@ void SuiBox::setCancelButton(bool value, const String& cancelText) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addBooleanParameter(value);
 		method.addAsciiParameter(cancelText);
 
@@ -385,7 +398,7 @@ void SuiBox::setOtherButton(bool value, const String& backText) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addBooleanParameter(value);
 		method.addAsciiParameter(backText);
 
@@ -399,7 +412,7 @@ void SuiBox::setOkButton(bool value, const String& okText) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addBooleanParameter(value);
 		method.addAsciiParameter(okText);
 
@@ -413,7 +426,7 @@ unsigned long long SuiBox::getUsingObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -425,7 +438,7 @@ int SuiBox::getIntValue() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -437,7 +450,7 @@ PlayerCreature* SuiBox::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
@@ -449,7 +462,7 @@ unsigned int SuiBox::getBoxID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -461,7 +474,7 @@ int SuiBox::getWindowType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -473,7 +486,7 @@ SceneObject* SuiBox::getUsingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -485,7 +498,7 @@ void SuiBox::setUsingObject(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -500,7 +513,6 @@ void SuiBox::setUsingObject(SceneObject* object) {
 SuiBoxImplementation::SuiBoxImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
-
 
 SuiBoxImplementation::~SuiBoxImplementation() {
 	SuiBoxImplementation::finalize();
@@ -619,6 +631,8 @@ void SuiBoxImplementation::initialize() {
 }
 
 void SuiBoxImplementation::finalize() {
+	// server/zone/objects/player/sui/SuiBox.idl(139):  		Logger.info("deleting sui box", true);
+	Logger::info("deleting sui box", true);
 }
 
 void SuiBoxImplementation::initializeTransientMembers() {
@@ -675,103 +689,108 @@ void SuiBoxImplementation::setPromptText(const String& name) {
 	promptText = name;
 }
 
+String SuiBoxImplementation::getPromptTitle() {
+	// server/zone/objects/player/sui/SuiBox.idl(239):  		return promptTitle;
+	return promptTitle;
+}
+
 void SuiBoxImplementation::setHandlerText(const String& text) {
-	// server/zone/objects/player/sui/SuiBox.idl(239):  		handlerStr = text;
+	// server/zone/objects/player/sui/SuiBox.idl(243):  		handlerStr = text;
 	handlerStr = text;
 }
 
 void SuiBoxImplementation::setUsingObjectID(unsigned long long oid) {
-	// server/zone/objects/player/sui/SuiBox.idl(243):  		usingObjectID = oid;
+	// server/zone/objects/player/sui/SuiBox.idl(247):  		usingObjectID = oid;
 	usingObjectID = oid;
 }
 
 void SuiBoxImplementation::setWindowType(unsigned int type) {
-	// server/zone/objects/player/sui/SuiBox.idl(247):  		windowType = type;
+	// server/zone/objects/player/sui/SuiBox.idl(251):  		windowType = type;
 	windowType = type;
 }
 
 void SuiBoxImplementation::setBoxType(int type) {
-	// server/zone/objects/player/sui/SuiBox.idl(251):  		boxType = type;
+	// server/zone/objects/player/sui/SuiBox.idl(255):  		boxType = type;
 	boxType = type;
 }
 
 void SuiBoxImplementation::setIntValue(int value) {
-	// server/zone/objects/player/sui/SuiBox.idl(255):  		integerValue = value;
+	// server/zone/objects/player/sui/SuiBox.idl(259):  		integerValue = value;
 	integerValue = value;
 }
 
 bool SuiBoxImplementation::isInputBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(259):  		return false;
-	return false;
-}
-
-bool SuiBoxImplementation::isListBox() {
 	// server/zone/objects/player/sui/SuiBox.idl(263):  		return false;
 	return false;
 }
 
-bool SuiBoxImplementation::isMessageBox() {
+bool SuiBoxImplementation::isListBox() {
 	// server/zone/objects/player/sui/SuiBox.idl(267):  		return false;
 	return false;
 }
 
-bool SuiBoxImplementation::isTransferBox() {
+bool SuiBoxImplementation::isMessageBox() {
 	// server/zone/objects/player/sui/SuiBox.idl(271):  		return false;
 	return false;
 }
 
-bool SuiBoxImplementation::isBankTransferBox() {
+bool SuiBoxImplementation::isTransferBox() {
 	// server/zone/objects/player/sui/SuiBox.idl(275):  		return false;
 	return false;
 }
 
-bool SuiBoxImplementation::isSlicingBox() {
+bool SuiBoxImplementation::isBankTransferBox() {
 	// server/zone/objects/player/sui/SuiBox.idl(279):  		return false;
 	return false;
 }
 
-bool SuiBoxImplementation::isCharacterBuilderBox() {
+bool SuiBoxImplementation::isSlicingBox() {
 	// server/zone/objects/player/sui/SuiBox.idl(283):  		return false;
 	return false;
 }
 
-bool SuiBoxImplementation::isColorPicker() {
+bool SuiBoxImplementation::isCharacterBuilderBox() {
 	// server/zone/objects/player/sui/SuiBox.idl(287):  		return false;
 	return false;
 }
 
+bool SuiBoxImplementation::isColorPicker() {
+	// server/zone/objects/player/sui/SuiBox.idl(291):  		return false;
+	return false;
+}
+
 unsigned long long SuiBoxImplementation::getUsingObjectID() {
-	// server/zone/objects/player/sui/SuiBox.idl(297):  		return usingObjectID;
+	// server/zone/objects/player/sui/SuiBox.idl(301):  		return usingObjectID;
 	return usingObjectID;
 }
 
 int SuiBoxImplementation::getIntValue() {
-	// server/zone/objects/player/sui/SuiBox.idl(301):  		return integerValue;
+	// server/zone/objects/player/sui/SuiBox.idl(305):  		return integerValue;
 	return integerValue;
 }
 
 PlayerCreature* SuiBoxImplementation::getPlayer() {
-	// server/zone/objects/player/sui/SuiBox.idl(305):  		return player;
+	// server/zone/objects/player/sui/SuiBox.idl(309):  		return player;
 	return player;
 }
 
 unsigned int SuiBoxImplementation::getBoxID() {
-	// server/zone/objects/player/sui/SuiBox.idl(309):  		return boxID;
+	// server/zone/objects/player/sui/SuiBox.idl(313):  		return boxID;
 	return boxID;
 }
 
 int SuiBoxImplementation::getWindowType() {
-	// server/zone/objects/player/sui/SuiBox.idl(313):  		return windowType;
+	// server/zone/objects/player/sui/SuiBox.idl(317):  		return windowType;
 	return windowType;
 }
 
 SceneObject* SuiBoxImplementation::getUsingObject() {
-	// server/zone/objects/player/sui/SuiBox.idl(317):  		return usingObject;
+	// server/zone/objects/player/sui/SuiBox.idl(321):  		return usingObject;
 	return usingObject;
 }
 
 void SuiBoxImplementation::setUsingObject(SceneObject* object) {
-	// server/zone/objects/player/sui/SuiBox.idl(321):  		usingObject = object;
+	// server/zone/objects/player/sui/SuiBox.idl(325):  		usingObject = object;
 	usingObject = object;
 }
 
@@ -832,72 +851,75 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setPromptText(inv->getAsciiParameter(_param0_setPromptText__String_));
 		break;
 	case 21:
-		setHandlerText(inv->getAsciiParameter(_param0_setHandlerText__String_));
+		resp->insertAscii(getPromptTitle());
 		break;
 	case 22:
-		setUsingObjectID(inv->getUnsignedLongParameter());
+		setHandlerText(inv->getAsciiParameter(_param0_setHandlerText__String_));
 		break;
 	case 23:
-		setWindowType(inv->getUnsignedIntParameter());
+		setUsingObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 24:
-		setBoxType(inv->getSignedIntParameter());
+		setWindowType(inv->getUnsignedIntParameter());
 		break;
 	case 25:
-		setIntValue(inv->getSignedIntParameter());
+		setBoxType(inv->getSignedIntParameter());
 		break;
 	case 26:
-		resp->insertBoolean(isInputBox());
+		setIntValue(inv->getSignedIntParameter());
 		break;
 	case 27:
-		resp->insertBoolean(isListBox());
+		resp->insertBoolean(isInputBox());
 		break;
 	case 28:
-		resp->insertBoolean(isMessageBox());
+		resp->insertBoolean(isListBox());
 		break;
 	case 29:
-		resp->insertBoolean(isTransferBox());
+		resp->insertBoolean(isMessageBox());
 		break;
 	case 30:
-		resp->insertBoolean(isBankTransferBox());
+		resp->insertBoolean(isTransferBox());
 		break;
 	case 31:
-		resp->insertBoolean(isSlicingBox());
+		resp->insertBoolean(isBankTransferBox());
 		break;
 	case 32:
-		resp->insertBoolean(isCharacterBuilderBox());
+		resp->insertBoolean(isSlicingBox());
 		break;
 	case 33:
-		resp->insertBoolean(isColorPicker());
+		resp->insertBoolean(isCharacterBuilderBox());
 		break;
 	case 34:
-		setCancelButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setCancelButton__bool_String_));
+		resp->insertBoolean(isColorPicker());
 		break;
 	case 35:
-		setOtherButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOtherButton__bool_String_));
+		setCancelButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setCancelButton__bool_String_));
 		break;
 	case 36:
-		setOkButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOkButton__bool_String_));
+		setOtherButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOtherButton__bool_String_));
 		break;
 	case 37:
-		resp->insertLong(getUsingObjectID());
+		setOkButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOkButton__bool_String_));
 		break;
 	case 38:
-		resp->insertSignedInt(getIntValue());
+		resp->insertLong(getUsingObjectID());
 		break;
 	case 39:
-		resp->insertLong(getPlayer()->_getObjectID());
+		resp->insertSignedInt(getIntValue());
 		break;
 	case 40:
-		resp->insertInt(getBoxID());
+		resp->insertLong(getPlayer()->_getObjectID());
 		break;
 	case 41:
-		resp->insertSignedInt(getWindowType());
+		resp->insertInt(getBoxID());
 		break;
 	case 42:
-		resp->insertLong(getUsingObject()->_getObjectID());
+		resp->insertSignedInt(getWindowType());
 		break;
 	case 43:
+		resp->insertLong(getUsingObject()->_getObjectID());
+		break;
+	case 44:
 		setUsingObject((SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -965,6 +987,10 @@ void SuiBoxAdapter::setPromptTitle(const String& name) {
 
 void SuiBoxAdapter::setPromptText(const String& name) {
 	((SuiBoxImplementation*) impl)->setPromptText(name);
+}
+
+String SuiBoxAdapter::getPromptTitle() {
+	return ((SuiBoxImplementation*) impl)->getPromptTitle();
 }
 
 void SuiBoxAdapter::setHandlerText(const String& text) {

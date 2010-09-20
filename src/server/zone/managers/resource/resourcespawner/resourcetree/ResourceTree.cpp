@@ -157,7 +157,6 @@ ResourceTreeEntry* ResourceTree::getEntry(const String& type, Vector<String> exc
 	return baseNode->getEntry(type, excludes, zoneid);
 }
 
-
 void ResourceTree::toString() {
 	baseNode->toString();
 }

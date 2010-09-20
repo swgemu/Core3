@@ -60,7 +60,7 @@ include server.zone.packets.resource.ResourceListForSurveyMessage;
 include server.zone.objects.resource.ResourceSpawn;
 import server.zone.objects.scene.Observer;
 import server.zone.objects.scene.Observable;
-import server.zone.objects.player.sui.listbox.SuiListBox;
+import server.zone.objects.player.sui.listbox.resourcedeedlistbox.ResourceDeedListBox;
 
 /**
  * The resource manager handles all aspects of in game resources
@@ -119,6 +119,6 @@ class ResourceManager extends Observer implements Lua {
 	private native void startResourceSpawner();	
 	
 	/// Resource Deed Methods
-	public native void addChildrenToDeedListBox(string name, SuiListBox suil);
+	public native void addChildrenToDeedListBox(final string name, ResourceDeedListBox suil, boolean parent = false);
 }
 

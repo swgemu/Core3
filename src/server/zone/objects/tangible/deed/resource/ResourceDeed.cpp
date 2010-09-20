@@ -42,6 +42,14 @@ void ResourceDeed::initializeTransientMembers() {
 		((ResourceDeedImplementation*) _impl)->initializeTransientMembers();
 }
 
+void ResourceDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ResourceDeedImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+}
+
 int ResourceDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	if (_impl == NULL) {
 		if (!deployed)

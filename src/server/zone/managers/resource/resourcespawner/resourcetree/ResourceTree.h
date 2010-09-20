@@ -84,6 +84,10 @@ public:
 	ResourceTreeEntry* getEntry(const String& type,
 			Vector<String> excludes = 0, int zoneid = -1);
 
+	ResourceTreeNode* getBaseNode() {
+		return baseNode;
+	}
+
 	/**
 	 * Prints the tree
 	 */

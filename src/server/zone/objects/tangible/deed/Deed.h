@@ -67,6 +67,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
 
+	void updateCraftingValues(ManufactureSchematic* schematic);
+
 	void setGeneratedObjectTemplate(const String& templ);
 
 	String getGeneratedObjectTemplate();
@@ -111,6 +113,8 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
+
+	virtual void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void setGeneratedObjectTemplate(const String& templ);
 

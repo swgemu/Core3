@@ -132,7 +132,8 @@ ResourceTreeEntry* ResourceTreeNode::find(ResourceTreeEntry* entry, const String
 
 	for(int i = 0; i < entries.size(); ++i) {
 		ResourceTreeEntry* ent = entries.get(i);
-		if(ent->getType() == type) {
+
+		if(ent->getType() == type || ent->getFinalClass() == type) {
 			return ent;
 		}
 	}
@@ -150,7 +151,7 @@ ResourceTreeNode* ResourceTreeNode::find(ResourceTreeNode* node, const String& t
 
 	for(int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* n = nodes.get(i);
-		if(n->getStfName() == type)
+		if(n->getStfName() == type || n->getName() == type)
 			return n;
 		else
 			node = n->find(node, type);
@@ -250,6 +251,19 @@ void ResourceTreeNode::updateEntries() {
 	for(int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* node = nodes.get(i);
 		node->updateEntries();
+	}
+}
+
+void ResourceTreeNode::addToSuiListBox(SuiListBox* suil) {
+	for(int i = 0; i < nodes.size(); ++i) {
+		ResourceTreeNode* node = nodes.get(i);
+		suil->addMenuItem(node->getName(), 0);
+	}
+
+	for(int i = 0; i < entries.size(); ++i) {
+		ResourceTreeEntry* ent = entries.get(i);
+		if(!ent->hasChildren() && !ent->isRecycled())
+			suil->addMenuItem(ent->getFinalClass());
 	}
 }
 

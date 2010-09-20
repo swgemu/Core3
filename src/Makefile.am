@@ -100,6 +100,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBox.cpp \
 				server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.cpp \
+				server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.cpp \
 				server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.cpp \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.cpp \
@@ -333,6 +334,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBoxImplementation.cpp \
+		server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBoxImplementation.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
 		server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBoxImplementation.cpp \

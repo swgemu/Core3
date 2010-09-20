@@ -70,6 +70,14 @@ float ResourceMap::getDensityAt(const String& resourcename, int zoneid, float x,
 void ResourceMap::add(const String& resname, ManagedReference<ResourceSpawn* > resourceSpawn) {
 	put(resname, resourceSpawn);
 
+	/// Index the resources by type, for resource deeds
+	TypeResourceMap* typemap = typeResourceMap.get(resourceSpawn->getFinalClass());
+	if(typemap == NULL) {
+		typemap = new TypeResourceMap();
+		typeResourceMap.put(resourceSpawn->getFinalClass(), typemap);
+	}
+	typemap->add(resourceSpawn);
+
 	for(int i = 0; i < resourceSpawn->getSpawnMapSize(); ++i) {
 		uint32 zone = (uint32)resourceSpawn->getSpawnMapZone(i);
 
@@ -109,4 +117,24 @@ void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn, uint32
 
 	if (map != NULL)
 		map->drop(resourceSpawn->getName());
+}
+
+void ResourceMap::addToSuiListBox(const String& name, SuiListBox* suil) {
+
+	TypeResourceMap* typemap = typeResourceMap.get(name);
+
+	if(typemap == NULL) {
+		suil->addMenuItem("No resources to display");
+		return;
+	}
+
+	for(int i = 0; i < typemap->size(); ++i) {
+		ManagedReference<ResourceSpawn*> spawn = typemap->get(i);
+
+		if(spawn == NULL)
+			continue;
+
+		suil->addMenuItem(spawn->getName(), spawn->getObjectID());
+	}
+
 }
