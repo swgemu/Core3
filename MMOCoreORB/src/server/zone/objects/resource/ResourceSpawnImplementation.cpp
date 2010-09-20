@@ -49,6 +49,7 @@
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 void ResourceSpawnImplementation::initializeTransientMembers() {
 
@@ -240,6 +241,19 @@ void ResourceSpawnImplementation::decreaseContainerReferenceCount() {
 		destroyObjectFromDatabase(true);
 
 		dbDestroyed = true;
+	}
+}
+void ResourceSpawnImplementation::addStatsToDeedListBox(SuiListBox* suil) {
+
+	String tempname = "Name = " + spawnName;
+	suil->addMenuItem(tempname);
+
+	for (int i = 0; i < spawnAttributes.size(); ++i) {
+		String attrib;
+		int value = getAttributeAndValue(attrib, i);
+
+		String tempstat = "@obj_attr_n:" + attrib + " = " + value;
+		suil->addMenuItem(tempstat);
 	}
 }
 

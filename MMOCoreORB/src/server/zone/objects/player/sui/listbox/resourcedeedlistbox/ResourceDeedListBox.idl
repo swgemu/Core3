@@ -42,57 +42,45 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible.deed;
+package server.zone.objects.player.sui.listbox.resourcedeedlistbox;
 
 import engine.lua.LuaObject;
-import server.zone.objects.tangible.TangibleObject;
-import server.zone.Zone;
-import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
+import engine.service.proto.BaseMessage;
+import server.zone.objects.player.sui.listbox.SuiListBox;
 
-import server.zone.templates.SharedObjectTemplate;
+class ResourceDeedListBox extends SuiListBox {
 
-class Deed extends TangibleObject {
-	protected string generatedObjectTemplate;
-	
-	public Deed() {
-		Logger.setLoggingName("Deed");
+	@dereferenced
+	private transient Vector<string> boxes;
+ 
+	public ResourceDeedListBox(PlayerCreature player, unsigned int windowType, unsigned int listBoxType = 0) {
+		super(player, windowType, SuiBox.LISTBOX);
 	}
+	
+	public native void finalize();
 	
 	public native void initializeTransientMembers();
 	
-	/**
-	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
-	 * @pre { templateData is a valid pointer }
-	 * @post { TangibleObject members are initialized }
-	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
-	 */
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
-	@local
-	public native void fillAttributeList(AttributeListMessage alm, PlayerCreature object);
-	
-	@local
-	public abstract void updateCraftingValues(ManufactureSchematic schematic) {
-		error("Unhandled updateCraftingValues for this object type");
+	public void addBox(final string name) {
+		boxes.add(name);
 	}
 	
-	/**
-	 * Sets the object template path for the object which is generated from this deed being used.
-	 * @param templ The string template path that is to be created when this deed is used.
-	 */
-	public void setGeneratedObjectTemplate(final string templ) {
-		generatedObjectTemplate = templ;
+	public int getBoxCount() {
+		return boxes.size();
 	}
 	
-	/**
-	 * Gets the object template path for the object which is generated from this deed being used.
-	 */
-	public string getGeneratedObjectTemplate() {
-		return generatedObjectTemplate;
+	public string getBox(int index) {
+		return boxes.get(index);
+	}
+
+	public native void removeBox();
+	
+	public string getCurrentBox() {
+		return boxes.get(boxes.size() - 1);
 	}
 	
-	public boolean isDeedObject() {
-		return true;
-	}
+	public native string getPreviousBox();
+
 }

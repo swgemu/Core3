@@ -28,6 +28,24 @@ using namespace server::zone::objects::player;
 namespace server {
 namespace zone {
 namespace objects {
+namespace player {
+namespace sui {
+namespace listbox {
+
+class SuiListBox;
+
+} // namespace listbox
+} // namespace sui
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::sui::listbox;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace resource {
 
 class ResourceContainer;
@@ -139,6 +157,8 @@ public:
 	int getAttributeValue(int index);
 
 	int getValueOf(int index);
+
+	void addStatsToDeedListBox(SuiListBox* suil);
 
 	void print();
 
@@ -299,6 +319,8 @@ public:
 
 	int getValueOf(int index);
 
+	void addStatsToDeedListBox(SuiListBox* suil);
+
 	void print();
 
 	ResourceSpawn* _this;
@@ -403,6 +425,8 @@ public:
 	int getAttributeValue(int index);
 
 	int getValueOf(int index);
+
+	void addStatsToDeedListBox(SuiListBox* suil);
 
 protected:
 	String _param0_setName__String_;

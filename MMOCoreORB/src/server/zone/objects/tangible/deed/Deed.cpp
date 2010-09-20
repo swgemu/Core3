@@ -54,6 +54,14 @@ void Deed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) 
 		((DeedImplementation*) _impl)->fillAttributeList(alm, object);
 }
 
+void Deed::updateCraftingValues(ManufactureSchematic* schematic) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((DeedImplementation*) _impl)->updateCraftingValues(schematic);
+}
+
 void Deed::setGeneratedObjectTemplate(const String& templ) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -169,18 +177,23 @@ DeedImplementation::DeedImplementation() {
 	Logger::setLoggingName("Deed");
 }
 
+void DeedImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
+	// server/zone/objects/tangible/deed/Deed.idl(77):  		error("Unhandled updateCraftingValues for this object type");
+	error("Unhandled updateCraftingValues for this object type");
+}
+
 void DeedImplementation::setGeneratedObjectTemplate(const String& templ) {
-	// server/zone/objects/tangible/deed/Deed.idl(80):  		generatedObjectTemplate = templ;
+	// server/zone/objects/tangible/deed/Deed.idl(85):  		generatedObjectTemplate = templ;
 	generatedObjectTemplate = templ;
 }
 
 String DeedImplementation::getGeneratedObjectTemplate() {
-	// server/zone/objects/tangible/deed/Deed.idl(87):  		return generatedObjectTemplate;
+	// server/zone/objects/tangible/deed/Deed.idl(92):  		return generatedObjectTemplate;
 	return generatedObjectTemplate;
 }
 
 bool DeedImplementation::isDeedObject() {
-	// server/zone/objects/tangible/deed/Deed.idl(91):  		return true;
+	// server/zone/objects/tangible/deed/Deed.idl(96):  		return true;
 	return true;
 }
 

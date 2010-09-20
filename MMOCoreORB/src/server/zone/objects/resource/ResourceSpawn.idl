@@ -50,6 +50,7 @@ import system.util.Vector;
 
 import engine.core.ManagedObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.player.sui.listbox.SuiListBox;
 include server.zone.packets.scene.AttributeListMessage;
 
 import server.zone.objects.resource.ResourceContainer;
@@ -297,6 +298,8 @@ class ResourceSpawn extends SceneObject {
     public int getValueOf(int index) {
     	return indexedStats.get(index);
     }
+    
+    public native void addStatsToDeedListBox(SuiListBox suil);
 
 	@local
     public native void print();

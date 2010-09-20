@@ -93,6 +93,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	int useObject(PlayerCreature* player);
@@ -129,6 +131,8 @@ public:
 	ResourceDeedImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 

@@ -107,9 +107,11 @@ namespace objects {
 namespace player {
 namespace sui {
 namespace listbox {
+namespace resourcedeedlistbox {
 
-class SuiListBox;
+class ResourceDeedListBox;
 
+} // namespace resourcedeedlistbox
 } // namespace listbox
 } // namespace sui
 } // namespace player
@@ -117,7 +119,7 @@ class SuiListBox;
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player::sui::listbox;
+using namespace server::zone::objects::player::sui::listbox::resourcedeedlistbox;
 
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
@@ -174,7 +176,7 @@ public:
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
-	void addChildrenToDeedListBox(String& name, SuiListBox* suil);
+	void addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent = false);
 
 protected:
 	ResourceManager(DummyConstructorParameter* param);
@@ -252,7 +254,7 @@ private:
 	void startResourceSpawner();
 
 public:
-	void addChildrenToDeedListBox(String& name, SuiListBox* suil);
+	void addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent = false);
 
 	ResourceManager* _this;
 
@@ -319,7 +321,7 @@ public:
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
-	void addChildrenToDeedListBox(String& name, SuiListBox* suil);
+	void addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent);
 
 protected:
 	String _param2_sendResourceListForSurvey__PlayerCreature_int_String_;
@@ -330,7 +332,7 @@ protected:
 	String _param1_createResourceSpawn__PlayerCreature_String_;
 	String _param1_givePlayerResource__PlayerCreature_String_int_;
 	String _param0_getResourceSpawn__String_;
-	String _param0_addChildrenToDeedListBox__String_SuiListBox_;
+	String _param0_addChildrenToDeedListBox__String_ResourceDeedListBox_bool_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

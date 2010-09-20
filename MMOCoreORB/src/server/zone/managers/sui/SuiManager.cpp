@@ -67,6 +67,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.h"
 #include "server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.h"
+#include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -79,7 +80,7 @@ which carries forward this exception.
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
-
+#include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
 
 /*#include "../item/ItemManager.h"
 #include "../../objects/creature/bluefrog/BlueFrogVector.h"
@@ -108,7 +109,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	String returnString;
 
 	//GuildManager* pGuild = server->getGuildManager();
-
 	switch (type) {
 	/*case SuiWindowType::CHARACTERLIST:
 		handleCharacterListSelection(boxID, player, cancel, atoi(value.toCharArray()));
@@ -267,10 +267,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		handleDiagnose(boxID, player);
 		break;
 	case SuiWindowType::FREE_RESOURCE:
-		handleFreeResource(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::GIVE_FREE_RESOURCE:
-		handleGiveFreeResource(boxID, player, cancel, atoi(value.toCharArray()));
+		handleGiveFreeResource(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
 		break;
 	case SuiWindowType::TEACH_SKILL:
 		handleTeachSkill(boxID, player, cancel);
@@ -1522,115 +1519,8 @@ void SuiManager::handleDiagnose(uint32 boxID, PlayerCreature* player) {
 	player->removeSuiBox(boxID);
 }
 
-void SuiManager::handleFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
-	/*Locker locker(player);
+void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
 
-	if (player == NULL)
-		return;
-
-	if (!player->hasSuiBox(boxID))
-		return;
-
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-	SuiListBox* suiListBox = (SuiListBox*) sui.get();
-	if (suiListBox == NULL)
-		return;
-
-	String nodeName = suiListBox->getMenuItemName(index);
-
-	int menuSize = suiListBox->getMenuSize();
-
-	SceneObject* deedObject = suiListBox->getUsingObject();
-
-	ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
-
-	player->removeSuiBox(boxID);
-
-	if (cancel) {
-
-		String parent = resourceManager->getParent(nodeName);
-
-		if (parent != "resource") {
-
-			SuiListBox* sui = new SuiListBox(player, SuiWindowType::FREE_RESOURCE, SuiListBox::HANDLETWOBUTTON);
-
-			sui->setPromptTitle("Resources");
-
-			if (resourceManager->isType(parent))
-				sui->setPromptText("Choose resource.");
-			else
-				sui->setPromptText("Choose resource class.");
-
-			if (resourceMaresourceManager->getParent(parent) == "resource")
-				sui->setCancelButton(true, "");
-			else
-				sui->setCancelButton(true, "Back");
-
-			sui->setUsingObject(deedObject);
-
-			player->addSuiBox(sui);
-			resourceManager->addChildrenToListBox(nodeName, sui);
-
-			player->sendMessage(sui->generateMessage());
-
-		}
-
-	} else {
-
-		if (menuSize > index) {
-
-			if (resourceManager->typeHasChildren(nodeName)) {
-
-				SuiListBox* sui = new SuiListBox(player, SuiWindowType::FREE_RESOURCE, SuiListBox::HANDLETWOBUTTON);
-
-				sui->setPromptTitle("Resources");
-				sui->setPromptText("Choose resource class.");
-				sui->setCancelButton(true, "Back");
-
-				sui->setUsingObject(deedObject);
-
-				player->addSuiBox(sui);
-				resourceManager->addChildrenToListBox(nodeName, sui);
-
-				player->sendMessage(sui->generateMessage());
-
-			} else if (resourceManager->isType(nodeName)) {
-
-				SuiListBox* sui = new SuiListBox(player, SuiWindowType::FREE_RESOURCE, SuiListBox::HANDLETWOBUTTON);
-
-				sui->setPromptTitle("Resources");
-				sui->setPromptText("Choose resource.");
-				sui->setCancelButton(true, "Back");
-
-				sui->setUsingObject(deedObject);
-
-				player->addSuiBox(sui);
-				resourceManager->addSpawnsToListBox(nodeName, sui);
-
-				player->sendMessage(sui->generateMessage());
-
-			} else {
-
-				SuiListBox* sui = new SuiListBox(player, SuiWindowType::GIVE_FREE_RESOURCE, SuiListBox::HANDLETWOBUTTON);
-
-				sui->setPromptTitle("Resource: " + nodeName);
-				sui->setPromptText("Please confirm that you would like to select this resource as your Veteran Reward Crate of Resources. Use the BACK button to go back and select a different resource.");
-				sui->setCancelButton(true, "Back");
-
-				sui->setUsingObject(deedObject);
-
-				player->addSuiBox(sui);
-				resourceManager->resourceInfoToListBox(nodeName, sui);
-
-				player->sendMessage(sui->generateMessage());
-
-			}
-		}
-	}*/
-}
-
-void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
-/*
 	Locker locker(player);
 
 	if (player == NULL)
@@ -1640,49 +1530,86 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, ui
 		return;
 
 	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-	SuiListBox* suiListBox = (SuiListBox*) sui.get();
+	ResourceDeedListBox* suiListBox = (ResourceDeedListBox*) sui.get();
 	if (suiListBox == NULL)
 		return;
-
-	String nodeName = suiListBox->getMenuItemName(0);
 
 	SceneObject* deedObject = suiListBox->getUsingObject();
 
 	ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
+	ManagedReference<ResourceSpawn* > spawn = NULL;
 
 	player->removeSuiBox(boxID);
 
-	if (cancel) {
+	if(cancel)
+		return;
 
-		String parent = resourceManager->getParent(nodeName);
+	String nodeName = "";
 
-		SuiListBox* sui = new SuiListBox(player, SuiWindowType::FREE_RESOURCE, SuiListBox::HANDLETWOBUTTON);
+	if (otherPressed) {
 
-		sui->setPromptTitle("Resources");
-		sui->setPromptText("Choose resource.");
-		sui->setCancelButton(true, "Back");
-
-		sui->setUsingObject(deedObject);
-
-		player->addSuiBox(sui);
-		resourceManager->addChildrenToListBox(nodeName, sui);
-
-		player->sendMessage(sui->generateMessage());
-
+		suiListBox->removeBox();
 
 	} else {
 
-		resourceManager->givePlayerResource(player, nodeName, ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
-		player->sendSystemMessage("You received 100k of resources.");
+		if (suiListBox->getPromptTitle() != "Resources") {
 
-		if (deedObject->getGameObjectType() == SceneObjectImplementation::RESOURCEDEED) {
-			ResourceDeed* deed = (ResourceDeed*) deedObject;
+			resourceManager->givePlayerResource(player, suiListBox->getPromptTitle(),
+				ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
 
-			Locker cLocker(deed, player);
-			deed->destroyDeed();
+			if (deedObject->getGameObjectType() == SceneObjectImplementation::RESOURCEDEED) {
+				ResourceDeed* deed = (ResourceDeed*) deedObject;
+
+				Locker cLocker(deed, player);
+				deed->destroyDeed();
+			}
+
+			return;
+
 		}
+		/// If nothing was chosen
+		if(index < 0) {
+			player->addSuiBox(suiListBox);
+			player->sendMessage(suiListBox->generateMessage());
+			return;
+		}
+
+		nodeName = suiListBox->getMenuItemName(index);
+
+		spawn = resourceManager->getResourceSpawn(nodeName);
+
+		if (spawn != NULL)
+			suiListBox->addBox(spawn->getName());
+		else
+			suiListBox->addBox(nodeName);
+
 	}
-*/
+
+	suiListBox->clearOptions();
+	suiListBox->removeAllMenuItems();
+
+	if (spawn != NULL) {
+
+		suiListBox->setPromptTitle(spawn->getName());
+		suiListBox->setPromptText("@veteran:confirm_choose_type");
+
+		spawn->addStatsToDeedListBox(suiListBox);
+
+	} else {
+
+		suiListBox->setPromptTitle("Resources");
+		suiListBox->setPromptText("Choose resource.");
+
+		resourceManager->addChildrenToDeedListBox(suiListBox->getCurrentBox(), suiListBox);
+	}
+
+	suiListBox->setCancelButton(true, "@cancel");
+	suiListBox->setOtherButton(true, "@back");
+
+	suiListBox->setUsingObject(deedObject);
+
+	player->addSuiBox(suiListBox);
+	player->sendMessage(suiListBox->generateMessage());
 }
 
 void SuiManager::handleConsentBox(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {

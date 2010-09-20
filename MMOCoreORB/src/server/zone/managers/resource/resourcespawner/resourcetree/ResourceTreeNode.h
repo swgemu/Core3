@@ -53,6 +53,7 @@ which carries forward this exception.
 
 #include "ResourceTreeEntry.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 class ResourceTreeNode {
 private:
@@ -84,6 +85,8 @@ public:
 	ResourceTreeNode* find(ResourceTreeNode* node, const String& type);
 
 	ResourceTreeEntry* getPlanetSpecificEntry(const String& planet);
+
+	void addToSuiListBox(SuiListBox* suil);
 
 	void updateEntries();
 

@@ -1913,10 +1913,10 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Medpack Stunned", "object/tangible/medicine/crafted/medpack_stunned_a.iff",
 				"Revive Pack", "object/tangible/medicine/medpack_revive.iff"
 			},
-			--"Resources",
-			--{
-				--"Resource Deed", "object/tangible/veteran_reward/resource.iff"
-			--},
+			"Resources",
+			{
+				"Resource Deed", "object/tangible/veteran_reward/resource.iff"
+			},
 			--"Scout Equipment",
 			--{
 				--"Camokit",

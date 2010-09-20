@@ -54,6 +54,22 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+
+/**
+ * TypeResourceMap is a container class for VectorMap<String, ManagedReference<ResourceSpawn* > >
+ * It indexes
+ */
+class TypeResourceMap : public Vector<ManagedReference<ResourceSpawn* > > {
+public:
+	TypeResourceMap() {
+
+	}
+	~TypeResourceMap() {
+
+	}
+};
+
 /**
  * ZoneResourceMap is a container class for VectorMap<String, ManagedReference<ResourceSpawn* > >
  */
@@ -77,6 +93,7 @@ class ResourceMap : public VectorMap<String, ManagedReference<ResourceSpawn* > >
 private:
 
 	VectorMap<uint32, ZoneResourceMap*> zoneResourceMap;
+	VectorMap<String, TypeResourceMap*> typeResourceMap;
 
 public:
 	ResourceMap();
@@ -125,6 +142,12 @@ public:
 		else
 			return NULL;
 	}
+	/**
+	 * Adds the resources in particular map to SUI for resource deed
+	 * \param name name of resource
+	 * \param suil Listbox
+	*/
+	void addToSuiListBox(const String& name, SuiListBox* suil);
 };
 
 
