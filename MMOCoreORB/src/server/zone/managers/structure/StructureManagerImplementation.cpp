@@ -839,7 +839,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
-	if (!obj->isASubChildOf(inventory)) {
+	if (!obj->isASubChildOf(player) && !obj->isASubChildOf(inventory)) {
 		player->sendSystemMessage("@player_structure:no_possession"); //You no longer are in possession of the deed for this structure. Aborting construction.
 		return 1;
 	}
