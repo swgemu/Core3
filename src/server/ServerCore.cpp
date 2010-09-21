@@ -203,10 +203,12 @@ void ServerCore::shutdown() {
 
 	if (zoneServer != NULL) {
 		zoneServer->stop();
-		zoneServer->finalize();
+		//zoneServer->finalize();
 
 		zoneServer = NULL;
 	}
+
+	zoneServerRef = NULL;
 
 	if (loginServer != NULL) {
 		loginServer->stop();
@@ -236,12 +238,6 @@ void ServerCore::shutdown() {
 		delete database;
 		database = NULL;
 	}
-
-	//ObjectManager::instance()->savePersistentObjects();
-
-	ObjectManager::finalize();
-
-	DistributedObjectBroker::finalize();
 
 	info("server closed");
 

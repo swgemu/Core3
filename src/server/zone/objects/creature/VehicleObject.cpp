@@ -303,10 +303,10 @@ void VehicleObjectImplementation::setDefender(SceneObject* defender) {
 
 bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	// server/zone/objects/creature/VehicleObject.idl(143):  		return 
-	if (CreatureObjectImplementation::linkedCreature == NULL)	// server/zone/objects/creature/VehicleObject.idl(144):  			return false;
+	if (CreatureObjectImplementation::linkedCreature.getForUpdate() == NULL)	// server/zone/objects/creature/VehicleObject.idl(144):  			return false;
 	return false;
 	// server/zone/objects/creature/VehicleObject.idl(146):  super.linkedCreature.isAttackableBy(object);
-	return CreatureObjectImplementation::linkedCreature->isAttackableBy(object);
+	return CreatureObjectImplementation::linkedCreature.getForUpdate()->isAttackableBy(object);
 }
 
 bool VehicleObjectImplementation::isVehicleObject() {

@@ -358,10 +358,10 @@ bool ShuttleCreatureImplementation::isAttackableBy(CreatureObject* object) {
 int ShuttleCreatureImplementation::getArrivalTime() {
 	Locker _locker(_this);
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(111):  		PlanetManager 
-	if (CreatureObjectImplementation::zone == NULL)	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(112):  			return 0;
+	if (CreatureObjectImplementation::zone.getForUpdate() == NULL)	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(112):  			return 0;
 	return 0;
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(114):  planetManager = super.zone.getPlanetManager();
-	PlanetManager* planetManager = CreatureObjectImplementation::zone->getPlanetManager();
+	PlanetManager* planetManager = CreatureObjectImplementation::zone.getForUpdate()->getPlanetManager();
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(115):  		long land = getLandingTime();
 	long long land = getLandingTime();
 	// server/zone/objects/creature/shuttle/ShuttleCreature.idl(117):  		int t = (land / 1000) * -1;

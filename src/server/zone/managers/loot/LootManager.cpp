@@ -173,26 +173,26 @@ void LootManagerImplementation::_serializationHelperMethod() {
 
 LootManagerImplementation::LootManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc, CraftingManager* craftman) {
 	_initializeImplementation();
-	// server/zone/managers/loot/LootManager.idl(81):  		Logger.setLoggingName("LootManager");
+	// server/zone/managers/loot/LootManager.idl(82):  		Logger.setLoggingName("LootManager");
 	Logger::setLoggingName("LootManager");
-	// server/zone/managers/loot/LootManager.idl(83):  		Logger.setLogging(true);
+	// server/zone/managers/loot/LootManager.idl(84):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/loot/LootManager.idl(84):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/loot/LootManager.idl(85):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/loot/LootManager.idl(86):  		lootGroups.setNullValue(null);
+	// server/zone/managers/loot/LootManager.idl(87):  		lootGroups.setNullValue(null);
 	(&lootGroups)->setNullValue(NULL);
-	// server/zone/managers/loot/LootManager.idl(87):  		lootGroups.setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl(88):  		lootGroups.setNoDuplicateInsertPlan();
 	(&lootGroups)->setNoDuplicateInsertPlan();
-	// server/zone/managers/loot/LootManager.idl(89):  		zoneServer = serv;
+	// server/zone/managers/loot/LootManager.idl(90):  		zoneServer = serv;
 	zoneServer = serv;
-	// server/zone/managers/loot/LootManager.idl(90):  		zoneProcessor = proc;
+	// server/zone/managers/loot/LootManager.idl(91):  		zoneProcessor = proc;
 	zoneProcessor = proc;
-	// server/zone/managers/loot/LootManager.idl(91):  		craftingManager = craftman;
+	// server/zone/managers/loot/LootManager.idl(92):  		craftingManager = craftman;
 	craftingManager = craftman;
 }
 
 bool LootManagerImplementation::contains(unsigned int lootGroup) {
-	// server/zone/managers/loot/LootManager.idl(100):  		return (lootGroups.contains(lootGroup));
+	// server/zone/managers/loot/LootManager.idl(101):  		return (lootGroups.contains(lootGroup));
 	return ((&lootGroups)->contains(lootGroup));
 }
 

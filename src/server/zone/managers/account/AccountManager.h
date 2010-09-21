@@ -79,7 +79,7 @@ namespace managers {
 namespace account {
 
 class AccountManagerImplementation : public ManagedObjectImplementation, public Logger {
-	ManagedReference<ZoneServer* > zoneServer;
+	ManagedWeakReference<ZoneServer* > zoneServer;
 
 	int onlineCharactersPerAccount;
 

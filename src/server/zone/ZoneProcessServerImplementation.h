@@ -132,7 +132,7 @@ namespace managers {
 }
 
 class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
-	ZoneServer* server;
+	ManagedWeakReference<ZoneServer*> server;
 
 	ZonePacketHandler* zonephandler;
 
@@ -143,7 +143,7 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	NameManager* nameManager;
 	SuiManager* suiManager;
 
-	ManagedReference<ObjectController*> objectController;
+	ManagedWeakReference<ObjectController*> objectController;
 	ProfessionManager* professionManager;
 
 

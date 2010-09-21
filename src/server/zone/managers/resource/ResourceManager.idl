@@ -68,6 +68,7 @@ import server.zone.objects.player.sui.listbox.resourcedeedlistbox.ResourceDeedLi
  */
 class ResourceManager extends Observer implements Lua {
 	private transient ZoneProcessServerImplementation processor;
+	@weakReference
 	private ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
 	private transient ObjectManager objectManager;

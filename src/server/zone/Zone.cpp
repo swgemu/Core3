@@ -439,11 +439,9 @@ ZoneImplementation::ZoneImplementation(DummyConstructorParameter* param) : Manag
 
 
 ZoneImplementation::~ZoneImplementation() {
+	ZoneImplementation::finalize();
 }
 
-
-void ZoneImplementation::finalize() {
-}
 
 void ZoneImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneHelper::instance());
@@ -510,86 +508,86 @@ void ZoneImplementation::_serializationHelperMethod() {
 }
 
 int ZoneImplementation::getZoneID() {
-	// server/zone/Zone.idl(140):  		return zoneID;
+	// server/zone/Zone.idl(142):  		return zoneID;
 	return zoneID;
 }
 
 PlanetManager* ZoneImplementation::getPlanetManager() {
-	// server/zone/Zone.idl(148):  		return planetManager;
+	// server/zone/Zone.idl(150):  		return planetManager;
 	return planetManager;
 }
 
 ZoneServer* ZoneImplementation::getZoneServer() {
-	// server/zone/Zone.idl(152):  		return server;
+	// server/zone/Zone.idl(154):  		return server;
 	return server;
 }
 
 CreatureManager* ZoneImplementation::getCreatureManager() {
-	// server/zone/Zone.idl(156):  		return creatureManager;
+	// server/zone/Zone.idl(158):  		return creatureManager;
 	return creatureManager;
 }
 
 unsigned long long ZoneImplementation::getGalacticTime() {
-	// server/zone/Zone.idl(160):  		return galacticTime.miliDifference() / 1000;
+	// server/zone/Zone.idl(162):  		return galacticTime.miliDifference() / 1000;
 	return (&galacticTime)->miliDifference() / 1000;
 }
 
 unsigned int ZoneImplementation::getWeatherID() {
-	// server/zone/Zone.idl(164):  		return weatherID;
+	// server/zone/Zone.idl(166):  		return weatherID;
 	return weatherID;
 }
 
 void ZoneImplementation::setWeatherID(unsigned int value) {
-	// server/zone/Zone.idl(168):  		weatherID = value;
+	// server/zone/Zone.idl(170):  		weatherID = value;
 	weatherID = value;
 }
 
 void ZoneImplementation::changeWeatherID(int value) {
-	// server/zone/Zone.idl(172):  		weatherID 
+	// server/zone/Zone.idl(174):  		weatherID 
 	if (weatherID == 0 && value < 0){
-	// server/zone/Zone.idl(173):  			weatherID = 0;
+	// server/zone/Zone.idl(175):  			weatherID = 0;
 	weatherID = 0;
-	// server/zone/Zone.idl(174):  			return;
+	// server/zone/Zone.idl(176):  			return;
 	return;
 }
-	// server/zone/Zone.idl(177):  += value;
+	// server/zone/Zone.idl(179):  += value;
 	weatherID += value;
-	// server/zone/Zone.idl(179):  	}
+	// server/zone/Zone.idl(181):  	}
 	if (weatherID > 4){
-	// server/zone/Zone.idl(180):  			weatherID = 4;
+	// server/zone/Zone.idl(182):  			weatherID = 4;
 	weatherID = 4;
-	// server/zone/Zone.idl(181):  			return;
+	// server/zone/Zone.idl(183):  			return;
 	return;
 }
 }
 
 bool ZoneImplementation::isWeatherEnabled() {
-	// server/zone/Zone.idl(186):  		return weatherEnabled;
+	// server/zone/Zone.idl(188):  		return weatherEnabled;
 	return weatherEnabled;
 }
 
 void ZoneImplementation::setWeatherEnabled(bool value) {
-	// server/zone/Zone.idl(190):  		weatherEnabled = value;
+	// server/zone/Zone.idl(192):  		weatherEnabled = value;
 	weatherEnabled = value;
 }
 
 void ZoneImplementation::setWeatherWindX(float value) {
-	// server/zone/Zone.idl(194):  		weatherWindX = value;
+	// server/zone/Zone.idl(196):  		weatherWindX = value;
 	weatherWindX = value;
 }
 
 void ZoneImplementation::setWeatherWindY(float value) {
-	// server/zone/Zone.idl(198):  		weatherWindY = value;
+	// server/zone/Zone.idl(200):  		weatherWindY = value;
 	weatherWindY = value;
 }
 
 float ZoneImplementation::getWeatherWindX() {
-	// server/zone/Zone.idl(202):  		return weatherWindX;
+	// server/zone/Zone.idl(204):  		return weatherWindX;
 	return weatherWindX;
 }
 
 float ZoneImplementation::getWeatherWindY() {
-	// server/zone/Zone.idl(206):  		return weatherWindY;
+	// server/zone/Zone.idl(208):  		return weatherWindY;
 	return weatherWindY;
 }
 
@@ -608,84 +606,87 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		initializeTransientMembers();
 		break;
 	case 7:
-		resp->insertLong(getNearestCloningBuilding((CreatureObject*) inv->getObjectParameter())->_getObjectID());
+		finalize();
 		break;
 	case 8:
-		resp->insertLong(getNearestPlanetaryObject((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter())->_getObjectID());
+		resp->insertLong(getNearestCloningBuilding((CreatureObject*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 9:
-		startManagers();
+		resp->insertLong(getNearestPlanetaryObject((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 10:
-		stopManagers();
+		startManagers();
 		break;
 	case 11:
-		resp->insertFloat(getHeight(inv->getFloatParameter(), inv->getFloatParameter()));
+		stopManagers();
 		break;
 	case 12:
-		addSceneObject((SceneObject*) inv->getObjectParameter());
+		resp->insertFloat(getHeight(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case 13:
-		sendMapLocationsTo(inv->getAsciiParameter(_param0_sendMapLocationsTo__String_SceneObject_), (SceneObject*) inv->getObjectParameter());
+		addSceneObject((SceneObject*) inv->getObjectParameter());
 		break;
 	case 14:
-		dropSceneObject((SceneObject*) inv->getObjectParameter());
+		sendMapLocationsTo(inv->getAsciiParameter(_param0_sendMapLocationsTo__String_SceneObject_), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertSignedInt(getZoneID());
+		dropSceneObject((SceneObject*) inv->getObjectParameter());
 		break;
 	case 16:
-		resp->insertAscii(getPlanetName());
+		resp->insertSignedInt(getZoneID());
 		break;
 	case 17:
-		resp->insertLong(getPlanetManager()->_getObjectID());
+		resp->insertAscii(getPlanetName());
 		break;
 	case 18:
-		resp->insertLong(getZoneServer()->_getObjectID());
+		resp->insertLong(getPlanetManager()->_getObjectID());
 		break;
 	case 19:
-		resp->insertLong(getCreatureManager()->_getObjectID());
+		resp->insertLong(getZoneServer()->_getObjectID());
 		break;
 	case 20:
-		resp->insertLong(getGalacticTime());
+		resp->insertLong(getCreatureManager()->_getObjectID());
 		break;
 	case 21:
-		resp->insertInt(getWeatherID());
+		resp->insertLong(getGalacticTime());
 		break;
 	case 22:
-		setWeatherID(inv->getUnsignedIntParameter());
+		resp->insertInt(getWeatherID());
 		break;
 	case 23:
-		changeWeatherID(inv->getSignedIntParameter());
+		setWeatherID(inv->getUnsignedIntParameter());
 		break;
 	case 24:
-		resp->insertBoolean(isWeatherEnabled());
+		changeWeatherID(inv->getSignedIntParameter());
 		break;
 	case 25:
-		setWeatherEnabled(inv->getBooleanParameter());
+		resp->insertBoolean(isWeatherEnabled());
 		break;
 	case 26:
-		setWeatherWindX(inv->getFloatParameter());
+		setWeatherEnabled(inv->getBooleanParameter());
 		break;
 	case 27:
-		setWeatherWindY(inv->getFloatParameter());
+		setWeatherWindX(inv->getFloatParameter());
 		break;
 	case 28:
-		resp->insertFloat(getWeatherWindX());
+		setWeatherWindY(inv->getFloatParameter());
 		break;
 	case 29:
-		resp->insertFloat(getWeatherWindY());
+		resp->insertFloat(getWeatherWindX());
 		break;
 	case 30:
-		resp->insertFloat(getMinX());
+		resp->insertFloat(getWeatherWindY());
 		break;
 	case 31:
-		resp->insertFloat(getMaxX());
+		resp->insertFloat(getMinX());
 		break;
 	case 32:
-		resp->insertFloat(getMinY());
+		resp->insertFloat(getMaxX());
 		break;
 	case 33:
+		resp->insertFloat(getMinY());
+		break;
+	case 34:
 		resp->insertFloat(getMaxY());
 		break;
 	default:
@@ -697,6 +698,10 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void ZoneAdapter::initializeTransientMembers() {
 	((ZoneImplementation*) impl)->initializeTransientMembers();
+}
+
+void ZoneAdapter::finalize() {
+	((ZoneImplementation*) impl)->finalize();
 }
 
 CloningBuildingObject* ZoneAdapter::getNearestCloningBuilding(CreatureObject* creature) {

@@ -96,6 +96,12 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	planetManager = NULL;
 }
 
+void ZoneImplementation::finalize() {
+	//System::out << "deleting height map\n";
+	delete heightMap;
+	heightMap = NULL;
+}
+
 void ZoneImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 

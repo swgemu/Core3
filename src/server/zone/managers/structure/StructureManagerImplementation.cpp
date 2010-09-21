@@ -1238,6 +1238,8 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 int StructureManagerImplementation::changePrivacy(PlayerCreature* player, StructureObject* structureObject) {
 	structureObject->setPublicStructure(!structureObject->isPublicStructure());
 
+	structureObject->updateToDatabase();
+
 	if (structureObject->isPublicStructure())
 		player->sendSystemMessage("@player_structure:structure_now_public"); //This structure is now public
 	else
@@ -1255,9 +1257,9 @@ int StructureManagerImplementation::changePrivacy(PlayerCreature* player, Struct
 
 	UpdateCellPermissionsMessage* cellMessage = new UpdateCellPermissionsMessage(firstCell->getObjectID(), buildingObject->isPublicStructure());
 
-	int inRangeObjectCount = buildingObject->inRangeObjectCount();
-
 	Locker _locker(zone);
+
+	int inRangeObjectCount = buildingObject->inRangeObjectCount();
 
 	//All players outside, that are in range...
 	for (int i = 0; i < inRangeObjectCount; ++i) {
@@ -1283,6 +1285,8 @@ int StructureManagerImplementation::changePrivacy(PlayerCreature* player, Struct
 	}
 
 	delete cellMessage;
+
+	_locker.release();
 
 	//Send updates out to all players inside the building...
 	for (int i = 0; i < buildingObject->getTotalCellNumber(); ++i) {

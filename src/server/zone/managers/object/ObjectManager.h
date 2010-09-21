@@ -119,6 +119,8 @@ namespace zone {
 
 		uint64 getNextObjectID(const String& database);
 
+		uint64 getNextFreeObjectID();
+
 		ObjectDatabase* loadTable(const String& database, uint64 objectID = 0);
 		ObjectDatabase* getTable(uint64 objectID);
 
