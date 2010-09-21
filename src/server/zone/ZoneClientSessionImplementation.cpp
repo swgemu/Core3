@@ -143,31 +143,10 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 		ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
 
 		if (play != NULL) {
-			ZoneServer* srv = NULL;
+			server = play->getZoneServer();
 
 			Reference<ClearClientEvent*> task = new ClearClientEvent(play, _this);
 			task->schedule(10);
-			/*if (lockPlayer)
-				unlock(true);
-
-			try {
-				play->wlock(lockPlayer);
-
-				if (play->getZone() != NULL)
-					srv = play->getZone()->getZoneServer();
-
-				if (player->getClient() == _this)
-					play->setClient(NULL);
-
-				play->unlock(lockPlayer);
-			} catch (...) {
-				play->unlock(lockPlayer);
-			}
-
-			if (lockPlayer)
-				lock(true);*/
-
-			server = srv;
 
 			setPlayer(NULL); // we must call setPlayer to increase/decrease online player counter
 		}
