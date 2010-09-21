@@ -63,6 +63,28 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> objectToOpen = server->getZoneServer()->getObject(target);
+
+		if (objectToOpen == NULL)
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> objectsParent = objectToOpen->getParent();
+
+		if (objectsParent != NULL && objectsParent->isCellObject()) {
+			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
+
+			if (!building->isOnAdminList(creature)) {
+				return GENERALERROR;
+			}
+		} else if (!objectToOpen->isASubChildOf(creature)) {
+			return GENERALERROR;
+		}
+
+		objectToOpen->openContainerTo((PlayerCreature*) creature);
+
 		return SUCCESS;
 	}
 

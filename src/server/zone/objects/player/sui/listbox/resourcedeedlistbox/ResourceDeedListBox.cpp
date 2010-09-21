@@ -121,6 +121,7 @@ ResourceDeedListBoxImplementation::ResourceDeedListBoxImplementation(DummyConstr
 	_initializeImplementation();
 }
 
+
 ResourceDeedListBoxImplementation::~ResourceDeedListBoxImplementation() {
 	ResourceDeedListBoxImplementation::finalize();
 }

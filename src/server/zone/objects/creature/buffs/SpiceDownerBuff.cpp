@@ -130,17 +130,17 @@ SpiceDownerBuffImplementation::SpiceDownerBuffImplementation(CreatureObject* cre
 
 void SpiceDownerBuffImplementation::activate(bool applyModifiers) {
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(68):  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_downer");
-	BuffImplementation::creature->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_downer");
+	BuffImplementation::creature.getForUpdate()->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_downer");
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(70):  
-	if (BuffImplementation::creature->hasBuff(BuffCRC::FOOD_REDUCE_SPICE_DOWNTIME)){
+	if (BuffImplementation::creature.getForUpdate()->hasBuff(BuffCRC::FOOD_REDUCE_SPICE_DOWNTIME)){
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(71):  			Buff buff = super.creature.getBuff(BuffCRC.FOOD_REDUCE_SPICE_DOWNTIME);
-	Buff* buff = BuffImplementation::creature->getBuff(BuffCRC::FOOD_REDUCE_SPICE_DOWNTIME);
+	Buff* buff = BuffImplementation::creature.getForUpdate()->getBuff(BuffCRC::FOOD_REDUCE_SPICE_DOWNTIME);
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(73):  
 	if (buff != NULL){
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(74):  				super.buffDuration = super.buffDuration * (100.0 - buff.getSkillModifierValue("reduce_spice_downtime")) / 100.0;
 	BuffImplementation::buffDuration = BuffImplementation::buffDuration * (100.0 - buff->getSkillModifierValue("reduce_spice_downtime")) / 100.0;
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(76):  				super.creature.removeBuff(buff);
-	BuffImplementation::creature->removeBuff(buff);
+	BuffImplementation::creature.getForUpdate()->removeBuff(buff);
 }
 
 	else {
@@ -157,7 +157,7 @@ void SpiceDownerBuffImplementation::activate(bool applyModifiers) {
 
 void SpiceDownerBuffImplementation::deactivate(bool applyModifiers) {
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(88):  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_done");
-	BuffImplementation::creature->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_done");
+	BuffImplementation::creature.getForUpdate()->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_done");
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(90):  		super.deactivate(applyModifiers);
 	BuffImplementation::deactivate(applyModifiers);
 }

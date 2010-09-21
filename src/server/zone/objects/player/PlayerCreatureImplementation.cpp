@@ -371,7 +371,10 @@ void PlayerCreatureImplementation::unload() {
 
 	tradeContainer.clear();
 
-	getZoneServer()->getChatManager()->removePlayer(getFirstName().toLowerCase());
+	ManagedReference<ChatManager*> chatManager = getZoneServer()->getChatManager();
+
+	if (chatManager != NULL)
+		chatManager->removePlayer(getFirstName().toLowerCase());
 
 	CombatManager::instance()->freeDuelList(_this);
 

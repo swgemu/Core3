@@ -7,6 +7,7 @@
 
 class HeightMap : public ReadWriteLock, public Logger {
 	FileInputStream* reader;
+	File* file;
 
 	HeightMapPlane** planes;
 

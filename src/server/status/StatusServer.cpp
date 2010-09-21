@@ -106,7 +106,7 @@ Packet* StatusServer::getStatusXMLPacket() {
 	str << "<zoneServer>" << endl;
 
 	if ((lastStatus = testZone())) {
-		str << "<name>" << zoneServer->getServerName() << "</name>";
+		str << "<name>" << zoneServer->getServerName() << "</name>" << endl;
 		str << "<status>up</status>" << endl;
 		str << "<users>" << endl;
 		str << "<connected>" << zoneServer->getConnectionCount() << "</connected>" << endl;

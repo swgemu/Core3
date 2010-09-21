@@ -786,7 +786,9 @@ void PlayerObjectImplementation::notifyOnline() {
 
 void PlayerObjectImplementation::notifyOffline() {
 	//info("notifyOffline", true);
-	ChatManager* chatManager = server->getChatManager();
+	ManagedReference<ChatManager*> chatManager = server->getChatManager();
+	if (chatManager == NULL)
+		return;
 
 	Vector<String>* reverseTable = friendList.getReverseTable();
 

@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "objects/player/PlayerCreature.h"
 
 #include "server/zone/managers/account/AccountManager.h"
+#include "server/zone/objects/player/events/ClearClientEvent.h"
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr)
 		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
@@ -139,13 +140,14 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 		info("disconnecting client \'" + ip + "\'");
 
 		ZoneServer* server = NULL;
+		ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
 
-		if (player != NULL) {
+		if (play != NULL) {
 			ZoneServer* srv = NULL;
 
-			ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
-
-			if (lockPlayer)
+			Reference<ClearClientEvent*> task = new ClearClientEvent(play, _this);
+			task->schedule(10);
+			/*if (lockPlayer)
 				unlock(true);
 
 			try {
@@ -163,7 +165,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 			}
 
 			if (lockPlayer)
-				lock(true);
+				lock(true);*/
 
 			server = srv;
 

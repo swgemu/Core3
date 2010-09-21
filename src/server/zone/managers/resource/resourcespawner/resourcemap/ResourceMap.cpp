@@ -56,6 +56,8 @@ ResourceMap::ResourceMap() {
 
 	zoneResourceMap.setNoDuplicateInsertPlan();
 	zoneResourceMap.setNullValue(NULL);
+
+	typeResourceMap.setNullValue(NULL);
 }
 
 ResourceMap::~ResourceMap() {

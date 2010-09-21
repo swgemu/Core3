@@ -201,7 +201,7 @@ namespace resource {
 class ResourceManagerImplementation : public ObserverImplementation, public Lua {
 	ZoneProcessServerImplementation* processor;
 
-	ManagedReference<ZoneServer* > zoneServer;
+	ManagedWeakReference<ZoneServer* > zoneServer;
 
 	ResourceSpawner* resourceSpawner;
 

@@ -61,7 +61,11 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, Player
 		return false;
 	}
 
-	return structurePermissionList.addPermission(targetPlayer->getObjectID(), structurePermissionList.getPermissionFromListName(listName));
+	bool ret = structurePermissionList.addPermission(targetPlayer->getObjectID(), structurePermissionList.getPermissionFromListName(listName));
+
+	updateToDatabase();
+
+	return ret;
 }
 
 bool StructureObjectImplementation::addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName) {
@@ -100,7 +104,11 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, const 
 		return false;
 	}
 
-	return structurePermissionList.addPermission(targetPlayer->getObjectID(), structurePermissionList.getPermissionFromListName(listName));
+	bool ret = structurePermissionList.addPermission(targetPlayer->getObjectID(), structurePermissionList.getPermissionFromListName(listName));
+
+	updateToDatabase();
+
+	return ret;
 }
 
 bool StructureObjectImplementation::removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName) {
@@ -122,7 +130,11 @@ bool StructureObjectImplementation::removePermission(PlayerCreature* player, Pla
 		return false;
 	}
 
-	return structurePermissionList.removePermission(targetPlayer->getObjectID(), structurePermissionList.getPermissionFromListName(listName));
+	bool ret = structurePermissionList.removePermission(targetPlayer->getObjectID(), structurePermissionList.getPermissionFromListName(listName));
+
+	updateToDatabase();
+
+	return ret;
 }
 
 bool StructureObjectImplementation::removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName) {
@@ -151,7 +163,11 @@ bool StructureObjectImplementation::removePermission(PlayerCreature* player, con
 		return false;
 	}
 
-	return structurePermissionList.removePermission(targetPlayer->getObjectID(), structurePermissionList.getPermissionFromListName(listName));
+	bool ret = structurePermissionList.removePermission(targetPlayer->getObjectID(), structurePermissionList.getPermissionFromListName(listName));
+
+	updateToDatabase();
+
+	return ret;
 }
 
 String StructureObjectImplementation::getTimeString(uint32 timestamp) {

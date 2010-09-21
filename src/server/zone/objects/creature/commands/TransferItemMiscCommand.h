@@ -66,9 +66,9 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		StringBuffer infoMsg;
+		/*StringBuffer infoMsg;
 		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
-		creature->info(infoMsg.toString(), true);
+		creature->info(infoMsg.toString(), true);*/
 
 		StringTokenizer tokenizer(arguments.toString());
 
@@ -96,7 +96,7 @@ public:
 			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
 
 			if (!building->isOnAdminList(creature)) {
-				return false;
+				return GENERALERROR;
 			}
 		}
 

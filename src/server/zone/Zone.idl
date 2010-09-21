@@ -84,6 +84,7 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	private CreatureManager creatureManager;
 	
+	@weakReference
 	private ZoneServer server;
 
 	@dereferenced
@@ -102,6 +103,7 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	public native Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
 	public native void initializeTransientMembers();
+	public native void finalize();
 	
 	public native CloningBuildingObject getNearestCloningBuilding(CreatureObject creature);
 	

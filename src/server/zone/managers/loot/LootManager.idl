@@ -60,6 +60,7 @@ import server.zone.managers.loot.lootgroup.LootObject;
 
 class LootManager extends ManagedObject implements Logger {
 	
+	@weakReference
 	private transient ZoneServer zoneServer;
 	private transient ZoneProcessServerImplementation zoneProcessor;
 	private transient CraftingManager craftingManager;
