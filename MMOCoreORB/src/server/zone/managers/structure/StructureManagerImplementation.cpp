@@ -918,8 +918,11 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 
 	player->setLotsRemaining(lotsRemaining - lotsRequired);
 
-	//Remove the deed from inventory.
-	inventory->removeObject(deed, true);
+	//Remove the deed from it's container.
+	ManagedReference<SceneObject*> deedContainer = deed->getParent();
+
+	if (deedContainer != NULL)
+		deedContainer->removeObject(deed, true);
 
 	Quaternion direction;
 	Vector3 unity(0, 1, 0);
