@@ -85,8 +85,7 @@ public:
 		if(player->isMeditating()) {
 			int baseMind = player->getBaseHAM(CreatureAttribute::MIND);
 
-			float hamBonus = (float)baseMind * 0.5;
-			int pbBonus = (int)hamBonus;
+			int pbBonus = baseMind / 2;
 
 			int meditateMod = player->getSkillMod("meditate");
 			int duration = 300 + (3 * meditateMod);
@@ -96,7 +95,6 @@ public:
 				return GENERALERROR;
 			}
 
-			player->addMaxHAM(CreatureAttribute::MIND, -pbBonus, true);
 			const String buffname = "skill.buff.powerboost";
 			ManagedReference<Buff*> buff = new PowerBoostBuff(player, buffname, buffname.hashCode(), pbBonus, duration);
 			player->addBuff(buff);

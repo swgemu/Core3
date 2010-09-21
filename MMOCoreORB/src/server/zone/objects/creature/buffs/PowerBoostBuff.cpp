@@ -171,6 +171,7 @@ void PowerBoostBuffImplementation::_serializationHelperMethod() {
 	_setClassName("PowerBoostBuff");
 
 	addSerializableVariable("pbBonus", &pbBonus);
+	addSerializableVariable("pbTick", &pbTick);
 	addSerializableVariable("time", &time);
 	addSerializableVariable("counter", &counter);
 	addSerializableVariable("nextTickTime", &nextTickTime);
@@ -178,13 +179,15 @@ void PowerBoostBuffImplementation::_serializationHelperMethod() {
 
 PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo, const String& name, unsigned int buffCRC, int value, int duration) : BuffImplementation(creo, buffCRC, duration, BuffType::SKILL) {
 	_initializeImplementation();
-	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(76):  		super.buffName = name;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(77):  		super.buffName = name;
 	BuffImplementation::buffName = name;
-	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(77):  		pbBonus = value;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(78):  		pbBonus = value;
 	pbBonus = value;
-	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(78):  		time = duration * 1000;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(79):  		pbTick = value/20;
+	pbTick = value / 20;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(80):  		time = duration * 1000;
 	time = duration * 1000;
-	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(79):  		counter = 0;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(81):  		counter = 0;
 	counter = 0;
 }
 

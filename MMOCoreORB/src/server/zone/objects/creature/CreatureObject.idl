@@ -873,6 +873,11 @@ class CreatureObject extends TangibleObject {
 	public boolean checkCooldownRecovery(final string cooldown) {
 		return cooldownTimerMap.isPast(cooldown);
 	}
+
+	@local
+	public Time getCooldownTime(final string cooldown) {
+		return cooldownTimerMap.getTime(cooldown);
+	}
 	
 	public void addCooldown(final string name, unsigned int miliseconds) {
 		cooldownTimerMap.updateToCurrentAndAddMili(name, miliseconds);
@@ -986,6 +991,7 @@ class CreatureObject extends TangibleObject {
 		return listenToID;
 	}
 	
+
 	public float getAccelerationMultiplierBase() {
 		return accelerationMultiplierBase;
 	}

@@ -63,9 +63,10 @@ class PowerBoostBuff extends Buff {
 	@dereferenced
 	protected transient Reference<PowerBoostBuffDurationEvent> pbBuffEvent;
 
-	int pbBonus;
-	int time;
-	int counter;
+	protected int pbBonus;
+	protected int pbTick;
+	protected int time;
+	protected int counter;
 	
 	@dereferenced
 	protected Time nextTickTime; 
@@ -75,6 +76,7 @@ class PowerBoostBuff extends Buff {
 		
 		super.buffName = name;
 		pbBonus = value;
+		pbTick = value/20;
 		time = duration * 1000;
 		counter = 0;
 	}
