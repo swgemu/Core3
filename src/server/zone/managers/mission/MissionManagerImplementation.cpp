@@ -238,8 +238,18 @@ void MissionManagerImplementation::createReconMissionObjectives(MissionObject* m
 }
 
 void MissionManagerImplementation::createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+	uint32 templateCRC = npcObjectTemplatesToSpawn.get(System::random(npcObjectTemplatesToSpawn.size() - 1));
+	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(templateCRC);
+
+	if (templateObject == NULL) {
+		removeMission(mission, player);
+		error("incorrect template object in createBountyMission " + String::valueOf(templateCRC));
+		return;
+	}
+
 	ManagedReference<BountyMissionObjective*> objective = new BountyMissionObjective(mission);
-	objective->setNpcTemplateToSpawn(mission->getTargetTemplate());
+
+	objective->setNpcTemplateToSpawn(templateObject);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
@@ -463,18 +473,11 @@ void MissionManagerImplementation::randomizeBountyMission(PlayerCreature* player
 		return;
 	}
 
-	uint32 templateCRC = npcObjectTemplatesToSpawn.get(System::random(npcObjectTemplatesToSpawn.size() - 1));
-
-	if (templateCRC == 0) {
-		mission->setTypeCRC(0);
-		return;
-	}
-
-	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(templateCRC);
+	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(0xB911DA26);
 
 	if (templateObject == NULL) {
 		mission->setTypeCRC(0);
-		error("incorrect template object in randomizeBountyMission " + String::valueOf(templateCRC));
+		error("incorrect template object in randomizeBountyMission 0xB911DA26");
 		return;
 	}
 

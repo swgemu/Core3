@@ -476,6 +476,8 @@ public:
 
 	bool checkCooldownRecovery(const String& cooldown);
 
+	Time* getCooldownTime(const String& cooldown);
+
 	void addCooldown(const String& name, unsigned int miliseconds);
 
 	int canAddObject(SceneObject* object, String& errorDescription);
@@ -1067,6 +1069,8 @@ public:
 	void updateCooldownTimer(const String& coooldownTimer, unsigned int miliSecondsToAdd = 0);
 
 	bool checkCooldownRecovery(const String& cooldown);
+
+	Time* getCooldownTime(const String& cooldown);
 
 	void addCooldown(const String& name, unsigned int miliseconds);
 

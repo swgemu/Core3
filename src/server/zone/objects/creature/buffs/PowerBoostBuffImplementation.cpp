@@ -29,32 +29,32 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 	if(creature != NULL) {
 		if(counter == 0) {
 			BuffImplementation::activate(false);
+
+			creature->addMaxHAM(CreatureAttribute::MIND, -(pbTick*20), true);
 			creature->sendSystemMessage("teraskasi", "powerboost_begin");
 
 			// DurationEvent to handle calling the deactivate() when the timer expires.
 			pbBuffEvent = new PowerBoostBuffDurationEvent(creature, _this);
 			nextTickTime = pbBuffEvent->getNextExecutionTime();
 
-			doHealthAndActionTick(true); // 1
-			doMindTick(true);
 			counter++;
-			pbBuffEvent->schedule(3000); // 1st time its run so we need to schedule Event. (before we can reschedule)
+			pbBuffEvent->schedule(3000);
 
-		} else if(counter <= 19) {
-			doHealthAndActionTick(true); // 2-20
+		} else if(counter <= 20) {
+			doHealthAndActionTick(true); // 1-20
 			doMindTick(true);
 
 			counter++;
 			pbBuffEvent->reschedule(3000); // counter is not 20 ... reschedule
 
-		} else if(counter >= 20 && counter <= 39) {
+		} else if(counter > 20 && counter <= 40) {
 			doMindTick(true); // 20-40
 			counter++;
 			pbBuffEvent->reschedule(3000);
 
-		} else if(counter == 40) {
+		} else if(counter == 41) {
 			counter = 45; // increase counter to 45 (to tick Down)..
-			pbBuffEvent->reschedule(time - (180 * 1000)); // schedule for duration of the buff. (minus the tick time);
+			pbBuffEvent->reschedule(time - (183 * 1000)); // schedule for duration of the buff. (minus the tick time);
 
 		} else if(counter >= 45 && counter < 65) {
 			doHealthAndActionTick(false);
@@ -67,7 +67,7 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 
 void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
 	if(creature != NULL) {
-		if(counter <= 40) {
+		if(counter <= 41) {
 			activate(false);
 		} else if(counter >= 45 && counter < 65) {
 			if(counter == 45)
@@ -83,19 +83,19 @@ void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
 
 void PowerBoostBuffImplementation::doHealthAndActionTick(bool up) {
 	if(up) {
-		creature->addMaxHAM(CreatureAttribute::HEALTH, pbBonus/20 ,true);
-		creature->addMaxHAM(CreatureAttribute::ACTION, pbBonus/20 ,true);
+		creature->addMaxHAM(CreatureAttribute::HEALTH, pbTick ,true);
+		creature->addMaxHAM(CreatureAttribute::ACTION, pbTick ,true);
 	} else {
-		creature->addMaxHAM(CreatureAttribute::HEALTH, -pbBonus/20 ,true);
-		creature->addMaxHAM(CreatureAttribute::ACTION, -pbBonus/20 ,true);
+		creature->addMaxHAM(CreatureAttribute::HEALTH, -pbTick ,true);
+		creature->addMaxHAM(CreatureAttribute::ACTION, -pbTick ,true);
 	}
 }
 
 void PowerBoostBuffImplementation::doMindTick(bool up) {
 	if(up) {
-		creature->addMaxHAM(CreatureAttribute::MIND, pbBonus/20 ,true);
+		creature->addMaxHAM(CreatureAttribute::MIND, pbTick ,true);
 	} else {
-		creature->addMaxHAM(CreatureAttribute::MIND, -pbBonus/20 ,true);
+		creature->addMaxHAM(CreatureAttribute::MIND, -pbTick ,true);
 	}
 }
 

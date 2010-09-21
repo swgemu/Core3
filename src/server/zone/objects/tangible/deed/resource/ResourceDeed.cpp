@@ -97,6 +97,7 @@ ResourceDeedImplementation::ResourceDeedImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
+
 ResourceDeedImplementation::~ResourceDeedImplementation() {
 }
 
