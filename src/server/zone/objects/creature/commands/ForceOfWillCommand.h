@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2010 <SWGEmu>
+Copyright (C) 2007 <SWGEmu>
 
 This File is part of Core3.
 
@@ -46,7 +46,6 @@ which carries forward this exception.
 #define FORCEOFWILLCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 
 #include "server/zone/objects/creature/buffs/Buff.h"
@@ -60,12 +59,13 @@ public:
 
 	}
 
-	void doCooldown(CreatureObject* player, String cooldownName, int duration) {
-		player->addCooldown(cooldownName, duration * 1000);
+	void doCooldown(PlayerCreature* player, String cooldownname, int duration) {
+		player->addCooldown(cooldownname, duration * 1000);
+
 	}
 
-	void doDowner(CreatureObject* player, int buffDownerValue, String buffName, float duration) {
-		String buffname = "skill.buff." + buffName;
+	void doDowner(PlayerCreature* player, int buffDownerValue, String name, float duration) {
+		String buffname = "skill.buff." + name;
 		uint32 buffcrc = buffname.hashCode();
 		ParameterizedStringId startMsg;
 
@@ -81,18 +81,17 @@ public:
 		buff->setAttributeModifier(CreatureAttribute::WILLPOWER, -buffDownerValue);
 		buff->setStartMessage(startMsg);
 		player->addBuff(buff);
+
 	}
 
-	void setRecovery(CreatureObject* player) {
-		player->setHAM(CreatureAttribute::HEALTH, 10, true);
-		player->setHAM(CreatureAttribute::ACTION, 10, true);
-		player->setHAM(CreatureAttribute::MIND, 10, true);
+	void setRecovery(PlayerCreature* player) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
 		Reference<Task*> incapTask = player->getPendingTask("incapacitationRecovery");
 		if (incapTask != NULL && incapTask->isScheduled()) {
 			incapTask->cancel();
 			player->removePendingTask("incapacitationRecovery");
 		}
+
 		doCooldown(player, "tkaForceOfWill", 3600);
 		player->sendSystemMessage("teraskasi", "forceofwill");
 	}
@@ -101,34 +100,38 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if(!creature->isIncapacitated()) {
+		if (!creature->isIncapacitated()) {
 			creature->sendSystemMessage("teraskasi", "forceofwill_fail");
 			return GENERALERROR;
 		} else if(!checkInvalidPostures(creature) && creature->isIncapacitated())
 			return INVALIDPOSTURE;
-		if(!creature->checkCooldownRecovery("tkaForceOfWill")) {
-			creature->sendSystemMessage("teraskasi", "forceofwill_lost");
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		if (!player->checkCooldownRecovery("tkaForceOfWill")) {
+			player->sendSystemMessage("teraskasi", "forceofwill_lost");
 			return GENERALERROR;
 		}
-		PlayerCreature* player = (PlayerCreature*) creature;
-		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
-		if(player == NULL || playerManager == NULL)
+		if(player == NULL)
 			return GENERALERROR;
 
 		int roll = System::random(100);
 		int meditateMod = player->getSkillMod("meditate");
 
-		if(roll <= meditateMod) {
+		if (roll <= meditateMod) {
 			doCooldown(player, "tkaForceOfWill", 3600);
 			setRecovery(player);
-		} else if(roll > meditateMod) {
+
+		} else if (roll > meditateMod) {
 			player->sendSystemMessage("teraskasi", "forceofwill_unsuccessful");
 			doCooldown(player, "tkaForceOfWill", 3600);
-		} else if(roll < 5) {
+
+		} else if (roll < 5) {
 			player->sendSystemMessage("teraskasi", "forceofwill_unsuccessful");
 			doCooldown(player, "tkaForceOfWill", 3600);
-		} else if(roll >= 5 && roll <= 10) {
+
+		} else if (roll >= 5 && roll <= 10) {
 			player->addWounds(CreatureAttribute::HEALTH, 100, true);
 			player->addWounds(CreatureAttribute::STRENGTH, 100, true);
 			player->addWounds(CreatureAttribute::CONSTITUTION, 100, true);
@@ -140,15 +143,19 @@ public:
 			player->addWounds(CreatureAttribute::WILLPOWER, 100, true);
 			player->addShockWounds(100, true);
 			setRecovery(player);
-		} else if(roll >= 10 && roll <= 40) {
+
+		} else if (roll >= 10 && roll <= 40) {
 			player->addShockWounds(100, true);
 			doDowner(player, 200, "forceofwill2", 300);
 			setRecovery(player);
-		} else if(roll >= 40 && roll <= 70) {
+
+		} else if (roll >= 40 && roll <= 70) {
 			doDowner(player, 100, "forceofwill3", 120);
 			setRecovery(player);
-		} else if(roll >= 70 && roll <= 100) {
+
+		} else if (roll >= 70 && roll <= 100) {
 			setRecovery(player);
+
 		}
 
 		return SUCCESS;

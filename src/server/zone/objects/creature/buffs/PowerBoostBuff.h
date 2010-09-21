@@ -121,14 +121,14 @@ class PowerBoostBuffImplementation : public BuffImplementation {
 protected:
 	Reference<PowerBoostBuffDurationEvent*> pbBuffEvent;
 
-private:
 	int pbBonus;
+
+	int pbTick;
 
 	int time;
 
 	int counter;
 
-protected:
 	Time nextTickTime;
 
 public:

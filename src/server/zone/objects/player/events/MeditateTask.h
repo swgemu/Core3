@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 <SWGEmu>
+ Copyright (C) 2007 <SWGEmu>
 
  This File is part of Core3.
 
@@ -78,14 +78,13 @@ public:
 
 	void run() {
 		Locker playerLocker(player);
+
 		try {
 			Reference<MeditateTask*> meditateTask = (MeditateTask*) player->getPendingTask("meditate");
 			int meditateMod = player->getSkillMod("meditate"); // get Meditate Skill Mod
-			if (player->hasState(CreatureState::ALERT) && player->isMeditating()) { // Check player state.
-				int heal; // Healing Amount
-				int woundAmt; // new Amount of Wounds
 
-				ParameterizedStringId HealParams;
+			if (player->isMeditating()) {
+				ParameterizedStringId healParams;
 
 				if (player->isBleeding() || player->isPoisoned() || player->isDiseased()) {
 					if (player->isBleeding() && meditateMod >= 15)
@@ -96,131 +95,40 @@ public:
 						player->healDot(CreatureState::DISEASED, (15 + (meditateMod / 3)));
 
 				} else if (meditateMod >= 75) { // Meditate SkillMod +75 for wound Healing..
-					// Get Wounds for each Attribute...
-					int healthWounds = player->getWounds(CreatureAttribute::HEALTH);
-					int strWounds = player->getWounds(CreatureAttribute::STRENGTH);
-					int conWounds = player->getWounds(CreatureAttribute::CONSTITUTION);
-					int actionWounds = player->getWounds(CreatureAttribute::ACTION);
-					int quiWounds = player->getWounds(CreatureAttribute::QUICKNESS);
-					int stamWounds = player->getWounds(CreatureAttribute::STAMINA);
-					int mindWounds = player->getWounds(CreatureAttribute::MIND);
-					int focusWounds = player->getWounds(CreatureAttribute::FOCUS);
-					int willWounds = player->getWounds(CreatureAttribute::WILLPOWER);
+					ParameterizedStringId healParams;
 
-					Vector < uint8 > woundedPools;
-					for (uint8 i = 1; i < 10; i++) {
-						uint8 wounds = i - 1;
-						int hasWounds = player->getWounds(wounds);
-						if (hasWounds > 0 && hasWounds != 0)
+					//Here we are checking to see which pools have wounds, and we add them to a vector...
+					Vector<uint8> woundedPools;
+					for (uint8 i = 0; i < 9; ++i) {
+						if (player->getWounds(i) > 0)
 							woundedPools.add(i);
 					}
 
-					if (woundedPools.size() == 0) {
-						if (meditateTask != NULL)
-							meditateTask->reschedule(5000);
-						else
-							meditateTask->schedule(5000);
+					//Return without rescheduling because everything that can be healed has been?
+					if (woundedPools.size() <= 0)
 						return;
-					}
 
-					if (meditateMod > 0 && meditateMod < 100)
-						heal = 20 + System::random(10);
-					else if (meditateMod >= 100)
+					int heal = 20 + System::random(10);
+
+					if (meditateMod >= 100)
 						heal = 30 + System::random(20);
-					else
-						return;
 
 					// Select a random Attribute that has wounds...
 					uint8 pool = woundedPools.get(System::random(woundedPools.size() - 1));
 
-					switch (pool) {
-					case 1:
-						if (healthWounds < heal)
-							heal = healthWounds;
+					int wounds = player->getWounds(pool);
 
-						woundAmt = healthWounds - heal;
-						player->setWounds(CreatureAttribute::HEALTH, woundAmt, true);
-						HealParams.setTO("health");
-						break;
+					//Cap the heal at the amount of wounds the creature has.
+					heal = MIN(wounds, heal);
 
-					case 2:
-						if (strWounds < heal)
-							heal = strWounds;
+					player->setWounds(pool, heal, true);
 
-						woundAmt = strWounds - heal;
-						player->setWounds(CreatureAttribute::STRENGTH, woundAmt, true);
-						HealParams.setTO("strength");
-						break;
-
-					case 3:
-						if (conWounds < heal)
-							heal = conWounds;
-
-						woundAmt = conWounds - heal;
-						player->setWounds(CreatureAttribute::CONSTITUTION, woundAmt, true);
-						HealParams.setTO("constitution");
-						break;
-
-					case 4:
-						if (actionWounds < heal)
-							heal = actionWounds;
-
-						woundAmt = actionWounds - heal;
-						player->setWounds(CreatureAttribute::ACTION, woundAmt, true);
-						HealParams.setTO("action");
-						break;
-
-					case 5:
-						if (quiWounds < heal)
-							heal = quiWounds;
-
-						woundAmt = quiWounds - heal;
-						player->setWounds(CreatureAttribute::QUICKNESS, woundAmt, true);
-						HealParams.setTO("quickness");
-						break;
-
-					case 6:
-						if (stamWounds < heal)
-							heal = stamWounds;
-
-						woundAmt = stamWounds - heal;
-						player->setWounds(CreatureAttribute::STAMINA, woundAmt, true);
-						HealParams.setTO("stamina");
-						break;
-
-					case 7:
-						if (mindWounds < heal)
-							heal = mindWounds;
-
-						woundAmt = mindWounds - heal;
-						player->setWounds(CreatureAttribute::MIND, woundAmt, true);
-						HealParams.setTO("mind");
-						break;
-
-					case 8:
-						if (focusWounds < heal)
-							heal = focusWounds;
-
-						woundAmt = focusWounds - heal;
-						player->setWounds(CreatureAttribute::FOCUS, woundAmt, true);
-						HealParams.setTO("focus");
-						break;
-
-					case 9:
-						if (willWounds < heal)
-							heal = willWounds;
-
-						woundAmt = willWounds - heal;
-						player->setWounds(CreatureAttribute::WILLPOWER, woundAmt, true);
-						HealParams.setTO("willpower");
-						break;
-
-					}
 					// Sending System healing Message (wounds)
-					HealParams.setStringId("teraskasi", "prose_curewound");
-					HealParams.setDI(heal);
-					player->sendSystemMessage(HealParams);
-				}// End Wounds
+					healParams.setStringId("teraskasi", "prose_curewound");
+					healParams.setTO(CreatureAttribute::getName(pool));
+					healParams.setDI(heal);
+					player->sendSystemMessage(healParams);
+				}
 
 				if (meditateTask != NULL)
 					meditateTask->reschedule(5000);
