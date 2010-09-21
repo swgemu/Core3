@@ -181,7 +181,7 @@ namespace managers {
 namespace loot {
 
 class LootManagerImplementation : public ManagedObjectImplementation, public Logger {
-	ManagedReference<ZoneServer* > zoneServer;
+	ManagedWeakReference<ZoneServer* > zoneServer;
 
 	ZoneProcessServerImplementation* zoneProcessor;
 

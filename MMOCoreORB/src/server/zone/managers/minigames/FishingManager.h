@@ -352,7 +352,7 @@ namespace minigames {
 
 class FishingManagerImplementation : public ObserverImplementation, public Logger {
 protected:
-	ManagedReference<ZoneServer* > zoneServer;
+	ManagedWeakReference<ZoneServer* > zoneServer;
 
 	Vector<String> miscLoot;
 

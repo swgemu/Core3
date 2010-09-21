@@ -21,7 +21,12 @@ public:
 	}
 
 	void run() {
-		bazaarManager->checkAuctions();
+		ManagedReference<BazaarManager*> strongRef = bazaarManager.get();
+
+		if (strongRef == NULL)
+			return;
+
+		strongRef->checkAuctions();
 	}
 };
 

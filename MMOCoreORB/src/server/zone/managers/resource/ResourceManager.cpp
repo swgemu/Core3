@@ -247,6 +247,7 @@ ResourceManagerImplementation::ResourceManagerImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
+
 ResourceManagerImplementation::~ResourceManagerImplementation() {
 }
 
@@ -311,17 +312,17 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(81):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl(82):  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(83):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(84):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(84):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl(85):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(86):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl(87):  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(87):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl(88):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/resource/ResourceManager.idl(88):  		objectManager = objectMan;
+	// server/zone/managers/resource/ResourceManager.idl(89):  		objectManager = objectMan;
 	objectManager = objectMan;
 }
 

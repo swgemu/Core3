@@ -162,29 +162,29 @@ void AccountManagerImplementation::_serializationHelperMethod() {
 
 AccountManagerImplementation::AccountManagerImplementation(ZoneServer* zserv) {
 	_initializeImplementation();
-	// server/zone/managers/account/AccountManager.idl(19):  		Logger.setLoggingName("AccountManager");
+	// server/zone/managers/account/AccountManager.idl(20):  		Logger.setLoggingName("AccountManager");
 	Logger::setLoggingName("AccountManager");
-	// server/zone/managers/account/AccountManager.idl(20):  		Logger.setLogging(true);
+	// server/zone/managers/account/AccountManager.idl(21):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/account/AccountManager.idl(21):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/account/AccountManager.idl(22):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/account/AccountManager.idl(23):  		accountMap.setNullValue(null);
+	// server/zone/managers/account/AccountManager.idl(24):  		accountMap.setNullValue(null);
 	(&accountMap)->setNullValue(NULL);
-	// server/zone/managers/account/AccountManager.idl(24):  		accountMap.setNoDuplicateInsertPlan();
+	// server/zone/managers/account/AccountManager.idl(25):  		accountMap.setNoDuplicateInsertPlan();
 	(&accountMap)->setNoDuplicateInsertPlan();
-	// server/zone/managers/account/AccountManager.idl(26):  		zoneServer = zserv;
+	// server/zone/managers/account/AccountManager.idl(27):  		zoneServer = zserv;
 	zoneServer = zserv;
-	// server/zone/managers/account/AccountManager.idl(28):  		onlineCharactersPerAccount = 1;
+	// server/zone/managers/account/AccountManager.idl(29):  		onlineCharactersPerAccount = 1;
 	onlineCharactersPerAccount = 1;
 }
 
 int AccountManagerImplementation::getOnlineCharactersPerAccount() {
-	// server/zone/managers/account/AccountManager.idl(46):  		return onlineCharactersPerAccount;
+	// server/zone/managers/account/AccountManager.idl(47):  		return onlineCharactersPerAccount;
 	return onlineCharactersPerAccount;
 }
 
 void AccountManagerImplementation::setOnlineCharactersPerAccount(int total) {
-	// server/zone/managers/account/AccountManager.idl(50):  		onlineCharactersPerAccount = total;
+	// server/zone/managers/account/AccountManager.idl(51):  		onlineCharactersPerAccount = total;
 	onlineCharactersPerAccount = total;
 }
 

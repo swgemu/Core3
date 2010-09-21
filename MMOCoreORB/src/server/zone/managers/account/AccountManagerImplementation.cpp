@@ -53,8 +53,8 @@ void AccountManagerImplementation::unregisterSession(ZoneClientSession* client) 
 	info("Unregistered session with account map. Account now has " + String::valueOf(account->getSessionCount()) + " total sessions.");
 
 	//If the account has no more sessions associated with it, drop it from the map.
-	if (account->getSessionCount() < 1)
-		accountMap.drop(accountid);
+	if (account->getSessionCount() < 1 && accountMap.drop(accountid))
+		delete account;
 }
 
 int AccountManagerImplementation::getTotalOnlineCharacters(uint32 accountid) {

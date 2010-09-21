@@ -8,6 +8,7 @@ include server.zone.managers.account.ZoneAccount;
 import server.zone.ZoneClientSession;
 
 class AccountManager extends ManagedObject implements Logger {
+	@weakReference
 	private transient ZoneServer zoneServer;
 	
 	private int onlineCharactersPerAccount;

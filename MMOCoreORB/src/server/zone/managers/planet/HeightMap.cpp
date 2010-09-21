@@ -8,6 +8,7 @@ HeightMap::HeightMap() : ReadWriteLock("HeightMap"), Logger() {
 	}
 
 	reader = NULL;
+	file = NULL;
 
 	setLoggingName("HeightMap");
 	setLogging(false);
@@ -18,6 +19,11 @@ HeightMap::~HeightMap() {
 	if (reader != NULL) {
 		delete reader;
 		reader = NULL;
+	}
+
+	if (file != NULL) {
+		delete file;
+		file = NULL;
 	}
 
 	for (int i = 0; i < PLANESSIZE * PLANESSIZE; ++i) {
@@ -34,7 +40,7 @@ void HeightMap::load(const String& path) {
 	wlock();
 
 	try {
-		File* file = new File(path);
+		file = new File(path);
 
 		reader = new FileInputStream(file);
 
@@ -47,6 +53,7 @@ void HeightMap::load(const String& path) {
 		}
 	} catch (FileNotFoundException& e) {
 		reader = NULL;
+		file = NULL;
 
 		error("failed to load " + path);
 	}

@@ -62,6 +62,8 @@ public:
 		insertInt(0);
 
 		insertShort(opcnt);
+
+		setCompression(true);
 	}
 
 	uint32 generateRandomObjectCRC() {

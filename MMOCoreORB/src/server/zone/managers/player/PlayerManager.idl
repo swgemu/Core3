@@ -70,6 +70,8 @@ import server.zone.objects.scene.Observable;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServerImplementation processor;
+	
+	@weakReference
 	private ZoneServer server;
 	
 	transient PlayerMap playerMap;

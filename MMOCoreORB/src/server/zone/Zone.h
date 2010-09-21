@@ -255,7 +255,7 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ManagedReference<CreatureManager* > creatureManager;
 
-	ManagedReference<ZoneServer* > server;
+	ManagedWeakReference<ZoneServer* > server;
 
 	Time galacticTime;
 
@@ -277,6 +277,8 @@ public:
 	ZoneImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void finalize();
 
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
@@ -350,8 +352,6 @@ public:
 protected:
 	virtual ~ZoneImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -382,6 +382,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void finalize();
 
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 

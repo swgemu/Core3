@@ -96,6 +96,10 @@ void BuildingObjectImplementation::removeFromZone() {
 			obj->removeFromZone();
 
 			cell->removeObject(obj);
+
+			VectorMap<uint64, ManagedReference<SceneObject*> >* cont = cell->getContainerObjects();
+
+			cont->drop(obj->getObjectID());
 		}
 	}
 

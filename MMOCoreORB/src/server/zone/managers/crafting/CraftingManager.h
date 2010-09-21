@@ -205,7 +205,7 @@ namespace managers {
 namespace crafting {
 
 class CraftingManagerImplementation : public ManagedObjectImplementation, public Lua {
-	ManagedReference<ZoneServer* > zoneServer;
+	ManagedWeakReference<ZoneServer* > zoneServer;
 
 	ZoneProcessServerImplementation* zoneProcessor;
 

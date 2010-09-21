@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "ZoneClientSession.h"
 
 void ZoneMessageProcessorThread::processMessage(Message* message) {
+	ObjectDatabaseManager::instance()->startLocalTransaction();
+
 	try {
 		ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) message->getClient();
 

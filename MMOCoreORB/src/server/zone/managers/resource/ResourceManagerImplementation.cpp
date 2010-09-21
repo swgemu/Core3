@@ -54,7 +54,7 @@ void ResourceManagerImplementation::initialize() {
 	Lua::init();
 
 	info("building resource tree");
-	resourceSpawner = new ResourceSpawner(zoneServer, processor, objectManager);
+	resourceSpawner = new ResourceSpawner(zoneServer.get(), processor, objectManager);
 
 	info("loading configuration");
 	if(!loadConfigData()) {

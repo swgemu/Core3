@@ -73,7 +73,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 		ManagedObjectImplementation(), DatagramServiceThread("ZoneServer") {
 	galaxyID = galaxyid;
 
-	name = "Core3";
+	name = "Core3 OR";
 
 	phandler = NULL;
 
@@ -485,9 +485,14 @@ void ZoneServerImplementation::shutdown() {
 
 	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
-		if (zone != NULL)
+
+		if (zone != NULL) {
 			zone->stopManagers();
+			//info("zone references " + String::valueOf(zone->getReferenceCount()), true);
+		}
 	}
+
+	zones.removeAll();
 
 	info("zones shut down", true);
 
@@ -499,18 +504,20 @@ void ZoneServerImplementation::shutdown() {
 void ZoneServerImplementation::stopManagers() {
 	info("stopping managers..");
 
-	if (resourceManager != NULL)
-			resourceManager->stop();
+	if (resourceManager != NULL) {
+		resourceManager->stop();
+		resourceManager = NULL;
+	}
 
-	//info("saving objects...");
-
-	/*if (playerManager != NULL)
-		playerManager->stop();*/
-
-	/*if (missionManager != NULL)
-		missionManager->unloadManager();
-
-	*/
+	playerManager = NULL;
+	chatManager = NULL;
+	radialManager = NULL;
+	craftingManager = NULL;
+	lootManager = NULL;
+	bazaarManager = NULL;
+	missionManager = NULL;
+	fishingManager = NULL;
+	accountManager = NULL;
 
 	info("managers stopped", true);
 }
@@ -534,6 +541,8 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 
 void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* message) {
 	ZoneClientSessionImplementation* zclient = (ZoneClientSessionImplementation*) client;
+
+	ObjectDatabaseManager::instance()->startLocalTransaction();
 
 	try {
 		/*if (zclient->simulatePacketLoss())

@@ -814,7 +814,7 @@ void CraftingValues::recalculateValues(bool initial) {
 }
 
 void CraftingValues::toString() {
-	Subclasses* tempSubclasses;
+	/*Subclasses* tempSubclasses;
 
 	for (int i = 0;i < experimentalValuesMap.size(); ++i) {
 		tempSubclasses = experimentalValuesMap.get(i);
@@ -824,5 +824,5 @@ void CraftingValues::toString() {
 		System::out << "Class: " << tempSubclasses->getClassTitle() << endl;
 		tempSubclasses->toString();
 		System::out << "**************************" << endl;
-	}
+	}*/
 }

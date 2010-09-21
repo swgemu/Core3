@@ -1046,7 +1046,7 @@ class SceneObjectImplementation : public ObservableImplementation, public QuadTr
 protected:
 	ZoneProcessServerImplementation* server;
 
-	ManagedReference<Zone* > zone;
+	ManagedWeakReference<Zone* > zone;
 
 	ManagedWeakReference<SceneObject* > parent;
 
