@@ -1147,6 +1147,7 @@ int StructureManagerImplementation::redeedStructure(PlayerCreature* player, Stru
 							installationDeed->setSurplusPower(((InstallationObject*) structureObject)->getSurplusPower());
 					}
 
+					deed->sendTo(player, true);
 					inventory->addObject(deed, -1, true);
 
 					//Since we have retrieved the deed, set the structures deed id to 0 so that it doesn't get deleted from the database.
