@@ -74,9 +74,6 @@ public:
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
-		if (player == NULL)
-			return GENERALERROR;
-
 		uint32 buffcrc = BuffCRC::SKILL_BUFF_POWERBOOST;
 
 		if(player->hasBuff(buffcrc)) {

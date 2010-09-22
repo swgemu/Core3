@@ -84,10 +84,10 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
-
-		if(player == NULL)
+		if (!creature->isPlayerCreature())
 			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
 
 		Reference<Task*> incapTask = player->getPendingTask("incapacitationRecovery");
 
