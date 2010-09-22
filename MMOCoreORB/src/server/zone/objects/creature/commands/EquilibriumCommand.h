@@ -63,13 +63,13 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
 		PlayerCreature* player = (PlayerCreature*) creature;
-
-		if (player == NULL)
-			return GENERALERROR;
 
 		// Check to see if "innate_quilibrium" Cooldown isPast();
 		if (!player->checkCooldownRecovery("innate_equilibrium")) {
