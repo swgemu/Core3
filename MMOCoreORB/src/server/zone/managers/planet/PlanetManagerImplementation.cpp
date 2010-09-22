@@ -41,10 +41,83 @@ void PlanetManagerImplementation::initialize() {
 	loadHuntingTargets();
 	loadReconLocations();
 
+	loadStaticTangibleObjects();
+
 	structureManager = new StructureManager(zone, server);
 	structureManager->loadStructures();
 }
 
+void PlanetManagerImplementation::loadStaticTangibleObjects() {
+	StringBuffer query;
+
+	query << "SELECT * FROM statictangibleobjects WHERE zoneid = " << zone->getZoneID() << ";";
+
+	ResultSet* result = NULL;
+
+	int i = 0;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		while (result->next()) {
+			uint64 parentid = result->getUnsignedLong(2);
+			String name = result->getString(3);
+			String templateFile = result->getString(4);
+			int templateType = result->getInt(5);
+			String templateName = result->getString(6);
+			float ox = result->getFloat(7);
+			float oy = result->getFloat(8);
+			float oz = result->getFloat(9);
+			float ow = result->getFloat(10);
+			float x = result->getFloat(11);
+			float z = result->getFloat(12);
+			float y = result->getFloat(13);
+
+			if (z == 0 && parentid == 0)
+				z = zone->getHeight(x, y);
+
+			ManagedReference<SceneObject*> object = server->getZoneServer()->createObject(templateFile.hashCode(), 1);;
+
+			if (object == NULL) {
+				error("trying to spawn unknown tangible object " + templateFile);
+			} else {
+				ManagedReference<SceneObject*> parentObject;
+
+				if (parentid != 0) {
+					parentObject = server->getZoneServer()->getObject(parentid);
+
+					if (parentObject != NULL && !parentObject->isCellObject()) {
+						error("trying to set a parent that is not a cell to tangible objects");
+						parentObject = NULL;
+					}
+				}
+
+				if (parentObject != NULL)
+					parentObject->addObject(object, -1);
+
+				if (!name.isEmpty())
+					object->setCustomObjectName(name, true);
+
+				object->initializePosition(x, z, y);
+				object->setDirection(ow, ox, oy, oz);
+
+				object->insertToZone(zone);
+
+				++i;
+			}
+
+		}
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in CreatureManagerImplementation::loadSingleSpawns()");
+	}
+
+	info("static creatures spawned: " + String::valueOf(i), true);
+
+	delete result;
+}
 
 void PlanetManagerImplementation::loadNoBuildAreas() {
 	StringBuffer query;

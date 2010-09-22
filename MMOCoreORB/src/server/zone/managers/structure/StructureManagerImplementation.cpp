@@ -28,6 +28,7 @@
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
+#include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
@@ -528,6 +529,113 @@ void StructureManagerImplementation::loadStaticBazaars() {
 
 	delete result;
 }
+
+void StructureManagerImplementation::loadStaticGamblingTerminals() {
+	loadStaticGamblingTerminals(0);
+	loadStaticGamblingTerminals(1);
+}
+
+void StructureManagerImplementation::loadStaticGamblingTerminals(int iff) {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	String iffs;
+	String iffShort;
+	String type;
+	if (iff == 1) {
+		iffs = "object/tangible/gambling/slot/shared_standard.iff";
+		iffShort = "object/tangible/gambling/slot/standard.iff";
+		type = "Slot";
+	} else {
+		iffs = "object/tangible/gambling/wheel/shared_roulette.iff";
+		iffShort = "object/tangible/gambling/wheel/roulette.iff";
+		type = "Roulette";
+	}
+
+	uint32 serverCRC = String(iffShort).hashCode();
+	StringBuffer query;
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file = '" << iffs << "';";
+
+	ResultSet* result = NULL;
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		GamblingTerminal* terminal = NULL;
+		CellObject* cell = NULL;
+		uint64 parentId = 0;
+		uint64 objectID = 0;
+		String templateFile;
+		float positionX, positionZ, positionY;
+		int i = 0;
+
+		while (result->next()) {
+ 			objectID = result->getUnsignedLong(1);
+ 			parentId = result->getUnsignedLong(2);
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			templateFile = result->getString(3);
+
+			String serverTemplate = templateFile.replaceFirst("shared_", "");
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			if (parentId != 0) {
+				SceneObject* scene = zoneServer->getObject(parentId);
+
+				if (scene != NULL && scene->isCellObject())
+					cell = (CellObject*) scene;
+				else {
+					cell = NULL;
+
+					error("gambling terminal unknown parentid " + String::valueOf(parentId));
+					continue;
+				}
+			} else
+				cell = NULL;
+
+			terminal = (GamblingTerminal*) zoneServer->createStaticObject(serverTemplate.hashCode(), objectID);
+
+			if(terminal == NULL) {
+				error("gambling terminal " + String::valueOf(objectID) + " not created from template");
+				continue;
+			}
+
+			terminal->setStaticObject(true);
+
+			if (cell != NULL)
+				cell->addObject(terminal, -1);
+
+			terminal->initializePosition(positionX, positionZ, positionY);
+			terminal->insertToZone(zone);
+
+			if (cell != NULL)
+				cell->updateToDatabase();
+			else
+				terminal->updateToDatabase();
+
+			++i;
+		}
+
+		if (i > 0)
+			info(String::valueOf(i) + " " + type + " terminals loaded", true);
+
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticGamblingTerminals()\n");
+	}
+
+	delete result;
+}
+
 
 void StructureManagerImplementation::loadStaticBanks() {
 	int planetid = zone->getZoneID();

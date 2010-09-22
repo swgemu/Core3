@@ -42,7 +42,11 @@
 
 
 object_tangible_gambling_slot_standard = object_tangible_gambling_slot_shared_standard:new {
+	templateType = GAMBLINGTERMINAL,
 
+	gameObjectType = 16407,
+
+	machineType = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_gambling_slot_standard, "object/tangible/gambling/slot/standard.iff")

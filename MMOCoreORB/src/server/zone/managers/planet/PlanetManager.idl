@@ -127,6 +127,7 @@ class PlanetManager extends ManagedObject implements Logger {
 	public native void loadPerformanceLocations();
 	public native void loadHuntingTargets();
 	public native void loadReconLocations();
+	protected native void loadStaticTangibleObjects();
 	
 	public synchronized ShuttleCreature getShuttle(final string arrivalPoint) {
 		return shuttleMap.get(arrivalPoint);

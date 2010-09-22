@@ -168,6 +168,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<GuildTerminal>(SceneObject::GUILDTERMINAL);
 	objectFactory.registerObject<CityTerminal>(SceneObject::CITYTERMINAL);
 	objectFactory.registerObject<CityVoteTerminal>(SceneObject::CITYVOTETERMINAL);
+	objectFactory.registerObject<GamblingTerminal>(SceneObject::GAMBLINGTERMINAL);
 
 	objectFactory.registerObject<LairObject>(SceneObject::LAIR);
 

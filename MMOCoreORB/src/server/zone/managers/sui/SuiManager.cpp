@@ -72,6 +72,7 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
+#include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
@@ -250,6 +251,15 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::FISHING:
 		handleFishingAction(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::GAMBLINGROULETTE:
+		handleGamblingRoulette(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::GAMBLINGSLOT:
+		handleGamblingSlot(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
+		break;
+	case SuiWindowType::GAMBLINGSLOTPAYOUT:
+		handleGamblingSlotPayout(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case SuiWindowType::CHARACTERBUILDERITEMSELECT:
 		handleCharacterBuilderSelectItem(boxID, player, cancel, atoi(value.toCharArray()));
@@ -1201,7 +1211,7 @@ void SuiManager::handleBankTransfer(uint32 boxID, PlayerCreature* player, int ca
 
 }
 
-/*void SuiManager::handleGamblingRoulette(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, const String& value2) {
+void SuiManager::handleGamblingRoulette(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
 	GamblingManager* manager = player->getZone()->getZoneServer()->getGamblingManager();
 	if (cancel) {
 		manager->leaveTerminal(player, 0);
@@ -1209,24 +1219,24 @@ void SuiManager::handleBankTransfer(uint32 boxID, PlayerCreature* player, int ca
 		manager->refreshRouletteMenu(player);
 	}
 }
-void SuiManager::handleGamblingSlot(uint32 boxID, PlayerCreature* player, uint32 cancel, int value, const String& value2) {
+void SuiManager::handleGamblingSlot(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
+	if (player == NULL)
+		return;
+
 	GamblingManager* manager = player->getZone()->getZoneServer()->getGamblingManager();
 
-	if (cancel) {
-		manager->leaveTerminal(player, 1);
-	} else {
-		manager->startGame(player, 1);
-	}
+	manager->handleSlot(player, (bool)cancel, otherPressed);
+
 }
 
-void SuiManager::handleGamblingSlotPayout(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, const String& value2) {
+void SuiManager::handleGamblingSlotPayout(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
 	if (player->hasSuiBox(boxID)) {
 		player->sendMessage(player->getSuiBox(boxID)->generateCloseMessage());
 		player->removeSuiBox(boxID);
 	}
 }
 
-void SuiManager::handleGamblingStartSabacc(uint32 boxID, PlayerCreature* player, uint32 cancel, int index, const String& value2) {
+/*void SuiManager::handleGamblingStartSabacc(uint32 boxID, PlayerCreature* player, uint32 cancel, int index, const String& value2) {
 	if (!cancel) {
 		String sabacc[] = {"Bespin Standard", "Empress Teta Preferred", "Cloud City Casino", "Random Sabacc", "Bespin Standard Variety", "Random Sabacc Variety"};
 		String game;
@@ -1535,6 +1545,9 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, ui
 		return;
 
 	SceneObject* deedObject = suiListBox->getUsingObject();
+
+	if (deedObject == NULL)
+		return;
 
 	ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
 	ManagedReference<ResourceSpawn* > spawn = NULL;

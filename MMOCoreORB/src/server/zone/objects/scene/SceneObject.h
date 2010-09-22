@@ -452,6 +452,8 @@ public:
 
 	static const int CITYVOTETERMINAL = 0x4016;
 
+	static const int GAMBLINGTERMINAL = 0x4017;
+
 	static const int TOOL = 0x8000;
 
 	static const int CRAFTINGTOOL = 0x8001;
@@ -1340,6 +1342,8 @@ public:
 	static const int CITYTERMINAL = 0x4015;
 
 	static const int CITYVOTETERMINAL = 0x4016;
+
+	static const int GAMBLINGTERMINAL = 0x4017;
 
 	static const int TOOL = 0x8000;
 
