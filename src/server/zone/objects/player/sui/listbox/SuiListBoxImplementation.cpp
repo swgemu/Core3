@@ -51,6 +51,8 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 
 	if(cancelButton) {
 		addSetting("3", "btnCancel", "Text", "@cancel");
+	} else {
+		addSetting("3", "btnCancel", "visible", "false");
 	}
 
 	if(okButton) {

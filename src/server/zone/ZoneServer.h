@@ -223,6 +223,20 @@ class AccountManager;
 
 using namespace server::zone::managers::account;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+
+class GamblingManager;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -368,6 +382,8 @@ public:
 
 	FishingManager* getFishingManager();
 
+	GamblingManager* getGamblingManager();
+
 	AccountManager* getAccountManager();
 
 	ProfessionManager* getProfessionManager();
@@ -437,6 +453,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<MissionManager* > missionManager;
 
 	ManagedReference<FishingManager* > fishingManager;
+
+	ManagedReference<GamblingManager* > gamblingManager;
 
 	ManagedReference<AccountManager* > accountManager;
 
@@ -578,6 +596,8 @@ public:
 	BazaarManager* getBazaarManager();
 
 	FishingManager* getFishingManager();
+
+	GamblingManager* getGamblingManager();
 
 	AccountManager* getAccountManager();
 
@@ -731,6 +751,8 @@ public:
 	BazaarManager* getBazaarManager();
 
 	FishingManager* getFishingManager();
+
+	GamblingManager* getGamblingManager();
 
 	AccountManager* getAccountManager();
 

@@ -60,6 +60,7 @@ which carries forward this exception.
 #include "managers/professions/ProfessionManager.h"
 #include "managers/bazaar/BazaarManager.h"
 #include "managers/minigames/FishingManager.h"
+#include "managers/minigames/GamblingManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/account/AccountManager.h"
 
@@ -88,6 +89,8 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	craftingManager = NULL;
 	lootManager = NULL;
 	accountManager = NULL;
+	fishingManager = NULL;
+	gamblingManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -429,6 +432,9 @@ void ZoneServerImplementation::startManagers() {
 
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();
+
+	gamblingManager = new GamblingManager(_this);
+	gamblingManager->deploy();
 
 	accountManager = new AccountManager(_this);
 	accountManager->deploy();

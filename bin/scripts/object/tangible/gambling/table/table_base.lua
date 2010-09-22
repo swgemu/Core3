@@ -42,7 +42,11 @@
 
 
 object_tangible_gambling_table_table_base = object_tangible_gambling_table_shared_table_base:new {
+	templateType = GAMBLINGTERMINAL,
 
+	gameObjectType = 16407,
+
+	machineType = 2
 }
 
 ObjectTemplates:addTemplate(object_tangible_gambling_table_table_base, "object/tangible/gambling/table/table_base.iff")

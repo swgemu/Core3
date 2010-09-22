@@ -104,6 +104,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.cpp \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.cpp \
+				server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.cpp \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 				server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
@@ -149,6 +150,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
 				server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
+				server/zone/managers/minigames/GamblingManager.cpp \
 				server/zone/managers/account/AccountManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
@@ -192,6 +194,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.cpp \
 				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
+				server/zone/objects/tangible/terminal/gambling/GamblingTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/mission/MissionObjective.cpp \
 				server/zone/objects/mission/SurveyMissionObjective.cpp \
@@ -243,6 +246,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/minigames/FishingManagerImplementation.cpp \
+		server/zone/managers/minigames/GamblingManagerImplementation.cpp \
 		server/zone/managers/resource/resourcespawner/ResourceSpawner.cpp \
 		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.cpp \
 		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.cpp \
@@ -276,6 +280,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/city/CityTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/city/CityVoteTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.cpp \
+		server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \

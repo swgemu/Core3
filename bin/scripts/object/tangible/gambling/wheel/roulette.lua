@@ -42,7 +42,11 @@
 
 
 object_tangible_gambling_wheel_roulette = object_tangible_gambling_wheel_shared_roulette:new {
+	templateType = GAMBLINGTERMINAL,
 
+	gameObjectType = 16407,
+
+	machineType = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_gambling_wheel_roulette, "object/tangible/gambling/wheel/roulette.iff")
