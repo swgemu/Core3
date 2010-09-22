@@ -75,7 +75,6 @@ TeachPlayerListBoxImplementation::TeachPlayerListBoxImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
-
 TeachPlayerListBoxImplementation::~TeachPlayerListBoxImplementation() {
 }
 

@@ -123,7 +123,6 @@ FishObjectImplementation::FishObjectImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
-
 FishObjectImplementation::~FishObjectImplementation() {
 }
 

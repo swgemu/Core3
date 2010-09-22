@@ -70,7 +70,6 @@ ObserverImplementation::ObserverImplementation(DummyConstructorParameter* param)
 	_initializeImplementation();
 }
 
-
 ObserverImplementation::~ObserverImplementation() {
 }
 

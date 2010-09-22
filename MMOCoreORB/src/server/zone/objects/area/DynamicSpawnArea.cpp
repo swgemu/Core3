@@ -76,7 +76,6 @@ DynamicSpawnAreaImplementation::DynamicSpawnAreaImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
-
 DynamicSpawnAreaImplementation::~DynamicSpawnAreaImplementation() {
 }
 

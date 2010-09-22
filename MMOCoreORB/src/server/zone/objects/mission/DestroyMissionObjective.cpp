@@ -141,7 +141,6 @@ DestroyMissionObjectiveImplementation::DestroyMissionObjectiveImplementation(Dum
 	_initializeImplementation();
 }
 
-
 DestroyMissionObjectiveImplementation::~DestroyMissionObjectiveImplementation() {
 	DestroyMissionObjectiveImplementation::finalize();
 }

@@ -67,7 +67,6 @@ ContainerImplementation::ContainerImplementation(DummyConstructorParameter* para
 	_initializeImplementation();
 }
 
-
 ContainerImplementation::~ContainerImplementation() {
 }
 

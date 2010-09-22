@@ -111,7 +111,6 @@ LootkitObjectImplementation::LootkitObjectImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
-
 LootkitObjectImplementation::~LootkitObjectImplementation() {
 }
 

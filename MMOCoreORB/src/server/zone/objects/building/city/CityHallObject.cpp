@@ -459,7 +459,6 @@ CityHallObjectImplementation::CityHallObjectImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 CityHallObjectImplementation::~CityHallObjectImplementation() {
 }
 

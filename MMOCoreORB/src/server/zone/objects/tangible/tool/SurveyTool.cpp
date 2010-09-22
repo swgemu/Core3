@@ -338,7 +338,6 @@ SurveyToolImplementation::SurveyToolImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
-
 SurveyToolImplementation::~SurveyToolImplementation() {
 }
 

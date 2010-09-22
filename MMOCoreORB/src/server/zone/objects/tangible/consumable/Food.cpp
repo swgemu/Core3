@@ -56,7 +56,6 @@ FoodImplementation::FoodImplementation(DummyConstructorParameter* param) : Consu
 	_initializeImplementation();
 }
 
-
 FoodImplementation::~FoodImplementation() {
 }
 

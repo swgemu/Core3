@@ -58,17 +58,6 @@ public:
 
 	}
 
-	int getCooldownTime(PlayerCreature* player, String cooldownname) {
-		Time currenttime;
-		Time* cooldowntime = player->getCooldownTime(cooldownname);
-		int remainingtime = (cooldowntime->getTime() - currenttime.getTime());
-		return remainingtime;
-	}
-
-	void setCooldown(PlayerCreature* player, String cooldownname, int duration) {
-		player->addCooldown(cooldownname, duration * 1000);
-	}
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -77,39 +66,40 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		try {
-			PlayerCreature* player = (PlayerCreature*) creature;
+		PlayerCreature* player = (PlayerCreature*) creature;
 
-			if (!player->checkCooldownRecovery("innate_equilibrium")) {
-				ParameterizedStringId stringId;
-				stringId.setStringId("@innate:equil_wait");
-				stringId.setDI(getCooldownTime(player, "innate_equilibrium"));
-				player->sendSystemMessage(stringId);
-				return GENERALERROR;
-			}
+		if (player == NULL)
+			return GENERALERROR;
 
-			if (player == NULL)
-				return GENERALERROR;
+		// Check to see if "innate_quilibrium" Cooldown isPast();
+		if (!player->checkCooldownRecovery("innate_equilibrium")) {
+			ParameterizedStringId stringId;
 
-			int health = player->getHAM(CreatureAttribute::HEALTH);
-			int action = player->getHAM(CreatureAttribute::ACTION);
-			int mind = player->getHAM(CreatureAttribute::MIND);
+			Time* cdTime = player->getCooldownTime("innate_equilibrium");
 
-			int newVal = (MAX(health, MAX(action, mind))) * 0.65;
+			// Returns -time. Multiple by -1 to return postive.
+			int timeLeft = floor(cdTime->miliDifference() / 1000) *-1;
 
-			player->setHAM(CreatureAttribute::HEALTH, newVal);
-			player->setHAM(CreatureAttribute::ACTION, newVal);
-			player->setHAM(CreatureAttribute::MIND, newVal);
-
-			player->sendSystemMessage("@innate:equil_active");
-			player->showFlyText("combat_effects", "innate_equilibrium", 0, 255, 0);
-
-			setCooldown(player, "innate_equilibrium", 600);
-
-		} catch (...) {
-			creature->sendSystemMessage("An unknown error occurred: /equilibrium.");
-
+			stringId.setStringId("@innate:equil_wait"); // You are still recovering from your last equilization. Command available in %DI seconds.
+			stringId.setDI(timeLeft);
+			player->sendSystemMessage(stringId);
+			return GENERALERROR;
 		}
+
+		int health = player->getHAM(CreatureAttribute::HEALTH);
+		int action = player->getHAM(CreatureAttribute::ACTION);
+		int mind = player->getHAM(CreatureAttribute::MIND);
+
+		int newVal = (MAX(health, MAX(action, mind))) * 0.65;
+
+		player->setHAM(CreatureAttribute::HEALTH, newVal);
+		player->setHAM(CreatureAttribute::ACTION, newVal);
+		player->setHAM(CreatureAttribute::MIND, newVal);
+
+		player->sendSystemMessage("@innate:equil_active"); // Through sheer willpower, you force yourself into a state of equilibruim.
+		player->showFlyText("combat_effects", "innate_equilibrium", 0, 255, 0); // +Equilibruim+
+
+		player->addCooldown("innate_equilibrium", 600 * 1000);
 
 		return SUCCESS;
 	}
