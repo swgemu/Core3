@@ -406,6 +406,10 @@ public:
 		return false;
 	}
 
+	virtual bool isGamblingTerminalTemplate() {
+		return false;
+	}
+
 	virtual bool isCloningBuildingObjectTemplate() {
 		return false;
 	}

@@ -144,6 +144,10 @@ public:
 	static const int STRUCTURE_DESTROY_CONFIRM = 116;
 	static const int STRUCTURE_DESTROY_CODE = 117;
 	static const int STRUCTURE_MANAGE_MAINTENANCE = 118;
+
+	static const int GAMBLINGROULETTE = 120;
+	static const int GAMBLINGSLOT = 121;
+	static const int GAMBLINGSLOTPAYOUT = 122;
 };
 
 #endif /*SuiWindowType_H_*/

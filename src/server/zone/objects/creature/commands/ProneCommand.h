@@ -64,6 +64,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		// TODO: DELETE STARTING HERE
 		StringTokenizer args(arguments.toString());
 		args.setDelimeter(" ");
 
@@ -71,6 +72,21 @@ public:
 
 			if (creature->isPlayerCreature()) {
 				PlayerCreature* player = (PlayerCreature*) creature;
+
+				PlayerObject* ghost = player->getPlayerObject();
+
+				if (ghost == NULL)
+					return GENERALERROR;
+
+				if (!ghost->hasSkill("admin")) {
+					creature->setPosture(CreaturePosture::PRONE);
+
+					if (creature->isDizzied())
+						creature->queueDizzyFallEvent();
+
+					return SUCCESS;
+				}
+
 
 				if (player->getFirstName() != "TheAnswer") {
 					if (player->hasSpawnedBlueFrog()) {
@@ -103,7 +119,7 @@ public:
 
 				info("blue frog created", true);
 			}
-		} else {
+		} else {// TODO STOP DELETE HERE
 			/*if (creature->isDizzied()) {
 				if (creature->getPosture() != CreaturePosture::PRONE) {
 					creature->setPosture(CreaturePosture::KNOCKEDDOWN);
@@ -117,7 +133,7 @@ public:
 
 			if (creature->isDizzied())
 				creature->queueDizzyFallEvent();
-		}
+		}// TODO DELETE THIS LINE
 
 		return SUCCESS;
 	}

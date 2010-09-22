@@ -42,86 +42,63 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef BETCOMMAND_H_
-#define BETCOMMAND_H_
+#ifndef GAMBLINGEVENT_H_
+#define GAMBLINGEVENT_H_
 
-#include "server/zone/managers/minigames/GamblingManager.h"
+
 #include "server/zone/objects/player/PlayerCreature.h"
-#include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "../../scene/SceneObject.h"
-#include "../../creature/CreatureObject.h"
-#include "server/zone/packets/ui/SuiCreatePageMessage.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "../GamblingManager.h"
+#include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
 
-class BetCommand : public QueueCommand {
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+namespace events {
+
+class GamblingEvent : public Task {
+	ManagedReference<ZoneServer*> zoneServer;
+	ManagedReference<GamblingTerminal*> gamblingTerminal;
+	int gameCount;
+
 public:
-
-	BetCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
-
+	GamblingEvent(GamblingTerminal* gamblingTerm, int counter, ZoneServer* server) : Task() {
+		zoneServer = server;
+		gamblingTerminal = gamblingTerm;
+		gameCount = counter;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	void run() {
+		try {
+			//Locker _locker(player);
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+			//player->info("activating command queue action");
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		if (creature->isPlayerCreature()) {
-
-			PlayerCreature* player = (PlayerCreature*) creature;
-
-			if (player == NULL)
-				return GENERALERROR;
-
-			GamblingManager* gamblingManager = server->getZoneServer()->getGamblingManager();
-
-			if (gamblingManager == NULL)
-				return GENERALERROR;
-
-			if (!gamblingManager->isPlaying(player)) {
-				player->sendSystemMessage("@gambling/default_interface:bet_failed");
-				return GENERALERROR;
+			ManagedReference<GamblingManager*> manager = zoneServer->getGamblingManager();
+			//gamblingTerminal->setState(state+1);
+			if ((gamblingTerminal->getState() != GamblingTerminal::NOGAMERUNNING) && (gamblingTerminal->getGameCount() == gameCount)) {
+				manager->continueGame(gamblingTerminal);
 			}
 
-			try {
-				StringTokenizer args(arguments.toString());
+			//player->info("command queue action activated");
 
-				if (args.hasMoreTokens()) {
-					int amount = args.getIntToken();
-					String bet;
-					args.getStringToken(bet);
 
-					bet.toLowerCase();
-
-					int targetBet = -1;
-
-					for (int i=0; i<gamblingManager->getRoulette()->size(); ++i) {
-
-						if (gamblingManager->getRoulette()->get(i)==bet) {
-							targetBet = i;
-						}
-					}
-
-					if (targetBet == -1) {
-						player->sendSystemMessage("@gambling/default_interface:bet_failed_amt");
-						return GENERALERROR;
-					}
-
-					gamblingManager->bet(player, amount, targetBet, 0);
-				}
-			} catch (...) {
-				player->sendSystemMessage("@gambling/default_interface:bet_failed_amt");
-			}
-
+		} catch (...) {
+			gamblingTerminal->getPlayersWindows()->elementAt(0).getKey()->error("unreported exception on GamblingSlotEvent::nextSlotStep()");
 		}
 
-		return SUCCESS;
+		//gamblingTerminal = NULL; <- ?
+
 	}
+
 
 };
 
-#endif //BETCOMMAND_H_
+}
+}
+}
+}
+}
+
+#endif /* GAMBLINGSLOTEVENT_H_ */

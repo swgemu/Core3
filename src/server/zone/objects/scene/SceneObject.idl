@@ -277,6 +277,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public static final int GUILDTERMINAL = 0x4014;
 	public static final int CITYTERMINAL = 0x4015;
 	public static final int CITYVOTETERMINAL = 0x4016;
+	public static final int GAMBLINGTERMINAL = 0x4017;
 
 	public static final int TOOL = 0x8000;
 	public static final int CRAFTINGTOOL = 0x8001;

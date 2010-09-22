@@ -289,6 +289,10 @@ public:
 
 	void loadReconLocations();
 
+protected:
+	void loadStaticTangibleObjects();
+
+public:
 	ShuttleCreature* getShuttle(const String& arrivalPoint);
 
 	void addShuttle(const String& city, ShuttleCreature* shuttle);

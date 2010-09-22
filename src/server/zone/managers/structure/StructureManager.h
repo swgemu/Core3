@@ -202,6 +202,10 @@ private:
 
 	void loadPlayerStructures();
 
+	void loadStaticGamblingTerminals();
+
+	void loadStaticGamblingTerminals(int iff);
+
 	void loadStaticGarages();
 
 	BuildingObject* loadStaticBuilding(unsigned long long oid);

@@ -136,7 +136,7 @@ class SuiBox extends ManagedObject implements Logger {
 	}
 	
 	public void finalize() {
-		Logger.info("deleting sui box", true);
+		//Logger.info("deleting sui box", true);
 	}
 	
 	public void initializeTransientMembers() {
