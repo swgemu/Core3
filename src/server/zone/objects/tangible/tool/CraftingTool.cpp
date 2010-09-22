@@ -359,7 +359,6 @@ CraftingToolImplementation::CraftingToolImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
-
 CraftingToolImplementation::~CraftingToolImplementation() {
 }
 

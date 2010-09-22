@@ -129,7 +129,6 @@ BazaarAuctionsMapImplementation::BazaarAuctionsMapImplementation(DummyConstructo
 	_initializeImplementation();
 }
 
-
 BazaarAuctionsMapImplementation::~BazaarAuctionsMapImplementation() {
 }
 

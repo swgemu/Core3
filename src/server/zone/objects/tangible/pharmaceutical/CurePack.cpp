@@ -155,7 +155,6 @@ CurePackImplementation::CurePackImplementation(DummyConstructorParameter* param)
 	_initializeImplementation();
 }
 
-
 CurePackImplementation::~CurePackImplementation() {
 }
 

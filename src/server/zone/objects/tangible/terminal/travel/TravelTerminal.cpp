@@ -77,7 +77,6 @@ TravelTerminalImplementation::TravelTerminalImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 TravelTerminalImplementation::~TravelTerminalImplementation() {
 }
 

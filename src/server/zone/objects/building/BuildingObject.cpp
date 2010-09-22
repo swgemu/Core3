@@ -449,7 +449,6 @@ BuildingObjectImplementation::BuildingObjectImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 BuildingObjectImplementation::~BuildingObjectImplementation() {
 }
 

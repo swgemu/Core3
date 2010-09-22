@@ -91,7 +91,6 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
-
 IntangibleObjectImplementation::~IntangibleObjectImplementation() {
 	IntangibleObjectImplementation::finalize();
 }

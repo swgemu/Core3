@@ -64,7 +64,6 @@ MissionObserverImplementation::MissionObserverImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
-
 MissionObserverImplementation::~MissionObserverImplementation() {
 }
 

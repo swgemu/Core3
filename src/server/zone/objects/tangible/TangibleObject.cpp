@@ -785,7 +785,6 @@ TangibleObjectImplementation::TangibleObjectImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 TangibleObjectImplementation::~TangibleObjectImplementation() {
 }
 

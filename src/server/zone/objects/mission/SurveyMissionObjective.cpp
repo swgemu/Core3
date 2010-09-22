@@ -144,7 +144,6 @@ SurveyMissionObjectiveImplementation::SurveyMissionObjectiveImplementation(Dummy
 	_initializeImplementation();
 }
 
-
 SurveyMissionObjectiveImplementation::~SurveyMissionObjectiveImplementation() {
 	SurveyMissionObjectiveImplementation::finalize();
 }

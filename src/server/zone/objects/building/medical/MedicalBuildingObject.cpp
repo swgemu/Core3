@@ -44,7 +44,6 @@ MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation(DummyCo
 	_initializeImplementation();
 }
 
-
 MedicalBuildingObjectImplementation::~MedicalBuildingObjectImplementation() {
 }
 

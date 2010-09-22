@@ -60,7 +60,6 @@ StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(D
 	_initializeImplementation();
 }
 
-
 StartingLocationTerminalImplementation::~StartingLocationTerminalImplementation() {
 }
 

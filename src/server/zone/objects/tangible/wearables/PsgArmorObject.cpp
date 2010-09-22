@@ -77,7 +77,6 @@ PsgArmorObjectImplementation::PsgArmorObjectImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 PsgArmorObjectImplementation::~PsgArmorObjectImplementation() {
 }
 

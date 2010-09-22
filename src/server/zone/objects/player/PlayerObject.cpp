@@ -867,7 +867,6 @@ PlayerObjectImplementation::PlayerObjectImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
-
 PlayerObjectImplementation::~PlayerObjectImplementation() {
 	PlayerObjectImplementation::finalize();
 }

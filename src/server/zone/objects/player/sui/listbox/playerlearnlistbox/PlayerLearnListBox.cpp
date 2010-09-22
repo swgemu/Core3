@@ -74,7 +74,6 @@ PlayerLearnListBoxImplementation::PlayerLearnListBoxImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
-
 PlayerLearnListBoxImplementation::~PlayerLearnListBoxImplementation() {
 }
 

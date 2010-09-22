@@ -310,7 +310,6 @@ BazaarManagerImplementation::BazaarManagerImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
-
 BazaarManagerImplementation::~BazaarManagerImplementation() {
 }
 

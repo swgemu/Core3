@@ -90,7 +90,6 @@ GeneratorObjectImplementation::GeneratorObjectImplementation(DummyConstructorPar
 	_initializeImplementation();
 }
 
-
 GeneratorObjectImplementation::~GeneratorObjectImplementation() {
 }
 

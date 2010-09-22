@@ -177,7 +177,6 @@ RegionImplementation::RegionImplementation(DummyConstructorParameter* param) : A
 	_initializeImplementation();
 }
 
-
 RegionImplementation::~RegionImplementation() {
 }
 
