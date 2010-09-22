@@ -57,7 +57,6 @@ ClothingObjectImplementation::ClothingObjectImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 ClothingObjectImplementation::~ClothingObjectImplementation() {
 }
 

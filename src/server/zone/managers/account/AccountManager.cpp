@@ -96,7 +96,6 @@ AccountManagerImplementation::AccountManagerImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 AccountManagerImplementation::~AccountManagerImplementation() {
 }
 

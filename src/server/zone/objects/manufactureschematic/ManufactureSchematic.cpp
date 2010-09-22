@@ -485,7 +485,6 @@ ManufactureSchematicImplementation::ManufactureSchematicImplementation(DummyCons
 	_initializeImplementation();
 }
 
-
 ManufactureSchematicImplementation::~ManufactureSchematicImplementation() {
 }
 

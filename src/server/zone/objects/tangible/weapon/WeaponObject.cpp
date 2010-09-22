@@ -713,7 +713,6 @@ WeaponObjectImplementation::WeaponObjectImplementation(DummyConstructorParameter
 	_initializeImplementation();
 }
 
-
 WeaponObjectImplementation::~WeaponObjectImplementation() {
 }
 

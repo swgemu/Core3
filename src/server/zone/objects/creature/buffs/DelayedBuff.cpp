@@ -84,7 +84,6 @@ DelayedBuffImplementation::DelayedBuffImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
-
 DelayedBuffImplementation::~DelayedBuffImplementation() {
 }
 

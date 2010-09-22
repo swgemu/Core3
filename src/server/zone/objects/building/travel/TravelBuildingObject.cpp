@@ -32,7 +32,6 @@ TravelBuildingObjectImplementation::TravelBuildingObjectImplementation(DummyCons
 	_initializeImplementation();
 }
 
-
 TravelBuildingObjectImplementation::~TravelBuildingObjectImplementation() {
 }
 

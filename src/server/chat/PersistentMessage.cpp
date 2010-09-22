@@ -221,7 +221,6 @@ PersistentMessageImplementation::PersistentMessageImplementation(DummyConstructo
 	_initializeImplementation();
 }
 
-
 PersistentMessageImplementation::~PersistentMessageImplementation() {
 }
 

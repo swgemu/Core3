@@ -66,39 +66,44 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		// Replaced INVALIDPOSTURE check to return message if user is not meditating.
 		if(!creature->isMeditating()) {
-			creature->sendSystemMessage("teraskasi", "powerboost_fail");
+			creature->sendSystemMessage("teraskasi", "powerboost_fail"); // You must be meditating to perform that command.
 			return GENERALERROR;
 		}
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
+		if (player == NULL)
+			return GENERALERROR;
+
 		uint32 buffcrc = BuffCRC::SKILL_BUFF_POWERBOOST;
 
 		if(player->hasBuff(buffcrc)) {
-			if(player->isMeditating()) {
-				player->sendSystemMessage("teraskasi", "powerboost_active");
-				return GENERALERROR;
-			}
+			player->sendSystemMessage("teraskasi", "powerboost_active"); // [meditation] You are unable to channel your energies any further.
+			return GENERALERROR;
 		}
 
-		if(player->isMeditating()) {
-			int baseMind = player->getBaseHAM(CreatureAttribute::MIND);
+		int baseMind = player->getBaseHAM(CreatureAttribute::MIND);
 
-			int pbBonus = baseMind / 2;
+		int pbBonus = baseMind / 2;
 
-			int meditateMod = player->getSkillMod("meditate");
-			int duration = 300 + (3 * meditateMod);
+		int meditateMod = player->getSkillMod("meditate");
 
-			if(player->getHAM(CreatureAttribute::MIND) <= pbBonus) {
-				player->sendSystemMessage("teraskasi", "powerboost_mind");
-				return GENERALERROR;
-			}
+		/*
+		 * Taken from scrapbook
+		 * Duration: 5 min + (meditate skill mod/100 * 5min)
+		 */
+		int duration = 300 + ((meditateMod/100) * 300);
 
-			const String buffname = "skill.buff.powerboost";
-			ManagedReference<Buff*> buff = new PowerBoostBuff(player, buffname, buffname.hashCode(), pbBonus, duration);
-			player->addBuff(buff);
+		if(player->getHAM(CreatureAttribute::MIND) <= pbBonus) {
+			player->sendSystemMessage("teraskasi", "powerboost_mind"); // [mediation] You currently lack the mental capacity to focus your energies.
+			return GENERALERROR;
 		}
+
+		String buffname = "skill.buff.powerboost";
+		ManagedReference<Buff*> buff = new PowerBoostBuff(player, buffname, buffname.hashCode(), pbBonus, duration);
+		player->addBuff(buff);
 
 		return SUCCESS;
 	}

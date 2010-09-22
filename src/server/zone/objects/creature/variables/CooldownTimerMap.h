@@ -150,7 +150,7 @@ public:
 		Time* cooldown = HashTable<String, CooldownTimer>::get(cooldownName);
 
 		if (cooldown == NULL)
-			return 0;
+			return NULL;
 		else
 			return cooldown;
 	}

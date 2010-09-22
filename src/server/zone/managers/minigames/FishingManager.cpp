@@ -706,7 +706,6 @@ FishingManagerImplementation::FishingManagerImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 FishingManagerImplementation::~FishingManagerImplementation() {
 }
 

@@ -292,7 +292,6 @@ GroupObjectImplementation::GroupObjectImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
-
 GroupObjectImplementation::~GroupObjectImplementation() {
 }
 

@@ -107,7 +107,6 @@ HuntingMissionObjectiveImplementation::HuntingMissionObjectiveImplementation(Dum
 	_initializeImplementation();
 }
 
-
 HuntingMissionObjectiveImplementation::~HuntingMissionObjectiveImplementation() {
 	HuntingMissionObjectiveImplementation::finalize();
 }

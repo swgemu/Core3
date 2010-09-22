@@ -74,7 +74,6 @@ ElevatorTerminalImplementation::ElevatorTerminalImplementation(DummyConstructorP
 	_initializeImplementation();
 }
 
-
 ElevatorTerminalImplementation::~ElevatorTerminalImplementation() {
 }
 

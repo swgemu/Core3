@@ -151,7 +151,6 @@ EnhancePackImplementation::EnhancePackImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
-
 EnhancePackImplementation::~EnhancePackImplementation() {
 }
 

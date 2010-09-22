@@ -159,7 +159,6 @@ LairObjectImplementation::LairObjectImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
-
 LairObjectImplementation::~LairObjectImplementation() {
 }
 

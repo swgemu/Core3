@@ -110,7 +110,6 @@ PowerBoostBuffImplementation::PowerBoostBuffImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
-
 PowerBoostBuffImplementation::~PowerBoostBuffImplementation() {
 }
 
