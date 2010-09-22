@@ -152,7 +152,7 @@ public:
 
 			} else {
 
-				if (incomingTano->getUseCount() <= needs) {
+				if (incomingTano->getUseCount() >= needs) {
 
 					incomingTano->setUseCount(incomingTano->getUseCount() - needs, true);
 					contents->setUseCount(contents->getUseCount() + needs, true);
@@ -160,7 +160,7 @@ public:
 				} else {
 
 					contents->setUseCount(contents->getUseCount() + incomingTano->getUseCount(), true);
-					previousParent->removeObject(incomingTano, true);
+					incomingTano->setUseCount(0);
 				}
 			}
 
