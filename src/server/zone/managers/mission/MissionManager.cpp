@@ -18,6 +18,8 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
+#include "server/zone/managers/stringid/StringIdManager.h"
+
 /*
  *	MissionManagerStub
  */
@@ -507,17 +509,17 @@ void MissionManagerImplementation::_serializationHelperMethod() {
 
 MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, ZoneProcessServerImplementation* impl) {
 	_initializeImplementation();
-	// server/zone/managers/mission/MissionManager.idl(71):  		server = srv;
+	// server/zone/managers/mission/MissionManager.idl(74):  		server = srv;
 	server = srv;
-	// server/zone/managers/mission/MissionManager.idl(72):  		processor = impl;
+	// server/zone/managers/mission/MissionManager.idl(75):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/mission/MissionManager.idl(73):  		Logger.setLoggingName("MissionManager");
+	// server/zone/managers/mission/MissionManager.idl(76):  		Logger.setLoggingName("MissionManager");
 	Logger::setLoggingName("MissionManager");
-	// server/zone/managers/mission/MissionManager.idl(75):  		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
+	// server/zone/managers/mission/MissionManager.idl(78):  		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
 	(&lairObjectTemplatesToSpawn)->setNoDuplicateInsertPlan();
-	// server/zone/managers/mission/MissionManager.idl(77):  		loadLairObjectsToSpawn();
+	// server/zone/managers/mission/MissionManager.idl(80):  		loadLairObjectsToSpawn();
 	loadLairObjectsToSpawn();
-	// server/zone/managers/mission/MissionManager.idl(78):  		loadNpcObjectsToSpawn();
+	// server/zone/managers/mission/MissionManager.idl(81):  		loadNpcObjectsToSpawn();
 	loadNpcObjectsToSpawn();
 }
 

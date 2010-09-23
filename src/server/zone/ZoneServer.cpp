@@ -38,6 +38,8 @@
 
 #include "server/zone/managers/minigames/GamblingManager.h"
 
+#include "server/zone/managers/stringid/StringIdManager.h"
+
 /*
  *	ZoneServerStub
  */
@@ -896,139 +898,139 @@ void ZoneServerImplementation::fixScheduler() {
 }
 
 int ZoneServerImplementation::getGalaxyID() {
-	// server/zone/ZoneServer.idl(235):  		return galaxyID;
+	// server/zone/ZoneServer.idl(238):  		return galaxyID;
 	return galaxyID;
 }
 
 bool ZoneServerImplementation::isServerLocked() {
-	// server/zone/ZoneServer.idl(241):  		return serverState == LOCKED;
+	// server/zone/ZoneServer.idl(244):  		return serverState == LOCKED;
 	return serverState == LOCKED;
 }
 
 bool ZoneServerImplementation::isServerOnline() {
-	// server/zone/ZoneServer.idl(245):  		return serverState == ONLINE;
+	// server/zone/ZoneServer.idl(248):  		return serverState == ONLINE;
 	return serverState == ONLINE;
 }
 
 bool ZoneServerImplementation::isServerOffline() {
-	// server/zone/ZoneServer.idl(249):  		return serverState == OFFLINE;
+	// server/zone/ZoneServer.idl(252):  		return serverState == OFFLINE;
 	return serverState == OFFLINE;
 }
 
 bool ZoneServerImplementation::isServerLoading() {
-	// server/zone/ZoneServer.idl(253):  		return serverState == LOADING;
+	// server/zone/ZoneServer.idl(256):  		return serverState == LOADING;
 	return serverState == LOADING;
 }
 
 int ZoneServerImplementation::getServerState() {
-	// server/zone/ZoneServer.idl(257):  		return serverState;
+	// server/zone/ZoneServer.idl(260):  		return serverState;
 	return serverState;
 }
 
 Zone* ZoneServerImplementation::getZone(int index) {
-	// server/zone/ZoneServer.idl(261):  		return zones.get(index);
+	// server/zone/ZoneServer.idl(264):  		return zones.get(index);
 	return (&zones)->get(index);
 }
 
 int ZoneServerImplementation::getZoneCount() {
-	// server/zone/ZoneServer.idl(265):  		return zones.size();
+	// server/zone/ZoneServer.idl(268):  		return zones.size();
 	return (&zones)->size();
 }
 
 int ZoneServerImplementation::getMaxPlayers() {
-	// server/zone/ZoneServer.idl(269):  		return maximumPlayers.get();
+	// server/zone/ZoneServer.idl(272):  		return maximumPlayers.get();
 	return (&maximumPlayers)->get();
 }
 
 int ZoneServerImplementation::getTotalPlayers() {
-	// server/zone/ZoneServer.idl(273):  		return totalPlayers.get();
+	// server/zone/ZoneServer.idl(276):  		return totalPlayers.get();
 	return (&totalPlayers)->get();
 }
 
 int ZoneServerImplementation::getDeletedPlayers() {
-	// server/zone/ZoneServer.idl(277):  		return totalDeletedPlayers.get();
+	// server/zone/ZoneServer.idl(280):  		return totalDeletedPlayers.get();
 	return (&totalDeletedPlayers)->get();
 }
 
 PlayerManager* ZoneServerImplementation::getPlayerManager() {
-	// server/zone/ZoneServer.idl(281):  		return playerManager;
+	// server/zone/ZoneServer.idl(284):  		return playerManager;
 	return playerManager;
 }
 
 ChatManager* ZoneServerImplementation::getChatManager() {
-	// server/zone/ZoneServer.idl(285):  		return chatManager;
+	// server/zone/ZoneServer.idl(288):  		return chatManager;
 	return chatManager;
 }
 
 ObjectController* ZoneServerImplementation::getObjectController() {
-	// server/zone/ZoneServer.idl(289):  		return processor.getObjectController();
+	// server/zone/ZoneServer.idl(292):  		return processor.getObjectController();
 	return processor->getObjectController();
 }
 
 MissionManager* ZoneServerImplementation::getMissionManager() {
-	// server/zone/ZoneServer.idl(293):  		return missionManager;
+	// server/zone/ZoneServer.idl(296):  		return missionManager;
 	return missionManager;
 }
 
 RadialManager* ZoneServerImplementation::getRadialManager() {
-	// server/zone/ZoneServer.idl(297):  		return radialManager;
+	// server/zone/ZoneServer.idl(300):  		return radialManager;
 	return radialManager;
 }
 
 ResourceManager* ZoneServerImplementation::getResourceManager() {
-	// server/zone/ZoneServer.idl(301):  		return resourceManager;
+	// server/zone/ZoneServer.idl(304):  		return resourceManager;
 	return resourceManager;
 }
 
 CraftingManager* ZoneServerImplementation::getCraftingManager() {
-	// server/zone/ZoneServer.idl(305):  		return craftingManager;
+	// server/zone/ZoneServer.idl(308):  		return craftingManager;
 	return craftingManager;
 }
 
 LootManager* ZoneServerImplementation::getLootManager() {
-	// server/zone/ZoneServer.idl(309):  		return lootManager;
+	// server/zone/ZoneServer.idl(312):  		return lootManager;
 	return lootManager;
 }
 
 BazaarManager* ZoneServerImplementation::getBazaarManager() {
-	// server/zone/ZoneServer.idl(313):  		return bazaarManager;
+	// server/zone/ZoneServer.idl(316):  		return bazaarManager;
 	return bazaarManager;
 }
 
 FishingManager* ZoneServerImplementation::getFishingManager() {
-	// server/zone/ZoneServer.idl(317):  		return fishingManager;
+	// server/zone/ZoneServer.idl(320):  		return fishingManager;
 	return fishingManager;
 }
 
 GamblingManager* ZoneServerImplementation::getGamblingManager() {
-	// server/zone/ZoneServer.idl(321):  		return gamblingManager;
+	// server/zone/ZoneServer.idl(324):  		return gamblingManager;
 	return gamblingManager;
 }
 
 AccountManager* ZoneServerImplementation::getAccountManager() {
-	// server/zone/ZoneServer.idl(325):  		return accountManager;
+	// server/zone/ZoneServer.idl(328):  		return accountManager;
 	return accountManager;
 }
 
 ProfessionManager* ZoneServerImplementation::getProfessionManager() {
-	// server/zone/ZoneServer.idl(330):  		return processor.getProfessionManager();
+	// server/zone/ZoneServer.idl(333):  		return processor.getProfessionManager();
 	return processor->getProfessionManager();
 }
 
 Time* ZoneServerImplementation::getStartTimestamp() {
-	// server/zone/ZoneServer.idl(335):  		return startTimestamp;
+	// server/zone/ZoneServer.idl(338):  		return startTimestamp;
 	return (&startTimestamp);
 }
 
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(341):  		galaxyID = galaxyid;
+	// server/zone/ZoneServer.idl(344):  		galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(345):  		serverState = state;
+	// server/zone/ZoneServer.idl(348):  		serverState = state;
 	serverState = state;
 }
 
