@@ -553,7 +553,7 @@ float CraftingValues::getCurrentPercentageAverage(const String title) {
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		if (values->getMaxPercentage() < 1.0f && !values->isFiller()) {
+		if (values->getMaxPercentage() <= 1.0f && !values->isFiller()) {
 
 			float item = values->getPercentage();
 			if (item > 0) {
@@ -646,7 +646,7 @@ float CraftingValues::getMaxPercentageAverage(const int i) {
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		if (values->getMaxPercentage() < 1.0f && !values->isFiller()) {
+		if (values->getMaxPercentage() <= 1.0f && !values->isFiller()) {
 
 			average += values->getMaxPercentage();
 			count++;
