@@ -77,6 +77,7 @@ import server.zone.managers.minigames.FishingManager;
 import server.zone.managers.mission.MissionManager;
 import server.zone.managers.account.AccountManager;
 import server.zone.managers.minigames.GamblingManager;
+import server.zone.managers.stringid.StringIdManager;
 
 @nonTransactional
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
@@ -106,6 +107,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private GamblingManager gamblingManager;
 	
 	private AccountManager accountManager;
+	
+	private transient StringIdManager stringIdManager;
 
 	private int totalSentPackets;
 	

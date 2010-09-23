@@ -105,6 +105,20 @@ class ZoneProcessServerImplementation;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace stringid {
+
+class StringIdManager;
+
+} // namespace stringid
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::stringid;
+
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
@@ -120,6 +134,8 @@ namespace mission {
 
 class MissionManager : public Observer {
 public:
+	unsigned static const int UNKNOWN_TARGET = 0xB911DA26;
+
 	MissionManager(ZoneServer* srv, ZoneProcessServerImplementation* impl);
 
 	void loadLairObjectsToSpawn();
@@ -211,6 +227,8 @@ protected:
 	SortedVector<unsigned int> npcObjectTemplatesToSpawn;
 
 public:
+	unsigned static const int UNKNOWN_TARGET = 0xB911DA26;
+
 	MissionManagerImplementation(ZoneServer* srv, ZoneProcessServerImplementation* impl);
 
 	MissionManagerImplementation(DummyConstructorParameter* param);

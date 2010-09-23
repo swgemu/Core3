@@ -237,6 +237,20 @@ class GamblingManager;
 
 using namespace server::zone::managers::minigames;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace stringid {
+
+class StringIdManager;
+
+} // namespace stringid
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::stringid;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -457,6 +471,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<GamblingManager* > gamblingManager;
 
 	ManagedReference<AccountManager* > accountManager;
+
+	StringIdManager* stringIdManager;
 
 	int totalSentPackets;
 

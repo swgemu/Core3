@@ -54,6 +54,7 @@ import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServerImplementation;
+import server.zone.managers.stringid.StringIdManager;
 include server.zone.managers.mission.LairObjectsToSpawnMap;
 
 class MissionManager extends Observer implements Logger {
@@ -66,6 +67,8 @@ class MissionManager extends Observer implements Logger {
 	
 	@dereferenced
 	protected SortedVector<unsigned int> npcObjectTemplatesToSpawn;
+	
+	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
 	
 	public MissionManager(ZoneServer srv, ZoneProcessServerImplementation impl) {
 		server = srv;

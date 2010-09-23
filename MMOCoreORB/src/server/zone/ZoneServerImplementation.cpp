@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "../db/ServerDatabase.h"
 
 #include "managers/object/ObjectManager.h"
+#include "managers/stringid/StringIdManager.h"
 #include "managers/objectcontroller/ObjectController.h"
 #include "managers/player/PlayerManager.h"
 #include "managers/radial/RadialManager.h"
@@ -91,6 +92,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	accountManager = NULL;
 	fishingManager = NULL;
 	gamblingManager = NULL;
+	stringIdManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -349,6 +351,8 @@ void ZoneServerImplementation::init() {
 
 	objectManager = ObjectManager::instance();
 	objectManager->setZoneProcessServerImplementation(processor);
+
+	stringIdManager = StringIdManager::instance();
 
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);

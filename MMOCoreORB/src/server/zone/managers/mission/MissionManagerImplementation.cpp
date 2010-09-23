@@ -473,11 +473,11 @@ void MissionManagerImplementation::randomizeBountyMission(PlayerCreature* player
 		return;
 	}
 
-	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(0xB911DA26);
+	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(MissionManager::UNKNOWN_TARGET);
 
 	if (templateObject == NULL) {
 		mission->setTypeCRC(0);
-		error("incorrect template object in randomizeBountyMission 0xB911DA26");
+		error("incorrect template object in randomizeBountyMission UNKNOWN_TARGET");
 		return;
 	}
 
