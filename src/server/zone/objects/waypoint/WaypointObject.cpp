@@ -131,12 +131,37 @@ void WaypointObject::setUnknown(unsigned long long id) {
 		((WaypointObjectImplementation*) _impl)->setUnknown(id);
 }
 
-void WaypointObject::toggleStatus() {
+void WaypointObject::setSpecialTypeID(int id) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+		method.addSignedIntParameter(id);
+
+		method.executeWithVoidReturn();
+	} else
+		((WaypointObjectImplementation*) _impl)->setSpecialTypeID(id);
+}
+
+int WaypointObject::getSpecialTypeID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WaypointObjectImplementation*) _impl)->getSpecialTypeID();
+}
+
+void WaypointObject::toggleStatus() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 
 		method.executeWithVoidReturn();
 	} else
@@ -150,6 +175,7 @@ void WaypointObject::toggleStatus() {
 WaypointObjectImplementation::WaypointObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 WaypointObjectImplementation::~WaypointObjectImplementation() {
 }
@@ -216,51 +242,62 @@ void WaypointObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("customName", &customName);
 	addSerializableVariable("color", &color);
 	addSerializableVariable("active", &active);
+	addSerializableVariable("specialTypeID", &specialTypeID);
 }
 
 WaypointObjectImplementation::WaypointObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/waypoint/WaypointObject.idl(29):  		Logger.setLoggingName("WaypointObject");
+	// server/zone/objects/waypoint/WaypointObject.idl(38):  		Logger.setLoggingName("WaypointObject");
 	Logger::setLoggingName("WaypointObject");
 }
 
 void WaypointObjectImplementation::setCellID(unsigned int id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(39):  		cellID = id;
+	// server/zone/objects/waypoint/WaypointObject.idl(48):  		cellID = id;
 	cellID = id;
 }
 
 void WaypointObjectImplementation::setPlanetCRC(unsigned int crc) {
-	// server/zone/objects/waypoint/WaypointObject.idl(43):  		planetCRC = crc;
+	// server/zone/objects/waypoint/WaypointObject.idl(52):  		planetCRC = crc;
 	planetCRC = crc;
 }
 
 void WaypointObjectImplementation::setCustomName(const UnicodeString& name) {
-	// server/zone/objects/waypoint/WaypointObject.idl(47):  		customName = name;
+	// server/zone/objects/waypoint/WaypointObject.idl(56):  		customName = name;
 	customName = name;
 }
 
 UnicodeString WaypointObjectImplementation::getCustomName() {
-	// server/zone/objects/waypoint/WaypointObject.idl(51):  		return customName;
+	// server/zone/objects/waypoint/WaypointObject.idl(60):  		return customName;
 	return customName;
 }
 
 void WaypointObjectImplementation::setColor(byte newColor) {
-	// server/zone/objects/waypoint/WaypointObject.idl(55):  		color = newColor;
+	// server/zone/objects/waypoint/WaypointObject.idl(64):  		color = newColor;
 	color = newColor;
 }
 
 void WaypointObjectImplementation::setActive(byte newStatus) {
-	// server/zone/objects/waypoint/WaypointObject.idl(59):  		active = newStatus;
+	// server/zone/objects/waypoint/WaypointObject.idl(68):  		active = newStatus;
 	active = newStatus;
 }
 
 void WaypointObjectImplementation::setUnknown(unsigned long long id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(63):  		unknown = id;
+	// server/zone/objects/waypoint/WaypointObject.idl(72):  		unknown = id;
 	unknown = id;
 }
 
+void WaypointObjectImplementation::setSpecialTypeID(int id) {
+	// server/zone/objects/waypoint/WaypointObject.idl(76):  		specialTypeID = id;
+	specialTypeID = id;
+}
+
+int WaypointObjectImplementation::getSpecialTypeID() {
+	// server/zone/objects/waypoint/WaypointObject.idl(80):  		return specialTypeID;
+	return specialTypeID;
+}
+
 void WaypointObjectImplementation::toggleStatus() {
-	// server/zone/objects/waypoint/WaypointObject.idl(67):  		active = !active;
+	// server/zone/objects/waypoint/WaypointObject.idl(84):  		active = !active;
 	active = !active;
 }
 
@@ -297,6 +334,12 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setUnknown(inv->getUnsignedLongParameter());
 		break;
 	case 13:
+		setSpecialTypeID(inv->getSignedIntParameter());
+		break;
+	case 14:
+		resp->insertSignedInt(getSpecialTypeID());
+		break;
+	case 15:
 		toggleStatus();
 		break;
 	default:
@@ -332,6 +375,14 @@ void WaypointObjectAdapter::setActive(byte newStatus) {
 
 void WaypointObjectAdapter::setUnknown(unsigned long long id) {
 	((WaypointObjectImplementation*) impl)->setUnknown(id);
+}
+
+void WaypointObjectAdapter::setSpecialTypeID(int id) {
+	((WaypointObjectImplementation*) impl)->setSpecialTypeID(id);
+}
+
+int WaypointObjectAdapter::getSpecialTypeID() {
+	return ((WaypointObjectImplementation*) impl)->getSpecialTypeID();
 }
 
 void WaypointObjectAdapter::toggleStatus() {

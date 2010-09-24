@@ -272,6 +272,7 @@ void PlayerObjectImplementation::setWaypoint(WaypointObject* waypoint, bool noti
 
 void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient) {
 	uint64 waypointID = waypoint->getObjectID();
+	int specialTypeID = waypoint->getSpecialTypeID();
 
 	if (waypointList.contains(waypointID)) {
 		error("this contains this waypoint ID");
@@ -285,6 +286,13 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool chec
 		if (index != 0)
 			removeWaypoint(index, notifyClient);
 
+	}
+
+	if (specialTypeID != 0) {
+		uint64 idx = waypointList.findSpecialTypeID(specialTypeID);
+
+		if (idx != 0)
+			removeWaypoint(idx, notifyClient);
 	}
 
 	setWaypoint(waypoint, notifyClient);

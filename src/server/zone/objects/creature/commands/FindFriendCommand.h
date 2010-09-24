@@ -120,6 +120,7 @@ public:
 		obj->setPlanetCRC(planet.hashCode());
 		obj->setPosition(x, z, y);
 		obj->setCustomName(name);
+		obj->setSpecialTypeID(WaypointObject::SPECIALTYPE_FINDFRIEND);
 		obj->setActive(true);
 
 		ghost->addWaypoint(obj, true, true);
