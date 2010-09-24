@@ -82,6 +82,9 @@ which carries forward this exception.
 #include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 #include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
+#include "server/zone/managers/planet/MapLocationType.h"
+#include "server/zone/objects/creature/commands/FindCommand.h"
+
 
 /*#include "../item/ItemManager.h"
 #include "../../objects/creature/bluefrog/BlueFrogVector.h"
@@ -325,6 +328,8 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::CREATE_CITY_HALL_NAME:
 		handleSetCityHallName(boxID, player, cancel, value);
 		break;
+	case SuiWindowType::COMMAND_FIND:
+		handleFindCommand(boxID, player, cancel, atoi(value.toCharArray()));
 	default:
 		//Clean up players sui box:
 
@@ -2763,4 +2768,25 @@ void SuiManager::handleSetCityHallName(int boxID, PlayerCreature* player, int ca
 	Locker clocker(cityHall, player);
 
 	cityHall->trySetCityName(player, input);
+}
+
+void SuiManager::handleFindCommand(int boxID, PlayerCreature* player, uint32 cancel, int value) {
+	Locker _locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+
+	if (box->isListBox() && cancel != 1) {
+
+		SuiListBox* listBox = (SuiListBox*) box.get();
+
+		uint8 maploctype = listBox->getMenuObjectID(value);
+
+		FindCommand::findPlanetaryObject(player, maploctype);
+
+	}
 }

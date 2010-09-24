@@ -145,6 +145,8 @@ public:
 	static const int STRUCTURE_DESTROY_CODE = 117;
 	static const int STRUCTURE_MANAGE_MAINTENANCE = 118;
 
+	static const int COMMAND_FIND = 119;
+
 	static const int GAMBLINGROULETTE = 120;
 	static const int GAMBLINGSLOT = 121;
 	static const int GAMBLINGSLOTPAYOUT = 122;
