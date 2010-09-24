@@ -17,6 +17,8 @@ void WaypointObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	color = COLOR_BLUE;
 	active = 0;
+
+	specialTypeID = 0;
 }
 
 void WaypointObjectImplementation::insertToMessage(BaseMessage* msg) {

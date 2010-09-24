@@ -147,9 +147,12 @@ namespace server {
 
 	  	void handleSetCityHallName(int boxID, PlayerCreature* player, int cancel, const String& input);
 
+	  	void handleFindCommand(int boxID, PlayerCreature* player, uint32 cancel, int value);
+
 	  	void handleGamblingSlotPayout(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
 	  	void handleGamblingSlot(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
 	  	void handleGamblingRoulette(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+
 	  };
 	  }
   }

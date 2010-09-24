@@ -60,6 +60,18 @@ public:
 
 	static const byte COLOR_PURPLE = 0x05;
 
+	static const int SPECIALTYPE_FIND = 1;
+
+	static const int SPECIALTYPE_FINDFRIEND = 2;
+
+	static const int SPECIALTYPE_FINDPLAYER = 3;
+
+	static const int SPECIALTYPE_FINDMYTRAINER = 4;
+
+	static const int SPECIALTYPE_FINDOBJECT = 5;
+
+	static const int SPECIALTYPE_RESOURCE = 6;
+
 	WaypointObject();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -79,6 +91,10 @@ public:
 	void setActive(byte newStatus);
 
 	void setUnknown(unsigned long long id);
+
+	void setSpecialTypeID(int id);
+
+	int getSpecialTypeID();
 
 	void toggleStatus();
 
@@ -118,6 +134,8 @@ protected:
 
 	byte active;
 
+	int specialTypeID;
+
 public:
 	static const byte COLOR_WHITE = 0x00;
 
@@ -130,6 +148,18 @@ public:
 	static const byte COLOR_YELLOW = 0x04;
 
 	static const byte COLOR_PURPLE = 0x05;
+
+	static const int SPECIALTYPE_FIND = 1;
+
+	static const int SPECIALTYPE_FINDFRIEND = 2;
+
+	static const int SPECIALTYPE_FINDPLAYER = 3;
+
+	static const int SPECIALTYPE_FINDMYTRAINER = 4;
+
+	static const int SPECIALTYPE_FINDOBJECT = 5;
+
+	static const int SPECIALTYPE_RESOURCE = 6;
 
 	WaypointObjectImplementation();
 
@@ -152,6 +182,10 @@ public:
 	void setActive(byte newStatus);
 
 	void setUnknown(unsigned long long id);
+
+	void setSpecialTypeID(int id);
+
+	int getSpecialTypeID();
 
 	void toggleStatus();
 
@@ -207,6 +241,10 @@ public:
 	void setActive(byte newStatus);
 
 	void setUnknown(unsigned long long id);
+
+	void setSpecialTypeID(int id);
+
+	int getSpecialTypeID();
 
 	void toggleStatus();
 
