@@ -103,20 +103,21 @@ public:
 		suiBox->setPromptTitle("Find Player Results");
 
 		StringBuffer text;
-		text << "Player Name: " << targetObject->getObjectName()->getDisplayedName() << "\n";
+		text << "Player Name:\t  " << targetObject->getObjectName()->getDisplayedName() << "\n";
+
+		text << "Online Status:\t  " << (targetObject->isOffline() ? "\\#ff3300 Offline" : "\\#00ff33 Online") << "\\#.\n";
 
 		Vector3 worldPosition = targetObject->getWorldPosition();
-		text << "World Position: " << worldPosition.getX() << ", " << worldPosition.getZ() << ", " << worldPosition.getY() << " " << Planet::getPlanetName(targetObject->getZone()->getZoneID()) << "\n";
+		text << "World Position:\t  {x:" << worldPosition.getX() << ", z:" << worldPosition.getZ() << ", y:" << worldPosition.getY() << "} " << Planet::getPlanetName(targetObject->getZone()->getZoneID()) << "\n";
 
 		if (targetObject->getParent() != NULL && targetObject->getParent()->isCellObject()) {
 			ManagedReference<CellObject*> cell = (CellObject*) targetObject->getParent();
 			Vector3 cellPosition = targetObject->getPosition();
-			text << "Cell Position: " << cellPosition.getX() << ", " << cellPosition.getZ() << ", " << cellPosition.getY() << " Cell ID: " << cell->getCellNumber() << "(" << cell->getObjectID() << ")\n";
+			text << "Cell Position:\t  {x:" << cellPosition.getX() << ", z:" << cellPosition.getZ() << ", y:" << cellPosition.getY() << "} Cell: " << cell->getCellNumber() << " (" << cell->getObjectID() << ")\n";
 		}
 
-		String dir;
-		targetObject->getDirection()->toString(dir);
-		text << "Direction: " << dir << "\n";
+		Quaternion* dir = targetObject->getDirection();
+		text << "Direction:\t\t  {x:" << dir->getX() << ", y:" << dir->getY() << ", z:" << dir->getZ() << ", w:" << dir->getW() << "}\n";
 
 		suiBox->setPromptText(text.toString());
 
