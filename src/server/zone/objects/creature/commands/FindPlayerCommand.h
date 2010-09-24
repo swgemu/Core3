@@ -46,6 +46,7 @@ which carries forward this exception.
 #define FINDPLAYERCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../player/sui/messagebox/SuiMessageBox.h"
 
 class FindPlayerCommand : public QueueCommand {
 public:
@@ -56,12 +57,70 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		//TODO: Research if this gets handled already by the absence of the 'admin' skill.
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		//if (!ghost->isPrivileged())
+			//return GENERALERROR;
+
+		StringTokenizer tokenizer(arguments.toString());
+		tokenizer.setDelimeter(" ");
+
+		if (!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
+
+		String targetName;
+		tokenizer.getStringToken(targetName);
+
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+		uint64 objectid = playerManager->getObjectID(targetName);
+
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(objectid);
+
+		if (obj == NULL || !obj->isPlayerCreature()) {
+			//Send message about player not existing.
+			ParameterizedStringId params;
+			params.setStringId("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
+			params.setTO(targetName);
+			player->sendSystemMessage(params);
+			return GENERALERROR;
+		}
+
+		PlayerCreature* targetObject = (PlayerCreature*) obj.get();
+
+		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, 0x00);
+		suiBox->setPromptTitle("Find Player Results");
+
+		StringBuffer text;
+		text << "Player Name: " << targetObject->getObjectName()->getDisplayedName() << "\n";
+
+		Vector3 worldPosition = targetObject->getWorldPosition();
+		text << "World Position: " << worldPosition.getX() << ", " << worldPosition.getZ() << ", " << worldPosition.getY() << " " << Planet::getPlanetName(targetObject->getZone()->getZoneID()) << "\n";
+
+		if (targetObject->getParent() != NULL && targetObject->getParent()->isCellObject()) {
+			ManagedReference<CellObject*> cell = (CellObject*) targetObject->getParent();
+			Vector3 cellPosition = targetObject->getPosition();
+			text << "Cell Position: " << cellPosition.getX() << ", " << cellPosition.getZ() << ", " << cellPosition.getY() << " Cell ID: " << cell->getCellNumber() << "(" << cell->getObjectID() << ")\n";
+		}
+
+		String dir;
+		targetObject->getDirection()->toString(dir);
+		text << "Direction: " << dir << "\n";
+
+		suiBox->setPromptText(text.toString());
+
+		player->sendMessage(suiBox->generateMessage());
 
 		return SUCCESS;
 	}
