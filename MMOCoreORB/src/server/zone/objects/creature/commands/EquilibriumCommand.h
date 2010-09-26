@@ -86,9 +86,9 @@ public:
 			return GENERALERROR;
 		}
 
-		int health = player->getHAM(CreatureAttribute::HEALTH);
-		int action = player->getHAM(CreatureAttribute::ACTION);
-		int mind = player->getHAM(CreatureAttribute::MIND);
+		int health = player->getMaxHAM(CreatureAttribute::HEALTH);
+		int action = player->getMaxHAM(CreatureAttribute::ACTION);
+		int mind = player->getMaxHAM(CreatureAttribute::MIND);
 
 		int newVal = (MAX(health, MAX(action, mind))) * 0.65;
 
