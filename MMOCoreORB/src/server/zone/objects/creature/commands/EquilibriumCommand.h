@@ -46,9 +46,6 @@
 #define EQUILIBRIUMCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 
 class EquilibriumCommand: public QueueCommand {
 public:
@@ -71,13 +68,13 @@ public:
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
-		// Check to see if "innate_quilibrium" Cooldown isPast();
+		// Check to see if "innate_equilibrium" Cooldown isPast();
 		if (!player->checkCooldownRecovery("innate_equilibrium")) {
 			ParameterizedStringId stringId;
 
 			Time* cdTime = player->getCooldownTime("innate_equilibrium");
 
-			// Returns -time. Multiple by -1 to return postive.
+			// Returns -time. Multiple by -1 to return positive.
 			int timeLeft = floor(cdTime->miliDifference() / 1000) *-1;
 
 			stringId.setStringId("@innate:equil_wait"); // You are still recovering from your last equilization. Command available in %DI seconds.
@@ -86,20 +83,47 @@ public:
 			return GENERALERROR;
 		}
 
-		int health = player->getMaxHAM(CreatureAttribute::HEALTH);
-		int action = player->getMaxHAM(CreatureAttribute::ACTION);
-		int mind = player->getMaxHAM(CreatureAttribute::MIND);
+		int health = player->getHAM(CreatureAttribute::HEALTH);
+		int action = player->getHAM(CreatureAttribute::ACTION);
+		int mind = player->getHAM(CreatureAttribute::MIND);
 
-		int newVal = (MAX(health, MAX(action, mind))) * 0.65;
+		// All pools Balanced to the same Value.
+		int balValue = (health + action + mind) / 3;
 
-		player->setHAM(CreatureAttribute::HEALTH, newVal);
-		player->setHAM(CreatureAttribute::ACTION, newVal);
-		player->setHAM(CreatureAttribute::MIND, newVal);
+		// Get the difference between current HEALTH and the balValue.
+		int diffHealth = MAX(health, balValue) - MIN(health, balValue);
+		int diffAction = MAX(action, balValue) - MIN(action, balValue);
+		int diffMind = MAX(mind, balValue) - MIN(mind, balValue);
 
-		player->sendSystemMessage("@innate:equil_active"); // Through sheer willpower, you force yourself into a state of equilibruim.
-		player->showFlyText("combat_effects", "innate_equilibrium", 0, 255, 0); // +Equilibruim+
+		// Check rather to Heal or inflict damage to the player.
+		if (health < balValue) {
+			player->healDamage(player,CreatureAttribute::HEALTH, diffHealth, true);
 
-		player->addCooldown("innate_equilibrium", 600 * 1000);
+		} else {
+			player->inflictDamage(player, CreatureAttribute::HEALTH, diffHealth, true);
+
+		}
+
+		if (action < balValue) {
+			player->healDamage(player,CreatureAttribute::ACTION, diffAction, true);
+
+		} else {
+			player->inflictDamage(player, CreatureAttribute::ACTION, diffAction, true);
+
+		}
+
+		if (mind < balValue) {
+			player->healDamage(player,CreatureAttribute::MIND, diffMind, true);
+
+		} else {
+			player->inflictDamage(player, CreatureAttribute::MIND, diffMind, true);
+
+		}
+
+		player->sendSystemMessage("@innate:equil_active"); // Through sheer willpower, you force yourself into a state of equilibrium.
+		player->showFlyText("combat_effects", "innate_equilibrium", 0, 255, 0); // +Equilibrium+
+
+		player->addCooldown("innate_equilibrium", 3600 * 1000);
 
 		return SUCCESS;
 	}
