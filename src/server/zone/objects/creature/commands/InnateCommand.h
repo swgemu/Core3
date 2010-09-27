@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef INNATECOMMAND_H_
 #define INNATECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class InnateCommand : public QueueCommand {
 public:
@@ -62,6 +62,79 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		StringTokenizer args(arguments.toString());
+
+		if (!args.hasMoreTokens())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+		ManagedReference<PlayerObject*> po = player->getPlayerObject();
+
+		String innateCommand;
+		args.getStringToken(innateCommand);
+		innateCommand = innateCommand.toLowerCase();
+
+		ParameterizedStringId stringId;
+		stringId.setStringId("@innate:innate_na"); // Innate Command parameter '%TO' is not available for your species.
+
+		// Vitalize
+		if (innateCommand == "vitalize") {
+
+			if (po->hasSkill("vitalize")) {
+				player->executeObjectControllerAction(String("vitalize").hashCode());
+				return SUCCESS;
+
+			} else {
+				stringId.setTO("innate", "vit"); // vitalize
+				player->sendSystemMessage(stringId);
+				return GENERALERROR;
+			}
+
+		// Equilibrium
+		} else if (innateCommand == "equilibrium") {
+
+			if (po->hasSkill("equilibrium")) {
+				player->executeObjectControllerAction(String("equilibrium").hashCode());
+				return SUCCESS;
+
+			} else {
+				stringId.setTO("innate", "equil"); // equilibrium
+				player->sendSystemMessage(stringId);
+				return GENERALERROR;
+			}
+
+		// Regeneration
+		} else if (innateCommand == "regeneration") {
+
+			if (po->hasSkill("regeneration")) {
+				player->executeObjectControllerAction(String("regeneration").hashCode());
+				return SUCCESS;
+
+			} else {
+				stringId.setTO("innate", "regen"); // regeneration
+				player->sendSystemMessage(stringId);
+				return GENERALERROR;
+
+			}
+
+		// WookieRoar
+		} else if (innateCommand == "wookieeroar") {
+
+			if (po->hasSkill("wookieeroar")) {
+				player->executeObjectControllerAction(String("wookieeroar").hashCode());
+				return SUCCESS;
+
+			} else {
+				stringId.setTO("innate", "roar"); // roar
+				player->sendSystemMessage(stringId);
+				return GENERALERROR;
+
+			}
+		}
 
 		return SUCCESS;
 	}
