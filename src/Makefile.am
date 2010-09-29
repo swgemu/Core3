@@ -65,6 +65,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
 				server/zone/objects/scene/Observer.cpp \
 				server/zone/objects/scene/Observable.cpp \
+				server/zone/objects/scene/Facade.cpp \
 				server/zone/objects/area/ActiveArea.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/area/MissionSpawnActiveArea.cpp \
@@ -110,6 +111,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
+				server/zone/objects/player/EntertainingSession.cpp \
+				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
 				server/zone/objects/region/Region.cpp \
@@ -243,6 +246,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/name/NameManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/professions/ProfessionManager.cpp \
+		server/zone/managers/professions/PerformanceManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/minigames/FishingManagerImplementation.cpp \
@@ -335,6 +339,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/city/CityHallObjectImplementation.cpp \
 		server/zone/objects/structure/StructurePermissionList.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
+		server/zone/objects/player/EntertainingSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \

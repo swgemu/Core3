@@ -312,13 +312,21 @@ public:
 
 	int notifyObjectInserted(SceneObject* object);
 
-	void setInstrumentID(int instrumentid, bool notifyClient = false);
+	int notifyObjectRemoved(SceneObject* object);
+
+	void setInstrumentID(int instrumentid, bool notifyClient = true);
+
+	void setListenToID(unsigned long long id, bool notifyClient = true);
+
+	void setPerformanceCounter(int counter, bool notifyClient = true);
+
+	void setPerformanceAnimation(const String& animation, bool notifyClient = true);
 
 	void setShockWounds(int newShock, bool notifyClient = true);
 
 	void addShockWounds(int shockToAdd, bool notiyClient = true);
 
-	void setTargetID(unsigned long long targetID, bool notifyClient = false);
+	void setTargetID(unsigned long long targetID, bool notifyClient = true);
 
 	void setBankCredits(int credits, bool notifyClient = true);
 
@@ -360,7 +368,17 @@ public:
 
 	bool verifyBankCredits(int credits);
 
+	bool isDancing();
+
+	bool isPlayingMusic();
+
+	void stopEntertaining();
+
+	bool isEntertaining();
+
 	void setCashCredits(int credits, bool notifyClient = true);
+
+	void setTerrainNegotiation(float value, bool notifyClient = true);
 
 	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
 
@@ -413,6 +431,10 @@ public:
 	bool canTreatWounds();
 
 	bool canTreatConditions();
+
+	bool isListening();
+
+	bool isWatching();
 
 	void dismount();
 
@@ -532,6 +554,8 @@ public:
 
 	float getShockWounds();
 
+	unsigned long long getWatchToID();
+
 	unsigned long long getStateBitmask();
 
 	bool hasState(unsigned long long state);
@@ -603,6 +627,8 @@ public:
 	DeltaVectorMap<String, long long>* getSkillModList();
 
 	void setHeight(float heigh);
+
+	void setWatchToID(unsigned long long id);
 
 	bool isCreatureObject();
 
@@ -761,6 +787,8 @@ protected:
 
 	unsigned long long listenToID;
 
+	unsigned long long watchToID;
+
 	String performanceAnimation;
 
 	String moodString;
@@ -908,13 +936,21 @@ public:
 
 	int notifyObjectInserted(SceneObject* object);
 
-	void setInstrumentID(int instrumentid, bool notifyClient = false);
+	int notifyObjectRemoved(SceneObject* object);
+
+	void setInstrumentID(int instrumentid, bool notifyClient = true);
+
+	void setListenToID(unsigned long long id, bool notifyClient = true);
+
+	void setPerformanceCounter(int counter, bool notifyClient = true);
+
+	void setPerformanceAnimation(const String& animation, bool notifyClient = true);
 
 	void setShockWounds(int newShock, bool notifyClient = true);
 
 	void addShockWounds(int shockToAdd, bool notiyClient = true);
 
-	void setTargetID(unsigned long long targetID, bool notifyClient = false);
+	void setTargetID(unsigned long long targetID, bool notifyClient = true);
 
 	void setBankCredits(int credits, bool notifyClient = true);
 
@@ -956,7 +992,17 @@ public:
 
 	bool verifyBankCredits(int credits);
 
+	bool isDancing();
+
+	bool isPlayingMusic();
+
+	void stopEntertaining();
+
+	bool isEntertaining();
+
 	void setCashCredits(int credits, bool notifyClient = true);
+
+	void setTerrainNegotiation(float value, bool notifyClient = true);
 
 	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
 
@@ -1009,6 +1055,10 @@ public:
 	bool canTreatWounds();
 
 	bool canTreatConditions();
+
+	bool isListening();
+
+	bool isWatching();
 
 	void dismount();
 
@@ -1128,6 +1178,8 @@ public:
 
 	float getShockWounds();
 
+	unsigned long long getWatchToID();
+
 	unsigned long long getStateBitmask();
 
 	bool hasState(unsigned long long state);
@@ -1199,6 +1251,8 @@ public:
 	DeltaVectorMap<String, long long>* getSkillModList();
 
 	void setHeight(float heigh);
+
+	void setWatchToID(unsigned long long id);
 
 	bool isCreatureObject();
 
@@ -1373,7 +1427,15 @@ public:
 
 	int notifyObjectInserted(SceneObject* object);
 
+	int notifyObjectRemoved(SceneObject* object);
+
 	void setInstrumentID(int instrumentid, bool notifyClient);
+
+	void setListenToID(unsigned long long id, bool notifyClient);
+
+	void setPerformanceCounter(int counter, bool notifyClient);
+
+	void setPerformanceAnimation(const String& animation, bool notifyClient);
 
 	void setShockWounds(int newShock, bool notifyClient);
 
@@ -1421,7 +1483,17 @@ public:
 
 	bool verifyBankCredits(int credits);
 
+	bool isDancing();
+
+	bool isPlayingMusic();
+
+	void stopEntertaining();
+
+	bool isEntertaining();
+
 	void setCashCredits(int credits, bool notifyClient);
+
+	void setTerrainNegotiation(float value, bool notifyClient);
 
 	void addSkillBox(const String& skillBox, bool notifyClient);
 
@@ -1470,6 +1542,10 @@ public:
 	bool canTreatWounds();
 
 	bool canTreatConditions();
+
+	bool isListening();
+
+	bool isWatching();
 
 	void dismount();
 
@@ -1579,6 +1655,8 @@ public:
 
 	float getShockWounds();
 
+	unsigned long long getWatchToID();
+
 	unsigned long long getStateBitmask();
 
 	bool hasState(unsigned long long state);
@@ -1644,6 +1722,8 @@ public:
 	bool hasSkillBox(const String& skillBox);
 
 	void setHeight(float heigh);
+
+	void setWatchToID(unsigned long long id);
 
 	bool isCreatureObject();
 
@@ -1726,6 +1806,7 @@ protected:
 	UnicodeString _param0_sendSystemMessage__UnicodeString_;
 	String _param0_sendSystemMessage__String_String_;
 	String _param1_sendSystemMessage__String_String_;
+	String _param0_setPerformanceAnimation__String_bool_;
 	String _param0_addSkillBox__String_bool_;
 	String _param0_removeSkillBox__String_bool_;
 	String _param0_addSkillMod__String_long_bool_;

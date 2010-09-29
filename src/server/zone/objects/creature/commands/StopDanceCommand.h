@@ -45,7 +45,10 @@ which carries forward this exception.
 #ifndef STOPDANCECOMMAND_H_
 #define STOPDANCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/EntertainingSession.h"
+
 
 class StopDanceCommand : public QueueCommand {
 public:
@@ -62,6 +65,17 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session == NULL)
+			return GENERALERROR;
+
+		if (!session->isDancing())
+			return GENERALERROR;
+
+		session->stopDancing();
 
 		return SUCCESS;
 	}

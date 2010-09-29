@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_mandoviol = object_tangible_instrument_shared_mandoviol:new {
-
+	templateType = INSTRUMENT,
+	instrumentType = 10
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_mandoviol, "object/tangible/instrument/mandoviol.iff")

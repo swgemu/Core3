@@ -44,6 +44,9 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 
 	attacker->clearState(CreatureState::PEACE);
 
+	if (attacker->isEntertaining())
+		attacker->stopEntertaining();
+
 	Locker clocker(defender, attacker);
 
 	try {
@@ -243,6 +246,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 }
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject* defender,  CombatQueueCommand* command) {
+	if (defender->isEntertaining())
+		defender->stopEntertaining();
+
 	int rand = System::random(100);
 
 	int poolsToDamage = calculatePoolsToDamage(command->getPoolsToDamage());

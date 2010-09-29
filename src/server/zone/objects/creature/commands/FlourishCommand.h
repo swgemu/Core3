@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef FLOURISHCOMMAND_H_
 #define FLOURISHCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/EntertainingSession.h"
 
 class FlourishCommand : public QueueCommand {
 public:
@@ -62,6 +63,30 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session == NULL)
+			return GENERALERROR;
+
+		if (!session->isDancing() && !session->isPlayingMusic()) {
+			creature->sendSystemMessage("performance", "flourish_not_performing");
+			return GENERALERROR;
+		}
+
+		String args = arguments.toString();
+
+		int mod = Integer::valueOf(args);
+
+		PlayerObject* ghost = dynamic_cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+
+		if (!ghost->hasSkillArgument("flourish", args)) {
+			creature->sendSystemMessage("performance", "flourish_not_valid");
+			return GENERALERROR;
+		}
+
+		session->doFlourish(mod);
 
 		return SUCCESS;
 	}

@@ -208,6 +208,14 @@ public:
 
 	int getMedicalFacilityRating(CreatureObject* creature);
 
+	void stopWatch(CreatureObject* creature, unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
+
+	void stopListen(CreatureObject* creature, unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
+
+	void startWatch(CreatureObject* creature, unsigned long long entid);
+
+	void startListen(CreatureObject* creature, unsigned long long entid);
+
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
@@ -334,6 +342,14 @@ public:
 
 	int getMedicalFacilityRating(CreatureObject* creature);
 
+	void stopWatch(CreatureObject* creature, unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
+
+	void stopListen(CreatureObject* creature, unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
+
+	void startWatch(CreatureObject* creature, unsigned long long entid);
+
+	void startListen(CreatureObject* creature, unsigned long long entid);
+
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
@@ -450,6 +466,14 @@ public:
 	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
 
 	int getMedicalFacilityRating(CreatureObject* creature);
+
+	void stopWatch(CreatureObject* creature, unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange);
+
+	void stopListen(CreatureObject* creature, unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange);
+
+	void startWatch(CreatureObject* creature, unsigned long long entid);
+
+	void startListen(CreatureObject* creature, unsigned long long entid);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 

@@ -35,6 +35,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/templates/tangible/InstrumentObjectTemplate.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -46,9 +48,33 @@ namespace tangible {
 
 class Instrument : public TangibleObject {
 public:
+	static const int TRAZ = 1;
+
+	static const int SLITHERHORN = 2;
+
+	static const int FANFAR = 3;
+
+	static const int FLUTEDROOPY = 4;
+
+	static const int KLOOHORN = 5;
+
+	static const int FIZZ = 6;
+
+	static const int BANDFILL = 7;
+
+	static const int OMNIBOX = 8;
+
+	static const int NALARGON = 9;
+
+	static const int MANDOVIOL = 10;
+
 	Instrument();
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	int getInstrumentType();
 
 protected:
 	Instrument(DummyConstructorParameter* param);
@@ -71,13 +97,39 @@ namespace objects {
 namespace tangible {
 
 class InstrumentImplementation : public TangibleObjectImplementation {
+protected:
+	int instrumentType;
 
 public:
+	static const int TRAZ = 1;
+
+	static const int SLITHERHORN = 2;
+
+	static const int FANFAR = 3;
+
+	static const int FLUTEDROOPY = 4;
+
+	static const int KLOOHORN = 5;
+
+	static const int FIZZ = 6;
+
+	static const int BANDFILL = 7;
+
+	static const int OMNIBOX = 8;
+
+	static const int NALARGON = 9;
+
+	static const int MANDOVIOL = 10;
+
 	InstrumentImplementation();
 
 	InstrumentImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	int getInstrumentType();
 
 	Instrument* _this;
 
@@ -119,6 +171,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	int getInstrumentType();
 
 };
 

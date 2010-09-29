@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef WATCHCOMMAND_H_
 #define WATCHCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class WatchCommand : public QueueCommand {
 public:
@@ -62,6 +64,14 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (creature->isWatching())
+			return GENERALERROR;
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		if (playerManager != NULL)
+			playerManager->startWatch(creature, target);
 
 		return SUCCESS;
 	}

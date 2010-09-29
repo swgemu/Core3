@@ -45,14 +45,50 @@ which carries forward this exception.
 #ifndef STARTDANCECOMMAND_H_
 #define STARTDANCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/professions/PerformanceManager.h"
 
 class StartDanceCommand : public QueueCommand {
-public:
 
+public:
 	StartDanceCommand(const String& name, ZoneProcessServerImplementation* server)
 		: QueueCommand(name, server) {
 
+	}
+
+	static void startDance(CreatureObject* creature, const String& dance, const String& animation) {
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session == NULL) {
+			session = new EntertainingSession(creature);
+			creature->addActiveSession(SessionFacadeType::ENTERTAINING, session);
+		}
+
+		session->startEntertaining(dance, animation, true);
+	}
+
+	static void sendAvailableDances(PlayerCreature* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::START_DANCING) {
+		Reference<SuiListBox*> sui = new SuiListBox(player, suiType);
+		sui->setPromptTitle("@performance:available_dances");
+		sui->setPromptText("@performance:select_dance");
+
+		CommandArgumentList* list = ghost->getCommandArgumentList();
+		SortedVector<String>* vec = &list->get("startdance");
+
+		for (int i = 0; i < vec->size(); ++i) {
+			String dance = vec->get(i);
+			sui->addMenuItem(dance);
+		}
+
+		player->addSuiBox(sui);
+
+		player->sendMessage(sui->generateMessage());
+
+		return;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -62,6 +98,49 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session != NULL) {
+			if (session->isPlayingMusic()) {
+				session->stopPlayingMusic();
+			}
+
+			if (session->isDancing()) {
+				creature->sendSystemMessage("performance", "already_performing_self");
+
+				return GENERALERROR;
+			}
+		}
+
+		PlayerObject* ghost = dynamic_cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+
+		String args = arguments.toString();
+
+		PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+
+		if (args.length() < 2) {
+			sendAvailableDances(player, ghost);
+			return SUCCESS;
+		}
+
+		if (!ghost->hasSkillArgument("startdance", args)) {
+			creature->sendSystemMessage("performance", "dance_lack_skill_self");
+			return GENERALERROR;
+		}
+
+		if (!performanceManager->hasDanceAnimation(args)) {
+			creature->sendSystemMessage("performance", "dance_lack_skill_self");
+			return GENERALERROR;
+		}
+
+		startDance(creature, args, performanceManager->getDanceAnimation(args));
 
 		return SUCCESS;
 	}

@@ -116,6 +116,7 @@ public:
 	const static int ELEVATORTERMINAL = 0x4000017;
 	const static int GAMBLINGTERMINAL = 0x4000018;
 	const static int LOOTKIT = 0x4000019;
+	const static int INSTRUMENT = 0x400001A;
 
 public:
 	SharedObjectTemplate() {
@@ -451,6 +452,10 @@ public:
 	}
 
 	virtual bool isElevatorTerminalTemplate() {
+		return false;
+	}
+
+	virtual bool isInstrumentObjectTemplate() {
 		return false;
 	}
 

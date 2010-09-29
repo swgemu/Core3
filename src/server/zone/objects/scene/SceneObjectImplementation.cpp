@@ -73,6 +73,7 @@ which carries forward this exception.
 #include "events/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/scene/Facade.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/templates/ChildObject.h"
@@ -102,6 +103,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	containerObjects.setNoDuplicateInsertPlan();
 	pendingTasks.setNoDuplicateInsertPlan();
 	pendingTasks.setNullValue(NULL);
+	objectActiveSessions.setNullValue(NULL);
+	objectActiveSessions.setNoDuplicateInsertPlan();
 	activeAreas.setNoDuplicateInsertPlan();
 
 	server = NULL;

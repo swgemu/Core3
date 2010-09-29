@@ -18,6 +18,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
@@ -82,6 +83,8 @@ void PlayerCreatureImplementation::finalize() {
 
 }
 
+
+
 void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	CreatureObjectImplementation::notifyLoadFromDatabase();
 
@@ -94,6 +97,8 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	surveyTool = NULL;
 	group = NULL;
 	centeredBonus = 0;
+	listenToID = 0;
+	watchToID = 0;
 	tradeContainer.clear();
 	chatRooms.removeAll();
 
@@ -369,6 +374,8 @@ void PlayerCreatureImplementation::unload() {
 
 	clearCombatState(true);
 
+	stopEntertaining();
+
 	tradeContainer.clear();
 
 	ManagedReference<ChatManager*> chatManager = getZoneServer()->getChatManager();
@@ -533,7 +540,21 @@ void PlayerCreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* me
 
 	if (group != NULL) {
 		if (group->hasMember(player))
-			menuResponse->addRadialMenuItem(51, 51, "@sui:teach"); //TODO:find the stf
+			menuResponse->addRadialMenuItem(51, 3, "@sui:teach");
+	}
+
+	if (isPlayingMusic()) {
+		if (!player->isListening())
+			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:listen");
+		else
+			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:listen_stop");
+	}
+
+	if (isDancing()) {
+		if (!player->isWatching())
+			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:watch");
+		else
+			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:watch_stop");
 	}
 
 }

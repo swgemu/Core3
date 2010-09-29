@@ -157,6 +157,11 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native int getMedicalFacilityRating(CreatureObject creature);
 	
+	public native void stopWatch(CreatureObject creature, unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
+	public native void stopListen(CreatureObject creature, unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
+	public native void startWatch(CreatureObject creature, unsigned long entid);
+	public native void startListen(CreatureObject creature, unsigned long entid);
+	
 	/**
 	 * Enhances the patients attribute by a specified amount for a specified duration.
 	 * @param patient The patient to enhance.

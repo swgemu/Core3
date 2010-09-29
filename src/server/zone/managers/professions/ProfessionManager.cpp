@@ -43,28 +43,25 @@ which carries forward this exception.
 */
 
 #include "ProfessionManager.h"
+#include "PerformanceManager.h"
 
-#include "../../../db/ServerDatabase.h"
+#include "server/db/ServerDatabase.h"
 
-/*#include "../../objects/player/Player.h"
-#include "../../objects/player/PlayerImplementation.h"*/
-#include "../../managers/player/PlayerManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
-//#include "../skills/SkillManager.h
-#include "../objectcontroller/ObjectController.h"
-#include "../crafting/CraftingManager.h"
-#include "../../ZoneServer.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/ZoneServer.h"
 
-//#include "../../objects/player/badges/Badge.h"
-#include "../../objects/creature/professions/SkillBox.h"
-#include "../../objects/creature/professions/FourByFourProfession.h"
-#include "../../objects/creature/professions/OneByFourProfession.h"
-#include "../../objects/creature/professions/PyramidProfession.h"
-#include "../../objects/creature/professions/Skill.h"
-#include "../../objects/player/PlayerCreature.h"
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/Races.h"
+#include "server/zone/objects/creature/professions/SkillBox.h"
+#include "server/zone/objects/creature/professions/FourByFourProfession.h"
+#include "server/zone/objects/creature/professions/OneByFourProfession.h"
+#include "server/zone/objects/creature/professions/PyramidProfession.h"
+#include "server/zone/objects/creature/professions/Skill.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/Races.h"
 
 const int ProfessionManager::professionHams[7][9] = {
 		{ 600, 300, 300, 800, 400, 300, 900, 400, 500 },
@@ -84,11 +81,15 @@ ProfessionManager::ProfessionManager()
 	skillBoxMap.setNullValue(NULL);
 	certificationMap.setNullValue(NULL);
 
+	performanceManager = new PerformanceManager();
+
 	setGlobalLogging(true);
 	setLogging(false);
 }
 
 ProfessionManager::~ProfessionManager() {
+	delete performanceManager;
+	performanceManager = NULL;
 }
 /*
 void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {
@@ -305,6 +306,20 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 	loadXpTypeCap(player);
 
 	playerObject->addSkills(skillBox->skillCommands, updateClient);
+
+	for (int i = 0; i < skillBox->skillCommands.size(); ++i) {
+		QueueCommand* command = skillBox->skillCommands.get(i);
+
+		SortedVector<String>* arguments = skillBox->getSkillArguments(command);
+
+		if (arguments == NULL)
+			continue;
+
+		for (int j = 0; j < arguments->size(); ++j) {
+			playerObject->addSkillArgument(command->getName(), arguments->get(j));
+		}
+	}
+
 	playerObject->addSkills(skillBox->skillCertifications, updateClient);
 
 	awardSkillMods(skillBox, player, updateClient);
@@ -602,6 +617,20 @@ bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* pl
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
 	playerObject->removeSkills(skillBox->skillCommands, updateClient);
+
+	for (int i = 0; i < skillBox->skillCommands.size(); ++i) {
+		QueueCommand* command = skillBox->skillCommands.get(i);
+
+		SortedVector<String>* arguments = skillBox->getSkillArguments(command);
+
+		if (arguments == NULL)
+			continue;
+
+		for (int j = 0; j < arguments->size(); ++j){
+			playerObject->dropSkillArgument(command->getName(), arguments->get(j));
+		}
+	}
+
 	playerObject->removeSkills(skillBox->skillCertifications, updateClient);
 
 	removeSkillMods(skillBox, player, updateClient);
@@ -753,7 +782,6 @@ void ProfessionManager::loadProfessionsFromDatabase() {
 
 	info("Loaded " + String::valueOf(professionMap.size()) + " professions", true);
 	info("Loaded " + String::valueOf(skillBoxMap.size()) + " skill boxes", true);
-
 }
 
 Profession* ProfessionManager::loadProfession(ResultSet* result) {
@@ -1001,10 +1029,27 @@ void ProfessionManager::loadSkillCommands(SkillBox* skillBox, String& skillComma
 
 				skillBox->skillCertifications.add(cert);
 			} else {
-				QueueCommand* skill = objectController->getQueueCommand(command);
+				int args = command.indexOf("+");
 
-				if (skill != NULL)
+				QueueCommand* skill = NULL;
+				String commandName;
+				String argument;
+
+				if (args != -1) {
+					commandName = command.subString(0, args);
+					argument = command.subString(args + 1);
+
+					skill = objectController->getQueueCommand(commandName);
+				} else
+					skill = objectController->getQueueCommand(command);
+
+				if (skill != NULL) {
 					skillBox->addSkillCommand(skill);
+
+					if (args != -1) {
+						skillBox->addSkillArgument(skill, argument);
+					}
+				}
 			}
 		}
 	}

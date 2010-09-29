@@ -22,6 +22,7 @@
 #include "server/conf/ConfigManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/professions/Performance.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
@@ -36,6 +37,7 @@
 
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
 #include "server/zone/objects/player/events/MeditateTask.h"
+#include "server/zone/objects/player/EntertainingSession.h"
 
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -1665,6 +1667,327 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 
 	return buffdiff;
 }
+
+void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	Locker locker(creature);
+
+	ManagedReference<SceneObject*> object = server->getObject(entid);
+	uint64 listenID = creature->getListenID();
+
+	if (object == NULL)
+		return;
+
+	if (!object->isPlayerCreature()) {
+		creature->sendSystemMessage("You cannot stop listening an object.");
+		return;
+	}
+
+	PlayerCreature* entertainer = (PlayerCreature*) object.get();
+
+	if (entertainer == creature)
+		return;
+
+	String entName;
+	ManagedReference<EntertainingSession*> esession;
+
+	if (entertainer != NULL) {
+		Locker clocker(entertainer, creature);
+
+		entName = entertainer->getFirstName();
+
+		ManagedReference<Facade*> session = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+		if (session != NULL) {
+			esession = dynamic_cast<EntertainingSession*>(session.get());
+
+			if (esession != NULL) {
+				esession->activateEntertainerBuff(creature, PerformanceType::MUSIC);
+
+				esession->removeListener(creature);
+			}
+		}
+
+		clocker.release();
+	}
+
+	if (entid != listenID && entertainer != NULL) {
+		creature->sendSystemMessage("You are not currently listening to " + entName + ".");
+
+		return;
+	}
+
+	creature->setMood(creature->getMoodID());
+
+	if (doSendPackets && esession != NULL)
+		esession->sendEntertainmentUpdate(creature, 0, creature->getMoodString());
+
+	if (creature->isPlayerCreature() && entertainer != NULL) {
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ParameterizedStringId stringID;
+
+		if (forced) {
+			stringID.setTU(entid);
+			stringID.setStringId("performance", "music_stop_other");
+
+			player->sendSystemMessage(stringID);
+			//player->sendSystemMessage("performance", "dance_stop_other", params); //"%TU stops dancing."
+		} else if (outOfRange) {
+			StringBuffer msg;
+			msg << "You stop watching " << entertainer->getFirstName() << " because they are too far away.";
+			player->sendSystemMessage(msg.toString());
+
+			//TODO: Why does %OT say "him/her" instead of "he/she"?
+			//params->addTT(entid);
+			//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
+		} else {
+			player->sendSystemMessage("performance", "music_listen_stop_self"); //"You stop watching."
+		}
+	}
+
+	//esession->setEntertainerBuffDuration(creature, PerformanceType::MUSIC, 0.0f); // reset
+	//esession->setEntertainerBuffStrength(creature, PerformanceType::MUSIC, 0.0f);
+	creature->info("stopped watching [" + entName + "]");
+
+	creature->setListenToID(0, true);
+}
+
+
+void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	Locker locker(creature);
+
+	ManagedReference<SceneObject*> object = server->getObject(entid);
+	uint64 watchID = creature->getWatchToID();
+
+	if (object == NULL)
+		return;
+
+	if (!object->isPlayerCreature()) {
+		creature->sendSystemMessage("You cannot stop watching an object.");
+		return;
+	}
+
+	PlayerCreature* entertainer = (PlayerCreature*) object.get();
+
+	if (entertainer == creature)
+		return;
+
+	ManagedReference<EntertainingSession*> esession = NULL;
+
+	String entName;
+	if (entertainer != NULL) {
+		Locker clocker(entertainer, creature);
+
+		entName = entertainer->getFirstName();
+
+		ManagedReference<Facade*> session = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+		if (session != NULL) {
+			esession = dynamic_cast<EntertainingSession*>(session.get());
+
+			if (esession != NULL) {
+				esession->activateEntertainerBuff(creature, PerformanceType::DANCE);
+
+				esession->removeWatcher(creature);
+			}
+		}
+
+		clocker.release();
+	}
+
+	if (entid != watchID && entertainer != NULL || esession == NULL) {
+		creature->sendSystemMessage("You are not currently watching " + entName + ".");
+
+		return;
+	}
+
+	creature->setMood(creature->getMoodID());
+
+	if (doSendPackets)
+		esession->sendEntertainmentUpdate(creature, 0, creature->getMoodString());
+
+	//System Message.
+	if (creature->isPlayerCreature() && entertainer != NULL) {
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ParameterizedStringId stringID;
+		//StfParameter* params = new StfParameter;
+
+		if (forced) {
+			stringID.setTU(entid);
+			stringID.setStringId("performance", "dance_stop_other");
+
+			player->sendSystemMessage(stringID);
+			//player->sendSystemMessage("performance", "dance_stop_other", params); //"%TU stops dancing."
+		} else if (outOfRange) {
+			StringBuffer msg;
+			msg << "You stop watching " << entertainer->getFirstName() << " because they are too far away.";
+			player->sendSystemMessage(msg.toString());
+
+			//TODO: Why does %OT say "him/her" instead of "he/she"?
+			//params->addTT(entid);
+			//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
+		} else {
+			player->sendSystemMessage("performance", "dance_watch_stop_self"); //"You stop watching."
+		}
+	}
+
+
+	//esession->setEntertainerBuffDuration(creature, PerformanceType::DANCE, 0.0f); // reset
+	//esession->setEntertainerBuffStrength(creature, PerformanceType::DANCE, 0.0f);
+	creature->info("stopped watching [" + entName + "]");
+
+	creature->setWatchToID(0);
+	/*doWatching = false;
+	watchID = 0;*/
+}
+
+void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 entid) {
+	Locker locker(creature);
+
+	ManagedReference<SceneObject*> object = server->getObject(entid);
+	uint64 watchID = creature->getWatchToID();
+
+	if (object == NULL)
+		return;
+
+	/*if (object->isNonPlayerCreature()) {
+		creature->sendSystemMessage("performance", "dance_watch_npc");
+		return;
+	}*/
+
+	if (!object->isPlayerCreature()) {
+		creature->sendSystemMessage("You cannot start watching an object.");
+		return;
+	}
+
+	PlayerCreature* entertainer = (PlayerCreature*) object.get();
+
+	if (creature == entertainer)
+		return;
+
+	Locker clocker(entertainer, creature);
+
+	if (creature->isDancing() || creature->isPlayingMusic()) {
+		creature->sendSystemMessage("You cannot /watch while skill animating.");
+
+		return;
+	} else if (!entertainer->isDancing()) {
+		creature->sendSystemMessage(creature->getCustomObjectName().toString() + " is not currently dancing.");
+
+		return;
+	} else if (entid == watchID) {
+		creature->sendSystemMessage("You are already watching " + entertainer->getCustomObjectName().toString() + ".");
+
+		return;
+	}
+
+	ManagedReference<Facade*> facade = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+	if (facade == NULL)
+		return;
+
+	EntertainingSession* entertainingSession = dynamic_cast<EntertainingSession*>(facade.get());
+
+	if (entertainingSession == NULL)
+		return;
+
+	if (creature->isWatching()) {
+		stopWatch(creature, watchID, false);
+	}
+
+	//sendEntertainmentUpdate(entid, "entertained");
+
+	entertainingSession->sendEntertainmentUpdate(creature, entid, "entertained");
+	entertainingSession->addWatcher(creature);
+
+	//creature->addWatcher(_this);
+
+	//if (isPlayer())
+	creature->sendSystemMessage("You begin watching " + entertainer->getCustomObjectName().toString() + ".");
+
+	//setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
+	//setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f);
+
+	creature->info("started watching [" + entertainer->getCustomObjectName().toString() + "]");
+
+	creature->setWatchToID(entertainer->getObjectID());
+	//watchID =  entid;
+}
+
+void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 entid) {
+	Locker locker(creature);
+
+	ManagedReference<SceneObject*> object = server->getObject(entid);
+	uint64 listenID = creature->getListenID();
+
+	if (object == NULL)
+		return;
+
+	/*if (object->isNonPlayerCreature()) {
+		creature->sendSystemMessage("performance", "dance_watch_npc");
+		return;
+	}*/
+
+	if (!object->isPlayerCreature()) {
+		creature->sendSystemMessage("You cannot start listening an object.");
+		return;
+	}
+
+	PlayerCreature* entertainer = (PlayerCreature*) object.get();
+
+	if (creature == entertainer)
+		return;
+
+	Locker clocker(entertainer, creature);
+
+	if (creature->isDancing() || creature->isPlayingMusic()) {
+		creature->sendSystemMessage("You cannot /watch while skill animating.");
+
+		return;
+	} else if (!entertainer->isPlayingMusic()) {
+		creature->sendSystemMessage(creature->getCustomObjectName().toString() + " is not currently playing music.");
+
+		return;
+	} else if (entid == listenID) {
+		creature->sendSystemMessage("You are already listening " + entertainer->getCustomObjectName().toString() + ".");
+
+		return;
+	}
+
+	ManagedReference<Facade*> facade = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+	if (facade == NULL)
+		return;
+
+	EntertainingSession* entertainingSession = dynamic_cast<EntertainingSession*>(facade.get());
+
+	if (entertainingSession == NULL)
+		return;
+
+	if (creature->isListening()) {
+		stopListen(creature, listenID, false);
+	}
+
+	//sendEntertainmentUpdate(entid, "entertained");
+
+	entertainingSession->sendEntertainmentUpdate(creature, entid, "entertained");
+	entertainingSession->addListener(creature);
+
+	//creature->addWatcher(_this);
+
+	//if (isPlayer())
+	creature->sendSystemMessage("You begin to listen " + entertainer->getCustomObjectName().toString() + ".");
+
+	//setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
+	//setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f);
+
+	creature->info("started watching [" + entertainer->getCustomObjectName().toString() + "]");
+
+	creature->setListenToID(entertainer->getObjectID());
+	//watchID =  entid;
+}
+
 
 SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(CreatureObject* creature, uint64 targetID) {
 	ZoneServer* zoneServer = server;
