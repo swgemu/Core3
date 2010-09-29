@@ -43,6 +43,8 @@ protected:
 
 				stringsDatabase->putData((uint64)full.hashCode(), &data, NULL);
 			}
+
+			delete result;
 		} catch (Exception& e) {
 			error(e.getMessage());
 		} catch (...) {

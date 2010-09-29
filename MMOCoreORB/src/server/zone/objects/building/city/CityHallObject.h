@@ -89,7 +89,11 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void removeFromZone();
+
 	void spawnCityHallObjects();
+
+	void despawnCityHallObjects();
 
 	void trySetCityName(PlayerCreature* player, const String& name);
 
@@ -198,7 +202,11 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void removeFromZone();
+
 	void spawnCityHallObjects();
+
+	void despawnCityHallObjects();
 
 	void trySetCityName(PlayerCreature* player, const String& name);
 
@@ -303,7 +311,11 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void removeFromZone();
+
 	void spawnCityHallObjects();
+
+	void despawnCityHallObjects();
 
 	void trySetCityName(PlayerCreature* player, const String& name);
 

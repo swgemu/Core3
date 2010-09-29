@@ -158,8 +158,9 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 			server->addTotalResentPacket(getResentPacketCount());
 
 			//Unregister the session from the account manager.
-			AccountManager* accountManager = server->getAccountManager();
-			accountManager->unregisterSession(_this);
+			ManagedReference<AccountManager*> accountManager = server->getAccountManager();
+			if (accountManager != NULL)
+				accountManager->unregisterSession(_this);
 		}
 
 		unlock(doLock);

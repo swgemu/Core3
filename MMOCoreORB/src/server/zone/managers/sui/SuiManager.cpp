@@ -1545,11 +1545,11 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, ui
 		return;
 
 	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-	ResourceDeedListBox* suiListBox = (ResourceDeedListBox*) sui.get();
+	ResourceDeedListBox* suiListBox = dynamic_cast<ResourceDeedListBox*>(sui.get());
 	if (suiListBox == NULL)
 		return;
 
-	SceneObject* deedObject = suiListBox->getUsingObject();
+	ManagedReference<SceneObject*> deedObject = suiListBox->getUsingObject();
 
 	if (deedObject == NULL)
 		return;
@@ -1559,7 +1559,7 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, ui
 
 	player->removeSuiBox(boxID);
 
-	if(cancel)
+	if (cancel)
 		return;
 
 	String nodeName = "";
@@ -1575,8 +1575,8 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, ui
 			resourceManager->givePlayerResource(player, suiListBox->getPromptTitle(),
 				ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
 
-			if (deedObject->getGameObjectType() == SceneObjectImplementation::RESOURCEDEED) {
-				ResourceDeed* deed = (ResourceDeed*) deedObject;
+			if (deedObject != NULL && deedObject->getGameObjectType() == SceneObjectImplementation::RESOURCEDEED) {
+				ResourceDeed* deed = (ResourceDeed*) deedObject.get();
 
 				Locker cLocker(deed, player);
 				deed->destroyDeed();
@@ -1586,7 +1586,7 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, ui
 
 		}
 		/// If nothing was chosen
-		if(index < 0) {
+		if (index < 0) {
 			player->addSuiBox(suiListBox);
 			player->sendMessage(suiListBox->generateMessage());
 			return;
@@ -2104,23 +2104,23 @@ void SuiManager::handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, 
 
 	if (player->hasSuiBox(boxID)) {
 
-		ManagedReference<SuiListBox*> sui = (SuiListBox*) player->getSuiBox(boxID);
+		ManagedReference<SuiListBox*> sui = dynamic_cast<SuiListBox*>(player->getSuiBox(boxID));
 
 		/// Cancel = Remove
 		if (sui != NULL) {
 
 			if(cancel != 1) {
 
-				ManagedReference<FactoryObject* > factory =  (FactoryObject*) server->getZoneServer()->getObject(sui->getUsingObjectID());
+				ManagedReference<FactoryObject* > factory =  dynamic_cast<FactoryObject*>(server->getZoneServer()->getObject(sui->getUsingObjectID()));
 
-					if(factory != NULL && factory->isFactory()) {
+					if (factory != NULL && factory->isFactory()) {
 
-					Locker _locker2(factory);
+					Locker _locker2(factory, player);
 
 					factory->handleRemoveFactorySchem(player);
 
 					if(!otherPressed) {
-						ManagedReference<ManufactureSchematic* > schematic = (ManufactureSchematic*) server->getZoneServer()->getObject(sui->getMenuObjectID(index));
+						ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(sui->getMenuObjectID(index)));
 						factory->handleInsertFactorySchem(player, schematic);
 					}
 				}

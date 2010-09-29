@@ -63,7 +63,9 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) creature->getParentRecursively(SceneObject::BUILDING);
+		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
+
+		BuildingObject* buildingObject = rootParent->isBuildingObject() ? (BuildingObject*)rootParent.get() : NULL;
 
 		if (buildingObject == NULL) {
 			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
@@ -100,7 +102,7 @@ public:
 		ZoneServer* zoneServer = creature->getZoneServer();
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
-		if (obj == NULL || obj->getParentRecursively(SceneObject::BUILDING) != buildingObject) {
+		if (obj == NULL || obj->getRootParent() != buildingObject) {
 			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 			return false;
 		}

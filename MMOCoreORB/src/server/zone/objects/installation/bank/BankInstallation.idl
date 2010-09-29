@@ -79,7 +79,16 @@ class BankInstallation extends InstallationObject {
 		spawnBankObjects();
 	}
 	
+	public void removeFromZone() {
+		despawnBankObjects();
+		
+		super.removeFromZone();
+		
+		updateToDatabaseWithoutChildren();
+	}
+	
 	public native void spawnBankObjects();
+	public native void despawnBankObjects();
 	
 	//public native boolean checkRequisitesForPlacement(PlayerCreature player);
 }

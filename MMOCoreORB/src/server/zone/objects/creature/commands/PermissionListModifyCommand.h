@@ -73,7 +73,9 @@ public:
 
 		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
 
-		ManagedReference<SceneObject*> obj = player->getInRangeStructureWithAdminRights();
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(player);
 
 		if (obj == NULL || !obj->isStructureObject()) {
 			player->sendSystemMessage("@player_structure:command_no_building"); //You must be in a building or near an installation to use that command.
@@ -102,8 +104,6 @@ public:
 
 		String action;
 		tokenizer.getStringToken(action);
-
-		PlayerManager* playerManager = zoneServer->getPlayerManager();
 
 		if (!playerManager->existsName(targetPlayerName)) {
 			ParameterizedStringId params;
@@ -134,7 +134,7 @@ public:
 			}
 		}
 
-		ChatManager* chatManager = zoneServer->getChatManager();
+		ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
 
 		if (chatManager == NULL)
 			return SUCCESS;

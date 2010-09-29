@@ -41,7 +41,7 @@ void CityHallObject::insertToZone(Zone* zone) {
 		((CityHallObjectImplementation*) _impl)->insertToZone(zone);
 }
 
-void CityHallObject::spawnCityHallObjects() {
+void CityHallObject::removeFromZone() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -50,7 +50,31 @@ void CityHallObject::spawnCityHallObjects() {
 
 		method.executeWithVoidReturn();
 	} else
+		((CityHallObjectImplementation*) _impl)->removeFromZone();
+}
+
+void CityHallObject::spawnCityHallObjects() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
 		((CityHallObjectImplementation*) _impl)->spawnCityHallObjects();
+}
+
+void CityHallObject::despawnCityHallObjects() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		method.executeWithVoidReturn();
+	} else
+		((CityHallObjectImplementation*) _impl)->despawnCityHallObjects();
 }
 
 void CityHallObject::trySetCityName(PlayerCreature* player, const String& name) {
@@ -58,7 +82,7 @@ void CityHallObject::trySetCityName(PlayerCreature* player, const String& name) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
 
@@ -72,7 +96,7 @@ bool CityHallObject::checkRequisitesForPlacement(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -85,7 +109,7 @@ void CityHallObject::setCityName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -98,7 +122,7 @@ String CityHallObject::getCityName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 
 		method.executeWithAsciiReturn(_return_getCityName);
 		return _return_getCityName;
@@ -111,7 +135,7 @@ void CityHallObject::sendStatusTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -124,7 +148,7 @@ void CityHallObject::sendCitizenshipReportTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -137,7 +161,7 @@ void CityHallObject::sendStructureReportTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -150,7 +174,7 @@ void CityHallObject::sendTreasuryReportTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -163,7 +187,7 @@ void CityHallObject::sendChangeCityNameTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -176,7 +200,7 @@ void CityHallObject::sendManageMilitiaTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -189,7 +213,7 @@ void CityHallObject::sendAdjustTaxesTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -202,7 +226,7 @@ void CityHallObject::sendTreasuryDepositTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -215,7 +239,7 @@ void CityHallObject::sendTreasuryWithdrawalTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -228,7 +252,7 @@ void CityHallObject::sendCitySpecializationSelectionTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -241,7 +265,7 @@ void CityHallObject::toggleCityRegistration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 
 		method.executeWithVoidReturn();
 	} else
@@ -253,7 +277,7 @@ int CityHallObject::notifyStructurePlaced(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -266,7 +290,7 @@ bool CityHallObject::isCityHallBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -278,7 +302,7 @@ void CityHallObject::declareCitizenship(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -291,7 +315,7 @@ void CityHallObject::declareCitizenship(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 28);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -304,7 +328,7 @@ void CityHallObject::revokeCitizenship(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -317,7 +341,7 @@ void CityHallObject::revokeCitizenship(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 30);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -330,7 +354,7 @@ unsigned long long CityHallObject::getMayorObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -342,7 +366,7 @@ void CityHallObject::setMayorObjectID(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 32);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -355,7 +379,7 @@ bool CityHallObject::isMayorOf(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 33);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -368,7 +392,7 @@ bool CityHallObject::isMayorOf(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 34);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -381,7 +405,7 @@ bool CityHallObject::isCitizenOf(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -394,7 +418,7 @@ bool CityHallObject::isCitizenOf(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 36);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -407,7 +431,7 @@ CityTerminal* CityHallObject::getCityTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 37);
 
 		return (CityTerminal*) method.executeWithObjectReturn();
 	} else
@@ -419,7 +443,7 @@ CityVoteTerminal* CityHallObject::getCityVoteTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 38);
 
 		return (CityVoteTerminal*) method.executeWithObjectReturn();
 	} else
@@ -431,7 +455,7 @@ Region* CityHallObject::getCityRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 39);
 
 		return (Region*) method.executeWithObjectReturn();
 	} else
@@ -443,7 +467,7 @@ void CityHallObject::setCityRegion(Region* region) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 40);
 		method.addObjectParameter(region);
 
 		method.executeWithVoidReturn();
@@ -458,6 +482,7 @@ void CityHallObject::setCityRegion(Region* region) {
 CityHallObjectImplementation::CityHallObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CityHallObjectImplementation::~CityHallObjectImplementation() {
 }
@@ -543,88 +568,97 @@ void CityHallObjectImplementation::insertToZone(Zone* zone) {
 	spawnCityHallObjects();
 }
 
+void CityHallObjectImplementation::removeFromZone() {
+	// server/zone/objects/building/city/CityHallObject.idl(88):  		despawnCityHallObjects();
+	despawnCityHallObjects();
+	// server/zone/objects/building/city/CityHallObject.idl(90):  		super.removeFromZone();
+	BuildingObjectImplementation::removeFromZone();
+	// server/zone/objects/building/city/CityHallObject.idl(92):  		updateToDatabaseWithoutChildren();
+	updateToDatabaseWithoutChildren();
+}
+
 void CityHallObjectImplementation::setCityName(const String& name) {
-	// server/zone/objects/building/city/CityHallObject.idl(94):  		cityName = name;
+	// server/zone/objects/building/city/CityHallObject.idl(103):  		cityName = name;
 	cityName = name;
 }
 
 String CityHallObjectImplementation::getCityName() {
-	// server/zone/objects/building/city/CityHallObject.idl(98):  		return cityName;
+	// server/zone/objects/building/city/CityHallObject.idl(107):  		return cityName;
 	return cityName;
 }
 
 bool CityHallObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/city/CityHallObject.idl(121):  		return true;
+	// server/zone/objects/building/city/CityHallObject.idl(130):  		return true;
 	return true;
 }
 
 void CityHallObjectImplementation::declareCitizenship(PlayerCreature* player) {
-	// server/zone/objects/building/city/CityHallObject.idl(129):  		declaredCitizens.put(player.getObjectID());
+	// server/zone/objects/building/city/CityHallObject.idl(138):  		declaredCitizens.put(player.getObjectID());
 	(&declaredCitizens)->put(player->getObjectID());
 }
 
 void CityHallObjectImplementation::declareCitizenship(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(137):  		declaredCitizens.put(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl(146):  		declaredCitizens.put(playerID);
 	(&declaredCitizens)->put(playerID);
 }
 
 void CityHallObjectImplementation::revokeCitizenship(PlayerCreature* player) {
-	// server/zone/objects/building/city/CityHallObject.idl(145):  		declaredCitizens.drop(player.getObjectID());
+	// server/zone/objects/building/city/CityHallObject.idl(154):  		declaredCitizens.drop(player.getObjectID());
 	(&declaredCitizens)->drop(player->getObjectID());
 }
 
 void CityHallObjectImplementation::revokeCitizenship(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(153):  		declaredCitizens.drop(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl(162):  		declaredCitizens.drop(playerID);
 	(&declaredCitizens)->drop(playerID);
 }
 
 unsigned long long CityHallObjectImplementation::getMayorObjectID() {
-	// server/zone/objects/building/city/CityHallObject.idl(157):  		return mayorObjectID;
+	// server/zone/objects/building/city/CityHallObject.idl(166):  		return mayorObjectID;
 	return mayorObjectID;
 }
 
 void CityHallObjectImplementation::setMayorObjectID(unsigned long long oid) {
-	// server/zone/objects/building/city/CityHallObject.idl(161):  		mayorObjectID = oid;
+	// server/zone/objects/building/city/CityHallObject.idl(170):  		mayorObjectID = oid;
 	mayorObjectID = oid;
 }
 
 bool CityHallObjectImplementation::isMayorOf(PlayerCreature* player) {
-	// server/zone/objects/building/city/CityHallObject.idl(165):  		return player.getObjectID() == mayorObjectID;
+	// server/zone/objects/building/city/CityHallObject.idl(174):  		return player.getObjectID() == mayorObjectID;
 	return player->getObjectID() == mayorObjectID;
 }
 
 bool CityHallObjectImplementation::isMayorOf(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(169):  		return playerID == mayorObjectID;
+	// server/zone/objects/building/city/CityHallObject.idl(178):  		return playerID == mayorObjectID;
 	return playerID == mayorObjectID;
 }
 
 bool CityHallObjectImplementation::isCitizenOf(PlayerCreature* player) {
-	// server/zone/objects/building/city/CityHallObject.idl(173):  		return declaredCitizens.contains(player.getObjectID());
+	// server/zone/objects/building/city/CityHallObject.idl(182):  		return declaredCitizens.contains(player.getObjectID());
 	return (&declaredCitizens)->contains(player->getObjectID());
 }
 
 bool CityHallObjectImplementation::isCitizenOf(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(177):  		return declaredCitizens.contains(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl(186):  		return declaredCitizens.contains(playerID);
 	return (&declaredCitizens)->contains(playerID);
 }
 
 CityTerminal* CityHallObjectImplementation::getCityTerminal() {
-	// server/zone/objects/building/city/CityHallObject.idl(181):  		return cityTerminal;
+	// server/zone/objects/building/city/CityHallObject.idl(190):  		return cityTerminal;
 	return cityTerminal;
 }
 
 CityVoteTerminal* CityHallObjectImplementation::getCityVoteTerminal() {
-	// server/zone/objects/building/city/CityHallObject.idl(185):  		return cityVoteTerminal;
+	// server/zone/objects/building/city/CityHallObject.idl(194):  		return cityVoteTerminal;
 	return cityVoteTerminal;
 }
 
 Region* CityHallObjectImplementation::getCityRegion() {
-	// server/zone/objects/building/city/CityHallObject.idl(189):  		return cityRegion;
+	// server/zone/objects/building/city/CityHallObject.idl(198):  		return cityRegion;
 	return cityRegion;
 }
 
 void CityHallObjectImplementation::setCityRegion(Region* region) {
-	// server/zone/objects/building/city/CityHallObject.idl(193):  		cityRegion = region;
+	// server/zone/objects/building/city/CityHallObject.idl(202):  		cityRegion = region;
 	cityRegion = region;
 }
 
@@ -643,99 +677,105 @@ Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 7:
-		spawnCityHallObjects();
+		removeFromZone();
 		break;
 	case 8:
-		trySetCityName((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_trySetCityName__PlayerCreature_String_));
+		spawnCityHallObjects();
 		break;
 	case 9:
-		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
+		despawnCityHallObjects();
 		break;
 	case 10:
-		setCityName(inv->getAsciiParameter(_param0_setCityName__String_));
+		trySetCityName((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_trySetCityName__PlayerCreature_String_));
 		break;
 	case 11:
-		resp->insertAscii(getCityName());
+		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 12:
-		sendStatusTo((PlayerCreature*) inv->getObjectParameter());
+		setCityName(inv->getAsciiParameter(_param0_setCityName__String_));
 		break;
 	case 13:
-		sendCitizenshipReportTo((PlayerCreature*) inv->getObjectParameter());
+		resp->insertAscii(getCityName());
 		break;
 	case 14:
-		sendStructureReportTo((PlayerCreature*) inv->getObjectParameter());
+		sendStatusTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 15:
-		sendTreasuryReportTo((PlayerCreature*) inv->getObjectParameter());
+		sendCitizenshipReportTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 16:
-		sendChangeCityNameTo((PlayerCreature*) inv->getObjectParameter());
+		sendStructureReportTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 17:
-		sendManageMilitiaTo((PlayerCreature*) inv->getObjectParameter());
+		sendTreasuryReportTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 18:
-		sendAdjustTaxesTo((PlayerCreature*) inv->getObjectParameter());
+		sendChangeCityNameTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 19:
-		sendTreasuryDepositTo((PlayerCreature*) inv->getObjectParameter());
+		sendManageMilitiaTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 20:
-		sendTreasuryWithdrawalTo((PlayerCreature*) inv->getObjectParameter());
+		sendAdjustTaxesTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 21:
-		sendCitySpecializationSelectionTo((PlayerCreature*) inv->getObjectParameter());
+		sendTreasuryDepositTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 22:
-		toggleCityRegistration();
+		sendTreasuryWithdrawalTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 23:
-		resp->insertSignedInt(notifyStructurePlaced((PlayerCreature*) inv->getObjectParameter()));
+		sendCitySpecializationSelectionTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 24:
-		resp->insertBoolean(isCityHallBuilding());
+		toggleCityRegistration();
 		break;
 	case 25:
-		declareCitizenship((PlayerCreature*) inv->getObjectParameter());
+		resp->insertSignedInt(notifyStructurePlaced((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 26:
-		declareCitizenship(inv->getUnsignedLongParameter());
+		resp->insertBoolean(isCityHallBuilding());
 		break;
 	case 27:
-		revokeCitizenship((PlayerCreature*) inv->getObjectParameter());
+		declareCitizenship((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 28:
-		revokeCitizenship(inv->getUnsignedLongParameter());
+		declareCitizenship(inv->getUnsignedLongParameter());
 		break;
 	case 29:
-		resp->insertLong(getMayorObjectID());
+		revokeCitizenship((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 30:
-		setMayorObjectID(inv->getUnsignedLongParameter());
+		revokeCitizenship(inv->getUnsignedLongParameter());
 		break;
 	case 31:
-		resp->insertBoolean(isMayorOf((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertLong(getMayorObjectID());
 		break;
 	case 32:
-		resp->insertBoolean(isMayorOf(inv->getUnsignedLongParameter()));
+		setMayorObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 33:
-		resp->insertBoolean(isCitizenOf((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertBoolean(isMayorOf((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 34:
-		resp->insertBoolean(isCitizenOf(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(isMayorOf(inv->getUnsignedLongParameter()));
 		break;
 	case 35:
-		resp->insertLong(getCityTerminal()->_getObjectID());
+		resp->insertBoolean(isCitizenOf((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 36:
-		resp->insertLong(getCityVoteTerminal()->_getObjectID());
+		resp->insertBoolean(isCitizenOf(inv->getUnsignedLongParameter()));
 		break;
 	case 37:
-		resp->insertLong(getCityRegion()->_getObjectID());
+		resp->insertLong(getCityTerminal()->_getObjectID());
 		break;
 	case 38:
+		resp->insertLong(getCityVoteTerminal()->_getObjectID());
+		break;
+	case 39:
+		resp->insertLong(getCityRegion()->_getObjectID());
+		break;
+	case 40:
 		setCityRegion((Region*) inv->getObjectParameter());
 		break;
 	default:
@@ -749,8 +789,16 @@ void CityHallObjectAdapter::insertToZone(Zone* zone) {
 	((CityHallObjectImplementation*) impl)->insertToZone(zone);
 }
 
+void CityHallObjectAdapter::removeFromZone() {
+	((CityHallObjectImplementation*) impl)->removeFromZone();
+}
+
 void CityHallObjectAdapter::spawnCityHallObjects() {
 	((CityHallObjectImplementation*) impl)->spawnCityHallObjects();
+}
+
+void CityHallObjectAdapter::despawnCityHallObjects() {
+	((CityHallObjectImplementation*) impl)->despawnCityHallObjects();
 }
 
 void CityHallObjectAdapter::trySetCityName(PlayerCreature* player, const String& name) {

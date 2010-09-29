@@ -53,7 +53,7 @@ void ShuttleInstallation::insertToZone(Zone* zone) {
 		((ShuttleInstallationImplementation*) _impl)->insertToZone(zone);
 }
 
-void ShuttleInstallation::spawnShuttleObjects() {
+void ShuttleInstallation::removeFromZone() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +62,31 @@ void ShuttleInstallation::spawnShuttleObjects() {
 
 		method.executeWithVoidReturn();
 	} else
+		((ShuttleInstallationImplementation*) _impl)->removeFromZone();
+}
+
+void ShuttleInstallation::spawnShuttleObjects() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
 		((ShuttleInstallationImplementation*) _impl)->spawnShuttleObjects();
+}
+
+void ShuttleInstallation::despawnShuttleObjects() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		method.executeWithVoidReturn();
+	} else
+		((ShuttleInstallationImplementation*) _impl)->despawnShuttleObjects();
 }
 
 bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
@@ -70,7 +94,7 @@ bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -85,6 +109,7 @@ bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 ShuttleInstallationImplementation::ShuttleInstallationImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ShuttleInstallationImplementation::~ShuttleInstallationImplementation() {
 }
@@ -163,6 +188,15 @@ void ShuttleInstallationImplementation::insertToZone(Zone* zone) {
 	spawnShuttleObjects();
 }
 
+void ShuttleInstallationImplementation::removeFromZone() {
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl(86):  		despawnShuttleObjects();
+	despawnShuttleObjects();
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl(88):  		super.removeFromZone();
+	InstallationObjectImplementation::removeFromZone();
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl(90):  		updateToDatabaseWithoutChildren();
+	updateToDatabaseWithoutChildren();
+}
+
 /*
  *	ShuttleInstallationAdapter
  */
@@ -178,9 +212,15 @@ Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMetho
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 7:
-		spawnShuttleObjects();
+		removeFromZone();
 		break;
 	case 8:
+		spawnShuttleObjects();
+		break;
+	case 9:
+		despawnShuttleObjects();
+		break;
+	case 10:
 		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	default:
@@ -194,8 +234,16 @@ void ShuttleInstallationAdapter::insertToZone(Zone* zone) {
 	((ShuttleInstallationImplementation*) impl)->insertToZone(zone);
 }
 
+void ShuttleInstallationAdapter::removeFromZone() {
+	((ShuttleInstallationImplementation*) impl)->removeFromZone();
+}
+
 void ShuttleInstallationAdapter::spawnShuttleObjects() {
 	((ShuttleInstallationImplementation*) impl)->spawnShuttleObjects();
+}
+
+void ShuttleInstallationAdapter::despawnShuttleObjects() {
+	((ShuttleInstallationImplementation*) impl)->despawnShuttleObjects();
 }
 
 bool ShuttleInstallationAdapter::checkRequisitesForPlacement(PlayerCreature* player) {

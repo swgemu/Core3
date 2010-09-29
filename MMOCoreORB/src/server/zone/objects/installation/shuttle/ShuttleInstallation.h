@@ -179,7 +179,11 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void removeFromZone();
+
 	void spawnShuttleObjects();
+
+	void despawnShuttleObjects();
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
@@ -220,7 +224,11 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void removeFromZone();
+
 	void spawnShuttleObjects();
+
+	void despawnShuttleObjects();
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
@@ -265,7 +273,11 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void removeFromZone();
+
 	void spawnShuttleObjects();
+
+	void despawnShuttleObjects();
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 

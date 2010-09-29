@@ -145,7 +145,11 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void removeFromZone();
+
 	void spawnBankObjects();
+
+	void despawnBankObjects();
 
 protected:
 	BankInstallation(DummyConstructorParameter* param);
@@ -180,7 +184,11 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void removeFromZone();
+
 	void spawnBankObjects();
+
+	void despawnBankObjects();
 
 	BankInstallation* _this;
 
@@ -223,7 +231,11 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void removeFromZone();
+
 	void spawnBankObjects();
+
+	void despawnBankObjects();
 
 };
 

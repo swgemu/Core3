@@ -512,6 +512,7 @@ InstallationObjectImplementation::InstallationObjectImplementation(DummyConstruc
 	_initializeImplementation();
 }
 
+
 InstallationObjectImplementation::~InstallationObjectImplementation() {
 }
 
@@ -585,32 +586,27 @@ InstallationObjectImplementation::InstallationObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/installation/InstallationObject.idl(89):  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
-	// server/zone/objects/installation/InstallationObject.idl(91):  		super.staticObject = false;
-	StructureObjectImplementation::staticObject = false;
-	// server/zone/objects/installation/InstallationObject.idl(93):  		operating = false;
+	// server/zone/objects/installation/InstallationObject.idl(91):  		operating = false;
 	operating = false;
-	// server/zone/objects/installation/InstallationObject.idl(95):  		installationType = 0;
+	// server/zone/objects/installation/InstallationObject.idl(93):  		installationType = 0;
 	installationType = 0;
-	// server/zone/objects/installation/InstallationObject.idl(97):  		operatorList.setNoDuplicateInsertPlan();
+	// server/zone/objects/installation/InstallationObject.idl(95):  		operatorList.setNoDuplicateInsertPlan();
 	(&operatorList)->setNoDuplicateInsertPlan();
-	// server/zone/objects/installation/InstallationObject.idl(99):  		hopperSizeMax = 10000;
+	// server/zone/objects/installation/InstallationObject.idl(97):  		hopperSizeMax = 10000;
 	hopperSizeMax = 10000;
-	// server/zone/objects/installation/InstallationObject.idl(100):  		extractionRate = 100;
+	// server/zone/objects/installation/InstallationObject.idl(98):  		extractionRate = 100;
 	extractionRate = 100;
 }
 
 void InstallationObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/installation/InstallationObject.idl(104):  		super.initializeTransientMembers();
+	// server/zone/objects/installation/InstallationObject.idl(102):  		super.initializeTransientMembers();
 	StructureObjectImplementation::initializeTransientMembers();
+	// server/zone/objects/installation/InstallationObject.idl(104):  		super.staticObject = false;
+	StructureObjectImplementation::staticObject = false;
 	// server/zone/objects/installation/InstallationObject.idl(106):  		operatorList.setNoDuplicateInsertPlan();
 	(&operatorList)->setNoDuplicateInsertPlan();
 	// server/zone/objects/installation/InstallationObject.idl(108):  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
-	// server/zone/objects/installation/InstallationObject.idl(110):  	}
-	if ((&resourceHopper)->size() != 0){
-	// server/zone/objects/installation/InstallationObject.idl(111):  		Logger.info("loaded with hopper size:" + String.valueOf(resourceHopper.size()), true);
-	Logger::info("loaded with hopper size:" + String::valueOf((&resourceHopper)->size()), true);
-}
 }
 
 void InstallationObjectImplementation::updateOperators() {

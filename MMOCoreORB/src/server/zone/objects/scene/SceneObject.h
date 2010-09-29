@@ -888,6 +888,10 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isBankInstallation();
+
+	bool isShuttleInstallation();
+
 	bool isPlayerObject();
 
 	bool isCreatureObject();
@@ -1048,7 +1052,7 @@ class SceneObjectImplementation : public ObservableImplementation, public QuadTr
 protected:
 	ZoneProcessServerImplementation* server;
 
-	ManagedWeakReference<Zone* > zone;
+	ManagedReference<Zone* > zone;
 
 	ManagedWeakReference<SceneObject* > parent;
 
@@ -1783,6 +1787,10 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isBankInstallation();
+
+	bool isShuttleInstallation();
+
 	bool isPlayerObject();
 
 	virtual bool isCreatureObject();
@@ -2157,6 +2165,10 @@ public:
 	String getLoggingName();
 
 	bool isPlayerCreature();
+
+	bool isBankInstallation();
+
+	bool isShuttleInstallation();
 
 	bool isPlayerObject();
 

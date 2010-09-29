@@ -63,6 +63,43 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		try {
+
+			ManagedReference<SceneObject* > object =
+					server->getZoneServer()->getObject(target);
+
+			ManagedReference<PlayerCreature*> player = NULL;
+
+			StringTokenizer args(arguments.toString());
+
+			if (object == NULL || !object->isPlayerCreature()) {
+				String firstName;
+
+				if (args.hasMoreTokens()) {
+					args.getStringToken(firstName);
+					player = server->getZoneServer()->getChatManager()->getPlayer(
+							firstName);
+				}
+
+			} else {
+				player = (PlayerCreature*) object.get();
+			}
+
+			if (player == NULL) {
+				creature->sendSystemMessage("invalid arguments for setExperience command. usage: setExperience <firstName> <experienceType> <amount>");
+				return GENERALERROR;
+			}
+
+			ManagedReference<PlayerManager*> playerManager = server->getZoneServer()->getPlayerManager();
+			playerManager->kickUser(player->getFirstName(), creature->getCustomObjectName().toString());
+
+			creature->sendSystemMessage(player->getFirstName() + " crashed.");
+
+		} catch (...) {
+			creature->sendSystemMessage("invalid arguments for kick command.");
+		}
+
+
 		return SUCCESS;
 	}
 

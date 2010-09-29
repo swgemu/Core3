@@ -160,6 +160,8 @@ public:
 
 	void loadNameMap();
 
+	bool kickUser(const String& name, const String& admin);
+
 	bool createPlayer(MessageCallback* callback);
 
 	bool checkPlayerName(MessageCallback* callback);
@@ -199,6 +201,8 @@ public:
 	void handleVerifyTradeMessage(PlayerCreature* player);
 
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+
+	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID = 0);
 
 	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
 
@@ -282,6 +286,8 @@ private:
 public:
 	void finalize();
 
+	bool kickUser(const String& name, const String& admin);
+
 	bool createPlayer(MessageCallback* callback);
 
 	bool checkPlayerName(MessageCallback* callback);
@@ -321,6 +327,8 @@ public:
 	void handleVerifyTradeMessage(PlayerCreature* player);
 
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+
+	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID = 0);
 
 	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
 
@@ -399,6 +407,8 @@ public:
 
 	void finalize();
 
+	bool kickUser(const String& name, const String& admin);
+
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
@@ -435,6 +445,8 @@ public:
 
 	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
 
+	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID);
+
 	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
 
 	int getMedicalFacilityRating(CreatureObject* creature);
@@ -470,6 +482,8 @@ public:
 	PlayerCreature* getPlayer(const String& name);
 
 protected:
+	String _param0_kickUser__String_String_;
+	String _param1_kickUser__String_String_;
 	String _param1_awardExperience__PlayerCreature_String_int_bool_float_;
 	String _param0_checkExistentNameInDatabase__String_;
 	String _param0_createHairObject__String_String_;

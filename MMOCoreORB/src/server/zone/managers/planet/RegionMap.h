@@ -41,8 +41,12 @@ public:
 		regions.put(region);
 	}
 
-	void addRegion(Region* region) {
+	inline void addRegion(Region* region) {
 		regions.put(region);
+	}
+
+	inline void dropRegion(Region* region) {
+		regions.drop(region);
 	}
 
 	Region* getRegion(float x, float y) {

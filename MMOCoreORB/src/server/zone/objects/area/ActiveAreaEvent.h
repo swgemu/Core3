@@ -39,9 +39,9 @@ namespace server {
 	   }
 
 	   void run() {
-		   Locker locker(area);
+		   Locker clocker(object);
 
-		   Locker clocker(object, area);
+		   Locker locker(area, object);
 
 		   switch (eventType) {
 		   case ENTEREVENT:

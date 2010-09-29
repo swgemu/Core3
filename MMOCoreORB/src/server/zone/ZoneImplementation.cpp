@@ -88,6 +88,7 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	weatherEnabled = true;
 
 	heightMap = new HeightMap();
+	regionTree = new QuadTree(-8192, -8192, 8192, 8192);
 
 	mapLocations.setNoDuplicateInsertPlan();
 
@@ -96,10 +97,17 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	planetManager = NULL;
 }
 
+void ZoneImplementation::initializePrivateData() {
+	planetManager = new PlanetManager(_this, processor);
+}
+
 void ZoneImplementation::finalize() {
 	//System::out << "deleting height map\n";
 	delete heightMap;
 	heightMap = NULL;
+
+	delete regionTree;
+	regionTree = NULL;
 }
 
 void ZoneImplementation::initializeTransientMembers() {
@@ -133,7 +141,7 @@ void ZoneImplementation::startManagers() {
 	creatureManager = new CreatureManager(_this, processor);
 	creatureManager->deploy("CreatureManager", zoneID);
 
-	planetManager = new PlanetManager(_this, processor);
+	//planetManager = new PlanetManager(_this, processor);
 	planetManager->initialize();
 
 	creatureManager->initialize();
@@ -199,19 +207,73 @@ float ZoneImplementation::getHeight(float x, float y) {
 }
 
 void ZoneImplementation::insert(QuadTreeEntry* entry) {
+	Locker locker(_this);
+
 	QuadTree::insert(entry);
 }
 
 void ZoneImplementation::remove(QuadTreeEntry* entry) {
+	Locker locker(_this);
+
 	QuadTree::remove(entry);
 }
 
 void ZoneImplementation::update(QuadTreeEntry* entry) {
+	Locker locker(_this);
+
 	QuadTree::update(entry);
 }
 
 void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
+	Locker locker(_this);
+
 	QuadTree::inRange(entry, range);
+}
+
+int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject*> >* objects) {
+	Locker locker(_this);
+
+	SortedVector<QuadTreeEntry*> entryObjects;
+
+	QuadTree::inRange(x, y, range, entryObjects);
+
+	for (int i = 0; i < entryObjects.size(); ++i) {
+		SceneObjectImplementation* obj = dynamic_cast<SceneObjectImplementation*>(entryObjects.get(i));
+		objects->put(obj->_this);
+	}
+
+	return objects->size();
+}
+
+void ZoneImplementation::updateActiveAreas(SceneObject* object) {
+	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(object->getActiveAreas());
+
+	Vector3 worldPos = object->getWorldPosition();
+
+	SortedVector<QuadTreeEntry*> entryObjects;
+
+	regionTree->inRange(worldPos.getX(), worldPos.getY(), 512, entryObjects);
+
+	// we update the ones in quadtree.
+	for (int i = 0; i < entryObjects.size(); ++i) {
+		//update in range ones, drop unexistent ones
+		ActiveAreaImplementation* obj = dynamic_cast<ActiveAreaImplementation*>(entryObjects.get(i));
+
+		ActiveArea* activeArea = obj->_this;
+
+		if (areas.contains(activeArea)) {
+			if (!activeArea->containsPoint(object->getPositionX(), object->getPositionY())) {
+				object->dropActiveArea(activeArea);
+				activeArea->enqueueExitEvent(object);
+			}
+		} else {
+			if (activeArea->containsPoint(object->getPositionX(), object->getPositionY())) {
+				object->addActiveArea(activeArea);
+				activeArea->enqueueEnterEvent(object);
+			}
+		}
+	}
+
 }
 
 /*ChatManager* ZoneImplementation::getChatManager() {

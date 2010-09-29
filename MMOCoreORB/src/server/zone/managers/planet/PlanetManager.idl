@@ -137,6 +137,10 @@ class PlanetManager extends ManagedObject implements Logger {
 		shuttleMap.put(city, shuttle);
 	}
 	
+	public synchronized void dropShuttle(final string city) {
+		shuttleMap.remove(city);
+	}
+	
 	@local
 	public native boolean isNoBuildArea(float x, float y, @dereferenced StringId fullAreaName);
 	
@@ -172,6 +176,10 @@ class PlanetManager extends ManagedObject implements Logger {
 	
 	public void addRegion(Region region) {
 		regionMap.addRegion(region);
+	}
+	
+	public void dropRegion(Region region) {
+		regionMap.dropRegion(region);
 	}
 	
 	public boolean hasRegion(final string name) {

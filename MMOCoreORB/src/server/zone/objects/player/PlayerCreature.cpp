@@ -1562,19 +1562,6 @@ void PlayerCreature::setLastCraftingToolUsed(CraftingTool* tool) {
 		((PlayerCreatureImplementation*) _impl)->setLastCraftingToolUsed(tool);
 }
 
-SceneObject* PlayerCreature::getInRangeStructureWithAdminRights(unsigned long long targetID) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 120);
-		method.addUnsignedLongParameter(targetID);
-
-		return (SceneObject*) method.executeWithObjectReturn();
-	} else
-		return ((PlayerCreatureImplementation*) _impl)->getInRangeStructureWithAdminRights(targetID);
-}
-
 /*
  *	PlayerCreatureImplementation
  */
@@ -1582,6 +1569,7 @@ SceneObject* PlayerCreature::getInRangeStructureWithAdminRights(unsigned long lo
 PlayerCreatureImplementation::PlayerCreatureImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 PlayerCreatureImplementation::~PlayerCreatureImplementation() {
 	PlayerCreatureImplementation::finalize();
@@ -2551,9 +2539,6 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case 120:
 		setLastCraftingToolUsed((CraftingTool*) inv->getObjectParameter());
 		break;
-	case 121:
-		resp->insertLong(getInRangeStructureWithAdminRights(inv->getUnsignedLongParameter())->_getObjectID());
-		break;
 	default:
 		return NULL;
 	}
@@ -3019,10 +3004,6 @@ CraftingTool* PlayerCreatureAdapter::getLastCraftingToolUsed() {
 
 void PlayerCreatureAdapter::setLastCraftingToolUsed(CraftingTool* tool) {
 	((PlayerCreatureImplementation*) impl)->setLastCraftingToolUsed(tool);
-}
-
-SceneObject* PlayerCreatureAdapter::getInRangeStructureWithAdminRights(unsigned long long targetID) {
-	return ((PlayerCreatureImplementation*) impl)->getInRangeStructureWithAdminRights(targetID);
 }
 
 /*

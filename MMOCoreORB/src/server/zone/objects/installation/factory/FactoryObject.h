@@ -69,6 +69,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyLoadFromDatabase();
+
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
@@ -137,6 +139,8 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
+
+	void notifyLoadFromDatabase();
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -226,6 +230,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void notifyLoadFromDatabase();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
