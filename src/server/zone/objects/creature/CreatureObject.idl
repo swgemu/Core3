@@ -614,7 +614,7 @@ class CreatureObject extends TangibleObject {
 	public native void stopEntertaining();
 	
 	public native boolean isEntertaining() {
-		return isDancing() ||ÊisPlayingMusic();
+		return isDancing() || isPlayingMusic();
 	}
 	
 	/**
@@ -628,7 +628,7 @@ class CreatureObject extends TangibleObject {
 	
 	/**
 	 * Updates the terrain negotiation variable?
-	 * @pre {Êthis object is locked }
+	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the specified terrain negotiation }
 	 * @param terrain new terrain negotiation
 	 * @param notifyClient if set true the client will be updated with the changes
