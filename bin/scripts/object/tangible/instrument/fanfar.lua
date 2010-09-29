@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_fanfar = object_tangible_instrument_shared_fanfar:new {
-
+	templateType = INSTRUMENT,
+	instrumentType = 3
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_fanfar, "object/tangible/instrument/fanfar.iff")

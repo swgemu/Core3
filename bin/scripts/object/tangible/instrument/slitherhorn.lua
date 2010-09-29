@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_slitherhorn = object_tangible_instrument_shared_slitherhorn:new {
-
+templateType = INSTRUMENT,
+	instrumentType = 2
 
 }
 

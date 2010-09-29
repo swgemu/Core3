@@ -46,6 +46,7 @@ which carries forward this exception.
 #define CHANGEDANCECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "StartDanceCommand.h"
 
 class ChangeDanceCommand : public QueueCommand {
 public:
@@ -62,6 +63,56 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session == NULL) {
+			creature->sendSystemMessage("performance", "dance_must_be_performing_self");
+			return GENERALERROR;
+		}
+
+		if (session->isPlayingMusic()) {
+			session->stopPlayingMusic();
+		}
+
+		if (!session->isDancing()) {
+			creature->sendSystemMessage("performance", "dance_must_be_performing_self");
+
+			return GENERALERROR;
+		}
+
+		PlayerObject* ghost = dynamic_cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+
+		String args = arguments.toString();
+
+		PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+
+		if (args.length() < 2) {
+			StartDanceCommand::sendAvailableDances(player, ghost, SuiWindowType::CHANGE_DANCING);
+			return SUCCESS;
+		}
+
+		if (!ghost->hasSkillArgument("startdance", args)) {
+			creature->sendSystemMessage("performance", "dance_lack_skill_self");
+			return GENERALERROR;
+		}
+
+		if (!performanceManager->hasDanceAnimation(args)) {
+			creature->sendSystemMessage("performance", "dance_lack_skill_self");
+			return GENERALERROR;
+		}
+
+		session->sendEntertainingUpdate(creature, /*0x3C4CCCCD*/0.0125, performanceManager->getDanceAnimation(args), 0x07339FF8, 0xDD);
+		session->setPerformanceName(args);
 
 		return SUCCESS;
 	}

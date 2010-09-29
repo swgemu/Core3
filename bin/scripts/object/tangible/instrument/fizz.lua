@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_fizz = object_tangible_instrument_shared_fizz:new {
-
+	templateType = INSTRUMENT,
+	instrumentType = 6
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_fizz, "object/tangible/instrument/fizz.iff")

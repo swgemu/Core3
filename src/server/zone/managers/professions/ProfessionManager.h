@@ -94,6 +94,8 @@ namespace server {
 
 using namespace server::zone::managers::objectcontroller;
 
+class PerformanceManager;
+
 namespace server {
  namespace zone {
   namespace managers {
@@ -105,6 +107,7 @@ namespace server {
 		//SkillManager* skillManager;
 
 		ObjectController* objectController;
+		PerformanceManager* performanceManager;
 
 		VectorMap<String, Reference<SkillBox*> > skillBoxMap;
 		VectorMap<String, Reference<Certification*> > certificationMap;
@@ -180,6 +183,10 @@ namespace server {
 
 		inline Profession* getProfession(const String& prof) {
 			return professionMap.get(prof);
+		}
+
+		inline PerformanceManager* getPerformanceManager() {
+			return performanceManager;
 		}
 
 		inline void setObjectController(ObjectController* objectControl) {

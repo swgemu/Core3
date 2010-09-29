@@ -63,6 +63,21 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isDancing()) {
+			return GENERALERROR;
+		}
+
+		int actionModifier = Integer::valueOf(arguments.toString());
+
+		if (actionModifier > 3 || actionModifier < 1)
+			actionModifier = 3;
+
+		StringBuffer effect;
+		effect << "clienteffect/entertainer_smoke_bomb_level_" << dec << actionModifier << ".cef";
+		creature->playEffect(effect.toString(), "");
+
+		creature->sendSystemMessage("performance", "effect_perform_smoke_bomb");
+
 		return SUCCESS;
 	}
 

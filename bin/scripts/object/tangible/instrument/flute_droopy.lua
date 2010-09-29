@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_flute_droopy = object_tangible_instrument_shared_flute_droopy:new {
-
+	templateType = INSTRUMENT,
+	instrumentType = 4
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_flute_droopy, "object/tangible/instrument/flute_droopy.iff")

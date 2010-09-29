@@ -48,9 +48,39 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import engine.lua.LuaObject;
+include server.zone.templates.tangible.InstrumentObjectTemplate;
 
-class Instrument extends TangibleObject {	
+class Instrument extends TangibleObject {
+	protected int instrumentType;
+	
+	/* Redoing instrument consts to match the instrumentAudioId in TRE
+	 * The actual packets for triggering sound is different & in creature
+	 * implementation as well as the appropriate animation for each inst type
+	1	traz
+	2	slitherhorn
+	3	fanfar
+	4	flutedroopy
+	5	kloohorn
+	6	fizz
+	7	bandfill
+	8	omnibox
+	9	nalargon
+	10	mandoviol*/
+
+	public static final int TRAZ = 1;
+	public static final int SLITHERHORN = 2;
+	public static final int FANFAR = 3;
+	public static final int FLUTEDROOPY = 4;
+	public static final int KLOOHORN = 5;
+	public static final int FIZZ = 6;
+	public static final int BANDFILL = 7;
+	public static final int OMNIBOX = 8;
+	public static final int NALARGON = 9;
+	public static final int MANDOVIOL = 10;
+	
 	public Instrument() {
+		instrumentType = 0;
+		
 		Logger.setLoggingName("Instrument");
 	}
 	
@@ -58,5 +88,19 @@ class Instrument extends TangibleObject {
 		super.initializeTransientMembers();
 		
 		Logger.setLoggingName("Instrument");
+	}
+	
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		if (!templateData.isInstrumentObjectTemplate())
+			return;
+		
+		InstrumentObjectTemplate templ = (InstrumentObjectTemplate) templateData;
+		
+		instrumentType = templ.getInstrumentType();
+	}
+	
+	public int getInstrumentType() {
+		return instrumentType;
 	}
 }

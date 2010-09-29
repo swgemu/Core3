@@ -147,6 +147,20 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class Facade;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
@@ -764,6 +778,14 @@ public:
 
 	Task* getPendingTask(const String& name);
 
+	Facade* getActiveSession(unsigned int type);
+
+	void addActiveSession(unsigned int type, Facade* session);
+
+	bool containsActiveSession(unsigned int type);
+
+	bool dropActiveSession(unsigned int type);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void notifyAddedToCloseObjects();
@@ -1083,6 +1105,8 @@ protected:
 	bool staticObject;
 
 	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+
+	VectorMap<unsigned int, ManagedReference<Facade* > > objectActiveSessions;
 
 	unsigned int containerType;
 
@@ -1663,6 +1687,14 @@ public:
 
 	Task* getPendingTask(const String& name);
 
+	Facade* getActiveSession(unsigned int type);
+
+	void addActiveSession(unsigned int type, Facade* session);
+
+	bool containsActiveSession(unsigned int type);
+
+	bool dropActiveSession(unsigned int type);
+
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void notifyAddedToCloseObjects();
@@ -2055,6 +2087,14 @@ public:
 	int compareTo(SceneObject* obj);
 
 	unsigned long long getParentID();
+
+	Facade* getActiveSession(unsigned int type);
+
+	void addActiveSession(unsigned int type, Facade* session);
+
+	bool containsActiveSession(unsigned int type);
+
+	bool dropActiveSession(unsigned int type);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 

@@ -92,6 +92,16 @@ public:
 		insertInt(value);
 	}
 
+	void updatePerformanceCounter(uint32 pCounter) {
+		startUpdate(0x0B);
+		insertInt(pCounter);
+	}
+
+	void updatePerformanceAnimation(const String& pAnimation) {
+		startUpdate(0x03);
+		insertAscii(pAnimation);
+	}
+
 	/*
 
 	void updateInviterId() {
@@ -103,15 +113,8 @@ public:
 
 
 
-	void updatePerformanceAnimation(String pAnimation) {
-		startUpdate(0x03);
-		insertAscii(pAnimation);
-	}
 
-	void updatePerformanceCounter(uint32 pCounter) {
-		startUpdate(0x0B);
-		insertInt(pCounter);
-	}
+
 
 	void updateInstrumentID(int value) {
 		startUpdate(0x0C);

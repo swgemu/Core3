@@ -82,6 +82,7 @@ include server.zone.objects.scene.variables.PendingTasksMap;
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.scene.ObserverEventType;
 import server.zone.objects.area.ActiveArea;
+import server.zone.objects.scene.Facade;
 
 class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
@@ -135,6 +136,9 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	
 	@dereferenced
 	protected SortedVector<ActiveArea> activeAreas;
+	
+	@dereferenced
+	protected VectorMap<unsigned int, Facade> objectActiveSessions;
 
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
@@ -928,6 +932,25 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	@local
 	public Task getPendingTask(final string name) {
 		return pendingTasks.get(name);
+	}
+	
+	/**
+	 * Returns a Facade session
+	 */
+	public Facade getActiveSession(unsigned int type) {
+		return objectActiveSessions.get(type);
+	}
+	
+	public void addActiveSession(unsigned int type, Facade session) {
+		objectActiveSessions.put(type, session);
+	}
+	
+	public boolean containsActiveSession(unsigned int type) {
+		return objectActiveSessions.contains(type);
+	}
+	
+	public boolean dropActiveSession(unsigned int type) {
+		return objectActiveSessions.drop(type);
 	}
 	
 	/**

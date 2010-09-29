@@ -31,6 +31,13 @@ void ObserverEventMap::notifyObservers(uint32 eventType, Observable* observable,
 }
 
 void ObserverEventMap::registerObserver(uint32 eventType, Observer* observer) {
+	if (observer == NULL) {
+		System::out << "registering NULL OBSERVER" << endl;
+		StackTrace::printStackTrace();
+
+		return;
+	}
+
 	int index = find(eventType);
 
 	if (index == -1) {

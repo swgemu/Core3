@@ -256,98 +256,96 @@ void RangedStimPackImplementation::updateCraftingValues(ManufactureSchematic* sc
 }
 
 void RangedStimPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(100):  		super.fillAttributeList(msg, object);
-	StimPackImplementation::fillAttributeList(msg, object);
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(102):  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(100):  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_health", Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(103):  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(101):  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_action", Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(104):  		msg.insertAttribute("examine_heal_range", Math.getPrecision(range, 0));
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(102):  		msg.insertAttribute("examine_heal_range", Math.getPrecision(range, 0));
 	msg->insertAttribute("examine_heal_range", Math::getPrecision(range, 0));
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(106):  
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(104):  
 	if (isArea()){
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(107):  			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(105):  			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));
 	msg->insertAttribute("examine_heal_area", Math::getPrecision(area, 0));
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(108):  			msg.insertAttribute("combat_healing_ability", super.medicineUseRequired);
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(106):  			msg.insertAttribute("combat_healing_ability", super.medicineUseRequired);
 	msg->insertAttribute("combat_healing_ability", StimPackImplementation::medicineUseRequired);
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(110):  			msg.insertAttribute("combat_healing_ability", super.medicineUseRequired);
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(108):  			msg.insertAttribute("combat_healing_ability", super.medicineUseRequired);
 	msg->insertAttribute("combat_healing_ability", StimPackImplementation::medicineUseRequired);
 }
 }
 
 void RangedStimPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(122):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(120):  		super.loadTemplateData(templateData);
 	StimPackImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(124):  		RangedStimPackTemplate 
-	if (!templateData->isRangedStimPackTemplate())	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(125):  			return;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(122):  		RangedStimPackTemplate 
+	if (!templateData->isRangedStimPackTemplate())	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(123):  			return;
 	return;
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(127):  stimPackTemplate = (RangedStimPackTemplate) templateData;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(125):  stimPackTemplate = (RangedStimPackTemplate) templateData;
 	RangedStimPackTemplate* stimPackTemplate = (RangedStimPackTemplate*) templateData;
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(129):  		effectiveness = stimPackTemplate.getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(127):  		effectiveness = stimPackTemplate.getEffectiveness();
 	effectiveness = stimPackTemplate->getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(130):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(128):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 	StimPackImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(131):  		area = stimPackTemplate.getArea();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(129):  		area = stimPackTemplate.getArea();
 	area = stimPackTemplate->getArea();
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(132):  		range = stimPackTemplate.getRange();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(130):  		range = stimPackTemplate.getRange();
 	range = stimPackTemplate->getRange();
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(133):  		rangeMod = stimPackTemplate.getRangeMod();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(131):  		rangeMod = stimPackTemplate.getRangeMod();
 	rangeMod = stimPackTemplate->getRangeMod();
 }
 
 unsigned int RangedStimPackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(137):  		float power = getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(135):  		float power = getEffectiveness();
 	float power = getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(139):  		float 
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(137):  		float 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(140):  			power = power - power * patient.calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(138):  			power = power - power * patient.calculateBFRatio();
 	power = power - power * patient->calculateBFRatio();
 }
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(143):  modSkill = (float) healer.getSkillMod("combat_medic_effectiveness");
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(141):  modSkill = (float) healer.getSkillMod("combat_medic_effectiveness");
 	float modSkill = (float) healer->getSkillMod("combat_medic_effectiveness");
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(145):  		return (100 + modSkill) / 100 * power;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(143):  		return (100 + modSkill) / 100 * power;
 	return (100 + modSkill) / 100 * power;
 }
 
 float RangedStimPackImplementation::getRange(CreatureObject* creature) {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(149):  		float modSkill = 0;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(147):  		float modSkill = 0;
 	float modSkill = 0;
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(151):  		float 
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(149):  		float 
 	if (creature != NULL){
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(152):  			modSkill = creature.getSkillMod("healing_range");
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(150):  			modSkill = creature.getSkillMod("healing_range");
 	modSkill = creature->getSkillMod("healing_range");
 }
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(155):  value = (100 + rangeMod * modSkill) / 100 * range;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(153):  value = (100 + rangeMod * modSkill) / 100 * range;
 	float value = (100 + rangeMod * modSkill) / 100 * range;
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(157):  		return value;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(155):  		return value;
 	return value;
 }
 
 float RangedStimPackImplementation::getEffectiveness() {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(161):  		return effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(159):  		return effectiveness;
 	return effectiveness;
 }
 
 float RangedStimPackImplementation::getArea() {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(165):  		return area;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(163):  		return area;
 	return area;
 }
 
 bool RangedStimPackImplementation::isArea() {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(169):  		return area != 0;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(167):  		return area != 0;
 	return area != 0;
 }
 
 float RangedStimPackImplementation::getRangeMod() {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(173):  		return rangeMod;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(171):  		return rangeMod;
 	return rangeMod;
 }
 
 bool RangedStimPackImplementation::isRangedStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(177):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(175):  		return true;
 	return true;
 }
 
