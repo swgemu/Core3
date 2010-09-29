@@ -36,6 +36,26 @@ void Instrument::initializeTransientMembers() {
 		((InstrumentImplementation*) _impl)->initializeTransientMembers();
 }
 
+void Instrument::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((InstrumentImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+int Instrument::getInstrumentType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((InstrumentImplementation*) _impl)->getInstrumentType();
+}
+
 /*
  *	InstrumentImplementation
  */
@@ -103,19 +123,37 @@ void InstrumentImplementation::_serializationHelperMethod() {
 
 	_setClassName("Instrument");
 
+	addSerializableVariable("instrumentType", &instrumentType);
 }
 
 InstrumentImplementation::InstrumentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Instrument.idl(54):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(82):  		instrumentType = 0;
+	instrumentType = 0;
+	// server/zone/objects/tangible/Instrument.idl(84):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Instrument.idl(58):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/Instrument.idl(88):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Instrument.idl(60):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(90):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
+}
+
+void InstrumentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	// server/zone/objects/tangible/Instrument.idl(95):  		InstrumentObjectTemplate 
+	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(96):  			return;
+	return;
+	// server/zone/objects/tangible/Instrument.idl(98):  templ = (InstrumentObjectTemplate) templateData;
+	InstrumentObjectTemplate* templ = (InstrumentObjectTemplate*) templateData;
+	// server/zone/objects/tangible/Instrument.idl(100):  		instrumentType = templ.getInstrumentType();
+	instrumentType = templ->getInstrumentType();
+}
+
+int InstrumentImplementation::getInstrumentType() {
+	// server/zone/objects/tangible/Instrument.idl(104):  		return instrumentType;
+	return instrumentType;
 }
 
 /*
@@ -132,6 +170,9 @@ Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertSignedInt(getInstrumentType());
+		break;
 	default:
 		return NULL;
 	}
@@ -141,6 +182,10 @@ Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void InstrumentAdapter::initializeTransientMembers() {
 	((InstrumentImplementation*) impl)->initializeTransientMembers();
+}
+
+int InstrumentAdapter::getInstrumentType() {
+	return ((InstrumentImplementation*) impl)->getInstrumentType();
 }
 
 /*

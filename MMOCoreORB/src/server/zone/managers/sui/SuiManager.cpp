@@ -158,16 +158,16 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::START_MUSIC:
 		handleStartMusic(boxID, player, cancel, value.toCharArray(), false);
-		break;
+		break;*/
 	case SuiWindowType::START_DANCING:
 		handleStartDancing(boxID, player, cancel, value.toCharArray(), false);
-		break;
+		break;/*
 	case SuiWindowType::CHANGE_MUSIC: // changemusic
 		handleStartMusic(boxID, player, cancel, value.toCharArray(), true);
-		break;
+		break;*/
 	case SuiWindowType::CHANGE_DANCING: // changedance
 		handleStartDancing(boxID, player, cancel, value.toCharArray(), true);
-		break;*/
+		break;
 	case SuiWindowType::SURVEY_TOOL_RANGE:
 		range = (atoi(value.toCharArray()) * 64) + 64;
 		if(range == 576)
@@ -664,38 +664,36 @@ void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, c
 		error("Unreported exception caught in SuiManager::handleStartMusic(Player* player, const String& music)");
 		player->unlock();
 	}
-}
-
-void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const String& dance, bool change) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (cancel != 1)
-			player->startDancing(dance, change);
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception in SuiManager::handleStartDancing " << e.getMessage();
-		error(msg.toString());
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleStartDancing(Player* player, const String& music)");
-		player->unlock();
-	}
 }*/
+
+void SuiManager::handleStartDancing(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& dance, bool change) {
+	Locker locker(player);
+
+	if (!player->hasSuiBox(boxID)) {
+		return;
+	}
+
+	Reference<SuiBox*> sui = player->getSuiBox(boxID);
+	player->removeSuiBox(boxID);
+
+	if (cancel == 1)
+		return;
+
+	if (!sui->isListBox()) {
+		return;
+	}
+
+	int id = Integer::valueOf(dance);
+
+	SuiListBox* listBox = (SuiListBox*) sui.get();
+
+	String item = listBox->getMenuItemName(id);
+
+	if (!change)
+		player->executeObjectControllerAction(String("startdance").hashCode(), 0, item);
+	else
+		player->executeObjectControllerAction(String("changedance").hashCode(), 0, item);
+}
 
 void SuiManager::handleSurveyToolRange(uint32 boxID, PlayerCreature* player, uint32 cancel, int range) {
 

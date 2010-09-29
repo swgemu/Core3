@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_traz = object_tangible_instrument_shared_traz:new {
-
+	templateType = INSTRUMENT,
+	instrumentType = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_traz, "object/tangible/instrument/traz.iff")

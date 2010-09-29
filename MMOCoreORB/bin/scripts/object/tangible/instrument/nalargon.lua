@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_nalargon = object_tangible_instrument_shared_nalargon:new {
-
+	templateType = INSTRUMENT,
+	instrumentType = 9
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_nalargon, "object/tangible/instrument/nalargon.iff")

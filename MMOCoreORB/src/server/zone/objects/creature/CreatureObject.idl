@@ -119,6 +119,7 @@ class CreatureObject extends TangibleObject {
 	protected float slopeModAngle;
 	
 	protected unsigned long listenToID;
+	protected unsigned long watchToID;
 	
 	protected string performanceAnimation;
 	protected string moodString;
@@ -447,13 +448,42 @@ class CreatureObject extends TangibleObject {
 	public native int notifyObjectInserted(SceneObject object);
 	
 	/**
+	 * Is called when an object was removed
+	 * @param object object that has been inserted
+	 */
+	public native int notifyObjectRemoved(SceneObject object);
+	
+	/**
 	 * Updates the instrument id to the specified object id
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the specified weapon id }
 	 * @param instrumentid the new instrument id
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void setInstrumentID(int instrumentid, boolean notifyClient = false);
+	public native void setInstrumentID(int instrumentid, boolean notifyClient = true);
+	
+	/**
+	 * Updates listen id
+	 */
+	public native void setListenToID(unsigned long id, boolean notifyClient = true); 
+	
+	/**
+	 * Updates the preformance counter
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the counter updated }
+	 * @param counter new performance counter
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setPerformanceCounter(int counter, boolean notifyClient = true);
+	
+	/**
+	 * Updates the preformance animation string
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the animation updated }
+	 * @param animation new animation
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setPerformanceAnimation(final string animation, boolean notifyClient = true);
 	
 	/**
 	 * Updates shock wounds
@@ -464,7 +494,8 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void setShockWounds(int newShock, boolean notifyClient = true);
 	
-	public native void addShockWounds(int shockToAdd, boolean notiyClient = true);	
+	public native void addShockWounds(int shockToAdd, boolean notiyClient = true);
+	
 	/**
 	 * Updates the target id to the specified object id
 	 * @pre { this object is locked }
@@ -472,7 +503,7 @@ class CreatureObject extends TangibleObject {
 	 * @param objectID the new target id
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void setTargetID(unsigned long targetID, boolean notifyClient = false);
+	public native void setTargetID(unsigned long targetID, boolean notifyClient = true);
 	
 	/**
 	 * Updates the bank credits of this object
@@ -577,6 +608,15 @@ class CreatureObject extends TangibleObject {
 		return true;
 	}
 	
+	public native boolean isDancing();
+	public native boolean isPlayingMusic();
+	
+	public native void stopEntertaining();
+	
+	public native boolean isEntertaining() {
+		return isDancing() ||ÊisPlayingMusic();
+	}
+	
 	/**
 	 * Update the cash credits of this object
 	 * @pre { this object is locked }
@@ -585,6 +625,15 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void setCashCredits(int credits, boolean notifyClient = true);
+	
+	/**
+	 * Updates the terrain negotiation variable?
+	 * @pre {Êthis object is locked }
+	 * @post { this object is locked, this object has the specified terrain negotiation }
+	 * @param terrain new terrain negotiation
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setTerrainNegotiation(float value, boolean notifyClient = true);
 	
 	/**
 	 * Adds the specified skillbox to this object
@@ -779,6 +828,14 @@ class CreatureObject extends TangibleObject {
 	
 	public boolean canTreatConditions() {
 		return super.getPendingTask("conditionTreatment") == null;
+	}
+	
+	public boolean isListening() {
+		return listenToID != 0;
+	}
+	
+	public boolean isWatching() {
+		return watchToID != 0;
 	}
 	
 	public native void dismount();
@@ -979,6 +1036,10 @@ class CreatureObject extends TangibleObject {
 		return shockWounds;
 	}
 	
+	public unsigned long getWatchToID() {
+		return watchToID;
+	}
+	
 	public unsigned long getStateBitmask() {
 		return stateBitmask;
 	}
@@ -1134,6 +1195,10 @@ class CreatureObject extends TangibleObject {
 	
 	public void setHeight(float heigh) {
 		height = heigh;
+	}
+	
+	public void setWatchToID(unsigned long id) {
+		watchToID = id;
 	}
 	
 	public boolean isCreatureObject() {

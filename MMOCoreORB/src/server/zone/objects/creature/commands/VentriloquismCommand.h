@@ -63,6 +63,21 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayingMusic()) {
+			return GENERALERROR;
+		}
+
+		int actionModifier = Integer::valueOf(arguments.toString());
+
+		if (actionModifier > 3 || actionModifier < 1)
+			actionModifier = 3;
+
+		StringBuffer effect;
+		effect << "clienteffect/entertainer_ventriloquism_level_" << dec << actionModifier << ".cef";
+		creature->playEffect(effect.toString(), "");
+
+		creature->sendSystemMessage("performance", "effect_perform_ventriloquism");
+
 		return SUCCESS;
 	}
 

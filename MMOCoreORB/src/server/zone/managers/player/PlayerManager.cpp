@@ -375,12 +375,76 @@ int PlayerManager::getMedicalFacilityRating(CreatureObject* creature) {
 		return ((PlayerManagerImplementation*) _impl)->getMedicalFacilityRating(creature);
 }
 
-int PlayerManager::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
+void PlayerManager::stopWatch(CreatureObject* creature, unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 29);
+		method.addObjectParameter(creature);
+		method.addUnsignedLongParameter(entid);
+		method.addBooleanParameter(doSendPackets);
+		method.addBooleanParameter(forced);
+		method.addBooleanParameter(doLock);
+		method.addBooleanParameter(outOfRange);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->stopWatch(creature, entid, doSendPackets, forced, doLock, outOfRange);
+}
+
+void PlayerManager::stopListen(CreatureObject* creature, unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addObjectParameter(creature);
+		method.addUnsignedLongParameter(entid);
+		method.addBooleanParameter(doSendPackets);
+		method.addBooleanParameter(forced);
+		method.addBooleanParameter(doLock);
+		method.addBooleanParameter(outOfRange);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->stopListen(creature, entid, doSendPackets, forced, doLock, outOfRange);
+}
+
+void PlayerManager::startWatch(CreatureObject* creature, unsigned long long entid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+		method.addObjectParameter(creature);
+		method.addUnsignedLongParameter(entid);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->startWatch(creature, entid);
+}
+
+void PlayerManager::startListen(CreatureObject* creature, unsigned long long entid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addObjectParameter(creature);
+		method.addUnsignedLongParameter(entid);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->startListen(creature, entid);
+}
+
+int PlayerManager::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
 		method.addObjectParameter(enhancer);
 		method.addObjectParameter(patient);
 		method.addByteParameter(attribute);
@@ -405,7 +469,7 @@ bool PlayerManager::squadLeaderCheck(PlayerCreature* player, GroupObject* group)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 34);
 		method.addObjectParameter(player);
 		method.addObjectParameter(group);
 
@@ -419,7 +483,7 @@ void PlayerManager::awardSquadLeaderExperience(GroupObject* group, int amount, T
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(group);
 		method.addSignedIntParameter(amount);
 		method.addObjectParameter(source);
@@ -434,7 +498,7 @@ void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -447,7 +511,7 @@ void PlayerManager::sendActivateCloneRequest(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -460,7 +524,7 @@ void PlayerManager::sendPlayerToCloner(PlayerCreature* player, unsigned long lon
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 38);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(clonerID);
 
@@ -474,7 +538,7 @@ bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 39);
 		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
@@ -487,7 +551,7 @@ TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, co
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 40);
 		method.addAsciiParameter(hairObjectFile);
 		method.addAsciiParameter(hairCustomization);
 
@@ -501,7 +565,7 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 41);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -514,7 +578,7 @@ void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 42);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(profession);
 		method.addAsciiParameter(templateFile);
@@ -529,7 +593,7 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 43);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -542,7 +606,7 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 44);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -555,7 +619,7 @@ bool PlayerManager::existsName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 45);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -568,7 +632,7 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 46);
 		method.addAsciiParameter(name);
 
 		return method.executeWithUnsignedLongReturn();
@@ -581,7 +645,7 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 47);
 		method.addAsciiParameter(name);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -743,48 +807,60 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertSignedInt(getMedicalFacilityRating((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 30:
-		resp->insertSignedInt(healEnhance((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getFloatParameter()));
+		stopWatch((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 31:
-		resp->insertBoolean(squadLeaderCheck((PlayerCreature*) inv->getObjectParameter(), (GroupObject*) inv->getObjectParameter()));
+		stopListen((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 32:
-		awardSquadLeaderExperience((GroupObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), (TangibleObject*) inv->getObjectParameter());
+		startWatch((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 33:
-		sendMessageOfTheDay((PlayerCreature*) inv->getObjectParameter());
+		startListen((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 34:
-		sendActivateCloneRequest((PlayerCreature*) inv->getObjectParameter());
+		resp->insertSignedInt(healEnhance((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getFloatParameter()));
 		break;
 	case 35:
-		sendPlayerToCloner((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		resp->insertBoolean(squadLeaderCheck((PlayerCreature*) inv->getObjectParameter(), (GroupObject*) inv->getObjectParameter()));
 		break;
 	case 36:
-		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
+		awardSquadLeaderExperience((GroupObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 37:
-		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
+		sendMessageOfTheDay((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 38:
-		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
+		sendActivateCloneRequest((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 39:
-		createDefaultPlayerItems((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__PlayerCreature_String_String_));
+		sendPlayerToCloner((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 40:
-		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
 		break;
 	case 41:
-		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
 		break;
 	case 42:
-		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
+		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 43:
-		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
+		createDefaultPlayerItems((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__PlayerCreature_String_String_));
 		break;
 	case 44:
+		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 45:
+		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 46:
+		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
+		break;
+	case 47:
+		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
+		break;
+	case 48:
 		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
 	default:
@@ -888,6 +964,22 @@ void PlayerManagerAdapter::sendBattleFatigueMessage(PlayerCreature* player, Play
 
 int PlayerManagerAdapter::getMedicalFacilityRating(CreatureObject* creature) {
 	return ((PlayerManagerImplementation*) impl)->getMedicalFacilityRating(creature);
+}
+
+void PlayerManagerAdapter::stopWatch(CreatureObject* creature, unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	((PlayerManagerImplementation*) impl)->stopWatch(creature, entid, doSendPackets, forced, doLock, outOfRange);
+}
+
+void PlayerManagerAdapter::stopListen(CreatureObject* creature, unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	((PlayerManagerImplementation*) impl)->stopListen(creature, entid, doSendPackets, forced, doLock, outOfRange);
+}
+
+void PlayerManagerAdapter::startWatch(CreatureObject* creature, unsigned long long entid) {
+	((PlayerManagerImplementation*) impl)->startWatch(creature, entid);
+}
+
+void PlayerManagerAdapter::startListen(CreatureObject* creature, unsigned long long entid) {
+	((PlayerManagerImplementation*) impl)->startListen(creature, entid);
 }
 
 int PlayerManagerAdapter::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {

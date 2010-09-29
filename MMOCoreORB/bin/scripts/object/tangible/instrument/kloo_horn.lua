@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_kloo_horn = object_tangible_instrument_shared_kloo_horn:new {
-
+	templateType = INSTRUMENT,
+	instrumentType = 5
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_kloo_horn, "object/tangible/instrument/kloo_horn.iff")

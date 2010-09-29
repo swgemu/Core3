@@ -31,6 +31,7 @@
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/templates/tangible/StimPackTemplate.h"
 #include "server/zone/templates/tangible/ConsumableTemplate.h"
+#include "server/zone/templates/tangible/InstrumentObjectTemplate.h"
 #include "server/zone/templates/tangible/RangedStimPackTemplate.h"
 #include "server/zone/templates/tangible/EnhancePackTemplate.h"
 #include "server/zone/templates/tangible/CurePackTemplate.h"
@@ -175,6 +176,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<StatePackTemplate>(SharedObjectTemplate::STATEPACK);
 	templateFactory.registerObject<ConsumableTemplate>(SharedObjectTemplate::CONSUMABLE);
 	templateFactory.registerObject<ElevatorTerminalTemplate>(SharedObjectTemplate::ELEVATORTERMINAL);
+	templateFactory.registerObject<InstrumentObjectTemplate>(SharedObjectTemplate::INSTRUMENT);
 
 }
 
@@ -307,6 +309,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("STATEPACK", SharedObjectTemplate::STATEPACK);
 	luaTemplatesInstance->setGlobalInt("CONSUMABLE", SharedObjectTemplate::CONSUMABLE);
 	luaTemplatesInstance->setGlobalInt("ELEVATORTERMINAL", SharedObjectTemplate::ELEVATORTERMINAL);
+	luaTemplatesInstance->setGlobalInt("INSTRUMENT", SharedObjectTemplate::INSTRUMENT);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

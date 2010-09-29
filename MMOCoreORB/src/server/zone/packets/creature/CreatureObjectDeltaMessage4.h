@@ -76,13 +76,25 @@ public:
 		addFloatUpdate(0x07, creo->getRunSpeed());
 	}
 
-	/*void updateAcceleration() {
-		addFloatUpdate(0x0B, creo->acceleration);
+	void updateEntertainerValue(uint32 value) {
+		startUpdate(0x09);
+		insertInt(value);
+	}
+
+	void updateListenToID(uint64 objectid) {
+		startUpdate(0x06);
+		insertLong(objectid);
 	}
 
 	void updateTerrainNegotiation() {
 		addFloatUpdate(0x09, creo->getTerrainNegotiation());
 	}
+
+	/*void updateAcceleration() {
+		addFloatUpdate(0x0B, creo->acceleration);
+	}
+
+
 
 	void startSkillModsUpdate(int skillModsToUpdate) {
 		startUpdate(0x03);
@@ -103,15 +115,7 @@ public:
 		insertInt(0);
 	}
 
-	void updateEntertainerValue(uint32 value) {
-		startUpdate(0x09);
-		insertInt(value);
-	}
-
-	void updateListenToID(uint64 objectid) {
-		startUpdate(0x06);
-		insertLong(objectid);
-	}*/
+	*/
 
 };
 

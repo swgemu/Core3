@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_bandfill = object_tangible_instrument_shared_bandfill:new {
-
+	templateType = INSTRUMENT,
+	instrumentType = 7
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_bandfill, "object/tangible/instrument/bandfill.iff")

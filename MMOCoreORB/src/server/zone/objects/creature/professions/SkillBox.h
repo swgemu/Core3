@@ -102,7 +102,8 @@ namespace server {
 
 		bool skillIsSearchable;
 
-		Vector<QueueCommand*> skillCommands;
+		SortedVector<QueueCommand*> skillCommands;
+		VectorMap<QueueCommand*, SortedVector<String> > skillArguments;
 		Vector<Certification*> skillCertifications;
 		VectorMap<String, int32>  skillMods;
 
@@ -126,6 +127,9 @@ namespace server {
 			skillXpCost = 0;
 			skillXpCap = 0;
 
+			skillArguments.setNoDuplicateInsertPlan();
+			skillCommands.setNoDuplicateInsertPlan();
+
 			skillIsSearchable = false;
 		}
 
@@ -140,6 +144,18 @@ namespace server {
 				return -1;
 			else
 				return 0;
+		}
+
+		void addSkillArgument(QueueCommand* skill, const String& arg) {
+			if (skillArguments.contains(skill)) {
+				SortedVector<String>* args = &skillArguments.get(skill);
+				args->put(arg);
+			} else {
+				SortedVector<String> args;
+				args.put(arg);
+
+				skillArguments.put(skill, args);
+			}
 		}
 
 		void setSkillGodOnly(bool god) {
@@ -216,6 +232,15 @@ namespace server {
 
 		inline int getRequiredSpeciesSize() {
 			return skillSpeciesRequired.size();
+		}
+
+		SortedVector<String>* getSkillArguments(QueueCommand* skill) {
+			if (skillArguments.contains(skill)) {
+				SortedVector<String>* args = &skillArguments.get(skill);
+				return args;
+			}
+
+			return NULL;
 		}
 
 		void setSkillXpType(const String& skill) {

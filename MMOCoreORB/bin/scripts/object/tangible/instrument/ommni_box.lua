@@ -42,7 +42,8 @@
 
 
 object_tangible_instrument_ommni_box = object_tangible_instrument_shared_ommni_box:new {
-
+	templateType = INSTRUMENT,
+	instrumentType = 8
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_ommni_box, "object/tangible/instrument/ommni_box.iff")

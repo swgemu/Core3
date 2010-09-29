@@ -90,6 +90,7 @@ which carries forward this exception.
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
 #include "professions/SkillBox.h"
+#include "server/zone/objects/player/EntertainingSession.h"
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -121,6 +122,7 @@ void CreatureObjectImplementation::initializeMembers() {
 	terrainNegotiation = 0.f;
 
 	listenToID = 0;
+	watchToID = 0;
 
 	weapon = NULL;
 	group = NULL;
@@ -1025,6 +1027,66 @@ void CreatureObjectImplementation::setMoodString(const String& moodAnimationStri
 	}
 }
 
+void CreatureObjectImplementation::setPerformanceCounter(int counter, bool notifyClient) {
+	if (performanceCounter == counter)
+		return;
+
+	performanceCounter = counter;
+
+	if (!notifyClient)
+		return;
+
+	CreatureObjectDeltaMessage6* codm4 = new CreatureObjectDeltaMessage6(_this);
+	codm4->updatePerformanceCounter(counter);
+	codm4->close();
+	broadcastMessage(codm4, true);
+}
+
+void CreatureObjectImplementation::setListenToID(uint64 id, bool notifyClient) {
+	if (listenToID == id)
+		return;
+
+	listenToID = id;
+
+	if (!notifyClient)
+		return;
+
+	CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(this);
+	codm4->updateListenToID(id);
+	codm4->close();
+	sendMessage(codm4);
+}
+
+void CreatureObjectImplementation::setPerformanceAnimation(const String& animation, bool notifyClient) {
+	if (performanceAnimation == animation)
+		return;
+
+	performanceAnimation = animation;
+
+	if (!notifyClient)
+		return;
+
+	CreatureObjectDeltaMessage6* codm4 = new CreatureObjectDeltaMessage6(_this);
+	codm4->updatePerformanceAnimation(animation);
+	codm4->close();
+	broadcastMessage(codm4, true);
+}
+
+void CreatureObjectImplementation::setTerrainNegotiation(float value, bool notifyClient) {
+	if (terrainNegotiation == value)
+		return;
+
+	terrainNegotiation = value;
+
+	if (!notifyClient)
+		return;
+
+	CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(this);
+	codm4->updateTerrainNegotiation();
+	codm4->close();
+	sendMessage(codm4);
+}
+
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) {
 	ObjectController* objectController = getZoneServer()->getObjectController();
 
@@ -1221,6 +1283,13 @@ int CreatureObjectImplementation::canAddObject(SceneObject* object, String& erro
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
 	if (object->isWeaponObject())
 		setWeapon((WeaponObject*)object);
+
+	return TangibleObjectImplementation::notifyObjectInserted(object);
+}
+
+int CreatureObjectImplementation::notifyObjectRemoved(SceneObject* object) {
+	if (object->isWeaponObject())
+		setWeapon(NULL);
 
 	return TangibleObjectImplementation::notifyObjectInserted(object);
 }
@@ -1600,4 +1669,46 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 
 bool CreatureObjectImplementation::isResuscitable() {
 	return (isDead() && (timeOfDeath.miliDifference()) < DEAD_TOO_LONG);
+}
+
+bool CreatureObjectImplementation::isDancing() {
+	Facade* facade = this->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+	if (facade == NULL)
+		return false;
+
+	EntertainingSession* session = dynamic_cast<EntertainingSession*>(facade);
+
+	if (session == NULL)
+		return false;
+
+	return session->isDancing();
+}
+
+bool CreatureObjectImplementation::isPlayingMusic() {
+	Facade* facade = this->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+	if (facade == NULL)
+		return false;
+
+	EntertainingSession* session = dynamic_cast<EntertainingSession*>(facade);
+
+	if (session == NULL)
+		return false;
+
+	return session->isPlayingMusic();
+}
+
+void CreatureObjectImplementation::stopEntertaining() {
+	Facade* facade = this->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+	if (facade == NULL)
+		return;
+
+	EntertainingSession* session = dynamic_cast<EntertainingSession*>(facade);
+
+	if (session == NULL)
+		return;
+
+	session->cancelSession();
 }
