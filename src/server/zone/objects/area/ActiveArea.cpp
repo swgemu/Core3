@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/area/ActiveAreaEvent.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	ActiveAreaStub
  */
@@ -102,12 +104,37 @@ bool ActiveArea::isRegion() {
 		return ((ActiveAreaImplementation*) _impl)->isRegion();
 }
 
-bool ActiveArea::containsPoint(float x, float y) {
+void ActiveArea::insertToZone(Zone* zone) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
+		method.addObjectParameter(zone);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActiveAreaImplementation*) _impl)->insertToZone(zone);
+}
+
+void ActiveArea::removeFromZone() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActiveAreaImplementation*) _impl)->removeFromZone();
+}
+
+bool ActiveArea::containsPoint(float x, float y) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -116,36 +143,12 @@ bool ActiveArea::containsPoint(float x, float y) {
 		return ((ActiveAreaImplementation*) _impl)->containsPoint(x, y);
 }
 
-void ActiveArea::notifyPositionUpdate(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((ActiveAreaImplementation*) _impl)->notifyPositionUpdate(obj);
-}
-
-void ActiveArea::notifyInsert(QuadTreeEntry* entry) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((ActiveAreaImplementation*) _impl)->notifyInsert(entry);
-}
-
-void ActiveArea::notifyDissapear(QuadTreeEntry* entry) {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		((ActiveAreaImplementation*) _impl)->notifyDissapear(entry);
-}
-
 float ActiveArea::getRadius() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -157,7 +160,7 @@ void ActiveArea::setRadius(float r) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 		method.addFloatParameter(r);
 
 		method.executeWithVoidReturn();
@@ -172,6 +175,7 @@ void ActiveArea::setRadius(float r) {
 ActiveAreaImplementation::ActiveAreaImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ActiveAreaImplementation::~ActiveAreaImplementation() {
 }
@@ -238,11 +242,11 @@ void ActiveAreaImplementation::_serializationHelperMethod() {
 
 ActiveAreaImplementation::ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/ActiveArea.idl(57):  		radius = 0;
+	// server/zone/objects/area/ActiveArea.idl(58):  		radius = 0;
 	radius = 0;
-	// server/zone/objects/area/ActiveArea.idl(58):  		radius2 = 0;
+	// server/zone/objects/area/ActiveArea.idl(59):  		radius2 = 0;
 	radius2 = 0;
-	// server/zone/objects/area/ActiveArea.idl(60):  		Logger.setLoggingName("ActiveArea");
+	// server/zone/objects/area/ActiveArea.idl(61):  		Logger.setLoggingName("ActiveArea");
 	Logger::setLoggingName("ActiveArea");
 }
 
@@ -256,24 +260,19 @@ void ActiveAreaImplementation::notifyExit(SceneObject* object) {
 }
 
 bool ActiveAreaImplementation::isRegion() {
-	// server/zone/objects/area/ActiveArea.idl(86):  		return false;
+	// server/zone/objects/area/ActiveArea.idl(87):  		return false;
 	return false;
 }
 
-void ActiveAreaImplementation::notifyInsert(QuadTreeEntry* entry) {
-	// server/zone/objects/area/ActiveArea.idl(96):  		notifyPositionUpdate(entry);
-	notifyPositionUpdate(entry);
-}
-
 float ActiveAreaImplementation::getRadius() {
-	// server/zone/objects/area/ActiveArea.idl(103):  		return radius;
+	// server/zone/objects/area/ActiveArea.idl(119):  		return radius;
 	return radius;
 }
 
 void ActiveAreaImplementation::setRadius(float r) {
-	// server/zone/objects/area/ActiveArea.idl(107):  		radius = r;
+	// server/zone/objects/area/ActiveArea.idl(123):  		radius = r;
 	radius = r;
-	// server/zone/objects/area/ActiveArea.idl(108):  		radius2 = r * r;
+	// server/zone/objects/area/ActiveArea.idl(124):  		radius2 = r * r;
 	radius2 = r * r;
 }
 
@@ -307,12 +306,18 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isRegion());
 		break;
 	case 12:
-		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertFloat(getRadius());
+		removeFromZone();
 		break;
 	case 14:
+		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		break;
+	case 15:
+		resp->insertFloat(getRadius());
+		break;
+	case 16:
 		setRadius(inv->getFloatParameter());
 		break;
 	default:
@@ -344,6 +349,14 @@ void ActiveAreaAdapter::notifyExit(SceneObject* object) {
 
 bool ActiveAreaAdapter::isRegion() {
 	return ((ActiveAreaImplementation*) impl)->isRegion();
+}
+
+void ActiveAreaAdapter::insertToZone(Zone* zone) {
+	((ActiveAreaImplementation*) impl)->insertToZone(zone);
+}
+
+void ActiveAreaAdapter::removeFromZone() {
+	((ActiveAreaImplementation*) impl)->removeFromZone();
 }
 
 bool ActiveAreaAdapter::containsPoint(float x, float y) {

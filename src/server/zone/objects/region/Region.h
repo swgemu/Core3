@@ -89,6 +89,38 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+namespace bank {
+
+class BankInstallation;
+
+} // namespace bank
+} // namespace installation
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::installation::bank;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+namespace shuttle {
+
+class ShuttleInstallation;
+
+} // namespace shuttle
+} // namespace installation
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::installation::shuttle;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/objects/region/RegionCenterPoint.h"
@@ -118,11 +150,15 @@ public:
 
 	void notifyExit(SceneObject* object);
 
+	void removeFromZone();
+
+	void despawnCityObjects();
+
 	void addBazaar(BazaarTerminal* ter);
 
 	BazaarTerminal* getBazaar(int idx);
 
-	ShuttleCreature* getShuttle();
+	ShuttleInstallation* getShuttle();
 
 	int getBazaarCount();
 
@@ -156,9 +192,11 @@ class RegionImplementation : public ActiveAreaImplementation {
 protected:
 	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
 
-	ManagedWeakReference<ShuttleCreature* > shuttle;
+	SortedVector<ManagedReference<BankInstallation* > > banks;
 
-	ManagedWeakReference<CityHallObject* > cityHall;
+	ManagedReference<ShuttleInstallation* > shuttleInstallation;
+
+	ManagedReference<CityHallObject* > cityHall;
 
 public:
 	RegionImplementation();
@@ -173,11 +211,15 @@ public:
 
 	void notifyExit(SceneObject* object);
 
+	void removeFromZone();
+
+	void despawnCityObjects();
+
 	void addBazaar(BazaarTerminal* ter);
 
 	BazaarTerminal* getBazaar(int idx);
 
-	ShuttleCreature* getShuttle();
+	ShuttleInstallation* getShuttle();
 
 	int getBazaarCount();
 
@@ -234,11 +276,15 @@ public:
 
 	void notifyExit(SceneObject* object);
 
+	void removeFromZone();
+
+	void despawnCityObjects();
+
 	void addBazaar(BazaarTerminal* ter);
 
 	BazaarTerminal* getBazaar(int idx);
 
-	ShuttleCreature* getShuttle();
+	ShuttleInstallation* getShuttle();
 
 	int getBazaarCount();
 

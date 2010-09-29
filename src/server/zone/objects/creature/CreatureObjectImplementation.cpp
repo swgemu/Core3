@@ -1507,10 +1507,14 @@ void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
 
 void CreatureObjectImplementation::notifySelfPositionUpdate() {
 	if (zone != NULL) {
-		PlanetManager* planetManager = zone->getPlanetManager();
-		TerrainManager* terrainManager = planetManager->getTerrainManager();
+		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-		terrainManager->notifyPositionUpdate(_this);
+		if (planetManager != NULL) {
+			TerrainManager* terrainManager = planetManager->getTerrainManager();
+
+			if (terrainManager != NULL)
+				terrainManager->notifyPositionUpdate(_this);
+		}
 	}
 
 	TangibleObjectImplementation::notifySelfPositionUpdate();

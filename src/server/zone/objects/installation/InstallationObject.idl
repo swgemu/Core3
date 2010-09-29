@@ -88,8 +88,6 @@ class InstallationObject extends StructureObject {
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
 		
-		super.staticObject = false;
-		
 		operating = false;
 		
 		installationType = 0;
@@ -103,13 +101,15 @@ class InstallationObject extends StructureObject {
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
+		super.staticObject = false;
+		
 		operatorList.setNoDuplicateInsertPlan();
 		
 		Logger.setLoggingName("InstallationObject");
 
-	if (resourceHopper.size() != 0) {
-		Logger.info("loaded with hopper size:" + String.valueOf(resourceHopper.size()), true);
-		}
+		/*if (resourceHopper.size() != 0) {
+			Logger.info("loaded with hopper size:" + String.valueOf(resourceHopper.size()), true);
+		}*/
 	}
 	
 	/**

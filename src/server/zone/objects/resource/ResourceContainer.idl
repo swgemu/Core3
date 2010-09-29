@@ -117,15 +117,33 @@ class ResourceContainer extends TangibleObject {
 	}
 	
 	public string getSpawnName() {
-		return spawnObject.getName();
+		string ret;
+		
+		if (spawnObject != null) {
+			ret = spawnObject.getName();
+		}
+		
+		return ret;
 	}
 	
 	public string getSpawnType() {
-		return spawnObject.getType();
+		string ret;
+		
+		if (spawnObject != null) {
+			ret = spawnObject.getType();
+		}
+		
+		return ret;
 	}
 	
 	public unsigned long getSpawnID() {
-		return spawnObject.getObjectID();
+		unsigned long id = 0;
+		
+		if (spawnObject != null) {
+			id = spawnObject.getObjectID();
+		}
+		
+		return id;
 	}
 	
 	public ResourceSpawn getSpawnObject() {

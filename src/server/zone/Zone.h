@@ -166,6 +166,12 @@ public:
 
 	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
 
+	void initializePrivateData();
+
+	QuadTree* getRegionTree();
+
+	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject* > >* objects);
+
 	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(unsigned int mapObjectLocationType);
 
 	void insert(QuadTreeEntry* entry);
@@ -175,6 +181,8 @@ public:
 	void update(QuadTreeEntry* entry);
 
 	void inRange(QuadTreeEntry* entry, float range);
+
+	void updateActiveAreas(SceneObject* object);
 
 	void startManagers();
 
@@ -257,6 +265,8 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ManagedWeakReference<ZoneServer* > server;
 
+	QuadTree* regionTree;
+
 	Time galacticTime;
 
 	HeightMap* heightMap;
@@ -284,6 +294,12 @@ public:
 
 	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
 
+	void initializePrivateData();
+
+	QuadTree* getRegionTree();
+
+	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject* > >* objects);
+
 	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(unsigned int mapObjectLocationType);
 
 	void insert(QuadTreeEntry* entry);
@@ -293,6 +309,8 @@ public:
 	void update(QuadTreeEntry* entry);
 
 	void inRange(QuadTreeEntry* entry, float range);
+
+	void updateActiveAreas(SceneObject* object);
 
 	void startManagers();
 
@@ -388,6 +406,10 @@ public:
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
 	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
+
+	void initializePrivateData();
+
+	void updateActiveAreas(SceneObject* object);
 
 	void startManagers();
 

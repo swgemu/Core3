@@ -450,6 +450,8 @@ public:
 
 	bool hasAttackDelay();
 
+	void removeAttackDelay();
+
 	bool hasSpice();
 
 	void updateLastSuccessfulCombatAction();
@@ -1044,6 +1046,8 @@ public:
 
 	bool hasAttackDelay();
 
+	void removeAttackDelay();
+
 	bool hasSpice();
 
 	void updateLastSuccessfulCombatAction();
@@ -1502,6 +1506,8 @@ public:
 	void updateTimeOfDeath();
 
 	bool hasAttackDelay();
+
+	void removeAttackDelay();
 
 	bool hasSpice();
 

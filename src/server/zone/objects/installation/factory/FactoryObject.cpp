@@ -46,6 +46,18 @@ void FactoryObject::initializeTransientMembers() {
 		((FactoryObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
+void FactoryObject::notifyLoadFromDatabase() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->notifyLoadFromDatabase();
+}
+
 void FactoryObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -67,7 +79,7 @@ int FactoryObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedI
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -81,7 +93,7 @@ bool FactoryObject::isFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -93,7 +105,7 @@ void FactoryObject::createChildObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		method.executeWithVoidReturn();
 	} else
@@ -105,7 +117,7 @@ void FactoryObject::updateInstallationWork() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		method.executeWithVoidReturn();
 	} else
@@ -117,7 +129,7 @@ void FactoryObject::sendInsertManuSui(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -130,7 +142,7 @@ void FactoryObject::sendIngredientsNeededSui(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -143,7 +155,7 @@ void FactoryObject::sendIngredientHopper(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -156,7 +168,7 @@ void FactoryObject::sendOutputHopper(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -169,7 +181,7 @@ void FactoryObject::handleInsertFactorySchem(PlayerCreature* player, Manufacture
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addObjectParameter(schematic);
 
@@ -183,7 +195,7 @@ void FactoryObject::handleRemoveFactorySchem(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -196,7 +208,7 @@ void FactoryObject::handleOperateToggle(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -209,7 +221,7 @@ void FactoryObject::createNewObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		method.executeWithVoidReturn();
 	} else
@@ -223,6 +235,7 @@ void FactoryObject::createNewObject() {
 FactoryObjectImplementation::FactoryObjectImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FactoryObjectImplementation::~FactoryObjectImplementation() {
 }
@@ -295,8 +308,18 @@ FactoryObjectImplementation::FactoryObjectImplementation() {
 	Logger::setLoggingName("FactoryObject");
 }
 
+void FactoryObjectImplementation::notifyLoadFromDatabase() {
+	// server/zone/objects/installation/factory/FactoryObject.idl(33):  		super.notifyLoadFromDatabase();
+	InstallationObjectImplementation::notifyLoadFromDatabase();
+	// server/zone/objects/installation/factory/FactoryObject.idl(35):  	}
+	if (InstallationObjectImplementation::operating){
+	// server/zone/objects/installation/factory/FactoryObject.idl(36):  			startFactory();
+	startFactory();
+}
+}
+
 bool FactoryObjectImplementation::isFactory() {
-	// server/zone/objects/installation/factory/FactoryObject.idl(57):  		return true;
+	// server/zone/objects/installation/factory/FactoryObject.idl(70):  		return true;
 	return true;
 }
 
@@ -315,39 +338,42 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		initializeTransientMembers();
 		break;
 	case 7:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		notifyLoadFromDatabase();
 		break;
 	case 8:
-		resp->insertBoolean(isFactory());
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 9:
-		createChildObjects();
+		resp->insertBoolean(isFactory());
 		break;
 	case 10:
-		updateInstallationWork();
+		createChildObjects();
 		break;
 	case 11:
-		sendInsertManuSui((PlayerCreature*) inv->getObjectParameter());
+		updateInstallationWork();
 		break;
 	case 12:
-		sendIngredientsNeededSui((PlayerCreature*) inv->getObjectParameter());
+		sendInsertManuSui((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 13:
-		sendIngredientHopper((PlayerCreature*) inv->getObjectParameter());
+		sendIngredientsNeededSui((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 14:
-		sendOutputHopper((PlayerCreature*) inv->getObjectParameter());
+		sendIngredientHopper((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 15:
-		handleInsertFactorySchem((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter());
+		sendOutputHopper((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 16:
-		handleRemoveFactorySchem((PlayerCreature*) inv->getObjectParameter());
+		handleInsertFactorySchem((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter());
 		break;
 	case 17:
-		handleOperateToggle((PlayerCreature*) inv->getObjectParameter());
+		handleRemoveFactorySchem((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 18:
+		handleOperateToggle((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 19:
 		createNewObject();
 		break;
 	default:
@@ -359,6 +385,10 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 void FactoryObjectAdapter::initializeTransientMembers() {
 	((FactoryObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void FactoryObjectAdapter::notifyLoadFromDatabase() {
+	((FactoryObjectImplementation*) impl)->notifyLoadFromDatabase();
 }
 
 int FactoryObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {

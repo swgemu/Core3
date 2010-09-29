@@ -7,7 +7,10 @@
 
 #include "Region.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
+#include "server/zone/objects/installation/bank/BankInstallation.h"
 
 void RegionImplementation::sendGreetingMessage(PlayerCreature* player) {
 	if (isStaticObject())
@@ -43,4 +46,17 @@ void RegionImplementation::sendDepartingMessage(PlayerCreature* player) {
 	stringId.setTO(objectName.getCustomString());
 
 	player->sendSystemMessage(stringId);
+}
+
+void RegionImplementation::despawnCityObjects() {
+	if (shuttleInstallation != NULL)
+		shuttleInstallation->removeFromZone();
+
+	while (banks.size() > 0) {
+		ManagedReference<BankInstallation*> bank = banks.get(0);
+
+		bank->removeFromZone();
+
+		banks.drop(bank);
+	}
 }

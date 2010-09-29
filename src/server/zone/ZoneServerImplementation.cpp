@@ -387,6 +387,7 @@ void ZoneServerImplementation::startZones() {
 
 		if (i <= 10 || i == 42) {
 			zone = new Zone(_this, processor, i);
+			zone->initializePrivateData();
 			uint64 zoneObjectID = 0;
 
 			zoneObjectID = ~zoneObjectID;

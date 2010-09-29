@@ -50,9 +50,9 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 }
 
 ObjectManager::~ObjectManager() {
-	info("closing databases...", true);
+	//info("closing databases...", true);
 
-	ObjectDatabaseManager::instance()->finalize();
+	//ObjectDatabaseManager::instance()->finalize();
 }
 
 void ObjectManager::registerObjectTypes() {
@@ -406,6 +406,8 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 			return NULL;
 		}
 
+		databaseManager->addTemporaryObject(object);
+
 		object->setServerObjectCRC(objectCRC);
 		object->loadTemplateData(templateData);
 
@@ -559,6 +561,12 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 		if (object->isPersistent())
 			object->queueUpdateToDatabaseTask();
 
+	//	uint32 lastSaveCRC = managedObject->getLastCRCSave();
+
+		uint32 currentCRC = BaseProtocol::generateCRC(data);
+
+		object->setLastCRCSave(currentCRC);
+
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
@@ -579,6 +587,10 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 
 		if (object->isPersistent())
 			object->queueUpdateToDatabaseTask();
+
+		uint32 currentCRC = BaseProtocol::generateCRC(data);
+
+		object->setLastCRCSave(currentCRC);
 
 		object->notifyLoadFromDatabase();
 
@@ -676,6 +688,8 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 		servant->_serializationHelperMethod();
 
 		object->deploy();
+
+		databaseManager->addTemporaryObject(object);
 
 		if (persistenceLevel > 0) {
 			updatePersistentObject(object);

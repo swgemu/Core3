@@ -86,6 +86,8 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	@weakReference
 	private ZoneServer server;
+	
+	private transient QuadTree regionTree;
 
 	@dereferenced
 	private Time galacticTime;
@@ -109,6 +111,16 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	public native SceneObject getNearestPlanetaryObject(SceneObject object, unsigned int mapObjectLocationType);
 	
+	public native void initializePrivateData();
+	
+	@local
+	public QuadTree getRegionTree() {
+		return regionTree;
+	}
+	
+	@local
+	public native int getInRangeObjects(float x, float y, float range, SortedVector<SceneObject> objects);
+	
 	@local
 	@dereferenced
 	public native SortedVector<SceneObject> getPlanetaryObjectList(unsigned int mapObjectLocationType);
@@ -124,6 +136,8 @@ class Zone extends ManagedObject implements QuadTree {
 
 	@local
 	public native void inRange(QuadTreeEntry entry, float range);
+	
+	public native void updateActiveAreas(SceneObject object);
 
 	public native void startManagers();
 

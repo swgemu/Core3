@@ -99,7 +99,9 @@ void BuildingObjectImplementation::removeFromZone() {
 
 			VectorMap<uint64, ManagedReference<SceneObject*> >* cont = cell->getContainerObjects();
 
-			cont->drop(obj->getObjectID());
+			if (cont->size() > 0)
+				cont->remove(0);
+			//cont->drop(obj->getObjectID());
 		}
 	}
 
@@ -251,8 +253,8 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(bool destroyContain
 }
 
 void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) {
-	if (!player->isInRange(_this, 256))
-		return;
+/*	if (!player->isInRange(_this, 256))
+		return;*/
 
 	bool allowEntry = true;
 

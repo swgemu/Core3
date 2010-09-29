@@ -25,6 +25,7 @@
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/login/packets/ErrorMessage.h"
 
 #include "server/zone/objects/group/GroupObject.h"
 
@@ -127,6 +128,24 @@ bool PlayerManagerImplementation::existsName(const String& name) {
 	runlock();
 
 	return res;
+}
+
+
+bool PlayerManagerImplementation::kickUser(const String& name, const String& admin) {
+	ManagedReference<ChatManager*> chatManager = server->getChatManager();
+
+	if (chatManager == NULL)
+		return false;
+
+	ManagedReference<PlayerCreature*> player = chatManager->getPlayer(name);
+
+	if (player == NULL)
+		return false;
+
+	ErrorMessage* errmsg = new ErrorMessage(admin, "You have been kicked", 1);
+	player->sendMessage(errmsg);
+
+	return true;
 }
 
 PlayerCreature* PlayerManagerImplementation::getPlayer(const String& name) {
@@ -493,13 +512,13 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	inventory->addObject(backpackObject, -1);*/
 
 	//admin
-	//if (player->getFirstName() == "TheAnswer") {
+	if (player->getFirstName() == "TheAnswer"); {
 		ObjectController* objController = server->getObjectController();
 		QueueCommand* admin = objController->getQueueCommand("admin");
 		Vector<QueueCommand*> skills;
 		skills.add(admin);
 		((PlayerObject*)playerObject)->addSkills(skills, false);
-	//}
+	}
 
 	VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1);
 	VehicleObject* vehicle = (VehicleObject*) server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1);
@@ -1645,4 +1664,52 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 	patient->addBuff(buff);
 
 	return buffdiff;
+}
+
+SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(CreatureObject* creature, uint64 targetID) {
+	ZoneServer* zoneServer = server;
+
+	ManagedReference<SceneObject*> obj = NULL;
+
+	if (targetID != 0) {
+		obj = zoneServer->getObject(targetID);
+
+		if (obj != NULL && obj->isStructureObject() && ((StructureObject*)obj.get())->isOnAdminList(creature))
+			return obj.get();
+	}
+
+
+	ManagedReference<SceneObject*> rootParent = creature->getRootParent();
+
+	if (rootParent != NULL && rootParent->isStructureObject() && ((StructureObject*)rootParent.get())->isOnAdminList(creature)) {
+		return rootParent;
+	}
+
+	StructureObject* structure = NULL;
+	float distance = 16000;
+
+	//We need to search nearby for an installation that belongs to the player.
+	Locker _locker(creature->getZone());
+
+	for (int i = 0; i < creature->inRangeObjectCount(); ++i) {
+		ManagedReference<SceneObject*> tObj = (SceneObject*) (((SceneObjectImplementation*) creature->getInRangeObject(i))->_this);
+
+		if (tObj != NULL) {
+			if (tObj->isStructureObject()) {
+				float dist = tObj->getDistanceTo(creature);
+
+				StructureObject* structureObject = (StructureObject*) tObj.get();
+
+				if (structureObject->isOnAdminList(creature) && dist < distance) {
+					structure = structureObject;
+					distance = dist;
+				}
+			}
+		}
+	}
+
+	if (distance < 25)
+		return structure;
+
+	return NULL;
 }

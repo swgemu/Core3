@@ -76,6 +76,24 @@ void CityHallObjectImplementation::spawnCityHallObjects() {
 	zone->getPlanetManager()->addRegion(cityRegion);
 }
 
+void CityHallObjectImplementation::despawnCityHallObjects() {
+	if (zone == NULL)
+		return;
+
+	if (cityTerminal != NULL) {
+		cityTerminal->removeFromZone();
+	}
+
+	if (cityVoteTerminal != NULL)
+		cityVoteTerminal->removeFromZone();
+
+	if (cityRegion != NULL) {
+		cityRegion->removeFromZone();
+
+		zone->getPlanetManager()->dropRegion(cityRegion);
+	}
+}
+
 void CityHallObjectImplementation::trySetCityName(PlayerCreature* player, const String& name) {
 	PlanetManager* planetManager = zone->getPlanetManager();
 

@@ -655,8 +655,8 @@ void MissionManagerImplementation::randomizeReconMission(PlayerCreature* player,
 		return;
 	}
 
-	SceneObject* target = reconlocs->getRandomTarget(player, 2);
-	if (target == NULL) {
+	ManagedReference<SceneObject*> target = reconlocs->getRandomTarget(player, 2);
+	if (target == NULL || target->getZone() == NULL) {
 		System::out << "Failed to get recon target!" << endl;
 		mission->setTypeCRC(0);
 		return;

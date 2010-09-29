@@ -328,22 +328,41 @@ void ResourceContainerImplementation::setSpawnObject(ResourceSpawn* spawn) {
 }
 
 String ResourceContainerImplementation::getSpawnName() {
-	// server/zone/objects/resource/ResourceContainer.idl(120):  		return spawnObject.getName();
-	return spawnObject->getName();
+	String ret;
+	// server/zone/objects/resource/ResourceContainer.idl(122):  		return 
+	if (spawnObject != NULL){
+	// server/zone/objects/resource/ResourceContainer.idl(123):  			ret = spawnObject.getName();
+	ret = spawnObject->getName();
+}
+	// server/zone/objects/resource/ResourceContainer.idl(126):  ret;
+	return ret;
 }
 
 String ResourceContainerImplementation::getSpawnType() {
-	// server/zone/objects/resource/ResourceContainer.idl(124):  		return spawnObject.getType();
-	return spawnObject->getType();
+	String ret;
+	// server/zone/objects/resource/ResourceContainer.idl(132):  		return 
+	if (spawnObject != NULL){
+	// server/zone/objects/resource/ResourceContainer.idl(133):  			ret = spawnObject.getType();
+	ret = spawnObject->getType();
+}
+	// server/zone/objects/resource/ResourceContainer.idl(136):  ret;
+	return ret;
 }
 
 unsigned long long ResourceContainerImplementation::getSpawnID() {
-	// server/zone/objects/resource/ResourceContainer.idl(128):  		return spawnObject.getObjectID();
-	return spawnObject->getObjectID();
+	// server/zone/objects/resource/ResourceContainer.idl(140):  		unsigned long id = 0;
+	unsigned long long id = 0;
+	// server/zone/objects/resource/ResourceContainer.idl(142):  		return 
+	if (spawnObject != NULL){
+	// server/zone/objects/resource/ResourceContainer.idl(143):  			id = spawnObject.getObjectID();
+	id = spawnObject->getObjectID();
+}
+	// server/zone/objects/resource/ResourceContainer.idl(146):  id;
+	return id;
 }
 
 ResourceSpawn* ResourceContainerImplementation::getSpawnObject() {
-	// server/zone/objects/resource/ResourceContainer.idl(132):  		return spawnObject;
+	// server/zone/objects/resource/ResourceContainer.idl(150):  		return spawnObject;
 	return spawnObject;
 }
 

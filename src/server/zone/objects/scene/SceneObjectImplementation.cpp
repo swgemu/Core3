@@ -86,6 +86,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 
 	movementCounter = 0;
 
+	//activeAreas.removeAll();
+
 	setGlobalLogging(true);
 	setLogging(false);
 
@@ -100,6 +102,7 @@ void SceneObjectImplementation::initializePrivateData() {
 	containerObjects.setNoDuplicateInsertPlan();
 	pendingTasks.setNoDuplicateInsertPlan();
 	pendingTasks.setNullValue(NULL);
+	activeAreas.setNoDuplicateInsertPlan();
 
 	server = NULL;
 
@@ -609,8 +612,7 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	} else
 		zone->update(this);
 
-	zone->inRange(this, 512);
-
+	zone->inRange(this, 192);
 
 	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
 		if (lightUpdate) {
@@ -621,6 +623,8 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 			broadcastMessage(message, false, false);
 		}
 	}
+
+	zone->updateActiveAreas(_this);
 
 	zoneLocker.release();
 
@@ -697,7 +701,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		insertToBuilding(building);
 	} else {
 		building->update(this);
-		building->inRange(this, 512);
+		building->inRange(this, 192);
 	}
 
 	if (sendPackets) {
@@ -709,6 +713,8 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 			broadcastMessage(message, false, false);
 		}
 	}
+
+	zone->updateActiveAreas(_this);
 
 	zoneLocker.release();
 
@@ -750,11 +756,16 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	if (newZone == NULL)
 		return;
 
+	activeAreas.removeAll();
+
 	Locker zoneLocker(newZone);
 
 	if (isInQuadTree() && newZone != zone) {
 		error("trying to insert to zone an object that is already in a different quadtree");
-		StackTrace::printStackTrace();
+
+		removeFromZone();
+
+		//StackTrace::printStackTrace();
 	}
 
 	SceneObjectImplementation::zone = newZone;
@@ -791,7 +802,7 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 
 		if (parent == NULL || !parent->isCellObject() || parent->getParent() == NULL) {
 			zone->insert(this);
-			zone->inRange(this, 512);
+			zone->inRange(this, 192);
 		} else if (parent->isCellObject()) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
 			insertToBuilding(building);
@@ -799,6 +810,8 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 			building->notifyInsertToZone(_this);
 		}
 	}
+
+	zone->updateActiveAreas(_this);
 }
 
 void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
@@ -836,7 +849,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 		//parent->addObject(_this, 0xFFFFFFFF);
 
 		building->insert(this);
-		building->inRange(this, 512);
+		building->inRange(this, 192);
 
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 
@@ -850,45 +863,61 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 }
 
 void SceneObjectImplementation::removeFromZone() {
-	if (zone == NULL)
-		return;
-
 	ManagedReference<SceneObject*> thisLocker = _this;
 
-	info("removing from zone");
+	try {
+		Locker locker(_this);
 
-	Locker zoneLocker(zone);
+		if (zone == NULL)
+			return;
 
-	//ManagedReference<SceneObject*> par = parent.get();
+		info("removing from zone");
 
-	if (parent != NULL && parent->isCellObject()) {
-		BuildingObject* building = (BuildingObject*)parent->getParent();
+		Locker zoneLocker(zone);
 
-		//par = parent;
-		if (building != NULL)
-			removeFromBuilding(building);
-		else
+		//ManagedReference<SceneObject*> par = parent.get();
+
+		if (parent != NULL && parent->isCellObject()) {
+			BuildingObject* building = (BuildingObject*)parent->getParent();
+
+			//par = parent;
+			if (building != NULL)
+				removeFromBuilding(building);
+			else
+				zone->remove(this);
+		} else
 			zone->remove(this);
-	} else
-		zone->remove(this);
 
-	while (inRangeObjectCount() > 0) {
-		QuadTreeEntry* obj = getInRangeObject(0);
+		while (inRangeObjectCount() > 0) {
+			QuadTreeEntry* obj = getInRangeObject(0);
 
-		if (obj != this)
-			obj->removeInRangeObject(this);
+			if (obj != this)
+				obj->removeInRangeObject(this);
 
-		QuadTreeEntry::removeInRangeObject((int)0);
+			QuadTreeEntry::removeInRangeObject((int)0);
+		}
+
+		while (activeAreas.size() > 0) {
+			ManagedReference<ActiveArea*> area = activeAreas.get(0);
+			area->enqueueExitEvent(_this);
+
+			activeAreas.remove(0);
+		}
+
+		//removeInRangeObjects();
+
+		notifiedSentObjects.removeAll();
+
+		Zone* oldZone = zone;
+		zone = NULL;
+
+		oldZone->dropSceneObject(_this);
+	} catch (...) {
+
 	}
 
-	//removeInRangeObjects();
 
-	notifiedSentObjects.removeAll();
-
-	Zone* oldZone = zone;
-	zone = NULL;
-
-	oldZone->dropSceneObject(_this);
+	//activeAreas.removeAll();
 
 
 	info("removed from zone");
@@ -929,6 +958,8 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 		return false;
 	}
 
+	bool update = true;
+
 	//if (containerType == 1 || containerType == 5) {
 	if (containmentType == 4) {
 		int arrangementSize = object->getArrangementDescriptorSize();
@@ -951,7 +982,9 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 		/*if (containerObjects.contains(object->getObjectID()))
 			return false*/
 
-		containerObjects.put(object->getObjectID(), object);
+		if (containerObjects.put(object->getObjectID(), object) == -1)
+			update = false;
+
 	} else {
 		error("unkown container type");
 		return false;
@@ -965,7 +998,8 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 
 	notifyObjectInserted(object);
 
-	updateToDatabase();
+	if (update)
+		updateToDatabase();
 	//object->updateToDatabase();
 
 	return true;

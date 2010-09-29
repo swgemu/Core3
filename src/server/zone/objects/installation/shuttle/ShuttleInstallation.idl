@@ -82,7 +82,16 @@ class ShuttleInstallation extends InstallationObject {
 		spawnShuttleObjects();
 	}
 	
+	public void removeFromZone() {
+		despawnShuttleObjects();
+	
+		super.removeFromZone();
+		
+		updateToDatabaseWithoutChildren();
+	}
+	
 	public native void spawnShuttleObjects();
+	public native void despawnShuttleObjects();
 	
 	public native boolean checkRequisitesForPlacement(PlayerCreature player);
 }
