@@ -247,7 +247,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	int poolsToDamage = calculatePoolsToDamage(command->getPoolsToDamage());
 
-	if (poolsToDamage != 0 && !attacker->isAiAgent() && rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
+	if (poolsToDamage != 0 && rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
 		//better luck next time
 		doMiss(attacker, defender, 0, command->getCombatSpam() + "_miss");
 		return 0;
@@ -261,7 +261,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	if (damageMultiplier != 0 && poolsToDamage != 0) {
 		int secondaryDefense = checkSecondaryDefenses(attacker, defender, attacker->getWeapon());
 
-		if (secondaryDefense != 0 && !attacker->isAiAgent()) {
+		if (secondaryDefense != 0) {
 			switch (secondaryDefense) {
 			case BLOCK:
 				damageMultiplier /= 2.f;
@@ -288,7 +288,10 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, combatSpam + "_hit");
 
-	return 0;
+	if (damage != 0 && defender->hasAttackDelay())
+		defender->removeAttackDelay();
+
+	return damage;
 }
 
 bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CombatQueueCommand* command, int appliedDamage) {
@@ -686,10 +689,10 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	}
 
 	if (attacker->isIntimidated())
-		damage /= 2;
+		damage *= 0.66f;// damage /= 2;
 
 	if (attacker->isStunned())
-		damage /= 2;
+		damage *= 0.9f;// damage /= 2;
 
 	if (defender->isKnockedDown())
 		damage *= 1.333f;

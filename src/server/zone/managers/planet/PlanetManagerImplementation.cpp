@@ -470,7 +470,7 @@ void PlanetManagerImplementation::loadReconLocations() {
 			float z = result->getFloat(9);
 			float y = result->getFloat(10);
 
-			location = (TangibleObject*) zone->getZoneServer()->createObject(tempName.hashCode(), 1);
+			location = dynamic_cast<TangibleObject*>(zone->getZoneServer()->createObject(tempName.hashCode(), 1));
 
 			location->initializePosition(x, zone->getHeight(x, y), y);
 			location->setDirection(ow, ox, oy, oz);

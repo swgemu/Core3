@@ -100,3 +100,22 @@ bool ShuttleInstallationImplementation::checkRequisitesForPlacement(PlayerCreatu
 
 	return true;
 }
+
+void ShuttleInstallationImplementation::despawnShuttleObjects() {
+	if (zone == NULL)
+		return;
+
+	String shuttleName = getActiveRegion()->getCustomObjectName().toString();
+
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+	planetManager->dropShuttle(shuttleName);
+
+	if (shuttle != NULL)
+		shuttle->removeFromZone();
+
+	if (ticketCollector != NULL)
+		ticketCollector->removeFromZone();
+
+	if (travelTerminal != NULL)
+		travelTerminal->removeFromZone();
+}

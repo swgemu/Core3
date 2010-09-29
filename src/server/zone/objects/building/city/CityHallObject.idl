@@ -84,7 +84,16 @@ class CityHallObject extends BuildingObject {
 		spawnCityHallObjects();
 	}
 	
+	public void removeFromZone() {
+		despawnCityHallObjects();
+	
+		super.removeFromZone();
+		
+		updateToDatabaseWithoutChildren();
+	}
+	
 	public native void spawnCityHallObjects();
+	public native void despawnCityHallObjects();
 	
 	public native void trySetCityName(PlayerCreature player, final string name);
 	

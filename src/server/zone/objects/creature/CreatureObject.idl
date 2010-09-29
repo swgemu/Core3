@@ -819,6 +819,10 @@ class CreatureObject extends TangibleObject {
 		return !cooldownTimerMap.isPast("nextAttackDelay");
 	}
 	
+	public void removeAttackDelay() {
+		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
+	}
+	
 	public boolean hasSpice() {
 		return creatureBuffs.hasSpice();
 	}

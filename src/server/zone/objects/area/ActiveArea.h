@@ -39,6 +39,16 @@ class ActiveAreaEvent;
 
 using namespace server::zone::objects::area;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "engine/util/QuadTreeEntry.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -64,13 +74,11 @@ public:
 
 	bool isRegion();
 
+	void insertToZone(Zone* zone);
+
+	void removeFromZone();
+
 	bool containsPoint(float x, float y);
-
-	void notifyPositionUpdate(QuadTreeEntry* obj);
-
-	void notifyInsert(QuadTreeEntry* entry);
-
-	void notifyDissapear(QuadTreeEntry* entry);
 
 	float getRadius();
 
@@ -119,13 +127,11 @@ public:
 
 	virtual bool isRegion();
 
+	void insertToZone(Zone* zone);
+
+	void removeFromZone();
+
 	bool containsPoint(float x, float y);
-
-	void notifyPositionUpdate(QuadTreeEntry* obj);
-
-	void notifyInsert(QuadTreeEntry* entry);
-
-	void notifyDissapear(QuadTreeEntry* entry);
 
 	float getRadius();
 
@@ -181,6 +187,10 @@ public:
 	void notifyExit(SceneObject* object);
 
 	bool isRegion();
+
+	void insertToZone(Zone* zone);
+
+	void removeFromZone();
 
 	bool containsPoint(float x, float y);
 

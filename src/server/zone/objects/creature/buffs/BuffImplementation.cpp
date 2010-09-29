@@ -86,7 +86,7 @@ void BuffImplementation::sendDestroyTo(PlayerCreature* player) {
 }
 
 void BuffImplementation::activate(bool applyModifiers) {
-	info("activating buff with crc " + String::hexvalueOf((int)buffCRC), true);
+	//info("activating buff with crc " + String::hexvalueOf((int)buffCRC), true);
 	try {
 		if (applyModifiers) {
 			applyAttributeModifiers();

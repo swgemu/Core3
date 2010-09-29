@@ -65,3 +65,13 @@ void BankInstallationImplementation::spawnBankObjects() {
 	updateToDatabase();
 		//ticketCollector->setDirection(direction.getW(), 0, direction.getY(), 0);
 }
+
+void BankInstallationImplementation::despawnBankObjects() {
+	if (zone == NULL)
+		return;
+
+	for (int i = 0; i < banks.size(); ++i) {
+		banks.get(i)->removeFromZone();
+		banks.get(i)->updateToDatabaseWithoutChildren();
+	}
+}

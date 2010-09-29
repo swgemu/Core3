@@ -311,7 +311,7 @@ void StructureObjectImplementation::sendDestroyConfirmTo(PlayerCreature* player)
 	StringBuffer cond;
 	cond << "@player_structure:redeed_condition \\#32CD32 " << (getMaxCondition() - getConditionDamage()) << "/" << getMaxCondition() << "\\#.";
 
-	SuiListBox* destroybox = new SuiListBox(player, SuiWindowType::STRUCTURE_DESTROY_CONFIRM);
+	ManagedReference<SuiListBox*> destroybox = new SuiListBox(player, SuiWindowType::STRUCTURE_DESTROY_CONFIRM);
 	destroybox->setCancelButton(true, "@no");
 	destroybox->setOkButton(true, "@yes");
 	destroybox->setUsingObject(_this);

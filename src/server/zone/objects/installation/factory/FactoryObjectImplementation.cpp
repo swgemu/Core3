@@ -48,8 +48,8 @@ void FactoryObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 void FactoryObjectImplementation::initializeTransientMembers() {
 	InstallationObjectImplementation::initializeTransientMembers();
 
-	if(operating)
-		startFactory();
+	/*if(operating)
+		startFactory();*/
 
 	setLoggingName("FactoryObject");
 }
@@ -177,7 +177,7 @@ void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 
 		if (datapadObject != NULL && datapadObject->isManufactureSchematic()) {
 
-			ManagedReference<ManufactureSchematic* > manSchem = (ManufactureSchematic*) datapadObject.get();
+			ManagedReference<ManufactureSchematic* > manSchem = dynamic_cast<ManufactureSchematic*>(datapadObject.get());
 
 			 if (manSchem->getDraftSchematic() == NULL)
 				 continue;
@@ -236,11 +236,11 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* playe
 	ingredientList->setOkButton(true, "@ok");
 
 	/// List Ingredients
-	ManagedReference<ManufactureSchematic* > schematic = (ManufactureSchematic*) getContainerObject(0);
+	ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
 
 	for (int i = 0; i < schematic->getFactoryIngredientsSize(); ++i) {
 
-		ManagedReference<SceneObject* > ingredient = (SceneObject*) schematic->getFactoryIngredient(i);
+		ManagedReference<SceneObject* > ingredient = dynamic_cast<SceneObject*>(schematic->getFactoryIngredient(i));
 
 		if (ingredient == NULL)
 			continue;
@@ -254,7 +254,7 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* playe
 
 		} else {
 
-			ManagedReference<TangibleObject*> component = (TangibleObject*) ingredient.get();
+			ManagedReference<TangibleObject*> component = dynamic_cast<TangibleObject*>(ingredient.get());
 
 			String sendstring;
 
@@ -284,6 +284,7 @@ void FactoryObjectImplementation::sendIngredientHopper(PlayerCreature* player) {
 		return;
 	}
 
+	inputHopper->sendTo(player, true);
 	inputHopper->openContainerTo(player);
 }
 
@@ -295,6 +296,7 @@ void FactoryObjectImplementation::sendOutputHopper(PlayerCreature* player) {
 		return;
 	}
 
+	outputHopper->sendTo(player, true);
 	outputHopper->openContainerTo(player);
 }
 
@@ -385,8 +387,7 @@ void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
 }
 
 void FactoryObjectImplementation::startFactory() {
-
-	if(getContainerObjectsSize() == 0) {
+	if (getContainerObjectsSize() == 0) {
 		return;
 	}
 
@@ -394,13 +395,13 @@ void FactoryObjectImplementation::startFactory() {
 
 	operating = true;
 
-	timer = (int)((ManufactureSchematic*) getContainerObject(0))->getComplexity() * 2;
+	timer = (int)(dynamic_cast<ManufactureSchematic*>(getContainerObject(0)))->getComplexity() * 2;
 
 	// Add sampletask
 	Reference<CreateFactoryObjectTask* > createFactoryObjectTask = new CreateFactoryObjectTask(_this);
-	createFactoryObjectTask->schedule(timer * 1000);
-	createFactoryObjectTask->setReentrant();
 	addPendingTask("createFactoryObject", createFactoryObjectTask);
+
+	createFactoryObjectTask->schedule(timer * 1000);
 
 	updateToDatabase();
 }
@@ -464,7 +465,7 @@ void FactoryObjectImplementation::createNewObject() {
 	}
 
 	ManagedReference<ManufactureSchematic*> schematic =
-			(ManufactureSchematic*) getContainerObject(0);
+			dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
 
 	if (schematic == NULL) {
 		stopFactory("manf_error_4", "", "", -1);
@@ -472,7 +473,7 @@ void FactoryObjectImplementation::createNewObject() {
 	}
 
 	ManagedReference<TangibleObject*> prototype =
-			(TangibleObject*) schematic->getPrototype();
+			dynamic_cast<TangibleObject*>(schematic->getPrototype());
 
 	if (prototype == NULL) {
 		stopFactory("manf_error_2", "", "", -1);
@@ -574,7 +575,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	FactoryCrate* crate = (FactoryCrate*) server->getZoneServer()->createObject(file.hashCode(), 2);
+	FactoryCrate* crate = dynamic_cast<FactoryCrate*>(server->getZoneServer()->createObject(file.hashCode(), 2));
 
 	if (crate == NULL) {
 		stopFactory("manf_error_7", "", "", -1);
@@ -650,7 +651,7 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 
 		if(ingredient->isResourceContainer()) {
 
-			ResourceContainer* rcnoObject = (ResourceContainer*) ingredient.get();
+			ResourceContainer* rcnoObject = dynamic_cast<ResourceContainer*>(ingredient.get());
 			rcnoObject->setQuantity(rcnoObject->getQuantity() - usableIngredients.get(i));
 
 			ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(rcnoObject);
@@ -687,7 +688,7 @@ VectorMap<ManagedReference<TangibleObject* >, int>  FactoryObjectImplementation:
 
 	for (int i = 0; i < schematic->getFactoryIngredientsSize(); ++i) {
 
-		ManagedReference<TangibleObject*> ingredient = (TangibleObject*) schematic->getFactoryIngredient(i);
+		ManagedReference<TangibleObject*> ingredient = dynamic_cast<TangibleObject*>(schematic->getFactoryIngredient(i));
 
 		if (ingredient == NULL) {
 			error("NULL ingredient in FactoryObjectImplementation::removeIngredientsFromHopper");
@@ -747,7 +748,7 @@ TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
 		return NULL;
 
 	} catch (...) {
-
+		error("unreported exception caught in TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(");
 		return NULL;
 	}
 }

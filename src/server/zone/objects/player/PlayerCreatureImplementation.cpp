@@ -703,36 +703,3 @@ WaypointObject* PlayerCreatureImplementation::getSurveyWaypoint() {
 	}
 	return NULL;
 }
-
-SceneObject* PlayerCreatureImplementation::getInRangeStructureWithAdminRights(uint64 targetID) {
-	ZoneServer* zoneServer = zone->getZoneServer();
-
-	ManagedReference<SceneObject*> obj = NULL;
-
-	if (targetID != 0)
-		obj = zoneServer->getObject(targetID);
-
-	if (obj == NULL || !obj->isStructureObject()) {
-		obj = getParentRecursively(SceneObject::BUILDING);
-
-		if (obj == NULL) {
-			//We need to search nearby for an installation that belongs to the player.
-			Locker _locker(zone);
-
-			for (int i = 0; i < inRangeObjectCount(); ++i) {
-				ManagedReference<SceneObject*> tObj = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_this);
-
-				if (tObj != NULL) {
-					if (tObj->isInstallationObject() && tObj->isInRange(_this, 16)) {
-						InstallationObject* installationObject = (InstallationObject*) tObj.get();
-
-						if (installationObject->isOnAdminList(_this))
-							return installationObject;
-					}
-				}
-			}
-		}
-	}
-
-	return obj.get();
-}

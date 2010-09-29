@@ -279,7 +279,7 @@ uint64 ResourceManagerImplementation::getAvailablePowerFromPlayer(PlayerCreature
 			ResourceContainer* rcno = (ResourceContainer*) tano.get();
 			ResourceSpawn* spawn = rcno->getSpawnObject();
 
-			if (spawn->isEnergy()) {
+			if (spawn != NULL && spawn->isEnergy()) {
 				int PE = spawn->getValueOf(3); // potential energy
 
 				if (PE > 500)
@@ -308,7 +308,7 @@ void ResourceManagerImplementation::removePowerFromPlayer(PlayerCreature* player
 			ResourceContainer* rcno = (ResourceContainer*)tano.get();
 			ResourceSpawn* spawn = rcno->getSpawnObject();
 
-			if (spawn->isEnergy()) {
+			if (spawn != NULL && spawn->isEnergy()) {
 				int PE = spawn->getAttributeValue(3); // potential energy
 
 				if (PE > 500)

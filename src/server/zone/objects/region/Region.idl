@@ -55,15 +55,20 @@ import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.region.RegionCenterPoint;
 include server.zone.objects.region.RegionCenterPointList;
+import server.zone.objects.installation.bank.BankInstallation;
+import server.zone.objects.installation.shuttle.ShuttleInstallation;
 
 class Region extends ActiveArea {	
 	@dereferenced
 	protected VectorMap<unsigned long, BazaarTerminal> bazaars;
 	
-	@weakReference
-	protected ShuttleCreature shuttle;
+	@dereferenced
+	protected SortedVector<BankInstallation> banks;
 	
-	@weakReference
+//	@weakReference
+	protected ShuttleInstallation shuttleInstallation;
+	
+//	@weakReference
 	protected CityHallObject cityHall;
 	
 	public Region() {
@@ -71,21 +76,25 @@ class Region extends ActiveArea {
 		
 		bazaars.setNoDuplicateInsertPlan();
 		bazaars.setNullValue(null);
+		
+		banks.setNoDuplicateInsertPlan();
 	}
 	
 	public void notifyEnter(SceneObject object) {
-		if (object.isBazaarTerminal())
+		if (object.isBazaarTerminal()) {
 			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+		}
 		
-		if (object.isPlayerCreature())
+		if (object.isPlayerCreature()) {
 			sendGreetingMessage((PlayerCreature) object);
-		
-		if (object.isCreatureObject()) {
-			CreatureObject creature = (CreatureObject) object;
+		}
 			
-			if (creature.isShuttleCreature()) {
-				shuttle = (ShuttleCreature) creature;
-			}
+		if (object.isBankInstallation()) {
+			banks.put((BankInstallation)object);
+		}
+		
+		if (object.isShuttleInstallation()) {
+			shuttleInstallation = (ShuttleInstallation) object;
 		}
 	}
 	
@@ -93,23 +102,32 @@ class Region extends ActiveArea {
 	public native void sendDepartingMessage(PlayerCreature player);
 	
 	public void notifyExit(SceneObject object) {
-		if (object.isBazaarTerminal())
+		if (object.isBazaarTerminal()) {
 			bazaars.drop(object.getObjectID());
+		}
 		
-		if (object.isPlayerCreature())
+		if (object.isPlayerCreature()) {
 			sendDepartingMessage((PlayerCreature) object);
+		}
 		
-		if (shuttle != null && object.isCreatureObject()) {
-			CreatureObject creature = (CreatureObject) object;
-			
-			if (creature.isShuttleCreature()) {
-				ShuttleCreature shuttleObject = (ShuttleCreature) creature;
-				
-				if (shuttle == shuttleObject)
-					shuttle = null;
-			}
+		if (object.isBankInstallation()) {
+			banks.drop((BankInstallation)object);
+		}
+		
+		if (object == shuttleInstallation) {
+			shuttleInstallation = null;
 		}
 	}
+	
+	public void removeFromZone() {
+		despawnCityObjects();
+			
+		super.removeFromZone();
+		
+		updateToDatabaseWithoutChildren();
+	}
+	
+	public native void despawnCityObjects();
 
 	public void addBazaar(BazaarTerminal ter) {
 		bazaars.put(ter.getObjectID(), ter);
@@ -119,8 +137,8 @@ class Region extends ActiveArea {
 		return bazaars.get(idx);
 	}
 	
-	public ShuttleCreature getShuttle() {
-		return shuttle;
+	public ShuttleInstallation getShuttle() {
+		return shuttleInstallation;
 	}
 
 	public int getBazaarCount() {

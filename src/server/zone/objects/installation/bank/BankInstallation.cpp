@@ -49,7 +49,7 @@ void BankInstallation::insertToZone(Zone* zone) {
 		((BankInstallationImplementation*) _impl)->insertToZone(zone);
 }
 
-void BankInstallation::spawnBankObjects() {
+void BankInstallation::removeFromZone() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +58,31 @@ void BankInstallation::spawnBankObjects() {
 
 		method.executeWithVoidReturn();
 	} else
+		((BankInstallationImplementation*) _impl)->removeFromZone();
+}
+
+void BankInstallation::spawnBankObjects() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
 		((BankInstallationImplementation*) _impl)->spawnBankObjects();
+}
+
+void BankInstallation::despawnBankObjects() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		method.executeWithVoidReturn();
+	} else
+		((BankInstallationImplementation*) _impl)->despawnBankObjects();
 }
 
 /*
@@ -68,6 +92,7 @@ void BankInstallation::spawnBankObjects() {
 BankInstallationImplementation::BankInstallationImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BankInstallationImplementation::~BankInstallationImplementation() {
 }
@@ -144,6 +169,15 @@ void BankInstallationImplementation::insertToZone(Zone* zone) {
 	spawnBankObjects();
 }
 
+void BankInstallationImplementation::removeFromZone() {
+	// server/zone/objects/installation/bank/BankInstallation.idl(83):  		despawnBankObjects();
+	despawnBankObjects();
+	// server/zone/objects/installation/bank/BankInstallation.idl(85):  		super.removeFromZone();
+	InstallationObjectImplementation::removeFromZone();
+	// server/zone/objects/installation/bank/BankInstallation.idl(87):  		updateToDatabaseWithoutChildren();
+	updateToDatabaseWithoutChildren();
+}
+
 /*
  *	BankInstallationAdapter
  */
@@ -159,7 +193,13 @@ Packet* BankInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 7:
+		removeFromZone();
+		break;
+	case 8:
 		spawnBankObjects();
+		break;
+	case 9:
+		despawnBankObjects();
 		break;
 	default:
 		return NULL;
@@ -172,8 +212,16 @@ void BankInstallationAdapter::insertToZone(Zone* zone) {
 	((BankInstallationImplementation*) impl)->insertToZone(zone);
 }
 
+void BankInstallationAdapter::removeFromZone() {
+	((BankInstallationImplementation*) impl)->removeFromZone();
+}
+
 void BankInstallationAdapter::spawnBankObjects() {
 	((BankInstallationImplementation*) impl)->spawnBankObjects();
+}
+
+void BankInstallationAdapter::despawnBankObjects() {
+	((BankInstallationImplementation*) impl)->despawnBankObjects();
 }
 
 /*

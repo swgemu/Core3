@@ -86,6 +86,12 @@ class PlayerManager extends Observer implements Logger {
 	
 	public transient StartingItemList startingItemList;
 	
+	/**
+	 * Kicks a user
+	 *
+	 */
+	public native boolean kickUser(final string name, final string admin);
+	
 	@local
 	public native boolean createPlayer(MessageCallback callback);
 		
@@ -107,7 +113,7 @@ class PlayerManager extends Observer implements Logger {
 	public native int notifyDefendersOfIncapacitation(TangibleObject destructor, TangibleObject destructedObject); 
 	
 	/**
-	 * @pre {�attacker and player locked }
+	 * @pre { attacker and player locked }
 	 * @post { attacker and player locked }
 	 */
 	public native void killPlayer(TangibleObject attacker, PlayerCreature player);
@@ -136,6 +142,16 @@ class PlayerManager extends Observer implements Logger {
 	public native void handleUnAcceptTransactionMessage(PlayerCreature player);
 	public native void handleVerifyTradeMessage(PlayerCreature player);
 	public native boolean checkTradeItems(PlayerCreature player, PlayerCreature receiver);
+	
+	/**
+	 * Finds the closest structure in range with Administration priveleges.
+	 * This is primarily used for commands that require a building or installation.
+	 * First checks the passed targetID, then checks if the player is inside a building. Finally searches for an installation in range.
+	 * @pre: creature locked, zone unlocked
+	 * @post: creature locked, zone unlocked
+	 * @param targetID The object id of the players target.
+	 */
+	public native SceneObject getInRangeStructureWithAdminRights(CreatureObject creature, unsigned long targetID = 0);
 	
 	public native void sendBattleFatigueMessage(PlayerCreature player, PlayerCreature target);
 	

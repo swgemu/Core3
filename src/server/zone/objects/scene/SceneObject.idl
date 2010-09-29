@@ -86,7 +86,7 @@ import server.zone.objects.area.ActiveArea;
 class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
 
-	@weakReference
+	//@weakReference
 	protected Zone zone;
 
 	@weakReference
@@ -1195,6 +1195,14 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 
 	public boolean isPlayerCreature() {
 		return gameObjectType == PLAYERCREATURE;
+	}
+	
+	public boolean isBankInstallation() {
+		return gameObjectType == BANKINSTALLATION;
+	}
+	
+	public boolean isShuttleInstallation() {
+		return gameObjectType == SHUTTLEINSTALLATION;
 	}
 	
 	public boolean isPlayerObject() {

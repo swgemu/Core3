@@ -86,7 +86,7 @@ public:
 			return 0;
 	}
 
-	inline bool add(PlayerCreature* player, TangibleObject* incomingTano) {
+	bool add(PlayerCreature* player, TangibleObject* incomingTano) {
 
 		int itemsInSlot = getQuantity();
 
@@ -127,7 +127,8 @@ public:
 						contents->getParent()->removeObject(contents, true);
 					craftingTool->addObject(contents, -1, false);
 
-					previousParent->removeObject(incomingTano, true);
+					if (previousParent!= NULL)
+						previousParent->removeObject(incomingTano, true);
 
 				} else {
 

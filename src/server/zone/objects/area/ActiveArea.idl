@@ -48,6 +48,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.area.ActiveAreaEvent;
 include engine.util.QuadTreeEntry;
+import server.zone.Zone;
 
 class ActiveArea extends SceneObject {
 	protected float radius;
@@ -86,9 +87,24 @@ class ActiveArea extends SceneObject {
 		return false;
 	}
 	
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
+	public native void insertToZone(Zone zone);
+	
+	/**
+	 * Removes object from zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and not in zone}
+	 */
+	public native void removeFromZone();
+	
 	public native boolean containsPoint(float x, float y);
 	
-	@local
+	/*@local
 	public native void notifyPositionUpdate(QuadTreeEntry obj);
 	
 	@local
@@ -97,7 +113,7 @@ class ActiveArea extends SceneObject {
 	}
 	
 	@local
-	public native void notifyDissapear(QuadTreeEntry entry);
+	public native void notifyDissapear(QuadTreeEntry entry);*/
 	
 	public float getRadius() {
 		return radius;
