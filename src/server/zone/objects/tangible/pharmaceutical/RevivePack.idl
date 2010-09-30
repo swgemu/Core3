@@ -82,7 +82,7 @@ class RevivePack extends PharmaceuticalObject {
 		
 		float effectiveness = craftingValues.getCurrentValue("power");
 		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-		super.useCount = craftingValues.getCurrentValue("charges");
+		setUseCount(craftingValues.getCurrentValue("charges"));
 		
 		craftingValues.setHidden("power");
 		

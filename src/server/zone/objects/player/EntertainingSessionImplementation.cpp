@@ -175,7 +175,6 @@ void EntertainingSessionImplementation::healWounds(CreatureObject* creature, flo
 	creature->addWounds(CreatureAttribute::MIND, -woundHeal);
 	creature->addWounds(CreatureAttribute::FOCUS, -woundHeal);
 	creature->addWounds(CreatureAttribute::WILLPOWER, -woundHeal);
-	creature->addWounds(CreatureAttribute::WILLPOWER, -woundHeal);
 
 	creature->addShockWounds(-shockHeal);
 
@@ -211,7 +210,8 @@ void EntertainingSessionImplementation::activateAction() {
 			else if (isPlayingMusic())
 				xptype = "music";
 
-			playerManager->awardExperience(player, xptype, flourishXp, true);
+			if (playerManager != NULL)
+				playerManager->awardExperience(player, xptype, flourishXp, true);
 
 			flourishXp--;
 		}
@@ -219,7 +219,8 @@ void EntertainingSessionImplementation::activateAction() {
 		if (healingXp > 0) {
 			String healxptype("entertainer_healing");
 
-			playerManager->awardExperience(player, healxptype, healingXp, true);
+			if (playerManager != NULL)
+				playerManager->awardExperience(player, healxptype, healingXp, true);
 
 			healingXp = 0;
 		}
@@ -381,9 +382,10 @@ void EntertainingSessionImplementation::stopDancing() {
 	if (entertainer->getPosture() == CreaturePosture::SKILLANIMATING)
 		entertainer->setPosture(CreaturePosture::UPRIGHT);
 
+	performanceName = "";
+
 	sendEntertainingUpdate(entertainer, 0.8025000095f, performanceName, 0, 0);
 
-	performanceName = "";
 	//entertainer->setListenToID(0);
 
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();

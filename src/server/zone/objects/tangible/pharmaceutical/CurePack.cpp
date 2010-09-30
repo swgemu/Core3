@@ -155,6 +155,7 @@ CurePackImplementation::CurePackImplementation(DummyConstructorParameter* param)
 	_initializeImplementation();
 }
 
+
 CurePackImplementation::~CurePackImplementation() {
 }
 
@@ -239,8 +240,8 @@ void CurePackImplementation::updateCraftingValues(ManufactureSchematic* schemati
 	effectiveness = craftingValues->getCurrentValue("power");
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(82):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(83):  		super.useCount = craftingValues.getCurrentValue("charges");
-	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(83):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	setUseCount(craftingValues->getCurrentValue("charges"));
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(85):  	}
 	if (craftingValues->hasProperty("area")){
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(86):  			area = craftingValues.getCurrentValue("area");

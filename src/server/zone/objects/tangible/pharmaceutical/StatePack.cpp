@@ -106,6 +106,7 @@ StatePackImplementation::StatePackImplementation(DummyConstructorParameter* para
 	_initializeImplementation();
 }
 
+
 StatePackImplementation::~StatePackImplementation() {
 }
 
@@ -185,8 +186,8 @@ void StatePackImplementation::updateCraftingValues(ManufactureSchematic* schemat
 	craftingValues->setHidden("range");
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(77):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(78):  		super.useCount = craftingValues.getCurrentValue("charges");
-	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl(78):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	setUseCount(craftingValues->getCurrentValue("charges"));
 }
 
 void StatePackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

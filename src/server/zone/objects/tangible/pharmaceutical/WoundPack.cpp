@@ -135,6 +135,7 @@ WoundPackImplementation::WoundPackImplementation(DummyConstructorParameter* para
 	_initializeImplementation();
 }
 
+
 WoundPackImplementation::~WoundPackImplementation() {
 }
 
@@ -215,8 +216,8 @@ void WoundPackImplementation::updateCraftingValues(ManufactureSchematic* schemat
 	effectiveness = craftingValues->getCurrentValue("power");
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(78):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(79):  		super.useCount = craftingValues.getCurrentValue("charges");
-	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(79):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	setUseCount(craftingValues->getCurrentValue("charges"));
 }
 
 void WoundPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

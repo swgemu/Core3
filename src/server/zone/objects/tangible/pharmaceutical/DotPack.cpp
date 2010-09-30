@@ -227,6 +227,7 @@ DotPackImplementation::DotPackImplementation(DummyConstructorParameter* param) :
 	_initializeImplementation();
 }
 
+
 DotPackImplementation::~DotPackImplementation() {
 }
 
@@ -326,8 +327,8 @@ void DotPackImplementation::updateCraftingValues(ManufactureSchematic* schematic
 	effectiveness = craftingValues->getCurrentValue("power");
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(92):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(93):  		super.useCount = craftingValues.getCurrentValue("charges");
-	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(93):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	setUseCount(craftingValues->getCurrentValue("charges"));
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(95):  		range = craftingValues.getCurrentValue("range");
 	range = craftingValues->getCurrentValue("range");
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(96):  		area = craftingValues.getCurrentValue("area");

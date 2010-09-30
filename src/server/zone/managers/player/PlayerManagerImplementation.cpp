@@ -514,12 +514,12 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	inventory->addObject(backpackObject, -1);*/
 
 	//admin
-	if (player->getFirstName() == "TheAnswer"); {
+	//if (player->getFirstName() == "TheAnswer") {
 		ObjectController* objController = server->getObjectController();
 		Vector<String> skills;
 		skills.add("admin");
 		((PlayerObject*)playerObject)->addSkills(skills, false);
-	}
+	//}
 
 	VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1);
 	VehicleObject* vehicle = (VehicleObject*) server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1);
@@ -1419,11 +1419,17 @@ bool PlayerManagerImplementation::checkTradeItems(PlayerCreature* player, Player
 	SceneObject* playerInventory = player->getSlottedObject("inventory");
 	SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
 
-	if (receiverInventory->getContainerObjectsSize() + tradeContainer->getTradeSize() >= receiverInventory->getContainerVolumeLimit())
+	if (receiverInventory->getContainerObjectsSize() + tradeContainer->getTradeSize() >= receiverInventory->getContainerVolumeLimit()) {
+		player->sendSystemMessage("container_error_message", "container19");
+		receiver->sendSystemMessage("container_error_message", "container19");
 		return false;
+	}
 
-	if (playerInventory->getContainerObjectsSize() + receiverContainer->getTradeSize() >= playerInventory->getContainerVolumeLimit())
+	if (playerInventory->getContainerObjectsSize() + receiverContainer->getTradeSize() >= playerInventory->getContainerVolumeLimit()) {
+		player->sendSystemMessage("container_error_message", "container19");
+		receiver->sendSystemMessage("container_error_message", "container19");
 		return false;
+	}
 
 	for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
 		ManagedReference<SceneObject*> scene = tradeContainer->getTradeItem(i);
@@ -1795,7 +1801,7 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 		clocker.release();
 	}
 
-	if (entid != watchID && entertainer != NULL || esession == NULL) {
+	if (entid != watchID) {
 		creature->sendSystemMessage("You are not currently watching " + entName + ".");
 
 		return;
@@ -1873,7 +1879,7 @@ void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 en
 
 		return;
 	} else if (!entertainer->isDancing()) {
-		creature->sendSystemMessage(creature->getCustomObjectName().toString() + " is not currently dancing.");
+		creature->sendSystemMessage(entertainer->getCustomObjectName().toString() + " is not currently dancing.");
 
 		return;
 	} else if (entid == watchID) {
@@ -1946,7 +1952,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 
 		return;
 	} else if (!entertainer->isPlayingMusic()) {
-		creature->sendSystemMessage(creature->getCustomObjectName().toString() + " is not currently playing music.");
+		creature->sendSystemMessage(entertainer->getCustomObjectName().toString() + " is not currently playing music.");
 
 		return;
 	} else if (entid == listenID) {

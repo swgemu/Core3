@@ -76,7 +76,7 @@ class WoundPack extends PharmaceuticalObject {
 		
 		effectiveness = craftingValues.getCurrentValue("power");
 		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-		super.useCount = craftingValues.getCurrentValue("charges");
+		setUseCount(craftingValues.getCurrentValue("charges"));
 	}
 
 	/**

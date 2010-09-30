@@ -158,6 +158,7 @@ RevivePackImplementation::RevivePackImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
+
 RevivePackImplementation::~RevivePackImplementation() {
 }
 
@@ -250,8 +251,8 @@ void RevivePackImplementation::updateCraftingValues(ManufactureSchematic* schema
 	float effectiveness = craftingValues->getCurrentValue("power");
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(84):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(85):  		super.useCount = craftingValues.getCurrentValue("charges");
-	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(85):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	setUseCount(craftingValues->getCurrentValue("charges"));
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(87):  		craftingValues.setHidden("power");
 	craftingValues->setHidden("power");
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(89):  		float health = 2 * effectiveness;
