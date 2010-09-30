@@ -324,7 +324,7 @@ void PlayerObjectImplementation::addWaypoint(const String& planet, float positio
 	addWaypoint(obj, false, notifyClient);
 }
 
-void PlayerObjectImplementation::addSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
+void PlayerObjectImplementation::addSkills(Vector<String>& skills, bool notifyClient) {
 	if (skills.size() == 0)
 		return;
 
@@ -354,32 +354,21 @@ void PlayerObjectImplementation::addSkills(Vector<Certification*>& skills, bool 
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
 		msg->startUpdate(0);
 
-		skillList.add(skills.get(0), msg, skills.size());
+		skillList.add(skills.get(0)->getName(), msg, skills.size());
 
 		for (int i = 1; i < skills.size(); ++i)
-			skillList.add(skills.get(i), msg, 0);
+			skillList.add(skills.get(i)->getName(), msg, 0);
 
 		msg->close();
 
 		sendMessage(msg);
 	} else {
 		for (int i = 0; i < skills.size(); ++i)
-			skillList.add(skills.get(i));
+			skillList.add(skills.get(i)->getName());
 	}
 }
 
-bool PlayerObjectImplementation::hasSkill(const String& skillName) {
-	ProfessionManager* professionManager = server->getProfessionManager();
-
-	Skill* skill = professionManager->getSkill(skillName);
-
-	if (skill == NULL)
-		return false;
-
-	return hasSkill(skill);
-}
-
-void PlayerObjectImplementation::removeSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
+void PlayerObjectImplementation::removeSkills(Vector<String>& skills, bool notifyClient) {
 	if (skills.size() == 0)
 		return;
 
@@ -409,17 +398,17 @@ void PlayerObjectImplementation::removeSkills(Vector<Certification*>& skills, bo
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
 		msg->startUpdate(0);
 
-		skillList.remove(skillList.find(skills.get(0)), msg, skills.size());
+		skillList.remove(skillList.find(skills.get(0)->getName()), msg, skills.size());
 
 		for (int i = 1; i < skills.size(); ++i)
-			skillList.remove(skillList.find(skills.get(i)), msg, 0);
+			skillList.remove(skillList.find(skills.get(i)->getName()), msg, 0);
 
 		msg->close();
 
 		sendMessage(msg);
 	} else {
 		for (int i = 0; i < skills.size(); ++i)
-			skillList.remove(skillList.find(skills.get(i)));
+			skillList.remove(skillList.find(skills.get(i)->getName()));
 	}
 }
 

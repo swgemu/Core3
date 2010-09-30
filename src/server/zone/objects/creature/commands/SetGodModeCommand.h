@@ -99,8 +99,8 @@ public:
 		//admin
 		ObjectController* objController = server->getObjectController();
 		QueueCommand* admin = objController->getQueueCommand("admin");
-		Vector<QueueCommand*> skills;
-		skills.add(admin);
+		Vector<String> skills;
+		skills.add("admin");
 
 		playerObject->addSkills(skills, true);
 

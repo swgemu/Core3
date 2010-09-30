@@ -56,7 +56,7 @@ public:
 	PlayerObjectMessage9(PlayerObjectImplementation* play)
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 9, 0x13) {
 		// certifications && skills
-		DeltaVector<Skill*>* skills = play->getSkills();
+		DeltaVector<String>* skills = play->getSkills();
 		skills->insertToMessage(this);
 
 		// crafting states

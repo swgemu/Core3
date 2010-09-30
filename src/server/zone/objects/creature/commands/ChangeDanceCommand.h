@@ -101,7 +101,9 @@ public:
 			return SUCCESS;
 		}
 
-		if (!ghost->hasSkillArgument("startdance", args)) {
+		String fullString = String("startDance") + "+" + args;
+
+		if (!ghost->hasSkill(fullString)) {
 			creature->sendSystemMessage("performance", "dance_lack_skill_self");
 			return GENERALERROR;
 		}

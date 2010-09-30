@@ -75,6 +75,7 @@ class Buff extends ManagedObject implements Logger {
 	protected int buffType;
 	protected float speedMultiplierMod;
 	protected float accelerationMultiplierMod;
+	protected boolean fillAttirbutesOnBuff;
 	
 	@dereferenced
 	protected ParameterizedStringId startMessage;
@@ -91,6 +92,7 @@ class Buff extends ManagedObject implements Logger {
 		buffType = bufftype;
 		speedMultiplierMod = -1.f;
 		accelerationMultiplierMod = -1.f;
+		fillAttirbutesOnBuff = false;
 		
 		Logger.setLoggingName("Buff");
 		
@@ -162,6 +164,9 @@ class Buff extends ManagedObject implements Logger {
 		accelerationMultiplierMod = multiplier;
 	}
 
+	public void setFillAttirbutesOnBuff(boolean val) {
+		fillAttirbutesOnBuff = val;
+	}
 
 	//Getters
 	public string getBuffName() {

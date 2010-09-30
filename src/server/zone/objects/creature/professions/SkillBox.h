@@ -106,6 +106,7 @@ namespace server {
 		VectorMap<QueueCommand*, SortedVector<String> > skillArguments;
 		Vector<Certification*> skillCertifications;
 		VectorMap<String, int32>  skillMods;
+		SortedVector<String> abilities;
 
 
 	public:
@@ -190,6 +191,10 @@ namespace server {
 			skillCommands.add(skill);
 		}
 
+		void addAbility(const String& ab) {
+			abilities.put(ab);
+		}
+
 		void addRequirementSkill(String skill) {
 			skillRequirements.add(skill);
 		}
@@ -212,6 +217,10 @@ namespace server {
 
 		inline QueueCommand* getSkillCommand(int index) {
 			return skillCommands.get(index);
+		}
+
+		inline SortedVector<String>* getAbilities() {
+			return &abilities;
 		}
 
 		inline int getGrantedSchematicListSize() {

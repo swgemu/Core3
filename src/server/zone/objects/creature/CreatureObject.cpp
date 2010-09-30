@@ -3130,7 +3130,7 @@ bool CreatureObjectImplementation::verifyBankCredits(int credits) {
 }
 
 bool CreatureObjectImplementation::isEntertaining() {
-	// server/zone/objects/creature/CreatureObject.idl(617):  		return isDancing() ||ÊisPlayingMusic();
+	// server/zone/objects/creature/CreatureObject.idl(617):  		return isDancing() || isPlayingMusic();
 	return isDancing() || isPlayingMusic();
 }
 
