@@ -101,7 +101,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Food>(SceneObject::FOOD);
 	objectFactory.registerObject<Drink>(SceneObject::DRINK);
 	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
-	objectFactory.registerObject<TangibleObject>(SceneObject::FIREWORK);
+	objectFactory.registerObject<FireworkObject>(SceneObject::FIREWORK);
 	objectFactory.registerObject<TangibleObject>(SceneObject::ITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
