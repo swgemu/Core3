@@ -87,6 +87,7 @@
 #include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
 #include "server/zone/objects/tangible/fishing/FishObject.h"
 #include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
+#include "server/zone/objects/tangible/firework/FireworkObject.h"
 #include "server/zone/objects/tangible/loot/LootkitObject.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"

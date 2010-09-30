@@ -42,7 +42,8 @@
 
 
 object_tangible_firework_firework_s11 = object_tangible_firework_shared_firework_s11:new {
-
+	fireworkObject = "object/static/firework/fx_11.iff",
+	templateType = FIREWORK
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_firework_s11, "object/tangible/firework/firework_s11.iff")
