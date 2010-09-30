@@ -137,8 +137,6 @@ using namespace server::zone::templates;
 
 #include "server/zone/objects/player/variables/SchematicList.h"
 
-#include "server/zone/objects/player/variables/CommandArgumentList.h"
-
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -190,19 +188,11 @@ public:
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
 
-	void addSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+	void addSkills(Vector<String>& skills, bool notifyClient = true);
 
 	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
 
-	void addSkillArgument(const String& skillName, const String& argument);
-
-	void dropSkillArgument(const String& skillName, const String& argument);
-
-	bool hasSkillArgument(const String& skillName, const String& argument);
-
-	CommandArgumentList* getCommandArgumentList();
-
-	void removeSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+	void removeSkills(Vector<String>& skills, bool notifyClient = true);
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
 
@@ -254,9 +244,7 @@ public:
 
 	bool hasWaypoint(unsigned long long objectID);
 
-	bool hasSkill(Skill* skill);
-
-	bool hasSkill(const String& skillName);
+	bool hasSkill(const String& skill);
 
 	bool hasCommandMessageString(unsigned int actionCRC);
 
@@ -375,8 +363,6 @@ protected:
 
 	SkillList skillList;
 
-	CommandArgumentList skillArgumentList;
-
 	FriendList friendList;
 
 	IgnoreList ignoreList;
@@ -428,19 +414,11 @@ public:
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
 
-	void addSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+	void addSkills(Vector<String>& skills, bool notifyClient = true);
 
 	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
 
-	void addSkillArgument(const String& skillName, const String& argument);
-
-	void dropSkillArgument(const String& skillName, const String& argument);
-
-	bool hasSkillArgument(const String& skillName, const String& argument);
-
-	CommandArgumentList* getCommandArgumentList();
-
-	void removeSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+	void removeSkills(Vector<String>& skills, bool notifyClient = true);
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
 
@@ -492,9 +470,7 @@ public:
 
 	bool hasWaypoint(unsigned long long objectID);
 
-	bool hasSkill(Skill* skill);
-
-	bool hasSkill(const String& skillName);
+	bool hasSkill(const String& skill);
 
 	bool hasCommandMessageString(unsigned int actionCRC);
 
@@ -613,12 +589,6 @@ public:
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient);
 
-	void addSkillArgument(const String& skillName, const String& argument);
-
-	void dropSkillArgument(const String& skillName, const String& argument);
-
-	bool hasSkillArgument(const String& skillName, const String& argument);
-
 	void setLanguageID(byte language, bool notifyClient);
 
 	void addFriend(const String& name, bool notifyClient);
@@ -658,8 +628,6 @@ public:
 	void sendFriendLists();
 
 	bool hasWaypoint(unsigned long long objectID);
-
-	bool hasSkill(const String& skillName);
 
 	bool hasCommandMessageString(unsigned int actionCRC);
 
@@ -709,12 +677,6 @@ protected:
 	String _param0_addExperience__String_int_bool_;
 	String _param0_removeExperience__String_bool_;
 	String _param0_addWaypoint__String_float_float_bool_;
-	String _param0_addSkillArgument__String_String_;
-	String _param1_addSkillArgument__String_String_;
-	String _param0_dropSkillArgument__String_String_;
-	String _param1_dropSkillArgument__String_String_;
-	String _param0_hasSkillArgument__String_String_;
-	String _param1_hasSkillArgument__String_String_;
 	String _param0_addFriend__String_bool_;
 	String _param0_removeFriend__String_bool_;
 	String _param0_addIgnore__String_bool_;
@@ -725,7 +687,6 @@ protected:
 	String _param0_isIgnoring__String_;
 	String _param0_addReverseFriend__String_;
 	String _param0_removeReverseFriend__String_;
-	String _param0_hasSkill__String_;
 	String _param0_getExperience__String_;
 };
 

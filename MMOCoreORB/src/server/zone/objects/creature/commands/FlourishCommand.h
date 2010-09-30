@@ -81,7 +81,9 @@ public:
 
 		PlayerObject* ghost = dynamic_cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
-		if (!ghost->hasSkillArgument("flourish", args)) {
+		String fullString = String("flourish") + "+" + args;
+
+		if (!ghost->hasSkill(fullString)) {
 			creature->sendSystemMessage("performance", "flourish_not_valid");
 			return GENERALERROR;
 		}

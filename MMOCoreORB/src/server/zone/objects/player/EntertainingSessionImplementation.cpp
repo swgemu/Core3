@@ -225,6 +225,10 @@ void EntertainingSessionImplementation::activateAction() {
 		}
 	}
 
+	flourishXp = 0;
+	healingXp = 0;
+	flourishCount = 0;
+
 	startTickTask();
 
 	//player->setEntertainerEvent(); // Renew tick
@@ -371,13 +375,16 @@ void EntertainingSessionImplementation::stopDancing() {
 		return;
 
 	dancing = false;
+
 	entertainer->sendSystemMessage("performance", "dance_stop_self");
+
+	if (entertainer->getPosture() == CreaturePosture::SKILLANIMATING)
+		entertainer->setPosture(CreaturePosture::UPRIGHT);
 
 	sendEntertainingUpdate(entertainer, 0.8025000095f, performanceName, 0, 0);
 
 	performanceName = "";
 	//entertainer->setListenToID(0);
-	entertainer->setPosture(CreaturePosture::UPRIGHT);
 
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
@@ -743,7 +750,15 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 	ManagedReference<Buff*> buff = NULL;
 	switch (performanceType){
 	case PerformanceType::MUSIC:
-		buff = new Buff(creature, String("performance_enhance_music_focus").hashCode(), buffDuration * 60, BuffType::PERFORMANCE);
+	{
+		uint32 buff1 = String("performance_enhance_music_focus").hashCode();
+
+		ManagedReference<Buff*> oldBuff = creature->getBuff(buff1);
+
+		if (oldBuff != NULL && oldBuff->getBuffDuration() > buffDuration * 60)
+			return;
+
+		buff = new Buff(creature, buff1, buffDuration * 60, BuffType::PERFORMANCE);
 		buff->setAttributeModifier(7, (int) round(buffStrength * creature->getBaseHAM(CreatureAttribute::FOCUS)));
 		creature->addBuff(buff);
 
@@ -754,12 +769,22 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 		creature->sendSystemMessage("healing", "performance_enhance_music_focus_d");
 		creature->sendSystemMessage("healing", "performance_enhance_music_willpower_d");
 		break;
+	}
 	case PerformanceType::DANCE:
+	{
+		uint32 buff1 = String("performance_enhance_dance_mind").hashCode();
+
+		ManagedReference<Buff*> oldBuff = creature->getBuff(buff1);
+
+		if (oldBuff != NULL && oldBuff->getBuffDuration() > buffDuration * 60)
+			return;
+
 		buff = new Buff(creature, String("performance_enhance_dance_mind").hashCode(), buffDuration * 60, BuffType::PERFORMANCE);
 		buff->setAttributeModifier(6, (int) round(buffStrength * creature->getBaseHAM(CreatureAttribute::MIND)));
 		creature->addBuff(buff);
 
 		creature->sendSystemMessage("healing", "performance_enhance_dance_mind_d");
+	}
 	}
 
 }

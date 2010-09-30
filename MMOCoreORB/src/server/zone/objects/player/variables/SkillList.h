@@ -11,22 +11,9 @@
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
-class Skill;
-
-class SkillList : public DeltaVector<Skill*> {
+class SkillList : public DeltaVector<String> {
 public:
-	bool add(Skill* element, DeltaMessage* message = NULL, int updates = 1);
-
-	bool toString(String& str);
-	bool parseFromString(const String& str, int version = 0);
-
-	bool toBinaryStream(ObjectOutputStream* stream);
-	bool parseFromBinaryStream(ObjectInputStream* stream);
-
-	void getStringList(Vector<String>& skills);
-	void loadFromNames(Vector<String>& skills);
-
-	void insertToMessage(BaseMessage* msg);
+	bool contains(const String& element);
 };
 
 

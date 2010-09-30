@@ -111,7 +111,7 @@ public:
 		}
 	}
 
-	bool contains(const E& element) {
+	virtual bool contains(const E& element) {
 		return find(element) != -1;
 	}
 

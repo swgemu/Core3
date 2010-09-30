@@ -92,6 +92,8 @@ class Instrument extends TangibleObject {
 	
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+		
 		if (!templateData.isInstrumentObjectTemplate())
 			return;
 		

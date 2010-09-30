@@ -12,8 +12,20 @@
 #include "server/ServerCore.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 
+bool SkillList::contains(const String& element) {
+	String lowCase = element.toLowerCase();
 
-void SkillList::getStringList(Vector<String>& skills) {
+	for (int i = 0; i < vector.size(); ++i) {
+		String skill = vector.get(i).toLowerCase();
+
+		if (lowCase == skill)
+			return true;
+	}
+
+	return false;
+}
+
+/*void SkillList::getStringList(Vector<String>& skills) {
 	for (int i = 0; i < vector.size(); ++i) {
 		Skill* box = vector.get(i);
 
@@ -79,7 +91,7 @@ void SkillList::loadFromNames(Vector<String>& skills) {
 	}
 }
 
-bool SkillList::add(Skill* element, DeltaMessage* message, int updates) {
+bool SkillList::add(const String& element, DeltaMessage* message, int updates) {
 	bool val = vector.add(element);
 
 	if (message != NULL) {
@@ -105,4 +117,4 @@ void SkillList::insertToMessage(BaseMessage* msg) {
 
 		msg->insertAscii(skill->getName());
 	}
-}
+}*/

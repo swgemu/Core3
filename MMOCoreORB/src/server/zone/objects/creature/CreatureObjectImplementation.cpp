@@ -879,8 +879,6 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 	posture = newPosture;
 
-	notifyPostureChange(newPosture);
-
 	if (posture != CreaturePosture::SITTING && hasState(CreatureState::SITTINGONCHAIR))
 		clearState(CreatureState::SITTINGONCHAIR);
 
@@ -899,6 +897,8 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 		broadcastMessages(&messages, true);
 	}
+
+	notifyPostureChange(newPosture);
 }
 
 UnicodeString CreatureObjectImplementation::getCreatureName() {

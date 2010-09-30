@@ -516,9 +516,8 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	//admin
 	if (player->getFirstName() == "TheAnswer"); {
 		ObjectController* objController = server->getObjectController();
-		QueueCommand* admin = objController->getQueueCommand("admin");
-		Vector<QueueCommand*> skills;
-		skills.add(admin);
+		Vector<String> skills;
+		skills.add("admin");
 		((PlayerObject*)playerObject)->addSkills(skills, false);
 	}
 
@@ -1663,6 +1662,7 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 
 	Reference<Buff*> buff = new Buff(patient, buffname.hashCode(), duration, BuffType::MEDICAL);
 	buff->setAttributeModifier(attribute, buffvalue);
+	buff->setFillAttirbutesOnBuff(true);
 	patient->addBuff(buff);
 
 	return buffdiff;

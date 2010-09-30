@@ -305,20 +305,7 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 	player->addSkillPoints(skillBox->getSkillPointsRequired());
 	loadXpTypeCap(player);
 
-	playerObject->addSkills(skillBox->skillCommands, updateClient);
-
-	for (int i = 0; i < skillBox->skillCommands.size(); ++i) {
-		QueueCommand* command = skillBox->skillCommands.get(i);
-
-		SortedVector<String>* arguments = skillBox->getSkillArguments(command);
-
-		if (arguments == NULL)
-			continue;
-
-		for (int j = 0; j < arguments->size(); ++j) {
-			playerObject->addSkillArgument(command->getName(), arguments->get(j));
-		}
-	}
+	playerObject->addSkills(skillBox->abilities, updateClient);
 
 	playerObject->addSkills(skillBox->skillCertifications, updateClient);
 
@@ -616,70 +603,12 @@ bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* pl
 
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
-	playerObject->removeSkills(skillBox->skillCommands, updateClient);
-
-	for (int i = 0; i < skillBox->skillCommands.size(); ++i) {
-		QueueCommand* command = skillBox->skillCommands.get(i);
-
-		SortedVector<String>* arguments = skillBox->getSkillArguments(command);
-
-		if (arguments == NULL)
-			continue;
-
-		for (int j = 0; j < arguments->size(); ++j){
-			playerObject->dropSkillArgument(command->getName(), arguments->get(j));
-		}
-	}
+	playerObject->removeSkills(skillBox->abilities, updateClient);
 
 	playerObject->removeSkills(skillBox->skillCertifications, updateClient);
 
 	removeSkillMods(skillBox, player, updateClient);
 	removeDraftSchematics(skillBox, player, updateClient);
-
-	/*if (removeChildren) {
-		SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
-
-		Vector<SkillBox*>* children = skillBox->getChildren();
-
-		for (int i = 0; i < children->size(); ++i) {
-			SkillBox* box = children->get(i);
-			if (playerSkillBoxList->contains(box))
-				surrenderSkillBox(box, player, removeChildren, updateClient);
-		}
-	}*/
-
-	/*
-
-	if (skillBox->getName().compareTo("combat_smuggler_underworld_01") == 0) {
-		//int race = Races::getRaceID(player->getRaceFileName());
-
-		String socialLanguage = "social_language_";
-		String language = "language_";
-
-		for (int i = 1; i < 10 ; i++) {
-
-			String skillName;
-			String languageName;
-
-			if (i == 6) {
-				skillName = String(socialLanguage + "moncalamari_comprehend");
-				languageName = String(language + "moncalamari_comprehend");
-			} else {
-				skillName = String(socialLanguage + Races::getRace(i) + "_comprehend");
-				languageName = String(language + Races::getRace(i) + "_comprehend");
-			}
-
-			if (player->getSkill(skillName) == NULL) {
-				player->removeSkillMod(languageName, true);
-			}
-
-		}
-
-		if (player->getSkill(socialLanguage + "lekku_comprehend") == NULL)
-			player->removeSkillMod(language + "lekku_comprehend", true);
-	}
-
-	player->setPlayerLevel(updateClient);*/
 
 	return true;
 
@@ -1049,6 +978,8 @@ void ProfessionManager::loadSkillCommands(SkillBox* skillBox, String& skillComma
 					if (args != -1) {
 						skillBox->addSkillArgument(skill, argument);
 					}
+
+					skillBox->addAbility(command);
 				}
 			}
 		}
