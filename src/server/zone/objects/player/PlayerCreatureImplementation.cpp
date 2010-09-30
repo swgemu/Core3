@@ -101,6 +101,7 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	watchToID = 0;
 	tradeContainer.clear();
 	chatRooms.removeAll();
+	setMood(getMoodID());
 
 	if (zone != NULL && !isInQuadTree())
 		zone = NULL;
@@ -110,6 +111,9 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 
 	clearCombatState(true);
 	clearState(CreatureState::ALERT);
+
+	if (posture == CreaturePosture::SKILLANIMATING)
+		setPosture(CreaturePosture::UPRIGHT, true);
 
 	if (hasState(CreatureState::RIDINGMOUNT) && parent == NULL)
 		clearState(CreatureState::RIDINGMOUNT);
@@ -566,7 +570,7 @@ int PlayerCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player,
 		player->executeObjectControllerAction(String("listen").hashCode(), getObjectID(), "");
 		break;
 	case 115:
-		player->executeObjectControllerAction(String("stoplisten").hashCode(), getObjectID(), "");
+		player->executeObjectControllerAction(String("stoplistening").hashCode(), getObjectID(), "");
 		break;
 
 	case 114:
@@ -574,7 +578,7 @@ int PlayerCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player,
 		break;
 
 	case 116:
-		player->executeObjectControllerAction(String("stopwatch").hashCode(), getObjectID(), "");
+		player->executeObjectControllerAction(String("stopwatching").hashCode(), getObjectID(), "");
 		break;
 
 	case 51:

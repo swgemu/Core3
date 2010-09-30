@@ -67,8 +67,10 @@ public:
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
-		if (session == NULL)
+		if (session == NULL) {
+			creature->sendSystemMessage("performance", "flourish_not_performing");
 			return GENERALERROR;
+		}
 
 		if (!session->isDancing() && !session->isPlayingMusic()) {
 			creature->sendSystemMessage("performance", "flourish_not_performing");

@@ -75,7 +75,7 @@ class StatePack extends PharmaceuticalObject {
 		craftingValues.setHidden("range");
 		
 		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
-		super.useCount = craftingValues.getCurrentValue("charges");
+		setUseCount(craftingValues.getCurrentValue("charges"));
 	}
 	
 	/**

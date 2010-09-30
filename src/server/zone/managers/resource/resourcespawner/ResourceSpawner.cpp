@@ -635,9 +635,10 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 
 	int xp = (int) (((float) unitsExtracted / (float) maxUnitsExtracted)
 			* xpcap);
-	PlayerManager* playerManager = server->getPlayerManager();
-	playerManager->awardExperience(player, "resource_harvesting_inorganic", xp,
-			true);
+	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+	if (playerManager != NULL)
+		playerManager->awardExperience(player, "resource_harvesting_inorganic", xp, true);
 
 	player->notifyObservers(ObserverEventType::SAMPLE, resourceSpawn, density
 			* 100);

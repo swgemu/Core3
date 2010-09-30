@@ -229,7 +229,8 @@ void BuffImplementation::applyAttributeModifiers() {
 		if (fillAttirbutesOnBuff) {
 			//creature->setHAM(attribute, attributeval - creature->getWounds(attribute));
 			creature->healDamage(creature, attribute, attributeval, true);
-		}
+		} else
+			creature->healDamage(creature, attribute, value);
 	}
 
 }
@@ -277,10 +278,19 @@ void BuffImplementation::removeAttributeModifiers() {
 			continue;
 
 		int attributemax = creature->getMaxHAM(attribute) - value;
-		int attributeval = MIN(attributemax, creature->getHAM(attribute) - value);
+
+		int currentVal = creature->getHAM(attribute);
 
 		creature->setMaxHAM(attribute, attributemax);
-		creature->setHAM(attribute, attributeval);
+
+		if (currentVal >= attributemax) {
+			creature->inflictDamage(creature, attribute, currentVal - attributemax, isSpiceBuff());
+		}
+
+
+		/*int attributeval = MIN(attributemax, creature->getHAM(attribute) - value);
+
+		creature->setHAM(attribute, attributeval);*/
 	}
 
 }

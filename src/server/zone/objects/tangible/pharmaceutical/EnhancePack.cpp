@@ -151,6 +151,7 @@ EnhancePackImplementation::EnhancePackImplementation(DummyConstructorParameter* 
 	_initializeImplementation();
 }
 
+
 EnhancePackImplementation::~EnhancePackImplementation() {
 }
 
@@ -234,8 +235,8 @@ void EnhancePackImplementation::updateCraftingValues(ManufactureSchematic* schem
 	effectiveness = craftingValues->getCurrentValue("power");
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(82):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(83):  		super.useCount = craftingValues.getCurrentValue("charges");
-	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(83):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	setUseCount(craftingValues->getCurrentValue("charges"));
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl(85):  		duration = craftingValues.getCurrentValue("duration");
 	duration = craftingValues->getCurrentValue("duration");
 }

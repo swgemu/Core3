@@ -158,6 +158,7 @@ RangedStimPackImplementation::RangedStimPackImplementation(DummyConstructorParam
 	_initializeImplementation();
 }
 
+
 RangedStimPackImplementation::~RangedStimPackImplementation() {
 }
 
@@ -244,8 +245,8 @@ void RangedStimPackImplementation::updateCraftingValues(ManufactureSchematic* sc
 	effectiveness = craftingValues->getCurrentValue("power");
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(81):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	StimPackImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(82):  		super.useCount = craftingValues.getCurrentValue("charges");
-	StimPackImplementation::useCount = craftingValues->getCurrentValue("charges");
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(82):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	setUseCount(craftingValues->getCurrentValue("charges"));
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(84):  		range = craftingValues.getCurrentValue("range");
 	range = craftingValues->getCurrentValue("range");
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl(86):  	}
