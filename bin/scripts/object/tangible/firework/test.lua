@@ -42,7 +42,8 @@
 
 
 object_tangible_firework_test = object_tangible_firework_shared_test:new {
-
+	fireworkObject = "object/static/firework/show_launcher.iff",
+	templateType = FIREWORK
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_test, "object/tangible/firework/test.iff")

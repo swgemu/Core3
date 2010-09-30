@@ -117,6 +117,7 @@ public:
 	const static int GAMBLINGTERMINAL = 0x4000018;
 	const static int LOOTKIT = 0x4000019;
 	const static int INSTRUMENT = 0x400001A;
+	const static int FIREWORK = 0x400001B;
 
 public:
 	SharedObjectTemplate() {
@@ -408,6 +409,10 @@ public:
 	}
 
 	virtual bool isGamblingTerminalTemplate() {
+		return false;
+	}
+
+	virtual bool isFireworkObjectTemplate() {
 		return false;
 	}
 

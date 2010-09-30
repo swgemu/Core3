@@ -1686,6 +1686,17 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					}
 				}
 			},
+			"Fireworks",
+			{
+				"Firework 1", "object/tangible/firework/firework_s01.iff",
+				"Firework 2", "object/tangible/firework/firework_s02.iff",
+				"Firework 3", "object/tangible/firework/firework_s03.iff",
+				"Firework 4", "object/tangible/firework/firework_s04.iff",
+				"Firework 5", "object/tangible/firework/firework_s05.iff",
+				"Firework 6", "object/tangible/firework/firework_s10.iff",
+				"Firework 7", "object/tangible/firework/firework_s11.iff",
+				"Firework 8", "object/tangible/firework/firework_s18.iff",
+			},
 			"Furniture",
 			{	
 				"Paintings",
