@@ -121,6 +121,7 @@ StimPackImplementation::StimPackImplementation(DummyConstructorParameter* param)
 	_initializeImplementation();
 }
 
+
 StimPackImplementation::~StimPackImplementation() {
 }
 
@@ -198,8 +199,8 @@ void StimPackImplementation::updateCraftingValues(ManufactureSchematic* schemati
 	effectiveness = craftingValues->getCurrentValue("power");
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(76):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(77):  		super.useCount = craftingValues.getCurrentValue("charges");
-	PharmaceuticalObjectImplementation::useCount = craftingValues->getCurrentValue("charges");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(77):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	setUseCount(craftingValues->getCurrentValue("charges"));
 }
 
 void StimPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

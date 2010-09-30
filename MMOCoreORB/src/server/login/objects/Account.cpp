@@ -34,6 +34,8 @@ void Account::login(LoginClient* client, LoginServer* loginServer) {
 
 	Message* eci = new EnumerateCharacterID(&characters);
 	client->sendMessage(eci);
+
+	sendErrorMessageTo(client, "OR TEST", "This is a temporary OR test");
 }
 
 

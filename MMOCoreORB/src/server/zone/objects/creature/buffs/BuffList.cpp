@@ -67,12 +67,12 @@ void BuffList::updateBuffsToDatabase() {
 			buff->updateToDatabase();
 	}
 
-	for (int i = 0; i < removedBuffs.size(); ++i) {
+	/*for (int i = 0; i < removedBuffs.size(); ++i) {
 		ManagedReference<Buff*> buff = removedBuffs.get(i);
 
 		if (buff->isPersistent())
 			ObjectManager::instance()->destroyObjectFromDatabase(buff->_getObjectID());
-	}
+	}*/
 
 	removedBuffs.removeAll();
 }
@@ -103,6 +103,9 @@ void BuffList::addBuff(CreatureObject* creature, Buff* buff) {
 
 	//Remove the old buff if it exists. (Exists checked in removeBuff)
 	removeBuff(creature, buffcrc);
+
+	if (!buff->isPersistent())
+		ObjectManager::instance()->persistObject(buff, 1, "buffs");
 
 	buffList.put(buffcrc, buff);
 

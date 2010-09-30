@@ -208,6 +208,8 @@ void ServerCore::shutdown() {
 		zoneServer = NULL;
 	}
 
+	ObjectManager::instance()->savePersistentObjects();
+
 	zoneServerRef = NULL;
 
 	if (loginServer != NULL) {
