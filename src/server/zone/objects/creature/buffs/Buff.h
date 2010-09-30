@@ -127,6 +127,8 @@ public:
 
 	void setAccelerationMultiplierMod(float multiplier);
 
+	void setFillAttirbutesOnBuff(bool val);
+
 	String getBuffName();
 
 	int getBuffCRC();
@@ -195,6 +197,8 @@ protected:
 
 	float accelerationMultiplierMod;
 
+	bool fillAttirbutesOnBuff;
+
 	ParameterizedStringId startMessage;
 
 	ParameterizedStringId endMessage;
@@ -253,6 +257,8 @@ public:
 	void setSpeedMultiplierMod(float multiplier);
 
 	void setAccelerationMultiplierMod(float multiplier);
+
+	void setFillAttirbutesOnBuff(bool val);
 
 	String getBuffName();
 
@@ -360,6 +366,8 @@ public:
 	void setSpeedMultiplierMod(float multiplier);
 
 	void setAccelerationMultiplierMod(float multiplier);
+
+	void setFillAttirbutesOnBuff(bool val);
 
 	String getBuffName();
 

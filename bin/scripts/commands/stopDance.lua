@@ -47,7 +47,7 @@ StopDanceCommand = {
 
         invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
         invalidPostures = "",
-        defaultPriority = "normal",
+        defaultPriority = "immediate",
         scriptHook = "cmdStopDance",
         failScriptHook = " ",
         cppHook = " ",

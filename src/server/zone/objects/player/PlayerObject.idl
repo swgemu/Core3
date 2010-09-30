@@ -63,7 +63,6 @@ include server.zone.objects.player.variables.SkillList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
-include server.zone.objects.player.variables.CommandArgumentList;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 
@@ -99,10 +98,7 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected SkillList skillList;
-	
-	@dereferenced
-	protected CommandArgumentList skillArgumentList;
-	
+		
 	@dereferenced
 	protected FriendList friendList;
 	
@@ -200,7 +196,7 @@ class PlayerObject extends IntangibleObject {
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
 	@local
-	public native void addSkills(@dereferenced Vector<QueueCommand> skills, boolean notifyClient = true);
+	public native void addSkills(@dereferenced Vector<string> skills, boolean notifyClient = true);
 	
 	/**
 	 * Adds new certifications to player
@@ -212,23 +208,6 @@ class PlayerObject extends IntangibleObject {
 	@local
 	public native void addSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
 	
-	public void addSkillArgument(final string skillName, final string argument) {
-		skillArgumentList.addArgument(skillName, argument);
-	}
-	
-	public void dropSkillArgument(final string skillName, final string argument) {
-		skillArgumentList.dropArgument(skillName, argument);
-	}
-	
-	public boolean hasSkillArgument(final string skillName, final string argument) {
-		return skillArgumentList.containsArgument(skillName, argument);
-	}
-	
-	@local
-	public CommandArgumentList getCommandArgumentList() {
-		return skillArgumentList;
-	}
-	
 	/**
 	 * Removes queue commands from player
 	 * @pre { this is locked }
@@ -237,7 +216,7 @@ class PlayerObject extends IntangibleObject {
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
 	@local
-	public native void removeSkills(@dereferenced Vector<QueueCommand> skills, boolean notifyClient = true);
+	public native void removeSkills(@dereferenced Vector<string> skills, boolean notifyClient = true);
 	
 	/**
 	 * Removes certifications from player
@@ -366,11 +345,9 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	@local
-	public boolean hasSkill(Skill skill) {
+	public boolean hasSkill(final string skill) {
 		return skillList.contains(skill);
 	}
-	
-	public native boolean hasSkill(final string skillName);
 
 	public boolean hasCommandMessageString(unsigned int actionCRC) {
 		return commandMessageStrings.contains(actionCRC);

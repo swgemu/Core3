@@ -76,12 +76,20 @@ public:
 		sui->setPromptTitle("@performance:available_dances");
 		sui->setPromptText("@performance:select_dance");
 
-		CommandArgumentList* list = ghost->getCommandArgumentList();
-		SortedVector<String>* vec = &list->get("startdance");
+		SkillList* list = ghost->getSkills();
 
-		for (int i = 0; i < vec->size(); ++i) {
-			String dance = vec->get(i);
-			sui->addMenuItem(dance);
+		for (int i = 0; i < list->size(); ++i) {
+			String name = list->get(i);
+
+			if (name.indexOf("startdance") != -1) {
+				int args = name.indexOf("+");
+
+				if (args != -1) {
+					String arg = name.subString(args + 1);
+
+					sui->addMenuItem(arg);
+				}
+			}
 		}
 
 		player->addSuiBox(sui);
@@ -130,7 +138,9 @@ public:
 			return SUCCESS;
 		}
 
-		if (!ghost->hasSkillArgument("startdance", args)) {
+		String fullString = String("startDance") + "+" + args;
+
+		if (!ghost->hasSkill(fullString)) {
 			creature->sendSystemMessage("performance", "dance_lack_skill_self");
 			return GENERALERROR;
 		}

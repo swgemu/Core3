@@ -64,6 +64,7 @@ InstrumentImplementation::InstrumentImplementation(DummyConstructorParameter* pa
 	_initializeImplementation();
 }
 
+
 InstrumentImplementation::~InstrumentImplementation() {
 }
 
@@ -142,17 +143,19 @@ void InstrumentImplementation::initializeTransientMembers() {
 }
 
 void InstrumentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/Instrument.idl(95):  		InstrumentObjectTemplate 
-	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(96):  			return;
+	// server/zone/objects/tangible/Instrument.idl(95):  		super.loadTemplateData(templateData);
+	TangibleObjectImplementation::loadTemplateData(templateData);
+	// server/zone/objects/tangible/Instrument.idl(97):  		InstrumentObjectTemplate 
+	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(98):  			return;
 	return;
-	// server/zone/objects/tangible/Instrument.idl(98):  templ = (InstrumentObjectTemplate) templateData;
+	// server/zone/objects/tangible/Instrument.idl(100):  templ = (InstrumentObjectTemplate) templateData;
 	InstrumentObjectTemplate* templ = (InstrumentObjectTemplate*) templateData;
-	// server/zone/objects/tangible/Instrument.idl(100):  		instrumentType = templ.getInstrumentType();
+	// server/zone/objects/tangible/Instrument.idl(102):  		instrumentType = templ.getInstrumentType();
 	instrumentType = templ->getInstrumentType();
 }
 
 int InstrumentImplementation::getInstrumentType() {
-	// server/zone/objects/tangible/Instrument.idl(104):  		return instrumentType;
+	// server/zone/objects/tangible/Instrument.idl(106):  		return instrumentType;
 	return instrumentType;
 }
 

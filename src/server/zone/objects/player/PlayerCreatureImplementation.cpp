@@ -545,14 +545,14 @@ void PlayerCreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* me
 
 	if (isPlayingMusic()) {
 		if (!player->isListening())
-			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:listen");
+			menuResponse->addRadialMenuItem(113, 3, "@radial_performance:listen");
 		else
-			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:listen_stop");
+			menuResponse->addRadialMenuItem(115, 3, "@radial_performance:listen_stop");
 	}
 
 	if (isDancing()) {
 		if (!player->isWatching())
-			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:watch");
+			menuResponse->addRadialMenuItem(114, 3, "@radial_performance:watch");
 		else
 			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:watch_stop");
 	}
@@ -562,6 +562,21 @@ void PlayerCreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* me
 int PlayerCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 	switch(selectedID) {
+	case 113:
+		player->executeObjectControllerAction(String("listen").hashCode(), getObjectID(), "");
+		break;
+	case 115:
+		player->executeObjectControllerAction(String("stoplisten").hashCode(), getObjectID(), "");
+		break;
+
+	case 114:
+		player->executeObjectControllerAction(String("watch").hashCode(), getObjectID(), "");
+		break;
+
+	case 116:
+		player->executeObjectControllerAction(String("stopwatch").hashCode(), getObjectID(), "");
+		break;
+
 	case 51:
 
 			if(isTeachingOrLearning() || player->isTeachingOrLearning()) {
