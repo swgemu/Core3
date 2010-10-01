@@ -1731,8 +1731,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Schematic (Weapon)", "object/tangible/painting/painting_schematic_weapon.iff",
 					"Veteran Reward (Cast Wing in Flight)", "object/tangible/veteran_reward/one_year_anniversary/painting_01.iff",
 					"Veteran Reward (Decimator)", "object/tangible/veteran_reward/one_year_anniversary/painting_02.iff",
-					"Veteran Reward (Weapon of War)", "object/tangible/veteran_reward/one_year_anniversary/painting_03.iff",
-					"Veteran Reward (Tatooine Dune Speeder)", "object/tangible/veteran_reward/one_year_anniversary/painting_04.iff",
+					"Veteran Reward (Weapon of War)", "object/tangible/veteran_reward/one_year_anniversary/painting_04.iff",
+					"Veteran Reward (Tatooine Dune Speeder)", "object/tangible/veteran_reward/one_year_anniversary/painting_03.iff",
 					"Veteran Reward (Fighter Study)", "object/tangible/veteran_reward/one_year_anniversary/painting_05.iff",
 					"Veteran Reward (Hutt Greed)", "object/tangible/veteran_reward/one_year_anniversary/painting_06.iff",
 					"Veteran Reward (Smuggler's Run)", "object/tangible/veteran_reward/one_year_anniversary/painting_07.iff",
@@ -2024,13 +2024,25 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				{
 					"DXR6", "object/weapon/ranged/carbine/carbine_dxr6.iff"
 				},
-				"Swords",
+				"Onehanded",
 				{
-					"Ryyk", "object/weapon/melee/sword/sword_blade_ryyk.iff"
+					"Ryyk", "object/weapon/melee/sword/sword_blade_ryyk.iff",
+					"Survival Knife", "object/weapon/melee/knife/knife_survival.iff",
+					"Stun Baton", "object/weapon/melee/baton/baton_stun.iff"
+				},
+				"Twohanded",
+				{
+					"Two-handed Curved Sword", "object/weapon/melee/2h_sword/2h_sword_katana.iff",
+					"Heavy Axe", "object/weapon/melee/axe/axe_heavy_duty.iff"
 				},
 				"Poleam",
 				{
-					"Lance", "object/weapon/melee/polearm/lance_staff_metal.iff"
+					"Lance", "object/weapon/melee/polearm/lance_staff_metal.iff",
+					"Wood Staff", "object/weapon/melee/polearm/lance_staff_wood_s1.iff"
+				},
+				"Unarmed",
+				{
+					"Vibro Knuckler", "object/weapon/melee/special/vibroknuckler.iff"
 				}
 			}
 		}

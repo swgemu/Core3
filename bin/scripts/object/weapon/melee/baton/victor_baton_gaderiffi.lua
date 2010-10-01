@@ -42,6 +42,8 @@
 
 
 object_weapon_melee_baton_victor_baton_gaderiffi = object_weapon_melee_baton_shared_victor_baton_gaderiffi:new {
+	
+	gameObjectType = 131079,
 
 	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
