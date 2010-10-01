@@ -121,6 +121,7 @@ class PlanetManager extends ManagedObject implements Logger {
 	
 	public native void initialize();
 	public native void loadRegions();
+	public native void loadPlayerRegions();
 	public native void loadNoBuildAreas();
 	public native void loadShuttles();
 	public native void loadBadgeAreas();

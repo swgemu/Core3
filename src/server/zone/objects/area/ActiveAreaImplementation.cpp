@@ -45,7 +45,9 @@ void ActiveAreaImplementation::insertToZone(Zone* newZone) {
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = objects.get(i);
 
-		if (!object->hasActiveArea(_this) && containsPoint(object->getPositionX(), object->getPositionY())) {
+		Vector3 worldPos = object->getWorldPosition();
+
+		if (!object->hasActiveArea(_this) && containsPoint(worldPos.getX(), worldPos.getY())) {
 			object->addActiveArea(_this);
 			enqueueEnterEvent(object);
 		}

@@ -514,12 +514,12 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	inventory->addObject(backpackObject, -1);*/
 
 	//admin
-	//if (player->getFirstName() == "TheAnswer") {
+	if (player->getFirstName() == "TheAnswer") {
 		ObjectController* objController = server->getObjectController();
 		Vector<String> skills;
 		skills.add("admin");
 		((PlayerObject*)playerObject)->addSkills(skills, false);
-	//}
+	}
 
 	VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1);
 	VehicleObject* vehicle = (VehicleObject*) server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1);

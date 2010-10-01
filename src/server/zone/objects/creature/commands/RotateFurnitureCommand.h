@@ -65,7 +65,7 @@ public:
 
 		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
-		BuildingObject* buildingObject = rootParent->isBuildingObject() ? (BuildingObject*)rootParent.get() : NULL;
+		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? (BuildingObject*)rootParent.get() : NULL) : NULL;
 
 		if (buildingObject == NULL) {
 			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.

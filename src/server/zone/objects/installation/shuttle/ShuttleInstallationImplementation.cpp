@@ -16,70 +16,77 @@
 
 void ShuttleInstallationImplementation::spawnShuttleObjects() {
 	if (getActiveRegion() == NULL || zone == NULL) {
-		error("active area null");
+		//error("active area null");
 		return;
 	}
 
 	CreatureManager* creatureManager = zone->getCreatureManager();
-	uint32 shuttleCRC = String("object/creature/npc/theme_park/player_shuttle.iff").hashCode();
 
-	ManagedReference<CreatureObject*> creatureObject = creatureManager->spawnCreature(shuttleCRC, positionX, positionZ, positionY);
+	if (shuttle == NULL) {
+		uint32 shuttleCRC = String("object/creature/npc/theme_park/player_shuttle.iff").hashCode();
 
-	if (creatureObject == NULL || !creatureObject->isShuttleCreature()) {
-		error("wrong shuttle crc");
+		ManagedReference<CreatureObject*> creatureObject = creatureManager->spawnCreature(shuttleCRC, positionX, positionZ, positionY);
 
-		return;
+		if (creatureObject == NULL || !creatureObject->isShuttleCreature()) {
+			error("wrong shuttle crc");
+
+			return;
+		}
+
+		shuttle = (ShuttleCreature*) creatureObject.get();
+
+		Locker locker(shuttle);
+
+		String shuttleName = getActiveRegion()->getCustomObjectName().toString();
+
+		shuttle->setDirection(direction.getW(), 0, direction.getY(), 0);
+		shuttle->setArrivalPoint(positionX, positionY, positionZ);
+		shuttle->setStarport(false);
+		shuttle->setTax(10);
+		shuttle->setPlanet(zone->getPlanetName());
+		shuttle->setCity(shuttleName);
+		shuttle->updateZone(false);
+
+		PlanetManager* planetManager = zone->getPlanetManager();
+		planetManager->addShuttle(shuttleName, shuttle);
+
+		shuttle->doTakeOff();
+
+		locker.release();
 	}
-
-	shuttle = (ShuttleCreature*) creatureObject.get();
-
-	Locker locker(shuttle);
-
-	String shuttleName = getActiveRegion()->getCustomObjectName().toString();
-
-	shuttle->setDirection(direction.getW(), 0, direction.getY(), 0);
-	shuttle->setArrivalPoint(positionX, positionY, positionZ);
-	shuttle->setStarport(false);
-	shuttle->setTax(10);
-	shuttle->setPlanet(zone->getPlanetName());
-	shuttle->setCity(shuttleName);
-	shuttle->updateZone(false);
-
-	PlanetManager* planetManager = zone->getPlanetManager();
-	planetManager->addShuttle(shuttleName, shuttle);
-
-	shuttle->doTakeOff();
-
-	locker.release();
 
 	float directionRadians = direction.getRadians();
 
 	float newX = ((14.41) * Math::sin(directionRadians) + 7.64 * Math::cos(directionRadians)) + positionX;
 	float newY = ((14.41) * Math::cos(directionRadians) - 7.64 * Math::sin(directionRadians)) + positionY;
 
-	ticketCollector = (TicketCollector*) zone->getZoneServer()->createObject(String("object/tangible/travel/ticket_collector/ticket_collector.iff").hashCode(), 0);
+	if (ticketCollector == NULL)  {
+		ticketCollector = (TicketCollector*) zone->getZoneServer()->createObject(String("object/tangible/travel/ticket_collector/ticket_collector.iff").hashCode(), 0);
 
-	Locker tlocker(ticketCollector);
+		Locker tlocker(ticketCollector);
 
-	ticketCollector->setDirection(direction.getW(), 0, direction.getY(), 0);
+		ticketCollector->setDirection(direction.getW(), 0, direction.getY(), 0);
 
-	ticketCollector->initializePosition(newX, positionZ + 1, newY);
-	ticketCollector->insertToZone(zone);
-	ticketCollector->setShuttle(shuttle);
+		ticketCollector->initializePosition(newX, positionZ + 1, newY);
+		ticketCollector->insertToZone(zone);
+		ticketCollector->setShuttle(shuttle);
 
-	tlocker.release();
+		tlocker.release();
+	}
 
-	travelTerminal = (TravelTerminal*) zone->getZoneServer()->createObject(String("object/tangible/terminal/terminal_travel.iff").hashCode(), 0);
+	if (travelTerminal == NULL) {
+		travelTerminal = (TravelTerminal*) zone->getZoneServer()->createObject(String("object/tangible/terminal/terminal_travel.iff").hashCode(), 0);
 
-	newX = ((14.41) * Math::sin(directionRadians) + -7.64 * Math::cos(directionRadians)) + positionX;
-	newY = ((14.41) * Math::cos(directionRadians) - -7.64 * Math::sin(directionRadians)) + positionY;
+		newX = ((14.41) * Math::sin(directionRadians) + -7.64 * Math::cos(directionRadians)) + positionX;
+		newY = ((14.41) * Math::cos(directionRadians) - -7.64 * Math::sin(directionRadians)) + positionY;
 
-	Locker t2locker(travelTerminal);
+		Locker t2locker(travelTerminal);
 
-	travelTerminal->setShuttle(shuttle);
-	travelTerminal->setDirection(direction.getW(), 0, direction.getY(), 0);
-	travelTerminal->initializePosition(newX, positionZ + 1, newY);
-	travelTerminal->insertToZone(zone);
+		travelTerminal->setShuttle(shuttle);
+		travelTerminal->setDirection(direction.getW(), 0, direction.getY(), 0);
+		travelTerminal->initializePosition(newX, positionZ + 1, newY);
+		travelTerminal->insertToZone(zone);
+	}
 }
 
 bool ShuttleInstallationImplementation::checkRequisitesForPlacement(PlayerCreature* player) {

@@ -33,19 +33,21 @@ void CityHallObjectImplementation::spawnCityHallObjects() {
 	if (cell != NULL) {
 		String cityTerminalTemplateString = "object/tangible/terminal/terminal_city.iff";
 
-		cityTerminal = (CityTerminal*) zoneServer->createObject(cityTerminalTemplateString.hashCode(), 1);
+		if (cityTerminal == NULL) {
+			cityTerminal = (CityTerminal*) zoneServer->createObject(cityTerminalTemplateString.hashCode(), 1);
 
-		Locker _locker(cityTerminal);
+			Locker _locker(cityTerminal);
 
-		cityTerminal->initializePosition(17.07, 2.0, -8.7);
-		cityTerminal->setDirection(1, 0, 0, 0);
-		cityTerminal->setCityHallObject(_this);
-		cell->addObject(cityTerminal, -1, true);
-		cell->broadcastObject(cityTerminal, false);
-		cityTerminal->insertToZone(zone);
-		cityTerminal->updateToDatabase();
+			cityTerminal->initializePosition(17.07, 2.0, -8.7);
+			cityTerminal->setDirection(1, 0, 0, 0);
+			cityTerminal->setCityHallObject(_this);
+			cell->addObject(cityTerminal, -1, true);
+			cell->broadcastObject(cityTerminal, false);
+			cityTerminal->insertToZone(zone);
+			cityTerminal->updateToDatabase();
 
-		_locker.release();
+			_locker.release();
+		}
 	}
 
 	cell = getCell(2);
@@ -54,19 +56,21 @@ void CityHallObjectImplementation::spawnCityHallObjects() {
 	if (cell != NULL) {
 		String cityVoteTerminalTemplateString = "object/tangible/terminal/terminal_city_vote.iff";
 
-		cityVoteTerminal = (CityVoteTerminal*) zoneServer->createObject(cityVoteTerminalTemplateString.hashCode(), 1);
+		if (cityVoteTerminal == NULL) {
+			cityVoteTerminal = (CityVoteTerminal*) zoneServer->createObject(cityVoteTerminalTemplateString.hashCode(), 1);
 
-		Locker _locker(cityVoteTerminal);
+			Locker _locker(cityVoteTerminal);
 
-		cityVoteTerminal->initializePosition(0.25, 2.0, -9.65);
-		cityVoteTerminal->setDirection(1, 0, 0, 0);
-		cityVoteTerminal->setCityHallObject(_this);
-		cell->addObject(cityVoteTerminal, -1, true);
-		cell->broadcastObject(cityVoteTerminal, false);
-		cityVoteTerminal->insertToZone(zone);
-		cityVoteTerminal->updateToDatabase();
+			cityVoteTerminal->initializePosition(0.25, 2.0, -9.65);
+			cityVoteTerminal->setDirection(1, 0, 0, 0);
+			cityVoteTerminal->setCityHallObject(_this);
+			cell->addObject(cityVoteTerminal, -1, true);
+			cell->broadcastObject(cityVoteTerminal, false);
+			cityVoteTerminal->insertToZone(zone);
+			cityVoteTerminal->updateToDatabase();
 
-		_locker.release();
+			_locker.release();
+		}
 	}
 
 	if (cityRegion == NULL)
@@ -74,6 +78,7 @@ void CityHallObjectImplementation::spawnCityHallObjects() {
 
 	cityRegion->insertToZone(zone);
 	zone->getPlanetManager()->addRegion(cityRegion);
+	//cityRegion->updateToDabatase();
 }
 
 void CityHallObjectImplementation::despawnCityHallObjects() {
