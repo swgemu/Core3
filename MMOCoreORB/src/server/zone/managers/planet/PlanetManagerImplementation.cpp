@@ -40,6 +40,7 @@ void PlanetManagerImplementation::initialize() {
 	loadPerformanceLocations();
 	loadHuntingTargets();
 	loadReconLocations();
+	loadPlayerRegions();
 
 	loadStaticTangibleObjects();
 
@@ -205,6 +206,70 @@ void PlanetManagerImplementation::loadRegions() {
 		msg << "loaded " << regionMap.size() << " client regions";
 		info(msg.toString(), true);
 	}
+}
+
+void PlanetManagerImplementation::loadPlayerRegions() {
+	StringBuffer msg;
+	msg << "PlanetManagerImplementation::loadRegions()";
+	info(msg.toString());
+	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+	//dbManager->loadDatabases();
+
+	ObjectDatabase* cityRegionsDatabase = ObjectDatabaseManager::instance()->loadDatabase("cityregions", true);
+
+	if (cityRegionsDatabase == NULL)
+		error("PlanetManagerImplementation::loadPlayerRegions(): There was an error loading the 'cityregions' database.");
+
+	info("loading player regions", true);
+
+	int i = 0;
+
+	try {
+		int planetid = zone->getZoneID();
+		uint64 currentZoneObjectID = zone->_getObjectID();
+		ObjectDatabaseIterator iterator(cityRegionsDatabase);
+
+		uint64 objectID;
+		ObjectInputStream* objectData = new ObjectInputStream(2000);
+
+		uint64 zoneObjectID = 0;
+		int gameObjectType = 0;
+
+		while (iterator.getNextKeyAndValue(objectID, objectData)) {
+			if (!Serializable::getVariable<uint64>("zone", &zoneObjectID, objectData)) {
+				objectData->clear();
+				continue;
+			}
+
+			if (zoneObjectID != currentZoneObjectID) {
+				objectData->clear();
+				continue;
+			}
+
+			SceneObject* object = server->getZoneServer()->getObject(objectID);
+
+			if (object != NULL) {
+				//object->info("loaded player structure into world");
+				++i;
+			} else {
+				error("could not load region " + String::hexvalueOf((int64)objectID));
+			}
+
+			objectData->clear();
+		}
+
+		delete objectData;
+
+	} catch (DatabaseException& e) {
+		StringBuffer err;
+		err << "Loading Player Structures, exception: " << e.getMessage();
+		error(err);
+		return;
+	} catch (...) {
+		throw Exception("problem in StructureManagerImplementation::loadPlayerStructures()");
+	}
+
+	info(String("loaded " + String::valueOf(i)) + " player regions", true);
 }
 
 void PlanetManagerImplementation::initializeTransientMembers() {

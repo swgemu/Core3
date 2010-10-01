@@ -254,6 +254,15 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	regionTree->inRange(worldPos.getX(), worldPos.getY(), 512, entryObjects);
 
+	for (int i = 0; i < areas.size(); ++i) {
+		ManagedReference<ActiveArea*> area = areas.get(i);
+
+		if (!area->containsPoint(worldPos.getX(), worldPos.getY())) {
+			object->dropActiveArea(area);
+			area->enqueueExitEvent(object);
+		}
+	}
+
 	// we update the ones in quadtree.
 	for (int i = 0; i < entryObjects.size(); ++i) {
 		//update in range ones, drop unexistent ones
@@ -261,17 +270,17 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 		ActiveArea* activeArea = obj->_this;
 
-		if (areas.contains(activeArea)) {
-			if (!activeArea->containsPoint(object->getPositionX(), object->getPositionY())) {
+		/*if (!areas.contains(activeArea) && object->hasActiveArea(activeArea)) {
+			if (!activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
 				object->dropActiveArea(activeArea);
 				activeArea->enqueueExitEvent(object);
 			}
-		} else {
-			if (activeArea->containsPoint(object->getPositionX(), object->getPositionY())) {
+		} else {*/
+			if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
 				object->addActiveArea(activeArea);
 				activeArea->enqueueEnterEvent(object);
 			}
-		}
+		//}
 	}
 
 }

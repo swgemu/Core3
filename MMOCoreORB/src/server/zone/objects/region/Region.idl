@@ -57,6 +57,7 @@ include server.zone.objects.region.RegionCenterPoint;
 include server.zone.objects.region.RegionCenterPointList;
 import server.zone.objects.installation.bank.BankInstallation;
 import server.zone.objects.installation.shuttle.ShuttleInstallation;
+import server.zone.Zone;
 
 class Region extends ActiveArea {	
 	@dereferenced
@@ -118,6 +119,14 @@ class Region extends ActiveArea {
 			shuttleInstallation = null;
 		}
 	}
+	
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
+	public native void insertToZone(Zone zone);
 	
 	public void removeFromZone() {
 		despawnCityObjects();

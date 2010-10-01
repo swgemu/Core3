@@ -114,6 +114,7 @@ ControlDeviceImplementation::ControlDeviceImplementation(DummyConstructorParamet
 	_initializeImplementation();
 }
 
+
 ControlDeviceImplementation::~ControlDeviceImplementation() {
 }
 
@@ -189,34 +190,42 @@ ControlDeviceImplementation::ControlDeviceImplementation() {
 }
 
 void ControlDeviceImplementation::updateToDatabaseAllObjects(bool startTask) {
-	// server/zone/objects/intangible/ControlDevice.idl(75):  		controlledObject.updateToDatabaseWithoutChildren();
+	// server/zone/objects/intangible/ControlDevice.idl(75):  
+	if (controlledObject != NULL){
+	// server/zone/objects/intangible/ControlDevice.idl(76):  			controlledObject.updateToDatabaseWithoutChildren();
 	controlledObject->updateToDatabaseWithoutChildren();
-	// server/zone/objects/intangible/ControlDevice.idl(77):  		super.updateToDatabaseAllObjects(startTask);
+	// server/zone/objects/intangible/ControlDevice.idl(78):  			super.updateToDatabaseAllObjects(startTask);
 	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
 }
 
+	else {
+	// server/zone/objects/intangible/ControlDevice.idl(80):  			super.updateToDatabaseAllObjects(startTask);
+	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
+}
+}
+
 void ControlDeviceImplementation::storeObject(PlayerCreature* player) {
-	// server/zone/objects/intangible/ControlDevice.idl(81):  		Logger.error("called storeObject on an abstract method");
+	// server/zone/objects/intangible/ControlDevice.idl(85):  		Logger.error("called storeObject on an abstract method");
 	Logger::error("called storeObject on an abstract method");
 }
 
 void ControlDeviceImplementation::generateObject(PlayerCreature* player) {
-	// server/zone/objects/intangible/ControlDevice.idl(85):  		Logger.error("called generateObject on an abstract method");
+	// server/zone/objects/intangible/ControlDevice.idl(89):  		Logger.error("called generateObject on an abstract method");
 	Logger::error("called generateObject on an abstract method");
 }
 
 void ControlDeviceImplementation::setControlledObject(CreatureObject* object) {
-	// server/zone/objects/intangible/ControlDevice.idl(89):  		controlledObject = object;
+	// server/zone/objects/intangible/ControlDevice.idl(93):  		controlledObject = object;
 	controlledObject = object;
 }
 
 CreatureObject* ControlDeviceImplementation::getControlledObject() {
-	// server/zone/objects/intangible/ControlDevice.idl(93):  		return controlledObject;
+	// server/zone/objects/intangible/ControlDevice.idl(97):  		return controlledObject;
 	return controlledObject;
 }
 
 bool ControlDeviceImplementation::isControlDevice() {
-	// server/zone/objects/intangible/ControlDevice.idl(97):  		return true;
+	// server/zone/objects/intangible/ControlDevice.idl(101):  		return true;
 	return true;
 }
 

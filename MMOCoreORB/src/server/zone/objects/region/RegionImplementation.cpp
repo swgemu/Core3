@@ -11,6 +11,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
 #include "server/zone/objects/installation/bank/BankInstallation.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 void RegionImplementation::sendGreetingMessage(PlayerCreature* player) {
 	if (isStaticObject())
@@ -36,6 +37,19 @@ void RegionImplementation::sendGreetingMessage(PlayerCreature* player) {
 	stringId.setTO(type);
 
 	player->sendSystemMessage(stringId);
+}
+
+void RegionImplementation::insertToZone(Zone* zone) {
+	ActiveAreaImplementation::insertToZone(zone);
+
+	if (!isInQuadTree())
+		return;
+
+	if (shuttleInstallation != NULL) {
+		shuttleInstallation->spawnShuttleObjects();
+	}
+
+	zone->getPlanetManager()->addRegion(_this);
 }
 
 void RegionImplementation::sendDepartingMessage(PlayerCreature* player) {

@@ -121,6 +121,16 @@ class ShuttleInstallation;
 
 using namespace server::zone::objects::installation::shuttle;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/objects/region/RegionCenterPoint.h"
@@ -149,6 +159,8 @@ public:
 	void sendDepartingMessage(PlayerCreature* player);
 
 	void notifyExit(SceneObject* object);
+
+	void insertToZone(Zone* zone);
 
 	void removeFromZone();
 
@@ -210,6 +222,8 @@ public:
 	void sendDepartingMessage(PlayerCreature* player);
 
 	void notifyExit(SceneObject* object);
+
+	void insertToZone(Zone* zone);
 
 	void removeFromZone();
 
@@ -275,6 +289,8 @@ public:
 	void sendDepartingMessage(PlayerCreature* player);
 
 	void notifyExit(SceneObject* object);
+
+	void insertToZone(Zone* zone);
 
 	void removeFromZone();
 

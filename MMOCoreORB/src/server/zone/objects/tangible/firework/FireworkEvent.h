@@ -63,6 +63,7 @@ public:
 	void run() {
 		try {
 
+			Locker locker(player);
 			firework->removeFromZone();
 
 		} catch (...) {
