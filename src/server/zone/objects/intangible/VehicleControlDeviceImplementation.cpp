@@ -36,6 +36,9 @@ void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) 
 }
 
 void VehicleControlDeviceImplementation::storeObject(PlayerCreature* player) {
+	if (controlledObject == NULL)
+		return;
+
 	if (!controlledObject->isInQuadTree())
 		return;
 

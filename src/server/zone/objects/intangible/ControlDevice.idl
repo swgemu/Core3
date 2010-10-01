@@ -72,9 +72,13 @@ class ControlDevice extends IntangibleObject {
 	 * @param startTask if true, queues a new update task
 	 */
 	public void updateToDatabaseAllObjects(boolean startTask) {
-		controlledObject.updateToDatabaseWithoutChildren();
-		
-		super.updateToDatabaseAllObjects(startTask);
+		if (controlledObject != null) {
+			controlledObject.updateToDatabaseWithoutChildren();
+			
+			super.updateToDatabaseAllObjects(startTask);
+		} else {
+			super.updateToDatabaseAllObjects(startTask);
+		}
 	}
 	
 	public abstract void storeObject(PlayerCreature player) {

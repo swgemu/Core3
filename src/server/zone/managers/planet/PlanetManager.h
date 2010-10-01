@@ -162,6 +162,8 @@ public:
 
 	void loadRegions();
 
+	void loadPlayerRegions();
+
 	void loadNoBuildAreas();
 
 	void loadShuttles();
@@ -281,6 +283,8 @@ public:
 
 	void loadRegions();
 
+	void loadPlayerRegions();
+
 	void loadNoBuildAreas();
 
 	void loadShuttles();
@@ -389,6 +393,8 @@ public:
 	void initialize();
 
 	void loadRegions();
+
+	void loadPlayerRegions();
 
 	void loadNoBuildAreas();
 
