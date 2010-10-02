@@ -98,6 +98,9 @@ public:
 			if (!building->isOnAdminList(creature)) {
 				return GENERALERROR;
 			}
+
+			if (objectToTransfer->isTerminal())
+				return GENERALERROR;
 		}
 
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
@@ -109,7 +112,7 @@ public:
 
 		String errorDescription;
 
-		if (destinationObject->canAddObject(objectToTransfer, errorDescription) != 0) {
+		if (destinationObject->canAddObject(objectToTransfer, transferType, errorDescription) != 0) {
 			creature->error("cannot add objectToTransfer to destinationObject");
 
 			if (errorDescription.length() > 1)

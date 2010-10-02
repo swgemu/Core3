@@ -61,11 +61,13 @@ public:
 	}
 
 	void run() {
+		if (firework == NULL)
+			return;
+
 		try {
+			Locker locker(firework);
 
-			Locker locker(player);
 			firework->removeFromZone();
-
 		} catch (...) {
 			player->error("unreported exception on FireworkEvent::run()");
 		}

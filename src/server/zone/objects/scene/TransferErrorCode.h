@@ -15,6 +15,7 @@ public:
 	const static int INVALIDTYPE = 3;
 	const static int BAITONLY = 4;
 	const static int NOTENOUGHENCUMBRANCE = 5;
+	const static int CANTNESTOBJECT = 6;
 };
 
 

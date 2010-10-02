@@ -64,7 +64,11 @@ public:
 
 	void initializeTransientMembers();
 
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
+
 	void sendContainerObjectsTo(SceneObject* player);
+
+	bool isContainerOject();
 
 protected:
 	Container(DummyConstructorParameter* param);
@@ -97,7 +101,11 @@ public:
 
 	void initializeTransientMembers();
 
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
+
 	void sendContainerObjectsTo(SceneObject* player);
+
+	bool isContainerOject();
 
 	Container* _this;
 
@@ -140,8 +148,14 @@ public:
 
 	void initializeTransientMembers();
 
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
+
 	void sendContainerObjectsTo(SceneObject* player);
 
+	bool isContainerOject();
+
+protected:
+	String _param2_canAddObject__SceneObject_int_String_;
 };
 
 class ContainerHelper : public DistributedObjectClassHelper, public Singleton<ContainerHelper> {

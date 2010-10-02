@@ -25,9 +25,9 @@ void FishingPoleObjectImplementation::fillAttributeList(AttributeListMessage* al
 }
 
 
-int FishingPoleObjectImplementation::canAddObject(SceneObject* object, String& errorDescription) {
+int FishingPoleObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	if (object->isFishingBait()) {
-		return TangibleObjectImplementation::canAddObject(object, errorDescription);
+		return TangibleObjectImplementation::canAddObject(object, containmentType, errorDescription);
 	}
 
 	errorDescription = "@fishing:bait_only";

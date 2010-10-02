@@ -934,8 +934,8 @@ void SceneObjectImplementation::notifyRemovedFromCloseObjects() {
 	_this->release();
 }
 
-int SceneObjectImplementation::canAddObject(SceneObject* object, String& errorDescription) {
-	if (containerType == 1 || containerType == 5) {
+int SceneObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	if (containmentType == 4) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -944,7 +944,7 @@ int SceneObjectImplementation::canAddObject(SceneObject* object, String& errorDe
 			if (slottedObjects.contains(childArrangement))
 				return TransferErrorCode::SLOTOCCUPIED;
 		}
-	} else if (containerType == 2 || containerType == 3) {
+	} else if (containmentType == -1) {
 		if (containerObjects.size() >= containerVolumeLimit)
 			return 1;
 	} else {

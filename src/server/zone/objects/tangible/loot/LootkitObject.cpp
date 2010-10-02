@@ -42,18 +42,19 @@ void LootkitObject::initializeTransientMembers() {
 		((LootkitObjectImplementation*) _impl)->initializeTransientMembers();
 }
 
-int LootkitObject::canAddObject(SceneObject* object, String& errorDescription) {
+int LootkitObject::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 		method.addObjectParameter(object);
+		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((LootkitObjectImplementation*) _impl)->canAddObject(object, errorDescription);
+		return ((LootkitObjectImplementation*) _impl)->canAddObject(object, containmentType, errorDescription);
 }
 
 int LootkitObject::notifyObjectInserted(SceneObject* object) {
@@ -110,6 +111,7 @@ void LootkitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature*
 LootkitObjectImplementation::LootkitObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 LootkitObjectImplementation::~LootkitObjectImplementation() {
 }
@@ -205,7 +207,7 @@ Packet* LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		initializeTransientMembers();
 		break;
 	case 7:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_canAddObject__SceneObject_String_)));
+		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
 	case 8:
 		resp->insertSignedInt(notifyObjectInserted((SceneObject*) inv->getObjectParameter()));
@@ -227,8 +229,8 @@ void LootkitObjectAdapter::initializeTransientMembers() {
 	((LootkitObjectImplementation*) impl)->initializeTransientMembers();
 }
 
-int LootkitObjectAdapter::canAddObject(SceneObject* object, String& errorDescription) {
-	return ((LootkitObjectImplementation*) impl)->canAddObject(object, errorDescription);
+int LootkitObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	return ((LootkitObjectImplementation*) impl)->canAddObject(object, containmentType, errorDescription);
 }
 
 int LootkitObjectAdapter::notifyObjectInserted(SceneObject* object) {

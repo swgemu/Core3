@@ -75,6 +75,10 @@ class IntangibleObject extends SceneObject {
 		super.loadTemplateData(templateData);
 	}
 	
+	public boolean isIntangibleObject() {
+		return true;
+	}
+	
 	public native void sendBaselinesTo(SceneObject player);
 	public native void updateStatus(int newStatus, boolean notifyClient = true);
 	

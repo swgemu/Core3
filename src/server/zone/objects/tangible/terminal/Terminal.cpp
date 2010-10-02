@@ -34,6 +34,18 @@ void Terminal::initializeTransientMembers() {
 		((TerminalImplementation*) _impl)->initializeTransientMembers();
 }
 
+bool Terminal::isTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isTerminal();
+}
+
 /*
  *	TerminalImplementation
  */
@@ -41,6 +53,7 @@ void Terminal::initializeTransientMembers() {
 TerminalImplementation::TerminalImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 TerminalImplementation::~TerminalImplementation() {
 }
@@ -109,6 +122,11 @@ TerminalImplementation::TerminalImplementation() {
 	Logger::setLoggingName("Terminal");
 }
 
+bool TerminalImplementation::isTerminal() {
+	// server/zone/objects/tangible/terminal/Terminal.idl(60):  		return true;
+	return true;
+}
+
 /*
  *	TerminalAdapter
  */
@@ -123,6 +141,9 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 6:
 		initializeTransientMembers();
 		break;
+	case 7:
+		resp->insertBoolean(isTerminal());
+		break;
 	default:
 		return NULL;
 	}
@@ -132,6 +153,10 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void TerminalAdapter::initializeTransientMembers() {
 	((TerminalImplementation*) impl)->initializeTransientMembers();
+}
+
+bool TerminalAdapter::isTerminal() {
+	return ((TerminalImplementation*) impl)->isTerminal();
 }
 
 /*

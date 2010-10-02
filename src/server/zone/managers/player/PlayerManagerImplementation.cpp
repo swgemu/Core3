@@ -1435,7 +1435,7 @@ bool PlayerManagerImplementation::checkTradeItems(PlayerCreature* player, Player
 		ManagedReference<SceneObject*> scene = tradeContainer->getTradeItem(i);
 
 		String err;
-		if (receiverInventory->canAddObject(scene, err) != 0)
+		if (receiverInventory->canAddObject(scene, -1, err) != 0)
 			return false;
 
 		if (!playerInventory->hasObjectInContainer(scene->getObjectID()))
@@ -1446,7 +1446,7 @@ bool PlayerManagerImplementation::checkTradeItems(PlayerCreature* player, Player
 		ManagedReference<SceneObject*> scene = receiverContainer->getTradeItem(i);
 
 		String err;
-		if (playerInventory->canAddObject(scene, err) != 0)
+		if (playerInventory->canAddObject(scene, -1, err) != 0)
 			return false;
 
 		if (!receiverInventory->hasObjectInContainer(scene->getObjectID()))

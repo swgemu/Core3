@@ -92,15 +92,7 @@ class FishingPoleObject extends TangibleObject {
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
-	public native int canAddObject(SceneObject object, string errorDescription);/* {
-		if (object.isFishingBait()) {
-			return super.canAddObject(object, errorDescription);
-		}
-		
-		errorDescription = "@fishing:bait_only";
-		
-		return 4;
-	}*/
+	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 	
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 	
