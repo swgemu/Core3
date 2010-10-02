@@ -79,6 +79,14 @@ public:
 			if (!vehicle->removeObject(creature, true))
 				vehicle->error("could not remove creature from mount creature");
 
+			if (creature->hasBuff(String("burstrun").hashCode())
+					|| creature->hasBuff(String("retreat").hashCode())) {
+
+				creature->setSpeedMultiplierMod(1.822f);
+				creature->setAccelerationMultiplierMod(1.822f);
+
+			}
+
 			creature->clearState(CreatureState::RIDINGMOUNT);
 			creature->updateToDatabase();
 
