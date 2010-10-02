@@ -105,6 +105,14 @@ public:
 			if (!vehicle->addObject(creature, 4, true))
 				vehicle->error("could not add creature");
 
+			if (creature->hasBuff(String("burstrun").hashCode())
+					|| creature->hasBuff(String("retreat").hashCode())) {
+
+				creature->setSpeedMultiplierMod(1.f);
+				creature->setAccelerationMultiplierMod(1.f);
+
+			}
+
 			creature->setState(CreatureState::RIDINGMOUNT);
 			creature->updateToDatabase();
 
