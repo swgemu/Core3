@@ -320,18 +320,19 @@ bool PlayerCreature::isAttackableBy(CreatureObject* object) {
 		return ((PlayerCreatureImplementation*) _impl)->isAttackableBy(object);
 }
 
-int PlayerCreature::canAddObject(SceneObject* object, String& errorDescription) {
+int PlayerCreature::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 24);
 		method.addObjectParameter(object);
+		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((PlayerCreatureImplementation*) _impl)->canAddObject(object, errorDescription);
+		return ((PlayerCreatureImplementation*) _impl)->canAddObject(object, containmentType, errorDescription);
 }
 
 int PlayerCreature::notifyObjectInserted(SceneObject* object) {
@@ -2252,7 +2253,7 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 25:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_canAddObject__SceneObject_String_)));
+		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
 	case 26:
 		resp->insertSignedInt(notifyObjectInserted((SceneObject*) inv->getObjectParameter()));
@@ -2622,8 +2623,8 @@ bool PlayerCreatureAdapter::isAttackableBy(CreatureObject* object) {
 	return ((PlayerCreatureImplementation*) impl)->isAttackableBy(object);
 }
 
-int PlayerCreatureAdapter::canAddObject(SceneObject* object, String& errorDescription) {
-	return ((PlayerCreatureImplementation*) impl)->canAddObject(object, errorDescription);
+int PlayerCreatureAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	return ((PlayerCreatureImplementation*) impl)->canAddObject(object, containmentType, errorDescription);
 }
 
 int PlayerCreatureAdapter::notifyObjectInserted(SceneObject* object) {

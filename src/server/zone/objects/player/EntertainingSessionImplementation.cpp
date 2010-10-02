@@ -317,7 +317,7 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
 	while (listeners.size() > 0) {
-		CreatureObject* listener = listeners.elementAt(0).getKey();
+		ManagedReference<CreatureObject*> listener = listeners.elementAt(0).getKey();
 
 		Locker clocker(listener, entertainer);
 
@@ -391,7 +391,7 @@ void EntertainingSessionImplementation::stopDancing() {
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
 	while (watchers.size() > 0) {
-		CreatureObject* watcher = watchers.elementAt(0).getKey();
+		ManagedReference<CreatureObject*> watcher = watchers.elementAt(0).getKey();
 
 		Locker clocker(watcher, entertainer);
 

@@ -539,7 +539,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @param error error string that the player will receive on error
 	 * @return returns 0 on success, or error code
 	 */
-	public native abstract int canAddObject(SceneObject object, string errorDescription);
+	public native abstract int canAddObject(SceneObject object, int containmentType, string errorDescription);
 	
 	/**
 	 * Calls the appropriate UI Listener Function
@@ -1284,6 +1284,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return false;
 	}
 	
+	public abstract boolean isIntangibleObject() {
+		return false;
+	}
+	
 	public boolean isInstrument() {
 		return gameObjectType == INSTRUMENT;
 	}
@@ -1441,6 +1445,14 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public boolean isStaticObject() {
 		return staticObject;
 	}
+	
+	public abstract boolean isContainerOject() {
+		return false;
+	}
+	
+	public abstract boolean isTerminal() {
+		return false;
+	}	
 	
 	public abstract boolean isControlDevice() {
 		return false;

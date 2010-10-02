@@ -114,7 +114,7 @@ public:
 			ObjectController* objectController = zoneServer->getObjectController();
 
 			String errorDescription;
-			int transferPreProcess = destinationObject->canAddObject(objectToTransfer, errorDescription);
+			int transferPreProcess = destinationObject->canAddObject(objectToTransfer, transferType, errorDescription);
 
 			if (transferPreProcess == TransferErrorCode::SLOTOCCUPIED) {
 				int arrangementSize = objectToTransfer->getArrangementDescriptorSize();

@@ -368,7 +368,7 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -734,7 +734,7 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -1009,7 +1009,7 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -1203,7 +1203,7 @@ public:
 
 protected:
 	String _param0_sendExecuteConsoleCommand__String_;
-	String _param1_canAddObject__SceneObject_String_;
+	String _param2_canAddObject__SceneObject_int_String_;
 	String _param0_setLastNpcConvStr__String_;
 	String _param0_setLastNpcConvMessStr__String_;
 	String _param0_addLastNpcConvOptions__String_;

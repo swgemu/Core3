@@ -55,6 +55,23 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 }
 
 void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
-
 	SceneObjectImplementation::sendContainerObjectsTo(player);
+}
+
+int ContainerImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	if (containerType == 3 && !object->isIntangibleObject()) {
+		errorDescription = "@container_error_message:container07";
+
+		return TransferErrorCode::INVALIDTYPE;
+	}
+
+	if (containmentType == -1) {
+		if (parent != NULL && parent->isContainerOject()) {
+			errorDescription = "@container_error_message:container12";
+
+			return TransferErrorCode::CANTNESTOBJECT;
+		}
+	}
+
+	return TangibleObjectImplementation::canAddObject(object, containmentType, errorDescription);
 }

@@ -55,4 +55,8 @@ class Terminal extends TangibleObject {
 	}
 	
 	public native void initializeTransientMembers();
+	
+	public boolean isTerminal() {
+		return true;
+	}
 }

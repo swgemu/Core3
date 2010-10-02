@@ -39,6 +39,9 @@ public:
 
 		int id = Planet::getPlanetID(planet);
 
+		if (id == -1)
+			return;
+
 		Zone* zone = server->getZoneServer()->getZone(id);
 
 		if (zone != NULL) {

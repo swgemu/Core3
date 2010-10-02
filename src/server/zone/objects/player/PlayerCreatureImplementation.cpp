@@ -676,15 +676,15 @@ int PlayerCreatureImplementation::notifyObjectDestructionObservers(TangibleObjec
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
-int PlayerCreatureImplementation::canAddObject(SceneObject* object, String& errorDescription) {
-	if (object->isArmorObject()) {
+int PlayerCreatureImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	if (object->isArmorObject() && containmentType == 4) {
 		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 
 		if (!playerManager->checkEncumbrancies(_this, (ArmorObject*)object))
 			return TransferErrorCode::NOTENOUGHENCUMBRANCE;
 	}
 
-	return CreatureObjectImplementation::canAddObject(object, errorDescription);
+	return CreatureObjectImplementation::canAddObject(object, containmentType, errorDescription);
 }
 
 /**

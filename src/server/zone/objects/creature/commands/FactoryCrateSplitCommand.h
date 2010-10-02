@@ -71,6 +71,8 @@ public:
 		if((factoryCrate == NULL || !factoryCrate->isFactoryCrate() ||!creature->isPlayerCreature()))
 			return INVALIDTARGET;
 
+		Locker locker(factoryCrate, creature);
+
 		factoryCrate->split(newStackSize);
 
 		return SUCCESS;

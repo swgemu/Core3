@@ -104,7 +104,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<FireworkObject>(SceneObject::FIREWORK);
 	objectFactory.registerObject<TangibleObject>(SceneObject::ITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
-	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
+	objectFactory.registerObject<Container>(SceneObject::WEARABLECONTAINER);
 	objectFactory.registerObject<LootkitObject>(SceneObject::LOOTKIT);
 
 	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
