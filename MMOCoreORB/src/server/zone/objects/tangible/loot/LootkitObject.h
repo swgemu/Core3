@@ -95,7 +95,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -145,7 +145,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -204,7 +204,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -213,7 +213,7 @@ public:
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 protected:
-	String _param1_canAddObject__SceneObject_String_;
+	String _param2_canAddObject__SceneObject_int_String_;
 };
 
 class LootkitObjectHelper : public DistributedObjectClassHelper, public Singleton<LootkitObjectHelper> {

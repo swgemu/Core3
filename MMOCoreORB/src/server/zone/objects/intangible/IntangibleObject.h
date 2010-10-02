@@ -50,6 +50,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	bool isIntangibleObject();
+
 	void sendBaselinesTo(SceneObject* player);
 
 	void updateStatus(int newStatus, bool notifyClient = true);
@@ -90,6 +92,8 @@ public:
 	void initializeTransientMembers();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	bool isIntangibleObject();
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -137,6 +141,8 @@ public:
 	void finalize();
 
 	void initializeTransientMembers();
+
+	bool isIntangibleObject();
 
 	void sendBaselinesTo(SceneObject* player);
 

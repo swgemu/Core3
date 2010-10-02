@@ -1706,18 +1706,19 @@ void CreatureObject::addCooldown(const String& name, unsigned int miliseconds) {
 		((CreatureObjectImplementation*) _impl)->addCooldown(name, miliseconds);
 }
 
-int CreatureObject::canAddObject(SceneObject* object, String& errorDescription) {
+int CreatureObject::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 128);
 		method.addObjectParameter(object);
+		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CreatureObjectImplementation*) _impl)->canAddObject(object, errorDescription);
+		return ((CreatureObjectImplementation*) _impl)->canAddObject(object, containmentType, errorDescription);
 }
 
 void CreatureObject::doAnimation(const String& animation) {
@@ -4142,7 +4143,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		addCooldown(inv->getAsciiParameter(_param0_addCooldown__String_int_), inv->getUnsignedIntParameter());
 		break;
 	case 129:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_canAddObject__SceneObject_String_)));
+		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
 	case 130:
 		doAnimation(inv->getAsciiParameter(_param0_doAnimation__String_));
@@ -4922,8 +4923,8 @@ void CreatureObjectAdapter::addCooldown(const String& name, unsigned int milisec
 	((CreatureObjectImplementation*) impl)->addCooldown(name, miliseconds);
 }
 
-int CreatureObjectAdapter::canAddObject(SceneObject* object, String& errorDescription) {
-	return ((CreatureObjectImplementation*) impl)->canAddObject(object, errorDescription);
+int CreatureObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	return ((CreatureObjectImplementation*) impl)->canAddObject(object, containmentType, errorDescription);
 }
 
 void CreatureObjectAdapter::doAnimation(const String& animation) {

@@ -44,12 +44,24 @@ void IntangibleObject::loadTemplateData(SharedObjectTemplate* templateData) {
 		((IntangibleObjectImplementation*) _impl)->loadTemplateData(templateData);
 }
 
-void IntangibleObject::sendBaselinesTo(SceneObject* player) {
+bool IntangibleObject::isIntangibleObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((IntangibleObjectImplementation*) _impl)->isIntangibleObject();
+}
+
+void IntangibleObject::sendBaselinesTo(SceneObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -62,7 +74,7 @@ void IntangibleObject::updateStatus(int newStatus, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(newStatus);
 		method.addBooleanParameter(notifyClient);
 
@@ -76,7 +88,7 @@ unsigned int IntangibleObject::getStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -90,6 +102,7 @@ unsigned int IntangibleObject::getStatus() {
 IntangibleObjectImplementation::IntangibleObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 IntangibleObjectImplementation::~IntangibleObjectImplementation() {
 	IntangibleObjectImplementation::finalize();
@@ -167,8 +180,13 @@ void IntangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* temp
 	SceneObjectImplementation::loadTemplateData(templateData);
 }
 
+bool IntangibleObjectImplementation::isIntangibleObject() {
+	// server/zone/objects/intangible/IntangibleObject.idl(79):  		return true;
+	return true;
+}
+
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(82):  		return status;
+	// server/zone/objects/intangible/IntangibleObject.idl(86):  		return status;
 	return status;
 }
 
@@ -190,12 +208,15 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		initializeTransientMembers();
 		break;
 	case 8:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		resp->insertBoolean(isIntangibleObject());
 		break;
 	case 9:
-		updateStatus(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
+		updateStatus(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 11:
 		resp->insertInt(getStatus());
 		break;
 	default:
@@ -211,6 +232,10 @@ void IntangibleObjectAdapter::finalize() {
 
 void IntangibleObjectAdapter::initializeTransientMembers() {
 	((IntangibleObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+bool IntangibleObjectAdapter::isIntangibleObject() {
+	return ((IntangibleObjectImplementation*) impl)->isIntangibleObject();
 }
 
 void IntangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {

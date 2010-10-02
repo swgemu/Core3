@@ -1260,8 +1260,8 @@ uint32 CreatureObjectImplementation::getWearableMask() {
 	return characterMask;
 }
 
-int CreatureObjectImplementation::canAddObject(SceneObject* object, String& errorDescription) {
-	if (object->isTangibleObject()) {
+int CreatureObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	if (object->isTangibleObject() && containmentType == 4) {
 		TangibleObject* wearable = (TangibleObject*) object;
 
 		uint16 charMask = getWearableMask();
@@ -1277,7 +1277,7 @@ int CreatureObjectImplementation::canAddObject(SceneObject* object, String& erro
 		}
 	}
 
-	return TangibleObjectImplementation::canAddObject(object, errorDescription);
+	return TangibleObjectImplementation::canAddObject(object, containmentType, errorDescription);
 }
 
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {

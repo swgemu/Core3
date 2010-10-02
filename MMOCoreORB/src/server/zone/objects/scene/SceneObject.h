@@ -686,7 +686,7 @@ public:
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	void synchronizedUIListen(SceneObject* player, int value);
 
@@ -942,6 +942,8 @@ public:
 
 	bool isComponent();
 
+	bool isIntangibleObject();
+
 	bool isInstrument();
 
 	bool isInstallationObject();
@@ -1021,6 +1023,10 @@ public:
 	unsigned int getPlanetCRC();
 
 	bool isStaticObject();
+
+	bool isContainerOject();
+
+	bool isTerminal();
 
 	bool isControlDevice();
 
@@ -1595,7 +1601,7 @@ public:
 
 	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
 
-	virtual int canAddObject(SceneObject* object, String& errorDescription);
+	virtual int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	virtual void synchronizedUIListen(SceneObject* player, int value);
 
@@ -1851,6 +1857,8 @@ public:
 
 	virtual bool isComponent();
 
+	virtual bool isIntangibleObject();
+
 	bool isInstrument();
 
 	virtual bool isInstallationObject();
@@ -1931,6 +1939,10 @@ public:
 
 	bool isStaticObject();
 
+	virtual bool isContainerOject();
+
+	virtual bool isTerminal();
+
 	virtual bool isControlDevice();
 
 	virtual bool isMissionTerminal();
@@ -2010,7 +2022,7 @@ public:
 
 	bool removeObject(SceneObject* object, bool notifyClient);
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	void synchronizedUIListen(SceneObject* player, int value);
 
@@ -2238,6 +2250,8 @@ public:
 
 	bool isComponent();
 
+	bool isIntangibleObject();
+
 	bool isInstrument();
 
 	bool isInstallationObject();
@@ -2310,6 +2324,10 @@ public:
 
 	bool isStaticObject();
 
+	bool isContainerOject();
+
+	bool isTerminal();
+
 	bool isControlDevice();
 
 	bool isMissionTerminal();
@@ -2331,7 +2349,7 @@ public:
 protected:
 	String _param0_info__String_bool_;
 	String _param0_error__String_;
-	String _param1_canAddObject__SceneObject_String_;
+	String _param2_canAddObject__SceneObject_int_String_;
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
 	String _param0_hasSlotDescriptor__String_;
 	String _param0_getSlottedObject__String_;

@@ -37,6 +37,8 @@ public:
 
 	void initializeTransientMembers();
 
+	bool isTerminal();
+
 protected:
 	Terminal(DummyConstructorParameter* param);
 
@@ -67,6 +69,8 @@ public:
 	TerminalImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	bool isTerminal();
 
 	Terminal* _this;
 
@@ -108,6 +112,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	bool isTerminal();
 
 };
 

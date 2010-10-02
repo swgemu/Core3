@@ -254,6 +254,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	regionTree->inRange(worldPos.getX(), worldPos.getY(), 512, entryObjects);
 
+	// update old ones
 	for (int i = 0; i < areas.size(); ++i) {
 		ManagedReference<ActiveArea*> area = areas.get(i);
 
@@ -265,29 +266,19 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	// we update the ones in quadtree.
 	for (int i = 0; i < entryObjects.size(); ++i) {
-		//update in range ones, drop unexistent ones
+		//update in new ones
 		ActiveAreaImplementation* obj = dynamic_cast<ActiveAreaImplementation*>(entryObjects.get(i));
 
 		ActiveArea* activeArea = obj->_this;
 
-		/*if (!areas.contains(activeArea) && object->hasActiveArea(activeArea)) {
-			if (!activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
-				object->dropActiveArea(activeArea);
-				activeArea->enqueueExitEvent(object);
-			}
-		} else {*/
-			if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
-				object->addActiveArea(activeArea);
-				activeArea->enqueueEnterEvent(object);
-			}
-		//}
+		if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+			object->addActiveArea(activeArea);
+			activeArea->enqueueEnterEvent(object);
+		}
+
 	}
 
 }
-
-/*ChatManager* ZoneImplementation::getChatManager() {
-	return server->getChatManager();
-}*/
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
 	objectMap.put(object->getObjectID(), object);

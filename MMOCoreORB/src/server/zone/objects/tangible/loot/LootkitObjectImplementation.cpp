@@ -117,7 +117,7 @@ void LootkitObjectImplementation::createItem() {
 	}
 }
 
-int LootkitObjectImplementation::canAddObject(SceneObject* object, String& errorDescription) {
+int LootkitObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	if (components.contains(object->getServerObjectCRC())) {
 
 		if (!components.get(object->getServerObjectCRC()) && getPlayer() != NULL) {
@@ -128,7 +128,7 @@ int LootkitObjectImplementation::canAddObject(SceneObject* object, String& error
 				return 5;
 			}
 
-			return TangibleObjectImplementation::canAddObject(object, errorDescription);
+			return TangibleObjectImplementation::canAddObject(object, containmentType, errorDescription);
 
 		} else {
 

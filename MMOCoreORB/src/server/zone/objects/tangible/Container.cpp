@@ -46,17 +46,44 @@ void Container::initializeTransientMembers() {
 		((ContainerImplementation*) _impl)->initializeTransientMembers();
 }
 
-void Container::sendContainerObjectsTo(SceneObject* player) {
+int Container::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(object);
+		method.addSignedIntParameter(containmentType);
+		method.addAsciiParameter(errorDescription);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ContainerImplementation*) _impl)->canAddObject(object, containmentType, errorDescription);
+}
+
+void Container::sendContainerObjectsTo(SceneObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
 		((ContainerImplementation*) _impl)->sendContainerObjectsTo(player);
+}
+
+bool Container::isContainerOject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ContainerImplementation*) _impl)->isContainerOject();
 }
 
 /*
@@ -66,6 +93,7 @@ void Container::sendContainerObjectsTo(SceneObject* player) {
 ContainerImplementation::ContainerImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ContainerImplementation::~ContainerImplementation() {
 }
@@ -134,6 +162,11 @@ ContainerImplementation::ContainerImplementation() {
 	Logger::setLoggingName("Container");
 }
 
+bool ContainerImplementation::isContainerOject() {
+	// server/zone/objects/tangible/Container.idl(77):  		return true;
+	return true;
+}
+
 /*
  *	ContainerAdapter
  */
@@ -149,7 +182,13 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		initializeTransientMembers();
 		break;
 	case 7:
+		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		break;
+	case 8:
 		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 9:
+		resp->insertBoolean(isContainerOject());
 		break;
 	default:
 		return NULL;
@@ -162,8 +201,16 @@ void ContainerAdapter::initializeTransientMembers() {
 	((ContainerImplementation*) impl)->initializeTransientMembers();
 }
 
+int ContainerAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	return ((ContainerImplementation*) impl)->canAddObject(object, containmentType, errorDescription);
+}
+
 void ContainerAdapter::sendContainerObjectsTo(SceneObject* player) {
 	((ContainerImplementation*) impl)->sendContainerObjectsTo(player);
+}
+
+bool ContainerAdapter::isContainerOject() {
+	return ((ContainerImplementation*) impl)->isContainerOject();
 }
 
 /*

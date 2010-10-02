@@ -111,7 +111,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -164,7 +164,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -223,7 +223,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	int canAddObject(SceneObject* object, String& errorDescription);
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
@@ -234,7 +234,7 @@ public:
 	bool removeObject(SceneObject* object, bool notifyClient);
 
 protected:
-	String _param1_canAddObject__SceneObject_String_;
+	String _param2_canAddObject__SceneObject_int_String_;
 };
 
 class FishingPoleObjectHelper : public DistributedObjectClassHelper, public Singleton<FishingPoleObjectHelper> {

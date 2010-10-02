@@ -337,7 +337,7 @@ class PlayerCreature extends CreatureObject {
 	 */
 	public native boolean isAttackableBy(CreatureObject object);
 	
-	public native int canAddObject(SceneObject object, string errorDescription);
+	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 	
 	/**
 	 * Is called when this object has been inserted with an object
