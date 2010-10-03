@@ -51,7 +51,7 @@ which carries forward this exception.
 
 #include "PingClient.h"
 
-class PingServer : public DatagramServiceThread {
+class PingServer : public DatagramServiceThread, public ServiceHandler {
 	PingMessageProcessorThread** processors;
 
 	int procThreadCount;
@@ -61,7 +61,7 @@ public:
 
 	~PingServer();
 
-	void init();
+	void initialize();
 
 	void run();
 

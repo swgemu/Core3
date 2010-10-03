@@ -39,6 +39,20 @@ class AttributeListMessage;
 
 using namespace server::zone::packets::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/deed/Deed.h"
@@ -68,6 +82,10 @@ public:
 	void setSurplusPower(unsigned int power);
 
 	bool isInstallationDeed();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	InstallationDeed(DummyConstructorParameter* param);
@@ -126,6 +144,8 @@ public:
 protected:
 	virtual ~InstallationDeedImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -149,6 +169,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class InstallationDeed;
+	friend class TransactionalObjectHandle<InstallationDeedImplementation*>;
 };
 
 class InstallationDeedAdapter : public DeedAdapter {

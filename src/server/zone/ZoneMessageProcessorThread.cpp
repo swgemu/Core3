@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "ZonePacketHandler.h"
 
 #include "ZoneClientSession.h"
+#include "ZoneServer.h"
 
 void ZoneMessageProcessorThread::processMessage(Message* message) {
 	ObjectDatabaseManager::instance()->startLocalTransaction();

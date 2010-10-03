@@ -12,13 +12,87 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	SurveyToolStub
  */
 
 SurveyTool::SurveyTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new SurveyToolImplementation();
-	_impl->_setStub(this);
+	SurveyToolImplementation* _implementation = new SurveyToolImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 SurveyTool::SurveyTool(DummyConstructorParameter* param) : ToolTangibleObject(param) {
@@ -29,7 +103,8 @@ SurveyTool::~SurveyTool() {
 
 
 void SurveyTool::initializeTransientMembers() {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,35 +112,39 @@ void SurveyTool::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void SurveyTool::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SurveyToolImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void SurveyTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SurveyToolImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 void SurveyTool::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((SurveyToolImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 void SurveyTool::setRange(int r) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,11 +153,12 @@ void SurveyTool::setRange(int r) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->setRange(r);
+		_implementation->setRange(r);
 }
 
 int SurveyTool::getRange() {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,11 +166,12 @@ int SurveyTool::getRange() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SurveyToolImplementation*) _impl)->getRange();
+		return _implementation->getRange();
 }
 
 int SurveyTool::getPoints() {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -98,11 +179,12 @@ int SurveyTool::getPoints() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SurveyToolImplementation*) _impl)->getPoints();
+		return _implementation->getPoints();
 }
 
 bool SurveyTool::canSampleRadioactive() {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,11 +192,12 @@ bool SurveyTool::canSampleRadioactive() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SurveyToolImplementation*) _impl)->canSampleRadioactive();
+		return _implementation->canSampleRadioactive();
 }
 
 bool SurveyTool::tryGamble() {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +205,12 @@ bool SurveyTool::tryGamble() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SurveyToolImplementation*) _impl)->tryGamble();
+		return _implementation->tryGamble();
 }
 
 void SurveyTool::clearGamble() {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -134,11 +218,12 @@ void SurveyTool::clearGamble() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->clearGamble();
+		_implementation->clearGamble();
 }
 
 void SurveyTool::consentRadioactiveSample(PlayerCreature* player) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -147,11 +232,12 @@ void SurveyTool::consentRadioactiveSample(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->consentRadioactiveSample(player);
+		_implementation->consentRadioactiveSample(player);
 }
 
 void SurveyTool::sendRadioactiveWarning(PlayerCreature* player) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,11 +246,12 @@ void SurveyTool::sendRadioactiveWarning(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->sendRadioactiveWarning(player);
+		_implementation->sendRadioactiveWarning(player);
 }
 
 void SurveyTool::sendRangeSui(PlayerCreature* player) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -173,11 +260,12 @@ void SurveyTool::sendRangeSui(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->sendRangeSui(player);
+		_implementation->sendRangeSui(player);
 }
 
 void SurveyTool::surveyCnodeMinigameSui(PlayerCreature* player) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -186,11 +274,12 @@ void SurveyTool::surveyCnodeMinigameSui(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->surveyCnodeMinigameSui(player);
+		_implementation->surveyCnodeMinigameSui(player);
 }
 
 void SurveyTool::surveyCnodeMinigame(PlayerCreature* player, int value) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -200,19 +289,21 @@ void SurveyTool::surveyCnodeMinigame(PlayerCreature* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->surveyCnodeMinigame(player, value);
+		_implementation->surveyCnodeMinigame(player, value);
 }
 
 Coordinate* SurveyTool::getRichSampleLocation() {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((SurveyToolImplementation*) _impl)->getRichSampleLocation();
+		return _implementation->getRichSampleLocation();
 }
 
 void SurveyTool::clearRichSampleLocation() {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -220,11 +311,12 @@ void SurveyTool::clearRichSampleLocation() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->clearRichSampleLocation();
+		_implementation->clearRichSampleLocation();
 }
 
 void SurveyTool::setInUse(bool use) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -233,11 +325,12 @@ void SurveyTool::setInUse(bool use) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->setInUse(use);
+		_implementation->setInUse(use);
 }
 
 bool SurveyTool::isInUse() {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -245,11 +338,12 @@ bool SurveyTool::isInUse() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SurveyToolImplementation*) _impl)->isInUse();
+		return _implementation->isInUse();
 }
 
 void SurveyTool::surveyGnodeMinigameSui(PlayerCreature* player) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -258,11 +352,12 @@ void SurveyTool::surveyGnodeMinigameSui(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->surveyGnodeMinigameSui(player);
+		_implementation->surveyGnodeMinigameSui(player);
 }
 
 void SurveyTool::surveyGnodeMinigame(PlayerCreature* player, int value) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -272,11 +367,12 @@ void SurveyTool::surveyGnodeMinigame(PlayerCreature* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->surveyGnodeMinigame(player, value);
+		_implementation->surveyGnodeMinigame(player, value);
 }
 
 int SurveyTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -286,11 +382,12 @@ int SurveyTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SurveyToolImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void SurveyTool::sendResourceListTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -299,11 +396,12 @@ void SurveyTool::sendResourceListTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->sendResourceListTo(player);
+		_implementation->sendResourceListTo(player);
 }
 
 void SurveyTool::sendSurveyTo(PlayerCreature* player, const String& resname) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -313,11 +411,12 @@ void SurveyTool::sendSurveyTo(PlayerCreature* player, const String& resname) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->sendSurveyTo(player, resname);
+		_implementation->sendSurveyTo(player, resname);
 }
 
 void SurveyTool::sendSampleTo(PlayerCreature* player, const String& resname) {
-	if (_impl == NULL) {
+	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -327,8 +426,14 @@ void SurveyTool::sendSampleTo(PlayerCreature* player, const String& resname) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyToolImplementation*) _impl)->sendSampleTo(player, resname);
+		_implementation->sendSampleTo(player, resname);
 }
+
+DistributedObjectServant* SurveyTool::_getImplementation() {
+	return getForUpdate();}
+
+void SurveyTool::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	SurveyToolImplementation
@@ -337,6 +442,7 @@ void SurveyTool::sendSampleTo(PlayerCreature* player, const String& resname) {
 SurveyToolImplementation::SurveyToolImplementation(DummyConstructorParameter* param) : ToolTangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SurveyToolImplementation::~SurveyToolImplementation() {
 }
@@ -364,32 +470,30 @@ SurveyToolImplementation::operator const SurveyTool*() {
 	return _this;
 }
 
+TransactionalObject* SurveyToolImplementation::clone() {
+	return (TransactionalObject*) new SurveyToolImplementation(*this);
+}
+
+
 void SurveyToolImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SurveyToolImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SurveyToolImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SurveyToolImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SurveyToolImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SurveyToolImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SurveyToolImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SurveyToolImplementation::_serializationHelperMethod() {

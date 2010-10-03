@@ -10,13 +10,59 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	DynamicSpawnAreaStub
  */
 
 DynamicSpawnArea::DynamicSpawnArea() : ActiveArea(DummyConstructorParameter::instance()) {
-	_impl = new DynamicSpawnAreaImplementation();
-	_impl->_setStub(this);
+	DynamicSpawnAreaImplementation* _implementation = new DynamicSpawnAreaImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 DynamicSpawnArea::DynamicSpawnArea(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -27,7 +73,8 @@ DynamicSpawnArea::~DynamicSpawnArea() {
 
 
 void DynamicSpawnArea::spawnCreature(unsigned int templateCRC) {
-	if (_impl == NULL) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -36,27 +83,30 @@ void DynamicSpawnArea::spawnCreature(unsigned int templateCRC) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DynamicSpawnAreaImplementation*) _impl)->spawnCreature(templateCRC);
+		_implementation->spawnCreature(templateCRC);
 }
 
 void DynamicSpawnArea::notifyPositionUpdate(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DynamicSpawnAreaImplementation*) _impl)->notifyPositionUpdate(obj);
+		_implementation->notifyPositionUpdate(obj);
 }
 
 void DynamicSpawnArea::notifyDissapear(QuadTreeEntry* entry) {
-	if (_impl == NULL) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DynamicSpawnAreaImplementation*) _impl)->notifyDissapear(entry);
+		_implementation->notifyDissapear(entry);
 }
 
 void DynamicSpawnArea::setMaxCreaturesToSpawn(int num) {
-	if (_impl == NULL) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -65,8 +115,14 @@ void DynamicSpawnArea::setMaxCreaturesToSpawn(int num) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DynamicSpawnAreaImplementation*) _impl)->setMaxCreaturesToSpawn(num);
+		_implementation->setMaxCreaturesToSpawn(num);
 }
+
+DistributedObjectServant* DynamicSpawnArea::_getImplementation() {
+	return getForUpdate();}
+
+void DynamicSpawnArea::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	DynamicSpawnAreaImplementation
@@ -75,6 +131,7 @@ void DynamicSpawnArea::setMaxCreaturesToSpawn(int num) {
 DynamicSpawnAreaImplementation::DynamicSpawnAreaImplementation(DummyConstructorParameter* param) : ActiveAreaImplementation(param) {
 	_initializeImplementation();
 }
+
 
 DynamicSpawnAreaImplementation::~DynamicSpawnAreaImplementation() {
 }
@@ -102,32 +159,30 @@ DynamicSpawnAreaImplementation::operator const DynamicSpawnArea*() {
 	return _this;
 }
 
+TransactionalObject* DynamicSpawnAreaImplementation::clone() {
+	return (TransactionalObject*) new DynamicSpawnAreaImplementation(*this);
+}
+
+
 void DynamicSpawnAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void DynamicSpawnAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void DynamicSpawnAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::_serializationHelperMethod() {

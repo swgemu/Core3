@@ -8,13 +8,71 @@
 
 #include "server/zone/Zone.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	WearableObjectStub
  */
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WearableObjectImplementation();
-	_impl->_setStub(this);
+	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -25,7 +83,8 @@ WearableObject::~WearableObject() {
 
 
 void WearableObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,19 +92,21 @@ void WearableObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((WearableObjectImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void WearableObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WearableObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void WearableObject::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -54,11 +115,12 @@ void WearableObject::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WearableObjectImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 bool WearableObject::isWearableObject() {
-	if (_impl == NULL) {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +128,12 @@ bool WearableObject::isWearableObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WearableObjectImplementation*) _impl)->isWearableObject();
+		return _implementation->isWearableObject();
 }
 
 int WearableObject::getMaxSockets() {
-	if (_impl == NULL) {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -78,11 +141,12 @@ int WearableObject::getMaxSockets() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WearableObjectImplementation*) _impl)->getMaxSockets();
+		return _implementation->getMaxSockets();
 }
 
 int WearableObject::socketsUsed() {
-	if (_impl == NULL) {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +154,12 @@ int WearableObject::socketsUsed() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WearableObjectImplementation*) _impl)->socketsUsed();
+		return _implementation->socketsUsed();
 }
 
 int WearableObject::socketsLeft() {
-	if (_impl == NULL) {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,11 +167,12 @@ int WearableObject::socketsLeft() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WearableObjectImplementation*) _impl)->socketsLeft();
+		return _implementation->socketsLeft();
 }
 
 void WearableObject::setMaxSockets(int sockets) {
-	if (_impl == NULL) {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,8 +181,14 @@ void WearableObject::setMaxSockets(int sockets) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WearableObjectImplementation*) _impl)->setMaxSockets(sockets);
+		_implementation->setMaxSockets(sockets);
 }
+
+DistributedObjectServant* WearableObject::_getImplementation() {
+	return getForUpdate();}
+
+void WearableObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	WearableObjectImplementation
@@ -125,6 +197,7 @@ void WearableObject::setMaxSockets(int sockets) {
 WearableObjectImplementation::WearableObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 WearableObjectImplementation::~WearableObjectImplementation() {
 }
@@ -152,32 +225,30 @@ WearableObjectImplementation::operator const WearableObject*() {
 	return _this;
 }
 
+TransactionalObject* WearableObjectImplementation::clone() {
+	return (TransactionalObject*) new WearableObjectImplementation(*this);
+}
+
+
 void WearableObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void WearableObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void WearableObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void WearableObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void WearableObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void WearableObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void WearableObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void WearableObjectImplementation::_serializationHelperMethod() {

@@ -157,6 +157,10 @@ public:
 
 	bool isCurePack();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	CurePack(DummyConstructorParameter* param);
 
@@ -222,6 +226,8 @@ public:
 protected:
 	virtual ~CurePackImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -245,6 +251,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CurePack;
+	friend class TransactionalObjectHandle<CurePackImplementation*>;
 };
 
 class CurePackAdapter : public PharmaceuticalObjectAdapter {

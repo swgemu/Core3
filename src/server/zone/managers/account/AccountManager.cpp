@@ -8,13 +8,61 @@
 
 #include "server/zone/ZoneClientSession.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
 /*
  *	AccountManagerStub
  */
 
 AccountManager::AccountManager(ZoneServer* zserv) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new AccountManagerImplementation(zserv);
-	_impl->_setStub(this);
+	AccountManagerImplementation* _implementation = new AccountManagerImplementation(zserv);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 AccountManager::AccountManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -25,7 +73,8 @@ AccountManager::~AccountManager() {
 
 
 void AccountManager::registerSession(ZoneClientSession* client) {
-	if (_impl == NULL) {
+	AccountManagerImplementation* _implementation = (AccountManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -34,11 +83,12 @@ void AccountManager::registerSession(ZoneClientSession* client) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AccountManagerImplementation*) _impl)->registerSession(client);
+		_implementation->registerSession(client);
 }
 
 void AccountManager::unregisterSession(ZoneClientSession* client) {
-	if (_impl == NULL) {
+	AccountManagerImplementation* _implementation = (AccountManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +97,12 @@ void AccountManager::unregisterSession(ZoneClientSession* client) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AccountManagerImplementation*) _impl)->unregisterSession(client);
+		_implementation->unregisterSession(client);
 }
 
 int AccountManager::getOnlineCharactersPerAccount() {
-	if (_impl == NULL) {
+	AccountManagerImplementation* _implementation = (AccountManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +110,12 @@ int AccountManager::getOnlineCharactersPerAccount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((AccountManagerImplementation*) _impl)->getOnlineCharactersPerAccount();
+		return _implementation->getOnlineCharactersPerAccount();
 }
 
 void AccountManager::setOnlineCharactersPerAccount(int total) {
-	if (_impl == NULL) {
+	AccountManagerImplementation* _implementation = (AccountManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +124,12 @@ void AccountManager::setOnlineCharactersPerAccount(int total) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AccountManagerImplementation*) _impl)->setOnlineCharactersPerAccount(total);
+		_implementation->setOnlineCharactersPerAccount(total);
 }
 
 int AccountManager::getTotalOnlineCharacters(unsigned int accountid) {
-	if (_impl == NULL) {
+	AccountManagerImplementation* _implementation = (AccountManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -85,8 +138,14 @@ int AccountManager::getTotalOnlineCharacters(unsigned int accountid) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((AccountManagerImplementation*) _impl)->getTotalOnlineCharacters(accountid);
+		return _implementation->getTotalOnlineCharacters(accountid);
 }
+
+DistributedObjectServant* AccountManager::_getImplementation() {
+	return getForUpdate();}
+
+void AccountManager::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	AccountManagerImplementation
@@ -123,32 +182,30 @@ AccountManagerImplementation::operator const AccountManager*() {
 	return _this;
 }
 
+TransactionalObject* AccountManagerImplementation::clone() {
+	return (TransactionalObject*) new AccountManagerImplementation(*this);
+}
+
+
 void AccountManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void AccountManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void AccountManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void AccountManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void AccountManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void AccountManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void AccountManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void AccountManagerImplementation::_serializationHelperMethod() {

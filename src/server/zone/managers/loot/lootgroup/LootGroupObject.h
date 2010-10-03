@@ -87,6 +87,10 @@ public:
 
 	unsigned int getLootGroup();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	LootGroupObject(DummyConstructorParameter* param);
 
@@ -154,6 +158,8 @@ public:
 protected:
 	virtual ~LootGroupObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -177,6 +183,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class LootGroupObject;
+	friend class TransactionalObjectHandle<LootGroupObjectImplementation*>;
 };
 
 class LootGroupObjectAdapter : public ManagedObjectAdapter {

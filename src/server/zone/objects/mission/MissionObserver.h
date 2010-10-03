@@ -82,6 +82,10 @@ public:
 
 	void destroyObjectFromDatabase();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	MissionObserver(DummyConstructorParameter* param);
 

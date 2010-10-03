@@ -147,20 +147,6 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-
-class Facade;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
@@ -170,6 +156,8 @@ using namespace server::zone::objects::scene;
 #include "server/zone/objects/scene/variables/PendingTasksMap.h"
 
 #include "server/zone/objects/scene/ObserverEventType.h"
+
+#include "server/zone/objects/scene/Facade.h"
 
 #include "engine/log/Logger.h"
 
@@ -1047,6 +1035,10 @@ public:
 	int getMapLocationsType3();
 
 	void createChildObjects();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -1971,6 +1963,8 @@ public:
 protected:
 	virtual ~SceneObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -1992,6 +1986,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SceneObject;
+	friend class TransactionalObjectHandle<SceneObjectImplementation*>;
 };
 
 class SceneObjectAdapter : public ObservableAdapter {

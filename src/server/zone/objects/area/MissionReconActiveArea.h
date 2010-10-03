@@ -68,6 +68,10 @@ public:
 
 	void setMissionObjective(ReconMissionObjective* mission);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	MissionReconActiveArea(DummyConstructorParameter* param);
 
@@ -109,6 +113,8 @@ public:
 protected:
 	virtual ~MissionReconActiveAreaImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -132,6 +138,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionReconActiveArea;
+	friend class TransactionalObjectHandle<MissionReconActiveAreaImplementation*>;
 };
 
 class MissionReconActiveAreaAdapter : public ActiveAreaAdapter {

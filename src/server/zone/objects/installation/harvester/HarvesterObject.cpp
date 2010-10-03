@@ -4,13 +4,57 @@
 
 #include "HarvesterObject.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
+
+// Imported class dependencies
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "system/util/Vector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
+
+#include "server/zone/Zone.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/installation/HopperList.h"
+
 /*
  *	HarvesterObjectStub
  */
 
 HarvesterObject::HarvesterObject() : InstallationObject(DummyConstructorParameter::instance()) {
-	_impl = new HarvesterObjectImplementation();
-	_impl->_setStub(this);
+	HarvesterObjectImplementation* _implementation = new HarvesterObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 HarvesterObject::HarvesterObject(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -21,23 +65,26 @@ HarvesterObject::~HarvesterObject() {
 
 
 void HarvesterObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((HarvesterObjectImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((HarvesterObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int HarvesterObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +94,12 @@ int HarvesterObject::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((HarvesterObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void HarvesterObject::synchronizedUIListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
+	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +109,12 @@ void HarvesterObject::synchronizedUIListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->synchronizedUIListen(player, value);
+		_implementation->synchronizedUIListen(player, value);
 }
 
 void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
+	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -75,11 +124,12 @@ void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
+		_implementation->synchronizedUIStopListen(player, value);
 }
 
 void HarvesterObject::updateOperators() {
-	if (_impl == NULL) {
+	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -87,11 +137,12 @@ void HarvesterObject::updateOperators() {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->updateOperators();
+		_implementation->updateOperators();
 }
 
 bool HarvesterObject::isHarvesterObject() {
-	if (_impl == NULL) {
+	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -99,8 +150,14 @@ bool HarvesterObject::isHarvesterObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((HarvesterObjectImplementation*) _impl)->isHarvesterObject();
+		return _implementation->isHarvesterObject();
 }
+
+DistributedObjectServant* HarvesterObject::_getImplementation() {
+	return getForUpdate();}
+
+void HarvesterObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	HarvesterObjectImplementation
@@ -109,6 +166,7 @@ bool HarvesterObject::isHarvesterObject() {
 HarvesterObjectImplementation::HarvesterObjectImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 HarvesterObjectImplementation::~HarvesterObjectImplementation() {
 }
@@ -136,32 +194,30 @@ HarvesterObjectImplementation::operator const HarvesterObject*() {
 	return _this;
 }
 
+TransactionalObject* HarvesterObjectImplementation::clone() {
+	return (TransactionalObject*) new HarvesterObjectImplementation(*this);
+}
+
+
 void HarvesterObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void HarvesterObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void HarvesterObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void HarvesterObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void HarvesterObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void HarvesterObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void HarvesterObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void HarvesterObjectImplementation::_serializationHelperMethod() {
@@ -173,21 +229,21 @@ void HarvesterObjectImplementation::_serializationHelperMethod() {
 
 HarvesterObjectImplementation::HarvesterObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(51):  		Logger.setLoggingName("HarvesterObject");
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(52):  		Logger.setLoggingName("HarvesterObject");
 	Logger::setLoggingName("HarvesterObject");
 }
 
 void HarvesterObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(62):  		super.loadTemplateData(templateData);
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(63):  		super.loadTemplateData(templateData);
 	InstallationObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(64):  		super.surplusPower = 1000;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(65):  		super.surplusPower = 1000;
 	InstallationObjectImplementation::surplusPower = 1000;
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(65):  		super.basePowerRate = 100;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(66):  		super.basePowerRate = 100;
 	InstallationObjectImplementation::basePowerRate = 100;
 }
 
 bool HarvesterObjectImplementation::isHarvesterObject() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(109):  		return true;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl(110):  		return true;
 	return true;
 }
 

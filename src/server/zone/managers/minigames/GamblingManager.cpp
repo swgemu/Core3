@@ -16,12 +16,106 @@
 
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/minigames/events/GamblingEvent.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	GamblingManagerStub
  */
 
 GamblingManager::GamblingManager(ZoneServer* server) : Observer(DummyConstructorParameter::instance()) {
-	_impl = new GamblingManagerImplementation(server);
+	GamblingManagerImplementation* _implementation = new GamblingManagerImplementation(server);
+	_impl = _implementation;
 	_impl->_setStub(this);
 }
 
@@ -33,15 +127,17 @@ GamblingManager::~GamblingManager() {
 
 
 Vector<String>* GamblingManager::getRoulette() {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((GamblingManagerImplementation*) _impl)->getRoulette();
+		return _implementation->getRoulette();
 }
 
 void GamblingManager::initializeSlotTimer() {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +145,12 @@ void GamblingManager::initializeSlotTimer() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->initializeSlotTimer();
+		_implementation->initializeSlotTimer();
 }
 
 void GamblingManager::initializeRouletteTimer() {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +158,12 @@ void GamblingManager::initializeRouletteTimer() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->initializeRouletteTimer();
+		_implementation->initializeRouletteTimer();
 }
 
 void GamblingManager::initializeSlots() {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -73,11 +171,12 @@ void GamblingManager::initializeSlots() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->initializeSlots();
+		_implementation->initializeSlots();
 }
 
 void GamblingManager::initializeRouletteRed() {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -85,11 +184,12 @@ void GamblingManager::initializeRouletteRed() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->initializeRouletteRed();
+		_implementation->initializeRouletteRed();
 }
 
 void GamblingManager::initializeRoulette() {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -97,11 +197,12 @@ void GamblingManager::initializeRoulette() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->initializeRoulette();
+		_implementation->initializeRoulette();
 }
 
 int GamblingManager::notify(SceneObject* sceneObject) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,11 +211,12 @@ int GamblingManager::notify(SceneObject* sceneObject) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->notify(sceneObject);
+		return _implementation->notify(sceneObject);
 }
 
 bool GamblingManager::isHigh(int value) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -123,11 +225,12 @@ bool GamblingManager::isHigh(int value) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->isHigh(value);
+		return _implementation->isHigh(value);
 }
 
 bool GamblingManager::isLow(int value) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -136,11 +239,12 @@ bool GamblingManager::isLow(int value) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->isLow(value);
+		return _implementation->isLow(value);
 }
 
 bool GamblingManager::isEven(int value) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,11 +253,12 @@ bool GamblingManager::isEven(int value) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->isEven(value);
+		return _implementation->isEven(value);
 }
 
 bool GamblingManager::isOdd(int value) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -162,11 +267,12 @@ bool GamblingManager::isOdd(int value) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->isOdd(value);
+		return _implementation->isOdd(value);
 }
 
 bool GamblingManager::isBlack(int value) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -175,11 +281,12 @@ bool GamblingManager::isBlack(int value) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->isBlack(value);
+		return _implementation->isBlack(value);
 }
 
 bool GamblingManager::isRed(int value) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -188,11 +295,12 @@ bool GamblingManager::isRed(int value) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->isRed(value);
+		return _implementation->isRed(value);
 }
 
 void GamblingManager::handleSlot(PlayerCreature* player, bool cancel, bool other) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -203,11 +311,12 @@ void GamblingManager::handleSlot(PlayerCreature* player, bool cancel, bool other
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->handleSlot(player, cancel, other);
+		_implementation->handleSlot(player, cancel, other);
 }
 
 void GamblingManager::bet(PlayerCreature* player, int amount, int target, int machineType) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -219,11 +328,12 @@ void GamblingManager::bet(PlayerCreature* player, int amount, int target, int ma
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->bet(player, amount, target, machineType);
+		_implementation->bet(player, amount, target, machineType);
 }
 
 void GamblingManager::bet(GamblingTerminal* terminal, PlayerCreature* player, int amount, int target) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -235,11 +345,12 @@ void GamblingManager::bet(GamblingTerminal* terminal, PlayerCreature* player, in
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->bet(terminal, player, amount, target);
+		_implementation->bet(terminal, player, amount, target);
 }
 
 void GamblingManager::startGame(PlayerCreature* player, int machineType) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -249,11 +360,12 @@ void GamblingManager::startGame(PlayerCreature* player, int machineType) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->startGame(player, machineType);
+		_implementation->startGame(player, machineType);
 }
 
 void GamblingManager::startGame(GamblingTerminal* terminal) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -262,11 +374,12 @@ void GamblingManager::startGame(GamblingTerminal* terminal) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->startGame(terminal);
+		_implementation->startGame(terminal);
 }
 
 void GamblingManager::leaveTerminal(PlayerCreature* player, int machineType) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -276,11 +389,12 @@ void GamblingManager::leaveTerminal(PlayerCreature* player, int machineType) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->leaveTerminal(player, machineType);
+		_implementation->leaveTerminal(player, machineType);
 }
 
 void GamblingManager::registerPlayer(GamblingTerminal* terminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -290,11 +404,12 @@ void GamblingManager::registerPlayer(GamblingTerminal* terminal, PlayerCreature*
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->registerPlayer(terminal, player);
+		_implementation->registerPlayer(terminal, player);
 }
 
 void GamblingManager::refreshRouletteMenu(PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -303,11 +418,12 @@ void GamblingManager::refreshRouletteMenu(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->refreshRouletteMenu(player);
+		_implementation->refreshRouletteMenu(player);
 }
 
 void GamblingManager::continueGame(GamblingTerminal* terminal) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -316,11 +432,12 @@ void GamblingManager::continueGame(GamblingTerminal* terminal) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->continueGame(terminal);
+		_implementation->continueGame(terminal);
 }
 
 void GamblingManager::stopGame(GamblingTerminal* terminal, bool cancel) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -330,11 +447,12 @@ void GamblingManager::stopGame(GamblingTerminal* terminal, bool cancel) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->stopGame(terminal, cancel);
+		_implementation->stopGame(terminal, cancel);
 }
 
 void GamblingManager::calculateOutcome(GamblingTerminal* terminal) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -343,11 +461,12 @@ void GamblingManager::calculateOutcome(GamblingTerminal* terminal) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->calculateOutcome(terminal);
+		_implementation->calculateOutcome(terminal);
 }
 
 unsigned int GamblingManager::createWindow(GamblingTerminal* terminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -357,11 +476,12 @@ unsigned int GamblingManager::createWindow(GamblingTerminal* terminal, PlayerCre
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->createWindow(terminal, player);
+		return _implementation->createWindow(terminal, player);
 }
 
 unsigned int GamblingManager::createPayoutWindow(PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -370,11 +490,12 @@ unsigned int GamblingManager::createPayoutWindow(PlayerCreature* player) {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->createPayoutWindow(player);
+		return _implementation->createPayoutWindow(player);
 }
 
 unsigned int GamblingManager::createSlotWindow(PlayerCreature* player, unsigned int payoutBoxID) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -384,11 +505,12 @@ unsigned int GamblingManager::createSlotWindow(PlayerCreature* player, unsigned 
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->createSlotWindow(player, payoutBoxID);
+		return _implementation->createSlotWindow(player, payoutBoxID);
 }
 
 unsigned int GamblingManager::createRouletteWindow(PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -397,11 +519,12 @@ unsigned int GamblingManager::createRouletteWindow(PlayerCreature* player) {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->createRouletteWindow(player);
+		return _implementation->createRouletteWindow(player);
 }
 
 void GamblingManager::createEvent(GamblingTerminal* terminal, int time) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -411,11 +534,12 @@ void GamblingManager::createEvent(GamblingTerminal* terminal, int time) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingManagerImplementation*) _impl)->createEvent(terminal, time);
+		_implementation->createEvent(terminal, time);
 }
 
 bool GamblingManager::isPlaying(PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -424,8 +548,14 @@ bool GamblingManager::isPlaying(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingManagerImplementation*) _impl)->isPlaying(player);
+		return _implementation->isPlaying(player);
 }
+
+DistributedObjectServant* GamblingManager::_getImplementation() {
+	return _impl;}
+
+void GamblingManager::_setImplementation(DistributedObjectServant* servant) {
+	_impl = servant;}
 
 /*
  *	GamblingManagerImplementation

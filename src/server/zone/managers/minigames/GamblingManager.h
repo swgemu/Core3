@@ -176,6 +176,10 @@ public:
 
 	bool isPlaying(PlayerCreature* player);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	GamblingManager(DummyConstructorParameter* param);
 

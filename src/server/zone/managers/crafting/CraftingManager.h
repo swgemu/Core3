@@ -97,7 +97,7 @@ using namespace server::zone::objects::draftschematic;
 
 #include "engine/lua/Lua.h"
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
 
 #include "system/util/VectorMap.h"
 
@@ -106,7 +106,7 @@ namespace zone {
 namespace managers {
 namespace crafting {
 
-class CraftingManager : public ManagedObject {
+class CraftingManager : public ManagedService {
 public:
 	static const short RESOURCE = 0x00;
 
@@ -182,6 +182,10 @@ public:
 
 	String generateSerial();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	CraftingManager(DummyConstructorParameter* param);
 
@@ -204,7 +208,7 @@ namespace zone {
 namespace managers {
 namespace crafting {
 
-class CraftingManagerImplementation : public ManagedObjectImplementation, public Lua {
+class CraftingManagerImplementation : public ManagedServiceImplementation, public Lua {
 	ManagedWeakReference<ZoneServer* > zoneServer;
 
 	ZoneProcessServerImplementation* zoneProcessor;
@@ -298,6 +302,8 @@ public:
 protected:
 	virtual ~CraftingManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -321,9 +327,10 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CraftingManager;
+	friend class TransactionalObjectHandle<CraftingManagerImplementation*>;
 };
 
-class CraftingManagerAdapter : public ManagedObjectAdapter {
+class CraftingManagerAdapter : public ManagedServiceAdapter {
 public:
 	CraftingManagerAdapter(CraftingManagerImplementation* impl);
 

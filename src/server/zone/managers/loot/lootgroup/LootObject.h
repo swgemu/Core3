@@ -35,6 +35,10 @@ public:
 
 	int getChance();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	LootObject(DummyConstructorParameter* param);
 
@@ -88,6 +92,8 @@ public:
 protected:
 	virtual ~LootObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -111,6 +117,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class LootObject;
+	friend class TransactionalObjectHandle<LootObjectImplementation*>;
 };
 
 class LootObjectAdapter : public ManagedObjectAdapter {

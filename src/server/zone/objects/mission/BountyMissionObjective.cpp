@@ -18,13 +18,63 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/creature/events/AiThinkEvent.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/DamageMap.h"
+
+#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/objects/creature/events/AiMoveEvent.h"
+
+#include "server/zone/objects/creature/PatrolPointsVector.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/creature/PatrolPoint.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
+
 /*
  *	BountyMissionObjectiveStub
  */
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new BountyMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 BountyMissionObjective::BountyMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -35,7 +85,8 @@ BountyMissionObjective::~BountyMissionObjective() {
 
 
 void BountyMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +94,12 @@ void BountyMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BountyMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void BountyMissionObjective::activate() {
-	if (_impl == NULL) {
+	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +107,12 @@ void BountyMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BountyMissionObjectiveImplementation*) _impl)->activate();
+		_implementation->activate();
 }
 
 void BountyMissionObjective::abort() {
-	if (_impl == NULL) {
+	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +120,12 @@ void BountyMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BountyMissionObjectiveImplementation*) _impl)->abort();
+		_implementation->abort();
 }
 
 void BountyMissionObjective::complete() {
-	if (_impl == NULL) {
+	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +133,12 @@ void BountyMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BountyMissionObjectiveImplementation*) _impl)->complete();
+		_implementation->complete();
 }
 
 void BountyMissionObjective::spawnTarget(int zoneID) {
-	if (_impl == NULL) {
+	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +147,12 @@ void BountyMissionObjective::spawnTarget(int zoneID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BountyMissionObjectiveImplementation*) _impl)->spawnTarget(zoneID);
+		_implementation->spawnTarget(zoneID);
 }
 
 int BountyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -109,16 +165,23 @@ int BountyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsig
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BountyMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void BountyMissionObjective::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
-	if (_impl == NULL) {
+	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BountyMissionObjectiveImplementation*) _impl)->setNpcTemplateToSpawn(sp);
+		_implementation->setNpcTemplateToSpawn(sp);
 }
+
+DistributedObjectServant* BountyMissionObjective::_getImplementation() {
+	return getForUpdate();}
+
+void BountyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	BountyMissionObjectiveImplementation
@@ -127,6 +190,7 @@ void BountyMissionObjective::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
 BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BountyMissionObjectiveImplementation::~BountyMissionObjectiveImplementation() {
 	BountyMissionObjectiveImplementation::finalize();
@@ -152,32 +216,30 @@ BountyMissionObjectiveImplementation::operator const BountyMissionObjective*() {
 	return _this;
 }
 
+TransactionalObject* BountyMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new BountyMissionObjectiveImplementation(*this);
+}
+
+
 void BountyMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void BountyMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void BountyMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::_serializationHelperMethod() {

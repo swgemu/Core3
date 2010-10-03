@@ -51,6 +51,10 @@ public:
 
 	bool isMedicalBuildingObject();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	MedicalBuildingObject(DummyConstructorParameter* param);
 
@@ -90,6 +94,8 @@ public:
 protected:
 	virtual ~MedicalBuildingObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -113,6 +119,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MedicalBuildingObject;
+	friend class TransactionalObjectHandle<MedicalBuildingObjectImplementation*>;
 };
 
 class MedicalBuildingObjectAdapter : public BuildingObjectAdapter {

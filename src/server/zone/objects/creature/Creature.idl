@@ -47,6 +47,7 @@ package server.zone.objects.creature;
 import engine.core.ManagedObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.AiAgent;
+import server.zone.objects.area.ActiveArea;
 
 class Creature extends AiAgent {
 	

@@ -53,6 +53,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.ActiveArea;
 
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;

@@ -14,13 +14,65 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
+
+// Imported class dependencies
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "system/util/Vector.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/Zone.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "engine/util/Quaternion.h"
+
 /*
  *	CraftingToolStub
  */
 
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new CraftingToolImplementation();
-	_impl->_setStub(this);
+	CraftingToolImplementation* _implementation = new CraftingToolImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 CraftingTool::CraftingTool(DummyConstructorParameter* param) : ToolTangibleObject(param) {
@@ -31,7 +83,8 @@ CraftingTool::~CraftingTool() {
 
 
 void CraftingTool::initializeTransientMembers() {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,27 +92,30 @@ void CraftingTool::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void CraftingTool::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CraftingToolImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void CraftingTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CraftingToolImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int CraftingTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,19 +125,21 @@ int CraftingTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CraftingToolImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void CraftingTool::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CraftingToolImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void CraftingTool::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +148,12 @@ void CraftingTool::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 bool CraftingTool::isCraftingTool() {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,11 +161,12 @@ bool CraftingTool::isCraftingTool() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CraftingToolImplementation*) _impl)->isCraftingTool();
+		return _implementation->isCraftingTool();
 }
 
 bool CraftingTool::isReady() {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -114,11 +174,12 @@ bool CraftingTool::isReady() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CraftingToolImplementation*) _impl)->isReady();
+		return _implementation->isReady();
 }
 
 int CraftingTool::getToolType() {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -126,11 +187,12 @@ int CraftingTool::getToolType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CraftingToolImplementation*) _impl)->getToolType();
+		return _implementation->getToolType();
 }
 
 TangibleObject* CraftingTool::getPrototype() {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -138,11 +200,12 @@ TangibleObject* CraftingTool::getPrototype() {
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((CraftingToolImplementation*) _impl)->getPrototype();
+		return _implementation->getPrototype();
 }
 
 ManufactureSchematic* CraftingTool::getManufactureSchematic() {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -150,19 +213,21 @@ ManufactureSchematic* CraftingTool::getManufactureSchematic() {
 
 		return (ManufactureSchematic*) method.executeWithObjectReturn();
 	} else
-		return ((CraftingToolImplementation*) _impl)->getManufactureSchematic();
+		return _implementation->getManufactureSchematic();
 }
 
 Vector<unsigned int>* CraftingTool::getToolTabs() {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((CraftingToolImplementation*) _impl)->getToolTabs();
+		return _implementation->getToolTabs();
 }
 
 void CraftingTool::requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,11 +237,12 @@ void CraftingTool::requestCraftingSession(PlayerCreature* player, CraftingStatio
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->requestCraftingSession(player, craftingStation);
+		_implementation->requestCraftingSession(player, craftingStation);
 }
 
 void CraftingTool::cancelCraftingSession(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -185,11 +251,12 @@ void CraftingTool::cancelCraftingSession(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->cancelCraftingSession(player);
+		_implementation->cancelCraftingSession(player);
 }
 
 void CraftingTool::selectDraftSchematic(PlayerCreature* player, int index) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -199,11 +266,12 @@ void CraftingTool::selectDraftSchematic(PlayerCreature* player, int index) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->selectDraftSchematic(player, index);
+		_implementation->selectDraftSchematic(player, index);
 }
 
 void CraftingTool::synchronizedUIListenForSchematic(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -212,11 +280,12 @@ void CraftingTool::synchronizedUIListenForSchematic(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->synchronizedUIListenForSchematic(player);
+		_implementation->synchronizedUIListenForSchematic(player);
 }
 
 void CraftingTool::addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -228,11 +297,12 @@ void CraftingTool::addIngredient(PlayerCreature* player, TangibleObject* tano, i
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->addIngredient(player, tano, slot, clientCounter);
+		_implementation->addIngredient(player, tano, slot, clientCounter);
 }
 
 void CraftingTool::removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -244,11 +314,12 @@ void CraftingTool::removeIngredient(PlayerCreature* player, TangibleObject* tano
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->removeIngredient(player, tano, slot, clientCounter);
+		_implementation->removeIngredient(player, tano, slot, clientCounter);
 }
 
 void CraftingTool::nextCraftingStage(PlayerCreature* player, int clientCounter) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -258,11 +329,12 @@ void CraftingTool::nextCraftingStage(PlayerCreature* player, int clientCounter) 
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->nextCraftingStage(player, clientCounter);
+		_implementation->nextCraftingStage(player, clientCounter);
 }
 
 void CraftingTool::experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -274,11 +346,12 @@ void CraftingTool::experiment(PlayerCreature* player, int numRowsAttempted, Stri
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->experiment(player, numRowsAttempted, expString, clientCounter);
+		_implementation->experiment(player, numRowsAttempted, expString, clientCounter);
 }
 
 void CraftingTool::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -290,11 +363,12 @@ void CraftingTool::customization(PlayerCreature* player, String& name, int schem
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->customization(player, name, schematicCount, customization);
+		_implementation->customization(player, name, schematicCount, customization);
 }
 
 void CraftingTool::createPrototype(PlayerCreature* player, int clientCounter, int practice) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -305,11 +379,12 @@ void CraftingTool::createPrototype(PlayerCreature* player, int clientCounter, in
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->createPrototype(player, clientCounter, practice);
+		_implementation->createPrototype(player, clientCounter, practice);
 }
 
 void CraftingTool::createManfSchematic(PlayerCreature* player, int clientCounter) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -319,11 +394,12 @@ void CraftingTool::createManfSchematic(PlayerCreature* player, int clientCounter
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->createManfSchematic(player, clientCounter);
+		_implementation->createManfSchematic(player, clientCounter);
 }
 
 void CraftingTool::createObject(PlayerCreature* player, int timer, bool create) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -334,11 +410,12 @@ void CraftingTool::createObject(PlayerCreature* player, int timer, bool create) 
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->createObject(player, timer, create);
+		_implementation->createObject(player, timer, create);
 }
 
 void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
-	if (_impl == NULL) {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -348,8 +425,14 @@ void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->depositObject(player, practice);
+		_implementation->depositObject(player, practice);
 }
+
+DistributedObjectServant* CraftingTool::_getImplementation() {
+	return getForUpdate();}
+
+void CraftingTool::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	CraftingToolImplementation
@@ -358,6 +441,7 @@ void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
 CraftingToolImplementation::CraftingToolImplementation(DummyConstructorParameter* param) : ToolTangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CraftingToolImplementation::~CraftingToolImplementation() {
 }
@@ -385,32 +469,30 @@ CraftingToolImplementation::operator const CraftingTool*() {
 	return _this;
 }
 
+TransactionalObject* CraftingToolImplementation::clone() {
+	return (TransactionalObject*) new CraftingToolImplementation(*this);
+}
+
+
 void CraftingToolImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CraftingToolImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CraftingToolImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CraftingToolImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CraftingToolImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CraftingToolImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CraftingToolImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CraftingToolImplementation::_serializationHelperMethod() {
@@ -437,36 +519,36 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 
 CraftingToolImplementation::CraftingToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(94):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(95):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
-	// server/zone/objects/tangible/tool/CraftingTool.idl(95):  		status = "@crafting:tool_status_ready";
+	// server/zone/objects/tangible/tool/CraftingTool.idl(96):  		status = "@crafting:tool_status_ready";
 	status = "@crafting:tool_status_ready";
-	// server/zone/objects/tangible/tool/CraftingTool.idl(96):  		state = 1;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(97):  		state = 1;
 	state = 1;
 }
 
 void CraftingToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(100):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingTool.idl(101):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
 }
 
 bool CraftingToolImplementation::isCraftingTool() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(130):  		return true;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(131):  		return true;
 	return true;
 }
 
 bool CraftingToolImplementation::isReady() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(134):  		return status == "@crafting:tool_status_ready";
+	// server/zone/objects/tangible/tool/CraftingTool.idl(135):  		return status == "@crafting:tool_status_ready";
 	return status == "@crafting:tool_status_ready";
 }
 
 int CraftingToolImplementation::getToolType() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(138):  		return type;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(139):  		return type;
 	return type;
 }
 
 ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(144):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(145):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
 	return (ManufactureSchematic*) getSlottedObject("test_manf_schematic");
 }
 

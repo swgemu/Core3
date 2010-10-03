@@ -16,16 +16,70 @@
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/player/variables/FriendList.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/player/variables/SkillList.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/variables/SchematicList.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/objects/player/variables/IgnoreList.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
+
+#include "server/zone/objects/player/variables/WaypointList.h"
+
 /*
  *	CraftingManagerStub
  */
 
-CraftingManager::CraftingManager(ZoneServer* serv, ZoneProcessServerImplementation* proc, ObjectManager* objman) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new CraftingManagerImplementation(serv, proc, objman);
-	_impl->_setStub(this);
+CraftingManager::CraftingManager(ZoneServer* serv, ZoneProcessServerImplementation* proc, ObjectManager* objman) : ManagedService(DummyConstructorParameter::instance()) {
+	CraftingManagerImplementation* _implementation = new CraftingManagerImplementation(serv, proc, objman);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
-CraftingManager::CraftingManager(DummyConstructorParameter* param) : ManagedObject(param) {
+CraftingManager::CraftingManager(DummyConstructorParameter* param) : ManagedService(param) {
 }
 
 CraftingManager::~CraftingManager() {
@@ -33,31 +87,35 @@ CraftingManager::~CraftingManager() {
 
 
 void CraftingManager::initialize() {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CraftingManagerImplementation*) _impl)->initialize();
+		_implementation->initialize();
 }
 
 void CraftingManager::awardSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CraftingManagerImplementation*) _impl)->awardSchematicGroup(playerObject, schematicgroups, updateClient);
+		_implementation->awardSchematicGroup(playerObject, schematicgroups, updateClient);
 }
 
 void CraftingManager::removeSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CraftingManagerImplementation*) _impl)->removeSchematicGroup(playerObject, schematicgroups, updateClient);
+		_implementation->removeSchematicGroup(playerObject, schematicgroups, updateClient);
 }
 
 DraftSchematic* CraftingManager::getSchematic(unsigned int schematicID) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +124,12 @@ DraftSchematic* CraftingManager::getSchematic(unsigned int schematicID) {
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
 	} else
-		return ((CraftingManagerImplementation*) _impl)->getSchematic(schematicID);
+		return _implementation->getSchematic(schematicID);
 }
 
 void CraftingManager::sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +139,12 @@ void CraftingManager::sendDraftSlotsTo(PlayerCreature* player, unsigned int sche
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->sendDraftSlotsTo(player, schematicID);
+		_implementation->sendDraftSlotsTo(player, schematicID);
 }
 
 void CraftingManager::sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,11 +154,12 @@ void CraftingManager::sendResourceWeightsTo(PlayerCreature* player, unsigned int
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->sendResourceWeightsTo(player, schematicID);
+		_implementation->sendResourceWeightsTo(player, schematicID);
 }
 
 int CraftingManager::calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -109,11 +170,12 @@ int CraftingManager::calculateAssemblySuccess(PlayerCreature* player, DraftSchem
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CraftingManagerImplementation*) _impl)->calculateAssemblySuccess(player, draftSchematic, effectiveness);
+		return _implementation->calculateAssemblySuccess(player, draftSchematic, effectiveness);
 }
 
 float CraftingManager::calculateAssemblyValueModifier(int assemblyResult) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +184,12 @@ float CraftingManager::calculateAssemblyValueModifier(int assemblyResult) {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((CraftingManagerImplementation*) _impl)->calculateAssemblyValueModifier(assemblyResult);
+		return _implementation->calculateAssemblyValueModifier(assemblyResult);
 }
 
 float CraftingManager::getAssemblyPercentage(float value) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +198,12 @@ float CraftingManager::getAssemblyPercentage(float value) {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((CraftingManagerImplementation*) _impl)->getAssemblyPercentage(value);
+		return _implementation->getAssemblyPercentage(value);
 }
 
 int CraftingManager::calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -150,11 +214,12 @@ int CraftingManager::calculateExperimentationFailureRate(PlayerCreature* player,
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CraftingManagerImplementation*) _impl)->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
+		return _implementation->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
 }
 
 int CraftingManager::calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -165,11 +230,12 @@ int CraftingManager::calculateExperimentationSuccess(PlayerCreature* player, Dra
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CraftingManagerImplementation*) _impl)->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
+		return _implementation->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
 }
 
 float CraftingManager::calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -179,11 +245,12 @@ float CraftingManager::calculateExperimentationValueModifier(int experimentation
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((CraftingManagerImplementation*) _impl)->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
+		return _implementation->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
 }
 
 float CraftingManager::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -193,11 +260,12 @@ float CraftingManager::getWeightedValue(ManufactureSchematic* manufactureSchemat
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((CraftingManagerImplementation*) _impl)->getWeightedValue(manufactureSchematic, type);
+		return _implementation->getWeightedValue(manufactureSchematic, type);
 }
 
 String CraftingManager::generateSerial() {
-	if (_impl == NULL) {
+	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -206,16 +274,23 @@ String CraftingManager::generateSerial() {
 		method.executeWithAsciiReturn(_return_generateSerial);
 		return _return_generateSerial;
 	} else
-		return ((CraftingManagerImplementation*) _impl)->generateSerial();
+		return _implementation->generateSerial();
 }
+
+DistributedObjectServant* CraftingManager::_getImplementation() {
+	return getForUpdate();}
+
+void CraftingManager::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	CraftingManagerImplementation
  */
 
-CraftingManagerImplementation::CraftingManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+CraftingManagerImplementation::CraftingManagerImplementation(DummyConstructorParameter* param) : ManagedServiceImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CraftingManagerImplementation::~CraftingManagerImplementation() {
 }
@@ -232,7 +307,7 @@ void CraftingManagerImplementation::_initializeImplementation() {
 
 void CraftingManagerImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (CraftingManager*) stub;
-	ManagedObjectImplementation::_setStub(stub);
+	ManagedServiceImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* CraftingManagerImplementation::_getStub() {
@@ -243,36 +318,34 @@ CraftingManagerImplementation::operator const CraftingManager*() {
 	return _this;
 }
 
+TransactionalObject* CraftingManagerImplementation::clone() {
+	return (TransactionalObject*) new CraftingManagerImplementation(*this);
+}
+
+
 void CraftingManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CraftingManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CraftingManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CraftingManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CraftingManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CraftingManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CraftingManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CraftingManagerImplementation::_serializationHelperMethod() {
-	ManagedObjectImplementation::_serializationHelperMethod();
+	ManagedServiceImplementation::_serializationHelperMethod();
 
 	_setClassName("CraftingManager");
 
@@ -280,22 +353,22 @@ void CraftingManagerImplementation::_serializationHelperMethod() {
 
 CraftingManagerImplementation::CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc, ObjectManager* objman) {
 	_initializeImplementation();
-	// server/zone/managers/crafting/CraftingManager.idl(98):  		Logger.setLoggingName("CraftingManager");
+	// server/zone/managers/crafting/CraftingManager.idl(96):  		Logger.setLoggingName("CraftingManager");
 	Logger::setLoggingName("CraftingManager");
-	// server/zone/managers/crafting/CraftingManager.idl(100):  		Logger.setLogging(true);
+	// server/zone/managers/crafting/CraftingManager.idl(98):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/crafting/CraftingManager.idl(101):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/crafting/CraftingManager.idl(99):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/crafting/CraftingManager.idl(103):  		zoneServer = serv;
+	// server/zone/managers/crafting/CraftingManager.idl(101):  		zoneServer = serv;
 	zoneServer = serv;
-	// server/zone/managers/crafting/CraftingManager.idl(104):  		zoneProcessor = proc;
+	// server/zone/managers/crafting/CraftingManager.idl(102):  		zoneProcessor = proc;
 	zoneProcessor = proc;
-	// server/zone/managers/crafting/CraftingManager.idl(105):  		objectManager = objman;
+	// server/zone/managers/crafting/CraftingManager.idl(103):  		objectManager = objman;
 	objectManager = objman;
 }
 
 DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int schematicID) {
-	// server/zone/managers/crafting/CraftingManager.idl(118):  		return schematicMap.get(schematicID);
+	// server/zone/managers/crafting/CraftingManager.idl(116):  		return schematicMap.get(schematicID);
 	return schematicMap->get(schematicID);
 }
 
@@ -303,7 +376,7 @@ DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int schemat
  *	CraftingManagerAdapter
  */
 
-CraftingManagerAdapter::CraftingManagerAdapter(CraftingManagerImplementation* obj) : ManagedObjectAdapter(obj) {
+CraftingManagerAdapter::CraftingManagerAdapter(CraftingManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {

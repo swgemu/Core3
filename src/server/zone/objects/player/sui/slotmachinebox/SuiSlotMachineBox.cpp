@@ -10,13 +10,59 @@
 
 #include "server/zone/objects/player/sui/SuiBox.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	SuiSlotMachineBoxStub
  */
 
 SuiSlotMachineBox::SuiSlotMachineBox(PlayerCreature* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType) : SuiListBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiSlotMachineBoxImplementation(player, windowType, payoutBox, listBoxType);
-	_impl->_setStub(this);
+	SuiSlotMachineBoxImplementation* _implementation = new SuiSlotMachineBoxImplementation(player, windowType, payoutBox, listBoxType);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 SuiSlotMachineBox::SuiSlotMachineBox(DummyConstructorParameter* param) : SuiListBox(param) {
@@ -27,7 +73,8 @@ SuiSlotMachineBox::~SuiSlotMachineBox() {
 
 
 unsigned int SuiSlotMachineBox::getPayoutBoxID() {
-	if (_impl == NULL) {
+	SuiSlotMachineBoxImplementation* _implementation = (SuiSlotMachineBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,8 +82,14 @@ unsigned int SuiSlotMachineBox::getPayoutBoxID() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((SuiSlotMachineBoxImplementation*) _impl)->getPayoutBoxID();
+		return _implementation->getPayoutBoxID();
 }
+
+DistributedObjectServant* SuiSlotMachineBox::_getImplementation() {
+	return getForUpdate();}
+
+void SuiSlotMachineBox::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	SuiSlotMachineBoxImplementation
@@ -73,32 +126,30 @@ SuiSlotMachineBoxImplementation::operator const SuiSlotMachineBox*() {
 	return _this;
 }
 
+TransactionalObject* SuiSlotMachineBoxImplementation::clone() {
+	return (TransactionalObject*) new SuiSlotMachineBoxImplementation(*this);
+}
+
+
 void SuiSlotMachineBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SuiSlotMachineBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SuiSlotMachineBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::_serializationHelperMethod() {

@@ -39,6 +39,10 @@ public:
 
 	bool isTerminal();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	Terminal(DummyConstructorParameter* param);
 
@@ -80,6 +84,8 @@ public:
 protected:
 	virtual ~TerminalImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -103,6 +109,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Terminal;
+	friend class TransactionalObjectHandle<TerminalImplementation*>;
 };
 
 class TerminalAdapter : public TangibleObjectAdapter {

@@ -4,6 +4,11 @@
 
 #include "Observable.h"
 
+
+// Imported class dependencies
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
 /*
  *	ObservableStub
  */
@@ -16,7 +21,8 @@ Observable::~Observable() {
 
 
 void Observable::notifyObservers(unsigned int eventType, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	ObservableImplementation* _implementation = (ObservableImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -27,11 +33,12 @@ void Observable::notifyObservers(unsigned int eventType, ManagedObject* arg1, lo
 
 		method.executeWithVoidReturn();
 	} else
-		((ObservableImplementation*) _impl)->notifyObservers(eventType, arg1, arg2);
+		_implementation->notifyObservers(eventType, arg1, arg2);
 }
 
 void Observable::registerObserver(unsigned int eventType, Observer* observer) {
-	if (_impl == NULL) {
+	ObservableImplementation* _implementation = (ObservableImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +48,12 @@ void Observable::registerObserver(unsigned int eventType, Observer* observer) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ObservableImplementation*) _impl)->registerObserver(eventType, observer);
+		_implementation->registerObserver(eventType, observer);
 }
 
 void Observable::dropObserver(unsigned int eventType, Observer* observer) {
-	if (_impl == NULL) {
+	ObservableImplementation* _implementation = (ObservableImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +63,12 @@ void Observable::dropObserver(unsigned int eventType, Observer* observer) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ObservableImplementation*) _impl)->dropObserver(eventType, observer);
+		_implementation->dropObserver(eventType, observer);
 }
 
 int Observable::getObserverCount(unsigned int eventType) {
-	if (_impl == NULL) {
+	ObservableImplementation* _implementation = (ObservableImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -68,8 +77,14 @@ int Observable::getObserverCount(unsigned int eventType) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ObservableImplementation*) _impl)->getObserverCount(eventType);
+		return _implementation->getObserverCount(eventType);
 }
+
+DistributedObjectServant* Observable::_getImplementation() {
+	return getForUpdate();}
+
+void Observable::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ObservableImplementation
@@ -82,6 +97,7 @@ ObservableImplementation::ObservableImplementation() : ManagedObjectImplementati
 ObservableImplementation::ObservableImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ObservableImplementation::~ObservableImplementation() {
 }
@@ -109,32 +125,30 @@ ObservableImplementation::operator const Observable*() {
 	return _this;
 }
 
+TransactionalObject* ObservableImplementation::clone() {
+	return (TransactionalObject*) new ObservableImplementation(*this);
+}
+
+
 void ObservableImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ObservableImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ObservableImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ObservableImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ObservableImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ObservableImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ObservableImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ObservableImplementation::_serializationHelperMethod() {

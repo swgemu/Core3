@@ -267,6 +267,10 @@ public:
 
 	bool isWeaponObject();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	WeaponObject(DummyConstructorParameter* param);
 
@@ -512,6 +516,8 @@ public:
 protected:
 	virtual ~WeaponObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -535,6 +541,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class WeaponObject;
+	friend class TransactionalObjectHandle<WeaponObjectImplementation*>;
 };
 
 class WeaponObjectAdapter : public TangibleObjectAdapter {

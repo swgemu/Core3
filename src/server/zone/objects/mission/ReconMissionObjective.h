@@ -128,6 +128,10 @@ public:
 
 	void complete();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	ReconMissionObjective(DummyConstructorParameter* param);
 
@@ -175,6 +179,8 @@ public:
 protected:
 	virtual ~ReconMissionObjectiveImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -196,6 +202,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ReconMissionObjective;
+	friend class TransactionalObjectHandle<ReconMissionObjectiveImplementation*>;
 };
 
 class ReconMissionObjectiveAdapter : public MissionObjectiveAdapter {

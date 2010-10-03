@@ -122,6 +122,10 @@ public:
 
 	void setEfficiency(unsigned int eff);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	SurveyMissionObjective(DummyConstructorParameter* param);
 
@@ -181,6 +185,8 @@ public:
 protected:
 	virtual ~SurveyMissionObjectiveImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -202,6 +208,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SurveyMissionObjective;
+	friend class TransactionalObjectHandle<SurveyMissionObjectiveImplementation*>;
 };
 
 class SurveyMissionObjectiveAdapter : public MissionObjectiveAdapter {

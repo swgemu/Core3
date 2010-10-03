@@ -48,8 +48,9 @@ import server.zone.objects.scene.SceneObject;
 
 import engine.service.proto.BasePacketHandler;
 import engine.service.DatagramServiceThread;
+import engine.service.ServiceHandler;
 import engine.service.ServiceClient;
-import engine.core.ManagedObject;
+import engine.core.ManagedService;
 import engine.core.TaskManager;
 import engine.log.Logger;
 
@@ -79,8 +80,9 @@ import server.zone.managers.account.AccountManager;
 import server.zone.managers.minigames.GamblingManager;
 import server.zone.managers.stringid.StringIdManager;
 
-@nonTransactional
-class ZoneServer extends ManagedObject implements DatagramServiceThread {
+class ZoneServer extends ManagedService implements ServiceHandler, Logger {
+	private transient DatagramServiceThread datagramService;
+	
 	private transient BasePacketHandler phandler;
 	
 	private transient ZoneProcessServerImplementation processor;
@@ -180,9 +182,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	@local
 	public native ServiceClient createConnection(Socket sock, @dereferenced SocketAddress addr);
 	
-	public native void init();
-
-	public native void run();
+	public native void initialize();
 
 	public native void shutdown();
 

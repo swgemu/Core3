@@ -14,13 +14,77 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/Zone.h"
+
 /*
  *	FactoryCrateStub
  */
 
 FactoryCrate::FactoryCrate() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FactoryCrateImplementation();
-	_impl->_setStub(this);
+	FactoryCrateImplementation* _implementation = new FactoryCrateImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 FactoryCrate::FactoryCrate(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -31,15 +95,17 @@ FactoryCrate::~FactoryCrate() {
 
 
 void FactoryCrate::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((FactoryCrateImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void FactoryCrate::initializeTransientMembers() {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +113,12 @@ void FactoryCrate::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryCrateImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void FactoryCrate::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -60,27 +127,30 @@ void FactoryCrate::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryCrateImplementation*) _impl)->sendBaselinesTo(player);
+		_implementation->sendBaselinesTo(player);
 }
 
 void FactoryCrate::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((FactoryCrateImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void FactoryCrate::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((FactoryCrateImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int FactoryCrate::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +160,12 @@ int FactoryCrate::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FactoryCrateImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void FactoryCrate::sendTo(SceneObject* player, bool doClose) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,11 +175,12 @@ void FactoryCrate::sendTo(SceneObject* player, bool doClose) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryCrateImplementation*) _impl)->sendTo(player, doClose);
+		_implementation->sendTo(player, doClose);
 }
 
 bool FactoryCrate::isFactoryCrate() {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +188,12 @@ bool FactoryCrate::isFactoryCrate() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((FactoryCrateImplementation*) _impl)->isFactoryCrate();
+		return _implementation->isFactoryCrate();
 }
 
 void FactoryCrate::setUseCount(unsigned int newUseCount, bool notifyClient) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -130,11 +203,12 @@ void FactoryCrate::setUseCount(unsigned int newUseCount, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryCrateImplementation*) _impl)->setUseCount(newUseCount, notifyClient);
+		_implementation->setUseCount(newUseCount, notifyClient);
 }
 
 TangibleObject* FactoryCrate::getPrototype() {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -142,11 +216,12 @@ TangibleObject* FactoryCrate::getPrototype() {
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((FactoryCrateImplementation*) _impl)->getPrototype();
+		return _implementation->getPrototype();
 }
 
 String FactoryCrate::getCraftersName() {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -155,11 +230,12 @@ String FactoryCrate::getCraftersName() {
 		method.executeWithAsciiReturn(_return_getCraftersName);
 		return _return_getCraftersName;
 	} else
-		return ((FactoryCrateImplementation*) _impl)->getCraftersName();
+		return _implementation->getCraftersName();
 }
 
 String FactoryCrate::getCraftersSerial() {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -168,11 +244,12 @@ String FactoryCrate::getCraftersSerial() {
 		method.executeWithAsciiReturn(_return_getCraftersSerial);
 		return _return_getCraftersSerial;
 	} else
-		return ((FactoryCrateImplementation*) _impl)->getCraftersSerial();
+		return _implementation->getCraftersSerial();
 }
 
 bool FactoryCrate::extractObjectToParent(int count) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -181,11 +258,12 @@ bool FactoryCrate::extractObjectToParent(int count) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((FactoryCrateImplementation*) _impl)->extractObjectToParent(count);
+		return _implementation->extractObjectToParent(count);
 }
 
 TangibleObject* FactoryCrate::extractObject(int count) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -194,11 +272,12 @@ TangibleObject* FactoryCrate::extractObject(int count) {
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((FactoryCrateImplementation*) _impl)->extractObject(count);
+		return _implementation->extractObject(count);
 }
 
 void FactoryCrate::split(int newStackSize) {
-	if (_impl == NULL) {
+	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -207,8 +286,14 @@ void FactoryCrate::split(int newStackSize) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryCrateImplementation*) _impl)->split(newStackSize);
+		_implementation->split(newStackSize);
 }
+
+DistributedObjectServant* FactoryCrate::_getImplementation() {
+	return getForUpdate();}
+
+void FactoryCrate::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	FactoryCrateImplementation
@@ -217,6 +302,7 @@ void FactoryCrate::split(int newStackSize) {
 FactoryCrateImplementation::FactoryCrateImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FactoryCrateImplementation::~FactoryCrateImplementation() {
 }
@@ -244,32 +330,30 @@ FactoryCrateImplementation::operator const FactoryCrate*() {
 	return _this;
 }
 
+TransactionalObject* FactoryCrateImplementation::clone() {
+	return (TransactionalObject*) new FactoryCrateImplementation(*this);
+}
+
+
 void FactoryCrateImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void FactoryCrateImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void FactoryCrateImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void FactoryCrateImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void FactoryCrateImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void FactoryCrateImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void FactoryCrateImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void FactoryCrateImplementation::_serializationHelperMethod() {

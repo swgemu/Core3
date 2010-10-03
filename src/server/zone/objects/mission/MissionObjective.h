@@ -122,6 +122,10 @@ public:
 
 	PlayerCreature* getPlayerOwner();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	MissionObjective(DummyConstructorParameter* param);
 
@@ -179,6 +183,8 @@ public:
 protected:
 	virtual ~MissionObjectiveImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -202,6 +208,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionObjective;
+	friend class TransactionalObjectHandle<MissionObjectiveImplementation*>;
 };
 
 class MissionObjectiveAdapter : public ManagedObjectAdapter {

@@ -119,8 +119,6 @@ class StringIdManager;
 
 using namespace server::zone::managers::stringid;
 
-#include "engine/core/ManagedObject.h"
-
 #include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
 
 #include "system/util/SortedVector.h"
@@ -193,6 +191,10 @@ public:
 	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	MissionManager(DummyConstructorParameter* param);

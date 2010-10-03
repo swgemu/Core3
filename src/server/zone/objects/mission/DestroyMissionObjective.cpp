@@ -20,13 +20,57 @@
 
 #include "server/zone/objects/tangible/lair/LairObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/mission/DestroyMissionObjective.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/DamageMap.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/tangible/LairObjectTemplate.h"
+
+#include "server/zone/objects/tangible/lair/HealLairEvent.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	DestroyMissionObjectiveStub
  */
 
 DestroyMissionObjective::DestroyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new DestroyMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	DestroyMissionObjectiveImplementation* _implementation = new DestroyMissionObjectiveImplementation(mission);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 DestroyMissionObjective::DestroyMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -37,7 +81,8 @@ DestroyMissionObjective::~DestroyMissionObjective() {
 
 
 void DestroyMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	DestroyMissionObjectiveImplementation* _implementation = (DestroyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +90,12 @@ void DestroyMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DestroyMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void DestroyMissionObjective::activate() {
-	if (_impl == NULL) {
+	DestroyMissionObjectiveImplementation* _implementation = (DestroyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +103,12 @@ void DestroyMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DestroyMissionObjectiveImplementation*) _impl)->activate();
+		_implementation->activate();
 }
 
 void DestroyMissionObjective::abort() {
-	if (_impl == NULL) {
+	DestroyMissionObjectiveImplementation* _implementation = (DestroyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +116,12 @@ void DestroyMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DestroyMissionObjectiveImplementation*) _impl)->abort();
+		_implementation->abort();
 }
 
 void DestroyMissionObjective::complete() {
-	if (_impl == NULL) {
+	DestroyMissionObjectiveImplementation* _implementation = (DestroyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -81,11 +129,12 @@ void DestroyMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DestroyMissionObjectiveImplementation*) _impl)->complete();
+		_implementation->complete();
 }
 
 void DestroyMissionObjective::spawnLair() {
-	if (_impl == NULL) {
+	DestroyMissionObjectiveImplementation* _implementation = (DestroyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -93,11 +142,12 @@ void DestroyMissionObjective::spawnLair() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DestroyMissionObjectiveImplementation*) _impl)->spawnLair();
+		_implementation->spawnLair();
 }
 
 void DestroyMissionObjective::destroyObjectFromDatabase() {
-	if (_impl == NULL) {
+	DestroyMissionObjectiveImplementation* _implementation = (DestroyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,11 +155,12 @@ void DestroyMissionObjective::destroyObjectFromDatabase() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DestroyMissionObjectiveImplementation*) _impl)->destroyObjectFromDatabase();
+		_implementation->destroyObjectFromDatabase();
 }
 
 int DestroyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	DestroyMissionObjectiveImplementation* _implementation = (DestroyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,16 +173,23 @@ int DestroyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DestroyMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void DestroyMissionObjective::setLairTemplateToSpawn(SharedObjectTemplate* sp) {
-	if (_impl == NULL) {
+	DestroyMissionObjectiveImplementation* _implementation = (DestroyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DestroyMissionObjectiveImplementation*) _impl)->setLairTemplateToSpawn(sp);
+		_implementation->setLairTemplateToSpawn(sp);
 }
+
+DistributedObjectServant* DestroyMissionObjective::_getImplementation() {
+	return getForUpdate();}
+
+void DestroyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	DestroyMissionObjectiveImplementation
@@ -140,6 +198,7 @@ void DestroyMissionObjective::setLairTemplateToSpawn(SharedObjectTemplate* sp) {
 DestroyMissionObjectiveImplementation::DestroyMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 DestroyMissionObjectiveImplementation::~DestroyMissionObjectiveImplementation() {
 	DestroyMissionObjectiveImplementation::finalize();
@@ -165,32 +224,30 @@ DestroyMissionObjectiveImplementation::operator const DestroyMissionObjective*()
 	return _this;
 }
 
+TransactionalObject* DestroyMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new DestroyMissionObjectiveImplementation(*this);
+}
+
+
 void DestroyMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void DestroyMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void DestroyMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::_serializationHelperMethod() {

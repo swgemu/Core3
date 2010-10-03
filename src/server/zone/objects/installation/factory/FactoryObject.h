@@ -53,6 +53,20 @@ class TangibleObject;
 
 using namespace server::zone::objects::tangible;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/installation/InstallationObject.h"
 
 namespace server {
@@ -98,6 +112,10 @@ public:
 	void handleOperateToggle(PlayerCreature* player);
 
 	void createNewObject();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	FactoryObject(DummyConstructorParameter* param);
@@ -198,6 +216,8 @@ public:
 protected:
 	virtual ~FactoryObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -221,6 +241,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class FactoryObject;
+	friend class TransactionalObjectHandle<FactoryObjectImplementation*>;
 };
 
 class FactoryObjectAdapter : public InstallationObjectAdapter {

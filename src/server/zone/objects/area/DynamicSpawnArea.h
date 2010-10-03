@@ -74,6 +74,10 @@ public:
 
 	void setMaxCreaturesToSpawn(int num);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	DynamicSpawnArea(DummyConstructorParameter* param);
 
@@ -125,6 +129,8 @@ public:
 protected:
 	virtual ~DynamicSpawnAreaImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -148,6 +154,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DynamicSpawnArea;
+	friend class TransactionalObjectHandle<DynamicSpawnAreaImplementation*>;
 };
 
 class DynamicSpawnAreaAdapter : public ActiveAreaAdapter {

@@ -4,13 +4,57 @@
 
 #include "GeneratorObject.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
+
+// Imported class dependencies
+
+#include "system/util/SortedVector.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/installation/HopperList.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
 /*
  *	GeneratorObjectStub
  */
 
 GeneratorObject::GeneratorObject() : InstallationObject(DummyConstructorParameter::instance()) {
-	_impl = new GeneratorObjectImplementation();
-	_impl->_setStub(this);
+	GeneratorObjectImplementation* _implementation = new GeneratorObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 GeneratorObject::GeneratorObject(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -21,15 +65,17 @@ GeneratorObject::~GeneratorObject() {
 
 
 void GeneratorObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((GeneratorObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int GeneratorObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,11 +85,12 @@ int GeneratorObject::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GeneratorObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void GeneratorObject::synchronizedUIListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
+	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +100,12 @@ void GeneratorObject::synchronizedUIListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneratorObjectImplementation*) _impl)->synchronizedUIListen(player, value);
+		_implementation->synchronizedUIListen(player, value);
 }
 
 void GeneratorObject::synchronizedUIStopListen(SceneObject* player, int value) {
-	if (_impl == NULL) {
+	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +115,12 @@ void GeneratorObject::synchronizedUIStopListen(SceneObject* player, int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GeneratorObjectImplementation*) _impl)->synchronizedUIStopListen(player, value);
+		_implementation->synchronizedUIStopListen(player, value);
 }
 
 bool GeneratorObject::isGeneratorObject() {
-	if (_impl == NULL) {
+	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,8 +128,14 @@ bool GeneratorObject::isGeneratorObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GeneratorObjectImplementation*) _impl)->isGeneratorObject();
+		return _implementation->isGeneratorObject();
 }
+
+DistributedObjectServant* GeneratorObject::_getImplementation() {
+	return getForUpdate();}
+
+void GeneratorObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	GeneratorObjectImplementation
@@ -89,6 +144,7 @@ bool GeneratorObject::isGeneratorObject() {
 GeneratorObjectImplementation::GeneratorObjectImplementation(DummyConstructorParameter* param) : InstallationObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 GeneratorObjectImplementation::~GeneratorObjectImplementation() {
 }
@@ -116,32 +172,30 @@ GeneratorObjectImplementation::operator const GeneratorObject*() {
 	return _this;
 }
 
+TransactionalObject* GeneratorObjectImplementation::clone() {
+	return (TransactionalObject*) new GeneratorObjectImplementation(*this);
+}
+
+
 void GeneratorObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void GeneratorObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void GeneratorObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void GeneratorObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void GeneratorObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void GeneratorObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void GeneratorObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void GeneratorObjectImplementation::_serializationHelperMethod() {
@@ -153,12 +207,12 @@ void GeneratorObjectImplementation::_serializationHelperMethod() {
 
 GeneratorObjectImplementation::GeneratorObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/generator/GeneratorObject.idl(7):  		Logger.setLoggingName("GeneratorObject");
+	// server/zone/objects/installation/generator/GeneratorObject.idl(8):  		Logger.setLoggingName("GeneratorObject");
 	Logger::setLoggingName("GeneratorObject");
 }
 
 bool GeneratorObjectImplementation::isGeneratorObject() {
-	// server/zone/objects/installation/generator/GeneratorObject.idl(48):  		return true;
+	// server/zone/objects/installation/generator/GeneratorObject.idl(49):  		return true;
 	return true;
 }
 

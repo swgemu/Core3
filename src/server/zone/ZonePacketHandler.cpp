@@ -112,7 +112,6 @@ which carries forward this exception.
 
 #include "packets/auction/IsVendorOwnerMessageCallback.h"
 
-
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 	processServer = serv;
 

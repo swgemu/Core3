@@ -256,6 +256,10 @@ public:
 
 	void statusUpdate(int event);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	GamblingTerminal(DummyConstructorParameter* param);
 
@@ -451,6 +455,8 @@ public:
 protected:
 	virtual ~GamblingTerminalImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -474,6 +480,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class GamblingTerminal;
+	friend class TransactionalObjectHandle<GamblingTerminalImplementation*>;
 };
 
 class GamblingTerminalAdapter : public TerminalAdapter {

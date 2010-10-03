@@ -52,7 +52,7 @@ which carries forward this exception.
 
 #include "../conf/ConfigManager.h"
 
-class LoginServer : public DatagramServiceThread {
+class LoginServer : public DatagramServiceThread, public ServiceHandler {
 	BasePacketHandler* phand;
 
 	LoginPacketHandler* phandler;
@@ -72,7 +72,7 @@ public:
 
 	~LoginServer();
 
-	void init();
+	void initialize();
 
 	void run();
 

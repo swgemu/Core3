@@ -18,13 +18,93 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	VehicleObjectStub
  */
 
 VehicleObject::VehicleObject() : CreatureObject(DummyConstructorParameter::instance()) {
-	_impl = new VehicleObjectImplementation();
-	_impl->_setStub(this);
+	VehicleObjectImplementation* _implementation = new VehicleObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 VehicleObject::VehicleObject(DummyConstructorParameter* param) : CreatureObject(param) {
@@ -35,23 +115,26 @@ VehicleObject::~VehicleObject() {
 
 
 void VehicleObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((VehicleObjectImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void VehicleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((VehicleObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 bool VehicleObject::checkInRangeGarage() {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +142,12 @@ bool VehicleObject::checkInRangeGarage() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((VehicleObjectImplementation*) _impl)->checkInRangeGarage();
+		return _implementation->checkInRangeGarage();
 }
 
 void VehicleObject::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +156,12 @@ void VehicleObject::insertToZone(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleObjectImplementation*) _impl)->insertToZone(zone);
+		_implementation->insertToZone(zone);
 }
 
 int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -89,11 +174,12 @@ int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int d
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleObjectImplementation*) _impl)->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+		return _implementation->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
 int VehicleObject::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,11 +191,12 @@ int VehicleObject::healDamage(TangibleObject* healer, int damageType, int damage
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleObjectImplementation*) _impl)->healDamage(healer, damageType, damageToHeal, notifyClient);
+		return _implementation->healDamage(healer, damageType, damageToHeal, notifyClient);
 }
 
 void VehicleObject::addDefender(SceneObject* defender) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -118,11 +205,12 @@ void VehicleObject::addDefender(SceneObject* defender) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleObjectImplementation*) _impl)->addDefender(defender);
+		_implementation->addDefender(defender);
 }
 
 void VehicleObject::removeDefender(SceneObject* defender) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -131,11 +219,12 @@ void VehicleObject::removeDefender(SceneObject* defender) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleObjectImplementation*) _impl)->removeDefender(defender);
+		_implementation->removeDefender(defender);
 }
 
 void VehicleObject::setDefender(SceneObject* defender) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -144,11 +233,12 @@ void VehicleObject::setDefender(SceneObject* defender) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleObjectImplementation*) _impl)->setDefender(defender);
+		_implementation->setDefender(defender);
 }
 
 bool VehicleObject::isAttackableBy(CreatureObject* object) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -157,11 +247,12 @@ bool VehicleObject::isAttackableBy(CreatureObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((VehicleObjectImplementation*) _impl)->isAttackableBy(object);
+		return _implementation->isAttackableBy(object);
 }
 
 int VehicleObject::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -171,11 +262,12 @@ int VehicleObject::notifyObjectDestructionObservers(TangibleObject* attacker, in
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleObjectImplementation*) _impl)->notifyObjectDestructionObservers(attacker, condition);
+		return _implementation->notifyObjectDestructionObservers(attacker, condition);
 }
 
 int VehicleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -185,11 +277,12 @@ int VehicleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedI
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 bool VehicleObject::isVehicleObject() {
-	if (_impl == NULL) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -197,8 +290,14 @@ bool VehicleObject::isVehicleObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((VehicleObjectImplementation*) _impl)->isVehicleObject();
+		return _implementation->isVehicleObject();
 }
+
+DistributedObjectServant* VehicleObject::_getImplementation() {
+	return getForUpdate();}
+
+void VehicleObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	VehicleObjectImplementation
@@ -207,6 +306,7 @@ bool VehicleObject::isVehicleObject() {
 VehicleObjectImplementation::VehicleObjectImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 VehicleObjectImplementation::~VehicleObjectImplementation() {
 }
@@ -234,32 +334,30 @@ VehicleObjectImplementation::operator const VehicleObject*() {
 	return _this;
 }
 
+TransactionalObject* VehicleObjectImplementation::clone() {
+	return (TransactionalObject*) new VehicleObjectImplementation(*this);
+}
+
+
 void VehicleObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void VehicleObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void VehicleObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void VehicleObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void VehicleObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void VehicleObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void VehicleObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void VehicleObjectImplementation::_serializationHelperMethod() {
@@ -302,10 +400,10 @@ void VehicleObjectImplementation::setDefender(SceneObject* defender) {
 
 bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	// server/zone/objects/creature/VehicleObject.idl(143):  		return 
-	if (CreatureObjectImplementation::linkedCreature == NULL)	// server/zone/objects/creature/VehicleObject.idl(144):  			return false;
+	if (CreatureObjectImplementation::linkedCreature.getForUpdate() == NULL)	// server/zone/objects/creature/VehicleObject.idl(144):  			return false;
 	return false;
 	// server/zone/objects/creature/VehicleObject.idl(146):  super.linkedCreature.isAttackableBy(object);
-	return CreatureObjectImplementation::linkedCreature->isAttackableBy(object);
+	return CreatureObjectImplementation::linkedCreature.getForUpdate()->isAttackableBy(object);
 }
 
 bool VehicleObjectImplementation::isVehicleObject() {

@@ -44,7 +44,7 @@ which carries forward this exception.
 
 package server.zone.managers.objectcontroller;
 
-import engine.core.ManagedObject;
+import engine.core.ManagedService;
 import engine.lua.Lua;
 import server.zone.managers.objectcontroller.command.CommandList;
 import server.zone.managers.objectcontroller.command.CommandConfigManager;
@@ -55,7 +55,7 @@ import server.zone.ZoneProcessServerImplementation;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 
-class ObjectController extends ManagedObject implements Lua {
+class ObjectController extends ManagedService implements Lua {
 	private transient ZoneProcessServerImplementation server;
 	
 	private transient CommandConfigManager configManager;

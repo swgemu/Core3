@@ -61,6 +61,10 @@ public:
 
 	CloneSpawnPoint* getRandomSpawnPoint();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	CloningBuildingObject(DummyConstructorParameter* param);
 
@@ -104,6 +108,8 @@ public:
 protected:
 	virtual ~CloningBuildingObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -127,6 +133,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CloningBuildingObject;
+	friend class TransactionalObjectHandle<CloningBuildingObjectImplementation*>;
 };
 
 class CloningBuildingObjectAdapter : public BuildingObjectAdapter {

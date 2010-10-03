@@ -120,6 +120,10 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	BankTerminal(DummyConstructorParameter* param);
 
@@ -165,6 +169,8 @@ public:
 protected:
 	virtual ~BankTerminalImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -188,6 +194,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BankTerminal;
+	friend class TransactionalObjectHandle<BankTerminalImplementation*>;
 };
 
 class BankTerminalAdapter : public TerminalAdapter {

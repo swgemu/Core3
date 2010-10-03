@@ -14,13 +14,111 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	LootkitObjectStub
  */
 
 LootkitObject::LootkitObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new LootkitObjectImplementation();
-	_impl->_setStub(this);
+	LootkitObjectImplementation* _implementation = new LootkitObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 LootkitObject::LootkitObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -31,7 +129,8 @@ LootkitObject::~LootkitObject() {
 
 
 void LootkitObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	LootkitObjectImplementation* _implementation = (LootkitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,11 +138,12 @@ void LootkitObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((LootkitObjectImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 int LootkitObject::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	if (_impl == NULL) {
+	LootkitObjectImplementation* _implementation = (LootkitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -54,11 +154,12 @@ int LootkitObject::canAddObject(SceneObject* object, int containmentType, String
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((LootkitObjectImplementation*) _impl)->canAddObject(object, containmentType, errorDescription);
+		return _implementation->canAddObject(object, containmentType, errorDescription);
 }
 
 int LootkitObject::notifyObjectInserted(SceneObject* object) {
-	if (_impl == NULL) {
+	LootkitObjectImplementation* _implementation = (LootkitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +168,12 @@ int LootkitObject::notifyObjectInserted(SceneObject* object) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((LootkitObjectImplementation*) _impl)->notifyObjectInserted(object);
+		return _implementation->notifyObjectInserted(object);
 }
 
 PlayerCreature* LootkitObject::getPlayer() {
-	if (_impl == NULL) {
+	LootkitObjectImplementation* _implementation = (LootkitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,19 +181,21 @@ PlayerCreature* LootkitObject::getPlayer() {
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
-		return ((LootkitObjectImplementation*) _impl)->getPlayer();
+		return _implementation->getPlayer();
 }
 
 void LootkitObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	LootkitObjectImplementation* _implementation = (LootkitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((LootkitObjectImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void LootkitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	LootkitObjectImplementation* _implementation = (LootkitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -101,8 +205,14 @@ void LootkitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature*
 
 		method.executeWithVoidReturn();
 	} else
-		((LootkitObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
+
+DistributedObjectServant* LootkitObject::_getImplementation() {
+	return getForUpdate();}
+
+void LootkitObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	LootkitObjectImplementation
@@ -139,32 +249,30 @@ LootkitObjectImplementation::operator const LootkitObject*() {
 	return _this;
 }
 
+TransactionalObject* LootkitObjectImplementation::clone() {
+	return (TransactionalObject*) new LootkitObjectImplementation(*this);
+}
+
+
 void LootkitObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void LootkitObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void LootkitObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void LootkitObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void LootkitObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void LootkitObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void LootkitObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void LootkitObjectImplementation::_serializationHelperMethod() {

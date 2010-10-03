@@ -16,13 +16,79 @@
 
 #include "server/zone/Zone.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	BankTerminalStub
  */
 
 BankTerminal::BankTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new BankTerminalImplementation();
-	_impl->_setStub(this);
+	BankTerminalImplementation* _implementation = new BankTerminalImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 BankTerminal::BankTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -33,7 +99,8 @@ BankTerminal::~BankTerminal() {
 
 
 void BankTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	BankTerminalImplementation* _implementation = (BankTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +108,12 @@ void BankTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BankTerminalImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	BankTerminalImplementation* _implementation = (BankTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +123,12 @@ void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Play
 
 		method.executeWithVoidReturn();
 	} else
-		((BankTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	BankTerminalImplementation* _implementation = (BankTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,8 +138,14 @@ int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BankTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
+
+DistributedObjectServant* BankTerminal::_getImplementation() {
+	return getForUpdate();}
+
+void BankTerminal::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	BankTerminalImplementation
@@ -79,6 +154,7 @@ int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 BankTerminalImplementation::BankTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BankTerminalImplementation::~BankTerminalImplementation() {
 }
@@ -106,32 +182,30 @@ BankTerminalImplementation::operator const BankTerminal*() {
 	return _this;
 }
 
+TransactionalObject* BankTerminalImplementation::clone() {
+	return (TransactionalObject*) new BankTerminalImplementation(*this);
+}
+
+
 void BankTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void BankTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void BankTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void BankTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void BankTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void BankTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void BankTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void BankTerminalImplementation::_serializationHelperMethod() {

@@ -25,6 +25,20 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -79,6 +93,10 @@ public:
 	void split(int newStackSize, PlayerCreature* player);
 
 	void combine(ResourceContainer* fromContainer);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	ResourceContainer(DummyConstructorParameter* param);
@@ -156,6 +174,8 @@ public:
 protected:
 	virtual ~ResourceContainerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -179,6 +199,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ResourceContainer;
+	friend class TransactionalObjectHandle<ResourceContainerImplementation*>;
 };
 
 class ResourceContainerAdapter : public TangibleObjectAdapter {

@@ -30,7 +30,7 @@
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
 
-ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedObjectImplementation() {
+ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;
 
 	//userManager = server->getUserManager();

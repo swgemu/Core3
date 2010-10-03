@@ -8,13 +8,73 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	PsgArmorObjectStub
  */
 
 PsgArmorObject::PsgArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
-	_impl = new PsgArmorObjectImplementation();
-	_impl->_setStub(this);
+	PsgArmorObjectImplementation* _implementation = new PsgArmorObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 PsgArmorObject::PsgArmorObject(DummyConstructorParameter* param) : WearableObject(param) {
@@ -25,7 +85,8 @@ PsgArmorObject::~PsgArmorObject() {
 
 
 void PsgArmorObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	PsgArmorObjectImplementation* _implementation = (PsgArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +94,12 @@ void PsgArmorObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PsgArmorObjectImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 bool PsgArmorObject::isPsgArmorObject() {
-	if (_impl == NULL) {
+	PsgArmorObjectImplementation* _implementation = (PsgArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,19 +107,21 @@ bool PsgArmorObject::isPsgArmorObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((PsgArmorObjectImplementation*) _impl)->isPsgArmorObject();
+		return _implementation->isPsgArmorObject();
 }
 
 void PsgArmorObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	PsgArmorObjectImplementation* _implementation = (PsgArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((PsgArmorObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void PsgArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	PsgArmorObjectImplementation* _implementation = (PsgArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,8 +130,14 @@ void PsgArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PsgArmorObjectImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
+
+DistributedObjectServant* PsgArmorObject::_getImplementation() {
+	return getForUpdate();}
+
+void PsgArmorObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	PsgArmorObjectImplementation
@@ -76,6 +146,7 @@ void PsgArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
 PsgArmorObjectImplementation::PsgArmorObjectImplementation(DummyConstructorParameter* param) : WearableObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 PsgArmorObjectImplementation::~PsgArmorObjectImplementation() {
 }
@@ -103,32 +174,30 @@ PsgArmorObjectImplementation::operator const PsgArmorObject*() {
 	return _this;
 }
 
+TransactionalObject* PsgArmorObjectImplementation::clone() {
+	return (TransactionalObject*) new PsgArmorObjectImplementation(*this);
+}
+
+
 void PsgArmorObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void PsgArmorObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void PsgArmorObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void PsgArmorObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void PsgArmorObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void PsgArmorObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void PsgArmorObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void PsgArmorObjectImplementation::_serializationHelperMethod() {

@@ -135,21 +135,35 @@ class ResourceContainer;
 
 using namespace server::zone::objects::resource;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/installation/HopperList.h"
 
-#include "server/zone/objects/structure/StructureObject.h"
-
-#include "engine/lua/LuaObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/service/proto/BasePacket.h"
+#include "system/lang/String.h"
 
 #include "system/lang/ref/Reference.h"
 
+#include "system/util/SortedVector.h"
+
 #include "system/util/VectorMap.h"
 
-#include "system/lang/String.h"
+#include "engine/lua/LuaObject.h"
+
+#include "engine/service/proto/BasePacket.h"
+
+#include "server/zone/objects/structure/StructureObject.h"
 
 namespace server {
 namespace zone {
@@ -237,6 +251,10 @@ public:
 	bool isHarvesterObject();
 
 	bool isGeneratorObject();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	InstallationObject(DummyConstructorParameter* param);
@@ -369,6 +387,8 @@ public:
 protected:
 	virtual ~InstallationObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -392,6 +412,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class InstallationObject;
+	friend class TransactionalObjectHandle<InstallationObjectImplementation*>;
 };
 
 class InstallationObjectAdapter : public StructureObjectAdapter {

@@ -59,7 +59,7 @@ class ZoneServer;
 	class ZonePacketHandler : public Logger {
 		ZoneProcessServerImplementation* processServer;
 
-		ZoneServer* server;
+		ManagedReference<ZoneServer*> server;
 
 		MessageCallbackFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServerImplementation*), uint32> messageCallbackFactory;
 

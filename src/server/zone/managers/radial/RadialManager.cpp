@@ -12,13 +12,91 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	RadialManagerStub
  */
 
 RadialManager::RadialManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new RadialManagerImplementation(server);
-	_impl->_setStub(this);
+	RadialManagerImplementation* _implementation = new RadialManagerImplementation(server);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 RadialManager::RadialManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -29,7 +107,8 @@ RadialManager::~RadialManager() {
 
 
 void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
-	if (_impl == NULL) {
+	RadialManagerImplementation* _implementation = (RadialManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,11 +119,12 @@ void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID
 
 		method.executeWithVoidReturn();
 	} else
-		((RadialManagerImplementation*) _impl)->handleObjectMenuSelect(player, selectID, objectID);
+		_implementation->handleObjectMenuSelect(player, selectID, objectID);
 }
 
 void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
-	if (_impl == NULL) {
+	RadialManagerImplementation* _implementation = (RadialManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,8 +135,14 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 
 		method.executeWithVoidReturn();
 	} else
-		((RadialManagerImplementation*) _impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
+		_implementation->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
 }
+
+DistributedObjectServant* RadialManager::_getImplementation() {
+	return getForUpdate();}
+
+void RadialManager::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	RadialManagerImplementation
@@ -65,6 +151,7 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 RadialManagerImplementation::RadialManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RadialManagerImplementation::~RadialManagerImplementation() {
 }
@@ -92,32 +179,30 @@ RadialManagerImplementation::operator const RadialManager*() {
 	return _this;
 }
 
+TransactionalObject* RadialManagerImplementation::clone() {
+	return (TransactionalObject*) new RadialManagerImplementation(*this);
+}
+
+
 void RadialManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void RadialManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void RadialManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void RadialManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void RadialManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void RadialManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void RadialManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void RadialManagerImplementation::_serializationHelperMethod() {

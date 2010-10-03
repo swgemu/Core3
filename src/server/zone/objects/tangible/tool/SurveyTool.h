@@ -149,6 +149,10 @@ public:
 
 	void sendSampleTo(PlayerCreature* player, const String& resname);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	SurveyTool(DummyConstructorParameter* param);
 
@@ -280,6 +284,8 @@ public:
 protected:
 	virtual ~SurveyToolImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -303,6 +309,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SurveyTool;
+	friend class TransactionalObjectHandle<SurveyToolImplementation*>;
 };
 
 class SurveyToolAdapter : public ToolTangibleObjectAdapter {

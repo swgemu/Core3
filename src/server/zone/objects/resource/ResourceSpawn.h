@@ -46,6 +46,20 @@ using namespace server::zone::objects::player::sui::listbox;
 namespace server {
 namespace zone {
 namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace resource {
 
 class ResourceContainer;
@@ -161,6 +175,10 @@ public:
 	void addStatsToDeedListBox(SuiListBox* suil);
 
 	void print();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	ResourceSpawn(DummyConstructorParameter* param);
@@ -331,6 +349,8 @@ public:
 protected:
 	virtual ~ResourceSpawnImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -352,6 +372,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ResourceSpawn;
+	friend class TransactionalObjectHandle<ResourceSpawnImplementation*>;
 };
 
 class ResourceSpawnAdapter : public SceneObjectAdapter {

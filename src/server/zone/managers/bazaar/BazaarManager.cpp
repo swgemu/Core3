@@ -20,16 +20,96 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	BazaarManagerStub
  */
 
-BazaarManager::BazaarManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new BazaarManagerImplementation(server);
-	_impl->_setStub(this);
+BazaarManager::BazaarManager(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
+	BazaarManagerImplementation* _implementation = new BazaarManagerImplementation(server);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
-BazaarManager::BazaarManager(DummyConstructorParameter* param) : ManagedObject(param) {
+BazaarManager::BazaarManager(DummyConstructorParameter* param) : ManagedService(param) {
 }
 
 BazaarManager::~BazaarManager() {
@@ -37,7 +117,8 @@ BazaarManager::~BazaarManager() {
 
 
 void BazaarManager::initialize() {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +126,12 @@ void BazaarManager::initialize() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->initialize();
+		_implementation->initialize();
 }
 
 void BazaarManager::checkAuctions() {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +139,12 @@ void BazaarManager::checkAuctions() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->checkAuctions();
+		_implementation->checkAuctions();
 }
 
 void BazaarManager::addSaleItem(PlayerCreature* player, unsigned long long objectid, unsigned long long bazaarid, const UnicodeString& description, int price, unsigned int duration, bool auction) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -76,11 +159,12 @@ void BazaarManager::addSaleItem(PlayerCreature* player, unsigned long long objec
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
+		_implementation->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
 }
 
 AuctionItem* BazaarManager::createAuctionItem(PlayerCreature* player, SceneObject* objectToSell, BazaarTerminal* terminal, const UnicodeString& description, int price, unsigned int duration, bool auction) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -95,11 +179,12 @@ AuctionItem* BazaarManager::createAuctionItem(PlayerCreature* player, SceneObjec
 
 		return (AuctionItem*) method.executeWithObjectReturn();
 	} else
-		return ((BazaarManagerImplementation*) _impl)->createAuctionItem(player, objectToSell, terminal, description, price, duration, auction);
+		return _implementation->createAuctionItem(player, objectToSell, terminal, description, price, duration, auction);
 }
 
 int BazaarManager::checkSaleItem(PlayerCreature* player, SceneObject* object, int price) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,11 +195,12 @@ int BazaarManager::checkSaleItem(PlayerCreature* player, SceneObject* object, in
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BazaarManagerImplementation*) _impl)->checkSaleItem(player, object, price);
+		return _implementation->checkSaleItem(player, object, price);
 }
 
 void BazaarManager::getItemAttributes(PlayerCreature* player, unsigned long long objectid) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -124,11 +210,12 @@ void BazaarManager::getItemAttributes(PlayerCreature* player, unsigned long long
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->getItemAttributes(player, objectid);
+		_implementation->getItemAttributes(player, objectid);
 }
 
 void BazaarManager::getBazaarData(PlayerCreature* player, int extent, unsigned long long bazaarObjectid, int screen, unsigned int category, int count, int offset) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -143,11 +230,12 @@ void BazaarManager::getBazaarData(PlayerCreature* player, int extent, unsigned l
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->getBazaarData(player, extent, bazaarObjectid, screen, category, count, offset);
+		_implementation->getBazaarData(player, extent, bazaarObjectid, screen, category, count, offset);
 }
 
 void BazaarManager::getAllBazaarData(PlayerCreature* player, BazaarTerminal* terminal, int screen, unsigned int category, int count, int offset) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -161,11 +249,12 @@ void BazaarManager::getAllBazaarData(PlayerCreature* player, BazaarTerminal* ter
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->getAllBazaarData(player, terminal, screen, category, count, offset);
+		_implementation->getAllBazaarData(player, terminal, screen, category, count, offset);
 }
 
 void BazaarManager::getPlanetBazaarData(PlayerCreature* player, BazaarTerminal* terminal, int screen, unsigned int category, int count, int offset) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -179,11 +268,12 @@ void BazaarManager::getPlanetBazaarData(PlayerCreature* player, BazaarTerminal* 
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->getPlanetBazaarData(player, terminal, screen, category, count, offset);
+		_implementation->getPlanetBazaarData(player, terminal, screen, category, count, offset);
 }
 
 void BazaarManager::getRegionBazaarData(PlayerCreature* player, BazaarTerminal* terminal, int screen, unsigned int category, int count, int offset) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -197,11 +287,12 @@ void BazaarManager::getRegionBazaarData(PlayerCreature* player, BazaarTerminal* 
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->getRegionBazaarData(player, terminal, screen, category, count, offset);
+		_implementation->getRegionBazaarData(player, terminal, screen, category, count, offset);
 }
 
 int BazaarManager::checkRetrieve(PlayerCreature* player, unsigned long long objectIdToRetrieve, BazaarTerminal* terminal) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -212,11 +303,12 @@ int BazaarManager::checkRetrieve(PlayerCreature* player, unsigned long long obje
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BazaarManagerImplementation*) _impl)->checkRetrieve(player, objectIdToRetrieve, terminal);
+		return _implementation->checkRetrieve(player, objectIdToRetrieve, terminal);
 }
 
 void BazaarManager::retrieveItem(PlayerCreature* player, unsigned long long objectid, unsigned long long bazaarid) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -227,11 +319,12 @@ void BazaarManager::retrieveItem(PlayerCreature* player, unsigned long long obje
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->retrieveItem(player, objectid, bazaarid);
+		_implementation->retrieveItem(player, objectid, bazaarid);
 }
 
 void BazaarManager::buyItem(PlayerCreature* player, unsigned long long objectid, int price1, int price2) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -243,11 +336,12 @@ void BazaarManager::buyItem(PlayerCreature* player, unsigned long long objectid,
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->buyItem(player, objectid, price1, price2);
+		_implementation->buyItem(player, objectid, price1, price2);
 }
 
 void BazaarManager::doAuctionBid(PlayerCreature* player, AuctionItem* item, int price1, int price2) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -259,11 +353,12 @@ void BazaarManager::doAuctionBid(PlayerCreature* player, AuctionItem* item, int 
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->doAuctionBid(player, item, price1, price2);
+		_implementation->doAuctionBid(player, item, price1, price2);
 }
 
 void BazaarManager::doInstantBuy(PlayerCreature* player, AuctionItem* item, int price1, int price2) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -275,11 +370,12 @@ void BazaarManager::doInstantBuy(PlayerCreature* player, AuctionItem* item, int 
 
 		method.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->doInstantBuy(player, item, price1, price2);
+		_implementation->doInstantBuy(player, item, price1, price2);
 }
 
 int BazaarManager::checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -291,24 +387,32 @@ int BazaarManager::checkBidAuction(PlayerCreature* player, AuctionItem* item, in
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BazaarManagerImplementation*) _impl)->checkBidAuction(player, item, price1, price2);
+		return _implementation->checkBidAuction(player, item, price1, price2);
 }
 
 AuctionQueryHeadersResponseMessage* BazaarManager::fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset) {
-	if (_impl == NULL) {
+	BazaarManagerImplementation* _implementation = (BazaarManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((BazaarManagerImplementation*) _impl)->fillAuctionQueryHeadersResponseMessage(player, items, screen, category, count, offset);
+		return _implementation->fillAuctionQueryHeadersResponseMessage(player, items, screen, category, count, offset);
 }
+
+DistributedObjectServant* BazaarManager::_getImplementation() {
+	return getForUpdate();}
+
+void BazaarManager::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	BazaarManagerImplementation
  */
 
-BazaarManagerImplementation::BazaarManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+BazaarManagerImplementation::BazaarManagerImplementation(DummyConstructorParameter* param) : ManagedServiceImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BazaarManagerImplementation::~BazaarManagerImplementation() {
 }
@@ -325,7 +429,7 @@ void BazaarManagerImplementation::_initializeImplementation() {
 
 void BazaarManagerImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (BazaarManager*) stub;
-	ManagedObjectImplementation::_setStub(stub);
+	ManagedServiceImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* BazaarManagerImplementation::_getStub() {
@@ -336,36 +440,34 @@ BazaarManagerImplementation::operator const BazaarManager*() {
 	return _this;
 }
 
+TransactionalObject* BazaarManagerImplementation::clone() {
+	return (TransactionalObject*) new BazaarManagerImplementation(*this);
+}
+
+
 void BazaarManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void BazaarManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void BazaarManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void BazaarManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void BazaarManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void BazaarManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void BazaarManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void BazaarManagerImplementation::_serializationHelperMethod() {
-	ManagedObjectImplementation::_serializationHelperMethod();
+	ManagedServiceImplementation::_serializationHelperMethod();
 
 	_setClassName("BazaarManager");
 
@@ -389,7 +491,7 @@ BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) {
  *	BazaarManagerAdapter
  */
 
-BazaarManagerAdapter::BazaarManagerAdapter(BazaarManagerImplementation* obj) : ManagedObjectAdapter(obj) {
+BazaarManagerAdapter::BazaarManagerAdapter(BazaarManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {

@@ -13,6 +13,18 @@
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace scene {
 
@@ -75,6 +87,10 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	int getInstrumentType();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	Instrument(DummyConstructorParameter* param);
@@ -139,6 +155,8 @@ public:
 protected:
 	virtual ~InstrumentImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -162,6 +180,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Instrument;
+	friend class TransactionalObjectHandle<InstrumentImplementation*>;
 };
 
 class InstrumentAdapter : public TangibleObjectAdapter {

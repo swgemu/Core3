@@ -18,13 +18,51 @@
 
 #include "server/zone/objects/area/MissionReconActiveArea.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/mission/ReconMissionObjective.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	ReconMissionObjectiveStub
  */
 
 ReconMissionObjective::ReconMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new ReconMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	ReconMissionObjectiveImplementation* _implementation = new ReconMissionObjectiveImplementation(mission);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 ReconMissionObjective::ReconMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -35,7 +73,8 @@ ReconMissionObjective::~ReconMissionObjective() {
 
 
 void ReconMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	ReconMissionObjectiveImplementation* _implementation = (ReconMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +82,12 @@ void ReconMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ReconMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void ReconMissionObjective::activate() {
-	if (_impl == NULL) {
+	ReconMissionObjectiveImplementation* _implementation = (ReconMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +95,12 @@ void ReconMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ReconMissionObjectiveImplementation*) _impl)->activate();
+		_implementation->activate();
 }
 
 void ReconMissionObjective::abort() {
-	if (_impl == NULL) {
+	ReconMissionObjectiveImplementation* _implementation = (ReconMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +108,12 @@ void ReconMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ReconMissionObjectiveImplementation*) _impl)->abort();
+		_implementation->abort();
 }
 
 void ReconMissionObjective::complete() {
-	if (_impl == NULL) {
+	ReconMissionObjectiveImplementation* _implementation = (ReconMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,8 +121,14 @@ void ReconMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ReconMissionObjectiveImplementation*) _impl)->complete();
+		_implementation->complete();
 }
+
+DistributedObjectServant* ReconMissionObjective::_getImplementation() {
+	return getForUpdate();}
+
+void ReconMissionObjective::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ReconMissionObjectiveImplementation
@@ -89,6 +137,7 @@ void ReconMissionObjective::complete() {
 ReconMissionObjectiveImplementation::ReconMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ReconMissionObjectiveImplementation::~ReconMissionObjectiveImplementation() {
 	ReconMissionObjectiveImplementation::finalize();
@@ -114,32 +163,30 @@ ReconMissionObjectiveImplementation::operator const ReconMissionObjective*() {
 	return _this;
 }
 
+TransactionalObject* ReconMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new ReconMissionObjectiveImplementation(*this);
+}
+
+
 void ReconMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ReconMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ReconMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::_serializationHelperMethod() {

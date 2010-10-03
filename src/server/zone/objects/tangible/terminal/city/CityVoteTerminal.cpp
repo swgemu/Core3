@@ -14,13 +14,83 @@
 
 #include "server/zone/objects/building/city/CityHallObject.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/region/Region.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/tangible/terminal/city/CityTerminal.h"
+
 /*
  *	CityVoteTerminalStub
  */
 
 CityVoteTerminal::CityVoteTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new CityVoteTerminalImplementation();
-	_impl->_setStub(this);
+	CityVoteTerminalImplementation* _implementation = new CityVoteTerminalImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 CityVoteTerminal::CityVoteTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -31,7 +101,8 @@ CityVoteTerminal::~CityVoteTerminal() {
 
 
 void CityVoteTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,11 +110,12 @@ void CityVoteTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityVoteTerminalImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void CityVoteTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +125,12 @@ void CityVoteTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 
 		method.executeWithVoidReturn();
 	} else
-		((CityVoteTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int CityVoteTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +140,12 @@ int CityVoteTerminal::handleObjectMenuSelect(PlayerCreature* player, byte select
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CityVoteTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 bool CityVoteTerminal::isCityVoteTerminal() {
-	if (_impl == NULL) {
+	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +153,12 @@ bool CityVoteTerminal::isCityVoteTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityVoteTerminalImplementation*) _impl)->isCityVoteTerminal();
+		return _implementation->isCityVoteTerminal();
 }
 
 void CityVoteTerminal::setCityHallObject(CityHallObject* cityHall) {
-	if (_impl == NULL) {
+	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +167,12 @@ void CityVoteTerminal::setCityHallObject(CityHallObject* cityHall) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityVoteTerminalImplementation*) _impl)->setCityHallObject(cityHall);
+		_implementation->setCityHallObject(cityHall);
 }
 
 CityHallObject* CityVoteTerminal::getCityHallObject() {
-	if (_impl == NULL) {
+	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,8 +180,14 @@ CityHallObject* CityVoteTerminal::getCityHallObject() {
 
 		return (CityHallObject*) method.executeWithObjectReturn();
 	} else
-		return ((CityVoteTerminalImplementation*) _impl)->getCityHallObject();
+		return _implementation->getCityHallObject();
 }
+
+DistributedObjectServant* CityVoteTerminal::_getImplementation() {
+	return getForUpdate();}
+
+void CityVoteTerminal::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	CityVoteTerminalImplementation
@@ -114,6 +196,7 @@ CityHallObject* CityVoteTerminal::getCityHallObject() {
 CityVoteTerminalImplementation::CityVoteTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CityVoteTerminalImplementation::~CityVoteTerminalImplementation() {
 }
@@ -141,32 +224,30 @@ CityVoteTerminalImplementation::operator const CityVoteTerminal*() {
 	return _this;
 }
 
+TransactionalObject* CityVoteTerminalImplementation::clone() {
+	return (TransactionalObject*) new CityVoteTerminalImplementation(*this);
+}
+
+
 void CityVoteTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CityVoteTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CityVoteTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CityVoteTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CityVoteTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CityVoteTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CityVoteTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CityVoteTerminalImplementation::_serializationHelperMethod() {

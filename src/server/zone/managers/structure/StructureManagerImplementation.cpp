@@ -56,7 +56,7 @@ SortedVector<String> StructureManagerImplementation::listOfStaticBuildings;
 SortedVector<String> StructureManagerImplementation::createdFiles;
 
 StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor)
-		: ManagedObjectImplementation() {
+		: ManagedServiceImplementation() {
 
 	StructureManagerImplementation::zone = zone;
 	StructureManagerImplementation::server = processor;

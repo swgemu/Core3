@@ -75,6 +75,10 @@ public:
 
 	bool isDeedObject();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	Deed(DummyConstructorParameter* param);
 
@@ -130,6 +134,8 @@ public:
 protected:
 	virtual ~DeedImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -153,6 +159,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Deed;
+	friend class TransactionalObjectHandle<DeedImplementation*>;
 };
 
 class DeedAdapter : public TangibleObjectAdapter {

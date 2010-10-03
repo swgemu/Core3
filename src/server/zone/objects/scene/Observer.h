@@ -44,6 +44,10 @@ public:
 
 	int compareTo(Observer* obj);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	Observer(DummyConstructorParameter* param);
 

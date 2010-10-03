@@ -12,13 +12,65 @@
 
 #include "server/zone/objects/creature/buffs/SpiceDownerBuff.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	SpiceBuffStub
  */
 
 SpiceBuff::SpiceBuff(CreatureObject* creo, const String& name, unsigned int buffCRC, int duration) : Buff(DummyConstructorParameter::instance()) {
-	_impl = new SpiceBuffImplementation(creo, name, buffCRC, duration);
-	_impl->_setStub(this);
+	SpiceBuffImplementation* _implementation = new SpiceBuffImplementation(creo, name, buffCRC, duration);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 SpiceBuff::SpiceBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -29,7 +81,8 @@ SpiceBuff::~SpiceBuff() {
 
 
 void SpiceBuff::activate(bool applyModifiers) {
-	if (_impl == NULL) {
+	SpiceBuffImplementation* _implementation = (SpiceBuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -38,11 +91,12 @@ void SpiceBuff::activate(bool applyModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SpiceBuffImplementation*) _impl)->activate(applyModifiers);
+		_implementation->activate(applyModifiers);
 }
 
 void SpiceBuff::deactivate(bool removeModifiers) {
-	if (_impl == NULL) {
+	SpiceBuffImplementation* _implementation = (SpiceBuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -51,11 +105,12 @@ void SpiceBuff::deactivate(bool removeModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SpiceBuffImplementation*) _impl)->deactivate(removeModifiers);
+		_implementation->deactivate(removeModifiers);
 }
 
 void SpiceBuff::setDownerAttributes(CreatureObject* creature, Buff* buff) {
-	if (_impl == NULL) {
+	SpiceBuffImplementation* _implementation = (SpiceBuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -65,8 +120,14 @@ void SpiceBuff::setDownerAttributes(CreatureObject* creature, Buff* buff) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SpiceBuffImplementation*) _impl)->setDownerAttributes(creature, buff);
+		_implementation->setDownerAttributes(creature, buff);
 }
+
+DistributedObjectServant* SpiceBuff::_getImplementation() {
+	return getForUpdate();}
+
+void SpiceBuff::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	SpiceBuffImplementation
@@ -75,6 +136,7 @@ void SpiceBuff::setDownerAttributes(CreatureObject* creature, Buff* buff) {
 SpiceBuffImplementation::SpiceBuffImplementation(DummyConstructorParameter* param) : BuffImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SpiceBuffImplementation::~SpiceBuffImplementation() {
 }
@@ -102,32 +164,30 @@ SpiceBuffImplementation::operator const SpiceBuff*() {
 	return _this;
 }
 
+TransactionalObject* SpiceBuffImplementation::clone() {
+	return (TransactionalObject*) new SpiceBuffImplementation(*this);
+}
+
+
 void SpiceBuffImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SpiceBuffImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SpiceBuffImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SpiceBuffImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SpiceBuffImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SpiceBuffImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SpiceBuffImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SpiceBuffImplementation::_serializationHelperMethod() {
@@ -145,7 +205,7 @@ SpiceBuffImplementation::SpiceBuffImplementation(CreatureObject* creo, const Str
 
 void SpiceBuffImplementation::activate(bool applyModifiers) {
 	// server/zone/objects/creature/buffs/SpiceBuff.idl(71):  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_consume");
-	BuffImplementation::creature->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_consume");
+	BuffImplementation::creature.getForUpdate()->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_consume");
 	// server/zone/objects/creature/buffs/SpiceBuff.idl(73):  		super.activate(true);
 	BuffImplementation::activate(true);
 }

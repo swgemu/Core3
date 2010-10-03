@@ -6,13 +6,21 @@
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
+
+// Imported class dependencies
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	SuiListBoxMenuItemStub
  */
 
 SuiListBoxMenuItem::SuiListBoxMenuItem(const String& name, unsigned long long oid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new SuiListBoxMenuItemImplementation(name, oid);
-	_impl->_setStub(this);
+	SuiListBoxMenuItemImplementation* _implementation = new SuiListBoxMenuItemImplementation(name, oid);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 SuiListBoxMenuItem::SuiListBoxMenuItem(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -23,7 +31,8 @@ SuiListBoxMenuItem::~SuiListBoxMenuItem() {
 
 
 unsigned long long SuiListBoxMenuItem::getObjectID() {
-	if (_impl == NULL) {
+	SuiListBoxMenuItemImplementation* _implementation = (SuiListBoxMenuItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,11 +40,12 @@ unsigned long long SuiListBoxMenuItem::getObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SuiListBoxMenuItemImplementation*) _impl)->getObjectID();
+		return _implementation->getObjectID();
 }
 
 String SuiListBoxMenuItem::getOptionName() {
-	if (_impl == NULL) {
+	SuiListBoxMenuItemImplementation* _implementation = (SuiListBoxMenuItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -44,8 +54,14 @@ String SuiListBoxMenuItem::getOptionName() {
 		method.executeWithAsciiReturn(_return_getOptionName);
 		return _return_getOptionName;
 	} else
-		return ((SuiListBoxMenuItemImplementation*) _impl)->getOptionName();
+		return _implementation->getOptionName();
 }
+
+DistributedObjectServant* SuiListBoxMenuItem::_getImplementation() {
+	return getForUpdate();}
+
+void SuiListBoxMenuItem::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	SuiListBoxMenuItemImplementation
@@ -54,6 +70,7 @@ String SuiListBoxMenuItem::getOptionName() {
 SuiListBoxMenuItemImplementation::SuiListBoxMenuItemImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiListBoxMenuItemImplementation::~SuiListBoxMenuItemImplementation() {
 }
@@ -81,32 +98,30 @@ SuiListBoxMenuItemImplementation::operator const SuiListBoxMenuItem*() {
 	return _this;
 }
 
+TransactionalObject* SuiListBoxMenuItemImplementation::clone() {
+	return (TransactionalObject*) new SuiListBoxMenuItemImplementation(*this);
+}
+
+
 void SuiListBoxMenuItemImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SuiListBoxMenuItemImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SuiListBoxMenuItemImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::_serializationHelperMethod() {

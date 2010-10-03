@@ -8,13 +8,59 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	SuiListBoxStub
  */
 
 SuiListBox::SuiListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiListBoxImplementation(player, windowType, listBoxType);
-	_impl->_setStub(this);
+	SuiListBoxImplementation* _implementation = new SuiListBoxImplementation(player, windowType, listBoxType);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 SuiListBox::SuiListBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -25,7 +71,8 @@ SuiListBox::~SuiListBox() {
 
 
 void SuiListBox::init() {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +80,12 @@ void SuiListBox::init() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiListBoxImplementation*) _impl)->init();
+		_implementation->init();
 }
 
 void SuiListBox::addMenuItem(const String& name, unsigned long long objectID) {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +95,12 @@ void SuiListBox::addMenuItem(const String& name, unsigned long long objectID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiListBoxImplementation*) _impl)->addMenuItem(name, objectID);
+		_implementation->addMenuItem(name, objectID);
 }
 
 String SuiListBox::getMenuItemName(int index) {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +110,12 @@ String SuiListBox::getMenuItemName(int index) {
 		method.executeWithAsciiReturn(_return_getMenuItemName);
 		return _return_getMenuItemName;
 	} else
-		return ((SuiListBoxImplementation*) _impl)->getMenuItemName(index);
+		return _implementation->getMenuItemName(index);
 }
 
 void SuiListBox::removeAllMenuItems() {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -73,11 +123,12 @@ void SuiListBox::removeAllMenuItems() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiListBoxImplementation*) _impl)->removeAllMenuItems();
+		_implementation->removeAllMenuItems();
 }
 
 unsigned long long SuiListBox::getMenuObjectID(unsigned int idx) {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,11 +137,12 @@ unsigned long long SuiListBox::getMenuObjectID(unsigned int idx) {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SuiListBoxImplementation*) _impl)->getMenuObjectID(idx);
+		return _implementation->getMenuObjectID(idx);
 }
 
 int SuiListBox::getMenuSize() {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -98,11 +150,12 @@ int SuiListBox::getMenuSize() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SuiListBoxImplementation*) _impl)->getMenuSize();
+		return _implementation->getMenuSize();
 }
 
 BaseMessage* SuiListBox::generateMessage() {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,11 +163,12 @@ BaseMessage* SuiListBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiListBoxImplementation*) _impl)->generateMessage();
+		return _implementation->generateMessage();
 }
 
 void SuiListBox::setNextBox(unsigned int boxID) {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -123,11 +177,12 @@ void SuiListBox::setNextBox(unsigned int boxID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiListBoxImplementation*) _impl)->setNextBox(boxID);
+		_implementation->setNextBox(boxID);
 }
 
 void SuiListBox::setPreviousBox(unsigned int boxID) {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -136,11 +191,12 @@ void SuiListBox::setPreviousBox(unsigned int boxID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiListBoxImplementation*) _impl)->setPreviousBox(boxID);
+		_implementation->setPreviousBox(boxID);
 }
 
 unsigned long long SuiListBox::getNextBox() {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -148,11 +204,12 @@ unsigned long long SuiListBox::getNextBox() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SuiListBoxImplementation*) _impl)->getNextBox();
+		return _implementation->getNextBox();
 }
 
 unsigned long long SuiListBox::getPreviousBox() {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,11 +217,12 @@ unsigned long long SuiListBox::getPreviousBox() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SuiListBoxImplementation*) _impl)->getPreviousBox();
+		return _implementation->getPreviousBox();
 }
 
 bool SuiListBox::isListBox() {
-	if (_impl == NULL) {
+	SuiListBoxImplementation* _implementation = (SuiListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,8 +230,14 @@ bool SuiListBox::isListBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiListBoxImplementation*) _impl)->isListBox();
+		return _implementation->isListBox();
 }
+
+DistributedObjectServant* SuiListBox::_getImplementation() {
+	return getForUpdate();}
+
+void SuiListBox::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	SuiListBoxImplementation
@@ -182,6 +246,7 @@ bool SuiListBox::isListBox() {
 SuiListBoxImplementation::SuiListBoxImplementation(DummyConstructorParameter* param) : SuiBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiListBoxImplementation::~SuiListBoxImplementation() {
 }
@@ -209,32 +274,30 @@ SuiListBoxImplementation::operator const SuiListBox*() {
 	return _this;
 }
 
+TransactionalObject* SuiListBoxImplementation::clone() {
+	return (TransactionalObject*) new SuiListBoxImplementation(*this);
+}
+
+
 void SuiListBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SuiListBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SuiListBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SuiListBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SuiListBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SuiListBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SuiListBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SuiListBoxImplementation::_serializationHelperMethod() {

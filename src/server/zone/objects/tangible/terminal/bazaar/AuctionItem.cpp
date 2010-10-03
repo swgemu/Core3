@@ -6,13 +6,21 @@
 
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 
+
+// Imported class dependencies
+
+#include "system/util/VectorMap.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
 /*
  *	AuctionItemStub
  */
 
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new AuctionItemImplementation(objectid);
-	_impl->_setStub(this);
+	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 AuctionItem::AuctionItem(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -23,7 +31,8 @@ AuctionItem::~AuctionItem() {
 
 
 void AuctionItem::setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,11 +46,12 @@ void AuctionItem::setLocation(const String& planet, const String& header, unsign
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setLocation(planet, header, vendorid, x, z, vendor);
+		_implementation->setLocation(planet, header, vendorid, x, z, vendor);
 }
 
 void AuctionItem::setItemName(const String& name) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -50,11 +60,12 @@ void AuctionItem::setItemName(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setItemName(name);
+		_implementation->setItemName(name);
 }
 
 void AuctionItem::setItemDescription(const String& descr) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -63,11 +74,12 @@ void AuctionItem::setItemDescription(const String& descr) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setItemDescription(descr);
+		_implementation->setItemDescription(descr);
 }
 
 void AuctionItem::setPrice(int newPrice) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -76,11 +88,12 @@ void AuctionItem::setPrice(int newPrice) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setPrice(newPrice);
+		_implementation->setPrice(newPrice);
 }
 
 void AuctionItem::setAuctionedItemObjectID(unsigned long long objectID) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -89,11 +102,12 @@ void AuctionItem::setAuctionedItemObjectID(unsigned long long objectID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setAuctionedItemObjectID(objectID);
+		_implementation->setAuctionedItemObjectID(objectID);
 }
 
 void AuctionItem::setItemType(int type) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,11 +116,12 @@ void AuctionItem::setItemType(int type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setItemType(type);
+		_implementation->setItemType(type);
 }
 
 void AuctionItem::setOwnerID(unsigned long long ownerObjectID) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +130,12 @@ void AuctionItem::setOwnerID(unsigned long long ownerObjectID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setOwnerID(ownerObjectID);
+		_implementation->setOwnerID(ownerObjectID);
 }
 
 void AuctionItem::setBidderName(const String& name) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,19 +144,21 @@ void AuctionItem::setBidderName(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setBidderName(name);
+		_implementation->setBidderName(name);
 }
 
 void AuctionItem::setPlanet(unsigned short planetid) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((AuctionItemImplementation*) _impl)->setPlanet(planetid);
+		_implementation->setPlanet(planetid);
 }
 
 void AuctionItem::setOwnerName(const String& name) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -149,11 +167,12 @@ void AuctionItem::setOwnerName(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setOwnerName(name);
+		_implementation->setOwnerName(name);
 }
 
 void AuctionItem::setBazaarTerminal(BazaarTerminal* term) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -162,11 +181,12 @@ void AuctionItem::setBazaarTerminal(BazaarTerminal* term) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setBazaarTerminal(term);
+		_implementation->setBazaarTerminal(term);
 }
 
 void AuctionItem::setAuction(bool isAuction) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -175,11 +195,12 @@ void AuctionItem::setAuction(bool isAuction) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setAuction(isAuction);
+		_implementation->setAuction(isAuction);
 }
 
 void AuctionItem::setSold(bool isSold) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -188,11 +209,12 @@ void AuctionItem::setSold(bool isSold) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setSold(isSold);
+		_implementation->setSold(isSold);
 }
 
 void AuctionItem::setRemovedByOwner(bool isRemovedByOwner) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -201,11 +223,12 @@ void AuctionItem::setRemovedByOwner(bool isRemovedByOwner) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setRemovedByOwner(isRemovedByOwner);
+		_implementation->setRemovedByOwner(isRemovedByOwner);
 }
 
 void AuctionItem::setExpireTime(int time) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -214,11 +237,12 @@ void AuctionItem::setExpireTime(int time) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setExpireTime(time);
+		_implementation->setExpireTime(time);
 }
 
 void AuctionItem::setBuyerID(unsigned long long id) {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -227,11 +251,12 @@ void AuctionItem::setBuyerID(unsigned long long id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setBuyerID(id);
+		_implementation->setBuyerID(id);
 }
 
 BazaarTerminal* AuctionItem::getBazaarTerminal() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -239,11 +264,12 @@ BazaarTerminal* AuctionItem::getBazaarTerminal() {
 
 		return (BazaarTerminal*) method.executeWithObjectReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getBazaarTerminal();
+		return _implementation->getBazaarTerminal();
 }
 
 bool AuctionItem::isSold() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -251,11 +277,12 @@ bool AuctionItem::isSold() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->isSold();
+		return _implementation->isSold();
 }
 
 bool AuctionItem::isAuction() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -263,11 +290,12 @@ bool AuctionItem::isAuction() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->isAuction();
+		return _implementation->isAuction();
 }
 
 bool AuctionItem::isRemovedByOwner() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -275,11 +303,12 @@ bool AuctionItem::isRemovedByOwner() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->isRemovedByOwner();
+		return _implementation->isRemovedByOwner();
 }
 
 unsigned long long AuctionItem::getAuctionedItemObjectID() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -287,11 +316,12 @@ unsigned long long AuctionItem::getAuctionedItemObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getAuctionedItemObjectID();
+		return _implementation->getAuctionedItemObjectID();
 }
 
 unsigned long long AuctionItem::getOwnerID() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -299,11 +329,12 @@ unsigned long long AuctionItem::getOwnerID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getOwnerID();
+		return _implementation->getOwnerID();
 }
 
 String AuctionItem::getTerminalTitle() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -312,11 +343,12 @@ String AuctionItem::getTerminalTitle() {
 		method.executeWithAsciiReturn(_return_getTerminalTitle);
 		return _return_getTerminalTitle;
 	} else
-		return ((AuctionItemImplementation*) _impl)->getTerminalTitle();
+		return _implementation->getTerminalTitle();
 }
 
 String AuctionItem::getOwnerName() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -325,11 +357,12 @@ String AuctionItem::getOwnerName() {
 		method.executeWithAsciiReturn(_return_getOwnerName);
 		return _return_getOwnerName;
 	} else
-		return ((AuctionItemImplementation*) _impl)->getOwnerName();
+		return _implementation->getOwnerName();
 }
 
 String AuctionItem::getItemName() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -338,11 +371,12 @@ String AuctionItem::getItemName() {
 		method.executeWithAsciiReturn(_return_getItemName);
 		return _return_getItemName;
 	} else
-		return ((AuctionItemImplementation*) _impl)->getItemName();
+		return _implementation->getItemName();
 }
 
 int AuctionItem::getExpireTime() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -350,11 +384,12 @@ int AuctionItem::getExpireTime() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getExpireTime();
+		return _implementation->getExpireTime();
 }
 
 int AuctionItem::getPrice() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -362,11 +397,12 @@ int AuctionItem::getPrice() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getPrice();
+		return _implementation->getPrice();
 }
 
 int AuctionItem::getItemType() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -374,11 +410,12 @@ int AuctionItem::getItemType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getItemType();
+		return _implementation->getItemType();
 }
 
 unsigned long long AuctionItem::getBuyerID() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -386,11 +423,12 @@ unsigned long long AuctionItem::getBuyerID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getBuyerID();
+		return _implementation->getBuyerID();
 }
 
 String AuctionItem::getBidderName() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -399,11 +437,12 @@ String AuctionItem::getBidderName() {
 		method.executeWithAsciiReturn(_return_getBidderName);
 		return _return_getBidderName;
 	} else
-		return ((AuctionItemImplementation*) _impl)->getBidderName();
+		return _implementation->getBidderName();
 }
 
 String AuctionItem::getItemDescription() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -412,11 +451,12 @@ String AuctionItem::getItemDescription() {
 		method.executeWithAsciiReturn(_return_getItemDescription);
 		return _return_getItemDescription;
 	} else
-		return ((AuctionItemImplementation*) _impl)->getItemDescription();
+		return _implementation->getItemDescription();
 }
 
 String AuctionItem::getLocation() {
-	if (_impl == NULL) {
+	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -425,8 +465,14 @@ String AuctionItem::getLocation() {
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
 	} else
-		return ((AuctionItemImplementation*) _impl)->getLocation();
+		return _implementation->getLocation();
 }
+
+DistributedObjectServant* AuctionItem::_getImplementation() {
+	return getForUpdate();}
+
+void AuctionItem::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	AuctionItemImplementation
@@ -435,6 +481,7 @@ String AuctionItem::getLocation() {
 AuctionItemImplementation::AuctionItemImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 AuctionItemImplementation::~AuctionItemImplementation() {
 }
@@ -462,32 +509,30 @@ AuctionItemImplementation::operator const AuctionItem*() {
 	return _this;
 }
 
+TransactionalObject* AuctionItemImplementation::clone() {
+	return (TransactionalObject*) new AuctionItemImplementation(*this);
+}
+
+
 void AuctionItemImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void AuctionItemImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void AuctionItemImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void AuctionItemImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void AuctionItemImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void AuctionItemImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void AuctionItemImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void AuctionItemImplementation::_serializationHelperMethod() {

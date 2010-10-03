@@ -20,12 +20,100 @@
 
 #include "server/zone/managers/stringid/StringIdManager.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/building/city/CityHallObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	MissionManagerStub
  */
 
 MissionManager::MissionManager(ZoneServer* srv, ZoneProcessServerImplementation* impl) : Observer(DummyConstructorParameter::instance()) {
-	_impl = new MissionManagerImplementation(srv, impl);
+	MissionManagerImplementation* _implementation = new MissionManagerImplementation(srv, impl);
+	_impl = _implementation;
 	_impl->_setStub(this);
 }
 
@@ -37,7 +125,8 @@ MissionManager::~MissionManager() {
 
 
 void MissionManager::loadLairObjectsToSpawn() {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +134,12 @@ void MissionManager::loadLairObjectsToSpawn() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->loadLairObjectsToSpawn();
+		_implementation->loadLairObjectsToSpawn();
 }
 
 void MissionManager::loadNpcObjectsToSpawn() {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +147,12 @@ void MissionManager::loadNpcObjectsToSpawn() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->loadNpcObjectsToSpawn();
+		_implementation->loadNpcObjectsToSpawn();
 }
 
 void MissionManager::handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +163,12 @@ void MissionManager::handleMissionListRequest(MissionTerminal* missionTerminal, 
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->handleMissionListRequest(missionTerminal, player, counter);
+		_implementation->handleMissionListRequest(missionTerminal, player, counter);
 }
 
 void MissionManager::handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -87,11 +179,12 @@ void MissionManager::handleMissionAccept(MissionTerminal* missionTerminal, Missi
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->handleMissionAccept(missionTerminal, mission, player);
+		_implementation->handleMissionAccept(missionTerminal, mission, player);
 }
 
 void MissionManager::handleMissionAbort(MissionObject* mission, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -101,11 +194,12 @@ void MissionManager::handleMissionAbort(MissionObject* mission, PlayerCreature* 
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->handleMissionAbort(mission, player);
+		_implementation->handleMissionAbort(mission, player);
 }
 
 void MissionManager::removeMission(MissionObject* mission, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +209,12 @@ void MissionManager::removeMission(MissionObject* mission, PlayerCreature* playe
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->removeMission(mission, player);
+		_implementation->removeMission(mission, player);
 }
 
 void MissionManager::populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -130,11 +225,12 @@ void MissionManager::populateMissionList(MissionTerminal* missionTerminal, Playe
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->populateMissionList(missionTerminal, player, counter);
+		_implementation->populateMissionList(missionTerminal, player, counter);
 }
 
 void MissionManager::randomizeSurveyMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -144,11 +240,12 @@ void MissionManager::randomizeSurveyMission(PlayerCreature* player, MissionObjec
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeSurveyMission(player, mission);
+		_implementation->randomizeSurveyMission(player, mission);
 }
 
 void MissionManager::randomizeDestroyMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -158,11 +255,12 @@ void MissionManager::randomizeDestroyMission(PlayerCreature* player, MissionObje
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeDestroyMission(player, mission);
+		_implementation->randomizeDestroyMission(player, mission);
 }
 
 void MissionManager::randomizeBountyMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,11 +270,12 @@ void MissionManager::randomizeBountyMission(PlayerCreature* player, MissionObjec
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeBountyMission(player, mission);
+		_implementation->randomizeBountyMission(player, mission);
 }
 
 void MissionManager::randomizeDeliverMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -186,11 +285,12 @@ void MissionManager::randomizeDeliverMission(PlayerCreature* player, MissionObje
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeDeliverMission(player, mission);
+		_implementation->randomizeDeliverMission(player, mission);
 }
 
 void MissionManager::randomizeCraftingMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -200,11 +300,12 @@ void MissionManager::randomizeCraftingMission(PlayerCreature* player, MissionObj
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeCraftingMission(player, mission);
+		_implementation->randomizeCraftingMission(player, mission);
 }
 
 void MissionManager::randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -214,11 +315,12 @@ void MissionManager::randomizeEntertainerMission(PlayerCreature* player, Mission
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeEntertainerMission(player, mission);
+		_implementation->randomizeEntertainerMission(player, mission);
 }
 
 void MissionManager::randomizeHuntingMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -228,11 +330,12 @@ void MissionManager::randomizeHuntingMission(PlayerCreature* player, MissionObje
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeHuntingMission(player, mission);
+		_implementation->randomizeHuntingMission(player, mission);
 }
 
 void MissionManager::randomizeReconMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -242,11 +345,12 @@ void MissionManager::randomizeReconMission(PlayerCreature* player, MissionObject
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeReconMission(player, mission);
+		_implementation->randomizeReconMission(player, mission);
 }
 
 void MissionManager::randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -256,11 +360,12 @@ void MissionManager::randomizeImperialDestroyMission(PlayerCreature* player, Mis
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeImperialDestroyMission(player, mission);
+		_implementation->randomizeImperialDestroyMission(player, mission);
 }
 
 void MissionManager::randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -270,11 +375,12 @@ void MissionManager::randomizeImperialDeliverMission(PlayerCreature* player, Mis
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeImperialDeliverMission(player, mission);
+		_implementation->randomizeImperialDeliverMission(player, mission);
 }
 
 void MissionManager::randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -284,11 +390,12 @@ void MissionManager::randomizeRebelDestroyMission(PlayerCreature* player, Missio
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeRebelDestroyMission(player, mission);
+		_implementation->randomizeRebelDestroyMission(player, mission);
 }
 
 void MissionManager::randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -298,11 +405,12 @@ void MissionManager::randomizeRebelDeliverMission(PlayerCreature* player, Missio
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->randomizeRebelDeliverMission(player, mission);
+		_implementation->randomizeRebelDeliverMission(player, mission);
 }
 
 void MissionManager::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -313,11 +421,12 @@ void MissionManager::createMissionObjectives(MissionObject* mission, MissionTerm
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->createMissionObjectives(mission, missionTerminal, player);
+		_implementation->createMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManager::createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -328,11 +437,12 @@ void MissionManager::createSurveyMissionObjectives(MissionObject* mission, Missi
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->createSurveyMissionObjectives(mission, missionTerminal, player);
+		_implementation->createSurveyMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManager::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -343,11 +453,12 @@ void MissionManager::createDestroyMissionObjectives(MissionObject* mission, Miss
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->createDestroyMissionObjectives(mission, missionTerminal, player);
+		_implementation->createDestroyMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManager::createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -358,11 +469,12 @@ void MissionManager::createDeliverMissionObjectives(MissionObject* mission, Miss
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->createDeliverMissionObjectives(mission, missionTerminal, player);
+		_implementation->createDeliverMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManager::createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -373,11 +485,12 @@ void MissionManager::createEntertainerMissionObjectives(MissionObject* mission, 
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->createEntertainerMissionObjectives(mission, missionTerminal, player);
+		_implementation->createEntertainerMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManager::createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -388,11 +501,12 @@ void MissionManager::createHuntingMissionObjectives(MissionObject* mission, Miss
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->createHuntingMissionObjectives(mission, missionTerminal, player);
+		_implementation->createHuntingMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManager::createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -403,11 +517,12 @@ void MissionManager::createReconMissionObjectives(MissionObject* mission, Missio
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->createReconMissionObjectives(mission, missionTerminal, player);
+		_implementation->createReconMissionObjectives(mission, missionTerminal, player);
 }
 
 void MissionManager::createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -418,11 +533,12 @@ void MissionManager::createBountyMissionObjectives(MissionObject* mission, Missi
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->createBountyMissionObjectives(mission, missionTerminal, player);
+		_implementation->createBountyMissionObjectives(mission, missionTerminal, player);
 }
 
 bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spawn) {
-	if (_impl == NULL) {
+	MissionManagerImplementation* _implementation = (MissionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -432,8 +548,14 @@ bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spaw
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionManagerImplementation*) _impl)->hasSurveyMission(player, spawn);
+		return _implementation->hasSurveyMission(player, spawn);
 }
+
+DistributedObjectServant* MissionManager::_getImplementation() {
+	return _impl;}
+
+void MissionManager::_setImplementation(DistributedObjectServant* servant) {
+	_impl = servant;}
 
 /*
  *	MissionManagerImplementation
@@ -442,6 +564,7 @@ bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spaw
 MissionManagerImplementation::MissionManagerImplementation(DummyConstructorParameter* param) : ObserverImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MissionManagerImplementation::~MissionManagerImplementation() {
 }
@@ -509,17 +632,17 @@ void MissionManagerImplementation::_serializationHelperMethod() {
 
 MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, ZoneProcessServerImplementation* impl) {
 	_initializeImplementation();
-	// server/zone/managers/mission/MissionManager.idl(74):  		server = srv;
+	// server/zone/managers/mission/MissionManager.idl(73):  		server = srv;
 	server = srv;
-	// server/zone/managers/mission/MissionManager.idl(75):  		processor = impl;
+	// server/zone/managers/mission/MissionManager.idl(74):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/mission/MissionManager.idl(76):  		Logger.setLoggingName("MissionManager");
+	// server/zone/managers/mission/MissionManager.idl(75):  		Logger.setLoggingName("MissionManager");
 	Logger::setLoggingName("MissionManager");
-	// server/zone/managers/mission/MissionManager.idl(78):  		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
+	// server/zone/managers/mission/MissionManager.idl(77):  		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
 	(&lairObjectTemplatesToSpawn)->setNoDuplicateInsertPlan();
-	// server/zone/managers/mission/MissionManager.idl(80):  		loadLairObjectsToSpawn();
+	// server/zone/managers/mission/MissionManager.idl(79):  		loadLairObjectsToSpawn();
 	loadLairObjectsToSpawn();
-	// server/zone/managers/mission/MissionManager.idl(81):  		loadNpcObjectsToSpawn();
+	// server/zone/managers/mission/MissionManager.idl(80):  		loadNpcObjectsToSpawn();
 	loadNpcObjectsToSpawn();
 }
 

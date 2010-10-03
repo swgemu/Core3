@@ -123,6 +123,10 @@ public:
 
 	void setMindEncumbrance(int encumber);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	ArmorObject(DummyConstructorParameter* param);
 
@@ -274,6 +278,8 @@ public:
 protected:
 	virtual ~ArmorObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -297,6 +303,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ArmorObject;
+	friend class TransactionalObjectHandle<ArmorObjectImplementation*>;
 };
 
 class ArmorObjectAdapter : public WearableObjectAdapter {

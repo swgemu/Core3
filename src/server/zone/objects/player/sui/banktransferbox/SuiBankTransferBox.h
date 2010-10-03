@@ -72,6 +72,10 @@ public:
 
 	bool isBankTransferBox();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	SuiBankTransferBox(DummyConstructorParameter* param);
 
@@ -139,6 +143,8 @@ public:
 protected:
 	virtual ~SuiBankTransferBoxImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -162,6 +168,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiBankTransferBox;
+	friend class TransactionalObjectHandle<SuiBankTransferBoxImplementation*>;
 };
 
 class SuiBankTransferBoxAdapter : public SuiBoxAdapter {

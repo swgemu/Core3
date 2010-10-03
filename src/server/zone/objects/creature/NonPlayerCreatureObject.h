@@ -25,6 +25,20 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/creature/AiAgent.h"
@@ -39,6 +53,10 @@ public:
 	NonPlayerCreatureObject();
 
 	bool isNonPlayerCreature();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	NonPlayerCreatureObject(DummyConstructorParameter* param);
@@ -77,6 +95,8 @@ public:
 protected:
 	virtual ~NonPlayerCreatureObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -100,6 +120,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class NonPlayerCreatureObject;
+	friend class TransactionalObjectHandle<NonPlayerCreatureObjectImplementation*>;
 };
 
 class NonPlayerCreatureObjectAdapter : public AiAgentAdapter {

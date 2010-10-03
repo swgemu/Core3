@@ -12,13 +12,71 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	ComponentStub
  */
 
 Component::Component() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ComponentImplementation();
-	_impl->_setStub(this);
+	ComponentImplementation* _implementation = new ComponentImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 Component::Component(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -29,7 +87,8 @@ Component::~Component() {
 
 
 void Component::initializeTransientMembers() {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,27 +96,30 @@ void Component::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ComponentImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void Component::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ComponentImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 void Component::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ComponentImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 bool Component::isComponent() {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -65,11 +127,12 @@ bool Component::isComponent() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ComponentImplementation*) _impl)->isComponent();
+		return _implementation->isComponent();
 }
 
 void Component::generateLootStats(const String& lootstring, int level) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +142,12 @@ void Component::generateLootStats(const String& lootstring, int level) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ComponentImplementation*) _impl)->generateLootStats(lootstring, level);
+		_implementation->generateLootStats(lootstring, level);
 }
 
 bool Component::compare(Component* inCmpo) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +156,12 @@ bool Component::compare(Component* inCmpo) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ComponentImplementation*) _impl)->compare(inCmpo);
+		return _implementation->compare(inCmpo);
 }
 
 bool Component::hasKey(const String& key) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,11 +170,12 @@ bool Component::hasKey(const String& key) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ComponentImplementation*) _impl)->hasKey(key);
+		return _implementation->hasKey(key);
 }
 
 void Component::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -118,11 +184,12 @@ void Component::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ComponentImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 void Component::addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +202,12 @@ void Component::addProperty(const String& attributeName, const float value, cons
 
 		method.executeWithVoidReturn();
 	} else
-		((ComponentImplementation*) _impl)->addProperty(attributeName, value, precision, craftingTitle, hidden);
+		_implementation->addProperty(attributeName, value, precision, craftingTitle, hidden);
 }
 
 float Component::getAttributeValue(String& attributeName) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -148,11 +216,12 @@ float Component::getAttributeValue(String& attributeName) {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ComponentImplementation*) _impl)->getAttributeValue(attributeName);
+		return _implementation->getAttributeValue(attributeName);
 }
 
 int Component::getAttributePrecision(String& attributeName) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -161,11 +230,12 @@ int Component::getAttributePrecision(String& attributeName) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ComponentImplementation*) _impl)->getAttributePrecision(attributeName);
+		return _implementation->getAttributePrecision(attributeName);
 }
 
 String Component::getAttributeTitle(String& attributeName) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -175,11 +245,12 @@ String Component::getAttributeTitle(String& attributeName) {
 		method.executeWithAsciiReturn(_return_getAttributeTitle);
 		return _return_getAttributeTitle;
 	} else
-		return ((ComponentImplementation*) _impl)->getAttributeTitle(attributeName);
+		return _implementation->getAttributeTitle(attributeName);
 }
 
 bool Component::getAttributeHidden(String& attributeName) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -188,11 +259,12 @@ bool Component::getAttributeHidden(String& attributeName) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ComponentImplementation*) _impl)->getAttributeHidden(attributeName);
+		return _implementation->getAttributeHidden(attributeName);
 }
 
 void Component::setPropertyToHidden(const String& property) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -201,11 +273,12 @@ void Component::setPropertyToHidden(const String& property) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ComponentImplementation*) _impl)->setPropertyToHidden(property);
+		_implementation->setPropertyToHidden(property);
 }
 
 void Component::addProperty(const String& attribute, const float value, const int precision, const String& title) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -217,11 +290,12 @@ void Component::addProperty(const String& attribute, const float value, const in
 
 		method.executeWithVoidReturn();
 	} else
-		((ComponentImplementation*) _impl)->addProperty(attribute, value, precision, title);
+		_implementation->addProperty(attribute, value, precision, title);
 }
 
 int Component::getPropertyCount() {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -229,11 +303,12 @@ int Component::getPropertyCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ComponentImplementation*) _impl)->getPropertyCount();
+		return _implementation->getPropertyCount();
 }
 
 String Component::getProperty(const int j) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -243,11 +318,12 @@ String Component::getProperty(const int j) {
 		method.executeWithAsciiReturn(_return_getProperty);
 		return _return_getProperty;
 	} else
-		return ((ComponentImplementation*) _impl)->getProperty(j);
+		return _implementation->getProperty(j);
 }
 
 bool Component::changeAttributeValue(String& property, float value) {
-	if (_impl == NULL) {
+	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -257,8 +333,14 @@ bool Component::changeAttributeValue(String& property, float value) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ComponentImplementation*) _impl)->changeAttributeValue(property, value);
+		return _implementation->changeAttributeValue(property, value);
 }
+
+DistributedObjectServant* Component::_getImplementation() {
+	return getForUpdate();}
+
+void Component::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ComponentImplementation
@@ -267,6 +349,7 @@ bool Component::changeAttributeValue(String& property, float value) {
 ComponentImplementation::ComponentImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ComponentImplementation::~ComponentImplementation() {
 }
@@ -294,32 +377,30 @@ ComponentImplementation::operator const Component*() {
 	return _this;
 }
 
+TransactionalObject* ComponentImplementation::clone() {
+	return (TransactionalObject*) new ComponentImplementation(*this);
+}
+
+
 void ComponentImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ComponentImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ComponentImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ComponentImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ComponentImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ComponentImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ComponentImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ComponentImplementation::_serializationHelperMethod() {

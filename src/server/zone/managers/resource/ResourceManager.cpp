@@ -20,12 +20,100 @@
 
 #include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/resource/ResourceSpawn.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	ResourceManagerStub
  */
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
-	_impl = new ResourceManagerImplementation(server, impl, objectMan);
+	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
+	_impl = _implementation;
 	_impl->_setStub(this);
 }
 
@@ -37,7 +125,8 @@ ResourceManager::~ResourceManager() {
 
 
 void ResourceManager::stop() {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +134,12 @@ void ResourceManager::stop() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->stop();
+		_implementation->stop();
 }
 
 void ResourceManager::initialize() {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +147,12 @@ void ResourceManager::initialize() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->initialize();
+		_implementation->initialize();
 }
 
 void ResourceManager::shiftResources() {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +160,12 @@ void ResourceManager::shiftResources() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->shiftResources();
+		_implementation->shiftResources();
 }
 
 int ResourceManager::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -85,11 +177,12 @@ int ResourceManager::notifyObserverEvent(unsigned int eventType, Observable* obs
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -100,11 +193,12 @@ void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, 
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->sendResourceListForSurvey(playerCreature, toolType, surveyType);
+		_implementation->sendResourceListForSurvey(playerCreature, toolType, surveyType);
 }
 
 void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -114,11 +208,12 @@ void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& r
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->sendSurvey(playerCreature, resname);
+		_implementation->sendSurvey(playerCreature, resname);
 }
 
 void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -129,11 +224,12 @@ void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& r
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->sendSample(playerCreature, resname, sampleAnimation);
+		_implementation->sendSample(playerCreature, resname, sampleAnimation);
 }
 
 ResourceContainer* ResourceManager::harvestResource(PlayerCreature* player, const String& type, const int quantity) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -144,11 +240,12 @@ ResourceContainer* ResourceManager::harvestResource(PlayerCreature* player, cons
 
 		return (ResourceContainer*) method.executeWithObjectReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->harvestResource(player, type, quantity);
+		return _implementation->harvestResource(player, type, quantity);
 }
 
 unsigned long long ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -157,11 +254,12 @@ unsigned long long ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* 
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->getAvailablePowerFromPlayer(player);
+		return _implementation->getAvailablePowerFromPlayer(player);
 }
 
 void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned long long power) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -171,19 +269,21 @@ void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned lon
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->removePowerFromPlayer(player, power);
+		_implementation->removePowerFromPlayer(player, power);
 }
 
 void ResourceManager::getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ResourceManagerImplementation*) _impl)->getResourceListByType(list, type, zoneid);
+		_implementation->getResourceListByType(list, type, zoneid);
 }
 
 void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -193,11 +293,12 @@ void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const 
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->createResourceSpawn(playerCreature, restype);
+		_implementation->createResourceSpawn(playerCreature, restype);
 }
 
 void ResourceManager::givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -208,11 +309,12 @@ void ResourceManager::givePlayerResource(PlayerCreature* playerCreature, const S
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->givePlayerResource(playerCreature, restype, quantity);
+		_implementation->givePlayerResource(playerCreature, restype, quantity);
 }
 
 ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -221,11 +323,12 @@ ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 
 		return (ResourceSpawn*) method.executeWithObjectReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->getResourceSpawn(spawnName);
+		return _implementation->getResourceSpawn(spawnName);
 }
 
 void ResourceManager::addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent) {
-	if (_impl == NULL) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -236,8 +339,14 @@ void ResourceManager::addChildrenToDeedListBox(const String& name, ResourceDeedL
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->addChildrenToDeedListBox(name, suil, parent);
+		_implementation->addChildrenToDeedListBox(name, suil, parent);
 }
+
+DistributedObjectServant* ResourceManager::_getImplementation() {
+	return _impl;}
+
+void ResourceManager::_setImplementation(DistributedObjectServant* servant) {
+	_impl = servant;}
 
 /*
  *	ResourceManagerImplementation
@@ -246,6 +355,7 @@ void ResourceManager::addChildrenToDeedListBox(const String& name, ResourceDeedL
 ResourceManagerImplementation::ResourceManagerImplementation(DummyConstructorParameter* param) : ObserverImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ResourceManagerImplementation::~ResourceManagerImplementation() {
 }

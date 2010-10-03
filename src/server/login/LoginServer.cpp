@@ -56,6 +56,8 @@ LoginServer::LoginServer(ConfigManager* configMan) : DatagramServiceThread("Logi
 
 	configManager = configMan;
 
+	setHandler(this);
+
 	enumClusterMessage = NULL;
 	clusterStatusMessage = NULL;
 
@@ -89,7 +91,7 @@ LoginServer::~LoginServer() {
 	}
 }
 
-void LoginServer::init() {
+void LoginServer::initialize() {
 	phand = new BasePacketHandler("LoginServer", &messageQueue);
 	phand->setLogging(false);
 

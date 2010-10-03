@@ -81,6 +81,20 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/structure/StructurePermissionList.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -205,6 +219,10 @@ public:
 	int getWidth();
 
 	void setWidth(int wid);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	StructureObject(DummyConstructorParameter* param);
@@ -385,6 +403,8 @@ public:
 protected:
 	virtual ~StructureObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -408,6 +428,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StructureObject;
+	friend class TransactionalObjectHandle<StructureObjectImplementation*>;
 };
 
 class StructureObjectAdapter : public TangibleObjectAdapter {

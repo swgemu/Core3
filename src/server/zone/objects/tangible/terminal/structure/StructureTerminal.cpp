@@ -12,13 +12,81 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	StructureTerminalStub
  */
 
 StructureTerminal::StructureTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new StructureTerminalImplementation();
-	_impl->_setStub(this);
+	StructureTerminalImplementation* _implementation = new StructureTerminalImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 StructureTerminal::StructureTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -29,7 +97,8 @@ StructureTerminal::~StructureTerminal() {
 
 
 void StructureTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,11 +106,12 @@ void StructureTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureTerminalImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -51,19 +121,21 @@ int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selec
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((StructureTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void StructureTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((StructureTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 void StructureTerminal::setStructureObject(StructureObject* obj) {
-	if (_impl == NULL) {
+	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +144,12 @@ void StructureTerminal::setStructureObject(StructureObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureTerminalImplementation*) _impl)->setStructureObject(obj);
+		_implementation->setStructureObject(obj);
 }
 
 StructureObject* StructureTerminal::getStructureObject() {
-	if (_impl == NULL) {
+	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,8 +157,14 @@ StructureObject* StructureTerminal::getStructureObject() {
 
 		return (StructureObject*) method.executeWithObjectReturn();
 	} else
-		return ((StructureTerminalImplementation*) _impl)->getStructureObject();
+		return _implementation->getStructureObject();
 }
+
+DistributedObjectServant* StructureTerminal::_getImplementation() {
+	return getForUpdate();}
+
+void StructureTerminal::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	StructureTerminalImplementation
@@ -94,6 +173,7 @@ StructureObject* StructureTerminal::getStructureObject() {
 StructureTerminalImplementation::StructureTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 StructureTerminalImplementation::~StructureTerminalImplementation() {
 }
@@ -121,32 +201,30 @@ StructureTerminalImplementation::operator const StructureTerminal*() {
 	return _this;
 }
 
+TransactionalObject* StructureTerminalImplementation::clone() {
+	return (TransactionalObject*) new StructureTerminalImplementation(*this);
+}
+
+
 void StructureTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void StructureTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void StructureTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void StructureTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void StructureTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void StructureTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void StructureTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void StructureTerminalImplementation::_serializationHelperMethod() {

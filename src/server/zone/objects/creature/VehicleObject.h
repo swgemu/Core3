@@ -146,6 +146,10 @@ public:
 
 	bool isVehicleObject();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	VehicleObject(DummyConstructorParameter* param);
 
@@ -209,6 +213,8 @@ public:
 protected:
 	virtual ~VehicleObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -232,6 +238,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class VehicleObject;
+	friend class TransactionalObjectHandle<VehicleObjectImplementation*>;
 };
 
 class VehicleObjectAdapter : public CreatureObjectAdapter {

@@ -14,13 +14,45 @@
 
 #include "server/zone/objects/player/EntertainingObserver.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	EntertainingSessionStub
  */
 
 EntertainingSession::EntertainingSession(CreatureObject* ent) : Facade(DummyConstructorParameter::instance()) {
-	_impl = new EntertainingSessionImplementation(ent);
-	_impl->_setStub(this);
+	EntertainingSessionImplementation* _implementation = new EntertainingSessionImplementation(ent);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 EntertainingSession::EntertainingSession(DummyConstructorParameter* param) : Facade(param) {
@@ -31,7 +63,8 @@ EntertainingSession::~EntertainingSession() {
 
 
 void EntertainingSession::doEntertainerPatronEffects() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,11 +72,12 @@ void EntertainingSession::doEntertainerPatronEffects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->doEntertainerPatronEffects();
+		_implementation->doEntertainerPatronEffects();
 }
 
 void EntertainingSession::doPerformanceAction() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -51,11 +85,12 @@ void EntertainingSession::doPerformanceAction() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->doPerformanceAction();
+		_implementation->doPerformanceAction();
 }
 
 void EntertainingSession::addEntertainerFlourishBuff() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -63,11 +98,12 @@ void EntertainingSession::addEntertainerFlourishBuff() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->addEntertainerFlourishBuff();
+		_implementation->addEntertainerFlourishBuff();
 }
 
 void EntertainingSession::startEntertaining(const String& dance, const String& animation, bool isDanceSession) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -78,11 +114,12 @@ void EntertainingSession::startEntertaining(const String& dance, const String& a
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->startEntertaining(dance, animation, isDanceSession);
+		_implementation->startEntertaining(dance, animation, isDanceSession);
 }
 
 void EntertainingSession::healWounds(CreatureObject* creature, float woundHeal, float shockHeal) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -93,11 +130,12 @@ void EntertainingSession::healWounds(CreatureObject* creature, float woundHeal, 
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->healWounds(creature, woundHeal, shockHeal);
+		_implementation->healWounds(creature, woundHeal, shockHeal);
 }
 
 bool EntertainingSession::isInEntertainingBuilding(CreatureObject* creature) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -106,11 +144,12 @@ bool EntertainingSession::isInEntertainingBuilding(CreatureObject* creature) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->isInEntertainingBuilding(creature);
+		return _implementation->isInEntertainingBuilding(creature);
 }
 
 void EntertainingSession::doFlourish(int flourishNumber) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -119,11 +158,12 @@ void EntertainingSession::doFlourish(int flourishNumber) {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->doFlourish(flourishNumber);
+		_implementation->doFlourish(flourishNumber);
 }
 
 bool EntertainingSession::canGiveEntertainBuff() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -131,11 +171,12 @@ bool EntertainingSession::canGiveEntertainBuff() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->canGiveEntertainBuff();
+		return _implementation->canGiveEntertainBuff();
 }
 
 void EntertainingSession::addFlourishXp(int xp) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -144,11 +185,12 @@ void EntertainingSession::addFlourishXp(int xp) {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->addFlourishXp(xp);
+		_implementation->addFlourishXp(xp);
 }
 
 void EntertainingSession::addHealingXp(int xp) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -157,11 +199,12 @@ void EntertainingSession::addHealingXp(int xp) {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->addHealingXp(xp);
+		_implementation->addHealingXp(xp);
 }
 
 int EntertainingSession::initializeSession() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -169,11 +212,12 @@ int EntertainingSession::initializeSession() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->initializeSession();
+		return _implementation->initializeSession();
 }
 
 int EntertainingSession::cancelSession() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -181,11 +225,12 @@ int EntertainingSession::cancelSession() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->cancelSession();
+		return _implementation->cancelSession();
 }
 
 int EntertainingSession::clearSession() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -193,11 +238,12 @@ int EntertainingSession::clearSession() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->clearSession();
+		return _implementation->clearSession();
 }
 
 void EntertainingSession::stopPlayingMusic() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -205,11 +251,12 @@ void EntertainingSession::stopPlayingMusic() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->stopPlayingMusic();
+		_implementation->stopPlayingMusic();
 }
 
 void EntertainingSession::stopDancing() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -217,11 +264,12 @@ void EntertainingSession::stopDancing() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->stopDancing();
+		_implementation->stopDancing();
 }
 
 void EntertainingSession::activateAction() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -229,11 +277,12 @@ void EntertainingSession::activateAction() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->activateAction();
+		_implementation->activateAction();
 }
 
 void EntertainingSession::startTickTask() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -241,43 +290,48 @@ void EntertainingSession::startTickTask() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->startTickTask();
+		_implementation->startTickTask();
 }
 
 void EntertainingSession::addEntertainerBuffDuration(CreatureObject* creature, int performanceType, float duration) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((EntertainingSessionImplementation*) _impl)->addEntertainerBuffDuration(creature, performanceType, duration);
+		_implementation->addEntertainerBuffDuration(creature, performanceType, duration);
 }
 
 void EntertainingSession::addEntertainerBuffStrength(CreatureObject* creature, int performanceType, float strength) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((EntertainingSessionImplementation*) _impl)->addEntertainerBuffStrength(creature, performanceType, strength);
+		_implementation->addEntertainerBuffStrength(creature, performanceType, strength);
 }
 
 void EntertainingSession::setEntertainerBuffDuration(CreatureObject* creature, int performanceType, float duration) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((EntertainingSessionImplementation*) _impl)->setEntertainerBuffDuration(creature, performanceType, duration);
+		_implementation->setEntertainerBuffDuration(creature, performanceType, duration);
 }
 
 void EntertainingSession::setEntertainerBuffStrength(CreatureObject* creature, int performanceType, float strength) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((EntertainingSessionImplementation*) _impl)->setEntertainerBuffStrength(creature, performanceType, strength);
+		_implementation->setEntertainerBuffStrength(creature, performanceType, strength);
 }
 
 int EntertainingSession::getEntertainerBuffStrength(CreatureObject* creature, int performanceType) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -287,11 +341,12 @@ int EntertainingSession::getEntertainerBuffStrength(CreatureObject* creature, in
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->getEntertainerBuffStrength(creature, performanceType);
+		return _implementation->getEntertainerBuffStrength(creature, performanceType);
 }
 
 int EntertainingSession::getEntertainerBuffDuration(CreatureObject* creature, int performanceType) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -301,11 +356,12 @@ int EntertainingSession::getEntertainerBuffDuration(CreatureObject* creature, in
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->getEntertainerBuffDuration(creature, performanceType);
+		return _implementation->getEntertainerBuffDuration(creature, performanceType);
 }
 
 void EntertainingSession::sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, unsigned int perfcntr, int instrid) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -318,11 +374,12 @@ void EntertainingSession::sendEntertainingUpdate(CreatureObject* creature, float
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->sendEntertainingUpdate(creature, entval, performance, perfcntr, instrid);
+		_implementation->sendEntertainingUpdate(creature, entval, performance, perfcntr, instrid);
 }
 
 void EntertainingSession::sendEntertainmentUpdate(CreatureObject* creature, unsigned long long entid, const String& mood, bool updateEntValue) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -334,11 +391,12 @@ void EntertainingSession::sendEntertainmentUpdate(CreatureObject* creature, unsi
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->sendEntertainmentUpdate(creature, entid, mood, updateEntValue);
+		_implementation->sendEntertainmentUpdate(creature, entid, mood, updateEntValue);
 }
 
 void EntertainingSession::activateEntertainerBuff(CreatureObject* creature, int performanceType) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -348,11 +406,12 @@ void EntertainingSession::activateEntertainerBuff(CreatureObject* creature, int 
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->activateEntertainerBuff(creature, performanceType);
+		_implementation->activateEntertainerBuff(creature, performanceType);
 }
 
 Instrument* EntertainingSession::getInstrument(CreatureObject* creature) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -361,11 +420,12 @@ Instrument* EntertainingSession::getInstrument(CreatureObject* creature) {
 
 		return (Instrument*) method.executeWithObjectReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->getInstrument(creature);
+		return _implementation->getInstrument(creature);
 }
 
 void EntertainingSession::addWatcher(CreatureObject* creature) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -374,11 +434,12 @@ void EntertainingSession::addWatcher(CreatureObject* creature) {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->addWatcher(creature);
+		_implementation->addWatcher(creature);
 }
 
 void EntertainingSession::addListener(CreatureObject* listener) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -387,11 +448,12 @@ void EntertainingSession::addListener(CreatureObject* listener) {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->addListener(listener);
+		_implementation->addListener(listener);
 }
 
 bool EntertainingSession::isDancing() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -399,11 +461,12 @@ bool EntertainingSession::isDancing() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->isDancing();
+		return _implementation->isDancing();
 }
 
 bool EntertainingSession::isPlayingMusic() {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -411,11 +474,12 @@ bool EntertainingSession::isPlayingMusic() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((EntertainingSessionImplementation*) _impl)->isPlayingMusic();
+		return _implementation->isPlayingMusic();
 }
 
 void EntertainingSession::removeWatcher(CreatureObject* creature) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -424,11 +488,12 @@ void EntertainingSession::removeWatcher(CreatureObject* creature) {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->removeWatcher(creature);
+		_implementation->removeWatcher(creature);
 }
 
 void EntertainingSession::removeListener(CreatureObject* creature) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -437,11 +502,12 @@ void EntertainingSession::removeListener(CreatureObject* creature) {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->removeListener(creature);
+		_implementation->removeListener(creature);
 }
 
 void EntertainingSession::setPerformanceName(const String& name) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -450,11 +516,12 @@ void EntertainingSession::setPerformanceName(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->setPerformanceName(name);
+		_implementation->setPerformanceName(name);
 }
 
 void EntertainingSession::setDancing(bool val) {
-	if (_impl == NULL) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -463,8 +530,14 @@ void EntertainingSession::setDancing(bool val) {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainingSessionImplementation*) _impl)->setDancing(val);
+		_implementation->setDancing(val);
 }
+
+DistributedObjectServant* EntertainingSession::_getImplementation() {
+	return getForUpdate();}
+
+void EntertainingSession::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	EntertainingSessionImplementation
@@ -499,32 +572,30 @@ EntertainingSessionImplementation::operator const EntertainingSession*() {
 	return _this;
 }
 
+TransactionalObject* EntertainingSessionImplementation::clone() {
+	return (TransactionalObject*) new EntertainingSessionImplementation(*this);
+}
+
+
 void EntertainingSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void EntertainingSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void EntertainingSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void EntertainingSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void EntertainingSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void EntertainingSessionImplementation::_serializationHelperMethod() {

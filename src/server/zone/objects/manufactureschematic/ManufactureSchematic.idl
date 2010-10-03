@@ -44,14 +44,16 @@ which carries forward this exception.
 
 package server.zone.objects.manufactureschematic;
 
+import system.lang.ref.Reference;
+import engine.service.proto.BaseMessage;
+
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.player.PlayerCreature;
-import system.lang.ref.Reference;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
-
+import server.zone.objects.area.ActiveArea;
 include server.zone.packets.object.ObjectControllerMessage;
 include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
 include server.zone.objects.manufactureschematic.IngredientSlots;

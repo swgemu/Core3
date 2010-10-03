@@ -50,6 +50,7 @@ import engine.log.Logger;
 import engine.core.ManagedReference;
 import server.zone.objects.scene.Observable;
 
+@nonTransactional
 class Observer extends ManagedObject {
 	
 	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {

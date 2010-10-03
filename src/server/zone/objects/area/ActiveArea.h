@@ -13,6 +13,16 @@
 
 namespace server {
 namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace player {
 
@@ -38,16 +48,6 @@ class ActiveAreaEvent;
 } // namespace server
 
 using namespace server::zone::objects::area;
-
-namespace server {
-namespace zone {
-
-class Zone;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
 
 #include "engine/util/QuadTreeEntry.h"
 
@@ -83,6 +83,10 @@ public:
 	float getRadius();
 
 	void setRadius(float r);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	ActiveArea(DummyConstructorParameter* param);
@@ -145,6 +149,8 @@ public:
 protected:
 	virtual ~ActiveAreaImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -168,6 +174,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ActiveArea;
+	friend class TransactionalObjectHandle<ActiveAreaImplementation*>;
 };
 
 class ActiveAreaAdapter : public SceneObjectAdapter {

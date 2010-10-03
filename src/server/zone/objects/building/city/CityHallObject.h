@@ -157,6 +157,10 @@ public:
 
 	void setCityRegion(Region* region);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	CityHallObject(DummyConstructorParameter* param);
 
@@ -278,6 +282,8 @@ public:
 protected:
 	virtual ~CityHallObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -301,6 +307,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CityHallObject;
+	friend class TransactionalObjectHandle<CityHallObjectImplementation*>;
 };
 
 class CityHallObjectAdapter : public BuildingObjectAdapter {
