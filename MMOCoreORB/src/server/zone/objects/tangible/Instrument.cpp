@@ -4,17 +4,67 @@
 
 #include "Instrument.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/Zone.h"
+
+
+// Imported class dependencies
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
 
 /*
  *	InstrumentStub
  */
 
 Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new InstrumentImplementation();
-	_impl->_setStub(this);
+	InstrumentImplementation* _implementation = new InstrumentImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 Instrument::Instrument(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -25,7 +75,8 @@ Instrument::~Instrument() {
 
 
 void Instrument::initializeTransientMembers() {
-	if (_impl == NULL) {
+	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,19 +84,21 @@ void Instrument::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstrumentImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void Instrument::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((InstrumentImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 int Instrument::getInstrumentType() {
-	if (_impl == NULL) {
+	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,8 +106,14 @@ int Instrument::getInstrumentType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((InstrumentImplementation*) _impl)->getInstrumentType();
+		return _implementation->getInstrumentType();
 }
+
+DistributedObjectServant* Instrument::_getImplementation() {
+	return getForUpdate();}
+
+void Instrument::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	InstrumentImplementation
@@ -91,32 +150,30 @@ InstrumentImplementation::operator const Instrument*() {
 	return _this;
 }
 
+TransactionalObject* InstrumentImplementation::clone() {
+	return (TransactionalObject*) new InstrumentImplementation(*this);
+}
+
+
 void InstrumentImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void InstrumentImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void InstrumentImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void InstrumentImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void InstrumentImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void InstrumentImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void InstrumentImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void InstrumentImplementation::_serializationHelperMethod() {
@@ -129,33 +186,33 @@ void InstrumentImplementation::_serializationHelperMethod() {
 
 InstrumentImplementation::InstrumentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Instrument.idl(82):  		instrumentType = 0;
+	// server/zone/objects/tangible/Instrument.idl(83):  		instrumentType = 0;
 	instrumentType = 0;
-	// server/zone/objects/tangible/Instrument.idl(84):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(85):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Instrument.idl(88):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/Instrument.idl(89):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Instrument.idl(90):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(91):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/Instrument.idl(95):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/Instrument.idl(96):  		super.loadTemplateData(templateData);
 	TangibleObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/Instrument.idl(97):  		InstrumentObjectTemplate 
-	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(98):  			return;
+	// server/zone/objects/tangible/Instrument.idl(98):  		InstrumentObjectTemplate 
+	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(99):  			return;
 	return;
-	// server/zone/objects/tangible/Instrument.idl(100):  templ = (InstrumentObjectTemplate) templateData;
+	// server/zone/objects/tangible/Instrument.idl(101):  templ = (InstrumentObjectTemplate) templateData;
 	InstrumentObjectTemplate* templ = (InstrumentObjectTemplate*) templateData;
-	// server/zone/objects/tangible/Instrument.idl(102):  		instrumentType = templ.getInstrumentType();
+	// server/zone/objects/tangible/Instrument.idl(103):  		instrumentType = templ.getInstrumentType();
 	instrumentType = templ->getInstrumentType();
 }
 
 int InstrumentImplementation::getInstrumentType() {
-	// server/zone/objects/tangible/Instrument.idl(106):  		return instrumentType;
+	// server/zone/objects/tangible/Instrument.idl(107):  		return instrumentType;
 	return instrumentType;
 }
 

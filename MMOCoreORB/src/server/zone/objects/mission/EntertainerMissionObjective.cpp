@@ -18,13 +18,51 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/mission/DestroyMissionObjective.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	EntertainerMissionObjectiveStub
  */
 
 EntertainerMissionObjective::EntertainerMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new EntertainerMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	EntertainerMissionObjectiveImplementation* _implementation = new EntertainerMissionObjectiveImplementation(mission);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 EntertainerMissionObjective::EntertainerMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -35,7 +73,8 @@ EntertainerMissionObjective::~EntertainerMissionObjective() {
 
 
 void EntertainerMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +82,12 @@ void EntertainerMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainerMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void EntertainerMissionObjective::activate() {
-	if (_impl == NULL) {
+	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +95,12 @@ void EntertainerMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainerMissionObjectiveImplementation*) _impl)->activate();
+		_implementation->activate();
 }
 
 void EntertainerMissionObjective::abort() {
-	if (_impl == NULL) {
+	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +108,12 @@ void EntertainerMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainerMissionObjectiveImplementation*) _impl)->abort();
+		_implementation->abort();
 }
 
 void EntertainerMissionObjective::complete() {
-	if (_impl == NULL) {
+	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +121,12 @@ void EntertainerMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((EntertainerMissionObjectiveImplementation*) _impl)->complete();
+		_implementation->complete();
 }
 
 int EntertainerMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	EntertainerMissionObjectiveImplementation* _implementation = (EntertainerMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,8 +139,14 @@ int EntertainerMissionObjective::notifyObserverEvent(MissionObserver* observer, 
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((EntertainerMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
+
+DistributedObjectServant* EntertainerMissionObjective::_getImplementation() {
+	return getForUpdate();}
+
+void EntertainerMissionObjective::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	EntertainerMissionObjectiveImplementation
@@ -106,6 +155,7 @@ int EntertainerMissionObjective::notifyObserverEvent(MissionObserver* observer, 
 EntertainerMissionObjectiveImplementation::EntertainerMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 EntertainerMissionObjectiveImplementation::~EntertainerMissionObjectiveImplementation() {
 	EntertainerMissionObjectiveImplementation::finalize();
@@ -131,32 +181,30 @@ EntertainerMissionObjectiveImplementation::operator const EntertainerMissionObje
 	return _this;
 }
 
+TransactionalObject* EntertainerMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new EntertainerMissionObjectiveImplementation(*this);
+}
+
+
 void EntertainerMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void EntertainerMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void EntertainerMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::_serializationHelperMethod() {

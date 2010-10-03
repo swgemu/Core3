@@ -48,6 +48,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.tangible.deed.Deed;
 import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.area.ActiveArea;
 
 class InstallationDeed extends Deed {
 	protected unsigned int surplusMaintenance;

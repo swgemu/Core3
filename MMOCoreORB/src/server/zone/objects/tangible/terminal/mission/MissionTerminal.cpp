@@ -10,13 +10,77 @@
 
 #include "server/zone/Zone.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	MissionTerminalStub
  */
 
 MissionTerminal::MissionTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new MissionTerminalImplementation();
-	_impl->_setStub(this);
+	MissionTerminalImplementation* _implementation = new MissionTerminalImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 MissionTerminal::MissionTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -27,15 +91,17 @@ MissionTerminal::~MissionTerminal() {
 
 
 void MissionTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((MissionTerminalImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void MissionTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +109,12 @@ void MissionTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionTerminalImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 bool MissionTerminal::isMissionTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +122,12 @@ bool MissionTerminal::isMissionTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isMissionTerminal();
+		return _implementation->isMissionTerminal();
 }
 
 bool MissionTerminal::isArtisanTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +135,12 @@ bool MissionTerminal::isArtisanTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isArtisanTerminal();
+		return _implementation->isArtisanTerminal();
 }
 
 bool MissionTerminal::isGeneralTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +148,12 @@ bool MissionTerminal::isGeneralTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isGeneralTerminal();
+		return _implementation->isGeneralTerminal();
 }
 
 bool MissionTerminal::isBountyTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -91,11 +161,12 @@ bool MissionTerminal::isBountyTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isBountyTerminal();
+		return _implementation->isBountyTerminal();
 }
 
 bool MissionTerminal::isEntertainerTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,11 +174,12 @@ bool MissionTerminal::isEntertainerTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isEntertainerTerminal();
+		return _implementation->isEntertainerTerminal();
 }
 
 bool MissionTerminal::isImperialTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +187,12 @@ bool MissionTerminal::isImperialTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isImperialTerminal();
+		return _implementation->isImperialTerminal();
 }
 
 bool MissionTerminal::isNewbieTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -127,11 +200,12 @@ bool MissionTerminal::isNewbieTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isNewbieTerminal();
+		return _implementation->isNewbieTerminal();
 }
 
 bool MissionTerminal::isRebelTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -139,11 +213,12 @@ bool MissionTerminal::isRebelTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isRebelTerminal();
+		return _implementation->isRebelTerminal();
 }
 
 bool MissionTerminal::isScoutTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -151,11 +226,12 @@ bool MissionTerminal::isScoutTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isScoutTerminal();
+		return _implementation->isScoutTerminal();
 }
 
 bool MissionTerminal::isStatueTerminal() {
-	if (_impl == NULL) {
+	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -163,8 +239,14 @@ bool MissionTerminal::isStatueTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MissionTerminalImplementation*) _impl)->isStatueTerminal();
+		return _implementation->isStatueTerminal();
 }
+
+DistributedObjectServant* MissionTerminal::_getImplementation() {
+	return getForUpdate();}
+
+void MissionTerminal::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	MissionTerminalImplementation
@@ -173,6 +255,7 @@ bool MissionTerminal::isStatueTerminal() {
 MissionTerminalImplementation::MissionTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MissionTerminalImplementation::~MissionTerminalImplementation() {
 }
@@ -200,32 +283,30 @@ MissionTerminalImplementation::operator const MissionTerminal*() {
 	return _this;
 }
 
+TransactionalObject* MissionTerminalImplementation::clone() {
+	return (TransactionalObject*) new MissionTerminalImplementation(*this);
+}
+
+
 void MissionTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void MissionTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void MissionTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void MissionTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void MissionTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void MissionTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void MissionTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void MissionTerminalImplementation::_serializationHelperMethod() {

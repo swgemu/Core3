@@ -8,13 +8,57 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	IntangibleObjectStub
  */
 
 IntangibleObject::IntangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new IntangibleObjectImplementation();
-	_impl->_setStub(this);
+	IntangibleObjectImplementation* _implementation = new IntangibleObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -25,7 +69,8 @@ IntangibleObject::~IntangibleObject() {
 
 
 void IntangibleObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,19 +78,21 @@ void IntangibleObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((IntangibleObjectImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void IntangibleObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((IntangibleObjectImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 bool IntangibleObject::isIntangibleObject() {
-	if (_impl == NULL) {
+	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +100,12 @@ bool IntangibleObject::isIntangibleObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((IntangibleObjectImplementation*) _impl)->isIntangibleObject();
+		return _implementation->isIntangibleObject();
 }
 
 void IntangibleObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +114,12 @@ void IntangibleObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((IntangibleObjectImplementation*) _impl)->sendBaselinesTo(player);
+		_implementation->sendBaselinesTo(player);
 }
 
 void IntangibleObject::updateStatus(int newStatus, bool notifyClient) {
-	if (_impl == NULL) {
+	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +129,12 @@ void IntangibleObject::updateStatus(int newStatus, bool notifyClient) {
 
 		method.executeWithVoidReturn();
 	} else
-		((IntangibleObjectImplementation*) _impl)->updateStatus(newStatus, notifyClient);
+		_implementation->updateStatus(newStatus, notifyClient);
 }
 
 unsigned int IntangibleObject::getStatus() {
-	if (_impl == NULL) {
+	IntangibleObjectImplementation* _implementation = (IntangibleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,8 +142,14 @@ unsigned int IntangibleObject::getStatus() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((IntangibleObjectImplementation*) _impl)->getStatus();
+		return _implementation->getStatus();
 }
+
+DistributedObjectServant* IntangibleObject::_getImplementation() {
+	return getForUpdate();}
+
+void IntangibleObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	IntangibleObjectImplementation
@@ -128,32 +184,30 @@ IntangibleObjectImplementation::operator const IntangibleObject*() {
 	return _this;
 }
 
+TransactionalObject* IntangibleObjectImplementation::clone() {
+	return (TransactionalObject*) new IntangibleObjectImplementation(*this);
+}
+
+
 void IntangibleObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void IntangibleObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void IntangibleObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void IntangibleObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void IntangibleObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void IntangibleObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void IntangibleObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void IntangibleObjectImplementation::_serializationHelperMethod() {

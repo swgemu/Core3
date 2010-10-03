@@ -69,6 +69,10 @@ public:
 
 	void setMaxSockets(int sockets);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	WearableObject(DummyConstructorParameter* param);
 
@@ -136,6 +140,8 @@ public:
 protected:
 	virtual ~WearableObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -159,6 +165,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class WearableObject;
+	friend class TransactionalObjectHandle<WearableObjectImplementation*>;
 };
 
 class WearableObjectAdapter : public TangibleObjectAdapter {

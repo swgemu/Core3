@@ -82,7 +82,7 @@ include server.zone.objects.scene.variables.PendingTasksMap;
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.scene.ObserverEventType;
 import server.zone.objects.area.ActiveArea;
-import server.zone.objects.scene.Facade;
+include server.zone.objects.scene.Facade;
 
 class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;

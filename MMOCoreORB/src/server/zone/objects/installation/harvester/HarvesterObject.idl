@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.objects.installation.harvester;
 
 import server.zone.objects.installation.InstallationObject;
+import server.zone.objects.area.ActiveArea;
 
 class HarvesterObject extends InstallationObject {
 	public HarvesterObject() {

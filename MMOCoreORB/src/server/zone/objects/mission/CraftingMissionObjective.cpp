@@ -18,13 +18,51 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/mission/DestroyMissionObjective.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	CraftingMissionObjectiveStub
  */
 
 CraftingMissionObjective::CraftingMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new CraftingMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	CraftingMissionObjectiveImplementation* _implementation = new CraftingMissionObjectiveImplementation(mission);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 CraftingMissionObjective::CraftingMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -35,7 +73,8 @@ CraftingMissionObjective::~CraftingMissionObjective() {
 
 
 void CraftingMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +82,12 @@ void CraftingMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void CraftingMissionObjective::activate() {
-	if (_impl == NULL) {
+	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +95,12 @@ void CraftingMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingMissionObjectiveImplementation*) _impl)->activate();
+		_implementation->activate();
 }
 
 void CraftingMissionObjective::abort() {
-	if (_impl == NULL) {
+	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +108,12 @@ void CraftingMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingMissionObjectiveImplementation*) _impl)->abort();
+		_implementation->abort();
 }
 
 void CraftingMissionObjective::complete() {
-	if (_impl == NULL) {
+	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +121,12 @@ void CraftingMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingMissionObjectiveImplementation*) _impl)->complete();
+		_implementation->complete();
 }
 
 int CraftingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	CraftingMissionObjectiveImplementation* _implementation = (CraftingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,8 +139,14 @@ int CraftingMissionObjective::notifyObserverEvent(MissionObserver* observer, uns
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CraftingMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
+
+DistributedObjectServant* CraftingMissionObjective::_getImplementation() {
+	return getForUpdate();}
+
+void CraftingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	CraftingMissionObjectiveImplementation
@@ -106,6 +155,7 @@ int CraftingMissionObjective::notifyObserverEvent(MissionObserver* observer, uns
 CraftingMissionObjectiveImplementation::CraftingMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CraftingMissionObjectiveImplementation::~CraftingMissionObjectiveImplementation() {
 	CraftingMissionObjectiveImplementation::finalize();
@@ -131,32 +181,30 @@ CraftingMissionObjectiveImplementation::operator const CraftingMissionObjective*
 	return _this;
 }
 
+TransactionalObject* CraftingMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new CraftingMissionObjectiveImplementation(*this);
+}
+
+
 void CraftingMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CraftingMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CraftingMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::_serializationHelperMethod() {

@@ -101,6 +101,10 @@ public:
 
 	void activate(bool applyModifiers);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	DurationBuff(DummyConstructorParameter* param);
 
@@ -140,6 +144,8 @@ public:
 protected:
 	virtual ~DurationBuffImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -163,6 +169,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DurationBuff;
+	friend class TransactionalObjectHandle<DurationBuffImplementation*>;
 };
 
 class DurationBuffAdapter : public BuffAdapter {

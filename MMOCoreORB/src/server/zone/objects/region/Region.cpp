@@ -20,13 +20,107 @@
 
 #include "server/zone/Zone.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
+
+#include "server/zone/objects/region/Region.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/objects/tangible/terminal/city/CityTerminal.h"
+
 /*
  *	RegionStub
  */
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
-	_impl = new RegionImplementation();
-	_impl->_setStub(this);
+	RegionImplementation* _implementation = new RegionImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 Region::Region(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -37,7 +131,8 @@ Region::~Region() {
 
 
 void Region::notifyEnter(SceneObject* object) {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,11 +141,12 @@ void Region::notifyEnter(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->notifyEnter(object);
+		_implementation->notifyEnter(object);
 }
 
 void Region::sendGreetingMessage(PlayerCreature* player) {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +155,12 @@ void Region::sendGreetingMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->sendGreetingMessage(player);
+		_implementation->sendGreetingMessage(player);
 }
 
 void Region::sendDepartingMessage(PlayerCreature* player) {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +169,12 @@ void Region::sendDepartingMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->sendDepartingMessage(player);
+		_implementation->sendDepartingMessage(player);
 }
 
 void Region::notifyExit(SceneObject* object) {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -85,11 +183,12 @@ void Region::notifyExit(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->notifyExit(object);
+		_implementation->notifyExit(object);
 }
 
 void Region::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -98,11 +197,12 @@ void Region::insertToZone(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->insertToZone(zone);
+		_implementation->insertToZone(zone);
 }
 
 void Region::removeFromZone() {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,11 +210,12 @@ void Region::removeFromZone() {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->removeFromZone();
+		_implementation->removeFromZone();
 }
 
 void Region::despawnCityObjects() {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +223,12 @@ void Region::despawnCityObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->despawnCityObjects();
+		_implementation->despawnCityObjects();
 }
 
 void Region::addBazaar(BazaarTerminal* ter) {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +237,12 @@ void Region::addBazaar(BazaarTerminal* ter) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->addBazaar(ter);
+		_implementation->addBazaar(ter);
 }
 
 BazaarTerminal* Region::getBazaar(int idx) {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -148,11 +251,12 @@ BazaarTerminal* Region::getBazaar(int idx) {
 
 		return (BazaarTerminal*) method.executeWithObjectReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getBazaar(idx);
+		return _implementation->getBazaar(idx);
 }
 
 ShuttleInstallation* Region::getShuttle() {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,11 +264,12 @@ ShuttleInstallation* Region::getShuttle() {
 
 		return (ShuttleInstallation*) method.executeWithObjectReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getShuttle();
+		return _implementation->getShuttle();
 }
 
 int Region::getBazaarCount() {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -172,11 +277,12 @@ int Region::getBazaarCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getBazaarCount();
+		return _implementation->getBazaarCount();
 }
 
 bool Region::isRegion() {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -184,11 +290,12 @@ bool Region::isRegion() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RegionImplementation*) _impl)->isRegion();
+		return _implementation->isRegion();
 }
 
 CityHallObject* Region::getCityHall() {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -196,11 +303,12 @@ CityHallObject* Region::getCityHall() {
 
 		return (CityHallObject*) method.executeWithObjectReturn();
 	} else
-		return ((RegionImplementation*) _impl)->getCityHall();
+		return _implementation->getCityHall();
 }
 
 void Region::setCityHall(CityHallObject* hall) {
-	if (_impl == NULL) {
+	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -209,8 +317,14 @@ void Region::setCityHall(CityHallObject* hall) {
 
 		method.executeWithVoidReturn();
 	} else
-		((RegionImplementation*) _impl)->setCityHall(hall);
+		_implementation->setCityHall(hall);
 }
+
+DistributedObjectServant* Region::_getImplementation() {
+	return getForUpdate();}
+
+void Region::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	RegionImplementation
@@ -247,32 +361,30 @@ RegionImplementation::operator const Region*() {
 	return _this;
 }
 
+TransactionalObject* RegionImplementation::clone() {
+	return (TransactionalObject*) new RegionImplementation(*this);
+}
+
+
 void RegionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void RegionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void RegionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void RegionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void RegionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void RegionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void RegionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void RegionImplementation::_serializationHelperMethod() {

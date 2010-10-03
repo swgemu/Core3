@@ -45,7 +45,6 @@ which carries forward this exception.
 package server.zone.managers.mission;
 
 import server.zone.objects.mission.MissionObject;
-include engine.core.ManagedObject;
 import system.util.SortedVector;
 import server.zone.objects.scene.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;

@@ -89,6 +89,10 @@ public:
 
 	bool isBuildingDeed();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	BuildingDeed(DummyConstructorParameter* param);
 
@@ -140,6 +144,8 @@ public:
 protected:
 	virtual ~BuildingDeedImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -163,6 +169,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BuildingDeed;
+	friend class TransactionalObjectHandle<BuildingDeedImplementation*>;
 };
 
 class BuildingDeedAdapter : public DeedAdapter {

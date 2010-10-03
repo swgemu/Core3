@@ -248,6 +248,10 @@ public:
 
 	PlayerCreature* getPlayer(const String& name);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	PlayerManager(DummyConstructorParameter* param);
 

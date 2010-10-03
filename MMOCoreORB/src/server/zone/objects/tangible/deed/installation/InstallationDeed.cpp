@@ -8,13 +8,65 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
+
+// Imported class dependencies
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/Zone.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "engine/util/Quaternion.h"
+
 /*
  *	InstallationDeedStub
  */
 
 InstallationDeed::InstallationDeed() : Deed(DummyConstructorParameter::instance()) {
-	_impl = new InstallationDeedImplementation();
-	_impl->_setStub(this);
+	InstallationDeedImplementation* _implementation = new InstallationDeedImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 InstallationDeed::InstallationDeed(DummyConstructorParameter* param) : Deed(param) {
@@ -25,15 +77,17 @@ InstallationDeed::~InstallationDeed() {
 
 
 void InstallationDeed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	if (_impl == NULL) {
+	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((InstallationDeedImplementation*) _impl)->fillAttributeList(alm, object);
+		_implementation->fillAttributeList(alm, object);
 }
 
 void InstallationDeed::initializeTransientMembers() {
-	if (_impl == NULL) {
+	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +95,12 @@ void InstallationDeed::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationDeedImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 int InstallationDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +110,12 @@ int InstallationDeed::handleObjectMenuSelect(PlayerCreature* player, byte select
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void InstallationDeed::setSurplusMaintenance(unsigned int surplusMaint) {
-	if (_impl == NULL) {
+	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -68,11 +124,12 @@ void InstallationDeed::setSurplusMaintenance(unsigned int surplusMaint) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationDeedImplementation*) _impl)->setSurplusMaintenance(surplusMaint);
+		_implementation->setSurplusMaintenance(surplusMaint);
 }
 
 unsigned int InstallationDeed::getSurplusMaintenance() {
-	if (_impl == NULL) {
+	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +137,12 @@ unsigned int InstallationDeed::getSurplusMaintenance() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->getSurplusMaintenance();
+		return _implementation->getSurplusMaintenance();
 }
 
 unsigned int InstallationDeed::getSurplusPower() {
-	if (_impl == NULL) {
+	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +150,12 @@ unsigned int InstallationDeed::getSurplusPower() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->getSurplusPower();
+		return _implementation->getSurplusPower();
 }
 
 void InstallationDeed::setSurplusPower(unsigned int power) {
-	if (_impl == NULL) {
+	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -105,11 +164,12 @@ void InstallationDeed::setSurplusPower(unsigned int power) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationDeedImplementation*) _impl)->setSurplusPower(power);
+		_implementation->setSurplusPower(power);
 }
 
 bool InstallationDeed::isInstallationDeed() {
-	if (_impl == NULL) {
+	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -117,8 +177,14 @@ bool InstallationDeed::isInstallationDeed() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((InstallationDeedImplementation*) _impl)->isInstallationDeed();
+		return _implementation->isInstallationDeed();
 }
+
+DistributedObjectServant* InstallationDeed::_getImplementation() {
+	return getForUpdate();}
+
+void InstallationDeed::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	InstallationDeedImplementation
@@ -127,6 +193,7 @@ bool InstallationDeed::isInstallationDeed() {
 InstallationDeedImplementation::InstallationDeedImplementation(DummyConstructorParameter* param) : DeedImplementation(param) {
 	_initializeImplementation();
 }
+
 
 InstallationDeedImplementation::~InstallationDeedImplementation() {
 }
@@ -154,32 +221,30 @@ InstallationDeedImplementation::operator const InstallationDeed*() {
 	return _this;
 }
 
+TransactionalObject* InstallationDeedImplementation::clone() {
+	return (TransactionalObject*) new InstallationDeedImplementation(*this);
+}
+
+
 void InstallationDeedImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void InstallationDeedImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void InstallationDeedImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void InstallationDeedImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void InstallationDeedImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void InstallationDeedImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void InstallationDeedImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void InstallationDeedImplementation::_serializationHelperMethod() {
@@ -193,36 +258,36 @@ void InstallationDeedImplementation::_serializationHelperMethod() {
 
 InstallationDeedImplementation::InstallationDeedImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(57):  		Logger.setLoggingName("InstallationDeed");
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(58):  		Logger.setLoggingName("InstallationDeed");
 	Logger::setLoggingName("InstallationDeed");
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(59):  		surplusMaintenance = 0;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(60):  		surplusMaintenance = 0;
 	surplusMaintenance = 0;
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(60):  		surplusPower = 0;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(61):  		surplusPower = 0;
 	surplusPower = 0;
 }
 
 void InstallationDeedImplementation::setSurplusMaintenance(unsigned int surplusMaint) {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(77):  		surplusMaintenance = surplusMaint;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(78):  		surplusMaintenance = surplusMaint;
 	surplusMaintenance = surplusMaint;
 }
 
 unsigned int InstallationDeedImplementation::getSurplusMaintenance() {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(81):  		return surplusMaintenance;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(82):  		return surplusMaintenance;
 	return surplusMaintenance;
 }
 
 unsigned int InstallationDeedImplementation::getSurplusPower() {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(85):  		return surplusPower;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(86):  		return surplusPower;
 	return surplusPower;
 }
 
 void InstallationDeedImplementation::setSurplusPower(unsigned int power) {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(89):  		surplusPower = power;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(90):  		surplusPower = power;
 	surplusPower = power;
 }
 
 bool InstallationDeedImplementation::isInstallationDeed() {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(93):  		return true;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(94):  		return true;
 	return true;
 }
 

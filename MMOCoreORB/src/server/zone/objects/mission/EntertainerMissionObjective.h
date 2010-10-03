@@ -130,6 +130,10 @@ public:
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	EntertainerMissionObjective(DummyConstructorParameter* param);
 
@@ -177,6 +181,8 @@ public:
 protected:
 	virtual ~EntertainerMissionObjectiveImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -198,6 +204,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class EntertainerMissionObjective;
+	friend class TransactionalObjectHandle<EntertainerMissionObjectiveImplementation*>;
 };
 
 class EntertainerMissionObjectiveAdapter : public MissionObjectiveAdapter {

@@ -61,7 +61,7 @@ class SchematicMap : public Singleton<SchematicMap>, public Lua {
 
 	VectorMap<uint32, ManagedReference<DraftSchematic* > > schematicIdMap;
 	VectorMap<String, DraftSchematicGroup* > groupMap;
-	ZoneServer* zoneServer;
+	ManagedReference<ZoneServer*> zoneServer;
 	ObjectManager* objectManager;
 
 public:

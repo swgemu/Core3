@@ -67,6 +67,20 @@ class TangibleObject;
 
 using namespace server::zone::objects::tangible;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/packets/object/ObjectControllerMessage.h"
@@ -77,9 +91,11 @@ using namespace server::zone::objects::tangible;
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
-#include "server/zone/objects/intangible/IntangibleObject.h"
-
 #include "system/lang/ref/Reference.h"
+
+#include "engine/service/proto/BaseMessage.h"
+
+#include "server/zone/objects/intangible/IntangibleObject.h"
 
 namespace server {
 namespace zone {
@@ -163,6 +179,10 @@ public:
 	int getFactoryIngredientsSize();
 
 	SceneObject* getFactoryIngredient(int i);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	ManufactureSchematic(DummyConstructorParameter* param);
@@ -307,6 +327,8 @@ public:
 protected:
 	virtual ~ManufactureSchematicImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -330,6 +352,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ManufactureSchematic;
+	friend class TransactionalObjectHandle<ManufactureSchematicImplementation*>;
 };
 
 class ManufactureSchematicAdapter : public IntangibleObjectAdapter {

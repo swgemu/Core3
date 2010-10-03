@@ -10,13 +10,65 @@
 
 #include "server/zone/objects/creature/buffs/PowerBoostBuffDurationEvent.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	PowerBoostBuffStub
  */
 
 PowerBoostBuff::PowerBoostBuff(CreatureObject* creo, const String& name, unsigned int buffCRC, int value, int duration) : Buff(DummyConstructorParameter::instance()) {
-	_impl = new PowerBoostBuffImplementation(creo, name, buffCRC, value, duration);
-	_impl->_setStub(this);
+	PowerBoostBuffImplementation* _implementation = new PowerBoostBuffImplementation(creo, name, buffCRC, value, duration);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 PowerBoostBuff::PowerBoostBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -27,7 +79,8 @@ PowerBoostBuff::~PowerBoostBuff() {
 
 
 void PowerBoostBuff::initializeTransientMembers() {
-	if (_impl == NULL) {
+	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,11 +88,12 @@ void PowerBoostBuff::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PowerBoostBuffImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void PowerBoostBuff::activate(bool applyModifiers) {
-	if (_impl == NULL) {
+	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -48,11 +102,12 @@ void PowerBoostBuff::activate(bool applyModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PowerBoostBuffImplementation*) _impl)->activate(applyModifiers);
+		_implementation->activate(applyModifiers);
 }
 
 void PowerBoostBuff::deactivate(bool removeModifiers) {
-	if (_impl == NULL) {
+	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +116,12 @@ void PowerBoostBuff::deactivate(bool removeModifiers) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PowerBoostBuffImplementation*) _impl)->deactivate(removeModifiers);
+		_implementation->deactivate(removeModifiers);
 }
 
 void PowerBoostBuff::doHealthAndActionTick(bool up) {
-	if (_impl == NULL) {
+	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,11 +130,12 @@ void PowerBoostBuff::doHealthAndActionTick(bool up) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PowerBoostBuffImplementation*) _impl)->doHealthAndActionTick(up);
+		_implementation->doHealthAndActionTick(up);
 }
 
 void PowerBoostBuff::doMindTick(bool up) {
-	if (_impl == NULL) {
+	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -87,11 +144,12 @@ void PowerBoostBuff::doMindTick(bool up) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PowerBoostBuffImplementation*) _impl)->doMindTick(up);
+		_implementation->doMindTick(up);
 }
 
 void PowerBoostBuff::clearBuffEvent() {
-	if (_impl == NULL) {
+	PowerBoostBuffImplementation* _implementation = (PowerBoostBuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -99,8 +157,14 @@ void PowerBoostBuff::clearBuffEvent() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PowerBoostBuffImplementation*) _impl)->clearBuffEvent();
+		_implementation->clearBuffEvent();
 }
+
+DistributedObjectServant* PowerBoostBuff::_getImplementation() {
+	return getForUpdate();}
+
+void PowerBoostBuff::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	PowerBoostBuffImplementation
@@ -109,6 +173,7 @@ void PowerBoostBuff::clearBuffEvent() {
 PowerBoostBuffImplementation::PowerBoostBuffImplementation(DummyConstructorParameter* param) : BuffImplementation(param) {
 	_initializeImplementation();
 }
+
 
 PowerBoostBuffImplementation::~PowerBoostBuffImplementation() {
 }
@@ -136,32 +201,30 @@ PowerBoostBuffImplementation::operator const PowerBoostBuff*() {
 	return _this;
 }
 
+TransactionalObject* PowerBoostBuffImplementation::clone() {
+	return (TransactionalObject*) new PowerBoostBuffImplementation(*this);
+}
+
+
 void PowerBoostBuffImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void PowerBoostBuffImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void PowerBoostBuffImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void PowerBoostBuffImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void PowerBoostBuffImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void PowerBoostBuffImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void PowerBoostBuffImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void PowerBoostBuffImplementation::_serializationHelperMethod() {

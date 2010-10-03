@@ -10,13 +10,75 @@
 
 #include "server/zone/managers/loot/lootgroup/LootObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	LootGroupObjectStub
  */
 
 LootGroupObject::LootGroupObject(unsigned int group, int w, int max) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new LootGroupObjectImplementation(group, w, max);
-	_impl->_setStub(this);
+	LootGroupObjectImplementation* _implementation = new LootGroupObjectImplementation(group, w, max);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 LootGroupObject::LootGroupObject(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -27,7 +89,8 @@ LootGroupObject::~LootGroupObject() {
 
 
 bool LootGroupObject::contains(unsigned int objIndex) {
-	if (_impl == NULL) {
+	LootGroupObjectImplementation* _implementation = (LootGroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -36,11 +99,12 @@ bool LootGroupObject::contains(unsigned int objIndex) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((LootGroupObjectImplementation*) _impl)->contains(objIndex);
+		return _implementation->contains(objIndex);
 }
 
 LootObject* LootGroupObject::get(unsigned int lootObjectID) {
-	if (_impl == NULL) {
+	LootGroupObjectImplementation* _implementation = (LootGroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +113,12 @@ LootObject* LootGroupObject::get(unsigned int lootObjectID) {
 
 		return (LootObject*) method.executeWithObjectReturn();
 	} else
-		return ((LootGroupObjectImplementation*) _impl)->get(lootObjectID);
+		return _implementation->get(lootObjectID);
 }
 
 void LootGroupObject::put(unsigned int index, LootObject* obj) {
-	if (_impl == NULL) {
+	LootGroupObjectImplementation* _implementation = (LootGroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -63,19 +128,21 @@ void LootGroupObject::put(unsigned int index, LootObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((LootGroupObjectImplementation*) _impl)->put(index, obj);
+		_implementation->put(index, obj);
 }
 
 LootObject* LootGroupObject::selectLoot() {
-	if (_impl == NULL) {
+	LootGroupObjectImplementation* _implementation = (LootGroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((LootGroupObjectImplementation*) _impl)->selectLoot();
+		return _implementation->selectLoot();
 }
 
 int LootGroupObject::size() {
-	if (_impl == NULL) {
+	LootGroupObjectImplementation* _implementation = (LootGroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,11 +150,12 @@ int LootGroupObject::size() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((LootGroupObjectImplementation*) _impl)->size();
+		return _implementation->size();
 }
 
 int LootGroupObject::getMaxDrop() {
-	if (_impl == NULL) {
+	LootGroupObjectImplementation* _implementation = (LootGroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -95,11 +163,12 @@ int LootGroupObject::getMaxDrop() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((LootGroupObjectImplementation*) _impl)->getMaxDrop();
+		return _implementation->getMaxDrop();
 }
 
 int LootGroupObject::getWeight() {
-	if (_impl == NULL) {
+	LootGroupObjectImplementation* _implementation = (LootGroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -107,11 +176,12 @@ int LootGroupObject::getWeight() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((LootGroupObjectImplementation*) _impl)->getWeight();
+		return _implementation->getWeight();
 }
 
 unsigned int LootGroupObject::getLootGroup() {
-	if (_impl == NULL) {
+	LootGroupObjectImplementation* _implementation = (LootGroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -119,8 +189,14 @@ unsigned int LootGroupObject::getLootGroup() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((LootGroupObjectImplementation*) _impl)->getLootGroup();
+		return _implementation->getLootGroup();
 }
+
+DistributedObjectServant* LootGroupObject::_getImplementation() {
+	return getForUpdate();}
+
+void LootGroupObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	LootGroupObjectImplementation
@@ -129,6 +205,7 @@ unsigned int LootGroupObject::getLootGroup() {
 LootGroupObjectImplementation::LootGroupObjectImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 LootGroupObjectImplementation::~LootGroupObjectImplementation() {
 }
@@ -156,32 +233,30 @@ LootGroupObjectImplementation::operator const LootGroupObject*() {
 	return _this;
 }
 
+TransactionalObject* LootGroupObjectImplementation::clone() {
+	return (TransactionalObject*) new LootGroupObjectImplementation(*this);
+}
+
+
 void LootGroupObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void LootGroupObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void LootGroupObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void LootGroupObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void LootGroupObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void LootGroupObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void LootGroupObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void LootGroupObjectImplementation::_serializationHelperMethod() {

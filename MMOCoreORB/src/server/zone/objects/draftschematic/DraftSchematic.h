@@ -51,6 +51,20 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/packets/object/ObjectControllerMessage.h"
 
 #include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
@@ -133,6 +147,10 @@ public:
 	void decreaseUseCount(int count = 1);
 
 	void increaseUseCount(int count);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	DraftSchematic(DummyConstructorParameter* param);
@@ -247,6 +265,8 @@ public:
 protected:
 	virtual ~DraftSchematicImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -270,6 +290,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DraftSchematic;
+	friend class TransactionalObjectHandle<DraftSchematicImplementation*>;
 };
 
 class DraftSchematicAdapter : public IntangibleObjectAdapter {

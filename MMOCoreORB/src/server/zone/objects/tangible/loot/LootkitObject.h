@@ -105,6 +105,10 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	LootkitObject(DummyConstructorParameter* param);
 
@@ -171,6 +175,8 @@ public:
 protected:
 	virtual ~LootkitObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -194,6 +200,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class LootkitObject;
+	friend class TransactionalObjectHandle<LootkitObjectImplementation*>;
 };
 
 class LootkitObjectAdapter : public TangibleObjectAdapter {

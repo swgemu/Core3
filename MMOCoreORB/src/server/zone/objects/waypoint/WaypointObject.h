@@ -98,6 +98,10 @@ public:
 
 	void toggleStatus();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	WaypointObject(DummyConstructorParameter* param);
 
@@ -197,6 +201,8 @@ public:
 protected:
 	virtual ~WaypointObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -220,6 +226,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class WaypointObject;
+	friend class TransactionalObjectHandle<WaypointObjectImplementation*>;
 };
 
 class WaypointObjectAdapter : public IntangibleObjectAdapter {

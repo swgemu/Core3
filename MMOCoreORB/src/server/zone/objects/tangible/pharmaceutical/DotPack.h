@@ -169,6 +169,10 @@ public:
 
 	unsigned int getDotType();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	DotPack(DummyConstructorParameter* param);
 
@@ -256,6 +260,8 @@ public:
 protected:
 	virtual ~DotPackImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -279,6 +285,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DotPack;
+	friend class TransactionalObjectHandle<DotPackImplementation*>;
 };
 
 class DotPackAdapter : public PharmaceuticalObjectAdapter {

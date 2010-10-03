@@ -14,13 +14,91 @@
 
 #include "server/zone/Zone.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	ControlDeviceStub
  */
 
 ControlDevice::ControlDevice() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ControlDeviceImplementation();
-	_impl->_setStub(this);
+	ControlDeviceImplementation* _implementation = new ControlDeviceImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 ControlDevice::ControlDevice(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -31,7 +109,8 @@ ControlDevice::~ControlDevice() {
 
 
 void ControlDevice::updateToDatabaseAllObjects(bool startTask) {
-	if (_impl == NULL) {
+	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -40,11 +119,12 @@ void ControlDevice::updateToDatabaseAllObjects(bool startTask) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ControlDeviceImplementation*) _impl)->updateToDatabaseAllObjects(startTask);
+		_implementation->updateToDatabaseAllObjects(startTask);
 }
 
 void ControlDevice::storeObject(PlayerCreature* player) {
-	if (_impl == NULL) {
+	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +133,12 @@ void ControlDevice::storeObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ControlDeviceImplementation*) _impl)->storeObject(player);
+		_implementation->storeObject(player);
 }
 
 void ControlDevice::generateObject(PlayerCreature* player) {
-	if (_impl == NULL) {
+	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -66,11 +147,12 @@ void ControlDevice::generateObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ControlDeviceImplementation*) _impl)->generateObject(player);
+		_implementation->generateObject(player);
 }
 
 void ControlDevice::setControlledObject(CreatureObject* object) {
-	if (_impl == NULL) {
+	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +161,12 @@ void ControlDevice::setControlledObject(CreatureObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ControlDeviceImplementation*) _impl)->setControlledObject(object);
+		_implementation->setControlledObject(object);
 }
 
 CreatureObject* ControlDevice::getControlledObject() {
-	if (_impl == NULL) {
+	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -91,11 +174,12 @@ CreatureObject* ControlDevice::getControlledObject() {
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
-		return ((ControlDeviceImplementation*) _impl)->getControlledObject();
+		return _implementation->getControlledObject();
 }
 
 bool ControlDevice::isControlDevice() {
-	if (_impl == NULL) {
+	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,8 +187,14 @@ bool ControlDevice::isControlDevice() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ControlDeviceImplementation*) _impl)->isControlDevice();
+		return _implementation->isControlDevice();
 }
+
+DistributedObjectServant* ControlDevice::_getImplementation() {
+	return getForUpdate();}
+
+void ControlDevice::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ControlDeviceImplementation
@@ -141,32 +231,30 @@ ControlDeviceImplementation::operator const ControlDevice*() {
 	return _this;
 }
 
+TransactionalObject* ControlDeviceImplementation::clone() {
+	return (TransactionalObject*) new ControlDeviceImplementation(*this);
+}
+
+
 void ControlDeviceImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ControlDeviceImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ControlDeviceImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ControlDeviceImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ControlDeviceImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ControlDeviceImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ControlDeviceImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ControlDeviceImplementation::_serializationHelperMethod() {

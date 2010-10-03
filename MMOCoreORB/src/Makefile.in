@@ -95,6 +95,7 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/objects/scene/SceneObject.$(OBJEXT) \
 	server/zone/objects/scene/Observer.$(OBJEXT) \
 	server/zone/objects/scene/Observable.$(OBJEXT) \
+	server/zone/objects/scene/Facade.$(OBJEXT) \
 	server/zone/objects/area/ActiveArea.$(OBJEXT) \
 	server/zone/objects/area/BadgeActiveArea.$(OBJEXT) \
 	server/zone/objects/area/MissionSpawnActiveArea.$(OBJEXT) \
@@ -134,11 +135,14 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.$(OBJEXT) \
 	server/zone/objects/player/sui/inputbox/SuiInputBox.$(OBJEXT) \
 	server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.$(OBJEXT) \
+	server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.$(OBJEXT) \
 	server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.$(OBJEXT) \
 	server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.$(OBJEXT) \
 	server/zone/objects/player/sui/transferbox/SuiTransferBox.$(OBJEXT) \
 	server/zone/objects/waypoint/WaypointObject.$(OBJEXT) \
 	server/zone/objects/player/PlayerCreature.$(OBJEXT) \
+	server/zone/objects/player/EntertainingSession.$(OBJEXT) \
+	server/zone/objects/player/EntertainingObserver.$(OBJEXT) \
 	server/zone/objects/cell/CellObject.$(OBJEXT) \
 	server/zone/objects/group/GroupObject.$(OBJEXT) \
 	server/zone/objects/region/Region.$(OBJEXT) \
@@ -168,6 +172,7 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/objects/tangible/fishing/FishingPoleObject.$(OBJEXT) \
 	server/zone/objects/tangible/fishing/FishingBaitObject.$(OBJEXT) \
 	server/zone/objects/tangible/fishing/FishObject.$(OBJEXT) \
+	server/zone/objects/tangible/firework/FireworkObject.$(OBJEXT) \
 	server/zone/objects/tangible/consumable/Consumable.$(OBJEXT) \
 	server/zone/objects/tangible/pharmaceutical/CurePack.$(OBJEXT) \
 	server/zone/objects/tangible/pharmaceutical/DotPack.$(OBJEXT) \
@@ -179,6 +184,7 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/objects/tangible/pharmaceutical/StatePack.$(OBJEXT) \
 	server/zone/objects/tangible/pharmaceutical/WoundPack.$(OBJEXT) \
 	server/zone/managers/minigames/FishingManager.$(OBJEXT) \
+	server/zone/managers/minigames/GamblingManager.$(OBJEXT) \
 	server/zone/managers/account/AccountManager.$(OBJEXT) \
 	server/zone/objects/tangible/weapon/WeaponObject.$(OBJEXT) \
 	server/zone/managers/crafting/CraftingManager.$(OBJEXT) \
@@ -222,6 +228,7 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/structure/StructureTerminal.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/travel/TravelTerminal.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/gambling/GamblingTerminal.$(OBJEXT) \
 	server/zone/objects/mission/MissionObject.$(OBJEXT) \
 	server/zone/objects/mission/MissionObjective.$(OBJEXT) \
 	server/zone/objects/mission/SurveyMissionObjective.$(OBJEXT) \
@@ -269,9 +276,11 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/managers/name/NameManager.$(OBJEXT) \
 	server/zone/managers/group/GroupManager.$(OBJEXT) \
 	server/zone/managers/professions/ProfessionManager.$(OBJEXT) \
+	server/zone/managers/professions/PerformanceManager.$(OBJEXT) \
 	server/zone/managers/sui/SuiManager.$(OBJEXT) \
 	server/zone/managers/bazaar/BazaarManagerImplementation.$(OBJEXT) \
 	server/zone/managers/minigames/FishingManagerImplementation.$(OBJEXT) \
+	server/zone/managers/minigames/GamblingManagerImplementation.$(OBJEXT) \
 	server/zone/managers/resource/resourcespawner/ResourceSpawner.$(OBJEXT) \
 	server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.$(OBJEXT) \
 	server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.$(OBJEXT) \
@@ -298,6 +307,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/objects/tangible/fishing/FishingPoleObjectImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/fishing/FishingBaitObjectImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/fishing/FishObjectImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/firework/FireworkObjectImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/loot/LootkitObjectImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/TangibleObjectImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/ContainerImplementation.$(OBJEXT) \
@@ -305,6 +315,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/objects/tangible/terminal/city/CityTerminalImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/city/CityVoteTerminalImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.$(OBJEXT) \
+	server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.$(OBJEXT) \
 	server/zone/objects/tangible/consumable/ConsumableImplementation.$(OBJEXT) \
@@ -359,6 +370,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/objects/building/city/CityHallObjectImplementation.$(OBJEXT) \
 	server/zone/objects/structure/StructurePermissionList.$(OBJEXT) \
 	server/zone/objects/player/PlayerCreatureImplementation.$(OBJEXT) \
+	server/zone/objects/player/EntertainingSessionImplementation.$(OBJEXT) \
 	server/zone/objects/player/sui/SuiBoxImplementation.$(OBJEXT) \
 	server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.$(OBJEXT) \
 	server/zone/objects/player/sui/listbox/SuiListBoxImplementation.$(OBJEXT) \
@@ -559,6 +571,7 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
 				server/zone/objects/scene/Observer.cpp \
 				server/zone/objects/scene/Observable.cpp \
+				server/zone/objects/scene/Facade.cpp \
 				server/zone/objects/area/ActiveArea.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/area/MissionSpawnActiveArea.cpp \
@@ -598,11 +611,14 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.cpp \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.cpp \
+				server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.cpp \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 				server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
+				server/zone/objects/player/EntertainingSession.cpp \
+				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
 				server/zone/objects/region/Region.cpp \
@@ -632,6 +648,7 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
 				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
 				server/zone/objects/tangible/fishing/FishObject.cpp \
+				server/zone/objects/tangible/firework/FireworkObject.cpp \
 				server/zone/objects/tangible/consumable/Consumable.cpp \
 				server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
 				server/zone/objects/tangible/pharmaceutical/DotPack.cpp \
@@ -643,6 +660,7 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
 				server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
+				server/zone/managers/minigames/GamblingManager.cpp \
 				server/zone/managers/account/AccountManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
@@ -686,6 +704,7 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.cpp \
 				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
+				server/zone/objects/tangible/terminal/gambling/GamblingTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/mission/MissionObjective.cpp \
 				server/zone/objects/mission/SurveyMissionObjective.cpp \
@@ -734,9 +753,11 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/name/NameManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/professions/ProfessionManager.cpp \
+		server/zone/managers/professions/PerformanceManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/minigames/FishingManagerImplementation.cpp \
+		server/zone/managers/minigames/GamblingManagerImplementation.cpp \
 		server/zone/managers/resource/resourcespawner/ResourceSpawner.cpp \
 		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.cpp \
 		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.cpp \
@@ -763,6 +784,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/fishing/FishingPoleObjectImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishingBaitObjectImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishObjectImplementation.cpp \
+		server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp \
 		server/zone/objects/tangible/loot/LootkitObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
@@ -770,6 +792,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/terminal/city/CityTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/city/CityVoteTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.cpp \
+		server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
@@ -824,6 +847,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/building/city/CityHallObjectImplementation.cpp \
 		server/zone/objects/structure/StructurePermissionList.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
+		server/zone/objects/player/EntertainingSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
@@ -965,6 +989,9 @@ server/zone/objects/scene/Observer.$(OBJEXT):  \
 	server/zone/objects/scene/$(am__dirstamp) \
 	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/scene/Observable.$(OBJEXT):  \
+	server/zone/objects/scene/$(am__dirstamp) \
+	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/scene/Facade.$(OBJEXT):  \
 	server/zone/objects/scene/$(am__dirstamp) \
 	server/zone/objects/scene/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/area/$(am__dirstamp):
@@ -1207,6 +1234,15 @@ server/zone/objects/player/sui/inputbox/SuiInputBox.$(OBJEXT):  \
 server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.$(OBJEXT):  \
 	server/zone/objects/player/sui/listbox/$(am__dirstamp) \
 	server/zone/objects/player/sui/listbox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/slotmachinebox/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/slotmachinebox
+	@: > server/zone/objects/player/sui/slotmachinebox/$(am__dirstamp)
+server/zone/objects/player/sui/slotmachinebox/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/player/sui/slotmachinebox/$(DEPDIR)
+	@: > server/zone/objects/player/sui/slotmachinebox/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.$(OBJEXT):  \
+	server/zone/objects/player/sui/slotmachinebox/$(am__dirstamp) \
+	server/zone/objects/player/sui/slotmachinebox/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/sui/banktransferbox/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/player/sui/banktransferbox
 	@: > server/zone/objects/player/sui/banktransferbox/$(am__dirstamp)
@@ -1242,6 +1278,12 @@ server/zone/objects/waypoint/WaypointObject.$(OBJEXT):  \
 	server/zone/objects/waypoint/$(am__dirstamp) \
 	server/zone/objects/waypoint/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/PlayerCreature.$(OBJEXT):  \
+	server/zone/objects/player/$(am__dirstamp) \
+	server/zone/objects/player/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/EntertainingSession.$(OBJEXT):  \
+	server/zone/objects/player/$(am__dirstamp) \
+	server/zone/objects/player/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/EntertainingObserver.$(OBJEXT):  \
 	server/zone/objects/player/$(am__dirstamp) \
 	server/zone/objects/player/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/cell/$(am__dirstamp):
@@ -1483,6 +1525,15 @@ server/zone/objects/tangible/fishing/FishingBaitObject.$(OBJEXT):  \
 server/zone/objects/tangible/fishing/FishObject.$(OBJEXT):  \
 	server/zone/objects/tangible/fishing/$(am__dirstamp) \
 	server/zone/objects/tangible/fishing/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/firework/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/firework
+	@: > server/zone/objects/tangible/firework/$(am__dirstamp)
+server/zone/objects/tangible/firework/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/firework/$(DEPDIR)
+	@: > server/zone/objects/tangible/firework/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/firework/FireworkObject.$(OBJEXT):  \
+	server/zone/objects/tangible/firework/$(am__dirstamp) \
+	server/zone/objects/tangible/firework/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/consumable/Consumable.$(OBJEXT):  \
 	server/zone/objects/tangible/consumable/$(am__dirstamp) \
 	server/zone/objects/tangible/consumable/$(DEPDIR)/$(am__dirstamp)
@@ -1526,6 +1577,9 @@ server/zone/managers/minigames/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/managers/minigames/$(DEPDIR)
 	@: > server/zone/managers/minigames/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/minigames/FishingManager.$(OBJEXT):  \
+	server/zone/managers/minigames/$(am__dirstamp) \
+	server/zone/managers/minigames/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/minigames/GamblingManager.$(OBJEXT):  \
 	server/zone/managers/minigames/$(am__dirstamp) \
 	server/zone/managers/minigames/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/account/$(am__dirstamp):
@@ -1846,6 +1900,14 @@ server/zone/objects/tangible/terminal/travel/$(DEPDIR)/$(am__dirstamp):
 server/zone/objects/tangible/terminal/travel/TravelTerminal.$(OBJEXT):  \
 	server/zone/objects/tangible/terminal/travel/$(am__dirstamp) \
 	server/zone/objects/tangible/terminal/travel/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/gambling/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/gambling
+	@: > server/zone/objects/tangible/terminal/gambling/$(am__dirstamp)
+server/zone/objects/tangible/terminal/gambling/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/tangible/terminal/gambling/$(DEPDIR)
+	@: > server/zone/objects/tangible/terminal/gambling/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/gambling/GamblingTerminal.$(OBJEXT): server/zone/objects/tangible/terminal/gambling/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/gambling/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/mission/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/objects/mission
 	@: > server/zone/objects/mission/$(am__dirstamp)
@@ -2078,6 +2140,9 @@ server/zone/managers/professions/$(DEPDIR)/$(am__dirstamp):
 server/zone/managers/professions/ProfessionManager.$(OBJEXT):  \
 	server/zone/managers/professions/$(am__dirstamp) \
 	server/zone/managers/professions/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/professions/PerformanceManager.$(OBJEXT):  \
+	server/zone/managers/professions/$(am__dirstamp) \
+	server/zone/managers/professions/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/sui/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/managers/sui
 	@: > server/zone/managers/sui/$(am__dirstamp)
@@ -2091,6 +2156,9 @@ server/zone/managers/bazaar/BazaarManagerImplementation.$(OBJEXT):  \
 	server/zone/managers/bazaar/$(am__dirstamp) \
 	server/zone/managers/bazaar/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/minigames/FishingManagerImplementation.$(OBJEXT):  \
+	server/zone/managers/minigames/$(am__dirstamp) \
+	server/zone/managers/minigames/$(DEPDIR)/$(am__dirstamp)
+server/zone/managers/minigames/GamblingManagerImplementation.$(OBJEXT):  \
 	server/zone/managers/minigames/$(am__dirstamp) \
 	server/zone/managers/minigames/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/resource/resourcespawner/$(am__dirstamp):
@@ -2199,6 +2267,9 @@ server/zone/objects/tangible/fishing/FishingBaitObjectImplementation.$(OBJEXT): 
 server/zone/objects/tangible/fishing/FishObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/tangible/fishing/$(am__dirstamp) \
 	server/zone/objects/tangible/fishing/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/firework/FireworkObjectImplementation.$(OBJEXT):  \
+	server/zone/objects/tangible/firework/$(am__dirstamp) \
+	server/zone/objects/tangible/firework/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/loot/LootkitObjectImplementation.$(OBJEXT):  \
 	server/zone/objects/tangible/loot/$(am__dirstamp) \
 	server/zone/objects/tangible/loot/$(DEPDIR)/$(am__dirstamp)
@@ -2220,6 +2291,8 @@ server/zone/objects/tangible/terminal/city/CityVoteTerminalImplementation.$(OBJE
 server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.$(OBJEXT):  \
 	server/zone/objects/tangible/terminal/guild/$(am__dirstamp) \
 	server/zone/objects/tangible/terminal/guild/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.$(OBJEXT): server/zone/objects/tangible/terminal/gambling/$(am__dirstamp) \
+	server/zone/objects/tangible/terminal/gambling/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.$(OBJEXT): server/zone/objects/tangible/terminal/elevator/$(am__dirstamp) \
 	server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.$(OBJEXT): server/zone/objects/tangible/terminal/structure/$(am__dirstamp) \
@@ -2413,6 +2486,9 @@ server/zone/objects/structure/StructurePermissionList.$(OBJEXT):  \
 	server/zone/objects/structure/$(am__dirstamp) \
 	server/zone/objects/structure/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/PlayerCreatureImplementation.$(OBJEXT):  \
+	server/zone/objects/player/$(am__dirstamp) \
+	server/zone/objects/player/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/player/EntertainingSessionImplementation.$(OBJEXT):  \
 	server/zone/objects/player/$(am__dirstamp) \
 	server/zone/objects/player/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/player/sui/SuiBoxImplementation.$(OBJEXT):  \
@@ -2693,6 +2769,8 @@ mostlyclean-compile:
 	-rm -f server/zone/managers/loot/lootgroup/LootObject.$(OBJEXT)
 	-rm -f server/zone/managers/minigames/FishingManager.$(OBJEXT)
 	-rm -f server/zone/managers/minigames/FishingManagerImplementation.$(OBJEXT)
+	-rm -f server/zone/managers/minigames/GamblingManager.$(OBJEXT)
+	-rm -f server/zone/managers/minigames/GamblingManagerImplementation.$(OBJEXT)
 	-rm -f server/zone/managers/mission/MissionManager.$(OBJEXT)
 	-rm -f server/zone/managers/mission/MissionManagerImplementation.$(OBJEXT)
 	-rm -f server/zone/managers/name/NameManager.$(OBJEXT)
@@ -2707,6 +2785,7 @@ mostlyclean-compile:
 	-rm -f server/zone/managers/planet/PlanetManagerImplementation.$(OBJEXT)
 	-rm -f server/zone/managers/player/PlayerManager.$(OBJEXT)
 	-rm -f server/zone/managers/player/PlayerManagerImplementation.$(OBJEXT)
+	-rm -f server/zone/managers/professions/PerformanceManager.$(OBJEXT)
 	-rm -f server/zone/managers/professions/ProfessionManager.$(OBJEXT)
 	-rm -f server/zone/managers/radial/RadialManager.$(OBJEXT)
 	-rm -f server/zone/managers/radial/RadialManagerImplementation.$(OBJEXT)
@@ -2824,6 +2903,9 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/mission/ReconMissionObjectiveImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/mission/SurveyMissionObjective.$(OBJEXT)
 	-rm -f server/zone/objects/mission/SurveyMissionObjectiveImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/player/EntertainingObserver.$(OBJEXT)
+	-rm -f server/zone/objects/player/EntertainingSession.$(OBJEXT)
+	-rm -f server/zone/objects/player/EntertainingSessionImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/PlayerCreature.$(OBJEXT)
 	-rm -f server/zone/objects/player/PlayerCreatureImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/PlayerObject.$(OBJEXT)
@@ -2848,6 +2930,7 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBoxImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/messagebox/SuiMessageBox.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/transferbox/SuiTransferBox.$(OBJEXT)
 	-rm -f server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/player/variables/SchematicList.$(OBJEXT)
@@ -2859,6 +2942,7 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/resource/ResourceSpawn.$(OBJEXT)
 	-rm -f server/zone/objects/resource/ResourceSpawnImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/resource/simplexnoise/SimplexNoise.$(OBJEXT)
+	-rm -f server/zone/objects/scene/Facade.$(OBJEXT)
 	-rm -f server/zone/objects/scene/Observable.$(OBJEXT)
 	-rm -f server/zone/objects/scene/Observer.$(OBJEXT)
 	-rm -f server/zone/objects/scene/ObserverEventMap.$(OBJEXT)
@@ -2896,6 +2980,8 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/deed/resource/ResourceDeed.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/firework/FireworkObject.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/firework/FireworkObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/fishing/FishObject.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/fishing/FishObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/fishing/FishingBaitObject.$(OBJEXT)
@@ -2931,6 +3017,8 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/tangible/terminal/city/CityVoteTerminalImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/gambling/GamblingTerminal.$(OBJEXT)
+	-rm -f server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/guild/GuildTerminal.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/terminal/mission/MissionTerminal.$(OBJEXT)
@@ -3025,6 +3113,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/loot/lootgroup/$(DEPDIR)/LootObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/minigames/$(DEPDIR)/FishingManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/minigames/$(DEPDIR)/FishingManagerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/minigames/$(DEPDIR)/GamblingManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/minigames/$(DEPDIR)/GamblingManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/mission/$(DEPDIR)/MissionManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/mission/$(DEPDIR)/MissionManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/name/$(DEPDIR)/NameManager.Po@am__quote@
@@ -3039,6 +3129,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/planet/$(DEPDIR)/PlanetManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/player/$(DEPDIR)/PlayerManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/player/$(DEPDIR)/PlayerManagerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/professions/$(DEPDIR)/PerformanceManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/professions/$(DEPDIR)/ProfessionManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/radial/$(DEPDIR)/RadialManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/radial/$(DEPDIR)/RadialManagerImplementation.Po@am__quote@
@@ -3156,6 +3247,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/ReconMissionObjectiveImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/SurveyMissionObjective.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/mission/$(DEPDIR)/SurveyMissionObjectiveImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/$(DEPDIR)/EntertainingObserver.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/$(DEPDIR)/EntertainingSession.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/$(DEPDIR)/EntertainingSessionImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/$(DEPDIR)/PlayerCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/$(DEPDIR)/PlayerCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/$(DEPDIR)/PlayerObject.Po@am__quote@
@@ -3180,6 +3274,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR)/TeachPlayerListBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/messagebox/$(DEPDIR)/SuiMessageBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/messagebox/$(DEPDIR)/SuiMessageBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/slotmachinebox/$(DEPDIR)/SuiSlotMachineBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/transferbox/$(DEPDIR)/SuiTransferBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/sui/transferbox/$(DEPDIR)/SuiTransferBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/player/variables/$(DEPDIR)/SchematicList.Po@am__quote@
@@ -3191,6 +3286,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/resource/$(DEPDIR)/ResourceSpawn.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/resource/$(DEPDIR)/ResourceSpawnImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/resource/simplexnoise/$(DEPDIR)/SimplexNoise.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/Facade.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/Observable.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/Observer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/ObserverEventMap.Po@am__quote@
@@ -3228,6 +3324,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/installation/$(DEPDIR)/InstallationDeedImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/resource/$(DEPDIR)/ResourceDeed.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/deed/resource/$(DEPDIR)/ResourceDeedImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/firework/$(DEPDIR)/FireworkObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/firework/$(DEPDIR)/FireworkObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/fishing/$(DEPDIR)/FishObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/fishing/$(DEPDIR)/FishObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/fishing/$(DEPDIR)/FishingBaitObject.Po@am__quote@
@@ -3263,6 +3361,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/city/$(DEPDIR)/CityVoteTerminalImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/ElevatorTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/ElevatorTerminalImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/gambling/$(DEPDIR)/GamblingTerminal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/gambling/$(DEPDIR)/GamblingTerminalImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/guild/$(DEPDIR)/GuildTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/guild/$(DEPDIR)/GuildTerminalImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/terminal/mission/$(DEPDIR)/MissionTerminal.Po@am__quote@
@@ -3587,6 +3687,8 @@ distclean-generic:
 	-rm -f server/zone/objects/player/sui/listbox/teachplayerlistbox/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/messagebox/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/messagebox/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/slotmachinebox/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/player/sui/slotmachinebox/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/transferbox/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/player/sui/transferbox/$(am__dirstamp)
 	-rm -f server/zone/objects/player/variables/$(DEPDIR)/$(am__dirstamp)
@@ -3621,6 +3723,8 @@ distclean-generic:
 	-rm -f server/zone/objects/tangible/deed/installation/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/deed/resource/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/deed/resource/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/firework/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/firework/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/fishing/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/fishing/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/lair/$(DEPDIR)/$(am__dirstamp)
@@ -3643,6 +3747,8 @@ distclean-generic:
 	-rm -f server/zone/objects/tangible/terminal/city/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/elevator/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/elevator/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/gambling/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/tangible/terminal/gambling/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/guild/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/guild/$(am__dirstamp)
 	-rm -f server/zone/objects/tangible/terminal/mission/$(DEPDIR)/$(am__dirstamp)
@@ -3688,7 +3794,7 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/login/objects/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/status/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/account/$(DEPDIR) server/zone/managers/bazaar/$(DEPDIR) server/zone/managers/combat/$(DEPDIR) server/zone/managers/crafting/$(DEPDIR) server/zone/managers/crafting/schematicmap/$(DEPDIR) server/zone/managers/creature/$(DEPDIR) server/zone/managers/group/$(DEPDIR) server/zone/managers/loot/$(DEPDIR) server/zone/managers/loot/lootgroup/$(DEPDIR) server/zone/managers/minigames/$(DEPDIR) server/zone/managers/mission/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/professions/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/resource/$(DEPDIR) server/zone/managers/resource/resourcespawner/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcemap/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcetree/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/managers/sui/$(DEPDIR) server/zone/managers/templates/$(DEPDIR) server/zone/managers/terrain/$(DEPDIR) server/zone/objects/area/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/city/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/creature/buffs/$(DEPDIR) server/zone/objects/creature/commands/$(DEPDIR) server/zone/objects/creature/damageovertime/$(DEPDIR) server/zone/objects/creature/informant/$(DEPDIR) server/zone/objects/creature/junkdealer/$(DEPDIR) server/zone/objects/creature/shuttle/$(DEPDIR) server/zone/objects/creature/trainer/$(DEPDIR) server/zone/objects/creature/variables/$(DEPDIR) server/zone/objects/draftschematic/$(DEPDIR) server/zone/objects/factorycrate/$(DEPDIR) server/zone/objects/group/$(DEPDIR) server/zone/objects/installation/$(DEPDIR) server/zone/objects/installation/bank/$(DEPDIR) server/zone/objects/installation/factory/$(DEPDIR) server/zone/objects/installation/generator/$(DEPDIR) server/zone/objects/installation/harvester/$(DEPDIR) server/zone/objects/installation/shuttle/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/manufactureschematic/$(DEPDIR) server/zone/objects/manufactureschematic/craftingvalues/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/player/badges/$(DEPDIR) server/zone/objects/player/sui/$(DEPDIR) server/zone/objects/player/sui/banktransferbox/$(DEPDIR) server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR) server/zone/objects/player/sui/inputbox/$(DEPDIR) server/zone/objects/player/sui/listbox/$(DEPDIR) server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/resourcedeedlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR) server/zone/objects/player/sui/messagebox/$(DEPDIR) server/zone/objects/player/sui/transferbox/$(DEPDIR) server/zone/objects/player/variables/$(DEPDIR) server/zone/objects/region/$(DEPDIR) server/zone/objects/resource/$(DEPDIR) server/zone/objects/resource/simplexnoise/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/staticobject/$(DEPDIR) server/zone/objects/structure/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/component/$(DEPDIR) server/zone/objects/tangible/component/armor/$(DEPDIR) server/zone/objects/tangible/consumable/$(DEPDIR) server/zone/objects/tangible/deed/$(DEPDIR) server/zone/objects/tangible/deed/building/$(DEPDIR) server/zone/objects/tangible/deed/installation/$(DEPDIR) server/zone/objects/tangible/deed/resource/$(DEPDIR) server/zone/objects/tangible/fishing/$(DEPDIR) server/zone/objects/tangible/lair/$(DEPDIR) server/zone/objects/tangible/loot/$(DEPDIR) server/zone/objects/tangible/pharmaceutical/$(DEPDIR) server/zone/objects/tangible/sign/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/bank/$(DEPDIR) server/zone/objects/tangible/terminal/bazaar/$(DEPDIR) server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR) server/zone/objects/tangible/terminal/city/$(DEPDIR) server/zone/objects/tangible/terminal/elevator/$(DEPDIR) server/zone/objects/tangible/terminal/guild/$(DEPDIR) server/zone/objects/tangible/terminal/mission/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/terminal/structure/$(DEPDIR) server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR) server/zone/objects/tangible/terminal/travel/$(DEPDIR) server/zone/objects/tangible/ticket/$(DEPDIR) server/zone/objects/tangible/tool/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/terrain/$(DEPDIR) server/zone/objects/terrain/layer/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR) server/zone/templates/$(DEPDIR) server/zone/templates/intangible/$(DEPDIR) server/zone/templates/tangible/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/login/objects/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/status/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/account/$(DEPDIR) server/zone/managers/bazaar/$(DEPDIR) server/zone/managers/combat/$(DEPDIR) server/zone/managers/crafting/$(DEPDIR) server/zone/managers/crafting/schematicmap/$(DEPDIR) server/zone/managers/creature/$(DEPDIR) server/zone/managers/group/$(DEPDIR) server/zone/managers/loot/$(DEPDIR) server/zone/managers/loot/lootgroup/$(DEPDIR) server/zone/managers/minigames/$(DEPDIR) server/zone/managers/mission/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/professions/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/resource/$(DEPDIR) server/zone/managers/resource/resourcespawner/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcemap/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcetree/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/managers/sui/$(DEPDIR) server/zone/managers/templates/$(DEPDIR) server/zone/managers/terrain/$(DEPDIR) server/zone/objects/area/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/city/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/creature/buffs/$(DEPDIR) server/zone/objects/creature/commands/$(DEPDIR) server/zone/objects/creature/damageovertime/$(DEPDIR) server/zone/objects/creature/informant/$(DEPDIR) server/zone/objects/creature/junkdealer/$(DEPDIR) server/zone/objects/creature/shuttle/$(DEPDIR) server/zone/objects/creature/trainer/$(DEPDIR) server/zone/objects/creature/variables/$(DEPDIR) server/zone/objects/draftschematic/$(DEPDIR) server/zone/objects/factorycrate/$(DEPDIR) server/zone/objects/group/$(DEPDIR) server/zone/objects/installation/$(DEPDIR) server/zone/objects/installation/bank/$(DEPDIR) server/zone/objects/installation/factory/$(DEPDIR) server/zone/objects/installation/generator/$(DEPDIR) server/zone/objects/installation/harvester/$(DEPDIR) server/zone/objects/installation/shuttle/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/manufactureschematic/$(DEPDIR) server/zone/objects/manufactureschematic/craftingvalues/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/player/badges/$(DEPDIR) server/zone/objects/player/sui/$(DEPDIR) server/zone/objects/player/sui/banktransferbox/$(DEPDIR) server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR) server/zone/objects/player/sui/inputbox/$(DEPDIR) server/zone/objects/player/sui/listbox/$(DEPDIR) server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/resourcedeedlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR) server/zone/objects/player/sui/messagebox/$(DEPDIR) server/zone/objects/player/sui/slotmachinebox/$(DEPDIR) server/zone/objects/player/sui/transferbox/$(DEPDIR) server/zone/objects/player/variables/$(DEPDIR) server/zone/objects/region/$(DEPDIR) server/zone/objects/resource/$(DEPDIR) server/zone/objects/resource/simplexnoise/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/staticobject/$(DEPDIR) server/zone/objects/structure/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/component/$(DEPDIR) server/zone/objects/tangible/component/armor/$(DEPDIR) server/zone/objects/tangible/consumable/$(DEPDIR) server/zone/objects/tangible/deed/$(DEPDIR) server/zone/objects/tangible/deed/building/$(DEPDIR) server/zone/objects/tangible/deed/installation/$(DEPDIR) server/zone/objects/tangible/deed/resource/$(DEPDIR) server/zone/objects/tangible/firework/$(DEPDIR) server/zone/objects/tangible/fishing/$(DEPDIR) server/zone/objects/tangible/lair/$(DEPDIR) server/zone/objects/tangible/loot/$(DEPDIR) server/zone/objects/tangible/pharmaceutical/$(DEPDIR) server/zone/objects/tangible/sign/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/bank/$(DEPDIR) server/zone/objects/tangible/terminal/bazaar/$(DEPDIR) server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR) server/zone/objects/tangible/terminal/city/$(DEPDIR) server/zone/objects/tangible/terminal/elevator/$(DEPDIR) server/zone/objects/tangible/terminal/gambling/$(DEPDIR) server/zone/objects/tangible/terminal/guild/$(DEPDIR) server/zone/objects/tangible/terminal/mission/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/terminal/structure/$(DEPDIR) server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR) server/zone/objects/tangible/terminal/travel/$(DEPDIR) server/zone/objects/tangible/ticket/$(DEPDIR) server/zone/objects/tangible/tool/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/terrain/$(DEPDIR) server/zone/objects/terrain/layer/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR) server/zone/templates/$(DEPDIR) server/zone/templates/intangible/$(DEPDIR) server/zone/templates/tangible/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -3722,7 +3828,7 @@ install-ps: install-ps-am
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/login/objects/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/status/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/account/$(DEPDIR) server/zone/managers/bazaar/$(DEPDIR) server/zone/managers/combat/$(DEPDIR) server/zone/managers/crafting/$(DEPDIR) server/zone/managers/crafting/schematicmap/$(DEPDIR) server/zone/managers/creature/$(DEPDIR) server/zone/managers/group/$(DEPDIR) server/zone/managers/loot/$(DEPDIR) server/zone/managers/loot/lootgroup/$(DEPDIR) server/zone/managers/minigames/$(DEPDIR) server/zone/managers/mission/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/professions/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/resource/$(DEPDIR) server/zone/managers/resource/resourcespawner/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcemap/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcetree/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/managers/sui/$(DEPDIR) server/zone/managers/templates/$(DEPDIR) server/zone/managers/terrain/$(DEPDIR) server/zone/objects/area/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/city/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/creature/buffs/$(DEPDIR) server/zone/objects/creature/commands/$(DEPDIR) server/zone/objects/creature/damageovertime/$(DEPDIR) server/zone/objects/creature/informant/$(DEPDIR) server/zone/objects/creature/junkdealer/$(DEPDIR) server/zone/objects/creature/shuttle/$(DEPDIR) server/zone/objects/creature/trainer/$(DEPDIR) server/zone/objects/creature/variables/$(DEPDIR) server/zone/objects/draftschematic/$(DEPDIR) server/zone/objects/factorycrate/$(DEPDIR) server/zone/objects/group/$(DEPDIR) server/zone/objects/installation/$(DEPDIR) server/zone/objects/installation/bank/$(DEPDIR) server/zone/objects/installation/factory/$(DEPDIR) server/zone/objects/installation/generator/$(DEPDIR) server/zone/objects/installation/harvester/$(DEPDIR) server/zone/objects/installation/shuttle/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/manufactureschematic/$(DEPDIR) server/zone/objects/manufactureschematic/craftingvalues/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/player/badges/$(DEPDIR) server/zone/objects/player/sui/$(DEPDIR) server/zone/objects/player/sui/banktransferbox/$(DEPDIR) server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR) server/zone/objects/player/sui/inputbox/$(DEPDIR) server/zone/objects/player/sui/listbox/$(DEPDIR) server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/resourcedeedlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR) server/zone/objects/player/sui/messagebox/$(DEPDIR) server/zone/objects/player/sui/transferbox/$(DEPDIR) server/zone/objects/player/variables/$(DEPDIR) server/zone/objects/region/$(DEPDIR) server/zone/objects/resource/$(DEPDIR) server/zone/objects/resource/simplexnoise/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/staticobject/$(DEPDIR) server/zone/objects/structure/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/component/$(DEPDIR) server/zone/objects/tangible/component/armor/$(DEPDIR) server/zone/objects/tangible/consumable/$(DEPDIR) server/zone/objects/tangible/deed/$(DEPDIR) server/zone/objects/tangible/deed/building/$(DEPDIR) server/zone/objects/tangible/deed/installation/$(DEPDIR) server/zone/objects/tangible/deed/resource/$(DEPDIR) server/zone/objects/tangible/fishing/$(DEPDIR) server/zone/objects/tangible/lair/$(DEPDIR) server/zone/objects/tangible/loot/$(DEPDIR) server/zone/objects/tangible/pharmaceutical/$(DEPDIR) server/zone/objects/tangible/sign/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/bank/$(DEPDIR) server/zone/objects/tangible/terminal/bazaar/$(DEPDIR) server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR) server/zone/objects/tangible/terminal/city/$(DEPDIR) server/zone/objects/tangible/terminal/elevator/$(DEPDIR) server/zone/objects/tangible/terminal/guild/$(DEPDIR) server/zone/objects/tangible/terminal/mission/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/terminal/structure/$(DEPDIR) server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR) server/zone/objects/tangible/terminal/travel/$(DEPDIR) server/zone/objects/tangible/ticket/$(DEPDIR) server/zone/objects/tangible/tool/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/terrain/$(DEPDIR) server/zone/objects/terrain/layer/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR) server/zone/templates/$(DEPDIR) server/zone/templates/intangible/$(DEPDIR) server/zone/templates/tangible/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/login/objects/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/status/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/account/$(DEPDIR) server/zone/managers/bazaar/$(DEPDIR) server/zone/managers/combat/$(DEPDIR) server/zone/managers/crafting/$(DEPDIR) server/zone/managers/crafting/schematicmap/$(DEPDIR) server/zone/managers/creature/$(DEPDIR) server/zone/managers/group/$(DEPDIR) server/zone/managers/loot/$(DEPDIR) server/zone/managers/loot/lootgroup/$(DEPDIR) server/zone/managers/minigames/$(DEPDIR) server/zone/managers/mission/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/professions/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/resource/$(DEPDIR) server/zone/managers/resource/resourcespawner/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcemap/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcepool/$(DEPDIR) server/zone/managers/resource/resourcespawner/resourcetree/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/managers/sui/$(DEPDIR) server/zone/managers/templates/$(DEPDIR) server/zone/managers/terrain/$(DEPDIR) server/zone/objects/area/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/city/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/creature/buffs/$(DEPDIR) server/zone/objects/creature/commands/$(DEPDIR) server/zone/objects/creature/damageovertime/$(DEPDIR) server/zone/objects/creature/informant/$(DEPDIR) server/zone/objects/creature/junkdealer/$(DEPDIR) server/zone/objects/creature/shuttle/$(DEPDIR) server/zone/objects/creature/trainer/$(DEPDIR) server/zone/objects/creature/variables/$(DEPDIR) server/zone/objects/draftschematic/$(DEPDIR) server/zone/objects/factorycrate/$(DEPDIR) server/zone/objects/group/$(DEPDIR) server/zone/objects/installation/$(DEPDIR) server/zone/objects/installation/bank/$(DEPDIR) server/zone/objects/installation/factory/$(DEPDIR) server/zone/objects/installation/generator/$(DEPDIR) server/zone/objects/installation/harvester/$(DEPDIR) server/zone/objects/installation/shuttle/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/manufactureschematic/$(DEPDIR) server/zone/objects/manufactureschematic/craftingvalues/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/player/badges/$(DEPDIR) server/zone/objects/player/sui/$(DEPDIR) server/zone/objects/player/sui/banktransferbox/$(DEPDIR) server/zone/objects/player/sui/characterbuilderbox/$(DEPDIR) server/zone/objects/player/sui/inputbox/$(DEPDIR) server/zone/objects/player/sui/listbox/$(DEPDIR) server/zone/objects/player/sui/listbox/playerlearnlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/resourcedeedlistbox/$(DEPDIR) server/zone/objects/player/sui/listbox/teachplayerlistbox/$(DEPDIR) server/zone/objects/player/sui/messagebox/$(DEPDIR) server/zone/objects/player/sui/slotmachinebox/$(DEPDIR) server/zone/objects/player/sui/transferbox/$(DEPDIR) server/zone/objects/player/variables/$(DEPDIR) server/zone/objects/region/$(DEPDIR) server/zone/objects/resource/$(DEPDIR) server/zone/objects/resource/simplexnoise/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/staticobject/$(DEPDIR) server/zone/objects/structure/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/component/$(DEPDIR) server/zone/objects/tangible/component/armor/$(DEPDIR) server/zone/objects/tangible/consumable/$(DEPDIR) server/zone/objects/tangible/deed/$(DEPDIR) server/zone/objects/tangible/deed/building/$(DEPDIR) server/zone/objects/tangible/deed/installation/$(DEPDIR) server/zone/objects/tangible/deed/resource/$(DEPDIR) server/zone/objects/tangible/firework/$(DEPDIR) server/zone/objects/tangible/fishing/$(DEPDIR) server/zone/objects/tangible/lair/$(DEPDIR) server/zone/objects/tangible/loot/$(DEPDIR) server/zone/objects/tangible/pharmaceutical/$(DEPDIR) server/zone/objects/tangible/sign/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/bank/$(DEPDIR) server/zone/objects/tangible/terminal/bazaar/$(DEPDIR) server/zone/objects/tangible/terminal/characterbuilder/$(DEPDIR) server/zone/objects/tangible/terminal/city/$(DEPDIR) server/zone/objects/tangible/terminal/elevator/$(DEPDIR) server/zone/objects/tangible/terminal/gambling/$(DEPDIR) server/zone/objects/tangible/terminal/guild/$(DEPDIR) server/zone/objects/tangible/terminal/mission/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/terminal/structure/$(DEPDIR) server/zone/objects/tangible/terminal/ticketcollector/$(DEPDIR) server/zone/objects/tangible/terminal/travel/$(DEPDIR) server/zone/objects/tangible/ticket/$(DEPDIR) server/zone/objects/tangible/tool/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/terrain/$(DEPDIR) server/zone/objects/terrain/layer/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR) server/zone/templates/$(DEPDIR) server/zone/templates/intangible/$(DEPDIR) server/zone/templates/tangible/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

@@ -127,7 +127,7 @@ using namespace server::zone::objects::scene;
 
 #include "engine/log/Logger.h"
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
 
 #include "system/util/VectorMap.h"
 
@@ -136,7 +136,7 @@ namespace zone {
 namespace managers {
 namespace bazaar {
 
-class BazaarManager : public ManagedObject {
+class BazaarManager : public ManagedService {
 public:
 	static const int MAXPRICE = 20000;
 
@@ -182,6 +182,10 @@ public:
 
 	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	BazaarManager(DummyConstructorParameter* param);
 
@@ -202,7 +206,7 @@ namespace zone {
 namespace managers {
 namespace bazaar {
 
-class BazaarManagerImplementation : public ManagedObjectImplementation, public Logger {
+class BazaarManagerImplementation : public ManagedServiceImplementation, public Logger {
 protected:
 	ManagedReference<BazaarAuctionsMap* > auctionMap;
 
@@ -267,6 +271,8 @@ public:
 protected:
 	virtual ~BazaarManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -290,9 +296,10 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BazaarManager;
+	friend class TransactionalObjectHandle<BazaarManagerImplementation*>;
 };
 
-class BazaarManagerAdapter : public ManagedObjectAdapter {
+class BazaarManagerAdapter : public ManagedServiceAdapter {
 public:
 	BazaarManagerAdapter(BazaarManagerImplementation* impl);
 

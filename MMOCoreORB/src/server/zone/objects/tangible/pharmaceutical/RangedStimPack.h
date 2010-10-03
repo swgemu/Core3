@@ -167,6 +167,10 @@ public:
 
 	bool isRangedStimPack();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	RangedStimPack(DummyConstructorParameter* param);
 
@@ -232,6 +236,8 @@ public:
 protected:
 	virtual ~RangedStimPackImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -255,6 +261,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class RangedStimPack;
+	friend class TransactionalObjectHandle<RangedStimPackImplementation*>;
 };
 
 class RangedStimPackAdapter : public StimPackAdapter {

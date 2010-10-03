@@ -47,7 +47,7 @@ package server.zone.managers.bazaar;
 import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.managers.object.ObjectManager;
-import engine.core.ManagedObject;
+import engine.core.ManagedService;
 import server.zone.ZoneServer;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.managers.bazaar.BazaarAuctionsMap;
@@ -58,7 +58,7 @@ import system.util.VectorMap;
 
 include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
 
-class BazaarManager extends ManagedObject implements Logger {
+class BazaarManager extends ManagedService implements Logger {
 	protected BazaarAuctionsMap auctionMap;
 	
 	@weakReference

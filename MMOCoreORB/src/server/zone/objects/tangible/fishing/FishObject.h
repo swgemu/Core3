@@ -113,6 +113,10 @@ public:
 
 	void filet(PlayerCreature* player);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	FishObject(DummyConstructorParameter* param);
 
@@ -170,6 +174,8 @@ public:
 protected:
 	virtual ~FishObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -193,6 +199,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class FishObject;
+	friend class TransactionalObjectHandle<FishObjectImplementation*>;
 };
 
 class FishObjectAdapter : public TangibleObjectAdapter {

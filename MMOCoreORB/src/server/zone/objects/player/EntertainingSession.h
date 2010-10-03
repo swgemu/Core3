@@ -178,6 +178,10 @@ public:
 
 	void setDancing(bool val);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	EntertainingSession(DummyConstructorParameter* param);
 
@@ -309,6 +313,8 @@ public:
 protected:
 	virtual ~EntertainingSessionImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -330,6 +336,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class EntertainingSession;
+	friend class TransactionalObjectHandle<EntertainingSessionImplementation*>;
 };
 
 class EntertainingSessionAdapter : public FacadeAdapter {

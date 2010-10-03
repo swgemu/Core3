@@ -20,13 +20,133 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/structure/StructureObject.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	BuildingObjectStub
  */
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
-	_impl = new BuildingObjectImplementation();
-	_impl->_setStub(this);
+	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 BuildingObject::BuildingObject(DummyConstructorParameter* param) : StructureObject(param) {
@@ -37,7 +157,8 @@ BuildingObject::~BuildingObject() {
 
 
 void BuildingObject::createCellObjects() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +166,12 @@ void BuildingObject::createCellObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->createCellObjects();
+		_implementation->createCellObjects();
 }
 
 void BuildingObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,19 +180,21 @@ void BuildingObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
+		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void BuildingObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void BuildingObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -78,11 +202,12 @@ void BuildingObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -91,11 +216,12 @@ void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->sendContainerObjectsTo(player);
+		_implementation->sendContainerObjectsTo(player);
 }
 
 void BuildingObject::updateCellPermissionsTo(SceneObject* player) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,11 +230,12 @@ void BuildingObject::updateCellPermissionsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->updateCellPermissionsTo(player);
+		_implementation->updateCellPermissionsTo(player);
 }
 
 int BuildingObject::notifyStructurePlaced(PlayerCreature* player) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -117,19 +244,21 @@ int BuildingObject::notifyStructurePlaced(PlayerCreature* player) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->notifyStructurePlaced(player);
+		return _implementation->notifyStructurePlaced(player);
 }
 
 Vector3 BuildingObject::getEjectionPoint() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getEjectionPoint();
+		return _implementation->getEjectionPoint();
 }
 
 void BuildingObject::removeFromZone() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -137,27 +266,30 @@ void BuildingObject::removeFromZone() {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->removeFromZone();
+		_implementation->removeFromZone();
 }
 
 void BuildingObject::notifyInsert(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->notifyInsert(obj);
+		_implementation->notifyInsert(obj);
 }
 
 void BuildingObject::notifyDissapear(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->notifyDissapear(obj);
+		_implementation->notifyDissapear(obj);
 }
 
 void BuildingObject::notifyInsertToZone(SceneObject* object) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -166,43 +298,48 @@ void BuildingObject::notifyInsertToZone(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->notifyInsertToZone(object);
+		_implementation->notifyInsertToZone(object);
 }
 
 void BuildingObject::insert(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->insert(obj);
+		_implementation->insert(obj);
 }
 
 void BuildingObject::remove(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->remove(obj);
+		_implementation->remove(obj);
 }
 
 void BuildingObject::update(QuadTreeEntry* obj) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->update(obj);
+		_implementation->update(obj);
 }
 
 void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((BuildingObjectImplementation*) _impl)->inRange(obj, range);
+		_implementation->inRange(obj, range);
 }
 
 void BuildingObject::sendTo(SceneObject* player, bool doClose) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -212,11 +349,12 @@ void BuildingObject::sendTo(SceneObject* player, bool doClose) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->sendTo(player, doClose);
+		_implementation->sendTo(player, doClose);
 }
 
 void BuildingObject::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -225,11 +363,12 @@ void BuildingObject::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->sendBaselinesTo(player);
+		_implementation->sendBaselinesTo(player);
 }
 
 void BuildingObject::sendDestroyTo(SceneObject* player) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -238,11 +377,12 @@ void BuildingObject::sendDestroyTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->sendDestroyTo(player);
+		_implementation->sendDestroyTo(player);
 }
 
 void BuildingObject::addCell(CellObject* cell) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -251,11 +391,12 @@ void BuildingObject::addCell(CellObject* cell) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->addCell(cell);
+		_implementation->addCell(cell);
 }
 
 bool BuildingObject::isStaticBuilding() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -263,11 +404,12 @@ bool BuildingObject::isStaticBuilding() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isStaticBuilding();
+		return _implementation->isStaticBuilding();
 }
 
 CellObject* BuildingObject::getCell(int idx) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -276,11 +418,12 @@ CellObject* BuildingObject::getCell(int idx) {
 
 		return (CellObject*) method.executeWithObjectReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getCell(idx);
+		return _implementation->getCell(idx);
 }
 
 int BuildingObject::getTotalCellNumber() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -288,11 +431,12 @@ int BuildingObject::getTotalCellNumber() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getTotalCellNumber();
+		return _implementation->getTotalCellNumber();
 }
 
 void BuildingObject::setStaticBuilding(bool value) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -301,11 +445,12 @@ void BuildingObject::setStaticBuilding(bool value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setStaticBuilding(value);
+		_implementation->setStaticBuilding(value);
 }
 
 void BuildingObject::onEnter(PlayerCreature* player) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -314,11 +459,12 @@ void BuildingObject::onEnter(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->onEnter(player);
+		_implementation->onEnter(player);
 }
 
 void BuildingObject::onExit(PlayerCreature* player) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -327,11 +473,12 @@ void BuildingObject::onExit(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->onExit(player);
+		_implementation->onExit(player);
 }
 
 bool BuildingObject::isBuildingObject() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -339,11 +486,12 @@ bool BuildingObject::isBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isBuildingObject();
+		return _implementation->isBuildingObject();
 }
 
 bool BuildingObject::isMedicalBuildingObject() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -351,11 +499,12 @@ bool BuildingObject::isMedicalBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isMedicalBuildingObject();
+		return _implementation->isMedicalBuildingObject();
 }
 
 void BuildingObject::setSignObject(SignObject* sign) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -364,11 +513,12 @@ void BuildingObject::setSignObject(SignObject* sign) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setSignObject(sign);
+		_implementation->setSignObject(sign);
 }
 
 SignObject* BuildingObject::getSignObject() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -376,11 +526,12 @@ SignObject* BuildingObject::getSignObject() {
 
 		return (SignObject*) method.executeWithObjectReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getSignObject();
+		return _implementation->getSignObject();
 }
 
 bool BuildingObject::isCityHallBuilding() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -388,11 +539,12 @@ bool BuildingObject::isCityHallBuilding() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isCityHallBuilding();
+		return _implementation->isCityHallBuilding();
 }
 
 bool BuildingObject::isDeclaredResidency() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -400,11 +552,12 @@ bool BuildingObject::isDeclaredResidency() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->isDeclaredResidency();
+		return _implementation->isDeclaredResidency();
 }
 
 void BuildingObject::setDeclaredResidency(bool value) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -413,11 +566,12 @@ void BuildingObject::setDeclaredResidency(bool value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setDeclaredResidency(value);
+		_implementation->setDeclaredResidency(value);
 }
 
 void BuildingObject::setAccessFee(int fee) {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -426,11 +580,12 @@ void BuildingObject::setAccessFee(int fee) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setAccessFee(fee);
+		_implementation->setAccessFee(fee);
 }
 
 int BuildingObject::getAccessFee() {
-	if (_impl == NULL) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -438,8 +593,14 @@ int BuildingObject::getAccessFee() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getAccessFee();
+		return _implementation->getAccessFee();
 }
+
+DistributedObjectServant* BuildingObject::_getImplementation() {
+	return getForUpdate();}
+
+void BuildingObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	BuildingObjectImplementation
@@ -448,6 +609,7 @@ int BuildingObject::getAccessFee() {
 BuildingObjectImplementation::BuildingObjectImplementation(DummyConstructorParameter* param) : StructureObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 BuildingObjectImplementation::~BuildingObjectImplementation() {
 }
@@ -475,32 +637,30 @@ BuildingObjectImplementation::operator const BuildingObject*() {
 	return _this;
 }
 
+TransactionalObject* BuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new BuildingObjectImplementation(*this);
+}
+
+
 void BuildingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void BuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void BuildingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void BuildingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void BuildingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void BuildingObjectImplementation::_serializationHelperMethod() {

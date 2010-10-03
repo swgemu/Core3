@@ -118,6 +118,10 @@ public:
 
 	int canBeDestroyed(PlayerCreature* player);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	VehicleControlDevice(DummyConstructorParameter* param);
 
@@ -163,6 +167,8 @@ public:
 protected:
 	virtual ~VehicleControlDeviceImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -186,6 +192,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class VehicleControlDevice;
+	friend class TransactionalObjectHandle<VehicleControlDeviceImplementation*>;
 };
 
 class VehicleControlDeviceAdapter : public ControlDeviceAdapter {

@@ -34,6 +34,10 @@ public:
 
 	int clearSession();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	Facade(DummyConstructorParameter* param);
 
@@ -75,6 +79,8 @@ public:
 protected:
 	virtual ~FacadeImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -98,6 +104,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Facade;
+	friend class TransactionalObjectHandle<FacadeImplementation*>;
 };
 
 class FacadeAdapter : public ManagedObjectAdapter {

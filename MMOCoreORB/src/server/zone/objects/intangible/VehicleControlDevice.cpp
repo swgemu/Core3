@@ -16,13 +16,91 @@
 
 #include "server/zone/Zone.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	VehicleControlDeviceStub
  */
 
 VehicleControlDevice::VehicleControlDevice() : ControlDevice(DummyConstructorParameter::instance()) {
-	_impl = new VehicleControlDeviceImplementation();
-	_impl->_setStub(this);
+	VehicleControlDeviceImplementation* _implementation = new VehicleControlDeviceImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 VehicleControlDevice::VehicleControlDevice(DummyConstructorParameter* param) : ControlDevice(param) {
@@ -33,7 +111,8 @@ VehicleControlDevice::~VehicleControlDevice() {
 
 
 void VehicleControlDevice::storeObject(PlayerCreature* player) {
-	if (_impl == NULL) {
+	VehicleControlDeviceImplementation* _implementation = (VehicleControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,11 +121,12 @@ void VehicleControlDevice::storeObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleControlDeviceImplementation*) _impl)->storeObject(player);
+		_implementation->storeObject(player);
 }
 
 void VehicleControlDevice::generateObject(PlayerCreature* player) {
-	if (_impl == NULL) {
+	VehicleControlDeviceImplementation* _implementation = (VehicleControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +135,12 @@ void VehicleControlDevice::generateObject(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleControlDeviceImplementation*) _impl)->generateObject(player);
+		_implementation->generateObject(player);
 }
 
 int VehicleControlDevice::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	VehicleControlDeviceImplementation* _implementation = (VehicleControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +150,12 @@ int VehicleControlDevice::handleObjectMenuSelect(PlayerCreature* player, byte se
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleControlDeviceImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void VehicleControlDevice::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	if (_impl == NULL) {
+	VehicleControlDeviceImplementation* _implementation = (VehicleControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -82,11 +164,12 @@ void VehicleControlDevice::destroyObjectFromDatabase(bool destroyContainedObject
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleControlDeviceImplementation*) _impl)->destroyObjectFromDatabase(destroyContainedObjects);
+		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
-	if (_impl == NULL) {
+	VehicleControlDeviceImplementation* _implementation = (VehicleControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -95,8 +178,14 @@ int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((VehicleControlDeviceImplementation*) _impl)->canBeDestroyed(player);
+		return _implementation->canBeDestroyed(player);
 }
+
+DistributedObjectServant* VehicleControlDevice::_getImplementation() {
+	return getForUpdate();}
+
+void VehicleControlDevice::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	VehicleControlDeviceImplementation
@@ -105,6 +194,7 @@ int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
 VehicleControlDeviceImplementation::VehicleControlDeviceImplementation(DummyConstructorParameter* param) : ControlDeviceImplementation(param) {
 	_initializeImplementation();
 }
+
 
 VehicleControlDeviceImplementation::~VehicleControlDeviceImplementation() {
 }
@@ -132,32 +222,30 @@ VehicleControlDeviceImplementation::operator const VehicleControlDevice*() {
 	return _this;
 }
 
+TransactionalObject* VehicleControlDeviceImplementation::clone() {
+	return (TransactionalObject*) new VehicleControlDeviceImplementation(*this);
+}
+
+
 void VehicleControlDeviceImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void VehicleControlDeviceImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void VehicleControlDeviceImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void VehicleControlDeviceImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void VehicleControlDeviceImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void VehicleControlDeviceImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void VehicleControlDeviceImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void VehicleControlDeviceImplementation::_serializationHelperMethod() {
@@ -183,7 +271,7 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(PlayerCreature* p
 	// server/zone/objects/intangible/VehicleControlDevice.idl(73):  
 	if (selectedID == RadialOptions::VEHICLE_GENERATE){
 	// server/zone/objects/intangible/VehicleControlDevice.idl(75):  
-	if (ControlDeviceImplementation::controlledObject == NULL){
+	if (ControlDeviceImplementation::controlledObject.getForUpdate() == NULL){
 	// server/zone/objects/intangible/VehicleControlDevice.idl(76):  				Logger.error("null controlled object in vehicle control device");
 	Logger::error("null controlled object in vehicle control device");
 	// server/zone/objects/intangible/VehicleControlDevice.idl(77):  				return 1;
@@ -199,7 +287,7 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(PlayerCreature* p
 	else 	// server/zone/objects/intangible/VehicleControlDevice.idl(81):  		return 
 	if (selectedID == RadialOptions::VEHICLE_STORE){
 	// server/zone/objects/intangible/VehicleControlDevice.idl(82):  
-	if (ControlDeviceImplementation::controlledObject == NULL){
+	if (ControlDeviceImplementation::controlledObject.getForUpdate() == NULL){
 	// server/zone/objects/intangible/VehicleControlDevice.idl(83):  				Logger.error("null controlled object in vehicle control device");
 	Logger::error("null controlled object in vehicle control device");
 	// server/zone/objects/intangible/VehicleControlDevice.idl(84):  				return 1;
@@ -208,7 +296,7 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(PlayerCreature* p
 
 	else {
 	// server/zone/objects/intangible/VehicleControlDevice.idl(86):  
-	if (ControlDeviceImplementation::status == 1 && !ControlDeviceImplementation::controlledObject->isInQuadTree()){
+	if (ControlDeviceImplementation::status == 1 && !ControlDeviceImplementation::controlledObject.getForUpdate()->isInQuadTree()){
 	// server/zone/objects/intangible/VehicleControlDevice.idl(87):  					this.generateObject(player);
 	_this->generateObject(player);
 }

@@ -8,13 +8,59 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	SuiBankTransferBoxStub
  */
 
 SuiBankTransferBox::SuiBankTransferBox(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiBankTransferBoxImplementation(bankObject, player, windowtype);
-	_impl->_setStub(this);
+	SuiBankTransferBoxImplementation* _implementation = new SuiBankTransferBoxImplementation(bankObject, player, windowtype);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 SuiBankTransferBox::SuiBankTransferBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -25,7 +71,8 @@ SuiBankTransferBox::~SuiBankTransferBox() {
 
 
 void SuiBankTransferBox::addCash(int cash) {
-	if (_impl == NULL) {
+	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -34,11 +81,12 @@ void SuiBankTransferBox::addCash(int cash) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBankTransferBoxImplementation*) _impl)->addCash(cash);
+		_implementation->addCash(cash);
 }
 
 void SuiBankTransferBox::addBank(int bank) {
-	if (_impl == NULL) {
+	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -47,11 +95,12 @@ void SuiBankTransferBox::addBank(int bank) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiBankTransferBoxImplementation*) _impl)->addBank(bank);
+		_implementation->addBank(bank);
 }
 
 SceneObject* SuiBankTransferBox::getBank() {
-	if (_impl == NULL) {
+	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +108,12 @@ SceneObject* SuiBankTransferBox::getBank() {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SuiBankTransferBoxImplementation*) _impl)->getBank();
+		return _implementation->getBank();
 }
 
 BaseMessage* SuiBankTransferBox::generateMessage() {
-	if (_impl == NULL) {
+	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +121,12 @@ BaseMessage* SuiBankTransferBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiBankTransferBoxImplementation*) _impl)->generateMessage();
+		return _implementation->generateMessage();
 }
 
 bool SuiBankTransferBox::isBankTransferBox() {
-	if (_impl == NULL) {
+	SuiBankTransferBoxImplementation* _implementation = (SuiBankTransferBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,8 +134,14 @@ bool SuiBankTransferBox::isBankTransferBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiBankTransferBoxImplementation*) _impl)->isBankTransferBox();
+		return _implementation->isBankTransferBox();
 }
+
+DistributedObjectServant* SuiBankTransferBox::_getImplementation() {
+	return getForUpdate();}
+
+void SuiBankTransferBox::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	SuiBankTransferBoxImplementation
@@ -93,6 +150,7 @@ bool SuiBankTransferBox::isBankTransferBox() {
 SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(DummyConstructorParameter* param) : SuiBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiBankTransferBoxImplementation::~SuiBankTransferBoxImplementation() {
 }
@@ -120,32 +178,30 @@ SuiBankTransferBoxImplementation::operator const SuiBankTransferBox*() {
 	return _this;
 }
 
+TransactionalObject* SuiBankTransferBoxImplementation::clone() {
+	return (TransactionalObject*) new SuiBankTransferBoxImplementation(*this);
+}
+
+
 void SuiBankTransferBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SuiBankTransferBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SuiBankTransferBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::_serializationHelperMethod() {

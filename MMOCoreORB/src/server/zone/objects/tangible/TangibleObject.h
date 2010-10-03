@@ -302,6 +302,10 @@ public:
 
 	bool isFromFactoryCrate();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	TangibleObject(DummyConstructorParameter* param);
 
@@ -560,6 +564,8 @@ public:
 protected:
 	virtual ~TangibleObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -583,6 +589,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TangibleObject;
+	friend class TransactionalObjectHandle<TangibleObjectImplementation*>;
 };
 
 class TangibleObjectAdapter : public SceneObjectAdapter {

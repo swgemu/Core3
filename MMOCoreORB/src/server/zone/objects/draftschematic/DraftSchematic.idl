@@ -44,17 +44,17 @@ which carries forward this exception.
 
 package server.zone.objects.draftschematic;
 
+import engine.service.proto.BaseMessage;
+
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.packets.object.ObjectControllerMessage;
-import engine.service.proto.BaseMessage;
 import server.zone.objects.intangible.IntangibleObject;
-
 include server.zone.templates.intangible.DraftSchematicObjectTemplate;
 include server.zone.objects.draftschematic.draftslot.DraftSlot;
 include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
 import server.zone.templates.SharedObjectTemplate;
-
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.area.ActiveArea;
 
 class DraftSchematic extends IntangibleObject {
 

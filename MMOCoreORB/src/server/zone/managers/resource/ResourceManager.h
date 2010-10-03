@@ -178,6 +178,10 @@ public:
 
 	void addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent = false);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	ResourceManager(DummyConstructorParameter* param);
 

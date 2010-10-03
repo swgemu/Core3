@@ -10,13 +10,71 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	ArmorComponentStub
  */
 
 ArmorComponent::ArmorComponent() : Component(DummyConstructorParameter::instance()) {
-	_impl = new ArmorComponentImplementation();
-	_impl->_setStub(this);
+	ArmorComponentImplementation* _implementation = new ArmorComponentImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 ArmorComponent::ArmorComponent(DummyConstructorParameter* param) : Component(param) {
@@ -27,7 +85,8 @@ ArmorComponent::~ArmorComponent() {
 
 
 void ArmorComponent::initializeTransientMembers() {
-	if (_impl == NULL) {
+	ArmorComponentImplementation* _implementation = (ArmorComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,11 +94,12 @@ void ArmorComponent::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorComponentImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void ArmorComponent::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	ArmorComponentImplementation* _implementation = (ArmorComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -48,8 +108,14 @@ void ArmorComponent::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorComponentImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
+
+DistributedObjectServant* ArmorComponent::_getImplementation() {
+	return getForUpdate();}
+
+void ArmorComponent::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ArmorComponentImplementation
@@ -58,6 +124,7 @@ void ArmorComponent::updateCraftingValues(ManufactureSchematic* schematic) {
 ArmorComponentImplementation::ArmorComponentImplementation(DummyConstructorParameter* param) : ComponentImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ArmorComponentImplementation::~ArmorComponentImplementation() {
 }
@@ -85,32 +152,30 @@ ArmorComponentImplementation::operator const ArmorComponent*() {
 	return _this;
 }
 
+TransactionalObject* ArmorComponentImplementation::clone() {
+	return (TransactionalObject*) new ArmorComponentImplementation(*this);
+}
+
+
 void ArmorComponentImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ArmorComponentImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ArmorComponentImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ArmorComponentImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ArmorComponentImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ArmorComponentImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ArmorComponentImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ArmorComponentImplementation::_serializationHelperMethod() {

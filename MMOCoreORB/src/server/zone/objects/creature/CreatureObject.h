@@ -131,6 +131,20 @@ using namespace server::zone::objects::intangible;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -705,6 +719,10 @@ public:
 	bool isAiAgent();
 
 	bool isInformantCreature();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -1338,6 +1356,8 @@ public:
 protected:
 	virtual ~CreatureObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -1359,6 +1379,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CreatureObject;
+	friend class TransactionalObjectHandle<CreatureObjectImplementation*>;
 };
 
 class CreatureObjectAdapter : public TangibleObjectAdapter {

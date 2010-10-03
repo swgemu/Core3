@@ -10,12 +10,44 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	EntertainingObserverStub
  */
 
 EntertainingObserver::EntertainingObserver() : Observer(DummyConstructorParameter::instance()) {
-	_impl = new EntertainingObserverImplementation();
+	EntertainingObserverImplementation* _implementation = new EntertainingObserverImplementation();
+	_impl = _implementation;
 	_impl->_setStub(this);
 }
 
@@ -27,7 +59,8 @@ EntertainingObserver::~EntertainingObserver() {
 
 
 int EntertainingObserver::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	EntertainingObserverImplementation* _implementation = (EntertainingObserverImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,8 +72,14 @@ int EntertainingObserver::notifyObserverEvent(unsigned int eventType, Observable
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((EntertainingObserverImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
+
+DistributedObjectServant* EntertainingObserver::_getImplementation() {
+	return _impl;}
+
+void EntertainingObserver::_setImplementation(DistributedObjectServant* servant) {
+	_impl = servant;}
 
 /*
  *	EntertainingObserverImplementation

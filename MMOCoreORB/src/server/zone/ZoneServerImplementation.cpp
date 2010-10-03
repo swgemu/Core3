@@ -71,13 +71,19 @@ which carries forward this exception.
 
 #include "ZoneProcessServerImplementation.h"
 
+#include "ZoneHandler.h"
+
 ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int galaxyid) :
-		ManagedObjectImplementation(), DatagramServiceThread("ZoneServer") {
+		ManagedServiceImplementation(), Logger("ZoneServer") {
 	galaxyID = galaxyid;
 
 	name = "Core3 OR";
 
 	phandler = NULL;
+
+	datagramService = new DatagramServiceThread("ZoneServer");
+	datagramService->setLogging(false);
+	datagramService->setLockName("ZoneServerLock");
 
 	processor = NULL;
 	procThreadCount = processingThreads;
@@ -103,12 +109,6 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	totalDeletedPlayers = 0;
 
 	serverState = OFFLINE;
-
-	setLogging(false);
-	DatagramServiceThread::setLockName("ZoneServerLock");
-
-	taskManager = TaskManager::instance();
-	taskManager->setLogging(false);
 }
 
 void ZoneServerImplementation::initializeTransientMembers() {
@@ -116,128 +116,9 @@ void ZoneServerImplementation::initializeTransientMembers() {
 
 	processor = NULL;
 
-	taskManager = TaskManager::instance();
-	taskManager->setLogging(false);
-
 	objectManager = NULL;
 
 	ManagedObjectImplementation::initializeTransientMembers();
-}
-
-void ZoneServerImplementation::start(int a, int b) {
-	DatagramServiceThread::start(a, b);
-}
-
-void ZoneServerImplementation::stop() {
-	DatagramServiceThread::stop();
-}
-
-/*void ZoneServerImplementation::lock() {
-	DatagramServiceThread::lock();
-}
-
-void ZoneServerImplementation::unlock() {
-	DatagramServiceThread::unlock();
-}*/
-
-void ZoneServerImplementation::lock(bool doLock) {
-	DatagramServiceThread::lock(doLock);
-}
-
-void ZoneServerImplementation::unlock(bool doLock) {
-	DatagramServiceThread::unlock(doLock);
-}
-
-String ZoneServerImplementation::getServerName() {
-	return name;
-}
-
-void ZoneServerImplementation::setServerName(const String& na) {
-	name = na;
-}
-
-void ZoneServerImplementation::setServerStateLocked() {
-	Locker locker(this);
-
-	serverState = LOCKED;
-
-	StringBuffer msg;
-	msg << dec << "server locked";
-	info(msg, true);
-}
-
-void ZoneServerImplementation::setServerStateOnline() {
-	Locker locker(this);
-
-	serverState = ONLINE;
-
-	StringBuffer msg;
-	msg << dec << "server unlocked";
-	info(msg, true);
-}
-
-String ZoneServerImplementation::getMessageoftheDay() {
-	return messageoftheDay;
-}
-
-void ZoneServerImplementation::loadMessageoftheDay() {
-	Locker locker(this);
-
-	File* file;
-	FileReader* reader;
-
-	try {
-		file = new File("conf/motd.txt");
-		reader = new FileReader(file);
-
-		String line;
-		while(reader->readLine(line)) {
-			messageoftheDay += line;
-		}
-
-		reader->close();
-	} catch (FileNotFoundException& e) {
-		file = NULL;
-		reader = NULL;
-	}
-}
-
-void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
-	Locker locker(this);
-
-	File* file;
-	FileWriter* writer;
-
-	String finalMOTD = "";
-
-	try {
-		file = new File("conf/motd.txt");
-		writer = new FileWriter(file);
-
-		for(int i = 0; i < newMOTD.length(); i++) {
-			if(i+1 < newMOTD.length()) {
-				char currentLetter = newMOTD.charAt(i);
-				char nextLetter = newMOTD.charAt(i+1);
-				if(currentLetter == '\\' && nextLetter == 'n') {
-					finalMOTD += "\n";
-					i++;
-				} else {
-					finalMOTD += currentLetter;
-				}
-			} else {
-				finalMOTD += newMOTD.charAt(i);
-			}
-		}
-
-		writer->write(finalMOTD);
-
-		writer->close();
-	} catch (FileNotFoundException& e) {
-		file = NULL;
-		writer = NULL;
-	}
-
-	messageoftheDay = finalMOTD;
 }
 
 /*ZoneServerImplementation::~ZoneServerImplementation() {
@@ -326,7 +207,7 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 	zones.removeAll();
 }*/
 
-void ZoneServerImplementation::init() {
+void ZoneServerImplementation::initialize() {
 	serverState = LOADING;
 
 	//Load the galaxy name from the galaxy table.
@@ -467,12 +348,21 @@ void ZoneServerImplementation::startManagers() {
 	bankManager->deploy("BankManager");*/
 }
 
-void ZoneServerImplementation::run() {
+void ZoneServerImplementation::start(int p, int mconn) {
+	ZoneHandler* zoneHandler = new ZoneHandler(_this);
+	datagramService->setHandler(zoneHandler);
+
+	datagramService->start(p, mconn);
+
 	processor->start();
 
-	receiveMessages();
+	/*datagramService->join();
 
-	shutdown();
+	shutdown();*/
+}
+
+void ZoneServerImplementation::stop() {
+	datagramService->stop();
 }
 
 void ZoneServerImplementation::shutdown() {
@@ -541,7 +431,7 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
 
 	ZoneClientSessionImplementation* clientImpl = (ZoneClientSessionImplementation*) client->_getImplementation();
-	clientImpl->init(this);
+	clientImpl->init(datagramService);
 
 	String address = client->getAddress();
 
@@ -909,4 +799,112 @@ void ZoneServerImplementation::decreaseOnlinePlayers() {
 void ZoneServerImplementation::increaseTotalDeletedPlayers() {
 	totalDeletedPlayers.increment();
 	//++totalDeletedPlayers;
+}
+
+/*void ZoneServerImplementation::lock() {
+	DatagramServiceThread::lock();
+}
+
+void ZoneServerImplementation::unlock() {
+	DatagramServiceThread::unlock();
+}*/
+
+void ZoneServerImplementation::lock(bool doLock) {
+	datagramService->lock(doLock);
+}
+
+void ZoneServerImplementation::unlock(bool doLock) {
+	datagramService->unlock(doLock);
+}
+
+String ZoneServerImplementation::getServerName() {
+	return name;
+}
+
+void ZoneServerImplementation::setServerName(const String& na) {
+	name = na;
+}
+
+void ZoneServerImplementation::setServerStateLocked() {
+	Locker locker(_this);
+
+	serverState = LOCKED;
+
+	StringBuffer msg;
+	msg << dec << "server locked";
+	info(msg, true);
+}
+
+void ZoneServerImplementation::setServerStateOnline() {
+	Locker locker(_this);
+
+	serverState = ONLINE;
+
+	StringBuffer msg;
+	msg << dec << "server unlocked";
+	info(msg, true);
+}
+
+String ZoneServerImplementation::getMessageoftheDay() {
+	return messageoftheDay;
+}
+
+void ZoneServerImplementation::loadMessageoftheDay() {
+	Locker locker(_this);
+
+	File* file;
+	FileReader* reader;
+
+	try {
+		file = new File("conf/motd.txt");
+		reader = new FileReader(file);
+
+		String line;
+		while(reader->readLine(line)) {
+			messageoftheDay += line;
+		}
+
+		reader->close();
+	} catch (FileNotFoundException& e) {
+		file = NULL;
+		reader = NULL;
+	}
+}
+
+void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
+	Locker locker(_this);
+
+	File* file;
+	FileWriter* writer;
+
+	String finalMOTD = "";
+
+	try {
+		file = new File("conf/motd.txt");
+		writer = new FileWriter(file);
+
+		for(int i = 0; i < newMOTD.length(); i++) {
+			if(i+1 < newMOTD.length()) {
+				char currentLetter = newMOTD.charAt(i);
+				char nextLetter = newMOTD.charAt(i+1);
+				if(currentLetter == '\\' && nextLetter == 'n') {
+					finalMOTD += "\n";
+					i++;
+				} else {
+					finalMOTD += currentLetter;
+				}
+			} else {
+				finalMOTD += newMOTD.charAt(i);
+			}
+		}
+
+		writer->write(finalMOTD);
+
+		writer->close();
+	} catch (FileNotFoundException& e) {
+		file = NULL;
+		writer = NULL;
+	}
+
+	messageoftheDay = finalMOTD;
 }

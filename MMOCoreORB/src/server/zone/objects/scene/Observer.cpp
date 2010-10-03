@@ -6,6 +6,13 @@
 
 #include "server/zone/objects/scene/Observable.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
 /*
  *	ObserverStub
  */
@@ -18,7 +25,8 @@ Observer::~Observer() {
 
 
 int Observer::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	ObserverImplementation* _implementation = (ObserverImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -30,11 +38,12 @@ int Observer::notifyObserverEvent(unsigned int eventType, Observable* observable
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ObserverImplementation*) _impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 unsigned long long Observer::getObjectID() {
-	if (_impl == NULL) {
+	ObserverImplementation* _implementation = (ObserverImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -42,11 +51,12 @@ unsigned long long Observer::getObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((ObserverImplementation*) _impl)->getObjectID();
+		return _implementation->getObjectID();
 }
 
 int Observer::compareTo(Observer* obj) {
-	if (_impl == NULL) {
+	ObserverImplementation* _implementation = (ObserverImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,8 +65,14 @@ int Observer::compareTo(Observer* obj) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ObserverImplementation*) _impl)->compareTo(obj);
+		return _implementation->compareTo(obj);
 }
+
+DistributedObjectServant* Observer::_getImplementation() {
+	return _impl;}
+
+void Observer::_setImplementation(DistributedObjectServant* servant) {
+	_impl = servant;}
 
 /*
  *	ObserverImplementation
@@ -69,6 +85,7 @@ ObserverImplementation::ObserverImplementation() : ManagedObjectImplementation()
 ObserverImplementation::ObserverImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ObserverImplementation::~ObserverImplementation() {
 }
@@ -132,20 +149,20 @@ void ObserverImplementation::_serializationHelperMethod() {
 }
 
 int ObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/scene/Observer.idl(56):  		return 1;
+	// server/zone/objects/scene/Observer.idl(57):  		return 1;
 	return 1;
 }
 
 int ObserverImplementation::compareTo(Observer* obj) {
-	// server/zone/objects/scene/Observer.idl(69):  
-	if (getObjectID() < obj->getObjectID())	// server/zone/objects/scene/Observer.idl(70):  			return 1;
+	// server/zone/objects/scene/Observer.idl(70):  
+	if (getObjectID() < obj->getObjectID())	// server/zone/objects/scene/Observer.idl(71):  			return 1;
 	return 1;
 
-	else 	// server/zone/objects/scene/Observer.idl(71):  
-	if (getObjectID() > obj->getObjectID())	// server/zone/objects/scene/Observer.idl(72):  			return -1;
+	else 	// server/zone/objects/scene/Observer.idl(72):  
+	if (getObjectID() > obj->getObjectID())	// server/zone/objects/scene/Observer.idl(73):  			return -1;
 	return -1;
 
-	else 	// server/zone/objects/scene/Observer.idl(74):  			return 0;
+	else 	// server/zone/objects/scene/Observer.idl(75):  			return 0;
 	return 0;
 }
 

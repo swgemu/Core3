@@ -20,13 +20,121 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
 /*
  *	DotPackStub
  */
 
 DotPack::DotPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new DotPackImplementation();
-	_impl->_setStub(this);
+	DotPackImplementation* _implementation = new DotPackImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 DotPack::DotPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -37,31 +145,35 @@ DotPack::~DotPack() {
 
 
 void DotPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DotPackImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 void DotPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DotPackImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void DotPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DotPackImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 int DotPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +183,12 @@ int DotPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 int DotPack::calculatePower(CreatureObject* creature) {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,11 +197,12 @@ int DotPack::calculatePower(CreatureObject* creature) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->calculatePower(creature);
+		return _implementation->calculatePower(creature);
 }
 
 bool DotPack::isPoisonDeliveryUnit() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +210,12 @@ bool DotPack::isPoisonDeliveryUnit() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->isPoisonDeliveryUnit();
+		return _implementation->isPoisonDeliveryUnit();
 }
 
 bool DotPack::isDiseaseDeliveryUnit() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -108,11 +223,12 @@ bool DotPack::isDiseaseDeliveryUnit() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->isDiseaseDeliveryUnit();
+		return _implementation->isDiseaseDeliveryUnit();
 }
 
 float DotPack::getEffectiveness() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -120,11 +236,12 @@ float DotPack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getEffectiveness();
+		return _implementation->getEffectiveness();
 }
 
 float DotPack::getRange() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -132,11 +249,12 @@ float DotPack::getRange() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getRange();
+		return _implementation->getRange();
 }
 
 float DotPack::getArea() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -144,11 +262,12 @@ float DotPack::getArea() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getArea();
+		return _implementation->getArea();
 }
 
 float DotPack::getRangeMod() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -156,11 +275,12 @@ float DotPack::getRangeMod() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getRangeMod();
+		return _implementation->getRangeMod();
 }
 
 float DotPack::getPotency() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -168,11 +288,12 @@ float DotPack::getPotency() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getPotency();
+		return _implementation->getPotency();
 }
 
 unsigned int DotPack::getDuration() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -180,11 +301,12 @@ unsigned int DotPack::getDuration() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getDuration();
+		return _implementation->getDuration();
 }
 
 bool DotPack::isArea() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -192,11 +314,12 @@ bool DotPack::isArea() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->isArea();
+		return _implementation->isArea();
 }
 
 unsigned int DotPack::getPool() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -204,11 +327,12 @@ unsigned int DotPack::getPool() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getPool();
+		return _implementation->getPool();
 }
 
 unsigned int DotPack::getDotType() {
-	if (_impl == NULL) {
+	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -216,8 +340,14 @@ unsigned int DotPack::getDotType() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DotPackImplementation*) _impl)->getDotType();
+		return _implementation->getDotType();
 }
+
+DistributedObjectServant* DotPack::_getImplementation() {
+	return getForUpdate();}
+
+void DotPack::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	DotPackImplementation
@@ -254,32 +384,30 @@ DotPackImplementation::operator const DotPack*() {
 	return _this;
 }
 
+TransactionalObject* DotPackImplementation::clone() {
+	return (TransactionalObject*) new DotPackImplementation(*this);
+}
+
+
 void DotPackImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void DotPackImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void DotPackImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void DotPackImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void DotPackImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void DotPackImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void DotPackImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void DotPackImplementation::_serializationHelperMethod() {

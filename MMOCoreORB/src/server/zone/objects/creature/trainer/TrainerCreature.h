@@ -107,6 +107,10 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	TrainerCreature(DummyConstructorParameter* param);
 
@@ -184,6 +188,8 @@ public:
 protected:
 	virtual ~TrainerCreatureImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -207,6 +213,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TrainerCreature;
+	friend class TransactionalObjectHandle<TrainerCreatureImplementation*>;
 };
 
 class TrainerCreatureAdapter : public CreatureObjectAdapter {

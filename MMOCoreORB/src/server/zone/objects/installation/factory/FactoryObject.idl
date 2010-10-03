@@ -4,6 +4,7 @@ import server.zone.objects.installation.InstallationObject;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.factorycrate.FactoryCrate;
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.area.ActiveArea;
 
 class FactoryObject extends InstallationObject {
 

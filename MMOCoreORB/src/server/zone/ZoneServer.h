@@ -255,9 +255,11 @@ using namespace server::zone::managers::stringid;
 
 #include "engine/service/DatagramServiceThread.h"
 
+#include "engine/service/ServiceHandler.h"
+
 #include "engine/service/ServiceClient.h"
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
 
 #include "engine/core/TaskManager.h"
 
@@ -280,7 +282,7 @@ using namespace server::zone::managers::stringid;
 namespace server {
 namespace zone {
 
-class ZoneServer : public ManagedObject {
+class ZoneServer : public ManagedService {
 public:
 	static const int OFFLINE = 0;
 
@@ -296,9 +298,7 @@ public:
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
-	void init();
-
-	void run();
+	void initialize();
 
 	void shutdown();
 
@@ -420,6 +420,10 @@ public:
 
 	String getMessageoftheDay();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	ZoneServer(DummyConstructorParameter* param);
 
@@ -439,7 +443,9 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 
-class ZoneServerImplementation : public ManagedObjectImplementation, public DatagramServiceThread {
+class ZoneServerImplementation : public ManagedServiceImplementation, public ServiceHandler, public Logger {
+	DatagramServiceThread* datagramService;
+
 	BasePacketHandler* phandler;
 
 	ZoneProcessServerImplementation* processor;
@@ -513,9 +519,7 @@ public:
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
-	void init();
-
-	void run();
+	void initialize();
 
 	void shutdown();
 
@@ -645,6 +649,8 @@ public:
 protected:
 	virtual ~ZoneServerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -662,9 +668,10 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ZoneServer;
+	friend class TransactionalObjectHandle<ZoneServerImplementation*>;
 };
 
-class ZoneServerAdapter : public ManagedObjectAdapter {
+class ZoneServerAdapter : public ManagedServiceAdapter {
 public:
 	ZoneServerAdapter(ZoneServerImplementation* impl);
 
@@ -672,9 +679,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void init();
-
-	void run();
+	void initialize();
 
 	void shutdown();
 

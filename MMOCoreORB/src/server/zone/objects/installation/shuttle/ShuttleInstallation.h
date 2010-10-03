@@ -187,6 +187,10 @@ public:
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	ShuttleInstallation(DummyConstructorParameter* param);
 
@@ -240,6 +244,8 @@ public:
 protected:
 	virtual ~ShuttleInstallationImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -263,6 +269,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ShuttleInstallation;
+	friend class TransactionalObjectHandle<ShuttleInstallationImplementation*>;
 };
 
 class ShuttleInstallationAdapter : public InstallationObjectAdapter {

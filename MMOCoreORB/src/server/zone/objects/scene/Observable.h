@@ -36,6 +36,10 @@ public:
 
 	int getObserverCount(unsigned int eventType);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	Observable(DummyConstructorParameter* param);
 
@@ -80,6 +84,8 @@ public:
 protected:
 	virtual ~ObservableImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -103,6 +109,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Observable;
+	friend class TransactionalObjectHandle<ObservableImplementation*>;
 };
 
 class ObservableAdapter : public ManagedObjectAdapter {

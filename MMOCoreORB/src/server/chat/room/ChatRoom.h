@@ -137,6 +137,10 @@ public:
 
 	int compareTo(ChatRoom* obj);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	ChatRoom(DummyConstructorParameter* param);
 
@@ -272,6 +276,8 @@ public:
 protected:
 	virtual ~ChatRoomImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -295,6 +301,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ChatRoom;
+	friend class TransactionalObjectHandle<ChatRoomImplementation*>;
 };
 
 class ChatRoomAdapter : public ManagedObjectAdapter {

@@ -70,6 +70,10 @@ public:
 
 	bool isTransferBox();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	SuiTransferBox(DummyConstructorParameter* param);
 
@@ -139,6 +143,8 @@ public:
 protected:
 	virtual ~SuiTransferBoxImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -162,6 +168,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiTransferBox;
+	friend class TransactionalObjectHandle<SuiTransferBoxImplementation*>;
 };
 
 class SuiTransferBoxAdapter : public SuiBoxAdapter {

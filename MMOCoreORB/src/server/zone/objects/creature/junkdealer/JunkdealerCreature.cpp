@@ -10,13 +10,93 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	JunkdealerCreatureStub
  */
 
 JunkdealerCreature::JunkdealerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
-	_impl = new JunkdealerCreatureImplementation();
-	_impl->_setStub(this);
+	JunkdealerCreatureImplementation* _implementation = new JunkdealerCreatureImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 JunkdealerCreature::JunkdealerCreature(DummyConstructorParameter* param) : CreatureObject(param) {
@@ -27,15 +107,17 @@ JunkdealerCreature::~JunkdealerCreature() {
 
 
 void JunkdealerCreature::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((JunkdealerCreatureImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void JunkdealerCreature::activateRecovery() {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +125,12 @@ void JunkdealerCreature::activateRecovery() {
 
 		method.executeWithVoidReturn();
 	} else
-		((JunkdealerCreatureImplementation*) _impl)->activateRecovery();
+		_implementation->activateRecovery();
 }
 
 void JunkdealerCreature::sendInitialMessage(PlayerCreature* player) {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -56,11 +139,12 @@ void JunkdealerCreature::sendInitialMessage(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((JunkdealerCreatureImplementation*) _impl)->sendInitialMessage(player);
+		_implementation->sendInitialMessage(player);
 }
 
 void JunkdealerCreature::sendInitialChoices(PlayerCreature* player) {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -69,11 +153,12 @@ void JunkdealerCreature::sendInitialChoices(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((JunkdealerCreatureImplementation*) _impl)->sendInitialChoices(player);
+		_implementation->sendInitialChoices(player);
 }
 
 void JunkdealerCreature::sendConversationStartTo(SceneObject* obj) {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -82,11 +167,12 @@ void JunkdealerCreature::sendConversationStartTo(SceneObject* obj) {
 
 		method.executeWithVoidReturn();
 	} else
-		((JunkdealerCreatureImplementation*) _impl)->sendConversationStartTo(obj);
+		_implementation->sendConversationStartTo(obj);
 }
 
 void JunkdealerCreature::selectConversationOption(int option, SceneObject* obj) {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,11 +182,12 @@ void JunkdealerCreature::selectConversationOption(int option, SceneObject* obj) 
 
 		method.executeWithVoidReturn();
 	} else
-		((JunkdealerCreatureImplementation*) _impl)->selectConversationOption(option, obj);
+		_implementation->selectConversationOption(option, obj);
 }
 
 String JunkdealerCreature::getLocation() {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -109,11 +196,12 @@ String JunkdealerCreature::getLocation() {
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
 	} else
-		return ((JunkdealerCreatureImplementation*) _impl)->getLocation();
+		return _implementation->getLocation();
 }
 
 void JunkdealerCreature::setLocation(const String& loc) {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -122,11 +210,12 @@ void JunkdealerCreature::setLocation(const String& loc) {
 
 		method.executeWithVoidReturn();
 	} else
-		((JunkdealerCreatureImplementation*) _impl)->setLocation(loc);
+		_implementation->setLocation(loc);
 }
 
 bool JunkdealerCreature::isAttackableBy(CreatureObject* object) {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +224,12 @@ bool JunkdealerCreature::isAttackableBy(CreatureObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((JunkdealerCreatureImplementation*) _impl)->isAttackableBy(object);
+		return _implementation->isAttackableBy(object);
 }
 
 void JunkdealerCreature::createSellJunkLootSelection(PlayerCreature* player) {
-	if (_impl == NULL) {
+	JunkdealerCreatureImplementation* _implementation = (JunkdealerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -148,8 +238,14 @@ void JunkdealerCreature::createSellJunkLootSelection(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((JunkdealerCreatureImplementation*) _impl)->createSellJunkLootSelection(player);
+		_implementation->createSellJunkLootSelection(player);
 }
+
+DistributedObjectServant* JunkdealerCreature::_getImplementation() {
+	return getForUpdate();}
+
+void JunkdealerCreature::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	JunkdealerCreatureImplementation
@@ -158,6 +254,7 @@ void JunkdealerCreature::createSellJunkLootSelection(PlayerCreature* player) {
 JunkdealerCreatureImplementation::JunkdealerCreatureImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 JunkdealerCreatureImplementation::~JunkdealerCreatureImplementation() {
 }
@@ -185,32 +282,30 @@ JunkdealerCreatureImplementation::operator const JunkdealerCreature*() {
 	return _this;
 }
 
+TransactionalObject* JunkdealerCreatureImplementation::clone() {
+	return (TransactionalObject*) new JunkdealerCreatureImplementation(*this);
+}
+
+
 void JunkdealerCreatureImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void JunkdealerCreatureImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void JunkdealerCreatureImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void JunkdealerCreatureImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void JunkdealerCreatureImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void JunkdealerCreatureImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void JunkdealerCreatureImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void JunkdealerCreatureImplementation::_serializationHelperMethod() {

@@ -72,6 +72,10 @@ public:
 
 	bool isInputBox();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	SuiInputBox(DummyConstructorParameter* param);
 
@@ -131,6 +135,8 @@ public:
 protected:
 	virtual ~SuiInputBoxImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -154,6 +160,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiInputBox;
+	friend class TransactionalObjectHandle<SuiInputBoxImplementation*>;
 };
 
 class SuiInputBoxAdapter : public SuiBoxAdapter {

@@ -153,8 +153,6 @@ using namespace server::zone::managers::minigames;
 
 #include "server/zone/objects/scene/ObserverEventType.h"
 
-#include "engine/core/ManagedObject.h"
-
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -327,6 +325,10 @@ public:
 	void stopFishingEvent(PlayerCreature* player);
 
 	FishingEvent* getFishingEvent(PlayerCreature* player);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	FishingManager(DummyConstructorParameter* param);

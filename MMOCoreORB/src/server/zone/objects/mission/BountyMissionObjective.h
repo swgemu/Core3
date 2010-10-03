@@ -134,6 +134,10 @@ public:
 
 	void setNpcTemplateToSpawn(SharedObjectTemplate* sp);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	BountyMissionObjective(DummyConstructorParameter* param);
 
@@ -189,6 +193,8 @@ public:
 protected:
 	virtual ~BountyMissionObjectiveImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -210,6 +216,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BountyMissionObjective;
+	friend class TransactionalObjectHandle<BountyMissionObjectiveImplementation*>;
 };
 
 class BountyMissionObjectiveAdapter : public MissionObjectiveAdapter {

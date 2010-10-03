@@ -12,13 +12,73 @@
 
 #include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/building/city/CityHallObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
+
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	CityHallObjectStub
  */
 
 CityHallObject::CityHallObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new CityHallObjectImplementation();
-	_impl->_setStub(this);
+	CityHallObjectImplementation* _implementation = new CityHallObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 CityHallObject::CityHallObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -29,7 +89,8 @@ CityHallObject::~CityHallObject() {
 
 
 void CityHallObject::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -38,11 +99,12 @@ void CityHallObject::insertToZone(Zone* zone) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->insertToZone(zone);
+		_implementation->insertToZone(zone);
 }
 
 void CityHallObject::removeFromZone() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -50,11 +112,12 @@ void CityHallObject::removeFromZone() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->removeFromZone();
+		_implementation->removeFromZone();
 }
 
 void CityHallObject::spawnCityHallObjects() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -62,11 +125,12 @@ void CityHallObject::spawnCityHallObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->spawnCityHallObjects();
+		_implementation->spawnCityHallObjects();
 }
 
 void CityHallObject::despawnCityHallObjects() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,11 +138,12 @@ void CityHallObject::despawnCityHallObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->despawnCityHallObjects();
+		_implementation->despawnCityHallObjects();
 }
 
 void CityHallObject::trySetCityName(PlayerCreature* player, const String& name) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -88,11 +153,12 @@ void CityHallObject::trySetCityName(PlayerCreature* player, const String& name) 
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->trySetCityName(player, name);
+		_implementation->trySetCityName(player, name);
 }
 
 bool CityHallObject::checkRequisitesForPlacement(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -101,11 +167,12 @@ bool CityHallObject::checkRequisitesForPlacement(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->checkRequisitesForPlacement(player);
+		return _implementation->checkRequisitesForPlacement(player);
 }
 
 void CityHallObject::setCityName(const String& name) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -114,11 +181,12 @@ void CityHallObject::setCityName(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->setCityName(name);
+		_implementation->setCityName(name);
 }
 
 String CityHallObject::getCityName() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -127,11 +195,12 @@ String CityHallObject::getCityName() {
 		method.executeWithAsciiReturn(_return_getCityName);
 		return _return_getCityName;
 	} else
-		return ((CityHallObjectImplementation*) _impl)->getCityName();
+		return _implementation->getCityName();
 }
 
 void CityHallObject::sendStatusTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,11 +209,12 @@ void CityHallObject::sendStatusTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendStatusTo(player);
+		_implementation->sendStatusTo(player);
 }
 
 void CityHallObject::sendCitizenshipReportTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -153,11 +223,12 @@ void CityHallObject::sendCitizenshipReportTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendCitizenshipReportTo(player);
+		_implementation->sendCitizenshipReportTo(player);
 }
 
 void CityHallObject::sendStructureReportTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -166,11 +237,12 @@ void CityHallObject::sendStructureReportTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendStructureReportTo(player);
+		_implementation->sendStructureReportTo(player);
 }
 
 void CityHallObject::sendTreasuryReportTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -179,11 +251,12 @@ void CityHallObject::sendTreasuryReportTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendTreasuryReportTo(player);
+		_implementation->sendTreasuryReportTo(player);
 }
 
 void CityHallObject::sendChangeCityNameTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -192,11 +265,12 @@ void CityHallObject::sendChangeCityNameTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendChangeCityNameTo(player);
+		_implementation->sendChangeCityNameTo(player);
 }
 
 void CityHallObject::sendManageMilitiaTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -205,11 +279,12 @@ void CityHallObject::sendManageMilitiaTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendManageMilitiaTo(player);
+		_implementation->sendManageMilitiaTo(player);
 }
 
 void CityHallObject::sendAdjustTaxesTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -218,11 +293,12 @@ void CityHallObject::sendAdjustTaxesTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendAdjustTaxesTo(player);
+		_implementation->sendAdjustTaxesTo(player);
 }
 
 void CityHallObject::sendTreasuryDepositTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -231,11 +307,12 @@ void CityHallObject::sendTreasuryDepositTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendTreasuryDepositTo(player);
+		_implementation->sendTreasuryDepositTo(player);
 }
 
 void CityHallObject::sendTreasuryWithdrawalTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -244,11 +321,12 @@ void CityHallObject::sendTreasuryWithdrawalTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendTreasuryWithdrawalTo(player);
+		_implementation->sendTreasuryWithdrawalTo(player);
 }
 
 void CityHallObject::sendCitySpecializationSelectionTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -257,11 +335,12 @@ void CityHallObject::sendCitySpecializationSelectionTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->sendCitySpecializationSelectionTo(player);
+		_implementation->sendCitySpecializationSelectionTo(player);
 }
 
 void CityHallObject::toggleCityRegistration() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -269,11 +348,12 @@ void CityHallObject::toggleCityRegistration() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->toggleCityRegistration();
+		_implementation->toggleCityRegistration();
 }
 
 int CityHallObject::notifyStructurePlaced(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -282,11 +362,12 @@ int CityHallObject::notifyStructurePlaced(PlayerCreature* player) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->notifyStructurePlaced(player);
+		return _implementation->notifyStructurePlaced(player);
 }
 
 bool CityHallObject::isCityHallBuilding() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -294,11 +375,12 @@ bool CityHallObject::isCityHallBuilding() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->isCityHallBuilding();
+		return _implementation->isCityHallBuilding();
 }
 
 void CityHallObject::declareCitizenship(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -307,11 +389,12 @@ void CityHallObject::declareCitizenship(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->declareCitizenship(player);
+		_implementation->declareCitizenship(player);
 }
 
 void CityHallObject::declareCitizenship(unsigned long long playerID) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -320,11 +403,12 @@ void CityHallObject::declareCitizenship(unsigned long long playerID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->declareCitizenship(playerID);
+		_implementation->declareCitizenship(playerID);
 }
 
 void CityHallObject::revokeCitizenship(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -333,11 +417,12 @@ void CityHallObject::revokeCitizenship(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->revokeCitizenship(player);
+		_implementation->revokeCitizenship(player);
 }
 
 void CityHallObject::revokeCitizenship(unsigned long long playerID) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -346,11 +431,12 @@ void CityHallObject::revokeCitizenship(unsigned long long playerID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->revokeCitizenship(playerID);
+		_implementation->revokeCitizenship(playerID);
 }
 
 unsigned long long CityHallObject::getMayorObjectID() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -358,11 +444,12 @@ unsigned long long CityHallObject::getMayorObjectID() {
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->getMayorObjectID();
+		return _implementation->getMayorObjectID();
 }
 
 void CityHallObject::setMayorObjectID(unsigned long long oid) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -371,11 +458,12 @@ void CityHallObject::setMayorObjectID(unsigned long long oid) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->setMayorObjectID(oid);
+		_implementation->setMayorObjectID(oid);
 }
 
 bool CityHallObject::isMayorOf(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -384,11 +472,12 @@ bool CityHallObject::isMayorOf(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->isMayorOf(player);
+		return _implementation->isMayorOf(player);
 }
 
 bool CityHallObject::isMayorOf(unsigned long long playerID) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -397,11 +486,12 @@ bool CityHallObject::isMayorOf(unsigned long long playerID) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->isMayorOf(playerID);
+		return _implementation->isMayorOf(playerID);
 }
 
 bool CityHallObject::isCitizenOf(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -410,11 +500,12 @@ bool CityHallObject::isCitizenOf(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->isCitizenOf(player);
+		return _implementation->isCitizenOf(player);
 }
 
 bool CityHallObject::isCitizenOf(unsigned long long playerID) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -423,11 +514,12 @@ bool CityHallObject::isCitizenOf(unsigned long long playerID) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->isCitizenOf(playerID);
+		return _implementation->isCitizenOf(playerID);
 }
 
 CityTerminal* CityHallObject::getCityTerminal() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -435,11 +527,12 @@ CityTerminal* CityHallObject::getCityTerminal() {
 
 		return (CityTerminal*) method.executeWithObjectReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->getCityTerminal();
+		return _implementation->getCityTerminal();
 }
 
 CityVoteTerminal* CityHallObject::getCityVoteTerminal() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -447,11 +540,12 @@ CityVoteTerminal* CityHallObject::getCityVoteTerminal() {
 
 		return (CityVoteTerminal*) method.executeWithObjectReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->getCityVoteTerminal();
+		return _implementation->getCityVoteTerminal();
 }
 
 Region* CityHallObject::getCityRegion() {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -459,11 +553,12 @@ Region* CityHallObject::getCityRegion() {
 
 		return (Region*) method.executeWithObjectReturn();
 	} else
-		return ((CityHallObjectImplementation*) _impl)->getCityRegion();
+		return _implementation->getCityRegion();
 }
 
 void CityHallObject::setCityRegion(Region* region) {
-	if (_impl == NULL) {
+	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -472,8 +567,14 @@ void CityHallObject::setCityRegion(Region* region) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityHallObjectImplementation*) _impl)->setCityRegion(region);
+		_implementation->setCityRegion(region);
 }
+
+DistributedObjectServant* CityHallObject::_getImplementation() {
+	return getForUpdate();}
+
+void CityHallObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	CityHallObjectImplementation
@@ -510,32 +611,30 @@ CityHallObjectImplementation::operator const CityHallObject*() {
 	return _this;
 }
 
+TransactionalObject* CityHallObjectImplementation::clone() {
+	return (TransactionalObject*) new CityHallObjectImplementation(*this);
+}
+
+
 void CityHallObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CityHallObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CityHallObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CityHallObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CityHallObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CityHallObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CityHallObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CityHallObjectImplementation::_serializationHelperMethod() {

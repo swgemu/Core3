@@ -16,13 +16,51 @@
 
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
+
+// Imported class dependencies
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/resource/SpawnMap.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	SurveyMissionObjectiveStub
  */
 
 SurveyMissionObjective::SurveyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new SurveyMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	SurveyMissionObjectiveImplementation* _implementation = new SurveyMissionObjectiveImplementation(mission);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 SurveyMissionObjective::SurveyMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -33,7 +71,8 @@ SurveyMissionObjective::~SurveyMissionObjective() {
 
 
 void SurveyMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +80,12 @@ void SurveyMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void SurveyMissionObjective::activate() {
-	if (_impl == NULL) {
+	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +93,12 @@ void SurveyMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->activate();
+		_implementation->activate();
 }
 
 void SurveyMissionObjective::abort() {
-	if (_impl == NULL) {
+	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -65,11 +106,12 @@ void SurveyMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->abort();
+		_implementation->abort();
 }
 
 void SurveyMissionObjective::complete() {
-	if (_impl == NULL) {
+	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -77,11 +119,12 @@ void SurveyMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->complete();
+		_implementation->complete();
 }
 
 int SurveyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -94,11 +137,12 @@ int SurveyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsig
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((SurveyMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 void SurveyMissionObjective::setSpawn(ResourceSpawn* sp) {
-	if (_impl == NULL) {
+	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -107,11 +151,12 @@ void SurveyMissionObjective::setSpawn(ResourceSpawn* sp) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->setSpawn(sp);
+		_implementation->setSpawn(sp);
 }
 
 void SurveyMissionObjective::setMissionGiver(SceneObject* object) {
-	if (_impl == NULL) {
+	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -120,11 +165,12 @@ void SurveyMissionObjective::setMissionGiver(SceneObject* object) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->setMissionGiver(object);
+		_implementation->setMissionGiver(object);
 }
 
 void SurveyMissionObjective::setEfficiency(unsigned int eff) {
-	if (_impl == NULL) {
+	SurveyMissionObjectiveImplementation* _implementation = (SurveyMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -133,8 +179,14 @@ void SurveyMissionObjective::setEfficiency(unsigned int eff) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SurveyMissionObjectiveImplementation*) _impl)->setEfficiency(eff);
+		_implementation->setEfficiency(eff);
 }
+
+DistributedObjectServant* SurveyMissionObjective::_getImplementation() {
+	return getForUpdate();}
+
+void SurveyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	SurveyMissionObjectiveImplementation
@@ -143,6 +195,7 @@ void SurveyMissionObjective::setEfficiency(unsigned int eff) {
 SurveyMissionObjectiveImplementation::SurveyMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SurveyMissionObjectiveImplementation::~SurveyMissionObjectiveImplementation() {
 	SurveyMissionObjectiveImplementation::finalize();
@@ -168,32 +221,30 @@ SurveyMissionObjectiveImplementation::operator const SurveyMissionObjective*() {
 	return _this;
 }
 
+TransactionalObject* SurveyMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new SurveyMissionObjectiveImplementation(*this);
+}
+
+
 void SurveyMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SurveyMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SurveyMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::_serializationHelperMethod() {
