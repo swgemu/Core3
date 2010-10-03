@@ -55,6 +55,7 @@ import server.zone.objects.player.PlayerCreature;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.ControlDevice;
+import server.zone.objects.area.ActiveArea;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.creature.variables.SkillBoxList;

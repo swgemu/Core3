@@ -6,7 +6,7 @@ import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
 import server.zone.packets.MessageCallback;
 import server.zone.objects.tangible.TangibleObject;
-import engine.core.ManagedObject;
+import engine.core.ManagedService;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.NonPlayerCreatureObject;
@@ -16,7 +16,7 @@ import server.zone.managers.objectcontroller.ObjectController;
 
 include server.zone.managers.creature.CreatureMap;
 
-class CreatureManager extends ManagedObject implements Logger {
+class CreatureManager extends ManagedService implements Logger {
 	protected transient ZoneProcessServerImplementation processor;
 	protected ZoneServer server;
 	
@@ -37,8 +37,8 @@ class CreatureManager extends ManagedObject implements Logger {
 	}
 	
 	public void initialize() {
-		loadTrainers();
-		loadSingleSpawns();
+		//loadTrainers();
+		//loadSingleSpawns();
 		loadMissionSpawns();
 		loadInformants();
 	}

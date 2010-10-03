@@ -10,13 +10,65 @@
 
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/area/MissionSpawnActiveArea.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/tangible/lair/LairObject.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	MissionSpawnActiveAreaStub
  */
 
 MissionSpawnActiveArea::MissionSpawnActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
-	_impl = new MissionSpawnActiveAreaImplementation();
-	_impl->_setStub(this);
+	MissionSpawnActiveAreaImplementation* _implementation = new MissionSpawnActiveAreaImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 MissionSpawnActiveArea::MissionSpawnActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -27,7 +79,8 @@ MissionSpawnActiveArea::~MissionSpawnActiveArea() {
 
 
 void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
-	if (_impl == NULL) {
+	MissionSpawnActiveAreaImplementation* _implementation = (MissionSpawnActiveAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -36,11 +89,12 @@ void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionSpawnActiveAreaImplementation*) _impl)->notifyEnter(player);
+		_implementation->notifyEnter(player);
 }
 
 void MissionSpawnActiveArea::setMissionObjective(DestroyMissionObjective* mission) {
-	if (_impl == NULL) {
+	MissionSpawnActiveAreaImplementation* _implementation = (MissionSpawnActiveAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,8 +103,14 @@ void MissionSpawnActiveArea::setMissionObjective(DestroyMissionObjective* missio
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionSpawnActiveAreaImplementation*) _impl)->setMissionObjective(mission);
+		_implementation->setMissionObjective(mission);
 }
+
+DistributedObjectServant* MissionSpawnActiveArea::_getImplementation() {
+	return getForUpdate();}
+
+void MissionSpawnActiveArea::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	MissionSpawnActiveAreaImplementation
@@ -59,6 +119,7 @@ void MissionSpawnActiveArea::setMissionObjective(DestroyMissionObjective* missio
 MissionSpawnActiveAreaImplementation::MissionSpawnActiveAreaImplementation(DummyConstructorParameter* param) : ActiveAreaImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MissionSpawnActiveAreaImplementation::~MissionSpawnActiveAreaImplementation() {
 }
@@ -86,32 +147,30 @@ MissionSpawnActiveAreaImplementation::operator const MissionSpawnActiveArea*() {
 	return _this;
 }
 
+TransactionalObject* MissionSpawnActiveAreaImplementation::clone() {
+	return (TransactionalObject*) new MissionSpawnActiveAreaImplementation(*this);
+}
+
+
 void MissionSpawnActiveAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void MissionSpawnActiveAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void MissionSpawnActiveAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::_serializationHelperMethod() {

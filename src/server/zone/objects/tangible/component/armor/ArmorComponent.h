@@ -68,6 +68,10 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	ArmorComponent(DummyConstructorParameter* param);
 
@@ -113,6 +117,8 @@ public:
 protected:
 	virtual ~ArmorComponentImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -136,6 +142,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ArmorComponent;
+	friend class TransactionalObjectHandle<ArmorComponentImplementation*>;
 };
 
 class ArmorComponentAdapter : public ComponentAdapter {

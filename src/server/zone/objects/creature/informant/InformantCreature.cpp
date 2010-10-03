@@ -10,13 +10,93 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/events/AiThinkEvent.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "server/zone/objects/creature/PatrolPoint.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/tangible/DamageMap.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/creature/events/AiMoveEvent.h"
+
+#include "server/zone/objects/creature/PatrolPointsVector.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	InformantCreatureStub
  */
 
 InformantCreature::InformantCreature() : AiAgent(DummyConstructorParameter::instance()) {
-	_impl = new InformantCreatureImplementation();
-	_impl->_setStub(this);
+	InformantCreatureImplementation* _implementation = new InformantCreatureImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 InformantCreature::InformantCreature(DummyConstructorParameter* param) : AiAgent(param) {
@@ -27,15 +107,17 @@ InformantCreature::~InformantCreature() {
 
 
 void InformantCreature::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((InformantCreatureImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void InformantCreature::activateRecovery() {
-	if (_impl == NULL) {
+	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +125,12 @@ void InformantCreature::activateRecovery() {
 
 		method.executeWithVoidReturn();
 	} else
-		((InformantCreatureImplementation*) _impl)->activateRecovery();
+		_implementation->activateRecovery();
 }
 
 void InformantCreature::setLevel(int l) {
-	if (_impl == NULL) {
+	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -56,11 +139,12 @@ void InformantCreature::setLevel(int l) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InformantCreatureImplementation*) _impl)->setLevel(l);
+		_implementation->setLevel(l);
 }
 
 int InformantCreature::getLevel() {
-	if (_impl == NULL) {
+	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -68,11 +152,12 @@ int InformantCreature::getLevel() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((InformantCreatureImplementation*) _impl)->getLevel();
+		return _implementation->getLevel();
 }
 
 bool InformantCreature::isInformantCreature() {
-	if (_impl == NULL) {
+	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -80,11 +165,12 @@ bool InformantCreature::isInformantCreature() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((InformantCreatureImplementation*) _impl)->isInformantCreature();
+		return _implementation->isInformantCreature();
 }
 
 bool InformantCreature::isAttackableBy(CreatureObject* object) {
-	if (_impl == NULL) {
+	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -93,11 +179,12 @@ bool InformantCreature::isAttackableBy(CreatureObject* object) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((InformantCreatureImplementation*) _impl)->isAttackableBy(object);
+		return _implementation->isAttackableBy(object);
 }
 
 void InformantCreature::sendConversationStartTo(SceneObject* player) {
-	if (_impl == NULL) {
+	InformantCreatureImplementation* _implementation = (InformantCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -106,8 +193,14 @@ void InformantCreature::sendConversationStartTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InformantCreatureImplementation*) _impl)->sendConversationStartTo(player);
+		_implementation->sendConversationStartTo(player);
 }
+
+DistributedObjectServant* InformantCreature::_getImplementation() {
+	return getForUpdate();}
+
+void InformantCreature::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	InformantCreatureImplementation
@@ -116,6 +209,7 @@ void InformantCreature::sendConversationStartTo(SceneObject* player) {
 InformantCreatureImplementation::InformantCreatureImplementation(DummyConstructorParameter* param) : AiAgentImplementation(param) {
 	_initializeImplementation();
 }
+
 
 InformantCreatureImplementation::~InformantCreatureImplementation() {
 }
@@ -143,32 +237,30 @@ InformantCreatureImplementation::operator const InformantCreature*() {
 	return _this;
 }
 
+TransactionalObject* InformantCreatureImplementation::clone() {
+	return (TransactionalObject*) new InformantCreatureImplementation(*this);
+}
+
+
 void InformantCreatureImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void InformantCreatureImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void InformantCreatureImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void InformantCreatureImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void InformantCreatureImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void InformantCreatureImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void InformantCreatureImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void InformantCreatureImplementation::_serializationHelperMethod() {

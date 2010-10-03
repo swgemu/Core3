@@ -10,13 +10,61 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	DeedStub
  */
 
 Deed::Deed() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new DeedImplementation();
-	_impl->_setStub(this);
+	DeedImplementation* _implementation = new DeedImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 Deed::Deed(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -27,7 +75,8 @@ Deed::~Deed() {
 
 
 void Deed::initializeTransientMembers() {
-	if (_impl == NULL) {
+	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,35 +84,39 @@ void Deed::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeedImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void Deed::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DeedImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void Deed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
-	if (_impl == NULL) {
+	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DeedImplementation*) _impl)->fillAttributeList(alm, object);
+		_implementation->fillAttributeList(alm, object);
 }
 
 void Deed::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DeedImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 void Deed::setGeneratedObjectTemplate(const String& templ) {
-	if (_impl == NULL) {
+	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +125,12 @@ void Deed::setGeneratedObjectTemplate(const String& templ) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeedImplementation*) _impl)->setGeneratedObjectTemplate(templ);
+		_implementation->setGeneratedObjectTemplate(templ);
 }
 
 String Deed::getGeneratedObjectTemplate() {
-	if (_impl == NULL) {
+	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -85,11 +139,12 @@ String Deed::getGeneratedObjectTemplate() {
 		method.executeWithAsciiReturn(_return_getGeneratedObjectTemplate);
 		return _return_getGeneratedObjectTemplate;
 	} else
-		return ((DeedImplementation*) _impl)->getGeneratedObjectTemplate();
+		return _implementation->getGeneratedObjectTemplate();
 }
 
 bool Deed::isDeedObject() {
-	if (_impl == NULL) {
+	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -97,8 +152,14 @@ bool Deed::isDeedObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DeedImplementation*) _impl)->isDeedObject();
+		return _implementation->isDeedObject();
 }
+
+DistributedObjectServant* Deed::_getImplementation() {
+	return getForUpdate();}
+
+void Deed::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	DeedImplementation
@@ -107,6 +168,7 @@ bool Deed::isDeedObject() {
 DeedImplementation::DeedImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 DeedImplementation::~DeedImplementation() {
 }
@@ -134,32 +196,30 @@ DeedImplementation::operator const Deed*() {
 	return _this;
 }
 
+TransactionalObject* DeedImplementation::clone() {
+	return (TransactionalObject*) new DeedImplementation(*this);
+}
+
+
 void DeedImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void DeedImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void DeedImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void DeedImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void DeedImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void DeedImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void DeedImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void DeedImplementation::_serializationHelperMethod() {

@@ -8,13 +8,59 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	SuiInputBoxStub
  */
 
 SuiInputBox::SuiInputBox(PlayerCreature* player, unsigned int windowType, int inputtype) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiInputBoxImplementation(player, windowType, inputtype);
-	_impl->_setStub(this);
+	SuiInputBoxImplementation* _implementation = new SuiInputBoxImplementation(player, windowType, inputtype);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 SuiInputBox::SuiInputBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -25,7 +71,8 @@ SuiInputBox::~SuiInputBox() {
 
 
 BaseMessage* SuiInputBox::generateMessage() {
-	if (_impl == NULL) {
+	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +80,12 @@ BaseMessage* SuiInputBox::generateMessage() {
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
-		return ((SuiInputBoxImplementation*) _impl)->generateMessage();
+		return _implementation->generateMessage();
 }
 
 void SuiInputBox::setMaxInputSize(int size) {
-	if (_impl == NULL) {
+	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,11 +94,12 @@ void SuiInputBox::setMaxInputSize(int size) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiInputBoxImplementation*) _impl)->setMaxInputSize(size);
+		_implementation->setMaxInputSize(size);
 }
 
 void SuiInputBox::setDefaultInput(const String& text) {
-	if (_impl == NULL) {
+	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +108,12 @@ void SuiInputBox::setDefaultInput(const String& text) {
 
 		method.executeWithVoidReturn();
 	} else
-		((SuiInputBoxImplementation*) _impl)->setDefaultInput(text);
+		_implementation->setDefaultInput(text);
 }
 
 bool SuiInputBox::isFilterBox() {
-	if (_impl == NULL) {
+	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +121,12 @@ bool SuiInputBox::isFilterBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiInputBoxImplementation*) _impl)->isFilterBox();
+		return _implementation->isFilterBox();
 }
 
 bool SuiInputBox::isInputBox() {
-	if (_impl == NULL) {
+	SuiInputBoxImplementation* _implementation = (SuiInputBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,8 +134,14 @@ bool SuiInputBox::isInputBox() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SuiInputBoxImplementation*) _impl)->isInputBox();
+		return _implementation->isInputBox();
 }
+
+DistributedObjectServant* SuiInputBox::_getImplementation() {
+	return getForUpdate();}
+
+void SuiInputBox::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	SuiInputBoxImplementation
@@ -93,6 +150,7 @@ bool SuiInputBox::isInputBox() {
 SuiInputBoxImplementation::SuiInputBoxImplementation(DummyConstructorParameter* param) : SuiBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 SuiInputBoxImplementation::~SuiInputBoxImplementation() {
 }
@@ -120,32 +178,30 @@ SuiInputBoxImplementation::operator const SuiInputBox*() {
 	return _this;
 }
 
+TransactionalObject* SuiInputBoxImplementation::clone() {
+	return (TransactionalObject*) new SuiInputBoxImplementation(*this);
+}
+
+
 void SuiInputBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SuiInputBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SuiInputBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SuiInputBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SuiInputBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SuiInputBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SuiInputBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SuiInputBoxImplementation::_serializationHelperMethod() {

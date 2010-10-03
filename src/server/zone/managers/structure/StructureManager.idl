@@ -44,7 +44,7 @@ which carries forward this exception.
 
 package server.zone.managers.structure;
 
-import engine.core.ManagedObject;
+import engine.core.ManagedService;
 import engine.util.Quaternion;
 import server.zone.Zone;
 import server.zone.ZoneProcessServerImplementation;
@@ -61,7 +61,7 @@ include server.zone.templates.tangible.SharedStructureObjectTemplate;
 include server.zone.templates.tangible.SharedBuildingObjectTemplate;
 include server.zone.templates.tangible.SharedInstallationObjectTemplate;
 
-class StructureManager extends ManagedObject implements Logger {
+class StructureManager extends ManagedService implements Logger {
 	@weakReference
 	private Zone zone;
 	
@@ -100,14 +100,14 @@ class StructureManager extends ManagedObject implements Logger {
 		
 		listOfStaticBuildings.setNoDuplicateInsertPlan();
 		
-		loadStaticBuildings();
+		/*loadStaticBuildings();
 		loadPlayerStructures();
 		loadStaticBanks();
 		loadStaticBazaars();
 		loadStaticMissionTerminals();
 		loadStaticGamblingTerminals();
 		loadStaticCraftingStations();
-		loadStaticGarages();
+		loadStaticGarages();*/
 	}
 	
 	/**

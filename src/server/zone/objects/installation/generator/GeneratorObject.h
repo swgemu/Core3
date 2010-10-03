@@ -11,6 +11,20 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/installation/InstallationObject.h"
 
 namespace server {
@@ -31,6 +45,10 @@ public:
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
 	bool isGeneratorObject();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	GeneratorObject(DummyConstructorParameter* param);
@@ -77,6 +95,8 @@ public:
 protected:
 	virtual ~GeneratorObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -100,6 +120,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class GeneratorObject;
+	friend class TransactionalObjectHandle<GeneratorObjectImplementation*>;
 };
 
 class GeneratorObjectAdapter : public InstallationObjectAdapter {

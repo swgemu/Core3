@@ -48,30 +48,30 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 namespace server {
-namespace zone {
+  namespace zone {
 
-class ZonePacketHandler;
+	class ZonePacketHandler;
 
-class ZoneMessageProcessorThread : public ServiceProcessThread {
-	ZonePacketHandler* phandler;
+	class ZoneMessageProcessorThread : public ServiceProcessThread {
+		ZonePacketHandler* phandler;
 
-public:
-	ZoneMessageProcessorThread(const String& s, ZonePacketHandler* phand) : ServiceProcessThread(s) {
-		phandler = phand;
+	public:
+		ZoneMessageProcessorThread(const String& s, ZonePacketHandler* phand) : ServiceProcessThread(s) {
+			phandler = phand;
 
-		setLogging(false);
-		//setFileLogger(s + ".log");
+			setLogging(false);
+			//setFileLogger(s + ".log");
 
-		//setSchedulingPolicy(SCHED_FIFO);
-	}
+			//setSchedulingPolicy(SCHED_FIFO);
+		}
 
-	void processMessage(Message* message);
+		void processMessage(Message* message);
 
-	bool handleError(Message* msg, Exception& e);
+		bool handleError(Message* msg, Exception& e);
 
-};
+	};
 
-}
+  }
 }
 
 using namespace server::zone;

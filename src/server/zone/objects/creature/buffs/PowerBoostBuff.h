@@ -95,6 +95,10 @@ public:
 
 	void clearBuffEvent();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	PowerBoostBuff(DummyConstructorParameter* param);
 
@@ -156,6 +160,8 @@ public:
 protected:
 	virtual ~PowerBoostBuffImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -179,6 +185,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PowerBoostBuff;
+	friend class TransactionalObjectHandle<PowerBoostBuffImplementation*>;
 };
 
 class PowerBoostBuffAdapter : public BuffAdapter {

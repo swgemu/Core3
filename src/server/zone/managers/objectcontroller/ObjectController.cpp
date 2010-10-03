@@ -18,16 +18,98 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	ObjectControllerStub
  */
 
-ObjectController::ObjectController(ZoneProcessServerImplementation* srv) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ObjectControllerImplementation(srv);
-	_impl->_setStub(this);
+ObjectController::ObjectController(ZoneProcessServerImplementation* srv) : ManagedService(DummyConstructorParameter::instance()) {
+	ObjectControllerImplementation* _implementation = new ObjectControllerImplementation(srv);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
-ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedObject(param) {
+ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedService(param) {
 }
 
 ObjectController::~ObjectController() {
@@ -35,7 +117,8 @@ ObjectController::~ObjectController() {
 
 
 void ObjectController::loadCommands() {
-	if (_impl == NULL) {
+	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +126,12 @@ void ObjectController::loadCommands() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ObjectControllerImplementation*) _impl)->loadCommands();
+		_implementation->loadCommands();
 }
 
 bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
-	if (_impl == NULL) {
+	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -59,11 +143,12 @@ bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ObjectControllerImplementation*) _impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
+		return _implementation->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
 float ObjectController::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
-	if (_impl == NULL) {
+	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -76,40 +161,50 @@ float ObjectController::activateCommand(CreatureObject* object, unsigned int act
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ObjectControllerImplementation*) _impl)->activateCommand(object, actionCRC, actionCount, targetID, arguments);
+		return _implementation->activateCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 void ObjectController::addQueueCommand(QueueCommand* command) {
-	if (_impl == NULL) {
+	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ObjectControllerImplementation*) _impl)->addQueueCommand(command);
+		_implementation->addQueueCommand(command);
 }
 
 QueueCommand* ObjectController::getQueueCommand(const String& name) {
-	if (_impl == NULL) {
+	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ObjectControllerImplementation*) _impl)->getQueueCommand(name);
+		return _implementation->getQueueCommand(name);
 }
 
 QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
-	if (_impl == NULL) {
+	ObjectControllerImplementation* _implementation = (ObjectControllerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((ObjectControllerImplementation*) _impl)->getQueueCommand(crc);
+		return _implementation->getQueueCommand(crc);
 }
+
+DistributedObjectServant* ObjectController::_getImplementation() {
+	return getForUpdate();}
+
+void ObjectController::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ObjectControllerImplementation
  */
 
-ObjectControllerImplementation::ObjectControllerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+ObjectControllerImplementation::ObjectControllerImplementation(DummyConstructorParameter* param) : ManagedServiceImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ObjectControllerImplementation::~ObjectControllerImplementation() {
 	ObjectControllerImplementation::finalize();
@@ -124,7 +219,7 @@ void ObjectControllerImplementation::_initializeImplementation() {
 
 void ObjectControllerImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (ObjectController*) stub;
-	ManagedObjectImplementation::_setStub(stub);
+	ManagedServiceImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* ObjectControllerImplementation::_getStub() {
@@ -135,36 +230,34 @@ ObjectControllerImplementation::operator const ObjectController*() {
 	return _this;
 }
 
+TransactionalObject* ObjectControllerImplementation::clone() {
+	return (TransactionalObject*) new ObjectControllerImplementation(*this);
+}
+
+
 void ObjectControllerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ObjectControllerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ObjectControllerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ObjectControllerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ObjectControllerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ObjectControllerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ObjectControllerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ObjectControllerImplementation::_serializationHelperMethod() {
-	ManagedObjectImplementation::_serializationHelperMethod();
+	ManagedServiceImplementation::_serializationHelperMethod();
 
 	_setClassName("ObjectController");
 
@@ -188,7 +281,7 @@ ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer
  *	ObjectControllerAdapter
  */
 
-ObjectControllerAdapter::ObjectControllerAdapter(ObjectControllerImplementation* obj) : ManagedObjectAdapter(obj) {
+ObjectControllerAdapter::ObjectControllerAdapter(ObjectControllerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {

@@ -44,15 +44,15 @@ which carries forward this exception.
 
 package server.zone.objects.factorycrate;
 
-import server.zone.objects.scene.SceneObject;
-import engine.lua.LuaObject;
 import system.util.VectorMap;
+import engine.lua.LuaObject;
+
+import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
-
 include server.zone.templates.SharedObjectTemplate;
 
 class FactoryCrate extends TangibleObject {

@@ -79,9 +79,9 @@ using namespace server::zone::packets::object;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "engine/lua/LuaObject.h"
-
 #include "system/util/VectorMap.h"
+
+#include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -125,6 +125,10 @@ public:
 	TangibleObject* extractObject(int count = 1);
 
 	void split(int newStackSize);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	FactoryCrate(DummyConstructorParameter* param);
@@ -195,6 +199,8 @@ public:
 protected:
 	virtual ~FactoryCrateImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -218,6 +224,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class FactoryCrate;
+	friend class TransactionalObjectHandle<FactoryCrateImplementation*>;
 };
 
 class FactoryCrateAdapter : public TangibleObjectAdapter {

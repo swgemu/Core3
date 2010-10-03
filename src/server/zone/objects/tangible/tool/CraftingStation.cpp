@@ -12,13 +12,71 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	CraftingStationStub
  */
 
 CraftingStation::CraftingStation() : ToolTangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new CraftingStationImplementation();
-	_impl->_setStub(this);
+	CraftingStationImplementation* _implementation = new CraftingStationImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 CraftingStation::CraftingStation(DummyConstructorParameter* param) : ToolTangibleObject(param) {
@@ -29,7 +87,8 @@ CraftingStation::~CraftingStation() {
 
 
 void CraftingStation::initializeTransientMembers() {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,27 +96,30 @@ void CraftingStation::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingStationImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void CraftingStation::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CraftingStationImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void CraftingStation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CraftingStationImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int CraftingStation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,19 +129,21 @@ int CraftingStation::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CraftingStationImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void CraftingStation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((CraftingStationImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void CraftingStation::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -88,11 +152,12 @@ void CraftingStation::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingStationImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 bool CraftingStation::isCraftingStation() {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -100,11 +165,12 @@ bool CraftingStation::isCraftingStation() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CraftingStationImplementation*) _impl)->isCraftingStation();
+		return _implementation->isCraftingStation();
 }
 
 int CraftingStation::getComplexityLevel() {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -112,11 +178,12 @@ int CraftingStation::getComplexityLevel() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CraftingStationImplementation*) _impl)->getComplexityLevel();
+		return _implementation->getComplexityLevel();
 }
 
 int CraftingStation::getStationType() {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -124,11 +191,12 @@ int CraftingStation::getStationType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CraftingStationImplementation*) _impl)->getStationType();
+		return _implementation->getStationType();
 }
 
 void CraftingStation::setComplexityLevel(int level) {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -137,11 +205,12 @@ void CraftingStation::setComplexityLevel(int level) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingStationImplementation*) _impl)->setComplexityLevel(level);
+		_implementation->setComplexityLevel(level);
 }
 
 SceneObject* CraftingStation::findCraftingTool(PlayerCreature* player) {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -150,11 +219,12 @@ SceneObject* CraftingStation::findCraftingTool(PlayerCreature* player) {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((CraftingStationImplementation*) _impl)->findCraftingTool(player);
+		return _implementation->findCraftingTool(player);
 }
 
 void CraftingStation::createChildObjects() {
-	if (_impl == NULL) {
+	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -162,8 +232,14 @@ void CraftingStation::createChildObjects() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingStationImplementation*) _impl)->createChildObjects();
+		_implementation->createChildObjects();
 }
+
+DistributedObjectServant* CraftingStation::_getImplementation() {
+	return getForUpdate();}
+
+void CraftingStation::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	CraftingStationImplementation
@@ -172,6 +248,7 @@ void CraftingStation::createChildObjects() {
 CraftingStationImplementation::CraftingStationImplementation(DummyConstructorParameter* param) : ToolTangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CraftingStationImplementation::~CraftingStationImplementation() {
 }
@@ -199,32 +276,30 @@ CraftingStationImplementation::operator const CraftingStation*() {
 	return _this;
 }
 
+TransactionalObject* CraftingStationImplementation::clone() {
+	return (TransactionalObject*) new CraftingStationImplementation(*this);
+}
+
+
 void CraftingStationImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CraftingStationImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CraftingStationImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CraftingStationImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CraftingStationImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CraftingStationImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CraftingStationImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CraftingStationImplementation::_serializationHelperMethod() {

@@ -8,13 +8,57 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	WaypointObjectStub
  */
 
 WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WaypointObjectImplementation();
-	_impl->_setStub(this);
+	WaypointObjectImplementation* _implementation = new WaypointObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 WaypointObject::WaypointObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -25,23 +69,26 @@ WaypointObject::~WaypointObject() {
 
 
 void WaypointObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WaypointObjectImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void WaypointObject::insertToMessage(BaseMessage* msg) {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WaypointObjectImplementation*) _impl)->insertToMessage(msg);
+		_implementation->insertToMessage(msg);
 }
 
 void WaypointObject::setCellID(unsigned int id) {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -50,11 +97,12 @@ void WaypointObject::setCellID(unsigned int id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setCellID(id);
+		_implementation->setCellID(id);
 }
 
 void WaypointObject::setPlanetCRC(unsigned int crc) {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -63,11 +111,12 @@ void WaypointObject::setPlanetCRC(unsigned int crc) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setPlanetCRC(crc);
+		_implementation->setPlanetCRC(crc);
 }
 
 void WaypointObject::setCustomName(const UnicodeString& name) {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -76,11 +125,12 @@ void WaypointObject::setCustomName(const UnicodeString& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setCustomName(name);
+		_implementation->setCustomName(name);
 }
 
 UnicodeString WaypointObject::getCustomName() {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -89,11 +139,12 @@ UnicodeString WaypointObject::getCustomName() {
 		method.executeWithUnicodeReturn(_return_getCustomName);
 		return _return_getCustomName;
 	} else
-		return ((WaypointObjectImplementation*) _impl)->getCustomName();
+		return _implementation->getCustomName();
 }
 
 void WaypointObject::setColor(byte newColor) {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -102,11 +153,12 @@ void WaypointObject::setColor(byte newColor) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setColor(newColor);
+		_implementation->setColor(newColor);
 }
 
 void WaypointObject::setActive(byte newStatus) {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +167,12 @@ void WaypointObject::setActive(byte newStatus) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setActive(newStatus);
+		_implementation->setActive(newStatus);
 }
 
 void WaypointObject::setUnknown(unsigned long long id) {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +181,12 @@ void WaypointObject::setUnknown(unsigned long long id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setUnknown(id);
+		_implementation->setUnknown(id);
 }
 
 void WaypointObject::setSpecialTypeID(int id) {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -141,11 +195,12 @@ void WaypointObject::setSpecialTypeID(int id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setSpecialTypeID(id);
+		_implementation->setSpecialTypeID(id);
 }
 
 int WaypointObject::getSpecialTypeID() {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -153,11 +208,12 @@ int WaypointObject::getSpecialTypeID() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WaypointObjectImplementation*) _impl)->getSpecialTypeID();
+		return _implementation->getSpecialTypeID();
 }
 
 void WaypointObject::toggleStatus() {
-	if (_impl == NULL) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -165,8 +221,14 @@ void WaypointObject::toggleStatus() {
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->toggleStatus();
+		_implementation->toggleStatus();
 }
+
+DistributedObjectServant* WaypointObject::_getImplementation() {
+	return getForUpdate();}
+
+void WaypointObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	WaypointObjectImplementation
@@ -203,32 +265,30 @@ WaypointObjectImplementation::operator const WaypointObject*() {
 	return _this;
 }
 
+TransactionalObject* WaypointObjectImplementation::clone() {
+	return (TransactionalObject*) new WaypointObjectImplementation(*this);
+}
+
+
 void WaypointObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void WaypointObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void WaypointObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void WaypointObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void WaypointObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void WaypointObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void WaypointObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void WaypointObjectImplementation::_serializationHelperMethod() {

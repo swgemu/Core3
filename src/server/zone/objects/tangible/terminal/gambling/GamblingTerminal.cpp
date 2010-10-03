@@ -18,13 +18,77 @@
 
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	GamblingTerminalStub
  */
 
 GamblingTerminal::GamblingTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new GamblingTerminalImplementation();
-	_impl->_setStub(this);
+	GamblingTerminalImplementation* _implementation = new GamblingTerminalImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 GamblingTerminal::GamblingTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -35,7 +99,8 @@ GamblingTerminal::~GamblingTerminal() {
 
 
 void GamblingTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +108,12 @@ void GamblingTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void GamblingTerminal::reset() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,35 +121,39 @@ void GamblingTerminal::reset() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->reset();
+		_implementation->reset();
 }
 
 Vector<GamblingBet*>* GamblingTerminal::getBets() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getBets();
+		return _implementation->getBets();
 }
 
 VectorMap<ManagedReference<PlayerCreature* >, unsigned int>* GamblingTerminal::getPlayersWindows() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getPlayersWindows();
+		return _implementation->getPlayersWindows();
 }
 
 VectorMap<ManagedReference<PlayerCreature* >, int>* GamblingTerminal::getWinnings() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getWinnings();
+		return _implementation->getWinnings();
 }
 
 int GamblingTerminal::getFirst() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -91,11 +161,12 @@ int GamblingTerminal::getFirst() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getFirst();
+		return _implementation->getFirst();
 }
 
 int GamblingTerminal::getSecond() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,11 +174,12 @@ int GamblingTerminal::getSecond() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getSecond();
+		return _implementation->getSecond();
 }
 
 int GamblingTerminal::getThird() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +187,12 @@ int GamblingTerminal::getThird() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getThird();
+		return _implementation->getThird();
 }
 
 void GamblingTerminal::setFirst(int value) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +201,12 @@ void GamblingTerminal::setFirst(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->setFirst(value);
+		_implementation->setFirst(value);
 }
 
 void GamblingTerminal::setSecond(int value) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -141,11 +215,12 @@ void GamblingTerminal::setSecond(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->setSecond(value);
+		_implementation->setSecond(value);
 }
 
 void GamblingTerminal::setThird(int value) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -154,11 +229,12 @@ void GamblingTerminal::setThird(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->setThird(value);
+		_implementation->setThird(value);
 }
 
 int GamblingTerminal::getMinBet() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -166,11 +242,12 @@ int GamblingTerminal::getMinBet() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getMinBet();
+		return _implementation->getMinBet();
 }
 
 int GamblingTerminal::getMaxBet() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -178,11 +255,12 @@ int GamblingTerminal::getMaxBet() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getMaxBet();
+		return _implementation->getMaxBet();
 }
 
 int GamblingTerminal::getState() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -190,11 +268,12 @@ int GamblingTerminal::getState() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getState();
+		return _implementation->getState();
 }
 
 void GamblingTerminal::setState(int value) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -203,11 +282,12 @@ void GamblingTerminal::setState(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->setState(value);
+		_implementation->setState(value);
 }
 
 int GamblingTerminal::getMachineType() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -215,27 +295,30 @@ int GamblingTerminal::getMachineType() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getMachineType();
+		return _implementation->getMachineType();
 }
 
 GamblingEvent* GamblingTerminal::getEvent() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getEvent();
+		return _implementation->getEvent();
 }
 
 void GamblingTerminal::setEvent(GamblingEvent* event) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((GamblingTerminalImplementation*) _impl)->setEvent(event);
+		_implementation->setEvent(event);
 }
 
 void GamblingTerminal::incGameCount() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -243,11 +326,12 @@ void GamblingTerminal::incGameCount() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->incGameCount();
+		_implementation->incGameCount();
 }
 
 int GamblingTerminal::getGameCount() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -255,11 +339,12 @@ int GamblingTerminal::getGameCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getGameCount();
+		return _implementation->getGameCount();
 }
 
 bool GamblingTerminal::isGoneEmpty() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -267,11 +352,12 @@ bool GamblingTerminal::isGoneEmpty() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->isGoneEmpty();
+		return _implementation->isGoneEmpty();
 }
 
 String GamblingTerminal::getMachineTypeText() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -280,19 +366,21 @@ String GamblingTerminal::getMachineTypeText() {
 		method.executeWithAsciiReturn(_return_getMachineTypeText);
 		return _return_getMachineTypeText;
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getMachineTypeText();
+		return _implementation->getMachineTypeText();
 }
 
 void GamblingTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((GamblingTerminalImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 String GamblingTerminal::getText(PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -302,11 +390,12 @@ String GamblingTerminal::getText(PlayerCreature* player) {
 		method.executeWithAsciiReturn(_return_getText);
 		return _return_getText;
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getText(player);
+		return _implementation->getText(player);
 }
 
 void GamblingTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -316,11 +405,12 @@ void GamblingTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int GamblingTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -330,11 +420,12 @@ int GamblingTerminal::handleObjectMenuSelect(PlayerCreature* player, byte select
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void GamblingTerminal::setGamblingRegion(const String& region) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -343,11 +434,12 @@ void GamblingTerminal::setGamblingRegion(const String& region) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->setGamblingRegion(region);
+		_implementation->setGamblingRegion(region);
 }
 
 String GamblingTerminal::getGamblingRegion() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -356,11 +448,12 @@ String GamblingTerminal::getGamblingRegion() {
 		method.executeWithAsciiReturn(_return_getGamblingRegion);
 		return _return_getGamblingRegion;
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->getGamblingRegion();
+		return _implementation->getGamblingRegion();
 }
 
 bool GamblingTerminal::gameRunning() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -368,27 +461,30 @@ bool GamblingTerminal::gameRunning() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->gameRunning();
+		return _implementation->gameRunning();
 }
 
 void GamblingTerminal::notifyOthers(PlayerCreature* player, ParameterizedStringId* text) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((GamblingTerminalImplementation*) _impl)->notifyOthers(player, text);
+		_implementation->notifyOthers(player, text);
 }
 
 void GamblingTerminal::notifyAll(ParameterizedStringId* text) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((GamblingTerminalImplementation*) _impl)->notifyAll(text);
+		_implementation->notifyAll(text);
 }
 
 bool GamblingTerminal::checkJoin(PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -397,11 +493,12 @@ bool GamblingTerminal::checkJoin(PlayerCreature* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GamblingTerminalImplementation*) _impl)->checkJoin(player);
+		return _implementation->checkJoin(player);
 }
 
 void GamblingTerminal::joinTerminal(PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -410,11 +507,12 @@ void GamblingTerminal::joinTerminal(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->joinTerminal(player);
+		_implementation->joinTerminal(player);
 }
 
 void GamblingTerminal::leaveTerminal(PlayerCreature* player) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -423,11 +521,12 @@ void GamblingTerminal::leaveTerminal(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->leaveTerminal(player);
+		_implementation->leaveTerminal(player);
 }
 
 void GamblingTerminal::closeMenu(PlayerCreature* player, bool payout) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -437,11 +536,12 @@ void GamblingTerminal::closeMenu(PlayerCreature* player, bool payout) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->closeMenu(player, payout);
+		_implementation->closeMenu(player, payout);
 }
 
 void GamblingTerminal::closeAllMenus() {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -449,11 +549,12 @@ void GamblingTerminal::closeAllMenus() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->closeAllMenus();
+		_implementation->closeAllMenus();
 }
 
 void GamblingTerminal::statusUpdate(PlayerCreature* player, int event) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -463,11 +564,12 @@ void GamblingTerminal::statusUpdate(PlayerCreature* player, int event) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->statusUpdate(player, event);
+		_implementation->statusUpdate(player, event);
 }
 
 void GamblingTerminal::statusUpdate(int event) {
-	if (_impl == NULL) {
+	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -476,8 +578,14 @@ void GamblingTerminal::statusUpdate(int event) {
 
 		method.executeWithVoidReturn();
 	} else
-		((GamblingTerminalImplementation*) _impl)->statusUpdate(event);
+		_implementation->statusUpdate(event);
 }
+
+DistributedObjectServant* GamblingTerminal::_getImplementation() {
+	return getForUpdate();}
+
+void GamblingTerminal::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	GamblingTerminalImplementation
@@ -514,32 +622,30 @@ GamblingTerminalImplementation::operator const GamblingTerminal*() {
 	return _this;
 }
 
+TransactionalObject* GamblingTerminalImplementation::clone() {
+	return (TransactionalObject*) new GamblingTerminalImplementation(*this);
+}
+
+
 void GamblingTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void GamblingTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void GamblingTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void GamblingTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void GamblingTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void GamblingTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void GamblingTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void GamblingTerminalImplementation::_serializationHelperMethod() {

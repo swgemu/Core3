@@ -51,6 +51,8 @@ PingServer::PingServer() : DatagramServiceThread("PingServer") {
 	processors = NULL;
 	procThreadCount = 0;
 
+	setHandler(this);
+
 	setLogging(false);
 }
 
@@ -61,7 +63,7 @@ PingServer::~PingServer() {
 	}
 }
 
-void PingServer::init() {
+void PingServer::initialize() {
 	taskManager->setLogging(false);
 
 	procThreadCount = 0;

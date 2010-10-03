@@ -51,6 +51,7 @@ import system.util.Vector;
 import engine.core.ManagedObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.player.sui.listbox.SuiListBox;
+import server.zone.objects.area.ActiveArea;
 include server.zone.packets.scene.AttributeListMessage;
 
 import server.zone.objects.resource.ResourceContainer;

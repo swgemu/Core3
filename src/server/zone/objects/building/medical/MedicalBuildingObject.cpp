@@ -8,13 +8,69 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
+
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	MedicalBuildingObjectStub
  */
 
 MedicalBuildingObject::MedicalBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new MedicalBuildingObjectImplementation();
-	_impl->_setStub(this);
+	MedicalBuildingObjectImplementation* _implementation = new MedicalBuildingObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 MedicalBuildingObject::MedicalBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -25,7 +81,8 @@ MedicalBuildingObject::~MedicalBuildingObject() {
 
 
 bool MedicalBuildingObject::isMedicalBuildingObject() {
-	if (_impl == NULL) {
+	MedicalBuildingObjectImplementation* _implementation = (MedicalBuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,8 +90,14 @@ bool MedicalBuildingObject::isMedicalBuildingObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((MedicalBuildingObjectImplementation*) _impl)->isMedicalBuildingObject();
+		return _implementation->isMedicalBuildingObject();
 }
+
+DistributedObjectServant* MedicalBuildingObject::_getImplementation() {
+	return getForUpdate();}
+
+void MedicalBuildingObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	MedicalBuildingObjectImplementation
@@ -43,6 +106,7 @@ bool MedicalBuildingObject::isMedicalBuildingObject() {
 MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 MedicalBuildingObjectImplementation::~MedicalBuildingObjectImplementation() {
 }
@@ -70,32 +134,30 @@ MedicalBuildingObjectImplementation::operator const MedicalBuildingObject*() {
 	return _this;
 }
 
+TransactionalObject* MedicalBuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new MedicalBuildingObjectImplementation(*this);
+}
+
+
 void MedicalBuildingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void MedicalBuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void MedicalBuildingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void MedicalBuildingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void MedicalBuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void MedicalBuildingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void MedicalBuildingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void MedicalBuildingObjectImplementation::_serializationHelperMethod() {

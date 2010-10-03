@@ -44,6 +44,7 @@ which carries forward this exception.
 
 package server.zone.objects.tangible;
 
+import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;

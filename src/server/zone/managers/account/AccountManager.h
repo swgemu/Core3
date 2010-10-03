@@ -58,6 +58,10 @@ public:
 
 	int getTotalOnlineCharacters(unsigned int accountid);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	AccountManager(DummyConstructorParameter* param);
 
@@ -108,6 +112,8 @@ public:
 protected:
 	virtual ~AccountManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -131,6 +137,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class AccountManager;
+	friend class TransactionalObjectHandle<AccountManagerImplementation*>;
 };
 
 class AccountManagerAdapter : public ManagedObjectAdapter {

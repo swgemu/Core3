@@ -26,13 +26,147 @@
 
 #include "server/zone/managers/player/PlayerManager.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/player/StartingItemList.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/player/CharacterNameMap.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/managers/player/PlayerMap.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	EnhancePackStub
  */
 
 EnhancePack::EnhancePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new EnhancePackImplementation();
-	_impl->_setStub(this);
+	EnhancePackImplementation* _implementation = new EnhancePackImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 EnhancePack::EnhancePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -43,31 +177,35 @@ EnhancePack::~EnhancePack() {
 
 
 void EnhancePack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((EnhancePackImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 void EnhancePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((EnhancePackImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void EnhancePack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((EnhancePackImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 int EnhancePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -77,11 +215,12 @@ int EnhancePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID)
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((EnhancePackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 unsigned int EnhancePack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	if (_impl == NULL) {
+	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +231,12 @@ unsigned int EnhancePack::calculatePower(CreatureObject* healer, CreatureObject*
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((EnhancePackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
+		return _implementation->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float EnhancePack::getEffectiveness() {
-	if (_impl == NULL) {
+	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,11 +244,12 @@ float EnhancePack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((EnhancePackImplementation*) _impl)->getEffectiveness();
+		return _implementation->getEffectiveness();
 }
 
 byte EnhancePack::getAttribute() {
-	if (_impl == NULL) {
+	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +257,12 @@ byte EnhancePack::getAttribute() {
 
 		return method.executeWithByteReturn();
 	} else
-		return ((EnhancePackImplementation*) _impl)->getAttribute();
+		return _implementation->getAttribute();
 }
 
 float EnhancePack::getDuration() {
-	if (_impl == NULL) {
+	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +270,12 @@ float EnhancePack::getDuration() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((EnhancePackImplementation*) _impl)->getDuration();
+		return _implementation->getDuration();
 }
 
 bool EnhancePack::isEnhancePack() {
-	if (_impl == NULL) {
+	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,8 +283,14 @@ bool EnhancePack::isEnhancePack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((EnhancePackImplementation*) _impl)->isEnhancePack();
+		return _implementation->isEnhancePack();
 }
+
+DistributedObjectServant* EnhancePack::_getImplementation() {
+	return getForUpdate();}
+
+void EnhancePack::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	EnhancePackImplementation
@@ -178,32 +327,30 @@ EnhancePackImplementation::operator const EnhancePack*() {
 	return _this;
 }
 
+TransactionalObject* EnhancePackImplementation::clone() {
+	return (TransactionalObject*) new EnhancePackImplementation(*this);
+}
+
+
 void EnhancePackImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void EnhancePackImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void EnhancePackImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void EnhancePackImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void EnhancePackImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void EnhancePackImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void EnhancePackImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void EnhancePackImplementation::_serializationHelperMethod() {

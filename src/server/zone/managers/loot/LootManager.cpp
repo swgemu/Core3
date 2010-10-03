@@ -20,16 +20,110 @@
 
 #include "server/zone/managers/loot/lootgroup/LootObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	LootManagerStub
  */
 
-LootManager::LootManager(ZoneServer* serv, ZoneProcessServerImplementation* proc, CraftingManager* craftman) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new LootManagerImplementation(serv, proc, craftman);
-	_impl->_setStub(this);
+LootManager::LootManager(ZoneServer* serv, ZoneProcessServerImplementation* proc, CraftingManager* craftman) : ManagedService(DummyConstructorParameter::instance()) {
+	LootManagerImplementation* _implementation = new LootManagerImplementation(serv, proc, craftman);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
-LootManager::LootManager(DummyConstructorParameter* param) : ManagedObject(param) {
+LootManager::LootManager(DummyConstructorParameter* param) : ManagedService(param) {
 }
 
 LootManager::~LootManager() {
@@ -37,7 +131,8 @@ LootManager::~LootManager() {
 
 
 void LootManager::initialize() {
-	if (_impl == NULL) {
+	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -45,11 +140,12 @@ void LootManager::initialize() {
 
 		method.executeWithVoidReturn();
 	} else
-		((LootManagerImplementation*) _impl)->initialize();
+		_implementation->initialize();
 }
 
 bool LootManager::contains(unsigned int lootGroup) {
-	if (_impl == NULL) {
+	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,11 +154,12 @@ bool LootManager::contains(unsigned int lootGroup) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((LootManagerImplementation*) _impl)->contains(lootGroup);
+		return _implementation->contains(lootGroup);
 }
 
 void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount) {
-	if (_impl == NULL) {
+	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -75,19 +172,21 @@ void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, i
 
 		method.executeWithVoidReturn();
 	} else
-		((LootManagerImplementation*) _impl)->createLoot(receiver, container, level, lootGroup, objectCount);
+		_implementation->createLoot(receiver, container, level, lootGroup, objectCount);
 }
 
 void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, int level, Vector<unsigned int>* lootGroup) {
-	if (_impl == NULL) {
+	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((LootManagerImplementation*) _impl)->createLoot(receiver, container, level, lootGroup);
+		_implementation->createLoot(receiver, container, level, lootGroup);
 }
 
 void LootManager::testLoot(PlayerCreature* receiver, SceneObject* container) {
-	if (_impl == NULL) {
+	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -97,16 +196,23 @@ void LootManager::testLoot(PlayerCreature* receiver, SceneObject* container) {
 
 		method.executeWithVoidReturn();
 	} else
-		((LootManagerImplementation*) _impl)->testLoot(receiver, container);
+		_implementation->testLoot(receiver, container);
 }
+
+DistributedObjectServant* LootManager::_getImplementation() {
+	return getForUpdate();}
+
+void LootManager::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	LootManagerImplementation
  */
 
-LootManagerImplementation::LootManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+LootManagerImplementation::LootManagerImplementation(DummyConstructorParameter* param) : ManagedServiceImplementation(param) {
 	_initializeImplementation();
 }
+
 
 LootManagerImplementation::~LootManagerImplementation() {
 }
@@ -123,7 +229,7 @@ void LootManagerImplementation::_initializeImplementation() {
 
 void LootManagerImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (LootManager*) stub;
-	ManagedObjectImplementation::_setStub(stub);
+	ManagedServiceImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* LootManagerImplementation::_getStub() {
@@ -134,36 +240,34 @@ LootManagerImplementation::operator const LootManager*() {
 	return _this;
 }
 
+TransactionalObject* LootManagerImplementation::clone() {
+	return (TransactionalObject*) new LootManagerImplementation(*this);
+}
+
+
 void LootManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void LootManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void LootManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void LootManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void LootManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void LootManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void LootManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void LootManagerImplementation::_serializationHelperMethod() {
-	ManagedObjectImplementation::_serializationHelperMethod();
+	ManagedServiceImplementation::_serializationHelperMethod();
 
 	_setClassName("LootManager");
 
@@ -199,7 +303,7 @@ bool LootManagerImplementation::contains(unsigned int lootGroup) {
  *	LootManagerAdapter
  */
 
-LootManagerAdapter::LootManagerAdapter(LootManagerImplementation* obj) : ManagedObjectAdapter(obj) {
+LootManagerAdapter::LootManagerAdapter(LootManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {

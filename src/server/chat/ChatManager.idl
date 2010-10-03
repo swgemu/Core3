@@ -44,7 +44,7 @@ which carries forward this exception.
 
 package server.chat;
 
-import engine.core.ManagedObject;
+import engine.core.ManagedService;
 import server.zone.ZoneServer;
 import server.chat.room.ChatRoom;
 import server.chat.room.ChatRoomMap;
@@ -61,7 +61,7 @@ import server.zone.managers.objectcontroller.ObjectController;
 include server.zone.objects.scene.variables.ParameterizedStringId;
 
 
-class ChatManager extends ManagedObject implements Logger {
+class ChatManager extends ManagedService implements Logger {
 	@weakReference
 	ZoneServer server;
 

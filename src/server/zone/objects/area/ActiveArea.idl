@@ -44,11 +44,12 @@ which carries forward this exception.
 
 package server.zone.objects.area;
 
+include engine.util.QuadTreeEntry;
+
+import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.area.ActiveAreaEvent;
-include engine.util.QuadTreeEntry;
-import server.zone.Zone;
 
 class ActiveArea extends SceneObject {
 	protected float radius;

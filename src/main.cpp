@@ -42,8 +42,6 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "system/lang/SignalException.h"
-
 #include "server/ServerCore.h"
 
 #include "server/zone/managers/planet/HeightMap.h"

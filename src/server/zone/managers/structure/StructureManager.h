@@ -109,7 +109,7 @@ using namespace server::zone::managers::objectcontroller;
 
 #include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
 
 #include "engine/util/Quaternion.h"
 
@@ -124,7 +124,7 @@ namespace zone {
 namespace managers {
 namespace structure {
 
-class StructureManager : public ManagedObject {
+class StructureManager : public ManagedService {
 public:
 	StructureManager(Zone* zone, ZoneProcessServerImplementation* processor);
 
@@ -145,6 +145,10 @@ public:
 	int changePrivacy(PlayerCreature* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	StructureManager(DummyConstructorParameter* param);
@@ -168,7 +172,7 @@ namespace zone {
 namespace managers {
 namespace structure {
 
-class StructureManagerImplementation : public ManagedObjectImplementation, public Logger {
+class StructureManagerImplementation : public ManagedServiceImplementation, public Logger {
 	ManagedWeakReference<Zone* > zone;
 
 	ZoneProcessServerImplementation* server;
@@ -239,6 +243,8 @@ public:
 protected:
 	virtual ~StructureManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -262,9 +268,10 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StructureManager;
+	friend class TransactionalObjectHandle<StructureManagerImplementation*>;
 };
 
-class StructureManagerAdapter : public ManagedObjectAdapter {
+class StructureManagerAdapter : public ManagedServiceAdapter {
 public:
 	StructureManagerAdapter(StructureManagerImplementation* impl);
 

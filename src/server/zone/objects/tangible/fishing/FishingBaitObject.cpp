@@ -12,13 +12,77 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	FishingBaitObjectStub
  */
 
 FishingBaitObject::FishingBaitObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FishingBaitObjectImplementation();
-	_impl->_setStub(this);
+	FishingBaitObjectImplementation* _implementation = new FishingBaitObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 FishingBaitObject::FishingBaitObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -29,7 +93,8 @@ FishingBaitObject::~FishingBaitObject() {
 
 
 void FishingBaitObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -37,11 +102,12 @@ void FishingBaitObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingBaitObjectImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 int FishingBaitObject::getFreshness() {
-	if (_impl == NULL) {
+	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +115,12 @@ int FishingBaitObject::getFreshness() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingBaitObjectImplementation*) _impl)->getFreshness();
+		return _implementation->getFreshness();
 }
 
 void FishingBaitObject::setFreshness(int value) {
-	if (_impl == NULL) {
+	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -62,11 +129,12 @@ void FishingBaitObject::setFreshness(int value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingBaitObjectImplementation*) _impl)->setFreshness(value);
+		_implementation->setFreshness(value);
 }
 
 void FishingBaitObject::lessFresh() {
-	if (_impl == NULL) {
+	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,11 +142,12 @@ void FishingBaitObject::lessFresh() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingBaitObjectImplementation*) _impl)->lessFresh();
+		_implementation->lessFresh();
 }
 
 int FishingBaitObject::getUseCount() {
-	if (_impl == NULL) {
+	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -86,11 +155,12 @@ int FishingBaitObject::getUseCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishingBaitObjectImplementation*) _impl)->getUseCount();
+		return _implementation->getUseCount();
 }
 
 void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -100,8 +170,14 @@ void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 
 		method.executeWithVoidReturn();
 	} else
-		((FishingBaitObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
+
+DistributedObjectServant* FishingBaitObject::_getImplementation() {
+	return getForUpdate();}
+
+void FishingBaitObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	FishingBaitObjectImplementation
@@ -110,6 +186,7 @@ void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 FishingBaitObjectImplementation::FishingBaitObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FishingBaitObjectImplementation::~FishingBaitObjectImplementation() {
 }
@@ -137,32 +214,30 @@ FishingBaitObjectImplementation::operator const FishingBaitObject*() {
 	return _this;
 }
 
+TransactionalObject* FishingBaitObjectImplementation::clone() {
+	return (TransactionalObject*) new FishingBaitObjectImplementation(*this);
+}
+
+
 void FishingBaitObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void FishingBaitObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void FishingBaitObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void FishingBaitObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void FishingBaitObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void FishingBaitObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void FishingBaitObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void FishingBaitObjectImplementation::_serializationHelperMethod() {

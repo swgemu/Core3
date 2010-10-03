@@ -80,6 +80,10 @@ public:
 
 	unsigned int getPayoutBoxID();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	SuiSlotMachineBox(DummyConstructorParameter* param);
 
@@ -123,6 +127,8 @@ public:
 protected:
 	virtual ~SuiSlotMachineBoxImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -146,6 +152,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiSlotMachineBox;
+	friend class TransactionalObjectHandle<SuiSlotMachineBoxImplementation*>;
 };
 
 class SuiSlotMachineBoxAdapter : public SuiListBoxAdapter {

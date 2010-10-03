@@ -242,6 +242,10 @@ public:
 
 	String getTemplateString2();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	MissionObject(DummyConstructorParameter* param);
 
@@ -447,6 +451,8 @@ public:
 protected:
 	virtual ~MissionObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -470,6 +476,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionObject;
+	friend class TransactionalObjectHandle<MissionObjectImplementation*>;
 };
 
 class MissionObjectAdapter : public IntangibleObjectAdapter {

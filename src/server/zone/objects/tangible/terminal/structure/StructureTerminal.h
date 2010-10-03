@@ -88,6 +88,10 @@ public:
 
 	StructureObject* getStructureObject();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	StructureTerminal(DummyConstructorParameter* param);
 
@@ -139,6 +143,8 @@ public:
 protected:
 	virtual ~StructureTerminalImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -162,6 +168,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StructureTerminal;
+	friend class TransactionalObjectHandle<StructureTerminalImplementation*>;
 };
 
 class StructureTerminalAdapter : public TerminalAdapter {

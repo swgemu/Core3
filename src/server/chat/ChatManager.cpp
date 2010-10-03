@@ -24,16 +24,114 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/managers/player/StartingItemList.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/managers/player/PlayerMap.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/chat/room/ChatRoom.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/objectcontroller/command/CommandList.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/player/CharacterNameMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	ChatManagerStub
  */
 
-ChatManager::ChatManager(ZoneServer* serv, int initsize) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ChatManagerImplementation(serv, initsize);
-	_impl->_setStub(this);
+ChatManager::ChatManager(ZoneServer* serv, int initsize) : ManagedService(DummyConstructorParameter::instance()) {
+	ChatManagerImplementation* _implementation = new ChatManagerImplementation(serv, initsize);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
-ChatManager::ChatManager(DummyConstructorParameter* param) : ManagedObject(param) {
+ChatManager::ChatManager(DummyConstructorParameter* param) : ManagedService(param) {
 }
 
 ChatManager::~ChatManager() {
@@ -41,7 +139,8 @@ ChatManager::~ChatManager() {
 
 
 void ChatManager::initiateRooms() {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -49,11 +148,12 @@ void ChatManager::initiateRooms() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->initiateRooms();
+		_implementation->initiateRooms();
 }
 
 void ChatManager::destroyRooms() {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -61,11 +161,12 @@ void ChatManager::destroyRooms() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->destroyRooms();
+		_implementation->destroyRooms();
 }
 
 ChatRoom* ChatManager::createRoom(const String& roomName, ChatRoom* parent) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -75,11 +176,12 @@ ChatRoom* ChatManager::createRoom(const String& roomName, ChatRoom* parent) {
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->createRoom(roomName, parent);
+		return _implementation->createRoom(roomName, parent);
 }
 
 void ChatManager::addRoom(ChatRoom* channel) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -88,11 +190,12 @@ void ChatManager::addRoom(ChatRoom* channel) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->addRoom(channel);
+		_implementation->addRoom(channel);
 }
 
 void ChatManager::removeRoom(ChatRoom* channel) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -101,11 +204,12 @@ void ChatManager::removeRoom(ChatRoom* channel) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->removeRoom(channel);
+		_implementation->removeRoom(channel);
 }
 
 void ChatManager::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -115,11 +219,12 @@ void ChatManager::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) 
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->populateRoomListMessage(channel, msg);
+		_implementation->populateRoomListMessage(channel, msg);
 }
 
 void ChatManager::sendRoomList(PlayerCreature* player) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +233,12 @@ void ChatManager::sendRoomList(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->sendRoomList(player);
+		_implementation->sendRoomList(player);
 }
 
 void ChatManager::addPlayer(PlayerCreature* player) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -141,11 +247,12 @@ void ChatManager::addPlayer(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->addPlayer(player);
+		_implementation->addPlayer(player);
 }
 
 PlayerCreature* ChatManager::getPlayer(const String& name) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -154,11 +261,12 @@ PlayerCreature* ChatManager::getPlayer(const String& name) {
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->getPlayer(name);
+		return _implementation->getPlayer(name);
 }
 
 PlayerCreature* ChatManager::removePlayer(const String& name) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -167,11 +275,12 @@ PlayerCreature* ChatManager::removePlayer(const String& name) {
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->removePlayer(name);
+		return _implementation->removePlayer(name);
 }
 
 void ChatManager::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -184,11 +293,12 @@ void ChatManager::broadcastMessage(CreatureObject* player, const UnicodeString& 
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->broadcastMessage(player, message, target, moodid, mood2);
+		_implementation->broadcastMessage(player, message, target, moodid, mood2);
 }
 
 void ChatManager::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -198,11 +308,12 @@ void ChatManager::handleSpatialChatInternalMessage(PlayerCreature* player, const
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->handleSpatialChatInternalMessage(player, args);
+		_implementation->handleSpatialChatInternalMessage(player, args);
 }
 
 void ChatManager::handleGroupChat(PlayerCreature* player, const UnicodeString& message) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -212,11 +323,12 @@ void ChatManager::handleGroupChat(PlayerCreature* player, const UnicodeString& m
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->handleGroupChat(player, message);
+		_implementation->handleGroupChat(player, message);
 }
 
 ChatRoom* ChatManager::createRoomByFullPath(const String& path) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -225,11 +337,12 @@ ChatRoom* ChatManager::createRoomByFullPath(const String& path) {
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->createRoomByFullPath(path);
+		return _implementation->createRoomByFullPath(path);
 }
 
 ChatRoom* ChatManager::getChatRoomByFullPath(const String& path) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -238,11 +351,12 @@ ChatRoom* ChatManager::getChatRoomByFullPath(const String& path) {
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->getChatRoomByFullPath(path);
+		return _implementation->getChatRoomByFullPath(path);
 }
 
 ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const String& path) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -252,11 +366,12 @@ ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const String& path)
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->getChatRoomByGamePath(game, path);
+		return _implementation->getChatRoomByGamePath(game, path);
 }
 
 void ChatManager::handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -268,11 +383,12 @@ void ChatManager::handleChatRoomMessage(PlayerCreature* sender, const UnicodeStr
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->handleChatRoomMessage(sender, message, roomID, counter);
+		_implementation->handleChatRoomMessage(sender, message, roomID, counter);
 }
 
 void ChatManager::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -282,19 +398,21 @@ void ChatManager::handleSocialInternalMessage(CreatureObject* sender, const Unic
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->handleSocialInternalMessage(sender, arguments);
+		_implementation->handleSocialInternalMessage(sender, arguments);
 }
 
 void ChatManager::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ChatManagerImplementation*) _impl)->handleChatInstantMessageToCharacter(message);
+		_implementation->handleChatInstantMessageToCharacter(message);
 }
 
 void ChatManager::destroyRoom(ChatRoom* room) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -303,11 +421,12 @@ void ChatManager::destroyRoom(ChatRoom* room) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->destroyRoom(room);
+		_implementation->destroyRoom(room);
 }
 
 ChatRoom* ChatManager::createGroupRoom(unsigned long long groupID, PlayerCreature* creator) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -317,11 +436,12 @@ ChatRoom* ChatManager::createGroupRoom(unsigned long long groupID, PlayerCreatur
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->createGroupRoom(groupID, creator);
+		return _implementation->createGroupRoom(groupID, creator);
 }
 
 void ChatManager::loadMail(PlayerCreature* player) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -330,11 +450,12 @@ void ChatManager::loadMail(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->loadMail(player);
+		_implementation->loadMail(player);
 }
 
 void ChatManager::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -346,19 +467,21 @@ void ChatManager::sendMail(const String& sendername, const UnicodeString& header
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->sendMail(sendername, header, body, name);
+		_implementation->sendMail(sendername, header, body, name);
 }
 
 void ChatManager::sendMail(const String& sendername, const UnicodeString& header, ParameterizedStringId& body, const String& name) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ChatManagerImplementation*) _impl)->sendMail(sendername, header, body, name);
+		_implementation->sendMail(sendername, header, body, name);
 }
 
 void ChatManager::handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -368,11 +491,12 @@ void ChatManager::handleRequestPersistentMsg(PlayerCreature* player, unsigned in
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->handleRequestPersistentMsg(player, mailID);
+		_implementation->handleRequestPersistentMsg(player, mailID);
 }
 
 void ChatManager::deletePersistentMessage(PlayerCreature* player, unsigned int mailID) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -382,11 +506,12 @@ void ChatManager::deletePersistentMessage(PlayerCreature* player, unsigned int m
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->deletePersistentMessage(player, mailID);
+		_implementation->deletePersistentMessage(player, mailID);
 }
 
 void ChatManager::broadcastGalaxy(PlayerCreature* player, const String& message) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -396,11 +521,12 @@ void ChatManager::broadcastGalaxy(PlayerCreature* player, const String& message)
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->broadcastGalaxy(player, message);
+		_implementation->broadcastGalaxy(player, message);
 }
 
 void ChatManager::setPlayerManager(PlayerManager* manager) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -409,11 +535,12 @@ void ChatManager::setPlayerManager(PlayerManager* manager) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ChatManagerImplementation*) _impl)->setPlayerManager(manager);
+		_implementation->setPlayerManager(manager);
 }
 
 ChatRoom* ChatManager::getChatRoom(unsigned int id) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -422,11 +549,12 @@ ChatRoom* ChatManager::getChatRoom(unsigned int id) {
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->getChatRoom(id);
+		return _implementation->getChatRoom(id);
 }
 
 ChatRoom* ChatManager::getGameRoom(const String& game) {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -435,11 +563,12 @@ ChatRoom* ChatManager::getGameRoom(const String& game) {
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->getGameRoom(game);
+		return _implementation->getGameRoom(game);
 }
 
 unsigned int ChatManager::getNextRoomID() {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -447,11 +576,12 @@ unsigned int ChatManager::getNextRoomID() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->getNextRoomID();
+		return _implementation->getNextRoomID();
 }
 
 int ChatManager::getPlayerCount() {
-	if (_impl == NULL) {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -459,16 +589,23 @@ int ChatManager::getPlayerCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ChatManagerImplementation*) _impl)->getPlayerCount();
+		return _implementation->getPlayerCount();
 }
+
+DistributedObjectServant* ChatManager::_getImplementation() {
+	return getForUpdate();}
+
+void ChatManager::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ChatManagerImplementation
  */
 
-ChatManagerImplementation::ChatManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+ChatManagerImplementation::ChatManagerImplementation(DummyConstructorParameter* param) : ManagedServiceImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ChatManagerImplementation::~ChatManagerImplementation() {
 	ChatManagerImplementation::finalize();
@@ -483,7 +620,7 @@ void ChatManagerImplementation::_initializeImplementation() {
 
 void ChatManagerImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (ChatManager*) stub;
-	ManagedObjectImplementation::_setStub(stub);
+	ManagedServiceImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* ChatManagerImplementation::_getStub() {
@@ -494,36 +631,34 @@ ChatManagerImplementation::operator const ChatManager*() {
 	return _this;
 }
 
+TransactionalObject* ChatManagerImplementation::clone() {
+	return (TransactionalObject*) new ChatManagerImplementation(*this);
+}
+
+
 void ChatManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ChatManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ChatManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ChatManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ChatManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ChatManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ChatManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ChatManagerImplementation::_serializationHelperMethod() {
-	ManagedObjectImplementation::_serializationHelperMethod();
+	ManagedServiceImplementation::_serializationHelperMethod();
 
 	_setClassName("ChatManager");
 
@@ -580,7 +715,7 @@ int ChatManagerImplementation::getPlayerCount() {
  *	ChatManagerAdapter
  */
 
-ChatManagerAdapter::ChatManagerAdapter(ChatManagerImplementation* obj) : ManagedObjectAdapter(obj) {
+ChatManagerAdapter::ChatManagerAdapter(ChatManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {

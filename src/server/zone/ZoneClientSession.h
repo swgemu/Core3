@@ -98,6 +98,10 @@ public:
 
 	unsigned int getAccountID();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	ZoneClientSession(DummyConstructorParameter* param);
 
@@ -187,6 +191,14 @@ protected:
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
+
+	void rlock(bool doLock = true);
+
+	void wlock(bool doLock = true);
+
+	void wlock(ManagedObject* obj);
+
+	void runlock(bool doLock = true);
 
 	void _serializationHelperMethod();
 

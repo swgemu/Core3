@@ -54,6 +54,10 @@ public:
 
 	ParameterizedStringId* getParameterizedBody();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	PersistentMessage(DummyConstructorParameter* param);
 
@@ -139,6 +143,8 @@ public:
 protected:
 	virtual ~PersistentMessageImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -162,6 +168,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PersistentMessage;
+	friend class TransactionalObjectHandle<PersistentMessageImplementation*>;
 };
 
 class PersistentMessageAdapter : public ManagedObjectAdapter {

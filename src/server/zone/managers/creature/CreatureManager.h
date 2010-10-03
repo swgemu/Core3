@@ -141,14 +141,14 @@ using namespace server::zone::managers::objectcontroller;
 
 #include "engine/log/Logger.h"
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
 
 namespace server {
 namespace zone {
 namespace managers {
 namespace creature {
 
-class CreatureManager : public ManagedObject {
+class CreatureManager : public ManagedService {
 public:
 	CreatureManager(Zone* planet, ZoneProcessServerImplementation* impl);
 
@@ -167,6 +167,10 @@ public:
 	void loadMissionSpawns();
 
 	void loadInformants();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	CreatureManager(DummyConstructorParameter* param);
@@ -188,7 +192,7 @@ namespace zone {
 namespace managers {
 namespace creature {
 
-class CreatureManagerImplementation : public ManagedObjectImplementation, public Logger {
+class CreatureManagerImplementation : public ManagedServiceImplementation, public Logger {
 protected:
 	ZoneProcessServerImplementation* processor;
 
@@ -229,6 +233,8 @@ public:
 protected:
 	virtual ~CreatureManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -252,9 +258,10 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CreatureManager;
+	friend class TransactionalObjectHandle<CreatureManagerImplementation*>;
 };
 
-class CreatureManagerAdapter : public ManagedObjectAdapter {
+class CreatureManagerAdapter : public ManagedServiceAdapter {
 public:
 	CreatureManagerAdapter(CreatureManagerImplementation* impl);
 

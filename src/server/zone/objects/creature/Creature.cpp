@@ -6,13 +6,81 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
+
+// Imported class dependencies
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/objects/creature/PatrolPointsVector.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/creature/events/AiThinkEvent.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/Zone.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/creature/events/AiMoveEvent.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
+
+#include "system/util/VectorMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/DamageMap.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/creature/PatrolPoint.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
 /*
  *	CreatureStub
  */
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
-	_impl = new CreatureImplementation();
-	_impl->_setStub(this);
+	CreatureImplementation* _implementation = new CreatureImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 Creature::Creature(DummyConstructorParameter* param) : AiAgent(param) {
@@ -23,7 +91,8 @@ Creature::~Creature() {
 
 
 bool Creature::isCreature() {
-	if (_impl == NULL) {
+	CreatureImplementation* _implementation = (CreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -31,8 +100,14 @@ bool Creature::isCreature() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CreatureImplementation*) _impl)->isCreature();
+		return _implementation->isCreature();
 }
+
+DistributedObjectServant* Creature::_getImplementation() {
+	return getForUpdate();}
+
+void Creature::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	CreatureImplementation
@@ -41,6 +116,7 @@ bool Creature::isCreature() {
 CreatureImplementation::CreatureImplementation(DummyConstructorParameter* param) : AiAgentImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CreatureImplementation::~CreatureImplementation() {
 }
@@ -68,32 +144,30 @@ CreatureImplementation::operator const Creature*() {
 	return _this;
 }
 
+TransactionalObject* CreatureImplementation::clone() {
+	return (TransactionalObject*) new CreatureImplementation(*this);
+}
+
+
 void CreatureImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CreatureImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CreatureImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CreatureImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CreatureImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CreatureImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CreatureImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CreatureImplementation::_serializationHelperMethod() {
@@ -105,16 +179,16 @@ void CreatureImplementation::_serializationHelperMethod() {
 
 CreatureImplementation::CreatureImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/Creature.idl(54):  		Logger.setLoggingName("Creature");
+	// server/zone/objects/creature/Creature.idl(55):  		Logger.setLoggingName("Creature");
 	Logger::setLoggingName("Creature");
-	// server/zone/objects/creature/Creature.idl(55):  		Logger.setLogging(false);
+	// server/zone/objects/creature/Creature.idl(56):  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/Creature.idl(56):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/Creature.idl(57):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 bool CreatureImplementation::isCreature() {
-	// server/zone/objects/creature/Creature.idl(60):  		return true;
+	// server/zone/objects/creature/Creature.idl(61):  		return true;
 	return true;
 }
 

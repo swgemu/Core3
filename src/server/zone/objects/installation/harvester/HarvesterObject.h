@@ -11,6 +11,20 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/installation/InstallationObject.h"
 
 namespace server {
@@ -36,6 +50,10 @@ public:
 	void updateOperators();
 
 	bool isHarvesterObject();
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	HarvesterObject(DummyConstructorParameter* param);
@@ -88,6 +106,8 @@ public:
 protected:
 	virtual ~HarvesterObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -111,6 +131,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class HarvesterObject;
+	friend class TransactionalObjectHandle<HarvesterObjectImplementation*>;
 };
 
 class HarvesterObjectAdapter : public InstallationObjectAdapter {

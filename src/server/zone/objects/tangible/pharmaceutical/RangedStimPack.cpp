@@ -22,13 +22,137 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	RangedStimPackStub
  */
 
 RangedStimPack::RangedStimPack() : StimPack(DummyConstructorParameter::instance()) {
-	_impl = new RangedStimPackImplementation();
-	_impl->_setStub(this);
+	RangedStimPackImplementation* _implementation = new RangedStimPackImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 RangedStimPack::RangedStimPack(DummyConstructorParameter* param) : StimPack(param) {
@@ -39,31 +163,35 @@ RangedStimPack::~RangedStimPack() {
 
 
 void RangedStimPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RangedStimPackImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 void RangedStimPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RangedStimPackImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void RangedStimPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((RangedStimPackImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -74,11 +202,12 @@ unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObje
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
+		return _implementation->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float RangedStimPack::getRange(CreatureObject* creature) {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -87,11 +216,12 @@ float RangedStimPack::getRange(CreatureObject* creature) {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->getRange(creature);
+		return _implementation->getRange(creature);
 }
 
 float RangedStimPack::getEffectiveness() {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -99,11 +229,12 @@ float RangedStimPack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->getEffectiveness();
+		return _implementation->getEffectiveness();
 }
 
 float RangedStimPack::getArea() {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -111,11 +242,12 @@ float RangedStimPack::getArea() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->getArea();
+		return _implementation->getArea();
 }
 
 bool RangedStimPack::isArea() {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -123,11 +255,12 @@ bool RangedStimPack::isArea() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->isArea();
+		return _implementation->isArea();
 }
 
 float RangedStimPack::getRangeMod() {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -135,11 +268,12 @@ float RangedStimPack::getRangeMod() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->getRangeMod();
+		return _implementation->getRangeMod();
 }
 
 bool RangedStimPack::isRangedStimPack() {
-	if (_impl == NULL) {
+	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -147,8 +281,14 @@ bool RangedStimPack::isRangedStimPack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->isRangedStimPack();
+		return _implementation->isRangedStimPack();
 }
+
+DistributedObjectServant* RangedStimPack::_getImplementation() {
+	return getForUpdate();}
+
+void RangedStimPack::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	RangedStimPackImplementation
@@ -185,32 +325,30 @@ RangedStimPackImplementation::operator const RangedStimPack*() {
 	return _this;
 }
 
+TransactionalObject* RangedStimPackImplementation::clone() {
+	return (TransactionalObject*) new RangedStimPackImplementation(*this);
+}
+
+
 void RangedStimPackImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void RangedStimPackImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void RangedStimPackImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void RangedStimPackImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void RangedStimPackImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void RangedStimPackImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void RangedStimPackImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void RangedStimPackImplementation::_serializationHelperMethod() {

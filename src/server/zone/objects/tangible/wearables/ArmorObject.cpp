@@ -8,13 +8,73 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	ArmorObjectStub
  */
 
 ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
-	_impl = new ArmorObjectImplementation();
-	_impl->_setStub(this);
+	ArmorObjectImplementation* _implementation = new ArmorObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 ArmorObject::ArmorObject(DummyConstructorParameter* param) : WearableObject(param) {
@@ -25,7 +85,8 @@ ArmorObject::~ArmorObject() {
 
 
 void ArmorObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,27 +94,30 @@ void ArmorObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void ArmorObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ArmorObjectImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void ArmorObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ArmorObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void ArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -62,11 +126,12 @@ void ArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 bool ArmorObject::isSpecial(int type) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -75,11 +140,12 @@ bool ArmorObject::isSpecial(int type) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->isSpecial(type);
+		return _implementation->isSpecial(type);
 }
 
 bool ArmorObject::isVulnerable(int type) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -88,11 +154,12 @@ bool ArmorObject::isVulnerable(int type) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->isVulnerable(type);
+		return _implementation->isVulnerable(type);
 }
 
 bool ArmorObject::isArmorObject() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -100,11 +167,12 @@ bool ArmorObject::isArmorObject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->isArmorObject();
+		return _implementation->isArmorObject();
 }
 
 void ArmorObject::setRating(int rate) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -113,11 +181,12 @@ void ArmorObject::setRating(int rate) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setRating(rate);
+		_implementation->setRating(rate);
 }
 
 int ArmorObject::getRating() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -125,11 +194,12 @@ int ArmorObject::getRating() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getRating();
+		return _implementation->getRating();
 }
 
 float ArmorObject::getKinetic() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -137,11 +207,12 @@ float ArmorObject::getKinetic() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getKinetic();
+		return _implementation->getKinetic();
 }
 
 void ArmorObject::setKinetic(float value) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -150,11 +221,12 @@ void ArmorObject::setKinetic(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setKinetic(value);
+		_implementation->setKinetic(value);
 }
 
 float ArmorObject::getEnergy() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -162,11 +234,12 @@ float ArmorObject::getEnergy() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getEnergy();
+		return _implementation->getEnergy();
 }
 
 void ArmorObject::setEnergy(float value) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -175,11 +248,12 @@ void ArmorObject::setEnergy(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setEnergy(value);
+		_implementation->setEnergy(value);
 }
 
 float ArmorObject::getElectricity() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -187,11 +261,12 @@ float ArmorObject::getElectricity() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getElectricity();
+		return _implementation->getElectricity();
 }
 
 void ArmorObject::setElectricity(float value) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -200,11 +275,12 @@ void ArmorObject::setElectricity(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setElectricity(value);
+		_implementation->setElectricity(value);
 }
 
 float ArmorObject::getStun() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -212,11 +288,12 @@ float ArmorObject::getStun() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getStun();
+		return _implementation->getStun();
 }
 
 void ArmorObject::setStun(float value) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -225,11 +302,12 @@ void ArmorObject::setStun(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setStun(value);
+		_implementation->setStun(value);
 }
 
 float ArmorObject::getBlast() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -237,11 +315,12 @@ float ArmorObject::getBlast() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getBlast();
+		return _implementation->getBlast();
 }
 
 void ArmorObject::setBlast(float value) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -250,11 +329,12 @@ void ArmorObject::setBlast(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setBlast(value);
+		_implementation->setBlast(value);
 }
 
 float ArmorObject::getHeat() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -262,11 +342,12 @@ float ArmorObject::getHeat() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getHeat();
+		return _implementation->getHeat();
 }
 
 void ArmorObject::setHeat(float value) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -275,11 +356,12 @@ void ArmorObject::setHeat(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setHeat(value);
+		_implementation->setHeat(value);
 }
 
 float ArmorObject::getCold() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -287,11 +369,12 @@ float ArmorObject::getCold() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getCold();
+		return _implementation->getCold();
 }
 
 void ArmorObject::setCold(float value) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -300,11 +383,12 @@ void ArmorObject::setCold(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setCold(value);
+		_implementation->setCold(value);
 }
 
 float ArmorObject::getAcid() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -312,11 +396,12 @@ float ArmorObject::getAcid() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getAcid();
+		return _implementation->getAcid();
 }
 
 void ArmorObject::setAcid(float value) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -325,11 +410,12 @@ void ArmorObject::setAcid(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setAcid(value);
+		_implementation->setAcid(value);
 }
 
 float ArmorObject::getLightSaber() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -337,11 +423,12 @@ float ArmorObject::getLightSaber() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getLightSaber();
+		return _implementation->getLightSaber();
 }
 
 void ArmorObject::setLightSaber(float value) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -350,11 +437,12 @@ void ArmorObject::setLightSaber(float value) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setLightSaber(value);
+		_implementation->setLightSaber(value);
 }
 
 int ArmorObject::getHealthEncumbrance() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -362,11 +450,12 @@ int ArmorObject::getHealthEncumbrance() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getHealthEncumbrance();
+		return _implementation->getHealthEncumbrance();
 }
 
 void ArmorObject::setHealthEncumbrance(int encumber) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -375,11 +464,12 @@ void ArmorObject::setHealthEncumbrance(int encumber) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setHealthEncumbrance(encumber);
+		_implementation->setHealthEncumbrance(encumber);
 }
 
 int ArmorObject::getActionEncumbrance() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -387,11 +477,12 @@ int ArmorObject::getActionEncumbrance() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getActionEncumbrance();
+		return _implementation->getActionEncumbrance();
 }
 
 void ArmorObject::setActionEncumbrance(int encumber) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -400,11 +491,12 @@ void ArmorObject::setActionEncumbrance(int encumber) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setActionEncumbrance(encumber);
+		_implementation->setActionEncumbrance(encumber);
 }
 
 int ArmorObject::getMindEncumbrance() {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -412,11 +504,12 @@ int ArmorObject::getMindEncumbrance() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ArmorObjectImplementation*) _impl)->getMindEncumbrance();
+		return _implementation->getMindEncumbrance();
 }
 
 void ArmorObject::setMindEncumbrance(int encumber) {
-	if (_impl == NULL) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -425,8 +518,14 @@ void ArmorObject::setMindEncumbrance(int encumber) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorObjectImplementation*) _impl)->setMindEncumbrance(encumber);
+		_implementation->setMindEncumbrance(encumber);
 }
+
+DistributedObjectServant* ArmorObject::_getImplementation() {
+	return getForUpdate();}
+
+void ArmorObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ArmorObjectImplementation
@@ -435,6 +534,7 @@ void ArmorObject::setMindEncumbrance(int encumber) {
 ArmorObjectImplementation::ArmorObjectImplementation(DummyConstructorParameter* param) : WearableObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ArmorObjectImplementation::~ArmorObjectImplementation() {
 }
@@ -462,32 +562,30 @@ ArmorObjectImplementation::operator const ArmorObject*() {
 	return _this;
 }
 
+TransactionalObject* ArmorObjectImplementation::clone() {
+	return (TransactionalObject*) new ArmorObjectImplementation(*this);
+}
+
+
 void ArmorObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ArmorObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ArmorObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ArmorObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ArmorObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ArmorObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ArmorObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ArmorObjectImplementation::_serializationHelperMethod() {

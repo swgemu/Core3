@@ -302,6 +302,10 @@ public:
 
 	bool isAiAgent();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	AiAgent(DummyConstructorParameter* param);
 
@@ -503,6 +507,8 @@ public:
 protected:
 	virtual ~AiAgentImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -526,6 +532,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class AiAgent;
+	friend class TransactionalObjectHandle<AiAgentImplementation*>;
 };
 
 class AiAgentAdapter : public CreatureObjectAdapter {

@@ -14,13 +14,83 @@
 
 #include "server/zone/objects/building/city/CityHallObject.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/region/Region.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/tangible/terminal/city/CityTerminal.h"
+
 /*
  *	CityTerminalStub
  */
 
 CityTerminal::CityTerminal() : Terminal(DummyConstructorParameter::instance()) {
-	_impl = new CityTerminalImplementation();
-	_impl->_setStub(this);
+	CityTerminalImplementation* _implementation = new CityTerminalImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 CityTerminal::CityTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -31,7 +101,8 @@ CityTerminal::~CityTerminal() {
 
 
 void CityTerminal::initializeTransientMembers() {
-	if (_impl == NULL) {
+	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -39,11 +110,12 @@ void CityTerminal::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityTerminalImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void CityTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -53,11 +125,12 @@ void CityTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Play
 
 		method.executeWithVoidReturn();
 	} else
-		((CityTerminalImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int CityTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +140,12 @@ int CityTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CityTerminalImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 bool CityTerminal::isCityTerminal() {
-	if (_impl == NULL) {
+	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +153,12 @@ bool CityTerminal::isCityTerminal() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CityTerminalImplementation*) _impl)->isCityTerminal();
+		return _implementation->isCityTerminal();
 }
 
 void CityTerminal::setCityHallObject(CityHallObject* cityHall) {
-	if (_impl == NULL) {
+	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -92,11 +167,12 @@ void CityTerminal::setCityHallObject(CityHallObject* cityHall) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CityTerminalImplementation*) _impl)->setCityHallObject(cityHall);
+		_implementation->setCityHallObject(cityHall);
 }
 
 CityHallObject* CityTerminal::getCityHallObject() {
-	if (_impl == NULL) {
+	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -104,8 +180,14 @@ CityHallObject* CityTerminal::getCityHallObject() {
 
 		return (CityHallObject*) method.executeWithObjectReturn();
 	} else
-		return ((CityTerminalImplementation*) _impl)->getCityHallObject();
+		return _implementation->getCityHallObject();
 }
+
+DistributedObjectServant* CityTerminal::_getImplementation() {
+	return getForUpdate();}
+
+void CityTerminal::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	CityTerminalImplementation
@@ -114,6 +196,7 @@ CityHallObject* CityTerminal::getCityHallObject() {
 CityTerminalImplementation::CityTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
 	_initializeImplementation();
 }
+
 
 CityTerminalImplementation::~CityTerminalImplementation() {
 }
@@ -141,32 +224,30 @@ CityTerminalImplementation::operator const CityTerminal*() {
 	return _this;
 }
 
+TransactionalObject* CityTerminalImplementation::clone() {
+	return (TransactionalObject*) new CityTerminalImplementation(*this);
+}
+
+
 void CityTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void CityTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void CityTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void CityTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void CityTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void CityTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void CityTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void CityTerminalImplementation::_serializationHelperMethod() {

@@ -137,7 +137,7 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/managers/planet/HuntingTargetEntry.h"
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
 
@@ -152,7 +152,7 @@ namespace zone {
 namespace managers {
 namespace planet {
 
-class PlanetManager : public ManagedObject {
+class PlanetManager : public ManagedService {
 public:
 	PlanetManager(Zone* planet, ZoneProcessServerImplementation* srv);
 
@@ -224,6 +224,10 @@ public:
 
 	MissionTargetMap* getInformants();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	PlanetManager(DummyConstructorParameter* param);
 
@@ -244,7 +248,7 @@ namespace zone {
 namespace managers {
 namespace planet {
 
-class PlanetManagerImplementation : public ManagedObjectImplementation, public Logger {
+class PlanetManagerImplementation : public ManagedServiceImplementation, public Logger {
 protected:
 	ManagedWeakReference<Zone* > zone;
 
@@ -357,6 +361,8 @@ public:
 protected:
 	virtual ~PlanetManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -378,9 +384,10 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PlanetManager;
+	friend class TransactionalObjectHandle<PlanetManagerImplementation*>;
 };
 
-class PlanetManagerAdapter : public ManagedObjectAdapter {
+class PlanetManagerAdapter : public ManagedServiceAdapter {
 public:
 	PlanetManagerAdapter(PlanetManagerImplementation* impl);
 

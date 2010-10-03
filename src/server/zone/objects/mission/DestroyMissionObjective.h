@@ -152,6 +152,10 @@ public:
 
 	void setLairTemplateToSpawn(SharedObjectTemplate* sp);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	DestroyMissionObjective(DummyConstructorParameter* param);
 
@@ -211,6 +215,8 @@ public:
 protected:
 	virtual ~DestroyMissionObjectiveImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -232,6 +238,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DestroyMissionObjective;
+	friend class TransactionalObjectHandle<DestroyMissionObjectiveImplementation*>;
 };
 
 class DestroyMissionObjectiveAdapter : public MissionObjectiveAdapter {

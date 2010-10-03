@@ -10,13 +10,61 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
+
+// Imported class dependencies
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "system/lang/Time.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
 /*
  *	DraftSchematicStub
  */
 
 DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new DraftSchematicImplementation();
-	_impl->_setStub(this);
+	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 DraftSchematic::DraftSchematic(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -27,7 +75,8 @@ DraftSchematic::~DraftSchematic() {
 
 
 void DraftSchematic::initializeTransientMembers() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -35,27 +84,30 @@ void DraftSchematic::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void DraftSchematic::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DraftSchematicImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void DraftSchematic::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((DraftSchematicImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void DraftSchematic::sendBaselinesTo(SceneObject* player) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -64,11 +116,12 @@ void DraftSchematic::sendBaselinesTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->sendBaselinesTo(player);
+		_implementation->sendBaselinesTo(player);
 }
 
 void DraftSchematic::sendDraftSlotsTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -77,11 +130,12 @@ void DraftSchematic::sendDraftSlotsTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->sendDraftSlotsTo(player);
+		_implementation->sendDraftSlotsTo(player);
 }
 
 void DraftSchematic::sendResourceWeightsTo(PlayerCreature* player) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -90,11 +144,12 @@ void DraftSchematic::sendResourceWeightsTo(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->sendResourceWeightsTo(player);
+		_implementation->sendResourceWeightsTo(player);
 }
 
 SceneObject* DraftSchematic::createManufactureSchematic(SceneObject* craftingTool) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -103,11 +158,12 @@ SceneObject* DraftSchematic::createManufactureSchematic(SceneObject* craftingToo
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->createManufactureSchematic(craftingTool);
+		return _implementation->createManufactureSchematic(craftingTool);
 }
 
 void DraftSchematic::setSchematicID(unsigned int id) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -116,11 +172,12 @@ void DraftSchematic::setSchematicID(unsigned int id) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->setSchematicID(id);
+		_implementation->setSchematicID(id);
 }
 
 unsigned int DraftSchematic::getSchematicID() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -128,11 +185,12 @@ unsigned int DraftSchematic::getSchematicID() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getSchematicID();
+		return _implementation->getSchematicID();
 }
 
 int DraftSchematic::getDraftSlotCount() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -140,19 +198,21 @@ int DraftSchematic::getDraftSlotCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getDraftSlotCount();
+		return _implementation->getDraftSlotCount();
 }
 
 DraftSlot* DraftSchematic::getDraftSlot(int i) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getDraftSlot(i);
+		return _implementation->getDraftSlot(i);
 }
 
 int DraftSchematic::getResourceWeightCount() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -160,19 +220,21 @@ int DraftSchematic::getResourceWeightCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getResourceWeightCount();
+		return _implementation->getResourceWeightCount();
 }
 
 ResourceWeight* DraftSchematic::getResourceWeight(int i) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getResourceWeight(i);
+		return _implementation->getResourceWeight(i);
 }
 
 float DraftSchematic::getComplexity() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -180,11 +242,12 @@ float DraftSchematic::getComplexity() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getComplexity();
+		return _implementation->getComplexity();
 }
 
 unsigned int DraftSchematic::getToolTab() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -192,11 +255,12 @@ unsigned int DraftSchematic::getToolTab() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getToolTab();
+		return _implementation->getToolTab();
 }
 
 float DraftSchematic::getSize() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -204,11 +268,12 @@ float DraftSchematic::getSize() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getSize();
+		return _implementation->getSize();
 }
 
 String DraftSchematic::getXpType() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -217,11 +282,12 @@ String DraftSchematic::getXpType() {
 		method.executeWithAsciiReturn(_return_getXpType);
 		return _return_getXpType;
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getXpType();
+		return _implementation->getXpType();
 }
 
 int DraftSchematic::getXpAmount() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -229,11 +295,12 @@ int DraftSchematic::getXpAmount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getXpAmount();
+		return _implementation->getXpAmount();
 }
 
 String DraftSchematic::getAssemblySkill() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -242,11 +309,12 @@ String DraftSchematic::getAssemblySkill() {
 		method.executeWithAsciiReturn(_return_getAssemblySkill);
 		return _return_getAssemblySkill;
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getAssemblySkill();
+		return _implementation->getAssemblySkill();
 }
 
 String DraftSchematic::getExperimentationSkill() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -255,11 +323,12 @@ String DraftSchematic::getExperimentationSkill() {
 		method.executeWithAsciiReturn(_return_getExperimentationSkill);
 		return _return_getExperimentationSkill;
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getExperimentationSkill();
+		return _implementation->getExperimentationSkill();
 }
 
 String DraftSchematic::getCustomizationSkill() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -268,35 +337,39 @@ String DraftSchematic::getCustomizationSkill() {
 		method.executeWithAsciiReturn(_return_getCustomizationSkill);
 		return _return_getCustomizationSkill;
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getCustomizationSkill();
+		return _implementation->getCustomizationSkill();
 }
 
 Vector<byte>* DraftSchematic::getCustomizationOptions() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getCustomizationOptions();
+		return _implementation->getCustomizationOptions();
 }
 
 Vector<String>* DraftSchematic::getCustomizationStringNames() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getCustomizationStringNames();
+		return _implementation->getCustomizationStringNames();
 }
 
 Vector<byte>* DraftSchematic::getCustomizationDefaultValues() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getCustomizationDefaultValues();
+		return _implementation->getCustomizationDefaultValues();
 }
 
 String DraftSchematic::getCustomName() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -305,11 +378,12 @@ String DraftSchematic::getCustomName() {
 		method.executeWithAsciiReturn(_return_getCustomName);
 		return _return_getCustomName;
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getCustomName();
+		return _implementation->getCustomName();
 }
 
 unsigned int DraftSchematic::getTanoCRC() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -317,11 +391,12 @@ unsigned int DraftSchematic::getTanoCRC() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getTanoCRC();
+		return _implementation->getTanoCRC();
 }
 
 String DraftSchematic::getGroupName() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -330,11 +405,12 @@ String DraftSchematic::getGroupName() {
 		method.executeWithAsciiReturn(_return_getGroupName);
 		return _return_getGroupName;
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getGroupName();
+		return _implementation->getGroupName();
 }
 
 int DraftSchematic::getUseCount() {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -342,11 +418,12 @@ int DraftSchematic::getUseCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getUseCount();
+		return _implementation->getUseCount();
 }
 
 void DraftSchematic::setUseCount(int count) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -355,11 +432,12 @@ void DraftSchematic::setUseCount(int count) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->setUseCount(count);
+		_implementation->setUseCount(count);
 }
 
 void DraftSchematic::decreaseUseCount(int count) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -368,11 +446,12 @@ void DraftSchematic::decreaseUseCount(int count) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->decreaseUseCount(count);
+		_implementation->decreaseUseCount(count);
 }
 
 void DraftSchematic::increaseUseCount(int count) {
-	if (_impl == NULL) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -381,8 +460,14 @@ void DraftSchematic::increaseUseCount(int count) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->increaseUseCount(count);
+		_implementation->increaseUseCount(count);
 }
+
+DistributedObjectServant* DraftSchematic::_getImplementation() {
+	return getForUpdate();}
+
+void DraftSchematic::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	DraftSchematicImplementation
@@ -391,6 +476,7 @@ void DraftSchematic::increaseUseCount(int count) {
 DraftSchematicImplementation::DraftSchematicImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 DraftSchematicImplementation::~DraftSchematicImplementation() {
 }
@@ -418,32 +504,30 @@ DraftSchematicImplementation::operator const DraftSchematic*() {
 	return _this;
 }
 
+TransactionalObject* DraftSchematicImplementation::clone() {
+	return (TransactionalObject*) new DraftSchematicImplementation(*this);
+}
+
+
 void DraftSchematicImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void DraftSchematicImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void DraftSchematicImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void DraftSchematicImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void DraftSchematicImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void DraftSchematicImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void DraftSchematicImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void DraftSchematicImplementation::_serializationHelperMethod() {

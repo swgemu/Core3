@@ -107,7 +107,7 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
 
 #include "engine/lua/Lua.h"
 
@@ -118,7 +118,7 @@ namespace zone {
 namespace managers {
 namespace objectcontroller {
 
-class ObjectController : public ManagedObject {
+class ObjectController : public ManagedService {
 public:
 	ObjectController(ZoneProcessServerImplementation* srv);
 
@@ -133,6 +133,10 @@ public:
 	QueueCommand* getQueueCommand(const String& name);
 
 	QueueCommand* getQueueCommand(unsigned int crc);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	ObjectController(DummyConstructorParameter* param);
@@ -154,7 +158,7 @@ namespace zone {
 namespace managers {
 namespace objectcontroller {
 
-class ObjectControllerImplementation : public ManagedObjectImplementation, public Lua {
+class ObjectControllerImplementation : public ManagedServiceImplementation, public Lua {
 	ZoneProcessServerImplementation* server;
 
 	CommandConfigManager* configManager;
@@ -188,6 +192,8 @@ public:
 protected:
 	virtual ~ObjectControllerImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -209,9 +215,10 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ObjectController;
+	friend class TransactionalObjectHandle<ObjectControllerImplementation*>;
 };
 
-class ObjectControllerAdapter : public ManagedObjectAdapter {
+class ObjectControllerAdapter : public ManagedServiceAdapter {
 public:
 	ObjectControllerAdapter(ObjectControllerImplementation* impl);
 

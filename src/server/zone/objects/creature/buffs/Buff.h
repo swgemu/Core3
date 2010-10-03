@@ -149,6 +149,10 @@ public:
 
 	void setEndMessage(ParameterizedStringId& start);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	Buff(DummyConstructorParameter* param);
 
@@ -288,6 +292,8 @@ public:
 protected:
 	virtual ~BuffImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -311,6 +317,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Buff;
+	friend class TransactionalObjectHandle<BuffImplementation*>;
 };
 
 class BuffAdapter : public ManagedObjectAdapter {

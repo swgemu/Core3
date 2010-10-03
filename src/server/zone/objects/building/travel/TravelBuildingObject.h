@@ -49,6 +49,10 @@ class TravelBuildingObject : public BuildingObject {
 public:
 	TravelBuildingObject();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	TravelBuildingObject(DummyConstructorParameter* param);
 
@@ -86,6 +90,8 @@ public:
 protected:
 	virtual ~TravelBuildingObjectImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -109,6 +115,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TravelBuildingObject;
+	friend class TransactionalObjectHandle<TravelBuildingObjectImplementation*>;
 };
 
 class TravelBuildingObjectAdapter : public BuildingObjectAdapter {

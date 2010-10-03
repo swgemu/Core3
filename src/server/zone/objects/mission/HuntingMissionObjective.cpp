@@ -18,13 +18,51 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/mission/DestroyMissionObjective.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	HuntingMissionObjectiveStub
  */
 
 HuntingMissionObjective::HuntingMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new HuntingMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	HuntingMissionObjectiveImplementation* _implementation = new HuntingMissionObjectiveImplementation(mission);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 HuntingMissionObjective::HuntingMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -35,7 +73,8 @@ HuntingMissionObjective::~HuntingMissionObjective() {
 
 
 void HuntingMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +82,12 @@ void HuntingMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((HuntingMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void HuntingMissionObjective::activate() {
-	if (_impl == NULL) {
+	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -55,11 +95,12 @@ void HuntingMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((HuntingMissionObjectiveImplementation*) _impl)->activate();
+		_implementation->activate();
 }
 
 void HuntingMissionObjective::abort() {
-	if (_impl == NULL) {
+	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -67,11 +108,12 @@ void HuntingMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((HuntingMissionObjectiveImplementation*) _impl)->abort();
+		_implementation->abort();
 }
 
 void HuntingMissionObjective::complete() {
-	if (_impl == NULL) {
+	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -79,11 +121,12 @@ void HuntingMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((HuntingMissionObjectiveImplementation*) _impl)->complete();
+		_implementation->complete();
 }
 
 int HuntingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	HuntingMissionObjectiveImplementation* _implementation = (HuntingMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -96,8 +139,14 @@ int HuntingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((HuntingMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
+
+DistributedObjectServant* HuntingMissionObjective::_getImplementation() {
+	return getForUpdate();}
+
+void HuntingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	HuntingMissionObjectiveImplementation
@@ -106,6 +155,7 @@ int HuntingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 HuntingMissionObjectiveImplementation::HuntingMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 HuntingMissionObjectiveImplementation::~HuntingMissionObjectiveImplementation() {
 	HuntingMissionObjectiveImplementation::finalize();
@@ -131,32 +181,30 @@ HuntingMissionObjectiveImplementation::operator const HuntingMissionObjective*()
 	return _this;
 }
 
+TransactionalObject* HuntingMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new HuntingMissionObjectiveImplementation(*this);
+}
+
+
 void HuntingMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void HuntingMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void HuntingMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::_serializationHelperMethod() {

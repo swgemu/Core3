@@ -8,13 +8,69 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
+
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	RecreationBuildingObjectStub
  */
 
 RecreationBuildingObject::RecreationBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new RecreationBuildingObjectImplementation();
-	_impl->_setStub(this);
+	RecreationBuildingObjectImplementation* _implementation = new RecreationBuildingObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 RecreationBuildingObject::RecreationBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -24,6 +80,12 @@ RecreationBuildingObject::~RecreationBuildingObject() {
 }
 
 
+DistributedObjectServant* RecreationBuildingObject::_getImplementation() {
+	return getForUpdate();}
+
+void RecreationBuildingObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
+
 /*
  *	RecreationBuildingObjectImplementation
  */
@@ -31,6 +93,7 @@ RecreationBuildingObject::~RecreationBuildingObject() {
 RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(DummyConstructorParameter* param) : BuildingObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 RecreationBuildingObjectImplementation::~RecreationBuildingObjectImplementation() {
 }
@@ -58,32 +121,30 @@ RecreationBuildingObjectImplementation::operator const RecreationBuildingObject*
 	return _this;
 }
 
+TransactionalObject* RecreationBuildingObjectImplementation::clone() {
+	return (TransactionalObject*) new RecreationBuildingObjectImplementation(*this);
+}
+
+
 void RecreationBuildingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void RecreationBuildingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void RecreationBuildingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::_serializationHelperMethod() {

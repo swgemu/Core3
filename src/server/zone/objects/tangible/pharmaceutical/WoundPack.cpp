@@ -22,13 +22,127 @@
 
 #include "server/zone/managers/player/PlayerManager.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/player/StartingItemList.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/player/CharacterNameMap.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/managers/player/PlayerMap.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
 /*
  *	WoundPackStub
  */
 
 WoundPack::WoundPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
-	_impl = new WoundPackImplementation();
-	_impl->_setStub(this);
+	WoundPackImplementation* _implementation = new WoundPackImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 WoundPack::WoundPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -39,31 +153,35 @@ WoundPack::~WoundPack() {
 
 
 void WoundPack::updateCraftingValues(ManufactureSchematic* schematic) {
-	if (_impl == NULL) {
+	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WoundPackImplementation*) _impl)->updateCraftingValues(schematic);
+		_implementation->updateCraftingValues(schematic);
 }
 
 void WoundPack::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WoundPackImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void WoundPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((WoundPackImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 int WoundPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -73,11 +191,12 @@ int WoundPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((WoundPackImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 unsigned int WoundPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	if (_impl == NULL) {
+	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -88,11 +207,12 @@ unsigned int WoundPack::calculatePower(CreatureObject* healer, CreatureObject* p
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((WoundPackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
+		return _implementation->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 float WoundPack::getEffectiveness() {
-	if (_impl == NULL) {
+	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -100,11 +220,12 @@ float WoundPack::getEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((WoundPackImplementation*) _impl)->getEffectiveness();
+		return _implementation->getEffectiveness();
 }
 
 bool WoundPack::isWoundPack() {
-	if (_impl == NULL) {
+	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -112,11 +233,12 @@ bool WoundPack::isWoundPack() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((WoundPackImplementation*) _impl)->isWoundPack();
+		return _implementation->isWoundPack();
 }
 
 byte WoundPack::getAttribute() {
-	if (_impl == NULL) {
+	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -124,8 +246,14 @@ byte WoundPack::getAttribute() {
 
 		return method.executeWithByteReturn();
 	} else
-		return ((WoundPackImplementation*) _impl)->getAttribute();
+		return _implementation->getAttribute();
 }
+
+DistributedObjectServant* WoundPack::_getImplementation() {
+	return getForUpdate();}
+
+void WoundPack::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	WoundPackImplementation
@@ -162,32 +290,30 @@ WoundPackImplementation::operator const WoundPack*() {
 	return _this;
 }
 
+TransactionalObject* WoundPackImplementation::clone() {
+	return (TransactionalObject*) new WoundPackImplementation(*this);
+}
+
+
 void WoundPackImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void WoundPackImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void WoundPackImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void WoundPackImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void WoundPackImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void WoundPackImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void WoundPackImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void WoundPackImplementation::_serializationHelperMethod() {

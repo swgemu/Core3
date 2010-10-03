@@ -81,6 +81,20 @@ class ManufactureSchematic;
 
 using namespace server::zone::objects::manufactureschematic;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
 
 #include "engine/lua/LuaObject.h"
@@ -160,6 +174,10 @@ public:
 	void createObject(PlayerCreature* player, int timer, bool create);
 
 	void depositObject(PlayerCreature* player, bool practice);
+
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
 
 protected:
 	CraftingTool(DummyConstructorParameter* param);
@@ -334,6 +352,8 @@ public:
 protected:
 	virtual ~CraftingToolImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -357,6 +377,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CraftingTool;
+	friend class TransactionalObjectHandle<CraftingToolImplementation*>;
 };
 
 class CraftingToolAdapter : public ToolTangibleObjectAdapter {

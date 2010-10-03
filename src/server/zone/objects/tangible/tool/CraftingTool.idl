@@ -53,6 +53,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.managers.crafting.CraftingManager;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
+import server.zone.objects.area.ActiveArea;
 
 class CraftingTool extends ToolTangibleObject {
 	

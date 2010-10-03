@@ -44,7 +44,7 @@ which carries forward this exception.
 
 package server.zone.managers.planet;
 
-import engine.core.ManagedObject;
+import engine.core.ManagedService;
 import server.zone.Zone;
 import server.zone.ZoneProcessServerImplementation;
 import engine.log.Logger;
@@ -69,7 +69,7 @@ include server.zone.managers.planet.HuntingTargetMap;
 include server.zone.managers.planet.HuntingTargetEntry;
 
 
-class PlanetManager extends ManagedObject implements Logger {
+class PlanetManager extends ManagedService implements Logger {
 	@weakReference
 	protected Zone zone;
 	

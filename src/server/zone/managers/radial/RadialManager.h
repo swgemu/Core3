@@ -80,6 +80,10 @@ public:
 
 	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	RadialManager(DummyConstructorParameter* param);
 
@@ -120,6 +124,8 @@ public:
 protected:
 	virtual ~RadialManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -143,6 +149,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class RadialManager;
+	friend class TransactionalObjectHandle<RadialManagerImplementation*>;
 };
 
 class RadialManagerAdapter : public ManagedObjectAdapter {

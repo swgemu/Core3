@@ -10,13 +10,61 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	ContainerStub
  */
 
 Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ContainerImplementation();
-	_impl->_setStub(this);
+	ContainerImplementation* _implementation = new ContainerImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -27,15 +75,17 @@ Container::~Container() {
 
 
 void Container::loadTemplateData(SharedObjectTemplate* templateData) {
-	if (_impl == NULL) {
+	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		((ContainerImplementation*) _impl)->loadTemplateData(templateData);
+		_implementation->loadTemplateData(templateData);
 }
 
 void Container::initializeTransientMembers() {
-	if (_impl == NULL) {
+	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -43,11 +93,12 @@ void Container::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ContainerImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 int Container::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	if (_impl == NULL) {
+	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,11 +109,12 @@ int Container::canAddObject(SceneObject* object, int containmentType, String& er
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ContainerImplementation*) _impl)->canAddObject(object, containmentType, errorDescription);
+		return _implementation->canAddObject(object, containmentType, errorDescription);
 }
 
 void Container::sendContainerObjectsTo(SceneObject* player) {
-	if (_impl == NULL) {
+	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +123,12 @@ void Container::sendContainerObjectsTo(SceneObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ContainerImplementation*) _impl)->sendContainerObjectsTo(player);
+		_implementation->sendContainerObjectsTo(player);
 }
 
 bool Container::isContainerOject() {
-	if (_impl == NULL) {
+	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -83,8 +136,14 @@ bool Container::isContainerOject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ContainerImplementation*) _impl)->isContainerOject();
+		return _implementation->isContainerOject();
 }
+
+DistributedObjectServant* Container::_getImplementation() {
+	return getForUpdate();}
+
+void Container::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ContainerImplementation
@@ -121,32 +180,30 @@ ContainerImplementation::operator const Container*() {
 	return _this;
 }
 
+TransactionalObject* ContainerImplementation::clone() {
+	return (TransactionalObject*) new ContainerImplementation(*this);
+}
+
+
 void ContainerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ContainerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ContainerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ContainerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ContainerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ContainerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ContainerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ContainerImplementation::_serializationHelperMethod() {

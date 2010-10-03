@@ -26,13 +26,93 @@
 
 #include "server/zone/objects/tangible/lair/LairObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/mission/DestroyMissionObjective.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/objects/creature/events/AiThinkEvent.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/templates/tangible/LairObjectTemplate.h"
+
+#include "server/zone/objects/creature/PatrolPoint.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/tangible/DamageMap.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/creature/events/AiMoveEvent.h"
+
+#include "server/zone/objects/creature/PatrolPointsVector.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/tangible/lair/HealLairEvent.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
 /*
  *	DeliverMissionObjectiveStub
  */
 
 DeliverMissionObjective::DeliverMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
-	_impl = new DeliverMissionObjectiveImplementation(mission);
-	_impl->_setStub(this);
+	DeliverMissionObjectiveImplementation* _implementation = new DeliverMissionObjectiveImplementation(mission);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 DeliverMissionObjective::DeliverMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -43,7 +123,8 @@ DeliverMissionObjective::~DeliverMissionObjective() {
 
 
 void DeliverMissionObjective::initializeTransientMembers() {
-	if (_impl == NULL) {
+	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -51,11 +132,12 @@ void DeliverMissionObjective::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeliverMissionObjectiveImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void DeliverMissionObjective::setTarget(AiAgent* t) {
-	if (_impl == NULL) {
+	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -64,11 +146,12 @@ void DeliverMissionObjective::setTarget(AiAgent* t) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeliverMissionObjectiveImplementation*) _impl)->setTarget(t);
+		_implementation->setTarget(t);
 }
 
 void DeliverMissionObjective::setTargetDest(AiAgent* t) {
-	if (_impl == NULL) {
+	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -77,11 +160,12 @@ void DeliverMissionObjective::setTargetDest(AiAgent* t) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeliverMissionObjectiveImplementation*) _impl)->setTargetDest(t);
+		_implementation->setTargetDest(t);
 }
 
 TangibleObject* DeliverMissionObjective::getItem() {
-	if (_impl == NULL) {
+	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -89,11 +173,12 @@ TangibleObject* DeliverMissionObjective::getItem() {
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((DeliverMissionObjectiveImplementation*) _impl)->getItem();
+		return _implementation->getItem();
 }
 
 void DeliverMissionObjective::activate() {
-	if (_impl == NULL) {
+	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -101,11 +186,12 @@ void DeliverMissionObjective::activate() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeliverMissionObjectiveImplementation*) _impl)->activate();
+		_implementation->activate();
 }
 
 void DeliverMissionObjective::abort() {
-	if (_impl == NULL) {
+	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -113,11 +199,12 @@ void DeliverMissionObjective::abort() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeliverMissionObjectiveImplementation*) _impl)->abort();
+		_implementation->abort();
 }
 
 void DeliverMissionObjective::complete() {
-	if (_impl == NULL) {
+	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -125,11 +212,12 @@ void DeliverMissionObjective::complete() {
 
 		method.executeWithVoidReturn();
 	} else
-		((DeliverMissionObjectiveImplementation*) _impl)->complete();
+		_implementation->complete();
 }
 
 int DeliverMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	if (_impl == NULL) {
+	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -142,11 +230,12 @@ int DeliverMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((DeliverMissionObjectiveImplementation*) _impl)->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
 bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
-	if (_impl == NULL) {
+	DeliverMissionObjectiveImplementation* _implementation = (DeliverMissionObjectiveImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -155,8 +244,14 @@ bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DeliverMissionObjectiveImplementation*) _impl)->updateMissionTarget(player);
+		return _implementation->updateMissionTarget(player);
 }
+
+DistributedObjectServant* DeliverMissionObjective::_getImplementation() {
+	return getForUpdate();}
+
+void DeliverMissionObjective::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	DeliverMissionObjectiveImplementation
@@ -165,6 +260,7 @@ bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
 DeliverMissionObjectiveImplementation::DeliverMissionObjectiveImplementation(DummyConstructorParameter* param) : MissionObjectiveImplementation(param) {
 	_initializeImplementation();
 }
+
 
 DeliverMissionObjectiveImplementation::~DeliverMissionObjectiveImplementation() {
 	DeliverMissionObjectiveImplementation::finalize();
@@ -190,32 +286,30 @@ DeliverMissionObjectiveImplementation::operator const DeliverMissionObjective*()
 	return _this;
 }
 
+TransactionalObject* DeliverMissionObjectiveImplementation::clone() {
+	return (TransactionalObject*) new DeliverMissionObjectiveImplementation(*this);
+}
+
+
 void DeliverMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void DeliverMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void DeliverMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::_serializationHelperMethod() {

@@ -90,6 +90,10 @@ public:
 
 	bool isStatueTerminal();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	MissionTerminal(DummyConstructorParameter* param);
 
@@ -155,6 +159,8 @@ public:
 protected:
 	virtual ~MissionTerminalImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -178,6 +184,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class MissionTerminal;
+	friend class TransactionalObjectHandle<MissionTerminalImplementation*>;
 };
 
 class MissionTerminalAdapter : public TerminalAdapter {

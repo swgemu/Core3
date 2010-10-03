@@ -8,13 +8,59 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+
+// Imported class dependencies
+
+#include "system/lang/Time.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
 /*
  *	ResourceDeedListBoxStub
  */
 
 ResourceDeedListBox::ResourceDeedListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiListBox(DummyConstructorParameter::instance()) {
-	_impl = new ResourceDeedListBoxImplementation(player, windowType, listBoxType);
-	_impl->_setStub(this);
+	ResourceDeedListBoxImplementation* _implementation = new ResourceDeedListBoxImplementation(player, windowType, listBoxType);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 ResourceDeedListBox::ResourceDeedListBox(DummyConstructorParameter* param) : SuiListBox(param) {
@@ -25,7 +71,8 @@ ResourceDeedListBox::~ResourceDeedListBox() {
 
 
 void ResourceDeedListBox::initializeTransientMembers() {
-	if (_impl == NULL) {
+	ResourceDeedListBoxImplementation* _implementation = (ResourceDeedListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -33,11 +80,12 @@ void ResourceDeedListBox::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceDeedListBoxImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void ResourceDeedListBox::addBox(const String& name) {
-	if (_impl == NULL) {
+	ResourceDeedListBoxImplementation* _implementation = (ResourceDeedListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -46,11 +94,12 @@ void ResourceDeedListBox::addBox(const String& name) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceDeedListBoxImplementation*) _impl)->addBox(name);
+		_implementation->addBox(name);
 }
 
 int ResourceDeedListBox::getBoxCount() {
-	if (_impl == NULL) {
+	ResourceDeedListBoxImplementation* _implementation = (ResourceDeedListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -58,11 +107,12 @@ int ResourceDeedListBox::getBoxCount() {
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((ResourceDeedListBoxImplementation*) _impl)->getBoxCount();
+		return _implementation->getBoxCount();
 }
 
 String ResourceDeedListBox::getBox(int index) {
-	if (_impl == NULL) {
+	ResourceDeedListBoxImplementation* _implementation = (ResourceDeedListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -72,11 +122,12 @@ String ResourceDeedListBox::getBox(int index) {
 		method.executeWithAsciiReturn(_return_getBox);
 		return _return_getBox;
 	} else
-		return ((ResourceDeedListBoxImplementation*) _impl)->getBox(index);
+		return _implementation->getBox(index);
 }
 
 void ResourceDeedListBox::removeBox() {
-	if (_impl == NULL) {
+	ResourceDeedListBoxImplementation* _implementation = (ResourceDeedListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -84,11 +135,12 @@ void ResourceDeedListBox::removeBox() {
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceDeedListBoxImplementation*) _impl)->removeBox();
+		_implementation->removeBox();
 }
 
 String ResourceDeedListBox::getCurrentBox() {
-	if (_impl == NULL) {
+	ResourceDeedListBoxImplementation* _implementation = (ResourceDeedListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -97,11 +149,12 @@ String ResourceDeedListBox::getCurrentBox() {
 		method.executeWithAsciiReturn(_return_getCurrentBox);
 		return _return_getCurrentBox;
 	} else
-		return ((ResourceDeedListBoxImplementation*) _impl)->getCurrentBox();
+		return _implementation->getCurrentBox();
 }
 
 String ResourceDeedListBox::getPreviousBox() {
-	if (_impl == NULL) {
+	ResourceDeedListBoxImplementation* _implementation = (ResourceDeedListBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -110,8 +163,14 @@ String ResourceDeedListBox::getPreviousBox() {
 		method.executeWithAsciiReturn(_return_getPreviousBox);
 		return _return_getPreviousBox;
 	} else
-		return ((ResourceDeedListBoxImplementation*) _impl)->getPreviousBox();
+		return _implementation->getPreviousBox();
 }
+
+DistributedObjectServant* ResourceDeedListBox::_getImplementation() {
+	return getForUpdate();}
+
+void ResourceDeedListBox::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	ResourceDeedListBoxImplementation
@@ -120,6 +179,7 @@ String ResourceDeedListBox::getPreviousBox() {
 ResourceDeedListBoxImplementation::ResourceDeedListBoxImplementation(DummyConstructorParameter* param) : SuiListBoxImplementation(param) {
 	_initializeImplementation();
 }
+
 
 ResourceDeedListBoxImplementation::~ResourceDeedListBoxImplementation() {
 	ResourceDeedListBoxImplementation::finalize();
@@ -145,32 +205,30 @@ ResourceDeedListBoxImplementation::operator const ResourceDeedListBox*() {
 	return _this;
 }
 
+TransactionalObject* ResourceDeedListBoxImplementation::clone() {
+	return (TransactionalObject*) new ResourceDeedListBoxImplementation(*this);
+}
+
+
 void ResourceDeedListBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void ResourceDeedListBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void ResourceDeedListBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void ResourceDeedListBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void ResourceDeedListBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void ResourceDeedListBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void ResourceDeedListBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void ResourceDeedListBoxImplementation::_serializationHelperMethod() {

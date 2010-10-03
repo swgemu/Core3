@@ -115,7 +115,7 @@ class LootObject;
 
 using namespace server::zone::managers::loot::lootgroup;
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
 
@@ -130,7 +130,7 @@ namespace zone {
 namespace managers {
 namespace loot {
 
-class LootManager : public ManagedObject {
+class LootManager : public ManagedService {
 public:
 	unsigned static const int FORAGEGENERAL = 4;
 
@@ -160,6 +160,10 @@ public:
 
 	void testLoot(PlayerCreature* receiver, SceneObject* container);
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	LootManager(DummyConstructorParameter* param);
 
@@ -180,7 +184,7 @@ namespace zone {
 namespace managers {
 namespace loot {
 
-class LootManagerImplementation : public ManagedObjectImplementation, public Logger {
+class LootManagerImplementation : public ManagedServiceImplementation, public Logger {
 	ManagedWeakReference<ZoneServer* > zoneServer;
 
 	ZoneProcessServerImplementation* zoneProcessor;
@@ -238,6 +242,8 @@ public:
 protected:
 	virtual ~LootManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -261,9 +267,10 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class LootManager;
+	friend class TransactionalObjectHandle<LootManagerImplementation*>;
 };
 
-class LootManagerAdapter : public ManagedObjectAdapter {
+class LootManagerAdapter : public ManagedServiceAdapter {
 public:
 	LootManagerAdapter(LootManagerImplementation* impl);
 

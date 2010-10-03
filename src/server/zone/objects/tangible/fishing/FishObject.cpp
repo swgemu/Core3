@@ -16,13 +16,111 @@
 
 #include "server/zone/ZoneServer.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/objects/scene/ObserverEventMap.h"
+
+#include "system/util/Vector.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/managers/account/AccountManager.h"
+
+#include "engine/core/TaskManager.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "engine/util/Quaternion.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/bazaar/BazaarManager.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
 /*
  *	FishObjectStub
  */
 
 FishObject::FishObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FishObjectImplementation();
-	_impl->_setStub(this);
+	FishObjectImplementation* _implementation = new FishObjectImplementation();
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 FishObject::FishObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -33,7 +131,8 @@ FishObject::~FishObject() {
 
 
 void FishObject::initializeTransientMembers() {
-	if (_impl == NULL) {
+	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -41,11 +140,12 @@ void FishObject::initializeTransientMembers() {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->initializeTransientMembers();
+		_implementation->initializeTransientMembers();
 }
 
 void FishObject::setAttributes(String& playerName, int planetID, String& timestamp, float fishLength) {
-	if (_impl == NULL) {
+	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -57,11 +157,12 @@ void FishObject::setAttributes(String& playerName, int planetID, String& timesta
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->setAttributes(playerName, planetID, timestamp, fishLength);
+		_implementation->setAttributes(playerName, planetID, timestamp, fishLength);
 }
 
 void FishObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (_impl == NULL) {
+	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -71,11 +172,12 @@ void FishObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Player
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->fillObjectMenuResponse(menuResponse, player);
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int FishObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (_impl == NULL) {
+	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -85,11 +187,12 @@ int FishObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((FishObjectImplementation*) _impl)->handleObjectMenuSelect(player, selectedID);
+		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
 void FishObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	if (_impl == NULL) {
+	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -99,11 +202,12 @@ void FishObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* ob
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->fillAttributeList(msg, object);
+		_implementation->fillAttributeList(msg, object);
 }
 
 void FishObject::filet(PlayerCreature* player) {
-	if (_impl == NULL) {
+	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
@@ -112,8 +216,14 @@ void FishObject::filet(PlayerCreature* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FishObjectImplementation*) _impl)->filet(player);
+		_implementation->filet(player);
 }
+
+DistributedObjectServant* FishObject::_getImplementation() {
+	return getForUpdate();}
+
+void FishObject::_setImplementation(DistributedObjectServant* servant) {
+	setObject((ManagedObjectImplementation*) servant);}
 
 /*
  *	FishObjectImplementation
@@ -122,6 +232,7 @@ void FishObject::filet(PlayerCreature* player) {
 FishObjectImplementation::FishObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
 	_initializeImplementation();
 }
+
 
 FishObjectImplementation::~FishObjectImplementation() {
 }
@@ -149,32 +260,30 @@ FishObjectImplementation::operator const FishObject*() {
 	return _this;
 }
 
+TransactionalObject* FishObjectImplementation::clone() {
+	return (TransactionalObject*) new FishObjectImplementation(*this);
+}
+
+
 void FishObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void FishObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void FishObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void FishObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void FishObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void FishObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void FishObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void FishObjectImplementation::_serializationHelperMethod() {

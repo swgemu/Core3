@@ -56,6 +56,10 @@ public:
 
 	unsigned int getBadge();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	BadgeActiveArea(DummyConstructorParameter* param);
 
@@ -98,6 +102,8 @@ public:
 protected:
 	virtual ~BadgeActiveAreaImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -121,6 +127,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BadgeActiveArea;
+	friend class TransactionalObjectHandle<BadgeActiveAreaImplementation*>;
 };
 
 class BadgeActiveAreaAdapter : public ActiveAreaAdapter {

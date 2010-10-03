@@ -145,7 +145,7 @@ using namespace server::zone::managers::objectcontroller;
 
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 
-#include "engine/core/ManagedObject.h"
+#include "engine/core/ManagedService.h"
 
 #include "engine/service/proto/BaseMessage.h"
 
@@ -156,7 +156,7 @@ using namespace server::zone::managers::objectcontroller;
 namespace server {
 namespace chat {
 
-class ChatManager : public ManagedObject {
+class ChatManager : public ManagedService {
 public:
 	ChatManager(ZoneServer* serv, int initsize);
 
@@ -224,6 +224,10 @@ public:
 
 	int getPlayerCount();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	ChatManager(DummyConstructorParameter* param);
 
@@ -240,7 +244,7 @@ using namespace server::chat;
 namespace server {
 namespace chat {
 
-class ChatManagerImplementation : public ManagedObjectImplementation, public Logger {
+class ChatManagerImplementation : public ManagedServiceImplementation, public Logger {
 	ManagedWeakReference<ZoneServer* > server;
 
 	ManagedWeakReference<PlayerManager* > playerManager;
@@ -338,6 +342,8 @@ public:
 protected:
 	virtual ~ChatManagerImplementation();
 
+	TransactionalObject* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -359,9 +365,10 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ChatManager;
+	friend class TransactionalObjectHandle<ChatManagerImplementation*>;
 };
 
-class ChatManagerAdapter : public ManagedObjectAdapter {
+class ChatManagerAdapter : public ManagedServiceAdapter {
 public:
 	ChatManagerAdapter(ChatManagerImplementation* impl);
 

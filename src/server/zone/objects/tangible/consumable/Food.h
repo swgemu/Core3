@@ -53,6 +53,10 @@ public:
 
 	void initializePrivateData();
 
+	DistributedObjectServant* _getImplementation();
+
+	void _setImplementation(DistributedObjectServant* servant);
+
 protected:
 	Food(DummyConstructorParameter* param);
 
@@ -94,6 +98,8 @@ public:
 protected:
 	virtual ~FoodImplementation();
 
+	TransactionalObject* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -117,6 +123,7 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Food;
+	friend class TransactionalObjectHandle<FoodImplementation*>;
 };
 
 class FoodAdapter : public ConsumableAdapter {
