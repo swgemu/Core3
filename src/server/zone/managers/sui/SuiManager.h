@@ -135,6 +135,7 @@ namespace server {
 	  	void handleSlicingMenu(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
 	  	void handleRangerWhatToTrackBox(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
 
+	  	void handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
 	  	void handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
 
 	  	void handleSellJunkLootSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);

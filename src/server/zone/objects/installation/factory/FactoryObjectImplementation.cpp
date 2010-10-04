@@ -141,11 +141,11 @@ void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 
 	ManagedReference<SuiListBox*> schematics = NULL;
 	if(getContainerObjectsSize() == 0) {
-		schematics = new SuiListBox(player, SuiWindowType::FACTORY_SCHEMATIC, SuiListBox::HANDLETWOBUTTON);
+		schematics = new SuiListBox(player, SuiWindowType::FACTORY_SCHEMATIC2BUTTON, SuiListBox::HANDLETWOBUTTON);
 		schematics->setPromptText("Choose a schematic to be added to the factory.");
 	} else {
 
-		schematics = new SuiListBox(player, SuiWindowType::FACTORY_SCHEMATIC, SuiListBox::HANDLETHREEBUTTON);
+		schematics = new SuiListBox(player, SuiWindowType::FACTORY_SCHEMATIC3BUTTON, SuiListBox::HANDLETHREEBUTTON);
 
 		StringBuffer message;
 		message << "Current Schematic Installed: ";
@@ -612,6 +612,8 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, Ta
 
 	outputHopper->addObject(crate, -1, false);
 	broadcastObject(crate, true);
+
+	crate->updateToDatabase();
 
 	return crate;
 }
