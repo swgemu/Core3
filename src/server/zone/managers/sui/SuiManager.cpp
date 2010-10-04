@@ -322,7 +322,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		returnString = value;
 		handleSetMOTD(boxID, player, cancel, returnString);
 		break;*/
-	case SuiWindowType::FACTORY_SCHEMATIC:
+	case SuiWindowType::FACTORY_SCHEMATIC2BUTTON:
+		handleInsertFactorySchem(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::FACTORY_SCHEMATIC3BUTTON:
 		handleInsertFactorySchem(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
 		break;
 	case SuiWindowType::CREATE_CITY_HALL_NAME:
@@ -2096,6 +2099,37 @@ void SuiManager::handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, cons
 	}
 }
 */
+
+void SuiManager::handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
+
+	Locker _locker(player);
+
+	if (player->hasSuiBox(boxID)) {
+
+		ManagedReference<SuiListBox*> sui = dynamic_cast<SuiListBox*>(player->getSuiBox(boxID));
+
+		/// Cancel = Remove
+		if (sui != NULL) {
+
+			if(cancel != 1) {
+
+				ManagedReference<FactoryObject* > factory =  dynamic_cast<FactoryObject*>(server->getZoneServer()->getObject(sui->getUsingObjectID()));
+
+				if (factory != NULL && factory->isFactory()) {
+
+					Locker _locker2(factory, player);
+
+					ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(sui->getMenuObjectID(index)));
+					factory->handleInsertFactorySchem(player, schematic);
+				}
+
+			}
+			player->removeSuiBox(boxID, true);
+			return;
+		}
+	}
+}
+
 void SuiManager::handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
 
 	Locker _locker(player);

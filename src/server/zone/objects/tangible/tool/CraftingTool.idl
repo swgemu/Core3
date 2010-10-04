@@ -73,15 +73,15 @@ class CraftingTool extends ToolTangibleObject {
 	protected CraftingStation craftingStation;
 	
 	protected int state;
-	protected int insertCounter;
+	protected transient int insertCounter;
 	
-	protected int experimentationPointsTotal;
-	protected int experimentationPointsUsed;
+	protected transient int experimentationPointsTotal;
+	protected transient int experimentationPointsUsed;
 	
-	protected int assemblyResult;
-	protected int experimentationResult;
+	protected transient int assemblyResult;
+	protected transient int experimentationResult;
 	
-	protected int experimentalFailureRate;
+	protected transient int experimentalFailureRate;
 	
 	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
 	public static final int FOOD = 2; // Food and Chemical Crafting Tool

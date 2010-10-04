@@ -413,6 +413,8 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 	if (draftschematic == NULL) {
 		player->sendSystemMessage("ui_craft", "err_no_draft_schematic");
+		closeCraftingWindow(player, 1);
+		cancelCraftingSession(player);
 		return;
 	}
 
@@ -426,8 +428,11 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 		ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
 				draftschematic->getTanoCRC(), 0));
 
-		if (prototype == NULL )
+		if (prototype == NULL ) {
+			closeCraftingWindow(player, 1);
+			cancelCraftingSession(player);
 			return;
+		}
 
 
 		prototype->createChildObjects();
@@ -435,11 +440,15 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 		if (manufactureSchematic == NULL) {
 			player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
+			closeCraftingWindow(player, 1);
+			cancelCraftingSession(player);
 			return;
 		}
 
 		if (prototype == NULL) {
 			player->sendSystemMessage("ui_craft", "err_no_prototype");
+			closeCraftingWindow(player, 1);
+			cancelCraftingSession(player);
 			return;
 		}
 
