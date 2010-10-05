@@ -46,6 +46,7 @@ which carries forward this exception.
 #define FREEZEPLAYERCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureState.h"
 
 class FreezePlayerCommand : public QueueCommand {
 public:
@@ -62,6 +63,49 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		String syntaxerror = "Invalid arguments: /freezePlayer <firstname>";
+
+		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
+
+		ManagedReference<PlayerCreature* > targetPlayer = NULL;
+		PlayerCreature* player = (PlayerCreature*) creature;
+		StringTokenizer args(arguments.toString());
+
+		if (object == NULL || !object->isPlayerCreature()) {
+
+			String firstName;
+			if (args.hasMoreTokens()) {
+				args.getStringToken(firstName);
+				targetPlayer = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+			}
+
+		} else {
+			targetPlayer = (PlayerCreature*) object.get();
+		}
+
+		if (targetPlayer == NULL) {
+			player->sendSystemMessage(syntaxerror);
+			return INVALIDPARAMETERS;
+		}
+
+		try {
+
+			Locker playerlocker(targetPlayer);
+
+			targetPlayer->setState(CreatureState::ROOTED, true);
+			targetPlayer->sendSystemMessage("You have been frozen by \'" + player->getFirstName() + "\'");
+
+			targetPlayer->setSpeedMultiplierBase(0.f, true);
+
+			player->sendSystemMessage(targetPlayer->getFirstName() + " has been frozen.");
+
+		} catch (...) {
+			player->sendSystemMessage(syntaxerror);
+		}
 
 		return SUCCESS;
 	}

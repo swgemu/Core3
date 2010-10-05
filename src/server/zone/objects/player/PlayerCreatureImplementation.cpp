@@ -77,6 +77,7 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 		SkillBox* skillBox = playerSkillBoxList->get(i);
 		professionManager->awardDraftSchematics(skillBox, getPlayerObject(), false);
 	}
+
 }
 
 void PlayerCreatureImplementation::finalize() {
@@ -168,6 +169,14 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 	if (scno == _this)
 		return;
 
+	if (scno->isPlayerCreature()) {
+		PlayerCreature* player = (PlayerCreature*) scno;
+
+		if (player->isInvisible())
+			return;
+
+	}
+
 	//TODO: fix cell movement for this to not happen
 	/*SceneObject* grandParent = getRootParent();
 
@@ -200,6 +209,7 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 
 	if (scno->isBuildingObject())
 		((BuildingObject*)scno)->addNotifiedSentObject(_this);*/
+
 	SceneObject* rootParent = scno->getRootParent();
 
 	if (rootParent != NULL && rootParent->isInQuadTree()) {
