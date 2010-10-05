@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef UNFREEZEPlayerCOMMAND_H_
-#define UNFREEZEPlayerCOMMAND_H_
+#ifndef UNFREEZEPLAYERCOMMAND_H_
+#define UNFREEZEPLAYERCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
@@ -113,4 +113,4 @@ public:
 
 };
 
-#endif //UNFREEZEPlayerCOMMAND_H_
+#endif //UNFREEZEPLAYERCOMMAND_H_
