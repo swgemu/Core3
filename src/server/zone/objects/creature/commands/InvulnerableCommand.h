@@ -45,7 +45,8 @@ which carries forward this exception.
 #ifndef INVULNERABLECOMMAND_H_
 #define INVULNERABLECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/events/InvisibleDelayEvent.h"
 
 class InvulnerableCommand : public QueueCommand {
 public:
@@ -62,6 +63,56 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		if (player->isRidingMount() || player->isRidingCreature() || player->getZone()->getZoneID() > 9)
+			return GENERALERROR;
+
+		StringTokenizer args(arguments.toString());
+
+		if (args.hasMoreTokens()) {
+			String subCmd;
+			args.getStringToken(subCmd);
+
+			if (subCmd.toLowerCase() == "invisible") {
+				Reference<Task*> task = player->getPendingTask("invisibledelayevent");
+
+				if (task != NULL) {
+					player->sendSystemMessage("You can not go invisible at this time");
+					return GENERALERROR;
+				}
+
+				Reference<InvisibleDelayEvent*> invisTask = new InvisibleDelayEvent(player);
+
+				player->playEffect("clienteffect/pl_force_resist_disease_self.cef");
+
+				invisTask->schedule(1600);
+
+				player->addPendingTask("invisibledelayevent", invisTask);
+
+			}
+
+		} else {
+			PlayerCreatureImplementation* playerImpl = (PlayerCreatureImplementation*) player->_getImplementation();
+
+			if (player->getPvpStatusBitmask() == CreatureFlag::PLAYER) {
+				player->setPvpStatusBitmask(CreatureFlag::NONE);
+				player->sendSystemMessage("You are now invulnerable.");
+
+			} else if (player->getPvpStatusBitmask() == CreatureFlag::NONE) {
+				player->setPvpStatusBitmask(CreatureFlag::PLAYER);
+				player->sendSystemMessage("You are no longer invulnerable");
+
+			}
+
+			UpdatePVPStatusMessage* mess = new UpdatePVPStatusMessage(playerImpl, player->getPvpStatusBitmask());
+			player->broadcastMessage(mess, true);
+
+		}
 
 		return SUCCESS;
 	}

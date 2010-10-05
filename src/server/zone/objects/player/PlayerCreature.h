@@ -568,6 +568,10 @@ public:
 
 	void setLastCraftingToolUsed(CraftingTool* tool);
 
+	bool isInvisible();
+
+	void setInvisible(bool invis);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -616,6 +620,8 @@ protected:
 	unsigned int clientLastMovementStamp;
 
 	unsigned int accountID;
+
+	bool invisible;
 
 	unsigned int suiBoxNextID;
 
@@ -938,6 +944,10 @@ public:
 
 	void setLastCraftingToolUsed(CraftingTool* tool);
 
+	bool isInvisible();
+
+	void setInvisible(bool invis);
+
 	PlayerCreature* _this;
 
 	operator const PlayerCreature*();
@@ -945,8 +955,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~PlayerCreatureImplementation();
-
-	TransactionalObject* clone();
 
 	void _initializeImplementation();
 
@@ -969,7 +977,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PlayerCreature;
-	friend class TransactionalObjectHandle<PlayerCreatureImplementation*>;
 };
 
 class PlayerCreatureAdapter : public CreatureObjectAdapter {
@@ -1207,6 +1214,10 @@ public:
 	CraftingTool* getLastCraftingToolUsed();
 
 	void setLastCraftingToolUsed(CraftingTool* tool);
+
+	bool isInvisible();
+
+	void setInvisible(bool invis);
 
 protected:
 	String _param0_sendExecuteConsoleCommand__String_;

@@ -102,6 +102,7 @@ public:
 		argsHashMap.put("trainer_marksman", MapLocationType::TRAINER_MARKSMAN);
 		argsHashMap.put("trainer_entertainer", MapLocationType::TRAINER_ENTERTAINER);
 		argsHashMap.put("trainer_medic", MapLocationType::TRAINER_MEDIC);
+		argsHashMap.setNullValue(0);
 
 	}
 

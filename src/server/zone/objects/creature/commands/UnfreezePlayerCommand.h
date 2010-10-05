@@ -42,10 +42,11 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef UNFREEZEPLAYERCOMMAND_H_
-#define UNFREEZEPLAYERCOMMAND_H_
+#ifndef UNFREEZEPlayerCOMMAND_H_
+#define UNFREEZEPlayerCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureState.h"
 
 class UnfreezePlayerCommand : public QueueCommand {
 public:
@@ -63,9 +64,53 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		String syntaxerror = "Invalid arguments: /unfreezePlayer <firstname>";
+
+		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
+
+		ManagedReference<PlayerCreature* > targetPlayer = NULL;
+		PlayerCreature* player = (PlayerCreature*) creature;
+		StringTokenizer args(arguments.toString());
+
+		if (object == NULL || !object->isPlayerCreature()) {
+
+			String firstName;
+			if (args.hasMoreTokens()) {
+				args.getStringToken(firstName);
+				targetPlayer = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+			}
+
+		} else {
+			targetPlayer = (PlayerCreature*) object.get();
+		}
+
+		if (targetPlayer == NULL) {
+			player->sendSystemMessage(syntaxerror);
+			return INVALIDPARAMETERS;
+		}
+
+		try {
+
+			Locker playerlocker(targetPlayer);
+
+			targetPlayer->clearState(CreatureState::ROOTED, true);
+			targetPlayer->sendSystemMessage("You have been unfrozen by \'" + player->getFirstName() + "\'");
+
+			targetPlayer->setSpeedMultiplierBase(1.f, true);
+
+			player->sendSystemMessage(targetPlayer->getFirstName() + " has been unfrozen.");
+
+		} catch (...) {
+			player->sendSystemMessage(syntaxerror);
+		}
+
 		return SUCCESS;
+
 	}
 
 };
 
-#endif //UNFREEZEPLAYERCOMMAND_H_
+#endif //UNFREEZEPlayerCOMMAND_H_
