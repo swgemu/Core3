@@ -20,75 +20,14 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/managers/templates/TemplateManager.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
-
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
-
 /*
  *	PlanetManagerStub
  */
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServerImplementation* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 PlanetManager::PlanetManager(DummyConstructorParameter* param) : ManagedService(param) {
@@ -533,10 +472,10 @@ MissionTargetMap* PlanetManager::getInformants() {
 }
 
 DistributedObjectServant* PlanetManager::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void PlanetManager::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	PlanetManagerImplementation
@@ -571,30 +510,32 @@ PlanetManagerImplementation::operator const PlanetManager*() {
 	return _this;
 }
 
-TransactionalObject* PlanetManagerImplementation::clone() {
-	return (TransactionalObject*) new PlanetManagerImplementation(*this);
-}
-
-
 void PlanetManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void PlanetManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void PlanetManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void PlanetManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void PlanetManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void PlanetManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void PlanetManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void PlanetManagerImplementation::_serializationHelperMethod() {

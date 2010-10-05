@@ -313,8 +313,6 @@ public:
 protected:
 	virtual ~EntertainingSessionImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -336,7 +334,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class EntertainingSession;
-	friend class TransactionalObjectHandle<EntertainingSessionImplementation*>;
 };
 
 class EntertainingSessionAdapter : public FacadeAdapter {

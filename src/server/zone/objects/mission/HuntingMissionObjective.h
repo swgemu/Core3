@@ -182,8 +182,6 @@ public:
 protected:
 	virtual ~HuntingMissionObjectiveImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -205,7 +203,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class HuntingMissionObjective;
-	friend class TransactionalObjectHandle<HuntingMissionObjectiveImplementation*>;
 };
 
 class HuntingMissionObjectiveAdapter : public MissionObjectiveAdapter {

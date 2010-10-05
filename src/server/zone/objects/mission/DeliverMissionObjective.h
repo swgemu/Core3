@@ -263,8 +263,6 @@ public:
 protected:
 	virtual ~DeliverMissionObjectiveImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -286,7 +284,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DeliverMissionObjective;
-	friend class TransactionalObjectHandle<DeliverMissionObjectiveImplementation*>;
 };
 
 class DeliverMissionObjectiveAdapter : public MissionObjectiveAdapter {

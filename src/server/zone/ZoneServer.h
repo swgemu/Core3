@@ -649,8 +649,6 @@ public:
 protected:
 	virtual ~ZoneServerImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -668,7 +666,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ZoneServer;
-	friend class TransactionalObjectHandle<ZoneServerImplementation*>;
 };
 
 class ZoneServerAdapter : public ManagedServiceAdapter {

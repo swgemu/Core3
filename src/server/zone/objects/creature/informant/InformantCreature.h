@@ -134,8 +134,6 @@ public:
 protected:
 	virtual ~InformantCreatureImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -159,7 +157,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class InformantCreature;
-	friend class TransactionalObjectHandle<InformantCreatureImplementation*>;
 };
 
 class InformantCreatureAdapter : public AiAgentAdapter {

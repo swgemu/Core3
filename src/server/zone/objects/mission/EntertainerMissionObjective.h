@@ -181,8 +181,6 @@ public:
 protected:
 	virtual ~EntertainerMissionObjectiveImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -204,7 +202,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class EntertainerMissionObjective;
-	friend class TransactionalObjectHandle<EntertainerMissionObjectiveImplementation*>;
 };
 
 class EntertainerMissionObjectiveAdapter : public MissionObjectiveAdapter {

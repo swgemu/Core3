@@ -24,87 +24,14 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
-
-#include "server/zone/objects/resource/SpawnMap.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/resource/ResourceSpawn.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
 /*
  *	InstallationObjectStub
  */
 
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 InstallationObject::InstallationObject(DummyConstructorParameter* param) : StructureObject(param) {
@@ -620,10 +547,10 @@ bool InstallationObject::isGeneratorObject() {
 }
 
 DistributedObjectServant* InstallationObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void InstallationObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	InstallationObjectImplementation
@@ -660,30 +587,32 @@ InstallationObjectImplementation::operator const InstallationObject*() {
 	return _this;
 }
 
-TransactionalObject* InstallationObjectImplementation::clone() {
-	return (TransactionalObject*) new InstallationObjectImplementation(*this);
-}
-
-
 void InstallationObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void InstallationObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void InstallationObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void InstallationObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void InstallationObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void InstallationObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void InstallationObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void InstallationObjectImplementation::_serializationHelperMethod() {

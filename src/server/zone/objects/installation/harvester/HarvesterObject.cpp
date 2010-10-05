@@ -6,55 +6,14 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "system/util/Vector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
-
-#include "server/zone/Zone.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/installation/HopperList.h"
-
 /*
  *	HarvesterObjectStub
  */
 
 HarvesterObject::HarvesterObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	HarvesterObjectImplementation* _implementation = new HarvesterObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 HarvesterObject::HarvesterObject(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -154,10 +113,10 @@ bool HarvesterObject::isHarvesterObject() {
 }
 
 DistributedObjectServant* HarvesterObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void HarvesterObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	HarvesterObjectImplementation
@@ -194,30 +153,32 @@ HarvesterObjectImplementation::operator const HarvesterObject*() {
 	return _this;
 }
 
-TransactionalObject* HarvesterObjectImplementation::clone() {
-	return (TransactionalObject*) new HarvesterObjectImplementation(*this);
-}
-
-
 void HarvesterObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void HarvesterObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void HarvesterObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void HarvesterObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void HarvesterObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void HarvesterObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void HarvesterObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void HarvesterObjectImplementation::_serializationHelperMethod() {

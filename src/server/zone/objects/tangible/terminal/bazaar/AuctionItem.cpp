@@ -6,21 +6,14 @@
 
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 
-
-// Imported class dependencies
-
-#include "system/util/VectorMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	AuctionItemStub
  */
 
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 AuctionItem::AuctionItem(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -469,10 +462,10 @@ String AuctionItem::getLocation() {
 }
 
 DistributedObjectServant* AuctionItem::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void AuctionItem::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	AuctionItemImplementation
@@ -509,30 +502,32 @@ AuctionItemImplementation::operator const AuctionItem*() {
 	return _this;
 }
 
-TransactionalObject* AuctionItemImplementation::clone() {
-	return (TransactionalObject*) new AuctionItemImplementation(*this);
-}
-
-
 void AuctionItemImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void AuctionItemImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void AuctionItemImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void AuctionItemImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void AuctionItemImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void AuctionItemImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void AuctionItemImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void AuctionItemImplementation::_serializationHelperMethod() {

@@ -18,51 +18,14 @@
 
 #include "server/zone/objects/area/MissionReconActiveArea.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/mission/ReconMissionObjective.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/mission/MissionObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	ReconMissionObjectiveStub
  */
 
 ReconMissionObjective::ReconMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	ReconMissionObjectiveImplementation* _implementation = new ReconMissionObjectiveImplementation(mission);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ReconMissionObjective::ReconMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -125,10 +88,10 @@ void ReconMissionObjective::complete() {
 }
 
 DistributedObjectServant* ReconMissionObjective::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void ReconMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ReconMissionObjectiveImplementation
@@ -163,30 +126,32 @@ ReconMissionObjectiveImplementation::operator const ReconMissionObjective*() {
 	return _this;
 }
 
-TransactionalObject* ReconMissionObjectiveImplementation::clone() {
-	return (TransactionalObject*) new ReconMissionObjectiveImplementation(*this);
-}
-
-
 void ReconMissionObjectiveImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ReconMissionObjectiveImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ReconMissionObjectiveImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::_serializationHelperMethod() {

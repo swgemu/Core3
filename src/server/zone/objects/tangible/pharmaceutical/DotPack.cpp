@@ -20,121 +20,14 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/managers/account/AccountManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
 /*
  *	DotPackStub
  */
 
 DotPack::DotPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	DotPackImplementation* _implementation = new DotPackImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 DotPack::DotPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
@@ -344,10 +237,10 @@ unsigned int DotPack::getDotType() {
 }
 
 DistributedObjectServant* DotPack::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void DotPack::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	DotPackImplementation
@@ -384,30 +277,32 @@ DotPackImplementation::operator const DotPack*() {
 	return _this;
 }
 
-TransactionalObject* DotPackImplementation::clone() {
-	return (TransactionalObject*) new DotPackImplementation(*this);
-}
-
-
 void DotPackImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void DotPackImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void DotPackImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void DotPackImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void DotPackImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void DotPackImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void DotPackImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void DotPackImplementation::_serializationHelperMethod() {

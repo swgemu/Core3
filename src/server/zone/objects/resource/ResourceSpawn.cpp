@@ -12,61 +12,14 @@
 
 #include "server/zone/objects/resource/ResourceContainer.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/resource/ResourceSpawn.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/util/Vector.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
 /*
  *	ResourceSpawnStub
  */
 
 ResourceSpawn::ResourceSpawn() : SceneObject(DummyConstructorParameter::instance()) {
 	ResourceSpawnImplementation* _implementation = new ResourceSpawnImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ResourceSpawn::ResourceSpawn(DummyConstructorParameter* param) : SceneObject(param) {
@@ -605,10 +558,10 @@ void ResourceSpawn::print() {
 }
 
 DistributedObjectServant* ResourceSpawn::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void ResourceSpawn::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ResourceSpawnImplementation
@@ -643,30 +596,32 @@ ResourceSpawnImplementation::operator const ResourceSpawn*() {
 	return _this;
 }
 
-TransactionalObject* ResourceSpawnImplementation::clone() {
-	return (TransactionalObject*) new ResourceSpawnImplementation(*this);
-}
-
-
 void ResourceSpawnImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ResourceSpawnImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ResourceSpawnImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ResourceSpawnImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ResourceSpawnImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ResourceSpawnImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ResourceSpawnImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ResourceSpawnImplementation::_serializationHelperMethod() {

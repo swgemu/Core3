@@ -8,47 +8,14 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	TeachPlayerListBoxStub
  */
 
 TeachPlayerListBox::TeachPlayerListBox(PlayerCreature* player) : SuiListBox(DummyConstructorParameter::instance()) {
 	TeachPlayerListBoxImplementation* _implementation = new TeachPlayerListBoxImplementation(player);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 TeachPlayerListBox::TeachPlayerListBox(DummyConstructorParameter* param) : SuiListBox(param) {
@@ -106,10 +73,10 @@ bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreatu
 }
 
 DistributedObjectServant* TeachPlayerListBox::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void TeachPlayerListBox::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	TeachPlayerListBoxImplementation
@@ -146,30 +113,32 @@ TeachPlayerListBoxImplementation::operator const TeachPlayerListBox*() {
 	return _this;
 }
 
-TransactionalObject* TeachPlayerListBoxImplementation::clone() {
-	return (TransactionalObject*) new TeachPlayerListBoxImplementation(*this);
-}
-
-
 void TeachPlayerListBoxImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void TeachPlayerListBoxImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void TeachPlayerListBoxImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void TeachPlayerListBoxImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void TeachPlayerListBoxImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void TeachPlayerListBoxImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void TeachPlayerListBoxImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void TeachPlayerListBoxImplementation::_serializationHelperMethod() {

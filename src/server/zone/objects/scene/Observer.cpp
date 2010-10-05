@@ -6,13 +6,6 @@
 
 #include "server/zone/objects/scene/Observable.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	ObserverStub
  */

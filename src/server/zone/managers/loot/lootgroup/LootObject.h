@@ -92,8 +92,6 @@ public:
 protected:
 	virtual ~LootObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -117,7 +115,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class LootObject;
-	friend class TransactionalObjectHandle<LootObjectImplementation*>;
 };
 
 class LootObjectAdapter : public ManagedObjectAdapter {

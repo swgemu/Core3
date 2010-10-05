@@ -30,91 +30,14 @@
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/Zone.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "system/util/Vector.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/group/GroupList.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
 /*
  *	CreatureObjectStub
  */
 
 CreatureObject::CreatureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	CreatureObjectImplementation* _implementation = new CreatureObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CreatureObject::CreatureObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -3227,10 +3150,10 @@ bool CreatureObject::isInformantCreature() {
 }
 
 DistributedObjectServant* CreatureObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CreatureObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CreatureObjectImplementation
@@ -3265,30 +3188,32 @@ CreatureObjectImplementation::operator const CreatureObject*() {
 	return _this;
 }
 
-TransactionalObject* CreatureObjectImplementation::clone() {
-	return (TransactionalObject*) new CreatureObjectImplementation(*this);
-}
-
-
 void CreatureObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CreatureObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CreatureObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CreatureObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CreatureObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CreatureObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CreatureObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CreatureObjectImplementation::_serializationHelperMethod() {

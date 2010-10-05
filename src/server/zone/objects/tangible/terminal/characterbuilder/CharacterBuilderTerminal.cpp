@@ -12,77 +12,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	CharacterBuilderTerminalStub
  */
 
 CharacterBuilderTerminal::CharacterBuilderTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CharacterBuilderTerminalImplementation* _implementation = new CharacterBuilderTerminalImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CharacterBuilderTerminal::CharacterBuilderTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -172,10 +109,10 @@ void CharacterBuilderTerminal::enhanceCharacter(PlayerCreature* player) {
 }
 
 DistributedObjectServant* CharacterBuilderTerminal::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CharacterBuilderTerminal::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CharacterBuilderTerminalImplementation
@@ -212,30 +149,32 @@ CharacterBuilderTerminalImplementation::operator const CharacterBuilderTerminal*
 	return _this;
 }
 
-TransactionalObject* CharacterBuilderTerminalImplementation::clone() {
-	return (TransactionalObject*) new CharacterBuilderTerminalImplementation(*this);
-}
-
-
 void CharacterBuilderTerminalImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CharacterBuilderTerminalImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CharacterBuilderTerminalImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::_serializationHelperMethod() {

@@ -20,93 +20,14 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/account/AccountManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	BazaarManagerStub
  */
 
 BazaarManager::BazaarManager(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	BazaarManagerImplementation* _implementation = new BazaarManagerImplementation(server);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 BazaarManager::BazaarManager(DummyConstructorParameter* param) : ManagedService(param) {
@@ -400,10 +321,10 @@ AuctionQueryHeadersResponseMessage* BazaarManager::fillAuctionQueryHeadersRespon
 }
 
 DistributedObjectServant* BazaarManager::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void BazaarManager::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	BazaarManagerImplementation
@@ -440,30 +361,32 @@ BazaarManagerImplementation::operator const BazaarManager*() {
 	return _this;
 }
 
-TransactionalObject* BazaarManagerImplementation::clone() {
-	return (TransactionalObject*) new BazaarManagerImplementation(*this);
-}
-
-
 void BazaarManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void BazaarManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void BazaarManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void BazaarManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void BazaarManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void BazaarManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void BazaarManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void BazaarManagerImplementation::_serializationHelperMethod() {

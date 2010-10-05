@@ -8,67 +8,6 @@
 
 #include "server/zone/ZoneServer.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/account/AccountManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	ZoneClientSessionStub
  */

@@ -20,107 +20,14 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
-
-#include "server/zone/objects/region/Region.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/tangible/terminal/city/CityTerminal.h"
-
 /*
  *	RegionStub
  */
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 Region::Region(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -321,10 +228,10 @@ void Region::setCityHall(CityHallObject* hall) {
 }
 
 DistributedObjectServant* Region::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void Region::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	RegionImplementation
@@ -361,30 +268,32 @@ RegionImplementation::operator const Region*() {
 	return _this;
 }
 
-TransactionalObject* RegionImplementation::clone() {
-	return (TransactionalObject*) new RegionImplementation(*this);
-}
-
-
 void RegionImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void RegionImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void RegionImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void RegionImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void RegionImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void RegionImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void RegionImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void RegionImplementation::_serializationHelperMethod() {

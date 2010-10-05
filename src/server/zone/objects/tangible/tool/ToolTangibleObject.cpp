@@ -8,61 +8,14 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	ToolTangibleObjectStub
  */
 
 ToolTangibleObject::ToolTangibleObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	ToolTangibleObjectImplementation* _implementation = new ToolTangibleObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ToolTangibleObject::ToolTangibleObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -86,10 +39,10 @@ void ToolTangibleObject::initializeTransientMembers() {
 }
 
 DistributedObjectServant* ToolTangibleObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void ToolTangibleObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ToolTangibleObjectImplementation
@@ -126,30 +79,32 @@ ToolTangibleObjectImplementation::operator const ToolTangibleObject*() {
 	return _this;
 }
 
-TransactionalObject* ToolTangibleObjectImplementation::clone() {
-	return (TransactionalObject*) new ToolTangibleObjectImplementation(*this);
-}
-
-
 void ToolTangibleObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ToolTangibleObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ToolTangibleObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ToolTangibleObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ToolTangibleObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ToolTangibleObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ToolTangibleObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ToolTangibleObjectImplementation::_serializationHelperMethod() {

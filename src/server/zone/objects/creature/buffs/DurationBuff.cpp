@@ -12,65 +12,14 @@
 
 #include "server/zone/objects/creature/buffs/SpiceDownerBuff.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	DurationBuffStub
  */
 
 DurationBuff::DurationBuff(CreatureObject* creo, unsigned int buffcrc, float duration) : Buff(DummyConstructorParameter::instance()) {
 	DurationBuffImplementation* _implementation = new DurationBuffImplementation(creo, buffcrc, duration);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 DurationBuff::DurationBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -95,10 +44,10 @@ void DurationBuff::activate(bool applyModifiers) {
 }
 
 DistributedObjectServant* DurationBuff::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void DurationBuff::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	DurationBuffImplementation
@@ -135,30 +84,32 @@ DurationBuffImplementation::operator const DurationBuff*() {
 	return _this;
 }
 
-TransactionalObject* DurationBuffImplementation::clone() {
-	return (TransactionalObject*) new DurationBuffImplementation(*this);
-}
-
-
 void DurationBuffImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void DurationBuffImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void DurationBuffImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void DurationBuffImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void DurationBuffImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void DurationBuffImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void DurationBuffImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void DurationBuffImplementation::_serializationHelperMethod() {

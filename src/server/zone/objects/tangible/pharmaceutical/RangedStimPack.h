@@ -236,8 +236,6 @@ public:
 protected:
 	virtual ~RangedStimPackImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -261,7 +259,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class RangedStimPack;
-	friend class TransactionalObjectHandle<RangedStimPackImplementation*>;
 };
 
 class RangedStimPackAdapter : public StimPackAdapter {

@@ -16,101 +16,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	TangibleObjectStub
  */
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -926,10 +839,10 @@ bool TangibleObject::isFromFactoryCrate() {
 }
 
 DistributedObjectServant* TangibleObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void TangibleObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	TangibleObjectImplementation
@@ -966,30 +879,32 @@ TangibleObjectImplementation::operator const TangibleObject*() {
 	return _this;
 }
 
-TransactionalObject* TangibleObjectImplementation::clone() {
-	return (TransactionalObject*) new TangibleObjectImplementation(*this);
-}
-
-
 void TangibleObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void TangibleObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void TangibleObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void TangibleObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void TangibleObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void TangibleObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void TangibleObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void TangibleObjectImplementation::_serializationHelperMethod() {

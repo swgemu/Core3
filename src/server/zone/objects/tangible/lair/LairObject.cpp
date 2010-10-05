@@ -12,79 +12,14 @@
 
 #include "server/zone/objects/tangible/lair/HealLairEvent.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	LairObjectStub
  */
 
 LairObject::LairObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	LairObjectImplementation* _implementation = new LairObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 LairObject::LairObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -228,10 +163,10 @@ SortedVector<unsigned int>* LairObject::getObjectsToSpawn() {
 }
 
 DistributedObjectServant* LairObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void LairObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	LairObjectImplementation
@@ -268,30 +203,32 @@ LairObjectImplementation::operator const LairObject*() {
 	return _this;
 }
 
-TransactionalObject* LairObjectImplementation::clone() {
-	return (TransactionalObject*) new LairObjectImplementation(*this);
-}
-
-
 void LairObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void LairObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void LairObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void LairObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void LairObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void LairObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void LairObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void LairObjectImplementation::_serializationHelperMethod() {

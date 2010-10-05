@@ -90,8 +90,6 @@ public:
 protected:
 	virtual ~TravelBuildingObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -115,7 +113,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TravelBuildingObject;
-	friend class TransactionalObjectHandle<TravelBuildingObjectImplementation*>;
 };
 
 class TravelBuildingObjectAdapter : public BuildingObjectAdapter {

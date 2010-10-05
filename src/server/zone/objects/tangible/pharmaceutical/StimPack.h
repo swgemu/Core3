@@ -208,8 +208,6 @@ public:
 protected:
 	virtual ~StimPackImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -233,7 +231,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StimPack;
-	friend class TransactionalObjectHandle<StimPackImplementation*>;
 };
 
 class StimPackAdapter : public PharmaceuticalObjectAdapter {

@@ -180,8 +180,6 @@ public:
 protected:
 	virtual ~JunkdealerCreatureImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -205,7 +203,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class JunkdealerCreature;
-	friend class TransactionalObjectHandle<JunkdealerCreatureImplementation*>;
 };
 
 class JunkdealerCreatureAdapter : public CreatureObjectAdapter {

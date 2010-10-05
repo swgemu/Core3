@@ -16,51 +16,14 @@
 
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
-
-// Imported class dependencies
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/mission/MissionObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/resource/SpawnMap.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	SurveyMissionObjectiveStub
  */
 
 SurveyMissionObjective::SurveyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	SurveyMissionObjectiveImplementation* _implementation = new SurveyMissionObjectiveImplementation(mission);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 SurveyMissionObjective::SurveyMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -183,10 +146,10 @@ void SurveyMissionObjective::setEfficiency(unsigned int eff) {
 }
 
 DistributedObjectServant* SurveyMissionObjective::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void SurveyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	SurveyMissionObjectiveImplementation
@@ -221,30 +184,32 @@ SurveyMissionObjectiveImplementation::operator const SurveyMissionObjective*() {
 	return _this;
 }
 
-TransactionalObject* SurveyMissionObjectiveImplementation::clone() {
-	return (TransactionalObject*) new SurveyMissionObjectiveImplementation(*this);
-}
-
-
 void SurveyMissionObjectiveImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void SurveyMissionObjectiveImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void SurveyMissionObjectiveImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::_serializationHelperMethod() {

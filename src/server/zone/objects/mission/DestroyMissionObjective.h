@@ -215,8 +215,6 @@ public:
 protected:
 	virtual ~DestroyMissionObjectiveImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -238,7 +236,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DestroyMissionObjective;
-	friend class TransactionalObjectHandle<DestroyMissionObjectiveImplementation*>;
 };
 
 class DestroyMissionObjectiveAdapter : public MissionObjectiveAdapter {

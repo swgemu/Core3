@@ -8,59 +8,14 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	SuiMessageBoxStub
  */
 
 SuiMessageBox::SuiMessageBox(PlayerCreature* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiMessageBoxImplementation* _implementation = new SuiMessageBoxImplementation(player, windowType);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 SuiMessageBox::SuiMessageBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -97,10 +52,10 @@ bool SuiMessageBox::isMessageBox() {
 }
 
 DistributedObjectServant* SuiMessageBox::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void SuiMessageBox::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	SuiMessageBoxImplementation
@@ -137,30 +92,32 @@ SuiMessageBoxImplementation::operator const SuiMessageBox*() {
 	return _this;
 }
 
-TransactionalObject* SuiMessageBoxImplementation::clone() {
-	return (TransactionalObject*) new SuiMessageBoxImplementation(*this);
-}
-
-
 void SuiMessageBoxImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void SuiMessageBoxImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void SuiMessageBoxImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void SuiMessageBoxImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void SuiMessageBoxImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void SuiMessageBoxImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void SuiMessageBoxImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void SuiMessageBoxImplementation::_serializationHelperMethod() {

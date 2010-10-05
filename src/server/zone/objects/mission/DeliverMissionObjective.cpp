@@ -26,93 +26,14 @@
 
 #include "server/zone/objects/tangible/lair/LairObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/mission/DestroyMissionObjective.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/events/AiThinkEvent.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/mission/MissionObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/templates/tangible/LairObjectTemplate.h"
-
-#include "server/zone/objects/creature/PatrolPoint.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/tangible/DamageMap.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/creature/events/AiMoveEvent.h"
-
-#include "server/zone/objects/creature/PatrolPointsVector.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/tangible/lair/HealLairEvent.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	DeliverMissionObjectiveStub
  */
 
 DeliverMissionObjective::DeliverMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	DeliverMissionObjectiveImplementation* _implementation = new DeliverMissionObjectiveImplementation(mission);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 DeliverMissionObjective::DeliverMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -248,10 +169,10 @@ bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
 }
 
 DistributedObjectServant* DeliverMissionObjective::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void DeliverMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	DeliverMissionObjectiveImplementation
@@ -286,30 +207,32 @@ DeliverMissionObjectiveImplementation::operator const DeliverMissionObjective*()
 	return _this;
 }
 
-TransactionalObject* DeliverMissionObjectiveImplementation::clone() {
-	return (TransactionalObject*) new DeliverMissionObjectiveImplementation(*this);
-}
-
-
 void DeliverMissionObjectiveImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void DeliverMissionObjectiveImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void DeliverMissionObjectiveImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void DeliverMissionObjectiveImplementation::_serializationHelperMethod() {

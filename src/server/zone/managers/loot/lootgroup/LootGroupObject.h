@@ -158,8 +158,6 @@ public:
 protected:
 	virtual ~LootGroupObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -183,7 +181,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class LootGroupObject;
-	friend class TransactionalObjectHandle<LootGroupObjectImplementation*>;
 };
 
 class LootGroupObjectAdapter : public ManagedObjectAdapter {

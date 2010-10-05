@@ -199,8 +199,6 @@ public:
 protected:
 	virtual ~FactoryCrateImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -224,7 +222,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class FactoryCrate;
-	friend class TransactionalObjectHandle<FactoryCrateImplementation*>;
 };
 
 class FactoryCrateAdapter : public TangibleObjectAdapter {

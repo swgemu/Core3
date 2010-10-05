@@ -10,65 +10,14 @@
 
 #include "server/zone/objects/creature/buffs/PowerBoostBuffDurationEvent.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	PowerBoostBuffStub
  */
 
 PowerBoostBuff::PowerBoostBuff(CreatureObject* creo, const String& name, unsigned int buffCRC, int value, int duration) : Buff(DummyConstructorParameter::instance()) {
 	PowerBoostBuffImplementation* _implementation = new PowerBoostBuffImplementation(creo, name, buffCRC, value, duration);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 PowerBoostBuff::PowerBoostBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -161,10 +110,10 @@ void PowerBoostBuff::clearBuffEvent() {
 }
 
 DistributedObjectServant* PowerBoostBuff::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void PowerBoostBuff::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	PowerBoostBuffImplementation
@@ -201,30 +150,32 @@ PowerBoostBuffImplementation::operator const PowerBoostBuff*() {
 	return _this;
 }
 
-TransactionalObject* PowerBoostBuffImplementation::clone() {
-	return (TransactionalObject*) new PowerBoostBuffImplementation(*this);
-}
-
-
 void PowerBoostBuffImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void PowerBoostBuffImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void PowerBoostBuffImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void PowerBoostBuffImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void PowerBoostBuffImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void PowerBoostBuffImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void PowerBoostBuffImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void PowerBoostBuffImplementation::_serializationHelperMethod() {

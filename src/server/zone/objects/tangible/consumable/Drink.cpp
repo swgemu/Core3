@@ -8,61 +8,14 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	DrinkStub
  */
 
 Drink::Drink() : Consumable(DummyConstructorParameter::instance()) {
 	DrinkImplementation* _implementation = new DrinkImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 Drink::Drink(DummyConstructorParameter* param) : Consumable(param) {
@@ -99,10 +52,10 @@ void Drink::initializePrivateData() {
 }
 
 DistributedObjectServant* Drink::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void Drink::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	DrinkImplementation
@@ -139,30 +92,32 @@ DrinkImplementation::operator const Drink*() {
 	return _this;
 }
 
-TransactionalObject* DrinkImplementation::clone() {
-	return (TransactionalObject*) new DrinkImplementation(*this);
-}
-
-
 void DrinkImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void DrinkImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void DrinkImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void DrinkImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void DrinkImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void DrinkImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void DrinkImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void DrinkImplementation::_serializationHelperMethod() {

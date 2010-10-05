@@ -12,65 +12,14 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-
-// Imported class dependencies
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/installation/HopperList.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
-
 /*
  *	FactoryObjectStub
  */
 
 FactoryObject::FactoryObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	FactoryObjectImplementation* _implementation = new FactoryObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 FactoryObject::FactoryObject(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -300,10 +249,10 @@ void FactoryObject::createNewObject() {
 }
 
 DistributedObjectServant* FactoryObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void FactoryObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	FactoryObjectImplementation
@@ -340,30 +289,32 @@ FactoryObjectImplementation::operator const FactoryObject*() {
 	return _this;
 }
 
-TransactionalObject* FactoryObjectImplementation::clone() {
-	return (TransactionalObject*) new FactoryObjectImplementation(*this);
-}
-
-
 void FactoryObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void FactoryObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void FactoryObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void FactoryObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void FactoryObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void FactoryObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void FactoryObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void FactoryObjectImplementation::_serializationHelperMethod() {

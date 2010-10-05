@@ -18,51 +18,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/mission/DestroyMissionObjective.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/mission/MissionObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	CraftingMissionObjectiveStub
  */
 
 CraftingMissionObjective::CraftingMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	CraftingMissionObjectiveImplementation* _implementation = new CraftingMissionObjectiveImplementation(mission);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CraftingMissionObjective::CraftingMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -143,10 +106,10 @@ int CraftingMissionObjective::notifyObserverEvent(MissionObserver* observer, uns
 }
 
 DistributedObjectServant* CraftingMissionObjective::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CraftingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CraftingMissionObjectiveImplementation
@@ -181,30 +144,32 @@ CraftingMissionObjectiveImplementation::operator const CraftingMissionObjective*
 	return _this;
 }
 
-TransactionalObject* CraftingMissionObjectiveImplementation::clone() {
-	return (TransactionalObject*) new CraftingMissionObjectiveImplementation(*this);
-}
-
-
 void CraftingMissionObjectiveImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CraftingMissionObjectiveImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CraftingMissionObjectiveImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::_serializationHelperMethod() {

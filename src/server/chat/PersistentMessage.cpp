@@ -4,19 +4,14 @@
 
 #include "PersistentMessage.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	PersistentMessageStub
  */
 
 PersistentMessage::PersistentMessage() : ManagedObject(DummyConstructorParameter::instance()) {
 	PersistentMessageImplementation* _implementation = new PersistentMessageImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 PersistentMessage::PersistentMessage(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -236,10 +231,10 @@ ParameterizedStringId* PersistentMessage::getParameterizedBody() {
 }
 
 DistributedObjectServant* PersistentMessage::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void PersistentMessage::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	PersistentMessageImplementation
@@ -276,30 +271,32 @@ PersistentMessageImplementation::operator const PersistentMessage*() {
 	return _this;
 }
 
-TransactionalObject* PersistentMessageImplementation::clone() {
-	return (TransactionalObject*) new PersistentMessageImplementation(*this);
-}
-
-
 void PersistentMessageImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void PersistentMessageImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void PersistentMessageImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void PersistentMessageImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void PersistentMessageImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void PersistentMessageImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void PersistentMessageImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void PersistentMessageImplementation::_serializationHelperMethod() {

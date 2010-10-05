@@ -6,47 +6,14 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	SuiCharacterBuilderBoxStub
  */
 
 SuiCharacterBuilderBox::SuiCharacterBuilderBox(PlayerCreature* player, CharacterBuilderMenuNode* root) : SuiListBox(DummyConstructorParameter::instance()) {
 	SuiCharacterBuilderBoxImplementation* _implementation = new SuiCharacterBuilderBoxImplementation(player, root);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 SuiCharacterBuilderBox::SuiCharacterBuilderBox(DummyConstructorParameter* param) : SuiListBox(param) {
@@ -101,10 +68,10 @@ bool SuiCharacterBuilderBox::isCharacterBuilderBox() {
 }
 
 DistributedObjectServant* SuiCharacterBuilderBox::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void SuiCharacterBuilderBox::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	SuiCharacterBuilderBoxImplementation
@@ -141,30 +108,32 @@ SuiCharacterBuilderBoxImplementation::operator const SuiCharacterBuilderBox*() {
 	return _this;
 }
 
-TransactionalObject* SuiCharacterBuilderBoxImplementation::clone() {
-	return (TransactionalObject*) new SuiCharacterBuilderBoxImplementation(*this);
-}
-
-
 void SuiCharacterBuilderBoxImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void SuiCharacterBuilderBoxImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void SuiCharacterBuilderBoxImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::_serializationHelperMethod() {

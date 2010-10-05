@@ -14,83 +14,14 @@
 
 #include "server/zone/objects/building/city/CityHallObject.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/region/Region.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/tangible/terminal/city/CityTerminal.h"
-
 /*
  *	CityVoteTerminalStub
  */
 
 CityVoteTerminal::CityVoteTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CityVoteTerminalImplementation* _implementation = new CityVoteTerminalImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CityVoteTerminal::CityVoteTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -184,10 +115,10 @@ CityHallObject* CityVoteTerminal::getCityHallObject() {
 }
 
 DistributedObjectServant* CityVoteTerminal::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CityVoteTerminal::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CityVoteTerminalImplementation
@@ -224,30 +155,32 @@ CityVoteTerminalImplementation::operator const CityVoteTerminal*() {
 	return _this;
 }
 
-TransactionalObject* CityVoteTerminalImplementation::clone() {
-	return (TransactionalObject*) new CityVoteTerminalImplementation(*this);
-}
-
-
 void CityVoteTerminalImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CityVoteTerminalImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CityVoteTerminalImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CityVoteTerminalImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CityVoteTerminalImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CityVoteTerminalImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CityVoteTerminalImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CityVoteTerminalImplementation::_serializationHelperMethod() {

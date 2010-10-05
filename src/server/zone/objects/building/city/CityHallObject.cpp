@@ -12,73 +12,14 @@
 
 #include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/building/city/CityHallObject.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
-
-#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
-
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	CityHallObjectStub
  */
 
 CityHallObject::CityHallObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	CityHallObjectImplementation* _implementation = new CityHallObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CityHallObject::CityHallObject(DummyConstructorParameter* param) : BuildingObject(param) {
@@ -571,10 +512,10 @@ void CityHallObject::setCityRegion(Region* region) {
 }
 
 DistributedObjectServant* CityHallObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CityHallObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CityHallObjectImplementation
@@ -611,30 +552,32 @@ CityHallObjectImplementation::operator const CityHallObject*() {
 	return _this;
 }
 
-TransactionalObject* CityHallObjectImplementation::clone() {
-	return (TransactionalObject*) new CityHallObjectImplementation(*this);
-}
-
-
 void CityHallObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CityHallObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CityHallObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CityHallObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CityHallObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CityHallObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CityHallObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CityHallObjectImplementation::_serializationHelperMethod() {

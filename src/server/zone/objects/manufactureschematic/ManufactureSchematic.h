@@ -327,8 +327,6 @@ public:
 protected:
 	virtual ~ManufactureSchematicImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -352,7 +350,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ManufactureSchematic;
-	friend class TransactionalObjectHandle<ManufactureSchematicImplementation*>;
 };
 
 class ManufactureSchematicAdapter : public IntangibleObjectAdapter {
