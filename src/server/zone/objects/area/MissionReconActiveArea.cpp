@@ -10,61 +10,14 @@
 
 #include "server/zone/objects/mission/ReconMissionObjective.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/area/MissionReconActiveArea.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	MissionReconActiveAreaStub
  */
 
 MissionReconActiveArea::MissionReconActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	MissionReconActiveAreaImplementation* _implementation = new MissionReconActiveAreaImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 MissionReconActiveArea::MissionReconActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -103,10 +56,10 @@ void MissionReconActiveArea::setMissionObjective(ReconMissionObjective* mission)
 }
 
 DistributedObjectServant* MissionReconActiveArea::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void MissionReconActiveArea::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	MissionReconActiveAreaImplementation
@@ -143,30 +96,32 @@ MissionReconActiveAreaImplementation::operator const MissionReconActiveArea*() {
 	return _this;
 }
 
-TransactionalObject* MissionReconActiveAreaImplementation::clone() {
-	return (TransactionalObject*) new MissionReconActiveAreaImplementation(*this);
-}
-
-
 void MissionReconActiveAreaImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void MissionReconActiveAreaImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void MissionReconActiveAreaImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::_serializationHelperMethod() {

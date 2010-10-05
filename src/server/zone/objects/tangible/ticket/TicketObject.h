@@ -193,8 +193,6 @@ public:
 protected:
 	virtual ~TicketObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -218,7 +216,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TicketObject;
-	friend class TransactionalObjectHandle<TicketObjectImplementation*>;
 };
 
 class TicketObjectAdapter : public TangibleObjectAdapter {

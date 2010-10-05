@@ -8,59 +8,14 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	BadgeActiveAreaStub
  */
 
 BadgeActiveArea::BadgeActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	BadgeActiveAreaImplementation* _implementation = new BadgeActiveAreaImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 BadgeActiveArea::BadgeActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
@@ -112,10 +67,10 @@ unsigned int BadgeActiveArea::getBadge() {
 }
 
 DistributedObjectServant* BadgeActiveArea::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void BadgeActiveArea::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	BadgeActiveAreaImplementation
@@ -152,30 +107,32 @@ BadgeActiveAreaImplementation::operator const BadgeActiveArea*() {
 	return _this;
 }
 
-TransactionalObject* BadgeActiveAreaImplementation::clone() {
-	return (TransactionalObject*) new BadgeActiveAreaImplementation(*this);
-}
-
-
 void BadgeActiveAreaImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void BadgeActiveAreaImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void BadgeActiveAreaImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void BadgeActiveAreaImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void BadgeActiveAreaImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void BadgeActiveAreaImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void BadgeActiveAreaImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void BadgeActiveAreaImplementation::_serializationHelperMethod() {

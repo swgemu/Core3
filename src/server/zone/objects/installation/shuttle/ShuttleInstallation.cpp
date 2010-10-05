@@ -24,107 +24,14 @@
 
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/installation/HopperList.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleLandingEvent.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleTakeOffEvent.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	ShuttleInstallationStub
  */
 
 ShuttleInstallation::ShuttleInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	ShuttleInstallationImplementation* _implementation = new ShuttleInstallationImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ShuttleInstallation::ShuttleInstallation(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -202,10 +109,10 @@ bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 }
 
 DistributedObjectServant* ShuttleInstallation::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void ShuttleInstallation::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ShuttleInstallationImplementation
@@ -242,30 +149,32 @@ ShuttleInstallationImplementation::operator const ShuttleInstallation*() {
 	return _this;
 }
 
-TransactionalObject* ShuttleInstallationImplementation::clone() {
-	return (TransactionalObject*) new ShuttleInstallationImplementation(*this);
-}
-
-
 void ShuttleInstallationImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ShuttleInstallationImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ShuttleInstallationImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ShuttleInstallationImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ShuttleInstallationImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ShuttleInstallationImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ShuttleInstallationImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ShuttleInstallationImplementation::_serializationHelperMethod() {

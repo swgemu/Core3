@@ -265,8 +265,6 @@ public:
 protected:
 	virtual ~DraftSchematicImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -290,7 +288,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DraftSchematic;
-	friend class TransactionalObjectHandle<DraftSchematicImplementation*>;
 };
 
 class DraftSchematicAdapter : public IntangibleObjectAdapter {

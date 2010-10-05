@@ -243,8 +243,6 @@ public:
 protected:
 	virtual ~StructureManagerImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -268,7 +266,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StructureManager;
-	friend class TransactionalObjectHandle<StructureManagerImplementation*>;
 };
 
 class StructureManagerAdapter : public ManagedServiceAdapter {

@@ -10,93 +10,14 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/events/AiThinkEvent.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/creature/PatrolPoint.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/tangible/DamageMap.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/creature/events/AiMoveEvent.h"
-
-#include "server/zone/objects/creature/PatrolPointsVector.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	InformantCreatureStub
  */
 
 InformantCreature::InformantCreature() : AiAgent(DummyConstructorParameter::instance()) {
 	InformantCreatureImplementation* _implementation = new InformantCreatureImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 InformantCreature::InformantCreature(DummyConstructorParameter* param) : AiAgent(param) {
@@ -197,10 +118,10 @@ void InformantCreature::sendConversationStartTo(SceneObject* player) {
 }
 
 DistributedObjectServant* InformantCreature::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void InformantCreature::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	InformantCreatureImplementation
@@ -237,30 +158,32 @@ InformantCreatureImplementation::operator const InformantCreature*() {
 	return _this;
 }
 
-TransactionalObject* InformantCreatureImplementation::clone() {
-	return (TransactionalObject*) new InformantCreatureImplementation(*this);
-}
-
-
 void InformantCreatureImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void InformantCreatureImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void InformantCreatureImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void InformantCreatureImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void InformantCreatureImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void InformantCreatureImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void InformantCreatureImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void InformantCreatureImplementation::_serializationHelperMethod() {

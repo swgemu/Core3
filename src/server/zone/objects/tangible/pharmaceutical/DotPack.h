@@ -260,8 +260,6 @@ public:
 protected:
 	virtual ~DotPackImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -285,7 +283,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class DotPack;
-	friend class TransactionalObjectHandle<DotPackImplementation*>;
 };
 
 class DotPackAdapter : public PharmaceuticalObjectAdapter {

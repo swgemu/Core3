@@ -242,8 +242,6 @@ public:
 protected:
 	virtual ~LootManagerImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -267,7 +265,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class LootManager;
-	friend class TransactionalObjectHandle<LootManagerImplementation*>;
 };
 
 class LootManagerAdapter : public ManagedServiceAdapter {

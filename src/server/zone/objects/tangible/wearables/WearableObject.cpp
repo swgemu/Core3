@@ -8,71 +8,14 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	WearableObjectStub
  */
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -185,10 +128,10 @@ void WearableObject::setMaxSockets(int sockets) {
 }
 
 DistributedObjectServant* WearableObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void WearableObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	WearableObjectImplementation
@@ -225,30 +168,32 @@ WearableObjectImplementation::operator const WearableObject*() {
 	return _this;
 }
 
-TransactionalObject* WearableObjectImplementation::clone() {
-	return (TransactionalObject*) new WearableObjectImplementation(*this);
-}
-
-
 void WearableObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void WearableObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void WearableObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void WearableObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void WearableObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void WearableObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void WearableObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void WearableObjectImplementation::_serializationHelperMethod() {

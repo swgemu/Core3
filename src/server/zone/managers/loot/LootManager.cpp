@@ -20,107 +20,14 @@
 
 #include "server/zone/managers/loot/lootgroup/LootObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/account/AccountManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	LootManagerStub
  */
 
 LootManager::LootManager(ZoneServer* serv, ZoneProcessServerImplementation* proc, CraftingManager* craftman) : ManagedService(DummyConstructorParameter::instance()) {
 	LootManagerImplementation* _implementation = new LootManagerImplementation(serv, proc, craftman);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 LootManager::LootManager(DummyConstructorParameter* param) : ManagedService(param) {
@@ -200,10 +107,10 @@ void LootManager::testLoot(PlayerCreature* receiver, SceneObject* container) {
 }
 
 DistributedObjectServant* LootManager::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void LootManager::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	LootManagerImplementation
@@ -240,30 +147,32 @@ LootManagerImplementation::operator const LootManager*() {
 	return _this;
 }
 
-TransactionalObject* LootManagerImplementation::clone() {
-	return (TransactionalObject*) new LootManagerImplementation(*this);
-}
-
-
 void LootManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void LootManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void LootManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void LootManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void LootManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void LootManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void LootManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void LootManagerImplementation::_serializationHelperMethod() {

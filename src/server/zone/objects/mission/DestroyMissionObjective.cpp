@@ -20,57 +20,14 @@
 
 #include "server/zone/objects/tangible/lair/LairObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/mission/DestroyMissionObjective.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/mission/MissionObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/tangible/DamageMap.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/tangible/LairObjectTemplate.h"
-
-#include "server/zone/objects/tangible/lair/HealLairEvent.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	DestroyMissionObjectiveStub
  */
 
 DestroyMissionObjective::DestroyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	DestroyMissionObjectiveImplementation* _implementation = new DestroyMissionObjectiveImplementation(mission);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 DestroyMissionObjective::DestroyMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -186,10 +143,10 @@ void DestroyMissionObjective::setLairTemplateToSpawn(SharedObjectTemplate* sp) {
 }
 
 DistributedObjectServant* DestroyMissionObjective::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void DestroyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	DestroyMissionObjectiveImplementation
@@ -224,30 +181,32 @@ DestroyMissionObjectiveImplementation::operator const DestroyMissionObjective*()
 	return _this;
 }
 
-TransactionalObject* DestroyMissionObjectiveImplementation::clone() {
-	return (TransactionalObject*) new DestroyMissionObjectiveImplementation(*this);
-}
-
-
 void DestroyMissionObjectiveImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void DestroyMissionObjectiveImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void DestroyMissionObjectiveImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void DestroyMissionObjectiveImplementation::_serializationHelperMethod() {

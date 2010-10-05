@@ -10,61 +10,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	DeedStub
  */
 
 Deed::Deed() : TangibleObject(DummyConstructorParameter::instance()) {
 	DeedImplementation* _implementation = new DeedImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 Deed::Deed(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -156,10 +109,10 @@ bool Deed::isDeedObject() {
 }
 
 DistributedObjectServant* Deed::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void Deed::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	DeedImplementation
@@ -196,30 +149,32 @@ DeedImplementation::operator const Deed*() {
 	return _this;
 }
 
-TransactionalObject* DeedImplementation::clone() {
-	return (TransactionalObject*) new DeedImplementation(*this);
-}
-
-
 void DeedImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void DeedImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void DeedImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void DeedImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void DeedImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void DeedImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void DeedImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void DeedImplementation::_serializationHelperMethod() {

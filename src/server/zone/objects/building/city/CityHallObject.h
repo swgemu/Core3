@@ -282,8 +282,6 @@ public:
 protected:
 	virtual ~CityHallObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -307,7 +305,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CityHallObject;
-	friend class TransactionalObjectHandle<CityHallObjectImplementation*>;
 };
 
 class CityHallObjectAdapter : public BuildingObjectAdapter {

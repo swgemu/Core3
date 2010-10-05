@@ -137,8 +137,6 @@ public:
 protected:
 	virtual ~GuildTerminalImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -162,7 +160,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class GuildTerminal;
-	friend class TransactionalObjectHandle<GuildTerminalImplementation*>;
 };
 
 class GuildTerminalAdapter : public TerminalAdapter {

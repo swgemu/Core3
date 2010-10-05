@@ -4,11 +4,6 @@
 
 #include "Observable.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	ObservableStub
  */
@@ -81,10 +76,10 @@ int Observable::getObserverCount(unsigned int eventType) {
 }
 
 DistributedObjectServant* Observable::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void Observable::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ObservableImplementation
@@ -125,30 +120,32 @@ ObservableImplementation::operator const Observable*() {
 	return _this;
 }
 
-TransactionalObject* ObservableImplementation::clone() {
-	return (TransactionalObject*) new ObservableImplementation(*this);
-}
-
-
 void ObservableImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ObservableImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ObservableImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ObservableImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ObservableImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ObservableImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ObservableImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ObservableImplementation::_serializationHelperMethod() {

@@ -120,8 +120,6 @@ public:
 protected:
 	virtual ~TeachPlayerListBoxImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -145,7 +143,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class TeachPlayerListBox;
-	friend class TransactionalObjectHandle<TeachPlayerListBoxImplementation*>;
 };
 
 class TeachPlayerListBoxAdapter : public SuiListBoxAdapter {

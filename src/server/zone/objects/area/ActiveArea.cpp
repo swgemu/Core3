@@ -10,73 +10,14 @@
 
 #include "server/zone/objects/area/ActiveAreaEvent.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/Zone.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	ActiveAreaStub
  */
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ActiveArea::ActiveArea(DummyConstructorParameter* param) : SceneObject(param) {
@@ -240,10 +181,10 @@ void ActiveArea::setRadius(float r) {
 }
 
 DistributedObjectServant* ActiveArea::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void ActiveArea::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ActiveAreaImplementation
@@ -280,30 +221,32 @@ ActiveAreaImplementation::operator const ActiveArea*() {
 	return _this;
 }
 
-TransactionalObject* ActiveAreaImplementation::clone() {
-	return (TransactionalObject*) new ActiveAreaImplementation(*this);
-}
-
-
 void ActiveAreaImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ActiveAreaImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ActiveAreaImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ActiveAreaImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ActiveAreaImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ActiveAreaImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ActiveAreaImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ActiveAreaImplementation::_serializationHelperMethod() {

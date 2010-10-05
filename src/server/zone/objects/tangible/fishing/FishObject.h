@@ -174,8 +174,6 @@ public:
 protected:
 	virtual ~FishObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -199,7 +197,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class FishObject;
-	friend class TransactionalObjectHandle<FishObjectImplementation*>;
 };
 
 class FishObjectAdapter : public TangibleObjectAdapter {

@@ -8,57 +8,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	WaypointObjectStub
  */
 
 WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	WaypointObjectImplementation* _implementation = new WaypointObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 WaypointObject::WaypointObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -225,10 +182,10 @@ void WaypointObject::toggleStatus() {
 }
 
 DistributedObjectServant* WaypointObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void WaypointObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	WaypointObjectImplementation
@@ -265,30 +222,32 @@ WaypointObjectImplementation::operator const WaypointObject*() {
 	return _this;
 }
 
-TransactionalObject* WaypointObjectImplementation::clone() {
-	return (TransactionalObject*) new WaypointObjectImplementation(*this);
-}
-
-
 void WaypointObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void WaypointObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void WaypointObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void WaypointObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void WaypointObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void WaypointObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void WaypointObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void WaypointObjectImplementation::_serializationHelperMethod() {

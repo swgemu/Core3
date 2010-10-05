@@ -6,55 +6,14 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-
-// Imported class dependencies
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/installation/HopperList.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
 /*
  *	GeneratorObjectStub
  */
 
 GeneratorObject::GeneratorObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	GeneratorObjectImplementation* _implementation = new GeneratorObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 GeneratorObject::GeneratorObject(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -132,10 +91,10 @@ bool GeneratorObject::isGeneratorObject() {
 }
 
 DistributedObjectServant* GeneratorObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void GeneratorObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	GeneratorObjectImplementation
@@ -172,30 +131,32 @@ GeneratorObjectImplementation::operator const GeneratorObject*() {
 	return _this;
 }
 
-TransactionalObject* GeneratorObjectImplementation::clone() {
-	return (TransactionalObject*) new GeneratorObjectImplementation(*this);
-}
-
-
 void GeneratorObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void GeneratorObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void GeneratorObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void GeneratorObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void GeneratorObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void GeneratorObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void GeneratorObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void GeneratorObjectImplementation::_serializationHelperMethod() {

@@ -10,75 +10,14 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	GroupObjectStub
  */
 
 GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GroupObjectImplementation* _implementation = new GroupObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 GroupObject::GroupObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -368,10 +307,10 @@ void GroupObject::removeGroupModifiers(PlayerCreature* player) {
 }
 
 DistributedObjectServant* GroupObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void GroupObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	GroupObjectImplementation
@@ -408,30 +347,32 @@ GroupObjectImplementation::operator const GroupObject*() {
 	return _this;
 }
 
-TransactionalObject* GroupObjectImplementation::clone() {
-	return (TransactionalObject*) new GroupObjectImplementation(*this);
-}
-
-
 void GroupObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void GroupObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void GroupObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void GroupObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void GroupObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void GroupObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void GroupObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void GroupObjectImplementation::_serializationHelperMethod() {

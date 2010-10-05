@@ -22,117 +22,14 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/managers/structure/StructureManager.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/account/AccountManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/planet/MissionTargetMap.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "server/zone/managers/planet/NoBuildAreaMap.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/managers/planet/HuntingTargetMap.h"
-
-#include "server/zone/managers/terrain/TerrainManager.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/planet/ShuttleMap.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "server/zone/managers/templates/TemplateManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/managers/planet/RegionMap.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	ZoneStub
  */
 
 Zone::Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(zserv, processor, zoneid);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 Zone::Zone(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -612,10 +509,10 @@ float Zone::getMaxY() {
 }
 
 DistributedObjectServant* Zone::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void Zone::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ZoneImplementation
@@ -650,30 +547,32 @@ ZoneImplementation::operator const Zone*() {
 	return _this;
 }
 
-TransactionalObject* ZoneImplementation::clone() {
-	return (TransactionalObject*) new ZoneImplementation(*this);
-}
-
-
 void ZoneImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ZoneImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ZoneImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ZoneImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ZoneImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ZoneImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ZoneImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ZoneImplementation::_serializationHelperMethod() {

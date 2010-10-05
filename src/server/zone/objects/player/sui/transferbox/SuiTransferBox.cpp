@@ -8,59 +8,14 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	SuiTransferBoxStub
  */
 
 SuiTransferBox::SuiTransferBox(PlayerCreature* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiTransferBoxImplementation* _implementation = new SuiTransferBoxImplementation(player, windowType);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 SuiTransferBox::SuiTransferBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -158,10 +113,10 @@ bool SuiTransferBox::isTransferBox() {
 }
 
 DistributedObjectServant* SuiTransferBox::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void SuiTransferBox::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	SuiTransferBoxImplementation
@@ -198,30 +153,32 @@ SuiTransferBoxImplementation::operator const SuiTransferBox*() {
 	return _this;
 }
 
-TransactionalObject* SuiTransferBoxImplementation::clone() {
-	return (TransactionalObject*) new SuiTransferBoxImplementation(*this);
-}
-
-
 void SuiTransferBoxImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void SuiTransferBoxImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void SuiTransferBoxImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void SuiTransferBoxImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void SuiTransferBoxImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void SuiTransferBoxImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void SuiTransferBoxImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void SuiTransferBoxImplementation::_serializationHelperMethod() {

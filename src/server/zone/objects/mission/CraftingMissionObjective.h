@@ -181,8 +181,6 @@ public:
 protected:
 	virtual ~CraftingMissionObjectiveImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -204,7 +202,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CraftingMissionObjective;
-	friend class TransactionalObjectHandle<CraftingMissionObjectiveImplementation*>;
 };
 
 class CraftingMissionObjectiveAdapter : public MissionObjectiveAdapter {

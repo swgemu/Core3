@@ -455,8 +455,6 @@ public:
 protected:
 	virtual ~GamblingTerminalImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -480,7 +478,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class GamblingTerminal;
-	friend class TransactionalObjectHandle<GamblingTerminalImplementation*>;
 };
 
 class GamblingTerminalAdapter : public TerminalAdapter {

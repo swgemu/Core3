@@ -6,21 +6,14 @@
 
 #include "server/zone/objects/tangible/terminal/bazaar/AuctionItem.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	BazaarAuctionsMapStub
  */
 
 BazaarAuctionsMap::BazaarAuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
 	BazaarAuctionsMapImplementation* _implementation = new BazaarAuctionsMapImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 BazaarAuctionsMap::BazaarAuctionsMap(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -138,10 +131,10 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarAuctionsM
 }
 
 DistributedObjectServant* BazaarAuctionsMap::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void BazaarAuctionsMap::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	BazaarAuctionsMapImplementation
@@ -178,30 +171,32 @@ BazaarAuctionsMapImplementation::operator const BazaarAuctionsMap*() {
 	return _this;
 }
 
-TransactionalObject* BazaarAuctionsMapImplementation::clone() {
-	return (TransactionalObject*) new BazaarAuctionsMapImplementation(*this);
-}
-
-
 void BazaarAuctionsMapImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void BazaarAuctionsMapImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void BazaarAuctionsMapImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void BazaarAuctionsMapImplementation::_serializationHelperMethod() {

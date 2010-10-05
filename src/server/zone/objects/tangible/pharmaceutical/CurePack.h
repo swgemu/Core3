@@ -226,8 +226,6 @@ public:
 protected:
 	virtual ~CurePackImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -251,7 +249,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CurePack;
-	friend class TransactionalObjectHandle<CurePackImplementation*>;
 };
 
 class CurePackAdapter : public PharmaceuticalObjectAdapter {

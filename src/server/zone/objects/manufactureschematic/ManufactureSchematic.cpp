@@ -14,47 +14,14 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-
-// Imported class dependencies
-
-#include "system/util/VectorMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	ManufactureSchematicStub
  */
 
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ManufactureSchematic::ManufactureSchematic(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -551,10 +518,10 @@ SceneObject* ManufactureSchematic::getFactoryIngredient(int i) {
 }
 
 DistributedObjectServant* ManufactureSchematic::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void ManufactureSchematic::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ManufactureSchematicImplementation
@@ -591,30 +558,32 @@ ManufactureSchematicImplementation::operator const ManufactureSchematic*() {
 	return _this;
 }
 
-TransactionalObject* ManufactureSchematicImplementation::clone() {
-	return (TransactionalObject*) new ManufactureSchematicImplementation(*this);
-}
-
-
 void ManufactureSchematicImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ManufactureSchematicImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ManufactureSchematicImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ManufactureSchematicImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ManufactureSchematicImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ManufactureSchematicImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ManufactureSchematicImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ManufactureSchematicImplementation::_serializationHelperMethod() {

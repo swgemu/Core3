@@ -8,57 +8,14 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	SuiBoxStub
  */
 
 SuiBox::SuiBox(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) : ManagedObject(DummyConstructorParameter::instance()) {
 	SuiBoxImplementation* _implementation = new SuiBoxImplementation(play, windowtype, boxtype);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 SuiBox::SuiBox(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -589,10 +546,10 @@ void SuiBox::setUsingObject(SceneObject* object) {
 }
 
 DistributedObjectServant* SuiBox::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void SuiBox::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	SuiBoxImplementation
@@ -627,30 +584,32 @@ SuiBoxImplementation::operator const SuiBox*() {
 	return _this;
 }
 
-TransactionalObject* SuiBoxImplementation::clone() {
-	return (TransactionalObject*) new SuiBoxImplementation(*this);
-}
-
-
 void SuiBoxImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void SuiBoxImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void SuiBoxImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void SuiBoxImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void SuiBoxImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void SuiBoxImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void SuiBoxImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void SuiBoxImplementation::_serializationHelperMethod() {

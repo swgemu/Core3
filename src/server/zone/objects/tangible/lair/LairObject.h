@@ -176,8 +176,6 @@ public:
 protected:
 	virtual ~LairObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -201,7 +199,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class LairObject;
-	friend class TransactionalObjectHandle<LairObjectImplementation*>;
 };
 
 class LairObjectAdapter : public TangibleObjectAdapter {

@@ -106,8 +106,6 @@ public:
 protected:
 	virtual ~PsgArmorObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -131,7 +129,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class PsgArmorObject;
-	friend class TransactionalObjectHandle<PsgArmorObjectImplementation*>;
 };
 
 class PsgArmorObjectAdapter : public WearableObjectAdapter {

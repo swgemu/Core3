@@ -8,73 +8,14 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	PsgArmorObjectStub
  */
 
 PsgArmorObject::PsgArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
 	PsgArmorObjectImplementation* _implementation = new PsgArmorObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 PsgArmorObject::PsgArmorObject(DummyConstructorParameter* param) : WearableObject(param) {
@@ -134,10 +75,10 @@ void PsgArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 DistributedObjectServant* PsgArmorObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void PsgArmorObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	PsgArmorObjectImplementation
@@ -174,30 +115,32 @@ PsgArmorObjectImplementation::operator const PsgArmorObject*() {
 	return _this;
 }
 
-TransactionalObject* PsgArmorObjectImplementation::clone() {
-	return (TransactionalObject*) new PsgArmorObjectImplementation(*this);
-}
-
-
 void PsgArmorObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void PsgArmorObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void PsgArmorObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void PsgArmorObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void PsgArmorObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void PsgArmorObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void PsgArmorObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void PsgArmorObjectImplementation::_serializationHelperMethod() {

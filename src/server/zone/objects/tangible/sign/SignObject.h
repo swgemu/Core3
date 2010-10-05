@@ -76,8 +76,6 @@ public:
 protected:
 	virtual ~SignObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -101,7 +99,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SignObject;
-	friend class TransactionalObjectHandle<SignObjectImplementation*>;
 };
 
 class SignObjectAdapter : public TangibleObjectAdapter {

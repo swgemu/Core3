@@ -163,8 +163,6 @@ public:
 protected:
 	virtual ~CityVoteTerminalImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -188,7 +186,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CityVoteTerminal;
-	friend class TransactionalObjectHandle<CityVoteTerminalImplementation*>;
 };
 
 class CityVoteTerminalAdapter : public TerminalAdapter {

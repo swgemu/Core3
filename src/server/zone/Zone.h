@@ -374,8 +374,6 @@ public:
 protected:
 	virtual ~ZoneImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -397,7 +395,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Zone;
-	friend class TransactionalObjectHandle<ZoneImplementation*>;
 };
 
 class ZoneAdapter : public ManagedObjectAdapter {
