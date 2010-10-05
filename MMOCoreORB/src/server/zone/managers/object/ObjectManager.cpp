@@ -173,6 +173,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<LairObject>(SceneObject::LAIR);
 
 	objectFactory.registerObject<Deed>(SceneObject::DEED);
+	objectFactory.registerObject<VehicleDeed>(SceneObject::VEHICLEDEED);
 	objectFactory.registerObject<BuildingDeed>(SceneObject::BUILDINGDEED);
 	objectFactory.registerObject<InstallationDeed>(SceneObject::INSTALLATIONDEED);
 	objectFactory.registerObject<ResourceDeed>(SceneObject::RESOURCEDEED);

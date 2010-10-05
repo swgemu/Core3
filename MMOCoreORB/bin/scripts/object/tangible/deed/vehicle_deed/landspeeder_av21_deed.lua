@@ -43,6 +43,10 @@
 
 object_tangible_deed_vehicle_deed_landspeeder_av21_deed = object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed:new {
 
+	templateType = VEHICLEDEED,	
+
+	controlDeviceObjectTemplate = "object/intangible/vehicle/landspeeder_av21_pcd.iff",
+	generatedObjectTemplate = "object/mobile/vehicle/landspeeder_av21.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_landspeeder_av21_deed, "object/tangible/deed/vehicle_deed/landspeeder_av21_deed.iff")

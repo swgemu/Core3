@@ -1320,6 +1320,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return false;
 	}
 	
+	public abstract boolean isVehicleDeedObject() {
+		return false;
+	}
+	
 	public abstract boolean isBuildingDeed() {
 		return false;
 	}
