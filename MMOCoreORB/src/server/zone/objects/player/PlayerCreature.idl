@@ -92,6 +92,8 @@ class PlayerCreature extends CreatureObject {
 	protected unsigned int clientLastMovementStamp;
 	
 	protected unsigned int accountID;
+
+	protected boolean invisible;
 	
 	protected unsigned int suiBoxNextID;
 
@@ -183,6 +185,8 @@ class PlayerCreature extends CreatureObject {
 		skillPoints = 0;
 		
 		teachingOrLearning = false;
+
+		invisible = false;
 		
 		suiBoxNextID = 0;
 		
@@ -767,6 +771,14 @@ class PlayerCreature extends CreatureObject {
 	
 	public void setLastCraftingToolUsed(CraftingTool tool) {
 		lastCraftingToolUsed = tool;
+	}
+
+	public boolean isInvisible() {
+		return invisible;
+	}
+
+	public void setInvisible(boolean invis) {
+		invisible = invis;
 	}
 	
 }
