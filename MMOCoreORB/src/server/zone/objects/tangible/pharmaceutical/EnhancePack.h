@@ -260,8 +260,6 @@ public:
 protected:
 	virtual ~EnhancePackImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -285,7 +283,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class EnhancePack;
-	friend class TransactionalObjectHandle<EnhancePackImplementation*>;
 };
 
 class EnhancePackAdapter : public PharmaceuticalObjectAdapter {

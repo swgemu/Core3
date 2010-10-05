@@ -6,61 +6,14 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	TerminalStub
  */
 
 Terminal::Terminal() : TangibleObject(DummyConstructorParameter::instance()) {
 	TerminalImplementation* _implementation = new TerminalImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 Terminal::Terminal(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -97,10 +50,10 @@ bool Terminal::isTerminal() {
 }
 
 DistributedObjectServant* Terminal::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void Terminal::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	TerminalImplementation
@@ -137,30 +90,32 @@ TerminalImplementation::operator const Terminal*() {
 	return _this;
 }
 
-TransactionalObject* TerminalImplementation::clone() {
-	return (TransactionalObject*) new TerminalImplementation(*this);
-}
-
-
 void TerminalImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void TerminalImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void TerminalImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void TerminalImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void TerminalImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void TerminalImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void TerminalImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void TerminalImplementation::_serializationHelperMethod() {

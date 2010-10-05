@@ -18,51 +18,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/mission/DestroyMissionObjective.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/templates/TemplateReference.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/mission/MissionObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/mission/MissionObjective.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	HuntingMissionObjectiveStub
  */
 
 HuntingMissionObjective::HuntingMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	HuntingMissionObjectiveImplementation* _implementation = new HuntingMissionObjectiveImplementation(mission);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 HuntingMissionObjective::HuntingMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
@@ -143,10 +106,10 @@ int HuntingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 }
 
 DistributedObjectServant* HuntingMissionObjective::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void HuntingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	HuntingMissionObjectiveImplementation
@@ -181,30 +144,32 @@ HuntingMissionObjectiveImplementation::operator const HuntingMissionObjective*()
 	return _this;
 }
 
-TransactionalObject* HuntingMissionObjectiveImplementation::clone() {
-	return (TransactionalObject*) new HuntingMissionObjectiveImplementation(*this);
-}
-
-
 void HuntingMissionObjectiveImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void HuntingMissionObjectiveImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void HuntingMissionObjectiveImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::_serializationHelperMethod() {

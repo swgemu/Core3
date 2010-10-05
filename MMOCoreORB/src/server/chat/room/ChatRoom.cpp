@@ -10,83 +10,14 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/account/AccountManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "system/util/SortedVector.h"
-
 /*
  *	ChatRoomStub
  */
 
 ChatRoom::ChatRoom() : ManagedObject(DummyConstructorParameter::instance()) {
 	ChatRoomImplementation* _implementation = new ChatRoomImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ChatRoom::ChatRoom(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -592,10 +523,10 @@ int ChatRoom::compareTo(ChatRoom* obj) {
 }
 
 DistributedObjectServant* ChatRoom::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void ChatRoom::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ChatRoomImplementation
@@ -632,30 +563,32 @@ ChatRoomImplementation::operator const ChatRoom*() {
 	return _this;
 }
 
-TransactionalObject* ChatRoomImplementation::clone() {
-	return (TransactionalObject*) new ChatRoomImplementation(*this);
-}
-
-
 void ChatRoomImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ChatRoomImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ChatRoomImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ChatRoomImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ChatRoomImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ChatRoomImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ChatRoomImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ChatRoomImplementation::_serializationHelperMethod() {

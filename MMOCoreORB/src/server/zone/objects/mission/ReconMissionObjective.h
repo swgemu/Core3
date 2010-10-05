@@ -179,8 +179,6 @@ public:
 protected:
 	virtual ~ReconMissionObjectiveImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -202,7 +200,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ReconMissionObjective;
-	friend class TransactionalObjectHandle<ReconMissionObjectiveImplementation*>;
 };
 
 class ReconMissionObjectiveAdapter : public MissionObjectiveAdapter {

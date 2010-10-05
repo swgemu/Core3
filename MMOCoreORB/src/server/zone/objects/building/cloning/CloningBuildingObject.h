@@ -108,8 +108,6 @@ public:
 protected:
 	virtual ~CloningBuildingObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -133,7 +131,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class CloningBuildingObject;
-	friend class TransactionalObjectHandle<CloningBuildingObjectImplementation*>;
 };
 
 class CloningBuildingObjectAdapter : public BuildingObjectAdapter {

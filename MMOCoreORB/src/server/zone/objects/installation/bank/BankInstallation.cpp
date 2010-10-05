@@ -20,101 +20,14 @@
 
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/installation/SyncrhonizedUiListenInstallationTask.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/installation/HopperList.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/structure/StructurePermissionList.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	BankInstallationStub
  */
 
 BankInstallation::BankInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	BankInstallationImplementation* _implementation = new BankInstallationImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 BankInstallation::BankInstallation(DummyConstructorParameter* param) : InstallationObject(param) {
@@ -178,10 +91,10 @@ void BankInstallation::despawnBankObjects() {
 }
 
 DistributedObjectServant* BankInstallation::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void BankInstallation::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	BankInstallationImplementation
@@ -218,30 +131,32 @@ BankInstallationImplementation::operator const BankInstallation*() {
 	return _this;
 }
 
-TransactionalObject* BankInstallationImplementation::clone() {
-	return (TransactionalObject*) new BankInstallationImplementation(*this);
-}
-
-
 void BankInstallationImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void BankInstallationImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void BankInstallationImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void BankInstallationImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void BankInstallationImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void BankInstallationImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void BankInstallationImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void BankInstallationImplementation::_serializationHelperMethod() {

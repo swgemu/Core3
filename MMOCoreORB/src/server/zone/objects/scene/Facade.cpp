@@ -4,19 +4,14 @@
 
 #include "Facade.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	FacadeStub
  */
 
 Facade::Facade() : ManagedObject(DummyConstructorParameter::instance()) {
 	FacadeImplementation* _implementation = new FacadeImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 Facade::Facade(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -66,10 +61,10 @@ int Facade::clearSession() {
 }
 
 DistributedObjectServant* Facade::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void Facade::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	FacadeImplementation
@@ -106,30 +101,32 @@ FacadeImplementation::operator const Facade*() {
 	return _this;
 }
 
-TransactionalObject* FacadeImplementation::clone() {
-	return (TransactionalObject*) new FacadeImplementation(*this);
-}
-
-
 void FacadeImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void FacadeImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void FacadeImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void FacadeImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void FacadeImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void FacadeImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void FacadeImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void FacadeImplementation::_serializationHelperMethod() {

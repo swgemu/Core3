@@ -16,63 +16,14 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/Zone.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "engine/util/Quaternion.h"
-
 /*
  *	CraftingToolStub
  */
 
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingToolImplementation* _implementation = new CraftingToolImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CraftingTool::CraftingTool(DummyConstructorParameter* param) : ToolTangibleObject(param) {
@@ -429,10 +380,10 @@ void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
 }
 
 DistributedObjectServant* CraftingTool::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CraftingTool::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CraftingToolImplementation
@@ -469,30 +420,32 @@ CraftingToolImplementation::operator const CraftingTool*() {
 	return _this;
 }
 
-TransactionalObject* CraftingToolImplementation::clone() {
-	return (TransactionalObject*) new CraftingToolImplementation(*this);
-}
-
-
 void CraftingToolImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CraftingToolImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CraftingToolImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CraftingToolImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CraftingToolImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CraftingToolImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CraftingToolImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CraftingToolImplementation::_serializationHelperMethod() {
@@ -509,12 +462,6 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 	addSerializableVariable("currentSchematicList", &currentSchematicList);
 	addSerializableVariable("craftingStation", &craftingStation);
 	addSerializableVariable("state", &state);
-	addSerializableVariable("insertCounter", &insertCounter);
-	addSerializableVariable("experimentationPointsTotal", &experimentationPointsTotal);
-	addSerializableVariable("experimentationPointsUsed", &experimentationPointsUsed);
-	addSerializableVariable("assemblyResult", &assemblyResult);
-	addSerializableVariable("experimentationResult", &experimentationResult);
-	addSerializableVariable("experimentalFailureRate", &experimentalFailureRate);
 }
 
 CraftingToolImplementation::CraftingToolImplementation() {

@@ -93,8 +93,6 @@ public:
 protected:
 	virtual ~StaticObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -118,7 +116,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class StaticObject;
-	friend class TransactionalObjectHandle<StaticObjectImplementation*>;
 };
 
 class StaticObjectAdapter : public SceneObjectAdapter {

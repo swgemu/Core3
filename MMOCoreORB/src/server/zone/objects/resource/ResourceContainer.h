@@ -174,8 +174,6 @@ public:
 protected:
 	virtual ~ResourceContainerImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -199,7 +197,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ResourceContainer;
-	friend class TransactionalObjectHandle<ResourceContainerImplementation*>;
 };
 
 class ResourceContainerAdapter : public TangibleObjectAdapter {

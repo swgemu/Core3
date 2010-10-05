@@ -22,95 +22,14 @@
 
 #include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	AiAgentStub
  */
 
 AiAgent::AiAgent() : CreatureObject(DummyConstructorParameter::instance()) {
 	AiAgentImplementation* _implementation = new AiAgentImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 AiAgent::AiAgent(DummyConstructorParameter* param) : CreatureObject(param) {
@@ -970,10 +889,10 @@ bool AiAgent::isAiAgent() {
 }
 
 DistributedObjectServant* AiAgent::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void AiAgent::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	AiAgentImplementation
@@ -1010,30 +929,32 @@ AiAgentImplementation::operator const AiAgent*() {
 	return _this;
 }
 
-TransactionalObject* AiAgentImplementation::clone() {
-	return (TransactionalObject*) new AiAgentImplementation(*this);
-}
-
-
 void AiAgentImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void AiAgentImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void AiAgentImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void AiAgentImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void AiAgentImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void AiAgentImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void AiAgentImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void AiAgentImplementation::_serializationHelperMethod() {

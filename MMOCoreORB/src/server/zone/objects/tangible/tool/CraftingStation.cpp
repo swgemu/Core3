@@ -12,71 +12,14 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	CraftingStationStub
  */
 
 CraftingStation::CraftingStation() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingStationImplementation* _implementation = new CraftingStationImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CraftingStation::CraftingStation(DummyConstructorParameter* param) : ToolTangibleObject(param) {
@@ -236,10 +179,10 @@ void CraftingStation::createChildObjects() {
 }
 
 DistributedObjectServant* CraftingStation::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CraftingStation::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CraftingStationImplementation
@@ -276,30 +219,32 @@ CraftingStationImplementation::operator const CraftingStation*() {
 	return _this;
 }
 
-TransactionalObject* CraftingStationImplementation::clone() {
-	return (TransactionalObject*) new CraftingStationImplementation(*this);
-}
-
-
 void CraftingStationImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CraftingStationImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CraftingStationImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CraftingStationImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CraftingStationImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CraftingStationImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CraftingStationImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CraftingStationImplementation::_serializationHelperMethod() {

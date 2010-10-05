@@ -143,8 +143,6 @@ public:
 protected:
 	virtual ~SuiTransferBoxImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -168,7 +166,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class SuiTransferBox;
-	friend class TransactionalObjectHandle<SuiTransferBoxImplementation*>;
 };
 
 class SuiTransferBoxAdapter : public SuiBoxAdapter {

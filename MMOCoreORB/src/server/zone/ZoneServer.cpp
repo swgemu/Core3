@@ -40,83 +40,14 @@
 
 #include "server/zone/managers/stringid/StringIdManager.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
-
-#include "server/zone/managers/player/StartingItemList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
-
-#include "server/zone/managers/player/PlayerMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/managers/bazaar/BazaarAuctionsMap.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/player/CharacterNameMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/chat/room/ChatRoomMap.h"
-
 /*
  *	ZoneServerStub
  */
 
 ZoneServer::ZoneServer(int processingThreads, int galaxyid) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneServerImplementation* _implementation = new ZoneServerImplementation(processingThreads, galaxyid);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ZoneServer::ZoneServer(DummyConstructorParameter* param) : ManagedService(param) {
@@ -951,10 +882,10 @@ String ZoneServer::getMessageoftheDay() {
 }
 
 DistributedObjectServant* ZoneServer::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void ZoneServer::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ZoneServerImplementation
@@ -990,11 +921,6 @@ DistributedObjectStub* ZoneServerImplementation::_getStub() {
 ZoneServerImplementation::operator const ZoneServer*() {
 	return _this;
 }
-
-TransactionalObject* ZoneServerImplementation::clone() {
-	return (TransactionalObject*) new ZoneServerImplementation(*this);
-}
-
 
 void ZoneServerImplementation::_serializationHelperMethod() {
 	ManagedServiceImplementation::_serializationHelperMethod();

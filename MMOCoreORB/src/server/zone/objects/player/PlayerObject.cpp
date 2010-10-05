@@ -20,81 +20,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	PlayerObjectStub
  */
 
 PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	PlayerObjectImplementation* _implementation = new PlayerObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -984,10 +917,10 @@ String PlayerObject::getCommandMessageString(unsigned int actionCRC) {
 }
 
 DistributedObjectServant* PlayerObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void PlayerObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	PlayerObjectImplementation
@@ -1022,30 +955,32 @@ PlayerObjectImplementation::operator const PlayerObject*() {
 	return _this;
 }
 
-TransactionalObject* PlayerObjectImplementation::clone() {
-	return (TransactionalObject*) new PlayerObjectImplementation(*this);
-}
-
-
 void PlayerObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void PlayerObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void PlayerObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void PlayerObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void PlayerObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void PlayerObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void PlayerObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void PlayerObjectImplementation::_serializationHelperMethod() {

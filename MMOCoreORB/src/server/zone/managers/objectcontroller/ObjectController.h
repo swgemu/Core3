@@ -192,8 +192,6 @@ public:
 protected:
 	virtual ~ObjectControllerImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -215,7 +213,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ObjectController;
-	friend class TransactionalObjectHandle<ObjectControllerImplementation*>;
 };
 
 class ObjectControllerAdapter : public ManagedServiceAdapter {

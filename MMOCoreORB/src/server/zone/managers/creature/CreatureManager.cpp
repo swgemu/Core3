@@ -24,115 +24,14 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/account/AccountManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/objects/creature/PatrolPointsVector.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "server/zone/objects/creature/events/AiThinkEvent.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/creature/PatrolPoint.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/tangible/DamageMap.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/creature/events/AiMoveEvent.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	CreatureManagerStub
  */
 
 CreatureManager::CreatureManager(Zone* planet, ZoneProcessServerImplementation* impl) : ManagedService(DummyConstructorParameter::instance()) {
 	CreatureManagerImplementation* _implementation = new CreatureManagerImplementation(planet, impl);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CreatureManager::CreatureManager(DummyConstructorParameter* param) : ManagedService(param) {
@@ -248,10 +147,10 @@ void CreatureManager::loadInformants() {
 }
 
 DistributedObjectServant* CreatureManager::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CreatureManager::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CreatureManagerImplementation
@@ -288,30 +187,32 @@ CreatureManagerImplementation::operator const CreatureManager*() {
 	return _this;
 }
 
-TransactionalObject* CreatureManagerImplementation::clone() {
-	return (TransactionalObject*) new CreatureManagerImplementation(*this);
-}
-
-
 void CreatureManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CreatureManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CreatureManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CreatureManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CreatureManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CreatureManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CreatureManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CreatureManagerImplementation::_serializationHelperMethod() {

@@ -8,59 +8,14 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	SuiBankTransferBoxStub
  */
 
 SuiBankTransferBox::SuiBankTransferBox(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiBankTransferBoxImplementation* _implementation = new SuiBankTransferBoxImplementation(bankObject, player, windowtype);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 SuiBankTransferBox::SuiBankTransferBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -138,10 +93,10 @@ bool SuiBankTransferBox::isBankTransferBox() {
 }
 
 DistributedObjectServant* SuiBankTransferBox::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void SuiBankTransferBox::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	SuiBankTransferBoxImplementation
@@ -178,30 +133,32 @@ SuiBankTransferBoxImplementation::operator const SuiBankTransferBox*() {
 	return _this;
 }
 
-TransactionalObject* SuiBankTransferBoxImplementation::clone() {
-	return (TransactionalObject*) new SuiBankTransferBoxImplementation(*this);
-}
-
-
 void SuiBankTransferBoxImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void SuiBankTransferBoxImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void SuiBankTransferBoxImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void SuiBankTransferBoxImplementation::_serializationHelperMethod() {

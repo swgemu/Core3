@@ -137,8 +137,6 @@ public:
 protected:
 	virtual ~ResourceDeedListBoxImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -160,7 +158,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ResourceDeedListBox;
-	friend class TransactionalObjectHandle<ResourceDeedListBoxImplementation*>;
 };
 
 class ResourceDeedListBoxAdapter : public SuiListBoxAdapter {

@@ -175,8 +175,6 @@ public:
 protected:
 	virtual ~LootkitObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -200,7 +198,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class LootkitObject;
-	friend class TransactionalObjectHandle<LootkitObjectImplementation*>;
 };
 
 class LootkitObjectAdapter : public TangibleObjectAdapter {

@@ -298,8 +298,6 @@ public:
 protected:
 	virtual ~ConsumableImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -323,7 +321,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class Consumable;
-	friend class TransactionalObjectHandle<ConsumableImplementation*>;
 };
 
 class ConsumableAdapter : public TangibleObjectAdapter {

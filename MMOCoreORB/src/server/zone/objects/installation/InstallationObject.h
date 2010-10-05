@@ -387,8 +387,6 @@ public:
 protected:
 	virtual ~InstallationObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -412,7 +410,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class InstallationObject;
-	friend class TransactionalObjectHandle<InstallationObjectImplementation*>;
 };
 
 class InstallationObjectAdapter : public StructureObjectAdapter {

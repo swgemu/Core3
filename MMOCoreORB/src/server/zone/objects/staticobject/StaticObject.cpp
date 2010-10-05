@@ -8,57 +8,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	StaticObjectStub
  */
 
 StaticObject::StaticObject() : SceneObject(DummyConstructorParameter::instance()) {
 	StaticObjectImplementation* _implementation = new StaticObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 StaticObject::StaticObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -92,10 +49,10 @@ void StaticObject::sendBaselinesTo(SceneObject* player) {
 }
 
 DistributedObjectServant* StaticObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void StaticObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	StaticObjectImplementation
@@ -132,30 +89,32 @@ StaticObjectImplementation::operator const StaticObject*() {
 	return _this;
 }
 
-TransactionalObject* StaticObjectImplementation::clone() {
-	return (TransactionalObject*) new StaticObjectImplementation(*this);
-}
-
-
 void StaticObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void StaticObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void StaticObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void StaticObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void StaticObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void StaticObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void StaticObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void StaticObjectImplementation::_serializationHelperMethod() {

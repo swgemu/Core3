@@ -12,77 +12,14 @@
 
 #include "server/zone/Zone.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	GuildTerminalStub
  */
 
 GuildTerminal::GuildTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	GuildTerminalImplementation* _implementation = new GuildTerminalImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 GuildTerminal::GuildTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -149,10 +86,10 @@ bool GuildTerminal::isGuildTerminal() {
 }
 
 DistributedObjectServant* GuildTerminal::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void GuildTerminal::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	GuildTerminalImplementation
@@ -189,30 +126,32 @@ GuildTerminalImplementation::operator const GuildTerminal*() {
 	return _this;
 }
 
-TransactionalObject* GuildTerminalImplementation::clone() {
-	return (TransactionalObject*) new GuildTerminalImplementation(*this);
-}
-
-
 void GuildTerminalImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void GuildTerminalImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void GuildTerminalImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void GuildTerminalImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void GuildTerminalImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void GuildTerminalImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void GuildTerminalImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void GuildTerminalImplementation::_serializationHelperMethod() {

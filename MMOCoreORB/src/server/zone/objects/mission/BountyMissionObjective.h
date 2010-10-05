@@ -193,8 +193,6 @@ public:
 protected:
 	virtual ~BountyMissionObjectiveImplementation();
 
-	TransactionalObject* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -216,7 +214,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BountyMissionObjective;
-	friend class TransactionalObjectHandle<BountyMissionObjectiveImplementation*>;
 };
 
 class BountyMissionObjectiveAdapter : public MissionObjectiveAdapter {

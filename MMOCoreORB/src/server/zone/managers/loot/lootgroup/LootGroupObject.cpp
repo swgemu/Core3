@@ -10,75 +10,14 @@
 
 #include "server/zone/managers/loot/lootgroup/LootObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/account/AccountManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
 /*
  *	LootGroupObjectStub
  */
 
 LootGroupObject::LootGroupObject(unsigned int group, int w, int max) : ManagedObject(DummyConstructorParameter::instance()) {
 	LootGroupObjectImplementation* _implementation = new LootGroupObjectImplementation(group, w, max);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 LootGroupObject::LootGroupObject(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -193,10 +132,10 @@ unsigned int LootGroupObject::getLootGroup() {
 }
 
 DistributedObjectServant* LootGroupObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void LootGroupObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	LootGroupObjectImplementation
@@ -233,30 +172,32 @@ LootGroupObjectImplementation::operator const LootGroupObject*() {
 	return _this;
 }
 
-TransactionalObject* LootGroupObjectImplementation::clone() {
-	return (TransactionalObject*) new LootGroupObjectImplementation(*this);
-}
-
-
 void LootGroupObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void LootGroupObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void LootGroupObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void LootGroupObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void LootGroupObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void LootGroupObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void LootGroupObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void LootGroupObjectImplementation::_serializationHelperMethod() {

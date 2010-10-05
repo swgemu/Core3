@@ -216,8 +216,6 @@ public:
 protected:
 	virtual ~FactoryObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -241,7 +239,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class FactoryObject;
-	friend class TransactionalObjectHandle<FactoryObjectImplementation*>;
 };
 
 class FactoryObjectAdapter : public InstallationObjectAdapter {

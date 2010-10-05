@@ -4,19 +4,14 @@
 
 #include "LootObject.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
 /*
  *	LootObjectStub
  */
 
 LootObject::LootObject(unsigned int loID, String& n, unsigned int tCRC, unsigned int lootG, int ch) : ManagedObject(DummyConstructorParameter::instance()) {
 	LootObjectImplementation* _implementation = new LootObjectImplementation(loID, n, tCRC, lootG, ch);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 LootObject::LootObject(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -69,10 +64,10 @@ int LootObject::getChance() {
 }
 
 DistributedObjectServant* LootObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void LootObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	LootObjectImplementation
@@ -109,30 +104,32 @@ LootObjectImplementation::operator const LootObject*() {
 	return _this;
 }
 
-TransactionalObject* LootObjectImplementation::clone() {
-	return (TransactionalObject*) new LootObjectImplementation(*this);
-}
-
-
 void LootObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void LootObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void LootObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void LootObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void LootObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void LootObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void LootObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void LootObjectImplementation::_serializationHelperMethod() {

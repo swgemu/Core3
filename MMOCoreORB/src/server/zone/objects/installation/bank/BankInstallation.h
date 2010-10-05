@@ -202,8 +202,6 @@ public:
 protected:
 	virtual ~BankInstallationImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -227,7 +225,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class BankInstallation;
-	friend class TransactionalObjectHandle<BankInstallationImplementation*>;
 };
 
 class BankInstallationAdapter : public InstallationObjectAdapter {

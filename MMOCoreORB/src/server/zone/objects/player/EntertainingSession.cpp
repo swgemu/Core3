@@ -14,45 +14,14 @@
 
 #include "server/zone/objects/player/EntertainingObserver.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	EntertainingSessionStub
  */
 
 EntertainingSession::EntertainingSession(CreatureObject* ent) : Facade(DummyConstructorParameter::instance()) {
 	EntertainingSessionImplementation* _implementation = new EntertainingSessionImplementation(ent);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 EntertainingSession::EntertainingSession(DummyConstructorParameter* param) : Facade(param) {
@@ -534,10 +503,10 @@ void EntertainingSession::setDancing(bool val) {
 }
 
 DistributedObjectServant* EntertainingSession::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void EntertainingSession::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	EntertainingSessionImplementation
@@ -572,30 +541,32 @@ EntertainingSessionImplementation::operator const EntertainingSession*() {
 	return _this;
 }
 
-TransactionalObject* EntertainingSessionImplementation::clone() {
-	return (TransactionalObject*) new EntertainingSessionImplementation(*this);
-}
-
-
 void EntertainingSessionImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void EntertainingSessionImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void EntertainingSessionImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void EntertainingSessionImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void EntertainingSessionImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void EntertainingSessionImplementation::_serializationHelperMethod() {

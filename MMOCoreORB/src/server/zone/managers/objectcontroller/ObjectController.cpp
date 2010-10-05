@@ -18,95 +18,14 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-
-// Imported class dependencies
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "system/lang/Time.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/managers/account/AccountManager.h"
-
-#include "engine/core/TaskManager.h"
-
-#include "server/zone/managers/minigames/FishingManager.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "engine/service/proto/BasePacketHandler.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "system/thread/atomic/AtomicInteger.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/managers/radial/RadialManager.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/managers/bazaar/BazaarManager.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 /*
  *	ObjectControllerStub
  */
 
 ObjectController::ObjectController(ZoneProcessServerImplementation* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	ObjectControllerImplementation* _implementation = new ObjectControllerImplementation(srv);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedService(param) {
@@ -192,10 +111,10 @@ QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
 }
 
 DistributedObjectServant* ObjectController::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void ObjectController::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	ObjectControllerImplementation
@@ -230,30 +149,32 @@ ObjectControllerImplementation::operator const ObjectController*() {
 	return _this;
 }
 
-TransactionalObject* ObjectControllerImplementation::clone() {
-	return (TransactionalObject*) new ObjectControllerImplementation(*this);
-}
-
-
 void ObjectControllerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ObjectControllerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ObjectControllerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ObjectControllerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ObjectControllerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ObjectControllerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ObjectControllerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ObjectControllerImplementation::_serializationHelperMethod() {

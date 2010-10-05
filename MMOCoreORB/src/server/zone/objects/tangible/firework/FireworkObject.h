@@ -162,8 +162,6 @@ public:
 protected:
 	virtual ~FireworkObjectImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -187,7 +185,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class FireworkObject;
-	friend class TransactionalObjectHandle<FireworkObjectImplementation*>;
 };
 
 class FireworkObjectAdapter : public TangibleObjectAdapter {

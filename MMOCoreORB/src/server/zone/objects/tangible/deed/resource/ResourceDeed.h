@@ -152,8 +152,6 @@ public:
 protected:
 	virtual ~ResourceDeedImplementation();
 
-	TransactionalObject* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -177,7 +175,6 @@ protected:
 	void _serializationHelperMethod();
 
 	friend class ResourceDeed;
-	friend class TransactionalObjectHandle<ResourceDeedImplementation*>;
 };
 
 class ResourceDeedAdapter : public DeedAdapter {

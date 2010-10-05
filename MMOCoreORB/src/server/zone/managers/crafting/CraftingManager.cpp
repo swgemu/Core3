@@ -16,67 +16,14 @@
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/player/variables/FriendList.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/player/variables/SkillList.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/variables/SchematicList.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/variables/IgnoreList.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
-
-#include "server/zone/objects/player/variables/WaypointList.h"
-
 /*
  *	CraftingManagerStub
  */
 
 CraftingManager::CraftingManager(ZoneServer* serv, ZoneProcessServerImplementation* proc, ObjectManager* objman) : ManagedService(DummyConstructorParameter::instance()) {
 	CraftingManagerImplementation* _implementation = new CraftingManagerImplementation(serv, proc, objman);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CraftingManager::CraftingManager(DummyConstructorParameter* param) : ManagedService(param) {
@@ -278,10 +225,10 @@ String CraftingManager::generateSerial() {
 }
 
 DistributedObjectServant* CraftingManager::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CraftingManager::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CraftingManagerImplementation
@@ -318,30 +265,32 @@ CraftingManagerImplementation::operator const CraftingManager*() {
 	return _this;
 }
 
-TransactionalObject* CraftingManagerImplementation::clone() {
-	return (TransactionalObject*) new CraftingManagerImplementation(*this);
-}
-
-
 void CraftingManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CraftingManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CraftingManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CraftingManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CraftingManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CraftingManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CraftingManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CraftingManagerImplementation::_serializationHelperMethod() {

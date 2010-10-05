@@ -8,57 +8,14 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-
-// Imported class dependencies
-
-#include "system/lang/Time.h"
-
-#include "engine/util/Quaternion.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/objects/scene/ObserverEventMap.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "engine/util/QuadTree.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
 /*
  *	CellObjectStub
  */
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
 	CellObjectImplementation* _implementation = new CellObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -190,10 +147,10 @@ bool CellObject::isCellObject() {
 }
 
 DistributedObjectServant* CellObject::_getImplementation() {
-	return getForUpdate();}
+	return _impl;}
 
 void CellObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject((ManagedObjectImplementation*) servant);}
+	_impl = servant;}
 
 /*
  *	CellObjectImplementation
@@ -228,30 +185,32 @@ CellObjectImplementation::operator const CellObject*() {
 	return _this;
 }
 
-TransactionalObject* CellObjectImplementation::clone() {
-	return (TransactionalObject*) new CellObjectImplementation(*this);
-}
-
-
 void CellObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CellObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CellObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CellObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CellObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CellObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CellObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CellObjectImplementation::_serializationHelperMethod() {
