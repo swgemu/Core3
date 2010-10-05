@@ -118,6 +118,7 @@ public:
 	const static int LOOTKIT = 0x4000019;
 	const static int INSTRUMENT = 0x400001A;
 	const static int FIREWORK = 0x400001B;
+	const static int VEHICLEDEED = 0x400001C;
 
 public:
 	SharedObjectTemplate() {

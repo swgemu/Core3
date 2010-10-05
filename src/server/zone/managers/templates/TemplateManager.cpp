@@ -58,6 +58,7 @@
 #include "server/zone/templates/tangible/CloningBuildingObjectTemplate.h"
 #include "server/zone/templates/resource_container/ResourceSpawnTemplate.h"
 #include "server/zone/templates/tangible/DeedTemplate.h"
+#include "server/zone/templates/tangible/VehicleDeedTemplate.h"
 #include "server/zone/templates/tangible/MissionTerminalTemplate.h"
 #include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
 
@@ -163,6 +164,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<ResourceSpawnTemplate>(SharedObjectTemplate::RESOURCESPAWN);
 	templateFactory.registerObject<ArmorObjectTemplate>(SharedObjectTemplate::ARMOROBJECT);
 	templateFactory.registerObject<DeedTemplate>(SharedObjectTemplate::DEED);
+	templateFactory.registerObject<VehicleDeedTemplate>(SharedObjectTemplate::VEHICLEDEED);
 	templateFactory.registerObject<MissionTerminalTemplate>(SharedObjectTemplate::MISSIONTERMINAL);
 	templateFactory.registerObject<CloningBuildingObjectTemplate>(SharedObjectTemplate::CLONINGBUILDING);
 	templateFactory.registerObject<DraftSchematicObjectTemplate>(SharedObjectTemplate::DRAFTSCHEMATIC);
@@ -297,6 +299,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("RESOURCESPAWN", SharedObjectTemplate::RESOURCESPAWN);
 	luaTemplatesInstance->setGlobalInt("ARMOROBJECT", SharedObjectTemplate::ARMOROBJECT);
 	luaTemplatesInstance->setGlobalInt("DEED", SharedObjectTemplate::DEED);
+	luaTemplatesInstance->setGlobalInt("VEHICLEDEED", SharedObjectTemplate::VEHICLEDEED);
 	luaTemplatesInstance->setGlobalInt("MISSIONTERMINAL", SharedObjectTemplate::MISSIONTERMINAL);
 	luaTemplatesInstance->setGlobalInt("CLONINGBUILDING", SharedObjectTemplate::CLONINGBUILDING);
 	luaTemplatesInstance->setGlobalInt("DRAFTSCHEMATIC", SharedObjectTemplate::DRAFTSCHEMATIC);
