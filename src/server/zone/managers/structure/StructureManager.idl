@@ -100,14 +100,14 @@ class StructureManager extends ManagedService implements Logger {
 		
 		listOfStaticBuildings.setNoDuplicateInsertPlan();
 		
-		/*loadStaticBuildings();
+		loadStaticBuildings();
 		loadPlayerStructures();
 		loadStaticBanks();
 		loadStaticBazaars();
 		loadStaticMissionTerminals();
 		loadStaticGamblingTerminals();
 		loadStaticCraftingStations();
-		loadStaticGarages();*/
+		loadStaticGarages();
 	}
 	
 	/**

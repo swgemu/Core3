@@ -521,10 +521,11 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 		((PlayerObject*)playerObject)->addSkills(skills, false);
 	}
 
-	VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1);
+	/// Add vehicle
+	/*VehicleControlDevice* vehicleControlDevice = (VehicleControlDevice*) server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1);
 	VehicleObject* vehicle = (VehicleObject*) server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1);
 	vehicleControlDevice->setControlledObject(vehicle);
-	datapad->addObject(vehicleControlDevice, -1);
+	datapad->addObject(vehicleControlDevice, -1);*/
 
 	String pole = "object/tangible/fishing/fishing_pole.iff";
 	SceneObject* poleObject = server->createObject(pole.hashCode(), 1);

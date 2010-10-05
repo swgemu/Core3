@@ -51,6 +51,7 @@
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/tangible/component/armor/ArmorComponent.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/vehicle/VehicleDeed.h"
 #include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
 #include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
 #include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"

@@ -948,6 +948,8 @@ public:
 
 	bool isDeedObject();
 
+	bool isVehicleDeedObject();
+
 	bool isBuildingDeed();
 
 	bool isInstallationDeed();
@@ -1867,6 +1869,8 @@ public:
 
 	virtual bool isDeedObject();
 
+	virtual bool isVehicleDeedObject();
+
 	virtual bool isBuildingDeed();
 
 	virtual bool isInstallationDeed();
@@ -2259,6 +2263,8 @@ public:
 	bool isFishingPoleObject();
 
 	bool isDeedObject();
+
+	bool isVehicleDeedObject();
 
 	bool isBuildingDeed();
 
