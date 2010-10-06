@@ -63,7 +63,23 @@ public:
 
 		Locker _locker(craftingTool);
 
-		craftingTool->experiment(player, numRowsAttempted, expString, clientCounter);
+		uint64 lastExperiment = craftingTool->getLastExperimentationTimestamp();
+
+		if(Time::currentNanoTime() - lastExperiment > 500000000)
+
+			craftingTool->experiment(player, numRowsAttempted, expString, clientCounter);
+
+		else {
+			/// If someone tried to do the experimentation cheat, they get here
+			ObjectControllerMessage* objMsg =
+					new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0113);
+			objMsg->insertInt(0x105);
+
+			objMsg->insertInt(craftingTool->getExperimentationResult()); // Get last result
+			objMsg->insertByte(clientCounter);
+
+			player->sendMessage(objMsg);
+		}
 	}
 };
 

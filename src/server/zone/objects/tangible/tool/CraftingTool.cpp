@@ -379,6 +379,32 @@ void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
 		_implementation->depositObject(player, practice);
 }
 
+unsigned long long CraftingTool::getLastExperimentationTimestamp() {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return _implementation->getLastExperimentationTimestamp();
+}
+
+int CraftingTool::getExperimentationResult() {
+	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getExperimentationResult();
+}
+
 DistributedObjectServant* CraftingTool::_getImplementation() {
 	return _impl;}
 
@@ -503,6 +529,16 @@ ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
 	return (ManufactureSchematic*) getSlottedObject("test_manf_schematic");
 }
 
+unsigned long long CraftingToolImplementation::getLastExperimentationTimestamp() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl(212):  		return lastExperimentationTimestamp;
+	return lastExperimentationTimestamp;
+}
+
+int CraftingToolImplementation::getExperimentationResult() {
+	// server/zone/objects/tangible/tool/CraftingTool.idl(216):  		return experimentationResult;
+	return experimentationResult;
+}
+
 /*
  *	CraftingToolAdapter
  */
@@ -576,6 +612,12 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case 26:
 		depositObject((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 27:
+		resp->insertLong(getLastExperimentationTimestamp());
+		break;
+	case 28:
+		resp->insertSignedInt(getExperimentationResult());
 		break;
 	default:
 		return NULL;
@@ -666,6 +708,14 @@ void CraftingToolAdapter::createObject(PlayerCreature* player, int timer, bool c
 
 void CraftingToolAdapter::depositObject(PlayerCreature* player, bool practice) {
 	((CraftingToolImplementation*) impl)->depositObject(player, practice);
+}
+
+unsigned long long CraftingToolAdapter::getLastExperimentationTimestamp() {
+	return ((CraftingToolImplementation*) impl)->getLastExperimentationTimestamp();
+}
+
+int CraftingToolAdapter::getExperimentationResult() {
+	return ((CraftingToolImplementation*) impl)->getExperimentationResult();
 }
 
 /*
