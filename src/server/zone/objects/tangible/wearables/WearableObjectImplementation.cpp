@@ -23,6 +23,14 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 	if (socketsLeft() > 0)
 		alm->insertAttribute("sockets", socketsLeft());
 
+	if (craftersName != "") {
+		alm->insertAttribute("crafter", craftersName);
+	}
+
+	if (craftersSerial != "") {
+		alm->insertAttribute("serial_number", craftersSerial);
+	}
+
 	wearableSkillModMap.insertStatMods(alm);
 }
 

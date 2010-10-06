@@ -1119,6 +1119,16 @@ void CraftingToolImplementation::experiment(PlayerCreature* player, int numRowsA
 	int lowestExpSuccess = 0;
 	int totalPoints = 0;
 
+	uint64 nanoTimeSinceLastExperiment =
+			Time::currentNanoTime() - lastExperimentationTimestamp;
+	lastExperimentationTimestamp = Time::currentNanoTime();
+
+	if(nanoTimeSinceLastExperiment < 500000000) {
+		System::out << nanoTimeSinceLastExperiment << endl;
+		numRowsAttempted = 0;
+		lowestExpSuccess = 8;
+	}
+
 	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
 	craftingValues->clear();
@@ -1162,22 +1172,7 @@ void CraftingToolImplementation::experiment(PlayerCreature* player, int numRowsA
 	// Sets the result for display
 	experimentationResult = lowestExpSuccess;
 
-	/*if(experimentationPointsTotal > experimentationPointsLeft) {
-
-		craftingValues->clearAll();
-		tano = new TangibleObject(player, 0xBC03F94, UnicodeString("a Viewscreen (broken)"),
-				"object/tangible/loot/tool/shared_viewscreen_broken_s2.iff", TangibleObjectImplementation::GENERICITEM);
-			craftingTool->setWorkingTano(tano);
-			draftSchematic->setExpPoints(0);
-			craftingTool->setAssemblyResults(8);
-			player->sendSystemMessage("Trying to scam the system I see, take this!");
-
-		} else {
-
-			// Set new exp points subtracting those used above
-			draftSchematic->setExpPoints(expPoints - totalPoints);
-		}*/
-
+	// Set points used
 	experimentationPointsUsed += totalPoints;
 
 	// Start Player Object Delta **************************************

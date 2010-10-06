@@ -466,36 +466,40 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 
 CraftingToolImplementation::CraftingToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(95):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(97):  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
-	// server/zone/objects/tangible/tool/CraftingTool.idl(96):  		status = "@crafting:tool_status_ready";
+	// server/zone/objects/tangible/tool/CraftingTool.idl(98):  		status = "@crafting:tool_status_ready";
 	status = "@crafting:tool_status_ready";
-	// server/zone/objects/tangible/tool/CraftingTool.idl(97):  		state = 1;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(99):  		state = 1;
 	state = 1;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(100):  		effectiveness = -15;
+	effectiveness = -15;
 }
 
 void CraftingToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(101):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingTool.idl(104):  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingTool.idl(105):  		lastExperimentationTimestamp = 0;
+	lastExperimentationTimestamp = 0;
 }
 
 bool CraftingToolImplementation::isCraftingTool() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(131):  		return true;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(135):  		return true;
 	return true;
 }
 
 bool CraftingToolImplementation::isReady() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(135):  		return status == "@crafting:tool_status_ready";
+	// server/zone/objects/tangible/tool/CraftingTool.idl(139):  		return status == "@crafting:tool_status_ready";
 	return status == "@crafting:tool_status_ready";
 }
 
 int CraftingToolImplementation::getToolType() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(139):  		return type;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(143):  		return type;
 	return type;
 }
 
 ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(145):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
+	// server/zone/objects/tangible/tool/CraftingTool.idl(149):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
 	return (ManufactureSchematic*) getSlottedObject("test_manf_schematic");
 }
 
