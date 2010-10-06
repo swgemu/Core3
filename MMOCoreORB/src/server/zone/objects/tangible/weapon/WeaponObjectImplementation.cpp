@@ -225,6 +225,14 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 	/*if (getDotCount() > 0)
 		generateDotAttributes(alm);*/
 
+	if (craftersName != "") {
+		alm->insertAttribute("crafter", craftersName);
+	}
+
+	if (craftersSerial != "") {
+		alm->insertAttribute("serial_number", craftersSerial);
+	}
+
 	if (sliced == 1)
 		alm->insertAttribute("wpn_attr", "@obj_attr_n:hacked1");
 
