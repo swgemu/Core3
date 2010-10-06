@@ -1119,15 +1119,7 @@ void CraftingToolImplementation::experiment(PlayerCreature* player, int numRowsA
 	int lowestExpSuccess = 0;
 	int totalPoints = 0;
 
-	uint64 nanoTimeSinceLastExperiment =
-			Time::currentNanoTime() - lastExperimentationTimestamp;
 	lastExperimentationTimestamp = Time::currentNanoTime();
-
-	if(nanoTimeSinceLastExperiment < 500000000) {
-		System::out << nanoTimeSinceLastExperiment << endl;
-		numRowsAttempted = 0;
-		lowestExpSuccess = 8;
-	}
 
 	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
