@@ -233,6 +233,8 @@ protected:
 
 	int experimentalFailureRate;
 
+	unsigned long long lastExperimentationTimestamp;
+
 public:
 	static const int CLOTHING = 1;
 
