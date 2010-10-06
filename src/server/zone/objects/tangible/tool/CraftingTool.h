@@ -175,6 +175,10 @@ public:
 
 	void depositObject(PlayerCreature* player, bool practice);
 
+	unsigned long long getLastExperimentationTimestamp();
+
+	int getExperimentationResult();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -346,6 +350,10 @@ public:
 
 	void depositObject(PlayerCreature* player, bool practice);
 
+	unsigned long long getLastExperimentationTimestamp();
+
+	int getExperimentationResult();
+
 	CraftingTool* _this;
 
 	operator const CraftingTool*();
@@ -426,6 +434,10 @@ public:
 	void createObject(PlayerCreature* player, int timer, bool create);
 
 	void depositObject(PlayerCreature* player, bool practice);
+
+	unsigned long long getLastExperimentationTimestamp();
+
+	int getExperimentationResult();
 
 protected:
 	String _param2_experiment__PlayerCreature_int_String_int_;
