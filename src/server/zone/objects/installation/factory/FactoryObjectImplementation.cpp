@@ -491,6 +491,8 @@ void FactoryObjectImplementation::createNewObject() {
 			if (crate == NULL)
 				crate = createNewFactoryCrate(prototype->getGameObjectType(),
 						prototype);
+			else
+				crate->setUseCount(crate->getUseCount() + 1);
 
 			if (crate == NULL) {
 				stopFactory("manf_error_7", "", "", -1);
@@ -498,8 +500,6 @@ void FactoryObjectImplementation::createNewObject() {
 			}
 
 			Locker locker(crate);
-
-			crate->setUseCount(crate->getUseCount() + 1);
 
 			Reference<Task*> pending = getPendingTask("createFactoryObject");
 
