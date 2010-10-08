@@ -50,16 +50,10 @@ which carries forward this exception.
 #include "server/zone/objects/waypoint/WaypointObject.h"
 
 class WaypointList : public DeltaVectorMap<uint64, ManagedReference<WaypointObject*> > {
-
-	VectorMap<uint8, uint64> specialTypeMap;
-
 public:
 
 	int set(uint64 key, WaypointObject* value, DeltaMessage* message = NULL, int updates = 1) {
 		int pos = vectorMap.put(key, value);
-
-		if (value->getSpecialTypeID() != 0)
-			specialTypeMap.put(value->getSpecialTypeID(), value->getObjectID());
 
 		if (message != NULL) {
 			if (updates != 0)
@@ -82,9 +76,6 @@ public:
 
 		vectorMap.drop(key);
 
-		if (value->getSpecialTypeID() != 0)
-			specialTypeMap.drop(value->getSpecialTypeID());
-
 		if (message != NULL) {
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
@@ -93,21 +84,6 @@ public:
 
 			message->insertLong(key);
 			value->insertToMessage(message);
-		}
-
-		return true;
-	}
-
-	bool dropSpecialType(const uint8& key) {
-		if (!specialTypeMap.contains(key)) {
-			return false;
-		}
-
-		ManagedReference<WaypointObject*> value = vectorMap.get(specialTypeMap.get(key));
-
-		if (value->getSpecialTypeID() != 0) {
-			specialTypeMap.drop(key);
-
 		}
 
 		return true;
@@ -142,22 +118,20 @@ public:
 		return 0;
 	}
 
-	uint64 findSpecialTypeID(const uint8 specialTypeID) {
+	uint64 getWaypointBySpecialType(const uint8 specialTypeID) {
 		if (specialTypeID == 0)
 			return 0;
 
-		for (int i = 0; i < specialTypeMap.size(); ++i) {
-			uint8 key = specialTypeMap.elementAt(i).getKey();
-			uint64 value = specialTypeMap.get(key);
+		for (int i = 0; i < vectorMap.size(); ++i) {
+			ManagedReference<WaypointObject*> value = vectorMap.elementAt(i).getValue();
 
-			if (specialTypeID == key)
-				return value;
-
+			if (value->getSpecialTypeID() == specialTypeID)
+				return value->getObjectID();
 		}
 
 		return 0;
-	}
 
+	}
 
 };
 

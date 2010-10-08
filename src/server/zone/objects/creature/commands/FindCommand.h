@@ -110,7 +110,7 @@ public:
 		PlayerObject* pl = player->getPlayerObject();
 
 		WaypointList* waypointlist = pl->getWaypointList();
-		uint64 wpid = waypointlist->findSpecialTypeID(
+		uint64 wpid = waypointlist->getWaypointBySpecialType(
 				WaypointObject::SPECIALTYPE_FIND);
 
 		if (wpid != 0) {

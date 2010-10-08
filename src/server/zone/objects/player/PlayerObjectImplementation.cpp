@@ -286,7 +286,7 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool chec
 	}
 
 	if (specialTypeID != 0) {
-		uint64 idx = waypointList.findSpecialTypeID(specialTypeID);
+		uint64 idx = waypointList.getWaypointBySpecialType(specialTypeID);
 
 		if (idx != 0)
 			removeWaypoint(idx, notifyClient);
