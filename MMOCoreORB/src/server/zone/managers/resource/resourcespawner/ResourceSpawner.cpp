@@ -475,6 +475,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 				player->getZone()->getZoneID())));
 		newwaypoint->setPosition(maxX, 0, maxY);
 		newwaypoint->setColor(WaypointObject::COLOR_BLUE);
+		newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
 		newwaypoint->setActive(true);
 	}
 
