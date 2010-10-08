@@ -98,6 +98,21 @@ public:
 		return true;
 	}
 
+	bool dropSpecialType(const uint8& key) {
+		if (!specialTypeMap.contains(key)) {
+			return false;
+		}
+
+		ManagedReference<WaypointObject*> value = vectorMap.get(specialTypeMap.get(key));
+
+		if (value->getSpecialTypeID() != 0) {
+			specialTypeMap.drop(key);
+
+		}
+
+		return true;
+	}
+
 	void insertToMessage(BaseMessage* msg) {
 		msg->insertInt(size());
 		msg->insertInt(getUpdateCounter());

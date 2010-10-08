@@ -741,15 +741,11 @@ WaypointObject* PlayerCreatureImplementation::getSurveyWaypoint() {
 
 	WaypointList* list = ghost->getWaypointList();
 
-	for(int i = 0; i < list->size(); ++i) {
-		ManagedReference<WaypointObject* > waypoint = (WaypointObject*) list->getValueAt(i);
+	uint64 wpid = list->findSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
 
-		if(waypoint == NULL)
-			continue;
-
-		String name = waypoint->getCustomName().toString();
-		if(name == "Resource Survey")
-			return waypoint;
+	if (wpid != 0) {
+		return list->get(wpid);
 	}
+
 	return NULL;
 }
