@@ -396,6 +396,7 @@ void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int v
 	newwaypoint->setPlanetCRC(Planet::getPlanetCRC(Planet::getPlanetName(player->getZone()->getZoneID())));
 	newwaypoint->setPosition(richSampleLocation->getPositionX(), 0, richSampleLocation->getPositionY());
 	newwaypoint->setColor(WaypointObject::COLOR_BLUE);
+	newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
 	newwaypoint->setActive(true);
 
 	player->getPlayerObject()->addWaypoint(newwaypoint, false, true); // Should second argument be true, and waypoints with the same name thus remove their old version?
