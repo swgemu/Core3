@@ -741,7 +741,7 @@ WaypointObject* PlayerCreatureImplementation::getSurveyWaypoint() {
 
 	WaypointList* list = ghost->getWaypointList();
 
-	uint64 wpid = list->findSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
+	uint64 wpid = list->getWaypointBySpecialType(WaypointObject::SPECIALTYPE_RESOURCE);
 
 	if (wpid != 0) {
 		return list->get(wpid);
