@@ -58,6 +58,15 @@ public:
 	static const uint32 ENEMY = 0x20;
 	static const uint32 CHANGEFACTIONSTATUS = 0x40;
 	static const uint32 BLINK_GREEN = 0x80;
+
+	static const uint32 PACK = 0x01;
+	static const uint32 HERD = 0x02;
+	static const uint32 KILLER = 0x04;
+	static const uint32 STALKER = 0x08;
+	static const uint32 BABY = 0x10;
+
+	static const uint32 CARNIVORE = 0x01;
+	static const uint32 HERBIVORE = 0x02;
 };
 
 

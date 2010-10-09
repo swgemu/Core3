@@ -1,0 +1,38 @@
+lesser_bocatt = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:lesser_bocatt",
+	socialGroup = "Bocatt",
+	pvpFaction = "",
+	faction = "",
+	level = 15,
+	chanceHit = 0.300000,
+	damageMin = 150,
+	damageMax = 160,
+	range = 0,
+	baseXp = 831,
+	baseHAM = 2200,
+	armor = 0,
+	resists = {0,0,0,0,15,15,-1,-1,-1},
+	meatType = "meat_reptilian",
+	meatAmount = 100,
+	hideType = "hide_leathery",
+	hideAmount = 60,
+	boneType = "bone_mammal",
+	boneAmount = 35,
+	milk = 0.000000,
+	tamingChance = 0.250000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = STALKER + PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"posturedownattack","postureDownChance=50"},
+		{"stunattack","stunChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(lesser_bocatt, "lesser_bocatt")

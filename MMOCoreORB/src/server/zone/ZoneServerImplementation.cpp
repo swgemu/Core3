@@ -64,6 +64,7 @@ which carries forward this exception.
 #include "managers/minigames/GamblingManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/account/AccountManager.h"
+#include "managers/creature/CreatureTemplateManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -99,6 +100,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	fishingManager = NULL;
 	gamblingManager = NULL;
 	stringIdManager = NULL;
+	creatureTemplateManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -234,6 +236,9 @@ void ZoneServerImplementation::initialize() {
 	objectManager->setZoneProcessServerImplementation(processor);
 
 	stringIdManager = StringIdManager::instance();
+
+	creatureTemplateManager = CreatureTemplateManager::instance();
+	creatureTemplateManager->loadTemplates();
 
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);

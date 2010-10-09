@@ -1,0 +1,37 @@
+fynock = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@monster_name:fynock",
+	socialGroup = "Fynock",
+	pvpFaction = "",
+	faction = "",
+	level = 12,
+	chanceHit = 0.290000,
+	damageMin = 130,
+	damageMax = 140,
+	range = 0,
+	baseXp = 514,
+	baseHAM = 1300,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "meat_avian",
+	meatAmount = 22,
+	hideType = "hide_leathery",
+	hideAmount = 33,
+	boneType = "bone_avian",
+	boneAmount = 10,
+	milk = 0.000000,
+	tamingChance = 0.250000,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"stunattack","stunChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(fynock, "fynock")

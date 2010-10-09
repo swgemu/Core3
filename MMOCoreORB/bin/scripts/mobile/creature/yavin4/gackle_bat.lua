@@ -1,0 +1,37 @@
+gackle_bat = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@monster_name:gackle_bat",
+	socialGroup = "Gacklebat",
+	pvpFaction = "",
+	faction = "",
+	level = 10,
+	chanceHit = 0.280000,
+	damageMin = 120,
+	damageMax = 130,
+	range = 0,
+	baseXp = 356,
+	baseHAM = 450,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "meat_carnivore",
+	meatAmount = 4,
+	hideType = "hide_bristley",
+	hideAmount = 2,
+	boneType = "bone_mammal",
+	boneAmount = 3,
+	milk = 0.000000,
+	tamingChance = 0.250000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"intimidationattack","intimidationChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(gackle_bat, "gackle_bat")

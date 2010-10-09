@@ -1,0 +1,38 @@
+kliknik_dark_defender = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:kliknik_dark_defender",
+	socialGroup = "Kliknik",
+	pvpFaction = "",
+	faction = "",
+	level = 42,
+	chanceHit = 0.440000,
+	damageMin = 360,
+	damageMax = 430,
+	range = 25,
+	baseXp = 4097,
+	baseHAM = 10000,
+	armor = 0,
+	resists = {55,45,50,50,50,-1,-1,-1,-1},
+	meatType = "meat_carnivore",
+	meatAmount = 7,
+	hideType = "hide_scaley",
+	hideAmount = 4,
+	boneType = "bone_",
+	boneAmount = 0,
+	milk = 0.000000,
+	tamingChance = 0.150000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"mildpoison",""},
+		{"intimidationattack","intimidationChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(kliknik_dark_defender, "kliknik_dark_defender")

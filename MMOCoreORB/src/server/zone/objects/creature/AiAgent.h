@@ -125,6 +125,20 @@ using namespace server::zone::templates;
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace creature {
+
+class CreatureTemplate;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace creature {
 namespace events {
@@ -139,13 +153,13 @@ class DespawnCreatureOnPlayerDissappear;
 
 using namespace server::zone::objects::creature::events;
 
-#include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
-
 #include "server/zone/objects/creature/PatrolPointsVector.h"
 
 #include "server/zone/objects/creature/PatrolPoint.h"
 
 #include "server/zone/objects/tangible/DamageMap.h"
+
+#include "server/zone/objects/creature/variables/CreatureAttackMap.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -204,6 +218,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void loadTemplateData(CreatureTemplate* templateData);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	void sendConversationStartTo(SceneObject* player);
@@ -294,6 +310,22 @@ public:
 
 	DamageMap* getDamageMap();
 
+	String getFactionString();
+
+	String getSocialGroup();
+
+	float getChanceHit();
+
+	int getDamageMin();
+
+	int getDamageMax();
+
+	int getBaseXp();
+
+	unsigned int getDiet();
+
+	CreatureAttackMap* getAttackMap();
+
 	float getRespawnTimer();
 
 	PatrolPoint* getHomeLocation();
@@ -312,8 +344,10 @@ protected:
 	virtual ~AiAgent();
 
 	String _return_getBoneType;
+	String _return_getFactionString;
 	String _return_getHideType;
 	String _return_getMeatType;
+	String _return_getSocialGroup;
 
 	friend class AiAgentHelper;
 };
@@ -346,7 +380,9 @@ protected:
 
 	DamageMap damageMap;
 
-	NonPlayerCreatureObjectTemplate* npcTemplate;
+	CreatureTemplate* npcTemplate;
+
+	SharedObjectTemplate* objectTemplate;
 
 	bool baby;
 
@@ -401,6 +437,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void loadTemplateData(CreatureTemplate* templateData);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	void sendConversationStartTo(SceneObject* player);
@@ -490,6 +528,22 @@ public:
 	int getNumberOfPlayersInRange();
 
 	DamageMap* getDamageMap();
+
+	String getFactionString();
+
+	String getSocialGroup();
+
+	float getChanceHit();
+
+	int getDamageMin();
+
+	int getDamageMax();
+
+	int getBaseXp();
+
+	unsigned int getDiet();
+
+	CreatureAttackMap* getAttackMap();
 
 	float getRespawnTimer();
 
@@ -645,6 +699,20 @@ public:
 	bool getDespawnOnNoPlayerInRange();
 
 	int getNumberOfPlayersInRange();
+
+	String getFactionString();
+
+	String getSocialGroup();
+
+	float getChanceHit();
+
+	int getDamageMin();
+
+	int getDamageMax();
+
+	int getBaseXp();
+
+	unsigned int getDiet();
 
 	float getRespawnTimer();
 

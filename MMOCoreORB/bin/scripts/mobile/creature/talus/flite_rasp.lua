@@ -1,0 +1,35 @@
+flite_rasp = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@monster_name:flite_rasp",
+	socialGroup = "Rasp",
+	pvpFaction = "",
+	faction = "",
+	level = 8,
+	chanceHit = 0.270000,
+	damageMin = 70,
+	damageMax = 75,
+	range = 0,
+	baseXp = 235,
+	baseHAM = 450,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "meat_avian",
+	meatAmount = 19,
+	hideType = "hide_",
+	hideAmount = 0,
+	boneType = "bone_avian",
+	boneAmount = 9,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + HERD,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(flite_rasp, "flite_rasp")

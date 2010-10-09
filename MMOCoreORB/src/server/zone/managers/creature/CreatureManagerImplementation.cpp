@@ -6,6 +6,8 @@
  */
 
 #include "CreatureManager.h"
+#include "CreatureTemplate.h"
+#include "CreatureTemplateManager.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
@@ -23,7 +25,52 @@
 #include "server/db/ServerDatabase.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
+void CreatureManagerImplementation::setCreatureTemplateManager() {
+	creatureTemplateManager = CreatureTemplateManager::instance();
+}
+
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
+	CreatureObject* creature = createCreature(templateCRC);
+
+	placeCreature(creature, x, z, y, parentID);
+
+	return creature;
+}
+
+CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID) {
+	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
+	if (creoTempl == NULL)
+		return spawnCreature(objectCRC, x, z, y, parentID);
+
+	CreatureObject* creature = NULL;
+
+	if (objectCRC == 0) {
+		Vector<String> objTemps = creoTempl->getTemplates();
+
+		if (objTemps.size() > 0)
+			objectCRC = objTemps.get(System::random(objTemps.size()-1)).hashCode();
+		else {
+			StringBuffer errMsg;
+			errMsg << "could not spawn creature... no object templates in script " << creoTempl->getTemplateName();
+
+			error(errMsg.toString());
+			return NULL;
+		}
+	}
+
+	creature = createCreature(objectCRC);
+
+	if (creature != NULL && creature->isAiAgent()) {
+		AiAgent* npc = (AiAgent*)creature;
+		npc->loadTemplateData(creoTempl);
+	}
+
+	placeCreature(creature, x, z, y, parentID);
+
+	return creature;
+}
+
+CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC) {
 	ManagedReference<SceneObject*> object = server->createObject(templateCRC, 0);
 
 	if (object == NULL) {
@@ -46,6 +93,21 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 
 	CreatureObject* creature = (CreatureObject*) object.get();
 
+	if (!createCreatureChildrenObjects(creature)) {
+		StringBuffer errMsg;
+		errMsg << "could not create children objects for creature... 0x" << templateCRC;
+		error(errMsg.toString());
+
+		return NULL;
+	}
+
+	return creature;
+}
+
+void CreatureManagerImplementation::placeCreature(CreatureObject* creature, float x, float z, float y, uint64 parentID) {
+	if (creature == NULL)
+		return;
+
 	SceneObject* cellParent = NULL;
 
 	if (parentID != 0) {
@@ -57,16 +119,8 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 		}
 	}
 
-	if (!createCreatureChildrenObjects(creature)) {
-		StringBuffer errMsg;
-		errMsg << "could not create children objects for creature... 0x" << templateCRC;
-		error(errMsg.toString());
-
-		return NULL;
-	}
-
 	if (cellParent != NULL) {
-		cellParent->addObject(object, -1);
+		cellParent->addObject(creature, -1);
 	}
 
 	//addCreatureToMap(creature);
@@ -76,8 +130,6 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	creature->initializePosition(x, z, y);
 
 	creature->insertToZone(zone);
-
-	return creature;
 }
 
 bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature) {

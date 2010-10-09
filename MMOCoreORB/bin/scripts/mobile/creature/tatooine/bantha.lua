@@ -1,0 +1,37 @@
+bantha = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@monster_name:bantha",
+	socialGroup = "Bantha",
+	pvpFaction = "",
+	faction = "",
+	level = 15,
+	chanceHit = 0.300000,
+	damageMin = 150,
+	damageMax = 160,
+	range = 0,
+	baseXp = 714,
+	baseHAM = 2200,
+	armor = 0,
+	resists = {0,20,0,20,0,0,0,-1,-1},
+	meatType = "meat_herbivore",
+	meatAmount = 450,
+	hideType = "hide_wooly",
+	hideAmount = 325,
+	boneType = "bone_mammal",
+	boneAmount = 250,
+	milk = 0.000000,
+	tamingChance = 0.250000,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = HERD,
+	diet = HERBIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"dizzyattack","dizzyChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(bantha, "bantha")

@@ -79,6 +79,7 @@ import server.zone.managers.mission.MissionManager;
 import server.zone.managers.account.AccountManager;
 import server.zone.managers.minigames.GamblingManager;
 import server.zone.managers.stringid.StringIdManager;
+import server.zone.managers.creature.CreatureTemplateManager;
 
 class ZoneServer extends ManagedService implements ServiceHandler, Logger {
 	private transient DatagramServiceThread datagramService;
@@ -111,6 +112,8 @@ class ZoneServer extends ManagedService implements ServiceHandler, Logger {
 	private AccountManager accountManager;
 	
 	private transient StringIdManager stringIdManager;
+	
+	private transient CreatureTemplateManager creatureTemplateManager;
 
 	private int totalSentPackets;
 	

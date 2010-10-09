@@ -1,0 +1,37 @@
+mutant_bark_mite_worker = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:mutant_bark_mite_worker",
+	socialGroup = "Mut. Bark Mite",
+	pvpFaction = "",
+	faction = "",
+	level = 12,
+	chanceHit = 0.280000,
+	damageMin = 130,
+	damageMax = 140,
+	range = 0,
+	baseXp = 609,
+	baseHAM = 2200,
+	armor = 0,
+	resists = {5,5,0,0,0,0,0,-1,-1},
+	meatType = "meat_insect",
+	meatAmount = 15,
+	hideType = "hide_bristley",
+	hideAmount = 10,
+	boneType = "bone_",
+	boneAmount = 0,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = KILLER + PACK + HERD,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"stunattack","stunChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(mutant_bark_mite_worker, "mutant_bark_mite_worker")

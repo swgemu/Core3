@@ -1,0 +1,37 @@
+diseased_vrelt = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:diseased_vrelt",
+	socialGroup = "Vrelt",
+	pvpFaction = "",
+	faction = "",
+	level = 8,
+	chanceHit = 0.270000,
+	damageMin = 70,
+	damageMax = 75,
+	range = 0,
+	baseXp = 187,
+	baseHAM = 450,
+	armor = 0,
+	resists = {0,0,0,0,0,0,10,-1,-1},
+	meatType = "meat_wild",
+	meatAmount = 4,
+	hideType = "hide_leathery",
+	hideAmount = 3,
+	boneType = "bone_mammal",
+	boneAmount = 2,
+	milk = 0.000000,
+	tamingChance = 0.250000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = NONE,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"milddisease",""}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(diseased_vrelt, "diseased_vrelt")

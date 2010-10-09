@@ -1,0 +1,38 @@
+crimson_blurrg = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:crimson_blurrg",
+	socialGroup = "Blurrg",
+	pvpFaction = "",
+	faction = "",
+	level = 35,
+	chanceHit = 0.410000,
+	damageMin = 320,
+	damageMax = 350,
+	range = 25,
+	baseXp = 3460,
+	baseHAM = 9800,
+	armor = 0,
+	resists = {40,30,0,40,60,-1,-1,-1,-1},
+	meatType = "meat_carnivore",
+	meatAmount = 0,
+	hideType = "hide_leathery",
+	hideAmount = 0,
+	boneType = "bone_avian",
+	boneAmount = 0,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + HERD,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"posturedownattack","postureDownChance=50"},
+		{"knockdownattack","knockdownChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(crimson_blurrg, "crimson_blurrg")

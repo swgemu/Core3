@@ -1,0 +1,37 @@
+kusak_hunter = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:kusak_hunter",
+	socialGroup = "Kusak",
+	pvpFaction = "",
+	faction = "",
+	level = 73,
+	chanceHit = 0.750000,
+	damageMin = 570,
+	damageMax = 850,
+	range = 0,
+	baseXp = 7023,
+	baseHAM = 13500,
+	armor = 0,
+	resists = {40,0,0,-1,-1,0,0,-1,-1},
+	meatType = "meat_carnivore",
+	meatAmount = 20,
+	hideType = "hide_bristley",
+	hideAmount = 14,
+	boneType = "bone_mammal",
+	boneAmount = 10,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = KILLER + STALKER + PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"dizzyattack","dizzyChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(kusak_hunter, "kusak_hunter")

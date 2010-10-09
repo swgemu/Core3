@@ -24,6 +24,8 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
+
 /*
  *	CreatureManagerStub
  */
@@ -72,6 +74,57 @@ CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x
 		return _implementation->spawnCreature(templateCRC, x, z, y, parentID);
 }
 
+CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID) {
+	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addUnsignedIntParameter(templateCRC);
+		method.addUnsignedIntParameter(objectCRC);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addUnsignedLongParameter(parentID);
+
+		return (CreatureObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->spawnCreature(templateCRC, objectCRC, x, z, y, parentID);
+}
+
+CreatureObject* CreatureManager::createCreature(unsigned int templateCRC) {
+	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addUnsignedIntParameter(templateCRC);
+
+		return (CreatureObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->createCreature(templateCRC);
+}
+
+void CreatureManager::placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID) {
+	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(creature);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addUnsignedLongParameter(parentID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->placeCreature(creature, x, z, y, parentID);
+}
+
 int CreatureManager::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
 	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -87,7 +140,7 @@ void CreatureManager::loadDynamicSpawnAreas() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 11);
 
 		method.executeWithVoidReturn();
 	} else
@@ -100,7 +153,7 @@ void CreatureManager::loadSingleSpawns() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 12);
 
 		method.executeWithVoidReturn();
 	} else
@@ -113,7 +166,7 @@ void CreatureManager::loadTrainers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 13);
 
 		method.executeWithVoidReturn();
 	} else
@@ -126,7 +179,7 @@ void CreatureManager::loadMissionSpawns() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 14);
 
 		method.executeWithVoidReturn();
 	} else
@@ -139,7 +192,7 @@ void CreatureManager::loadInformants() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 15);
 
 		method.executeWithVoidReturn();
 	} else
@@ -226,24 +279,26 @@ void CreatureManagerImplementation::_serializationHelperMethod() {
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet, ZoneProcessServerImplementation* impl) {
 	_initializeImplementation();
-	// server/zone/managers/creature/CreatureManager.idl(30):  		server = planet.getZoneServer();
+	// server/zone/managers/creature/CreatureManager.idl(33):  		server = planet.getZoneServer();
 	server = planet->getZoneServer();
-	// server/zone/managers/creature/CreatureManager.idl(31):  		processor = impl;
+	// server/zone/managers/creature/CreatureManager.idl(34):  		processor = impl;
 	processor = impl;
-	// server/zone/managers/creature/CreatureManager.idl(32):  		zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl(35):  		zone = planet;
 	zone = planet;
-	// server/zone/managers/creature/CreatureManager.idl(34):  		Logger.setLoggingName("CreatureManager");
+	// server/zone/managers/creature/CreatureManager.idl(37):  		Logger.setLoggingName("CreatureManager");
 	Logger::setLoggingName("CreatureManager");
-	// server/zone/managers/creature/CreatureManager.idl(35):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/creature/CreatureManager.idl(38):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/creature/CreatureManager.idl(36):  		Logger.setLogging(false);
+	// server/zone/managers/creature/CreatureManager.idl(39):  		Logger.setLogging(false);
 	Logger::setLogging(false);
 }
 
 void CreatureManagerImplementation::initialize() {
-	// server/zone/managers/creature/CreatureManager.idl(42):  		loadMissionSpawns();
+	// server/zone/managers/creature/CreatureManager.idl(43):  		setCreatureTemplateManager();
+	setCreatureTemplateManager();
+	// server/zone/managers/creature/CreatureManager.idl(46):  		loadMissionSpawns();
 	loadMissionSpawns();
-	// server/zone/managers/creature/CreatureManager.idl(43):  		loadInformants();
+	// server/zone/managers/creature/CreatureManager.idl(47):  		loadInformants();
 	loadInformants();
 }
 
@@ -265,18 +320,27 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 8:
-		loadDynamicSpawnAreas();
+		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 9:
-		loadSingleSpawns();
+		resp->insertLong(createCreature(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 10:
-		loadTrainers();
+		placeCreature((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 11:
-		loadMissionSpawns();
+		loadDynamicSpawnAreas();
 		break;
 	case 12:
+		loadSingleSpawns();
+		break;
+	case 13:
+		loadTrainers();
+		break;
+	case 14:
+		loadMissionSpawns();
+		break;
+	case 15:
 		loadInformants();
 		break;
 	default:
@@ -292,6 +356,18 @@ void CreatureManagerAdapter::initialize() {
 
 CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID) {
 	return ((CreatureManagerImplementation*) impl)->spawnCreature(templateCRC, x, z, y, parentID);
+}
+
+CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID) {
+	return ((CreatureManagerImplementation*) impl)->spawnCreature(templateCRC, objectCRC, x, z, y, parentID);
+}
+
+CreatureObject* CreatureManagerAdapter::createCreature(unsigned int templateCRC) {
+	return ((CreatureManagerImplementation*) impl)->createCreature(templateCRC);
+}
+
+void CreatureManagerAdapter::placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID) {
+	((CreatureManagerImplementation*) impl)->placeCreature(creature, x, z, y, parentID);
 }
 
 void CreatureManagerAdapter::loadDynamicSpawnAreas() {

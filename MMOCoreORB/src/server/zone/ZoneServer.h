@@ -251,6 +251,20 @@ class StringIdManager;
 
 using namespace server::zone::managers::stringid;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+
+class CreatureTemplateManager;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -479,6 +493,8 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Ser
 	ManagedReference<AccountManager* > accountManager;
 
 	StringIdManager* stringIdManager;
+
+	CreatureTemplateManager* creatureTemplateManager;
 
 	int totalSentPackets;
 
