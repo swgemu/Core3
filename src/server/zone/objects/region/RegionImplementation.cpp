@@ -12,29 +12,19 @@
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
 #include "server/zone/objects/installation/bank/BankInstallation.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/building/city/CityHallObject.h"
 
 void RegionImplementation::sendGreetingMessage(PlayerCreature* player) {
-	if (isStaticObject())
+	if (isStaticObject() || cityHall == NULL)
 		return;
 
 	ParameterizedStringId stringId("city/city", "city_enter_city");
 	stringId.setTT(objectName.getCustomString());
 
-	String type;
+	StringBuffer type;
+	type << "@city/city:rank" << cityHall->getCityRank();
 
-	if (radius == 150.f) {
-		type = "Outpost";
-	} else if (radius == 200.f) {
-		type = "Village";
-	} else if (radius == 300.f) {
-		type = "Township";
-	} else if (radius == 400.f) {
-		type = "City";
-	} else {
-		type = "Metropolis";
-	}
-
-	stringId.setTO(type);
+	stringId.setTO(type.toString());
 
 	player->sendSystemMessage(stringId);
 }

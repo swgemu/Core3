@@ -16,15 +16,13 @@ protected:
 
 	String constructionMarkerTemplate;
 
-	int lotSize;
-
 	int baseMaintenanceRate;
-
 	int basePowerRate;
 
-	int length;
-
-	int width;
+	uint8 lotSize;
+	uint8 cityRankRequired;
+	uint8 length;
+	uint8 width;
 
 public:
 	SharedStructureObjectTemplate() {
@@ -37,7 +35,7 @@ public:
 
 	void readObject(LuaObject* templateData);
 
-	inline int getLotSize() {
+	inline uint8 getLotSize() {
 		return lotSize;
 	}
 
@@ -53,12 +51,16 @@ public:
 		return basePowerRate;
 	}
 
-	inline int getLength() {
+	inline uint8 getLength() {
 		return length;
 	}
 
-	inline int getWidth() {
+	inline uint8 getWidth() {
 		return width;
+	}
+
+	inline uint8 getCityRankRequired() {
+		return cityRankRequired;
 	}
 
 	inline String& getConstructionMarkerTemplate() {

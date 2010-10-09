@@ -12,7 +12,7 @@
 void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 	SharedTangibleObjectTemplate::readObject(templateData);
 
-	lotSize = templateData->getIntField("lotSize");
+	lotSize = templateData->getByteField("lotSize");
 
 	baseMaintenanceRate = templateData->getIntField("baseMaintenanceRate");
 
@@ -25,9 +25,11 @@ void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 
 	allowzones.pop();
 
-	length = templateData->getIntField("length");
+	length = templateData->getByteField("length");
 
-	width = templateData->getIntField("width");
+	width = templateData->getByteField("width");
+
+	cityRankRequired = templateData->getByteField("cityRankRequired");
 
 	constructionMarkerTemplate = templateData->getStringField("constructionMarker");
 }

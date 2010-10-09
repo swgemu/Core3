@@ -59,20 +59,42 @@ class CityHallObject extends BuildingObject {
 	protected SortedVector<unsigned long> declaredCitizens;
 	
 	@dereferenced
+	protected VectorMap<unsigned long, StructureObject> civicStructures;
+	
+	@dereferenced
 	protected VectorMap<unsigned long, unsigned int> playerZoningRights;
 	
 	protected Region cityRegion;
 	protected string cityName;
+	protected byte cityRank;
+	protected byte citySpecialization;
+	
+	@dereferenced
+	protected Time nextCityUpdate;
 	
 	protected unsigned long mayorObjectID;
 	
 	protected CityTerminal cityTerminal;
 	protected CityVoteTerminal cityVoteTerminal;
 	
+	//City Ranks
+	public static final byte OUTPOST = 1;
+	public static final byte VILLAGE = 2;
+	public static final byte TOWNSHIP = 3;
+	public static final byte CITY = 4;
+	public static final byte METROPOLIS = 5;
+	
+	public static final int CITY_UPDATEINTERVAL = 1; //In hours
+	
 	public CityHallObject() {
 		setLoggingName("CityHallObject");
 		
 		cityName = "test city";
+		
+		cityRank = OUTPOST;
+		citySpecialization = 0;
+		
+		nextCityUpdate.addMiliTime(CITY_UPDATEINTERVAL * 3600000);
 		
 		mayorObjectID = 0;
 		
@@ -100,6 +122,11 @@ class CityHallObject extends BuildingObject {
 		updateToDatabaseWithoutChildren();
 	}
 	
+	/**
+	 * Checks to see if the city can advance in rank, and handles the appropriate emails and settings.
+	 */
+	public native void checkCityUpdate();
+	
 	public native void spawnCityHallObjects();
 	public native void despawnCityHallObjects();
 	
@@ -113,6 +140,10 @@ class CityHallObject extends BuildingObject {
 	
 	public string getCityName() {
 		return cityName;
+	}
+	
+	public byte getCityRank() {
+		return cityRank;
 	}
 	
 	public native void sendStatusTo(PlayerCreature player);
@@ -229,5 +260,9 @@ class CityHallObject extends BuildingObject {
 	
 	public void setCityRegion(Region region) {
 		cityRegion = region;
+	}
+	
+	public int getCivicStructureCap() {
+		return cityRank * 6 + 1;
 	}
 }
