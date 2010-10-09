@@ -98,8 +98,8 @@ public:
 		if (cityHall->hasZoningRights(targetPlayer->getObjectID())) {
 			cityHall->removeZoningRights(targetPlayer->getObjectID());
 
-			targetPlayer->sendSystemMessage("@city/city:rights_revoked"); //You have revoked their zoning rights.
-			player->sendSystemMessage("@city/city:rights_revoked_other"); //Your zoning rights have been revoked.
+			player->sendSystemMessage("@city/city:rights_revoked"); //You have revoked their zoning rights.
+			targetPlayer->sendSystemMessage("@city/city:rights_revoked_other"); //Your zoning rights have been revoked.
 		} else {
 			cityHall->addZoningRights(targetPlayer->getObjectID());
 
