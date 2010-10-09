@@ -1,0 +1,37 @@
+swamp_humbab = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "swamp humbab",
+	socialGroup = "self",
+	pvpFaction = "",
+	faction = "",
+	level = 19,
+	chanceHit = 0.330000,
+	damageMin = 160,
+	damageMax = 170,
+	range = 0,
+	baseXp = 1426,
+	baseHAM = 5550,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "meat_domestic",
+	meatAmount = 250,
+	hideType = "hide_leathery",
+	hideAmount = 150,
+	boneType = "bone_mammal",
+	boneAmount = 105,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + HERD,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"stunattack","stunChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(swamp_humbab, "swamp_humbab")

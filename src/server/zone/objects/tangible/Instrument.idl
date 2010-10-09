@@ -49,6 +49,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import engine.lua.LuaObject;
+import server.zone.templates.SharedObjectTemplate;
 include server.zone.templates.tangible.InstrumentObjectTemplate;
 
 class Instrument extends TangibleObject {

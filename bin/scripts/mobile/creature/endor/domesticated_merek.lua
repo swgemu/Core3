@@ -1,0 +1,38 @@
+domesticated_merek = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:domesticated_merek",
+	socialGroup = "self",
+	pvpFaction = "",
+	faction = "",
+	level = 49,
+	chanceHit = 0.500000,
+	damageMin = 395,
+	damageMax = 500,
+	range = 25,
+	baseXp = 4734,
+	baseHAM = 11000,
+	armor = 0,
+	resists = {60,-1,0,80,40,0,40,0,-1},
+	meatType = "meat_wild",
+	meatAmount = 0,
+	hideType = "hide_leathery",
+	hideAmount = 45,
+	boneType = "bone_",
+	boneAmount = 0,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"posturedownattack","postureDownChance=50"},
+		{"stunattack","stunChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(domesticated_merek, "domesticated_merek")

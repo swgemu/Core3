@@ -10,6 +10,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 /*
  *	InstrumentStub
  */
@@ -141,33 +143,33 @@ void InstrumentImplementation::_serializationHelperMethod() {
 
 InstrumentImplementation::InstrumentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Instrument.idl(83):  		instrumentType = 0;
+	// server/zone/objects/tangible/Instrument.idl(84):  		instrumentType = 0;
 	instrumentType = 0;
-	// server/zone/objects/tangible/Instrument.idl(85):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(86):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Instrument.idl(89):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/Instrument.idl(90):  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Instrument.idl(91):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl(92):  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/Instrument.idl(96):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/Instrument.idl(97):  		super.loadTemplateData(templateData);
 	TangibleObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/Instrument.idl(98):  		InstrumentObjectTemplate 
-	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(99):  			return;
+	// server/zone/objects/tangible/Instrument.idl(99):  		InstrumentObjectTemplate 
+	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(100):  			return;
 	return;
-	// server/zone/objects/tangible/Instrument.idl(101):  templ = (InstrumentObjectTemplate) templateData;
+	// server/zone/objects/tangible/Instrument.idl(102):  templ = (InstrumentObjectTemplate) templateData;
 	InstrumentObjectTemplate* templ = (InstrumentObjectTemplate*) templateData;
-	// server/zone/objects/tangible/Instrument.idl(103):  		instrumentType = templ.getInstrumentType();
+	// server/zone/objects/tangible/Instrument.idl(104):  		instrumentType = templ.getInstrumentType();
 	instrumentType = templ->getInstrumentType();
 }
 
 int InstrumentImplementation::getInstrumentType() {
-	// server/zone/objects/tangible/Instrument.idl(107):  		return instrumentType;
+	// server/zone/objects/tangible/Instrument.idl(108):  		return instrumentType;
 	return instrumentType;
 }
 

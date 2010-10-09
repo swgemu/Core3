@@ -1,0 +1,38 @@
+purbole_elder = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:purbole_elder",
+	socialGroup = "Purbole",
+	pvpFaction = "",
+	faction = "",
+	level = 24,
+	chanceHit = 0.350000,
+	damageMin = 190,
+	damageMax = 200,
+	range = 0,
+	baseXp = 2443,
+	baseHAM = 8550,
+	armor = 0,
+	resists = {20,25,0,-1,-1,70,-1,-1,-1},
+	meatType = "meat_carnivore",
+	meatAmount = 15,
+	hideType = "hide_bristley",
+	hideAmount = 11,
+	boneType = "bone_mammal",
+	boneAmount = 11,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = STALKER + PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"posturedownattack","postureDownChance=50"},
+		{"stunattack","stunChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(purbole_elder, "purbole_elder")

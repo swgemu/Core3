@@ -137,6 +137,20 @@ class ObjectController;
 
 using namespace server::zone::managers::objectcontroller;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+
+class CreatureTemplateManager;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
 #include "server/zone/managers/creature/CreatureMap.h"
 
 #include "engine/log/Logger.h"
@@ -155,6 +169,12 @@ public:
 	void initialize();
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
+
+	CreatureObject* spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID = 0);
+
+	CreatureObject* createCreature(unsigned int templateCRC);
+
+	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
 
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
@@ -200,6 +220,8 @@ protected:
 
 	ManagedWeakReference<Zone* > zone;
 
+	CreatureTemplateManager* creatureTemplateManager;
+
 public:
 	CreatureManagerImplementation(Zone* planet, ZoneProcessServerImplementation* impl);
 
@@ -208,6 +230,12 @@ public:
 	void initialize();
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
+
+	CreatureObject* spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID = 0);
+
+	CreatureObject* createCreature(unsigned int templateCRC);
+
+	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
 
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
@@ -223,6 +251,8 @@ public:
 
 private:
 	bool createCreatureChildrenObjects(CreatureObject* creature);
+
+	void setCreatureTemplateManager();
 
 public:
 	CreatureManager* _this;
@@ -267,6 +297,12 @@ public:
 	void initialize();
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID);
+
+	CreatureObject* spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID);
+
+	CreatureObject* createCreature(unsigned int templateCRC);
+
+	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
 
 	void loadDynamicSpawnAreas();
 

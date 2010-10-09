@@ -75,13 +75,27 @@ public:
 
 		CreatureManager* creatureManager = zone->getCreatureManager();
 
-		uint32 templ = String("object/mobile/boba_fett.iff").hashCode();
+		String objName = "", tempName = "object/mobile/boba_fett.iff";
 
 		if (!arguments.isEmpty()) {
-			templ = String(arguments.toString()).hashCode();
+			UnicodeTokenizer tokenizer(arguments);
+			tokenizer.setDelimeter(" ");
+
+			if (tokenizer.hasMoreTokens())
+				tokenizer.getStringToken(tempName);
+
+			if (tokenizer.hasMoreTokens())
+				tokenizer.getStringToken(objName);
 		}
 
-		CreatureObject* npc = creatureManager->spawnCreature(templ, posX, posZ, posY, parID);
+		uint32 templ = tempName.hashCode();
+		uint32 objTempl = objName.length() > 0 ? objName.hashCode() : 0;
+
+		CreatureObject* npc = NULL;
+		if (tempName.indexOf(".iff") != -1)
+			npc = creatureManager->spawnCreature(templ, posX, posZ, posY, parID);
+		else
+			npc = creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID);
 
 		if (npc == NULL)
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
