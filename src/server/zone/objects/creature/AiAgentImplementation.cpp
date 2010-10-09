@@ -13,9 +13,11 @@
 #include "events/DespawnCreatureOnPlayerDissappear.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/creature/CreatureTemplate.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
@@ -27,28 +29,45 @@
 #include "server/zone/Zone.h"
 #include "PatrolPoint.h"
 
-
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
+	objectTemplate = templateData;
+}
 
-	pvpStatusBitmask = CreatureFlag::ATTACKABLE;
+void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
+	npcTemplate = templateData;
 
-	if (templateData->isNonPlayerCreatureObjectTemplate())
-		npcTemplate = (NonPlayerCreatureObjectTemplate*) templateData;
-	/*else {
-		StringBuffer msg;
-		msg << "creating " << TemplateManager::instance()->getTemplateFile(serverObjectCRC);
-		msg << " with wrong template type object";
-		error(msg.toString());
-	}*/
+	setPvpStatusBitmask(npcTemplate->getPvpBitmask());
+	//npcTemplate->getCreatureBitmask(); -- TODO: need to add a bitmask for AI (pack, herd, etc)
+	level = npcTemplate->getLevel();
+
+	int ham = npcTemplate->getBaseHAM();
+	baseHAM.removeAll();
+	for (int i = 0; i < 9; ++i) {
+		if (i % 3 == 0)
+			baseHAM.add(ham);
+		else
+			baseHAM.add(ham/100);
+	}
+
+	hamList.removeAll();
+	for (int i = 0; i < 9; ++i) {
+		hamList.add(baseHAM.get(i));
+	}
+
+	maxHamList.removeAll();
+	for (int i = 0; i < 9; ++i) {
+		maxHamList.add(baseHAM.get(i));
+	}
+
+	objectName = npcTemplate->getObjectName();
 }
 
 void AiAgentImplementation::initializeTransientMembers() {
-	SharedObjectTemplate* templ = TemplateManager::instance()->getTemplate(serverObjectCRC);
+	npcTemplate = NULL;
 
-	if (templ != NULL && templ->isNonPlayerCreatureObjectTemplate()) {
-		npcTemplate = (NonPlayerCreatureObjectTemplate*) templ;
-	}
+	SharedObjectTemplate* templ = TemplateManager::instance()->getTemplate(serverObjectCRC);
+	objectTemplate = templ;
 }
 
 void AiAgentImplementation::doRecovery() {
@@ -215,12 +234,12 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	if (respawnTimer == 0)
 		return;
 
-	if (npcTemplate == NULL)
+	if (objectTemplate == NULL)
 		return;
 
 	Reference<Task*> task = new RespawnCreatureTask(_this, zone, level);
 
-	loadTemplateData(npcTemplate);
+	loadTemplateData(objectTemplate);
 	stateBitmask = 0;
 	posture = CreaturePosture::UPRIGHT;
 	shockWounds = 0;
@@ -524,107 +543,84 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerC
 		alm->insertAttribute("armorrating", "Heavy");
 
 	if (getKinetic() == 100)
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic",
-				"100%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", "100%");
 
 	if (getEnergy() == 100)
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy",
-				"100%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", "100%");
 
 	if (getElectricity() == 100)
-		alm->insertAttribute(
-				"cat_armor_special_protection.armor_eff_elemental_electrical",
-				"100%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", "100%");
 
 	if (getStun() == 100)
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun",
-				"100%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", "100%");
 
 	if (getBlast() == 100)
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast",
-				"100%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", "100%");
 
 	if (getHeat() == 100)
-		alm->insertAttribute(
-				"cat_armor_special_protection.armor_eff_elemental_heat", "100%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", "100%");
 
 	if (getCold() == 100)
-		alm->insertAttribute(
-				"cat_armor_special_protection.armor_eff_elemental_cold", "100%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", "100%");
 
 	if (getAcid() == 100)
-		alm->insertAttribute(
-				"cat_armor_special_protection.armor_eff_elemental_acid", "100%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", "100%");
 
 	if (getLightSaber() == 100)
-		alm->insertAttribute(
-				"cat_armor_special_protection.armor_eff_restraint", "100%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", "100%");
 
 	if (getKinetic() > 0 && getKinetic() < 100) {
 		StringBuffer txt;
 		txt << round(getKinetic()) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic",
-				txt.toString());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.toString());
 	}
 
 	if (getEnergy() > 0 && getEnergy() < 100) {
 		StringBuffer txt;
 		txt << round(getEnergy()) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy",
-				txt.toString());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.toString());
 	}
 
 	if (getElectricity() > 0 && getElectricity() < 100) {
 		StringBuffer txt;
 		txt << round(getElectricity()) << "%";
-		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_electrical",
-				txt.toString());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.toString());
 	}
 
 	if (getStun() > 0 && getStun() < 100) {
 		StringBuffer txt;
 		txt << round(getStun()) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun",
-				txt.toString());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.toString());
 	}
 
 	if (getBlast() > 0 && getBlast() < 100) {
 		StringBuffer txt;
 		txt << round(getBlast()) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast",
-				txt.toString());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.toString());
 	}
 
 	if (getHeat() > 0 && getHeat() < 100) {
 		StringBuffer txt;
 		txt << round(getHeat()) << "%";
-		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_heat",
-				txt.toString());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.toString());
 	}
 
 	if (getCold() > 0 && getCold() < 100) {
 		StringBuffer txt;
 		txt << round(getCold()) << "%";
-		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_cold",
-				txt.toString());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.toString());
 	}
 
 	if (getAcid() > 0 && getAcid() < 100) {
 		StringBuffer txt;
 		txt << round(getAcid()) << "%";
-		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_acid",
-				txt.toString());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.toString());
 	}
 
 	if (getLightSaber() > 0 && getLightSaber() < 100) {
 		StringBuffer txt;
 		txt << round(getLightSaber()) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint",
-				txt.toString());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.toString());
 	}
 
 	if (getKinetic() == 0)
@@ -634,8 +630,7 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerC
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
 
 	if (getElectricity() == 0)
-		alm->insertAttribute(
-				"cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
 
 	if (getStun() == 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
@@ -644,22 +639,18 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerC
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
 
 	if (getHeat() == 0)
-		alm->insertAttribute(
-				"cat_armor_vulnerability.armor_eff_elemental_heat", "-");
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_heat", "-");
 
 	if (getCold() == 0)
-		alm->insertAttribute(
-				"cat_armor_vulnerability.armor_eff_elemental_cold", "-");
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_cold", "-");
 
 	if (getAcid() == 0)
-		alm->insertAttribute(
-				"cat_armor_vulnerability.armor_eff_elemental_acid", "-");
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_acid", "-");
 
 	if (getLightSaber() == 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
 
-	if (getHideType().isEmpty() && getBoneType().isEmpty()
-			&& getMeatType().isEmpty()) {
+	if (getHideType().isEmpty() && getBoneType().isEmpty() && getMeatType().isEmpty()) {
 		return;
 	}
 
@@ -682,17 +673,23 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerC
 	}
 
 	if (creaKnowledge >= 20) {
-		if (!getHideType().isEmpty())
-			alm->insertAttribute("res_hide", getHideType());//.subString(4).replaceAll("_"," "));
-		else
+		if (!getHideType().isEmpty()) {
+			StringBuffer hideName;
+			hideName << "@obj_attr_n:" << getHideType();
+			alm->insertAttribute("res_hide", hideName.toString());
+		} else
 			alm->insertAttribute("res_hide", "---");
-		if (!getBoneType().isEmpty())
-			alm->insertAttribute("res_bone", getBoneType());//.subString(5).replaceAll("_"," "));
-		else
+		if (!getBoneType().isEmpty()) {
+			StringBuffer boneName;
+			boneName << "@obj_attr_n:" << getBoneType();
+			alm->insertAttribute("res_bone", boneName.toString());
+		} else
 			alm->insertAttribute("res_bone", "---");
-		if (!getMeatType().isEmpty())
-			alm->insertAttribute("res_meat", getMeatType());//.subString(4).replaceAll("_"," "));
-		else
+		if (!getMeatType().isEmpty()) {
+			StringBuffer meatName;
+			meatName << "@obj_attr_n:" << getMeatType();
+			alm->insertAttribute("res_meat", meatName.toString());
+		} else
 			alm->insertAttribute("res_meat", "---");
 	}
 
@@ -708,30 +705,42 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerC
 	}
 
 	if (creaKnowledge >= 50)
-		alm->insertAttribute("challenge_level", (int) getLevel());
+		alm->insertAttribute("challenge_level", getLevel());
 
-	int skillNum = skillCommands.size();
+	//int skillNum = skillCommands.size();
+	CreatureAttackMap* attackMap = getAttackMap();
+	int skillNum = 0;
+	if (attackMap != NULL)
+		skillNum = attackMap->size();
 
 	if (creaKnowledge >= 70) {
+		String skillname = "none";
 		if (skillNum >= 1)
-			alm->insertAttribute("pet_command_18", skillCommands.get(0));
-		else
-			alm->insertAttribute("pet_command_18", "---");
+			skillname = attackMap->getCommand(0);
+
+		StringBuffer skillMsg;
+		skillMsg << "@combat_effects:" << skillname;
+
+		alm->insertAttribute("pet_command_18", skillMsg.toString());
 	}
 
 	if (creaKnowledge >= 80) {
+		String skillname = "none";
 		if (skillNum >= 2)
-			alm->insertAttribute("pet_command_19", skillCommands.get(1));
-		else
-			alm->insertAttribute("pet_command_19", "---");
+			skillname = attackMap->getCommand(1);
+
+		StringBuffer skillMsg;
+		skillMsg << "@combat_effects:" << skillname;
+
+		alm->insertAttribute("pet_command_19", skillMsg.toString());
 	}
 
 	if (creaKnowledge >= 90)
-		alm->insertAttribute("basetohit", 0.89f);
+		alm->insertAttribute("basetohit", getChanceHit());
 
 	if (creaKnowledge >= 100) {
 		StringBuffer damageMsg;
-		//damageMsg << creatureWeaponMinDamage << "-" << creatureWeaponMaxDamage;
+		damageMsg << getDamageMin() << "-" << getDamageMax();
 		alm->insertAttribute("cat_wpn_damage", damageMsg.toString());
 	}
 

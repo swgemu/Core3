@@ -1,0 +1,37 @@
+razorback_felspur = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:desert_razorback_felspur",
+	socialGroup = "Zucca Boar",
+	pvpFaction = "",
+	faction = "",
+	level = 27,
+	chanceHit = 0.360000,
+	damageMin = 260,
+	damageMax = 270,
+	range = 0,
+	baseXp = 2730,
+	baseHAM = 9000,
+	armor = 0,
+	resists = {0,0,0,0,-1,0,-1,-1,-1},
+	meatType = "meat_herbivore",
+	meatAmount = 65,
+	hideType = "hide_leathery",
+	hideAmount = 40,
+	boneType = "bone_mammal",
+	boneAmount = 25,
+	milk = 0.000000,
+	tamingChance = 0.050000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"stunattack","stunChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(razorback_felspur, "razorback_felspur")

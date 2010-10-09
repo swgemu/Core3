@@ -56,14 +56,15 @@ import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.tangible.weapon.WeaponObject;
-include server.zone.templates.tangible.NonPlayerCreatureObjectTemplate;
 include server.zone.objects.creature.PatrolPointsVector;
 include server.zone.objects.creature.PatrolPoint;
 import engine.core.ManagedObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.templates.SharedObjectTemplate;
+import server.zone.managers.creature.CreatureTemplate;
 include server.zone.objects.tangible.DamageMap;
 import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
+include server.zone.objects.creature.variables.CreatureAttackMap;
 
 class AiAgent extends CreatureObject {
 	@dereferenced
@@ -87,7 +88,8 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected DamageMap damageMap;
 	
-	protected transient NonPlayerCreatureObjectTemplate npcTemplate;
+	protected transient CreatureTemplate npcTemplate;
+	protected transient SharedObjectTemplate objectTemplate;
 	
 	protected boolean baby;
 	
@@ -115,6 +117,7 @@ class AiAgent extends CreatureObject {
 		despawnOnNoPlayerInRange = true;
 		numberOfPlayersInRange = 0;
 
+		objectTemplate = null;
 		npcTemplate = null;
 		
 		Logger.setLoggingName("AiAgent");
@@ -172,6 +175,9 @@ class AiAgent extends CreatureObject {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	@local
+	public native void loadTemplateData(CreatureTemplate templateData);
 	
 	/**
 	 * Inflicts damage into the object
@@ -475,6 +481,63 @@ class AiAgent extends CreatureObject {
 	@local
 	public DamageMap getDamageMap() {
 		return damageMap;
+	}
+	
+	public string getFactionString() {
+		if (npcTemplate == null)
+			return "";
+		
+		return npcTemplate.getFaction();
+	}
+	
+	public string getSocialGroup() {
+		if (npcTemplate == null)
+			return "";
+		
+		return npcTemplate.getSocialGroup();
+	}
+	
+	public float getChanceHit() {
+		if (npcTemplate == null)
+			return false;
+		
+		return npcTemplate.getChanceHit();
+	}
+	
+	public int getDamageMin() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getDamageMin();
+	}
+	
+	public int getDamageMax() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getDamageMax();
+	}
+	
+	public int getBaseXp() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getBaseXp();
+	}
+	
+	public unsigned int getDiet() {
+		if (npcTemplate == null)
+			return 0;
+		
+		return npcTemplate.getDiet();
+	}
+	
+	@local
+	public CreatureAttackMap getAttackMap() {
+		if (npcTemplate == null)
+			return null;
+		
+		return npcTemplate.getAttacks();
 	}
 	
 	public float getRespawnTimer() {

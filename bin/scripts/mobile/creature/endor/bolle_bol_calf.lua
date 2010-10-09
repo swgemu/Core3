@@ -1,0 +1,35 @@
+bolle_bol_calf = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:bolle_bol_calf",
+	socialGroup = "Bolle Bol",
+	pvpFaction = "",
+	faction = "",
+	level = 15,
+	chanceHit = 0.310000,
+	damageMin = 160,
+	damageMax = 170,
+	range = 0,
+	baseXp = 831,
+	baseHAM = 2700,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,0,-1},
+	meatType = "meat_herbivore",
+	meatAmount = 0,
+	hideType = "hide_leathery",
+	hideAmount = 300,
+	boneType = "bone_mammal",
+	boneAmount = 180,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + HERD,
+	diet = HERBIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(bolle_bol_calf, "bolle_bol_calf")

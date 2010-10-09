@@ -1,0 +1,35 @@
+rancor_be = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "rancor be",
+	socialGroup = "Rancor",
+	pvpFaction = "",
+	faction = "",
+	level = 1,
+	chanceHit = 0.200000,
+	damageMin = 30,
+	damageMax = 40,
+	range = 0,
+	baseXp = 45,
+	baseHAM = 50,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,0,-1},
+	meatType = "meat_",
+	meatAmount = 0,
+	hideType = "hide_",
+	hideAmount = 0,
+	boneType = "bone_",
+	boneAmount = 0,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = KILLER + STALKER + PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(rancor_be, "rancor_be")

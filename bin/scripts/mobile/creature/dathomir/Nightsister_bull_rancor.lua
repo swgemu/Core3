@@ -1,0 +1,38 @@
+Nightsister_bull_rancor = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "Nightsister bull rancor",
+	socialGroup = "Nightsister ",
+	pvpFaction = "",
+	faction = "",
+	level = 65,
+	chanceHit = 0.600000,
+	damageMin = 455,
+	damageMax = 620,
+	range = 0,
+	baseXp = 6288,
+	baseHAM = 12500,
+	armor = 0,
+	resists = {0,60,0,100,100,100,0,0,-1},
+	meatType = "meat_carnivore",
+	meatAmount = 1020,
+	hideType = "hide_leathery",
+	hideAmount = 900,
+	boneType = "bone_mammal",
+	boneAmount = 850,
+	milk = 0.000000,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = KILLER + PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"creatureareadisease",""},
+		{"dizzyattack","dizzyChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(Nightsister_bull_rancor, "Nightsister_bull_rancor")

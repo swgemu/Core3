@@ -1,0 +1,38 @@
+huurton_stalker = Creature:new {
+	templateType = NPCCREATURE,
+	gameObjectType = 1024,
+	objectName = "@mob/creature_names:huurton_stalker",
+	socialGroup = "Huurton",
+	pvpFaction = "",
+	faction = "",
+	level = 33,
+	chanceHit = 0.400000,
+	damageMin = 310,
+	damageMax = 330,
+	range = 0,
+	baseXp = 3370,
+	baseHAM = 9600,
+	armor = 0,
+	resists = {0,0,0,40,100,-1,-1,-1,-1},
+	meatType = "meat_wild",
+	meatAmount = 15,
+	hideType = "hide_wooly",
+	hideAmount = 0,
+	boneType = "bone_mammal",
+	boneAmount = 15,
+	milk = 0.000000,
+	tamingChance = 0.250000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE,
+	creatureBitmask = KILLER + PACK,
+	diet = CARNIVORE,
+
+	templates = {},
+	weapons = {},
+	attacks = {
+		{"stunattack","stunChance=50"},
+		{"dizzyattack","dizzyChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(huurton_stalker, "huurton_stalker")
