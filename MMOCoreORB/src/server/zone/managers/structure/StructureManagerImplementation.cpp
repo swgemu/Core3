@@ -981,9 +981,23 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 	if (region != NULL) {
 		cityHall = region->getCityHall();
 
-		if (cityHall != NULL && !cityHall->hasZoningRights(player->getObjectID())) {
-			player->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
-			return 1;
+		if (cityHall != NULL) {
+			uint8 cityRank = cityHall->getCityRank();
+
+			if (!cityHall->hasZoningRights(player->getObjectID())) {
+				player->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
+				return 1;
+			}
+
+			if (cityRank < ssot->getCityRankRequired()) {
+				ParameterizedStringId params;
+				params.setStringId("@city/city:rank_req"); //The city must be at least rank %DI (%TO) in order for you to place this structure.
+				params.setDI(cityRank);
+				params.setTO(region->getObjectName());
+
+				player->sendSystemMessage(params);
+				return 1;
+			}
 		}
 	}
 

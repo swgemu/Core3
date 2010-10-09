@@ -89,11 +89,25 @@ namespace city {
 
 class CityHallObject : public BuildingObject {
 public:
+	static const byte OUTPOST = 1;
+
+	static const byte VILLAGE = 2;
+
+	static const byte TOWNSHIP = 3;
+
+	static const byte CITY = 4;
+
+	static const byte METROPOLIS = 5;
+
+	static const int CITY_UPDATEINTERVAL = 1;
+
 	CityHallObject();
 
 	void insertToZone(Zone* zone);
 
 	void removeFromZone();
+
+	void checkCityUpdate();
 
 	void spawnCityHallObjects();
 
@@ -106,6 +120,8 @@ public:
 	void setCityName(const String& name);
 
 	String getCityName();
+
+	byte getCityRank();
 
 	void sendStatusTo(PlayerCreature* player);
 
@@ -166,6 +182,8 @@ public:
 	Region* getCityRegion();
 
 	void setCityRegion(Region* region);
+
+	int getCivicStructureCap();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -199,11 +217,19 @@ class CityHallObjectImplementation : public BuildingObjectImplementation {
 protected:
 	SortedVector<unsigned long long> declaredCitizens;
 
+	VectorMap<unsigned long long, ManagedReference<StructureObject* > > civicStructures;
+
 	VectorMap<unsigned long long, unsigned int> playerZoningRights;
 
 	ManagedReference<Region* > cityRegion;
 
 	String cityName;
+
+	byte cityRank;
+
+	byte citySpecialization;
+
+	Time nextCityUpdate;
 
 	unsigned long long mayorObjectID;
 
@@ -212,6 +238,18 @@ protected:
 	ManagedReference<CityVoteTerminal* > cityVoteTerminal;
 
 public:
+	static const byte OUTPOST = 1;
+
+	static const byte VILLAGE = 2;
+
+	static const byte TOWNSHIP = 3;
+
+	static const byte CITY = 4;
+
+	static const byte METROPOLIS = 5;
+
+	static const int CITY_UPDATEINTERVAL = 1;
+
 	CityHallObjectImplementation();
 
 	CityHallObjectImplementation(DummyConstructorParameter* param);
@@ -219,6 +257,8 @@ public:
 	void insertToZone(Zone* zone);
 
 	void removeFromZone();
+
+	void checkCityUpdate();
 
 	void spawnCityHallObjects();
 
@@ -231,6 +271,8 @@ public:
 	void setCityName(const String& name);
 
 	String getCityName();
+
+	byte getCityRank();
 
 	void sendStatusTo(PlayerCreature* player);
 
@@ -291,6 +333,8 @@ public:
 	Region* getCityRegion();
 
 	void setCityRegion(Region* region);
+
+	int getCivicStructureCap();
 
 	CityHallObject* _this;
 
@@ -335,6 +379,8 @@ public:
 
 	void removeFromZone();
 
+	void checkCityUpdate();
+
 	void spawnCityHallObjects();
 
 	void despawnCityHallObjects();
@@ -346,6 +392,8 @@ public:
 	void setCityName(const String& name);
 
 	String getCityName();
+
+	byte getCityRank();
 
 	void sendStatusTo(PlayerCreature* player);
 
@@ -406,6 +454,8 @@ public:
 	Region* getCityRegion();
 
 	void setCityRegion(Region* region);
+
+	int getCivicStructureCap();
 
 protected:
 	String _param1_trySetCityName__PlayerCreature_String_;

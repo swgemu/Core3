@@ -179,6 +179,7 @@ int CityHallObjectImplementation::notifyStructurePlaced(PlayerCreature* player) 
 
 void CityHallObjectImplementation::sendStatusTo(PlayerCreature* player) {
 //	ManagedReference<SuiListBox*> listBox = new SuiListBox();
+	checkCityUpdate();
 }
 
 void CityHallObjectImplementation::sendCitizenshipReportTo(PlayerCreature* player) {
@@ -207,12 +208,31 @@ void CityHallObjectImplementation::sendTreasuryWithdrawalTo(PlayerCreature* play
 }
 
 void CityHallObjectImplementation::sendCitySpecializationSelectionTo(PlayerCreature* player) {
+	if (cityRank < TOWNSHIP) {
+		player->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization.
+		return;
+	}
+
+	/*
+	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::CITY_SPECIALIZATIONSELECT);
+	listBox->setPromptTitle();
+	listBox->setPromptText();
+
+	listBox->addMenuItem();
+
+	player->addSuiBox(listBox);
+	player->sendMessage(listBox->generateMessage());
+	*/
+
 }
 
 void CityHallObjectImplementation::toggleCityRegistration() {
 }
 
 bool CityHallObjectImplementation::hasZoningRights(uint64 playerID) {
+	if (playerID == mayorObjectID)
+		return true;
+
 	uint32 expires = playerZoningRights.get(playerID);
 
 	Time currentTime;
@@ -229,4 +249,34 @@ void CityHallObjectImplementation::addZoningRights(uint64 playerID, uint32 secon
 	currentTime.addMiliTime(seconds * 1000);
 
 	playerZoningRights.put(playerID, currentTime.getTime());
+}
+
+void CityHallObjectImplementation::checkCityUpdate() {
+	if (!nextCityUpdate.isPast())
+		return;
+
+	nextCityUpdate.updateToCurrentTime();
+	nextCityUpdate.addMiliTime(CITY_UPDATEINTERVAL * 3600000);
+
+	//check the timestamp of the last city update and ensure that its time to do the city update
+	int citizens = declaredCitizens.size();
+
+	if (citizens >= 85) {
+		cityRank = METROPOLIS;
+		cityRegion->setRadius(450);
+	} else if (citizens >= 55) {
+		cityRank = CITY;
+		cityRegion->setRadius(400);
+	} else if (citizens >= 35) {
+		cityRank = TOWNSHIP;
+		cityRegion->setRadius(300);
+	} else if (citizens >= 20) {
+		cityRank = VILLAGE;
+		cityRegion->setRadius(200);
+	} else if (citizens >= 10) {
+		cityRank = OUTPOST;
+		cityRegion->setRadius(150);
+	} else {
+		//Disband the city!
+	}
 }
