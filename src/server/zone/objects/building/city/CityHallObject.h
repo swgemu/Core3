@@ -77,6 +77,10 @@ using namespace server::zone::objects::tangible::terminal::city;
 
 #include "system/util/SortedVector.h"
 
+#include "system/util/VectorMap.h"
+
+#include "system/lang/Time.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -137,6 +141,12 @@ public:
 
 	void revokeCitizenship(unsigned long long playerID);
 
+	void addZoningRights(unsigned long long playerID, unsigned int seconds = 86400);
+
+	void removeZoningRights(unsigned long long playerID);
+
+	bool hasZoningRights(unsigned long long playerID);
+
 	unsigned long long getMayorObjectID();
 
 	void setMayorObjectID(unsigned long long oid);
@@ -188,6 +198,8 @@ namespace city {
 class CityHallObjectImplementation : public BuildingObjectImplementation {
 protected:
 	SortedVector<unsigned long long> declaredCitizens;
+
+	VectorMap<unsigned long long, unsigned int> playerZoningRights;
 
 	ManagedReference<Region* > cityRegion;
 
@@ -253,6 +265,12 @@ public:
 	void revokeCitizenship(PlayerCreature* player);
 
 	void revokeCitizenship(unsigned long long playerID);
+
+	void addZoningRights(unsigned long long playerID, unsigned int seconds = 86400);
+
+	void removeZoningRights(unsigned long long playerID);
+
+	bool hasZoningRights(unsigned long long playerID);
 
 	unsigned long long getMayorObjectID();
 
@@ -362,6 +380,12 @@ public:
 	void revokeCitizenship(PlayerCreature* player);
 
 	void revokeCitizenship(unsigned long long playerID);
+
+	void addZoningRights(unsigned long long playerID, unsigned int seconds);
+
+	void removeZoningRights(unsigned long long playerID);
+
+	bool hasZoningRights(unsigned long long playerID);
 
 	unsigned long long getMayorObjectID();
 
