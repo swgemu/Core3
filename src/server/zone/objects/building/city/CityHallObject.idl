@@ -51,10 +51,15 @@ import server.zone.objects.region.Region;
 import server.zone.objects.tangible.terminal.city.CityTerminal;
 import server.zone.objects.tangible.terminal.city.CityVoteTerminal;
 import system.util.SortedVector;
+import system.util.VectorMap;
+import system.lang.Time;
 
 class CityHallObject extends BuildingObject {
 	@dereferenced
 	protected SortedVector<unsigned long> declaredCitizens;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, unsigned int> playerZoningRights;
 	
 	protected Region cityRegion;
 	protected string cityName;
@@ -70,6 +75,9 @@ class CityHallObject extends BuildingObject {
 		cityName = "test city";
 		
 		mayorObjectID = 0;
+		
+		playerZoningRights.setInsertPlan(3); //ALLOW_OVERWRITE
+		playerZoningRights.setNullValue(0);
 	}
 	
 	/**
@@ -161,6 +169,27 @@ class CityHallObject extends BuildingObject {
 	public void revokeCitizenship(unsigned long playerID) {
 		declaredCitizens.drop(playerID);
 	}
+	
+	/**
+	 * Adds the player to the zoning rights map for the specified number of seconds.
+	 * @param playerID The object ID of the player being added to the map.
+	 * @param seconds How many seconds from the current time does the player have before the zoning rights expire. Default is 24 hours.
+	 */
+	public native void addZoningRights(unsigned long playerID, unsigned int seconds = 86400);
+	
+	/**
+	 * Removes the player ID from the zoning rights map.
+	 * @param playerID The object ID of the player to remove from the zoning rights map.
+	 */
+	public void removeZoningRights(unsigned long playerID) {
+		playerZoningRights.drop(playerID);
+	}
+	
+	/**
+	 * Checks to see if the player has zoning rights in this city hall's city limits.
+	 * @param playerID The object ID of the player who we are checking for zoning rights.
+	 */
+	public native boolean hasZoningRights(unsigned long playerID);
 	
 	public unsigned long getMayorObjectID() {
 		return mayorObjectID;

@@ -975,6 +975,18 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
+	ManagedReference<Region*> region = planetManager->getRegion(x, y);
+	ManagedReference<CityHallObject*> cityHall = NULL;
+
+	if (region != NULL) {
+		cityHall = region->getCityHall();
+
+		if (cityHall != NULL && !cityHall->hasZoningRights(player->getObjectID())) {
+			player->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
+			return 1;
+		}
+	}
+
 	int lotsRemaining = player->getLotsRemaining();
 	int lotsRequired = 0;
 

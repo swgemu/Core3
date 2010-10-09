@@ -211,3 +211,22 @@ void CityHallObjectImplementation::sendCitySpecializationSelectionTo(PlayerCreat
 
 void CityHallObjectImplementation::toggleCityRegistration() {
 }
+
+bool CityHallObjectImplementation::hasZoningRights(uint64 playerID) {
+	uint32 expires = playerZoningRights.get(playerID);
+
+	Time currentTime;
+
+	if (currentTime.getTime() < expires)
+		return true;
+
+	removeZoningRights(playerID);
+	return false;
+}
+
+void CityHallObjectImplementation::addZoningRights(uint64 playerID, uint32 seconds) {
+	Time currentTime;
+	currentTime.addMiliTime(seconds * 1000);
+
+	playerZoningRights.put(playerID, currentTime.getTime());
+}
