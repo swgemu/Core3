@@ -1342,7 +1342,7 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 
 	ManagedReference<BuildingObject*> declaredResidence = player->getDeclaredResidence();
 
-	if (declaredResidence->isCityHallBuilding()) {
+	if (declaredResidence != NULL && declaredResidence->isCityHallBuilding()) {
 		player->sendSystemMessage("@city/city:mayor_residence_change"); //As a city Mayor, your residence is always the city hall of the city in which you are mayor.  You cannot declare a new residence.
 		return 1;
 	}
