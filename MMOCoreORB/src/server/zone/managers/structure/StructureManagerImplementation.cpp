@@ -985,7 +985,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 			uint8 cityRank = cityHall->getCityRank();
 			uint8 reqRank = ssot->getCityRankRequired();
 
-			if (!cityHall->hasZoningRights(player->getObjectID())) {
+			if (cityHall->isZoningEnabled() && !cityHall->hasZoningRights(player->getObjectID())) {
 				player->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
 				return 1;
 			}
@@ -1249,6 +1249,9 @@ int StructureManagerImplementation::destroyStructure(PlayerCreature* player, Str
 	else
 		player->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
 
+	if (player->getDeclaredResidence() == structureObject)
+		player->setDeclaredResidence(NULL);
+
 	structureObject->destroyObjectFromDatabase(true);
 
 	return 0;
@@ -1337,39 +1340,47 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 		return 1;
 	}
 
-	ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
+	ManagedReference<BuildingObject*> declaredResidence = player->getDeclaredResidence();
 
-	//TODO: Register the building with the city if possible...
+	if (declaredResidence->isCityHallBuilding()) {
+		player->sendSystemMessage("@city/city:mayor_residence_change"); //As a city Mayor, your residence is always the city hall of the city in which you are mayor.  You cannot declare a new residence.
+		return 1;
+	}
+
+	ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
 
 	if (!buildingObject->isOwnerOf(player)) {
 		player->sendSystemMessage("@player_structure:declare_must_be_owner"); //You must be the owner of the building to declare residence.
 		return 1;
 	}
 
-	if (buildingObject->isDeclaredResidency()) {
+	if (declaredResidence == buildingObject) {
 		player->sendSystemMessage("@player_structure:already_residence"); //This building is already your residence.
 		return 1;
 	}
 
-	ManagedReference<ActiveArea*> activeArea = buildingObject->getActiveRegion();
-
-	if (activeArea == NULL || !activeArea->isRegion()) {
-		//Not in a city.
-		return 0;
+	if (declaredResidence == NULL) {
+		player->sendSystemMessage("@player_structure:declared_residency"); //You have declared your residency here.
+	} else {
+		player->sendSystemMessage("@player_structure:change_residence"); //You change your residence to this building.
 	}
 
+	//Set the characters home location to this structure.
+	player->setDeclaredResidence(buildingObject);
+
+
+	//If in a city, add to the cities citizens
+	ManagedReference<ActiveArea*> activeArea = buildingObject->getActiveRegion();
+
+	if (activeArea == NULL || !activeArea->isRegion())
+		return 0; //Not in a city.
+
 	Region* region = (Region*) activeArea.get();
-	//Need to retrieve the city hall here.
 
 	ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 
-	if (cityHall != NULL && !cityHall->isCitizenOf(player)) {
-
+	if (cityHall != NULL && !cityHall->isCitizenOf(player->getObjectID()))
 		cityHall->declareCitizenship(player);
-		buildingObject->setDeclaredResidency(true);
-
-		player->sendSystemMessage("@player_structure:change_residence"); //You change your residence to this building.
-	}
 
 	return 0;
 }

@@ -206,10 +206,6 @@ public:
 
 	bool isCityHallBuilding();
 
-	bool isDeclaredResidency();
-
-	void setDeclaredResidency(bool value);
-
 	void setAccessFee(int fee);
 
 	int getAccessFee();
@@ -251,8 +247,6 @@ protected:
 	unsigned long long deedObjectID;
 
 	int accessFee;
-
-	bool declaredResidency;
 
 public:
 	BuildingObjectImplementation();
@@ -320,10 +314,6 @@ public:
 	SignObject* getSignObject();
 
 	virtual bool isCityHallBuilding();
-
-	bool isDeclaredResidency();
-
-	void setDeclaredResidency(bool value);
 
 	void setAccessFee(int fee);
 
@@ -413,10 +403,6 @@ public:
 	SignObject* getSignObject();
 
 	bool isCityHallBuilding();
-
-	bool isDeclaredResidency();
-
-	void setDeclaredResidency(bool value);
 
 	void setAccessFee(int fee);
 

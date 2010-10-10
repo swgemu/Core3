@@ -89,6 +89,8 @@ namespace city {
 
 class CityHallObject : public BuildingObject {
 public:
+	static const byte NEWCITY = 0;
+
 	static const byte OUTPOST = 1;
 
 	static const byte VILLAGE = 2;
@@ -131,7 +133,13 @@ public:
 
 	void sendTreasuryReportTo(PlayerCreature* player);
 
+	void sendCityAdvancementTo(PlayerCreature* player);
+
+	void sendMaintenanceReportTo(PlayerCreature* player);
+
 	void sendChangeCityNameTo(PlayerCreature* player);
+
+	void sendEnableZoningTo(PlayerCreature* player);
 
 	void sendManageMilitiaTo(PlayerCreature* player);
 
@@ -143,19 +151,19 @@ public:
 
 	void sendCitySpecializationSelectionTo(PlayerCreature* player);
 
-	void toggleCityRegistration();
+	void toggleCityRegistration(PlayerCreature* player);
 
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool isCityHallBuilding();
 
-	void declareCitizenship(PlayerCreature* player);
+	void handleNewCitySuccess();
 
-	void declareCitizenship(unsigned long long playerID);
+	void handleNewCityFailure();
 
-	void revokeCitizenship(PlayerCreature* player);
+	void declareCitizenship(PlayerCreature* player, bool sendMail = true);
 
-	void revokeCitizenship(unsigned long long playerID);
+	void revokeCitizenship(PlayerCreature* player, bool sendMail = true);
 
 	void addZoningRights(unsigned long long playerID, unsigned int seconds = 86400);
 
@@ -184,6 +192,12 @@ public:
 	void setCityRegion(Region* region);
 
 	int getCivicStructureCap();
+
+	bool isZoningEnabled();
+
+	void toggleZoningEnabled(PlayerCreature* player);
+
+	void setZoningEnabled(bool enabled);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -217,9 +231,11 @@ class CityHallObjectImplementation : public BuildingObjectImplementation {
 protected:
 	SortedVector<unsigned long long> declaredCitizens;
 
-	VectorMap<unsigned long long, ManagedReference<StructureObject* > > civicStructures;
+	VectorMap<unsigned long long, ManagedReference<StructureObject* > > cityStructures;
 
 	VectorMap<unsigned long long, unsigned int> playerZoningRights;
+
+	bool zoningEnabled;
 
 	ManagedReference<Region* > cityRegion;
 
@@ -228,6 +244,12 @@ protected:
 	byte cityRank;
 
 	byte citySpecialization;
+
+	float incomeTax;
+
+	float propertyTax;
+
+	float salesTax;
 
 	Time nextCityUpdate;
 
@@ -238,6 +260,8 @@ protected:
 	ManagedReference<CityVoteTerminal* > cityVoteTerminal;
 
 public:
+	static const byte NEWCITY = 0;
+
 	static const byte OUTPOST = 1;
 
 	static const byte VILLAGE = 2;
@@ -282,7 +306,13 @@ public:
 
 	void sendTreasuryReportTo(PlayerCreature* player);
 
+	void sendCityAdvancementTo(PlayerCreature* player);
+
+	void sendMaintenanceReportTo(PlayerCreature* player);
+
 	void sendChangeCityNameTo(PlayerCreature* player);
+
+	void sendEnableZoningTo(PlayerCreature* player);
 
 	void sendManageMilitiaTo(PlayerCreature* player);
 
@@ -294,19 +324,19 @@ public:
 
 	void sendCitySpecializationSelectionTo(PlayerCreature* player);
 
-	void toggleCityRegistration();
+	void toggleCityRegistration(PlayerCreature* player);
 
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool isCityHallBuilding();
 
-	void declareCitizenship(PlayerCreature* player);
+	void handleNewCitySuccess();
 
-	void declareCitizenship(unsigned long long playerID);
+	void handleNewCityFailure();
 
-	void revokeCitizenship(PlayerCreature* player);
+	void declareCitizenship(PlayerCreature* player, bool sendMail = true);
 
-	void revokeCitizenship(unsigned long long playerID);
+	void revokeCitizenship(PlayerCreature* player, bool sendMail = true);
 
 	void addZoningRights(unsigned long long playerID, unsigned int seconds = 86400);
 
@@ -335,6 +365,12 @@ public:
 	void setCityRegion(Region* region);
 
 	int getCivicStructureCap();
+
+	bool isZoningEnabled();
+
+	void toggleZoningEnabled(PlayerCreature* player);
+
+	void setZoningEnabled(bool enabled);
 
 	CityHallObject* _this;
 
@@ -403,7 +439,13 @@ public:
 
 	void sendTreasuryReportTo(PlayerCreature* player);
 
+	void sendCityAdvancementTo(PlayerCreature* player);
+
+	void sendMaintenanceReportTo(PlayerCreature* player);
+
 	void sendChangeCityNameTo(PlayerCreature* player);
+
+	void sendEnableZoningTo(PlayerCreature* player);
 
 	void sendManageMilitiaTo(PlayerCreature* player);
 
@@ -415,19 +457,19 @@ public:
 
 	void sendCitySpecializationSelectionTo(PlayerCreature* player);
 
-	void toggleCityRegistration();
+	void toggleCityRegistration(PlayerCreature* player);
 
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool isCityHallBuilding();
 
-	void declareCitizenship(PlayerCreature* player);
+	void handleNewCitySuccess();
 
-	void declareCitizenship(unsigned long long playerID);
+	void handleNewCityFailure();
 
-	void revokeCitizenship(PlayerCreature* player);
+	void declareCitizenship(PlayerCreature* player, bool sendMail);
 
-	void revokeCitizenship(unsigned long long playerID);
+	void revokeCitizenship(PlayerCreature* player, bool sendMail);
 
 	void addZoningRights(unsigned long long playerID, unsigned int seconds);
 
@@ -456,6 +498,12 @@ public:
 	void setCityRegion(Region* region);
 
 	int getCivicStructureCap();
+
+	bool isZoningEnabled();
+
+	void toggleZoningEnabled(PlayerCreature* player);
+
+	void setZoningEnabled(bool enabled);
 
 protected:
 	String _param1_trySetCityName__PlayerCreature_String_;

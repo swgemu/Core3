@@ -76,9 +76,6 @@ class BuildingObject extends StructureObject implements QuadTree {
 
 	protected int accessFee;
 	
-	//TODO: This should probably be handled differently...
-	protected boolean declaredResidency;
-	
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 
@@ -93,8 +90,6 @@ class BuildingObject extends StructureObject implements QuadTree {
 		totalCellNumber = 0;
 		
 		accessFee = 0;
-		
-		declaredResidency = false;
 	}
 	
 	public void createCellObjects() {
@@ -236,14 +231,6 @@ class BuildingObject extends StructureObject implements QuadTree {
 
 	public abstract boolean isCityHallBuilding() {
 		return false;
-	}
-
-	public boolean isDeclaredResidency() {
-		return declaredResidency;
-	}
-	
-	public void setDeclaredResidency(boolean value) {
-		declaredResidency = value;
 	}
 	
 	public void setAccessFee(int fee) {

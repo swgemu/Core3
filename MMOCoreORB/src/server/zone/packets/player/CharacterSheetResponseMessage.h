@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 class CharacterSheetResponseMessage : public BaseMessage {
 public:
@@ -58,19 +59,28 @@ public:
 		insertInt(0); //??
 
 		insertFloat(0); //Bind Location X
-		insertFloat(0); //Bind Location Y
 		insertFloat(0); //Bind Location Z
+		insertFloat(0); //Bind Location Y
 		insertAscii(""); //Bind Planet
 
 		insertFloat(-4253.09f); //Bank Location X
-		insertFloat(3); //Bank Location Y
-		insertFloat(-2403.3); //Bank Location Z
+		insertFloat(3); //Bank Location Z
+		insertFloat(-2403.3); //Bank Location Y
 		insertAscii("dantooine"); //Bank Planet
 
-		insertFloat(1337.0f); //Home Location X
-		insertFloat(1337.0f); //Home Location Y
-		insertFloat(1337.0f); //Home Location Z
-		insertAscii("tatooine"); //Home Planet
+		ManagedReference<BuildingObject*> declaredResidence = player->getDeclaredResidence();
+
+		if (declaredResidence != NULL && declaredResidence->getZone() != NULL) {
+			insertFloat(declaredResidence->getPositionX()); //Home Location X
+			insertFloat(declaredResidence->getPositionZ()); //Home Location Z
+			insertFloat(declaredResidence->getPositionY()); //Home Location Y
+			insertAscii(Planet::getPlanetName(declaredResidence->getZone()->getZoneID())); //Home Planet
+		} else {
+			insertFloat(0);
+			insertFloat(0);
+			insertFloat(0);
+			insertAscii("");
+		}
 
 		insertUnicode(""); //Spouse Name
 		insertInt(player->getLotsRemaining()); //Lots Remaining

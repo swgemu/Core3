@@ -295,6 +295,8 @@ using namespace server::zone::objects::structure;
 
 #include "engine/util/QuadTreeEntry.h"
 
+#include "engine/util/Vector3.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "engine/service/proto/BasePacket.h"
@@ -572,6 +574,10 @@ public:
 
 	void setInvisible(bool invis);
 
+	BuildingObject* getDeclaredResidence();
+
+	void setDeclaredResidence(BuildingObject* residence);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -614,6 +620,8 @@ protected:
 	unsigned long long savedParentID;
 
 	int onlineStatus;
+
+	ManagedWeakReference<BuildingObject* > declaredResidence;
 
 	Time logoutTimeStamp;
 
@@ -948,6 +956,10 @@ public:
 
 	void setInvisible(bool invis);
 
+	BuildingObject* getDeclaredResidence();
+
+	void setDeclaredResidence(BuildingObject* residence);
+
 	PlayerCreature* _this;
 
 	operator const PlayerCreature*();
@@ -1218,6 +1230,10 @@ public:
 	bool isInvisible();
 
 	void setInvisible(bool invis);
+
+	BuildingObject* getDeclaredResidence();
+
+	void setDeclaredResidence(BuildingObject* residence);
 
 protected:
 	String _param0_sendExecuteConsoleCommand__String_;

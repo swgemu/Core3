@@ -69,6 +69,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.h"
 #include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
@@ -330,6 +331,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::CREATE_CITY_HALL_NAME:
 		handleSetCityHallName(boxID, player, cancel, value);
+		break;
+	case SuiWindowType::CITY_ENABLEZONING:
+		handleCityEnableZoning(boxID, player, cancel, atoi(value));
 		break;
 	case SuiWindowType::COMMAND_FIND:
 		handleFindCommand(boxID, player, cancel, atoi(value.toCharArray()));
@@ -2765,6 +2769,41 @@ void SuiManager::handleStructureDestroyCode(uint32 boxID, PlayerCreature* player
 		player->sendSystemMessage("@player_structure:incorrect_destroy_code"); //You have entered an incorrect code. You will have to issue the /destroyStructure again if you wish to continue.
 		return;
 	}
+}
+
+void SuiManager::handleCityEnableZoning(int boxID, PlayerCreature* player, uint32 cancel, int value) {
+	Locker locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> suiBox = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+
+	if (cancel != 0)
+		return;
+
+	if (!suiBox->isMessageBox())
+		return;
+
+	SuiMessageBox* messageBox = (SuiMessageBox*) suiBox.get();
+
+	ManagedReference<SceneObject*> usingObject = messageBox->getUsingObject();
+
+	if (usingObject == NULL || !usingObject->isBuildingObject())
+		return;
+
+	BuildingObject* buildingObject = (BuildingObject*) usingObject.get();
+
+	if (!buildingObject->isCityHallBuilding())
+		return;
+
+	CityHallObject* cityHall = (CityHallObject*) buildingObject;
+
+	Locker clocker(cityHall, player);
+
+	cityHall->toggleZoningEnabled(player);
 }
 
 void SuiManager::handleSetCityHallName(int boxID, PlayerCreature* player, int cancel, const String& input) {

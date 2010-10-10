@@ -151,6 +151,8 @@ public:
 	static const int GAMBLINGROULETTE = 120;
 	static const int GAMBLINGSLOT = 121;
 	static const int GAMBLINGSLOTPAYOUT = 122;
+
+	static const int CITY_ENABLEZONING = 123;
 };
 
 #endif /*SuiWindowType_H_*/
