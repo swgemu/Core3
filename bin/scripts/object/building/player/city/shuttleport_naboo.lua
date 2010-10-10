@@ -50,7 +50,7 @@ object_building_player_city_shuttleport_naboo = object_building_player_city_shar
 	width = 5,
 	cityRankRequired = 4,
 	gameObjectType = 4103,
-	abilitiesRequired = {"placeShuttleport"}
+	abilitiesRequired = {"place_shuttleport"}
 
 }
 

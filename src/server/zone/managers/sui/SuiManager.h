@@ -147,6 +147,7 @@ namespace server {
 	  	void handleCharacterBuilderSelectItem(uint32 boxid, PlayerCreature* player, int cancel, int index);
 
 	  	void handleSetCityHallName(int boxID, PlayerCreature* player, int cancel, const String& input);
+	  	void handleCityEnableZoning(int boxID, PlayerCreature* player, uint32 cancel, int value);
 
 	  	void handleFindCommand(int boxID, PlayerCreature* player, uint32 cancel, int value);
 

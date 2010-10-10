@@ -229,12 +229,8 @@ void StructureObjectImplementation::sendStatusTo(PlayerCreature* player) {
 	ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) getZoneServer()->getObject(getOwnerObjectID());
 	statusBox->addMenuItem("@player_structure:owner_prompt  " + playerCreature->getFirstName());
 
-	if (isBuildingObject()) {
-		BuildingObject* buildingObject = (BuildingObject*) _this;
-
-		if (buildingObject->isDeclaredResidency())
+	if (isBuildingObject() && _this == player->getDeclaredResidence())
 			statusBox->addMenuItem("@player_structure:declared_residency"); //You have declared your residency here.
-	}
 
 	if (isPublicStructure())
 		statusBox->addMenuItem("@player_structure:structure_public"); //This structure is public

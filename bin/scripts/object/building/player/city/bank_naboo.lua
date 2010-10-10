@@ -51,7 +51,7 @@ object_building_player_city_bank_naboo = object_building_player_city_shared_bank
 	mapLocationsType1 = 2,
 	gameObjectType = 4104,
 	cityRankRequired = 2,
-	abilitiesRequired = {"placeBank"}
+	abilitiesRequired = {"place_bank"}
 
 }
 
