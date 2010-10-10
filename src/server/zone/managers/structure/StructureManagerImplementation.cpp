@@ -1382,6 +1382,9 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 	if (cityHall != NULL && !cityHall->isCitizenOf(player->getObjectID()))
 		cityHall->declareCitizenship(player);
 
+	//Just need to save the players declared residence
+	player->updateToDatabaseWithoutChildren();
+
 	return 0;
 }
 
