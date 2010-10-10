@@ -325,13 +325,18 @@ void CityHallObjectImplementation::sendEnableZoningTo(PlayerCreature* player) {
 		return;
 	}
 
-	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::CITY_ENABLEZONING);
-	suiBox->setPromptTitle("@city/city:zoning_t"); //Zoning
-	suiBox->setPromptText("@city/city:zoning_d"); //If you enable zoning laws in your city, other players will not be able to build structures in your city without permission.  You and your militia can grant permission with the /grantZoningRights command.  This command gives the target the right to build structures in your city for 24 hours.
-	suiBox->setUsingObject(_this);
+	if (!zoningEnabled) {
+		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::CITY_ENABLEZONING);
+		suiBox->setPromptTitle("@city/city:zoning_t"); //Zoning
+		suiBox->setPromptText("@city/city:zoning_d"); //If you enable zoning laws in your city, other players will not be able to build structures in your city without permission.  You and your militia can grant permission with the /grantZoningRights command.  This command gives the target the right to build structures in your city for 24 hours.
+		suiBox->setUsingObject(_this);
+		suiBox->setCancelButton(true, "@cancel");
 
-	player->addSuiBox(suiBox);
-	player->sendMessage(suiBox->generateMessage());
+		player->addSuiBox(suiBox);
+		player->sendMessage(suiBox->generateMessage());
+	} else {
+		toggleZoningEnabled(player);
+	}
 }
 
 void CityHallObjectImplementation::toggleCityRegistration(PlayerCreature* player) {
@@ -346,6 +351,7 @@ void CityHallObjectImplementation::toggleCityRegistration(PlayerCreature* player
 	}
 
 	//Register/Unregister the city (and all civic structures) from the map.
+	updateToDatabaseWithoutChildren();
 }
 
 bool CityHallObjectImplementation::hasZoningRights(uint64 playerID) {
@@ -439,16 +445,18 @@ void CityHallObjectImplementation::checkCityUpdate() {
 	UnicodeString subject;
 	if (oldRank < cityRank) {
 		subject = "@city/city:city_expand_subject"; //City Expansion!
-		email.setStringId("@city/city:new_city_fail_body"); //Congratulations
+		email.setStringId("@city/city:city_expand_body"); //Congratulations
 	} else {
 		subject = "@city/city:city_contract_subject"; //City Contraction!
-		email.setStringId("@city/city:new_city_fail_body"); //Warning!
+		email.setStringId("@city/city:city_contract_body"); //Warning!
 	}
 
 	email.setTO(cityName);
 	email.setDI(cityRank);
 
 	chatManager->sendMail("@city/city:new_city_from", subject, email, mayor->getFirstName());
+
+	updateToDatabaseWithoutChildren();
 }
 
 void CityHallObjectImplementation::declareCitizenship(PlayerCreature* player, bool sendMail) {
@@ -461,6 +469,9 @@ void CityHallObjectImplementation::declareCitizenship(PlayerCreature* player, bo
 		return;
 
 	declaredCitizens.put(playerID);
+
+	//Save the declared citizens vector.
+	updateToDatabaseWithoutChildren();
 
 	if (!sendMail)
 		return;
@@ -510,6 +521,8 @@ void CityHallObjectImplementation::revokeCitizenship(PlayerCreature* player, boo
 		return;
 
 	declaredCitizens.drop(playerID);
+
+	updateToDatabaseWithoutChildren();
 
 	if (!sendMail)
 		return;
