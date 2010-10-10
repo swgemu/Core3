@@ -60,6 +60,9 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
@@ -92,24 +95,54 @@ public:
 				 (16,'kaadara',5,5209.000000,0.000000,6677.000000,'Kaadara, Naboo',3,180),
 				 (17,'tutorial',41,0.000000,0.000000,0.000000,'Tutorial',3,180);
 		 */
+
 		if (city == "mos_eisley") {
-			creature->switchZone(8, 3528.0f, 0, -4804.0f);
+			creature->switchZone(8, 3528, 0, -4804);
 
-		} else if (city == "bestine") {
-			creature->switchZone(8, -1290.0f, 0, -3590.0f);
+		} else if (city == "mos_espa") {
+			creature->switchZone(8, -2902, 0, 2130);
 
-		} else if (city == "theed") {
-			creature->switchZone(5, -4908.0f, 6, 4101.0f);
-			//creature->switchZone(5, 2098.0f, 30, 2526.0f);
-
-		} else if (city == "moenia") {
-			creature->switchZone(5, 4800.0f, 0, -4700.0f);
+		} else if (city == "mos_entha") {
+			creature->switchZone(8, 1291, 0, 3138);
 
 		} else if (city == "coronet") {
-			creature->switchZone(0, -137.00f, 0, -4723.0f);
+			creature->switchZone(0, -137, 0, -4723);
 
 		} else if (city == "tyrena") {
-			creature->switchZone(0, -5045.0f, 0, -2294.0f);
+			creature->switchZone(0, -5045, 0, -2294);
+
+		} else if (city == "kor_vella") {
+			creature->switchZone(0, -3138, 0, 2808);
+
+		} else if (city == "doaba_guerfel") {
+			creature->switchZone(0, 3336, 0, 5525);
+
+		} else if (city == "dearic") {
+			creature->switchZone(7, 335, 0, -2931);
+
+		} else if (city == "nashal") {
+			creature->switchZone(7, 4371, 0, 5165);
+
+		} else if (city == "narmle") {
+			creature->switchZone(6, -5310, 0, -221);
+
+		} else if (city == "restuss") {
+			creature->switchZone(6, 5362, 0, 5663);
+
+		} else if (city == "theed") {
+			creature->switchZone(5, -4856, 0, 4162);
+
+		} else if (city == "keren") {
+			creature->switchZone(5, 1441, 0, 2771);
+
+		} else if (city == "moenia") {
+			creature->switchZone(5, 4800, 0, -4700);
+
+		} else if (city == "kaadara") {
+			creature->switchZone(5, 5209, 0, 6667);
+
+		} else { //city == bestine, default
+			creature->switchZone(8, -1290, 0, -3590);
 		}
 
 		tutorial->destroyObjectFromDatabase(true);

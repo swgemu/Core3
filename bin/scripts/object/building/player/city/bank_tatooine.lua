@@ -51,7 +51,7 @@ object_building_player_city_bank_tatooine = object_building_player_city_shared_b
 	width = 4,
 	cityRankRequired = 2,
 	gameObjectType = 4104,
-	abilitiesRequired = {"placeBank"}
+	abilitiesRequired = {"place_bank"}
 
 }
 

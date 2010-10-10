@@ -48,6 +48,7 @@ import system.lang.Time;
 import system.util.SortedVector;
 import system.util.VectorMap;
 import engine.util.QuadTreeEntry;
+import engine.util.Vector3;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneClientSession;
 import server.zone.objects.player.PlayerObject;
@@ -85,6 +86,9 @@ class PlayerCreature extends CreatureObject {
 	protected unsigned long savedParentID;
 	
 	protected int onlineStatus;
+	
+	@weakReference
+	protected BuildingObject declaredResidence;
 	
 	@dereferenced
 	protected Time logoutTimeStamp;
@@ -202,6 +206,8 @@ class PlayerCreature extends CreatureObject {
 		conversatingCreature = null;
 		
 		spawnedBlueFrog = false;
+		
+		declaredResidence = null;
 		
 		persistentMessages.setNoDuplicateInsertPlan();
 		duelList.setNoDuplicateInsertPlan();
@@ -781,4 +787,11 @@ class PlayerCreature extends CreatureObject {
 		invisible = invis;
 	}
 	
+	public BuildingObject getDeclaredResidence() {
+		return declaredResidence;
+	}
+	
+	public void setDeclaredResidence(BuildingObject residence) {
+		declaredResidence = residence;
+	}
 }
