@@ -10,6 +10,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "QueueCommand.h"
@@ -55,9 +56,7 @@ protected:
 	String effectString;
 public:
 
-	CombatQueueCommand(const String& name,
-			ZoneProcessServerImplementation* server) :
-		QueueCommand(name, server) {
+	CombatQueueCommand(const String& name, ZoneProcessServerImplementation* server) : QueueCommand(name, server) {
 
 		damageMultiplier = 1;
 		speedMultiplier = 1;
@@ -99,7 +98,7 @@ public:
 		animationCRC = 0;
 	}
 
-	int doCombatAction(CreatureObject* creature, const uint64& target) {
+	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") {
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
 		if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
@@ -125,7 +124,7 @@ public:
 		CombatManager* combatManager = CombatManager::instance();
 
 		try {
-			int res = combatManager->doCombatAction(creature, (TangibleObject*) ((targetObject.get())), this);
+			int res = combatManager->doCombatAction(creature, (TangibleObject*) ((targetObject.get())), CreatureAttackData(arguments, this));
 
 			switch (res) {
 			case -1:
@@ -137,16 +136,14 @@ public:
 			}
 
 		} catch (...) {
-			error("unreported exception caught in Melee1hLunge1Command::doQueueCommand");
+			error("unreported exception caught in CombatQueueCommand::doCombatAction");
 		}
 
 		return SUCCESS;
 	}
 
 	float getCommandDuration(CreatureObject *object) {
-		float duration = CombatManager::instance()->calculateWeaponAttackSpeed(
-				object, object->getWeapon(), speedMultiplier);
-		return duration;
+		return CombatManager::instance()->calculateWeaponAttackSpeed(object, object->getWeapon(), speedMultiplier);
 	}
 
 	inline uint32 getDotDuration() const {

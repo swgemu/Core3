@@ -14,6 +14,7 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 
+class CreatureAttackData;
 class CombatQueueCommand;
 
 class CombatManager : public Singleton<CombatManager>, public Logger {
@@ -75,6 +76,7 @@ public:
 	 * @return returns -1 on failure to start combat or damage on succesfull combat
 	 */
 	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
+	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data);
 
 	/**
 	 * Requests duel
@@ -112,16 +114,16 @@ public:
 	void declineDuel(PlayerCreature* player, PlayerCreature* targetPlayer);
 
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
-	bool attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CombatQueueCommand* command, int appliedDamage);
 
 	//all the combat math will go here
 protected:
 
 	const static uint32 defaultAttacks[9];
 
-	int doTargetCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, CombatQueueCommand* command);
-	int doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
-	int doTargetCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
+	int doTargetCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, CreatureAttackData data);
+	int doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data);
+	int doTargetCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data);
+	bool attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CreatureAttackData data, int appliedDamage);
 
 	float getWeaponRangeModifier(float currentRange, WeaponObject* weapon);
 
@@ -162,7 +164,7 @@ protected:
 
 	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage);
 	int applyDamage(CreatureObject* attacker, CreatureObject* defender, float damageMultiplier, int poolsToDamage);
-	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, CombatQueueCommand* tskill);
+	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, CreatureAttackData data);
 
 	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
 	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, float damage, int poolsToDamage);
@@ -179,7 +181,7 @@ protected:
 	/**
 	 * returns false on insufficient
 	 */
-	bool applySpecialAttackCost(CreatureObject* attacker, CombatQueueCommand* command);
+	bool applySpecialAttackCost(CreatureObject* attacker, CreatureAttackData data);
 
 	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 

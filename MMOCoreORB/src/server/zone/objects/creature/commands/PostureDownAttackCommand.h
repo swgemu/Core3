@@ -45,13 +45,14 @@ which carries forward this exception.
 #ifndef POSTUREDOWNATTACKCOMMAND_H_
 #define POSTUREDOWNATTACKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class PostureDownAttackCommand : public QueueCommand {
+class PostureDownAttackCommand : public CombatQueueCommand {
 public:
 
 	PostureDownAttackCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +64,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		return doCombatAction(creature, target, arguments);
 	}
 
 };

@@ -45,13 +45,14 @@ which carries forward this exception.
 #ifndef DIZZYATTACKCOMMAND_H_
 #define DIZZYATTACKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class DizzyAttackCommand : public QueueCommand {
+class DizzyAttackCommand : public CombatQueueCommand {
 public:
 
 	DizzyAttackCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +64,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		return doCombatAction(creature, target, arguments);
 	}
 
 };

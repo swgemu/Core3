@@ -384,6 +384,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
+		server/zone/managers/combat/CreatureAttackData.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		server/zone/objects/mission/MissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/SurveyMissionObjectiveImplementation.cpp \

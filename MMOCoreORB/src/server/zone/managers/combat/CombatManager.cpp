@@ -6,6 +6,7 @@
  */
 
 #include "CombatManager.h"
+#include "CreatureAttackData.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/creature/CreatureState.h"
@@ -158,6 +159,10 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 }
 
 int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command) {
+	return doCombatAction(attacker, defenderObject, CreatureAttackData("",command));
+}
+
+int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data) {
 	//info("entering doCombat action", true);
 
 	if (!startCombat(attacker, defenderObject))
@@ -165,7 +170,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	//info("past start combat", true);
 
-	if (!applySpecialAttackCost(attacker, command))
+	if (!applySpecialAttackCost(attacker, data))
 		return -2;
 
 	//info("past special attack cost", true);
@@ -175,21 +180,21 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	//info("past delay", true);
 
-	if (attacker->isBerserked() && command->getNameCRC() != 0xA8FEF90A) //berserk only works with attack
+	if (attacker->isBerserked() && data.getCommandCRC() != 0xA8FEF90A) //berserk only works with attack
 		return -3;
 
 	//info("past berserk", true);
 
 	int damage = 0;
 
-	if (command->isAreaAction() || command->isConeAction())
-		damage = doAreaCombatAction(attacker, defenderObject, command);
+	if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction())
+		damage = doAreaCombatAction(attacker, defenderObject, data);
 	else
-		damage = doTargetCombatAction(attacker, defenderObject, command);
+		damage = doTargetCombatAction(attacker, defenderObject, data);
 
 	CombatAction* combatAction = NULL;
 
-	uint32 animationCRC = command->getAnimationCRC();
+	uint32 animationCRC = data.getAnimationCRC();
 
 	if (animationCRC == 0)
 		animationCRC = getDefaultAttackAnimation(attacker);
@@ -202,12 +207,12 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	if (defenderObject->isCreatureObject()) {
 		combatAction = new CombatAction(attacker, (CreatureObject*)defenderObject, animationCRC, hit);
 	} else {
-		combatAction = new CombatAction(attacker, defenderObject, command->getAnimationCRC(), hit);
+		combatAction = new CombatAction(attacker, defenderObject, data.getAnimationCRC(), hit);
 	}
 
 	attacker->broadcastMessage(combatAction, true);
 
-	String effect = command->getEffectString();
+	String effect = data.getCommand()->getEffectString();
 
 	if (!effect.isEmpty())
 		attacker->playEffect(effect);
@@ -218,7 +223,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	return damage;
 }
 
-int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject* tano, CombatQueueCommand* command) {
+int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject* tano, CreatureAttackData data) {
 	int damage = 0;
 
 	try {
@@ -230,13 +235,13 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 		if (tano->isCreatureObject()) {
 			CreatureObject* defender = (CreatureObject*) tano;
 
-			damage = doTargetCombatAction(attacker, defender, command);
+			damage = doTargetCombatAction(attacker, defender, data);
 		} else {
-			int poolsToDamage = calculatePoolsToDamage(command->getPoolsToDamage());
+			int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
 			damage = applyDamage(attacker, tano, damage, poolsToDamage);
 
-			broadcastCombatSpam(attacker, tano, attacker->getWeapon(), damage, command->getCombatSpam() + "_hit");
+			broadcastCombatSpam(attacker, tano, attacker->getWeapon(), damage, data.getCommand()->getCombatSpam() + "_hit");
 		}
 
 	} catch (...) {
@@ -245,24 +250,24 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 	return damage;
 }
 
-int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject* defender,  CombatQueueCommand* command) {
+int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject* defender, CreatureAttackData data) {
 	if (defender->isEntertaining())
 		defender->stopEntertaining();
 
 	int rand = System::random(100);
 
-	int poolsToDamage = calculatePoolsToDamage(command->getPoolsToDamage());
+	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
 	if (poolsToDamage != 0 && rand > getHitChance(attacker, defender, attacker->getWeapon(), 0)) {
 		//better luck next time
-		doMiss(attacker, defender, 0, command->getCombatSpam() + "_miss");
+		doMiss(attacker, defender, 0, data.getCommand()->getCombatSpam() + "_miss");
 		return 0;
 	}
 
 	int damage = 0;
 
-	String combatSpam = command->getCombatSpam();
-	float damageMultiplier = (float) command->getDamageMultiplier();
+	String combatSpam = data.getCommand()->getCombatSpam();
+	float damageMultiplier = data.getDamageMultiplier();
 
 	if (damageMultiplier != 0 && poolsToDamage != 0) {
 		int secondaryDefense = checkSecondaryDefenses(attacker, defender, attacker->getWeapon());
@@ -289,8 +294,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 		damage = applyDamage(attacker, defender, damageMultiplier, poolsToDamage);
 	}
 
-	applyStates(attacker, defender, command);
-	attemptApplyDot(attacker, defender, command, damage);
+	applyStates(attacker, defender, data);
+	attemptApplyDot(attacker, defender, data, damage);
 
 	broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, combatSpam + "_hit");
 
@@ -300,19 +305,19 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	return damage;
 }
 
-bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CombatQueueCommand* command, int appliedDamage) {
-	uint32 duration = command->getDotDuration();
+bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CreatureAttackData data, int appliedDamage) {
+	uint32 duration = data.getDotDuration();
 
 	if (duration == 0) {
 		//info("dot duration 0", true);
 		return false;
 	}
 
-	uint64 type = command->getDotType();
-	uint8 dotPool = command->getDotPool();
-	uint32 strength = command->getDotStrength();
-	float potency = command->getDotPotency();
-	bool dotDamageOfHit = command->isDotDamageOfHit();
+	uint64 type = data.getDotType();
+	uint8 dotPool = data.getDotPool();
+	uint32 strength = data.getDotStrength();
+	float potency = data.getDotPotency();
+	bool dotDamageOfHit = data.getCommand()->isDotDamageOfHit();
 
 	if (dotDamageOfHit) {
 		if (appliedDamage < 1) {
@@ -375,8 +380,7 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 		idealRange = maxRange;
 	}
 
-	accuracy = smallMod + ((currentRange - smallRange) / (idealRange
-			- smallRange) * (bigMod - smallMod));
+	accuracy = smallMod + ((currentRange - smallRange) / (idealRange != smallRange ? idealRange - smallRange : 1) * (bigMod - smallMod));
 
 	return accuracy;
 }
@@ -421,8 +425,10 @@ int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponO
 		attackerAccuracy += attacker->getSkillMod(creatureAccMods->get(i));
 	}
 
-	if (attacker->isAiAgent())
-		attackerAccuracy += attacker->getLevel();
+	if (attacker->isAiAgent()) {
+		ManagedReference<AiAgent*> creoAttacker = dynamic_cast<AiAgent*>(attacker);
+		attackerAccuracy += creoAttacker->getChanceHit() * 100;
+	}
 
 	return attackerAccuracy;
 }
@@ -451,11 +457,9 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender,
 	return targetDefense;
 }
 
-float CombatManager::hitChanceEquation(float attackerAccuracy,
-		float accuracyBonus, float targetDefense, float defenseBonus) {
+float CombatManager::hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense, float defenseBonus) {
 
-	float accTotal = 66.0 + (attackerAccuracy + accuracyBonus - targetDefense
-			- defenseBonus) / 2.0;
+	float accTotal = 66.0 + (attackerAccuracy + accuracyBonus - targetDefense - defenseBonus) / 2.0;
 
 	/*StringBuffer msg;
 	msg << "HitChance\n";
@@ -668,11 +672,15 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
 
+	//info("attacker base damage is " + String::valueOf(minDamage) + "-"+ String::valueOf(maxDamage), true);
+
 	int damageType = weapon->getDamageType();
 	int attackType = weapon->getAttackType();
 	int armorPiercing = weapon->getArmorPiercing(); // None
 
 	int damageMod = getDamageModifier(attacker, weapon);
+
+	//info("attacker weapon damage mod is " + String::valueOf(damageMod), true);
 
 	minDamage += damageMod;
 	maxDamage += damageMod;
@@ -705,6 +713,8 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	float armorReduction = getArmorReduction(attacker, defender, weapon, damage, poolToDamage);
 
+	//info("defender armor reduction is " + String::valueOf(armorReduction), true);
+
 	if (armorReduction > 0)
 		damage *= (armorReduction /= 100.f);
 
@@ -712,7 +722,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		damage += 50;
 	}
 
-	//damage = damage * ((float) getArmorReduction(attacker, defender, weapon, damage, poolToDamage) / 100.f);
+	//info("damage to be dealt is " + String::valueOf(damage), true);
 
 	return damage;
 }
@@ -741,7 +751,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	int hitChance = 0;
 	int attackType = weapon->getAttackType();
 
-	//info("Calculating hit chance");
+	//info("Calculating hit chance", true);
 
 	float weaponAccuracy = 0;
 	if (attackType == WeaponObject::MELEEATTACK || attackType == WeaponObject::RANGEDATTACK) {
@@ -750,7 +760,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		weaponAccuracy += calculatePostureModifier(creature, targetCreature);
 	}
 
-	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy));
+	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
 
 	float aimMod = 0.0;
 	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
@@ -759,11 +769,11 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		attackerAccuracy -= 10;
 	}
 
-	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy));
+	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
 
 	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
 
-	//info("Base target defense is " + String::valueOf(targetDefense));
+	//info("Base target defense is " + String::valueOf(targetDefense), true);
 
 	targetDefense = applyDefensePenalties(targetCreature, attackType, targetDefense);
 
@@ -785,7 +795,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (targetDefense > 125)
 		targetDefense = 125;
 
-	//info("Target defense after state affects and cap is " +  String::valueOf(targetDefense));
+	//info("Target defense after state affects and cap is " +  String::valueOf(targetDefense), true);
 
 	float defenseBonus = 0.0f; // TODO: Food/drink defense bonuses go here
 
@@ -797,10 +807,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 			defenseBonus += buff->getSkillModifierValue("dodge_attack");
 	}
 
-	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy
-			+ accuracyBonus + aimMod, targetDefense, defenseBonus);
+	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy + accuracyBonus + aimMod, targetDefense, defenseBonus);
 
-	//info("Final hit chance is " + String::valueOf(accTotal));
+	//info("Final hit chance is " + String::valueOf(accTotal), true);
 
 	if (accTotal > 100)
 		accTotal = 100.0;
@@ -920,14 +929,13 @@ void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender, 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }
 
-bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, CombatQueueCommand* command) {
-
+bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, CreatureAttackData data) {
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
-	int health = (int) (weapon->getHealthAttackCost() * command->getHealthCostMultiplier());
-	int action = (int) (weapon->getActionAttackCost() * command->getActionCostMultiplier());
-	int mind = (int) (weapon->getMindAttackCost() * command->getMindCostMultiplier());
-	int force = (int) (weapon->getForceCost() * command->getForceCostMultiplier());
+	int health = (int) (weapon->getHealthAttackCost() * data.getHealthCostMultiplier());
+	int action = (int) (weapon->getActionAttackCost() * data.getActionCostMultiplier());
+	int mind = (int) (weapon->getMindAttackCost() * data.getMindCostMultiplier());
+	int force = (int) (weapon->getForceCost() * data.getForceCostMultiplier());
 
 	if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
 		return false;
@@ -1058,17 +1066,35 @@ void CombatManager::checkPostureUp(CreatureObject* creature, CreatureObject* tar
 		creature->sendSystemMessage("cbt_spam", "posture_change_fail");
 }
 
-void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, CombatQueueCommand* tskill) {
+void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, CreatureAttackData data) {
 	// TODO: None of these equations seem correct except intimidate
 	int chance = 0;
-	if ((chance = tskill->getKnockdownChance()) > 0)
+	if ((chance = data.getKnockdownStateChance()) > 0)
 		checkKnockDown(creature, targetCreature, chance);
-	if ((chance = tskill->getPostureDownChance()) > 0)
+	if ((chance = data.getPostureDownStateChance()) > 0)
 		checkPostureDown(creature, targetCreature, chance);
-	if ((chance = tskill->getPostureUpChance()) > 0)
+	if ((chance = data.getPostureUpStateChance()) > 0)
 		checkPostureUp(creature, targetCreature, chance);
 
-	if (tskill->getDizzyChance() != 0) {
+	if (data.getDizzyStateChance() != 0) {
+		float targetDefense = targetCreature->getSkillMod("dizzy_defense");
+		// Force Enhancement "Force Resist States" skill.
+		float stateResist = targetCreature->getSkillMod("resistance_states");
+		// Force Defense Jedi State Defense skill mod.
+		float stateDefense = targetCreature->getSkillMod("jedi_state_defense");
+		targetDefense = (targetDefense + stateResist + stateDefense);
+		targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
+
+		if (targetDefense > 125)
+			targetDefense = 125;
+
+		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
+
+		if (System::random(100) <= hitChanceEquation(data.getDizzyStateChance(), 0.0f, targetDefense, defenseBonus))
+			targetCreature->setDizziedState(data.getDurationStateTime());
+	}
+
+	if (data.getBlindStateChance() != 0) {
 		float targetDefense = targetCreature->getSkillMod("blind_defense");
 		// Force Enhancement "Force Resist States" skill.
 		float stateResist = targetCreature->getSkillMod("resistance_states");
@@ -1082,12 +1108,12 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
-		if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
-			targetCreature->setDizziedState(tskill->getDurationStateTime());
+		if (System::random(100) <= hitChanceEquation(data.getBlindStateChance(), 0.0f, targetDefense, defenseBonus))
+			targetCreature->setBlindedState(data.getDurationStateTime());
 	}
 
-	if (tskill->getBlindChance() != 0) {
-		float targetDefense = targetCreature->getSkillMod("blind_defense");
+	if (data.getStunStateChance() != 0) {
+		float targetDefense = targetCreature->getSkillMod("stun_defense");
 		// Force Enhancement "Force Resist States" skill.
 		float stateResist = targetCreature->getSkillMod("resistance_states");
 		// Force Defense Jedi State Defense skill mod.
@@ -1100,29 +1126,11 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
-		if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
-			targetCreature->setBlindedState(tskill->getDurationStateTime());
+		if (System::random(100) <= hitChanceEquation(data.getStunStateChance(), 0.0f, targetDefense, defenseBonus))
+			targetCreature->setStunnedState(data.getDurationStateTime());
 	}
 
-	if (tskill->getStunChance() != 0) {
-		float targetDefense = targetCreature->getSkillMod("blind_defense");
-		// Force Enhancement "Force Resist States" skill.
-		float stateResist = targetCreature->getSkillMod("resistance_states");
-		// Force Defense Jedi State Defense skill mod.
-		float stateDefense = targetCreature->getSkillMod("jedi_state_defense");
-		targetDefense = (targetDefense + stateResist + stateDefense);
-		targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
-
-		if (targetDefense > 125)
-			targetDefense = 125;
-
-		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-
-		if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
-			targetCreature->setStunnedState(tskill->getDurationStateTime());
-	}
-
-	if ((chance = tskill->getIntimidateChance()) > 0) {
+	if ((chance = data.getIntimidateStateChance()) > 0) {
 		int targetDefense = targetCreature->getSkillMod("intimidate_defense");
 		targetDefense -= (int) (targetDefense * targetCreature->calculateBFRatio());
 
@@ -1132,12 +1140,12 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
 		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense, defenseBonus)) {
-			targetCreature->setIntimidatedState(tskill->getDurationStateTime());
+			targetCreature->setIntimidatedState(data.getDurationStateTime());
 		} else
 			targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0);
 	}
 
-	if ((chance = tskill->getNextAttackDelayChance()) > 0) {
+	if ((chance = data.getNextAttackDelayChance()) > 0) {
 		int targetDefense = targetCreature->getSkillMod("warcry_defense");
 		targetDefense -= (int) (targetDefense * targetCreature->calculateBFRatio());
 
@@ -1147,7 +1155,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
 		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense, defenseBonus)) {
-			targetCreature->setNextAttackDelay(tskill->getDurationStateTime());
+			targetCreature->setNextAttackDelay(data.getDurationStateTime());
 		} else
 			targetCreature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0);
 	}
@@ -1204,7 +1212,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 	return damage;
 }
 
-int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command) {
+int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data) {
 	float creatureVectorX = attacker->getPositionX();
 	float creatureVectorY = attacker->getPositionY();
 
@@ -1218,10 +1226,10 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 	int damage = 0;
 
-	int range = command->getAreaRange();
+	int range = data.getAreaRange();
 
-	if (command->isConeAction()) {
-		range = command->getRange();
+	if (data.getCommand()->isConeAction()) {
+		range = data.getRange();
 
 		if (range == -1) {
 			WeaponObject* weapon = attacker->getWeapon();
@@ -1262,7 +1270,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				continue;
 			}
 
-			if (command->isConeAction() && !checkConeAngle(tano, command->getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX,
+			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX,
 					directionVectorY)) {
 				//error("object is not in cone angle");
 				continue;
@@ -1271,9 +1279,9 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 			zone->runlock();
 
 			try {
-				damage += doTargetCombatAction(attacker, tano, command);
+				damage += doTargetCombatAction(attacker, tano, data);
 			} catch (...) {
-				error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* commmand) executing doTargetCombatAction");
+				error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data) executing doTargetCombatAction");
 			}
 
 			zone->rlock();
@@ -1281,7 +1289,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 		zone->runlock();
 	} catch (...) {
-		error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* commmand)");
+		error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data)");
 
 		zone->runlock();
 	}
