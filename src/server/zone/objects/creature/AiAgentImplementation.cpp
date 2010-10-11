@@ -41,6 +41,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	//npcTemplate->getCreatureBitmask(); -- TODO: need to add a bitmask for AI (pack, herd, etc)
 	level = npcTemplate->getLevel();
 
+	getWeapon()->setMinDamage(npcTemplate->getDamageMin());
+	getWeapon()->setMaxDamage(npcTemplate->getDamageMax());
+
 	int ham = npcTemplate->getBaseHAM();
 	baseHAM.removeAll();
 	for (int i = 0; i < 9; ++i) {
@@ -99,8 +102,16 @@ void AiAgentImplementation::doRecovery() {
 
 				checkNewAngle();
 
-				if (commandQueue.size() == 0 && weapon != NULL)
-					enqueueCommand(0xA8FEF90A, 0, creo->getObjectID(), ""); // Do default attack
+				if (commandQueue.size() == 0 && weapon != NULL) {
+					//TODO: make this more interesting with AI...
+					CreatureAttackMap* attackMap = npcTemplate->getAttacks();
+					if (attackMap->size() == 0 || System::random(2) > 0)
+						enqueueCommand(String("defaultattack").hashCode(), 0, creo->getObjectID(), "");
+					else {
+						int attackNum = attackMap->getRandomAttackNumber();
+						enqueueCommand(attackMap->getCommand(attackNum).hashCode(), 0, creo->getObjectID(), attackMap->getArguments(attackNum));
+					}
+				}
 			}
 		}
 	}

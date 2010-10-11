@@ -45,13 +45,26 @@ which carries forward this exception.
 #ifndef DEFAULTATTACKCOMMAND_H_
 #define DEFAULTATTACKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class DefaultAttackCommand : public QueueCommand {
+class DefaultAttackCommand : public CombatQueueCommand {
 public:
 
-	DefaultAttackCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+	DefaultAttackCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+		damageMultiplier = 1;
+		speedMultiplier = 1;
+
+		combatSpam = "attack";
+		animationCRC = 0;
+
+		healthCostMultiplier = 0;
+		actionCostMultiplier = 0;
+		mindCostMultiplier = 0;
+
+		range = -1;
+
+		poolsToDamage = CombatManager::RANDOM;
 
 	}
 
@@ -63,7 +76,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		return doCombatAction(creature, target, arguments);
 	}
 
 };

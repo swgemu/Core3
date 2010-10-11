@@ -483,6 +483,8 @@ public:
 	static int addMaxStatsCommand(lua_State* L);
 	static int addMedicalForageCommand(lua_State* L);
 	static int addMeditateCommand(lua_State* L);
+	static int addMediumDiseaseCommand(lua_State* L);
+	static int addMediumPoisonCommand(lua_State* L);
 	static int addMelee1hBlindHit1Command(lua_State* L);
 	static int addMelee1hBlindHit2Command(lua_State* L);
 	static int addMelee1hBodyHit1Command(lua_State* L);
@@ -518,6 +520,8 @@ public:
 	static int addMelee2hSpinAttack2Command(lua_State* L);
 	static int addMelee2hSweep1Command(lua_State* L);
 	static int addMelee2hSweep2Command(lua_State* L);
+	static int addMildDiseaseCommand(lua_State* L);
+	static int addMildPoisonCommand(lua_State* L);
 	static int addMindBlast1Command(lua_State* L);
 	static int addMindBlast2Command(lua_State* L);
 	static int addMindShot1Command(lua_State* L);
@@ -774,6 +778,8 @@ public:
 	static int addStopwatchingCommand(lua_State* L);
 	static int addStrafeShot1Command(lua_State* L);
 	static int addStrafeShot2Command(lua_State* L);
+	static int addStrongDiseaseCommand(lua_State* L);
+	static int addStrongPoisonCommand(lua_State* L);
 	static int addStructurestatusCommand(lua_State* L);
 	static int addStunAttackCommand(lua_State* L);
 	static int addSuppressionFire1Command(lua_State* L);
