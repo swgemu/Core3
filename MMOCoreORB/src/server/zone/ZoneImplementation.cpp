@@ -66,6 +66,7 @@ which carries forward this exception.
 
 #include "ZoneProcessServerImplementation.h"
 #include "objects/scene/SceneObject.h"
+#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
@@ -95,10 +96,12 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	//galacticTime = new Time();
 
 	planetManager = NULL;
+	cityManager = NULL;
 }
 
 void ZoneImplementation::initializePrivateData() {
 	planetManager = new PlanetManager(_this, processor);
+	cityManager = new CityManager(_this);
 }
 
 void ZoneImplementation::finalize() {
@@ -146,6 +149,8 @@ void ZoneImplementation::startManagers() {
 
 	creatureManager->initialize();
 	planetManager->loadShuttles();
+
+	cityManager->loadLuaConfig();
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 

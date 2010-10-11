@@ -13,6 +13,7 @@
 #include "server/zone/Zone.h"
 
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -1379,8 +1380,10 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 
 	ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 
-	if (cityHall != NULL && !cityHall->isCitizenOf(player->getObjectID()))
-		cityHall->declareCitizenship(player);
+	ManagedReference<CityManager*> cityManager = zone->getCityManager();
+
+	if (cityHall != NULL && !cityHall->isCitizen(player->getObjectID()))
+		cityManager->declareCitizenship(cityHall, player);
 
 	//Just need to save the players declared residence
 	player->updateToDatabaseWithoutChildren();
