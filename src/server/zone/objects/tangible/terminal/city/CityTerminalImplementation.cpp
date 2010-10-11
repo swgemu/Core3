@@ -6,17 +6,15 @@
  */
 
 #include "CityTerminal.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
+#include "server/zone/managers/city/CityManager.h"
 
 void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 
 	Locker _locker(cityHallObject);
-
-	//Could non-citizens still use the terminal?
-	if (!cityHallObject->isMayorOf(player) && !cityHallObject->isCitizenOf(player))
-		return;
 
 	menuResponse->addRadialMenuItem(211, 3, "@city/city:city_info"); //City Info
 	menuResponse->addRadialMenuItemToRadialID(211, 212, 3, "@city/city:city_status"); //Status Report
@@ -26,7 +24,7 @@ void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menu
 	menuResponse->addRadialMenuItemToRadialID(211, 224, 3, "@city/city:city_maint"); //Maintenance Report
 	menuResponse->addRadialMenuItemToRadialID(211, 215, 3, "@city/city:treasury_status"); //Treasury Report
 
-	if (!cityHallObject->isMayorOf(player))
+	if (!cityHallObject->isMayor(player->getObjectID()))
 		return;
 
 	menuResponse->addRadialMenuItem(216, 3, "@city/city:city_management"); //City Management
@@ -54,6 +52,10 @@ void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menu
 int CityTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 
 	Locker _locker(cityHallObject);
+
+	ManagedReference<CityManager*> cityManager = zone->getCityManager();
+
+	cityManager->handleCityAdvancement(cityHallObject);
 
 	switch (selectedID) {
 	case 211:

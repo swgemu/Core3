@@ -84,6 +84,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 #include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
 #include "server/zone/managers/planet/MapLocationType.h"
+#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/commands/FindCommand.h"
 
 
@@ -329,8 +330,11 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::FACTORY_SCHEMATIC3BUTTON:
 		handleInsertFactorySchem(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
 		break;
-	case SuiWindowType::CREATE_CITY_HALL_NAME:
-		handleSetCityHallName(boxID, player, cancel, value);
+	case SuiWindowType::CITY_CREATE:
+		handleCreateCity(boxID, player, cancel, value);
+		break;
+	case SuiWindowType::CITY_SETNAME:
+		handleChangeCityName(boxID, player, cancel, value);
 		break;
 	case SuiWindowType::CITY_ENABLEZONING:
 		handleCityEnableZoning(boxID, player, cancel, atoi(value));
@@ -2806,7 +2810,7 @@ void SuiManager::handleCityEnableZoning(int boxID, PlayerCreature* player, uint3
 	cityHall->toggleZoningEnabled(player);
 }
 
-void SuiManager::handleSetCityHallName(int boxID, PlayerCreature* player, int cancel, const String& input) {
+void SuiManager::handleChangeCityName(int boxID, PlayerCreature* player, int cancel, const String& input) {
 	Locker locker(player);
 
 	if (!player->hasSuiBox(boxID))
@@ -2838,7 +2842,64 @@ void SuiManager::handleSetCityHallName(int boxID, PlayerCreature* player, int ca
 
 	Locker clocker(cityHall, player);
 
-	cityHall->trySetCityName(player, input);
+	//TODO: Handle cancel
+
+	ManagedReference<CityManager*> cityManager = player->getZone()->getCityManager();
+
+	if (cityManager->validateCityName(input)) {
+		cityManager->changeCityName(cityHall, player, input);
+	} else {
+		player->sendSystemMessage("Invalid name specified for city.");
+		box->clearOptions();
+		player->addSuiBox(box);
+		player->sendMessage(box->generateMessage());
+	}
+}
+
+void SuiManager::handleCreateCity(int boxID, PlayerCreature* player, int cancel, const String& input) {
+	Locker locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+
+	if (!box->isInputBox())
+		return;
+
+	SuiInputBox* inputBox = (SuiInputBox*) box.get();
+
+	ManagedReference<SceneObject*> usingObject = inputBox->getUsingObject();
+
+	if (usingObject == NULL)
+		return;
+
+	if (!usingObject->isBuildingObject())
+		return;
+
+	BuildingObject* building = (BuildingObject*) usingObject.get();
+
+	if (!building->isCityHallBuilding())
+		return;
+
+	CityHallObject* cityHall = (CityHallObject*) building;
+
+	Locker clocker(cityHall, player);
+
+	//TODO: Handle cancel
+
+	ManagedReference<CityManager*> cityManager = player->getZone()->getCityManager();
+
+	if (cityManager->validateCityName(input)) {
+		cityManager->createNewCity(cityHall, player, input);
+	} else {
+		player->sendSystemMessage("Invalid name specified for city.");
+		box->clearOptions();
+		player->addSuiBox(box);
+		player->sendMessage(box->generateMessage());
+	}
 }
 
 void SuiManager::handleFindCommand(int boxID, PlayerCreature* player, uint32 cancel, int value) {

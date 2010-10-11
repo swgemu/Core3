@@ -139,8 +139,6 @@ public:
 	static const int SURVEY_TOOL_CONCENTRATED_MINIGAME = 111;
 	static const int SURVEY_TOOL_CONCENTRATED_MINIGAME2 = 112;
 
-	static const int CREATE_CITY_HALL_NAME = 113;
-
 	static const int STRUCTURE_STATUS = 115;
 	static const int STRUCTURE_DESTROY_CONFIRM = 116;
 	static const int STRUCTURE_DESTROY_CODE = 117;
@@ -152,7 +150,9 @@ public:
 	static const int GAMBLINGSLOT = 121;
 	static const int GAMBLINGSLOTPAYOUT = 122;
 
-	static const int CITY_ENABLEZONING = 123;
+	static const int CITY_CREATE = 123;
+	static const int CITY_ENABLEZONING = 124;
+	static const int CITY_SETNAME = 125;
 };
 
 #endif /*SuiWindowType_H_*/
