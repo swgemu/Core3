@@ -466,6 +466,8 @@ void CommandConfigManager::registerFunctions() {
 	lua_register(getLuaState(), "AddMaxStatsCommand", addMaxStatsCommand);
 	lua_register(getLuaState(), "AddMedicalForageCommand", addMedicalForageCommand);
 	lua_register(getLuaState(), "AddMeditateCommand", addMeditateCommand);
+	lua_register(getLuaState(), "AddMediumDiseaseCommand", addMediumDiseaseCommand);
+	lua_register(getLuaState(), "AddMediumPoisonCommand", addMediumPoisonCommand);
 	lua_register(getLuaState(), "AddMelee1hBlindHit1Command", addMelee1hBlindHit1Command);
 	lua_register(getLuaState(), "AddMelee1hBlindHit2Command", addMelee1hBlindHit2Command);
 	lua_register(getLuaState(), "AddMelee1hBodyHit1Command", addMelee1hBodyHit1Command);
@@ -501,6 +503,8 @@ void CommandConfigManager::registerFunctions() {
 	lua_register(getLuaState(), "AddMelee2hSpinAttack2Command", addMelee2hSpinAttack2Command);
 	lua_register(getLuaState(), "AddMelee2hSweep1Command", addMelee2hSweep1Command);
 	lua_register(getLuaState(), "AddMelee2hSweep2Command", addMelee2hSweep2Command);
+	lua_register(getLuaState(), "AddMildDiseaseCommand", addMildDiseaseCommand);
+	lua_register(getLuaState(), "AddMildPoisonCommand", addMildPoisonCommand);
 	lua_register(getLuaState(), "AddMindBlast1Command", addMindBlast1Command);
 	lua_register(getLuaState(), "AddMindBlast2Command", addMindBlast2Command);
 	lua_register(getLuaState(), "AddMindShot1Command", addMindShot1Command);
@@ -758,6 +762,8 @@ void CommandConfigManager::registerFunctions() {
 	lua_register(getLuaState(), "AddStopwatchingCommand", addStopwatchingCommand);
 	lua_register(getLuaState(), "AddStrafeShot1Command", addStrafeShot1Command);
 	lua_register(getLuaState(), "AddStrafeShot2Command", addStrafeShot2Command);
+	lua_register(getLuaState(), "AddStrongDiseaseCommand", addStrongDiseaseCommand);
+	lua_register(getLuaState(), "AddStrongPoisonCommand", addStrongPoisonCommand);
 	lua_register(getLuaState(), "AddStructurestatusCommand", addStructurestatusCommand);
 	lua_register(getLuaState(), "AddStunAttackCommand", addStunAttackCommand);
 	lua_register(getLuaState(), "AddSuppressionFire1Command", addSuppressionFire1Command);
@@ -4894,6 +4900,26 @@ int CommandConfigManager::addMeditateCommand(lua_State* L) {
 	return 1;
 }
 
+int CommandConfigManager::addMediumDiseaseCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	MediumDiseaseCommand* slashCommand = new MediumDiseaseCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addMediumPoisonCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	MediumPoisonCommand* slashCommand = new MediumPoisonCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
 int CommandConfigManager::addMelee1hBlindHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
@@ -5240,6 +5266,26 @@ int CommandConfigManager::addMelee2hSweep2Command(lua_State* L) {
 		return 0;
 
 	Melee2hSweep2Command* slashCommand = new Melee2hSweep2Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addMildDiseaseCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	MildDiseaseCommand* slashCommand = new MildDiseaseCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addMildPoisonCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	MildPoisonCommand* slashCommand = new MildPoisonCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
@@ -7800,6 +7846,26 @@ int CommandConfigManager::addStrafeShot2Command(lua_State* L) {
 		return 0;
 
 	StrafeShot2Command* slashCommand = new StrafeShot2Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addStrongDiseaseCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	StrongDiseaseCommand* slashCommand = new StrongDiseaseCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addStrongPoisonCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	StrongPoisonCommand* slashCommand = new StrongPoisonCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }

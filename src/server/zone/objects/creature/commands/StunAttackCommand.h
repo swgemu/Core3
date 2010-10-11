@@ -45,13 +45,14 @@ which carries forward this exception.
 #ifndef STUNATTACKCOMMAND_H_
 #define STUNATTACKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class StunAttackCommand : public QueueCommand {
+class StunAttackCommand : public CombatQueueCommand {
 public:
 
 	StunAttackCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +64,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		return doCombatAction(creature, target, arguments);
 	}
 
 };

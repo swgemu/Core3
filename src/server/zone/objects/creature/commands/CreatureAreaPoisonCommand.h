@@ -45,13 +45,14 @@ which carries forward this exception.
 #ifndef CREATUREAREAPOISONCOMMAND_H_
 #define CREATUREAREAPOISONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class CreatureAreaPoisonCommand : public QueueCommand {
+class CreatureAreaPoisonCommand : public CombatQueueCommand {
 public:
 
 	CreatureAreaPoisonCommand(const String& name, ZoneProcessServerImplementation* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +64,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		return SUCCESS;
+		return doCombatAction(creature, target, arguments);
 	}
 
 };
