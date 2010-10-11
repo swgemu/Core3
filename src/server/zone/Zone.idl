@@ -56,6 +56,7 @@ import server.zone.ZoneServer;
 import server.zone.managers.structure.StructureManager;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.planet.PlanetManager;
+import server.zone.managers.city.CityManager;
 import server.zone.managers.creature.CreatureManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import system.util.VectorMap;
@@ -81,6 +82,8 @@ class Zone extends ManagedObject implements QuadTree {
 	//private StructureManager structureManager; // move to planet manager when converted
 	
 	private PlanetManager planetManager;
+	
+	private CityManager cityManager;
 	
 	private CreatureManager creatureManager;
 	
@@ -162,6 +165,10 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	public PlanetManager getPlanetManager() {
 		return planetManager;
+	}
+	
+	public CityManager getCityManager() {
+		return cityManager;
 	}
 
 	public ZoneServer getZoneServer() {

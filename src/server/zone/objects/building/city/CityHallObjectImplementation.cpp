@@ -18,12 +18,18 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/city/CityManager.h"
 #include "server/chat/ChatManager.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/tangible/terminal/city/CityTerminal.h"
 #include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
+
+void CityHallObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	//Destroy all civic structures.
+	BuildingObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+}
 
 void CityHallObjectImplementation::spawnCityHallObjects() {
 	ZoneServer* zoneServer = zone->getZoneServer();
@@ -103,58 +109,6 @@ void CityHallObjectImplementation::despawnCityHallObjects() {
 	}
 }
 
-void CityHallObjectImplementation::trySetCityName(PlayerCreature* player, const String& name) {
-	PlanetManager* planetManager = zone->getPlanetManager();
-
-	NameManager* nameManager = server->getNameManager();
-
-	if (nameManager->validateName(name, 0) != NameManagerResult::ACCEPTED
-			|| name.length() < 3 || planetManager->hasRegion(name)) {
-
-		player->sendSystemMessage("Sorry, but a city with that name already exists or the name was rejected as inappropriate.");
-
-		notifyStructurePlaced(player);
-
-		return;
-	}
-
-	//TODO: All this should be moved to another function as it has nothing to do with "trySetCityName"
-
-	mayorObjectID = player->getObjectID();
-
-	player->setDeclaredResidence(_this);
-	declareCitizenship(player, false);
-
-	cityName = name;
-
-	//New city established email.
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
-
-	if (chatManager != NULL) {
-		ParameterizedStringId emailBody;
-		emailBody.setStringId("@city/city:new_city_body"); //Congratulations, you have successfully established a new outpost on the frontier!...
-		emailBody.setTO(player->getObjectName());
-		UnicodeString subject = "@city/city:new_city_subject"; //New City Established!
-		chatManager->sendMail("@city/city:new_city_from", subject, emailBody, player->getFirstName());
-	}
-
-	uint32 crc = String("object/region_area.iff").hashCode();
-
-	cityRegion = (Region*) ObjectManager::instance()->createObject(crc, 2, "cityregions");
-	cityRegion->initializePosition(positionX, 0, positionY);
-	cityRegion->setRadius(150);
-	cityRegion->setCityHall(_this);
-	StringId* objectName = cityRegion->getObjectName();
-	objectName->setCustomString(cityName);
-
-	cityRegion->insertToZone(zone);
-
-	cityRegion->updateToDatabase();
-	updateToDatabase();
-
-	zone->getPlanetManager()->addRegion(cityRegion);
-}
-
 bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
 	Zone* zone = player->getZone();
 
@@ -182,17 +136,33 @@ bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* p
 	return true;
 }
 
+void CityHallObjectImplementation::sendCityNamePromptTo(PlayerCreature* player, bool newCity) {
+
+	int windowType = SuiWindowType::CITY_CREATE;
+
+	if (!newCity)
+		windowType = SuiWindowType::CITY_SETNAME;
+
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, windowType, 0x00);
+
+	if (newCity) {
+		inputBox->setPromptTitle("@city/city:city_name_t");
+		inputBox->setPromptText("@city/city:city_name_d");
+	} else {
+		inputBox->setPromptTitle("@city/city:city_name_new_t");
+		inputBox->setPromptText("@city/city:city_name_new_d");
+	}
+
+	inputBox->setUsingObject(_this);
+
+	player->addSuiBox(inputBox);
+	player->sendMessage(inputBox->generateMessage());
+}
+
 int CityHallObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
 	cityName = player->getFirstName();
 
-	ManagedReference<SuiInputBox*> setTheName = new SuiInputBox(player, SuiWindowType::CREATE_CITY_HALL_NAME, 0x00);
-
-	setTheName->setPromptTitle("@city/city:city_name_t");
-	setTheName->setPromptText("@city/city:city_name_d");
-	setTheName->setUsingObject(_this);
-
-	player->addSuiBox(setTheName);
-	player->sendMessage(setTheName->generateMessage());
+	sendCityNamePromptTo(player, true);
 
 	return 0;
 }
@@ -256,8 +226,6 @@ void CityHallObjectImplementation::sendStructureReportTo(PlayerCreature* player)
 }
 
 void CityHallObjectImplementation::sendCityAdvancementTo(PlayerCreature* player) {
-	checkCityUpdate();
-
 	if (zone == NULL)
 		return;
 
@@ -297,7 +265,7 @@ void CityHallObjectImplementation::sendTreasuryWithdrawalTo(PlayerCreature* play
 }
 
 void CityHallObjectImplementation::sendCitySpecializationSelectionTo(PlayerCreature* player) {
-	if (cityRank < TOWNSHIP) {
+	if (cityRank < CityManager::TOWNSHIP) {
 		player->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization.
 		return;
 	}
@@ -345,7 +313,7 @@ void CityHallObjectImplementation::toggleCityRegistration(PlayerCreature* player
 		return;
 	}
 
-	if (cityRank < TOWNSHIP) {
+	if (cityRank < CityManager::TOWNSHIP) {
 		player->sendSystemMessage("@city/city:cant_register_rank"); //Your city must be rank 3 (Township) to be registered on the planetary map.
 		return;
 	}
@@ -376,228 +344,8 @@ void CityHallObjectImplementation::addZoningRights(uint64 playerID, uint32 secon
 	playerZoningRights.put(playerID, currentTime.getTime());
 }
 
-void CityHallObjectImplementation::checkCityUpdate() {
-	if (!nextCityUpdate.isPast())
-		return;
 
+void CityHallObjectImplementation::rescheduleCityUpdate(uint32 minutes) {
 	nextCityUpdate.updateToCurrentTime();
-	nextCityUpdate.addMiliTime(CITY_UPDATEINTERVAL * 3600000);
-
-	if (cityRegion == NULL)
-		return;
-
-	int citizens = declaredCitizens.size();
-
-	//If the city is a new city, then it has to first pass a "probation stage".
-	if (cityRank == NEWCITY) {
-		if (citizens >= 10) {
-			handleNewCitySuccess();
-		} else {
-			handleNewCityFailure();
-		}
-
-		return;
-	}
-
-	uint8 oldRank = cityRank;
-
-
-	//TODO: Make this step up rather than skip levels. For example, if you are a TOWNSHIP, and you get 85 citizens, you still have to go through a stage as a CITY before becoming a METROPOLIS.
-	if (citizens >= 85) {
-		cityRank = METROPOLIS;
-		cityRegion->setRadius(450);
-	} else if (citizens >= 55) {
-		cityRank = CITY;
-		cityRegion->setRadius(400);
-	} else if (citizens >= 35) {
-		cityRank = TOWNSHIP;
-		cityRegion->setRadius(300);
-	} else if (citizens >= 20) {
-		cityRank = VILLAGE;
-		cityRegion->setRadius(200);
-	} else if (citizens >= 10) {
-		cityRank = OUTPOST;
-		cityRegion->setRadius(150);
-	} else {
-		cityRank = NEWCITY;
-		cityRegion->setRadius(150);
-	}
-
-	//No update occurred.
-	if (oldRank == cityRank)
-		return;
-
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
-	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-
-	if (chatManager == NULL || playerManager == NULL)
-		return;
-
-	ManagedReference<SceneObject*> mayorObject = server->getZoneServer()->getObject(mayorObjectID);
-
-	if (mayorObject == NULL || !mayorObject->isPlayerCreature())
-		return;
-
-	PlayerCreature* mayor = (PlayerCreature*) mayorObject.get();
-
-	//Send email to the mayor
-	ParameterizedStringId email;
-	UnicodeString subject;
-	if (oldRank < cityRank) {
-		subject = "@city/city:city_expand_subject"; //City Expansion!
-		email.setStringId("@city/city:city_expand_body"); //Congratulations
-	} else {
-		subject = "@city/city:city_contract_subject"; //City Contraction!
-		email.setStringId("@city/city:city_contract_body"); //Warning!
-	}
-
-	email.setTO(cityName);
-	email.setDI(cityRank);
-
-	chatManager->sendMail("@city/city:new_city_from", subject, email, mayor->getFirstName());
-
-	updateToDatabaseWithoutChildren();
-}
-
-void CityHallObjectImplementation::declareCitizenship(PlayerCreature* player, bool sendMail) {
-	if (player == NULL)
-		return;
-
-	uint64 playerID = player->getObjectID();
-
-	if (declaredCitizens.contains(playerID))
-		return;
-
-	declaredCitizens.put(playerID);
-
-	//Save the declared citizens vector.
-	updateToDatabaseWithoutChildren();
-
-	if (!sendMail)
-		return;
-
-	//Send out new citizen email
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
-	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-
-	if (chatManager == NULL || playerManager == NULL)
-		return;
-
-	ManagedReference<SceneObject*> mayorObject = server->getZoneServer()->getObject(mayorObjectID);
-
-	if (mayorObject == NULL || !mayorObject->isPlayerCreature())
-		return;
-
-	PlayerCreature* mayor = (PlayerCreature*) mayorObject.get();
-
-	String mayorName = mayor->getObjectName()->getDisplayedName();
-
-	//Send email to the citizen declaring citizenship
-	ParameterizedStringId email;
-	UnicodeString subject = "@city/city:new_city_citizen_other_subject"; //Welcome, Citizen!
-	email.setStringId("@city/city:new_city_citizen_other_body"); //Welcome to %TU, citizen!
-	email.setTU(cityName);
-	email.setTT(mayorName);
-
-	chatManager->sendMail(mayorName, subject, email, player->getFirstName());
-
-	//Send email to the mayor
-	subject = "@city/city:new_city_citizen_subject"; //City Growth: Added Citizen
-	email.setStringId("@city/city:new_city_citizen_body"); //A new citizen has joined your city.
-	email.setTU(NULL);
-	email.setTT(NULL);
-	email.setTO(player->getObjectName()->getDisplayedName());
-
-	chatManager->sendMail("@city/city:new_city_from", subject, email, mayor->getFirstName());
-}
-
-void CityHallObjectImplementation::revokeCitizenship(PlayerCreature* player, bool sendMail) {
-	if (player == NULL)
-		return;
-
-	uint64 playerID = player->getObjectID();
-
-	if (!declaredCitizens.contains(playerID))
-		return;
-
-	declaredCitizens.drop(playerID);
-
-	updateToDatabaseWithoutChildren();
-
-	if (!sendMail)
-		return;
-
-	//Send out new citizen email
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
-	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-
-	if (chatManager == NULL || playerManager == NULL)
-		return;
-
-	ManagedReference<SceneObject*> mayorObject = server->getZoneServer()->getObject(mayorObjectID);
-
-	if (mayorObject == NULL || !mayorObject->isPlayerCreature())
-		return;
-
-	PlayerCreature* mayor = (PlayerCreature*) mayorObject.get();
-
-	//Send email to the mayor
-	ParameterizedStringId email;
-	UnicodeString subject = "@city/city:lost_city_citizen_subject"; //Lost Citizen!
-	email.setStringId("@city/city:lost_city_citizen_body"); //A citizen has left your city.
-	email.setTO(player->getObjectName()->getDisplayedName());
-
-	chatManager->sendMail("@city/city:new_city_from", subject, email, mayor->getFirstName());
-}
-
-void CityHallObjectImplementation::handleNewCitySuccess() {
-	//Send out emails.
-	cityRank = OUTPOST;
-
-	if (cityRegion != NULL)
-		cityRegion->setRadius(150);
-
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
-	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-
-	if (chatManager == NULL || playerManager == NULL)
-		return;
-
-	ManagedReference<SceneObject*> mayorObject = server->getZoneServer()->getObject(mayorObjectID);
-
-	if (mayorObject == NULL || !mayorObject->isPlayerCreature())
-		return;
-
-	PlayerCreature* mayor = (PlayerCreature*) mayorObject.get();
-
-	//Send email to the mayor
-	ParameterizedStringId email;
-	UnicodeString subject = "@city/city:new_city_success_subject"; //New City Approved!
-	email.setStringId("@city/city:new_city_success_body"); //Congratulations!  The Planetary Civic Authority has approved your city's zoning permits!  Your city is valid and will begin to grow as citizens join it.
-
-	chatManager->sendMail("@city/city:new_city_from", subject, email, mayor->getFirstName());
-}
-
-void CityHallObjectImplementation::handleNewCityFailure() {
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
-	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-
-	if (chatManager == NULL || playerManager == NULL)
-		return;
-
-	ManagedReference<SceneObject*> mayorObject = server->getZoneServer()->getObject(mayorObjectID);
-
-	if (mayorObject == NULL || !mayorObject->isPlayerCreature())
-		return;
-
-	PlayerCreature* mayor = (PlayerCreature*) mayorObject.get();
-
-	//Send email to the mayor
-	ParameterizedStringId email;
-	UnicodeString subject = "@city/city:new_city_fail_subject"; //Zoning Permits Rejected
-	email.setStringId("@city/city:new_city_fail_body"); //We are sorry to inform you that your city failed to receive sufficient interest to remain solvent.  Your zoning applications have been rejected and your city hall has been removed.
-
-	chatManager->sendMail("@city/city:new_city_from", subject, email, mayor->getFirstName());
-
-	//TODO: Destroy the city hall and civic structures.
+	nextCityUpdate.addMiliTime(minutes * 60000);
 }

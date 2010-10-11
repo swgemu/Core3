@@ -23,6 +23,20 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace city {
+
+class CityManager;
+
+} // namespace city
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::city;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace region {
 
@@ -89,33 +103,15 @@ namespace city {
 
 class CityHallObject : public BuildingObject {
 public:
-	static const byte NEWCITY = 0;
-
-	static const byte OUTPOST = 1;
-
-	static const byte VILLAGE = 2;
-
-	static const byte TOWNSHIP = 3;
-
-	static const byte CITY = 4;
-
-	static const byte METROPOLIS = 5;
-
-	static const int CITY_UPDATEINTERVAL = 1;
-
 	CityHallObject();
 
 	void insertToZone(Zone* zone);
 
 	void removeFromZone();
 
-	void checkCityUpdate();
-
 	void spawnCityHallObjects();
 
 	void despawnCityHallObjects();
-
-	void trySetCityName(PlayerCreature* player, const String& name);
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
@@ -124,6 +120,8 @@ public:
 	String getCityName();
 
 	byte getCityRank();
+
+	void sendCityNamePromptTo(PlayerCreature* player, bool newCity = false);
 
 	void sendStatusTo(PlayerCreature* player);
 
@@ -153,17 +151,11 @@ public:
 
 	void toggleCityRegistration(PlayerCreature* player);
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool isCityHallBuilding();
-
-	void handleNewCitySuccess();
-
-	void handleNewCityFailure();
-
-	void declareCitizenship(PlayerCreature* player, bool sendMail = true);
-
-	void revokeCitizenship(PlayerCreature* player, bool sendMail = true);
 
 	void addZoningRights(unsigned long long playerID, unsigned int seconds = 86400);
 
@@ -175,13 +167,7 @@ public:
 
 	void setMayorObjectID(unsigned long long oid);
 
-	bool isMayorOf(PlayerCreature* player);
-
-	bool isMayorOf(unsigned long long playerID);
-
-	bool isCitizenOf(PlayerCreature* player);
-
-	bool isCitizenOf(unsigned long long playerID);
+	bool isMayor(unsigned long long playerID);
 
 	CityTerminal* getCityTerminal();
 
@@ -198,6 +184,22 @@ public:
 	void toggleZoningEnabled(PlayerCreature* player);
 
 	void setZoningEnabled(bool enabled);
+
+	bool isCityUpdatePast();
+
+	void rescheduleCityUpdate(unsigned int minutes);
+
+	int getCitizenCount();
+
+	void addCitizen(unsigned long long playerID);
+
+	void removeCitizen(unsigned long long playerID);
+
+	bool isCitizen(unsigned long long playerID);
+
+	unsigned long long getCitizenObjectID(int idx);
+
+	void setCityRank(byte rank);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -260,20 +262,6 @@ protected:
 	ManagedReference<CityVoteTerminal* > cityVoteTerminal;
 
 public:
-	static const byte NEWCITY = 0;
-
-	static const byte OUTPOST = 1;
-
-	static const byte VILLAGE = 2;
-
-	static const byte TOWNSHIP = 3;
-
-	static const byte CITY = 4;
-
-	static const byte METROPOLIS = 5;
-
-	static const int CITY_UPDATEINTERVAL = 1;
-
 	CityHallObjectImplementation();
 
 	CityHallObjectImplementation(DummyConstructorParameter* param);
@@ -282,13 +270,9 @@ public:
 
 	void removeFromZone();
 
-	void checkCityUpdate();
-
 	void spawnCityHallObjects();
 
 	void despawnCityHallObjects();
-
-	void trySetCityName(PlayerCreature* player, const String& name);
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
@@ -297,6 +281,8 @@ public:
 	String getCityName();
 
 	byte getCityRank();
+
+	void sendCityNamePromptTo(PlayerCreature* player, bool newCity = false);
 
 	void sendStatusTo(PlayerCreature* player);
 
@@ -326,17 +312,11 @@ public:
 
 	void toggleCityRegistration(PlayerCreature* player);
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool isCityHallBuilding();
-
-	void handleNewCitySuccess();
-
-	void handleNewCityFailure();
-
-	void declareCitizenship(PlayerCreature* player, bool sendMail = true);
-
-	void revokeCitizenship(PlayerCreature* player, bool sendMail = true);
 
 	void addZoningRights(unsigned long long playerID, unsigned int seconds = 86400);
 
@@ -348,13 +328,7 @@ public:
 
 	void setMayorObjectID(unsigned long long oid);
 
-	bool isMayorOf(PlayerCreature* player);
-
-	bool isMayorOf(unsigned long long playerID);
-
-	bool isCitizenOf(PlayerCreature* player);
-
-	bool isCitizenOf(unsigned long long playerID);
+	bool isMayor(unsigned long long playerID);
 
 	CityTerminal* getCityTerminal();
 
@@ -371,6 +345,22 @@ public:
 	void toggleZoningEnabled(PlayerCreature* player);
 
 	void setZoningEnabled(bool enabled);
+
+	bool isCityUpdatePast();
+
+	void rescheduleCityUpdate(unsigned int minutes);
+
+	int getCitizenCount();
+
+	void addCitizen(unsigned long long playerID);
+
+	void removeCitizen(unsigned long long playerID);
+
+	bool isCitizen(unsigned long long playerID);
+
+	unsigned long long getCitizenObjectID(int idx);
+
+	void setCityRank(byte rank);
 
 	CityHallObject* _this;
 
@@ -415,13 +405,9 @@ public:
 
 	void removeFromZone();
 
-	void checkCityUpdate();
-
 	void spawnCityHallObjects();
 
 	void despawnCityHallObjects();
-
-	void trySetCityName(PlayerCreature* player, const String& name);
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
@@ -430,6 +416,8 @@ public:
 	String getCityName();
 
 	byte getCityRank();
+
+	void sendCityNamePromptTo(PlayerCreature* player, bool newCity);
 
 	void sendStatusTo(PlayerCreature* player);
 
@@ -459,17 +447,11 @@ public:
 
 	void toggleCityRegistration(PlayerCreature* player);
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
+
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	bool isCityHallBuilding();
-
-	void handleNewCitySuccess();
-
-	void handleNewCityFailure();
-
-	void declareCitizenship(PlayerCreature* player, bool sendMail);
-
-	void revokeCitizenship(PlayerCreature* player, bool sendMail);
 
 	void addZoningRights(unsigned long long playerID, unsigned int seconds);
 
@@ -481,13 +463,7 @@ public:
 
 	void setMayorObjectID(unsigned long long oid);
 
-	bool isMayorOf(PlayerCreature* player);
-
-	bool isMayorOf(unsigned long long playerID);
-
-	bool isCitizenOf(PlayerCreature* player);
-
-	bool isCitizenOf(unsigned long long playerID);
+	bool isMayor(unsigned long long playerID);
 
 	CityTerminal* getCityTerminal();
 
@@ -505,8 +481,23 @@ public:
 
 	void setZoningEnabled(bool enabled);
 
+	bool isCityUpdatePast();
+
+	void rescheduleCityUpdate(unsigned int minutes);
+
+	int getCitizenCount();
+
+	void addCitizen(unsigned long long playerID);
+
+	void removeCitizen(unsigned long long playerID);
+
+	bool isCitizen(unsigned long long playerID);
+
+	unsigned long long getCitizenObjectID(int idx);
+
+	void setCityRank(byte rank);
+
 protected:
-	String _param1_trySetCityName__PlayerCreature_String_;
 	String _param0_setCityName__String_;
 };
 

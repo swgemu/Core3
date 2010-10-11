@@ -76,6 +76,20 @@ using namespace server::zone::managers::planet;
 namespace server {
 namespace zone {
 namespace managers {
+namespace city {
+
+class CityManager;
+
+} // namespace city
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::city;
+
+namespace server {
+namespace zone {
+namespace managers {
 namespace creature {
 
 class CreatureManager;
@@ -202,6 +216,8 @@ public:
 
 	PlanetManager* getPlanetManager();
 
+	CityManager* getCityManager();
+
 	ZoneServer* getZoneServer();
 
 	CreatureManager* getCreatureManager();
@@ -264,6 +280,8 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 	ObjectMap objectMap;
 
 	ManagedReference<PlanetManager* > planetManager;
+
+	ManagedReference<CityManager* > cityManager;
 
 	ManagedReference<CreatureManager* > creatureManager;
 
@@ -333,6 +351,8 @@ public:
 	String getPlanetName();
 
 	PlanetManager* getPlanetManager();
+
+	CityManager* getCityManager();
 
 	ZoneServer* getZoneServer();
 
@@ -432,6 +452,8 @@ public:
 	String getPlanetName();
 
 	PlanetManager* getPlanetManager();
+
+	CityManager* getCityManager();
 
 	ZoneServer* getZoneServer();
 

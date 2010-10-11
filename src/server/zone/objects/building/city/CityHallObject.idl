@@ -47,6 +47,7 @@ package server.zone.objects.building.city;
 import server.zone.objects.building.BuildingObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
+import server.zone.managers.city.CityManager;
 import server.zone.objects.region.Region;
 import server.zone.objects.tangible.terminal.city.CityTerminal;
 import server.zone.objects.tangible.terminal.city.CityVoteTerminal;
@@ -83,25 +84,16 @@ class CityHallObject extends BuildingObject {
 	protected CityTerminal cityTerminal;
 	protected CityVoteTerminal cityVoteTerminal;
 	
-	//City Ranks
-	public static final byte NEWCITY = 0;
-	public static final byte OUTPOST = 1;
-	public static final byte VILLAGE = 2;
-	public static final byte TOWNSHIP = 3;
-	public static final byte CITY = 4;
-	public static final byte METROPOLIS = 5;
-	
-	public static final int CITY_UPDATEINTERVAL = 1; //In hours
-	
 	public CityHallObject() {
 		setLoggingName("CityHallObject");
 		
 		cityName = "test city";
 		
-		cityRank = NEWCITY;
-		citySpecialization = 0;
+		cityRank = CityManager.NEWCITY;
+	
+		cityRegion = null;
 		
-		nextCityUpdate.addMiliTime(CITY_UPDATEINTERVAL * 3600000);
+		citySpecialization = 0;
 		
 		mayorObjectID = 0;
 		
@@ -137,16 +129,9 @@ class CityHallObject extends BuildingObject {
 		
 		updateToDatabaseWithoutChildren();
 	}
-	
-	/**
-	 * Checks to see if the city can advance in rank, and handles the appropriate emails and settings.
-	 */
-	public native void checkCityUpdate();
-	
+
 	public native void spawnCityHallObjects();
 	public native void despawnCityHallObjects();
-	
-	public native void trySetCityName(PlayerCreature player, final string name);
 	
 	public native boolean checkRequisitesForPlacement(PlayerCreature player);
 	
@@ -162,6 +147,7 @@ class CityHallObject extends BuildingObject {
 		return cityRank;
 	}
 	
+	public native void sendCityNamePromptTo(PlayerCreature player, boolean newCity = false);
 	public native void sendStatusTo(PlayerCreature player);
 	public native void sendCitizenshipReportTo(PlayerCreature player);
 	public native void sendStructureReportTo(PlayerCreature player);
@@ -179,6 +165,8 @@ class CityHallObject extends BuildingObject {
 	
 	public native void toggleCityRegistration(PlayerCreature player);
 	
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
 	/**
 	 * Gets called when the structure has been created;
 	 */
@@ -187,30 +175,6 @@ class CityHallObject extends BuildingObject {
 	public boolean isCityHallBuilding() {
 		return true;
 	}
-	
-	/**
-	 * This method is fired when the city has updated and successfully met the new city requirements.
-	 */
-	public native void handleNewCitySuccess();
-	
-	/**
-	 * This method is fired when the city has updated but fails to meet the new city requirements.
-	 */
-	public native void handleNewCityFailure();
-	
-	/**
-	 * Adds a player to the declared citizens list, making them a citizen of the city.
-	 * @param player The player joining the city as a citizen.
-	 * @param sendMail Should emails be sent to the mayor and citizen?
-	 */
-	public native void declareCitizenship(PlayerCreature player, boolean sendMail = true);
-	
-	/**
-	 * Removes a player from the declared citizens list
-	 * @param player The player leaving the city.
-	 * @param sendMail Should emails be sent to the mayor and citizen?
-	 */
-	public native void revokeCitizenship(PlayerCreature player, boolean sendMail = true);
 	
 	/**
 	 * Adds the player to the zoning rights map for the specified number of seconds.
@@ -241,20 +205,8 @@ class CityHallObject extends BuildingObject {
 		mayorObjectID = oid;
 	}
 	
-	public boolean isMayorOf(PlayerCreature player) {
-		return player.getObjectID() == mayorObjectID;
-	}
-	
-	public boolean isMayorOf(unsigned long playerID) {
+	public boolean isMayor(unsigned long playerID) {
 		return playerID == mayorObjectID;
-	}
-	
-	public boolean isCitizenOf(PlayerCreature player) {
-		return declaredCitizens.contains(player.getObjectID());
-	}
-	
-	public boolean isCitizenOf(unsigned long playerID) {
-		return declaredCitizens.contains(playerID);
 	}
 	
 	public CityTerminal getCityTerminal() {
@@ -292,5 +244,35 @@ class CityHallObject extends BuildingObject {
 	
 	public void setZoningEnabled(boolean enabled) {
 		zoningEnabled = enabled;
+	}
+	
+	public boolean isCityUpdatePast() {
+		return nextCityUpdate.isPast();
+	}
+	
+	public native void rescheduleCityUpdate(unsigned int minutes);
+	
+	public int getCitizenCount() {
+		return declaredCitizens.size();
+	}
+	
+	public void addCitizen(unsigned long playerID) {
+		declaredCitizens.add(playerID);
+	}
+	
+	public void removeCitizen(unsigned long playerID) {
+		declaredCitizens.drop(playerID);
+	}
+	
+	public boolean isCitizen(unsigned long playerID) {
+		return declaredCitizens.contains(playerID);
+	}
+	
+	public unsigned long getCitizenObjectID(int idx) {
+		return declaredCitizens.get(idx);
+	}
+	
+	public void setCityRank(byte rank) {
+		cityRank = rank;
 	}
 }
