@@ -141,14 +141,12 @@ bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* p
 		return false;
 	}
 
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+	ManagedReference<CityManager*> cityManager = zone->getCityManager();
 
-	if (planetManager == NULL || planetManager->getNumberOfCities() > 20) {
-		player->sendSystemMessage("Planet has reached the city number limit");
+	if (cityManager->checkCitiesCappedAtRank(CityManager::NEWCITY)) {
+		player->sendSystemMessage("@player_structure:max_cities"); //This planet has already reached its max allowed number of player cities.
 		return false;
 	}
-
-	planetManager->increaseNumberOfCities();
 
 	return true;
 }

@@ -46,7 +46,8 @@
 ------------------------------
 CityUpdateInterval = 15 --Minutes between city rank updates (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
 NewCityGracePeriod = 60
-CitizensPerRank = {1, 10, 20, 35, 55, 85}
+CitizensPerRank = {1, 2, 5, 10, 15, 20}
+--CitizensPerRank = {1, 10, 20, 35, 55, 85}
 RadiusPerRank = {150, 150, 200, 300, 400, 450}
 
 ------------------------------
@@ -55,14 +56,14 @@ RadiusPerRank = {150, 150, 200, 300, 400, 450}
 --{rank0, rank1, rank2, rank3, rank4, rank5}
 -- -1 = 255 cities which is the max amount
 CitiesAllowed = {
-	{-1, 20, 20, 15, 10, 10}, --corellia
-	{-1, 50, 50, 30, 20, 20}, --dantooine
+	{20, 20, 20, 15, 10, 10}, --corellia
+	{50, 50, 50, 30, 20, 20}, --dantooine
 	{0, 0, 0, 0, 0, 0}, --dathomir
 	{0, 0, 0, 0, 0, 0}, --endor
-	{-1, 50, 50, 30, 20, 20}, --lok
-	{-1, 20, 20, 15, 10, 10}, --naboo
-	{-1, 50, 50, 30, 20, 20}, --rori
-	{-1, 50, 50, 30, 20, 20}, --talus
-	{-1, 20, 20, 15, 10, 10}, --tatooine
+	{50, 50, 50, 30, 20, 20}, --lok
+	{20, 20, 20, 15, 10, 10}, --naboo
+	{50, 50, 50, 30, 20, 20}, --rori
+	{50, 50, 50, 30, 20, 20}, --talus
+	{20, 20, 20, 15, 10, 10}, --tatooine
 	{0, 0, 0, 0, 0, 0} --yavin4
 }
