@@ -640,6 +640,8 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 		}
 	}
 
+	//broadcastToOperators(new InstallationObjectDeltaMessage7(_this));
+
 	updateToDatabase();
 }
 

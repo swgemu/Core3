@@ -76,6 +76,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 
 	protected int accessFee;
 	
+	public static final int MAXPLAYERITEMS = 200;
+	
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 
@@ -86,7 +88,7 @@ class BuildingObject extends StructureObject implements QuadTree {
 		super.containerVolumeLimit = 0xFFFFFFFF;
 
 		super.containerType = 2;
-		
+				
 		totalCellNumber = 0;
 		
 		accessFee = 0;
@@ -190,6 +192,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 	public void setStaticBuilding(boolean value) {
 		super.staticObject = value;
 	}
+	
+	public native int getCurrentNumerOfPlayerItems() ;
 	
 	/**
 	 * Abstract function that is triggered when a player enters a building.

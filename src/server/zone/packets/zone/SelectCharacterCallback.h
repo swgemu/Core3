@@ -69,7 +69,7 @@ public:
 				//reload
 
 				player->reload(client);
-				player->info("reloading", true);
+				player->info("reloading");
 
 			} else {
 				int zoneID = player->getSavedZoneID();

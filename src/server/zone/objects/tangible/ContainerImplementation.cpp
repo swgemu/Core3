@@ -59,14 +59,14 @@ void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
 }
 
 int ContainerImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	if (containerType == 3 && !object->isIntangibleObject()) {
+	if (object->isIntangibleObject() && containerType != 3) {
 		errorDescription = "@container_error_message:container07";
 
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
 	if (containmentType == -1) {
-		if (parent != NULL && parent->isContainerOject()) {
+		if (gameObjectType == WEARABLECONTAINER && object->getGameObjectType() == WEARABLECONTAINER) {
 			errorDescription = "@container_error_message:container12";
 
 			return TransferErrorCode::CANTNESTOBJECT;

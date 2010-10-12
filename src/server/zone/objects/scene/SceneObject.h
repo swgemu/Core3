@@ -1008,6 +1008,8 @@ public:
 
 	bool hasObjectInContainer(unsigned long long objectID);
 
+	bool hasObjectInSlottedContainer(SceneObject* object);
+
 	SceneObject* getContainerObject(unsigned long long objectID);
 
 	unsigned int getPlanetCRC();
@@ -1929,6 +1931,8 @@ public:
 
 	bool hasObjectInContainer(unsigned long long objectID);
 
+	bool hasObjectInSlottedContainer(SceneObject* object);
+
 	SceneObject* getContainerObject(unsigned long long objectID);
 
 	virtual unsigned int getPlanetCRC();
@@ -2315,6 +2319,8 @@ public:
 	void setStaticObject(bool val);
 
 	bool hasObjectInContainer(unsigned long long objectID);
+
+	bool hasObjectInSlottedContainer(SceneObject* object);
 
 	SceneObject* getContainerObject(unsigned long long objectID);
 

@@ -54,13 +54,13 @@ public:
 	}
 
 	virtual ~CreatureTemplateManager() {
-		resetIterator();
+		/*resetIterator();
 
 		while (hasNext()) {
 			CreatureTemplate* npcTemp = next();
 
 			delete npcTemp;
-		}
+		}*/
 	}
 
 	void loadTemplates() {

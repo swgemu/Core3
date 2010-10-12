@@ -614,8 +614,6 @@ EntertainingSessionImplementation::EntertainingSessionImplementation(CreatureObj
 }
 
 void EntertainingSessionImplementation::finalize() {
-	// server/zone/objects/player/EntertainingSession.idl(114):  		Logger.info("deleted from ram", true);
-	Logger::info("deleted from ram", true);
 }
 
 void EntertainingSessionImplementation::addFlourishXp(int xp) {

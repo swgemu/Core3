@@ -208,10 +208,6 @@ void ServerCore::shutdown() {
 		zoneServer = NULL;
 	}
 
-	ObjectManager::instance()->savePersistentObjects();
-
-	zoneServerRef = NULL;
-
 	if (loginServer != NULL) {
 		loginServer->stop();
 
@@ -240,6 +236,12 @@ void ServerCore::shutdown() {
 		delete database;
 		database = NULL;
 	}
+
+	TaskManager::instance()->shutdown();
+
+	ObjectManager::instance()->savePersistentObjects();
+
+	zoneServerRef = NULL;
 
 	info("server closed");
 

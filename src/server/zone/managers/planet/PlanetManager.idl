@@ -78,6 +78,8 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	protected StructureManager structureManager;
 	
+	protected int numberOfCities;
+		
 	protected transient ZoneProcessServerImplementation server;
 	protected transient TerrainManager terrainManager;
 	
@@ -111,6 +113,8 @@ class PlanetManager extends ManagedService implements Logger {
 		Logger.setGlobalLogging(true);
 		
 		terrainManager = null;
+		
+		numberOfCities = 0;
 		
 		structureManager = null;
 	}
@@ -169,6 +173,14 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	public int getRegionCount() {
 		return regionMap.size();
+	}
+	
+	public int getNumberOfCities() {
+		return numberOfCities;
+	}
+	
+	public void increaseNumberOfCities() {
+		numberOfCities = numberOfCities + 1;
 	}
 	
 	public Region getRegion(int index) {

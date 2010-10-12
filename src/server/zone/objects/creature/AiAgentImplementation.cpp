@@ -104,12 +104,16 @@ void AiAgentImplementation::doRecovery() {
 
 				if (commandQueue.size() == 0 && weapon != NULL) {
 					//TODO: make this more interesting with AI...
-					CreatureAttackMap* attackMap = npcTemplate->getAttacks();
-					if (attackMap->size() == 0 || System::random(2) > 0)
+					if (npcTemplate == NULL) {
 						enqueueCommand(String("defaultattack").hashCode(), 0, creo->getObjectID(), "");
-					else {
-						int attackNum = attackMap->getRandomAttackNumber();
-						enqueueCommand(attackMap->getCommand(attackNum).hashCode(), 0, creo->getObjectID(), attackMap->getArguments(attackNum));
+					} else {
+						CreatureAttackMap* attackMap = npcTemplate->getAttacks();
+						if (attackMap == NULL || attackMap->size() == 0 || System::random(2) > 0)
+							enqueueCommand(String("defaultattack").hashCode(), 0, creo->getObjectID(), "");
+						else {
+							int attackNum = attackMap->getRandomAttackNumber();
+							enqueueCommand(attackMap->getCommand(attackNum).hashCode(), 0, creo->getObjectID(), attackMap->getArguments(attackNum));
+						}
 					}
 				}
 			}

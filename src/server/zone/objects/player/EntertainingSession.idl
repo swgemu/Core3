@@ -111,7 +111,7 @@ class EntertainingSession extends Facade {
 	public native void startEntertaining(final string dance, final string animation, boolean isDanceSession);
 	
 	public void finalize() {
-		Logger.info("deleted from ram", true);
+		//Logger.info("deleted from ram", true);
 	}
 	
 	//heals entertainer wounds

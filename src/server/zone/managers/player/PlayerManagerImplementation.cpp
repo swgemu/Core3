@@ -69,7 +69,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	loadStartingItems();
 
 	setGlobalLogging(true);
-	setLogging(true);
+	setLogging(false);
 
 	loadNameMap();
 }
@@ -939,7 +939,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* playe
 void PlayerManagerImplementation::sendPlayerToCloner(PlayerCreature* player, uint64 clonerID) {
 	ManagedReference<SceneObject*> cloner = server->getObject(clonerID);
 
-	info("entering sendPlayerToCloner", true);
+	info("entering sendPlayerToCloner");
 
 	if (cloner == NULL) {
 		error("cloner is null");

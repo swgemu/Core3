@@ -110,7 +110,7 @@ public:
 		SharedStructureObjectTemplate* structureTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(structureTemplateCRC));
 
 		if (structureTemplate == NULL) {
-			player->error("Invalid structure template used to enter placeStructureMode");
+			player->error("Invalid structure template used to enter placeStructureMode " + structureTemplateName);
 			return GENERALERROR;
 		}
 
@@ -125,7 +125,9 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!structureTemplate->isAllowedZone(player->getZone()->getZoneID())) {
+		ManagedReference<Zone*> zone = player->getZone();
+
+		if (zone == NULL || !structureTemplate->isAllowedZone(zone->getZoneID())) {
 			player->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
 			return GENERALERROR;
 		}

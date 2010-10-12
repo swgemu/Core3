@@ -51,7 +51,7 @@ void ShuttleCreatureImplementation::sendPlayerTo(PlayerCreature* player, TicketO
 
 			player->switchZone(id, x, z, y);
 
-			info("called switched zone", true);
+			//info("called switched zone", true);
 		} else {
 			error("unknown arrival shuttle for destination " + shuttle);
 		}

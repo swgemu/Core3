@@ -123,92 +123,6 @@ void ZoneServerImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 }
 
-/*ZoneServerImplementation::~ZoneServerImplementation() {
-	if (missionManager != NULL) {
-		missionManager->finalize();
-		missionManager = NULL;
-	}
-
-	if (phandler != NULL) {
-		delete phandler;
-		phandler = NULL;
-	}
-
-	if (processor != NULL) {
-		delete processor;
-		processor = NULL;
-	}
-
-	if (itemManager != NULL) {
-		itemManager->finalize();
-		itemManager = NULL;
-	}
-
-	if (itemConfigManager != NULL) {
-		itemConfigManager->finalize();
-		itemConfigManager = NULL;
-	}
-
-	if (bazaarManager != NULL) {
-		bazaarManager->finalize();
-		bazaarManager = NULL;
-	}
-
-	if (objectManager != NULL) {
-		delete objectManager;
-		objectManager = NULL;
-	}
-
-	if (userManager != NULL) {
-		userManager->finalize();
-		userManager = NULL;
-	}
-
-	if (playerManager != NULL) {
-		playerManager->finalize();
-		playerManager = NULL;
-	}
-
-	if (guildManager != NULL) {
-		guildManager->finalize();
-		guildManager = NULL;
-	}
-
-	if (resourceManager != NULL) {
-		resourceManager->finalize();
-		resourceManager = NULL;
-	}
-
-	if (lootTableManager != NULL) {
-		lootTableManager->finalize();
-		lootTableManager = NULL;
-	}
-
-	if (craftingManager != NULL) {
-		craftingManager->finalize();
-		craftingManager = NULL;
-	}
-
-	if (bankManager != NULL) {
-		bankManager->finalize();
-		bankManager = NULL;
-	}
-
-	if (chatManager != NULL) {
-		chatManager->finalize();
-		chatManager = NULL;
-	}
-
-	for (int i = 0; i < 45; ++i) {
-		Zone* zone = zones.get(i);
-
-		if (zone != NULL)
-			zone->finalize();
-	}
-
-	zones.removeAll();
-}*/
-
 void ZoneServerImplementation::initialize() {
 	serverState = LOADING;
 
@@ -282,7 +196,6 @@ void ZoneServerImplementation::startZones() {
 
 			zone->deploy("Zone", i);
 
-			//zone->startManagers();
 		}
 
 		zones.add(zone);
@@ -334,23 +247,6 @@ void ZoneServerImplementation::startManagers() {
 	lootManager->deploy("LootManager");
 	lootManager->initialize();
 
-	/*userManager = new UserManager(_this);
-	userManager->deploy("UserManager");
-
-	itemManager = new ItemManager(_this, processor);
-	itemManager->deploy("ItemManager");
-
-	itemConfigManager = new ItemConfigManager();
-	itemConfigManager->deploy("ItemConfigManager");
-
-	guildManager = new GuildManager(_this);
-	guildManager->deploy("GuildManager");
-
-	guildManager->load();
-	playerManager->setGuildManager(guildManager);
-
-	bankManager = new BankManager(_this, processor);
-	bankManager->deploy("BankManager");*/
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
@@ -371,17 +267,7 @@ void ZoneServerImplementation::stop() {
 }
 
 void ZoneServerImplementation::shutdown() {
-	/*chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
-	Thread::sleep(10000);
 
-	chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
-	Thread::sleep(10000);
-
-	chatManager->broadcastMessage("Server is shutting down in 10 seconds..");
-	Thread::sleep(10000);
-
-	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
-	Thread::sleep(5000);*/
 
 	processor->stop();
 
@@ -440,7 +326,7 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 
 	String address = client->getAddress();
 
-	info("client connected from \'" + address + "\'");
+	//info("client connected from \'" + address + "\'");
 
 	return clientImpl;
 }
@@ -480,36 +366,6 @@ bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) 
 
 	return true;
 }
-
-/*void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
-	try {
-		lock(doLock);
-
-		SceneObject* conflictedObj = objectManager->add(obj);
-
-		if (conflictedObj != NULL && conflictedObj != obj) {
-			error("Object id conflict");
-			StackTrace::printStackTrace();
-		}
-
-		obj->setZoneProcessServer(processor);
-
-		if (conflictedObj == NULL && obj->isPlayer()) {
-			Player* player = (Player*) obj;
-
-			chatManager->addPlayer(player);
-
-			if (++currentPlayers > maximumPlayers)
-				maximumPlayers = currentPlayers;
-
-			++totalPlayers;
-		}
-
-		unlock(doLock);
-	} catch (...) {
-		unlock(doLock);
-	}
-}*/
 
 SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
@@ -597,129 +453,6 @@ void ZoneServerImplementation::destroyObjectFromDatabase(uint64 objectID) {
 	objectManager->destroyObjectFromDatabase(objectID);
 }
 
-/*
-SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
-	SceneObject* obj = NULL;
-
-	try {
-		lock(doLock);
-
-		obj = objectManager->remove(oid);
-		if (obj == NULL) {
-			unlock(doLock);
-			return NULL;
-		}
-
-		if (obj->isPlayer()) {
-			Player* player = (Player*) obj;
-			String& name = player->getFirstName();
-
-			chatManager->removePlayer(name);
-
-			--currentPlayers;
-		}
-
-		unlock(doLock);
-	} catch (...) {
-		unlock(doLock);
-	}
-
-	return obj;
-}
-
-SceneObject* ZoneServerImplementation::removeObject(SceneObject* obj, bool doLock) {
-	return removeObject(obj->getObjectID(), doLock);
-}
-
-bool ZoneServerImplementation::destroyObject(SceneObject* obj, bool doLock) {
-	bool res = false;
-
-	try {
-		lock(doLock);
-
-		res = objectManager->destroy(obj);
-
-		unlock(doLock);
-	} catch (...) {
-		unlock(doLock);
-	}
-
-	return res;
-}
-
-SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) {
-	SceneObject* obj = NULL;
-
-	try {
-		lock(doLock);
-
-		obj = objectManager->getCachedObject(oid);
-
-		unlock(doLock);
-	} catch (...) {
-		unlock(doLock);
-	}
-
-	return obj;
-}
-
-SceneObject* ZoneServerImplementation::removeCachedObject(uint64 oid, bool doLock) {
-	SceneObject* obj = NULL;
-
-	System::out << "removeCachedObject OID = " << oid << endl;
-	try {
-		lock(doLock);
-
-		obj = objectManager->removeCachedObject(oid);
-
-		unlock(doLock);
-	} catch (...) {
-		unlock(doLock);
-	}
-
-	return obj;
-}
-
-SceneObject* ZoneServerImplementation::removeCachedObject(SceneObject* obj, bool doLock) {
-	return removeCachedObject(obj->getObjectID(), doLock);
-}
-
-SceneObject* ZoneServerImplementation::createObject(uint32 objectCRC, bool doLock) {
-	SceneObject* obj = NULL;
-
-	try {
-		lock(doLock);
-
-		obj = objectManager->createObject(objectCRC);
-
-		unlock(doLock);
-	} catch (...) {
-		unlock(doLock);
-	}
-
-	return obj;
-}
-
-bool ZoneServerImplementation::banUser(String& name, String& admin) {
-	lock();
-
-	bool result = userManager->banUserByName(name, admin);
-
-	unlock();
-
-	return result;
-}
-
-bool ZoneServerImplementation::kickUser(String& name, String& admin) {
-	lock();
-
-	bool result = userManager->kickUser(name, admin);
-
-	unlock();
-
-	return result;
-}*/
-
 void ZoneServerImplementation::changeUserCap(int amount) {
 	lock();
 
@@ -775,6 +508,8 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 		 << totalDeletedPlayers << " deleted)";
 	info(msg4, forcedLog);
 
+	ObjectManager::instance()->printInfo();
+
 	unlock();
 }
 
@@ -797,22 +532,11 @@ void ZoneServerImplementation::increaseOnlinePlayers() {
 
 void ZoneServerImplementation::decreaseOnlinePlayers() {
 	currentPlayers.decrement();
-
-	//currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
 }
 
 void ZoneServerImplementation::increaseTotalDeletedPlayers() {
 	totalDeletedPlayers.increment();
-	//++totalDeletedPlayers;
 }
-
-/*void ZoneServerImplementation::lock() {
-	DatagramServiceThread::lock();
-}
-
-void ZoneServerImplementation::unlock() {
-	DatagramServiceThread::unlock();
-}*/
 
 void ZoneServerImplementation::lock(bool doLock) {
 	datagramService->lock(doLock);

@@ -34,6 +34,9 @@ void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		SceneObject* containerObject = containerObjects.get(j);
 
+		if (containerObject->getParent() == NULL)
+			containerObject->setParent(_this);
+
 		if (!containerObject->isInQuadTree() && !containerObject->isPlayerCreature())
 			containerObject->sendTo(player, true);
 	}
@@ -70,14 +73,41 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(perm);
 }
 
+int CellObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	if (parent != NULL && parent->isBuildingObject()) {
+		ManagedReference<BuildingObject*> building = (BuildingObject*) parent.get();
+
+		if (building->getCurrentNumerOfPlayerItems() >= BuildingObject::MAXPLAYERITEMS) {
+			errorDescription = "@container_error_message:container13";
+
+			return TransferErrorCode::TOOMANYITEMSINHOUSE;
+		}
+	}
+
+	return SceneObjectImplementation::canAddObject(object, containmentType, errorDescription);
+}
+
 bool CellObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
 	Locker locker(_this);
 
-	return SceneObjectImplementation::addObject(object, containmentType, notifyClient);
+	bool ret = SceneObjectImplementation::addObject(object, containmentType, notifyClient);
+
+	if (ret && !object->isTerminal() && !object->isCreatureObject()) {
+		++currentNumberOfItems;
+	}
+
+	return ret;
 }
 
 bool CellObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
 	Locker locker(_this);
 
-	return SceneObjectImplementation::removeObject(object, notifyClient);
+	bool ret = SceneObjectImplementation::removeObject(object, notifyClient);
+
+	if (ret && !object->isTerminal() && !object->isCreatureObject()) {
+		if (currentNumberOfItems > 0)
+			--currentNumberOfItems;
+	}
+
+	return ret;
 }

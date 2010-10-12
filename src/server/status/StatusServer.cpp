@@ -43,13 +43,14 @@ which carries forward this exception.
 */
 
 #include "StatusServer.h"
-
+#include "StatusHandler.h"
 //#include "../zone/managers/item/ItemManager.h"
 
 StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 		: StreamServiceThread("StatusServer") {
 	zoneServer = server;
 	configManager = conf;
+	statusHandler = new StatusHandler(this);
 
 	statusInterval = configManager->getStatusInterval();
 
@@ -63,6 +64,8 @@ StatusServer::~StatusServer() {
 void StatusServer::init() {
 	timestamp.updateToCurrentTime();
 	lastStatus = true;
+
+	setHandler(statusHandler);
 
 	if (zoneServer != NULL) {
 		//oid = zoneServer->getItemManager()->getNextStaticObjectID();

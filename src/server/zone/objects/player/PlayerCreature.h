@@ -356,6 +356,8 @@ public:
 
 	void removeFromBuilding(BuildingObject* building);
 
+	void updateToDatabase();
+
 	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose = true);
@@ -738,6 +740,8 @@ public:
 
 	void removeFromBuilding(BuildingObject* building);
 
+	void updateToDatabase();
+
 	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose = true);
@@ -1020,6 +1024,8 @@ public:
 	void insertToBuilding(BuildingObject* building);
 
 	void removeFromBuilding(BuildingObject* building);
+
+	void updateToDatabase();
 
 	void sendMessage(BasePacket* msg);
 

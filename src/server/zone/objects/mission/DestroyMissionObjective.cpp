@@ -226,8 +226,6 @@ DestroyMissionObjectiveImplementation::DestroyMissionObjectiveImplementation(Mis
 }
 
 void DestroyMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/DestroyMissionObjective.idl(73):  		Logger.info("deleting from memory", true);
-	Logger::info("deleting from memory", true);
 }
 
 void DestroyMissionObjectiveImplementation::initializeTransientMembers() {

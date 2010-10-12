@@ -878,8 +878,13 @@ void StructureManagerImplementation::loadPlayerStructures() {
 
 	ObjectDatabase* playerStructuresDatabase = ObjectDatabaseManager::instance()->loadDatabase("playerstructures", true);
 
-	if (playerStructuresDatabase == NULL)
-		info("StructureManagerImplementation::loadPlayerStructures(): There was an error loading the 'playerstructures' database.", true);
+	if (playerStructuresDatabase == NULL) {
+		error("StructureManagerImplementation::loadPlayerStructures(): There was an error loading the 'playerstructures' database.");
+
+		return;
+	}
+
+	int i = 0;
 
 	try {
 		int planetid = zone->getZoneID();
@@ -912,6 +917,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 
 			if (object != NULL) {
 				//object->info("loaded player structure into world");
+				++i;
 			} else {
 				error("could not load structure " + String::valueOf(objectID));
 			}
@@ -929,6 +935,8 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	} catch (...) {
 		throw Exception("problem in StructureManagerImplementation::loadPlayerStructures()");
 	}
+
+	info(String::valueOf(i) + " player structures loaded", true);
 }
 
 int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* player, uint64 deedID, float x, float y, int angle) {
@@ -1092,7 +1100,7 @@ int StructureManagerImplementation::constructStructure(PlayerCreature* player, S
 
 	Task* task = new StructureConstructionCompleteTask(_this, player, structureObject, ssot, deedID, x, y, direction, constructionMarker);
 	task->schedule(buildTime);
-	player->info("Scheduled StructureConstructionCompleteTask in " + String::valueOf(buildTime) , true);
+	//player->info("Scheduled StructureConstructionCompleteTask in " + String::valueOf(buildTime) , true);
 	return 0;
 }
 

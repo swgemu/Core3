@@ -60,7 +60,7 @@ class MissionSpawnActiveArea extends ActiveArea {
 	}
 
 	public void notifyEnter(SceneObject player) {
-		Logger.info("notifyEnter mission spawn", true);
+		//Logger.info("notifyEnter mission spawn", true);
 		
 		if (!player.isPlayerCreature()) {
 			return;

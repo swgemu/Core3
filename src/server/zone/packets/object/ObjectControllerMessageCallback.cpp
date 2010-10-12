@@ -71,7 +71,6 @@ void ObjectControllerMessageCallback::run() {
 
 		if (objectID != player->getObjectID()) {
 			player->error("wrong object id in object controller message?");
-			player->unlock();
 
 			return;
 		}
