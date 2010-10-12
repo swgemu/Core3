@@ -48,6 +48,8 @@ void VehicleDeedImplementation::updateCraftingValues(ManufactureSchematic* schem
 }
 
 void VehicleDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	DeedImplementation::fillObjectMenuResponse(menuResponse, player);
+
 	menuResponse->addRadialMenuItem(20, 3, "@pet/pet_menu:menu_generate");
 }
 

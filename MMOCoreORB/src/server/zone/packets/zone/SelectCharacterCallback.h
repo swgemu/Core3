@@ -83,11 +83,6 @@ public:
 					zone = NULL;
 				}
 
-				if (zone == NULL)
-					return;
-
-				Locker zlocker(zone);
-
 				if (parent != NULL && (parent->isCellObject() || parent->isVehicleObject())) {
 					try {
 						Locker clocker(parent, player);
@@ -102,7 +97,7 @@ public:
 					}
 				}
 
-				if (zone == NULL && parent != NULL)
+				if (parent != NULL)
 					zone = parent->getRootParent()->getZone();
 
 				if (zone == NULL)

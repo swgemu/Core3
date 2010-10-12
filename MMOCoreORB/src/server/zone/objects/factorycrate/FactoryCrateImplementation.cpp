@@ -172,9 +172,9 @@ bool FactoryCrateImplementation::extractObjectToParent(int count) {
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	TangibleObject* protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
+	ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
 
-	if(protoclone != NULL) {
+	if (protoclone != NULL) {
 		protoclone->setParent(NULL);
 		protoclone->setOptionsBitmask(0x2100);
 		protoclone->setUseCount(count, false);
@@ -185,6 +185,7 @@ bool FactoryCrateImplementation::extractObjectToParent(int count) {
 		setUseCount(getUseCount() - count);
 		return true;
 	}
+
 	return false;
 }
 
@@ -199,7 +200,7 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	TangibleObject* protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
+	ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
 
 	if(protoclone != NULL) {
 		protoclone->setParent(NULL);
@@ -209,8 +210,10 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 		parent->addObject(protoclone, -1, true);
 
 		setUseCount(getUseCount() - count, true);
+
 		return protoclone;
 	}
+
 	return NULL;
 }
 
