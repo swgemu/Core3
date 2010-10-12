@@ -58,7 +58,7 @@ class CityManager extends ManagedService implements Logger {
 	private Zone zone;
 	
 	@dereferenced
-	public static transient Vector<byte> radiusPerRank;
+	public static transient Vector<unsigned short> radiusPerRank;
 	
 	@dereferenced
 	public static transient Vector<byte> citizensPerRank;

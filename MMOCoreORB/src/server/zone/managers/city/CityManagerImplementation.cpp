@@ -16,7 +16,7 @@
 #include "server/zone/objects/region/Region.h"
 
 Vector<uint8> CityManagerImplementation::citizensPerRank;
-Vector<uint8> CityManagerImplementation::radiusPerRank;
+Vector<uint16> CityManagerImplementation::radiusPerRank;
 int CityManagerImplementation::cityUpdateInterval = 0;
 int CityManagerImplementation::newCityGracePeriod = 0;
 
