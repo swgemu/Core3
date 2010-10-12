@@ -141,6 +141,8 @@ public:
 
 	void sendManageMilitiaTo(PlayerCreature* player);
 
+	void sendAddMilitiaMemberTo(PlayerCreature* player);
+
 	void sendAdjustTaxesTo(PlayerCreature* player);
 
 	void sendTreasuryDepositTo(PlayerCreature* player);
@@ -169,6 +171,12 @@ public:
 
 	bool isMayor(unsigned long long playerID);
 
+	bool isBanned(unsigned long long playerID);
+
+	void addBannedPlayer(unsigned long long playerID);
+
+	void removeBannedPlayer(unsigned long long playerID);
+
 	CityTerminal* getCityTerminal();
 
 	CityVoteTerminal* getCityVoteTerminal();
@@ -196,6 +204,12 @@ public:
 	void removeCitizen(unsigned long long playerID);
 
 	bool isCitizen(unsigned long long playerID);
+
+	void addMilitiaMember(unsigned long long playerID);
+
+	void removeMilitiaMember(unsigned long long playerID);
+
+	bool isMilitiaMember(unsigned long long playerID);
 
 	unsigned long long getCitizenObjectID(int idx);
 
@@ -232,6 +246,10 @@ namespace city {
 class CityHallObjectImplementation : public BuildingObjectImplementation {
 protected:
 	SortedVector<unsigned long long> declaredCitizens;
+
+	SortedVector<unsigned long long> militiaMembers;
+
+	SortedVector<unsigned long long> bannedPlayers;
 
 	VectorMap<unsigned long long, ManagedReference<StructureObject* > > cityStructures;
 
@@ -302,6 +320,8 @@ public:
 
 	void sendManageMilitiaTo(PlayerCreature* player);
 
+	void sendAddMilitiaMemberTo(PlayerCreature* player);
+
 	void sendAdjustTaxesTo(PlayerCreature* player);
 
 	void sendTreasuryDepositTo(PlayerCreature* player);
@@ -330,6 +350,12 @@ public:
 
 	bool isMayor(unsigned long long playerID);
 
+	bool isBanned(unsigned long long playerID);
+
+	void addBannedPlayer(unsigned long long playerID);
+
+	void removeBannedPlayer(unsigned long long playerID);
+
 	CityTerminal* getCityTerminal();
 
 	CityVoteTerminal* getCityVoteTerminal();
@@ -357,6 +383,12 @@ public:
 	void removeCitizen(unsigned long long playerID);
 
 	bool isCitizen(unsigned long long playerID);
+
+	void addMilitiaMember(unsigned long long playerID);
+
+	void removeMilitiaMember(unsigned long long playerID);
+
+	bool isMilitiaMember(unsigned long long playerID);
 
 	unsigned long long getCitizenObjectID(int idx);
 
@@ -437,6 +469,8 @@ public:
 
 	void sendManageMilitiaTo(PlayerCreature* player);
 
+	void sendAddMilitiaMemberTo(PlayerCreature* player);
+
 	void sendAdjustTaxesTo(PlayerCreature* player);
 
 	void sendTreasuryDepositTo(PlayerCreature* player);
@@ -465,6 +499,12 @@ public:
 
 	bool isMayor(unsigned long long playerID);
 
+	bool isBanned(unsigned long long playerID);
+
+	void addBannedPlayer(unsigned long long playerID);
+
+	void removeBannedPlayer(unsigned long long playerID);
+
 	CityTerminal* getCityTerminal();
 
 	CityVoteTerminal* getCityVoteTerminal();
@@ -492,6 +532,12 @@ public:
 	void removeCitizen(unsigned long long playerID);
 
 	bool isCitizen(unsigned long long playerID);
+
+	void addMilitiaMember(unsigned long long playerID);
+
+	void removeMilitiaMember(unsigned long long playerID);
+
+	bool isMilitiaMember(unsigned long long playerID);
 
 	unsigned long long getCitizenObjectID(int idx);
 

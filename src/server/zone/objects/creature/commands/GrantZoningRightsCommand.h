@@ -86,8 +86,7 @@ public:
 		Region* region = (Region*) activeRegion.get();
 		ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 
-		//TODO: Implement militia
-		if (cityHall == NULL || !cityHall->isMayor(player->getObjectID()) /*&& !cityHall->isMemberOfMilitia(player)*/) {
+		if (cityHall == NULL || (!cityHall->isMayor(player->getObjectID()) && !cityHall->isMilitiaMember(player->getObjectID()))) {
 			player->sendSystemMessage("@city/city:grant_rights_fail"); //You must be the mayor of the city or a member of the city militia to grant zoning rights.
 			return GENERALERROR;
 		}

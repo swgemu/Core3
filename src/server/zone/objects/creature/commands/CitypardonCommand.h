@@ -60,8 +60,53 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+
+		ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isPlayerCreature())
+			return INVALIDTARGET;
+
+		PlayerCreature* targetPlayer = (PlayerCreature*) targetObject.get();
+
+		ManagedReference<ActiveArea*> activeRegion = player->getActiveRegion();
+
+		if (activeRegion == NULL || !activeRegion->isRegion())
+			return GENERALERROR;
+
+		Region* region = (Region*) activeRegion.get();
+
+		ManagedReference<CityHallObject*> cityHall = region->getCityHall();
+
+		if (cityHall == NULL)
+			return GENERALERROR;
+
+		Locker _locker(cityHall);
+
+		//Can't unban someone who isn't banned...
+		if (!cityHall->isBanned(target))
+			return GENERALERROR;
+
+		if (!cityHall->isMayor(player->getObjectID()) && !cityHall->isMilitiaMember(player->getObjectID())) {
+			player->sendSystemMessage("@city/city:not_militia"); //You must be a member of the city militia to use this command.
+			return GENERALERROR;
+		}
+
+		cityHall->removeBannedPlayer(target);
+		cityHall->updateToDatabaseWithoutChildren();
+
+		targetPlayer->sendSystemMessage("@city/city:city_pardoned"); //You have been pardoned and are once again able to use city services.
+
+		ParameterizedStringId params;
+		params.setStringId("@city/city:city_pardon_done");
+		params.setTT(targetPlayer);
+		player->sendSystemMessage(params); //%TT has been pardoned and is now able to use city services.
 
 		return SUCCESS;
 	}

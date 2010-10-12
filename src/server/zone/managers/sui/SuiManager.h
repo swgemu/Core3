@@ -149,6 +149,8 @@ namespace server {
 	  	void handleChangeCityName(int boxID, PlayerCreature* player, int cancel, const String& input);
 	  	void handleCreateCity(int boxID, PlayerCreature* player, int cancel, const String& input);
 	  	void handleCityEnableZoning(int boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleManageMilitia(int boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
+	  	void handleAddMilitia(int boxID, PlayerCreature* player, uint32 cancel, const String& name);
 
 	  	void handleFindCommand(int boxID, PlayerCreature* player, uint32 cancel, int value);
 

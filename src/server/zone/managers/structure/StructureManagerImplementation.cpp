@@ -1406,12 +1406,20 @@ int StructureManagerImplementation::changePrivacy(PlayerCreature* player, Struct
 
 	ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
 
-	ManagedReference<CellObject*> firstCell = buildingObject->getCell(0);
+	bool allowEntry = buildingObject->isPublicStructure();
+	int totalCells = buildingObject->getTotalCellNumber();
 
-	if (firstCell == NULL)
-		return 1;
+	Vector<BaseMessage*> cellMessages;
 
-	UpdateCellPermissionsMessage* cellMessage = new UpdateCellPermissionsMessage(firstCell->getObjectID(), buildingObject->isPublicStructure());
+	for (int i = 0; i < totalCells; ++i) {
+		ManagedReference<CellObject*> cell = buildingObject->getCell(i);
+
+		if (cell == NULL)
+			continue;
+
+		UpdateCellPermissionsMessage* cellMessage = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
+		cellMessages.add(cellMessage);
+	}
 
 	Locker _locker(zone);
 
@@ -1437,10 +1445,16 @@ int StructureManagerImplementation::changePrivacy(PlayerCreature* player, Struct
 		if (buildingObject->isOnAccessList(targetPlayer))
 			continue;
 
-		targetPlayer->sendMessage(cellMessage->clone());
+		for (int j = 0; j < cellMessages.size(); ++j)
+			targetPlayer->sendMessage(cellMessages.get(j)->clone());
 	}
 
-	delete cellMessage;
+	//Delete the messages...
+	for (int i = 0; i < cellMessages.size(); ++i) {
+		BaseMessage* msg = cellMessages.get(i);
+		delete msg;
+		msg = NULL;
+	}
 
 	_locker.release();
 
