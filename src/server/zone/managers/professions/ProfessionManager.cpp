@@ -978,9 +978,9 @@ void ProfessionManager::loadSkillCommands(SkillBox* skillBox, String& skillComma
 					if (args != -1) {
 						skillBox->addSkillArgument(skill, argument);
 					}
-
-					skillBox->addAbility(command);
 				}
+
+				skillBox->addAbility(command);
 			}
 		}
 	}
