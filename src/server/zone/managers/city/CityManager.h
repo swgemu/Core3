@@ -160,7 +160,7 @@ class CityManagerImplementation : public ManagedServiceImplementation, public Lo
 	ManagedWeakReference<Zone* > zone;
 
 public:
-	static Vector<byte> radiusPerRank;
+	static Vector<unsigned short> radiusPerRank;
 
 	static Vector<byte> citizensPerRank;
 
