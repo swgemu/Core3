@@ -109,6 +109,8 @@ public:
 
 	void removeFromZone();
 
+	void notifyLoadFromDatabase();
+
 	void spawnCityHallObjects();
 
 	void despawnCityHallObjects();
@@ -288,6 +290,8 @@ public:
 
 	void removeFromZone();
 
+	void notifyLoadFromDatabase();
+
 	void spawnCityHallObjects();
 
 	void despawnCityHallObjects();
@@ -436,6 +440,8 @@ public:
 	void insertToZone(Zone* zone);
 
 	void removeFromZone();
+
+	void notifyLoadFromDatabase();
 
 	void spawnCityHallObjects();
 

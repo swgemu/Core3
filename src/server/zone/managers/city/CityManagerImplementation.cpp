@@ -105,6 +105,8 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, PlayerCreatu
 
 	zone->getPlanetManager()->addRegion(cityRegion);
 
+	Locker lock(_this);
+
 	cities.put(city->getObjectID(), city);
 
 	//New city established email.
@@ -312,6 +314,8 @@ void CityManagerImplementation::destroyCity(CityHallObject* city) {
 	//Remove the city hall
 	//Set the mayors residence = NULL
 	//Send out mails?
+
+	Locker lock(_this);
 	cities.drop(city->getObjectID());
 	city->destroyObjectFromDatabase(true);
 }
@@ -390,6 +394,8 @@ void CityManagerImplementation::revokeCitizenship(CityHallObject* city, PlayerCr
 
 bool CityManagerImplementation::checkCitiesCappedAtRank(uint8 rank) {
 	int totalCitiesAtRank = 0;
+
+	Locker lock(_this);
 
 	for (int i = 0; i < cities.size(); ++i) {
 		ManagedReference<CityHallObject*> city = cities.get(i);

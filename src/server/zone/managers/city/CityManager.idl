@@ -196,4 +196,16 @@ class CityManager extends ManagedService implements Logger {
 	public byte getCitiesAllowed(byte rank) {
 		return citiesAllowedPerRank.get(rank);
 	}
+	
+	/**
+	 * Adds a city to the cities vectormap
+	 * @param city The city hall object to add to the cities vectormap.
+	 */
+	public synchronized void addCity(CityHallObject city) {
+		cities.put(city.getObjectID(), city);
+	}
+	
+	public synchronized int getTotalCities() {
+		return cities.size();
+	}
 }
