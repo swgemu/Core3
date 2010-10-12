@@ -112,6 +112,11 @@ void CityHallObjectImplementation::despawnCityHallObjects() {
 bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
 	Zone* zone = player->getZone();
 
+	if (!player->hasSkillBox("social_politician_novice")) {
+		player->sendSystemMessage("@player_structure:place_cityhall"); //You must be at least a Novice Politician to place a City Hall.
+		return false;
+	}
+
 	ManagedReference<SceneObject*> object = zone->getNearestPlanetaryObject(player, 50);
 
 	if (object == NULL)
