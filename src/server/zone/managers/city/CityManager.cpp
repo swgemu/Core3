@@ -254,6 +254,33 @@ byte CityManager::getCitiesAllowed(byte rank) {
 		return _implementation->getCitiesAllowed(rank);
 }
 
+void CityManager::addCity(CityHallObject* city) {
+	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addObjectParameter(city);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addCity(city);
+}
+
+int CityManager::getTotalCities() {
+	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getTotalCities();
+}
+
 DistributedObjectServant* CityManager::_getImplementation() {
 	return _impl;}
 
@@ -355,6 +382,18 @@ byte CityManagerImplementation::getCitiesAllowed(byte rank) {
 	return (&citiesAllowedPerRank)->get(rank);
 }
 
+void CityManagerImplementation::addCity(CityHallObject* city) {
+	Locker _locker(_this);
+	// server/zone/managers/city/CityManager.idl(205):  		cities.put(city.getObjectID(), city);
+	(&cities)->put(city->getObjectID(), city);
+}
+
+int CityManagerImplementation::getTotalCities() {
+	Locker _locker(_this);
+	// server/zone/managers/city/CityManager.idl(209):  		return cities.size();
+	return (&cities)->size();
+}
+
 /*
  *	CityManagerAdapter
  */
@@ -407,6 +446,12 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 19:
 		resp->insertByte(getCitiesAllowed(inv->getByteParameter()));
+		break;
+	case 20:
+		addCity((CityHallObject*) inv->getObjectParameter());
+		break;
+	case 21:
+		resp->insertSignedInt(getTotalCities());
 		break;
 	default:
 		return NULL;
@@ -469,6 +514,14 @@ bool CityManagerAdapter::checkCitiesCappedAtRank(byte rank) {
 
 byte CityManagerAdapter::getCitiesAllowed(byte rank) {
 	return ((CityManagerImplementation*) impl)->getCitiesAllowed(rank);
+}
+
+void CityManagerAdapter::addCity(CityHallObject* city) {
+	((CityManagerImplementation*) impl)->addCity(city);
+}
+
+int CityManagerAdapter::getTotalCities() {
+	return ((CityManagerImplementation*) impl)->getTotalCities();
 }
 
 /*

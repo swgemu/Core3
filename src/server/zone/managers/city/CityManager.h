@@ -128,6 +128,10 @@ public:
 
 	byte getCitiesAllowed(byte rank);
 
+	void addCity(CityHallObject* city);
+
+	int getTotalCities();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -218,6 +222,10 @@ public:
 
 	byte getCitiesAllowed(byte rank);
 
+	void addCity(CityHallObject* city);
+
+	int getTotalCities();
+
 	CityManager* _this;
 
 	operator const CityManager*();
@@ -284,6 +292,10 @@ public:
 	bool checkCitiesCappedAtRank(byte rank);
 
 	byte getCitiesAllowed(byte rank);
+
+	void addCity(CityHallObject* city);
+
+	int getTotalCities();
 
 protected:
 	String _param2_createNewCity__CityHallObject_PlayerCreature_String_;
