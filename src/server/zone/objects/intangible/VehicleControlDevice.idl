@@ -68,7 +68,7 @@ class VehicleControlDevice extends ControlDevice {
 	public native void generateObject(PlayerCreature player);
 	
 	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
-		Logger.info("selected call", true);
+		Logger.info("selected call");
 		
 		if (selectedID == RadialOptions.VEHICLE_GENERATE) {
 			

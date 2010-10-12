@@ -187,12 +187,12 @@ bool ProfessionManager::checkPrerequisites(SkillBox* skillBox, PlayerCreature* p
 	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
 
 	if (playerSkillBoxList->contains(skillBox)) {
-		System::out << "player contains skillbox " << endl;
+		//System::out << "player contains skillbox " << endl;
 		return false;
 	}
 
 	if ((player->getSkillPoints() + skillBox->skillPointsRequired) > 250) {
-		System::out << "too many skill points " << player->getSkillPoints() << endl;
+		//System::out << "too many skill points " << player->getSkillPoints() << endl;
 		return false;
 	}
 
@@ -200,7 +200,7 @@ bool ProfessionManager::checkPrerequisites(SkillBox* skillBox, PlayerCreature* p
 		SkillBox* sBox = skillBox->requiredSkills.get(i);
 
 		if (!playerSkillBoxList->contains(sBox)) {
-			System::out << "required skill not found " << endl;
+			//System::out << "required skill not found " << endl;
 			return false;
 		}
 	}
@@ -570,7 +570,7 @@ bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, PlayerCre
 	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
 
 	if (!playerSkillBoxList->contains(skillBox)) {
-		System::out << "player doesnt contain skill box to surrender" << endl;
+		//System::out << "player doesnt contain skill box to surrender" << endl;
 		return false;
 	}
 

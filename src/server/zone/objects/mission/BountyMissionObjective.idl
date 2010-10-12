@@ -67,7 +67,7 @@ class BountyMissionObjective extends MissionObjective {
 	}
 	
 	public native void finalize() {
-		Logger.info("deleting from memory", true);
+		//Logger.info("deleting from memory", true);
 	}
 	
 	public void initializeTransientMembers() {

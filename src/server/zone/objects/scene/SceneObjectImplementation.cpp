@@ -279,10 +279,6 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (isStaticObject())
 		return;
 
-	/*if (getObjectID() == 0x1000001008d10) {
-		StackTrace::printStackTrace();
-	}*/
-
 	ManagedReference<ZoneClientSession*> client = player->getClient();
 
 	if (client == NULL)
@@ -338,6 +334,9 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		SceneObject* object = slottedObjects.get(i);
 
+		if (object->getParent() == NULL)
+			object->setParent(_this);
+
 		if (objects.put(object) != -1) {
 			if (object->isInQuadTree()) {
 				notifyInsert((QuadTreeEntry*) object->_getImplementation());
@@ -355,6 +354,9 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		SceneObject* containerObject = containerObjects.get(j);
+
+		if (containerObject->getParent() == NULL)
+			containerObject->setParent(_this);
 
 		if (objects.put(containerObject->getObjectID()) != -1) {
 			if (containerObject->isInQuadTree()) {
@@ -956,9 +958,17 @@ int SceneObjectImplementation::canAddObject(SceneObject* object, int containment
 }
 
 bool SceneObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	if (object->getParent() != NULL && object->getParent() != _this) {
-		error("trying to add an object with a parent already");
+	if (_this == object)
 		return false;
+
+	if (object->getParent() != NULL && object->getParent() != _this) {
+		ManagedReference<SceneObject*> objParent = object->getParent();
+
+		if (objParent->hasObjectInContainer(object->getObjectID()) || objParent->hasObjectInSlottedContainer(object)) {
+			error("trying to add an object with a parent already");
+			return false;
+		} else
+			object->setParent(NULL);
 	}
 
 	bool update = true;
@@ -1001,9 +1011,10 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 
 	notifyObjectInserted(object);
 
-	if (update)
+	if (update) {
 		updateToDatabase();
-	//object->updateToDatabase();
+		//object->updateToDatabaseWithoutChildren()();
+	}
 
 	return true;
 }
@@ -1012,9 +1023,15 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 	ManagedReference<SceneObject*> objectKeeper = object;
 
 	if (object->getParent() != _this && object->getParent() != NULL) {
-		error("trying to remove an object but i am not the parent");
-		object->getParent()->info("i am the parent", true);
-		return false;
+		ManagedReference<SceneObject*> objParent = object->getParent();
+
+		if (objParent->hasObjectInContainer(object->getObjectID()) || objParent->hasObjectInSlottedContainer(object)) {
+			error("trying to add an object with a parent already");
+			objParent->info("i am the parent", true);
+
+			return false;
+		} else
+			object->setParent(NULL);
 	}
 
 	int containedType = object->getContainmentType();

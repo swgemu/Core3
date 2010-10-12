@@ -81,7 +81,12 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 }
 
 void PlayerCreatureImplementation::finalize() {
+	if (server != NULL) {
+		ManagedReference<ZoneServer*> zoneServer = server->getZoneServer();
 
+		if (zoneServer != NULL)
+			zoneServer->increaseTotalDeletedPlayers();
+	}
 }
 
 
@@ -335,18 +340,31 @@ void PlayerCreatureImplementation::unloadSpawnedChildren() {
 		return;
 
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
-		SceneObject* object = datapad->getContainerObject(i);
+		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
 		if (object->isControlDevice()) {
-			ControlDevice* device = (ControlDevice*) object;
+			ControlDevice* device = (ControlDevice*) object.get();
 
 			device->storeObject(_this);
 		}
 	}
 }
 
+void PlayerCreatureImplementation::updateToDatabase() {
+	if (zone != NULL) {
+		savedZoneID = zone->getZoneID();
+	}
+
+	if (parent != NULL) {
+		savedParentID = parent->getObjectID();
+	} /*else
+		savedParentID = 0;*/
+
+	CreatureObjectImplementation::updateToDatabase();
+}
+
 void PlayerCreatureImplementation::unload() {
-	info("unloading player", true);
+	info("unloading player");
 
 	SceneObject* savedParent = NULL;
 

@@ -41,8 +41,8 @@ class CreatureManager extends ManagedService implements Logger {
 	
 	public void initialize() {
 		setCreatureTemplateManager();
-		//loadTrainers();
-		//loadSingleSpawns();
+		loadTrainers();
+		loadSingleSpawns();
 		loadMissionSpawns();
 		loadInformants();
 	}

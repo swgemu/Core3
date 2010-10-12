@@ -1440,6 +1440,22 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return containerObjects.contains(objectID);
 	}
 	
+	public boolean hasObjectInSlottedContainer(SceneObject object) {
+		int arrangementSize = object.getArrangementDescriptorSize();
+		
+		if (arrangementSize == 0) {
+			return false;
+		}
+		
+		SceneObject obj = slottedObjects.get(object.getArrangementDescriptor(0));
+		
+		if (object == obj) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public SceneObject getContainerObject(unsigned long objectID) {
 		return containerObjects.get(objectID);
 	}

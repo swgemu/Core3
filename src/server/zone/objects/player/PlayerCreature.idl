@@ -292,6 +292,14 @@ class PlayerCreature extends CreatureObject {
 	public native void removeFromBuilding(BuildingObject building);
 	
 	/**
+	 * Updates this object to database (calls updatesToDatabaseAllObjects())
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
+	 public native void updateToDatabase();
+	
+	/**
 	 * Sends a message to client
 	 * @pre { }
 	 * @post { message is sent to client }

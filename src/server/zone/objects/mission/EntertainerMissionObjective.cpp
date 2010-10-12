@@ -186,8 +186,6 @@ EntertainerMissionObjectiveImplementation::EntertainerMissionObjectiveImplementa
 }
 
 void EntertainerMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/EntertainerMissionObjective.idl(65):  		Logger.info("deleting from memory", true);
-	Logger::info("deleting from memory", true);
 }
 
 void EntertainerMissionObjectiveImplementation::initializeTransientMembers() {

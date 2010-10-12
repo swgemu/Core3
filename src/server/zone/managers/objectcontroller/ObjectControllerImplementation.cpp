@@ -93,6 +93,10 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		}
 	}
 
+	if (objectToTransfer->isContainerOject()) {
+		objectToTransfer->sendTo(destinationObject, true);
+	}
+
 	parent->updateToDatabase();
 	//destinationObject->updateToDatabaseAllObjects(false);
 

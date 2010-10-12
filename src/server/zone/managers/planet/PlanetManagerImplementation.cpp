@@ -24,6 +24,8 @@ void PlanetManagerImplementation::initialize() {
 
 	int zoneID = zone->getZoneID();
 
+	numberOfCities = 0;
+
 	if (zoneID < 10) {
 		String planetName = Planet::getPlanetName(zoneID);
 
@@ -268,6 +270,8 @@ void PlanetManagerImplementation::loadPlayerRegions() {
 	} catch (...) {
 		throw Exception("problem in StructureManagerImplementation::loadPlayerStructures()");
 	}
+
+	numberOfCities += i;
 
 	info(String("loaded " + String::valueOf(i)) + " player regions", true);
 }

@@ -41,9 +41,24 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	optionsBitmask = 0x00000100;
 }
 
+int BuildingObjectImplementation::getCurrentNumerOfPlayerItems() {
+	int items = 0;
+
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		items += cell->getCurrentNumerOfPlayerItems();
+	}
+
+	return items;
+}
+
 void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
+
+		if (cell->getParent() == NULL)
+			cell->setParent(_this);
 
 		cell->setCellNumber(i + 1);
 		cell->sendTo(player, true);
@@ -89,6 +104,8 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 void BuildingObjectImplementation::removeFromZone() {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
+
+		cell->resetCurrentNumerOfPlayerItems();
 
 		while (cell->getContainerObjectsSize() > 0) {
 			ManagedReference<SceneObject*> obj = cell->getContainerObject(0);

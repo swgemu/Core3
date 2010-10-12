@@ -66,9 +66,9 @@ public:
 		StringTokenizer tokenizer(arguments.toString());
 		int newStackSize = tokenizer.getIntToken();
 
-		ManagedReference<FactoryCrate* > factoryCrate = (FactoryCrate*) server->getZoneServer()->getObject(target);
+		ManagedReference<FactoryCrate* > factoryCrate = dynamic_cast<FactoryCrate*>(server->getZoneServer()->getObject(target));
 
-		if((factoryCrate == NULL || !factoryCrate->isFactoryCrate() ||!creature->isPlayerCreature()))
+		if (factoryCrate == NULL || !creature->isPlayerCreature())
 			return INVALIDTARGET;
 
 		Locker locker(factoryCrate, creature);

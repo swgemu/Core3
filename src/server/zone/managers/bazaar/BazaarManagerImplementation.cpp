@@ -362,14 +362,16 @@ void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionIt
 		body.setTO(item->getItemName());
 
 		try {
-			Locker clocker(priorBidder, player);
+			if (priorBidder != NULL) {
+				Locker clocker(priorBidder, player);
 
-			priorBidder->sendSystemMessage(body);
-			priorBidder->addBankCredits(item->getPrice());
+				priorBidder->sendSystemMessage(body);
+				priorBidder->addBankCredits(item->getPrice());
 
-			priorBidder->updateToDatabase();
+				priorBidder->updateToDatabase();
 
-			clocker.release();
+				clocker.release();
+			}
 		} catch (...) {
 			error("unreported2 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
 		}
@@ -517,6 +519,12 @@ void BazaarManagerImplementation::retrieveItem(PlayerCreature* player, uint64 ob
 	}
 
 	ManagedReference<SceneObject*> objectToRetrieve = zoneServer->getObject(objectid);
+	if (objectToRetrieve == NULL) {
+		//TODO: temphack
+		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
+		player->sendMessage(msg);
+		return;
+	}
 
 	objectToRetrieve->sendTo(player, true);
 

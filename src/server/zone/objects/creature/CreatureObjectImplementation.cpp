@@ -255,6 +255,9 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		SceneObject* object = slottedObjects.get(i);
 
+		if (object->getParent() == NULL)
+			object->setParent(_this);
+
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		bool sendWithoutContents = false;

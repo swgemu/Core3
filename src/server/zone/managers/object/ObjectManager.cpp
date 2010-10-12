@@ -112,6 +112,13 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<WaypointObject>(SceneObject::WAYPOINT);
 
+	objectFactory.registerObject<WearableObject>(SceneObject::WEARABLE);
+	objectFactory.registerObject<WearableObject>(SceneObject::RING);
+	objectFactory.registerObject<WearableObject>(SceneObject::BRACELET);
+	objectFactory.registerObject<WearableObject>(SceneObject::NECKLACE);
+	objectFactory.registerObject<WearableObject>(SceneObject::EARRING);
+
+
 	objectFactory.registerObject<BuildingObject>(SceneObject::BUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObject::CAPITOLBUILDING);
 	objectFactory.registerObject<TutorialBuildingObject>(SceneObject::TUTORIALBUILDING);
@@ -197,6 +204,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ClothingObject>(SceneObject::CAPE);
 	objectFactory.registerObject<ClothingObject>(SceneObject::CLOAK);
 	objectFactory.registerObject<ClothingObject>(SceneObject::FOOTWEAR);
+	objectFactory.registerObject<ClothingObject>(SceneObject::HEADWEAR);
 	objectFactory.registerObject<ClothingObject>(SceneObject::DRESS);
 	objectFactory.registerObject<ClothingObject>(SceneObject::HANDWEAR);
 	objectFactory.registerObject<ClothingObject>(SceneObject::JACKET);
@@ -327,6 +335,7 @@ void ObjectManager::loadStaticObjects() {
 				continue;
 			}
 
+			_locker.release();
 			deSerializeObject(object, &objectData);
 
 			objectData.reset();
@@ -530,6 +539,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 			return NULL;
 		}
 
+		_locker.release();
 		deSerializeObject((SceneObject*)object, &objectData);
 
 		((SceneObject*)object)->info("loaded from db");
@@ -542,6 +552,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 			return NULL;
 		}
 
+		_locker.release();
 		deSerializeObject((ManagedObject*)object, &objectData);
 
 	} else {
@@ -775,4 +786,10 @@ int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	}
 
 	return 1;
+}
+
+void ObjectManager::printInfo() {
+	StringBuffer msg;
+	msg << "total objects in map " << localObjectDirectory.getSize();
+	info(msg.toString(), true);
 }

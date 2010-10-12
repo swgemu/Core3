@@ -296,6 +296,10 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet, ZoneP
 void CreatureManagerImplementation::initialize() {
 	// server/zone/managers/creature/CreatureManager.idl(43):  		setCreatureTemplateManager();
 	setCreatureTemplateManager();
+	// server/zone/managers/creature/CreatureManager.idl(44):  		loadTrainers();
+	loadTrainers();
+	// server/zone/managers/creature/CreatureManager.idl(45):  		loadSingleSpawns();
+	loadSingleSpawns();
 	// server/zone/managers/creature/CreatureManager.idl(46):  		loadMissionSpawns();
 	loadMissionSpawns();
 	// server/zone/managers/creature/CreatureManager.idl(47):  		loadInformants();

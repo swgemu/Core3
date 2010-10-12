@@ -176,8 +176,8 @@ AccountManagerImplementation::AccountManagerImplementation(ZoneServer* zserv) {
 	_initializeImplementation();
 	// server/zone/managers/account/AccountManager.idl(20):  		Logger.setLoggingName("AccountManager");
 	Logger::setLoggingName("AccountManager");
-	// server/zone/managers/account/AccountManager.idl(21):  		Logger.setLogging(true);
-	Logger::setLogging(true);
+	// server/zone/managers/account/AccountManager.idl(21):  		Logger.setLogging(false);
+	Logger::setLogging(false);
 	// server/zone/managers/account/AccountManager.idl(22):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 	// server/zone/managers/account/AccountManager.idl(24):  		accountMap.setNullValue(null);

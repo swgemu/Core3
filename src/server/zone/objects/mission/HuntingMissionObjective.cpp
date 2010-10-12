@@ -187,8 +187,6 @@ HuntingMissionObjectiveImplementation::HuntingMissionObjectiveImplementation(Mis
 }
 
 void HuntingMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/HuntingMissionObjective.idl(67):  		Logger.info("deleting from memory", true);
-	Logger::info("deleting from memory", true);
 }
 
 void HuntingMissionObjectiveImplementation::initializeTransientMembers() {

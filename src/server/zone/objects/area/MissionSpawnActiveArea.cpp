@@ -141,8 +141,6 @@ MissionSpawnActiveAreaImplementation::MissionSpawnActiveAreaImplementation() {
 }
 
 void MissionSpawnActiveAreaImplementation::notifyEnter(SceneObject* player) {
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(63):  		Logger.info("notifyEnter mission spawn", true);
-	Logger::info("notifyEnter mission spawn", true);
 	// server/zone/objects/area/MissionSpawnActiveArea.idl(65):  
 	if (!player->isPlayerCreature()){
 	// server/zone/objects/area/MissionSpawnActiveArea.idl(66):  			return;

@@ -53,8 +53,11 @@
 
 //#include "../zone/objects/tangible/attachment/Attachment.h"
 
+class StatusHandler;
+
 class StatusServer: public StreamServiceThread {
 	ZoneServer* zoneServer;
+	StatusHandler* statusHandler;
 
 	ConfigManager* configManager;
 

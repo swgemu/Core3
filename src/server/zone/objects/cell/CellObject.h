@@ -52,6 +52,8 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
+
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
@@ -59,6 +61,10 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void resetCurrentNumerOfPlayerItems();
+
+	int getCurrentNumerOfPlayerItems();
 
 	int getCellNumber();
 
@@ -94,6 +100,8 @@ class CellObjectImplementation : public SceneObjectImplementation {
 protected:
 	int cellNumber;
 
+	int currentNumberOfItems;
+
 public:
 	CellObjectImplementation();
 
@@ -103,6 +111,8 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
+
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
@@ -111,7 +121,9 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void finalize();
+	void resetCurrentNumerOfPlayerItems();
+
+	int getCurrentNumerOfPlayerItems();
 
 	int getCellNumber();
 
@@ -126,6 +138,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~CellObjectImplementation();
+
+	void finalize();
 
 	void _initializeImplementation();
 
@@ -158,6 +172,8 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
+	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
+
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient);
 
 	bool removeObject(SceneObject* object, bool notifyClient);
@@ -166,7 +182,9 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void finalize();
+	void resetCurrentNumerOfPlayerItems();
+
+	int getCurrentNumerOfPlayerItems();
 
 	int getCellNumber();
 
@@ -174,6 +192,8 @@ public:
 
 	bool isCellObject();
 
+protected:
+	String _param2_canAddObject__SceneObject_int_String_;
 };
 
 class CellObjectHelper : public DistributedObjectClassHelper, public Singleton<CellObjectHelper> {

@@ -704,12 +704,16 @@ void SuiManager::handleStartDancing(uint32 boxID, PlayerCreature* player, uint32
 
 	SuiListBox* listBox = (SuiListBox*) sui.get();
 
-	String item = listBox->getMenuItemName(id);
+	try {
+		String item = listBox->getMenuItemName(id);
 
-	if (!change)
-		player->executeObjectControllerAction(String("startdance").hashCode(), 0, item);
-	else
-		player->executeObjectControllerAction(String("changedance").hashCode(), 0, item);
+		if (!change)
+			player->executeObjectControllerAction(String("startdance").hashCode(), 0, item);
+		else
+			player->executeObjectControllerAction(String("changedance").hashCode(), 0, item);
+	} catch (...) {
+
+	}
 }
 
 void SuiManager::handleSurveyToolRange(uint32 boxID, PlayerCreature* player, uint32 cancel, int range) {
@@ -1514,7 +1518,7 @@ void SuiManager::handleCloneRequest(uint32 boxID, PlayerCreature* player, uint32
 		return;
 	}
 
-	info("activating sui cloner option", true);
+	info("activating sui cloner option");
 
 	ZoneServer* zoneServer = server->getZoneServer();
 	PlayerManager* playerManager = zoneServer->getPlayerManager();

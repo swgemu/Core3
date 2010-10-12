@@ -109,7 +109,7 @@ bool ShuttleInstallationImplementation::checkRequisitesForPlacement(PlayerCreatu
 }
 
 void ShuttleInstallationImplementation::despawnShuttleObjects() {
-	if (zone == NULL)
+	if (zone == NULL || getActiveRegion() == NULL)
 		return;
 
 	String shuttleName = getActiveRegion()->getCustomObjectName().toString();

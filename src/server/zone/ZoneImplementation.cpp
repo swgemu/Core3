@@ -43,31 +43,12 @@ which carries forward this exception.
 */
 
 #include "Zone.h"
-//#include "ZoneServer.h"
-
-/*#include "managers/creature/CreatureManager.h"
-#include "managers/creature/CreatureManagerImplementation.h"
-
-#include "managers/combat/CombatManager.h"
-
-#include "managers/planet/PlanetManager.h"
-#include "managers/planet/PlanetManagerImplementation.h"
-
-#include "../chat/ChatManager.h"
-
-#include "objects/scene/SceneObject.h"
-
-#include "objects/creature/Creature.h"*/
-
-
-//#include "ZoneImplementation.h"
-
 #include "objects/terrain/PlanetNames.h"
 
 #include "ZoneProcessServerImplementation.h"
 #include "objects/scene/SceneObject.h"
-#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -101,6 +82,10 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 
 void ZoneImplementation::initializePrivateData() {
 	planetManager = new PlanetManager(_this, processor);
+
+	creatureManager = new CreatureManager(_this, processor);
+	creatureManager->deploy("CreatureManager", zoneID);
+
 	cityManager = new CityManager(_this);
 }
 
@@ -141,8 +126,7 @@ void ZoneImplementation::startManagers() {
 		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 	}
 
-	creatureManager = new CreatureManager(_this, processor);
-	creatureManager->deploy("CreatureManager", zoneID);
+
 
 	//planetManager = new PlanetManager(_this, processor);
 	planetManager->initialize();
