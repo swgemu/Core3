@@ -60,6 +60,12 @@ class CityHallObject extends BuildingObject {
 	protected SortedVector<unsigned long> declaredCitizens;
 	
 	@dereferenced
+	protected SortedVector<unsigned long> militiaMembers;
+	
+	@dereferenced
+	protected SortedVector<unsigned long> bannedPlayers;
+	
+	@dereferenced
 	protected VectorMap<unsigned long, StructureObject> cityStructures;
 	
 	@dereferenced
@@ -108,6 +114,12 @@ class CityHallObject extends BuildingObject {
 		
 		cityStructures.setInsertPlan(3);
 		cityStructures.setNullValue(null);
+		
+		militiaMembers.setInsertPlan(3);
+
+		declaredCitizens.setInsertPlan(3);
+		
+		bannedPlayers.setInsertPlan(3);
 	}
 	
 	/**
@@ -158,6 +170,7 @@ class CityHallObject extends BuildingObject {
 	public native void sendChangeCityNameTo(PlayerCreature player);
 	public native void sendEnableZoningTo(PlayerCreature player);
 	public native void sendManageMilitiaTo(PlayerCreature player);
+	public native void sendAddMilitiaMemberTo(PlayerCreature player);
 	public native void sendAdjustTaxesTo(PlayerCreature player);
 	public native void sendTreasuryDepositTo(PlayerCreature player);
 	public native void sendTreasuryWithdrawalTo(PlayerCreature player);
@@ -209,6 +222,18 @@ class CityHallObject extends BuildingObject {
 		return playerID == mayorObjectID;
 	}
 	
+	public boolean isBanned(unsigned long playerID) {
+		return bannedPlayers.contains(playerID);
+	}
+	
+	public void addBannedPlayer(unsigned long playerID) {
+		bannedPlayers.put(playerID);
+	}
+	
+	public void removeBannedPlayer(unsigned long playerID) {
+		bannedPlayers.drop(playerID);
+	}
+	
 	public CityTerminal getCityTerminal() {
 		return cityTerminal;
 	}
@@ -257,7 +282,7 @@ class CityHallObject extends BuildingObject {
 	}
 	
 	public void addCitizen(unsigned long playerID) {
-		declaredCitizens.add(playerID);
+		declaredCitizens.put(playerID);
 	}
 	
 	public void removeCitizen(unsigned long playerID) {
@@ -266,6 +291,18 @@ class CityHallObject extends BuildingObject {
 	
 	public boolean isCitizen(unsigned long playerID) {
 		return declaredCitizens.contains(playerID);
+	}
+	
+	public void addMilitiaMember(unsigned long playerID) {
+		militiaMembers.put(playerID);
+	}
+	
+	public void removeMilitiaMember(unsigned long playerID) {
+		militiaMembers.drop(playerID);
+	}
+	
+	public boolean isMilitiaMember(unsigned long playerID) {
+		return militiaMembers.contains(playerID);
 	}
 	
 	public unsigned long getCitizenObjectID(int idx) {

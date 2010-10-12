@@ -13,6 +13,9 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/building/city/CityHallObject.h"
 
 int TicketCollectorImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	// Pre: player wlocked
@@ -34,6 +37,20 @@ int TicketCollectorImplementation::handleObjectMenuSelect(PlayerCreature* player
 
 	String city = shuttle->getCity();
 	String planet = shuttle->getPlanet();
+
+	//Check to see if they have been city banned from travelling in this city.
+	ManagedReference<ActiveArea*> activeArea = getActiveRegion();
+
+	if (activeArea != NULL && activeArea->isRegion()) {
+		Region* region = (Region*) activeArea.get();
+
+		ManagedReference<CityHallObject*> city = region->getCityHall();
+
+		if (city != NULL && city->isBanned(player->getObjectID())) {
+			player->sendSystemMessage("@city/city:city_cant_board"); //You are banned from using the services of this city.\nYou may not board the transport.
+			return 0;
+		}
+	}
 
 	SceneObject* inventory = player->getSlottedObject("inventory");
 
