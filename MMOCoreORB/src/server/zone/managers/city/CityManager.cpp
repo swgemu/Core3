@@ -194,13 +194,45 @@ void CityManager::revokeCitizenship(CityHallObject* city, PlayerCreature* player
 		_implementation->revokeCitizenship(city, player, sendMail);
 }
 
-bool CityManager::checkCitiesCappedAtRank(byte rank) {
+void CityManager::addMilitiaMember(CityHallObject* city, PlayerCreature* player, const String& citizenName) {
 	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
+		method.addObjectParameter(city);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(citizenName);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addMilitiaMember(city, player, citizenName);
+}
+
+void CityManager::removeMilitiaMember(CityHallObject* city, PlayerCreature* player, unsigned long long playerID) {
+	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(city);
+		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(playerID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeMilitiaMember(city, player, playerID);
+}
+
+bool CityManager::checkCitiesCappedAtRank(byte rank) {
+	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addByteParameter(rank);
 
 		return method.executeWithBooleanReturn();
@@ -214,7 +246,7 @@ byte CityManager::getCitiesAllowed(byte rank) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addByteParameter(rank);
 
 		return method.executeWithByteReturn();
@@ -319,7 +351,7 @@ CityManagerImplementation::CityManagerImplementation(Zone* zne) {
 }
 
 byte CityManagerImplementation::getCitiesAllowed(byte rank) {
-	// server/zone/managers/city/CityManager.idl(177):  		return citiesAllowedPerRank.get(rank);
+	// server/zone/managers/city/CityManager.idl(197):  		return citiesAllowedPerRank.get(rank);
 	return (&citiesAllowedPerRank)->get(rank);
 }
 
@@ -365,9 +397,15 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		revokeCitizenship((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 16:
-		resp->insertBoolean(checkCitiesCappedAtRank(inv->getByteParameter()));
+		addMilitiaMember((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_addMilitiaMember__CityHallObject_PlayerCreature_String_));
 		break;
 	case 17:
+		removeMilitiaMember((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		break;
+	case 18:
+		resp->insertBoolean(checkCitiesCappedAtRank(inv->getByteParameter()));
+		break;
+	case 19:
 		resp->insertByte(getCitiesAllowed(inv->getByteParameter()));
 		break;
 	default:
@@ -415,6 +453,14 @@ void CityManagerAdapter::declareCitizenship(CityHallObject* city, PlayerCreature
 
 void CityManagerAdapter::revokeCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail) {
 	((CityManagerImplementation*) impl)->revokeCitizenship(city, player, sendMail);
+}
+
+void CityManagerAdapter::addMilitiaMember(CityHallObject* city, PlayerCreature* player, const String& citizenName) {
+	((CityManagerImplementation*) impl)->addMilitiaMember(city, player, citizenName);
+}
+
+void CityManagerAdapter::removeMilitiaMember(CityHallObject* city, PlayerCreature* player, unsigned long long playerID) {
+	((CityManagerImplementation*) impl)->removeMilitiaMember(city, player, playerID);
 }
 
 bool CityManagerAdapter::checkCitiesCappedAtRank(byte rank) {

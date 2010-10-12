@@ -153,6 +153,8 @@ public:
 	static const int CITY_CREATE = 123;
 	static const int CITY_ENABLEZONING = 124;
 	static const int CITY_SETNAME = 125;
+	static const int CITY_MILITIA = 126;
+	static const int CITY_ADDMILITIA = 127;
 };
 
 #endif /*SuiWindowType_H_*/

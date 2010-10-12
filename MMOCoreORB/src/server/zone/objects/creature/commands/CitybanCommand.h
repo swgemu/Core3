@@ -46,6 +46,9 @@ which carries forward this exception.
 #define CITYBANCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../building/city/CityHallObject.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/region/Region.h"
 
 class CitybanCommand : public QueueCommand {
 public:
@@ -60,8 +63,69 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+
+		ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isPlayerCreature())
+			return INVALIDTARGET;
+
+		PlayerCreature* targetPlayer = (PlayerCreature*) targetObject.get();
+
+		ManagedReference<ActiveArea*> activeRegion = player->getActiveRegion();
+
+		if (activeRegion == NULL || !activeRegion->isRegion())
+			return GENERALERROR;
+
+		Region* region = (Region*) activeRegion.get();
+
+		ManagedReference<CityHallObject*> cityHall = region->getCityHall();
+
+		if (cityHall == NULL)
+			return GENERALERROR;
+
+		Locker _locker(cityHall);
+
+		//Can't ban someone who's already been banned
+		if (cityHall->isBanned(target))
+			return GENERALERROR;
+
+		if (!cityHall->isMayor(player->getObjectID()) && !cityHall->isMilitiaMember(player->getObjectID())) {
+			player->sendSystemMessage("@city/city:not_militia"); //You must be a member of the city militia to use this command.
+			return GENERALERROR;
+		}
+
+		if (targetPlayer->getPlayerObject()->isPrivileged()) {
+			player->sendSystemMessage("@city/city:not_csr_ban"); //You cannot ban a Customer Service Representative from the city!
+
+			ParameterizedStringId params;
+			params.setStringId("@city/city:csr_ban_attempt_msg");
+			params.setTT(player);
+			params.setTO(cityHall->getCityName());
+			targetPlayer->sendSystemMessage(params); //%TT tried to /cityBan you from %TO!
+			return GENERALERROR;
+		}
+
+		if (cityHall->isCitizen(target)) {
+			player->sendSystemMessage("@city/city:not_citizen_ban"); //You can't city ban a citizen of the city!
+			return GENERALERROR;
+		}
+
+		cityHall->addBannedPlayer(target);
+		cityHall->updateToDatabaseWithoutChildren();
+
+		targetPlayer->sendSystemMessage("@city/city:city_banned"); //You have been banned from the this city.  You may no longer use any city services.
+
+		ParameterizedStringId params;
+		params.setStringId("@city/city:city_ban_done");
+		params.setTT(targetPlayer);
+		player->sendSystemMessage(params); //%TT has been banned from the city and is no longer able to access city services.
 
 		return SUCCESS;
 	}

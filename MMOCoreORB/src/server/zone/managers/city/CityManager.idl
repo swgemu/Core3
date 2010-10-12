@@ -164,6 +164,26 @@ class CityManager extends ManagedService implements Logger {
 	public native void revokeCitizenship(CityHallObject city, PlayerCreature player, boolean sendMail = true);
 	
 	/**
+	 * Adds an existing citizen to the rank of militia.
+	 * @pre: city locked, player locked, citizen unlocked, citizen must be online and in range.
+	 * @post: city locked, player locked, citizen unlocked
+	 * @param city The city too promote this citizen to militia of.
+	 * @param player The player doing the adding.
+	 * @param citizenName The citizen's first name being added.
+	 */
+	public native void addMilitiaMember(CityHallObject city, PlayerCreature player, final string citizenName);
+	
+	/**
+	 * Removes an existing militia member from the militia and makes them a citizen.
+	 * @pre: city locked, player locked, citizen unlocked, citizen must be online and in range.
+	 * @post: city locked, player locked, citizen unlocked
+	 * @param city The city too remove the citizen from the militia.
+	 * @param player The player doing the removing.
+	 * @param playerID The player object id of the player being removed.
+	 */
+	public native void removeMilitiaMember(CityHallObject city, PlayerCreature player, unsigned long playerID);
+	
+	/**
 	 * Checks to see if the planet's city cap has been reached at the particular rank.
 	 * @param rank The rank to check if is capped.
 	 */

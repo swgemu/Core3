@@ -253,6 +253,58 @@ void CityHallObjectImplementation::sendChangeCityNameTo(PlayerCreature* player) 
 }
 
 void CityHallObjectImplementation::sendManageMilitiaTo(PlayerCreature* player) {
+	if (!isMayor(player->getObjectID())) {
+		//Only the mayor can manage the militia.
+		return;
+	}
+
+	if (!player->hasSkillBox("social_politician_martial_01")) {
+		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
+		return;
+	}
+
+	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::CITY_MILITIA, SuiListBox::HANDLETHREEBUTTON);
+	listBox->setPromptTitle("@city/city:militia_t"); //Manage Militia
+	listBox->setPromptText("@city/city:militia_d"); //Below is a list of current city militia members.  These citizens have the ability to ban visitors from accessing city services as well as the ability to attack visitors for the purposes of law enforcement.  To add a new citizen to the militia select "Add Militia Member" and hit OK.  To remove someone from the militia, select their name and hit OK.
+	listBox->setOtherButton(true, "@city/city:militia_new_t"); //Add Militia Member
+	listBox->setCancelButton(true, "@cancel");
+	listBox->setUsingObject(_this);
+
+	for (int i = 0; i < militiaMembers.size(); ++i) {
+		uint64 playerid = militiaMembers.get(i);
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(playerid);
+
+		if (obj == NULL || !obj->isPlayerCreature())
+			return;
+
+		PlayerCreature* player = (PlayerCreature*) obj.get();
+
+		listBox->addMenuItem(player->getObjectName()->getDisplayedName(), playerid);
+	}
+
+	player->addSuiBox(listBox);
+	player->sendMessage(listBox->generateMessage());
+}
+
+void CityHallObjectImplementation::sendAddMilitiaMemberTo(PlayerCreature* player) {
+	if (!isMayor(player->getObjectID())) {
+		//Only the mayor can manage the militia.
+		return;
+	}
+
+	if (!player->hasSkillBox("social_politician_martial_01")) {
+		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
+		return;
+	}
+
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::CITY_ADDMILITIA);
+	inputBox->setPromptTitle("@city/city:militia_new_t"); //Add Militia Member
+	inputBox->setPromptText("@city/city:militia_new_d"); //Enter the name of the person you wish to add to the militia (the name must be entered exactly as it appears in game).  In order to join the city militia, the player must be a citizen of this city and must be standing near the city management terminal.
+	inputBox->setUsingObject(_this);
+	inputBox->setCancelButton(true, "@cancel");
+
+	player->addSuiBox(inputBox);
+	player->sendMessage(inputBox->generateMessage());
 }
 
 void CityHallObjectImplementation::sendAdjustTaxesTo(PlayerCreature* player) {

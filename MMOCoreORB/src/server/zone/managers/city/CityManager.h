@@ -120,6 +120,10 @@ public:
 
 	void revokeCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail = true);
 
+	void addMilitiaMember(CityHallObject* city, PlayerCreature* player, const String& citizenName);
+
+	void removeMilitiaMember(CityHallObject* city, PlayerCreature* player, unsigned long long playerID);
+
 	bool checkCitiesCappedAtRank(byte rank);
 
 	byte getCitiesAllowed(byte rank);
@@ -206,6 +210,10 @@ public:
 
 	void revokeCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail = true);
 
+	void addMilitiaMember(CityHallObject* city, PlayerCreature* player, const String& citizenName);
+
+	void removeMilitiaMember(CityHallObject* city, PlayerCreature* player, unsigned long long playerID);
+
 	bool checkCitiesCappedAtRank(byte rank);
 
 	byte getCitiesAllowed(byte rank);
@@ -269,6 +277,10 @@ public:
 
 	void revokeCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail);
 
+	void addMilitiaMember(CityHallObject* city, PlayerCreature* player, const String& citizenName);
+
+	void removeMilitiaMember(CityHallObject* city, PlayerCreature* player, unsigned long long playerID);
+
 	bool checkCitiesCappedAtRank(byte rank);
 
 	byte getCitiesAllowed(byte rank);
@@ -277,6 +289,7 @@ protected:
 	String _param2_createNewCity__CityHallObject_PlayerCreature_String_;
 	String _param2_changeCityName__CityHallObject_PlayerCreature_String_;
 	String _param0_validateCityName__String_;
+	String _param2_addMilitiaMember__CityHallObject_PlayerCreature_String_;
 };
 
 class CityManagerHelper : public DistributedObjectClassHelper, public Singleton<CityManagerHelper> {

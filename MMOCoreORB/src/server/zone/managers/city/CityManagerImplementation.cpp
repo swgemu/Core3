@@ -11,6 +11,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/objects/region/Region.h"
 
@@ -398,4 +399,76 @@ bool CityManagerImplementation::checkCitiesCappedAtRank(uint8 rank) {
 	}
 
 	return getCitiesAllowed(rank) <= totalCitiesAtRank;
+}
+
+void CityManagerImplementation::addMilitiaMember(CityHallObject* city, PlayerCreature* player, const String& citizenName) {
+	if (!city->isMayor(player->getObjectID())) {
+		//Only the mayor can manage the militia.
+		return;
+	}
+
+	if (!player->hasSkillBox("social_politician_martial_01")) {
+		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
+		return;
+	}
+
+	ManagedReference<PlayerManager*> playerManager = zone->getZoneServer()->getPlayerManager();
+
+	if (playerManager == NULL)
+		return;
+
+	ManagedReference<PlayerCreature*> citizen = playerManager->getPlayer(citizenName);
+
+	if (citizen == NULL)
+		return;
+
+	Locker _lock(citizen);
+
+	if (!city->isCitizen(citizen->getObjectID())) {
+		player->sendSystemMessage("@city/city:not_citizen"); //That player must be a citizen to join the city militia.
+		return;
+	}
+
+	if (!citizen->isOnline() || !citizen->isInRange(player, 32))
+		return;
+
+	//Citizen is eligible to be militia
+	city->addMilitiaMember(citizen->getObjectID()); //Add them to the milita list.
+
+	player->sendSystemMessage("@city/city:added_militia"); //The player has been successfully added to the city militia.
+	citizen->sendSystemMessage("@city/city:added_militia_target"); //You have been added to the city militia.
+
+	city->updateToDatabaseWithoutChildren();
+}
+
+void CityManagerImplementation::removeMilitiaMember(CityHallObject* city, PlayerCreature* player, uint64 playerID) {
+	if (!city->isMayor(player->getObjectID())) {
+		//Only the mayor can manage the militia.
+		return;
+	}
+
+	if (!player->hasSkillBox("social_politician_martial_01")) {
+		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
+		return;
+	}
+
+	if (!city->isMilitiaMember(playerID))
+		return;
+
+	//Citizen is eligible to be removed from the militia
+	city->removeMilitiaMember(playerID); //Remove them from the milita list.
+
+	city->updateToDatabaseWithoutChildren();
+
+	player->sendSystemMessage("@city/city:removed_militia"); //The player has been successfully removed from the city militia.
+
+	ManagedReference<SceneObject*> obj = zone->getZoneServer()->getObject(playerID);
+
+	if (obj == NULL || !obj->isPlayerCreature())
+		return;
+
+	PlayerCreature* citizen = (PlayerCreature*) obj.get();
+
+	if (citizen->isOnline())
+		citizen->sendSystemMessage("@city/city:removed_militia_target"); //You have been removed from the city militia.
 }

@@ -339,8 +339,14 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::CITY_ENABLEZONING:
 		handleCityEnableZoning(boxID, player, cancel, atoi(value));
 		break;
+	case SuiWindowType::CITY_MILITIA:
+		handleManageMilitia(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
+		break;
+	case SuiWindowType::CITY_ADDMILITIA:
+		handleAddMilitia(boxID, player, cancel, value);
 	case SuiWindowType::COMMAND_FIND:
 		handleFindCommand(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
 	default:
 		//Clean up players sui box:
 
@@ -2711,7 +2717,7 @@ void SuiManager::handleStructureDestroyConfirm(uint32 boxID, PlayerCreature* pla
 
 	player->removeSuiBox(boxID);
 
-	if (!box->isListBox())
+	if (!box->isListBox() || cancel > 0)
 		return;
 
 	SuiListBox* listBox = (SuiListBox*) box.get();
@@ -2738,7 +2744,7 @@ void SuiManager::handleStructureDestroyCode(uint32 boxID, PlayerCreature* player
 
 	player->removeSuiBox(boxID);
 
-	if (!box->isInputBox())
+	if (!box->isInputBox() || cancel > 0)
 		return;
 
 	SuiInputBox* inputBox = (SuiInputBox*) box.get();
@@ -2900,6 +2906,92 @@ void SuiManager::handleCreateCity(int boxID, PlayerCreature* player, int cancel,
 		player->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
 	}
+}
+
+void SuiManager::handleManageMilitia(int boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
+	Locker _locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+
+	if (!box->isListBox() || cancel > 0)
+		return;
+
+	SuiListBox* listBox = (SuiListBox*) box.get();
+
+	ManagedReference<SceneObject*> obj = listBox->getUsingObject();
+
+	if (obj == NULL || !obj->isBuildingObject())
+		return;
+
+	BuildingObject* building = (BuildingObject*) obj.get();
+
+	if (!building->isCityHallBuilding())
+		return;
+
+	CityHallObject* city = (CityHallObject*) building;
+
+	Locker _cityLock(city, player);
+
+	ManagedReference<Zone*> zone = city->getZone();
+
+	if (zone == NULL)
+		return;
+
+	if (otherPressed) {
+		city->sendAddMilitiaMemberTo(player);
+	} else {
+		if (index != -1) {
+			ManagedReference<CityManager*> cityManager = zone->getCityManager();
+
+			uint64 playerID = listBox->getMenuObjectID(index);
+
+			cityManager->removeMilitiaMember(city, player, playerID);
+		}
+	}
+}
+
+void SuiManager::handleAddMilitia(int boxID, PlayerCreature* player, uint32 cancel, const String& name) {
+	Locker _locker(player);
+
+	if (!player->hasSuiBox(boxID))
+		return;
+
+	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
+
+	player->removeSuiBox(boxID);
+
+	if (!box->isInputBox() || cancel > 0)
+		return;
+
+	SuiInputBox* inputBox = (SuiInputBox*) box.get();
+
+	ManagedReference<SceneObject*> obj = inputBox->getUsingObject();
+
+	if (obj == NULL || !obj->isBuildingObject())
+		return;
+
+	BuildingObject* building = (BuildingObject*) obj.get();
+
+	if (!building->isCityHallBuilding())
+		return;
+
+	CityHallObject* city = (CityHallObject*) building;
+
+	Locker _cityLock(city, player);
+
+	ManagedReference<Zone*> zone = city->getZone();
+
+	if (zone == NULL)
+		return;
+
+	ManagedReference<CityManager*> cityManager = zone->getCityManager();
+
+	cityManager->addMilitiaMember(city, player, name);
 }
 
 void SuiManager::handleFindCommand(int boxID, PlayerCreature* player, uint32 cancel, int value) {
