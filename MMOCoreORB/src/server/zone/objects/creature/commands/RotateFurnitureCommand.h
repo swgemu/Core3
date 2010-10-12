@@ -108,17 +108,17 @@ public:
 			return false;
 		}
 
-		creature->info(String::valueOf(obj->getDirection()->getDegrees()), true);
+		//creature->info(String::valueOf(obj->getDirection()->getDegrees()), true);
 
 		if (dir == "right") {
-			creature->info("Rotating object " + String::valueOf(-degrees) + " degrees.", true);
+			//creature->info("Rotating object " + String::valueOf(-degrees) + " degrees.", true);
 			obj->rotate(-degrees);
 		} else {
-			creature->info("Rotating object " + String::valueOf(degrees) + " degrees.", true);
+			//creature->info("Rotating object " + String::valueOf(degrees) + " degrees.", true);
 			obj->rotate(degrees);
 		}
 
-		creature->info(String::valueOf(obj->getDirection()->getDegrees()), true);
+		//creature->info(String::valueOf(obj->getDirection()->getDegrees()), true);
 
 		if (obj->getParent() != NULL)
 			obj->updateZoneWithParent(obj->getParent(), true);

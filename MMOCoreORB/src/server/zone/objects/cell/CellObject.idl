@@ -53,10 +53,14 @@ import server.zone.templates.SharedObjectTemplate;
 class CellObject extends SceneObject {
 	protected int cellNumber;
 	
+	protected int currentNumberOfItems;
+	
 	public CellObject() {
 		Logger.setLoggingName("CellObject");
 
 		cellNumber = 0;
+		
+		currentNumberOfItems = 0;
 	}
 	
 	@local
@@ -69,6 +73,16 @@ class CellObject extends SceneObject {
 	 * @param player SceneObject that will receive the objects 
 	 */
 	public native void sendContainerObjectsTo(SceneObject player);
+	
+	/**
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
+	 * @return returns 0 on success, or error code
+	 */
+	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 	
 	/**
 	 * Tries to add/link object
@@ -104,7 +118,12 @@ class CellObject extends SceneObject {
 	
 	public native void sendBaselinesTo(SceneObject player);
 	
-	public void finalize() {
+	public void resetCurrentNumerOfPlayerItems() {
+		currentNumberOfItems = 0;
+	}
+	
+	public int getCurrentNumerOfPlayerItems() {
+		return currentNumberOfItems;
 	}
 	
 	public int getCellNumber() {

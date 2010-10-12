@@ -67,6 +67,9 @@ CommandConfigManager::CommandConfigManager(ZoneProcessServerImplementation* serv
 void CommandConfigManager::registerSpecialCommands() {
 	QueueCommand* admin = new QueueCommand("admin", server);
 	slashCommands->put(admin);
+
+	QueueCommand* req = new RequestQuestTimersAndCountersCommand("requestquesttimersandcounters", server);
+	slashCommands->put(req);
 }
 
 void CommandConfigManager::registerFunctions() {

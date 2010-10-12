@@ -512,8 +512,8 @@ void MissionManagerImplementation::randomizeDeliverMission(PlayerCreature* playe
 		return;
 	}
 
-	SceneObject* target = missionNpcs->getRandomTarget(player, 1);
-	SceneObject* targetDest = missionNpcs->getRandomTarget(player, 1);
+	ManagedReference<SceneObject*> target = missionNpcs->getRandomTarget(player, 1);
+	ManagedReference<SceneObject*> targetDest = missionNpcs->getRandomTarget(player, 1);
 
 	if (target == NULL || targetDest == NULL || target == targetDest) {
 		mission->setTypeCRC(0);
@@ -615,7 +615,7 @@ void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* playe
 	// TODO: randomize difficulty (weighted by what?) once more missions are in the db
 	HuntingTargetEntry* entry = pmng->getHuntingTargetTemplate(1);
 	if (entry == NULL) {
-		System::out << "NULL Hunting entry!" << endl;
+		//System::out << "NULL Hunting entry!" << endl;
 		mission->setTypeCRC(0);
 		return;
 	}
@@ -650,7 +650,7 @@ void MissionManagerImplementation::randomizeReconMission(PlayerCreature* player,
 
 	MissionTargetMap* reconlocs = pmng->getReconLocs();
 	if (reconlocs->size() <= 0) {
-		System::out << "No recon locations!" << endl;
+		//System::out << "No recon locations!" << endl;
 		mission->setTypeCRC(0);
 		return;
 	}

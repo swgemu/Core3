@@ -211,8 +211,6 @@ BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(Missi
 }
 
 void BountyMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/BountyMissionObjective.idl(70):  		Logger.info("deleting from memory", true);
-	Logger::info("deleting from memory", true);
 }
 
 void BountyMissionObjectiveImplementation::initializeTransientMembers() {

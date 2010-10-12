@@ -21,7 +21,7 @@ public:
 		templateSecondary = "";
 	}
 
-	HuntingTargetEntry(String temp1, String temp2) {
+	HuntingTargetEntry(const String& temp1, const String& temp2) {
 		templatePrimary = temp1;
 		templateSecondary = temp2;
 	}

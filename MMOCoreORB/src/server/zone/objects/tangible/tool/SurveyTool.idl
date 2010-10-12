@@ -90,6 +90,8 @@ class SurveyTool extends ToolTangibleObject {
 		radioactiveOk = false;
 		range = 0;
 		doGamble = false;
+		points = 0;
+		points = 0;
 		richSampleLocation = null;
 	}
 	

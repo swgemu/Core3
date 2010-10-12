@@ -65,6 +65,7 @@ public:
 		optional = option;
 
 		setLoggingName("ComponentSlot");
+		setLogging(false);
 
 	}
 

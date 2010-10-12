@@ -112,6 +112,9 @@ void CityHallObjectImplementation::despawnCityHallObjects() {
 bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
 	Zone* zone = player->getZone();
 
+	if (zone == NULL)
+		return false;
+
 	if (!player->hasSkillBox("social_politician_novice")) {
 		player->sendSystemMessage("@player_structure:place_cityhall"); //You must be at least a Novice Politician to place a City Hall.
 		return false;
@@ -137,6 +140,15 @@ bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* p
 
 		return false;
 	}
+
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+	if (planetManager == NULL || planetManager->getNumberOfCities() > 20) {
+		player->sendSystemMessage("Planet has reached the city number limit");
+		return false;
+	}
+
+	planetManager->increaseNumberOfCities();
 
 	return true;
 }

@@ -191,8 +191,8 @@ VehicleControlDeviceImplementation::VehicleControlDeviceImplementation() {
 }
 
 int VehicleControlDeviceImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/intangible/VehicleControlDevice.idl(71):  		Logger.info("selected call", true);
-	Logger::info("selected call", true);
+	// server/zone/objects/intangible/VehicleControlDevice.idl(71):  		Logger.info("selected call");
+	Logger::info("selected call");
 	// server/zone/objects/intangible/VehicleControlDevice.idl(73):  
 	if (selectedID == RadialOptions::VEHICLE_GENERATE){
 	// server/zone/objects/intangible/VehicleControlDevice.idl(75):  

@@ -52,6 +52,7 @@ public:
 
 	IngredientSlots() {
 		setLoggingName("IngredientSlots");
+		setLogging(false);
 	}
 
 	~IngredientSlots() {

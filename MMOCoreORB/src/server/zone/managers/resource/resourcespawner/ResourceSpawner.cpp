@@ -423,6 +423,12 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 	int toolRange = surveyTool->getRange();
 	int points = surveyTool->getPoints();
 
+	if (toolRange > 384 || toolRange < 0)
+		toolRange = 384;
+
+	if (points <= 0 || points > 6)
+		points =  3;
+
 	float spacer = float(toolRange) / float(points - 1);
 
 	float posX = player->getPositionX() - (((points - 1) / 2.0f) * spacer);

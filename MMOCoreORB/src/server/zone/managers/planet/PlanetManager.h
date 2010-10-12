@@ -196,6 +196,10 @@ public:
 
 	int getRegionCount();
 
+	int getNumberOfCities();
+
+	void increaseNumberOfCities();
+
 	Region* getRegion(int index);
 
 	void addRegion(Region* region);
@@ -255,6 +259,8 @@ protected:
 	RegionMap regionMap;
 
 	ManagedReference<StructureManager* > structureManager;
+
+	int numberOfCities;
 
 	ZoneProcessServerImplementation* server;
 
@@ -324,6 +330,10 @@ public:
 	Region* getRegion(float x, float y);
 
 	int getRegionCount();
+
+	int getNumberOfCities();
+
+	void increaseNumberOfCities();
 
 	Region* getRegion(int index);
 
@@ -427,6 +437,10 @@ public:
 	Region* getRegion(float x, float y);
 
 	int getRegionCount();
+
+	int getNumberOfCities();
+
+	void increaseNumberOfCities();
 
 	Region* getRegion(int index);
 

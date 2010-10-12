@@ -106,6 +106,7 @@ public:
 
 		type = t;
 		requiredQuantity = q;
+		setLogging(false);
 	}
 
 	~IngredientSlot(){

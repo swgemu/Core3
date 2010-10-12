@@ -108,7 +108,7 @@ public:
 	}
 
 	inline CharacterBuilderMenuNode* getChildNodeAt(int index) {
-		if (childNodes.size() < index || index < 0)
+		if (childNodes.size() < index + 1 || index < 0)
 			return NULL;
 
 		return childNodes.get(index);

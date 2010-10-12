@@ -17,7 +17,7 @@ public:
 		setNoDuplicateInsertPlan();
 	}
 
-	void addTarget(String temp1, String temp2, int lev) {
+	void addTarget(const String& temp1, const String& temp2, int lev) {
 		if (lev <= 0)
 			return;
 
@@ -42,7 +42,7 @@ public:
 	HuntingTargetEntry* getRandomTarget(int lev) {
 		HuntingTargetEntry* result = NULL;
 
-		rlock();
+		//rlock();
 
 		int idx = this->find(lev);
 
@@ -53,7 +53,7 @@ public:
 				result = &vector->get(System::random(vector->size() - 1));
 		}
 
-		runlock();
+		//runlock();
 
 		return result;
 	}

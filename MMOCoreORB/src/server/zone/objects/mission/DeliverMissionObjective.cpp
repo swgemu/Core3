@@ -253,8 +253,6 @@ DeliverMissionObjectiveImplementation::DeliverMissionObjectiveImplementation(Mis
 }
 
 void DeliverMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/DeliverMissionObjective.idl(75):  		Logger.info("deleting from memory", true);
-	Logger::info("deleting from memory", true);
 }
 
 void DeliverMissionObjectiveImplementation::initializeTransientMembers() {

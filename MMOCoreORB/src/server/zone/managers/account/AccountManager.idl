@@ -18,7 +18,7 @@ class AccountManager extends ManagedObject implements Logger {
 	
 	public AccountManager(ZoneServer zserv) {
 		Logger.setLoggingName("AccountManager");
-		Logger.setLogging(true);
+		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		
 		accountMap.setNullValue(null);

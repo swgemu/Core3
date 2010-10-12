@@ -11,6 +11,7 @@
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "GenericResponse.h"
+#include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
 
 
 class EmptyHopperCallback : public MessageCallback {
@@ -45,6 +46,9 @@ public:
 
 		if (object == NULL || !object->isInstallationObject())
 			player->error("not parsing right");
+
+		GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
+		player->sendMessage(gr);
 
 		InstallationObject* inso = (InstallationObject*) object.get();
 
@@ -97,19 +101,16 @@ public:
 				if (!inventory->hasFullContainerObjects()) {
 					container->split(quantity, player);
 					harvester->updateResourceContainerQuantity(container, container->getQuantity(), true);
-
 				} else {
 					ParameterizedStringId stringId("error_message", "inv_full");
 					player->sendSystemMessage(stringId);
 				}
 			}
 
-			GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
-			player->sendMessage(gr);
-
 			inventory->updateToDatabaseAllObjects(false);
 			harvester->updateToDatabaseAllObjects(false);
 
+			harvester->broadcastToOperators(new HarvesterObjectMessage7(harvester));
 
 		} catch (...) {
 			player->error("unreported exception caught in EmptyHopperCallback::run");

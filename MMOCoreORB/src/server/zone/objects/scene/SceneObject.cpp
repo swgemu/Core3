@@ -2429,13 +2429,27 @@ bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
 		return _implementation->hasObjectInContainer(objectID);
 }
 
-SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
+bool SceneObject::hasObjectInSlottedContainer(SceneObject* object) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 165);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasObjectInSlottedContainer(object);
+}
+
+SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 166);
 		method.addUnsignedLongParameter(objectID);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -2449,7 +2463,7 @@ unsigned int SceneObject::getPlanetCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 166);
+		DistributedMethod method(this, 167);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2462,7 +2476,7 @@ bool SceneObject::isStaticObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 167);
+		DistributedMethod method(this, 168);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2475,7 +2489,7 @@ bool SceneObject::isContainerOject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 168);
+		DistributedMethod method(this, 169);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2488,7 +2502,7 @@ bool SceneObject::isTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 169);
+		DistributedMethod method(this, 170);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2501,7 +2515,7 @@ bool SceneObject::isControlDevice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 170);
+		DistributedMethod method(this, 171);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2514,7 +2528,7 @@ bool SceneObject::isMissionTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 171);
+		DistributedMethod method(this, 172);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2527,7 +2541,7 @@ bool SceneObject::isMissionObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 172);
+		DistributedMethod method(this, 173);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2549,7 +2563,7 @@ ActiveArea* SceneObject::getActiveRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 173);
+		DistributedMethod method(this, 174);
 
 		return (ActiveArea*) method.executeWithObjectReturn();
 	} else
@@ -2562,7 +2576,7 @@ bool SceneObject::hasActiveArea(ActiveArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 174);
+		DistributedMethod method(this, 175);
 		method.addObjectParameter(area);
 
 		return method.executeWithBooleanReturn();
@@ -2576,7 +2590,7 @@ int SceneObject::getMapLocationsType1() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 175);
+		DistributedMethod method(this, 176);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2589,7 +2603,7 @@ int SceneObject::getMapLocationsType2() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 176);
+		DistributedMethod method(this, 177);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2602,7 +2616,7 @@ int SceneObject::getMapLocationsType3() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 177);
+		DistributedMethod method(this, 178);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2615,7 +2629,7 @@ void SceneObject::createChildObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 178);
+		DistributedMethod method(this, 179);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3345,81 +3359,103 @@ bool SceneObjectImplementation::hasObjectInContainer(unsigned long long objectID
 	return (&containerObjects)->contains(objectID);
 }
 
+bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object) {
+	// server/zone/objects/scene/SceneObject.idl(1444):  		int arrangementSize = object.getArrangementDescriptorSize();
+	int arrangementSize = object->getArrangementDescriptorSize();
+	// server/zone/objects/scene/SceneObject.idl(1446):  		SceneObject 
+	if (arrangementSize == 0){
+	// server/zone/objects/scene/SceneObject.idl(1447):  			return false;
+	return false;
+}
+	// server/zone/objects/scene/SceneObject.idl(1450):  obj = slottedObjects.get(object.getArrangementDescriptor(0));
+	SceneObject* obj = (&slottedObjects)->get(object->getArrangementDescriptor(0));
+	// server/zone/objects/scene/SceneObject.idl(1452):  
+	if (object == obj){
+	// server/zone/objects/scene/SceneObject.idl(1453):  			return true;
+	return true;
+}
+
+	else {
+	// server/zone/objects/scene/SceneObject.idl(1455):  			return false;
+	return false;
+}
+}
+
 SceneObject* SceneObjectImplementation::getContainerObject(unsigned long long objectID) {
-	// server/zone/objects/scene/SceneObject.idl(1444):  		return containerObjects.get(objectID);
+	// server/zone/objects/scene/SceneObject.idl(1460):  		return containerObjects.get(objectID);
 	return (&containerObjects)->get(objectID);
 }
 
 bool SceneObjectImplementation::isStaticObject() {
-	// server/zone/objects/scene/SceneObject.idl(1450):  		return staticObject;
+	// server/zone/objects/scene/SceneObject.idl(1466):  		return staticObject;
 	return staticObject;
 }
 
 bool SceneObjectImplementation::isContainerOject() {
-	// server/zone/objects/scene/SceneObject.idl(1454):  		return false;
-	return false;
-}
-
-bool SceneObjectImplementation::isTerminal() {
-	// server/zone/objects/scene/SceneObject.idl(1458):  		return false;
-	return false;
-}
-
-bool SceneObjectImplementation::isControlDevice() {
-	// server/zone/objects/scene/SceneObject.idl(1462):  		return false;
-	return false;
-}
-
-bool SceneObjectImplementation::isMissionTerminal() {
-	// server/zone/objects/scene/SceneObject.idl(1466):  		return false;
-	return false;
-}
-
-bool SceneObjectImplementation::isMissionObject() {
 	// server/zone/objects/scene/SceneObject.idl(1470):  		return false;
 	return false;
 }
 
+bool SceneObjectImplementation::isTerminal() {
+	// server/zone/objects/scene/SceneObject.idl(1474):  		return false;
+	return false;
+}
+
+bool SceneObjectImplementation::isControlDevice() {
+	// server/zone/objects/scene/SceneObject.idl(1478):  		return false;
+	return false;
+}
+
+bool SceneObjectImplementation::isMissionTerminal() {
+	// server/zone/objects/scene/SceneObject.idl(1482):  		return false;
+	return false;
+}
+
+bool SceneObjectImplementation::isMissionObject() {
+	// server/zone/objects/scene/SceneObject.idl(1486):  		return false;
+	return false;
+}
+
 Vector<ManagedReference<ActiveArea* > >* SceneObjectImplementation::getActiveAreas() {
-	// server/zone/objects/scene/SceneObject.idl(1475):  		return activeAreas;
+	// server/zone/objects/scene/SceneObject.idl(1491):  		return activeAreas;
 	return (&activeAreas);
 }
 
 ActiveArea* SceneObjectImplementation::getActiveRegion() {
-	// server/zone/objects/scene/SceneObject.idl(1479):  
-	for (	// server/zone/objects/scene/SceneObject.idl(1479):  		for (int i = 0;
+	// server/zone/objects/scene/SceneObject.idl(1495):  
+	for (	// server/zone/objects/scene/SceneObject.idl(1495):  		for (int i = 0;
 	int i = 0;
 	i < (&activeAreas)->size();
 i ++) {
-	// server/zone/objects/scene/SceneObject.idl(1480):  			ActiveArea region = activeAreas.get(i);
+	// server/zone/objects/scene/SceneObject.idl(1496):  			ActiveArea region = activeAreas.get(i);
 	ActiveArea* region = (&activeAreas)->get(i);
-	// server/zone/objects/scene/SceneObject.idl(1482):  		}
+	// server/zone/objects/scene/SceneObject.idl(1498):  		}
 	if (region->isRegion()){
-	// server/zone/objects/scene/SceneObject.idl(1483):  				return region;
+	// server/zone/objects/scene/SceneObject.idl(1499):  				return region;
 	return region;
 }
 }
-	// server/zone/objects/scene/SceneObject.idl(1487):  		return null;
+	// server/zone/objects/scene/SceneObject.idl(1503):  		return null;
 	return NULL;
 }
 
 bool SceneObjectImplementation::hasActiveArea(ActiveArea* area) {
-	// server/zone/objects/scene/SceneObject.idl(1491):  		return activeAreas.contains(area);
+	// server/zone/objects/scene/SceneObject.idl(1507):  		return activeAreas.contains(area);
 	return (&activeAreas)->contains(area);
 }
 
 int SceneObjectImplementation::getMapLocationsType1() {
-	// server/zone/objects/scene/SceneObject.idl(1495):  		return templateObject.getMapLocationsType1();
+	// server/zone/objects/scene/SceneObject.idl(1511):  		return templateObject.getMapLocationsType1();
 	return templateObject->getMapLocationsType1();
 }
 
 int SceneObjectImplementation::getMapLocationsType2() {
-	// server/zone/objects/scene/SceneObject.idl(1499):  		return templateObject.getMapLocationsType2();
+	// server/zone/objects/scene/SceneObject.idl(1515):  		return templateObject.getMapLocationsType2();
 	return templateObject->getMapLocationsType2();
 }
 
 int SceneObjectImplementation::getMapLocationsType3() {
-	// server/zone/objects/scene/SceneObject.idl(1503):  		return templateObject.getMapLocationsType3();
+	// server/zone/objects/scene/SceneObject.idl(1519):  		return templateObject.getMapLocationsType3();
 	return templateObject->getMapLocationsType3();
 }
 
@@ -3915,45 +3951,48 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(hasObjectInContainer(inv->getUnsignedLongParameter()));
 		break;
 	case 166:
-		resp->insertLong(getContainerObject(inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertBoolean(hasObjectInSlottedContainer((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 167:
-		resp->insertInt(getPlanetCRC());
+		resp->insertLong(getContainerObject(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 168:
-		resp->insertBoolean(isStaticObject());
+		resp->insertInt(getPlanetCRC());
 		break;
 	case 169:
-		resp->insertBoolean(isContainerOject());
+		resp->insertBoolean(isStaticObject());
 		break;
 	case 170:
-		resp->insertBoolean(isTerminal());
+		resp->insertBoolean(isContainerOject());
 		break;
 	case 171:
-		resp->insertBoolean(isControlDevice());
+		resp->insertBoolean(isTerminal());
 		break;
 	case 172:
-		resp->insertBoolean(isMissionTerminal());
+		resp->insertBoolean(isControlDevice());
 		break;
 	case 173:
-		resp->insertBoolean(isMissionObject());
+		resp->insertBoolean(isMissionTerminal());
 		break;
 	case 174:
-		resp->insertLong(getActiveRegion()->_getObjectID());
+		resp->insertBoolean(isMissionObject());
 		break;
 	case 175:
-		resp->insertBoolean(hasActiveArea((ActiveArea*) inv->getObjectParameter()));
+		resp->insertLong(getActiveRegion()->_getObjectID());
 		break;
 	case 176:
-		resp->insertSignedInt(getMapLocationsType1());
+		resp->insertBoolean(hasActiveArea((ActiveArea*) inv->getObjectParameter()));
 		break;
 	case 177:
-		resp->insertSignedInt(getMapLocationsType2());
+		resp->insertSignedInt(getMapLocationsType1());
 		break;
 	case 178:
-		resp->insertSignedInt(getMapLocationsType3());
+		resp->insertSignedInt(getMapLocationsType2());
 		break;
 	case 179:
+		resp->insertSignedInt(getMapLocationsType3());
+		break;
+	case 180:
 		createChildObjects();
 		break;
 	default:
@@ -4601,6 +4640,10 @@ void SceneObjectAdapter::setStaticObject(bool val) {
 
 bool SceneObjectAdapter::hasObjectInContainer(unsigned long long objectID) {
 	return ((SceneObjectImplementation*) impl)->hasObjectInContainer(objectID);
+}
+
+bool SceneObjectAdapter::hasObjectInSlottedContainer(SceneObject* object) {
+	return ((SceneObjectImplementation*) impl)->hasObjectInSlottedContainer(object);
 }
 
 SceneObject* SceneObjectAdapter::getContainerObject(unsigned long long objectID) {

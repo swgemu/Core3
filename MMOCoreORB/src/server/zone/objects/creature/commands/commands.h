@@ -785,7 +785,7 @@
 #include "UnstickCommand.h"
 #include "WaypointCommand.h"
 #include "CreateVendorCommand.h"
-
+#include "RequestQuestTimersAndCountersCommand.h"
 
 
 

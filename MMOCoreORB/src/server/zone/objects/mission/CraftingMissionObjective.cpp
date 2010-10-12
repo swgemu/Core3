@@ -186,8 +186,6 @@ CraftingMissionObjectiveImplementation::CraftingMissionObjectiveImplementation(M
 }
 
 void CraftingMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/CraftingMissionObjective.idl(65):  		Logger.info("deleting from memory", true);
-	Logger::info("deleting from memory", true);
 }
 
 void CraftingMissionObjectiveImplementation::initializeTransientMembers() {

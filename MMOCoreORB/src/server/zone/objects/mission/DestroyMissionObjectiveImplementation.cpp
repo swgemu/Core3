@@ -53,7 +53,7 @@ void DestroyMissionObjectiveImplementation::activate() {
 		spawnActiveArea->setRadius(128.f);
 		spawnActiveArea->insertToZone(zone);
 
-		info("inserting to zone " + zone->getPlanetName(), true);
+		//info("inserting to zone " + zone->getPlanetName(), true);
 	}
 
 	WaypointObject* waypoint = mission->getWaypointToMission();

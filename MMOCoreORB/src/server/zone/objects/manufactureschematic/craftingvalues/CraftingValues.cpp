@@ -49,6 +49,7 @@ CraftingValues::CraftingValues() {
 	experimentalValuesMap.setNullValue(NULL);
 	doHide = true;
 	setLoggingName("CraftingValues");
+	setLogging(false);
 }
 
 CraftingValues::~CraftingValues() {

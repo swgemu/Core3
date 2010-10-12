@@ -226,8 +226,10 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	newCrate->setUseCount(newStackSize, false);
 	setUseCount(getUseCount() - newStackSize, true);
 
-	parent->addObject(newCrate, -1, true);
-	parent->broadcastObject(newCrate, true);
+	if (parent != NULL) {
+		parent->addObject(newCrate, -1, true);
+		parent->broadcastObject(newCrate, true);
+	}
 }
 
 void FactoryCrateImplementation::setUseCount(uint32 newUseCount, bool notifyClient) {

@@ -142,6 +142,8 @@ namespace building {
 
 class BuildingObject : public StructureObject {
 public:
+	static const int MAXPLAYERITEMS = 200;
+
 	BuildingObject();
 
 	void createCellObjects();
@@ -191,6 +193,8 @@ public:
 	int getTotalCellNumber();
 
 	void setStaticBuilding(bool value);
+
+	int getCurrentNumerOfPlayerItems();
 
 	void onEnter(PlayerCreature* player);
 
@@ -249,6 +253,8 @@ protected:
 	int accessFee;
 
 public:
+	static const int MAXPLAYERITEMS = 200;
+
 	BuildingObjectImplementation();
 
 	BuildingObjectImplementation(DummyConstructorParameter* param);
@@ -300,6 +306,8 @@ public:
 	int getTotalCellNumber();
 
 	void setStaticBuilding(bool value);
+
+	int getCurrentNumerOfPlayerItems();
 
 	virtual void onEnter(PlayerCreature* player);
 
@@ -389,6 +397,8 @@ public:
 	int getTotalCellNumber();
 
 	void setStaticBuilding(bool value);
+
+	int getCurrentNumerOfPlayerItems();
 
 	void onEnter(PlayerCreature* player);
 
