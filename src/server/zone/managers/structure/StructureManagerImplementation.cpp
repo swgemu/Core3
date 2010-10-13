@@ -975,7 +975,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 
 	String abilityRequired = ssot->getAbilityRequired();
 
-	if (!player->getPlayerObject()->hasSkill(abilityRequired)) {
+	if (!abilityRequired.isEmpty() && !player->getPlayerObject()->hasSkill(abilityRequired)) {
 		player->sendSystemMessage("@player_structure:" + abilityRequired);
 		return 1;
 	}
