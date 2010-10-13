@@ -15,9 +15,9 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	String terrainModificationFileName;
 	String interiorLayoutFileName;
 
-	uint8 cityRankRequired;
-
 	StructureTerminalLocation* structureTerminalLocation;
+
+	bool publicStructure;
 
 
 public:
@@ -40,6 +40,10 @@ public:
 
 	inline StructureTerminalLocation* getStructureTerminalLocation() {
 		return structureTerminalLocation;
+	}
+
+	inline bool isPublicStructure() {
+		return publicStructure;
 	}
 };
 

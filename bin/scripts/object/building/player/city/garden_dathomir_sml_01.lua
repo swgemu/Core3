@@ -49,7 +49,7 @@ object_building_player_city_garden_dathomir_sml_01 = object_building_player_city
 	length = 3,
 	width = 3,
 	cityRankRequired = 1,
-	abilitiesRequired = {"placeSmallGarden"}
+	abilityRequired = "place_exotic_garden"
 
 }
 

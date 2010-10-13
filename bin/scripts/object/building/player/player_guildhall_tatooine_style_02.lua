@@ -46,6 +46,7 @@ object_building_player_player_guildhall_tatooine_style_02 = object_building_play
 	baseMaintenanceRate = 100,
 	mapLocationsType1 = 7,
 	allowedZones = {1,4,8},
+	publicStructure = false,
 	terminalLocation = {1, 9.13004, 1.49609, 6.3587, 0, 0.707107, 0, 0.707107},
 	constructionMarker = "object/building/player/construction/construction_player_guildhall_tatooine_style_02.iff",
 	length = 5,

@@ -50,7 +50,7 @@ object_building_player_city_cityhall_naboo = object_building_player_city_shared_
 	width = 9,
 	gameObjectType = 529,
 	cityRankRequired = 0,
-	abilitiesRequired = {"place_cityhall"},
+	abilityRequired = "place_cityhall",
 	terminalLocation = {3, -16.78, 2.0, 7.9, 0, 1, 0, 0}
 }
 

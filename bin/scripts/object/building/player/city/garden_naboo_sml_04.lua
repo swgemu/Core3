@@ -49,7 +49,7 @@ object_building_player_city_garden_naboo_sml_04 = object_building_player_city_sh
 	length = 3,
 	width = 3,
 	cityRankRequired = 1,
-	abilitiesRequired = {"placeSmallGarden"}
+	abilityRequired = "place_small_garden"
 
 }
 

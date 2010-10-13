@@ -51,6 +51,7 @@ object_building_player_city_hospital_corellia = object_building_player_city_shar
 	length = 5,
 	width = 5,
 	cityRankRequired = 3,
+	abilitiesRequired = {"place_hospital"},
 	terminalLocation = {2, 7.48, 0.188325, 1.5, 0, 0.707107, 0, -0.707107}
 }
 

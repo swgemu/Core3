@@ -48,10 +48,9 @@ object_building_player_city_theater_corellia = object_building_player_city_share
 	gameObjectType = 524,
 	mapLocationsType1 = 51,
 	allowedZones = {0,7},
-	
 	length = 5,
-	
 	width = 6,
+	abilityRequired = "place_theatre",
 	cityRankRequired = 4
 
 }

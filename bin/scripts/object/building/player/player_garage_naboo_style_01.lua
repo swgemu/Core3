@@ -47,6 +47,8 @@ object_building_player_player_garage_naboo_style_01 = object_building_player_sha
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
+	cityRankRequired = 2,
+	abilityRequired = "place_garage",
 	length = 5,
 	width = 5
 
