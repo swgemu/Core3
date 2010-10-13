@@ -43,6 +43,7 @@
 
 object_building_player_player_house_tatooine_small_style_01 = object_building_player_shared_player_house_tatooine_small_style_01:new {
 	lotSize = 2,
+	publicStructure = false,
 	baseMaintenanceRate = 16,
 	allowedZones = {1,4,8},
 	terminalLocation = {0, 3.79, 0.75, 6.02, 0, 1, 0, 0},

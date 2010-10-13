@@ -973,6 +973,13 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
+	String abilityRequired = ssot->getAbilityRequired();
+
+	if (!player->getPlayerObject()->hasSkill(abilityRequired)) {
+		player->sendSystemMessage("@player_structure:" + abilityRequired);
+		return 1;
+	}
+
 	PlanetManager* planetManager = zone->getPlanetManager();
 	StringId errorStf;
 

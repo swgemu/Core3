@@ -84,8 +84,6 @@ class StructureObject extends TangibleObject {
 	protected int length;
 	protected int width;
 	
-	protected boolean publicStructure;
-	
 	public StructureObject() {
 		Logger.setLoggingName("StructureObject");
 		
@@ -106,9 +104,7 @@ class StructureObject extends TangibleObject {
 		surplusMaintenance = 0;
 		
 		surplusPower = 0;
-		
-		publicStructure = false;
-		
+
 		length = 0;
 		
 		width = 0;
@@ -265,8 +261,8 @@ class StructureObject extends TangibleObject {
 		return surplusPower;
 	}
 	
-	public boolean isPublicStructure() {
-		return publicStructure;
+	public abstract boolean isPublicStructure() {
+		return false;
 	}
 	
 	public void setOwnerObjectID(unsigned long objectID) {
@@ -310,8 +306,8 @@ class StructureObject extends TangibleObject {
 		surplusPower += add;
 	}
 	
-	public void setPublicStructure(boolean privacy) {
-		publicStructure = privacy;
+	public abstract void setPublicStructure(boolean privacy) {
+		
 	}
 	
 	public boolean isStructureObject() {

@@ -43,6 +43,7 @@
 
 object_building_player_player_merchant_tent_style_03 = object_building_player_shared_player_merchant_tent_style_03:new {
 	lotSize = 1,
+	publicStructure = false,
 	baseMaintenanceRate = 10,
 	allowedZones = {0,1,4,5,6,7,8},
 	terminalLocation = {0, -0.15, 0.267105, -2.76, 0, 0, 0, 1},

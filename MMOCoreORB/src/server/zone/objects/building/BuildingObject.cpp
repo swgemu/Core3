@@ -463,6 +463,33 @@ int BuildingObject::getAccessFee() {
 		return _implementation->getAccessFee();
 }
 
+bool BuildingObject::isPublicStructure() {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isPublicStructure();
+}
+
+void BuildingObject::setPublicStructure(bool privacy) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addBooleanParameter(privacy);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setPublicStructure(privacy);
+}
+
 DistributedObjectServant* BuildingObject::_getImplementation() {
 	return _impl;}
 
@@ -543,63 +570,66 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("signObject", &signObject);
 	addSerializableVariable("deedObjectID", &deedObjectID);
 	addSerializableVariable("accessFee", &accessFee);
+	addSerializableVariable("publicStructure", &publicStructure);
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/BuildingObject.idl(82):  		Logger.setLoggingName("BuildingObject");
+	// server/zone/objects/building/BuildingObject.idl(84):  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl(84):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl(86):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
 	QuadTree::setSize(-1024, -1024, 1024, 1024);
-	// server/zone/objects/building/BuildingObject.idl(86):  		super.staticObject = false;
+	// server/zone/objects/building/BuildingObject.idl(88):  		super.staticObject = false;
 	StructureObjectImplementation::staticObject = false;
-	// server/zone/objects/building/BuildingObject.idl(88):  		super.containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/building/BuildingObject.idl(90):  		super.containerVolumeLimit = 0xFFFFFFFF;
 	StructureObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/building/BuildingObject.idl(90):  		super.containerType = 2;
+	// server/zone/objects/building/BuildingObject.idl(92):  		super.containerType = 2;
 	StructureObjectImplementation::containerType = 2;
-	// server/zone/objects/building/BuildingObject.idl(92):  		totalCellNumber = 0;
+	// server/zone/objects/building/BuildingObject.idl(94):  		totalCellNumber = 0;
 	totalCellNumber = 0;
-	// server/zone/objects/building/BuildingObject.idl(94):  		accessFee = 0;
+	// server/zone/objects/building/BuildingObject.idl(96):  		accessFee = 0;
 	accessFee = 0;
+	// server/zone/objects/building/BuildingObject.idl(98):  		publicStructure = true;
+	publicStructure = true;
 }
 
 void BuildingObjectImplementation::createCellObjects() {
-	// server/zone/objects/building/BuildingObject.idl(98):  
-	for (	// server/zone/objects/building/BuildingObject.idl(98):  		for (int i = 0;
+	// server/zone/objects/building/BuildingObject.idl(102):  
+	for (	// server/zone/objects/building/BuildingObject.idl(102):  		for (int i = 0;
 	int i = 0;
 	i < totalCellNumber;
  ++i) {
-	// server/zone/objects/building/BuildingObject.idl(99):  			SceneObject newCell = getZoneServer().createObject(2906855187, 2);
+	// server/zone/objects/building/BuildingObject.idl(103):  			SceneObject newCell = getZoneServer().createObject(2906855187, 2);
 	SceneObject* newCell = getZoneServer()->createObject(2906855187, 2);
-	// server/zone/objects/building/BuildingObject.idl(101):  			addCell((CellObject)newCell);
+	// server/zone/objects/building/BuildingObject.idl(105):  			addCell((CellObject)newCell);
 	addCell((CellObject*) newCell);
 }
-	// server/zone/objects/building/BuildingObject.idl(104):  		updateToDatabase();
+	// server/zone/objects/building/BuildingObject.idl(108):  		updateToDatabase();
 	updateToDatabase();
 }
 
 int BuildingObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
-	// server/zone/objects/building/BuildingObject.idl(132):  		return 0;
+	// server/zone/objects/building/BuildingObject.idl(136):  		return 0;
 	return 0;
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(181):  		return super.staticObject;
+	// server/zone/objects/building/BuildingObject.idl(185):  		return super.staticObject;
 	return StructureObjectImplementation::staticObject;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(185):  		return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(189):  		return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 int BuildingObjectImplementation::getTotalCellNumber() {
-	// server/zone/objects/building/BuildingObject.idl(189):  		return totalCellNumber;
+	// server/zone/objects/building/BuildingObject.idl(193):  		return totalCellNumber;
 	return totalCellNumber;
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(193):  		super.staticObject = value;
+	// server/zone/objects/building/BuildingObject.idl(197):  		super.staticObject = value;
 	StructureObjectImplementation::staticObject = value;
 }
 
@@ -607,38 +637,48 @@ void BuildingObjectImplementation::onExit(PlayerCreature* player) {
 }
 
 bool BuildingObjectImplementation::isBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(221):  		return true;
+	// server/zone/objects/building/BuildingObject.idl(225):  		return true;
 	return true;
 }
 
 bool BuildingObjectImplementation::isMedicalBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(225):  		return false;
+	// server/zone/objects/building/BuildingObject.idl(229):  		return false;
 	return false;
 }
 
 void BuildingObjectImplementation::setSignObject(SignObject* sign) {
-	// server/zone/objects/building/BuildingObject.idl(229):  		signObject = sign;
+	// server/zone/objects/building/BuildingObject.idl(233):  		signObject = sign;
 	signObject = sign;
 }
 
 SignObject* BuildingObjectImplementation::getSignObject() {
-	// server/zone/objects/building/BuildingObject.idl(233):  		return signObject;
+	// server/zone/objects/building/BuildingObject.idl(237):  		return signObject;
 	return signObject;
 }
 
 bool BuildingObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(237):  		return false;
+	// server/zone/objects/building/BuildingObject.idl(241):  		return false;
 	return false;
 }
 
 void BuildingObjectImplementation::setAccessFee(int fee) {
-	// server/zone/objects/building/BuildingObject.idl(241):  		accessFee = fee;
+	// server/zone/objects/building/BuildingObject.idl(245):  		accessFee = fee;
 	accessFee = fee;
 }
 
 int BuildingObjectImplementation::getAccessFee() {
-	// server/zone/objects/building/BuildingObject.idl(245):  		return accessFee;
+	// server/zone/objects/building/BuildingObject.idl(249):  		return accessFee;
 	return accessFee;
+}
+
+bool BuildingObjectImplementation::isPublicStructure() {
+	// server/zone/objects/building/BuildingObject.idl(253):  		return publicStructure;
+	return publicStructure;
+}
+
+void BuildingObjectImplementation::setPublicStructure(bool privacy) {
+	// server/zone/objects/building/BuildingObject.idl(257):  		publicStructure = privacy;
+	publicStructure = privacy;
 }
 
 /*
@@ -729,6 +769,12 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 31:
 		resp->insertSignedInt(getAccessFee());
+		break;
+	case 32:
+		resp->insertBoolean(isPublicStructure());
+		break;
+	case 33:
+		setPublicStructure(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -839,6 +885,14 @@ void BuildingObjectAdapter::setAccessFee(int fee) {
 
 int BuildingObjectAdapter::getAccessFee() {
 	return ((BuildingObjectImplementation*) impl)->getAccessFee();
+}
+
+bool BuildingObjectAdapter::isPublicStructure() {
+	return ((BuildingObjectImplementation*) impl)->isPublicStructure();
+}
+
+void BuildingObjectAdapter::setPublicStructure(bool privacy) {
+	((BuildingObjectImplementation*) impl)->setPublicStructure(privacy);
 }
 
 /*

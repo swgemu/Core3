@@ -45,6 +45,7 @@ object_building_player_player_house_generic_large_style_01 = object_building_pla
 	lotSize = 5,
 	baseMaintenanceRate = 50,
 	allowedZones = {0,1,4,5,6,7,8},
+	publicStructure = false,
 	terminalLocation = {7, 3.17, 4.585, -4.4, 0, 0, 0, 1},
 	constructionMarker = "object/building/player/construction/construction_player_house_corellia_large_style_01.iff",
 	length = 5,

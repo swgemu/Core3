@@ -50,8 +50,8 @@ object_building_player_city_theater_tatooine = object_building_player_city_share
 	width = 6,
 	gameObjectType = 524,
 	mapLocationsType1 = 51,
+	abilityRequired = "place_theatre",
 	cityRankRequired = 4
-
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_theater_tatooine, "object/building/player/city/theater_tatooine.iff")
