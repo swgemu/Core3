@@ -115,6 +115,13 @@ bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* p
 	if (zone == NULL)
 		return false;
 
+	ManagedReference<BuildingObject*> declaredResidence = player->getDeclaredResidence();
+
+	if (declaredResidence != NULL && declaredResidence->isCityHallBuilding()) {
+		player->sendSystemMessage("@city/city:already_mayor"); //You are already the mayor of a city. You may not be the mayor of another city.
+		return false;
+	}
+
 	ManagedReference<SceneObject*> object = zone->getNearestPlanetaryObject(player, 50);
 
 	if (object == NULL)
