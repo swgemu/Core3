@@ -51,7 +51,7 @@ object_building_player_city_garden_corellia_lrg_01 = object_building_player_city
 	
 	width = 7,
 	cityRankRequired = 3,
-	abilitiesRequired = {"placeLargeGarden"}
+	abilityRequired = "place_large_garden"
 
 }
 

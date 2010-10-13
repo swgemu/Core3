@@ -49,7 +49,7 @@ object_building_player_city_garden_endor_med_01 = object_building_player_city_sh
 	length = 5,
 	width = 5,
 	cityRankRequired = 2,
-	abilitiesRequired = {"placeMediumGarden"}
+	abilityRequired = "place_exotic_garden"
 
 }
 

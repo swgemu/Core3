@@ -214,6 +214,10 @@ public:
 
 	int getAccessFee();
 
+	bool isPublicStructure();
+
+	void setPublicStructure(bool privacy);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -253,6 +257,8 @@ protected:
 	int accessFee;
 
 public:
+	bool publicStructure;
+
 	static const int MAXPLAYERITEMS = 200;
 
 	BuildingObjectImplementation();
@@ -326,6 +332,10 @@ public:
 	void setAccessFee(int fee);
 
 	int getAccessFee();
+
+	bool isPublicStructure();
+
+	void setPublicStructure(bool privacy);
 
 	BuildingObject* _this;
 
@@ -417,6 +427,10 @@ public:
 	void setAccessFee(int fee);
 
 	int getAccessFee();
+
+	bool isPublicStructure();
+
+	void setPublicStructure(bool privacy);
 
 };
 

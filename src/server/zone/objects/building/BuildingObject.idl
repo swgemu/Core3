@@ -76,6 +76,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 
 	protected int accessFee;
 	
+	public boolean publicStructure;
+	
 	public static final int MAXPLAYERITEMS = 200;
 	
 	public BuildingObject() {
@@ -92,6 +94,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 		totalCellNumber = 0;
 		
 		accessFee = 0;
+		
+		publicStructure = true;
 	}
 	
 	public void createCellObjects() {
@@ -243,5 +247,13 @@ class BuildingObject extends StructureObject implements QuadTree {
 	
 	public int getAccessFee() {
 		return accessFee;
+	}
+	
+	public boolean isPublicStructure() {
+		return publicStructure;
+	}
+	
+	public void setPublicStructure(boolean privacy) {
+		publicStructure = privacy;
 	}
 }

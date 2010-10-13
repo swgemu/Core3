@@ -45,6 +45,7 @@ object_building_player_player_house_naboo_small_style_02 = object_building_playe
 	lotSize = 1,
 	baseMaintenanceRate = 16,
 	allowedZones = {1,5,6},
+	publicStructure = false,
 	terminalLocation = {1, 0.6, 0.7, 6.15, 0, 1, 0, 0},
 	constructionMarker = "object/building/player/construction/construction_player_house_naboo_small_style_02.iff",
 	length = 4,

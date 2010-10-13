@@ -51,6 +51,7 @@ object_building_player_city_cantina_corellia = object_building_player_city_share
 	length = 7,
 	width = 7,
 	cityRankRequired = 2,
+	abilityRequired = "place_cantina",
 	terminalLocation = {1, -4.1, 0.750001, 6.1, 0, 1, 0, 0}
 }
 

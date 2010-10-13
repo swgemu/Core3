@@ -276,8 +276,6 @@ protected:
 
 	int width;
 
-	bool publicStructure;
-
 public:
 	StructureObjectImplementation();
 
@@ -359,7 +357,7 @@ public:
 
 	int getSurplusPower();
 
-	bool isPublicStructure();
+	virtual bool isPublicStructure();
 
 	void setOwnerObjectID(unsigned long long objectID);
 
@@ -381,7 +379,7 @@ public:
 
 	void addPower(int add);
 
-	void setPublicStructure(bool privacy);
+	virtual void setPublicStructure(bool privacy);
 
 	bool isStructureObject();
 

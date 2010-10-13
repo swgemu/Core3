@@ -31,7 +31,5 @@ void SharedBuildingObjectTemplate::readObject(LuaObject* templateData) {
 
 	terminalLocation.pop();
 
-	cityRankRequired = templateData->getByteField("cityRankRequired");
-
-	//TODO: Abilities and skills required
+	publicStructure = (bool) templateData->getByteField("publicStructure");
 }

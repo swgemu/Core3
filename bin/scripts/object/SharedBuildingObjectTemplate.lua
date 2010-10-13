@@ -55,15 +55,18 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	--The minimum rank of a player city required for this structure to be placed.
 	cityRankRequired = 0,
 	
-	--Skills required to place this structure object. Array of skill names (strings).
-	skillsRequired = {},
+	--Skills required to place this structure object. String value of the particular skill box.
+	skillRequired = "",
 	
-	--Abilities required to place this structure object. Array of ability names (strings).
-	abilitiesRequired = {},
+	--Abilities required to place this structure object. String value of the ability.
+	abilityRequired = "",
 	
 	--Sign locations is a list of possible sign locations in relation to the center of the building object.
 	--Format is x, z, y, qx, qy, qz, qw
 	signLocations = {0, 0, 0, 0, 0, 0, 1},
+	
+	--Should the structure be public by default?
+	publicStructure = true,
 	
 	--The object that is placed during the construction phase.
 	constructionMarker = "",

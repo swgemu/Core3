@@ -47,6 +47,8 @@ object_building_player_player_garage_tatooine_style_01 = object_building_player_
 	allowedZones = {1,4,8},
 	gameObjectType = 4102,
 	mapLocationsType1 = 6,
+	cityRankRequired = 2,
+	abilityRequired = "place_garage",
 	length = 5,
 	width = 5
 

@@ -39,6 +39,8 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	containerType = 2;
 
 	optionsBitmask = 0x00000100;
+
+	publicStructure = buildingData->isPublicStructure();
 }
 
 int BuildingObjectImplementation::getCurrentNumerOfPlayerItems() {

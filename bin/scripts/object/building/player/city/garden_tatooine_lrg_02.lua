@@ -49,7 +49,7 @@ object_building_player_city_garden_tatooine_lrg_02 = object_building_player_city
 	length = 7,
 	width = 7,
 	cityRankRequired = 3,
-	abilitiesRequired = {"placeLargeGarden"}
+	abilityRequired = "place_large_garden"
 
 }
 

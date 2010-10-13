@@ -15,6 +15,7 @@ protected:
 	SortedVector<unsigned int> allowedZones;
 
 	String constructionMarkerTemplate;
+	String abilityRequired;
 
 	int baseMaintenanceRate;
 	int basePowerRate;
@@ -49,6 +50,10 @@ public:
 
 	inline int getBasePowerRate() {
 		return basePowerRate;
+	}
+
+	inline String& getAbilityRequired() {
+		return abilityRequired;
 	}
 
 	inline uint8 getLength() {
