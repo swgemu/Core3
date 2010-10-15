@@ -7,6 +7,7 @@
 
 #include "PlayerManager.h"
 
+#include "server/login/account/Account.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacter.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterSuccess.h"
@@ -284,6 +285,11 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
 	ZoneClientSession* client = data->getClient();
 
+	ManagedReference<Account*> account = client->getAccount();
+
+	if (account == NULL)
+		return false;
+
 	String race;
 	callback->getRaceFile(race);
 	info("trying to create " + race);
@@ -340,7 +346,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	try {
 		StringBuffer query;
 		query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
-				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << 2 << ","
+				<< " VALUES (" <<  playerCreature->getObjectID() << "," << account->getAccountID() <<  "," << 2 << ","
 				<< "'" << firstName.escapeString() << "','" << lastName.escapeString() << "'," << raceID << "," <<  0 << ",'" << race.escapeString() << "')";
 
 		ServerDatabase::instance()->executeStatement(query);
@@ -381,7 +387,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	playerCreature->setClient(client);
 	client->setPlayer(player);
 
-	playerCreature->setAccountID(client->getAccountID());
+	playerCreature->setAccountID(account->getAccountID());
 
 	if (callback->getTutorialFlag()) {
 		createTutorialBuilding(playerCreature);

@@ -47,19 +47,27 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "objects.h"
-#include "LoginPacketHandler.h"
-
-class LoginMessageProcessorThread : public ServiceProcessThread {
-	LoginPacketHandler* phandler;
+namespace server {
+	namespace login {
 	
-public:
-	LoginMessageProcessorThread(String s, LoginPacketHandler* phand) : ServiceProcessThread(s) {
-		phandler = phand;
+		class LoginPacketHandler;
+
+		class LoginMessageProcessorThread : public ServiceProcessThread {
+			LoginPacketHandler* phandler;
+
+		public:
+			LoginMessageProcessorThread(const String& s, LoginPacketHandler* phand) : ServiceProcessThread(s) {
+				phandler = phand;
+
+				setLogging(false);
+			}
+
+			void run();
+
+		};
 	}
+}
 
-	void run();
-	
-};
+using namespace server::login;
 
 #endif /*LOGINMESSAGEPROCESSORTHREAD_H_*/

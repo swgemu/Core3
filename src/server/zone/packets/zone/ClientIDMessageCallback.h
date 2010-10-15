@@ -11,14 +11,14 @@
 #include "../MessageCallback.h"
 #include "../../../db/ServerDatabase.h"
 #include "../../../login/packets/ErrorMessage.h"
-#include "server/zone/managers/account/AccountManager.h"
+#include "server/login/account/Account.h"
 
 #include "ClientPermissionsMessage.h"
 
 class ClientIDMessageCallback : public MessageCallback {
 	uint32 dataLen;
-	uint32 sessionKey;
-	uint32 accountId;
+	uint32 sessionID;
+	uint32 accountID;
 
 public:
 	ClientIDMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
@@ -32,21 +32,20 @@ public:
 		dataLen = message->parseInt();
 
 		//Get session key
-		sessionKey = message->parseInt();
+		sessionID = message->parseInt();
 
-		//Shift to end of session key, beginning of accountId:
+		//Shift to end of session key, beginning of accountID:
 		//pack->shiftOffset(dataLen - 4);
 
-		//Get accountId
-		accountId = message->parseInt();
+		//Get accountID
+		accountID = message->parseInt();
 	}
 
 	void run() {
-		client->setSessionKey(sessionKey);
-		client->setAccountID(accountId);
+		client->setSessionID(sessionID);
 
 		StringBuffer query;
-		query << "SELECT session_id FROM sessions WHERE account_id = " << accountId << ";";
+		query << "SELECT session_id FROM sessions WHERE account_id = " << accountID << ";";
 
 		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
@@ -55,15 +54,19 @@ public:
 
 			delete result;
 
-			if (sesskey == sessionKey) {
+			if (sesskey == sessionID) {
 				//Session was found
 				//We need to check how many characters this account has online already.
 				//We also need to store a reference to the Account object on the zoneSessionClient.
 
-				AccountManager* accountManager = server->getZoneServer()->getAccountManager();
+				ManagedReference<Account*> account = server->getZoneServer()->getAccount(accountID);
 
-				if (accountManager != NULL && accountManager->getOnlineCharactersPerAccount() > accountManager->getTotalOnlineCharacters(accountId)) {
-					accountManager->registerSession(client);
+				if (account == NULL)
+					return;
+
+				if (!account->hasMaxOnlineCharacters()) {
+					client->setAccount(account);
+					account->addZoneSession(client);
 
 					BaseMessage* cpm = new ClientPermissionsMessage();
 					client->sendMessage(cpm);
@@ -85,12 +88,12 @@ public:
 		return dataLen;
 	}
 
-	inline uint32 getSessionKey() {
-		return sessionKey;
+	inline uint32 getSessionID() {
+		return sessionID;
 	}
 
-	inline uint32 getAccountId() {
-		return accountId;
+	inline uint32 getAccountID() {
+		return accountID;
 	}
 };
 

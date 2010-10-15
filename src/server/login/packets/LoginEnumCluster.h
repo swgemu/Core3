@@ -49,6 +49,10 @@ which carries forward this exception.
 
 #include "../objects/GalaxyList.h"
 
+namespace server {
+namespace login {
+namespace packets {
+
 class LoginEnumCluster : public BaseMessage {
 public:
 	LoginEnumCluster(uint32 galcnt) : BaseMessage(100) {
@@ -72,4 +76,10 @@ public:
 	}
 	
 };
+
+}
+}
+}
+
+using namespace server::login::packets;
 #endif /*LOGINENUMCLUSTER_H_*/

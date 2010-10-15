@@ -47,38 +47,39 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "LoginClient.h"
+namespace server {
+namespace login {
 
-#include "../conf/ConfigManager.h"
+	class LoginServer;
+	class LoginProcessServerImplementation;
 
-class LoginServer;
+	class LoginPacketHandler : public Logger {
+		LoginProcessServerImplementation* processServer;
+		ManagedReference<LoginServer*> server;
 
-class LoginPacketHandler : public Logger {
-	LoginServer* server;
-	ConfigManager* configManager;
+	public:
 
-public:
+		LoginPacketHandler() : Logger() {
+			server = NULL;
+		}
 
-	LoginPacketHandler() : Logger() {
-		server = NULL;
-	}
+		LoginPacketHandler(const String& s, LoginProcessServerImplementation* serv);
 
-	~LoginPacketHandler() {
-	}
+		~LoginPacketHandler() {
+		}
 
-	LoginPacketHandler(String s, LoginServer* server, ConfigManager* configMan) : Logger(s) {
-		LoginPacketHandler::server = server;
-		LoginPacketHandler::configManager = configMan;
-	}
+		void handleMessage(Message* pack);
 
-	void handleMessage(Message* pack);
+		void handleClientPermissionsMessage(Message* pack);
+		void handleSelectCharacter(Message* pack);
+		void handleCmdSceneReady(Message* packet);
+		void handleLoginClientID(Message* packet);
+		void handleDeleteCharacterMessage(Message* pack);
 
-	void handleClientPermissionsMessage(Message* pack);
-	void handleSelectCharacter(Message* pack);
-	void handleCmdSceneReady(Message* packet);
-	void handleLoginClientID(Message* packet);
-	void handleDeleteCharacterMessage(Message* pack);
+	};
+}
+}
 
-};
+using namespace server::login;
 
 #endif /*LOGINPACKETHANDLER_H_*/

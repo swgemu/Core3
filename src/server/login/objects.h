@@ -53,7 +53,6 @@ which carries forward this exception.
 #include "packets/ErrorMessage.h"
 #include "packets/DeleteCharacterReplyMessage.h"
 
-#include "objects/Account.h"
 #include "objects/GalaxyList.h"
 #include "objects/CharacterList.h"
 

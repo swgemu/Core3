@@ -50,6 +50,9 @@ which carries forward this exception.
 
 #include "../db/ServerDatabase.h"
 
+#include "server/login/LoginServer.h"
+#include "server/login/account/Account.h"
+
 #include "managers/object/ObjectManager.h"
 #include "managers/stringid/StringIdManager.h"
 #include "managers/objectcontroller/ObjectController.h"
@@ -63,7 +66,6 @@ which carries forward this exception.
 #include "managers/minigames/FishingManager.h"
 #include "managers/minigames/GamblingManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
-#include "server/zone/managers/account/AccountManager.h"
 #include "managers/creature/CreatureTemplateManager.h"
 
 #include "server/chat/ChatManager.h"
@@ -96,7 +98,6 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	resourceManager = NULL;
 	craftingManager = NULL;
 	lootManager = NULL;
-	accountManager = NULL;
 	fishingManager = NULL;
 	gamblingManager = NULL;
 	stringIdManager = NULL;
@@ -240,9 +241,6 @@ void ZoneServerImplementation::startManagers() {
 	gamblingManager = new GamblingManager(_this);
 	gamblingManager->deploy();
 
-	accountManager = new AccountManager(_this);
-	accountManager->deploy();
-
 	lootManager = new LootManager(_this, processor, craftingManager);
 	lootManager->deploy("LootManager");
 	lootManager->initialize();
@@ -309,7 +307,6 @@ void ZoneServerImplementation::stopManagers() {
 	bazaarManager = NULL;
 	missionManager = NULL;
 	fishingManager = NULL;
-	accountManager = NULL;
 
 	info("managers stopped", true);
 }
@@ -636,4 +633,13 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 	}
 
 	messageoftheDay = finalMOTD;
+}
+
+Account* ZoneServerImplementation::getAccount(uint32 accountID) {
+	ManagedReference<LoginServer*> loginServer = (LoginServer*) DistributedObjectBroker::instance()->lookUp("LoginServer");
+
+	if (loginServer == NULL)
+		return NULL;
+
+	return loginServer->getAccount(accountID);
 }

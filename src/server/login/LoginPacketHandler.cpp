@@ -47,6 +47,21 @@ which carries forward this exception.
 
 #include "LoginPacketHandler.h"
 #include "LoginClient.h"
+#include "LoginServer.h"
+#include "LoginProcessServerImplementation.h"
+
+#include "account/AccountManager.h"
+
+LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplementation* serv)
+		: Logger(s) {
+
+	processServer = serv;
+
+	server = processServer->getLoginServer();
+
+	setGlobalLogging(true);
+	setLogging(true);
+}
 
 void LoginPacketHandler::handleMessage(Message* pack) {
 	StringBuffer msg;
@@ -83,19 +98,8 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 }
 
 void LoginPacketHandler::handleLoginClientID(Message* pack) {
-	LoginClient* client = (LoginClient*) pack->getClient();
-
-	Account account(pack);
-
-	//Don't allow the client to connect if it is invalid.
-	if (!account.checkVersion()) {
-		account.sendErrorMessageTo(client, "Invalid Client", "The client you are using is out of date, and is not allowed to connect to this server.");
-		return;
-	}
-
-	//Make sure the account validates before logging it in.
-	if (account.validate(configManager, client))
-		account.login(client, server);
+	AccountManager* accountManager = server->getAccountManager();
+	accountManager->loginAccount(pack);
 }
 
 void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {

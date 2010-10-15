@@ -48,17 +48,31 @@ which carries forward this exception.
 #include "system/lang.h"
 #include "engine/engine.h"
 
-#include "conf/ConfigManager.h"
-
 namespace server {
 	namespace zone{
 		class ZoneServer;
 	}
 }
 
+using namespace server::zone;
+
+namespace server {
+	namespace login {
+		class LoginServer;
+	}
+}
+
+using namespace server::login;
+
+namespace server {
+	namespace conf {
+		class ConfigManager;
+	}
+}
+
+using namespace server::conf;
+
 class ServerDatabase;
-class ForumsDatabase;
-class LoginServer;
 class StatusServer;
 class Features;
 class PingServer;
@@ -68,8 +82,6 @@ class ServerCore : public Core, public Logger {
 	ConfigManager* configManager;
 
 	ServerDatabase* database;
-
-	ForumsDatabase* forumDatabase;
 
 	DistributedObjectBroker* orb;
 

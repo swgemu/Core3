@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/login/account/Account.h"
+
 #include "server/zone/ZoneProcessServerImplementation.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
@@ -33,8 +35,6 @@
 #include "server/zone/managers/minigames/FishingManager.h"
 
 #include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/account/AccountManager.h"
 
 #include "server/zone/managers/minigames/GamblingManager.h"
 
@@ -743,17 +743,18 @@ GamblingManager* ZoneServer::getGamblingManager() {
 		return _implementation->getGamblingManager();
 }
 
-AccountManager* ZoneServer::getAccountManager() {
+Account* ZoneServer::getAccount(unsigned int accountID) {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 55);
+		method.addUnsignedIntParameter(accountID);
 
-		return (AccountManager*) method.executeWithObjectReturn();
+		return (Account*) method.executeWithObjectReturn();
 	} else
-		return _implementation->getAccountManager();
+		return _implementation->getAccount(accountID);
 }
 
 ProfessionManager* ZoneServer::getProfessionManager() {
@@ -941,7 +942,6 @@ void ZoneServerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("missionManager", &missionManager);
 	addSerializableVariable("fishingManager", &fishingManager);
 	addSerializableVariable("gamblingManager", &gamblingManager);
-	addSerializableVariable("accountManager", &accountManager);
 	addSerializableVariable("totalSentPackets", &totalSentPackets);
 	addSerializableVariable("totalResentPackets", &totalResentPackets);
 	addSerializableVariable("currentPlayers", &currentPlayers);
@@ -959,139 +959,134 @@ void ZoneServerImplementation::fixScheduler() {
 }
 
 int ZoneServerImplementation::getGalaxyID() {
-	// server/zone/ZoneServer.idl(241):  		return galaxyID;
+	// server/zone/ZoneServer.idl(239):  		return galaxyID;
 	return galaxyID;
 }
 
 bool ZoneServerImplementation::isServerLocked() {
-	// server/zone/ZoneServer.idl(247):  		return serverState == LOCKED;
+	// server/zone/ZoneServer.idl(245):  		return serverState == LOCKED;
 	return serverState == LOCKED;
 }
 
 bool ZoneServerImplementation::isServerOnline() {
-	// server/zone/ZoneServer.idl(251):  		return serverState == ONLINE;
+	// server/zone/ZoneServer.idl(249):  		return serverState == ONLINE;
 	return serverState == ONLINE;
 }
 
 bool ZoneServerImplementation::isServerOffline() {
-	// server/zone/ZoneServer.idl(255):  		return serverState == OFFLINE;
+	// server/zone/ZoneServer.idl(253):  		return serverState == OFFLINE;
 	return serverState == OFFLINE;
 }
 
 bool ZoneServerImplementation::isServerLoading() {
-	// server/zone/ZoneServer.idl(259):  		return serverState == LOADING;
+	// server/zone/ZoneServer.idl(257):  		return serverState == LOADING;
 	return serverState == LOADING;
 }
 
 int ZoneServerImplementation::getServerState() {
-	// server/zone/ZoneServer.idl(263):  		return serverState;
+	// server/zone/ZoneServer.idl(261):  		return serverState;
 	return serverState;
 }
 
 Zone* ZoneServerImplementation::getZone(int index) {
-	// server/zone/ZoneServer.idl(267):  		return zones.get(index);
+	// server/zone/ZoneServer.idl(265):  		return zones.get(index);
 	return (&zones)->get(index);
 }
 
 int ZoneServerImplementation::getZoneCount() {
-	// server/zone/ZoneServer.idl(271):  		return zones.size();
+	// server/zone/ZoneServer.idl(269):  		return zones.size();
 	return (&zones)->size();
 }
 
 int ZoneServerImplementation::getMaxPlayers() {
-	// server/zone/ZoneServer.idl(275):  		return maximumPlayers.get();
+	// server/zone/ZoneServer.idl(273):  		return maximumPlayers.get();
 	return (&maximumPlayers)->get();
 }
 
 int ZoneServerImplementation::getTotalPlayers() {
-	// server/zone/ZoneServer.idl(279):  		return totalPlayers.get();
+	// server/zone/ZoneServer.idl(277):  		return totalPlayers.get();
 	return (&totalPlayers)->get();
 }
 
 int ZoneServerImplementation::getDeletedPlayers() {
-	// server/zone/ZoneServer.idl(283):  		return totalDeletedPlayers.get();
+	// server/zone/ZoneServer.idl(281):  		return totalDeletedPlayers.get();
 	return (&totalDeletedPlayers)->get();
 }
 
 PlayerManager* ZoneServerImplementation::getPlayerManager() {
-	// server/zone/ZoneServer.idl(287):  		return playerManager;
+	// server/zone/ZoneServer.idl(285):  		return playerManager;
 	return playerManager;
 }
 
 ChatManager* ZoneServerImplementation::getChatManager() {
-	// server/zone/ZoneServer.idl(291):  		return chatManager;
+	// server/zone/ZoneServer.idl(289):  		return chatManager;
 	return chatManager;
 }
 
 ObjectController* ZoneServerImplementation::getObjectController() {
-	// server/zone/ZoneServer.idl(295):  		return processor.getObjectController();
+	// server/zone/ZoneServer.idl(293):  		return processor.getObjectController();
 	return processor->getObjectController();
 }
 
 MissionManager* ZoneServerImplementation::getMissionManager() {
-	// server/zone/ZoneServer.idl(299):  		return missionManager;
+	// server/zone/ZoneServer.idl(297):  		return missionManager;
 	return missionManager;
 }
 
 RadialManager* ZoneServerImplementation::getRadialManager() {
-	// server/zone/ZoneServer.idl(303):  		return radialManager;
+	// server/zone/ZoneServer.idl(301):  		return radialManager;
 	return radialManager;
 }
 
 ResourceManager* ZoneServerImplementation::getResourceManager() {
-	// server/zone/ZoneServer.idl(307):  		return resourceManager;
+	// server/zone/ZoneServer.idl(305):  		return resourceManager;
 	return resourceManager;
 }
 
 CraftingManager* ZoneServerImplementation::getCraftingManager() {
-	// server/zone/ZoneServer.idl(311):  		return craftingManager;
+	// server/zone/ZoneServer.idl(309):  		return craftingManager;
 	return craftingManager;
 }
 
 LootManager* ZoneServerImplementation::getLootManager() {
-	// server/zone/ZoneServer.idl(315):  		return lootManager;
+	// server/zone/ZoneServer.idl(313):  		return lootManager;
 	return lootManager;
 }
 
 BazaarManager* ZoneServerImplementation::getBazaarManager() {
-	// server/zone/ZoneServer.idl(319):  		return bazaarManager;
+	// server/zone/ZoneServer.idl(317):  		return bazaarManager;
 	return bazaarManager;
 }
 
 FishingManager* ZoneServerImplementation::getFishingManager() {
-	// server/zone/ZoneServer.idl(323):  		return fishingManager;
+	// server/zone/ZoneServer.idl(321):  		return fishingManager;
 	return fishingManager;
 }
 
 GamblingManager* ZoneServerImplementation::getGamblingManager() {
-	// server/zone/ZoneServer.idl(327):  		return gamblingManager;
+	// server/zone/ZoneServer.idl(325):  		return gamblingManager;
 	return gamblingManager;
 }
 
-AccountManager* ZoneServerImplementation::getAccountManager() {
-	// server/zone/ZoneServer.idl(331):  		return accountManager;
-	return accountManager;
-}
-
 ProfessionManager* ZoneServerImplementation::getProfessionManager() {
-	// server/zone/ZoneServer.idl(336):  		return processor.getProfessionManager();
+	// server/zone/ZoneServer.idl(332):  		return processor.getProfessionManager();
 	return processor->getProfessionManager();
 }
 
 Time* ZoneServerImplementation::getStartTimestamp() {
-	// server/zone/ZoneServer.idl(341):  		return startTimestamp;
+	// server/zone/ZoneServer.idl(337):  		return startTimestamp;
 	return (&startTimestamp);
 }
 
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(347):  		galaxyID = galaxyid;
+	// server/zone/ZoneServer.idl(343):  		galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(351):  		serverState = state;
+	// server/zone/ZoneServer.idl(347):  		serverState = state;
 	serverState = state;
 }
 
@@ -1254,7 +1249,7 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getGamblingManager()->_getObjectID());
 		break;
 	case 55:
-		resp->insertLong(getAccountManager()->_getObjectID());
+		resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 56:
 		setServerName(inv->getAsciiParameter(_param0_setServerName__String_));
@@ -1483,8 +1478,8 @@ GamblingManager* ZoneServerAdapter::getGamblingManager() {
 	return ((ZoneServerImplementation*) impl)->getGamblingManager();
 }
 
-AccountManager* ZoneServerAdapter::getAccountManager() {
-	return ((ZoneServerImplementation*) impl)->getAccountManager();
+Account* ZoneServerAdapter::getAccount(unsigned int accountID) {
+	return ((ZoneServerImplementation*) impl)->getAccount(accountID);
 }
 
 void ZoneServerAdapter::setServerName(const String& servername) {
