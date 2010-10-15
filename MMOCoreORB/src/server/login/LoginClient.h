@@ -47,35 +47,49 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class LoginClient : public BaseClientProxy {
-public:
-	LoginClient(DatagramServiceThread* serv, Socket* sock, SocketAddress& addr) : BaseClientProxy(sock, addr) {
-		setLoggingName("LoginClient " + ip);
-		setLogging(false);
+#include "packets/ErrorMessage.h"
+
+namespace server {
+namespace login {
+
+	class LoginClient : public BaseClientProxy {
+	public:
+		LoginClient(DatagramServiceThread* serv, Socket* sock, SocketAddress& addr) : BaseClientProxy(sock, addr) {
+			setLoggingName("LoginClient " + ip);
+			setLogging(false);
+
+			init(serv);
+		}
+
+		virtual ~LoginClient() {
+		}
 		
-		init(serv);
-	}
-
-	virtual ~LoginClient() {
-	}
+		void disconnect(bool doLock = true) {
+			if (isDisconnected())
+				return;
 	
-	void disconnect(bool doLock = true) {
-		if (isDisconnected())
-			return;
-
-		String time;
-		Logger::getTime(time);
-
-		StringBuffer msg;
-		msg << time << " [LoginServer] disconnecting client \'" << ip << "\'\n";
-		Logger::console.log(msg);
+			String time;
+			Logger::getTime(time);
 	
-		BaseClientProxy::disconnect(doLock);
-	}
+			StringBuffer msg;
+			msg << time << " [LoginServer] disconnecting client \'" << ip << "\'\n";
+			Logger::console.log(msg);
+
+			BaseClientProxy::disconnect(doLock);
+		}
+
+		void sendMessage(Message* msg) {
+			BaseClientProxy::sendPacket((BasePacket*) msg);
+		}
 	
-	void sendMessage(Message* msg) {
-		BaseClientProxy::sendPacket((BasePacket*) msg);
-	}
-};
+		void sendErrorMessage(const String& title, const String& text, bool fatal = false) {
+			ErrorMessage* errorMessage = new ErrorMessage(title, text, fatal);
+			sendMessage(errorMessage);
+		}
+	};
+}
+}
+
+using namespace server::login;
 
 #endif /*LOGINCLIENT_H_*/

@@ -11,6 +11,9 @@
 
 #include "../MessageCallback.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/managers/city/CityManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/building/city/CityHallObject.h"
 
 class ChatPersistentMessageToServerCallback : public MessageCallback {
 	UnicodeString header, body, wpName;

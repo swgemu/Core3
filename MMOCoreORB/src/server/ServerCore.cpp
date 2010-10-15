@@ -45,7 +45,6 @@ which carries forward this exception.
 #include "ServerCore.h"
 
 #include "db/ServerDatabase.h"
-#include "db/ForumsDatabase.h"
 
 #include "chat/ChatManager.h"
 
@@ -63,8 +62,6 @@ which carries forward this exception.
 
 #include "zone/objects/creature/CreatureObject.h"
 
-#include "zone/managers/account/AccountManager.h"
-
 class TestManager : public ThreadLocal<ZoneServer> {
 public:
 	ZoneServer* initValue() {
@@ -81,7 +78,6 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	zoneServerRef = NULL;
 	statusServer = NULL;
 	pingServer = NULL;
-	forumDatabase = NULL;
 	database = NULL;
 
 	configManager = ConfigManager::instance();
@@ -97,9 +93,6 @@ void ServerCore::init() {
 	try {
 		database = new ServerDatabase(configManager);
 
-		if (configManager->getUseVBIngeration() == 1)
-			forumDatabase = new ForumsDatabase(configManager);
-
 		String& orbaddr = configManager->getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr, 44434);
 
@@ -107,6 +100,7 @@ void ServerCore::init() {
 
 		if (configManager->getMakeLogin()) {
 			loginServer = new LoginServer(configManager);
+			loginServer->deploy("LoginServer");
 		}
 
 		if (configManager->getMakeZone()) {
@@ -160,8 +154,6 @@ void ServerCore::run() {
 		}
 
 		zoneServer->start(zonePort, zoneAllowedConnections);
-
-		zoneServer->getAccountManager()->setOnlineCharactersPerAccount(configManager->getZoneOnlineCharactersPerAccount());
 	}
 
 	if (statusServer != NULL) {
@@ -211,7 +203,6 @@ void ServerCore::shutdown() {
 	if (loginServer != NULL) {
 		loginServer->stop();
 
-		delete loginServer;
 		loginServer = NULL;
 	}
 
@@ -220,11 +211,6 @@ void ServerCore::shutdown() {
 
 		delete pingServer;
 		pingServer = NULL;
-	}
-
-	if (forumDatabase != NULL) {
-		delete forumDatabase;
-		forumDatabase = NULL;
 	}
 
 	if (features != NULL) {

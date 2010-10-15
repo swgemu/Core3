@@ -48,16 +48,17 @@ which carries forward this exception.
 
 #include "Zone.h"
 
+#include "server/login/account/Account.h"
+
 #include "objects/player/PlayerCreature.h"
 
-#include "server/zone/managers/account/AccountManager.h"
 #include "server/zone/objects/player/events/ClearClientEvent.h"
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr)
 		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
 	player = NULL;
-	sessionKey = 0;
-	accountID = 0;
+	sessionID = 0;
+	account = NULL;
 
 	disconnecting = false;
 
@@ -157,10 +158,8 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 			server->addTotalSentPacket(getSentPacketCount());
 			server->addTotalResentPacket(getResentPacketCount());
 
-			//Unregister the session from the account manager.
-			ManagedReference<AccountManager*> accountManager = server->getAccountManager();
-			if (accountManager != NULL)
-				accountManager->unregisterSession(_this);
+			if (account != NULL)
+				account->removeZoneSession(sessionID);
 		}
 
 		unlock(doLock);
@@ -184,3 +183,4 @@ void ZoneClientSessionImplementation::acquire() {
 void ZoneClientSessionImplementation::release() {
 	_this->release();
 }
+
