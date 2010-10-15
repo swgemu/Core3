@@ -43,6 +43,8 @@ which carries forward this exception.
 */
 
 #include "LoginMessageProcessorThread.h"
+#include "LoginPacketHandler.h"
+#include "LoginServer.h"
 
 void LoginMessageProcessorThread::run() {
 	Message* msg;

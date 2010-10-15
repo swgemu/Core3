@@ -12,6 +12,18 @@
 #include "engine/core/ManagedWeakReference.h"
 
 namespace server {
+namespace login {
+namespace account {
+
+class Account;
+
+} // namespace account
+} // namespace login
+} // namespace server
+
+using namespace server::login::account;
+
+namespace server {
 namespace zone {
 namespace objects {
 namespace scene {
@@ -88,15 +100,15 @@ public:
 
 	void setPlayer(SceneObject* playerCreature);
 
-	void setSessionKey(unsigned int key);
+	void setSessionID(unsigned int id);
 
-	void setAccountID(unsigned int id);
+	void setAccount(Account* acc);
 
 	SceneObject* getPlayer();
 
-	unsigned int getSessionKey();
+	unsigned int getSessionID();
 
-	unsigned int getAccountID();
+	Account* getAccount();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -128,9 +140,9 @@ class ZoneClientSessionImplementation : public ManagedObjectImplementation, publ
 protected:
 	ManagedWeakReference<SceneObject* > player;
 
-	unsigned int sessionKey;
+	unsigned int sessionID;
 
-	unsigned int accountID;
+	ManagedReference<Account* > account;
 
 private:
 	bool disconnecting;
@@ -168,15 +180,15 @@ public:
 
 	void setPlayer(SceneObject* playerCreature);
 
-	void setSessionKey(unsigned int key);
+	void setSessionID(unsigned int id);
 
-	void setAccountID(unsigned int id);
+	void setAccount(Account* acc);
 
 	SceneObject* getPlayer();
 
-	unsigned int getSessionKey();
+	unsigned int getSessionID();
 
-	unsigned int getAccountID();
+	Account* getAccount();
 
 	ZoneClientSession* _this;
 
@@ -239,15 +251,15 @@ public:
 
 	void setPlayer(SceneObject* playerCreature);
 
-	void setSessionKey(unsigned int key);
+	void setSessionID(unsigned int id);
 
-	void setAccountID(unsigned int id);
+	void setAccount(Account* acc);
 
 	SceneObject* getPlayer();
 
-	unsigned int getSessionKey();
+	unsigned int getSessionID();
 
-	unsigned int getAccountID();
+	Account* getAccount();
 
 protected:
 	String _param0_info__String_bool_;

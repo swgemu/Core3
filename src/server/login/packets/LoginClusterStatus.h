@@ -49,6 +49,10 @@ which carries forward this exception.
 
 #include "../objects/GalaxyList.h"
 
+namespace server {
+namespace login {
+namespace packets {
+
 class LoginClusterStatus : public BaseMessage {
 public:
 	LoginClusterStatus(uint32 galcnt) : BaseMessage(100) {
@@ -77,6 +81,11 @@ public:
 	static void parse(Packet* pack) {
 		uint16 ackSequence = pack->parseShort();
 	}
-	
 };
+
+}
+}
+}
+
+using namespace server::login::packets;
 #endif /*LOGINCLUSTERSTATUS_H_*/

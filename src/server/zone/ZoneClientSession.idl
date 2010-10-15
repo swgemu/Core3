@@ -49,6 +49,8 @@ import engine.service.proto.BasePacket;
 import engine.core.ManagedObject;
 import system.net.SocketAddress;
 import system.net.Socket;
+
+import server.login.account.Account;
 import server.zone.objects.scene.SceneObject;
 import server.zone.ZoneServer;
 
@@ -62,8 +64,9 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	@weakReference
 	protected SceneObject player;
 
-	protected unsigned int sessionKey;
-	protected unsigned int accountID;
+	protected unsigned int sessionID;
+	
+	protected Account account;
 	
 	boolean disconnecting;
 	
@@ -122,24 +125,23 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 		player = playerCreature;
 	}
 
-	public void setSessionKey(unsigned int key) {
-		sessionKey = key;
+	public void setSessionID(unsigned int id) {
+		sessionID = id;
 	}
 	
-	public void setAccountID(unsigned int id) {
-		accountID = id;
+	public void setAccount(Account acc) {
+		account = acc;
 	}
 
 	public SceneObject getPlayer() {
 		return player;
 	}
 
-	public unsigned int getSessionKey() {
-		return sessionKey;
+	public unsigned int getSessionID() {
+		return sessionID;
 	}
 	
-	public unsigned int getAccountID() {
-		return accountID;
+	public native Account getAccount() {
+		return account;
 	}
-
 }

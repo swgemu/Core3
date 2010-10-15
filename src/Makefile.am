@@ -59,7 +59,9 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3
 
-core3_IDLS =	server/zone/ZoneServer.cpp \
+core3_IDLS =	server/login/LoginServer.cpp \
+				server/login/account/Account.cpp \
+				server/zone/ZoneServer.cpp \
 				server/zone/ZoneClientSession.cpp \
 				server/zone/Zone.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
@@ -155,7 +157,6 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
 				server/zone/managers/minigames/GamblingManager.cpp \
-				server/zone/managers/account/AccountManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
 				server/zone/managers/loot/LootManager.cpp \
@@ -220,12 +221,12 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 core3_SOURCES =	$(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
 		server/features/Features.cpp \
-		server/db/ForumsDatabase.cpp \
 		server/db/ServerDatabase.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
+		server/login/LoginProcessServerImplementation.cpp \
 		server/login/LoginPacketHandler.cpp \
-		server/login/LoginServer.cpp \
-		server/login/objects/Account.cpp \
+		server/login/LoginServerImplementation.cpp \
+		server/login/account/AccountManager.cpp \
 		server/ping/PingServer.cpp \
 		server/status/StatusServer.cpp \
 		server/proxy/LoginProxyServer.cpp \
@@ -236,7 +237,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneMessageProcessorThread.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
-		server/zone/managers/account/AccountManagerImplementation.cpp \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
 		server/zone/managers/loot/LootManagerImplementation.cpp \
 		server/zone/managers/loot/lootgroup/LootGroupObjectImplementation.cpp \

@@ -47,248 +47,199 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ConfigManager : public Singleton<ConfigManager>, public Lua {
+namespace server {
+	namespace conf {
 
-	bool makeLogin;
-	bool makeZone;
-	bool makePing;
-	bool makeStatus;
+		class ConfigManager : public Singleton<ConfigManager>, public Lua {
 
-	String orbNamingDirectoryAddress;
+			bool makeLogin;
+			bool makeZone;
+			bool makePing;
+			bool makeStatus;
 
-	String forumsdBHost;
-	uint16 forumsdBPort;
-	String forumsdBName;
-	String forumsdBUser;
-	String forumsdBPass;
-	String forumsBannedGroupID;
-	String forumsStandardGroupID;
-	String forumsUserTable;
-	String forumsBannedTable;
-	String forumsNewActivationTable;
+			String orbNamingDirectoryAddress;
 
-	String dBHost;
-	uint16 dBPort;
-	String dBName;
-	String dBUser;
-	String dBPass;
+			String dBHost;
+			uint16 dBPort;
+			String dBName;
+			String dBUser;
+			String dBPass;
 
-	uint16 statusPort;
-	uint16 loginPort;
-	uint16 pingPort;
+			uint16 statusPort;
+			uint16 loginPort;
+			uint16 pingPort;
 
-	int loginAllowedConnections;
-	bool autoReg;
-	bool useVBIngeration;
+			String loginRequiredVersion;
+			int loginProcessingThreads;
+			int loginAllowedConnections;
+			bool autoReg;
 
-	int zoneProcessingThreads;
-	int zoneAllowedConnections;
-	int zoneGalaxyID;
-	int zoneOnlineCharactersPerAccount;
+			int zoneProcessingThreads;
+			int zoneAllowedConnections;
+			int zoneGalaxyID;
+			int zoneOnlineCharactersPerAccount;
 
-	int statusAllowedConnections;
-	unsigned int statusInterval;
+			int statusAllowedConnections;
+			unsigned int statusInterval;
 
-	int pingAllowedConnections;
+			int pingAllowedConnections;
 
-	String messageOfTheDay;
+			String messageOfTheDay;
 
-public:
+		public:
 
-	ConfigManager() {
-		makeLogin = true;
-		makeZone = true;
-		makePing = true;
-		makeStatus = true;
+			ConfigManager() {
+				makeLogin = true;
+				makeZone = true;
+				makePing = true;
+				makeStatus = true;
 
-		orbNamingDirectoryAddress = "";
+				orbNamingDirectoryAddress = "";
 
-		dBHost = "127.0.0.1";
-		dBPort = 3306;
-		dBName = "swgemu";
-		dBUser = "root";
-		dBPass = "Gemeni1";
+				dBHost = "127.0.0.1";
+				dBPort = 3306;
+				dBName = "swgemu";
+				dBUser = "root";
+				dBPass = "Gemeni1";
 
-		forumsdBHost = "127.0.0.1";
-		forumsdBPort = 3306;
-		forumsdBName = "swgemu";
-		forumsdBUser = "root";
-		forumsdBPass = "Gemeni1";
-		forumsBannedGroupID = "8";
-		forumsStandardGroupID = "2";
-		forumsUserTable = "vb3_users";
-		forumsBannedTable = "vb3_bannedusers";
-		forumsNewActivationTable = "vb3_useractivation";
-		useVBIngeration = 0;
+				statusPort = 44455;
 
-		statusPort = 44455;
+				pingPort = 44462;
 
-		pingPort = 44462;
+				loginProcessingThreads = 1;
+				loginRequiredVersion = "20050408-18:00";
+				loginPort = 44453;
+				loginAllowedConnections = 30;
+				autoReg = true;
 
-		loginPort = 44453;
-		loginAllowedConnections = 30;
-		autoReg = true;
+				zoneProcessingThreads = 10;
+				zoneAllowedConnections = 300;
+				zoneGalaxyID = 2;
+				zoneOnlineCharactersPerAccount = 1;
 
-		zoneProcessingThreads = 10;
-		zoneAllowedConnections = 300;
-		zoneGalaxyID = 2;
-		zoneOnlineCharactersPerAccount = 1;
+				statusAllowedConnections = 100;
+				statusInterval = 60;
 
-		statusAllowedConnections = 100;
-		statusInterval = 60;
+				pingAllowedConnections = 3000;
+			}
 
-		pingAllowedConnections = 3000;
+			~ConfigManager() {
+			}
+
+			bool loadConfigFile() {
+				return runFile("conf/config.lua");
+			}
+
+			bool loadConfigData();
+			void loadMOTD();
+
+			//getters
+
+			inline bool getMakeLogin() {
+				return makeLogin;
+			}
+
+			inline bool getMakeZone() {
+				return makeZone;
+			}
+
+			inline bool getMakePing() {
+				return makePing;
+			}
+
+			inline bool getMakeStatus() {
+				return makeStatus;
+			}
+
+			inline String& getORBNamingDirectoryAddress() {
+				return orbNamingDirectoryAddress;
+			}
+
+			inline String& getDBHost() {
+				return dBHost;
+			}
+
+			inline uint16& getDBPort() {
+				return dBPort;
+			}
+
+			inline String& getDBName() {
+				return dBName;
+			}
+
+			inline String& getDBUser() {
+				return dBUser;
+			}
+
+			inline String& getDBPass() {
+				return dBPass;
+			}
+
+			inline String& getMessageOfTheDay() {
+				return messageOfTheDay;
+			}
+
+			inline uint16 getLoginPort() {
+				return loginPort;
+			}
+
+			inline uint16 getStatusPort() {
+				return statusPort;
+			}
+
+			inline uint16 getPingPort() {
+				return pingPort;
+			}
+
+			inline String& getLoginRequiredVersion() {
+				return loginRequiredVersion;
+			}
+
+			inline int getLoginProcessingThreads() {
+				return loginProcessingThreads;
+			}
+
+			inline int getLoginAllowedConnections() {
+				return loginAllowedConnections;
+			}
+
+			inline int getStatusAllowedConnections() {
+				return statusAllowedConnections;
+			}
+
+			inline int getPingAllowedConnections() {
+				return pingAllowedConnections;
+			}
+
+			inline int getStatusInterval() {
+				return statusInterval;
+			}
+
+			inline int getAutoReg() {
+				return autoReg;
+			}
+
+			inline int getZoneProcessingThreads() {
+				return zoneProcessingThreads;
+			}
+
+			inline int getZoneAllowedConnections() {
+				return zoneAllowedConnections;
+			}
+
+			inline int getZoneGalaxyID() {
+				return zoneGalaxyID;
+			}
+
+			inline int getZoneOnlineCharactersPerAccount() {
+				return zoneOnlineCharactersPerAccount;
+			}
+
+		};
 	}
+}
 
-	~ConfigManager() {
-	}
-
-	bool loadConfigFile() {
-		return runFile("conf/config.lua");
-	}
-
-	bool loadConfigData();
-	void loadMOTD();
-
-	//getters
-
-	inline bool getMakeLogin() {
-		return makeLogin;
-	}
-
-	inline bool getMakeZone() {
-		return makeZone;
-	}
-
-	inline bool getMakePing() {
-		return makePing;
-	}
-
-	inline bool getMakeStatus() {
-		return makeStatus;
-	}
-
-	inline String& getORBNamingDirectoryAddress() {
-		return orbNamingDirectoryAddress;
-	}
-
-	inline String& getDBHost() {
-		return dBHost;
-	}
-
-	inline uint16& getDBPort() {
-		return dBPort;
-	}
-
-	inline String& getDBName() {
-		return dBName;
-	}
-
-	inline String& getDBUser() {
-		return dBUser;
-	}
-
-	inline String& getDBPass() {
-		return dBPass;
-	}
-
-	inline String& getForumsDBHost() {
-		return forumsdBHost;
-	}
-
-	inline uint16& getForumsDBPort() {
-		return forumsdBPort;
-	}
-
-	inline String& getForumsDBName() {
-		return forumsdBName;
-	}
-
-	inline String& getForumsDBUser() {
-		return forumsdBUser;
-	}
-
-	inline String& getForumsDBPass() {
-		return forumsdBPass;
-	}
-
-	inline String& getForumsBannedGroup() {
-		return forumsBannedGroupID;
-	}
-
-	inline String& getForumsStandardGroup() {
-		return forumsStandardGroupID;
-	}
-
-	inline String& getForumsUserTable() {
-		return forumsUserTable;
-	}
-
-	inline String& getForumsBannedTable() {
-		return forumsBannedTable;
-	}
-
-	inline String& getForumsNewActivationTable() {
-		return forumsNewActivationTable;
-	}
-
-	inline String& getMessageOfTheDay() {
-		return messageOfTheDay;
-	}
-
-	inline uint16 getLoginPort() {
-		return loginPort;
-	}
-
-	inline uint16 getStatusPort() {
-		return statusPort;
-	}
-
-	inline uint16 getPingPort() {
-		return pingPort;
-	}
-
-	inline int getLoginAllowedConnections() {
-		return loginAllowedConnections;
-	}
-
-	inline int getStatusAllowedConnections() {
-		return statusAllowedConnections;
-	}
-
-	inline int getPingAllowedConnections() {
-		return pingAllowedConnections;
-	}
-
-	inline int getStatusInterval() {
-		return statusInterval;
-	}
-
-	inline int getAutoReg() {
-		return autoReg;
-	}
-
-	inline int getUseVBIngeration() {
-		return useVBIngeration ;
-	}
-
-	inline int getZoneProcessingThreads() {
-		return zoneProcessingThreads;
-	}
-
-	inline int getZoneAllowedConnections() {
-		return zoneAllowedConnections;
-	}
-
-	inline int getZoneGalaxyID() {
-		return zoneGalaxyID;
-	}
-
-	inline int getZoneOnlineCharactersPerAccount() {
-		return zoneOnlineCharactersPerAccount;
-	}
-
-};
+using namespace server::conf;
 
 #endif // #ifndef CONFIGMANAGER_H_
 

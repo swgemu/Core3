@@ -49,30 +49,18 @@ MakeStatus = 1
 
 ORB = ""
 
-
 DBHost = "127.0.0.1"
 DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"
 DBPass = "123456"
 
--- vBulletin 3 integration
-ForumsDBHost = ""
-ForumsDBPort = 3306
-ForumsDBName = ""
-ForumsDBUser = ""
-ForumsDBPass = ""
-ForumsBannedGroupID = "" -- ID String of "banned" group
-ForumsStandardGroupID = "" -- ID String of standard user group
-ForumsUserTable = "" -- user table ex. vb3_users
-ForumsBannedTable = "" -- banned table ex. vb3_userban
-ForumsNewActivationTable = "" -- new user table ex. vb3_useractivation
-
 LoginPort = 44453
+LoginProcessingThreads = 1
 LoginAllowedConnections = 3000
+LoginRequiredVersion = "20050408-18:00"
 
 AutoReg = 1
-UseVBIngeration = 0
 
 PingPort = 44462
 PingAllowedConnections = 3000

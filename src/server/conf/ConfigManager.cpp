@@ -63,26 +63,16 @@ bool ConfigManager::loadConfigData() {
 	dBUser = getGlobalString("DBUser");
 	dBPass = getGlobalString("DBPass");
 
-	forumsdBHost = getGlobalString("ForumsDBHost");
-	forumsdBPort = getGlobalShort("ForumsDBPort");
-	forumsdBName = getGlobalString("ForumsDBName");
-	forumsdBUser = getGlobalString("ForumsDBUser");
-	forumsdBPass = getGlobalString("ForumsDBPass");
-	forumsBannedGroupID = getGlobalString("ForumsBannedGroupID");
-	forumsStandardGroupID = getGlobalString("ForumsStandardGroupID");
-	forumsUserTable = getGlobalString("ForumsUserTable");
-	forumsBannedTable = getGlobalString("ForumsBannedTable");
-	forumsNewActivationTable = getGlobalString("ForumsNewActivationTable");
-
 	statusPort = getGlobalShort("StatusPort");
 
 	pingPort = getGlobalShort("PingPort");
 	pingAllowedConnections = getGlobalInt("PingAllowedConnections");
 
+	loginRequiredVersion = getGlobalString("LoginRequiredVersion");
 	loginPort = getGlobalShort("LoginPort");
+	loginProcessingThreads = getGlobalInt("LoginProcessingThreads");
 	loginAllowedConnections =  getGlobalInt("LoginAllowedConnections");
 	autoReg = getGlobalByte("AutoReg");
-	useVBIngeration  = getGlobalByte("UseVBIngeration");
 
 	zoneProcessingThreads = getGlobalInt("ZoneProcessingThreads");
 	zoneAllowedConnections = getGlobalInt("ZoneAllowedConnections");

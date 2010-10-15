@@ -26,6 +26,18 @@ class SceneObject;
 using namespace server::zone::objects::scene;
 
 namespace server {
+namespace login {
+namespace account {
+
+class Account;
+
+} // namespace account
+} // namespace login
+} // namespace server
+
+using namespace server::login::account;
+
+namespace server {
 namespace zone {
 
 class ZoneProcessServerImplementation;
@@ -208,20 +220,6 @@ class MissionManager;
 } // namespace server
 
 using namespace server::zone::managers::mission;
-
-namespace server {
-namespace zone {
-namespace managers {
-namespace account {
-
-class AccountManager;
-
-} // namespace account
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::account;
 
 namespace server {
 namespace zone {
@@ -412,7 +410,7 @@ public:
 
 	GamblingManager* getGamblingManager();
 
-	AccountManager* getAccountManager();
+	Account* getAccount(unsigned int accountID);
 
 	ProfessionManager* getProfessionManager();
 
@@ -489,8 +487,6 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Ser
 	ManagedReference<FishingManager* > fishingManager;
 
 	ManagedReference<GamblingManager* > gamblingManager;
-
-	ManagedReference<AccountManager* > accountManager;
 
 	StringIdManager* stringIdManager;
 
@@ -635,7 +631,7 @@ public:
 
 	GamblingManager* getGamblingManager();
 
-	AccountManager* getAccountManager();
+	Account* getAccount(unsigned int accountID);
 
 	ProfessionManager* getProfessionManager();
 
@@ -788,7 +784,7 @@ public:
 
 	GamblingManager* getGamblingManager();
 
-	AccountManager* getAccountManager();
+	Account* getAccount(unsigned int accountID);
 
 	void setServerName(const String& servername);
 
