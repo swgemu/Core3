@@ -262,7 +262,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 				attrib->getMaximum());
 		String attribName = attrib->getName();
 		int index = attrib->getIndex();
-		newSpawn->addAttribute(attribName, randomValue, index);
+		newSpawn->addAttribute(attribName, randomValue);
 	}
 
 	long expires = getRandomExpirationTime(resourceEntry);

@@ -71,17 +71,11 @@ void CraftingManagerImplementation::sendResourceWeightsTo(PlayerCreature* player
 int CraftingManagerImplementation::calculateAssemblySuccess(PlayerCreature* player,
 		DraftSchematic* draftSchematic, float effectiveness) {
 
-	// Skill + Luck roll and crafting tool effectiveness determine the
-	// Success of the crafting result
+	// assemblyPoints is 0-12
+	float assemblyPoints = ((float)player->getSkillMod(draftSchematic->getAssemblySkill())) / 10.0f;
 
-	int preresult, result;
-
-	// Get assembly points from skill
-	String assemblySkill = draftSchematic->getAssemblySkill();
-	float assemblyPoints = float(player->getSkillMod(assemblySkill));
-
-	// Get modifier from tool to modify success
-	float toolModifier = 1.0f + (effectiveness / 100);
+	// 0.85-1.15
+	float toolModifier = 1.0f + (effectiveness / 100.0f);
 
 	//Pyollian Cake
 	/*if (player->hasBuff(BuffCRC::FOOD_CRAFT_BONUS)) {
@@ -94,37 +88,35 @@ int CraftingManagerImplementation::calculateAssemblySuccess(PlayerCreature* play
 		}
 	}*/
 
-	// Gets failure rate * 10  3.5% to 6.5% = 35 - 65
-	int failureRate = 50 - effectiveness;
 
-	int luck = System::random(1000) + player->getSkillMod("luck") * 10;
+	int luckRoll = System::random(100);
 
-	// The assembly roll is based on 0-1000 result
-	if (luck < failureRate)
-		return CRITICALFAILURE;
-
-	if (luck >= 950)
+	if(luckRoll > 95)
 		return AMAZINGSUCCESS;
 
-	// We will use a scale of 0-200 for the rest of results
-	luck = (luck / 5) + int(toolModifier * (assemblyPoints * 10));
+	if(luckRoll < 5)
+		return CRITICALFAILURE;
 
-	if (luck > 160)
+	luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
+
+	int assemblyRoll = (toolModifier * (luckRoll + (assemblyPoints * 5)));
+
+	if (assemblyRoll > 70)
 		return GREATSUCCESS;
 
-	if (luck > 140)
+	if (assemblyRoll > 60)
 		return GOODSUCCESS;
 
-	if (luck > 110)
+	if (assemblyRoll > 50)
 		return MODERATESUCCESS;
 
-	if (luck > 90)
+	if (assemblyRoll > 40)
 		return SUCCESS;
 
-	if (luck > 75)
+	if (assemblyRoll > 30)
 		return MARGINALSUCCESS;
 
-	if (luck > 60)
+	if (assemblyRoll > 20)
 		return OK;
 
 	return BARELYSUCCESSFUL;
@@ -132,7 +124,13 @@ int CraftingManagerImplementation::calculateAssemblySuccess(PlayerCreature* play
 
 float CraftingManagerImplementation::calculateAssemblyValueModifier(int assemblyResult) {
 
-	float results = ((3.4 / Math::ln(assemblyResult + 4)) - 1.1111);
+
+	if(assemblyResult == CraftingManager::AMAZINGSUCCESS)
+		return 1.2f;
+	else
+		return 1.0f;
+
+	/*float results = ((3.4 / Math::ln(assemblyResult + 4)) - 1.1111);
 
 	// Unless we want amazing assemblies to get a bonus, we cap the madifier at 1
 
@@ -150,7 +148,7 @@ float CraftingManagerImplementation::calculateAssemblyValueModifier(int assembly
 
 	}
 
-	return results;
+	return results;*/
 
 }
 
@@ -179,17 +177,11 @@ int CraftingManagerImplementation::calculateExperimentationFailureRate(PlayerCre
 int CraftingManagerImplementation::calculateExperimentationSuccess(PlayerCreature* player,
 		DraftSchematic* draftSchematic, float effectiveness) {
 
-	// Skill + Luck roll and crafting tool effectiveness determine the
-	// Success of the crafting result
+	// assemblyPoints is 0-12
+	float experimentingPoints = ((float)player->getSkillMod(draftSchematic->getExperimentationSkill())) / 10.0f;
 
-	int preresult, result;
-
-	// Get assembly points from skill
-	String assemblySkill = draftSchematic->getAssemblySkill();
-	float assemblyPoints = float(player->getSkillMod(assemblySkill));
-
-	// Get modifier from tool to modify success
-	float toolModifier = 1.0f + (effectiveness / 300);
+	// 0.85-1.15
+	float toolModifier = 1.0f + (effectiveness / 100.0f);
 
 	//Pyollian Cake
 	/*
@@ -203,37 +195,36 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(PlayerCreatur
 		}
 	}*/
 
-	// Gets failure rate * 10  3.5% to 6.5% = 35 - 65
-	int failureRate = 50 - effectiveness;
+	/// Range 0-100
+	int luckRoll = System::random(100);
 
-	int luck = System::random(1000) + player->getSkillMod("luck") * 10;
-
-	// The assembly roll is based on 0-1000 result
-	if (luck < failureRate)
-		return CRITICALFAILURE;
-
-	if (luck >= 950)
+	if(luckRoll > 95)
 		return AMAZINGSUCCESS;
 
-	// We will use a scale of 0-200 for the rest of results
-	luck = (luck / 5) + int(toolModifier * (assemblyPoints * 10));
+	if(luckRoll < 5)
+		return CRITICALFAILURE;
 
-	if (luck > 160)
+	luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
+
+	///
+	int experimentRoll = (toolModifier * (luckRoll + (experimentingPoints * 4)));
+
+	if (experimentRoll > 70)
 		return GREATSUCCESS;
 
-	if (luck > 140)
+	if (experimentRoll > 60)
 		return GOODSUCCESS;
 
-	if (luck > 110)
+	if (experimentRoll > 50)
 		return MODERATESUCCESS;
 
-	if (luck > 90)
+	if (experimentRoll > 40)
 		return SUCCESS;
 
-	if (luck > 75)
+	if (experimentRoll > 30)
 		return MARGINALSUCCESS;
 
-	if (luck > 60)
+	if (experimentRoll > 20)
 		return OK;
 
 	return BARELYSUCCESSFUL;
