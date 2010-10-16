@@ -60,7 +60,7 @@ CraftingValues::~CraftingValues() {
 	experimentalValuesMap.removeAll();
 
 	valuesToSend.removeAll();
-	info("Deleting CraftingValues");
+	//info("Deleting CraftingValues");
 }
 
 void CraftingValues::addExperimentalProperty(const String& title, const String& subtitle,
@@ -815,7 +815,7 @@ void CraftingValues::recalculateValues(bool initial) {
 }
 
 void CraftingValues::toString() {
-	/*Subclasses* tempSubclasses;
+	Subclasses* tempSubclasses;
 
 	for (int i = 0;i < experimentalValuesMap.size(); ++i) {
 		tempSubclasses = experimentalValuesMap.get(i);
@@ -825,5 +825,5 @@ void CraftingValues::toString() {
 		System::out << "Class: " << tempSubclasses->getClassTitle() << endl;
 		tempSubclasses->toString();
 		System::out << "**************************" << endl;
-	}*/
+	}
 }

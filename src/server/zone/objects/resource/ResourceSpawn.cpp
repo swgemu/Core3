@@ -148,7 +148,7 @@ void ResourceSpawn::addStfClass(const String& newclass) {
 		_implementation->addStfClass(newclass);
 }
 
-void ResourceSpawn::addAttribute(const String& attribute, int value, int index) {
+void ResourceSpawn::addAttribute(const String& attribute, int value) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -157,11 +157,10 @@ void ResourceSpawn::addAttribute(const String& attribute, int value, int index) 
 		DistributedMethod method(this, 14);
 		method.addAsciiParameter(attribute);
 		method.addSignedIntParameter(value);
-		method.addSignedIntParameter(index);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addAttribute(attribute, value, index);
+		_implementation->addAttribute(attribute, value);
 }
 
 bool ResourceSpawn::isType(const String& type) {
@@ -646,206 +645,200 @@ void ResourceSpawnImplementation::_serializationHelperMethod() {
 	addSerializableVariable("containerReferenceCount", &containerReferenceCount);
 	addSerializableVariable("dbDestroyed", &dbDestroyed);
 	addSerializableVariable("energy", &energy);
-	addSerializableVariable("indexedStats", &indexedStats);
 }
 
 ResourceSpawnImplementation::ResourceSpawnImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/resource/ResourceSpawn.idl(98):   	spawnType = "";
+	// server/zone/objects/resource/ResourceSpawn.idl(95):   	spawnType = "";
 	spawnType = "";
-	// server/zone/objects/resource/ResourceSpawn.idl(99):   	spawnPool = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(96):   	spawnPool = 0;
 	spawnPool = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(100):   	spawnAttributes.setNoDuplicateInsertPlan();
+	// server/zone/objects/resource/ResourceSpawn.idl(97):   	spawnAttributes.setNoDuplicateInsertPlan();
 	(&spawnAttributes)->setNoDuplicateInsertPlan();
-	// server/zone/objects/resource/ResourceSpawn.idl(102):   	containerReferenceCount = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(99):   	containerReferenceCount = 0;
 	containerReferenceCount = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(103):   	unitsInCirculation = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(100):   	unitsInCirculation = 0;
 	unitsInCirculation = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(104):   	maxUnitsSpawned = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(101):   	maxUnitsSpawned = 0;
 	maxUnitsSpawned = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(105):   	containerCRC = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(102):   	containerCRC = 0;
 	containerCRC = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(106):   	spawned = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(103):   	spawned = 0;
 	spawned = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(107):   	despawned = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(104):   	despawned = 0;
 	despawned = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(108):   	surveyToolType = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(105):   	surveyToolType = 0;
 	surveyToolType = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(109):   	zoneRestriction = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(106):   	zoneRestriction = 0;
 	zoneRestriction = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(110):   	spawnPool = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(107):   	spawnPool = 0;
 	spawnPool = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(111):   	dbDestroyed = false;
+	// server/zone/objects/resource/ResourceSpawn.idl(108):   	dbDestroyed = false;
 	dbDestroyed = false;
-	// server/zone/objects/resource/ResourceSpawn.idl(112):   	energy = false;
+	// server/zone/objects/resource/ResourceSpawn.idl(109):   	energy = false;
 	energy = false;
-	// server/zone/objects/resource/ResourceSpawn.idl(114):   	setLoggingName("ResourceSpawn");
+	// server/zone/objects/resource/ResourceSpawn.idl(111):   	setLoggingName("ResourceSpawn");
 	setLoggingName("ResourceSpawn");
 }
 
 void ResourceSpawnImplementation::finalize() {
-	// server/zone/objects/resource/ResourceSpawn.idl(118):   	Logger.info("trying to delete ResourceSpawn: " + spawnName);
+	// server/zone/objects/resource/ResourceSpawn.idl(115):   	Logger.info("trying to delete ResourceSpawn: " + spawnName);
 	Logger::info("trying to delete ResourceSpawn: " + spawnName);
 }
 
 void ResourceSpawnImplementation::setName(const String& name) {
-	// server/zone/objects/resource/ResourceSpawn.idl(144):   	spawnName = name;
+	// server/zone/objects/resource/ResourceSpawn.idl(141):   	spawnName = name;
 	spawnName = name;
 }
 
 void ResourceSpawnImplementation::setType(const String& type) {
-	// server/zone/objects/resource/ResourceSpawn.idl(148):   	spawnType = type;
+	// server/zone/objects/resource/ResourceSpawn.idl(145):   	spawnType = type;
 	spawnType = type;
 }
 
 void ResourceSpawnImplementation::setSpawnPool(int pool) {
-	// server/zone/objects/resource/ResourceSpawn.idl(152):   	spawnPool = pool;
+	// server/zone/objects/resource/ResourceSpawn.idl(149):   	spawnPool = pool;
 	spawnPool = pool;
-	// server/zone/objects/resource/ResourceSpawn.idl(153):   }
+	// server/zone/objects/resource/ResourceSpawn.idl(150):   }
 	if (spawnPool == 0){
-	// server/zone/objects/resource/ResourceSpawn.idl(154):   		spawnMaps.removeAll();
+	// server/zone/objects/resource/ResourceSpawn.idl(151):   		spawnMaps.removeAll();
 	(&spawnMaps)->removeAll();
 }
 }
 
 void ResourceSpawnImplementation::setZoneRestriction(int zone) {
-	// server/zone/objects/resource/ResourceSpawn.idl(159):   	zoneRestriction = zone;
+	// server/zone/objects/resource/ResourceSpawn.idl(156):   	zoneRestriction = zone;
 	zoneRestriction = zone;
 }
 
 void ResourceSpawnImplementation::addClass(const String& newclass) {
-	// server/zone/objects/resource/ResourceSpawn.idl(169):   	spawnClasses.add(newclass);
+	// server/zone/objects/resource/ResourceSpawn.idl(166):   	spawnClasses.add(newclass);
 	(&spawnClasses)->add(newclass);
 }
 
 void ResourceSpawnImplementation::addStfClass(const String& newclass) {
-	// server/zone/objects/resource/ResourceSpawn.idl(173):   	stfSpawnClasses.add(newclass);
+	// server/zone/objects/resource/ResourceSpawn.idl(170):   	stfSpawnClasses.add(newclass);
 	(&stfSpawnClasses)->add(newclass);
 }
 
 bool ResourceSpawnImplementation::isType(const String& type) {
-	// server/zone/objects/resource/ResourceSpawn.idl(179):  
-	for (	// server/zone/objects/resource/ResourceSpawn.idl(179):  		for(int i = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(176):  
+	for (	// server/zone/objects/resource/ResourceSpawn.idl(176):  		for(int i = 0;
 	int i = 0;
 	i < (&stfSpawnClasses)->size();
  ++i) {
-	// server/zone/objects/resource/ResourceSpawn.idl(180):  		}
-	if ((&stfSpawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(181):  				return true;
+	// server/zone/objects/resource/ResourceSpawn.idl(177):  		}
+	if ((&stfSpawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(178):  				return true;
 	return true;
 }
-	// server/zone/objects/resource/ResourceSpawn.idl(183):  
-	for (	// server/zone/objects/resource/ResourceSpawn.idl(183):  		for(int i = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl(180):  
+	for (	// server/zone/objects/resource/ResourceSpawn.idl(180):  		for(int i = 0;
 	int i = 0;
 	i < (&spawnClasses)->size();
  ++i) {
-	// server/zone/objects/resource/ResourceSpawn.idl(184):  		}
-	if ((&spawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(185):  				return true;
+	// server/zone/objects/resource/ResourceSpawn.idl(181):  		}
+	if ((&spawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(182):  				return true;
 	return true;
 }
-	// server/zone/objects/resource/ResourceSpawn.idl(187):  		return false;
+	// server/zone/objects/resource/ResourceSpawn.idl(184):  		return false;
 	return false;
 }
 
 void ResourceSpawnImplementation::setSurveyToolType(int type) {
-	// server/zone/objects/resource/ResourceSpawn.idl(191):  		surveyToolType = type;
+	// server/zone/objects/resource/ResourceSpawn.idl(188):  		surveyToolType = type;
 	surveyToolType = type;
 }
 
 void ResourceSpawnImplementation::setIsEnergy(bool val) {
-	// server/zone/objects/resource/ResourceSpawn.idl(195):  		energy = val;
+	// server/zone/objects/resource/ResourceSpawn.idl(192):  		energy = val;
 	energy = val;
 }
 
 String ResourceSpawnImplementation::getName() {
-	// server/zone/objects/resource/ResourceSpawn.idl(200):  		return spawnName;
+	// server/zone/objects/resource/ResourceSpawn.idl(197):  		return spawnName;
 	return spawnName;
 }
 
 String ResourceSpawnImplementation::getType() {
-	// server/zone/objects/resource/ResourceSpawn.idl(204):   	return spawnType;
+	// server/zone/objects/resource/ResourceSpawn.idl(201):   	return spawnType;
 	return spawnType;
 }
 
 String ResourceSpawnImplementation::getClass(int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(208):  
+	// server/zone/objects/resource/ResourceSpawn.idl(205):  
 	if (index < (&spawnClasses)->size()){
-	// server/zone/objects/resource/ResourceSpawn.idl(209):   		return spawnClasses.get(index);
+	// server/zone/objects/resource/ResourceSpawn.idl(206):   		return spawnClasses.get(index);
 	return (&spawnClasses)->get(index);
 }
 
 	else {
-	// server/zone/objects/resource/ResourceSpawn.idl(211):   		return "";
+	// server/zone/objects/resource/ResourceSpawn.idl(208):   		return "";
 	return "";
 }
 }
 
 String ResourceSpawnImplementation::getFinalClass() {
-	// server/zone/objects/resource/ResourceSpawn.idl(216):  
-	if ((&spawnClasses)->size() > 1)	// server/zone/objects/resource/ResourceSpawn.idl(217):   		return spawnClasses.get(spawnClasses.size() - 1);
+	// server/zone/objects/resource/ResourceSpawn.idl(213):  
+	if ((&spawnClasses)->size() > 1)	// server/zone/objects/resource/ResourceSpawn.idl(214):   		return spawnClasses.get(spawnClasses.size() - 1);
 	return (&spawnClasses)->get((&spawnClasses)->size() - 1);
 
-	else 	// server/zone/objects/resource/ResourceSpawn.idl(219):   		return "";
+	else 	// server/zone/objects/resource/ResourceSpawn.idl(216):   		return "";
 	return "";
 }
 
 void ResourceSpawnImplementation::setSpawned(unsigned long long t) {
-	// server/zone/objects/resource/ResourceSpawn.idl(225):   	spawned = t;
+	// server/zone/objects/resource/ResourceSpawn.idl(222):   	spawned = t;
 	spawned = t;
 }
 
 void ResourceSpawnImplementation::setDespawned(unsigned long long t) {
-	// server/zone/objects/resource/ResourceSpawn.idl(229):   	despawned = t;
+	// server/zone/objects/resource/ResourceSpawn.idl(226):   	despawned = t;
 	despawned = t;
 }
 
 unsigned long long ResourceSpawnImplementation::getDespawned() {
-	// server/zone/objects/resource/ResourceSpawn.idl(233):   	return despawned;
+	// server/zone/objects/resource/ResourceSpawn.idl(230):   	return despawned;
 	return despawned;
 }
 
 void ResourceSpawnImplementation::setContainerCRC(unsigned int crc) {
-	// server/zone/objects/resource/ResourceSpawn.idl(237):   	containerCRC = crc;
+	// server/zone/objects/resource/ResourceSpawn.idl(234):   	containerCRC = crc;
 	containerCRC = crc;
 }
 
 unsigned int ResourceSpawnImplementation::getContainerCRC() {
-	// server/zone/objects/resource/ResourceSpawn.idl(241):   	return containerCRC;
+	// server/zone/objects/resource/ResourceSpawn.idl(238):   	return containerCRC;
 	return containerCRC;
 }
 
 int ResourceSpawnImplementation::getSpawnPool() {
-	// server/zone/objects/resource/ResourceSpawn.idl(245):   	return spawnPool;
+	// server/zone/objects/resource/ResourceSpawn.idl(242):   	return spawnPool;
 	return spawnPool;
 }
 
 bool ResourceSpawnImplementation::isEnergy() {
-	// server/zone/objects/resource/ResourceSpawn.idl(249):   	return energy;
+	// server/zone/objects/resource/ResourceSpawn.idl(246):   	return energy;
 	return energy;
 }
 
 int ResourceSpawnImplementation::getZoneRestriction() {
-	// server/zone/objects/resource/ResourceSpawn.idl(253):   	return zoneRestriction;
+	// server/zone/objects/resource/ResourceSpawn.idl(250):   	return zoneRestriction;
 	return zoneRestriction;
 }
 
 int ResourceSpawnImplementation::getSurveyToolType() {
-	// server/zone/objects/resource/ResourceSpawn.idl(257):   	return surveyToolType;
+	// server/zone/objects/resource/ResourceSpawn.idl(254):   	return surveyToolType;
 	return surveyToolType;
 }
 
 int ResourceSpawnImplementation::getSpawnMapSize() {
-	// server/zone/objects/resource/ResourceSpawn.idl(261):   	return spawnMaps.size();
+	// server/zone/objects/resource/ResourceSpawn.idl(258):   	return spawnMaps.size();
 	return (&spawnMaps)->size();
 }
 
 int ResourceSpawnImplementation::getAttributeValue(int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(296):   	return spawnAttributes.get(index);
+	// server/zone/objects/resource/ResourceSpawn.idl(293):   	return spawnAttributes.get(index);
 	return (&spawnAttributes)->get(index);
-}
-
-int ResourceSpawnImplementation::getValueOf(int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(300):   	return indexedStats.get(index);
-	return (&indexedStats)->get(index);
 }
 
 /*
@@ -887,7 +880,7 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		addStfClass(inv->getAsciiParameter(_param0_addStfClass__String_));
 		break;
 	case 15:
-		addAttribute(inv->getAsciiParameter(_param0_addAttribute__String_int_int_), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		addAttribute(inv->getAsciiParameter(_param0_addAttribute__String_int_), inv->getSignedIntParameter());
 		break;
 	case 16:
 		resp->insertBoolean(isType(inv->getAsciiParameter(_param0_isType__String_)));
@@ -1004,8 +997,8 @@ void ResourceSpawnAdapter::addStfClass(const String& newclass) {
 	((ResourceSpawnImplementation*) impl)->addStfClass(newclass);
 }
 
-void ResourceSpawnAdapter::addAttribute(const String& attribute, int value, int index) {
-	((ResourceSpawnImplementation*) impl)->addAttribute(attribute, value, index);
+void ResourceSpawnAdapter::addAttribute(const String& attribute, int value) {
+	((ResourceSpawnImplementation*) impl)->addAttribute(attribute, value);
 }
 
 bool ResourceSpawnAdapter::isType(const String& type) {

@@ -80,9 +80,7 @@ class CraftingTool extends ToolTangibleObject {
 	
 	protected transient int assemblyResult;
 	protected transient int experimentationResult;
-	
-	protected transient int experimentalFailureRate;
-	
+
 	protected transient unsigned long lastExperimentationTimestamp;
 
 	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool

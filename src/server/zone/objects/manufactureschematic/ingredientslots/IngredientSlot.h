@@ -110,7 +110,7 @@ public:
 	}
 
 	~IngredientSlot(){
-		info("Deleting Slot type " + String::valueOf(slottype));
+		//info("Deleting Slot type " + String::valueOf(slottype));
 	}
 
 	bool isType(int type) {

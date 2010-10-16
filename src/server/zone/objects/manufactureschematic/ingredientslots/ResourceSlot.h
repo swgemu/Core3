@@ -96,24 +96,23 @@ public:
 			if(!incomingResource->getSpawnObject()->isType(type))
 				return false;
 
-			bool removeFromParent = false;
-
 			if (contents != NULL) {
+//System::out << "Has: " << contents->getQuantity() << " Incoming: " << incomingResource->getQuantity() << " " << endl ;
+
 				int needs = requiredQuantity - contents->getQuantity();
 
-				if(needs < incomingResource->getQuantity()) {
+				if(incomingResource->getQuantity() > needs) {
 
 					incomingResource->setQuantity(incomingResource->getQuantity() - needs);
 					contents->setQuantity(contents->getQuantity() + needs);
 
 				} else {
-
 					contents->setQuantity(contents->getQuantity() + incomingResource->getQuantity());
-					removeFromParent = true;
+					incomingResource->setQuantity(0);
 				}
-			}
 
-			if (contents == NULL && incomingResource->getQuantity() > requiredQuantity) {
+			} else if (contents == NULL && incomingResource->getQuantity() > requiredQuantity) {
+//System::out << "Empty " << " Incoming: " << incomingResource->getQuantity() << " " << endl ;
 
 				ResourceSpawn* spawn = incomingResource->getSpawnObject();
 
@@ -128,6 +127,7 @@ public:
 				contents->sendAttributeListTo(player);
 
 			} else {
+//System::out << "Empty " << " Incoming: " << incomingResource->getQuantity() << " " << endl ;
 
 				contents = incomingResource;
 
@@ -135,12 +135,10 @@ public:
 					contents->getParent()->removeObject(contents, true);
 				craftingTool->addObject(contents, -1, false);
 
-				removeFromParent = true;
-
+				if(previousParent != NULL)
+					previousParent->removeObject(incomingResource, true);
 			}
-
-			if(removeFromParent && previousParent != NULL)
-				previousParent->removeObject(incomingResource, true);
+//System::out << "Now Has: " << contents->getQuantity() << " Incoming: " << incomingResource->getQuantity() << " " << endl << endl;;
 
 			return true;
 		}

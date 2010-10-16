@@ -48,6 +48,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
@@ -73,17 +74,8 @@ bool ResourceSpawnImplementation::inShift() {
 	return despawned > time(0);
 }
 
-void ResourceSpawnImplementation::addAttribute(const String& attribute,
-		int value, int index) {
+void ResourceSpawnImplementation::addAttribute(const String& attribute, int value) {
 	spawnAttributes.put(attribute, value);
-
-	if (indexedStats.size() == 0) {
-
-		for (int i = 0; i < 11; ++i)
-			indexedStats.add(0);
-	}
-
-	indexedStats.set(index, (uint32)value);
 }
 
 int ResourceSpawnImplementation::getAttributeAndValue(String& attribute,
@@ -95,6 +87,48 @@ int ResourceSpawnImplementation::getAttributeAndValue(String& attribute,
 	} else {
 		return 0;
 	}
+}
+
+int ResourceSpawnImplementation::getValueOf(int stat) {
+
+	String attribute = "";
+
+	switch(stat) {
+	case CraftingManager::CR:
+		attribute = "res_cold_resist";
+		break;
+	case CraftingManager::CD:
+		attribute = "res_conductivity";
+		break;
+	case CraftingManager::DR:
+		attribute = "res_decay_resist";
+		break;
+	case CraftingManager::HR:
+		attribute = "res_heat_resist";
+		break;
+	case CraftingManager::FL:
+		attribute = "res_flavor";
+		break;
+	case CraftingManager::MA:
+		attribute = "res_malleability";
+		break;
+	case CraftingManager::PE:
+		attribute = "res_potential_energy";
+		break;
+	case CraftingManager::OQ:
+		attribute = "res_quality";
+		break;
+	case CraftingManager::SR:
+		attribute = "res_shock_resistance";
+		break;
+	case CraftingManager::UT:
+		attribute = "res_toughness";
+		break;
+	default:
+		return 0;
+		break;
+	}
+	return spawnAttributes.get(attribute);
 }
 
 bool ResourceSpawnImplementation::isUnknownType() {

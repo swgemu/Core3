@@ -235,8 +235,6 @@ protected:
 
 	int experimentationResult;
 
-	int experimentalFailureRate;
-
 	unsigned long long lastExperimentationTimestamp;
 
 public:
