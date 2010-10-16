@@ -50,7 +50,7 @@ object_building_player_city_theater_corellia = object_building_player_city_share
 	allowedZones = {0,7},
 	length = 5,
 	width = 6,
-	abilityRequired = "place_theatre",
+	abilityRequired = "place_theater",
 	cityRankRequired = 4
 
 }

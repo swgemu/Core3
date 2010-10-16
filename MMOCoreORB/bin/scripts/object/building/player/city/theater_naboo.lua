@@ -50,7 +50,7 @@ object_building_player_city_theater_naboo = object_building_player_city_shared_t
 	width = 6,
 	gameObjectType = 524,
 	mapLocationsType1 = 51,
-	abilityRequired = "place_theatre",
+	abilityRequired = "place_theater",
 	cityRankRequired = 4
 }
 
