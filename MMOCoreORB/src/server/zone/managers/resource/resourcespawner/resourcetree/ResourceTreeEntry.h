@@ -77,7 +77,7 @@ private:
 	Vector<String> stfClassList;
 
 	/// List of Attributes
-	Vector<ResourceAttribute* > attributeList;
+	VectorMap<String, ResourceAttribute* > attributeMap;
 
 	/// Maximum of this type that can spawn
 	int maxtype;
@@ -134,6 +134,8 @@ public:
 		randomNameClass = "";
 
 		zoneRestriction = -1;
+
+		attributeMap.setNullValue(NULL);
 	}
 
 	/**
@@ -142,8 +144,8 @@ public:
 	~ResourceTreeEntry() {
 		classList.removeAll();
 		stfClassList.removeAll();
-		for(int i = 0; i < attributeList.size(); ++i)
-			delete attributeList.get(i);
+		for(int i = 0; i < attributeMap.size(); ++i)
+			delete attributeMap.get(i);
 	}
 
 	/**
@@ -246,7 +248,16 @@ public:
 	 * \param attrib ResourceAttribute to add
 	 */
 	void addAttribute(ResourceAttribute* attrib) {
-		attributeList.add(attrib);
+		attributeMap.put(attrib->getName(), attrib);
+	}
+
+	/**
+	 * Gets attribute
+	 * \param index index of attribute
+	 * \return ResourceAttibute at index
+	 */
+	ResourceAttribute* getAttribute(const String& attrib) {
+		return attributeMap.get(attrib);
 	}
 
 	/**
@@ -255,10 +266,7 @@ public:
 	 * \return ResourceAttibute at index
 	 */
 	ResourceAttribute* getAttribute(const int index) {
-		if(index <= attributeList.size())
-			return attributeList.get(index);
-		else
-			return NULL;
+		return attributeMap.get(index);
 	}
 
 	/**
@@ -266,7 +274,7 @@ public:
 	 * \return Number of attributes
 	 */
 	int getAttributeCount() {
-		return attributeList.size();
+		return attributeMap.size();
 	}
 
 	/**
@@ -536,10 +544,10 @@ public:
 		System::out << "Min Pools = " << minpool << endl;
 		System::out << "Max Pools = " << maxpool << endl;
 
-		for(int i = 0; i < attributeList.size(); ++i)
-			System::out << attributeList.get(i)->getName() << ": "
-			<< attributeList.get(i)->getMinimum()  << " - "
-			<< attributeList.get(i)->getMaximum() << endl;
+		for(int i = 0; i < attributeMap.size(); ++i)
+			System::out << attributeMap.get(i)->getName() << ": "
+			<< attributeMap.get(i)->getMinimum()  << " - "
+			<< attributeMap.get(i)->getMaximum() << endl;
 
 		System::out << "Recycled = " << recycled  << endl;
 		System::out << "Resource Container Type = " << resourceContainerType  << endl;

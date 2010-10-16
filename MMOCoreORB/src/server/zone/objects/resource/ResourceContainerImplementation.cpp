@@ -80,7 +80,7 @@ void ResourceContainerImplementation::setQuantity(int quantity, bool destroyOnZe
 
 	stackQuantity = quantity;
 
-	 if(stackQuantity < 1 && destroyOnZero) {
+	if(stackQuantity < 1 && destroyOnZero) {
 
 		if(parent != NULL) {
 			parent->broadcastDestroy(_this, true);

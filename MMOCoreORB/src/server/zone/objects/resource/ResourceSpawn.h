@@ -112,7 +112,7 @@ public:
 
 	void addStfClass(const String& newclass);
 
-	void addAttribute(const String& attribute, int value, int index);
+	void addAttribute(const String& attribute, int value);
 
 	bool isType(const String& type);
 
@@ -242,8 +242,6 @@ protected:
 
 	bool energy;
 
-	Vector<unsigned int> indexedStats;
-
 public:
 	ResourceSpawnImplementation();
 
@@ -269,7 +267,7 @@ public:
 
 	void addStfClass(const String& newclass);
 
-	void addAttribute(const String& attribute, int value, int index);
+	void addAttribute(const String& attribute, int value);
 
 	bool isType(const String& type);
 
@@ -396,7 +394,7 @@ public:
 
 	void addStfClass(const String& newclass);
 
-	void addAttribute(const String& attribute, int value, int index);
+	void addAttribute(const String& attribute, int value);
 
 	bool isType(const String& type);
 
@@ -451,7 +449,7 @@ protected:
 	String _param0_setType__String_;
 	String _param0_addClass__String_;
 	String _param0_addStfClass__String_;
-	String _param0_addAttribute__String_int_int_;
+	String _param0_addAttribute__String_int_;
 	String _param0_isType__String_;
 };
 

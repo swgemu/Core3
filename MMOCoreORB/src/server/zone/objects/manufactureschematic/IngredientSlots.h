@@ -56,7 +56,7 @@ public:
 	}
 
 	~IngredientSlots() {
-		info("Deleting IngredientSlots");
+		//info("Deleting IngredientSlots");
 	}
 
 };

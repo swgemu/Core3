@@ -170,6 +170,7 @@ void CraftingToolImplementation::updateCraftingValues(ManufactureSchematic* sche
 	CraftingValues* craftingValues = schematic->getCraftingValues();
 
 	effectiveness = craftingValues->getCurrentValue("usemodifier");
+
 	//craftingValues->toString();
 }
 
@@ -217,7 +218,6 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 	experimentationPointsUsed = 0;
 	assemblyResult = 8;
 	experimentationResult = 8;
-	experimentalFailureRate = 0;
 
 	PlayerObject* playerObject = player->getPlayerObject();
 	int complexity = complexityLevel;  ///
@@ -479,7 +479,7 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 		// End Dtano3 *****************************************************
 
 		// Start the insert count so inserts and removals work
-		insertCounter = 1;
+		insertCounter = 0;
 
 	} catch (...) {
 		player->sendSystemMessage("ui_craft", "err_no_prototype");
@@ -551,12 +551,12 @@ void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleO
 
 	Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getIngredientSlot(slot);
 
+	// Increment the insert counter
+	insertCounter++;
+
 	if(ingredientSlot->add(player, tano)) {
 
 		sendIngredientAddSuccess(player, slot, clientCounter);
-
-		// Increment the insert counter
-		insertCounter++;
 
 	} else {
 
@@ -638,6 +638,9 @@ void CraftingToolImplementation::removeIngredient(PlayerCreature* player, Tangib
 
 	Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getIngredientSlot(slot);
 
+	// Increment the insert counter
+	insertCounter++;
+
 	if(ingredientSlot->remove(player)) {
 
 		sendIngredientRemoveSuccess(player, slot, clientCounter);
@@ -647,10 +650,6 @@ void CraftingToolImplementation::removeIngredient(PlayerCreature* player, Tangib
 		sendSlotMessage(player, clientCounter, IngredientSlot::NOCOMPONENTTRANSFER);
 
 	}
-
-	// Increment the insert counter
-	insertCounter++;
-
 }
 
 void CraftingToolImplementation::sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int clientCounter) {
@@ -743,23 +742,16 @@ void CraftingToolImplementation::nextCraftingStage(PlayerCreature* player, int c
 
 	if (state == 2) {
 
-		// Calculate exp failure for red bars
-		experimentalFailureRate = craftingManager->calculateExperimentationFailureRate(player, manufactureSchematic, 0);
-
 		// Flag to get the experimenting window
-		if (craftingStation != NULL) {
-
+		if (craftingStation != NULL)
 			// Assemble with Experimenting
 			state = 3;
-			initialAssembly(player, clientCounter);
 
-		} else {
-
+		else
 			// Assemble without Experimenting
 			state = 4;
-			initialAssembly(player, clientCounter);
 
-		}
+		initialAssembly(player, clientCounter);
 
 	} else if (state == 3) {
 
@@ -790,6 +782,10 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 	String expskill = draftSchematic->getExperimentationSkill();
 	experimentationPointsTotal = int(player->getSkillMod(expskill) / 10);
 	experimentationPointsUsed = 0;
+
+	// Calculate exp failure for red bars
+	int experimentalFailureRate =
+			craftingManager->calculateExperimentationFailureRate(player, manufactureSchematic, 0);
 
 	// Get the level of customization
 	String custskill = draftSchematic->getCustomizationSkill();
@@ -905,7 +901,7 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 		// End DPLAY9 ****************************************
 
 		// Reset inserts
-		insertCounter = 1;
+		insertCounter = 0;
 	}
 }
 
