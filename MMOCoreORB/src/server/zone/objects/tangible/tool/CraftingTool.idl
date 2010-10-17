@@ -167,6 +167,10 @@ class CraftingTool extends ToolTangibleObject {
 	public native void selectDraftSchematic(PlayerCreature player, int index);
 	
 	public native void createSessionObjects(PlayerCreature player, DraftSchematic draftschematic);
+	
+	public native boolean createManufactureSchematic(PlayerCreature player, DraftSchematic draftschematic);
+	
+	public native boolean createPrototype(PlayerCreature player, DraftSchematic draftschematic);
 
 	public native void synchronizedUIListenForSchematic(PlayerCreature player);
 	
