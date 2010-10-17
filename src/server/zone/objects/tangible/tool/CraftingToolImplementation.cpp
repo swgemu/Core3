@@ -213,7 +213,7 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 
 	/// pre: player and _this locked
 
-	insertCounter = 1;
+	insertCounter = 0;
 	experimentationPointsTotal = 0;
 	experimentationPointsUsed = 0;
 	assemblyResult = 8;
@@ -304,6 +304,22 @@ void CraftingToolImplementation::sendToolStartFailure(PlayerCreature* player) {
 
 void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 
+	clearCraftingSession();
+
+	if (player != NULL) {
+		// DPlay9
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
+				player->getPlayerObject());
+		dplay9->setCraftingState(0);
+		state = 0;
+		dplay9->close();
+		player->sendMessage(dplay9);
+
+		player->setLastCraftingToolUsed(NULL);
+	}
+}
+
+void CraftingToolImplementation::clearCraftingSession() {
 	/// pre: _this locked
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();
@@ -333,19 +349,6 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 		}
 	}
 
-
-
-	if (player != NULL) {
-		// DPlay9
-		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
-				player->getPlayerObject());
-		dplay9->setCraftingState(0);
-		state = 0;
-		dplay9->close();
-		player->sendMessage(dplay9);
-
-		player->setLastCraftingToolUsed(NULL);
-	}
 }
 
 void CraftingToolImplementation::closeCraftingWindow(PlayerCreature* player, int clientCounter) {
@@ -396,6 +399,15 @@ void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
 					== CraftingTool::JEDI && station->getStationType()
 					== CraftingTool::WEAPON)) {
 				craftingStation = station;
+
+				StringBuffer message;
+
+				message << "Station located at " << station->getPositionX() << ", " << station->getPositionZ() << ", "
+						<< station->getPositionY() << " in cell " << station->getParentID() << " on planet "
+						<< station->getZone()->getZoneID() << " Station type: " << station->getStationType()
+						<< " Tool Type: " << getToolType();
+
+				player->sendSystemMessage(message.toString());
 				return;
 			}
 		}
@@ -418,45 +430,11 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 		return;
 	}
 
+	clearCraftingSession();
+
 	try {
 
-		ManagedReference<ManufactureSchematic* > manufactureSchematic
-				= (ManufactureSchematic*) draftschematic->createManufactureSchematic(_this);
-		manufactureSchematic->createChildObjects();
-
-
-		ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
-				draftschematic->getTanoCRC(), 0));
-
-		if (prototype == NULL ) {
-			closeCraftingWindow(player, 1);
-			cancelCraftingSession(player);
-			return;
-		}
-
-
-		prototype->createChildObjects();
-
-
-		if (manufactureSchematic == NULL) {
-			player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
-			closeCraftingWindow(player, 1);
-			cancelCraftingSession(player);
-			return;
-		}
-
-		if (prototype == NULL) {
-			player->sendSystemMessage("ui_craft", "err_no_prototype");
-			closeCraftingWindow(player, 1);
-			cancelCraftingSession(player);
-			return;
-		}
-
-		addObject(manufactureSchematic, 0x4, false);
-		manufactureSchematic->sendTo(player, true);
-
-		addObject(prototype, -1, false);
-		prototype->sendTo(player, true);
+		createSessionObjects(player, draftschematic);
 
 		// Dplay9 ********************************************************
 		// Sets the Crafting state to 2, which is the Resource screen
@@ -472,7 +450,7 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 		// Dtano3 ********************************************************
 		// Update Condition Damage
-		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(prototype);
+		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(getPrototype());
 		dtano3->updateConditionDamage();
 		dtano3->close();
 		player->sendMessage(dtano3);
@@ -484,6 +462,47 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 	} catch (...) {
 		player->sendSystemMessage("ui_craft", "err_no_prototype");
 	}
+}
+
+void CraftingToolImplementation::createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic) {
+
+	ManagedReference<ManufactureSchematic* > manufactureSchematic
+			= (ManufactureSchematic*) draftschematic->createManufactureSchematic(_this);
+	manufactureSchematic->createChildObjects();
+
+
+	ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
+			draftschematic->getTanoCRC(), 0));
+
+	if (prototype == NULL ) {
+		closeCraftingWindow(player, 1);
+		cancelCraftingSession(player);
+		return;
+	}
+
+
+	prototype->createChildObjects();
+
+
+	if (manufactureSchematic == NULL) {
+		player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
+		closeCraftingWindow(player, 1);
+		cancelCraftingSession(player);
+		return;
+	}
+
+	if (prototype == NULL) {
+		player->sendSystemMessage("ui_craft", "err_no_prototype");
+		closeCraftingWindow(player, 1);
+		cancelCraftingSession(player);
+		return;
+	}
+
+	addObject(manufactureSchematic, 0x4, false);
+	manufactureSchematic->sendTo(player, true);
+
+	addObject(prototype, -1, false);
+	prototype->sendTo(player, true);
 }
 
 void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature* player) {
@@ -881,18 +900,25 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 	// Remove all resources - Not recovering them
 	if (assemblyResult == CraftingManager::CRITICALFAILURE) {
 
-		//manufactureSchematic->resetCraftingValues();
+		insertCounter = 0;
+
+		DraftSchematic* draftSchematic = manufactureSchematic->getDraftSchematic();
+
+		clearCraftingSession();
+		createSessionObjects(player, draftSchematic);
+		manufactureSchematic = getManufactureSchematic();
 
 		state = 2;
 
 		// re-setup the slots and ingredients
-		manufactureSchematic->synchronizedUIListen(player, 0);
 		manufactureSchematic->initializeIngredientSlots(_this, manufactureSchematic->getDraftSchematic());
+		manufactureSchematic->synchronizedUIListen(player, 0);
 
 		// Start Dplay9 **************************************
 		// Reset crafting state
 		PlayerObjectDeltaMessage9* dplay9 =
 			new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		dplay9->setExperimentationPoints(0xFFFFFFFF);
 		dplay9->setCraftingState(state);
 
 		dplay9->close();
@@ -900,8 +926,13 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 		player->sendMessage(dplay9);
 		// End DPLAY9 ****************************************
 
-		// Reset inserts
-		insertCounter = 0;
+		// Dtano3 ********************************************************
+		// Update Condition Damage
+		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(getPrototype());
+		dtano3->updateConditionDamage();
+		dtano3->close();
+		player->sendMessage(dtano3);
+		// End Dtano3 *****************************************************
 	}
 }
 
@@ -979,12 +1010,8 @@ void CraftingToolImplementation::setInitialCraftingValues() {
 
 	craftingValues->recalculateValues(true);
 
-	//craftingValues->toString();
-
 	if (applyComponentBoost())
 		craftingValues->recalculateValues(true);
-
-
 }
 
 bool CraftingToolImplementation::applyComponentBoost() {
