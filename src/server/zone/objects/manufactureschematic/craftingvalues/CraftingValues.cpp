@@ -811,6 +811,7 @@ void CraftingValues::recalculateValues(bool initial) {
 			valuesToSend.add(attributeName);
 		}
 	}
+
 	//toString();
 }
 

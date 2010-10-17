@@ -464,45 +464,53 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 	}
 }
 
-void CraftingToolImplementation::createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic) {
+void CraftingToolImplementation::createSessionObjects(PlayerCreature* player, DraftSchematic* draftSchematic) {
+
+	if(createManufactureSchematic(player, draftSchematic))
+		createPrototype(player, draftSchematic);
+}
+
+bool CraftingToolImplementation::createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic
 			= (ManufactureSchematic*) draftschematic->createManufactureSchematic(_this);
 	manufactureSchematic->createChildObjects();
 
-
-	ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
-			draftschematic->getTanoCRC(), 0));
-
-	if (prototype == NULL ) {
-		closeCraftingWindow(player, 1);
-		cancelCraftingSession(player);
-		return;
-	}
-
-
-	prototype->createChildObjects();
-
-
 	if (manufactureSchematic == NULL) {
 		player->sendSystemMessage("ui_craft", "err_no_manf_schematic");
 		closeCraftingWindow(player, 1);
 		cancelCraftingSession(player);
-		return;
-	}
-
-	if (prototype == NULL) {
-		player->sendSystemMessage("ui_craft", "err_no_prototype");
-		closeCraftingWindow(player, 1);
-		cancelCraftingSession(player);
-		return;
+		return false;
 	}
 
 	addObject(manufactureSchematic, 0x4, false);
 	manufactureSchematic->sendTo(player, true);
 
+	return true;
+}
+
+bool CraftingToolImplementation::createPrototype(PlayerCreature* player, DraftSchematic* draftschematic) {
+
+	// Remove all items, incase there are any
+	while(getContainerObjectsSize() > 0)
+		removeObject(getContainerObject(0));
+
+	ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (player->getZoneServer()->createObject(
+			draftschematic->getTanoCRC(), 0));
+
+	if (prototype == NULL) {
+		player->sendSystemMessage("ui_craft", "err_no_prototype");
+		closeCraftingWindow(player, 1);
+		cancelCraftingSession(player);
+		return false;
+	}
+
+	prototype->createChildObjects();
+
 	addObject(prototype, -1, false);
 	prototype->sendTo(player, true);
+
+	return true;
 }
 
 void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature* player) {
@@ -902,11 +910,7 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 
 		insertCounter = 0;
 
-		DraftSchematic* draftSchematic = manufactureSchematic->getDraftSchematic();
-
-		clearCraftingSession();
-		createSessionObjects(player, draftSchematic);
-		manufactureSchematic = getManufactureSchematic();
+		createPrototype(player, draftSchematic);
 
 		state = 2;
 
