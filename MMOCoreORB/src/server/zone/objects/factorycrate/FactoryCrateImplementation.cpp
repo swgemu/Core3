@@ -219,12 +219,29 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 
 void FactoryCrateImplementation::split(int newStackSize) {
 
+	TangibleObject* prototype = getPrototype();
+
+	if(prototype == NULL || !prototype->isTangibleObject()) {
+		error("FactoryCrateImplementation::split has a NULL or non-tangible item");
+		return;
+	}
+
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	ManagedReference<FactoryCrate*> newCrate = (FactoryCrate*) objectManager->cloneObject(_this);
+	ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
 
-	if(parent == NULL || newCrate == NULL)
+	ManagedReference<FactoryCrate*> newCrate =
+			dynamic_cast<FactoryCrate*>(server->getZoneServer()->createObject(prototype->getClientObjectCRC(), 2));
+
+	if(parent == NULL || newCrate == NULL || protoclone == NULL)
 		return;
+
+	protoclone->setParent(NULL);
+
+	protoclone->setOptionsBitmask(0x2100);
+	newCrate->setOptionsBitmask(0x2100);
+
+	newCrate->addObject(protoclone, -1, false);
 
 	newCrate->setUseCount(newStackSize, false);
 	setUseCount(getUseCount() - newStackSize, true);

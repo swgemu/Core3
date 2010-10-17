@@ -160,6 +160,16 @@ bool SchematicList::contains(Vector<ManagedReference<DraftSchematic* > > filtere
 	return false;
 }
 
+/**
+ *  Complexity Requirements
+ 	 1 - 15 General Crafting Tool
+	16 - 20 Specialized Crafting Tool
+	21 - 25 Specialized Crafting Tool + Public Crafting Station
+	26 - Specialized Crafting Tool + Private Crafting Station
+
+	http://swg.stratics.com/content/gameplay/guides/guides.php?Cat=664&uid=902
+ */
+
 Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
 		PlayerCreature* player, Vector<uint32>* enabledTabs, int complexityLevel) {
 

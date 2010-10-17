@@ -128,7 +128,11 @@ int ResourceSpawnImplementation::getValueOf(int stat) {
 		return 0;
 		break;
 	}
-	return spawnAttributes.get(attribute);
+
+	if(spawnAttributes.contains(attribute))
+		return spawnAttributes.get(attribute);
+
+	return 0;
 }
 
 bool ResourceSpawnImplementation::isUnknownType() {
