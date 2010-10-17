@@ -159,6 +159,10 @@ public:
 
 	void createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
 
+	bool createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic);
+
+	bool createPrototype(PlayerCreature* player, DraftSchematic* draftschematic);
+
 	void synchronizedUIListenForSchematic(PlayerCreature* player);
 
 	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
@@ -306,6 +310,10 @@ public:
 
 	void createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
 
+	bool createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic);
+
+	bool createPrototype(PlayerCreature* player, DraftSchematic* draftschematic);
+
 	void synchronizedUIListenForSchematic(PlayerCreature* player);
 
 	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
@@ -424,6 +432,10 @@ public:
 	void selectDraftSchematic(PlayerCreature* player, int index);
 
 	void createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
+
+	bool createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic);
+
+	bool createPrototype(PlayerCreature* player, DraftSchematic* draftschematic);
 
 	void synchronizedUIListenForSchematic(PlayerCreature* player);
 

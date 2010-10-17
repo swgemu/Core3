@@ -203,7 +203,8 @@ public:
 		valuesToSend.removeAll();
 	}
 
-	inline void clearAll(){
+	inline void clearAll() {
+		doHide = true;
 		experimentalValuesMap.removeAll();
 		valuesToSend.removeAll();
 	}
