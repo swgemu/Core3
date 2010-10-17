@@ -158,11 +158,15 @@ class CraftingTool extends ToolTangibleObject {
 	
 	public native void cancelCraftingSession(PlayerCreature player);
 	
+	public native void clearCraftingSession();
+	
 	private native void closeCraftingWindow(PlayerCreature player, int clientCounter);
 	
 	private native void locateCraftingStation(PlayerCreature player, int toolType);
 
 	public native void selectDraftSchematic(PlayerCreature player, int index);
+	
+	public native void createSessionObjects(PlayerCreature player, DraftSchematic draftschematic);
 
 	public native void synchronizedUIListenForSchematic(PlayerCreature player);
 	
