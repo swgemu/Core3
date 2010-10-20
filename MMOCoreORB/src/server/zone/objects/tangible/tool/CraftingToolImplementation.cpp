@@ -383,8 +383,10 @@ void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
 	ManagedReference<CraftingStation*> station = NULL;
 
 	for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* scno =
+		SceneObjectImplementation* impl =
 				(SceneObjectImplementation*) player->getInRangeObject(i);
+
+		SceneObject* scno = impl->_this;
 
 		if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
 
@@ -398,14 +400,14 @@ void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
 					== CraftingTool::WEAPON)) {
 				craftingStation = station;
 
-				StringBuffer message;
+				/*StringBuffer message;
 
 				message << "Station located at " << station->getPositionX() << ", " << station->getPositionZ() << ", "
 						<< station->getPositionY() << " in cell " << station->getParentID() << " on planet "
 						<< station->getZone()->getZoneID() << " Station type: " << station->getStationType()
 						<< " Tool Type: " << getToolType();
 
-				player->sendSystemMessage(message.toString());
+				player->sendSystemMessage(message.toString());*/
 				return;
 			}
 		}
