@@ -484,13 +484,10 @@ void FactoryObjectImplementation::createNewObject() {
 
 		if (removeIngredientsFromHopper(schematic)) {
 
-			ManagedReference<FactoryCrate*> crate = locateCrateInOutputHopper(
-					prototype);
-
+			ManagedReference<FactoryCrate*> crate = locateCrateInOutputHopper(prototype);
 
 			if (crate == NULL)
-				crate = createNewFactoryCrate(prototype->getGameObjectType(),
-						prototype);
+				crate = createNewFactoryCrate(prototype);
 			else
 				crate->setUseCount(crate->getUseCount() + 1);
 
@@ -520,8 +517,7 @@ void FactoryObjectImplementation::createNewObject() {
 
 		updateToDatabase();
 	} catch (...) {
-		error(
-				"unhandled exception in FactoryObjectImplementation::createNewObject()");
+		error("unhandled exception in FactoryObjectImplementation::createNewObject()");
 	}
 }
 
@@ -553,9 +549,10 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 	return NULL;
 }
 
-FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(uint32 type, TangibleObject* prototype) {
+FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject* prototype) {
 
 	String file;
+	uint32 type = prototype->getGameObjectType();
 
 	if(type & SceneObject::ARMOR)
 		file = "object/factory/factory_crate_armor.iff";
@@ -628,12 +625,13 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 		return false;
 	}
 
-	VectorMap<ManagedReference<TangibleObject* >, int> uniqueIngredients = collectUniqueIngredients(schematic);
 	VectorMap<TangibleObject*, int> usableIngredients;
+	usableIngredients.setNoDuplicateInsertPlan();
+	usableIngredients.setAllowOverwriteInsertPlan();
 
-	for (int i = 0; i < uniqueIngredients.size(); ++i) {
+	for (int i = 0; i < schematic->getFactoryIngredientsSize(); ++i) {
 
-		ManagedReference<TangibleObject* > ingredient = uniqueIngredients.elementAt(i).getKey();
+		ManagedReference<TangibleObject*> ingredient = dynamic_cast<TangibleObject*>(schematic->getFactoryIngredient(i));
 
 		if(ingredient == NULL) {
 			error("NULL ingredient in removeIngredientsFromHopper");
@@ -647,7 +645,15 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 			return false;
 		}
 
-		usableIngredients.put(usableObject, ingredient->getUseCount());
+		if(usableIngredients.contains(usableObject)) {
+			int currentUsedValue = usableIngredients.get(usableObject);
+			if(currentUsedValue + ingredient->getUseCount() > usableObject->getUseCount())
+				return false;
+			else
+				usableIngredients.put(usableObject, currentUsedValue + ingredient->getUseCount());
+		} else {
+			usableIngredients.put(usableObject, ingredient->getUseCount());
+		}
 	}
 
 	for(int i = 0; i < usableIngredients.size(); ++i) {
@@ -685,30 +691,6 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 	}
 
 	return true;
-}
-
-VectorMap<ManagedReference<TangibleObject* >, int>  FactoryObjectImplementation::collectUniqueIngredients(ManufactureSchematic* schematic) {
-
-	VectorMap<ManagedReference<TangibleObject* >, int> uniqueIngredients;
-
-	for (int i = 0; i < schematic->getFactoryIngredientsSize(); ++i) {
-
-		ManagedReference<TangibleObject*> ingredient = dynamic_cast<TangibleObject*>(schematic->getFactoryIngredient(i));
-
-		if (ingredient == NULL) {
-			error("NULL ingredient in FactoryObjectImplementation::removeIngredientsFromHopper");
-			continue;
-		}
-
-		int needed = 0;
-
-		if(uniqueIngredients.contains(ingredient))
-			needed += uniqueIngredients.get(ingredient);
-
-		uniqueIngredients.put(ingredient, ingredient->getUseCount());
-	}
-
-	return uniqueIngredients;
 }
 
 TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
