@@ -314,8 +314,6 @@ void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
 		state = 0;
 		dplay9->close();
 		player->sendMessage(dplay9);
-
-		player->setLastCraftingToolUsed(NULL);
 	}
 }
 
