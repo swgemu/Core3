@@ -113,12 +113,9 @@ class FactoryObject extends InstallationObject {
 	
 	private native FactoryCrate locateCrateInOutputHopper(TangibleObject prototype);
 
-	private native FactoryCrate createNewFactoryCrate(unsigned int type, TangibleObject prototype);
+	private native FactoryCrate createNewFactoryCrate(TangibleObject prototype);
 
 	private native boolean removeIngredientsFromHopper(ManufactureSchematic schematic);
-	
-	@dereferenced
-	private native VectorMap<TangibleObject, int> collectUniqueIngredients(ManufactureSchematic schematic);
 
 	private native TangibleObject findMatchInInputHopper(SceneObject inputHopper, TangibleObject ingredient);
 }
