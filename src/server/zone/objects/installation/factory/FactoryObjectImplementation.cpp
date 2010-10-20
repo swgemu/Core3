@@ -491,6 +491,8 @@ void FactoryObjectImplementation::createNewObject() {
 			else
 				crate->setUseCount(crate->getUseCount() + 1);
 
+			currentRunCount++;
+
 			if (crate == NULL) {
 				stopFactory("manf_error_7", "", "", -1);
 				return;
@@ -512,7 +514,6 @@ void FactoryObjectImplementation::createNewObject() {
 			else
 				stopFactory("manf_error", "", "", -1);
 
-			currentRunCount++;
 		}
 
 		updateToDatabase();
