@@ -75,10 +75,7 @@ void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 
 	alm->insertAttribute("volume", volume);
 
-	TangibleObject* prototype = NULL;
-
-	if(getContainerObjectsSize() > 0)
-		prototype = (TangibleObject*) getContainerObject(0);
+	TangibleObject* prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		object->sendSystemMessage("This crate is broken, please contact Kyle if you get this message");
@@ -131,7 +128,7 @@ TangibleObject* FactoryCrateImplementation::getPrototype() {
 	TangibleObject* prototype = (TangibleObject*) getContainerObject(0);
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
-		error("getPrototype has a NULL or non-tangible item");
+		error("FactoryCrateImplementation::getPrototype has a NULL or non-tangible item");
 		return NULL;
 	}
 	return prototype;
@@ -142,7 +139,7 @@ String FactoryCrateImplementation::getCraftersName() {
 	TangibleObject* prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
-		error("getCraftersName has a NULL or non-tangible item");
+		error("FactoryCrateImplementation::getCraftersName has a NULL or non-tangible item");
 		return "";
 	}
 
@@ -154,7 +151,7 @@ String FactoryCrateImplementation::getCraftersSerial() {
 	TangibleObject* prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
-		error("getCraftersSerial has a NULL or non-tangible item");
+		error("FactoryCrateImplementation::getCraftersSerial has a NULL or non-tangible item");
 		return "";
 	}
 
@@ -166,7 +163,7 @@ bool FactoryCrateImplementation::extractObjectToParent(int count) {
 	TangibleObject* prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
-		error("extractObject has a NULL or non-tangible item");
+		error("FactoryCrateImplementation::extractObject has a NULL or non-tangible item");
 		return false;
 	}
 
@@ -194,7 +191,7 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 	TangibleObject* prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
-		error("extractObject has a NULL or non-tangible item");
+		error("FactoryCrateImplementation::extractObject has a NULL or non-tangible item");
 		return false;
 	}
 
@@ -270,6 +267,8 @@ void FactoryCrateImplementation::setUseCount(uint32 newUseCount, bool notifyClie
 		return;
 	}
 
+	updateToDatabase();
+
 	if (!notifyClient)
 		return;
 
@@ -278,6 +277,4 @@ void FactoryCrateImplementation::setUseCount(uint32 newUseCount, bool notifyClie
 	dfcty3->close();
 
 	broadcastMessage(dfcty3, true);
-
-	updateToDatabase();
 }
