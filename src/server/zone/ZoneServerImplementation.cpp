@@ -482,7 +482,7 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	lock();
 
 	StringBuffer sched;
-	sched << "TaskManager - scheduled task size = " << TaskManager::instance()->getScheduledTaskSize();
+	sched << "TaskManager - scheduled task size = " << Core::getTaskManager()->getScheduledTaskSize();
 	info(sched, forcedLog);
 
 	StringBuffer msg;
