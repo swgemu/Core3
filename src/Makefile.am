@@ -229,7 +229,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/login/account/AccountManager.cpp \
 		server/ping/PingServer.cpp \
 		server/status/StatusServer.cpp \
-		server/proxy/LoginProxyServer.cpp \
 		server/ServerCore.cpp \
 		server/zone/ZoneServerImplementation.cpp \
 		server/zone/ZoneClientSessionImplementation.cpp \

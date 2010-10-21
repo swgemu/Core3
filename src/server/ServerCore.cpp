@@ -223,8 +223,6 @@ void ServerCore::shutdown() {
 		database = NULL;
 	}
 
-	TaskManager::instance()->shutdown();
-
 	ObjectManager::instance()->savePersistentObjects();
 
 	zoneServerRef = NULL;
@@ -308,6 +306,8 @@ void ServerCore::handleCommands() {
 		} catch (...) {
 			System::out << "[ServerCore] unreported Exception caught\n";
 		}
+
+		Core::commitTask();
 	}
 }
 

@@ -9,12 +9,13 @@
 #define MESSAGECALLBACK_H_
 
 #include "engine/engine.h"
+
 #include "../ZoneClientSession.h"
+
+#include "server/zone/ZoneProcessServerImplementation.h"
 
 namespace server {
 namespace zone {
-	class ZoneProcessServerImplementation;
-
 namespace packets {
 
 	class MessageCallback : public Task {

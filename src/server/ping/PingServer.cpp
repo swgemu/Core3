@@ -64,8 +64,6 @@ PingServer::~PingServer() {
 }
 
 void PingServer::initialize() {
-	taskManager->setLogging(false);
-
 	procThreadCount = 0;
 
 	if (procThreadCount > 0) {

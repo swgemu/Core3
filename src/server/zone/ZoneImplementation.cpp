@@ -129,12 +129,12 @@ void ZoneImplementation::startManagers() {
 
 
 	//planetManager = new PlanetManager(_this, processor);
-	planetManager->initialize();
+	/*planetManager->initialize();
 
 	creatureManager->initialize();
 	planetManager->loadShuttles();
 
-	cityManager->loadLuaConfig();
+	cityManager->loadLuaConfig();*/
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 

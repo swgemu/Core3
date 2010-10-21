@@ -44,17 +44,21 @@ IDLC = /usr/local/bin/idlc
 				
 IDL_CLASSPATH = ../MMOEngine/include
 
-all: idl
-	cd build/unix && make -j4
+IDL_DIRECTIVES = -cp $(IDL_CLASSPATH)
+
+all:
+
+build: idl
+	cd build/unix && make
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	cd bin/conf && cat motd.txt | sed "s/\\(^Revision=\\)\\(..*$\\)/\1`svnversion`/" > motd.txt
 	#done
 
-rebuild: clean all
+rebuild: clean build
 
 idl:
-	$(IDLC) -cp $(IDL_CLASSPATH) -sd src anyadEclipse
+	$(IDLC) $(IDL_DIRECTIVES) -sd src anyadEclipse
 	#done
 
 config:
@@ -69,7 +73,7 @@ clean: cleanidl
 	#done
 
 cleanidl:
-	$(IDLC) -rebuild -cp $(IDL_CLASSPATH) -sd src anyadEclipse
+	$(IDLC) -rebuild $(IDL_DIRECTIVES) -sd src anyadEclipse
 
 cleardb:
 	cd bin/databases && rm -rf *.*
