@@ -115,8 +115,6 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	instance = this;
 
 	setLogging(false);
-
-	taskManager->setLogging(false);
 }
 
 ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
