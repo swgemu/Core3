@@ -432,9 +432,7 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 	clearCraftingSession();
 
-	try {
-
-		createSessionObjects(player, draftschematic);
+	if (createSessionObjects(player, draftschematic)) {
 
 		// Dplay9 ********************************************************
 		// Sets the Crafting state to 2, which is the Resource screen
@@ -458,16 +456,16 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 		// Start the insert count so inserts and removals work
 		insertCounter = 0;
-
-	} catch (...) {
-		player->sendSystemMessage("ui_craft", "err_no_prototype");
 	}
+
 }
 
-void CraftingToolImplementation::createSessionObjects(PlayerCreature* player, DraftSchematic* draftSchematic) {
+bool CraftingToolImplementation::createSessionObjects(PlayerCreature* player, DraftSchematic* draftSchematic) {
 
 	if(createManufactureSchematic(player, draftSchematic))
-		createPrototype(player, draftSchematic);
+		return createPrototype(player, draftSchematic);
+	else
+		return false;
 }
 
 bool CraftingToolImplementation::createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic) {
