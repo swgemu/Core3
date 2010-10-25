@@ -1,6 +1,4 @@
 swamp_humbab = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "swamp humbab",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ swamp_humbab = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

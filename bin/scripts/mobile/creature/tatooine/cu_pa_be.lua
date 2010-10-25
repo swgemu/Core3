@@ -1,6 +1,4 @@
 cu_pa_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "cu pa be",
 	socialGroup = "Cu Pa",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cu_pa_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 infant_brackaset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:infant_brackaset",
 	socialGroup = "Brackaset",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ infant_brackaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

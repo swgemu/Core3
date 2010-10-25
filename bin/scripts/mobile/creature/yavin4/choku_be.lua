@@ -1,6 +1,4 @@
 choku_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "choku be",
 	socialGroup = "Choku",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ choku_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

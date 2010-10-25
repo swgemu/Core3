@@ -1,6 +1,4 @@
 rotten_gut_remmer_king = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rotten_gut_remmer_king",
 	socialGroup = "Remmer",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rotten_gut_remmer_king = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

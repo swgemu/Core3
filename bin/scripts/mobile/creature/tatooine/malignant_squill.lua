@@ -1,6 +1,4 @@
 malignant_squill = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:malignant_squill",
 	socialGroup = "Squill",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ malignant_squill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongdisease",""},

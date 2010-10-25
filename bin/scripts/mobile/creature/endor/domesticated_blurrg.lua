@@ -1,6 +1,4 @@
 domesticated_blurrg = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domesticated_blurrg",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domesticated_blurrg = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

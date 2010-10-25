@@ -1,6 +1,4 @@
 enraged_reptilian_flier = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "enraged reptilian flier",
 	socialGroup = "Reptilian Flier",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ enraged_reptilian_flier = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

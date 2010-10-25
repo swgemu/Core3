@@ -1,6 +1,4 @@
 skreeg_warrior_elite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:skreeg_warrior_elite",
 	socialGroup = "Skreeg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ skreeg_warrior_elite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

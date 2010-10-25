@@ -1,6 +1,4 @@
 injured_verne = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:injured_verne",
 	socialGroup = "Verne",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ injured_verne = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

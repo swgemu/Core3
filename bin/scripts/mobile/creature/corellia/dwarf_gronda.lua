@@ -1,6 +1,4 @@
 dwarf_gronda = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dwarf_gronda",
 	socialGroup = "Gronda",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dwarf_gronda = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

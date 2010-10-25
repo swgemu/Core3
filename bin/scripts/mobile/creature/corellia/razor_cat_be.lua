@@ -1,6 +1,4 @@
 razor_cat_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "razor cat be",
 	socialGroup = "Sand Panther",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ razor_cat_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

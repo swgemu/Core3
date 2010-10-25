@@ -1,6 +1,4 @@
 rancor_youth = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rancor_youth",
 	socialGroup = "Rancor",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rancor_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

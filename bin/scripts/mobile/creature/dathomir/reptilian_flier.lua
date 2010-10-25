@@ -1,6 +1,4 @@
 reptilian_flier = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "reptilian flier",
 	socialGroup = "Reptilian Flier",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ reptilian_flier = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

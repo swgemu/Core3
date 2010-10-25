@@ -1,6 +1,4 @@
 dwarf_nuna = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:dwarf_nuna",
 	socialGroup = "Dwarf Nuna",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dwarf_nuna = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

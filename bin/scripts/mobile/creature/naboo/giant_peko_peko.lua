@@ -1,6 +1,4 @@
 giant_peko_peko = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_peko_peko",
 	socialGroup = "Giant Peko Peko",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_peko_peko = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

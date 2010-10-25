@@ -1,6 +1,4 @@
 shear_mite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:shear_mite",
 	socialGroup = "Shearmite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ shear_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

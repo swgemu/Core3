@@ -1,6 +1,4 @@
 lurking_shear_mite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:lurking_shear_mite",
 	socialGroup = "Shearmite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lurking_shear_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

@@ -1,6 +1,4 @@
 disturbed_bolma = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:disturbed_bolma",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ disturbed_bolma = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

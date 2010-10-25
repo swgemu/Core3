@@ -1,6 +1,4 @@
 giga_flite_rasp = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "giga flite rasp",
 	socialGroup = "Rasp",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giga_flite_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

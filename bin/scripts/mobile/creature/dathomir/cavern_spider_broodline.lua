@@ -1,6 +1,4 @@
 cavern_spider_broodline = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "cavern spider broodline",
 	socialGroup = "Sp. Nightsister ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cavern_spider_broodline = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 mountain_murra = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:murra_mountain_medium",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mountain_murra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

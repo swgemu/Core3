@@ -1,6 +1,4 @@
 feral_forest_mite_king = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:feral_forest_mite_king",
 	socialGroup = "Bark Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ feral_forest_mite_king = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

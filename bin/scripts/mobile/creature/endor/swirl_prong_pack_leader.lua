@@ -1,6 +1,4 @@
 swirl_prong_pack_leader = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:swirl_prong_pack_leader",
 	socialGroup = "Swirl Prong",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ swirl_prong_pack_leader = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

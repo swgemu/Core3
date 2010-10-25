@@ -1,6 +1,4 @@
 swamp_stalker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:swamp_stalker",
 	socialGroup = "Swamp Tusk Cat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ swamp_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

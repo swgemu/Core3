@@ -1,6 +1,4 @@
 lowland_brackaset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:brackaset_lowlands",
 	socialGroup = "Brackaset",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lowland_brackaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

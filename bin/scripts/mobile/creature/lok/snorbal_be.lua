@@ -1,6 +1,4 @@
 snorbal_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "snorbal be",
 	socialGroup = "Snorbal",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ snorbal_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

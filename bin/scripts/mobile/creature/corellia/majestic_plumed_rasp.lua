@@ -1,6 +1,4 @@
 majestic_plumed_rasp = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:majestic_plumed_rasp",
 	socialGroup = "Rasp",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ majestic_plumed_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

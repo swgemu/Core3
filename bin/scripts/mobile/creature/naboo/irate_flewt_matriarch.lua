@@ -1,6 +1,4 @@
 irate_flewt_matriarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:irate_flewt_matriarch",
 	socialGroup = "Flewt",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ irate_flewt_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 deadly_forest_mite_guardian = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:deadly_forest_mite_guardian",
 	socialGroup = "Bark Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ deadly_forest_mite_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

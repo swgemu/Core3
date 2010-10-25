@@ -1,6 +1,4 @@
 delirious_merek_avenger = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:delirious_merek_avenger",
 	socialGroup = "Merek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ delirious_merek_avenger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

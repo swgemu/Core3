@@ -1,6 +1,4 @@
 Kinn_Dray = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Kinn`Dray",
 	socialGroup = "Gap. Recluse",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Kinn_Dray = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareapoison",""},

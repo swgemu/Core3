@@ -1,6 +1,4 @@
 merek_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "merek be",
 	socialGroup = "Merek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ merek_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

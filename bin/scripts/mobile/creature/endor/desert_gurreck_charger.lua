@@ -1,6 +1,4 @@
 desert_gurreck_charger = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:desert_gurreck_charger",
 	socialGroup = "Gurreck",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ desert_gurreck_charger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

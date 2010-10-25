@@ -1,6 +1,4 @@
 bearded_jax = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:bearded_jax",
 	socialGroup = "Jax",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bearded_jax = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 gurk_gatherer = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gurk_gatherer",
 	socialGroup = "Gurk",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gurk_gatherer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

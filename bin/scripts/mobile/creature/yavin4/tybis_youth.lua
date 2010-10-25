@@ -1,6 +1,4 @@
 tybis_youth = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:tybis_youth",
 	socialGroup = "Tybis",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ tybis_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

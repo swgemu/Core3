@@ -1,6 +1,4 @@
 cannibal_dewback = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dewback_cannibal",
 	socialGroup = "Dewback",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cannibal_dewback = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

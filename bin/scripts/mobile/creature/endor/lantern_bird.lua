@@ -1,6 +1,4 @@
 lantern_bird = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:lantern_bird",
 	socialGroup = "Lantern",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lantern_bird = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 ancient_bull_rancor = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:ancient_bull_rancor",
 	socialGroup = "Rancor",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ancient_bull_rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

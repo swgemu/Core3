@@ -1,6 +1,4 @@
 shear_mite_queen = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:shear_mite_queen",
 	socialGroup = "Shearmite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ shear_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

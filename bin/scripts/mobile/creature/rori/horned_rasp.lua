@@ -1,6 +1,4 @@
 horned_rasp = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:horned_rasp",
 	socialGroup = "Rasp",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ horned_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

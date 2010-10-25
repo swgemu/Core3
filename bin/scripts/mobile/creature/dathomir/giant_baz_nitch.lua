@@ -1,6 +1,4 @@
 giant_baz_nitch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_baz_nitch",
 	socialGroup = "Baz Nitch",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_baz_nitch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

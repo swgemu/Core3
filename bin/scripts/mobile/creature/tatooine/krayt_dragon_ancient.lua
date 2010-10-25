@@ -1,6 +1,4 @@
 krayt_dragon_ancient = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:krayt_dragon_ancient",
 	socialGroup = "Krayt Dragon",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ krayt_dragon_ancient = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareacombo",""},

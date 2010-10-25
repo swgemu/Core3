@@ -1,6 +1,4 @@
 baby_bol = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:baby_bol",
 	socialGroup = "Bol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ baby_bol = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 blood_drenched_merek_king = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:blood_drenched_merek_king",
 	socialGroup = "Merek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ blood_drenched_merek_king = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

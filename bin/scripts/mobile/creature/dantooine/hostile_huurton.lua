@@ -1,6 +1,4 @@
 hostile_huurton = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:warren_huurton_hostile",
 	socialGroup = "Warren Huurton ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ hostile_huurton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 borgle_life_sapper = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:borgle_life_sapper",
 	socialGroup = "Borgle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ borgle_life_sapper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

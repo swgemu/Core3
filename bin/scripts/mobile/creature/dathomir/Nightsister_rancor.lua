@@ -1,6 +1,4 @@
 Nightsister_rancor = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Nightsister rancor",
 	socialGroup = "Nightsister ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Nightsister_rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

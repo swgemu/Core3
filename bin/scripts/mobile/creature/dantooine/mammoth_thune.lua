@@ -1,6 +1,4 @@
 mammoth_thune = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mammoth_thune",
 	socialGroup = "Thune",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mammoth_thune = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

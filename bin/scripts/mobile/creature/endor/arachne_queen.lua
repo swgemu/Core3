@@ -1,6 +1,4 @@
 arachne_queen = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:queen_arachne",
 	socialGroup = "Arachne",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ arachne_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareapoison",""},

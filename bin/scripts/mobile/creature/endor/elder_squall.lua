@@ -1,6 +1,4 @@
 elder_squall = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:elder_squall",
 	socialGroup = "Squall",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ elder_squall = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

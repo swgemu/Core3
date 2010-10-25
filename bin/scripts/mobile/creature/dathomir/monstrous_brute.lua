@@ -1,6 +1,4 @@
 monstrous_brute = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rancor_monstrous_brute",
 	socialGroup = "Rancor",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ monstrous_brute = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

@@ -1,6 +1,4 @@
 piket = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:piket",
 	socialGroup = "Picket",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ piket = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

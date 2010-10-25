@@ -1,6 +1,4 @@
 blurrg_pup = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:blurrg_pup",
 	socialGroup = "Blurrg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ blurrg_pup = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

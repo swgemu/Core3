@@ -1,6 +1,4 @@
 scavenger_rat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:scavenger_rat",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ scavenger_rat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

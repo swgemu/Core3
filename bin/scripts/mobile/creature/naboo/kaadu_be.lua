@@ -1,6 +1,4 @@
 kaadu_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "kaadu be",
 	socialGroup = "Kaadu",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kaadu_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

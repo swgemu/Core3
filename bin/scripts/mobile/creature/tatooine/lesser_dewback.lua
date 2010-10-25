@@ -1,6 +1,4 @@
 lesser_dewback = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:lesser_dewback",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lesser_dewback = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

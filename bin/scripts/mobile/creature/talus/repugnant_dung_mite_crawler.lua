@@ -1,6 +1,4 @@
 repugnant_dung_mite_crawler = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dung_mite_repugnant_crawler",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ repugnant_dung_mite_crawler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

@@ -1,6 +1,4 @@
 hilltop_gurreck_hunter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:hilltop_gurreck_hunter",
 	socialGroup = "Gurreck",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ hilltop_gurreck_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

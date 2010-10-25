@@ -1,6 +1,4 @@
 bordok_mare = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bordok_mare",
 	socialGroup = "Bordok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bordok_mare = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

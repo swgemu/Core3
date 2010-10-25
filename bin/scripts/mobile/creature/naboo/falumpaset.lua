@@ -1,6 +1,4 @@
 falumpaset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:falumpaset",
 	socialGroup = "Falumpaset",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ falumpaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

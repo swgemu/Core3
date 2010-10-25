@@ -1,6 +1,4 @@
 blurrg = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:blurrg",
 	socialGroup = "Blurrg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ blurrg = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

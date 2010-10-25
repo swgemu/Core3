@@ -1,6 +1,4 @@
 enraged_dune_kimogila = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:enraged_dune_kimogila",
 	socialGroup = "Kimogila",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ enraged_dune_kimogila = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareaattack",""},

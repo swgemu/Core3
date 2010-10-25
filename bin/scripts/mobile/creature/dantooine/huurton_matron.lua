@@ -1,6 +1,4 @@
 huurton_matron = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:huurton_matron",
 	socialGroup = "Huurton",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ huurton_matron = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

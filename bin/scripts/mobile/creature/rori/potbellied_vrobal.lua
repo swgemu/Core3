@@ -1,6 +1,4 @@
 potbellied_vrobal = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:potbellied_vrobal",
 	socialGroup = "Vrobal",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ potbellied_vrobal = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

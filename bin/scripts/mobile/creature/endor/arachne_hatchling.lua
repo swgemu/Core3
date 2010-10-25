@@ -1,6 +1,4 @@
 arachne_hatchling = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:arachne_hatchling",
 	socialGroup = "Arachne",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ arachne_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mediumpoison",""}

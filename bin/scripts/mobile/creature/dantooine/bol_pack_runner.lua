@@ -1,6 +1,4 @@
 bol_pack_runner = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bol_pack_runner",
 	socialGroup = "Bol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bol_pack_runner = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

@@ -1,6 +1,4 @@
 domestic_bol_mount = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domestic_bol_mount",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domestic_bol_mount = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

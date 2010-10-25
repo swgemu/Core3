@@ -1,6 +1,4 @@
 gorg_glutton = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gorg_glutton",
 	socialGroup = "Gorg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gorg_glutton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

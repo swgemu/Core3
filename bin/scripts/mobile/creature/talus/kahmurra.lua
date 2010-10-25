@@ -1,6 +1,4 @@
 kahmurra = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bio_engineered_murra",
 	socialGroup = "Kahmurra",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kahmurra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

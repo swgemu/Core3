@@ -51,9 +51,9 @@ which carries forward this exception.
 class PostureUpAttackCommand : public CombatQueueCommand {
 public:
 
-	PostureUpAttackCommand(const String& name, ZoneProcessServerImplementation* server)
-		: CombatQueueCommand(name, server) {
-
+	PostureUpAttackCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+		postureUpStateChance = 50;
+		durationStateTime = 10;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

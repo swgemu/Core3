@@ -1,6 +1,4 @@
 elder_pulverizer = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bolle_bol_elder_pulverizer",
 	socialGroup = "Bolle Bol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ elder_pulverizer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

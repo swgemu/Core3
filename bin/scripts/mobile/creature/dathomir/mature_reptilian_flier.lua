@@ -1,6 +1,4 @@
 mature_reptilian_flier = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "mature reptilian flier",
 	socialGroup = "Repilian Flier",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mature_reptilian_flier = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

@@ -1,6 +1,4 @@
 hostile_thune_mother = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:hostile_thune_mother",
 	socialGroup = "Thune",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ hostile_thune_mother = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

@@ -1,6 +1,4 @@
 boar_wolf_ravager = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:boar_wolf_ravager",
 	socialGroup = "Boar Wolf",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ boar_wolf_ravager = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

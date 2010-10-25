@@ -1,6 +1,4 @@
 sharnaff_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "sharnaff be",
 	socialGroup = "Sharnaff",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sharnaff_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

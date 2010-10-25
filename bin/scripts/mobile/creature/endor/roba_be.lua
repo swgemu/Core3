@@ -1,6 +1,4 @@
 roba_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "roba be",
 	socialGroup = "Roba",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ roba_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

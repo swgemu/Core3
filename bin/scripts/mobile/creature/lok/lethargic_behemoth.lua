@@ -1,6 +1,4 @@
 lethargic_behemoth = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:flit_lethargic_behemoth",
 	socialGroup = "Flit",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lethargic_behemoth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

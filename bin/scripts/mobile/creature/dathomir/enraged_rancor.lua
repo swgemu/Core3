@@ -1,6 +1,4 @@
 enraged_rancor = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:enraged_rancor",
 	socialGroup = "Rancor",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ enraged_rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

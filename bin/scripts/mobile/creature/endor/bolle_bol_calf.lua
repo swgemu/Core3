@@ -1,6 +1,4 @@
 bolle_bol_calf = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bolle_bol_calf",
 	socialGroup = "Bolle Bol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bolle_bol_calf = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

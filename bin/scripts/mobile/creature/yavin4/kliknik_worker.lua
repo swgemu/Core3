@@ -1,6 +1,4 @@
 kliknik_worker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kliknik_worker",
 	socialGroup = "Kliknik",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kliknik_worker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

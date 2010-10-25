@@ -1,6 +1,4 @@
 furious_devastator = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:fambaa_furious_devastator",
 	socialGroup = "Fambaa",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ furious_devastator = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

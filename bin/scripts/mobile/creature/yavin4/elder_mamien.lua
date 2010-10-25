@@ -1,6 +1,4 @@
 elder_mamien = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mamien_elder",
 	socialGroup = "Mamien",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ elder_mamien = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

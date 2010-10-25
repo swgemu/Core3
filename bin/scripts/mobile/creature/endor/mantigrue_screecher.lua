@@ -1,6 +1,4 @@
 mantigrue_screecher = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mantigrue_screecher",
 	socialGroup = "Mantigrue",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mantigrue_screecher = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

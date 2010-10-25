@@ -1,6 +1,4 @@
 juvenile_canyon_krayt_dragon = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:juvenile_canyon_krayt",
 	socialGroup = "Krayt Dragon",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ juvenile_canyon_krayt_dragon = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

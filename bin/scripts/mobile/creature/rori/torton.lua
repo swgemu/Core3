@@ -1,6 +1,4 @@
 torton = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:torton",
 	socialGroup = "Torton",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ torton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

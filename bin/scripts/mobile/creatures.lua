@@ -1,6 +1,4 @@
 Creature = {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "",
 	socialGroup = "",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Creature = {
 	diet = 0,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

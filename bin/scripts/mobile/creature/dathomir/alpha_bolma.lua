@@ -1,6 +1,4 @@
 alpha_bolma = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "alpha bolma",
 	socialGroup = "Bolma",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ alpha_bolma = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

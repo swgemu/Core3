@@ -1,6 +1,4 @@
 singing_mountain_clan_rancor = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "singing mountain clan rancor",
 	socialGroup = "Mountain Clan ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ singing_mountain_clan_rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

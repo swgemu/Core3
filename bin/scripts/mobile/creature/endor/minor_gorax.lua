@@ -1,6 +1,4 @@
 minor_gorax = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:minor_gorax",
 	socialGroup = "Gorax ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ minor_gorax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareaattack",""}

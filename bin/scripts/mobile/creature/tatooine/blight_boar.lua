@@ -1,6 +1,4 @@
 blight_boar = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:zucca_boar_blight",
 	socialGroup = "Zucca Boar",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ blight_boar = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

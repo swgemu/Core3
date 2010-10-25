@@ -1,6 +1,4 @@
 ancient_mamien = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mamien_ancient",
 	socialGroup = "Mamien",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ancient_mamien = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

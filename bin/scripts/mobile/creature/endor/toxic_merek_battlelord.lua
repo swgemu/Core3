@@ -1,6 +1,4 @@
 toxic_merek_battlelord = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:toxic_merek_battlelord",
 	socialGroup = "Merek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ toxic_merek_battlelord = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

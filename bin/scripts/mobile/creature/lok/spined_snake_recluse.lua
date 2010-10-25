@@ -1,6 +1,4 @@
 spined_snake_recluse = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:spined_snake_recluse",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ spined_snake_recluse = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

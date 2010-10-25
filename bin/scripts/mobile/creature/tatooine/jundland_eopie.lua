@@ -1,6 +1,4 @@
 jundland_eopie = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:jundland_eopie",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ jundland_eopie = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

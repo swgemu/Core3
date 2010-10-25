@@ -1,6 +1,4 @@
 mature_hanadak = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mature_hanadak",
 	socialGroup = "Hanadak",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mature_hanadak = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

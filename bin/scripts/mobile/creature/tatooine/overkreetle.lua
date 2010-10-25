@@ -1,6 +1,4 @@
 overkreetle = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kreetle_over",
 	socialGroup = "Uber Kreetle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ overkreetle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

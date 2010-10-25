@@ -1,6 +1,4 @@
 juvenile_pygmy_torton = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:torton_pygmy_juvenile",
 	socialGroup = "Torton",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ juvenile_pygmy_torton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

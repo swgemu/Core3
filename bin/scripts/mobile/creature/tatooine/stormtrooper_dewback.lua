@@ -1,6 +1,4 @@
 stormtrooper_dewback = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:stormtrooper_dewback",
 	socialGroup = "Imperial ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ stormtrooper_dewback = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

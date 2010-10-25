@@ -1,6 +1,4 @@
 mountain_squill_hunter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mountain_squill_hunter",
 	socialGroup = "Mtn. Squill",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mountain_squill_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

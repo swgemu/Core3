@@ -1,6 +1,4 @@
 kimogila_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "kimogila be",
 	socialGroup = "Kimogila",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kimogila_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

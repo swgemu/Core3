@@ -1,6 +1,4 @@
 dine_lizard = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:warren_dunelizard",
 	socialGroup = "Dune Lizard",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dine_lizard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

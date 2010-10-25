@@ -1,6 +1,4 @@
 cu_pa = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bio_engineered_cu_pa",
 	socialGroup = "Cu Pa",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cu_pa = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

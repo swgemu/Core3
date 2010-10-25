@@ -1,6 +1,4 @@
 dune_kimogila = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "dune kimogila",
 	socialGroup = "Kimogila",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dune_kimogila = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

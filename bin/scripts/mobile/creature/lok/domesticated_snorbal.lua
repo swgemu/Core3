@@ -1,6 +1,4 @@
 domesticated_snorbal = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domesticated_snorbal",
 	socialGroup = "Domestic Snor.",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domesticated_snorbal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

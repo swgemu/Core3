@@ -1,6 +1,4 @@
 female_dire_cat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:female_dire_cat",
 	socialGroup = "Dire Cat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_dire_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

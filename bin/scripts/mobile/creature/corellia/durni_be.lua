@@ -1,6 +1,4 @@
 durni_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "durni be",
 	socialGroup = "Durni",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ durni_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

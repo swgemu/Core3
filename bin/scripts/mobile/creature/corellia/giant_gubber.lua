@@ -1,6 +1,4 @@
 giant_gubber = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "giant gubber",
 	socialGroup = "Gubber",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_gubber = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

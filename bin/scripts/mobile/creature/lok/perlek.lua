@@ -1,6 +1,4 @@
 perlek = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:perlek",
 	socialGroup = "Perlek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ perlek = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

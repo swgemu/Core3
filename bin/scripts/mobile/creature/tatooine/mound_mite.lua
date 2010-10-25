@@ -1,6 +1,4 @@
 mound_mite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mound_mite",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mound_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 thune_herd_leader = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:thune_herd_leader",
 	socialGroup = "Thune",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ thune_herd_leader = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

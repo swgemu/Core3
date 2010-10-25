@@ -1,6 +1,4 @@
 bantha_matriarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "bantha matriarch",
 	socialGroup = "Bantha",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bantha_matriarch = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

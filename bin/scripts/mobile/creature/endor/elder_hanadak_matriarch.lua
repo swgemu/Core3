@@ -1,6 +1,4 @@
 elder_hanadak_matriarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:elder_hanadak_matriarch",
 	socialGroup = "Hanadak",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ elder_hanadak_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

@@ -1,6 +1,4 @@
 enhanced_kwi = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:geonosian_enhanced_kwi",
 	socialGroup = "Geon. Monster",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ enhanced_kwi = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

@@ -1,6 +1,4 @@
 sentry_hermit_spider = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:sentry_hermit_spider",
 	socialGroup = "Hermit Spider",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sentry_hermit_spider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

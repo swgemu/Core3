@@ -1,6 +1,4 @@
 dewback_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "dewback be",
 	socialGroup = "Dewback",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dewback_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

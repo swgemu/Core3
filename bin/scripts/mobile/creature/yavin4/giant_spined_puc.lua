@@ -1,6 +1,4 @@
 giant_spined_puc = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_spined_puc",
 	socialGroup = "Spined Puc",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_spined_puc = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 murra = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:murra",
 	socialGroup = "Murra",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ murra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

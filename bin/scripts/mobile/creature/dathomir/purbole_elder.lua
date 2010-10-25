@@ -1,6 +1,4 @@
 purbole_elder = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:purbole_elder",
 	socialGroup = "Purbole",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ purbole_elder = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

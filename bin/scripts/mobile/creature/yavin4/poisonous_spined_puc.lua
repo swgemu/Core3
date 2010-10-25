@@ -1,6 +1,4 @@
 poisonous_spined_puc = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "poisonous spined puc",
 	socialGroup = "Spined Puc",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ poisonous_spined_puc = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

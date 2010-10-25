@@ -1,6 +1,4 @@
 puny_gackle_bat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:puny_gackle_bat",
 	socialGroup = "Gacklebat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ puny_gackle_bat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

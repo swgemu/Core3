@@ -1,6 +1,4 @@
 bull_bantha = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bull_bantha",
 	socialGroup = "Bantha",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bull_bantha = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

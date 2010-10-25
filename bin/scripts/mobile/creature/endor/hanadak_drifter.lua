@@ -1,6 +1,4 @@
 hanadak_drifter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:hanadak_drifter",
 	socialGroup = "Hanadak",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ hanadak_drifter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

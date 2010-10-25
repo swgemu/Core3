@@ -1,6 +1,4 @@
 mutated_kahmurra = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mutated_kahmurra",
 	socialGroup = "Kahmurra",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mutated_kahmurra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

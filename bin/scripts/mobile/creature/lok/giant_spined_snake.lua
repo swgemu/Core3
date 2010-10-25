@@ -1,6 +1,4 @@
 giant_spined_snake = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_spined_snake",
 	socialGroup = "Spinesnake",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_spined_snake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

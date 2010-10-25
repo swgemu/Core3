@@ -1,6 +1,4 @@
 deadly_hooded_rawl = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rawl_deadly_hooded",
 	socialGroup = "Fanned Rawl",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ deadly_hooded_rawl = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

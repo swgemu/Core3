@@ -1,6 +1,4 @@
 twilight_vir_vur = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:twilight_vir_vur",
 	socialGroup = "Vir Vur",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ twilight_vir_vur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

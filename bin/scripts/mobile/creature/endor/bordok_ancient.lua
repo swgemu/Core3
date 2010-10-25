@@ -1,6 +1,4 @@
 bordok_ancient = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bordok_ancient",
 	socialGroup = "Bordok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bordok_ancient = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

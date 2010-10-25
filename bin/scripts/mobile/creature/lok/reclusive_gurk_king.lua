@@ -1,6 +1,4 @@
 reclusive_gurk_king = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:recluse_gurk_king",
 	socialGroup = "Gurk",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ reclusive_gurk_king = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

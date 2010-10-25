@@ -1,6 +1,4 @@
 shaggy_gurk_youth = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:shaggy_gurk_youth",
 	socialGroup = "Gurk",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ shaggy_gurk_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

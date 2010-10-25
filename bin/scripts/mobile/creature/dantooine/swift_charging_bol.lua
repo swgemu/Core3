@@ -1,6 +1,4 @@
 swift_charging_bol = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bol_swift_charger",
 	socialGroup = "Bol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ swift_charging_bol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

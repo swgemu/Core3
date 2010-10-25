@@ -1,6 +1,4 @@
 pugoriss_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "pugoriss be",
 	socialGroup = "Pugoriss",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ pugoriss_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

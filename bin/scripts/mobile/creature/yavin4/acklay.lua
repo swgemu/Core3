@@ -1,6 +1,4 @@
 acklay = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:geonosian_acklay_bunker_boss",
 	socialGroup = "Geon. Monster",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ acklay = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

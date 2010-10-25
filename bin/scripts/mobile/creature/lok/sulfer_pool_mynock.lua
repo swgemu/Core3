@@ -1,6 +1,4 @@
 sulfer_pool_mynock = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "sulfer pool mynock",
 	socialGroup = "Mynock",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sulfer_pool_mynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

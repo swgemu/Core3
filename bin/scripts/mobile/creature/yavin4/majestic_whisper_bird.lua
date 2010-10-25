@@ -1,6 +1,4 @@
 majestic_whisper_bird = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:whisper_bird_majestic",
 	socialGroup = "Whisperbird",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ majestic_whisper_bird = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

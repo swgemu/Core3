@@ -1,6 +1,4 @@
 bloodstained_prowler = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:wrix_bloodstained_prowler",
 	socialGroup = "Wrix",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bloodstained_prowler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

@@ -1,6 +1,4 @@
 rhoa_kwi_hunter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "rhoa kwi hunter",
 	socialGroup = "Rhoa Kwi",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rhoa_kwi_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

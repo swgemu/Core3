@@ -1,6 +1,4 @@
 sand_beetle = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:sand_beetle",
 	socialGroup = "Giant Sand Beetle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sand_beetle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

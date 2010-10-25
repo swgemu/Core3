@@ -1,6 +1,4 @@
 charred_krevol = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:charred_krevol",
 	socialGroup = "Krevol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ charred_krevol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

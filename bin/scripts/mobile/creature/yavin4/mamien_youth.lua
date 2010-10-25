@@ -1,6 +1,4 @@
 mamien_youth = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mamien_youth",
 	socialGroup = "Mamien",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mamien_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

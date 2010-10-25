@@ -1,6 +1,4 @@
 bolma_female = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "bolma female",
 	socialGroup = "Bolma",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bolma_female = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

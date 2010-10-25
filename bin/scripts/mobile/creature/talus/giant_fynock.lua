@@ -1,6 +1,4 @@
 giant_fynock = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_fynock",
 	socialGroup = "Fynock",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_fynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

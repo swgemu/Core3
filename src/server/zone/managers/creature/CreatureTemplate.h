@@ -64,6 +64,7 @@ protected:
 	unsigned int diet;
 
 	Vector<String> templates;
+	Vector<String> lootgroups;
 	Vector<String> weapons;
 	CreatureAttackMap* attacks;
 
@@ -107,6 +108,7 @@ public:
 		diet = 0;
 
 		templates.removeAll();
+		lootgroups.removeAll();
 		weapons.removeAll();
 		attacks = new CreatureAttackMap();
 	}
@@ -171,6 +173,15 @@ public:
 		}
 
 		temps.pop();
+
+		LuaObject loots = templateData->getObjectField("lootgroups");
+		if (loots.isValidTable()) {
+			for (int i = 1; i <= loots.getTableSize(); ++i) {
+				lootgroups.add(loots.getStringAt(i));
+			}
+		}
+
+		loots.pop();
 
 		LuaObject weps = templateData->getObjectField("weapons");
 		if (weps.isValidTable()) {
@@ -356,6 +367,10 @@ public:
 
 	inline Vector<String> getTemplates() {
 		return templates;
+	}
+
+	inline Vector<String> getLootgroups() {
+		return lootgroups;
 	}
 
 	inline Vector<String> getWeapons() {

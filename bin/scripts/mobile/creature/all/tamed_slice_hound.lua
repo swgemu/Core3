@@ -1,6 +1,4 @@
 tamed_slice_hound = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rebel_tamed_slice_hound",
 	socialGroup = "Rebel ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ tamed_slice_hound = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

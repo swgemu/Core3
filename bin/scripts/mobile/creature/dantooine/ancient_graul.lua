@@ -1,6 +1,4 @@
 ancient_graul = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:ancient_graul",
 	socialGroup = "Graul",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ancient_graul = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

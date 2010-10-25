@@ -1,6 +1,4 @@
 crazed_durni = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:crazed_durni",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ crazed_durni = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

@@ -1,6 +1,4 @@
 Bantha_E3 = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Bantha E3",
 	socialGroup = "Bantha",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Bantha_E3 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

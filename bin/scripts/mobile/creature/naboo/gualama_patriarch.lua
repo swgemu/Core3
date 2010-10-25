@@ -1,6 +1,4 @@
 gualama_patriarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "gualama patriarch",
 	socialGroup = "Gualama",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gualama_patriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

@@ -1,6 +1,4 @@
 eopie_herdmaster = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:eopie_herdmaster",
 	socialGroup = "Eopie",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ eopie_herdmaster = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

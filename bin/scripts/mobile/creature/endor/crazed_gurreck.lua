@@ -1,6 +1,4 @@
 crazed_gurreck = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:crazed_gurreck",
 	socialGroup = "Gurreck",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ crazed_gurreck = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

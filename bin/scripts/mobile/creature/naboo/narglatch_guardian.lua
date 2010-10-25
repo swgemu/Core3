@@ -1,6 +1,4 @@
 narglatch_guardian = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:narglatch_guardian",
 	socialGroup = "Narglatch",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ narglatch_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

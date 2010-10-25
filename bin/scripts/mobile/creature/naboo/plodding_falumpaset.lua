@@ -1,6 +1,4 @@
 plodding_falumpaset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domestic_falumpaset",
 	socialGroup = "Naboo",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ plodding_falumpaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

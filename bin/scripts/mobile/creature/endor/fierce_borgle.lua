@@ -1,6 +1,4 @@
 fierce_borgle = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:fierce_borgle",
 	socialGroup = "Borgle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ fierce_borgle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

@@ -1,6 +1,4 @@
 giant_horned_krevol = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_horned_krevol",
 	socialGroup = "Horned Krevol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_horned_krevol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

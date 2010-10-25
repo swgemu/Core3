@@ -1,6 +1,4 @@
 torton_pygmy_matriarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:torton_pygmy_matriarch",
 	socialGroup = "Torton",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ torton_pygmy_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

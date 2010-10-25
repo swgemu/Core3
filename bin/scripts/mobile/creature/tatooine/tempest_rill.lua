@@ -1,6 +1,4 @@
 tempest_rill = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rill_tempest",
 	socialGroup = "Rill",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ tempest_rill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

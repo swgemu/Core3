@@ -1,6 +1,4 @@
 frenzied_graul = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:frenzied_graul",
 	socialGroup = "Graul",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ frenzied_graul = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareableeding",""},

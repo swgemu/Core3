@@ -1,6 +1,4 @@
 festering_squill = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:festering_squill",
 	socialGroup = "Endor Squill",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ festering_squill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

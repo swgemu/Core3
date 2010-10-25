@@ -1,6 +1,4 @@
 swirl_prong = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:swirl_prong",
 	socialGroup = "Swirl Prong",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ swirl_prong = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

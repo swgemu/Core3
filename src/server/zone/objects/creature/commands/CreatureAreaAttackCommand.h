@@ -51,9 +51,20 @@ which carries forward this exception.
 class CreatureAreaAttackCommand : public CombatQueueCommand {
 public:
 
-	CreatureAreaAttackCommand(const String& name, ZoneProcessServerImplementation* server)
-		: CombatQueueCommand(name, server) {
+	CreatureAreaAttackCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+		damageMultiplier = 1;
+		speedMultiplier = 1;
 
+		combatSpam = "attack";
+		animationCRC = 0;
+
+		healthCostMultiplier = 0;
+		actionCostMultiplier = 0;
+		mindCostMultiplier = 0;
+
+		range = -1;
+
+		poolsToDamage = CombatManager::RANDOM;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

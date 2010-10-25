@@ -1,6 +1,4 @@
 mantigrue_night_stalker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mantigrue_night_stalker",
 	socialGroup = "Mantigrue",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mantigrue_night_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

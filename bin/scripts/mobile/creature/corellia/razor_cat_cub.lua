@@ -1,6 +1,4 @@
 razor_cat_cub = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:sand_panther_cub",
 	socialGroup = "Sand Panther",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ razor_cat_cub = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

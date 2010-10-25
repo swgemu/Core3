@@ -1,6 +1,4 @@
 diminutive_bounding_jax = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:jax_bounding_dwarf",
 	socialGroup = "Jax",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ diminutive_bounding_jax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

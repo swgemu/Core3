@@ -1,6 +1,4 @@
 elder_gronda = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gronda_elder",
 	socialGroup = "Gronda",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ elder_gronda = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

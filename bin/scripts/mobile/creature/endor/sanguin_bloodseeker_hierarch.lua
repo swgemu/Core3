@@ -1,6 +1,4 @@
 sanguin_bloodseeker_hierarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bloodseeker_mite_sanguine_hierarch",
 	socialGroup = "Bloodseeker",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sanguin_bloodseeker_hierarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

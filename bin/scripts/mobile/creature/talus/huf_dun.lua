@@ -1,6 +1,4 @@
 huf_dun = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:huf_dun",
 	socialGroup = "Huf Dun",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ huf_dun = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

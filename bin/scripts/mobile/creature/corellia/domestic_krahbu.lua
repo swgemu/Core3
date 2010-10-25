@@ -1,6 +1,4 @@
 domestic_krahbu = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domestic_krahbu",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domestic_krahbu = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

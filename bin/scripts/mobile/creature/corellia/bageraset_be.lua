@@ -1,6 +1,4 @@
 bageraset_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "bageraset be",
 	socialGroup = "Bageraset",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bageraset_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

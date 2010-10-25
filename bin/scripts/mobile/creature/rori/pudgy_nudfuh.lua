@@ -1,6 +1,4 @@
 pudgy_nudfuh = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:pudgy_nudfuh",
 	socialGroup = "Nudfuh",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ pudgy_nudfuh = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

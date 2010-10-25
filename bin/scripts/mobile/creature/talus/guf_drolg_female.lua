@@ -1,6 +1,4 @@
 guf_drolg_female = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:guf_drolg_female",
 	socialGroup = "Guf Drolg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ guf_drolg_female = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

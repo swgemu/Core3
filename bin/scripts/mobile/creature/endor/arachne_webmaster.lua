@@ -1,6 +1,4 @@
 arachne_webmaster = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:arachne_webmaster",
 	socialGroup = "Arachne",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ arachne_webmaster = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

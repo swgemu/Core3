@@ -1,6 +1,4 @@
 death_kreetle = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kreetle_death",
 	socialGroup = "Uber Kreetle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ death_kreetle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

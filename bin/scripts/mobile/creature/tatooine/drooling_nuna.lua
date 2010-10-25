@@ -1,6 +1,4 @@
 drooling_nuna = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dwarf_nuna_drooling",
 	socialGroup = "Dwarf Nuna",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ drooling_nuna = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

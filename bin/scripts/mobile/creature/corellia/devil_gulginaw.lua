@@ -1,6 +1,4 @@
 devil_gulginaw = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:devil_gulginaw",
 	socialGroup = "Gulginaw",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ devil_gulginaw = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

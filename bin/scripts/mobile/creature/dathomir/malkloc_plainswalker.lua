@@ -1,6 +1,4 @@
 malkloc_plainswalker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:malkloc_plainswalker",
 	socialGroup = "Malkloc PW",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ malkloc_plainswalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

@@ -1,6 +1,4 @@
 alpha_veermok = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "alpha veermok",
 	socialGroup = "Veermok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ alpha_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

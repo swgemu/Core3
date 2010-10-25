@@ -1,6 +1,4 @@
 gronda_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "gronda be",
 	socialGroup = "Gronda",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gronda_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }
