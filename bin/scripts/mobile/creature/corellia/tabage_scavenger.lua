@@ -1,6 +1,4 @@
 tabage_scavenger = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:tabage_scavenger",
 	socialGroup = "",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ tabage_scavenger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

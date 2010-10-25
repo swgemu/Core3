@@ -1,6 +1,4 @@
 gurk_whelp = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gurk_whelp",
 	socialGroup = "Gurk",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gurk_whelp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

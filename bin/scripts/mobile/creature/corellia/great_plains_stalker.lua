@@ -1,6 +1,4 @@
 great_plains_stalker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:great_plains_stalker",
 	socialGroup = "Sand Panther",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ great_plains_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

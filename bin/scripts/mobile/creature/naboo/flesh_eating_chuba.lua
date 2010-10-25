@@ -1,6 +1,4 @@
 flesh_eating_chuba = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:flesh_eating_chuba",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ flesh_eating_chuba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 kimogila_hatchling = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "kimogila hatchling",
 	socialGroup = "Kimogila",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kimogila_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

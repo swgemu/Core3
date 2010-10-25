@@ -1,6 +1,4 @@
 gronda_juggernaut = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "gronda juggernaut",
 	socialGroup = "Gronda",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gronda_juggernaut = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

@@ -1,6 +1,4 @@
 giant_tanc_mite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_tanc_mite",
 	socialGroup = "Tancmite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_tanc_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

@@ -1,6 +1,4 @@
 cyborg_slice_hound = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:warren_cyborg_slicehound",
 	socialGroup = "Warren Cyborg ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cyborg_slice_hound = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

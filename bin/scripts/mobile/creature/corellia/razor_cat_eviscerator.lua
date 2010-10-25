@@ -1,6 +1,4 @@
 razor_cat_eviscerator = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:razor_cat_eviscerator",
 	socialGroup = "Sand Panther",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ razor_cat_eviscerator = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

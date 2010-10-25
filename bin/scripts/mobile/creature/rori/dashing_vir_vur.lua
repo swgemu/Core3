@@ -1,6 +1,4 @@
 dashing_vir_vur = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dashing_vir_vur",
 	socialGroup = "Vir Vur",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dashing_vir_vur = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

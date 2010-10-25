@@ -1,6 +1,4 @@
 fuzzy_jax = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:fuzzy_jax",
 	socialGroup = "Jax",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ fuzzy_jax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

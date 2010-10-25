@@ -1,6 +1,4 @@
 sharnaff_reckless_ravager = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:sharnaff_reckless_ravager",
 	socialGroup = "Sharnaff",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sharnaff_reckless_ravager = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

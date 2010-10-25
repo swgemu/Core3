@@ -1,6 +1,4 @@
 horned_voritor_lizard = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:horned_voritor_jungle_lizard",
 	socialGroup = "Voritor Lizard",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ horned_voritor_lizard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

@@ -1,6 +1,4 @@
 kusak = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:kusak",
 	socialGroup = "Kusak",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kusak = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 narglatch_hunter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:narglatch_hunter",
 	socialGroup = "Narglatch",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ narglatch_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

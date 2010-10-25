@@ -1,6 +1,4 @@
 reptilian_life_stealer = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "reptilian life stealer",
 	socialGroup = "Reptilian Flier",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ reptilian_life_stealer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

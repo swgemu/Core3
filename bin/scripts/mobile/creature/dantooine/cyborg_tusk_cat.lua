@@ -1,6 +1,4 @@
 cyborg_tusk_cat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:warren_cyborg_tuskcat",
 	socialGroup = "Warren Cyborg ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cyborg_tusk_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

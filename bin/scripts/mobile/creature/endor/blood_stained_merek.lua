@@ -1,6 +1,4 @@
 blood_stained_merek = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:blood_stained_merek",
 	socialGroup = "Merek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ blood_stained_merek = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"}

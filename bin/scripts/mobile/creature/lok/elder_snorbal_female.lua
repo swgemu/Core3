@@ -1,6 +1,4 @@
 elder_snorbal_female = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:elder_snorbal_female",
 	socialGroup = "Snorbal",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ elder_snorbal_female = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

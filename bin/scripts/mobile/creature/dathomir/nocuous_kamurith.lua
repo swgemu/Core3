@@ -1,6 +1,4 @@
 nocuous_kamurith = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kamurith_nocuous",
 	socialGroup = "Kamurith",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ nocuous_kamurith = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

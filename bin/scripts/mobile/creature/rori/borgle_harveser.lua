@@ -1,6 +1,4 @@
 borgle_harveser = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "borgle harveser",
 	socialGroup = "Borgle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ borgle_harveser = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

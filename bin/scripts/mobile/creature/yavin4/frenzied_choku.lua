@@ -1,6 +1,4 @@
 frenzied_choku = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:frenzied_choku",
 	socialGroup = "Choku",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ frenzied_choku = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mediumdisease",""},

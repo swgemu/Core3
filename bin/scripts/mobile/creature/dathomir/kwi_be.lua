@@ -1,6 +1,4 @@
 kwi_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "kwi be",
 	socialGroup = "Kwi",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kwi_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

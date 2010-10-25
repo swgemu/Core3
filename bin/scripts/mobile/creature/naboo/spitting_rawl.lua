@@ -1,6 +1,4 @@
 spitting_rawl = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:spitting_rawl",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ spitting_rawl = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

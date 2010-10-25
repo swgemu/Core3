@@ -1,6 +1,4 @@
 ravenous_torton = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:ravenous_torton",
 	socialGroup = "Torton",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ravenous_torton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

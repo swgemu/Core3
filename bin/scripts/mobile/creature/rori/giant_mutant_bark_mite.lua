@@ -1,6 +1,4 @@
 giant_mutant_bark_mite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mutant_bark_mite_giant",
 	socialGroup = "Mutant Bark Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_mutant_bark_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareaattack",""},

@@ -1,6 +1,4 @@
 flewt_leviathan = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:flewt_leviathan",
 	socialGroup = "Flewt",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ flewt_leviathan = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

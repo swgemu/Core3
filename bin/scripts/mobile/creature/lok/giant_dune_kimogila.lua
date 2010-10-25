@@ -1,6 +1,4 @@
 giant_dune_kimogila = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_dune_kimogila",
 	socialGroup = "Kimogila",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_dune_kimogila = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareacombo",""},

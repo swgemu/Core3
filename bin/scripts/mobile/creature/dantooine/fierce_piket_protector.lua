@@ -1,6 +1,4 @@
 fierce_piket_protector = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:fierce_piket_protector",
 	socialGroup = "Piket",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ fierce_piket_protector = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

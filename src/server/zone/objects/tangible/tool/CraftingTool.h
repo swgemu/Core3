@@ -157,7 +157,7 @@ public:
 
 	void selectDraftSchematic(PlayerCreature* player, int index);
 
-	void createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
 
 	bool createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic);
 
@@ -308,7 +308,7 @@ private:
 public:
 	void selectDraftSchematic(PlayerCreature* player, int index);
 
-	void createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
 
 	bool createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic);
 
@@ -431,7 +431,7 @@ public:
 
 	void selectDraftSchematic(PlayerCreature* player, int index);
 
-	void createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
 
 	bool createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic);
 

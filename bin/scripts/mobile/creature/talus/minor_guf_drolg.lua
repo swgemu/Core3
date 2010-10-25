@@ -1,6 +1,4 @@
 minor_guf_drolg = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:minor_guf_drolg",
 	socialGroup = "Guf Drolg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ minor_guf_drolg = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

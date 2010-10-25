@@ -1,6 +1,4 @@
 ominous_skreeg = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:skreeg_ominous",
 	socialGroup = "Skreeg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ominous_skreeg = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

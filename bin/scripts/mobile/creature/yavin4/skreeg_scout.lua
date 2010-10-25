@@ -1,6 +1,4 @@
 skreeg_scout = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:skreeg_scout",
 	socialGroup = "Skreeg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ skreeg_scout = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

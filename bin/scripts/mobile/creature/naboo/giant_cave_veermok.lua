@@ -1,6 +1,4 @@
 giant_cave_veermok = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:veermok_giant_cave",
 	socialGroup = "Veermok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_cave_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

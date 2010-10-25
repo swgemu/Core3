@@ -1,6 +1,4 @@
 canoid = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:canoid",
 	socialGroup = "Canoid",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ canoid = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

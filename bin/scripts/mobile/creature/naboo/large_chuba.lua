@@ -1,6 +1,4 @@
 large_chuba = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:chuba_large",
 	socialGroup = "Chuba",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ large_chuba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

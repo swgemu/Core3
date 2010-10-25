@@ -14,9 +14,12 @@
 class MediumPoisonCommand : public CombatQueueCommand {
 public:
 
-	MediumPoisonCommand(const String& name, ZoneProcessServerImplementation* server)
-		: CombatQueueCommand(name, server) {
-
+	MediumPoisonCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+		dotDuration = 10;
+		dotType = CreatureState::POISONED;
+		dotPool = CombatManager::HEALTH;
+		dotStrength = 50;
+		dotPotency = 50;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

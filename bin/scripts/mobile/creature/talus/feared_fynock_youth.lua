@@ -1,6 +1,4 @@
 feared_fynock_youth = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:feared_fynock_youth",
 	socialGroup = "Fynock",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ feared_fynock_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

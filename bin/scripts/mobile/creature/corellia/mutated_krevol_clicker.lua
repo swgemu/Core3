@@ -1,6 +1,4 @@
 mutated_krevol_clicker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mutated_krevol_clicker",
 	socialGroup = "Horned Krevol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mutated_krevol_clicker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

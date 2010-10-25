@@ -1,6 +1,4 @@
 carrion_spat_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "carrion spat be",
 	socialGroup = "Carrion Spat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ carrion_spat_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

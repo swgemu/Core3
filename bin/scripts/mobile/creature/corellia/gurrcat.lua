@@ -1,6 +1,4 @@
 gurrcat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bio_engineered_tusk_cat",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gurrcat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

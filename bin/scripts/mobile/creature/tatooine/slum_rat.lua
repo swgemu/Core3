@@ -1,6 +1,4 @@
 slum_rat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:womprat_city",
 	socialGroup = "Lesser Desert W'rat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ slum_rat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

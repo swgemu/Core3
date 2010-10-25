@@ -1,6 +1,4 @@
 blood_frenzied_boar_wolf = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:blood_frenzied_boar_wolf",
 	socialGroup = "Boar Wolf",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ blood_frenzied_boar_wolf = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareableeding",""},

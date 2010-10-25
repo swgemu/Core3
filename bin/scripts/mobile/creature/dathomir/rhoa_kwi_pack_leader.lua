@@ -1,6 +1,4 @@
 rhoa_kwi_pack_leader = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "rhoa kwi pack leader",
 	socialGroup = "Rhoa Kwi",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rhoa_kwi_pack_leader = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

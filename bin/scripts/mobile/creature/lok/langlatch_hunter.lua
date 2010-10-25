@@ -1,6 +1,4 @@
 langlatch_hunter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:langlatch_hunter",
 	socialGroup = "Langlatch",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ langlatch_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

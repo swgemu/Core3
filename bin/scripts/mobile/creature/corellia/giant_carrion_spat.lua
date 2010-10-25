@@ -1,6 +1,4 @@
 giant_carrion_spat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_carrion_spat",
 	socialGroup = "Carrion Spat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_carrion_spat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

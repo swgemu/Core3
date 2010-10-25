@@ -1,6 +1,4 @@
 insane_mantigrue_berserker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mantigrue_insane_berserker",
 	socialGroup = "Mantigrue",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ insane_mantigrue_berserker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

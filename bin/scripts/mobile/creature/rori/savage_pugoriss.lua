@@ -1,6 +1,4 @@
 savage_pugoriss = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:savage_pugoriss",
 	socialGroup = "Pugoriss",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ savage_pugoriss = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

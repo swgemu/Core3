@@ -1,6 +1,4 @@
 Gungan_fambaa = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Gungan fambaa",
 	socialGroup = "Gungan ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Gungan_fambaa = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

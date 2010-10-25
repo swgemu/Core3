@@ -1,6 +1,4 @@
 ferocious_kusak = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:ferocious_kusak",
 	socialGroup = "Kusak",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ferocious_kusak = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

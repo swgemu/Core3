@@ -1,6 +1,4 @@
 malkloc = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:malkloc",
 	socialGroup = "Malkloc",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ malkloc = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

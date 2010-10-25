@@ -1,6 +1,4 @@
 giant_gaping_spider_recluse = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gaping_spider_recluse_giant",
 	socialGroup = "Gaping Recluse",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_gaping_spider_recluse = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareapoison",""},

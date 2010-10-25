@@ -1,6 +1,4 @@
 rabid_squall = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rabid_squall",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rabid_squall = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"milddisease",""}

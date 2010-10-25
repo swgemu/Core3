@@ -1,6 +1,4 @@
 piket_longhorn_female = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:piket_longhorn_female",
 	socialGroup = "Picket",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ piket_longhorn_female = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

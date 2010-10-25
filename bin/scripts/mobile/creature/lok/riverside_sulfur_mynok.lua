@@ -1,6 +1,4 @@
 riverside_sulfur_mynok = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:riverside_sulfur_mynock",
 	socialGroup = "Mynock",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ riverside_sulfur_mynok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

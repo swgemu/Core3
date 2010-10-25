@@ -1,6 +1,4 @@
 frenzied_fynock_guardian = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:frenzied_fynock_guardian",
 	socialGroup = "Fynock",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ frenzied_fynock_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

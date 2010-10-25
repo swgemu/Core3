@@ -1,6 +1,4 @@
 male_plains_tusk_cat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:male_great_grass_plains_tusk_cat",
 	socialGroup = "Tusk Cat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ male_plains_tusk_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

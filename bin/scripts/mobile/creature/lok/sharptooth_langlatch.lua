@@ -1,6 +1,4 @@
 sharptooth_langlatch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:sharptooth_langlatch",
 	socialGroup = "Langlatch",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sharptooth_langlatch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

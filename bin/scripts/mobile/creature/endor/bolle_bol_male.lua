@@ -1,6 +1,4 @@
 bolle_bol_male = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bolle_bol_male",
 	socialGroup = "Bolle Bol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bolle_bol_male = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

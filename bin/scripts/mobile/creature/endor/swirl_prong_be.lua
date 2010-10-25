@@ -1,6 +1,4 @@
 swirl_prong_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "swirl prong be",
 	socialGroup = "Swirl Prong",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ swirl_prong_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

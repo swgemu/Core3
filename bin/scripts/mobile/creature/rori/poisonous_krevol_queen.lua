@@ -1,6 +1,4 @@
 poisonous_krevol_queen = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:poisonous_krevol_queen",
 	socialGroup = "Krevol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ poisonous_krevol_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

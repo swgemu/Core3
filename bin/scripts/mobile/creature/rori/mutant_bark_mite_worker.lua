@@ -1,6 +1,4 @@
 mutant_bark_mite_worker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mutant_bark_mite_worker",
 	socialGroup = "Mut. Bark Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mutant_bark_mite_worker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 dune_lizard_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "dune lizard be",
 	socialGroup = "Dune Lizard",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dune_lizard_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

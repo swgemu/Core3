@@ -113,6 +113,22 @@ using namespace server::zone::objects::tangible;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace tangible {
+namespace weapon {
+
+class WeaponObject;
+
+} // namespace weapon
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::weapon;
+
+namespace server {
+namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -379,6 +395,8 @@ protected:
 	PatrolPoint nextStepPosition;
 
 	DamageMap damageMap;
+
+	Vector<ManagedReference<WeaponObject* > > weapons;
 
 	CreatureTemplate* npcTemplate;
 

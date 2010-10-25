@@ -1,6 +1,4 @@
 surefoot_brackaset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:surefoot_brackaset",
 	socialGroup = "Brackaset",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ surefoot_brackaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

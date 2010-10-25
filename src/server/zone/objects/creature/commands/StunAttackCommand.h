@@ -51,9 +51,9 @@ which carries forward this exception.
 class StunAttackCommand : public CombatQueueCommand {
 public:
 
-	StunAttackCommand(const String& name, ZoneProcessServerImplementation* server)
-		: CombatQueueCommand(name, server) {
-
+	StunAttackCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+		stunStateChance = 50;
+		durationStateTime = 10;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

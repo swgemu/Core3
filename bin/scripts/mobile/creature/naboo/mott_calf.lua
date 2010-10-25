@@ -1,6 +1,4 @@
 mott_calf = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mott_calf",
 	socialGroup = "Mott",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mott_calf = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 hermit_spider = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:hermit_spider",
 	socialGroup = "Hermit Spider",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ hermit_spider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 domestic_humbaba = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domestic_humbaba",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domestic_humbaba = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

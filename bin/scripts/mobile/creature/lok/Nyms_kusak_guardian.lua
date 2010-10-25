@@ -1,6 +1,4 @@
 Nyms_kusak_guardian = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Nym`s kusak guardian",
 	socialGroup = "Nym ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Nyms_kusak_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

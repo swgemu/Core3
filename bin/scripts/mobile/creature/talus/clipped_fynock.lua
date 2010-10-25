@@ -1,6 +1,4 @@
 clipped_fynock = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:clipped_fynock",
 	socialGroup = "Fynock",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ clipped_fynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

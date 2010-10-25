@@ -1,6 +1,4 @@
 bolma_pack_master = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "bolma pack master",
 	socialGroup = "Bolma",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bolma_pack_master = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

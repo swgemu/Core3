@@ -1,6 +1,4 @@
 crystal_snake = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:crystal_snake",
 	socialGroup = "Crystal Snake",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ crystal_snake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mediumpoison",""},

@@ -51,9 +51,9 @@ which carries forward this exception.
 class CreatureAreaComboCommand : public CombatQueueCommand {
 public:
 
-	CreatureAreaComboCommand(const String& name, ZoneProcessServerImplementation* server)
-		: CombatQueueCommand(name, server) {
-
+	CreatureAreaComboCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+		areaRange = 25;
+		areaAction = true;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

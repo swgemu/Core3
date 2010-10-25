@@ -65,7 +65,6 @@ public:
 		range = -1;
 
 		poolsToDamage = CombatManager::RANDOM;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

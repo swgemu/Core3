@@ -1,6 +1,4 @@
 glutted_fynock_queen = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:glutted_fynock_queen",
 	socialGroup = "Fynock",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ glutted_fynock_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

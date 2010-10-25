@@ -1,6 +1,4 @@
 gronda_patriarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "gronda patriarch",
 	socialGroup = "Gronda",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gronda_patriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

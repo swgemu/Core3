@@ -1,6 +1,4 @@
 stintaril_ravager = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:stintaril_ravager",
 	socialGroup = "Stinaril",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ stintaril_ravager = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mediumdisease",""},

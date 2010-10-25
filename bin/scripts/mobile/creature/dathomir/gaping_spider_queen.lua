@@ -1,6 +1,4 @@
 gaping_spider_queen = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gaping_spider_queen",
 	socialGroup = "Gaping",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gaping_spider_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

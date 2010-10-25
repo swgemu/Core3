@@ -1,6 +1,4 @@
 female_snorbal_calf = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:female_snorbal_calf",
 	socialGroup = "Snorbal",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_snorbal_calf = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

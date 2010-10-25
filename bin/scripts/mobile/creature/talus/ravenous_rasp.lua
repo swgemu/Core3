@@ -1,6 +1,4 @@
 ravenous_rasp = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:ravenous_rasp",
 	socialGroup = "Voracious Rasp",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ravenous_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

@@ -1,6 +1,4 @@
 mountain_vesp = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:vesp_mountain_medium",
 	socialGroup = "Vesp",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mountain_vesp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

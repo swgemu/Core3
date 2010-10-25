@@ -1,6 +1,4 @@
 spined_snake = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:spined_snake",
 	socialGroup = "Spinesnake",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ spined_snake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mediumpoison",""},

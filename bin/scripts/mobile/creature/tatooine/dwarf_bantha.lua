@@ -1,6 +1,4 @@
 dwarf_bantha = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dwarf_bantha",
 	socialGroup = "Bantha",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dwarf_bantha = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

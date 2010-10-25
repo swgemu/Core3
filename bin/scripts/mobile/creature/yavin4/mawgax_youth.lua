@@ -1,6 +1,4 @@
 mawgax_youth = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mawgax_youth",
 	socialGroup = "Mawgax",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mawgax_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

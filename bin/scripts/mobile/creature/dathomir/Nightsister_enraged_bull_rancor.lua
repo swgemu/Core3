@@ -1,6 +1,4 @@
 Nightsister_enraged_bull_rancor = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Nightsister enraged bull rancor",
 	socialGroup = "Nightsister ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Nightsister_enraged_bull_rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

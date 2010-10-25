@@ -1,6 +1,4 @@
 docile_kahmurra = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:docile_kahmurra",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ docile_kahmurra = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

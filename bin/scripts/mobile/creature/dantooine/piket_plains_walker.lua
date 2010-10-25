@@ -1,6 +1,4 @@
 piket_plains_walker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:piket_plains_walker",
 	socialGroup = "Picket",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ piket_plains_walker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

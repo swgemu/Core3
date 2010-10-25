@@ -1,6 +1,4 @@
 gurnaset_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "gurnaset be",
 	socialGroup = "Gumaset",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gurnaset_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 male_swamp_tusk_cat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:male_swamp_tusk_cat",
 	socialGroup = "Swamp Tusk C.",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ male_swamp_tusk_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

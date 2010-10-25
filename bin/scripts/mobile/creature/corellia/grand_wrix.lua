@@ -1,6 +1,4 @@
 grand_wrix = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:grand_wrix",
 	socialGroup = "Wrix",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ grand_wrix = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

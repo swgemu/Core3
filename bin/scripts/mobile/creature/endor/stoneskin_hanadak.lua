@@ -1,6 +1,4 @@
 stoneskin_hanadak = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:stoneskin_hanadak",
 	socialGroup = "Hanadak",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ stoneskin_hanadak = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

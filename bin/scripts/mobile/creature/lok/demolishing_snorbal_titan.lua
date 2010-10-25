@@ -1,6 +1,4 @@
 demolishing_snorbal_titan = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:snorbal_titanic_demolisher",
 	socialGroup = "Snorbal",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ demolishing_snorbal_titan = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

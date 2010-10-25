@@ -1,6 +1,4 @@
 puny_stintaril = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:puny_stintaril",
 	socialGroup = "Stinaril",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ puny_stintaril = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

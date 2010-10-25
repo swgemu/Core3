@@ -1,6 +1,4 @@
 diseased_vrelt_matriarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:diseased_vrelt_matriarch",
 	socialGroup = "Vrelt",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ diseased_vrelt_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"milddisease",""},

@@ -1,6 +1,4 @@
 crazed_gurk_destroyer = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:crazed_gurk_destroyer",
 	socialGroup = "Gurk",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ crazed_gurk_destroyer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

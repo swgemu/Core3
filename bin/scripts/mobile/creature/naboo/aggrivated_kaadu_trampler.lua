@@ -1,6 +1,4 @@
 aggrivated_kaadu_trampler = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kaadu_aggrivated_trampler",
 	socialGroup = "Kaadu",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ aggrivated_kaadu_trampler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

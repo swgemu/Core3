@@ -1,6 +1,4 @@
 blood_thirsty_monarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:corellian_butterfly_monarch_bloodthirsty",
 	socialGroup = "Cor. Butterfly",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ blood_thirsty_monarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

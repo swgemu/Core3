@@ -1,6 +1,4 @@
 ronto = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:ronto",
 	socialGroup = "Ronto",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ronto = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

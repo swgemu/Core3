@@ -1,6 +1,4 @@
 percussive_rasp = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:percussive_rasp",
 	socialGroup = "Rasp",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ percussive_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

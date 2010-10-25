@@ -1,6 +1,4 @@
 domesticated_gurnaset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domesticated_gurnaset",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domesticated_gurnaset = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

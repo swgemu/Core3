@@ -1,6 +1,4 @@
 hilltop_kima = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:hilltop_kima",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ hilltop_kima = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

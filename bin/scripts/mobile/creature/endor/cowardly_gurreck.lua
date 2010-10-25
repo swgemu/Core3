@@ -1,6 +1,4 @@
 cowardly_gurreck = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:cowardly_gurreck",
 	socialGroup = "Gurreck",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cowardly_gurreck = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

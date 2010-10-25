@@ -1,6 +1,4 @@
 domesticated_merek = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domesticated_merek",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domesticated_merek = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

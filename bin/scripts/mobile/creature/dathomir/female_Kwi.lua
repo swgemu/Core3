@@ -1,6 +1,4 @@
 female_Kwi = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "female Kwi",
 	socialGroup = "Kwi",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_Kwi = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

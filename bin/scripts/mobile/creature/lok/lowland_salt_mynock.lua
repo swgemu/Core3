@@ -1,6 +1,4 @@
 lowland_salt_mynock = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:lowland_salt_mynock",
 	socialGroup = "Mynock",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lowland_salt_mynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

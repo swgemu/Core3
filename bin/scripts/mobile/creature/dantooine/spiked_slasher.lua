@@ -1,6 +1,4 @@
 spiked_slasher = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:voritor_spiked_slasher",
 	socialGroup = "Voritor Lizard",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ spiked_slasher = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

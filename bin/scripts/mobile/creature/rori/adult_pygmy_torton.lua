@@ -1,6 +1,4 @@
 adult_pygmy_torton = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:torton_pygmy_adult",
 	socialGroup = "Torton",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ adult_pygmy_torton = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

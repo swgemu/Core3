@@ -1,6 +1,4 @@
 merek_assassin = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:merek_assassin",
 	socialGroup = "Merek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ merek_assassin = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

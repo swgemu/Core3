@@ -1,6 +1,4 @@
 carnivorous_nuna = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:carnivorous_nuna",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ carnivorous_nuna = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

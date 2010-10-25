@@ -1,6 +1,4 @@
 huurton_huntress = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:huurton_huntress",
 	socialGroup = "Huurton",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ huurton_huntress = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

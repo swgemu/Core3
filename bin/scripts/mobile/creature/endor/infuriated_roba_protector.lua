@@ -1,6 +1,4 @@
 infuriated_roba_protector = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "infuriated roba protector",
 	socialGroup = "Roba",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ infuriated_roba_protector = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

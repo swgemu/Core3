@@ -1,6 +1,4 @@
 brackaset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:brackaset",
 	socialGroup = "Brackaset",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ brackaset = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

@@ -1,6 +1,4 @@
 female_mamien = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mamien_female",
 	socialGroup = "Mamien",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_mamien = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

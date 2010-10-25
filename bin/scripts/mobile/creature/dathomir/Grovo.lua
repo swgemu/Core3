@@ -1,6 +1,4 @@
 Grovo = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Grovo",
 	socialGroup = "Nightsister ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Grovo = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareableeding",""},

@@ -1,6 +1,4 @@
 female_grassland_slice_hound = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:female_grassland_slice_hound",
 	socialGroup = "Grassland Slice Hound",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_grassland_slice_hound = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

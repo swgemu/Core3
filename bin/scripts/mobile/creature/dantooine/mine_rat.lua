@@ -1,6 +1,4 @@
 mine_rat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:death_watch_quenker",
 	socialGroup = "Death Watch ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mine_rat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

@@ -1,6 +1,4 @@
 sandreaver = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dewback_sandreaver",
 	socialGroup = "Dewback",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sandreaver = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

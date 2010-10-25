@@ -1,6 +1,4 @@
 toxic_slasher = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:vir_vur_toxic_slasher",
 	socialGroup = "Vir Vur",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ toxic_slasher = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mildpoison",""},

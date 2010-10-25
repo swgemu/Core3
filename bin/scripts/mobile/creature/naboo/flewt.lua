@@ -1,6 +1,4 @@
 flewt = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:flewt",
 	socialGroup = "Flewt",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ flewt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

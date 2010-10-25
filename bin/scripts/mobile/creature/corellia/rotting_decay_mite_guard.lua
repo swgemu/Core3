@@ -1,6 +1,4 @@
 rotting_decay_mite_guard = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rotting_pustule_guard",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rotting_decay_mite_guard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

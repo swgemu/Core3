@@ -1,6 +1,4 @@
 puny_tanc_mite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:puny_tanc_mite",
 	socialGroup = "Tancmite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ puny_tanc_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

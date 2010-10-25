@@ -1,6 +1,4 @@
 shallow_torton = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:shallow_torton",
 	socialGroup = "Torton",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ shallow_torton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

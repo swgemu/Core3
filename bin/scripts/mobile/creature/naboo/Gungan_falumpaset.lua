@@ -1,6 +1,4 @@
 Gungan_falumpaset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Gungan falumpaset",
 	socialGroup = "Gungan ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Gungan_falumpaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

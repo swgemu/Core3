@@ -1,6 +1,4 @@
 giant_decay_mite_soldier = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_decay_mite_soldier",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_decay_mite_soldier = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

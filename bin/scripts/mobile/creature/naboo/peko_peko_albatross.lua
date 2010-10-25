@@ -1,6 +1,4 @@
 peko_peko_albatross = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:peko_peko_albatross",
 	socialGroup = "Great Peko Peko",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ peko_peko_albatross = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareacombo",""},

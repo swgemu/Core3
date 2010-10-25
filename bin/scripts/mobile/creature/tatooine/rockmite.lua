@@ -1,6 +1,4 @@
 rockmite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rockmite",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rockmite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

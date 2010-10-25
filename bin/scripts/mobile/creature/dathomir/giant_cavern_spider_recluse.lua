@@ -1,6 +1,4 @@
 giant_cavern_spider_recluse = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:cave_gaping_spider_recluse_giant",
 	socialGroup = "Spider Nightsister ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_cavern_spider_recluse = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareacombo",""},

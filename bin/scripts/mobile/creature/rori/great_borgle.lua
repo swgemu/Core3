@@ -1,6 +1,4 @@
 great_borgle = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:great_borgle",
 	socialGroup = "Borgle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ great_borgle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

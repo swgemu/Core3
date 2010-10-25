@@ -1,6 +1,4 @@
 prowling_gurreck = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gurreck_prowler",
 	socialGroup = "Gurreck",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ prowling_gurreck = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

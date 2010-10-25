@@ -1,6 +1,4 @@
 ravenous_roba_stalker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "ravenous roba stalker",
 	socialGroup = "Roba",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ravenous_roba_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"}

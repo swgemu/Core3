@@ -1,6 +1,4 @@
 gaping_spider_broodling = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gaping_spider_broodling",
 	socialGroup = "Gaping",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gaping_spider_broodling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mildpoison",""}

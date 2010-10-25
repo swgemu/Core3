@@ -1,6 +1,4 @@
 rabid_shaupaut = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rabid_shaupaut",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rabid_shaupaut = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

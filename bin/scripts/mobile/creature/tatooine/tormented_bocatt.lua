@@ -1,6 +1,4 @@
 tormented_bocatt = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bocatt_tormented",
 	socialGroup = "Bocatt",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ tormented_bocatt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

@@ -1,6 +1,4 @@
 salt_mynock = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:salt_mynock",
 	socialGroup = "Mynock",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ salt_mynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

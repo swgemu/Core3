@@ -1,6 +1,4 @@
 sunstained_dune_lizard = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dune_lizard_sunstained",
 	socialGroup = "Dune Lizard",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sunstained_dune_lizard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

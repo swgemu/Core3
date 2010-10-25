@@ -1,6 +1,4 @@
 humbaba = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:humbaba",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ humbaba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

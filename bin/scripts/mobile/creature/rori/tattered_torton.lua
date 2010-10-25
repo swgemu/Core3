@@ -1,6 +1,4 @@
 tattered_torton = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:tattered_torton",
 	socialGroup = "Torton",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ tattered_torton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

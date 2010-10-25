@@ -1,6 +1,4 @@
 rancor = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:rancor",
 	socialGroup = "Jabba ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

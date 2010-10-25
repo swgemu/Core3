@@ -1,6 +1,4 @@
 thune_grassland_guardian = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:thune_grassland_guardian",
 	socialGroup = "Thune",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ thune_grassland_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

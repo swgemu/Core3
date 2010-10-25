@@ -1,6 +1,4 @@
 guf_drolg_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "guf drolg be",
 	socialGroup = "Guf Drolg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ guf_drolg_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

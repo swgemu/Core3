@@ -1,6 +1,4 @@
 domesticated_mott = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domesticated_mott",
 	socialGroup = "Naboo ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domesticated_mott = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

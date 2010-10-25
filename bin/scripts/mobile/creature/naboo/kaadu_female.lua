@@ -1,6 +1,4 @@
 kaadu_female = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kaadu_female",
 	socialGroup = "Kaadu",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kaadu_female = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

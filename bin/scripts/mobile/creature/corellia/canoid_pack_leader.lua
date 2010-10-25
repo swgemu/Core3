@@ -1,6 +1,4 @@
 canoid_pack_leader = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:canoid_pack_leader",
 	socialGroup = "Canoid",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ canoid_pack_leader = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

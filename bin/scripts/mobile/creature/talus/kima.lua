@@ -1,6 +1,4 @@
 kima = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:kima",
 	socialGroup = "Kima",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kima = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

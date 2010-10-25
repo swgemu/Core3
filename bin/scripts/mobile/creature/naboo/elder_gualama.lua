@@ -1,6 +1,4 @@
 elder_gualama = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:elder_gualama",
 	socialGroup = "Gualama",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ elder_gualama = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

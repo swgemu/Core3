@@ -1,6 +1,4 @@
 dung_mite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dung_mite",
 	socialGroup = "Decay Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dung_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

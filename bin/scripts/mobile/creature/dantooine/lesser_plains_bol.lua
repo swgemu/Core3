@@ -1,6 +1,4 @@
 lesser_plains_bol = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bol_lesser_plains",
 	socialGroup = "Bol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lesser_plains_bol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 bolma = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:bolma",
 	socialGroup = "Bolma",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bolma = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

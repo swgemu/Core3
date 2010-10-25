@@ -1,6 +1,4 @@
 mammoth_bearded_jax = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mammoth_bearded_jax",
 	socialGroup = "Jax",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mammoth_bearded_jax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

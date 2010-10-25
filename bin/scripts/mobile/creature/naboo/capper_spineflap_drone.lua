@@ -1,6 +1,4 @@
 capper_spineflap_drone = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:capper_spineflap_drone",
 	socialGroup = "Cap. Spineflap",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ capper_spineflap_drone = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

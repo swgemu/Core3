@@ -1,6 +1,4 @@
 bloated_gubber = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gubbur_bloated",
 	socialGroup = "Gubbur",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bloated_gubber = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

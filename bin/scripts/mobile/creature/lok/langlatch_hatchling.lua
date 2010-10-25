@@ -1,6 +1,4 @@
 langlatch_hatchling = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:langlatch_hatchling",
 	socialGroup = "Langlatch",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ langlatch_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

@@ -1,6 +1,4 @@
 male_kai_tok = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:male_kai_tok",
 	socialGroup = "Kai Tok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ male_kai_tok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

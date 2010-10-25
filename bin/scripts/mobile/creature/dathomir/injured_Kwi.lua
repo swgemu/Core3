@@ -1,6 +1,4 @@
 injured_Kwi = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "injured Kwi",
 	socialGroup = "Kwi",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ injured_Kwi = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

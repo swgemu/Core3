@@ -1,6 +1,4 @@
 crescent_rasp = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:crescent_rasp",
 	socialGroup = "Rasp",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ crescent_rasp = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

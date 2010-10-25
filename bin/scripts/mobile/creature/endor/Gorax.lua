@@ -1,6 +1,4 @@
 Gorax = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Gorax",
 	socialGroup = "Gorax ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Gorax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareaattack",""},

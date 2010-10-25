@@ -1,6 +1,4 @@
 kliknik_hatchling = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kliknik_hatchling",
 	socialGroup = "Kliknik",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kliknik_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 angry_baz_nitch_avenger = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:angry_baz_nitch_avenger",
 	socialGroup = "Baz Nitch",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ angry_baz_nitch_avenger = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

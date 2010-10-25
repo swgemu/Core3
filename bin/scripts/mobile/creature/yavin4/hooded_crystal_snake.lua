@@ -1,6 +1,4 @@
 hooded_crystal_snake = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:crystal_snake_hooded",
 	socialGroup = "Crystal Snake",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ hooded_crystal_snake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mediumpoison",""},

@@ -1,6 +1,4 @@
 giant_crystal_snake = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_crystal_snake",
 	socialGroup = "Crystal Snake",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_crystal_snake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

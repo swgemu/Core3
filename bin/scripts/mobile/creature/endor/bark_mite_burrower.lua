@@ -1,6 +1,4 @@
 bark_mite_burrower = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bark_mite_burrower",
 	socialGroup = "Bark Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bark_mite_burrower = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareableeding",""},

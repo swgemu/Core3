@@ -1,6 +1,4 @@
 ikopi_stag = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:ikopi_stag",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ikopi_stag = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

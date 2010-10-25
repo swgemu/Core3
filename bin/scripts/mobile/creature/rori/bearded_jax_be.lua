@@ -1,6 +1,4 @@
 bearded_jax_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "bearded jax be",
 	socialGroup = "Jax",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bearded_jax_be = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

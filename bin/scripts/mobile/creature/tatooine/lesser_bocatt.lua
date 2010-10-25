@@ -1,6 +1,4 @@
 lesser_bocatt = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:lesser_bocatt",
 	socialGroup = "Bocatt",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lesser_bocatt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

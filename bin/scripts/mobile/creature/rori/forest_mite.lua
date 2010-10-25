@@ -1,6 +1,4 @@
 forest_mite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:forest_mite",
 	socialGroup = "Bark Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ forest_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 slice_hound_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "slice hound be",
 	socialGroup = "Slice Hound",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ slice_hound_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

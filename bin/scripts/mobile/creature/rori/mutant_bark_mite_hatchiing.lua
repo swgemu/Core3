@@ -1,6 +1,4 @@
 mutant_bark_mite_hatchiing = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "mutant bark mite hatchiing",
 	socialGroup = "Mut. Bark Mite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mutant_bark_mite_hatchiing = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

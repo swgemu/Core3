@@ -1,6 +1,4 @@
 rogue_bageraset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rogue_bageraset",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rogue_bageraset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

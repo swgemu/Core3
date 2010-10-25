@@ -1,6 +1,4 @@
 female_razor_cat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:female_sand_panther",
 	socialGroup = "Sand Panther",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_razor_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

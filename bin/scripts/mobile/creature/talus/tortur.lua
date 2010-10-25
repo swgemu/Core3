@@ -1,6 +1,4 @@
 tortur = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:tortur",
 	socialGroup = "Tortur",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ tortur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

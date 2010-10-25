@@ -1,6 +1,4 @@
 mottled_wrix = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mottled_wrix",
 	socialGroup = "Wrix",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mottled_wrix = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},
