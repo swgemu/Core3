@@ -46,6 +46,7 @@ which carries forward this exception.
 #define HARVESTCORPSECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "../../creature/Creature.h"
 
 class HarvestCorpseCommand : public QueueCommand {
 public:
@@ -62,6 +63,46 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if(!creature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		ManagedReference<SceneObject* > object =
+				server->getZoneServer()->getObject(target);
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+
+		StringTokenizer args(arguments.toString());
+
+		if (object == NULL || !object->isCreatureObject() || player == NULL)
+			return INVALIDTARGET;
+
+		CreatureObject* creo = (CreatureObject*) object.get();
+
+		if(!creo->isCreature())
+			return INVALIDTARGET;
+
+		Creature* cr = (Creature*) creo;
+
+		String harvesttype = "";
+
+		if (args.hasMoreTokens())
+			args.getStringToken(harvesttype);
+
+		harvesttype = harvesttype.toLowerCase();
+		byte type = 0;
+
+		if(harvesttype == "meat")
+			type = 234;
+		else if(harvesttype == "hide")
+			type = 235;
+		else if(harvesttype == "bone")
+			type = 236;
+		else
+			type = System::random(2) + 234;
+
+		if(cr->canHarvestMe(player))
+			cr->harvest(player, type);
 
 		return SUCCESS;
 	}

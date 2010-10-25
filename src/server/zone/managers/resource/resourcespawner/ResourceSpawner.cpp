@@ -650,6 +650,20 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 	player->notifyObservers(ObserverEventType::SAMPLE, resourceSpawn, density
 			* 100);
 
+	addResourceToPlayerInventory(player, resourceSpawn, unitsExtracted);
+
+	if (resourceSpawn->isType("radioactive")) {
+		int wound = int((sampleRate / 70) - System::random(9));
+
+		if (wound > 0) {
+			player->addWounds(CreatureAttribute::HEALTH, wound, true);
+			player->addWounds(CreatureAttribute::ACTION, wound, true);
+			player->addWounds(CreatureAttribute::MIND, wound, true);
+		}
+	}
+}
+
+void ResourceSpawner::addResourceToPlayerInventory(PlayerCreature* player, ResourceSpawn* resourceSpawn, int unitsExtracted) {
 	// Add resource to inventory
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
 			"inventory");
@@ -670,7 +684,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 			ManagedReference<ResourceContainer*> resource =
 					(ResourceContainer*) object.get();
 
-			if (resource->getSpawnName() == resname) {
+			if (resource->getSpawnName() == resourceSpawn->getName()) {
 				int newStackSize = resource->getQuantity() + unitsExtracted;
 
 				resource->setQuantity(newStackSize);
@@ -680,27 +694,19 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 	}
 
 	// Create New resource container if one isn't found in inventory
-	ResourceContainer* harvestedResource = resourceSpawn->createResource(
-			unitsExtracted);
+	ResourceContainer* harvestedResource = resourceSpawn->createResource(unitsExtracted);
+
 	harvestedResource->sendTo(player, true);
 	inventory->addObject(harvestedResource, -1, true);
 	harvestedResource->updateToDatabase();
-
-	if (resourceSpawn->isType("radioactive")) {
-		int wound = int((sampleRate / 70) - System::random(9));
-
-		if (wound > 0) {
-			player->addWounds(CreatureAttribute::HEALTH, wound, true);
-			player->addWounds(CreatureAttribute::ACTION, wound, true);
-			player->addWounds(CreatureAttribute::MIND, wound, true);
-		}
-	}
 }
 
 ResourceContainer* ResourceSpawner::harvestResource(PlayerCreature* player,
 		const String& type, const int quantity) {
-	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(
-			player->getZone()->getZoneID());
+
+	int zoneid = player->getZone()->getZoneID();
+
+	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneid);
 	if (zoneMap == NULL) {
 		player->sendSystemMessage("Failed to locate any resources");
 		return NULL;
@@ -712,12 +718,39 @@ ResourceContainer* ResourceSpawner::harvestResource(PlayerCreature* player,
 		resourceSpawn = zoneMap->get(i);
 
 		if (resourceSpawn != NULL && resourceSpawn->getType() == type) {
-			resourceSpawn->extractResource(player->getZone()->getZoneID(),
-					quantity);
+			resourceSpawn->extractResource(player->getZone()->getZoneID(), quantity);
 			return resourceSpawn->createResource(quantity);
 		}
+
 	}
 	player->sendSystemMessage("Failed to locate any suitable resources");
+	return NULL;
+}
+
+void ResourceSpawner::harvestResource(PlayerCreature* player, ResourceSpawn* resourceSpawn, int quantity) {
+
+	resourceSpawn->extractResource(player->getZone()->getZoneID(), quantity);
+
+	addResourceToPlayerInventory(player, resourceSpawn, quantity);
+}
+
+ResourceSpawn* ResourceSpawner::getCurrentSpawn(const String& restype, const int zoneid) {
+
+	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneid);
+
+	if (zoneMap == NULL) {
+		return NULL;
+	}
+
+	ManagedReference<ResourceSpawn*> resourceSpawn;
+
+	for (int i = 0; i < zoneMap->size(); ++i) {
+		resourceSpawn = zoneMap->get(i);
+
+		if (resourceSpawn != NULL && resourceSpawn->getType().indexOf(restype) != -1)
+			return resourceSpawn;
+	}
+
 	return NULL;
 }
 

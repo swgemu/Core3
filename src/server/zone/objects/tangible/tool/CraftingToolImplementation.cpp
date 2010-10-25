@@ -456,6 +456,8 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 		// Start the insert count so inserts and removals work
 		insertCounter = 0;
+	} else {
+		player->sendSystemMessage("This type of object has not yet been implemented");
 	}
 
 }
@@ -555,6 +557,7 @@ void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature
 	objMsg->insertShort(0);
 
 	player->sendMessage(objMsg);
+
 }
 
 void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
@@ -590,8 +593,6 @@ void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleO
 		else
 			sendSlotMessage(player, clientCounter, IngredientSlot::INVALIDINGREDIENT);
 	}
-
-
 }
 
 void CraftingToolImplementation::sendIngredientAddSuccess(PlayerCreature* player, int slot, int clientCounter) {
@@ -790,6 +791,7 @@ void CraftingToolImplementation::nextCraftingStage(PlayerCreature* player, int c
 
 		finishStage2(player, clientCounter);
 	}
+
 }
 
 void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int clientCounter) {
@@ -936,6 +938,7 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 		player->sendMessage(dtano3);
 		// End Dtano3 *****************************************************
 	}
+
 }
 
 void CraftingToolImplementation::setInitialCraftingValues() {

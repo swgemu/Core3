@@ -190,6 +190,9 @@ void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* pl
 ResourceContainer* ResourceManagerImplementation::harvestResource(PlayerCreature* player, const String& type, const int quantity) {
 	return resourceSpawner->harvestResource(player, type, quantity);
 }
+void ResourceManagerImplementation::harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity) {
+	resourceSpawner->harvestResource(player, resourceSpawn, quantity);
+}
 
 void ResourceManagerImplementation::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
 	resourceSpawner->sendSurvey(playerCreature, resname);
@@ -233,6 +236,10 @@ ResourceSpawn* ResourceManagerImplementation::getResourceSpawn(const String& spa
 	runlock();
 
 	return spawn;
+}
+
+ResourceSpawn* ResourceManagerImplementation::getCurrentSpawn(const String& restype, int zoneid) {
+	return resourceSpawner->getCurrentSpawn(restype, zoneid);
 }
 
 void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, int zoneid) {

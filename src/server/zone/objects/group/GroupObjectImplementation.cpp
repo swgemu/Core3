@@ -66,6 +66,19 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	delete msg;
 }
 
+void GroupObjectImplementation::broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		SceneObject* play = groupMembers.get(i);
+
+		if(!sendSelf && play == player)
+			continue;
+
+		play->sendMessage(msg->clone());
+	}
+
+	delete msg;
+}
+
 void GroupObjectImplementation::addMember(SceneObject* player) {
 	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
 	grp->startUpdate(1);
@@ -301,4 +314,36 @@ void GroupObjectImplementation::removeGroupModifiers(PlayerCreature* player) {
 
 	if (player->hasBuff(action.hashCode()))
 		player->removeBuff(action.hashCode());
+}
+
+float GroupObjectImplementation::getGroupHarvestModifier(PlayerCreature* player) {
+
+	String skillNovice = "outdoors_ranger_novice";
+	String skillMaster = "outdoors_ranger_master";
+
+	float modifier = 1.2f;
+
+	for(int i = 0; i < groupMembers.size(); ++i) {
+		ManagedReference<SceneObject*> scno = (SceneObject*)groupMembers.get(i);
+
+		if(scno->isPlayerCreature()) {
+			PlayerCreature* groupMember = (PlayerCreature*) scno.get();
+
+			if(groupMember == player)
+				continue;
+
+			if(groupMember->hasSkillBox(skillNovice)) {
+
+				if(groupMember->isInRange(player, 64.0f)) {
+
+					if(groupMember->hasSkillBox(skillMaster)) {
+						modifier = 1.4f;
+						break;
+					}
+					modifier = 1.3f;
+				}
+			}
+		}
+	}
+	return modifier;
 }

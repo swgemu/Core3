@@ -95,6 +95,8 @@ class AiAgent extends CreatureObject {
 	protected transient CreatureTemplate npcTemplate;
 	protected transient SharedObjectTemplate objectTemplate;
 	
+	protected transient CreatureObject lootOwner;
+	
 	protected boolean baby;
 	
 	protected float currentSpeed;
@@ -123,6 +125,7 @@ class AiAgent extends CreatureObject {
 
 		objectTemplate = null;
 		npcTemplate = null;
+		lootOwner = null;
 		
 		Logger.setLoggingName("AiAgent");
 		Logger.setLogging(false);
@@ -267,6 +270,8 @@ class AiAgent extends CreatureObject {
 	 */
 	public native void notifyDespawn(Zone zone);
 	
+	public abstract native void scheduleDespawn(); 
+	
 	/**
 	 * Respawns creature to specified zone with home location position
 	 */
@@ -393,71 +398,11 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.isStalker();
 	}
 	
-	public boolean isBaby() {
-		return baby;
-	}
-	
 	public boolean isKiller() {
 		if (npcTemplate == null)
 			return false;
 		
 		return npcTemplate.isKiller();
-	}
-	
-	public float getTame() {
-		if (npcTemplate == null)
-			return 0;
-		
-		return npcTemplate.getTame();
-	}
-	
-	public string getMeatType() {
-		if (npcTemplate == null)
-			return "";
-		
-		return npcTemplate.getMeatType();
-	}
-	
-	public string getBoneType() {
-		if (npcTemplate == null)
-			return "";
-		
-		return npcTemplate.getBoneType();
-	}
-	
-	public string getHideType() {
-		if (npcTemplate == null)
-			return "";
-		
-		return npcTemplate.getHideType();
-	}
-	
-	public float getMilk() {
-		if (npcTemplate == null)
-			return 0;
-		
-		return npcTemplate.getMilk();
-	}
-	
-	public float getHideMax() {
-		if (npcTemplate == null)
-			return 0;
-		
-		return npcTemplate.getHideMax();
-	}
-	
-	public float getBoneMax() {
-		if (npcTemplate == null)
-			return 0;
-		
-		return npcTemplate.getBoneMax();
-	}
-	
-	public float getMeatMax() {
-		if (npcTemplate == null)
-			return 0;
-		
-		return npcTemplate.getMeatMax();
 	}
 	
 	public unsigned int getFerocity() {
@@ -552,10 +497,16 @@ class AiAgent extends CreatureObject {
 	public PatrolPoint getHomeLocation() {
 		return homeLocation;
 	}
-
-	public native boolean hasOrganics();
 	
 	public boolean isAiAgent() {
 		return true;
+	}
+	
+	public void setLootOwner(CreatureObject owner) {
+		lootOwner = owner;
+	}
+	
+	public CreatureObject getLootOwner() {
+		return lootOwner;
 	}
 }

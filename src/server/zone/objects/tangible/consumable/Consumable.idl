@@ -103,14 +103,14 @@ class Consumable extends TangibleObject {
 		filling = 0;
 		effectType = EFFECT_ATTRIBUTE;
 
-		fillingMin = 0;
-		fillingMax = 0;
-		flavorMin = 0;
-		flavorMax = 0;
-		nutritionMin = 0;
-		nutritionMax = 0;
-		quantityMin = 0;
-		quantityMax = 0;
+		fillingMin = 1;
+		fillingMax = 1;
+		flavorMin = 1;
+		flavorMax = 1;
+		nutritionMin = 1;
+		nutritionMax = 1;
+		quantityMin = 1;
+		quantityMax = 1;
 
 		modifiers.setNoDuplicateInsertPlan();
 		modifiers.setNullValue(0);

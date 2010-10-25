@@ -128,6 +128,10 @@ public:
 	void sendSampleResults(PlayerCreature* player, const float density, const String& resname);
 
 	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
+	void harvestResource(PlayerCreature* player, ResourceSpawn* resourceSpawn, int quantity);
+	void addResourceToPlayerInventory(PlayerCreature* player, ResourceSpawn* resourceSpawn, int unitsExtracted);
+
+	ResourceSpawn* getCurrentSpawn(const String& restype, const int zoneid);
 
 	ResourceSpawn* getFromRandomPool(const String& type);
 
