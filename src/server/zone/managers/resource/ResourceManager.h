@@ -164,6 +164,8 @@ public:
 
 	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
 
+	void harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity);
+
 	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
 
 	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
@@ -173,6 +175,8 @@ public:
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
 	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
+
+	ResourceSpawn* getCurrentSpawn(const String& restype, int zoneid);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
@@ -236,6 +240,8 @@ public:
 
 	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
 
+	void harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity);
+
 	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
 
 	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
@@ -245,6 +251,8 @@ public:
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
 	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
+
+	ResourceSpawn* getCurrentSpawn(const String& restype, int zoneid);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
@@ -315,6 +323,8 @@ public:
 
 	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
 
+	void harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity);
+
 	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
 
 	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
@@ -322,6 +332,8 @@ public:
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
 	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
+
+	ResourceSpawn* getCurrentSpawn(const String& restype, int zoneid);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
@@ -335,6 +347,7 @@ protected:
 	String _param1_harvestResource__PlayerCreature_String_int_;
 	String _param1_createResourceSpawn__PlayerCreature_String_;
 	String _param1_givePlayerResource__PlayerCreature_String_int_;
+	String _param0_getCurrentSpawn__String_int_;
 	String _param0_getResourceSpawn__String_;
 	String _param0_addChildrenToDeedListBox__String_ResourceDeedListBox_bool_;
 };

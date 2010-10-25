@@ -262,6 +262,8 @@ public:
 
 	void notifyDespawn(Zone* zone);
 
+	void scheduleDespawn();
+
 	void respawn(Zone* zone, int level);
 
 	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
@@ -296,25 +298,7 @@ public:
 
 	bool isStalker();
 
-	bool isBaby();
-
 	bool isKiller();
-
-	float getTame();
-
-	String getMeatType();
-
-	String getBoneType();
-
-	String getHideType();
-
-	float getMilk();
-
-	float getHideMax();
-
-	float getBoneMax();
-
-	float getMeatMax();
 
 	unsigned int getFerocity();
 
@@ -346,9 +330,11 @@ public:
 
 	PatrolPoint* getHomeLocation();
 
-	bool hasOrganics();
-
 	bool isAiAgent();
+
+	void setLootOwner(CreatureObject* owner);
+
+	CreatureObject* getLootOwner();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -359,10 +345,7 @@ protected:
 
 	virtual ~AiAgent();
 
-	String _return_getBoneType;
 	String _return_getFactionString;
-	String _return_getHideType;
-	String _return_getMeatType;
 	String _return_getSocialGroup;
 
 	friend class AiAgentHelper;
@@ -401,6 +384,8 @@ protected:
 	CreatureTemplate* npcTemplate;
 
 	SharedObjectTemplate* objectTemplate;
+
+	ManagedReference<CreatureObject* > lootOwner;
 
 	bool baby;
 
@@ -483,6 +468,8 @@ public:
 
 	void notifyDespawn(Zone* zone);
 
+	virtual void scheduleDespawn();
+
 	void respawn(Zone* zone, int level);
 
 	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
@@ -517,25 +504,7 @@ public:
 
 	bool isStalker();
 
-	bool isBaby();
-
 	bool isKiller();
-
-	float getTame();
-
-	String getMeatType();
-
-	String getBoneType();
-
-	String getHideType();
-
-	float getMilk();
-
-	float getHideMax();
-
-	float getBoneMax();
-
-	float getMeatMax();
 
 	unsigned int getFerocity();
 
@@ -567,9 +536,11 @@ public:
 
 	PatrolPoint* getHomeLocation();
 
-	bool hasOrganics();
-
 	bool isAiAgent();
+
+	void setLootOwner(CreatureObject* owner);
+
+	CreatureObject* getLootOwner();
 
 	AiAgent* _this;
 
@@ -656,6 +627,8 @@ public:
 
 	void notifyDespawn(Zone* zone);
 
+	void scheduleDespawn();
+
 	void respawn(Zone* zone, int level);
 
 	void setHomeLocation(float x, float z, float y, SceneObject* cell);
@@ -690,25 +663,7 @@ public:
 
 	bool isStalker();
 
-	bool isBaby();
-
 	bool isKiller();
-
-	float getTame();
-
-	String getMeatType();
-
-	String getBoneType();
-
-	String getHideType();
-
-	float getMilk();
-
-	float getHideMax();
-
-	float getBoneMax();
-
-	float getMeatMax();
 
 	unsigned int getFerocity();
 
@@ -734,9 +689,11 @@ public:
 
 	float getRespawnTimer();
 
-	bool hasOrganics();
-
 	bool isAiAgent();
+
+	void setLootOwner(CreatureObject* owner);
+
+	CreatureObject* getLootOwner();
 
 };
 

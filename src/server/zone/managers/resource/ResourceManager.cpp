@@ -156,13 +156,29 @@ ResourceContainer* ResourceManager::harvestResource(PlayerCreature* player, cons
 		return _implementation->harvestResource(player, type, quantity);
 }
 
-unsigned long long ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player) {
+void ResourceManager::harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+		method.addObjectParameter(player);
+		method.addObjectParameter(resourceSpawn);
+		method.addSignedIntParameter(quantity);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->harvestResourceToPlayer(player, resourceSpawn, quantity);
+}
+
+unsigned long long ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		return method.executeWithUnsignedLongReturn();
@@ -176,7 +192,7 @@ void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned lon
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(power);
 
@@ -200,7 +216,7 @@ void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(restype);
 
@@ -215,7 +231,7 @@ void ResourceManager::givePlayerResource(PlayerCreature* playerCreature, const S
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(restype);
 		method.addSignedIntParameter(quantity);
@@ -225,13 +241,28 @@ void ResourceManager::givePlayerResource(PlayerCreature* playerCreature, const S
 		_implementation->givePlayerResource(playerCreature, restype, quantity);
 }
 
+ResourceSpawn* ResourceManager::getCurrentSpawn(const String& restype, int zoneid) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addAsciiParameter(restype);
+		method.addSignedIntParameter(zoneid);
+
+		return (ResourceSpawn*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getCurrentSpawn(restype, zoneid);
+}
+
 ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addAsciiParameter(spawnName);
 
 		return (ResourceSpawn*) method.executeWithObjectReturn();
@@ -245,7 +276,7 @@ void ResourceManager::addChildrenToDeedListBox(const String& name, ResourceDeedL
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addAsciiParameter(name);
 		method.addObjectParameter(suil);
 		method.addBooleanParameter(parent);
@@ -384,21 +415,27 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertLong(harvestResource((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_harvestResource__PlayerCreature_String_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 14:
-		resp->insertLong(getAvailablePowerFromPlayer((PlayerCreature*) inv->getObjectParameter()));
+		harvestResourceToPlayer((PlayerCreature*) inv->getObjectParameter(), (ResourceSpawn*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 15:
-		removePowerFromPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		resp->insertLong(getAvailablePowerFromPlayer((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 16:
-		createResourceSpawn((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createResourceSpawn__PlayerCreature_String_));
+		removePowerFromPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 17:
-		givePlayerResource((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_givePlayerResource__PlayerCreature_String_int_), inv->getSignedIntParameter());
+		createResourceSpawn((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createResourceSpawn__PlayerCreature_String_));
 		break;
 	case 18:
-		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
+		givePlayerResource((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_givePlayerResource__PlayerCreature_String_int_), inv->getSignedIntParameter());
 		break;
 	case 19:
+		resp->insertLong(getCurrentSpawn(inv->getAsciiParameter(_param0_getCurrentSpawn__String_int_), inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 20:
+		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
+		break;
+	case 21:
 		addChildrenToDeedListBox(inv->getAsciiParameter(_param0_addChildrenToDeedListBox__String_ResourceDeedListBox_bool_), (ResourceDeedListBox*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	default:
@@ -440,6 +477,10 @@ ResourceContainer* ResourceManagerAdapter::harvestResource(PlayerCreature* playe
 	return ((ResourceManagerImplementation*) impl)->harvestResource(player, type, quantity);
 }
 
+void ResourceManagerAdapter::harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity) {
+	((ResourceManagerImplementation*) impl)->harvestResourceToPlayer(player, resourceSpawn, quantity);
+}
+
 unsigned long long ResourceManagerAdapter::getAvailablePowerFromPlayer(PlayerCreature* player) {
 	return ((ResourceManagerImplementation*) impl)->getAvailablePowerFromPlayer(player);
 }
@@ -454,6 +495,10 @@ void ResourceManagerAdapter::createResourceSpawn(PlayerCreature* playerCreature,
 
 void ResourceManagerAdapter::givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity) {
 	((ResourceManagerImplementation*) impl)->givePlayerResource(playerCreature, restype, quantity);
+}
+
+ResourceSpawn* ResourceManagerAdapter::getCurrentSpawn(const String& restype, int zoneid) {
+	return ((ResourceManagerImplementation*) impl)->getCurrentSpawn(restype, zoneid);
 }
 
 ResourceSpawn* ResourceManagerAdapter::getResourceSpawn(const String& spawnName) {

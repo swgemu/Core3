@@ -28,16 +28,46 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace area {
+namespace group {
 
-class ActiveArea;
+class GroupObject;
 
-} // namespace area
+} // namespace group
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::area;
+using namespace server::zone::objects::group;
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+
+class CreatureTemplate;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
+#include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -54,6 +84,38 @@ public:
 
 	bool isCreature();
 
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void harvest(PlayerCreature* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void scheduleDespawn();
+
+	bool hasOrganics();
+
+	bool canHarvestMe(CreatureObject* player);
+
+	bool isBaby();
+
+	float getTame();
+
+	String getMeatType();
+
+	String getBoneType();
+
+	String getHideType();
+
+	float getMilk();
+
+	float getHideMax();
+
+	float getBoneMax();
+
+	float getMeatMax();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -62,6 +124,10 @@ protected:
 	Creature(DummyConstructorParameter* param);
 
 	virtual ~Creature();
+
+	String _return_getBoneType;
+	String _return_getHideType;
+	String _return_getMeatType;
 
 	friend class CreatureHelper;
 };
@@ -79,6 +145,8 @@ namespace objects {
 namespace creature {
 
 class CreatureImplementation : public AiAgentImplementation {
+protected:
+	Vector<ManagedReference<CreatureObject* > > harvestList;
 
 public:
 	CreatureImplementation();
@@ -86,6 +154,42 @@ public:
 	CreatureImplementation(DummyConstructorParameter* param);
 
 	bool isCreature();
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void harvest(PlayerCreature* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void scheduleDespawn();
+
+private:
+	void createHarvestList();
+
+public:
+	bool hasOrganics();
+
+	bool canHarvestMe(CreatureObject* player);
+
+	bool isBaby();
+
+	float getTame();
+
+	String getMeatType();
+
+	String getBoneType();
+
+	String getHideType();
+
+	float getMilk();
+
+	float getHideMax();
+
+	float getBoneMax();
+
+	float getMeatMax();
 
 	Creature* _this;
 
@@ -127,6 +231,36 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool isCreature();
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void harvest(PlayerCreature* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void scheduleDespawn();
+
+	bool hasOrganics();
+
+	bool canHarvestMe(CreatureObject* player);
+
+	bool isBaby();
+
+	float getTame();
+
+	String getMeatType();
+
+	String getBoneType();
+
+	String getHideType();
+
+	float getMilk();
+
+	float getHideMax();
+
+	float getBoneMax();
+
+	float getMeatMax();
 
 };
 
