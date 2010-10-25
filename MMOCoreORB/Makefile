@@ -46,10 +46,10 @@ IDL_CLASSPATH = ../MMOEngine/include
 
 IDL_DIRECTIVES = -cp $(IDL_CLASSPATH)
 
-all:
+all: build
 
 build: idl
-	cd build/unix && make
+	cd build/unix && make -j4
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	cd bin/conf && cat motd.txt | sed "s/\\(^Revision=\\)\\(..*$\\)/\1`svnversion`/" > motd.txt

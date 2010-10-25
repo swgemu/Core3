@@ -47,17 +47,108 @@ package server.zone.objects.creature;
 import engine.core.ManagedObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.AiAgent;
-import server.zone.objects.area.ActiveArea;
+import server.zone.objects.group.GroupObject;
+import server.zone.packets.object.ObjectMenuResponse;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.managers.creature.CreatureTemplate;
 
 class Creature extends AiAgent {
+	
+	@dereferenced
+	protected transient Vector<CreatureObject> harvestList;
 	
 	public Creature() {
 		Logger.setLoggingName("Creature");
 		Logger.setLogging(false);
-		Logger.setGlobalLogging(true);
+		Logger.setGlobalLogging(true); 
 	}
 
 	public boolean isCreature() {
 		return true;
+	}
+	
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	public native void harvest(PlayerCreature player, byte selectedID);
+
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	public native void scheduleDespawn(); 
+	
+	private native void createHarvestList();
+	
+	public native boolean hasOrganics();
+	
+	public native boolean canHarvestMe(CreatureObject player);
+	
+	public boolean isBaby() {
+		return super.baby;
+	}
+	
+	public float getTame() {
+		if (super.npcTemplate == null)
+			return 0;
+		
+		return super.npcTemplate.getTame();
+	}
+	
+	public string getMeatType() {
+		if (super.npcTemplate == null)
+			return "";
+		
+		return super.npcTemplate.getMeatType();
+	}
+	
+	public string getBoneType() {
+		if (super.npcTemplate == null)
+			return "";
+		
+		return super.npcTemplate.getBoneType();
+	}
+	
+	public string getHideType() {
+		if (super.npcTemplate == null)
+			return "";
+		
+		return super.npcTemplate.getHideType();
+	}
+	
+	public float getMilk() {
+		if (super.npcTemplate == null)
+			return 0;
+		
+		return super.npcTemplate.getMilk();
+	}
+	
+	public float getHideMax() {
+		if (super.npcTemplate == null)
+			return 0;
+		
+		return super.npcTemplate.getHideMax();
+	}
+	
+	public float getBoneMax() {
+		if (super.npcTemplate == null)
+			return 0;
+		
+		return super.npcTemplate.getBoneMax();
+	}
+	
+	public float getMeatMax() {
+		if (super.npcTemplate == null)
+			return 0;
+		
+		return super.npcTemplate.getMeatMax();
 	}
 }

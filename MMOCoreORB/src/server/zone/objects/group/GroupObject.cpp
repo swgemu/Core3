@@ -55,13 +55,29 @@ void GroupObject::broadcastMessage(BaseMessage* msg) {
 		_implementation->broadcastMessage(msg);
 }
 
-void GroupObject::addMember(SceneObject* player) {
+void GroupObject::broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf) {
 	GroupObjectImplementation* _implementation = (GroupObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+		method.addObjectParameter(msg);
+		method.addBooleanParameter(sendSelf);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->broadcastMessage(player, msg, sendSelf);
+}
+
+void GroupObject::addMember(SceneObject* player) {
+	GroupObjectImplementation* _implementation = (GroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -75,7 +91,7 @@ void GroupObject::removeMember(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -89,7 +105,7 @@ void GroupObject::disband() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		method.executeWithVoidReturn();
 	} else
@@ -102,7 +118,7 @@ void GroupObject::makeLeader(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -116,7 +132,7 @@ bool GroupObject::hasMember(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -130,7 +146,7 @@ void GroupObject::startChatRoom() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithVoidReturn();
 	} else
@@ -143,11 +159,25 @@ void GroupObject::destroyChatRoom() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		method.executeWithVoidReturn();
 	} else
 		_implementation->destroyChatRoom();
+}
+
+float GroupObject::getGroupHarvestModifier(PlayerCreature* player) {
+	GroupObjectImplementation* _implementation = (GroupObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addObjectParameter(player);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getGroupHarvestModifier(player);
 }
 
 int GroupObject::getGroupLevel() {
@@ -156,7 +186,7 @@ int GroupObject::getGroupLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -169,7 +199,7 @@ ChatRoom* GroupObject::getGroupChannel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
@@ -182,7 +212,7 @@ int GroupObject::getGroupSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -195,7 +225,7 @@ SceneObject* GroupObject::getGroupMember(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addSignedIntParameter(index);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -209,7 +239,7 @@ void GroupObject::initializeLeader(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -223,7 +253,7 @@ SceneObject* GroupObject::getLeader() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -245,7 +275,7 @@ bool GroupObject::hasSquadLeader() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -258,7 +288,7 @@ void GroupObject::addGroupModifiers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 
 		method.executeWithVoidReturn();
 	} else
@@ -271,7 +301,7 @@ void GroupObject::removeGroupModifiers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 
 		method.executeWithVoidReturn();
 	} else
@@ -284,7 +314,7 @@ void GroupObject::addGroupModifiers(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -298,7 +328,7 @@ void GroupObject::removeGroupModifiers(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -396,37 +426,37 @@ GroupObjectImplementation::GroupObjectImplementation() {
 }
 
 int GroupObjectImplementation::getGroupLevel() {
-	// server/zone/objects/group/GroupObject.idl(99):  		return groupLevel;
+	// server/zone/objects/group/GroupObject.idl(101):  		return groupLevel;
 	return groupLevel;
 }
 
 ChatRoom* GroupObjectImplementation::getGroupChannel() {
-	// server/zone/objects/group/GroupObject.idl(103):  		return chatRoom;
+	// server/zone/objects/group/GroupObject.idl(105):  		return chatRoom;
 	return chatRoom;
 }
 
 int GroupObjectImplementation::getGroupSize() {
-	// server/zone/objects/group/GroupObject.idl(107):  		return groupMembers.size();
+	// server/zone/objects/group/GroupObject.idl(109):  		return groupMembers.size();
 	return (&groupMembers)->size();
 }
 
 SceneObject* GroupObjectImplementation::getGroupMember(int index) {
-	// server/zone/objects/group/GroupObject.idl(111):  		return groupMembers.get(index);
+	// server/zone/objects/group/GroupObject.idl(113):  		return groupMembers.get(index);
 	return (&groupMembers)->get(index);
 }
 
 void GroupObjectImplementation::initializeLeader(SceneObject* player) {
-	// server/zone/objects/group/GroupObject.idl(115):  		groupMembers.add(player);
+	// server/zone/objects/group/GroupObject.idl(117):  		groupMembers.add(player);
 	(&groupMembers)->add(player);
 }
 
 SceneObject* GroupObjectImplementation::getLeader() {
-	// server/zone/objects/group/GroupObject.idl(119):  		return groupMembers.get(0);
+	// server/zone/objects/group/GroupObject.idl(121):  		return groupMembers.get(0);
 	return (&groupMembers)->get(0);
 }
 
 GroupList* GroupObjectImplementation::getGroupList() {
-	// server/zone/objects/group/GroupObject.idl(124):  		return groupMembers;
+	// server/zone/objects/group/GroupObject.idl(126):  		return groupMembers;
 	return (&groupMembers);
 }
 
@@ -448,57 +478,63 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
 	case 8:
-		addMember((SceneObject*) inv->getObjectParameter());
+		broadcastMessage((PlayerCreature*) inv->getObjectParameter(), (BaseMessage*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 9:
-		removeMember((SceneObject*) inv->getObjectParameter());
+		addMember((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		disband();
+		removeMember((SceneObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		makeLeader((SceneObject*) inv->getObjectParameter());
+		disband();
 		break;
 	case 12:
-		resp->insertBoolean(hasMember((SceneObject*) inv->getObjectParameter()));
+		makeLeader((SceneObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		startChatRoom();
+		resp->insertBoolean(hasMember((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 14:
-		destroyChatRoom();
+		startChatRoom();
 		break;
 	case 15:
-		resp->insertSignedInt(getGroupLevel());
+		destroyChatRoom();
 		break;
 	case 16:
-		resp->insertLong(getGroupChannel()->_getObjectID());
+		resp->insertFloat(getGroupHarvestModifier((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 17:
-		resp->insertSignedInt(getGroupSize());
+		resp->insertSignedInt(getGroupLevel());
 		break;
 	case 18:
-		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(getGroupChannel()->_getObjectID());
 		break;
 	case 19:
-		initializeLeader((SceneObject*) inv->getObjectParameter());
+		resp->insertSignedInt(getGroupSize());
 		break;
 	case 20:
-		resp->insertLong(getLeader()->_getObjectID());
+		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 21:
-		resp->insertBoolean(hasSquadLeader());
+		initializeLeader((SceneObject*) inv->getObjectParameter());
 		break;
 	case 22:
-		addGroupModifiers();
+		resp->insertLong(getLeader()->_getObjectID());
 		break;
 	case 23:
-		removeGroupModifiers();
+		resp->insertBoolean(hasSquadLeader());
 		break;
 	case 24:
-		addGroupModifiers((PlayerCreature*) inv->getObjectParameter());
+		addGroupModifiers();
 		break;
 	case 25:
+		removeGroupModifiers();
+		break;
+	case 26:
+		addGroupModifiers((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 27:
 		removeGroupModifiers((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
@@ -514,6 +550,10 @@ void GroupObjectAdapter::sendBaselinesTo(SceneObject* player) {
 
 void GroupObjectAdapter::broadcastMessage(BaseMessage* msg) {
 	((GroupObjectImplementation*) impl)->broadcastMessage(msg);
+}
+
+void GroupObjectAdapter::broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf) {
+	((GroupObjectImplementation*) impl)->broadcastMessage(player, msg, sendSelf);
 }
 
 void GroupObjectAdapter::addMember(SceneObject* player) {
@@ -542,6 +582,10 @@ void GroupObjectAdapter::startChatRoom() {
 
 void GroupObjectAdapter::destroyChatRoom() {
 	((GroupObjectImplementation*) impl)->destroyChatRoom();
+}
+
+float GroupObjectAdapter::getGroupHarvestModifier(PlayerCreature* player) {
+	return ((GroupObjectImplementation*) impl)->getGroupHarvestModifier(player);
 }
 
 int GroupObjectAdapter::getGroupLevel() {

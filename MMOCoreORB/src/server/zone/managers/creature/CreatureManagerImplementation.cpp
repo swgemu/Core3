@@ -252,9 +252,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	destructedObject->updateTimeOfDeath();
 
-	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(destructedObject);
-	despawn->schedule(10000);
-
 	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 	// lets unlock destructor so we dont get into complicated deadlocks
@@ -270,6 +267,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	try {
 		PlayerCreature* player = copyDamageMap.getHighestDamagePlayer();
 		player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+		destructedObject->setLootOwner(player);
 
 		if (playerManager != NULL)
 			playerManager->disseminateExperience(destructedObject, &copyDamageMap);
@@ -279,6 +277,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	} catch (...) {
 
 	}
+
+	destructedObject->scheduleDespawn();
 
 	// now we can safely lock destructor again
 	if (destructedObject != destructor)

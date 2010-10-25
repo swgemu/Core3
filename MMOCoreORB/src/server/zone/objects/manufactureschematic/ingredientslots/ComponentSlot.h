@@ -52,14 +52,14 @@
 
 class ComponentSlot: public IngredientSlot {
 
-	ManagedReference<TangibleObject* > contents;
+	Vector<ManagedReference<TangibleObject* > > contents;
+	Vector<ManagedReference<SceneObject* > > contentsPreviousParent;
 
 public:
 	ComponentSlot(SceneObject* manu, String t, int quant, bool ident, bool option, int type) : IngredientSlot(t, quant) {
 
 		craftingTool = manu;
 		slottype = type;
-		contents = NULL;
 		serial = "";
 		requiresIdentical = ident;
 		optional = option;
@@ -76,15 +76,23 @@ public:
 
 	inline void cleanup() {
 
-		contents = NULL;
+		contents.removeAll();
+		contentsPreviousParent.removeAll();
 	}
 
 	inline int getQuantity() {
 
-		if (contents != NULL)
-			return contents->getUseCount();
-		else
-			return 0;
+		int count = 0;
+
+		for(int i = 0; i < contents.size(); ++i) {
+			TangibleObject* object = contents.get(i);
+
+			if(object != NULL) {
+				count += object->getUseCount();
+			}
+		}
+
+		return count;
 	}
 
 	bool add(PlayerCreature* player, TangibleObject* incomingTano) {
@@ -92,13 +100,11 @@ public:
 		int itemsInSlot = getQuantity();
 
 		if(requiresIdentical && serial != "" && itemsInSlot > 0) {
-			if(incomingTano->getCraftersSerial() != contents->getCraftersSerial())
+			if(incomingTano->getCraftersSerial() != serial)
 				return false;
 		}
 
 		int needs = requiredQuantity - itemsInSlot;
-
-		previousParent = incomingTano->getParent();
 
 		if(incomingTano->isFactoryCrate()) {
 
@@ -113,23 +119,24 @@ public:
 		if(serial = "")
 			serial = incomingTano->getCraftersSerial();
 
-		/// Must be a component to proceed
-		if (incomingTano->isComponent() && itemsInSlot < requiredQuantity) {
+		if (itemsInSlot < requiredQuantity) {
 
 			ObjectManager* objectManager = ObjectManager::instance();
 
-			if (contents == NULL) {
+			if (contents.isEmpty()) {
 
 				if (incomingTano->getUseCount() <= needs) {
 
-					contents = incomingTano;
+					contents.add(incomingTano);
+					contentsPreviousParent.add(incomingTano->getParent());
 
-					if(contents->getParent() != NULL)
-						contents->getParent()->removeObject(contents, true);
-					craftingTool->addObject(contents, -1, false);
+					if(incomingTano->getParent() != NULL)
+						incomingTano->getParent()->removeObject(incomingTano, true);
 
-					if (previousParent!= NULL)
-						previousParent->removeObject(incomingTano, true);
+					craftingTool->addObject(incomingTano, -1, false);
+
+					incomingTano->sendTo(player, true);
+					incomingTano->sendAttributeListTo(player);
 
 				} else {
 
@@ -141,28 +148,43 @@ public:
 					dtano3->close();
 					incomingTano->getParent()->broadcastMessage(dtano3, true);
 
-					contents = (TangibleObject*) objectManager->cloneObject(incomingTano);
+					TangibleObject* newTano = (TangibleObject*) objectManager->cloneObject(incomingTano);
+					newTano->setParent(NULL);
 
-					contents->setParent(NULL);
-					craftingTool->addObject(contents, -1, false);
+					contents.add(newTano);
+					contentsPreviousParent.add(incomingTano->getParent());
+					craftingTool->addObject(newTano, -1, false);
 
-					contents->setUseCount(needs, false);
+					newTano->setUseCount(needs, false);
+
+					newTano->sendTo(player, true);
+					newTano->sendAttributeListTo(player);
 				}
-
-				contents->sendTo(player, true);
-				contents->sendAttributeListTo(player);
 
 			} else {
 
 				if (incomingTano->getUseCount() >= needs) {
 
 					incomingTano->setUseCount(incomingTano->getUseCount() - needs, true);
-					contents->setUseCount(contents->getUseCount() + needs, true);
+
+					TangibleObject* newTano = (TangibleObject*) objectManager->cloneObject(incomingTano);
+					newTano->setParent(NULL);
+
+					newTano->setUseCount(getQuantity() + needs, true);
+
+					contents.add(newTano);
+					contentsPreviousParent.add(incomingTano->getParent());
+					craftingTool->addObject(newTano, -1, false);
 
 				} else {
 
-					contents->setUseCount(contents->getUseCount() + incomingTano->getUseCount(), true);
-					incomingTano->setUseCount(0);
+					contents.add(incomingTano);
+					contentsPreviousParent.add(incomingTano->getParent());
+
+					if(incomingTano->getParent() != NULL)
+						incomingTano->getParent()->removeObject(incomingTano, true);
+
+					craftingTool->addObject(incomingTano, -1, false);
 				}
 			}
 
@@ -179,52 +201,66 @@ public:
 
 	inline bool returnObjectToParent() {
 
-		if(contents == NULL || previousParent == NULL)
+		if(contents.size() < 1 || contentsPreviousParent.size() < 1)
 			return false;
 
-		if(contents->getParent() != NULL)
-			contents->getParent()->removeObject(contents, true);
+		while(contents.size() > 0) {
 
-		previousParent->addObject(contents, -1, true);
+			ManagedReference<TangibleObject*> item = contents.remove(0);
+			ManagedReference<SceneObject*> objectsOldParent = contentsPreviousParent.remove(0);
 
-		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(contents);
-		dtano3->setQuantity(contents->getUseCount());
-		dtano3->close();
-		previousParent->broadcastMessage(dtano3, true);
+			if(item == NULL)
+				continue;
 
-		contents = NULL;
+			if(item->getParent() != NULL)
+				item->getParent()->removeObject(item, true);
+
+			TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(item);
+			dtano3->setQuantity(item->getUseCount());
+			dtano3->close();
+
+			if(objectsOldParent != NULL) {
+				objectsOldParent->addObject(item, -1, true);
+				objectsOldParent->broadcastMessage(dtano3, true);
+			} else {
+				item->broadcastMessage(dtano3, true);
+			}
+		}
+
 		return true;
 	}
 
-	inline TangibleObject* get() {
+	/*inline TangibleObject* get() {
 
 		return (TangibleObject*) contents;
-	}
+	}*/
 
 	inline bool isComplete() {
-		return (contents->getUseCount() == requiredQuantity);
+		return (getQuantity() == requiredQuantity);
 	}
 
 	inline bool hasItem() {
-		return contents != NULL;
+		return contents.size() > 0;
 	}
 
 	inline uint64 getObjectID() {
-		if(contents == NULL)
+		if(contents.size() < 1)
 			return 0;
 		else
-			return contents->getObjectID();
+			return contents.get(0)->getObjectID();
 	}
 
 	void toString() {
-		if (contents == NULL) {
+		if (contents.size() == 0) {
 
 			System::out << "Slot is EMPTY" << endl;
 
 		} else {
 
-			System::out << "Name: " << contents->getCustomObjectName().toString() << endl;
-			System::out << "Quantity: " << contents->getUseCount() << endl;
+			for(int i = 0; i < contents.size(); ++i) {
+				System::out << "Name: " << contents.get(i)->getCustomObjectName().toString() << endl;
+				System::out << "Quantity: " << contents.get(i)->getUseCount() << endl;
+			}
 		}
 	}
 };

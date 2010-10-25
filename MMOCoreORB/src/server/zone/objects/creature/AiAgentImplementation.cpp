@@ -27,6 +27,7 @@
 #include "server/zone/packets/object/NpcConversationMessage.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
+#include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/Zone.h"
 #include "PatrolPoint.h"
 
@@ -273,6 +274,12 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	damageMap.removeAll();
 
 	task->schedule(respawnTimer * 1000);
+}
+
+void AiAgentImplementation::scheduleDespawn() {
+
+	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
+	despawn->schedule(10000);
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
@@ -529,10 +536,6 @@ int AiAgentImplementation::notifyConverseObservers(CreatureObject* converser) {
 	return 1;
 }
 
-bool AiAgentImplementation::hasOrganics() {
-	return ((getHideMax() + getBoneMax() + getMeatMax()) > 0);
-}
-
 int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
 	activateRecovery();
 
@@ -554,7 +557,6 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 
 void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* player) {
-	int creaKnowledge = player->getSkillMod("creature_knowledge");
 
 	if (isDead()) {
 		return;
@@ -676,101 +678,6 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerC
 
 	if (getLightSaber() == 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
-
-	if (getHideType().isEmpty() && getBoneType().isEmpty() && getMeatType().isEmpty()) {
-		return;
-	}
-
-	if (creaKnowledge >= 5) {
-		if (isAggressiveTo(player))
-			alm->insertAttribute("aggro", "yes");
-		else
-			alm->insertAttribute("aggro", "no");
-		if (isStalker())
-			alm->insertAttribute("stalking", "yes");
-		else
-			alm->insertAttribute("stalking", "no");
-	}
-
-	if (creaKnowledge >= 10) {
-		if (getTame() >= 0.0f && isBaby())
-			alm->insertAttribute("tamable", "yes");
-		else
-			alm->insertAttribute("tamable", "no");
-	}
-
-	if (creaKnowledge >= 20) {
-		if (!getHideType().isEmpty()) {
-			StringBuffer hideName;
-			hideName << "@obj_attr_n:" << getHideType();
-			alm->insertAttribute("res_hide", hideName.toString());
-		} else
-			alm->insertAttribute("res_hide", "---");
-		if (!getBoneType().isEmpty()) {
-			StringBuffer boneName;
-			boneName << "@obj_attr_n:" << getBoneType();
-			alm->insertAttribute("res_bone", boneName.toString());
-		} else
-			alm->insertAttribute("res_bone", "---");
-		if (!getMeatType().isEmpty()) {
-			StringBuffer meatName;
-			meatName << "@obj_attr_n:" << getMeatType();
-			alm->insertAttribute("res_meat", meatName.toString());
-		} else
-			alm->insertAttribute("res_meat", "---");
-	}
-
-	if (creaKnowledge >= 30) {
-		if (isKiller())
-			alm->insertAttribute("killer", "yes");
-		else
-			alm->insertAttribute("killer", "no");
-	}
-
-	if (creaKnowledge >= 40) {
-		alm->insertAttribute("ferocity", (int) getFerocity());
-	}
-
-	if (creaKnowledge >= 50)
-		alm->insertAttribute("challenge_level", getLevel());
-
-	//int skillNum = skillCommands.size();
-	CreatureAttackMap* attackMap = getAttackMap();
-	int skillNum = 0;
-	if (attackMap != NULL)
-		skillNum = attackMap->size();
-
-	if (creaKnowledge >= 70) {
-		String skillname = "none";
-		if (skillNum >= 1)
-			skillname = attackMap->getCommand(0);
-
-		StringBuffer skillMsg;
-		skillMsg << "@combat_effects:" << skillname;
-
-		alm->insertAttribute("pet_command_18", skillMsg.toString());
-	}
-
-	if (creaKnowledge >= 80) {
-		String skillname = "none";
-		if (skillNum >= 2)
-			skillname = attackMap->getCommand(1);
-
-		StringBuffer skillMsg;
-		skillMsg << "@combat_effects:" << skillname;
-
-		alm->insertAttribute("pet_command_19", skillMsg.toString());
-	}
-
-	if (creaKnowledge >= 90)
-		alm->insertAttribute("basetohit", getChanceHit());
-
-	if (creaKnowledge >= 100) {
-		StringBuffer damageMsg;
-		damageMsg << getDamageMin() << "-" << getDamageMax();
-		alm->insertAttribute("cat_wpn_damage", damageMsg.toString());
-	}
-
 }
 
 

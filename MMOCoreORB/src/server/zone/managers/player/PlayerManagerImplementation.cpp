@@ -520,7 +520,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	inventory->addObject(backpackObject, -1);*/
 
 	//admin
-	if (player->getFirstName() == "TheAnswer") {
+	if (player->getFirstName() == "TheAnswer" || player->getFirstName() == "Kyle") {
 		ObjectController* objController = server->getObjectController();
 		Vector<String> skills;
 		skills.add("admin");

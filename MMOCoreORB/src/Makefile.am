@@ -308,6 +308,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/tool/CraftingStationImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
+		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/NonPlayerCreatureObjectImplementation.cpp \
 		server/zone/objects/creature/AiAgentImplementation.cpp \
 		server/zone/objects/tangible/DamageMap.cpp \

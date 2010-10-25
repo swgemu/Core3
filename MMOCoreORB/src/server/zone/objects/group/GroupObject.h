@@ -70,6 +70,8 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
+	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf = false);
+
 	void addMember(SceneObject* player);
 
 	void removeMember(SceneObject* player);
@@ -83,6 +85,8 @@ public:
 	void startChatRoom();
 
 	void destroyChatRoom();
+
+	float getGroupHarvestModifier(PlayerCreature* player);
 
 	int getGroupLevel();
 
@@ -148,6 +152,8 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
+	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf = false);
+
 	void addMember(SceneObject* player);
 
 	void removeMember(SceneObject* player);
@@ -161,6 +167,8 @@ public:
 	void startChatRoom();
 
 	void destroyChatRoom();
+
+	float getGroupHarvestModifier(PlayerCreature* player);
 
 	int getGroupLevel();
 
@@ -229,6 +237,8 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
+	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf);
+
 	void addMember(SceneObject* player);
 
 	void removeMember(SceneObject* player);
@@ -242,6 +252,8 @@ public:
 	void startChatRoom();
 
 	void destroyChatRoom();
+
+	float getGroupHarvestModifier(PlayerCreature* player);
 
 	int getGroupLevel();
 
