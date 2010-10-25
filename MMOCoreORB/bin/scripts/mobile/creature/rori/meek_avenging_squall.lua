@@ -1,6 +1,4 @@
 meek_avenging_squall = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:frail_squall_meek_avenger",
 	socialGroup = "Squall",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ meek_avenging_squall = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 desert_scavenger = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:borgle_desert_runner",
 	socialGroup = "Borgle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ desert_scavenger = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

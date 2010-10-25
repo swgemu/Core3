@@ -1,6 +1,4 @@
 Gungan_kaadu = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Gungan kaadu",
 	socialGroup = "Gungan ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Gungan_kaadu = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

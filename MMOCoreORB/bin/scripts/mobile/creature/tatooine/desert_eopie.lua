@@ -1,6 +1,4 @@
 desert_eopie = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:eopie_desert_medium",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ desert_eopie = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

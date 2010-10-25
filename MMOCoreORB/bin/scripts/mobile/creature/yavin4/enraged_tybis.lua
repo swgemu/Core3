@@ -1,6 +1,4 @@
 enraged_tybis = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:enraged_tybis",
 	socialGroup = "Tybis",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ enraged_tybis = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

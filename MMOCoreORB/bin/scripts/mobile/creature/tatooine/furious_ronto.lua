@@ -1,6 +1,4 @@
 furious_ronto = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:ronto_furious",
 	socialGroup = "Ronto",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ furious_ronto = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

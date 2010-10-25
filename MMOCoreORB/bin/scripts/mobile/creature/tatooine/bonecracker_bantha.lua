@@ -1,6 +1,4 @@
 bonecracker_bantha = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bantha_bonecracker",
 	socialGroup = "Bantha",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bonecracker_bantha = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

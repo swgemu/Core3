@@ -1,6 +1,4 @@
 merek_cavern_creeper = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:merek_cavern_creeper",
 	socialGroup = "Merek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ merek_cavern_creeper = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

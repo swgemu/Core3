@@ -1,6 +1,4 @@
 flit_harasser = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:flit_harasser",
 	socialGroup = "Flit",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ flit_harasser = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

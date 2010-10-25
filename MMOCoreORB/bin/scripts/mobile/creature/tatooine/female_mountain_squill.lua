@@ -1,6 +1,4 @@
 female_mountain_squill = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:female_mountain_squill",
 	socialGroup = "Mountain Squill",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_mountain_squill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

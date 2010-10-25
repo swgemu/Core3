@@ -1,6 +1,4 @@
 bull_ronto = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:ronto_male",
 	socialGroup = "Ronto",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bull_ronto = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

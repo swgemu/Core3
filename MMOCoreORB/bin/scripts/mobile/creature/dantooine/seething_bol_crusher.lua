@@ -1,6 +1,4 @@
 seething_bol_crusher = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:seething_bol_crusher",
 	socialGroup = "Bol",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ seething_bol_crusher = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mediumdisease",""},

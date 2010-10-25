@@ -1,6 +1,4 @@
 lesser_desert_romp_rat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "lesser desert romp rat",
 	socialGroup = "Les. Des. W'rat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lesser_desert_romp_rat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

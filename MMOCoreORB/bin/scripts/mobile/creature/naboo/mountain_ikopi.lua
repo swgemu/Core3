@@ -1,6 +1,4 @@
 mountain_ikopi = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mountain_ikopi",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mountain_ikopi = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

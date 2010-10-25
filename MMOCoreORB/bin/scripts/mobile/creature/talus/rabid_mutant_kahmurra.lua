@@ -1,6 +1,4 @@
 rabid_mutant_kahmurra = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rabid_mutant_kahmurra",
 	socialGroup = "Kahmurra",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rabid_mutant_kahmurra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongdisease",""},

@@ -1,6 +1,4 @@
 slinking_voritor_hunter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:slinking_voritor_hunter",
 	socialGroup = "Voritor Lizard",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ slinking_voritor_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

@@ -1,6 +1,4 @@
 bile_drenched_quenker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bile_drenched_quenker",
 	socialGroup = "Quenker",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bile_drenched_quenker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

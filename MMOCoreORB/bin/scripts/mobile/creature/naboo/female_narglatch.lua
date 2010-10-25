@@ -1,6 +1,4 @@
 female_narglatch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:narglatch_female",
 	socialGroup = "Narglatch",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_narglatch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

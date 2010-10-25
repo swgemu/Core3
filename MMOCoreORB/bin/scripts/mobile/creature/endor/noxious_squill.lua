@@ -1,6 +1,4 @@
 noxious_squill = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:noxious_squill",
 	socialGroup = "Endor Squill",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ noxious_squill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

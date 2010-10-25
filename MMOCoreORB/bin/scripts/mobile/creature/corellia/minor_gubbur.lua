@@ -1,6 +1,4 @@
 minor_gubbur = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:minor_gubbur",
 	socialGroup = "Gubbur",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ minor_gubbur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

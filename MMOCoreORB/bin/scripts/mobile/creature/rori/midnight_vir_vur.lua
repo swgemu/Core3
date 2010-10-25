@@ -1,6 +1,4 @@
 midnight_vir_vur = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:midnight_vir_vur",
 	socialGroup = "Vir Vur",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ midnight_vir_vur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

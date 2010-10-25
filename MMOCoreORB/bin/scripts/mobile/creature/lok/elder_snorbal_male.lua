@@ -1,6 +1,4 @@
 elder_snorbal_male = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:elder_snorbal_male",
 	socialGroup = "Snorbalmale",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ elder_snorbal_male = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

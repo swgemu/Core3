@@ -1,6 +1,4 @@
 chasmal_spider = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gaping_spider_chasmal",
 	socialGroup = "Gaping",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ chasmal_spider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

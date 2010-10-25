@@ -1,6 +1,4 @@
 deranged_ravisher = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:squill_deranged_ravisher",
 	socialGroup = "Endor Squill",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ deranged_ravisher = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

@@ -1,6 +1,4 @@
 domestic_bearded_jax = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domestic_bearded_jax",
 	socialGroup = "Narmle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domestic_bearded_jax = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

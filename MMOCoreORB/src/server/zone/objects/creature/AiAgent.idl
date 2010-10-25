@@ -60,6 +60,7 @@ include server.zone.objects.creature.PatrolPointsVector;
 include server.zone.objects.creature.PatrolPoint;
 import engine.core.ManagedObject;
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.managers.creature.CreatureTemplate;
 include server.zone.objects.tangible.DamageMap;
@@ -87,6 +88,9 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced
 	protected DamageMap damageMap;
+	
+	@dereferenced
+	protected Vector<WeaponObject> weapons;
 	
 	protected transient CreatureTemplate npcTemplate;
 	protected transient SharedObjectTemplate objectTemplate;

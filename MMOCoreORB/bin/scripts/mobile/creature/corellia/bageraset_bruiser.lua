@@ -1,6 +1,4 @@
 bageraset_bruiser = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bageraset_bruiser",
 	socialGroup = "Bageraset",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bageraset_bruiser = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

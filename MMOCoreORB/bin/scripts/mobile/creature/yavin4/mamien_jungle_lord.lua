@@ -1,6 +1,4 @@
 mamien_jungle_lord = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mamien_junglelord",
 	socialGroup = "Mamien",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mamien_jungle_lord = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

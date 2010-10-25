@@ -1,6 +1,4 @@
 corellian_butterfly_warrior = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "corellian butterfly warrior",
 	socialGroup = "Cor. Butterfly",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ corellian_butterfly_warrior = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

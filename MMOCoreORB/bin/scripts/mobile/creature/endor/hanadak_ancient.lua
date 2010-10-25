@@ -1,6 +1,4 @@
 hanadak_ancient = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:hanadak_ancient",
 	socialGroup = "Hanadak",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ hanadak_ancient = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

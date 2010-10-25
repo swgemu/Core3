@@ -1,6 +1,4 @@
 erratic_swirl_prong = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:erratic_swirl_prong",
 	socialGroup = "Swirl Prong",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ erratic_swirl_prong = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

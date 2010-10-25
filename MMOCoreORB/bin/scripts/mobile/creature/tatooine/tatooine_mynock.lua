@@ -1,6 +1,4 @@
 tatooine_mynock = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:tatooine_mynock",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ tatooine_mynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

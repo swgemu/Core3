@@ -1,6 +1,4 @@
 nightspider_poison_spitter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:nightspider_poison_spitter",
 	socialGroup = "Nightspider",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ nightspider_poison_spitter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

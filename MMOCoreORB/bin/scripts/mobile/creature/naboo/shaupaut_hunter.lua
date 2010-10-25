@@ -1,6 +1,4 @@
 shaupaut_hunter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:shaupaut_hunter",
 	socialGroup = "Shaupaut",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ shaupaut_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

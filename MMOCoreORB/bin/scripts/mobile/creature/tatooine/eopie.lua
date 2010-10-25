@@ -1,6 +1,4 @@
 eopie = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:eopie",
 	socialGroup = "Eopie",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ eopie = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

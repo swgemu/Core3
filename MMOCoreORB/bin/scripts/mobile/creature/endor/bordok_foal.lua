@@ -1,6 +1,4 @@
 bordok_foal = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bordok_foal",
 	socialGroup = "Bordok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bordok_foal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

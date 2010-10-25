@@ -1,6 +1,4 @@
 Nyms_domesticated_gurk = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Nym`s domesticated gurk",
 	socialGroup = "Nym ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Nyms_domesticated_gurk = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

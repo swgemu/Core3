@@ -1,6 +1,4 @@
 ikopi = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:ikopi",
 	socialGroup = "Ikopi",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ikopi = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

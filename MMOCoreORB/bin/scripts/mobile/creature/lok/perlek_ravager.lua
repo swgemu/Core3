@@ -1,6 +1,4 @@
 perlek_ravager = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:perlek_ravager",
 	socialGroup = "Perlek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ perlek_ravager = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

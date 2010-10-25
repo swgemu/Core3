@@ -1,6 +1,4 @@
 gulginaw = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:gulginaw",
 	socialGroup = "Gulginaw",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gulginaw = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

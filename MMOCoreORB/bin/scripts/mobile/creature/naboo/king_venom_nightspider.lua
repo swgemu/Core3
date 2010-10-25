@@ -1,6 +1,4 @@
 king_venom_nightspider = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:king_venom_nightspider",
 	socialGroup = "Nightspider",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ king_venom_nightspider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mediumpoison",""},

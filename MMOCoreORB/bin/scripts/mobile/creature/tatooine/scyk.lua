@@ -1,6 +1,4 @@
 scyk = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:scyk",
 	socialGroup = "Scyk",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ scyk = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mediumpoison",""}

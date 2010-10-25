@@ -1,6 +1,4 @@
 domestic_tusk_cat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:domestic_tusk_cat",
 	socialGroup = "Naboo ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ domestic_tusk_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

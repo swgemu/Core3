@@ -1,6 +1,4 @@
 kamurith_defiler = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kamurith_defiler",
 	socialGroup = "Kamurith",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kamurith_defiler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

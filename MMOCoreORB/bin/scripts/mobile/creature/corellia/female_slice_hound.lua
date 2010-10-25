@@ -1,6 +1,4 @@
 female_slice_hound = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:female_slice_hound",
 	socialGroup = "Slice Hound",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_slice_hound = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

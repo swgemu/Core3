@@ -1,6 +1,4 @@
 feral_gurk = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:feral_gurk",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ feral_gurk = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

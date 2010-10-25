@@ -1,6 +1,4 @@
 enraged_tabage_mother = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:enraged_tabage_mother",
 	socialGroup = "Tabage",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ enraged_tabage_mother = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

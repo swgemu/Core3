@@ -1,6 +1,4 @@
 dalyrake_matriarch = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dalyrake_matriarch",
 	socialGroup = "Dalyrake",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dalyrake_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"mildpoison",""},

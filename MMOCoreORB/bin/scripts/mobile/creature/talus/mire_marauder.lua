@@ -1,6 +1,4 @@
 mire_marauder = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mire_marauder",
 	socialGroup = "Sludge Panth.",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mire_marauder = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

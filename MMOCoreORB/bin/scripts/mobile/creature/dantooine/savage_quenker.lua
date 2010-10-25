@@ -1,6 +1,4 @@
 savage_quenker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:savage_quenker",
 	socialGroup = "Quenker",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ savage_quenker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

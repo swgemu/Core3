@@ -1,6 +1,4 @@
 sludge_panther = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:sludge_panther",
 	socialGroup = "Sludge Panther",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sludge_panther = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

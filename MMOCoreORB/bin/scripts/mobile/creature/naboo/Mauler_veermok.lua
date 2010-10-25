@@ -1,6 +1,4 @@
 Mauler_veermok = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Mauler veermok",
 	socialGroup = "Mauler",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Mauler_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

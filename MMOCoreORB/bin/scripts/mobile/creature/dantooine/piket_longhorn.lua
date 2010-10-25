@@ -1,6 +1,4 @@
 piket_longhorn = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:piket_longhorn",
 	socialGroup = "Picket",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ piket_longhorn = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

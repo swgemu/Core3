@@ -1,6 +1,4 @@
 purbole_stalker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:purbole_stalker",
 	socialGroup = "Purbole",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ purbole_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

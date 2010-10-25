@@ -1,6 +1,4 @@
 graul_marauder = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:graul_marauder",
 	socialGroup = "Graul",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ graul_marauder = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"creatureareableeding",""},

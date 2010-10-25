@@ -1,6 +1,4 @@
 enhanced_gaping_spider = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:geonosian_gaping_spider_fire",
 	socialGroup = "Geon. Monster",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ enhanced_gaping_spider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

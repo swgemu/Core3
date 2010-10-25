@@ -1,6 +1,4 @@
 mott = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:mott",
 	socialGroup = "Mott",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mott = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

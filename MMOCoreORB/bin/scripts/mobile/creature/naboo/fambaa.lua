@@ -1,6 +1,4 @@
 fambaa = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:fambaa",
 	socialGroup = "Fambaa",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ fambaa = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

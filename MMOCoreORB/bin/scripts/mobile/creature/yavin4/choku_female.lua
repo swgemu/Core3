@@ -1,6 +1,4 @@
 choku_female = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:choku_female",
 	socialGroup = "Choku",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ choku_female = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 grizzled_dewback = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:grizzled_dewback",
 	socialGroup = "Dewback",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ grizzled_dewback = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

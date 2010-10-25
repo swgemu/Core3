@@ -1,6 +1,4 @@
 roaming_bordok_stud = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:roaming_bordok_stud",
 	socialGroup = "Bordok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ roaming_bordok_stud = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

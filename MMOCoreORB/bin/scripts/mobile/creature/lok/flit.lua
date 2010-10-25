@@ -1,6 +1,4 @@
 flit = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:flit",
 	socialGroup = "Flit",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ flit = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

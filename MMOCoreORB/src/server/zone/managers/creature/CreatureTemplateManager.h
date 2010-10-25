@@ -18,6 +18,8 @@ namespace creature {
 
 class CreatureTemplateManager : private HashTable<uint32, Reference<CreatureTemplate*> >, private HashTableIterator<uint32, Reference<CreatureTemplate*> >, private Lua, public Singleton<CreatureTemplateManager> {
 protected:
+	VectorMap<uint32, Vector<String> > weaponMap;
+
 	int hash(const uint32& key) {
 		return Integer::hashCode(key);
 	}
@@ -33,6 +35,7 @@ public:
 
 		lua_register(getLuaState(), "includeFile", includeFile);
 		lua_register(getLuaState(), "addTemplate", addTemplate);
+		lua_register(getLuaState(), "addWeapon", addWeapon);
 
 		setGlobalInt("NONE", CreatureFlag::NONE);
 		setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
@@ -86,6 +89,14 @@ public:
 		return get(ascii.hashCode());
 	}
 
+	Vector<String> getWeapons(uint32 crc) {
+		return weaponMap.get(crc);
+	}
+
+	Vector<String> getWeapons(String ascii) {
+		return weaponMap.get(ascii.hashCode());
+	}
+
 	static int includeFile(lua_State* L) {
 		String filename = Lua::getStringParameter(L);
 
@@ -104,6 +115,22 @@ public:
 		newTemp->readObject(&obj);
 
 		CreatureTemplateManager::instance()->put(crc, newTemp);
+
+		return 0;
+	}
+
+	static int addWeapon(lua_State* L) {
+		String ascii = lua_tostring(L, -2);
+		uint32 crc = (uint32) ascii.hashCode();
+
+		LuaObject obj(L);
+		if (obj.isValidTable()) {
+			Vector<String> weps;
+			for (int i = 1; i <= obj.getTableSize(); ++i)
+				weps.add(obj.getStringAt(i));
+
+			CreatureTemplateManager::instance()->weaponMap.put(crc, weps);
+		}
 
 		return 0;
 	}

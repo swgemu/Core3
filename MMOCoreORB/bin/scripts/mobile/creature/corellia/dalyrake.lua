@@ -1,6 +1,4 @@
 dalyrake = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:dalyrake",
 	socialGroup = "Dalyrake",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dalyrake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

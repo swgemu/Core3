@@ -1,6 +1,4 @@
 dune_beetle = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dune_beetle",
 	socialGroup = "Gt. Sand Beet.",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dune_beetle = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

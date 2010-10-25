@@ -1,6 +1,4 @@
 diseased_nuna = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:diseased_nuna",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ diseased_nuna = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"milddisease",""}

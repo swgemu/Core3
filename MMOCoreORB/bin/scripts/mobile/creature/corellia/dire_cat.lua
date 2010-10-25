@@ -1,6 +1,4 @@
 dire_cat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dire_cat",
 	socialGroup = "Dire Cat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dire_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

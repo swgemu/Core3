@@ -1,6 +1,4 @@
 angler = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:angler",
 	socialGroup = "Angler",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ angler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

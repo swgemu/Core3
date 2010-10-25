@@ -1,6 +1,4 @@
 corellian_butterfly_defender = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "corellian butterfly defender",
 	socialGroup = "Cor. Butterfly",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ corellian_butterfly_defender = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

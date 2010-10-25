@@ -1,6 +1,4 @@
 blood_fanged_gackle_bat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bloodfanged_gackle_bat",
 	socialGroup = "Gacklebat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ blood_fanged_gackle_bat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

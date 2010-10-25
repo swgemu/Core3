@@ -1,6 +1,4 @@
 queen_merek_harvester = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:queen_merek_harvester",
 	socialGroup = "Merek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ queen_merek_harvester = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

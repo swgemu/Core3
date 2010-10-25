@@ -1,6 +1,4 @@
 rogue_fambaa = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rogue_fambaa",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rogue_fambaa = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

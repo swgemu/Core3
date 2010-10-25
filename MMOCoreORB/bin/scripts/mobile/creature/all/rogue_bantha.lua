@@ -26,6 +26,7 @@ rogue_bantha = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bantha.iff","object/mobile/bantha_hue.iff"},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

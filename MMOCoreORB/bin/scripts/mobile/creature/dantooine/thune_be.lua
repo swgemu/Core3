@@ -1,6 +1,4 @@
 thune_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "thune be",
 	socialGroup = "Thune",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ thune_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

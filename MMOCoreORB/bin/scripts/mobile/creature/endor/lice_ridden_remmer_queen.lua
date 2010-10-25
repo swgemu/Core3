@@ -1,6 +1,4 @@
 lice_ridden_remmer_queen = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:lice_ridden_remmer_queen",
 	socialGroup = "Remmer",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ lice_ridden_remmer_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

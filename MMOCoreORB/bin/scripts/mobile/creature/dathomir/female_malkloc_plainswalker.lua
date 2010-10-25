@@ -1,6 +1,4 @@
 female_malkloc_plainswalker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:malkloc_plainswalker_female",
 	socialGroup = "Malkloc Plainswalker",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_malkloc_plainswalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

@@ -233,7 +233,7 @@ void CraftingTool::selectDraftSchematic(PlayerCreature* player, int index) {
 		_implementation->selectDraftSchematic(player, index);
 }
 
-void CraftingTool::createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic) {
+bool CraftingTool::createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -243,9 +243,9 @@ void CraftingTool::createSessionObjects(PlayerCreature* player, DraftSchematic* 
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftschematic);
 
-		method.executeWithVoidReturn();
+		return method.executeWithBooleanReturn();
 	} else
-		_implementation->createSessionObjects(player, draftschematic);
+		return _implementation->createSessionObjects(player, draftschematic);
 }
 
 bool CraftingTool::createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic) {
@@ -645,7 +645,7 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		selectDraftSchematic((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 18:
-		createSessionObjects((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
+		resp->insertBoolean(createSessionObjects((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
 		break;
 	case 19:
 		resp->insertBoolean(createManufactureSchematic((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
@@ -744,8 +744,8 @@ void CraftingToolAdapter::selectDraftSchematic(PlayerCreature* player, int index
 	((CraftingToolImplementation*) impl)->selectDraftSchematic(player, index);
 }
 
-void CraftingToolAdapter::createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic) {
-	((CraftingToolImplementation*) impl)->createSessionObjects(player, draftschematic);
+bool CraftingToolAdapter::createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic) {
+	return ((CraftingToolImplementation*) impl)->createSessionObjects(player, draftschematic);
 }
 
 bool CraftingToolAdapter::createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic) {

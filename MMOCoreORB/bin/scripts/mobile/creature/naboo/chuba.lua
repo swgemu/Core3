@@ -1,6 +1,4 @@
 chuba = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:chuba",
 	socialGroup = "Chuba",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ chuba = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

@@ -1,6 +1,4 @@
 giant_veermok = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_veermok",
 	socialGroup = "Veermok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

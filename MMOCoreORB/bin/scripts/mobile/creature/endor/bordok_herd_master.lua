@@ -1,6 +1,4 @@
 bordok_herd_master = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bordok_herd_master",
 	socialGroup = "Bordok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bordok_herd_master = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

@@ -1,6 +1,4 @@
 bloodseeker_mite_queen = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:bloodseeker_mite_queen",
 	socialGroup = "Bloodseeker",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ bloodseeker_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

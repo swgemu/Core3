@@ -1,6 +1,4 @@
 Imperial_veermok = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Imperial veermok",
 	socialGroup = "Imperial ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Imperial_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

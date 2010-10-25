@@ -1,6 +1,4 @@
 blurrg_hunter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:blurrg_hunter",
 	socialGroup = "Blurrg",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ blurrg_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

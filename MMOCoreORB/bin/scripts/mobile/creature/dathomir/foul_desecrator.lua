@@ -1,6 +1,4 @@
 foul_desecrator = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kamurith_foul_desecrator",
 	socialGroup = "Kamurith",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ foul_desecrator = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongdisease",""},

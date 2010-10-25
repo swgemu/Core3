@@ -1,6 +1,4 @@
 dune_bantha = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:bantha_dune_medium",
 	socialGroup = "Dune Bantha",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dune_bantha = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 fanned_rawl = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:fanned_rawl",
 	socialGroup = "Fanned Rawl",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ fanned_rawl = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

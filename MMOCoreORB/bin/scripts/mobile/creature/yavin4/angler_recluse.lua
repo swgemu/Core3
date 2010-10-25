@@ -1,6 +1,4 @@
 angler_recluse = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:angler_recluse",
 	socialGroup = "Angler",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ angler_recluse = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

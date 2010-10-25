@@ -1,6 +1,4 @@
 cyborg_bol = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:warren_cyborg_bol",
 	socialGroup = "Warren Cyborg ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cyborg_bol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

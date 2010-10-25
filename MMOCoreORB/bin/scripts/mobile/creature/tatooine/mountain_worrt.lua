@@ -1,6 +1,4 @@
 mountain_worrt = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mountain_worrt",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mountain_worrt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

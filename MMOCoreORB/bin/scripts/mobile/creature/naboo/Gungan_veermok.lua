@@ -1,6 +1,4 @@
 Gungan_veermok = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "Gungan veermok",
 	socialGroup = "Gungan ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ Gungan_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}

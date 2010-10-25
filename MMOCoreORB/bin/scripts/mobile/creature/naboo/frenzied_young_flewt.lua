@@ -1,6 +1,4 @@
 frenzied_young_flewt = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "frenzied young flewt",
 	socialGroup = "Flewt",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ frenzied_young_flewt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

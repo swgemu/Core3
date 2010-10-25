@@ -1,6 +1,4 @@
 mawgax_raptor = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:mawgax_raptor",
 	socialGroup = "Mawgax",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ mawgax_raptor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

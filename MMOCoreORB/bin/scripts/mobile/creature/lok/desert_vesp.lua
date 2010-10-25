@@ -1,6 +1,4 @@
 desert_vesp = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:desert_vesp",
 	socialGroup = "Vesp",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ desert_vesp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

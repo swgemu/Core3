@@ -1,6 +1,4 @@
 arachne_drone = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:arachne_drone",
 	socialGroup = "Arachne",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ arachne_drone = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"defaultattack",""},

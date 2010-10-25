@@ -1,6 +1,4 @@
 huf_dun_bull = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:huf_dun_bull",
 	socialGroup = "Huf Dun",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ huf_dun_bull = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

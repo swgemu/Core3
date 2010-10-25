@@ -1,6 +1,4 @@
 quenker_relic_reaper = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:quenker_relic_reaper",
 	socialGroup = "Quenker",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ quenker_relic_reaper = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

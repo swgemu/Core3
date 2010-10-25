@@ -1,6 +1,4 @@
 sharnaff_bull = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:sharnaff_bull",
 	socialGroup = "Sharnaff",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sharnaff_bull = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

@@ -1,6 +1,4 @@
 peko_peko = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:peko_peko",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ peko_peko = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

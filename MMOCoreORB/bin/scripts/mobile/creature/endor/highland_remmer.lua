@@ -1,6 +1,4 @@
 highland_remmer = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:highland_remmer",
 	socialGroup = "Remmer",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ highland_remmer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

@@ -1,6 +1,4 @@
 female_swamp_tusk_cat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:female_swamp_tusk_cat",
 	socialGroup = "Swamp Tusk Cat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_swamp_tusk_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

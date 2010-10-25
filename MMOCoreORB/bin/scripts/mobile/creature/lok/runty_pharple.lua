@@ -1,6 +1,4 @@
 runty_pharple = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:runty_pharple",
 	socialGroup = "Pharple",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ runty_pharple = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

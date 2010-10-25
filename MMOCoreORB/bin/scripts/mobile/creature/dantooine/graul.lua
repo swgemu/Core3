@@ -1,6 +1,4 @@
 graul = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:graul",
 	socialGroup = "Graul",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ graul = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

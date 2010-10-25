@@ -1,6 +1,4 @@
 desert_razorback = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:desert_razorback",
 	socialGroup = "Zucca Boar",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ desert_razorback = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

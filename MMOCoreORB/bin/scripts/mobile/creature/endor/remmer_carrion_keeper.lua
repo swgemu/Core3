@@ -1,6 +1,4 @@
 remmer_carrion_keeper = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:remmer_carrion_keeper",
 	socialGroup = "Remmer",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ remmer_carrion_keeper = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

@@ -1,6 +1,4 @@
 large_rock_beetle = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:large_rock_beetle",
 	socialGroup = "Rock Beetle",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ large_rock_beetle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

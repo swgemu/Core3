@@ -1,6 +1,4 @@
 krahbu_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "krahbu be",
 	socialGroup = "Krahbu",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ krahbu_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

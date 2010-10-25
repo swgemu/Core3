@@ -1,6 +1,4 @@
 merek_deaths_head = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:merek_deaths_head",
 	socialGroup = "Merek",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ merek_deaths_head = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"strongpoison",""},

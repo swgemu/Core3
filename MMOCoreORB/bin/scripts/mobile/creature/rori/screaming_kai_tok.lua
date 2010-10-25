@@ -1,6 +1,4 @@
 screaming_kai_tok = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:screaming_kai_tok",
 	socialGroup = "Kai Tok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ screaming_kai_tok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

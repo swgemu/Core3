@@ -1,6 +1,4 @@
 ferine_razorfang = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kima_ferine_razorfang",
 	socialGroup = "Kima",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ ferine_razorfang = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},

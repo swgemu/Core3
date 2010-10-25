@@ -1,6 +1,4 @@
 deadly_tanc_mite = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:tanc_mite_eviscerator",
 	socialGroup = "Tancmite",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ deadly_tanc_mite = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

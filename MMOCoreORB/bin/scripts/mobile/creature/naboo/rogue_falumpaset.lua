@@ -1,6 +1,4 @@
 rogue_falumpaset = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rogue_falumpaset",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ rogue_falumpaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

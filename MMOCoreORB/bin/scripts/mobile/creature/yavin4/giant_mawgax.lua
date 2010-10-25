@@ -1,6 +1,4 @@
 giant_mawgax = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:giant_mawgax",
 	socialGroup = "Mawgax",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ giant_mawgax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 razorback_felspur = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:desert_razorback_felspur",
 	socialGroup = "Zucca Boar",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ razorback_felspur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

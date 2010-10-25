@@ -1,6 +1,4 @@
 gnort_be = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "gnort be",
 	socialGroup = "Gnort",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gnort_be = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

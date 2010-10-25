@@ -1,6 +1,4 @@
 roba_pack_leader = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "roba pack leader",
 	socialGroup = "Roba",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ roba_pack_leader = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

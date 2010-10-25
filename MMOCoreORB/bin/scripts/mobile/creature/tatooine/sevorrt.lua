@@ -1,6 +1,4 @@
 sevorrt = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:sevorrt",
 	socialGroup = "Sevorrt",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ sevorrt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

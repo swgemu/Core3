@@ -1,6 +1,4 @@
 squall = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@monster_name:squall",
 	socialGroup = "Squall",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ squall = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

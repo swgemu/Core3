@@ -1,6 +1,4 @@
 purbole_youth = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:purbole_youth",
 	socialGroup = "Purbole",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ purbole_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 gurnaset_hatchling = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gurnaset_hatchling",
 	socialGroup = "Gurnaset",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gurnaset_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {}
 }

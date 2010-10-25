@@ -1,6 +1,4 @@
 female_roba = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:roba_female",
 	socialGroup = "Roba",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ female_roba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}

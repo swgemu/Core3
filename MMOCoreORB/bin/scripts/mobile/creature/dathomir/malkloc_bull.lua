@@ -1,6 +1,4 @@
 malkloc_bull = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:malkloc_bull",
 	socialGroup = "Malkloc",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ malkloc_bull = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

@@ -1,6 +1,4 @@
 stunted_huf_dun = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:stunted_huf_dun",
 	socialGroup = "Huf Dun",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ stunted_huf_dun = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

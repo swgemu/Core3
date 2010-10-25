@@ -1,6 +1,4 @@
 dalyrake_harvester = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:dalyrake_harvester",
 	socialGroup = "Dalyrake",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ dalyrake_harvester = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

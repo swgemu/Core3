@@ -1,6 +1,4 @@
 tamed_gurrcat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:rebel_tamed_gurrcat",
 	socialGroup = "Rebel ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ tamed_gurrcat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

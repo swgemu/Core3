@@ -1,6 +1,4 @@
 meager_tortur = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:meager_tortur",
 	socialGroup = "Tortur",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ meager_tortur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

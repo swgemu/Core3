@@ -1,6 +1,4 @@
 graul_mangler = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:graul_mangler",
 	socialGroup = "Graul",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ graul_mangler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

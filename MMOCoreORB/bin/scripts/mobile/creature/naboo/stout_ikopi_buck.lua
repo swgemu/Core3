@@ -1,6 +1,4 @@
 stout_ikopi_buck = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:ikopi_stout_stallion",
 	socialGroup = "Ikopi",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ stout_ikopi_buck = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

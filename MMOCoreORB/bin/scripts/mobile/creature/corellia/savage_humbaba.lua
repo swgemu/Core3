@@ -1,6 +1,4 @@
 savage_humbaba = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:savage_humbaba",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ savage_humbaba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"}

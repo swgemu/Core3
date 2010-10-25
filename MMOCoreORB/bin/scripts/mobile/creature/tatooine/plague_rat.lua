@@ -1,6 +1,4 @@
 plague_rat = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:womprat_plague",
 	socialGroup = "Womprat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ plague_rat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

@@ -1,6 +1,4 @@
 feral_mutant_gackle_stalker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:feral_mutant_gackle_stalker",
 	socialGroup = "Gacklebat",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ feral_mutant_gackle_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

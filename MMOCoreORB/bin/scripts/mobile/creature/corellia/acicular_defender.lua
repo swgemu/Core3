@@ -1,6 +1,4 @@
 acicular_defender = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:paralope_acicular_defender",
 	socialGroup = "Paralope",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ acicular_defender = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

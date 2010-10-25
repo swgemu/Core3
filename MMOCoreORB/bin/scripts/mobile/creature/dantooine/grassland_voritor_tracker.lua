@@ -1,6 +1,4 @@
 grassland_voritor_tracker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:grassland_voritor_tracker",
 	socialGroup = "Voritor Lizard",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ grassland_voritor_tracker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"knockdownattack","knockdownChance=50"},

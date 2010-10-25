@@ -1,6 +1,4 @@
 gleaming_lantern_bird = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:gleaming_lantern_bird",
 	socialGroup = "Lantern",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ gleaming_lantern_bird = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"}

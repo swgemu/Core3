@@ -1,6 +1,4 @@
 kai_tok_scavenger = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:kai_tok_scavenger",
 	socialGroup = "Kai Tok",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ kai_tok_scavenger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},

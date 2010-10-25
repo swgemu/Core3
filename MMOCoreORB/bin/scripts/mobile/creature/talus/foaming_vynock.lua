@@ -1,6 +1,4 @@
 foaming_vynock = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:foaming_vynock",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ foaming_vynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"},

@@ -1,6 +1,4 @@
 flit_bloodsucker = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:flit_bloodsucker",
 	socialGroup = "Flit",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ flit_bloodsucker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}

@@ -1,6 +1,4 @@
 enraged_defender = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:piket_enraged_defender",
 	socialGroup = "Piket",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ enraged_defender = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},

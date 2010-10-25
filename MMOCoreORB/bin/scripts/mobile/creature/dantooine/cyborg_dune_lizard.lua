@@ -1,6 +1,4 @@
 cyborg_dune_lizard = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:warren_cyborg_dunelizard",
 	socialGroup = "Warren Cyborg ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cyborg_dune_lizard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

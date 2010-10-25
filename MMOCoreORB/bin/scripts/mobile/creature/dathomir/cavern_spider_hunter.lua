@@ -1,6 +1,4 @@
 cavern_spider_hunter = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:cave_gaping_spider_hunter",
 	socialGroup = "Sp. Nightsister ",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ cavern_spider_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

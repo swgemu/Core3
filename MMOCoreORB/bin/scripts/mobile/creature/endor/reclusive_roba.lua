@@ -1,6 +1,4 @@
 reclusive_roba = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:reclusive_roba",
 	socialGroup = "self",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ reclusive_roba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"stunattack","stunChance=50"},

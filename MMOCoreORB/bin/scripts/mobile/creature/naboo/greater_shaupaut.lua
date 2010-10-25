@@ -1,6 +1,4 @@
 greater_shaupaut = Creature:new {
-	templateType = NPCCREATURE,
-	gameObjectType = 1024,
 	objectName = "@mob/creature_names:greater_shaupaut",
 	socialGroup = "Shaupaut",
 	pvpFaction = "",
@@ -28,6 +26,7 @@ greater_shaupaut = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {},
+	lootgroups = {},
 	weapons = {},
 	attacks = {
 		{"blindattack","blindChance=50"},
