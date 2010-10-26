@@ -7,7 +7,6 @@ langlatch_destroyer = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 0,
 	baseXp = 1803,
 	baseHAM = 2700,
 	armor = 0,

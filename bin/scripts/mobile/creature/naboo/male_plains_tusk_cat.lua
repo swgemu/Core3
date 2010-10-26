@@ -7,7 +7,6 @@ male_plains_tusk_cat = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 960,
 	baseHAM = 2200,
 	armor = 0,

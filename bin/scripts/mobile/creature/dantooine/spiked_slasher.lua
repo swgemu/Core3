@@ -7,7 +7,6 @@ spiked_slasher = Creature:new {
 	chanceHit = 0.530000,
 	damageMin = 430,
 	damageMax = 570,
-	range = 0,
 	baseXp = 5647,
 	baseHAM = 11500,
 	armor = 0,

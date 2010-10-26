@@ -7,7 +7,6 @@ female_grassland_slice_hound = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 120,
 	damageMax = 130,
-	range = 0,
 	baseXp = 609,
 	baseHAM = 1700,
 	armor = 0,

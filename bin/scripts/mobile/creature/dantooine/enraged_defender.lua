@@ -7,7 +7,6 @@ enraged_defender = Creature:new {
 	chanceHit = 0.470000,
 	damageMin = 385,
 	damageMax = 480,
-	range = 0,
 	baseXp = 4734,
 	baseHAM = 11000,
 	armor = 0,

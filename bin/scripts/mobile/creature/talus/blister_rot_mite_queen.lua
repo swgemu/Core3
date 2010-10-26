@@ -7,7 +7,6 @@ blister_rot_mite_queen = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 25,
 	baseXp = 960,
 	baseHAM = 2200,
 	armor = 0,

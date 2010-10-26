@@ -7,7 +7,6 @@ lesser_dewback = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 50,
 	damageMax = 55,
-	range = 0,
 	baseXp = 292,
 	baseHAM = 900,
 	armor = 0,

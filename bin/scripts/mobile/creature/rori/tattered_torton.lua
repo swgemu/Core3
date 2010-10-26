@@ -7,7 +7,6 @@ tattered_torton = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 0,
 	baseXp = 960,
 	baseHAM = 1700,
 	armor = 0,

@@ -7,7 +7,6 @@ corellian_butterfly_monarch = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 0,
 	baseXp = 1803,
 	baseHAM = 5000,
 	armor = 0,

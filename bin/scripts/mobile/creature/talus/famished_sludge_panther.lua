@@ -7,7 +7,6 @@ famished_sludge_panther = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 0,
 	baseXp = 1609,
 	baseHAM = 3900,
 	armor = 0,

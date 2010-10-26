@@ -7,7 +7,6 @@ surefoot_brackaset = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 340,
 	damageMax = 390,
-	range = 0,
 	baseXp = 4461,
 	baseHAM = 11100,
 	armor = 0,

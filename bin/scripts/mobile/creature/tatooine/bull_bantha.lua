@@ -7,7 +7,6 @@ bull_bantha = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 190,
 	damageMax = 200,
-	range = 0,
 	baseXp = 1609,
 	baseHAM = 5000,
 	armor = 0,

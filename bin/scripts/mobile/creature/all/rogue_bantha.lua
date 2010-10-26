@@ -7,7 +7,6 @@ rogue_bantha = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 714,
 	baseHAM = 1700,
 	armor = 0,

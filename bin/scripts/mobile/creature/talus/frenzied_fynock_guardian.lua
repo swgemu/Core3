@@ -7,7 +7,6 @@ frenzied_fynock_guardian = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 0,
 	baseXp = 514,
 	baseHAM = 900,
 	armor = 0,

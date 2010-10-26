@@ -7,7 +7,6 @@ pugoriss_be = Creature:new {
 	chanceHit = 0.200000,
 	damageMin = 30,
 	damageMax = 40,
-	range = 0,
 	baseXp = 30,
 	baseHAM = 50,
 	armor = 0,

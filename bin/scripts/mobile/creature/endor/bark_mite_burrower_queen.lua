@@ -7,7 +7,6 @@ bark_mite_burrower_queen = Creature:new {
 	chanceHit = 0.550000,
 	damageMin = 440,
 	damageMax = 590,
-	range = 25,
 	baseXp = 5830,
 	baseHAM = 12000,
 	armor = 0,

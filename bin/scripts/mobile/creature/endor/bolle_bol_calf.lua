@@ -7,7 +7,6 @@ bolle_bol_calf = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 0,
 	baseXp = 831,
 	baseHAM = 2700,
 	armor = 0,

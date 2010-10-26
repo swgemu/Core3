@@ -7,7 +7,6 @@ lethargic_behemoth = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 250,
 	damageMax = 260,
-	range = 0,
 	baseXp = 2219,
 	baseHAM = 7000,
 	armor = 0,

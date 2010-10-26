@@ -7,7 +7,6 @@ fierce_huurton = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 220,
 	damageMax = 230,
-	range = 0,
 	baseXp = 2006,
 	baseHAM = 6000,
 	armor = 0,

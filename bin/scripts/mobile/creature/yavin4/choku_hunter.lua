@@ -7,7 +7,6 @@ choku_hunter = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 0,
 	baseXp = 831,
 	baseHAM = 1700,
 	armor = 0,

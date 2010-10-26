@@ -7,7 +7,6 @@ pouncing_jax = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 0,
 	baseXp = 609,
 	baseHAM = 1700,
 	armor = 0,

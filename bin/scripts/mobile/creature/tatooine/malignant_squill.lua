@@ -7,7 +7,6 @@ malignant_squill = Creature:new {
 	chanceHit = 0.500000,
 	damageMin = 420,
 	damageMax = 550,
-	range = 0,
 	baseXp = 4916,
 	baseHAM = 10300,
 	armor = 0,

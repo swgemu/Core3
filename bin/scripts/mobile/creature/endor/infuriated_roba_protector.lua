@@ -7,7 +7,6 @@ infuriated_roba_protector = Creature:new {
 	chanceHit = 0.550000,
 	damageMin = 420,
 	damageMax = 550,
-	range = 0,
 	baseXp = 5555,
 	baseHAM = 12500,
 	armor = 0,

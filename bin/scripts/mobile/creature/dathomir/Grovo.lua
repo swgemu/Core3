@@ -7,7 +7,6 @@ Grovo = Creature:new {
 	chanceHit = 0.700000,
 	damageMin = 520,
 	damageMax = 750,
-	range = 0,
 	baseXp = 7207,
 	baseHAM = 13500,
 	armor = 0,

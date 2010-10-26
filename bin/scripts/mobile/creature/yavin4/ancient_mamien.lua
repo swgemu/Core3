@@ -7,7 +7,6 @@ ancient_mamien = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 0,
 	baseXp = 2543,
 	baseHAM = 7000,
 	armor = 0,

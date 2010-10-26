@@ -7,7 +7,6 @@ stormtrooper_dewback = Creature:new {
 	chanceHit = 0.380000,
 	damageMin = 280,
 	damageMax = 290,
-	range = 0,
 	baseXp = 2914,
 	baseHAM = 9200,
 	armor = 0,

@@ -7,7 +7,6 @@ arachne_warrior = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 355,
 	damageMax = 420,
-	range = 25,
 	baseXp = 4097,
 	baseHAM = 10100,
 	armor = 0,

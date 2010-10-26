@@ -7,7 +7,6 @@ frenzied_borgle = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 187,
 	baseHAM = 450,
 	armor = 0,

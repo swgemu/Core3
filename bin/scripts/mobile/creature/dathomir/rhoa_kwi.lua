@@ -7,7 +7,6 @@ rhoa_kwi = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 355,
 	damageMax = 420,
-	range = 0,
 	baseXp = 3551,
 	baseHAM = 9300,
 	armor = 0,

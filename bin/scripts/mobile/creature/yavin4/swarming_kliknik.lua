@@ -7,7 +7,6 @@ swarming_kliknik = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 25,
 	baseXp = 356,
 	baseHAM = 750,
 	armor = 0,

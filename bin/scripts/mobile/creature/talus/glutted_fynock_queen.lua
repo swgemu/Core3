@@ -7,7 +7,6 @@ glutted_fynock_queen = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 0,
 	baseXp = 831,
 	baseHAM = 2200,
 	armor = 0,

@@ -7,7 +7,6 @@ blight_boar = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 0,
 	baseXp = 514,
 	baseHAM = 1100,
 	armor = 0,

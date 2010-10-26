@@ -7,7 +7,6 @@ deadly_forest_mite_guardian = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 25,
 	baseXp = 1102,
 	baseHAM = 3200,
 	armor = 0,

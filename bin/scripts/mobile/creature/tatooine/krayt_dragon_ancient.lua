@@ -7,7 +7,6 @@ krayt_dragon_ancient = Creature:new {
 	chanceHit = 30.000000,
 	damageMin = 2270,
 	damageMax = 4250,
-	range = 0,
 	baseXp = 28549,
 	baseHAM = 455500,
 	armor = 0,

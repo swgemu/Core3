@@ -7,7 +7,6 @@ corellian_butterfly_drone = Creature:new {
 	chanceHit = 0.250000,
 	damageMin = 45,
 	damageMax = 50,
-	range = 0,
 	baseXp = 85,
 	baseHAM = 150,
 	armor = 0,

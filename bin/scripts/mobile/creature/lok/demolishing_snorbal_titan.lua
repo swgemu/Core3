@@ -7,7 +7,6 @@ demolishing_snorbal_titan = Creature:new {
 	chanceHit = 0.470000,
 	damageMin = 345,
 	damageMax = 400,
-	range = 0,
 	baseXp = 4006,
 	baseHAM = 10300,
 	armor = 0,

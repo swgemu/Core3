@@ -7,7 +7,6 @@ narglatch = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 0,
 	baseXp = 2006,
 	baseHAM = 6000,
 	armor = 0,

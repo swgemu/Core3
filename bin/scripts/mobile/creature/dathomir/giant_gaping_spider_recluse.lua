@@ -7,7 +7,6 @@ giant_gaping_spider_recluse = Creature:new {
 	chanceHit = 3.100000,
 	damageMin = 775,
 	damageMax = 1260,
-	range = 25,
 	baseXp = 10921,
 	baseHAM = 33500,
 	armor = 0,

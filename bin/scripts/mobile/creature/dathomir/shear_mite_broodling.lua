@@ -7,7 +7,6 @@ shear_mite_broodling = Creature:new {
 	chanceHit = 27.000000,
 	damageMin = 70,
 	damageMax = 75,
-	range = 0,
 	baseXp = 235,
 	baseHAM = 450,
 	armor = 0,

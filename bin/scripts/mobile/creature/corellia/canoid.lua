@@ -7,7 +7,6 @@ canoid = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 120,
 	damageMax = 130,
-	range = 0,
 	baseXp = 356,
 	baseHAM = 900,
 	armor = 0,

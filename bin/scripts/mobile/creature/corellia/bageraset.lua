@@ -7,7 +7,6 @@ bageraset = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 90,
 	damageMax = 110,
-	range = 25,
 	baseXp = 292,
 	baseHAM = 900,
 	armor = 0,

@@ -7,7 +7,6 @@ domesticated_brackaset = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 2006,
 	baseHAM = 8550,
 	armor = 0,

@@ -7,7 +7,6 @@ mountain_vesp = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 230,
 	damageMax = 240,
-	range = 25,
 	baseXp = 2443,
 	baseHAM = 7550,
 	armor = 0,

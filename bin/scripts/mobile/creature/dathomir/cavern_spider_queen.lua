@@ -7,7 +7,6 @@ cavern_spider_queen = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 345,
 	damageMax = 400,
-	range = 0,
 	baseXp = 4552,
 	baseHAM = 11000,
 	armor = 0,

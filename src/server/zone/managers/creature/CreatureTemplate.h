@@ -133,7 +133,7 @@ public:
 		chanceHit = templateData->getFloatField("chanceHit");
 		damageMin = templateData->getIntField("damageMin");
 		damageMax = templateData->getIntField("damageMax");
-		range = templateData->getIntField("range");
+		//range = templateData->getIntField("range");
 		baseXp = templateData->getIntField("baseXp");
 		baseHAM = templateData->getIntField("baseHAM");
 		armor = templateData->getIntField("armor");

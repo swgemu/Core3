@@ -7,7 +7,6 @@ bolle_bol_herd_leader = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 320,
 	damageMax = 350,
-	range = 0,
 	baseXp = 3460,
 	baseHAM = 9800,
 	armor = 0,

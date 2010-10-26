@@ -7,7 +7,6 @@ chasmal_spider = Creature:new {
 	chanceHit = 0.380000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 0,
 	baseXp = 3097,
 	baseHAM = 9550,
 	armor = 0,

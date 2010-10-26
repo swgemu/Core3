@@ -7,7 +7,6 @@ mawgax_youth = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 0,
 	baseXp = 1803,
 	baseHAM = 6000,
 	armor = 0,

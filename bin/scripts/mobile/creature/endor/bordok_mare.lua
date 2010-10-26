@@ -7,7 +7,6 @@ bordok_mare = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 340,
 	damageMax = 390,
-	range = 0,
 	baseXp = 3460,
 	baseHAM = 9700,
 	armor = 0,

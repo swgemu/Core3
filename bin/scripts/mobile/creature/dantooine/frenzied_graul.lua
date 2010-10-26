@@ -7,7 +7,6 @@ frenzied_graul = Creature:new {
 	chanceHit = 0.500000,
 	damageMin = 445,
 	damageMax = 600,
-	range = 0,
 	baseXp = 5464,
 	baseHAM = 10600,
 	armor = 0,

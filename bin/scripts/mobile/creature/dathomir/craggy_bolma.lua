@@ -7,7 +7,6 @@ craggy_bolma = Creature:new {
 	chanceHit = 0.470000,
 	damageMin = 375,
 	damageMax = 460,
-	range = 0,
 	baseXp = 4643,
 	baseHAM = 11500,
 	armor = 0,

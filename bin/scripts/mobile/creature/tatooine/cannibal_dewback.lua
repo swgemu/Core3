@@ -7,7 +7,6 @@ cannibal_dewback = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 230,
 	damageMax = 240,
-	range = 0,
 	baseXp = 1609,
 	baseHAM = 6550,
 	armor = 0,

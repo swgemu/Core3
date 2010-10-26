@@ -7,7 +7,6 @@ mantigrue_night_stalker = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 25,
 	baseXp = 2914,
 	baseHAM = 8000,
 	armor = 0,

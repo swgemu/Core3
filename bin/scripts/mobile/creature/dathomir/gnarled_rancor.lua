@@ -7,7 +7,6 @@ gnarled_rancor = Creature:new {
 	chanceHit = 0.470000,
 	damageMin = 395,
 	damageMax = 500,
-	range = 0,
 	baseXp = 4552,
 	baseHAM = 10800,
 	armor = 0,

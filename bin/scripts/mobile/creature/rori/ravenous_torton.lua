@@ -7,7 +7,6 @@ ravenous_torton = Creature:new {
 	chanceHit = 0.400000,
 	damageMin = 325,
 	damageMax = 360,
-	range = 0,
 	baseXp = 3370,
 	baseHAM = 9550,
 	armor = 0,

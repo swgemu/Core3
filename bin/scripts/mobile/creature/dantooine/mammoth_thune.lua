@@ -7,7 +7,6 @@ mammoth_thune = Creature:new {
 	chanceHit = 4.750000,
 	damageMin = 720,
 	damageMax = 1150,
-	range = 0,
 	baseXp = 12235,
 	baseHAM = 90000,
 	armor = 0,

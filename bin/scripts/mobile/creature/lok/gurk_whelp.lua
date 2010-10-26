@@ -7,7 +7,6 @@ gurk_whelp = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 240,
 	damageMax = 250,
-	range = 0,
 	baseXp = 2730,
 	baseHAM = 6550,
 	armor = 0,

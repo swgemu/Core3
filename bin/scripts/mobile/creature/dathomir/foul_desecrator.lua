@@ -7,7 +7,6 @@ foul_desecrator = Creature:new {
 	chanceHit = 0.550000,
 	damageMin = 470,
 	damageMax = 650,
-	range = 0,
 	baseXp = 5830,
 	baseHAM = 12500,
 	armor = 0,

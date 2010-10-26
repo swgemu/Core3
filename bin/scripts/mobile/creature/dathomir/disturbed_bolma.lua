@@ -7,7 +7,6 @@ disturbed_bolma = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 270,
 	damageMax = 280,
-	range = 0,
 	baseXp = 2443,
 	baseHAM = 6000,
 	armor = 0,

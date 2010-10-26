@@ -7,7 +7,6 @@ blurrg_sand_crawler = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 345,
 	damageMax = 400,
-	range = 25,
 	baseXp = 4188,
 	baseHAM = 10300,
 	armor = 0,

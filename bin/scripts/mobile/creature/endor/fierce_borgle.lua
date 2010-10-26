@@ -7,7 +7,6 @@ fierce_borgle = Creature:new {
 	chanceHit = 0.370000,
 	damageMin = 310,
 	damageMax = 330,
-	range = 0,
 	baseXp = 3279,
 	baseHAM = 7000,
 	armor = 0,

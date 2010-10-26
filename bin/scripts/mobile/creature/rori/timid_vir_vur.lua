@@ -7,7 +7,6 @@ timid_vir_vur = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 70,
 	damageMax = 75,
-	range = 0,
 	baseXp = 187,
 	baseHAM = 450,
 	armor = 0,

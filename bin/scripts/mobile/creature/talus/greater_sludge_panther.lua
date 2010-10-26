@@ -7,7 +7,6 @@ greater_sludge_panther = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 240,
 	damageMax = 250,
-	range = 0,
 	baseXp = 2637,
 	baseHAM = 8000,
 	armor = 0,

@@ -7,7 +7,6 @@ female_razor_cat = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 230,
 	damageMax = 240,
-	range = 0,
 	baseXp = 2219,
 	baseHAM = 5550,
 	armor = 0,

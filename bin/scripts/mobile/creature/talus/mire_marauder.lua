@@ -7,7 +7,6 @@ mire_marauder = Creature:new {
 	chanceHit = 0.550000,
 	damageMin = 445,
 	damageMax = 600,
-	range = 0,
 	baseXp = 5464,
 	baseHAM = 10800,
 	armor = 0,

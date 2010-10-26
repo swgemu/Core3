@@ -7,7 +7,6 @@ sharnaff_bull = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 335,
 	damageMax = 380,
-	range = 0,
 	baseXp = 3733,
 	baseHAM = 10400,
 	armor = 0,

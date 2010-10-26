@@ -7,7 +7,6 @@ skreeg_hunter = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 190,
 	damageMax = 200,
-	range = 0,
 	baseXp = 2006,
 	baseHAM = 5550,
 	armor = 0,

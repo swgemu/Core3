@@ -7,7 +7,6 @@ fierce_piket_protector = Creature:new {
 	chanceHit = 0.450000,
 	damageMin = 355,
 	damageMax = 420,
-	range = 0,
 	baseXp = 4461,
 	baseHAM = 10900,
 	armor = 0,

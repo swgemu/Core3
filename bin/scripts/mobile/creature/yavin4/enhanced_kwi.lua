@@ -7,7 +7,6 @@ enhanced_kwi = Creature:new {
 	chanceHit = 1.750000,
 	damageMin = 690,
 	damageMax = 1090,
-	range = 0,
 	baseXp = 10081,
 	baseHAM = 30000,
 	armor = 0,

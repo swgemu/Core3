@@ -7,7 +7,6 @@ docile_kahmurra = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 292,
 	baseHAM = 1100,
 	armor = 0,

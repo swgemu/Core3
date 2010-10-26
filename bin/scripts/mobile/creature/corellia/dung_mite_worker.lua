@@ -7,7 +7,6 @@ dung_mite_worker = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 25,
 	baseXp = 831,
 	baseHAM = 2700,
 	armor = 0,

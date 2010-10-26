@@ -7,7 +7,6 @@ bloodseeker_mite_queen = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 330,
 	damageMax = 370,
-	range = 0,
 	baseXp = 3824,
 	baseHAM = 9800,
 	armor = 0,

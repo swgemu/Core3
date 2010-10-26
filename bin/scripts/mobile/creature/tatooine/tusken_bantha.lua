@@ -7,7 +7,6 @@ tusken_bantha = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 260,
 	damageMax = 270,
-	range = 0,
 	baseXp = 2543,
 	baseHAM = 7000,
 	armor = 0,

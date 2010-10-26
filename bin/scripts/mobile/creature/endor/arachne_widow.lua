@@ -7,7 +7,6 @@ arachne_widow = Creature:new {
 	chanceHit = 0.530000,
 	damageMin = 400,
 	damageMax = 510,
-	range = 0,
 	baseXp = 5647,
 	baseHAM = 12500,
 	armor = 0,

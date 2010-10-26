@@ -7,7 +7,6 @@ pygmy_torton_protector = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 220,
 	damageMax = 230,
-	range = 0,
 	baseXp = 2219,
 	baseHAM = 3900,
 	armor = 0,

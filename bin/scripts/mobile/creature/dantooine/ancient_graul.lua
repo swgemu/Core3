@@ -7,7 +7,6 @@ ancient_graul = Creature:new {
 	chanceHit = 0.470000,
 	damageMin = 370,
 	damageMax = 450,
-	range = 0,
 	baseXp = 4825,
 	baseHAM = 10800,
 	armor = 0,

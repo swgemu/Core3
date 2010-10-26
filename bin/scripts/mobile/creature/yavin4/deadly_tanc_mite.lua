@@ -7,7 +7,6 @@ deadly_tanc_mite = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 609,
 	baseHAM = 1100,
 	armor = 0,

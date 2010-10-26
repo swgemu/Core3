@@ -7,7 +7,6 @@ blood_frenzied_boar_wolf = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 395,
 	damageMax = 500,
-	range = 0,
 	baseXp = 4461,
 	baseHAM = 11000,
 	armor = 0,

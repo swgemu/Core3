@@ -7,7 +7,6 @@ borgle_life_sapper = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 220,
 	damageMax = 230,
-	range = 25,
 	baseXp = 2637,
 	baseHAM = 7000,
 	armor = 0,

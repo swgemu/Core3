@@ -7,7 +7,6 @@ sentry_hermit_spider = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 70,
 	damageMax = 75,
-	range = 0,
 	baseXp = 430,
 	baseHAM = 450,
 	armor = 0,

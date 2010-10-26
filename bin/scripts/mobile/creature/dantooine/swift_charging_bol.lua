@@ -7,7 +7,6 @@ swift_charging_bol = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 310,
 	damageMax = 330,
-	range = 0,
 	baseXp = 3370,
 	baseHAM = 9700,
 	armor = 0,

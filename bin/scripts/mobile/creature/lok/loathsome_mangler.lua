@@ -7,7 +7,6 @@ loathsome_mangler = Creature:new {
 	chanceHit = 0.400000,
 	damageMin = 335,
 	damageMax = 380,
-	range = 0,
 	baseXp = 3370,
 	baseHAM = 9100,
 	armor = 0,

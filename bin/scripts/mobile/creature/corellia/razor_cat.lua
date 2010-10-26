@@ -7,7 +7,6 @@ razor_cat = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 220,
 	damageMax = 230,
-	range = 0,
 	baseXp = 2006,
 	baseHAM = 7000,
 	armor = 0,

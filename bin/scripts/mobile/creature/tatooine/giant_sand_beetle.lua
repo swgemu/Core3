@@ -7,7 +7,6 @@ giant_sand_beetle = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 25,
 	baseXp = 3097,
 	baseHAM = 9300,
 	armor = 0,

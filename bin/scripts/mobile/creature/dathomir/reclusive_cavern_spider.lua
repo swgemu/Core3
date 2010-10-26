@@ -7,7 +7,6 @@ reclusive_cavern_spider = Creature:new {
 	chanceHit = 0.460000,
 	damageMin = 390,
 	damageMax = 490,
-	range = 25,
 	baseXp = 4552,
 	baseHAM = 10550,
 	armor = 0,

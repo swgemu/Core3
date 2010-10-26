@@ -7,7 +7,6 @@ mature_hanadak_rock_smasher = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 330,
 	damageMax = 370,
-	range = 0,
 	baseXp = 3460,
 	baseHAM = 9700,
 	armor = 0,

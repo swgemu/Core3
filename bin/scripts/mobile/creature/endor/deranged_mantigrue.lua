@@ -1,5 +1,4 @@
 deranged_mantigrue = Creature:new {
-	objectName = "@mob/creature_names:deranged_mantigrue",
 	socialGroup = "Mantigrue",
 	pvpFaction = "",
 	faction = "",
@@ -7,7 +6,6 @@ deranged_mantigrue = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 370,
 	damageMax = 450,
-	range = 0,
 	baseXp = 4279,
 	baseHAM = 9800,
 	armor = 0,
@@ -34,4 +32,3 @@ deranged_mantigrue = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(deranged_mantigrue, "deranged_mantigrue")

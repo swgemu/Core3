@@ -7,7 +7,6 @@ quenker_ravager = Creature:new {
 	chanceHit = 0.430000,
 	damageMin = 365,
 	damageMax = 440,
-	range = 0,
 	baseXp = 3824,
 	baseHAM = 10100,
 	armor = 0,

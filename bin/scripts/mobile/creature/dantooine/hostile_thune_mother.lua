@@ -7,7 +7,6 @@ hostile_thune_mother = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9300,
 	armor = 0,

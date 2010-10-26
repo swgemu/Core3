@@ -7,7 +7,6 @@ slice_hound = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 120,
 	damageMax = 130,
-	range = 0,
 	baseXp = 292,
 	baseHAM = 450,
 	armor = 0,

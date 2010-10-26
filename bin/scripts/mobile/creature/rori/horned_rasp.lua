@@ -7,7 +7,6 @@ horned_rasp = Creature:new {
 	chanceHit = 0.250000,
 	damageMin = 50,
 	damageMax = 55,
-	range = 0,
 	baseXp = 147,
 	baseHAM = 200,
 	armor = 0,

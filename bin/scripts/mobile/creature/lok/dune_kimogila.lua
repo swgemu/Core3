@@ -7,7 +7,6 @@ dune_kimogila = Creature:new {
 	chanceHit = 4.000000,
 	damageMin = 785,
 	damageMax = 1280,
-	range = 0,
 	baseXp = 11671,
 	baseHAM = 59000,
 	armor = 0,

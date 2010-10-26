@@ -7,7 +7,6 @@ stunted_huf_dun = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 90,
 	damageMax = 110,
-	range = 0,
 	baseXp = 235,
 	baseHAM = 750,
 	armor = 0,

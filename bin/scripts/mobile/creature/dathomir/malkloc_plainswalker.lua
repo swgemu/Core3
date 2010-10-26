@@ -7,7 +7,6 @@ malkloc_plainswalker = Creature:new {
 	chanceHit = 0.700000,
 	damageMin = 535,
 	damageMax = 780,
-	range = 0,
 	baseXp = 7945,
 	baseHAM = 32500,
 	armor = 0,

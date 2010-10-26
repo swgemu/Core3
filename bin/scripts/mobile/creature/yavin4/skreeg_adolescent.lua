@@ -7,7 +7,6 @@ skreeg_adolescent = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 0,
 	baseXp = 831,
 	baseHAM = 2700,
 	armor = 0,

@@ -7,7 +7,6 @@ great_squill = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 0,
 	baseXp = 1609,
 	baseHAM = 6000,
 	armor = 0,

@@ -7,7 +7,6 @@ hilltop_gurreck_hunter = Creature:new {
 	chanceHit = 0.420000,
 	damageMin = 340,
 	damageMax = 390,
-	range = 0,
 	baseXp = 4006,
 	baseHAM = 9600,
 	armor = 0,

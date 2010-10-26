@@ -7,7 +7,6 @@ rogue_fambaa = Creature:new {
 	chanceHit = 0.420000,
 	damageMin = 330,
 	damageMax = 370,
-	range = 0,
 	baseXp = 3551,
 	baseHAM = 10000,
 	armor = 0,

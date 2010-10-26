@@ -7,7 +7,6 @@ mott_calf = Creature:new {
 	chanceHit = 0.240000,
 	damageMin = 40,
 	damageMax = 45,
-	range = 0,
 	baseXp = 85,
 	baseHAM = 125,
 	armor = 0,

@@ -7,7 +7,6 @@ bloodseeker_mite_guardian = Creature:new {
 	chanceHit = 0.400000,
 	damageMin = 330,
 	damageMax = 370,
-	range = 25,
 	baseXp = 3733,
 	baseHAM = 9300,
 	armor = 0,

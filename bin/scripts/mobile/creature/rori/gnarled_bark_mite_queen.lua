@@ -7,7 +7,6 @@ gnarled_bark_mite_queen = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 25,
 	baseXp = 1257,
 	baseHAM = 5000,
 	armor = 0,

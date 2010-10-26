@@ -7,7 +7,6 @@ bark_mite_burrower_collector = Creature:new {
 	chanceHit = 0.400000,
 	damageMin = 335,
 	damageMax = 380,
-	range = 0,
 	baseXp = 3551,
 	baseHAM = 9600,
 	armor = 0,

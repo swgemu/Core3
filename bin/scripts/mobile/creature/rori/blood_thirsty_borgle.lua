@@ -7,7 +7,6 @@ blood_thirsty_borgle = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 0,
 	baseXp = 831,
 	baseHAM = 1300,
 	armor = 0,

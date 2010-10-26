@@ -7,7 +7,6 @@ grizzled_bark_mite = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 25,
 	baseXp = 714,
 	baseHAM = 1700,
 	armor = 0,

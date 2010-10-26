@@ -7,7 +7,6 @@ percussive_rasp = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 140,
 	damageMax = 150,
-	range = 0,
 	baseXp = 514,
 	baseHAM = 1100,
 	armor = 0,

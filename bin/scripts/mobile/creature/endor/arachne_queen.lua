@@ -7,7 +7,6 @@ arachne_queen = Creature:new {
 	chanceHit = 0.600000,
 	damageMin = 445,
 	damageMax = 600,
-	range = 0,
 	baseXp = 6105,
 	baseHAM = 12500,
 	armor = 0,

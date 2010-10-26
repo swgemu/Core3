@@ -7,7 +7,6 @@ gaping_spider_hunter = Creature:new {
 	chanceHit = 0.460000,
 	damageMin = 390,
 	damageMax = 490,
-	range = 25,
 	baseXp = 4370,
 	baseHAM = 10550,
 	armor = 0,

@@ -7,7 +7,6 @@ mountain_squill = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 315,
 	damageMax = 340,
-	range = 0,
 	baseXp = 3279,
 	baseHAM = 9700,
 	armor = 0,

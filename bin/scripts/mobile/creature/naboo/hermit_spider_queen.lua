@@ -7,7 +7,6 @@ hermit_spider_queen = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 25,
 	baseXp = 514,
 	baseHAM = 750,
 	armor = 0,

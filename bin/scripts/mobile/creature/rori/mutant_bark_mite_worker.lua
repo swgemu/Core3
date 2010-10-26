@@ -7,7 +7,6 @@ mutant_bark_mite_worker = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 0,
 	baseXp = 609,
 	baseHAM = 2200,
 	armor = 0,

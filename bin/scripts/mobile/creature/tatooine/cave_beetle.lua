@@ -7,7 +7,6 @@ cave_beetle = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 140,
 	damageMax = 150,
-	range = 25,
 	baseXp = 960,
 	baseHAM = 3200,
 	armor = 0,

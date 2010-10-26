@@ -7,7 +7,6 @@ ancient_bull_rancor = Creature:new {
 	chanceHit = 0.950000,
 	damageMin = 620,
 	damageMax = 950,
-	range = 0,
 	baseXp = 9336,
 	baseHAM = 22500,
 	armor = 0,

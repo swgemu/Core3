@@ -7,7 +7,6 @@ ominous_skreeg = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 0,
 	baseXp = 2443,
 	baseHAM = 7550,
 	armor = 0,

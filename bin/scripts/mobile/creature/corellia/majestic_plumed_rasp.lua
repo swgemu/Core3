@@ -7,7 +7,6 @@ majestic_plumed_rasp = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 0,
 	baseXp = 514,
 	baseHAM = 450,
 	armor = 0,

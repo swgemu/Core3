@@ -7,7 +7,6 @@ domesticated_gurnaset = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 25,
 	baseXp = 514,
 	baseHAM = 2200,
 	armor = 0,

@@ -7,7 +7,6 @@ armodragon = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 315,
 	damageMax = 340,
-	range = 25,
 	baseXp = 3370,
 	baseHAM = 9550,
 	armor = 0,

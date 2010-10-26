@@ -7,7 +7,6 @@ festering_squill = Creature:new {
 	chanceHit = 0.380000,
 	damageMin = 305,
 	damageMax = 320,
-	range = 0,
 	baseXp = 3097,
 	baseHAM = 7000,
 	armor = 0,

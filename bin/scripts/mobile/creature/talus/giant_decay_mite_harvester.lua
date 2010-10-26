@@ -7,7 +7,6 @@ giant_decay_mite_harvester = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 120,
 	damageMax = 130,
-	range = 0,
 	baseXp = 514,
 	baseHAM = 900,
 	armor = 0,

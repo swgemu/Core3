@@ -7,7 +7,6 @@ ferine_razorfang = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 0,
 	baseXp = 2006,
 	baseHAM = 3900,
 	armor = 0,
