@@ -7,7 +7,6 @@ blurrg_raptor = Creature:new {
 	chanceHit = 6.250000,
 	damageMin = 945,
 	damageMax = 1600,
-	range = 25,
 	baseXp = 13367,
 	baseHAM = 68500,
 	armor = 0,

@@ -7,7 +7,6 @@ bordok_herd_master = Creature:new {
 	chanceHit = 0.430000,
 	damageMin = 355,
 	damageMax = 420,
-	range = 0,
 	baseXp = 3915,
 	baseHAM = 10550,
 	armor = 0,

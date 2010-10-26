@@ -7,7 +7,6 @@ reclusive_cavern_spider_queen = Creature:new {
 	chanceHit = 0.650000,
 	damageMin = 510,
 	damageMax = 730,
-	range = 0,
 	baseXp = 6747,
 	baseHAM = 12500,
 	armor = 0,

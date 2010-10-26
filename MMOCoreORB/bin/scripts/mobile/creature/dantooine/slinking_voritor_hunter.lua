@@ -7,7 +7,6 @@ slinking_voritor_hunter = Creature:new {
 	chanceHit = 0.550000,
 	damageMin = 420,
 	damageMax = 550,
-	range = 0,
 	baseXp = 5555,
 	baseHAM = 12000,
 	armor = 0,

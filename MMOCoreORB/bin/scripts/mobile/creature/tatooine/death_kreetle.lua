@@ -7,7 +7,6 @@ death_kreetle = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 0,
 	baseXp = 356,
 	baseHAM = 300,
 	armor = 0,

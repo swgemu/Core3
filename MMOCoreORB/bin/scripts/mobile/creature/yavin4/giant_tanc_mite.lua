@@ -7,7 +7,6 @@ giant_tanc_mite = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 140,
 	damageMax = 150,
-	range = 25,
 	baseXp = 714,
 	baseHAM = 3200,
 	armor = 0,

@@ -7,7 +7,6 @@ purbole_hunter = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 2006,
 	baseHAM = 5550,
 	armor = 0,

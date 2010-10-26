@@ -7,7 +7,6 @@ gualama = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 0,
 	baseXp = 514,
 	baseHAM = 1100,
 	armor = 0,

@@ -7,7 +7,6 @@ ikopi = Creature:new {
 	chanceHit = 0.260000,
 	damageMin = 50,
 	damageMax = 55,
-	range = 0,
 	baseXp = 147,
 	baseHAM = 450,
 	armor = 0,

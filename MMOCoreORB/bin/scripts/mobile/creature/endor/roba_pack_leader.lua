@@ -7,7 +7,6 @@ roba_pack_leader = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 310,
 	damageMax = 330,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9000,
 	armor = 0,

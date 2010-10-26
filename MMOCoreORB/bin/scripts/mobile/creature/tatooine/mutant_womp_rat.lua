@@ -7,7 +7,6 @@ mutant_womp_rat = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 0,
 	baseXp = 609,
 	baseHAM = 1100,
 	armor = 0,

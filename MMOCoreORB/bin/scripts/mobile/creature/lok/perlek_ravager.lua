@@ -7,7 +7,6 @@ perlek_ravager = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 180,
 	damageMax = 190,
-	range = 25,
 	baseXp = 1426,
 	baseHAM = 2700,
 	armor = 0,

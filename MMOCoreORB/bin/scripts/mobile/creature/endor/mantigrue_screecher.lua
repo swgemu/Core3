@@ -7,7 +7,6 @@ mantigrue_screecher = Creature:new {
 	chanceHit = 0.550000,
 	damageMin = 420,
 	damageMax = 550,
-	range = 0,
 	baseXp = 5281,
 	baseHAM = 12000,
 	armor = 0,

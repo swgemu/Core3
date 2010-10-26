@@ -7,7 +7,6 @@ enraged_dune_kimogila = Creature:new {
 	chanceHit = 6.250000,
 	damageMin = 940,
 	damageMax = 1590,
-	range = 0,
 	baseXp = 14030,
 	baseHAM = 68500,
 	armor = 0,

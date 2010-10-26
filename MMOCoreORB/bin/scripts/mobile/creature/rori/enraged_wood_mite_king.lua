@@ -7,7 +7,6 @@ enraged_wood_mite_king = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 25,
 	baseXp = 1803,
 	baseHAM = 4550,
 	armor = 0,

@@ -7,7 +7,6 @@ kai_tok_bloodreaver = Creature:new {
 	chanceHit = 0.420000,
 	damageMin = 260,
 	damageMax = 270,
-	range = 0,
 	baseXp = 3460,
 	baseHAM = 10100,
 	armor = 0,

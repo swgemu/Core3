@@ -7,7 +7,6 @@ mine_rat = Creature:new {
 	chanceHit = 1.000000,
 	damageMin = 645,
 	damageMax = 1000,
-	range = 0,
 	baseXp = 9708,
 	baseHAM = 27000,
 	armor = 0,

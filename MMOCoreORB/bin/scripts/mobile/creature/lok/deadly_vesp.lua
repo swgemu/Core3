@@ -7,7 +7,6 @@ deadly_vesp = Creature:new {
 	chanceHit = 0.900000,
 	damageMin = 670,
 	damageMax = 1050,
-	range = 0,
 	baseXp = 8871,
 	baseHAM = 14500,
 	armor = 0,

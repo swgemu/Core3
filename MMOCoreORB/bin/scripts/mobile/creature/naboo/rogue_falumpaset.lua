@@ -7,7 +7,6 @@ rogue_falumpaset = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 180,
 	damageMax = 190,
-	range = 25,
 	baseXp = 1102,
 	baseHAM = 3900,
 	armor = 0,

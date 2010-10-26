@@ -7,7 +7,6 @@ seething_bol_crusher = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 325,
 	damageMax = 360,
-	range = 0,
 	baseXp = 4279,
 	baseHAM = 10300,
 	armor = 0,

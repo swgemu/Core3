@@ -7,7 +7,6 @@ piket_longhorn_female = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 0,
 	baseXp = 2914,
 	baseHAM = 9300,
 	armor = 0,

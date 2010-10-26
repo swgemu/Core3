@@ -7,7 +7,6 @@ mad_angler = Creature:new {
 	chanceHit = 0.850000,
 	damageMin = 820,
 	damageMax = 1350,
-	range = 25,
 	baseXp = 9057,
 	baseHAM = 14500,
 	armor = 0,

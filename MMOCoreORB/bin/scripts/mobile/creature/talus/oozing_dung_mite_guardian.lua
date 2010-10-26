@@ -7,7 +7,6 @@ oozing_dung_mite_guardian = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 25,
 	baseXp = 1257,
 	baseHAM = 4550,
 	armor = 0,

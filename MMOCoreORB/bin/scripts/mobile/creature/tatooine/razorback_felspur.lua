@@ -7,7 +7,6 @@ razorback_felspur = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 260,
 	damageMax = 270,
-	range = 0,
 	baseXp = 2730,
 	baseHAM = 9000,
 	armor = 0,

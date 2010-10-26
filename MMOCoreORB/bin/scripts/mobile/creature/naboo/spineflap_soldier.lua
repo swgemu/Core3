@@ -7,7 +7,6 @@ spineflap_soldier = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 25,
 	baseXp = 714,
 	baseHAM = 2200,
 	armor = 0,

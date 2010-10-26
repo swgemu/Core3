@@ -7,7 +7,6 @@ merek_harvester = Creature:new {
 	chanceHit = 0.550000,
 	damageMin = 445,
 	damageMax = 600,
-	range = 0,
 	baseXp = 5281,
 	baseHAM = 12500,
 	armor = 0,

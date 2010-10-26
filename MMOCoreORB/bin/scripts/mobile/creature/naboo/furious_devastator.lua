@@ -7,7 +7,6 @@ furious_devastator = Creature:new {
 	chanceHit = 0.400000,
 	damageMin = 375,
 	damageMax = 460,
-	range = 0,
 	baseXp = 3824,
 	baseHAM = 9600,
 	armor = 0,

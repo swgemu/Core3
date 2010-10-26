@@ -7,7 +7,6 @@ crimson_razor_cat = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 305,
 	damageMax = 320,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 8550,
 	armor = 0,

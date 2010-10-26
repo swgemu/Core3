@@ -7,7 +7,6 @@ lowland_brackaset = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 120,
 	damageMax = 130,
-	range = 0,
 	baseXp = 292,
 	baseHAM = 750,
 	armor = 0,

@@ -7,7 +7,6 @@ meek_avenging_squall = Creature:new {
 	chanceHit = 0.250000,
 	damageMin = 50,
 	damageMax = 55,
-	range = 0,
 	baseXp = 113,
 	baseHAM = 200,
 	armor = 0,

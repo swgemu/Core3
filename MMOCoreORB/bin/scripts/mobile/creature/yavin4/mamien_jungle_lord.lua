@@ -7,7 +7,6 @@ mamien_jungle_lord = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 180,
 	damageMax = 190,
-	range = 0,
 	baseXp = 2443,
 	baseHAM = 7000,
 	armor = 0,

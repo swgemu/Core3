@@ -7,7 +7,6 @@ male_mamien = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 0,
 	baseXp = 1426,
 	baseHAM = 4550,
 	armor = 0,

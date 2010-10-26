@@ -7,7 +7,6 @@ tortur_bull = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 305,
 	damageMax = 320,
-	range = 0,
 	baseXp = 2543,
 	baseHAM = 5550,
 	armor = 0,

@@ -7,7 +7,6 @@ lurking_shear_mite = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 25,
 	baseXp = 831,
 	baseHAM = 2700,
 	armor = 0,

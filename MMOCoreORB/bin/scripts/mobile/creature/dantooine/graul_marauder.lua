@@ -7,7 +7,6 @@ graul_marauder = Creature:new {
 	chanceHit = 1.075000,
 	damageMin = 1095,
 	damageMax = 1900,
-	range = 0,
 	baseXp = 16411,
 	baseHAM = 113500,
 	armor = 0,

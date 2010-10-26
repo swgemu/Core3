@@ -7,7 +7,6 @@ diminutive_bounding_jax = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 187,
 	baseHAM = 75,
 	armor = 0,

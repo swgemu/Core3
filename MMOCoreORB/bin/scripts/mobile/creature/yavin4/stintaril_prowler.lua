@@ -7,7 +7,6 @@ stintaril_prowler = Creature:new {
 	chanceHit = 0.850000,
 	damageMin = 595,
 	damageMax = 900,
-	range = 25,
 	baseXp = 7945,
 	baseHAM = 13500,
 	armor = 0,

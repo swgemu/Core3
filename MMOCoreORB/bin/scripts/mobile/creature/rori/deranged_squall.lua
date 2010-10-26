@@ -1,5 +1,4 @@
 deranged_squall = Creature:new {
-	objectName = "@mob/creature_names:deranged_squall",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
@@ -7,7 +6,6 @@ deranged_squall = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 714,
 	baseHAM = 2200,
 	armor = 0,
@@ -33,4 +31,3 @@ deranged_squall = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(deranged_squall, "deranged_squall")

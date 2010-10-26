@@ -7,7 +7,6 @@ shear_mite_soldier = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 190,
 	damageMax = 200,
-	range = 25,
 	baseXp = 1803,
 	baseHAM = 5550,
 	armor = 0,

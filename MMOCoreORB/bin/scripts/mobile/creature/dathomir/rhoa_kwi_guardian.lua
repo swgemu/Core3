@@ -7,7 +7,6 @@ rhoa_kwi_guardian = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 320,
 	damageMax = 350,
-	range = 25,
 	baseXp = 4461,
 	baseHAM = 11000,
 	armor = 0,

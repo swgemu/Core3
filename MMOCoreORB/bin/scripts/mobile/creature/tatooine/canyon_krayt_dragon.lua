@@ -7,7 +7,6 @@ canyon_krayt_dragon = Creature:new {
 	chanceHit = 27.250000,
 	damageMin = 1520,
 	damageMax = 2750,
-	range = 0,
 	baseXp = 26356,
 	baseHAM = 356500,
 	armor = 0,

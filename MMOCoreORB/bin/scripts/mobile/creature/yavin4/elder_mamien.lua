@@ -7,7 +7,6 @@ elder_mamien = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 180,
 	damageMax = 190,
-	range = 0,
 	baseXp = 1609,
 	baseHAM = 5000,
 	armor = 0,

@@ -7,7 +7,6 @@ tortur = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 260,
 	damageMax = 270,
-	range = 0,
 	baseXp = 1803,
 	baseHAM = 3200,
 	armor = 0,

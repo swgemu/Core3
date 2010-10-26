@@ -7,7 +7,6 @@ bone_angler = Creature:new {
 	chanceHit = 0.370000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 0,
 	baseXp = 2730,
 	baseHAM = 8550,
 	armor = 0,

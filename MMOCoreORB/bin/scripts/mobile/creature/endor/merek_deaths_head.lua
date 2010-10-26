@@ -7,7 +7,6 @@ merek_deaths_head = Creature:new {
 	chanceHit = 0.550000,
 	damageMin = 480,
 	damageMax = 670,
-	range = 0,
 	baseXp = 5464,
 	baseHAM = 11000,
 	armor = 0,

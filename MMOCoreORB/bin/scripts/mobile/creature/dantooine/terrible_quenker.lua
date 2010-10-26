@@ -7,7 +7,6 @@ terrible_quenker = Creature:new {
 	chanceHit = 0.380000,
 	damageMin = 280,
 	damageMax = 290,
-	range = 25,
 	baseXp = 3005,
 	baseHAM = 9100,
 	armor = 0,

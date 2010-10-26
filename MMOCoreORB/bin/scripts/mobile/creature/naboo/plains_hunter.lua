@@ -7,7 +7,6 @@ plains_hunter = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 310,
 	damageMax = 330,
-	range = 0,
 	baseXp = 3188,
 	baseHAM = 9300,
 	armor = 0,

@@ -7,7 +7,6 @@ torton_pygmy_matriarch = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 280,
 	damageMax = 290,
-	range = 0,
 	baseXp = 2730,
 	baseHAM = 7000,
 	armor = 0,

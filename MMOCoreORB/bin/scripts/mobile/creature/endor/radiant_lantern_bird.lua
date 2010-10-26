@@ -7,7 +7,6 @@ radiant_lantern_bird = Creature:new {
 	chanceHit = 0.430000,
 	damageMin = 335,
 	damageMax = 380,
-	range = 0,
 	baseXp = 3915,
 	baseHAM = 10100,
 	armor = 0,

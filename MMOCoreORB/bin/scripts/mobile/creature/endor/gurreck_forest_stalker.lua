@@ -7,7 +7,6 @@ gurreck_forest_stalker = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 320,
 	damageMax = 350,
-	range = 0,
 	baseXp = 3188,
 	baseHAM = 9000,
 	armor = 0,

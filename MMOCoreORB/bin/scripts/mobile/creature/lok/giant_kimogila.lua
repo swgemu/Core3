@@ -7,7 +7,6 @@ giant_kimogila = Creature:new {
 	chanceHit = 5.500000,
 	damageMin = 875,
 	damageMax = 1460,
-	range = 0,
 	baseXp = 13178,
 	baseHAM = 72500,
 	armor = 0,

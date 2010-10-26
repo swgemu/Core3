@@ -7,7 +7,6 @@ kliknik_dark_hunter = Creature:new {
 	chanceHit = 0.430000,
 	damageMin = 350,
 	damageMax = 410,
-	range = 25,
 	baseXp = 3824,
 	baseHAM = 9800,
 	armor = 0,

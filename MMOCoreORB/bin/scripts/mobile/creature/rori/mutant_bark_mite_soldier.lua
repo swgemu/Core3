@@ -7,7 +7,6 @@ mutant_bark_mite_soldier = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 230,
 	damageMax = 240,
-	range = 25,
 	baseXp = 2543,
 	baseHAM = 6550,
 	armor = 0,

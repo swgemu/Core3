@@ -7,7 +7,6 @@ stintaril_fleshripper = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 0,
 	baseXp = 960,
 	baseHAM = 3900,
 	armor = 0,

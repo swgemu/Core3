@@ -7,7 +7,6 @@ savage_quenker = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 270,
 	damageMax = 280,
-	range = 25,
 	baseXp = 2822,
 	baseHAM = 7550,
 	armor = 0,

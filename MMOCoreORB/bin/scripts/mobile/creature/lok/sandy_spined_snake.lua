@@ -7,7 +7,6 @@ sandy_spined_snake = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 25,
 	baseXp = 714,
 	baseHAM = 1300,
 	armor = 0,

@@ -7,7 +7,6 @@ kliknik_queen_harvester = Creature:new {
 	chanceHit = 0.370000,
 	damageMin = 270,
 	damageMax = 280,
-	range = 25,
 	baseXp = 3005,
 	baseHAM = 9100,
 	armor = 0,

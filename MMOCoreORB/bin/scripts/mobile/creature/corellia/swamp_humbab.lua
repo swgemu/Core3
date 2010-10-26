@@ -7,7 +7,6 @@ swamp_humbab = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 0,
 	baseXp = 1426,
 	baseHAM = 5550,
 	armor = 0,

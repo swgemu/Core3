@@ -7,7 +7,6 @@ infant_brackaset = Creature:new {
 	chanceHit = 0.250000,
 	damageMin = 55,
 	damageMax = 65,
-	range = 0,
 	baseXp = 113,
 	baseHAM = 150,
 	armor = 0,

@@ -7,7 +7,6 @@ mutant_bark_mite_hatchiing = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 430,
 	baseHAM = 1700,
 	armor = 0,

@@ -7,7 +7,6 @@ injured_purbole = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 140,
 	damageMax = 150,
-	range = 0,
 	baseXp = 430,
 	baseHAM = 1300,
 	armor = 0,

@@ -7,7 +7,6 @@ spined_puc = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 0,
 	baseXp = 714,
 	baseHAM = 2200,
 	armor = 0,

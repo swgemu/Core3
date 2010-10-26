@@ -7,7 +7,6 @@ elder_pulverizer = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 315,
 	damageMax = 340,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9200,
 	armor = 0,

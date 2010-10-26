@@ -7,7 +7,6 @@ drooling_nuna = Creature:new {
 	chanceHit = 0.250000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 147,
 	baseHAM = 150,
 	armor = 0,

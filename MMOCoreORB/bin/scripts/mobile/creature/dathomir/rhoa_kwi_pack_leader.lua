@@ -7,7 +7,6 @@ rhoa_kwi_pack_leader = Creature:new {
 	chanceHit = 0.470000,
 	damageMin = 380,
 	damageMax = 470,
-	range = 0,
 	baseXp = 4916,
 	baseHAM = 11000,
 	armor = 0,

@@ -7,7 +7,6 @@ mountain_torton = Creature:new {
 	chanceHit = 0.370000,
 	damageMin = 300,
 	damageMax = 310,
-	range = 0,
 	baseXp = 3460,
 	baseHAM = 9100,
 	armor = 0,

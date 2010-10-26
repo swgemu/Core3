@@ -7,7 +7,6 @@ rancor = Creature:new {
 	chanceHit = 0.500000,
 	damageMin = 420,
 	damageMax = 550,
-	range = 0,
 	baseXp = 4916,
 	baseHAM = 11000,
 	armor = 0,

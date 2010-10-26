@@ -7,7 +7,6 @@ enraged_kimogila = Creature:new {
 	chanceHit = 4.750000,
 	damageMin = 920,
 	damageMax = 1550,
-	range = 0,
 	baseXp = 12801,
 	baseHAM = 55500,
 	armor = 0,

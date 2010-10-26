@@ -7,7 +7,6 @@ corellian_butterfly_defender = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 25,
 	baseXp = 1257,
 	baseHAM = 2200,
 	armor = 0,

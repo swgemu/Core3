@@ -7,7 +7,6 @@ genetically_enchanced_kahmurra = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 0,
 	baseXp = 3097,
 	baseHAM = 9300,
 	armor = 0,

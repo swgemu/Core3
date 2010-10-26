@@ -7,7 +7,6 @@ rock_beetle = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 140,
 	damageMax = 150,
-	range = 25,
 	baseXp = 714,
 	baseHAM = 2200,
 	armor = 0,

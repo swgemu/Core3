@@ -7,7 +7,6 @@ tatooine_mynock = Creature:new {
 	chanceHit = 0.230000,
 	damageMin = 35,
 	damageMax = 45,
-	range = 0,
 	baseXp = 45,
 	baseHAM = 100,
 	armor = 0,

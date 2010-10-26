@@ -7,7 +7,6 @@ giant_decay_mite_sentry = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 25,
 	baseXp = 1257,
 	baseHAM = 3200,
 	armor = 0,

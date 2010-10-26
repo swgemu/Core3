@@ -7,7 +7,6 @@ poisonous_krevol_queen = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 25,
 	baseXp = 960,
 	baseHAM = 1700,
 	armor = 0,

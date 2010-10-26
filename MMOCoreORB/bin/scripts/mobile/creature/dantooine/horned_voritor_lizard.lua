@@ -7,7 +7,6 @@ horned_voritor_lizard = Creature:new {
 	chanceHit = 0.500000,
 	damageMin = 395,
 	damageMax = 500,
-	range = 0,
 	baseXp = 5099,
 	baseHAM = 11000,
 	armor = 0,

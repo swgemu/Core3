@@ -7,7 +7,6 @@ female_forest_slice_hound = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 0,
 	baseXp = 356,
 	baseHAM = 750,
 	armor = 0,

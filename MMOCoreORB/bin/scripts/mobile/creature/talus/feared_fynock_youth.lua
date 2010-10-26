@@ -7,7 +7,6 @@ feared_fynock_youth = Creature:new {
 	chanceHit = 0.250000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 147,
 	baseHAM = 300,
 	armor = 0,

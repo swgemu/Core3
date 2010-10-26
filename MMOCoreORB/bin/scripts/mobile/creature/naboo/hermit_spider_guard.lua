@@ -7,7 +7,6 @@ hermit_spider_guard = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 356,
 	baseHAM = 750,
 	armor = 0,

@@ -7,7 +7,6 @@ rancor_youth = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 365,
 	damageMax = 440,
-	range = 0,
 	baseXp = 4370,
 	baseHAM = 9900,
 	armor = 0,

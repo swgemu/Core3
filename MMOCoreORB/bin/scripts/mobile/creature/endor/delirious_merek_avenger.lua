@@ -7,7 +7,6 @@ delirious_merek_avenger = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 345,
 	damageMax = 400,
-	range = 25,
 	baseXp = 3915,
 	baseHAM = 10700,
 	armor = 0,

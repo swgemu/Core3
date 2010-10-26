@@ -7,7 +7,6 @@ mutant_bark_mite_queen = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 320,
 	damageMax = 350,
-	range = 0,
 	baseXp = 3824,
 	baseHAM = 9400,
 	armor = 0,

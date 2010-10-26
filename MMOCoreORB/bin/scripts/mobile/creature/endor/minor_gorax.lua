@@ -7,7 +7,6 @@ minor_gorax = Creature:new {
 	chanceHit = 4.000000,
 	damageMin = 745,
 	damageMax = 1200,
-	range = 0,
 	baseXp = 12424,
 	baseHAM = 99000,
 	armor = 0,

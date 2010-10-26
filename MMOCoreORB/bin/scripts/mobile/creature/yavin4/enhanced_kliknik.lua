@@ -7,7 +7,6 @@ enhanced_kliknik = Creature:new {
 	chanceHit = 2.200000,
 	damageMin = 675,
 	damageMax = 1060,
-	range = 25,
 	baseXp = 10360,
 	baseHAM = 38000,
 	armor = 0,

@@ -7,7 +7,6 @@ rabid_mutant_kahmurra = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 345,
 	damageMax = 400,
-	range = 0,
 	baseXp = 4097,
 	baseHAM = 10300,
 	armor = 0,

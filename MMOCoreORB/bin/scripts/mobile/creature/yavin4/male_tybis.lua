@@ -7,7 +7,6 @@ male_tybis = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 220,
 	damageMax = 230,
-	range = 0,
 	baseXp = 2219,
 	baseHAM = 7000,
 	armor = 0,

@@ -7,7 +7,6 @@ dalyrake_matriarch = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 25,
 	baseXp = 1257,
 	baseHAM = 4550,
 	armor = 0,

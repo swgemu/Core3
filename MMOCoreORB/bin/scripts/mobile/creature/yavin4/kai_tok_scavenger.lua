@@ -7,7 +7,6 @@ kai_tok_scavenger = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 260,
 	damageMax = 270,
-	range = 0,
 	baseXp = 3097,
 	baseHAM = 9600,
 	armor = 0,

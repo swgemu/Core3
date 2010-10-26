@@ -7,7 +7,6 @@ quenker_relic_reaper = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 380,
 	damageMax = 470,
-	range = 0,
 	baseXp = 4370,
 	baseHAM = 10300,
 	armor = 0,

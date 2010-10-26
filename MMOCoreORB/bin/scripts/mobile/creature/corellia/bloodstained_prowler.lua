@@ -7,7 +7,6 @@ bloodstained_prowler = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9300,
 	armor = 0,

@@ -7,7 +7,6 @@ dwarf_bantha = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 90,
 	damageMax = 110,
-	range = 0,
 	baseXp = 356,
 	baseHAM = 1300,
 	armor = 0,

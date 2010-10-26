@@ -7,7 +7,6 @@ savage_guf_drolg = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 831,
 	baseHAM = 2700,
 	armor = 0,

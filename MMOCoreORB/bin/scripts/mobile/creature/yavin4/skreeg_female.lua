@@ -7,7 +7,6 @@ skreeg_female = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 960,
 	baseHAM = 3200,
 	armor = 0,

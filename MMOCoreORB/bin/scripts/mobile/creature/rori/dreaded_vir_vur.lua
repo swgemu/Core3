@@ -7,7 +7,6 @@ dreaded_vir_vur = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 370,
 	damageMax = 450,
-	range = 0,
 	baseXp = 3824,
 	baseHAM = 9300,
 	armor = 0,

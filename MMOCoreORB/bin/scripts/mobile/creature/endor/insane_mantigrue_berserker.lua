@@ -7,7 +7,6 @@ insane_mantigrue_berserker = Creature:new {
 	chanceHit = 0.430000,
 	damageMin = 400,
 	damageMax = 510,
-	range = 0,
 	baseXp = 4916,
 	baseHAM = 10200,
 	armor = 0,

@@ -7,7 +7,6 @@ blurrg_hunter = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 180,
 	damageMax = 190,
-	range = 25,
 	baseXp = 1609,
 	baseHAM = 3900,
 	armor = 0,

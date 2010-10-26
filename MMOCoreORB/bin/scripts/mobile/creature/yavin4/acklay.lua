@@ -7,7 +7,6 @@ acklay = Creature:new {
 	chanceHit = 9.250000,
 	damageMin = 935,
 	damageMax = 1580,
-	range = 0,
 	baseXp = 14884,
 	baseHAM = 107000,
 	armor = 0,

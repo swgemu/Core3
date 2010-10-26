@@ -7,7 +7,6 @@ kwi = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 90,
 	damageMax = 110,
-	range = 0,
 	baseXp = 356,
 	baseHAM = 300,
 	armor = 0,

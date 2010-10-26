@@ -7,7 +7,6 @@ plodding_falumpaset = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 25,
 	baseXp = 292,
 	baseHAM = 1300,
 	armor = 0,

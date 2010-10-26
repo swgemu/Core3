@@ -7,7 +7,6 @@ female_malkloc_plainswalker = Creature:new {
 	chanceHit = 0.650000,
 	damageMin = 570,
 	damageMax = 850,
-	range = 0,
 	baseXp = 7761,
 	baseHAM = 17500,
 	armor = 0,

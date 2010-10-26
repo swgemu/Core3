@@ -7,7 +7,6 @@ giant_spined_snake = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 240,
 	damageMax = 250,
-	range = 0,
 	baseXp = 2219,
 	baseHAM = 4550,
 	armor = 0,

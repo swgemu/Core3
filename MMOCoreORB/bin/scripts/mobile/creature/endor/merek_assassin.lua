@@ -7,7 +7,6 @@ merek_assassin = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 325,
 	damageMax = 260,
-	range = 0,
 	baseXp = 3188,
 	baseHAM = 9100,
 	armor = 0,

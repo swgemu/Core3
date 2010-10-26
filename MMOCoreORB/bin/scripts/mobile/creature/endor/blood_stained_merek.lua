@@ -7,7 +7,6 @@ blood_stained_merek = Creature:new {
 	chanceHit = 0.400000,
 	damageMin = 320,
 	damageMax = 350,
-	range = 25,
 	baseXp = 3279,
 	baseHAM = 9550,
 	armor = 0,

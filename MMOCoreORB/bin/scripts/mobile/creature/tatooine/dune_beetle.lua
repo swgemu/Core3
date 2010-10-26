@@ -7,7 +7,6 @@ dune_beetle = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 120,
 	damageMax = 130,
-	range = 25,
 	baseXp = 714,
 	baseHAM = 1300,
 	armor = 0,

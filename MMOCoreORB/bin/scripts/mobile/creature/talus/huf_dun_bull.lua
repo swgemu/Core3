@@ -7,7 +7,6 @@ huf_dun_bull = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 230,
 	damageMax = 240,
-	range = 0,
 	baseXp = 2006,
 	baseHAM = 7550,
 	armor = 0,

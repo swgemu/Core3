@@ -7,7 +7,6 @@ rotting_decay_mite_guard = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 140,
 	damageMax = 150,
-	range = 0,
 	baseXp = 714,
 	baseHAM = 1300,
 	armor = 0,

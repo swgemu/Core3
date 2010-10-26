@@ -7,7 +7,6 @@ gronda_juggernaut = Creature:new {
 	chanceHit = 0.650000,
 	damageMin = 430,
 	damageMax = 570,
-	range = 0,
 	baseXp = 6747,
 	baseHAM = 13500,
 	armor = 0,

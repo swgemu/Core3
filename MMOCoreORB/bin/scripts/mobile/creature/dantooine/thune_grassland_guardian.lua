@@ -7,7 +7,6 @@ thune_grassland_guardian = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 345,
 	damageMax = 400,
-	range = 0,
 	baseXp = 3915,
 	baseHAM = 10300,
 	armor = 0,

@@ -7,7 +7,6 @@ huurton_reaper = Creature:new {
 	chanceHit = 0.900000,
 	damageMin = 620,
 	damageMax = 950,
-	range = 0,
 	baseXp = 8038,
 	baseHAM = 13500,
 	armor = 0,

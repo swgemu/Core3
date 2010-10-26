@@ -7,7 +7,6 @@ singing_mountain_clan_rancor = Creature:new {
 	chanceHit = 0.500000,
 	damageMin = 370,
 	damageMax = 450,
-	range = 0,
 	baseXp = 5281,
 	baseHAM = 12000,
 	armor = 0,

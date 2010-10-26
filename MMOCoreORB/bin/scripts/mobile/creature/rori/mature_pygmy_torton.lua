@@ -7,7 +7,6 @@ mature_pygmy_torton = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 250,
 	damageMax = 260,
-	range = 0,
 	baseXp = 2730,
 	baseHAM = 5550,
 	armor = 0,

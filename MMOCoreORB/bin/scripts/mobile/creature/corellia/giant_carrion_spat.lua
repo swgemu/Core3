@@ -7,7 +7,6 @@ giant_carrion_spat = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 0,
 	baseXp = 1426,
 	baseHAM = 3900,
 	armor = 0,

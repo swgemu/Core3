@@ -7,7 +7,6 @@ choku_pup = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 70,
 	damageMax = 75,
-	range = 0,
 	baseXp = 235,
 	baseHAM = 450,
 	armor = 0,

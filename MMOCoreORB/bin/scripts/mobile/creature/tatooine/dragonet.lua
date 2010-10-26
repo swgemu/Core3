@@ -7,7 +7,6 @@ dragonet = Creature:new {
 	chanceHit = 0.370000,
 	damageMin = 260,
 	damageMax = 270,
-	range = 25,
 	baseXp = 2914,
 	baseHAM = 9100,
 	armor = 0,

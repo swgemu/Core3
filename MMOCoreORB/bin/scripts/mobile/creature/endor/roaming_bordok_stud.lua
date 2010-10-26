@@ -7,7 +7,6 @@ roaming_bordok_stud = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 330,
 	damageMax = 370,
-	range = 0,
 	baseXp = 3370,
 	baseHAM = 10000,
 	armor = 0,

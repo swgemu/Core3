@@ -7,7 +7,6 @@ blushing_jax = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 220,
 	damageMax = 230,
-	range = 0,
 	baseXp = 2730,
 	baseHAM = 9200,
 	armor = 0,
