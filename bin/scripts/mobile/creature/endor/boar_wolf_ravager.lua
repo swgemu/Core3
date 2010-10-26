@@ -7,7 +7,6 @@ boar_wolf_ravager = Creature:new {
 	chanceHit = 0.400000,
 	damageMin = 305,
 	damageMax = 320,
-	range = 0,
 	baseXp = 3460,
 	baseHAM = 9550,
 	armor = 0,

@@ -7,7 +7,6 @@ tamed_gurrcat = Creature:new {
 	chanceHit = 0.260000,
 	damageMin = 55,
 	damageMax = 65,
-	range = 0,
 	baseXp = 187,
 	baseHAM = 300,
 	armor = 0,

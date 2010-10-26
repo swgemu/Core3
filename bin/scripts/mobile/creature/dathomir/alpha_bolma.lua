@@ -7,7 +7,6 @@ alpha_bolma = Creature:new {
 	chanceHit = 0.400000,
 	damageMin = 315,
 	damageMax = 340,
-	range = 0,
 	baseXp = 3279,
 	baseHAM = 9600,
 	armor = 0,

@@ -7,7 +7,6 @@ swirl_prong_impaler = Creature:new {
 	chanceHit = 0.370000,
 	damageMin = 270,
 	damageMax = 280,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9100,
 	armor = 0,

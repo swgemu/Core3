@@ -7,7 +7,6 @@ eopie_herdmaster = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 55,
 	damageMax = 65,
-	range = 0,
 	baseXp = 292,
 	baseHAM = 900,
 	armor = 0,

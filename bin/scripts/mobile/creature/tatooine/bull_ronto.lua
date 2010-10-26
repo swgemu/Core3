@@ -7,7 +7,6 @@ bull_ronto = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 0,
 	baseXp = 2219,
 	baseHAM = 6000,
 	armor = 0,

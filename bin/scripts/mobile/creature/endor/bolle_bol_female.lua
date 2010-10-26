@@ -7,7 +7,6 @@ bolle_bol_female = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 0,
 	baseXp = 3188,
 	baseHAM = 9800,
 	armor = 0,

@@ -7,7 +7,6 @@ kliknik_shredder_guardian = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 310,
 	damageMax = 330,
-	range = 25,
 	baseXp = 3097,
 	baseHAM = 9000,
 	armor = 0,

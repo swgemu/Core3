@@ -7,7 +7,6 @@ large_rock_beetle = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 2006,
 	baseHAM = 5000,
 	armor = 0,

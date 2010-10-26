@@ -7,7 +7,6 @@ reptilian_life_stealer = Creature:new {
 	chanceHit = 3.250000,
 	damageMin = 945,
 	damageMax = 1600,
-	range = 0,
 	baseXp = 11859,
 	baseHAM = 38000,
 	armor = 0,

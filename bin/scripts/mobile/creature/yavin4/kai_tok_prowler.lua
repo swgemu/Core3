@@ -7,7 +7,6 @@ kai_tok_prowler = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 240,
 	damageMax = 250,
-	range = 25,
 	baseXp = 2637,
 	baseHAM = 9000,
 	armor = 0,

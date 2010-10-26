@@ -7,7 +7,6 @@ mottled_wrix = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 1426,
 	baseHAM = 4550,
 	armor = 0,

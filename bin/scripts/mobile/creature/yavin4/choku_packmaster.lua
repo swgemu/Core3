@@ -7,7 +7,6 @@ choku_packmaster = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 0,
 	baseXp = 1803,
 	baseHAM = 6550,
 	armor = 0,

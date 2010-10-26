@@ -7,7 +7,6 @@ mutant_rancor = Creature:new {
 	chanceHit = 0.700000,
 	damageMin = 495,
 	damageMax = 700,
-	range = 0,
 	baseXp = 7207,
 	baseHAM = 13500,
 	armor = 0,

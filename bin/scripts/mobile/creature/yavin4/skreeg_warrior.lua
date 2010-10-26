@@ -7,7 +7,6 @@ skreeg_warrior = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 250,
 	damageMax = 260,
-	range = 0,
 	baseXp = 2822,
 	baseHAM = 8550,
 	armor = 0,

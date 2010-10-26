@@ -7,7 +7,6 @@ poisonous_spined_puc = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 180,
 	damageMax = 190,
-	range = 0,
 	baseXp = 1426,
 	baseHAM = 5000,
 	armor = 0,

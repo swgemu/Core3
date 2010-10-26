@@ -7,7 +7,6 @@ kliknik_dark_defender = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 360,
 	damageMax = 430,
-	range = 25,
 	baseXp = 4097,
 	baseHAM = 10000,
 	armor = 0,

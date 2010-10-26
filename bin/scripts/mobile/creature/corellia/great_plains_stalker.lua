@@ -7,7 +7,6 @@ great_plains_stalker = Creature:new {
 	chanceHit = 0.500000,
 	damageMin = 395,
 	damageMax = 500,
-	range = 0,
 	baseXp = 4916,
 	baseHAM = 11000,
 	armor = 0,

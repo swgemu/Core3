@@ -7,7 +7,6 @@ bordok_ancient = Creature:new {
 	chanceHit = 0.450000,
 	damageMin = 375,
 	damageMax = 460,
-	range = 0,
 	baseXp = 4370,
 	baseHAM = 11000,
 	armor = 0,

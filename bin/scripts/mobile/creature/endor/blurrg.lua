@@ -7,7 +7,6 @@ blurrg = Creature:new {
 	chanceHit = 0.500000,
 	damageMin = 395,
 	damageMax = 500,
-	range = 25,
 	baseXp = 4825,
 	baseHAM = 11000,
 	armor = 0,

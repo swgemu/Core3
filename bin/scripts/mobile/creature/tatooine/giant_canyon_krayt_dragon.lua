@@ -7,7 +7,6 @@ giant_canyon_krayt_dragon = Creature:new {
 	chanceHit = 30.000000,
 	damageMin = 1645,
 	damageMax = 3000,
-	range = 0,
 	baseXp = 28549,
 	baseHAM = 428000,
 	armor = 0,

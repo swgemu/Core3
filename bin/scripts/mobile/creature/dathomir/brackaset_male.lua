@@ -7,7 +7,6 @@ brackaset_male = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 280,
 	damageMax = 290,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9400,
 	armor = 0,

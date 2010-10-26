@@ -7,7 +7,6 @@ snorbal = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 260,
 	damageMax = 270,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9600,
 	armor = 0,

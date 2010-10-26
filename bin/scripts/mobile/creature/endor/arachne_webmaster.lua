@@ -7,7 +7,6 @@ arachne_webmaster = Creature:new {
 	chanceHit = 0.500000,
 	damageMin = 405,
 	damageMax = 520,
-	range = 0,
 	baseXp = 4916,
 	baseHAM = 11000,
 	armor = 0,

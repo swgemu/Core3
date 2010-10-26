@@ -7,7 +7,6 @@ huf_dun = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 0,
 	baseXp = 1609,
 	baseHAM = 4550,
 	armor = 0,

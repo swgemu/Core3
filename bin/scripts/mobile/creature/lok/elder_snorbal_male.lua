@@ -7,7 +7,6 @@ elder_snorbal_male = Creature:new {
 	chanceHit = 0.420000,
 	damageMin = 330,
 	damageMax = 370,
-	range = 0,
 	baseXp = 3642,
 	baseHAM = 10000,
 	armor = 0,

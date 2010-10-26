@@ -7,7 +7,6 @@ mountain_worrt = Creature:new {
 	chanceHit = 0.340000,
 	damageMin = 200,
 	damageMax = 210,
-	range = 25,
 	baseXp = 1803,
 	baseHAM = 5000,
 	armor = 0,

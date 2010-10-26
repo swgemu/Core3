@@ -7,7 +7,6 @@ kai_tok_slayer = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 355,
 	damageMax = 420,
-	range = 25,
 	baseXp = 3551,
 	baseHAM = 9100,
 	armor = 0,

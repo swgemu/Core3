@@ -7,7 +7,6 @@ grassland_voritor_tracker = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 375,
 	damageMax = 460,
-	range = 0,
 	baseXp = 4370,
 	baseHAM = 9700,
 	armor = 0,

@@ -7,7 +7,6 @@ rogue_bageraset = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 25,
 	baseXp = 609,
 	baseHAM = 1300,
 	armor = 0,

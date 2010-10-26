@@ -7,7 +7,6 @@ kliknik_dark_warrior = Creature:new {
 	chanceHit = 0.430000,
 	damageMin = 340,
 	damageMax = 390,
-	range = 25,
 	baseXp = 4006,
 	baseHAM = 10200,
 	armor = 0,

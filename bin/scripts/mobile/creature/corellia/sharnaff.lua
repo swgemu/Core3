@@ -7,7 +7,6 @@ sharnaff = Creature:new {
 	chanceHit = 0.380000,
 	damageMin = 300,
 	damageMax = 310,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9600,
 	armor = 0,

@@ -7,7 +7,6 @@ gaping_spider_recluse_queen = Creature:new {
 	chanceHit = 0.650000,
 	damageMin = 510,
 	damageMax = 730,
-	range = 25,
 	baseXp = 6563,
 	baseHAM = 12500,
 	armor = 0,

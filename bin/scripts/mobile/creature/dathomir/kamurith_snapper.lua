@@ -7,7 +7,6 @@ kamurith_snapper = Creature:new {
 	chanceHit = 0.460000,
 	damageMin = 405,
 	damageMax = 520,
-	range = 0,
 	baseXp = 4370,
 	baseHAM = 9900,
 	armor = 0,

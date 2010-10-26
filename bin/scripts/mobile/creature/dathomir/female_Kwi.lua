@@ -7,7 +7,6 @@ female_Kwi = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 120,
 	damageMax = 130,
-	range = 25,
 	baseXp = 430,
 	baseHAM = 450,
 	armor = 0,

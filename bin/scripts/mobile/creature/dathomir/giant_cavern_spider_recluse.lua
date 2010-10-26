@@ -7,7 +7,6 @@ giant_cavern_spider_recluse = Creature:new {
 	chanceHit = 3.100000,
 	damageMin = 775,
 	damageMax = 1260,
-	range = 0,
 	baseXp = 11015,
 	baseHAM = 33500,
 	armor = 0,

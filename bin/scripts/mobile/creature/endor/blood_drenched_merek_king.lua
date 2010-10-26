@@ -7,7 +7,6 @@ blood_drenched_merek_king = Creature:new {
 	chanceHit = 0.550000,
 	damageMin = 420,
 	damageMax = 550,
-	range = 0,
 	baseXp = 5464,
 	baseHAM = 12000,
 	armor = 0,

@@ -7,7 +7,6 @@ dappled_gualama = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 0,
 	baseXp = 714,
 	baseHAM = 1700,
 	armor = 0,

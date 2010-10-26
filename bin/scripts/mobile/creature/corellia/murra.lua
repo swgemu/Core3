@@ -7,7 +7,6 @@ murra = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 292,
 	baseHAM = 900,
 	armor = 0,

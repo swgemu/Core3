@@ -7,7 +7,6 @@ ravenous_rasp = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 360,
 	damageMax = 430,
-	range = 0,
 	baseXp = 3188,
 	baseHAM = 2700,
 	armor = 0,

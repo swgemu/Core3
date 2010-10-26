@@ -7,7 +7,6 @@ juvenile_canyon_krayt_dragon = Creature:new {
 	chanceHit = 4.000000,
 	damageMin = 745,
 	damageMax = 1200,
-	range = 0,
 	baseXp = 11577,
 	baseHAM = 49000,
 	armor = 0,

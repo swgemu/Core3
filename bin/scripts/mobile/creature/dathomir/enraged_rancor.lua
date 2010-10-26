@@ -7,7 +7,6 @@ enraged_rancor = Creature:new {
 	chanceHit = 0.750000,
 	damageMin = 570,
 	damageMax = 850,
-	range = 0,
 	baseXp = 7668,
 	baseHAM = 13500,
 	armor = 0,

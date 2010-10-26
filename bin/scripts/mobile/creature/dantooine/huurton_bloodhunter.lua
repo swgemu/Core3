@@ -7,7 +7,6 @@ huurton_bloodhunter = Creature:new {
 	chanceHit = 0.370000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 0,
 	baseXp = 2914,
 	baseHAM = 9000,
 	armor = 0,

@@ -7,7 +7,6 @@ nightspider_poison_spitter = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 0,
 	baseXp = 430,
 	baseHAM = 900,
 	armor = 0,

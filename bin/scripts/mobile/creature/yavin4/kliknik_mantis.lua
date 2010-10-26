@@ -7,7 +7,6 @@ kliknik_mantis = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 170,
 	damageMax = 180,
-	range = 25,
 	baseXp = 2006,
 	baseHAM = 6550,
 	armor = 0,

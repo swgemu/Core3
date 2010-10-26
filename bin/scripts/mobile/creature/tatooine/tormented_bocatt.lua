@@ -7,7 +7,6 @@ tormented_bocatt = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 250,
 	damageMax = 260,
-	range = 25,
 	baseXp = 2637,
 	baseHAM = 9000,
 	armor = 0,

@@ -7,7 +7,6 @@ spined_snake_recluse = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 25,
 	baseXp = 609,
 	baseHAM = 1100,
 	armor = 0,

@@ -7,7 +7,6 @@ stoneskin_hanadak = Creature:new {
 	chanceHit = 4.750000,
 	damageMin = 720,
 	damageMax = 1150,
-	range = 0,
 	baseXp = 13178,
 	baseHAM = 97500,
 	armor = 0,

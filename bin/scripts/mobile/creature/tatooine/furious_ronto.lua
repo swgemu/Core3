@@ -7,7 +7,6 @@ furious_ronto = Creature:new {
 	chanceHit = 0.370000,
 	damageMin = 250,
 	damageMax = 260,
-	range = 0,
 	baseXp = 2730,
 	baseHAM = 9100,
 	armor = 0,

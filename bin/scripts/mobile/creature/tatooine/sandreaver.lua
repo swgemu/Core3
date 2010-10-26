@@ -7,7 +7,6 @@ sandreaver = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 0,
 	baseXp = 2637,
 	baseHAM = 9100,
 	armor = 0,

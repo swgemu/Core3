@@ -7,7 +7,6 @@ screaming_kai_tok = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 25,
 	baseXp = 1803,
 	baseHAM = 3200,
 	armor = 0,

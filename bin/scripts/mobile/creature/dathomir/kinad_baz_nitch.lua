@@ -7,7 +7,6 @@ kinad_baz_nitch = Creature:new {
 	chanceHit = 0.480000,
 	damageMin = 380,
 	damageMax = 470,
-	range = 0,
 	baseXp = 4552,
 	baseHAM = 10600,
 	armor = 0,

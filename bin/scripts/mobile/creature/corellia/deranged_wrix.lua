@@ -1,5 +1,4 @@
 deranged_wrix = Creature:new {
-	objectName = "@mob/creature_names:deranged_wrix",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
@@ -7,7 +6,6 @@ deranged_wrix = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 180,
 	damageMax = 190,
-	range = 0,
 	baseXp = 1102,
 	baseHAM = 2700,
 	armor = 0,
@@ -34,4 +32,3 @@ deranged_wrix = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(deranged_wrix, "deranged_wrix")

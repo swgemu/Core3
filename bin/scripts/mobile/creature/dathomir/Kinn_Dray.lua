@@ -7,7 +7,6 @@ Kinn_Dray = Creature:new {
 	chanceHit = 4.750000,
 	damageMin = 830,
 	damageMax = 1370,
-	range = 25,
 	baseXp = 11953,
 	baseHAM = 45500,
 	armor = 0,

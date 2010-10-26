@@ -7,7 +7,6 @@ ravaging_gackle_bat = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 180,
 	damageMax = 190,
-	range = 0,
 	baseXp = 1257,
 	baseHAM = 3900,
 	armor = 0,

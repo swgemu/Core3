@@ -7,7 +7,6 @@ monstrous_brute = Creature:new {
 	chanceHit = 0.820000,
 	damageMin = 595,
 	damageMax = 900,
-	range = 0,
 	baseXp = 8315,
 	baseHAM = 14500,
 	armor = 0,

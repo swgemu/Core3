@@ -7,7 +7,6 @@ carrion_spat_corpsereaver = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 0,
 	baseXp = 714,
 	baseHAM = 1700,
 	armor = 0,

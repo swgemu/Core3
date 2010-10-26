@@ -7,7 +7,6 @@ giant_veermok = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 190,
 	damageMax = 200,
-	range = 0,
 	baseXp = 1803,
 	baseHAM = 6550,
 	armor = 0,

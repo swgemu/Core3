@@ -7,7 +7,6 @@ shear_mite_hunter = Creature:new {
 	chanceHit = 0.380000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9100,
 	armor = 0,

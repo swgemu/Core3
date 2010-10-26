@@ -7,7 +7,6 @@ piket_plains_walker = Creature:new {
 	chanceHit = 0.400000,
 	damageMin = 290,
 	damageMax = 300,
-	range = 0,
 	baseXp = 3188,
 	baseHAM = 9700,
 	armor = 0,

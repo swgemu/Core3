@@ -7,7 +7,6 @@ mamien_youth = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 235,
 	baseHAM = 750,
 	armor = 0,

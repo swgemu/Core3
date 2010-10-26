@@ -7,7 +7,6 @@ huurton_huntress = Creature:new {
 	chanceHit = 0.370000,
 	damageMin = 270,
 	damageMax = 280,
-	range = 0,
 	baseXp = 2914,
 	baseHAM = 9100,
 	armor = 0,

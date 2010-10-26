@@ -7,7 +7,6 @@ nocuous_kamurith = Creature:new {
 	chanceHit = 0.480000,
 	damageMin = 395,
 	damageMax = 500,
-	range = 0,
 	baseXp = 4552,
 	baseHAM = 10300,
 	armor = 0,

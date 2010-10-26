@@ -7,7 +7,6 @@ Nightsister_enraged_bull_rancor = Creature:new {
 	chanceHit = 0.850000,
 	damageMin = 570,
 	damageMax = 850,
-	range = 0,
 	baseXp = 8500,
 	baseHAM = 14500,
 	armor = 0,

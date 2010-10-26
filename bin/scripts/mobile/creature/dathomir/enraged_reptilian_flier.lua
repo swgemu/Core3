@@ -7,7 +7,6 @@ enraged_reptilian_flier = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 250,
 	damageMax = 260,
-	range = 0,
 	baseXp = 2730,
 	baseHAM = 6550,
 	armor = 0,

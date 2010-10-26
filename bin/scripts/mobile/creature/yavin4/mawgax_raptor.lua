@@ -7,7 +7,6 @@ mawgax_raptor = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 240,
 	damageMax = 250,
-	range = 0,
 	baseXp = 3005,
 	baseHAM = 9200,
 	armor = 0,

@@ -7,7 +7,6 @@ domestic_bageraset = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 55,
 	damageMax = 65,
-	range = 0,
 	baseXp = 187,
 	baseHAM = 750,
 	armor = 0,

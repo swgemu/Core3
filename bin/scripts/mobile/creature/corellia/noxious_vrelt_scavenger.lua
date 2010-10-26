@@ -7,7 +7,6 @@ noxious_vrelt_scavenger = Creature:new {
 	chanceHit = 0.280000,
 	damageMin = 90,
 	damageMax = 110,
-	range = 25,
 	baseXp = 356,
 	baseHAM = 900,
 	armor = 0,

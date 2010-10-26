@@ -7,7 +7,6 @@ enhanced_gaping_spider = Creature:new {
 	chanceHit = 2.500000,
 	damageMin = 715,
 	damageMax = 1140,
-	range = 25,
 	baseXp = 10267,
 	baseHAM = 35500,
 	armor = 0,

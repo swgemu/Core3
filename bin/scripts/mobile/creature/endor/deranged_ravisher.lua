@@ -1,5 +1,4 @@
 deranged_ravisher = Creature:new {
-	objectName = "@mob/creature_names:squill_deranged_ravisher",
 	socialGroup = "Endor Squill",
 	pvpFaction = "",
 	faction = "",
@@ -7,7 +6,6 @@ deranged_ravisher = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 330,
 	damageMax = 370,
-	range = 0,
 	baseXp = 3460,
 	baseHAM = 9000,
 	armor = 0,
@@ -34,4 +32,3 @@ deranged_ravisher = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(deranged_ravisher, "deranged_ravisher")

@@ -7,7 +7,6 @@ large_cave_beetle = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 180,
 	damageMax = 190,
-	range = 0,
 	baseXp = 2443,
 	baseHAM = 6550,
 	armor = 0,

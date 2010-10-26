@@ -7,7 +7,6 @@ dire_cat = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 0,
 	baseXp = 831,
 	baseHAM = 1100,
 	armor = 0,

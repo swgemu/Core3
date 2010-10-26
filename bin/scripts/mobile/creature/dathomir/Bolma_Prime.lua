@@ -7,7 +7,6 @@ Bolma_Prime = Creature:new {
 	chanceHit = 0.410000,
 	damageMin = 325,
 	damageMax = 360,
-	range = 0,
 	baseXp = 3642,
 	baseHAM = 9900,
 	armor = 0,

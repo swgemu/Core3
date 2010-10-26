@@ -7,7 +7,6 @@ gaping_spider_queen = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 345,
 	damageMax = 400,
-	range = 25,
 	baseXp = 4643,
 	baseHAM = 11000,
 	armor = 0,

@@ -7,7 +7,6 @@ repugnant_dung_mite_crawler = Creature:new {
 	chanceHit = 0.260000,
 	damageMin = 80,
 	damageMax = 90,
-	range = 0,
 	baseXp = 187,
 	baseHAM = 150,
 	armor = 0,

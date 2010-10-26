@@ -7,7 +7,6 @@ puny_tanc_mite = Creature:new {
 	chanceHit = 0.210000,
 	damageMin = 35,
 	damageMax = 40,
-	range = 0,
 	baseXp = 45,
 	baseHAM = 75,
 	armor = 0,

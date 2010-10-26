@@ -7,7 +7,6 @@ tanc_mite_warrior = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 160,
 	damageMax = 170,
-	range = 25,
 	baseXp = 1102,
 	baseHAM = 3200,
 	armor = 0,

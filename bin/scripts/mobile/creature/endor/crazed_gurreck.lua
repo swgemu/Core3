@@ -7,7 +7,6 @@ crazed_gurreck = Creature:new {
 	chanceHit = 0.360000,
 	damageMin = 270,
 	damageMax = 280,
-	range = 0,
 	baseXp = 2543,
 	baseHAM = 5000,
 	armor = 0,

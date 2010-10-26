@@ -7,7 +7,6 @@ male_squall = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 120,
 	damageMax = 130,
-	range = 0,
 	baseXp = 356,
 	baseHAM = 1100,
 	armor = 0,

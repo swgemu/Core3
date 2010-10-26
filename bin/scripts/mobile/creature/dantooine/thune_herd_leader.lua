@@ -7,7 +7,6 @@ thune_herd_leader = Creature:new {
 	chanceHit = 0.480000,
 	damageMin = 375,
 	damageMax = 460,
-	range = 0,
 	baseXp = 4734,
 	baseHAM = 10900,
 	armor = 0,

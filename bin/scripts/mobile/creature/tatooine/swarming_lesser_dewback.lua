@@ -7,7 +7,6 @@ swarming_lesser_dewback = Creature:new {
 	chanceHit = 0.310000,
 	damageMin = 140,
 	damageMax = 150,
-	range = 0,
 	baseXp = 831,
 	baseHAM = 3900,
 	armor = 0,

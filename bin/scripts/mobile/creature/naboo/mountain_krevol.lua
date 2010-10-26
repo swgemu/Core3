@@ -7,7 +7,6 @@ mountain_krevol = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 150,
 	damageMax = 160,
-	range = 0,
 	baseXp = 831,
 	baseHAM = 2200,
 	armor = 0,

@@ -7,7 +7,6 @@ bol_be = Creature:new {
 	chanceHit = 0.390000,
 	damageMin = 260,
 	damageMax = 270,
-	range = 0,
 	baseXp = 2914,
 	baseHAM = 9300,
 	armor = 0,

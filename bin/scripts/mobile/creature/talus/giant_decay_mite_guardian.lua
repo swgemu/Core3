@@ -7,7 +7,6 @@ giant_decay_mite_guardian = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 220,
 	damageMax = 230,
-	range = 0,
 	baseXp = 2443,
 	baseHAM = 7000,
 	armor = 0,

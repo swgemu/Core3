@@ -7,7 +7,6 @@ graul_mangler = Creature:new {
 	chanceHit = 0.430000,
 	damageMin = 340,
 	damageMax = 390,
-	range = 0,
 	baseXp = 3915,
 	baseHAM = 9800,
 	armor = 0,

@@ -7,7 +7,6 @@ remmer_carrion_keeper = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 25,
 	baseXp = 2443,
 	baseHAM = 6550,
 	armor = 0,

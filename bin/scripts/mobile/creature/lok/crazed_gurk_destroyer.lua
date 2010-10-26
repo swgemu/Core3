@@ -7,7 +7,6 @@ crazed_gurk_destroyer = Creature:new {
 	chanceHit = 0.440000,
 	damageMin = 385,
 	damageMax = 480,
-	range = 0,
 	baseXp = 4279,
 	baseHAM = 10700,
 	armor = 0,

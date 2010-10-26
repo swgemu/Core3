@@ -7,7 +7,6 @@ sickly_decay_mite_queen = Creature:new {
 	chanceHit = 0.330000,
 	damageMin = 220,
 	damageMax = 230,
-	range = 25,
 	baseXp = 1609,
 	baseHAM = 3900,
 	armor = 0,

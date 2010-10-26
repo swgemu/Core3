@@ -7,7 +7,6 @@ potbellied_vrobal = Creature:new {
 	chanceHit = 0.290000,
 	damageMin = 130,
 	damageMax = 140,
-	range = 0,
 	baseXp = 430,
 	baseHAM = 1300,
 	armor = 0,

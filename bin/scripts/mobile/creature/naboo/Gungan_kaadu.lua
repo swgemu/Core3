@@ -7,7 +7,6 @@ Gungan_kaadu = Creature:new {
 	chanceHit = 0.300000,
 	damageMin = 140,
 	damageMax = 150,
-	range = 0,
 	baseXp = 609,
 	baseHAM = 1700,
 	armor = 0,

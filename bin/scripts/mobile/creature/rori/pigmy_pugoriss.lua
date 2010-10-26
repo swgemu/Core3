@@ -7,7 +7,6 @@ pigmy_pugoriss = Creature:new {
 	chanceHit = 0.270000,
 	damageMin = 90,
 	damageMax = 110,
-	range = 0,
 	baseXp = 187,
 	baseHAM = 200,
 	armor = 0,

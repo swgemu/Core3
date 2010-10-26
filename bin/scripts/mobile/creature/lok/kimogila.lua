@@ -7,7 +7,6 @@ kimogila = Creature:new {
 	chanceHit = 0.900000,
 	damageMin = 630,
 	damageMax = 970,
-	range = 0,
 	baseXp = 9057,
 	baseHAM = 24500,
 	armor = 0,

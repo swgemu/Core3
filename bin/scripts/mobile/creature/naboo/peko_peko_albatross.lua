@@ -7,7 +7,6 @@ peko_peko_albatross = Creature:new {
 	chanceHit = 7.750000,
 	damageMin = 945,
 	damageMax = 1600,
-	range = 0,
 	baseXp = 14694,
 	baseHAM = 82500,
 	armor = 0,

@@ -7,7 +7,6 @@ spitting_rawl = Creature:new {
 	chanceHit = 0.350000,
 	damageMin = 210,
 	damageMax = 220,
-	range = 25,
 	baseXp = 2543,
 	baseHAM = 6550,
 	armor = 0,

@@ -7,7 +7,6 @@ purbole_stalker = Creature:new {
 	chanceHit = 0.320000,
 	damageMin = 190,
 	damageMax = 200,
-	range = 0,
 	baseXp = 1609,
 	baseHAM = 4550,
 	armor = 0,
