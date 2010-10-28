@@ -8,7 +8,7 @@
 #include "SuiBox.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 #include "server/zone/packets/ui/SuiForceClosePage.h"
-
+#include "server/zone/objects/scene/SceneObject.h"
 
 void SuiBoxImplementation::generateHeader(SuiCreatePageMessage* message) {
 	//[UI DECLARATION HEADER]
@@ -111,6 +111,13 @@ void SuiBoxImplementation::addHeader(const String& variable, const String& type)
 	hdrOptCount+=2;
 }
 
+void SuiBoxImplementation::generateFooter(SuiCreatePageMessage* message, int type) {
+	if(usingObject != NULL)
+		message->insertFooter(usingObject->getObjectID(), forceCloseDistance, type);
+	else
+		message->insertFooter(0, 0, type);
+}
+
 void SuiBoxImplementation::setCancelButton(bool value, const String& cancelText) {
 	if(cancelText.length() > 0)
 		cancelButtonText = cancelText;
@@ -130,5 +137,13 @@ void SuiBoxImplementation::setOkButton(bool value, const String& okText) {
 		okButtonText = okText;
 
 	okButton = value;
+}
+
+void SuiBoxImplementation::setForceCloseDistance(float dist) {
+	forceCloseDistance = dist;
+}
+
+void SuiBoxImplementation::setForceCloseDisabled() {
+	forceCloseDistance = 0;
 }
 

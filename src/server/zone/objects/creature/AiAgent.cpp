@@ -910,6 +910,19 @@ CreatureObject* AiAgent::getLootOwner() {
 		return _implementation->getLootOwner();
 }
 
+bool AiAgent::hasLoot() {
+	AiAgentImplementation* _implementation = (AiAgentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 63);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasLoot();
+}
+
 DistributedObjectServant* AiAgent::_getImplementation() {
 	return _impl;}
 
@@ -1288,6 +1301,11 @@ CreatureObject* AiAgentImplementation::getLootOwner() {
 	return lootOwner;
 }
 
+bool AiAgentImplementation::hasLoot() {
+	// server/zone/objects/creature/AiAgent.idl(517):  		return false;
+	return false;
+}
+
 /*
  *	AiAgentAdapter
  */
@@ -1469,6 +1487,9 @@ Packet* AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 62:
 		resp->insertLong(getLootOwner()->_getObjectID());
+		break;
+	case 63:
+		resp->insertBoolean(hasLoot());
 		break;
 	default:
 		return NULL;
@@ -1703,6 +1724,10 @@ void AiAgentAdapter::setLootOwner(CreatureObject* owner) {
 
 CreatureObject* AiAgentAdapter::getLootOwner() {
 	return ((AiAgentImplementation*) impl)->getLootOwner();
+}
+
+bool AiAgentAdapter::hasLoot() {
+	return ((AiAgentImplementation*) impl)->hasLoot();
 }
 
 /*
