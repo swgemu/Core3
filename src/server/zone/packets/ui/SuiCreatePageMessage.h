@@ -127,11 +127,11 @@ public:
 	 * Insert's a UI-Footer option into the packet. Should only be accessed by methods in SuiBoxImplementation
 	 * \param type Type of footer to insert.
 	 */
-	void insertFooter(int type = 0) {
+	void insertFooter(uint64 usingObjectID, float distance = 10, int type = 0) {
 
-		insertLong(0);
+		insertLong(usingObjectID);
 		if(type == 0) {
-			insertInt(0);
+			insertFloat(distance);
 			insertLong(0);
 		} else if(type == 1){
 			insertInt(0x7F7FFFFF);

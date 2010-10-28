@@ -419,6 +419,16 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 	/// pre: _this locked
 
+	if(index >= currentSchematicList.size()) {
+		StringBuffer message;
+		message << "Selected draft schematic is out of range, index = " << index << " Schematic List size = " << currentSchematicList.size();
+		player->sendSystemMessage(message.toString());
+		error(message.toString());
+		closeCraftingWindow(player, 1);
+		cancelCraftingSession(player);
+		return;
+	}
+
 	DraftSchematic* draftschematic = currentSchematicList.get(index);
 	//DraftSchematic* draftschematic = player->getPlayerObject()->getSchematic(
 	//		index);
