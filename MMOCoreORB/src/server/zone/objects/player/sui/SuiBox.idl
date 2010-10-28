@@ -83,6 +83,8 @@ class SuiBox extends ManagedObject implements Logger {
 	protected unsigned int windowType;
 
 	protected int integerValue;
+	
+	protected float forceCloseDistance;
 
 	@dereferenced
 	protected Vector<string> headerSets;
@@ -107,6 +109,8 @@ class SuiBox extends ManagedObject implements Logger {
 	
 	public SuiBox(PlayerCreature play, unsigned int windowtype, unsigned int boxtype) {
 		player = play;
+		
+		forceCloseDistance = 32;
 
 		boxType = boxtype;
 
@@ -170,9 +174,7 @@ class SuiBox extends ManagedObject implements Logger {
 	 * Footer of SuiCreatePageMessage is largely unknown. Subject to change based on research. See trac
 	 * \param type Type of footer to place into packet
 	 */
-	public void generateFooter(SuiCreatePageMessage message, int type = 0) {
-		message.insertFooter(type);
-	}
+	public native void generateFooter(SuiCreatePageMessage message, int type = 0);
 	
 	public abstract BaseMessage generateMessage() {
 		return null;
@@ -296,6 +298,10 @@ class SuiBox extends ManagedObject implements Logger {
 	public native void setOtherButton(boolean value, final string backText);
 
 	public native void setOkButton(boolean value, final string okText);
+	
+	public native void setForceCloseDistance(float dist);
+
+	public native void setForceCloseDisabled();
 
 	public unsigned long getUsingObjectID() {
 		return usingObjectID;

@@ -509,4 +509,11 @@ class AiAgent extends CreatureObject {
 	public CreatureObject getLootOwner() {
 		return lootOwner;
 	}
+	
+	/*
+	 * Place holder for when loot is implemented
+	 */
+	public boolean hasLoot() {
+		return false;
+	}
 }

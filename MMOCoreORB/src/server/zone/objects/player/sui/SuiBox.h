@@ -137,6 +137,10 @@ public:
 
 	void setOkButton(bool value, const String& okText);
 
+	void setForceCloseDistance(float dist);
+
+	void setForceCloseDisabled();
+
 	unsigned long long getUsingObjectID();
 
 	int getIntValue();
@@ -212,6 +216,8 @@ protected:
 	unsigned int windowType;
 
 	int integerValue;
+
+	float forceCloseDistance;
 
 	Vector<String> headerSets;
 
@@ -305,6 +311,10 @@ public:
 	void setOtherButton(bool value, const String& backText);
 
 	void setOkButton(bool value, const String& okText);
+
+	void setForceCloseDistance(float dist);
+
+	void setForceCloseDisabled();
 
 	unsigned long long getUsingObjectID();
 
@@ -420,6 +430,10 @@ public:
 	void setOtherButton(bool value, const String& backText);
 
 	void setOkButton(bool value, const String& okText);
+
+	void setForceCloseDistance(float dist);
+
+	void setForceCloseDisabled();
 
 	unsigned long long getUsingObjectID();
 

@@ -336,6 +336,8 @@ public:
 
 	CreatureObject* getLootOwner();
 
+	bool hasLoot();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -542,6 +544,8 @@ public:
 
 	CreatureObject* getLootOwner();
 
+	bool hasLoot();
+
 	AiAgent* _this;
 
 	operator const AiAgent*();
@@ -694,6 +698,8 @@ public:
 	void setLootOwner(CreatureObject* owner);
 
 	CreatureObject* getLootOwner();
+
+	bool hasLoot();
 
 };
 

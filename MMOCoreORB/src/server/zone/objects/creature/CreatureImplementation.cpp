@@ -171,6 +171,13 @@ void CreatureImplementation::harvest(PlayerCreature* player, byte selectedID) {
 	}
 
 	harvestList.removeElement(player);
+
+	if(!hasLoot() && harvestList.size() == 0) {
+		Reference<DespawnCreatureTask*> despawn = (DespawnCreatureTask*) getPendingTask("despawn");
+		despawn->cancel();
+
+		despawn->reschedule(1000);
+	}
 }
 
 void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* player) {
@@ -279,6 +286,7 @@ void CreatureImplementation::scheduleDespawn() {
 
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
 	despawn->schedule(300000); /// 5 minutes
+	addPendingTask("despawn", despawn);
 }
 
 void CreatureImplementation::createHarvestList() {
