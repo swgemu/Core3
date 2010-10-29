@@ -105,7 +105,7 @@ public:
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
-		ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::DIAGNOSE);
+		ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::MEDIC_DIAGNOSE);
 		StringBuffer title;
 		title << "Patient " << targetName.toCharArray();
 		sui->setPromptTitle(title.toString());

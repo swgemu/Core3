@@ -76,7 +76,7 @@ public:
 			return GENERALERROR;
 		}
 
-		Reference<SuiListBox*> consentBox = new SuiListBox(player, SuiWindowType::CONSENT);
+		Reference<SuiListBox*> consentBox = new SuiListBox(player, SuiWindowType::MEDIC_CONSENT);
 
 		consentBox->setPromptTitle("@ui:consent_title");
 		consentBox->setPromptText("All players whom you have given your consent to are listed below.\n\nHighlight a player's name and click OK to revoke consent.");

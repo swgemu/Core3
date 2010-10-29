@@ -97,7 +97,7 @@ public:
 		PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
 
 		if (args.length() < 2) {
-			StartDanceCommand::sendAvailableDances(player, ghost, SuiWindowType::CHANGE_DANCING);
+			StartDanceCommand::sendAvailableDances(player, ghost, SuiWindowType::DANCING_CHANGE);
 			return SUCCESS;
 		}
 

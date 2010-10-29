@@ -47,114 +47,119 @@ which carries forward this exception.
 
 class SuiWindowType {
 public:
+	//Cloning 1 - 10
+	static const uint16 CLONE_REQUEST = 1;
+	static const uint16 CLONE_CONFIRM = 2;
 
-	static const int MOTD = 0;
-	static const int CONSENT = 1;
+	//Entertaining 11 - 20
+	static const uint16 MUSIC_START = 11;
+	static const uint16 MUSIC_CHANGE = 12;
+	static const uint16 DANCING_START = 13;
+	static const uint16 DANCING_CHANGE = 14;
 
-	static const int CLONE_REQUEST = 2;
-	static const int CLONE_CONFIRM = 3;
+	//Guilds 21 - 50
+	static const uint16 GUILD_CREATE_NAME = 21;
+	static const uint16 GUILD_CREATE_ABBREV = 22;
+	static const uint16 GUILD_SPONSOR = 23;
+	static const uint16 GUILD_ACCEPT_SPONSORSHIP = 24;
+	static const uint16 GUILD_LIST_SPONSORED = 25;
+	static const uint16 GUILD_CHANGE_NAME = 26;
+	static const uint16 GUILD_CHANGE_ABBREV = 27;
+	static const uint16 GUILD_INFORMATION = 28;
+	static const uint16 GUILD_DISBAND = 29;
+	static const uint16 GUILD_MEMBER_OPTIONS = 30;
+	static const uint16 GUILD_MEMBER_REMOVE = 31;
+	static const uint16 GUILD_MEMBER_PERMISSIONS = 32;
+	static const uint16 GUILD_TRANSFER_LEADER = 33;
+	static const uint16 GUILD_TRANSFER_LEADER_CONFIRM = 34;
 
-	static const int START_MUSIC = 4;
-	static const int START_DANCING = 5;
-	static const int CHANGE_MUSIC = 6;
-	static const int CHANGE_DANCING = 7;
+	//Tickets 51 - 60
+	static const uint16 TICKET_PURCHASE_MESSAGE = 51;
+	static const uint16 TICKET_COLLECTOR_RESPONSES = 52;
 
-	static const int SURVEY_TOOL_RANGE = 8;
+	//Color Pickers 61 - 70
+	static const uint16 COLOR_PICKER1 = 61;
+	static const uint16 COLOR_PICKER2 = 62;
 
-	static const int GUILD_CREATION_INPUT_FOR_TAG = 9;
-	static const int GUILD_CREATION_INPUT_FOR_NAME = 10;
-	static const int GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME = 11;
-	static const int VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP = 12;
-	static const int SPONSORED_GUILD_MEMBERS = 13;
-	static const int SPONSORED_GUILD_MEMBERS_ACCEPT = 14;
-	static const int GUILD_DISBAND = 15;
-	static const int GUILD_NAME_CHANGE = 16;
-	static const int GUILD_NAME_CHANGE_NAME = 17;
-	static const int GUILD_INFORMATION_MEMBERS = 18;
-	static const int GUILD_MEMBER_OPTIONS = 19;
-	static const int GUILD_PERMISSION_SELECTION = 20;
-	static const int REMOVE_FROM_GUILD = 21;
-	static const int GUILD_TRANSFER_LEADER = 22;
-	static const int GUILD_TRANSFER_LEADER_VERIFY = 23;
+	//Bank 71 - 80
+	static const uint16 BANK_TRANSFER = 71;
+	static const uint16 BANK_TIP_CONFIRM = 72;
 
-	static const int TICKET_PURCHASE_MESSAGE = 24;
-	static const int TICKET_COLLECTOR_RESPONSES = 25;
+	//Resource 81 - 90
+	static const uint16 FREE_RESOURCE = 81;
+	static const uint16 GIVE_FREE_RESOURCE = 82;
 
-	static const int COLOR_PICKER1 = 26;
-	static const int COLOR_PICKER2 = 27;
+	//Factory 91 - 100
+	static const uint16 FACTORY_SCHEMATIC2BUTTON = 91;
+	static const uint16 FACTORY_SCHEMATIC3BUTTON = 92;
+	static const uint16 FACTORY_INGREDIENTS = 93;
 
-	static const int BANK_TRANSFER = 28;
+	//Insurance 101 - 110
+	static const uint16 INSURANCE_MENU = 101;
+	static const uint16 INSURANCE_CONFIRM_ALL = 102;
 
-	static const int BLUE_FROG_ITEM_REQUEST = 29;
+	//City 111 - 140
+	static const uint16 CITY_CREATE = 111;
+	static const uint16 CITY_ENABLE_ZONING = 112;
+	static const uint16 CITY_SET_NAME = 113;
+	static const uint16 CITY_MILITIA = 114;
+	static const uint16 CITY_ADD_MILITIA = 115;
 
-	static const int WOUND_TERMINAL_REQUEST = 30;
-	static const int STATE_TERMINAL_REQUEST = 31;
-	static const int DIAGNOSE = 32;
+	//Structure 141 - 170
+	static const uint16 STRUCTURE_STATUS = 141;
+	static const uint16 STRUCTURE_DESTROY_CODE = 142;
+	static const uint16 STRUCTURE_DESTROY_CONFIRM = 143;
+	static const uint16 STRUCTURE_MANAGE_MAINTENANCE = 144;
+	static const uint16 STRUCTURE_ADD_ENERGY = 145;
 
-	static const int FREE_RESOURCE = 33;
-	static const int GIVE_FREE_RESOURCE = 34;
+	//Admin 171 - 220
+	static const uint16 ADMIN_COMMANDS = 171;
+	static const uint16 ADMIN_BANLIST = 172;
+	static const uint16 ADMIN_ACCOUNTINFO = 173;
+	static const uint16 ADMIN_PLAYERINFO = 174;
 
-	static const int TEACH_SKILL = 35;
-	static const int TEACH_PLAYER = 36;
-	static const int DENY_TRAINING_LIST = 37;
+	//Teach 221 - 230
+	static const uint16 TEACH_SKILL = 221;
+	static const uint16 TEACH_PLAYER = 222;
+	static const uint16 TEACH_DENY = 223;
 
-	static const int OBJECT_NAME = 38;
-	static const int ADD_ENERGY = 40;
-	static const int INSTALLATION_STATUS = 41;
+	//Survey Tool 231 - 240
+	static const uint16 SURVEY_TOOL_RANGE = 231;
+	static const uint16 SURVEY_TOOL_CONCENTRATED_MINIGAME = 232;
+	static const uint16 SURVEY_TOOL_CONCENTRATED_MINIGAME2 = 233;
 
-	static const int INSURANCE_MENU = 44;
-	static const int INSURE_ALL_CONFIRM = 45;
+	//Sample 241 - 250
+	static const uint16 SAMPLE_RADIOACTIVE_CONFIRM = 241;
 
-	static const int BANK_TIP_CONFIRM = 46;
+	//Slicing 251 - 260
+	static const uint16 SLICING_MENU = 251;
 
-	static const int SLICING_MENU = 47;
+	//Gambling 261 - 270
+	static const uint16 GAMBLING_ROULETTE = 261;
+	static const uint16 GAMBLING_SLOT = 262;
+	static const uint16 GAMBLING_SLOT_PAYOUT = 263;
 
-	static const int RANGER_WHAT_TO_TRACK = 48;
+	//Fishing 271 - 280
+	static const uint16 FISHING = 271;
 
-	static const int SET_MOTD = 49;
+	//Junk Dealer 281 - 290
+	static const uint16 JUNK_DEALER_SELL_LIST = 281;
 
-	static const int PERMISSION_LIST = 50;
+	//Medic 291 - 300
+	static const uint16 MEDIC_CONSENT = 291;
+	static const uint16 MEDIC_DIAGNOSE = 292;
 
-	static const int CAMP_INFO = 51;
+	//MOTD 301 - 310
+	static const uint16 MOTD = 301;
+	static const uint16 MOTD_SET = 302;
 
-	static const int FACTORY_SCHEMATIC2BUTTON = 52;
-	static const int FACTORY_SCHEMATIC3BUTTON = 53;
-	static const int FACTORY_INGREDIENTS = 54;
+	//Character Builder 311 - 320
+	static const uint16 CHARACTER_BUILDER_LIST = 311;
 
-	static const int TUNE_CRYSTAL = 60;
-	static const int INSERT_COLOR_CRYSTAL = 61;
 
-	static const int JUNK_DEALER_SELL_LIST = 70;
-
-	static const int COMMANDSLIST = 80;
-	static const int BANLIST = 81;
-	static const int ACCOUNTLIST = 82;
-	static const int CHARACTERLIST = 83;
-
-	static const int FISHING = 90;
-
-	static const int CHARACTERBUILDERITEMSELECT = 100;
-
-	static const int SAMPLERADIOACTIVECONFIRM = 110;
-	static const int SURVEY_TOOL_CONCENTRATED_MINIGAME = 111;
-	static const int SURVEY_TOOL_CONCENTRATED_MINIGAME2 = 112;
-
-	static const int STRUCTURE_STATUS = 115;
-	static const int STRUCTURE_DESTROY_CONFIRM = 116;
-	static const int STRUCTURE_DESTROY_CODE = 117;
-	static const int STRUCTURE_MANAGE_MAINTENANCE = 118;
-
-	static const int COMMAND_FIND = 119;
-
-	static const int GAMBLINGROULETTE = 120;
-	static const int GAMBLINGSLOT = 121;
-	static const int GAMBLINGSLOTPAYOUT = 122;
-
-	static const int CITY_CREATE = 123;
-	static const int CITY_ENABLEZONING = 124;
-	static const int CITY_SETNAME = 125;
-	static const int CITY_MILITIA = 126;
-	static const int CITY_ADDMILITIA = 127;
+	//Miscellaneous 1000+
+	static const uint16 OBJECT_NAME = 1000;
+	static const uint16 COMMAND_FIND = 1001;
 };
 
 #endif /*SuiWindowType_H_*/

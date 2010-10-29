@@ -64,6 +64,7 @@ which carries forward this exception.
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/objects/player/sui/SuiBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.h"
 #include "server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.h"
@@ -88,536 +89,222 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/FindCommand.h"
 
 
-/*#include "../item/ItemManager.h"
-#include "../../objects/creature/bluefrog/BlueFrogVector.h"
-
-#include "../../../login/packets/ErrorMessage.h"
-
-#include "../../objects/tangible/deed/resourcedeed/ResourceDeedImplementation.h"
-#include "../../objects/tangible/deed/resourcedeed/ResourceDeed.h"
-
-#include "../resource/ResourceManagerImplementation.h"
-
-#include "../../objects/creature/skills/self/events/AreaTrackEvent.h"
-
-#include "../../../chat/GameCommandHandler.h"*/
-
 SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManager") {
 	server = serv;
 
 	setGlobalLogging(true);
 	setLogging(false);
+
+	registerMessages();
 }
 
-void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, const String& value2) {
-	uint16 type = (uint16) boxID;
-	int range;
-	String returnString;
+void SuiManager::registerMessages() {
+}
 
-	//GuildManager* pGuild = server->getGuildManager();
+void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args) {
+	uint16 type = (uint16) boxID;
+
+	Locker _lock(player);
+
+	ManagedReference<SuiBox*> suiBox = player->getSuiBox(boxID);
+
+	if (suiBox == NULL)
+		return;
+
+	player->removeSuiBox(boxID);
+	suiBox->clearOptions();
+
 	switch (type) {
-	/*case SuiWindowType::CHARACTERLIST:
-		handleCharacterListSelection(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::ACCOUNTLIST:
-		handleAccountListSelection(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::COMMANDSLIST:
-		handleCommandsListSelection(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::BANLIST:
-		handleBanListSelection(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::TUNE_CRYSTAL:
-		handleTuneCrystal(boxID, player, cancel);
-		break;
-	case SuiWindowType::INSERT_COLOR_CRYSTAL:
-		handleChangeColorCrystal(boxID, player, cancel, atoi(value.toCharArray()));
-		break;*/
 	case SuiWindowType::JUNK_DEALER_SELL_LIST:
-		handleSellJunkLootSelection(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
+		handleSellJunkLootSelection(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::STRUCTURE_STATUS:
-		handleStructureStatus(boxID, player, cancel, atoi(value.toCharArray()));
+		handleStructureStatus(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::STRUCTURE_DESTROY_CONFIRM:
-		handleStructureDestroyConfirm(boxID, player, cancel, atoi(value.toCharArray()));
+		handleStructureDestroyConfirm(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::STRUCTURE_DESTROY_CODE:
-		handleStructureDestroyCode(boxID, player, cancel, value);
+		handleStructureDestroyCode(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE:
-		handleManageMaintenance(boxID, player, cancel, atoi(value.toCharArray()));
+		handleManageMaintenance(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::CONSENT:
-		handleConsentBox(boxID, player, cancel, atoi(value.toCharArray()));
+	case SuiWindowType::MEDIC_CONSENT:
+		handleConsentBox(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::CLONE_REQUEST:
-		handleCloneRequest(boxID, player, cancel, atoi(value.toCharArray()));
-		break;/*
-	case SuiWindowType::CLONE_CONFIRM:
-		handleCloneConfirm(boxID, player, cancel, atoi(value.toCharArray()));
+		handleCloneRequest(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::START_MUSIC:
-		handleStartMusic(boxID, player, cancel, value.toCharArray(), false);
-		break;*/
-	case SuiWindowType::START_DANCING:
-		handleStartDancing(boxID, player, cancel, value.toCharArray(), false);
-		break;/*
-	case SuiWindowType::CHANGE_MUSIC: // changemusic
-		handleStartMusic(boxID, player, cancel, value.toCharArray(), true);
-		break;*/
-	case SuiWindowType::CHANGE_DANCING: // changedance
-		handleStartDancing(boxID, player, cancel, value.toCharArray(), true);
+	case SuiWindowType::DANCING_START:
+		handleStartDancing(player, suiBox, cancel, args);
+		break;
+	case SuiWindowType::DANCING_CHANGE:
+		handleStartDancing(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::SURVEY_TOOL_RANGE:
-		range = (atoi(value.toCharArray()) * 64) + 64;
-		if(range == 576)
-			range = 1024;
-		handleSurveyToolRange(boxID, player, cancel, range);
+		handleSurveyToolRange(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::SAMPLERADIOACTIVECONFIRM:
-		handleSampleRadioactiveConfirm(boxID, player, cancel, atoi(value.toCharArray()));
+	case SuiWindowType::SAMPLE_RADIOACTIVE_CONFIRM:
+		handleSampleRadioactiveConfirm(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME:
-		handleSurveyConcentratedMinigame(boxID, player, cancel, atoi(value.toCharArray()));
+		handleSurveyConcentratedMinigame(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME2:
-		handleSurveyConcentratedMinigame2(boxID, player, cancel, atoi(value.toCharArray()));
+		handleSurveyConcentratedMinigame2(player, suiBox, cancel, args);
 		break;
-	/*case SuiWindowType::GUILD_CREATION_INPUT_FOR_TAG: // Guild creation InputBox #1 (Tag)
-		returnString = value;
-		pGuild->handleGuildTag(boxID, player, cancel, returnString);
-		if (!cancel)
-			pGuild->handleGuildName(boxID, player, cancel, returnString);
-		break;
-	case SuiWindowType::GUILD_CREATION_INPUT_FOR_NAME: // Guild creation InputBox #2 (name)
-		returnString = value;
-		pGuild->handleGuildName(boxID, player, cancel, returnString);
-		break;
-	case SuiWindowType::GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME: // Guild Sponsoring Member InputBox (name)
-		returnString = value;
-		pGuild->handleGuildSponsor(boxID, player, cancel, returnString);
-		break;
-	case SuiWindowType::VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP: // Verify Messagebox Guild Sponsoring Target
-		pGuild->handleVerifyBoxSponsorTargetforGuildMembership(boxID, player, cancel);
-		break;
-	case SuiWindowType::SPONSORED_GUILD_MEMBERS: // Sponsored guild member box
-		pGuild->handleSponsoredGuildMembersBox(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::SPONSORED_GUILD_MEMBERS_ACCEPT: // Sponsored guild member accept/decline box
-		pGuild->handleSponsoredGuildMembersAcceptBox(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::GUILD_DISBAND: // Disband guild verify box
-		returnString = value;
-		pGuild->handleGuildDisbandBox(boxID, player, cancel, returnString);
-		break;
-	case SuiWindowType::GUILD_NAME_CHANGE: // Namechange guild (Tag box)
-		returnString = value;
-		pGuild->handleGuildNameChange(boxID, player, cancel, returnString);
-		break;
-	case SuiWindowType::GUILD_NAME_CHANGE_NAME: // Namechange guild (Tag box)
-		returnString = value;
-		pGuild->handleGuildNameChangeName(boxID, player, cancel, returnString);
-		break;
-	case SuiWindowType::GUILD_INFORMATION_MEMBERS: // Guild Information - Members
-		pGuild->handleGuildInformationMembersBox(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::GUILD_MEMBER_OPTIONS: // Guild Information - Member options
-		pGuild->handleGuildMemberOptions(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::GUILD_PERMISSION_SELECTION: // Guild member permissions
-		pGuild->handleGuildPermissionSelection(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::REMOVE_FROM_GUILD: // Guild remove from guild exec
-		pGuild->execRemoveFromGuild(boxID, player, cancel);
-		break;
-	case SuiWindowType::GUILD_TRANSFER_LEADER: // Guild Transfer-Leadership Name of Target SUI Box return
-		returnString = value;
-		pGuild->handleGuildTransferLeaderBox(boxID, player, cancel, returnString);
-		break;
-	case SuiWindowType::GUILD_TRANSFER_LEADER_VERIFY: // Guild Transfer-Leadership Accept/Decline Box Return
-		pGuild->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
-		break;
-	case SuiWindowType::TICKET_PURCHASE_MESSAGE:
-		handleTicketPurchaseMessageBox(boxID, player);
-		break;*/
 	case SuiWindowType::TICKET_COLLECTOR_RESPONSES:
-		handleTicketCollectorRespones(boxID, player, cancel, atoi(value.toCharArray()));
-		break;/*
-	case SuiWindowType::COLOR_PICKER1:
-		handleColorPicker(boxID, player, cancel, value, 2);
+		handleTicketCollectorResponse(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::COLOR_PICKER2:
-		handleColorPicker(boxID, player, cancel, value, 1);
-		break;*/
 	case SuiWindowType::BANK_TRANSFER:
-		handleBankTransfer(boxID, player, atoi(value.toCharArray()), atoi(value2.toCharArray()));
+		handleBankTransfer(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::FISHING:
-		handleFishingAction(boxID, player, cancel, atoi(value.toCharArray()));
+		handleFishingAction(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::GAMBLINGROULETTE:
-		handleGamblingRoulette(boxID, player, cancel, atoi(value.toCharArray()));
+	case SuiWindowType::GAMBLING_ROULETTE:
+		handleGamblingRoulette(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::GAMBLINGSLOT:
-		handleGamblingSlot(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
+	case SuiWindowType::GAMBLING_SLOT:
+		handleGamblingSlot(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::GAMBLINGSLOTPAYOUT:
-		handleGamblingSlotPayout(boxID, player, cancel, atoi(value.toCharArray()));
+	case SuiWindowType::GAMBLING_SLOT_PAYOUT:
+		handleGamblingSlotPayout(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::CHARACTERBUILDERITEMSELECT:
-		handleCharacterBuilderSelectItem(boxID, player, cancel, atoi(value.toCharArray()));
+	case SuiWindowType::CHARACTER_BUILDER_LIST:
+		handleCharacterBuilderSelectItem(player, suiBox, cancel, args);
 		break;
-	/*case SuiWindowType::BLUE_FROG_ITEM_REQUEST:
-		handleBlueFrogItemRequest(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::WOUND_TERMINAL_REQUEST:
-		handleWoundTerminalRequest(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::STATE_TERMINAL_REQUEST:
-		handleStateTerminalRequest(boxID, player, cancel, atoi(value.toCharArray()));
-		break;*/
-	case SuiWindowType::DIAGNOSE:
-		handleDiagnose(boxID, player);
+	case SuiWindowType::MEDIC_DIAGNOSE:
+		handleDiagnose(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::FREE_RESOURCE:
-		handleGiveFreeResource(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
+		handleGiveFreeResource(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::TEACH_SKILL:
-		handleTeachSkill(boxID, player, cancel);
+		handleTeachSkill(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::TEACH_PLAYER:
-		handleTeachPlayer(boxID, player, atoi(value.toCharArray()), cancel);
+		handleTeachPlayer(player, suiBox, cancel, args);
 		break;
-	/*case SuiWindowType::DENY_TRAINING_LIST:
-		handleDenyTrainingList(boxID, player);
-		break;*/
-	case SuiWindowType::OBJECT_NAME:   // Set Object Name
-		handleSetObjectName(boxID, player, cancel, value.toCharArray());
+	case SuiWindowType::OBJECT_NAME:
+		handleSetObjectName(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::ADD_ENERGY:    // Add Energy
-		handleAddEnergy(boxID, player, cancel, atoi(value.toCharArray()));
+	case SuiWindowType::STRUCTURE_ADD_ENERGY:
+		handleAddEnergy(player, suiBox, cancel, args);
 		break;
-	/*case SuiWindowType::INSTALLATION_REDEED:    // Redeed Verification Prompt
-		handleCodeForRedeed(boxID, player, cancel, value.toCharArray());
-		break;
-	case SuiWindowType::INSTALLATION_REDEED_CONFIRM:    // Re-Deed Confirm
-		handleRedeedStructure(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::INSURANCE_MENU:
-		handleInsuranceMenu(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::INSURE_ALL_CONFIRM:
-		handleInsureAllConfirm(boxID, player, cancel);
-		break;
-	case SuiWindowType::BANK_TIP_CONFIRM:
-		handleBankTipConfirm(boxID, player, cancel);
-		break;
-	case SuiWindowType::SLICING_MENU:
-		handleSlicingMenu(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::RANGER_WHAT_TO_TRACK:
-		handleRangerWhatToTrackBox(boxID, player, cancel, atoi(value.toCharArray()));
-		break;
-	case SuiWindowType::SET_MOTD:
-		returnString = value;
-		handleSetMOTD(boxID, player, cancel, returnString);
-		break;*/
 	case SuiWindowType::FACTORY_SCHEMATIC2BUTTON:
-		handleInsertFactorySchem(boxID, player, cancel, atoi(value.toCharArray()));
+		handleInsertFactorySchem2(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::FACTORY_SCHEMATIC3BUTTON:
-		handleInsertFactorySchem(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
+		handleInsertFactorySchem3(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::CITY_CREATE:
-		handleCreateCity(boxID, player, cancel, value);
+		handleCreateCity(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::CITY_SETNAME:
-		handleChangeCityName(boxID, player, cancel, value);
+	case SuiWindowType::CITY_SET_NAME:
+		handleChangeCityName(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::CITY_ENABLEZONING:
-		handleCityEnableZoning(boxID, player, cancel, atoi(value));
+	case SuiWindowType::CITY_ENABLE_ZONING:
+		handleCityEnableZoning(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::CITY_MILITIA:
-		handleManageMilitia(boxID, player, cancel, value.toLowerCase() == "true", atoi(value2.toCharArray()));
+		handleManageMilitia(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::CITY_ADDMILITIA:
-		handleAddMilitia(boxID, player, cancel, value);
+	case SuiWindowType::CITY_ADD_MILITIA:
+		handleAddMilitia(player, suiBox, cancel, args);
+		break;
 	case SuiWindowType::COMMAND_FIND:
-		handleFindCommand(boxID, player, cancel, atoi(value.toCharArray()));
+		handleFindCommand(player, suiBox, cancel, args);
 		break;
-	default:
-		//Clean up players sui box:
-
-		Locker _locker(player);
-
-		if (player->hasSuiBox(boxID)) {
-			ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-
-			player->removeSuiBox(boxID);
-		}
-
-	}
-}
-/*
-void SuiManager::handleCodeForRedeed(uint32 boxID, Player* player,
-		uint32 cancel, const String& extra) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui->isListBox() && cancel != 1) {
-			Zone * zone = player->getZone();
-
-			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
-
-			InstallationObject * inso = (InstallationObject *) scno.get();
-
-			if (inso != NULL) {
-				try {
-					inso->wlock(player);
-
-					inso->handleStructureRedeedConfirm(player);
-
-					inso->unlock();
-				} catch (...) {
-					inso->unlock();
-				}
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-		sui = NULL;
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleCodeForRedeed ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleCodeForRedeed");
-		player->unlock();
 	}
 }
 
-void SuiManager::handleRedeedStructure(uint32 boxID, Player* player,
-		uint32 cancel, const int extra) {
-	try {
-		player->wlock();
+void SuiManager::handleSetObjectName(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isInputBox() || cancel != 0)
+		return;
 
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
+	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
 
-		SuiBox* sui = player->getSuiBox(boxID);
+	if (object == NULL)
+		return;
 
-		if (sui->isInputBox() && cancel != 1) {
-			Zone * zone = player->getZone();
+	if (args->size() < 1)
+		return;
 
-			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
+	UnicodeString objectName = args->get(0);
 
-			InstallationObject * inso = (InstallationObject *) scno.get();
-
-			if (scno != NULL && extra == inso->getDestroyCode()) {
-				try {
-					inso->wlock(player);
-
-					inso->handleMakeDeed(player);
-
-					inso->unlock();
-				} catch (...) {
-					inso->unlock();
-				}
-			} else {
-				SuiMessageBox* wrongCode = new SuiMessageBox(player, 0x00);
-				wrongCode->setPromptTitle("Star Wars Galaxies");
-				wrongCode->setPromptText("You have entered an incorrect code.  You will"
-						" have to issue the /destroyStructure again if you wish to continue.");
-				player->addSuiBox(wrongCode);
-				player->sendMessage(wrongCode->generateMessage());
-			}
-
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleRedeedStructure ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleRedeedStructure");
-		player->unlock();
-	}
+	object->setCustomObjectName(objectName , true);
 }
 
-void SuiManager::handleRefreshStatusListBox(uint32 boxID, Player* player,
-		uint32 cancel, const int extra) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui->isListBox() && cancel != 1) {
-			Zone * zone = player->getZone();
-
-			ManagedReference<SceneObject*> scno = zone->lookupObject(player->getCurrentStructureID());
-
-			InstallationObject * inso = (InstallationObject *) scno.get();
-
-			if (inso != NULL) {
-				inso->handleStructureStatus(player);
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-		sui = NULL;
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleRefreshStatusListBox ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleRefreshStatusListBox");
-		player->unlock();
-	}
-}*/
-
-void SuiManager::handleSetObjectName(uint32 boxID, PlayerCreature* player,
-		uint32 cancel, const String& name) {
-	Locker _locker(player);
-
-	if (!player->hasSuiBox(boxID)) {
-		return;
-	}
-
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-
-	if (sui->isInputBox() && cancel != 1) {
-		SuiInputBox* inputBox = (SuiInputBox*) sui.get();
-
-		Zone* zone = player->getZone();
-
-		ManagedReference<SceneObject*> object = inputBox->getUsingObject();
-
-		if (object != NULL)	{
-			object->setCustomObjectName(name , true);
-		}
-	}
-
-	player->removeSuiBox(boxID);
-}
-
-void SuiManager::handleManageMaintenance(uint32 boxID, PlayerCreature* player,
-		uint32 cancel, const int newCashVal) {
-
-	Locker _locker(player);
-
-	if (!player->hasSuiBox(boxID)) {
-		return;
-	}
-
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
-
-	if (!sui->isTransferBox() || cancel == 1) {
-		return;
-	}
-
-	SuiTransferBox* transferBox = (SuiTransferBox*) sui.get();
-
-	Zone* zone = player->getZone();
-
-	ManagedReference<SceneObject*> usingObject = transferBox->getUsingObject();
-
-	if (usingObject == NULL || !usingObject->isStructureObject())
+void SuiManager::handleManageMaintenance(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isTransferBox() || cancel != 0)
 		return;
 
-	StructureObject* structureObject = (StructureObject*) usingObject.get();
+	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
 
+	if (object == NULL || !object->isStructureObject())
+		return;
+
+	StructureObject* structureObject = (StructureObject*) object.get();
+
+	if (args->size() < 1)
+		return;
+
+	int transferAmount = Integer::valueOf(args->get(0).toString());
 	int currentCash = player->getCashCredits();
 
-	if (newCashVal > currentCash || newCashVal < 0)
+	if (transferAmount > currentCash) {
+		//Send a message ot the player, and return.
 		return;
-
-	try {
-		structureObject->wlock(player);
-
-		int maint = currentCash - newCashVal;
-
-		structureObject->addMaintenance(maint);
-		player->substractCashCredits(maint);
-
-		ParameterizedStringId stringId("base_player", "prose_pay_success");
-		stringId.setTT(structureObject->getObjectID());
-		stringId.setDI(maint);
-
-		/*StringBuffer report;
-		report << "You successfully make a payment of " << maint << " to "
-				<< inso->getCustomName().toString() << ".\n"
-				<< "Maintenance is now at " << inso->getSurplusMaintenance() << " credits.";*/
-
-		player->sendSystemMessage(stringId);
-		structureObject->updateToDatabase();
-
-		structureObject->unlock();
-	} catch (...) {
-		structureObject->unlock();
 	}
+
+	if (transferAmount < 0) {
+		//Send a message to the player, and return.
+		return;
+	}
+
+	Locker _lock(structureObject, player);
+
+	int transferTotal = currentCash - transferAmount;
+
+	//TODO: Handlle this in StructureManager.
+	//ManagedReference<StructureManager*> structureManager = structureObject->getZone()->getPlanetManager()->getStructureManager();
+	//structureManager->depositMaintenance(player, structureObject, transferTotal);
+
+	structureObject->addMaintenance(transferTotal);
+	player->substractCashCredits(transferTotal);
+
+	ParameterizedStringId stringId("base_player", "prose_pay_success");
+	stringId.setTT(structureObject->getObjectID());
+	stringId.setDI(transferTotal);
+
+	player->sendSystemMessage(stringId);
+	structureObject->updateToDatabase();
 
 	player->updateToDatabase();
 }
 
 
-void SuiManager::handleAddEnergy(uint32 boxID, PlayerCreature* player,
-		uint32 cancel, const int newEnergyVal) {
-	Locker locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleAddEnergy(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isTransferBox() || cancel != 0)
 		return;
 
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-	player->removeSuiBox(boxID);
-
-	if (sui == NULL || !sui->isTransferBox() || cancel == 1)
+	if (args->size() < 1)
 		return;
 
-	SuiTransferBox* transferBox = (SuiTransferBox*) sui.get();
+	int newEnergyVal = Integer::valueOf(args->get(0).toString());
 
-	ManagedReference<SceneObject*> usingObject = transferBox->getUsingObject();
+	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
 
-	if (usingObject == NULL || !usingObject->isInstallationObject())
+	if (object == NULL || !object->isInstallationObject())
 		return;
 
-	InstallationObject* installation = (InstallationObject*) usingObject.get();
+	InstallationObject* installation = (InstallationObject*) object.get();
 
-	ResourceManager* resourceManager = player->getZoneServer()->getResourceManager();
+	ManagedReference<ResourceManager*> resourceManager = player->getZoneServer()->getResourceManager();
 
+	//TODO: This should be handled in StructureManager
 	try {
 		installation->wlock(player);
 
@@ -651,715 +338,257 @@ void SuiManager::handleAddEnergy(uint32 boxID, PlayerCreature* player,
 
 }
 
-/*
-void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const String& song, bool change) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (cancel != 1)
-			player->startPlayingMusic(song, change);
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception in SuiManager::handleStartMusic " << e.getMessage();
-		error(msg.toString());
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleStartMusic(Player* player, const String& music)");
-		player->unlock();
-	}
-}*/
-
-void SuiManager::handleStartDancing(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& dance, bool change) {
-	Locker locker(player);
-
-	if (!player->hasSuiBox(boxID)) {
-		return;
-	}
-
-	Reference<SuiBox*> sui = player->getSuiBox(boxID);
-	player->removeSuiBox(boxID);
-
-	if (cancel == 1)
+void SuiManager::handleStartDancing(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
-	if (!sui->isListBox()) {
+	if (args->size() < 2)
 		return;
-	}
 
-	int id = Integer::valueOf(dance);
+	int index = Integer::valueOf(args->get(0).toString());
+	bool change = Bool::valueOf(args->get(1).toString());
 
-	SuiListBox* listBox = (SuiListBox*) sui.get();
+	SuiListBox* listBox = (SuiListBox*) suiBox;
 
 	try {
-		String item = listBox->getMenuItemName(id);
+		String dance = listBox->getMenuItemName(index);
 
 		if (!change)
-			player->executeObjectControllerAction(String("startdance").hashCode(), 0, item);
+			player->executeObjectControllerAction(String("startdance").hashCode(), 0, dance);
 		else
-			player->executeObjectControllerAction(String("changedance").hashCode(), 0, item);
+			player->executeObjectControllerAction(String("changedance").hashCode(), 0, dance);
 	} catch (...) {
 
 	}
 }
 
-void SuiManager::handleSurveyToolRange(uint32 boxID, PlayerCreature* player, uint32 cancel, int range) {
-
-	Locker _locker(player);
-
-	if (player->hasSuiBox(boxID)) {
-
-		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-
-		if (sui != NULL) {
-
-			ManagedReference<SurveyTool* > surveyTool =  player->getSurveyTool();
-
-			if(surveyTool != NULL) {
-				Locker _locker2(surveyTool);
-				surveyTool->setRange(range);
-			}
-
-			player->removeSuiBox(boxID, true);
-		}
-	}
-}
-
-void SuiManager::handleSampleRadioactiveConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value) {
-	Locker _locker(player);
-
-	if (player->hasSuiBox(boxID)) {
-
-		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-
-		if (sui != NULL) {
-
-			ManagedReference<SurveyTool* > surveyTool =  player->getSurveyTool();
-
-			if(surveyTool != NULL && cancel == 0) {
-				Locker _locker2(surveyTool);
-				surveyTool->consentRadioactiveSample(player);
-			}
-
-			player->removeSuiBox(boxID, true);
-		}
-	}
-}
-
-void SuiManager::handleSurveyConcentratedMinigame(uint32 boxID, PlayerCreature* player, uint32 cancel, int value) {
-	Locker _locker(player);
-
-	if (player->hasSuiBox(boxID)) {
-
-		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-
-		if (sui != NULL) {
-
-			ManagedReference<SurveyTool* > surveyTool =  player->getSurveyTool();
-
-			if(surveyTool != NULL && cancel == 0) {
-				Locker _locker2(surveyTool);
-				surveyTool->surveyCnodeMinigame(player, value);
-			}
-
-			player->removeSuiBox(boxID, true);
-		}
-	}
-}
-
-void SuiManager::handleSurveyConcentratedMinigame2(uint32 boxID, PlayerCreature* player, uint32 cancel, int value) {
-	Locker _locker(player);
-
-	if (player->hasSuiBox(boxID)) {
-
-		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-
-		if (sui != NULL) {
-
-			ManagedReference<SurveyTool* > surveyTool =  player->getSurveyTool();
-
-			if(surveyTool != NULL && cancel == 0) {
-				Locker _locker2(surveyTool);
-				surveyTool->surveyGnodeMinigame(player, value);
-			}
-
-			player->removeSuiBox(boxID, true);
-		}
-	}
-}
-
-
-/*void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel, int itemindex) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (cancel != 1) {
-			Inventory* inventory = player->getInventory();
-
-			int weaponCount = 0;
-
-			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-				item->wlock();
-
-				if (item->isWeapon()) {
-					Weapon* weapon = (Weapon*) item;
-
-					if (weaponCount == itemindex)
-						weapon->repairItem(player);
-
-					weaponCount++;
-				}
-
-				item->unlock();
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception in SuiManager::handleRepairWeapon " << e.getMessage();
-		error(msg.toString());
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleRepairWeapon(uint32 boxID, Player* player, int itemindex)");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, int itemindex) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (cancel != 1) {
-			Inventory* inventory = player->getInventory();
-
-			int armorCount = 0;
-
-			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-				item->wlock();
-
-				if (item->isArmor()) {
-					Armor* armor = (Armor*) item;
-
-					if (armorCount == itemindex)
-						armor->repairItem(player);
-
-					armorCount++;
-				}
-
-				item->unlock();
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception in SuiManager::handleRepairArmor " << e.getMessage();
-		error(msg.toString());
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleRepairArmor(uint32 boxID, Player* player, int itemindex)");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleTicketPurchaseMessageBox(uint32 boxID, Player* player) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception in SuiManager::handleTicketPurchaseMessageBox " << e.getMessage();
-		error(msg.toString());
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleTicketPurchaseMessageBox");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleBlueFrogItemRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
-
-		if (sui->isListBox() && cancel != 1) {
-			SuiListBox* listBox = (SuiListBox*)sui;
-			BlueFrogVector * bfVector = itemManager->getBFItemList();
-
-			if (itemIndex >= 0 && itemIndex < bfVector->size()) {
-				itemManager->giveBFItemSet(player, bfVector->get(itemIndex));
-				player->sendSystemMessage("You received a " + bfVector->get(itemIndex));
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleBlueFrogItemRequest ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleBlueFrogItemRequest");
-		player->unlock();
-	}
-
-}
-
-void SuiManager::handleWoundTerminalRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui->isListBox() && cancel != 1) {
-			switch (itemIndex) {
-			case 0:
-				player->changeHealthWoundsBar(500);
-				break;
-			case 1:
-				player->changeStrengthWoundsBar(500);
-				break;
-			case 2:
-				player->changeConstitutionWoundsBar(500);
-				break;
-			case 3:
-				player->changeActionWoundsBar(500);
-				break;
-			case 4:
-				player->changeQuicknessWoundsBar(500);
-				break;
-			case 5:
-				player->changeStaminaWoundsBar(500);
-				break;
-			case 6:
-				player->changeMindWoundsBar(500);
-				break;
-			case 7:
-				player->changeFocusWoundsBar(500);
-				break;
-			case 8:
-				player->changeWillpowerWoundsBar(500);
-				break;
-			}
-		}
-
-		player->removeSuiBox(boxID);
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleWoundTerminalRequest ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleWoundTerminalRequest");
-		player->unlock();
-	}
-
-}
-
-void SuiManager::handleStateTerminalRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-
-
-		if (sui->isListBox() && cancel != 1) {
-			switch (itemIndex) {
-			case 0:
-				player->addDotState(player,System::random(10000),CreatureState::ONFIRE, 50, CreatureAttribute::HEALTH, 60,50,0);
-				break;
-			case 1:
-				player->addDotState(player,System::random(10000),CreatureState::DISEASED, 50, CreatureAttribute::HEALTH, 60,50,0);
-				break;
-			case 2:
-				player->addDotState(player,System::random(10000),CreatureState::POISONED, 50, CreatureAttribute::HEALTH, 60,50,0);
-				break;
-			case 3:
-				player->setDizziedState();
-				break;
-			case 4:
-				player->setBlindedState();
-				break;
-			case 5:
-				player->setIntimidatedState();
-				break;
-			case 6:
-				player->setStunnedState();
-				break;
-			}
-
-			player->updateStates();
-			player->activateRecovery();
-		}
-
-		player->removeSuiBox(boxID);
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleDOTTerminalRequest ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleDOTTerminalRequest");
-		player->unlock();
-	}
-
-}*/
-
-void SuiManager::handleTicketCollectorRespones(uint32 boxID, PlayerCreature* player, uint32 cancel, int ticketIndex) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui->isListBox() && cancel != 1) {
-			SuiListBox* listBox = (SuiListBox*)sui;
-
-			uint64 ticketObjectID = listBox->getMenuObjectID(ticketIndex);
-
-			if (ticketObjectID != 0) {
-				SceneObject* inventory = player->getSlottedObject("inventory");
-				SceneObject* invObj = inventory->getContainerObject(ticketObjectID);
-
-				if (invObj != NULL && invObj->isTangibleObject()) {
-					TangibleObject* object = (TangibleObject*) invObj;
-
-					if (object->isTicketObject()) {
-						TicketObject* ticket = (TicketObject*) object;
-
-						ticket->handleObjectMenuSelect(player, 20);
-					}
-				}
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleTicketCollectorRespones ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleTicketCollectorRespones");
-		player->unlock();
-	}
-}
-/*
-void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const String& value, int var) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui->isColorPicker()) {
-			SuiColorPicker* colorPicker = (SuiColorPicker*) sui;
-
-			int val = atoi(value.toCharArray());
-
-			if (val >= 0 && val < 144) {
-				uint64 oID = colorPicker->getObjectID();
-
-				SceneObject* obj = player->getInventoryItem(oID);
-
-				if (obj != NULL && obj->isTangible()) {
-					TangibleObject* tano = (TangibleObject*) obj;
-
-					tano->wlock();
-
-					tano->setCustomizationVariable(var, val);
-					tano->setUpdated(true);
-
-					TangibleObjectDeltaMessage3* delta = new TangibleObjectDeltaMessage3(tano);
-					delta->updateCustomizationString();
-					delta->close();
-
-					tano->unlock();
-
-					player->broadcastMessage(delta);
-				}
-			}
-
-			if (var != 1) {
-				SuiColorPicker* sui2 = new SuiColorPicker(player, colorPicker->getObjectID(), "private/index_color_0", SuiWindowType::COLOR_PICKER2);
-
-				player->addSuiBox(sui2);
-				player->sendMessage(sui2->generateMessage());
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception in SuiManager::handleColorPicker" << e.getMessage();
-		error(msg.toString());
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleColorPicker");
-		player->unlock();
-	}
-}
-*/
-void SuiManager::handleBankTransfer(uint32 boxID, PlayerCreature* player, int cash, int bank) {
-	Locker _locker(player);
-
-	if (!player->hasSuiBox(boxID)) {
+void SuiManager::handleSurveyToolRange(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (cancel != 0)
 		return;
-	}
 
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
-
-	if (!sui->isBankTransferBox()) {
+	if (args->size() < 1)
 		return;
-	}
 
-	SuiBankTransferBox* suiBank = (SuiBankTransferBox*) sui.get();
+	ManagedReference<SurveyTool*> surveyTool =  player->getSurveyTool();
+
+	if (surveyTool == NULL)
+		return;
+
+	int range = Integer::valueOf(args->get(0).toString());
+
+	Locker _lock(surveyTool);
+
+	surveyTool->setRange(range);
+}
+
+void SuiManager::handleSampleRadioactiveConfirm(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (cancel != 0)
+		return;
+
+	ManagedReference<SurveyTool*> surveyTool =  player->getSurveyTool();
+
+	if (surveyTool == NULL)
+		return;
+
+	Locker _lock(surveyTool);
+	surveyTool->consentRadioactiveSample(player);
+}
+
+void SuiManager::handleSurveyConcentratedMinigame(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (cancel != 0)
+		return;
+
+	if (args->size() < 1)
+		return;
+
+	int value = Integer::valueOf(args->get(0).toString());
+
+	ManagedReference<SurveyTool*> surveyTool =  player->getSurveyTool();
+
+	if (surveyTool == NULL)
+		return;
+
+	Locker _lock(surveyTool);
+	surveyTool->surveyCnodeMinigame(player, value);
+}
+
+void SuiManager::handleSurveyConcentratedMinigame2(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (cancel != 0)
+		return;
+
+	if (args->size() < 1)
+		return;
+
+	int value = Integer::valueOf(args->get(0).toString());
+
+	ManagedReference<SurveyTool*> surveyTool =  player->getSurveyTool();
+
+	if (surveyTool == NULL)
+		return;
+
+	Locker _lock(surveyTool);
+	surveyTool->surveyGnodeMinigame(player, value);
+}
+
+
+
+void SuiManager::handleTicketCollectorResponse(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isListBox() || cancel != 0)
+		return;
+
+	if (args->size() < 1)
+		return;
+
+	SuiListBox* listBox = (SuiListBox*) suiBox;
+
+	int index = Integer::valueOf(args->get(0).toString());
+
+	uint64 ticketObjectID = listBox->getMenuObjectID(index);
+
+	if (ticketObjectID == 0)
+		return;
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory == NULL)
+		return;
+
+	ManagedReference<SceneObject*> obj = inventory->getContainerObject(ticketObjectID);
+
+	if (obj == NULL || !obj->isTangibleObject())
+		return;
+
+	TangibleObject* tano = (TangibleObject*) obj.get();
+
+	if (!tano->isTicketObject())
+		return;
+
+	TicketObject* ticket = (TicketObject*) tano;
+	ticket->handleObjectMenuSelect(player, 20);
+}
+
+void SuiManager::handleBankTransfer(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isBankTransferBox() || cancel != 0)
+		return;
+
+	if (args->size() < 2)
+		return;
+
+	int cash = Integer::valueOf(args->get(0).toString());
+	int bank = Integer::valueOf(args->get(1).toString());
+
+	SuiBankTransferBox* suiBank = (SuiBankTransferBox*) suiBox;
+
 	ManagedReference<SceneObject*> bankObject = suiBank->getBank();
 
-	if (bankObject == NULL) {
+	if (bankObject == NULL)
 		return;
-	}
 
-	if (!player->isInRange(bankObject, 5)) {
+	if (!player->isInRange(bankObject, 5))
 		return;
-	}
 
 	uint32 currentCash = player->getCashCredits();
 	uint32 currentBank = player->getBankCredits();
 
-	if ((currentCash + currentBank) == ((uint32)cash + (uint32)bank)) {
+	if ((currentCash + currentBank) == ((uint32) cash + (uint32) bank)) {
 		player->setCashCredits(cash);
 		player->setBankCredits(bank);
 	}
 
 }
 
-void SuiManager::handleGamblingRoulette(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
+void SuiManager::handleGamblingRoulette(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	GamblingManager* manager = player->getZone()->getZoneServer()->getGamblingManager();
-	if (cancel) {
+
+	if (cancel != 0)
 		manager->leaveTerminal(player, 0);
-	} else {
+	else
 		manager->refreshRouletteMenu(player);
-	}
+
+	//TODO: This might resend suis.
 }
-void SuiManager::handleGamblingSlot(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
-	if (player == NULL)
+void SuiManager::handleGamblingSlot(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (args->size() < 1)
 		return;
+
+	bool otherPressed = Bool::valueOf(args->get(0).toString());
 
 	GamblingManager* manager = player->getZone()->getZoneServer()->getGamblingManager();
+	manager->handleSlot(player, (bool) cancel, otherPressed);
 
-	manager->handleSlot(player, (bool)cancel, otherPressed);
-
+	//TODO: This might resend suis.
 }
 
-void SuiManager::handleGamblingSlotPayout(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
-	if (player->hasSuiBox(boxID)) {
-		player->sendMessage(player->getSuiBox(boxID)->generateCloseMessage());
-		player->removeSuiBox(boxID);
-	}
+void SuiManager::handleGamblingSlotPayout(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	player->sendMessage(suiBox->generateCloseMessage());
 }
 
-/*void SuiManager::handleGamblingStartSabacc(uint32 boxID, PlayerCreature* player, uint32 cancel, int index, const String& value2) {
-	if (!cancel) {
-		String sabacc[] = {"Bespin Standard", "Empress Teta Preferred", "Cloud City Casino", "Random Sabacc", "Bespin Standard Variety", "Random Sabacc Variety"};
-		String game;
-		if ((index >= 0) && (index < 4)) {
-			game = sabacc[index];
-		} else {
-			game = "None";
-		}
-		player->sendSystemMessage("Start Game: " + game + " " + *value2);
-	}
-}
-
-
-void SuiManager::handleGamblingSabacc(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, const String& value2) {
-	if (cancel) {
-		if (player->hasSuiBox(boxID)) {
-			SuiSlotMachineBox* suiTableBox = (SuiSlotMachineBox*)player->getSuiBox(boxID);
-			uint32 tableBox = suiTableBox->getPayoutBoxID();
-			if (player->hasSuiBox(tableBox)) {
-				player->sendMessage(player->getSuiBox(tableBox)->generateCloseMessage());
-				player->removeSuiBox(tableBox);
-			}
-			uint32 handBox = suiTableBox->getAnotherBoxID();
-			if (player->hasSuiBox(handBox)) {
-				player->sendMessage(player->getSuiBox(handBox)->generateCloseMessage());
-				player->removeSuiBox(handBox);
-			}
-			player->sendMessage(player->getSuiBox(boxID)->generateCloseMessage());
-			player->removeSuiBox(boxID);
-		}
-	}
-}*/
-
-void SuiManager::handleFishingAction(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
-	Locker _locker(player);
-
-	//player->info("boxID: "+String::valueOf(boxID)+" Index: "+String::valueOf(index),true);
-	if (player->hasSuiBox(boxID)) {
-		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-		if (sui != NULL) {
-			FishingManager* manager = player->getZone()->getZoneServer()->getFishingManager();
-			//Locker lockerManager(manager);
-			manager->setNextAction(player,index + 1);
-			uint32 newBoxID;
-			switch (index+1) {
-				case FishingManager::TUGUP:
-					newBoxID = manager->createWindow(player,boxID);
-					break;
-				case FishingManager::TUGRIGHT:
-					newBoxID = manager->createWindow(player,boxID);
-					break;
-				case FishingManager::TUGLEFT:
-					newBoxID = manager->createWindow(player,boxID);
-					break;
-				case FishingManager::REEL:
-					newBoxID = manager->createWindow(player,boxID);
-					break;
-				case FishingManager::STOPFISHING:
-					player->sendSystemMessage("You give up and reel in your line!");
-					manager->stopFishing(player, boxID, true);
-					return;
-					break;
-				default:
-					newBoxID = manager->createWindow(player,boxID);
-					break;
-			}
-			manager->setFishBoxID(player,newBoxID);
-		}
-	}
-}
-
-void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* player, int cancel, int index) {
-	Locker _locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleFishingAction(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (cancel != 0)
 		return;
 
+	if (args->size() < 1)
+		return;
+
+	int index = Integer::valueOf(args->get(0).toString());
+
+	FishingManager* manager = player->getZone()->getZoneServer()->getFishingManager();
+
+	manager->setNextAction(player, index + 1);
+
+	uint32 newBoxID = 0;
+
+	switch (index + 1) {
+		case FishingManager::TUGUP:
+			newBoxID = manager->createWindow(player, suiBox->getBoxID());
+			break;
+		case FishingManager::TUGRIGHT:
+			newBoxID = manager->createWindow(player, suiBox->getBoxID());
+			break;
+		case FishingManager::TUGLEFT:
+			newBoxID = manager->createWindow(player, suiBox->getBoxID());
+			break;
+		case FishingManager::REEL:
+			newBoxID = manager->createWindow(player, suiBox->getBoxID());
+			break;
+		case FishingManager::STOPFISHING:
+			player->sendSystemMessage("@fishing:stop_fishing"); //You reel-in your line and stop fishing...
+			manager->stopFishing(player, suiBox->getBoxID(), true);
+			return;
+			break;
+		default:
+			newBoxID = manager->createWindow(player, suiBox->getBoxID());
+			break;
+	}
+
+	manager->setFishBoxID(player, suiBox->getBoxID());
+}
+
+void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	ZoneServer* zserv = player->getZoneServer();
 
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-
-	if (!sui->isCharacterBuilderBox())
+	if (args->size() < 1)
 		return;
 
-	ManagedReference<SuiCharacterBuilderBox*> cbSui = (SuiCharacterBuilderBox*) sui.get();
+	int index = Integer::valueOf(args->get(0).toString());
+
+	if (!suiBox->isCharacterBuilderBox())
+		return;
+
+	ManagedReference<SuiCharacterBuilderBox*> cbSui = (SuiCharacterBuilderBox*) suiBox;
 
 	CharacterBuilderMenuNode* currentNode = cbSui->getCurrentNode();
 
 	//If cancel was pressed and there is no parent node to backup too, then we kill the box/menu.
-	if (currentNode == NULL || (cancel > 0 && !currentNode->hasParentNode())) {
-		player->removeSuiBox(boxID);
+	if (currentNode == NULL || (cancel != 0 && !currentNode->hasParentNode()))
 		return;
-	}
 
 	//Back was pressed. Send the node above it.
-	if (cancel > 0) {
+	if (cancel != 0) {
 		CharacterBuilderMenuNode* parentNode = currentNode->getParentNode();
 		cbSui->setCurrentNode(parentNode);
-		cbSui->clearOptions();
+
+		player->addSuiBox(cbSui);
 		player->sendMessage(cbSui->generateMessage());
 		return;
 	}
@@ -1368,13 +597,15 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 
 	//Node doesn't exist or the index was out of bounds. Should probably resend the menu here.
 	if (node == NULL) {
-		player->removeSuiBox(boxID);
+		player->addSuiBox(cbSui);
+		player->sendMessage(cbSui->generateMessage());
 		return;
 	}
 
 	if (node->hasChildNodes()) {
+		//If it has child nodes, display them.
 		cbSui->setCurrentNode(node);
-		cbSui->clearOptions();
+		player->addSuiBox(cbSui);
 		player->sendMessage(cbSui->generateMessage());
 	} else {
 
@@ -1443,7 +674,7 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 				}
 			}
 
-			cbSui->clearOptions();
+			player->addSuiBox(cbSui);
 			player->sendMessage(cbSui->generateMessage());
 		} else { // Items
 
@@ -1451,7 +682,7 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 
 			if (item == NULL) {
 				player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
-				cbSui->clearOptions();
+				player->addSuiBox(cbSui);
 				player->sendMessage(cbSui->generateMessage());
 				return;
 			}
@@ -1465,106 +696,51 @@ void SuiManager::handleCharacterBuilderSelectItem(uint32 boxID, PlayerCreature* 
 			stringId.setTO(item);
 			player->sendSystemMessage(stringId);
 
-			cbSui->clearOptions();
+			player->addSuiBox(cbSui);
 			player->sendMessage(cbSui->generateMessage());
 		}
 	}
 }
-/*
-void SuiManager::handleCloneConfirm(uint32 boxID, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
 
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui != NULL && sui->isMessageBox() && cancel != 1) {
-			CloningTerminal* terminal = NULL;
-			SceneObject* scoTerminal = player->getZone()->lookupObject(sui->getUsingObjectID());
-
-			if (scoTerminal != NULL) {
-				TangibleObject* tanoTerminal = (TangibleObject*) scoTerminal;
-				if (tanoTerminal->isTerminal()) {
-					Terminal* termTerminal = (Terminal*) tanoTerminal;
-					if (termTerminal->isCloningTerminal())
-						terminal = (CloningTerminal*) termTerminal;
-				}
-			}
-
-			if (terminal != NULL) {
-				terminal->storeData(player);
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleCloneConfirm()");
-		player->unlock();
-	}
-}
-*/
-void SuiManager::handleCloneRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
-	Locker locker(player);
-
-	if (!player->hasSuiBox(boxID)) {
-		return;
-	}
-
+void SuiManager::handleCloneRequest(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	info("activating sui cloner option");
+
+	if (!suiBox->isListBox() || cancel != 0)
+		return;
+
+	if (args->size() < 1)
+		return;
+
+	int index = Integer::valueOf(args->get(0).toString());
 
 	ZoneServer* zoneServer = server->getZoneServer();
 	PlayerManager* playerManager = zoneServer->getPlayerManager();
-
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
 
 	if (index >= 0) {
 		if (!player->isDead()) {
 			player->sendSystemMessage("You must be dead to activate your clone.");
 		} else {
-			SuiListBox* suiListBox = (SuiListBox*) sui.get();
+			SuiListBox* suiListBox = (SuiListBox*) suiBox;
 			playerManager->sendPlayerToCloner(player, suiListBox->getMenuObjectID(index));
 		}
 	} else {
 		if (player->isDead())
 			player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
 	}
-
-	player->removeSuiBox(boxID);
-
 }
 
-void SuiManager::handleDiagnose(uint32 boxID, PlayerCreature* player) {
-	Locker locker(player);
-
-	if (!player->hasSuiBox(boxID)) {
-		return;
-	}
-
-	//Reference<SuiBox*> sui = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
+void SuiManager::handleDiagnose(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 }
 
-void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
-
-	Locker locker(player);
-
-	if (player == NULL)
+void SuiManager::handleGiveFreeResource(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (args->size() < 2)
 		return;
 
-	if (!player->hasSuiBox(boxID))
-		return;
+	bool otherPressed = Bool::valueOf(args->get(0).toString());
+	int index = Integer::valueOf(args->get(1).toString());
 
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-	ResourceDeedListBox* suiListBox = dynamic_cast<ResourceDeedListBox*>(sui.get());
+	ResourceDeedListBox* suiListBox = dynamic_cast<ResourceDeedListBox*>(suiBox);
+
 	if (suiListBox == NULL)
 		return;
 
@@ -1574,19 +750,12 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, ui
 		return;
 
 	ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
-	ManagedReference<ResourceSpawn* > spawn = NULL;
-
-	player->removeSuiBox(boxID);
-
-	if (cancel)
-		return;
+	ManagedReference<ResourceSpawn*> spawn = NULL;
 
 	String nodeName = "";
 
 	if (otherPressed) {
-
 		suiListBox->removeBox();
-
 	} else {
 
 		if (suiListBox->getPromptTitle() != "Resources") {
@@ -1649,662 +818,202 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, PlayerCreature* player, ui
 	player->sendMessage(suiListBox->generateMessage());
 }
 
-void SuiManager::handleConsentBox(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
-	Locker locker(player);
+void SuiManager::handleConsentBox(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (suiBox->isListBox() || cancel != 0)
+		return;
 
-	if (!player->hasSuiBox(boxID)) {
+	if (args->size() < 1)
+		return;
+
+	int index = Integer::valueOf(args->get(0).toString());
+
+	if (index == -1)
+		return;
+
+	SuiListBox* suiList = (SuiListBox*) suiBox;
+
+	String name = suiList->getMenuItemName(index);
+	UnconsentCommand::unconscent(player, name);
+}
+
+void SuiManager::handleTeachPlayer(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	player->setTeachingOrLearning(false);
+
+	if (suiBox->isListBox() || cancel != 0)
+		return;
+
+	if (args->size() < 1)
+		return;
+
+	int value = Integer::valueOf(args->get(0).toString());
+
+	if (value == -1)
+		return;
+
+	TeachPlayerListBox* listBox = dynamic_cast<TeachPlayerListBox*>(suiBox);
+
+	if (listBox == NULL)
+		return;
+
+	ManagedReference<PlayerCreature*> student = listBox->getStudent();
+
+	if (student == NULL)
+		return;
+
+	Locker _lock(student);
+
+	//if they are no longer in the same group we cancel
+	ManagedReference<GroupObject*> group = player->getGroup();
+
+	if (group == NULL || !group->hasMember(student)) {
+		player->sendSystemMessage("@teaching:not_in_same_group");
 		return;
 	}
 
-	ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
+	//student->setTeachingOffer(listBox->getTeachingSkillOption(value));
 
-	if (sui != NULL && cancel != 1 && sui->isListBox()) {
-		SuiListBox* suiList = (SuiListBox*) sui.get();
+	ParameterizedStringId message("teaching","offer_given");
+	message.setTT(student->getFirstName());
+	message.setTO("skl_n", listBox->getTeachingSkillOption(value));
+	player->sendSystemMessage(message);
 
-		if (index != -1) {
-			String name = suiList->getMenuItemName(index);
-			UnconsentCommand::unconscent(player, name);
-		}
+	ManagedReference<PlayerLearnListBox*> mbox = new PlayerLearnListBox(student);
+
+	student->setTeachingOrLearning(true);
+
+	// TODO: redo this after I find the proper String
+	StringBuffer prompt, skillname;
+	skillname << "@skl_n:" << listBox->getTeachingSkillOption(value);
+	prompt << "Do you wish to learn the following from " << player->getFirstName() << "?";
+	mbox->setPromptTitle("@sui:teach");
+	mbox->setPromptText(prompt.toString());
+	mbox->addMenuItem(skillname.toString());
+	mbox->setCancelButton(true, "");
+	mbox->setTeacher(player);
+	mbox->setTeachingOffer(listBox->getTeachingSkillOption(value));
+
+	student->addSuiBox(mbox);
+	student->sendMessage(mbox->generateMessage());
+}
+
+void SuiManager::handleTeachSkill(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	player->setTeachingOrLearning(false);
+
+	if (suiBox->isListBox())
+		return;
+
+	PlayerLearnListBox* listBox = dynamic_cast<PlayerLearnListBox*>(suiBox);
+
+	if (listBox == NULL)
+		return;
+
+	String teachingOffer = listBox->getTeachingOffer();
+
+	if (cancel != 0) {
+		ParameterizedStringId message("teaching","offer_refused");
+		message.setTT(player->getObjectID());
+		message.setTO("skl_n", teachingOffer);
+		listBox->getTeacher()->sendSystemMessage(message);
+
+		return;
 	}
 
-	player->removeSuiBox(boxID);
+	ManagedReference<PlayerCreature*> teacher = listBox->getTeacher();
+
+	if (teacher == NULL) {
+		player->sendSystemMessage("teaching","teacher_too_far");
+		return;
+	}
+
+
+	if (!player->isInRange(teacher, 128)) {
+		ParameterizedStringId message("teaching","teacher_too_far_target");
+		message.setTT(teacher->getObjectID());
+		message.setTO("skl_n", teachingOffer);
+		player->sendSystemMessage(message);
+
+		teacher->sendSystemMessage("teaching","teaching_failed");
+
+		return;
+	}
+
+	ManagedReference<GroupObject*> group = player->getGroup();
+
+	if (group == NULL || !group->hasMember(teacher)) {
+		ParameterizedStringId message("teaching","not_in_same_group");
+		message.setTT(listBox->getTeacher()->getObjectID());
+		player->sendSystemMessage(message);
+
+		teacher->sendSystemMessage("teaching","teaching_failed");
+		return;
+	}
+
+	server->getProfessionManager()->playerTeachSkill(teachingOffer, player, teacher);
 }
-/*
-void SuiManager::handleDenyTrainingList(uint32 boxID, Player* player) {
-        try {
-               player->wlock();
 
-               if (!player->hasSuiBox(boxID)) {
-                       player->unlock();
-                       return;
-               }
+void SuiManager::handleInsertFactorySchem2(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isListBox() || cancel != 0)
+		return;
 
-               SuiBox* sui = player->getSuiBox(boxID);
+	if (args->size() < 1)
+		return;
 
-               player->removeSuiBox(boxID);
+	int index = Integer::valueOf(args->get(0).toString());
 
-	       sui->finalize();
+	SuiListBox* listBox = (SuiListBox*) suiBox;
 
-       	       player->unlock();
-       } catch (Exception& e) {
-               error("Exception in SuiManager::handleDenyTrainingList ");
-	       e.printStackTrace();
-               player->unlock();
-       } catch (...) {
-               error("Unreported exception caught in SuiManager::handleDenyTrainingList");
-               player->unlock();
-       }
+	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
+
+	if (object == NULL || !object->isFactory())
+		return;
+
+	FactoryObject* factory = (FactoryObject*) object.get();
+
+	Locker _lock(factory, player);
+
+	ManagedReference<ManufactureSchematic*> schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(listBox->getMenuObjectID(index)));
+	factory->handleInsertFactorySchem(player, schematic);
 }
-*/
 
-void SuiManager::handleTeachPlayer(uint32 boxID, PlayerCreature* player, int value, uint32 cancel) {
-	PlayerCreature* student = NULL;
+void SuiManager::handleInsertFactorySchem3(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isListBox() || cancel != 0)
+		return;
 
-	try {
+	if (args->size() < 2)
+		return;
 
-		player->wlock();
-		player->setTeachingOrLearning(false);
+	bool otherPressed = Bool::valueOf(args->get(0).toString());
+	int index = Integer::valueOf(args->get(1).toString());
 
-		if(!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
+	SuiListBox* listBox = (SuiListBox*) suiBox;
 
-		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-		player->removeSuiBox(boxID);
+	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
 
-		if(!sui->isListBox() || sui->getWindowType() != 36) {
-			player->unlock();
-			return;
-		}
+	if (object == NULL || !object->isFactory())
+		return;
 
-		TeachPlayerListBox* listBox = (TeachPlayerListBox*) sui.get();
+	FactoryObject* factory = (FactoryObject*) object.get();
 
-		student = listBox->getStudent();
+	Locker _lock(factory, player);
 
-		if (student == NULL) {
-			player->unlock();
-			return;
-		}
+	factory->handleRemoveFactorySchem(player);
 
-		try {
-			if (student != player)
-				student->wlock(player);
-
-			if ( cancel == 1 || value == -1 ) {
-
-				if (student != player)
-					student->unlock();
-
-				player->unlock();
-				return;
-			}
-
-			//if they are no longer in the same group we cancel
-			if ( player->getGroup() == NULL || !player->getGroup()->hasMember(student) ) {
-
-				player->sendSystemMessage("teaching","not_in_same_group");
-				player->setTeachingOrLearning(false);
-
-				if (student != player)
-					student->unlock();
-
-				player->unlock();
-				return;
-			}
-
-			//student->setTeachingOffer(listBox->getTeachingSkillOption(value));
-
-			ParameterizedStringId message("teaching","offer_given");
-			message.setTT(student->getFirstName());
-			message.setTO("skl_n", listBox->getTeachingSkillOption(value));
-			player->sendSystemMessage(message);
-
-			PlayerLearnListBox* mbox = new PlayerLearnListBox(student);
-
-			student->setTeachingOrLearning(true);
-
-			// TODO: redo this after I find the proper String
-			StringBuffer prompt, skillname;
-			skillname << "@skl_n:" << listBox->getTeachingSkillOption(value);
-			prompt << "Do you wish to learn the following from " << player->getFirstName() << "?";
-			mbox->setPromptTitle("@sui:teach");
-			mbox->setPromptText(prompt.toString());
-			mbox->addMenuItem(skillname.toString());
-			mbox->setCancelButton(true, "");
-			mbox->setTeacher(player);
-			mbox->setTeachingOffer(listBox->getTeachingSkillOption(value));
-
-			student->addSuiBox(mbox);
-			student->sendMessage(mbox->generateMessage());
-
-			if (student != player)
-				student->unlock();
-
-		} catch (...) {
-			student->unlock();
-		}
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleTeachPlayer");
-	    	e.printStackTrace();
-
-        	player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleTeachPlayer");
-
-        player->unlock();
+	if (!otherPressed) {
+		ManagedReference<ManufactureSchematic*> schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(listBox->getMenuObjectID(index)));
+		factory->handleInsertFactorySchem(player, schematic);
 	}
 }
 
-void SuiManager::handleTeachSkill(uint32 boxID, PlayerCreature* player, uint32 cancel) {
-	try {
-		player->wlock();
-		player->setTeachingOrLearning(false);
+void SuiManager::handleSellJunkLootSelection(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isListBox() || cancel != 0)
+		return;
 
-		if(!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
+	if (args->size() < 2)
+		return;
 
-		ManagedReference<SuiBox*> sui = player->getSuiBox(boxID);
-		player->removeSuiBox(boxID);
+	bool otherPressed = Bool::valueOf(args->get(0).toString());
+	int index = Integer::valueOf(args->get(1).toString());
 
-		if(!sui->isListBox() || sui->getWindowType() != 35) {
-			player->unlock();
-			return;
-		}
-
-		PlayerLearnListBox* listBox = (PlayerLearnListBox*) sui.get();
-
-		if (cancel != 1) {
-
-			if (listBox->getTeacher() == NULL) {
-
-				player->sendSystemMessage("teaching","teacher_too_far");
-				//player->getTeacher()->sendSystemMessage("teaching","teaching_failed"); TEACHER IS NULL..
-				//player->getTeacher()->clearTeachingSkillOptions();
-
-			} else if (!player->isInRange(listBox->getTeacher(), 128)) {
-
-				ParameterizedStringId message("teaching","teacher_too_far_target");
-				message.setTT(listBox->getTeacher()->getObjectID());
-				message.setTO("skl_n", listBox->getTeachingOffer());
-				player->sendSystemMessage(message);
-
-				listBox->getTeacher()->sendSystemMessage("teaching","teaching_failed");
-
-			} else if ( player->getGroup() == NULL || !player->getGroup()->hasMember(listBox->getTeacher()) ) {
-
-				ParameterizedStringId message("teaching","not_in_same_group");
-				message.setTT(listBox->getTeacher()->getObjectID());
-				player->sendSystemMessage(message);
-
-				listBox->getTeacher()->sendSystemMessage("teaching","teaching_failed");
-
-			} else
-				server->getProfessionManager()->playerTeachSkill(listBox->getTeachingOffer(), player, listBox->getTeacher());
-				//player->teachSkill(player->getTeachingOffer());
-
-		} else {// if (listBox->getTeacher() != NULL){
-
-			ParameterizedStringId message("teaching","offer_refused");
-			message.setTT(player->getObjectID());
-			message.setTO("skl_n", listBox->getTeachingOffer());
-			listBox->getTeacher()->sendSystemMessage(message);
-
-		}
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleTeachSkill");
-		e.printStackTrace();
-       		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleTeachSkill");
-        	player->unlock();
-	}
-}
-/*
-
-void SuiManager::handleInsuranceMenu(uint32 boxID, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui != NULL && sui->isListBox() && cancel != 1) {
-			SuiListBox* suiList = (SuiListBox*) sui;
-			uint64 oid = suiList->getMenuObjectID(index);
-
-			uint64 terminalID = suiList->getUsingObjectID();
-
-			InsuranceTerminal* terminal = NULL;
-			SceneObject* scoTerminal = player->getZone()->lookupObject(terminalID);
-
-			if (scoTerminal != NULL) {
-				TangibleObject* tanoTerminal = (TangibleObject*) scoTerminal;
-				if (tanoTerminal->isTerminal()) {
-					Terminal* termTerminal = (Terminal*) tanoTerminal;
-					if (termTerminal->isInsuranceTerminal())
-						terminal = (InsuranceTerminal*) termTerminal;
-				}
-			}
-
-			if (terminal != NULL)
-				player->insureItem(terminal, oid);
-			else
-				player->onInsureItemInvalidTerminal();
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleInsuranceMenu ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleInsuranceMenu");
-		player->unlock();
-	}
-}
-
-
-void SuiManager::handleInsureAllConfirm(uint32 boxID, Player* player, uint32 cancel) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui != NULL && cancel != 1)
-			player->insureAllItems(sui->getUsingObjectID());
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleInsureAllConfirm ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleInsureAllConfirm");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleBankTipConfirm(uint32 boxID, Player* player, uint32 cancel) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (sui != NULL && sui->isMessageBox() && cancel != 1) {
-			SuiBankTipConfirmBox* bankTip = (SuiBankTipConfirmBox*) sui;
-
-			Player* recipient = bankTip->getRecipient();
-			int32 amount = bankTip->getTipAmount();
-
-			recipient->wlock(player);
-
-			player->bankTipFinish(recipient, amount);
-
-			recipient->unlock();
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleBankTipConfirm ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleBankTipConfirm");
-		player->unlock();
-	}
-}
-
-
-
-void SuiManager::handleSlicingMenu(uint32 boxid, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
-
-		SuiBox* suibox = player->getSuiBox(boxid);
-
-		//Make sure the box exists.
-		if (suibox == NULL) {
-			player->unlock();
-			return;
-		}
-
-		//Make sure the suibox is a slicing box and that it was not cancelled.
-		if (suibox->isSlicingBox()) {
-			SuiSlicingBox* slicingbox = (SuiSlicingBox*) suibox;
-
-			//If the user didn't hit cancel, then we want to handle the option selected.
-			if (cancel != 1 && index > -1) {
-
-				//Handle the last selected index. Make sure that it hasn't been completed.
-				if (slicingbox->getProgress() != 2 && slicingbox->getProgress() != -1) {
-					slicingbox->handleSelection(index);
-
-					player->sendMessage(slicingbox->generateMessage());
-					player->unlock();
-					return;
-				}
-			}
-
-			//Reset the item to have no slicer id set.
-			TangibleObject* item = slicingbox->getSlicingObject();
-
-			if (item != NULL)
-				item->setSlicerID(0);
-		}
-
-		//Since we are done with the box, remove it from the player and finalize it.
-		player->removeSuiBox(boxid);
-		suibox->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleSlicingMenu");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleSlicingMenu");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleRangerWhatToTrackBox(uint32 boxID, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		if(cancel != 1) {
-				player->doEmote(0, 72, false); // 72 is "/combarea" emote
-
-			if(server != NULL) {
-				AreaTrackEvent* ate = new AreaTrackEvent(player, 5000, index);
-				server->addEvent(ate);
-			}
-		}
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleInsuranceMenu ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleInsuranceMenu");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, const String& returnString) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		if(cancel != 1) {
-			if(server != NULL) {
-				ZoneServer* zone = server->getZoneServer();
-				if(returnString.length() <= 1024)
-					zone->changeMessageoftheDay(returnString);
-				else
-					player->sendSystemMessage("Message exceeded character limit!");
-			}
-		}
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleSetMOTD ");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleSetMOTD");
-		player->unlock();
-	}
-}
-*/
-
-void SuiManager::handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, int index) {
-
-	Locker _locker(player);
-
-	if (player->hasSuiBox(boxID)) {
-
-		ManagedReference<SuiListBox*> sui = dynamic_cast<SuiListBox*>(player->getSuiBox(boxID));
-
-		/// Cancel = Remove
-		if (sui != NULL) {
-
-			if(cancel != 1) {
-
-				ManagedReference<FactoryObject* > factory =  dynamic_cast<FactoryObject*>(server->getZoneServer()->getObject(sui->getUsingObjectID()));
-
-				if (factory != NULL && factory->isFactory()) {
-
-					Locker _locker2(factory, player);
-
-					ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(sui->getMenuObjectID(index)));
-					factory->handleInsertFactorySchem(player, schematic);
-				}
-
-			}
-			player->removeSuiBox(boxID, true);
-			return;
-		}
-	}
-}
-
-void SuiManager::handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
-
-	Locker _locker(player);
-
-	if (player->hasSuiBox(boxID)) {
-
-		ManagedReference<SuiListBox*> sui = dynamic_cast<SuiListBox*>(player->getSuiBox(boxID));
-
-		/// Cancel = Remove
-		if (sui != NULL) {
-
-			if(cancel != 1) {
-
-				ManagedReference<FactoryObject* > factory =  dynamic_cast<FactoryObject*>(server->getZoneServer()->getObject(sui->getUsingObjectID()));
-
-					if (factory != NULL && factory->isFactory()) {
-
-					Locker _locker2(factory, player);
-
-					factory->handleRemoveFactorySchem(player);
-
-					if(!otherPressed) {
-						ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(sui->getMenuObjectID(index)));
-						factory->handleInsertFactorySchem(player, schematic);
-					}
-				}
-			}
-			player->removeSuiBox(boxID, true);
-			return;
-		}
-	}
-}
-/*
-void SuiManager::handleTuneCrystal(uint32 boxID, Player* player, uint32 cancel) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiMessageBox* sui = (SuiMessageBox*) player->getSuiBox(boxID);
-
-		if(cancel != 1) {
-			SceneObject* object = player->getZone()->lookupObject(sui->getUsingObjectID());
-
-			if (object->isTangible() && ((TangibleObject*)object)->getObjectSubType() == TangibleObjectImplementation::LIGHTSABERCRYSTAL) {
-				LightsaberCrystalComponent* crystal = (LightsaberCrystalComponent*) object;
-				crystal->tune(player);
-			}
-		}
-
-
-		player->removeSuiBox(boxID);
-		sui->finalize();
-		player->unlock();
-
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleTuneCrystal");
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleTuneCrystal");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleChangeColorCrystal(uint32 boxID, Player* player, uint32 cancel, int itemindex) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiListBox* sui = (SuiListBox*) player->getSuiBox(boxID);
-
-		if (cancel != 1) {
-			SceneObject* object = player->getZone()->lookupObject(
-					sui->getUsingObjectID());
-			if (object != NULL && object->isTangible() && ((TangibleObject*) object)->getObjectSubType()
-					& TangibleObjectImplementation::LIGHTSABER) {
-
-				JediWeapon* saber = (JediWeapon*) object;
-
-				Inventory* inventory = player->getInventory();
-
-				int crystalCount = 0;
-
-				for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-					TangibleObject* item =
-							(TangibleObject*) inventory->getObject(i);
-
-					item->wlock();
-
-					if (item->isLightsaberCrystal()) {
-						LightsaberCrystalComponent* crystal = (LightsaberCrystalComponent*) item;
-
-						if (crystal->isColorCrystal()) {
-
-							if (crystalCount == itemindex) {
-
-								if (saber->hasColorCrystal()) {
-									int color = crystal->getColor();
-									crystal->setColor(saber->getBladeColor());
-									saber->setBladeColor(color);
-
-									TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(saber);
-									dtano3->updateCustomizationString();
-									dtano3->close();
-									player->sendMessage(dtano3);
-
-									dtano3 = new TangibleObjectDeltaMessage3(crystal);
-									dtano3->updateCustomizationString();
-									dtano3->close();
-									player->sendMessage(dtano3);
-								} else {
-									saber->setBladeColor(crystal->getColor());
-									crystal->sendDestroyTo(player);
-									player->removeInventoryItem(crystal);
-									player->getZoneProcessServer()->getItemManager()->deletePlayerItem(player, crystal, false);
-									crystal->finalize();
-
-									TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(saber);
-									dtano3->updateCustomizationString();
-									dtano3->close();
-									player->sendMessage(dtano3);
-								}
-								saber->generateAttributes(player);
-								item->unlock();
-								break;
-							}
-							crystalCount++;
-						}
-					}
-
-					item->unlock();
-				}
-			}
-		}
-
-
-		player->removeSuiBox(boxID);
-		sui->finalize();
-		player->unlock();
-
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleTuneCrystal");
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleTuneCrystal");
-		player->unlock();
-	}
-}
-*/
-void SuiManager::handleSellJunkLootSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
 	if (otherPressed)
 		info("Sell All",true);
 	else if (cancel == 0)
@@ -2404,356 +1113,36 @@ void SuiManager::handleSellJunkLootSelection(uint32 boxid, PlayerCreature* playe
 		player->unlock();
 	}*/
 }
-/*
-void SuiManager::handleBanListSelection(uint32 boxid, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
 
-		SuiListBox* listbox = (SuiListBox*) player->getSuiBox(boxid);
-
-		if (listbox == NULL) {
-			player->unlock();
-			return;
-		}
-
-		if (cancel != 1 && index != -1) {
-			Zone* zone = player->getZone();
-
-			if (zone != NULL) {
-				ZoneServer* zserv = zone->getZoneServer();
-
-				if (zserv != NULL) {
-					String menutext = listbox->getMenuItemName(index);
-					String username = menutext.subString(9, menutext.indexOf("-") - 1);
-
-					GMCommand* command = GameCommandHandler::getCommand("unban");
-
-					if (command != NULL) {
-						StringTokenizer tokenizer(username);
-
-						if (player->getAdminLevel() & command->getRequiredAdminLevel())
-							command->exec(tokenizer, player);
-						else
-							player->sendSystemMessage("You don't have permission to execute this command.");
-					}
-				}
-			}
-		}
-
-		player->removeSuiBox(boxid);
-		listbox->finalize();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleBanListSelection");
-		player->unlock();
-	}
-}
-
-
-void SuiManager::handleCommandsListSelection(uint32 boxid, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
-
-		SuiListBox* listbox = (SuiListBox*) player->getSuiBox(boxid);
-
-		if (listbox == NULL) {
-			player->unlock();
-			return;
-		}
-
-		if (cancel != 1 && index != -1) {
-			Zone* zone = player->getZone();
-
-			if (zone != NULL) {
-				ZoneServer* zserv = zone->getZoneServer();
-
-				if (zserv != NULL) {
-					player->sendSystemMessage("Command syntax would be shown here.");
-				}
-			}
-		}
-
-		player->removeSuiBox(boxid);
-		listbox->finalize();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleCommandsListSelection.");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleAccountListSelection(uint32 boxid, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
-
-		SuiListBox* listbox = (SuiListBox*) player->getSuiBox(boxid);
-
-		if (listbox == NULL) {
-			player->unlock();
-			return;
-		}
-
-		if (cancel != 1 && index != -1) {
-			Zone* zone = player->getZone();
-
-			if (zone != NULL) {
-				ZoneServer* zserv = zone->getZoneServer();
-
-				if (zserv != NULL) {
-					String menutext = listbox->getMenuItemName(index);
-
-					if (!menutext.isEmpty()) {
-						String firstname = menutext.subString(0, menutext.indexOf(" "));
-
-						GMCommand* command = GameCommandHandler::getCommand("getplayerinfo");
-
-						StringTokenizer tokenizer(firstname);
-
-						if (command != NULL && player->getAdminLevel() & command->getRequiredAdminLevel())
-							command->exec(tokenizer, player);
-						else
-							player->sendSystemMessage("You don't have permission to execute this command.");
-					}
-				}
-			}
-		}
-
-		player->removeSuiBox(boxid);
-		listbox->finalize();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleAccountListSelection.");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleCharacterListSelection(uint32 boxid, Player* player, uint32 cancel, int index) {
-	try {
-		player->wlock();
-
-		SuiListBox* listbox = (SuiListBox*) player->getSuiBox(boxid);
-
-		if (listbox == NULL) {
-			player->unlock();
-			return;
-		}
-
-		if (cancel != 1 && index != -1) {
-			Zone* zone = player->getZone();
-
-			if (zone != NULL) {
-				ZoneServer* zserv = zone->getZoneServer();
-
-				Player* targetplayer = (Player*) zone->lookupObject(listbox->getUsingObjectID());
-
-				if (targetplayer != NULL && zserv != NULL) {
-					String targetname = targetplayer->getFirstName();
-
-					GMCommand* command = NULL;
-					String arguments;
-					bool closebox = false;
-
-					int choice = listbox->getMenuObjectID(index);
-
-					switch (choice) {
-					case 0: //Lookup account details
-					{
-						command = GameCommandHandler::getCommand("getaccountinfo");
-						arguments = targetname;
-						closebox = true;
-						break;
-					}
-					case 1: //Summon
-					{
-						command = GameCommandHandler::getCommand("summon");
-						arguments = targetname;
-						break;
-					}
-					case 2: //Warp to
-					{
-						command = GameCommandHandler::getCommand("warpto");
-						arguments = targetname;
-						closebox = true;
-						break;
-					}
-					case 3: //Save
-					{
-						command = GameCommandHandler::getCommand("saveplayer");
-						arguments = targetname;
-						break;
-					}
-					case 4: //Resuscitate
-					{
-						command = GameCommandHandler::getCommand("rez");
-						arguments = targetname;
-						break;
-					}
-					case 5: //Heal all
-					{
-						command = GameCommandHandler::getCommand("heal");
-						arguments = targetname;
-						break;
-					}
-					case 6: //Buff
-					{
-						command = GameCommandHandler::getCommand("buff");
-						arguments = "2000" + targetname;
-						break;
-					}
-					case 7: //Mind Buff
-					{
-						command = GameCommandHandler::getCommand("mindbuff");
-						arguments = "1000" + targetname;
-						break;
-					}
-					case 8: //Open Inventory
-					{
-						command = GameCommandHandler::getCommand("openinventory");
-						arguments = targetname;
-						break;
-					}
-					case 9: //Open Bank
-					{
-						command = GameCommandHandler::getCommand("openbankinventory");
-						arguments = targetname;
-						break;
-					}
-					case 10: //Mute
-					{
-						command = GameCommandHandler::getCommand("muteplayer");
-						arguments = targetname;
-						break;
-					}
-					case 11: //Freeze
-					{
-						command = GameCommandHandler::getCommand("freeze");
-						arguments = targetname;
-						break;
-					}
-					case 12: //Punish - Jail Cell A
-					{
-						command = GameCommandHandler::getCommand("warpplayer");
-						arguments = "125.3 -74.3 1 8575753 " + targetname;
-						break;
-					}
-					case 13: //Punish - Jail Cell B
-					{
-						command = GameCommandHandler::getCommand("warpplayer");
-						arguments = "130 -33.7 1 8575754 " + targetname;
-						break;
-					}
-					case 14: //Punish - Space
-					{
-						command = GameCommandHandler::getCommand("warpplayer");
-						arguments = "0 0 10 0 " + targetname;
-						break;
-					}
-					case 15: //Kill
-					{
-						command = GameCommandHandler::getCommand("kill");
-						arguments = targetname;
-						break;
-					}
-					case 16: //Kick
-					{
-						command = GameCommandHandler::getCommand("kick");
-						arguments = targetname;
-						break;
-					}
-					case 17: //Ban
-					{
-						command = GameCommandHandler::getCommand("ban");
-						arguments = targetname;
-						break;
-					}
-					default:
-						player->sendSystemMessage("Unknown menu selection.");
-						break;
-					}
-
-					if (command != NULL) {
-						StringTokenizer tokenizer(arguments);
-
-						if (command->getRequiredAdminLevel() & player->getAdminLevel())
-							command->exec(tokenizer, player);
-						else
-							player->sendSystemMessage("You don't have permission to execute that command.");
-
-						//Resend the menu again until they decide they don't need it. - TODO: Make this box it's own class and make it update on each send.
-						if (!closebox) {
-							if (listbox->hasGeneratedMessage())
-								listbox->clearOptions();
-
-							player->sendMessage(listbox->generateMessage());
-							player->unlock();
-							return;
-						}
-					}
-				}
-			}
-		}
-
-		player->removeSuiBox(boxid);
-		listbox->finalize();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleCharacterListSelection.");
-		player->unlock();
-	}
-}
-*/
-
-void SuiManager::handleStructureStatus(uint32 boxID, PlayerCreature* player, uint32 cancel, int value) {
+void SuiManager::handleStructureStatus(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 
 }
 
-void SuiManager::handleStructureDestroyConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value) {
-	Locker locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleStructureDestroyConfirm(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
-	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
-
-	if (!box->isListBox() || cancel > 0)
-		return;
-
-	SuiListBox* listBox = (SuiListBox*) box.get();
-
-	ManagedReference<SceneObject*> usingObject = listBox->getUsingObject();
+	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
 
 	if (usingObject == NULL || !usingObject->isStructureObject())
 		return;
 
 	StructureObject* structureObject = (StructureObject*) usingObject.get();
 
-	Locker structureLocker(structureObject, player);
-
+	Locker _lock(structureObject, player);
 	structureObject->sendDestroyCodeTo(player);
 }
 
-void SuiManager::handleStructureDestroyCode(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& input) {
-	Locker locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleStructureDestroyCode(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 
-	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
-
-	if (!box->isInputBox() || cancel > 0)
+	if (args->size() < 1)
 		return;
 
-	SuiInputBox* inputBox = (SuiInputBox*) box.get();
+	int destroyCode = Integer::valueOf(args->get(0).toString());
 
-	ManagedReference<SceneObject*> usingObject = inputBox->getUsingObject();
+	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
 
 	if (usingObject == NULL || !usingObject->isStructureObject())
 		return;
@@ -2775,9 +1164,9 @@ void SuiManager::handleStructureDestroyCode(uint32 boxID, PlayerCreature* player
 	if (structureManager == NULL)
 		return;
 
-	Locker structureLocker(structureObject, player);
+	Locker _lock(structureObject, player);
 
-	if (structureObject->getDestroyCode() == Integer::valueOf(input)) {
+	if (structureObject->getDestroyCode() == destroyCode) {
 		structureManager->redeedStructure(player, structureObject);
 	} else {
 		player->sendSystemMessage("@player_structure:incorrect_destroy_code"); //You have entered an incorrect code. You will have to issue the /destroyStructure again if you wish to continue.
@@ -2785,25 +1174,11 @@ void SuiManager::handleStructureDestroyCode(uint32 boxID, PlayerCreature* player
 	}
 }
 
-void SuiManager::handleCityEnableZoning(int boxID, PlayerCreature* player, uint32 cancel, int value) {
-	Locker locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleCityEnableZoning(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isMessageBox() || cancel != 0)
 		return;
 
-	ManagedReference<SuiBox*> suiBox = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
-
-	if (cancel != 0)
-		return;
-
-	if (!suiBox->isMessageBox())
-		return;
-
-	SuiMessageBox* messageBox = (SuiMessageBox*) suiBox.get();
-
-	ManagedReference<SceneObject*> usingObject = messageBox->getUsingObject();
+	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
 
 	if (usingObject == NULL || !usingObject->isBuildingObject())
 		return;
@@ -2815,32 +1190,22 @@ void SuiManager::handleCityEnableZoning(int boxID, PlayerCreature* player, uint3
 
 	CityHallObject* cityHall = (CityHallObject*) buildingObject;
 
-	Locker clocker(cityHall, player);
-
+	Locker _lock(cityHall, player);
 	cityHall->toggleZoningEnabled(player);
 }
 
-void SuiManager::handleChangeCityName(int boxID, PlayerCreature* player, int cancel, const String& input) {
-	Locker locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleChangeCityName(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 
-	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
-
-	if (!box->isInputBox())
+	if (args->size() < 1)
 		return;
 
-	SuiInputBox* inputBox = (SuiInputBox*) box.get();
+	String cityName = args->get(0).toString();
 
-	ManagedReference<SceneObject*> usingObject = inputBox->getUsingObject();
+	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
 
-	if (usingObject == NULL)
-		return;
-
-	if (!usingObject->isBuildingObject())
+	if (usingObject == NULL || !usingObject->isBuildingObject())
 		return;
 
 	BuildingObject* building = (BuildingObject*) usingObject.get();
@@ -2850,43 +1215,31 @@ void SuiManager::handleChangeCityName(int boxID, PlayerCreature* player, int can
 
 	CityHallObject* cityHall = (CityHallObject*) building;
 
-	Locker clocker(cityHall, player);
-
-	//TODO: Handle cancel
+	Locker _lock(cityHall, player);
 
 	ManagedReference<CityManager*> cityManager = player->getZone()->getCityManager();
 
-	if (cityManager->validateCityName(input)) {
-		cityManager->changeCityName(cityHall, player, input);
+	if (cityManager->validateCityName(cityName)) {
+		cityManager->changeCityName(cityHall, player, cityName);
 	} else {
 		player->sendSystemMessage("Invalid name specified for city.");
-		box->clearOptions();
-		player->addSuiBox(box);
-		player->sendMessage(box->generateMessage());
+		player->addSuiBox(suiBox);
+		player->sendMessage(suiBox->generateMessage());
 	}
 }
 
-void SuiManager::handleCreateCity(int boxID, PlayerCreature* player, int cancel, const String& input) {
-	Locker locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleCreateCity(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 
-	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
-
-	if (!box->isInputBox())
+	if (args->size() < 1)
 		return;
 
-	SuiInputBox* inputBox = (SuiInputBox*) box.get();
+	String cityName = args->get(0).toString();
 
-	ManagedReference<SceneObject*> usingObject = inputBox->getUsingObject();
+	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
 
-	if (usingObject == NULL)
-		return;
-
-	if (!usingObject->isBuildingObject())
+	if (usingObject == NULL || !usingObject->isBuildingObject())
 		return;
 
 	BuildingObject* building = (BuildingObject*) usingObject.get();
@@ -2896,36 +1249,30 @@ void SuiManager::handleCreateCity(int boxID, PlayerCreature* player, int cancel,
 
 	CityHallObject* cityHall = (CityHallObject*) building;
 
-	Locker clocker(cityHall, player);
-
-	//TODO: Handle cancel
+	Locker _lock(cityHall, player);
 
 	ManagedReference<CityManager*> cityManager = player->getZone()->getCityManager();
 
-	if (cityManager->validateCityName(input)) {
-		cityManager->createNewCity(cityHall, player, input);
+	if (cityManager->validateCityName(cityName)) {
+		cityManager->createNewCity(cityHall, player, cityName);
 	} else {
 		player->sendSystemMessage("Invalid name specified for city.");
-		box->clearOptions();
-		player->addSuiBox(box);
-		player->sendMessage(box->generateMessage());
+		player->addSuiBox(suiBox);
+		player->sendMessage(suiBox->generateMessage());
 	}
 }
 
-void SuiManager::handleManageMilitia(int boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index) {
-	Locker _locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleManageMilitia(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
-	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
-
-	if (!box->isListBox() || cancel > 0)
+	if (args->size() < 2)
 		return;
 
-	SuiListBox* listBox = (SuiListBox*) box.get();
+	bool otherPressed = Bool::valueOf(args->get(0).toString());
+	int index = Integer::valueOf(args->get(1).toString());
+
+	SuiListBox* listBox = (SuiListBox*) suiBox;
 
 	ManagedReference<SceneObject*> obj = listBox->getUsingObject();
 
@@ -2939,7 +1286,7 @@ void SuiManager::handleManageMilitia(int boxID, PlayerCreature* player, uint32 c
 
 	CityHallObject* city = (CityHallObject*) building;
 
-	Locker _cityLock(city, player);
+	Locker _lock(city, player);
 
 	ManagedReference<Zone*> zone = city->getZone();
 
@@ -2953,28 +1300,21 @@ void SuiManager::handleManageMilitia(int boxID, PlayerCreature* player, uint32 c
 			ManagedReference<CityManager*> cityManager = zone->getCityManager();
 
 			uint64 playerID = listBox->getMenuObjectID(index);
-
 			cityManager->removeMilitiaMember(city, player, playerID);
 		}
 	}
 }
 
-void SuiManager::handleAddMilitia(int boxID, PlayerCreature* player, uint32 cancel, const String& name) {
-	Locker _locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleAddMilitia(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 
-	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
-
-	player->removeSuiBox(boxID);
-
-	if (!box->isInputBox() || cancel > 0)
+	if (args->size() < 1)
 		return;
 
-	SuiInputBox* inputBox = (SuiInputBox*) box.get();
+	String playerName = args->get(0).toString();
 
-	ManagedReference<SceneObject*> obj = inputBox->getUsingObject();
+	ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
 	if (obj == NULL || !obj->isBuildingObject())
 		return;
@@ -2986,7 +1326,7 @@ void SuiManager::handleAddMilitia(int boxID, PlayerCreature* player, uint32 canc
 
 	CityHallObject* city = (CityHallObject*) building;
 
-	Locker _cityLock(city, player);
+	Locker _lock(city, player);
 
 	ManagedReference<Zone*> zone = city->getZone();
 
@@ -2994,27 +1334,21 @@ void SuiManager::handleAddMilitia(int boxID, PlayerCreature* player, uint32 canc
 		return;
 
 	ManagedReference<CityManager*> cityManager = zone->getCityManager();
-
-	cityManager->addMilitiaMember(city, player, name);
+	cityManager->addMilitiaMember(city, player, playerName);
 }
 
-void SuiManager::handleFindCommand(int boxID, PlayerCreature* player, uint32 cancel, int value) {
-	Locker _locker(player);
-
-	if (!player->hasSuiBox(boxID))
+void SuiManager::handleFindCommand(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
-	ManagedReference<SuiBox*> box = player->getSuiBox(boxID);
+	if (args->size() < 1)
+		return;
 
-	player->removeSuiBox(boxID);
+	int index = Integer::valueOf(args->get(0).toString());
 
-	if (box->isListBox() && cancel != 1) {
+	SuiListBox* listBox = (SuiListBox*) suiBox;
 
-		SuiListBox* listBox = (SuiListBox*) box.get();
+	uint8 maploctype = listBox->getMenuObjectID(index);
 
-		uint8 maploctype = listBox->getMenuObjectID(value);
-
-		FindCommand::findPlanetaryObject(player, maploctype);
-
-	}
+	FindCommand::findPlanetaryObject(player, maploctype);
 }

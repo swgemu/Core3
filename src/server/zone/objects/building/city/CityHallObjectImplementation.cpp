@@ -158,7 +158,7 @@ void CityHallObjectImplementation::sendCityNamePromptTo(PlayerCreature* player, 
 	int windowType = SuiWindowType::CITY_CREATE;
 
 	if (!newCity)
-		windowType = SuiWindowType::CITY_SETNAME;
+		windowType = SuiWindowType::CITY_SET_NAME;
 
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, windowType, 0x00);
 
@@ -314,7 +314,7 @@ void CityHallObjectImplementation::sendAddMilitiaMemberTo(PlayerCreature* player
 		return;
 	}
 
-	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::CITY_ADDMILITIA);
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::CITY_ADD_MILITIA);
 	inputBox->setPromptTitle("@city/city:militia_new_t"); //Add Militia Member
 	inputBox->setPromptText("@city/city:militia_new_d"); //Enter the name of the person you wish to add to the militia (the name must be entered exactly as it appears in game).  In order to join the city militia, the player must be a citizen of this city and must be standing near the city management terminal.
 	inputBox->setUsingObject(_this);
@@ -363,7 +363,7 @@ void CityHallObjectImplementation::sendEnableZoningTo(PlayerCreature* player) {
 	}
 
 	if (!zoningEnabled) {
-		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::CITY_ENABLEZONING);
+		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::CITY_ENABLE_ZONING);
 		suiBox->setPromptTitle("@city/city:zoning_t"); //Zoning
 		suiBox->setPromptText("@city/city:zoning_d"); //If you enable zoning laws in your city, other players will not be able to build structures in your city without permission.  You and your militia can grant permission with the /grantZoningRights command.  This command gives the target the right to build structures in your city for 24 hours.
 		suiBox->setUsingObject(_this);
