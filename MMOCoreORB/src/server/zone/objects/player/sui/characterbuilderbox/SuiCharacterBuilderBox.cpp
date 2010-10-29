@@ -143,7 +143,7 @@ void SuiCharacterBuilderBoxImplementation::_serializationHelperMethod() {
 
 }
 
-SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(PlayerCreature* player, CharacterBuilderMenuNode* root) : SuiListBoxImplementation(player, SuiWindowType::CHARACTERBUILDERITEMSELECT, 0) {
+SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(PlayerCreature* player, CharacterBuilderMenuNode* root) : SuiListBoxImplementation(player, SuiWindowType::CHARACTER_BUILDER_LIST, 0) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl(59):  		Logger.setLoggingName("SuiCharacterBuilderBox");
 	Logger::setLoggingName("SuiCharacterBuilderBox");

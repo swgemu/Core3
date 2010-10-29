@@ -71,7 +71,7 @@ public:
 		session->startEntertaining(dance, animation, true);
 	}
 
-	static void sendAvailableDances(PlayerCreature* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::START_DANCING) {
+	static void sendAvailableDances(PlayerCreature* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::DANCING_START) {
 		Reference<SuiListBox*> sui = new SuiListBox(player, suiType);
 		sui->setPromptTitle("@performance:available_dances");
 		sui->setPromptText("@performance:select_dance");

@@ -51,8 +51,7 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 				stffile, "no_qualify");
 		player->sendMessage(fail);
 
-		ManagedReference<SuiListBox*> suiBox = new SuiListBox(player,
-				SuiWindowType::DENY_TRAINING_LIST);
+		ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::TEACH_DENY);
 
 		suiBox->setPromptTitle("@skill_teacher:no_qualify_title");
 		suiBox->setPromptText("@skill_teacher:no_qualify_prompt");

@@ -14,10 +14,9 @@
 class SuiEventNotificationCallback : public MessageCallback {
 	uint32 opcode;
 	uint32 cancel;
-	uint32 unk1;
-	uint32 unk2;
-	UnicodeString value;
-	UnicodeString value2;
+	uint32 listSize1;
+	uint32 listSize2;
+	Vector<UnicodeString> arguments;
 
 public:
 	SuiEventNotificationCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
@@ -30,23 +29,25 @@ public:
 		opcode = message->parseInt();
 
 		cancel = message->parseInt();
-		unk1 = message->parseInt();
-		unk2 = message->parseInt();
+		listSize1 = message->parseInt();
+		listSize2 = message->parseInt();
 
-		if (unk2 != 0)
-			message->parseUnicode(value);
-		if (unk2 > 1)
-			message->parseUnicode(value2);
+		for (int i = 0; i < listSize1; ++i) {
+			UnicodeString arg;
+			message->parseUnicode(arg);
+			arguments.add(arg);
+		}
 	}
 
 	void run() {
 		ManagedReference<SceneObject*> playerClient = client->getPlayer();
+
 		if (playerClient == NULL)
 			return;
 
 		PlayerCreature* playerCreature = (PlayerCreature*) playerClient.get();
-		server->getSuiManager()->handleSuiEventNotification(opcode, playerCreature, cancel, value.toString(), value2.toString());
 
+		server->getSuiManager()->handleSuiEventNotification(opcode, playerCreature, cancel, &arguments);
 	}
 };
 

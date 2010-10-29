@@ -49,17 +49,24 @@ which carries forward this exception.
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
+#include "server/zone/MessageCallbackFactory.h"
+#include "server/zone/packets/MessageCallback.h"
+
 namespace server {
  namespace zone {
   namespace objects {
    namespace player {
     class PlayerCreature;
+     namespace sui {
+      class SuiBox;
+     }
    }
   }
  }
 }
 
 using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::sui;
 
 namespace server {
  namespace zone {
@@ -69,94 +76,97 @@ namespace server {
 	  class SuiManager : public Logger {
 	  	ZoneProcessServerImplementation* server;
 
+	  	//MessageCallbackFactory<MessageCallback* (PlayerCreature*, SuiBox*, uint32, Vector<UnicodeString>*), uint32> messageCallbackFactory;
+
 	  public:
 	  	SuiManager(ZoneProcessServerImplementation* serv);
 
-	  	void handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, const String& value2);
+	  	void registerMessages();
+	  	void handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleTuneCrystal(uint32 boxID, PlayerCreature* player, uint32 cancel);
-	  	void handleChangeColorCrystal(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
 
-	  	void handleMessageoftheDay(uint32 boxID, PlayerCreature* player, uint32 cancel);
-	  	void handleSetMOTD(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& returnString);
 
-	  	void handleStartMusic(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& song, bool change = false);
-	  	void handleStartDancing(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& dance, bool change = false);
+	  	//Handlers
+	  	void handleMessageoftheDay(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleSetMOTD(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleSurveyToolRange(uint32 boxID, PlayerCreature* player, uint32 cancel, int range);
-	  	void handleSampleRadioactiveConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
-	  	void handleSurveyConcentratedMinigame(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
-	  	void handleSurveyConcentratedMinigame2(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleStartMusic(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleStartDancing(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleRepairWeapon(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
-	  	void handleRepairArmor(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemindex);
+	  	void handleSurveyToolRange(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleSampleRadioactiveConfirm(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleSurveyConcentratedMinigame(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleSurveyConcentratedMinigame2(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+
+	  	void handleRepairWeapon(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleRepairArmor(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
 	  	//Structure Stuff
-	  	void handleStructureStatus(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
-	  	void handleStructureDestroyConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
-	  	void handleStructureDestroyCode(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& input);
+	  	void handleStructureStatus(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleStructureDestroyConfirm(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleStructureDestroyCode(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleTicketPurchaseMessageBox(uint32 boxID, PlayerCreature* player);
-	  	void handleTicketCollectorRespones(uint32 boxID, PlayerCreature* player, uint32 cancel, int ticketIndex);
+	  	void handleTicketPurchaseMessageBox(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleTicketCollectorResponse(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleCodeForRedeed(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& extra);
-	  	void handleRedeedStructure(uint32 boxID, PlayerCreature* player, uint32 cancel, const int extra);
-	  	void handleRefreshStatusListBox(uint32 boxID, PlayerCreature* player, uint32 cancel, const int extra);
-	  	void handleSetObjectName(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& name);
-	  	void handleManageMaintenance(uint32 boxID, PlayerCreature* player,uint32 cancel, const int amount);
-	  	void handleAddEnergy(uint32 boxID, PlayerCreature* player,uint32 cancel, const int amount);
+	  	void handleCodeForRedeed(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleRedeedStructure(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleRefreshStatusListBox(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleSetObjectName(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleManageMaintenance(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleAddEnergy(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleColorPicker(uint32 boxID, PlayerCreature* player, uint32 cancel, const String& value, int var);
+	  	void handleColorPicker(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleBankTransfer(uint32 boxID, PlayerCreature* player, int cash, int bank);
-	  	void handleFishingAction(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleBankTransfer(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleFishingAction(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleBlueFrogItemRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemIndex);
-	  	void handleWoundTerminalRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemIndex);
-	  	void handleStateTerminalRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int itemIndex);
+	  	void handleBlueFrogItemRequest(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleWoundTerminalRequest(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleStateTerminalRequest(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleDiagnose(uint32 boxID, PlayerCreature* player);
-	  	void handleFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
-	  	void handleGiveFreeResource(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
+	  	void handleDiagnose(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleFreeResource(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleGiveFreeResource(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleCloneConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
-	  	void handleCloneRequest(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
-	  	void handleConsentBox(uint32 boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleCloneConfirm(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleCloneRequest(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleConsentBox(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleDenyTrainingList(uint32 boxID, PlayerCreature* player);
+	  	void handleDenyTrainingList(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleTeachPlayer(uint32 boxID, PlayerCreature* player, int value, uint32 cancel);
-	  	void handleTeachSkill(uint32 boxID, PlayerCreature* player, uint32 cancel);
+	  	void handleTeachPlayer(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleTeachSkill(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleInsuranceMenu(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
-	  	void handleInsureAllConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel);
+	  	void handleInsuranceMenu(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleInsureAllConfirm(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleBankTipConfirm(uint32 boxID, PlayerCreature* player, uint32 cancel);
-	  	void handleSlicingMenu(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
-	  	void handleRangerWhatToTrackBox(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleBankTipConfirm(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleSlicingMenu(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleRangerWhatToTrackBox(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
-	  	void handleInsertFactorySchem(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
+	  	void handleInsertFactorySchem2(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleInsertFactorySchem3(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleSellJunkLootSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
-	  	void handleBanListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
-	  	void handleCommandsListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
-	  	void handleAccountListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
-	  	void handleCharacterListSelection(uint32 boxid, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleSellJunkLootSelection(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleBanListSelection(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleCommandsListSelection(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleAccountListSelection(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleCharacterListSelection(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleCharacterBuilderSelectItem(uint32 boxid, PlayerCreature* player, int cancel, int index);
+	  	void handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleChangeCityName(int boxID, PlayerCreature* player, int cancel, const String& input);
-	  	void handleCreateCity(int boxID, PlayerCreature* player, int cancel, const String& input);
-	  	void handleCityEnableZoning(int boxID, PlayerCreature* player, uint32 cancel, int value);
-	  	void handleManageMilitia(int boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
-	  	void handleAddMilitia(int boxID, PlayerCreature* player, uint32 cancel, const String& name);
+	  	void handleChangeCityName(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleCreateCity(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleCityEnableZoning(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleManageMilitia(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleAddMilitia(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleFindCommand(int boxID, PlayerCreature* player, uint32 cancel, int value);
+	  	void handleFindCommand(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleGamblingSlotPayout(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
-	  	void handleGamblingSlot(uint32 boxID, PlayerCreature* player, uint32 cancel, bool otherPressed, int index);
-	  	void handleGamblingRoulette(uint32 boxID, PlayerCreature* player, uint32 cancel, int index);
+	  	void handleGamblingSlotPayout(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleGamblingSlot(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
+	  	void handleGamblingRoulette(PlayerCreature* player, SuiBox* sui, uint32 cancel, Vector<UnicodeString>* args);
 
 	  };
 	  }

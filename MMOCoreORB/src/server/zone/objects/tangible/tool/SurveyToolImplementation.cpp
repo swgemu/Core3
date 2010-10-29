@@ -339,7 +339,7 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* player, const String
 
 void SurveyToolImplementation::sendRadioactiveWarning(PlayerCreature* player) {
 
-	ManagedReference<SuiMessageBox* > messageBox = new SuiMessageBox(player, SuiWindowType::SAMPLERADIOACTIVECONFIRM);
+	ManagedReference<SuiMessageBox* > messageBox = new SuiMessageBox(player, SuiWindowType::SAMPLE_RADIOACTIVE_CONFIRM);
 	messageBox->setPromptTitle("Confirm Radioactive Sample");
 	messageBox->setPromptText("Sampling a radioactive material will result in harmful effects. Are you sure you wish to continue?");
 	messageBox->setCancelButton(true, "");
