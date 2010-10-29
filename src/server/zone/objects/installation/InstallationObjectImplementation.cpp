@@ -250,7 +250,7 @@ void InstallationObjectImplementation::handleStructureAddEnergy(PlayerCreature* 
 	try {
 		StringBuffer sstext, ssTotalEnergy;
 
-		ManagedReference<SuiTransferBox*> energyBox = new SuiTransferBox(player, SuiWindowType::ADD_ENERGY);
+		ManagedReference<SuiTransferBox*> energyBox = new SuiTransferBox(player, SuiWindowType::STRUCTURE_ADD_ENERGY);
 		energyBox->setUsingObject(_this);
 		energyBox->setPromptTitle("@player_structure:add_power");
 
