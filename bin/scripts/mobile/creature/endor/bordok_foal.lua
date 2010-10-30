@@ -9,6 +9,7 @@ bordok_foal = Creature:new {
 	damageMax = 250,
 	baseXp = 2543,
 	baseHAM = 9000,
+	baseHAMmax = 9000,
 	armor = 0,
 	resists = {0,0,-1,70,70,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bordok_foal = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bordok_foal.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

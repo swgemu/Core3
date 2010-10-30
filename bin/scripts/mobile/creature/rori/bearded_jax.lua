@@ -9,6 +9,7 @@ bearded_jax = Creature:new {
 	damageMax = 110,
 	baseXp = 430,
 	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
 	resists = {0,5,30,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bearded_jax = Creature:new {
 	creatureBitmask = STALKER + PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bearded_jax.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

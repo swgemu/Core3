@@ -9,9 +9,10 @@ plodding_falumpaset = Creature:new {
 	damageMax = 90,
 	baseXp = 292,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
-	meatType = "meat_domesticated",
+	meatType = "",
 	meatAmount = 230,
 	hideType = "hide_leathery",
 	hideAmount = 130,
@@ -24,9 +25,9 @@ plodding_falumpaset = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/falumpaset.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"stunattack","stunChance=50"}
 	}

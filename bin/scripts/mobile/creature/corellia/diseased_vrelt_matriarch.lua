@@ -9,6 +9,7 @@ diseased_vrelt_matriarch = Creature:new {
 	damageMax = 110,
 	baseXp = 514,
 	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
 	resists = {5,5,0,0,15,0,15,-1,-1},
 	meatType = "meat_carnivore",
@@ -20,13 +21,13 @@ diseased_vrelt_matriarch = Creature:new {
 	milk = 0,
 	tamingChance = 0.250000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/vrelt.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_toxicgreen"},
 	attacks = {
 		{"milddisease",""},
 		{"posturedownattack","postureDownChance=50"}

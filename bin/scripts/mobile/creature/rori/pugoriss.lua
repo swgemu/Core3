@@ -9,6 +9,7 @@ pugoriss = Creature:new {
 	damageMax = 150,
 	baseXp = 609,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {10,10,0,0,15,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ pugoriss = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/pugoriss.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ injured_purbole = Creature:new {
 	damageMax = 150,
 	baseXp = 430,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ injured_purbole = Creature:new {
 	creatureBitmask = STALKER,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/purbole.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

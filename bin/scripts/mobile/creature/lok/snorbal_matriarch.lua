@@ -9,6 +9,7 @@ snorbal_matriarch = Creature:new {
 	damageMax = 450,
 	baseXp = 4370,
 	baseHAM = 10800,
+	baseHAMmax = 10800,
 	armor = 0,
 	resists = {35,35,0,-1,-1,0,0,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ snorbal_matriarch = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/snorbal_matriarch.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

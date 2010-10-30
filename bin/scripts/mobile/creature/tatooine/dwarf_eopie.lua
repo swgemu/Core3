@@ -9,6 +9,7 @@ dwarf_eopie = Creature:new {
 	damageMax = 45,
 	baseXp = 62,
 	baseHAM = 100,
+	baseHAMmax = 100,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ dwarf_eopie = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dwarf_eopie.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

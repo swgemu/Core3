@@ -9,6 +9,7 @@ dune_lizard = Creature:new {
 	damageMax = 180,
 	baseXp = 1257,
 	baseHAM = 4550,
+	baseHAMmax = 4550,
 	armor = 0,
 	resists = {0,15,0,45,-1,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -20,13 +21,13 @@ dune_lizard = Creature:new {
 	milk = 0,
 	tamingChance = 0.250000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER + STALKER + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dune_lizard.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}
 	}

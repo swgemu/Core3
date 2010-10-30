@@ -9,6 +9,7 @@ spineflap_gatherer = Creature:new {
 	damageMax = 90,
 	baseXp = 292,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -24,7 +25,7 @@ spineflap_gatherer = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/capper_spineflap.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

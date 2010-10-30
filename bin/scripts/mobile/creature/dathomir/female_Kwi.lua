@@ -9,6 +9,7 @@ female_Kwi = Creature:new {
 	damageMax = 130,
 	baseXp = 430,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {15,15,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,9 +25,9 @@ female_Kwi = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kwi.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}
 	}

@@ -9,6 +9,7 @@ lesser_dewback = Creature:new {
 	damageMax = 55,
 	baseXp = 292,
 	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
 	resists = {15,0,10,0,-1,-1,-1,-1,-1},
 	meatType = "meat_reptilian",
@@ -24,7 +25,7 @@ lesser_dewback = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dewback.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

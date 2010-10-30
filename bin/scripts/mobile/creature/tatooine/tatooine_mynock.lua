@@ -9,6 +9,7 @@ tatooine_mynock = Creature:new {
 	damageMax = 45,
 	baseXp = 45,
 	baseHAM = 100,
+	baseHAMmax = 100,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ tatooine_mynock = Creature:new {
 	creatureBitmask = STALKER,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mynock.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

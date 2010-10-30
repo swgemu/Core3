@@ -9,6 +9,7 @@ motley_kaadu = Creature:new {
 	damageMax = 75,
 	baseXp = 187,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ motley_kaadu = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kaadu.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

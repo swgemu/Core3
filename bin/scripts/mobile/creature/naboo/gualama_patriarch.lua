@@ -9,6 +9,7 @@ gualama_patriarch = Creature:new {
 	damageMax = 130,
 	baseXp = 609,
 	baseHAM = 1700,
+	baseHAMmax = 1700,
 	armor = 0,
 	resists = {15,15,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ gualama_patriarch = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gualama_patriarch.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

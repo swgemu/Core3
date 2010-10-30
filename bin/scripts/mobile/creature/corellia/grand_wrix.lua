@@ -9,6 +9,7 @@ grand_wrix = Creature:new {
 	damageMax = 220,
 	baseXp = 2637,
 	baseHAM = 6550,
+	baseHAMmax = 6550,
 	armor = 0,
 	resists = {35,30,0,50,-1,35,-1,0,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ grand_wrix = Creature:new {
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/grand_wrix.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

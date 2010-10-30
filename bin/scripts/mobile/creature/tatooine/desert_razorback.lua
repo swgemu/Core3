@@ -9,6 +9,7 @@ desert_razorback = Creature:new {
 	damageMax = 240,
 	baseXp = 2443,
 	baseHAM = 7550,
+	baseHAMmax = 7550,
 	armor = 0,
 	resists = {0,0,0,0,-1,0,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ desert_razorback = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/zucca_boar.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

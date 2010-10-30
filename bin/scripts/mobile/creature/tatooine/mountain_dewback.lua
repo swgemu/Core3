@@ -9,6 +9,7 @@ mountain_dewback = Creature:new {
 	damageMax = 200,
 	baseXp = 1609,
 	baseHAM = 5550,
+	baseHAMmax = 5550,
 	armor = 0,
 	resists = {20,0,0,40,40,-1,-1,-1,-1},
 	meatType = "meat_reptilian",
@@ -24,7 +25,7 @@ mountain_dewback = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mountain_dewback.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

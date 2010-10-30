@@ -9,6 +9,7 @@ pouncing_jax = Creature:new {
 	damageMax = 160,
 	baseXp = 609,
 	baseHAM = 1700,
+	baseHAMmax = 1700,
 	armor = 0,
 	resists = {0,0,10,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ pouncing_jax = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bearded_jax.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

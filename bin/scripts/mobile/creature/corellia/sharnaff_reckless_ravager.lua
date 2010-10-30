@@ -9,6 +9,7 @@ sharnaff_reckless_ravager = Creature:new {
 	damageMax = 340,
 	baseXp = 3460,
 	baseHAM = 9800,
+	baseHAMmax = 9800,
 	armor = 0,
 	resists = {15,15,0,20,20,20,20,20,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ sharnaff_reckless_ravager = Creature:new {
 	creatureBitmask = KILLER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/sharnaff.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

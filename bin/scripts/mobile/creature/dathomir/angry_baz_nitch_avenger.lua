@@ -9,6 +9,7 @@ angry_baz_nitch_avenger = Creature:new {
 	damageMax = 240,
 	baseXp = 2543,
 	baseHAM = 5550,
+	baseHAMmax = 5550,
 	armor = 0,
 	resists = {0,35,0,0,0,0,0,0,-1},
 	meatType = "meat_wild",
@@ -20,13 +21,13 @@ angry_baz_nitch_avenger = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/baz_nitch.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}
 	}

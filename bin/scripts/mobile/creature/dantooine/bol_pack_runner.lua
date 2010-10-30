@@ -9,6 +9,7 @@ bol_pack_runner = Creature:new {
 	damageMax = 240,
 	baseXp = 2637,
 	baseHAM = 9100,
+	baseHAMmax = 9100,
 	armor = 0,
 	resists = {25,25,0,0,-1,-1,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bol_pack_runner = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bol_pack_runner.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ kwi = Creature:new {
 	damageMax = 110,
 	baseXp = 356,
 	baseHAM = 300,
+	baseHAMmax = 300,
 	armor = 0,
 	resists = {10,10,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ kwi = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kwi.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

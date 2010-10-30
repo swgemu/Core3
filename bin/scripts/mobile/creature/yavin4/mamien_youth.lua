@@ -9,6 +9,7 @@ mamien_youth = Creature:new {
 	damageMax = 90,
 	baseXp = 235,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ mamien_youth = Creature:new {
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mamien.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

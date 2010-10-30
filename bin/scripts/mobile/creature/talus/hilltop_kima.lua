@@ -9,6 +9,7 @@ hilltop_kima = Creature:new {
 	damageMax = 210,
 	baseXp = 2006,
 	baseHAM = 8000,
+	baseHAMmax = 8000,
 	armor = 0,
 	resists = {0,0,0,-1,50,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ hilltop_kima = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kima.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

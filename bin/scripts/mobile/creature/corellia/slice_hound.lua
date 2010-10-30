@@ -9,6 +9,7 @@ slice_hound = Creature:new {
 	damageMax = 130,
 	baseXp = 292,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ slice_hound = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/corellian_slice_hound.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

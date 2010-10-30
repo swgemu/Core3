@@ -9,6 +9,7 @@ stintaril = Creature:new {
 	damageMax = 160,
 	baseXp = 714,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ stintaril = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/stintaril.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

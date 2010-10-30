@@ -9,6 +9,7 @@ female_forest_slice_hound = Creature:new {
 	damageMax = 140,
 	baseXp = 356,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ female_forest_slice_hound = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/forest_slice_hound.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ domesticated_snorbal = Creature:new {
 	damageMax = 270,
 	baseXp = 3005,
 	baseHAM = 9600,
+	baseHAMmax = 9600,
 	armor = 0,
 	resists = {40,40,0,-1,-1,-1,-1,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ domesticated_snorbal = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/snorbal.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

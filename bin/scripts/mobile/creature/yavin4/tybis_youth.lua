@@ -9,6 +9,7 @@ tybis_youth = Creature:new {
 	damageMax = 180,
 	baseXp = 1257,
 	baseHAM = 4550,
+	baseHAMmax = 4550,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ tybis_youth = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tybis_youth.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

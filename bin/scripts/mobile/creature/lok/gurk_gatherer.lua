@@ -9,6 +9,7 @@ gurk_gatherer = Creature:new {
 	damageMax = 280,
 	baseXp = 3005,
 	baseHAM = 9100,
+	baseHAMmax = 9100,
 	armor = 0,
 	resists = {35,30,0,0,0,0,40,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ gurk_gatherer = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gurk.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

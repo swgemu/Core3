@@ -9,6 +9,7 @@ borgle_life_sapper = Creature:new {
 	damageMax = 230,
 	baseXp = 2637,
 	baseHAM = 7000,
+	baseHAMmax = 7000,
 	armor = 0,
 	resists = {20,30,-1,-1,35,35,50,-1,-1},
 	meatType = "meat_carnivore",
@@ -20,13 +21,13 @@ borgle_life_sapper = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER + STALKER + PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/borgle.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_red"},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"},
 		{"mediumpoison",""}

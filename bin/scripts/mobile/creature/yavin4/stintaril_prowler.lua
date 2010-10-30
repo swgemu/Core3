@@ -9,6 +9,7 @@ stintaril_prowler = Creature:new {
 	damageMax = 900,
 	baseXp = 7945,
 	baseHAM = 13500,
+	baseHAMmax = 13500,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -20,13 +21,13 @@ stintaril_prowler = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/stintaril.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_red"},
 	attacks = {
 		{"stunattack","stunChance=50"}
 	}

@@ -9,6 +9,7 @@ skreeg_female = Creature:new {
 	damageMax = 180,
 	baseXp = 960,
 	baseHAM = 3200,
+	baseHAMmax = 3200,
 	armor = 0,
 	resists = {5,15,0,-1,0,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ skreeg_female = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/skreeg.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

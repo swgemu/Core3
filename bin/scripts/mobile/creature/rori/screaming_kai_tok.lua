@@ -9,6 +9,7 @@ screaming_kai_tok = Creature:new {
 	damageMax = 220,
 	baseXp = 1803,
 	baseHAM = 3200,
+	baseHAMmax = 3200,
 	armor = 0,
 	resists = {20,10,35,45,45,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,9 +25,9 @@ screaming_kai_tok = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kai_tok.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_green"},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}
 	}

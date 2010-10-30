@@ -9,6 +9,7 @@ blushing_jax = Creature:new {
 	damageMax = 230,
 	baseXp = 2730,
 	baseHAM = 9200,
+	baseHAMmax = 9200,
 	armor = 0,
 	resists = {35,30,50,-1,-1,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ blushing_jax = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/blushing_jax.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

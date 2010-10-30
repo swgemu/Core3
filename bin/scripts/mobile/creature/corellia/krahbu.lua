@@ -9,6 +9,7 @@ krahbu = Creature:new {
 	damageMax = 90,
 	baseXp = 292,
 	baseHAM = 1100,
+	baseHAMmax = 1100,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ krahbu = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/krahbu.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ seething_bol_crusher = Creature:new {
 	damageMax = 360,
 	baseXp = 4279,
 	baseHAM = 10300,
+	baseHAMmax = 10300,
 	armor = 0,
 	resists = {65,45,80,-1,0,0,0,100,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ seething_bol_crusher = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/seething_bol_crusher.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

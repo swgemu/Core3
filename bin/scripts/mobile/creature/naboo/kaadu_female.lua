@@ -9,6 +9,7 @@ kaadu_female = Creature:new {
 	damageMax = 140,
 	baseXp = 430,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ kaadu_female = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kaadu.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ fanned_rawl = Creature:new {
 	damageMax = 110,
 	baseXp = 356,
 	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_reptilian",
@@ -24,7 +25,7 @@ fanned_rawl = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/fanned_rawl.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

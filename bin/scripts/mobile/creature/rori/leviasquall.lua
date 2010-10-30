@@ -9,6 +9,7 @@ leviasquall = Creature:new {
 	damageMax = 190,
 	baseXp = 1426,
 	baseHAM = 5000,
+	baseHAMmax = 5000,
 	armor = 0,
 	resists = {15,0,-1,-1,30,30,-1,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ leviasquall = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/leviasquall.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

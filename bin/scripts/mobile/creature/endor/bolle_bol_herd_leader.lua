@@ -9,6 +9,7 @@ bolle_bol_herd_leader = Creature:new {
 	damageMax = 350,
 	baseXp = 3460,
 	baseHAM = 9800,
+	baseHAMmax = 9800,
 	armor = 0,
 	resists = {35,0,0,-1,50,0,50,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bolle_bol_herd_leader = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bolle_bol.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

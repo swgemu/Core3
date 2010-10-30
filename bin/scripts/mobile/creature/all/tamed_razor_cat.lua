@@ -1,6 +1,6 @@
 tamed_razor_cat = Creature:new {
 	objectName = "@mob/creature_names:rebel_tamed_razor_cat",
-	socialGroup = "Rebel ",
+	socialGroup = "Rebel",
 	pvpFaction = "",
 	faction = "",
 	level = 12,
@@ -9,6 +9,7 @@ tamed_razor_cat = Creature:new {
 	damageMax = 150,
 	baseXp = 514,
 	baseHAM = 1700,
+	baseHAMmax = 1700,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ tamed_razor_cat = Creature:new {
 	creatureBitmask = STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tusk_cat.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

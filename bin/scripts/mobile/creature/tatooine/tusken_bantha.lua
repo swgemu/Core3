@@ -1,6 +1,6 @@
 tusken_bantha = Creature:new {
 	objectName = "@mob/creature_names:tusken_bantha",
-	socialGroup = "Tusken Raider ",
+	socialGroup = "Tusken Raider",
 	pvpFaction = "",
 	faction = "",
 	level = 25,
@@ -9,6 +9,7 @@ tusken_bantha = Creature:new {
 	damageMax = 270,
 	baseXp = 2543,
 	baseHAM = 7000,
+	baseHAMmax = 7000,
 	armor = 0,
 	resists = {20,25,0,50,-1,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ tusken_bantha = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bantha.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

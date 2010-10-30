@@ -9,6 +9,7 @@ domesticated_gurnaset = Creature:new {
 	damageMax = 140,
 	baseXp = 514,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {10,10,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,9 +25,9 @@ domesticated_gurnaset = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gurnaset.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}
 	}

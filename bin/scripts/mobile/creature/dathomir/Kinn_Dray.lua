@@ -9,13 +9,14 @@ Kinn_Dray = Creature:new {
 	damageMax = 1370,
 	baseXp = 11953,
 	baseHAM = 45500,
+	baseHAMmax = 45500,
 	armor = 0,
 	resists = {55,55,35,30,30,30,0,30,-1},
 	meatType = "meat_insect",
 	meatAmount = 11,
-	hideType = "hide_",
+	hideType = "",
 	hideAmount = 0,
-	boneType = "bone_",
+	boneType = "",
 	boneAmount = 0,
 	milk = 0,
 	tamingChance = 0.000000,
@@ -24,9 +25,9 @@ Kinn_Dray = Creature:new {
 	creatureBitmask = KILLER + STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gaping_spider_recluse_giant_kiin_dray.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_toxicgreen"},
 	attacks = {
 		{"creatureareapoison",""},
 		{"strongpoison",""}

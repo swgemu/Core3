@@ -9,6 +9,7 @@ male_swamp_tusk_cat = Creature:new {
 	damageMax = 180,
 	baseXp = 1102,
 	baseHAM = 3900,
+	baseHAMmax = 3900,
 	armor = 0,
 	resists = {0,0,0,-1,35,-1,35,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ male_swamp_tusk_cat = Creature:new {
 	creatureBitmask = KILLER + STALKER,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tusk_cat.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

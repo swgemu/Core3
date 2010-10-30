@@ -9,6 +9,7 @@ bordok_herd_master = Creature:new {
 	damageMax = 420,
 	baseXp = 3915,
 	baseHAM = 10550,
+	baseHAMmax = 10550,
 	armor = 0,
 	resists = {0,0,0,70,70,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bordok_herd_master = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bordok.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

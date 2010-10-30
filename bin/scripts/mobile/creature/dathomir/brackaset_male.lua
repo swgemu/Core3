@@ -9,6 +9,7 @@ brackaset_male = Creature:new {
 	damageMax = 290,
 	baseXp = 3005,
 	baseHAM = 9400,
+	baseHAMmax = 9400,
 	armor = 0,
 	resists = {30,30,20,0,0,-1,-1,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ brackaset_male = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/brackaset.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

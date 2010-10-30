@@ -9,6 +9,7 @@ mature_snorbal_female = Creature:new {
 	damageMax = 300,
 	baseXp = 3097,
 	baseHAM = 9300,
+	baseHAMmax = 9300,
 	armor = 0,
 	resists = {40,40,0,-1,-1,-1,-1,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ mature_snorbal_female = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/elder_snorbal_female.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

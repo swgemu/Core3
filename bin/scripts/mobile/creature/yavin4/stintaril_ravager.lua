@@ -9,6 +9,7 @@ stintaril_ravager = Creature:new {
 	damageMax = 180,
 	baseXp = 960,
 	baseHAM = 3200,
+	baseHAMmax = 3200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ stintaril_ravager = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/stintaril.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,13 +9,14 @@ king_merek_harvester = Creature:new {
 	damageMax = 500,
 	baseXp = 4916,
 	baseHAM = 11500,
+	baseHAMmax = 11500,
 	armor = 0,
 	resists = {60,-1,0,100,50,0,50,0,-1},
 	meatType = "meat_wild",
 	meatAmount = 0,
 	hideType = "hide_leathery",
 	hideAmount = 50,
-	boneType = "bone_",
+	boneType = "",
 	boneAmount = 0,
 	milk = 0,
 	tamingChance = 0.000000,
@@ -24,9 +25,9 @@ king_merek_harvester = Creature:new {
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/king_merek_harvester.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_red"},
 	attacks = {
 		{"creatureareapoison",""},
 		{"blindattack","blindChance=50"}

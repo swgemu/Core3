@@ -9,6 +9,7 @@ surefoot_brackaset = Creature:new {
 	damageMax = 390,
 	baseXp = 4461,
 	baseHAM = 11100,
+	baseHAMmax = 11100,
 	armor = 0,
 	resists = {60,55,60,0,0,-1,-1,80,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ surefoot_brackaset = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/brackaset.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

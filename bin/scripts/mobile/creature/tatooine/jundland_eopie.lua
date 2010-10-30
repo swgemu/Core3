@@ -9,6 +9,7 @@ jundland_eopie = Creature:new {
 	damageMax = 90,
 	baseXp = 292,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,0,10,10,0,10,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ jundland_eopie = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/eopie.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ domesticated_brackaset = Creature:new {
 	damageMax = 180,
 	baseXp = 2006,
 	baseHAM = 8550,
+	baseHAMmax = 8550,
 	armor = 0,
 	resists = {15,15,0,0,-1,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ domesticated_brackaset = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/brackaset.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

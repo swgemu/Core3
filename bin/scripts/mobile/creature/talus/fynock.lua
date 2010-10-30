@@ -9,6 +9,7 @@ fynock = Creature:new {
 	damageMax = 140,
 	baseXp = 514,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ fynock = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/fynock.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

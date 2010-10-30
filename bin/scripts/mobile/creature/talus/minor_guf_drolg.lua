@@ -9,6 +9,7 @@ minor_guf_drolg = Creature:new {
 	damageMax = 90,
 	baseXp = 292,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,10,0,0,0,0,-1,-1},
 	meatType = "meat_reptilian",
@@ -24,7 +25,7 @@ minor_guf_drolg = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/minor_guf_drolg.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

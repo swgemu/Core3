@@ -9,6 +9,7 @@ slum_rat = Creature:new {
 	damageMax = 55,
 	baseXp = 113,
 	baseHAM = 200,
+	baseHAMmax = 200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ slum_rat = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/lesser_desert_womp_rat.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

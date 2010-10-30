@@ -9,6 +9,7 @@ fuzzy_jax = Creature:new {
 	damageMax = 150,
 	baseXp = 514,
 	baseHAM = 1100,
+	baseHAMmax = 1100,
 	armor = 0,
 	resists = {10,25,10,-1,0,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ fuzzy_jax = Creature:new {
 	creatureBitmask = STALKER + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bearded_jax.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

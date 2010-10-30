@@ -9,6 +9,7 @@ potbellied_vrobal = Creature:new {
 	damageMax = 140,
 	baseXp = 430,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,10,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ potbellied_vrobal = Creature:new {
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/vrobal.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

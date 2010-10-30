@@ -9,6 +9,7 @@ ikopi = Creature:new {
 	damageMax = 55,
 	baseXp = 147,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ ikopi = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/ikopi.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

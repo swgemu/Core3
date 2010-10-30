@@ -9,6 +9,7 @@ mutated_kahmurra = Creature:new {
 	damageMax = 240,
 	baseXp = 2637,
 	baseHAM = 7550,
+	baseHAMmax = 7550,
 	armor = 0,
 	resists = {25,25,0,40,40,40,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ mutated_kahmurra = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mutated_kahmurra.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

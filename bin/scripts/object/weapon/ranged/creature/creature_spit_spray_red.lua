@@ -42,7 +42,62 @@
 
 
 object_weapon_ranged_creature_creature_spit_spray_red = object_weapon_ranged_creature_shared_creature_spit_spray_red:new {
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	playerUseMask = ALL,
 
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, 
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	attackType = RANGEDATTACK,
+
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	damageType = KINETIC,
+
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = NONE,
+
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	xpType = "combat_general",
+	
+	-- See http://www.ocdsoft.com/files/certifications.xls
+	certificationsRequired = {  },
+	-- See http://www.ocdsoft.com/files/accuracy.xls
+	creatureAccuracyModifiers = { "unarmed_accuracy" },
+
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "ranged_defense" },
+
+	-- can be dodge, counterattack, or block or a combination
+	-- Secondary defense when equipped
+	defenderSecondaryDefenseModifiers = { "dodge" },
+
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "unarmed_speed" },
+
+	-- Leave blank for now
+	damageModifiers = { },
+	
+
+	-- The values below are the default values.  To be used for blue frog objects primarily
+	healthAttackCost = 0,
+	actionAttackCost = 0,
+	mindAttackCost = 0,
+	forceCost = 0,
+
+	pointBlankAccuracy = -5,
+	pointBlankRange = 0,
+
+	idealRange = 15,
+	idealAccuracy = 7,
+
+	maxRange = 45,
+	maxRangeAccuracy = -15,
+
+	minDamage = 50,
+	maxDamage = 150,
+
+	attackSpeed = 7.6
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_creature_spit_spray_red, "object/weapon/ranged/creature/creature_spit_spray_red.iff")

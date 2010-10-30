@@ -9,6 +9,7 @@ peko_peko = Creature:new {
 	damageMax = 160,
 	baseXp = 609,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {0,0,25,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ peko_peko = Creature:new {
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/peko_peko.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

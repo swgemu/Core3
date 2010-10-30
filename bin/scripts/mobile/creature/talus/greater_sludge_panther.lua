@@ -9,6 +9,7 @@ greater_sludge_panther = Creature:new {
 	damageMax = 250,
 	baseXp = 2637,
 	baseHAM = 8000,
+	baseHAMmax = 8000,
 	armor = 0,
 	resists = {35,0,0,-1,-1,-1,45,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ greater_sludge_panther = Creature:new {
 	creatureBitmask = KILLER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/greater_sludge_panther.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

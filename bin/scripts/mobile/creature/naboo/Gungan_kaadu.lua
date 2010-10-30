@@ -1,6 +1,6 @@
 Gungan_kaadu = Creature:new {
 	objectName = "Gungan kaadu",
-	socialGroup = "Gungan ",
+	socialGroup = "Gungan",
 	pvpFaction = "",
 	faction = "",
 	level = 13,
@@ -9,6 +9,7 @@ Gungan_kaadu = Creature:new {
 	damageMax = 150,
 	baseXp = 609,
 	baseHAM = 1700,
+	baseHAMmax = 1700,
 	armor = 0,
 	resists = {0,0,0,0,15,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ Gungan_kaadu = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kaadu.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {
