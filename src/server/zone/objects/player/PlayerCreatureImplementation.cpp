@@ -656,6 +656,7 @@ void PlayerCreatureImplementation::notifySceneReady() {
 	sendMessage(msg);
 
 	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
+
 	if (playerObject == NULL)
 		return;
 

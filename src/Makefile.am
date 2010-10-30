@@ -117,6 +117,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
+				server/zone/objects/guild/GuildObject.cpp \
 				server/zone/objects/region/Region.cpp \
 				server/zone/objects/installation/InstallationObject.cpp \
 				server/zone/objects/installation/shuttle/ShuttleInstallation.cpp \
@@ -132,6 +133,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/building/travel/TravelBuildingObject.cpp \
 				server/zone/objects/building/tutorial/TutorialBuildingObject.cpp \
 				server/zone/managers/player/PlayerManager.cpp \
+				server/zone/managers/guild/GuildManager.cpp \
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \
 				server/chat/PersistentMessage.cpp \
@@ -245,6 +247,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/planet/MapLocationTable.cpp \
 		server/zone/managers/planet/MapLocationEntry.cpp \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
+		server/zone/managers/guild/GuildManagerImplementation.cpp \
 		server/zone/managers/name/NameManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/professions/ProfessionManager.cpp \
@@ -307,6 +310,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/tool/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/tool/CraftingStationImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
+		server/zone/objects/guild/GuildObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/NonPlayerCreatureObjectImplementation.cpp \

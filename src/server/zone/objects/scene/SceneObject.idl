@@ -147,9 +147,10 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	
 	protected transient SharedObjectTemplate templateObject;
 
-	public static final int CELLOBJECT = 11;
+	public static final int CELLOBJECT = 11; //This is marked as 0x00 in the client types xls
 	public static final int PLAYEROBJECT = 12;
-	public static final int GROUPOBJECT = 13;
+	public static final int GROUPOBJECT = 0x02;
+	public static final int GUILDOBJECT = 0x03;
 	
 	public static final int GENERALTANGIBLEOBJECT = 4;
 	public static final int STATICOBJECT = 5;
@@ -1472,7 +1473,15 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	
 	public abstract boolean isTerminal() {
 		return false;
-	}	
+	}
+	
+	public abstract boolean isGroupObject() {
+		return false;
+	}
+	
+	public abstract boolean isGuildObject() {
+		return false;
+	}
 	
 	public abstract boolean isControlDevice() {
 		return false;

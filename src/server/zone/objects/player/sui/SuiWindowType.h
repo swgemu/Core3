@@ -47,6 +47,9 @@ which carries forward this exception.
 
 class SuiWindowType {
 public:
+	//This window type can be sent when you don't need to handle a callback.
+	static const uint16 NONE = 0;
+
 	//Cloning 1 - 10
 	static const uint16 CLONE_REQUEST = 1;
 	static const uint16 CLONE_CONFIRM = 2;

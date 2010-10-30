@@ -206,7 +206,9 @@ public:
 
 	static const int PLAYEROBJECT = 12;
 
-	static const int GROUPOBJECT = 13;
+	static const int GROUPOBJECT = 0x02;
+
+	static const int GUILDOBJECT = 0x03;
 
 	static const int GENERALTANGIBLEOBJECT = 4;
 
@@ -1020,6 +1022,10 @@ public:
 
 	bool isTerminal();
 
+	bool isGroupObject();
+
+	bool isGuildObject();
+
 	bool isControlDevice();
 
 	bool isMissionTerminal();
@@ -1125,7 +1131,9 @@ public:
 
 	static const int PLAYEROBJECT = 12;
 
-	static const int GROUPOBJECT = 13;
+	static const int GROUPOBJECT = 0x02;
+
+	static const int GUILDOBJECT = 0x03;
 
 	static const int GENERALTANGIBLEOBJECT = 4;
 
@@ -1943,6 +1951,10 @@ public:
 
 	virtual bool isTerminal();
 
+	virtual bool isGroupObject();
+
+	virtual bool isGuildObject();
+
 	virtual bool isControlDevice();
 
 	virtual bool isMissionTerminal();
@@ -2331,6 +2343,10 @@ public:
 	bool isContainerOject();
 
 	bool isTerminal();
+
+	bool isGroupObject();
+
+	bool isGuildObject();
 
 	bool isControlDevice();
 

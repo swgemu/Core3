@@ -46,21 +46,25 @@ which carries forward this exception.
 #define GUILDRESPONSEMESSAGE_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/guild/GuildObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class GuildResponseMessage : public BaseMessage {
 public:
-    GuildResponseMessage(CreatureObject* creo, uint64 objectid) : BaseMessage() {
+    GuildResponseMessage(CreatureObject* creo) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0x32263F20);  // CRC
         
-		insertLong(objectid); //Object Id to set guild for
+		insertLong(creo->getObjectID()); //Object Id to set guild for
+
+		ManagedReference<GuildObject*> guild = creo->getGuildObject();
 		
-		if (creo->isGuilded())
-			insertAscii(creo->getGuildName()); //Guild name not abbreviated.
-		else
+		if (guild == NULL)
 			insertAscii("");
+		else
+			insertAscii(guild->getGuildName());
 		
-		insertShort(0); //??
+		insertShort(0);
 	}
 	
 };

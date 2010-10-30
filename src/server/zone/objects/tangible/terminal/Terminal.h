@@ -39,6 +39,8 @@ public:
 
 	bool isTerminal();
 
+	bool isGuildTerminal();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -75,6 +77,8 @@ public:
 	void initializeTransientMembers();
 
 	bool isTerminal();
+
+	virtual bool isGuildTerminal();
 
 	Terminal* _this;
 
@@ -118,6 +122,8 @@ public:
 	void initializeTransientMembers();
 
 	bool isTerminal();
+
+	bool isGuildTerminal();
 
 };
 

@@ -60,6 +60,20 @@ using namespace server::zone::objects::group;
 namespace server {
 namespace zone {
 namespace objects {
+namespace guild {
+
+class GuildObject;
+
+} // namespace guild
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::guild;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace tangible {
 namespace weapon {
 
@@ -604,6 +618,14 @@ public:
 
 	WeaponObject* getWeapon();
 
+	GuildObject* getGuildObject();
+
+	int getGuildID();
+
+	bool isInGuild();
+
+	void setGuildObject(GuildObject* guildobj);
+
 	unsigned long long getGroupID();
 
 	unsigned long long getGroupInviterID();
@@ -611,8 +633,6 @@ public:
 	GroupObject* getGroup();
 
 	unsigned long long getGroupInviteCounter();
-
-	int getGuildID();
 
 	unsigned long long getTargetID();
 
@@ -819,7 +839,7 @@ protected:
 
 	unsigned long long groupInviteCounter;
 
-	int guildID;
+	ManagedReference<GuildObject* > guild;
 
 	unsigned long long targetID;
 
@@ -1232,6 +1252,14 @@ public:
 
 	WeaponObject* getWeapon();
 
+	GuildObject* getGuildObject();
+
+	int getGuildID();
+
+	bool isInGuild();
+
+	void setGuildObject(GuildObject* guildobj);
+
 	unsigned long long getGroupID();
 
 	unsigned long long getGroupInviterID();
@@ -1239,8 +1267,6 @@ public:
 	GroupObject* getGroup();
 
 	unsigned long long getGroupInviteCounter();
-
-	int getGuildID();
 
 	unsigned long long getTargetID();
 
@@ -1709,6 +1735,14 @@ public:
 
 	WeaponObject* getWeapon();
 
+	GuildObject* getGuildObject();
+
+	int getGuildID();
+
+	bool isInGuild();
+
+	void setGuildObject(GuildObject* guildobj);
+
 	unsigned long long getGroupID();
 
 	unsigned long long getGroupInviterID();
@@ -1716,8 +1750,6 @@ public:
 	GroupObject* getGroup();
 
 	unsigned long long getGroupInviteCounter();
-
-	int getGuildID();
 
 	unsigned long long getTargetID();
 
