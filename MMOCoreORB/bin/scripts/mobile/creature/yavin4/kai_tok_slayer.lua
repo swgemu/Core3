@@ -9,6 +9,7 @@ kai_tok_slayer = Creature:new {
 	damageMax = 420,
 	baseXp = 3551,
 	baseHAM = 9100,
+	baseHAMmax = 9100,
 	armor = 0,
 	resists = {45,0,0,0,0,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -20,13 +21,13 @@ kai_tok_slayer = Creature:new {
 	milk = 0,
 	tamingChance = 0.250000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER + STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kai_tok.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_red"},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}
 	}

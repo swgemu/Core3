@@ -9,6 +9,7 @@ mottbull = Creature:new {
 	damageMax = 140,
 	baseXp = 430,
 	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ mottbull = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mott_bull.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

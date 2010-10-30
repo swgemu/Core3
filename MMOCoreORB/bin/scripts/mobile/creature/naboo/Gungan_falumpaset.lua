@@ -1,6 +1,6 @@
 Gungan_falumpaset = Creature:new {
 	objectName = "Gungan falumpaset",
-	socialGroup = "Gungan ",
+	socialGroup = "Gungan",
 	pvpFaction = "",
 	faction = "",
 	level = 26,
@@ -9,9 +9,10 @@ Gungan_falumpaset = Creature:new {
 	damageMax = 260,
 	baseXp = 2637,
 	baseHAM = 8550,
+	baseHAMmax = 8550,
 	armor = 0,
 	resists = {25,0,0,35,35,-1,-1,1,-1},
-	meatType = "meat_domesticated",
+	meatType = "",
 	meatAmount = 230,
 	hideType = "hide_leathery",
 	hideAmount = 130,
@@ -24,9 +25,9 @@ Gungan_falumpaset = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/falumpaset.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"blindattack","blindChance=50"}
 	}

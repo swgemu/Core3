@@ -9,6 +9,7 @@ giant_peko_peko = Creature:new {
 	damageMax = 220,
 	baseXp = 2219,
 	baseHAM = 6550,
+	baseHAMmax = 6550,
 	armor = 0,
 	resists = {0,25,50,-1,-1,50,-1,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ giant_peko_peko = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/giant_peko_peko.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

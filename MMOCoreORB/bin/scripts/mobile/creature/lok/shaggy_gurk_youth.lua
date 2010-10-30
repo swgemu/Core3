@@ -9,6 +9,7 @@ shaggy_gurk_youth = Creature:new {
 	damageMax = 300,
 	baseXp = 3005,
 	baseHAM = 9300,
+	baseHAMmax = 9300,
 	armor = 0,
 	resists = {40,0,0,-1,0,0,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ shaggy_gurk_youth = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/shaggy_gurk_youth.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

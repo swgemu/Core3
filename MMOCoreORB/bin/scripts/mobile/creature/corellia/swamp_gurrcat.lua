@@ -9,6 +9,7 @@ swamp_gurrcat = Creature:new {
 	damageMax = 140,
 	baseXp = 514,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ swamp_gurrcat = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gurrcat.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ peko_peko_albatross = Creature:new {
 	damageMax = 1600,
 	baseXp = 14694,
 	baseHAM = 82500,
+	baseHAMmax = 82500,
 	armor = 0,
 	resists = {100,80,30,80,80,90,0,0,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ peko_peko_albatross = Creature:new {
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/peko_peko.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

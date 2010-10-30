@@ -9,6 +9,7 @@ spitting_rawl = Creature:new {
 	damageMax = 220,
 	baseXp = 2543,
 	baseHAM = 6550,
+	baseHAMmax = 6550,
 	armor = 0,
 	resists = {0,30,0,-1,-1,-1,100,-1,-1},
 	meatType = "meat_carnivore",
@@ -20,13 +21,13 @@ spitting_rawl = Creature:new {
 	milk = 0,
 	tamingChance = 0.250000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER + STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/fanned_rawl.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_red"},
 	attacks = {
 		{"blindattack","blindChance=50"},
 		{"strongpoison",""}

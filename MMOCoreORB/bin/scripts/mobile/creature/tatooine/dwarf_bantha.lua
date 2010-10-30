@@ -9,6 +9,7 @@ dwarf_bantha = Creature:new {
 	damageMax = 110,
 	baseXp = 356,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,15,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ dwarf_bantha = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dwarf_bantha.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

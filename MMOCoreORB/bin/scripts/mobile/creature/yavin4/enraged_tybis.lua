@@ -9,6 +9,7 @@ enraged_tybis = Creature:new {
 	damageMax = 270,
 	baseXp = 2637,
 	baseHAM = 8000,
+	baseHAMmax = 8000,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ enraged_tybis = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tybis.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

@@ -9,6 +9,7 @@ diseased_nuna = Creature:new {
 	damageMax = 55,
 	baseXp = 113,
 	baseHAM = 200,
+	baseHAMmax = 200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ diseased_nuna = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/nuna.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

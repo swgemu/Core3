@@ -9,6 +9,7 @@ bloated_gubber = Creature:new {
 	damageMax = 55,
 	baseXp = 113,
 	baseHAM = 200,
+	baseHAMmax = 200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ bloated_gubber = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gubbur.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

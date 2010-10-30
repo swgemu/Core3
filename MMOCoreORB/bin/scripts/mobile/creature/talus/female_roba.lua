@@ -9,6 +9,7 @@ female_roba = Creature:new {
 	damageMax = 180,
 	baseXp = 960,
 	baseHAM = 3200,
+	baseHAMmax = 3200,
 	armor = 0,
 	resists = {0,0,0,40,-1,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ female_roba = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/roba.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ spineflap_handmaiden = Creature:new {
 	damageMax = 170,
 	baseXp = 831,
 	baseHAM = 2700,
+	baseHAMmax = 2700,
 	armor = 0,
 	resists = {10,10,0,-1,-1,0,-1,-1,-1},
 	meatType = "meat_insect",
@@ -24,9 +25,9 @@ spineflap_handmaiden = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/capper_spineflap.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}
 	}

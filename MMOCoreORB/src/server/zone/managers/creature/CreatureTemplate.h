@@ -58,6 +58,7 @@ protected:
 
 	int baseXp;
 	int baseHAM;
+	int baseHAMmax;
 
 	unsigned int pvpBitmask;
 	unsigned int creatureBitmask;
@@ -93,6 +94,7 @@ public:
 		range = 0;
 		baseXp = 0;
 		baseHAM = 0;
+		baseHAMmax = 0;
 		armor = 0;
 		meatType = "";
 		meatAmount = 0;
@@ -136,6 +138,7 @@ public:
 		//range = templateData->getIntField("range");
 		baseXp = templateData->getIntField("baseXp");
 		baseHAM = templateData->getIntField("baseHAM");
+		baseHAMmax = templateData->getIntField("baseHAMmax");
 		armor = templateData->getIntField("armor");
 		meatType = templateData->getStringField("meatType");
 		meatAmount = templateData->getIntField("meatAmount");
@@ -351,6 +354,10 @@ public:
 
 	inline int getBaseHAM() {
 		return baseHAM;
+	}
+
+	inline int getBaseHAMmax() {
+		return baseHAMmax;
 	}
 
 	inline uint32 getPvpBitmask() {

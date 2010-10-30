@@ -9,6 +9,7 @@ domestic_bageraset = Creature:new {
 	damageMax = 65,
 	baseXp = 187,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ domestic_bageraset = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bageraset.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

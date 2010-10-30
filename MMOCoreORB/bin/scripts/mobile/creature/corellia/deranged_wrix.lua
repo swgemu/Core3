@@ -1,4 +1,5 @@
 deranged_wrix = Creature:new {
+	objectName = "deranged wrix",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
@@ -8,6 +9,7 @@ deranged_wrix = Creature:new {
 	damageMax = 190,
 	baseXp = 1102,
 	baseHAM = 2700,
+	baseHAMmax = 2700,
 	armor = 0,
 	resists = {15,15,0,45,-1,0,-1,0,-1},
 	meatType = "meat_carnivore",
@@ -19,11 +21,11 @@ deranged_wrix = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/deranged_wrix.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {
@@ -32,3 +34,4 @@ deranged_wrix = Creature:new {
 	}
 }
 
+CreatureTemplates:addCreatureTemplate(deranged_wrix, "deranged_wrix")

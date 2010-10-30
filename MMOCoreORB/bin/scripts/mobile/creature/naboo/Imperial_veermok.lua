@@ -1,6 +1,6 @@
 Imperial_veermok = Creature:new {
 	objectName = "Imperial veermok",
-	socialGroup = "Imperial ",
+	socialGroup = "Imperial",
 	pvpFaction = "",
 	faction = "",
 	level = 27,
@@ -9,6 +9,7 @@ Imperial_veermok = Creature:new {
 	damageMax = 250,
 	baseXp = 2822,
 	baseHAM = 8000,
+	baseHAMmax = 8000,
 	armor = 0,
 	resists = {35,25,0,-1,50,30,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ Imperial_veermok = Creature:new {
 	creatureBitmask = KILLER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/veermok.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

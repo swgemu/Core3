@@ -9,6 +9,7 @@ dappled_gualama = Creature:new {
 	damageMax = 170,
 	baseXp = 714,
 	baseHAM = 1700,
+	baseHAMmax = 1700,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ dappled_gualama = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dappled_gualama.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

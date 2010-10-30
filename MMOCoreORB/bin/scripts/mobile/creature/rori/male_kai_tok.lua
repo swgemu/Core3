@@ -9,6 +9,7 @@ male_kai_tok = Creature:new {
 	damageMax = 150,
 	baseXp = 714,
 	baseHAM = 1700,
+	baseHAMmax = 1700,
 	armor = 0,
 	resists = {15,5,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,9 +25,9 @@ male_kai_tok = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kai_tok.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_green"},
 	attacks = {
 		{"posturedownattack","postureDownChance=50"}
 	}

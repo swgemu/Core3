@@ -57,12 +57,13 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	getWeapon()->setMinDamage(npcTemplate->getDamageMin());
 	getWeapon()->setMaxDamage(npcTemplate->getDamageMax());
 
-	int ham = npcTemplate->getBaseHAM();
+	int ham;
 	baseHAM.removeAll();
 	for (int i = 0; i < 9; ++i) {
-		if (i % 3 == 0)
+		if (i % 3 == 0) {
+			ham = System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM();
 			baseHAM.add(ham);
-		else
+		} else
 			baseHAM.add(ham/100);
 	}
 

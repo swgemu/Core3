@@ -9,6 +9,7 @@ borgle_matriarch = Creature:new {
 	damageMax = 160,
 	baseXp = 960,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {10,10,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ borgle_matriarch = Creature:new {
 	creatureBitmask = KILLER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/borgle.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

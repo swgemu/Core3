@@ -9,6 +9,7 @@ bolma_pack_master = Creature:new {
 	damageMax = 220,
 	baseXp = 2006,
 	baseHAM = 6550,
+	baseHAMmax = 6550,
 	armor = 0,
 	resists = {0,30,0,-1,-1,-1,-1,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ bolma_pack_master = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bolma.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

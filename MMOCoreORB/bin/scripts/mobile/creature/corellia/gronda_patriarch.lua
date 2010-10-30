@@ -9,6 +9,7 @@ gronda_patriarch = Creature:new {
 	damageMax = 400,
 	baseXp = 4461,
 	baseHAM = 10300,
+	baseHAMmax = 10300,
 	armor = 0,
 	resists = {65,50,80,0,0,0,10,25,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ gronda_patriarch = Creature:new {
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gronda.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

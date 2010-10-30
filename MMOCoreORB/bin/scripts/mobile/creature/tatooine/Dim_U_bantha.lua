@@ -9,6 +9,7 @@ Dim_U_bantha = Creature:new {
 	damageMax = 160,
 	baseXp = 831,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {0,5,0,20,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ Dim_U_bantha = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bantha.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ infant_brackaset = Creature:new {
 	damageMax = 65,
 	baseXp = 113,
 	baseHAM = 150,
+	baseHAMmax = 150,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ infant_brackaset = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/infant_brackaset.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

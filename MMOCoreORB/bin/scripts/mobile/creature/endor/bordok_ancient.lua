@@ -9,6 +9,7 @@ bordok_ancient = Creature:new {
 	damageMax = 460,
 	baseXp = 4370,
 	baseHAM = 11000,
+	baseHAMmax = 11000,
 	armor = 0,
 	resists = {45,0,0,70,70,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bordok_ancient = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bordok.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

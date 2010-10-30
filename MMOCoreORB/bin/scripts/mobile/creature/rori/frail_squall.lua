@@ -9,6 +9,7 @@ frail_squall = Creature:new {
 	damageMax = 55,
 	baseXp = 113,
 	baseHAM = 200,
+	baseHAMmax = 200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ frail_squall = Creature:new {
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/squall.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

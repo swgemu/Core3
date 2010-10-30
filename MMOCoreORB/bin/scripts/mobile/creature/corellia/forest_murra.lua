@@ -9,6 +9,7 @@ forest_murra = Creature:new {
 	damageMax = 130,
 	baseXp = 430,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,10,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ forest_murra = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/forest_murra.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ noxious_vrelt_scavenger = Creature:new {
 	damageMax = 110,
 	baseXp = 356,
 	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -20,13 +21,13 @@ noxious_vrelt_scavenger = Creature:new {
 	milk = 0,
 	tamingChance = 0.250000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = STALKER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/noxious_vrelt_scavenger.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_toxicgreen"},
 	attacks = {
 		{"stunattack","stunChance=50"},
 		{"milddisease",""}

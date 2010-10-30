@@ -9,6 +9,7 @@ bantha = Creature:new {
 	damageMax = 160,
 	baseXp = 714,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {0,20,0,20,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bantha = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bantha.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

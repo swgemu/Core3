@@ -9,6 +9,7 @@ female_snorbal_calf = Creature:new {
 	damageMax = 190,
 	baseXp = 1257,
 	baseHAM = 5000,
+	baseHAMmax = 5000,
 	armor = 0,
 	resists = {20,0,-1,0,0,0,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ female_snorbal_calf = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/female_snorbal_calf.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

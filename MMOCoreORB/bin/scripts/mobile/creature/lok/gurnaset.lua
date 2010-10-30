@@ -9,6 +9,7 @@ gurnaset = Creature:new {
 	damageMax = 170,
 	baseXp = 831,
 	baseHAM = 2700,
+	baseHAMmax = 2700,
 	armor = 0,
 	resists = {10,0,0,0,0,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ gurnaset = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gurnaset.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

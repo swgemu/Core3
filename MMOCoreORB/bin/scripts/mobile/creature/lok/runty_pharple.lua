@@ -9,6 +9,7 @@ runty_pharple = Creature:new {
 	damageMax = 45,
 	baseXp = 62,
 	baseHAM = 100,
+	baseHAMmax = 100,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ runty_pharple = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/runty_pharple.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

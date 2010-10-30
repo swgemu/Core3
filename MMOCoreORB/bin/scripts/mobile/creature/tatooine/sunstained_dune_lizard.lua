@@ -9,6 +9,7 @@ sunstained_dune_lizard = Creature:new {
 	damageMax = 200,
 	baseXp = 1803,
 	baseHAM = 5550,
+	baseHAMmax = 5550,
 	armor = 0,
 	resists = {0,15,0,45,-1,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -20,13 +21,13 @@ sunstained_dune_lizard = Creature:new {
 	milk = 0,
 	tamingChance = 0.050000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = KILLER + STALKER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dune_lizard.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}
 	}

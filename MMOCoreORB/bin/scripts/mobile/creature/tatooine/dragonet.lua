@@ -9,6 +9,7 @@ dragonet = Creature:new {
 	damageMax = 270,
 	baseXp = 2914,
 	baseHAM = 9100,
+	baseHAMmax = 9100,
 	armor = 0,
 	resists = {25,40,0,0,0,-1,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -20,13 +21,13 @@ dragonet = Creature:new {
 	milk = 0,
 	tamingChance = 0.250000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dragonet.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"dizzyattack","dizzyChance=50"}
 	}

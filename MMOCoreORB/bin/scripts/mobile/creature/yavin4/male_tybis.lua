@@ -9,6 +9,7 @@ male_tybis = Creature:new {
 	damageMax = 230,
 	baseXp = 2219,
 	baseHAM = 7000,
+	baseHAMmax = 7000,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ male_tybis = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tybis.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

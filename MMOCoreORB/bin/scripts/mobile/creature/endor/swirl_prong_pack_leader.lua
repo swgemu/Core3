@@ -9,6 +9,7 @@ swirl_prong_pack_leader = Creature:new {
 	damageMax = 320,
 	baseXp = 3188,
 	baseHAM = 9550,
+	baseHAMmax = 9550,
 	armor = 0,
 	resists = {35,0,0,0,-1,-1,-1,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ swirl_prong_pack_leader = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/swirl_prong.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

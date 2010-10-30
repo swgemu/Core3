@@ -9,6 +9,7 @@ lesser_plains_bol = Creature:new {
 	damageMax = 110,
 	baseXp = 292,
 	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ lesser_plains_bol = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bol.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

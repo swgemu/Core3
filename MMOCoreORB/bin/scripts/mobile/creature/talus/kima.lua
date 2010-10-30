@@ -9,6 +9,7 @@ kima = Creature:new {
 	damageMax = 170,
 	baseXp = 1257,
 	baseHAM = 5000,
+	baseHAMmax = 5000,
 	armor = 0,
 	resists = {15,20,0,-1,0,0,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ kima = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kima.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

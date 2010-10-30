@@ -9,6 +9,7 @@ rancor = Creature:new {
 	damageMax = 680,
 	baseXp = 5921,
 	baseHAM = 12000,
+	baseHAMmax = 12000,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_",

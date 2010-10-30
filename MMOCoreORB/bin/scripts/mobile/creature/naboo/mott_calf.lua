@@ -9,6 +9,7 @@ mott_calf = Creature:new {
 	damageMax = 45,
 	baseXp = 85,
 	baseHAM = 125,
+	baseHAMmax = 125,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ mott_calf = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mott_calf.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

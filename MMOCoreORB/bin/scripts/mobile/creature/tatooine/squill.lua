@@ -9,6 +9,7 @@ squill = Creature:new {
 	damageMax = 170,
 	baseXp = 1257,
 	baseHAM = 3900,
+	baseHAMmax = 3900,
 	armor = 0,
 	resists = {10,10,0,0,-1,-1,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ squill = Creature:new {
 	creatureBitmask = STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/squill.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

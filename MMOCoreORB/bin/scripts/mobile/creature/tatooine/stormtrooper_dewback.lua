@@ -1,6 +1,6 @@
 stormtrooper_dewback = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_dewback",
-	socialGroup = "Imperial ",
+	socialGroup = "Imperial",
 	pvpFaction = "",
 	faction = "",
 	level = 29,
@@ -9,6 +9,7 @@ stormtrooper_dewback = Creature:new {
 	damageMax = 290,
 	baseXp = 2914,
 	baseHAM = 9200,
+	baseHAMmax = 9200,
 	armor = 0,
 	resists = {40,20,0,40,-1,-1,-1,-1,-1},
 	meatType = "meat_reptilian",
@@ -24,7 +25,7 @@ stormtrooper_dewback = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dewback.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

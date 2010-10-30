@@ -9,6 +9,7 @@ bantha_matriarch = Creature:new {
 	damageMax = 240,
 	baseXp = 2543,
 	baseHAM = 8550,
+	baseHAMmax = 8550,
 	armor = 0,
 	resists = {35,10,0,50,-1,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bantha_matriarch = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/matriarch_bantha.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

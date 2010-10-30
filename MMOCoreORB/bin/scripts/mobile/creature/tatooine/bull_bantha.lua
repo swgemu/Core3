@@ -9,6 +9,7 @@ bull_bantha = Creature:new {
 	damageMax = 200,
 	baseXp = 1609,
 	baseHAM = 5000,
+	baseHAMmax = 5000,
 	armor = 0,
 	resists = {0,25,0,40,-1,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bull_bantha = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bantha.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

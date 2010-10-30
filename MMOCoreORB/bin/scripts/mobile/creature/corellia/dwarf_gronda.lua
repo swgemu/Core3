@@ -9,6 +9,7 @@ dwarf_gronda = Creature:new {
 	damageMax = 140,
 	baseXp = 514,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {20,20,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ dwarf_gronda = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dwarf_gronda.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

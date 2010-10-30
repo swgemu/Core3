@@ -9,6 +9,7 @@ frenzied_borgle = Creature:new {
 	damageMax = 90,
 	baseXp = 187,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ frenzied_borgle = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/borgle.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ swarming_lesser_dewback = Creature:new {
 	damageMax = 150,
 	baseXp = 831,
 	baseHAM = 3900,
+	baseHAMmax = 3900,
 	armor = 0,
 	resists = {15,0,10,0,-1,-1,-1,-1,-1},
 	meatType = "meat_reptilian",
@@ -24,7 +25,7 @@ swarming_lesser_dewback = Creature:new {
 	creatureBitmask = STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/swarming_lesser_dewback.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

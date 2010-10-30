@@ -9,6 +9,7 @@ reclusive_roba = Creature:new {
 	damageMax = 300,
 	baseXp = 3005,
 	baseHAM = 9300,
+	baseHAMmax = 9300,
 	armor = 0,
 	resists = {0,0,0,60,-1,60,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ reclusive_roba = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/roba.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {
