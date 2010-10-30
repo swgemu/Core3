@@ -9,6 +9,7 @@ horned_krevol = Creature:new {
 	damageMax = 55,
 	baseXp = 147,
 	baseHAM = 200,
+	baseHAMmax = 200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_reptilian",
@@ -24,7 +25,7 @@ horned_krevol = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/horned_krevol.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

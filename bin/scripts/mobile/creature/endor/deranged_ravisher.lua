@@ -1,4 +1,5 @@
 deranged_ravisher = Creature:new {
+	objectName = "deranged ravisher",
 	socialGroup = "Endor Squill",
 	pvpFaction = "",
 	faction = "",
@@ -8,22 +9,23 @@ deranged_ravisher = Creature:new {
 	damageMax = 370,
 	baseXp = 3460,
 	baseHAM = 9000,
+	baseHAMmax = 9000,
 	armor = 0,
 	resists = {40,40,0,-1,0,0,0,0,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 0,
-	hideType = "hide_",
+	hideType = "",
 	hideAmount = 0,
-	boneType = "bone_",
+	boneType = "",
 	boneAmount = 0,
 	milk = 0,
 	tamingChance = 0.050000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/squill.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {
@@ -32,3 +34,4 @@ deranged_ravisher = Creature:new {
 	}
 }
 
+CreatureTemplates:addCreatureTemplate(deranged_ravisher, "deranged_ravisher")

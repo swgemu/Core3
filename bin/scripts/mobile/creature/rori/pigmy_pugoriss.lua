@@ -9,6 +9,7 @@ pigmy_pugoriss = Creature:new {
 	damageMax = 110,
 	baseXp = 187,
 	baseHAM = 200,
+	baseHAMmax = 200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ pigmy_pugoriss = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/pigmy_pugoriss.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

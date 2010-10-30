@@ -9,13 +9,14 @@ forest_mite = Creature:new {
 	damageMax = 170,
 	baseXp = 714,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 5,
 	hideType = "hide_scaley",
 	hideAmount = 4,
-	boneType = "bone_",
+	boneType = "",
 	boneAmount = 0,
 	milk = 0,
 	tamingChance = 0.250000,
@@ -24,9 +25,9 @@ forest_mite = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/forest_mite.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"stunattack","stunChance=50"}
 	}

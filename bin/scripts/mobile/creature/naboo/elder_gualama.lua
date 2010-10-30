@@ -9,6 +9,7 @@ elder_gualama = Creature:new {
 	damageMax = 180,
 	baseXp = 1102,
 	baseHAM = 4550,
+	baseHAMmax = 4550,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ elder_gualama = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gualama.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

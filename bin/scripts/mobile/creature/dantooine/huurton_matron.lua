@@ -9,6 +9,7 @@ huurton_matron = Creature:new {
 	damageMax = 260,
 	baseXp = 2637,
 	baseHAM = 8550,
+	baseHAMmax = 8550,
 	armor = 0,
 	resists = {0,0,0,40,100,-1,-1,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ huurton_matron = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/huurton.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

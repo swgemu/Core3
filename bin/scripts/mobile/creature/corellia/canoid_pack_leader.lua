@@ -9,6 +9,7 @@ canoid_pack_leader = Creature:new {
 	damageMax = 170,
 	baseXp = 1426,
 	baseHAM = 3900,
+	baseHAMmax = 3900,
 	armor = 0,
 	resists = {15,20,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ canoid_pack_leader = Creature:new {
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/canoid_pack_leader.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

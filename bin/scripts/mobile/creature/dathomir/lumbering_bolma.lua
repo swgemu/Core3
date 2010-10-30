@@ -9,6 +9,7 @@ lumbering_bolma = Creature:new {
 	damageMax = 250,
 	baseXp = 2543,
 	baseHAM = 8000,
+	baseHAMmax = 8000,
 	armor = 0,
 	resists = {0,40,0,-1,-1,-1,-1,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ lumbering_bolma = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bolma.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

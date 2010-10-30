@@ -9,6 +9,7 @@ mammoth_bearded_jax = Creature:new {
 	damageMax = 170,
 	baseXp = 1257,
 	baseHAM = 3900,
+	baseHAMmax = 3900,
 	armor = 0,
 	resists = {0,20,40,0,0,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ mammoth_bearded_jax = Creature:new {
 	creatureBitmask = STALKER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mammoth_bearded_jax.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ guf_drolg_female = Creature:new {
 	damageMax = 160,
 	baseXp = 831,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {15,5,0,0,0,0,0,-1,-1},
 	meatType = "meat_reptilian",
@@ -24,7 +25,7 @@ guf_drolg_female = Creature:new {
 	creatureBitmask = STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/guf_drolg.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

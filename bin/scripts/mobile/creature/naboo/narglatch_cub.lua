@@ -9,6 +9,7 @@ narglatch_cub = Creature:new {
 	damageMax = 75,
 	baseXp = 235,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ narglatch_cub = Creature:new {
 	creatureBitmask = STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/narglatch_cub.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

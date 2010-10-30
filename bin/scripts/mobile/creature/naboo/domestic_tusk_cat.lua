@@ -1,6 +1,6 @@
 domestic_tusk_cat = Creature:new {
 	objectName = "@mob/creature_names:domestic_tusk_cat",
-	socialGroup = "Naboo ",
+	socialGroup = "Naboo",
 	pvpFaction = "",
 	faction = "",
 	level = 18,
@@ -9,6 +9,7 @@ domestic_tusk_cat = Creature:new {
 	damageMax = 180,
 	baseXp = 1257,
 	baseHAM = 5550,
+	baseHAMmax = 5550,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ domestic_tusk_cat = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tusk_cat.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

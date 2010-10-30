@@ -9,6 +9,7 @@ razor_cat = Creature:new {
 	damageMax = 230,
 	baseXp = 2006,
 	baseHAM = 7000,
+	baseHAMmax = 7000,
 	armor = 0,
 	resists = {0,0,0,60,0,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ razor_cat = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/corellian_sand_panther.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

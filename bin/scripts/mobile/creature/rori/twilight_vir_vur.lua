@@ -9,6 +9,7 @@ twilight_vir_vur = Creature:new {
 	damageMax = 150,
 	baseXp = 609,
 	baseHAM = 1700,
+	baseHAMmax = 1700,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ twilight_vir_vur = Creature:new {
 	creatureBitmask = STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/vir_vur.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ timid_vir_vur = Creature:new {
 	damageMax = 75,
 	baseXp = 187,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ timid_vir_vur = Creature:new {
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/vir_vur.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

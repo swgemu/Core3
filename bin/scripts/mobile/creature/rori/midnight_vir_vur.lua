@@ -9,6 +9,7 @@ midnight_vir_vur = Creature:new {
 	damageMax = 170,
 	baseXp = 960,
 	baseHAM = 3900,
+	baseHAMmax = 3900,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ midnight_vir_vur = Creature:new {
 	creatureBitmask = STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/vir_vur.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

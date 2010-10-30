@@ -9,6 +9,7 @@ male_mamien = Creature:new {
 	damageMax = 170,
 	baseXp = 1426,
 	baseHAM = 4550,
+	baseHAMmax = 4550,
 	armor = 0,
 	resists = {20,15,0,0,-1,-1,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ male_mamien = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mamien.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

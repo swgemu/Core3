@@ -9,6 +9,7 @@ ronto = Creature:new {
 	damageMax = 170,
 	baseXp = 1102,
 	baseHAM = 3900,
+	baseHAMmax = 3900,
 	armor = 0,
 	resists = {10,0,-1,30,30,-1,0,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ ronto = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/ronto.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

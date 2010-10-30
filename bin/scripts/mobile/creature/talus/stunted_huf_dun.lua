@@ -9,6 +9,7 @@ stunted_huf_dun = Creature:new {
 	damageMax = 110,
 	baseXp = 235,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ stunted_huf_dun = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/stunted_huf_dun.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

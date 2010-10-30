@@ -9,6 +9,7 @@ desert_eopie = Creature:new {
 	damageMax = 180,
 	baseXp = 831,
 	baseHAM = 3200,
+	baseHAMmax = 3200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ desert_eopie = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/eopie.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

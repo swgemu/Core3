@@ -9,6 +9,7 @@ sharnaff = Creature:new {
 	damageMax = 310,
 	baseXp = 3005,
 	baseHAM = 9600,
+	baseHAMmax = 9600,
 	armor = 0,
 	resists = {0,0,0,20,20,20,20,50,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ sharnaff = Creature:new {
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/sharnaff.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

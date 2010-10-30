@@ -9,6 +9,7 @@ roaming_bordok_stud = Creature:new {
 	damageMax = 370,
 	baseXp = 3370,
 	baseHAM = 10000,
+	baseHAMmax = 10000,
 	armor = 0,
 	resists = {0,-1,0,100,100,0,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ roaming_bordok_stud = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bordok.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

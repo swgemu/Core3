@@ -9,6 +9,7 @@ blurrg_pup = Creature:new {
 	damageMax = 170,
 	baseXp = 831,
 	baseHAM = 2700,
+	baseHAMmax = 2700,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ blurrg_pup = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/blurrg_pup.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

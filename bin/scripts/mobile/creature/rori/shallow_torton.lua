@@ -9,6 +9,7 @@ shallow_torton = Creature:new {
 	damageMax = 200,
 	baseXp = 1257,
 	baseHAM = 5000,
+	baseHAMmax = 5000,
 	armor = 0,
 	resists = {0,0,0,-1,-1,-1,-1,25,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ shallow_torton = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/shallow_torton.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

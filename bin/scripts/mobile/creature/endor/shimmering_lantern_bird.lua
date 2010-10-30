@@ -9,6 +9,7 @@ shimmering_lantern_bird = Creature:new {
 	damageMax = 280,
 	baseXp = 3005,
 	baseHAM = 9100,
+	baseHAMmax = 9100,
 	armor = 0,
 	resists = {30,45,0,-1,0,-1,-1,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ shimmering_lantern_bird = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/lantern_bird.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

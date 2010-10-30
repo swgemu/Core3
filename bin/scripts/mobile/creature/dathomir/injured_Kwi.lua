@@ -9,6 +9,7 @@ injured_Kwi = Creature:new {
 	damageMax = 75,
 	baseXp = 187,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ injured_Kwi = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kwi.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

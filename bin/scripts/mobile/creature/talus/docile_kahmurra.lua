@@ -9,6 +9,7 @@ docile_kahmurra = Creature:new {
 	damageMax = 90,
 	baseXp = 292,
 	baseHAM = 1100,
+	baseHAMmax = 1100,
 	armor = 0,
 	resists = {0,0,10,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ docile_kahmurra = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kahmurra.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

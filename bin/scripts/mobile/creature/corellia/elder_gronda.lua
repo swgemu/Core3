@@ -9,6 +9,7 @@ elder_gronda = Creature:new {
 	damageMax = 300,
 	baseXp = 3370,
 	baseHAM = 9300,
+	baseHAMmax = 9300,
 	armor = 0,
 	resists = {60,0,80,0,0,0,-1,25,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ elder_gronda = Creature:new {
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gronda.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

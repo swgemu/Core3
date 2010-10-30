@@ -9,6 +9,7 @@ dashing_vir_vur = Creature:new {
 	damageMax = 140,
 	baseXp = 514,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ dashing_vir_vur = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/vir_vur.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

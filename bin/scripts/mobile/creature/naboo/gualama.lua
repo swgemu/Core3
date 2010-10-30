@@ -9,6 +9,7 @@ gualama = Creature:new {
 	damageMax = 140,
 	baseXp = 514,
 	baseHAM = 1100,
+	baseHAMmax = 1100,
 	armor = 0,
 	resists = {20,15,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ gualama = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gualama.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

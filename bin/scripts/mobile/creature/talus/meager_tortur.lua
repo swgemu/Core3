@@ -9,6 +9,7 @@ meager_tortur = Creature:new {
 	damageMax = 160,
 	baseXp = 609,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ meager_tortur = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/meager_tortur.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

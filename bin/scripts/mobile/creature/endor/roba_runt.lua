@@ -9,6 +9,7 @@ roba_runt = Creature:new {
 	damageMax = 180,
 	baseXp = 1426,
 	baseHAM = 4550,
+	baseHAMmax = 4550,
 	armor = 0,
 	resists = {0,0,0,35,-1,35,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ roba_runt = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/roba.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

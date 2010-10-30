@@ -9,6 +9,7 @@ alpha_veermok = Creature:new {
 	damageMax = 190,
 	baseXp = 1609,
 	baseHAM = 5000,
+	baseHAMmax = 5000,
 	armor = 0,
 	resists = {30,0,0,-1,0,0,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ alpha_veermok = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/alpha_veermok.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

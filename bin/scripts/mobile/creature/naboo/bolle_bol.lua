@@ -9,6 +9,7 @@ bolle_bol = Creature:new {
 	damageMax = 260,
 	baseXp = 2730,
 	baseHAM = 8550,
+	baseHAMmax = 8550,
 	armor = 0,
 	resists = {25,25,0,-1,40,-1,40,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ bolle_bol = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bolle_bol.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

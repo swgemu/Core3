@@ -9,6 +9,7 @@ bageraset = Creature:new {
 	damageMax = 110,
 	baseXp = 292,
 	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,9 +25,9 @@ bageraset = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bageraset.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"intimidationattack","intimidationChance=50"}
 	}

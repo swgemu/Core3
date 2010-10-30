@@ -9,6 +9,7 @@ razor_cat_cub = Creature:new {
 	damageMax = 110,
 	baseXp = 356,
 	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ razor_cat_cub = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/corellian_sand_panther_cub.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

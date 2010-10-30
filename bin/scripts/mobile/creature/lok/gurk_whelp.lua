@@ -9,6 +9,7 @@ gurk_whelp = Creature:new {
 	damageMax = 250,
 	baseXp = 2730,
 	baseHAM = 6550,
+	baseHAMmax = 6550,
 	armor = 0,
 	resists = {30,30,0,0,0,0,40,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ gurk_whelp = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gurk_whelp.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

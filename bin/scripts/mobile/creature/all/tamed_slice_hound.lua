@@ -1,6 +1,6 @@
 tamed_slice_hound = Creature:new {
 	objectName = "@mob/creature_names:rebel_tamed_slice_hound",
-	socialGroup = "Rebel ",
+	socialGroup = "Rebel",
 	pvpFaction = "",
 	faction = "",
 	level = 7,
@@ -9,6 +9,7 @@ tamed_slice_hound = Creature:new {
 	damageMax = 65,
 	baseXp = 187,
 	baseHAM = 300,
+	baseHAMmax = 300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ tamed_slice_hound = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/corellian_slice_hound.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

@@ -9,6 +9,7 @@ minor_gubbur = Creature:new {
 	damageMax = 45,
 	baseXp = 62,
 	baseHAM = 125,
+	baseHAMmax = 125,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ minor_gubbur = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/minor_gubbur.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

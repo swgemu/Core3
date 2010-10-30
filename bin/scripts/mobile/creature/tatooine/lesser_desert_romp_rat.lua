@@ -9,6 +9,7 @@ lesser_desert_romp_rat = Creature:new {
 	damageMax = 50,
 	baseXp = 85,
 	baseHAM = 150,
+	baseHAMmax = 150,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ lesser_desert_romp_rat = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/lesser_desert_womp_rat.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

@@ -9,6 +9,7 @@ eopie = Creature:new {
 	damageMax = 50,
 	baseXp = 147,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {0,0,0,10,10,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ eopie = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/eopie.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

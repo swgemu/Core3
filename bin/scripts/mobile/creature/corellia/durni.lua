@@ -9,6 +9,7 @@ durni = Creature:new {
 	damageMax = 65,
 	baseXp = 147,
 	baseHAM = 300,
+	baseHAMmax = 300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ durni = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/durni.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

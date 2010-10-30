@@ -9,6 +9,7 @@ spineflap_soldier = Creature:new {
 	damageMax = 160,
 	baseXp = 714,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
@@ -20,13 +21,13 @@ spineflap_soldier = Creature:new {
 	milk = 0,
 	tamingChance = 0.250000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/capper_spineflap.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"stunattack","stunChance=50"}
 	}

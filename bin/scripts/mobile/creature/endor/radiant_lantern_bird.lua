@@ -9,6 +9,7 @@ radiant_lantern_bird = Creature:new {
 	damageMax = 380,
 	baseXp = 3915,
 	baseHAM = 10100,
+	baseHAMmax = 10100,
 	armor = 0,
 	resists = {0,60,0,-1,0,0,-1,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ radiant_lantern_bird = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/lantern_bird.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

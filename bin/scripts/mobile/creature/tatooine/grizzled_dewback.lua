@@ -9,6 +9,7 @@ grizzled_dewback = Creature:new {
 	damageMax = 280,
 	baseXp = 2730,
 	baseHAM = 8550,
+	baseHAMmax = 8550,
 	armor = 0,
 	resists = {35,20,0,40,-1,-1,-1,-1,-1},
 	meatType = "meat_reptilian",
@@ -24,7 +25,7 @@ grizzled_dewback = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dewback.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

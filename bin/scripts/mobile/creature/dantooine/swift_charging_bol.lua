@@ -9,6 +9,7 @@ swift_charging_bol = Creature:new {
 	damageMax = 330,
 	baseXp = 3370,
 	baseHAM = 9700,
+	baseHAMmax = 9700,
 	armor = 0,
 	resists = {20,20,0,0,0,0,0,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ swift_charging_bol = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bol.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

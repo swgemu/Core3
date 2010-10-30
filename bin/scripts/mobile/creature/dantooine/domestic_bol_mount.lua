@@ -9,6 +9,7 @@ domestic_bol_mount = Creature:new {
 	damageMax = 270,
 	baseXp = 3005,
 	baseHAM = 9600,
+	baseHAMmax = 9600,
 	armor = 0,
 	resists = {35,0,-1,0,0,-1,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ domestic_bol_mount = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/bol.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

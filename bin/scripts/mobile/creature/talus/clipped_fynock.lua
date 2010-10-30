@@ -9,6 +9,7 @@ clipped_fynock = Creature:new {
 	damageMax = 90,
 	baseXp = 292,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_avian",
@@ -24,7 +25,7 @@ clipped_fynock = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/clipped_fynock.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

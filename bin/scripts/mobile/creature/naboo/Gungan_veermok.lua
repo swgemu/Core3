@@ -1,6 +1,6 @@
 Gungan_veermok = Creature:new {
 	objectName = "Gungan veermok",
-	socialGroup = "Gungan ",
+	socialGroup = "Gungan",
 	pvpFaction = "",
 	faction = "",
 	level = 22,
@@ -9,6 +9,7 @@ Gungan_veermok = Creature:new {
 	damageMax = 220,
 	baseXp = 2006,
 	baseHAM = 6550,
+	baseHAMmax = 6550,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ Gungan_veermok = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/veermok.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

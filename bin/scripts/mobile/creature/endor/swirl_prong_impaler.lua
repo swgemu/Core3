@@ -9,6 +9,7 @@ swirl_prong_impaler = Creature:new {
 	damageMax = 280,
 	baseXp = 3005,
 	baseHAM = 9100,
+	baseHAMmax = 9100,
 	armor = 0,
 	resists = {35,30,0,50,50,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ swirl_prong_impaler = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/swirl_prong.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

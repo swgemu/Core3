@@ -9,6 +9,7 @@ razor_cat_eviscerator = Creature:new {
 	damageMax = 250,
 	baseXp = 2543,
 	baseHAM = 8000,
+	baseHAMmax = 8000,
 	armor = 0,
 	resists = {10,10,0,15,0,0,-1,0,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ razor_cat_eviscerator = Creature:new {
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/corellian_sand_panther.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

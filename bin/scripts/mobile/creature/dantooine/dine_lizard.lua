@@ -9,6 +9,7 @@ dine_lizard = Creature:new {
 	damageMax = 180,
 	baseXp = 1609,
 	baseHAM = 4550,
+	baseHAMmax = 4550,
 	armor = 0,
 	resists = {0,20,0,45,-1,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ dine_lizard = Creature:new {
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dune_lizard.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

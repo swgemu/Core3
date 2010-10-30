@@ -9,6 +9,7 @@ lowland_brackaset = Creature:new {
 	damageMax = 130,
 	baseXp = 292,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ lowland_brackaset = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/brackaset.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

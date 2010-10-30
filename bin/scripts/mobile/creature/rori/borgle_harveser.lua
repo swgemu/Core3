@@ -9,6 +9,7 @@ borgle_harveser = Creature:new {
 	damageMax = 140,
 	baseXp = 609,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {10,10,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ borgle_harveser = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/borgle.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

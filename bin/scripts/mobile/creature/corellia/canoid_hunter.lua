@@ -9,6 +9,7 @@ canoid_hunter = Creature:new {
 	damageMax = 160,
 	baseXp = 960,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {15,15,15,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ canoid_hunter = Creature:new {
 	creatureBitmask = KILLER + PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/canoid.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

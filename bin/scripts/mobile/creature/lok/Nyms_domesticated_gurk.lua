@@ -1,6 +1,6 @@
 Nyms_domesticated_gurk = Creature:new {
 	objectName = "Nym`s domesticated gurk",
-	socialGroup = "Nym ",
+	socialGroup = "Nym",
 	pvpFaction = "",
 	faction = "",
 	level = 26,
@@ -9,6 +9,7 @@ Nyms_domesticated_gurk = Creature:new {
 	damageMax = 250,
 	baseXp = 2637,
 	baseHAM = 8000,
+	baseHAMmax = 8000,
 	armor = 0,
 	resists = {20,25,0,45,45,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ Nyms_domesticated_gurk = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gurk.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

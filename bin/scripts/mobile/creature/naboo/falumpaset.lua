@@ -9,6 +9,7 @@ falumpaset = Creature:new {
 	damageMax = 180,
 	baseXp = 1257,
 	baseHAM = 4550,
+	baseHAMmax = 4550,
 	armor = 0,
 	resists = {15,0,25,-1,-1,-1,25,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ falumpaset = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/falumpaset.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

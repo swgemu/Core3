@@ -9,6 +9,7 @@ scavenger_rat = Creature:new {
 	damageMax = 75,
 	baseXp = 187,
 	baseHAM = 450,
+	baseHAMmax = 450,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ scavenger_rat = Creature:new {
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/womp_rat.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

@@ -9,6 +9,7 @@ aged_lantern_bird = Creature:new {
 	damageMax = 250,
 	baseXp = 2730,
 	baseHAM = 8000,
+	baseHAMmax = 8000,
 	armor = 0,
 	resists = {0,55,-1,0,0,0,-1,0,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ aged_lantern_bird = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/lantern_bird.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

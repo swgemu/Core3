@@ -9,9 +9,10 @@ cu_pa = Creature:new {
 	damageMax = 130,
 	baseXp = 356,
 	baseHAM = 1100,
+	baseHAMmax = 1100,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
-	meatType = "meat_reptil",
+	meatType = "",
 	meatAmount = 215,
 	hideType = "hide_bristley",
 	hideAmount = 100,
@@ -24,9 +25,9 @@ cu_pa = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/cu_pa.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"stunattack","stunChance=50"}
 	}

@@ -9,6 +9,7 @@ giant_stintaril = Creature:new {
 	damageMax = 210,
 	baseXp = 2006,
 	baseHAM = 6000,
+	baseHAMmax = 6000,
 	armor = 0,
 	resists = {20,20,0,-1,0,-1,-1,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,9 +25,9 @@ giant_stintaril = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/giant_stintaril.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_red"},
 	attacks = {
 		{"stunattack","stunChance=50"}
 	}

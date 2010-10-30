@@ -1,6 +1,6 @@
 tamed_huurton = Creature:new {
 	objectName = "@mob/creature_names:rebel_tamed_huurton",
-	socialGroup = "Rebel ",
+	socialGroup = "Rebel",
 	pvpFaction = "",
 	faction = "",
 	level = 12,
@@ -9,6 +9,7 @@ tamed_huurton = Creature:new {
 	damageMax = 140,
 	baseXp = 514,
 	baseHAM = 1300,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ tamed_huurton = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/huurton.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

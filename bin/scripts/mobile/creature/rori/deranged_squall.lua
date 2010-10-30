@@ -1,4 +1,5 @@
 deranged_squall = Creature:new {
+	objectName = "deranged squall",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
@@ -8,6 +9,7 @@ deranged_squall = Creature:new {
 	damageMax = 180,
 	baseXp = 714,
 	baseHAM = 2200,
+	baseHAMmax = 2200,
 	armor = 0,
 	resists = {10,0,0,-1,-1,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -19,11 +21,11 @@ deranged_squall = Creature:new {
 	milk = 0,
 	tamingChance = 0.250000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/squall.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {
@@ -31,3 +33,4 @@ deranged_squall = Creature:new {
 	}
 }
 
+CreatureTemplates:addCreatureTemplate(deranged_squall, "deranged_squall")

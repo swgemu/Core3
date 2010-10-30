@@ -73,8 +73,6 @@ public:
 		float posX = creature->getPositionX(), posY = creature->getPositionY(), posZ = creature->getPositionZ();
 		uint64 parID = creature->getParentID();
 
-		CreatureManager* creatureManager = zone->getCreatureManager();
-
 		String objName = "", tempName = "object/mobile/boba_fett.iff";
 
 		if (!arguments.isEmpty()) {
@@ -86,7 +84,29 @@ public:
 
 			if (tokenizer.hasMoreTokens())
 				tokenizer.getStringToken(objName);
+
+			if (!objName.isEmpty() && objName.indexOf("object") == -1 && objName.length() < 6)
+				posX = Float::valueOf(objName);
+			else
+				if (tokenizer.hasMoreTokens())
+					posX = tokenizer.getFloatToken();
+
+			if (tokenizer.hasMoreTokens())
+				posZ = tokenizer.getFloatToken();
+
+			if (tokenizer.hasMoreTokens())
+				posY = tokenizer.getFloatToken();
+
+			if (tokenizer.hasMoreTokens()) {
+				int planet = tokenizer.getIntToken();
+				zone = creature->getZoneServer()->getZone(planet);
+			}
+
+			if (tokenizer.hasMoreTokens())
+				parID = tokenizer.getLongToken();
 		}
+
+		CreatureManager* creatureManager = zone->getCreatureManager();
 
 		uint32 templ = tempName.hashCode();
 		uint32 objTempl = objName.length() > 0 ? objName.hashCode() : 0;

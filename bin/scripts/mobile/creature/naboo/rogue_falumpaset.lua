@@ -9,6 +9,7 @@ rogue_falumpaset = Creature:new {
 	damageMax = 190,
 	baseXp = 1102,
 	baseHAM = 3900,
+	baseHAMmax = 3900,
 	armor = 0,
 	resists = {0,10,0,-1,-1,-1,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -20,13 +21,13 @@ rogue_falumpaset = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/falumpaset.iff"},
 	lootgroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	attacks = {
 		{"stunattack","stunChance=50"}
 	}

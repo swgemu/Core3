@@ -9,6 +9,7 @@ rogue_bantha = Creature:new {
 	damageMax = 180,
 	baseXp = 714,
 	baseHAM = 1700,
+	baseHAMmax = 1700,
 	armor = 0,
 	resists = {0,0,0,20,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ rogue_bantha = Creature:new {
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/bantha.iff","object/mobile/bantha_hue.iff"},
+	templates = {"object/mobile/bantha.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

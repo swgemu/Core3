@@ -9,6 +9,7 @@ squall = Creature:new {
 	damageMax = 55,
 	baseXp = 147,
 	baseHAM = 200,
+	baseHAMmax = 200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ squall = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/squall.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {}

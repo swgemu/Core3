@@ -9,6 +9,7 @@ shaupaut = Creature:new {
 	damageMax = 65,
 	baseXp = 187,
 	baseHAM = 300,
+	baseHAMmax = 300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_carnivore",
@@ -24,7 +25,7 @@ shaupaut = Creature:new {
 	creatureBitmask = STALKER + PACK,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/shaupaut.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

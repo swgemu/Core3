@@ -9,6 +9,7 @@ pudgy_nudfuh = Creature:new {
 	damageMax = 90,
 	baseXp = 235,
 	baseHAM = 750,
+	baseHAMmax = 750,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ pudgy_nudfuh = Creature:new {
 	creatureBitmask = HERD,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/nudfuh.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

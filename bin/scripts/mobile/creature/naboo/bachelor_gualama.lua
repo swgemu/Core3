@@ -9,6 +9,7 @@ bachelor_gualama = Creature:new {
 	damageMax = 150,
 	baseXp = 514,
 	baseHAM = 1700,
+	baseHAMmax = 1700,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_wild",
@@ -24,7 +25,7 @@ bachelor_gualama = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gualama.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {

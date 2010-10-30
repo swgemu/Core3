@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "../../tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
-#include "server/zone/objects/player/sui/slotmachinebox/SuiSabaccStartBox.h"
+//#include "server/zone/objects/player/sui/slotmachinebox/SuiSabaccStartBox.h"
 
 class ProneCommand : public QueueCommand {
 public:
@@ -67,8 +67,8 @@ public:
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
-		ManagedReference<SuiSabaccStartBox*> sui = new SuiSabaccStartBox(player, 0x00);
-		player->sendMessage(sui->generateMessage());
+		//ManagedReference<SuiSabaccStartBox*> sui = new SuiSabaccStartBox(player, 0x00);
+		//player->sendMessage(sui->generateMessage());
 
 		return SUCCESS;
 

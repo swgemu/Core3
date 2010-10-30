@@ -9,6 +9,7 @@ erratic_swirl_prong = Creature:new {
 	damageMax = 250,
 	baseXp = 2730,
 	baseHAM = 8000,
+	baseHAMmax = 8000,
 	armor = 0,
 	resists = {25,35,0,50,50,-1,-1,-1,-1},
 	meatType = "meat_herbivore",
@@ -24,7 +25,7 @@ erratic_swirl_prong = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/swirl_prong.iff"},
 	lootgroups = {},
 	weapons = {},
 	attacks = {
