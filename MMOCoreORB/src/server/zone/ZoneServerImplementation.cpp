@@ -67,6 +67,7 @@ which carries forward this exception.
 #include "managers/minigames/GamblingManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "managers/creature/CreatureTemplateManager.h"
+#include "managers/guild/GuildManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -102,6 +103,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	gamblingManager = NULL;
 	stringIdManager = NULL;
 	creatureTemplateManager = NULL;
+	guildManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -245,6 +247,8 @@ void ZoneServerImplementation::startManagers() {
 	lootManager->deploy("LootManager");
 	lootManager->initialize();
 
+	guildManager = new GuildManager(_this, processor);
+	guildManager->deploy("GuildManager");
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
@@ -307,6 +311,7 @@ void ZoneServerImplementation::stopManagers() {
 	bazaarManager = NULL;
 	missionManager = NULL;
 	fishingManager = NULL;
+	guildManager = NULL;
 
 	info("managers stopped", true);
 }

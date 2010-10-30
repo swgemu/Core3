@@ -59,4 +59,8 @@ class Terminal extends TangibleObject {
 	public boolean isTerminal() {
 		return true;
 	}
+	
+	public abstract boolean isGuildTerminal() {
+		return false;
+	}
 }

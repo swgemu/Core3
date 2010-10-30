@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/guild/GuildManager.h"
 #include "server/chat/ChatManager.h"
 
 #include "server/zone/Zone.h"
@@ -748,11 +749,12 @@ void PlayerObjectImplementation::setTitle(const String& characterTitle, bool not
 }
 
 void PlayerObjectImplementation::notifyOnline() {
+	PlayerCreature* playerCreature = (PlayerCreature*) parent.get();
 	ChatManager* chatManager = server->getChatManager();
 
 	Vector<String>* reverseTable = friendList.getReverseTable();
 
-	String firstName = ((PlayerCreature*) parent.get())->getFirstName();
+	String firstName = playerCreature->getFirstName();
 	firstName = firstName.toLowerCase();
 
 	for (int i = 0; i < reverseTable->size(); ++i) {
@@ -776,6 +778,9 @@ void PlayerObjectImplementation::notifyOnline() {
 			parent->sendMessage(notifyStatus);
 		}
 	}
+
+	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+	guildManager->sendBaselinesTo(playerCreature);
 }
 
 void PlayerObjectImplementation::notifyOffline() {

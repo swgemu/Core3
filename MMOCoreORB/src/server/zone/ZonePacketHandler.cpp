@@ -95,6 +95,7 @@ which carries forward this exception.
 #include "packets/player/PlayerMoneyRequest.h"
 #include "packets/player/PlanetTravelPointListRequestCallback.h"
 #include "packets/player/GetMapLocationsCallback.h"
+#include "packets/player/GuildRequestCallback.h"
 
 #include "packets/chat/ChatRoomList.h"
 #include "packets/chat/ChatInstantMessageToCharacter.h"
@@ -169,6 +170,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<AddItemMessageCallback>(0x1E8D1356);
 	messageCallbackFactory.registerObject<GiveMoneyMessageCallback>(0xD1527EE8);
 	messageCallbackFactory.registerObject<GetMapLocationsCallback>(0x1A7AB839);
+	messageCallbackFactory.registerObject<GuildRequestCallback>(0x81EB4EF7);
 
 
 }

@@ -49,6 +49,19 @@ bool Terminal::isTerminal() {
 		return _implementation->isTerminal();
 }
 
+bool Terminal::isGuildTerminal() {
+	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isGuildTerminal();
+}
+
 DistributedObjectServant* Terminal::_getImplementation() {
 	return _impl;}
 
@@ -136,6 +149,11 @@ bool TerminalImplementation::isTerminal() {
 	return true;
 }
 
+bool TerminalImplementation::isGuildTerminal() {
+	// server/zone/objects/tangible/terminal/Terminal.idl(64):  		return false;
+	return false;
+}
+
 /*
  *	TerminalAdapter
  */
@@ -153,6 +171,9 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 7:
 		resp->insertBoolean(isTerminal());
 		break;
+	case 8:
+		resp->insertBoolean(isGuildTerminal());
+		break;
 	default:
 		return NULL;
 	}
@@ -166,6 +187,10 @@ void TerminalAdapter::initializeTransientMembers() {
 
 bool TerminalAdapter::isTerminal() {
 	return ((TerminalImplementation*) impl)->isTerminal();
+}
+
+bool TerminalAdapter::isGuildTerminal() {
+	return ((TerminalImplementation*) impl)->isGuildTerminal();
 }
 
 /*
