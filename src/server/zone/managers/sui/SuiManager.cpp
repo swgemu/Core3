@@ -88,6 +88,10 @@ which carries forward this exception.
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/commands/FindCommand.h"
 
+#include "server/zone/managers/guild/GuildManager.h"
+#include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
+#include "server/zone/objects/guild/GuildObject.h"
+
 
 SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManager") {
 	server = serv;
@@ -213,6 +217,12 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::CITY_ADD_MILITIA:
 		handleAddMilitia(player, suiBox, cancel, args);
+		break;
+	case SuiWindowType::GUILD_CREATE_NAME:
+		handleGuildCreateNameResponse(player, suiBox, cancel, args);
+		break;
+	case SuiWindowType::GUILD_CREATE_ABBREV:
+		handleGuildCreateAbbrevResponse(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::COMMAND_FIND:
 		handleFindCommand(player, suiBox, cancel, args);
@@ -1351,4 +1361,105 @@ void SuiManager::handleFindCommand(PlayerCreature* player, SuiBox* suiBox, uint3
 	uint8 maploctype = listBox->getMenuObjectID(index);
 
 	FindCommand::findPlanetaryObject(player, maploctype);
+}
+
+void SuiManager::handleGuildCreateNameResponse(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (player->isInGuild()) {
+		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
+		return;
+	}
+
+	if (!suiBox->isInputBox() || cancel != 0)
+		return;
+
+	if (args->size() < 1)
+		return;
+
+	String guildName = args->get(0).toString();
+
+	ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
+
+	if (obj == NULL || !obj->isTerminal())
+		return;
+
+	Terminal* terminal = (Terminal*) obj.get();
+
+	if (!terminal->isGuildTerminal())
+		return;
+
+	GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
+
+	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+
+	uint64 playerID = player->getObjectID();
+
+	//Check if this player is already creating a guild...
+	if (guildManager->isCreatingGuild(playerID))
+		return;
+
+	if (guildManager->validateGuildName(player, guildName)) {
+		guildManager->addPendingGuild(playerID, guildName);
+		guildManager->sendGuildCreateAbbrevTo(player, guildTerminal);
+		return;
+	}
+
+	//Resend the create name box.
+	player->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
+}
+
+void SuiManager::handleGuildCreateAbbrevResponse(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	uint64 playerID = player->getObjectID();
+
+	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+
+	//If the player isn't already creating a guild, then exit.
+	if (!guildManager->isCreatingGuild(playerID))
+		return;
+
+	//After this point, we have to removePendingGuild anywhere we return, since they have to be creating a guild at this point.
+
+	if (player->isInGuild()) {
+		guildManager->removePendingGuild(playerID);
+		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
+		return;
+	}
+
+	if (!suiBox->isInputBox()) {
+		guildManager->removePendingGuild(playerID);
+		return;
+	}
+
+	if (args->size() < 1) {
+		guildManager->removePendingGuild(playerID);
+		return;
+	}
+
+	String guildAbbrev = args->get(0).toString();
+
+	ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
+
+	if (obj == NULL || !obj->isTerminal()) {
+		guildManager->removePendingGuild(playerID);
+		return;
+	}
+
+	Terminal* terminal = (Terminal*) obj.get();
+
+	if (!terminal->isGuildTerminal()) {
+		guildManager->removePendingGuild(playerID);
+		return;
+	}
+
+	GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
+
+	if (guildManager->validateGuildAbbrev(player, guildAbbrev)) {
+		String guildName = guildManager->getPendingGuildName(playerID);
+		guildManager->createGuild(player, guildTerminal, guildName, guildAbbrev); //Handles the removing of the pending guild.
+		return;
+	}
+
+	//Resend the create abbrev box.
+	player->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
 }

@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/objects/guild/GuildObject.h"
+
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -85,6 +87,19 @@ bool GuildTerminal::isGuildTerminal() {
 		return _implementation->isGuildTerminal();
 }
 
+GuildObject* GuildTerminal::getGuildObject() {
+	GuildTerminalImplementation* _implementation = (GuildTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return (GuildObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getGuildObject();
+}
+
 DistributedObjectServant* GuildTerminal::_getImplementation() {
 	return _impl;}
 
@@ -159,24 +174,32 @@ void GuildTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("GuildTerminal");
 
+	addSerializableVariable("guildObject", &guildObject);
 }
 
 GuildTerminalImplementation::GuildTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(56):  		Logger.setLoggingName("GuildTerminal");
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(59):  		Logger.setLoggingName("GuildTerminal");
 	Logger::setLoggingName("GuildTerminal");
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(61):  		guildObject = null;
+	guildObject = NULL;
 }
 
 void GuildTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(59):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(64):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(61):  		Logger.setLoggingName("GuildTerminal");
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(66):  		Logger.setLoggingName("GuildTerminal");
 	Logger::setLoggingName("GuildTerminal");
 }
 
 bool GuildTerminalImplementation::isGuildTerminal() {
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(69):  		return true;
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(74):  		return true;
 	return true;
+}
+
+GuildObject* GuildTerminalImplementation::getGuildObject() {
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(78):  		return guildObject;
+	return guildObject;
 }
 
 /*
@@ -202,6 +225,9 @@ Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 9:
 		resp->insertBoolean(isGuildTerminal());
 		break;
+	case 10:
+		resp->insertLong(getGuildObject()->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -223,6 +249,10 @@ int GuildTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte se
 
 bool GuildTerminalAdapter::isGuildTerminal() {
 	return ((GuildTerminalImplementation*) impl)->isGuildTerminal();
+}
+
+GuildObject* GuildTerminalAdapter::getGuildObject() {
+	return ((GuildTerminalImplementation*) impl)->getGuildObject();
 }
 
 /*

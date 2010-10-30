@@ -180,6 +180,8 @@ public:
 
 	PlayerCreature* removePlayer(const String& name);
 
+	void broadcastMessage(BaseMessage* message);
+
 	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
@@ -290,6 +292,8 @@ public:
 
 	PlayerCreature* removePlayer(const String& name);
 
+	void broadcastMessage(BaseMessage* message);
+
 	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
@@ -392,6 +396,8 @@ public:
 	PlayerCreature* getPlayer(const String& name);
 
 	PlayerCreature* removePlayer(const String& name);
+
+	void broadcastMessage(BaseMessage* message);
 
 	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
 

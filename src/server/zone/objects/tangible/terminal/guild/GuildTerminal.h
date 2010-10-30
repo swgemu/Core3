@@ -28,6 +28,20 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
+namespace guild {
+
+class GuildObject;
+
+} // namespace guild
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::guild;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 
 class PlayerCreature;
@@ -86,6 +100,8 @@ public:
 
 	bool isGuildTerminal();
 
+	GuildObject* getGuildObject();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -115,6 +131,8 @@ namespace terminal {
 namespace guild {
 
 class GuildTerminalImplementation : public TerminalImplementation {
+protected:
+	ManagedReference<GuildObject* > guildObject;
 
 public:
 	GuildTerminalImplementation();
@@ -128,6 +146,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isGuildTerminal();
+
+	GuildObject* getGuildObject();
 
 	GuildTerminal* _this;
 
@@ -175,6 +195,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isGuildTerminal();
+
+	GuildObject* getGuildObject();
 
 };
 

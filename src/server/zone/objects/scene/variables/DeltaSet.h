@@ -75,12 +75,12 @@ public:
 		return true;
 	}
 
-	virtual void removeAll(BaseMessage* msg) {
-		vector.removeAll();
+	virtual void removeAll(DeltaMessage* msg) {
+		vectorMap.removeAll();
 
-		if (message != NULL) {
-			message->startList(1, ++updateCounter);
-			message->insertByte(2);
+		if (msg != NULL) {
+			msg->startList(1, ++updateCounter);
+			msg->insertByte(2);
 		}
 	}
 

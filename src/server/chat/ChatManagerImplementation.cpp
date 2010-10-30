@@ -361,6 +361,26 @@ void ChatManagerImplementation::broadcastGalaxy(PlayerCreature* player, const St
 
 }
 
+void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
+	Locker _lock(_this);
+
+	playerMap->resetIterator(false);
+
+	while (playerMap->hasNext(false)) {
+		ManagedReference<PlayerCreature*> player = playerMap->getNextValue(false);
+
+		if (player == NULL || !player->isOnline())
+			continue;
+
+		System::out << "Broadcasting message: " << message->toStringData() << endl;
+
+		player->sendMessage(message->clone());
+	}
+
+	delete message;
+	message = NULL;
+}
+
 void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
 	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
 		PlayerCreature* playerCreature = (PlayerCreature*) player;

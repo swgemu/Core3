@@ -18,6 +18,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/managers/guild/GuildManager.h"
 
 #include "server/chat/ChatManager.h"
 
@@ -40,6 +41,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	databaseManager->loadDatabase("missionobjectives", true);
 	databaseManager->loadDatabase("missionobservers", true);
 	databaseManager->loadDatabase("cityregions", true);
+	databaseManager->loadDatabase("guilds", true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
@@ -186,6 +188,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ResourceDeed>(SceneObject::RESOURCEDEED);
 
 	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
+	objectFactory.registerObject<GuildObject>(SceneObject::GUILDOBJECT);
 
 	objectFactory.registerObject<StimPack>(SceneObject::STIMPACK);
 	objectFactory.registerObject<RangedStimPack>(SceneObject::RANGEDSTIMPACK);

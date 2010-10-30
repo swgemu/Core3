@@ -48,6 +48,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.variables.ParameterizedStringId;
 import server.zone.objects.creature.professions.SkillBox;
 import server.zone.objects.group.GroupObject;
+import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.managers.objectcontroller.ObjectController;
 //import server.zone.objects.player.professions.SkillBox;
@@ -131,7 +132,7 @@ class CreatureObject extends TangibleObject {
 	protected unsigned long groupInviterID;
 	protected unsigned long groupInviteCounter;
 	
-	protected int guildID;
+	protected GuildObject guild;
 	protected unsigned long targetID;
 	protected byte moodID;
 	protected int performanceCounter;
@@ -1116,6 +1117,25 @@ class CreatureObject extends TangibleObject {
 			return weapon;
 	}
 	
+	public GuildObject getGuildObject() {
+		return guild;
+	}
+	
+	public int getGuildID() {
+		if (guild == null)
+			return 0;
+		
+		return guild.getGuildID();
+	}
+	
+	public boolean isInGuild() {
+		return guild != null;
+	}
+	
+	public void setGuildObject(GuildObject guildobj) {
+		guild = guildobj;
+	}
+	
 	public unsigned long getGroupID() {
 		if (group != null)
 			return group.getObjectID();
@@ -1134,11 +1154,7 @@ class CreatureObject extends TangibleObject {
 	public unsigned long getGroupInviteCounter() {
 		return groupInviteCounter;
 	}
-	
-	public int getGuildID() {
-		return guildID;
-	}
-	
+
 	public unsigned long getTargetID() {
 		return targetID;
 	}

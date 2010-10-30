@@ -79,6 +79,10 @@ public:
 		addLongUpdate(0x06, creo->getGroupID());
 	}
 
+	void updateGuildID() {
+		addIntUpdate(0x08, creo->getGuildID());
+	}
+
 	void updateMoodID() {
 		addByteUpdate(0x0A, creo->getMoodID());
 	}
@@ -124,11 +128,6 @@ public:
 	void updateMoodAnimation(String value) {
 		startUpdate(0x04);
 		insertAscii(value);
-	}
-
-	void updateGuild(uint32 value) {
-		startUpdate(0x08);
-		insertInt(value);
 	}
 
 	void updateTemplateString() {

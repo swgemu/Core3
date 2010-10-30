@@ -46,45 +46,22 @@ which carries forward this exception.
 #define GUILDOBJECTMESSAGE3_H_
 
 #include "../BaseLineMessage.h"
+#include "server/zone/objects/scene/variables/DeltaSet.h"
 
 class GuildObjectMessage3 : public BaseLineMessage {
 public:
-	GuildObjectMessage3(uint64 goId)
-			: BaseLineMessage(goId, 0x47494C44, 3, 0x05) {
+	GuildObjectMessage3(DeltaSet<String, ManagedReference<GuildObject*> >* guildList)
+			: BaseLineMessage(0xDEADBABE, 0x47494C44, 3, 0x05) {
 		insertFloat(1);
 
 		insertAscii("String_id_table");
 		insertLong(0);
 		insertInt(0);
 		insertShort(0);
-		
-		insertInt(0);
-		insertInt(0);
-	}
-	
-	void addListSize(int lstSz) {
-		insertInt(lstSz);
-		insertInt(lstSz);
-	}
-	
-	void addListSize(int off, int lstSz) { //insert the list size at an offset
-		insertInt(off, lstSz);
-		insertInt(off + 4, lstSz);
-	}
-	
-	void addListMember(int guildId, String name) {
-		char idStr[32];
-		sprintf(idStr, "%d", guildId);
-		
-		StringBuffer guildStr;
-		guildStr << idStr << ":" << name;
 
-		insertAscii(guildStr.toString());
-	}
-	
-	void finishGild() { //i think setSize isn't public so we need to call this after building the packet
+		guildList->insertToMessage(this);
+
 		setSize();
 	}
-	
 };
 #endif /*GUILDOBJECTMESSAGE3_H_*/

@@ -80,6 +80,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
+#include "server/zone/objects/guild/GuildObject.h"
 #include "events/DizzyFallDownEvent.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -125,10 +126,10 @@ void CreatureObjectImplementation::initializeMembers() {
 	watchToID = 0;
 
 	weapon = NULL;
+	guild = NULL;
 	group = NULL;
 	groupInviterID = 0;
 	groupInviteCounter = 0;
-	guildID = 0;
 	targetID = 0;
 	moodID = 0;
 	performanceCounter = 0;
