@@ -732,6 +732,9 @@ int PlayerCreatureImplementation::notifyObjectInserted(SceneObject* object) {
 		playerManager->applyEncumbrancies(_this, (ArmorObject*)object);
 	}
 
+	if (object->isInstrument() && isEntertaining())
+		stopEntertaining();
+
 	return CreatureObjectImplementation::notifyObjectInserted(object);
 }
 

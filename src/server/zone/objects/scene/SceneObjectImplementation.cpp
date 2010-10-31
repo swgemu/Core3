@@ -921,9 +921,9 @@ void SceneObjectImplementation::removeFromZone() {
 
 	}
 
+	notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, NULL, 0);
 
 	//activeAreas.removeAll();
-
 
 	info("removed from zone");
 }

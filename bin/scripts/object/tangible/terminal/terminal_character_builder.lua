@@ -1881,8 +1881,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Flute Droopy", "object/tangible/instrument/flute_droopy.iff",
 				"Kloo Horn", "object/tangible/instrument/kloo_horn.iff",
 				"Mandoviol", "object/tangible/instrument/mandoviol.iff",
-				--"Nalargon", "object/tangible/instrument/nalargon.iff",
-				--"Ommni Box", "object/tangible/instrument/ommni_box.iff",
+				"Nalargon", "object/tangible/instrument/nalargon.iff",
+				"Ommni Box", "object/tangible/instrument/ommni_box.iff",
 				"Slitherhorn", "object/tangible/instrument/slitherhorn.iff",
 				"Traz", "object/tangible/instrument/traz.iff"
 			},
