@@ -45,7 +45,13 @@ which carries forward this exception.
 #ifndef STARTMUSICCOMMAND_H_
 #define STARTMUSICCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/Instrument.h"
+#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/professions/PerformanceManager.h"
+#include "StartDanceCommand.h"
 
 class StartMusicCommand : public QueueCommand {
 public:
@@ -55,6 +61,46 @@ public:
 
 	}
 
+	static void startMusic(CreatureObject* creature, const String& song, const String& instrumentAnimation, int intid) {
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session == NULL) {
+			session = new EntertainingSession(creature);
+			creature->addActiveSession(SessionFacadeType::ENTERTAINING, session);
+		}
+
+		session->startPlayingMusic(song, instrumentAnimation, intid);
+	}
+
+	static void sendAvailableSongs(PlayerCreature* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::MUSIC_START) {
+		Reference<SuiListBox*> sui = new SuiListBox(player, suiType);
+		sui->setPromptTitle("@performance:available_songs");
+		sui->setPromptText("@performance:select_song");
+
+		SkillList* list = ghost->getSkills();
+
+		for (int i = 0; i < list->size(); ++i) {
+			String name = list->get(i);
+
+			if (name.indexOf("startmusic") != -1) {
+				int args = name.indexOf("+");
+
+				if (args != -1) {
+					String arg = name.subString(args + 1);
+
+					sui->addMenuItem(arg);
+				}
+			}
+		}
+
+		player->addSuiBox(sui);
+
+		player->sendMessage(sui->generateMessage());
+
+		return;
+	}
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -62,6 +108,71 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session != NULL) {
+			if (session->isDancing()) {
+				session->stopDancing();
+			}
+
+			if (session->isPlayingMusic()) {
+				creature->sendSystemMessage("performance", "already_performing_self");
+
+				return GENERALERROR;
+			}
+		}
+
+		PlayerObject* ghost = dynamic_cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+
+		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*>(creature->getSlottedObject("hold_r"));
+
+		if (instrument == NULL) {
+			creature->sendSystemMessage("performance", "music_no_instrument");
+
+			return GENERALERROR;
+		}
+
+		String args = arguments.toString();
+
+		PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+
+		if (args.length() < 2) {
+			sendAvailableSongs(player, ghost);
+			return SUCCESS;
+		}
+
+		String instr = performanceManager->getInstrument(instrument->getInstrumentType());
+
+		if (!ghost->hasSkill(instr)) {
+			creature->sendSystemMessage("performance", "music_lack_skill_instrument");
+
+			return GENERALERROR;
+		}
+
+		String fullString = String("startMusic") + "+" + args;
+
+		if (!ghost->hasSkill(fullString)) {
+			creature->sendSystemMessage("performance", "music_lack_skill_song_self");
+			return GENERALERROR;
+		}
+
+		if (!performanceManager->hasInstrumentId(args)) {
+			creature->sendSystemMessage("performance", "music_lack_skill_song_self");
+			return GENERALERROR;
+		}
+
+		String instrumentAnimation;
+		int instrid = performanceManager->getInstrumentId(args);
+		instrid += performanceManager->getInstrumentAnimation(instrument->getInstrumentType(), instrumentAnimation);
+
+		startMusic(creature, args, instrumentAnimation, instrid);
 
 		return SUCCESS;
 	}

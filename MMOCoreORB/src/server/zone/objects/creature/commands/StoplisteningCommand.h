@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef STOPLISTENINGCOMMAND_H_
 #define STOPLISTENINGCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class StoplisteningCommand : public QueueCommand {
 public:
@@ -62,6 +64,14 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isListening())
+			return GENERALERROR;
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		if (playerManager != NULL)
+			playerManager->stopListen(creature, target);
 
 		return SUCCESS;
 	}

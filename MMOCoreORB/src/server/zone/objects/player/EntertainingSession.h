@@ -114,7 +114,11 @@ public:
 
 	void addEntertainerFlourishBuff();
 
-	void startEntertaining(const String& dance, const String& animation, bool isDanceSession);
+	void startDancing(const String& dance, const String& animation);
+
+	void startPlayingMusic(const String& song, const String& instrumentAnimation, int instrid);
+
+	void startEntertaining();
 
 	void healWounds(CreatureObject* creature, float woundHeal, float shockHeal);
 
@@ -239,7 +243,11 @@ public:
 
 	void addEntertainerFlourishBuff();
 
-	void startEntertaining(const String& dance, const String& animation, bool isDanceSession);
+	void startDancing(const String& dance, const String& animation);
+
+	void startPlayingMusic(const String& song, const String& instrumentAnimation, int instrid);
+
+	void startEntertaining();
 
 	void finalize();
 
@@ -348,7 +356,11 @@ public:
 
 	void addEntertainerFlourishBuff();
 
-	void startEntertaining(const String& dance, const String& animation, bool isDanceSession);
+	void startDancing(const String& dance, const String& animation);
+
+	void startPlayingMusic(const String& song, const String& instrumentAnimation, int instrid);
+
+	void startEntertaining();
 
 	void finalize();
 
@@ -407,8 +419,10 @@ public:
 	void setDancing(bool val);
 
 protected:
-	String _param0_startEntertaining__String_String_bool_;
-	String _param1_startEntertaining__String_String_bool_;
+	String _param0_startDancing__String_String_;
+	String _param1_startDancing__String_String_;
+	String _param0_startPlayingMusic__String_String_int_;
+	String _param1_startPlayingMusic__String_String_int_;
 	String _param2_sendEntertainingUpdate__CreatureObject_float_String_int_int_;
 	String _param2_sendEntertainmentUpdate__CreatureObject_long_String_bool_;
 	String _param0_setPerformanceName__String_;

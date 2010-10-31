@@ -623,7 +623,7 @@ int PlayerCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player,
 
 			player->setTeachingOrLearning(true);
 
-			TeachPlayerListBox* teachPlayerListBox = new TeachPlayerListBox(player);
+			ManagedReference<TeachPlayerListBox*> teachPlayerListBox = new TeachPlayerListBox(player);
 			teachPlayerListBox->setCancelButton(true, "");
 
 			bool completed = teachPlayerListBox->generateSkillList(player, _this);
@@ -745,6 +745,11 @@ int PlayerCreatureImplementation::notifyObjectRemoved(SceneObject* object) {
 		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 
 		playerManager->removeEncumbrancies(_this, (ArmorObject*)object);
+	}
+
+	if (object->isInstrument()) {
+		if (isPlayingMusic())
+			stopEntertaining();
 	}
 
 	return CreatureObjectImplementation::notifyObjectRemoved(object);
