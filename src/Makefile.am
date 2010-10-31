@@ -80,6 +80,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/TangibleObject.cpp \
 				server/zone/objects/tangible/Container.cpp \
 				server/zone/objects/tangible/Instrument.cpp \
+				server/zone/objects/tangible/InstrumentObserver.cpp \
 				server/zone/objects/tangible/consumable/Food.cpp \
 				server/zone/objects/tangible/consumable/Drink.cpp \
 				server/zone/objects/tangible/loot/LootkitObject.cpp \
@@ -285,6 +286,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp \
 		server/zone/objects/tangible/loot/LootkitObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
+		server/zone/objects/tangible/InstrumentImplementation.cpp \
+		server/zone/objects/tangible/InstrumentObserverImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/city/CityTerminalImplementation.cpp \

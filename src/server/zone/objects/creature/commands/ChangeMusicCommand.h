@@ -91,9 +91,30 @@ public:
 		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*>(creature->getSlottedObject("hold_r"));
 
 		if (instrument == NULL) {
-			creature->sendSystemMessage("performance", "music_no_instrument");
+			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(target);
 
-			return GENERALERROR;
+			if (nala != NULL && dynamic_cast<Instrument*>(nala.get())) {
+				instrument = (Instrument*) nala.get();
+
+				if (creature->getDistanceTo(nala) >= 5 || !nala->isInQuadTree()) {
+					creature->sendSystemMessage("elevator_text", "too_far");
+
+					return GENERALERROR;
+				}
+
+				if (instrument->getSpawnerPlayer() != NULL && instrument->getSpawnerPlayer() != creature) {
+					creature->sendSystemMessage("You must be the owner of the instrument");
+
+					return GENERALERROR;
+				}
+
+				instrument->setDirection(*creature->getDirection());
+				instrument->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
+			} else {
+				creature->sendSystemMessage("performance", "music_no_instrument");
+
+				return GENERALERROR;
+			}
 		}
 
 		PlayerObject* ghost = dynamic_cast<PlayerObject*>(creature->getSlottedObject("ghost"));

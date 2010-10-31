@@ -436,7 +436,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	return object;
 }
 
-SceneObject* ObjectManager::cloneObject(SceneObject* object) {
+SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient) {
 	ObjectOutputStream objectData(500);
 
 	((ManagedObject*)object)->writeObject(&objectData);
@@ -457,7 +457,7 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object) {
 		database->getDatabaseName(databaseName);
 	}
 
-	if (object->isPersistent()) {
+	if (object->isPersistent() && !makeTransient) {
 		clonedObject = createObject(serverCRC, object->getPersistenceLevel(), databaseName);
 	} else {
 		clonedObject = createObject(serverCRC, 0, databaseName);

@@ -362,7 +362,11 @@ void SuiManager::handleStartDancing(PlayerCreature* player, SuiBox* suiBox, uint
 		return;
 
 	int index = Integer::valueOf(args->get(0).toString());
-	bool change = Bool::valueOf(args->get(1).toString());
+
+	uint32 id = suiBox->getBoxID();
+
+	bool change = (uint16)id == SuiWindowType::DANCING_CHANGE;
+
 
 	SuiListBox* listBox = (SuiListBox*) suiBox;
 
@@ -386,7 +390,10 @@ void SuiManager::handleStartMusic(PlayerCreature* player, SuiBox* suiBox, uint32
 		return;
 
 	int index = Integer::valueOf(args->get(0).toString());
-	bool change = Bool::valueOf(args->get(1).toString());
+
+	uint32 id = suiBox->getBoxID();
+
+	bool change = (uint16)id == SuiWindowType::MUSIC_CHANGE;
 
 	SuiListBox* listBox = (SuiListBox*) suiBox;
 
@@ -394,9 +401,9 @@ void SuiManager::handleStartMusic(PlayerCreature* player, SuiBox* suiBox, uint32
 		String dance = listBox->getMenuItemName(index);
 
 		if (!change)
-			player->executeObjectControllerAction(String("startmusic").hashCode(), 0, dance);
+			player->executeObjectControllerAction(String("startmusic").hashCode(), player->getTargetID(), dance);
 		else
-			player->executeObjectControllerAction(String("changemusic").hashCode(), 0, dance);
+			player->executeObjectControllerAction(String("changemusic").hashCode(), player->getTargetID(), dance);
 	} catch (...) {
 
 	}
