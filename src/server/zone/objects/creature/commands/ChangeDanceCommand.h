@@ -67,9 +67,6 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
 		PlayerCreature* player = (PlayerCreature*) creature;
 
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);

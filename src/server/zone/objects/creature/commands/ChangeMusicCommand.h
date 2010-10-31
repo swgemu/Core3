@@ -45,7 +45,9 @@ which carries forward this exception.
 #ifndef CHANGEMUSICCOMMAND_H_
 #define CHANGEMUSICCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "StartMusicCommand.h"
+
 
 class ChangeMusicCommand : public QueueCommand {
 public:
@@ -62,6 +64,75 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+					return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session == NULL) {
+			creature->sendSystemMessage("performance", "dance_must_be_performing_self");
+			return GENERALERROR;
+		}
+
+		if (session->isDancing()) {
+			session->stopDancing();
+		}
+
+		if (!session->isPlayingMusic()) {
+			creature->sendSystemMessage("performance", "music_must_be_performing_self");
+
+			return GENERALERROR;
+		}
+
+		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*>(creature->getSlottedObject("hold_r"));
+
+		if (instrument == NULL) {
+			creature->sendSystemMessage("performance", "music_no_instrument");
+
+			return GENERALERROR;
+		}
+
+		PlayerObject* ghost = dynamic_cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+
+		String args = arguments.toString();
+
+		PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+
+		if (args.length() < 2) {
+			StartMusicCommand::sendAvailableSongs(player, ghost, SuiWindowType::MUSIC_CHANGE);
+			return SUCCESS;
+		}
+
+		String instr = performanceManager->getInstrument(instrument->getInstrumentType());
+
+		if (!ghost->hasSkill(instr)) {
+			creature->sendSystemMessage("performance", "music_lack_skill_instrument");
+
+			return GENERALERROR;
+		}
+
+		String fullString = String("startMusic") + "+" + args;
+
+		if (!ghost->hasSkill(fullString)) {
+			creature->sendSystemMessage("performance", "music_lack_skill_song_self");
+			return GENERALERROR;
+		}
+
+		if (!performanceManager->hasInstrumentId(args)) {
+			creature->sendSystemMessage("performance", "music_lack_skill_song_self");
+			return GENERALERROR;
+		}
+
+		String instrumentAnimation;
+		int instrid = performanceManager->getInstrumentId(args);
+		instrid += performanceManager->getInstrumentAnimation(instrument->getInstrumentType(), instrumentAnimation);
+
+		session->sendEntertainingUpdate(creature, /*0x3C4CCCCD*/0.0125, instrumentAnimation, 0x07339FF8, instrid);
+		session->setPerformanceName(args);
 
 		return SUCCESS;
 	}

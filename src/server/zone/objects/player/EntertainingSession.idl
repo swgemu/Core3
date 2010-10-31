@@ -108,7 +108,10 @@ class EntertainingSession extends Facade {
 	public native void doPerformanceAction();
 	public native void addEntertainerFlourishBuff();
 	
-	public native void startEntertaining(final string dance, final string animation, boolean isDanceSession);
+	public native void startDancing(final string dance, final string animation);
+	public native void startPlayingMusic(final string song, final string instrumentAnimation, int instrid);
+	
+	public native void startEntertaining();
 	
 	public void finalize() {
 		//Logger.info("deleted from ram", true);

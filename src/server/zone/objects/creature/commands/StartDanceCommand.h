@@ -68,7 +68,7 @@ public:
 			creature->addActiveSession(SessionFacadeType::ENTERTAINING, session);
 		}
 
-		session->startEntertaining(dance, animation, true);
+		session->startDancing(dance, animation);
 	}
 
 	static void sendAvailableDances(PlayerCreature* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::DANCING_START) {
