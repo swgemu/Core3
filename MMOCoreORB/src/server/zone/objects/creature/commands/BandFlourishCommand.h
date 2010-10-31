@@ -67,7 +67,7 @@ public:
 		ManagedReference<Facade*> facade = leader->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
-		ManagedReference<Instrument*> instrument = session->getInstrument();
+		ManagedReference<Instrument*> instrument = session->getInstrument(leader);
 		int leaderInstrument = instrument == NULL ? -1 : instrument->getInstrumentType();
 
 		//Make the leader flourish.
@@ -119,7 +119,7 @@ public:
 				ManagedReference<Facade*> pfacade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
 				ManagedReference<EntertainingSession*> psession = dynamic_cast<EntertainingSession*>(pfacade.get());
 
-				ManagedReference<Instrument*> instrument = psession->getInstrument();
+				ManagedReference<Instrument*> pinstrument = psession->getInstrument(player);
 				int playerInstrumentType = pinstrument == NULL ? -1 : pinstrument->getInstrumentType();
 
 				if (psession->isAcceptingBandFlourishes()) {
