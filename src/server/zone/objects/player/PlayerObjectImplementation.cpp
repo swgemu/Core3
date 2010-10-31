@@ -778,9 +778,6 @@ void PlayerObjectImplementation::notifyOnline() {
 			parent->sendMessage(notifyStatus);
 		}
 	}
-
-	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
-	guildManager->sendBaselinesTo(playerCreature);
 }
 
 void PlayerObjectImplementation::notifyOffline() {

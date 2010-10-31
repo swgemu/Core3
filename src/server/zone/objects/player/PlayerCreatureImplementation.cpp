@@ -19,6 +19,8 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/managers/guild/GuildManager.h"
+
 
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
@@ -154,6 +156,9 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 		/*if (grandParent->isBuildingObject())
 			((BuildingObject*)grandParent)->addNotifiedSentObject(_this);*/
 	}
+
+	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+	guildManager->sendBaselinesTo(_this);
 
 	sendTo(_this, doClose);
 
