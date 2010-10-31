@@ -128,18 +128,18 @@ void GuildManagerImplementation::sendGuildInformationTo(PlayerCreature* player, 
 }
 
 void GuildManagerImplementation::sendBaselinesTo(PlayerCreature* player) {
-	SceneObjectCreateMessage* create = new SceneObjectCreateMessage(0xDEADBABE, 0x7D40E2E6);
+	SceneObjectCreateMessage* create = new SceneObjectCreateMessage(_this->_getObjectID(), 0x7D40E2E6);
 	player->sendMessage(create);
 
 	Locker _lock(_this);
 
-	GuildObjectMessage3* gild3 = new GuildObjectMessage3(&guildList);
+	GuildObjectMessage3* gild3 = new GuildObjectMessage3(&guildList, _this->_getObjectID());
 	player->sendMessage(gild3);
 
-	GuildObjectMessage6* gild6 = new GuildObjectMessage6();
+	GuildObjectMessage6* gild6 = new GuildObjectMessage6(_this->_getObjectID());
 	player->sendMessage(gild6);
 
-	SceneObjectCloseMessage* close = new SceneObjectCloseMessage(0xDEADBABE);
+	SceneObjectCloseMessage* close = new SceneObjectCloseMessage(_this->_getObjectID());
 	player->sendMessage(close);
 }
 
@@ -159,7 +159,7 @@ GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, Gui
 
 	player->setGuildObject(guild);
 
-	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3();
+	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this->_getObjectID());
 	gildd3->startUpdate(0x04);
 	guildList.add(guild->getGuildKey(), guild, gildd3);
 	gildd3->close();

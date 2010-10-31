@@ -18,7 +18,7 @@ protected:
 
 public:
 	DeltaSet() : Serializable() {
-		updateCounter = 1;
+		updateCounter = 0;
 
 		vectorMap.setAllowOverwriteInsertPlan();
 
@@ -26,7 +26,7 @@ public:
 	}
 
 	DeltaSet(int initsize, int incr) : Serializable(), vectorMap(initsize, incr) {
-		updateCounter = 1;
+		updateCounter = 0;
 
 		vectorMap.setAllowOverwriteInsertPlan();
 
