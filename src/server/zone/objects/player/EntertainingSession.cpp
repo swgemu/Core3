@@ -70,7 +70,7 @@ void EntertainingSession::addEntertainerFlourishBuff() {
 		_implementation->addEntertainerFlourishBuff();
 }
 
-void EntertainingSession::startEntertaining(const String& dance, const String& animation, bool isDanceSession) {
+void EntertainingSession::startDancing(const String& dance, const String& animation) {
 	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -79,11 +79,39 @@ void EntertainingSession::startEntertaining(const String& dance, const String& a
 		DistributedMethod method(this, 9);
 		method.addAsciiParameter(dance);
 		method.addAsciiParameter(animation);
-		method.addBooleanParameter(isDanceSession);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->startEntertaining(dance, animation, isDanceSession);
+		_implementation->startDancing(dance, animation);
+}
+
+void EntertainingSession::startPlayingMusic(const String& song, const String& instrumentAnimation, int instrid) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addAsciiParameter(song);
+		method.addAsciiParameter(instrumentAnimation);
+		method.addSignedIntParameter(instrid);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->startPlayingMusic(song, instrumentAnimation, instrid);
+}
+
+void EntertainingSession::startEntertaining() {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->startEntertaining();
 }
 
 void EntertainingSession::healWounds(CreatureObject* creature, float woundHeal, float shockHeal) {
@@ -92,7 +120,7 @@ void EntertainingSession::healWounds(CreatureObject* creature, float woundHeal, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(creature);
 		method.addFloatParameter(woundHeal);
 		method.addFloatParameter(shockHeal);
@@ -108,7 +136,7 @@ bool EntertainingSession::isInEntertainingBuilding(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(creature);
 
 		return method.executeWithBooleanReturn();
@@ -122,7 +150,7 @@ void EntertainingSession::doFlourish(int flourishNumber) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 		method.addSignedIntParameter(flourishNumber);
 
 		method.executeWithVoidReturn();
@@ -136,7 +164,7 @@ bool EntertainingSession::canGiveEntertainBuff() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -149,7 +177,7 @@ void EntertainingSession::addFlourishXp(int xp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 		method.addSignedIntParameter(xp);
 
 		method.executeWithVoidReturn();
@@ -163,7 +191,7 @@ void EntertainingSession::addHealingXp(int xp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 		method.addSignedIntParameter(xp);
 
 		method.executeWithVoidReturn();
@@ -177,7 +205,7 @@ int EntertainingSession::initializeSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -190,7 +218,7 @@ int EntertainingSession::cancelSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -203,7 +231,7 @@ int EntertainingSession::clearSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -216,7 +244,7 @@ void EntertainingSession::stopPlayingMusic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 
 		method.executeWithVoidReturn();
 	} else
@@ -229,7 +257,7 @@ void EntertainingSession::stopDancing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 
 		method.executeWithVoidReturn();
 	} else
@@ -242,7 +270,7 @@ void EntertainingSession::activateAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 
 		method.executeWithVoidReturn();
 	} else
@@ -255,7 +283,7 @@ void EntertainingSession::startTickTask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 
 		method.executeWithVoidReturn();
 	} else
@@ -304,7 +332,7 @@ int EntertainingSession::getEntertainerBuffStrength(CreatureObject* creature, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(creature);
 		method.addSignedIntParameter(performanceType);
 
@@ -319,7 +347,7 @@ int EntertainingSession::getEntertainerBuffDuration(CreatureObject* creature, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(creature);
 		method.addSignedIntParameter(performanceType);
 
@@ -334,7 +362,7 @@ void EntertainingSession::sendEntertainingUpdate(CreatureObject* creature, float
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(creature);
 		method.addFloatParameter(entval);
 		method.addAsciiParameter(performance);
@@ -352,7 +380,7 @@ void EntertainingSession::sendEntertainmentUpdate(CreatureObject* creature, unsi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(creature);
 		method.addUnsignedLongParameter(entid);
 		method.addAsciiParameter(mood);
@@ -369,7 +397,7 @@ void EntertainingSession::activateEntertainerBuff(CreatureObject* creature, int 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(creature);
 		method.addSignedIntParameter(performanceType);
 
@@ -384,7 +412,7 @@ Instrument* EntertainingSession::getInstrument(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(creature);
 
 		return (Instrument*) method.executeWithObjectReturn();
@@ -398,7 +426,7 @@ void EntertainingSession::addWatcher(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 31);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -412,7 +440,7 @@ void EntertainingSession::addListener(CreatureObject* listener) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(listener);
 
 		method.executeWithVoidReturn();
@@ -426,7 +454,7 @@ bool EntertainingSession::isDancing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -439,7 +467,7 @@ bool EntertainingSession::isPlayingMusic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -452,7 +480,7 @@ void EntertainingSession::removeWatcher(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -466,7 +494,7 @@ void EntertainingSession::removeListener(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -480,7 +508,7 @@ void EntertainingSession::setPerformanceName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 37);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -494,7 +522,7 @@ void EntertainingSession::setDancing(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 38);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -617,69 +645,69 @@ void EntertainingSessionImplementation::finalize() {
 }
 
 void EntertainingSessionImplementation::addFlourishXp(int xp) {
-	// server/zone/objects/player/EntertainingSession.idl(126):  		flourishXp 
-	if (flourishCount > 2)	// server/zone/objects/player/EntertainingSession.idl(127):  			return;
+	// server/zone/objects/player/EntertainingSession.idl(129):  		flourishXp 
+	if (flourishCount > 2)	// server/zone/objects/player/EntertainingSession.idl(130):  			return;
 	return;
-	// server/zone/objects/player/EntertainingSession.idl(129):  = flourishXp + xp;
+	// server/zone/objects/player/EntertainingSession.idl(132):  = flourishXp + xp;
 	flourishXp = flourishXp + xp;
-	// server/zone/objects/player/EntertainingSession.idl(131):  		flourishCount 
-	if (flourishXp > 2 * xp)	// server/zone/objects/player/EntertainingSession.idl(132):  			flourishXp = 2 * xp;
+	// server/zone/objects/player/EntertainingSession.idl(134):  		flourishCount 
+	if (flourishXp > 2 * xp)	// server/zone/objects/player/EntertainingSession.idl(135):  			flourishXp = 2 * xp;
 	flourishXp = 2 * xp;
-	// server/zone/objects/player/EntertainingSession.idl(134):  = flourishCount + 1;
+	// server/zone/objects/player/EntertainingSession.idl(137):  = flourishCount + 1;
 	flourishCount = flourishCount + 1;
 }
 
 void EntertainingSessionImplementation::addHealingXp(int xp) {
-	// server/zone/objects/player/EntertainingSession.idl(138):  		healingXp = healingXp + xp;
+	// server/zone/objects/player/EntertainingSession.idl(141):  		healingXp = healingXp + xp;
 	healingXp = healingXp + xp;
 }
 
 int EntertainingSessionImplementation::initializeSession() {
-	// server/zone/objects/player/EntertainingSession.idl(142):  		return 0;
+	// server/zone/objects/player/EntertainingSession.idl(145):  		return 0;
 	return 0;
 }
 
 int EntertainingSessionImplementation::cancelSession() {
-	// server/zone/objects/player/EntertainingSession.idl(146):  		stopPlayingMusic();
+	// server/zone/objects/player/EntertainingSession.idl(149):  		stopPlayingMusic();
 	stopPlayingMusic();
-	// server/zone/objects/player/EntertainingSession.idl(147):  		stopDancing();
+	// server/zone/objects/player/EntertainingSession.idl(150):  		stopDancing();
 	stopDancing();
-	// server/zone/objects/player/EntertainingSession.idl(149):  		return 0;
+	// server/zone/objects/player/EntertainingSession.idl(152):  		return 0;
 	return 0;
 }
 
 int EntertainingSessionImplementation::clearSession() {
-	// server/zone/objects/player/EntertainingSession.idl(153):  		return 0;
+	// server/zone/objects/player/EntertainingSession.idl(156):  		return 0;
 	return 0;
 }
 
 bool EntertainingSessionImplementation::isDancing() {
-	// server/zone/objects/player/EntertainingSession.idl(188):  		return dancing;
+	// server/zone/objects/player/EntertainingSession.idl(191):  		return dancing;
 	return dancing;
 }
 
 bool EntertainingSessionImplementation::isPlayingMusic() {
-	// server/zone/objects/player/EntertainingSession.idl(192):  		return playingMusic;
+	// server/zone/objects/player/EntertainingSession.idl(195):  		return playingMusic;
 	return playingMusic;
 }
 
 void EntertainingSessionImplementation::removeWatcher(CreatureObject* creature) {
-	// server/zone/objects/player/EntertainingSession.idl(196):  		watchers.drop(creature);
+	// server/zone/objects/player/EntertainingSession.idl(199):  		watchers.drop(creature);
 	(&watchers)->drop(creature);
 }
 
 void EntertainingSessionImplementation::removeListener(CreatureObject* creature) {
-	// server/zone/objects/player/EntertainingSession.idl(200):  		listeners.drop(creature);
+	// server/zone/objects/player/EntertainingSession.idl(203):  		listeners.drop(creature);
 	(&listeners)->drop(creature);
 }
 
 void EntertainingSessionImplementation::setPerformanceName(const String& name) {
-	// server/zone/objects/player/EntertainingSession.idl(204):  		performanceName = name;
+	// server/zone/objects/player/EntertainingSession.idl(207):  		performanceName = name;
 	performanceName = name;
 }
 
 void EntertainingSessionImplementation::setDancing(bool val) {
-	// server/zone/objects/player/EntertainingSession.idl(208):  		dancing = val;
+	// server/zone/objects/player/EntertainingSession.idl(211):  		dancing = val;
 	dancing = val;
 }
 
@@ -704,90 +732,96 @@ Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 		addEntertainerFlourishBuff();
 		break;
 	case 9:
-		startEntertaining(inv->getAsciiParameter(_param0_startEntertaining__String_String_bool_), inv->getAsciiParameter(_param1_startEntertaining__String_String_bool_), inv->getBooleanParameter());
+		startDancing(inv->getAsciiParameter(_param0_startDancing__String_String_), inv->getAsciiParameter(_param1_startDancing__String_String_));
 		break;
 	case 10:
-		finalize();
+		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__String_String_int_), inv->getAsciiParameter(_param1_startPlayingMusic__String_String_int_), inv->getSignedIntParameter());
 		break;
 	case 11:
-		healWounds((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		startEntertaining();
 		break;
 	case 12:
-		resp->insertBoolean(isInEntertainingBuilding((CreatureObject*) inv->getObjectParameter()));
+		finalize();
 		break;
 	case 13:
-		doFlourish(inv->getSignedIntParameter());
+		healWounds((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 14:
-		resp->insertBoolean(canGiveEntertainBuff());
+		resp->insertBoolean(isInEntertainingBuilding((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 15:
-		addFlourishXp(inv->getSignedIntParameter());
+		doFlourish(inv->getSignedIntParameter());
 		break;
 	case 16:
-		addHealingXp(inv->getSignedIntParameter());
+		resp->insertBoolean(canGiveEntertainBuff());
 		break;
 	case 17:
-		resp->insertSignedInt(initializeSession());
+		addFlourishXp(inv->getSignedIntParameter());
 		break;
 	case 18:
-		resp->insertSignedInt(cancelSession());
+		addHealingXp(inv->getSignedIntParameter());
 		break;
 	case 19:
-		resp->insertSignedInt(clearSession());
+		resp->insertSignedInt(initializeSession());
 		break;
 	case 20:
-		stopPlayingMusic();
+		resp->insertSignedInt(cancelSession());
 		break;
 	case 21:
-		stopDancing();
+		resp->insertSignedInt(clearSession());
 		break;
 	case 22:
-		activateAction();
+		stopPlayingMusic();
 		break;
 	case 23:
-		startTickTask();
+		stopDancing();
 		break;
 	case 24:
-		resp->insertSignedInt(getEntertainerBuffStrength((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		activateAction();
 		break;
 	case 25:
-		resp->insertSignedInt(getEntertainerBuffDuration((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		startTickTask();
 		break;
 	case 26:
-		sendEntertainingUpdate((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param2_sendEntertainingUpdate__CreatureObject_float_String_int_int_), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		resp->insertSignedInt(getEntertainerBuffStrength((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
 	case 27:
-		sendEntertainmentUpdate((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param2_sendEntertainmentUpdate__CreatureObject_long_String_bool_), inv->getBooleanParameter());
+		resp->insertSignedInt(getEntertainerBuffDuration((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
 	case 28:
-		activateEntertainerBuff((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		sendEntertainingUpdate((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param2_sendEntertainingUpdate__CreatureObject_float_String_int_int_), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 29:
-		resp->insertLong(getInstrument((CreatureObject*) inv->getObjectParameter())->_getObjectID());
+		sendEntertainmentUpdate((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param2_sendEntertainmentUpdate__CreatureObject_long_String_bool_), inv->getBooleanParameter());
 		break;
 	case 30:
-		addWatcher((CreatureObject*) inv->getObjectParameter());
+		activateEntertainerBuff((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 31:
-		addListener((CreatureObject*) inv->getObjectParameter());
+		resp->insertLong(getInstrument((CreatureObject*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 32:
-		resp->insertBoolean(isDancing());
+		addWatcher((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 33:
-		resp->insertBoolean(isPlayingMusic());
+		addListener((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 34:
-		removeWatcher((CreatureObject*) inv->getObjectParameter());
+		resp->insertBoolean(isDancing());
 		break;
 	case 35:
-		removeListener((CreatureObject*) inv->getObjectParameter());
+		resp->insertBoolean(isPlayingMusic());
 		break;
 	case 36:
-		setPerformanceName(inv->getAsciiParameter(_param0_setPerformanceName__String_));
+		removeWatcher((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 37:
+		removeListener((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 38:
+		setPerformanceName(inv->getAsciiParameter(_param0_setPerformanceName__String_));
+		break;
+	case 39:
 		setDancing(inv->getBooleanParameter());
 		break;
 	default:
@@ -809,8 +843,16 @@ void EntertainingSessionAdapter::addEntertainerFlourishBuff() {
 	((EntertainingSessionImplementation*) impl)->addEntertainerFlourishBuff();
 }
 
-void EntertainingSessionAdapter::startEntertaining(const String& dance, const String& animation, bool isDanceSession) {
-	((EntertainingSessionImplementation*) impl)->startEntertaining(dance, animation, isDanceSession);
+void EntertainingSessionAdapter::startDancing(const String& dance, const String& animation) {
+	((EntertainingSessionImplementation*) impl)->startDancing(dance, animation);
+}
+
+void EntertainingSessionAdapter::startPlayingMusic(const String& song, const String& instrumentAnimation, int instrid) {
+	((EntertainingSessionImplementation*) impl)->startPlayingMusic(song, instrumentAnimation, instrid);
+}
+
+void EntertainingSessionAdapter::startEntertaining() {
+	((EntertainingSessionImplementation*) impl)->startEntertaining();
 }
 
 void EntertainingSessionAdapter::finalize() {

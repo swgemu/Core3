@@ -146,6 +146,12 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::DANCING_CHANGE:
 		handleStartDancing(player, suiBox, cancel, args);
 		break;
+	case SuiWindowType::MUSIC_START:
+		handleStartMusic(player, suiBox, cancel, args);
+		break;
+	case SuiWindowType::MUSIC_CHANGE:
+		handleStartMusic(player, suiBox, cancel, args);
+		break;
 	case SuiWindowType::SURVEY_TOOL_RANGE:
 		handleSurveyToolRange(player, suiBox, cancel, args);
 		break;
@@ -367,6 +373,30 @@ void SuiManager::handleStartDancing(PlayerCreature* player, SuiBox* suiBox, uint
 			player->executeObjectControllerAction(String("startdance").hashCode(), 0, dance);
 		else
 			player->executeObjectControllerAction(String("changedance").hashCode(), 0, dance);
+	} catch (...) {
+
+	}
+}
+
+void SuiManager::handleStartMusic(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	if (!suiBox->isListBox() || cancel != 0)
+		return;
+
+	if (args->size() < 2)
+		return;
+
+	int index = Integer::valueOf(args->get(0).toString());
+	bool change = Bool::valueOf(args->get(1).toString());
+
+	SuiListBox* listBox = (SuiListBox*) suiBox;
+
+	try {
+		String dance = listBox->getMenuItemName(index);
+
+		if (!change)
+			player->executeObjectControllerAction(String("startmusic").hashCode(), 0, dance);
+		else
+			player->executeObjectControllerAction(String("changemusic").hashCode(), 0, dance);
 	} catch (...) {
 
 	}

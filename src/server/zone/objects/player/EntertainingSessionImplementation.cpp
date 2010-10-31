@@ -339,18 +339,36 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 	}
 }
 
-void EntertainingSessionImplementation::startEntertaining(const String& dance, const String& animation, bool isDanceSession) {
+void EntertainingSessionImplementation::startDancing(const String& dance, const String& animation) {
 	Locker locker(entertainer);
 
 	sendEntertainingUpdate(entertainer, /*0x3C4CCCCD*/0.0125, animation, 0x07339FF8, 0xDD);
+	performanceName = dance;
+	dancing = true;
+
+	entertainer->sendSystemMessage("performance", "dance_start_self");
+
+	startEntertaining();
+}
+
+void EntertainingSessionImplementation::startPlayingMusic(const String& song, const String& instrumentAnimation, int instrid) {
+	Locker locker(entertainer);
+
+	sendEntertainingUpdate(entertainer, 0.0125, instrumentAnimation, 0x07352BAC, instrid);
+	performanceName = song;
+	playingMusic = true;
+
+	entertainer->sendSystemMessage("performance", "music_start_self");
+
+	entertainer->setListenToID(entertainer->getObjectID(), true);
+
+	startEntertaining();
+}
+
+void EntertainingSessionImplementation::startEntertaining() {
+	Locker locker(entertainer);
 
 	entertainer->setPosture(CreaturePosture::SKILLANIMATING);
-	performanceName = dance;
-
-	if (isDanceSession)
-		dancing = true;
-	else
-		playingMusic = true;
 
 	startTickTask();
 
@@ -360,8 +378,6 @@ void EntertainingSessionImplementation::startEntertaining(const String& dance, c
 	}
 
 	entertainer->registerObserver(ObserverEventType::POSTURECHANGED, observer);
-
-	entertainer->sendSystemMessage("performance", "dance_start_self");
 }
 
 void EntertainingSessionImplementation::stopDancing() {

@@ -45,7 +45,10 @@ which carries forward this exception.
 #ifndef LISTENCOMMAND_H_
 #define LISTENCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/managers/player/PlayerManager.h"
+
 
 class ListenCommand : public QueueCommand {
 public:
@@ -62,6 +65,14 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (creature->isListening())
+			return GENERALERROR;
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		if (playerManager != NULL)
+			playerManager->startListen(creature, target);
 
 		return SUCCESS;
 	}

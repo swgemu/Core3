@@ -62,9 +62,21 @@ public:
 	}
 };
 
+class InstrumentIdMap : public HashTable<String, int> {
+	int hash(const String& k) {
+		return k.hashCode();
+	}
+
+public:
+	InstrumentIdMap() {
+
+	}
+};
+
 
 class PerformanceManager {
 	DanceAnimationMap danceMap;
+	InstrumentIdMap	instrumentIdMap;
 
 	Vector<Performance*>* performances;
 	int loadedCount;
@@ -78,8 +90,20 @@ public:
 	Performance* getDance(const String& name);
 	Performance* getSong(const String& name, int instrumentType);
 	
+	int getInstrumentAnimation(int instrumentType, String& instrumentAnimation);
+
+	String getInstrument(int instrumentType);
+
 	inline String getDanceAnimation(const String& dance) {
 		return danceMap.get(dance);
+	}
+
+	inline int getInstrumentId(const String& song) {
+		return instrumentIdMap.get(song);
+	}
+
+	inline bool hasInstrumentId(const String& song) {
+		return instrumentIdMap.containsKey(song);
 	}
 
 	inline bool hasDanceAnimation(const String& dance) {
