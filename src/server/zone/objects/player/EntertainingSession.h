@@ -174,6 +174,10 @@ public:
 
 	bool isPlayingMusic();
 
+	bool isAcceptingBandFlourishes();
+
+	void setAcceptingBandFlourishes(bool val);
+
 	void removeWatcher(CreatureObject* creature);
 
 	void removeListener(CreatureObject* creature);
@@ -231,6 +235,8 @@ protected:
 	int healingXp;
 
 	int flourishCount;
+
+	bool acceptingBandFlourishes;
 
 public:
 	EntertainingSessionImplementation(CreatureObject* ent);
@@ -304,6 +310,10 @@ public:
 	bool isDancing();
 
 	bool isPlayingMusic();
+
+	bool isAcceptingBandFlourishes();
+
+	void setAcceptingBandFlourishes(bool val);
 
 	void removeWatcher(CreatureObject* creature);
 
@@ -409,6 +419,10 @@ public:
 	bool isDancing();
 
 	bool isPlayingMusic();
+
+	bool isAcceptingBandFlourishes();
+
+	void setAcceptingBandFlourishes(bool val);
 
 	void removeWatcher(CreatureObject* creature);
 
