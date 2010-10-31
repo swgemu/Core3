@@ -84,6 +84,7 @@ class EntertainingSession extends Facade {
 	protected int flourishXp;
 	protected int healingXp;
 	protected int flourishCount;
+	protected boolean acceptingBandFlourishes;
 	
 	public EntertainingSession(CreatureObject ent) {
 		entertainer = ent;
@@ -96,6 +97,7 @@ class EntertainingSession extends Facade {
 		
 		dancing = false;
 		playingMusic = false;
+		acceptingBandFlourishes = true;
 		
 		watchers.setNoDuplicateInsertPlan();
 		listeners.setNoDuplicateInsertPlan();
@@ -193,6 +195,14 @@ class EntertainingSession extends Facade {
 	
 	public boolean isPlayingMusic() {
 		return playingMusic;
+	}
+	
+	public boolean isAcceptingBandFlourishes() {
+		return acceptingBandFlourishes;
+	}
+	
+	public void setAcceptingBandFlourishes(boolean val) {
+		acceptingBandFlourishes = val;
 	}
 	
 	public void removeWatcher(CreatureObject creature) {
