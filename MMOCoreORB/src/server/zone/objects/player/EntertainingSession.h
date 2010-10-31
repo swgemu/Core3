@@ -83,6 +83,20 @@ class EntertainingObserver;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class Instrument;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/player/EntertainingData.h"
@@ -186,6 +200,8 @@ public:
 
 	void setDancing(bool val);
 
+	void setTargetInstrument(bool var);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -237,6 +253,10 @@ protected:
 	int flourishCount;
 
 	bool acceptingBandFlourishes;
+
+	bool targetInstrument;
+
+	ManagedReference<Instrument* > externalInstrument;
 
 public:
 	EntertainingSessionImplementation(CreatureObject* ent);
@@ -322,6 +342,8 @@ public:
 	void setPerformanceName(const String& name);
 
 	void setDancing(bool val);
+
+	void setTargetInstrument(bool var);
 
 	EntertainingSession* _this;
 
@@ -431,6 +453,8 @@ public:
 	void setPerformanceName(const String& name);
 
 	void setDancing(bool val);
+
+	void setTargetInstrument(bool var);
 
 protected:
 	String _param0_startDancing__String_String_;

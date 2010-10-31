@@ -135,7 +135,7 @@ int PerformanceManager::getInstrumentAnimation(int instrumentType, String& instr
 		break;
 	case Instrument::NALARGON: //NALARGON:
 		instrid += 9;
-		instrumentAnimation = "music_3";
+		instrumentAnimation = "music_2";
 		break;
 	default:
 		//sendSystemMessage("Bad instrument type.");

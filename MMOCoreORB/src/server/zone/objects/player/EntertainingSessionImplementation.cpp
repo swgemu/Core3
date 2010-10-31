@@ -59,8 +59,10 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
 		enhancementSkill = (float) entertainer->getSkillMod("healing_music_mind");
 
-	} else
+	} else {
+		cancelSession();
 		return;
+	}
 
 	if (performance == NULL) {
 		return;
@@ -264,8 +266,10 @@ void EntertainingSessionImplementation::doPerformanceAction() {
 		performance = performanceManager->getDance(performanceName);
 	else if (isPlayingMusic() && instrument)
 		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
-	else
+	else {
+		cancelSession();
 		return;
+	}
 
 	if (performance == NULL) { // shouldn't happen
 		StringBuffer msg;
@@ -294,9 +298,19 @@ void EntertainingSessionImplementation::doPerformanceAction() {
 
 Instrument* EntertainingSessionImplementation::getInstrument(CreatureObject* creature) {
 	//all equipable instruments are in hold_r
-	SceneObject* object = creature->getSlottedObject("hold_r");
 
-	return dynamic_cast<Instrument*>(object);
+	if (targetInstrument) {
+		ManagedReference<SceneObject*> target = creature->getZoneServer()->getObject(creature->getTargetID());
+
+		if (target == NULL)
+			return NULL;
+
+		return dynamic_cast<Instrument*>(target.get());
+	} else {
+		SceneObject* object = creature->getSlottedObject("hold_r");
+
+		return dynamic_cast<Instrument*>(object);
+	}
 }
 
 void EntertainingSessionImplementation::stopPlayingMusic() {
@@ -313,6 +327,11 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 	performanceName = "";
 	entertainer->setListenToID(0);
 	entertainer->setPosture(CreaturePosture::UPRIGHT);
+
+	if (externalInstrument != NULL && externalInstrument->isBeingUsed())
+		externalInstrument->setBeingUsed(false);
+
+	externalInstrument = NULL;
 
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
@@ -331,6 +350,8 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 
 	if (tickTask != NULL && tickTask->isScheduled())
 		tickTask->cancel();
+
+	targetInstrument = false;
 
 	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
 
@@ -361,6 +382,11 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 	entertainer->sendSystemMessage("performance", "music_start_self");
 
 	entertainer->setListenToID(entertainer->getObjectID(), true);
+
+	externalInstrument = getInstrument(entertainer);
+
+	if (externalInstrument != NULL)
+		externalInstrument->setBeingUsed(true);
 
 	startEntertaining();
 }
@@ -454,8 +480,10 @@ void EntertainingSessionImplementation::addEntertainerFlourishBuff() {
 		//woundAbility = getSkillMod("healing_music_wound");
 		patrons = &listeners;
 		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
-	} else
+	} else {
+		cancelSession();
 		return;
+	}
 
 	if (performance == NULL) { // shouldn't happen
 		StringBuffer msg;
@@ -511,8 +539,10 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 		performance = performanceManager->getDance(performanceName);
 	else if (playingMusic && instrument)
 		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
-	else
+	else {
+		cancelSession();
 		return;
+	}
 
 	if (!performance) { // shouldn't happen
 		StringBuffer msg;

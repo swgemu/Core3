@@ -61,7 +61,7 @@ public:
 
 	}
 
-	static void startMusic(CreatureObject* creature, const String& song, const String& instrumentAnimation, int intid) {
+	static void startMusic(CreatureObject* creature, const String& song, const String& instrumentAnimation, int intid, bool targetInstrument = false) {
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
@@ -70,6 +70,7 @@ public:
 			creature->addActiveSession(SessionFacadeType::ENTERTAINING, session);
 		}
 
+		session->setTargetInstrument(targetInstrument);
 		session->startPlayingMusic(song, instrumentAnimation, intid);
 	}
 
@@ -132,11 +133,34 @@ public:
 		PlayerObject* ghost = dynamic_cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*>(creature->getSlottedObject("hold_r"));
+		bool targetedInstrument = false;
 
 		if (instrument == NULL) {
-			creature->sendSystemMessage("performance", "music_no_instrument");
+			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(target);
 
-			return GENERALERROR;
+			if (nala != NULL && dynamic_cast<Instrument*>(nala.get())) {
+				targetedInstrument = true;
+				instrument = (Instrument*) nala.get();
+
+				if (creature->getDistanceTo(nala) >= 5 || !nala->isInQuadTree()) {
+					creature->sendSystemMessage("elevator_text", "too_far");
+
+					return GENERALERROR;
+				}
+
+				if (instrument->getSpawnerPlayer() != NULL && instrument->getSpawnerPlayer() != creature) {
+					creature->sendSystemMessage("You must be the owner of the instrument");
+
+					return GENERALERROR;
+				}
+
+				instrument->setDirection(*creature->getDirection());
+				instrument->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
+			} else {
+				creature->sendSystemMessage("performance", "music_no_instrument");
+
+				return GENERALERROR;
+			}
 		}
 
 		String args = arguments.toString();
@@ -168,11 +192,20 @@ public:
 			return GENERALERROR;
 		}
 
+		Locker lockerInstr(instrument);
+
+		if (instrument->isBeingUsed()) {
+			creature->sendSystemMessage("Someone else is using this instrument");
+
+			return GENERALERROR;
+		} else
+			instrument->setBeingUsed(true);
+
 		String instrumentAnimation;
 		int instrid = performanceManager->getInstrumentId(args);
 		instrid += performanceManager->getInstrumentAnimation(instrument->getInstrumentType(), instrumentAnimation);
 
-		startMusic(creature, args, instrumentAnimation, instrid);
+		startMusic(creature, args, instrumentAnimation, instrid, targetedInstrument);
 
 		return SUCCESS;
 	}

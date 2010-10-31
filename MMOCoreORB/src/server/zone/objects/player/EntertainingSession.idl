@@ -58,6 +58,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.Instrument;
 import server.zone.objects.player.events.EntertainingSessionTask;
 import server.zone.objects.player.EntertainingObserver;
+import server.zone.objects.tangible.Instrument;
 
 class EntertainingSession extends Facade {
 	@weakReference
@@ -85,6 +86,8 @@ class EntertainingSession extends Facade {
 	protected int healingXp;
 	protected int flourishCount;
 	protected boolean acceptingBandFlourishes;
+	protected boolean targetInstrument;
+	protected Instrument externalInstrument;
 	
 	public EntertainingSession(CreatureObject ent) {
 		entertainer = ent;
@@ -98,6 +101,7 @@ class EntertainingSession extends Facade {
 		dancing = false;
 		playingMusic = false;
 		acceptingBandFlourishes = true;
+		targetInstrument = false;
 		
 		watchers.setNoDuplicateInsertPlan();
 		listeners.setNoDuplicateInsertPlan();
@@ -219,6 +223,10 @@ class EntertainingSession extends Facade {
 	
 	public void setDancing(boolean val) {
 		dancing = val;
+	}
+	
+	public void setTargetInstrument(boolean var) {
+		targetInstrument = var;
 	}
 
 }

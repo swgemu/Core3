@@ -105,7 +105,7 @@ namespace zone {
 		 * Returns a clone of the passed object with new object id
 		 * if the passed object is persistent, the new object will be too
 		 */
-		SceneObject* cloneObject(SceneObject* object);
+		SceneObject* cloneObject(SceneObject* object, bool makeTransient = false);
 
 		/**
 		 * Assigns a new persistent object id, stores in the specified database

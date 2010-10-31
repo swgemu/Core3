@@ -14,6 +14,8 @@
 
 #include "server/zone/objects/player/EntertainingObserver.h"
 
+#include "server/zone/objects/tangible/Instrument.h"
+
 /*
  *	EntertainingSessionStub
  */
@@ -557,6 +559,20 @@ void EntertainingSession::setDancing(bool val) {
 		_implementation->setDancing(val);
 }
 
+void EntertainingSession::setTargetInstrument(bool var) {
+	EntertainingSessionImplementation* _implementation = (EntertainingSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 41);
+		method.addBooleanParameter(var);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setTargetInstrument(var);
+}
+
 DistributedObjectServant* EntertainingSession::_getImplementation() {
 	return _impl;}
 
@@ -641,33 +657,37 @@ void EntertainingSessionImplementation::_serializationHelperMethod() {
 	addSerializableVariable("healingXp", &healingXp);
 	addSerializableVariable("flourishCount", &flourishCount);
 	addSerializableVariable("acceptingBandFlourishes", &acceptingBandFlourishes);
+	addSerializableVariable("targetInstrument", &targetInstrument);
+	addSerializableVariable("externalInstrument", &externalInstrument);
 }
 
 EntertainingSessionImplementation::EntertainingSessionImplementation(CreatureObject* ent) {
 	_initializeImplementation();
-	// server/zone/objects/player/EntertainingSession.idl(90):  		entertainer = ent;
+	// server/zone/objects/player/EntertainingSession.idl(93):  		entertainer = ent;
 	entertainer = ent;
-	// server/zone/objects/player/EntertainingSession.idl(92):  		flourishXp = 0;
+	// server/zone/objects/player/EntertainingSession.idl(95):  		flourishXp = 0;
 	flourishXp = 0;
-	// server/zone/objects/player/EntertainingSession.idl(93):  		healingXp = 0;
+	// server/zone/objects/player/EntertainingSession.idl(96):  		healingXp = 0;
 	healingXp = 0;
-	// server/zone/objects/player/EntertainingSession.idl(94):  		flourishCount = 0;
+	// server/zone/objects/player/EntertainingSession.idl(97):  		flourishCount = 0;
 	flourishCount = 0;
-	// server/zone/objects/player/EntertainingSession.idl(96):  		observer = null;
+	// server/zone/objects/player/EntertainingSession.idl(99):  		observer = null;
 	observer = NULL;
-	// server/zone/objects/player/EntertainingSession.idl(98):  		dancing = false;
+	// server/zone/objects/player/EntertainingSession.idl(101):  		dancing = false;
 	dancing = false;
-	// server/zone/objects/player/EntertainingSession.idl(99):  		playingMusic = false;
+	// server/zone/objects/player/EntertainingSession.idl(102):  		playingMusic = false;
 	playingMusic = false;
-	// server/zone/objects/player/EntertainingSession.idl(100):  		acceptingBandFlourishes = true;
+	// server/zone/objects/player/EntertainingSession.idl(103):  		acceptingBandFlourishes = true;
 	acceptingBandFlourishes = true;
-	// server/zone/objects/player/EntertainingSession.idl(102):  		watchers.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/EntertainingSession.idl(104):  		targetInstrument = false;
+	targetInstrument = false;
+	// server/zone/objects/player/EntertainingSession.idl(106):  		watchers.setNoDuplicateInsertPlan();
 	(&watchers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/EntertainingSession.idl(103):  		listeners.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/EntertainingSession.idl(107):  		listeners.setNoDuplicateInsertPlan();
 	(&listeners)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/EntertainingSession.idl(105):  		Logger.setLoggingName("EntertainingSession");
+	// server/zone/objects/player/EntertainingSession.idl(109):  		Logger.setLoggingName("EntertainingSession");
 	Logger::setLoggingName("EntertainingSession");
-	// server/zone/objects/player/EntertainingSession.idl(106):  		Logger.setLogging(false);
+	// server/zone/objects/player/EntertainingSession.idl(110):  		Logger.setLogging(false);
 	Logger::setLogging(false);
 }
 
@@ -675,80 +695,85 @@ void EntertainingSessionImplementation::finalize() {
 }
 
 void EntertainingSessionImplementation::addFlourishXp(int xp) {
-	// server/zone/objects/player/EntertainingSession.idl(131):  		flourishXp 
-	if (flourishCount > 2)	// server/zone/objects/player/EntertainingSession.idl(132):  			return;
+	// server/zone/objects/player/EntertainingSession.idl(135):  		flourishXp 
+	if (flourishCount > 2)	// server/zone/objects/player/EntertainingSession.idl(136):  			return;
 	return;
-	// server/zone/objects/player/EntertainingSession.idl(134):  = flourishXp + xp;
+	// server/zone/objects/player/EntertainingSession.idl(138):  = flourishXp + xp;
 	flourishXp = flourishXp + xp;
-	// server/zone/objects/player/EntertainingSession.idl(136):  		flourishCount 
-	if (flourishXp > 2 * xp)	// server/zone/objects/player/EntertainingSession.idl(137):  			flourishXp = 2 * xp;
+	// server/zone/objects/player/EntertainingSession.idl(140):  		flourishCount 
+	if (flourishXp > 2 * xp)	// server/zone/objects/player/EntertainingSession.idl(141):  			flourishXp = 2 * xp;
 	flourishXp = 2 * xp;
-	// server/zone/objects/player/EntertainingSession.idl(139):  = flourishCount + 1;
+	// server/zone/objects/player/EntertainingSession.idl(143):  = flourishCount + 1;
 	flourishCount = flourishCount + 1;
 }
 
 void EntertainingSessionImplementation::addHealingXp(int xp) {
-	// server/zone/objects/player/EntertainingSession.idl(143):  		healingXp = healingXp + xp;
+	// server/zone/objects/player/EntertainingSession.idl(147):  		healingXp = healingXp + xp;
 	healingXp = healingXp + xp;
 }
 
 int EntertainingSessionImplementation::initializeSession() {
-	// server/zone/objects/player/EntertainingSession.idl(147):  		return 0;
+	// server/zone/objects/player/EntertainingSession.idl(151):  		return 0;
 	return 0;
 }
 
 int EntertainingSessionImplementation::cancelSession() {
-	// server/zone/objects/player/EntertainingSession.idl(151):  		stopPlayingMusic();
+	// server/zone/objects/player/EntertainingSession.idl(155):  		stopPlayingMusic();
 	stopPlayingMusic();
-	// server/zone/objects/player/EntertainingSession.idl(152):  		stopDancing();
+	// server/zone/objects/player/EntertainingSession.idl(156):  		stopDancing();
 	stopDancing();
-	// server/zone/objects/player/EntertainingSession.idl(154):  		return 0;
-	return 0;
-}
-
-int EntertainingSessionImplementation::clearSession() {
 	// server/zone/objects/player/EntertainingSession.idl(158):  		return 0;
 	return 0;
 }
 
+int EntertainingSessionImplementation::clearSession() {
+	// server/zone/objects/player/EntertainingSession.idl(162):  		return 0;
+	return 0;
+}
+
 bool EntertainingSessionImplementation::isDancing() {
-	// server/zone/objects/player/EntertainingSession.idl(193):  		return dancing;
+	// server/zone/objects/player/EntertainingSession.idl(197):  		return dancing;
 	return dancing;
 }
 
 bool EntertainingSessionImplementation::isPlayingMusic() {
-	// server/zone/objects/player/EntertainingSession.idl(197):  		return playingMusic;
+	// server/zone/objects/player/EntertainingSession.idl(201):  		return playingMusic;
 	return playingMusic;
 }
 
 bool EntertainingSessionImplementation::isAcceptingBandFlourishes() {
-	// server/zone/objects/player/EntertainingSession.idl(201):  		return acceptingBandFlourishes;
+	// server/zone/objects/player/EntertainingSession.idl(205):  		return acceptingBandFlourishes;
 	return acceptingBandFlourishes;
 }
 
 void EntertainingSessionImplementation::setAcceptingBandFlourishes(bool val) {
-	// server/zone/objects/player/EntertainingSession.idl(205):  		acceptingBandFlourishes = val;
+	// server/zone/objects/player/EntertainingSession.idl(209):  		acceptingBandFlourishes = val;
 	acceptingBandFlourishes = val;
 }
 
 void EntertainingSessionImplementation::removeWatcher(CreatureObject* creature) {
-	// server/zone/objects/player/EntertainingSession.idl(209):  		watchers.drop(creature);
+	// server/zone/objects/player/EntertainingSession.idl(213):  		watchers.drop(creature);
 	(&watchers)->drop(creature);
 }
 
 void EntertainingSessionImplementation::removeListener(CreatureObject* creature) {
-	// server/zone/objects/player/EntertainingSession.idl(213):  		listeners.drop(creature);
+	// server/zone/objects/player/EntertainingSession.idl(217):  		listeners.drop(creature);
 	(&listeners)->drop(creature);
 }
 
 void EntertainingSessionImplementation::setPerformanceName(const String& name) {
-	// server/zone/objects/player/EntertainingSession.idl(217):  		performanceName = name;
+	// server/zone/objects/player/EntertainingSession.idl(221):  		performanceName = name;
 	performanceName = name;
 }
 
 void EntertainingSessionImplementation::setDancing(bool val) {
-	// server/zone/objects/player/EntertainingSession.idl(221):  		dancing = val;
+	// server/zone/objects/player/EntertainingSession.idl(225):  		dancing = val;
 	dancing = val;
+}
+
+void EntertainingSessionImplementation::setTargetInstrument(bool var) {
+	// server/zone/objects/player/EntertainingSession.idl(229):  		targetInstrument = var;
+	targetInstrument = var;
 }
 
 /*
@@ -869,6 +894,9 @@ Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 		break;
 	case 41:
 		setDancing(inv->getBooleanParameter());
+		break;
+	case 42:
+		setTargetInstrument(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -1019,6 +1047,10 @@ void EntertainingSessionAdapter::setPerformanceName(const String& name) {
 
 void EntertainingSessionAdapter::setDancing(bool val) {
 	((EntertainingSessionImplementation*) impl)->setDancing(val);
+}
+
+void EntertainingSessionAdapter::setTargetInstrument(bool var) {
+	((EntertainingSessionImplementation*) impl)->setTargetInstrument(var);
 }
 
 /*
