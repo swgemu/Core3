@@ -115,6 +115,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/player/EntertainingSession.cpp \
+				server/zone/objects/player/MigrateStatsSession.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
