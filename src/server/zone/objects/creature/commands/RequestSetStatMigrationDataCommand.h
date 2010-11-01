@@ -45,7 +45,11 @@ which carries forward this exception.
 #ifndef REQUESTSETSTATMIGRATIONDATACOMMAND_H_
 #define REQUESTSETSTATMIGRATIONDATACOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/Races.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/MigrateStatsSession.h"
+
 
 class RequestSetStatMigrationDataCommand : public QueueCommand {
 public:
@@ -55,6 +59,25 @@ public:
 
 	}
 
+	static uint32 getMaxAttribute(PlayerCreature* player, uint8 attribute) {
+		int raceID = player->getRaceID();
+		const uint32 * table = Races::getAttribLimits(raceID);
+		return table[attribute * 2 + 1];
+	}
+
+	static uint32 getMinAttribute(PlayerCreature* player, uint8 attribute) {
+		int raceID = player->getRaceID();
+		const uint32* table = Races::getAttribLimits(raceID);
+		return table[attribute * 2];
+	}
+
+	static uint32 getTotalAttribPoints(PlayerCreature* player) {
+		int raceID = player->getRaceID();
+		const uint32* table = Races::getAttribLimits(raceID);
+		return table[18];
+	}
+
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -62,6 +85,56 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::MIGRATESTATS);
+		ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
+
+		if (session == NULL) {
+			return GENERALERROR;
+		}
+
+		StringTokenizer tokenizer(arguments.toString());
+		tokenizer.setDelimeter(" ");
+
+		uint32 targetPointsTotal = 0;
+		uint32 targetAttributes[9] = {0,0,0,0,0,0,0,0,0};
+
+		for (int i = 0; tokenizer.hasMoreTokens() && i < 9; ++i) {
+			uint32 value = tokenizer.getIntToken();
+
+			if (value < getMinAttribute(player, i) && value > getMaxAttribute(player, i)) {
+				creature->info("Suspected stat migration hacking attempt.");
+				return GENERALERROR;
+			}
+
+			targetAttributes[i] = value;
+			targetPointsTotal += value;
+		}
+
+		//Here we set the stat migration target attributes.
+		//NOTE: We aren't actually migrating the stats at this point.
+		if (targetPointsTotal == getTotalAttribPoints(player)) {
+			for (int i = 0; i < 9; ++i) {
+				session->setAttributeToModify(i, targetAttributes[i]);
+			}
+		} else {
+			creature->error("targetPointsTotal = " + String::valueOf(targetPointsTotal));
+			creature->error("totalAttribPoints = " + String::valueOf(getTotalAttribPoints(player)));
+			creature->error("Trying to set migratory stats without assigning all available points.");
+			return GENERALERROR;
+		}
+
+		//Player is in the tutorial zone and is allowed to migrate stats.
+		Zone* zone = creature->getZone();
+
+		if (zone != NULL && zone->getZoneID() == 42)
+			session->migrateStats();
+
 
 		return SUCCESS;
 	}
