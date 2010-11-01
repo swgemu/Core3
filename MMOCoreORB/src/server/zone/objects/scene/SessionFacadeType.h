@@ -11,6 +11,7 @@
 class SessionFacadeType {
 public:
 	const static int ENTERTAINING = 1;
+	const static int MIGRATESTATS = 2;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */
