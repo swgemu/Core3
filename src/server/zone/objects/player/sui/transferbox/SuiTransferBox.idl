@@ -61,29 +61,16 @@ class SuiTransferBox extends SuiBox {
 	
 	protected string convertRatioFrom;
 	protected string convertRatioTo;
-	
-	@weakReference
-	protected SceneObject usingObject;
 
 
 	public SuiTransferBox(PlayerCreature player, unsigned int windowType) {
 		super(player, windowType, SuiBox.TRANSFERBOX);
-		
-		usingObject = null;
 	}
 
 	public native BaseMessage generateMessage();
 
 	public native void addFrom(final string from, final string startingFrom, final string inputFrom, final string rFrom);
 	public native void addTo(final string to, final string startingTo, final string inputTo, final string rTo);
-	
-	public void setUsingObject(SceneObject obj) {
-		usingObject = obj;
-	}
-	
-	public SceneObject getUsingObject() {
-		return usingObject;
-	}
 	
 	public boolean isTransferBox() {
 		return true;

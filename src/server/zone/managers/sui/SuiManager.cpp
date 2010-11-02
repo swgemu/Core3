@@ -284,7 +284,7 @@ void SuiManager::handleManageMaintenance(PlayerCreature* player, SuiBox* suiBox,
 
 	int transferTotal = currentCash - transferAmount;
 
-	//TODO: Handlle this in StructureManager.
+	//TODO: Handle this in StructureManager.
 	//ManagedReference<StructureManager*> structureManager = structureObject->getZone()->getPlanetManager()->getStructureManager();
 	//structureManager->depositMaintenance(player, structureObject, transferTotal);
 

@@ -208,7 +208,7 @@ void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 		}
 	}
 
-	schematics->setUsingObjectID(getObjectID());
+	schematics->setUsingObject(_this);
 	player->addSuiBox(schematics);
 	player->sendMessage(schematics->generateMessage());
 }
@@ -270,7 +270,7 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* playe
 		}
 	}
 
-	ingredientList->setUsingObjectID(getObjectID());
+	ingredientList->setUsingObject(_this);
 	player->addSuiBox(ingredientList);
 	player->sendMessage(ingredientList->generateMessage());
 
