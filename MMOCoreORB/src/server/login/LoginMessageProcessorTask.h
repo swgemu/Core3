@@ -90,6 +90,9 @@ namespace server {
 					System::out << "[LoginMessageProcessor] unreported Exception caught\n";
 				}
 
+				delete message;
+				message = NULL;
+
 			}
 
 		};

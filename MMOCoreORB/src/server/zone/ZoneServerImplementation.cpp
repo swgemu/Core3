@@ -74,8 +74,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/professions/SkillBox.h"
 
 #include "ZoneProcessServer.h"
-#include "ZoneMessageProcessorTask.h"
-
+#include "ZonePacketHandler.h"
 #include "ZoneHandler.h"
 
 ZoneServerImplementation::ZoneServerImplementation(int galaxyid) :
@@ -356,9 +355,13 @@ void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* mess
 }
 
 void ZoneServerImplementation::processMessage(Message* message) {
-	Task* task = new ZoneMessageProcessorTask(message, processor->getPacketHandler());
+	ZonePacketHandler* zonePacketHandler = processor->getPacketHandler();
+	Task* task = zonePacketHandler->generateMessageTask(message);//;new ZoneMessageProcessorTask(message, processor->getPacketHandler());
 
-	Core::getTaskManager()->executeTask(task);
+	delete message;
+
+	if (task != NULL)
+		Core::getTaskManager()->executeTask(task);
 }
 
 bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) {
