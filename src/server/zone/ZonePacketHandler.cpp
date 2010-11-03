@@ -199,66 +199,39 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 
 }
 
-void ZonePacketHandler::handleMessage(Message* pack) {
+Task* ZonePacketHandler::generateMessageTask(Message* pack) {
 	//info("parsing " + pack->toString());
 
-	uint16 opcount = pack->parseShort();
-	uint32 opcode = pack->parseInt();
-
-	StringBuffer buffer;
-	buffer << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
-	info(buffer);
-
-	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
-	ManagedReference<ZoneClientSession*> client = (ZoneClientSession*) clientimpl->_getStub();
-
-	MessageCallback* messageCallback = messageCallbackFactory.createObject(opcode, client, processServer);
-
-	if (messageCallback == NULL) {
-		StringBuffer msg;
-		msg << "unknown opcode 0x" << hex << opcode;
-		info(msg, true);
-
-		return;
-	}
-
-	if (parseMessage(pack, messageCallback))
-		runMessage(messageCallback);
-
-	delete messageCallback;
-}
-
-bool ZonePacketHandler::parseMessage(Message* pack, MessageCallback* messageCallback) {
 	try {
+		uint16 opcount = pack->parseShort();
+		uint32 opcode = pack->parseInt();
 
-		messageCallback->parse(pack);
+		StringBuffer buffer;
+		buffer << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
+		info(buffer);
 
-	} catch (Exception& e) {
-		error("exception while parsing message in ZonePacketHandler");
-		error(e.getMessage());
-		e.printStackTrace();
+		ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
+		ManagedReference<ZoneClientSession*> client = (ZoneClientSession*) clientimpl->_getStub();
 
-		return false;
+		MessageCallback* messageCallback = messageCallbackFactory.createObject(opcode, client, processServer);
+
+		if (messageCallback == NULL) {
+			StringBuffer msg;
+			msg << "unknown opcode 0x" << hex << opcode;
+			info(msg, true);
+
+			return NULL;
+		}
+
+		if (!messageCallback->parseMessage(pack)) {
+			delete messageCallback;
+			return NULL;
+		} else
+			return messageCallback;
+
 	} catch (...) {
-		error("unknown exception while parsing message in ZonePacketHandler");
-
-		return false;
+		error("unreported exception caught creating message task");
 	}
 
-	return true;
+	return NULL;
 }
-
-void ZonePacketHandler::runMessage(MessageCallback* messageCallback) {
-	try {
-
-		messageCallback->run();
-
-	} catch (Exception& e) {
-		error("exception while executing message callback in ZonePacketHandler");
-		error(e.getMessage());
-		e.printStackTrace();
-	} catch (...) {
-		error("unknown exception while executing message callback in ZonePacketHandler");
-	}
-}
-

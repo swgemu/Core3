@@ -76,10 +76,7 @@ class ZoneServer;
 		void registerMessages();
 		void registerObjectControllerMessages();
 
-		void handleMessage(Message* pack);
-
-		bool parseMessage(Message* pack, MessageCallback* messageCallback);
-		void runMessage(MessageCallback* messageCallback);
+		Task* generateMessageTask(Message* pack);
 	};
 
 	}

@@ -18,7 +18,7 @@ namespace server {
 namespace zone {
 namespace packets {
 
-	class MessageCallback : public Task {
+	class MessageCallback : public Task, Logger {
 	protected:
 		Reference<ZoneClientSession*> client;
 
@@ -28,13 +28,34 @@ namespace packets {
 		MessageCallback(ZoneClientSession* client, ZoneProcessServer* server) {
 			MessageCallback::client = client;
 			MessageCallback::server = server;
+
+			setLoggingName("MessageCallback");
 		}
 
 		virtual ~MessageCallback() {
-
 		}
 
 		virtual void parse(Message* message) = 0;
+
+		bool parseMessage(Message* packet) {
+			try {
+
+				parse(packet);
+
+			} catch (Exception& e) {
+				error("exception while parsing message in ZonePacketHandler");
+				error(e.getMessage());
+				e.printStackTrace();
+
+				return false;
+			} catch (...) {
+				error("unknown exception while parsing message in ZonePacketHandler");
+
+				return false;
+			}
+
+			return true;
+		}
 
 		inline ZoneClientSession* getClient() {
 			return client.get();
@@ -43,6 +64,7 @@ namespace packets {
 		inline ZoneProcessServer* getServer() {
 			return server;
 		}
+
 	};
 
 }

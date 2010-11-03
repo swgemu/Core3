@@ -8,7 +8,7 @@
 
 #include "server/login/account/Account.h"
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 
@@ -48,8 +48,8 @@
  *	ZoneServerStub
  */
 
-ZoneServer::ZoneServer(int processingThreads, int galaxyid) : ManagedService(DummyConstructorParameter::instance()) {
-	ZoneServerImplementation* _implementation = new ZoneServerImplementation(processingThreads, galaxyid);
+ZoneServer::ZoneServer(int galaxyid) : ManagedService(DummyConstructorParameter::instance()) {
+	ZoneServerImplementation* _implementation = new ZoneServerImplementation(galaxyid);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -183,6 +183,15 @@ void ZoneServer::handleMessage(ServiceClient* client, Packet* message) {
 
 	} else
 		_implementation->handleMessage(client, message);
+}
+
+void ZoneServer::processMessage(Message* message) {
+	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->processMessage(message);
 }
 
 bool ZoneServer::handleError(ServiceClient* client, Exception& e) {
@@ -602,6 +611,15 @@ int ZoneServer::getDeletedPlayers() {
 		return _implementation->getDeletedPlayers();
 }
 
+ObjectManager* ZoneServer::getObjectManager() {
+	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getObjectManager();
+}
+
 PlayerManager* ZoneServer::getPlayerManager() {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -945,7 +963,6 @@ void ZoneServerImplementation::_serializationHelperMethod() {
 
 	_setClassName("ZoneServer");
 
-	addSerializableVariable("procThreadCount", &procThreadCount);
 	addSerializableVariable("zones", &zones);
 	addSerializableVariable("playerManager", &playerManager);
 	addSerializableVariable("chatManager", &chatManager);
@@ -1029,85 +1046,90 @@ int ZoneServerImplementation::getDeletedPlayers() {
 	return (&totalDeletedPlayers)->get();
 }
 
+ObjectManager* ZoneServerImplementation::getObjectManager() {
+	// server/zone/ZoneServer.idl(288):  		return objectManager;
+	return objectManager;
+}
+
 PlayerManager* ZoneServerImplementation::getPlayerManager() {
-	// server/zone/ZoneServer.idl(287):  		return playerManager;
+	// server/zone/ZoneServer.idl(292):  		return playerManager;
 	return playerManager;
 }
 
 ChatManager* ZoneServerImplementation::getChatManager() {
-	// server/zone/ZoneServer.idl(291):  		return chatManager;
+	// server/zone/ZoneServer.idl(296):  		return chatManager;
 	return chatManager;
 }
 
 ObjectController* ZoneServerImplementation::getObjectController() {
-	// server/zone/ZoneServer.idl(295):  		return processor.getObjectController();
+	// server/zone/ZoneServer.idl(300):  		return processor.getObjectController();
 	return processor->getObjectController();
 }
 
 MissionManager* ZoneServerImplementation::getMissionManager() {
-	// server/zone/ZoneServer.idl(299):  		return missionManager;
+	// server/zone/ZoneServer.idl(304):  		return missionManager;
 	return missionManager;
 }
 
 RadialManager* ZoneServerImplementation::getRadialManager() {
-	// server/zone/ZoneServer.idl(303):  		return radialManager;
+	// server/zone/ZoneServer.idl(308):  		return radialManager;
 	return radialManager;
 }
 
 GuildManager* ZoneServerImplementation::getGuildManager() {
-	// server/zone/ZoneServer.idl(307):  		return guildManager;
+	// server/zone/ZoneServer.idl(312):  		return guildManager;
 	return guildManager;
 }
 
 ResourceManager* ZoneServerImplementation::getResourceManager() {
-	// server/zone/ZoneServer.idl(311):  		return resourceManager;
+	// server/zone/ZoneServer.idl(316):  		return resourceManager;
 	return resourceManager;
 }
 
 CraftingManager* ZoneServerImplementation::getCraftingManager() {
-	// server/zone/ZoneServer.idl(315):  		return craftingManager;
+	// server/zone/ZoneServer.idl(320):  		return craftingManager;
 	return craftingManager;
 }
 
 LootManager* ZoneServerImplementation::getLootManager() {
-	// server/zone/ZoneServer.idl(319):  		return lootManager;
+	// server/zone/ZoneServer.idl(324):  		return lootManager;
 	return lootManager;
 }
 
 BazaarManager* ZoneServerImplementation::getBazaarManager() {
-	// server/zone/ZoneServer.idl(323):  		return bazaarManager;
+	// server/zone/ZoneServer.idl(328):  		return bazaarManager;
 	return bazaarManager;
 }
 
 FishingManager* ZoneServerImplementation::getFishingManager() {
-	// server/zone/ZoneServer.idl(327):  		return fishingManager;
+	// server/zone/ZoneServer.idl(332):  		return fishingManager;
 	return fishingManager;
 }
 
 GamblingManager* ZoneServerImplementation::getGamblingManager() {
-	// server/zone/ZoneServer.idl(331):  		return gamblingManager;
+	// server/zone/ZoneServer.idl(336):  		return gamblingManager;
 	return gamblingManager;
 }
 
 ProfessionManager* ZoneServerImplementation::getProfessionManager() {
-	// server/zone/ZoneServer.idl(338):  		return processor.getProfessionManager();
+	// server/zone/ZoneServer.idl(343):  		return processor.getProfessionManager();
 	return processor->getProfessionManager();
 }
 
 Time* ZoneServerImplementation::getStartTimestamp() {
-	// server/zone/ZoneServer.idl(343):  		return startTimestamp;
+	// server/zone/ZoneServer.idl(348):  		return startTimestamp;
 	return (&startTimestamp);
 }
 
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(349):  		galaxyID = galaxyid;
+	// server/zone/ZoneServer.idl(354):  		galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(353):  		serverState = state;
+	// server/zone/ZoneServer.idl(358):  		serverState = state;
 	serverState = state;
 }
 
