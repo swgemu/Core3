@@ -91,6 +91,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/sui/FindCommandCallback.h"
 #include "server/zone/objects/guild/sui/GuildCreateNameResponseCallback.h"
 #include "server/zone/objects/guild/sui/GuildCreateAbbrevResponseCallback.h"
+#include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeCallback.h"
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
@@ -107,6 +108,7 @@ SuiManager::SuiManager(ZoneProcessServer* serv) : Logger("SuiManager") {
 }
 
 void SuiManager::registerMessages() {
+	messageCallbackFactory.registerObject<SurveyToolSetRangeCallback>(SuiWindowType::SURVEY_TOOL_RANGE);
 	messageCallbackFactory.registerObject<FindCommandCallback>(SuiWindowType::COMMAND_FIND);
 	messageCallbackFactory.registerObject<GuildCreateNameResponseCallback>(SuiWindowType::GUILD_CREATE_NAME);
 	messageCallbackFactory.registerObject<GuildCreateAbbrevResponseCallback>(SuiWindowType::GUILD_CREATE_ABBREV);
@@ -181,9 +183,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 		break;
 	case SuiWindowType::MUSIC_CHANGE:
 		handleStartMusic(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::SURVEY_TOOL_RANGE:
-		handleSurveyToolRange(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::SAMPLE_RADIOACTIVE_CONFIRM:
 		handleSampleRadioactiveConfirm(player, suiBox, cancel, args);
@@ -428,25 +427,6 @@ void SuiManager::handleStartMusic(PlayerCreature* player, SuiBox* suiBox, uint32
 	} catch (...) {
 
 	}
-}
-
-void SuiManager::handleSurveyToolRange(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	ManagedReference<SurveyTool*> surveyTool =  player->getSurveyTool();
-
-	if (surveyTool == NULL)
-		return;
-
-	int range = Integer::valueOf(args->get(0).toString());
-
-	Locker _lock(surveyTool);
-
-	surveyTool->setRange(range);
 }
 
 void SuiManager::handleSampleRadioactiveConfirm(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
