@@ -156,7 +156,7 @@ void ZoneServerImplementation::initialize() {
 	creatureTemplateManager = CreatureTemplateManager::instance();
 	creatureTemplateManager->loadTemplates();
 
-	phandler = new BasePacketHandler("ZoneServer", NULL);
+	phandler = new BasePacketHandler("ZoneServer", this);
 	phandler->setLogging(false);
 
 	info("Initializing chat manager...", true);
