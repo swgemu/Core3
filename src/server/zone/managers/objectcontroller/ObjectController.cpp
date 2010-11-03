@@ -111,7 +111,10 @@ QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
 }
 
 DistributedObjectServant* ObjectController::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ObjectController::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

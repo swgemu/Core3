@@ -117,7 +117,11 @@ public:
 				PlayerCreature* player = (PlayerCreature*)groupMember.get();
 
 				ManagedReference<Facade*> pfacade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
+
 				ManagedReference<EntertainingSession*> psession = dynamic_cast<EntertainingSession*>(pfacade.get());
+
+				if (psession == NULL)
+					continue;
 
 				ManagedReference<Instrument*> pinstrument = psession->getInstrument(player);
 				int playerInstrumentType = pinstrument == NULL ? -1 : pinstrument->getInstrumentType();

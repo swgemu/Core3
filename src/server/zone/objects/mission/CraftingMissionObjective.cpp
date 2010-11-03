@@ -106,7 +106,10 @@ int CraftingMissionObjective::notifyObserverEvent(MissionObserver* observer, uns
 }
 
 DistributedObjectServant* CraftingMissionObjective::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void CraftingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

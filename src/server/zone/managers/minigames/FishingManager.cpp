@@ -750,7 +750,10 @@ FishingEvent* FishingManager::getFishingEvent(PlayerCreature* player) {
 }
 
 DistributedObjectServant* FishingManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void FishingManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

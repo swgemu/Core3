@@ -52,7 +52,10 @@ void Food::initializePrivateData() {
 }
 
 DistributedObjectServant* Food::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Food::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

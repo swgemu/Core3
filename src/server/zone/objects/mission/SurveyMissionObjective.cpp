@@ -146,7 +146,10 @@ void SurveyMissionObjective::setEfficiency(unsigned int eff) {
 }
 
 DistributedObjectServant* SurveyMissionObjective::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SurveyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

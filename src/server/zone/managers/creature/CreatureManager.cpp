@@ -192,7 +192,10 @@ void CreatureManager::loadInformants() {
 }
 
 DistributedObjectServant* CreatureManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void CreatureManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -74,7 +74,10 @@ void TravelTerminal::setShuttle(ShuttleCreature* shut) {
 }
 
 DistributedObjectServant* TravelTerminal::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void TravelTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

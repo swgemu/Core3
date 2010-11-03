@@ -257,7 +257,10 @@ float Creature::getMeatMax() {
 }
 
 DistributedObjectServant* Creature::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Creature::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -111,12 +111,14 @@ public:
 		}
 
 		String errorDescription;
+		int errorNumber = 0;
 
-		if (destinationObject->canAddObject(objectToTransfer, transferType, errorDescription) != 0) {
-			creature->error("cannot add objectToTransfer to destinationObject");
-
+		if ((errorNumber = destinationObject->canAddObject(objectToTransfer, transferType, errorDescription)) != 0) {
 			if (errorDescription.length() > 1)
 				creature->sendSystemMessage(errorDescription);
+			else
+				creature->error("cannot add objectToTransfer to destinationObject " + String::valueOf(errorNumber));
+
 			return GENERALERROR;
 		}
 

@@ -132,7 +132,10 @@ unsigned int LootGroupObject::getLootGroup() {
 }
 
 DistributedObjectServant* LootGroupObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void LootGroupObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

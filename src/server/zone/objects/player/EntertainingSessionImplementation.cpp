@@ -17,6 +17,7 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/packets/object/Flourish.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 
 void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	ManagedReference<CreatureObject*> creo = entertainer.get();
@@ -300,12 +301,17 @@ Instrument* EntertainingSessionImplementation::getInstrument(CreatureObject* cre
 	//all equipable instruments are in hold_r
 
 	if (targetInstrument) {
-		ManagedReference<SceneObject*> target = creature->getZoneServer()->getObject(creature->getTargetID());
+		SceneObject* target = creature->getZoneServer()->getObject(creature->getTargetID());
 
 		if (target == NULL)
 			return NULL;
 
-		return dynamic_cast<Instrument*>(target.get());
+		Instrument* instrument = dynamic_cast<Instrument*>(target);
+
+		if (externalInstrument != NULL && externalInstrument != instrument)
+			return NULL;
+		else
+			return instrument;
 	} else {
 		SceneObject* object = creature->getSlottedObject("hold_r");
 
@@ -322,11 +328,14 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 	playingMusic = false;
 	entertainer->sendSystemMessage("performance", "music_stop_self");
 
-	sendEntertainingUpdate(entertainer, 0.8025000095f, performanceName, 0, 0);
+	sendEntertainingUpdate(entertainer, 0.8025000095f, entertainer->getPerformanceAnimation(), 0, 0);
 
 	performanceName = "";
 	entertainer->setListenToID(0);
-	entertainer->setPosture(CreaturePosture::UPRIGHT);
+	//entertainer->setPosture(CreaturePosture::UPRIGHT);
+
+	if (entertainer->getPosture() == CreaturePosture::SKILLANIMATING)
+		entertainer->setPosture(CreaturePosture::UPRIGHT);
 
 	if (externalInstrument != NULL && externalInstrument->isBeingUsed())
 		externalInstrument->setBeingUsed(false);
@@ -358,6 +367,7 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 	if (!dancing && !playingMusic) {
 		entertainer->dropActiveSession(SessionFacadeType::ENTERTAINING);
 	}
+
 }
 
 void EntertainingSessionImplementation::startDancing(const String& dance, const String& animation) {
@@ -421,12 +431,12 @@ void EntertainingSessionImplementation::stopDancing() {
 
 	entertainer->sendSystemMessage("performance", "dance_stop_self");
 
-	if (entertainer->getPosture() == CreaturePosture::SKILLANIMATING)
-		entertainer->setPosture(CreaturePosture::UPRIGHT);
-
 	performanceName = "";
 
-	sendEntertainingUpdate(entertainer, 0.8025000095f, performanceName, 0, 0);
+	sendEntertainingUpdate(entertainer, 0.8025000095f, entertainer->getPerformanceAnimation(), 0, 0);
+
+	if (entertainer->getPosture() == CreaturePosture::SKILLANIMATING)
+		entertainer->setPosture(CreaturePosture::UPRIGHT);
 
 	//entertainer->setListenToID(0);
 
@@ -453,6 +463,7 @@ void EntertainingSessionImplementation::stopDancing() {
 	if (!dancing && !playingMusic) {
 		entertainer->dropActiveSession(SessionFacadeType::ENTERTAINING);
 	}
+
 }
 
 bool EntertainingSessionImplementation::canGiveEntertainBuff() {
@@ -759,7 +770,9 @@ void EntertainingSessionImplementation::setEntertainerBuffStrength(CreatureObjec
 
 void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* creature, uint64 entid, const String& mood, bool updateEntValue) {
 	creature->setListenToID(entid, true);
-	creature->setTerrainNegotiation(0.8025000095f, true);
+
+	if (updateEntValue)
+		creature->setTerrainNegotiation(0.8025000095f, true);
 
 	String str = Races::getMoodStr(mood);
 	creature->setMoodString(str, true);
@@ -769,9 +782,17 @@ void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* 
 void EntertainingSessionImplementation::sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, uint32 perfcntr, int instrid) {
 	creature->setTerrainNegotiation(entval, true);
 
-	creature->setPerformanceAnimation(performance, true);
-	creature->setPerformanceCounter(0, true);
-	creature->setInstrumentID(instrid, true);
+	creature->setPerformanceAnimation(performance, false);
+	creature->setPerformanceCounter(0, false);
+	creature->setInstrumentID(instrid, false);
+
+	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(creature);
+	dcreo6->updatePerformanceAnimation(performance);
+	dcreo6->updatePerformanceCounter(0);
+	dcreo6->updateInstrumentID(instrid);
+	dcreo6->close();
+
+	creature->broadcastMessage(dcreo6, true);
 }
 
 void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* creature, int performanceType) {

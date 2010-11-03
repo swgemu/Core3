@@ -26,7 +26,10 @@ RecreationBuildingObject::~RecreationBuildingObject() {
 
 
 DistributedObjectServant* RecreationBuildingObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void RecreationBuildingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

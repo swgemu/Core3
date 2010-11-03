@@ -101,7 +101,10 @@ GuildObject* GuildTerminal::getGuildObject() {
 }
 
 DistributedObjectServant* GuildTerminal::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void GuildTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

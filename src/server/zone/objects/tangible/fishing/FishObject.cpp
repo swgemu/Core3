@@ -123,7 +123,10 @@ void FishObject::filet(PlayerCreature* player) {
 }
 
 DistributedObjectServant* FishObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void FishObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

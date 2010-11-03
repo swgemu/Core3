@@ -419,7 +419,10 @@ void DraftSchematic::increaseUseCount(int count) {
 }
 
 DistributedObjectServant* DraftSchematic::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void DraftSchematic::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

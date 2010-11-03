@@ -55,7 +55,10 @@ void ArmorComponent::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 DistributedObjectServant* ArmorComponent::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ArmorComponent::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

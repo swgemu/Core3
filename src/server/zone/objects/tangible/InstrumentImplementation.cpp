@@ -59,7 +59,7 @@ int InstrumentImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 
 void InstrumentImplementation::spawnInForeignCell(PlayerCreature* player) {
 	if (spawnedObject == NULL) {
-		spawnedObject = ObjectManager::instance()->cloneObject(_this, true);
+		spawnedObject = ObjectManager::instance()->createObject(serverObjectCRC, 0, "sceneobjects");
 		spawnedObject->setParent(NULL);
 		spawnedObject->setZone(NULL);
 	}
@@ -83,7 +83,7 @@ void InstrumentImplementation::spawnInForeignCell(PlayerCreature* player) {
 
 void InstrumentImplementation::spawnOutside(PlayerCreature* player) {
 	if (spawnedObject == NULL) {
-		spawnedObject = ObjectManager::instance()->cloneObject(_this, true);
+		spawnedObject = ObjectManager::instance()->createObject(serverObjectCRC, 0, "sceneobjects");
 		spawnedObject->setParent(NULL);
 		spawnedObject->setZone(NULL);
 	}

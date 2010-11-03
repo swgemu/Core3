@@ -312,7 +312,10 @@ bool GuildObject::isGuildObject() {
 }
 
 DistributedObjectServant* GuildObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void GuildObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

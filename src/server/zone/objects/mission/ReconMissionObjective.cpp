@@ -88,7 +88,10 @@ void ReconMissionObjective::complete() {
 }
 
 DistributedObjectServant* ReconMissionObjective::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ReconMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

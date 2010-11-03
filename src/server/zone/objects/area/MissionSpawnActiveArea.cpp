@@ -56,7 +56,10 @@ void MissionSpawnActiveArea::setMissionObjective(DestroyMissionObjective* missio
 }
 
 DistributedObjectServant* MissionSpawnActiveArea::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void MissionSpawnActiveArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

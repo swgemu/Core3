@@ -764,7 +764,10 @@ bool WeaponObject::isWeaponObject() {
 }
 
 DistributedObjectServant* WeaponObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void WeaponObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

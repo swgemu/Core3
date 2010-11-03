@@ -519,7 +519,10 @@ void GamblingTerminal::statusUpdate(int event) {
 }
 
 DistributedObjectServant* GamblingTerminal::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void GamblingTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}
@@ -608,202 +611,202 @@ void GamblingTerminalImplementation::_serializationHelperMethod() {
 
 GamblingTerminalImplementation::GamblingTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(130):  		state = NOGAMERUNNING;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(131):  		state = NOGAMERUNNING;
 	state = NOGAMERUNNING;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(131):  		first = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(132):  		first = 0;
 	first = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(132):  		second = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(133):  		second = 0;
 	second = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(133):  		third = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(134):  		third = 0;
 	third = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(134):  		gameCount = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(135):  		gameCount = 0;
 	gameCount = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(135):  		minBet = 1;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(136):  		minBet = 1;
 	minBet = 1;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(136):  		maxBet = 10000;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(137):  		maxBet = 10000;
 	maxBet = 10000;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(137):  		Logger.setLoggingName("GamblingTerminal");
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(138):  		Logger.setLoggingName("GamblingTerminal");
 	Logger::setLoggingName("GamblingTerminal");
 }
 
 void GamblingTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(141):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(142):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(143):  		Logger.setLoggingName("GamblingTerminal");
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(144):  		Logger.setLoggingName("GamblingTerminal");
 	Logger::setLoggingName("GamblingTerminal");
 }
 
 void GamblingTerminalImplementation::reset() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(147):  		state = NOGAMERUNNING;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(148):  		state = NOGAMERUNNING;
 	state = NOGAMERUNNING;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(148):  		first = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(149):  		first = 0;
 	first = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(149):  		second = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(150):  		second = 0;
 	second = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(150):  		third = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(151):  		third = 0;
 	third = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(151):  		playersWindows.removeAll();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(152):  		playersWindows.removeAll();
 	(&playersWindows)->removeAll();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(152):  		winnings.removeAll();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(153):  		winnings.removeAll();
 	(&winnings)->removeAll();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(153):  		bets.removeAll();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(154):  		bets.removeAll();
 	(&bets)->removeAll();
 }
 
 Vector<GamblingBet*>* GamblingTerminalImplementation::getBets() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(158):  		return bets;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(159):  		return bets;
 	return (&bets);
 }
 
 VectorMap<ManagedReference<PlayerCreature* >, unsigned int>* GamblingTerminalImplementation::getPlayersWindows() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(163):  		return playersWindows;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(164):  		return playersWindows;
 	return (&playersWindows);
 }
 
 VectorMap<ManagedReference<PlayerCreature* >, int>* GamblingTerminalImplementation::getWinnings() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(168):  		return winnings;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(169):  		return winnings;
 	return (&winnings);
 }
 
 int GamblingTerminalImplementation::getFirst() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(172):  		return first;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(173):  		return first;
 	return first;
 }
 
 int GamblingTerminalImplementation::getSecond() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(176):  		return second;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(177):  		return second;
 	return second;
 }
 
 int GamblingTerminalImplementation::getThird() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(180):  		return third;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(181):  		return third;
 	return third;
 }
 
 void GamblingTerminalImplementation::setFirst(int value) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(184):  		first = value;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(185):  		first = value;
 	first = value;
 }
 
 void GamblingTerminalImplementation::setSecond(int value) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(188):  		second = value;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(189):  		second = value;
 	second = value;
 }
 
 void GamblingTerminalImplementation::setThird(int value) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(192):  		third = value;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(193):  		third = value;
 	third = value;
 }
 
 int GamblingTerminalImplementation::getMinBet() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(196):  		return minBet;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(197):  		return minBet;
 	return minBet;
 }
 
 int GamblingTerminalImplementation::getMaxBet() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(200):  		return maxBet;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(201):  		return maxBet;
 	return maxBet;
 }
 
 int GamblingTerminalImplementation::getState() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(204):  		return state;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(205):  		return state;
 	return state;
 }
 
 void GamblingTerminalImplementation::setState(int value) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(208):  		state = value;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(209):  		state = value;
 	state = value;
 }
 
 int GamblingTerminalImplementation::getMachineType() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(212):  		return machineType;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(213):  		return machineType;
 	return machineType;
 }
 
 GamblingEvent* GamblingTerminalImplementation::getEvent() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(217):  		return event;
-	return event;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(218):  		return event.get();
+	return (&event)->get();
 }
 
 void GamblingTerminalImplementation::incGameCount() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(224):  		gameCount = gameCount + 1;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(225):  		gameCount = gameCount + 1;
 	gameCount = gameCount + 1;
 }
 
 int GamblingTerminalImplementation::getGameCount() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(228):  		return gameCount;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(229):  		return gameCount;
 	return gameCount;
 }
 
 bool GamblingTerminalImplementation::isGoneEmpty() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(232):  		return 
-	if ((&playersWindows)->size() == 0)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(233):  			return true;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(233):  		return 
+	if ((&playersWindows)->size() == 0)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(234):  			return true;
 	return true;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(234):  false;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(235):  false;
 	return false;
 }
 
 String GamblingTerminalImplementation::getMachineTypeText() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(238):  
-	if (machineType == ROULETTEMACHINE)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(239):  			return "@gambling/game_n:roulette";
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(239):  
+	if (machineType == ROULETTEMACHINE)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(240):  			return "@gambling/game_n:roulette";
 	return "@gambling/game_n:roulette";
 
-	else 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(240):  
-	if (machineType == SLOTMACHINE)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(241):  			return "@gambling/game_n:slot_standard";
+	else 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(241):  
+	if (machineType == SLOTMACHINE)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(242):  			return "@gambling/game_n:slot_standard";
 	return "@gambling/game_n:slot_standard";
 
-	else 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(243):  			return "Sabacc";
+	else 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(244):  			return "Sabacc";
 	return "Sabacc";
 }
 
 void GamblingTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(254):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(255):  		super.loadTemplateData(templateData);
 	TerminalImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(256):  		GamblingTerminalTemplate 
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(257):  		GamblingTerminalTemplate 
 	if (!templateData->isGamblingTerminalTemplate()){
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(257):  			error("critical error");
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(258):  			error("critical error");
 	error("critical error");
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(258):  			return;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(259):  			return;
 	return;
 }
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(261):  templ = (GamblingTerminalTemplate) templateData;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(262):  templ = (GamblingTerminalTemplate) templateData;
 	GamblingTerminalTemplate* templ = (GamblingTerminalTemplate*) templateData;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(263):  		machineType = templ.getMachineType();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(264):  		machineType = templ.getMachineType();
 	machineType = templ->getMachineType();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(265):  	}
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(266):  	}
 	if (machineType == SLOTMACHINE){
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(266):  			maxBet = 3;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(267):  			maxBet = 3;
 	maxBet = 3;
 }
 }
 
 String GamblingTerminalImplementation::getText(PlayerCreature* player) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(279):  		return 
-	if ((&playersWindows)->contains(player))	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(280):  			return "@gambling/default_interface:mnu_leave";
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(280):  		return 
+	if ((&playersWindows)->contains(player))	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(281):  			return "@gambling/default_interface:mnu_leave";
 	return "@gambling/default_interface:mnu_leave";
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(281):  "@gambling/default_interface:mnu_join";
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(282):  "@gambling/default_interface:mnu_join";
 	return "@gambling/default_interface:mnu_join";
 }
 
 void GamblingTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(291):  		string text = getText(player);
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(292):  		string text = getText(player);
 	String text = getText(player);
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(292):  		menuResponse.addRadialMenuItem(245, 3, text);
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(293):  		menuResponse.addRadialMenuItem(245, 3, text);
 	menuResponse->addRadialMenuItem(245, 3, text);
 }
 
 void GamblingTerminalImplementation::setGamblingRegion(const String& region) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(304):  		gamblingRegion = region;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(305):  		gamblingRegion = region;
 	gamblingRegion = region;
 }
 
 String GamblingTerminalImplementation::getGamblingRegion() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(308):  		return gamblingRegion;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(309):  		return gamblingRegion;
 	return gamblingRegion;
 }
 
 bool GamblingTerminalImplementation::gameRunning() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(312):  		return state != NOGAMERUNNING;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(313):  		return state != NOGAMERUNNING;
 	return state != NOGAMERUNNING;
 }
 

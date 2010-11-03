@@ -241,7 +241,10 @@ void ResourceContainer::combine(ResourceContainer* fromContainer) {
 }
 
 DistributedObjectServant* ResourceContainer::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ResourceContainer::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -45,7 +45,10 @@ int EntertainingObserver::notifyObserverEvent(unsigned int eventType, Observable
 }
 
 DistributedObjectServant* EntertainingObserver::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void EntertainingObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

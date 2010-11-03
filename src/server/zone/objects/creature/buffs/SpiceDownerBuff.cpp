@@ -56,7 +56,10 @@ void SpiceDownerBuff::deactivate(bool applyModifiers) {
 }
 
 DistributedObjectServant* SpiceDownerBuff::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SpiceDownerBuff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

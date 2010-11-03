@@ -194,7 +194,10 @@ bool TicketObject::isTicketObject() {
 }
 
 DistributedObjectServant* TicketObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void TicketObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

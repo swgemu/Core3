@@ -128,7 +128,10 @@ void WearableObject::setMaxSockets(int sockets) {
 }
 
 DistributedObjectServant* WearableObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void WearableObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -321,7 +321,10 @@ AuctionQueryHeadersResponseMessage* BazaarManager::fillAuctionQueryHeadersRespon
 }
 
 DistributedObjectServant* BazaarManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void BazaarManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -189,7 +189,10 @@ bool CellObject::isCellObject() {
 }
 
 DistributedObjectServant* CellObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void CellObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -180,7 +180,10 @@ bool MissionTerminal::isStatueTerminal() {
 }
 
 DistributedObjectServant* MissionTerminal::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void MissionTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

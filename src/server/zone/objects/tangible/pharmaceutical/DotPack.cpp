@@ -237,7 +237,10 @@ unsigned int DotPack::getDotType() {
 }
 
 DistributedObjectServant* DotPack::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void DotPack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

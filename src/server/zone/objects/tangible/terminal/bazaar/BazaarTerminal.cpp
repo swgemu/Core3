@@ -97,7 +97,10 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminal:
 }
 
 DistributedObjectServant* BazaarTerminal::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void BazaarTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

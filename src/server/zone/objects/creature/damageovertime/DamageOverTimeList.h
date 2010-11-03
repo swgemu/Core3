@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "DamageOverTime.h"
 
-class DamageOverTimeList : public VectorMap<uint64, DamageOverTime> {
+class DamageOverTimeList : public VectorMap<uint64, Vector<DamageOverTime> > {
 protected:
 	Time nextTick;
 	bool dot;
@@ -30,6 +30,8 @@ public:
 	void sendStopMessage(CreatureObject* victim, uint64 type);
 	void sendIncreaseMessage(CreatureObject* victim, uint64 type);
 	void sendDecreaseMessage(CreatureObject* victim, uint64 type);
+
+	int getStrength(uint8 pool, uint64 dotType);
 
 	inline void setNextTick(Time time) {
 		nextTick = time;

@@ -69,20 +69,14 @@ public:
 	}
 
 	void run() {
-		try {
-			player->wlock();
+		Locker _locker(player);
 
-			player->clearRecoveryEvent();
+		player->clearRecoveryEvent();
 
-			if (player->isOnline() || player->isLinkDead())
-				player->doRecovery();
+		if (player->isOnline() || player->isLinkDead())
+			player->doRecovery();
 
-			player->unlock();
-		} catch (...) {
-			player->error("unreported exception caught in PlayerRecoveryEvent::activate");
 
-			player->unlock();
-		}
 	}
 
 };

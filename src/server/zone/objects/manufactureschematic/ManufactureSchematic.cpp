@@ -518,7 +518,10 @@ SceneObject* ManufactureSchematic::getFactoryIngredient(int i) {
 }
 
 DistributedObjectServant* ManufactureSchematic::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ManufactureSchematic::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

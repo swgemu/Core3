@@ -462,7 +462,10 @@ String AuctionItem::getLocation() {
 }
 
 DistributedObjectServant* AuctionItem::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void AuctionItem::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

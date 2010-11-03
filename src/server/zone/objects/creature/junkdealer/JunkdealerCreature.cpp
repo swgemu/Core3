@@ -163,7 +163,10 @@ void JunkdealerCreature::createSellJunkLootSelection(PlayerCreature* player) {
 }
 
 DistributedObjectServant* JunkdealerCreature::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void JunkdealerCreature::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

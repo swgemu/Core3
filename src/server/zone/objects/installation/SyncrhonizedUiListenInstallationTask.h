@@ -32,6 +32,9 @@ public:
 		Locker locker(strongRef);
 
 		try {
+			if (strongRef->getZone() == NULL)
+				return;
+
 			strongRef->updateInstallationWork();
 			//strongRef->updateOperators();
 			strongRef->verifyOperators();

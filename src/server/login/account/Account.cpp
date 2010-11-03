@@ -231,7 +231,10 @@ unsigned int Account::getTimeCreated() {
 }
 
 DistributedObjectServant* Account::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Account::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

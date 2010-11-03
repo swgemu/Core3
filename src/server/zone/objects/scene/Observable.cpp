@@ -76,7 +76,10 @@ int Observable::getObserverCount(unsigned int eventType) {
 }
 
 DistributedObjectServant* Observable::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Observable::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

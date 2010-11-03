@@ -109,7 +109,10 @@ bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 }
 
 DistributedObjectServant* ShuttleInstallation::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ShuttleInstallation::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

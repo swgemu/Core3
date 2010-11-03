@@ -101,4 +101,6 @@ public:
 }
 }
 
+using namespace server::zone::managers::minigames::events;
+
 #endif /* GAMBLINGSLOTEVENT_H_ */

@@ -123,9 +123,6 @@ void ZoneImplementation::startManagers() {
 		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 	}
 
-
-
-	//planetManager = new PlanetManager(_this, processor);
 	planetManager->initialize();
 
 	creatureManager->initialize();
@@ -134,19 +131,6 @@ void ZoneImplementation::startManagers() {
 	cityManager->loadLuaConfig();
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
-
-	/*creatureManager->init();
-
-	planetManager = new PlanetManager(_this, processor);
-	planetManager->deploy("PlanetManager", zoneID);
-
-	planetManager->init();
-
-	creatureManager->loadCreatures();
-
-	planetManager->start();
-
-	creatureManager->start();*/
 }
 
 void ZoneImplementation::stopManagers() {

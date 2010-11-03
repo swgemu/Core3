@@ -59,7 +59,8 @@ void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
 }
 
 int ContainerImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	if (object->isIntangibleObject() && containerType != 3) {
+	if ((object->isIntangibleObject() && containerType != 3)
+			|| (containerType == 3 && !object->isIntangibleObject())) {
 		errorDescription = "@container_error_message:container07";
 
 		return TransferErrorCode::INVALIDTYPE;

@@ -111,7 +111,10 @@ void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 }
 
 DistributedObjectServant* FishingBaitObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void FishingBaitObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

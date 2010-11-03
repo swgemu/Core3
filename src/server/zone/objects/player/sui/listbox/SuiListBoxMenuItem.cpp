@@ -51,7 +51,10 @@ String SuiListBoxMenuItem::getOptionName() {
 }
 
 DistributedObjectServant* SuiListBoxMenuItem::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SuiListBoxMenuItem::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

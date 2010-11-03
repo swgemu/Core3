@@ -77,6 +77,8 @@ LoginServerImplementation::LoginServerImplementation(ConfigManager* configMan) :
 	clusterStatusMessage = NULL;
 
 	accountManager = NULL;
+
+	setLogging(false);
 }
 
 void LoginServerImplementation::initializeTransientMembers() {

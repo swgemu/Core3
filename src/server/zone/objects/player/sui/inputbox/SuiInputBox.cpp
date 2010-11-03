@@ -93,7 +93,10 @@ bool SuiInputBox::isInputBox() {
 }
 
 DistributedObjectServant* SuiInputBox::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SuiInputBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

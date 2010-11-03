@@ -57,7 +57,10 @@ CloneSpawnPoint* CloningBuildingObject::getRandomSpawnPoint() {
 }
 
 DistributedObjectServant* CloningBuildingObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void CloningBuildingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

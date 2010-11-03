@@ -215,7 +215,10 @@ bool VehicleObject::isVehicleObject() {
 }
 
 DistributedObjectServant* VehicleObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void VehicleObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

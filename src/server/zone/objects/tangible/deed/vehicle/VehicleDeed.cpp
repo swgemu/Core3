@@ -114,7 +114,10 @@ bool VehicleDeed::isVehicleDeedObject() {
 }
 
 DistributedObjectServant* VehicleDeed::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void VehicleDeed::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

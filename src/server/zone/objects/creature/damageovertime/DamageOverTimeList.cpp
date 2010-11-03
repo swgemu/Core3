@@ -16,22 +16,34 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 
 	for (int i = 0; i < size(); ++i) {
 		uint64 type = elementAt(i).getKey();
-		DamageOverTime* dot = &elementAt(i).getValue();
+		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
 
-		if (dot->nextTickPast()) {
-			dot->applyDot(victim);
+		bool hasState = false;
+
+		for (int j = 0; j < vector->size(); ++j) {
+			DamageOverTime* dot = &vector->elementAt(j);
+
+			if (dot->nextTickPast()) {
+				dot->applyDot(victim);
+			}
+
+			Time nTime = dot->getNextTick();
+
+			if (nextTick.isPast() || (!dot->isPast() && (nTime.compareTo(nextTick) > 0)))
+				nextTick = nTime;
+
+			if (!dot->isPast()) {
+				states |= dot->getType();
+
+				hasState = hasState || true;
+			} else {
+				hasState = hasState || false;
+			//	victim->clearState(dot->getType());
+			}
 		}
 
-		Time nTime = dot->getNextTick();
-
-		if (nextTick.isPast() || (!dot->isPast() && (nTime.compareTo(nextTick) > 0)))
-			nextTick = nTime;
-
-		if (!dot->isPast()) {
-			states |= dot->getType();
-		} else {
-			victim->clearState(dot->getType());
-		}
+		if (!hasState)
+			victim->clearState(type);
 	}
 
 	if (nextTick.isPast()) {
@@ -44,20 +56,37 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 	return states;
 }
 
-uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense) {
+int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
 	if (contains(dotType)) {
-		DamageOverTime* newDot = &get(dotType);
+		Vector<DamageOverTime>* vector = &get(dotType);
+		VectorMap<uint8, int> poolStrength;
+		poolStrength.setNullValue(0);
+		poolStrength.setAllowOverwriteInsertPlan();
 
-		if (!newDot->isPast()) {
-			if (newDot->getStrength() >= strength)
-				return strength;
-			else {
-				sendIncreaseMessage(victim, dotType);
-				newDot->setStrength(strength);
-				return strength;
+		for (int i = 0; i < vector->size(); ++i) {
+			DamageOverTime* oldDot = &vector->get(i);
+
+			if (!oldDot->isPast()) {
+				int newStrength = poolStrength.get(pool);
+				poolStrength.put(oldDot->getAttribute(), newStrength += oldDot->getStrength());
 			}
 		}
+
+		return poolStrength.get(pool);
 	}
+
+	return 0;
+}
+
+uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense) {
+	bool increasing = false;
+
+	int oldStrength = getStrength(pool, dotType);
+
+	if (oldStrength >= strength)
+		return strength;
+	else if (oldStrength > 0)
+		increasing = true;
 
 	float dotReductionMod = 1.0f;
 
@@ -92,9 +121,20 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint32 duration, uint6
 	else if (nTime.compareTo(nextTick) > 0)
 		nextTick = nTime;
 
-	put(dotType, newDot);
+	if (contains(dotType)) {
+		Vector<DamageOverTime>* vector = &get(dotType);
+		vector->add(newDot);
+	} else {
+		Vector<DamageOverTime> newVector;
+		newVector.add(newDot);
 
-	sendStartMessage(victim, dotType);
+		put(dotType, newVector);
+	}
+
+	if (increasing)
+		sendIncreaseMessage(victim, dotType);
+	else
+		sendStartMessage(victim, dotType);
 
 	dot = true;
 
@@ -105,20 +145,33 @@ bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float
 	if (!hasDot())
 		return reduction;
 
-	float tempReduction = reduction;
+	//float tempReduction = reduction;
+
+	/*if (tempReduction < 0.0f)
+		return tempReduction;*/
+
+	bool expired = true;
 
 	for (int i = 0; i < size(); ++i) {
 		uint64 type = elementAt(i).getKey();
-		DamageOverTime* dot = &elementAt(i).getValue();
 
-		if (tempReduction < 0.0f)
-			return tempReduction;
+		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
 
-		if (dot->getType() == dotType && !dot->isPast())
-			tempReduction = dot->reduceTick(tempReduction);
+		for (int j = 0; j < vector->size(); ++j) {
+			DamageOverTime* dot = &vector->elementAt(j);
+
+			if (dot->getType() == dotType && !dot->isPast()) {
+				float tempReduction = dot->reduceTick(reduction);
+
+				if (tempReduction >= 0.0f)
+					expired = expired && true;
+				else
+					expired = false;
+			}
+		}
 	}
 
-	if (tempReduction >= 0.0f) {
+	if (/*tempReduction >= 0.0f*/expired) {
 		victim->clearState(dotType);
 		//sendStopMessage(victim,dotType);
 		return true;

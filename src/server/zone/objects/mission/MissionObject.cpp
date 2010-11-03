@@ -685,7 +685,10 @@ String MissionObject::getTemplateString2() {
 }
 
 DistributedObjectServant* MissionObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void MissionObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

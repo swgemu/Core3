@@ -131,7 +131,10 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarAuctionsM
 }
 
 DistributedObjectServant* BazaarAuctionsMap::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void BazaarAuctionsMap::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

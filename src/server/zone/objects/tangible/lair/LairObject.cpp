@@ -163,7 +163,10 @@ SortedVector<unsigned int>* LairObject::getObjectsToSpawn() {
 }
 
 DistributedObjectServant* LairObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void LairObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

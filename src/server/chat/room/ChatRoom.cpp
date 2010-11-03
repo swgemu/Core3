@@ -523,7 +523,10 @@ int ChatRoom::compareTo(ChatRoom* obj) {
 }
 
 DistributedObjectServant* ChatRoom::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ChatRoom::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

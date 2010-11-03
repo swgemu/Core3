@@ -72,6 +72,11 @@ public:
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+		if (inventory == NULL)
+			return GENERALERROR;
+
 		StringTokenizer tokenizer(arguments.toString());
 
 		String departurePlanet;
@@ -117,7 +122,7 @@ public:
 		departurePoint = departurePoint.replaceAll("_", " ");
 		arrivalPoint = arrivalPoint.replaceAll("_", " ");
 
-		ShuttleCreature* shuttle = planetManager->getShuttle(departurePoint);
+		ManagedReference<ShuttleCreature*> shuttle = planetManager->getShuttle(departurePoint);
 
 		if (shuttle == NULL) {
 			SuiMessageBox* sui = new SuiMessageBox(player, SuiWindowType::TICKET_PURCHASE_MESSAGE);
@@ -168,7 +173,6 @@ public:
 		ticket->setArrivalPlanet(arrivalPlanet);
 		ticket->setArrivalPoint(arrivalPoint);
 
-		SceneObject* inventory = player->getSlottedObject("inventory");
 		inventory->addObject(ticket, -1);
 		ticket->sendTo(player, true);
 
