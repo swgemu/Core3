@@ -51,7 +51,7 @@ which carries forward this exception.
 class UnfreezePlayerCommand : public QueueCommand {
 public:
 
-	UnfreezePlayerCommand(const String& name, ZoneProcessServerImplementation* server)
+	UnfreezePlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

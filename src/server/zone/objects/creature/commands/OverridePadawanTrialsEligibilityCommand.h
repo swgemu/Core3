@@ -50,7 +50,7 @@ which carries forward this exception.
 class OverridePadawanTrialsEligibilityCommand : public QueueCommand {
 public:
 
-	OverridePadawanTrialsEligibilityCommand(const String& name, ZoneProcessServerImplementation* server)
+	OverridePadawanTrialsEligibilityCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

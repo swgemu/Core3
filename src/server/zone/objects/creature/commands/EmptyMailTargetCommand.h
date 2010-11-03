@@ -50,7 +50,7 @@ which carries forward this exception.
 class EmptyMailTargetCommand : public QueueCommand {
 public:
 
-	EmptyMailTargetCommand(const String& name, ZoneProcessServerImplementation* server)
+	EmptyMailTargetCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

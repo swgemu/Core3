@@ -23,7 +23,7 @@ public:
 class CommoditiesItemTypeListRequestCallback : public MessageCallback {
 	String request;
 public:
-	CommoditiesItemTypeListRequestCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	CommoditiesItemTypeListRequestCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

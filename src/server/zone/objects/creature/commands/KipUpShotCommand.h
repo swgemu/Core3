@@ -51,7 +51,7 @@ which carries forward this exception.
 class KipUpShotCommand : public CombatQueueCommand {
 public:
 
-	KipUpShotCommand(const String& name, ZoneProcessServerImplementation* server)
+	KipUpShotCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 2.5;

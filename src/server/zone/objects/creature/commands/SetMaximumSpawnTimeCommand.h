@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetMaximumSpawnTimeCommand : public QueueCommand {
 public:
 
-	SetMaximumSpawnTimeCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetMaximumSpawnTimeCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

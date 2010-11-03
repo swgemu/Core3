@@ -52,7 +52,7 @@ which carries forward this exception.
 class MountCommand : public QueueCommand {
 public:
 
-	MountCommand(const String& name, ZoneProcessServerImplementation* server)
+	MountCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

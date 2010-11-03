@@ -50,7 +50,7 @@
 class EquilibriumCommand: public QueueCommand {
 public:
 
-	EquilibriumCommand(const String& name, ZoneProcessServerImplementation* server)
+	EquilibriumCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

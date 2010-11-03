@@ -33,7 +33,7 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
 

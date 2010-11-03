@@ -51,7 +51,7 @@ which carries forward this exception.
 class DoubleTapCommand : public CombatQueueCommand {
 public:
 
-	DoubleTapCommand(const String& name, ZoneProcessServerImplementation* server)
+	DoubleTapCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 2.8;

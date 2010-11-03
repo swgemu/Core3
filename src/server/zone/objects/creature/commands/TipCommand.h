@@ -50,7 +50,7 @@ which carries forward this exception.
 class TipCommand : public QueueCommand {
 public:
 
-	TipCommand(const String& name, ZoneProcessServerImplementation* server)
+	TipCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

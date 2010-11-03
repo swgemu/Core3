@@ -52,7 +52,7 @@ which carries forward this exception.
 class BroadcastGalaxyCommand : public QueueCommand {
 public:
 
-	BroadcastGalaxyCommand(const String& name, ZoneProcessServerImplementation* server)
+	BroadcastGalaxyCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

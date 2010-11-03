@@ -50,7 +50,7 @@ which carries forward this exception.
 class NextCraftingStageCommand : public QueueCommand {
 public:
 
-	NextCraftingStageCommand(const String& name, ZoneProcessServerImplementation* server)
+	NextCraftingStageCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

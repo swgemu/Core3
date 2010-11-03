@@ -52,7 +52,7 @@ which carries forward this exception.
 class TransferItemArmorCommand : public QueueCommand {
 public:
 
-	TransferItemArmorCommand(const String& name, ZoneProcessServerImplementation* server)
+	TransferItemArmorCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

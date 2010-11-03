@@ -52,7 +52,7 @@ which carries forward this exception.
 class RolePlayCommand : public QueueCommand {
 public:
 
-	RolePlayCommand(const String& name, ZoneProcessServerImplementation* server)
+	RolePlayCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

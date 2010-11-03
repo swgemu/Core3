@@ -50,7 +50,7 @@ which carries forward this exception.
 class DenyServiceCommand : public QueueCommand {
 public:
 
-	DenyServiceCommand(const String& name, ZoneProcessServerImplementation* server)
+	DenyServiceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class Intimidate2Command : public CombatQueueCommand {
 public:
 
-	Intimidate2Command(const String& name, ZoneProcessServerImplementation* server)
+	Intimidate2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 0;

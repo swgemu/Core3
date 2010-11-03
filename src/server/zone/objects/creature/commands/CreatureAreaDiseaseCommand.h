@@ -51,7 +51,7 @@ which carries forward this exception.
 class CreatureAreaDiseaseCommand : public CombatQueueCommand {
 public:
 
-	CreatureAreaDiseaseCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+	CreatureAreaDiseaseCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
 		dotDuration = 10;
 		dotType = CreatureState::DISEASED;
 		dotPool = CombatManager::HEALTH;

@@ -50,7 +50,7 @@ which carries forward this exception.
 class AnimalAttackCommand : public QueueCommand {
 public:
 
-	AnimalAttackCommand(const String& name, ZoneProcessServerImplementation* server)
+	AnimalAttackCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

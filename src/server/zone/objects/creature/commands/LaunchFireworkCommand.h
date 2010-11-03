@@ -50,7 +50,7 @@ which carries forward this exception.
 class LaunchFireworkCommand : public QueueCommand {
 public:
 
-	LaunchFireworkCommand(const String& name, ZoneProcessServerImplementation* server)
+	LaunchFireworkCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

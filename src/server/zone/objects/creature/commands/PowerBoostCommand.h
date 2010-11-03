@@ -54,7 +54,7 @@ which carries forward this exception.
 class PowerBoostCommand : public QueueCommand {
 public:
 
-	PowerBoostCommand(const String& name, ZoneProcessServerImplementation* server)
+	PowerBoostCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 	}
 

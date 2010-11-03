@@ -74,7 +74,7 @@ class ForceOfWillCommand : public QueueCommand {
 
 public:
 
-	ForceOfWillCommand(const String& name, ZoneProcessServerImplementation* server)
+	ForceOfWillCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

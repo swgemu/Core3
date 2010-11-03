@@ -51,7 +51,7 @@ which carries forward this exception.
 
 namespace server {
 namespace zone {
-class ZoneProcessServerImplementation;
+class ZoneProcessServer;
 }
 }
 
@@ -67,10 +67,10 @@ class CommandList;
 
 class CommandConfigManager : public Lua {
 public:
-	static ZoneProcessServerImplementation* server;
+	static ZoneProcessServer* server;
 	static CommandList* slashCommands;
 
-	CommandConfigManager(ZoneProcessServerImplementation* serv);
+	CommandConfigManager(ZoneProcessServer* serv);
 
 	void registerFunctions();
 	void registerGlobals();

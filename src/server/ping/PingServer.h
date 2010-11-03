@@ -47,15 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "PingMessageProcessorThread.h"
-
 #include "PingClient.h"
 
 class PingServer : public DatagramServiceThread, public ServiceHandler {
-	PingMessageProcessorThread** processors;
-
-	int procThreadCount;
-
 public:
 	PingServer();
 
@@ -70,6 +64,8 @@ public:
 	PingClient* createConnection(Socket* sock, SocketAddress& addr);
 
 	void handleMessage(ServiceClient* client, Packet* message);
+
+	void processMessage(Message* message);
 
 	bool handleError(ServiceClient* client, Exception& e);
 

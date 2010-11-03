@@ -52,7 +52,7 @@ which carries forward this exception.
 class GroupChatCommand : public QueueCommand {
 public:
 
-	GroupChatCommand(const String& name, ZoneProcessServerImplementation* server)
+	GroupChatCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

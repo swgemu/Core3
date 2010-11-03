@@ -14,7 +14,7 @@ class ObjectMenuSelectCallback : public MessageCallback {
 	uint64 objectID;
 	uint8 radialID;
 public:
-	ObjectMenuSelectCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ObjectMenuSelectCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

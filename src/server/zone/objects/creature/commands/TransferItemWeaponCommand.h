@@ -53,7 +53,7 @@ which carries forward this exception.
 class TransferItemWeaponCommand : public QueueCommand {
 public:
 
-	TransferItemWeaponCommand(const String& name, ZoneProcessServerImplementation* server)
+	TransferItemWeaponCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

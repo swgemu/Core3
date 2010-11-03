@@ -50,7 +50,7 @@ which carries forward this exception.
 class SelectDraftSchematicCommand : public QueueCommand {
 public:
 
-	SelectDraftSchematicCommand(const String& name, ZoneProcessServerImplementation* server)
+	SelectDraftSchematicCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

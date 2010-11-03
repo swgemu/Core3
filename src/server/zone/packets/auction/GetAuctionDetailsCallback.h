@@ -16,7 +16,7 @@ class GetAuctionDetailsCallback : public MessageCallback {
 	uint64 objectid;
 
 public:
-	GetAuctionDetailsCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	GetAuctionDetailsCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 			MessageCallback(client, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class CreateNPCCommand : public QueueCommand {
 public:
 
-	CreateNPCCommand(const String& name, ZoneProcessServerImplementation* server)
+	CreateNPCCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

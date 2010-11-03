@@ -53,22 +53,22 @@ which carries forward this exception.
 namespace server {
 namespace zone {
 
-class ZoneProcessServerImplementation;
+class ZoneProcessServer;
 class ZoneServer;
 
 	class ZonePacketHandler : public Logger {
-		ZoneProcessServerImplementation* processServer;
+		ManagedReference<ZoneProcessServer*> processServer;
 
 		ManagedReference<ZoneServer*> server;
 
-		MessageCallbackFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServerImplementation*), uint32> messageCallbackFactory;
+		MessageCallbackFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServer*), uint32> messageCallbackFactory;
 
 	public:
 		ZonePacketHandler() : Logger() {
 			server = NULL;
 		}
 
-		ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv);
+		ZonePacketHandler(const String& s, ZoneProcessServer* serv);
 
 		~ZonePacketHandler() {
 		}

@@ -51,7 +51,7 @@ which carries forward this exception.
 class MoveFurnitureCommand : public QueueCommand {
 public:
 
-	MoveFurnitureCommand(const String& name, ZoneProcessServerImplementation* server)
+	MoveFurnitureCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

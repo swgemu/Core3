@@ -53,7 +53,7 @@ which carries forward this exception.
 class BurstRunCommand : public QueueCommand {
 public:
 
-	BurstRunCommand(const String& name, ZoneProcessServerImplementation* server)
+	BurstRunCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -44,22 +44,23 @@ which carries forward this exception.
 
 package server.zone.managers.mission;
 
-import server.zone.objects.mission.MissionObject;
 import system.util.SortedVector;
+
+import server.zone.ZoneServer;
+import server.zone.ZoneProcessServer;
+import server.zone.objects.mission.MissionObject;
 import server.zone.objects.scene.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
-import server.zone.ZoneServer;
-import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.stringid.StringIdManager;
 include server.zone.managers.mission.LairObjectsToSpawnMap;
 
 class MissionManager extends Observer implements Logger {
 	@weakReference
 	protected ZoneServer server;
-	transient ZoneProcessServerImplementation processor;
+	transient ZoneProcessServer processor;
 	
 	@dereferenced
 	protected LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
@@ -69,7 +70,7 @@ class MissionManager extends Observer implements Logger {
 	
 	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
 	
-	public MissionManager(ZoneServer srv, ZoneProcessServerImplementation impl) {
+	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
 		server = srv;
 		processor = impl;
 		Logger.setLoggingName("MissionManager");

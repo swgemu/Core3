@@ -19,7 +19,7 @@ protected:
 
 public:
 
-	SquadLeaderCommand(const String& name, ZoneProcessServerImplementation* server)
+	SquadLeaderCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		combatSpam = "";

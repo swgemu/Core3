@@ -102,7 +102,7 @@ namespace server {
    namespace professions {
 
 	class ProfessionManager : public Mutex, public Logger, public Singleton<ProfessionManager> {
-		//ZoneProcessServerImplementation* server;
+		//ZoneProcessServer* server;
 
 		//SkillManager* skillManager;
 

@@ -50,7 +50,7 @@ which carries forward this exception.
 class GtellCommand : public QueueCommand {
 public:
 
-	GtellCommand(const String& name, ZoneProcessServerImplementation* server)
+	GtellCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetIntimidateCommand : public QueueCommand {
 public:
 
-	SetIntimidateCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetIntimidateCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -11,6 +11,7 @@
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
@@ -38,7 +39,7 @@ void DestroyMissionObjectiveImplementation::activate() {
 	}
 
 	if (spawnActiveArea == NULL) {
-		spawnActiveArea = (MissionSpawnActiveArea*) ZoneProcessServerImplementation::instance->getZoneServer()->createObject(String("object/mission_spawn_area.iff").hashCode(), 1);
+		spawnActiveArea = (MissionSpawnActiveArea*) Core::lookupObject<ZoneServer>("zoneServer")->createObject(String("object/mission_spawn_area.iff").hashCode(), 1);
 		spawnActiveArea->setMissionObjective(_this);
 	}
 
@@ -48,7 +49,7 @@ void DestroyMissionObjectiveImplementation::activate() {
 		String planetName = Planet::getPlanetNameByCrc(startPlanetCRC);
 		int id = Planet::getPlanetID(planetName);
 
-		Zone* zone = ZoneProcessServerImplementation::instance->getZoneServer()->getZone(id);
+		Zone* zone = Core::lookupObject<ZoneServer>("zoneServer")->getZone(id);
 		spawnActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 		spawnActiveArea->setRadius(128.f);
 		spawnActiveArea->insertToZone(zone);
@@ -88,7 +89,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	player->sendSystemMessage("Transmission Received: Mission Target has been located.  Mission waypoint has been updated to exact location");
 
 	if (lairObject == NULL)
-		lairObject = (LairObject*) ZoneProcessServerImplementation::instance->getZoneServer()->createObject(lairTemplateToSpawn->getServerObjectCRC(), 0);
+		lairObject = (LairObject*) Core::lookupObject<ZoneServer>("zoneServer")->createObject(lairTemplateToSpawn->getServerObjectCRC(), 0);
 
 	if (!lairObject->isInQuadTree()) {
 		lairObject->initializePosition(newX, zone->getHeight(newX, newY), newY);

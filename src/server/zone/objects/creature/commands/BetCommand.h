@@ -57,7 +57,7 @@ which carries forward this exception.
 class BetCommand : public QueueCommand {
 public:
 
-	BetCommand(const String& name, ZoneProcessServerImplementation* server)
+	BetCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

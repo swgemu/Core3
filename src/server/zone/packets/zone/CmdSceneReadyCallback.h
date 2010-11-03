@@ -15,7 +15,7 @@
 
 class CmdSceneReadyCallback : public MessageCallback {
 public:
-	CmdSceneReadyCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	CmdSceneReadyCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

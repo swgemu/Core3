@@ -50,7 +50,7 @@ which carries forward this exception.
 class SmokebombCommand : public QueueCommand {
 public:
 
-	SmokebombCommand(const String& name, ZoneProcessServerImplementation* server)
+	SmokebombCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class JediMindTrickCommand : public QueueCommand {
 public:
 
-	JediMindTrickCommand(const String& name, ZoneProcessServerImplementation* server)
+	JediMindTrickCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

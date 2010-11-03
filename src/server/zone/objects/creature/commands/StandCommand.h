@@ -52,7 +52,7 @@ which carries forward this exception.
 class StandCommand : public QueueCommand {
 public:
 
-	StandCommand(const String& name, ZoneProcessServerImplementation* server)
+	StandCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

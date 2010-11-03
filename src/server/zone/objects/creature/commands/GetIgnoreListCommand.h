@@ -50,7 +50,7 @@ which carries forward this exception.
 class GetIgnoreListCommand : public QueueCommand {
 public:
 
-	GetIgnoreListCommand(const String& name, ZoneProcessServerImplementation* server)
+	GetIgnoreListCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

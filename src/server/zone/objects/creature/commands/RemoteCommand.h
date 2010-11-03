@@ -50,7 +50,7 @@ which carries forward this exception.
 class RemoteCommand : public QueueCommand {
 public:
 
-	RemoteCommand(const String& name, ZoneProcessServerImplementation* server)
+	RemoteCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

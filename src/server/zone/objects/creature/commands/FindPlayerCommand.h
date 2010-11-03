@@ -51,7 +51,7 @@ which carries forward this exception.
 class FindPlayerCommand : public QueueCommand {
 public:
 
-	FindPlayerCommand(const String& name, ZoneProcessServerImplementation* server)
+	FindPlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

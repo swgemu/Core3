@@ -56,7 +56,7 @@ which carries forward this exception.
 class PlaceStructureModeCommand : public QueueCommand {
 public:
 
-	PlaceStructureModeCommand(const String& name, ZoneProcessServerImplementation* server)
+	PlaceStructureModeCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

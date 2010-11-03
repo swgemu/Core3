@@ -50,7 +50,7 @@ which carries forward this exception.
 class ShowCouncilRankCommand : public QueueCommand {
 public:
 
-	ShowCouncilRankCommand(const String& name, ZoneProcessServerImplementation* server)
+	ShowCouncilRankCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

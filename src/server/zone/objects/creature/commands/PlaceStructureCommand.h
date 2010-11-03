@@ -53,7 +53,7 @@ which carries forward this exception.
 class PlaceStructureCommand : public QueueCommand {
 public:
 
-	PlaceStructureCommand(const String& name, ZoneProcessServerImplementation* server)
+	PlaceStructureCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

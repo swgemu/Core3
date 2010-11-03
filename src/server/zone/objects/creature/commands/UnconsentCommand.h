@@ -45,6 +45,7 @@ which carries forward this exception.
 #ifndef UNCONSENTCOMMAND_H_
 #define UNCONSENTCOMMAND_H_
 
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "QueueCommand.h"
@@ -52,7 +53,7 @@ which carries forward this exception.
 class UnconsentCommand : public QueueCommand {
 public:
 
-	UnconsentCommand(const String& name, ZoneProcessServerImplementation* server)
+	UnconsentCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

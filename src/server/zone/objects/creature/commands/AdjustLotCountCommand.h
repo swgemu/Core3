@@ -50,7 +50,7 @@ which carries forward this exception.
 class AdjustLotCountCommand : public QueueCommand {
 public:
 
-	AdjustLotCountCommand(const String& name, ZoneProcessServerImplementation* server)
+	AdjustLotCountCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

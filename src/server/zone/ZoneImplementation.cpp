@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "Zone.h"
 #include "objects/terrain/PlanetNames.h"
 
-#include "ZoneProcessServerImplementation.h"
+#include "ZoneProcessServer.h"
 #include "objects/scene/SceneObject.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/city/CityManager.h"
@@ -57,11 +57,11 @@ which carries forward this exception.
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 
-ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
+ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
 
-	processor = srv;
-	server = serv;
+	processor = serv;
+	server = processor->getZoneServer();
 
 	//Weather
 	weatherID = 0;
@@ -83,8 +83,9 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 void ZoneImplementation::initializePrivateData() {
 	planetManager = new PlanetManager(_this, processor);
 
-	creatureManager = new CreatureManager(_this, processor);
+	creatureManager = new CreatureManager(_this);
 	creatureManager->deploy("CreatureManager", zoneID);
+	creatureManager->setZoneProcessor(processor);
 
 	cityManager = new CityManager(_this);
 }
@@ -100,10 +101,6 @@ void ZoneImplementation::finalize() {
 
 void ZoneImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
-
-	processor = ZoneProcessServerImplementation::instance;
-
-	//taskManager =
 
 	heightMap = new HeightMap();
 

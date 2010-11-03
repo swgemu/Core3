@@ -50,7 +50,7 @@ which carries forward this exception.
 class LagCommand : public QueueCommand {
 public:
 
-	LagCommand(const String& name, ZoneProcessServerImplementation* server)
+	LagCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

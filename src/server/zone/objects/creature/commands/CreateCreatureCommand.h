@@ -53,7 +53,7 @@ which carries forward this exception.
 class CreateCreatureCommand : public QueueCommand {
 public:
 
-	CreateCreatureCommand(const String& name, ZoneProcessServerImplementation* server)
+	CreateCreatureCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

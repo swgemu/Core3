@@ -57,7 +57,7 @@ public:
 class NewbieTutorialResponseCallback : public MessageCallback {
 	String response;
 public:
-	NewbieTutorialResponseCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	NewbieTutorialResponseCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

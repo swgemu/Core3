@@ -51,7 +51,7 @@ which carries forward this exception.
 class AnonCommand : public QueueCommand {
 public:
 
-	AnonCommand(const String& name, ZoneProcessServerImplementation* server)
+	AnonCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class RevokeBadgeCommand : public QueueCommand {
 public:
 
-	RevokeBadgeCommand(const String& name, ZoneProcessServerImplementation* server)
+	RevokeBadgeCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

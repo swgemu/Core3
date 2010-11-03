@@ -50,7 +50,7 @@ which carries forward this exception.
 class ServerSysGroupCommand : public QueueCommand {
 public:
 
-	ServerSysGroupCommand(const String& name, ZoneProcessServerImplementation* server)
+	ServerSysGroupCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

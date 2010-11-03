@@ -50,7 +50,7 @@ which carries forward this exception.
 class ForageCommand : public QueueCommand {
 public:
 
-	ForageCommand(const String& name, ZoneProcessServerImplementation* server)
+	ForageCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class SplitCreditsWithGroupCommand : public QueueCommand {
 public:
 
-	SplitCreditsWithGroupCommand(const String& name, ZoneProcessServerImplementation* server)
+	SplitCreditsWithGroupCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

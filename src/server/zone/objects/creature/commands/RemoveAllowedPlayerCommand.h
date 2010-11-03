@@ -50,7 +50,7 @@ which carries forward this exception.
 class RemoveAllowedPlayerCommand : public QueueCommand {
 public:
 
-	RemoveAllowedPlayerCommand(const String& name, ZoneProcessServerImplementation* server)
+	RemoveAllowedPlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

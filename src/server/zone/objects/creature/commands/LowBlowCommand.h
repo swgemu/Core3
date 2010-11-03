@@ -51,7 +51,7 @@ which carries forward this exception.
 class LowBlowCommand : public CombatQueueCommand {
 public:
 
-	LowBlowCommand(const String& name, ZoneProcessServerImplementation* server)
+	LowBlowCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 2.0;

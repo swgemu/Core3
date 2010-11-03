@@ -50,7 +50,7 @@ which carries forward this exception.
 class GmForceRankCommand : public QueueCommand {
 public:
 
-	GmForceRankCommand(const String& name, ZoneProcessServerImplementation* server)
+	GmForceRankCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

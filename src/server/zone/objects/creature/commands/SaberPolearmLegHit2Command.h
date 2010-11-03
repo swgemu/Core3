@@ -50,7 +50,7 @@ which carries forward this exception.
 class SaberPolearmLegHit2Command : public QueueCommand {
 public:
 
-	SaberPolearmLegHit2Command(const String& name, ZoneProcessServerImplementation* server)
+	SaberPolearmLegHit2Command(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

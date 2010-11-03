@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetTEFCommand : public QueueCommand {
 public:
 
-	SetTEFCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetTEFCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

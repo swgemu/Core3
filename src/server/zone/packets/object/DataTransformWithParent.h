@@ -46,6 +46,7 @@ which carries forward this exception.
 #define DATATRANSFORMWITHPARENT_H_
 
 #include "ObjectControllerMessage.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/creature/CreatureState.h"

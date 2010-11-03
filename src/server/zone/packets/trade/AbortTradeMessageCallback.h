@@ -15,7 +15,7 @@ class AbortTradeMessageCallback : public MessageCallback {
 
 
 public:
-	AbortTradeMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	AbortTradeMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

@@ -51,7 +51,7 @@ which carries forward this exception.
 class FanShotCommand : public CombatQueueCommand {
 public:
 
-	FanShotCommand(const String& name, ZoneProcessServerImplementation* server)
+	FanShotCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 		damageMultiplier = 4;
 		speedMultiplier = 2.4;

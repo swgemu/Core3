@@ -60,7 +60,7 @@ class HealEnhanceCommand : public QueueCommand {
 	float range;
 public:
 
-	HealEnhanceCommand(const String& name, ZoneProcessServerImplementation* server)
+	HealEnhanceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		mindCost = 150;
 		range = 6;

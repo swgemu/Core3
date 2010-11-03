@@ -50,7 +50,7 @@ which carries forward this exception.
 class CreateSpawningElementWithDifficultyCommand : public QueueCommand {
 public:
 
-	CreateSpawningElementWithDifficultyCommand(const String& name, ZoneProcessServerImplementation* server)
+	CreateSpawningElementWithDifficultyCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -28,7 +28,7 @@ class ClientCreateCharacterCallback : public MessageCallback {
 	uint8 tutflag;
 
 public:
-	ClientCreateCharacterCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ClientCreateCharacterCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

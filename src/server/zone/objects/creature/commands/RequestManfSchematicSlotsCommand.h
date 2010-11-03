@@ -50,7 +50,7 @@ which carries forward this exception.
 class RequestManfSchematicSlotsCommand : public QueueCommand {
 public:
 
-	RequestManfSchematicSlotsCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestManfSchematicSlotsCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

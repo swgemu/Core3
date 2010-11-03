@@ -50,7 +50,7 @@ which carries forward this exception.
 class UnassociateDroidControlDeviceWithShipCommand : public QueueCommand {
 public:
 
-	UnassociateDroidControlDeviceWithShipCommand(const String& name, ZoneProcessServerImplementation* server)
+	UnassociateDroidControlDeviceWithShipCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

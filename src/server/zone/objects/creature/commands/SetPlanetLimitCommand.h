@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetPlanetLimitCommand : public QueueCommand {
 public:
 
-	SetPlanetLimitCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetPlanetLimitCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

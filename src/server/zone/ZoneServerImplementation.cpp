@@ -73,24 +73,24 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
 
-#include "ZoneProcessServerImplementation.h"
+#include "ZoneProcessServer.h"
+#include "ZoneMessageProcessorTask.h"
 
 #include "ZoneHandler.h"
 
-ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int galaxyid) :
+ZoneServerImplementation::ZoneServerImplementation(int galaxyid) :
 		ManagedServiceImplementation(), Logger("ZoneServer") {
 	galaxyID = galaxyid;
 
 	name = "Core3 OR";
+
+	processor = NULL;
 
 	phandler = NULL;
 
 	datagramService = new DatagramServiceThread("ZoneServer");
 	datagramService->setLogging(false);
 	datagramService->setLockName("ZoneServerLock");
-
-	processor = NULL;
-	procThreadCount = processingThreads;
 
 	objectManager = NULL;
 	playerManager = NULL;
@@ -119,8 +119,6 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 void ZoneServerImplementation::initializeTransientMembers() {
 	phandler = NULL;
 
-	processor = NULL;
-
 	objectManager = NULL;
 
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -146,18 +144,19 @@ void ZoneServerImplementation::initialize() {
 		info("Unhandled exception initializing galaxy name.");
 	}
 
-	processor = new ZoneProcessServerImplementation(_this, procThreadCount);
-	processor->init();
+	processor = new ZoneProcessServer(_this);
+	processor->deploy("ZoneProcessServer");
+	processor->initialize();
 
 	objectManager = ObjectManager::instance();
-	objectManager->setZoneProcessServerImplementation(processor);
+	objectManager->setZoneProcessor(processor);
 
 	stringIdManager = StringIdManager::instance();
 
 	creatureTemplateManager = CreatureTemplateManager::instance();
 	creatureTemplateManager->loadTemplates();
 
-	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
+	phandler = new BasePacketHandler("ZoneServer", NULL);
 	phandler->setLogging(false);
 
 	info("Initializing chat manager...", true);
@@ -166,8 +165,9 @@ void ZoneServerImplementation::initialize() {
 	chatManager->deploy("ChatManager");
 	chatManager->initiateRooms();
 
-	craftingManager = new CraftingManager(_this, processor, objectManager);
+	craftingManager = new CraftingManager();
 	craftingManager->deploy("CraftingManager");
+	craftingManager->setZoneProcessor(processor);
 	craftingManager->initialize();
 
 	startZones();
@@ -189,7 +189,7 @@ void ZoneServerImplementation::startZones() {
 		Zone* zone = NULL;
 
 		if (i <= 10 || i == 42) {
-			zone = new Zone(_this, processor, i);
+			zone = new Zone(processor, i);
 			zone->initializePrivateData();
 			uint64 zoneObjectID = 0;
 
@@ -243,8 +243,9 @@ void ZoneServerImplementation::startManagers() {
 	gamblingManager = new GamblingManager(_this);
 	gamblingManager->deploy();
 
-	lootManager = new LootManager(_this, processor, craftingManager);
+	lootManager = new LootManager(craftingManager);
 	lootManager->deploy("LootManager");
+	lootManager->setZoneProcessor(processor);
 	lootManager->initialize();
 
 	guildManager = new GuildManager(_this, processor);
@@ -257,8 +258,6 @@ void ZoneServerImplementation::start(int p, int mconn) {
 
 	datagramService->start(p, mconn);
 
-	processor->start();
-
 	/*datagramService->join();
 
 	shutdown();*/
@@ -269,10 +268,6 @@ void ZoneServerImplementation::stop() {
 }
 
 void ZoneServerImplementation::shutdown() {
-
-
-	processor->stop();
-
 	stopManagers();
 
 	info("shutting down zones", true);
@@ -358,6 +353,12 @@ void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* mess
 	}
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
+}
+
+void ZoneServerImplementation::processMessage(Message* message) {
+	Task* task = new ZoneMessageProcessorTask(message, processor->getPacketHandler());
+
+	Core::getTaskManager()->executeTask(task);
 }
 
 bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) {
@@ -490,9 +491,9 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	sched << "TaskManager - scheduled task size = " << Core::getTaskManager()->getScheduledTaskSize();
 	info(sched, forcedLog);
 
-	StringBuffer msg;
+	/*StringBuffer msg;
 	msg << "MessageQueue - size = " << processor->getMessageQueue()->size();
-	info(msg, forcedLog);
+	info(msg, forcedLog);*/
 
 	float packetloss;
 	if (totalSentPackets + totalSentPackets == 0)

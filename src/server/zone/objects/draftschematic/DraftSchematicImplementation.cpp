@@ -43,6 +43,9 @@ which carries forward this exception.
 */
 
 #include "DraftSchematic.h"
+
+#include "server/zone/ZoneServer.h"
+
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 

@@ -19,7 +19,7 @@ class PlanetTravelPointListRequestCallback : public MessageCallback {
 	uint64 objectid;
 	String planet;
 public:
-	PlanetTravelPointListRequestCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	PlanetTravelPointListRequestCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

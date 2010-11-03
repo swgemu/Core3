@@ -50,7 +50,7 @@ which carries forward this exception.
 class DeclareOvertCommand : public QueueCommand {
 public:
 
-	DeclareOvertCommand(const String& name, ZoneProcessServerImplementation* server)
+	DeclareOvertCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class SampleDNACommand : public QueueCommand {
 public:
 
-	SampleDNACommand(const String& name, ZoneProcessServerImplementation* server)
+	SampleDNACommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

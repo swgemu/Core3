@@ -50,7 +50,7 @@ which carries forward this exception.
 class EmboldenpetsCommand : public QueueCommand {
 public:
 
-	EmboldenpetsCommand(const String& name, ZoneProcessServerImplementation* server)
+	EmboldenpetsCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

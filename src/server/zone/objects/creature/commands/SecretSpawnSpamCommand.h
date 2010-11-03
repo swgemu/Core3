@@ -50,7 +50,7 @@ which carries forward this exception.
 class SecretSpawnSpamCommand : public QueueCommand {
 public:
 
-	SecretSpawnSpamCommand(const String& name, ZoneProcessServerImplementation* server)
+	SecretSpawnSpamCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

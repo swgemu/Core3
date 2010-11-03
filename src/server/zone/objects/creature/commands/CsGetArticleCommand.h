@@ -50,7 +50,7 @@ which carries forward this exception.
 class CsGetArticleCommand : public QueueCommand {
 public:
 
-	CsGetArticleCommand(const String& name, ZoneProcessServerImplementation* server)
+	CsGetArticleCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

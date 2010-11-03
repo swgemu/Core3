@@ -50,7 +50,7 @@ which carries forward this exception.
 class DeclareresidenceCommand : public QueueCommand {
 public:
 
-	DeclareresidenceCommand(const String& name, ZoneProcessServerImplementation* server)
+	DeclareresidenceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

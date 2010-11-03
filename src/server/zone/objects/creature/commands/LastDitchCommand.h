@@ -51,7 +51,7 @@ which carries forward this exception.
 class LastDitchCommand : public CombatQueueCommand {
 public:
 
-	LastDitchCommand(const String& name, ZoneProcessServerImplementation* server)
+	LastDitchCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 6.0;

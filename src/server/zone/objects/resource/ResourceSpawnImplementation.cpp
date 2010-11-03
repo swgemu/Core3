@@ -44,7 +44,7 @@
 
 #include "ResourceSpawn.h"
 #include "../terrain/PlanetNames.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/managers/object/ObjectManager.h"

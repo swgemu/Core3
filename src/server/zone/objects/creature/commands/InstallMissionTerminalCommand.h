@@ -50,7 +50,7 @@ which carries forward this exception.
 class InstallMissionTerminalCommand : public QueueCommand {
 public:
 
-	InstallMissionTerminalCommand(const String& name, ZoneProcessServerImplementation* server)
+	InstallMissionTerminalCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -67,7 +67,7 @@ which carries forward this exception.
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 
 #include "variables/StringId.h"
 #include "events/ObjectUpdateToDatabaseTask.h"
@@ -81,7 +81,8 @@ which carries forward this exception.
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
-	server = ZoneProcessServerImplementation::instance;
+	// FIXME: temp hack
+	server = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer");
 
 	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
 

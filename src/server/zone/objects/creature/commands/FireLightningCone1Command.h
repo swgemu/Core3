@@ -51,7 +51,7 @@ which carries forward this exception.
 class FireLightningCone1Command : public CombatQueueCommand {
 public:
 
-	FireLightningCone1Command(const String& name, ZoneProcessServerImplementation* server)
+	FireLightningCone1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 3.0;

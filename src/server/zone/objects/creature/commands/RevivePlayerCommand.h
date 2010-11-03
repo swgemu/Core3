@@ -60,7 +60,7 @@ class RevivePlayerCommand : public QueueCommand {
 	float range;
 public:
 
-	RevivePlayerCommand(const String& name, ZoneProcessServerImplementation* server)
+	RevivePlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		mindCost = 200;
 		range = 6;

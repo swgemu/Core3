@@ -17,7 +17,7 @@ class ClientRandomNameRequest : public MessageCallback {
 	String raceFile;
 
 public:
-	ClientRandomNameRequest(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ClientRandomNameRequest(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 	}
 

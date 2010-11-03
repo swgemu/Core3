@@ -60,7 +60,7 @@ public:
 class RequestCategoriesMessageCallback : public MessageCallback {
 	String language;
 public:
-	RequestCategoriesMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	RequestCategoriesMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

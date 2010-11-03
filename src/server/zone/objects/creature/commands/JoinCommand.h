@@ -51,7 +51,7 @@ which carries forward this exception.
 class JoinCommand : public QueueCommand {
 public:
 
-	JoinCommand(const String& name, ZoneProcessServerImplementation* server)
+	JoinCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

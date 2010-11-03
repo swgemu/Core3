@@ -46,10 +46,8 @@
 #include "server/zone/objects/resource/ResourceContainer.h"
 
 void CraftingManagerImplementation::initialize() {
-
 	schematicMap = SchematicMap::instance();
-	schematicMap->initialize(zoneServer, objectManager);
-
+	schematicMap->initialize(zoneServer);
 }
 
 void CraftingManagerImplementation::awardSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {

@@ -53,7 +53,7 @@ which carries forward this exception.
 class StopDanceCommand : public QueueCommand {
 public:
 
-	StopDanceCommand(const String& name, ZoneProcessServerImplementation* server)
+	StopDanceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

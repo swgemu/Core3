@@ -80,6 +80,12 @@ namespace server {
 			return server->handleMessage(client, message);
 		}
 
+		void processMessage(Message* message) {
+			ZoneServer* server =  zoneServerRef.getForUpdate();
+
+			return server->processMessage(message);
+		}
+
 		bool handleError(ServiceClient* client, Exception& e) {
 			ZoneServer* server =  zoneServerRef.getForUpdate();
 

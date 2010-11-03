@@ -50,7 +50,7 @@ which carries forward this exception.
 class RemoveFriendCommand : public QueueCommand {
 public:
 
-	RemoveFriendCommand(const String& name, ZoneProcessServerImplementation* server)
+	RemoveFriendCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

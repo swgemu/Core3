@@ -50,7 +50,7 @@ which carries forward this exception.
 class DelegateFactionPointsCommand : public QueueCommand {
 public:
 
-	DelegateFactionPointsCommand(const String& name, ZoneProcessServerImplementation* server)
+	DelegateFactionPointsCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

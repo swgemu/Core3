@@ -50,7 +50,7 @@ which carries forward this exception.
 class KickCommand : public QueueCommand {
 public:
 
-	KickCommand(const String& name, ZoneProcessServerImplementation* server)
+	KickCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

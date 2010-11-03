@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetWarcryCommand : public QueueCommand {
 public:
 
-	SetWarcryCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetWarcryCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

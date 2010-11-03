@@ -50,7 +50,7 @@ which carries forward this exception.
 class CsSearchKnowledgeBaseCommand : public QueueCommand {
 public:
 
-	CsSearchKnowledgeBaseCommand(const String& name, ZoneProcessServerImplementation* server)
+	CsSearchKnowledgeBaseCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

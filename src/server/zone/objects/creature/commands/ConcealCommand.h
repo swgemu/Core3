@@ -50,7 +50,7 @@ which carries forward this exception.
 class ConcealCommand : public QueueCommand {
 public:
 
-	ConcealCommand(const String& name, ZoneProcessServerImplementation* server)
+	ConcealCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

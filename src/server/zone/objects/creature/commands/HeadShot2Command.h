@@ -52,7 +52,7 @@ which carries forward this exception.
 class HeadShot2Command : public CombatQueueCommand {
 public:
 
-	HeadShot2Command(const String& name, ZoneProcessServerImplementation* server)
+	HeadShot2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 2.5;

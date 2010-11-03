@@ -51,7 +51,7 @@ which carries forward this exception.
 class LfgCommand : public QueueCommand {
 public:
 
-	LfgCommand(const String& name, ZoneProcessServerImplementation* server)
+	LfgCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

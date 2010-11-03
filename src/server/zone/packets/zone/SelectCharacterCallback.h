@@ -22,7 +22,7 @@
 class SelectCharacterCallback : public MessageCallback {
 	uint64 characterID;
 public:
-	SelectCharacterCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	SelectCharacterCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

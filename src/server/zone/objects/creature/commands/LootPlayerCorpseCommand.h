@@ -50,7 +50,7 @@ which carries forward this exception.
 class LootPlayerCorpseCommand : public QueueCommand {
 public:
 
-	LootPlayerCorpseCommand(const String& name, ZoneProcessServerImplementation* server)
+	LootPlayerCorpseCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

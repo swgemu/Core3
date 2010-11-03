@@ -53,7 +53,7 @@ which carries forward this exception.
 class AddFriendCommand : public QueueCommand {
 public:
 
-	AddFriendCommand(const String& name, ZoneProcessServerImplementation* server)
+	AddFriendCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

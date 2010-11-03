@@ -49,13 +49,13 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreaturePosture.h"
 
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "CommandList.h"
 
 CommandList* CommandConfigManager::slashCommands = NULL;
-ZoneProcessServerImplementation* CommandConfigManager::server = NULL;
+ZoneProcessServer* CommandConfigManager::server = NULL;
 
-CommandConfigManager::CommandConfigManager(ZoneProcessServerImplementation* serv) {
+CommandConfigManager::CommandConfigManager(ZoneProcessServer* serv) {
 	server = serv;
 
 	init();

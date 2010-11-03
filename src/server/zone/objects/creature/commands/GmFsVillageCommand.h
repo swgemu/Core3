@@ -50,7 +50,7 @@ which carries forward this exception.
 class GmFsVillageCommand : public QueueCommand {
 public:
 
-	GmFsVillageCommand(const String& name, ZoneProcessServerImplementation* server)
+	GmFsVillageCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

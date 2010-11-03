@@ -50,7 +50,7 @@ which carries forward this exception.
 class GmReviveCommand : public QueueCommand {
 public:
 
-	GmReviveCommand(const String& name, ZoneProcessServerImplementation* server)
+	GmReviveCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

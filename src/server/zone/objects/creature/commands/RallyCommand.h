@@ -51,7 +51,7 @@ which carries forward this exception.
 class RallyCommand : public SquadLeaderCommand {
 public:
 
-	RallyCommand(const String& name, ZoneProcessServerImplementation* server)
+	RallyCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
 
 		action = "rally";

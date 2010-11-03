@@ -58,7 +58,7 @@ which carries forward this exception.
 class RequestCoreSampleCommand : public QueueCommand {
 public:
 
-	RequestCoreSampleCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestCoreSampleCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

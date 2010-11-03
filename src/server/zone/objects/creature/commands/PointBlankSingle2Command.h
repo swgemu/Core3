@@ -51,7 +51,7 @@ which carries forward this exception.
 class PointBlankSingle2Command : public CombatQueueCommand {
 public:
 
-	PointBlankSingle2Command(const String& name, ZoneProcessServerImplementation* server)
+	PointBlankSingle2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 		damageMultiplier = 2.9;
 		speedMultiplier = 1.8;

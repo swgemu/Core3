@@ -50,7 +50,7 @@ which carries forward this exception.
 class FireAcidSingle2Command : public QueueCommand {
 public:
 
-	FireAcidSingle2Command(const String& name, ZoneProcessServerImplementation* server)
+	FireAcidSingle2Command(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

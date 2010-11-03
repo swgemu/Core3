@@ -50,7 +50,7 @@ which carries forward this exception.
 class UnsnoopCommand : public QueueCommand {
 public:
 
-	UnsnoopCommand(const String& name, ZoneProcessServerImplementation* server)
+	UnsnoopCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

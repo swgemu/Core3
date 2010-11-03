@@ -50,7 +50,7 @@ which carries forward this exception.
 class FlameSingle1Command : public QueueCommand {
 public:
 
-	FlameSingle1Command(const String& name, ZoneProcessServerImplementation* server)
+	FlameSingle1Command(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

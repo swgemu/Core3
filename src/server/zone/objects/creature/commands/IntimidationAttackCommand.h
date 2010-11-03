@@ -51,7 +51,7 @@ which carries forward this exception.
 class IntimidationAttackCommand : public CombatQueueCommand {
 public:
 
-	IntimidationAttackCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+	IntimidationAttackCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
 		intimidateStateChance = 50;
 		durationStateTime = 10;
 	}

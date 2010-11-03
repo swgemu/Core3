@@ -8,6 +8,7 @@
 #ifndef COMBATQUEUECOMMAND_H_
 #define COMBATQUEUECOMMAND_H_
 
+#include"server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
@@ -56,7 +57,7 @@ protected:
 	String effectString;
 public:
 
-	CombatQueueCommand(const String& name, ZoneProcessServerImplementation* server) : QueueCommand(name, server) {
+	CombatQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 
 		damageMultiplier = 1;
 		speedMultiplier = 1;

@@ -50,7 +50,7 @@ which carries forward this exception.
 class ReloadCommand : public QueueCommand {
 public:
 
-	ReloadCommand(const String& name, ZoneProcessServerImplementation* server)
+	ReloadCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

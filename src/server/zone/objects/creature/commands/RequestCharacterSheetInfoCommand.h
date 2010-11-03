@@ -52,7 +52,7 @@ which carries forward this exception.
 class RequestCharacterSheetInfoCommand : public QueueCommand {
 public:
 
-	RequestCharacterSheetInfoCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestCharacterSheetInfoCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

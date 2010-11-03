@@ -50,7 +50,7 @@ which carries forward this exception.
 class CustomizeDroidCommand : public QueueCommand {
 public:
 
-	CustomizeDroidCommand(const String& name, ZoneProcessServerImplementation* server)
+	CustomizeDroidCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

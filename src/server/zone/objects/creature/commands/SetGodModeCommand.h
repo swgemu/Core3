@@ -51,7 +51,7 @@ which carries forward this exception.
 class SetGodModeCommand : public QueueCommand {
 public:
 
-	SetGodModeCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetGodModeCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

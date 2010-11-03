@@ -50,7 +50,7 @@ which carries forward this exception.
 class ItemrotateleftCommand : public QueueCommand {
 public:
 
-	ItemrotateleftCommand(const String& name, ZoneProcessServerImplementation* server)
+	ItemrotateleftCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

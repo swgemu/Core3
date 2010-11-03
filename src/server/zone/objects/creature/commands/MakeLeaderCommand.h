@@ -54,7 +54,7 @@ which carries forward this exception.
 class MakeLeaderCommand : public QueueCommand {
 public:
 
-	MakeLeaderCommand(const String& name, ZoneProcessServerImplementation* server)
+	MakeLeaderCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class FirejetCommand : public QueueCommand {
 public:
 
-	FirejetCommand(const String& name, ZoneProcessServerImplementation* server)
+	FirejetCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

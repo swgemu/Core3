@@ -46,7 +46,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/templates/tangible/GamblingTerminalTemplate.h"

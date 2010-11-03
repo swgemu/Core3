@@ -53,7 +53,7 @@ which carries forward this exception.
 class Melee2hArea3Command : public CombatQueueCommand {
 public:
 
-	Melee2hArea3Command(const String& name, ZoneProcessServerImplementation* server)
+	Melee2hArea3Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 		damageMultiplier = 3.5;
 		speedMultiplier = 2.6;

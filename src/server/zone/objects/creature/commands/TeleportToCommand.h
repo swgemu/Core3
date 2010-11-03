@@ -52,7 +52,7 @@ which carries forward this exception.
 class TeleportToCommand : public QueueCommand {
 public:
 
-	TeleportToCommand(const String& name, ZoneProcessServerImplementation* server)
+	TeleportToCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}
