@@ -164,6 +164,11 @@ void ZoneServerImplementation::initialize() {
 	chatManager->deploy("ChatManager");
 	chatManager->initiateRooms();
 
+	playerManager = new PlayerManager(_this, processor);
+	playerManager->deploy("PlayerManager");
+
+	chatManager->setPlayerManager(playerManager);
+
 	craftingManager = new CraftingManager();
 	craftingManager->deploy("CraftingManager");
 	craftingManager->setZoneProcessor(processor);
@@ -216,11 +221,6 @@ void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
 	objectManager->loadStaticObjects();
-
-	playerManager = new PlayerManager(_this, processor);
-	playerManager->deploy("PlayerManager");
-
-	chatManager->setPlayerManager(playerManager);
 
 	bazaarManager = new BazaarManager(_this);
 	bazaarManager->deploy();
