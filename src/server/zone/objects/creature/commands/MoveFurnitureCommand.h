@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/packets/object/DataTransform.h"
+#include "server/zone/packets/object/DataTransformWithParent.h"
 
 class MoveFurnitureCommand : public QueueCommand {
 public:
@@ -109,7 +111,7 @@ public:
 
 		float degrees = creature->getDirectionAngle();
 
-		dist /= 10.0f;
+		dist /= 100.0f;
 
 		float offsetX = dist * sin(Math::deg2rad(degrees));
 		float offsetY = dist * cos(Math::deg2rad(degrees));
@@ -139,15 +141,13 @@ public:
 		obj->setPosition(x, z, y);
 		obj->incrementMovementCounter();
 
-		if (obj->getParent() != NULL)
-			obj->updateZoneWithParent(obj->getParent(), false);
-		else
-			obj->updateZone(false);
-
-		if (obj->getParent() != NULL)
-			obj->updateZoneWithParent(obj->getParent(), false);
-		else
-			obj->updateZone(false);
+		if (obj->getParent() != NULL) {
+			DataTransformWithParent* dtwp = new DataTransformWithParent(obj);
+			obj->broadcastMessage(dtwp, false, false);
+		} else {
+			DataTransform* dt = new DataTransform(obj);
+			obj->broadcastMessage(dt, false, false);
+		}
 
 		return SUCCESS;
 	}
