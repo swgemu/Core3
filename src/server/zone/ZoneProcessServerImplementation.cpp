@@ -86,7 +86,6 @@ void ZoneProcessServerImplementation::finalize() {
 	}
 
 	if (professionManager != NULL) {
-		delete professionManager;
 		professionManager = NULL;
 	}
 }
