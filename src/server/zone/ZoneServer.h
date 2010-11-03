@@ -40,7 +40,7 @@ using namespace server::login::account;
 namespace server {
 namespace zone {
 
-class ZoneProcessServerImplementation;
+class ZoneProcessServer;
 
 } // namespace zone
 } // namespace server
@@ -285,6 +285,8 @@ using namespace server::zone::managers::guild;
 
 #include "engine/service/ServiceClient.h"
 
+#include "engine/service/Message.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/core/TaskManager.h"
@@ -318,7 +320,7 @@ public:
 
 	static const int LOCKED = 3;
 
-	ZoneServer(int processingThreads, int galaxyid = 2);
+	ZoneServer(int galaxyid = 2);
 
 	void initializeTransientMembers();
 
@@ -339,6 +341,8 @@ public:
 	void stop();
 
 	void handleMessage(ServiceClient* client, Packet* message);
+
+	void processMessage(Message* message);
 
 	bool handleError(ServiceClient* client, Exception& e);
 
@@ -401,6 +405,8 @@ public:
 	int getTotalPlayers();
 
 	int getDeletedPlayers();
+
+	ObjectManager* getObjectManager();
 
 	PlayerManager* getPlayerManager();
 
@@ -476,9 +482,7 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Ser
 
 	BasePacketHandler* phandler;
 
-	ZoneProcessServerImplementation* processor;
-
-	int procThreadCount;
+	ManagedReference<ZoneProcessServer* > processor;
 
 	Vector<ManagedReference<Zone* > > zones;
 
@@ -541,7 +545,7 @@ public:
 
 	static const int LOCKED = 3;
 
-	ZoneServerImplementation(int processingThreads, int galaxyid = 2);
+	ZoneServerImplementation(int galaxyid = 2);
 
 	ZoneServerImplementation(DummyConstructorParameter* param);
 
@@ -564,6 +568,8 @@ public:
 	void stop();
 
 	void handleMessage(ServiceClient* client, Packet* message);
+
+	void processMessage(Message* message);
 
 	bool handleError(ServiceClient* client, Exception& e);
 
@@ -626,6 +632,8 @@ public:
 	int getTotalPlayers();
 
 	int getDeletedPlayers();
+
+	ObjectManager* getObjectManager();
 
 	PlayerManager* getPlayerManager();
 
