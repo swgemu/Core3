@@ -29,6 +29,7 @@
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "PatrolPoint.h"
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

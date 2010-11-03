@@ -46,7 +46,7 @@ which carries forward this exception.
 
 #include "ZoneServer.h"
 #include "ZoneClientSession.h"
-#include "ZoneProcessServerImplementation.h"
+#include "ZoneProcessServer.h"
 
 #include "packets/zone/ClientIDMessage.h"
 #include "packets/zone/ClientIDMessageCallback.h"
@@ -113,7 +113,7 @@ which carries forward this exception.
 
 #include "packets/auction/IsVendorOwnerMessageCallback.h"
 
-ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
+ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServer* serv) : Logger(s) {
 	processServer = serv;
 
 	server = processServer->getZoneServer();
@@ -124,7 +124,7 @@ ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplement
 	registerMessages();
 	registerObjectControllerMessages();
 
-	MessageCallbackFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServerImplementation*), uint32> messageCallbackFactory2;
+	MessageCallbackFactory<MessageCallback* (ZoneClientSession*, ZoneProcessServer*), uint32> messageCallbackFactory2;
 }
 
 void ZonePacketHandler::registerMessages() {

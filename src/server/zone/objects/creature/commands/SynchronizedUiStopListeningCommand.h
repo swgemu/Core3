@@ -50,7 +50,7 @@ which carries forward this exception.
 class SynchronizedUiStopListeningCommand : public QueueCommand {
 public:
 
-	SynchronizedUiStopListeningCommand(const String& name, ZoneProcessServerImplementation* server)
+	SynchronizedUiStopListeningCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -52,7 +52,7 @@ which carries forward this exception.
 class PeaceCommand : public QueueCommand {
 public:
 
-	PeaceCommand(const String& name, ZoneProcessServerImplementation* server)
+	PeaceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

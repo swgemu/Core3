@@ -50,7 +50,7 @@ which carries forward this exception.
 class RequestResourceWeightsCommand : public QueueCommand {
 public:
 
-	RequestResourceWeightsCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestResourceWeightsCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

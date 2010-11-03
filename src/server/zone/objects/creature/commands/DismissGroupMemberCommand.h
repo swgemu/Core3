@@ -52,7 +52,7 @@ which carries forward this exception.
 class DismissGroupMemberCommand : public QueueCommand {
 public:
 
-	DismissGroupMemberCommand(const String& name, ZoneProcessServerImplementation* server)
+	DismissGroupMemberCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

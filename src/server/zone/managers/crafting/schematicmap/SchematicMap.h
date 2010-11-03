@@ -51,10 +51,15 @@ which carries forward this exception.
 #ifndef SCHEMATICMAP_H_
 #define SCHEMATICMAP_H_
 
-#include "engine/engine.h"
+#include "engine/engine.h"\
+
+#include "server/zone/ZoneServer.h"
+
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
+
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
+
 #include "DraftSchematicGroup.h"
 
 class SchematicMap : public Singleton<SchematicMap>, public Lua {
@@ -69,7 +74,7 @@ public:
 	SchematicMap();
 	~SchematicMap();
 
-	void initialize(ZoneServer* server, ObjectManager* objMan);
+	void initialize(ZoneServer* server);
 
 	void loadDraftSchematicDatabase();
 

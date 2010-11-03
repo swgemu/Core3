@@ -51,7 +51,7 @@ which carries forward this exception.
 class ToggleAwayFromKeyBoardCommand : public QueueCommand {
 public:
 
-	ToggleAwayFromKeyBoardCommand(const String& name, ZoneProcessServerImplementation* server)
+	ToggleAwayFromKeyBoardCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -36,6 +36,10 @@ public:
 
 	}
 
+	void processMessage(Message* message) {
+
+	}
+
 	bool handleError(ServiceClient* client, Exception& e) {
 		return false;
 	}

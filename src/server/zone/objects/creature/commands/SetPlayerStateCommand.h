@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetPlayerStateCommand : public QueueCommand {
 public:
 
-	SetPlayerStateCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetPlayerStateCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

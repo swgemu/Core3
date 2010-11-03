@@ -50,7 +50,7 @@ which carries forward this exception.
 class RegisterWithLocationCommand : public QueueCommand {
 public:
 
-	RegisterWithLocationCommand(const String& name, ZoneProcessServerImplementation* server)
+	RegisterWithLocationCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

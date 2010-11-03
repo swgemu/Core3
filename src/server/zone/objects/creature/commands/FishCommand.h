@@ -53,7 +53,7 @@ which carries forward this exception.
 class FishCommand : public QueueCommand {
 public:
 
-	FishCommand(const String& name, ZoneProcessServerImplementation* server)
+	FishCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

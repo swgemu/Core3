@@ -51,7 +51,7 @@ which carries forward this exception.
 class CreatureAreaAttackCommand : public CombatQueueCommand {
 public:
 
-	CreatureAreaAttackCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+	CreatureAreaAttackCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
 		damageMultiplier = 1;
 		speedMultiplier = 1;
 

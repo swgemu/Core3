@@ -51,7 +51,7 @@ which carries forward this exception.
 class StrafeShot2Command : public CombatQueueCommand {
 public:
 
-	StrafeShot2Command(const String& name, ZoneProcessServerImplementation* server)
+	StrafeShot2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 5.0;

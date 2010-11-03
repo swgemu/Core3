@@ -50,7 +50,7 @@ which carries forward this exception.
 class GcwStatusCommand : public QueueCommand {
 public:
 
-	GcwStatusCommand(const String& name, ZoneProcessServerImplementation* server)
+	GcwStatusCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

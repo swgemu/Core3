@@ -51,7 +51,7 @@ which carries forward this exception.
 class SynchronizedUiListenCommand : public QueueCommand {
 public:
 
-	SynchronizedUiListenCommand(const String& name, ZoneProcessServerImplementation* server)
+	SynchronizedUiListenCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

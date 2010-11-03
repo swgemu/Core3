@@ -62,13 +62,6 @@ which carries forward this exception.
 
 #include "zone/objects/creature/CreatureObject.h"
 
-class TestManager : public ThreadLocal<ZoneServer> {
-public:
-	ZoneServer* initValue() {
-		return new ZoneServer(0, 0);
-	}
-};
-
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 
 ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
@@ -104,7 +97,7 @@ void ServerCore::init() {
 		}
 
 		if (configManager->getMakeZone()) {
-			ZoneServer* zoneServer = new ZoneServer(configManager->getZoneProcessingThreads(), configManager->getZoneGalaxyID());
+			ZoneServer* zoneServer = new ZoneServer(configManager->getZoneGalaxyID());
 			zoneServer->deploy("ZoneServer");
 
 			zoneServerRef = zoneServer;

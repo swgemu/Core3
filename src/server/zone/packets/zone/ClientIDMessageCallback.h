@@ -21,7 +21,7 @@ class ClientIDMessageCallback : public MessageCallback {
 	uint32 accountID;
 
 public:
-	ClientIDMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ClientIDMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

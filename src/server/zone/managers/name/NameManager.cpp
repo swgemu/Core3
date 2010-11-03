@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "../../objects/player/Races.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
-NameManager::NameManager(ZoneProcessServerImplementation* serv) : Logger("NameManager") {
+NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {
 	server = serv;
 
 	profaneNames = new Vector<String>(55, 5); //based on the original number of banned words

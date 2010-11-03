@@ -63,7 +63,7 @@ class ChatInstantMessageToCharacter : public MessageCallback {
 
 	uint32 sequence;
 public:
-	ChatInstantMessageToCharacter(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ChatInstantMessageToCharacter(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

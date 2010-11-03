@@ -53,7 +53,7 @@ which carries forward this exception.
 class PolearmActionHit1Command : public CombatQueueCommand {
 public:
 
-	PolearmActionHit1Command(const String& name, ZoneProcessServerImplementation* server)
+	PolearmActionHit1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 		damageMultiplier = 1;
 		speedMultiplier = 2;

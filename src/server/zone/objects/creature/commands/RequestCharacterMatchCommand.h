@@ -50,7 +50,7 @@ which carries forward this exception.
 class RequestCharacterMatchCommand : public QueueCommand {
 public:
 
-	RequestCharacterMatchCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestCharacterMatchCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

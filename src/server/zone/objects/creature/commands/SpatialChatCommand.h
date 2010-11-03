@@ -50,7 +50,7 @@ which carries forward this exception.
 class SpatialChatCommand : public QueueCommand {
 public:
 
-	SpatialChatCommand(const String& name, ZoneProcessServerImplementation* server)
+	SpatialChatCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

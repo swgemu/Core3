@@ -51,7 +51,7 @@ which carries forward this exception.
 class KnockdownAttackCommand : public CombatQueueCommand {
 public:
 
-	KnockdownAttackCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+	KnockdownAttackCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
 		knockdownStateChance = 50;
 		durationStateTime = 10;
 	}

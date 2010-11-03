@@ -71,7 +71,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 }
 
 CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC) {
-	ManagedReference<SceneObject*> object = server->createObject(templateCRC, 0);
+	ManagedReference<SceneObject*> object = zoneServer->createObject(templateCRC, 0);
 
 	if (object == NULL) {
 		StringBuffer errMsg;
@@ -111,7 +111,7 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 	SceneObject* cellParent = NULL;
 
 	if (parentID != 0) {
-		cellParent = server->getObject(parentID);
+		cellParent = zoneServer->getObject(parentID);
 
 		if (cellParent != NULL && !cellParent->isCellObject()) {
 			error("trying to set a parent that is not a cell to creature");
@@ -136,7 +136,7 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	if (creature->hasSlotDescriptor("default_weapon")) {
 		uint32 defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
 
-		SceneObject* defaultWeapon = server->createObject(defaultWeaponCRC, 0);
+		SceneObject* defaultWeapon = zoneServer->createObject(defaultWeaponCRC, 0);
 
 		if (defaultWeapon == NULL) {
 			error("could not create creature default weapon");
@@ -195,7 +195,7 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 				ManagedReference<SceneObject*> parentObject;
 
 				if (parentid != 0) {
-					parentObject = server->getObject(parentid);
+					parentObject = zoneServer->getObject(parentid);
 				}
 
 				creature->setDirection(ow, ox, oy, oz);
@@ -252,7 +252,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	destructedObject->updateTimeOfDeath();
 
-	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
 	// lets unlock destructor so we dont get into complicated deadlocks
 
@@ -436,7 +436,7 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 				ManagedReference<SceneObject*> parentObject;
 
 				if (parentid != 0) {
-					parentObject = server->getObject(parentid);
+					parentObject = zoneServer->getObject(parentid);
 				}
 
 				creature->setDirection(ow, ox, oy, oz);
@@ -451,7 +451,7 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 					aiAgent->setRespawnTimer(60);
 					aiAgent->setDespawnOnNoPlayerInRange(false);
 
-					NameManager* nm = processor->getNameManager();
+					NameManager* nm = zoneProcessor->getNameManager();
 					if (nm != NULL)
 						aiAgent->setCustomObjectName(nm->makeCreatureName(true), false);
 
@@ -510,7 +510,7 @@ void CreatureManagerImplementation::loadInformants() {
 				informant->setDirection(oW, 0, oY, 0);
 			}
 
-			NameManager* nm = processor->getNameManager();
+			NameManager* nm = zoneProcessor->getNameManager();
 			if (nm != NULL && informant != NULL)
 				informant->setCustomObjectName(nm->makeCreatureName(true), false);
 		}

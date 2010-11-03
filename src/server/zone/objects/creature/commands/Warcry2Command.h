@@ -52,7 +52,7 @@ which carries forward this exception.
 class Warcry2Command : public CombatQueueCommand {
 public:
 
-	Warcry2Command(const String& name, ZoneProcessServerImplementation* server)
+	Warcry2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 0;

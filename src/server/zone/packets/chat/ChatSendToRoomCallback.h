@@ -17,7 +17,7 @@ class ChatSendToRoomCallback : public MessageCallback {
 	uint32 counter;
 
 public:
-	ChatSendToRoomCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ChatSendToRoomCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

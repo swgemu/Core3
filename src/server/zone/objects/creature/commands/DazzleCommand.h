@@ -50,7 +50,7 @@ which carries forward this exception.
 class DazzleCommand : public QueueCommand {
 public:
 
-	DazzleCommand(const String& name, ZoneProcessServerImplementation* server)
+	DazzleCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

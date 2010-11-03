@@ -1,4 +1,4 @@
-/*
+ /*
 Copyright (C) 2007 <SWGEmu>
 
 This File is part of Core3.
@@ -42,90 +42,37 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "engine/engine.h"
-
-#include "ZoneProcessServerImplementation.h"
-
-//#include "ZoneClientSession.h"
+#include "ZoneProcessServer.h"
 
 #include "ZoneServer.h"
-//#include "Zone.h"
 
 #include "ZonePacketHandler.h"
-#include "ZoneMessageProcessorThread.h"
-
-
-
-//#include "ZoneImplementation.h"
-
-//#include "../ServerCore.h"
-
-/*#include "managers/user/UserManager.h"
-#include "managers/user/UserManagerImplementation.h"
-
-#include "managers/player/PlayerManager.h"
-#include "managers/player/PlayerManagerImplementation.h"
-
-#include "managers/player/ProfessionManager.h"
-
-#include "managers/item/ItemManager.h"
-#include "managers/item/ItemManagerImplementation.h"
-
-#include "managers/combat/CombatManager.h"
-
-#include "../chat/ChatManager.h"
-#include "../chat/ChatManagerImplementation.h"
-
-#include "managers/mission/MissionManager.h"
-#include "managers/mission/MissionManagerImplementation.h"
-
-#include "managers/radial/RadialManager.h"
-#include "managers/guild/GuildManager.h"
-#include "managers/guild/GuildManagerImplementation.h"
-#include "managers/group/GroupManager.h"
-#include "managers/skills/SkillManager.h"
-#include "managers/loot/LootManager.h"
-*/
 
 #include "managers/sui/SuiManager.h"
 
 #include "managers/name/NameManager.h"
 #include "managers/professions/ProfessionManager.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
+
 #include "managers/objectcontroller/ObjectController.h"
 
-ZoneProcessServerImplementation* ZoneProcessServerImplementation::instance = NULL;
+ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* server) {
+	zoneServer = server;
 
-ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads)
-		: ServiceMessageHandlerThread("ZoneProcessorServer") {
-	server = serv;
+	nameManager = NULL;
+	suiManager = NULL;
 
-	processors = NULL;
-	procThreadCount = processingThreads;
+	objectController = NULL;
 
-	nameManager = new NameManager(this);
-	suiManager = new SuiManager(this);
-	objectController = new ObjectController(this);
-	professionManager = ProfessionManager::instance();
-	professionManager->setObjectController(objectController);
-	professionManager->initialize();
+	professionManager = NULL;
 
-	zonephandler = NULL;
-
-	instance = this;
-
-	setLogging(false);
+	zonePacketHandler = NULL;
 }
 
-ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
-	if (processors != NULL) {
-		free(processors);
-		processors = NULL;
-	}
-
-	if (zonephandler != NULL) {
-		delete zonephandler;
-		zonephandler = NULL;
+void ZoneProcessServerImplementation::finalize() {
+	if (zonePacketHandler != NULL) {
+		delete zonePacketHandler;
+		zonePacketHandler = NULL;
 	}
 
 	if (nameManager != NULL) {
@@ -144,45 +91,16 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 	}
 }
 
-void ZoneProcessServerImplementation::init() {
-	zonephandler = new ZonePacketHandler("ZonePacketHandler", this);
-	zonephandler->setLogging(false);
+void ZoneProcessServerImplementation::initialize() {
+	zonePacketHandler = new ZonePacketHandler("ZonePacketHandler", _this);
+	zonePacketHandler->setLogging(false);
 
-	if (procThreadCount < 1)
-		throw new Exception("invalid zone processor thread count");
+	nameManager = new NameManager(_this);
+	suiManager = new SuiManager(_this);
 
-	processors = (ZoneMessageProcessorThread**) malloc(procThreadCount * sizeof(ZoneMessageProcessorThread*));
+	objectController = new ObjectController(_this);
 
-	for (int i = 0; i < procThreadCount; ++i) {
-		StringBuffer name;
-		name << "ZoneProcessor" << i;
-
-		processors[i] = new ZoneMessageProcessorThread(name.toString(), zonephandler);
-	}
-}
-
-void ZoneProcessServerImplementation::run() {
-	info("starting processor instances..");
-
-	for (int i = 0; i < procThreadCount; ++i) {
-		ZoneMessageProcessorThread* processor = processors[i];
-		processor->start(this);
-	}
-
-	info("processor instances started");
-}
-
-void ZoneProcessServerImplementation::stop() {
-	flushMessages();
-
-	info("stopping processor instances..");
-
-	for (int i = 0; i < procThreadCount; ++i) {
-		ZoneMessageProcessorThread* processor = processors[i];
-		processor->stop();
-
-		delete processor;
-	}
-
-	info("processor instances stopped");
+	professionManager = ProfessionManager::instance();
+	professionManager->setObjectController(objectController);
+	professionManager->initialize();
 }

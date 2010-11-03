@@ -50,7 +50,7 @@ which carries forward this exception.
 class PlanetwarpCommand : public QueueCommand {
 public:
 
-	PlanetwarpCommand(const String& name, ZoneProcessServerImplementation* server)
+	PlanetwarpCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

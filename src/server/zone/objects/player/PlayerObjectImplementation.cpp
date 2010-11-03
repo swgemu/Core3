@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/chat/ChatManager.h"
 
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/player/PlayerObjectMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"

@@ -50,7 +50,7 @@ which carries forward this exception.
 class HarvesterMakeCrateCommand : public QueueCommand {
 public:
 
-	HarvesterMakeCrateCommand(const String& name, ZoneProcessServerImplementation* server)
+	HarvesterMakeCrateCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

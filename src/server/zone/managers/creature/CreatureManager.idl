@@ -1,26 +1,16 @@
 package server.zone.managers.creature;
 
-import engine.log.Logger;
-
-import server.zone.ZoneProcessServerImplementation;
-import server.zone.managers.object.ObjectManager;
+import server.zone.Zone;
 import server.zone.packets.MessageCallback;
 import server.zone.objects.tangible.TangibleObject;
-import engine.core.ManagedService;
-import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.NonPlayerCreatureObject;
 import server.zone.objects.creature.AiAgent;
-import server.zone.Zone;
-import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.managers.ZoneManager;
 import server.zone.managers.creature.CreatureTemplateManager;
-
 include server.zone.managers.creature.CreatureMap;
 
-class CreatureManager extends ManagedService implements Logger {
-	protected transient ZoneProcessServerImplementation processor;
-	protected ZoneServer server;
-	
+class CreatureManager extends ZoneManager {
 	@weakReference
 	protected Zone zone;
 	
@@ -29,18 +19,15 @@ class CreatureManager extends ManagedService implements Logger {
 	
 	protected transient CreatureTemplateManager creatureTemplateManager;
 
-	public CreatureManager(Zone planet, ZoneProcessServerImplementation impl) {
-		server = planet.getZoneServer();
-		processor = impl;
-		zone = planet;
+	public CreatureManager(Zone planet) {
+		super("CreatureManager");
 		
-		Logger.setLoggingName("CreatureManager");
-		Logger.setGlobalLogging(true);
-		Logger.setLogging(false);
+		zone = planet;
 	}
 	
 	public void initialize() {
 		setCreatureTemplateManager();
+		
 		loadTrainers();
 		loadSingleSpawns();
 		loadMissionSpawns();

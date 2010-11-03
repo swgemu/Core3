@@ -50,7 +50,7 @@ which carries forward this exception.
 class DeployTrapCommand : public QueueCommand {
 public:
 
-	DeployTrapCommand(const String& name, ZoneProcessServerImplementation* server)
+	DeployTrapCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

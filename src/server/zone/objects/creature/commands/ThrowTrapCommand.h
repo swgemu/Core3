@@ -50,7 +50,7 @@ which carries forward this exception.
 class ThrowTrapCommand : public QueueCommand {
 public:
 
-	ThrowTrapCommand(const String& name, ZoneProcessServerImplementation* server)
+	ThrowTrapCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

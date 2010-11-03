@@ -50,7 +50,7 @@ which carries forward this exception.
 class TransferstructureCommand : public QueueCommand {
 public:
 
-	TransferstructureCommand(const String& name, ZoneProcessServerImplementation* server)
+	TransferstructureCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

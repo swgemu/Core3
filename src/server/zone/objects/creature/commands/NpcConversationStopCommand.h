@@ -50,7 +50,7 @@ which carries forward this exception.
 class NpcConversationStopCommand : public QueueCommand {
 public:
 
-	NpcConversationStopCommand(const String& name, ZoneProcessServerImplementation* server)
+	NpcConversationStopCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class StopTraceLoggingCommand : public QueueCommand {
 public:
 
-	StopTraceLoggingCommand(const String& name, ZoneProcessServerImplementation* server)
+	StopTraceLoggingCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

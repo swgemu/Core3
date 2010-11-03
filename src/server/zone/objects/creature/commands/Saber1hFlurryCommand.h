@@ -50,7 +50,7 @@ which carries forward this exception.
 class Saber1hFlurryCommand : public QueueCommand {
 public:
 
-	Saber1hFlurryCommand(const String& name, ZoneProcessServerImplementation* server)
+	Saber1hFlurryCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

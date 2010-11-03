@@ -48,44 +48,18 @@ which carries forward this exception.
 PingServer::PingServer() : DatagramServiceThread("PingServer") {
 	//setLockName("PingServerLock");
 
-	processors = NULL;
-	procThreadCount = 0;
-
 	setHandler(this);
 
 	setLogging(false);
 }
 
 PingServer::~PingServer() {
-	if (processors != NULL) {
-		free(processors);
-		processors = NULL;
-	}
 }
 
 void PingServer::initialize() {
-	procThreadCount = 0;
-
-	if (procThreadCount > 0) {
-		processors = (PingMessageProcessorThread**) malloc(procThreadCount * sizeof(PingMessageProcessorThread*));
-
-		for (int i = 0; i < procThreadCount; ++i) {
-			StringBuffer name;
-			name << "PingProcessor" << i;
-
-			processors[i] = new PingMessageProcessorThread(name.toString());
-		}
-	}
-
-	return;
 }
 
 void PingServer::run() {
-	for (int i = 0; i < procThreadCount; ++i) {
-		PingMessageProcessorThread* processor = processors[i];
-		processor->start(this);
-	}
-
 	// recieve messages
 	receiveMessages();
 
@@ -94,14 +68,6 @@ void PingServer::run() {
 
 void PingServer::shutdown() {
 	// shutting down
-	for (int i = 0; i < procThreadCount; ++i) {
-		PingMessageProcessorThread* processor = processors[i];
-
-		flushMessages();
-		processor->stop();
-
-		delete processor;
-	}
 }
 
 PingClient* PingServer::createConnection(Socket* sock, SocketAddress& addr) {
@@ -129,9 +95,7 @@ void PingServer::handleMessage(ServiceClient* client, Packet* message) {
 		System::out << e.getMessage();
 
 		error("incorrect packet - " + message->toStringData());
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-	} catch (ArrayIndexOutOfBoundsException& e) {
+	} catch (Exception& e) {
 		error(e.getMessage());
 	} catch (...) {
 		System::out << "[PingServer] unreported Exception caught\n";
@@ -145,6 +109,10 @@ bool PingServer::handleError(ServiceClient* client, Exception& e) {
 	lclient->disconnect();
 
 	return true;
+}
+
+void PingServer::processMessage(Message* message) {
+
 }
 
 void PingServer::printInfo() {

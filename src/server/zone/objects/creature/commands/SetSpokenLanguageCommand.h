@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetSpokenLanguageCommand : public QueueCommand {
 public:
 
-	SetSpokenLanguageCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetSpokenLanguageCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

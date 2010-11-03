@@ -50,7 +50,7 @@ which carries forward this exception.
 class ExecuteKnowledgeBaseMessageCommand : public QueueCommand {
 public:
 
-	ExecuteKnowledgeBaseMessageCommand(const String& name, ZoneProcessServerImplementation* server)
+	ExecuteKnowledgeBaseMessageCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

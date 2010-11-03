@@ -51,7 +51,7 @@ which carries forward this exception.
 class FastBlastCommand : public CombatQueueCommand {
 public:
 
-	FastBlastCommand(const String& name, ZoneProcessServerImplementation* server)
+	FastBlastCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 4.15;

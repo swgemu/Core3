@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetMatchMakingCharacterIdCommand : public QueueCommand {
 public:
 
-	SetMatchMakingCharacterIdCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetMatchMakingCharacterIdCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

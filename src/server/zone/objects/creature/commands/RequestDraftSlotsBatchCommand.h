@@ -51,7 +51,7 @@ which carries forward this exception.
 class RequestDraftSlotsBatchCommand : public QueueCommand {
 public:
 
-	RequestDraftSlotsBatchCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestDraftSlotsBatchCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

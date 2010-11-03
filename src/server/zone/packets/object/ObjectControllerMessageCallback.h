@@ -22,7 +22,7 @@ class ObjectControllerMessageCallback : public MessageCallback {
 
 	MessageCallback* objectControllerCallback;
 public:
-	ObjectControllerMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ObjectControllerMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 		objectControllerCallback = NULL;

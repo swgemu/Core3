@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "engine/db/ObjectDatabase.h"
 
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "resourcetree/ResourceTree.h"
@@ -75,7 +75,7 @@ which carries forward this exception.
 class ResourceSpawner : public Logger {
 private:
 	ManagedReference<ZoneServer* > server;
-	ZoneProcessServerImplementation* processor;
+	ManagedReference<ZoneProcessServer*> processor;
 
 	NameManager* nameManager;
 	ObjectManager* objectManager;
@@ -100,7 +100,7 @@ private:
 
 public:
 	ResourceSpawner(ManagedReference<ZoneServer* > serv,
-			ZoneProcessServerImplementation* impl, ObjectManager* objMan);
+			ZoneProcessServer* impl, ObjectManager* objMan);
 	~ResourceSpawner();
 
 	void initializeMinimumPool(const String& includes, const String& excludes);

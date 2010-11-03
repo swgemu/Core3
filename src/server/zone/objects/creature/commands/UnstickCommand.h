@@ -50,7 +50,7 @@ which carries forward this exception.
 class UnstickCommand : public QueueCommand {
 public:
 
-	UnstickCommand(const String& name, ZoneProcessServerImplementation* server)
+	UnstickCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class MultiTargetShotCommand : public QueueCommand {
 public:
 
-	MultiTargetShotCommand(const String& name, ZoneProcessServerImplementation* server)
+	MultiTargetShotCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

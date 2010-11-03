@@ -48,7 +48,7 @@ import engine.core.ManagedObject;
 import engine.lua.Lua;
 import engine.log.Logger;
 import server.zone.ZoneServer;
-import server.zone.ZoneProcessServerImplementation;
+import server.zone.ZoneProcessServer;
 import server.zone.managers.object.ObjectManager;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.creature.CreatureObject;
@@ -67,7 +67,7 @@ import server.zone.objects.player.sui.listbox.resourcedeedlistbox.ResourceDeedLi
  * within the Core3 environment
  */
 class ResourceManager extends Observer implements Lua {
-	private transient ZoneProcessServerImplementation processor;
+	private transient ZoneProcessServer processor;
 	@weakReference
 	private ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
@@ -76,7 +76,7 @@ class ResourceManager extends Observer implements Lua {
 	
 	public static final int RESOURCE_DEED_QUANTITY = 100000;
 	
-	public ResourceManager(ZoneServer server, ZoneProcessServerImplementation impl, 
+	public ResourceManager(ZoneServer server, ZoneProcessServer impl, 
 			ObjectManager objectMan) {
 
 		Logger.setLoggingName("ResourceManager");

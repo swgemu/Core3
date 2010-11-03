@@ -50,7 +50,7 @@ which carries forward this exception.
 class ResetJediCommand : public QueueCommand {
 public:
 
-	ResetJediCommand(const String& name, ZoneProcessServerImplementation* server)
+	ResetJediCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

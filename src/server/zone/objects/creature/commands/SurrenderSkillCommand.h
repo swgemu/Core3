@@ -52,7 +52,7 @@ which carries forward this exception.
 class SurrenderSkillCommand : public QueueCommand {
 public:
 
-	SurrenderSkillCommand(const String& name, ZoneProcessServerImplementation* server)
+	SurrenderSkillCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

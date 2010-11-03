@@ -50,7 +50,7 @@ which carries forward this exception.
 class HealMindSelf2Command : public QueueCommand {
 public:
 
-	HealMindSelf2Command(const String& name, ZoneProcessServerImplementation* server)
+	HealMindSelf2Command(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

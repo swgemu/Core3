@@ -50,7 +50,7 @@ which carries forward this exception.
 class MaskscentCommand : public QueueCommand {
 public:
 
-	MaskscentCommand(const String& name, ZoneProcessServerImplementation* server)
+	MaskscentCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

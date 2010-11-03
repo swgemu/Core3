@@ -54,7 +54,7 @@ which carries forward this exception.
 class PurchaseTicketCommand : public QueueCommand {
 public:
 
-	PurchaseTicketCommand(const String& name, ZoneProcessServerImplementation* server)
+	PurchaseTicketCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

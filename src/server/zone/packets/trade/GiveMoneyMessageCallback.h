@@ -15,7 +15,7 @@ class GiveMoneyMessageCallback : public MessageCallback {
 	uint32 money;
 
 public:
-	GiveMoneyMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	GiveMoneyMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

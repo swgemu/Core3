@@ -25,7 +25,7 @@ protected:
 	float range;
 	uint64 state;
 public:
-	CurePackCommand(const String& name, ZoneProcessServerImplementation* server)
+	CurePackCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		range = 6;
 		mindCost = 100;

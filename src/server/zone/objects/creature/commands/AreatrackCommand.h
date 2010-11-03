@@ -50,7 +50,7 @@ which carries forward this exception.
 class AreatrackCommand : public QueueCommand {
 public:
 
-	AreatrackCommand(const String& name, ZoneProcessServerImplementation* server)
+	AreatrackCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

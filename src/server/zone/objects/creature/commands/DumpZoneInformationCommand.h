@@ -53,7 +53,7 @@ which carries forward this exception.
 class DumpZoneInformationCommand : public QueueCommand {
 public:
 
-	DumpZoneInformationCommand(const String& name, ZoneProcessServerImplementation* server)
+	DumpZoneInformationCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

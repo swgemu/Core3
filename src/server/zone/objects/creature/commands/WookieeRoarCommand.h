@@ -50,7 +50,7 @@ which carries forward this exception.
 class WookieeRoarCommand : public QueueCommand {
 public:
 
-	WookieeRoarCommand(const String& name, ZoneProcessServerImplementation* server)
+	WookieeRoarCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class TauntCommand : public QueueCommand {
 public:
 
-	TauntCommand(const String& name, ZoneProcessServerImplementation* server)
+	TauntCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

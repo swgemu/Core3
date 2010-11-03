@@ -10,6 +10,7 @@
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/creature/informant/InformantCreature.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
@@ -106,7 +107,7 @@ void BountyMissionObjectiveImplementation::spawnTarget(int zoneID) {
 	ManagedReference<CreatureObject*> npcCreature = NULL;
 
 	if (npcTarget == NULL) {
-		npcTarget = (AiAgent*) ZoneProcessServerImplementation::instance->getZoneServer()->createObject(npcTemplateToSpawn->getServerObjectCRC(), 0);
+		npcTarget = (AiAgent*) zoneServer->createObject(npcTemplateToSpawn->getServerObjectCRC(), 0);
 	}
 
 	if (npcTarget == NULL || (npcTarget != NULL && !npcTarget->isInQuadTree())) {

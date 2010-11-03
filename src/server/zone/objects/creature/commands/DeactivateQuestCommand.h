@@ -50,7 +50,7 @@ which carries forward this exception.
 class DeactivateQuestCommand : public QueueCommand {
 public:
 
-	DeactivateQuestCommand(const String& name, ZoneProcessServerImplementation* server)
+	DeactivateQuestCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

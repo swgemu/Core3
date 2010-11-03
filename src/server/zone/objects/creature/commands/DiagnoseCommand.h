@@ -52,7 +52,7 @@ class DiagnoseCommand : public QueueCommand {
 	float range;
 public:
 
-	DiagnoseCommand(const String& name, ZoneProcessServerImplementation* server)
+	DiagnoseCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		range = 6;
 		defaultTime = 0;

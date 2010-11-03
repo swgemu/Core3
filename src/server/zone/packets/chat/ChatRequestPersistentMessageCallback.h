@@ -15,7 +15,7 @@ class ChatRequestPersistentMessageCallback : public MessageCallback {
 	uint32 mailid;
 
 public:
-	ChatRequestPersistentMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ChatRequestPersistentMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 	}
 

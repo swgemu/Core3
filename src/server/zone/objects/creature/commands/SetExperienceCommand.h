@@ -53,7 +53,7 @@ which carries forward this exception.
 class SetExperienceCommand : public QueueCommand {
 public:
 
-	SetExperienceCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetExperienceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

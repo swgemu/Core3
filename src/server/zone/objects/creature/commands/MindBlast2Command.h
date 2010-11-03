@@ -50,7 +50,7 @@ which carries forward this exception.
 class MindBlast2Command : public QueueCommand {
 public:
 
-	MindBlast2Command(const String& name, ZoneProcessServerImplementation* server)
+	MindBlast2Command(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

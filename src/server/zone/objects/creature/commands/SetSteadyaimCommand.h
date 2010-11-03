@@ -51,7 +51,7 @@ which carries forward this exception.
 class SetSteadyaimCommand : public SquadLeaderCommand {
 public:
 
-	SetSteadyaimCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetSteadyaimCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
 
 		action = "steadyaim";

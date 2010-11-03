@@ -50,7 +50,7 @@ which carries forward this exception.
 class ApplyDiseaseCommand : public DotPackCommand {
 public:
 
-	ApplyDiseaseCommand(const String& name, ZoneProcessServerImplementation* server)
+	ApplyDiseaseCommand(const String& name, ZoneProcessServer* server)
 		: DotPackCommand(name, server) {
 		skillName = "applydisease";
 	}

@@ -45,13 +45,14 @@ which carries forward this exception.
 #ifndef ACTIVATECLONECOMMAND_H_
 #define ACTIVATECLONECOMMAND_H_
 
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 class ActivateCloneCommand : public QueueCommand {
 public:
 
-	ActivateCloneCommand(const String& name, ZoneProcessServerImplementation* server)
+	ActivateCloneCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

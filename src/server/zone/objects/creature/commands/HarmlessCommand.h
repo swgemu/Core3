@@ -50,7 +50,7 @@ which carries forward this exception.
 class HarmlessCommand : public QueueCommand {
 public:
 
-	HarmlessCommand(const String& name, ZoneProcessServerImplementation* server)
+	HarmlessCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

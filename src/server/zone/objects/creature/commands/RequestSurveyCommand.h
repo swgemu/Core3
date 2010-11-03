@@ -53,7 +53,7 @@ which carries forward this exception.
 class RequestSurveyCommand : public QueueCommand {
 public:
 
-	RequestSurveyCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestSurveyCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

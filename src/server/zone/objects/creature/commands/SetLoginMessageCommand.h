@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetLoginMessageCommand : public QueueCommand {
 public:
 
-	SetLoginMessageCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetLoginMessageCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

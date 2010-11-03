@@ -50,7 +50,7 @@ which carries forward this exception.
 class EatCommand : public QueueCommand {
 public:
 
-	EatCommand(const String& name, ZoneProcessServerImplementation* server)
+	EatCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

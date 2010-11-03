@@ -50,7 +50,7 @@ which carries forward this exception.
 class JoinGameCommand : public QueueCommand {
 public:
 
-	JoinGameCommand(const String& name, ZoneProcessServerImplementation* server)
+	JoinGameCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

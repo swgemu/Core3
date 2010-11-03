@@ -50,7 +50,7 @@ which carries forward this exception.
 class PlanetCommand : public QueueCommand {
 public:
 
-	PlanetCommand(const String& name, ZoneProcessServerImplementation* server)
+	PlanetCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

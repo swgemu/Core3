@@ -51,7 +51,7 @@ which carries forward this exception.
 class TendWoundCommand : public TendCommand {
 public:
 
-	TendWoundCommand(const String& name, ZoneProcessServerImplementation* server)
+	TendWoundCommand(const String& name, ZoneProcessServer* server)
 		: TendCommand(name, server) {
 		effectName = "clienteffect/healing_healwound.cef";
 

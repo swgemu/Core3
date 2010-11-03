@@ -56,7 +56,7 @@ LoginClient::LoginClient(int port) : BaseClient("localhost", port) {
 
 	loginSession = NULL;
 
-	basePacketHandler = new BasePacketHandler("LoginClient", &messageQueue);
+	basePacketHandler = new BasePacketHandler("LoginClient", NULL);
 }
 
 LoginClient::~LoginClient() {

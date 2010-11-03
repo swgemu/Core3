@@ -10,6 +10,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"

@@ -50,7 +50,7 @@ which carries forward this exception.
 class RotateFurnitureCommand : public QueueCommand {
 public:
 
-	RotateFurnitureCommand(const String& name, ZoneProcessServerImplementation* server)
+	RotateFurnitureCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

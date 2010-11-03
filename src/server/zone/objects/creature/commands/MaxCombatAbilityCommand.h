@@ -50,7 +50,7 @@ which carries forward this exception.
 class MaxCombatAbilityCommand : public QueueCommand {
 public:
 
-	MaxCombatAbilityCommand(const String& name, ZoneProcessServerImplementation* server)
+	MaxCombatAbilityCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

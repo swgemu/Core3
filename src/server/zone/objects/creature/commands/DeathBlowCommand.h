@@ -51,7 +51,7 @@ which carries forward this exception.
 class DeathBlowCommand : public QueueCommand {
 public:
 
-	DeathBlowCommand(const String& name, ZoneProcessServerImplementation* server)
+	DeathBlowCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

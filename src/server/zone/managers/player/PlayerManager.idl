@@ -54,7 +54,7 @@ include server.zone.managers.player.PlayerMap;
 include server.zone.managers.player.CharacterNameMap;
 
 import server.zone.objects.group.GroupObject;
-import server.zone.ZoneProcessServerImplementation;
+import server.zone.ZoneProcessServer;
 import server.zone.managers.object.ObjectManager;
 import server.zone.packets.MessageCallback;
 import server.zone.objects.tangible.TangibleObject;
@@ -69,7 +69,7 @@ import server.zone.objects.scene.Observer;
 import server.zone.objects.scene.Observable;
 
 class PlayerManager extends Observer implements Logger {
-	transient ZoneProcessServerImplementation processor;
+	transient ZoneProcessServer processor;
 	
 	@weakReference
 	private ZoneServer server;
@@ -78,7 +78,7 @@ class PlayerManager extends Observer implements Logger {
 	transient CharacterNameMap nameMap;
 	private float globalExpMultiplier;
 	
-	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServerImplementation impl);
+	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
 	private native void loadStartingItems();
 	

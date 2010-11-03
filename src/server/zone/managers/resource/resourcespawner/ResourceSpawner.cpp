@@ -59,7 +59,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
-		ZoneProcessServerImplementation* impl, ObjectManager* objMan) {
+		ZoneProcessServer* impl, ObjectManager* objMan) {
 
 	server = serv;
 	processor = impl;

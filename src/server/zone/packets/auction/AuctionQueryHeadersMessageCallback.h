@@ -22,7 +22,7 @@ class AuctionQueryHeadersMessageCallback : public MessageCallback {
 	int offset;
 
 public:
-	AuctionQueryHeadersMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	AuctionQueryHeadersMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 			MessageCallback(client, server) {
 
 	}

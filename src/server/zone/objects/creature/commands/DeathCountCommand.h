@@ -50,7 +50,7 @@ which carries forward this exception.
 class DeathCountCommand : public QueueCommand {
 public:
 
-	DeathCountCommand(const String& name, ZoneProcessServerImplementation* server)
+	DeathCountCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class GrantPadawanTrialsEligibilityCommand : public QueueCommand {
 public:
 
-	GrantPadawanTrialsEligibilityCommand(const String& name, ZoneProcessServerImplementation* server)
+	GrantPadawanTrialsEligibilityCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

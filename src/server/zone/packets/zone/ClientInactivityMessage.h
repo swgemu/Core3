@@ -14,7 +14,7 @@ class ClientInactivityMessageCallback : public MessageCallback {
 	byte flag;
 
 public:
-	ClientInactivityMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ClientInactivityMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

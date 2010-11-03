@@ -51,7 +51,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.creature.CreatureObject;
 import system.lang.Time;
 
-include server.zone.ZoneProcessServerImplementation;
+include server.zone.ZoneProcessServer;
 import server.zone.objects.creature.buffs.BuffDurationEvent;
 import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.creature.buffs.SpiceDownerBuff;

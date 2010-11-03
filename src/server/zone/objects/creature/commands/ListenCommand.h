@@ -53,7 +53,7 @@ which carries forward this exception.
 class ListenCommand : public QueueCommand {
 public:
 
-	ListenCommand(const String& name, ZoneProcessServerImplementation* server)
+	ListenCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

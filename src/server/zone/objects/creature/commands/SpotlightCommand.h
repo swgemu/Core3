@@ -50,7 +50,7 @@ which carries forward this exception.
 class SpotlightCommand : public QueueCommand {
 public:
 
-	SpotlightCommand(const String& name, ZoneProcessServerImplementation* server)
+	SpotlightCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

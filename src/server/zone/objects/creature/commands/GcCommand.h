@@ -50,7 +50,7 @@ which carries forward this exception.
 class GcCommand : public QueueCommand {
 public:
 
-	GcCommand(const String& name, ZoneProcessServerImplementation* server)
+	GcCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

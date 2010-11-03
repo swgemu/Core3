@@ -52,7 +52,7 @@ which carries forward this exception.
 class CreateSpawningElementCommand : public QueueCommand {
 public:
 
-	CreateSpawningElementCommand(const String& name, ZoneProcessServerImplementation* server)
+	CreateSpawningElementCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

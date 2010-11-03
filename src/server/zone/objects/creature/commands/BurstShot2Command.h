@@ -51,7 +51,7 @@ which carries forward this exception.
 class BurstShot2Command : public CombatQueueCommand {
 public:
 
-	BurstShot2Command(const String& name, ZoneProcessServerImplementation* server)
+	BurstShot2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 6;

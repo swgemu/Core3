@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetPerformanceBuffTargetCommand : public QueueCommand {
 public:
 
-	SetPerformanceBuffTargetCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetPerformanceBuffTargetCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

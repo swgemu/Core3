@@ -50,7 +50,7 @@ which carries forward this exception.
 class UseSkillBuffCommand : public QueueCommand {
 public:
 
-	UseSkillBuffCommand(const String& name, ZoneProcessServerImplementation* server)
+	UseSkillBuffCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

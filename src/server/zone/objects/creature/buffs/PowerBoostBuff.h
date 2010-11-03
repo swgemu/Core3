@@ -55,7 +55,7 @@ class PowerBoostBuffDurationEvent;
 
 using namespace server::zone::objects::creature::buffs;
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 
 #include "server/zone/objects/creature/buffs/BuffType.h"
 

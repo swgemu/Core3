@@ -50,7 +50,7 @@ which carries forward this exception.
 class VentriloquismCommand : public QueueCommand {
 public:
 
-	VentriloquismCommand(const String& name, ZoneProcessServerImplementation* server)
+	VentriloquismCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

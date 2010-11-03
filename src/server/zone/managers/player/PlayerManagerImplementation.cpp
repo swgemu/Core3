@@ -14,7 +14,7 @@
 #include "server/zone/packets/charcreation/ClientCreateCharacterFailed.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
@@ -57,7 +57,7 @@
 
 #include "server/zone/Zone.h"
 
-PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) :
+PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 	Logger("PlayerManager") {
 	server = zoneServer;
 	processor = impl;

@@ -50,7 +50,7 @@ which carries forward this exception.
 class RequestDraftSlotsCommand : public QueueCommand {
 public:
 
-	RequestDraftSlotsCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestDraftSlotsCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

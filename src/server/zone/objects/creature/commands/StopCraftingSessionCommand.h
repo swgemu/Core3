@@ -50,7 +50,7 @@ which carries forward this exception.
 class StopCraftingSessionCommand : public QueueCommand {
 public:
 
-	StopCraftingSessionCommand(const String& name, ZoneProcessServerImplementation* server)
+	StopCraftingSessionCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

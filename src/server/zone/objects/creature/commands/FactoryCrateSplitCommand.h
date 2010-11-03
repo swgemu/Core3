@@ -50,7 +50,7 @@ which carries forward this exception.
 class FactoryCrateSplitCommand : public QueueCommand {
 public:
 
-	FactoryCrateSplitCommand(const String& name, ZoneProcessServerImplementation* server)
+	FactoryCrateSplitCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

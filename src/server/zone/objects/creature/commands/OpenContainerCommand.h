@@ -50,7 +50,7 @@ which carries forward this exception.
 class OpenContainerCommand : public QueueCommand {
 public:
 
-	OpenContainerCommand(const String& name, ZoneProcessServerImplementation* server)
+	OpenContainerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -46,7 +46,7 @@ package server.zone.managers.planet;
 
 import engine.core.ManagedService;
 import server.zone.Zone;
-import server.zone.ZoneProcessServerImplementation;
+import server.zone.ZoneProcessServer;
 import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import system.thread.Thread;
@@ -80,7 +80,7 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	protected int numberOfCities;
 		
-	protected transient ZoneProcessServerImplementation server;
+	protected transient ZoneProcessServer server;
 	protected transient TerrainManager terrainManager;
 	
 	@dereferenced
@@ -104,7 +104,7 @@ class PlanetManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient MissionTargetMap informants;
 	
-	public PlanetManager(Zone planet, ZoneProcessServerImplementation srv) {
+	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
 		server = srv;
 				

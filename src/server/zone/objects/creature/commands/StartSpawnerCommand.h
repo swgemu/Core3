@@ -50,7 +50,7 @@ which carries forward this exception.
 class StartSpawnerCommand : public QueueCommand {
 public:
 
-	StartSpawnerCommand(const String& name, ZoneProcessServerImplementation* server)
+	StartSpawnerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -31,7 +31,7 @@ public:
 class LagReportCallback : public MessageCallback {
 	uint64 unknown;
 public:
-	LagReportCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	LagReportCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}
@@ -46,7 +46,7 @@ public:
 
 class LagRequestCallback : public MessageCallback {
 public:
-	LagRequestCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	LagRequestCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

@@ -13,7 +13,7 @@
 
 class StomachRequestMessageCallback : public MessageCallback {
 public:
-	StomachRequestMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	StomachRequestMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

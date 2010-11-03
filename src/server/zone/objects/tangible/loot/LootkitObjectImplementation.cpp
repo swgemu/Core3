@@ -12,7 +12,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "../../scene/variables/CustomizationVariables.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/templates/tangible/LootkitObjectTemplate.h"
 
 void LootkitObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {

@@ -6,6 +6,7 @@
  */
 
 #include "StructureObject.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
 #include "server/zone/objects/installation/InstallationObject.h"

@@ -50,7 +50,7 @@ which carries forward this exception.
 class RegainConsciousnessCommand : public QueueCommand {
 public:
 
-	RegainConsciousnessCommand(const String& name, ZoneProcessServerImplementation* server)
+	RegainConsciousnessCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

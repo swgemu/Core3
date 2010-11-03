@@ -11,6 +11,7 @@
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
@@ -18,8 +19,10 @@
 #include "MissionObserver.h"
 
 void ReconMissionObjectiveImplementation::activate() {
+	ManagedReference<ZoneServer*> zoneServer = Core::lookupObject<ZoneServer>("zoneServer");
+
 	if (locationActiveArea == NULL) {
-		locationActiveArea = (MissionReconActiveArea*) ZoneProcessServerImplementation::instance->getZoneServer()->createObject(String("object/mission_recon_area.iff").hashCode(), 1);
+		locationActiveArea = (MissionReconActiveArea*) zoneServer->createObject(String("object/mission_recon_area.iff").hashCode(), 1);
 		locationActiveArea->setMissionObjective(_this);
 	}
 
@@ -29,7 +32,7 @@ void ReconMissionObjectiveImplementation::activate() {
 		String planetName = Planet::getPlanetNameByCrc(startPlanetCRC);
 		int id = Planet::getPlanetID(planetName);
 
-		Zone* zone = ZoneProcessServerImplementation::instance->getZoneServer()->getZone(id);
+		Zone* zone = zoneServer->getZone(id);
 		locationActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 		locationActiveArea->setRadius(32.f);
 		locationActiveArea->insertToZone(zone);

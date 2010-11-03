@@ -23,7 +23,7 @@ class ChatPersistentMessageToServerCallback : public MessageCallback {
 	String recipientName;
 
 public:
-	ChatPersistentMessageToServerCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ChatPersistentMessageToServerCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 		wpInfoSize = 0;
 	}

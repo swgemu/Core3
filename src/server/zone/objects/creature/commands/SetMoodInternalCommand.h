@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetMoodInternalCommand : public QueueCommand {
 public:
 
-	SetMoodInternalCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetMoodInternalCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

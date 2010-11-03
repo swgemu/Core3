@@ -51,7 +51,7 @@ which carries forward this exception.
 class InvulnerableCommand : public QueueCommand {
 public:
 
-	InvulnerableCommand(const String& name, ZoneProcessServerImplementation* server)
+	InvulnerableCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

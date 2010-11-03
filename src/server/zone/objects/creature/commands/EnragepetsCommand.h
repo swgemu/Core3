@@ -50,7 +50,7 @@ which carries forward this exception.
 class EnragepetsCommand : public QueueCommand {
 public:
 
-	EnragepetsCommand(const String& name, ZoneProcessServerImplementation* server)
+	EnragepetsCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -52,7 +52,7 @@ which carries forward this exception.
 class CenterOfBeingCommand : public QueueCommand {
 public:
 
-	CenterOfBeingCommand(const String& name, ZoneProcessServerImplementation* server)
+	CenterOfBeingCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

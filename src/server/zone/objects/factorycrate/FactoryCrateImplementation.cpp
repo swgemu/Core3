@@ -6,6 +6,7 @@
  */
 
 #include "FactoryCrate.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/packets/factory/FactoryCrateObjectMessage3.h"
 #include "server/zone/packets/factory/FactoryCrateObjectMessage6.h"
 #include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"

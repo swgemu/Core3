@@ -51,7 +51,7 @@ which carries forward this exception.
 class CancelCraftingSessionCommand : public QueueCommand {
 public:
 
-	CancelCraftingSessionCommand(const String& name, ZoneProcessServerImplementation* server)
+	CancelCraftingSessionCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

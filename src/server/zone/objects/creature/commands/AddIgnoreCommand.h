@@ -54,7 +54,7 @@ which carries forward this exception.
 class AddIgnoreCommand : public QueueCommand {
 public:
 
-	AddIgnoreCommand(const String& name, ZoneProcessServerImplementation* server)
+	AddIgnoreCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

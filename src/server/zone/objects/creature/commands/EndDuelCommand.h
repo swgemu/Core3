@@ -50,7 +50,7 @@ which carries forward this exception.
 class EndDuelCommand : public QueueCommand {
 public:
 
-	EndDuelCommand(const String& name, ZoneProcessServerImplementation* server)
+	EndDuelCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

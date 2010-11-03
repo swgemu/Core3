@@ -24,7 +24,7 @@ public:
 
 class RequestGalaxyLoopTimesCallback : public MessageCallback {
 public:
-	RequestGalaxyLoopTimesCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	RequestGalaxyLoopTimesCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

@@ -52,7 +52,7 @@ which carries forward this exception.
 class ExtractObjectCommand : public QueueCommand {
 public:
 
-	ExtractObjectCommand(const String& name, ZoneProcessServerImplementation* server)
+	ExtractObjectCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

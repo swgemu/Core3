@@ -51,7 +51,7 @@ which carries forward this exception.
 class SetRetreatCommand : public SquadLeaderCommand {
 public:
 
-	SetRetreatCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetRetreatCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
 
 		action = "retreat";

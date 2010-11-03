@@ -50,7 +50,7 @@ which carries forward this exception.
 class PurchaseReinforcementCommand : public QueueCommand {
 public:
 
-	PurchaseReinforcementCommand(const String& name, ZoneProcessServerImplementation* server)
+	PurchaseReinforcementCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

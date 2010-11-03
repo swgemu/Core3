@@ -50,7 +50,7 @@ which carries forward this exception.
 class FlashSpeederCommand : public QueueCommand {
 public:
 
-	FlashSpeederCommand(const String& name, ZoneProcessServerImplementation* server)
+	FlashSpeederCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

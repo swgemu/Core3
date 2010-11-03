@@ -19,7 +19,7 @@ class SuiEventNotificationCallback : public MessageCallback {
 	Vector<UnicodeString> arguments;
 
 public:
-	SuiEventNotificationCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	SuiEventNotificationCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

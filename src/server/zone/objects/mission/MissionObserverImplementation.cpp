@@ -7,6 +7,7 @@
 
 #include "MissionObserver.h"
 #include "MissionObjective.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
 int MissionObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {

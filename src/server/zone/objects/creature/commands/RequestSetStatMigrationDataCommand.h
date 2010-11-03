@@ -54,7 +54,7 @@ which carries forward this exception.
 class RequestSetStatMigrationDataCommand : public QueueCommand {
 public:
 
-	RequestSetStatMigrationDataCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestSetStatMigrationDataCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

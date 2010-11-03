@@ -14,7 +14,7 @@
 
 class PlayerMoneyRequestMessageCallback : public MessageCallback {
 public:
-	PlayerMoneyRequestMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	PlayerMoneyRequestMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class AvoidIncapacitationCommand : public QueueCommand {
 public:
 
-	AvoidIncapacitationCommand(const String& name, ZoneProcessServerImplementation* server)
+	AvoidIncapacitationCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

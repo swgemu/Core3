@@ -50,7 +50,7 @@ which carries forward this exception.
 class TendDamageToolCommand : public QueueCommand {
 public:
 
-	TendDamageToolCommand(const String& name, ZoneProcessServerImplementation* server)
+	TendDamageToolCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class RequestStimpackCommand : public QueueCommand {
 public:
 
-	RequestStimpackCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestStimpackCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

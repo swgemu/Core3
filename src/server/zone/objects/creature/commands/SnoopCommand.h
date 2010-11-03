@@ -50,7 +50,7 @@ which carries forward this exception.
 class SnoopCommand : public QueueCommand {
 public:
 
-	SnoopCommand(const String& name, ZoneProcessServerImplementation* server)
+	SnoopCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

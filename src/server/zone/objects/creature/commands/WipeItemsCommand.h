@@ -50,7 +50,7 @@ which carries forward this exception.
 class WipeItemsCommand : public QueueCommand {
 public:
 
-	WipeItemsCommand(const String& name, ZoneProcessServerImplementation* server)
+	WipeItemsCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

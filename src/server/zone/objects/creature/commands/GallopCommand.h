@@ -50,7 +50,7 @@ which carries forward this exception.
 class GallopCommand : public QueueCommand {
 public:
 
-	GallopCommand(const String& name, ZoneProcessServerImplementation* server)
+	GallopCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

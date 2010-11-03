@@ -42,32 +42,61 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef LOGINMESSAGEPROCESSORTHREAD_H_
-#define LOGINMESSAGEPROCESSORTHREAD_H_
+#ifndef LOGINMESSAGEPROCESSORTASK_H_
+#define LOGINMESSAGEPROCESSORTASK_H_
 
 #include "engine/engine.h"
+
+#include "LoginPacketHandler.h"
 
 namespace server {
 	namespace login {
 	
-		class LoginPacketHandler;
+		class LoginMessageProcessorTask : public Task {
+			Message* message;
 
-		class LoginMessageProcessorThread : public ServiceProcessThread {
-			LoginPacketHandler* phandler;
+			LoginPacketHandler* packetHandler;
 
 		public:
-			LoginMessageProcessorThread(const String& s, LoginPacketHandler* phand) : ServiceProcessThread(s) {
-				phandler = phand;
+			LoginMessageProcessorTask(Message* msg, LoginPacketHandler* handler) {
+				message = msg;
 
-				setLogging(false);
+				packetHandler = handler;
 			}
 
-			void run();
+			~LoginMessageProcessorTask() {
+				delete message;
+				message = NULL;
+			}
+
+			void run() {
+				try {
+					packetHandler->handleMessage(message);
+				} catch (PacketIndexOutOfBoundsException& e) {
+					System::out << e.getMessage();
+
+				/*	StringBuffer str;
+					str << "incorrect packet - " << msg->toStringData();
+					error(str);*/
+
+					e.printStackTrace();
+				} catch (Exception& e) {
+					StringBuffer msg;
+					msg << e.getMessage();
+					//error(msg);
+
+					e.printStackTrace();
+				} catch (...) {
+					System::out << "[LoginMessageProcessor] unreported Exception caught\n";
+				}
+
+			}
 
 		};
-	}
-}
+
+	} // namespace login
+} // namespace server
 
 using namespace server::login;
 
-#endif /*LOGINMESSAGEPROCESSORTHREAD_H_*/
+#endif /*LOGINMESSAGEPROCESSORTASK_H_*/

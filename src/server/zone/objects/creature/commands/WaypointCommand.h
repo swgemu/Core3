@@ -57,7 +57,7 @@ which carries forward this exception.
 class WaypointCommand : public QueueCommand {
 public:
 
-	WaypointCommand(const String& name, ZoneProcessServerImplementation* server)
+	WaypointCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

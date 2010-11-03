@@ -52,7 +52,7 @@ which carries forward this exception.
 class LeaveGroupCommand : public QueueCommand {
 public:
 
-	LeaveGroupCommand(const String& name, ZoneProcessServerImplementation* server)
+	LeaveGroupCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}
