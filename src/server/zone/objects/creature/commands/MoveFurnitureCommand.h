@@ -142,11 +142,15 @@ public:
 		obj->incrementMovementCounter();
 
 		if (obj->getParent() != NULL) {
-			DataTransformWithParent* dtwp = new DataTransformWithParent(obj);
-			obj->broadcastMessage(dtwp, false, false);
+			/*DataTransformWithParent* dtwp = new DataTransformWithParent(obj);
+			obj->broadcastMessage(dtwp, false, false);*/
+
+			obj->teleport(x, z, y, obj->getParent()->getObjectID());
 		} else {
-			DataTransform* dt = new DataTransform(obj);
-			obj->broadcastMessage(dt, false, false);
+			/*DataTransform* dt = new DataTransform(obj);
+			obj->broadcastMessage(dt, false, false);*/
+
+			obj->teleport(x, z, y);
 		}
 
 		return SUCCESS;
