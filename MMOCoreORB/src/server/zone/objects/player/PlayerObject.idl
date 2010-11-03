@@ -365,6 +365,10 @@ class PlayerObject extends IntangibleObject {
 		return adminLevel;
 	}
 	
+	public void setAdminLevel(unsigned int adminlvl) {
+		adminLevel = adminlvl;
+	}
+	
 	public boolean isDeveloper() {
 		return adminLevel == DEV;
 	}

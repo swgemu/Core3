@@ -372,8 +372,6 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 		if (player == NULL || !player->isOnline())
 			continue;
 
-		System::out << "Broadcasting message: " << message->toStringData() << endl;
-
 		player->sendMessage(message->clone());
 	}
 
