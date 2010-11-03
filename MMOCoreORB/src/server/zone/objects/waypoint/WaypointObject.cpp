@@ -182,7 +182,10 @@ void WaypointObject::toggleStatus() {
 }
 
 DistributedObjectServant* WaypointObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void WaypointObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

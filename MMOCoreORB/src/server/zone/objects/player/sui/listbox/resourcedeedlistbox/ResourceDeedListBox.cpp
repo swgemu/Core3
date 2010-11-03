@@ -122,7 +122,10 @@ String ResourceDeedListBox::getPreviousBox() {
 }
 
 DistributedObjectServant* ResourceDeedListBox::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ResourceDeedListBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

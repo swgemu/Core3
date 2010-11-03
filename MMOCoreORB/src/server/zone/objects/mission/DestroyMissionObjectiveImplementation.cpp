@@ -34,12 +34,12 @@ void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 }
 
 void DestroyMissionObjectiveImplementation::activate() {
-	if (observers.size() != 0 && lairObject != NULL)  {
+	if ((observers.size() != 0 && lairObject != NULL) || mission == NULL) {
 		return;
 	}
 
 	if (spawnActiveArea == NULL) {
-		spawnActiveArea = (MissionSpawnActiveArea*) Core::lookupObject<ZoneServer>("zoneServer")->createObject(String("object/mission_spawn_area.iff").hashCode(), 1);
+		spawnActiveArea = (MissionSpawnActiveArea*) Core::lookupObject<ZoneServer>("ZoneServer")->createObject(String("object/mission_spawn_area.iff").hashCode(), 1);
 		spawnActiveArea->setMissionObjective(_this);
 	}
 
@@ -49,7 +49,7 @@ void DestroyMissionObjectiveImplementation::activate() {
 		String planetName = Planet::getPlanetNameByCrc(startPlanetCRC);
 		int id = Planet::getPlanetID(planetName);
 
-		Zone* zone = Core::lookupObject<ZoneServer>("zoneServer")->getZone(id);
+		Zone* zone = Core::lookupObject<ZoneServer>("ZoneServer")->getZone(id);
 		spawnActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 		spawnActiveArea->setRadius(128.f);
 		spawnActiveArea->insertToZone(zone);
@@ -89,7 +89,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	player->sendSystemMessage("Transmission Received: Mission Target has been located.  Mission waypoint has been updated to exact location");
 
 	if (lairObject == NULL)
-		lairObject = (LairObject*) Core::lookupObject<ZoneServer>("zoneServer")->createObject(lairTemplateToSpawn->getServerObjectCRC(), 0);
+		lairObject = (LairObject*) Core::lookupObject<ZoneServer>("ZoneServer")->createObject(lairTemplateToSpawn->getServerObjectCRC(), 0);
 
 	if (!lairObject->isInQuadTree()) {
 		lairObject->initializePosition(newX, zone->getHeight(newX, newY), newY);

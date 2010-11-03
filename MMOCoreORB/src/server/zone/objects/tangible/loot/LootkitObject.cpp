@@ -112,7 +112,10 @@ void LootkitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature*
 }
 
 DistributedObjectServant* LootkitObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void LootkitObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

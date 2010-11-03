@@ -357,7 +357,10 @@ void SurveyTool::sendSampleTo(PlayerCreature* player, const String& resname) {
 }
 
 DistributedObjectServant* SurveyTool::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SurveyTool::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

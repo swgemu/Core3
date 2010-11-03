@@ -444,6 +444,11 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 	if (createSessionObjects(player, draftschematic)) {
 
+		if (getPrototype() == NULL) {
+			player->sendSystemMessage("ui_craft", "err_no_prototype");
+			return;
+		}
+
 		// Dplay9 ********************************************************
 		// Sets the Crafting state to 2, which is the Resource screen
 		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
@@ -1284,6 +1289,9 @@ void CraftingToolImplementation::customization(PlayerCreature* player, String& n
 	Locker _locker(_this);
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();
+
+	if (manufactureSchematic == NULL)
+		return;
 
 	manufactureSchematic->setManufactureLimit(schematicCount);
 

@@ -464,7 +464,10 @@ int CraftingTool::getExperimentationResult() {
 }
 
 DistributedObjectServant* CraftingTool::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void CraftingTool::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

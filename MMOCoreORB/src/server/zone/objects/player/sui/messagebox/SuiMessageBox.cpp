@@ -52,7 +52,10 @@ bool SuiMessageBox::isMessageBox() {
 }
 
 DistributedObjectServant* SuiMessageBox::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SuiMessageBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

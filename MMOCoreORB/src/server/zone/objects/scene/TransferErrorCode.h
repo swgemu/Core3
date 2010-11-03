@@ -10,6 +10,7 @@
 
 class TransferErrorCode {
 public:
+	const static int SUCCESS = 0;
 	const static int SLOTOCCUPIED = 1;
 	const static int PLAYERUSEMASKERROR = 2;
 	const static int INVALIDTYPE = 3;
@@ -17,6 +18,9 @@ public:
 	const static int NOTENOUGHENCUMBRANCE = 5;
 	const static int CANTNESTOBJECT = 6;
 	const static int TOOMANYITEMSINHOUSE = 7;
+	const static int CANTADDTOITSELF = 8;
+	const static int UNKNOWNCONTAIMENTTYPE = 9;
+	const static int CONTAINERFULL = 10;
 };
 
 

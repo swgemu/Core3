@@ -122,7 +122,10 @@ bool StimPack::isStimPack() {
 }
 
 DistributedObjectServant* StimPack::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void StimPack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

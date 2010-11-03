@@ -106,7 +106,10 @@ int EntertainerMissionObjective::notifyObserverEvent(MissionObserver* observer, 
 }
 
 DistributedObjectServant* EntertainerMissionObjective::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void EntertainerMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

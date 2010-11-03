@@ -193,7 +193,10 @@ bool PharmaceuticalObject::isRevivePack() {
 }
 
 DistributedObjectServant* PharmaceuticalObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void PharmaceuticalObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

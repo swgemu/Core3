@@ -103,7 +103,10 @@ void LootManager::testLoot(PlayerCreature* receiver, SceneObject* container) {
 }
 
 DistributedObjectServant* LootManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void LootManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

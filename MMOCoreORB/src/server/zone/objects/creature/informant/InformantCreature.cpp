@@ -118,7 +118,10 @@ void InformantCreature::sendConversationStartTo(SceneObject* player) {
 }
 
 DistributedObjectServant* InformantCreature::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void InformantCreature::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

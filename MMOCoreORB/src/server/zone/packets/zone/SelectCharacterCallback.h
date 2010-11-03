@@ -97,8 +97,17 @@ public:
 					}
 				}
 
-				if (parent != NULL)
-					zone = parent->getRootParent()->getZone();
+				if (parent != NULL) {
+					zone = parent->getZone();
+
+					if (zone == NULL) {
+						SceneObject* root = parent->getRootParent();
+
+						if (root != NULL)
+							zone = root->getZone();
+					}
+
+				}
 
 				if (zone == NULL)
 					zone = zoneServer->getZone(0);
@@ -106,6 +115,7 @@ public:
 				player->insertToZone(zone);
 			}
 
+			player->setSavedParentID(0);
 			player->setOnline();
 
 			ChatManager* chatManager = zoneServer->getChatManager();

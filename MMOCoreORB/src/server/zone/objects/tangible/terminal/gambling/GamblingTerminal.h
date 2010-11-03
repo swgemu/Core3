@@ -296,7 +296,7 @@ protected:
 
 	VectorMap<ManagedReference<PlayerCreature* >, unsigned int> playersWindows;
 
-	GamblingEvent* event;
+	Reference<GamblingEvent*> event;
 
 	VectorMap<ManagedReference<PlayerCreature* >, int> winnings;
 

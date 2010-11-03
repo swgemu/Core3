@@ -62,7 +62,10 @@ int Observer::compareTo(Observer* obj) {
 }
 
 DistributedObjectServant* Observer::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Observer::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

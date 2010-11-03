@@ -259,6 +259,9 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 		if (object->getParent() == NULL)
 			object->setParent(_this);
 
+		if (object->getContainmentType() != 4)
+			object->setContainmentType(4);
+
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		bool sendWithoutContents = false;
@@ -581,7 +584,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient) {
 	if (damageType < 0 || damageType >= hamList.size() || damage == 0) {
-		error("incorrect damage type in CreatureObjectImplementation::inflictDamage");
+		error("incorrect damage type in CreatureObjectImplementation::healDamage");
 		return 0;
 	}
 
@@ -1277,6 +1280,7 @@ int CreatureObjectImplementation::canAddObject(SceneObject* object, int containm
 			/*StringBuffer maskResol;
 			maskResol << "returned maskRes :" << maskRes;
 			info(maskResol.toString(), true);*/
+			errorDescription = "You lack the necessary requirements to wear this object";
 			return TransferErrorCode::PLAYERUSEMASKERROR;
 		}
 	}

@@ -161,7 +161,10 @@ String StructureManager::getTimeString(unsigned int timestamp) {
 }
 
 DistributedObjectServant* StructureManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void StructureManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -117,7 +117,10 @@ void TicketCollector::setShuttle(ShuttleCreature* shut) {
 }
 
 DistributedObjectServant* TicketCollector::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void TicketCollector::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

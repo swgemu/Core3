@@ -493,7 +493,10 @@ void Buff::setEndMessage(ParameterizedStringId& start) {
 }
 
 DistributedObjectServant* Buff::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Buff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

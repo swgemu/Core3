@@ -114,7 +114,10 @@ bool ControlDevice::isControlDevice() {
 }
 
 DistributedObjectServant* ControlDevice::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ControlDevice::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

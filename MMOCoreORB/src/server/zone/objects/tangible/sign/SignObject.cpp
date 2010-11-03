@@ -24,7 +24,10 @@ SignObject::~SignObject() {
 
 
 DistributedObjectServant* SignObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SignObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

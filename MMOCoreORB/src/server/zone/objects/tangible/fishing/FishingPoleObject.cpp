@@ -179,7 +179,10 @@ bool FishingPoleObject::removeObject(SceneObject* object, bool notifyClient) {
 }
 
 DistributedObjectServant* FishingPoleObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void FishingPoleObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

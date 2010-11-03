@@ -80,6 +80,11 @@ public:
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
+		if (player->getConsentListSize() >= 20) {
+			player->sendSystemMessage("You are consenting too many people");
+			return GENERALERROR;
+		}
+
 		if (!arguments.isEmpty()) {
 			StringTokenizer tokenizer(arguments.toString());
 			tokenizer.setDelimeter(",");
@@ -101,6 +106,8 @@ public:
 			}
 
 			PlayerCreature* playerTarget = (PlayerCreature*) object.get();
+
+			consent(player, playerTarget->getFirstName().toLowerCase());
 
 			ParameterizedStringId stringId2("base_player", "prose_got_consent");
 			stringId2.setTO(player->getObjectID());

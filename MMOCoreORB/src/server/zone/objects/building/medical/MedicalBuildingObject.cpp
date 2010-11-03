@@ -39,7 +39,10 @@ bool MedicalBuildingObject::isMedicalBuildingObject() {
 }
 
 DistributedObjectServant* MedicalBuildingObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void MedicalBuildingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

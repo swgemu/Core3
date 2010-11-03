@@ -56,7 +56,10 @@ int StartingLocationTerminal::handleObjectMenuSelect(PlayerCreature* player, byt
 }
 
 DistributedObjectServant* StartingLocationTerminal::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void StartingLocationTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -428,11 +428,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @pre { this locked }
 	 * @post { this locked }
 	 */
-	public abstract void notifyLoadFromDatabase() {
-		if (zone != null) {
-			insertToZone(zone);
-		}
-	}
+	public abstract native void notifyLoadFromDatabase();
 
 	/**
 	 * Logs an info message
@@ -584,7 +580,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @post { this object is locked }
 	 * @param startTask if true, queues a new update task
 	 */
-	public abstract native void updateToDatabaseAllObjects(boolean startTask);
+	public native void updateToDatabaseAllObjects(boolean startTask);
 	
 	/**
 	 * Destroys this object from database

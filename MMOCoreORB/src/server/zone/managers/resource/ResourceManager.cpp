@@ -287,7 +287,10 @@ void ResourceManager::addChildrenToDeedListBox(const String& name, ResourceDeedL
 }
 
 DistributedObjectServant* ResourceManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ResourceManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

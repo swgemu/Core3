@@ -95,6 +95,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 		
 		accessFee = 0;
 		
+		deedObjectID = 0;
+		
 		publicStructure = true;
 	}
 	

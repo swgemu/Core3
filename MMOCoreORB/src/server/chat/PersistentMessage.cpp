@@ -231,7 +231,10 @@ ParameterizedStringId* PersistentMessage::getParameterizedBody() {
 }
 
 DistributedObjectServant* PersistentMessage::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void PersistentMessage::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -459,7 +459,10 @@ bool GamblingManager::isPlaying(PlayerCreature* player) {
 }
 
 DistributedObjectServant* GamblingManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void GamblingManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -73,7 +73,10 @@ bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreatu
 }
 
 DistributedObjectServant* TeachPlayerListBox::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void TeachPlayerListBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -56,7 +56,10 @@ void MissionReconActiveArea::setMissionObjective(ReconMissionObjective* mission)
 }
 
 DistributedObjectServant* MissionReconActiveArea::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void MissionReconActiveArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -71,7 +71,10 @@ int ElevatorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte select
 }
 
 DistributedObjectServant* ElevatorTerminal::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ElevatorTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -53,7 +53,10 @@ void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 DistributedObjectServant* ClothingObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ClothingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

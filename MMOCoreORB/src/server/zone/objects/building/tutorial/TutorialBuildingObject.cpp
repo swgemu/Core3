@@ -97,7 +97,10 @@ void TutorialBuildingObject::clearUnloadEvent() {
 }
 
 DistributedObjectServant* TutorialBuildingObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void TutorialBuildingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

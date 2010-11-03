@@ -47,7 +47,10 @@ int InstrumentObserver::notifyObserverEvent(unsigned int eventType, Observable* 
 }
 
 DistributedObjectServant* InstrumentObserver::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void InstrumentObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

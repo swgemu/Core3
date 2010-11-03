@@ -206,7 +206,10 @@ void Instrument::setBeingUsed(bool val) {
 }
 
 DistributedObjectServant* Instrument::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Instrument::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}
@@ -307,63 +310,66 @@ void InstrumentImplementation::notifyLoadFromDatabase() {
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 	// server/zone/objects/tangible/Instrument.idl(110):  		beingUsed = false;
 	beingUsed = false;
+	// server/zone/objects/tangible/Instrument.idl(112):  	}
+	if (spawnedObject != NULL)	// server/zone/objects/tangible/Instrument.idl(113):  			spawnedObject.removeFromZone();
+	spawnedObject->removeFromZone();
 }
 
 void InstrumentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/Instrument.idl(115):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/Instrument.idl(118):  		super.loadTemplateData(templateData);
 	TangibleObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/Instrument.idl(117):  		InstrumentObjectTemplate 
-	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(118):  			return;
+	// server/zone/objects/tangible/Instrument.idl(120):  		InstrumentObjectTemplate 
+	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(121):  			return;
 	return;
-	// server/zone/objects/tangible/Instrument.idl(120):  templ = (InstrumentObjectTemplate) templateData;
+	// server/zone/objects/tangible/Instrument.idl(123):  templ = (InstrumentObjectTemplate) templateData;
 	InstrumentObjectTemplate* templ = (InstrumentObjectTemplate*) templateData;
-	// server/zone/objects/tangible/Instrument.idl(122):  		instrumentType = templ.getInstrumentType();
+	// server/zone/objects/tangible/Instrument.idl(125):  		instrumentType = templ.getInstrumentType();
 	instrumentType = templ->getInstrumentType();
 }
 
 void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	// server/zone/objects/tangible/Instrument.idl(133):  		super.fillObjectMenuResponse(menuResponse, player);
+	// server/zone/objects/tangible/Instrument.idl(136):  		super.fillObjectMenuResponse(menuResponse, player);
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
-	// server/zone/objects/tangible/Instrument.idl(135):  		if 
+	// server/zone/objects/tangible/Instrument.idl(138):  		if 
 	if (instrumentType != OMNIBOX && instrumentType != NALARGON){
-	// server/zone/objects/tangible/Instrument.idl(136):  			return;
+	// server/zone/objects/tangible/Instrument.idl(139):  			return;
 	return;
 }
-	// server/zone/objects/tangible/Instrument.idl(139):  
+	// server/zone/objects/tangible/Instrument.idl(142):  
 	if (beingUsed){
-	// server/zone/objects/tangible/Instrument.idl(140):  			return;
+	// server/zone/objects/tangible/Instrument.idl(143):  			return;
 	return;
 }
 
-	else 	// server/zone/objects/tangible/Instrument.idl(141):  	}
+	else 	// server/zone/objects/tangible/Instrument.idl(144):  	}
 	if (!isInQuadTree()){
-	// server/zone/objects/tangible/Instrument.idl(142):  			menuResponse.addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
+	// server/zone/objects/tangible/Instrument.idl(145):  			menuResponse.addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
 	menuResponse->addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
 }
 }
 
 int InstrumentImplementation::getInstrumentType() {
-	// server/zone/objects/tangible/Instrument.idl(161):  		return instrumentType;
+	// server/zone/objects/tangible/Instrument.idl(164):  		return instrumentType;
 	return instrumentType;
 }
 
 PlayerCreature* InstrumentImplementation::getSpawnerPlayer() {
-	// server/zone/objects/tangible/Instrument.idl(165):  		return spawnerPlayer;
+	// server/zone/objects/tangible/Instrument.idl(168):  		return spawnerPlayer;
 	return spawnerPlayer;
 }
 
 void InstrumentImplementation::setSpawnerPlayer(PlayerCreature* pla) {
-	// server/zone/objects/tangible/Instrument.idl(169):  		spawnerPlayer = pla;
+	// server/zone/objects/tangible/Instrument.idl(172):  		spawnerPlayer = pla;
 	spawnerPlayer = pla;
 }
 
 bool InstrumentImplementation::isBeingUsed() {
-	// server/zone/objects/tangible/Instrument.idl(173):  		return beingUsed;
+	// server/zone/objects/tangible/Instrument.idl(176):  		return beingUsed;
 	return beingUsed;
 }
 
 void InstrumentImplementation::setBeingUsed(bool val) {
-	// server/zone/objects/tangible/Instrument.idl(177):  		beingUsed = val;
+	// server/zone/objects/tangible/Instrument.idl(180):  		beingUsed = val;
 	beingUsed = val;
 }
 

@@ -41,7 +41,10 @@ unsigned int SuiSlotMachineBox::getPayoutBoxID() {
 }
 
 DistributedObjectServant* SuiSlotMachineBox::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SuiSlotMachineBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

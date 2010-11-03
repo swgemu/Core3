@@ -82,7 +82,10 @@ void DelayedBuff::setUsesRemaining(int uses) {
 }
 
 DistributedObjectServant* DelayedBuff::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void DelayedBuff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

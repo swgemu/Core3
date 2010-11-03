@@ -18,28 +18,28 @@ int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType
 	SceneObject* creature = (SceneObject*) observable;
 
 	if (instrument == NULL || instrument->getZone() == NULL) {
-		if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
+		/*if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
 			observable->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
 		} else if (eventType == ObserverEventType::POSITIONCHANGED) {
 			observable->dropObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, _this);
-		}
+		}*/
 
 		return 1;
 	} else {
 		Locker locker(instrument);
 
 		if (eventType == ObserverEventType::POSITIONCHANGED) {
-			if (creature->getDistanceTo(instrument) > 32) {
+			if (creature->getDistanceTo(instrument) > 8) {
 				instrument->removeFromZone();
 
-				observable->dropObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, _this);
+				//observable->dropObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, _this);
 
 				return 1;
 			}
 		} else if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
 			instrument->removeFromZone();
 
-			observable->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
+			//observable->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
 
 			return 1;
 		}

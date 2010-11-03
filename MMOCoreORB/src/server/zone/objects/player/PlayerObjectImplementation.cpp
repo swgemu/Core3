@@ -573,7 +573,7 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 
 	ZoneServer* zoneServer = server->getZoneServer();
 	ManagedReference<PlayerCreature*> playerToAdd;
-	playerToAdd = (PlayerCreature*) zoneServer->getObject(objID);
+	playerToAdd = dynamic_cast<PlayerCreature*>(zoneServer->getObject(objID));
 
 	if (playerToAdd == NULL || playerToAdd == parent) {
 		if (notifyClient) {
@@ -636,7 +636,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 
 	ZoneServer* zoneServer = server->getZoneServer();
 	ManagedReference<PlayerCreature*> playerToRemove;
-	playerToRemove = (PlayerCreature*) zoneServer->getObject(objID);
+	playerToRemove = dynamic_cast<PlayerCreature*>(zoneServer->getObject(objID));
 
 	if (playerToRemove == NULL) {
 		if (notifyClient) {

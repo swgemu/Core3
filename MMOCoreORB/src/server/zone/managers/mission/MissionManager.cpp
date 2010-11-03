@@ -465,7 +465,10 @@ bool MissionManager::hasSurveyMission(PlayerCreature* player, const String& spaw
 }
 
 DistributedObjectServant* MissionManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void MissionManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

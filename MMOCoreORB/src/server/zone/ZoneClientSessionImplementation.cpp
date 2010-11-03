@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "objects/player/PlayerCreature.h"
 
 #include "server/zone/objects/player/events/ClearClientEvent.h"
+#include "server/zone/objects/player/events/DisconnectClientEvent.h"
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr)
 		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
@@ -101,8 +102,11 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 		if (player != NULL) {
 			unlock(true);
 
-			if (player->getClient() == _this)
-				((PlayerCreature*)player.get())->disconnect(false, true);
+			if (player->getClient() == _this) {
+				//((PlayerCreature*)player.get())->disconnect(false, true);
+				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::DISCONNECT);
+				task->schedule(10);
+			}
 
 			lock(true);
 		}
@@ -111,14 +115,20 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	} else if (player != NULL) {
 		unlock(true);
 
-		if (((PlayerCreature*)player.get())->isLoggingOut() && player->getClient() == _this)
-			((PlayerCreature*)player.get())->logout(true);
+		if (((PlayerCreature*)player.get())->isLoggingOut() && player->getClient() == _this) {
+			//((PlayerCreature*)player.get())->logout(true);
+			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::LOGOUT);
+			task->schedule(10);
+		}
 		else {
 			try {
 				//player->wlock();
 
-				if (player->getClient() == _this)
-					((PlayerCreature*)player.get())->setLinkDead();
+				if (player->getClient() == _this) {
+					//((PlayerCreature*)player.get())->setLinkDead();
+					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::SETLINKDEAD);
+					task->schedule(10);
+				}
 
 				//player->unlock();
 			} catch (...) {

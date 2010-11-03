@@ -1615,7 +1615,7 @@ public:
 
 	void updateToDatabaseWithoutChildren();
 
-	virtual void updateToDatabaseAllObjects(bool startTask);
+	void updateToDatabaseAllObjects(bool startTask);
 
 	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 

@@ -58,7 +58,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 
 	switch (selectedID) {
 	case 185:
-		guildManager->sendGuildCreateNameTo(player, _this);
+		//guildManager->sendGuildCreateNameTo(player, _this);
 		break;
 	case 193:
 	case 186: //Guild Information

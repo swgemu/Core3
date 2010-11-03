@@ -93,7 +93,10 @@ bool Container::isContainerOject() {
 }
 
 DistributedObjectServant* Container::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Container::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -143,7 +143,10 @@ PlayerCreature* MissionObjective::getPlayerOwner() {
 }
 
 DistributedObjectServant* MissionObjective::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void MissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}
