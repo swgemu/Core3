@@ -283,7 +283,7 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(PlayerCreatur
 
 	//box->addMenuItem("[1337] Medal of Elvaron", 0);
 
-	box->setUsingObjectID(getObjectID());
+	box->setUsingObject(_this);
 	player->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 }

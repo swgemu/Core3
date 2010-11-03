@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "server/zone/ZoneProcessServer.h"
 
 #include "server/zone/MessageCallbackFactory.h"
-#include "server/zone/packets/MessageCallback.h"
+#include "server/zone/objects/player/sui/SuiMessageCallback.h"
 
 namespace server {
  namespace zone {
@@ -76,7 +76,7 @@ namespace server {
 	  class SuiManager : public Logger {
 	  	ZoneProcessServer* server;
 
-	  	//MessageCallbackFactory<MessageCallback* (PlayerCreature*, SuiBox*, uint32, Vector<UnicodeString>*), uint32> messageCallbackFactory;
+	  	MessageCallbackFactory<SuiMessageCallback* (ZoneClientSession*, ZoneProcessServer*), uint32> messageCallbackFactory;
 
 	  public:
 	  	SuiManager(ZoneProcessServer* serv);
@@ -84,6 +84,9 @@ namespace server {
 	  	void registerMessages();
 	  	void handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args);
 
+	  	//TODO: Implement these
+	  	//bool parseMessage(Message* message, SuiMessageCallback* messageCallback); //Use this to parse the arguments into class members?
+	  	//void runMessage(SuiMessageCallback* messageCallback);
 
 
 	  	//Handlers
@@ -162,16 +165,9 @@ namespace server {
 	  	void handleManageMilitia(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleAddMilitia(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleFindCommand(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
-
 	  	void handleGamblingSlotPayout(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleGamblingSlot(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleGamblingRoulette(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
-
-
-	  	//Guilds
-	  	void handleGuildCreateNameResponse(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
-	  	void handleGuildCreateAbbrevResponse(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  };
    }
   }

@@ -63,8 +63,6 @@ class SuiBox extends ManagedObject implements Logger {
 	@weakReference
 	protected SceneObject usingObject;
 
-	protected unsigned long usingObjectID;
-
 	protected string handlerStr;
 	
 	protected string cancelButtonText;
@@ -82,8 +80,6 @@ class SuiBox extends ManagedObject implements Logger {
 
 	protected unsigned int windowType;
 
-	protected int integerValue;
-	
 	protected float forceCloseDistance;
 
 	@dereferenced
@@ -245,20 +241,12 @@ class SuiBox extends ManagedObject implements Logger {
 		handlerStr = text;
 	}
 
-	public void setUsingObjectID(unsigned long oid) {
-		usingObjectID = oid;
-	}
-	
 	public void setWindowType(unsigned int type) {
 		windowType = type;
 	}
 	
 	public void setBoxType(int type) {
 		boxType = type;
-	}
-
-	public void setIntValue(int value) {
-		integerValue = value;
 	}
 
 	public abstract boolean isInputBox() {
@@ -302,14 +290,6 @@ class SuiBox extends ManagedObject implements Logger {
 	public native void setForceCloseDistance(float dist);
 
 	public native void setForceCloseDisabled();
-
-	public unsigned long getUsingObjectID() {
-		return usingObjectID;
-	}
-
-	public int getIntValue() {
-		return integerValue;
-	}
 
 	public PlayerCreature getPlayer() {
 		return player;
