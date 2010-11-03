@@ -106,8 +106,6 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	languageID = 0;
 
-	adminLevel = 0;
-
 	experienceList.setNullValue(0);
 }
 
