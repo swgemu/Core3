@@ -50,7 +50,7 @@ which carries forward this exception.
 class CsDisconnectPlayerCommand : public QueueCommand {
 public:
 
-	CsDisconnectPlayerCommand(const String& name, ZoneProcessServerImplementation* server)
+	CsDisconnectPlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

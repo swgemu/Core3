@@ -51,7 +51,7 @@ which carries forward this exception.
 class ProneCommand : public QueueCommand {
 public:
 
-	ProneCommand(const String& name, ZoneProcessServerImplementation* server)
+	ProneCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -75,7 +75,7 @@ class FindCommand: public QueueCommand {
 
 public:
 
-	FindCommand(const String& name, ZoneProcessServerImplementation* server) :
+	FindCommand(const String& name, ZoneProcessServer* server) :
 		QueueCommand(name, server) {
 
 		argsHashMap.put("cantina", MapLocationType::CANTINA);

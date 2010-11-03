@@ -51,7 +51,7 @@ which carries forward this exception.
 class HealthShot1Command : public CombatQueueCommand {
 public:
 
-	HealthShot1Command(const String& name, ZoneProcessServerImplementation* server)
+	HealthShot1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 2.0;

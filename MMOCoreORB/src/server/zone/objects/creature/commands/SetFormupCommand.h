@@ -51,7 +51,7 @@ which carries forward this exception.
 class SetFormupCommand : public SquadLeaderCommand {
 public:
 
-	SetFormupCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetFormupCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
 
 		action = "formup";

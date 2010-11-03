@@ -14,7 +14,7 @@
 class MediumDiseaseCommand : public CombatQueueCommand {
 public:
 
-	MediumDiseaseCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+	MediumDiseaseCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
 		dotDuration = 30;
 		dotType = CreatureState::DISEASED;
 		dotPool = CombatManager::HEALTH;

@@ -50,7 +50,7 @@ which carries forward this exception.
 class RevokeSkillCommand : public QueueCommand {
 public:
 
-	RevokeSkillCommand(const String& name, ZoneProcessServerImplementation* server)
+	RevokeSkillCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

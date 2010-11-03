@@ -6,6 +6,7 @@
  */
 
 #include "JunkdealerCreature.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/scene/SceneObject.h"

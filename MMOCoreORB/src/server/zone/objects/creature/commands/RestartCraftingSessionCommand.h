@@ -50,7 +50,7 @@ which carries forward this exception.
 class RestartCraftingSessionCommand : public QueueCommand {
 public:
 
-	RestartCraftingSessionCommand(const String& name, ZoneProcessServerImplementation* server)
+	RestartCraftingSessionCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

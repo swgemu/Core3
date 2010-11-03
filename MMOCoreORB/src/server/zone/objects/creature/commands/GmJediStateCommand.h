@@ -50,7 +50,7 @@ which carries forward this exception.
 class GmJediStateCommand : public QueueCommand {
 public:
 
-	GmJediStateCommand(const String& name, ZoneProcessServerImplementation* server)
+	GmJediStateCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

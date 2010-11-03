@@ -14,7 +14,7 @@
 class RequestQuestTimersAndCountersCommand : public QueueCommand {
 public:
 
-	RequestQuestTimersAndCountersCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestQuestTimersAndCountersCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

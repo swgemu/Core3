@@ -61,7 +61,7 @@ ZoneClient::ZoneClient(int port) : BaseClient("localhost", port) {
 	key = 0;
 	accountID = 0;
 
-	basePacketHandler = new BasePacketHandler("ZoneClient", &messageQueue);
+	basePacketHandler = new BasePacketHandler("ZoneClient", NULL);
 }
 
 ZoneClient::~ZoneClient() {

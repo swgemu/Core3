@@ -50,7 +50,7 @@ which carries forward this exception.
 class BoardShuttleCommand : public QueueCommand {
 public:
 
-	BoardShuttleCommand(const String& name, ZoneProcessServerImplementation* server)
+	BoardShuttleCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class HoloEmoteCommand : public QueueCommand {
 public:
 
-	HoloEmoteCommand(const String& name, ZoneProcessServerImplementation* server)
+	HoloEmoteCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

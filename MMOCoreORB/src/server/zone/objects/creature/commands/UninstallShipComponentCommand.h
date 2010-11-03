@@ -50,7 +50,7 @@ which carries forward this exception.
 class UninstallShipComponentCommand : public QueueCommand {
 public:
 
-	UninstallShipComponentCommand(const String& name, ZoneProcessServerImplementation* server)
+	UninstallShipComponentCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

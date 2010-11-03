@@ -22,7 +22,7 @@ class CreateAuctionMessageCallback : public MessageCallback {
 
 	UnicodeString description;
 public:
-	CreateAuctionMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	CreateAuctionMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 			MessageCallback(client, server) {
 
 	}

@@ -52,7 +52,7 @@ which carries forward this exception.
 class MeditateCommand : public QueueCommand {
 public:
 
-	MeditateCommand(const String& name, ZoneProcessServerImplementation* server)
+	MeditateCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -51,7 +51,7 @@ which carries forward this exception.
 class TumbleToStandingCommand : public QueueCommand {
 public:
 
-	TumbleToStandingCommand(const String& name, ZoneProcessServerImplementation* server)
+	TumbleToStandingCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

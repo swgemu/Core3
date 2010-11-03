@@ -50,7 +50,7 @@ which carries forward this exception.
 class GetFriendListCommand : public QueueCommand {
 public:
 
-	GetFriendListCommand(const String& name, ZoneProcessServerImplementation* server)
+	GetFriendListCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "../MessageCallback.h"
 
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 
 #include "server/chat/ChatManager.h"
 
@@ -130,7 +130,7 @@ public:
 
 class ChatRequestRoomListCallback : public MessageCallback {
 public:
-	ChatRequestRoomListCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ChatRequestRoomListCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

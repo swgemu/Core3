@@ -50,7 +50,7 @@ which carries forward this exception.
 class ReconnectToTransferServerCommand : public QueueCommand {
 public:
 
-	ReconnectToTransferServerCommand(const String& name, ZoneProcessServerImplementation* server)
+	ReconnectToTransferServerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

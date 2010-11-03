@@ -51,7 +51,7 @@ which carries forward this exception.
 class SurveyCommand : public QueueCommand {
 public:
 
-	SurveyCommand(const String& name, ZoneProcessServerImplementation* server)
+	SurveyCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

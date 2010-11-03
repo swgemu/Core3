@@ -52,7 +52,7 @@ which carries forward this exception.
 class RequestCraftingSessionCommand : public QueueCommand {
 public:
 
-	RequestCraftingSessionCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestCraftingSessionCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

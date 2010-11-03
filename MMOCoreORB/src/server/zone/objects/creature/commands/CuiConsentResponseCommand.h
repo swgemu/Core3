@@ -50,7 +50,7 @@ which carries forward this exception.
 class CuiConsentResponseCommand : public QueueCommand {
 public:
 
-	CuiConsentResponseCommand(const String& name, ZoneProcessServerImplementation* server)
+	CuiConsentResponseCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

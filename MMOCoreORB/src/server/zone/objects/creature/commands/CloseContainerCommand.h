@@ -52,7 +52,7 @@ which carries forward this exception.
 class CloseContainerCommand : public QueueCommand {
 public:
 
-	CloseContainerCommand(const String& name, ZoneProcessServerImplementation* server)
+	CloseContainerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

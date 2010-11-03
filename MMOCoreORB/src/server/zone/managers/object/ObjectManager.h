@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "ObjectMap.h"
 
+#include "server/zone/ZoneProcessServer.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "SceneObjectFactory.h"
@@ -58,13 +60,13 @@ class TemplateManager;
 namespace server {
 namespace zone {
 
-	class ZoneProcessServerImplementation;
+	//class ZoneProcessServer;
 
 	namespace managers {
 	namespace object {
 
 	class ObjectManager : public DOBObjectManagerImplementation, public Logger, public Singleton<ObjectManager> {
-		ZoneProcessServerImplementation* server;
+		ManagedReference<ZoneProcessServer*> server;
 
 		ObjectDatabaseManager* databaseManager;
 
@@ -126,7 +128,7 @@ namespace zone {
 		ObjectDatabase* loadTable(const String& database, uint64 objectID = 0);
 		ObjectDatabase* getTable(uint64 objectID);
 
-		inline void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
+		inline void setZoneProcessor(ZoneProcessServer* srv) {
 			server = srv;
 		}
 

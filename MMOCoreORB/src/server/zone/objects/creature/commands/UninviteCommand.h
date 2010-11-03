@@ -54,7 +54,7 @@ which carries forward this exception.
 class UninviteCommand : public QueueCommand {
 public:
 
-	UninviteCommand(const String& name, ZoneProcessServerImplementation* server)
+	UninviteCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

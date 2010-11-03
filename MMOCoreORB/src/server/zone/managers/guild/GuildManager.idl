@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.managers.guild;
 
 import engine.core.ManagedService;
-import server.zone.ZoneProcessServerImplementation;
+import server.zone.ZoneProcessServer;
 import server.zone.ZoneServer;
 include server.zone.managers.guild.GuildList;
 include server.zone.packets.guild.GuildObjectDeltaMessage3;
@@ -57,7 +57,7 @@ include server.zone.objects.scene.variables.DeltaSet;
 class GuildManager extends ManagedService implements Logger {
 	@weakReference
 	private transient ZoneServer server;
-	private transient ZoneProcessServerImplementation processor;
+	private transient ZoneProcessServer processor;
 	
 	@dereferenced
 	private DeltaSet<string, GuildObject> guildList;
@@ -69,7 +69,7 @@ class GuildManager extends ManagedService implements Logger {
 	private int maximumMembers;
 	private int guildUpdateInterval;
 	
-	public GuildManager(ZoneServer serv, ZoneProcessServerImplementation proc) {
+	public GuildManager(ZoneServer serv, ZoneProcessServer proc) {
 		Logger.setLoggingName("GuildManager");
 		Logger.setLogging(true);
 		Logger.setGlobalLogging(true);

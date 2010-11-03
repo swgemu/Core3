@@ -53,7 +53,7 @@ which carries forward this exception.
 class SitServerCommand : public QueueCommand {
 public:
 
-	SitServerCommand(const String& name, ZoneProcessServerImplementation* server)
+	SitServerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

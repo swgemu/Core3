@@ -12,7 +12,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/scene/TransferErrorCode.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"

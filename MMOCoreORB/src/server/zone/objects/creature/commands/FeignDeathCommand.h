@@ -50,7 +50,7 @@ which carries forward this exception.
 class FeignDeathCommand : public QueueCommand {
 public:
 
-	FeignDeathCommand(const String& name, ZoneProcessServerImplementation* server)
+	FeignDeathCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

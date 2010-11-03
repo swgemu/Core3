@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 
 #include "server/zone/MessageCallbackFactory.h"
 #include "server/zone/packets/MessageCallback.h"
@@ -74,12 +74,12 @@ namespace server {
    namespace sui {
 
 	  class SuiManager : public Logger {
-	  	ZoneProcessServerImplementation* server;
+	  	ZoneProcessServer* server;
 
 	  	//MessageCallbackFactory<MessageCallback* (PlayerCreature*, SuiBox*, uint32, Vector<UnicodeString>*), uint32> messageCallbackFactory;
 
 	  public:
-	  	SuiManager(ZoneProcessServerImplementation* serv);
+	  	SuiManager(ZoneProcessServer* serv);
 
 	  	void registerMessages();
 	  	void handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args);

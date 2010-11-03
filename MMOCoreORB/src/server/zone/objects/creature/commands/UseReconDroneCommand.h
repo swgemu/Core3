@@ -50,7 +50,7 @@ which carries forward this exception.
 class UseReconDroneCommand : public QueueCommand {
 public:
 
-	UseReconDroneCommand(const String& name, ZoneProcessServerImplementation* server)
+	UseReconDroneCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

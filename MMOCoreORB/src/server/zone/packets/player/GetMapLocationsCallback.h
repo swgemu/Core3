@@ -20,7 +20,7 @@ class GetMapLocationsCallback : public MessageCallback {
 	String planet;
 
 public:
-	GetMapLocationsCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	GetMapLocationsCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

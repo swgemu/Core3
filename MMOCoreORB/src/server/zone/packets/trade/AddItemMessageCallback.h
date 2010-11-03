@@ -16,7 +16,7 @@ class AddItemMessageCallback : public MessageCallback {
 	uint64 id;
 
 public:
-	AddItemMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	AddItemMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

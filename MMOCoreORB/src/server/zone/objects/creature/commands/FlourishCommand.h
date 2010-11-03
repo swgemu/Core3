@@ -51,7 +51,7 @@ which carries forward this exception.
 class FlourishCommand : public QueueCommand {
 public:
 
-	FlourishCommand(const String& name, ZoneProcessServerImplementation* server)
+	FlourishCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

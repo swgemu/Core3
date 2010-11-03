@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "Performance.h"
 
 class DanceAnimationMap : public HashTable<String, String> {

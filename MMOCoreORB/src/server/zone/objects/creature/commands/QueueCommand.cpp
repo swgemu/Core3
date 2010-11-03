@@ -8,7 +8,7 @@
 #include "QueueCommand.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 
-QueueCommand::QueueCommand(const String& skillname, ZoneProcessServerImplementation* serv) : Skill(skillname), Logger() {
+QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : Skill(skillname), Logger() {
 	server = serv;
 
 	nameCRC = skillname.hashCode();

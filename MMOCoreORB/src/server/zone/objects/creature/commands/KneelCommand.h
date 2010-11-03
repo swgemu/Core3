@@ -52,7 +52,7 @@ which carries forward this exception.
 class KneelCommand : public QueueCommand {
 public:
 
-	KneelCommand(const String& name, ZoneProcessServerImplementation* server)
+	KneelCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

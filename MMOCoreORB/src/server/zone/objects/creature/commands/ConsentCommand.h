@@ -51,7 +51,7 @@ which carries forward this exception.
 class ConsentCommand : public QueueCommand {
 public:
 
-	ConsentCommand(const String& name, ZoneProcessServerImplementation* server)
+	ConsentCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

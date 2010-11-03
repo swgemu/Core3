@@ -50,6 +50,7 @@ import engine.service.proto.BasePacketHandler;
 import engine.service.DatagramServiceThread;
 import engine.service.ServiceHandler;
 import engine.service.ServiceClient;
+import engine.service.Message;
 import engine.core.ManagedService;
 import engine.core.TaskManager;
 import engine.log.Logger;
@@ -63,7 +64,7 @@ import system.net.Packet;
 import system.thread.atomic.AtomicInteger;
 
 import server.login.account.Account;
-import server.zone.ZoneProcessServerImplementation;
+import server.zone.ZoneProcessServer;
 import server.zone.managers.object.ObjectManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.Zone;
@@ -87,12 +88,8 @@ class ZoneServer extends ManagedService implements ServiceHandler, Logger {
 	
 	private transient BasePacketHandler phandler;
 	
-	private transient ZoneProcessServerImplementation processor;
+	private transient ZoneProcessServer processor;
 
-	private int procThreadCount;
-	
-	private native transient TaskManager taskManager;
-	
 	@dereferenced
 	private Vector<Zone> zones;
 	
@@ -146,7 +143,7 @@ class ZoneServer extends ManagedService implements ServiceHandler, Logger {
 	public static final int ONLINE = 2;
 	public static final int LOCKED = 3;
 	
-	public native ZoneServer(int processingThreads, int galaxyid = 2);/* {
+	public native ZoneServer(int galaxyid = 2);/* {
 		//super(Dat)
 		galaxyID = galaxyid;
 
@@ -201,6 +198,9 @@ class ZoneServer extends ManagedService implements ServiceHandler, Logger {
 
 	@local
 	public native void handleMessage(ServiceClient client, Packet message);
+
+	@local
+	public native void processMessage(Message message);
 
 	@local
 	public native boolean handleError(ServiceClient client, @dereferenced Exception e);
@@ -281,6 +281,11 @@ class ZoneServer extends ManagedService implements ServiceHandler, Logger {
 
 	public int getDeletedPlayers() {
 		return totalDeletedPlayers.get();
+	}
+	
+	@local
+	public ObjectManager getObjectManager() {
+		return objectManager;
 	}
 	
 	public PlayerManager getPlayerManager() {

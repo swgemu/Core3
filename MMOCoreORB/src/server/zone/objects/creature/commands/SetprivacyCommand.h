@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetprivacyCommand : public QueueCommand {
 public:
 
-	SetprivacyCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetprivacyCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

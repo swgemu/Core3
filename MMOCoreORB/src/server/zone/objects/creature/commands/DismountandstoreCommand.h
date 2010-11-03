@@ -50,7 +50,7 @@ which carries forward this exception.
 class DismountandstoreCommand : public QueueCommand {
 public:
 
-	DismountandstoreCommand(const String& name, ZoneProcessServerImplementation* server)
+	DismountandstoreCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

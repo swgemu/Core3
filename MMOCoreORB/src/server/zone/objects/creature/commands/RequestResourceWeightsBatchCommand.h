@@ -51,7 +51,7 @@ which carries forward this exception.
 class RequestResourceWeightsBatchCommand : public QueueCommand {
 public:
 
-	RequestResourceWeightsBatchCommand(const String& name, ZoneProcessServerImplementation* server)
+	RequestResourceWeightsBatchCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 
 #include "../radial/RadialManager.h"
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
@@ -93,7 +93,7 @@ which carries forward this exception.
 #include "server/zone/objects/guild/GuildObject.h"
 
 
-SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManager") {
+SuiManager::SuiManager(ZoneProcessServer* serv) : Logger("SuiManager") {
 	server = serv;
 
 	setGlobalLogging(true);

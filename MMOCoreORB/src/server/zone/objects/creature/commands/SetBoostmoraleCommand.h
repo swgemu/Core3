@@ -51,7 +51,7 @@ which carries forward this exception.
 class SetBoostmoraleCommand : public SquadLeaderCommand {
 public:
 
-	SetBoostmoraleCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetBoostmoraleCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
 
 		action = "boostmorale";

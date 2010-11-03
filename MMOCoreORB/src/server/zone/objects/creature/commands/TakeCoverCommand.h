@@ -52,7 +52,7 @@ which carries forward this exception.
 class TakeCoverCommand : public QueueCommand {
 public:
 
-	TakeCoverCommand(const String& name, ZoneProcessServerImplementation* server)
+	TakeCoverCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

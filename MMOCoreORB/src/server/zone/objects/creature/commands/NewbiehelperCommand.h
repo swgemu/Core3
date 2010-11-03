@@ -51,7 +51,7 @@ which carries forward this exception.
 class NewbiehelperCommand : public QueueCommand {
 public:
 
-	NewbiehelperCommand(const String& name, ZoneProcessServerImplementation* server)
+	NewbiehelperCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

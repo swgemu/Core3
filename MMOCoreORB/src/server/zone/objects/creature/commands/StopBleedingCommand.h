@@ -50,7 +50,7 @@ which carries forward this exception.
 class StopBleedingCommand : public QueueCommand {
 public:
 
-	StopBleedingCommand(const String& name, ZoneProcessServerImplementation* server)
+	StopBleedingCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

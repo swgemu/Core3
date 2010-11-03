@@ -62,6 +62,7 @@ bin_PROGRAMS = core3
 core3_IDLS =	server/login/LoginServer.cpp \
 				server/login/account/Account.cpp \
 				server/zone/ZoneServer.cpp \
+				server/zone/ZoneProcessServer.cpp \
 				server/zone/ZoneClientSession.cpp \
 				server/zone/Zone.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
@@ -134,12 +135,13 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
 				server/zone/objects/building/travel/TravelBuildingObject.cpp \
 				server/zone/objects/building/tutorial/TutorialBuildingObject.cpp \
-				server/zone/managers/player/PlayerManager.cpp \
 				server/zone/managers/guild/GuildManager.cpp \
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \
 				server/chat/PersistentMessage.cpp \
+				server/zone/managers/ZoneManager.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
+				server/zone/managers/player/PlayerManager.cpp \
 				server/zone/objects/draftschematic/DraftSchematic.cpp \
 				server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
 				server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
@@ -226,7 +228,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
 		server/features/Features.cpp \
 		server/db/ServerDatabase.cpp \
-		server/login/LoginMessageProcessorThread.cpp \
 		server/login/LoginProcessServerImplementation.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginServerImplementation.cpp \
@@ -237,7 +238,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneServerImplementation.cpp \
 		server/zone/ZoneClientSessionImplementation.cpp \
 		server/zone/ZonePacketHandler.cpp \
-		server/zone/ZoneMessageProcessorThread.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \

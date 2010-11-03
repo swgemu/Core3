@@ -51,7 +51,7 @@ which carries forward this exception.
 class GrantSkillCommand : public QueueCommand {
 public:
 
-	GrantSkillCommand(const String& name, ZoneProcessServerImplementation* server)
+	GrantSkillCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

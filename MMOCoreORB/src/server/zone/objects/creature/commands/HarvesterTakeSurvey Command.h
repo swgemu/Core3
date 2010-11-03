@@ -50,7 +50,7 @@ which carries forward this exception.
 class HarvesterTakeSurveyCommand : public QueueCommand {
 public:
 
-	HarvesterTakeSurveyCommand(const String& name, ZoneProcessServerImplementation* server)
+	HarvesterTakeSurveyCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -51,7 +51,7 @@ which carries forward this exception.
 class TumbleToKneelingCommand : public QueueCommand {
 public:
 
-	TumbleToKneelingCommand(const String& name, ZoneProcessServerImplementation* server)
+	TumbleToKneelingCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

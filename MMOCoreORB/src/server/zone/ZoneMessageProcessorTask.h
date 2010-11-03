@@ -42,45 +42,51 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ZoneMessageProcessorThread.h"
+#ifndef ZONEMESSAGEPROCESSORTASK_H_
+#define ZONEMESSAGEPROCESSORTASK_H_
+
+#include "engine/engine.h"
+
 #include "ZonePacketHandler.h"
 
-#include "ZoneClientSession.h"
-#include "ZoneServer.h"
+namespace server {
+  namespace zone {
 
-void ZoneMessageProcessorThread::processMessage(Message* message) {
-	ObjectDatabaseManager::instance()->startLocalTransaction();
+	class ZonePacketHandler;
 
-	try {
-		ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) message->getClient();
+	class ZoneMessageProcessorTask : public Task {
+		ZonePacketHandler* handler;
 
-		if (client->isAvailable()) {
-		#ifdef WITH_STM
-			engine::stm::Transaction* transaction = engine::stm::Transaction::currentTransaction();
+		Message* message;
 
-			do {
-				phandler->handleMessage(message);
-			} while (!transaction->commit());
+	public:
+		ZoneMessageProcessorTask(Message* msg, ZonePacketHandler* hand)  {
+			message = msg;
 
-			delete transaction;
-		#else
-			phandler->handleMessage(message);
-		#endif
+			handler = hand;
 		}
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-	} catch (ArrayIndexOutOfBoundsException& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-	}
 
-	ObjectDatabaseManager::instance()->commitLocalTransaction();
-}
+		void run() {
+			try {
+				ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) message->getClient();
 
-bool ZoneMessageProcessorThread::handleError(Message* msg, Exception& e) {
-	error(e.getMessage());
-	info("incorrect packet - " + msg->toStringData(), true);
+				if (client->isAvailable()) {
+						handler->handleMessage(message);
+				}
+			} catch (DatabaseException& e) {
+				//error(e.getMessage());
+				e.printStackTrace();
+			} catch (ArrayIndexOutOfBoundsException& e) {
+				//error(e.getMessage());
+				e.printStackTrace();
+			}
+		}
 
-	return true;
-}
+	};
+
+  } // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+#endif /*ZONEMESSAGEPROCESSORTASK_H_*/

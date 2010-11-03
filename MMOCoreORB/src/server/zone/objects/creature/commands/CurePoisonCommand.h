@@ -51,7 +51,7 @@ which carries forward this exception.
 class CurePoisonCommand : public CurePackCommand {
 public:
 
-	CurePoisonCommand(const String& name, ZoneProcessServerImplementation* server)
+	CurePoisonCommand(const String& name, ZoneProcessServer* server)
 		: CurePackCommand(name, server) {
 		state = CreatureState::POISONED;
 	}

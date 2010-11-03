@@ -52,7 +52,7 @@ which carries forward this exception.
 class StoplisteningCommand : public QueueCommand {
 public:
 
-	StoplisteningCommand(const String& name, ZoneProcessServerImplementation* server)
+	StoplisteningCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

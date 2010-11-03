@@ -15,40 +15,30 @@ namespace server {
 
 		class LoginPacketHandler;
 		class LoginServer;
-		class LoginMessageProcessorThread;
 
-		class LoginProcessServerImplementation : public ServiceMessageHandlerThread {
+		class LoginProcessServerImplementation {
 			ManagedWeakReference<LoginServer*> server;
 
-			LoginPacketHandler* loginphandler;
-
-			LoginMessageProcessorThread** processors;
-			int procThreadCount;
+			LoginPacketHandler* loginPacketHandler;
 
 		public:
-			static LoginProcessServerImplementation* instance;
-
-		public:
-			LoginProcessServerImplementation(LoginServer* serv, int processingThreads);
+			LoginProcessServerImplementation(LoginServer* serv);
 
 			~LoginProcessServerImplementation();
 
-			void init();
-
-			void run();
-
-			void stop();
-
-			ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
-				return NULL;
-			}
+			void initialize();
 
 			inline LoginServer* getLoginServer() {
 				return server;
 			}
+
+			inline LoginPacketHandler* getPacketHandler() {
+				return loginPacketHandler;
+			}
 		};
-	}
-}
+
+	} // namspace login
+} // namespace server
 
 using namespace server::login;
 

@@ -50,7 +50,7 @@ which carries forward this exception.
 class OverrideActiveMonthsCommand : public QueueCommand {
 public:
 
-	OverrideActiveMonthsCommand(const String& name, ZoneProcessServerImplementation* server)
+	OverrideActiveMonthsCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

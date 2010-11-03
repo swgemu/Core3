@@ -12,7 +12,7 @@
 
 #include "../ZoneClientSession.h"
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 
 namespace server {
 namespace zone {
@@ -22,10 +22,10 @@ namespace packets {
 	protected:
 		Reference<ZoneClientSession*> client;
 
-		ZoneProcessServerImplementation* server;
+		ManagedReference<ZoneProcessServer*> server;
 
 	public:
-		MessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) {
+		MessageCallback(ZoneClientSession* client, ZoneProcessServer* server) {
 			MessageCallback::client = client;
 			MessageCallback::server = server;
 		}
@@ -40,7 +40,7 @@ namespace packets {
 			return client.get();
 		}
 
-		inline ZoneProcessServerImplementation* getServer() {
+		inline ZoneProcessServer* getServer() {
 			return server;
 		}
 	};

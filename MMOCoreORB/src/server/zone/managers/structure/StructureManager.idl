@@ -47,7 +47,7 @@ package server.zone.managers.structure;
 import engine.core.ManagedService;
 import engine.util.Quaternion;
 import server.zone.Zone;
-import server.zone.ZoneProcessServerImplementation;
+import server.zone.ZoneProcessServer;
 import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.scene.SceneObject;
@@ -65,7 +65,7 @@ class StructureManager extends ManagedService implements Logger {
 	@weakReference
 	private Zone zone;
 	
-	private transient ZoneProcessServerImplementation server;
+	private transient ZoneProcessServer server;
 	
 	private transient TemplateManager templateManager;
 	
@@ -75,7 +75,7 @@ class StructureManager extends ManagedService implements Logger {
 	@dereferenced
 	static protected transient SortedVector<string> createdFiles;
 	
-	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
+	public native StructureManager(Zone zone, ZoneProcessServer processor);
 	
 	//PRIVATE METHODS
 	

@@ -51,7 +51,7 @@ which carries forward this exception.
 class ToggleDisplayingFactionRankCommand : public QueueCommand {
 public:
 
-	ToggleDisplayingFactionRankCommand(const String& name, ZoneProcessServerImplementation* server)
+	ToggleDisplayingFactionRankCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -20,7 +20,7 @@ class IsVendorOwnerMessageCallback : public MessageCallback {
 	uint64 oid;
 
 public:
-	IsVendorOwnerMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	IsVendorOwnerMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 		oid = 0;

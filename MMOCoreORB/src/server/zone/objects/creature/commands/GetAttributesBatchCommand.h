@@ -52,7 +52,7 @@ which carries forward this exception.
 class GetAttributesBatchCommand : public QueueCommand {
 public:
 
-	GetAttributesBatchCommand(const String& name, ZoneProcessServerImplementation* server)
+	GetAttributesBatchCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

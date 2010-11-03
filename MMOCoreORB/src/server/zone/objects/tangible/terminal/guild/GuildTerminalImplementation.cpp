@@ -7,6 +7,7 @@
 
 
 #include "GuildTerminal.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/guild/GuildObject.h"

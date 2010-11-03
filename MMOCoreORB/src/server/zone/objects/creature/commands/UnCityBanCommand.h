@@ -50,7 +50,7 @@ which carries forward this exception.
 class UnCityBanCommand : public QueueCommand {
 public:
 
-	UnCityBanCommand(const String& name, ZoneProcessServerImplementation* server)
+	UnCityBanCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

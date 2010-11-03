@@ -50,7 +50,7 @@ which carries forward this exception.
 class LogoutCommand : public QueueCommand {
 public:
 
-	LogoutCommand(const String& name, ZoneProcessServerImplementation* server)
+	LogoutCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

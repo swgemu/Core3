@@ -14,7 +14,7 @@
 #include "ObjectMap.h"
 
 #include "server/zone/Zone.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/templates/SharedObjectTemplate.h"

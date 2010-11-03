@@ -71,9 +71,9 @@ SchematicMap::~SchematicMap() {
 		delete groupMap.remove(0).getValue();
 }
 
-void SchematicMap::initialize(ZoneServer* server, ObjectManager* objMan) {
+void SchematicMap::initialize(ZoneServer* server) {
 	zoneServer = server;
-	objectManager = objMan;
+	objectManager = zoneServer->getObjectManager();
 	loadDraftSchematicDatabase();
 	loadDraftSchematicFile();
 }

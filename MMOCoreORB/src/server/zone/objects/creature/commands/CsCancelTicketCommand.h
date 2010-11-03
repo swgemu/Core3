@@ -50,7 +50,7 @@ which carries forward this exception.
 class CsCancelTicketCommand : public QueueCommand {
 public:
 
-	CsCancelTicketCommand(const String& name, ZoneProcessServerImplementation* server)
+	CsCancelTicketCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

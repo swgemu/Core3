@@ -16,7 +16,7 @@ class UnAcceptTransactionMessageCallback : public MessageCallback {
 
 
 public:
-	UnAcceptTransactionMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	UnAcceptTransactionMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

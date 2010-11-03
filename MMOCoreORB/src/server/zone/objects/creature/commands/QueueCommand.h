@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreaturePosture.h"
 
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "../professions/Skill.h"
 //#include "../../../managers/combat/CombatManager.h"
 
@@ -82,12 +82,12 @@ protected:
 
 	String characterAbility;
 
-	ZoneProcessServerImplementation* server;
+	ZoneProcessServer* server;
 
 	int defaultPriority;
 
 public:
-	QueueCommand(const String& skillname, ZoneProcessServerImplementation* serv);
+	QueueCommand(const String& skillname, ZoneProcessServer* serv);
 
 	const static int NORMAL = 0;
 	const static int FRONT = 1;

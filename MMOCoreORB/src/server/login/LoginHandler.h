@@ -17,8 +17,7 @@ namespace server {
 		ManagedReference<LoginServer*> loginServerRef;
 
 	public:
-		LoginHandler(LoginServer* server) {
-			loginServerRef = server;
+		LoginHandler() {
 		}
 
 		void initialize() {
@@ -43,14 +42,25 @@ namespace server {
 			return server->handleMessage(client, message);
 		}
 
+		void processMessage(Message* message) {
+			LoginServer* server =  loginServerRef.getForUpdate();
+
+			return server->processMessage(message);
+		}
+
 		bool handleError(ServiceClient* client, Exception& e) {
 			LoginServer* server =  loginServerRef.getForUpdate();
 
 			return server->handleError(client, e);
 		}
+
+		void setLoginSerrver(LoginServer* server) {
+			loginServerRef = server;
+		}
 	};
-  }
-}
+
+  } // namespace login
+} // namespace server
 
 using namespace server::login;
 

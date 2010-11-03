@@ -50,7 +50,7 @@ which carries forward this exception.
 class ForceChokeCommand : public QueueCommand {
 public:
 
-	ForceChokeCommand(const String& name, ZoneProcessServerImplementation* server)
+	ForceChokeCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

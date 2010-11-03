@@ -56,7 +56,7 @@ which carries forward this exception.
 class BandFlourishCommand : public QueueCommand {
 public:
 
-	BandFlourishCommand(const String& name, ZoneProcessServerImplementation* server)
+	BandFlourishCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

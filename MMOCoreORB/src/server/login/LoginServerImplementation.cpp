@@ -1,14 +1,53 @@
 /*
- * LoginServerImplementation.cpp
- *
- *  Created on: Oct 13, 2010
- *      Author: crush
- */
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
 
 #include "LoginServer.h"
 #include "LoginClient.h"
 
 #include "LoginProcessServerImplementation.h"
+
+#include "LoginMessageProcessorTask.h"
 
 #include "server/conf/ConfigManager.h"
 #include "server/login/account/AccountManager.h"
@@ -27,10 +66,12 @@ LoginServerImplementation::LoginServerImplementation(ConfigManager* configMan) :
 	datagramService->setLogging(false);
 	datagramService->setLockName("LoginServerLock");
 
+	loginHandler = new LoginHandler();
+	datagramService->setHandler(loginHandler);
+
 	configManager = configMan;
 
 	processor = NULL;
-	procThreadCount = configManager->getLoginProcessingThreads();
 
 	enumClusterMessage = NULL;
 	clusterStatusMessage = NULL;
@@ -47,10 +88,10 @@ void LoginServerImplementation::initializeTransientMembers() {
 }
 
 void LoginServerImplementation::initialize() {
-	processor = new LoginProcessServerImplementation(_this, procThreadCount);
-	processor->init();
+	processor = new LoginProcessServerImplementation(_this);
+	processor->initialize();
 
-	phandler = new BasePacketHandler("LoginServer", processor->getMessageQueue());
+	phandler = new BasePacketHandler("LoginServer", loginHandler);
 	phandler->setLogging(false);
 
 	startManagers();
@@ -73,17 +114,12 @@ void LoginServerImplementation::startManagers() {
 }
 
 void LoginServerImplementation::start(int p, int mconn) {
-	LoginHandler* loginHandler = new LoginHandler(_this);
-	datagramService->setHandler(loginHandler);
+	loginHandler->setLoginSerrver(_this);
 
 	datagramService->start(p, mconn);
-
-	processor->start();
 }
 
 void LoginServerImplementation::run() {
-	processor->run();
-
 	// recieve messages
 	//receiveMessages();
 
@@ -96,8 +132,6 @@ void LoginServerImplementation::stop() {
 }
 
 void LoginServerImplementation::shutdown() {
-	processor->stop();
-
 	stopManagers();
 
 	printInfo();
@@ -139,6 +173,12 @@ void LoginServerImplementation::handleMessage(ServiceClient* client, Packet* mes
 	}
 }
 
+void LoginServerImplementation::processMessage(Message* message) {
+	Task* task = new LoginMessageProcessorTask(message, processor->getPacketHandler());
+
+	Core::getTaskManager()->executeTask(task);
+}
+
 bool LoginServerImplementation::handleError(ServiceClient* client, Exception& e) {
 	LoginClient* lclient = (LoginClient*) client;
 	lclient->setError();
@@ -152,7 +192,7 @@ void LoginServerImplementation::printInfo() {
 	lock();
 
 	StringBuffer msg;
-	msg << "MessageQueue - size = " << processor->getMessageQueue()->size();
+	msg << "MessageQueue - size = " << datagramService->getMessageQueue()->size();
 	info(msg, true);
 
 	unlock();

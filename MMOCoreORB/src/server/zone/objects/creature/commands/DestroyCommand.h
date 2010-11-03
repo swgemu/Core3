@@ -50,7 +50,7 @@ which carries forward this exception.
 class DestroyCommand : public QueueCommand {
 public:
 
-	DestroyCommand(const String& name, ZoneProcessServerImplementation* server)
+	DestroyCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

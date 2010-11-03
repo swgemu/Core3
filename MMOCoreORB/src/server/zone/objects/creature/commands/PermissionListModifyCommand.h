@@ -53,7 +53,7 @@ which carries forward this exception.
 class PermissionListModifyCommand : public QueueCommand {
 public:
 
-	PermissionListModifyCommand(const String& name, ZoneProcessServerImplementation* server)
+	PermissionListModifyCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

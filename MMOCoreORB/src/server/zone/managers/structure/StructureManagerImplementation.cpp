@@ -9,7 +9,8 @@
 
 #include "server/db/ServerDatabase.h"
 
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/Zone.h"
 
 #include "server/zone/managers/templates/TemplateManager.h"
@@ -56,7 +57,7 @@
 SortedVector<String> StructureManagerImplementation::listOfStaticBuildings;
 SortedVector<String> StructureManagerImplementation::createdFiles;
 
-StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor)
+StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServer* processor)
 		: ManagedServiceImplementation() {
 
 	StructureManagerImplementation::zone = zone;

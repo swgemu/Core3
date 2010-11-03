@@ -50,7 +50,7 @@ which carries forward this exception.
 class RecruitSkillTrainerCommand : public QueueCommand {
 public:
 
-	RecruitSkillTrainerCommand(const String& name, ZoneProcessServerImplementation* server)
+	RecruitSkillTrainerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -14,7 +14,7 @@
 class StrongPoisonCommand : public CombatQueueCommand {
 public:
 
-	StrongPoisonCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+	StrongPoisonCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
 		dotDuration = 20;
 		dotType = CreatureState::DISEASED;
 		dotPool = CombatManager::HEALTH;

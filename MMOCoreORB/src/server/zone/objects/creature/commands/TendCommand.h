@@ -39,7 +39,7 @@ protected:
 	float range;
 	String effectName;
 public:
-	TendCommand(const String& name, ZoneProcessServerImplementation* server)
+	TendCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		mindCost = 0;
 		mindWoundCost = 0;

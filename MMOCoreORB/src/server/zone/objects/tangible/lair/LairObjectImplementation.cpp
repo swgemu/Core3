@@ -10,6 +10,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/NonPlayerCreatureObject.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"

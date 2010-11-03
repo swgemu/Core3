@@ -50,7 +50,7 @@ which carries forward this exception.
 class DrainForceCommand : public QueueCommand {
 public:
 
-	DrainForceCommand(const String& name, ZoneProcessServerImplementation* server)
+	DrainForceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

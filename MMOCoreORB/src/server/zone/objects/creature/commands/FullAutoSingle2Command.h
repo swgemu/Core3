@@ -51,7 +51,7 @@ which carries forward this exception.
 class FullAutoSingle2Command : public CombatQueueCommand {
 public:
 
-	FullAutoSingle2Command(const String& name, ZoneProcessServerImplementation* server)
+	FullAutoSingle2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 5.5;

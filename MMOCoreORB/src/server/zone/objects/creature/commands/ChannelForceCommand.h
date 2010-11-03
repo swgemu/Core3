@@ -50,7 +50,7 @@ which carries forward this exception.
 class ChannelForceCommand : public QueueCommand {
 public:
 
-	ChannelForceCommand(const String& name, ZoneProcessServerImplementation* server)
+	ChannelForceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

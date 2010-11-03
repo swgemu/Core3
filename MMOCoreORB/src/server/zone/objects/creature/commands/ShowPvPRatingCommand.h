@@ -50,7 +50,7 @@ which carries forward this exception.
 class ShowPvPRatingCommand : public QueueCommand {
 public:
 
-	ShowPvPRatingCommand(const String& name, ZoneProcessServerImplementation* server)
+	ShowPvPRatingCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

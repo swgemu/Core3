@@ -50,7 +50,7 @@ which carries forward this exception.
 namespace server {
 	namespace zone {
 
-	class ZoneProcessServerImplementation;
+	class ZoneProcessServer;
 
 	}
 }
@@ -92,8 +92,13 @@ public:
 	static const uint8 ACCEPTED	= 7;
 };
 
+namespace server {
+	namespace zone {
+		namespace managers {
+			namespace name {
+
 class NameManager :  public Logger {
-	ZoneProcessServerImplementation* server;
+	ManagedReference<ZoneProcessServer*> server;
 
 	Vector<String>* profaneNames;
 	BannedNameSet* developerNames;
@@ -119,7 +124,7 @@ class NameManager :  public Logger {
 	char chooseLetterExcluding(const char*);
 
 public:
-	NameManager(ZoneProcessServerImplementation* serv);
+	NameManager(ZoneProcessServer* serv);
 
 	~NameManager();
 
@@ -132,5 +137,12 @@ public:
 
 	const String makeResourceName(bool isOrganic);
 };
+
+			}
+		}
+	}
+}
+
+using namespace server::zone::managers::name;
 
 #endif /*NAMEMANAGER_H_*/

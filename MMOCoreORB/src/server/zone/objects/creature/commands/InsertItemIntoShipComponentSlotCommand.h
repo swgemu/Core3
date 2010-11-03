@@ -50,7 +50,7 @@ which carries forward this exception.
 class InsertItemIntoShipComponentSlotCommand : public QueueCommand {
 public:
 
-	InsertItemIntoShipComponentSlotCommand(const String& name, ZoneProcessServerImplementation* server)
+	InsertItemIntoShipComponentSlotCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

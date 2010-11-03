@@ -26,7 +26,7 @@ protected:
 	String effectName;
 	String skillName;
 public:
-	DotPackCommand(const String& name, ZoneProcessServerImplementation* server)
+	DotPackCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		effectName = "clienteffect/healing_healenhance.cef";
 		defaultTime = 0;

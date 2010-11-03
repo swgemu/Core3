@@ -23,7 +23,7 @@ public:
 
 class ConnectPlayerMessageCallback : public MessageCallback {
 public:
-	ConnectPlayerMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	ConnectPlayerMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

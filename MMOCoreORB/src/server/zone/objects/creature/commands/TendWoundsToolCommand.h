@@ -50,7 +50,7 @@ which carries forward this exception.
 class TendWoundsToolCommand : public QueueCommand {
 public:
 
-	TendWoundsToolCommand(const String& name, ZoneProcessServerImplementation* server)
+	TendWoundsToolCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

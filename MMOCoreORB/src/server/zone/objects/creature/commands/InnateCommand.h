@@ -50,7 +50,7 @@ which carries forward this exception.
 class InnateCommand : public QueueCommand {
 public:
 
-	InnateCommand(const String& name, ZoneProcessServerImplementation* server)
+	InnateCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

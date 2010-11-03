@@ -53,7 +53,7 @@ which carries forward this exception.
 class HarvesterSelectResourceCommand : public QueueCommand {
 public:
 
-	HarvesterSelectResourceCommand(const String& name, ZoneProcessServerImplementation* server)
+	HarvesterSelectResourceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

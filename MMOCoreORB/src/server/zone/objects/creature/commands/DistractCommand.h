@@ -50,7 +50,7 @@ which carries forward this exception.
 class DistractCommand : public QueueCommand {
 public:
 
-	DistractCommand(const String& name, ZoneProcessServerImplementation* server)
+	DistractCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

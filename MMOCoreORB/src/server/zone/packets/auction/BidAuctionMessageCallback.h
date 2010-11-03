@@ -19,7 +19,7 @@ class BidAuctionMessageCallback : public MessageCallback {
 	uint32 price2;
 
 public:
-	BidAuctionMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	BidAuctionMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 			MessageCallback(client, server) {
 
 	}

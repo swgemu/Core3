@@ -50,7 +50,7 @@ which carries forward this exception.
 class AiIgnoreCommand : public QueueCommand {
 public:
 
-	AiIgnoreCommand(const String& name, ZoneProcessServerImplementation* server)
+	AiIgnoreCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

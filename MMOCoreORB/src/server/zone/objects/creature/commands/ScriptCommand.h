@@ -56,7 +56,7 @@ which carries forward this exception.
 class ScriptCommand : public QueueCommand {
 public:
 
-	ScriptCommand(const String& name, ZoneProcessServerImplementation* server)
+	ScriptCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -51,7 +51,7 @@ which carries forward this exception.
 class KillCommand : public QueueCommand {
 public:
 
-	KillCommand(const String& name, ZoneProcessServerImplementation* server)
+	KillCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

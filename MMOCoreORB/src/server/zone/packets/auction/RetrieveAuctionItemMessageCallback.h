@@ -18,7 +18,7 @@ class RetrieveAuctionItemMessageCallback : public MessageCallback {
 	uint64 bazaarid;
 
 public:
-	RetrieveAuctionItemMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	RetrieveAuctionItemMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 			MessageCallback(client, server) {
 
 	}

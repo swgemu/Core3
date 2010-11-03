@@ -51,7 +51,7 @@ which carries forward this exception.
 class VolleyFireCommand : public SquadLeaderCommand {
 public:
 
-	VolleyFireCommand(const String& name, ZoneProcessServerImplementation* server)
+	VolleyFireCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
 
 		damageMultiplier = 0;

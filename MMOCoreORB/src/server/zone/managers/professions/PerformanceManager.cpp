@@ -43,7 +43,7 @@ which carries forward this exception.
 */
 
 #include "engine/engine.h"
-#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneProcessServer.h"
 
 #include "PerformanceManager.h"
 #include "server/db/ServerDatabase.h"

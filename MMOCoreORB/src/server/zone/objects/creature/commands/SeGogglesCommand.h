@@ -50,7 +50,7 @@ which carries forward this exception.
 class SeGogglesCommand : public QueueCommand {
 public:
 
-	SeGogglesCommand(const String& name, ZoneProcessServerImplementation* server)
+	SeGogglesCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

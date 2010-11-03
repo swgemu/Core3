@@ -52,7 +52,7 @@ which carries forward this exception.
 class PointBlankArea2Command : public CombatQueueCommand {
 public:
 
-	PointBlankArea2Command(const String& name, ZoneProcessServerImplementation* server)
+	PointBlankArea2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 4.3;

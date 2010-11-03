@@ -50,7 +50,7 @@ which carries forward this exception.
 class SetBiographyCommand : public QueueCommand {
 public:
 
-	SetBiographyCommand(const String& name, ZoneProcessServerImplementation* server)
+	SetBiographyCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

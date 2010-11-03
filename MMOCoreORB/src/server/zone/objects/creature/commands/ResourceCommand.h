@@ -50,7 +50,7 @@ which carries forward this exception.
 class ResourceCommand : public QueueCommand {
 public:
 
-	ResourceCommand(const String& name, ZoneProcessServerImplementation* server)
+	ResourceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

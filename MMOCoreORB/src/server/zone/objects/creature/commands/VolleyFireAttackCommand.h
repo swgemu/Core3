@@ -51,7 +51,7 @@ which carries forward this exception.
 class VolleyFireAttackCommand : public CombatQueueCommand {
 public:
 
-	VolleyFireAttackCommand(const String& name, ZoneProcessServerImplementation* server)
+	VolleyFireAttackCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
 		damageMultiplier = 1;

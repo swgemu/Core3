@@ -53,7 +53,7 @@ which carries forward this exception.
 class DeclineCommand : public QueueCommand {
 public:
 
-	DeclineCommand(const String& name, ZoneProcessServerImplementation* server)
+	DeclineCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

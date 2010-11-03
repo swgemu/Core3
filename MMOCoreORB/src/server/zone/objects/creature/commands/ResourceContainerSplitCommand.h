@@ -51,7 +51,7 @@ which carries forward this exception.
 class ResourceContainerSplitCommand : public QueueCommand {
 public:
 
-	ResourceContainerSplitCommand(const String& name, ZoneProcessServerImplementation* server)
+	ResourceContainerSplitCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

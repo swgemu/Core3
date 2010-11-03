@@ -67,7 +67,7 @@ class QuickHealCommand : public QueueCommand {
 	float range;
 public:
 
-	QuickHealCommand(const String& name, ZoneProcessServerImplementation* server)
+	QuickHealCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 		healthHealed = 0;

@@ -50,7 +50,7 @@ which carries forward this exception.
 class DefuseMinefieldCommand : public QueueCommand {
 public:
 
-	DefuseMinefieldCommand(const String& name, ZoneProcessServerImplementation* server)
+	DefuseMinefieldCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

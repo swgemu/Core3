@@ -13,6 +13,7 @@
 #include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 
 void ShuttleInstallationImplementation::spawnShuttleObjects() {
 	if (getActiveRegion() == NULL || zone == NULL) {

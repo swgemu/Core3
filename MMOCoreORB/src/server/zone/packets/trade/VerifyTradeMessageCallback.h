@@ -15,7 +15,7 @@ class VerifyTradeMessageCallback : public MessageCallback {
 
 
 public:
-	VerifyTradeMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	VerifyTradeMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

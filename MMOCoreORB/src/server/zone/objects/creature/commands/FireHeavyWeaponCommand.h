@@ -50,7 +50,7 @@ which carries forward this exception.
 class FireHeavyWeaponCommand : public QueueCommand {
 public:
 
-	FireHeavyWeaponCommand(const String& name, ZoneProcessServerImplementation* server)
+	FireHeavyWeaponCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

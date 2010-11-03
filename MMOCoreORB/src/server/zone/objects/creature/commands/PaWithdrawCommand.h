@@ -50,7 +50,7 @@ which carries forward this exception.
 class PaWithdrawCommand : public QueueCommand {
 public:
 
-	PaWithdrawCommand(const String& name, ZoneProcessServerImplementation* server)
+	PaWithdrawCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class LaunchIntoSpaceCommand : public QueueCommand {
 public:
 
-	LaunchIntoSpaceCommand(const String& name, ZoneProcessServerImplementation* server)
+	LaunchIntoSpaceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

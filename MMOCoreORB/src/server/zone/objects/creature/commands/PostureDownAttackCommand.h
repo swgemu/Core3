@@ -51,7 +51,7 @@ which carries forward this exception.
 class PostureDownAttackCommand : public CombatQueueCommand {
 public:
 
-	PostureDownAttackCommand(const String& name, ZoneProcessServerImplementation* server) : CombatQueueCommand(name, server) {
+	PostureDownAttackCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
 		postureDownStateChance = 50;
 		durationStateTime = 10;
 	}

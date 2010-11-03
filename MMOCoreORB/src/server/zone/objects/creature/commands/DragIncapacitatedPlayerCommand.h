@@ -52,7 +52,7 @@ class DragIncapacitatedPlayerCommand : public QueueCommand {
 	bool needsConsent;
 public:
 
-	DragIncapacitatedPlayerCommand(const String& name, ZoneProcessServerImplementation* server)
+	DragIncapacitatedPlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		defaultTime = 0;
 		maxRange = 20.0;

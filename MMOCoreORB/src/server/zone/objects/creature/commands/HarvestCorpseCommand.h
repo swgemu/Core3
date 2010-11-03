@@ -51,7 +51,7 @@ which carries forward this exception.
 class HarvestCorpseCommand : public QueueCommand {
 public:
 
-	HarvestCorpseCommand(const String& name, ZoneProcessServerImplementation* server)
+	HarvestCorpseCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

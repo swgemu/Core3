@@ -26,7 +26,7 @@ public:
 class NewTicketActivityMessageCalback : public MessageCallback {
 	int ticketID;
 public:
-	NewTicketActivityMessageCalback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+	NewTicketActivityMessageCalback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
 	}

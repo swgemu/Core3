@@ -50,7 +50,7 @@ which carries forward this exception.
 class DumpTargetInformationCommand : public QueueCommand {
 public:
 
-	DumpTargetInformationCommand(const String& name, ZoneProcessServerImplementation* server)
+	DumpTargetInformationCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

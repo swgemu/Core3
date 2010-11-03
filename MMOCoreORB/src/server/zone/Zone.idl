@@ -51,8 +51,8 @@ import system.lang.Time;
 import engine.core.TaskManager;
 import engine.core.ManagedObject;
 
-import server.zone.ZoneProcessServerImplementation;
-import server.zone.ZoneServer;
+import server.zone.ZoneProcessServer;
+include server.zone.ZoneServer;
 import server.zone.managers.structure.StructureManager;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.planet.PlanetManager;
@@ -74,7 +74,7 @@ import server.zone.objects.creature.CreatureObject;
 class Zone extends ManagedObject implements QuadTree {
 	private int zoneID;
 
-	private transient ZoneProcessServerImplementation processor;
+	private transient ZoneProcessServer processor;
 
 	@dereferenced
 	private ObjectMap objectMap;
@@ -106,7 +106,7 @@ class Zone extends ManagedObject implements QuadTree {
 	private unsigned int weatherID;
 	private boolean weatherEnabled;
 	
-	public native Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
+	public native Zone(ZoneProcessServer processor, int zoneid);
 	public native void initializeTransientMembers();
 	public native void finalize();
 	

@@ -51,7 +51,7 @@ which carries forward this exception.
 class ExtinguishFireCommand : public CurePackCommand {
 public:
 
-	ExtinguishFireCommand(const String& name, ZoneProcessServerImplementation* server)
+	ExtinguishFireCommand(const String& name, ZoneProcessServer* server)
 		: CurePackCommand(name, server) {
 		state = CreatureState::ONFIRE;
 	}

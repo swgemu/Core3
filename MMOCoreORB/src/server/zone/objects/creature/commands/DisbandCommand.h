@@ -52,7 +52,7 @@ which carries forward this exception.
 class DisbandCommand : public QueueCommand {
 public:
 
-	DisbandCommand(const String& name, ZoneProcessServerImplementation* server)
+	DisbandCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}

@@ -51,7 +51,7 @@ which carries forward this exception.
 class GmCreateSpecificResourceCommand : public QueueCommand {
 public:
 
-	GmCreateSpecificResourceCommand(const String& name, ZoneProcessServerImplementation* server)
+	GmCreateSpecificResourceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
 	}
