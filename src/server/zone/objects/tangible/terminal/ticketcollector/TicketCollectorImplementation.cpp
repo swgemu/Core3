@@ -32,6 +32,11 @@ int TicketCollectorImplementation::handleObjectMenuSelect(PlayerCreature* player
 	if (player->isInCombat())
 		return 0;
 
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory == NULL)
+		return 0;
+
 	if (!checkTime(shuttle, player))
 		return 0;
 
@@ -51,8 +56,6 @@ int TicketCollectorImplementation::handleObjectMenuSelect(PlayerCreature* player
 			return 0;
 		}
 	}
-
-	SceneObject* inventory = player->getSlottedObject("inventory");
 
 	ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::TICKET_COLLECTOR_RESPONSES);
 	sui->setPromptTitle("@travel:ticket_collector_name");
@@ -170,9 +173,11 @@ void TicketCollectorImplementation::useTicket(PlayerCreature* player, TicketObje
 	}*/
 
 	if ((ticket->getDeparturePoint() == city) &&  (ticket->getDeparturePlanet() == planet)) {
-		SceneObject* objectParent = ticket->getParent();
+		ManagedReference<SceneObject*> objectParent = ticket->getParent();
 
-		objectParent->removeObject(ticket, true);
+		if (objectParent != NULL)
+			objectParent->removeObject(ticket, true);
+
 		ticket->destroyObjectFromDatabase();
 
 		shuttle->sendPlayerTo(player, ticket);

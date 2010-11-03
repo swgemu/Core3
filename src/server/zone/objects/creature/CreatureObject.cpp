@@ -3192,7 +3192,10 @@ bool CreatureObject::isInformantCreature() {
 }
 
 DistributedObjectServant* CreatureObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void CreatureObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -104,10 +104,13 @@ class Instrument extends TangibleObject {
 		Logger.setLoggingName("Instrument");
 	}
 	
-	public abstract void notifyLoadFromDatabase() {
+	public void notifyLoadFromDatabase() {
 		super.notifyLoadFromDatabase();
 		
 		beingUsed = false;
+		
+		if (spawnedObject != null)
+			spawnedObject.removeFromZone();
 	}
 	
 	@local

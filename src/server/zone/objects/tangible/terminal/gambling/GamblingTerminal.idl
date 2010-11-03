@@ -69,7 +69,8 @@ class GamblingTerminal extends Terminal {
 	@dereferenced
 	protected VectorMap<PlayerCreature, unsigned int> playersWindows;
 	
-	protected transient GamblingEvent event;
+	@dereferenced
+	protected transient Reference<GamblingEvent> event;
 	
 	@dereferenced
 	protected VectorMap<PlayerCreature, int> winnings;
@@ -214,7 +215,7 @@ class GamblingTerminal extends Terminal {
 	
 	@local
 	public GamblingEvent getEvent() {
-		return event;
+		return event.get();
 	}
 	
 	@local

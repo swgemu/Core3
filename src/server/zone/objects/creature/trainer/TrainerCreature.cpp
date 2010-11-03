@@ -242,7 +242,10 @@ bool TrainerCreature::isAttackableBy(CreatureObject* object) {
 }
 
 DistributedObjectServant* TrainerCreature::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void TrainerCreature::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

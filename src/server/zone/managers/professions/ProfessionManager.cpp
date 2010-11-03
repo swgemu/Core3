@@ -107,6 +107,7 @@ void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {
 
 void ProfessionManager::setStartingProfession(const String& startingProfession, int raceID, PlayerCreature* player) {
 	int prof;
+	String correctProfession = startingProfession;
 
 	if (startingProfession == "crafting_artisan")
 		prof = 0;
@@ -120,8 +121,10 @@ void ProfessionManager::setStartingProfession(const String& startingProfession, 
 		prof = 4;
 	else if (startingProfession == "outdoors_scout")
 		prof = 5;
-	else
+	else {
 		prof = 6;
+		correctProfession = "social_politician";
+	}
 
 
 	for (int i = 0; i < 9; ++i) {
@@ -132,7 +135,7 @@ void ProfessionManager::setStartingProfession(const String& startingProfession, 
 		player->setMaxHAM(i, newVal, false);
 	}
 
-	Profession* profObj = getProfession(startingProfession);
+	Profession* profObj = getProfession(correctProfession);
 
 	if (profObj != NULL) {
 		SkillBox* novice = profObj->getNoviceBox(); // TODO:remove master box learning

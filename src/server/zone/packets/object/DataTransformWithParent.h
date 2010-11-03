@@ -57,7 +57,7 @@ which carries forward this exception.
 class DataTransformWithParent : public ObjectControllerMessage {
 public:
 	DataTransformWithParent(SceneObject* creo)
-			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xF1) {
+			: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0xF1) {
 
 		insertInt(creo->getMovementCounter());
 

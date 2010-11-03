@@ -75,9 +75,12 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	ProfessionManager* professionManager = zoneServer->getProfessionManager();
 
 	SkillBoxList* playerSkillBoxList = getSkillBoxList();
-	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
-		SkillBox* skillBox = playerSkillBoxList->get(i);
-		professionManager->awardDraftSchematics(skillBox, getPlayerObject(), false);
+
+	if (getPlayerObject() != NULL) {
+		for(int i = 0; i < playerSkillBoxList->size(); ++i) {
+			SkillBox* skillBox = playerSkillBoxList->get(i);
+			professionManager->awardDraftSchematics(skillBox, getPlayerObject(), false);
+		}
 	}
 
 }
@@ -267,7 +270,7 @@ void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
 }
 
 void PlayerCreatureImplementation::logout(bool doLock) {
-	wlock(doLock);
+	Locker _locker(_this);
 
 	try {
 		if (disconnectEvent == NULL) {
@@ -286,7 +289,6 @@ void PlayerCreatureImplementation::logout(bool doLock) {
 		error("unreported exception caught in PlayerCreatureImplementation::logout(boolean doLock)");
 	}
 
-	unlock(doLock);
 }
 
 void PlayerCreatureImplementation::doRecovery() {
@@ -356,13 +358,13 @@ void PlayerCreatureImplementation::unloadSpawnedChildren() {
 }
 
 void PlayerCreatureImplementation::updateToDatabase() {
-	if (zone != NULL) {
+	/*if (zone != NULL) {
 		savedZoneID = zone->getZoneID();
 	}
 
 	if (parent != NULL) {
 		savedParentID = parent->getObjectID();
-	} /*else
+	} *//*else
 		savedParentID = 0;*/
 
 	CreatureObjectImplementation::updateToDatabase();
@@ -375,8 +377,10 @@ void PlayerCreatureImplementation::unload() {
 
 	PlayerObject* ghost = getPlayerObject();
 
-	if (ghost != NULL)
+	if (ghost != NULL) {
+		ghost->setParent(_this);
 		ghost->notifyOffline();
+	}
 
 	if (isRidingMount()) {
 		executeObjectControllerAction(String("dismount").hashCode());
@@ -462,45 +466,40 @@ void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
 }
 
 void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
-	try {
-		wlock(doLock);
+	Locker locker(_this);
 
-		if (!isOnline()) {
-			unlock(doLock);
-			return;
-		}
+	if (!isOnline()) {
+		return;
+	}
 
-		if (/*isInCombat() && */!isLinkDead()) {
-			info("link dead");
+	if (/*isInCombat() && */!isLinkDead()) {
+		info("link dead");
 
-			setLinkDead();
-		} else {
-			info ("disconnecting player");
+		setLinkDead();
+	} else {
+		info ("disconnecting player");
 
-			unload();
+		unload();
 
-			setOffline();
-		}
+		setOffline();
+	}
 
-		if (disconnectEvent != NULL)
-			disconnectEvent = NULL;
+	if (disconnectEvent != NULL)
+		disconnectEvent = NULL;
 
-		/*if (logoutEvent != NULL) {
+	/*if (logoutEvent != NULL) {
 			server->removeEvent(logoutEvent);
 			delete logoutEvent;
 
 			logoutEvent = NULL;
 		}*/
 
-		if (closeClient && owner != NULL)
-			owner->closeConnection(false, true);
+	if (closeClient && owner != NULL)
+		owner->closeConnection(false, true);
 
-		owner = NULL;
+	owner = NULL;
 
-		unlock();
-	} catch (...) {
-		unlock();
-	}
+
 }
 
 void PlayerCreatureImplementation::setCombatState() {
@@ -714,8 +713,11 @@ int PlayerCreatureImplementation::canAddObject(SceneObject* object, int containm
 	if (object->isArmorObject() && containmentType == 4) {
 		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 
-		if (!playerManager->checkEncumbrancies(_this, (ArmorObject*)object))
+		if (!playerManager->checkEncumbrancies(_this, (ArmorObject*)object)) {
+			errorDescription = "You lack the necessary secondary stats to equip this item";
+
 			return TransferErrorCode::NOTENOUGHENCUMBRANCE;
+		}
 	}
 
 	return CreatureObjectImplementation::canAddObject(object, containmentType, errorDescription);

@@ -39,7 +39,10 @@ bool NonPlayerCreatureObject::isNonPlayerCreature() {
 }
 
 DistributedObjectServant* NonPlayerCreatureObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void NonPlayerCreatureObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

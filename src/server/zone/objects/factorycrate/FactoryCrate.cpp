@@ -227,7 +227,10 @@ void FactoryCrate::split(int newStackSize) {
 }
 
 DistributedObjectServant* FactoryCrate::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void FactoryCrate::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

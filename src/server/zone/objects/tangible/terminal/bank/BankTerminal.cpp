@@ -77,7 +77,10 @@ int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 }
 
 DistributedObjectServant* BankTerminal::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void BankTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

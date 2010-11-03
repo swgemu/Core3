@@ -75,7 +75,10 @@ void PsgArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
 DistributedObjectServant* PsgArmorObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void PsgArmorObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

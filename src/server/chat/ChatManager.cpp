@@ -510,7 +510,10 @@ int ChatManager::getPlayerCount() {
 }
 
 DistributedObjectServant* ChatManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ChatManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

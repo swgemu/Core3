@@ -39,7 +39,10 @@ void ToolTangibleObject::initializeTransientMembers() {
 }
 
 DistributedObjectServant* ToolTangibleObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ToolTangibleObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

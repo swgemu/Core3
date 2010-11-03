@@ -141,8 +141,9 @@ public:
 			if (nala != NULL && dynamic_cast<Instrument*>(nala.get())) {
 				targetedInstrument = true;
 				instrument = (Instrument*) nala.get();
+				SceneObject* creatureParent = creature->getParent();
 
-				if (creature->getDistanceTo(nala) >= 5 || !nala->isInQuadTree()) {
+				if (creature->getDistanceTo(nala) >= 3 || !nala->isInQuadTree() || (creatureParent == NULL && NULL != nala->getParent())) {
 					creature->sendSystemMessage("elevator_text", "too_far");
 
 					return GENERALERROR;
@@ -150,6 +151,12 @@ public:
 
 				if (instrument->getSpawnerPlayer() != NULL && instrument->getSpawnerPlayer() != creature) {
 					creature->sendSystemMessage("You must be the owner of the instrument");
+
+					return GENERALERROR;
+				}
+
+				if (instrument->isBeingUsed()) {
+					creature->sendSystemMessage("Someone else is using this instrument");
 
 					return GENERALERROR;
 				}

@@ -177,8 +177,10 @@ bool FactoryCrateImplementation::extractObjectToParent(int count) {
 		protoclone->setOptionsBitmask(0x2100);
 		protoclone->setUseCount(count, false);
 
-		parent->addObject(protoclone, -1, true);
-		parent->broadcastObject(protoclone, true);
+		if (parent != NULL) {
+			parent->addObject(protoclone, -1, true);
+			parent->broadcastObject(protoclone, true);
+		}
 
 		setUseCount(getUseCount() - count);
 		return true;

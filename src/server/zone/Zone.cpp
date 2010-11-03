@@ -522,7 +522,10 @@ float Zone::getMaxY() {
 }
 
 DistributedObjectServant* Zone::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Zone::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -463,7 +463,10 @@ void ArmorObject::setMindEncumbrance(int encumber) {
 }
 
 DistributedObjectServant* ArmorObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ArmorObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

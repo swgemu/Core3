@@ -221,7 +221,10 @@ String CraftingManager::generateSerial() {
 }
 
 DistributedObjectServant* CraftingManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void CraftingManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

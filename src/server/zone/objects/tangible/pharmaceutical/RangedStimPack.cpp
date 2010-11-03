@@ -162,7 +162,10 @@ bool RangedStimPack::isRangedStimPack() {
 }
 
 DistributedObjectServant* RangedStimPack::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void RangedStimPack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

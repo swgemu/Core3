@@ -64,6 +64,7 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 
 	if (parent->isCellObject()) {
 		objectToTransfer->removeFromZone();
+		parent->removeObject(objectToTransfer, false);
 	} else {
 		if (!parent->removeObject(objectToTransfer)) {
 			error("could not remove objectToTransfer from parent in ObjectManager::transferObject");
@@ -78,6 +79,12 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 	if (!destinationObject->addObject(objectToTransfer, containmentType, notifyClient)) {
 		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
 		parent->addObject(objectToTransfer, oldContainmentType);
+
+		if (parent->isCellObject()) {
+			Zone* zne = destinationObject->getParent()->getZone();
+
+			objectToTransfer->insertToZone(zne);
+		}
 
 		return false;
 	}

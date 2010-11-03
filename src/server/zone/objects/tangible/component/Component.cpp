@@ -280,7 +280,10 @@ bool Component::changeAttributeValue(String& property, float value) {
 }
 
 DistributedObjectServant* Component::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Component::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

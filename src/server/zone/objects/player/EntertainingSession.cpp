@@ -574,7 +574,10 @@ void EntertainingSession::setTargetInstrument(bool var) {
 }
 
 DistributedObjectServant* EntertainingSession::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void EntertainingSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

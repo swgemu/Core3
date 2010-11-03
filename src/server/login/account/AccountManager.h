@@ -84,7 +84,7 @@ namespace server {
 
 				void addAccount(Account* account) {
 					Locker lock(accountMap);
-					info("Adding account " + account->getUsername() + " to the accounts map.", true);
+					info("Adding account " + account->getUsername() + " to the accounts map.");
 
 					accountMap->put(account->getAccountID(), account);
 				}
@@ -94,7 +94,7 @@ namespace server {
 					if (!accountMap->contains(accountID))
 						return;
 
-					info("Dropping account " + accountMap->get(accountID)->getUsername() + " to the accounts map.", true);
+					info("Dropping account " + accountMap->get(accountID)->getUsername() + " to the accounts map.");
 
 					accountMap->drop(accountID);
 				}

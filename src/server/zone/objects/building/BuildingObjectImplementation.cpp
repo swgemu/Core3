@@ -162,11 +162,12 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
-		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* childStub = cell->getContainerObject(j);
-			SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
+		if (isStaticBuilding()) {
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				SceneObject* childStub = cell->getContainerObject(j);
+				SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
 
-			//if (childStub->isInRange(object, 128)) {
+				//if (childStub->isInRange(object, 128)) {
 				child->addInRangeObject(creoImpl, false);
 
 				if (childStub != object) {
@@ -181,7 +182,8 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 					child->notifyInsert(creoImpl);
 				}
 
-			//}
+				//}
+			}
 		}
 	}
 
@@ -205,8 +207,10 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 				SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
 
-				child->addInRangeObject(obj, false);
-				obj->addInRangeObject(child, false);
+				if (isStaticBuilding()) {
+					child->addInRangeObject(obj, false);
+					obj->addInRangeObject(child, false);
+				}
 			//}
 		}
 	}
@@ -312,7 +316,7 @@ void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
 	float y = ejectionPoint.getY();
 	float z = zone->getHeight(x, y);
 
-	Locker _locker(zone);
+	//Locker _locker(zone);
 
 	if (isOnBanList(player)) {
 		player->teleport(x, z, y, 0);

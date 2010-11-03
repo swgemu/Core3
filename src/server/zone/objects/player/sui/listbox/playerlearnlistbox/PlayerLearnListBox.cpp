@@ -72,7 +72,10 @@ const String PlayerLearnListBox::getTeachingOffer() {
 }
 
 DistributedObjectServant* PlayerLearnListBox::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void PlayerLearnListBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

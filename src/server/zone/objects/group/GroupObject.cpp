@@ -350,7 +350,10 @@ void GroupObject::removeGroupModifiers(PlayerCreature* player) {
 }
 
 DistributedObjectServant* GroupObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void GroupObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

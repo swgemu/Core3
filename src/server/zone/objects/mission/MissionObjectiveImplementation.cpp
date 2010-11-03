@@ -22,7 +22,8 @@ void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 }
 
 PlayerCreature* MissionObjectiveImplementation::getPlayerOwner() {
-	PlayerCreature* player = (PlayerCreature*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
-
-	return player;
+	if (mission != NULL)
+		return (PlayerCreature*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
+	else
+		return NULL;
 }

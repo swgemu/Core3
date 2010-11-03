@@ -68,7 +68,10 @@ bool SuiCharacterBuilderBox::isCharacterBuilderBox() {
 }
 
 DistributedObjectServant* SuiCharacterBuilderBox::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SuiCharacterBuilderBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

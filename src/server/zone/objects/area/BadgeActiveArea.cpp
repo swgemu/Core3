@@ -67,7 +67,10 @@ unsigned int BadgeActiveArea::getBadge() {
 }
 
 DistributedObjectServant* BadgeActiveArea::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void BadgeActiveArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

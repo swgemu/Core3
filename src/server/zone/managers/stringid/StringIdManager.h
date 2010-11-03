@@ -38,10 +38,10 @@ protected:
 				file = file.replaceFirst(".stf","");
 
 				String full = "@" + file + ":" + name;
-				ObjectOutputStream data;
-				value.toBinaryStream(&data);
+				ObjectOutputStream* data = new ObjectOutputStream();
+				value.toBinaryStream(data);
 
-				stringsDatabase->putData((uint64)full.hashCode(), &data, NULL);
+				stringsDatabase->putData((uint64)full.hashCode(), data, NULL);
 			}
 
 			delete result;

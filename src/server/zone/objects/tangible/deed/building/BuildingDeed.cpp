@@ -107,7 +107,10 @@ bool BuildingDeed::isBuildingDeed() {
 }
 
 DistributedObjectServant* BuildingDeed::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void BuildingDeed::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

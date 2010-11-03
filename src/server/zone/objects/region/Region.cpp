@@ -228,7 +228,10 @@ void Region::setCityHall(CityHallObject* hall) {
 }
 
 DistributedObjectServant* Region::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void Region::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

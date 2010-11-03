@@ -154,7 +154,10 @@ bool EnhancePack::isEnhancePack() {
 }
 
 DistributedObjectServant* EnhancePack::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void EnhancePack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

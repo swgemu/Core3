@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/zone/templates/tangible/GamblingTerminalTemplate.h"
 #include "server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.h"
 //#include "server/zone/objects/player/sui/slotmachinebox/SuiSabaccStartBox.h"
+#include "server/zone/managers/minigames/events/GamblingEvent.h"
 
 int GamblingTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	if (selectedID == 245 || selectedID == 20) {
@@ -237,15 +238,21 @@ void GamblingTerminalImplementation::closeMenu(PlayerCreature* player, bool payo
 
 	if (player->hasSuiBox(boxID)) {
 
+		ManagedReference<SuiSlotMachineBox*> box = dynamic_cast<SuiSlotMachineBox*>(player->getSuiBox(boxID));
+
 		if (payout) {
-			ManagedReference<SuiSlotMachineBox*> box = (SuiSlotMachineBox*)player->getSuiBox(boxID);
 			uint32 payoutBoxID = box->getPayoutBoxID();
-			if (player->hasSuiBox(payoutBoxID)) {
-				player->sendMessage(player->getSuiBox(payoutBoxID)->generateCloseMessage());
+
+			ManagedReference<SuiBox*> sui = player->getSuiBox(payoutBoxID);
+			if (sui != NULL) {
+				player->sendMessage(sui->generateCloseMessage());
 				player->removeSuiBox(payoutBoxID);
 			}
 		}
-		player->sendMessage(player->getSuiBox(boxID)->generateCloseMessage());
+
+		if (box != NULL)
+			player->sendMessage(box->generateCloseMessage());
+
 		player->removeSuiBox(boxID);
 	}
 }

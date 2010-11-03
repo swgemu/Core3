@@ -924,7 +924,10 @@ bool AiAgent::hasLoot() {
 }
 
 DistributedObjectServant* AiAgent::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void AiAgent::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

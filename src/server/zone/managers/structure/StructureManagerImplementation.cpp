@@ -53,6 +53,7 @@
 #include "StructureManager.h"
 
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/managers/minigames/events/GamblingEvent.h"
 
 SortedVector<String> StructureManagerImplementation::listOfStaticBuildings;
 SortedVector<String> StructureManagerImplementation::createdFiles;

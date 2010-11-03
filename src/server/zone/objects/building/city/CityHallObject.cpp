@@ -804,7 +804,10 @@ void CityHallObject::setCityRank(byte rank) {
 }
 
 DistributedObjectServant* CityHallObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void CityHallObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

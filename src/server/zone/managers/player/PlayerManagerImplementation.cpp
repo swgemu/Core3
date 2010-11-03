@@ -324,25 +324,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 	PlayerCreature* playerCreature = (PlayerCreature*) player.get();
 	playerCreature->setCustomObjectName(name, false);
-	playerCreature->setAccountID(account->getAccountID()); //TODO: Could this be a weak or managed reference?
-
-	if (!createAllPlayerObjects(playerCreature)) {
-		error("error creating all player objects");
-		return false;
-	}
-
-	PlayerObject* ghost = playerCreature->getPlayerObject();
-
-	//Accounts with an admin level of > 0 are automatically given admin at character creation.
-	if (account->getAdminLevel() > 0) {
-		ghost->setAdminLevel(account->getAdminLevel());
-
-		Vector<String> skills;
-		skills.add("admin");
-
-		ghost->addSkills(skills, false);
-	}
-
+	createAllPlayerObjects(playerCreature);
 	createDefaultPlayerItems(playerCreature, profession, race);
 
 	playerCreature->setRaceID((byte)raceID);
@@ -405,6 +387,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	playerCreature->setClient(client);
 	client->setPlayer(player);
 
+	playerCreature->setAccountID(account->getAccountID());
 
 	if (callback->getTutorialFlag()) {
 		createTutorialBuilding(playerCreature);
@@ -647,6 +630,10 @@ void PlayerManagerImplementation::createDefaultPlayerItems(PlayerCreature* playe
 	//Make profession items for species
 
 	items = startingItemList->getProfessionItems(prof, species, sex);
+
+	if (items == NULL)
+		return;
+
 	for (int j = 0; j < items->size(); ++j) {
 		StartingItem item = items->get(j);
 

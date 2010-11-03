@@ -50,6 +50,8 @@ void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menu
 }
 
 int CityTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (zone == NULL)
+		return 0;
 
 	Locker _locker(cityHallObject);
 

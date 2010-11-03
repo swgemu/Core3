@@ -105,7 +105,10 @@ int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
 }
 
 DistributedObjectServant* VehicleControlDevice::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void VehicleControlDevice::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

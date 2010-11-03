@@ -239,7 +239,7 @@ public:
 
 	void initializeTransientMembers();
 
-	virtual void notifyLoadFromDatabase();
+	void notifyLoadFromDatabase();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 

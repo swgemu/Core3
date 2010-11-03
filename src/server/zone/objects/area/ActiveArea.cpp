@@ -181,7 +181,10 @@ void ActiveArea::setRadius(float r) {
 }
 
 DistributedObjectServant* ActiveArea::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ActiveArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

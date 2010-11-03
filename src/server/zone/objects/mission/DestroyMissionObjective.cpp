@@ -143,7 +143,10 @@ void DestroyMissionObjective::setLairTemplateToSpawn(SharedObjectTemplate* sp) {
 }
 
 DistributedObjectServant* DestroyMissionObjective::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void DestroyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

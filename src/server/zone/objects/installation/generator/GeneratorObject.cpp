@@ -91,7 +91,10 @@ bool GeneratorObject::isGeneratorObject() {
 }
 
 DistributedObjectServant* GeneratorObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void GeneratorObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

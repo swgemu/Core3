@@ -93,7 +93,10 @@ bool SuiBankTransferBox::isBankTransferBox() {
 }
 
 DistributedObjectServant* SuiBankTransferBox::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void SuiBankTransferBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

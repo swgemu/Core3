@@ -37,7 +37,7 @@ void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 		if (containerObject->getParent() == NULL)
 			containerObject->setParent(_this);
 
-		if (!containerObject->isInQuadTree() && !containerObject->isPlayerCreature())
+		if (!containerObject->isInQuadTree() /*&& !containerObject->isPlayerCreature()*/)
 			containerObject->sendTo(player, true);
 	}
 }
@@ -90,9 +90,14 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 bool CellObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
 	Locker locker(_this);
 
+	bool count = false;
+
+	if (!object->isTerminal() && !object->isCreatureObject() && !containerObjects.contains(object->getObjectID()))
+		count = true;
+
 	bool ret = SceneObjectImplementation::addObject(object, containmentType, notifyClient);
 
-	if (ret && !object->isTerminal() && !object->isCreatureObject()) {
+	if (count && ret) {
 		++currentNumberOfItems;
 	}
 

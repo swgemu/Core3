@@ -62,7 +62,10 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 }
 
 DistributedObjectServant* RadialManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void RadialManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

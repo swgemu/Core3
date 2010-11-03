@@ -27,7 +27,7 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 
 	accountMap = new AccountMap();
 
-	setLogging(true);
+	setLogging(false);
 	setGlobalLogging(false);
 }
 

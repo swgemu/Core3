@@ -132,7 +132,10 @@ bool InstallationDeed::isInstallationDeed() {
 }
 
 DistributedObjectServant* InstallationDeed::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void InstallationDeed::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

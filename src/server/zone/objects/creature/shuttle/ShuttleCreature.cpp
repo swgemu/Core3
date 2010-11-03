@@ -280,7 +280,10 @@ bool ShuttleCreature::isShuttleCreature() {
 }
 
 DistributedObjectServant* ShuttleCreature::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ShuttleCreature::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

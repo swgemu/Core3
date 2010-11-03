@@ -269,7 +269,10 @@ void GuildManager::setAllegianceTo(PlayerCreature* player, unsigned long long ta
 }
 
 DistributedObjectServant* GuildManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void GuildManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

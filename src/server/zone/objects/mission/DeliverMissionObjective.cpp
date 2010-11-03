@@ -169,7 +169,10 @@ bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
 }
 
 DistributedObjectServant* DeliverMissionObjective::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void DeliverMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

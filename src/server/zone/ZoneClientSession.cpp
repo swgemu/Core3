@@ -288,7 +288,10 @@ Account* ZoneClientSession::getAccount() {
 }
 
 DistributedObjectServant* ZoneClientSession::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void ZoneClientSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

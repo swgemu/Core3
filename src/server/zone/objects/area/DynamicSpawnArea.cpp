@@ -74,7 +74,10 @@ void DynamicSpawnArea::setMaxCreaturesToSpawn(int num) {
 }
 
 DistributedObjectServant* DynamicSpawnArea::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void DynamicSpawnArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

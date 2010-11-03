@@ -49,7 +49,10 @@ void StaticObject::sendBaselinesTo(SceneObject* player) {
 }
 
 DistributedObjectServant* StaticObject::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void StaticObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

@@ -20,6 +20,7 @@
 #include "server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.h"
 #include "server/zone/managers/minigames/GamblingBet.h"
 #include "engine/service/proto/BaseMessage.h"
+#include "server/zone/managers/minigames/events/GamblingEvent.h"
 
 void GamblingManagerImplementation::registerPlayer(GamblingTerminal* terminal, PlayerCreature* player) {
 	if (terminal == NULL || player == NULL)
@@ -208,6 +209,8 @@ void GamblingManagerImplementation::refreshSlotMenu(PlayerCreature* player, Gamb
 void GamblingManagerImplementation::handleSlot(PlayerCreature* player, bool cancel, bool other) {
 	if (player == NULL)
 		return;
+
+
 
 	bool ok = (!cancel && !other);
 
@@ -501,7 +504,10 @@ void GamblingManagerImplementation::stopGame(GamblingTerminal* terminal, bool ca
 
 void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal) {
 
+
 	if (terminal != NULL) {
+
+		Locker locker(terminal);
 
 		switch (terminal->getMachineType()) {
 
@@ -716,6 +722,9 @@ void GamblingManagerImplementation::leaveTerminal(PlayerCreature* player, int ma
 			case GamblingTerminal::SLOTMACHINE: {
 
 				ManagedReference<GamblingTerminal*> terminal = slotGames.get(player);
+
+				Locker locker(terminal);
+
 				if (terminal->getPlayersWindows()->contains(player)) {
 					terminal->leaveTerminal(player);
 				}
@@ -725,6 +734,8 @@ void GamblingManagerImplementation::leaveTerminal(PlayerCreature* player, int ma
 			case GamblingTerminal::ROULETTEMACHINE: {
 
 				ManagedReference<GamblingTerminal*> terminal = rouletteGames.get(player);
+
+				Locker locker(terminal);
 
 				if (terminal->getPlayersWindows()->contains(player)) {
 					terminal->leaveTerminal(player);

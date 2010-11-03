@@ -115,7 +115,10 @@ CityHallObject* CityVoteTerminal::getCityHallObject() {
 }
 
 DistributedObjectServant* CityVoteTerminal::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void CityVoteTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

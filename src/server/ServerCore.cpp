@@ -175,7 +175,10 @@ void ServerCore::run() {
 void ServerCore::shutdown() {
 	info("shutting down server..");
 
+	ObjectManager::instance()->cancelUpdateModifiedObjectsTask();
 	ObjectDatabaseManager::instance()->checkpoint();
+
+	info("database checkpoint done", true);
 
 	if (statusServer != NULL) {
 		statusServer->stop();
@@ -215,8 +218,6 @@ void ServerCore::shutdown() {
 		delete database;
 		database = NULL;
 	}
-
-	ObjectManager::instance()->savePersistentObjects();
 
 	zoneServerRef = NULL;
 
@@ -285,6 +286,9 @@ void ServerCore::handleCommands() {
 				zoneServer = NULL;
 
 				zoneServer->fixScheduler();
+			} else if (command == "save") {
+				ObjectManager::instance()->updateModifiedObjectsToDatabase(true);
+				//ObjectDatabaseManager::instance()->checkpoint();
 			} else if (command == "help") {
 				System::out << "available commands:\n";
 				System::out << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
@@ -300,7 +304,7 @@ void ServerCore::handleCommands() {
 			System::out << "[ServerCore] unreported Exception caught\n";
 		}
 
-		Core::commitTask();
+		//Core::commitTask();
 	}
 }
 

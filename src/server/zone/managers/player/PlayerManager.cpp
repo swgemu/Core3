@@ -700,7 +700,10 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 }
 
 DistributedObjectServant* PlayerManager::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void PlayerManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}

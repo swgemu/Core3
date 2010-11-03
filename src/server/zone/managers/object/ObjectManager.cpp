@@ -18,14 +18,18 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
-#include "server/zone/managers/guild/GuildManager.h"
-
+#include "engine/orb/DistributedHelperObjectMap.h"
+#include "UpdateModifiedObjectsThread.h"
 #include "server/chat/ChatManager.h"
+#include "UpdateModifiedObjectsTask.h"
+#include "engine/db/berkley/Transaction.h"
+#include "CommitMasterTransactionTask.h"
 
 using namespace engine::db;
 
 ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
 	server = NULL;
+	objectUpdateInProcess = false;
 
 	databaseManager = ObjectDatabaseManager::instance();
 	databaseManager->loadDatabases();
@@ -42,6 +46,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	databaseManager->loadDatabase("missionobservers", true);
 	databaseManager->loadDatabase("cityregions", true);
 	databaseManager->loadDatabase("guilds", true);
+	
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
@@ -49,12 +54,22 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 
 	setLogging(false);
 	setGlobalLogging(true);
+
+	updateModifiedObjectsTask = new UpdateModifiedObjectsTask();
+	updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
+
+	for (int i = 0; i < INITIALUPDATEMODIFIEDOBJECTSTHREADS; ++i) {
+		createUpdateModifiedObjectsThread();
+	}
 }
 
 ObjectManager::~ObjectManager() {
 	//info("closing databases...", true);
 
 	//ObjectDatabaseManager::instance()->finalize();
+
+	if (updateModifiedObjectsTask->isScheduled())
+		updateModifiedObjectsTask->cancel();
 }
 
 void ObjectManager::registerObjectTypes() {
@@ -346,40 +361,50 @@ void ObjectManager::loadStaticObjects() {
 	}
 }
 
-int ObjectManager::updatePersistentObject(DistributedObject* object) {
-	if (!((ManagedObject*)object)->isPersistent())
+int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
+	if (!((ManagedObject*)object)->isPersistent()) {
+		object->_setUpdated(false);
 		return 1;
+	}
 
 	try {
 		ManagedObject* managedObject = ((ManagedObject*)object);
-		ObjectOutputStream objectData(500);
+		ObjectOutputStream* objectData = new ObjectOutputStream(500);
 
-		((ManagedObject*)object)->writeObject(&objectData);
+		((ManagedObject*)object)->writeObject(objectData);
 
 		uint64 oid = object->_getObjectID();
 
 		uint32 lastSaveCRC = managedObject->getLastCRCSave();
 
-		uint32 currentCRC = BaseProtocol::generateCRC(&objectData);
+		uint32 currentCRC = BaseProtocol::generateCRC(objectData);
 
-		if (lastSaveCRC == currentCRC)
+		if (lastSaveCRC == currentCRC) {
+			object->_setUpdated(false);
+
+			delete objectData;
 			return 1;
+		}
 
 		ObjectDatabase* database = getTable(oid);
 
 		if (database != NULL) {
-			StringBuffer msg;
+			//StringBuffer msg;
 			String dbName;
 
 			database->getDatabaseName(dbName);
 
-			msg << "saving to database with table " << dbName << " and object id 0x" << hex << oid;
-			info(msg.toString());
+			/*msg << "saving to database with table " << dbName << " and object id 0x" << hex << oid;
+				info(msg.toString());*/
 
-			database->putData(oid, &objectData, object);
+			database->putData(oid, objectData, object);
 
 			managedObject->setLastCRCSave(currentCRC);
+
+			object->_setUpdated(false);
 		} else {
+			delete objectData;
+
 			StringBuffer err;
 			err << "unknown database id of objectID 0x" << hex << oid;
 			error(err.toString());
@@ -387,14 +412,20 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 
 		/*objectData.escapeString();
 
-		StringBuffer query;
-		query << "UPDATE objects SET data = '" << objectData << "' WHERE objectid = " << object->_getObjectID() << ";";
-		ServerDatabase::instance()->executeStatement(query);*/
+			StringBuffer query;
+			query << "UPDATE objects SET data = '" << objectData << "' WHERE objectid = " << object->_getObjectID() << ";";
+			ServerDatabase::instance()->executeStatement(query);*/
 	} catch (...) {
 		error("unreported exception caught in ObjectManager::updateToDatabase(SceneObject* object)");
 	}
 
-	return 1;
+	return 0;
+}
+
+int ObjectManager::updatePersistentObject(DistributedObject* object) {
+	object->_setUpdated(true);
+
+	return 0;
 }
 
 SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
@@ -457,10 +488,11 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient)
 		database->getDatabaseName(databaseName);
 	}
 
-	if (object->isPersistent() && !makeTransient) {
-		clonedObject = createObject(serverCRC, object->getPersistenceLevel(), databaseName);
-	} else {
+	if (makeTransient || !object->isPersistent()) {
 		clonedObject = createObject(serverCRC, 0, databaseName);
+		clonedObject->setPersistent(0);
+	} else if (object->isPersistent()) {
+		clonedObject = createObject(serverCRC, object->getPersistenceLevel(), databaseName);
 	}
 
 	Locker locker(clonedObject);
@@ -778,10 +810,121 @@ ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
 int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	Locker _locker(this);
 
+	/*ObjectDatabase* table = getTable(objectID);
+
+	if (table != NULL) {
+		table->deleteData(objectID);
+	} else {
+		StringBuffer msg;
+		msg << "could not delete object id from database table NULL for id 0x" << hex << objectID;
+		error(msg);
+	}*/
+
+	DistributedObject* obj = getObject(objectID);
+
+	if (obj != NULL)
+		obj->_setMarkedForDeletion(true);
+
+	return 1;
+}
+
+void ObjectManager::printInfo() {
+	StringBuffer msg;
+	msg << "total objects in map " << localObjectDirectory.getSize();
+	info(msg.toString(), true);
+}
+
+UpdateModifiedObjectsThread* ObjectManager::createUpdateModifiedObjectsThread() {
+	UpdateModifiedObjectsThread* thread = new UpdateModifiedObjectsThread(updateModifiedObjectsThreads.size(), this);
+	thread->start();
+
+	updateModifiedObjectsThreads.add(thread);
+
+	return thread;
+}
+
+int ObjectManager::deployUpdateThreads(Vector<DistributedObject*>* objectsToUpdate, Vector<DistributedObject*>* objectsToDelete, engine::db::berkley::Transaction* transaction) {
+	if (objectsToUpdate->size() == 0)
+		return 0;
+
+	Time start;
+
+	int numberOfObjects = objectsToUpdate->size();
+
+	int rest = numberOfObjects % MAXOBJECTSTOUPDATEPERTHREAD;
+	int numberOfThreads = numberOfObjects / MAXOBJECTSTOUPDATEPERTHREAD;
+
+	if (rest != 0)
+		++numberOfThreads;
+
+	while (numberOfThreads > updateModifiedObjectsThreads.size())
+		createUpdateModifiedObjectsThread();
+
+	if (numberOfThreads < 4)
+		numberOfThreads = 4;
+
+	int numberPerThread  = numberOfObjects / numberOfThreads;
+
+	if (numberPerThread == 0) {
+		numberPerThread = numberOfObjects;
+		numberOfThreads = 1;
+	}
+
+	for (int i = 0; i < numberOfThreads; ++i) {
+		UpdateModifiedObjectsThread* thread = updateModifiedObjectsThreads.get(i);
+
+		thread->waitFinishedWork();
+
+		int start = i * numberPerThread;
+		int end = 0;
+
+		if (i == numberOfThreads - 1) {
+			end = numberOfObjects - 1;
+			thread->setObjectsToDeleteVector(objectsToDelete);
+		} else
+			end = start +  numberPerThread - 1;
+
+		thread->setObjectsToUpdateVector(objectsToUpdate);
+		thread->setStartOffset(start);
+		thread->setEndOffset(end);
+		thread->setTransaction(transaction);
+
+		thread->signalActivity();
+	}
+
+	for (int i = 0; i < numberOfThreads; ++i) {
+		UpdateModifiedObjectsThread* thread = updateModifiedObjectsThreads.get(i);
+
+		thread->waitFinishedWork();
+	}
+
+	return numberOfThreads;
+
+}
+
+void ObjectManager::finishObjectUpdate(bool startNew) {
+	Locker _locker(this);
+
+	objectUpdateInProcess = false;
+
+	if (startNew)
+		updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
+}
+
+void ObjectManager::cancelUpdateModifiedObjectsTask() {
+	Locker locker(this);
+
+	if (updateModifiedObjectsTask->isScheduled())
+		updateModifiedObjectsTask->cancel();
+}
+
+int ObjectManager::commitDestroyObjectToDB(uint64 objectID) {
 	ObjectDatabase* table = getTable(objectID);
 
 	if (table != NULL) {
 		table->deleteData(objectID);
+
+		return 0;
 	} else {
 		StringBuffer msg;
 		msg << "could not delete object id from database table NULL for id 0x" << hex << objectID;
@@ -791,8 +934,55 @@ int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	return 1;
 }
 
-void ObjectManager::printInfo() {
-	StringBuffer msg;
-	msg << "total objects in map " << localObjectDirectory.getSize();
-	info(msg.toString(), true);
+void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
+	//ObjectDatabaseManager::instance()->checkpoint();
+
+	if (objectUpdateInProcess) {
+		error("object manager already updating objects to database... try again later");
+		return;
+	}
+
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
+
+	Vector<Locker*>* lockers = Core::getTaskManager()->blockTaskManager();
+
+	Locker _locker(this);
+
+	objectUpdateInProcess = true;
+
+	engine::db::berkley::Transaction* transaction = ObjectDatabaseManager::instance()->startTransaction();
+
+	if (updateModifiedObjectsTask->isScheduled())
+		updateModifiedObjectsTask->cancel();
+
+	info("starting saving objects to database", true);
+
+	DistributedHelperObjectMap* helperMap = localObjectDirectory.getHelperObjectMap();
+
+	Vector<DistributedObject*> objectsToUpdate;
+	Vector<DistributedObject*> objectsToDelete;
+	Vector<Reference<DistributedObject*> > objectsToDeleteFromRAM;
+
+	localObjectDirectory.getObjectsMarkedForUpdate(objectsToUpdate, objectsToDelete, objectsToDeleteFromRAM);
+
+	Time start;
+
+	int numberOfThreads = deployUpdateThreads(&objectsToUpdate, &objectsToDelete, transaction);
+
+	info("copied objects into ram in " + String::valueOf(start.miliDifference()) + " ms", true);
+
+	Core::getTaskManager()->unblockTaskManager(lockers);
+	delete lockers;
+
+	Reference<CommitMasterTransactionTask*> watchDog = new CommitMasterTransactionTask(transaction, &updateModifiedObjectsThreads, numberOfThreads, startTask);
+	watchDog->schedule(500);
+
+
+	for (int i = 0; i < objectsToDeleteFromRAM.size(); ++i) {
+		DistributedObject* object = objectsToDeleteFromRAM.get(i);
+
+		helperMap->remove(object->_getObjectID());
+	}
+
+	_locker.release();
 }

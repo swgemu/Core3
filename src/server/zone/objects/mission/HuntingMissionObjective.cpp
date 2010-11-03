@@ -106,7 +106,10 @@ int HuntingMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 }
 
 DistributedObjectServant* HuntingMissionObjective::_getImplementation() {
-	return _impl;}
+
+	_updated = true;
+	return _impl;
+}
 
 void HuntingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;}
