@@ -207,6 +207,13 @@ void GuildManagerImplementation::sendGuildInformationTo(PlayerCreature* player, 
 }
 
 void GuildManagerImplementation::sendGuildDisbandConfirmTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+
+	if (guild == NULL || !guild->hasDisbandPermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::GUILD_DISBAND);
 	suiBox->setPromptTitle("@guild:disband_title"); //Disband Guild
 	suiBox->setPromptText("@guild:disband_prompt"); //Are you sure you wish to disband your guild?
@@ -289,6 +296,13 @@ void GuildManagerImplementation::sendGuildMemberListTo(PlayerCreature* player, G
 }
 
 void GuildManagerImplementation::sendGuildSponsoredOptionsTo(PlayerCreature* player, uint64 playerID, GuildTerminal* guildTerminal) {
+	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+
+	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_SPONSORED_OPTIONS);
 	suiBox->setPromptTitle("@guild:sponsored_options_title"); //Sponsored For Membership
 	suiBox->setPromptText("@guild:sponsored_options_prompt");
@@ -305,10 +319,8 @@ void GuildManagerImplementation::sendGuildSponsoredOptionsTo(PlayerCreature* pla
 void GuildManagerImplementation::sendGuildSponsoredListTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
 	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
 
-	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+	if (guild == NULL)
 		return;
-	}
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_SPONSORED_LIST);
 	suiBox->setPromptTitle("@guild:sponsored_title"); //Sponsored for Membership
@@ -407,10 +419,12 @@ bool GuildManagerImplementation::disbandGuild(PlayerCreature* player, GuildTermi
 
 	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
 
-	guildTerminal->setGuildObject(NULL);
-
-	if (guild == NULL)
+	if (guild == NULL || !guild->hasDisbandPermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
 		return false;
+	}
+
+	guildTerminal->setGuildObject(NULL);
 
 	//Remove all sponsored members from the sponsoredPlayers vectormap
 	for (int i = 0; i < guild->getSponsoredPlayerCount(); ++i) {
@@ -596,11 +610,18 @@ void GuildManagerImplementation::sendGuildKickPromptTo(PlayerCreature* player, P
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
-	target->addSuiBox(suiBox);
-	target->sendMessage(suiBox->generateMessage());
+	player->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
 }
 
 void GuildManagerImplementation::sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target) {
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL || !guild->hasKickPermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_MEMBER_TITLE);
 	suiBox->setPromptTitle("@guild:title_title"); //Set Title
 	suiBox->setPromptText("@guild:title_prompt"); //Enter a title to set for %TU.
