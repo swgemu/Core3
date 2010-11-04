@@ -74,6 +74,10 @@ class GuildTerminal extends Terminal {
 		return true;
 	}
 	
+	public void setGuildObject(GuildObject guild) {
+		guildObject = guild;
+	}
+	
 	public GuildObject getGuildObject() {
 		return guildObject;
 	}

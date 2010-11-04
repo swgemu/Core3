@@ -251,6 +251,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/planet/MapLocationEntry.cpp \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
 		server/zone/managers/guild/GuildManagerImplementation.cpp \
+		server/zone/objects/guild/GuildMemberInfo.cpp \
 		server/zone/managers/name/NameManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/professions/ProfessionManager.cpp \

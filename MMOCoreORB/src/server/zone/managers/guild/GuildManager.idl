@@ -65,6 +65,9 @@ class GuildManager extends ManagedService implements Logger {
 	@dereferenced
 	private transient VectorMap<unsigned long, string> pendingGuilds;
 	
+	@dereferenced
+	private transient VectorMap<unsigned long, GuildObject> sponsoredPlayers;
+	
 	private int requiredMembers;
 	private int maximumMembers;
 	private int guildUpdateInterval;
@@ -75,9 +78,16 @@ class GuildManager extends ManagedService implements Logger {
 		Logger.setGlobalLogging(true);
 		
 		pendingGuilds.setNoDuplicateInsertPlan();
+		
+		sponsoredPlayers.setNoDuplicateInsertPlan();
+		sponsoredPlayers.setNullValue(null);
 
 		server = serv;
 		processor = proc;
+		
+		requiredMembers = 5;
+		maximumMembers = 500;
+		guildUpdateInterval = 1440;
 	}
 	
 	public void addPendingGuild(unsigned long playerID, final string guildName) {
@@ -92,8 +102,24 @@ class GuildManager extends ManagedService implements Logger {
 		return pendingGuilds.get(playerID);
 	}
 	
+	public void addSponsoredPlayer(unsigned long playerID, GuildObject guild) {
+		sponsoredPlayers.put(playerID, guild);
+	}
+	
+	public void removeSponsoredPlayer(unsigned long playerID) {
+		sponsoredPlayers.drop(playerID);
+	}
+	
 	public boolean isCreatingGuild(unsigned long playerID) {
 		return pendingGuilds.contains(playerID);
+	}
+	
+	public boolean isSponsoredPlayer(unsigned long playerID) {
+		return sponsoredPlayers.contains(playerID);
+	}
+	
+	public GuildObject getSponsoredGuild(unsigned long playerID) {
+		return sponsoredPlayers.get(playerID);
 	}
 	
 	public native void sendBaselinesTo(PlayerCreature player);
@@ -106,27 +132,47 @@ class GuildManager extends ManagedService implements Logger {
 	
 	public native void sendGuildInformationTo(PlayerCreature player, GuildTerminal guildTerminal);
 	
+	public native void sendGuildMemberListTo(PlayerCreature player, GuildTerminal guildTerminal);
+	
+	public native void sendGuildMemberOptionsTo(PlayerCreature player, GuildTerminal guildTerminal, unsigned long memberID);
+	
+	public native void sendGuildDisbandConfirmTo(PlayerCreature player, GuildTerminal guildTerminal);
+	
+	public native void sendGuildSponsoredListTo(PlayerCreature player, GuildTerminal guildTerminal);
+	
+	public native void sendGuildSponsoredOptionsTo(PlayerCreature player, unsigned long playerID, GuildTerminal guildTerminal);
+	
+	public native void sendGuildSponsorTo(PlayerCreature player, GuildTerminal guildTerminal);
+	
+	public native void sendGuildSponsorVerifyTo(PlayerCreature player, PlayerCreature target);
+	
 	public native boolean validateGuildName(PlayerCreature player, final string guildName);
 	
 	public native boolean validateGuildAbbrev(PlayerCreature player, final string guildAbbrev);
 	
-	//public native void sendGuildCreateAbbrevTo(PlayerCreature player);
+	public native boolean guildNameExists(final string guildName);
 	
-	//public native void sendGuildSponsorTo(PlayerCreature player);
-	
-	//public native void onGuildCreateNameResponse(PlayerCreature player, final string guildName);
-	
-	//public native void onGuildCreateAbbrevResponse(PlayerCreature player, final string guildAbbrev);
-	
-	//public native void onGuildSponsorResponse(PlayerCreature player, final string playerName);
+	public native boolean guildAbbrevExists(final string guildAbbrev);
 	
 	public native GuildObject createGuild(PlayerCreature player, GuildTerminal guildTerminal, final string guildName, final string guildAbbrev);
 	
-	public native void acceptMember(PlayerCreature player, unsigned long targetID);
+	public native boolean disbandGuild(PlayerCreature player, GuildTerminal guildTerminal);
 	
-	public native void kickMember(PlayerCreature player, unsigned long targetID);
+	public native void sponsorPlayer(PlayerCreature player, GuildTerminal guildTerminal, final string playerName);
 	
-	public native void setGuildMemberTitle(PlayerCreature player, unsigned long targetID);
+	public native void acceptSponsorshipRequest(PlayerCreature player, PlayerCreature target);
 	
-	public native void setAllegianceTo(PlayerCreature player, unsigned long targetID);
+	public native void acceptSponsoredPlayer(PlayerCreature player, unsigned long targetID);
+	
+	public native void sendGuildKickPromptTo(PlayerCreature player, PlayerCreature target);
+	
+	public native void sendGuildSetTitleTo(PlayerCreature player, PlayerCreature target);
+	
+	public native void kickMember(PlayerCreature player, PlayerCreature target);
+	
+	public native void setMemberTitle(PlayerCreature player, unsigned long targetID, GuildTerminal guildTerminal);
+	
+	public native void setAllegianceTo(PlayerCreature player, unsigned long targetID, GuildTerminal guildTerminal);
+	
+	public native void sendMemberPermissionsTo(PlayerCreature player, PlayerCreature target);
 }

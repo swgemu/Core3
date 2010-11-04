@@ -64,17 +64,20 @@ public:
 	static const uint16 GUILD_CREATE_NAME = 21;
 	static const uint16 GUILD_CREATE_ABBREV = 22;
 	static const uint16 GUILD_SPONSOR = 23;
-	static const uint16 GUILD_ACCEPT_SPONSORSHIP = 24;
-	static const uint16 GUILD_LIST_SPONSORED = 25;
-	static const uint16 GUILD_CHANGE_NAME = 26;
-	static const uint16 GUILD_CHANGE_ABBREV = 27;
-	static const uint16 GUILD_INFORMATION = 28;
-	static const uint16 GUILD_DISBAND = 29;
-	static const uint16 GUILD_MEMBER_OPTIONS = 30;
-	static const uint16 GUILD_MEMBER_REMOVE = 31;
-	static const uint16 GUILD_MEMBER_PERMISSIONS = 32;
-	static const uint16 GUILD_TRANSFER_LEADER = 33;
-	static const uint16 GUILD_TRANSFER_LEADER_CONFIRM = 34;
+	static const uint16 GUILD_SPONSOR_VERIFY = 24;
+	static const uint16 GUILD_SPONSORED_LIST = 25;
+	static const uint16 GUILD_SPONSORED_OPTIONS = 26;
+	static const uint16 GUILD_CHANGE_NAME = 27;
+	static const uint16 GUILD_CHANGE_ABBREV = 28;
+	static const uint16 GUILD_INFORMATION = 29;
+	static const uint16 GUILD_DISBAND = 30;
+	static const uint16 GUILD_MEMBER_LIST = 31;
+	static const uint16 GUILD_MEMBER_OPTIONS = 32;
+	static const uint16 GUILD_MEMBER_REMOVE = 33;
+	static const uint16 GUILD_MEMBER_PERMISSIONS = 34;
+	static const uint16 GUILD_MEMBER_TITLE = 35;
+	static const uint16 GUILD_TRANSFER_LEADER = 36;
+	static const uint16 GUILD_TRANSFER_LEADER_CONFIRM = 37;
 
 	//Tickets 51 - 60
 	static const uint16 TICKET_PURCHASE_MESSAGE = 51;
