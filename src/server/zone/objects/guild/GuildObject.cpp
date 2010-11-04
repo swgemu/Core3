@@ -389,46 +389,60 @@ bool GuildObject::isGuildObject() {
 		return _implementation->isGuildObject();
 }
 
-bool GuildObject::hasMailPermission(PlayerCreature* player) {
+bool GuildObject::hasMailPermission(unsigned long long playerID) {
 	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 31);
-		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->hasMailPermission(player);
+		return _implementation->hasMailPermission(playerID);
 }
 
-bool GuildObject::hasSponsorPermission(PlayerCreature* player) {
+bool GuildObject::hasSponsorPermission(unsigned long long playerID) {
 	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 32);
-		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->hasSponsorPermission(player);
+		return _implementation->hasSponsorPermission(playerID);
 }
 
-bool GuildObject::hasAcceptPermission(PlayerCreature* player) {
+bool GuildObject::hasAcceptPermission(unsigned long long playerID) {
 	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 33);
-		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->hasAcceptPermission(player);
+		return _implementation->hasAcceptPermission(playerID);
+}
+
+bool GuildObject::hasKickPermission(unsigned long long playerID) {
+	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+		method.addUnsignedLongParameter(playerID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasKickPermission(playerID);
 }
 
 DistributedObjectServant* GuildObject::_getImplementation() {
@@ -710,13 +724,16 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isGuildObject());
 		break;
 	case 31:
-		resp->insertBoolean(hasMailPermission((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertBoolean(hasMailPermission(inv->getUnsignedLongParameter()));
 		break;
 	case 32:
-		resp->insertBoolean(hasSponsorPermission((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertBoolean(hasSponsorPermission(inv->getUnsignedLongParameter()));
 		break;
 	case 33:
-		resp->insertBoolean(hasAcceptPermission((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertBoolean(hasAcceptPermission(inv->getUnsignedLongParameter()));
+		break;
+	case 34:
+		resp->insertBoolean(hasKickPermission(inv->getUnsignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -825,16 +842,20 @@ bool GuildObjectAdapter::isGuildObject() {
 	return ((GuildObjectImplementation*) impl)->isGuildObject();
 }
 
-bool GuildObjectAdapter::hasMailPermission(PlayerCreature* player) {
-	return ((GuildObjectImplementation*) impl)->hasMailPermission(player);
+bool GuildObjectAdapter::hasMailPermission(unsigned long long playerID) {
+	return ((GuildObjectImplementation*) impl)->hasMailPermission(playerID);
 }
 
-bool GuildObjectAdapter::hasSponsorPermission(PlayerCreature* player) {
-	return ((GuildObjectImplementation*) impl)->hasSponsorPermission(player);
+bool GuildObjectAdapter::hasSponsorPermission(unsigned long long playerID) {
+	return ((GuildObjectImplementation*) impl)->hasSponsorPermission(playerID);
 }
 
-bool GuildObjectAdapter::hasAcceptPermission(PlayerCreature* player) {
-	return ((GuildObjectImplementation*) impl)->hasAcceptPermission(player);
+bool GuildObjectAdapter::hasAcceptPermission(unsigned long long playerID) {
+	return ((GuildObjectImplementation*) impl)->hasAcceptPermission(playerID);
+}
+
+bool GuildObjectAdapter::hasKickPermission(unsigned long long playerID) {
+	return ((GuildObjectImplementation*) impl)->hasKickPermission(playerID);
 }
 
 /*

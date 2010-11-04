@@ -152,11 +152,17 @@ public:
 
 	void acceptSponsoredPlayer(PlayerCreature* player, unsigned long long targetID);
 
-	void kickMember(PlayerCreature* player, unsigned long long targetID);
+	void sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target);
 
-	void setGuildMemberTitle(PlayerCreature* player, unsigned long long targetID);
+	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
 
-	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID);
+	void kickMember(PlayerCreature* player, PlayerCreature* target);
+
+	void setMemberTitle(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+
+	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+
+	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -264,11 +270,17 @@ public:
 
 	void acceptSponsoredPlayer(PlayerCreature* player, unsigned long long targetID);
 
-	void kickMember(PlayerCreature* player, unsigned long long targetID);
+	void sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target);
 
-	void setGuildMemberTitle(PlayerCreature* player, unsigned long long targetID);
+	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
 
-	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID);
+	void kickMember(PlayerCreature* player, PlayerCreature* target);
+
+	void setMemberTitle(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+
+	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+
+	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
 
 	GuildManager* _this;
 
@@ -367,11 +379,17 @@ public:
 
 	void acceptSponsoredPlayer(PlayerCreature* player, unsigned long long targetID);
 
-	void kickMember(PlayerCreature* player, unsigned long long targetID);
+	void sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target);
 
-	void setGuildMemberTitle(PlayerCreature* player, unsigned long long targetID);
+	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
 
-	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID);
+	void kickMember(PlayerCreature* player, PlayerCreature* target);
+
+	void setMemberTitle(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+
+	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+
+	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
 
 protected:
 	String _param1_addPendingGuild__long_String_;
