@@ -431,13 +431,27 @@ bool GuildObject::hasAcceptPermission(unsigned long long playerID) {
 		return _implementation->hasAcceptPermission(playerID);
 }
 
-bool GuildObject::hasKickPermission(unsigned long long playerID) {
+bool GuildObject::hasDisbandPermission(unsigned long long playerID) {
 	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 34);
+		method.addUnsignedLongParameter(playerID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasDisbandPermission(playerID);
+}
+
+bool GuildObject::hasKickPermission(unsigned long long playerID) {
+	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -737,6 +751,9 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(hasAcceptPermission(inv->getUnsignedLongParameter()));
 		break;
 	case 34:
+		resp->insertBoolean(hasDisbandPermission(inv->getUnsignedLongParameter()));
+		break;
+	case 35:
 		resp->insertBoolean(hasKickPermission(inv->getUnsignedLongParameter()));
 		break;
 	default:
@@ -856,6 +873,10 @@ bool GuildObjectAdapter::hasSponsorPermission(unsigned long long playerID) {
 
 bool GuildObjectAdapter::hasAcceptPermission(unsigned long long playerID) {
 	return ((GuildObjectImplementation*) impl)->hasAcceptPermission(playerID);
+}
+
+bool GuildObjectAdapter::hasDisbandPermission(unsigned long long playerID) {
+	return ((GuildObjectImplementation*) impl)->hasDisbandPermission(playerID);
 }
 
 bool GuildObjectAdapter::hasKickPermission(unsigned long long playerID) {

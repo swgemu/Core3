@@ -185,5 +185,6 @@ class GuildObject extends SceneObject {
 	public native boolean hasMailPermission(unsigned long playerID);
 	public native boolean hasSponsorPermission(unsigned long playerID);
 	public native boolean hasAcceptPermission(unsigned long playerID);
+	public native boolean hasDisbandPermission(unsigned long playerID);
 	public native boolean hasKickPermission(unsigned long playerID);
 }
