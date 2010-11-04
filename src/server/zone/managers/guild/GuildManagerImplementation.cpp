@@ -305,7 +305,7 @@ void GuildManagerImplementation::sendGuildSponsoredOptionsTo(PlayerCreature* pla
 void GuildManagerImplementation::sendGuildSponsoredListTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
 	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
 
-	if (guild == NULL || !guild->hasAcceptPermission(player)) {
+	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
 		return;
 	}
@@ -544,7 +544,7 @@ void GuildManagerImplementation::acceptSponsorshipRequest(PlayerCreature* player
 void GuildManagerImplementation::acceptSponsoredPlayer(PlayerCreature* player, uint64 targetID) {
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
-	if (guild == NULL || !guild->hasAcceptPermission(player)) {
+	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
 		return;
 	}
@@ -612,9 +612,9 @@ void GuildManagerImplementation::sendGuildSetTitleTo(PlayerCreature* player, Pla
 }
 
 void GuildManagerImplementation::kickMember(PlayerCreature* player, PlayerCreature* target) {
-	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
-	if (guild == NULL || !guild->hasKickPermission(player)) {
+	if (guild == NULL || !guild->hasKickPermission(player->getObjectID())) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
 		return;
 	}
@@ -657,6 +657,6 @@ void GuildManagerImplementation::setAllegianceTo(PlayerCreature* player, uint64 
 
 }
 
-void GuildManagerImplementation::sendMemberPermissionsTo(PlayerCreature* player, uint64 targetID, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target) {
 
 }

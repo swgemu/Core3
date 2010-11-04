@@ -17,7 +17,7 @@ namespace guild {
 
 	class GuildObject;
 
-	class GuildMemberInfo : public Object {
+	class GuildMemberInfo : public Serializable {
 		uint64 playerID;
 		String guildTitle;
 		uint8 permissions;
@@ -28,20 +28,31 @@ namespace guild {
 			playerID = 0;
 			permissions = 0;
 			declaredAllegiance = 0;
+
+			addSerializableVariables();
 		}
 
 		GuildMemberInfo(uint64 playerid);
 
-		GuildMemberInfo(const GuildMemberInfo& gmi) : Object() {
+		GuildMemberInfo(const GuildMemberInfo& gmi) : Object(), Serializable() {
 			playerID = gmi.playerID;
 			guildTitle = gmi.guildTitle;
 			permissions = gmi.permissions;
 			declaredAllegiance = gmi.declaredAllegiance;
+
+			addSerializableVariables();
 		}
 
 		int compareTo(const GuildMemberInfo& gmi) const;
 
 		GuildMemberInfo& operator=(const GuildMemberInfo& gmi);
+
+		inline void addSerializableVariables() {
+			addSerializableVariable("playerID", &playerID);
+			addSerializableVariable("guildTitle", &guildTitle);
+			addSerializableVariable("permissions", &permissions);
+			addSerializableVariable("declaredAllegiance", &declaredAllegiance);
+		}
 
 		inline uint64 getPlayerID() {
 			return playerID;

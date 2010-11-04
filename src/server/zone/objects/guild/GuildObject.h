@@ -148,11 +148,13 @@ public:
 
 	bool isGuildObject();
 
-	bool hasMailPermission(PlayerCreature* player);
+	bool hasMailPermission(unsigned long long playerID);
 
-	bool hasSponsorPermission(PlayerCreature* player);
+	bool hasSponsorPermission(unsigned long long playerID);
 
-	bool hasAcceptPermission(PlayerCreature* player);
+	bool hasAcceptPermission(unsigned long long playerID);
+
+	bool hasKickPermission(unsigned long long playerID);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -277,11 +279,13 @@ public:
 
 	bool isGuildObject();
 
-	bool hasMailPermission(PlayerCreature* player);
+	bool hasMailPermission(unsigned long long playerID);
 
-	bool hasSponsorPermission(PlayerCreature* player);
+	bool hasSponsorPermission(unsigned long long playerID);
 
-	bool hasAcceptPermission(PlayerCreature* player);
+	bool hasAcceptPermission(unsigned long long playerID);
+
+	bool hasKickPermission(unsigned long long playerID);
 
 	GuildObject* _this;
 
@@ -372,11 +376,13 @@ public:
 
 	bool isGuildObject();
 
-	bool hasMailPermission(PlayerCreature* player);
+	bool hasMailPermission(unsigned long long playerID);
 
-	bool hasSponsorPermission(PlayerCreature* player);
+	bool hasSponsorPermission(unsigned long long playerID);
 
-	bool hasAcceptPermission(PlayerCreature* player);
+	bool hasAcceptPermission(unsigned long long playerID);
+
+	bool hasKickPermission(unsigned long long playerID);
 
 protected:
 	String _param0_setGuildAbbrev__String_;

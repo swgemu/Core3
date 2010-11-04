@@ -57,25 +57,25 @@ bool GuildObjectImplementation::hasSponsorPermission(uint64 playerID) {
 	if (!guildMembers.contains(playerID))
 		return false;
 
-	GuildMemberInfo gmi = guildMembers.get(playerID);
+	GuildMemberInfo* gmi = &guildMembers.get(playerID);
 
-	return gmi.hasPermission(GuildObject::PERMISSION_SPONSOR);
+	return gmi->hasPermission(GuildObject::PERMISSION_SPONSOR);
 }
 
 bool GuildObjectImplementation::hasAcceptPermission(uint64 playerID) {
 	if (!guildMembers.contains(playerID))
 		return false;
 
-	GuildMemberInfo gmi = guildMembers.get(playerID);
+	GuildMemberInfo* gmi = &guildMembers.get(playerID);
 
-	return gmi.hasPermission(GuildObject::PERMISSION_ACCEPT);
+	return gmi->hasPermission(GuildObject::PERMISSION_ACCEPT);
 }
 
 bool GuildObjectImplementation::hasKickPermission(uint64 playerID) {
 	if (!guildMembers.contains(playerID))
 		return false;
 
-	GuildMemberInfo gmi = guildMembers.get(playerID);
+	GuildMemberInfo* gmi = &guildMembers.get(playerID);
 
-	return gmi.hasPermission(GuildObject::PERMISSION_KICK);
+	return gmi->hasPermission(GuildObject::PERMISSION_KICK);
 }
