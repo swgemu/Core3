@@ -75,7 +75,7 @@ void GuildManagerImplementation::loadGuilds() {
 		throw Exception("problem in GuildManagerImplementation::loadGuilds()");
 	}
 
-	info(guildList.size() + " guilds loaded.", true);
+	info(String::valueOf(guildList.size()) + " guilds loaded.", true);
 }
 
 void GuildManagerImplementation::sendGuildCreateNameTo(PlayerCreature* player, GuildTerminal* terminal) {
@@ -368,7 +368,7 @@ GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, Gui
 	if (isCreatingGuild(playerID))
 		removePendingGuild(playerID);
 
-	ManagedReference<GuildObject*> guild = (GuildObject*) ObjectManager::instance()->createObject(0xD6888614, 0, "guilds"); //object/guild/guild_object.iff
+	ManagedReference<GuildObject*> guild = (GuildObject*) ObjectManager::instance()->createObject(0xD6888614, 1, "guilds"); //object/guild/guild_object.iff
 	guild->setGuildLeaderID(playerID);
 	guild->setGuildID(Long::hashCode(guild->getObjectID()));
 	guild->setGuildName(guildName);
