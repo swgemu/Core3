@@ -461,7 +461,7 @@ void GuildManager::acceptSponsoredPlayer(PlayerCreature* player, unsigned long l
 		_implementation->acceptSponsoredPlayer(player, targetID);
 }
 
-void GuildManager::kickMember(PlayerCreature* player, unsigned long long targetID) {
+void GuildManager::sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -469,14 +469,14 @@ void GuildManager::kickMember(PlayerCreature* player, unsigned long long targetI
 
 		DistributedMethod method(this, 35);
 		method.addObjectParameter(player);
-		method.addUnsignedLongParameter(targetID);
+		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->kickMember(player, targetID);
+		_implementation->sendGuildKickPromptTo(player, target);
 }
 
-void GuildManager::setGuildMemberTitle(PlayerCreature* player, unsigned long long targetID) {
+void GuildManager::sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -484,14 +484,14 @@ void GuildManager::setGuildMemberTitle(PlayerCreature* player, unsigned long lon
 
 		DistributedMethod method(this, 36);
 		method.addObjectParameter(player);
-		method.addUnsignedLongParameter(targetID);
+		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setGuildMemberTitle(player, targetID);
+		_implementation->sendGuildSetTitleTo(player, target);
 }
 
-void GuildManager::setAllegianceTo(PlayerCreature* player, unsigned long long targetID) {
+void GuildManager::kickMember(PlayerCreature* player, PlayerCreature* target) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -499,11 +499,58 @@ void GuildManager::setAllegianceTo(PlayerCreature* player, unsigned long long ta
 
 		DistributedMethod method(this, 37);
 		method.addObjectParameter(player);
-		method.addUnsignedLongParameter(targetID);
+		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setAllegianceTo(player, targetID);
+		_implementation->kickMember(player, target);
+}
+
+void GuildManager::setMemberTitle(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
+		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(targetID);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setMemberTitle(player, targetID, guildTerminal);
+}
+
+void GuildManager::setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 39);
+		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(targetID);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAllegianceTo(player, targetID, guildTerminal);
+}
+
+void GuildManager::sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 40);
+		method.addObjectParameter(player);
+		method.addObjectParameter(target);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendMemberPermissionsTo(player, target);
 }
 
 DistributedObjectServant* GuildManager::_getImplementation() {
@@ -754,13 +801,22 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		acceptSponsoredPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 35:
-		kickMember((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		sendGuildKickPromptTo((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 36:
-		setGuildMemberTitle((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		sendGuildSetTitleTo((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 37:
-		setAllegianceTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		kickMember((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 38:
+		setMemberTitle((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
+		break;
+	case 39:
+		setAllegianceTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
+		break;
+	case 40:
+		sendMemberPermissionsTo((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -885,16 +941,28 @@ void GuildManagerAdapter::acceptSponsoredPlayer(PlayerCreature* player, unsigned
 	((GuildManagerImplementation*) impl)->acceptSponsoredPlayer(player, targetID);
 }
 
-void GuildManagerAdapter::kickMember(PlayerCreature* player, unsigned long long targetID) {
-	((GuildManagerImplementation*) impl)->kickMember(player, targetID);
+void GuildManagerAdapter::sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target) {
+	((GuildManagerImplementation*) impl)->sendGuildKickPromptTo(player, target);
 }
 
-void GuildManagerAdapter::setGuildMemberTitle(PlayerCreature* player, unsigned long long targetID) {
-	((GuildManagerImplementation*) impl)->setGuildMemberTitle(player, targetID);
+void GuildManagerAdapter::sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target) {
+	((GuildManagerImplementation*) impl)->sendGuildSetTitleTo(player, target);
 }
 
-void GuildManagerAdapter::setAllegianceTo(PlayerCreature* player, unsigned long long targetID) {
-	((GuildManagerImplementation*) impl)->setAllegianceTo(player, targetID);
+void GuildManagerAdapter::kickMember(PlayerCreature* player, PlayerCreature* target) {
+	((GuildManagerImplementation*) impl)->kickMember(player, target);
+}
+
+void GuildManagerAdapter::setMemberTitle(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
+	((GuildManagerImplementation*) impl)->setMemberTitle(player, targetID, guildTerminal);
+}
+
+void GuildManagerAdapter::setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
+	((GuildManagerImplementation*) impl)->setAllegianceTo(player, targetID, guildTerminal);
+}
+
+void GuildManagerAdapter::sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target) {
+	((GuildManagerImplementation*) impl)->sendMemberPermissionsTo(player, target);
 }
 
 /*

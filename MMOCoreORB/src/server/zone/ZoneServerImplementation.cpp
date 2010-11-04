@@ -490,9 +490,7 @@ int ZoneServerImplementation::getConnectionCount() {
 void ZoneServerImplementation::printInfo(bool forcedLog) {
 	lock();
 
-	StringBuffer sched;
-	sched << "TaskManager - scheduled task size = " << Core::getTaskManager()->getScheduledTaskSize();
-	info(sched, forcedLog);
+	Core::getTaskManager()->printInfo();
 
 	/*StringBuffer msg;
 	msg << "MessageQueue - size = " << processor->getMessageQueue()->size();
