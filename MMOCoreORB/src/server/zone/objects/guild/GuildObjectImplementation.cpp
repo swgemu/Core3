@@ -20,19 +20,27 @@ void GuildObjectImplementation::broadcastMessage(PlayerCreature* player, BaseMes
 }
 
 void GuildObjectImplementation::addMember(uint64 playerID) {
+	Locker locker(_this);
+
 	GuildMemberInfo gmi(playerID);
 	guildMembers.put(playerID, gmi);
 }
 
 void GuildObjectImplementation::removeMember(uint64 playerID) {
+	Locker locker(_this);
+
 	guildMembers.drop(playerID);
 }
 
 bool GuildObjectImplementation::hasMember(uint64 playerID) {
+	Locker locker(_this);
+
 	return guildMembers.contains(playerID);
 }
 
 GuildMemberInfo* GuildObjectImplementation::getMember(uint64 playerID) {
+	Locker locker(_this);
+
 	return &guildMembers.get(playerID);
 }
 
@@ -63,6 +71,8 @@ bool GuildObjectImplementation::hasSponsorPermission(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::hasAcceptPermission(uint64 playerID) {
+	Locker locker(_this);
+
 	if (!guildMembers.contains(playerID))
 		return false;
 
@@ -72,6 +82,8 @@ bool GuildObjectImplementation::hasAcceptPermission(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::hasKickPermission(uint64 playerID) {
+	Locker locker(_this);
+
 	if (!guildMembers.contains(playerID))
 		return false;
 

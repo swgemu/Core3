@@ -105,19 +105,19 @@ class GuildObject extends SceneObject {
 	@local
 	public native GuildMemberInfo getMember(unsigned long playerID);
 	
-	public void addSponsoredPlayer(unsigned long playerID) {
+	public synchronized void addSponsoredPlayer(unsigned long playerID) {
 		sponsoredPlayers.put(playerID);
 	}
 	
-	public void removeSponsoredPlayer(unsigned long playerID) {
+	public synchronized void removeSponsoredPlayer(unsigned long playerID) {
 		sponsoredPlayers.drop(playerID);
 	}
 	
-	public boolean hasSponsoredPlayer(unsigned long playerID) {
+	public synchronized boolean hasSponsoredPlayer(unsigned long playerID) {
 		return sponsoredPlayers.contains(playerID);
 	}
 	
-	public unsigned long getSponsoredPlayer(int idx) {
+	public synchronized unsigned long getSponsoredPlayer(int idx) {
 		return sponsoredPlayers.get(idx);
 	}
 	

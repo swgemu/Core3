@@ -663,41 +663,49 @@ GuildManagerImplementation::GuildManagerImplementation(ZoneServer* serv, ZonePro
 }
 
 void GuildManagerImplementation::addPendingGuild(unsigned long long playerID, const String& guildName) {
+	Locker _locker(_this);
 	// server/zone/managers/guild/GuildManager.idl(94):  		pendingGuilds.put(playerID, guildName);
 	(&pendingGuilds)->put(playerID, guildName);
 }
 
 void GuildManagerImplementation::removePendingGuild(unsigned long long playerID) {
+	Locker _locker(_this);
 	// server/zone/managers/guild/GuildManager.idl(98):  		pendingGuilds.drop(playerID);
 	(&pendingGuilds)->drop(playerID);
 }
 
 String GuildManagerImplementation::getPendingGuildName(unsigned long long playerID) {
+	Locker _locker(_this);
 	// server/zone/managers/guild/GuildManager.idl(102):  		return pendingGuilds.get(playerID);
 	return (&pendingGuilds)->get(playerID);
 }
 
 void GuildManagerImplementation::addSponsoredPlayer(unsigned long long playerID, GuildObject* guild) {
+	Locker _locker(_this);
 	// server/zone/managers/guild/GuildManager.idl(106):  		sponsoredPlayers.put(playerID, guild);
 	(&sponsoredPlayers)->put(playerID, guild);
 }
 
 void GuildManagerImplementation::removeSponsoredPlayer(unsigned long long playerID) {
+	Locker _locker(_this);
 	// server/zone/managers/guild/GuildManager.idl(110):  		sponsoredPlayers.drop(playerID);
 	(&sponsoredPlayers)->drop(playerID);
 }
 
 bool GuildManagerImplementation::isCreatingGuild(unsigned long long playerID) {
+	Locker _locker(_this);
 	// server/zone/managers/guild/GuildManager.idl(114):  		return pendingGuilds.contains(playerID);
 	return (&pendingGuilds)->contains(playerID);
 }
 
 bool GuildManagerImplementation::isSponsoredPlayer(unsigned long long playerID) {
+	Locker _locker(_this);
 	// server/zone/managers/guild/GuildManager.idl(118):  		return sponsoredPlayers.contains(playerID);
 	return (&sponsoredPlayers)->contains(playerID);
 }
 
 GuildObject* GuildManagerImplementation::getSponsoredGuild(unsigned long long playerID) {
+	Locker _locker(_this);
 	// server/zone/managers/guild/GuildManager.idl(122):  		return sponsoredPlayers.get(playerID);
 	return (&sponsoredPlayers)->get(playerID);
 }
