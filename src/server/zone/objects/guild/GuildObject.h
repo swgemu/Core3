@@ -57,6 +57,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/guild/GuildMemberList.h"
 
+#include "server/zone/objects/guild/GuildMemberInfo.h"
+
 #include "engine/service/proto/BaseMessage.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -70,23 +72,25 @@ namespace guild {
 
 class GuildObject : public SceneObject {
 public:
-	static const int PERMISSION_NONE = 0x00;
+	static const byte PERMISSION_NONE = 0x00;
 
-	static const int PERMISSION_MAIL = 0x01;
+	static const byte PERMISSION_MAIL = 0x01;
 
-	static const int PERMISSION_SPONSOR = 0x02;
+	static const byte PERMISSION_SPONSOR = 0x02;
 
-	static const int PERMISSION_TITLE = 0x04;
+	static const byte PERMISSION_TITLE = 0x04;
 
-	static const int PERMISSION_ACCEPT = 0x08;
+	static const byte PERMISSION_ACCEPT = 0x08;
 
-	static const int PERMISSION_KICK = 0x10;
+	static const byte PERMISSION_KICK = 0x10;
 
-	static const int PERMISSION_WAR = 0x20;
+	static const byte PERMISSION_WAR = 0x20;
 
-	static const int PERMISSION_NAME = 0x40;
+	static const byte PERMISSION_NAME = 0x40;
 
-	static const int PERMISSION_DISBAND = 0x80;
+	static const byte PERMISSION_DISBAND = 0x80;
+
+	static const byte PERMISSION_ALL = 0xFF;
 
 	GuildObject();
 
@@ -96,11 +100,23 @@ public:
 
 	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf = false);
 
-	void addMember(SceneObject* player);
+	void addMember(unsigned long long playerID);
 
-	void removeMember(SceneObject* player);
+	void removeMember(unsigned long long playerID);
 
-	bool hasMember(SceneObject* player);
+	bool hasMember(unsigned long long playerID);
+
+	GuildMemberInfo* getMember(unsigned long long playerID);
+
+	void addSponsoredPlayer(unsigned long long playerID);
+
+	void removeSponsoredPlayer(unsigned long long playerID);
+
+	bool hasSponsoredPlayer(unsigned long long playerID);
+
+	unsigned long long getSponsoredPlayer(int idx);
+
+	int getSponsoredPlayerCount();
 
 	void startChatRoom();
 
@@ -131,6 +147,12 @@ public:
 	String getGuildKey();
 
 	bool isGuildObject();
+
+	bool hasMailPermission(PlayerCreature* player);
+
+	bool hasSponsorPermission(PlayerCreature* player);
+
+	bool hasAcceptPermission(PlayerCreature* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -166,7 +188,7 @@ protected:
 
 	GuildMemberList guildMembers;
 
-	ManagedWeakReference<GuildTerminal* > guildTerminal;
+	SortedVector<unsigned long long> sponsoredPlayers;
 
 	unsigned int guildID;
 
@@ -177,23 +199,25 @@ protected:
 	unsigned long long guildLeaderID;
 
 public:
-	static const int PERMISSION_NONE = 0x00;
+	static const byte PERMISSION_NONE = 0x00;
 
-	static const int PERMISSION_MAIL = 0x01;
+	static const byte PERMISSION_MAIL = 0x01;
 
-	static const int PERMISSION_SPONSOR = 0x02;
+	static const byte PERMISSION_SPONSOR = 0x02;
 
-	static const int PERMISSION_TITLE = 0x04;
+	static const byte PERMISSION_TITLE = 0x04;
 
-	static const int PERMISSION_ACCEPT = 0x08;
+	static const byte PERMISSION_ACCEPT = 0x08;
 
-	static const int PERMISSION_KICK = 0x10;
+	static const byte PERMISSION_KICK = 0x10;
 
-	static const int PERMISSION_WAR = 0x20;
+	static const byte PERMISSION_WAR = 0x20;
 
-	static const int PERMISSION_NAME = 0x40;
+	static const byte PERMISSION_NAME = 0x40;
 
-	static const int PERMISSION_DISBAND = 0x80;
+	static const byte PERMISSION_DISBAND = 0x80;
+
+	static const byte PERMISSION_ALL = 0xFF;
 
 	GuildObjectImplementation();
 
@@ -205,11 +229,23 @@ public:
 
 	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf = false);
 
-	void addMember(SceneObject* player);
+	void addMember(unsigned long long playerID);
 
-	void removeMember(SceneObject* player);
+	void removeMember(unsigned long long playerID);
 
-	bool hasMember(SceneObject* player);
+	bool hasMember(unsigned long long playerID);
+
+	GuildMemberInfo* getMember(unsigned long long playerID);
+
+	void addSponsoredPlayer(unsigned long long playerID);
+
+	void removeSponsoredPlayer(unsigned long long playerID);
+
+	bool hasSponsoredPlayer(unsigned long long playerID);
+
+	unsigned long long getSponsoredPlayer(int idx);
+
+	int getSponsoredPlayerCount();
 
 	void startChatRoom();
 
@@ -240,6 +276,12 @@ public:
 	String getGuildKey();
 
 	bool isGuildObject();
+
+	bool hasMailPermission(PlayerCreature* player);
+
+	bool hasSponsorPermission(PlayerCreature* player);
+
+	bool hasAcceptPermission(PlayerCreature* player);
 
 	GuildObject* _this;
 
@@ -286,11 +328,21 @@ public:
 
 	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf);
 
-	void addMember(SceneObject* player);
+	void addMember(unsigned long long playerID);
 
-	void removeMember(SceneObject* player);
+	void removeMember(unsigned long long playerID);
 
-	bool hasMember(SceneObject* player);
+	bool hasMember(unsigned long long playerID);
+
+	void addSponsoredPlayer(unsigned long long playerID);
+
+	void removeSponsoredPlayer(unsigned long long playerID);
+
+	bool hasSponsoredPlayer(unsigned long long playerID);
+
+	unsigned long long getSponsoredPlayer(int idx);
+
+	int getSponsoredPlayerCount();
 
 	void startChatRoom();
 
@@ -319,6 +371,12 @@ public:
 	String getGuildKey();
 
 	bool isGuildObject();
+
+	bool hasMailPermission(PlayerCreature* player);
+
+	bool hasSponsorPermission(PlayerCreature* player);
+
+	bool hasAcceptPermission(PlayerCreature* player);
 
 protected:
 	String _param0_setGuildAbbrev__String_;

@@ -75,7 +75,7 @@ String GuildManager::getPendingGuildName(unsigned long long playerID) {
 		return _implementation->getPendingGuildName(playerID);
 }
 
-bool GuildManager::isCreatingGuild(unsigned long long playerID) {
+void GuildManager::addSponsoredPlayer(unsigned long long playerID, GuildObject* guild) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -83,10 +83,67 @@ bool GuildManager::isCreatingGuild(unsigned long long playerID) {
 
 		DistributedMethod method(this, 9);
 		method.addUnsignedLongParameter(playerID);
+		method.addObjectParameter(guild);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addSponsoredPlayer(playerID, guild);
+}
+
+void GuildManager::removeSponsoredPlayer(unsigned long long playerID) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addUnsignedLongParameter(playerID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeSponsoredPlayer(playerID);
+}
+
+bool GuildManager::isCreatingGuild(unsigned long long playerID) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCreatingGuild(playerID);
+}
+
+bool GuildManager::isSponsoredPlayer(unsigned long long playerID) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addUnsignedLongParameter(playerID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isSponsoredPlayer(playerID);
+}
+
+GuildObject* GuildManager::getSponsoredGuild(unsigned long long playerID) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addUnsignedLongParameter(playerID);
+
+		return (GuildObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getSponsoredGuild(playerID);
 }
 
 void GuildManager::sendBaselinesTo(PlayerCreature* player) {
@@ -95,7 +152,7 @@ void GuildManager::sendBaselinesTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -109,7 +166,7 @@ void GuildManager::loadGuilds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 15);
 
 		method.executeWithVoidReturn();
 	} else
@@ -122,7 +179,7 @@ void GuildManager::sendGuildCreateNameTo(PlayerCreature* player, GuildTerminal* 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guildTerminal);
 
@@ -137,7 +194,7 @@ void GuildManager::sendGuildCreateAbbrevTo(PlayerCreature* player, GuildTerminal
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guildTerminal);
 
@@ -152,7 +209,7 @@ void GuildManager::sendGuildInformationTo(PlayerCreature* player, GuildTerminal*
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guildTerminal);
 
@@ -161,13 +218,120 @@ void GuildManager::sendGuildInformationTo(PlayerCreature* player, GuildTerminal*
 		_implementation->sendGuildInformationTo(player, guildTerminal);
 }
 
+void GuildManager::sendGuildMemberListTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendGuildMemberListTo(player, guildTerminal);
+}
+
+void GuildManager::sendGuildMemberOptionsTo(PlayerCreature* player, GuildTerminal* guildTerminal, unsigned long long memberID) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guildTerminal);
+		method.addUnsignedLongParameter(memberID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendGuildMemberOptionsTo(player, guildTerminal, memberID);
+}
+
+void GuildManager::sendGuildDisbandConfirmTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendGuildDisbandConfirmTo(player, guildTerminal);
+}
+
+void GuildManager::sendGuildSponsoredListTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendGuildSponsoredListTo(player, guildTerminal);
+}
+
+void GuildManager::sendGuildSponsoredOptionsTo(PlayerCreature* player, unsigned long long playerID, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(playerID);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendGuildSponsoredOptionsTo(player, playerID, guildTerminal);
+}
+
+void GuildManager::sendGuildSponsorTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendGuildSponsorTo(player, guildTerminal);
+}
+
+void GuildManager::sendGuildSponsorVerifyTo(PlayerCreature* player, PlayerCreature* target) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addObjectParameter(player);
+		method.addObjectParameter(target);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendGuildSponsorVerifyTo(player, target);
+}
+
 bool GuildManager::validateGuildName(PlayerCreature* player, const String& guildName) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(guildName);
 
@@ -182,7 +346,7 @@ bool GuildManager::validateGuildAbbrev(PlayerCreature* player, const String& gui
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(guildAbbrev);
 
@@ -191,13 +355,41 @@ bool GuildManager::validateGuildAbbrev(PlayerCreature* player, const String& gui
 		return _implementation->validateGuildAbbrev(player, guildAbbrev);
 }
 
+bool GuildManager::guildNameExists(const String& guildName) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addAsciiParameter(guildName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->guildNameExists(guildName);
+}
+
+bool GuildManager::guildAbbrevExists(const String& guildAbbrev) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addAsciiParameter(guildAbbrev);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->guildAbbrevExists(guildAbbrev);
+}
+
 GuildObject* GuildManager::createGuild(PlayerCreature* player, GuildTerminal* guildTerminal, const String& guildName, const String& guildAbbrev) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guildTerminal);
 		method.addAsciiParameter(guildName);
@@ -208,19 +400,65 @@ GuildObject* GuildManager::createGuild(PlayerCreature* player, GuildTerminal* gu
 		return _implementation->createGuild(player, guildTerminal, guildName, guildAbbrev);
 }
 
-void GuildManager::acceptMember(PlayerCreature* player, unsigned long long targetID) {
+bool GuildManager::disbandGuild(PlayerCreature* player, GuildTerminal* guildTerminal) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 31);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guildTerminal);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->disbandGuild(player, guildTerminal);
+}
+
+void GuildManager::sponsorPlayer(PlayerCreature* player, GuildTerminal* guildTerminal, const String& playerName) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guildTerminal);
+		method.addAsciiParameter(playerName);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sponsorPlayer(player, guildTerminal, playerName);
+}
+
+void GuildManager::acceptSponsorshipRequest(PlayerCreature* player, PlayerCreature* target) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addObjectParameter(player);
+		method.addObjectParameter(target);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->acceptSponsorshipRequest(player, target);
+}
+
+void GuildManager::acceptSponsoredPlayer(PlayerCreature* player, unsigned long long targetID) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(targetID);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->acceptMember(player, targetID);
+		_implementation->acceptSponsoredPlayer(player, targetID);
 }
 
 void GuildManager::kickMember(PlayerCreature* player, unsigned long long targetID) {
@@ -229,7 +467,7 @@ void GuildManager::kickMember(PlayerCreature* player, unsigned long long targetI
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(targetID);
 
@@ -244,7 +482,7 @@ void GuildManager::setGuildMemberTitle(PlayerCreature* player, unsigned long lon
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(targetID);
 
@@ -259,7 +497,7 @@ void GuildManager::setAllegianceTo(PlayerCreature* player, unsigned long long ta
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(targetID);
 
@@ -353,38 +591,68 @@ void GuildManagerImplementation::_serializationHelperMethod() {
 
 GuildManagerImplementation::GuildManagerImplementation(ZoneServer* serv, ZoneProcessServer* proc) {
 	_initializeImplementation();
-	// server/zone/managers/guild/GuildManager.idl(73):  		Logger.setLoggingName("GuildManager");
+	// server/zone/managers/guild/GuildManager.idl(76):  		Logger.setLoggingName("GuildManager");
 	Logger::setLoggingName("GuildManager");
-	// server/zone/managers/guild/GuildManager.idl(74):  		Logger.setLogging(true);
+	// server/zone/managers/guild/GuildManager.idl(77):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/guild/GuildManager.idl(75):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/guild/GuildManager.idl(78):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/guild/GuildManager.idl(77):  		pendingGuilds.setNoDuplicateInsertPlan();
+	// server/zone/managers/guild/GuildManager.idl(80):  		pendingGuilds.setNoDuplicateInsertPlan();
 	(&pendingGuilds)->setNoDuplicateInsertPlan();
-	// server/zone/managers/guild/GuildManager.idl(79):  		server = serv;
+	// server/zone/managers/guild/GuildManager.idl(82):  		sponsoredPlayers.setNoDuplicateInsertPlan();
+	(&sponsoredPlayers)->setNoDuplicateInsertPlan();
+	// server/zone/managers/guild/GuildManager.idl(83):  		sponsoredPlayers.setNullValue(null);
+	(&sponsoredPlayers)->setNullValue(NULL);
+	// server/zone/managers/guild/GuildManager.idl(85):  		server = serv;
 	server = serv;
-	// server/zone/managers/guild/GuildManager.idl(80):  		processor = proc;
+	// server/zone/managers/guild/GuildManager.idl(86):  		processor = proc;
 	processor = proc;
+	// server/zone/managers/guild/GuildManager.idl(88):  		requiredMembers = 5;
+	requiredMembers = 5;
+	// server/zone/managers/guild/GuildManager.idl(89):  		maximumMembers = 500;
+	maximumMembers = 500;
+	// server/zone/managers/guild/GuildManager.idl(90):  		guildUpdateInterval = 1440;
+	guildUpdateInterval = 1440;
 }
 
 void GuildManagerImplementation::addPendingGuild(unsigned long long playerID, const String& guildName) {
-	// server/zone/managers/guild/GuildManager.idl(84):  		pendingGuilds.put(playerID, guildName);
+	// server/zone/managers/guild/GuildManager.idl(94):  		pendingGuilds.put(playerID, guildName);
 	(&pendingGuilds)->put(playerID, guildName);
 }
 
 void GuildManagerImplementation::removePendingGuild(unsigned long long playerID) {
-	// server/zone/managers/guild/GuildManager.idl(88):  		pendingGuilds.drop(playerID);
+	// server/zone/managers/guild/GuildManager.idl(98):  		pendingGuilds.drop(playerID);
 	(&pendingGuilds)->drop(playerID);
 }
 
 String GuildManagerImplementation::getPendingGuildName(unsigned long long playerID) {
-	// server/zone/managers/guild/GuildManager.idl(92):  		return pendingGuilds.get(playerID);
+	// server/zone/managers/guild/GuildManager.idl(102):  		return pendingGuilds.get(playerID);
 	return (&pendingGuilds)->get(playerID);
 }
 
+void GuildManagerImplementation::addSponsoredPlayer(unsigned long long playerID, GuildObject* guild) {
+	// server/zone/managers/guild/GuildManager.idl(106):  		sponsoredPlayers.put(playerID, guild);
+	(&sponsoredPlayers)->put(playerID, guild);
+}
+
+void GuildManagerImplementation::removeSponsoredPlayer(unsigned long long playerID) {
+	// server/zone/managers/guild/GuildManager.idl(110):  		sponsoredPlayers.drop(playerID);
+	(&sponsoredPlayers)->drop(playerID);
+}
+
 bool GuildManagerImplementation::isCreatingGuild(unsigned long long playerID) {
-	// server/zone/managers/guild/GuildManager.idl(96):  		return pendingGuilds.contains(playerID);
+	// server/zone/managers/guild/GuildManager.idl(114):  		return pendingGuilds.contains(playerID);
 	return (&pendingGuilds)->contains(playerID);
+}
+
+bool GuildManagerImplementation::isSponsoredPlayer(unsigned long long playerID) {
+	// server/zone/managers/guild/GuildManager.idl(118):  		return sponsoredPlayers.contains(playerID);
+	return (&sponsoredPlayers)->contains(playerID);
+}
+
+GuildObject* GuildManagerImplementation::getSponsoredGuild(unsigned long long playerID) {
+	// server/zone/managers/guild/GuildManager.idl(122):  		return sponsoredPlayers.get(playerID);
+	return (&sponsoredPlayers)->get(playerID);
 }
 
 /*
@@ -408,42 +676,90 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertAscii(getPendingGuildName(inv->getUnsignedLongParameter()));
 		break;
 	case 9:
-		resp->insertBoolean(isCreatingGuild(inv->getUnsignedLongParameter()));
+		addSponsoredPlayer(inv->getUnsignedLongParameter(), (GuildObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		sendBaselinesTo((PlayerCreature*) inv->getObjectParameter());
+		removeSponsoredPlayer(inv->getUnsignedLongParameter());
 		break;
 	case 11:
-		loadGuilds();
+		resp->insertBoolean(isCreatingGuild(inv->getUnsignedLongParameter()));
 		break;
 	case 12:
-		sendGuildCreateNameTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		resp->insertBoolean(isSponsoredPlayer(inv->getUnsignedLongParameter()));
 		break;
 	case 13:
-		sendGuildCreateAbbrevTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		resp->insertLong(getSponsoredGuild(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 14:
-		sendGuildInformationTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		sendBaselinesTo((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertBoolean(validateGuildName((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_validateGuildName__PlayerCreature_String_)));
+		loadGuilds();
 		break;
 	case 16:
-		resp->insertBoolean(validateGuildAbbrev((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_validateGuildAbbrev__PlayerCreature_String_)));
+		sendGuildCreateNameTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
 	case 17:
-		resp->insertLong(createGuild((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_createGuild__PlayerCreature_GuildTerminal_String_String_), inv->getAsciiParameter(_param3_createGuild__PlayerCreature_GuildTerminal_String_String_))->_getObjectID());
+		sendGuildCreateAbbrevTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
 	case 18:
-		acceptMember((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		sendGuildInformationTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
 	case 19:
-		kickMember((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		sendGuildMemberListTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
 	case 20:
-		setGuildMemberTitle((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		sendGuildMemberOptionsTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 21:
+		sendGuildDisbandConfirmTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		break;
+	case 22:
+		sendGuildSponsoredListTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		break;
+	case 23:
+		sendGuildSponsoredOptionsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
+		break;
+	case 24:
+		sendGuildSponsorTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
+		break;
+	case 25:
+		sendGuildSponsorVerifyTo((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 26:
+		resp->insertBoolean(validateGuildName((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_validateGuildName__PlayerCreature_String_)));
+		break;
+	case 27:
+		resp->insertBoolean(validateGuildAbbrev((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_validateGuildAbbrev__PlayerCreature_String_)));
+		break;
+	case 28:
+		resp->insertBoolean(guildNameExists(inv->getAsciiParameter(_param0_guildNameExists__String_)));
+		break;
+	case 29:
+		resp->insertBoolean(guildAbbrevExists(inv->getAsciiParameter(_param0_guildAbbrevExists__String_)));
+		break;
+	case 30:
+		resp->insertLong(createGuild((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_createGuild__PlayerCreature_GuildTerminal_String_String_), inv->getAsciiParameter(_param3_createGuild__PlayerCreature_GuildTerminal_String_String_))->_getObjectID());
+		break;
+	case 31:
+		resp->insertBoolean(disbandGuild((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter()));
+		break;
+	case 32:
+		sponsorPlayer((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_sponsorPlayer__PlayerCreature_GuildTerminal_String_));
+		break;
+	case 33:
+		acceptSponsorshipRequest((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 34:
+		acceptSponsoredPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		break;
+	case 35:
+		kickMember((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		break;
+	case 36:
+		setGuildMemberTitle((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		break;
+	case 37:
 		setAllegianceTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	default:
@@ -465,8 +781,24 @@ String GuildManagerAdapter::getPendingGuildName(unsigned long long playerID) {
 	return ((GuildManagerImplementation*) impl)->getPendingGuildName(playerID);
 }
 
+void GuildManagerAdapter::addSponsoredPlayer(unsigned long long playerID, GuildObject* guild) {
+	((GuildManagerImplementation*) impl)->addSponsoredPlayer(playerID, guild);
+}
+
+void GuildManagerAdapter::removeSponsoredPlayer(unsigned long long playerID) {
+	((GuildManagerImplementation*) impl)->removeSponsoredPlayer(playerID);
+}
+
 bool GuildManagerAdapter::isCreatingGuild(unsigned long long playerID) {
 	return ((GuildManagerImplementation*) impl)->isCreatingGuild(playerID);
+}
+
+bool GuildManagerAdapter::isSponsoredPlayer(unsigned long long playerID) {
+	return ((GuildManagerImplementation*) impl)->isSponsoredPlayer(playerID);
+}
+
+GuildObject* GuildManagerAdapter::getSponsoredGuild(unsigned long long playerID) {
+	return ((GuildManagerImplementation*) impl)->getSponsoredGuild(playerID);
 }
 
 void GuildManagerAdapter::sendBaselinesTo(PlayerCreature* player) {
@@ -489,6 +821,34 @@ void GuildManagerAdapter::sendGuildInformationTo(PlayerCreature* player, GuildTe
 	((GuildManagerImplementation*) impl)->sendGuildInformationTo(player, guildTerminal);
 }
 
+void GuildManagerAdapter::sendGuildMemberListTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	((GuildManagerImplementation*) impl)->sendGuildMemberListTo(player, guildTerminal);
+}
+
+void GuildManagerAdapter::sendGuildMemberOptionsTo(PlayerCreature* player, GuildTerminal* guildTerminal, unsigned long long memberID) {
+	((GuildManagerImplementation*) impl)->sendGuildMemberOptionsTo(player, guildTerminal, memberID);
+}
+
+void GuildManagerAdapter::sendGuildDisbandConfirmTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	((GuildManagerImplementation*) impl)->sendGuildDisbandConfirmTo(player, guildTerminal);
+}
+
+void GuildManagerAdapter::sendGuildSponsoredListTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	((GuildManagerImplementation*) impl)->sendGuildSponsoredListTo(player, guildTerminal);
+}
+
+void GuildManagerAdapter::sendGuildSponsoredOptionsTo(PlayerCreature* player, unsigned long long playerID, GuildTerminal* guildTerminal) {
+	((GuildManagerImplementation*) impl)->sendGuildSponsoredOptionsTo(player, playerID, guildTerminal);
+}
+
+void GuildManagerAdapter::sendGuildSponsorTo(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	((GuildManagerImplementation*) impl)->sendGuildSponsorTo(player, guildTerminal);
+}
+
+void GuildManagerAdapter::sendGuildSponsorVerifyTo(PlayerCreature* player, PlayerCreature* target) {
+	((GuildManagerImplementation*) impl)->sendGuildSponsorVerifyTo(player, target);
+}
+
 bool GuildManagerAdapter::validateGuildName(PlayerCreature* player, const String& guildName) {
 	return ((GuildManagerImplementation*) impl)->validateGuildName(player, guildName);
 }
@@ -497,12 +857,32 @@ bool GuildManagerAdapter::validateGuildAbbrev(PlayerCreature* player, const Stri
 	return ((GuildManagerImplementation*) impl)->validateGuildAbbrev(player, guildAbbrev);
 }
 
+bool GuildManagerAdapter::guildNameExists(const String& guildName) {
+	return ((GuildManagerImplementation*) impl)->guildNameExists(guildName);
+}
+
+bool GuildManagerAdapter::guildAbbrevExists(const String& guildAbbrev) {
+	return ((GuildManagerImplementation*) impl)->guildAbbrevExists(guildAbbrev);
+}
+
 GuildObject* GuildManagerAdapter::createGuild(PlayerCreature* player, GuildTerminal* guildTerminal, const String& guildName, const String& guildAbbrev) {
 	return ((GuildManagerImplementation*) impl)->createGuild(player, guildTerminal, guildName, guildAbbrev);
 }
 
-void GuildManagerAdapter::acceptMember(PlayerCreature* player, unsigned long long targetID) {
-	((GuildManagerImplementation*) impl)->acceptMember(player, targetID);
+bool GuildManagerAdapter::disbandGuild(PlayerCreature* player, GuildTerminal* guildTerminal) {
+	return ((GuildManagerImplementation*) impl)->disbandGuild(player, guildTerminal);
+}
+
+void GuildManagerAdapter::sponsorPlayer(PlayerCreature* player, GuildTerminal* guildTerminal, const String& playerName) {
+	((GuildManagerImplementation*) impl)->sponsorPlayer(player, guildTerminal, playerName);
+}
+
+void GuildManagerAdapter::acceptSponsorshipRequest(PlayerCreature* player, PlayerCreature* target) {
+	((GuildManagerImplementation*) impl)->acceptSponsorshipRequest(player, target);
+}
+
+void GuildManagerAdapter::acceptSponsoredPlayer(PlayerCreature* player, unsigned long long targetID) {
+	((GuildManagerImplementation*) impl)->acceptSponsoredPlayer(player, targetID);
 }
 
 void GuildManagerAdapter::kickMember(PlayerCreature* player, unsigned long long targetID) {

@@ -10,28 +10,15 @@
 
 #include "engine/engine.h"
 
+#include "GuildMemberInfo.h"
+
 namespace server {
  namespace zone {
   namespace objects {
    namespace guild {
 
-    class GuildMemberInfo;
-
-	class GuildMemberList : public VectorMap<uint64, GuildMemberInfo*> {
-		uint64 guildLeaderID;
-
-	public:
-		GuildMemberList() : VectorMap<uint64, GuildMemberInfo*>() {
-			setNullValue(NULL);
-			setNoDuplicateInsertPlan();
-			setSize(500, false);
-		}
-
-		inline uint64 getGuildLeaderID() {
-			return guildLeaderID;
-		}
+	class GuildMemberList : public VectorMap<uint64, GuildMemberInfo> {
 	};
-
    }
   }
  }

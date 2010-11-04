@@ -87,13 +87,27 @@ bool GuildTerminal::isGuildTerminal() {
 		return _implementation->isGuildTerminal();
 }
 
-GuildObject* GuildTerminal::getGuildObject() {
+void GuildTerminal::setGuildObject(GuildObject* guild) {
 	GuildTerminalImplementation* _implementation = (GuildTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addObjectParameter(guild);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setGuildObject(guild);
+}
+
+GuildObject* GuildTerminal::getGuildObject() {
+	GuildTerminalImplementation* _implementation = (GuildTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 
 		return (GuildObject*) method.executeWithObjectReturn();
 	} else
@@ -200,8 +214,13 @@ bool GuildTerminalImplementation::isGuildTerminal() {
 	return true;
 }
 
+void GuildTerminalImplementation::setGuildObject(GuildObject* guild) {
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(78):  		guildObject = guild;
+	guildObject = guild;
+}
+
 GuildObject* GuildTerminalImplementation::getGuildObject() {
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(78):  		return guildObject;
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(82):  		return guildObject;
 	return guildObject;
 }
 
@@ -229,6 +248,9 @@ Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isGuildTerminal());
 		break;
 	case 10:
+		setGuildObject((GuildObject*) inv->getObjectParameter());
+		break;
+	case 11:
 		resp->insertLong(getGuildObject()->_getObjectID());
 		break;
 	default:
@@ -252,6 +274,10 @@ int GuildTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte se
 
 bool GuildTerminalAdapter::isGuildTerminal() {
 	return ((GuildTerminalImplementation*) impl)->isGuildTerminal();
+}
+
+void GuildTerminalAdapter::setGuildObject(GuildObject* guild) {
+	((GuildTerminalImplementation*) impl)->setGuildObject(guild);
 }
 
 GuildObject* GuildTerminalAdapter::getGuildObject() {

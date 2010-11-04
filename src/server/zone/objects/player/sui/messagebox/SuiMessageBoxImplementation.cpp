@@ -58,10 +58,16 @@ BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 	if (cancelButton) {
 		addSetting("3", "btnCancel", "Enabled", "True");
 		addSetting("3", "btnCancel", "Visible", "True");
+
+		if (cancelButtonText.indexOf("@") == 0)
+			addSetting("3", "btnCancel", "Text", cancelButtonText);
 	} else {
 		addSetting("3", "btnCancel", "Enabled", "False");
 		addSetting("3", "btnCancel", "Visible", "False");
 	}
+
+	if (okButtonText.indexOf("@") == 0)
+		addSetting("3", "btnOk", "Text", okButtonText);
 
 	addSetting("3", "btnRevert", "Enabled", "False");
 	addSetting("3", "btnRevert", "Visible", "False");

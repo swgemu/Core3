@@ -13,8 +13,6 @@
 #include "server/zone/objects/player/sui/SuiMessageCallback.h"
 
 class GuildCreateNameResponseCallback : public SuiMessageCallback {
-	String guildName;
-
 public:
 	GuildCreateNameResponseCallback(ZoneClientSession* client, ZoneProcessServer* server)
 		: SuiMessageCallback(client, server) {
@@ -45,6 +43,10 @@ public:
 			return;
 
 		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
+
+		//Check to see if the guild terminal already has a guild object tied to it.
+		if (guildTerminal->getGuildObject() != NULL)
+			return;
 
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 

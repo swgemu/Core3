@@ -17,22 +17,76 @@ namespace guild {
 
 	class GuildObject;
 
-	class GuildMemberInfo {
+	class GuildMemberInfo : public Object {
 		uint64 playerID;
 		String guildTitle;
 		uint8 permissions;
 		uint64 declaredAllegiance;
-		bool sponsored;
 
 	public:
-		GuildMemberInfo(uint64 playerid) {
-			playerID = playerid;
-			permissions = GuildObject::PERMISSION_NONE;
+		GuildMemberInfo() {
+			playerID = 0;
+			permissions = 0;
 			declaredAllegiance = 0;
-			sponsored = true;
+		}
+
+		GuildMemberInfo(uint64 playerid);
+
+		GuildMemberInfo(const GuildMemberInfo& gmi) : Object() {
+			playerID = gmi.playerID;
+			guildTitle = gmi.guildTitle;
+			permissions = gmi.permissions;
+			declaredAllegiance = gmi.declaredAllegiance;
+		}
+
+		int compareTo(const GuildMemberInfo& gmi) const;
+
+		GuildMemberInfo& operator=(const GuildMemberInfo& gmi);
+
+		inline uint64 getPlayerID() {
+			return playerID;
+		}
+
+		inline void setPlayerID(uint64 playerid) {
+			playerID = playerid;
+		}
+
+		inline String& getGuildTitle() {
+			return guildTitle;
+		}
+
+		inline void setGuildTitle(const String& title) {
+			guildTitle = title;
+		}
+
+		inline uint8 getPermissions() {
+			return permissions;
+		}
+
+		inline void setPermissions(uint8 permission) {
+			permissions = permission;
+		}
+
+		inline void addPermission(uint8 permission) {
+			permissions |= permission;
+		}
+
+		inline void removePermission(uint8 permission) {
+			permissions |= ~permission;
+		}
+
+		inline bool hasPermission(uint8 permission) {
+			return (permissions & permission);
+		}
+
+		inline uint64 getDeclaredAllegiance() {
+			return declaredAllegiance;
+		}
+
+		inline void setDeclaredAllegiance(uint64 playerid) {
+			declaredAllegiance = playerid;
 		}
 	};
-
 }
 }
 }
