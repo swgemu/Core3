@@ -91,3 +91,14 @@ bool GuildObjectImplementation::hasKickPermission(uint64 playerID) {
 
 	return gmi->hasPermission(GuildObject::PERMISSION_KICK);
 }
+
+bool GuildObjectImplementation::hasDisbandPermission(uint64 playerID) {
+	Locker locker(_this);
+
+	if (!guildMembers.contains(playerID))
+		return false;
+
+	GuildMemberInfo* gmi = &guildMembers.get(playerID);
+
+	return gmi->hasPermission(GuildObject::PERMISSION_DISBAND);
+}

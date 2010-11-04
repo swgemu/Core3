@@ -154,6 +154,8 @@ public:
 
 	bool hasAcceptPermission(unsigned long long playerID);
 
+	bool hasDisbandPermission(unsigned long long playerID);
+
 	bool hasKickPermission(unsigned long long playerID);
 
 	DistributedObjectServant* _getImplementation();
@@ -285,6 +287,8 @@ public:
 
 	bool hasAcceptPermission(unsigned long long playerID);
 
+	bool hasDisbandPermission(unsigned long long playerID);
+
 	bool hasKickPermission(unsigned long long playerID);
 
 	GuildObject* _this;
@@ -381,6 +385,8 @@ public:
 	bool hasSponsorPermission(unsigned long long playerID);
 
 	bool hasAcceptPermission(unsigned long long playerID);
+
+	bool hasDisbandPermission(unsigned long long playerID);
 
 	bool hasKickPermission(unsigned long long playerID);
 
