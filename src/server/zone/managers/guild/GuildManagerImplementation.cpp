@@ -556,7 +556,7 @@ void GuildManagerImplementation::acceptSponsoredPlayer(PlayerCreature* player, u
 
 	PlayerCreature* target = (PlayerCreature*) obj.get();
 
-	Locker _lock(target);
+	Locker _lock(target, player);
 
 	if (target->isInGuild()) {
 		player->sendSystemMessage("@guild:sponsor_already_in_guild"); //%TU is already in a guild.
@@ -627,6 +627,9 @@ void GuildManagerImplementation::kickMember(PlayerCreature* player, PlayerCreatu
 	}
 
 	guild->removeMember(targetID);
+
+	Locker clocker(target, player);
+
 	target->setGuildObject(NULL);
 
 	ParameterizedStringId params;
