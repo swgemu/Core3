@@ -100,6 +100,8 @@ public:
 
 	bool isGuildTerminal();
 
+	void setGuildObject(GuildObject* guild);
+
 	GuildObject* getGuildObject();
 
 	DistributedObjectServant* _getImplementation();
@@ -146,6 +148,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isGuildTerminal();
+
+	void setGuildObject(GuildObject* guild);
 
 	GuildObject* getGuildObject();
 
@@ -195,6 +199,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isGuildTerminal();
+
+	void setGuildObject(GuildObject* guild);
 
 	GuildObject* getGuildObject();
 

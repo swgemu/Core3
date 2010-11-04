@@ -48,6 +48,7 @@ import engine.service.proto.BaseMessage;
 import server.chat.room.ChatRoom;
 import server.zone.objects.tangible.terminal.guild.GuildTerminal;
 include server.zone.objects.guild.GuildMemberList;
+include server.zone.objects.guild.GuildMemberInfo;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.scene.SceneObject;
 import system.lang.String;
@@ -58,8 +59,8 @@ class GuildObject extends SceneObject {
 	@dereferenced
 	protected GuildMemberList guildMembers;
 	
-	@weakReference
-	protected GuildTerminal guildTerminal;
+	@dereferenced
+	protected SortedVector<unsigned long> sponsoredPlayers;
 	
 	protected unsigned int guildID;
 	protected string guildName;
@@ -67,15 +68,16 @@ class GuildObject extends SceneObject {
 	
 	protected unsigned long guildLeaderID;
 	
-	public static final int PERMISSION_NONE = 0x00;
-	public static final int PERMISSION_MAIL = 0x01;
-	public static final int PERMISSION_SPONSOR = 0x02;
-	public static final int PERMISSION_TITLE = 0x04;
-	public static final int PERMISSION_ACCEPT = 0x08;
-	public static final int PERMISSION_KICK = 0x10;
-	public static final int PERMISSION_WAR = 0x20;
-	public static final int PERMISSION_NAME = 0x40;
-	public static final int PERMISSION_DISBAND = 0x80;
+	public static final byte PERMISSION_NONE = 0x00;
+	public static final byte PERMISSION_MAIL = 0x01;
+	public static final byte PERMISSION_SPONSOR = 0x02;
+	public static final byte PERMISSION_TITLE = 0x04;
+	public static final byte PERMISSION_ACCEPT = 0x08;
+	public static final byte PERMISSION_KICK = 0x10;
+	public static final byte PERMISSION_WAR = 0x20;
+	public static final byte PERMISSION_NAME = 0x40;
+	public static final byte PERMISSION_DISBAND = 0x80;
+	public static final byte PERMISSION_ALL = 0xFF;
 	
 	public GuildObject() {		
 		Logger.setLoggingName("GuildObject");
@@ -83,16 +85,45 @@ class GuildObject extends SceneObject {
 		guildLeaderID = 0;
 		guildID = 0;
 		chatRoom = null;
-		guildTerminal = null;
+		
+		sponsoredPlayers.setNoDuplicateInsertPlan();
 	}
 	
 	public native void sendBaselinesTo(SceneObject player);
 	public native void broadcastMessage(BaseMessage msg);
 	public native void broadcastMessage(PlayerCreature player, BaseMessage msg, boolean sendSelf = false);
 
-	public native void addMember(SceneObject player);
-	public native void removeMember(SceneObject player);
-	public native boolean hasMember(SceneObject player);
+	/**
+	 * Adds the Player to the GuildMemberList. Doesn't do anything else!
+	 * Use the GuildManager for adding and removing of players that sends messages etc.
+	 * @param player The player's objectid to add
+	 */
+	public native void addMember(unsigned long playerID);
+	public native void removeMember(unsigned long playerID);
+	public native boolean hasMember(unsigned long playerID);
+	
+	@local
+	public native GuildMemberInfo getMember(unsigned long playerID);
+	
+	public void addSponsoredPlayer(unsigned long playerID) {
+		sponsoredPlayers.put(playerID);
+	}
+	
+	public void removeSponsoredPlayer(unsigned long playerID) {
+		sponsoredPlayers.drop(playerID);
+	}
+	
+	public boolean hasSponsoredPlayer(unsigned long playerID) {
+		return sponsoredPlayers.contains(playerID);
+	}
+	
+	public unsigned long getSponsoredPlayer(int idx) {
+		return sponsoredPlayers.get(idx);
+	}
+	
+	public int getSponsoredPlayerCount() {
+		return sponsoredPlayers.size();
+	}
 
 	public native void startChatRoom();
 	public native void destroyChatRoom();
@@ -150,4 +181,9 @@ class GuildObject extends SceneObject {
 	public boolean isGuildObject() {
 		return true;
 	}
+	
+	public native boolean hasMailPermission(unsigned long playerID);
+	public native boolean hasSponsorPermission(unsigned long playerID);
+	public native boolean hasAcceptPermission(unsigned long playerID);
+	public native boolean hasKickPermission(unsigned long playerID);
 }

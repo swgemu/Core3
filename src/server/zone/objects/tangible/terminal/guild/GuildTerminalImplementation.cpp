@@ -51,6 +51,8 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 }
 
 int GuildTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	Locker _lock(_this);
+
 	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 
 	if (guildManager == NULL)
@@ -58,12 +60,24 @@ int GuildTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 
 	switch (selectedID) {
 	case 185:
-		//guildManager->sendGuildCreateNameTo(player, _this);
+		guildManager->sendGuildCreateNameTo(player, _this);
 		break;
 	case 193:
-	case 186: //Guild Information
+	case 186:
 		guildManager->sendGuildInformationTo(player, _this);
 		break;
+	case 191:
+		guildManager->sendGuildDisbandConfirmTo(player, _this);
+		break;
+	case 194:
+	case 187:
+		guildManager->sendGuildMemberListTo(player, _this);
+		break;
+	case 188:
+		guildManager->sendGuildSponsoredListTo(player, _this);
+		break;
+	case 190:
+		guildManager->sendGuildSponsorTo(player, _this);
 	default:
 		TerminalImplementation::handleObjectMenuSelect(player, selectedID);
 	}
