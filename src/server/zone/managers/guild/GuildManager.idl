@@ -90,35 +90,35 @@ class GuildManager extends ManagedService implements Logger {
 		guildUpdateInterval = 1440;
 	}
 	
-	public void addPendingGuild(unsigned long playerID, final string guildName) {
+	public synchronized void addPendingGuild(unsigned long playerID, final string guildName) {
 		pendingGuilds.put(playerID, guildName);
 	}
 	
-	public void removePendingGuild(unsigned long playerID) {
+	public synchronized void removePendingGuild(unsigned long playerID) {
 		pendingGuilds.drop(playerID);
 	}
 	
-	public string getPendingGuildName(unsigned long playerID) {
+	public synchronized string getPendingGuildName(unsigned long playerID) {
 		return pendingGuilds.get(playerID);
 	}
 	
-	public void addSponsoredPlayer(unsigned long playerID, GuildObject guild) {
+	public synchronized void addSponsoredPlayer(unsigned long playerID, GuildObject guild) {
 		sponsoredPlayers.put(playerID, guild);
 	}
 	
-	public void removeSponsoredPlayer(unsigned long playerID) {
+	public synchronized void removeSponsoredPlayer(unsigned long playerID) {
 		sponsoredPlayers.drop(playerID);
 	}
 	
-	public boolean isCreatingGuild(unsigned long playerID) {
+	public synchronized boolean isCreatingGuild(unsigned long playerID) {
 		return pendingGuilds.contains(playerID);
 	}
 	
-	public boolean isSponsoredPlayer(unsigned long playerID) {
+	public synchronized boolean isSponsoredPlayer(unsigned long playerID) {
 		return sponsoredPlayers.contains(playerID);
 	}
 	
-	public GuildObject getSponsoredGuild(unsigned long playerID) {
+	public synchronized GuildObject getSponsoredGuild(unsigned long playerID) {
 		return sponsoredPlayers.get(playerID);
 	}
 	

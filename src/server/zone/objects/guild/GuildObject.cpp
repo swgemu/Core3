@@ -546,21 +546,25 @@ GuildObjectImplementation::GuildObjectImplementation() {
 }
 
 void GuildObjectImplementation::addSponsoredPlayer(unsigned long long playerID) {
+	Locker _locker(_this);
 	// server/zone/objects/guild/GuildObject.idl(109):  		sponsoredPlayers.put(playerID);
 	(&sponsoredPlayers)->put(playerID);
 }
 
 void GuildObjectImplementation::removeSponsoredPlayer(unsigned long long playerID) {
+	Locker _locker(_this);
 	// server/zone/objects/guild/GuildObject.idl(113):  		sponsoredPlayers.drop(playerID);
 	(&sponsoredPlayers)->drop(playerID);
 }
 
 bool GuildObjectImplementation::hasSponsoredPlayer(unsigned long long playerID) {
+	Locker _locker(_this);
 	// server/zone/objects/guild/GuildObject.idl(117):  		return sponsoredPlayers.contains(playerID);
 	return (&sponsoredPlayers)->contains(playerID);
 }
 
 unsigned long long GuildObjectImplementation::getSponsoredPlayer(int idx) {
+	Locker _locker(_this);
 	// server/zone/objects/guild/GuildObject.idl(121):  		return sponsoredPlayers.get(idx);
 	return (&sponsoredPlayers)->get(idx);
 }
