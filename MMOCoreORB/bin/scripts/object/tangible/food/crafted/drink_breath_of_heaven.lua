@@ -62,7 +62,7 @@ object_tangible_food_crafted_drink_breath_of_heaven = object_tangible_food_craft
 	modifiers = { "strength", 0, "quickness", 0, "focus", 0 },
 
 	buffName = "food.drink_breath_of_heaven",
-	buffCRC = 0,
+	buffCRC = 0xF87AA911,
 	speciesRestriction = ""
 }
 

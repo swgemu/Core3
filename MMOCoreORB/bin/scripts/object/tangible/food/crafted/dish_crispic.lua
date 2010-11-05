@@ -42,6 +42,30 @@
 
 
 object_tangible_food_crafted_dish_crispic = object_tangible_food_crafted_shared_dish_crispic:new {
+	templateType = CONSUMABLE,
+	
+	duration = 45,
+	filling = 10,
+	nutrition = 10,
+
+	effectType = 2,
+	
+	fillingMin = 17,
+	fillingMax = 10,
+	
+	flavorMin = 540,
+	flavorMax = 1080,
+	
+	nutritionMin = 10,
+	nutritionMax = 18,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "attack_accuracy", 0 },
+
+	buffName = "food.attack_accuracy",
+	buffCRC = 0,
+	speciesRestriction = ""
 
 }
 
