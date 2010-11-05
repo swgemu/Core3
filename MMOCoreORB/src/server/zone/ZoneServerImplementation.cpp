@@ -249,8 +249,8 @@ void ZoneServerImplementation::startManagers() {
 
 	guildManager = new GuildManager(_this, processor);
 	guildManager->deploy("GuildManager");
-	guildManager->loadGuilds();
 	guildManager->setChatManager(chatManager);
+	guildManager->loadGuilds();
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
