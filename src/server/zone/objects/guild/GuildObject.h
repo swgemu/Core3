@@ -118,9 +118,7 @@ public:
 
 	int getSponsoredPlayerCount();
 
-	void startChatRoom();
-
-	void destroyChatRoom();
+	void setChatRoom(ChatRoom* room);
 
 	ChatRoom* getChatRoom();
 
@@ -255,9 +253,7 @@ public:
 
 	int getSponsoredPlayerCount();
 
-	void startChatRoom();
-
-	void destroyChatRoom();
+	void setChatRoom(ChatRoom* room);
 
 	ChatRoom* getChatRoom();
 
@@ -360,9 +356,7 @@ public:
 
 	int getSponsoredPlayerCount();
 
-	void startChatRoom();
-
-	void destroyChatRoom();
+	void setChatRoom(ChatRoom* room);
 
 	ChatRoom* getChatRoom();
 

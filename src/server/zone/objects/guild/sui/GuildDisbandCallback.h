@@ -39,7 +39,12 @@ public:
 
 		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
 
-		guildManager->disbandGuild(player, guildTerminal);
+		ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+
+		if (guild == NULL)
+			return;
+
+		guildManager->disbandGuild(player, guild);
 	}
 };
 

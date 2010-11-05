@@ -126,8 +126,9 @@ class GuildObject extends SceneObject {
 		return sponsoredPlayers.size();
 	}
 
-	public native void startChatRoom();
-	public native void destroyChatRoom();
+	public void setChatRoom(ChatRoom room) {
+		chatRoom = room;
+	}
 
 	public ChatRoom getChatRoom() {
 		return chatRoom;

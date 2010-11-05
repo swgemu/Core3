@@ -70,10 +70,15 @@ class ChatRoom extends ManagedObject {
 	@dereferenced 
 	protected VectorMap<string, PlayerCreature> playerList;
 	
+	@dereferenced
+	protected VectorMap<string, PlayerCreature> moderatorList;
+	
 	@dereferenced 
 	protected VectorMap<string, ChatRoom> subRooms;
 
 	protected boolean isPublicRoom;
+	
+	protected boolean moderated;
 	
 	public ChatRoom() {
 		server = null;
@@ -89,12 +94,17 @@ class ChatRoom extends ManagedObject {
 		parent = null;
 
 		isPublicRoom = true;
+		
+		moderated = false;
 
 		subRooms.setNullValue(null);
 		subRooms.setNoDuplicateInsertPlan();
 
 		playerList.setNoDuplicateInsertPlan();
 		playerList.setNullValue(null);
+		
+		moderatorList.setNoDuplicateInsertPlan();
+		moderatorList.setNullValue(null);
 	}
 	
 	public void init(ZoneServer serv, ChatRoom par, final string roomName, unsigned int channelID) {
@@ -200,6 +210,13 @@ class ChatRoom extends ManagedObject {
 
 	public boolean isPrivate() {
 		return isPublicRoom == false;
+	}
+	
+	public boolean isModerated() {
+		return moderated;
+	}
+	public void setModerated(boolean moderate) {
+		moderated = moderate;
 	}
 
 	public PlayerCreature getPlayer(int idx) {
