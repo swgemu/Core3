@@ -557,101 +557,103 @@ GuildObjectImplementation::GuildObjectImplementation() {
 	chatRoom = NULL;
 	// server/zone/objects/guild/GuildObject.idl(89):  		sponsoredPlayers.setNoDuplicateInsertPlan();
 	(&sponsoredPlayers)->setNoDuplicateInsertPlan();
+	// server/zone/objects/guild/GuildObject.idl(90):  		guildMembers.setNoDuplicateInsertPlan();
+	(&guildMembers)->setNoDuplicateInsertPlan();
 }
 
 void GuildObjectImplementation::addSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/objects/guild/GuildObject.idl(109):  		sponsoredPlayers.put(playerID);
+	// server/zone/objects/guild/GuildObject.idl(110):  		sponsoredPlayers.put(playerID);
 	(&sponsoredPlayers)->put(playerID);
 }
 
 void GuildObjectImplementation::removeSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/objects/guild/GuildObject.idl(113):  		sponsoredPlayers.drop(playerID);
+	// server/zone/objects/guild/GuildObject.idl(114):  		sponsoredPlayers.drop(playerID);
 	(&sponsoredPlayers)->drop(playerID);
 }
 
 bool GuildObjectImplementation::hasSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/objects/guild/GuildObject.idl(117):  		return sponsoredPlayers.contains(playerID);
+	// server/zone/objects/guild/GuildObject.idl(118):  		return sponsoredPlayers.contains(playerID);
 	return (&sponsoredPlayers)->contains(playerID);
 }
 
 unsigned long long GuildObjectImplementation::getSponsoredPlayer(int idx) {
 	Locker _locker(_this);
-	// server/zone/objects/guild/GuildObject.idl(121):  		return sponsoredPlayers.get(idx);
+	// server/zone/objects/guild/GuildObject.idl(122):  		return sponsoredPlayers.get(idx);
 	return (&sponsoredPlayers)->get(idx);
 }
 
 int GuildObjectImplementation::getSponsoredPlayerCount() {
-	// server/zone/objects/guild/GuildObject.idl(125):  		return sponsoredPlayers.size();
+	// server/zone/objects/guild/GuildObject.idl(126):  		return sponsoredPlayers.size();
 	return (&sponsoredPlayers)->size();
 }
 
 ChatRoom* GuildObjectImplementation::getChatRoom() {
-	// server/zone/objects/guild/GuildObject.idl(132):  		return chatRoom;
+	// server/zone/objects/guild/GuildObject.idl(133):  		return chatRoom;
 	return chatRoom;
 }
 
 int GuildObjectImplementation::getTotalMembers() {
-	// server/zone/objects/guild/GuildObject.idl(136):  		return guildMembers.size();
+	// server/zone/objects/guild/GuildObject.idl(137):  		return guildMembers.size();
 	return (&guildMembers)->size();
 }
 
 unsigned long long GuildObjectImplementation::getGuildLeaderID() {
-	// server/zone/objects/guild/GuildObject.idl(140):  		return guildLeaderID;
+	// server/zone/objects/guild/GuildObject.idl(141):  		return guildLeaderID;
 	return guildLeaderID;
 }
 
 GuildMemberList* GuildObjectImplementation::getGuildMemberList() {
-	// server/zone/objects/guild/GuildObject.idl(145):  		return guildMembers;
+	// server/zone/objects/guild/GuildObject.idl(146):  		return guildMembers;
 	return (&guildMembers);
 }
 
 String GuildObjectImplementation::getGuildAbbrev() {
-	// server/zone/objects/guild/GuildObject.idl(149):  		return guildAbbrev;
+	// server/zone/objects/guild/GuildObject.idl(150):  		return guildAbbrev;
 	return guildAbbrev;
 }
 
 void GuildObjectImplementation::setGuildAbbrev(const String& abbrev) {
-	// server/zone/objects/guild/GuildObject.idl(153):  		guildAbbrev = abbrev;
+	// server/zone/objects/guild/GuildObject.idl(154):  		guildAbbrev = abbrev;
 	guildAbbrev = abbrev;
 }
 
 void GuildObjectImplementation::setGuildLeaderID(unsigned long long leaderID) {
-	// server/zone/objects/guild/GuildObject.idl(157):  		guildLeaderID = leaderID;
+	// server/zone/objects/guild/GuildObject.idl(158):  		guildLeaderID = leaderID;
 	guildLeaderID = leaderID;
 }
 
 void GuildObjectImplementation::setGuildID(unsigned int id) {
-	// server/zone/objects/guild/GuildObject.idl(161):  		guildID = id;
+	// server/zone/objects/guild/GuildObject.idl(162):  		guildID = id;
 	guildID = id;
 }
 
 unsigned int GuildObjectImplementation::getGuildID() {
-	// server/zone/objects/guild/GuildObject.idl(165):  		return guildID;
+	// server/zone/objects/guild/GuildObject.idl(166):  		return guildID;
 	return guildID;
 }
 
 void GuildObjectImplementation::setGuildName(const String& gname) {
-	// server/zone/objects/guild/GuildObject.idl(169):  		guildName = gname;
+	// server/zone/objects/guild/GuildObject.idl(170):  		guildName = gname;
 	guildName = gname;
 }
 
 String GuildObjectImplementation::getGuildName() {
-	// server/zone/objects/guild/GuildObject.idl(173):  		return guildName;
+	// server/zone/objects/guild/GuildObject.idl(174):  		return guildName;
 	return guildName;
 }
 
 String GuildObjectImplementation::getGuildKey() {
-	// server/zone/objects/guild/GuildObject.idl(177):  		string guildKey = String.valueOf(guildID) + ":" + guildAbbrev;
+	// server/zone/objects/guild/GuildObject.idl(178):  		string guildKey = String.valueOf(guildID) + ":" + guildAbbrev;
 	String guildKey = String::valueOf(guildID) + ":" + guildAbbrev;
-	// server/zone/objects/guild/GuildObject.idl(178):  		return guildKey;
+	// server/zone/objects/guild/GuildObject.idl(179):  		return guildKey;
 	return guildKey;
 }
 
 bool GuildObjectImplementation::isGuildObject() {
-	// server/zone/objects/guild/GuildObject.idl(182):  		return true;
+	// server/zone/objects/guild/GuildObject.idl(183):  		return true;
 	return true;
 }
 

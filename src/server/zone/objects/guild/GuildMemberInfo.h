@@ -17,7 +17,7 @@ namespace guild {
 
 	class GuildObject;
 
-	class GuildMemberInfo : public Serializable {
+	class GuildMemberInfo : public Object {
 		uint64 playerID;
 		String guildTitle;
 		uint8 permissions;
@@ -29,30 +29,48 @@ namespace guild {
 			permissions = 0;
 			declaredAllegiance = 0;
 
-			addSerializableVariables();
+			//addSerializableVariables();
 		}
 
 		GuildMemberInfo(uint64 playerid);
 
-		GuildMemberInfo(const GuildMemberInfo& gmi) : Object(), Serializable() {
+		GuildMemberInfo(const GuildMemberInfo& gmi) : Object() {
 			playerID = gmi.playerID;
 			guildTitle = gmi.guildTitle;
 			permissions = gmi.permissions;
 			declaredAllegiance = gmi.declaredAllegiance;
 
-			addSerializableVariables();
+			//addSerializableVariables();
 		}
 
 		int compareTo(const GuildMemberInfo& gmi) const;
 
 		GuildMemberInfo& operator=(const GuildMemberInfo& gmi);
 
-		inline void addSerializableVariables() {
+		bool toBinaryStream(ObjectOutputStream* stream) {
+			stream->writeLong(playerID);
+			guildTitle.toBinaryStream(stream);
+			stream->writeByte(permissions);
+			stream->writeLong(declaredAllegiance);
+
+			return true;
+		}
+
+		bool parseFromBinaryStream(ObjectInputStream* stream) {
+			playerID = stream->readLong();
+			guildTitle.parseFromBinaryStream(stream);
+			permissions = stream->readByte();
+			declaredAllegiance = stream->readLong();
+
+			return true;
+		}
+
+		/*inline void addSerializableVariables() {
 			addSerializableVariable("playerID", &playerID);
 			addSerializableVariable("guildTitle", &guildTitle);
 			addSerializableVariable("permissions", &permissions);
 			addSerializableVariable("declaredAllegiance", &declaredAllegiance);
-		}
+		}*/
 
 		inline uint64 getPlayerID() {
 			return playerID;
