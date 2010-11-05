@@ -35,6 +35,10 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 	uint64 playerID = player->getObjectID();
 
+	//Only members have access.
+	if (!guildObject->hasMember(playerID))
+		return;
+
 	//Guild exists -> display these functions.
 	menuResponse->addRadialMenuItem(193, 3, "@guild:menu_guild_management"); //Guild Management
 	menuResponse->addRadialMenuItemToRadialID(193, 186, 3, "@guild:menu_info"); //Guild Information
