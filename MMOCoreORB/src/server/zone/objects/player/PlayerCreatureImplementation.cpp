@@ -292,6 +292,13 @@ void PlayerCreatureImplementation::logout(bool doLock) {
 }
 
 void PlayerCreatureImplementation::doRecovery() {
+	if (!isInQuadTree() && parent != NULL && parent->isCellObject() && owner == NULL) {
+		SceneObject* building = parent->getParent();
+
+		if (building != NULL && building->getZone() != NULL)
+			insertToZone(building->getZone());
+	}
+
 	if (isLinkDead()) {
 		if (logoutTimeStamp.isPast()) {
 			info("unloading dead link player");
@@ -423,6 +430,11 @@ void PlayerCreatureImplementation::unload() {
 
 	if (chatManager != NULL)
 		chatManager->removePlayer(getFirstName().toLowerCase());
+
+	while (!chatRooms.isEmpty()) {
+		ChatRoom* room = chatRooms.get(0);
+		room->removePlayer(_this);
+	}
 
 	CombatManager::instance()->freeDuelList(_this);
 
@@ -665,6 +677,16 @@ void PlayerCreatureImplementation::notifySceneReady() {
 		return;
 
 	creatureBuffs.sendTo(_this);
+
+	if (guild != NULL) {
+		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+
+		if (guildChat == NULL)
+			return;
+
+		guildChat->sendTo(_this);
+		guildChat->addPlayer(_this);
+	}
 
 	playerObject->sendFriendLists();
 }

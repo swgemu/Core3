@@ -196,6 +196,8 @@ public:
 
 	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
 
+	void handleChatEnterRoomById(PlayerCreature* player, unsigned int counter, unsigned int roomID);
+
 	void handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments);
 
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
@@ -312,6 +314,8 @@ public:
 
 	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
 
+	void handleChatEnterRoomById(PlayerCreature* player, unsigned int counter, unsigned int roomID);
+
 	void handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments);
 
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
@@ -420,6 +424,8 @@ public:
 	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
 
 	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
+
+	void handleChatEnterRoomById(PlayerCreature* player, unsigned int counter, unsigned int roomID);
 
 	void handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments);
 
