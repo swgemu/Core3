@@ -509,6 +509,32 @@ int ChatManager::getPlayerCount() {
 		return _implementation->getPlayerCount();
 }
 
+ChatRoom* ChatManager::getGuildRoom() {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getGuildRoom();
+}
+
+ChatRoom* ChatManager::getGroupRoom() {
+	ChatManagerImplementation* _implementation = (ChatManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getGroupRoom();
+}
+
 DistributedObjectServant* ChatManager::_getImplementation() {
 
 	_updated = true;
@@ -633,6 +659,16 @@ int ChatManagerImplementation::getPlayerCount() {
 	return playerMap->size();
 }
 
+ChatRoom* ChatManagerImplementation::getGuildRoom() {
+	// server/chat/ChatManager.idl(204):  		return guildRoom;
+	return guildRoom;
+}
+
+ChatRoom* ChatManagerImplementation::getGroupRoom() {
+	// server/chat/ChatManager.idl(211):  		return groupRoom;
+	return groupRoom;
+}
+
 /*
  *	ChatManagerAdapter
  */
@@ -739,6 +775,12 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 37:
 		resp->insertSignedInt(getPlayerCount());
+		break;
+	case 38:
+		resp->insertLong(getGuildRoom()->_getObjectID());
+		break;
+	case 39:
+		resp->insertLong(getGroupRoom()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -873,6 +915,14 @@ unsigned int ChatManagerAdapter::getNextRoomID() {
 
 int ChatManagerAdapter::getPlayerCount() {
 	return ((ChatManagerImplementation*) impl)->getPlayerCount();
+}
+
+ChatRoom* ChatManagerAdapter::getGuildRoom() {
+	return ((ChatManagerImplementation*) impl)->getGuildRoom();
+}
+
+ChatRoom* ChatManagerAdapter::getGroupRoom() {
+	return ((ChatManagerImplementation*) impl)->getGroupRoom();
 }
 
 /*

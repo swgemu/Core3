@@ -6,7 +6,9 @@
  */
 
 #include "GuildManager.h"
+
 #include "server/chat/ChatManager.h"
+#include "server/chat/room/ChatRoom.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -388,6 +390,21 @@ void GuildManagerImplementation::sendBaselinesTo(PlayerCreature* player) {
 
 	SceneObjectCloseMessage* close = new SceneObjectCloseMessage(_this->_getObjectID());
 	player->sendMessage(close);
+
+
+	//Send GuildChat if they are in a guild!
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL)
+		return;
+
+	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+
+	if (guildChat == NULL)
+		return;
+
+	guildChat->sendTo(player);
+	guildChat->addPlayer(player);
 }
 
 GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, GuildTerminal* terminal, const String& guildName, const String& guildAbbrev) {
@@ -405,6 +422,20 @@ GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, Gui
 	guild->setGuildAbbrev(guildAbbrev);
 	guild->addMember(playerID);
 
+	ManagedReference<ChatRoom*> guildRoom = chatManager->getGuildRoom();
+
+	if (guildRoom != NULL) {
+		ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(guild->getGuildAbbrev(), guildRoom);
+		guildRoom->addSubRoom(guildLobby);
+
+		ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
+		guildLobby->addSubRoom(guildChat);
+
+		guild->setChatRoom(guildChat);
+		guildChat->sendTo(player);
+		guildChat->addPlayer(player);
+	}
+
 	//Handle setting of the guild leader.
 	GuildMemberInfo* gmi = guild->getMember(playerID);
 	gmi->setDeclaredAllegiance(playerID);
@@ -419,7 +450,6 @@ GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, Gui
 	gildd3->close();
 
 	//Send the delta to everyone currently online!
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
 	chatManager->broadcastMessage(gildd3);
 
 	CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(player);
@@ -432,17 +462,27 @@ GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, Gui
 	return guild;
 }
 
-bool GuildManagerImplementation::disbandGuild(PlayerCreature* player, GuildTerminal* guildTerminal) {
+bool GuildManagerImplementation::disbandGuild(PlayerCreature* player, GuildObject* guild) {
 	Locker _lock(_this);
 
-	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+	if (guild == NULL)
+		return false;
 
-	if (guild == NULL || !guild->hasDisbandPermission(player->getObjectID())) {
+	if (!guild->hasDisbandPermission(player->getObjectID())) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
 		return false;
 	}
 
-	guildTerminal->setGuildObject(NULL);
+	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+
+	if (guildChat != NULL) {
+		ManagedReference<ChatRoom*> guildLobby = guildChat->getParent();
+
+		chatManager->destroyRoom(guildChat);
+
+		if (guildLobby != NULL)
+			chatManager->destroyRoom(guildLobby);
+	}
 
 	//Remove all sponsored members from the sponsoredPlayers vectormap
 	for (int i = 0; i < guild->getSponsoredPlayerCount(); ++i) {
@@ -489,7 +529,6 @@ bool GuildManagerImplementation::disbandGuild(PlayerCreature* player, GuildTermi
 	guild->destroyObjectFromDatabase(true);
 
 	//Send the delta to everyone currently online!
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
 	chatManager->broadcastMessage(gildd3);
 
 	info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> disbanded.", true);
@@ -633,9 +672,15 @@ void GuildManagerImplementation::acceptSponsoredPlayer(PlayerCreature* player, u
 		creod6->updateGuildID();
 		creod6->close();
 		target->broadcastMessage(creod6, true);
+
+		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+
+		if (guildChat != NULL) {
+			guildChat->sendTo(target);
+			guildChat->addPlayer(target);
+		}
 	}
 
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
 	params.setStringId("@guildmail:accept_target_text"); //%TU has accepted you into %TT as a member.
 	chatManager->sendMail(guild->getGuildName(), "@guildmail:accept_target_subject", params, target->getFirstName());
 }
@@ -707,6 +752,13 @@ void GuildManagerImplementation::kickMember(PlayerCreature* player, PlayerCreatu
 		creod6->updateGuildID();
 		creod6->close();
 		target->broadcastMessage(creod6, true);
+
+		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+
+		if (guildChat != NULL) {
+			guildChat->removePlayer(target);
+			guildChat->sendDestroyTo(target);
+		}
 	}
 
 	params.setStringId("@guildmail:kick_text"); //%TU has removed %TT from the guild.
@@ -827,6 +879,13 @@ void GuildManagerImplementation::leaveGuild(PlayerCreature* player, GuildObject*
 	creod6->close();
 	player->broadcastMessage(creod6, true);
 
+	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+
+	if (guildChat != NULL) {
+		guildChat->removePlayer(player);
+		guildChat->sendDestroyTo(player);
+	}
+
 	params.setStringId("leave_text"); //%TU has removed themselves from the guild.
 	params.setTU(player->getObjectName()->getDisplayedName());
 
@@ -841,8 +900,6 @@ void GuildManagerImplementation::sendGuildMail(const String& subject, Parameteri
 
 	if (memberList == NULL)
 		return;
-
-	ManagedReference<ChatManager*> chatManager = server->getChatManager();
 
 	for (int i = 0; i < memberList->size(); ++i) {
 		GuildMemberInfo* gmi = &memberList->get(i);

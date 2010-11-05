@@ -103,6 +103,10 @@ public:
 
 	bool isPrivate();
 
+	bool isModerated();
+
+	void setModerated(bool moderate);
+
 	PlayerCreature* getPlayer(int idx);
 
 	int getPlayerSize();
@@ -187,9 +191,13 @@ protected:
 
 	VectorMap<String, ManagedReference<PlayerCreature* > > playerList;
 
+	VectorMap<String, ManagedReference<PlayerCreature* > > moderatorList;
+
 	VectorMap<String, ManagedReference<ChatRoom* > > subRooms;
 
 	bool isPublicRoom;
+
+	bool moderated;
 
 public:
 	ChatRoomImplementation();
@@ -233,6 +241,10 @@ public:
 	bool isPublic();
 
 	bool isPrivate();
+
+	bool isModerated();
+
+	void setModerated(bool moderate);
 
 	PlayerCreature* getPlayer(int idx);
 
@@ -342,6 +354,10 @@ public:
 	bool isPublic();
 
 	bool isPrivate();
+
+	bool isModerated();
+
+	void setModerated(bool moderate);
 
 	PlayerCreature* getPlayer(int idx);
 

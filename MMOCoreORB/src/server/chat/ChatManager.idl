@@ -196,13 +196,18 @@ class ChatManager extends ManagedService implements Logger {
 	public int getPlayerCount() {
 		return playerMap.size();
 	}
-
-	/*
-	public boolean isMute() {
-		return mute;
+	
+	/**
+	 * Returns the parent room for guild chat rooms.
+	 */
+	public ChatRoom getGuildRoom() {
+		return guildRoom;
 	}
-
-	public void setMute(boolean isMuted) {
-		mute = isMuted;
-	}*/
+	
+	/**
+	 * Returns the parent room for group chat rooms.
+	 */
+	public ChatRoom getGroupRoom() {
+		return groupRoom;
+	}
 }

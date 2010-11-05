@@ -191,30 +191,18 @@ int GuildObject::getSponsoredPlayerCount() {
 		return _implementation->getSponsoredPlayerCount();
 }
 
-void GuildObject::startChatRoom() {
+void GuildObject::setChatRoom(ChatRoom* room) {
 	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->startChatRoom();
-}
-
-void GuildObject::destroyChatRoom() {
-	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 18);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->destroyChatRoom();
+		_implementation->setChatRoom(room);
 }
 
 ChatRoom* GuildObject::getChatRoom() {
@@ -223,7 +211,7 @@ ChatRoom* GuildObject::getChatRoom() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 18);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
@@ -236,7 +224,7 @@ int GuildObject::getTotalMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -249,7 +237,7 @@ unsigned long long GuildObject::getGuildLeaderID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -271,7 +259,7 @@ String GuildObject::getGuildAbbrev() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 21);
 
 		method.executeWithAsciiReturn(_return_getGuildAbbrev);
 		return _return_getGuildAbbrev;
@@ -285,7 +273,7 @@ void GuildObject::setGuildAbbrev(const String& abbrev) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 22);
 		method.addAsciiParameter(abbrev);
 
 		method.executeWithVoidReturn();
@@ -299,7 +287,7 @@ void GuildObject::setGuildLeaderID(unsigned long long leaderID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 23);
 		method.addUnsignedLongParameter(leaderID);
 
 		method.executeWithVoidReturn();
@@ -313,7 +301,7 @@ void GuildObject::setGuildID(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 24);
 		method.addUnsignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -327,7 +315,7 @@ unsigned int GuildObject::getGuildID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -340,7 +328,7 @@ void GuildObject::setGuildName(const String& gname) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 26);
 		method.addAsciiParameter(gname);
 
 		method.executeWithVoidReturn();
@@ -354,7 +342,7 @@ String GuildObject::getGuildName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 27);
 
 		method.executeWithAsciiReturn(_return_getGuildName);
 		return _return_getGuildName;
@@ -368,7 +356,7 @@ String GuildObject::getGuildKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 28);
 
 		method.executeWithAsciiReturn(_return_getGuildKey);
 		return _return_getGuildKey;
@@ -382,7 +370,7 @@ bool GuildObject::isGuildObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -395,7 +383,7 @@ bool GuildObject::hasMailPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 30);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -409,7 +397,7 @@ bool GuildObject::hasSponsorPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 31);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -423,7 +411,7 @@ bool GuildObject::hasAcceptPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 32);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -437,7 +425,7 @@ bool GuildObject::hasDisbandPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 33);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -451,7 +439,7 @@ bool GuildObject::hasKickPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 34);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -465,7 +453,7 @@ bool GuildObject::hasNamePermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 35);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -479,7 +467,7 @@ bool GuildObject::hasTitlePermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 36);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -618,70 +606,75 @@ int GuildObjectImplementation::getSponsoredPlayerCount() {
 	return (&sponsoredPlayers)->size();
 }
 
+void GuildObjectImplementation::setChatRoom(ChatRoom* room) {
+	// server/zone/objects/guild/GuildObject.idl(130):  		chatRoom = room;
+	chatRoom = room;
+}
+
 ChatRoom* GuildObjectImplementation::getChatRoom() {
-	// server/zone/objects/guild/GuildObject.idl(133):  		return chatRoom;
+	// server/zone/objects/guild/GuildObject.idl(134):  		return chatRoom;
 	return chatRoom;
 }
 
 int GuildObjectImplementation::getTotalMembers() {
-	// server/zone/objects/guild/GuildObject.idl(137):  		return guildMembers.size();
+	// server/zone/objects/guild/GuildObject.idl(138):  		return guildMembers.size();
 	return (&guildMembers)->size();
 }
 
 unsigned long long GuildObjectImplementation::getGuildLeaderID() {
-	// server/zone/objects/guild/GuildObject.idl(141):  		return guildLeaderID;
+	// server/zone/objects/guild/GuildObject.idl(142):  		return guildLeaderID;
 	return guildLeaderID;
 }
 
 GuildMemberList* GuildObjectImplementation::getGuildMemberList() {
-	// server/zone/objects/guild/GuildObject.idl(146):  		return guildMembers;
+	// server/zone/objects/guild/GuildObject.idl(147):  		return guildMembers;
 	return (&guildMembers);
 }
 
 String GuildObjectImplementation::getGuildAbbrev() {
-	// server/zone/objects/guild/GuildObject.idl(150):  		return guildAbbrev;
+	// server/zone/objects/guild/GuildObject.idl(151):  		return guildAbbrev;
 	return guildAbbrev;
 }
 
 void GuildObjectImplementation::setGuildAbbrev(const String& abbrev) {
-	// server/zone/objects/guild/GuildObject.idl(154):  		guildAbbrev = abbrev;
+	// server/zone/objects/guild/GuildObject.idl(155):  		guildAbbrev = abbrev;
 	guildAbbrev = abbrev;
 }
 
 void GuildObjectImplementation::setGuildLeaderID(unsigned long long leaderID) {
-	// server/zone/objects/guild/GuildObject.idl(158):  		guildLeaderID = leaderID;
+	// server/zone/objects/guild/GuildObject.idl(159):  		guildLeaderID = leaderID;
 	guildLeaderID = leaderID;
 }
 
 void GuildObjectImplementation::setGuildID(unsigned int id) {
-	// server/zone/objects/guild/GuildObject.idl(162):  		guildID = id;
+	// server/zone/objects/guild/GuildObject.idl(163):  		guildID = id;
 	guildID = id;
 }
 
 unsigned int GuildObjectImplementation::getGuildID() {
-	// server/zone/objects/guild/GuildObject.idl(166):  		return guildID;
+	// server/zone/objects/guild/GuildObject.idl(167):  		return guildID;
 	return guildID;
 }
 
 void GuildObjectImplementation::setGuildName(const String& gname) {
-	// server/zone/objects/guild/GuildObject.idl(170):  		guildName = gname;
+	// server/zone/objects/guild/GuildObject.idl(171):  		guildName = gname;
 	guildName = gname;
 }
 
 String GuildObjectImplementation::getGuildName() {
-	// server/zone/objects/guild/GuildObject.idl(174):  		return guildName;
+	// server/zone/objects/guild/GuildObject.idl(175):  		return guildName;
 	return guildName;
 }
 
 String GuildObjectImplementation::getGuildKey() {
-	// server/zone/objects/guild/GuildObject.idl(178):  		string guildKey = String.valueOf(guildID) + ":" + guildAbbrev;
+	// server/zone/objects/guild/GuildObject.idl(179):  		string guildKey = String.valueOf(guildID) + ":" + guildAbbrev;
 	String guildKey = String::valueOf(guildID) + ":" + guildAbbrev;
-	// server/zone/objects/guild/GuildObject.idl(179):  		return guildKey;
+	// server/zone/objects/guild/GuildObject.idl(180):  		return guildKey;
 	return guildKey;
 }
 
 bool GuildObjectImplementation::isGuildObject() {
-	// server/zone/objects/guild/GuildObject.idl(183):  		return true;
+	// server/zone/objects/guild/GuildObject.idl(184):  		return true;
 	return true;
 }
 
@@ -730,66 +723,63 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertSignedInt(getSponsoredPlayerCount());
 		break;
 	case 17:
-		startChatRoom();
+		setChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 18:
-		destroyChatRoom();
-		break;
-	case 19:
 		resp->insertLong(getChatRoom()->_getObjectID());
 		break;
-	case 20:
+	case 19:
 		resp->insertSignedInt(getTotalMembers());
 		break;
-	case 21:
+	case 20:
 		resp->insertLong(getGuildLeaderID());
 		break;
-	case 22:
+	case 21:
 		resp->insertAscii(getGuildAbbrev());
 		break;
-	case 23:
+	case 22:
 		setGuildAbbrev(inv->getAsciiParameter(_param0_setGuildAbbrev__String_));
 		break;
-	case 24:
+	case 23:
 		setGuildLeaderID(inv->getUnsignedLongParameter());
 		break;
-	case 25:
+	case 24:
 		setGuildID(inv->getUnsignedIntParameter());
 		break;
-	case 26:
+	case 25:
 		resp->insertInt(getGuildID());
 		break;
-	case 27:
+	case 26:
 		setGuildName(inv->getAsciiParameter(_param0_setGuildName__String_));
 		break;
-	case 28:
+	case 27:
 		resp->insertAscii(getGuildName());
 		break;
-	case 29:
+	case 28:
 		resp->insertAscii(getGuildKey());
 		break;
-	case 30:
+	case 29:
 		resp->insertBoolean(isGuildObject());
 		break;
-	case 31:
+	case 30:
 		resp->insertBoolean(hasMailPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 32:
+	case 31:
 		resp->insertBoolean(hasSponsorPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 33:
+	case 32:
 		resp->insertBoolean(hasAcceptPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 34:
+	case 33:
 		resp->insertBoolean(hasDisbandPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 35:
+	case 34:
 		resp->insertBoolean(hasKickPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 36:
+	case 35:
 		resp->insertBoolean(hasNamePermission(inv->getUnsignedLongParameter()));
 		break;
-	case 37:
+	case 36:
 		resp->insertBoolean(hasTitlePermission(inv->getUnsignedLongParameter()));
 		break;
 	default:
@@ -843,12 +833,8 @@ int GuildObjectAdapter::getSponsoredPlayerCount() {
 	return ((GuildObjectImplementation*) impl)->getSponsoredPlayerCount();
 }
 
-void GuildObjectAdapter::startChatRoom() {
-	((GuildObjectImplementation*) impl)->startChatRoom();
-}
-
-void GuildObjectAdapter::destroyChatRoom() {
-	((GuildObjectImplementation*) impl)->destroyChatRoom();
+void GuildObjectAdapter::setChatRoom(ChatRoom* room) {
+	((GuildObjectImplementation*) impl)->setChatRoom(room);
 }
 
 ChatRoom* GuildObjectAdapter::getChatRoom() {
