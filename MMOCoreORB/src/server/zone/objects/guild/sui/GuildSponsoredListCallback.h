@@ -27,6 +27,9 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
+		if (index == -1)
+			return;
+
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 
 		if (guildManager == NULL)
@@ -55,7 +58,7 @@ public:
 
 		uint64 playerID = listBox->getMenuObjectID(index);
 
-		guildManager->sendGuildSponsoredOptionsTo(player, playerID, guildTerminal);
+		guildManager->sendGuildSponsoredOptionsTo(player, guild, playerID, guildTerminal);
 	}
 };
 

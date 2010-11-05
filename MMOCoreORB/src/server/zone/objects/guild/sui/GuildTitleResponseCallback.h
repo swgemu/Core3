@@ -12,15 +12,20 @@
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiMessageCallback.h"
 
-class GuildMemberTitleCallback : public SuiMessageCallback {
+class GuildTitleResponseCallback : public SuiMessageCallback {
 public:
-	GuildMemberTitleCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildTitleResponseCallback(ZoneClientSession* client, ZoneProcessServer* server)
 		: SuiMessageCallback(client, server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		if (!suiBox->isInputBox() || cancelPressed)
 			return;
+
+		if (args->size() < 1)
+			return;
+
+		String title = args->get(0).toString();
 
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 
@@ -29,7 +34,12 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
-		//TODO: Set title
+		if (obj == NULL || !obj->isPlayerCreature())
+			return;
+
+		PlayerCreature* target = (PlayerCreature*) obj.get();
+
+		guildManager->setMemberTitle(player, target, title);
 	}
 };
 

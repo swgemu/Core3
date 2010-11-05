@@ -459,6 +459,34 @@ bool GuildObject::hasKickPermission(unsigned long long playerID) {
 		return _implementation->hasKickPermission(playerID);
 }
 
+bool GuildObject::hasNamePermission(unsigned long long playerID) {
+	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 36);
+		method.addUnsignedLongParameter(playerID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasNamePermission(playerID);
+}
+
+bool GuildObject::hasTitlePermission(unsigned long long playerID) {
+	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
+		method.addUnsignedLongParameter(playerID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasTitlePermission(playerID);
+}
+
 DistributedObjectServant* GuildObject::_getImplementation() {
 
 	_updated = true;
@@ -758,6 +786,12 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case 35:
 		resp->insertBoolean(hasKickPermission(inv->getUnsignedLongParameter()));
 		break;
+	case 36:
+		resp->insertBoolean(hasNamePermission(inv->getUnsignedLongParameter()));
+		break;
+	case 37:
+		resp->insertBoolean(hasTitlePermission(inv->getUnsignedLongParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -883,6 +917,14 @@ bool GuildObjectAdapter::hasDisbandPermission(unsigned long long playerID) {
 
 bool GuildObjectAdapter::hasKickPermission(unsigned long long playerID) {
 	return ((GuildObjectImplementation*) impl)->hasKickPermission(playerID);
+}
+
+bool GuildObjectAdapter::hasNamePermission(unsigned long long playerID) {
+	return ((GuildObjectImplementation*) impl)->hasNamePermission(playerID);
+}
+
+bool GuildObjectAdapter::hasTitlePermission(unsigned long long playerID) {
+	return ((GuildObjectImplementation*) impl)->hasTitlePermission(playerID);
 }
 
 /*

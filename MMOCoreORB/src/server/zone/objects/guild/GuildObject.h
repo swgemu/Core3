@@ -158,6 +158,10 @@ public:
 
 	bool hasKickPermission(unsigned long long playerID);
 
+	bool hasNamePermission(unsigned long long playerID);
+
+	bool hasTitlePermission(unsigned long long playerID);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -291,6 +295,10 @@ public:
 
 	bool hasKickPermission(unsigned long long playerID);
 
+	bool hasNamePermission(unsigned long long playerID);
+
+	bool hasTitlePermission(unsigned long long playerID);
+
 	GuildObject* _this;
 
 	operator const GuildObject*();
@@ -389,6 +397,10 @@ public:
 	bool hasDisbandPermission(unsigned long long playerID);
 
 	bool hasKickPermission(unsigned long long playerID);
+
+	bool hasNamePermission(unsigned long long playerID);
+
+	bool hasTitlePermission(unsigned long long playerID);
 
 protected:
 	String _param0_setGuildAbbrev__String_;

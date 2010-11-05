@@ -89,6 +89,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/FindCommand.h"
 
 #include "server/zone/objects/creature/commands/sui/FindCommandCallback.h"
+#include "server/zone/objects/creature/commands/sui/ListGuildsResponseCallback.h"
 
 #include "server/zone/objects/guild/sui/GuildCreateNameResponseCallback.h"
 #include "server/zone/objects/guild/sui/GuildCreateAbbrevResponseCallback.h"
@@ -96,7 +97,7 @@ which carries forward this exception.
 #include "server/zone/objects/guild/sui/GuildMemberListCallback.h"
 #include "server/zone/objects/guild/sui/GuildMemberOptionsCallback.h"
 #include "server/zone/objects/guild/sui/GuildMemberRemoveCallback.h"
-#include "server/zone/objects/guild/sui/GuildMemberTitleCallback.h"
+#include "server/zone/objects/guild/sui/GuildTitleResponseCallback.h"
 #include "server/zone/objects/guild/sui/GuildSponsorCallback.h"
 #include "server/zone/objects/guild/sui/GuildSponsorVerifyCallback.h"
 #include "server/zone/objects/guild/sui/GuildSponsoredListCallback.h"
@@ -127,11 +128,13 @@ void SuiManager::registerMessages() {
 	messageCallbackFactory.registerObject<GuildMemberListCallback>(SuiWindowType::GUILD_MEMBER_LIST);
 	messageCallbackFactory.registerObject<GuildMemberOptionsCallback>(SuiWindowType::GUILD_MEMBER_OPTIONS);
 	messageCallbackFactory.registerObject<GuildMemberRemoveCallback>(SuiWindowType::GUILD_MEMBER_REMOVE);
-	messageCallbackFactory.registerObject<GuildMemberTitleCallback>(SuiWindowType::GUILD_MEMBER_TITLE);
+	messageCallbackFactory.registerObject<GuildTitleResponseCallback>(SuiWindowType::GUILD_MEMBER_TITLE);
 	messageCallbackFactory.registerObject<GuildSponsorCallback>(SuiWindowType::GUILD_SPONSOR);
 	messageCallbackFactory.registerObject<GuildSponsorVerifyCallback>(SuiWindowType::GUILD_SPONSOR_VERIFY);
 	messageCallbackFactory.registerObject<GuildSponsoredListCallback>(SuiWindowType::GUILD_SPONSORED_LIST);
 	messageCallbackFactory.registerObject<GuildSponsoredOptionsCallback>(SuiWindowType::GUILD_SPONSORED_OPTIONS);
+
+	messageCallbackFactory.registerObject<ListGuildsResponseCallback>(SuiWindowType::ADMIN_GUILDLIST);
 }
 
 void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args) {
