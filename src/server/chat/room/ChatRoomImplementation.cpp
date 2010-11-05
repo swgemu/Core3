@@ -69,23 +69,21 @@ void ChatRoomImplementation::sendDestroyTo(PlayerCreature* player) {
 }
 
 void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
-	wlock();
+	Locker locker(_this);
 
 	if (playerList.put(player->getFirstName(), player) == -1) {
-		unlock();
 		return;
 	}
 
 	ChatOnEnteredRoom* coer = new ChatOnEnteredRoom(server->getServerName(), player->getFirstName(), roomID);
 	player->sendMessage(coer);
 
-	unlock();
+	locker.release();
 
-	player->wlock(doLock);
+	Locker locker2(player);
 
 	player->addChatRoom((ChatRoom*) _this);
 
-	player->unlock(doLock);
 
 	/*ChatOnReceiveRoomInvitation* corri = new ChatOnReceiveRoomInvitation(name);
 	player->sendMessage(corri);*/
@@ -94,46 +92,41 @@ void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
 }
 
 void ChatRoomImplementation::removePlayer(PlayerCreature* player, bool doLock) {
-	player->wlock(doLock);
+	Locker locker(player);
 
 	player->removeChatRoom((ChatRoom*) _this);
 
-	player->unlock(doLock);
+	locker.release();
 
-	wlock();
+	Locker locker2(_this);
 
 	playerList.drop(player->getFirstName());
 
 	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom((ChatRoom*) _this, player);
 	player->sendMessage(msg);
-
-	unlock();
 }
 
 void ChatRoomImplementation::removePlayer(const String& player) {
 	// Pre: player unlocked
-	wlock();
+	Locker locker(_this);
 
 	PlayerCreature* play = playerList.get(player);
 	playerList.drop(player);
 
-	unlock();
+	locker.release();
 
 	if (play == NULL)
 		return;
 
 	try {
-		play->wlock();
+		Locker locker2(play);
 
 		play->removeChatRoom((ChatRoom*) _this);
 
 		ChatOnLeaveRoom* msg = new ChatOnLeaveRoom((ChatRoom*) _this, play);
 		play->sendMessage(msg);
-
-		play->unlock();
 	} catch (...) {
 		System::out << "unreported Exception in ChatRoom::removePlayer(const String& player)\n";
-		play->unlock();
 	}
 }
 
@@ -147,26 +140,22 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 }
 
 void ChatRoomImplementation::removeAllPlayers() {
-	wlock();
+	Locker locker(_this);
 
 	for (int i = 0; i < playerList.size(); i++) {
 		PlayerCreature* player = playerList.get(i);
 
 		try {
-			player->wlock(_this);
+			Locker clocker(player, _this);
 
 			player->removeChatRoom((ChatRoom*) _this);
-
-			player->unlock();
 		} catch (...) {
 			System::out << "unreported Exception in ChatRoom::removeAllPlayers(Player* lockedPlayer)\n";
-			player->unlock();
 		}
 
 	}
 
 	playerList.removeAll();
-	unlock();
 }
 
 
