@@ -992,7 +992,7 @@ void GuildManagerImplementation::leaveGuild(PlayerCreature* player, GuildObject*
 		guildChat->sendDestroyTo(player);
 	}
 
-	params.setStringId("leave_text"); //%TU has removed themselves from the guild.
+	params.setStringId("@guild:leave_text"); //%TU has removed themselves from the guild.
 	params.setTU(player->getObjectName()->getDisplayedName());
 
 	sendGuildMail("@guildmail:leave_subject", params, guild);
