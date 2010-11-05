@@ -71,7 +71,7 @@ void GuildManagerImplementation::loadGuilds() {
 
 			//Recreate the guild chat rooms on load
 			if (guildRoom != NULL) {
-				ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(guild->getGuildAbbrev(), guildRoom);
+				ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
 				guildLobby->setPrivate();
 				guildRoom->addSubRoom(guildLobby);
 
@@ -441,7 +441,7 @@ GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, Gui
 	ManagedReference<ChatRoom*> guildRoom = chatManager->getGuildRoom();
 
 	if (guildRoom != NULL) {
-		ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(guild->getGuildAbbrev(), guildRoom);
+		ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
 		guildLobby->setPrivate();
 		guildRoom->addSubRoom(guildLobby);
 
