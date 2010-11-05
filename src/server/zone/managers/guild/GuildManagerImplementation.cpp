@@ -42,6 +42,8 @@ void GuildManagerImplementation::loadGuilds() {
 		return;
 	}
 
+	ManagedReference<ChatRoom*> guildRoom = chatManager->getGuildRoom();
+
 	try {
 		info("Loading guilds from database.", true);
 		ObjectDatabaseIterator iterator(guildsDatabase);
@@ -66,6 +68,18 @@ void GuildManagerImplementation::loadGuilds() {
 
 				addSponsoredPlayer(playerID, guild);
 			}
+
+			//Recreate the guild chat rooms on load
+			if (guildRoom != NULL) {
+				ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(guild->getGuildAbbrev(), guildRoom);
+				guildRoom->addSubRoom(guildLobby);
+
+				ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
+				guildLobby->addSubRoom(guildChat);
+
+				guild->setChatRoom(guildChat);
+			}
+
 		}
 
 	} catch (DatabaseException& e) {
@@ -705,15 +719,15 @@ void GuildManagerImplementation::sendGuildSetTitleTo(PlayerCreature* player, Pla
 		return;
 	}
 
-	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(target, SuiWindowType::GUILD_MEMBER_TITLE);
+	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_MEMBER_TITLE);
 	suiBox->setPromptTitle("@guild:title_title"); //Set Title
 	suiBox->setPromptText("@guild:title_prompt"); //Enter a title to set for %TU.
 	suiBox->setUsingObject(target);
 	suiBox->setMaxInputSize(24);
 	suiBox->setCancelButton(true, "@cancel");
 
-	target->addSuiBox(suiBox);
-	target->sendMessage(suiBox->generateMessage());
+	player->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
 }
 
 void GuildManagerImplementation::kickMember(PlayerCreature* player, PlayerCreature* target) {
