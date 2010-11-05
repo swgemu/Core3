@@ -161,7 +161,7 @@ class GuildManager extends ManagedService implements Logger {
 	
 	public native void sendGuildSetTitleTo(PlayerCreature player, PlayerCreature target);
 	
-	public native void sendMemberPermissionsTo(PlayerCreature player, PlayerCreature target);
+	public native void sendMemberPermissionsTo(PlayerCreature player, unsigned long targetID, GuildTerminal guildTerminal);
 	
 	public native boolean validateGuildName(PlayerCreature player, final string guildName);
 	
@@ -188,6 +188,8 @@ class GuildManager extends ManagedService implements Logger {
 	public native void setMemberTitle(PlayerCreature player, PlayerCreature target, final string title);
 	
 	public native void setAllegianceTo(PlayerCreature player, unsigned long targetID, GuildTerminal guildTerminal);
+	
+	public native void toggleGuildPermission(PlayerCreature player, unsigned long targetID, int permissionIndex, GuildTerminal guildTerminal);
 	
 	@local
 	public native void sendGuildMail(final string subject, @dereferenced ParameterizedStringId body, GuildObject guild);

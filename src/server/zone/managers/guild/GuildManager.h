@@ -154,7 +154,7 @@ public:
 
 	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
 
-	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
+	void sendMemberPermissionsTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 
 	bool validateGuildName(PlayerCreature* player, const String& guildName);
 
@@ -181,6 +181,8 @@ public:
 	void setMemberTitle(PlayerCreature* player, PlayerCreature* target, const String& title);
 
 	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+
+	void toggleGuildPermission(PlayerCreature* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal);
 
 	void sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild);
 
@@ -282,7 +284,7 @@ public:
 
 	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
 
-	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
+	void sendMemberPermissionsTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 
 	bool validateGuildName(PlayerCreature* player, const String& guildName);
 
@@ -309,6 +311,8 @@ public:
 	void setMemberTitle(PlayerCreature* player, PlayerCreature* target, const String& title);
 
 	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+
+	void toggleGuildPermission(PlayerCreature* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal);
 
 	void sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild);
 
@@ -399,7 +403,7 @@ public:
 
 	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
 
-	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
+	void sendMemberPermissionsTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 
 	bool validateGuildName(PlayerCreature* player, const String& guildName);
 
@@ -426,6 +430,8 @@ public:
 	void setMemberTitle(PlayerCreature* player, PlayerCreature* target, const String& title);
 
 	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+
+	void toggleGuildPermission(PlayerCreature* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal);
 
 protected:
 	String _param1_sendGuildListTo__PlayerCreature_String_;

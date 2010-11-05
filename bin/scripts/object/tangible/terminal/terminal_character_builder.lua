@@ -2030,13 +2030,13 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			{
 				"Crafting Tools",
 				{
-					"Clothing Crafting Tool", "object/tangible/crafting/station/clothing_tool.iff",
-					"Food Crafting Tool", "object/tangible/crafting/station/food_tool.iff",
+					"Clothing and Armor Crafting Tool", "object/tangible/crafting/station/clothing_tool.iff",
+					"Food and Chemical Crafting Tool", "object/tangible/crafting/station/food_tool.iff",
 					"Generic Crafting Tool", "object/tangible/crafting/station/generic_tool.iff",
-					"Jedi Crafting Tool", "object/tangible/crafting/station/jedi_tool.iff",
+					"Lightsaber Crafting Toolkit", "object/tangible/crafting/station/jedi_tool.iff",
 					"Starship Crafting Tool", "object/tangible/crafting/station/space_tool.iff",
-					"Structure Crafting Tool", "object/tangible/crafting/station/structure_tool.iff",
-					"Weapon Crafting Tool", "object/tangible/crafting/station/weapon_tool.iff"
+					"Structure and Furniture Crafting Tool", "object/tangible/crafting/station/structure_tool.iff",
+					"Weapon, Droid, and General Item Crafting Tool", "object/tangible/crafting/station/weapon_tool.iff"
 				},
 				"Crafting Stations",
 				{

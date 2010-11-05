@@ -155,7 +155,7 @@ public:
 		}
 
 		if (!creature->checkCooldownRecovery("burstrun")) {
-			creature->sendSystemMessage("combat_effects", "burst_run_no");
+			creature->sendSystemMessage("combat_effects", "burst_run_wait"); //You are too tired to Burst Run.
 
 			return false;
 		}

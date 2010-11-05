@@ -393,7 +393,7 @@ void GuildManager::sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* t
 		_implementation->sendGuildSetTitleTo(player, target);
 }
 
-void GuildManager::sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target) {
+void GuildManager::sendMemberPermissionsTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -401,11 +401,12 @@ void GuildManager::sendMemberPermissionsTo(PlayerCreature* player, PlayerCreatur
 
 		DistributedMethod method(this, 30);
 		method.addObjectParameter(player);
-		method.addObjectParameter(target);
+		method.addUnsignedLongParameter(targetID);
+		method.addObjectParameter(guildTerminal);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->sendMemberPermissionsTo(player, target);
+		_implementation->sendMemberPermissionsTo(player, targetID, guildTerminal);
 }
 
 bool GuildManager::validateGuildName(PlayerCreature* player, const String& guildName) {
@@ -604,6 +605,23 @@ void GuildManager::setAllegianceTo(PlayerCreature* player, unsigned long long ta
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setAllegianceTo(player, targetID, guildTerminal);
+}
+
+void GuildManager::toggleGuildPermission(PlayerCreature* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 44);
+		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(targetID);
+		method.addSignedIntParameter(permissionIndex);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->toggleGuildPermission(player, targetID, permissionIndex, guildTerminal);
 }
 
 void GuildManager::sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild) {
@@ -861,7 +879,7 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		sendGuildSetTitleTo((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 30:
-		sendMemberPermissionsTo((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+		sendMemberPermissionsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
 	case 31:
 		resp->insertBoolean(validateGuildName((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_validateGuildName__PlayerCreature_String_)));
@@ -901,6 +919,9 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case 43:
 		setAllegianceTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
+		break;
+	case 44:
+		toggleGuildPermission((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -1005,8 +1026,8 @@ void GuildManagerAdapter::sendGuildSetTitleTo(PlayerCreature* player, PlayerCrea
 	((GuildManagerImplementation*) impl)->sendGuildSetTitleTo(player, target);
 }
 
-void GuildManagerAdapter::sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target) {
-	((GuildManagerImplementation*) impl)->sendMemberPermissionsTo(player, target);
+void GuildManagerAdapter::sendMemberPermissionsTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
+	((GuildManagerImplementation*) impl)->sendMemberPermissionsTo(player, targetID, guildTerminal);
 }
 
 bool GuildManagerAdapter::validateGuildName(PlayerCreature* player, const String& guildName) {
@@ -1059,6 +1080,10 @@ void GuildManagerAdapter::setMemberTitle(PlayerCreature* player, PlayerCreature*
 
 void GuildManagerAdapter::setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
 	((GuildManagerImplementation*) impl)->setAllegianceTo(player, targetID, guildTerminal);
+}
+
+void GuildManagerAdapter::toggleGuildPermission(PlayerCreature* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal) {
+	((GuildManagerImplementation*) impl)->toggleGuildPermission(player, targetID, permissionIndex, guildTerminal);
 }
 
 /*

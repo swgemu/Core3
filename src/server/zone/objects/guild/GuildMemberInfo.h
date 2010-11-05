@@ -101,7 +101,11 @@ namespace guild {
 		}
 
 		inline void removePermission(uint8 permission) {
-			permissions |= ~permission;
+			permissions &= ~permission;
+		}
+
+		inline void togglePermission(uint8 permission) {
+			permissions ^= permission;
 		}
 
 		inline bool hasPermission(uint8 permission) {

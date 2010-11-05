@@ -822,8 +822,96 @@ void GuildManagerImplementation::setAllegianceTo(PlayerCreature* player, uint64 
 
 }
 
-void GuildManagerImplementation::sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target) {
+void GuildManagerImplementation::sendMemberPermissionsTo(PlayerCreature* player, uint64 targetID, GuildTerminal* guildTerminal) {
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
+	if (guild == NULL || !guild->isGuildLeader(player)) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
+	if (!guild->hasMember(targetID))
+		return;
+
+	GuildMemberInfo* gmi = guild->getMember(targetID);
+
+	if (gmi == NULL)
+		return;
+
+	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_PERMISSIONS);
+	listBox->setPromptTitle("@guild:permissions_title"); //Guild Member Permissions
+	listBox->setPromptText("@guild:permissions_prompt");
+	listBox->setUsingObject(guildTerminal);
+	listBox->setCancelButton(true, "@cancel");
+
+	listBox->addMenuItem(String("@guild:permission_mail_") + (gmi->hasPermission(GuildObject::PERMISSION_MAIL) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_sponsor_") + (gmi->hasPermission(GuildObject::PERMISSION_SPONSOR) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_title_") + (gmi->hasPermission(GuildObject::PERMISSION_TITLE) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_accept_") + (gmi->hasPermission(GuildObject::PERMISSION_ACCEPT) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_kick_") + (gmi->hasPermission(GuildObject::PERMISSION_KICK) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_war_") + (gmi->hasPermission(GuildObject::PERMISSION_WAR) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_namechange_") + (gmi->hasPermission(GuildObject::PERMISSION_NAME) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_disband_") + (gmi->hasPermission(GuildObject::PERMISSION_DISBAND) ? "yes" : "no"), targetID);
+
+	player->addSuiBox(listBox);
+	player->sendMessage(listBox->generateMessage());
+}
+
+void GuildManagerImplementation::toggleGuildPermission(PlayerCreature* player, uint64 targetID, int permissionIndex, GuildTerminal* guildTerminal) {
+	//TODO: Change to not require a guild terminal, it only needs passing to the sui list send to be set as using object...
+	if (guildTerminal == NULL)
+		return;
+
+	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+
+	if (guild == NULL || !guild->isGuildLeader(player)) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
+	//Can't change your own permissions
+	if (player->getObjectID() == targetID)
+		return;
+
+	if (!guild->hasMember(targetID))
+		return;
+
+	GuildMemberInfo* gmi = guild->getMember(targetID);
+
+	if (gmi == NULL)
+		return;
+
+	switch (permissionIndex) {
+	case 0: //mail
+		gmi->togglePermission(GuildObject::PERMISSION_MAIL);
+		break;
+	case 1: //sponsor
+		gmi->togglePermission(GuildObject::PERMISSION_SPONSOR);
+		break;
+	case 2: //title
+		gmi->togglePermission(GuildObject::PERMISSION_TITLE);
+		break;
+	case 3: //accept
+		gmi->togglePermission(GuildObject::PERMISSION_ACCEPT);
+		break;
+	case 4: //kick
+		gmi->togglePermission(GuildObject::PERMISSION_KICK);
+		break;
+	case 5: //war
+		gmi->togglePermission(GuildObject::PERMISSION_WAR);
+		break;
+	case 6: //namechange
+		gmi->togglePermission(GuildObject::PERMISSION_NAME);
+		break;
+	case 7: //disband
+		gmi->togglePermission(GuildObject::PERMISSION_DISBAND);
+		break;
+	default:
+		return;
+	}
+
+	//Resend the permissions sui
+	sendMemberPermissionsTo(player, targetID, guildTerminal);
 }
 
 void GuildManagerImplementation::sendGuildListTo(PlayerCreature* player, const String& guildFilter) {
