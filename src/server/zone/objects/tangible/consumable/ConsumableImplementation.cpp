@@ -101,9 +101,6 @@ int ConsumableImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 		return 1;
 	}
 
-	//error_message:pets_only - That food is only suitable for pets.
-	//error_message:race_restriction - That food isn't edible by your species.
-
 
 	ManagedReference<Buff*> buff = NULL;
 
@@ -328,7 +325,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Play
 
 		for (int i = 0; i < modifiers.size(); ++i) {
 			VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-			//alm->insertAttribute("skill", "@stat_n:" + entry->getKey());
+			alm->insertAttribute("skill", "@stat_n:" + entry->getKey());
 		}
 
 		StringBuffer nutritionstring;

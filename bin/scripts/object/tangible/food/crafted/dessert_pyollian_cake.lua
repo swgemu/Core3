@@ -44,7 +44,7 @@
 object_tangible_food_crafted_dessert_pyollian_cake = object_tangible_food_crafted_shared_dessert_pyollian_cake:new {
 	templateType = CONSUMABLE,
 	
-	duration = 45,
+	duration = 0,
 	filling = 10,
 	nutrition = 10,
 

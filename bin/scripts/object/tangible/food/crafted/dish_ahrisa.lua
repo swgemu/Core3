@@ -45,13 +45,13 @@ object_tangible_food_crafted_dish_ahrisa = object_tangible_food_crafted_shared_d
 	templateType = CONSUMABLE,
 	
 	duration = 10,
-	filling = 10,
+	filling = 60,
 	nutrition = 10,
 
 	effectType = 1,
 
 	fillingMin = 16,
-	fillingMax = 13,
+	fillingMax = 60,
 	flavorMin = 540,
 	flavorMax = 1080,
 	nutritionMin = 11,
@@ -59,7 +59,7 @@ object_tangible_food_crafted_dish_ahrisa = object_tangible_food_crafted_shared_d
 	quantityMin = 4,
 	quantityMax = 9,
 
-	modifiers = { "focus", 0 },
+	modifiers = { "focus", 2 },
 
 	buffName = "food.dish_ahrisa",
 	buffCRC = 0,

@@ -62,7 +62,7 @@ object_tangible_food_crafted_dish_bivoli_tempari = object_tangible_food_crafted_
 	modifiers = { "healing_wound_treatment", 0 },
 
 	buffName = "food.dish_bivoli_tempari",
-	buffCRC = 0,
+	buffCRC = 0x2114D76D,
 	speciesRestriction = ""
 }
 

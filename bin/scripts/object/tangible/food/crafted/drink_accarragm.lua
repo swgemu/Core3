@@ -62,7 +62,7 @@ object_tangible_food_crafted_drink_accarragm = object_tangible_food_crafted_shar
 	modifiers = {"action", 0, "quickness", 0, "stamina", 0 },
 
 	buffName = "food.drink_accarragm",
-	buffCRC = 0,
+	buffCRC = 0xE61D3848,
 	speciesRestriction = ""
 }
 

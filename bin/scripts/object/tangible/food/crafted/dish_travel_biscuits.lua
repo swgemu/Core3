@@ -42,6 +42,28 @@
 
 
 object_tangible_food_crafted_dish_travel_biscuits = object_tangible_food_crafted_shared_dish_travel_biscuits:new {
+	templateType = CONSUMABLE,
+	 
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
+
+	effectType = 4,
+
+	fillingMin = 11,
+	fillingMax = 7,
+	flavorMin = 720,
+	flavorMax = 1500,
+	nutritionMin = 7.5,
+	nutritionMax = 12,
+	quantityMin = 4,
+	quantityMax = 14,
+
+	modifiers = { "slope_move", 0 },
+
+	buffName = "food.dish_travel_biscuits",
+	buffCRC = 0,
+	speciesRestriction = ""
 
 }
 
