@@ -70,18 +70,7 @@ void GuildManagerImplementation::loadGuilds() {
 			}
 
 			//Recreate the guild chat rooms on load
-			if (guildRoom != NULL) {
-				ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
-				guildLobby->setPrivate();
-				guildRoom->addSubRoom(guildLobby);
-
-				ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
-				guildChat->setPrivate();
-				guildLobby->addSubRoom(guildChat);
-
-				guild->setChatRoom(guildChat);
-			}
-
+			createGuildChannels(guild);
 		}
 
 	} catch (DatabaseException& e) {
@@ -423,6 +412,23 @@ void GuildManagerImplementation::sendBaselinesTo(PlayerCreature* player) {
 	guildChat->addPlayer(player);*/
 }
 
+ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
+	ManagedReference<ChatRoom*> guildRoom = chatManager->getGuildRoom();
+
+	ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
+	guildLobby->setPrivate();
+	guildRoom->addSubRoom(guildLobby);
+
+	ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
+	guildChat->setPrivate();
+	guildChat->setTitle(String::valueOf(guild->getGuildID()));
+	guildLobby->addSubRoom(guildChat);
+
+	guild->setChatRoom(guildChat);
+
+	return guildChat;
+}
+
 GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, GuildTerminal* terminal, const String& guildName, const String& guildAbbrev) {
 	Locker _lock(_this);
 
@@ -438,21 +444,10 @@ GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, Gui
 	guild->setGuildAbbrev(guildAbbrev);
 	guild->addMember(playerID);
 
-	ManagedReference<ChatRoom*> guildRoom = chatManager->getGuildRoom();
+	ManagedReference<ChatRoom*> guildChat = createGuildChannels(guild);
 
-	if (guildRoom != NULL) {
-		ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
-		guildLobby->setPrivate();
-		guildRoom->addSubRoom(guildLobby);
-
-		ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
-		guildChat->setPrivate();
-		guildLobby->addSubRoom(guildChat);
-
-		guild->setChatRoom(guildChat);
-		guildChat->sendTo(player);
-		guildChat->addPlayer(player);
-	}
+	guildChat->sendTo(player);
+	guildChat->addPlayer(player);
 
 	//Handle setting of the guild leader.
 	GuildMemberInfo* gmi = guild->getMember(playerID);

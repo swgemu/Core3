@@ -10,6 +10,8 @@
 
 #include "server/chat/ChatManager.h"
 
+#include "server/chat/room/ChatRoom.h"
+
 #include "server/zone/objects/guild/GuildObject.h"
 
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
@@ -624,6 +626,20 @@ void GuildManager::toggleGuildPermission(PlayerCreature* player, unsigned long l
 		_implementation->toggleGuildPermission(player, targetID, permissionIndex, guildTerminal);
 }
 
+ChatRoom* GuildManager::createGuildChannels(GuildObject* guild) {
+	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 45);
+		method.addObjectParameter(guild);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return _implementation->createGuildChannels(guild);
+}
+
 void GuildManager::sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -718,80 +734,80 @@ void GuildManagerImplementation::_serializationHelperMethod() {
 
 GuildManagerImplementation::GuildManagerImplementation(ZoneServer* serv, ZoneProcessServer* proc) {
 	_initializeImplementation();
-	// server/zone/managers/guild/GuildManager.idl(81):  		Logger.setLoggingName("GuildManager");
+	// server/zone/managers/guild/GuildManager.idl(82):  		Logger.setLoggingName("GuildManager");
 	Logger::setLoggingName("GuildManager");
-	// server/zone/managers/guild/GuildManager.idl(82):  		Logger.setLogging(true);
+	// server/zone/managers/guild/GuildManager.idl(83):  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/guild/GuildManager.idl(83):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/guild/GuildManager.idl(84):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/guild/GuildManager.idl(85):  		pendingGuilds.setNoDuplicateInsertPlan();
+	// server/zone/managers/guild/GuildManager.idl(86):  		pendingGuilds.setNoDuplicateInsertPlan();
 	(&pendingGuilds)->setNoDuplicateInsertPlan();
-	// server/zone/managers/guild/GuildManager.idl(87):  		sponsoredPlayers.setNoDuplicateInsertPlan();
+	// server/zone/managers/guild/GuildManager.idl(88):  		sponsoredPlayers.setNoDuplicateInsertPlan();
 	(&sponsoredPlayers)->setNoDuplicateInsertPlan();
-	// server/zone/managers/guild/GuildManager.idl(88):  		sponsoredPlayers.setNullValue(null);
+	// server/zone/managers/guild/GuildManager.idl(89):  		sponsoredPlayers.setNullValue(null);
 	(&sponsoredPlayers)->setNullValue(NULL);
-	// server/zone/managers/guild/GuildManager.idl(90):  		server = serv;
+	// server/zone/managers/guild/GuildManager.idl(91):  		server = serv;
 	server = serv;
-	// server/zone/managers/guild/GuildManager.idl(91):  		processor = proc;
+	// server/zone/managers/guild/GuildManager.idl(92):  		processor = proc;
 	processor = proc;
-	// server/zone/managers/guild/GuildManager.idl(93):  		requiredMembers = 5;
+	// server/zone/managers/guild/GuildManager.idl(94):  		requiredMembers = 5;
 	requiredMembers = 5;
-	// server/zone/managers/guild/GuildManager.idl(94):  		maximumMembers = 500;
+	// server/zone/managers/guild/GuildManager.idl(95):  		maximumMembers = 500;
 	maximumMembers = 500;
-	// server/zone/managers/guild/GuildManager.idl(95):  		guildUpdateInterval = 1440;
+	// server/zone/managers/guild/GuildManager.idl(96):  		guildUpdateInterval = 1440;
 	guildUpdateInterval = 1440;
 }
 
 void GuildManagerImplementation::setChatManager(ChatManager* chatmanager) {
-	// server/zone/managers/guild/GuildManager.idl(99):  		chatManager = chatmanager;
+	// server/zone/managers/guild/GuildManager.idl(100):  		chatManager = chatmanager;
 	chatManager = chatmanager;
 }
 
 void GuildManagerImplementation::addPendingGuild(unsigned long long playerID, const String& guildName) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(105):  		pendingGuilds.put(playerID, guildName);
+	// server/zone/managers/guild/GuildManager.idl(106):  		pendingGuilds.put(playerID, guildName);
 	(&pendingGuilds)->put(playerID, guildName);
 }
 
 void GuildManagerImplementation::removePendingGuild(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(109):  		pendingGuilds.drop(playerID);
+	// server/zone/managers/guild/GuildManager.idl(110):  		pendingGuilds.drop(playerID);
 	(&pendingGuilds)->drop(playerID);
 }
 
 String GuildManagerImplementation::getPendingGuildName(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(113):  		return pendingGuilds.get(playerID);
+	// server/zone/managers/guild/GuildManager.idl(114):  		return pendingGuilds.get(playerID);
 	return (&pendingGuilds)->get(playerID);
 }
 
 void GuildManagerImplementation::addSponsoredPlayer(unsigned long long playerID, GuildObject* guild) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(117):  		sponsoredPlayers.put(playerID, guild);
+	// server/zone/managers/guild/GuildManager.idl(118):  		sponsoredPlayers.put(playerID, guild);
 	(&sponsoredPlayers)->put(playerID, guild);
 }
 
 void GuildManagerImplementation::removeSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(121):  		sponsoredPlayers.drop(playerID);
+	// server/zone/managers/guild/GuildManager.idl(122):  		sponsoredPlayers.drop(playerID);
 	(&sponsoredPlayers)->drop(playerID);
 }
 
 bool GuildManagerImplementation::isCreatingGuild(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(125):  		return pendingGuilds.contains(playerID);
+	// server/zone/managers/guild/GuildManager.idl(126):  		return pendingGuilds.contains(playerID);
 	return (&pendingGuilds)->contains(playerID);
 }
 
 bool GuildManagerImplementation::isSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(129):  		return sponsoredPlayers.contains(playerID);
+	// server/zone/managers/guild/GuildManager.idl(130):  		return sponsoredPlayers.contains(playerID);
 	return (&sponsoredPlayers)->contains(playerID);
 }
 
 GuildObject* GuildManagerImplementation::getSponsoredGuild(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(133):  		return sponsoredPlayers.get(playerID);
+	// server/zone/managers/guild/GuildManager.idl(134):  		return sponsoredPlayers.get(playerID);
 	return (&sponsoredPlayers)->get(playerID);
 }
 
@@ -922,6 +938,9 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case 44:
 		toggleGuildPermission((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), (GuildTerminal*) inv->getObjectParameter());
+		break;
+	case 45:
+		resp->insertLong(createGuildChannels((GuildObject*) inv->getObjectParameter())->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -1084,6 +1103,10 @@ void GuildManagerAdapter::setAllegianceTo(PlayerCreature* player, unsigned long 
 
 void GuildManagerAdapter::toggleGuildPermission(PlayerCreature* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal) {
 	((GuildManagerImplementation*) impl)->toggleGuildPermission(player, targetID, permissionIndex, guildTerminal);
+}
+
+ChatRoom* GuildManagerAdapter::createGuildChannels(GuildObject* guild) {
+	return ((GuildManagerImplementation*) impl)->createGuildChannels(guild);
 }
 
 /*

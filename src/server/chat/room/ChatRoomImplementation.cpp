@@ -72,7 +72,7 @@ void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
 	Locker locker(_this);
 
 	if (playerList.put(player->getFirstName(), player) == -1) {
-		return;
+		//return;
 	}
 
 	ChatOnEnteredRoom* coer = new ChatOnEnteredRoom(server->getServerName(), player->getFirstName(), roomID);
