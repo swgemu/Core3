@@ -46,6 +46,7 @@ which carries forward this exception.
 #define GUILDREMOVECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/guild/GuildManager.h"
 
 class GuildremoveCommand : public QueueCommand {
 public:
@@ -72,6 +73,12 @@ public:
 			player->sendSystemMessage("@guild:guildremove_not_in_guild"); //You are not in a guild.
 			return GENERALERROR;
 		}
+
+		ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+
+		guildManager->leaveGuild(player, guild);
 
 		return SUCCESS;
 	}

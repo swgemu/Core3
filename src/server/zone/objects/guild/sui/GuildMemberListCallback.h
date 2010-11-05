@@ -29,6 +29,9 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
+		if (index == -1)
+			return;
+
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
 		if (obj == NULL || !obj->isTerminal())
@@ -54,7 +57,7 @@ public:
 
 		uint64 memberID = listBox->getMenuObjectID(index);
 
-		guildManager->sendGuildMemberOptionsTo(player, guildTerminal, memberID);
+		guildManager->sendGuildMemberOptionsTo(player, guild, memberID, guildTerminal);
 	}
 };
 

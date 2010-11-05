@@ -83,6 +83,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/scene/variables/DeltaSet.h"
 
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+
 #include "engine/core/ManagedService.h"
 
 namespace server {
@@ -93,6 +95,8 @@ namespace guild {
 class GuildManager : public ManagedService {
 public:
 	GuildManager(ZoneServer* serv, ZoneProcessServer* proc);
+
+	void sendGuildListTo(PlayerCreature* player, const String& guildFilter);
 
 	void addPendingGuild(unsigned long long playerID, const String& guildName);
 
@@ -118,21 +122,27 @@ public:
 
 	void sendGuildCreateAbbrevTo(PlayerCreature* player, GuildTerminal* guildTerminal);
 
-	void sendGuildInformationTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildInformationTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildMemberListTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildMemberListTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildMemberOptionsTo(PlayerCreature* player, GuildTerminal* guildTerminal, unsigned long long memberID);
+	void sendGuildMemberOptionsTo(PlayerCreature* player, GuildObject* guild, unsigned long long memberID, GuildTerminal* guildTerminal);
 
-	void sendGuildDisbandConfirmTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildDisbandConfirmTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildSponsoredListTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildSponsoredListTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildSponsoredOptionsTo(PlayerCreature* player, unsigned long long playerID, GuildTerminal* guildTerminal);
+	void sendGuildSponsoredOptionsTo(PlayerCreature* player, GuildObject* guild, unsigned long long playerID, GuildTerminal* guildTerminal);
 
-	void sendGuildSponsorTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildSponsorTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
 	void sendGuildSponsorVerifyTo(PlayerCreature* player, PlayerCreature* target);
+
+	void sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target);
+
+	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
+
+	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
 
 	bool validateGuildName(PlayerCreature* player, const String& guildName);
 
@@ -152,17 +162,15 @@ public:
 
 	void acceptSponsoredPlayer(PlayerCreature* player, unsigned long long targetID);
 
-	void sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target);
-
-	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
-
 	void kickMember(PlayerCreature* player, PlayerCreature* target);
 
-	void setMemberTitle(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+	void leaveGuild(PlayerCreature* player, GuildObject* guild);
+
+	void setMemberTitle(PlayerCreature* player, PlayerCreature* target, const String& title);
 
 	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 
-	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
+	void sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -212,6 +220,8 @@ public:
 
 	GuildManagerImplementation(DummyConstructorParameter* param);
 
+	void sendGuildListTo(PlayerCreature* player, const String& guildFilter);
+
 	void addPendingGuild(unsigned long long playerID, const String& guildName);
 
 	void removePendingGuild(unsigned long long playerID);
@@ -236,21 +246,27 @@ public:
 
 	void sendGuildCreateAbbrevTo(PlayerCreature* player, GuildTerminal* guildTerminal);
 
-	void sendGuildInformationTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildInformationTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildMemberListTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildMemberListTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildMemberOptionsTo(PlayerCreature* player, GuildTerminal* guildTerminal, unsigned long long memberID);
+	void sendGuildMemberOptionsTo(PlayerCreature* player, GuildObject* guild, unsigned long long memberID, GuildTerminal* guildTerminal);
 
-	void sendGuildDisbandConfirmTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildDisbandConfirmTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildSponsoredListTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildSponsoredListTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildSponsoredOptionsTo(PlayerCreature* player, unsigned long long playerID, GuildTerminal* guildTerminal);
+	void sendGuildSponsoredOptionsTo(PlayerCreature* player, GuildObject* guild, unsigned long long playerID, GuildTerminal* guildTerminal);
 
-	void sendGuildSponsorTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildSponsorTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
 	void sendGuildSponsorVerifyTo(PlayerCreature* player, PlayerCreature* target);
+
+	void sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target);
+
+	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
+
+	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
 
 	bool validateGuildName(PlayerCreature* player, const String& guildName);
 
@@ -270,17 +286,15 @@ public:
 
 	void acceptSponsoredPlayer(PlayerCreature* player, unsigned long long targetID);
 
-	void sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target);
-
-	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
-
 	void kickMember(PlayerCreature* player, PlayerCreature* target);
 
-	void setMemberTitle(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+	void leaveGuild(PlayerCreature* player, GuildObject* guild);
+
+	void setMemberTitle(PlayerCreature* player, PlayerCreature* target, const String& title);
 
 	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 
-	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
+	void sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild);
 
 	GuildManager* _this;
 
@@ -321,6 +335,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendGuildListTo(PlayerCreature* player, const String& guildFilter);
+
 	void addPendingGuild(unsigned long long playerID, const String& guildName);
 
 	void removePendingGuild(unsigned long long playerID);
@@ -345,21 +361,27 @@ public:
 
 	void sendGuildCreateAbbrevTo(PlayerCreature* player, GuildTerminal* guildTerminal);
 
-	void sendGuildInformationTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildInformationTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildMemberListTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildMemberListTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildMemberOptionsTo(PlayerCreature* player, GuildTerminal* guildTerminal, unsigned long long memberID);
+	void sendGuildMemberOptionsTo(PlayerCreature* player, GuildObject* guild, unsigned long long memberID, GuildTerminal* guildTerminal);
 
-	void sendGuildDisbandConfirmTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildDisbandConfirmTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildSponsoredListTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildSponsoredListTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
-	void sendGuildSponsoredOptionsTo(PlayerCreature* player, unsigned long long playerID, GuildTerminal* guildTerminal);
+	void sendGuildSponsoredOptionsTo(PlayerCreature* player, GuildObject* guild, unsigned long long playerID, GuildTerminal* guildTerminal);
 
-	void sendGuildSponsorTo(PlayerCreature* player, GuildTerminal* guildTerminal);
+	void sendGuildSponsorTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal);
 
 	void sendGuildSponsorVerifyTo(PlayerCreature* player, PlayerCreature* target);
+
+	void sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target);
+
+	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
+
+	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
 
 	bool validateGuildName(PlayerCreature* player, const String& guildName);
 
@@ -379,19 +401,16 @@ public:
 
 	void acceptSponsoredPlayer(PlayerCreature* player, unsigned long long targetID);
 
-	void sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target);
-
-	void sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target);
-
 	void kickMember(PlayerCreature* player, PlayerCreature* target);
 
-	void setMemberTitle(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
+	void leaveGuild(PlayerCreature* player, GuildObject* guild);
+
+	void setMemberTitle(PlayerCreature* player, PlayerCreature* target, const String& title);
 
 	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 
-	void sendMemberPermissionsTo(PlayerCreature* player, PlayerCreature* target);
-
 protected:
+	String _param1_sendGuildListTo__PlayerCreature_String_;
 	String _param1_addPendingGuild__long_String_;
 	String _param1_validateGuildName__PlayerCreature_String_;
 	String _param1_validateGuildAbbrev__PlayerCreature_String_;
@@ -400,6 +419,7 @@ protected:
 	String _param2_createGuild__PlayerCreature_GuildTerminal_String_String_;
 	String _param3_createGuild__PlayerCreature_GuildTerminal_String_String_;
 	String _param2_sponsorPlayer__PlayerCreature_GuildTerminal_String_;
+	String _param2_setMemberTitle__PlayerCreature_PlayerCreature_String_;
 };
 
 class GuildManagerHelper : public DistributedObjectClassHelper, public Singleton<GuildManagerHelper> {

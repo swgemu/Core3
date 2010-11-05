@@ -46,6 +46,9 @@ which carries forward this exception.
 #define GUILDSTATUSCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/guild/GuildObject.h"
+#include "server/zone/objects/guild/GuildMemberInfo.h"
 
 class GuildstatusCommand : public QueueCommand {
 public:
@@ -62,6 +65,75 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		ManagedReference<SceneObject*> obj = NULL;
+
+		UnicodeTokenizer tokenizer(arguments);
+		tokenizer.setDelimeter(" ");
+
+		if (tokenizer.hasMoreTokens()) {
+			UnicodeString targetName;
+			tokenizer.getUnicodeToken(targetName);
+
+			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+			uint64 targetPlayerID = playerManager->getObjectID(targetName.toString());
+
+			obj = zoneServer->getObject(targetPlayerID);
+		}
+
+		if (obj == NULL || !obj->isCreatureObject())
+			obj = zoneServer->getObject(target);
+
+		if (obj == NULL || !obj->isPlayerCreature()) {
+			player->sendSystemMessage("@base_player:guildstatus_not_player"); //You may only check the guild status of players.
+			return GENERALERROR;
+		}
+
+		PlayerCreature* targetCreature = (PlayerCreature*) obj.get();
+
+		ParameterizedStringId params;
+		params.setTU(targetCreature);
+
+		if (!creature->isInGuild()) {
+			params.setStringId("@base_player:guildstatus_not_in_guild"); //%TU is not in a guild.
+			player->sendSystemMessage(params);
+			return GENERALERROR;
+		}
+
+		ManagedReference<GuildObject*> guild = targetCreature->getGuildObject();
+		uint64 objid = targetCreature->getObjectID();
+
+		GuildMemberInfo* gmi = guild->getMember(objid);
+
+		if (gmi == NULL)
+			return GENERALERROR;
+
+		String guildTitle = gmi->getGuildTitle();
+		params.setTT(guild->getGuildName());
+
+		StringBuffer stringid;
+		stringid << "@base_player:guildstatus_";
+
+		if (guild->getGuildLeaderID() == objid)
+			stringid << "leader";
+		else
+			stringid << "member";
+
+		if (!guildTitle.isEmpty()) {
+			stringid << "_title";
+			params.setTO(guildTitle);
+		}
+
+		params.setStringId(stringid.toString());
+		player->sendSystemMessage(params);
 
 		return SUCCESS;
 	}

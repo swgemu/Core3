@@ -46,6 +46,7 @@ which carries forward this exception.
 #define LISTGUILDSCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/guild/GuildManager.h"
 
 class ListGuildsCommand : public QueueCommand {
 public:
@@ -62,6 +63,15 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+
+		guildManager->sendGuildListTo(player, arguments.toString());
 
 		return SUCCESS;
 	}

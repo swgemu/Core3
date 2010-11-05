@@ -53,6 +53,7 @@ import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.terminal.guild.GuildTerminal;
 import server.zone.objects.player.PlayerCreature;
 include server.zone.objects.scene.variables.DeltaSet;
+include server.zone.objects.scene.variables.ParameterizedStringId;
 
 class GuildManager extends ManagedService implements Logger {
 	@weakReference
@@ -89,6 +90,8 @@ class GuildManager extends ManagedService implements Logger {
 		maximumMembers = 500;
 		guildUpdateInterval = 1440;
 	}
+	
+	public native void sendGuildListTo(PlayerCreature player, final string guildFilter);
 	
 	public synchronized void addPendingGuild(unsigned long playerID, final string guildName) {
 		pendingGuilds.put(playerID, guildName);
@@ -130,21 +133,27 @@ class GuildManager extends ManagedService implements Logger {
 	
 	public native void sendGuildCreateAbbrevTo(PlayerCreature player, GuildTerminal guildTerminal);
 	
-	public native void sendGuildInformationTo(PlayerCreature player, GuildTerminal guildTerminal);
+	public native void sendGuildInformationTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
 	
-	public native void sendGuildMemberListTo(PlayerCreature player, GuildTerminal guildTerminal);
+	public native void sendGuildMemberListTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
 	
-	public native void sendGuildMemberOptionsTo(PlayerCreature player, GuildTerminal guildTerminal, unsigned long memberID);
+	public native void sendGuildMemberOptionsTo(PlayerCreature player, GuildObject guild, unsigned long memberID, GuildTerminal guildTerminal);
 	
-	public native void sendGuildDisbandConfirmTo(PlayerCreature player, GuildTerminal guildTerminal);
+	public native void sendGuildDisbandConfirmTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
 	
-	public native void sendGuildSponsoredListTo(PlayerCreature player, GuildTerminal guildTerminal);
+	public native void sendGuildSponsoredListTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
 	
-	public native void sendGuildSponsoredOptionsTo(PlayerCreature player, unsigned long playerID, GuildTerminal guildTerminal);
+	public native void sendGuildSponsoredOptionsTo(PlayerCreature player, GuildObject guild, unsigned long playerID, GuildTerminal guildTerminal);
 	
-	public native void sendGuildSponsorTo(PlayerCreature player, GuildTerminal guildTerminal);
+	public native void sendGuildSponsorTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
 	
 	public native void sendGuildSponsorVerifyTo(PlayerCreature player, PlayerCreature target);
+	
+	public native void sendGuildKickPromptTo(PlayerCreature player, PlayerCreature target);
+	
+	public native void sendGuildSetTitleTo(PlayerCreature player, PlayerCreature target);
+	
+	public native void sendMemberPermissionsTo(PlayerCreature player, PlayerCreature target);
 	
 	public native boolean validateGuildName(PlayerCreature player, final string guildName);
 	
@@ -164,15 +173,14 @@ class GuildManager extends ManagedService implements Logger {
 	
 	public native void acceptSponsoredPlayer(PlayerCreature player, unsigned long targetID);
 	
-	public native void sendGuildKickPromptTo(PlayerCreature player, PlayerCreature target);
-	
-	public native void sendGuildSetTitleTo(PlayerCreature player, PlayerCreature target);
-	
 	public native void kickMember(PlayerCreature player, PlayerCreature target);
 	
-	public native void setMemberTitle(PlayerCreature player, unsigned long targetID, GuildTerminal guildTerminal);
+	public native void leaveGuild(PlayerCreature player, GuildObject guild);
+	
+	public native void setMemberTitle(PlayerCreature player, PlayerCreature target, final string title);
 	
 	public native void setAllegianceTo(PlayerCreature player, unsigned long targetID, GuildTerminal guildTerminal);
 	
-	public native void sendMemberPermissionsTo(PlayerCreature player, PlayerCreature target);
+	@local
+	public native void sendGuildMail(final string subject, @dereferenced ParameterizedStringId body, GuildObject guild);
 }
