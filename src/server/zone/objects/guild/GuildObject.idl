@@ -184,6 +184,10 @@ class GuildObject extends SceneObject {
 		return true;
 	}
 	
+	public boolean isGuildLeader(PlayerCreature player) {
+		return (guildLeaderID = player.getObjectID());
+	}
+	
 	public native boolean hasMailPermission(unsigned long playerID);
 	public native boolean hasSponsorPermission(unsigned long playerID);
 	public native boolean hasAcceptPermission(unsigned long playerID);

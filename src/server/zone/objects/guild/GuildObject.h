@@ -146,6 +146,8 @@ public:
 
 	bool isGuildObject();
 
+	bool isGuildLeader(PlayerCreature* player);
+
 	bool hasMailPermission(unsigned long long playerID);
 
 	bool hasSponsorPermission(unsigned long long playerID);
@@ -281,6 +283,8 @@ public:
 
 	bool isGuildObject();
 
+	bool isGuildLeader(PlayerCreature* player);
+
 	bool hasMailPermission(unsigned long long playerID);
 
 	bool hasSponsorPermission(unsigned long long playerID);
@@ -381,6 +385,8 @@ public:
 	String getGuildKey();
 
 	bool isGuildObject();
+
+	bool isGuildLeader(PlayerCreature* player);
 
 	bool hasMailPermission(unsigned long long playerID);
 

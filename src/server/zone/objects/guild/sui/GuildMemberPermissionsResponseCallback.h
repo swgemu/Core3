@@ -1,20 +1,20 @@
 /*
- * GuildMemberOptionsCallback.h
+ * GuildMemberPermissionsResponseCallback.h
  *
- *  Created on: Nov 3, 2010
+ *  Created on: Nov 5, 2010
  *      Author: crush
  */
 
-#ifndef GUILDMEMBEROPTIONSCALLBACK_H_
-#define GUILDMEMBEROPTIONSCALLBACK_H_
+#ifndef GUILDMEMBERPERMISSIONSRESPONSECALLBACK_H_
+#define GUILDMEMBERPERMISSIONSRESPONSECALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiMessageCallback.h"
 
-class GuildMemberOptionsCallback : public SuiMessageCallback {
+class GuildMemberPermissionsResponseCallback : public SuiMessageCallback {
 public:
-	GuildMemberOptionsCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildMemberPermissionsResponseCallback(ZoneClientSession* client, ZoneProcessServer* server)
 		: SuiMessageCallback(client, server) {
 	}
 
@@ -56,34 +56,8 @@ public:
 		if (guild == NULL)
 			return;
 
-		ManagedReference<SceneObject*> playObj = server->getZoneServer()->getObject(memberID);
-
-		if (playObj == NULL || !playObj->isPlayerCreature())
-			return;
-
-		PlayerCreature* target = (PlayerCreature*) playObj.get();
-
-		//Guild Leader doesn't have the set allegiance option, so if this player is the guild leader, then we need to increment the index by 1!
-		if (guild->isGuildLeader(player))
-			++index;
-
-		switch (index) {
-		case 0: //Set Allegiance
-			guildManager->setAllegianceTo(player, memberID, guildTerminal);
-			break;
-		case 1: //Kick
-			guildManager->sendGuildKickPromptTo(player, target);
-			break;
-		case 2: //Set Title
-			guildManager->sendGuildSetTitleTo(player, target);
-			break;
-		case 3: //Change Permissions
-			guildManager->sendMemberPermissionsTo(player, memberID, guildTerminal);
-			break;
-		default:
-			return;
-		}
+		guildManager->toggleGuildPermission(player, memberID, index, guildTerminal);
 	}
 };
 
-#endif /* GUILDMEMBEROPTIONSCALLBACK_H_ */
+#endif /* GUILDMEMBERPERMISSIONSRESPONSECALLBACK_H_ */

@@ -377,13 +377,27 @@ bool GuildObject::isGuildObject() {
 		return _implementation->isGuildObject();
 }
 
-bool GuildObject::hasMailPermission(unsigned long long playerID) {
+bool GuildObject::isGuildLeader(PlayerCreature* player) {
 	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 30);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isGuildLeader(player);
+}
+
+bool GuildObject::hasMailPermission(unsigned long long playerID) {
+	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -397,7 +411,7 @@ bool GuildObject::hasSponsorPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -411,7 +425,7 @@ bool GuildObject::hasAcceptPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -425,7 +439,7 @@ bool GuildObject::hasDisbandPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -439,7 +453,7 @@ bool GuildObject::hasKickPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -453,7 +467,7 @@ bool GuildObject::hasNamePermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -467,7 +481,7 @@ bool GuildObject::hasTitlePermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -678,6 +692,11 @@ bool GuildObjectImplementation::isGuildObject() {
 	return true;
 }
 
+bool GuildObjectImplementation::isGuildLeader(PlayerCreature* player) {
+	// server/zone/objects/guild/GuildObject.idl(188):  		return (guildLeaderID = player.getObjectID());
+	return (guildLeaderID = player->getObjectID());
+}
+
 /*
  *	GuildObjectAdapter
  */
@@ -762,24 +781,27 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isGuildObject());
 		break;
 	case 30:
-		resp->insertBoolean(hasMailPermission(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(isGuildLeader((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 31:
-		resp->insertBoolean(hasSponsorPermission(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(hasMailPermission(inv->getUnsignedLongParameter()));
 		break;
 	case 32:
-		resp->insertBoolean(hasAcceptPermission(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(hasSponsorPermission(inv->getUnsignedLongParameter()));
 		break;
 	case 33:
-		resp->insertBoolean(hasDisbandPermission(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(hasAcceptPermission(inv->getUnsignedLongParameter()));
 		break;
 	case 34:
-		resp->insertBoolean(hasKickPermission(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(hasDisbandPermission(inv->getUnsignedLongParameter()));
 		break;
 	case 35:
-		resp->insertBoolean(hasNamePermission(inv->getUnsignedLongParameter()));
+		resp->insertBoolean(hasKickPermission(inv->getUnsignedLongParameter()));
 		break;
 	case 36:
+		resp->insertBoolean(hasNamePermission(inv->getUnsignedLongParameter()));
+		break;
+	case 37:
 		resp->insertBoolean(hasTitlePermission(inv->getUnsignedLongParameter()));
 		break;
 	default:
@@ -883,6 +905,10 @@ String GuildObjectAdapter::getGuildKey() {
 
 bool GuildObjectAdapter::isGuildObject() {
 	return ((GuildObjectImplementation*) impl)->isGuildObject();
+}
+
+bool GuildObjectAdapter::isGuildLeader(PlayerCreature* player) {
+	return ((GuildObjectImplementation*) impl)->isGuildLeader(player);
 }
 
 bool GuildObjectAdapter::hasMailPermission(unsigned long long playerID) {
