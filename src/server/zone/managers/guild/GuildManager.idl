@@ -48,6 +48,7 @@ import engine.core.ManagedService;
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneServer;
 import server.chat.ChatManager;
+import server.chat.room.ChatRoom;
 include server.zone.managers.guild.GuildList;
 include server.zone.packets.guild.GuildObjectDeltaMessage3;
 import server.zone.objects.guild.GuildObject;
@@ -190,6 +191,8 @@ class GuildManager extends ManagedService implements Logger {
 	public native void setAllegianceTo(PlayerCreature player, unsigned long targetID, GuildTerminal guildTerminal);
 	
 	public native void toggleGuildPermission(PlayerCreature player, unsigned long targetID, int permissionIndex, GuildTerminal guildTerminal);
+	
+	public native ChatRoom createGuildChannels(GuildObject guild);
 	
 	@local
 	public native void sendGuildMail(final string subject, @dereferenced ParameterizedStringId body, GuildObject guild);
