@@ -24,6 +24,7 @@
 #include "UpdateModifiedObjectsTask.h"
 #include "engine/db/berkley/Transaction.h"
 #include "CommitMasterTransactionTask.h"
+#include "ObjectVersionUpdateManager.h"
 
 using namespace engine::db;
 
@@ -278,6 +279,9 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<FactoryCrate>(SceneObject::FACTORYCRATE);
 }
 
+void ObjectManager::updateObjectVersion() {
+	ObjectVersionUpdateManager::instance()->run();
+}
 
 void ObjectManager::loadLastUsedObjectID() {
 	info("loading last used object id");

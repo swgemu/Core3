@@ -152,6 +152,7 @@ namespace zone {
 		void updateModifiedObjectsToDatabase(bool startTask);
 		void finishObjectUpdate(bool startNew);
 
+		void updateObjectVersion();
 
 		//used internally
 		int commitUpdatePersistentObjectToDB(DistributedObject* object);

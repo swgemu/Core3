@@ -125,6 +125,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
 	
 	public native void handleChatRoomMessage(PlayerCreature sender, final unicode message, unsigned int roomID, unsigned int counter);
+	public native void handleChatEnterRoomById(PlayerCreature player, unsigned int counter, unsigned int roomID);
 	public native void handleSocialInternalMessage(CreatureObject sender, final unicode arguments);
 
 	@local
@@ -163,12 +164,11 @@ class ChatManager extends ManagedService implements Logger {
 
 	// ChatRooms
 	public native void initGuildChannel(PlayerCreature creator, unsigned int gid);
-
-	public native void handleChatRoomMessage(PlayerCreature player, BaseMessage pack);
+	
+	
 	public native void handleGuildChat(PlayerCreature player, BaseMessage pack);
 
 	public native void handleCreateRoom(PlayerCreature player, BaseMessage pack);
-	public native void handleChatEnterRoomById(PlayerCreature player, BaseMessage pack);
 	public native void handleChatDestroyRoom(PlayerCreature player, BaseMessage pack);
 	public native void handleChatRemoveAvatarFromRoom(PlayerCreature player, BaseMessage pack);
 

@@ -19,6 +19,8 @@ public:
 
 	void checkCurrentRevision();
 	void runScripts();
+
+	void run();
 };
 
 

@@ -1103,6 +1103,8 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 		StringBuffer msg;
 		msg << "trying to enqueue NULL QUEUE COMMAND 0x" << hex << actionCRC;
 		error(msg.toString());
+
+		StackTrace::printStackTrace();
 		return;
 	}
 

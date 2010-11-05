@@ -103,6 +103,7 @@ which carries forward this exception.
 #include "packets/chat/ChatPersistentMessageToServerCallback.h"
 #include "packets/chat/ChatRequestPersistentMessageCallback.h"
 #include "packets/chat/ChatDeletePersistentMessageCallback.h"
+#include "packets/chat/ChatEnterRoomByIdCallback.h"
 
 #include "packets/trade/AbortTradeMessageCallback.h"
 #include "packets/trade/AcceptTransactionMessageCallback.h"
@@ -171,7 +172,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<GiveMoneyMessageCallback>(0xD1527EE8);
 	messageCallbackFactory.registerObject<GetMapLocationsCallback>(0x1A7AB839);
 	messageCallbackFactory.registerObject<GuildRequestCallback>(0x81EB4EF7);
-
+	messageCallbackFactory.registerObject<ChatEnterRoomByIdCallback>(0xbc6bddf2);
 
 }
 

@@ -149,6 +149,7 @@ void ZoneServerImplementation::initialize() {
 
 	objectManager = ObjectManager::instance();
 	objectManager->setZoneProcessor(processor);
+	objectManager->updateObjectVersion();
 
 	stringIdManager = StringIdManager::instance();
 

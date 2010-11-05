@@ -414,13 +414,13 @@ void GuildManagerImplementation::sendBaselinesTo(PlayerCreature* player) {
 	if (guild == NULL)
 		return;
 
-	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+	/*ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
 
 	if (guildChat == NULL)
 		return;
 
 	guildChat->sendTo(player);
-	guildChat->addPlayer(player);
+	guildChat->addPlayer(player);*/
 }
 
 GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, GuildTerminal* terminal, const String& guildName, const String& guildAbbrev) {
