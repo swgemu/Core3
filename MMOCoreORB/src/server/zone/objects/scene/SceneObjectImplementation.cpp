@@ -348,6 +348,13 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 				for (int j = 0; j < arrangementSize; ++j)
 					slottedObjects.drop(object->getArrangementDescriptor(j));
 
+				for (int j = 0; j < slottedObjects.size(); ++j) {
+					if (slottedObjects.get(j) == object) {
+						slottedObjects.remove(j);
+						--j;
+					}
+				}
+
 				i -= arrangementSize;
 
 				i = (i < -1) ? -1 : i;

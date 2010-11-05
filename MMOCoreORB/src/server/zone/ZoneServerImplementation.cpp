@@ -81,7 +81,7 @@ ZoneServerImplementation::ZoneServerImplementation(int galaxyid) :
 		ManagedServiceImplementation(), Logger("ZoneServer") {
 	galaxyID = galaxyid;
 
-	name = "Core3 OR";
+	name = "Core3";
 
 	processor = NULL;
 

@@ -42,6 +42,18 @@ class ChatManager;
 using namespace server::chat;
 
 namespace server {
+namespace chat {
+namespace room {
+
+class ChatRoom;
+
+} // namespace room
+} // namespace chat
+} // namespace server
+
+using namespace server::chat::room;
+
+namespace server {
 namespace zone {
 namespace objects {
 namespace guild {
@@ -184,6 +196,8 @@ public:
 
 	void toggleGuildPermission(PlayerCreature* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal);
 
+	ChatRoom* createGuildChannels(GuildObject* guild);
+
 	void sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild);
 
 	DistributedObjectServant* _getImplementation();
@@ -314,6 +328,8 @@ public:
 
 	void toggleGuildPermission(PlayerCreature* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal);
 
+	ChatRoom* createGuildChannels(GuildObject* guild);
+
 	void sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild);
 
 	GuildManager* _this;
@@ -432,6 +448,8 @@ public:
 	void setAllegianceTo(PlayerCreature* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 
 	void toggleGuildPermission(PlayerCreature* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal);
+
+	ChatRoom* createGuildChannels(GuildObject* guild);
 
 protected:
 	String _param1_sendGuildListTo__PlayerCreature_String_;
