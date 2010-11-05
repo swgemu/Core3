@@ -44,14 +44,6 @@ GuildMemberInfo* GuildObjectImplementation::getMember(uint64 playerID) {
 	return &guildMembers.get(playerID);
 }
 
-void GuildObjectImplementation::startChatRoom() {
-
-}
-
-void GuildObjectImplementation::destroyChatRoom() {
-
-}
-
 bool GuildObjectImplementation::hasMailPermission(uint64 playerID) {
 	if (!guildMembers.contains(playerID))
 		return false;

@@ -29,6 +29,7 @@
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
+#include "server/zone/objects/terrain/PlanetNames.h"
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;
@@ -98,13 +99,18 @@ void ChatManagerImplementation::initiateRooms() {
 	core3Room->addSubRoom(generalRoom);
 
 	// Planet Chat
+	for (int i = 0; i < server->getZoneCount(); ++i) {
+		ManagedReference<Zone*> zone = server->getZone(i);
 
-	// Naboo
-	ChatRoom* nabooRoom = createRoom("naboo", core3Room);
-	core3Room->addSubRoom(nabooRoom);
+		if (zone == NULL)
+			continue;
 
-	ChatRoom* nabooPlanetary = createRoom("chat", nabooRoom);
-	nabooRoom->addSubRoom(nabooPlanetary);
+		ChatRoom* planetRoom = createRoom(Planet::getPlanetName(i), core3Room);
+		core3Room->addSubRoom(planetRoom);
+
+		ChatRoom* planetaryChat = createRoom("chat", planetRoom);
+		planetRoom->addSubRoom(planetaryChat);
+	}
 }
 
 ChatRoom* ChatManagerImplementation::createRoomByFullPath(const String& path) {

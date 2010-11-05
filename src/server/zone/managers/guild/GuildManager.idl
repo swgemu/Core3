@@ -47,6 +47,7 @@ package server.zone.managers.guild;
 import engine.core.ManagedService;
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneServer;
+import server.chat.ChatManager;
 include server.zone.managers.guild.GuildList;
 include server.zone.packets.guild.GuildObjectDeltaMessage3;
 import server.zone.objects.guild.GuildObject;
@@ -59,6 +60,9 @@ class GuildManager extends ManagedService implements Logger {
 	@weakReference
 	private transient ZoneServer server;
 	private transient ZoneProcessServer processor;
+	
+	@weakReference
+	private transient ChatManager chatManager;
 	
 	@dereferenced
 	private DeltaSet<string, GuildObject> guildList;
@@ -89,6 +93,10 @@ class GuildManager extends ManagedService implements Logger {
 		requiredMembers = 5;
 		maximumMembers = 500;
 		guildUpdateInterval = 1440;
+	}
+	
+	public void setChatManager(ChatManager chatmanager) {
+		chatManager = chatmanager;
 	}
 	
 	public native void sendGuildListTo(PlayerCreature player, final string guildFilter);
@@ -165,7 +173,7 @@ class GuildManager extends ManagedService implements Logger {
 	
 	public native GuildObject createGuild(PlayerCreature player, GuildTerminal guildTerminal, final string guildName, final string guildAbbrev);
 	
-	public native boolean disbandGuild(PlayerCreature player, GuildTerminal guildTerminal);
+	public native boolean disbandGuild(PlayerCreature player, GuildObject guild);
 	
 	public native void sponsorPlayer(PlayerCreature player, GuildTerminal guildTerminal, final string playerName);
 	

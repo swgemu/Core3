@@ -32,6 +32,16 @@ class ZoneServer;
 using namespace server::zone;
 
 namespace server {
+namespace chat {
+
+class ChatManager;
+
+} // namespace chat
+} // namespace server
+
+using namespace server::chat;
+
+namespace server {
 namespace zone {
 namespace objects {
 namespace guild {
@@ -96,6 +106,8 @@ class GuildManager : public ManagedService {
 public:
 	GuildManager(ZoneServer* serv, ZoneProcessServer* proc);
 
+	void setChatManager(ChatManager* chatmanager);
+
 	void sendGuildListTo(PlayerCreature* player, const String& guildFilter);
 
 	void addPendingGuild(unsigned long long playerID, const String& guildName);
@@ -154,7 +166,7 @@ public:
 
 	GuildObject* createGuild(PlayerCreature* player, GuildTerminal* guildTerminal, const String& guildName, const String& guildAbbrev);
 
-	bool disbandGuild(PlayerCreature* player, GuildTerminal* guildTerminal);
+	bool disbandGuild(PlayerCreature* player, GuildObject* guild);
 
 	void sponsorPlayer(PlayerCreature* player, GuildTerminal* guildTerminal, const String& playerName);
 
@@ -203,6 +215,8 @@ class GuildManagerImplementation : public ManagedServiceImplementation, public L
 
 	ManagedReference<ZoneProcessServer* > processor;
 
+	ManagedWeakReference<ChatManager* > chatManager;
+
 	DeltaSet<String, ManagedReference<GuildObject* > > guildList;
 
 	VectorMap<unsigned long long, String> pendingGuilds;
@@ -219,6 +233,8 @@ public:
 	GuildManagerImplementation(ZoneServer* serv, ZoneProcessServer* proc);
 
 	GuildManagerImplementation(DummyConstructorParameter* param);
+
+	void setChatManager(ChatManager* chatmanager);
 
 	void sendGuildListTo(PlayerCreature* player, const String& guildFilter);
 
@@ -278,7 +294,7 @@ public:
 
 	GuildObject* createGuild(PlayerCreature* player, GuildTerminal* guildTerminal, const String& guildName, const String& guildAbbrev);
 
-	bool disbandGuild(PlayerCreature* player, GuildTerminal* guildTerminal);
+	bool disbandGuild(PlayerCreature* player, GuildObject* guild);
 
 	void sponsorPlayer(PlayerCreature* player, GuildTerminal* guildTerminal, const String& playerName);
 
@@ -335,6 +351,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void setChatManager(ChatManager* chatmanager);
+
 	void sendGuildListTo(PlayerCreature* player, const String& guildFilter);
 
 	void addPendingGuild(unsigned long long playerID, const String& guildName);
@@ -393,7 +411,7 @@ public:
 
 	GuildObject* createGuild(PlayerCreature* player, GuildTerminal* guildTerminal, const String& guildName, const String& guildAbbrev);
 
-	bool disbandGuild(PlayerCreature* player, GuildTerminal* guildTerminal);
+	bool disbandGuild(PlayerCreature* player, GuildObject* guild);
 
 	void sponsorPlayer(PlayerCreature* player, GuildTerminal* guildTerminal, const String& playerName);
 

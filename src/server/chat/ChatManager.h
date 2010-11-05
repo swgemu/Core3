@@ -226,6 +226,10 @@ public:
 
 	int getPlayerCount();
 
+	ChatRoom* getGuildRoom();
+
+	ChatRoom* getGroupRoom();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -338,6 +342,10 @@ public:
 
 	int getPlayerCount();
 
+	ChatRoom* getGuildRoom();
+
+	ChatRoom* getGroupRoom();
+
 	ChatManager* _this;
 
 	operator const ChatManager*();
@@ -438,6 +446,10 @@ public:
 	unsigned int getNextRoomID();
 
 	int getPlayerCount();
+
+	ChatRoom* getGuildRoom();
+
+	ChatRoom* getGroupRoom();
 
 protected:
 	String _param0_createRoom__String_ChatRoom_;
