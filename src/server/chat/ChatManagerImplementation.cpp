@@ -247,6 +247,15 @@ void ChatManagerImplementation::handleChatRoomMessage(PlayerCreature* sender, co
 	channel->broadcastMessage(messages);*/
 }
 
+void ChatManagerImplementation::handleChatEnterRoomById(PlayerCreature* player, uint32 counter, uint32 roomID) {
+	ManagedReference<ChatRoom*> room = getChatRoom(roomID);
+
+	if (room == NULL)
+		return;
+
+	room->addPlayer(player);
+}
+
 void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
 	Zone* zone = sender->getZone();
 
