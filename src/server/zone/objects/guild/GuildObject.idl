@@ -87,6 +87,7 @@ class GuildObject extends SceneObject {
 		chatRoom = null;
 		
 		sponsoredPlayers.setNoDuplicateInsertPlan();
+		guildMembers.setNoDuplicateInsertPlan();
 	}
 	
 	public native void sendBaselinesTo(SceneObject player);
