@@ -62,7 +62,7 @@ object_tangible_food_crafted_dessert_vagnerian_canape = object_tangible_food_cra
 	modifiers = { "focus", 0, "willpower", 0 },
 
 	buffName = "food.dessert_vagnerian_canape",
-	buffCRC = 0,
+	buffCRC = 0xFB554185,
 	speciesRestriction = ""
 }
 

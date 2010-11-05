@@ -42,6 +42,28 @@
 
 
 object_tangible_food_crafted_dessert_blob_candy = object_tangible_food_crafted_shared_dessert_blob_candy:new {
+	templateType = CONSUMABLE,
+	
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
+
+	effectType = 1,
+
+	fillingMin = 11,
+	fillingMax = 7,
+	flavorMin = 720,
+	flavorMax = 1440,
+	nutritionMin = 35,
+	nutritionMax = 60,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "action", 0 },
+
+	buffName = "food.dessert_blob_candy",
+	buffCRC = 0,
+	speciesRestriction = ""
 
 }
 

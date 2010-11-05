@@ -62,7 +62,7 @@ object_tangible_food_crafted_dish_thakitillo = object_tangible_food_crafted_shar
 	modifiers = { "knockdown_defense", 0 },
 
 	buffName = "food.dish_thakitillo",
-	buffCRC = 0,
+	buffCRC = 0xDC5D4FD7,
 	speciesRestriction = ""
 }
 

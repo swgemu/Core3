@@ -62,7 +62,7 @@ object_tangible_food_crafted_drink_bespin_port = object_tangible_food_crafted_sh
 	modifiers = { "experiment_bonus", 0 },
 
 	buffName = "food.experiment_bonus",
-	buffCRC = 0,
+	buffCRC = 0x9B38A4CB,
 	speciesRestriction = ""
 }
 
