@@ -236,6 +236,9 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(PlayerCreature* player
 	if (memberList == NULL)
 		return;
 
+	if (!memberList->contains(player->getObjectID()))
+		return;
+
 	GuildMemberInfo* gmi = &memberList->get(player->getObjectID());
 
 	if (gmi == NULL)
@@ -467,6 +470,8 @@ bool GuildManagerImplementation::disbandGuild(PlayerCreature* player, GuildTermi
 	gildd3->startUpdate(0x04);
 	guildList.drop(guild->getGuildKey(), gildd3);
 	gildd3->close();
+
+	guild->destroyObjectFromDatabase(true);
 
 	//Send the delta to everyone currently online!
 	ManagedReference<ChatManager*> chatManager = server->getChatManager();

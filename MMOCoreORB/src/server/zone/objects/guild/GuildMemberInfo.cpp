@@ -8,12 +8,12 @@
 #include "GuildMemberInfo.h"
 #include "GuildObject.h"
 
-GuildMemberInfo::GuildMemberInfo(uint64 playerid) {
+GuildMemberInfo::GuildMemberInfo(uint64 playerid) : Object() {
 	playerID = playerid;
 	permissions = GuildObject::PERMISSION_NONE;
 	declaredAllegiance = 0;
 
-	addSerializableVariables();
+	//addSerializableVariables();
 }
 
 int GuildMemberInfo::compareTo(const GuildMemberInfo& gmi) const {
