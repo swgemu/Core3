@@ -108,7 +108,7 @@ bool GuildManagerImplementation::validateGuildName(PlayerCreature* player, const
 	}
 
 	if (guildNameExists(guildName)) {
-		player->sendSystemMessage("@guild:create_fail_name_now_allowed"); //That guild name is not allowed.
+		player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed.
 		return false;
 	}
 
@@ -172,7 +172,7 @@ bool GuildManagerImplementation::validateGuildAbbrev(PlayerCreature* player, con
 	}
 
 	if (guildAbbrevExists(guildAbbrev)) {
-		player->sendSystemMessage("@guild:create_fail_abbrev_now_allowed"); //That guild abbreviation is not allowed.
+		player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); //That guild abbreviation is not allowed.
 		return false;
 	}
 
@@ -242,8 +242,8 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(PlayerCreature* player
 		return;
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_OPTIONS);
-	suiBox->setPromptTitle("@guild:members_options_title"); //Guild Member Options
-	suiBox->setPromptText("@guild:members_options_prompt");
+	suiBox->setPromptTitle("@guild:member_options_title"); //Guild Member Options
+	suiBox->setPromptText("@guild:member_options_prompt");
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setCancelButton(true, "@cancel");
 
