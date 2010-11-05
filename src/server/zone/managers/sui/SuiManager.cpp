@@ -129,6 +129,9 @@ void SuiManager::registerMessages() {
 	messageCallbackFactory.registerObject<GuildMemberListCallback>(SuiWindowType::GUILD_MEMBER_LIST);
 	messageCallbackFactory.registerObject<GuildMemberOptionsCallback>(SuiWindowType::GUILD_MEMBER_OPTIONS);
 	messageCallbackFactory.registerObject<GuildMemberPermissionsResponseCallback>(SuiWindowType::GUILD_MEMBER_PERMISSIONS);
+	messageCallbackFactory.registerObject<GuildMemberRemoveCallback>(SuiWindowType::GUILD_MEMBER_REMOVE);
+	messageCallbackFactory.registerObject<GuildTitleResponseCallback>(SuiWindowType::GUILD_MEMBER_TITLE);
+	messageCallbackFactory.registerObject<GuildSponsorCallback>(SuiWindowType::GUILD_SPONSOR);
 	messageCallbackFactory.registerObject<GuildSponsorVerifyCallback>(SuiWindowType::GUILD_SPONSOR_VERIFY);
 	messageCallbackFactory.registerObject<GuildSponsoredListCallback>(SuiWindowType::GUILD_SPONSORED_LIST);
 	messageCallbackFactory.registerObject<GuildSponsoredOptionsCallback>(SuiWindowType::GUILD_SPONSORED_OPTIONS);

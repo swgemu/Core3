@@ -693,8 +693,8 @@ bool GuildObjectImplementation::isGuildObject() {
 }
 
 bool GuildObjectImplementation::isGuildLeader(PlayerCreature* player) {
-	// server/zone/objects/guild/GuildObject.idl(188):  		return (guildLeaderID = player.getObjectID());
-	return (guildLeaderID = player->getObjectID());
+	// server/zone/objects/guild/GuildObject.idl(188):  		return (guildLeaderID == player.getObjectID());
+	return (guildLeaderID == player->getObjectID());
 }
 
 /*
