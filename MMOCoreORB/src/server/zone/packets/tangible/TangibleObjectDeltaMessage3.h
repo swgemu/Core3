@@ -69,6 +69,16 @@ public:
 	}
 
 	void updateName(const UnicodeString& name) {
+		if (tano->isPlayerCreature()) {
+			PlayerCreature* player = (PlayerCreature*) tano;
+
+			if (player->getPlayerObject()->isPrivileged()) {
+				String customName = name.toString() + " \\#ffff00[SWGEmu-Staff]\\#.";
+				addUnicodeUpdate(2, customName);
+				return;
+			}
+		}
+
 		addUnicodeUpdate(2, name);
 	}
 
