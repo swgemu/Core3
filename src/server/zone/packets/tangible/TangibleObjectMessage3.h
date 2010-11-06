@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../objects/tangible/TangibleObject.h"
 #include "../../objects/scene/variables/StringId.h"
+#include "../../objects/player/PlayerObject.h"
+#include "../../objects/player/PlayerCreature.h"
 
 
 class TangibleObjectMessage3 : public BaseLineMessage {
@@ -57,7 +59,17 @@ public:
 			: BaseLineMessage(tano->getObjectID(), objType, 3, opcnt) {
 		insertFloat(tano->getComplexity());
 
-		insertStringId(tano->getObjectName());
+		StringId* stringId = tano->getObjectName();
+
+		insertAscii(stringId->getFile());
+		insertInt(0);
+		insertAscii(stringId->getStringID());
+
+		if (tano->isPlayerCreature() && ((PlayerCreature*)tano)->getPlayerObject()->isPrivileged())
+			insertUnicode(stringId->getCustomString() + " \\#ffff00[SWGEmu-Staff]\\#.");
+
+		else
+			insertUnicode(stringId->getCustomString());
 
 		insertInt(tano->getVolume());
 
