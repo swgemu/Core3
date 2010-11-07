@@ -269,24 +269,27 @@ void CreatureManagerImplementation::_serializationHelperMethod() {
 	_setClassName("CreatureManager");
 
 	addSerializableVariable("zone", &zone);
+	addSerializableVariable("spawnAreaMap", &spawnAreaMap);
 }
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : ZoneManagerImplementation("CreatureManager") {
 	_initializeImplementation();
-	// server/zone/managers/creature/CreatureManager.idl(25):  		zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl(29):  		zone = planet;
 	zone = planet;
 }
 
 void CreatureManagerImplementation::initialize() {
-	// server/zone/managers/creature/CreatureManager.idl(29):  		setCreatureTemplateManager();
+	// server/zone/managers/creature/CreatureManager.idl(33):  		setCreatureTemplateManager();
 	setCreatureTemplateManager();
-	// server/zone/managers/creature/CreatureManager.idl(31):  		loadTrainers();
+	// server/zone/managers/creature/CreatureManager.idl(34):  		loadDynamicSpawnAreas();
+	loadDynamicSpawnAreas();
+	// server/zone/managers/creature/CreatureManager.idl(35):  		loadTrainers();
 	loadTrainers();
-	// server/zone/managers/creature/CreatureManager.idl(32):  		loadSingleSpawns();
+	// server/zone/managers/creature/CreatureManager.idl(36):  		loadSingleSpawns();
 	loadSingleSpawns();
-	// server/zone/managers/creature/CreatureManager.idl(33):  		loadMissionSpawns();
+	// server/zone/managers/creature/CreatureManager.idl(37):  		loadMissionSpawns();
 	loadMissionSpawns();
-	// server/zone/managers/creature/CreatureManager.idl(34):  		loadInformants();
+	// server/zone/managers/creature/CreatureManager.idl(38):  		loadInformants();
 	loadInformants();
 }
 

@@ -44,50 +44,88 @@ which carries forward this exception.
 
 package server.zone.objects.area;
 
+import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.player.PlayerObject;
 import server.zone.objects.area.ActiveArea;
 import system.util.SortedVector;
+import system.util.Vector;
+import system.util.VectorMap;
 import server.zone.managers.object.ObjectManager;
+import engine.core.ManagedObject;
+import server.zone.managers.creature.SpawnGroup;
+import server.zone.objects.creature.aigroup.AiGroup;
+import server.zone.objects.area.SpawnObserver;
+import server.zone.objects.area.SpawnDynamicAreaCreatureTask;
 
 class DynamicSpawnArea extends ActiveArea {
 	@dereferenced
 	protected SortedVector<unsigned int> spawnCreatureTemplates;
 	
 	@dereferenced
+	protected SortedVector<AiGroup> spawnedGroups;
+	
+	@dereferenced
+	protected Vector<DynamicSpawnArea> noSpawnAreas;
+	
+	@dereferenced
+	protected VectorMap<PlayerObject, SpawnDynamicAreaCreatureTask> playerOccupants;
+	
+	@dereferenced
+	protected VectorMap<PlayerObject, DynamicSpawnArea> excludedPlayerOccupants;
+	
+	@dereferenced
+	protected SortedVector<SpawnObserver> observers;
+	
+	@dereferenced
 	protected Time lastSpawnTime;
 	
-	protected int spawnedCreatures;
 	protected int maxCreaturesToSpawn;
+	protected int spawnConstant;
+	protected int tier;
 	
 	public DynamicSpawnArea() {
-		spawnedCreatures = 0;
 		maxCreaturesToSpawn = 1;
+		spawnConstant = 0;
+		
+		playerOccupants.setNoDuplicateInsertPlan();
+		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
+				
+		registerObservers();
 	}
 	
-	public void spawnCreature(unsigned int templateCRC) {
-		++spawnedCreatures;
-	}
+	public native void registerObservers();
+	
+	public native void spawnCreature(unsigned int templateCRC, PlayerObject player);
+	
+	public native void notifyEnter(SceneObject object);
+	public native void notifyExit(SceneObject object);
 	
 	@local
-	public void notifyPositionUpdate(QuadTreeEntry obj) {
-		if (spawnedCreatures + 1 > maxCreaturesToSpawn)
-			return;
-		
-		unsigned int templateCRC = spawnCreatureTemplates.get(System.random(spawnCreatureTemplates.size() - 1));
-		
-		spawnCreature(templateCRC);
-	}
+	public native SpawnDynamicAreaCreatureTask addSpawnTask(PlayerObject player);
 	
-	@local
-	public void notifyDissapear(QuadTreeEntry entry) {
-		if (spawnedCreatures == 0)
-			return;
-		
-		
-	}
+	public native void doSpawnEvent(PlayerObject player);
+	public native void doDespawnEvent();
 	
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+		
 	public void setMaxCreaturesToSpawn(int num) {
 		maxCreaturesToSpawn = num;
+	}
+	
+	public void setSpawnConstant(int n) {
+		spawnConstant = n;
+	}
+	
+	public void setTier(int n) {
+		tier = n;
+	}
+	
+	public void addTemplate(unsigned int tempCRC) {
+		spawnCreatureTemplates.add(tempCRC);
+	}
+	
+	public void addNoSpawnArea(DynamicSpawnArea area) {
+		noSpawnAreas.add(area);
 	}
 }

@@ -4,11 +4,21 @@
 
 #include "DynamicSpawnArea.h"
 
+#include "server/zone/Zone.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/managers/creature/SpawnGroup.h"
+
+#include "server/zone/objects/creature/aigroup/AiGroup.h"
+
+#include "server/zone/objects/area/SpawnObserver.h"
+
+#include "server/zone/objects/area/SpawnDynamicAreaCreatureTask.h"
 
 /*
  *	DynamicSpawnAreaStub
@@ -27,36 +37,113 @@ DynamicSpawnArea::~DynamicSpawnArea() {
 }
 
 
-void DynamicSpawnArea::spawnCreature(unsigned int templateCRC) {
+void DynamicSpawnArea::registerObservers() {
 	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
-		method.addUnsignedIntParameter(templateCRC);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->spawnCreature(templateCRC);
+		_implementation->registerObservers();
 }
 
-void DynamicSpawnArea::notifyPositionUpdate(QuadTreeEntry* obj) {
+void DynamicSpawnArea::spawnCreature(unsigned int templateCRC, PlayerObject* player) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addUnsignedIntParameter(templateCRC);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->spawnCreature(templateCRC, player);
+}
+
+void DynamicSpawnArea::notifyEnter(SceneObject* object) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyEnter(object);
+}
+
+void DynamicSpawnArea::notifyExit(SceneObject* object) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyExit(object);
+}
+
+SpawnDynamicAreaCreatureTask* DynamicSpawnArea::addSpawnTask(PlayerObject* player) {
 	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->notifyPositionUpdate(obj);
+		return _implementation->addSpawnTask(player);
 }
 
-void DynamicSpawnArea::notifyDissapear(QuadTreeEntry* entry) {
+void DynamicSpawnArea::doSpawnEvent(PlayerObject* player) {
 	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
 	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
 	} else
-		_implementation->notifyDissapear(entry);
+		_implementation->doSpawnEvent(player);
+}
+
+void DynamicSpawnArea::doDespawnEvent() {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->doDespawnEvent();
+}
+
+int DynamicSpawnArea::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addUnsignedIntParameter(eventType);
+		method.addObjectParameter(observable);
+		method.addObjectParameter(arg1);
+		method.addSignedLongParameter(arg2);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void DynamicSpawnArea::setMaxCreaturesToSpawn(int num) {
@@ -65,12 +152,68 @@ void DynamicSpawnArea::setMaxCreaturesToSpawn(int num) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 13);
 		method.addSignedIntParameter(num);
 
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setMaxCreaturesToSpawn(num);
+}
+
+void DynamicSpawnArea::setSpawnConstant(int n) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addSignedIntParameter(n);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSpawnConstant(n);
+}
+
+void DynamicSpawnArea::setTier(int n) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addSignedIntParameter(n);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setTier(n);
+}
+
+void DynamicSpawnArea::addTemplate(unsigned int tempCRC) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addUnsignedIntParameter(tempCRC);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addTemplate(tempCRC);
+}
+
+void DynamicSpawnArea::addNoSpawnArea(DynamicSpawnArea* area) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(area);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addNoSpawnArea(area);
 }
 
 DistributedObjectServant* DynamicSpawnArea::_getImplementation() {
@@ -151,43 +294,54 @@ void DynamicSpawnAreaImplementation::_serializationHelperMethod() {
 	_setClassName("DynamicSpawnArea");
 
 	addSerializableVariable("spawnCreatureTemplates", &spawnCreatureTemplates);
+	addSerializableVariable("spawnedGroups", &spawnedGroups);
+	addSerializableVariable("noSpawnAreas", &noSpawnAreas);
+	addSerializableVariable("playerOccupants", &playerOccupants);
+	addSerializableVariable("excludedPlayerOccupants", &excludedPlayerOccupants);
+	addSerializableVariable("observers", &observers);
 	addSerializableVariable("lastSpawnTime", &lastSpawnTime);
-	addSerializableVariable("spawnedCreatures", &spawnedCreatures);
 	addSerializableVariable("maxCreaturesToSpawn", &maxCreaturesToSpawn);
+	addSerializableVariable("spawnConstant", &spawnConstant);
+	addSerializableVariable("tier", &tier);
 }
 
 DynamicSpawnAreaImplementation::DynamicSpawnAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/DynamicSpawnArea.idl(64):  		spawnedCreatures = 0;
-	spawnedCreatures = 0;
-	// server/zone/objects/area/DynamicSpawnArea.idl(65):  		maxCreaturesToSpawn = 1;
+	// server/zone/objects/area/DynamicSpawnArea.idl(88):  		maxCreaturesToSpawn = 1;
 	maxCreaturesToSpawn = 1;
-}
-
-void DynamicSpawnAreaImplementation::spawnCreature(unsigned int templateCRC) {
-	// server/zone/objects/area/DynamicSpawnArea.idl(69):  		++spawnedCreatures;
-	 ++spawnedCreatures;
-}
-
-void DynamicSpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
-	// server/zone/objects/area/DynamicSpawnArea.idl(74):  		unsigned 
-	if (spawnedCreatures + 1 > maxCreaturesToSpawn)	// server/zone/objects/area/DynamicSpawnArea.idl(75):  			return;
-	return;
-	// server/zone/objects/area/DynamicSpawnArea.idl(77):  int templateCRC = spawnCreatureTemplates.get(System.random(spawnCreatureTemplates.size() - 1));
-	unsigned int templateCRC = (&spawnCreatureTemplates)->get(System::random((&spawnCreatureTemplates)->size() - 1));
-	// server/zone/objects/area/DynamicSpawnArea.idl(79):  		spawnCreature(templateCRC);
-	spawnCreature(templateCRC);
-}
-
-void DynamicSpawnAreaImplementation::notifyDissapear(QuadTreeEntry* entry) {
-	// server/zone/objects/area/DynamicSpawnArea.idl(84):  	}
-	if (spawnedCreatures == 0)	// server/zone/objects/area/DynamicSpawnArea.idl(85):  			return;
-	return;
+	// server/zone/objects/area/DynamicSpawnArea.idl(89):  		spawnConstant = 0;
+	spawnConstant = 0;
+	// server/zone/objects/area/DynamicSpawnArea.idl(91):  		playerOccupants.setNoDuplicateInsertPlan();
+	(&playerOccupants)->setNoDuplicateInsertPlan();
+	// server/zone/objects/area/DynamicSpawnArea.idl(92):  		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
+	(&excludedPlayerOccupants)->setAllowDuplicateInsertPlan();
+	// server/zone/objects/area/DynamicSpawnArea.idl(94):  		registerObservers();
+	registerObservers();
 }
 
 void DynamicSpawnAreaImplementation::setMaxCreaturesToSpawn(int num) {
-	// server/zone/objects/area/DynamicSpawnArea.idl(91):  		maxCreaturesToSpawn = num;
+	// server/zone/objects/area/DynamicSpawnArea.idl(113):  		maxCreaturesToSpawn = num;
 	maxCreaturesToSpawn = num;
+}
+
+void DynamicSpawnAreaImplementation::setSpawnConstant(int n) {
+	// server/zone/objects/area/DynamicSpawnArea.idl(117):  		spawnConstant = n;
+	spawnConstant = n;
+}
+
+void DynamicSpawnAreaImplementation::setTier(int n) {
+	// server/zone/objects/area/DynamicSpawnArea.idl(121):  		tier = n;
+	tier = n;
+}
+
+void DynamicSpawnAreaImplementation::addTemplate(unsigned int tempCRC) {
+	// server/zone/objects/area/DynamicSpawnArea.idl(125):  		spawnCreatureTemplates.add(tempCRC);
+	(&spawnCreatureTemplates)->add(tempCRC);
+}
+
+void DynamicSpawnAreaImplementation::addNoSpawnArea(DynamicSpawnArea* area) {
+	// server/zone/objects/area/DynamicSpawnArea.idl(129):  		noSpawnAreas.add(area);
+	(&noSpawnAreas)->add(area);
 }
 
 /*
@@ -202,10 +356,40 @@ Packet* DynamicSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case 6:
-		spawnCreature(inv->getUnsignedIntParameter());
+		registerObservers();
 		break;
 	case 7:
+		spawnCreature(inv->getUnsignedIntParameter(), (PlayerObject*) inv->getObjectParameter());
+		break;
+	case 8:
+		notifyEnter((SceneObject*) inv->getObjectParameter());
+		break;
+	case 9:
+		notifyExit((SceneObject*) inv->getObjectParameter());
+		break;
+	case 10:
+		doSpawnEvent((PlayerObject*) inv->getObjectParameter());
+		break;
+	case 11:
+		doDespawnEvent();
+		break;
+	case 12:
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
+		break;
+	case 13:
 		setMaxCreaturesToSpawn(inv->getSignedIntParameter());
+		break;
+	case 14:
+		setSpawnConstant(inv->getSignedIntParameter());
+		break;
+	case 15:
+		setTier(inv->getSignedIntParameter());
+		break;
+	case 16:
+		addTemplate(inv->getUnsignedIntParameter());
+		break;
+	case 17:
+		addNoSpawnArea((DynamicSpawnArea*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -214,12 +398,52 @@ Packet* DynamicSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	return resp;
 }
 
-void DynamicSpawnAreaAdapter::spawnCreature(unsigned int templateCRC) {
-	((DynamicSpawnAreaImplementation*) impl)->spawnCreature(templateCRC);
+void DynamicSpawnAreaAdapter::registerObservers() {
+	((DynamicSpawnAreaImplementation*) impl)->registerObservers();
+}
+
+void DynamicSpawnAreaAdapter::spawnCreature(unsigned int templateCRC, PlayerObject* player) {
+	((DynamicSpawnAreaImplementation*) impl)->spawnCreature(templateCRC, player);
+}
+
+void DynamicSpawnAreaAdapter::notifyEnter(SceneObject* object) {
+	((DynamicSpawnAreaImplementation*) impl)->notifyEnter(object);
+}
+
+void DynamicSpawnAreaAdapter::notifyExit(SceneObject* object) {
+	((DynamicSpawnAreaImplementation*) impl)->notifyExit(object);
+}
+
+void DynamicSpawnAreaAdapter::doSpawnEvent(PlayerObject* player) {
+	((DynamicSpawnAreaImplementation*) impl)->doSpawnEvent(player);
+}
+
+void DynamicSpawnAreaAdapter::doDespawnEvent() {
+	((DynamicSpawnAreaImplementation*) impl)->doDespawnEvent();
+}
+
+int DynamicSpawnAreaAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
+	return ((DynamicSpawnAreaImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 void DynamicSpawnAreaAdapter::setMaxCreaturesToSpawn(int num) {
 	((DynamicSpawnAreaImplementation*) impl)->setMaxCreaturesToSpawn(num);
+}
+
+void DynamicSpawnAreaAdapter::setSpawnConstant(int n) {
+	((DynamicSpawnAreaImplementation*) impl)->setSpawnConstant(n);
+}
+
+void DynamicSpawnAreaAdapter::setTier(int n) {
+	((DynamicSpawnAreaImplementation*) impl)->setTier(n);
+}
+
+void DynamicSpawnAreaAdapter::addTemplate(unsigned int tempCRC) {
+	((DynamicSpawnAreaImplementation*) impl)->addTemplate(tempCRC);
+}
+
+void DynamicSpawnAreaAdapter::addNoSpawnArea(DynamicSpawnArea* area) {
+	((DynamicSpawnAreaImplementation*) impl)->addNoSpawnArea(area);
 }
 
 /*

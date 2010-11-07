@@ -215,15 +215,6 @@ void AiAgent::notifyDissapear(QuadTreeEntry* entry) {
 		_implementation->notifyDissapear(entry);
 }
 
-void AiAgent::notifyPositionUpdate(QuadTreeEntry* obj) {
-	AiAgentImplementation* _implementation = (AiAgentImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->notifyPositionUpdate(obj);
-}
-
 void AiAgent::loadTemplateData(SharedObjectTemplate* templateData) {
 	AiAgentImplementation* _implementation = (AiAgentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -455,6 +446,15 @@ void AiAgent::respawn(Zone* zone, int level) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->respawn(zone, level);
+}
+
+void AiAgent::addPatrolPoint(PatrolPoint& point) {
+	AiAgentImplementation* _implementation = (AiAgentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->addPatrolPoint(point);
 }
 
 void AiAgent::setHomeLocation(float x, float z, float y, SceneObject* cell) {
@@ -1045,267 +1045,272 @@ void AiAgentImplementation::clearPatrolPoints() {
 	(&patrolPoints)->removeAll();
 }
 
+void AiAgentImplementation::addPatrolPoint(PatrolPoint& point) {
+	// server/zone/objects/creature/AiAgent.idl(279):  		patrolPoints.add(point);
+	(&patrolPoints)->add(point);
+}
+
 void AiAgentImplementation::setHomeLocation(float x, float z, float y, SceneObject* cell) {
-	// server/zone/objects/creature/AiAgent.idl(281):  		homeLocation.setPosition(x, z, y);
+	// server/zone/objects/creature/AiAgent.idl(283):  		homeLocation.setPosition(x, z, y);
 	(&homeLocation)->setPosition(x, z, y);
-	// server/zone/objects/creature/AiAgent.idl(282):  		homeLocation.setCell(cell);
+	// server/zone/objects/creature/AiAgent.idl(284):  		homeLocation.setCell(cell);
 	(&homeLocation)->setCell(cell);
-	// server/zone/objects/creature/AiAgent.idl(283):  		homeLocation.setReached(true);
+	// server/zone/objects/creature/AiAgent.idl(285):  		homeLocation.setReached(true);
 	(&homeLocation)->setReached(true);
 }
 
 void AiAgentImplementation::setRespawnTimer(float resp) {
-	// server/zone/objects/creature/AiAgent.idl(287):  		respawnTimer = resp;
+	// server/zone/objects/creature/AiAgent.idl(289):  		respawnTimer = resp;
 	respawnTimer = resp;
 }
 
 bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/AiAgent.idl(297):  		if 
-	if (object == _this)	// server/zone/objects/creature/AiAgent.idl(298):  			return false;
+	// server/zone/objects/creature/AiAgent.idl(299):  		if 
+	if (object == _this)	// server/zone/objects/creature/AiAgent.idl(300):  			return false;
 	return false;
-	// server/zone/objects/creature/AiAgent.idl(300):  		if 
-	if (CreatureObjectImplementation::pvpStatusBitmask == 0)	// server/zone/objects/creature/AiAgent.idl(301):  			return false;
+	// server/zone/objects/creature/AiAgent.idl(302):  		if 
+	if (CreatureObjectImplementation::pvpStatusBitmask == 0)	// server/zone/objects/creature/AiAgent.idl(303):  			return false;
 	return false;
-	// server/zone/objects/creature/AiAgent.idl(303):  		if 
-	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl(304):  			return false;
+	// server/zone/objects/creature/AiAgent.idl(305):  		if 
+	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl(306):  			return false;
 	return false;
-	// server/zone/objects/creature/AiAgent.idl(306):  		return 
-	if (_this->isDead())	// server/zone/objects/creature/AiAgent.idl(307):  			return false;
+	// server/zone/objects/creature/AiAgent.idl(308):  		return 
+	if (_this->isDead())	// server/zone/objects/creature/AiAgent.idl(309):  			return false;
 	return false;
-	// server/zone/objects/creature/AiAgent.idl(309):  true;
+	// server/zone/objects/creature/AiAgent.idl(311):  true;
 	return true;
 }
 
 void AiAgentImplementation::setFollowObject(SceneObject* obj) {
-	// server/zone/objects/creature/AiAgent.idl(313):  		if 
-	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl(314):  			return;
+	// server/zone/objects/creature/AiAgent.idl(315):  		if 
+	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl(316):  			return;
 	return;
-	// server/zone/objects/creature/AiAgent.idl(316):  	}
+	// server/zone/objects/creature/AiAgent.idl(318):  	}
 	if (followObject != obj){
-	// server/zone/objects/creature/AiAgent.idl(317):  			clearPatrolPoints();
+	// server/zone/objects/creature/AiAgent.idl(319):  			clearPatrolPoints();
 	clearPatrolPoints();
-	// server/zone/objects/creature/AiAgent.idl(319):  			followObject = obj;
+	// server/zone/objects/creature/AiAgent.idl(321):  			followObject = obj;
 	followObject = obj;
-	// server/zone/objects/creature/AiAgent.idl(321):  			activateMovementEvent();
+	// server/zone/objects/creature/AiAgent.idl(323):  			activateMovementEvent();
 	activateMovementEvent();
 }
 }
 
 bool AiAgentImplementation::isRetreating() {
-	// server/zone/objects/creature/AiAgent.idl(326):  		return !homeLocation.isReached();
+	// server/zone/objects/creature/AiAgent.idl(328):  		return !homeLocation.isReached();
 	return !(&homeLocation)->isReached();
 }
 
 float AiAgentImplementation::getKinetic() {
-	// server/zone/objects/creature/AiAgent.idl(332):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(333):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(334):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(335):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(335):  npcTemplate.getKinetic();
+	// server/zone/objects/creature/AiAgent.idl(337):  npcTemplate.getKinetic();
 	return npcTemplate->getKinetic();
 }
 
 float AiAgentImplementation::getEnergy() {
-	// server/zone/objects/creature/AiAgent.idl(339):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(340):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(341):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(342):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(342):  npcTemplate.getEnergy();
+	// server/zone/objects/creature/AiAgent.idl(344):  npcTemplate.getEnergy();
 	return npcTemplate->getEnergy();
 }
 
 float AiAgentImplementation::getElectricity() {
-	// server/zone/objects/creature/AiAgent.idl(346):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(347):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(348):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(349):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(349):  npcTemplate.getElectricity();
+	// server/zone/objects/creature/AiAgent.idl(351):  npcTemplate.getElectricity();
 	return npcTemplate->getElectricity();
 }
 
 float AiAgentImplementation::getStun() {
-	// server/zone/objects/creature/AiAgent.idl(353):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(354):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(355):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(356):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(356):  npcTemplate.getStun();
+	// server/zone/objects/creature/AiAgent.idl(358):  npcTemplate.getStun();
 	return npcTemplate->getStun();
 }
 
 float AiAgentImplementation::getBlast() {
-	// server/zone/objects/creature/AiAgent.idl(360):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(361):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(362):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(363):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(363):  npcTemplate.getBlast();
+	// server/zone/objects/creature/AiAgent.idl(365):  npcTemplate.getBlast();
 	return npcTemplate->getBlast();
 }
 
 float AiAgentImplementation::getHeat() {
-	// server/zone/objects/creature/AiAgent.idl(367):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(368):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(369):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(370):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(370):  npcTemplate.getHeat();
+	// server/zone/objects/creature/AiAgent.idl(372):  npcTemplate.getHeat();
 	return npcTemplate->getHeat();
 }
 
 float AiAgentImplementation::getCold() {
-	// server/zone/objects/creature/AiAgent.idl(374):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(375):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(376):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(377):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(377):  npcTemplate.getCold();
+	// server/zone/objects/creature/AiAgent.idl(379):  npcTemplate.getCold();
 	return npcTemplate->getCold();
 }
 
 float AiAgentImplementation::getAcid() {
-	// server/zone/objects/creature/AiAgent.idl(381):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(382):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(383):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(384):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(384):  npcTemplate.getAcid();
+	// server/zone/objects/creature/AiAgent.idl(386):  npcTemplate.getAcid();
 	return npcTemplate->getAcid();
 }
 
 float AiAgentImplementation::getLightSaber() {
-	// server/zone/objects/creature/AiAgent.idl(388):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(389):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(390):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(391):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(391):  npcTemplate.getLightSaber();
+	// server/zone/objects/creature/AiAgent.idl(393):  npcTemplate.getLightSaber();
 	return npcTemplate->getLightSaber();
 }
 
 bool AiAgentImplementation::isStalker() {
-	// server/zone/objects/creature/AiAgent.idl(395):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(396):  			return false;
+	// server/zone/objects/creature/AiAgent.idl(397):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(398):  			return false;
 	return false;
-	// server/zone/objects/creature/AiAgent.idl(398):  npcTemplate.isStalker();
+	// server/zone/objects/creature/AiAgent.idl(400):  npcTemplate.isStalker();
 	return npcTemplate->isStalker();
 }
 
 bool AiAgentImplementation::isKiller() {
-	// server/zone/objects/creature/AiAgent.idl(402):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(403):  			return false;
+	// server/zone/objects/creature/AiAgent.idl(404):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(405):  			return false;
 	return false;
-	// server/zone/objects/creature/AiAgent.idl(405):  npcTemplate.isKiller();
+	// server/zone/objects/creature/AiAgent.idl(407):  npcTemplate.isKiller();
 	return npcTemplate->isKiller();
 }
 
 unsigned int AiAgentImplementation::getFerocity() {
-	// server/zone/objects/creature/AiAgent.idl(409):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(410):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(411):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(412):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(412):  npcTemplate.getFerocity();
+	// server/zone/objects/creature/AiAgent.idl(414):  npcTemplate.getFerocity();
 	return npcTemplate->getFerocity();
 }
 
 unsigned int AiAgentImplementation::getArmor() {
-	// server/zone/objects/creature/AiAgent.idl(416):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(417):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(418):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(419):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(419):  npcTemplate.getArmor();
+	// server/zone/objects/creature/AiAgent.idl(421):  npcTemplate.getArmor();
 	return npcTemplate->getArmor();
 }
 
 bool AiAgentImplementation::getDespawnOnNoPlayerInRange() {
-	// server/zone/objects/creature/AiAgent.idl(423):  		return despawnOnNoPlayerInRange;
+	// server/zone/objects/creature/AiAgent.idl(425):  		return despawnOnNoPlayerInRange;
 	return despawnOnNoPlayerInRange;
 }
 
 int AiAgentImplementation::getNumberOfPlayersInRange() {
-	// server/zone/objects/creature/AiAgent.idl(427):  		return numberOfPlayersInRange;
+	// server/zone/objects/creature/AiAgent.idl(429):  		return numberOfPlayersInRange;
 	return numberOfPlayersInRange;
 }
 
 DamageMap* AiAgentImplementation::getDamageMap() {
-	// server/zone/objects/creature/AiAgent.idl(432):  		return damageMap;
+	// server/zone/objects/creature/AiAgent.idl(434):  		return damageMap;
 	return (&damageMap);
 }
 
 String AiAgentImplementation::getFactionString() {
-	// server/zone/objects/creature/AiAgent.idl(436):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(437):  			return "";
+	// server/zone/objects/creature/AiAgent.idl(438):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(439):  			return "";
 	return "";
-	// server/zone/objects/creature/AiAgent.idl(439):  npcTemplate.getFaction();
+	// server/zone/objects/creature/AiAgent.idl(441):  npcTemplate.getFaction();
 	return npcTemplate->getFaction();
 }
 
 String AiAgentImplementation::getSocialGroup() {
-	// server/zone/objects/creature/AiAgent.idl(443):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(444):  			return "";
+	// server/zone/objects/creature/AiAgent.idl(445):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(446):  			return "";
 	return "";
-	// server/zone/objects/creature/AiAgent.idl(446):  npcTemplate.getSocialGroup();
+	// server/zone/objects/creature/AiAgent.idl(448):  npcTemplate.getSocialGroup();
 	return npcTemplate->getSocialGroup();
 }
 
 float AiAgentImplementation::getChanceHit() {
-	// server/zone/objects/creature/AiAgent.idl(450):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(451):  			return false;
+	// server/zone/objects/creature/AiAgent.idl(452):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(453):  			return false;
 	return false;
-	// server/zone/objects/creature/AiAgent.idl(453):  npcTemplate.getChanceHit();
+	// server/zone/objects/creature/AiAgent.idl(455):  npcTemplate.getChanceHit();
 	return npcTemplate->getChanceHit();
 }
 
 int AiAgentImplementation::getDamageMin() {
-	// server/zone/objects/creature/AiAgent.idl(457):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(458):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(459):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(460):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(460):  npcTemplate.getDamageMin();
+	// server/zone/objects/creature/AiAgent.idl(462):  npcTemplate.getDamageMin();
 	return npcTemplate->getDamageMin();
 }
 
 int AiAgentImplementation::getDamageMax() {
-	// server/zone/objects/creature/AiAgent.idl(464):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(465):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(466):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(467):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(467):  npcTemplate.getDamageMax();
+	// server/zone/objects/creature/AiAgent.idl(469):  npcTemplate.getDamageMax();
 	return npcTemplate->getDamageMax();
 }
 
 int AiAgentImplementation::getBaseXp() {
-	// server/zone/objects/creature/AiAgent.idl(471):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(472):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(473):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(474):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(474):  npcTemplate.getBaseXp();
+	// server/zone/objects/creature/AiAgent.idl(476):  npcTemplate.getBaseXp();
 	return npcTemplate->getBaseXp();
 }
 
 unsigned int AiAgentImplementation::getDiet() {
-	// server/zone/objects/creature/AiAgent.idl(478):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(479):  			return 0;
+	// server/zone/objects/creature/AiAgent.idl(480):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(481):  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl(481):  npcTemplate.getDiet();
+	// server/zone/objects/creature/AiAgent.idl(483):  npcTemplate.getDiet();
 	return npcTemplate->getDiet();
 }
 
 CreatureAttackMap* AiAgentImplementation::getAttackMap() {
-	// server/zone/objects/creature/AiAgent.idl(486):  		return 
-	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(487):  			return null;
+	// server/zone/objects/creature/AiAgent.idl(488):  		return 
+	if (npcTemplate == NULL)	// server/zone/objects/creature/AiAgent.idl(489):  			return null;
 	return NULL;
-	// server/zone/objects/creature/AiAgent.idl(489):  npcTemplate.getAttacks();
+	// server/zone/objects/creature/AiAgent.idl(491):  npcTemplate.getAttacks();
 	return npcTemplate->getAttacks();
 }
 
 float AiAgentImplementation::getRespawnTimer() {
-	// server/zone/objects/creature/AiAgent.idl(493):  		return respawnTimer;
+	// server/zone/objects/creature/AiAgent.idl(495):  		return respawnTimer;
 	return respawnTimer;
 }
 
 PatrolPoint* AiAgentImplementation::getHomeLocation() {
-	// server/zone/objects/creature/AiAgent.idl(498):  		return homeLocation;
+	// server/zone/objects/creature/AiAgent.idl(500):  		return homeLocation;
 	return (&homeLocation);
 }
 
 bool AiAgentImplementation::isAiAgent() {
-	// server/zone/objects/creature/AiAgent.idl(502):  		return true;
+	// server/zone/objects/creature/AiAgent.idl(504):  		return true;
 	return true;
 }
 
 void AiAgentImplementation::setLootOwner(CreatureObject* owner) {
-	// server/zone/objects/creature/AiAgent.idl(506):  		lootOwner = owner;
+	// server/zone/objects/creature/AiAgent.idl(508):  		lootOwner = owner;
 	lootOwner = owner;
 }
 
 CreatureObject* AiAgentImplementation::getLootOwner() {
-	// server/zone/objects/creature/AiAgent.idl(510):  		return lootOwner;
+	// server/zone/objects/creature/AiAgent.idl(512):  		return lootOwner;
 	return lootOwner;
 }
 
 bool AiAgentImplementation::hasLoot() {
-	// server/zone/objects/creature/AiAgent.idl(517):  		return false;
+	// server/zone/objects/creature/AiAgent.idl(519):  		return false;
 	return false;
 }
 

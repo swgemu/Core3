@@ -99,5 +99,11 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
+#include "server/zone/objects/area/DynamicSpawnArea.h"
+
+#include "server/zone/objects/creature/aigroup/AiGroup.h"
+#include "server/zone/objects/creature/aigroup/HerdGroup.h"
+#include "server/zone/objects/creature/aigroup/PackGroup.h"
+#include "server/zone/objects/creature/aigroup/LairGroup.h"
 
 #endif /* OBJECTS_H_ */

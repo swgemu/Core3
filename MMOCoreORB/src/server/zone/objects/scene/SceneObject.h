@@ -646,6 +646,16 @@ public:
 
 	static const int MISSIONRECONAREA = 0x2000003;
 
+	static const int DYNAMICSPAWNAREA = 0x2000004;
+
+	static const int AIGROUP = 0x4000000;
+
+	static const int HERDGROUP = 0x4000001;
+
+	static const int PACKGROUP = 0x4000002;
+
+	static const int LAIRGROUP = 0x4000003;
+
 	SceneObject();
 
 	void initializePrivateData();
@@ -1570,6 +1580,16 @@ public:
 	static const int MISSIONSPAWNAREA = 0x2000002;
 
 	static const int MISSIONRECONAREA = 0x2000003;
+
+	static const int DYNAMICSPAWNAREA = 0x2000004;
+
+	static const int AIGROUP = 0x4000000;
+
+	static const int HERDGROUP = 0x4000001;
+
+	static const int PACKGROUP = 0x4000002;
+
+	static const int LAIRGROUP = 0x4000003;
 
 	SceneObjectImplementation();
 

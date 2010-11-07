@@ -230,8 +230,6 @@ public:
 
 	void notifyDissapear(QuadTreeEntry* entry);
 
-	void notifyPositionUpdate(QuadTreeEntry* obj);
-
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void loadTemplateData(CreatureTemplate* templateData);
@@ -265,6 +263,8 @@ public:
 	void scheduleDespawn();
 
 	void respawn(Zone* zone, int level);
+
+	void addPatrolPoint(PatrolPoint& point);
 
 	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
 
@@ -438,8 +438,6 @@ public:
 
 	void notifyDissapear(QuadTreeEntry* entry);
 
-	void notifyPositionUpdate(QuadTreeEntry* obj);
-
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void loadTemplateData(CreatureTemplate* templateData);
@@ -473,6 +471,8 @@ public:
 	virtual void scheduleDespawn();
 
 	void respawn(Zone* zone, int level);
+
+	void addPatrolPoint(PatrolPoint& point);
 
 	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
 

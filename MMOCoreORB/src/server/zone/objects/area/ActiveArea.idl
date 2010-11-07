@@ -120,6 +120,10 @@ class ActiveArea extends SceneObject {
 		return radius;
 	}
 	
+	public float getRadius2() {
+		return radius2;
+	}
+	
 	public void setRadius(float r) {
 		radius = r;
 		radius2 = r * r;
