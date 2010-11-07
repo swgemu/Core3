@@ -50,9 +50,9 @@ include server.zone.objects.area.DynamicSpawnArea;
 import server.zone.objects.scene.SceneObject;
 
 class SpawnObserver extends Observer implements Logger {
-	protected DynamicSpawnArea spawnArea;
+	protected SpawnArea spawnArea;
 	
-	public SpawnObserver(DynamicSpawnArea area) {
+	public SpawnObserver(SpawnArea area) {
 		spawnArea = area;
 		
 		Logger.setLoggingName("SpawnObserver");

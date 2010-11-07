@@ -260,12 +260,13 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	if (respawnTimer == 0)
 		return;
 
-	if (objectTemplate == NULL)
+	if (objectTemplate == NULL || npcTemplate == NULL)
 		return;
 
 	Reference<Task*> task = new RespawnCreatureTask(_this, zone, level);
 
 	loadTemplateData(objectTemplate);
+	loadTemplateData(npcTemplate);
 	stateBitmask = 0;
 	posture = CreaturePosture::UPRIGHT;
 	shockWounds = 0;

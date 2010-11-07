@@ -6,6 +6,8 @@
  */
 
 #include "DynamicSpawnArea.h"
+#include "SpawnDynamicAreaCreatureTask.h"
+#include "SpawnObserver.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/SpawnGroup.h"
 #include "server/zone/managers/object/ObjectManager.h"
@@ -14,12 +16,10 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
-#include "SpawnObserver.h"
-#include "SpawnDynamicAreaCreatureTask.h"
 
 void DynamicSpawnAreaImplementation::registerObservers() {
 	for (int i = 0; i < noSpawnAreas.size(); ++i) {
-		ManagedReference<DynamicSpawnArea*> notHere = noSpawnAreas.get(i);
+		ManagedReference<SpawnArea*> notHere = noSpawnAreas.get(i);
 
 		ManagedReference<SpawnObserver*> enterObserver = new SpawnObserver(_this);
 		ObjectManager::instance()->persistObject(enterObserver, 1, "spawnobservers");
@@ -122,7 +122,7 @@ int DynamicSpawnAreaImplementation::notifyObserverEvent(uint32 eventType, Observ
 }
 
 void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObject* player) {
-	SpawnGroup templ = CreatureTemplateManager::instance()->getGroup(templateCRC);
+	DynamicSpawnGroup templ = CreatureTemplateManager::instance()->getDynamicGroup(templateCRC);
 
 	uint32 crc;
 	switch (templ.getType()) {
@@ -150,7 +150,7 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObj
 	float lowIntersect = 1, highIntersect = 0;
 
 	for (int i = 0; i < noSpawnAreas.size(); ++i) {
-		DynamicSpawnArea* noSpawnArea = noSpawnAreas.get(i);
+		SpawnArea* noSpawnArea = noSpawnAreas.get(i);
 		Vector3 offset(noSpawnArea->getPositionX() - player->getPositionX(), noSpawnArea->getPositionY() - player->getPositionY(), 0);
 		if (offset.squaredLength() >= noSpawnArea->getRadius2() + (64.f * 64.f))
 			continue;

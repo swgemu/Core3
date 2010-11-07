@@ -44,74 +44,47 @@ which carries forward this exception.
 
 package server.zone.objects.area;
 
-import server.zone.Zone;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerObject;
 import server.zone.objects.area.SpawnArea;
 import system.util.SortedVector;
-import system.util.Vector;
-import system.util.VectorMap;
 import server.zone.managers.object.ObjectManager;
 import engine.core.ManagedObject;
+import server.zone.objects.creature.AiAgent;
 import server.zone.objects.creature.aigroup.AiGroup;
 import server.zone.objects.area.SpawnObserver;
-import server.zone.objects.area.SpawnDynamicAreaCreatureTask;
+import server.zone.objects.area.SpawnStaticAreaCreatureTask;
 import server.zone.objects.scene.Observable;
 
-class DynamicSpawnArea extends SpawnArea {
+class StaticSpawnArea extends SpawnArea {
 	@dereferenced
-	protected SortedVector<AiGroup> spawnedGroups;
+	protected SortedVector<AiAgent> spawnedAgents;
 	
 	@dereferenced
-	protected Vector<SpawnArea> noSpawnAreas;
+	protected SortedVector<AiAgent> unspawnedAgents;
 	
 	@dereferenced
-	protected VectorMap<PlayerObject, SpawnDynamicAreaCreatureTask> playerOccupants;
-	
-	@dereferenced
-	protected VectorMap<PlayerObject, DynamicSpawnArea> excludedPlayerOccupants;
+	protected SortedVector<AiGroup> groups;
 	
 	@dereferenced
 	protected SortedVector<SpawnObserver> observers;
 	
-	@dereferenced
-	protected Time lastSpawnTime;
-	
-	protected int maxCreaturesToSpawn;
-	
-	public DynamicSpawnArea() {
-		maxCreaturesToSpawn = 1;
-		
-		playerOccupants.setNoDuplicateInsertPlan();
-		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
-				
+	public StaticSpawnArea() {
+		spawnCreatures();
 		registerObservers();
 	}
 	
 	public native void registerObservers();
 	
-	public native void spawnCreature(unsigned int templateCRC, PlayerObject player);
-	
-	public native void notifyEnter(SceneObject object);
-	public native void notifyExit(SceneObject object);
+	public native void spawnCreatures();
 	
 	@local
-	public native SpawnDynamicAreaCreatureTask addSpawnTask(PlayerObject player);
+	public native SpawnStaticAreaCreatureTask addSpawnTask();
 	
-	public native void doSpawnEvent(PlayerObject player);
+	public native void doSpawnEvent();
 	public native void doDespawnEvent();
 	
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-		
-	public void setMaxCreaturesToSpawn(int num) {
-		maxCreaturesToSpawn = num;
-	}
 	
-	public void addNoSpawnArea(SpawnArea area) {
-		noSpawnAreas.add(area);
-	}
-	
-	public abstract boolean isDynamicArea() {
+	public abstract boolean isStaticArea() {
 		return true;
 	}
 }

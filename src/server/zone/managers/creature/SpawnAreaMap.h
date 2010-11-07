@@ -9,15 +9,16 @@
 #define SPAWNAREAMAP_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/objects/area/DynamicSpawnArea.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
-class SpawnAreaMap : public VectorMap<uint32, ManagedReference<DynamicSpawnArea*> >, private Lua {
+class SpawnAreaMap : public VectorMap<uint32, ManagedReference<SpawnArea*> >, private Lua {
 protected:
 	Zone* zone;
 
-	Vector<ManagedReference<DynamicSpawnArea*> > noSpawnAreas;
+	Vector<ManagedReference<SpawnArea*> > noSpawnAreas;
 
 public:
 	SpawnAreaMap() {
@@ -51,8 +52,13 @@ public:
 					int tier = areaObj.getIntAt(5);
 					int constant = areaObj.getIntAt(6);
 
-					uint32 crc = String("object/dynamic_spawn_area.iff").hashCode();
-					ManagedReference<DynamicSpawnArea*> area = dynamic_cast<DynamicSpawnArea*>(ObjectManager::instance()->createObject(crc, 2, "spawnareas"));
+					uint32 crc;
+					if (tier < 2)
+						crc = String("object/static_spawn_area.iff").hashCode();
+					else
+						crc = String("object/dynamic_spawn_area.iff").hashCode();
+
+					ManagedReference<SpawnArea*> area = dynamic_cast<SpawnArea*>(ObjectManager::instance()->createObject(crc, 2, "spawnareas"));
 
 					StringId nameID(planetName + "_region_names", name);
 					area->setObjectName(nameID);
@@ -72,7 +78,7 @@ public:
 
 					put(nameID.getStringID().hashCode(), area);
 
-					if (tier < 2)
+					if (area->isStaticArea())
 						noSpawnAreas.add(area);
 				}
 
@@ -83,15 +89,20 @@ public:
 		Lua::deinit();
 
 		for (int i = 0; i < size(); ++i) {
-			ManagedReference<DynamicSpawnArea*> area = get(i);
-			Vector3 d(area->getPositionX(), area->getPositionY(), 0);
+			SpawnArea* area = get(i);
+			if (!area->isDynamicArea())
+				continue;
+
+			DynamicSpawnArea* dynamicArea = (DynamicSpawnArea*)area;
+
+			Vector3 d(dynamicArea->getPositionX(), dynamicArea->getPositionY(), 0);
 
 			for (int j = 0; j < noSpawnAreas.size(); ++j) {
-				ManagedReference<DynamicSpawnArea*> notHere = noSpawnAreas.get(j);
+				SpawnArea* notHere = noSpawnAreas.get(j);
 				Vector3 offset(notHere->getPosition());
 
-				if (d.distanceTo(offset) < area->getRadius() + notHere->getRadius())
-					area->addNoSpawnArea(notHere);
+				if (d.distanceTo(offset) < dynamicArea->getRadius() + notHere->getRadius())
+					dynamicArea->addNoSpawnArea(notHere);
 			}
 		}
 	}

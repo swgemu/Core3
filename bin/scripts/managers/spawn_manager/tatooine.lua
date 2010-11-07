@@ -1,5 +1,5 @@
 -- {"regionName", xCenter, yCenter, radius, tier, spawnConstant, ["spawnGroup1"], [...]}
--- tier: 0 = no spawn, 1 = exclusive spawn area, 2 = non-exclusive spawn area
+-- tier: 0 = no spawn, 1 = static spawn area, 2 = dynamic spawn area
 
 tatooine_regions = {
 	{"two_fortresses",0,0,0,0,1},
