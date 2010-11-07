@@ -13,6 +13,16 @@
 
 namespace server {
 namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace scene {
 
@@ -30,7 +40,7 @@ namespace zone {
 namespace objects {
 namespace player {
 
-class PlayerCreature;
+class PlayerObject;
 
 } // namespace player
 } // namespace objects
@@ -53,9 +63,73 @@ class ObjectManager;
 
 using namespace server::zone::managers::object;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+
+class SpawnGroup;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace aigroup {
+
+class AiGroup;
+
+} // namespace aigroup
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::aigroup;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class SpawnObserver;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class SpawnDynamicAreaCreatureTask;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/objects/area/ActiveArea.h"
 
 #include "system/util/SortedVector.h"
+
+#include "system/util/Vector.h"
+
+#include "system/util/VectorMap.h"
+
+#include "engine/core/ManagedObject.h"
 
 namespace server {
 namespace zone {
@@ -66,13 +140,31 @@ class DynamicSpawnArea : public ActiveArea {
 public:
 	DynamicSpawnArea();
 
-	void spawnCreature(unsigned int templateCRC);
+	void registerObservers();
 
-	void notifyPositionUpdate(QuadTreeEntry* obj);
+	void spawnCreature(unsigned int templateCRC, PlayerObject* player);
 
-	void notifyDissapear(QuadTreeEntry* entry);
+	void notifyEnter(SceneObject* object);
+
+	void notifyExit(SceneObject* object);
+
+	SpawnDynamicAreaCreatureTask* addSpawnTask(PlayerObject* player);
+
+	void doSpawnEvent(PlayerObject* player);
+
+	void doDespawnEvent();
+
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setMaxCreaturesToSpawn(int num);
+
+	void setSpawnConstant(int n);
+
+	void setTier(int n);
+
+	void addTemplate(unsigned int tempCRC);
+
+	void addNoSpawnArea(DynamicSpawnArea* area);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -102,24 +194,54 @@ class DynamicSpawnAreaImplementation : public ActiveAreaImplementation {
 protected:
 	SortedVector<unsigned int> spawnCreatureTemplates;
 
+	SortedVector<ManagedReference<AiGroup* > > spawnedGroups;
+
+	Vector<ManagedReference<DynamicSpawnArea* > > noSpawnAreas;
+
+	VectorMap<ManagedReference<PlayerObject* >, SpawnDynamicAreaCreatureTask*> playerOccupants;
+
+	VectorMap<ManagedReference<PlayerObject* >, ManagedReference<DynamicSpawnArea* > > excludedPlayerOccupants;
+
+	SortedVector<ManagedReference<SpawnObserver* > > observers;
+
 	Time lastSpawnTime;
 
-	int spawnedCreatures;
-
 	int maxCreaturesToSpawn;
+
+	int spawnConstant;
+
+	int tier;
 
 public:
 	DynamicSpawnAreaImplementation();
 
 	DynamicSpawnAreaImplementation(DummyConstructorParameter* param);
 
-	void spawnCreature(unsigned int templateCRC);
+	void registerObservers();
 
-	void notifyPositionUpdate(QuadTreeEntry* obj);
+	void spawnCreature(unsigned int templateCRC, PlayerObject* player);
 
-	void notifyDissapear(QuadTreeEntry* entry);
+	void notifyEnter(SceneObject* object);
+
+	void notifyExit(SceneObject* object);
+
+	SpawnDynamicAreaCreatureTask* addSpawnTask(PlayerObject* player);
+
+	void doSpawnEvent(PlayerObject* player);
+
+	void doDespawnEvent();
+
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setMaxCreaturesToSpawn(int num);
+
+	void setSpawnConstant(int n);
+
+	void setTier(int n);
+
+	void addTemplate(unsigned int tempCRC);
+
+	void addNoSpawnArea(DynamicSpawnArea* area);
 
 	DynamicSpawnArea* _this;
 
@@ -160,9 +282,29 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void spawnCreature(unsigned int templateCRC);
+	void registerObservers();
+
+	void spawnCreature(unsigned int templateCRC, PlayerObject* player);
+
+	void notifyEnter(SceneObject* object);
+
+	void notifyExit(SceneObject* object);
+
+	void doSpawnEvent(PlayerObject* player);
+
+	void doDespawnEvent();
+
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void setMaxCreaturesToSpawn(int num);
+
+	void setSpawnConstant(int n);
+
+	void setTier(int n);
+
+	void addTemplate(unsigned int tempCRC);
+
+	void addNoSpawnArea(DynamicSpawnArea* area);
 
 };
 

@@ -47,6 +47,8 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	databaseManager->loadDatabase("missionobservers", true);
 	databaseManager->loadDatabase("cityregions", true);
 	databaseManager->loadDatabase("guilds", true);
+	databaseManager->loadDatabase("spawnareas", true);
+	databaseManager->loadDatabase("spawnobservers", true);
 	
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
@@ -80,6 +82,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BadgeActiveArea>(SceneObject::BADGEAREA);
 	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObject::MISSIONSPAWNAREA);
 	objectFactory.registerObject<MissionReconActiveArea>(SceneObject::MISSIONRECONAREA);
+	objectFactory.registerObject<DynamicSpawnArea>(SceneObject::DYNAMICSPAWNAREA);
 	objectFactory.registerObject<Region>(SceneObject::REGIONAREA);
 	objectFactory.registerObject<StaticObject>(SceneObject::STATICOBJECT);
 	objectFactory.registerObject<Creature>(SceneObject::CREATURE);
@@ -277,6 +280,11 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Component>(SceneObject::TISSUECOMPONENT);
 
 	objectFactory.registerObject<FactoryCrate>(SceneObject::FACTORYCRATE);
+
+	objectFactory.registerObject<AiGroup>(SceneObject::AIGROUP);
+	objectFactory.registerObject<HerdGroup>(SceneObject::HERDGROUP);
+	objectFactory.registerObject<PackGroup>(SceneObject::PACKGROUP);
+	objectFactory.registerObject<LairGroup>(SceneObject::LAIRGROUP);
 }
 
 void ObjectManager::updateObjectVersion() {

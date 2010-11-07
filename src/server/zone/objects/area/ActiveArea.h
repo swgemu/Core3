@@ -82,6 +82,8 @@ public:
 
 	float getRadius();
 
+	float getRadius2();
+
 	void setRadius(float r);
 
 	DistributedObjectServant* _getImplementation();
@@ -138,6 +140,8 @@ public:
 	bool containsPoint(float x, float y);
 
 	float getRadius();
+
+	float getRadius2();
 
 	void setRadius(float r);
 
@@ -199,6 +203,8 @@ public:
 	bool containsPoint(float x, float y);
 
 	float getRadius();
+
+	float getRadius2();
 
 	void setRadius(float r);
 

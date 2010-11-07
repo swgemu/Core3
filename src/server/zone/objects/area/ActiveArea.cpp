@@ -166,13 +166,26 @@ float ActiveArea::getRadius() {
 		return _implementation->getRadius();
 }
 
-void ActiveArea::setRadius(float r) {
+float ActiveArea::getRadius2() {
 	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getRadius2();
+}
+
+void ActiveArea::setRadius(float r) {
+	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
 		method.addFloatParameter(r);
 
 		method.executeWithVoidReturn();
@@ -290,10 +303,15 @@ float ActiveAreaImplementation::getRadius() {
 	return radius;
 }
 
+float ActiveAreaImplementation::getRadius2() {
+	// server/zone/objects/area/ActiveArea.idl(124):  		return radius2;
+	return radius2;
+}
+
 void ActiveAreaImplementation::setRadius(float r) {
-	// server/zone/objects/area/ActiveArea.idl(124):  		radius = r;
+	// server/zone/objects/area/ActiveArea.idl(128):  		radius = r;
 	radius = r;
-	// server/zone/objects/area/ActiveArea.idl(125):  		radius2 = r * r;
+	// server/zone/objects/area/ActiveArea.idl(129):  		radius2 = r * r;
 	radius2 = r * r;
 }
 
@@ -339,6 +357,9 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertFloat(getRadius());
 		break;
 	case 16:
+		resp->insertFloat(getRadius2());
+		break;
+	case 17:
 		setRadius(inv->getFloatParameter());
 		break;
 	default:
@@ -386,6 +407,10 @@ bool ActiveAreaAdapter::containsPoint(float x, float y) {
 
 float ActiveAreaAdapter::getRadius() {
 	return ((ActiveAreaImplementation*) impl)->getRadius();
+}
+
+float ActiveAreaAdapter::getRadius2() {
+	return ((ActiveAreaImplementation*) impl)->getRadius2();
 }
 
 void ActiveAreaAdapter::setRadius(float r) {

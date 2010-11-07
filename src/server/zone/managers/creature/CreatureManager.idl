@@ -9,6 +9,7 @@ import server.zone.objects.creature.AiAgent;
 import server.zone.managers.ZoneManager;
 import server.zone.managers.creature.CreatureTemplateManager;
 include server.zone.managers.creature.CreatureMap;
+include server.zone.managers.creature.SpawnAreaMap;
 
 class CreatureManager extends ZoneManager {
 	@weakReference
@@ -16,6 +17,9 @@ class CreatureManager extends ZoneManager {
 	
 	/*@dereferenced
 	protected CreatureMap creatureMap;*/
+	
+	@dereferenced
+	protected SpawnAreaMap spawnAreaMap;
 	
 	protected transient CreatureTemplateManager creatureTemplateManager;
 
@@ -27,7 +31,7 @@ class CreatureManager extends ZoneManager {
 	
 	public void initialize() {
 		setCreatureTemplateManager();
-		
+		loadDynamicSpawnAreas();
 		loadTrainers();
 		loadSingleSpawns();
 		loadMissionSpawns();

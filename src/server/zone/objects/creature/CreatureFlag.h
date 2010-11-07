@@ -64,6 +64,7 @@ public:
 	static const uint32 KILLER = 0x04;
 	static const uint32 STALKER = 0x08;
 	static const uint32 BABY = 0x10;
+	static const uint32 LAIR = 0x20;
 
 	static const uint32 CARNIVORE = 0x01;
 	static const uint32 HERBIVORE = 0x02;

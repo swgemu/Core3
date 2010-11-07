@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "CreatureTemplate.h"
+#include "SpawnGroup.h"
 
 namespace server {
 namespace zone {
@@ -19,6 +20,7 @@ namespace creature {
 class CreatureTemplateManager : private HashTable<uint32, Reference<CreatureTemplate*> >, private HashTableIterator<uint32, Reference<CreatureTemplate*> >, private Lua, public Singleton<CreatureTemplateManager> {
 protected:
 	VectorMap<uint32, Vector<String> > weaponMap;
+	VectorMap<uint32, SpawnGroup> groupMap;
 
 	int hash(const uint32& key) {
 		return Integer::hashCode(key);
@@ -36,6 +38,7 @@ public:
 		lua_register(getLuaState(), "includeFile", includeFile);
 		lua_register(getLuaState(), "addTemplate", addTemplate);
 		lua_register(getLuaState(), "addWeapon", addWeapon);
+		lua_register(getLuaState(), "addGroup", addGroup);
 
 		setGlobalInt("NONE", CreatureFlag::NONE);
 		setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
@@ -51,6 +54,8 @@ public:
 		setGlobalInt("HERD", CreatureFlag::HERD);
 		setGlobalInt("KILLER", CreatureFlag::KILLER);
 		setGlobalInt("STALKER", CreatureFlag::STALKER);
+		setGlobalInt("BABY", CreatureFlag::BABY);
+		setGlobalInt("LAIR", CreatureFlag::LAIR);
 
 		setGlobalInt("CARNIVORE", CreatureFlag::CARNIVORE);
 		setGlobalInt("HERBIVORE", CreatureFlag::HERBIVORE);
@@ -97,6 +102,14 @@ public:
 		return weaponMap.get(ascii.hashCode());
 	}
 
+	SpawnGroup getGroup(uint32 crc) {
+		return groupMap.get(crc);
+	}
+
+	SpawnGroup getGroup(String ascii) {
+		return groupMap.get(ascii.hashCode());
+	}
+
 	static int includeFile(lua_State* L) {
 		String filename = Lua::getStringParameter(L);
 
@@ -131,6 +144,16 @@ public:
 
 			CreatureTemplateManager::instance()->weaponMap.put(crc, weps);
 		}
+
+		return 0;
+	}
+
+	static int addGroup(lua_State* L) {
+		String ascii = lua_tostring(L, -2);
+		uint32 crc = (uint32) ascii.hashCode();
+
+		LuaObject obj(L);
+		CreatureTemplateManager::instance()->groupMap.put(crc, SpawnGroup(ascii, obj));
 
 		return 0;
 	}
