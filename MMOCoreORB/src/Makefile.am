@@ -73,7 +73,9 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/area/MissionSpawnActiveArea.cpp \
 				server/zone/objects/area/MissionReconActiveArea.cpp \
+				server/zone/objects/area/SpawnArea.cpp \
 				server/zone/objects/area/DynamicSpawnArea.cpp \
+				server/zone/objects/area/StaticSpawnArea.cpp \
 				server/zone/objects/area/SpawnObserver.cpp \
 				server/zone/objects/factorycrate/FactoryCrate.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
@@ -284,6 +286,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/ObserverEventMap.cpp \
 		server/zone/objects/area/ActiveAreaImplementation.cpp \
 		server/zone/objects/area/DynamicSpawnAreaImplementation.cpp \
+		server/zone/objects/area/StaticSpawnAreaImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
 		server/zone/objects/terrain/TerrainGenerator.cpp \

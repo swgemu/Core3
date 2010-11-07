@@ -83,6 +83,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObject::MISSIONSPAWNAREA);
 	objectFactory.registerObject<MissionReconActiveArea>(SceneObject::MISSIONRECONAREA);
 	objectFactory.registerObject<DynamicSpawnArea>(SceneObject::DYNAMICSPAWNAREA);
+	objectFactory.registerObject<StaticSpawnArea>(SceneObject::STATICSPAWNAREA);
 	objectFactory.registerObject<Region>(SceneObject::REGIONAREA);
 	objectFactory.registerObject<StaticObject>(SceneObject::STATICOBJECT);
 	objectFactory.registerObject<Creature>(SceneObject::CREATURE);

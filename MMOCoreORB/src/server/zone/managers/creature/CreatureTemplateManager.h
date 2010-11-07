@@ -20,7 +20,8 @@ namespace creature {
 class CreatureTemplateManager : private HashTable<uint32, Reference<CreatureTemplate*> >, private HashTableIterator<uint32, Reference<CreatureTemplate*> >, private Lua, public Singleton<CreatureTemplateManager> {
 protected:
 	VectorMap<uint32, Vector<String> > weaponMap;
-	VectorMap<uint32, SpawnGroup> groupMap;
+	VectorMap<uint32, DynamicSpawnGroup> dynamicGroupMap;
+	VectorMap<uint32, StaticSpawnGroup> staticGroupMap;
 
 	int hash(const uint32& key) {
 		return Integer::hashCode(key);
@@ -38,7 +39,8 @@ public:
 		lua_register(getLuaState(), "includeFile", includeFile);
 		lua_register(getLuaState(), "addTemplate", addTemplate);
 		lua_register(getLuaState(), "addWeapon", addWeapon);
-		lua_register(getLuaState(), "addGroup", addGroup);
+		lua_register(getLuaState(), "addDynamicGroup", addDynamicGroup);
+		lua_register(getLuaState(), "addStaticGroup", addStaticGroup);
 
 		setGlobalInt("NONE", CreatureFlag::NONE);
 		setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
@@ -102,12 +104,20 @@ public:
 		return weaponMap.get(ascii.hashCode());
 	}
 
-	SpawnGroup getGroup(uint32 crc) {
-		return groupMap.get(crc);
+	DynamicSpawnGroup getDynamicGroup(uint32 crc) {
+		return dynamicGroupMap.get(crc);
 	}
 
-	SpawnGroup getGroup(String ascii) {
-		return groupMap.get(ascii.hashCode());
+	DynamicSpawnGroup getDynamicGroup(String ascii) {
+		return dynamicGroupMap.get(ascii.hashCode());
+	}
+
+	StaticSpawnGroup getStaticGroup(uint32 crc) {
+		return staticGroupMap.get(crc);
+	}
+
+	StaticSpawnGroup getStaticGroup(String ascii) {
+		return staticGroupMap.get(ascii.hashCode());
 	}
 
 	static int includeFile(lua_State* L) {
@@ -148,12 +158,22 @@ public:
 		return 0;
 	}
 
-	static int addGroup(lua_State* L) {
+	static int addDynamicGroup(lua_State* L) {
 		String ascii = lua_tostring(L, -2);
 		uint32 crc = (uint32) ascii.hashCode();
 
 		LuaObject obj(L);
-		CreatureTemplateManager::instance()->groupMap.put(crc, SpawnGroup(ascii, obj));
+		CreatureTemplateManager::instance()->dynamicGroupMap.put(crc, DynamicSpawnGroup(ascii, obj));
+
+		return 0;
+	}
+
+	static int addStaticGroup(lua_State* L) {
+		String ascii = lua_tostring(L, -2);
+		uint32 crc = (uint32) ascii.hashCode();
+
+		LuaObject obj(L);
+		CreatureTemplateManager::instance()->staticGroupMap.put(crc, StaticSpawnGroup(ascii, obj));
 
 		return 0;
 	}
