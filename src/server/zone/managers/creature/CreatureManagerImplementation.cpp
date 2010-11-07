@@ -8,6 +8,7 @@
 #include "CreatureManager.h"
 #include "CreatureTemplate.h"
 #include "CreatureTemplateManager.h"
+#include "SpawnAreaMap.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
@@ -152,6 +153,7 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 
 void CreatureManagerImplementation::loadDynamicSpawnAreas() {
 	info("loading dynamic spawn regions...", true);
+	spawnAreaMap.loadMap(zone);
 }
 
 void CreatureManagerImplementation::loadSingleSpawns() {

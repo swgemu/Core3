@@ -105,6 +105,8 @@ using namespace server::zone::managers::creature;
 
 #include "server/zone/managers/creature/CreatureMap.h"
 
+#include "server/zone/managers/creature/SpawnAreaMap.h"
+
 #include "server/zone/managers/ZoneManager.h"
 
 namespace server {
@@ -165,6 +167,8 @@ namespace creature {
 class CreatureManagerImplementation : public ZoneManagerImplementation {
 protected:
 	ManagedWeakReference<Zone* > zone;
+
+	SpawnAreaMap spawnAreaMap;
 
 	CreatureTemplateManager* creatureTemplateManager;
 

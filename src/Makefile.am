@@ -55,7 +55,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L/usr/local/BerkeleyDB.5.0/lib \
 	-L/usr/local/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
-	-lmysqlclient -lz -lengine3 -llua -ldb
+	-lmysqlclient -lz -lengine3 -llua -ldb-5.0
 
 bin_PROGRAMS = core3
 
@@ -73,6 +73,8 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/area/MissionSpawnActiveArea.cpp \
 				server/zone/objects/area/MissionReconActiveArea.cpp \
+				server/zone/objects/area/DynamicSpawnArea.cpp \
+				server/zone/objects/area/SpawnObserver.cpp \
 				server/zone/objects/factorycrate/FactoryCrate.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \
@@ -95,6 +97,10 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/creature/AiAgent.cpp \
 				server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 				server/zone/objects/creature/buffs/Buff.cpp \
+				server/zone/objects/creature/aigroup/AiGroup.cpp \
+				server/zone/objects/creature/aigroup/HerdGroup.cpp \
+				server/zone/objects/creature/aigroup/LairGroup.cpp \
+				server/zone/objects/creature/aigroup/PackGroup.cpp \
 				server/zone/objects/creature/buffs/DelayedBuff.cpp \
 				server/zone/objects/creature/buffs/SpiceBuff.cpp \
 				server/zone/objects/creature/buffs/PowerBoostBuff.cpp \
@@ -277,6 +283,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/ObserverImplementation.cpp \
 		server/zone/objects/scene/ObserverEventMap.cpp \
 		server/zone/objects/area/ActiveAreaImplementation.cpp \
+		server/zone/objects/area/DynamicSpawnAreaImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
 		server/zone/objects/terrain/TerrainGenerator.cpp \
@@ -338,6 +345,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \
+		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
+		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
+		server/zone/objects/creature/aigroup/LairGroupImplementation.cpp \
+		server/zone/objects/creature/aigroup/PackGroupImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/variables/SkillList.cpp \
 		server/zone/objects/player/variables/SchematicList.cpp \

@@ -18,6 +18,8 @@ public:
 	const static int CONVERSE = 6;
 	const static int KILLEDCREATURE = 7; // used when a player kills any creature
 	const static int OBJECTREMOVEDFROMZONE = 8;
+	const static int ENTEREDAREA = 9;
+	const static int EXITEDAREA = 10;
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

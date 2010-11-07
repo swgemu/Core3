@@ -171,9 +171,6 @@ class AiAgent extends CreatureObject {
 	@local
 	public native void notifyDissapear(QuadTreeEntry entry);
 	
-	@local
-	public native void notifyPositionUpdate(QuadTreeEntry obj);
-	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -276,6 +273,11 @@ class AiAgent extends CreatureObject {
 	 * Respawns creature to specified zone with home location position
 	 */
 	public native void respawn(Zone zone, int level);
+	
+	@local
+	public void addPatrolPoint(@dereferenced PatrolPoint point) {
+		patrolPoints.add(point);
+	}
 	
 	public void setHomeLocation(float x, float z, float y, SceneObject cell = null) {
 		homeLocation.setPosition(x, z, y);

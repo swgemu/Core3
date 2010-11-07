@@ -186,10 +186,6 @@ bool AiAgentImplementation::tryRetreat() {
 	return true;
 }
 
-void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
-
-}
-
 void AiAgentImplementation::setDefender(SceneObject* defender) {
 	CreatureObjectImplementation::setDefender(defender);
 

@@ -43,6 +43,7 @@
 
 
 --Children folder includes
+includeFile("aigroup/serverobjects.lua")
 includeFile("battlefield_marker/serverobjects.lua")
 includeFile("building/serverobjects.lua")
 includeFile("cell/serverobjects.lua")
@@ -76,3 +77,4 @@ includeFile("badge_area.lua")
 includeFile("region_area.lua")
 includeFile("mission_spawn_area.lua")
 includeFile("mission_recon_area.lua")
+includeFile("dynamic_spawn_area.lua")
