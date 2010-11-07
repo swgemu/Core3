@@ -12,7 +12,7 @@
  *	SpawnObserverStub
  */
 
-SpawnObserver::SpawnObserver(DynamicSpawnArea* area) : Observer(DummyConstructorParameter::instance()) {
+SpawnObserver::SpawnObserver(SpawnArea* area) : Observer(DummyConstructorParameter::instance()) {
 	SpawnObserverImplementation* _implementation = new SpawnObserverImplementation(area);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -122,7 +122,7 @@ void SpawnObserverImplementation::_serializationHelperMethod() {
 	addSerializableVariable("spawnArea", &spawnArea);
 }
 
-SpawnObserverImplementation::SpawnObserverImplementation(DynamicSpawnArea* area) {
+SpawnObserverImplementation::SpawnObserverImplementation(SpawnArea* area) {
 	_initializeImplementation();
 	// server/zone/objects/area/SpawnObserver.idl(56):  		spawnArea = area;
 	spawnArea = area;

@@ -45,7 +45,7 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("ai_group.lua")
-includeFile("herd_group.lua")
-includeFile("pack_group.lua")
-includeFile("lair_group.lua")
+includeFile("aigroup/ai_group.lua")
+includeFile("aigroup/herd_group.lua")
+includeFile("aigroup/pack_group.lua")
+includeFile("aigroup/lair_group.lua")

@@ -19,12 +19,134 @@ class SpawnGroup : public Object {
 protected:
 	String templateName;
 
-	int wanderRadius;
 	int commandLevel;
 
-	int size;
-
 	unsigned int type;
+
+public:
+	SpawnGroup() {}
+
+	SpawnGroup(String tempName, LuaObject group) {
+		templateName = tempName;
+		commandLevel = group.getIntField("commandLevel");
+		type = group.getIntField("type");
+	}
+
+	virtual ~SpawnGroup() {}
+
+	String getTemplateName() const {
+		return templateName;
+	}
+
+	int getCommandLevel() const {
+		return commandLevel;
+	}
+
+	unsigned int getType() const {
+		return type;
+	}
+
+	void setTemplateName(String templateName) {
+		this->templateName = templateName;
+	}
+
+	void setCommandLevel(int commandLevel) {
+		this->commandLevel = commandLevel;
+	}
+
+	void setType(unsigned int type) {
+		this->type = type;
+	}
+
+	virtual bool isStaticGroup() {
+		return false;
+	}
+
+	virtual bool isDynamicGroup() {
+		return false;
+	}
+};
+
+class SpawnCoordinate : public Coordinate, public Quaternion {
+protected:
+	String templateName;
+	uint64 cellID;
+
+public:
+	SpawnCoordinate() {}
+	virtual ~SpawnCoordinate() {}
+
+	uint64 getCellID() const {
+		return cellID;
+	}
+
+	String getTemplateName() const {
+		return templateName;
+	}
+
+	void setCellID(uint64 cellID) {
+		this->cellID = cellID;
+	}
+
+	void setTemplateName(String templateName) {
+		this->templateName = templateName;
+	}
+
+};
+
+class StaticSpawnGroup : public SpawnGroup {
+protected:
+	Vector<SpawnCoordinate> spawnMap;
+
+public:
+	StaticSpawnGroup() {}
+
+	StaticSpawnGroup(String tempName, LuaObject group) : SpawnGroup(tempName, group) {
+		LuaObject spawns = group.getObjectField("spawns");
+		if (spawns.isValidTable()) {
+			lua_State* L = spawns.getLuaState();
+
+			for (int i = 1; i <= spawns.getTableSize(); ++i) {
+				lua_rawgeti(L, -1, i);
+				LuaObject templ(L);
+
+				if (templ.isValidTable()) {
+					if (templ.getTableSize() >= 9) {
+						SpawnCoordinate coord;
+
+						coord.setTemplateName(templ.getStringField("name"));
+
+						coord.setPosition(templ.getFloatField("x"), templ.getFloatField("y"), templ.getFloatField("z"));
+
+						coord.set(templ.getFloatField("ow"), templ.getFloatField("ox"), templ.getFloatField("oy"), templ.getFloatField("oz"));
+
+						coord.setCellID(templ.getLongField("cellID"));
+					}
+				}
+
+				templ.pop();
+			}
+		}
+
+		spawns.pop();
+	}
+
+	virtual ~StaticSpawnGroup() {}
+
+	Vector<SpawnCoordinate> getSpawnList() {
+		return spawnMap;
+	}
+
+	bool isStaticGroup() {
+		return true;
+	}
+};
+
+class DynamicSpawnGroup : public SpawnGroup {
+protected:
+	int wanderRadius;
+
+	int size;
 
 	Vector<String> scoutTemplates;
 	float scoutWeight;
@@ -38,17 +160,12 @@ protected:
 	String lairTemplate;
 
 public:
-	SpawnGroup() {}
+	DynamicSpawnGroup() {}
 
-	SpawnGroup(String tempName, LuaObject group) {
-		templateName = tempName;
-
+	DynamicSpawnGroup(String tempName, LuaObject group) : SpawnGroup(tempName, group) {
 		wanderRadius = group.getIntField("wanderRadius");
-		commandLevel = group.getIntField("commandLevel");
 
 		size = group.getIntField("size");
-
-		type = group.getIntField("type");
 
 		LuaObject scouts(group.getObjectField("scout"));
 		if (scouts.isValidTable()) {
@@ -83,7 +200,7 @@ public:
 		lairTemplate = group.getStringField("lairTemplate");
 	}
 
-	virtual ~SpawnGroup() {}
+	virtual ~DynamicSpawnGroup() {}
 
 	Vector<String> getBabyTemplates() const {
 		return babyTemplates;
@@ -113,24 +230,12 @@ public:
 		return scoutWeight;
 	}
 
-	String getTemplateName() const {
-		return templateName;
-	}
-
 	int getWanderRadius() const {
 		return wanderRadius;
 	}
 
-	int getCommandLevel() const {
-		return commandLevel;
-	}
-
 	int getSize() const {
 		return size;
-	}
-
-	unsigned int getType() const {
-		return type;
 	}
 
 	void setBabyTemplates(Vector<String> babyTemplates) {
@@ -161,24 +266,16 @@ public:
 		this->scoutWeight = scoutWeight;
 	}
 
-	void setTemplateName(String templateName) {
-		this->templateName = templateName;
-	}
-
 	void setWanderRadius(int wanderRadius) {
 		this->wanderRadius = wanderRadius;
-	}
-
-	void setCommandLevel(int commandLevel) {
-		this->commandLevel = commandLevel;
 	}
 
 	void setSize(int size) {
 		this->size = size;
 	}
 
-	void setType(unsigned int type) {
-		this->type = type;
+	bool isDynamicGroup() {
+		return true;
 	}
 };
 

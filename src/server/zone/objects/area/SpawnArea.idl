@@ -44,74 +44,52 @@ which carries forward this exception.
 
 package server.zone.objects.area;
 
-import server.zone.Zone;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerObject;
-import server.zone.objects.area.SpawnArea;
+import server.zone.objects.area.ActiveArea;
 import system.util.SortedVector;
-import system.util.Vector;
-import system.util.VectorMap;
-import server.zone.managers.object.ObjectManager;
 import engine.core.ManagedObject;
 import server.zone.objects.creature.aigroup.AiGroup;
 import server.zone.objects.area.SpawnObserver;
-import server.zone.objects.area.SpawnDynamicAreaCreatureTask;
 import server.zone.objects.scene.Observable;
 
-class DynamicSpawnArea extends SpawnArea {
+class SpawnArea extends ActiveArea {
 	@dereferenced
-	protected SortedVector<AiGroup> spawnedGroups;
-	
-	@dereferenced
-	protected Vector<SpawnArea> noSpawnAreas;
-	
-	@dereferenced
-	protected VectorMap<PlayerObject, SpawnDynamicAreaCreatureTask> playerOccupants;
-	
-	@dereferenced
-	protected VectorMap<PlayerObject, DynamicSpawnArea> excludedPlayerOccupants;
+	protected SortedVector<unsigned int> spawnCreatureTemplates;
 	
 	@dereferenced
 	protected SortedVector<SpawnObserver> observers;
 	
-	@dereferenced
-	protected Time lastSpawnTime;
+	protected int tier;
+	protected int spawnConstant;
 	
-	protected int maxCreaturesToSpawn;
-	
-	public DynamicSpawnArea() {
-		maxCreaturesToSpawn = 1;
-		
-		playerOccupants.setNoDuplicateInsertPlan();
-		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
-				
-		registerObservers();
+	public SpawnArea() {
+		spawnConstant = 0;
+		Logger.setLoggingName("SpawnArea");
 	}
 	
-	public native void registerObservers();
-	
-	public native void spawnCreature(unsigned int templateCRC, PlayerObject player);
-	
-	public native void notifyEnter(SceneObject object);
-	public native void notifyExit(SceneObject object);
-	
-	@local
-	public native SpawnDynamicAreaCreatureTask addSpawnTask(PlayerObject player);
-	
-	public native void doSpawnEvent(PlayerObject player);
-	public native void doDespawnEvent();
-	
-	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-		
-	public void setMaxCreaturesToSpawn(int num) {
-		maxCreaturesToSpawn = num;
+	public abstract void registerObservers() {
 	}
 	
-	public void addNoSpawnArea(SpawnArea area) {
-		noSpawnAreas.add(area);
+	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+		return 1;
+	}
+	
+	public void addTemplate(unsigned int tempCRC) {
+		spawnCreatureTemplates.add(tempCRC);
+	}
+	
+	public void setTier(int n) {
+		tier = n;
+	}
+	
+	public void setSpawnConstant(int n) {
+		spawnConstant = n;
+	}
+	
+	public abstract boolean isStaticArea() {
+		return false;
 	}
 	
 	public abstract boolean isDynamicArea() {
-		return true;
+		return false;
 	}
 }
