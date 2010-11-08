@@ -65,10 +65,10 @@ public:
 		insertInt(0);
 		insertAscii(stringId->getStringID());
 
-		if (tano->isPlayerCreature() && ((PlayerCreature*)tano)->getPlayerObject()->isPrivileged())
-			insertUnicode(stringId->getCustomString() + " \\#ffff00[SWGEmu-Staff]\\#.");
-
-		else
+		if (tano->isPlayerCreature() && ((PlayerCreature*)tano)->getPlayerObject() != NULL && ((PlayerCreature*)tano)->getPlayerObject()->isPrivileged()) {
+			UnicodeString name = stringId->getCustomString();
+			insertUnicode(name + " \\#ffff00[SWGEmu-Staff]\\#.");
+		} else
 			insertUnicode(stringId->getCustomString());
 
 		insertInt(tano->getVolume());
