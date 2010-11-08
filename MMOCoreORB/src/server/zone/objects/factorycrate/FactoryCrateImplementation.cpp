@@ -52,7 +52,7 @@ void FactoryCrateImplementation::sendTo(SceneObject* player, bool doClose) {
 	sendSlottedObjectsTo(player);
 	sendContainerObjectsTo(player);
 
-	if(doClose) {
+	if (doClose) {
 		BaseMessage* msg = new SceneObjectCloseMessage(_this);
 		player->sendMessage(msg);
 	}

@@ -131,7 +131,7 @@ public:
 			ManagedReference<BuildingObject*> building = (BuildingObject*) destinationObject->getParent();
 
 			if (!building->isOnAdminList(creature)) {
-				return false;
+				return GENERALERROR;
 			}
 
 			//Set the objects position to the creature that is transferring it?

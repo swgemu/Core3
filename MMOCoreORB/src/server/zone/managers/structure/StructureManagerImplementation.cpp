@@ -1372,6 +1372,8 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 		return 1;
 	}
 
+	//@player_structure:change_residence_time You cannot change residence for %NO hours.
+
 	if (declaredResidence == buildingObject) {
 		player->sendSystemMessage("@player_structure:already_residence"); //This building is already your residence.
 		return 1;
