@@ -60,12 +60,14 @@ public:
 
 		insertLong(ghost->getParentID());
 
+		String serverName = ghost->getZoneServer()->getServerName();
+
 		DeltaVector<String>* friendList = ghost->getFriendList();
 		insertInt(friendList->size());
 
 		for (int i = 0; i < friendList->size(); ++i) {
 			insertAscii("SWG");
-			insertAscii("Core3");
+			insertAscii(serverName);
 			insertAscii(friendList->get(i));
 		}
 
