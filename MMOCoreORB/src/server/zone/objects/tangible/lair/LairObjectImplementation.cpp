@@ -159,6 +159,9 @@ void LairObjectImplementation::checkForNewSpawns() {
 
 	ManagedReference<CreatureObject*> creature = creatureManager->spawnCreature(templateToSpawn, 0, x, z, y);
 
+	if (creature == NULL)
+		return;
+
 	if (!creature->isAiAgent()) {
 		error("spawned non player creature with template " + TemplateManager::instance()->getTemplateFile(templateToSpawn));
 	} else {

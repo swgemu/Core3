@@ -111,6 +111,9 @@ public:
 		ManagedReference<GuildObject*> guild = targetCreature->getGuildObject();
 		uint64 objid = targetCreature->getObjectID();
 
+		if (guild == NULL)
+			return GENERALERROR;
+
 		GuildMemberInfo* gmi = guild->getMember(objid);
 
 		if (gmi == NULL)
