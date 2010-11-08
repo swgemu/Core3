@@ -534,15 +534,17 @@ bool GuildManagerImplementation::disbandGuild(PlayerCreature* player, GuildObjec
 		member->broadcastMessage(creod6, true);
 	}
 
-	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this->_getObjectID());
-	gildd3->startUpdate(0x04);
-	guildList.drop(guild->getGuildKey(), gildd3);
-	gildd3->close();
+	if (guildList.contains(guild->getGuildKey())) {
+		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this->_getObjectID());
+		gildd3->startUpdate(0x04);
+		guildList.drop(guild->getGuildKey(), gildd3);
+		gildd3->close();
 
-	guild->destroyObjectFromDatabase(true);
+		guild->destroyObjectFromDatabase(true);
 
-	//Send the delta to everyone currently online!
-	chatManager->broadcastMessage(gildd3);
+		//Send the delta to everyone currently online!
+		chatManager->broadcastMessage(gildd3);
+	}
 
 	info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> disbanded.", true);
 
