@@ -430,6 +430,11 @@ ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
 }
 
 GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, GuildTerminal* terminal, const String& guildName, const String& guildAbbrev) {
+	if (player->isInGuild()) {
+		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
+		return NULL;
+	}
+
 	Locker _lock(_this);
 
 	uint64 playerID = player->getObjectID();
