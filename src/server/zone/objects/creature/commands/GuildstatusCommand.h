@@ -100,7 +100,7 @@ public:
 		PlayerCreature* targetCreature = (PlayerCreature*) obj.get();
 
 		ParameterizedStringId params;
-		params.setTU(targetCreature);
+		params.setTU(targetCreature->getObjectName()->getDisplayedName());
 
 		if (!creature->isInGuild()) {
 			params.setStringId("@base_player:guildstatus_not_in_guild"); //%TU is not in a guild.
