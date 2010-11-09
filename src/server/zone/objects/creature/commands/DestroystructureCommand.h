@@ -76,7 +76,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(player);
 
-		if (obj == NULL || obj->isStructureObject()) {
+		if (obj == NULL || !obj->isStructureObject()) {
 			player->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
 			return INVALIDPARAMETERS;
 		}
