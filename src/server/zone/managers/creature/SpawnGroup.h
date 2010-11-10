@@ -32,7 +32,24 @@ public:
 		type = group.getIntField("type");
 	}
 
+	SpawnGroup(const SpawnGroup& gr) : Object() {
+		templateName = gr.templateName;
+		commandLevel = gr.commandLevel;
+		type = gr.type;
+	}
+
 	virtual ~SpawnGroup() {}
+
+	SpawnGroup& operator=(const SpawnGroup& gr) {
+		if (this == &gr)
+			return *this;
+
+		templateName = gr.templateName;
+		commandLevel = gr.commandLevel;
+		type = gr.type;
+
+		return *this;
+	}
 
 	String getTemplateName() const {
 		return templateName;
@@ -74,7 +91,23 @@ protected:
 
 public:
 	SpawnCoordinate() {}
+
+	SpawnCoordinate(const SpawnCoordinate& cr) : Object(), Coordinate(cr), Quaternion(cr) {
+		templateName = cr.templateName;
+		cellID = cr.cellID;
+	}
+
 	virtual ~SpawnCoordinate() {}
+
+	SpawnCoordinate& operator=(const SpawnCoordinate& cr) {
+		if (this == &cr)
+			return *this;
+
+		templateName = cr.templateName;
+		cellID = cr.cellID;
+
+		return *this;
+	}
 
 	uint64 getCellID() const {
 		return cellID;
@@ -100,6 +133,9 @@ protected:
 
 public:
 	StaticSpawnGroup() {}
+	StaticSpawnGroup(const StaticSpawnGroup& gr) : SpawnGroup(gr) {
+		spawnMap = gr.spawnMap;
+	}
 
 	StaticSpawnGroup(String tempName, LuaObject group) : SpawnGroup(tempName, group) {
 		LuaObject spawns = group.getObjectField("spawns");
@@ -162,6 +198,24 @@ protected:
 public:
 	DynamicSpawnGroup() {}
 
+	DynamicSpawnGroup(const DynamicSpawnGroup& ds) : SpawnGroup(ds) {
+		wanderRadius = ds.wanderRadius;
+
+		size = ds.size;
+
+		scoutTemplates = ds.scoutTemplates;
+
+		scoutWeight = ds.scoutWeight;
+
+		protectorTemplates = ds.protectorTemplates;
+		protectorWeight = ds.protectorWeight;
+
+		babyTemplates = ds.babyTemplates;
+		babyWeight = ds.babyWeight;
+
+		lairTemplate = ds.lairTemplate;
+	}
+
 	DynamicSpawnGroup(String tempName, LuaObject group) : SpawnGroup(tempName, group) {
 		wanderRadius = group.getIntField("wanderRadius");
 
@@ -201,6 +255,29 @@ public:
 	}
 
 	virtual ~DynamicSpawnGroup() {}
+
+	DynamicSpawnGroup& operator=(const DynamicSpawnGroup& ds) {
+		if (this == &ds)
+			return *this;
+
+		wanderRadius = ds.wanderRadius;
+
+		size = ds.size;
+
+		scoutTemplates = ds.scoutTemplates;
+
+		scoutWeight = ds.scoutWeight;
+
+		protectorTemplates = ds.protectorTemplates;
+		protectorWeight = ds.protectorWeight;
+
+		babyTemplates = ds.babyTemplates;
+		babyWeight = ds.babyWeight;
+
+		lairTemplate = ds.lairTemplate;
+
+		return *this;
+	}
 
 	Vector<String> getBabyTemplates() const {
 		return babyTemplates;
