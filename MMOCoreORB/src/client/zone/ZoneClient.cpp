@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "ZonePacketHandler.h"
 
-
+#include "ZoneMessageProcessorTask.h"
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
 #include "../../server/zone/packets/zone/ClientIDMessage.h"
 
@@ -61,7 +61,9 @@ ZoneClient::ZoneClient(int port) : BaseClient("localhost", port) {
 	key = 0;
 	accountID = 0;
 
-	basePacketHandler = new BasePacketHandler("ZoneClient", NULL);
+	zone = NULL;
+
+	basePacketHandler = new BasePacketHandler("ZoneClient", this);
 }
 
 ZoneClient::~ZoneClient() {
@@ -76,4 +78,14 @@ ZoneClient::~ZoneClient() {
 
 void ZoneClient::handleMessage(Packet* message) {
 	basePacketHandler->handlePacket(this, message);
+}
+
+void ZoneClient::initialize() {
+	zonePacketHandler = new ZonePacketHandler("ZonePacketHandler", zone);
+	BaseClient::initialize();
+}
+
+void ZoneClient::processMessage(Message* message) {
+	ZoneMessageProcessorTask* task = new ZoneMessageProcessorTask(message, zonePacketHandler);
+	Core::getTaskManager()->executeTask(task);
 }

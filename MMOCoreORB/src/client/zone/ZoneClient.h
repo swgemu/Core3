@@ -48,10 +48,10 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "objects/player/PlayerCreature.h"
 
-
 class Zone;
+class ZonePacketHandler;
 
-class ZoneClient : public BaseClient {
+class ZoneClient : public BaseClient, public ServiceHandler {
 	Zone* zone;
 
 	Reference<PlayerCreature*> player;
@@ -63,6 +63,7 @@ class ZoneClient : public BaseClient {
 	//bool disconnecting;
 
 	BasePacketHandler* basePacketHandler;
+	ZonePacketHandler* zonePacketHandler;
 
 	MessageQueue messageQueue;
 
@@ -70,6 +71,26 @@ public:
 	ZoneClient(int port);
 
 	~ZoneClient();
+
+	void initialize();
+
+	ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
+		return NULL;
+	}
+
+	bool deleteConnection(ServiceClient* client) {
+		return false;
+	}
+
+	void handleMessage(ServiceClient* client, Packet* message) {
+
+	}
+
+	void processMessage(Message* message);
+
+	bool handleError(ServiceClient* client, Exception& e) {
+		return true;
+	}
 
 	void sendMessage(Message* msg) {
 		BaseClient::sendPacket((BasePacket*) msg);

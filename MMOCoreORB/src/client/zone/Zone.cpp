@@ -5,7 +5,6 @@
 /*#include "packets/zone/SelectCharacterMessage.h"
 #include "packets/zone/ClientCreateCharacter.h"
 #include "packets/zone/ClientIDMessage.h"*/
-#include "ZoneMessageProcessorThread.h"
 #include "ZoneClientThread.h"
 
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
@@ -32,7 +31,6 @@ Zone::Zone(int instance, uint64 characterObjectID, uint32 account, uint32 sessio
 
 	client = NULL;
 	clientThread = NULL;
-	processor = NULL;
 
 	Zone::instance = instance;
 }
@@ -46,9 +44,6 @@ Zone::~Zone() {
 
 	delete clientThread;
 	clientThread = NULL;
-
-	delete processor;
-	processor = NULL;
 }
 
 void Zone::run() {
@@ -61,9 +56,6 @@ void Zone::run() {
 
 		clientThread = new ZoneClientThread(client);
 		clientThread->start();
-
-		processor = new ZoneMessageProcessorThread("Zone", client);
-		processor->start();
 
 		if (client->connect()) {
 			client->info("connected", true);
