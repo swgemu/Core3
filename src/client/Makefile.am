@@ -62,11 +62,9 @@ core3client_SOURCES = \
 		login/LoginClient.cpp \
 		login/LoginSession.cpp \
 		login/LoginPacketHandler.cpp \
-		login/LoginMessageProcessorThread.cpp \
 		zone/Zone.cpp \
 		zone/ZoneClient.cpp \
 		zone/ZonePacketHandler.cpp \
-		zone/ZoneMessageProcessorThread.cpp \
 		zone/ZoneClientThread.cpp \
 		zone/managers/object/ObjectManager.cpp \
 		zone/managers/objectcontroller/ObjectController.cpp \

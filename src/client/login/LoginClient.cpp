@@ -49,6 +49,7 @@ which carries forward this exception.
 
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
 //#include "objects/player/Player.h"
+#include "LoginMessageProcessorTask.h"
 
 LoginClient::LoginClient(int port) : BaseClient("localhost", port) {
 	setLogging(false);
@@ -56,7 +57,8 @@ LoginClient::LoginClient(int port) : BaseClient("localhost", port) {
 
 	loginSession = NULL;
 
-	basePacketHandler = new BasePacketHandler("LoginClient", NULL);
+	basePacketHandler = new BasePacketHandler("LoginClient", this);
+	loginPacketHandler = NULL;
 }
 
 LoginClient::~LoginClient() {
@@ -64,6 +66,16 @@ LoginClient::~LoginClient() {
 	basePacketHandler = NULL;
 }
 
+void LoginClient::initialize() {
+	loginPacketHandler = new LoginPacketHandler(loginSession);
+	BaseClient::initialize();
+}
+
 void LoginClient::handleMessage(Packet* message) {
 	basePacketHandler->handlePacket(this, message);
+}
+
+void LoginClient::processMessage(Message* message) {
+	LoginMessageProcessorTask* task = new LoginMessageProcessorTask(message, loginPacketHandler);
+	Core::getTaskManager()->executeTask(task);
 }

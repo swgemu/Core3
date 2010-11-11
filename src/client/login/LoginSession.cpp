@@ -10,8 +10,6 @@
 #include "LoginClient.h"
 #include "LoginClientThread.h"
 
-#include "LoginMessageProcessorThread.h"
-
 #include "../../server/login/packets/AccountVersionMessage.h"
 
 
@@ -31,9 +29,6 @@ void LoginSession::run() {
 
 	LoginClientThread* loginThread = new LoginClientThread(login);
 	loginThread->start();
-
-	LoginMessageProcessorThread* messageProcessor = new LoginMessageProcessorThread("LoginMessageProcessor", login);
-	messageProcessor->start();
 
 	if (!login->connect()) {
 		error("could not connect to login server");
