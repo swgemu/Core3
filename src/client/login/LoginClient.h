@@ -11,17 +11,39 @@
 #include "engine/engine.h"
 
 class LoginSession;
+class LoginPacketHandler;
 
-class LoginClient : public BaseClient {
+class LoginClient : public BaseClient, public ServiceHandler {
 	MessageQueue messageQueue;
 
 	BasePacketHandler* basePacketHandler;
 	LoginSession* loginSession;
+	LoginPacketHandler* loginPacketHandler;
 
 public:
 	LoginClient(int port);
 
 	~LoginClient();
+
+	void initialize();
+
+	ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
+		return NULL;
+	}
+
+	bool deleteConnection(ServiceClient* client) {
+		return false;
+	}
+
+	void handleMessage(ServiceClient* client, Packet* message) {
+
+	}
+
+	void processMessage(Message* message);
+
+	bool handleError(ServiceClient* client, Exception& e) {
+		return true;
+	}
 
 	void setLoginSession(LoginSession* session) {
 		loginSession = session;

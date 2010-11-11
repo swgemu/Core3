@@ -54,7 +54,6 @@
 
 class LoginSession;
 class ZoneClientThread;
-class ZoneMessageProcessorThread;
 class ObjectController;
 class ObjectManager;
 
@@ -69,7 +68,6 @@ class Zone : public Thread, public Mutex, public Logger {
 
 	ZoneClient* client;
 	ZoneClientThread* clientThread;
-	ZoneMessageProcessorThread* processor;
 
 	Reference<PlayerCreature*> player;
 	ObjectController* objectController;
