@@ -50,7 +50,10 @@ object_building_player_player_guildhall_tatooine_style_02 = object_building_play
 	terminalLocation = {1, 9.13004, 1.49609, 6.3587, 0, 0.707107, 0, 0.707107},
 	constructionMarker = "object/building/player/construction/construction_player_guildhall_tatooine_style_02.iff",
 	length = 5,
-	width = 9
+	width = 9,
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_guild.iff", x = 10.7, z = 1.50, y = 9.3, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 1, containmentType = -1}
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_guildhall_tatooine_style_02, "object/building/player/player_guildhall_tatooine_style_02.iff")
