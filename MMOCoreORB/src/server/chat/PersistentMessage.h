@@ -11,22 +11,50 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+#include "server/chat/ChatParameter.h"
 
 #include "engine/core/ManagedObject.h"
+
+#include "system/lang/System.h"
+
+#include "system/util/Vector.h"
 
 namespace server {
 namespace chat {
 
 class PersistentMessage : public ManagedObject {
 public:
+	static const byte NEW = 0x4E;
+
+	static const byte READ = 0x52;
+
+	static const byte UNREAD = 0x55;
+
 	PersistentMessage();
+
+	void sendTo(PlayerCreature* player, bool sendBody = true);
+
+	Vector<ChatParameter*>* getChatParameters();
 
 	int getMailID();
 
 	unsigned long long getObjectID();
 
-	UnicodeString getSenderName();
+	String getSenderName();
 
 	unsigned long long getReceiverObjectID();
 
@@ -38,7 +66,7 @@ public:
 
 	UnicodeString getSubject();
 
-	void setSenderName(const UnicodeString& name);
+	void setSenderName(const String& name);
 
 	void setReceiverObjectID(unsigned long long oid);
 
@@ -50,9 +78,13 @@ public:
 
 	void setSubject(const UnicodeString& subj);
 
-	void setParameterizedBody(ParameterizedStringId& body);
+	bool isNew();
 
-	ParameterizedStringId* getParameterizedBody();
+	bool isRead();
+
+	bool isUnread();
+
+	void addChatParameter(ChatParameter& param);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -63,9 +95,9 @@ protected:
 
 	virtual ~PersistentMessage();
 
-	UnicodeString _return_getBody;
+	String _return_getSenderName;
 
-	UnicodeString _return_getSenderName;
+	UnicodeString _return_getBody;
 
 	UnicodeString _return_getSubject;
 
@@ -82,9 +114,7 @@ namespace chat {
 
 class PersistentMessageImplementation : public ManagedObjectImplementation {
 protected:
-	UnicodeString senderName;
-
-	byte type;
+	String senderName;
 
 	UnicodeString subject;
 
@@ -94,20 +124,30 @@ protected:
 
 	byte status;
 
-	ParameterizedStringId stringIdBody;
-
 	unsigned long long receiverObjectID;
 
+	Vector<ChatParameter*> parameters;
+
 public:
+	static const byte NEW = 0x4E;
+
+	static const byte READ = 0x52;
+
+	static const byte UNREAD = 0x55;
+
 	PersistentMessageImplementation();
 
 	PersistentMessageImplementation(DummyConstructorParameter* param);
+
+	virtual void sendTo(PlayerCreature* player, bool sendBody = true);
+
+	Vector<ChatParameter*>* getChatParameters();
 
 	int getMailID();
 
 	unsigned long long getObjectID();
 
-	UnicodeString getSenderName();
+	String getSenderName();
 
 	unsigned long long getReceiverObjectID();
 
@@ -119,7 +159,7 @@ public:
 
 	UnicodeString getSubject();
 
-	void setSenderName(const UnicodeString& name);
+	void setSenderName(const String& name);
 
 	void setReceiverObjectID(unsigned long long oid);
 
@@ -131,9 +171,13 @@ public:
 
 	void setSubject(const UnicodeString& subj);
 
-	void setParameterizedBody(ParameterizedStringId& body);
+	bool isNew();
 
-	ParameterizedStringId* getParameterizedBody();
+	bool isRead();
+
+	bool isUnread();
+
+	void addChatParameter(ChatParameter& param);
 
 	PersistentMessage* _this;
 
@@ -174,11 +218,13 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendTo(PlayerCreature* player, bool sendBody);
+
 	int getMailID();
 
 	unsigned long long getObjectID();
 
-	UnicodeString getSenderName();
+	String getSenderName();
 
 	unsigned long long getReceiverObjectID();
 
@@ -190,7 +236,7 @@ public:
 
 	UnicodeString getSubject();
 
-	void setSenderName(const UnicodeString& name);
+	void setSenderName(const String& name);
 
 	void setReceiverObjectID(unsigned long long oid);
 
@@ -202,8 +248,14 @@ public:
 
 	void setSubject(const UnicodeString& subj);
 
+	bool isNew();
+
+	bool isRead();
+
+	bool isUnread();
+
 protected:
-	UnicodeString _param0_setSenderName__UnicodeString_;
+	String _param0_setSenderName__String_;
 	UnicodeString _param0_setBody__UnicodeString_;
 	UnicodeString _param0_setSubject__UnicodeString_;
 };

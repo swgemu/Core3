@@ -42,33 +42,33 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ParameterizedStringId.h"
+#include "StringIdChatParameter.h"
 
-ParameterizedStringId::ParameterizedStringId() : StringId() {
+StringIdChatParameter::StringIdChatParameter() : StringId() {
 	addSerializableVariables();
 }
 
-ParameterizedStringId::ParameterizedStringId(const StringId& id) : StringId(id) {
+StringIdChatParameter::StringIdChatParameter(const StringId& id) : StringId(id) {
 	addSerializableVariables();
 }
 
-ParameterizedStringId::ParameterizedStringId(const char * cstr) : StringId (cstr) {
+StringIdChatParameter::StringIdChatParameter(const char * cstr) : StringId (cstr) {
 	addSerializableVariables();
 }
 
-ParameterizedStringId::ParameterizedStringId(const String& fullPath) : StringId (fullPath) {
+StringIdChatParameter::StringIdChatParameter(const String& fullPath) : StringId (fullPath) {
 	addSerializableVariables();
 }
 
-ParameterizedStringId::ParameterizedStringId(const String& fil, const String& stringId) : StringId(fil, stringId) {
+StringIdChatParameter::StringIdChatParameter(const String& fil, const String& stringId) : StringId(fil, stringId) {
 	addSerializableVariables();
 }
 
-ParameterizedStringId::ParameterizedStringId(const UnicodeString& custom) : StringId(custom) {
+StringIdChatParameter::StringIdChatParameter(const UnicodeString& custom) : StringId(custom) {
 	addSerializableVariables();
 }
 
-ParameterizedStringId::ParameterizedStringId(const ParameterizedStringId& custom) : Object(), StringId(custom) {
+StringIdChatParameter::StringIdChatParameter(const StringIdChatParameter& custom) : Object(), ChatParameter(), StringId(custom) {
 	addSerializableVariables();
 
 	TT = custom.TT;
@@ -81,20 +81,7 @@ ParameterizedStringId::ParameterizedStringId(const ParameterizedStringId& custom
 	unknownByte = custom.unknownByte;
 }
 
-void ParameterizedStringId::addToPacketStream(Message * packet) {
-	uint32 size = 54 + file.length() + stringID.length() + parametersSize();
-
-	bool odd = (size & 1);
-
-	if (odd)
-		packet->insertInt((size + 1) / 2);
-	else
-		packet->insertInt(size / 2);
-
-		packet->insertShort(unknownByte);
-		packet->insertByte(1);
-		packet->insertInt(0xFFFFFFFF);
-
+void StringIdChatParameter::addToPacketStream(Message * packet) {
 		packet->insertAscii(file);
 		packet->insertInt(0);
 		packet->insertAscii(stringID);
@@ -105,13 +92,11 @@ void ParameterizedStringId::addToPacketStream(Message * packet) {
 		packet->insertAscii(TU.getStringIDParameter());
 		packet->insertUnicode(TU.getUnicodeParameter());
 
-
 		packet->insertLong(TT.getPointerParameter());
 		packet->insertAscii(TT.getFileParameter());
 		packet->insertInt(0);
 		packet->insertAscii(TT.getStringIDParameter());
 		packet->insertUnicode(TT.getUnicodeParameter());
-
 
 		packet->insertLong(TO.getPointerParameter());
 		packet->insertAscii(TO.getFileParameter());
@@ -119,12 +104,7 @@ void ParameterizedStringId::addToPacketStream(Message * packet) {
 		packet->insertAscii(TO.getStringIDParameter());
 		packet->insertUnicode(TO.getUnicodeParameter());
 
-
 		packet->insertInt(DI);
 		packet->insertFloat(DF);
-		packet->insertShort(0);
-		packet->insertByte(0);
-
-		if (odd)
-			packet->insertByte(0);
+		packet->insertByte(unknownByte);
 }

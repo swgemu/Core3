@@ -103,7 +103,7 @@ public:
 		}
 
 		//Make group members flourish.
-		ParameterizedStringId params;
+		StringIdChatParameter params;
 		params.setTT(leader->getFirstName());
 
 		Locker locker(group);

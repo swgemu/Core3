@@ -65,7 +65,7 @@ public:
 				BeginTradeMessage* msg2 = new BeginTradeMessage(player->getObjectID());
 				targetPlayer->sendMessage(msg2);
 			} else {
-				ParameterizedStringId stringId("ui_trade", "requested_prose");
+				StringIdChatParameter stringId("ui_trade", "requested_prose");
 				stringId.setTU(player->getFirstName());
 
 				targetPlayer->sendSystemMessage(stringId);

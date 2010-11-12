@@ -90,7 +90,7 @@ public:
 
 		if (obj == NULL || !obj->isPlayerCreature()) {
 			//Send message about player not existing.
-			ParameterizedStringId params;
+			StringIdChatParameter params;
 			params.setStringId("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
 			params.setTO(targetName);
 			player->sendSystemMessage(params);

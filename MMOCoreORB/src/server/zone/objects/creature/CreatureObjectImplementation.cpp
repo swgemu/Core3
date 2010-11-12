@@ -69,7 +69,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 #include "server/zone/objects/creature/variables/CommandQueueAction.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
@@ -297,12 +297,14 @@ void CreatureObjectImplementation::sendSystemMessage(const String& file, const S
 	if (!isPlayerCreature())
 		return;
 
-	ChatSystemMessage* msg = new ChatSystemMessage(file, stringid);
+	UnicodeString message("@" + file + ":" + stringid);
+
+	ChatSystemMessage* msg = new ChatSystemMessage(message);
 	sendMessage(msg);
 }
 
 
-void CreatureObjectImplementation::sendSystemMessage(ParameterizedStringId& message) {
+void CreatureObjectImplementation::sendSystemMessage(StringIdChatParameter& message) {
 	if (!isPlayerCreature())
 		return;
 
@@ -1476,7 +1478,7 @@ bool CreatureObjectImplementation::setNextAttackDelay(int del) {
 		cooldownTimerMap.updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
 
 		if (isPlayerCreature()) {
-			ParameterizedStringId stringId("combat_effects", "delay_applied_self");
+			StringIdChatParameter stringId("combat_effects", "delay_applied_self");
 			stringId.setDI(del);
 			sendSystemMessage(stringId);
 		}

@@ -16,8 +16,7 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
-
+#include "server/chat/StringIdChatParameter.h"
 
 void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	if (!obj->isPlayerCreature())
@@ -47,8 +46,8 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	}
 
 	if (!qual) {
-		NpcConversationMessage *fail = new NpcConversationMessage(player,
-				stffile, "no_qualify");
+		StringIdChatParameter params(stffile, "no_qualify");
+		NpcConversationMessage* fail = new NpcConversationMessage(player, params);
 		player->sendMessage(fail);
 
 		ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::TEACH_DENY);
@@ -80,7 +79,8 @@ void TrainerCreatureImplementation::sendInitialMessage(PlayerCreature* player) {
 	String stffile = "skill_teacher";
 	String stfname = getObjectNameStringIdName();
 
-	NpcConversationMessage* m1 = new NpcConversationMessage(player, stffile, stfname);
+	StringIdChatParameter params(stffile, stfname);
+	NpcConversationMessage* m1 = new NpcConversationMessage(player, params);
 	player->sendMessage(m1);
 
 	player->setLastNpcConvMessStr("trainer_initial");
@@ -156,7 +156,8 @@ void TrainerCreatureImplementation::sendSkillBoxes(PlayerCreature* player, bool 
 	else
 		option = "error_empty_category";
 
-	NpcConversationMessage* m2 = new NpcConversationMessage(player, stffile, option);
+	StringIdChatParameter params(stffile, option);
+	NpcConversationMessage* m2 = new NpcConversationMessage(player, params);
 	player->sendMessage(m2);
 
 	slist->insertOption("skill_teacher", "back");
@@ -191,7 +192,8 @@ void TrainerCreatureImplementation::sendSkillBoxList(PlayerCreature* player, boo
 		player->setLastNpcConvMessStr("trainer_allskills");
 	}
 
-	NpcConversationMessage* m3 = new NpcConversationMessage(player, stffile, option);
+	StringIdChatParameter params(stffile, option);
+	NpcConversationMessage* m3 = new NpcConversationMessage(player, params);
 	slist->insertOption("skill_teacher", "back");
 	player->addLastNpcConvOptions(String("back"));
 	player->sendMessage(slist);
@@ -258,7 +260,8 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 		if (choice == "back") {
 			sendInitialMessage(player);
 		} else {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "confirm");
+			StringIdChatParameter params(stffile, "confirm");
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->setLastNpcConvMessStr("trainer_learn");
 			player->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
@@ -268,7 +271,8 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 		if (choice == "back") {
 			sendInitialMessage(player);
 		} else {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, "skl_d", choice);
+			StringIdChatParameter params("skl_d", choice);
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->sendMessage(skillmsg);
 			sendSkillBoxes(player, false);
 		}
@@ -276,7 +280,8 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 		if (choice == "back") {
 			sendInitialMessage(player);
 		} else {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, "skl_d", choice);
+			StringIdChatParameter params("skl_d", choice);
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->sendMessage(skillmsg);
 			sendSkillBoxList(player, true);
 		}
@@ -284,7 +289,8 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 		if (choice == "back") {
 			sendInitialMessage(player);
 		} else {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, "skl_d", choice);
+			StringIdChatParameter params("skl_d", choice);
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->sendMessage(skillmsg);
 			sendSkillBoxList(player, false);
 		}
@@ -295,7 +301,7 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 
 		switch (option) {
 		case 0: {
-			ParameterizedStringId params;
+			StringIdChatParameter params;
 			params.setTO("skl_n", choice);
 
 			for (int i = 0; i < skillBoxes->size(); i++) {
@@ -349,7 +355,8 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 			break;
 		};
 
-		NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, optionmessage);
+		StringIdChatParameter params(stffile, optionmessage);
+		NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 		player->sendMessage(skillmsg);
 		sendInitialChoices(player);
 	} else

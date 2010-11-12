@@ -474,7 +474,7 @@ bool Buff::isSpiceBuff() {
 		return _implementation->isSpiceBuff();
 }
 
-void Buff::setStartMessage(ParameterizedStringId& start) {
+void Buff::setStartMessage(StringIdChatParameter& start) {
 	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -483,7 +483,7 @@ void Buff::setStartMessage(ParameterizedStringId& start) {
 		_implementation->setStartMessage(start);
 }
 
-void Buff::setEndMessage(ParameterizedStringId& start) {
+void Buff::setEndMessage(StringIdChatParameter& start) {
 	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

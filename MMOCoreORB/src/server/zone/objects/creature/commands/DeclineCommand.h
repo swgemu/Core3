@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "../../player/PlayerCreature.h"
-#include "../../scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 
 class DeclineCommand : public QueueCommand {
@@ -76,7 +76,7 @@ public:
 
 		creature->updateGroupInviterID(0);
 
-		ParameterizedStringId stringId;
+		StringIdChatParameter stringId;
 		stringId.setStringId("group", "decline_leader");
 		stringId.setTT(creature);
 

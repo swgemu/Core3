@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 
@@ -75,7 +75,7 @@ public:
 		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
 
 		if (ghost->isIgnoring(nameLower)) {
-			ParameterizedStringId param("cmnty", "ignore_duplicate");
+			StringIdChatParameter param("cmnty", "ignore_duplicate");
 			param.setTT(nameLower);
 			creature->sendSystemMessage(param);
 
@@ -87,7 +87,7 @@ public:
 		bool validName = playerManager->existsName(nameLower);
 
 		if (!validName) {
-			ParameterizedStringId param("cmnty", "ignore_not_found");
+			StringIdChatParameter param("cmnty", "ignore_not_found");
 			param.setTT(nameLower);
 			creature->sendSystemMessage(param);
 

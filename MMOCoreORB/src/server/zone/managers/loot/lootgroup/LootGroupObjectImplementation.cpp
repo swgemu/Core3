@@ -11,7 +11,7 @@
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "LootObject.h"
 #include "system/util/VectorMap.h"

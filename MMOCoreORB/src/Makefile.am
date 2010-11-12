@@ -360,7 +360,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
 		server/zone/objects/scene/variables/StringIdParameter.cpp \
-		server/zone/objects/scene/variables/ParameterizedStringId.cpp \
 		server/zone/objects/scene/variables/CustomizationVariables.cpp \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/installation/InstallationObjectImplementation.cpp \
@@ -386,6 +385,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/PersistentMessageImplementation.cpp \
+		server/chat/ChatParameter.cpp \
+		server/chat/StringIdChatParameter.cpp \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/managers/terrain/TerrainManager.cpp \

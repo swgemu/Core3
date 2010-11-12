@@ -74,7 +74,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/professions/Certification.h"
 #include "server/zone/objects/player/variables/PlayerList.h"
 #include "server/zone/objects/player/PlayerCreature.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 
 void PlayerObjectImplementation::initializeTransientMembers() {
@@ -577,7 +577,7 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 
 	if (playerToAdd == NULL || playerToAdd == parent) {
 		if (notifyClient) {
-			ParameterizedStringId param("cmnty", "friend_not_found");
+			StringIdChatParameter param("cmnty", "friend_not_found");
 			param.setTT(nameLower);
 			((CreatureObject*) parent.get())->sendSystemMessage(param);
 		}
@@ -609,7 +609,7 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 
 		parent->sendMessage(delta);
 
-		ParameterizedStringId param("cmnty", "friend_added");
+		StringIdChatParameter param("cmnty", "friend_added");
 		param.setTT(nameLower);
 		((CreatureObject*) parent.get())->sendSystemMessage(param);
 
@@ -623,7 +623,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 
 	if (!friendList.contains(nameLower)) {
 		if (notifyClient) {
-			ParameterizedStringId param("cmnty", "friend_not_found");
+			StringIdChatParameter param("cmnty", "friend_not_found");
 			param.setTT(nameLower);
 			((CreatureObject*) parent.get())->sendSystemMessage(param);
 		}
@@ -640,7 +640,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 
 	if (playerToRemove == NULL) {
 		if (notifyClient) {
-			ParameterizedStringId param("cmnty", "friend_not_found");
+			StringIdChatParameter param("cmnty", "friend_not_found");
 			param.setTT(nameLower);
 			((CreatureObject*) parent.get())->sendSystemMessage(param);
 		}
@@ -664,7 +664,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 
 		parent->sendMessage(delta);
 
-		ParameterizedStringId param("cmnty", "friend_removed");
+		StringIdChatParameter param("cmnty", "friend_removed");
 		param.setTT(nameLower);
 		((CreatureObject*) parent.get())->sendSystemMessage(param);
 
@@ -689,7 +689,7 @@ void PlayerObjectImplementation::addIgnore(const String& name, bool notifyClient
 
 		parent->sendMessage(delta);
 
-		ParameterizedStringId param("cmnty", "ignore_added");
+		StringIdChatParameter param("cmnty", "ignore_added");
 		param.setTT(nameLower);
 		((CreatureObject*) parent.get())->sendSystemMessage(param);
 
@@ -704,7 +704,7 @@ void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyCli
 
 	if (!ignoreList.contains(nameLower)) {
 		if (notifyClient) {
-			ParameterizedStringId param("cmnty", "ignore_not_found");
+			StringIdChatParameter param("cmnty", "ignore_not_found");
 			param.setTT(nameLower);
 			((CreatureObject*) parent.get())->sendSystemMessage(param);
 		}
@@ -724,7 +724,7 @@ void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyCli
 
 		parent->sendMessage(delta);
 
-		ParameterizedStringId param("cmnty", "ignore_removed");
+		StringIdChatParameter param("cmnty", "ignore_removed");
 		param.setTT(nameLower);
 		((CreatureObject*) parent.get())->sendSystemMessage(param);
 

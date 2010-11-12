@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "../../scene/SceneObject.h"
 #include "../../creature/CreatureObject.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 class BetCommand : public QueueCommand {
 public:

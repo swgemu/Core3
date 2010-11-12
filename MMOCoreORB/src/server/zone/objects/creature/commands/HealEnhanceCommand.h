@@ -87,7 +87,7 @@ public:
 		//Force the delay to be at least 3 seconds.
 		delay = (delay < 3) ? 3 : delay;
 
-		ParameterizedStringId message("healing_response", "healing_response_59");
+		StringIdChatParameter message("healing_response", "healing_response_59");
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "woundTreatment");
 		creature->addPendingTask("woundTreatment", task);
 		task->schedule(delay * 1000);

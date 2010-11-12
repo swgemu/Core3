@@ -46,7 +46,7 @@ which carries forward this exception.
 #define STRINGLIST_H_
 
 #include "ObjectControllerMessage.h"
-#include "../../objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 class StringList : public ObjectControllerMessage {
 	uint8 optionCount;
@@ -63,9 +63,9 @@ public:
 		updateOptionCount();
 	}
 
-	void insertOption(ParameterizedStringId& sid) {
+	void insertOption(StringIdChatParameter& sid) {
 
-		sid.addToPacketStream(this);
+		sid.insertToMessage(this);
 
 		updateOptionCount();
 	}

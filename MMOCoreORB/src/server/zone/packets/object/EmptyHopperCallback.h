@@ -102,7 +102,7 @@ public:
 					container->split(quantity, player);
 					harvester->updateResourceContainerQuantity(container, container->getQuantity(), true);
 				} else {
-					ParameterizedStringId stringId("error_message", "inv_full");
+					StringIdChatParameter stringId("error_message", "inv_full");
 					player->sendSystemMessage(stringId);
 				}
 			}

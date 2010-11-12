@@ -102,7 +102,7 @@ public:
 		} else {
 			cityHall->addZoningRights(targetPlayer->getObjectID());
 
-			ParameterizedStringId params;
+			StringIdChatParameter params;
 			params.setStringId("@city/city:rights_granted"); //You have been granted zoning rights in the city of %TO for 24 hours.
 			params.setTO(region->getObjectName());
 			targetPlayer->sendSystemMessage(params);

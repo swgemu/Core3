@@ -16,7 +16,7 @@
 
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
 
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 /*
  *	GamblingTerminalStub
@@ -401,7 +401,7 @@ bool GamblingTerminal::gameRunning() {
 		return _implementation->gameRunning();
 }
 
-void GamblingTerminal::notifyOthers(PlayerCreature* player, ParameterizedStringId* text) {
+void GamblingTerminal::notifyOthers(PlayerCreature* player, StringIdChatParameter* text) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -410,7 +410,7 @@ void GamblingTerminal::notifyOthers(PlayerCreature* player, ParameterizedStringI
 		_implementation->notifyOthers(player, text);
 }
 
-void GamblingTerminal::notifyAll(ParameterizedStringId* text) {
+void GamblingTerminal::notifyAll(StringIdChatParameter* text) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

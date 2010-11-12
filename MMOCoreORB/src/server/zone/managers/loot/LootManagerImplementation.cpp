@@ -12,7 +12,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupObject.h"

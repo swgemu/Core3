@@ -118,7 +118,7 @@ public:
 		int lotsNeeded = structureTemplate->getLotSize();
 
 		if (lotsRemaining < lotsNeeded) {
-			ParameterizedStringId stringId;
+			StringIdChatParameter stringId;
 			stringId.setStringId("@player_structure:not_enough_lots"); //This structure requires %DI lots.
 			stringId.setDI(lotsNeeded);
 			player->sendSystemMessage(stringId);
@@ -136,7 +136,7 @@ public:
 		StringId errorStf;
 
 		if (planetManager->isNoBuildArea(player->getPositionX(), player->getPositionY(), errorStf)) {
-			ParameterizedStringId sendString("player_structure", "city_too_close");
+			StringIdChatParameter sendString("player_structure", "city_too_close");
 			sendString.setTO(errorStf.getFile(), errorStf.getStringID());
 
 			player->sendSystemMessage(sendString);

@@ -158,7 +158,7 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 	if (value) {
 
 		if (basePowerRate != 0 && surplusPower <= 0) {
-			ParameterizedStringId stringId("player_structure", "power_deposit_incomplete");
+			StringIdChatParameter stringId("player_structure", "power_deposit_incomplete");
 			ChatSystemMessage* msg = new ChatSystemMessage(stringId);
 
 			broadcastToOperators(msg);
@@ -166,7 +166,7 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 		}
 
 		if (baseMaintenanceRate != 0 && surplusMaintenance <= 0) {
-			ParameterizedStringId stringId("shared", "harvester_no_maint_4");
+			StringIdChatParameter stringId("shared", "harvester_no_maint_4");
 			ChatSystemMessage* msg = new ChatSystemMessage(stringId);
 
 			broadcastToOperators(msg);

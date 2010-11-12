@@ -842,7 +842,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		task->schedule(incapTime * 1000);
 		playerCreature->addPendingTask("incapacitationRecovery", task);
 
-		ParameterizedStringId stringId;
+		StringIdChatParameter stringId;
 
 		if (destructor != NULL) {
 			stringId.setStringId("base_player", "prose_victim_incap");
@@ -865,7 +865,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 }
 
 void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, PlayerCreature* player) {
-	ParameterizedStringId stringId;
+	StringIdChatParameter stringId;
 
 	if (attacker->isPlayerCreature()) {
 		stringId.setStringId("base_player", "prose_target_dead");
@@ -1184,7 +1184,7 @@ void PlayerManagerImplementation::awardBadge(PlayerCreature* player, uint32 badg
 	if (!Badge::exists(badge))
 		return;
 
-	ParameterizedStringId stringId("badge_n", "");
+	StringIdChatParameter stringId("badge_n", "");
 	stringId.setTO("badge_n", Badge::getName(badge));
 
 	if (player->hasBadge(badge)) {
@@ -1267,7 +1267,7 @@ void PlayerManagerImplementation::awardExperience(PlayerCreature* player, const 
 		return;
 	//You receive 30 points of Surveying experience.
 	if (sendSystemMessage) {
-		ParameterizedStringId message("base_player","prose_grant_xp");
+		StringIdChatParameter message("base_player","prose_grant_xp");
 		message.setDI(xp);
 		message.setTO("exp_n", xpType);
 		player->sendSystemMessage(message);
@@ -1752,7 +1752,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 	if (creature->isPlayerCreature() && entertainer != NULL) {
 		PlayerCreature* player = (PlayerCreature*) creature;
 
-		ParameterizedStringId stringID;
+		StringIdChatParameter stringID;
 
 		if (forced) {
 			stringID.setTU(entid);
@@ -1838,7 +1838,7 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 	if (creature->isPlayerCreature() && entertainer != NULL) {
 		PlayerCreature* player = (PlayerCreature*) creature;
 
-		ParameterizedStringId stringID;
+		StringIdChatParameter stringID;
 		//StfParameter* params = new StfParameter;
 
 		if (forced) {

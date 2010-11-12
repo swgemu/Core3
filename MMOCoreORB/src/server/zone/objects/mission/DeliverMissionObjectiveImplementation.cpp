@@ -102,7 +102,7 @@ void DeliverMissionObjectiveImplementation::complete() {
 
 	int missionReward = mission->getRewardCredits();
 
-	ParameterizedStringId stringId("mission/mission_generic", "success_w_amount");
+	StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
 	stringId.setDI(missionReward);
 	player->sendSystemMessage(stringId);
 
@@ -174,7 +174,8 @@ int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 			}
 
 			// TODO: make this less static, there can be more than one difficulty (start this back in MissionManager)
-			player->sendMessage(new NpcConversationMessage(playerCreature, "mission/mission_deliver_neutral_easy", response.toString()));
+			StringIdChatParameter params("missing/mission_deliver_neutral_easy", response.toString());
+			player->sendMessage(new NpcConversationMessage(playerCreature, params));
 			player->sendMessage(new StopNpcConversation(player, converser->getObjectID()));
 		}
 	}

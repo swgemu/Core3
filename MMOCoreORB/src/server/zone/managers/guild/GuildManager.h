@@ -105,7 +105,7 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/scene/variables/DeltaSet.h"
 
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 #include "engine/core/ManagedService.h"
 
@@ -198,7 +198,7 @@ public:
 
 	ChatRoom* createGuildChannels(GuildObject* guild);
 
-	void sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild);
+	void sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -330,7 +330,7 @@ public:
 
 	ChatRoom* createGuildChannels(GuildObject* guild);
 
-	void sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild);
+	void sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild);
 
 	GuildManager* _this;
 

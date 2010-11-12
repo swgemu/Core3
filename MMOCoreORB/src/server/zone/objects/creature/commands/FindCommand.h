@@ -54,7 +54,7 @@
 #include "server/zone/managers/planet/MapLocationType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
 class ArgsMap: public HashTable<String, uint8> {
@@ -125,7 +125,7 @@ public:
 
 		Zone* zone = player->getZone();
 		String planet = Planet::getPlanetName(zone->getZoneID());
-		ParameterizedStringId msg;
+		StringIdChatParameter msg;
 
 		ManagedReference<WaypointObject*> wpt =
 				(WaypointObject*) player->getZoneServer()->createObject(0xc456e788, 1);
@@ -265,7 +265,7 @@ public:
 				findPlanetaryObject(player, mapLocType);
 
 			} else {
-				ParameterizedStringId msg;
+				StringIdChatParameter msg;
 				msg.setStringId("@base_player:prose_find_unknown_arg"); // /Find was unable to parse a category for '%TO'.
 				msg.setTO(location);
 

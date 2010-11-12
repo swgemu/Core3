@@ -14,7 +14,7 @@
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
@@ -67,7 +67,7 @@ void HuntingMissionObjectiveImplementation::complete() {
 
 	int missionReward = mission->getRewardCredits();
 
-	ParameterizedStringId stringId("mission/mission_generic", "success_w_amount");
+	StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
 	stringId.setDI(missionReward);
 	player->sendSystemMessage(stringId);
 
@@ -96,7 +96,7 @@ int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 				return 1;
 			}
 
-			ParameterizedStringId message("mission/mission_generic", "hunting_kills_remaining");
+			StringIdChatParameter message("mission/mission_generic", "hunting_kills_remaining");
 			message.setDI(targetsKilled);
 			message.setTO(mission->getTargetName());
 

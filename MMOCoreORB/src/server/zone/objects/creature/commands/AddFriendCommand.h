@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 class AddFriendCommand : public QueueCommand {
@@ -74,7 +74,7 @@ public:
 		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
 
 		if (ghost->isIgnoring(nameLower)) {
-			ParameterizedStringId param("cmnty", "friend_fail_is_ignored");
+			StringIdChatParameter param("cmnty", "friend_fail_is_ignored");
 			param.setTT(nameLower);
 			creature->sendSystemMessage(param);
 
@@ -82,7 +82,7 @@ public:
 		}
 
 		if (ghost->hasFriend(nameLower)) {
-			ParameterizedStringId param("cmnty", "friend_duplicate");
+			StringIdChatParameter param("cmnty", "friend_duplicate");
 			param.setTT(nameLower);
 			creature->sendSystemMessage(param);
 
@@ -94,7 +94,7 @@ public:
 		bool validName = playerManager->existsName(nameLower);
 
 		if (!validName) {
-			ParameterizedStringId param("cmnty", "friend_not_found");
+			StringIdChatParameter param("cmnty", "friend_not_found");
 			param.setTT(nameLower);
 			creature->sendSystemMessage(param);
 

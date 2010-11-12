@@ -47,12 +47,14 @@ which carries forward this exception.
 
 #include "ObjectControllerMessage.h"
 #include "../../objects/creature/CreatureObject.h"
-#include "../../objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
+
+//TODO: This needs more research!
 
 class NpcConversationMessage : public ObjectControllerMessage {
 public:
 
-	NpcConversationMessage(CreatureObject* creo, UnicodeString& message)
+	NpcConversationMessage(CreatureObject* creo, const UnicodeString& message)
 		: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
 
 		insertUnicode(message);
@@ -62,64 +64,16 @@ public:
 		: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
 
 		//insertUnicode(UnicodeString("@" + file + ":" + stringid));
-		ParameterizedStringId params(file, stringid);
+		StringIdChatParameter params(file, stringid);
 		params.addToPacketStream(this);
 
 		insertInt(0);
 	}*/
-	NpcConversationMessage(CreatureObject* creo, const String& file, const String& str, uint64 TO = 0, uint64 TU = 0, uint64 TT = 0, int DI = 0, float DF = 0) :
-		ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
 
-		int size = 0x56 + file.length() + str.length();
-		bool odd = (size & 1);
-
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii(file.toCharArray());
-		insertInt(0);
-		insertAscii(str.toCharArray());
-
-		insertLong(TU); // %TU
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertLong(TT); //%TT
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertLong(TO); //%TO
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertInt(DI); //%DI
-		insertFloat(DF); //%DF
-		insertByte(0);
-		insertShort(0);
-
-		if (odd)
-			insertByte(0);
-
-		insertInt(0);
-	}
-
-	NpcConversationMessage(CreatureObject* creo, ParameterizedStringId& stringid)
+	NpcConversationMessage(CreatureObject* creo, StringIdChatParameter& stringid)
 		: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
 
-		stringid.addToPacketStream(this);
+		stringid.insertToMessage(this);
 
 		insertInt(0);
 	}

@@ -23,7 +23,7 @@
 #include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "PersistentMessage.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
@@ -621,7 +621,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 
 	PlayerCreature* player = (PlayerCreature*) receiver.get();
 
-	/*ParameterizedStringId test("base_player", "sale_fee");
+	/*StringIdChatParameter test("base_player", "sale_fee");
 	test.setDI(100);
 	test.setUnknownByte(1);*/
 
@@ -639,64 +639,46 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 
 	player->addPersistentMessage(mail->getObjectID());
 
-	if (player->isOnline()) {
-		BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mail->getMailID(), 0x01, header, body, currentTime, 'N');
-		player->sendMessage(mmsg);
-	}
+	if (player->isOnline())
+		mail->sendTo(player, true);
 
 	player->updateToDatabase();
 }
 
-void ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& header, ParameterizedStringId& body, const String& name) {
-	uint64 receiverObjectID = playerManager->getObjectID(name);
+int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName) {
+	uint64 receiverObjectID = playerManager->getObjectID(recipientName);
 
-	Time expireTime;
-	uint64 currentTime = expireTime.getMiliTime() / 1000;
+	ManagedReference<SceneObject*> obj = server->getObject(receiverObjectID);
 
-	if (receiverObjectID == 0) {
-		error("unexistent name for persistent message");
-		return;
-	}
+	if (obj == NULL || !obj->isPlayerCreature())
+		return IM_OFFLINE;
 
-	ManagedReference<SceneObject*> receiver = server->getObject(receiverObjectID);
+	if (body.getCustomString().length() > PM_MAXSIZE)
+		return IM_TOOLONG;
 
-	if (receiver == NULL) {
-		error("NULL receiver in send mail");
+	PlayerCreature* receiver = (PlayerCreature*) obj.get();
 
-		return;
-	}
-
-	if (!receiver->isPlayerCreature()) {
-		error("not player in send mail");
-
-		return;
-	}
-
-	PlayerCreature* player = (PlayerCreature*) receiver.get();
-
-	/*ParameterizedStringId test("base_player", "sale_fee");
-		test.setDI(100);
-		test.setUnknownByte(1);*/
+	if (receiver->getPlayerObject()->isIgnoring(sendername))
+		return IM_IGNORED;
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
 	mail->setSenderName(sendername);
-	mail->setSubject(header);
-	mail->setParameterizedBody(body);
+	mail->setSubject(subject);
+	mail->addChatParameter(body);
 	mail->setReceiverObjectID(receiverObjectID);
-	mail->setTimeStamp(currentTime);
 
 	ObjectManager::instance()->persistObject(mail, 1, "mail");
 
-	Locker _locker(player);
+	Locker _locker(receiver);
 
-	player->addPersistentMessage(mail->getObjectID());
+	receiver->addPersistentMessage(mail->getObjectID());
 
-	if (player->isOnline()) {
-		BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mail->getMailID(), 0x01, header, body, currentTime, 'N');
-		player->sendMessage(mmsg);
-	}
+	if (receiver->isOnline())
+		mail->sendTo(receiver, false);
 
-	player->updateToDatabase();
+	receiver->updateToDatabase();
+
+	return IM_SUCCESS;
 }
 
 void ChatManagerImplementation::loadMail(PlayerCreature* player) {
@@ -714,8 +696,7 @@ void ChatManagerImplementation::loadMail(PlayerCreature* player) {
 			continue;
 		}
 
-		BaseMessage* mmsg = new ChatPersistentMessageToClient(mail->getSenderName().toString(), mail->getMailID(), (byte) 0x01, mail->getSubject(), mail->getBody(), mail->getTimeStamp(), (char) mail->getStatus());
-		player->sendMessage(mmsg);
+		mail->sendTo(player, false);
 	}
 }
 
@@ -748,19 +729,7 @@ void ChatManagerImplementation::handleRequestPersistentMsg(PlayerCreature* playe
 	_locker.release();
 
 	mail->setStatus('R');
-	mail->updateToDatabase();
-
-	UnicodeString mailBody = mail->getBody();
-
-	if (mailBody.length() > 0) {
-		BaseMessage* mmsg = new ChatPersistentMessageToClient(mail->getSenderName().toString(), mail->getMailID(), (byte) 0x00, mail->getSubject(), mail->getBody(), mail->getTimeStamp(), (char) mail->getStatus());
-		player->sendMessage(mmsg);
-	} else {
-		ParameterizedStringId* body = mail->getParameterizedBody();
-
-		BaseMessage* mmsg = new ChatPersistentMessageToClient(mail->getSenderName().toString(), mail->getMailID(), (byte) 0x00, mail->getSubject(), *body, mail->getTimeStamp(), (char) mail->getStatus());
-		player->sendMessage(mmsg);
-	}
+	mail->sendTo(player, true);
 }
 
 void ChatManagerImplementation::deletePersistentMessage(PlayerCreature* player, uint32 mailID) {

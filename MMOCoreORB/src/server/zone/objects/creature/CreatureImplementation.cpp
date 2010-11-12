@@ -141,7 +141,7 @@ void CreatureImplementation::harvest(PlayerCreature* player, byte selectedID) {
 	resourceManager->harvestResourceToPlayer(player, resourceSpawn, baseAmount);
 
 	/// Send System Messages
-	ParameterizedStringId harvestMessage("skl_use", creatureHealth);
+	StringIdChatParameter harvestMessage("skl_use", creatureHealth);
 
 	harvestMessage.setDI(quantityExtracted);
 	harvestMessage.setTU(resourceSpawn->getFinalClass());
@@ -159,7 +159,7 @@ void CreatureImplementation::harvest(PlayerCreature* player, byte selectedID) {
 
 	/// Send group spam
 	if(player->isGrouped()) {
-		ParameterizedStringId bonusMessage("group", "notify_harvest_corpse");
+		StringIdChatParameter bonusMessage("group", "notify_harvest_corpse");
 
 		bonusMessage.setTU(player->getFirstName());
 		bonusMessage.setDI(quantityExtracted);

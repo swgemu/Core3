@@ -157,24 +157,24 @@ public:
 
 		int dotDMG = 0;
 		if (dotPack->isPoisonDeliveryUnit()) {
-			ParameterizedStringId stringId("healing", "apply_poison_self");
+			StringIdChatParameter stringId("healing", "apply_poison_self");
 			stringId.setTT(creatureTarget->getObjectID());
 
 			creature->sendSystemMessage(stringId);
 
-			ParameterizedStringId stringId2("healing", "apply_poison_other");
+			StringIdChatParameter stringId2("healing", "apply_poison_other");
 			stringId2.setTU(creature->getObjectID());
 
 			creatureTarget->sendSystemMessage(stringId2);
 
 			dotDMG = creatureTarget->addDotState(CreatureState::POISONED, dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison"));
 		} else {
-			ParameterizedStringId stringId("healing", "apply_disease_self");
+			StringIdChatParameter stringId("healing", "apply_disease_self");
 			stringId.setTT(creatureTarget->getObjectID());
 
 			creature->sendSystemMessage(stringId);
 
-			ParameterizedStringId stringId2("healing", "apply_disease_other");
+			StringIdChatParameter stringId2("healing", "apply_disease_other");
 			stringId2.setTU(creature->getObjectID());
 
 			creatureTarget->sendSystemMessage(stringId2);
@@ -188,7 +188,7 @@ public:
 			creatureTarget->addDefender(creature);
 			creature->addDefender(creatureTarget);
 		} else {
-			ParameterizedStringId stringId("dot_message", "dot_resisted");
+			StringIdChatParameter stringId("dot_message", "dot_resisted");
 			stringId.setTT(creatureTarget->getObjectID());
 
 			creature->sendSystemMessage(stringId);
@@ -283,24 +283,24 @@ public:
 
 		int dotDMG = 0;
 		if (dotPack->isPoisonDeliveryUnit()) {
-			ParameterizedStringId stringId("healing", "apply_poison_self");
+			StringIdChatParameter stringId("healing", "apply_poison_self");
 			stringId.setTT(creatureTarget->getObjectID());
 
 			creature->sendSystemMessage(stringId);
 
-			ParameterizedStringId stringId2("healing", "apply_poison_other");
+			StringIdChatParameter stringId2("healing", "apply_poison_other");
 			stringId2.setTU(creature->getObjectID());
 
 			creatureTarget->sendSystemMessage(stringId2);
 
 			dotDMG = creatureTarget->addDotState(CreatureState::POISONED, dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison"));
 		} else {
-			ParameterizedStringId stringId("healing", "apply_disease_self");
+			StringIdChatParameter stringId("healing", "apply_disease_self");
 			stringId.setTT(creatureTarget->getObjectID());
 
 			creature->sendSystemMessage(stringId);
 
-			ParameterizedStringId stringId2("healing", "apply_disease_other");
+			StringIdChatParameter stringId2("healing", "apply_disease_other");
 			stringId2.setTU(creature->getObjectID());
 
 			creatureTarget->sendSystemMessage(stringId2);
@@ -311,7 +311,7 @@ public:
 		if (dotDMG) {
 			awardXp(creature, "medical", dotDMG); //No experience for healing yourself.
 		} else {
-			ParameterizedStringId stringId("dot_message", "dot_resisted");
+			StringIdChatParameter stringId("dot_message", "dot_resisted");
 			stringId.setTT(creatureTarget->getObjectID());
 
 			creature->sendSystemMessage(stringId);

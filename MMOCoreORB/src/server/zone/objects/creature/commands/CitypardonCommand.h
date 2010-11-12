@@ -103,7 +103,7 @@ public:
 
 		targetPlayer->sendSystemMessage("@city/city:city_pardoned"); //You have been pardoned and are once again able to use city services.
 
-		ParameterizedStringId params;
+		StringIdChatParameter params;
 		params.setStringId("@city/city:city_pardon_done");
 		params.setTT(targetPlayer);
 		player->sendSystemMessage(params); //%TT has been pardoned and is now able to use city services.

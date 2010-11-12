@@ -84,7 +84,7 @@ void BountyMissionObjectiveImplementation::complete() {
 
 	int missionReward = mission->getRewardCredits();
 
-	ParameterizedStringId stringId("mission/mission_generic", "success_w_amount");
+	StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
 	stringId.setDI(missionReward);
 	player->sendSystemMessage(stringId);
 
@@ -134,13 +134,15 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		player->sendMessage(new StartNpcConversation(player, informant->getObjectID(), ""));
 
 		if (level < mission->getDifficultyLevel() - 1) {
-			player->sendMessage(new NpcConversationMessage(player, "mission/mission_bounty_informant", "informant_find_harder"));
+			StringIdChatParameter params("mission/mission_bounty_informant", "informant_find_harder");
+			player->sendMessage(new NpcConversationMessage(player, params));
 			player->sendMessage(new StopNpcConversation(player, informant->getObjectID()));
 			return 0;
 		}
 
 		if (level > mission->getDifficultyLevel() - 1) {
-			player->sendMessage(new NpcConversationMessage(player, "mission/mission_bounty_informant", "informant_find_easier"));
+			StringIdChatParameter params("mission/mission_bounty_informant", "informant_find_easier");
+			player->sendMessage(new NpcConversationMessage(player, params));
 			player->sendMessage(new StopNpcConversation(player, informant->getObjectID()));
 			return 0;
 		}
@@ -164,7 +166,8 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 
 			player->sendSystemMessage("mission/mission_bounty_informant", "target_location_received");
 
-			player->sendMessage(new NpcConversationMessage(player, "mission/mission_bounty_informant", "target_easy_" + String::valueOf(System::random(4) + 1)));
+			StringIdChatParameter params("mission/mission_bounty_informant", "target_easy_" + String::valueOf(System::random(4) + 1));
+			player->sendMessage(new NpcConversationMessage(player, params));
 			player->sendMessage(new StopNpcConversation(player, informant->getObjectID()));
 		}
 		// higher level, give biosignature

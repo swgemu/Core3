@@ -58,7 +58,7 @@ import server.zone.packets.chat.ChatRoomList;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
 import engine.log.Logger;
 import server.zone.managers.objectcontroller.ObjectController;
-include server.zone.objects.scene.variables.ParameterizedStringId;
+include server.chat.StringIdChatParameter;
 
 
 class ChatManager extends ManagedService implements Logger {
@@ -87,6 +87,14 @@ class ChatManager extends ManagedService implements Logger {
 	unsigned int roomID;
 
 	boolean mute;
+	
+	public static final int IM_SUCCESS = 0x00;
+	public static final int IM_OFFLINE = 0x04;
+	public static final int IM_IGNORED = 0x09;
+	public static final int IM_TOOLONG = 0x16;
+	
+	public static final int IM_MAXSIZE = 255;
+	public static final int PM_MAXSIZE = 4000;
 	
 	public native ChatManager(ZoneServer serv, int initsize);
 	
@@ -139,7 +147,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native void sendMail(final string sendername, final unicode header, final unicode body, final string name);
 	
 	@local
-	public native void sendMail(final string sendername, final unicode header, @dereferenced ParameterizedStringId body, final string name);
+	public native int sendMail(final string sendername, final unicode subject, @dereferenced StringIdChatParameter body, final string recipientName);
 	public native void handleRequestPersistentMsg(PlayerCreature player, unsigned int mailID);
 	public native void deletePersistentMessage(PlayerCreature player, unsigned int mailID);
 	

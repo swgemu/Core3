@@ -81,7 +81,7 @@ public:
 			if (sampletask != NULL) {
 				int seconds = (int) ((sampletask->getNextExecutionTime().getMiliTime() - Time().getMiliTime()) / 1000.0f);
 
-				ParameterizedStringId message("survey","tool_recharge_time");
+				StringIdChatParameter message("survey","tool_recharge_time");
 				message.setDI(seconds);
 				ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
 				creature->sendMessage(sysMessage);
@@ -91,8 +91,7 @@ public:
 
 			// If the survey task exists, we can't sample
 			if (surveytask != NULL) {
-				ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_survey");
-				creature->sendMessage(sysMessage);
+				creature->sendSystemMessage("@survey:sample_survey");
 
 				return SUCCESS;
 			}

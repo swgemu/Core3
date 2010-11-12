@@ -59,7 +59,7 @@ using namespace server::zone::objects::creature::buffs;
 
 #include "server/zone/objects/creature/buffs/BuffType.h"
 
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 #include "engine/core/ManagedObject.h"
 

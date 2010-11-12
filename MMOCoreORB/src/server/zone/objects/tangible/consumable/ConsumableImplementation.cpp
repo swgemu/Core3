@@ -135,7 +135,7 @@ int ConsumableImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 			return 0;
 		}
 
-		ParameterizedStringId stringId("combat_effects", "food_mind_heal");
+		StringIdChatParameter stringId("combat_effects", "food_mind_heal");
 		stringId.setDI(dmghealed);
 
 		player->sendSystemMessage(stringId);
@@ -194,7 +194,7 @@ int ConsumableImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 	if (isDrink())
 		ghost->setDrinkFilling(ghost->getDrinkFilling() + filling, true);
 
-	ParameterizedStringId stringId("base_player", "prose_consume_item");
+	StringIdChatParameter stringId("base_player", "prose_consume_item");
 	stringId.setTT(getObjectID());
 	player->sendSystemMessage(stringId);//player->sendSystemMessage("base_player", "prose_consume_item", objectID);;
 
