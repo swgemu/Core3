@@ -72,10 +72,16 @@ public:
 
 	NpcConversationMessage(CreatureObject* creo, StringIdChatParameter& stringid)
 		: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
+		int offset = getOffset();
+		insertInt(0); //size
+
+		insertShort(0); //unknown
 
 		stringid.insertToMessage(this);
 
-		insertInt(0);
+		int size = (getOffset() - offset - 4) / 2;
+
+		insertInt(offset, size);
 	}
 };
 
