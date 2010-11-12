@@ -48,6 +48,7 @@ import engine.core.ManagedObject;
 import system.lang.System;
 import system.util.Vector;
 include server.chat.ChatParameter;
+include server.chat.ChatParameterVector;
 import server.zone.objects.player.PlayerCreature;
 
 class PersistentMessage extends ManagedObject {
@@ -60,7 +61,7 @@ class PersistentMessage extends ManagedObject {
 	protected unsigned long receiverObjectID;
 	
 	@dereferenced
-	protected Vector<ChatParameter> parameters;
+	protected ChatParameterVector parameters;
 	
 	public static final byte NEW = 0x4E;
 	public static final byte READ = 0x52;
@@ -76,7 +77,7 @@ class PersistentMessage extends ManagedObject {
 	public abstract native void sendTo(PlayerCreature player, boolean sendBody = true);
 	
 	@local
-	public Vector<ChatParameter> getChatParameters() {
+	public ChatParameterVector getChatParameters() {
 		return parameters;
 	}
 	
@@ -145,8 +146,5 @@ class PersistentMessage extends ManagedObject {
 	}
 	
 	@local
-	public void addChatParameter(@dereferenced ChatParameter param) {
-		parameters.add(param);
-	}
-	
+	public native void addChatParameter(@dereferenced StringIdChatParameter param);
 }

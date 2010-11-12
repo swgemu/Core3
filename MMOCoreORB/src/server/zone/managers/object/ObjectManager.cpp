@@ -316,6 +316,12 @@ void ObjectManager::loadLastUsedObjectID() {
 	for (int i = 0; i < databaseManager->getDatabaseCount(); ++i) {
 		ObjectDatabase* db = databaseManager->getDatabase(i);
 
+		String dbName;
+		db->getDatabaseName(dbName);
+
+		if (dbName == "strings")
+			continue;
+
 		ObjectDatabaseIterator iterator(db);
 
 		while (iterator.getNextKey(objectID)) {
@@ -955,13 +961,15 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 		return;
 	}
 
-	ObjectDatabaseManager::instance()->commitLocalTransaction();
-
 	Vector<Locker*>* lockers = Core::getTaskManager()->blockTaskManager();
 
 	Locker _locker(this);
 
 	objectUpdateInProcess = true;
+
+	databaseManager->updateLastUsedObjectID(nextObjectID);
+
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 	engine::db::berkley::Transaction* transaction = ObjectDatabaseManager::instance()->startTransaction();
 
