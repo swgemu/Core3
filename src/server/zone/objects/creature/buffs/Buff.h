@@ -59,7 +59,7 @@ using namespace server::zone::objects::creature::buffs;
 
 #include "server/zone/objects/creature/buffs/BuffType.h"
 
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -145,9 +145,9 @@ public:
 
 	bool isSpiceBuff();
 
-	void setStartMessage(ParameterizedStringId& start);
+	void setStartMessage(StringIdChatParameter& start);
 
-	void setEndMessage(ParameterizedStringId& start);
+	void setEndMessage(StringIdChatParameter& start);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -203,9 +203,9 @@ protected:
 
 	bool fillAttirbutesOnBuff;
 
-	ParameterizedStringId startMessage;
+	StringIdChatParameter startMessage;
 
-	ParameterizedStringId endMessage;
+	StringIdChatParameter endMessage;
 
 	Time nextExecutionTime;
 
@@ -280,9 +280,9 @@ public:
 
 	bool isSpiceBuff();
 
-	void setStartMessage(ParameterizedStringId& start);
+	void setStartMessage(StringIdChatParameter& start);
 
-	void setEndMessage(ParameterizedStringId& start);
+	void setEndMessage(StringIdChatParameter& start);
 
 	Buff* _this;
 

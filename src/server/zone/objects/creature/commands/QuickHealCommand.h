@@ -201,7 +201,7 @@ public:
 			if (creatureTarget == creature)
 				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
 			else {
-				ParameterizedStringId stringId("healing_response", "healing_response_63");
+				StringIdChatParameter stringId("healing_response", "healing_response_63");
 				stringId.setTT(creatureTarget->getObjectID());
 				//creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
 			}

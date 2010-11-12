@@ -12,20 +12,14 @@
 #include "engine/core/ManagedWeakReference.h"
 
 namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace variables {
+namespace chat {
 
-class ParameterizedStringId;
+class StringIdChatParameter;
 
-} // namespace variables
-} // namespace scene
-} // namespace objects
-} // namespace zone
+} // namespace chat
 } // namespace server
 
-using namespace server::zone::objects::scene::variables;
+using namespace server::chat;
 
 namespace server {
 namespace zone {
@@ -294,7 +288,7 @@ public:
 
 	void sendSystemMessage(const String& file, const String& stringid);
 
-	void sendSystemMessage(ParameterizedStringId& stringid);
+	void sendSystemMessage(StringIdChatParameter& stringid);
 
 	void sendSlottedObjectsTo(SceneObject* player);
 
@@ -928,7 +922,7 @@ public:
 
 	void sendSystemMessage(const String& file, const String& stringid);
 
-	void sendSystemMessage(ParameterizedStringId& stringid);
+	void sendSystemMessage(StringIdChatParameter& stringid);
 
 	void sendSlottedObjectsTo(SceneObject* player);
 

@@ -42,7 +42,7 @@ public:
 		}
 
 		if (cancelPressed) {
-			ParameterizedStringId params;
+			StringIdChatParameter params;
 			params.setStringId("@guild:sponsor_decline"); //%TU has declined your sponsorship.
 			params.setTU(player->getObjectID());
 			sponsor->sendSystemMessage(params);

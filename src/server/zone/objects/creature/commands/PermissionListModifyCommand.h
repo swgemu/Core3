@@ -106,7 +106,7 @@ public:
 		tokenizer.getStringToken(action);
 
 		if (!playerManager->existsName(targetPlayerName)) {
-			ParameterizedStringId params;
+			StringIdChatParameter params;
 			params.setStringId("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
 			params.setTO(targetPlayerName);
 			player->sendSystemMessage(params);
@@ -120,14 +120,14 @@ public:
 
 		if (action == "add") {
 			if (structureObject->addPermission(player, targetPlayerName, listName)) {
-				ParameterizedStringId params;
+				StringIdChatParameter params;
 				params.setStringId("@player_structure:player_added"); //%NO added to the list.
 				params.setTO(targetPlayerName);
 				player->sendSystemMessage(params);
 			}
 		} else if (action == "remove") {
 			if (structureObject->removePermission(player, targetPlayerName, listName)) {
-				ParameterizedStringId params;
+				StringIdChatParameter params;
 				params.setStringId("@player_structure:player_removed"); //%NO removed from the list.
 				params.setTO(targetPlayerName);
 				player->sendSystemMessage(params);

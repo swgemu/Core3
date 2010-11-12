@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/templates/tangible/GamblingTerminalTemplate.h"
 #include "server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.h"
 //#include "server/zone/objects/player/sui/slotmachinebox/SuiSabaccStartBox.h"
@@ -86,14 +86,14 @@ bool GamblingTerminalImplementation::checkJoin(PlayerCreature* player) {
 
 				returnValue = false;
 
-				ParameterizedStringId textPlayer("gambling/default_interface","prose_station_full");
+				StringIdChatParameter textPlayer("gambling/default_interface","prose_station_full");
 				textPlayer.setTT(getMachineTypeText());
 				player->sendSystemMessage(textPlayer);
 
 			} else if (!player->isInRange(_this, 20.0)) {
 				returnValue = false;
 
-				ParameterizedStringId textPlayer("ui","radial_out_of_range_prose");
+				StringIdChatParameter textPlayer("ui","radial_out_of_range_prose");
 				textPlayer.setTT(getMachineTypeText());
 				textPlayer.setTO("@gambling/default_interface:mnu_join");
 				player->sendSystemMessage(textPlayer);
@@ -113,14 +113,14 @@ bool GamblingTerminalImplementation::checkJoin(PlayerCreature* player) {
 
 				returnValue = false;
 
-				ParameterizedStringId textPlayer("gambling/default_interface","prose_station_full");
+				StringIdChatParameter textPlayer("gambling/default_interface","prose_station_full");
 				textPlayer.setTT(getMachineTypeText());
 				player->sendSystemMessage(textPlayer);
 
 			} else if (!player->isInRange(_this, 20.0)) {
 				returnValue = false;
 
-				ParameterizedStringId textPlayer("ui","radial_out_of_range_prose");
+				StringIdChatParameter textPlayer("ui","radial_out_of_range_prose");
 				textPlayer.setTT(getMachineTypeText());
 				textPlayer.setTO("@gambling/default_interface:mnu_join");
 				player->sendSystemMessage(textPlayer);
@@ -137,14 +137,14 @@ bool GamblingTerminalImplementation::checkJoin(PlayerCreature* player) {
 
 				returnValue = false;
 
-				ParameterizedStringId textPlayer("gambling/default_interface","prose_station_full");
+				StringIdChatParameter textPlayer("gambling/default_interface","prose_station_full");
 				textPlayer.setTT(getMachineTypeText());
 				player->sendSystemMessage(textPlayer);
 
 			} else if (!player->isInRange(_this, 20.0)) {
 				returnValue = false;
 
-				ParameterizedStringId textPlayer("ui","radial_out_of_range_prose");
+				StringIdChatParameter textPlayer("ui","radial_out_of_range_prose");
 				textPlayer.setTT(getMachineTypeText());
 				textPlayer.setTO("@gambling/default_interface:mnu_join");
 				player->sendSystemMessage(textPlayer);
@@ -221,7 +221,7 @@ void GamblingTerminalImplementation::joinTerminal(PlayerCreature* player) {
 					player->addSuiBox(xbox);
 					player->sendMessage(xbox->generateMessage());
 				} else {
-					ParameterizedStringId textOthers("gambling/default_interface","prose_player_join_other");
+					StringIdChatParameter textOthers("gambling/default_interface","prose_player_join_other");
 					textOthers.setTT(player->getFirstName());
 					notifyOthers(player, &textOthers);
 				}
@@ -341,7 +341,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 
 					if (player != NULL) {
 
-						ParameterizedStringId textPlayer("gambling/default_interface","prose_player_join");
+						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_join");
 						textPlayer.setTO(getMachineTypeText());
 						player->sendSystemMessage(textPlayer);
 					}
@@ -351,7 +351,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case LEAVETERMINAL: {
 
 					if (player != NULL) {
-						ParameterizedStringId textPlayer("gambling/default_interface","prose_player_leave");
+						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_leave");
 						textPlayer.setTO(getMachineTypeText());
 						player->sendSystemMessage(textPlayer);
 					}
@@ -409,12 +409,12 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case JOINTERMINAL: {
 
 					if (player != NULL) {
-						ParameterizedStringId textPlayer("gambling/default_interface","prose_player_join");
+						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_join");
 						textPlayer.setTO(getMachineTypeText());
 						player->sendSystemMessage(textPlayer);
 					}
 
-					ParameterizedStringId textOthers("gambling/default_interface","prose_player_join_other");
+					StringIdChatParameter textOthers("gambling/default_interface","prose_player_join_other");
 					textOthers.setTT(player->getFirstName());
 					notifyOthers(player, &textOthers);
 
@@ -423,12 +423,12 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case LEAVETERMINAL: {
 
 					if (player != NULL) {
-						ParameterizedStringId textPlayer("gambling/default_interface","prose_player_leave");
+						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_leave");
 						textPlayer.setTO(getMachineTypeText());
 						player->sendSystemMessage(textPlayer);
 					}
 
-					ParameterizedStringId textOthers("gambling/default_interface","prose_player_leave_other");
+					StringIdChatParameter textOthers("gambling/default_interface","prose_player_leave_other");
 					textOthers.setTT(player->getFirstName());
 					notifyOthers(player, &textOthers);
 
@@ -437,7 +437,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case GAMESTARTING: {
 					//120 seconds left
 
-					ParameterizedStringId body("gambling/default_interface","prose_starting_in");
+					StringIdChatParameter body("gambling/default_interface","prose_starting_in");
 					body.setDI(120);
 
 					notifyAll(&body);
@@ -447,7 +447,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case NINETY: {
 					//90 seconds left
 
-					ParameterizedStringId body("gambling/default_interface","prose_starting_in");
+					StringIdChatParameter body("gambling/default_interface","prose_starting_in");
 					body.setDI(90);
 
 					notifyAll(&body);
@@ -457,7 +457,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case SIXTY: {
 					// 60 seconds left
 
-					ParameterizedStringId body("gambling/default_interface","prose_starting_in");
+					StringIdChatParameter body("gambling/default_interface","prose_starting_in");
 					body.setDI(60);
 
 					notifyAll(&body);
@@ -467,7 +467,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case THIRTY: {
 					// 30 seconds left
 
-					ParameterizedStringId body("gambling/default_interface","prose_starting_in");
+					StringIdChatParameter body("gambling/default_interface","prose_starting_in");
 					body.setDI(30);
 
 					notifyAll(&body);
@@ -477,7 +477,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case TWENTY: {
 					// 20 seconds left
 
-					ParameterizedStringId body("gambling/default_interface","prose_starting_in");
+					StringIdChatParameter body("gambling/default_interface","prose_starting_in");
 					body.setDI(20);
 
 					notifyAll(&body);
@@ -487,7 +487,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case FIFTEEN: {
 					// 15 seconds left
 
-					ParameterizedStringId body("gambling/default_interface","prose_starting_in");
+					StringIdChatParameter body("gambling/default_interface","prose_starting_in");
 					body.setDI(15);
 
 					notifyAll(&body);
@@ -497,7 +497,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case TEN: {
 					// 10 seconds left
 
-					ParameterizedStringId body("gambling/default_interface","prose_starting_in");
+					StringIdChatParameter body("gambling/default_interface","prose_starting_in");
 					body.setDI(10);
 
 					notifyAll(&body);
@@ -507,7 +507,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case FIVE: {
 					// 5 seconds left
 
-					ParameterizedStringId body("gambling/default_interface","prose_starting_in");
+					StringIdChatParameter body("gambling/default_interface","prose_starting_in");
 					body.setDI(5);
 
 					notifyAll(&body);
@@ -517,7 +517,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case WHEELSTART: {
 					// wheels begin to spin
 
-					ParameterizedStringId body("gambling/default_interface","wheel_spin");
+					StringIdChatParameter body("gambling/default_interface","wheel_spin");
 					notifyAll(&body);
 
 					break;
@@ -525,7 +525,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 				case WHEELBEGINSLOW: {
 					// wheel begins to slow down
 
-					ParameterizedStringId body("gambling/default_interface","wheel_begin_slow");
+					StringIdChatParameter body("gambling/default_interface","wheel_begin_slow");
 					notifyAll(&body);
 
 					break;
@@ -536,7 +536,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 
 					first = System::random(37);
 
-					ParameterizedStringId body("gambling/default_interface","prose_wheel_slow");
+					StringIdChatParameter body("gambling/default_interface","prose_wheel_slow");
 					body.setTT(String::valueOf(first));
 
 					String terminalName;
@@ -554,7 +554,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 
 					if (random == 0) {
 
-						ParameterizedStringId body("gambling/default_interface","prose_result_same");
+						StringIdChatParameter body("gambling/default_interface","prose_result_same");
 						body.setTT(String::valueOf(first));
 
 						String terminalName;
@@ -568,7 +568,7 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 
 						first = System::random(37);
 
-						ParameterizedStringId body("gambling/default_interface","prose_result_change");
+						StringIdChatParameter body("gambling/default_interface","prose_result_change");
 						body.setTT(String::valueOf(first));
 
 						String terminalName;
@@ -589,13 +589,13 @@ void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int ev
 	}
 }
 
-void GamblingTerminalImplementation::notifyAll(ParameterizedStringId* text) {
+void GamblingTerminalImplementation::notifyAll(StringIdChatParameter* text) {
 	for (int i = 0; i < playersWindows.size(); ++i) {
 		playersWindows.elementAt(i).getKey()->sendSystemMessage(*text);
 	}
 }
 
-void GamblingTerminalImplementation::notifyOthers(PlayerCreature* player, ParameterizedStringId* text) {
+void GamblingTerminalImplementation::notifyOthers(PlayerCreature* player, StringIdChatParameter* text) {
 	if (player != NULL) {
 		for (int i = 0; i < playersWindows.size(); ++i) {
 			if (playersWindows.elementAt(i).getKey() != player) {

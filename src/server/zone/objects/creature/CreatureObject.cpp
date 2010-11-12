@@ -4,7 +4,7 @@
 
 #include "CreatureObject.h"
 
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 #include "server/zone/objects/creature/professions/SkillBox.h"
 
@@ -158,7 +158,7 @@ void CreatureObject::sendSystemMessage(const String& file, const String& stringi
 		_implementation->sendSystemMessage(file, stringid);
 }
 
-void CreatureObject::sendSystemMessage(ParameterizedStringId& stringid) {
+void CreatureObject::sendSystemMessage(StringIdChatParameter& stringid) {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

@@ -52,20 +52,14 @@ class PlayerCreature;
 using namespace server::zone::objects::player;
 
 namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace variables {
+namespace chat {
 
-class ParameterizedStringId;
+class StringIdChatParameter;
 
-} // namespace variables
-} // namespace scene
-} // namespace objects
-} // namespace zone
+} // namespace chat
 } // namespace server
 
-using namespace server::zone::objects::scene::variables;
+using namespace server::chat;
 
 #include "engine/core/ManagedService.h"
 
@@ -104,9 +98,9 @@ public:
 
 	bool validateCityName(const String& name);
 
-	void sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, ParameterizedStringId& body);
+	void sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body);
 
-	void sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, ParameterizedStringId& body);
+	void sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body);
 
 	void handleCityAdvancement(CityHallObject* city);
 
@@ -198,9 +192,9 @@ public:
 
 	bool validateCityName(const String& name);
 
-	void sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, ParameterizedStringId& body);
+	void sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body);
 
-	void sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, ParameterizedStringId& body);
+	void sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body);
 
 	void handleCityAdvancement(CityHallObject* city);
 

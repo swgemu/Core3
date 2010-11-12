@@ -308,7 +308,7 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 
 	/// pre: player and _this are locked
 	if (!schematic->isManufactureSchematic()) {
-		ParameterizedStringId message("manf_station", "schematic_not_added"); //Schematic %TT was not added to the station.
+		StringIdChatParameter message("manf_station", "schematic_not_added"); //Schematic %TT was not added to the station.
 
 		if(schematic->getCustomObjectName().isEmpty())
 			message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
@@ -329,7 +329,7 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 	addObject(schematic, -1, true);
 	updateToDatabase();
 
-	ParameterizedStringId message("manf_station", "schematic_added"); //Schematic %TT has been inserted into the station. The station is now ready to manufacture items.
+	StringIdChatParameter message("manf_station", "schematic_added"); //Schematic %TT has been inserted into the station. The station is now ready to manufacture items.
 
 	if(schematic->getCustomObjectName().isEmpty())
 		message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
@@ -361,7 +361,7 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(PlayerCreature* playe
 
 	updateToDatabase();
 
-	ParameterizedStringId message("manf_station", "schematic_removed"); //Schematic %TT has been removed from the station and been placed in your datapad. Have a nice day!
+	StringIdChatParameter message("manf_station", "schematic_removed"); //Schematic %TT has been removed from the station and been placed in your datapad. Have a nice day!
 
 	if(schematic->getCustomObjectName().isEmpty())
 		message.setTT(schematic->getObjectNameStringIdFile(), getContainerObject(0)->getObjectNameStringIdName());
@@ -421,7 +421,7 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 	ManagedReference<ChatManager*> chatManager = server->getChatManager();
 
 	if (chatManager != NULL && currentUserName != "") {
-		ParameterizedStringId emailBody;
+		StringIdChatParameter emailBody;
 		emailBody.setStringId("@system_msg:" + message);
 		if(tt != "")
 			emailBody.setTT(tt);

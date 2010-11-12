@@ -49,7 +49,7 @@ import engine.log.Logger;
 import server.zone.Zone;
 import server.zone.objects.building.city.CityHallObject;
 import server.zone.objects.player.PlayerCreature;
-import server.zone.objects.scene.variables.ParameterizedStringId;
+import server.chat.StringIdChatParameter;
 import system.util.SortedVector;
 import system.util.VectorMap;
 
@@ -107,20 +107,20 @@ class CityManager extends ManagedService implements Logger {
 	 * @param city The CityHallObject belonging to the city to send the messages out to.
 	 * @param sendername The mail message's sender's name.
 	 * @param subject The subject line for the mail message.
-	 * @param body A ParameterizedStringId containing the contents of the mail message.
+	 * @param body A StringIdChatParameter containing the contents of the mail message.
 	 */
 	@local
-	public native void sendMailToMayor(CityHallObject city, final string sendername, final unicode subject, @dereferenced ParameterizedStringId body);
+	public native void sendMailToMayor(CityHallObject city, final string sendername, final unicode subject, @dereferenced StringIdChatParameter body);
 	
 	/**
 	 * Sends an email message to all citizens of the city.
 	 * @param city The CityHallObject belonging to the city to send the messages out to.
 	 * @param sendername The mail message's sender's name.
 	 * @param subject The subject line for the mail message.
-	 * @param body A ParameterizedStringId containing the contents of the mail message.
+	 * @param body A StringIdChatParameter containing the contents of the mail message.
 	 */
 	@local
-	public native void sendMailToAllCitizens(CityHallObject city, final string sendername, final unicode subject, @dereferenced ParameterizedStringId body);
+	public native void sendMailToAllCitizens(CityHallObject city, final string sendername, final unicode subject, @dereferenced StringIdChatParameter body);
 	
 	/**
 	 * Checks to see if the city is eligible for city advancement or not.

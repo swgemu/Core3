@@ -87,8 +87,7 @@ public:
 
 				if (sampleTask != NULL) {
 					if (!sampleTask->isCancelled()) {
-						ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "survey_sample");
-						creature->sendMessage(sysMessage);
+						creature->sendSystemMessage("@survey:survey_sample");
 
 						return SUCCESS;
 					}

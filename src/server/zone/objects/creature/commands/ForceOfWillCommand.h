@@ -56,7 +56,7 @@ class ForceOfWillCommand : public QueueCommand {
 	void doDowner(PlayerCreature* player, int buffDownerValue, float duration) {
 			String buffname = "skill.buff.forceofwill";
 			uint32 buffcrc = buffname.hashCode();
-			//ParameterizedStringId startMsg;
+			//StringIdChatParameter startMsg;
 
 			Reference<Buff*> buff = new Buff(player, buffname.hashCode(), duration, BuffType::SKILL);
 			buff->setAttributeModifier(CreatureAttribute::HEALTH, -buffDownerValue);

@@ -45,13 +45,35 @@ which carries forward this exception.
 #ifndef CHATPERSISTENTMESSAGETOCLIENT_H_
 #define CHATPERSISTENTMESSAGETOCLIENT_H_
 
-//Mail defaults status to N (new) and current time
-
 #include "engine/engine.h"
-
-#include "../../objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/ChatParameter.h"
+#include "server/chat/PersistentMessage.h"
+#include "server/chat/StringIdChatParameter.h"
 
 class ChatPersistentMessageToClient : public BaseMessage {
+	void insertParameters(PersistentMessage* mail) {
+		int offset = getOffset();
+		insertInt(0); //size
+
+		System::out << "insertParameters()" << endl;
+
+		Vector<ChatParameter*>* parameters = mail->getChatParameters();
+
+		for (int i = 0; i < parameters->size(); ++i) {
+			ChatParameter* parameter = parameters->get(i);
+
+			if (parameter == NULL)
+				continue;
+
+			System::out << "found one" << endl;
+
+			parameter->insertToMessage(this);
+		}
+
+		int size = (getOffset() - offset - 4) / 2;
+
+		insertInt(offset, size);
+	}
 public:
 	ChatPersistentMessageToClient(const String& sender, uint32 mailid, uint8 type, const UnicodeString& subject
 			, const UnicodeString& body, uint32 timestamp = 0, char status = 'N') : BaseMessage() {
@@ -72,7 +94,7 @@ public:
 		
 		insertUnicode(subject);
 		
-		insertInt(0); //sequence?
+		insertInt(0); //empty chat parameter size ACTUALLY!
 		
 		insertByte(status); // status 'N' 'U' or 'R'
 		
@@ -87,7 +109,7 @@ public:
 
 
 	ChatPersistentMessageToClient(const String& sender, uint32 mailid, uint8 type, const UnicodeString& subject
-			, ParameterizedStringId& body, uint32 timestamp = 0, char status = 'N') : BaseMessage() {
+			, StringIdChatParameter& body, uint32 timestamp = 0, char status = 'N') : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x08485E17);  // CRC
 
@@ -103,7 +125,7 @@ public:
 		insertUnicode(subject);
 
 		if (type == 0x00)
-			body.addToPacketStream(this);
+			body.insertToMessage(this);
 		else
 			insertInt(0);
 
@@ -118,6 +140,35 @@ public:
 		insertInt(0x00);
 	}
 
+	ChatPersistentMessageToClient(PersistentMessage* mail, bool sendBody) {
+		insertShort(0x02);
+		insertInt(0x08485E17); //ChatPersistentMessageToClient
+
+		insertAscii(mail->getSenderName());
+		insertAscii(""); //Game NOTE: SOE doesn't send this, why should we?
+		insertAscii(""); //Galaxy Name
+		insertInt(mail->getMailID());
+
+		insertByte((uint8) !sendBody);
+
+		if (sendBody)
+			insertUnicode(mail->getBody());
+		else
+			insertInt(0);
+
+		insertUnicode(mail->getSubject());
+
+		if (sendBody)
+			insertParameters(mail);
+		else
+			insertInt(0); //Send no parameters, since we aren't sending a body.
+
+		insertByte(mail->getStatus());
+		insertInt(mail->getTimeStamp());
+		//insertInt(0); //Pretty sure we don't need to append this.
+
+		System::out << toStringData() << endl;
+	}
 };
 
 #endif /*CHATPERSISTENTMESSAGETOCLIENT_H_*/

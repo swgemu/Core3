@@ -113,7 +113,7 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, PlayerCreatu
 	//New city established email.
 	UnicodeString subject = "@city/city:new_city_subject"; //New City Established!
 
-	ParameterizedStringId emailBody;
+	StringIdChatParameter emailBody;
 	emailBody.setStringId("@city/city:new_city_body"); //Congratulations, you have successfully established a new outpost on the frontier!...
 	emailBody.setTO(player->getObjectName());
 
@@ -155,7 +155,7 @@ bool CityManagerImplementation::validateCityName(const String& name) {
 	return true;
 }
 
-void CityManagerImplementation::sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, ParameterizedStringId& body) {
+void CityManagerImplementation::sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body) {
 	ZoneServer* zoneServer = zone->getZoneServer();
 
 	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
@@ -175,7 +175,7 @@ void CityManagerImplementation::sendMailToMayor(CityHallObject* city, const Stri
 	chatManager->sendMail(sendername, subject, body, mayor->getFirstName());
 }
 
-void CityManagerImplementation::sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, ParameterizedStringId& body) {
+void CityManagerImplementation::sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body) {
 	ZoneServer* zoneServer = zone->getZoneServer();
 
 	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
@@ -223,7 +223,7 @@ void CityManagerImplementation::contractCity(CityHallObject* city) {
 	if (cityRank == NEWCITY) {
 		UnicodeString subject = "@city/city:new_city_fail_subject"; //Zoning Permits Rejected!
 
-		ParameterizedStringId mail;
+		StringIdChatParameter mail;
 		mail.setStringId("@city/city:new_city_fail_body"); //We are sorry to inform you that your city failed to receive sufficient interest to remain solvent.  Your zoning applications have been rejected and your city hall has been removed.
 
 		sendMailToMayor(city, "@city/city:new_city_from", subject, mail);
@@ -249,7 +249,7 @@ void CityManagerImplementation::contractCity(CityHallObject* city) {
 
 	UnicodeString subject = "@city/city:city_contract_subject"; //City Contraction!
 
-	ParameterizedStringId mail;
+	StringIdChatParameter mail;
 	mail.setStringId("@city/city:city_contract_body"); //The city of %TO has expanded to rank %DI!  New abilities for your city have been unlocked.  Please check the city advancement report for details.
 	mail.setTO(city->getCityName());
 	mail.setDI(cityRank);
@@ -270,7 +270,7 @@ void CityManagerImplementation::expandCity(CityHallObject* city) {
 	if (checkCitiesCappedAtRank(cityRank)) {
 		UnicodeString subject = "@city/city:city_expand_cap_subject"; //City Expansion Capped!
 
-		ParameterizedStringId mail;
+		StringIdChatParameter mail;
 		mail.setStringId("@city/city:city_expand_cap_body"); //Unfortunately, we must deny your rank and land expansion request as there are too many large cities already on the planet.
 		mail.setTO(city->getCityName());
 		mail.setDI(cityRank);
@@ -293,14 +293,14 @@ void CityManagerImplementation::expandCity(CityHallObject* city) {
 	if (cityRank == OUTPOST) {
 		UnicodeString subject = "@city/city:new_city_success_subject"; //New City Approved!
 
-		ParameterizedStringId mail;
+		StringIdChatParameter mail;
 		mail.setStringId("@city/city:new_city_success_body"); //Congratulations!  The Planetary Civic Authority has approved your city's zoning permits!  Your city is valid and will begin to grow as citizens join it.
 
 		sendMailToMayor(city, "@city/city:new_city_from", subject, mail);
 	} else {
 		UnicodeString subject = "@city/city:city_expand_subject"; //City Expansion!
 
-		ParameterizedStringId mail;
+		StringIdChatParameter mail;
 		mail.setStringId("@city/city:city_expand_body"); //The city of %TO has expanded to rank %DI!  New abilities for your city have been unlocked.  Please check the city advancement report for details.
 		mail.setTO(city->getCityName());
 		mail.setDI(cityRank);
@@ -353,7 +353,7 @@ void CityManagerImplementation::declareCitizenship(CityHallObject* city, PlayerC
 	String mayorName = mayor->getObjectName()->getDisplayedName();
 
 	//Send email to the citizen declaring citizenship
-	ParameterizedStringId email;
+	StringIdChatParameter email;
 	UnicodeString subject = "@city/city:new_city_citizen_other_subject"; //Welcome, Citizen!
 	email.setStringId("@city/city:new_city_citizen_other_body"); //Welcome to %TU, citizen!
 	email.setTU(city->getCityName());
@@ -385,7 +385,7 @@ void CityManagerImplementation::revokeCitizenship(CityHallObject* city, PlayerCr
 		return;
 
 	//Send email to the mayor
-	ParameterizedStringId email;
+	StringIdChatParameter email;
 	UnicodeString subject = "@city/city:lost_city_citizen_subject"; //Lost Citizen!
 	email.setStringId("@city/city:lost_city_citizen_body"); //A citizen has left your city.
 	email.setTO(player->getObjectName()->getDisplayedName());

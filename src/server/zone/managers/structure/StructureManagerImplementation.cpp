@@ -21,7 +21,7 @@
 #include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -986,7 +986,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 	StringId errorStf;
 
 	if (planetManager->isNoBuildArea(x, y, errorStf)) {
-		ParameterizedStringId sendString("player_structure", "city_too_close"); //You cannot place here. It is too close to %TO.
+		StringIdChatParameter sendString("player_structure", "city_too_close"); //You cannot place here. It is too close to %TO.
 		sendString.setTO(errorStf.getFile(), errorStf.getStringID());
 		player->sendSystemMessage(sendString);
 
@@ -1009,7 +1009,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 			}
 
 			if (cityRank < reqRank) {
-				ParameterizedStringId params;
+				StringIdChatParameter params;
 				params.setStringId("@city/city:rank_req"); //The city must be at least rank %DI (%TO) in order for you to place this structure.
 				params.setDI(reqRank);
 				params.setTO("@city/city:rank" + String::valueOf(reqRank));
@@ -1028,7 +1028,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		lotsRequired = ssot->getLotSize();
 
 	if (lotsRemaining < lotsRequired) {
-		ParameterizedStringId stringId;
+		StringIdChatParameter stringId;
 		stringId.setStringId("@player_structure:not_enough_lots"); //This structure requires %DI lots.
 		stringId.setDI(lotsRequired);
 
@@ -1209,7 +1209,7 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 
 	if (chatManager != NULL) {
 		//TODO: Add waypoint to email.
-		ParameterizedStringId emailBody;
+		StringIdChatParameter emailBody;
 		emailBody.setStringId("@player_structure:construction_complete");
 		emailBody.setTO(structureObject->getObjectName());
 		emailBody.setDI(player->getLotsRemaining());

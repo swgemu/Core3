@@ -129,7 +129,7 @@ bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* p
 		return true;
 
 	if (object->isInRange(player, 1000.f)) {
-		ParameterizedStringId stringID("player_structure", "city_too_close");
+		StringIdChatParameter stringID("player_structure", "city_too_close");
 		StringId* name = object->getObjectName();
 		UnicodeString cityName = name->getCustomString();
 
@@ -254,7 +254,7 @@ void CityHallObjectImplementation::sendCityAdvancementTo(PlayerCreature* player)
 
 	String timeLeft = structureManager->getTimeString(-1 * nextCityUpdate.miliDifference() / 1000);
 
-	ParameterizedStringId params;
+	StringIdChatParameter params;
 	params.setStringId("@city/city:city_update_eta"); //Next City Update: %TO
 	params.setTO(timeLeft);
 	player->sendSystemMessage(params);

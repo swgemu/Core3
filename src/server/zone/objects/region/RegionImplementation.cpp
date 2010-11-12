@@ -18,7 +18,7 @@ void RegionImplementation::sendGreetingMessage(PlayerCreature* player) {
 	if (isStaticObject() || cityHall == NULL)
 		return;
 
-	ParameterizedStringId stringId("city/city", "city_enter_city");
+	StringIdChatParameter stringId("city/city", "city_enter_city");
 	stringId.setTT(objectName.getCustomString());
 
 	StringBuffer type;
@@ -46,7 +46,7 @@ void RegionImplementation::sendDepartingMessage(PlayerCreature* player) {
 	if (isStaticObject())
 		return;
 
-	ParameterizedStringId stringId("city/city", "city_leave_city");
+	StringIdChatParameter stringId("city/city", "city_leave_city");
 	stringId.setTO(objectName.getCustomString());
 
 	player->sendSystemMessage(stringId);

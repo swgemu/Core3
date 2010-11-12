@@ -181,7 +181,7 @@ public:
 
 		if (creatureTarget->getHAM(CreatureAttribute::MIND) == 0) {
 			if (creatureTarget) {
-				ParameterizedStringId stringId("healing", "no_mind_to_heal_target");
+				StringIdChatParameter stringId("healing", "no_mind_to_heal_target");
 				stringId.setTT(creatureTarget->getObjectID());
 				creature->sendSystemMessage(stringId); //%NT has no mind to heal.
 			}

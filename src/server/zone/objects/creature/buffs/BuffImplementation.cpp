@@ -329,10 +329,10 @@ bool BuffImplementation::isActive() {
 	return (buffEvent != NULL && buffEvent->isQueued());
 }
 
-void BuffImplementation::setStartMessage(ParameterizedStringId& start) {
+void BuffImplementation::setStartMessage(StringIdChatParameter& start) {
 	startMessage = start;
 }
 
-void BuffImplementation::setEndMessage(ParameterizedStringId& end) {
+void BuffImplementation::setEndMessage(StringIdChatParameter& end) {
 	endMessage = end;
 }

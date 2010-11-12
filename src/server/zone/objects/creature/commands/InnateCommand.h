@@ -78,7 +78,7 @@ public:
 		args.getStringToken(innateCommand);
 		innateCommand = innateCommand.toLowerCase();
 
-		ParameterizedStringId stringId;
+		StringIdChatParameter stringId;
 		stringId.setStringId("@innate:innate_na"); // Innate Command parameter '%TO' is not available for your species.
 
 		// Vitalize

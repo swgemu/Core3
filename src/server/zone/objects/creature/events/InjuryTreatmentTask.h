@@ -12,11 +12,11 @@
 
 class InjuryTreatmentTask : public Task {
 	ManagedReference<CreatureObject*> creature;
-	ParameterizedStringId message;
+	StringIdChatParameter message;
 	String pendingTask;
 
 public:
-	InjuryTreatmentTask(CreatureObject* creo, const ParameterizedStringId& msg, const String& task) {
+	InjuryTreatmentTask(CreatureObject* creo, const StringIdChatParameter& msg, const String& task) {
 		creature = creo;
 		message = msg;
 		pendingTask = task;

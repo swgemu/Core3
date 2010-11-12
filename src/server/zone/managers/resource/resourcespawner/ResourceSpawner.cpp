@@ -486,7 +486,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 	}
 
 	// Send survey start message
-	ParameterizedStringId message("survey", "start_survey");
+	StringIdChatParameter message("survey", "start_survey");
 	message.setTO(resname);
 	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
 	player->sendMessage(sysMessage);
@@ -555,7 +555,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 
 	// If density is too low, we can't obtain a sample
 	if (density < .10f) {
-		ParameterizedStringId message("survey", "efficiency_too_low");
+		StringIdChatParameter message("survey", "efficiency_too_low");
 		message.setTO(resname);
 		player->sendSystemMessage(message);
 		player->setPosture(CreaturePosture::UPRIGHT, true);
@@ -565,7 +565,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 	// Lower skill levels mean you can't sample lower concetrations
 	int surveySkill = player->getSkillMod("surveying");
 	if ((density * 100) < (32 - ((surveySkill / 20) * 6)) || density < .10) {
-		ParameterizedStringId message("survey", "density_below_threshold");
+		StringIdChatParameter message("survey", "density_below_threshold");
 		message.setTO(resname);
 		player->sendSystemMessage(message);
 		player->setPosture(CreaturePosture::UPRIGHT, true);
@@ -579,7 +579,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 	// Was the sample successful or not
 	if (!surveyTool->tryGamble() && richSampleLocation == NULL && sampleRate
 			< 40) {
-		ParameterizedStringId message("survey", "sample_failed");
+		StringIdChatParameter message("survey", "sample_failed");
 		message.setTO(resname);
 		player->sendSystemMessage(message);
 
@@ -622,7 +622,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 	if (unitsExtracted < 2) {
 
 		// Send message to player about trace amounts
-		ParameterizedStringId message("survey", "trace_amount");
+		StringIdChatParameter message("survey", "trace_amount");
 		message.setTO(resname);
 		message.setDI(unitsExtracted);
 		player->sendSystemMessage(message);
@@ -631,7 +631,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 	}
 
 	// Send message to player about unit extraction
-	ParameterizedStringId message("survey", "sample_located");
+	StringIdChatParameter message("survey", "sample_located");
 	message.setTO(resname);
 	message.setDI(unitsExtracted);
 	player->sendSystemMessage(message);
@@ -669,7 +669,7 @@ void ResourceSpawner::addResourceToPlayerInventory(PlayerCreature* player, Resou
 			"inventory");
 
 	if (inventory->hasFullContainerObjects()) {
-		ParameterizedStringId err("survey", "no_inv_space");
+		StringIdChatParameter err("survey", "no_inv_space");
 		player->sendSystemMessage(err);
 		player->setPosture(CreaturePosture::UPRIGHT, true);
 		return;

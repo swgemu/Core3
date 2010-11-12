@@ -146,7 +146,7 @@ bool TeachPlayerListBoxImplementation::generateSkillList(PlayerCreature* teacher
 
 		if ( (teacher->getGroup() == NULL) || (!teacher->getGroup()->hasMember(student)) ) {
 
-			ParameterizedStringId message("teaching","not_in_same_group");
+			StringIdChatParameter message("teaching","not_in_same_group");
 			message.setTT(player->getObjectID());
 			teacher->sendSystemMessage(message);
 
@@ -167,7 +167,7 @@ bool TeachPlayerListBoxImplementation::generateSkillList(PlayerCreature* teacher
 
 	} else {
 
-		ParameterizedStringId message("teaching","no_skills_for_student");
+		StringIdChatParameter message("teaching","no_skills_for_student");
 		message.setTT(player->getFirstName());
 		teacher->sendSystemMessage(message);
 

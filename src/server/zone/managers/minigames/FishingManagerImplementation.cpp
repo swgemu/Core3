@@ -20,7 +20,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/minigames/events/FishingEvent.h"
 #include "server/zone/managers/minigames/events/FishingSplashEvent.h"
 #include "server/zone/managers/minigames/FishingSession.h"
@@ -491,7 +491,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 
 void FishingManagerImplementation::sendReward(PlayerCreature* player, SceneObject* marker, SceneObject* loot) {
 	if ((player != NULL) && (marker != NULL) && (loot != NULL)) {
-		ParameterizedStringId body("fishing","prose_notify_catch");
+		StringIdChatParameter body("fishing","prose_notify_catch");
 		String itemName;
 		loot->sendTo(player, true);
 

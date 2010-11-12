@@ -640,7 +640,7 @@ ChatRoom* GuildManager::createGuildChannels(GuildObject* guild) {
 		return _implementation->createGuildChannels(guild);
 }
 
-void GuildManager::sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild) {
+void GuildManager::sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild) {
 	GuildManagerImplementation* _implementation = (GuildManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

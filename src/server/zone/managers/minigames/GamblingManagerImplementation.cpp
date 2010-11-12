@@ -13,7 +13,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "system/util/Vector.h"
 #include "system/util/VectorMap.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
@@ -252,7 +252,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, PlayerCreatu
 		case GamblingTerminal::SLOTMACHINE: {
 			if (amount > terminal->getMaxBet()) {
 
-				ParameterizedStringId body("gambling/default_interface","bet_above_max");
+				StringIdChatParameter body("gambling/default_interface","bet_above_max");
 				body.setDI(terminal->getMaxBet());
 
 				player->sendSystemMessage(body);
@@ -267,7 +267,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, PlayerCreatu
 
 			} else if (amount < terminal->getMinBet()) {
 
-				ParameterizedStringId body("gambling/default_interface","bet_below_min");
+				StringIdChatParameter body("gambling/default_interface","bet_below_min");
 				body.setDI(terminal->getMinBet());
 
 				player->sendSystemMessage(body);
@@ -277,7 +277,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, PlayerCreatu
 
 				player->setCashCredits(player->getCashCredits() - amount,true);
 
-				ParameterizedStringId textPlayer("base_player","prose_pay_success");
+				StringIdChatParameter textPlayer("base_player","prose_pay_success");
 				textPlayer.setDI(amount);
 
 				String terminalName;
@@ -303,7 +303,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, PlayerCreatu
 		case GamblingTerminal::ROULETTEMACHINE: {
 			if (amount > terminal->getMaxBet()) {
 
-				ParameterizedStringId body("gambling/default_interface","bet_above_max");
+				StringIdChatParameter body("gambling/default_interface","bet_above_max");
 				body.setDI(terminal->getMaxBet());
 
 				player->sendSystemMessage(body);
@@ -318,7 +318,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, PlayerCreatu
 
 			} else if (amount < terminal->getMinBet()) {
 
-				ParameterizedStringId body("gambling/default_interface","bet_below_min");
+				StringIdChatParameter body("gambling/default_interface","bet_below_min");
 				body.setDI(terminal->getMinBet());
 
 				player->sendSystemMessage(body);
@@ -327,7 +327,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, PlayerCreatu
 				Locker _locker(terminal);
 				player->setCashCredits(player->getCashCredits() - amount,true);
 				terminal->getBets()->add(new GamblingBet(player, amount, roulette.get(target)));
-				ParameterizedStringId textPlayer("gambling/default_interface","prose_bet_placed");
+				StringIdChatParameter textPlayer("gambling/default_interface","prose_bet_placed");
 				textPlayer.setDI(amount);
 				player->sendSystemMessage(textPlayer);
 			}
@@ -526,7 +526,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 						int win = bet->getAmount() * slot.get(terminal->getFirst());
 
-						ParameterizedStringId textPlayer("gambling/default_interface","winner_to_winner");
+						StringIdChatParameter textPlayer("gambling/default_interface","winner_to_winner");
 						textPlayer.setDI(win);
 						player->sendSystemMessage(textPlayer);
 
@@ -538,7 +538,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 						int win = bet->getAmount() * 2;
 
-						ParameterizedStringId textPlayer("gambling/default_interface","winner_to_winner");
+						StringIdChatParameter textPlayer("gambling/default_interface","winner_to_winner");
 						textPlayer.setDI(win);
 						player->sendSystemMessage(textPlayer);
 
@@ -693,13 +693,13 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 							Locker _locker(player);
 
 							// Send message to others
-							ParameterizedStringId textOther("gambling/default_interface","winner_to_other");
+							StringIdChatParameter textOther("gambling/default_interface","winner_to_other");
 							textOther.setDI(winnings->get(i));
 							textOther.setTO(player->getFirstName());
 							textOther.setTO(player);
 							terminal->notifyOthers(player, &textOther);
 
-							ParameterizedStringId textPlayer("gambling/default_interface","winner_to_winner");
+							StringIdChatParameter textPlayer("gambling/default_interface","winner_to_winner");
 							textPlayer.setDI(winnings->get(i));
 							player->sendSystemMessage(textPlayer);
 

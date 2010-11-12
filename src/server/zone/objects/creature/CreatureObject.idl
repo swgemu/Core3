@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.creature;
 
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.variables.ParameterizedStringId;
+import server.chat.StringIdChatParameter;
 import server.zone.objects.creature.professions.SkillBox;
 import server.zone.objects.group.GroupObject;
 import server.zone.objects.guild.GuildObject;
@@ -276,10 +276,10 @@ class CreatureObject extends TangibleObject {
 	 * Sends a system message to the client of this object
 	 * @pre {}
 	 * @post { this object received the message }
-	 * @param message ParameterizedStringId message to send
+	 * @param message StringIdChatParameter message to send
 	 */
 	@local
-	public native void sendSystemMessage(@dereferenced ParameterizedStringId stringid);
+	public native void sendSystemMessage(@dereferenced StringIdChatParameter stringid);
 	
 	/**
 	 * Sends the contained slotted objects to the specified player

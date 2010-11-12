@@ -1324,7 +1324,7 @@ void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPl
 		Locker clocker(targetPlayer, player);
 
 		if (player->requestedDuelTo(targetPlayer)) {
-			ParameterizedStringId stringId("duel", "already_challenged");
+			StringIdChatParameter stringId("duel", "already_challenged");
 			stringId.setTT(targetPlayer->getObjectID());
 			player->sendSystemMessage(stringId);
 
@@ -1342,7 +1342,7 @@ void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPl
 							+ CreatureFlag::AGGRESSIVE);
 			player->sendMessage(pvpstat);
 
-			ParameterizedStringId stringId("duel", "accept_self");
+			StringIdChatParameter stringId("duel", "accept_self");
 			stringId.setTT(targetPlayer->getObjectID());
 			player->sendSystemMessage(stringId);
 
@@ -1351,15 +1351,15 @@ void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPl
 							+ CreatureFlag::AGGRESSIVE);
 			targetPlayer->sendMessage(pvpstat2);
 
-			ParameterizedStringId stringId2("duel", "accept_target");
+			StringIdChatParameter stringId2("duel", "accept_target");
 			stringId2.setTT(player->getObjectID());
 			targetPlayer->sendSystemMessage(stringId2);
 		} else {
-			ParameterizedStringId stringId3("duel", "challenge_self");
+			StringIdChatParameter stringId3("duel", "challenge_self");
 			stringId3.setTT(targetPlayer->getObjectID());
 			player->sendSystemMessage(stringId3);
 
-			ParameterizedStringId stringId4("duel", "challenge_target");
+			StringIdChatParameter stringId4("duel", "challenge_target");
 			stringId4.setTT(player->getObjectID());
 			targetPlayer->sendSystemMessage(stringId4);
 		}
@@ -1388,7 +1388,7 @@ void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targe
 		Locker clocker(targetPlayer, player);
 
 		if (!player->requestedDuelTo(targetPlayer)) {
-			ParameterizedStringId stringId("duel", "not_dueling");
+			StringIdChatParameter stringId("duel", "not_dueling");
 			stringId.setTT(targetPlayer->getObjectID());
 			player->sendSystemMessage(stringId);
 
@@ -1406,13 +1406,13 @@ void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targe
 
 			player->sendPvpStatusTo(targetPlayer);
 
-			ParameterizedStringId stringId("duel", "end_self");
+			StringIdChatParameter stringId("duel", "end_self");
 			stringId.setTT(targetPlayer->getObjectID());
 			player->sendSystemMessage(stringId);
 
 			targetPlayer->sendPvpStatusTo(player);
 
-			ParameterizedStringId stringId2("duel", "end_target");
+			StringIdChatParameter stringId2("duel", "end_target");
 			stringId2.setTT(player->getObjectID());
 			targetPlayer->sendSystemMessage(stringId2);
 		}
@@ -1448,7 +1448,7 @@ void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
 					player->sendPvpStatusTo(targetPlayer);
 
 					if (spam) {
-						ParameterizedStringId stringId("duel", "end_self");
+						StringIdChatParameter stringId("duel", "end_self");
 						stringId.setTT(targetPlayer->getObjectID());
 						player->sendSystemMessage(stringId);
 					}
@@ -1456,7 +1456,7 @@ void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
 					targetPlayer->sendPvpStatusTo(player);
 
 					if (spam) {
-						ParameterizedStringId stringId2("duel", "end_target");
+						StringIdChatParameter stringId2("duel", "end_target");
 						stringId2.setTT(player->getObjectID());
 						targetPlayer->sendSystemMessage(stringId2);
 					}
@@ -1486,11 +1486,11 @@ void CombatManager::declineDuel(PlayerCreature* player, PlayerCreature* targetPl
 		if (targetPlayer->requestedDuelTo(player)) {
 			targetPlayer->removeFromDuelList(player);
 
-			ParameterizedStringId stringId("duel", "cancel_self");
+			StringIdChatParameter stringId("duel", "cancel_self");
 			stringId.setTT(targetPlayer->getObjectID());
 			player->sendSystemMessage(stringId);
 
-			ParameterizedStringId stringId2("duel", "cancel_target");
+			StringIdChatParameter stringId2("duel", "cancel_target");
 			stringId2.setTT(player->getObjectID());
 			targetPlayer->sendSystemMessage(stringId2);
 		}

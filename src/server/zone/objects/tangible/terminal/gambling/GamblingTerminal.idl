@@ -55,7 +55,7 @@ import system.util.VectorMap;
 import system.lang.ref.Reference;
 import server.zone.managers.minigames.GamblingBet;
 import server.zone.managers.minigames.events.GamblingEvent;
-import server.zone.objects.scene.variables.ParameterizedStringId;
+import server.chat.StringIdChatParameter;
 include server.zone.templates.tangible.GamblingTerminalTemplate;
 include server.zone.objects.player.sui.SuiWindowType;
 
@@ -322,7 +322,7 @@ class GamblingTerminal extends Terminal {
 	 * @param text Message to send to players 
 	 */
 	@local
-	public native void notifyOthers(PlayerCreature player, ParameterizedStringId text);
+	public native void notifyOthers(PlayerCreature player, StringIdChatParameter text);
 	
 	/**
 	 * Notifies all Players
@@ -332,7 +332,7 @@ class GamblingTerminal extends Terminal {
 	 * @param text Message to send to players 
 	 */
 	@local
-	public native void notifyAll(ParameterizedStringId text);
+	public native void notifyAll(StringIdChatParameter text);
 	
 	/**
 	 * Checks whether Player is allowed to join

@@ -70,7 +70,7 @@ public:
 
 		// Check to see if "innate_vitalize" Cooldown isPast();
 		if (!player->checkCooldownRecovery("innate_vitalize")) {
-			ParameterizedStringId stringId;
+			StringIdChatParameter stringId;
 
 			Time* cdTime = player->getCooldownTime("innate_vitalize");
 
@@ -86,7 +86,7 @@ public:
 
 		uint32 buffcrc = BuffCRC::INNATE_BUFF_VITALIZE; // 0x477D7E4
 
-		ParameterizedStringId startMsg;
+		StringIdChatParameter startMsg;
 		startMsg.setStringId("@innate:vit_active"); // You feel adrenaline pour into your bloodstream as you become more vitalized.
 
 		ManagedReference<Buff*> buff = new Buff(player, buffcrc, 600, BuffType::INNATE); // Duration of 10min
