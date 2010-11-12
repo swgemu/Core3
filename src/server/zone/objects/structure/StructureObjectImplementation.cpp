@@ -55,7 +55,7 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, Player
 	}
 
 	if (listName != "BAN" && isOnBanList(targetPlayer)) {
-		ParameterizedStringId params;
+		StringIdChatParameter params;
 		params.setStringId("@player_structure:cannot_add_banned"); //%NO must first be removed from the banned list.
 		params.setTO(targetPlayer);
 		player->sendSystemMessage(params);
@@ -98,7 +98,7 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, const 
 	}
 
 	if (listName != "BAN" && isOnBanList(targetPlayer)) {
-		ParameterizedStringId params;
+		StringIdChatParameter params;
 		params.setStringId("@player_structure:cannot_add_banned"); //%NO must first be removed from the banned list.
 		params.setTO(targetPlayer);
 		player->sendSystemMessage(params);

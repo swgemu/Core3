@@ -143,7 +143,7 @@ class ObjectController;
 
 using namespace server::zone::managers::objectcontroller;
 
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 #include "engine/core/ManagedService.h"
 
@@ -158,6 +158,18 @@ namespace chat {
 
 class ChatManager : public ManagedService {
 public:
+	static const int IM_SUCCESS = 0x00;
+
+	static const int IM_OFFLINE = 0x04;
+
+	static const int IM_IGNORED = 0x09;
+
+	static const int IM_TOOLONG = 0x16;
+
+	static const int IM_MAXSIZE = 255;
+
+	static const int PM_MAXSIZE = 4000;
+
 	ChatManager(ZoneServer* serv, int initsize);
 
 	void initiateRooms();
@@ -210,7 +222,7 @@ public:
 
 	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
-	void sendMail(const String& sendername, const UnicodeString& header, ParameterizedStringId& body, const String& name);
+	int sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName);
 
 	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
 
@@ -272,6 +284,18 @@ class ChatManagerImplementation : public ManagedServiceImplementation, public Lo
 	bool mute;
 
 public:
+	static const int IM_SUCCESS = 0x00;
+
+	static const int IM_OFFLINE = 0x04;
+
+	static const int IM_IGNORED = 0x09;
+
+	static const int IM_TOOLONG = 0x16;
+
+	static const int IM_MAXSIZE = 255;
+
+	static const int PM_MAXSIZE = 4000;
+
 	ChatManagerImplementation(ZoneServer* serv, int initsize);
 
 	ChatManagerImplementation(DummyConstructorParameter* param);
@@ -328,7 +352,7 @@ public:
 
 	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
-	void sendMail(const String& sendername, const UnicodeString& header, ParameterizedStringId& body, const String& name);
+	int sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName);
 
 	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
 

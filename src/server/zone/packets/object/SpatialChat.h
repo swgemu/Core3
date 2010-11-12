@@ -47,7 +47,7 @@
 
 #include "ObjectControllerMessage.h"
 
-#include "../../objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 class SpatialChat: public ObjectControllerMessage {
 public:
@@ -91,7 +91,7 @@ public:
 		setCompression(true);
 	}
 
-	SpatialChat(uint64 senderid, uint64 recvid, ParameterizedStringId& stringid, uint64 target, uint16 moodid, uint16 mood2) :
+	SpatialChat(uint64 senderid, uint64 recvid, StringIdChatParameter& stringid, uint64 target, uint16 moodid, uint16 mood2) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 
 		insertLong(senderid);
@@ -102,7 +102,7 @@ public:
 		insertShort(moodid);
 		insertShort(0);
 
-		stringid.addToPacketStream(this);
+		stringid.insertToMessage(this);
 
 		insertByte(0);
 		insertShort(0);

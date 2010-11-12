@@ -143,7 +143,7 @@ void DestroyMissionObjectiveImplementation::complete() {
 
 	int missionReward = mission->getRewardCredits();
 
-	ParameterizedStringId stringId("mission/mission_generic", "success_w_amount");
+	StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
 	stringId.setDI(missionReward);
 	player->sendSystemMessage(stringId);
 

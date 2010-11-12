@@ -55,7 +55,7 @@ void SurveyMissionObjectiveImplementation::complete() {
 
 	int missionReward = mission->getRewardCredits();
 
-	ParameterizedStringId stringId("mission/mission_generic", "success_w_amount");
+	StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
 	stringId.setDI(missionReward);
 	player->sendSystemMessage(stringId);
 
@@ -81,7 +81,7 @@ int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 
 				return 1;
 			} else {
-				ParameterizedStringId stringId("mission/mission_generic", "survey_too_close");
+				StringIdChatParameter stringId("mission/mission_generic", "survey_too_close");
 				stringId.setDI(1024);
 				stringId.setDF(player->getDistanceTo(missionGiver));
 				player->sendSystemMessage(stringId);

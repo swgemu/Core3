@@ -91,8 +91,7 @@ int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observa
 				creature->removePendingTask("sampleresults");
 			}
 
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel");
-			creature->sendSystemMessage("survey", "sample_cancel");
+			creature->sendSystemMessage("@survey:sample_cancel");
 		}
 	}
 

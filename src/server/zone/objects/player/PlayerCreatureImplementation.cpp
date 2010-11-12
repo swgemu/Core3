@@ -42,7 +42,7 @@
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/ZoneServer.h"

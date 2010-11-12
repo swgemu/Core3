@@ -17,7 +17,7 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/tangible/loot/LootkitObject.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 
 void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
@@ -42,7 +42,8 @@ void JunkdealerCreatureImplementation::sendInitialMessage(PlayerCreature* player
 	String stffile = "conversation/junk_dealer_generic";
 	String stfname = "s_bef51e38";
 
-	NpcConversationMessage* m1 = new NpcConversationMessage(player, stffile, stfname);
+	StringIdChatParameter params(stffile, stfname);
+	NpcConversationMessage* m1 = new NpcConversationMessage(player, params);
 	player->sendMessage(m1);
 
 	player->setLastNpcConvMessStr("junkdealer_initial");
@@ -90,7 +91,8 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 	if (player->getLastNpcConvMessStr() == "junkdealer_options") {
 		switch (option) {
 			case 0: {
-				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_84a67771");
+				StringIdChatParameter params(stffile, "s_84a67771");
+				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 				player->setLastNpcConvMessStr("junkdealer_sell");
 				player->addLastNpcConvOptions(choice);
 				player->sendMessage(skillmsg);
@@ -100,7 +102,8 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				break;
 			}
 			case 1: {
-				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_4bd9d15e");
+				StringIdChatParameter params(stffile, "s_4bd9d15e");
+				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 				player->setLastNpcConvMessStr("junkdealer_nosell");
 				player->addLastNpcConvOptions(choice);
 				player->sendMessage(skillmsg);
@@ -108,7 +111,8 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				break;
 			}
 			case 2: {
-				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_d9e6b751");
+				StringIdChatParameter params(stffile, "s_d9e6b751");
+				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 				player->setLastNpcConvMessStr("junkdealer_kit1");
 				player->addLastNpcConvOptions(choice);
 				player->sendMessage(skillmsg);
@@ -124,7 +128,8 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		}
 	} else if (player->getLastNpcConvMessStr() == "junkdealer_kit1") {
 		if (option == 0) {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_e29f48dc");
+			StringIdChatParameter params(stffile, "s_e29f48dc");
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->setLastNpcConvMessStr("junkdealer_kit2");
 			player->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
@@ -138,7 +143,8 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		}
 	} else if (player->getLastNpcConvMessStr() == "junkdealer_kit2") {
 		if (option == 0) {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_12fe83a6");
+			StringIdChatParameter params(stffile, "s_12fe83a6");
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->setLastNpcConvMessStr("junkdealer_kit3");
 			player->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
@@ -152,7 +158,8 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		}
 	} else if (player->getLastNpcConvMessStr() == "junkdealer_kit3") {
 		if (option == 0) {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_4d65752");
+			StringIdChatParameter params(stffile, "s_4d65752");
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->setLastNpcConvMessStr("junkdealer_kit4");
 			player->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
@@ -167,7 +174,8 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		}
 	} else if (player->getLastNpcConvMessStr() == "junkdealer_kit4") {
 		if (option == 0) {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_3fc7eb45");
+			StringIdChatParameter params(stffile, "s_3fc7eb45");
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->setLastNpcConvMessStr("junkdealer_kit5");
 			player->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
@@ -183,7 +191,8 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 			player->sendMessage(slist);
 
 		} else {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_3633b5a5");
+			StringIdChatParameter params(stffile, "s_3633b5a5");
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->setLastNpcConvMessStr("junkdealer_nokit");
 			player->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
@@ -239,19 +248,22 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		}
 
 		if (found) {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_3df21ea0");
+			StringIdChatParameter params(stffile, "s_3df21ea0");
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->setLastNpcConvMessStr("junkdealer_alreadyhavekit");
 			player->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
 
 		} else if (inventory->hasFullContainerObjects()) {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_5b10c0b9");
+			StringIdChatParameter params(stffile, "s_5b10c0b9");
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->setLastNpcConvMessStr("junkdealer_inventoryfull");
 			player->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
 
 		} else {
-			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, stffile, "s_14efaaa2");
+			StringIdChatParameter params(stffile, "s_14efaaa2");
+			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 			player->setLastNpcConvMessStr("junkdealer_givekit");
 			player->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);

@@ -313,7 +313,7 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* player, const String
 
 		// Send sample start message
 	if(!isInUse()) {
-		ParameterizedStringId message("survey","start_sampling");
+		StringIdChatParameter message("survey","start_sampling");
 		message.setTO(resname);
 		player->sendSystemMessage(message);
 		setInUse(true);

@@ -123,7 +123,7 @@ public:
 		//Force the delay to be at least 3 seconds.
 		delay = (delay < 3) ? 3 : delay;
 
-		ParameterizedStringId message("healing_response", "healing_response_59");
+		StringIdChatParameter message("healing_response", "healing_response_59");
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "conditionTreatment");
 		creature->addPendingTask("conditionTreatment", task);
 		task->schedule(delay * 1000);
@@ -251,7 +251,7 @@ public:
 				if (creature == creatureTarget)
 					creature->sendSystemMessage("healing_response", "healing_response_82"); //You are not poisoned.
 				else {
-					ParameterizedStringId stringId("healing_response", "healing_response_84");
+					StringIdChatParameter stringId("healing_response", "healing_response_84");
 					stringId.setTT(creatureTarget->getObjectID());
 					creature->sendSystemMessage(stringId); //%NT is not poisoned.
 				}
@@ -263,7 +263,7 @@ public:
 				if (creature == creatureTarget)
 					creature->sendSystemMessage("healing_response", "healing_response_90"); //You are not diseased.
 				else {
-					ParameterizedStringId stringId("healing_response", "healing_response_92");
+					StringIdChatParameter stringId("healing_response", "healing_response_92");
 					stringId.setTT(creatureTarget->getObjectID());
 					creature->sendSystemMessage(stringId); //%NT is not poisoned.
 					//creature->sendSystemMessage("healing_response", "healing_response_92", creatureTarget->getObjectID()); //%NT is not diseased.
@@ -276,7 +276,7 @@ public:
 				if (creature == creatureTarget)
 					creature->sendSystemMessage("healing_response", "healing_response_86"); //You are not on fire.
 				else {
-					ParameterizedStringId stringId("healing_response", "healing_response_88");
+					StringIdChatParameter stringId("healing_response", "healing_response_88");
 					stringId.setTT(creatureTarget->getObjectID());
 					creature->sendSystemMessage(stringId); //%NT is not poisoned.
 					//creature->sendSystemMessage("healing_response", "healing_response_88", creatureTarget->getObjectID()); //%NT is not on fire.

@@ -46,45 +46,41 @@ which carries forward this exception.
 #define CHATSYSTEMMESSAGE_H_
 
 #include "engine/engine.h"
-#include "../../objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 class ChatSystemMessage : public BaseMessage {
+
+public:
+	static const byte DISPLAY_CHATANDSCREEN = 0x00;
+	static const byte DISPLAY_CHATONLY = 0x02;
 public:
 
-	ChatSystemMessage(UnicodeString& message) : BaseMessage() {
-		insertShort(0x05);
-		insertInt(0x6D2A6413);  // CRC
+	ChatSystemMessage(const UnicodeString& message, byte displayType = DISPLAY_CHATANDSCREEN) : BaseMessage() {
+		insertShort(0x04);
+		insertInt(0x6D2A6413); //ChatSystemMessage
 
-		insertByte(0x01);
+		insertByte(displayType);
 
 		insertUnicode(message);
-
-		insertInt(0x00);
+		insertInt(0); //No params
 	}
 
-	ChatSystemMessage(ParameterizedStringId& stringid) : BaseMessage() {
-		insertShort(0x08);
+	ChatSystemMessage(StringIdChatParameter& sid, byte displayType = DISPLAY_CHATANDSCREEN) : BaseMessage() {
+		insertShort(0x04);
 		insertInt(0x6D2A6413);
 
-		insertByte(0);
-		insertInt(0); // UnicodeString
+		insertByte(displayType);
+		insertInt(0);
 
-		stringid.addToPacketStream(this);
+		int offset = getOffset();
 
 		insertInt(0);
-	}
 
-	ChatSystemMessage(const String& file, const String& stringid) : BaseMessage() {
-		UnicodeString message = "@" + file + ":" + stringid;
+		sid.insertToMessage(this);
 
-		insertShort(0x05);
-		insertInt(0x6D2A6413);  // CRC
+		int size = (getOffset() - offset - 4) / 2;
 
-		insertByte(0x01);
-
-		insertUnicode(message);
-
-		insertInt(0x00);
+		insertInt(offset, size);
 	}
 };
 

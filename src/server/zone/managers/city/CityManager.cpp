@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 
 /*
  *	CityManagerStub
@@ -88,7 +88,7 @@ bool CityManager::validateCityName(const String& name) {
 		return _implementation->validateCityName(name);
 }
 
-void CityManager::sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, ParameterizedStringId& body) {
+void CityManager::sendMailToMayor(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body) {
 	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -97,7 +97,7 @@ void CityManager::sendMailToMayor(CityHallObject* city, const String& sendername
 		_implementation->sendMailToMayor(city, sendername, subject, body);
 }
 
-void CityManager::sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, ParameterizedStringId& body) {
+void CityManager::sendMailToAllCitizens(CityHallObject* city, const String& sendername, const UnicodeString& subject, StringIdChatParameter& body) {
 	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

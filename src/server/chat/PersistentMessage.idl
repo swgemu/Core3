@@ -45,36 +45,46 @@ which carries forward this exception.
 package server.chat;
 
 import engine.core.ManagedObject;
-
-include server.zone.objects.scene.variables.ParameterizedStringId;
+import system.lang.System;
+import system.util.Vector;
+include server.chat.ChatParameter;
+import server.zone.objects.player.PlayerCreature;
 
 class PersistentMessage extends ManagedObject {
-	protected unicode senderName;
-	protected byte type;
+	protected string senderName;
 	protected unicode subject;
 	protected unicode body;
 	protected unsigned int timeStamp;
 	protected byte status;
 	
-	@dereferenced
-	protected ParameterizedStringId stringIdBody;
-	
 	protected unsigned long receiverObjectID;
 	
+	@dereferenced
+	protected Vector<ChatParameter> parameters;
+	
+	public static final byte NEW = 0x4E;
+	public static final byte READ = 0x52;
+	public static final byte UNREAD = 0x55;
+	
 	public PersistentMessage() {
-		type = 0;
-		
-		timeStamp = 0;
-		status = 0x4E;
+		timeStamp = System.getTime();
+		status = NEW;
 		
 		receiverObjectID = 0;
+	}
+	
+	public abstract native void sendTo(PlayerCreature player, boolean sendBody = true);
+	
+	@local
+	public Vector<ChatParameter> getChatParameters() {
+		return parameters;
 	}
 	
 	public native int getMailID();
 	
 	public native unsigned long getObjectID();
 	
-	public unicode getSenderName() {
+	public string getSenderName() {
 		return senderName;
 	}
 	
@@ -98,7 +108,7 @@ class PersistentMessage extends ManagedObject {
 		return subject;
 	}
 	
-	public void setSenderName(final unicode name) {
+	public void setSenderName(final string name) {
 		senderName = name;
 	}
 	
@@ -122,12 +132,21 @@ class PersistentMessage extends ManagedObject {
 		subject = subj;
 	}
 	
-	@local
-	public native void setParameterizedBody(@dereferenced ParameterizedStringId body);
+	public boolean isNew() {
+		return status == NEW;
+	}
+	
+	public boolean isRead() {
+		return status == READ;
+	}
+	
+	public boolean isUnread() {
+		return status == UNREAD;
+	}
 	
 	@local
-	public ParameterizedStringId getParameterizedBody() {
-		return stringIdBody;
+	public void addChatParameter(@dereferenced ChatParameter param) {
+		parameters.add(param);
 	}
 	
 }

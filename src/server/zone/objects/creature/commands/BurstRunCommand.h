@@ -102,8 +102,8 @@ public:
 		creature->inflictDamage(creature, CreatureAttribute::ACTION, newHamCost, true);
 		creature->inflictDamage(creature, CreatureAttribute::MIND, newHamCost, true);
 
-		ParameterizedStringId startStringId("cbt_spam", "burstrun_start_single");
-		ParameterizedStringId endStringId("cbt_spam", "burstrun_stop_single");
+		StringIdChatParameter startStringId("cbt_spam", "burstrun_start_single");
+		StringIdChatParameter endStringId("cbt_spam", "burstrun_stop_single");
 
 		int duration = 30;
 

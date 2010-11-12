@@ -42,32 +42,34 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PARAMETERIZEDSTRINGID_H_
-#define PARAMETERIZEDSTRINGID_H_
+#ifndef STRINGIDCHATPARAMETER_H_
+#define STRINGIDCHATPARAMETER_H_
 
 #include "engine/engine.h"
 
-#include "StringIdParameter.h"
-#include "StringId.h"
+#include "server/chat/ChatParameter.h"
+#include "server/zone/objects/scene/variables/StringIdParameter.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace scene {
 namespace variables {
+	class StringIdParameter;
+}
+}
+}
+}
+}
 
-/**
-* Class that is used to store data for stf strings with variables
-* that need to be sent to the client in packets.
-*
-* Best use when setting a variable as a SceneObject's name:
-* 	If you know the object is in the client's memory just send the object
-* 		ex. pstringid.setTT(object);
-*   If there's a chance that the object is not in the client's memory, send
-*   the object's stringid
-*   	ex. pstringid.setTT(object->getObjectName());
-*/
-class ParameterizedStringId : public StringId {
+using namespace server::zone::objects::scene::variables;
+
+namespace server {
+namespace chat {
+
+class StringIdChatParameter : public ChatParameter, public StringId {
+protected:
 	StringIdParameter TT;
 	StringIdParameter TU;
 	StringIdParameter TO;
@@ -89,21 +91,24 @@ class ParameterizedStringId : public StringId {
 		DF = 0;
 	}
 
-	inline uint32 parametersSize() const {
-		return TT.size() + TU.size() + TO.size() + sizeof(DI) + sizeof(DF);
-	}
+	/**
+	* Inserts stf string identifier and variables into a packet
+	* @pre { packet is a valid Message }
+	* @post { data is inserted into packet }
+	* @param packet Message that data is to be inserted into
+	*/
+	void addToPacketStream(Message* packet);
 
 public:
-	ParameterizedStringId();
-	ParameterizedStringId(const StringId& id);
-	ParameterizedStringId(const char * cstr);
-	ParameterizedStringId(const String& fullPath);
-	ParameterizedStringId(const String& fil, const String& stringId);
-	ParameterizedStringId(const UnicodeString& custom);
-	ParameterizedStringId(const ParameterizedStringId& custom);
+	StringIdChatParameter();
+	StringIdChatParameter(const StringId& id);
+	StringIdChatParameter(const char * cstr);
+	StringIdChatParameter(const String& fullPath);
+	StringIdChatParameter(const String& fil, const String& stringId);
+	StringIdChatParameter(const UnicodeString& custom);
+	StringIdChatParameter(const StringIdChatParameter& custom);
 
-
-	ParameterizedStringId& operator=(const ParameterizedStringId& id) {
+	StringIdChatParameter& operator=(const StringIdChatParameter& id) {
 		if (this == &id)
 			return *this;
 
@@ -116,18 +121,11 @@ public:
 
 		unknownByte = id.unknownByte;
 
+		ChatParameter::operator=(id);
 		StringId::operator=(id);
 
 		return *this;
 	}
-
-	/**
-	* Inserts stf string identifier and variables into a packet
-	* @pre { packet is a valid Message }
-	* @post { data is inserted into packet }
-	* @param packet Message that data is to be inserted into
-	*/
-	void addToPacketStream(Message* packet);
 
 	/**
 	* Sets the TT variable
@@ -231,9 +229,7 @@ public:
 
 }
 }
-}
-}
-}
 
-using namespace server::zone::objects::scene::variables;
-#endif /* PARAMETERIZEDSTRINGID_H_ */
+using namespace server::chat;
+
+#endif /* STRINGIDCHATPARAMETER_H_ */

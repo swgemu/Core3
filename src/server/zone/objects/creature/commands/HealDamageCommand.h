@@ -93,7 +93,7 @@ public:
 		//Force the delay to be at least 3 seconds.
 		delay = (delay < 3) ? 3 : delay;
 
-		ParameterizedStringId message("healing_response", "healing_response_58");
+		StringIdChatParameter message("healing_response", "healing_response_58");
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "injuryTreatment");
 		creature->addPendingTask("injuryTreatment", task);
 		task->schedule(delay * 1000);
@@ -171,7 +171,7 @@ public:
 			/*if (creatureTarget == creature) {
 				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
 			} else {
-				ParameterizedStringId stringId("healing_response", "healing_response_63");
+				StringIdChatParameter stringId("healing_response", "healing_response_63");
 				stringId.setTO(creatureTarget->getObjectID());
 				//creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
 				creature->sendSystemMessage(stringId);
@@ -237,7 +237,7 @@ public:
 			if (creatureTarget == creature) {
 				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
 			} else {
-				ParameterizedStringId stringId("healing_response", "healing_response_63");
+				StringIdChatParameter stringId("healing_response", "healing_response_63");
 				stringId.setTT(creatureTarget->getObjectID());
 				//creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
 				creature->sendSystemMessage(stringId);

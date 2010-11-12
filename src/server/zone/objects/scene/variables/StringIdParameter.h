@@ -50,6 +50,14 @@ which carries forward this exception.
 #include "StringId.h"
 
 namespace server {
+namespace chat {
+	class StringIdChatParameter;
+}
+}
+
+using namespace server::chat;
+
+namespace server {
 namespace zone {
 namespace objects {
 namespace scene {
@@ -59,6 +67,7 @@ class SceneObject;
 namespace variables {
 
 class StringIdParameter : public Serializable {
+protected:
 	uint64 pointerParameter;
 	StringId stringID;
 
@@ -144,7 +153,7 @@ public:
 		return stringID.getStringID();
 	}
 
-	friend class ParameterizedStringId;
+	friend class server::chat::StringIdChatParameter;
 };
 
 

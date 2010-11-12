@@ -735,19 +735,20 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 	StringBuffer convoChoice;
 	convoChoice << "hi_" <<  responseAttitude << "_" << (System::random(15) + 1);
 
-	NpcConversationMessage* initial = new NpcConversationMessage(
-			playerCreature, responseFile, convoChoice.toString());
-	player->sendMessage(initial);
+	//TODO: Revisit NPC Conversation
+	//NpcConversationMessage* initial = new NpcConversationMessage(
+	//		playerCreature, responseFile, convoChoice.toString());
+	//player->sendMessage(initial);
 
 	// Parse and send the options:
-	StringList* slist = new StringList(playerCreature);
+	//StringList* slist = new StringList(playerCreature);
 
-	String test = "I'm looking for work";
-	slist->insertOption(test);
+	//String test = "I'm looking for work";
+	//slist->insertOption(test);
 
-	player->sendMessage(slist);
+	//player->sendMessage(slist);
 
-	playerCreature->setLastNpcConvMessStr("chitchat");
+	//playerCreature->setLastNpcConvMessStr("chitchat");
 }
 
 void AiAgentImplementation::selectConversationOption(int option, SceneObject* obj) {

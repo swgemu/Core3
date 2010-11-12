@@ -46,7 +46,7 @@ which carries forward this exception.
 #define UNINVITECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
-#include "../../scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "../../player/PlayerCreature.h"
 
 
@@ -84,7 +84,7 @@ public:
 				play->updateGroupInviterID(0);
 				play->sendSystemMessage("group", "uninvite_self");
 
-				ParameterizedStringId stringId;
+				StringIdChatParameter stringId;
 				stringId.setStringId("group", "uninvite_target");
 				stringId.setTT(play);
 				creature->sendSystemMessage(stringId);

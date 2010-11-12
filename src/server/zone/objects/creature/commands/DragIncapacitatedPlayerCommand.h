@@ -103,7 +103,7 @@ public:
 
 		//Check maximum range.
 		if (!player->isInRange(targetPlayer, maxRange)) {
-			ParameterizedStringId stringId("healing_response", "healing_response_b1");
+			StringIdChatParameter stringId("healing_response", "healing_response_b1");
 			stringId.setDI(maxRange);
 			player->sendSystemMessage(stringId); //"Your maximum drag range is %DI meters! Try getting closer."
 			return;
@@ -174,7 +174,7 @@ public:
 		//Visuals.
 		targetPlayer->showFlyText("base_player", "fly_drag", 255, 0, 0);
 
-		ParameterizedStringId stringId("healing_response", "healing_response_b5");
+		StringIdChatParameter stringId("healing_response", "healing_response_b5");
 		stringId.setTT(targetPlayer->getObjectID());
 		player->sendSystemMessage(stringId);
 	}

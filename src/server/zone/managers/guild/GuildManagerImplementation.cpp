@@ -584,7 +584,7 @@ void GuildManagerImplementation::sponsorPlayer(PlayerCreature* player, GuildTerm
 	}
 
 	if (target->isInGuild()) {
-		ParameterizedStringId params;
+		StringIdChatParameter params;
 		params.setStringId("@guild:sponsor_already_in_guild"); //%TU is already in a guild.
 		params.setTU(target);
 
@@ -592,7 +592,7 @@ void GuildManagerImplementation::sponsorPlayer(PlayerCreature* player, GuildTerm
 		return;
 	}
 
-	ParameterizedStringId params;
+	StringIdChatParameter params;
 	params.setStringId("@guild:sponsor_target"); //%TU has sponsored you for membership in %TT.
 	params.setTU(player->getObjectID());
 	params.setTT(guild->getGuildName());
@@ -622,7 +622,7 @@ void GuildManagerImplementation::acceptSponsorshipRequest(PlayerCreature* player
 
 	Locker _lock(target, player);
 
-	ParameterizedStringId params;
+	StringIdChatParameter params;
 	params.setStringId("@guild:sponsor_accept"); //%TU has accepted your sponsorship
 	params.setTU(target->getObjectID());
 
@@ -668,7 +668,7 @@ void GuildManagerImplementation::acceptSponsoredPlayer(PlayerCreature* player, u
 		return;
 	}
 
-	ParameterizedStringId params;
+	StringIdChatParameter params;
 	params.setStringId("@guild:accept_self"); //You accept %TU for membership in %TT.
 	params.setTU(target->getObjectName()->getDisplayedName());
 	params.setTT(guild->getGuildName());
@@ -757,7 +757,7 @@ void GuildManagerImplementation::kickMember(PlayerCreature* player, PlayerCreatu
 
 	target->setGuildObject(NULL);
 
-	ParameterizedStringId params;
+	StringIdChatParameter params;
 	params.setStringId("@guild:kick_self"); //You remove %TU from %TT.
 	params.setTU(target->getObjectName()->getDisplayedName());
 	params.setTT(guild->getGuildName());
@@ -810,7 +810,7 @@ void GuildManagerImplementation::setMemberTitle(PlayerCreature* player, PlayerCr
 	GuildMemberInfo* gmi = guild->getMember(target->getObjectID());
 	gmi->setGuildTitle(title);
 
-	ParameterizedStringId params;
+	StringIdChatParameter params;
 	params.setStringId("@guild:title_self"); //You set %TU's guild title to '%TT'.
 	params.setTU(target->getObjectName()->getDisplayedName());
 	params.setTT(title);
@@ -974,7 +974,7 @@ void GuildManagerImplementation::leaveGuild(PlayerCreature* player, GuildObject*
 	if (guild == NULL)
 		return;
 
-	ParameterizedStringId params;
+	StringIdChatParameter params;
 	params.setStringId("@guild:leave_self"); //You leave %TU.
 	params.setTU(guild->getGuildName());
 	player->sendSystemMessage(params);
@@ -1000,7 +1000,7 @@ void GuildManagerImplementation::leaveGuild(PlayerCreature* player, GuildObject*
 	sendGuildMail("@guildmail:leave_subject", params, guild);
 }
 
-void GuildManagerImplementation::sendGuildMail(const String& subject, ParameterizedStringId& body, GuildObject* guild) {
+void GuildManagerImplementation::sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild) {
 	if (guild == NULL)
 		return;
 

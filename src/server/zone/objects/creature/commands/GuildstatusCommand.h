@@ -99,7 +99,7 @@ public:
 
 		PlayerCreature* targetCreature = (PlayerCreature*) obj.get();
 
-		ParameterizedStringId params;
+		StringIdChatParameter params;
 		params.setTU(targetCreature->getObjectName()->getDisplayedName());
 
 		if (!creature->isInGuild()) {

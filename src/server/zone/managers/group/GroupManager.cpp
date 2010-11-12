@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "../../objects/player/PlayerCreature.h"
 
 #include "../../objects/group/GroupObject.h"
-#include "../../objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "../../managers/object/ObjectManager.h"
 
 
@@ -76,7 +76,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 		}
 
 		if (player->isGrouped()) {
-			ParameterizedStringId stringId;
+			StringIdChatParameter stringId;
 			stringId.setStringId("group", "already_grouped");
 			stringId.setTT(player);
 			leader->sendSystemMessage(stringId);
@@ -86,7 +86,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 		}
 
 		if (player->getGroupInviterID() == leader->getObjectID()) {
-			ParameterizedStringId stringId;
+			StringIdChatParameter stringId;
 			stringId.setStringId("group", "considering_your_group");
 			stringId.setTT(player);
 			leader->sendSystemMessage(stringId);
@@ -103,7 +103,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 
 		player->updateGroupInviterID(leader->getObjectID());
 
-		ParameterizedStringId stringId;
+		StringIdChatParameter stringId;
 		stringId.setStringId("group", "invite_target");
 		stringId.setTT(leader);
 		player->sendSystemMessage(stringId);

@@ -54,7 +54,7 @@
 #include "engine/engine.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
@@ -96,7 +96,7 @@ public:
 
 			} else if (meditateMod >= 75) { // Meditate SkillMod +75 for wound Healing..
 
-				ParameterizedStringId healParams;
+				StringIdChatParameter healParams;
 
 				//Here we are checking to see which pools have wounds, and we add them to a vector...
 				Vector<uint8> woundedPools;

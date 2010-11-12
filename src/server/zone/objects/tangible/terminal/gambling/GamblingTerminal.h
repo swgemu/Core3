@@ -94,20 +94,14 @@ class GamblingEvent;
 using namespace server::zone::managers::minigames::events;
 
 namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace variables {
+namespace chat {
 
-class ParameterizedStringId;
+class StringIdChatParameter;
 
-} // namespace variables
-} // namespace scene
-} // namespace objects
-} // namespace zone
+} // namespace chat
 } // namespace server
 
-using namespace server::zone::objects::scene::variables;
+using namespace server::chat;
 
 #include "server/zone/templates/tangible/GamblingTerminalTemplate.h"
 
@@ -238,9 +232,9 @@ public:
 
 	bool gameRunning();
 
-	void notifyOthers(PlayerCreature* player, ParameterizedStringId* text);
+	void notifyOthers(PlayerCreature* player, StringIdChatParameter* text);
 
-	void notifyAll(ParameterizedStringId* text);
+	void notifyAll(StringIdChatParameter* text);
 
 	bool checkJoin(PlayerCreature* player);
 
@@ -425,9 +419,9 @@ public:
 
 	bool gameRunning();
 
-	void notifyOthers(PlayerCreature* player, ParameterizedStringId* text);
+	void notifyOthers(PlayerCreature* player, StringIdChatParameter* text);
 
-	void notifyAll(ParameterizedStringId* text);
+	void notifyAll(StringIdChatParameter* text);
 
 	bool checkJoin(PlayerCreature* player);
 

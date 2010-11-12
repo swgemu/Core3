@@ -81,8 +81,7 @@ public:
 			playerCreature->getPlayerObject()->addWaypoint(waypoint, false, true);
 
 			// Send Waypoint System Message
-			ChatSystemMessage* surveyWaypointMessage = new ChatSystemMessage("survey", "survey_waypoint");
-			playerCreature->sendMessage(surveyWaypointMessage);
+			playerCreature->sendSystemMessage("@survey:survey_waypoint");
 		}
 
 		playerCreature->removePendingTask("survey");

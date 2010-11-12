@@ -162,7 +162,7 @@ public:
 		}
 
 		if (creatureTarget != creature) {
-			ParameterizedStringId stringId("healing_response", "healing_response_80");
+			StringIdChatParameter stringId("healing_response", "healing_response_80");
 			stringId.setTT(creatureTarget->getObjectID());
 		} else {
 			creature->sendSystemMessage("healing_response", "healing_response_78"); //You are not bleeding.

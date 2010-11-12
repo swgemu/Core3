@@ -14,8 +14,8 @@ public:
 		insertShort(0x03);
 		insertInt(0x4EB0B06A);  // CRC
 
-		insertLong(0);
-		insertByte(0);
+		insertLong(0); //Object id of the flattened theater?
+		insertByte(0); //is it flattened? is it not?
 
 
    }

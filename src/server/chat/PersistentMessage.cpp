@@ -4,6 +4,8 @@
 
 #include "PersistentMessage.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	PersistentMessageStub
  */
@@ -21,13 +23,37 @@ PersistentMessage::~PersistentMessage() {
 }
 
 
-int PersistentMessage::getMailID() {
+void PersistentMessage::sendTo(PlayerCreature* player, bool sendBody) {
 	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addBooleanParameter(sendBody);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendTo(player, sendBody);
+}
+
+Vector<ChatParameter*>* PersistentMessage::getChatParameters() {
+	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getChatParameters();
+}
+
+int PersistentMessage::getMailID() {
+	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -40,22 +66,22 @@ unsigned long long PersistentMessage::getObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
 		return _implementation->getObjectID();
 }
 
-UnicodeString PersistentMessage::getSenderName() {
+String PersistentMessage::getSenderName() {
 	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
-		method.executeWithUnicodeReturn(_return_getSenderName);
+		method.executeWithAsciiReturn(_return_getSenderName);
 		return _return_getSenderName;
 	} else
 		return _implementation->getSenderName();
@@ -67,7 +93,7 @@ unsigned long long PersistentMessage::getReceiverObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -80,7 +106,7 @@ byte PersistentMessage::getStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithByteReturn();
 	} else
@@ -93,7 +119,7 @@ int PersistentMessage::getTimeStamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -106,7 +132,7 @@ UnicodeString PersistentMessage::getBody() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		method.executeWithUnicodeReturn(_return_getBody);
 		return _return_getBody;
@@ -120,7 +146,7 @@ UnicodeString PersistentMessage::getSubject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithUnicodeReturn(_return_getSubject);
 		return _return_getSubject;
@@ -128,14 +154,14 @@ UnicodeString PersistentMessage::getSubject() {
 		return _implementation->getSubject();
 }
 
-void PersistentMessage::setSenderName(const UnicodeString& name) {
+void PersistentMessage::setSenderName(const String& name) {
 	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
-		method.addUnicodeParameter(name);
+		DistributedMethod method(this, 15);
+		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
 	} else
@@ -148,7 +174,7 @@ void PersistentMessage::setReceiverObjectID(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -162,7 +188,7 @@ void PersistentMessage::setStatus(byte stat) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addByteParameter(stat);
 
 		method.executeWithVoidReturn();
@@ -176,7 +202,7 @@ void PersistentMessage::setTimeStamp(int stamp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addSignedIntParameter(stamp);
 
 		method.executeWithVoidReturn();
@@ -190,7 +216,7 @@ void PersistentMessage::setBody(const UnicodeString& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addUnicodeParameter(message);
 
 		method.executeWithVoidReturn();
@@ -204,7 +230,7 @@ void PersistentMessage::setSubject(const UnicodeString& subj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addUnicodeParameter(subj);
 
 		method.executeWithVoidReturn();
@@ -212,22 +238,52 @@ void PersistentMessage::setSubject(const UnicodeString& subj) {
 		_implementation->setSubject(subj);
 }
 
-void PersistentMessage::setParameterizedBody(ParameterizedStringId& body) {
+bool PersistentMessage::isNew() {
 	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
 	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, 21);
+
+		return method.executeWithBooleanReturn();
 	} else
-		_implementation->setParameterizedBody(body);
+		return _implementation->isNew();
 }
 
-ParameterizedStringId* PersistentMessage::getParameterizedBody() {
+bool PersistentMessage::isRead() {
+	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isRead();
+}
+
+bool PersistentMessage::isUnread() {
+	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isUnread();
+}
+
+void PersistentMessage::addChatParameter(ChatParameter& param) {
 	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getParameterizedBody();
+		_implementation->addChatParameter(param);
 }
 
 DistributedObjectServant* PersistentMessage::_getImplementation() {
@@ -308,90 +364,107 @@ void PersistentMessageImplementation::_serializationHelperMethod() {
 	_setClassName("PersistentMessage");
 
 	addSerializableVariable("senderName", &senderName);
-	addSerializableVariable("type", &type);
 	addSerializableVariable("subject", &subject);
 	addSerializableVariable("body", &body);
 	addSerializableVariable("timeStamp", &timeStamp);
 	addSerializableVariable("status", &status);
-	addSerializableVariable("stringIdBody", &stringIdBody);
 	addSerializableVariable("receiverObjectID", &receiverObjectID);
+	addSerializableVariable("parameters", &parameters);
 }
 
 PersistentMessageImplementation::PersistentMessageImplementation() {
 	_initializeImplementation();
-	// server/chat/PersistentMessage.idl(65):  		type = 0;
-	type = 0;
-	// server/chat/PersistentMessage.idl(67):  		timeStamp = 0;
-	timeStamp = 0;
-	// server/chat/PersistentMessage.idl(68):  		status = 0x4E;
-	status = 0x4E;
-	// server/chat/PersistentMessage.idl(70):  		receiverObjectID = 0;
+	// server/chat/PersistentMessage.idl(70):  		timeStamp = System.getTime();
+	timeStamp = System::getTime();
+	// server/chat/PersistentMessage.idl(71):  		status = NEW;
+	status = NEW;
+	// server/chat/PersistentMessage.idl(73):  		receiverObjectID = 0;
 	receiverObjectID = 0;
 }
 
-UnicodeString PersistentMessageImplementation::getSenderName() {
-	// server/chat/PersistentMessage.idl(78):  		return senderName;
+Vector<ChatParameter*>* PersistentMessageImplementation::getChatParameters() {
+	// server/chat/PersistentMessage.idl(80):  		return parameters;
+	return (&parameters);
+}
+
+String PersistentMessageImplementation::getSenderName() {
+	// server/chat/PersistentMessage.idl(88):  		return senderName;
 	return senderName;
 }
 
 unsigned long long PersistentMessageImplementation::getReceiverObjectID() {
-	// server/chat/PersistentMessage.idl(82):  		return receiverObjectID;
+	// server/chat/PersistentMessage.idl(92):  		return receiverObjectID;
 	return receiverObjectID;
 }
 
 byte PersistentMessageImplementation::getStatus() {
-	// server/chat/PersistentMessage.idl(86):  		return status;
+	// server/chat/PersistentMessage.idl(96):  		return status;
 	return status;
 }
 
 int PersistentMessageImplementation::getTimeStamp() {
-	// server/chat/PersistentMessage.idl(90):  		return timeStamp;
+	// server/chat/PersistentMessage.idl(100):  		return timeStamp;
 	return timeStamp;
 }
 
 UnicodeString PersistentMessageImplementation::getBody() {
-	// server/chat/PersistentMessage.idl(94):  		return body;
+	// server/chat/PersistentMessage.idl(104):  		return body;
 	return body;
 }
 
 UnicodeString PersistentMessageImplementation::getSubject() {
-	// server/chat/PersistentMessage.idl(98):  		return subject;
+	// server/chat/PersistentMessage.idl(108):  		return subject;
 	return subject;
 }
 
-void PersistentMessageImplementation::setSenderName(const UnicodeString& name) {
-	// server/chat/PersistentMessage.idl(102):  		senderName = name;
+void PersistentMessageImplementation::setSenderName(const String& name) {
+	// server/chat/PersistentMessage.idl(112):  		senderName = name;
 	senderName = name;
 }
 
 void PersistentMessageImplementation::setReceiverObjectID(unsigned long long oid) {
-	// server/chat/PersistentMessage.idl(106):  		receiverObjectID = oid;
+	// server/chat/PersistentMessage.idl(116):  		receiverObjectID = oid;
 	receiverObjectID = oid;
 }
 
 void PersistentMessageImplementation::setStatus(byte stat) {
-	// server/chat/PersistentMessage.idl(110):  		status = stat;
+	// server/chat/PersistentMessage.idl(120):  		status = stat;
 	status = stat;
 }
 
 void PersistentMessageImplementation::setTimeStamp(int stamp) {
-	// server/chat/PersistentMessage.idl(114):  		timeStamp = stamp;
+	// server/chat/PersistentMessage.idl(124):  		timeStamp = stamp;
 	timeStamp = stamp;
 }
 
 void PersistentMessageImplementation::setBody(const UnicodeString& message) {
-	// server/chat/PersistentMessage.idl(118):  		body = message;
+	// server/chat/PersistentMessage.idl(128):  		body = message;
 	body = message;
 }
 
 void PersistentMessageImplementation::setSubject(const UnicodeString& subj) {
-	// server/chat/PersistentMessage.idl(122):  		subject = subj;
+	// server/chat/PersistentMessage.idl(132):  		subject = subj;
 	subject = subj;
 }
 
-ParameterizedStringId* PersistentMessageImplementation::getParameterizedBody() {
-	// server/chat/PersistentMessage.idl(130):  		return stringIdBody;
-	return (&stringIdBody);
+bool PersistentMessageImplementation::isNew() {
+	// server/chat/PersistentMessage.idl(136):  		return status == NEW;
+	return status == NEW;
+}
+
+bool PersistentMessageImplementation::isRead() {
+	// server/chat/PersistentMessage.idl(140):  		return status == READ;
+	return status == READ;
+}
+
+bool PersistentMessageImplementation::isUnread() {
+	// server/chat/PersistentMessage.idl(144):  		return status == UNREAD;
+	return status == UNREAD;
+}
+
+void PersistentMessageImplementation::addChatParameter(ChatParameter& param) {
+	// server/chat/PersistentMessage.idl(149):  		parameters.add(param);
+	(&parameters)->add((&param));
 }
 
 /*
@@ -406,52 +479,68 @@ Packet* PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case 6:
-		resp->insertSignedInt(getMailID());
+		sendTo((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 7:
-		resp->insertLong(getObjectID());
+		resp->insertSignedInt(getMailID());
 		break;
 	case 8:
-		resp->insertUnicode(getSenderName());
+		resp->insertLong(getObjectID());
 		break;
 	case 9:
-		resp->insertLong(getReceiverObjectID());
+		resp->insertAscii(getSenderName());
 		break;
 	case 10:
-		resp->insertByte(getStatus());
+		resp->insertLong(getReceiverObjectID());
 		break;
 	case 11:
-		resp->insertSignedInt(getTimeStamp());
+		resp->insertByte(getStatus());
 		break;
 	case 12:
-		resp->insertUnicode(getBody());
+		resp->insertSignedInt(getTimeStamp());
 		break;
 	case 13:
-		resp->insertUnicode(getSubject());
+		resp->insertUnicode(getBody());
 		break;
 	case 14:
-		setSenderName(inv->getUnicodeParameter(_param0_setSenderName__UnicodeString_));
+		resp->insertUnicode(getSubject());
 		break;
 	case 15:
-		setReceiverObjectID(inv->getUnsignedLongParameter());
+		setSenderName(inv->getAsciiParameter(_param0_setSenderName__String_));
 		break;
 	case 16:
-		setStatus(inv->getByteParameter());
+		setReceiverObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 17:
-		setTimeStamp(inv->getSignedIntParameter());
+		setStatus(inv->getByteParameter());
 		break;
 	case 18:
-		setBody(inv->getUnicodeParameter(_param0_setBody__UnicodeString_));
+		setTimeStamp(inv->getSignedIntParameter());
 		break;
 	case 19:
+		setBody(inv->getUnicodeParameter(_param0_setBody__UnicodeString_));
+		break;
+	case 20:
 		setSubject(inv->getUnicodeParameter(_param0_setSubject__UnicodeString_));
+		break;
+	case 21:
+		resp->insertBoolean(isNew());
+		break;
+	case 22:
+		resp->insertBoolean(isRead());
+		break;
+	case 23:
+		resp->insertBoolean(isUnread());
 		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void PersistentMessageAdapter::sendTo(PlayerCreature* player, bool sendBody) {
+	((PersistentMessageImplementation*) impl)->sendTo(player, sendBody);
 }
 
 int PersistentMessageAdapter::getMailID() {
@@ -462,7 +551,7 @@ unsigned long long PersistentMessageAdapter::getObjectID() {
 	return ((PersistentMessageImplementation*) impl)->getObjectID();
 }
 
-UnicodeString PersistentMessageAdapter::getSenderName() {
+String PersistentMessageAdapter::getSenderName() {
 	return ((PersistentMessageImplementation*) impl)->getSenderName();
 }
 
@@ -486,7 +575,7 @@ UnicodeString PersistentMessageAdapter::getSubject() {
 	return ((PersistentMessageImplementation*) impl)->getSubject();
 }
 
-void PersistentMessageAdapter::setSenderName(const UnicodeString& name) {
+void PersistentMessageAdapter::setSenderName(const String& name) {
 	((PersistentMessageImplementation*) impl)->setSenderName(name);
 }
 
@@ -508,6 +597,18 @@ void PersistentMessageAdapter::setBody(const UnicodeString& message) {
 
 void PersistentMessageAdapter::setSubject(const UnicodeString& subj) {
 	((PersistentMessageImplementation*) impl)->setSubject(subj);
+}
+
+bool PersistentMessageAdapter::isNew() {
+	return ((PersistentMessageImplementation*) impl)->isNew();
+}
+
+bool PersistentMessageAdapter::isRead() {
+	return ((PersistentMessageImplementation*) impl)->isRead();
+}
+
+bool PersistentMessageAdapter::isUnread() {
+	return ((PersistentMessageImplementation*) impl)->isUnread();
 }
 
 /*

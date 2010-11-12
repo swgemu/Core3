@@ -19,7 +19,7 @@
 #include "server/zone/packets/auction/RetrieveAuctionItemResponseMessage.h"
 #include "server/zone/packets/auction/BidAuctionResponseMessage.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
@@ -75,21 +75,18 @@ void BazaarManagerImplementation::checkAuctions() {
 			} else {
 				ChatManager* cman = zoneServer->getChatManager();
 
+				String sender = "auctioner";
+
 				// retrieve failed auctions for owner
 				if (item->getBidderName().length() < 1) {
 					item->setBuyerID(item->getOwnerID());
 					item->setBidderName(item->getOwnerName());
 
 					UnicodeString subject("@auction:subject_auction_unsuccessful");
-					ParameterizedStringId body("auction", "seller_fail");
+					StringIdChatParameter body("auction", "seller_fail");
 					body.setTO(item->getItemName());
 
-					/*StringBuffer message;
-					message << "Your auction of " << item->getItemName() <<
-							" has been completed and has not been purchased.";
-					UnicodeString body(message.toString());*/
-
-					cman->sendMail("Auctioner", subject, body, item->getOwnerName());
+					cman->sendMail(sender, subject, body, item->getOwnerName());
 
 					// bidder won auction. handle transactions and send messages
 				} else {
@@ -100,23 +97,17 @@ void BazaarManagerImplementation::checkAuctions() {
 					player->addBankCredits(item->getPrice());
 					player->updateToDatabase();
 
-					String sender = "Auctioner";
-					//StringBuffer message1;
 					UnicodeString subject1("@auction:subject_auction_seller");
 					UnicodeString subject2("@auction:subject_auction_buyer");
 
-					ParameterizedStringId body1("auction", "seller_success");
+					StringIdChatParameter body1("auction", "seller_success");
 					body1.setTO(item->getItemName());
 					body1.setTT(item->getBidderName());
 					body1.setDI(item->getPrice());
-					/*message1 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
-											<< " for " << item->getPrice() << " credits.";
-
-					UnicodeString body1(message1.toString());*/
 
 					cman->sendMail(sender, subject1, body1, item->getOwnerName());
 
-					ParameterizedStringId body2("auction", "buyer_success");
+					StringIdChatParameter body2("auction", "buyer_success");
 					body2.setTO(item->getItemName());
 					body2.setTT(item->getBidderName());
 					body2.setDI(item->getPrice());
@@ -239,7 +230,7 @@ void BazaarManagerImplementation::addSaleItem(PlayerCreature* player, uint64 obj
 	inventory->updateToDatabase();
 	objectToSell->updateToDatabase();
 
-	ParameterizedStringId str("base_player", "sale_fee");
+	StringIdChatParameter str("base_player", "sale_fee");
 	str.setDI(SALESFEE);
 	str.setUnknownByte(1);
 	BaseMessage* cmsg = new ChatSystemMessage(str);
@@ -271,6 +262,8 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 	ChatManager *cman = zoneServer->getChatManager();
 	PlayerManager *pman = zoneServer->getPlayerManager();
 
+	String sender = "auctioner";
+
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 availableTime = currentTime + 2592000;
@@ -287,7 +280,7 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
 	player->sendMessage(msg);
 
-	ParameterizedStringId body("auction", "buyer_success");
+	StringIdChatParameter body("auction", "buyer_success");
 	body.setTO(item->getItemName());
 	body.setTT(item->getOwnerName());
 	body.setDI(price1);
@@ -300,11 +293,11 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 	//UnicodeString ubody1(body.toString());
 
 	player->sendSystemMessage(body);
-	cman->sendMail("Auctioner", subject1, body, item->getBidderName());
+	cman->sendMail(sender, subject1, body, item->getBidderName());
 
 	// send the seller a message
 
-	ParameterizedStringId body2("auction", "seller_success");
+	StringIdChatParameter body2("auction", "seller_success");
 	body2.setTO(item->getItemName());
 	body2.setTT(item->getBidderName());
 	body2.setDI(price1);
@@ -314,7 +307,7 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 											<< " for " << price1 << " credits.";*/
 	UnicodeString subject2("@auction:subject_instant_seller");
 	//UnicodeString ubody2(body2.toString());
-	cman->sendMail("Auctioner", subject2, body2, item->getOwnerName());
+	cman->sendMail(sender, subject2, body2, item->getOwnerName());
 
 	// pay the seller
 	ManagedReference<PlayerCreature*> seller = pman->getPlayer(item->getOwnerName());
@@ -358,7 +351,7 @@ void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionIt
 
 		ManagedReference<PlayerCreature*> priorBidder = pman->getPlayer(item->getBidderName());
 		//body << playername << " outbid you on " << item->getItemName() << ".";
-		ParameterizedStringId body("auction", "bidder_outbid");
+		StringIdChatParameter body("auction", "bidder_outbid");
 		body.setTO(item->getItemName());
 
 		try {
@@ -380,7 +373,7 @@ void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionIt
 		// mail prior bidder with outcome
 		UnicodeString subject("@auction:subject_auction_outbid");
 
-		cman->sendMail("Bazaar", subject, body, item->getBidderName());
+		cman->sendMail("auctioner", subject, body, item->getBidderName());
 		item->setPrice(price1);
 		item->setBuyerID(player->getObjectID());
 		item->setBidderName(playername);
@@ -471,7 +464,7 @@ void BazaarManagerImplementation::refundAuction(AuctionItem* item) {
 
 	// send the player a mail and system message
 	UnicodeString subject("@auction:subject_auction_cancelled");
-	ParameterizedStringId body("auction", "buyer_canceled" );
+	StringIdChatParameter body("auction", "buyer_canceled" );
 	body.setTO(item->getItemName());
 	body.setTT(item->getOwnerName());
 	/*StringBuffer mess;

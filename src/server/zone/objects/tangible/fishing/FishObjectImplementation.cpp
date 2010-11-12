@@ -39,7 +39,7 @@ void FishObjectImplementation::filet(PlayerCreature* player) {
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 		if ((inventory->hasFullContainerObjects()) || ((inventory->getContainerObjectsSize() + containerObjects.size()) > 80)) {
-			ParameterizedStringId body("fishing","units_inventory");
+			StringIdChatParameter body("fishing","units_inventory");
 			body.setDI(containerObjects.size());
 			player->sendSystemMessage(body);
 

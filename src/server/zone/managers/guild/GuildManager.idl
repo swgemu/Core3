@@ -55,7 +55,7 @@ import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.terminal.guild.GuildTerminal;
 import server.zone.objects.player.PlayerCreature;
 include server.zone.objects.scene.variables.DeltaSet;
-include server.zone.objects.scene.variables.ParameterizedStringId;
+include server.chat.StringIdChatParameter;
 
 class GuildManager extends ManagedService implements Logger {
 	@weakReference
@@ -195,5 +195,5 @@ class GuildManager extends ManagedService implements Logger {
 	public native ChatRoom createGuildChannels(GuildObject guild);
 	
 	@local
-	public native void sendGuildMail(final string subject, @dereferenced ParameterizedStringId body, GuildObject guild);
+	public native void sendGuildMail(final string subject, @dereferenced StringIdChatParameter body, GuildObject guild);
 }

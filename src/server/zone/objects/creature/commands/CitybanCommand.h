@@ -104,7 +104,7 @@ public:
 		if (targetPlayer->getPlayerObject()->isPrivileged()) {
 			player->sendSystemMessage("@city/city:not_csr_ban"); //You cannot ban a Customer Service Representative from the city!
 
-			ParameterizedStringId params;
+			StringIdChatParameter params;
 			params.setStringId("@city/city:csr_ban_attempt_msg");
 			params.setTT(player);
 			params.setTO(cityHall->getCityName());
@@ -122,7 +122,7 @@ public:
 
 		targetPlayer->sendSystemMessage("@city/city:city_banned"); //You have been banned from the this city.  You may no longer use any city services.
 
-		ParameterizedStringId params;
+		StringIdChatParameter params;
 		params.setStringId("@city/city:city_ban_done");
 		params.setTT(targetPlayer);
 		player->sendSystemMessage(params); //%TT has been banned from the city and is no longer able to access city services.

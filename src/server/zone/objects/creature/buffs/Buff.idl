@@ -54,7 +54,7 @@ import system.lang.Time;
 include server.zone.ZoneProcessServer;
 import server.zone.objects.creature.buffs.BuffDurationEvent;
 include server.zone.objects.creature.buffs.BuffType;
-include server.zone.objects.scene.variables.ParameterizedStringId;
+include server.chat.StringIdChatParameter;
 
 class Buff extends ManagedObject implements Logger {
 	@weakReference
@@ -78,9 +78,9 @@ class Buff extends ManagedObject implements Logger {
 	protected boolean fillAttirbutesOnBuff;
 	
 	@dereferenced
-	protected ParameterizedStringId startMessage;
+	protected StringIdChatParameter startMessage;
 	@dereferenced
-	protected ParameterizedStringId endMessage;
+	protected StringIdChatParameter endMessage;
 	
 	@dereferenced
 	protected Time nextExecutionTime; 
@@ -206,7 +206,7 @@ class Buff extends ManagedObject implements Logger {
 	}
 	
 	@local
-	public native void setStartMessage(@dereferenced ParameterizedStringId start);
+	public native void setStartMessage(@dereferenced StringIdChatParameter start);
 	@local
-	public native void setEndMessage(@dereferenced ParameterizedStringId start);
+	public native void setEndMessage(@dereferenced StringIdChatParameter start);
 }

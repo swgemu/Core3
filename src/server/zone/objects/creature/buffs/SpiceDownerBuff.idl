@@ -55,7 +55,7 @@ include server.zone.ZoneProcessServer;
 import server.zone.objects.creature.buffs.BuffDurationEvent;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
-include server.zone.objects.scene.variables.ParameterizedStringId;
+include server.chat.StringIdChatParameter;
 
 class SpiceDownerBuff extends Buff {
 	public SpiceDownerBuff(CreatureObject creo, final string name, unsigned int buffCRC, int duration) {

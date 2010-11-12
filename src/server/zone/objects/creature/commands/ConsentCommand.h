@@ -59,7 +59,7 @@ public:
 	static void consent(PlayerCreature* player, const String& name) {
 		player->addToConsentList(name);
 
-		ParameterizedStringId stringId("base_player", "prose_consent");
+		StringIdChatParameter stringId("base_player", "prose_consent");
 		stringId.setTO(name);
 		player->sendSystemMessage(stringId);
 	}
@@ -109,7 +109,7 @@ public:
 
 			consent(player, playerTarget->getFirstName().toLowerCase());
 
-			ParameterizedStringId stringId2("base_player", "prose_got_consent");
+			StringIdChatParameter stringId2("base_player", "prose_got_consent");
 			stringId2.setTO(player->getObjectID());
 			playerTarget->sendSystemMessage(stringId2);
 		}

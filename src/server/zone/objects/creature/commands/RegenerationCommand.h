@@ -72,7 +72,7 @@ public:
 
 		// Check to see if "innate_regeneration" Cooldown isPast();
 		if (!player->checkCooldownRecovery("innate_regeneration")) {
-			ParameterizedStringId stringId;
+			StringIdChatParameter stringId;
 
 			Time* cdTime = player->getCooldownTime("innate_regeneration");
 
@@ -96,7 +96,7 @@ public:
 
 		regenBuff->setAttributeModifier(CreatureAttribute::CONSTITUTION, regenValue);
 
-		ParameterizedStringId startMsg;
+		StringIdChatParameter startMsg;
 		startMsg.setStringId("@innate:regen_active"); // You feel your blood course through your veins as your body begins to regenerate.
 
 		regenBuff->setStartMessage(startMsg);

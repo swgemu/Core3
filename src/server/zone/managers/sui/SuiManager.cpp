@@ -336,7 +336,7 @@ void SuiManager::handleManageMaintenance(PlayerCreature* player, SuiBox* suiBox,
 	structureObject->addMaintenance(transferTotal);
 	player->substractCashCredits(transferTotal);
 
-	ParameterizedStringId stringId("base_player", "prose_pay_success");
+	StringIdChatParameter stringId("base_player", "prose_pay_success");
 	stringId.setTT(structureObject->getObjectID());
 	stringId.setDI(transferTotal);
 
@@ -380,7 +380,7 @@ void SuiManager::handleAddEnergy(PlayerCreature* player, SuiBox* suiBox, uint32 
 		installation->addPower(energy);
 		resourceManager->removePowerFromPlayer(player, energy);
 
-		ParameterizedStringId stringId("player_structure", "deposit_successful");
+		StringIdChatParameter stringId("player_structure", "deposit_successful");
 		stringId.setDI(energy);
 
 		player->sendSystemMessage(stringId);
@@ -764,7 +764,7 @@ void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox
 			item->sendTo(player, true);
 			inventory->addObject(item, -1, true);
 
-			ParameterizedStringId stringId;
+			StringIdChatParameter stringId;
 			stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
 			stringId.setTO(item);
 			player->sendSystemMessage(stringId);
@@ -945,7 +945,7 @@ void SuiManager::handleTeachPlayer(PlayerCreature* player, SuiBox* suiBox, uint3
 
 	//student->setTeachingOffer(listBox->getTeachingSkillOption(value));
 
-	ParameterizedStringId message("teaching","offer_given");
+	StringIdChatParameter message("teaching","offer_given");
 	message.setTT(student->getFirstName());
 	message.setTO("skl_n", listBox->getTeachingSkillOption(value));
 	player->sendSystemMessage(message);
@@ -983,7 +983,7 @@ void SuiManager::handleTeachSkill(PlayerCreature* player, SuiBox* suiBox, uint32
 	String teachingOffer = listBox->getTeachingOffer();
 
 	if (cancel != 0) {
-		ParameterizedStringId message("teaching","offer_refused");
+		StringIdChatParameter message("teaching","offer_refused");
 		message.setTT(player->getObjectID());
 		message.setTO("skl_n", teachingOffer);
 		listBox->getTeacher()->sendSystemMessage(message);
@@ -1000,7 +1000,7 @@ void SuiManager::handleTeachSkill(PlayerCreature* player, SuiBox* suiBox, uint32
 
 
 	if (!player->isInRange(teacher, 128)) {
-		ParameterizedStringId message("teaching","teacher_too_far_target");
+		StringIdChatParameter message("teaching","teacher_too_far_target");
 		message.setTT(teacher->getObjectID());
 		message.setTO("skl_n", teachingOffer);
 		player->sendSystemMessage(message);
@@ -1013,7 +1013,7 @@ void SuiManager::handleTeachSkill(PlayerCreature* player, SuiBox* suiBox, uint32
 	ManagedReference<GroupObject*> group = player->getGroup();
 
 	if (group == NULL || !group->hasMember(teacher)) {
-		ParameterizedStringId message("teaching","not_in_same_group");
+		StringIdChatParameter message("teaching","not_in_same_group");
 		message.setTT(listBox->getTeacher()->getObjectID());
 		player->sendSystemMessage(message);
 

@@ -126,7 +126,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 	}
 
 	if (missionCount >= 2) {
-		ParameterizedStringId stringId("mission/mission_generic", "too_many_missions");
+		StringIdChatParameter stringId("mission/mission_generic", "too_many_missions");
 		player->sendSystemMessage(stringId);
 		return;
 	}
@@ -134,7 +134,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 	// why are we limiting to one survey mission?
 	/*if (mission->isSurveyMission()) {
 		if (hasSurveyMission(player, mission->getTargetName())) {
-			ParameterizedStringId stringId("mission/mission_generic", "npc_job_request_already_have");
+			StringIdChatParameter stringId("mission/mission_generic", "npc_job_request_already_have");
 			player->sendSystemMessage(stringId);
 
 			return;

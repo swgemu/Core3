@@ -61,7 +61,7 @@ public:
 	static void unconscent(PlayerCreature* player, const String& name) {
 		player->removeFromConsentList(name);
 
-		ParameterizedStringId stringId("base_player", "prose_unconsent");
+		StringIdChatParameter stringId("base_player", "prose_unconsent");
 		stringId.setTO(name);
 		player->sendSystemMessage(stringId);
 	}
@@ -101,7 +101,7 @@ public:
 
 			unconscent(player, playerTarget->getFirstName().toLowerCase());
 
-			ParameterizedStringId stringId2("base_player", "prose_lost_consent");
+			StringIdChatParameter stringId2("base_player", "prose_lost_consent");
 			stringId2.setTO(creature->getObjectID());
 			playerTarget->sendSystemMessage(stringId2);
 		}

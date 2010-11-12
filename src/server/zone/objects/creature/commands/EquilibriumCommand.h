@@ -70,7 +70,7 @@ public:
 
 		// Check to see if "innate_equilibrium" Cooldown isPast();
 		if (!player->checkCooldownRecovery("innate_equilibrium")) {
-			ParameterizedStringId stringId;
+			StringIdChatParameter stringId;
 
 			Time* cdTime = player->getCooldownTime("innate_equilibrium");
 

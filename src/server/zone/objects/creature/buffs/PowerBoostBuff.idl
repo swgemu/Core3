@@ -56,7 +56,7 @@ import server.zone.objects.creature.buffs.PowerBoostBuffDurationEvent;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
 include server.zone.objects.creature.buffs.BuffCRC;
-include server.zone.objects.scene.variables.ParameterizedStringId;
+include server.chat.StringIdChatParameter;
 
 
 class PowerBoostBuff extends Buff {
