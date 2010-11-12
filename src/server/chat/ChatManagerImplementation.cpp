@@ -640,7 +640,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	player->addPersistentMessage(mail->getObjectID());
 
 	if (player->isOnline())
-		mail->sendTo(player, true);
+		mail->sendTo(player, false);
 
 	player->updateToDatabase();
 }
