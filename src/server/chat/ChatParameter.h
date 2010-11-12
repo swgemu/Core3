@@ -13,7 +13,7 @@
 namespace server {
 namespace chat {
 
-class ChatParameter {
+class ChatParameter : public virtual Object {
 protected:
 	virtual void addToPacketStream(Message* packet) = 0;
 

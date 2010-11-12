@@ -23,3 +23,8 @@ void PersistentMessageImplementation::sendTo(PlayerCreature* player, bool sendBo
 	ChatPersistentMessageToClient* mail = new ChatPersistentMessageToClient(_this, sendBody);
 	player->sendMessage(mail);
 }
+
+
+void PersistentMessageImplementation::addChatParameter(StringIdChatParameter& param) {
+	parameters.add(param);
+}

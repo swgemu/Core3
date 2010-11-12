@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "server/chat/ChatParameter.h"
+#include "server/chat/ChatParameterVector.h"
 #include "server/chat/PersistentMessage.h"
 #include "server/chat/StringIdChatParameter.h"
 
@@ -55,17 +56,17 @@ class ChatPersistentMessageToClient : public BaseMessage {
 		int offset = getOffset();
 		insertInt(0); //size
 
-		System::out << "insertParameters()" << endl;
+		//System::out << "insertParameters()" << endl;
 
-		Vector<ChatParameter*>* parameters = mail->getChatParameters();
+		ChatParameterVector* parameters = mail->getChatParameters();
 
 		for (int i = 0; i < parameters->size(); ++i) {
-			ChatParameter* parameter = parameters->get(i);
+			StringIdChatParameter* parameter = &parameters->get(i);
 
 			if (parameter == NULL)
 				continue;
 
-			System::out << "found one" << endl;
+			//System::out << "found one" << endl;
 
 			parameter->insertToMessage(this);
 		}

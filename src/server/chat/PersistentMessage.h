@@ -27,6 +27,8 @@ using namespace server::zone::objects::player;
 
 #include "server/chat/ChatParameter.h"
 
+#include "server/chat/ChatParameterVector.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "system/lang/System.h"
@@ -48,7 +50,7 @@ public:
 
 	void sendTo(PlayerCreature* player, bool sendBody = true);
 
-	Vector<ChatParameter*>* getChatParameters();
+	ChatParameterVector* getChatParameters();
 
 	int getMailID();
 
@@ -84,7 +86,7 @@ public:
 
 	bool isUnread();
 
-	void addChatParameter(ChatParameter& param);
+	void addChatParameter(StringIdChatParameter& param);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -126,7 +128,7 @@ protected:
 
 	unsigned long long receiverObjectID;
 
-	Vector<ChatParameter*> parameters;
+	ChatParameterVector parameters;
 
 public:
 	static const byte NEW = 0x4E;
@@ -141,7 +143,7 @@ public:
 
 	virtual void sendTo(PlayerCreature* player, bool sendBody = true);
 
-	Vector<ChatParameter*>* getChatParameters();
+	ChatParameterVector* getChatParameters();
 
 	int getMailID();
 
@@ -177,7 +179,7 @@ public:
 
 	bool isUnread();
 
-	void addChatParameter(ChatParameter& param);
+	void addChatParameter(StringIdChatParameter& param);
 
 	PersistentMessage* _this;
 

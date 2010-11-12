@@ -29,7 +29,10 @@ public:
 	}
 
 	void run() {
-		CreatureObject* object = (CreatureObject*) client->getPlayer();
+		ManagedReference<CreatureObject*> object = (CreatureObject*) client->getPlayer();
+
+		if (object == NULL)
+			return;
 
 		//object->info("received target update");
 
