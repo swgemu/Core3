@@ -127,6 +127,8 @@ public:
 		return *this;
 	}
 
+	void parse(Message* message);
+
 	/**
 	* Sets the TT variable
 	* @pre { obj is one of the following:

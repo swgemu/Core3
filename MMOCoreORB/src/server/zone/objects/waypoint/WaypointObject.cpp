@@ -181,6 +181,32 @@ void WaypointObject::toggleStatus() {
 		_implementation->toggleStatus();
 }
 
+bool WaypointObject::isActive() {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isActive();
+}
+
+byte WaypointObject::getColor() {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithByteReturn();
+	} else
+		return _implementation->getColor();
+}
+
 DistributedObjectServant* WaypointObject::_getImplementation() {
 
 	_updated = true;
@@ -323,6 +349,16 @@ void WaypointObjectImplementation::toggleStatus() {
 	active = !active;
 }
 
+bool WaypointObjectImplementation::isActive() {
+	// server/zone/objects/waypoint/WaypointObject.idl(88):  		return active;
+	return active;
+}
+
+byte WaypointObjectImplementation::getColor() {
+	// server/zone/objects/waypoint/WaypointObject.idl(92):  		return color;
+	return color;
+}
+
 /*
  *	WaypointObjectAdapter
  */
@@ -363,6 +399,12 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 15:
 		toggleStatus();
+		break;
+	case 16:
+		resp->insertBoolean(isActive());
+		break;
+	case 17:
+		resp->insertByte(getColor());
 		break;
 	default:
 		return NULL;
@@ -409,6 +451,14 @@ int WaypointObjectAdapter::getSpecialTypeID() {
 
 void WaypointObjectAdapter::toggleStatus() {
 	((WaypointObjectImplementation*) impl)->toggleStatus();
+}
+
+bool WaypointObjectAdapter::isActive() {
+	return ((WaypointObjectImplementation*) impl)->isActive();
+}
+
+byte WaypointObjectAdapter::getColor() {
+	return ((WaypointObjectImplementation*) impl)->getColor();
 }
 
 /*

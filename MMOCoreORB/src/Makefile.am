@@ -387,6 +387,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/PersistentMessageImplementation.cpp \
 		server/chat/ChatParameter.cpp \
 		server/chat/StringIdChatParameter.cpp \
+		server/chat/WaypointChatParameter.cpp \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/managers/terrain/TerrainManager.cpp \

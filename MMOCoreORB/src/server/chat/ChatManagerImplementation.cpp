@@ -31,6 +31,7 @@
 #include "room/ChatRoomMap.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 
+
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;
 
@@ -497,25 +498,44 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature*
 	}
 }
 
+//TODO: Refactor into a sendInstantMessage() method that returns a returnCode.
 void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
 	ManagedReference<PlayerCreature*> sender = (PlayerCreature*) message->getClient()->getPlayer();
 
 	if (sender == NULL)
 		return;
 
-	PlayerCreature* receiver = getPlayer(message->getName());
+	uint32 sequence = message->getSequence();
+
+	ManagedReference<PlayerCreature*> receiver = getPlayer(message->getName());
 
 	if (receiver == NULL || !receiver->isOnline()) {
-		BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), true);
+		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_OFFLINE);
 		sender->sendMessage(amsg);
 
 		return;
 	}
 
-	BaseMessage* msg = new ChatInstantMessageToClient(message->getGame(), message->getGalaxy(), sender->getFirstName(), message->getMessage());
+	if (receiver->getPlayerObject()->isIgnoring(sender->getFirstName())) {
+		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_IGNORED);
+		sender->sendMessage(amsg);
+
+		return;
+	}
+
+	UnicodeString text = message->getMessage();
+
+	if (text.length() > IM_MAXSIZE) {
+		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_TOOLONG);
+		sender->sendMessage(amsg);
+
+		return;
+	}
+
+	BaseMessage* msg = new ChatInstantMessageToClient(message->getGame(), message->getGalaxy(), sender->getFirstName(), text);
 	receiver->sendMessage(msg);
 
-	BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), false);
+	BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), IM_SUCCESS);
 	sender->sendMessage(amsg);
 }
 
@@ -645,7 +665,62 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	player->updateToDatabase();
 }
 
-int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName) {
+int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters) {
+	uint64 receiverObjectID = playerManager->getObjectID(recipientName);
+
+	ManagedReference<SceneObject*> obj = server->getObject(receiverObjectID);
+
+	if (obj == NULL || !obj->isPlayerCreature())
+		return IM_OFFLINE;
+
+	if (body.length() > PM_MAXSIZE)
+		return IM_TOOLONG;
+
+	PlayerCreature* receiver = (PlayerCreature*) obj.get();
+
+	if (receiver->getPlayerObject()->isIgnoring(sendername))
+		return IM_IGNORED;
+
+	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
+	mail->setSenderName(sendername);
+	mail->setSubject(subject);
+	mail->setBody(body);
+
+	for (int i = 0; i < stringIdParameters->size(); ++i) {
+		StringIdChatParameter* param = &stringIdParameters->get(i);
+
+		if (param == NULL)
+			continue;
+
+		mail->addStringIdParameter(*param);
+	}
+
+	for (int i = 0; i < waypointParameters->size(); ++i) {
+		WaypointChatParameter* param = &waypointParameters->get(i);
+
+		if (param == NULL)
+			continue;
+
+		mail->addWaypointParameter(*param);
+	}
+
+	mail->setReceiverObjectID(receiverObjectID);
+
+	ObjectManager::instance()->persistObject(mail, 1, "mail");
+
+	Locker _locker(receiver);
+
+	receiver->addPersistentMessage(mail->getObjectID());
+
+	if (receiver->isOnline())
+		mail->sendTo(receiver, false);
+
+	receiver->updateToDatabase();
+
+	return IM_SUCCESS;
+}
+
+int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName, WaypointObject* waypoint) {
 	uint64 receiverObjectID = playerManager->getObjectID(recipientName);
 
 	ManagedReference<SceneObject*> obj = server->getObject(receiverObjectID);
@@ -664,7 +739,12 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
 	mail->setSenderName(sendername);
 	mail->setSubject(subject);
-	mail->addChatParameter(body);
+	mail->addStringIdParameter(body);
+
+	if (waypoint != NULL) {
+		WaypointChatParameter waypointParam(waypoint);
+		mail->addWaypointParameter(waypointParam);
+	}
 	mail->setReceiverObjectID(receiverObjectID);
 
 	ObjectManager::instance()->persistObject(mail, 1, "mail");

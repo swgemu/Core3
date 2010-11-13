@@ -51,14 +51,11 @@ which carries forward this exception.
 
 class ChatOnSendPersistentMessage : public BaseMessage {
 public:
-	ChatOnSendPersistentMessage(uint32 seq, bool failed = false) : BaseMessage() {
+	ChatOnSendPersistentMessage(uint32 seq, int returnCode) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x94E7A7AE);  // CRC
 
-		if (failed)
-			insertInt(4);
-		else
-			insertInt(0);
+		insertInt(returnCode);
 			
 		insertInt(seq);
 	} 
