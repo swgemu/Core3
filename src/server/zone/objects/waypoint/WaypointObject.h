@@ -98,6 +98,10 @@ public:
 
 	void toggleStatus();
 
+	bool isActive();
+
+	byte getColor();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -193,6 +197,10 @@ public:
 
 	void toggleStatus();
 
+	bool isActive();
+
+	byte getColor();
+
 	WaypointObject* _this;
 
 	operator const WaypointObject*();
@@ -251,6 +259,10 @@ public:
 	int getSpecialTypeID();
 
 	void toggleStatus();
+
+	bool isActive();
+
+	byte getColor();
 
 protected:
 	UnicodeString _param0_setCustomName__UnicodeString_;

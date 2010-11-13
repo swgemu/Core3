@@ -143,7 +143,27 @@ class ObjectController;
 
 using namespace server::zone::managers::objectcontroller;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace waypoint {
+
+class WaypointObject;
+
+} // namespace waypoint
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::waypoint;
+
 #include "server/chat/StringIdChatParameter.h"
+
+#include "server/chat/WaypointChatParameter.h"
+
+#include "server/chat/StringIdChatParameterVector.h"
+
+#include "server/chat/WaypointChatParameterVector.h"
 
 #include "engine/core/ManagedService.h"
 
@@ -222,7 +242,9 @@ public:
 
 	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
-	int sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName);
+	int sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName, WaypointObject* waypoint = NULL);
+
+	int sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters);
 
 	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
 
@@ -352,7 +374,9 @@ public:
 
 	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
-	int sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName);
+	int sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName, WaypointObject* waypoint = NULL);
+
+	int sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters);
 
 	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
 

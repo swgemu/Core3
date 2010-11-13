@@ -15,45 +15,67 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 
+#include "server/chat/StringIdChatParameterVector.h"
+#include "server/chat/WaypointChatParameterVector.h"
+
+#include "server/zone/packets/chat/ChatOnSendPersistentMessage.h"
+
 class ChatPersistentMessageToServerCallback : public MessageCallback {
-	UnicodeString header, body, wpName;
-	int wpInfoSize;
-	uint32 planetCrc;
-	float wpX, wpY;
+	UnicodeString header;
+	UnicodeString body;
 	String recipientName;
+	uint32 sequence;
+
+	StringIdChatParameterVector stringIdParameters;
+	WaypointChatParameterVector waypointParameters;
 
 public:
 	ChatPersistentMessageToServerCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
-		wpInfoSize = 0;
+
+		sequence = 0;
 	}
 
 	void parse(Message* message) {
 		message->parseUnicode(body);
 
-		//Handle Attachments: (see docs for more info on unk's)
-		wpInfoSize = message->parseInt();
+		int parametersSize = message->parseInt() * 2;
 
-		if (wpInfoSize > 0) {
-			System::out << message->toStringData() << endl;
-			return;
-			/*message->shiftOffset(11); //Shift past the STF param start(7) + unk int(4)
-				wpX = message->parseFloat();
-				message->shiftOffset(4); //skip Z, always 0.0f
-				wpY = message->parseFloat();
-				message->shiftOffset(4); //skip blank WP objid
-				planetCrc = message->parseInt();
-				message->parseUnicode(wpName);
-				message->shiftOffset(11); //skip attachment footer*/
+		if (parametersSize > 0) {
+			int initialOffset = message->getOffset();
+
+			while (message->getOffset() < initialOffset + parametersSize) {
+				uint16 appendedByte = message->parseShort();
+				message->shiftOffset(1); //Skip the initial type byte. We'll switch on the second type.
+				int type = message->parseInt();
+
+				switch (type) {
+				default:
+				case ChatParameter::STRINGID:
+				{
+					StringIdChatParameter param;
+					param.parse(message);
+					stringIdParameters.add(param);
+					break;
+				}
+				case ChatParameter::WAYPOINT:
+				{
+					WaypointChatParameter param;
+					param.parse(message);
+					waypointParameters.add(param);
+					break;
+				}
+				}
+
+				if (appendedByte > 0)
+					message->shiftOffset(1);
+			}
 		}
 
-		message->shiftOffset(4); //skip the string count
-
+		sequence = message->parseInt();
 		message->parseUnicode(header); //mail subject
 		message->shiftOffset(4); //skip spacer
-
 		message->parseAscii(recipientName);
-
 	}
 
 	void run() {
@@ -62,11 +84,11 @@ public:
 		if (player == NULL)
 			return;
 
-		if (wpInfoSize != 0) // we dont handle attachments yet
-			return;
-
 		ChatManager* chatManager = server->getChatManager();
-		chatManager->sendMail(player->getFirstName(), header, body, recipientName);
+		int result = chatManager->sendMail(player->getFirstName(), header, body, recipientName, &stringIdParameters, &waypointParameters);
+
+		ChatOnSendPersistentMessage* cospm = new ChatOnSendPersistentMessage(sequence, result);
+		player->sendMessage(cospm);
 	}
 
 };

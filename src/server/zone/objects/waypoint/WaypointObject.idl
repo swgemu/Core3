@@ -84,4 +84,12 @@ class WaypointObject extends IntangibleObject {
 		active = !active;
 	}
 	
+	public boolean isActive() {
+		return active;
+	}
+	
+	public byte getColor() {
+		return color;
+	}
+	
 }

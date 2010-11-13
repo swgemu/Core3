@@ -58,8 +58,11 @@ import server.zone.packets.chat.ChatRoomList;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
 import engine.log.Logger;
 import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.objects.waypoint.WaypointObject;
 include server.chat.StringIdChatParameter;
-
+include server.chat.WaypointChatParameter;
+include server.chat.StringIdChatParameterVector;
+include server.chat.WaypointChatParameterVector;
 
 class ChatManager extends ManagedService implements Logger {
 	@weakReference
@@ -147,7 +150,11 @@ class ChatManager extends ManagedService implements Logger {
 	public native void sendMail(final string sendername, final unicode header, final unicode body, final string name);
 	
 	@local
-	public native int sendMail(final string sendername, final unicode subject, @dereferenced StringIdChatParameter body, final string recipientName);
+	public native int sendMail(final string sendername, final unicode subject, @dereferenced StringIdChatParameter body, final string recipientName, WaypointObject waypoint = null);
+	
+	@local
+	public native int sendMail(final string sendername, final unicode subject, final unicode body, final string recipientName, StringIdChatParameterVector stringIdParameters, WaypointChatParameterVector waypointParameters);
+
 	public native void handleRequestPersistentMsg(PlayerCreature player, unsigned int mailID);
 	public native void deletePersistentMessage(PlayerCreature player, unsigned int mailID);
 	

@@ -40,6 +40,7 @@ public:
 	}
 
 	void insertToMessage(Message* message);
+	virtual void parse(Message* message) = 0;
 
 	inline bool isStringIdParameter() {
 		return false;
