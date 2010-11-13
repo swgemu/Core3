@@ -81,7 +81,7 @@ StringIdChatParameter::StringIdChatParameter(const StringIdChatParameter& custom
 	unknownByte = custom.unknownByte;
 }
 
-void StringIdChatParameter::addToPacketStream(Message * packet) {
+void StringIdChatParameter::addToPacketStream(Message* packet) {
 		packet->insertAscii(file);
 		packet->insertInt(0);
 		packet->insertAscii(stringID);
@@ -107,4 +107,8 @@ void StringIdChatParameter::addToPacketStream(Message * packet) {
 		packet->insertInt(DI);
 		packet->insertFloat(DF);
 		packet->insertByte(unknownByte);
+}
+
+void StringIdChatParameter::parse(Message* message) {
+
 }

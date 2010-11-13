@@ -27,7 +27,11 @@ using namespace server::zone::objects::player;
 
 #include "server/chat/ChatParameter.h"
 
-#include "server/chat/ChatParameterVector.h"
+#include "server/chat/StringIdChatParameterVector.h"
+
+#include "server/chat/WaypointChatParameter.h"
+
+#include "server/chat/WaypointChatParameterVector.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -50,7 +54,9 @@ public:
 
 	void sendTo(PlayerCreature* player, bool sendBody = true);
 
-	ChatParameterVector* getChatParameters();
+	StringIdChatParameterVector* getStringIdParameters();
+
+	WaypointChatParameterVector* getWaypointParameters();
 
 	int getMailID();
 
@@ -86,7 +92,9 @@ public:
 
 	bool isUnread();
 
-	void addChatParameter(StringIdChatParameter& param);
+	void addStringIdParameter(StringIdChatParameter& param);
+
+	void addWaypointParameter(WaypointChatParameter& param);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -128,7 +136,9 @@ protected:
 
 	unsigned long long receiverObjectID;
 
-	ChatParameterVector parameters;
+	StringIdChatParameterVector stringIdParameters;
+
+	WaypointChatParameterVector waypointParameters;
 
 public:
 	static const byte NEW = 0x4E;
@@ -143,7 +153,9 @@ public:
 
 	virtual void sendTo(PlayerCreature* player, bool sendBody = true);
 
-	ChatParameterVector* getChatParameters();
+	StringIdChatParameterVector* getStringIdParameters();
+
+	WaypointChatParameterVector* getWaypointParameters();
 
 	int getMailID();
 
@@ -179,7 +191,9 @@ public:
 
 	bool isUnread();
 
-	void addChatParameter(StringIdChatParameter& param);
+	void addStringIdParameter(StringIdChatParameter& param);
+
+	void addWaypointParameter(WaypointChatParameter& param);
 
 	PersistentMessage* _this;
 

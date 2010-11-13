@@ -48,7 +48,9 @@ import engine.core.ManagedObject;
 import system.lang.System;
 import system.util.Vector;
 include server.chat.ChatParameter;
-include server.chat.ChatParameterVector;
+include server.chat.StringIdChatParameterVector;
+include server.chat.WaypointChatParameter;
+include server.chat.WaypointChatParameterVector;
 import server.zone.objects.player.PlayerCreature;
 
 class PersistentMessage extends ManagedObject {
@@ -61,7 +63,10 @@ class PersistentMessage extends ManagedObject {
 	protected unsigned long receiverObjectID;
 	
 	@dereferenced
-	protected ChatParameterVector parameters;
+	protected StringIdChatParameterVector stringIdParameters;
+	
+	@dereferenced
+	protected WaypointChatParameterVector waypointParameters;
 	
 	public static final byte NEW = 0x4E;
 	public static final byte READ = 0x52;
@@ -77,8 +82,13 @@ class PersistentMessage extends ManagedObject {
 	public abstract native void sendTo(PlayerCreature player, boolean sendBody = true);
 	
 	@local
-	public ChatParameterVector getChatParameters() {
-		return parameters;
+	public StringIdChatParameterVector getStringIdParameters() {
+		return stringIdParameters;
+	}
+	
+	@local
+	public WaypointChatParameterVector getWaypointParameters() {
+		return waypointParameters;
 	}
 	
 	public native int getMailID();
@@ -146,5 +156,8 @@ class PersistentMessage extends ManagedObject {
 	}
 	
 	@local
-	public native void addChatParameter(@dereferenced StringIdChatParameter param);
+	public native void addStringIdParameter(@dereferenced StringIdChatParameter param);
+	
+	@local
+	public native void addWaypointParameter(@dereferenced WaypointChatParameter param);
 }

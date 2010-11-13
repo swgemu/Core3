@@ -38,13 +38,22 @@ void PersistentMessage::sendTo(PlayerCreature* player, bool sendBody) {
 		_implementation->sendTo(player, sendBody);
 }
 
-ChatParameterVector* PersistentMessage::getChatParameters() {
+StringIdChatParameterVector* PersistentMessage::getStringIdParameters() {
 	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getChatParameters();
+		return _implementation->getStringIdParameters();
+}
+
+WaypointChatParameterVector* PersistentMessage::getWaypointParameters() {
+	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getWaypointParameters();
 }
 
 int PersistentMessage::getMailID() {
@@ -277,13 +286,22 @@ bool PersistentMessage::isUnread() {
 		return _implementation->isUnread();
 }
 
-void PersistentMessage::addChatParameter(StringIdChatParameter& param) {
+void PersistentMessage::addStringIdParameter(StringIdChatParameter& param) {
 	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->addChatParameter(param);
+		_implementation->addStringIdParameter(param);
+}
+
+void PersistentMessage::addWaypointParameter(WaypointChatParameter& param) {
+	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->addWaypointParameter(param);
 }
 
 DistributedObjectServant* PersistentMessage::_getImplementation() {
@@ -369,96 +387,102 @@ void PersistentMessageImplementation::_serializationHelperMethod() {
 	addSerializableVariable("timeStamp", &timeStamp);
 	addSerializableVariable("status", &status);
 	addSerializableVariable("receiverObjectID", &receiverObjectID);
-	addSerializableVariable("parameters", &parameters);
+	addSerializableVariable("stringIdParameters", &stringIdParameters);
+	addSerializableVariable("waypointParameters", &waypointParameters);
 }
 
 PersistentMessageImplementation::PersistentMessageImplementation() {
 	_initializeImplementation();
-	// server/chat/PersistentMessage.idl(71):  		timeStamp = System.getTime();
+	// server/chat/PersistentMessage.idl(76):  		timeStamp = System.getTime();
 	timeStamp = System::getTime();
-	// server/chat/PersistentMessage.idl(72):  		status = NEW;
+	// server/chat/PersistentMessage.idl(77):  		status = NEW;
 	status = NEW;
-	// server/chat/PersistentMessage.idl(74):  		receiverObjectID = 0;
+	// server/chat/PersistentMessage.idl(79):  		receiverObjectID = 0;
 	receiverObjectID = 0;
 }
 
-ChatParameterVector* PersistentMessageImplementation::getChatParameters() {
-	// server/chat/PersistentMessage.idl(81):  		return parameters;
-	return (&parameters);
+StringIdChatParameterVector* PersistentMessageImplementation::getStringIdParameters() {
+	// server/chat/PersistentMessage.idl(86):  		return stringIdParameters;
+	return (&stringIdParameters);
+}
+
+WaypointChatParameterVector* PersistentMessageImplementation::getWaypointParameters() {
+	// server/chat/PersistentMessage.idl(91):  		return waypointParameters;
+	return (&waypointParameters);
 }
 
 String PersistentMessageImplementation::getSenderName() {
-	// server/chat/PersistentMessage.idl(89):  		return senderName;
+	// server/chat/PersistentMessage.idl(99):  		return senderName;
 	return senderName;
 }
 
 unsigned long long PersistentMessageImplementation::getReceiverObjectID() {
-	// server/chat/PersistentMessage.idl(93):  		return receiverObjectID;
+	// server/chat/PersistentMessage.idl(103):  		return receiverObjectID;
 	return receiverObjectID;
 }
 
 byte PersistentMessageImplementation::getStatus() {
-	// server/chat/PersistentMessage.idl(97):  		return status;
+	// server/chat/PersistentMessage.idl(107):  		return status;
 	return status;
 }
 
 int PersistentMessageImplementation::getTimeStamp() {
-	// server/chat/PersistentMessage.idl(101):  		return timeStamp;
+	// server/chat/PersistentMessage.idl(111):  		return timeStamp;
 	return timeStamp;
 }
 
 UnicodeString PersistentMessageImplementation::getBody() {
-	// server/chat/PersistentMessage.idl(105):  		return body;
+	// server/chat/PersistentMessage.idl(115):  		return body;
 	return body;
 }
 
 UnicodeString PersistentMessageImplementation::getSubject() {
-	// server/chat/PersistentMessage.idl(109):  		return subject;
+	// server/chat/PersistentMessage.idl(119):  		return subject;
 	return subject;
 }
 
 void PersistentMessageImplementation::setSenderName(const String& name) {
-	// server/chat/PersistentMessage.idl(113):  		senderName = name;
+	// server/chat/PersistentMessage.idl(123):  		senderName = name;
 	senderName = name;
 }
 
 void PersistentMessageImplementation::setReceiverObjectID(unsigned long long oid) {
-	// server/chat/PersistentMessage.idl(117):  		receiverObjectID = oid;
+	// server/chat/PersistentMessage.idl(127):  		receiverObjectID = oid;
 	receiverObjectID = oid;
 }
 
 void PersistentMessageImplementation::setStatus(byte stat) {
-	// server/chat/PersistentMessage.idl(121):  		status = stat;
+	// server/chat/PersistentMessage.idl(131):  		status = stat;
 	status = stat;
 }
 
 void PersistentMessageImplementation::setTimeStamp(int stamp) {
-	// server/chat/PersistentMessage.idl(125):  		timeStamp = stamp;
+	// server/chat/PersistentMessage.idl(135):  		timeStamp = stamp;
 	timeStamp = stamp;
 }
 
 void PersistentMessageImplementation::setBody(const UnicodeString& message) {
-	// server/chat/PersistentMessage.idl(129):  		body = message;
+	// server/chat/PersistentMessage.idl(139):  		body = message;
 	body = message;
 }
 
 void PersistentMessageImplementation::setSubject(const UnicodeString& subj) {
-	// server/chat/PersistentMessage.idl(133):  		subject = subj;
+	// server/chat/PersistentMessage.idl(143):  		subject = subj;
 	subject = subj;
 }
 
 bool PersistentMessageImplementation::isNew() {
-	// server/chat/PersistentMessage.idl(137):  		return status == NEW;
+	// server/chat/PersistentMessage.idl(147):  		return status == NEW;
 	return status == NEW;
 }
 
 bool PersistentMessageImplementation::isRead() {
-	// server/chat/PersistentMessage.idl(141):  		return status == READ;
+	// server/chat/PersistentMessage.idl(151):  		return status == READ;
 	return status == READ;
 }
 
 bool PersistentMessageImplementation::isUnread() {
-	// server/chat/PersistentMessage.idl(145):  		return status == UNREAD;
+	// server/chat/PersistentMessage.idl(155):  		return status == UNREAD;
 	return status == UNREAD;
 }
 
