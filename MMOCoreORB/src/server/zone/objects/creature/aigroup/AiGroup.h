@@ -40,7 +40,21 @@ namespace zone {
 namespace managers {
 namespace creature {
 
-class SpawnGroup;
+class StaticSpawnGroup;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace creature {
+
+class DynamicSpawnGroup;
 
 } // namespace creature
 } // namespace managers
@@ -69,7 +83,9 @@ public:
 
 	void setPatrolPoints();
 
-	void setup(SpawnGroup& templ);
+	void setup(StaticSpawnGroup* templ);
+
+	void setup(DynamicSpawnGroup* templ);
 
 	bool isHerdGroup();
 
@@ -109,11 +125,17 @@ protected:
 
 	Vector<ManagedReference<AiAgent* > > scouts;
 
+	Vector<String> scoutTemps;
+
 	PatrolPointsVector scoutPoints;
 
 	Vector<ManagedReference<AiAgent* > > protectors;
 
+	Vector<String> protectorTemps;
+
 	Vector<ManagedReference<AiAgent* > > babies;
+
+	Vector<String> babyTemps;
 
 	PatrolPointsVector closePoints;
 
@@ -121,7 +143,15 @@ protected:
 
 	int commandLevel;
 
-	int maxRange;
+	int wanderRadius;
+
+	int size;
+
+	float scoutWeight;
+
+	float protectorWeight;
+
+	float babyWeight;
 
 public:
 	AiGroupImplementation();
@@ -130,7 +160,9 @@ public:
 
 	void setPatrolPoints();
 
-	void setup(SpawnGroup& templ);
+	void setup(StaticSpawnGroup* templ);
+
+	void setup(DynamicSpawnGroup* templ);
 
 	virtual bool isHerdGroup();
 

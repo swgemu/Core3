@@ -8,7 +8,9 @@
 
 #include "server/zone/objects/creature/AiAgent.h"
 
-#include "server/zone/managers/creature/SpawnGroup.h"
+#include "server/zone/managers/creature/StaticSpawnGroup.h"
+
+#include "server/zone/managers/creature/DynamicSpawnGroup.h"
 
 /*
  *	AiGroupStub
@@ -40,7 +42,16 @@ void AiGroup::setPatrolPoints() {
 		_implementation->setPatrolPoints();
 }
 
-void AiGroup::setup(SpawnGroup& templ) {
+void AiGroup::setup(StaticSpawnGroup* templ) {
+	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setup(templ);
+}
+
+void AiGroup::setup(DynamicSpawnGroup* templ) {
 	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -167,35 +178,46 @@ void AiGroupImplementation::_serializationHelperMethod() {
 
 	addSerializableVariable("leader", &leader);
 	addSerializableVariable("scouts", &scouts);
+	addSerializableVariable("scoutTemps", &scoutTemps);
 	addSerializableVariable("scoutPoints", &scoutPoints);
 	addSerializableVariable("protectors", &protectors);
+	addSerializableVariable("protectorTemps", &protectorTemps);
 	addSerializableVariable("babies", &babies);
+	addSerializableVariable("babyTemps", &babyTemps);
 	addSerializableVariable("closePoints", &closePoints);
 	addSerializableVariable("subgroups", &subgroups);
 	addSerializableVariable("commandLevel", &commandLevel);
-	addSerializableVariable("maxRange", &maxRange);
+	addSerializableVariable("wanderRadius", &wanderRadius);
+	addSerializableVariable("size", &size);
+	addSerializableVariable("scoutWeight", &scoutWeight);
+	addSerializableVariable("protectorWeight", &protectorWeight);
+	addSerializableVariable("babyWeight", &babyWeight);
 }
 
 AiGroupImplementation::AiGroupImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/aigroup/AiGroup.idl(81):  		commandLevel = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(95):  		Logger.setLoggingName("AiGroup");
+	Logger::setLoggingName("AiGroup");
+	// server/zone/objects/creature/aigroup/AiGroup.idl(97):  		commandLevel = 0;
 	commandLevel = 0;
-	// server/zone/objects/creature/aigroup/AiGroup.idl(82):  		maxRange = 0;
-	maxRange = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(98):  		wanderRadius = 0;
+	wanderRadius = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(99):  		size = 0;
+	size = 0;
 }
 
 bool AiGroupImplementation::isHerdGroup() {
-	// server/zone/objects/creature/aigroup/AiGroup.idl(91):  		return false;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(111):  		return false;
 	return false;
 }
 
 bool AiGroupImplementation::isPackGroup() {
-	// server/zone/objects/creature/aigroup/AiGroup.idl(95):  		return false;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(115):  		return false;
 	return false;
 }
 
 bool AiGroupImplementation::isLairGroup() {
-	// server/zone/objects/creature/aigroup/AiGroup.idl(99):  		return false;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(119):  		return false;
 	return false;
 }
 

@@ -51,38 +51,17 @@ import engine.core.ManagedObject;
 import server.zone.objects.creature.AiAgent;
 import server.zone.objects.creature.aigroup.AiGroup;
 import server.zone.objects.area.SpawnObserver;
-import server.zone.objects.area.SpawnStaticAreaCreatureTask;
 import server.zone.objects.scene.Observable;
 
 class StaticSpawnArea extends SpawnArea {
 	@dereferenced
-	protected SortedVector<AiAgent> spawnedAgents;
-	
-	@dereferenced
-	protected SortedVector<AiAgent> unspawnedAgents;
-	
-	@dereferenced
 	protected SortedVector<AiGroup> groups;
 	
-	@dereferenced
-	protected SortedVector<SpawnObserver> observers;
-	
 	public StaticSpawnArea() {
-		spawnCreatures();
-		registerObservers();
+		Logger.setLoggingName("StaticSpawnArea");
 	}
 	
-	public native void registerObservers();
-	
 	public native void spawnCreatures();
-	
-	@local
-	public native SpawnStaticAreaCreatureTask addSpawnTask();
-	
-	public native void doSpawnEvent();
-	public native void doDespawnEvent();
-	
-	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	
 	public abstract boolean isStaticArea() {
 		return true;

@@ -12,8 +12,6 @@
 
 #include "server/zone/objects/area/SpawnObserver.h"
 
-#include "server/zone/objects/area/SpawnStaticAreaCreatureTask.h"
-
 #include "server/zone/objects/scene/Observable.h"
 
 /*
@@ -33,7 +31,7 @@ StaticSpawnArea::~StaticSpawnArea() {
 }
 
 
-void StaticSpawnArea::registerObservers() {
+void StaticSpawnArea::spawnCreatures() {
 	StaticSpawnAreaImplementation* _implementation = (StaticSpawnAreaImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -43,72 +41,7 @@ void StaticSpawnArea::registerObservers() {
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->registerObservers();
-}
-
-void StaticSpawnArea::spawnCreatures() {
-	StaticSpawnAreaImplementation* _implementation = (StaticSpawnAreaImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-
-		method.executeWithVoidReturn();
-	} else
 		_implementation->spawnCreatures();
-}
-
-SpawnStaticAreaCreatureTask* StaticSpawnArea::addSpawnTask() {
-	StaticSpawnAreaImplementation* _implementation = (StaticSpawnAreaImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->addSpawnTask();
-}
-
-void StaticSpawnArea::doSpawnEvent() {
-	StaticSpawnAreaImplementation* _implementation = (StaticSpawnAreaImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->doSpawnEvent();
-}
-
-void StaticSpawnArea::doDespawnEvent() {
-	StaticSpawnAreaImplementation* _implementation = (StaticSpawnAreaImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->doDespawnEvent();
-}
-
-int StaticSpawnArea::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	StaticSpawnAreaImplementation* _implementation = (StaticSpawnAreaImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addUnsignedIntParameter(eventType);
-		method.addObjectParameter(observable);
-		method.addObjectParameter(arg1);
-		method.addSignedLongParameter(arg2);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 bool StaticSpawnArea::isStaticArea() {
@@ -117,7 +50,7 @@ bool StaticSpawnArea::isStaticArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 7);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -201,22 +134,17 @@ void StaticSpawnAreaImplementation::_serializationHelperMethod() {
 
 	_setClassName("StaticSpawnArea");
 
-	addSerializableVariable("spawnedAgents", &spawnedAgents);
-	addSerializableVariable("unspawnedAgents", &unspawnedAgents);
 	addSerializableVariable("groups", &groups);
-	addSerializableVariable("observers", &observers);
 }
 
 StaticSpawnAreaImplementation::StaticSpawnAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/StaticSpawnArea.idl(71):  		spawnCreatures();
-	spawnCreatures();
-	// server/zone/objects/area/StaticSpawnArea.idl(72):  		registerObservers();
-	registerObservers();
+	// server/zone/objects/area/StaticSpawnArea.idl(61):  		Logger.setLoggingName("StaticSpawnArea");
+	Logger::setLoggingName("StaticSpawnArea");
 }
 
 bool StaticSpawnAreaImplementation::isStaticArea() {
-	// server/zone/objects/area/StaticSpawnArea.idl(88):  		return true;
+	// server/zone/objects/area/StaticSpawnArea.idl(67):  		return true;
 	return true;
 }
 
@@ -232,21 +160,9 @@ Packet* StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case 6:
-		registerObservers();
-		break;
-	case 7:
 		spawnCreatures();
 		break;
-	case 8:
-		doSpawnEvent();
-		break;
-	case 9:
-		doDespawnEvent();
-		break;
-	case 10:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
-		break;
-	case 11:
+	case 7:
 		resp->insertBoolean(isStaticArea());
 		break;
 	default:
@@ -256,24 +172,8 @@ Packet* StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	return resp;
 }
 
-void StaticSpawnAreaAdapter::registerObservers() {
-	((StaticSpawnAreaImplementation*) impl)->registerObservers();
-}
-
 void StaticSpawnAreaAdapter::spawnCreatures() {
 	((StaticSpawnAreaImplementation*) impl)->spawnCreatures();
-}
-
-void StaticSpawnAreaAdapter::doSpawnEvent() {
-	((StaticSpawnAreaImplementation*) impl)->doSpawnEvent();
-}
-
-void StaticSpawnAreaAdapter::doDespawnEvent() {
-	((StaticSpawnAreaImplementation*) impl)->doDespawnEvent();
-}
-
-int StaticSpawnAreaAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	return ((StaticSpawnAreaImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 bool StaticSpawnAreaAdapter::isStaticArea() {

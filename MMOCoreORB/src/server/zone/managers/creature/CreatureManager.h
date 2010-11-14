@@ -130,7 +130,7 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
-	void loadDynamicSpawnAreas();
+	void loadSpawnAreas();
 
 	void loadSingleSpawns();
 
@@ -189,7 +189,7 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
-	void loadDynamicSpawnAreas();
+	void loadSpawnAreas();
 
 	void loadSingleSpawns();
 
@@ -254,7 +254,7 @@ public:
 
 	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
 
-	void loadDynamicSpawnAreas();
+	void loadSpawnAreas();
 
 	void loadSingleSpawns();
 

@@ -51,6 +51,7 @@ import server.zone.objects.area.SpawnArea;
 import system.util.SortedVector;
 import system.util.Vector;
 import system.util.VectorMap;
+import engine.util.Vector3;
 import server.zone.managers.object.ObjectManager;
 import engine.core.ManagedObject;
 import server.zone.objects.creature.aigroup.AiGroup;
@@ -80,6 +81,7 @@ class DynamicSpawnArea extends SpawnArea {
 	protected int maxCreaturesToSpawn;
 	
 	public DynamicSpawnArea() {
+		Logger.setLoggingName("DynamicSpawnArea");
 		maxCreaturesToSpawn = 1;
 		
 		playerOccupants.setNoDuplicateInsertPlan();
@@ -91,6 +93,10 @@ class DynamicSpawnArea extends SpawnArea {
 	public native void registerObservers();
 	
 	public native void spawnCreature(unsigned int templateCRC, PlayerObject player);
+	
+	@local
+	@dereferenced
+	public native Vector3 getRandomPosition(PlayerObject player);
 	
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
