@@ -20,6 +20,7 @@ public:
 	const static int OBJECTREMOVEDFROMZONE = 8;
 	const static int ENTEREDAREA = 9;
 	const static int EXITEDAREA = 10;
+	const static int DESTINATIONREACHED = 11;
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

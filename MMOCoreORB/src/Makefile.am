@@ -103,6 +103,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/creature/aigroup/HerdGroup.cpp \
 				server/zone/objects/creature/aigroup/LairGroup.cpp \
 				server/zone/objects/creature/aigroup/PackGroup.cpp \
+				server/zone/objects/creature/aigroup/AiGroupObserver.cpp \
 				server/zone/objects/creature/buffs/DelayedBuff.cpp \
 				server/zone/objects/creature/buffs/SpiceBuff.cpp \
 				server/zone/objects/creature/buffs/PowerBoostBuff.cpp \
