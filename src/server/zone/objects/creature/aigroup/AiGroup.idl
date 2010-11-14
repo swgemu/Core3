@@ -48,48 +48,50 @@ import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
 import engine.core.ManagedObject;
 import engine.util.Coordinate;
+import system.util.SortedVector;
+import system.util.Vector;
 import server.zone.objects.creature.AiAgent;
-include server.zone.objects.creature.PatrolPointsVector;
 import server.zone.managers.creature.StaticSpawnGroup;
 import server.zone.managers.creature.DynamicSpawnGroup;
+import server.zone.objects.scene.Observable;
+import server.zone.objects.creature.aigroup.AiGroupObserver;
 
 class AiGroup extends SceneObject {
 	protected AiAgent leader;
 	
 	@dereferenced
-	protected Vector<AiAgent> scouts;
+	protected SortedVector<AiAgent> scouts;
 	
 	@dereferenced
 	protected Vector<string> scoutTemps;
 	
 	@dereferenced
-	protected PatrolPointsVector scoutPoints;
-	
-	@dereferenced
-	protected Vector<AiAgent> protectors;
+	protected SortedVector<AiAgent> protectors;
 	
 	@dereferenced
 	protected Vector<string> protectorTemps;
 	
 	@dereferenced
-	protected Vector<AiAgent> babies;
+	protected SortedVector<AiAgent> babies;
 	
 	@dereferenced
 	protected Vector<string> babyTemps;
-
-	@dereferenced
-	protected PatrolPointsVector closePoints;
 	
 	@dereferenced
-	protected Vector<AiGroup> subgroups;
+	protected SortedVector<AiGroup> subgroups;	
+	
+	@dereferenced
+	protected SortedVector<AiGroupObserver> observers;
 	
 	protected int commandLevel;
-	protected int wanderRadius;
+	protected float wanderRadius;
 	protected int size;
 	
 	protected float scoutWeight;
 	protected float protectorWeight;
 	protected float babyWeight;
+	
+	protected boolean isStatic;
 	
 	public AiGroup() {
 		Logger.setLoggingName("AiGroup");
@@ -97,15 +99,20 @@ class AiGroup extends SceneObject {
 		commandLevel = 0;
 		wanderRadius = 0;
 		size = 0;
+		
+		isStatic = true;
 	}
 	
 	public native void setPatrolPoints();
+	public native void setPatrolPoint(AiAgent member);
 	
 	@local
 	public native void setup(StaticSpawnGroup templ);
 	
 	@local
 	public native void setup(DynamicSpawnGroup templ);
+	
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	
 	public abstract boolean isHerdGroup() {
 		return false;

@@ -51,6 +51,8 @@ void StaticSpawnAreaImplementation::spawnCreatures() {
 		group->insertToZone(zone);
 
 		group->setup(templ);
+
+		groups.put(group);
 	}
 }
 

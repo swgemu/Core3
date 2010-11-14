@@ -55,6 +55,22 @@ using namespace server::zone::objects::creature::events;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
+class AiWaitEvent;
+
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::events;
+
+namespace server {
+namespace zone {
 namespace packets {
 namespace scene {
 
@@ -207,6 +223,8 @@ public:
 	void activateRecovery();
 
 	void activateMovementEvent();
+
+	void activateWaitEvent();
 
 	bool tryRetreat();
 
@@ -371,6 +389,8 @@ protected:
 
 	Reference<AiMoveEvent*> moveEvent;
 
+	Reference<AiWaitEvent*> waitEvent;
+
 	Vector<String> skillCommands;
 
 	PatrolPointsVector patrolPoints;
@@ -415,6 +435,8 @@ public:
 	virtual void activateRecovery();
 
 	virtual void activateMovementEvent();
+
+	virtual void activateWaitEvent();
 
 	bool tryRetreat();
 
@@ -590,6 +612,8 @@ public:
 	void activateRecovery();
 
 	void activateMovementEvent();
+
+	void activateWaitEvent();
 
 	bool tryRetreat();
 

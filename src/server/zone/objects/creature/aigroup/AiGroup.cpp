@@ -12,6 +12,10 @@
 
 #include "server/zone/managers/creature/DynamicSpawnGroup.h"
 
+#include "server/zone/objects/scene/Observable.h"
+
+#include "server/zone/objects/creature/aigroup/AiGroupObserver.h"
+
 /*
  *	AiGroupStub
  */
@@ -42,6 +46,20 @@ void AiGroup::setPatrolPoints() {
 		_implementation->setPatrolPoints();
 }
 
+void AiGroup::setPatrolPoint(AiAgent* member) {
+	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(member);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setPatrolPoint(member);
+}
+
 void AiGroup::setup(StaticSpawnGroup* templ) {
 	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -60,13 +78,30 @@ void AiGroup::setup(DynamicSpawnGroup* templ) {
 		_implementation->setup(templ);
 }
 
+int AiGroup::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
+	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addUnsignedIntParameter(eventType);
+		method.addObjectParameter(observable);
+		method.addObjectParameter(arg1);
+		method.addSignedLongParameter(arg2);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
+}
+
 bool AiGroup::isHerdGroup() {
 	AiGroupImplementation* _implementation = (AiGroupImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -79,7 +114,7 @@ bool AiGroup::isPackGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -92,7 +127,7 @@ bool AiGroup::isLairGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -179,45 +214,47 @@ void AiGroupImplementation::_serializationHelperMethod() {
 	addSerializableVariable("leader", &leader);
 	addSerializableVariable("scouts", &scouts);
 	addSerializableVariable("scoutTemps", &scoutTemps);
-	addSerializableVariable("scoutPoints", &scoutPoints);
 	addSerializableVariable("protectors", &protectors);
 	addSerializableVariable("protectorTemps", &protectorTemps);
 	addSerializableVariable("babies", &babies);
 	addSerializableVariable("babyTemps", &babyTemps);
-	addSerializableVariable("closePoints", &closePoints);
 	addSerializableVariable("subgroups", &subgroups);
+	addSerializableVariable("observers", &observers);
 	addSerializableVariable("commandLevel", &commandLevel);
 	addSerializableVariable("wanderRadius", &wanderRadius);
 	addSerializableVariable("size", &size);
 	addSerializableVariable("scoutWeight", &scoutWeight);
 	addSerializableVariable("protectorWeight", &protectorWeight);
 	addSerializableVariable("babyWeight", &babyWeight);
+	addSerializableVariable("isStatic", &isStatic);
 }
 
 AiGroupImplementation::AiGroupImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/aigroup/AiGroup.idl(95):  		Logger.setLoggingName("AiGroup");
+	// server/zone/objects/creature/aigroup/AiGroup.idl(97):  		Logger.setLoggingName("AiGroup");
 	Logger::setLoggingName("AiGroup");
-	// server/zone/objects/creature/aigroup/AiGroup.idl(97):  		commandLevel = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(99):  		commandLevel = 0;
 	commandLevel = 0;
-	// server/zone/objects/creature/aigroup/AiGroup.idl(98):  		wanderRadius = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(100):  		wanderRadius = 0;
 	wanderRadius = 0;
-	// server/zone/objects/creature/aigroup/AiGroup.idl(99):  		size = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(101):  		size = 0;
 	size = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(103):  		isStatic = true;
+	isStatic = true;
 }
 
 bool AiGroupImplementation::isHerdGroup() {
-	// server/zone/objects/creature/aigroup/AiGroup.idl(111):  		return false;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(118):  		return false;
 	return false;
 }
 
 bool AiGroupImplementation::isPackGroup() {
-	// server/zone/objects/creature/aigroup/AiGroup.idl(115):  		return false;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(122):  		return false;
 	return false;
 }
 
 bool AiGroupImplementation::isLairGroup() {
-	// server/zone/objects/creature/aigroup/AiGroup.idl(119):  		return false;
+	// server/zone/objects/creature/aigroup/AiGroup.idl(126):  		return false;
 	return false;
 }
 
@@ -236,12 +273,18 @@ Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setPatrolPoints();
 		break;
 	case 7:
-		resp->insertBoolean(isHerdGroup());
+		setPatrolPoint((AiAgent*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertBoolean(isPackGroup());
+		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	case 9:
+		resp->insertBoolean(isHerdGroup());
+		break;
+	case 10:
+		resp->insertBoolean(isPackGroup());
+		break;
+	case 11:
 		resp->insertBoolean(isLairGroup());
 		break;
 	default:
@@ -253,6 +296,14 @@ Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void AiGroupAdapter::setPatrolPoints() {
 	((AiGroupImplementation*) impl)->setPatrolPoints();
+}
+
+void AiGroupAdapter::setPatrolPoint(AiAgent* member) {
+	((AiGroupImplementation*) impl)->setPatrolPoint(member);
+}
+
+int AiGroupAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
+	return ((AiGroupImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 bool AiGroupAdapter::isHerdGroup() {

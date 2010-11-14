@@ -115,10 +115,10 @@ int DynamicSpawnAreaImplementation::notifyObserverEvent(uint32 eventType, Observ
 
 		break;
 	default:
-		return 1;
+		return 0;
 	}
 
-	return 1;
+	return 0;
 }
 
 void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObject* player) {
@@ -155,6 +155,8 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObj
 	group->insertToZone(zone);
 
 	group->setup(templ);
+
+	spawnedGroups.put(group);
 }
 
 Vector3 DynamicSpawnAreaImplementation::getRandomPosition(PlayerObject* player) {

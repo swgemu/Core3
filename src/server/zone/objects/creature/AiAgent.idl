@@ -52,6 +52,7 @@ import system.util.SortedVector;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.events.AiThinkEvent;
 import server.zone.objects.creature.events.AiMoveEvent;
+import server.zone.objects.creature.events.AiWaitEvent;
 import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
@@ -73,6 +74,9 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced
 	protected transient Reference<AiMoveEvent> moveEvent;
+	
+	@dereferenced
+	protected transient Reference<AiWaitEvent> waitEvent;
 	
 	@dereferenced
 	protected Vector<string> skillCommands;
@@ -142,6 +146,8 @@ class AiAgent extends CreatureObject {
 	public abstract native void activateRecovery();
 	
 	public abstract native void activateMovementEvent();
+	
+	public abstract native void activateWaitEvent();
 	
 	public native boolean tryRetreat();
 	
