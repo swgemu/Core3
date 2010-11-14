@@ -19,7 +19,7 @@ class SpawnGroup : public Object {
 protected:
 	String templateName;
 
-	int wanderRadius;
+	float wanderRadius;
 	int commandLevel;
 
 	unsigned int type;
@@ -29,7 +29,7 @@ public:
 
 	SpawnGroup(String tempName, LuaObject group) {
 		templateName = tempName;
-		wanderRadius = group.getIntField("wanderRadius");
+		wanderRadius = group.getFloatField("wanderRadius");
 		commandLevel = group.getIntField("commandLevel");
 		type = group.getIntField("type");
 	}
@@ -59,7 +59,7 @@ public:
 		return templateName;
 	}
 
-	int getWanderRadius() const {
+	float getWanderRadius() const {
 		return wanderRadius;
 	}
 
@@ -71,7 +71,7 @@ public:
 		return type;
 	}
 
-	void setWanderRadius(int wanderRadius) {
+	void setWanderRadius(float wanderRadius) {
 		this->wanderRadius = wanderRadius;
 	}
 

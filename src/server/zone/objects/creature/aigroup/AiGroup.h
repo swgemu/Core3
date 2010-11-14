@@ -63,13 +63,45 @@ class DynamicSpawnGroup;
 
 using namespace server::zone::managers::creature;
 
-#include "server/zone/objects/creature/PatrolPointsVector.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class Observable;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace aigroup {
+
+class AiGroupObserver;
+
+} // namespace aigroup
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::aigroup;
 
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/core/ManagedObject.h"
 
 #include "engine/util/Coordinate.h"
+
+#include "system/util/SortedVector.h"
+
+#include "system/util/Vector.h"
 
 namespace server {
 namespace zone {
@@ -83,9 +115,13 @@ public:
 
 	void setPatrolPoints();
 
+	void setPatrolPoint(AiAgent* member);
+
 	void setup(StaticSpawnGroup* templ);
 
 	void setup(DynamicSpawnGroup* templ);
+
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	bool isHerdGroup();
 
@@ -123,27 +159,25 @@ class AiGroupImplementation : public SceneObjectImplementation {
 protected:
 	ManagedReference<AiAgent* > leader;
 
-	Vector<ManagedReference<AiAgent* > > scouts;
+	SortedVector<ManagedReference<AiAgent* > > scouts;
 
 	Vector<String> scoutTemps;
 
-	PatrolPointsVector scoutPoints;
-
-	Vector<ManagedReference<AiAgent* > > protectors;
+	SortedVector<ManagedReference<AiAgent* > > protectors;
 
 	Vector<String> protectorTemps;
 
-	Vector<ManagedReference<AiAgent* > > babies;
+	SortedVector<ManagedReference<AiAgent* > > babies;
 
 	Vector<String> babyTemps;
 
-	PatrolPointsVector closePoints;
+	SortedVector<ManagedReference<AiGroup* > > subgroups;
 
-	Vector<ManagedReference<AiGroup* > > subgroups;
+	SortedVector<ManagedReference<AiGroupObserver* > > observers;
 
 	int commandLevel;
 
-	int wanderRadius;
+	float wanderRadius;
 
 	int size;
 
@@ -153,6 +187,8 @@ protected:
 
 	float babyWeight;
 
+	bool isStatic;
+
 public:
 	AiGroupImplementation();
 
@@ -160,9 +196,13 @@ public:
 
 	void setPatrolPoints();
 
+	void setPatrolPoint(AiAgent* member);
+
 	void setup(StaticSpawnGroup* templ);
 
 	void setup(DynamicSpawnGroup* templ);
+
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	virtual bool isHerdGroup();
 
@@ -210,6 +250,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void setPatrolPoints();
+
+	void setPatrolPoint(AiAgent* member);
+
+	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	bool isHerdGroup();
 

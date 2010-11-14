@@ -9,6 +9,7 @@
 
 #include "events/AiThinkEvent.h"
 #include "events/AiMoveEvent.h"
+#include "events/AiWaitEvent.h"
 #include "events/RespawnCreatureTask.h"
 #include "events/DespawnCreatureOnPlayerDissappear.h"
 #include "server/zone/managers/combat/CombatManager.h"
@@ -383,22 +384,25 @@ void AiAgentImplementation::doMovement() {
 			if (nextStepPosition.isInRange(&homeLocation, 0.5))
 				homeLocation.setReached(true);
 		}
-
-	}
-
-	if (patrolPoints.size() == 0) {
-		if (followObject != NULL) {
-			setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
-		} else {
-			currentSpeed = 0;
-			return;
-		}
 	}
 
 	float maxDistance = 5;
 
-	if (weapon != NULL )
-		maxDistance = weapon->getMaxRange();
+	if (followObject != NULL) {
+		// drop everything and go after the target, this will also chase the target without having to reach them to change direction
+		patrolPoints.removeAll();
+		setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
+
+		// stop in weapons range
+		if (weapon != NULL )
+			maxDistance = weapon->getIdealRange();
+	}
+
+	if (patrolPoints.size() == 0) {
+		notifyObservers(ObserverEventType::DESTINATIONREACHED);
+		currentSpeed = 0;
+		return;
+	}
 
 	if (isRetreating())
 		maxDistance = 0;
@@ -418,14 +422,14 @@ void AiAgentImplementation::doMovement() {
 
 		cellObject = nextPosition->getCell();
 
-		Vector3 nextPosWorldPos = nextPosition->getWorldPosition();
+		Vector3 nextWorldPos = nextPosition->getWorldPosition();
 
-		dx = nextPosWorldPos.getX() - thisWorldPos.getX();
-		dy = nextPosWorldPos.getY() - thisWorldPos.getY();
+		dx = nextWorldPos.getX() - thisWorldPos.getX();
+		dy = nextWorldPos.getY() - thisWorldPos.getY();
 
-		dist = sqrt(dx * dx + dy * dy);
+		dist = thisWorldPos.squaredDistanceTo(nextWorldPos);
 
-		if (dist <= maxDistance && cellObject == parent) {
+		if (dist <= maxDistance * maxDistance && cellObject == parent) {
 			patrolPoints.remove(0);
 
 			nextPosition = NULL;
@@ -439,6 +443,8 @@ void AiAgentImplementation::doMovement() {
 
 		if (followObject != NULL)
 			activateMovementEvent();
+		else
+			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
 		return;
 	}
@@ -454,7 +460,14 @@ void AiAgentImplementation::doMovement() {
 
 	//info("runSpeed: " + String::valueOf(runSpeed), true);
 
-	float newSpeed = runSpeed * updateTicks;
+	float newSpeed = runSpeed;
+	if (followObject == NULL) // TODO: think about implementing a more generic "walk, don't run" criterion
+		newSpeed = walkSpeed;
+
+	currentSpeed = newSpeed;
+	newSpeed *= updateTicks;
+
+	dist = Math::sqrt(dist);
 
 	newPositionX = thisWorldPos.getX() + (newSpeed * (dx / dist));
 	newPositionY = thisWorldPos.getY() + (newSpeed * (dy / dist));
@@ -464,9 +477,7 @@ void AiAgentImplementation::doMovement() {
 
 	direction.setHeadingDirection(directionangle);
 
-	currentSpeed = runSpeed;
-
-	if ((parent != NULL && parent != cellObject) || (cellObject != NULL && dist <= currentSpeed)) {
+	if ((parent != NULL && parent != cellObject) || (cellObject != NULL && dist <= newSpeed)) {
 		nextStepPosition = *nextPosition;
 	} else {
 		nextStepPosition.setPosition(newPositionX, newPositionZ, newPositionY);
@@ -489,6 +500,17 @@ void AiAgentImplementation::activateMovementEvent() {
 
 	if (!moveEvent->isScheduled())
 		moveEvent->schedule(UPDATEMOVEMENTINTERVAL);
+}
+
+void AiAgentImplementation::activateWaitEvent() {
+	if (waitEvent == NULL) {
+		waitEvent = new AiWaitEvent(_this);
+
+		waitEvent->schedule(UPDATEMOVEMENTINTERVAL * 10);
+	}
+
+	if (!waitEvent->isScheduled())
+		waitEvent->schedule(UPDATEMOVEMENTINTERVAL * 10);
 }
 
 void AiAgentImplementation::setNextPosition(float x, float z, float y, SceneObject* cell) {

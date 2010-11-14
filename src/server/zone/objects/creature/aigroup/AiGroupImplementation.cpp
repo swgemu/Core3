@@ -6,6 +6,7 @@
  */
 
 #include "AiGroup.h"
+#include "AiGroupObserver.h"
 #include "server/zone/objects/creature/PatrolPoint.h"
 #include "server/zone/objects/creature/PatrolPointsVector.h"
 #include "engine/util/Coordinate.h"
@@ -21,19 +22,41 @@ void AiGroupImplementation::setPatrolPoints() {
 	if (wanderRadius == 0)
 		return;
 
-	// TODO: set up patrol points, will need to register observers
-	// on each creature (for more than just patrol points)
-	// and then add a new patrol point after one is reached
-	// this function will just be for initial spawning
-	// TODO: only setup patrol points for static areas once
-	// maybe this function is only for static, dynamic will
-	// set up patrol points based on current position of the group
+	for (int i = 0; i < scouts.size(); ++i)
+		setPatrolPoint(scouts.get(i));
+
+	for (int i = 0; i < protectors.size(); ++i)
+		setPatrolPoint(protectors.get(i));
+
+	for (int i = 0; i < babies.size(); ++i)
+		setPatrolPoint(babies.get(i));
+}
+
+void AiGroupImplementation::setPatrolPoint(AiAgent* member) {
+	if (member == NULL)
+		return;
+
+	if (member == leader && !isStatic) {
+		setPosition(member->getPositionX(), member->getPositionZ(), member->getPositionY());
+		// TODO: check to make sure not wandering into static areas and out of original area
+	}
+
+	Coordinate coord(getPositionX(), 0, getPositionY());
+
+	float radius = wanderRadius;
+	if (scouts.contains(member))
+		radius *= 3;
+
+	coord.randomizePosition(radius);
+
+	member->setNextPosition(coord.getPositionX(), zone->getHeight(coord.getPositionX(), coord.getPositionY()), coord.getPositionY(), getParent());
+	member->activateWaitEvent();
 }
 
 void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 	// in static groups, all members are protectors
 	// designate the first in the template as the leader
-	// spawn stuff here, since it's static
+	isStatic = true;
 
 	CreatureManager* cm = zone->getCreatureManager();
 	if (cm == NULL)
@@ -80,14 +103,19 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 		if (protectors.size() == 1)
 			leader = prot;
 
-		setPatrolPoints();
+		AiGroupObserver* moveObserver = new AiGroupObserver(_this);
+		ObjectManager::instance()->persistObject(moveObserver, 1, "aiobservers");
+		prot->registerObserver(ObserverEventType::DESTINATIONREACHED, moveObserver);
+		observers.put(moveObserver);
 	}
+
+	setPatrolPoints();
 }
 
 void AiGroupImplementation::setup(DynamicSpawnGroup* templ) {
 	// dynamic groups specify scouts, protectors, and babies in the template
 	// don't assign the leader until the group spawns stuff
-	// spawn stuff dynamically, just set up the basics here
+	isStatic = false;
 
 	commandLevel = templ->getCommandLevel();
 	wanderRadius = templ->getWanderRadius();
@@ -102,4 +130,20 @@ void AiGroupImplementation::setup(DynamicSpawnGroup* templ) {
 
 	babyTemps = templ->getBabyTemplates();
 	babyWeight = templ->getBabyWeight();
+
+	setPatrolPoints();
+}
+
+int AiGroupImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	AiAgent* member = (AiAgent*)observable;
+
+	switch (eventType) {
+	case ObserverEventType::DESTINATIONREACHED:
+		setPatrolPoint(member);
+		break;
+	default:
+		break;
+	}
+
+	return 0;
 }
