@@ -10,7 +10,7 @@
 ChatParameter::ChatParameter() {
 }
 
-ChatParameter::ChatParameter(const ChatParameter& cp) : Object() {
+ChatParameter::ChatParameter(const ChatParameter& cp) : Object(cp) {
 }
 
 void ChatParameter::insertToMessage(Message* message) {

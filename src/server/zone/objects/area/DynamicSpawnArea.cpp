@@ -65,6 +65,15 @@ void DynamicSpawnArea::spawnCreature(unsigned int templateCRC, PlayerObject* pla
 		_implementation->spawnCreature(templateCRC, player);
 }
 
+Vector3 DynamicSpawnArea::getRandomPosition(PlayerObject* player) {
+	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getRandomPosition(player);
+}
+
 void DynamicSpawnArea::notifyEnter(SceneObject* object) {
 	DynamicSpawnAreaImplementation* _implementation = (DynamicSpawnAreaImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -275,28 +284,30 @@ void DynamicSpawnAreaImplementation::_serializationHelperMethod() {
 
 DynamicSpawnAreaImplementation::DynamicSpawnAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/DynamicSpawnArea.idl(83):  		maxCreaturesToSpawn = 1;
+	// server/zone/objects/area/DynamicSpawnArea.idl(84):  		Logger.setLoggingName("DynamicSpawnArea");
+	Logger::setLoggingName("DynamicSpawnArea");
+	// server/zone/objects/area/DynamicSpawnArea.idl(85):  		maxCreaturesToSpawn = 1;
 	maxCreaturesToSpawn = 1;
-	// server/zone/objects/area/DynamicSpawnArea.idl(85):  		playerOccupants.setNoDuplicateInsertPlan();
+	// server/zone/objects/area/DynamicSpawnArea.idl(87):  		playerOccupants.setNoDuplicateInsertPlan();
 	(&playerOccupants)->setNoDuplicateInsertPlan();
-	// server/zone/objects/area/DynamicSpawnArea.idl(86):  		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
+	// server/zone/objects/area/DynamicSpawnArea.idl(88):  		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
 	(&excludedPlayerOccupants)->setAllowDuplicateInsertPlan();
-	// server/zone/objects/area/DynamicSpawnArea.idl(88):  		registerObservers();
+	// server/zone/objects/area/DynamicSpawnArea.idl(90):  		registerObservers();
 	registerObservers();
 }
 
 void DynamicSpawnAreaImplementation::setMaxCreaturesToSpawn(int num) {
-	// server/zone/objects/area/DynamicSpawnArea.idl(107):  		maxCreaturesToSpawn = num;
+	// server/zone/objects/area/DynamicSpawnArea.idl(113):  		maxCreaturesToSpawn = num;
 	maxCreaturesToSpawn = num;
 }
 
 void DynamicSpawnAreaImplementation::addNoSpawnArea(SpawnArea* area) {
-	// server/zone/objects/area/DynamicSpawnArea.idl(111):  		noSpawnAreas.add(area);
+	// server/zone/objects/area/DynamicSpawnArea.idl(117):  		noSpawnAreas.add(area);
 	(&noSpawnAreas)->add(area);
 }
 
 bool DynamicSpawnAreaImplementation::isDynamicArea() {
-	// server/zone/objects/area/DynamicSpawnArea.idl(115):  		return true;
+	// server/zone/objects/area/DynamicSpawnArea.idl(121):  		return true;
 	return true;
 }
 

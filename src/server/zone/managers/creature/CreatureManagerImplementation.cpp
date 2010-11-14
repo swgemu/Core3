@@ -25,6 +25,8 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "../../objects/area/StaticSpawnArea.h"
+#include "../../objects/area/SpawnArea.h"
 
 void CreatureManagerImplementation::setCreatureTemplateManager() {
 	creatureTemplateManager = CreatureTemplateManager::instance();
@@ -151,8 +153,8 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	return true;
 }
 
-void CreatureManagerImplementation::loadDynamicSpawnAreas() {
-	info("loading dynamic spawn regions...", true);
+void CreatureManagerImplementation::loadSpawnAreas() {
+	info("loading spawn areas...", true);
 	spawnAreaMap.loadMap(zone);
 }
 

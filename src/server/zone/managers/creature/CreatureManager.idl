@@ -31,7 +31,7 @@ class CreatureManager extends ZoneManager {
 	
 	public void initialize() {
 		setCreatureTemplateManager();
-		loadDynamicSpawnAreas();
+		loadSpawnAreas();
 		loadTrainers();
 		loadSingleSpawns();
 		loadMissionSpawns();
@@ -60,7 +60,7 @@ class CreatureManager extends ZoneManager {
 	@local
 	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
 	
-	public native void loadDynamicSpawnAreas();
+	public native void loadSpawnAreas();
 	
 	public native void loadSingleSpawns();
 	

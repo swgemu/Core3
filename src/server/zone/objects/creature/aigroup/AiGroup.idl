@@ -49,9 +49,9 @@ import server.zone.objects.scene.SceneObject;
 import engine.core.ManagedObject;
 import engine.util.Coordinate;
 import server.zone.objects.creature.AiAgent;
-
 include server.zone.objects.creature.PatrolPointsVector;
-import server.zone.managers.creature.SpawnGroup;
+import server.zone.managers.creature.StaticSpawnGroup;
+import server.zone.managers.creature.DynamicSpawnGroup;
 
 class AiGroup extends SceneObject {
 	protected AiAgent leader;
@@ -60,13 +60,22 @@ class AiGroup extends SceneObject {
 	protected Vector<AiAgent> scouts;
 	
 	@dereferenced
+	protected Vector<string> scoutTemps;
+	
+	@dereferenced
 	protected PatrolPointsVector scoutPoints;
 	
 	@dereferenced
 	protected Vector<AiAgent> protectors;
 	
 	@dereferenced
+	protected Vector<string> protectorTemps;
+	
+	@dereferenced
 	protected Vector<AiAgent> babies;
+	
+	@dereferenced
+	protected Vector<string> babyTemps;
 
 	@dereferenced
 	protected PatrolPointsVector closePoints;
@@ -75,17 +84,28 @@ class AiGroup extends SceneObject {
 	protected Vector<AiGroup> subgroups;
 	
 	protected int commandLevel;
-	protected int maxRange;
+	protected int wanderRadius;
+	protected int size;
+	
+	protected float scoutWeight;
+	protected float protectorWeight;
+	protected float babyWeight;
 	
 	public AiGroup() {
+		Logger.setLoggingName("AiGroup");
+		
 		commandLevel = 0;
-		maxRange = 0;
+		wanderRadius = 0;
+		size = 0;
 	}
 	
 	public native void setPatrolPoints();
 	
 	@local
-	public native void setup(@dereferenced SpawnGroup templ);
+	public native void setup(StaticSpawnGroup templ);
+	
+	@local
+	public native void setup(DynamicSpawnGroup templ);
 	
 	public abstract boolean isHerdGroup() {
 		return false;

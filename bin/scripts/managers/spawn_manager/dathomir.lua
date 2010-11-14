@@ -1,4 +1,5 @@
--- {"regionName", xCenter, yCenter, radius, isRound, spawnConstant, ["spawnGroup1"], [...]}
+-- {"regionName", xCenter, yCenter, radius, tier, spawnConstant, ["spawnGroup1"], [...]}
+-- tier: 0 = no spawn, 1 = static spawn area, 2 = dynamic spawn area
 
 dathomir_regions = {
 	{"dathomir_survey_outpost",0,0,0,0,1},

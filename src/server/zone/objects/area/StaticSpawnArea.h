@@ -72,20 +72,6 @@ using namespace server::zone::objects::area;
 namespace server {
 namespace zone {
 namespace objects {
-namespace area {
-
-class SpawnStaticAreaCreatureTask;
-
-} // namespace area
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::area;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace scene {
 
 class Observable;
@@ -112,17 +98,7 @@ class StaticSpawnArea : public SpawnArea {
 public:
 	StaticSpawnArea();
 
-	void registerObservers();
-
 	void spawnCreatures();
-
-	SpawnStaticAreaCreatureTask* addSpawnTask();
-
-	void doSpawnEvent();
-
-	void doDespawnEvent();
-
-	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	bool isStaticArea();
 
@@ -152,30 +128,14 @@ namespace area {
 
 class StaticSpawnAreaImplementation : public SpawnAreaImplementation {
 protected:
-	SortedVector<ManagedReference<AiAgent* > > spawnedAgents;
-
-	SortedVector<ManagedReference<AiAgent* > > unspawnedAgents;
-
 	SortedVector<ManagedReference<AiGroup* > > groups;
-
-	SortedVector<ManagedReference<SpawnObserver* > > observers;
 
 public:
 	StaticSpawnAreaImplementation();
 
 	StaticSpawnAreaImplementation(DummyConstructorParameter* param);
 
-	void registerObservers();
-
 	void spawnCreatures();
-
-	SpawnStaticAreaCreatureTask* addSpawnTask();
-
-	void doSpawnEvent();
-
-	void doDespawnEvent();
-
-	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	virtual bool isStaticArea();
 
@@ -218,15 +178,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void registerObservers();
-
 	void spawnCreatures();
-
-	void doSpawnEvent();
-
-	void doDespawnEvent();
-
-	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	bool isStaticArea();
 

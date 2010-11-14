@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/objects/area/DynamicSpawnArea.h"
+#include "server/zone/objects/area/StaticSpawnArea.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
@@ -59,8 +60,11 @@ public:
 						crc = String("object/dynamic_spawn_area.iff").hashCode();
 
 					ManagedReference<SpawnArea*> area = dynamic_cast<SpawnArea*>(ObjectManager::instance()->createObject(crc, 2, "spawnareas"));
+					if (area == NULL)
+						continue;
 
 					StringId nameID(planetName + "_region_names", name);
+
 					area->setObjectName(nameID);
 
 					area->setPosition(x, 0, y);
@@ -76,10 +80,17 @@ public:
 
 					area->insertToZone(zone);
 
+					area->updateToDatabase();
+
 					put(nameID.getStringID().hashCode(), area);
 
-					if (area->isStaticArea())
+					if (area->isStaticArea()) {
 						noSpawnAreas.add(area);
+						if (tier == 1) {
+							StaticSpawnArea* staticArea = (StaticSpawnArea*)area.get();
+							staticArea->spawnCreatures();
+						}
+					}
 				}
 
 				areaObj.pop();
@@ -90,19 +101,18 @@ public:
 
 		for (int i = 0; i < size(); ++i) {
 			SpawnArea* area = get(i);
-			if (!area->isDynamicArea())
-				continue;
+			if (area->isDynamicArea()) {
+				DynamicSpawnArea* dynamicArea = (DynamicSpawnArea*)area;
 
-			DynamicSpawnArea* dynamicArea = (DynamicSpawnArea*)area;
+				Vector3 d(dynamicArea->getPositionX(), dynamicArea->getPositionY(), 0);
 
-			Vector3 d(dynamicArea->getPositionX(), dynamicArea->getPositionY(), 0);
+				for (int j = 0; j < noSpawnAreas.size(); ++j) {
+					SpawnArea* notHere = noSpawnAreas.get(j);
+					Vector3 offset(notHere->getPosition());
 
-			for (int j = 0; j < noSpawnAreas.size(); ++j) {
-				SpawnArea* notHere = noSpawnAreas.get(j);
-				Vector3 offset(notHere->getPosition());
-
-				if (d.distanceTo(offset) < dynamicArea->getRadius() + notHere->getRadius())
-					dynamicArea->addNoSpawnArea(notHere);
+					if (d.distanceTo(offset) < dynamicArea->getRadius() + notHere->getRadius())
+						dynamicArea->addNoSpawnArea(notHere);
+				}
 			}
 		}
 	}

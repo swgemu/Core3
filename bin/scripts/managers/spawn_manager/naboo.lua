@@ -1,4 +1,5 @@
--- {"regionName", xCenter, yCenter, radius, isRound, spawnConstant, ["spawnGroup1"], [...]}
+-- {"regionName", xCenter, yCenter, radius, tier, spawnConstant, ["spawnGroup1"], [...]}
+-- tier: 0 = no spawn, 1 = static spawn area, 2 = dynamic spawn area
 
 naboo_regions = {
 	{"beach_town",0,0,0,0,1},
@@ -11,7 +12,7 @@ naboo_regions = {
 	{"lianorm_swamps",0,0,0,0,1},
 	{"moenia",0,0,0,0,1},
 	{"swamp_town",0,0,0,0,1},
-	{"theed",-5036,4124,569,1,0},
+	{"theed",-5036,4124,500,1,0},
 	{"western_forest",0,0,0,0,1},
 	{"keren",0,0,0,0,1},
 	{"kaadara",0,0,0,0,1},
@@ -35,7 +36,7 @@ naboo_regions = {
 	{"gallo_forest_1",0,0,0,0,1},
 	{"plains_1",0,0,0,0,1},
 	{"world_spawner",0,0,0,0,1},
-	{"theed_easy_newbie",-5000,4000,1000,1,1000,"capper_spineflap"},
+	{"theed_easy_newbie",-4815,4062,300,1,500,"capper_spineflap"},
 	{"theed_medium_newbie",0,0,0,0,1},
 	{"keren_easy_newbie",0,0,0,0,1},
 	{"keren_medium_newbie",0,0,0,0,1},
