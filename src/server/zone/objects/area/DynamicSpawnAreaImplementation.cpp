@@ -9,7 +9,7 @@
 #include "SpawnDynamicAreaCreatureTask.h"
 #include "SpawnObserver.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/managers/creature/SpawnGroup.h"
+#include "server/zone/managers/creature/DynamicSpawnGroup.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/aigroup/AiGroup.h"
@@ -122,10 +122,10 @@ int DynamicSpawnAreaImplementation::notifyObserverEvent(uint32 eventType, Observ
 }
 
 void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObject* player) {
-	DynamicSpawnGroup templ = CreatureTemplateManager::instance()->getDynamicGroup(templateCRC);
+	DynamicSpawnGroup* templ = CreatureTemplateManager::instance()->getDynamicGroup(templateCRC);
 
 	uint32 crc;
-	switch (templ.getType()) {
+	switch (templ->getType()) {
 	case CreatureFlag::HERD:
 		crc = String("object/aigroup/herd_group.iff").hashCode();
 		break;
@@ -140,11 +140,24 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObj
 		break;
 	}
 
-	ManagedReference<AiGroup*> group = dynamic_cast<AiGroup*>(zone->getZoneServer()->createObject(crc, 1));
+	ManagedReference<AiGroup*> group = dynamic_cast<AiGroup*>(zone->getZoneServer()->createObject(crc, 0));
+	if (group == NULL)
+		return;
+
+	Vector3 rOuter = getRandomPosition(player);
+
+	float x = rOuter.getX() + getPositionX();
+	float y = rOuter.getY() + getPositionY();
+	float z = zone->getHeight(x, y);
+
+	group->setPosition(x, z, y);
+
+	group->insertToZone(zone);
 
 	group->setup(templ);
+}
 
-	// get position
+Vector3 DynamicSpawnAreaImplementation::getRandomPosition(PlayerObject* player) {
 	double angle = System::random(359) * Math::DEG2RAD;
 	Vector3 rOuter(64.f * (float)Math::cos(angle), 64.f * (float)Math::sin(angle), 0);
 	float lowIntersect = 1, highIntersect = 0;
@@ -195,7 +208,5 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObj
 
 	rOuter = randomLength * rOuter;
 
-	group->setPosition(rOuter.getX(), zone->getHeight(rOuter.getX(), rOuter.getY()), rOuter.getY());
-
-	group->insertToZone(zone);
+	return rOuter;
 }

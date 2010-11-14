@@ -126,7 +126,7 @@ int CreatureManager::notifyDestruction(TangibleObject* destructor, AiAgent* dest
 		return _implementation->notifyDestruction(destructor, destructedObject, condition);
 }
 
-void CreatureManager::loadDynamicSpawnAreas() {
+void CreatureManager::loadSpawnAreas() {
 	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -136,7 +136,7 @@ void CreatureManager::loadDynamicSpawnAreas() {
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->loadDynamicSpawnAreas();
+		_implementation->loadSpawnAreas();
 }
 
 void CreatureManager::loadSingleSpawns() {
@@ -281,8 +281,8 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : Zon
 void CreatureManagerImplementation::initialize() {
 	// server/zone/managers/creature/CreatureManager.idl(33):  		setCreatureTemplateManager();
 	setCreatureTemplateManager();
-	// server/zone/managers/creature/CreatureManager.idl(34):  		loadDynamicSpawnAreas();
-	loadDynamicSpawnAreas();
+	// server/zone/managers/creature/CreatureManager.idl(34):  		loadSpawnAreas();
+	loadSpawnAreas();
 	// server/zone/managers/creature/CreatureManager.idl(35):  		loadTrainers();
 	loadTrainers();
 	// server/zone/managers/creature/CreatureManager.idl(36):  		loadSingleSpawns();
@@ -320,7 +320,7 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		placeCreature((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 11:
-		loadDynamicSpawnAreas();
+		loadSpawnAreas();
 		break;
 	case 12:
 		loadSingleSpawns();
@@ -361,8 +361,8 @@ void CreatureManagerAdapter::placeCreature(CreatureObject* creature, float x, fl
 	((CreatureManagerImplementation*) impl)->placeCreature(creature, x, z, y, parentID);
 }
 
-void CreatureManagerAdapter::loadDynamicSpawnAreas() {
-	((CreatureManagerImplementation*) impl)->loadDynamicSpawnAreas();
+void CreatureManagerAdapter::loadSpawnAreas() {
+	((CreatureManagerImplementation*) impl)->loadSpawnAreas();
 }
 
 void CreatureManagerAdapter::loadSingleSpawns() {

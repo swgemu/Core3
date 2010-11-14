@@ -129,6 +129,8 @@ using namespace server::zone::objects::scene;
 
 #include "system/util/VectorMap.h"
 
+#include "engine/util/Vector3.h"
+
 #include "engine/core/ManagedObject.h"
 
 namespace server {
@@ -143,6 +145,8 @@ public:
 	void registerObservers();
 
 	void spawnCreature(unsigned int templateCRC, PlayerObject* player);
+
+	Vector3 getRandomPosition(PlayerObject* player);
 
 	void notifyEnter(SceneObject* object);
 
@@ -210,6 +214,8 @@ public:
 	void registerObservers();
 
 	void spawnCreature(unsigned int templateCRC, PlayerObject* player);
+
+	Vector3 getRandomPosition(PlayerObject* player);
 
 	void notifyEnter(SceneObject* object);
 
