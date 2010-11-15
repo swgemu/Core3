@@ -44,8 +44,6 @@ class LoginServer extends ManagedService implements Logger {
 	
 	public native void initialize();
 	
-	public native void run();
-	
 	public native void shutdown();
 
 	public native void startManagers();

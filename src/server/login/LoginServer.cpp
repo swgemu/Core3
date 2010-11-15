@@ -70,26 +70,13 @@ void LoginServer::initialize() {
 		_implementation->initialize();
 }
 
-void LoginServer::run() {
-	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->run();
-}
-
 void LoginServer::shutdown() {
 	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 8);
 
 		method.executeWithVoidReturn();
 	} else
@@ -102,7 +89,7 @@ void LoginServer::startManagers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 
 		method.executeWithVoidReturn();
 	} else
@@ -115,7 +102,7 @@ void LoginServer::stopManagers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 
 		method.executeWithVoidReturn();
 	} else
@@ -128,7 +115,7 @@ void LoginServer::start(int p, int mconn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 11);
 		method.addSignedIntParameter(p);
 		method.addSignedIntParameter(mconn);
 
@@ -143,7 +130,7 @@ void LoginServer::stop() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 
 		method.executeWithVoidReturn();
 	} else
@@ -183,7 +170,7 @@ void LoginServer::printInfo() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 
 		method.executeWithVoidReturn();
 	} else
@@ -196,7 +183,7 @@ void LoginServer::populateGalaxyList() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 
 		method.executeWithVoidReturn();
 	} else
@@ -218,7 +205,7 @@ Account* LoginServer::getAccount(unsigned int accountID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 		method.addUnsignedIntParameter(accountID);
 
 		return (Account*) method.executeWithObjectReturn();
@@ -232,7 +219,7 @@ LoginEnumCluster* LoginServer::getLoginEnumClusterMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 16);
 
 		return (LoginEnumCluster*) method.executeWithObjectReturn();
 	} else
@@ -245,7 +232,7 @@ LoginClusterStatus* LoginServer::getLoginClusterStatusMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 17);
 
 		return (LoginClusterStatus*) method.executeWithObjectReturn();
 	} else
@@ -332,22 +319,22 @@ void LoginServerImplementation::_serializationHelperMethod() {
 }
 
 AccountManager* LoginServerImplementation::getAccountManager() {
-	// server/login/LoginServer.idl(74):  		return accountManager;
+	// server/login/LoginServer.idl(72):  		return accountManager;
 	return accountManager;
 }
 
 Account* LoginServerImplementation::getAccount(unsigned int accountID) {
-	// server/login/LoginServer.idl(78):  		return accountManager.getAccount(accountID);
+	// server/login/LoginServer.idl(76):  		return accountManager.getAccount(accountID);
 	return accountManager->getAccount(accountID);
 }
 
 LoginEnumCluster* LoginServerImplementation::getLoginEnumClusterMessage() {
-	// server/login/LoginServer.idl(82):  		return (LoginEnumCluster) enumClusterMessage.clone();
+	// server/login/LoginServer.idl(80):  		return (LoginEnumCluster) enumClusterMessage.clone();
 	return (LoginEnumCluster*) enumClusterMessage->clone();
 }
 
 LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
-	// server/login/LoginServer.idl(86):  		return (LoginClusterStatus) clusterStatusMessage.clone();
+	// server/login/LoginServer.idl(84):  		return (LoginClusterStatus) clusterStatusMessage.clone();
 	return (LoginClusterStatus*) clusterStatusMessage->clone();
 }
 
@@ -369,36 +356,33 @@ Packet* LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		initialize();
 		break;
 	case 8:
-		run();
-		break;
-	case 9:
 		shutdown();
 		break;
-	case 10:
+	case 9:
 		startManagers();
 		break;
-	case 11:
+	case 10:
 		stopManagers();
 		break;
-	case 12:
+	case 11:
 		start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 13:
+	case 12:
 		stop();
 		break;
-	case 14:
+	case 13:
 		printInfo();
 		break;
-	case 15:
+	case 14:
 		populateGalaxyList();
 		break;
-	case 16:
+	case 15:
 		resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
-	case 17:
+	case 16:
 		resp->insertLong(getLoginEnumClusterMessage()->_getObjectID());
 		break;
-	case 18:
+	case 17:
 		resp->insertLong(getLoginClusterStatusMessage()->_getObjectID());
 		break;
 	default:
@@ -414,10 +398,6 @@ void LoginServerAdapter::initializeTransientMembers() {
 
 void LoginServerAdapter::initialize() {
 	((LoginServerImplementation*) impl)->initialize();
-}
-
-void LoginServerAdapter::run() {
-	((LoginServerImplementation*) impl)->run();
 }
 
 void LoginServerAdapter::shutdown() {

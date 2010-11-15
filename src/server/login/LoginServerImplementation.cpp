@@ -78,7 +78,7 @@ LoginServerImplementation::LoginServerImplementation(ConfigManager* configMan) :
 
 	accountManager = NULL;
 
-	setLogging(false);
+	setLogging(true);
 }
 
 void LoginServerImplementation::initializeTransientMembers() {
@@ -120,14 +120,6 @@ void LoginServerImplementation::start(int p, int mconn) {
 
 	datagramService->start(p, mconn);
 }
-
-void LoginServerImplementation::run() {
-	// recieve messages
-	//receiveMessages();
-
-	shutdown();
-}
-
 
 void LoginServerImplementation::stop() {
 	datagramService->stop();
@@ -176,6 +168,8 @@ void LoginServerImplementation::handleMessage(ServiceClient* client, Packet* mes
 }
 
 void LoginServerImplementation::processMessage(Message* message) {
+	//info("processing message " + message->toStringData());
+
 	Task* task = new LoginMessageProcessorTask(message, processor->getPacketHandler());
 
 	Core::getTaskManager()->executeTask(task);

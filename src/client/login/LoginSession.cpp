@@ -57,6 +57,10 @@ void LoginSession::run() {
 	BaseMessage* acc = new AccountVersionMessage(user, password, "20050408-18:00");
 	login->sendMessage(acc);
 
+	#ifdef WITH_STM
+		Core::commitTask();
+	#endif
+
 	info("sent account version message", true);
 
 	lock();
