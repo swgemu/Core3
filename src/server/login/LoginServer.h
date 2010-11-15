@@ -124,8 +124,6 @@ public:
 
 	void initialize();
 
-	void run();
-
 	void shutdown();
 
 	void startManagers();
@@ -202,8 +200,6 @@ public:
 
 	void initialize();
 
-	void run();
-
 	void shutdown();
 
 	void startManagers();
@@ -274,8 +270,6 @@ public:
 	void initializeTransientMembers();
 
 	void initialize();
-
-	void run();
 
 	void shutdown();
 

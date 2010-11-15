@@ -1,4 +1,4 @@
-Revision=2622M
+Revision=2628M
 Welcome to the Official Core3 Test Center!
 
 Please help us sorting some problems out by being as active as you can. we need to stress the server for these bugs to arise. thank you.
