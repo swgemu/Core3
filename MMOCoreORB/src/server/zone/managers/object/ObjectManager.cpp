@@ -962,9 +962,11 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 		return;
 	}
 
+#ifndef WITH_STM
 	Vector<Locker*>* lockers = Core::getTaskManager()->blockTaskManager();
 
 	Locker _locker(this);
+#endif
 
 	objectUpdateInProcess = true;
 
@@ -993,8 +995,10 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 
 	info("copied objects into ram in " + String::valueOf(start.miliDifference()) + " ms", true);
 
+#ifndef WITH_STM
 	Core::getTaskManager()->unblockTaskManager(lockers);
 	delete lockers;
+#endif
 
 	Reference<CommitMasterTransactionTask*> watchDog = new CommitMasterTransactionTask(transaction, &updateModifiedObjectsThreads, numberOfThreads, startTask);
 	watchDog->schedule(500);
@@ -1006,5 +1010,7 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 		helperMap->remove(object->_getObjectID());
 	}
 
+#ifndef WITH_STM
 	_locker.release();
+#endif
 }

@@ -33,6 +33,8 @@ using namespace server::zone::objects::player;
 
 #include "server/chat/WaypointChatParameterVector.h"
 
+#include "server/chat/StringIdChatParameter.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "system/lang/System.h"

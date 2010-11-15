@@ -52,6 +52,8 @@ build: idl
 	cd build/unix && make -j4
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
+	rm -rf build/unix/src/client/core3*
+	rm -rf build/unix/src/core3*
 	cd bin/conf && cat motd.txt | sed "s/\\(^Revision=\\)\\(..*$\\)/\1`svnversion`/" > motd.txt
 	#done
 

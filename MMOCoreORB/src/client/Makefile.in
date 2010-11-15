@@ -98,11 +98,8 @@ PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_core3client_OBJECTS = ClientCore.$(OBJEXT) \
 	login/LoginClient.$(OBJEXT) login/LoginSession.$(OBJEXT) \
-	login/LoginPacketHandler.$(OBJEXT) \
-	login/LoginMessageProcessorThread.$(OBJEXT) \
-	zone/Zone.$(OBJEXT) zone/ZoneClient.$(OBJEXT) \
-	zone/ZonePacketHandler.$(OBJEXT) \
-	zone/ZoneMessageProcessorThread.$(OBJEXT) \
+	login/LoginPacketHandler.$(OBJEXT) zone/Zone.$(OBJEXT) \
+	zone/ZoneClient.$(OBJEXT) zone/ZonePacketHandler.$(OBJEXT) \
 	zone/ZoneClientThread.$(OBJEXT) \
 	zone/managers/object/ObjectManager.$(OBJEXT) \
 	zone/managers/objectcontroller/ObjectController.$(OBJEXT) \
@@ -257,11 +254,9 @@ core3client_SOURCES = \
 		login/LoginClient.cpp \
 		login/LoginSession.cpp \
 		login/LoginPacketHandler.cpp \
-		login/LoginMessageProcessorThread.cpp \
 		zone/Zone.cpp \
 		zone/ZoneClient.cpp \
 		zone/ZonePacketHandler.cpp \
-		zone/ZoneMessageProcessorThread.cpp \
 		zone/ZoneClientThread.cpp \
 		zone/managers/object/ObjectManager.cpp \
 		zone/managers/objectcontroller/ObjectController.cpp \
@@ -363,8 +358,6 @@ login/LoginSession.$(OBJEXT): login/$(am__dirstamp) \
 	login/$(DEPDIR)/$(am__dirstamp)
 login/LoginPacketHandler.$(OBJEXT): login/$(am__dirstamp) \
 	login/$(DEPDIR)/$(am__dirstamp)
-login/LoginMessageProcessorThread.$(OBJEXT): login/$(am__dirstamp) \
-	login/$(DEPDIR)/$(am__dirstamp)
 zone/$(am__dirstamp):
 	@$(MKDIR_P) zone
 	@: > zone/$(am__dirstamp)
@@ -376,8 +369,6 @@ zone/Zone.$(OBJEXT): zone/$(am__dirstamp) \
 zone/ZoneClient.$(OBJEXT): zone/$(am__dirstamp) \
 	zone/$(DEPDIR)/$(am__dirstamp)
 zone/ZonePacketHandler.$(OBJEXT): zone/$(am__dirstamp) \
-	zone/$(DEPDIR)/$(am__dirstamp)
-zone/ZoneMessageProcessorThread.$(OBJEXT): zone/$(am__dirstamp) \
 	zone/$(DEPDIR)/$(am__dirstamp)
 zone/ZoneClientThread.$(OBJEXT): zone/$(am__dirstamp) \
 	zone/$(DEPDIR)/$(am__dirstamp)
@@ -463,13 +454,11 @@ core3client$(EXEEXT): $(core3client_OBJECTS) $(core3client_DEPENDENCIES)
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f login/LoginClient.$(OBJEXT)
-	-rm -f login/LoginMessageProcessorThread.$(OBJEXT)
 	-rm -f login/LoginPacketHandler.$(OBJEXT)
 	-rm -f login/LoginSession.$(OBJEXT)
 	-rm -f zone/Zone.$(OBJEXT)
 	-rm -f zone/ZoneClient.$(OBJEXT)
 	-rm -f zone/ZoneClientThread.$(OBJEXT)
-	-rm -f zone/ZoneMessageProcessorThread.$(OBJEXT)
 	-rm -f zone/ZonePacketHandler.$(OBJEXT)
 	-rm -f zone/managers/object/ObjectManager.$(OBJEXT)
 	-rm -f zone/managers/objectcontroller/ObjectController.$(OBJEXT)
@@ -486,13 +475,11 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ClientCore.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@login/$(DEPDIR)/LoginClient.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@login/$(DEPDIR)/LoginMessageProcessorThread.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@login/$(DEPDIR)/LoginPacketHandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@login/$(DEPDIR)/LoginSession.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@zone/$(DEPDIR)/Zone.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@zone/$(DEPDIR)/ZoneClient.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@zone/$(DEPDIR)/ZoneClientThread.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@zone/$(DEPDIR)/ZoneMessageProcessorThread.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@zone/$(DEPDIR)/ZonePacketHandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@zone/managers/object/$(DEPDIR)/ObjectManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@zone/managers/objectcontroller/$(DEPDIR)/ObjectController.Po@am__quote@

@@ -304,7 +304,7 @@ void ServerCore::handleCommands() {
 			System::out << "[ServerCore] unreported Exception caught\n";
 		}
 
-		//Core::commitTask();
+		Core::commitTask();
 	}
 }
 
