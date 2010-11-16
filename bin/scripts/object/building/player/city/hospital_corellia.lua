@@ -43,7 +43,7 @@
 
 object_building_player_city_hospital_corellia = object_building_player_city_shared_hospital_corellia:new {
 
-	lotSize = 0,
+	lotSize = 3,
 	baseMaintenanceRate = 0,
 	gameObjectType = 517,
 	mapLocationsType1 = 13,

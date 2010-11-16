@@ -43,7 +43,7 @@
 
 object_building_player_city_theater_tatooine = object_building_player_city_shared_theater_tatooine:new {
 
-	lotSize = 0,
+	lotSize = 3,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
 	length = 5,
