@@ -43,7 +43,7 @@
 
 object_building_player_city_cantina_tatooine = object_building_player_city_shared_cantina_tatooine:new {
 
-	lotSize = 0,
+	lotSize = 5,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
 	length = 7,
