@@ -43,7 +43,7 @@
 
 object_building_player_city_theater_corellia = object_building_player_city_shared_theater_corellia:new {
 
-	lotSize = 0,
+	lotSize = 3,
 	baseMaintenanceRate = 0,
 	gameObjectType = 524,
 	mapLocationsType1 = 51,

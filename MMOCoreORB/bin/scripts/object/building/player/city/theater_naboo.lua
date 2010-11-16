@@ -43,7 +43,7 @@
 
 object_building_player_city_theater_naboo = object_building_player_city_shared_theater_naboo:new {
 
-	lotSize = 0,
+	lotSize = 3,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
 	length = 5,

@@ -43,7 +43,7 @@
 
 object_building_player_city_cantina_naboo = object_building_player_city_shared_cantina_naboo:new {
 
-	lotSize = 0,
+	lotSize = 5,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
 	length = 7,
