@@ -150,7 +150,7 @@ namespace server {
 		}
 
 		//void surrenderAll(PlayerImplementation* player);
-
+		bool isValidStartingProfession(const String& profession);
 		void setStartingProfession(const String& startingProfession, int raceID, PlayerCreature* player);
 
 		bool trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
