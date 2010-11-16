@@ -49,10 +49,6 @@ void InstallationDeedImplementation::fillAttributeList(AttributeListMessage* alm
 	if (baseMaintenanceRate > 0)
 		alm->insertAttribute("examine_maintenance_rate", String::valueOf(baseMaintenanceRate) + " / hour"); //Base Maintenance Rate
 
-	if (basePowerRate > 0)
-		alm->insertAttribute("examine_power_rate", String::valueOf(basePowerRate) + " / hour"); //Base Power Rate
-
-
 	if (surplusMaintenance > 0)
 		alm->insertAttribute("examine_maintenance", String::valueOf(surplusMaintenance)); //Surplus Maintenance
 
