@@ -329,7 +329,10 @@ void ManufactureSchematicImplementation::initializeFactoryIngredients() {
 
 		SceneObject* scno = ingredientSlot->get();
 
-		scno->setParent(_this);
+		if(scno->getParent() != NULL)
+			scno->getParent()->removeObject(scno, true);
+
+		addObject(scno, -1, true);
 		factoryIngredients.add(scno);
 	}
 }
