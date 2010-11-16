@@ -105,6 +105,16 @@ void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {
 }
 */
 
+bool ProfessionManager::isValidStartingProfession(const String& profession) {
+
+	if (profession == "crafting_artisan" || profession == "combat_brawler" ||
+			profession == "social_entertainer" || profession == "combat_marksman" ||
+			profession == "science_medic" || profession == "outdoors_scout")
+		return true;
+	else
+		return false;
+}
+
 void ProfessionManager::setStartingProfession(const String& startingProfession, int raceID, PlayerCreature* player) {
 	int prof;
 	String correctProfession = startingProfession;

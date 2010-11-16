@@ -307,6 +307,15 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		return false;
 	}
 
+	ProfessionManager* professionManager = server->getProfessionManager();
+	String profession;
+	callback->getProfession(profession);
+
+	if (!professionManager->isValidStartingProfession(profession)) {
+		info("invalid starting profession: " + profession);
+		return false;
+	}
+
 	ManagedReference<SceneObject*> player = server->createObject(serverObjectCRC, 2); // player
 
 	if (player == NULL) {
@@ -318,9 +327,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		error("could not create player... wrong object type");
 		return false;
 	}
-
-	String profession;
-	callback->getProfession(profession);
 
 	PlayerCreature* playerCreature = (PlayerCreature*) player.get();
 	playerCreature->setCustomObjectName(name, false);
@@ -399,8 +405,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	playerCreature->setBiography(biography);
 
 	//info("profession:" + profession, true);
-
-	ProfessionManager* professionManager = server->getProfessionManager();
 	professionManager->setStartingProfession(profession, raceID, playerCreature);
 
 	playerCreature->setClient(client);

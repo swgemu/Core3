@@ -242,8 +242,11 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* playe
 
 		ManagedReference<SceneObject* > ingredient = dynamic_cast<SceneObject*>(schematic->getFactoryIngredient(i));
 
-		if (ingredient == NULL)
+		if (ingredient == NULL) {
+			String sendstring = "Error adding ingredient - Contact Kyle";
+			ingredientList->addMenuItem(sendstring, 0);
 			continue;
+		}
 
 		if (ingredient->isResourceContainer()) {
 			ManagedReference<ResourceContainer*> rcno = (ResourceContainer*) ingredient.get();
