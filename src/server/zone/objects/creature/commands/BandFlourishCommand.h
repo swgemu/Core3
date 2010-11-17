@@ -106,47 +106,57 @@ public:
 		StringIdChatParameter params;
 		params.setTT(leader->getFirstName());
 
-		Locker locker(group);
 
-		for (int i = 0; i < group->getGroupSize(); i++) {
-			ManagedReference<CreatureObject*> groupMember = (CreatureObject*)group->getGroupMember(i);
+		leader->unlock();
 
-			Locker clocker(groupMember, leader);
+		try {
 
-			if (groupMember != leader && groupMember->isPlayerCreature()) {
-				PlayerCreature* player = (PlayerCreature*)groupMember.get();
+			Locker locker(group);
 
-				ManagedReference<Facade*> pfacade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				ManagedReference<CreatureObject*> groupMember = (CreatureObject*)group->getGroupMember(i);
 
-				ManagedReference<EntertainingSession*> psession = dynamic_cast<EntertainingSession*>(pfacade.get());
+				Locker clocker(groupMember, group);
 
-				if (psession == NULL)
-					continue;
+				if (groupMember != leader && groupMember->isPlayerCreature()) {
+					PlayerCreature* player = (PlayerCreature*)groupMember.get();
 
-				ManagedReference<Instrument*> pinstrument = psession->getInstrument(player);
-				int playerInstrumentType = pinstrument == NULL ? -1 : pinstrument->getInstrumentType();
+					ManagedReference<Facade*> pfacade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
 
-				if (psession->isAcceptingBandFlourishes()) {
+					ManagedReference<EntertainingSession*> psession = dynamic_cast<EntertainingSession*>(pfacade.get());
 
-					//Handle dance flourish
-					if (!musicflourish && psession->isDancing()) {
-						params.setStringId("performance", "flourish_perform_band_member");
-						player->sendSystemMessage(params);
-						psession->doFlourish(Integer::valueOf(number));
-					}
+					if (psession == NULL)
+						continue;
 
-					//Handle music flourish
-					if (musicflourish && psession->isPlayingMusic()) {
-						if (instrumentType < 1 || (playerInstrumentType == instrumentType)) {
+					ManagedReference<Instrument*> pinstrument = psession->getInstrument(player);
+					int playerInstrumentType = pinstrument == NULL ? -1 : pinstrument->getInstrumentType();
+
+					if (psession->isAcceptingBandFlourishes()) {
+
+						//Handle dance flourish
+						if (!musicflourish && psession->isDancing()) {
 							params.setStringId("performance", "flourish_perform_band_member");
 							player->sendSystemMessage(params);
 							psession->doFlourish(Integer::valueOf(number));
 						}
+
+						//Handle music flourish
+						if (musicflourish && psession->isPlayingMusic()) {
+							if (instrumentType < 1 || (playerInstrumentType == instrumentType)) {
+								params.setStringId("performance", "flourish_perform_band_member");
+								player->sendSystemMessage(params);
+								psession->doFlourish(Integer::valueOf(number));
+							}
+						}
 					}
 				}
+
 			}
+		} catch (...) {
 
 		}
+
+		leader->wlock();
 
 		return;
 	}

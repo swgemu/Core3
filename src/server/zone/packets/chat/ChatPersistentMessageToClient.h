@@ -176,7 +176,7 @@ public:
 		insertInt(mail->getTimeStamp());
 		//insertInt(0); //Pretty sure we don't need to append this.
 
-		System::out << toStringData() << endl;
+		//System::out << toStringData() << endl;
 	}
 };
 
