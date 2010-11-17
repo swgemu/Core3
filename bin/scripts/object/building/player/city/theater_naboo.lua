@@ -51,7 +51,8 @@ object_building_player_city_theater_naboo = object_building_player_city_shared_t
 	gameObjectType = 524,
 	mapLocationsType1 = 51,
 	abilityRequired = "place_theater",
-	cityRankRequired = 4
+	cityRankRequired = 4,
+	terminalLocation = {0, -7, 4.75, -14.2, 0, 0.707107, 0, 0.707107}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_theater_naboo, "object/building/player/city/theater_naboo.iff")
