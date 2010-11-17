@@ -19,6 +19,8 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 
 	bool publicStructure;
 
+	bool alwaysPublic;
+
 
 public:
 	SharedBuildingObjectTemplate() {
@@ -43,7 +45,14 @@ public:
 	}
 
 	inline bool isPublicStructure() {
+		if (alwaysPublic)
+			return true;
+
 		return publicStructure;
+	}
+
+	inline bool isAlwaysPublic() {
+		return alwaysPublic;
 	}
 };
 

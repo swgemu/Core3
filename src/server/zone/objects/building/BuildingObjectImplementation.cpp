@@ -294,14 +294,15 @@ void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) 
 		player->teleport(ejectionPoint.getX(), zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
 	}
 
-	//Update the permissions on just the first cell since it should be the entry...
-	ManagedReference<CellObject*> cell = getCell(0);
+	for (int i = 0; i < cells.size(); ++i) {
+		ManagedReference<CellObject*> cell = getCell(i);
 
-	if (cell == NULL)
-		return;
+		if (cell == NULL)
+			continue;
 
-	BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
-	player->sendMessage(perm);
+		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
+		player->sendMessage(perm);
+	}
 }
 
 void BuildingObjectImplementation::onEnter(PlayerCreature* player) {

@@ -47,11 +47,11 @@ object_building_player_player_guildhall_tatooine_style_02 = object_building_play
 	mapLocationsType1 = 7,
 	allowedZones = {1,4,8},
 	publicStructure = false,
-	terminalLocation = {1, 9.13004, 1.49609, 6.3587, 0, 0.707107, 0, 0.707107},
 	constructionMarker = "object/building/player/construction/construction_player_guildhall_tatooine_style_02.iff",
 	length = 5,
 	width = 9,
 	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 9.13004, z = 1.49609, y = 6.3587, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 1, containmentType = -1}, 
 			{templateFile = "object/tangible/terminal/terminal_guild.iff", x = 10.7, z = 1.50, y = 9.3, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 1, containmentType = -1}
 	}
 }

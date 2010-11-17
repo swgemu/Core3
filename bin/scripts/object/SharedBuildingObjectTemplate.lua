@@ -68,6 +68,9 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	--Should the structure be public by default?
 	publicStructure = true,
 	
+	--Can the structure ever be private?
+	alwaysPublic = false,
+	
 	--The object that is placed during the construction phase.
 	constructionMarker = "",
 	

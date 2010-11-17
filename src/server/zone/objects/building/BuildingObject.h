@@ -246,8 +246,6 @@ class BuildingObjectImplementation : public StructureObjectImplementation, publi
 protected:
 	Vector<ManagedReference<CellObject* > > cells;
 
-	ManagedReference<StructureTerminal* > structureTerminal;
-
 	int totalCellNumber;
 
 	ManagedReference<SignObject* > signObject;
