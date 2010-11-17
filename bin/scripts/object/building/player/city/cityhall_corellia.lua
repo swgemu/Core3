@@ -51,7 +51,10 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	gameObjectType = 529,
 	cityRankRequired = 0,
 	abilityRequired = "place_cityhall",
-	terminalLocation = {3, -16.78, 2.0, 7.9, 0, 1, 0, 0}
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -16.78, z = 2.0, y = 7.9, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 3, containmentType = -1},
+	},
+	alwaysPublic = true
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cityhall_corellia, "object/building/player/city/cityhall_corellia.iff")

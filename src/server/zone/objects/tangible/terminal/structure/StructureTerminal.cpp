@@ -66,33 +66,6 @@ void StructureTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse,
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-void StructureTerminal::setStructureObject(StructureObject* obj) {
-	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setStructureObject(obj);
-}
-
-StructureObject* StructureTerminal::getStructureObject() {
-	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-
-		return (StructureObject*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getStructureObject();
-}
-
 DistributedObjectServant* StructureTerminal::_getImplementation() {
 
 	_updated = true;
@@ -170,30 +143,19 @@ void StructureTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("StructureTerminal");
 
-	addSerializableVariable("structureObject", &structureObject);
 }
 
 StructureTerminalImplementation::StructureTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(59):  		Logger.setLoggingName("StructureTerminal");
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(56):  		Logger.setLoggingName("StructureTerminal");
 	Logger::setLoggingName("StructureTerminal");
 }
 
 void StructureTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(72):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(69):  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(74):  		Logger.setLoggingName("StructureTerminal");
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(71):  		Logger.setLoggingName("StructureTerminal");
 	Logger::setLoggingName("StructureTerminal");
-}
-
-void StructureTerminalImplementation::setStructureObject(StructureObject* obj) {
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(95):  		structureObject = obj;
-	structureObject = obj;
-}
-
-StructureObject* StructureTerminalImplementation::getStructureObject() {
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(99):  		return structureObject;
-	return structureObject;
 }
 
 /*
@@ -213,12 +175,6 @@ Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case 7:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
-		setStructureObject((StructureObject*) inv->getObjectParameter());
-		break;
-	case 9:
-		resp->insertLong(getStructureObject()->_getObjectID());
-		break;
 	default:
 		return NULL;
 	}
@@ -232,14 +188,6 @@ void StructureTerminalAdapter::initializeTransientMembers() {
 
 int StructureTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((StructureTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
-}
-
-void StructureTerminalAdapter::setStructureObject(StructureObject* obj) {
-	((StructureTerminalImplementation*) impl)->setStructureObject(obj);
-}
-
-StructureObject* StructureTerminalAdapter::getStructureObject() {
-	return ((StructureTerminalImplementation*) impl)->getStructureObject();
 }
 
 /*

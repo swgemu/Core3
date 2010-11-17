@@ -1145,40 +1145,6 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 	if (structureObject->isBuildingObject()) {
 		BuildingObject* buildingObject = (BuildingObject*) structureObject;
 		//Create a sign
-
-		//Create a structure terminal
-		if (structureTemplate->isSharedBuildingObjectTemplate()) {
-			SharedBuildingObjectTemplate* buildingTemplate = dynamic_cast<SharedBuildingObjectTemplate*>(structureTemplate);
-
-			StructureTerminalLocation* structureTerminalLocation = buildingTemplate->getStructureTerminalLocation();
-
-			if (structureTerminalLocation != NULL) {
-				String structureTerminalTemplateString = "object/tangible/terminal/terminal_player_structure.iff";
-
-				ManagedReference<CellObject*> cell = buildingObject->getCell(structureTerminalLocation->getCellNumber());
-
-				if (cell != NULL) {
-					ManagedReference<StructureTerminal*> structureTerminal = (StructureTerminal*) zoneServer->createObject(structureTerminalTemplateString.hashCode(), 1);
-
-					if (structureTerminal != NULL) {
-						float fx = structureTerminalLocation->getPositionX();
-						float fz = structureTerminalLocation->getPositionZ();
-						float fy = structureTerminalLocation->getPositionY();
-						Quaternion qdir = structureTerminalLocation->getDirection();
-
-						structureTerminal->initializePosition(fx, fz, fy);
-						structureTerminal->setDirection(qdir);
-						structureTerminal->setStructureObject(buildingObject);
-
-						cell->addObject(structureTerminal, -1, true);
-						cell->broadcastObject(structureTerminal, false);
-
-						structureTerminal->insertToZone(zone);
-						structureTerminal->updateToDatabase();
-					}
-				}
-			}
-		}
 	}
 
 	structureObject->notifyStructurePlaced(player);
@@ -1411,9 +1377,14 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 }
 
 int StructureManagerImplementation::changePrivacy(PlayerCreature* player, StructureObject* structureObject) {
-	structureObject->setPublicStructure(!structureObject->isPublicStructure());
+	SharedBuildingObjectTemplate* sbot = dynamic_cast<SharedBuildingObjectTemplate*>(templateManager->getTemplate(structureObject->getServerObjectCRC()));
 
-	structureObject->updateToDatabase();
+	if (sbot != NULL && sbot->isAlwaysPublic()) {
+		player->sendSystemMessage("@player_structure:force_public"); //This structure is always public.
+		return 0;
+	}
+
+	structureObject->setPublicStructure(!structureObject->isPublicStructure());
 
 	if (structureObject->isPublicStructure())
 		player->sendSystemMessage("@player_structure:structure_now_public"); //This structure is now public
