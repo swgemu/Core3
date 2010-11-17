@@ -51,8 +51,8 @@ object_building_player_city_theater_corellia = object_building_player_city_share
 	length = 5,
 	width = 6,
 	abilityRequired = "place_theater",
-	cityRankRequired = 4
-
+	cityRankRequired = 4,
+	terminalLocation = {0, -7, 4.75, -14.2, 0, 0.707107, 0, 0.707107}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_theater_corellia, "object/building/player/city/theater_corellia.iff")
