@@ -43,12 +43,15 @@
 
 object_building_player_player_merchant_tent_style_03 = object_building_player_shared_player_merchant_tent_style_03:new {
 	lotSize = 1,
-	publicStructure = false,
+	publicStructure = true,
 	baseMaintenanceRate = 10,
 	allowedZones = {0,1,4,5,6,7,8},
-	terminalLocation = {0, -0.15, 0.267105, -2.76, 0, 0, 0, 1},
 	length = 3,
-	width = 3
+	width = 3,
+	alwaysPublic = true,
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -0.15, z = 0.267105, y = -2.76, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 0, containmentType = -1}
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_player_player_merchant_tent_style_03, "object/building/player/player_merchant_tent_style_03.iff")

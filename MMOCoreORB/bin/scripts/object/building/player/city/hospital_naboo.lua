@@ -52,7 +52,9 @@ object_building_player_city_hospital_naboo = object_building_player_city_shared_
 	mapLocationsType1 = 13,
 	cityRankRequired = 3,
 	abilitiesRequired = {"place_hospital"},
-	terminalLocation = {2, 7.48, 0.188325, 1.5, 0, 0.707107, 0, -0.707107}
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 7.48, z = 0.188325, y = 1.5, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = 2, containmentType = -1}
+	}
 
 }
 

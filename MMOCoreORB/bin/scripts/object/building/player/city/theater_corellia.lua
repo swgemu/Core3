@@ -52,7 +52,9 @@ object_building_player_city_theater_corellia = object_building_player_city_share
 	width = 6,
 	abilityRequired = "place_theater",
 	cityRankRequired = 4,
-	terminalLocation = {0, -7, 4.75, -14.2, 0, 0.707107, 0, 0.707107}
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -7, z = 4.75, y = -14.2, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 0, containmentType = -1}
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_theater_corellia, "object/building/player/city/theater_corellia.iff")

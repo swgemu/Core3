@@ -66,8 +66,6 @@ class BuildingObject extends StructureObject implements QuadTree {
 	@dereferenced
 	protected Vector<CellObject> cells;
 
-	protected StructureTerminal structureTerminal;
-
 	protected int totalCellNumber;
 	
 	protected SignObject signObject;

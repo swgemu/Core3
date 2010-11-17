@@ -52,7 +52,9 @@ object_building_player_city_cantina_tatooine = object_building_player_city_share
 	mapLocationsType1 = 3,
 	cityRankRequired = 2,
 	abilityRequired = "place_cantina",
-	terminalLocation = {1, -4.1, 0.750001, 6.1, 0, 1, 0, 0}
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -4.1, z = 0.750001, y = 6.1, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 1, containmentType = -1}
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cantina_tatooine, "object/building/player/city/cantina_tatooine.iff")

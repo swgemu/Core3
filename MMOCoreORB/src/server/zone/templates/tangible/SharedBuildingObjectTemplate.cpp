@@ -32,4 +32,6 @@ void SharedBuildingObjectTemplate::readObject(LuaObject* templateData) {
 	terminalLocation.pop();
 
 	publicStructure = (bool) templateData->getByteField("publicStructure");
+
+	alwaysPublic = (bool) templateData->getByteField("alwaysPublic");
 }

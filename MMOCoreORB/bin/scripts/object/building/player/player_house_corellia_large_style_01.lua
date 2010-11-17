@@ -46,7 +46,9 @@ object_building_player_player_house_corellia_large_style_01 = object_building_pl
 	baseMaintenanceRate = 50,
 	allowedZones = {0,7},
 	publicStructure = false,
-	terminalLocation = {7, 3.17, 4.585, -4.4, 0, 0, 0, 1},
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 3.17, z = 4.585, y = -4.4, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 7, containmentType = -1},
+	},
 	constructionMarker = "object/building/player/construction/construction_player_house_corellia_large_style_01.iff",
 	length = 5,
 	width = 7

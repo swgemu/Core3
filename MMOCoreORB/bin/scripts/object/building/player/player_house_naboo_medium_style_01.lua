@@ -46,7 +46,9 @@ object_building_player_player_house_naboo_medium_style_01 = object_building_play
 	baseMaintenanceRate = 34,
 	allowedZones = {1,5,6},
 	publicStructure = false,
-	terminalLocation = {0, 9.89, 1.1, -10.75, 0, 0, 0, 1},
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 9.89, z = 1.1, y = -10.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 0, containmentType = -1},
+	},
 	constructionMarker = "object/building/player/construction/construction_player_house_naboo_medium_style_01.iff",
 	length = 3,
 	width = 4

@@ -52,9 +52,6 @@ import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 
 class StructureTerminal extends Terminal {
-	@weakReference
-	protected StructureObject structureObject;
-	
 	public StructureTerminal() {
 		Logger.setLoggingName("StructureTerminal");
 	}
@@ -90,12 +87,4 @@ class StructureTerminal extends Terminal {
 	 */
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
-	
-	public void setStructureObject(StructureObject obj) {
-		structureObject = obj;
-	}
-	
-	public StructureObject getStructureObject() {
-		return structureObject;
-	}
 }

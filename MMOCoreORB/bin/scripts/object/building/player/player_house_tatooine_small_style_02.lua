@@ -46,7 +46,9 @@ object_building_player_player_house_tatooine_small_style_02 = object_building_pl
 	publicStructure = false,
 	baseMaintenanceRate = 16,
 	allowedZones = {1,4,8},
-	terminalLocation = {0, 3.79, 0.75, 6.02, 0, 1, 0, 0},
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 3.79, z = 0.75, y = 6.02, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 0, containmentType = -1},
+	},
 	constructionMarker = "object/building/player/construction/construction_player_house_tatooine_small_style_01.iff",
 	length = 3,
 	width = 4

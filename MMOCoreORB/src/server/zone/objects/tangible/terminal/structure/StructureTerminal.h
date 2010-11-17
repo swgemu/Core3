@@ -84,10 +84,6 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
-	void setStructureObject(StructureObject* obj);
-
-	StructureObject* getStructureObject();
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -117,8 +113,6 @@ namespace terminal {
 namespace structure {
 
 class StructureTerminalImplementation : public TerminalImplementation {
-protected:
-	ManagedWeakReference<StructureObject* > structureObject;
 
 public:
 	StructureTerminalImplementation();
@@ -130,10 +124,6 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
-
-	void setStructureObject(StructureObject* obj);
-
-	StructureObject* getStructureObject();
 
 	StructureTerminal* _this;
 
@@ -177,10 +167,6 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	void setStructureObject(StructureObject* obj);
-
-	StructureObject* getStructureObject();
 
 };
 
