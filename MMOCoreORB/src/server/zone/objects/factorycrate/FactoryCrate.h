@@ -108,8 +108,6 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void sendTo(SceneObject* player, bool doClose);
-
 	bool isFactoryCrate();
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
@@ -173,8 +171,6 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	virtual void sendTo(SceneObject* player, bool doClose);
-
 	virtual bool isFactoryCrate();
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
@@ -235,8 +231,6 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	void sendTo(SceneObject* player, bool doClose);
 
 	bool isFactoryCrate();
 

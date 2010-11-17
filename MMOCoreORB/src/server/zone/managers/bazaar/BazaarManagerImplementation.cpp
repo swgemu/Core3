@@ -182,15 +182,30 @@ void BazaarManagerImplementation::addSaleItem(PlayerCreature* player, uint64 obj
 	BazaarTerminal* terminal = (BazaarTerminal*) bazaar.get();
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	ManagedReference<SceneObject*> objectToSell = zoneServer->getObject(objectid);
 
-	if (!inventory->hasObjectInContainer(objectid)) {
-		error("trying to add object to the bazaar that is not in the inventory");
+	if (objectToSell == NULL) {
+		error("trying to add null object to the bazaar");
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::NOTOWN);
 		player->sendMessage(soldMessage);
 		return;
 	}
 
-	ManagedReference<SceneObject*> objectToSell = inventory->getContainerObject(objectid);
+	ManagedReference<SceneObject*> toSellParent = objectToSell->getParent();
+
+	if (toSellParent == NULL) {
+		error("trying to add object to the bazaar with a null parent");
+		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::NOTOWN);
+		player->sendMessage(soldMessage);
+		return;
+	}
+
+	if (!objectToSell->isASubChildOf(inventory)) {
+		error("trying to add object to the bazaar that is not in the inventory");
+		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::NOTOWN);
+		player->sendMessage(soldMessage);
+		return;
+	}
 
 	if (!objectToSell->isTangibleObject()) {
 		error("trying to add a non tangible object to the bazaar");
@@ -223,7 +238,7 @@ void BazaarManagerImplementation::addSaleItem(PlayerCreature* player, uint64 obj
 	terminal->updateToDatabase();
 
 	objectToSell->sendDestroyTo(player);
-	inventory->removeObject(objectToSell, true);
+	toSellParent->removeObject(objectToSell, true);
 
 	player->substractBankCredits(SALESFEE);
 
