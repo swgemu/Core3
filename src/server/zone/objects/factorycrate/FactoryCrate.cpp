@@ -100,28 +100,13 @@ int FactoryCrate::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void FactoryCrate::sendTo(SceneObject* player, bool doClose) {
-	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addObjectParameter(player);
-		method.addBooleanParameter(doClose);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->sendTo(player, doClose);
-}
-
 bool FactoryCrate::isFactoryCrate() {
 	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -134,7 +119,7 @@ void FactoryCrate::setUseCount(unsigned int newUseCount, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 		method.addUnsignedIntParameter(newUseCount);
 		method.addBooleanParameter(notifyClient);
 
@@ -149,7 +134,7 @@ TangibleObject* FactoryCrate::getPrototype() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 11);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -162,7 +147,7 @@ String FactoryCrate::getCraftersName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 
 		method.executeWithAsciiReturn(_return_getCraftersName);
 		return _return_getCraftersName;
@@ -176,7 +161,7 @@ String FactoryCrate::getCraftersSerial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 
 		method.executeWithAsciiReturn(_return_getCraftersSerial);
 		return _return_getCraftersSerial;
@@ -190,7 +175,7 @@ bool FactoryCrate::extractObjectToParent(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 		method.addSignedIntParameter(count);
 
 		return method.executeWithBooleanReturn();
@@ -204,7 +189,7 @@ TangibleObject* FactoryCrate::extractObject(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 		method.addSignedIntParameter(count);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
@@ -218,7 +203,7 @@ void FactoryCrate::split(int newStackSize) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 16);
 		method.addSignedIntParameter(newStackSize);
 
 		method.executeWithVoidReturn();
@@ -337,30 +322,27 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 9:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
-		break;
-	case 10:
 		resp->insertBoolean(isFactoryCrate());
 		break;
-	case 11:
+	case 10:
 		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 12:
+	case 11:
 		resp->insertLong(getPrototype()->_getObjectID());
 		break;
-	case 13:
+	case 12:
 		resp->insertAscii(getCraftersName());
 		break;
-	case 14:
+	case 13:
 		resp->insertAscii(getCraftersSerial());
 		break;
-	case 15:
+	case 14:
 		resp->insertBoolean(extractObjectToParent(inv->getSignedIntParameter()));
 		break;
-	case 16:
+	case 15:
 		resp->insertLong(extractObject(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 17:
+	case 16:
 		split(inv->getSignedIntParameter());
 		break;
 	default:
@@ -380,10 +362,6 @@ void FactoryCrateAdapter::sendBaselinesTo(SceneObject* player) {
 
 int FactoryCrateAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((FactoryCrateImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
-}
-
-void FactoryCrateAdapter::sendTo(SceneObject* player, bool doClose) {
-	((FactoryCrateImplementation*) impl)->sendTo(player, doClose);
 }
 
 bool FactoryCrateAdapter::isFactoryCrate() {

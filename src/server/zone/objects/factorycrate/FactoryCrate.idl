@@ -106,7 +106,7 @@ class FactoryCrate extends TangibleObject {
 	 * @param player SceneObject that will receive the messages
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
-	public native abstract void sendTo(SceneObject player, boolean doClose);
+	//public native abstract void sendTo(SceneObject player, boolean doClose);
 	
 	
 	public abstract boolean isFactoryCrate() {

@@ -17,46 +17,18 @@
 #include "server/zone/packets/scene/SceneObjectCloseMessage.h"
 #include "server/zone/packets/scene/UpdateContainmentMessage.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 void FactoryCrateImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("FactoryCrate");
-
-	setOptionsBitmask(0x2100);
 }
 
 void FactoryCrateImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
-}
 
-void FactoryCrateImplementation::sendTo(SceneObject* player, bool doClose) {
-	if (isStaticObject())
-		return;
-
-
-	if (getParent() == NULL)
-		return;
-
-	// Scene Create
-	BaseMessage* create = new SceneObjectCreateMessage(_this);
-	player->sendMessage(create);
-
-	if (parent != NULL) {
-		BaseMessage* link = new UpdateContainmentMessage(getObjectID(), getParent()->getObjectID(), 0xFFFFFFFF);
-		player->sendMessage(link);
-	}
-
-	sendBaselinesTo(player);
-
-	sendSlottedObjectsTo(player);
-	sendContainerObjectsTo(player);
-
-	if (doClose) {
-		BaseMessage* msg = new SceneObjectCloseMessage(_this);
-		player->sendMessage(msg);
-	}
-
+	setOptionsBitmask(0x2100);
 }
 
 void FactoryCrateImplementation::sendBaselinesTo(SceneObject* player) {
@@ -163,7 +135,7 @@ bool FactoryCrateImplementation::extractObjectToParent(int count) {
 
 	TangibleObject* prototype = getPrototype();
 
-	if(prototype == NULL || !prototype->isTangibleObject()) {
+	if (prototype == NULL || !prototype->isTangibleObject() || parent == NULL) {
 		error("FactoryCrateImplementation::extractObject has a NULL or non-tangible item");
 		return false;
 	}
@@ -177,12 +149,28 @@ bool FactoryCrateImplementation::extractObjectToParent(int count) {
 		protoclone->setOptionsBitmask(0x2100);
 		protoclone->setUseCount(count, false);
 
+		String errorDescription;
+		int errorNumber = 0;
+
+		if ((errorNumber = parent->canAddObject(protoclone, -1, errorDescription)) != 0) {
+			if (errorDescription.length() > 1) {
+				ManagedReference<SceneObject*> player = parent->getParentRecursively(SceneObject::PLAYERCREATURE);
+
+				if (player != NULL)
+					player->sendMessage(new ChatSystemMessage(errorDescription));
+			} else
+				parent->error("cannot extratObjectToParent " + String::valueOf(errorNumber));
+
+			return false;
+		}
+
 		if (parent != NULL) {
 			parent->addObject(protoclone, -1, true);
 			parent->broadcastObject(protoclone, true);
 		}
 
 		setUseCount(getUseCount() - count);
+
 		return true;
 	}
 
