@@ -224,6 +224,8 @@ public:
 
 	bool isWeatherEnabled();
 
+	bool hasManagersStarted();
+
 	void setWeatherEnabled(bool value);
 
 	void setWeatherWindX(float value);
@@ -286,6 +288,8 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 	HeightMap* heightMap;
 
 	MapLocationTable mapLocations;
+
+	bool managersStarted;
 
 	float weatherWindX;
 
@@ -359,6 +363,8 @@ public:
 	void changeWeatherID(int value);
 
 	bool isWeatherEnabled();
+
+	bool hasManagersStarted();
 
 	void setWeatherEnabled(bool value);
 
@@ -460,6 +466,8 @@ public:
 	void changeWeatherID(int value);
 
 	bool isWeatherEnabled();
+
+	bool hasManagersStarted();
 
 	void setWeatherEnabled(bool value);
 
