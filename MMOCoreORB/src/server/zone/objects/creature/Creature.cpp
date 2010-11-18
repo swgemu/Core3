@@ -12,6 +12,8 @@
 
 #include "server/zone/managers/creature/CreatureTemplate.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	CreatureStub
  */
@@ -337,85 +339,85 @@ void CreatureImplementation::_serializationHelperMethod() {
 
 CreatureImplementation::CreatureImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/Creature.idl(61):  		Logger.setLoggingName("Creature");
+	// server/zone/objects/creature/Creature.idl(62):  		Logger.setLoggingName("Creature");
 	Logger::setLoggingName("Creature");
-	// server/zone/objects/creature/Creature.idl(62):  		Logger.setLogging(false);
+	// server/zone/objects/creature/Creature.idl(63):  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/Creature.idl(63):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/Creature.idl(64):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 bool CreatureImplementation::isCreature() {
-	// server/zone/objects/creature/Creature.idl(67):  		return true;
+	// server/zone/objects/creature/Creature.idl(68):  		return true;
 	return true;
 }
 
 bool CreatureImplementation::isBaby() {
-	// server/zone/objects/creature/Creature.idl(96):  		return super.baby;
+	// server/zone/objects/creature/Creature.idl(97):  		return super.baby;
 	return AiAgentImplementation::baby;
 }
 
 float CreatureImplementation::getTame() {
-	// server/zone/objects/creature/Creature.idl(100):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(101):  			return 0;
+	// server/zone/objects/creature/Creature.idl(101):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(102):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(103):  super.npcTemplate.getTame();
+	// server/zone/objects/creature/Creature.idl(104):  super.npcTemplate.getTame();
 	return AiAgentImplementation::npcTemplate->getTame();
 }
 
 String CreatureImplementation::getMeatType() {
-	// server/zone/objects/creature/Creature.idl(107):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(108):  			return "";
+	// server/zone/objects/creature/Creature.idl(108):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(109):  			return "";
 	return "";
-	// server/zone/objects/creature/Creature.idl(110):  super.npcTemplate.getMeatType();
+	// server/zone/objects/creature/Creature.idl(111):  super.npcTemplate.getMeatType();
 	return AiAgentImplementation::npcTemplate->getMeatType();
 }
 
 String CreatureImplementation::getBoneType() {
-	// server/zone/objects/creature/Creature.idl(114):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(115):  			return "";
+	// server/zone/objects/creature/Creature.idl(115):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(116):  			return "";
 	return "";
-	// server/zone/objects/creature/Creature.idl(117):  super.npcTemplate.getBoneType();
+	// server/zone/objects/creature/Creature.idl(118):  super.npcTemplate.getBoneType();
 	return AiAgentImplementation::npcTemplate->getBoneType();
 }
 
 String CreatureImplementation::getHideType() {
-	// server/zone/objects/creature/Creature.idl(121):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(122):  			return "";
+	// server/zone/objects/creature/Creature.idl(122):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(123):  			return "";
 	return "";
-	// server/zone/objects/creature/Creature.idl(124):  super.npcTemplate.getHideType();
+	// server/zone/objects/creature/Creature.idl(125):  super.npcTemplate.getHideType();
 	return AiAgentImplementation::npcTemplate->getHideType();
 }
 
 float CreatureImplementation::getMilk() {
-	// server/zone/objects/creature/Creature.idl(128):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(129):  			return 0;
+	// server/zone/objects/creature/Creature.idl(129):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(130):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(131):  super.npcTemplate.getMilk();
+	// server/zone/objects/creature/Creature.idl(132):  super.npcTemplate.getMilk();
 	return AiAgentImplementation::npcTemplate->getMilk();
 }
 
 float CreatureImplementation::getHideMax() {
-	// server/zone/objects/creature/Creature.idl(135):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(136):  			return 0;
+	// server/zone/objects/creature/Creature.idl(136):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(137):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(138):  super.npcTemplate.getHideMax();
+	// server/zone/objects/creature/Creature.idl(139):  super.npcTemplate.getHideMax();
 	return AiAgentImplementation::npcTemplate->getHideMax();
 }
 
 float CreatureImplementation::getBoneMax() {
-	// server/zone/objects/creature/Creature.idl(142):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(143):  			return 0;
+	// server/zone/objects/creature/Creature.idl(143):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(144):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(145):  super.npcTemplate.getBoneMax();
+	// server/zone/objects/creature/Creature.idl(146):  super.npcTemplate.getBoneMax();
 	return AiAgentImplementation::npcTemplate->getBoneMax();
 }
 
 float CreatureImplementation::getMeatMax() {
-	// server/zone/objects/creature/Creature.idl(149):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(150):  			return 0;
+	// server/zone/objects/creature/Creature.idl(150):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(151):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(152):  super.npcTemplate.getMeatMax();
+	// server/zone/objects/creature/Creature.idl(153):  super.npcTemplate.getMeatMax();
 	return AiAgentImplementation::npcTemplate->getMeatMax();
 }
 

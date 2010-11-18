@@ -74,6 +74,8 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, int id) : Manage
 
 	mapLocations.setNoDuplicateInsertPlan();
 
+	managersStarted = false;
+
 	//galacticTime = new Time();
 
 	planetManager = NULL;
@@ -131,6 +133,8 @@ void ZoneImplementation::startManagers() {
 	cityManager->loadLuaConfig();
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
+
+	managersStarted = true;
 }
 
 void ZoneImplementation::stopManagers() {

@@ -266,9 +266,12 @@ void StructureObjectImplementation::sendStatusTo(PlayerCreature* player) {
 		statusBox->addMenuItem(ssprate.toString());
 	}
 
-	if (isBuildingObject())
+	if (isBuildingObject()) {
 		//TODO: Count items that can be picked up by the player (exclude terminals like structure, elevator, guild)...
-		ssnitems << dec << "@player_structure:items_in_building_prompt " << (int) 0; //Number of Items in Building:
+		ssnitems << dec << "@player_structure:items_in_building_prompt " << ((BuildingObjectImplementation*)this)->getCurrentNumerOfPlayerItems(); //Number of Items in Building:
+
+		statusBox->addMenuItem(ssnitems.toString());
+	}
 
 	player->addSuiBox(statusBox);
 	player->sendMessage(statusBox->generateMessage());

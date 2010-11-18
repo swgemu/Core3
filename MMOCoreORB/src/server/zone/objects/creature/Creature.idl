@@ -51,6 +51,7 @@ import server.zone.objects.group.GroupObject;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.managers.creature.CreatureTemplate;
+import server.zone.objects.player.PlayerCreature;
 
 class Creature extends AiAgent {
 	
