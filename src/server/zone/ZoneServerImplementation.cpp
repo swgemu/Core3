@@ -77,6 +77,8 @@ which carries forward this exception.
 #include "ZonePacketHandler.h"
 #include "ZoneHandler.h"
 
+#include "ZoneLoadManagersTask.h"
+
 ZoneServerImplementation::ZoneServerImplementation(int galaxyid) :
 		ManagedServiceImplementation(), Logger("ZoneServer") {
 	galaxyID = galaxyid;
@@ -212,8 +214,24 @@ void ZoneServerImplementation::startZones() {
 	for (int i = 0; i < zones.size(); ++i) {
 		Zone* zone = zones.get(i);
 
-		if (zone != NULL)
-			zone->startManagers();
+		if (zone != NULL) {
+			//	zone->startManagers();
+
+			Reference<Task*> task = new ZoneLoadManagersTask(zone);
+			Core::getTaskManager()->executeTask(task);
+		}
+	}
+
+	for (int i = 0; i < zones.size(); ++i) {
+		Zone* zone = zones.get(i);
+
+		if (zone != NULL) {
+			if (!zone->hasManagersStarted()){
+				Thread::sleep(500);
+
+				--i;
+			}
+		}
 	}
 
 }

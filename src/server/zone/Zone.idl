@@ -99,6 +99,8 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	@dereferenced
 	private transient MapLocationTable mapLocations;
+	
+	private boolean managersStarted;
 
 	//Weather
 	private float weatherWindX; //1.0 = east, -1.0 = west
@@ -207,6 +209,10 @@ class Zone extends ManagedObject implements QuadTree {
 
 	public boolean isWeatherEnabled() {
 		return weatherEnabled;
+	}
+	
+	public boolean hasManagersStarted() {
+		return managersStarted;
 	}
 
 	public void setWeatherEnabled(boolean value) {
