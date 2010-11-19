@@ -1066,54 +1066,56 @@ bool StructureObjectImplementation::isPublicStructure() {
 }
 
 void StructureObjectImplementation::setOwnerObjectID(unsigned long long objectID) {
-	// server/zone/objects/structure/StructureObject.idl(269):  		ownerObjectID = objectID;
+	// server/zone/objects/structure/StructureObject.idl(270):  		structurePermissionList.removePermission(ownerObjectID, StructurePermissionList.OWNER);
+	(&structurePermissionList)->removePermission(ownerObjectID, StructurePermissionList::OWNER);
+	// server/zone/objects/structure/StructureObject.idl(275):  		ownerObjectID = objectID;
 	ownerObjectID = objectID;
-	// server/zone/objects/structure/StructureObject.idl(270):  		structurePermissionList.addPermission(objectID, StructurePermissionList.OWNER);
+	// server/zone/objects/structure/StructureObject.idl(277):  		structurePermissionList.addPermission(objectID, StructurePermissionList.OWNER);
 	(&structurePermissionList)->addPermission(objectID, StructurePermissionList::OWNER);
 }
 
 void StructureObjectImplementation::setDeedObjectID(unsigned long long deedID) {
-	// server/zone/objects/structure/StructureObject.idl(274):  		deedObjectID = deedID;
+	// server/zone/objects/structure/StructureObject.idl(281):  		deedObjectID = deedID;
 	deedObjectID = deedID;
 }
 
 void StructureObjectImplementation::setLotSize(int lots) {
-	// server/zone/objects/structure/StructureObject.idl(278):  		lotSize = lots;
+	// server/zone/objects/structure/StructureObject.idl(285):  		lotSize = lots;
 	lotSize = lots;
 }
 
 void StructureObjectImplementation::setDestroyCode(unsigned int code) {
-	// server/zone/objects/structure/StructureObject.idl(282):  		destroyCode = code;
+	// server/zone/objects/structure/StructureObject.idl(289):  		destroyCode = code;
 	destroyCode = code;
 }
 
 void StructureObjectImplementation::setBaseMaintenanceRate(int rate) {
-	// server/zone/objects/structure/StructureObject.idl(286):  		baseMaintenanceRate = rate;
+	// server/zone/objects/structure/StructureObject.idl(293):  		baseMaintenanceRate = rate;
 	baseMaintenanceRate = rate;
 }
 
 void StructureObjectImplementation::setBasePowerRate(int rate) {
-	// server/zone/objects/structure/StructureObject.idl(290):  		basePowerRate = rate;
+	// server/zone/objects/structure/StructureObject.idl(297):  		basePowerRate = rate;
 	basePowerRate = rate;
 }
 
 void StructureObjectImplementation::setSurplusMaintenance(int surplus) {
-	// server/zone/objects/structure/StructureObject.idl(294):  		surplusMaintenance = surplus;
+	// server/zone/objects/structure/StructureObject.idl(301):  		surplusMaintenance = surplus;
 	surplusMaintenance = surplus;
 }
 
 void StructureObjectImplementation::addMaintenance(int add) {
-	// server/zone/objects/structure/StructureObject.idl(298):  		surplusMaintenance += add;
+	// server/zone/objects/structure/StructureObject.idl(305):  		surplusMaintenance += add;
 	surplusMaintenance += add;
 }
 
 void StructureObjectImplementation::setSurplusPower(int surplus) {
-	// server/zone/objects/structure/StructureObject.idl(302):  		surplusPower = surplus;
+	// server/zone/objects/structure/StructureObject.idl(309):  		surplusPower = surplus;
 	surplusPower = surplus;
 }
 
 void StructureObjectImplementation::addPower(int add) {
-	// server/zone/objects/structure/StructureObject.idl(306):  		surplusPower += add;
+	// server/zone/objects/structure/StructureObject.idl(313):  		surplusPower += add;
 	surplusPower += add;
 }
 
@@ -1121,32 +1123,32 @@ void StructureObjectImplementation::setPublicStructure(bool privacy) {
 }
 
 bool StructureObjectImplementation::isStructureObject() {
-	// server/zone/objects/structure/StructureObject.idl(314):  		return true;
+	// server/zone/objects/structure/StructureObject.idl(321):  		return true;
 	return true;
 }
 
 bool StructureObjectImplementation::isRedeedable() {
-	// server/zone/objects/structure/StructureObject.idl(319):  		return (getRedeedCost() < (surplusMaintenance + 1));
+	// server/zone/objects/structure/StructureObject.idl(326):  		return (getRedeedCost() < (surplusMaintenance + 1));
 	return (getRedeedCost() < (surplusMaintenance + 1));
 }
 
 int StructureObjectImplementation::getLength() {
-	// server/zone/objects/structure/StructureObject.idl(323):  		return length;
+	// server/zone/objects/structure/StructureObject.idl(330):  		return length;
 	return length;
 }
 
 void StructureObjectImplementation::setLength(int len) {
-	// server/zone/objects/structure/StructureObject.idl(327):  		length = len;
+	// server/zone/objects/structure/StructureObject.idl(334):  		length = len;
 	length = len;
 }
 
 int StructureObjectImplementation::getWidth() {
-	// server/zone/objects/structure/StructureObject.idl(331):  		return width;
+	// server/zone/objects/structure/StructureObject.idl(338):  		return width;
 	return width;
 }
 
 void StructureObjectImplementation::setWidth(int wid) {
-	// server/zone/objects/structure/StructureObject.idl(335):  		width = wid;
+	// server/zone/objects/structure/StructureObject.idl(342):  		width = wid;
 	width = wid;
 }
 

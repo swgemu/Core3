@@ -2024,6 +2024,10 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(CreatureObject* creature, uint64 targetID) {
 	ZoneServer* zoneServer = server;
 
+	//First we need to check if the target. if it's not right...
+	//Check the building they are standing in, if it's not right...
+	//Find the nearest installation.
+
 	ManagedReference<SceneObject*> obj = NULL;
 
 	if (targetID != 0) {
