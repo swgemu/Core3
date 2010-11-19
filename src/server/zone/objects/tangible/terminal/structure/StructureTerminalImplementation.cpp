@@ -32,6 +32,11 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 
 	menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
 	menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
+
+	//CityHalls only have Destroy Structure option
+	if (structureObject->isBuildingObject() && ((BuildingObject*) structureObject.get())->isCityHallBuilding())
+		return;
+
 	menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
 	menuResponse->addRadialMenuItemToRadialID(118, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
 	menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@base_player:set_name"); //Set Name
