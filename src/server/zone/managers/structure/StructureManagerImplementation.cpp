@@ -1128,8 +1128,19 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 	float floraRadius = structureTemplate->getClearFloraRadius();
 	bool snapToTerrain = structureTemplate->getSnapToTerrain();
 
-	float width = structureTemplate->getWidth() * 4.0f;
-	float length = structureTemplate->getLength() * 4.0f;
+	float width = structureTemplate->getWidth();
+	float length = structureTemplate->getLength();
+
+	int orient = direction.getDegrees() / 4;
+
+	if (orient & 1) { //is odd, swap them to account for building rotation
+		width = structureTemplate->getLength();
+		length = structureTemplate->getWidth();
+	}
+
+	//Scale them.
+	width *= 4.0f;
+	length *= 4.0f;
 
 	if (floraRadius > 0 && !snapToTerrain)
 		z = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 4);
