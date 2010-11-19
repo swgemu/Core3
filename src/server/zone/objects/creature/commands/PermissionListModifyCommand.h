@@ -105,15 +105,13 @@ public:
 		String action;
 		tokenizer.getStringToken(action);
 
-		if (!playerManager->existsName(targetPlayerName)) {
+		if (action != "remove" && !playerManager->existsName(targetPlayerName)) {
 			StringIdChatParameter params;
 			params.setStringId("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
 			params.setTO(targetPlayerName);
 			player->sendSystemMessage(params);
 			return INVALIDPARAMETERS;
 		}
-
-		uint64 targetPlayerID = playerManager->getObjectID(targetPlayerName);
 
 		if (listName != "ADMIN" && listName != "ENTRY" && listName != "BAN" && listName != "HOPPER" && listName != "VENDOR")
 			return INVALIDPARAMETERS;
