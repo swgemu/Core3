@@ -81,6 +81,8 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
+		Locker _locker(obj);
+
 		StructureObject* structureObject = (StructureObject*) obj.get();
 
 		structureObject->sendDestroyConfirmTo(player);
