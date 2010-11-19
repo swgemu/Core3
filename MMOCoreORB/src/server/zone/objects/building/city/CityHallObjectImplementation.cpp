@@ -196,7 +196,7 @@ void CityHallObjectImplementation::sendStatusTo(PlayerCreature* player) {
 	String mayorName = mayor->getObjectName()->getDisplayedName();
 
 	StringBuffer location;
-	location << getPositionX() << ", " << getPositionZ() << ", " << getPositionY() << " @planet_n:" << Planet::getPlanetName(getZone()->getZoneID());
+	location << getPositionX() << ", " << getPositionY();
 
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, 0x00);
 	listBox->setPromptTitle("@city/city:city_info_t"); //City Status Report
@@ -205,14 +205,10 @@ void CityHallObjectImplementation::sendStatusTo(PlayerCreature* player) {
 	//Lists basic information about the city.
 	listBox->addMenuItem("@city/city:name_prompt " + cityName);
 	listBox->addMenuItem("@city/city:mayor_prompt " + mayorName);
-	listBox->addMenuItem("@city/city:location_prompt " + location.toString());
-	listBox->addMenuItem("@city/city:radius_prompt " + String::valueOf(cityRegion->getRadius()));
-	listBox->addMenuItem("@city/city:citizen_prompt " + String::valueOf(declaredCitizens.size()));
-	listBox->addMenuItem("@city/city:structures_prompt " + String::valueOf(cityStructures.size()));
+	listBox->addMenuItem("@city/city:location_prompt " + location.toString() + " @city/city:radius_prompt " + String::valueOf(cityRegion->getRadius()));
+	listBox->addMenuItem("@city/city:citizen_prompt " + String::valueOf(declaredCitizens.size()) + " @city/city:structures_prompt " + String::valueOf(cityStructures.size()));
 	listBox->addMenuItem("@city/city:specialization_prompt "); //TODO: Specialization
-	listBox->addMenuItem("@city/city:income_tax_prompt " + String::valueOf(incomeTax));
-	listBox->addMenuItem("@city/city:promperty_tax_prompt " + String::valueOf(propertyTax)); //LOL at the spelling error
-	listBox->addMenuItem("@city/city:sales_tax_prompt " + String::valueOf(salesTax));
+	listBox->addMenuItem("@city/city:income_tax_prompt " + String::valueOf(incomeTax) + " @city/city:promperty_tax_prompt " + String::valueOf(propertyTax) + " @city/city:sales_tax_prompt " + String::valueOf(salesTax));
 
 	if (cityRegion->getShuttle() == NULL)
 		listBox->addMenuItem("@city/city:travel_cost_prompt_none");
@@ -225,16 +221,21 @@ void CityHallObjectImplementation::sendStatusTo(PlayerCreature* player) {
 void CityHallObjectImplementation::sendCitizenshipReportTo(PlayerCreature* player) {
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, 0x00);
 	listBox->setPromptTitle("@city/city:citizen_list_t"); //City Citizenship Report
-	listBox->setPromptText("@city/city:citizen_list_d"); //The following is a list of the currently declared citizens (residents) of this city.  All citizens are elligible to vote.
+	listBox->setPromptText("@city/city:citizen_list_d"); //The following is a list of the currently declared citizens (residents) of this city.  All citizens are eligible to vote.
 
-	//TODO: This is a good instance of a player where a playerObjectID->playerName lookup would be good.
 	for (int i = 0; i < declaredCitizens.size(); ++i) {
-		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(declaredCitizens.get(i));
+		uint64 playerID = declaredCitizens.get(i);
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(playerID);
 
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		listBox->addMenuItem(obj->getObjectName()->getDisplayedName());
+		String displayedName = obj->getObjectName()->getDisplayedName();
+
+		if (isMilitiaMember(playerID))
+			displayedName += " @city/city:militia_suffix"; //(Militia)
+
+		listBox->addMenuItem(displayedName);
 	}
 
 	player->sendMessage(listBox->generateMessage());

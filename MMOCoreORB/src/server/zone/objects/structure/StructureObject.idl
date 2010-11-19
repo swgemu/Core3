@@ -266,7 +266,14 @@ class StructureObject extends TangibleObject {
 	}
 	
 	public void setOwnerObjectID(unsigned long objectID) {
+		//Remove the old owner from permission list.
+		structurePermissionList.removePermission(ownerObjectID, StructurePermissionList.OWNER);
+		
+		//Research: Add them as an administrator?
+		//structurePermissionList.addPermission(ownerObjectID, StructurePermissionList.ADMIN);
+
 		ownerObjectID = objectID;
+
 		structurePermissionList.addPermission(objectID, StructurePermissionList.OWNER);
 	}
 	

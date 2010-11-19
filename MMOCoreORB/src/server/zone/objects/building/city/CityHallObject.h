@@ -253,7 +253,7 @@ protected:
 
 	SortedVector<unsigned long long> bannedPlayers;
 
-	VectorMap<unsigned long long, ManagedReference<StructureObject* > > cityStructures;
+	SortedVector<unsigned long long> cityStructures;
 
 	VectorMap<unsigned long long, unsigned int> playerZoningRights;
 

@@ -66,7 +66,7 @@ class CityHallObject extends BuildingObject {
 	protected SortedVector<unsigned long> bannedPlayers;
 	
 	@dereferenced
-	protected VectorMap<unsigned long, StructureObject> cityStructures;
+	protected SortedVector<unsigned long> cityStructures;
 	
 	@dereferenced
 	protected VectorMap<unsigned long, unsigned int> playerZoningRights;
@@ -113,7 +113,6 @@ class CityHallObject extends BuildingObject {
 		playerZoningRights.setNullValue(0);
 		
 		cityStructures.setInsertPlan(3);
-		cityStructures.setNullValue(null);
 		
 		militiaMembers.setInsertPlan(3);
 

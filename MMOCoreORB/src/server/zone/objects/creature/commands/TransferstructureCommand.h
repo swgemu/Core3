@@ -63,6 +63,85 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		String targetName = arguments.toString();
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		ManagedReference<PlayerCreature*> targetPlayer = playerManager->getPlayer(targetName);
+
+		if (targetPlayer == NULL) {
+			player->sendSystemMessage("@player_structure:no_transfer_target"); //You must specify a player with whom to transfer ownership.
+			return GENERALERROR;
+		}
+
+		//Get the building to be transfered.
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(player, target);
+
+		if (obj == NULL || !obj->isStructureObject()) {
+			player->sendSystemMessage("@player_structure:not_in_building"); //You must be inside your building to transfer it.
+			return GENERALERROR;
+		}
+
+		StructureObject* structureObject = (StructureObject*) obj.get();
+
+		if (!structureObject->isOwnerOf(player)) {
+			player->sendSystemMessage("@player_structure:not_owner"); //You are not the owner of this structure.
+			return GENERALERROR;
+		}
+
+		if (targetPlayer == player) {
+			player->sendSystemMessage("@player_structure:already_owner"); //You are already the owner.
+			return GENERALERROR;
+		}
+
+		//TODO:
+		//@player_structure:trail_no_transfer Trial accounts may not be involved in a property ownership transfer.
+		//@player_structure:building_has_no_trade The object %TT may not be traded and must be put in your inventory or destroyed before the building can be transferred.
+		//@player_structure:faction_base You cannot transfer your factional base access and allotment responsibility to anyone else.
+
+		ManagedReference<Region*> region = (Region*) structureObject->getActiveRegion();
+
+		if (region != NULL) {
+			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
+
+			if (cityHall != NULL && cityHall->isBanned(targetPlayer->getObjectID())) {
+				player->sendSystemMessage("@city/city:cant_transfer_to_city_banned"); //You cannot transfer ownership of a structure to someone who is banned from the city in which the structure resides.
+				return GENERALERROR;
+			}
+		}
+
+		if (structureObject->isOnBanList(targetPlayer)) {
+			player->sendSystemMessage("@player_structure:no_banned_player"); //You cannot transfer ownership to a banned player
+			return GENERALERROR;
+		}
+
+		structureObject->setOwnerObjectID(targetPlayer->getObjectID());
+		//TODO: Do we need to manually update the permission lists too?
+
+		if (player->getDeclaredResidence() == structureObject)
+			player->setDeclaredResidence(NULL);
+
+		//Update the cell permissions if the structure is private and a building.
+		if (!structureObject->isPublicStructure() && structureObject->isBuildingObject()) {
+			BuildingObject* buildingObject = (BuildingObject*) structureObject;
+
+			buildingObject->updateCellPermissionsTo(targetPlayer);
+			buildingObject->updateCellPermissionsTo(player);
+		}
+
+		StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%NT has transfered ownership of the structure to you
+		params.setTT(player);
+		targetPlayer->sendSystemMessage(params);
+
+		params.setStringId("@player_structure:ownership_transferred_out"); //Ownership of the structure has been transferred to %NT.
+		params.setTT(targetPlayer);
+		player->sendSystemMessage(params);
+
 		return SUCCESS;
 	}
 
