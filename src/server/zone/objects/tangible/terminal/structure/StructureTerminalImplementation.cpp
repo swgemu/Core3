@@ -18,8 +18,10 @@
 #include "engine/util/Vector3.h"
 
 void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	//Note: We don't have to check the type here, because if the gameobject type is set to BUILDING, then it's going to return true on any checks we do ANYWAYS.
-	ManagedReference<StructureObject*> structureObject = (StructureObject*) getParentRecursively(SceneObject::BUILDING);
+	if (getRootParent() == NULL || !getRootParent()->isStructureObject())
+		return;
+
+	ManagedReference<StructureObject*> structureObject = (StructureObject*) getRootParent();
 
 	//if (structureObject == NULL)
 		//structureObject = get the nearest installation object...
