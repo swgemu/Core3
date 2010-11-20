@@ -4,6 +4,8 @@
 
 #include "Terminal.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 #include "server/zone/Zone.h"
 
 /*
@@ -36,6 +38,15 @@ void Terminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
+void Terminal::notifyDissapear(QuadTreeEntry* obj) {
+	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->notifyDissapear(obj);
+}
+
 bool Terminal::isTerminal() {
 	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -60,6 +71,33 @@ bool Terminal::isGuildTerminal() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isGuildTerminal();
+}
+
+void Terminal::setControlledObject(SceneObject* obj) {
+	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setControlledObject(obj);
+}
+
+SceneObject* Terminal::getControlledObject() {
+	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getControlledObject();
 }
 
 DistributedObjectServant* Terminal::_getImplementation() {
@@ -139,22 +177,35 @@ void TerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("Terminal");
 
+	addSerializableVariable("controlledObject", &controlledObject);
 }
 
 TerminalImplementation::TerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/Terminal.idl(54):  		Logger.setLoggingName("Terminal");
+	// server/zone/objects/tangible/terminal/Terminal.idl(57):  		Logger.setLoggingName("Terminal");
 	Logger::setLoggingName("Terminal");
+	// server/zone/objects/tangible/terminal/Terminal.idl(59):  		controlledObject = null;
+	controlledObject = NULL;
 }
 
 bool TerminalImplementation::isTerminal() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(60):  		return true;
+	// server/zone/objects/tangible/terminal/Terminal.idl(68):  		return true;
 	return true;
 }
 
 bool TerminalImplementation::isGuildTerminal() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(64):  		return false;
+	// server/zone/objects/tangible/terminal/Terminal.idl(72):  		return false;
 	return false;
+}
+
+void TerminalImplementation::setControlledObject(SceneObject* obj) {
+	// server/zone/objects/tangible/terminal/Terminal.idl(76):  		controlledObject = obj;
+	controlledObject = obj;
+}
+
+SceneObject* TerminalImplementation::getControlledObject() {
+	// server/zone/objects/tangible/terminal/Terminal.idl(80):  		return controlledObject;
+	return controlledObject;
 }
 
 /*
@@ -177,6 +228,12 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 8:
 		resp->insertBoolean(isGuildTerminal());
 		break;
+	case 9:
+		setControlledObject((SceneObject*) inv->getObjectParameter());
+		break;
+	case 10:
+		resp->insertLong(getControlledObject()->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -194,6 +251,14 @@ bool TerminalAdapter::isTerminal() {
 
 bool TerminalAdapter::isGuildTerminal() {
 	return ((TerminalImplementation*) impl)->isGuildTerminal();
+}
+
+void TerminalAdapter::setControlledObject(SceneObject* obj) {
+	((TerminalImplementation*) impl)->setControlledObject(obj);
+}
+
+SceneObject* TerminalAdapter::getControlledObject() {
+	return ((TerminalImplementation*) impl)->getControlledObject();
 }
 
 /*
