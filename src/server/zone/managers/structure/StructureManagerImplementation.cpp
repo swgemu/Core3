@@ -1139,11 +1139,11 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 	}
 
 	//Scale them.
-	width *= 4.0f;
-	length *= 4.0f;
+	width *= 5.0f;
+	length *= 5.0f;
 
 	if (floraRadius > 0 && !snapToTerrain)
-		z = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 4);
+		z = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 3);
 
 	if (structureObject->isBuildingObject()) {
 		BuildingObject* buildingObject = (BuildingObject*) structureObject;
