@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -37,9 +51,15 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyDissapear(QuadTreeEntry* obj);
+
 	bool isTerminal();
 
 	bool isGuildTerminal();
+
+	void setControlledObject(SceneObject* obj);
+
+	SceneObject* getControlledObject();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -68,6 +88,8 @@ namespace tangible {
 namespace terminal {
 
 class TerminalImplementation : public TangibleObjectImplementation {
+protected:
+	ManagedReference<SceneObject* > controlledObject;
 
 public:
 	TerminalImplementation();
@@ -76,9 +98,15 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyDissapear(QuadTreeEntry* obj);
+
 	bool isTerminal();
 
 	virtual bool isGuildTerminal();
+
+	void setControlledObject(SceneObject* obj);
+
+	SceneObject* getControlledObject();
 
 	Terminal* _this;
 
@@ -124,6 +152,10 @@ public:
 	bool isTerminal();
 
 	bool isGuildTerminal();
+
+	void setControlledObject(SceneObject* obj);
+
+	SceneObject* getControlledObject();
 
 };
 

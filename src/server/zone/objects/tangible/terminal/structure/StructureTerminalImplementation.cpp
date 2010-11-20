@@ -18,16 +18,10 @@
 #include "engine/util/Vector3.h"
 
 void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	if (getRootParent() == NULL || !getRootParent()->isStructureObject())
+	if (controlledObject == NULL || !controlledObject->isStructureObject())
 		return;
 
-	ManagedReference<StructureObject*> structureObject = (StructureObject*) getRootParent();
-
-	//if (structureObject == NULL)
-		//structureObject = get the nearest installation object...
-
-	if (structureObject == NULL)
-		return;
+	StructureObject* structureObject = (StructureObject*) controlledObject.get();
 
 	if (!structureObject->isOnAdminList(player))
 		return;
@@ -36,7 +30,7 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
 
 	//CityHalls only have Destroy Structure option
-	if (structureObject->isBuildingObject() && ((BuildingObject*) structureObject.get())->isCityHallBuilding())
+	if (structureObject->isBuildingObject() && ((BuildingObject*) structureObject)->isCityHallBuilding())
 		return;
 
 	menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
@@ -61,31 +55,28 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 }
 
 int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	ManagedReference<StructureObject*> structureObject = (StructureObject*) getParentRecursively(SceneObject::BUILDING);
+	if (controlledObject == NULL || !controlledObject->isStructureObject())
+		return 1;
 
-	//if (structureObject == NULL)
-		//structureObject = get the nearest installation object...
+	StructureObject* structureObject = (StructureObject*) controlledObject.get();
 
-	if (structureObject == NULL)
-		return 0;
+	if (!structureObject->isOnAdminList(player))
+		return 1;
 
 	if (zone == NULL)
-		return 0;
+		return 1;
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
 	if (planetManager == NULL)
-		return 0;
+		return 1;
 
 	ManagedReference<StructureManager*> structureManager = planetManager->getStructureManager();
 
 	if (structureManager == NULL)
-		return 0;
+		return 1;
 
 	Locker structureLocker(structureObject, player);
-
-	if (!structureObject->isOnAdminList(player))
-		return 1;
 
 	switch (selectedID) {
 	case 121:

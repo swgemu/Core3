@@ -77,6 +77,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/templates/ChildObject.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
 
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -1440,7 +1441,9 @@ void SceneObjectImplementation::createChildObjects() {
 		if (obj == NULL)
 			continue;
 
-		obj->initializePosition(child->getPosition().getX(), child->getPosition().getZ(), child->getPosition().getY());
+		Vector3 childPosition = child->getPosition();
+
+		obj->initializePosition(childPosition.getX(), childPosition.getZ(), childPosition.getY());
 		obj->setDirection(child->getDirection());
 
 		if (isBuildingObject() && child->getCellId() >= 0) {
@@ -1456,6 +1459,33 @@ void SceneObjectImplementation::createChildObjects() {
 					cellObject->broadcastObject(obj, false);
 				}
 			}
+		} else {
+			//Create the object outdoors in relation to its parent.
+			Vector3 position = getPosition();
+
+			float angle = direction.getRadians();
+
+			float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
+			float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
+
+			x += position.getX();
+			y += position.getY();
+
+			float z = position.getZ() + childPosition.getZ();
+
+			float degrees = direction.getDegrees();
+
+			Quaternion dir = child->getDirection();
+
+			obj->initializePosition(x, z, y);
+			obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
+		}
+
+		//TODO: Is there a better way of handling this?
+		//If we are inserting a terminal, set it's controlled object to this object by default.
+		if (obj->isTerminal()) {
+			Terminal* terminal = (Terminal*) obj.get();
+			terminal->setControlledObject(_this);
 		}
 
 		obj->insertToZone(zone);

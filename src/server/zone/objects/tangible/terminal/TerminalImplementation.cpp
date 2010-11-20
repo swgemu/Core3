@@ -12,3 +12,18 @@ void TerminalImplementation::initializeTransientMembers() {
 
 	setLoggingName("Terminal");
 }
+
+
+void TerminalImplementation::notifyDissapear(QuadTreeEntry* obj) {
+	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
+
+	SceneObject* scnoStub = (SceneObject*) scno->_getStub();
+
+	if (scnoStub == controlledObject) {
+		removeFromZone();
+		destroyObjectFromDatabase(true);
+	}
+
+	TangibleObjectImplementation::notifyDissapear(obj);
+	//removeNotifiedSentObject(scnoStub);
+}
