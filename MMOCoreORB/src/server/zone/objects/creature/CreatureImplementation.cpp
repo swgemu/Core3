@@ -57,6 +57,8 @@ int CreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte 
 }
 
 void CreatureImplementation::harvest(PlayerCreature* player, byte selectedID) {
+	if (zone == NULL)
+		return;
 
 	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
 	String restype = "";
