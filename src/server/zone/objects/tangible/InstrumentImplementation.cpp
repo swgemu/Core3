@@ -8,6 +8,7 @@
 #include "Instrument.h"
 #include "InstrumentObserver.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
@@ -46,7 +47,24 @@ int InstrumentImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 
 	} else if (selectedID == 20) {
 		if (!isInQuadTree())
-			return 0;
+			return 1;
+
+		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*>(player->getSlottedObject("hold_r"));
+
+		if (instrument != NULL) {
+			player->sendSystemMessage("performance", "music_must_unequip");
+			return 1;
+		}
+
+		PlayerObject* ghost = dynamic_cast<PlayerObject*>(player->getSlottedObject("ghost"));
+
+		if (ghost == NULL)
+			return 1;
+
+		if (!ghost->hasSkill("startmusic")) {
+			player->sendSystemMessage("performance", "music_lack_skill_instrument");
+			return 1;
+		}
 
 		if (player->getDistanceTo(_this) >= 5)
 			player->sendSystemMessage("elevator_text", "too_far");
