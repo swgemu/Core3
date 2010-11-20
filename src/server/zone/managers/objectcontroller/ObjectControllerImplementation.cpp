@@ -106,6 +106,9 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		objectToTransfer->sendTo(destinationObject, true);
 	}
 
+	if (destinationObject->isPlayerCreature() && parent->isCellObject())
+		objectToTransfer->sendTo(destinationObject, true);
+
 	parent->updateToDatabase();
 	//destinationObject->updateToDatabaseAllObjects(false);
 
