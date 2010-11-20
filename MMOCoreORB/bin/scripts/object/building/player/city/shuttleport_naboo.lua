@@ -42,7 +42,6 @@
 
 
 object_building_player_city_shuttleport_naboo = object_building_player_city_shared_shuttleport_naboo:new {
-
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,5,6},
@@ -50,8 +49,10 @@ object_building_player_city_shuttleport_naboo = object_building_player_city_shar
 	width = 5,
 	cityRankRequired = 4,
 	gameObjectType = 4103,
-	abilityRequired = "place_shuttleport"
-
+	abilityRequired = "place_shuttleport",
+	childObjects = {
+		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -8.5, z = 1.5, y = 14, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1}
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shuttleport_naboo, "object/building/player/city/shuttleport_naboo.iff")

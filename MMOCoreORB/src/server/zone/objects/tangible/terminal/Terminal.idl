@@ -46,15 +46,23 @@ package server.zone.objects.tangible.terminal;
 
 import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 
 class Terminal extends TangibleObject {
+	//@weakReference
+	protected SceneObject controlledObject;
 	
 	public Terminal() {		
 		Logger.setLoggingName("Terminal");
+		
+		controlledObject = null;
 	}
 	
 	public native void initializeTransientMembers();
+	
+	@local
+	public native void notifyDissapear(QuadTreeEntry obj);
 	
 	public boolean isTerminal() {
 		return true;
@@ -62,5 +70,13 @@ class Terminal extends TangibleObject {
 	
 	public abstract boolean isGuildTerminal() {
 		return false;
+	}
+	
+	public void setControlledObject(SceneObject obj) {
+		controlledObject = obj;
+	}
+	
+	public SceneObject getControlledObject() {
+		return controlledObject;
 	}
 }

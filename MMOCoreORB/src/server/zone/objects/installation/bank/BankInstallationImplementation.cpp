@@ -50,6 +50,7 @@ void BankInstallationImplementation::spawnBankObjects() {
 	bank->updateToDatabase();
 	banks.add(bank);
 
+	/*
 	newX = (-1 * Math::sin(directionRadians) + 0 * Math::cos(directionRadians)) + positionX;
 	newY = (-1 * Math::cos(directionRadians) - 0 * Math::sin(directionRadians)) + positionY;
 
@@ -59,7 +60,7 @@ void BankInstallationImplementation::spawnBankObjects() {
 	bank->rotate(180);
 	bank->insertToZone(zone);
 	bank->updateToDatabase();
-	banks.add(bank);
+	banks.add(bank);*/
 
 
 	updateToDatabase();
