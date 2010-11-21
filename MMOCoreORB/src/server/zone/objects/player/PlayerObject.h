@@ -162,6 +162,8 @@ public:
 
 	static const int ANONYMOUS = 0x80000000;
 
+	static const int NORMALPLAYER = 0;
+
 	static const int CSR = 1;
 
 	static const int DEV = 2;
@@ -389,6 +391,8 @@ public:
 	static const int FACTIONRANK = 0x200;
 
 	static const int ANONYMOUS = 0x80000000;
+
+	static const int NORMALPLAYER = 0;
 
 	static const int CSR = 1;
 
