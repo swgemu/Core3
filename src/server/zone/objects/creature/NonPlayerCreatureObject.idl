@@ -60,5 +60,10 @@ class NonPlayerCreatureObject extends AiAgent {
 	public boolean isNonPlayerCreature() {
 		return true;
 	}
-
+	
+	@local
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	
+	@local
+	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
 }

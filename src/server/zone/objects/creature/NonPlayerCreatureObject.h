@@ -54,6 +54,10 @@ public:
 
 	bool isNonPlayerCreature();
 
+	void notifyPositionUpdate(QuadTreeEntry* entry);
+
+	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -86,6 +90,10 @@ public:
 	NonPlayerCreatureObjectImplementation(DummyConstructorParameter* param);
 
 	bool isNonPlayerCreature();
+
+	void notifyPositionUpdate(QuadTreeEntry* entry);
+
+	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	NonPlayerCreatureObject* _this;
 
