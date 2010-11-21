@@ -42,7 +42,6 @@
 
 
 object_building_player_city_bank_corellia = object_building_player_city_shared_bank_corellia:new {
-
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	mapLocationsType1 = 2,
@@ -55,7 +54,6 @@ object_building_player_city_bank_corellia = object_building_player_city_shared_b
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 0, z = 0, y = -1, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1}
 	}
-
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_bank_corellia, "object/building/player/city/bank_corellia.iff")

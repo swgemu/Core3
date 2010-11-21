@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -34,6 +48,12 @@ namespace sign {
 class SignObject : public TangibleObject {
 public:
 	SignObject();
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void sendSignNameTo(PlayerCreature* player);
+
+	bool isSignObject();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -67,6 +87,12 @@ public:
 	SignObjectImplementation();
 
 	SignObjectImplementation(DummyConstructorParameter* param);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void sendSignNameTo(PlayerCreature* player);
+
+	bool isSignObject();
 
 	SignObject* _this;
 
@@ -106,6 +132,12 @@ public:
 	SignObjectAdapter(SignObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void sendSignNameTo(PlayerCreature* player);
+
+	bool isSignObject();
 
 };
 

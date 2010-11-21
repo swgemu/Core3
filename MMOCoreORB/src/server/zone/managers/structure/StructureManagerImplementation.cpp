@@ -1160,8 +1160,44 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 	structureObject->createChildObjects();
 
 	if (structureObject->isBuildingObject()) {
-		BuildingObject* buildingObject = (BuildingObject*) structureObject;
-		//Create a sign
+		SharedBuildingObjectTemplate* sbot = dynamic_cast<SharedBuildingObjectTemplate*>(structureTemplate);
+
+		if (sbot != NULL) {
+			BuildingObject* buildingObject = (BuildingObject*) structureObject;
+			//Create a sign
+
+			ChildObject* child = sbot->getSign();
+			if (child != NULL && !child->getTemplateFile().isEmpty()) {
+				ManagedReference<SceneObject*> signobj = zoneServer->createObject(child->getTemplateFile().hashCode(), 1);
+
+				if (signobj != NULL && signobj->isSignObject()) {
+					SignObject* sign = (SignObject*) signobj.get();
+					Vector3 signPos = child->getPosition();
+					Quaternion signDir = child->getDirection();
+
+					float angle = buildingObject->getDirection()->getRadians();
+
+					float signx = (Math::cos(angle) * signPos.getX()) + (signPos.getY() * Math::sin(angle));
+					float signy = (Math::cos(angle) * signPos.getY()) - (signPos.getX() * Math::sin(angle));
+
+					signx += buildingObject->getPositionX();
+					signy += buildingObject->getPositionY();
+
+					float signz = buildingObject->getPositionZ() + signPos.getZ();
+
+					float degrees = buildingObject->getDirection()->getDegrees();
+
+					Quaternion dir = child->getDirection();
+
+					buildingObject->setSignObject(sign);
+
+					sign->initializePosition(signx, signz, signy);
+					sign->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
+
+					sign->insertToZone(zone);
+				}
+			}
+		}
 	}
 
 	structureObject->notifyStructurePlaced(player);

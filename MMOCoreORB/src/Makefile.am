@@ -318,6 +318,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/building/BuildingDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/installation/InstallationDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.cpp \
+		server/zone/objects/tangible/sign/SignObjectImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
 		server/zone/objects/installation/shuttle/ShuttleInstallationImplementation.cpp \
 		server/zone/objects/installation/bank/BankInstallationImplementation.cpp \
