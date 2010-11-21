@@ -302,8 +302,13 @@ void SuiManager::handleSetObjectName(PlayerCreature* player, SuiBox* suiBox, uin
 
 		ManagedReference<SignObject*> sign = building->getSignObject();
 
-		if (sign != NULL)
+		if (sign != NULL) {
 			object = sign;
+
+			StringIdChatParameter params("@player_structure:prose_sign_name_updated"); //Sign name successfully updated to '%TO'.
+			params.setTO(objectName);
+			player->sendSystemMessage(params);
+		}
 	}
 
 	object->setCustomObjectName(objectName , true);

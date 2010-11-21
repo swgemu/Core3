@@ -68,6 +68,7 @@ import server.zone.managers.creature.CreatureTemplate;
 include server.zone.objects.tangible.DamageMap;
 import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
 include server.zone.objects.creature.variables.CreatureAttackMap;
+import engine.util.Coordinate;
 
 class AiAgent extends CreatureObject {
 	@dereferenced

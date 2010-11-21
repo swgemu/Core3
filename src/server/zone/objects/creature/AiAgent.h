@@ -223,6 +223,8 @@ using namespace server::zone::objects::creature::events;
 
 #include "engine/core/ManagedObject.h"
 
+#include "engine/util/Coordinate.h"
+
 namespace server {
 namespace zone {
 namespace objects {
