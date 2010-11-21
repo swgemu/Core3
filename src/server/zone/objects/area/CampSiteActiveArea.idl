@@ -89,7 +89,7 @@ class CampSiteActiveArea extends ActiveArea {
 		areaRange = 0;
 		
 		abandoned = false;
-		maxXp = 0;
+		maxXP = 0;
 		campModifier = 0;
 		duration = 0;
 		Logger.setLoggingName("CampsiteActiveArea");
