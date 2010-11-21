@@ -53,6 +53,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.events.AiThinkEvent;
 import server.zone.objects.creature.events.AiMoveEvent;
 import server.zone.objects.creature.events.AiWaitEvent;
+import server.zone.objects.creature.events.AiAwarenessEvent;
 import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
@@ -77,6 +78,9 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced
 	protected transient Reference<AiWaitEvent> waitEvent;
+	
+	@dereferenced
+	protected transient Reference<AiAwarenessEvent> awarenessEvent;
 	
 	@dereferenced
 	protected Vector<string> skillCommands;
@@ -109,6 +113,9 @@ class AiAgent extends CreatureObject {
 	
 	@weakReference
 	protected SceneObject followObject;
+	protected unsigned int followState;
+	
+	protected boolean fleeing;
 	
 	protected float respawnTimer;
 	protected int numberOfPlayersInRange;
@@ -118,8 +125,15 @@ class AiAgent extends CreatureObject {
 	
 	public static final int UPDATEMOVEMENTINTERVAL = 1000; // msec
 	
+	public static final unsigned int OBLIVIOUS = 0;
+	public static final unsigned int WATCHING = 1;
+	public static final unsigned int STALKING = 2;
+	public static final unsigned int FOLLOWING = 3;
+	
 	public AiAgent() {
 		baby = false;
+		
+		followState = OBLIVIOUS;
 
 		currentSpeed = 0;
 		respawnTimer = 0;
@@ -149,11 +163,18 @@ class AiAgent extends CreatureObject {
 	
 	public abstract native void activateWaitEvent();
 	
+	public native void activateAwarenessEvent(CreatureObject target);
+	
 	public native boolean tryRetreat();
 	
 	public native void doRecovery();
 	
 	public native void doMovement();
+	
+	@local
+	public abstract void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target) {
+		
+	}
 		
 	public native void checkNewAngle();
 	
@@ -317,21 +338,56 @@ class AiAgent extends CreatureObject {
 		return true;
 	}
 	
+	public void setOblivious() {
+		followState = OBLIVIOUS;
+		setTargetObject(null);
+		activateMovementEvent();
+	}
+	
+	public void setWatchObject(SceneObject obj) {
+		if (this.isRetreating())
+			return;
+		
+		followState = WATCHING;
+		
+		setTargetObject(obj);
+		activateMovementEvent();
+	}
+	
+	public void setStalkObject(SceneObject obj) {
+		if (this.isRetreating())
+			return;
+		
+		followState = STALKING;
+		
+		setTargetObject(obj);
+		activateMovementEvent();
+	}
+	
 	public void setFollowObject(SceneObject obj) {
 		if (this.isRetreating())
 			return;
-			
+		
+		followState = FOLLOWING;
+		
+		setTargetObject(obj);
+		activateMovementEvent();
+	}
+	
+	public void setTargetObject(SceneObject obj) {
 		if (followObject != obj) {
 			clearPatrolPoints();
 
 			followObject = obj;
-
-			activateMovementEvent();
 		}
 	}
 	
 	public boolean isRetreating() {
 		return !homeLocation.isReached();
+	}
+	
+	public boolean isFleeing() {
+		return fleeing;
 	}
 	
 	public native void clearDespawnEvent();

@@ -90,7 +90,7 @@ object_weapon_creature_creature_default_weapon = object_weapon_creature_shared_c
 	pointBlankAccuracy = 7,
 	pointBlankRange = 0,
 	
-	idealRange = 2,
+	idealRange = 5,
 	idealAccuracy = 7,
 	
 	maxRange = 5,

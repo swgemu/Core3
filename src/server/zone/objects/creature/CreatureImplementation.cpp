@@ -5,16 +5,111 @@
  *      Author: Kyle
  */
 
+#include "CreatureObject.h"
 #include "Creature.h"
+#include "AiAgent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/combat/CombatManager.h"
 
+
+void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
+
+	// don't worry about this if no one's around, and do it for any creature
+	if (scno == _this || numberOfPlayersInRange <= 0  || !scno->isCreatureObject() || isRetreating() || isFleeing() || isInCombat())
+		return;
+
+	if (followObject == NULL || followObject == scno) {
+		CreatureObject* creo = (CreatureObject*)scno;
+
+		// TODO: determine if creature can be seen by this (mask scent, et. al.)
+
+		// determine if creature can be a threat
+		if (creo->isAiAgent()) {
+			AiAgent* aio = (AiAgent*)creo;
+			if ((aio->getFerocity() <= 0 || getFerocity() <= 0) && aio->getLevel() >= getLevel())
+				return;
+		}
+
+		activateAwarenessEvent(creo);
+	}
+
+}
+
+void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
+	if (isDead() || zone == NULL || time == 0)
+		return;
+
+	// calculate average speed
+	Vector3 deltaV(target->getPositionX() - start.getPositionX(), target->getPositionY() - start.getPositionY(), 0);
+	float avgSpeed = deltaV.squaredLength() / (time) * 1000000;
+
+	// set frightened or threatened
+	// TODO: weight this by ferocity/level difference
+	if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed())) {
+		setOblivious();
+	} else if (followObject == NULL) {
+		setWatchObject(target);
+		showFlyText("npc_reaction/flytext", "alert", 0xFF, 0, 0);
+	} else if (followObject->isCreatureObject() && target == followObject) {
+		ManagedReference<CreatureObject*> creo = dynamic_cast<CreatureObject*>(followObject.get());
+		// determine if frightened or threatened
+		if (creo->isAiAgent()) {
+			AiAgent* aio = (AiAgent*)creo.get();
+			if (getFerocity() > aio->getFerocity() && getLevel() >= aio->getLevel())
+				addDefender(aio);
+			else if (getLevel() < aio->getLevel()) {
+				if (!tryRetreat())
+					runAway(target);
+			} else
+				setOblivious();
+		} else if (creo->isPlayerCreature()) {
+			PlayerCreature* play = (PlayerCreature*)creo.get();
+			// TODO: tweak this formula based on feedback
+			if ((getFerocity() * getLevel() / 4) < play->getLevel()) {
+				if (!tryRetreat())
+					runAway(target);
+			} else
+				addDefender(play);
+		}
+	}
+
+	activateRecovery();
+	activateMovementEvent();
+}
+
+void CreatureImplementation::runAway(CreatureObject* target) {
+	if (target == NULL)
+		return;
+
+	setOblivious();
+	currentSpeed = runSpeed;
+
+	damageMap.removeAll();
+
+	Vector3 runTrajectory(getPositionX() - target->getPositionX(), getPositionY() - target->getPositionY(), 0);
+	runTrajectory = runTrajectory * (100 / runTrajectory.length());
+	runTrajectory += target->getPosition();
+
+	patrolPoints.removeAll();
+	setNextPosition(runTrajectory.getX(), zone->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent());
+
+	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
+
+	fleeing = true;
+
+	CombatManager::instance()->forcePeace(_this);
+
+	activateMovementEvent();
+}
 
 void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 
