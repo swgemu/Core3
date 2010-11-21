@@ -19,7 +19,7 @@ namespace stringid {
 class StringIdManager : public Logger, public Singleton<StringIdManager> {
 	ObjectDatabaseManager* databaseManager;
 
-	ObjectDatabase* stringsDatabase;
+	LocalDatabase* stringsDatabase;
 
 protected:
 	void populateDatabase() {
@@ -41,7 +41,12 @@ protected:
 				ObjectOutputStream* data = new ObjectOutputStream();
 				value.toBinaryStream(data);
 
-				stringsDatabase->putData((uint64)full.hashCode(), data, NULL);
+				uint64 longKey = (uint64)full.hashCode();
+
+				ObjectOutputStream* key = new ObjectOutputStream();
+				TypeInfo<uint64>::toBinaryStream(&longKey, key);
+
+				stringsDatabase->putData(key, data);
 			}
 
 			delete result;
@@ -58,7 +63,7 @@ public:
 		databaseManager = ObjectDatabaseManager::instance();
 		bool fill = databaseManager->getDatabaseID("strings") == 0xFFFF;
 
-		stringsDatabase = databaseManager->loadDatabase("strings", true);
+		stringsDatabase = databaseManager->loadLocalDatabase("strings", true);
 
 		if (fill)
 			populateDatabase();
@@ -71,7 +76,12 @@ public:
 	String getStringId(uint32 crc) {
 		ObjectInputStream data;
 		String str = "";
-		if (stringsDatabase->getData(crc, &data) == 0)
+
+		uint64 longKey = (uint64) crc;
+		ObjectOutputStream key;
+		TypeInfo<uint64>::toBinaryStream(&longKey, &key);
+
+		if (stringsDatabase->getData(&key, &data) == 0)
 			str.parseFromBinaryStream(&data);
 
 		return str;
@@ -82,5 +92,7 @@ public:
 }
 }
 }
+
+using namespace server::zone::managers::stringid;
 
 #endif /* STRINGIDMANAGER_H_ */

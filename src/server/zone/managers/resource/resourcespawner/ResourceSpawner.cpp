@@ -148,7 +148,7 @@ void ResourceSpawner::loadResourceSpawns() {
 	info("Building Resource Map");
 
 	ObjectDatabase* resourceDatabase =
-			ObjectDatabaseManager::instance()->loadDatabase("resourcespawns",
+			ObjectDatabaseManager::instance()->loadObjectDatabase("resourcespawns",
 					true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();

@@ -1,4 +1,4 @@
-/*
+ /*
  * ChatManagerImplementation.cpp
  *
  *  Created on: 28/07/2009
@@ -42,7 +42,7 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	//resourceManager = server->getResourceManager();
 
-	ObjectDatabaseManager::instance()->loadDatabase("mail", true);
+	ObjectDatabaseManager::instance()->loadObjectDatabase("mail", true);
 
 	playerMap = new PlayerMap(initsize);
 	//playerMap->deploy("ChatPlayerMap");

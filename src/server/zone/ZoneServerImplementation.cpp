@@ -351,8 +351,6 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* message) {
 	ZoneClientSessionImplementation* zclient = (ZoneClientSessionImplementation*) client;
 
-	ObjectDatabaseManager::instance()->startLocalTransaction();
-
 	try {
 		/*if (zclient->simulatePacketLoss())
 			return;*/
@@ -371,8 +369,6 @@ void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* mess
 	} catch (Exception& e) {
 		error(e.getMessage());
 	}
-
-	ObjectDatabaseManager::instance()->commitLocalTransaction();
 }
 
 void ZoneServerImplementation::processMessage(Message* message) {

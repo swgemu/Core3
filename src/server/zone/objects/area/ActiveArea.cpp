@@ -8,8 +8,6 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-#include "server/zone/objects/area/ActiveAreaEvent.h"
-
 /*
  *	ActiveAreaStub
  */
@@ -276,11 +274,11 @@ void ActiveAreaImplementation::_serializationHelperMethod() {
 
 ActiveAreaImplementation::ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/ActiveArea.idl(59):  		radius = 0;
+	// server/zone/objects/area/ActiveArea.idl(58):  		radius = 0;
 	radius = 0;
-	// server/zone/objects/area/ActiveArea.idl(60):  		radius2 = 0;
+	// server/zone/objects/area/ActiveArea.idl(59):  		radius2 = 0;
 	radius2 = 0;
-	// server/zone/objects/area/ActiveArea.idl(62):  		Logger.setLoggingName("ActiveArea");
+	// server/zone/objects/area/ActiveArea.idl(61):  		Logger.setLoggingName("ActiveArea");
 	Logger::setLoggingName("ActiveArea");
 }
 
@@ -294,24 +292,24 @@ void ActiveAreaImplementation::notifyExit(SceneObject* object) {
 }
 
 bool ActiveAreaImplementation::isRegion() {
-	// server/zone/objects/area/ActiveArea.idl(88):  		return false;
+	// server/zone/objects/area/ActiveArea.idl(87):  		return false;
 	return false;
 }
 
 float ActiveAreaImplementation::getRadius() {
-	// server/zone/objects/area/ActiveArea.idl(120):  		return radius;
+	// server/zone/objects/area/ActiveArea.idl(108):  		return radius;
 	return radius;
 }
 
 float ActiveAreaImplementation::getRadius2() {
-	// server/zone/objects/area/ActiveArea.idl(124):  		return radius2;
+	// server/zone/objects/area/ActiveArea.idl(112):  		return radius2;
 	return radius2;
 }
 
 void ActiveAreaImplementation::setRadius(float r) {
-	// server/zone/objects/area/ActiveArea.idl(128):  		radius = r;
+	// server/zone/objects/area/ActiveArea.idl(116):  		radius = r;
 	radius = r;
-	// server/zone/objects/area/ActiveArea.idl(129):  		radius2 = r * r;
+	// server/zone/objects/area/ActiveArea.idl(117):  		radius2 = r * r;
 	radius2 = r * r;
 }
 

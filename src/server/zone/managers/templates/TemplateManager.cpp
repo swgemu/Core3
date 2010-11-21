@@ -44,6 +44,7 @@
 #include "server/zone/templates/tangible/GamblingTerminalTemplate.h"
 #include "server/zone/templates/tangible/FireworkObjectTemplate.h"
 #include "server/zone/templates/tangible/LairObjectTemplate.h"
+#include "server/zone/templates/tangible/CampKitTemplate.h"
 #include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
 #include "server/zone/templates/universe/SharedGuildObjectTemplate.h"
 #include "server/zone/templates/universe/SharedJediManagerTemplate.h"
@@ -181,6 +182,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<ConsumableTemplate>(SharedObjectTemplate::CONSUMABLE);
 	templateFactory.registerObject<ElevatorTerminalTemplate>(SharedObjectTemplate::ELEVATORTERMINAL);
 	templateFactory.registerObject<InstrumentObjectTemplate>(SharedObjectTemplate::INSTRUMENT);
+	templateFactory.registerObject<CampKitTemplate>(SharedObjectTemplate::CAMPKIT);
 
 }
 
@@ -316,6 +318,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CONSUMABLE", SharedObjectTemplate::CONSUMABLE);
 	luaTemplatesInstance->setGlobalInt("ELEVATORTERMINAL", SharedObjectTemplate::ELEVATORTERMINAL);
 	luaTemplatesInstance->setGlobalInt("INSTRUMENT", SharedObjectTemplate::INSTRUMENT);
+	luaTemplatesInstance->setGlobalInt("CAMPKIT", SharedObjectTemplate::CAMPKIT);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

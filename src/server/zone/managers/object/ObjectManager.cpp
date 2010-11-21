@@ -39,18 +39,17 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 
 	registerObjectTypes();
 
-	databaseManager->loadDatabase("staticobjects", true, 0);
-	databaseManager->loadDatabase("sceneobjects", true);
-	databaseManager->loadDatabase("playerstructures", true);
-	databaseManager->loadDatabase("buffs", true);
-	databaseManager->loadDatabase("missionobjectives", true);
-	databaseManager->loadDatabase("missionobservers", true);
-	databaseManager->loadDatabase("cityregions", true);
-	databaseManager->loadDatabase("guilds", true);
-	databaseManager->loadDatabase("spawnareas", true);
-	databaseManager->loadDatabase("spawnobservers", true);
-	databaseManager->loadDatabase("aiobservers", true);
-	
+	databaseManager->loadObjectDatabase("staticobjects", true, 0);
+	databaseManager->loadObjectDatabase("sceneobjects", true);
+	databaseManager->loadObjectDatabase("playerstructures", true);
+	databaseManager->loadObjectDatabase("buffs", true);
+	databaseManager->loadObjectDatabase("missionobjectives", true);
+	databaseManager->loadObjectDatabase("missionobservers", true);
+	databaseManager->loadObjectDatabase("cityregions", true);
+	databaseManager->loadObjectDatabase("guilds", true);
+	databaseManager->loadObjectDatabase("spawnareas", true);
+	databaseManager->loadObjectDatabase("spawnobservers", true);
+	databaseManager->loadObjectDatabase("aiobservers", true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
@@ -129,6 +128,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
 	objectFactory.registerObject<Container>(SceneObject::WEARABLECONTAINER);
 	objectFactory.registerObject<LootkitObject>(SceneObject::LOOTKIT);
+	objectFactory.registerObject<CampKit>(SceneObject::CAMPKIT);
 
 	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
 	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
@@ -315,14 +315,16 @@ void ObjectManager::loadLastUsedObjectID() {
 	uint64 nullify = 0x0000FFFF;
 	nullify = (nullify << 32) + 0xFFFFFFFF;
 
-	for (int i = 0; i < databaseManager->getDatabaseCount(); ++i) {
-		ObjectDatabase* db = databaseManager->getDatabase(i);
+	for (int i = 0; i < databaseManager->getTotalDatabaseCount(); ++i) {
+		LocalDatabase* database = databaseManager->getDatabase(i);
+
+		if (!database->isObjectDatabase())
+			continue;
+
+		ObjectDatabase* db = (ObjectDatabase*) database;
 
 		String dbName;
 		db->getDatabaseName(dbName);
-
-		if (dbName == "strings")
-			continue;
 
 		ObjectDatabaseIterator iterator(db);
 
@@ -345,7 +347,7 @@ void ObjectManager::loadStaticObjects() {
 
 	info("loading static objects...", true);
 
-	ObjectDatabase* staticDatabase = databaseManager->loadDatabase("staticobjects", true, 0);
+	ObjectDatabase* staticDatabase = databaseManager->loadObjectDatabase("staticobjects", true, 0);
 
 	ObjectDatabaseIterator iterator(staticDatabase);
 
@@ -565,10 +567,12 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	infoMsg << "trying to get database with table id 0x" << hex << tableID << " with obejct id 0x" << hex << objectID;
 	info(infoMsg.toString(), true);*/
 
-	ObjectDatabase* database = databaseManager->getDatabase(tableID);
+	LocalDatabase* db = databaseManager->getDatabase(tableID);
 
-	if (database == NULL)
+	if (db == NULL || !db->isObjectDatabase())
 		return NULL;
+
+	ObjectDatabase* database = (ObjectDatabase*) db;
 
 	// only for debugging proposes
 	DistributedObject* dobject = getObject(objectID);
@@ -807,9 +811,9 @@ ObjectDatabase* ObjectManager::loadTable(const String& database, uint64 objectID
 		if (objectID != 0) {
 			uint16 tableID = (uint16) (objectID >> 48);
 
-			table = databaseManager->loadDatabase(database, true, tableID);
+			table = databaseManager->loadObjectDatabase(database, true, tableID);
 		} else {
-			table = databaseManager->loadDatabase(database, true);
+			table = databaseManager->loadObjectDatabase(database, true);
 		}
 	}
 
@@ -818,11 +822,17 @@ ObjectDatabase* ObjectManager::loadTable(const String& database, uint64 objectID
 
 ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
 	ObjectDatabase* table = NULL;
+	LocalDatabase* local = NULL;
 
 	if (objectID != 0) {
 		uint16 tableID = (uint16) (objectID >> 48);
 
-		table = databaseManager->getDatabase(tableID);
+		local = databaseManager->getDatabase(tableID);
+
+		if (local == NULL || !local->isObjectDatabase())
+			return NULL;
+		else
+			table = (ObjectDatabase*) local;
 	}
 
 	return table;

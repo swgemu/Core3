@@ -297,7 +297,7 @@ FactoryCrateImplementation::FactoryCrateImplementation() {
 }
 
 bool FactoryCrateImplementation::isFactoryCrate() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(113):  		return true;
+	// server/zone/objects/factorycrate/FactoryCrate.idl(103):  		return true;
 	return true;
 }
 
