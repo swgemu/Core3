@@ -1205,6 +1205,7 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 
 	//Create a waypoint
 	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
+	ManagedReference<WaypointObject*> waypointObject = NULL;
 
 	if (playerObject != NULL) {
 		String full = structureObject->getCustomObjectName().toString();
@@ -1214,11 +1215,12 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 
 		String waypointTemplateString = "object/waypoint/world_waypoint_blue.iff";
 
-		ManagedReference<WaypointObject*> waypointObject = (WaypointObject*) zoneServer->createObject(waypointTemplateString.hashCode(), 1);
+		waypointObject = (WaypointObject*) zoneServer->createObject(waypointTemplateString.hashCode(), 1);
 		waypointObject->setCustomName(full);
 		waypointObject->setActive(true);
 		waypointObject->setPosition(x, z, y);
-		waypointObject->setPlanetCRC(zone->getPlanetName().hashCode());
+		String planetName = Planet::getPlanetName(zone->getZoneID());
+		waypointObject->setPlanetCRC(planetName.hashCode());
 
 		playerObject->addWaypoint(waypointObject, false, true);
 	}
@@ -1227,13 +1229,12 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
 
 	if (chatManager != NULL) {
-		//TODO: Add waypoint to email.
 		StringIdChatParameter emailBody;
 		emailBody.setStringId("@player_structure:construction_complete");
 		emailBody.setTO(structureObject->getObjectName());
 		emailBody.setDI(player->getLotsRemaining());
 		UnicodeString subject = "@player_structure:construction_complete_subject";
-		chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, player->getFirstName());
+		chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, player->getFirstName(), waypointObject);
 	}
 
 	return 0;

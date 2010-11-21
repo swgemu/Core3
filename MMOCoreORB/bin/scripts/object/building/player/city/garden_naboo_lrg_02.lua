@@ -49,7 +49,10 @@ object_building_player_city_garden_naboo_lrg_02 = object_building_player_city_sh
 	length = 7,
 	width = 7,
 	cityRankRequired = 3,
-	abilityRequired = "place_large_garden"
+	abilityRequired = "place_large_garden",
+	childObjects = {
+		{templateFile = "object/tangible/terminal/terminal_player_structure_nosnap_mini.iff", x = 12, z = 1, y = -12, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1}
+	}
 
 }
 

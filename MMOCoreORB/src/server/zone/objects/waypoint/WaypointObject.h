@@ -82,6 +82,8 @@ public:
 
 	void setPlanetCRC(unsigned int crc);
 
+	unsigned int getPlanetCRC();
+
 	void setCustomName(const UnicodeString& name);
 
 	UnicodeString getCustomName();
@@ -181,6 +183,8 @@ public:
 
 	void setPlanetCRC(unsigned int crc);
 
+	unsigned int getPlanetCRC();
+
 	void setCustomName(const UnicodeString& name);
 
 	UnicodeString getCustomName();
@@ -243,6 +247,8 @@ public:
 	void setCellID(unsigned int id);
 
 	void setPlanetCRC(unsigned int crc);
+
+	unsigned int getPlanetCRC();
 
 	void setCustomName(const UnicodeString& name);
 
