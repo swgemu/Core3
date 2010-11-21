@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.objects.tangible.sign;
 
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.player.PlayerCreature;
 import engine.lua.LuaObject;
 import server.zone.Zone;
 
@@ -70,5 +71,11 @@ class SignObject extends TangibleObject {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	//public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	public native void sendSignNameTo(PlayerCreature player);
+	
+	public boolean isSignObject() {
+		return true;
+	}
 }

@@ -61,9 +61,8 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	--Abilities required to place this structure object. String value of the ability.
 	abilityRequired = "",
 	
-	--Sign locations is a list of possible sign locations in relation to the center of the building object.
-	--Format is x, z, y, qx, qy, qz, qw
-	signLocations = {0, 0, 0, 0, 0, 0, 1},
+	--Sign is a childObject for the default sign of this structure.
+	sign = {templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 0, containmentType = 0},
 	
 	--Should the structure be public by default?
 	publicStructure = true,
@@ -73,9 +72,6 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	
 	--The object that is placed during the construction phase.
 	constructionMarker = "",
-	
-	--Terminal Location is cell#, x, z, y, qx, qy, qz, qw
-	terminalLocation = {},
 		
 	--Elevator Terminals format is template_path, cell#, x, z, y, qx, qy, qz, qw, dz - where dz is the delta z.
 	elevatorTerminals = {},

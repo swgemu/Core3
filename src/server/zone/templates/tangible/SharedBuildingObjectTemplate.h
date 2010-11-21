@@ -9,13 +9,12 @@
 #define SHAREDBUILDINGOBJECTTEMPLATE_H_
 
 #include "SharedStructureObjectTemplate.h"
-#include "StructureTerminalLocation.h"
 
 class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	String terrainModificationFileName;
 	String interiorLayoutFileName;
 
-	StructureTerminalLocation* structureTerminalLocation;
+	ChildObject sign;
 
 	bool publicStructure;
 
@@ -24,24 +23,15 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 
 public:
 	SharedBuildingObjectTemplate() {
-		structureTerminalLocation = NULL;
 	}
 
 	~SharedBuildingObjectTemplate() {
-		if (structureTerminalLocation != NULL) {
-			delete structureTerminalLocation;
-			structureTerminalLocation = NULL;
-		}
 	}
 
 	void readObject(LuaObject* templateData);
 
 	virtual bool isSharedBuildingObjectTemplate() {
 		return true;
-	}
-
-	inline StructureTerminalLocation* getStructureTerminalLocation() {
-		return structureTerminalLocation;
 	}
 
 	inline bool isPublicStructure() {
@@ -53,6 +43,10 @@ public:
 
 	inline bool isAlwaysPublic() {
 		return alwaysPublic;
+	}
+
+	inline ChildObject* getSign() {
+		return &sign;
 	}
 };
 
