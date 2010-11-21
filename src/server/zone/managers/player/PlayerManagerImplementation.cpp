@@ -55,6 +55,9 @@
 #include "server/zone/packets/trade/GiveMoneyMessage.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+#include "server/zone/packets/player/PlayerObjectDeltaMessage6.h"
+
 #include "server/zone/Zone.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
@@ -2067,4 +2070,43 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 		return structure;
 
 	return NULL;
+}
+
+void PlayerManagerImplementation::updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel) {
+	//Make sure the player exists.
+	uint64 targetID = getObjectID(targetName);
+
+	ManagedReference<SceneObject*> obj = server->getObject(targetID);
+
+	if (obj == NULL || !obj->isPlayerCreature()) {
+		player->sendSystemMessage("That player does not exist.");
+		return;
+	}
+
+	PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
+
+	ManagedReference<PlayerObject*> ghost = targetPlayer->getPlayerObject();
+
+	Vector<String> skills;
+	skills.add("admin");
+
+	if (adminLevel == PlayerObject::NORMALPLAYER)
+		ghost->removeSkills(skills);
+	else
+		ghost->addSkills(skills);
+
+	ghost->setAdminLevel(adminLevel);
+
+	//Send deltas
+	if (targetPlayer->isOnline()) {
+		TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(targetPlayer);
+		tanod3->updateName(targetPlayer->getObjectName()->getDisplayedName());
+		tanod3->close();
+		targetPlayer->broadcastMessage(tanod3, true);
+
+		PlayerObjectDeltaMessage6* playd6 = new PlayerObjectDeltaMessage6(ghost);
+		playd6->setAdminLevel(adminLevel);
+		playd6->close();
+		targetPlayer->broadcastMessage(playd6, true);
+	}
 }

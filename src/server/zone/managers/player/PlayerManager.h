@@ -129,6 +129,20 @@ class Observable;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerObject;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/managers/player/PlayerMap.h"
@@ -247,6 +261,8 @@ public:
 	unsigned long long getObjectID(const String& name);
 
 	PlayerCreature* getPlayer(const String& name);
+
+	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel = 1);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -386,6 +402,8 @@ public:
 
 	PlayerCreature* getPlayer(const String& name);
 
+	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel = 1);
+
 	PlayerManager* _this;
 
 	operator const PlayerManager*();
@@ -509,6 +527,8 @@ public:
 
 	PlayerCreature* getPlayer(const String& name);
 
+	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel);
+
 protected:
 	String _param0_kickUser__String_String_;
 	String _param1_kickUser__String_String_;
@@ -521,6 +541,7 @@ protected:
 	String _param0_existsName__String_;
 	String _param0_getObjectID__String_;
 	String _param0_getPlayer__String_;
+	String _param1_updateAdminLevel__PlayerCreature_String_int_;
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {
