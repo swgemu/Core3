@@ -157,7 +157,7 @@ namespace aigroup {
 
 class AiGroupImplementation : public SceneObjectImplementation {
 protected:
-	ManagedReference<AiAgent* > leader;
+	ManagedReference<SceneObject* > leader;
 
 	SortedVector<ManagedReference<AiAgent* > > scouts;
 

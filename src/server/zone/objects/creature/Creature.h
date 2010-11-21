@@ -85,6 +85,8 @@ using namespace server::zone::objects::player;
 
 #include "engine/core/ManagedObject.h"
 
+#include "engine/util/Coordinate.h"
+
 #include "server/zone/objects/creature/AiAgent.h"
 
 namespace server {
@@ -97,6 +99,12 @@ public:
 	Creature();
 
 	bool isCreature();
+
+	void notifyPositionUpdate(QuadTreeEntry* entry);
+
+	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
+
+	void runAway(CreatureObject* target);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -168,6 +176,12 @@ public:
 	CreatureImplementation(DummyConstructorParameter* param);
 
 	bool isCreature();
+
+	void notifyPositionUpdate(QuadTreeEntry* entry);
+
+	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
+
+	void runAway(CreatureObject* target);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -245,6 +259,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool isCreature();
+
+	void runAway(CreatureObject* target);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 

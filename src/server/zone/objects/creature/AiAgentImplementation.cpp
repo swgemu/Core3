@@ -10,6 +10,7 @@
 #include "events/AiThinkEvent.h"
 #include "events/AiMoveEvent.h"
 #include "events/AiWaitEvent.h"
+#include "events/AiAwarenessEvent.h"
 #include "events/RespawnCreatureTask.h"
 #include "events/DespawnCreatureOnPlayerDissappear.h"
 #include "server/zone/managers/combat/CombatManager.h"
@@ -107,9 +108,9 @@ void AiAgentImplementation::doRecovery() {
 		if (!tryRetreat() && targetToAttack->isCreatureObject()) {
 			CreatureObject* creo = (CreatureObject*) targetToAttack;
 
-			if (creo->isPeaced() || !creo->isInRange(_this, 128) || !creo->isAttackableBy(_this)) {
+			if (!creo->isInRange(_this, 128) || !creo->isAttackableBy(_this)) {
 				removeDefender(creo);
-				setFollowObject(NULL);
+				setOblivious();
 				//CombatManager::instance()->attemptPeace(_this);
 			} else {
 				setTargetID(creo->getObjectID(), true);
@@ -165,7 +166,11 @@ bool AiAgentImplementation::tryRetreat() {
 		} else if (homeLocation.isInRange(_this, 100))
 			return false;
 
-		setFollowObject(NULL);
+		setOblivious();
+
+		showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
+
+		currentSpeed = runSpeed;
 
 		homeLocation.setReached(false);
 
@@ -207,8 +212,15 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 void AiAgentImplementation::removeDefender(SceneObject* defender) {
 	CreatureObjectImplementation::removeDefender(defender);
 
-	if (followObject == defender)
-		setFollowObject(NULL);
+	if (followObject == defender) {
+		if (defenderList.size() <= 0) {
+			setFollowObject(NULL);
+			followState = AiAgent::OBLIVIOUS;
+		} else  {
+			setDefender(defenderList.get(0));
+			followState = AiAgent::FOLLOWING;
+		}
+	}
 }
 
 /**
@@ -223,6 +235,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 	damageMap.removeAll();
 
 	setFollowObject(NULL);
+	followState = AiAgent::WATCHING;
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
@@ -293,6 +306,19 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this);
 			despawnEvent->schedule(30000);
 		}
+	}
+}
+
+void AiAgentImplementation::activateAwarenessEvent(CreatureObject *target) {
+	if (awarenessEvent == NULL) {
+		awarenessEvent = new AiAwarenessEvent(_this, target);
+
+		awarenessEvent->schedule(1000);
+	}
+
+	if (!awarenessEvent->isScheduled()) {
+		awarenessEvent->setTarget(target);
+		awarenessEvent->schedule(1000);
 	}
 }
 
@@ -379,33 +405,41 @@ void AiAgentImplementation::doMovement() {
 	if (currentSpeed != 0) {
 		updateCurrentPosition(&nextStepPosition);
 		nextStepPosition.setReached(true);
-
-		if (isRetreating()) {
-			if (nextStepPosition.isInRange(&homeLocation, 0.5))
-				homeLocation.setReached(true);
-		}
 	}
 
 	float maxDistance = 5;
 
 	if (followObject != NULL) {
 		// drop everything and go after the target, this will also chase the target without having to reach them to change direction
-		patrolPoints.removeAll();
-		setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
+		//patrolPoints.removeAll();
 
-		// stop in weapons range
-		if (weapon != NULL )
-			maxDistance = weapon->getIdealRange();
+		switch (followState) {
+		case AiAgent::OBLIVIOUS:
+			break;
+		case AiAgent::WATCHING:
+			setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent());
+			setDirection(atan2(followObject->getPositionX() - getPositionX(), followObject->getPositionX() - getPositionX()));
+			checkNewAngle();
+			updateCurrentPosition(&patrolPoints.get(0));
+			break;
+		case AiAgent::STALKING:
+			setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
+			maxDistance = 25;
+			break;
+		case AiAgent::FOLLOWING:
+			setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
+			// stop in weapons range
+			if (weapon != NULL )
+				maxDistance = weapon->getIdealRange();
+			break;
+		default:
+			setOblivious();
+			break;
+		}
 	}
 
-	if (patrolPoints.size() == 0) {
-		notifyObservers(ObserverEventType::DESTINATIONREACHED);
-		currentSpeed = 0;
-		return;
-	}
-
-	if (isRetreating())
-		maxDistance = 0;
+	if (isRetreating() || isFleeing())
+		maxDistance = 0.5;
 
 	float dist = 0;
 
@@ -441,6 +475,12 @@ void AiAgentImplementation::doMovement() {
 		currentSpeed = 0;
 		//info("not found in doMovement", true);
 
+		if (isRetreating())
+			homeLocation.setReached(true);
+
+		if (isFleeing())
+			fleeing = false;
+
 		if (followObject != NULL)
 			activateMovementEvent();
 		else
@@ -461,7 +501,7 @@ void AiAgentImplementation::doMovement() {
 	//info("runSpeed: " + String::valueOf(runSpeed), true);
 
 	float newSpeed = runSpeed;
-	if (followObject == NULL) // TODO: think about implementing a more generic "walk, don't run" criterion
+	if (followObject == NULL && !isFleeing() && !isRetreating()) // TODO: think about implementing a more generic "walk, don't run" criterion
 		newSpeed = walkSpeed;
 
 	currentSpeed = newSpeed;
@@ -480,7 +520,11 @@ void AiAgentImplementation::doMovement() {
 	if ((parent != NULL && parent != cellObject) || (cellObject != NULL && dist <= newSpeed)) {
 		nextStepPosition = *nextPosition;
 	} else {
-		nextStepPosition.setPosition(newPositionX, newPositionZ, newPositionY);
+		if (dist <= newSpeed)
+			nextStepPosition = *nextPosition;
+		else
+			nextStepPosition.setPosition(newPositionX, newPositionZ, newPositionY);
+
 		nextStepPosition.setCell(NULL);
 	}
 
@@ -568,6 +612,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 			if (System::random(5) == 1) {
 				setFollowObject(player);
+				followState = AiAgent::FOLLOWING;
 				setDefender(player);
 			}
 		}

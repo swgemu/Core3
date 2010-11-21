@@ -86,9 +86,15 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 		SpawnCoordinate protTempl = members.get(i);
 
 		uint32 crc = protTempl.getTemplateName().hashCode();
-		float x = protTempl.getPositionX() + getPositionX();
-		float z = protTempl.getPositionZ() + getPositionZ();
-		float y = protTempl.getPositionY() + getPositionY();
+		float x = protTempl.getPositionX();
+		float z = protTempl.getPositionZ();
+		float y = protTempl.getPositionY();
+
+		if (cellID == 0) {
+			x += getPositionX();
+			y += getPositionY();
+			z += getPositionZ();
+		}
 
 		ManagedReference<AiAgent*> prot = dynamic_cast<AiAgent*>(cm->spawnCreature(crc, 0, x, z, y, cellID));
 		if (prot == NULL)
