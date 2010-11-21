@@ -137,16 +137,16 @@ void NonPlayerCreatureObjectImplementation::_serializationHelperMethod() {
 
 NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(55):  		Logger.setLoggingName("NonPlayerCreatureObject");
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(56):  		Logger.setLoggingName("NonPlayerCreatureObject");
 	Logger::setLoggingName("NonPlayerCreatureObject");
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(56):  		Logger.setLogging(false);
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(57):  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(57):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(58):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 bool NonPlayerCreatureObjectImplementation::isNonPlayerCreature() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(61):  		return true;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl(62):  		return true;
 	return true;
 }
 

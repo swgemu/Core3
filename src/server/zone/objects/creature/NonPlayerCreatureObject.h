@@ -43,6 +43,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/creature/AiAgent.h"
 
+#include "engine/util/Coordinate.h"
+
 namespace server {
 namespace zone {
 namespace objects {
