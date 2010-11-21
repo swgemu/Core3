@@ -54,7 +54,14 @@ void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, Cr
 
 	// set frightened or threatened
 	// TODO: weight this by ferocity/level difference
-	if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed())) {
+	if (isStalker() && isAggressiveTo(target)) {
+		if (followObject == NULL)
+			setStalkObject(target);
+		else if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed()))
+			addDefender(target);
+	} else if (isAggressiveTo(target))
+		addDefender(target);
+	else if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed())) {
 		setOblivious();
 	} else if (followObject == NULL) {
 		setWatchObject(target);

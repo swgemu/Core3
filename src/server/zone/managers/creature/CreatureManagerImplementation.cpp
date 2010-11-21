@@ -270,7 +270,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	try {
 		PlayerCreature* player = copyDamageMap.getHighestDamagePlayer();
-		player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+		if (player != NULL)
+			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
 		destructedObject->setLootOwner(player);
 
 		if (playerManager != NULL)
