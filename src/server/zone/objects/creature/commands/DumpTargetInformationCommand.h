@@ -63,6 +63,45 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
+		if (obj == NULL)
+			return INVALIDTARGET;
+
+		SceneObject* cell = obj->getParent();
+
+		int cellid = 0;
+		uint32 buildingTemplate = 0;
+
+		if (cell != NULL && cell->isCellObject()) {
+			cellid = ((CellObject*)cell)->getCellNumber();
+			SceneObject* building = cell->getParent();
+			buildingTemplate = building->getServerObjectCRC();
+		}
+
+		StringBuffer msg;
+
+		float posX = obj->getPositionX(), posZ = obj->getPositionZ(), posY = obj->getPositionY();
+		Quaternion* direction = obj->getDirection();
+
+		msg << "x = " << posX << ", z = " << posZ << ", y = " << posY << ", ow = " << direction->getW()
+				<< ", ox = " << direction->getX() << ", oz = " << direction->getZ() << ", oy = " << direction->getY()
+				<< ", cellid = " << cellid;
+
+		if (buildingTemplate != 0)
+			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
+
+		player->sendSystemMessage(msg.toString());
+
+		ChatManager* chatManager = server->getZoneServer()->getChatManager();
+		chatManager->sendMail("System", "dumpZoneInformation", msg.toString(), player->getFirstName());
+
 		return SUCCESS;
 	}
 
