@@ -71,13 +71,26 @@ void WaypointObject::setPlanetCRC(unsigned int crc) {
 		_implementation->setPlanetCRC(crc);
 }
 
-void WaypointObject::setCustomName(const UnicodeString& name) {
+unsigned int WaypointObject::getPlanetCRC() {
 	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getPlanetCRC();
+}
+
+void WaypointObject::setCustomName(const UnicodeString& name) {
+	WaypointObjectImplementation* _implementation = (WaypointObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addUnicodeParameter(name);
 
 		method.executeWithVoidReturn();
@@ -91,7 +104,7 @@ UnicodeString WaypointObject::getCustomName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		method.executeWithUnicodeReturn(_return_getCustomName);
 		return _return_getCustomName;
@@ -105,7 +118,7 @@ void WaypointObject::setColor(byte newColor) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addByteParameter(newColor);
 
 		method.executeWithVoidReturn();
@@ -119,7 +132,7 @@ void WaypointObject::setActive(byte newStatus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addByteParameter(newStatus);
 
 		method.executeWithVoidReturn();
@@ -133,7 +146,7 @@ void WaypointObject::setUnknown(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -147,7 +160,7 @@ void WaypointObject::setSpecialTypeID(int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addSignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -161,7 +174,7 @@ int WaypointObject::getSpecialTypeID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -174,7 +187,7 @@ void WaypointObject::toggleStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		method.executeWithVoidReturn();
 	} else
@@ -187,7 +200,7 @@ bool WaypointObject::isActive() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -200,7 +213,7 @@ byte WaypointObject::getColor() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithByteReturn();
 	} else
@@ -309,53 +322,58 @@ void WaypointObjectImplementation::setPlanetCRC(unsigned int crc) {
 	planetCRC = crc;
 }
 
+unsigned int WaypointObjectImplementation::getPlanetCRC() {
+	// server/zone/objects/waypoint/WaypointObject.idl(56):  		return planetCRC;
+	return planetCRC;
+}
+
 void WaypointObjectImplementation::setCustomName(const UnicodeString& name) {
-	// server/zone/objects/waypoint/WaypointObject.idl(56):  		customName = name;
+	// server/zone/objects/waypoint/WaypointObject.idl(60):  		customName = name;
 	customName = name;
 }
 
 UnicodeString WaypointObjectImplementation::getCustomName() {
-	// server/zone/objects/waypoint/WaypointObject.idl(60):  		return customName;
+	// server/zone/objects/waypoint/WaypointObject.idl(64):  		return customName;
 	return customName;
 }
 
 void WaypointObjectImplementation::setColor(byte newColor) {
-	// server/zone/objects/waypoint/WaypointObject.idl(64):  		color = newColor;
+	// server/zone/objects/waypoint/WaypointObject.idl(68):  		color = newColor;
 	color = newColor;
 }
 
 void WaypointObjectImplementation::setActive(byte newStatus) {
-	// server/zone/objects/waypoint/WaypointObject.idl(68):  		active = newStatus;
+	// server/zone/objects/waypoint/WaypointObject.idl(72):  		active = newStatus;
 	active = newStatus;
 }
 
 void WaypointObjectImplementation::setUnknown(unsigned long long id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(72):  		unknown = id;
+	// server/zone/objects/waypoint/WaypointObject.idl(76):  		unknown = id;
 	unknown = id;
 }
 
 void WaypointObjectImplementation::setSpecialTypeID(int id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(76):  		specialTypeID = id;
+	// server/zone/objects/waypoint/WaypointObject.idl(80):  		specialTypeID = id;
 	specialTypeID = id;
 }
 
 int WaypointObjectImplementation::getSpecialTypeID() {
-	// server/zone/objects/waypoint/WaypointObject.idl(80):  		return specialTypeID;
+	// server/zone/objects/waypoint/WaypointObject.idl(84):  		return specialTypeID;
 	return specialTypeID;
 }
 
 void WaypointObjectImplementation::toggleStatus() {
-	// server/zone/objects/waypoint/WaypointObject.idl(84):  		active = !active;
+	// server/zone/objects/waypoint/WaypointObject.idl(88):  		active = !active;
 	active = !active;
 }
 
 bool WaypointObjectImplementation::isActive() {
-	// server/zone/objects/waypoint/WaypointObject.idl(88):  		return active;
+	// server/zone/objects/waypoint/WaypointObject.idl(92):  		return active;
 	return active;
 }
 
 byte WaypointObjectImplementation::getColor() {
-	// server/zone/objects/waypoint/WaypointObject.idl(92):  		return color;
+	// server/zone/objects/waypoint/WaypointObject.idl(96):  		return color;
 	return color;
 }
 
@@ -377,33 +395,36 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setPlanetCRC(inv->getUnsignedIntParameter());
 		break;
 	case 8:
-		setCustomName(inv->getUnicodeParameter(_param0_setCustomName__UnicodeString_));
+		resp->insertInt(getPlanetCRC());
 		break;
 	case 9:
-		resp->insertUnicode(getCustomName());
+		setCustomName(inv->getUnicodeParameter(_param0_setCustomName__UnicodeString_));
 		break;
 	case 10:
-		setColor(inv->getByteParameter());
+		resp->insertUnicode(getCustomName());
 		break;
 	case 11:
-		setActive(inv->getByteParameter());
+		setColor(inv->getByteParameter());
 		break;
 	case 12:
-		setUnknown(inv->getUnsignedLongParameter());
+		setActive(inv->getByteParameter());
 		break;
 	case 13:
-		setSpecialTypeID(inv->getSignedIntParameter());
+		setUnknown(inv->getUnsignedLongParameter());
 		break;
 	case 14:
-		resp->insertSignedInt(getSpecialTypeID());
+		setSpecialTypeID(inv->getSignedIntParameter());
 		break;
 	case 15:
-		toggleStatus();
+		resp->insertSignedInt(getSpecialTypeID());
 		break;
 	case 16:
-		resp->insertBoolean(isActive());
+		toggleStatus();
 		break;
 	case 17:
+		resp->insertBoolean(isActive());
+		break;
+	case 18:
 		resp->insertByte(getColor());
 		break;
 	default:
@@ -419,6 +440,10 @@ void WaypointObjectAdapter::setCellID(unsigned int id) {
 
 void WaypointObjectAdapter::setPlanetCRC(unsigned int crc) {
 	((WaypointObjectImplementation*) impl)->setPlanetCRC(crc);
+}
+
+unsigned int WaypointObjectAdapter::getPlanetCRC() {
+	return ((WaypointObjectImplementation*) impl)->getPlanetCRC();
 }
 
 void WaypointObjectAdapter::setCustomName(const UnicodeString& name) {

@@ -1281,12 +1281,8 @@ void PlayerManagerImplementation::awardExperience(PlayerCreature* player, const 
 void PlayerManagerImplementation::sendMessageOfTheDay(PlayerCreature* player) {
 	String motd = ConfigManager::instance()->getMessageOfTheDay();
 
-	ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::MOTD);
-
-	suiMessageBox->setPromptTitle("Message of the Day");
-	suiMessageBox->setPromptText(motd);
-
-	player->sendMessage(suiMessageBox->generateMessage());
+	ChatSystemMessage* csm = new ChatSystemMessage(UnicodeString(motd), ChatSystemMessage::DISPLAY_CHATONLY);
+	player->sendMessage(csm);
 }
 
 void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player, bool doLock) {
