@@ -68,6 +68,8 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
+		int adminLevel = PlayerObject::CSR;
+
 		if (object == NULL || !object->isPlayerCreature()) {
 			String firstName;
 
@@ -75,6 +77,10 @@ public:
 				args.getStringToken(firstName);
 
 				object = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+			}
+
+			if (args.hasMoreTokens()) {
+				adminLevel = args.getIntToken();
 			}
 
 			if (object == NULL || !object->isPlayerCreature())
@@ -103,7 +109,10 @@ public:
 		skills.add("admin");
 
 		playerObject->addSkills(skills, true);
+		playerObject->setAdminLevel(adminLevel);
 
+		//TODO: Move this logic to PlayerManager!
+		//TODO: Send deltas.
 
 		return SUCCESS;
 	}
