@@ -130,6 +130,11 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 
 	Locker _locker(creature);
 
+	if (creature->isAiAgent()) {
+		AiAgent* aio = (AiAgent*)creature;
+		aio->setHomeLocation(x, z, y, cellParent);
+	}
+
 	creature->initializePosition(x, z, y);
 
 	creature->insertToZone(zone);
