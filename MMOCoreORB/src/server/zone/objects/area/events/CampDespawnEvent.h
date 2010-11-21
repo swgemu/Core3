@@ -42,78 +42,53 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.area;
+#ifndef CAMPDESPAWNEVENT_H_
+#define CAMPDESPAWNEVENT_H_
 
-include engine.util.QuadTreeEntry;
+#include "server/zone/objects/area/CampSiteActiveArea.h"
 
-import server.zone.Zone;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+namespace events {
 
-class ActiveArea extends SceneObject {
-	protected float radius;
-	protected float radius2;
-	
-	public ActiveArea() {
-		radius = 0;
-		radius2 = 0;
-		
-		Logger.setLoggingName("ActiveArea");
-	}
-	
-	/**
-	 * Sends the necessary messages to player in order to create this object
-	 * @pre { this object is locked }
-	 * @post { this object is locked, player received this object }
-	 * @param player SceneObject that will receive the messages
-	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
-	 */
-	public native void sendTo(SceneObject player, boolean doClose) {
-		
-	}
-	
-	public native void enqueueEnterEvent(SceneObject obj);
-	public native void enqueueExitEvent(SceneObject obj);
-	
-	public abstract void notifyEnter(SceneObject object) {
-		
-	}
-	
-	public abstract void notifyExit(SceneObject object) {
+class CampDespawnEvent: public Task {
+	ManagedReference<CampSiteActiveArea*> campSite;
+	bool ended;
+	bool abandoned;
 
+public:
+	CampDespawnEvent(CampSiteActiveArea* camp, bool abandon) {
+		campSite = camp;
+		ended = false;
+		abandoned = abandon;
 	}
-	
-	public abstract boolean isRegion() {
-		return false;
+
+	void run() {
+		if (campSite == NULL)
+			return;
+
+		Locker locker(campSite);
+
+		if (abandoned)
+			campSite->abandonCamp();
+		else
+			campSite->despawnCamp();
 	}
-	
-	/**
-	 * Inserts this object into zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and inserted into zone }
-	 * @param zone Zone object where this object will be inserted
-	 */
-	public native void insertToZone(Zone zone);
-	
-	/**
-	 * Removes object from zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and not in zone}
-	 */
-	public native void removeFromZone();
-	
-	public native boolean containsPoint(float x, float y);
-	
-	public float getRadius() {
-		return radius;
+
+	void clearCampSite() {
+		campSite = NULL;
 	}
-	
-	public float getRadius2() {
-		return radius2;
-	}
-	
-	public void setRadius(float r) {
-		radius = r;
-		radius2 = r * r;
-	}
+
+
+};
+
+
 }
+}
+}
+}
+}
+
+#endif /* CAMPDESPAWNEVENT_H_ */

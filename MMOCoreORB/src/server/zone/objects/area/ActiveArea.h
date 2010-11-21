@@ -35,20 +35,6 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace area {
-
-class ActiveAreaEvent;
-
-} // namespace area
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::area;
-
 #include "engine/util/QuadTreeEntry.h"
 
 #include "server/zone/objects/scene/SceneObject.h"

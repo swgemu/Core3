@@ -105,7 +105,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 			if (player->getClient() == _this) {
 				//((PlayerCreature*)player.get())->disconnect(false, true);
 				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::DISCONNECT);
-				task->schedule(10);
+				Core::getTaskManager()->executeTask(task);
 			}
 
 			lock(true);
@@ -118,7 +118,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 		if (((PlayerCreature*)player.get())->isLoggingOut() && player->getClient() == _this) {
 			//((PlayerCreature*)player.get())->logout(true);
 			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::LOGOUT);
-			task->schedule(10);
+			Core::getTaskManager()->executeTask(task);
 		}
 		else {
 			try {
@@ -127,7 +127,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 				if (player->getClient() == _this) {
 					//((PlayerCreature*)player.get())->setLinkDead();
 					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::SETLINKDEAD);
-					task->schedule(10);
+					Core::getTaskManager()->executeTask(task);
 				}
 
 				//player->unlock();
@@ -157,7 +157,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 			server = play->getZoneServer();
 
 			Reference<ClearClientEvent*> task = new ClearClientEvent(play, _this);
-			task->schedule(10);
+			Core::getTaskManager()->executeTask(task);
 
 			setPlayer(NULL); // we must call setPlayer to increase/decrease online player counter
 		}

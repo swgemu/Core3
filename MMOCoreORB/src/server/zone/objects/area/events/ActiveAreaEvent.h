@@ -14,12 +14,14 @@
  * this event gets enqueued on notifyEnter/notifyExit so we dont mess QuadTree in ::notifyPosUpdate
  */
 
-#include "ActiveArea.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 namespace server {
  namespace zone {
   namespace objects {
    namespace area {
+
+   namespace events {
 
    class ActiveAreaEvent : public Task {
 	   uint32 eventType;
@@ -59,12 +61,12 @@ namespace server {
 	   }
 
    };
-
+    }
    }
   }
  }
 }
 
-using namespace server::zone::objects::area;
+using namespace server::zone::objects::area::events;
 
 #endif /* ACTIVEAREAEVENT_H_ */

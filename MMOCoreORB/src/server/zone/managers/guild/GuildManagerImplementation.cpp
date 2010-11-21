@@ -35,7 +35,7 @@
 void GuildManagerImplementation::loadGuilds() {
 	Locker _lock(_this);
 
-	ObjectDatabase* guildsDatabase = ObjectDatabaseManager::instance()->loadDatabase("guilds", true);
+	ObjectDatabase* guildsDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("guilds", true);
 
 	if (guildsDatabase == NULL) {
 		error("Could not load the guilds database.");

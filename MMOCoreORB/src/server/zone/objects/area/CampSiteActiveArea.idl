@@ -44,76 +44,61 @@ which carries forward this exception.
 
 package server.zone.objects.area;
 
-include engine.util.QuadTreeEntry;
-
-import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.area.ActiveArea;
+include server.zone.objects.area.CampVisitorList;
+import server.zone.objects.area.events.CampDespawnEvent;
+import system.lang.ref.Reference;
 
-class ActiveArea extends SceneObject {
-	protected float radius;
-	protected float radius2;
+class CampSiteActiveArea extends ActiveArea {
+	protected SceneObject spawnedObject;
 	
-	public ActiveArea() {
-		radius = 0;
-		radius2 = 0;
-		
-		Logger.setLoggingName("ActiveArea");
-	}
-	
-	/**
-	 * Sends the necessary messages to player in order to create this object
-	 * @pre { this object is locked }
-	 * @post { this object is locked, player received this object }
-	 * @param player SceneObject that will receive the messages
-	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
-	 */
-	public native void sendTo(SceneObject player, boolean doClose) {
-		
-	}
-	
-	public native void enqueueEnterEvent(SceneObject obj);
-	public native void enqueueExitEvent(SceneObject obj);
-	
-	public abstract void notifyEnter(SceneObject object) {
-		
-	}
-	
-	public abstract void notifyExit(SceneObject object) {
+	protected float currentXP;
+	protected byte campType;
+	protected byte aggroMod;
 
+	protected float areaRange;
+
+	@dereferenced
+	protected Vector<SceneObject> campObjects;
+	
+	@dereferenced
+	protected CampVisitorList visitors;
+
+	protected boolean abandoned;
+
+	@dereferenced
+	protected Reference<CampDespawnEvent> despawnEvent;
+	/*CampDespawnEvent* despawnEvent;
+	CampAbandonEvent* abandonEvent;*/
+
+	protected int maxXP;
+	protected byte campModifier;
+	protected int duration;
+	
+	PlayerCreature campOwner;
+
+	@dereferenced
+	protected Time placementTime;
+	
+	public CampSiteActiveArea() {
+		currentXP = 0;
+		campType = 0;
+		aggroMod = 0;
+		areaRange = 0;
+		
+		abandoned = false;
+		maxXp = 0;
+		campModifier = 0;
+		duration = 0;
+		Logger.setLoggingName("CampsiteActiveArea");
+	}
+
+	public void notifyEnter(SceneObject player) {
+		if (!player.isPlayerCreature())
+			return;
+		
 	}
 	
-	public abstract boolean isRegion() {
-		return false;
-	}
-	
-	/**
-	 * Inserts this object into zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and inserted into zone }
-	 * @param zone Zone object where this object will be inserted
-	 */
-	public native void insertToZone(Zone zone);
-	
-	/**
-	 * Removes object from zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and not in zone}
-	 */
-	public native void removeFromZone();
-	
-	public native boolean containsPoint(float x, float y);
-	
-	public float getRadius() {
-		return radius;
-	}
-	
-	public float getRadius2() {
-		return radius2;
-	}
-	
-	public void setRadius(float r) {
-		radius = r;
-		radius2 = r * r;
-	}
 }

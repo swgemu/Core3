@@ -42,78 +42,44 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.area;
+package server.zone.objects.tangible.camp;
 
-include engine.util.QuadTreeEntry;
-
-import server.zone.Zone;
+import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import engine.lua.LuaObject;
+import server.zone.Zone;
+import server.zone.templates.SharedObjectTemplate;
+include server.zone.templates.tangible.CampKitTemplate;
 
-class ActiveArea extends SceneObject {
-	protected float radius;
-	protected float radius2;
-	
-	public ActiveArea() {
-		radius = 0;
-		radius2 = 0;
-		
-		Logger.setLoggingName("ActiveArea");
-	}
-	
-	/**
-	 * Sends the necessary messages to player in order to create this object
-	 * @pre { this object is locked }
-	 * @post { this object is locked, player received this object }
-	 * @param player SceneObject that will receive the messages
-	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
-	 */
-	public native void sendTo(SceneObject player, boolean doClose) {
-		
-	}
-	
-	public native void enqueueEnterEvent(SceneObject obj);
-	public native void enqueueExitEvent(SceneObject obj);
-	
-	public abstract void notifyEnter(SceneObject object) {
-		
-	}
-	
-	public abstract void notifyExit(SceneObject object) {
+class CampKit extends TangibleObject {
+	protected unsigned short exp;
+	protected unsigned short duration;
 
+	protected unsigned short campType;
+
+	public CampKit() {
+		exp = 0;
+		duration = 0;
+		campType = 0;
+		
+		Logger.setLoggingName("CampKit");
 	}
 	
-	public abstract boolean isRegion() {
-		return false;
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+		
+		if (!templateData.isCampKitTemplate())
+			return;
+		
+		CampKitTemplate campTemplate = (CampKitTemplate) templateData;
+		//usesRemaining = campTemplate.getUsesRemaining();
+		exp = campTemplate.getExp();
+		duration = campTemplate.getDuration();
+		campType = campTemplate.getCampType();	
 	}
 	
-	/**
-	 * Inserts this object into zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and inserted into zone }
-	 * @param zone Zone object where this object will be inserted
-	 */
-	public native void insertToZone(Zone zone);
-	
-	/**
-	 * Removes object from zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and not in zone}
-	 */
-	public native void removeFromZone();
-	
-	public native boolean containsPoint(float x, float y);
-	
-	public float getRadius() {
-		return radius;
-	}
-	
-	public float getRadius2() {
-		return radius2;
-	}
-	
-	public void setRadius(float r) {
-		radius = r;
-		radius2 = r * r;
+	public boolean isCampKitOject() {
+		return true;
 	}
 }

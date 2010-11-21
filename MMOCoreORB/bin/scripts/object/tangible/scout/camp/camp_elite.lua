@@ -42,7 +42,11 @@
 
 
 object_tangible_scout_camp_camp_elite = object_tangible_scout_camp_shared_camp_elite:new {
-
+	templateType = CAMPKIT,
+	campType = 5,
+	duration = 3600,
+	exp = 1250,
+	spawnObjectTemplate = "object/building/poi/scout_camp_s0.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camp_camp_elite, "object/tangible/scout/camp/camp_elite.iff")
