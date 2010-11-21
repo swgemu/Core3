@@ -57,7 +57,7 @@ import server.zone.objects.scene.Observable;
 import server.zone.objects.creature.aigroup.AiGroupObserver;
 
 class AiGroup extends SceneObject {
-	protected AiAgent leader;
+	protected SceneObject leader;
 	
 	@dereferenced
 	protected SortedVector<AiAgent> scouts;

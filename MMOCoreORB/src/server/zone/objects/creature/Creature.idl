@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.objects.creature;
 
 import engine.core.ManagedObject;
+import engine.util.Coordinate;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.AiAgent;
 import server.zone.objects.group.GroupObject;
@@ -67,6 +68,14 @@ class Creature extends AiAgent {
 	public boolean isCreature() {
 		return true;
 	}
+	
+	@local
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	
+	@local
+	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
+	
+	public native void runAway(CreatureObject target);
 	
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);

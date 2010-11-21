@@ -71,6 +71,22 @@ using namespace server::zone::objects::creature::events;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
+class AiAwarenessEvent;
+
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::events;
+
+namespace server {
+namespace zone {
 namespace packets {
 namespace scene {
 
@@ -216,6 +232,14 @@ class AiAgent : public CreatureObject {
 public:
 	static const int UPDATEMOVEMENTINTERVAL = 1000;
 
+	unsigned static const int OBLIVIOUS = 0;
+
+	unsigned static const int WATCHING = 1;
+
+	unsigned static const int STALKING = 2;
+
+	unsigned static const int FOLLOWING = 3;
+
 	AiAgent();
 
 	void initializeTransientMembers();
@@ -226,11 +250,15 @@ public:
 
 	void activateWaitEvent();
 
+	void activateAwarenessEvent(CreatureObject* target);
+
 	bool tryRetreat();
 
 	void doRecovery();
 
 	void doMovement();
+
+	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	void checkNewAngle();
 
@@ -290,9 +318,19 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	void setOblivious();
+
+	void setWatchObject(SceneObject* obj);
+
+	void setStalkObject(SceneObject* obj);
+
 	void setFollowObject(SceneObject* obj);
 
+	void setTargetObject(SceneObject* obj);
+
 	bool isRetreating();
+
+	bool isFleeing();
 
 	void clearDespawnEvent();
 
@@ -391,6 +429,8 @@ protected:
 
 	Reference<AiWaitEvent*> waitEvent;
 
+	Reference<AiAwarenessEvent*> awarenessEvent;
+
 	Vector<String> skillCommands;
 
 	PatrolPointsVector patrolPoints;
@@ -417,6 +457,10 @@ protected:
 
 	ManagedWeakReference<SceneObject* > followObject;
 
+	unsigned int followState;
+
+	bool fleeing;
+
 	float respawnTimer;
 
 	int numberOfPlayersInRange;
@@ -425,6 +469,14 @@ protected:
 
 public:
 	static const int UPDATEMOVEMENTINTERVAL = 1000;
+
+	unsigned static const int OBLIVIOUS = 0;
+
+	unsigned static const int WATCHING = 1;
+
+	unsigned static const int STALKING = 2;
+
+	unsigned static const int FOLLOWING = 3;
 
 	AiAgentImplementation();
 
@@ -438,11 +490,15 @@ public:
 
 	virtual void activateWaitEvent();
 
+	void activateAwarenessEvent(CreatureObject* target);
+
 	bool tryRetreat();
 
 	void doRecovery();
 
 	void doMovement();
+
+	virtual void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	void checkNewAngle();
 
@@ -502,9 +558,19 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	void setOblivious();
+
+	void setWatchObject(SceneObject* obj);
+
+	void setStalkObject(SceneObject* obj);
+
 	void setFollowObject(SceneObject* obj);
 
+	void setTargetObject(SceneObject* obj);
+
 	bool isRetreating();
+
+	bool isFleeing();
 
 	void clearDespawnEvent();
 
@@ -615,6 +681,8 @@ public:
 
 	void activateWaitEvent();
 
+	void activateAwarenessEvent(CreatureObject* target);
+
 	bool tryRetreat();
 
 	void doRecovery();
@@ -665,9 +733,19 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	void setOblivious();
+
+	void setWatchObject(SceneObject* obj);
+
+	void setStalkObject(SceneObject* obj);
+
 	void setFollowObject(SceneObject* obj);
 
+	void setTargetObject(SceneObject* obj);
+
 	bool isRetreating();
+
+	bool isFleeing();
 
 	void clearDespawnEvent();
 
