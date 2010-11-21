@@ -116,6 +116,7 @@ class PlayerObject extends IntangibleObject {
 	public static final int FACTIONRANK = 0x200;
 	public static final int ANONYMOUS = 0x80000000;
 	
+	public static final int NORMALPLAYER = 0;
 	public static final int CSR = 1;
 	public static final int DEV = 2;
 	

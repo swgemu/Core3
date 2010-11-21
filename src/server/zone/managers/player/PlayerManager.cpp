@@ -22,6 +22,8 @@
 
 #include "server/zone/objects/scene/Observable.h"
 
+#include "server/zone/objects/player/PlayerObject.h"
+
 /*
  *	PlayerManagerStub
  */
@@ -699,6 +701,22 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 		return _implementation->getPlayer(name);
 }
 
+void PlayerManager::updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel) {
+	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 48);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(targetName);
+		method.addSignedIntParameter(adminLevel);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateAdminLevel(player, targetName, adminLevel);
+}
+
 DistributedObjectServant* PlayerManager::_getImplementation() {
 
 	_updated = true;
@@ -918,6 +936,9 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 48:
 		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
+	case 49:
+		updateAdminLevel((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_updateAdminLevel__PlayerCreature_String_int_), inv->getSignedIntParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -1095,6 +1116,10 @@ unsigned long long PlayerManagerAdapter::getObjectID(const String& name) {
 
 PlayerCreature* PlayerManagerAdapter::getPlayer(const String& name) {
 	return ((PlayerManagerImplementation*) impl)->getPlayer(name);
+}
+
+void PlayerManagerAdapter::updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel) {
+	((PlayerManagerImplementation*) impl)->updateAdminLevel(player, targetName, adminLevel);
 }
 
 /*

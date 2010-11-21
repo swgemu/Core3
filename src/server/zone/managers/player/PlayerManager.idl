@@ -67,6 +67,7 @@ include server.zone.objects.tangible.DamageMap;
 
 import server.zone.objects.scene.Observer;
 import server.zone.objects.scene.Observable;
+import server.zone.objects.player.PlayerObject;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -197,5 +198,6 @@ class PlayerManager extends Observer implements Logger {
 	public native unsigned long getObjectID(final string name);
 	public native PlayerCreature getPlayer(final string name);
 	
+	public native void updateAdminLevel(PlayerCreature player, final string targetName, int adminLevel = 1);
 	
 }

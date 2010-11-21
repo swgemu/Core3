@@ -64,55 +64,28 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		if (!player->getPlayerObject()->hasSkill("admin") || !player->getPlayerObject()->isPrivileged())
+			return GENERALERROR;
+
+		//Admin level defaults to CSR
+		int adminLevel = PlayerObject::CSR;
+		String targetName;
 
 		StringTokenizer args(arguments.toString());
 
-		int adminLevel = PlayerObject::CSR;
+		if (args.hasMoreTokens())
+			args.getStringToken(targetName);
 
-		if (object == NULL || !object->isPlayerCreature()) {
-			String firstName;
+		if (args.hasMoreTokens())
+			adminLevel = args.getIntToken();
 
-			if (args.hasMoreTokens()) {
-				args.getStringToken(firstName);
-
-				object = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
-			}
-
-			if (args.hasMoreTokens()) {
-				adminLevel = args.getIntToken();
-			}
-
-			if (object == NULL || !object->isPlayerCreature())
-				return INVALIDTARGET;
-		}
-
-		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
-
-		if (ghost == NULL)
-			return GENERALERROR;
-
-		if (!ghost->hasSkill("admin")) {
-			return GENERALERROR;
-		}
-
-		PlayerCreature* targetPlayer = (PlayerCreature*) object.get();
-
-		Locker clocker(targetPlayer, creature);
-
-		PlayerObject* playerObject = targetPlayer->getPlayerObject();
-
-		//admin
-		ObjectController* objController = server->getObjectController();
-		QueueCommand* admin = objController->getQueueCommand("admin");
-		Vector<String> skills;
-		skills.add("admin");
-
-		playerObject->addSkills(skills, true);
-		playerObject->setAdminLevel(adminLevel);
-
-		//TODO: Move this logic to PlayerManager!
-		//TODO: Send deltas.
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+		playerManager->updateAdminLevel(player, targetName, adminLevel);
 
 		return SUCCESS;
 	}

@@ -1028,9 +1028,9 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 
 PlayerObjectImplementation::PlayerObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/player/PlayerObject.idl(123):  		commandMessageStrings.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerObject.idl(124):  		commandMessageStrings.setNoDuplicateInsertPlan();
 	(&commandMessageStrings)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/PlayerObject.idl(125):  		Logger.setLoggingName("PlayerObject");
+	// server/zone/objects/player/PlayerObject.idl(126):  		Logger.setLoggingName("PlayerObject");
 	Logger::setLoggingName("PlayerObject");
 }
 
@@ -1038,190 +1038,190 @@ void PlayerObjectImplementation::finalize() {
 }
 
 void PlayerObjectImplementation::setCommandMessageString(unsigned int actionCRC, String& message) {
-	// server/zone/objects/player/PlayerObject.idl(294):  		commandMessageStrings.put(actionCRC, message);
+	// server/zone/objects/player/PlayerObject.idl(295):  		commandMessageStrings.put(actionCRC, message);
 	(&commandMessageStrings)->put(actionCRC, message);
 }
 
 void PlayerObjectImplementation::removeCommandMessageString(unsigned int actionCRC) {
-	// server/zone/objects/player/PlayerObject.idl(298):  		commandMessageStrings.drop(actionCRC);
+	// server/zone/objects/player/PlayerObject.idl(299):  		commandMessageStrings.drop(actionCRC);
 	(&commandMessageStrings)->drop(actionCRC);
 }
 
 bool PlayerObjectImplementation::isDigesting() {
-	// server/zone/objects/player/PlayerObject.idl(311):  
+	// server/zone/objects/player/PlayerObject.idl(312):  
 	if (getDrinkFilling() > 0 || getFoodFilling() > 0){
-	// server/zone/objects/player/PlayerObject.idl(312):  			return true;
+	// server/zone/objects/player/PlayerObject.idl(313):  			return true;
 	return true;
 }
 
 	else {
-	// server/zone/objects/player/PlayerObject.idl(314):  			return false;
+	// server/zone/objects/player/PlayerObject.idl(315):  			return false;
 	return false;
 }
 }
 
 bool PlayerObjectImplementation::hasFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(326):  		return friendList.contains(name);
+	// server/zone/objects/player/PlayerObject.idl(327):  		return friendList.contains(name);
 	return (&friendList)->contains(name);
 }
 
 bool PlayerObjectImplementation::isIgnoring(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(330):  		return ignoreList.contains(name);
+	// server/zone/objects/player/PlayerObject.idl(331):  		return ignoreList.contains(name);
 	return (&ignoreList)->contains(name);
 }
 
 void PlayerObjectImplementation::addReverseFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(334):  		friendList.addReversePlayer(name);
+	// server/zone/objects/player/PlayerObject.idl(335):  		friendList.addReversePlayer(name);
 	(&friendList)->addReversePlayer(name);
 }
 
 void PlayerObjectImplementation::removeReverseFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(338):  		friendList.removeReversePlayer(name);
+	// server/zone/objects/player/PlayerObject.idl(339):  		friendList.removeReversePlayer(name);
 	(&friendList)->removeReversePlayer(name);
 }
 
 bool PlayerObjectImplementation::hasWaypoint(unsigned long long objectID) {
-	// server/zone/objects/player/PlayerObject.idl(344):  		return waypointList.contains(objectID);
+	// server/zone/objects/player/PlayerObject.idl(345):  		return waypointList.contains(objectID);
 	return (&waypointList)->contains(objectID);
 }
 
 bool PlayerObjectImplementation::hasSkill(const String& skill) {
-	// server/zone/objects/player/PlayerObject.idl(349):  		return skillList.contains(skill);
+	// server/zone/objects/player/PlayerObject.idl(350):  		return skillList.contains(skill);
 	return (&skillList)->contains(skill);
 }
 
 bool PlayerObjectImplementation::hasCommandMessageString(unsigned int actionCRC) {
-	// server/zone/objects/player/PlayerObject.idl(353):  		return commandMessageStrings.contains(actionCRC);
+	// server/zone/objects/player/PlayerObject.idl(354):  		return commandMessageStrings.contains(actionCRC);
 	return (&commandMessageStrings)->contains(actionCRC);
 }
 
 unsigned int PlayerObjectImplementation::getCharacterBitmask() {
-	// server/zone/objects/player/PlayerObject.idl(357):  		return characterBitmask;
+	// server/zone/objects/player/PlayerObject.idl(358):  		return characterBitmask;
 	return characterBitmask;
 }
 
 String PlayerObjectImplementation::getTitle() {
-	// server/zone/objects/player/PlayerObject.idl(361):  		return title;
+	// server/zone/objects/player/PlayerObject.idl(362):  		return title;
 	return title;
 }
 
 unsigned int PlayerObjectImplementation::getAdminLevel() {
-	// server/zone/objects/player/PlayerObject.idl(365):  		return adminLevel;
+	// server/zone/objects/player/PlayerObject.idl(366):  		return adminLevel;
 	return adminLevel;
 }
 
 void PlayerObjectImplementation::setAdminLevel(unsigned int adminlvl) {
-	// server/zone/objects/player/PlayerObject.idl(369):  		adminLevel = adminlvl;
+	// server/zone/objects/player/PlayerObject.idl(370):  		adminLevel = adminlvl;
 	adminLevel = adminlvl;
 }
 
 bool PlayerObjectImplementation::isDeveloper() {
-	// server/zone/objects/player/PlayerObject.idl(373):  		return adminLevel == DEV;
+	// server/zone/objects/player/PlayerObject.idl(374):  		return adminLevel == DEV;
 	return adminLevel == DEV;
 }
 
 bool PlayerObjectImplementation::isCSR() {
-	// server/zone/objects/player/PlayerObject.idl(377):  		return adminLevel == CSR;
+	// server/zone/objects/player/PlayerObject.idl(378):  		return adminLevel == CSR;
 	return adminLevel == CSR;
 }
 
 bool PlayerObjectImplementation::isPrivileged() {
-	// server/zone/objects/player/PlayerObject.idl(381):  		return adminLevel > 0;
+	// server/zone/objects/player/PlayerObject.idl(382):  		return adminLevel > 0;
 	return adminLevel > 0;
 }
 
 void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
-	// server/zone/objects/player/PlayerObject.idl(385):  		characterBitmask = bitmask;
+	// server/zone/objects/player/PlayerObject.idl(386):  		characterBitmask = bitmask;
 	characterBitmask = bitmask;
 }
 
 VectorMap<String, int>* PlayerObjectImplementation::getXpTypeCapList() {
-	// server/zone/objects/player/PlayerObject.idl(394):  	 return xpTypeCapList;
+	// server/zone/objects/player/PlayerObject.idl(395):  	 return xpTypeCapList;
 	return (&xpTypeCapList);
 }
 
 DeltaVectorMap<String, int>* PlayerObjectImplementation::getExperienceList() {
-	// server/zone/objects/player/PlayerObject.idl(399):  		return experienceList;
+	// server/zone/objects/player/PlayerObject.idl(400):  		return experienceList;
 	return (&experienceList);
 }
 
 int PlayerObjectImplementation::getForcePower() {
-	// server/zone/objects/player/PlayerObject.idl(403):  		return forcePower;
+	// server/zone/objects/player/PlayerObject.idl(404):  		return forcePower;
 	return forcePower;
 }
 
 int PlayerObjectImplementation::getForcePowerMax() {
-	// server/zone/objects/player/PlayerObject.idl(407):  		return forcePowerMax;
+	// server/zone/objects/player/PlayerObject.idl(408):  		return forcePowerMax;
 	return forcePowerMax;
 }
 
 WaypointList* PlayerObjectImplementation::getWaypointList() {
-	// server/zone/objects/player/PlayerObject.idl(412):  		return waypointList;
+	// server/zone/objects/player/PlayerObject.idl(413):  		return waypointList;
 	return (&waypointList);
 }
 
 SkillList* PlayerObjectImplementation::getSkills() {
-	// server/zone/objects/player/PlayerObject.idl(417):  		return skillList;
+	// server/zone/objects/player/PlayerObject.idl(418):  		return skillList;
 	return (&skillList);
 }
 
 SchematicList* PlayerObjectImplementation::getSchematics() {
-	// server/zone/objects/player/PlayerObject.idl(422):  		return schematicList;
+	// server/zone/objects/player/PlayerObject.idl(423):  		return schematicList;
 	return (&schematicList);
 }
 
 DraftSchematic* PlayerObjectImplementation::getSchematic(int i) {
-	// server/zone/objects/player/PlayerObject.idl(426):  		return schematicList.get(i);
+	// server/zone/objects/player/PlayerObject.idl(427):  		return schematicList.get(i);
 	return (&schematicList)->get(i);
 }
 
 int PlayerObjectImplementation::getFoodFilling() {
-	// server/zone/objects/player/PlayerObject.idl(434):  		return foodFilling;
+	// server/zone/objects/player/PlayerObject.idl(435):  		return foodFilling;
 	return foodFilling;
 }
 
 int PlayerObjectImplementation::getFoodFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(438):  		return foodFillingMax;
+	// server/zone/objects/player/PlayerObject.idl(439):  		return foodFillingMax;
 	return foodFillingMax;
 }
 
 int PlayerObjectImplementation::getDrinkFilling() {
-	// server/zone/objects/player/PlayerObject.idl(442):  		return drinkFilling;
+	// server/zone/objects/player/PlayerObject.idl(443):  		return drinkFilling;
 	return drinkFilling;
 }
 
 int PlayerObjectImplementation::getDrinkFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(446):  		return drinkFillingMax;
+	// server/zone/objects/player/PlayerObject.idl(447):  		return drinkFillingMax;
 	return drinkFillingMax;
 }
 
 int PlayerObjectImplementation::getJediState() {
-	// server/zone/objects/player/PlayerObject.idl(450):  		return jediState;
+	// server/zone/objects/player/PlayerObject.idl(451):  		return jediState;
 	return jediState;
 }
 
 byte PlayerObjectImplementation::getLanguageID() {
-	// server/zone/objects/player/PlayerObject.idl(454):  		return languageID;
+	// server/zone/objects/player/PlayerObject.idl(455):  		return languageID;
 	return languageID;
 }
 
 DeltaVector<String>* PlayerObjectImplementation::getFriendList() {
-	// server/zone/objects/player/PlayerObject.idl(459):  		return friendList;
+	// server/zone/objects/player/PlayerObject.idl(460):  		return friendList;
 	return (&friendList);
 }
 
 DeltaVector<String>* PlayerObjectImplementation::getIgnoreList() {
-	// server/zone/objects/player/PlayerObject.idl(464):  		return ignoreList;
+	// server/zone/objects/player/PlayerObject.idl(465):  		return ignoreList;
 	return (&ignoreList);
 }
 
 int PlayerObjectImplementation::getExperience(const String& xp) {
-	// server/zone/objects/player/PlayerObject.idl(468):  		return experienceList.get(xp);
+	// server/zone/objects/player/PlayerObject.idl(469):  		return experienceList.get(xp);
 	return (&experienceList)->get(xp);
 }
 
 String PlayerObjectImplementation::getCommandMessageString(unsigned int actionCRC) {
-	// server/zone/objects/player/PlayerObject.idl(472):  		return commandMessageStrings.get(actionCRC);
+	// server/zone/objects/player/PlayerObject.idl(473):  		return commandMessageStrings.get(actionCRC);
 	return (&commandMessageStrings)->get(actionCRC);
 }
 
