@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_cloning = object_tangible_terminal_shared_terminal_cloning:new {
-
-}
+	maxCondition = 0
+} 
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_cloning, "object/tangible/terminal/terminal_cloning.iff")

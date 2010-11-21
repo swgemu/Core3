@@ -42,7 +42,6 @@
 
 
 object_building_player_city_theater_tatooine = object_building_player_city_shared_theater_tatooine:new {
-
 	lotSize = 3,
 	baseMaintenanceRate = 0,
 	allowedZones = {1,4,8},
@@ -52,6 +51,7 @@ object_building_player_city_theater_tatooine = object_building_player_city_share
 	mapLocationsType1 = 51,
 	abilityRequired = "place_theater",
 	cityRankRequired = 4,
+	sign = {templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 11, z = 2, y = -14.95, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -7, z = 4.75, y = -14.2, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 0, containmentType = -1}
 	}

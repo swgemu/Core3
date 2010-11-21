@@ -45,7 +45,8 @@ object_building_player_player_house_naboo_small_style_02 = object_building_playe
 	lotSize = 1,
 	baseMaintenanceRate = 16,
 	allowedZones = {1,5,6},
-	publicStructure = false,
+	publicStructure = 0,
+	sign = {templateFile = "object/tangible/sign/player/house_address_naboo.iff", x = 8.6, z = 2, y = 7.31, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = -1, containmentType = -1},
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 0.6, z = 0.7, y = 6.15, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 1, containmentType = -1},
 	},

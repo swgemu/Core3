@@ -71,6 +71,10 @@ public:
 	inline String& getConstructionMarkerTemplate() {
 		return constructionMarkerTemplate;
 	}
+
+	inline virtual bool isPublicStructure() {
+		return false;
+	}
 };
 
 #endif /* SHAREDSTRUCTUREOBJECTTEMPLATE_H_ */
