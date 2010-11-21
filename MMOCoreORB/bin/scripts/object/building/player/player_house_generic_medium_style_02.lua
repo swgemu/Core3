@@ -46,6 +46,7 @@ object_building_player_player_house_generic_medium_style_02 = object_building_pl
 	baseMaintenanceRate = 34,
 	allowedZones = {0,1,4,5,6,7,8},
 	publicStructure = false,
+	sign = {templateFile = "object/tangible/sign/player/house_address.iff", x = 5.72, z = 2, y = 7.70, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -7.15, z = 0.875, y = 5.59, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 1, containmentType = -1},
 	},
