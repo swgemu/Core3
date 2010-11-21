@@ -318,6 +318,8 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	bool isAggressiveTo(CreatureObject* object);
+
 	void setOblivious();
 
 	void setWatchObject(SceneObject* obj);
@@ -558,6 +560,8 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	bool isAggressiveTo(CreatureObject* object);
+
 	void setOblivious();
 
 	void setWatchObject(SceneObject* obj);
@@ -732,6 +736,8 @@ public:
 	void setRespawnTimer(float resp);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	bool isAggressiveTo(CreatureObject* object);
 
 	void setOblivious();
 

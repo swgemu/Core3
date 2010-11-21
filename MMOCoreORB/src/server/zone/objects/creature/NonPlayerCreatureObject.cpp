@@ -38,6 +38,24 @@ bool NonPlayerCreatureObject::isNonPlayerCreature() {
 		return _implementation->isNonPlayerCreature();
 }
 
+void NonPlayerCreatureObject::notifyPositionUpdate(QuadTreeEntry* entry) {
+	NonPlayerCreatureObjectImplementation* _implementation = (NonPlayerCreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->notifyPositionUpdate(entry);
+}
+
+void NonPlayerCreatureObject::doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target) {
+	NonPlayerCreatureObjectImplementation* _implementation = (NonPlayerCreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->doAwarenessCheck(start, time, target);
+}
+
 DistributedObjectServant* NonPlayerCreatureObject::_getImplementation() {
 
 	_updated = true;
