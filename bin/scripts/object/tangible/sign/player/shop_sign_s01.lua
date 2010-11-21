@@ -42,7 +42,7 @@
 
 
 object_tangible_sign_player_shop_sign_s01 = object_tangible_sign_player_shared_shop_sign_s01:new {
-
+	maxCondition = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_shop_sign_s01, "object/tangible/sign/player/shop_sign_s01.iff")
