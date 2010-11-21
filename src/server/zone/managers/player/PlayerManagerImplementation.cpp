@@ -1777,7 +1777,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 	//esession->setEntertainerBuffStrength(creature, PerformanceType::MUSIC, 0.0f);
 	creature->info("stopped watching [" + entName + "]");
 
-	creature->setListenToID(0, true);
+	//creature->setListenToID(0, true);
 }
 
 

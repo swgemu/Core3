@@ -217,7 +217,7 @@ void PlanetManagerImplementation::loadPlayerRegions() {
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 	//dbManager->loadDatabases();
 
-	ObjectDatabase* cityRegionsDatabase = ObjectDatabaseManager::instance()->loadDatabase("cityregions", true);
+	ObjectDatabase* cityRegionsDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
 
 	if (cityRegionsDatabase == NULL)
 		error("PlanetManagerImplementation::loadPlayerRegions(): There was an error loading the 'cityregions' database.");

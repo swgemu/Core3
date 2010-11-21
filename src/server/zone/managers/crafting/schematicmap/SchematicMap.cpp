@@ -80,7 +80,7 @@ void SchematicMap::initialize(ZoneServer* server) {
 
 void SchematicMap::loadDraftSchematicDatabase() {
 
-	ObjectDatabase* schematicDatabase = ObjectDatabaseManager::instance()->loadDatabase("draftschematics", true);
+	ObjectDatabase* schematicDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("draftschematics", true);
 
 	ObjectDatabaseIterator iterator(schematicDatabase);
 

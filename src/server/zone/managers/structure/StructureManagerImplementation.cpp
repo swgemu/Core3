@@ -878,7 +878,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 	//dbManager->loadDatabases();
 
-	ObjectDatabase* playerStructuresDatabase = ObjectDatabaseManager::instance()->loadDatabase("playerstructures", true);
+	ObjectDatabase* playerStructuresDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("playerstructures", true);
 
 	if (playerStructuresDatabase == NULL) {
 		error("StructureManagerImplementation::loadPlayerStructures(): There was an error loading the 'playerstructures' database.");

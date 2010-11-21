@@ -119,6 +119,7 @@ public:
 	const static int INSTRUMENT = 0x400001A;
 	const static int FIREWORK = 0x400001B;
 	const static int VEHICLEDEED = 0x400001C;
+	const static int CAMPKIT = 0x400001D;
 
 public:
 	SharedObjectTemplate() {
@@ -462,6 +463,10 @@ public:
 	}
 
 	virtual bool isInstrumentObjectTemplate() {
+		return false;
+	}
+
+	virtual bool isCampKitTemplate() {
 		return false;
 	}
 

@@ -33,7 +33,7 @@
 void BazaarManagerImplementation::initialize() {
 	auctionMap = new BazaarAuctionsMap();
 
-	ObjectDatabase* auctionDatabase = ObjectDatabaseManager::instance()->loadDatabase("auctions", true);
+	ObjectDatabase* auctionDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("auctions", true);
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 	ObjectDatabaseIterator iterator(auctionDatabase);

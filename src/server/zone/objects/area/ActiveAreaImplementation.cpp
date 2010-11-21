@@ -7,7 +7,7 @@
 
 #include "ActiveArea.h"
 #include "server/zone/objects/player/PlayerCreature.h"
-#include "ActiveAreaEvent.h"
+#include "events/ActiveAreaEvent.h"
 #include "server/zone/Zone.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py) {
@@ -97,42 +97,14 @@ void ActiveAreaImplementation::removeFromZone() {
 	oldZone->dropSceneObject(_this);
 }
 
-
-
 void ActiveAreaImplementation::enqueueEnterEvent(SceneObject* obj) {
 	Reference<Task*> task = new ActiveAreaEvent(_this, obj, ActiveAreaEvent::ENTEREVENT);
-	task->schedule(100);
+
+	Core::getTaskManager()->executeTask(task);
 }
 
 void ActiveAreaImplementation::enqueueExitEvent(SceneObject* obj) {
 	Reference<Task*> task = new ActiveAreaEvent(_this, obj, ActiveAreaEvent::EXITEVENT);
-	task->schedule(100);
+
+	Core::getTaskManager()->executeTask(task);
 }
-
-/*void ActiveAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
-	if (obj == NULL || obj == this)
-		return;
-
-	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
-
-	if (!scno->hasActiveArea(_this) && containsPoint(scno->getPositionX(), scno->getPositionY())) {
-		scno->addActiveArea(_this);
-		enqueueEnterEvent(scno);
-
-	} else if (scno->hasActiveArea(_this) && !containsPoint(scno->getPositionX(), scno->getPositionY())) {
-		scno->dropActiveArea(_this);
-		enqueueExitEvent(scno);
-	}
-}
-
-void ActiveAreaImplementation::notifyDissapear(QuadTreeEntry* obj) {
-	if (obj == NULL || obj == this)
-		return;
-
-	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
-
-	if (scno->hasActiveArea(_this)) {
-		scno->dropActiveArea(_this);
-		enqueueExitEvent(scno);
-	}
-}*/

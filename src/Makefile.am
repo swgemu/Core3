@@ -89,6 +89,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/consumable/Food.cpp \
 				server/zone/objects/tangible/consumable/Drink.cpp \
 				server/zone/objects/tangible/loot/LootkitObject.cpp \
+				server/zone/objects/tangible/camp/CampKit.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/creature/trainer/TrainerCreature.cpp \
 				server/zone/objects/creature/informant/InformantCreature.cpp \
