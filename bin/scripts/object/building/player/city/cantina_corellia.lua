@@ -42,12 +42,12 @@
 
 
 object_building_player_city_cantina_corellia = object_building_player_city_shared_cantina_corellia:new {
-
 	lotSize = 5,
 	baseMaintenanceRate = 0,
 	gameObjectType = 518,
 	mapLocationsType1 = 3,
 	allowedZones = {0,7},
+	sign = {templateFile = "object/tangible/sign/player/house_address.iff", x = 3.5, z = 2, y = 13.65, ox = 0, oy = 1, oz = 0, ow = 0.0001, cellid = -1, containmentType = -1},
 	length = 7,
 	width = 7,
 	cityRankRequired = 2,

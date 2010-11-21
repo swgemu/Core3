@@ -966,6 +966,8 @@ public:
 
 	bool isBuildingDeed();
 
+	bool isSignObject();
+
 	bool isInstallationDeed();
 
 	bool isCraftingTool();
@@ -1907,6 +1909,8 @@ public:
 
 	virtual bool isBuildingDeed();
 
+	virtual bool isSignObject();
+
 	virtual bool isInstallationDeed();
 
 	virtual bool isCraftingTool();
@@ -2307,6 +2311,8 @@ public:
 	bool isVehicleDeedObject();
 
 	bool isBuildingDeed();
+
+	bool isSignObject();
 
 	bool isInstallationDeed();
 

@@ -110,6 +110,8 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/guild/GuildObject.h"
 
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
 
 SuiManager::SuiManager(ZoneProcessServer* serv) : Logger("SuiManager") {
 	server = serv;
@@ -294,6 +296,15 @@ void SuiManager::handleSetObjectName(PlayerCreature* player, SuiBox* suiBox, uin
 		return;
 
 	UnicodeString objectName = args->get(0);
+
+	if (object->isBuildingObject()) {
+		BuildingObject* building = (BuildingObject*) object.get();
+
+		ManagedReference<SignObject*> sign = building->getSignObject();
+
+		if (sign != NULL)
+			object = sign;
+	}
 
 	object->setCustomObjectName(objectName , true);
 }

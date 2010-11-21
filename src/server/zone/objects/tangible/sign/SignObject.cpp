@@ -4,6 +4,8 @@
 
 #include "SignObject.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 #include "server/zone/Zone.h"
 
 /*
@@ -22,6 +24,48 @@ SignObject::SignObject(DummyConstructorParameter* param) : TangibleObject(param)
 SignObject::~SignObject() {
 }
 
+
+int SignObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+void SignObject::sendSignNameTo(PlayerCreature* player) {
+	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendSignNameTo(player);
+}
+
+bool SignObject::isSignObject() {
+	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isSignObject();
+}
 
 DistributedObjectServant* SignObject::_getImplementation() {
 
@@ -104,8 +148,13 @@ void SignObjectImplementation::_serializationHelperMethod() {
 
 SignObjectImplementation::SignObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/sign/SignObject.idl(53):  		Logger.setLoggingName("SignObject");
+	// server/zone/objects/tangible/sign/SignObject.idl(54):  		Logger.setLoggingName("SignObject");
 	Logger::setLoggingName("SignObject");
+}
+
+bool SignObjectImplementation::isSignObject() {
+	// server/zone/objects/tangible/sign/SignObject.idl(79):  		return true;
+	return true;
 }
 
 /*
@@ -119,11 +168,32 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case 7:
+		sendSignNameTo((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 8:
+		resp->insertBoolean(isSignObject());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+int SignObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((SignObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void SignObjectAdapter::sendSignNameTo(PlayerCreature* player) {
+	((SignObjectImplementation*) impl)->sendSignNameTo(player);
+}
+
+bool SignObjectAdapter::isSignObject() {
+	return ((SignObjectImplementation*) impl)->isSignObject();
 }
 
 /*
