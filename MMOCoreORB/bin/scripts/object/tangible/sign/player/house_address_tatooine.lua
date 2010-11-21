@@ -42,7 +42,7 @@
 
 
 object_tangible_sign_player_house_address_tatooine = object_tangible_sign_player_shared_house_address_tatooine:new {
-
+	maxCondition = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_house_address_tatooine, "object/tangible/sign/player/house_address_tatooine.iff")
