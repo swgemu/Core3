@@ -42,16 +42,16 @@
 
 
 object_building_player_city_garden_corellia_lrg_01 = object_building_player_city_shared_garden_corellia_lrg_01:new {
-
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {0,7},
-	
 	length = 7,
-	
 	width = 7,
 	cityRankRequired = 3,
-	abilityRequired = "place_large_garden"
+	abilityRequired = "place_large_garden",
+	childObjects = {
+		{templateFile = "object/tangible/terminal/terminal_player_structure_nosnap_mini.iff", x = 12, z = 1, y = -12, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1}
+	}
 
 }
 

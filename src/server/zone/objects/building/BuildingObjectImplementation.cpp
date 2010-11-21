@@ -18,6 +18,7 @@
 #include "../player/sui/listbox/SuiListBox.h"
 #include "../player/sui/inputbox/SuiInputBox.h"
 
+#include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"

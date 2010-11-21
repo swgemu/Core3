@@ -34,7 +34,7 @@ WaypointChatParameter::WaypointChatParameter(const WaypointChatParameter& par) :
 	unknownInt = par.unknownInt;
 }
 
-void WaypointChatParameter::addToPacketStream(Message * packet) {
+void WaypointChatParameter::addToPacketStream(Message* packet) {
 		packet->insertInt(unknownInt);
 		packet->insertFloat(positionX);
 		packet->insertFloat(positionZ);
