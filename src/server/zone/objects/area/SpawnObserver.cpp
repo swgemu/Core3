@@ -124,18 +124,18 @@ void SpawnObserverImplementation::_serializationHelperMethod() {
 
 SpawnObserverImplementation::SpawnObserverImplementation(SpawnArea* area) {
 	_initializeImplementation();
-	// server/zone/objects/area/SpawnObserver.idl(56):  		spawnArea = area;
+	// server/zone/objects/area/SpawnObserver.idl(57):  		spawnArea = area;
 	spawnArea = area;
-	// server/zone/objects/area/SpawnObserver.idl(58):  		Logger.setLoggingName("SpawnObserver");
+	// server/zone/objects/area/SpawnObserver.idl(59):  		Logger.setLoggingName("SpawnObserver");
 	Logger::setLoggingName("SpawnObserver");
 }
 
 int SpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/area/SpawnObserver.idl(62):  
-	if (spawnArea == NULL)	// server/zone/objects/area/SpawnObserver.idl(63):  			return 1;
+	// server/zone/objects/area/SpawnObserver.idl(63):  
+	if (spawnArea == NULL)	// server/zone/objects/area/SpawnObserver.idl(64):  			return 1;
 	return 1;
 
-	else 	// server/zone/objects/area/SpawnObserver.idl(65):  			return spawnArea.notifyObserverEvent(eventType, observable, arg1, arg2);
+	else 	// server/zone/objects/area/SpawnObserver.idl(66):  			return spawnArea.notifyObserverEvent(eventType, observable, arg1, arg2);
 	return spawnArea->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 

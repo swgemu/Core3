@@ -41,6 +41,8 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/objects/area/DynamicSpawnArea.h"
 
+#include "server/zone/objects/area/SpawnArea.h"
+
 #include "server/zone/objects/scene/Observer.h"
 
 namespace server {
