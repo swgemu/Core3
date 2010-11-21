@@ -65,10 +65,10 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	sign = {templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 0, containmentType = 0},
 	
 	--Should the structure be public by default?
-	publicStructure = true,
+	publicStructure = 1,
 	
 	--Can the structure ever be private?
-	alwaysPublic = false,
+	alwaysPublic = 0,
 	
 	--The object that is placed during the construction phase.
 	constructionMarker = "",

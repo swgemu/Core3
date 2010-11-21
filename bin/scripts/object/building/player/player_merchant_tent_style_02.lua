@@ -43,12 +43,13 @@
 
 object_building_player_player_merchant_tent_style_02 = object_building_player_shared_player_merchant_tent_style_02:new {
 	lotSize = 1,
-	publicStructure = true,
+	publicStructure = 1,
 	baseMaintenanceRate = 10,
 	allowedZones = {0,1,4,5,6,7,8},
 	length = 3,
 	width = 3,
-	alwaysPublic = true,
+	alwaysPublic = 1,
+	abilityRequired = "place_merchant_tent",
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -0.15, z = 0.267105, y = -2.76, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 0, containmentType = -1}
 	}

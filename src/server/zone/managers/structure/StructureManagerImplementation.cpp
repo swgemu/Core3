@@ -1139,11 +1139,11 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 	}
 
 	//Scale them.
-	width *= 5.0f;
-	length *= 5.0f;
+	width *= 4.0f;
+	length *= 4.0f;
 
 	if (floraRadius > 0 && !snapToTerrain)
-		z = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 3);
+		z = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 1);
 
 	if (structureObject->isBuildingObject()) {
 		BuildingObject* buildingObject = (BuildingObject*) structureObject;
@@ -1151,6 +1151,7 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 	}
 
 	//Finish setting up the structure.
+	structureObject->setPublicStructure(structureTemplate->isPublicStructure());
 	structureObject->initializePosition(x, z, y);
 	structureObject->setDirection(direction);
 	structureObject->setOwnerObjectID(player->getObjectID());

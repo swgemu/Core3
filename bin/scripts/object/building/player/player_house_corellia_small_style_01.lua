@@ -45,7 +45,7 @@ object_building_player_player_house_corellia_small_style_01 = object_building_pl
 	lotSize = 2,
 	baseMaintenanceRate = 16,
 	allowedZones = {0,7},
-	publicStructure = false,
+	publicStructure = 0,
 	sign = {templateFile = "object/tangible/sign/player/house_address.iff", x = -7.39, z = 2, y = 2.36, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -5, z = 0.74, y = -1.81, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = 0, containmentType = -1},
