@@ -63,18 +63,26 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+
 		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
 		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? (BuildingObject*)rootParent.get() : NULL) : NULL;
 
-		if (buildingObject == NULL) {
-			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
-			return GENERALERROR;
-		}
+		if (!player->getPlayerObject()->isPrivileged()) {
+			if (buildingObject == NULL) {
+				creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
+				return GENERALERROR;
+			}
 
-		if (!buildingObject->isOnAdminList(creature)) {
-			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
-			return GENERALERROR;
+			if (!buildingObject->isOnAdminList(creature)) {
+				creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
+				return GENERALERROR;
+			}
 		}
 
 		StringTokenizer tokenizer(arguments.toString());
@@ -103,9 +111,16 @@ public:
 		ZoneServer* zoneServer = creature->getZoneServer();
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
-		if (obj == NULL || obj->getRootParent() != buildingObject || obj->isTerminal()) {
+		if (obj == NULL) {
 			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 			return false;
+		}
+
+		if (!player->getPlayerObject()->isPrivileged()) {
+			if (obj == NULL || obj->getRootParent() != buildingObject || obj->isTerminal()) {
+				creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
+				return false;
+			}
 		}
 
 		//creature->info(String::valueOf(obj->getDirection()->getDegrees()), true);

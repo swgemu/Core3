@@ -65,18 +65,25 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
 		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
 		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? (BuildingObject*)rootParent.get() : NULL) : NULL;
 
-		if (buildingObject == NULL) {
-			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
-			return GENERALERROR;
-		}
+		if (!player->getPlayerObject()->isPrivileged()) {
+			if (buildingObject == NULL) {
+				creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
+				return GENERALERROR;
+			}
 
-		if (!buildingObject->isOnAdminList(creature)) {
-			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
-			return GENERALERROR;
+			if (!buildingObject->isOnAdminList(creature)) {
+				creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
+				return GENERALERROR;
+			}
 		}
 
 		StringTokenizer tokenizer(arguments.toString());
@@ -104,10 +111,16 @@ public:
 		ZoneServer* zoneServer = creature->getZoneServer();
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
-		//TODO: The disallowing of moving terminals is temporary
-		if (obj == NULL || obj->getRootParent() != buildingObject || obj->isTerminal()) {
+		if (obj == NULL) {
 			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 			return false;
+		}
+
+		if (!player->getPlayerObject()->isPrivileged()) {
+			if (obj->getRootParent() != buildingObject || obj->isTerminal()) {
+				creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
+				return false;
+			}
 		}
 
 		float degrees = creature->getDirectionAngle();
@@ -142,17 +155,10 @@ public:
 		obj->setPosition(x, z, y);
 		obj->incrementMovementCounter();
 
-		if (obj->getParent() != NULL) {
-			/*DataTransformWithParent* dtwp = new DataTransformWithParent(obj);
-			obj->broadcastMessage(dtwp, false, false);*/
-
+		if (obj->getParent() != NULL)
 			obj->teleport(x, z, y, obj->getParent()->getObjectID());
-		} else {
-			/*DataTransform* dt = new DataTransform(obj);
-			obj->broadcastMessage(dt, false, false);*/
-
+		else
 			obj->teleport(x, z, y);
-		}
 
 		return SUCCESS;
 	}
