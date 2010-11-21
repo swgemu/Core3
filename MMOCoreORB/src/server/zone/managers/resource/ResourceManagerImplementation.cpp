@@ -78,13 +78,13 @@ int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observa
 	if (eventType == ObserverEventType::POSTURECHANGED) {
 		CreatureObject* creature = (CreatureObject*) observable;
 		// Cancel Sampling on posture change
-		Reference<SampleTask*> task = (SampleTask*) creature->getPendingTask("sample");
+		//Reference<SampleTask*> task = (SampleTask*) creature->getPendingTask("sample");
 		Reference<SampleResultsTask*> sampleResultsTask = (SampleResultsTask*) creature->getPendingTask("sampleresults");
 
 		if (task != NULL) {
 
 			task->stopSampling();
-			creature->removePendingTask("sample");
+			//creature->removePendingTask("sample");
 
 			if(sampleResultsTask != NULL) {
 				sampleResultsTask->cancel();
