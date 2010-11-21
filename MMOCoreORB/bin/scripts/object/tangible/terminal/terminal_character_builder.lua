@@ -1548,6 +1548,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					{
 						"Player House Deeds",
 						{
+							"Generic Guild Hall Deed", "object/tangible/deed/guild_deed/generic_guild_deed.iff",
 							"Large Generic House Deed", "object/tangible/deed/player_house_deed/generic_house_large_deed.iff",
 							"Large Generic House Deed (Style 2)", "object/tangible/deed/player_house_deed/generic_house_large_style_02_deed.iff",
 							"Medium Generic House Deed", "object/tangible/deed/player_house_deed/generic_house_medium_deed.iff",
@@ -1555,8 +1556,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 							"Small Generic House Deed", "object/tangible/deed/player_house_deed/generic_house_small_deed.iff",
 							"Small Generic House Deed Floorplan 2", "object/tangible/deed/player_house_deed/generic_house_small_floor_02_deed.iff",
 							"Small Generic House Deed (Style 2)", "object/tangible/deed/player_house_deed/generic_house_small_style_02_deed.iff",
-							"Small Generic House Deed Floorplan 2 (Style 2)", "object/tangible/deed/player_house_deed/generic_house_small_style_02_floor_02_deed.iff",
-							"Large Tatooine House Deed", "object/tangible/deed/player_house_deed/tatooine_house_large_deed.iff"
+							"Small Generic House Deed Floorplan 2 (Style 2)", "object/tangible/deed/player_house_deed/generic_house_small_style_02_floor_02_deed.iff"
 						},
 						"City Deeds",
 						{

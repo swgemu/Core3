@@ -45,7 +45,7 @@ object_building_player_player_house_generic_large_style_01 = object_building_pla
 	lotSize = 5,
 	baseMaintenanceRate = 50,
 	allowedZones = {0,1,4,5,6,7,8},
-	publicStructure = false,
+	publicStructure = 0,
 	sign = {templateFile = "object/tangible/sign/player/house_address.iff", x = 3.68, z = 2, y = 13.04, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 3.17, z = 4.585, y = -4.4, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 7, containmentType = -1},

@@ -54,7 +54,7 @@ object_building_player_city_cityhall_naboo = object_building_player_city_shared_
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -16.78, z = 2.0, y = 7.9, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 3, containmentType = -1},
 	},
-	alwaysPublic = true
+	alwaysPublic = 1
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_cityhall_naboo, "object/building/player/city/cityhall_naboo.iff")
