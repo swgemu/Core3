@@ -123,6 +123,10 @@ void BuildingObjectImplementation::removeFromZone() {
 				cont->remove(0);
 			//cont->drop(obj->getObjectID());
 		}
+
+		if (signObject != NULL) {
+			signObject->removeFromZone();
+		}
 	}
 
 	TangibleObjectImplementation::removeFromZone();
@@ -272,6 +276,9 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(bool destroyContain
 
 	if (deed != NULL)
 		deed->destroyObjectFromDatabase(true);
+
+	if (signObject != NULL)
+		signObject->destroyObjectFromDatabase(true);
 
 	//Loop through the cells and delete all objects from the database.
 }
