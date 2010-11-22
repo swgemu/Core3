@@ -98,6 +98,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/creature/NonPlayerCreatureObject.cpp \
 				server/zone/objects/creature/Creature.cpp \
 				server/zone/objects/creature/AiAgent.cpp \
+				server/zone/objects/creature/AiObserver.cpp \
 				server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 				server/zone/objects/creature/buffs/Buff.cpp \
 				server/zone/objects/creature/aigroup/AiGroup.cpp \

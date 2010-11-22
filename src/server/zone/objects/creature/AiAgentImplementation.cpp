@@ -21,6 +21,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/creature/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
@@ -33,6 +34,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "PatrolPoint.h"
+#include "AiObserver.h"
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
@@ -55,6 +57,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
 		weapons.add(weao);
 	}
+
+	// add the default weapon
+	weapons.add(getWeapon());
 
 	// set the damage of the default weapon
 	getWeapon()->setMinDamage(npcTemplate->getDamageMin());
@@ -102,42 +107,117 @@ void AiAgentImplementation::doRecovery() {
 		damageOverTimeList.activateDots(_this);
 	}
 
-	if (isInCombat() && defenderList.size() > 0) {
-		SceneObject* targetToAttack = defenderList.get(0);
+	CreatureObject* target = damageMap.getHighestThreatCreature();
 
-		if (!tryRetreat() && targetToAttack->isCreatureObject()) {
-			CreatureObject* creo = (CreatureObject*) targetToAttack;
+	if (target != NULL && !defenderList.contains(target))
+		addDefender(target);
 
-			if (!creo->isInRange(_this, 128) || !creo->isAttackableBy(_this)) {
-				removeDefender(creo);
-				setOblivious();
-				//CombatManager::instance()->attemptPeace(_this);
-			} else {
-				setTargetID(creo->getObjectID(), true);
+	if (target == NULL && defenderList.size() > 0) {
+		SceneObject* tarObj = defenderList.get(0);
+		if (tarObj->isCreatureObject())
+			target = (CreatureObject*)tarObj;
+	}
 
-				setFollowObject(creo);
+	if (!isInCombat() || defenderList.size() <= 0 || target == NULL) {
+		tryRetreat();
+		activateRecovery();
+		return;
+	}
 
-				checkNewAngle();
+	if (target != NULL && (!target->isInRange(_this, 128) || !target->isAttackableBy(_this))) {
+		CombatManager::instance()->attemptPeace(target);
+		activateRecovery();
+		return;
+	}
 
-				if (commandQueue.size() == 0 && weapon != NULL) {
-					//TODO: make this more interesting with AI...
-					if (npcTemplate == NULL) {
-						enqueueCommand(String("defaultattack").hashCode(), 0, creo->getObjectID(), "");
-					} else {
-						CreatureAttackMap* attackMap = npcTemplate->getAttacks();
-						if (attackMap == NULL || attackMap->size() == 0 || System::random(2) > 0)
-							enqueueCommand(String("defaultattack").hashCode(), 0, creo->getObjectID(), "");
-						else {
-							int attackNum = attackMap->getRandomAttackNumber();
-							enqueueCommand(attackMap->getCommand(attackNum).hashCode(), 0, creo->getObjectID(), attackMap->getArguments(attackNum));
-						}
-					}
+	if (commandQueue.size() > 5) {
+		activateRecovery();
+		return;
+	}
+
+	if (target != followObject)
+		setDefender(target);
+
+	selectWeapon();
+
+	if (System::random(2) == 0) {
+		// do special attack
+		CreatureAttackMap* attackMap = npcTemplate->getAttacks();
+		int attackNum = attackMap->getRandomAttackNumber();
+		String args = attackMap->getArguments(attackNum);
+
+
+		if (!validateStateAttack(target, args)) {
+			// do default attack
+			enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
+		} else {
+			// queue special attack
+			unsigned int actionCRC = attackMap->getCommand(attackNum).hashCode();
+			enqueueCommand(actionCRC, 0, target->getObjectID(), args);
+
+			if (System::random(4) == 0) {
+				// queue second special attack (rudimentary combo)
+				int secondAttackNum = attackMap->getRandomAttackNumber();
+				args = attackMap->getArguments(secondAttackNum);
+
+				if (validateStateAttack(target, args) && secondAttackNum != attackNum) {
+					actionCRC = attackMap->getCommand(attackNum).hashCode();
+					enqueueCommand(actionCRC, 0, target->getObjectID(), args);
 				}
+			}
+		}
+	} else
+		enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
+
+	activateRecovery();
+}
+
+int AiAgentImplementation::notifyAttack(Observable* observable) {
+	// TODO: add reaction attacks
+	return 0;
+}
+
+int AiAgentImplementation::notifyCallForHelp(Observable* observable, ManagedObject* arg1) {
+	// TODO: add aggroing
+	return 0;
+}
+
+void AiAgentImplementation::selectWeapon() {
+	float dist = getDistanceTo(followObject.get());
+	float diff = 1024.f;
+	WeaponObject* finalWeap = getWeapon();
+
+	for (int i = 0; i < weapons.size(); ++i) {
+		WeaponObject* weap = weapons.get(i);
+		float range = abs(weap->getIdealRange() - dist);
+		if (range < diff) {
+			diff = range;
+			finalWeap = weap;
+		}
+	}
+
+	setWeapon(finalWeap, true);
+}
+
+bool AiAgentImplementation::validateStateAttack(CreatureObject* target, String& args) {
+	StringTokenizer tokenizer(args);
+	tokenizer.setDelimeter(";");
+
+	while (tokenizer.hasMoreTokens()) {
+		String singleArg;
+		tokenizer.getStringToken(singleArg);
+
+		if (singleArg.indexOf("Chance") != -1) {
+			String stateName = singleArg.subString(0, args.indexOf("Chance"));
+			uint64 state = CreatureState::getState(stateName);
+			if (target->hasState(state) || (stateName == "postureDown" && target->isProne()) || (stateName == "knockdown" && target->isKnockedDown()) || (stateName == "postureUp" && target->isStanding())) {
+				return false;
+
 			}
 		}
 	}
 
-	activateRecovery();
+	return true;
 }
 
 void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
@@ -193,7 +273,20 @@ bool AiAgentImplementation::tryRetreat() {
 void AiAgentImplementation::setDefender(SceneObject* defender) {
 	CreatureObjectImplementation::setDefender(defender);
 
-	//followObject = defender;
+	AiObserver* observer;
+	if (aiObserverMap.size() == 0) {
+		observer = new AiObserver(_this);
+		ObjectManager::instance()->persistObject(observer, 1, "aiobservers");
+		aiObserverMap.put(observer);
+	} else {
+		observer = aiObserverMap.get(0);
+		for (int i = 0; i < defenderList.size(); ++i)
+			defenderList.get(i)->dropObserver(ObserverEventType::SPECIALATTACK, observer);
+	}
+
+	defender->registerObserver(ObserverEventType::SPECIALATTACK, observer);
+
+	setFollowObject(defender);
 
 	activateRecovery();
 }
@@ -210,15 +303,30 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 void AiAgentImplementation::removeDefender(SceneObject* defender) {
 	CreatureObjectImplementation::removeDefender(defender);
 
+	if (defender != NULL) {
+		if (defender->isCreatureObject())
+			damageMap.dropDamage((CreatureObject*)defender);
+
+		defender->dropObserver(ObserverEventType::SPECIALATTACK, aiObserverMap.get(0));
+	}
+
 	if (followObject == defender) {
-		if (defenderList.size() <= 0) {
-			setFollowObject(NULL);
-			followState = AiAgent::OBLIVIOUS;
+		CreatureObject* target = damageMap.getHighestThreatCreature();
+
+		if (target == NULL && defenderList.size() > 0) {
+			SceneObject* tarObj = defenderList.get(0);
+			if (tarObj->isCreatureObject())
+				target = (CreatureObject*)tarObj;
+		}
+
+		if (target == NULL) {
+			setOblivious();
 		} else  {
-			setDefender(defenderList.get(0));
-			followState = AiAgent::FOLLOWING;
+			setDefender(target);
 		}
 	}
+
+	activateRecovery();
 }
 
 /**
@@ -232,8 +340,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 
 	damageMap.removeAll();
 
-	setFollowObject(NULL);
-	followState = AiAgent::WATCHING;
+	setOblivious();
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
@@ -609,8 +716,6 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 			damageMap.addDamage(player, damage);
 
 			if (System::random(5) == 1) {
-				setFollowObject(player);
-				followState = AiAgent::FOLLOWING;
 				setDefender(player);
 			}
 		}

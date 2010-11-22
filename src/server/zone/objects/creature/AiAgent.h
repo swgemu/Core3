@@ -201,6 +201,50 @@ class DespawnCreatureOnPlayerDissappear;
 
 using namespace server::zone::objects::creature::events;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace commands {
+
+class QueueCommand;
+
+} // namespace commands
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::commands;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class Observable;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class AiObserver;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "server/zone/objects/creature/PatrolPointsVector.h"
 
 #include "server/zone/objects/creature/PatrolPoint.h"
@@ -294,6 +338,10 @@ public:
 
 	int notifyConverseObservers(CreatureObject* converser);
 
+	int notifyAttack(Observable* observable);
+
+	int notifyCallForHelp(Observable* observable, ManagedObject* arg1);
+
 	void activatePostureRecovery();
 
 	void clearCombatState(bool clearDefenders = true);
@@ -331,6 +379,10 @@ public:
 	void setFollowObject(SceneObject* obj);
 
 	void setTargetObject(SceneObject* obj);
+
+	void selectWeapon();
+
+	bool validateStateAttack(CreatureObject* target, String& args);
 
 	bool isRetreating();
 
@@ -445,6 +497,8 @@ protected:
 
 	DamageMap damageMap;
 
+	SortedVector<ManagedReference<AiObserver* > > aiObserverMap;
+
 	Vector<ManagedReference<WeaponObject* > > weapons;
 
 	CreatureTemplate* npcTemplate;
@@ -536,6 +590,10 @@ public:
 
 	int notifyConverseObservers(CreatureObject* converser);
 
+	int notifyAttack(Observable* observable);
+
+	int notifyCallForHelp(Observable* observable, ManagedObject* arg1);
+
 	void activatePostureRecovery();
 
 	void clearCombatState(bool clearDefenders = true);
@@ -573,6 +631,10 @@ public:
 	void setFollowObject(SceneObject* obj);
 
 	void setTargetObject(SceneObject* obj);
+
+	void selectWeapon();
+
+	bool validateStateAttack(CreatureObject* target, String& args);
 
 	bool isRetreating();
 
@@ -715,6 +777,10 @@ public:
 
 	int notifyConverseObservers(CreatureObject* converser);
 
+	int notifyAttack(Observable* observable);
+
+	int notifyCallForHelp(Observable* observable, ManagedObject* arg1);
+
 	void activatePostureRecovery();
 
 	void clearCombatState(bool clearDefenders);
@@ -750,6 +816,10 @@ public:
 	void setFollowObject(SceneObject* obj);
 
 	void setTargetObject(SceneObject* obj);
+
+	void selectWeapon();
+
+	bool validateStateAttack(CreatureObject* target, String& args);
 
 	bool isRetreating();
 
@@ -811,6 +881,8 @@ public:
 
 	bool hasLoot();
 
+protected:
+	String _param1_validateStateAttack__CreatureObject_String_;
 };
 
 class AiAgentHelper : public DistributedObjectClassHelper, public Singleton<AiAgentHelper> {

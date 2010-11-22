@@ -1098,7 +1098,7 @@ void CreatureObjectImplementation::setTerrainNegotiation(float value, bool notif
 	sendMessage(codm4);
 }
 
-void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) {
+void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments, int priority) {
 	ObjectController* objectController = getZoneServer()->getObjectController();
 
 	QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
@@ -1112,13 +1112,16 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 		return;
 	}
 
-	if (queueCommand->getDefaultPriority() == QueueCommand::IMMEDIATE) {
+	if (priority < 0)
+		priority = queueCommand->getDefaultPriority();
+
+	if (priority == QueueCommand::IMMEDIATE) {
 		objectController->activateCommand(_this, actionCRC, actionCount, targetID, arguments);
 
 		return;
 	}
 
-	if (commandQueue.size() > 15) {
+	if (commandQueue.size() > 15 && priority != QueueCommand::FRONT) {
 		clearQueueAction(actionCount);
 
 		return;
@@ -1132,9 +1135,9 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 			e->schedule(nextAction);
 		}
 
-		if (queueCommand->getDefaultPriority() == QueueCommand::NORMAL)
+		if (priority == QueueCommand::NORMAL)
 			commandQueue.add(action);
-		else if (queueCommand->getDefaultPriority() == QueueCommand::FRONT)
+		else if (priority == QueueCommand::FRONT)
 			commandQueue.add(0, action);
 	} else {
 		nextAction.updateToCurrentTime();

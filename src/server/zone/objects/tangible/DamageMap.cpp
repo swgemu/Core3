@@ -6,6 +6,7 @@
  */
 
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 #include "DamageMap.h"
@@ -22,16 +23,16 @@ void DamageMapEntry::addDamage(WeaponObject* weapon, uint32 damage) {
 	}
 }
 
-void DamageMap::addDamage(PlayerCreature* player, uint32 damage) {
-	int idx = find(player);
+void DamageMap::addDamage(CreatureObject* creo, uint32 damage) {
+	int idx = find(creo);
 
-	WeaponObject* weapon = player->getWeapon();
+	WeaponObject* weapon = creo->getWeapon();
 
 	if (idx == -1) {
 		DamageMapEntry entry;
 		entry.addDamage(weapon, damage);
 
-		put(player, entry);
+		put(creo, entry);
 	} else {
 		DamageMapEntry* entry = &elementAt(idx).getValue();
 
@@ -39,8 +40,8 @@ void DamageMap::addDamage(PlayerCreature* player, uint32 damage) {
 	}
 }
 
-void DamageMap::dropDamage(PlayerCreature* player) {
-	drop(player);
+void DamageMap::dropDamage(CreatureObject* creo) {
+	drop(creo);
 }
 
 uint32 DamageMap::getTotalDamage() {
@@ -74,11 +75,18 @@ PlayerCreature* DamageMap::getHighestDamagePlayer() {
 			totalDamage += damage;
 		}
 
-		if (totalDamage > maxDamage) {
+		CreatureObject* creature = elementAt(i).getKey();
+
+		if (totalDamage > maxDamage && creature->isPlayerCreature()) {
 			maxDamage = totalDamage;
-			player = elementAt(i).getKey();
+			player = (PlayerCreature*)creature;
 		}
 	}
 
 	return player;
+}
+
+CreatureObject* DamageMap::getHighestThreatCreature() {
+	// TODO: add logic to this
+	return getHighestDamagePlayer();
 }

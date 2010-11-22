@@ -41,6 +41,7 @@ using namespace server::zone::objects::tangible::weapon;
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class DamageMapEntry : public VectorMap<ManagedReference<WeaponObject*>, uint32> {
 
@@ -64,22 +65,24 @@ public:
 
 };
 
-class DamageMap : public VectorMap<ManagedReference<PlayerCreature*> , DamageMapEntry> {
+class DamageMap : public VectorMap<ManagedReference<CreatureObject*> , DamageMapEntry> {
 
 public:
 	DamageMap() {
 		setNoDuplicateInsertPlan();
 	}
 
-	DamageMap(const DamageMap& map) : VectorMap<ManagedReference<PlayerCreature*> , DamageMapEntry>(map) {
+	DamageMap(const DamageMap& map) : VectorMap<ManagedReference<CreatureObject*> , DamageMapEntry>(map) {
 		setNoDuplicateInsertPlan();
 	}
 
-	void addDamage(PlayerCreature* player, uint32 damage);
+	void addDamage(CreatureObject* creo, uint32 damage);
 
-	void dropDamage(PlayerCreature* player);
+	void dropDamage(CreatureObject* creo);
 
 	PlayerCreature* getHighestDamagePlayer();
+
+	CreatureObject* getHighestThreatCreature();
 
 	uint32 getTotalDamage();
 };
