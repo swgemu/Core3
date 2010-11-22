@@ -43,6 +43,44 @@
 
 object_draft_schematic_furniture_furniture_lamp_desk_s01_on = object_draft_schematic_furniture_shared_furniture_lamp_desk_s01_on:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Desk Lamp 'Bantha'",
+
+   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 20, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 110, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+   customizationSkill = "", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"lamp_body", "lamp_assembly", "shade"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"", "", ""},
+   resourceQuantities = {0, 0, 0},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 1, 1},
+   experimentalProperties = {"XX", "XX", "XX", "XX"},
+   experimentalWeights = {1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+   experimentalSubGroupTitles = {"null", "null", "hitpoints", "lifespan"},
+   experimentalMin = {0, 0, 1000, 21},
+   experimentalMax = {0, 0, 1000, 42},
+   experimentalPrecision = {0, 0, 0, 0},
+
+   tanoCRC = 3745632348, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_desk_s01.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_lamp_desk_s01_on, "object/draft_schematic/furniture/furniture_lamp_desk_s01_on.iff")
