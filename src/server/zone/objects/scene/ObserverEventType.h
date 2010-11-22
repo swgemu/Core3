@@ -21,6 +21,8 @@ public:
 	const static int ENTEREDAREA = 9;
 	const static int EXITEDAREA = 10;
 	const static int DESTINATIONREACHED = 11;
+	const static int SPECIALATTACK = 12;
+	const static int CALLFORHELP = 13;
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

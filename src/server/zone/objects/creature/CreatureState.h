@@ -112,17 +112,17 @@ public:
 			return TUMBLING;
 		else if (state == "rallied")
 			return RALLIED;
-		else if (state == "stunned")
+		else if (state == "stunned" || state == "stun")
 			return STUNNED;
-		else if (state == "blinded")
+		else if (state == "blinded" || state == "blind")
 			return BLINDED;
 		else if (state == "dizzy")
 			return DIZZY;
-		else if (state == "intimidated")
+		else if (state == "intimidated" || state == "intimidation")
 			return INTIMIDATED;
-		else if (state == "snared")
+		else if (state == "snared" || state == "snare")
 			return SNARED;
-		else if (state == "rooted")
+		else if (state == "rooted" || state == "root")
 			return ROOTED;
 		else if (state == "swimming")
 			return SWIMMING;
@@ -134,11 +134,11 @@ public:
 			return GLOWINGJEDI;
 		else if (state == "maskscent")
 			return MASKSCENT;
-		else if (state == "poisoned")
+		else if (state == "poisoned" || state == "poison")
 			return POISONED;
-		else if (state == "bleeding")
+		else if (state == "bleeding" || state == "bleed")
 			return BLEEDING;
-		else if (state == "diseased")
+		else if (state == "diseased" || state == "disease")
 			return DISEASED;
 		else if (state == "onfire")
 			return ONFIRE;
