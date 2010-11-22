@@ -174,7 +174,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<GetMapLocationsCallback>(0x1A7AB839);
 	messageCallbackFactory.registerObject<GuildRequestCallback>(0x81EB4EF7);
 	messageCallbackFactory.registerObject<ChatEnterRoomByIdCallback>(0xbc6bddf2);
-	messageCallbackFactory.registerObject<VerifyPlayerNameCallback>(0xF4C498FD);
+	messageCallbackFactory.registerObject<VerifyPlayerNameCallback>(0xBB8CAD45);
 
 }
 
