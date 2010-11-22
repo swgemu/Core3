@@ -43,6 +43,44 @@
 
 object_draft_schematic_weapon_heavy_rocket_launcher = object_draft_schematic_weapon_shared_heavy_rocket_launcher:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Rocket Launcher",
+
+   groupName = "craftMunitionsGroupF", -- Group schematic is awarded in (See skills table)
+
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 50, 
+   size = 4, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 770, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "ignition_pulse_generator", "launch_tubes", "shell_handling_unit", "warheads", "target_tracker"},
+   ingredientSlotType = {0, 0, 0, 1, 0, 1, 1, 1},
+   resourceTypes = {"iron", "metal", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "steel", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/weapon/ranged/grenade/shared_grenade_proton.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
+   resourceQuantities = {150, 40, 25, 4, 170, 8, 5, 2},
+   combineTypes = {0, 0, 0, 1, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
+   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "charges", "attackhealthcost", "attackactioncost", "attackmindcost"},
+   experimentalMin = {0, 0, 900, 1550, 12, 17, 30, 750, -120, 20, 48, 0, 25, 124, 85, 60},
+   experimentalMax = {0, 0, 1350, 4500, 7, 31, 65, 1500, -90, 60, 48, 35, 50, 67, 40, 36},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3368144786, -- Script: 'object/weapon/ranged/heavy/heavy_rocket_launcher.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_heavy_rocket_launcher, "object/draft_schematic/weapon/heavy_rocket_launcher.iff")
