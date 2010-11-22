@@ -302,6 +302,10 @@ void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) 
 		player->teleport(ejectionPoint.getX(), zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
 	}
 
+	//Always allow privileged players to enter any structure.
+	if (player->isPlayerCreature() && ((PlayerCreature*) player)->getPlayerObject()->isPrivileged())
+		allowEntry = true;
+
 	for (int i = 0; i < cells.size(); ++i) {
 		ManagedReference<CellObject*> cell = getCell(i);
 
