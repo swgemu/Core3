@@ -58,7 +58,7 @@ public:
 	
 	void setBox(int branch, SkillBox* skillbox) {
 		if (branch < 1 || branch > 4)
-			throw new ArrayIndexOutOfBoundsException();
+			throw ArrayIndexOutOfBoundsException();
 		
 		branches[branch - 1] = skillbox;
 		skillBoxes.add(skillbox);
@@ -66,7 +66,7 @@ public:
 
 	inline SkillBox* getBox(int branch) {
 		if (branch < 1 || branch > 4)
-			throw new ArrayIndexOutOfBoundsException();
+			throw ArrayIndexOutOfBoundsException();
 
 		return branches[branch - 1];
 	}
