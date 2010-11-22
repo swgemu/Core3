@@ -66,7 +66,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_07 = object_draft_schem
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"hardware", "load_bearing_harness", "reinforcement"},
-   ingredientSlotType = {1, 0, 1},
+   ingredientSlotType = {1, 0, 2},
    resourceTypes = {"object/tangible/component/clothing/shared_metal_fasteners.iff", "fiberplast", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {1, 15, 1},
    combineTypes = {1, 0, 1},

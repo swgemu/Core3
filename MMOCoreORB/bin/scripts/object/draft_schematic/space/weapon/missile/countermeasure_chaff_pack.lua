@@ -43,6 +43,44 @@
 
 object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack = object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_pack:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Chaff Pack",
+
+   groupName = "craftShipwrightNoviceGroupA", -- Group schematic is awarded in (See skills table)
+
+   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   complexity = 11, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 25, 
+
+   assemblySkill = "jedi_saber_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"casing", "chaff_bits"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"steel", "metal"},
+   resourceQuantities = {75, 25},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2, 2, 1, 2, 1},
+   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+   experimentalGroupTitles = {"null", "null", "exp_maximum_chaff_effectiveness", "exp_min_chaff_effectiveness", "null", "exp_ammo", "null"},
+   experimentalSubGroupTitles = {"null", "null", "fltmaxeffectiveness", "fltmineffectiveness", "fltrefirerate", "fltmaxammo", "energy_per_shot"},
+   experimentalMin = {0, 0, 68, 43, 289, 12, 0},
+   experimentalMax = {0, 0, 92, 58, 391, 16, 0},
+   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
+   tanoCRC = 3507929913, -- Script: 'object/tangible/ship/crafted/weapon/missile/countermeasure_chaff_pack.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack, "object/draft_schematic/space/weapon/missile/countermeasure_chaff_pack.iff")
