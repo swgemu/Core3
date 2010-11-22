@@ -50,7 +50,7 @@ object_building_player_player_merchant_tent_style_02 = object_building_player_sh
 	width = 3,
 	alwaysPublic = 1,
 	abilityRequired = "place_merchant_tent",
-	sign = {templateFile = "object/tangible/sign/player/shop_sign_s01.iff", x = 9.4, z = 2, y = 10.32, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = -1, containmentType = -1},
+	sign = {templateFile = "object/tangible/sign/player/shop_sign_s01.iff", x = 3.5, z = 0, y = 3.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1},
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -0.15, z = 0.267105, y = -2.76, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 0, containmentType = -1}
 	}

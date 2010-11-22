@@ -9,6 +9,7 @@
 #include "StructureTerminal.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -23,14 +24,14 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 
 	StructureObject* structureObject = (StructureObject*) controlledObject.get();
 
-	if (!structureObject->isOnAdminList(player))
+	if (!structureObject->isOnAdminList(player) && !player->getPlayerObject()->isPrivileged())
 		return;
 
 	menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
 	menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
 
 	//CityHalls only have Destroy Structure option
-	if (structureObject->isBuildingObject() && ((BuildingObject*) structureObject)->isCityHallBuilding())
+	if (structureObject->isBuildingObject() && ((BuildingObject*) structureObject)->isCityHallBuilding() && !player->getPlayerObject()->isPrivileged())
 		return;
 
 	menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
@@ -60,7 +61,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* play
 
 	StructureObject* structureObject = (StructureObject*) controlledObject.get();
 
-	if (!structureObject->isOnAdminList(player))
+	if (!structureObject->isOnAdminList(player) && !player->getPlayerObject()->isPrivileged())
 		return 1;
 
 	if (zone == NULL)
