@@ -46,6 +46,7 @@ which carries forward this exception.
 #define TRANSFERSTRUCTURECOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class TransferstructureCommand : public QueueCommand {
 public:
@@ -70,24 +71,31 @@ public:
 
 		String targetName = arguments.toString();
 
-		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-		ManagedReference<PlayerCreature*> targetPlayer = playerManager->getPlayer(targetName);
-
-		if (targetPlayer == NULL) {
+		if (obj == NULL || !obj->isPlayerCreature()) {
 			player->sendSystemMessage("@player_structure:no_transfer_target"); //You must specify a player with whom to transfer ownership.
 			return GENERALERROR;
 		}
 
-		//Get the building to be transfered.
-		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(player, target);
+		PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
 
-		if (obj == NULL || !obj->isStructureObject()) {
+		Locker _lock(targetPlayer);
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+
+		//Get the building to be transfered.
+		ManagedReference<SceneObject*> structobj = playerManager->getInRangeStructureWithAdminRights(player, target);
+
+		if (structobj == NULL || !structobj->isStructureObject()) {
 			player->sendSystemMessage("@player_structure:not_in_building"); //You must be inside your building to transfer it.
 			return GENERALERROR;
 		}
 
-		StructureObject* structureObject = (StructureObject*) obj.get();
+		StructureObject* structureObject = (StructureObject*) structobj.get();
+
+		Locker _slock(structureObject);
 
 		if (!structureObject->isOwnerOf(player)) {
 			player->sendSystemMessage("@player_structure:not_owner"); //You are not the owner of this structure.
@@ -96,6 +104,19 @@ public:
 
 		if (targetPlayer == player) {
 			player->sendSystemMessage("@player_structure:already_owner"); //You are already the owner.
+			return GENERALERROR;
+		}
+
+		if (!targetPlayer->isInRange(player, 16) || targetPlayer->getRootParent() != player->getRootParent())
+			return TOOFAR;
+
+		int lotSize = structureObject->getLotSize();
+
+		if (targetPlayer->getLotsRemaining() < lotSize) {
+			StringIdChatParameter params("@player_structure:not_enough_lots");
+			params.setDI(structureObject->getLotSize());
+			player->sendSystemMessage(params);
+
 			return GENERALERROR;
 		}
 
@@ -133,6 +154,10 @@ public:
 			buildingObject->updateCellPermissionsTo(targetPlayer);
 			buildingObject->updateCellPermissionsTo(player);
 		}
+
+		//Transfer the lots.
+		targetPlayer->setLotsRemaining(targetPlayer->getLotsRemaining() - lotSize);
+		player->setLotsRemaining(player->getLotsRemaining() + lotSize);
 
 		StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%NT has transfered ownership of the structure to you
 		params.setTT(player);
