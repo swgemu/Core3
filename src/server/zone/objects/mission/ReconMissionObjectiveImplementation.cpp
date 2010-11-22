@@ -19,6 +19,9 @@
 #include "MissionObserver.h"
 
 void ReconMissionObjectiveImplementation::activate() {
+	if (mission == NULL)
+		return;
+
 	ManagedReference<ZoneServer*> zoneServer = Core::lookupObject<ZoneServer>("ZoneServer");
 
 	if (locationActiveArea == NULL) {

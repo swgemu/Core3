@@ -38,7 +38,7 @@ public:
 		ManagedReference<AiAgent*> strongRef = creature.get();
 		ManagedReference<CreatureObject*> targetRef = target.get();
 
-		if (strongRef == NULL)
+		if (strongRef == NULL || targetRef == NULL)
 			return;
 
 		Locker locker(strongRef);
