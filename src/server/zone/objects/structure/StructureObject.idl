@@ -194,13 +194,8 @@ class StructureObject extends TangibleObject {
 		return structurePermissionList.isOnBanList(oid);
 	}
 	
-	public boolean isOwnerOf(SceneObject obj) {
-		return obj.getObjectID() == ownerObjectID;
-	}
-	
-	public boolean isOwnerOf(unsigned long oid) {
-		return oid == ownerObjectID;
-	}
+	public native boolean isOwnerOf(SceneObject obj);
+	public native boolean isOwnerOf(unsigned long oid);
 	
 	public boolean isOnAccessList(SceneObject obj) {
 		//TODO: Vector of objects that have temporary access to the structure.
