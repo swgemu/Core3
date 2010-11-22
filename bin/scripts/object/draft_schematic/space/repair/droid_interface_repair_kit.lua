@@ -43,6 +43,44 @@
 
 object_draft_schematic_space_repair_droid_interface_repair_kit = object_draft_schematic_space_repair_shared_droid_interface_repair_kit:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Droid Interface Repair Kit",
+
+   groupName = "craftShipwrightNoviceGroupA", -- Group schematic is awarded in (See skills table)
+
+   craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
+   complexity = 11, 
+   size = 1, 
+
+   xpType = "shipwright", 
+   xp = 32, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"repair_parts", "fiberplast_patches"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"", ""},
+   resourceQuantities = {0, 0},
+   combineTypes = {0, 0},
+   contribution = {100, 100},
+
+   numberExperimentalProperties = {1, 1, 2},
+   experimentalProperties = {"XX", "XX", "CD", "OQ"},
+   experimentalWeights = {1, 1, 1, 3},
+   experimentalGroupTitles = {"null", "null", "exp_repaircharges"},
+   experimentalSubGroupTitles = {"null", "null", "repaircharges"},
+   experimentalMin = {0, 0, 8000},
+   experimentalMax = {0, 0, 12000},
+   experimentalPrecision = {0, 0, 0},
+
+   tanoCRC = 1136027971, -- Script: 'object/tangible/ship/crafted/repair/repair_kit_droid_interface.iff'
+}
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_droid_interface_repair_kit, "object/draft_schematic/space/repair/droid_interface_repair_kit.iff")

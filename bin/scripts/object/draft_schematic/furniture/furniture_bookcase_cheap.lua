@@ -65,7 +65,7 @@ object_draft_schematic_furniture_furniture_bookcase_cheap = object_draft_schemat
    customizationDefaults = {},
 
    ingredientTemplateNames = {"ingredients", "ingredients"},
-   ingredientTitleNames = {"frame", "shelves"},
+   ingredientTitleNames = {"shelves", "frame"},
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
    resourceQuantities = {75, 75},

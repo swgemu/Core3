@@ -65,10 +65,10 @@ object_draft_schematic_furniture_furniture_bookcase_modern = object_draft_schema
    customizationDefaults = {},
 
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
-   ingredientTitleNames = {"shelves", "frame"},
+   ingredientTitleNames = {"frame", "shelves"},
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
-   resourceQuantities = {100, 150},
+   resourceQuantities = {150, 100},
    combineTypes = {0, 0},
    contribution = {100, 100},
 

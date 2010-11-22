@@ -68,7 +68,7 @@ object_draft_schematic_clothing_clothing_shirt_formal_28 = object_draft_schemati
    ingredientTitleNames = {"body", "trim", "binding_and_hardware"},
    ingredientSlotType = {0, 2, 0},
    resourceTypes = {"fiberplast", "object/tangible/component/clothing/shared_trim.iff", "fiberplast"},
-   resourceQuantities = {20, 1, 1},
+   resourceQuantities = {20, 1, 5},
    combineTypes = {0, 1, 0},
    contribution = {100, 100, 100},
 
