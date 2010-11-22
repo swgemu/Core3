@@ -1013,7 +1013,11 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 	groups.setNullValue(0);
 
 	for (int i = 0; i < damageMap->size(); ++i) {
-		ManagedReference<PlayerCreature*> player = damageMap->elementAt(i).getKey();
+		CreatureObject* creature = damageMap->elementAt(i).getKey();
+		if (!creature->isPlayerCreature())
+			continue;
+
+		PlayerCreature* player = (PlayerCreature*)creature;
 
 		DamageMapEntry* entry = &damageMap->elementAt(i).getValue();
 

@@ -720,8 +720,9 @@ class CreatureObject extends TangibleObject {
 	 * @param actionCount command count
 	 * @param targetID target
 	 * @param arguments arguments
+	 * @param priority command priority
 	 */
-	public native void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments);
+	public native void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments, int priority = -1);
 	
 	/**
 	 * Sets characters mood

@@ -418,7 +418,7 @@ public:
 
 	void updateGroup(GroupObject* group, bool notifyClient = true);
 
-	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments, int priority = -1);
 
 	void setMood(byte moodID, bool notifyClient = true);
 
@@ -1052,7 +1052,7 @@ public:
 
 	void updateGroup(GroupObject* group, bool notifyClient = true);
 
-	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments, int priority = -1);
 
 	void setMood(byte moodID, bool notifyClient = true);
 
@@ -1545,7 +1545,7 @@ public:
 
 	void updateGroup(GroupObject* group, bool notifyClient);
 
-	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments, int priority);
 
 	void setMood(byte moodID, bool notifyClient);
 
@@ -1855,7 +1855,7 @@ protected:
 	String _param0_removeSkillBox__String_bool_;
 	String _param0_addSkillMod__String_long_bool_;
 	String _param0_removeSkillMod__String_bool_;
-	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_;
+	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_int_;
 	String _param0_setMoodString__String_bool_;
 	UnicodeString _param2_executeObjectControllerAction__int_long_UnicodeString_;
 	String _param0_updateCooldownTimer__String_int_;
