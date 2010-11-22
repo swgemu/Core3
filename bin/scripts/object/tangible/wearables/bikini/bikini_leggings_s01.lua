@@ -42,7 +42,7 @@
 
 
 object_tangible_wearables_bikini_bikini_leggings_s01 = object_tangible_wearables_bikini_shared_bikini_leggings_s01:new {
-
+	playerUseMask = HUMANOID_FEMALES
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bikini_bikini_leggings_s01, "object/tangible/wearables/bikini/bikini_leggings_s01.iff")
