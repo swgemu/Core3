@@ -170,8 +170,6 @@ bool AiAgentImplementation::tryRetreat() {
 
 		showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 
-		currentSpeed = runSpeed;
-
 		homeLocation.setReached(false);
 
 		damageMap.removeAll();
