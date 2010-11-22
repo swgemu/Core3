@@ -98,7 +98,6 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 		return;
 
 	setOblivious();
-	currentSpeed = runSpeed;
 
 	damageMap.removeAll();
 
