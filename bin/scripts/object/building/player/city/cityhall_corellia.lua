@@ -53,6 +53,7 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	abilityRequired = "place_cityhall",
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -16.78, z = 2.0, y = 7.9, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 3, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_character_builder.iff", x = 0, z = 2.0, y = 14, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1}
 	},
 	alwaysPublic = 1
 }

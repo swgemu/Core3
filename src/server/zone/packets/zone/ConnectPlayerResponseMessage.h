@@ -29,6 +29,7 @@ public:
 	}
 
 	void parse(Message* message) {
+		//System::out << message->toStringData() << endl;
 	}
 
 	void run() {

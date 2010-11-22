@@ -69,6 +69,9 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 		}
 	}
 
+	if (player->isPlayerCreature() && ((PlayerCreature*) player)->getPlayerObject()->isPrivileged())
+		allowEntry = true;
+
 	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
 	player->sendMessage(perm);
 }
