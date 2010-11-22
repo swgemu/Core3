@@ -15,8 +15,7 @@
 
 class VerifyPlayerNameCallback : public MessageCallback {
 	UnicodeString name;
-	int counter;
-	int unknown;
+	uint64 playerID;
 
 public:
 	VerifyPlayerNameCallback(ZoneClientSession* client, ZoneProcessServer* server) :
@@ -27,8 +26,7 @@ public:
 
 	void parse(Message* message) {
 		message->parseUnicode(name);
-		counter = message->parseInt();
-		unknown = message->parseInt();
+		playerID = message->parseLong();
 	}
 
 	void run() {
@@ -40,11 +38,11 @@ public:
 		PlayerCreature* playerCreature = (PlayerCreature*) playerClient.get();
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-		uint64 objectID = playerManager->getObjectID(name.toString());
+		bool success = playerManager->existsName(name.toString());
 
-		bool success = objectID > 0;
+		System::out << "PlayerID parsed was " << playerID << " and the player's ID is " << playerCreature->getObjectID() << endl;
 
-		VerifyPlayerNameResponseMessage* vpnrm = new VerifyPlayerNameResponseMessage(success, counter);
+		VerifyPlayerNameResponseMessage* vpnrm = new VerifyPlayerNameResponseMessage(success);
 		playerCreature->sendMessage(vpnrm);
 	}
 };
