@@ -80,7 +80,7 @@ public:
 
 		PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
 
-		Locker _lock(targetPlayer);
+		Locker _lock(targetPlayer, player);
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
