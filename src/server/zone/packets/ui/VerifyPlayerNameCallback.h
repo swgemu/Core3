@@ -40,8 +40,6 @@ public:
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 		bool success = playerManager->existsName(name.toString());
 
-		System::out << "PlayerID parsed was " << playerID << " and the player's ID is " << playerCreature->getObjectID() << endl;
-
 		VerifyPlayerNameResponseMessage* vpnrm = new VerifyPlayerNameResponseMessage(success);
 		playerCreature->sendMessage(vpnrm);
 	}
