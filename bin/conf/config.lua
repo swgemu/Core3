@@ -60,6 +60,12 @@ LoginProcessingThreads = 1
 LoginAllowedConnections = 3000
 LoginRequiredVersion = "20050408-18:00"
 
+BugDBHost = "127.0.0.1"
+BugDBPort = 3600
+BugDBName = "swgemu"
+BugDBUser = "swgemu"
+BugDBPass = "123456"
+
 AutoReg = 1
 
 PingPort = 44462
