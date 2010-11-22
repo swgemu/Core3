@@ -13,6 +13,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
@@ -411,4 +412,25 @@ void StructureObjectImplementation::sendChangeNamePromptTo(PlayerCreature* playe
 
 	player->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
+}
+
+bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
+	if (obj->isPlayerCreature() && ((PlayerCreature*) obj)->getPlayerObject()->isPrivileged())
+		return true;
+
+	return obj->getObjectID() == ownerObjectID;
+}
+
+bool StructureObjectImplementation::isOwnerOf(uint64 objid) {
+	ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(objid);
+
+	//We have to check if the id belongs to an admin...perhaps we should have a list on playermanager of admin objectids...
+	if (obj != NULL && obj->isPlayerCreature()) {
+		PlayerCreature* player = (PlayerCreature*) obj.get();
+
+		if (player->getPlayerObject()->isPrivileged())
+			return true;
+	}
+
+	return objid == ownerObjectID;
 }
