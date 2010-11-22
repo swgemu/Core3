@@ -126,6 +126,12 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	if (posture == CreaturePosture::SKILLANIMATING)
 		setPosture(CreaturePosture::UPRIGHT, true);
 
+	if (performanceCounter != 0)
+		setPerformanceCounter(0);
+
+	if (instrumentID != 0)
+		setInstrumentID(0);
+
 	if (hasState(CreatureState::RIDINGMOUNT) && parent == NULL)
 		clearState(CreatureState::RIDINGMOUNT);
 
