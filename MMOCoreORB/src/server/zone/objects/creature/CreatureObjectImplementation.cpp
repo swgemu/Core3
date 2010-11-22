@@ -137,6 +137,8 @@ void CreatureObjectImplementation::initializeMembers() {
 
 	optionsBitmask = 0x80;
 
+	moodString = "neutral";
+
 	height = 1;
 
 	shockWounds = 0;
