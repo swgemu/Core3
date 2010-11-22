@@ -11,6 +11,7 @@
 #include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -395,6 +396,18 @@ void StructureObjectImplementation::sendChangeNamePromptTo(PlayerCreature* playe
 	inputBox->setPromptTitle("@sui:set_name_title");
 	inputBox->setPromptText("@sui:set_name_prompt");
 	inputBox->setUsingObject(_this);
+	inputBox->setMaxInputSize(255);
+
+	if (isBuildingObject()) {
+		BuildingObject* buildingObject = (BuildingObject*) _this;
+
+		if (buildingObject->getSignObject() != NULL) {
+			ManagedReference<SignObject*> sign = buildingObject->getSignObject();
+			inputBox->setDefaultInput(sign->getObjectName()->getCustomString().toString());
+		}
+	} else {
+		inputBox->setDefaultInput(objectName.getCustomString().toString());
+	}
 
 	player->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
