@@ -89,6 +89,7 @@ which carries forward this exception.
 #include "packets/ui/NewTicketActivityResponseMessage.h"
 #include "packets/ui/CommoditiesItemTypeListResponse.h"
 #include "packets/ui/SuiEventNotificationCallback.h"
+#include "packets/ui/VerifyPlayerNameCallback.h"
 
 #include "packets/player/NewbieTutorialRequest.h"
 #include "packets/player/StomachRequestMessage.h"
@@ -173,6 +174,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<GetMapLocationsCallback>(0x1A7AB839);
 	messageCallbackFactory.registerObject<GuildRequestCallback>(0x81EB4EF7);
 	messageCallbackFactory.registerObject<ChatEnterRoomByIdCallback>(0xbc6bddf2);
+	messageCallbackFactory.registerObject<VerifyPlayerNameCallback>(0xF4C498FD);
 
 }
 
