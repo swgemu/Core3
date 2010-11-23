@@ -188,7 +188,11 @@ int AiAgentImplementation::notifyCallForHelp(Observable* observable, ManagedObje
 }
 
 void AiAgentImplementation::selectWeapon() {
-	float dist = getDistanceTo(followObject.get());
+	float dist = 5.f;
+
+	if (followObject != NULL)
+		dist = getDistanceTo(followObject.get());
+
 	float diff = 1024.f;
 	WeaponObject* finalWeap = getWeapon();
 

@@ -242,7 +242,19 @@ public:
 				//creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
 				creature->sendSystemMessage(stringId);
 			}
+
 			return false;
+		}
+
+		if (stimPack->isRangedStimPack()) {
+			RangedStimPack* stimPack = (RangedStimPack*)stimPack;
+			int combatMedicineUse = creature->getSkillMod("combat_healing_ability");
+
+			if (stimPack->getMedicineUseRequired() > combatMedicineUse || !stimPack->getRange(creature)) {
+				creature->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
+				return false;
+
+			}
 		}
 
 		return true;
