@@ -60,11 +60,12 @@ LoginProcessingThreads = 1
 LoginAllowedConnections = 3000
 LoginRequiredVersion = "20050408-18:00"
 
-BugDBHost = "127.0.0.1"
-BugDBPort = 3600
-BugDBName = "swgemu"
-BugDBUser = "swgemu"
-BugDBPass = "123456"
+MantisHost = "192.168.1.100"
+MantisPort = 3600
+MantisName = "swgemu"
+MantisUser = "swgemu"
+MantisPass = "123456"
+MantisPrfx = "mantis_" -- The prefix for your mantis tables.
 
 AutoReg = 1
 

@@ -10,7 +10,6 @@
 
 
 #include "../MessageCallback.h"
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/Zone.h"

@@ -63,6 +63,13 @@ bool ConfigManager::loadConfigData() {
 	dBUser = getGlobalString("DBUser");
 	dBPass = getGlobalString("DBPass");
 
+	mantisHost = getGlobalString("MantisHost");
+	mantisPort = getGlobalShort("MantisPort");
+	mantisName = getGlobalString("MantisName");
+	mantisUser = getGlobalString("MantisUser");
+	mantisPass = getGlobalString("MantisPass");
+	mantisPrfx = getGlobalString("MantisPrfx");
+
 	statusPort = getGlobalShort("StatusPort");
 
 	pingPort = getGlobalShort("PingPort");

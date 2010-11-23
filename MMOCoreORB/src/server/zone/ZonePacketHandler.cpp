@@ -224,6 +224,8 @@ Task* ZonePacketHandler::generateMessageTask(Message* pack) {
 			msg << "unknown opcode 0x" << hex << opcode;
 			info(msg, true);
 
+			System::out << pack->toStringData() << endl;
+
 			return NULL;
 		}
 

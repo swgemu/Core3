@@ -52,6 +52,7 @@ import server.zone.ZonePacketHandler;
 import server.chat.ChatManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.name.NameManager;
+import server.zone.managers.holocron.HolocronManager;
 import server.zone.managers.sui.SuiManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.managers.professions.ProfessionManager;
@@ -66,6 +67,8 @@ class ZoneProcessServer extends ManagedService {
 
 	//Static Managers
 	transient protected NameManager nameManager;
+	
+	transient protected HolocronManager holocronManager;
 
 	transient protected SuiManager suiManager;
 	
@@ -114,6 +117,11 @@ class ZoneProcessServer extends ManagedService {
 	@local
 	public NameManager getNameManager() {
 		return nameManager;
+	}
+	
+	@local
+	public HolocronManager getHolocronManager() {
+		return holocronManager;
 	}
 
 	public ChatManager getChatManager() {

@@ -46,14 +46,7 @@ which carries forward this exception.
 #define PLAYEROBJECTDELTAMESSAGE9_H_
 
 #include "../DeltaMessage.h"
-
 #include "../../objects/player/PlayerObject.h"
-/*#include "../../objects/player/Player.h"
-
-#include "../../objects/draftschematic/DraftSchematic.h"
-
-#include "../../objects/player/FriendsList.h"
-#include "../../objects/player/IgnoreList.h"*/
 
 class PlayerObjectDeltaMessage9 : public DeltaMessage {
 	PlayerObject* play;

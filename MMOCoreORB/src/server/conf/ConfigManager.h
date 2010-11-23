@@ -65,6 +65,13 @@ namespace server {
 			String dBUser;
 			String dBPass;
 
+			String mantisHost;
+			uint16 mantisPort;
+			String mantisName;
+			String mantisUser;
+			String mantisPass;
+			String mantisPrfx;
+
 			uint16 statusPort;
 			uint16 loginPort;
 			uint16 pingPort;
@@ -101,6 +108,12 @@ namespace server {
 				dBName = "swgemu";
 				dBUser = "root";
 				dBPass = "Gemeni1";
+
+				mantisHost = "127.0.0.1";
+				mantisPort = 3306;
+				mantisName = "swgemu";
+				mantisUser = "root";
+				mantisPass = "Gemeni1";
 
 				statusPort = 44455;
 
@@ -173,6 +186,30 @@ namespace server {
 
 			inline String& getDBPass() {
 				return dBPass;
+			}
+
+			inline String& getMantisHost() {
+				return mantisHost;
+			}
+
+			inline uint16& getMantisPort() {
+				return mantisPort;
+			}
+
+			inline String& getMantisName() {
+				return mantisName;
+			}
+
+			inline String& getMantisUser() {
+				return mantisUser;
+			}
+
+			inline String& getMantisPass() {
+				return mantisPass;
+			}
+
+			inline String& getMantisPrefix() {
+				return mantisPrfx;
 			}
 
 			inline String& getMessageOfTheDay() {

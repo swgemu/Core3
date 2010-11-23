@@ -72,6 +72,20 @@ using namespace server::zone::managers::name;
 namespace server {
 namespace zone {
 namespace managers {
+namespace holocron {
+
+class HolocronManager;
+
+} // namespace holocron
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::holocron;
+
+namespace server {
+namespace zone {
+namespace managers {
 namespace sui {
 
 class SuiManager;
@@ -148,6 +162,8 @@ public:
 
 	NameManager* getNameManager();
 
+	HolocronManager* getHolocronManager();
+
 	ChatManager* getChatManager();
 
 	SuiManager* getSuiManager();
@@ -180,6 +196,8 @@ protected:
 
 	NameManager* nameManager;
 
+	HolocronManager* holocronManager;
+
 	SuiManager* suiManager;
 
 	ProfessionManager* professionManager;
@@ -206,6 +224,8 @@ public:
 	PlayerManager* getPlayerManager();
 
 	NameManager* getNameManager();
+
+	HolocronManager* getHolocronManager();
 
 	ChatManager* getChatManager();
 
