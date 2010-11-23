@@ -2116,3 +2116,27 @@ void PlayerManagerImplementation::updateAdminLevel(PlayerCreature* player, const
 		targetPlayer->broadcastMessage(playd6, true);
 	}
 }
+
+int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed) {
+	float allowedSpeedMod = player->getSpeedMultiplierMod();
+	float allowedSpeedBase = player->getRunSpeed();
+	ManagedReference<SceneObject*> parent = player->getParent();
+
+	if (parent != NULL && parent->isVehicleObject()) {
+		VehicleObject* vehicle = (VehicleObject*) parent.get();
+
+		allowedSpeedMod = vehicle->getSpeedMultiplierMod();
+		allowedSpeedBase = vehicle->getRunSpeed();
+	}
+
+	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
+
+	if (parsedSpeed > maxAllowedSpeed * 1.1f) {
+		player->info("max allowed speed should be " + String::valueOf(allowedSpeedMod * allowedSpeedBase), true);
+
+		player->teleport(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID());
+		return 1;
+	}
+
+	return 0;
+}

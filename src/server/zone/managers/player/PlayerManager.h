@@ -256,6 +256,8 @@ public:
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
 
+	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed);
+
 	bool existsName(const String& name);
 
 	unsigned long long getObjectID(const String& name);
@@ -396,6 +398,8 @@ public:
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
 
+	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed);
+
 	bool existsName(const String& name);
 
 	unsigned long long getObjectID(const String& name);
@@ -520,6 +524,8 @@ public:
 	void createTutorialBuilding(PlayerCreature* player);
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
+
+	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed);
 
 	bool existsName(const String& name);
 
