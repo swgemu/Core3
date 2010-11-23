@@ -14,8 +14,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/installation/bank/BankInstallation.h"
-
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
 
 #include "server/zone/Zone.h"
@@ -305,108 +303,95 @@ void RegionImplementation::_serializationHelperMethod() {
 	_setClassName("Region");
 
 	addSerializableVariable("bazaars", &bazaars);
-	addSerializableVariable("banks", &banks);
 	addSerializableVariable("shuttleInstallation", &shuttleInstallation);
 	addSerializableVariable("cityHall", &cityHall);
 }
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/Region.idl(78):  		bazaars.setNoDuplicateInsertPlan();
+	// server/zone/objects/region/Region.idl(74):  		bazaars.setNoDuplicateInsertPlan();
 	(&bazaars)->setNoDuplicateInsertPlan();
-	// server/zone/objects/region/Region.idl(79):  		bazaars.setNullValue(null);
+	// server/zone/objects/region/Region.idl(75):  		bazaars.setNullValue(null);
 	(&bazaars)->setNullValue(NULL);
-	// server/zone/objects/region/Region.idl(81):  		banks.setNoDuplicateInsertPlan();
-	(&banks)->setNoDuplicateInsertPlan();
 }
 
 void RegionImplementation::notifyEnter(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(85):  		if 
+	// server/zone/objects/region/Region.idl(79):  		if 
 	if (object->isBazaarTerminal()){
-	// server/zone/objects/region/Region.idl(86):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+	// server/zone/objects/region/Region.idl(80):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
 	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
 }
-	// server/zone/objects/region/Region.idl(89):  		if 
+	// server/zone/objects/region/Region.idl(83):  		if 
 	if (object->isPlayerCreature()){
-	// server/zone/objects/region/Region.idl(90):  			sendGreetingMessage((PlayerCreature) object);
+	// server/zone/objects/region/Region.idl(84):  			sendGreetingMessage((PlayerCreature) object);
 	sendGreetingMessage((PlayerCreature*) object);
 }
-	// server/zone/objects/region/Region.idl(93):  		if 
-	if (object->isBankInstallation()){
-	// server/zone/objects/region/Region.idl(94):  			banks.put((BankInstallation)object);
-	(&banks)->put((BankInstallation*) object);
-}
-	// server/zone/objects/region/Region.idl(97):  	}
+	// server/zone/objects/region/Region.idl(87):  	}
 	if (object->isShuttleInstallation()){
-	// server/zone/objects/region/Region.idl(98):  			shuttleInstallation = (ShuttleInstallation) object;
+	// server/zone/objects/region/Region.idl(88):  			shuttleInstallation = (ShuttleInstallation) object;
 	shuttleInstallation = (ShuttleInstallation*) object;
 }
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(106):  		if 
+	// server/zone/objects/region/Region.idl(96):  		if 
 	if (object->isBazaarTerminal()){
-	// server/zone/objects/region/Region.idl(107):  			bazaars.drop(object.getObjectID());
+	// server/zone/objects/region/Region.idl(97):  			bazaars.drop(object.getObjectID());
 	(&bazaars)->drop(object->getObjectID());
 }
-	// server/zone/objects/region/Region.idl(110):  		if 
+	// server/zone/objects/region/Region.idl(100):  		if 
 	if (object->isPlayerCreature()){
-	// server/zone/objects/region/Region.idl(111):  			sendDepartingMessage((PlayerCreature) object);
+	// server/zone/objects/region/Region.idl(101):  			sendDepartingMessage((PlayerCreature) object);
 	sendDepartingMessage((PlayerCreature*) object);
 }
-	// server/zone/objects/region/Region.idl(114):  		if 
-	if (object->isBankInstallation()){
-	// server/zone/objects/region/Region.idl(115):  			banks.drop((BankInstallation)object);
-	(&banks)->drop((BankInstallation*) object);
-}
-	// server/zone/objects/region/Region.idl(118):  	}
+	// server/zone/objects/region/Region.idl(104):  	}
 	if (object == shuttleInstallation){
-	// server/zone/objects/region/Region.idl(119):  			shuttleInstallation = null;
+	// server/zone/objects/region/Region.idl(105):  			shuttleInstallation = null;
 	shuttleInstallation = NULL;
 }
 }
 
 void RegionImplementation::removeFromZone() {
-	// server/zone/objects/region/Region.idl(132):  		despawnCityObjects();
+	// server/zone/objects/region/Region.idl(118):  		despawnCityObjects();
 	despawnCityObjects();
-	// server/zone/objects/region/Region.idl(134):  		super.removeFromZone();
+	// server/zone/objects/region/Region.idl(120):  		super.removeFromZone();
 	ActiveAreaImplementation::removeFromZone();
-	// server/zone/objects/region/Region.idl(136):  		updateToDatabaseWithoutChildren();
+	// server/zone/objects/region/Region.idl(122):  		updateToDatabaseWithoutChildren();
 	updateToDatabaseWithoutChildren();
 }
 
 void RegionImplementation::addBazaar(BazaarTerminal* ter) {
-	// server/zone/objects/region/Region.idl(142):  		bazaars.put(ter.getObjectID(), ter);
+	// server/zone/objects/region/Region.idl(128):  		bazaars.put(ter.getObjectID(), ter);
 	(&bazaars)->put(ter->getObjectID(), ter);
 }
 
 BazaarTerminal* RegionImplementation::getBazaar(int idx) {
-	// server/zone/objects/region/Region.idl(146):  		return bazaars.get(idx);
+	// server/zone/objects/region/Region.idl(132):  		return bazaars.get(idx);
 	return (&bazaars)->get(idx);
 }
 
 ShuttleInstallation* RegionImplementation::getShuttle() {
-	// server/zone/objects/region/Region.idl(150):  		return shuttleInstallation;
+	// server/zone/objects/region/Region.idl(136):  		return shuttleInstallation;
 	return shuttleInstallation;
 }
 
 int RegionImplementation::getBazaarCount() {
-	// server/zone/objects/region/Region.idl(154):  		return bazaars.size();
+	// server/zone/objects/region/Region.idl(140):  		return bazaars.size();
 	return (&bazaars)->size();
 }
 
 bool RegionImplementation::isRegion() {
-	// server/zone/objects/region/Region.idl(158):  		return true;
+	// server/zone/objects/region/Region.idl(144):  		return true;
 	return true;
 }
 
 CityHallObject* RegionImplementation::getCityHall() {
-	// server/zone/objects/region/Region.idl(162):  		return cityHall;
+	// server/zone/objects/region/Region.idl(148):  		return cityHall;
 	return cityHall;
 }
 
 void RegionImplementation::setCityHall(CityHallObject* hall) {
-	// server/zone/objects/region/Region.idl(166):  		cityHall = hall;
+	// server/zone/objects/region/Region.idl(152):  		cityHall = hall;
 	cityHall = hall;
 }
 

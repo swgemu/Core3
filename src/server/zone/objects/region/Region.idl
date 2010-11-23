@@ -55,16 +55,12 @@ import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.region.RegionCenterPoint;
 include server.zone.objects.region.RegionCenterPointList;
-import server.zone.objects.installation.bank.BankInstallation;
 import server.zone.objects.installation.shuttle.ShuttleInstallation;
 import server.zone.Zone;
 
 class Region extends ActiveArea {	
 	@dereferenced
 	protected VectorMap<unsigned long, BazaarTerminal> bazaars;
-	
-	@dereferenced
-	protected SortedVector<BankInstallation> banks;
 	
 //	@weakReference
 	protected ShuttleInstallation shuttleInstallation;
@@ -77,8 +73,6 @@ class Region extends ActiveArea {
 		
 		bazaars.setNoDuplicateInsertPlan();
 		bazaars.setNullValue(null);
-		
-		banks.setNoDuplicateInsertPlan();
 	}
 	
 	public void notifyEnter(SceneObject object) {
@@ -88,10 +82,6 @@ class Region extends ActiveArea {
 		
 		if (object.isPlayerCreature()) {
 			sendGreetingMessage((PlayerCreature) object);
-		}
-			
-		if (object.isBankInstallation()) {
-			banks.put((BankInstallation)object);
 		}
 		
 		if (object.isShuttleInstallation()) {
@@ -109,10 +99,6 @@ class Region extends ActiveArea {
 		
 		if (object.isPlayerCreature()) {
 			sendDepartingMessage((PlayerCreature) object);
-		}
-		
-		if (object.isBankInstallation()) {
-			banks.drop((BankInstallation)object);
 		}
 		
 		if (object == shuttleInstallation) {

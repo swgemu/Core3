@@ -10,7 +10,6 @@
 #include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
-#include "server/zone/objects/installation/bank/BankInstallation.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 
@@ -55,12 +54,4 @@ void RegionImplementation::sendDepartingMessage(PlayerCreature* player) {
 void RegionImplementation::despawnCityObjects() {
 	if (shuttleInstallation != NULL)
 		shuttleInstallation->removeFromZone();
-
-	while (banks.size() > 0) {
-		ManagedReference<BankInstallation*> bank = banks.get(0);
-
-		bank->removeFromZone();
-
-		banks.drop(bank);
-	}
 }
