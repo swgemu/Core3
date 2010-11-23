@@ -59,7 +59,6 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class RangedStimPack extends StimPack {
-	protected float effectiveness;
 	protected float range;
 	protected float area;
 	protected float rangeMod;
@@ -67,7 +66,6 @@ class RangedStimPack extends StimPack {
 	public RangedStimPack() {
 		setLoggingName("RangedStimPack");
 		
-		effectiveness = 0;
 		area = 0;
 		range = 0;
 		rangeMod = 0;
@@ -77,7 +75,7 @@ class RangedStimPack extends StimPack {
 	public void updateCraftingValues(ManufactureSchematic schematic) {
 		CraftingValues craftingValues = schematic.getCraftingValues();
 		
-		effectiveness = craftingValues.getCurrentValue("power");
+		super.effectiveness = craftingValues.getCurrentValue("power");
 		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 		setUseCount(craftingValues.getCurrentValue("charges"));
 		
@@ -97,8 +95,8 @@ class RangedStimPack extends StimPack {
 	 */
 	@local
 	public void fillAttributeList(AttributeListMessage msg, PlayerCreature object) {	
-		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
-		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
+		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(super.effectiveness, 0));
+		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(super.effectiveness, 0));
 		msg.insertAttribute("examine_heal_range", Math.getPrecision(range, 0));
 		
 		if (isArea()) {
@@ -107,6 +105,31 @@ class RangedStimPack extends StimPack {
 		} else {
 			msg.insertAttribute("combat_healing_ability", super.medicineUseRequired);
 		}
+	}
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
+		if (selectedID != 20)
+			return 1;
+
+		if (player.getSkillMod("combat_healing_ability") < super.medicineUseRequired) {
+			player.sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
+			
+			return 0;
+		} else {
+			string command = "/healdamage "; 
+			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+			
+			return 0;
+		}
+
 	}
 	
 	/**
@@ -124,7 +147,7 @@ class RangedStimPack extends StimPack {
 		
 		RangedStimPackTemplate stimPackTemplate = (RangedStimPackTemplate) templateData;
 		
-		effectiveness = stimPackTemplate.getEffectiveness();
+		super.effectiveness = stimPackTemplate.getEffectiveness();
 		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 		area = stimPackTemplate.getArea();
 		range = stimPackTemplate.getRange();
@@ -156,7 +179,7 @@ class RangedStimPack extends StimPack {
 	}
 	
 	public float getEffectiveness() {
-		return effectiveness;
+		return super.effectiveness;
 	}
 	
 	public float getArea() {

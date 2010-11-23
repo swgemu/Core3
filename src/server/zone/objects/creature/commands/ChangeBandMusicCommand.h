@@ -45,7 +45,13 @@ which carries forward this exception.
 #ifndef CHANGEBANDMUSICCOMMAND_H_
 #define CHANGEBANDMUSICCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/Instrument.h"
+#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/professions/PerformanceManager.h"
 
 class ChangeBandMusicCommand : public QueueCommand {
 public:
@@ -62,6 +68,34 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		/*if (!creature->isPlayerCreature()) {
+			return GENERALERROR;
+		}
+
+		PlayerCreature* leader = (PlayerCreature*)creature;
+
+		if (!creature->isEntertaining()) {
+			leader->sendSystemMessage("performance", "flourish_not_performing");
+			return GENERALERROR;
+		}
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session == NULL) {
+			creature->sendSystemMessage("performance", "music_must_be_performing_self");
+			return GENERALERROR;
+		}
+
+		if (!session->isPlayingMusic()) {
+			creature->sendSystemMessage("performance", "music_must_be_performing_self");
+
+			return GENERALERROR;
+		}
+
+		ManagedReference<GroupObject*> group = creature->getGroup();*/
+
 
 		return SUCCESS;
 	}
