@@ -10,12 +10,14 @@
 
 
 #include "../MessageCallback.h"
-#include "server/zone/objects/player/PlayerCreature.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/packets/ui/VerifyPlayerNameResponseMessage.h"
+#include "server/zone/packets/ui/CreateTicketResponseMessage.h"
 
 class CreateTicketMessageCallback : public MessageCallback {
+	String playerName;
+	uint32 categoryId;
+	uint32 subCategoryId;
 
+	UnicodeString ticketBody;
 public:
 	CreateTicketMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
@@ -23,16 +25,16 @@ public:
 
 
 	void parse(Message* message) {
-		System::out << message->toStringData() << endl;
+		message->parseAscii(playerName);
+		categoryId = message->parseInt();
+		subCategoryId = message->parseInt();
+
+		message->parseUnicode(ticketBody);
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> playerClient = client->getPlayer();
-
-		if (playerClient == NULL)
-			return;
-
-		PlayerCreature* playerCreature = (PlayerCreature*) playerClient.get();
+		HolocronManager* holocronManager = server->getHolocronManager();
+		holocronManager->submitTicket(client, ticketBody);
 	}
 };
 

@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "managers/sui/SuiManager.h"
 
 #include "managers/name/NameManager.h"
+#include "managers/holocron/HolocronManager.h"
 #include "managers/professions/ProfessionManager.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
 
@@ -60,6 +61,7 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	zoneServer = server;
 
 	nameManager = NULL;
+	holocronManager = NULL;
 	suiManager = NULL;
 
 	objectController = NULL;
@@ -80,6 +82,11 @@ void ZoneProcessServerImplementation::finalize() {
 		nameManager = NULL;
 	}
 
+	if (holocronManager != NULL) {
+		delete holocronManager;
+		holocronManager = NULL;
+	}
+
 	if (suiManager != NULL) {
 		delete suiManager;
 		suiManager = NULL;
@@ -95,6 +102,7 @@ void ZoneProcessServerImplementation::initialize() {
 	zonePacketHandler->setLogging(false);
 
 	nameManager = new NameManager(_this);
+	holocronManager = new HolocronManager(_this);
 	suiManager = new SuiManager(_this);
 
 	objectController = new ObjectController(_this);

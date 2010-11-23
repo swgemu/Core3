@@ -8,14 +8,16 @@
 #ifndef CREATETICKETRESPONSEMESSAGE_H_
 #define CREATETICKETRESPONSEMESSAGE_H_
 
+#include "engine/engine.h"
 
 class CreateTicketResponseMessage : public BaseMessage {
 public:
-   CreateTicketResponseMessage(int returnCode) : BaseMessage() {
+   CreateTicketResponseMessage(int unknown = 0) : BaseMessage() {
 		insertShort(0x09);
 		insertInt(0x550A407A);  // CRC
 
-		insertInt(int returnCode);
+		insertInt(unknown);
+   }
 };
 
 #endif /* CREATETICKETRESPONSEMESSAGE_H_ */
