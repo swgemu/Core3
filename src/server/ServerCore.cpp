@@ -46,6 +46,8 @@ which carries forward this exception.
 
 #include "db/ServerDatabase.h"
 
+#include "db/MantisDatabase.h"
+
 #include "chat/ChatManager.h"
 
 #include "login/LoginServer.h"
@@ -85,6 +87,8 @@ void ServerCore::init() {
 
 	try {
 		database = new ServerDatabase(configManager);
+
+		mantisDatabase = new MantisDatabase(configManager);
 
 		String& orbaddr = configManager->getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr, 44434);
@@ -217,6 +221,11 @@ void ServerCore::shutdown() {
 	if (database != NULL) {
 		delete database;
 		database = NULL;
+	}
+
+	if (mantisDatabase != NULL) {
+		delete mantisDatabase;
+		mantisDatabase = NULL;
 	}
 
 	zoneServerRef = NULL;

@@ -240,6 +240,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
 		server/features/Features.cpp \
 		server/db/ServerDatabase.cpp \
+		server/db/MantisDatabase.cpp \
 		server/login/LoginProcessServerImplementation.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginServerImplementation.cpp \
@@ -265,6 +266,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
 		server/zone/managers/guild/GuildManagerImplementation.cpp \
 		server/zone/objects/guild/GuildMemberInfo.cpp \
+		server/zone/managers/holocron/HolocronManager.cpp \
 		server/zone/managers/name/NameManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/professions/ProfessionManager.cpp \
