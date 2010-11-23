@@ -194,6 +194,8 @@ class PlayerManager extends Observer implements Logger {
 	public native void createTutorialBuilding(PlayerCreature player);
 	public native void createSkippedTutorialBuilding(PlayerCreature player);
 	
+	public native int checkSpeedHackFirstTest(PlayerCreature player, float parsedSpeed);
+	
 	public native boolean existsName(final string name);
 	public native unsigned long getObjectID(final string name);
 	public native PlayerCreature getPlayer(final string name);

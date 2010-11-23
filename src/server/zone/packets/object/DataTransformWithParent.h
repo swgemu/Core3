@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "ObjectControllerMessageCallback.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 
 class DataTransformWithParent : public ObjectControllerMessage {
@@ -84,6 +85,7 @@ class DataTransformWithParentCallback : public MessageCallback {
 
 	float directionX, directionY, directionZ, directionW;
 	float positionX, positionZ, positionY;
+	float parsedSpeed;
 
 	ObjectControllerMessageCallback* objectControllerMain;
 public:
@@ -107,6 +109,8 @@ public:
 		positionX = message->parseFloat();
 		positionZ = message->parseFloat();
 		positionY = message->parseFloat();
+
+		parsedSpeed = message->parseFloat();
 	}
 
 	void run() {
@@ -188,6 +192,15 @@ public:
 		*/
 
 		object->setMovementCounter(movementCounter);
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		if (playerManager == NULL)
+			return;
+
+		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed) != 0)
+			return;
+
 		object->setDirection(directionW, directionX, directionY, directionZ);
 		object->setPosition(positionX, positionZ, positionY);
 		object->setClientLastMovementStamp(movementStamp);

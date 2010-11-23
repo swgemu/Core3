@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "ObjectControllerMessageCallback.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class DataTransform : public ObjectControllerMessage {
 public:
@@ -77,6 +78,7 @@ class DataTransformCallback : public MessageCallback {
 
 	float directionX, directionY, directionZ, directionW;
 	float positionX, positionZ, positionY;
+	float parsedSpeed;
 
 	ObjectControllerMessageCallback* objectControllerMain;
 public:
@@ -98,6 +100,10 @@ public:
 		positionX = message->parseFloat();
 		positionZ = message->parseFloat();
 		positionY = message->parseFloat();
+
+		parsedSpeed = message->parseFloat();
+
+		//client->info(message->toStringData(), true);
 	}
 
 	void run() {
@@ -106,7 +112,7 @@ public:
 		if (object == NULL)
 			return;
 
-		//object->info("received data transform");
+		//object->info("received data transform with parsed speed " + String::valueOf(parsedSpeed), true);
 
 		/*StringBuffer movementMsg;
 		movementMsg << "received movement update 0x:" << hex << movementCounter;
@@ -148,6 +154,15 @@ public:
 		object->info(slopeMsg.toString(), true);*/
 
 		object->setMovementCounter(movementCounter);
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		if (playerManager == NULL)
+			return;
+
+		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed) != 0)
+			return;
+
 		object->setDirection(directionW, directionX, directionY, directionZ);
 
 		/*StringBuffer degrees;

@@ -659,13 +659,28 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 		_implementation->createSkippedTutorialBuilding(player);
 }
 
-bool PlayerManager::existsName(const String& name) {
+int PlayerManager::checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 45);
+		method.addObjectParameter(player);
+		method.addFloatParameter(parsedSpeed);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->checkSpeedHackFirstTest(player, parsedSpeed);
+}
+
+bool PlayerManager::existsName(const String& name) {
+	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -679,7 +694,7 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 		method.addAsciiParameter(name);
 
 		return method.executeWithUnsignedLongReturn();
@@ -693,7 +708,7 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 		method.addAsciiParameter(name);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -707,7 +722,7 @@ void PlayerManager::updateAdminLevel(PlayerCreature* player, const String& targe
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetName);
 		method.addSignedIntParameter(adminLevel);
@@ -928,15 +943,18 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 46:
-		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
+		resp->insertSignedInt(checkSpeedHackFirstTest((PlayerCreature*) inv->getObjectParameter(), inv->getFloatParameter()));
 		break;
 	case 47:
-		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
+		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
 		break;
 	case 48:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
+		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
 		break;
 	case 49:
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
+		break;
+	case 50:
 		updateAdminLevel((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_updateAdminLevel__PlayerCreature_String_int_), inv->getSignedIntParameter());
 		break;
 	default:
@@ -1104,6 +1122,10 @@ void PlayerManagerAdapter::createTutorialBuilding(PlayerCreature* player) {
 
 void PlayerManagerAdapter::createSkippedTutorialBuilding(PlayerCreature* player) {
 	((PlayerManagerImplementation*) impl)->createSkippedTutorialBuilding(player);
+}
+
+int PlayerManagerAdapter::checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed) {
+	return ((PlayerManagerImplementation*) impl)->checkSpeedHackFirstTest(player, parsedSpeed);
 }
 
 bool PlayerManagerAdapter::existsName(const String& name) {
