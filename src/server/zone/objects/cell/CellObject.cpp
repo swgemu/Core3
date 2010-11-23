@@ -122,26 +122,13 @@ void CellObject::sendBaselinesTo(SceneObject* player) {
 		_implementation->sendBaselinesTo(player);
 }
 
-void CellObject::resetCurrentNumerOfPlayerItems() {
-	CellObjectImplementation* _implementation = (CellObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->resetCurrentNumerOfPlayerItems();
-}
-
 int CellObject::getCurrentNumerOfPlayerItems() {
 	CellObjectImplementation* _implementation = (CellObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -154,7 +141,7 @@ int CellObject::getCellNumber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -167,7 +154,7 @@ void CellObject::setCellNumber(int number) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 		method.addSignedIntParameter(number);
 
 		method.executeWithVoidReturn();
@@ -181,7 +168,7 @@ bool CellObject::isCellObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -279,28 +266,18 @@ CellObjectImplementation::CellObjectImplementation() {
 	currentNumberOfItems = 0;
 }
 
-void CellObjectImplementation::resetCurrentNumerOfPlayerItems() {
-	// server/zone/objects/cell/CellObject.idl(122):  		currentNumberOfItems = 0;
-	currentNumberOfItems = 0;
-}
-
-int CellObjectImplementation::getCurrentNumerOfPlayerItems() {
-	// server/zone/objects/cell/CellObject.idl(126):  		return currentNumberOfItems;
-	return currentNumberOfItems;
-}
-
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(130):  		return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(128):  		return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(134):  		cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(132):  		cellNumber = number;
 	cellNumber = number;
 }
 
 bool CellObjectImplementation::isCellObject() {
-	// server/zone/objects/cell/CellObject.idl(138):  		return true;
+	// server/zone/objects/cell/CellObject.idl(136):  		return true;
 	return true;
 }
 
@@ -334,18 +311,15 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 12:
-		resetCurrentNumerOfPlayerItems();
-		break;
-	case 13:
 		resp->insertSignedInt(getCurrentNumerOfPlayerItems());
 		break;
-	case 14:
+	case 13:
 		resp->insertSignedInt(getCellNumber());
 		break;
-	case 15:
+	case 14:
 		setCellNumber(inv->getSignedIntParameter());
 		break;
-	case 16:
+	case 15:
 		resp->insertBoolean(isCellObject());
 		break;
 	default:
@@ -377,10 +351,6 @@ void CellObjectAdapter::initializeTransientMembers() {
 
 void CellObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((CellObjectImplementation*) impl)->sendBaselinesTo(player);
-}
-
-void CellObjectAdapter::resetCurrentNumerOfPlayerItems() {
-	((CellObjectImplementation*) impl)->resetCurrentNumerOfPlayerItems();
 }
 
 int CellObjectAdapter::getCurrentNumerOfPlayerItems() {

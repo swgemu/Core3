@@ -105,8 +105,11 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 
 			clocker.release();
 
+		} catch (Exception& e) {
+			error(e.getMessage());
+			e.printStackTrace();
 		} catch (...) {
-			error("unknown exception in PlayerImplementation::doPeace()\n");
+			error("unknown exception in CombatManager::attemptPeace(CreatureObject* attacker)");
 		}
 
 	}

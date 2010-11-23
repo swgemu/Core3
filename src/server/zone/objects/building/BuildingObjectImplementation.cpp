@@ -109,7 +109,7 @@ void BuildingObjectImplementation::removeFromZone() {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
-		cell->resetCurrentNumerOfPlayerItems();
+		//cell->resetCurrentNumerOfPlayerItems();
 
 		while (cell->getContainerObjectsSize() > 0) {
 			ManagedReference<SceneObject*> obj = cell->getContainerObject(0);
@@ -118,10 +118,10 @@ void BuildingObjectImplementation::removeFromZone() {
 
 			cell->removeObject(obj);
 
-			VectorMap<uint64, ManagedReference<SceneObject*> >* cont = cell->getContainerObjects();
+			/*VectorMap<uint64, ManagedReference<SceneObject*> >* cont = cell->getContainerObjects();
 
 			if (cont->size() > 0)
-				cont->remove(0);
+				cont->remove(0);*/
 			//cont->drop(obj->getObjectID());
 		}
 
