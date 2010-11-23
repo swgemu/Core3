@@ -93,22 +93,6 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace installation {
-namespace bank {
-
-class BankInstallation;
-
-} // namespace bank
-} // namespace installation
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::installation::bank;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace installation {
 namespace shuttle {
 
 class ShuttleInstallation;
@@ -207,8 +191,6 @@ namespace region {
 class RegionImplementation : public ActiveAreaImplementation {
 protected:
 	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
-
-	SortedVector<ManagedReference<BankInstallation* > > banks;
 
 	ManagedReference<ShuttleInstallation* > shuttleInstallation;
 
