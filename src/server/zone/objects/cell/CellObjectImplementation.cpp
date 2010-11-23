@@ -94,16 +94,16 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 bool CellObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
 	Locker locker(_this);
 
-	bool count = false;
+	/*bool count = false;
 
 	if (!object->isTerminal() && !object->isCreatureObject() && !containerObjects.contains(object->getObjectID()))
-		count = true;
+		count = true;*/
 
 	bool ret = SceneObjectImplementation::addObject(object, containmentType, notifyClient);
 
-	if (count && ret) {
+	/*if (count && ret) {
 		++currentNumberOfItems;
-	}
+	}*/
 
 	return ret;
 }
@@ -113,10 +113,23 @@ bool CellObjectImplementation::removeObject(SceneObject* object, bool notifyClie
 
 	bool ret = SceneObjectImplementation::removeObject(object, notifyClient);
 
-	if (ret && !object->isTerminal() && !object->isCreatureObject()) {
+	/*if (ret && !object->isTerminal() && !object->isCreatureObject()) {
 		if (currentNumberOfItems > 0)
 			--currentNumberOfItems;
-	}
+	}*/
 
 	return ret;
+}
+
+int CellObjectImplementation::getCurrentNumerOfPlayerItems() {
+	int count = 0;
+
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		ManagedReference<SceneObject*> containerObject = containerObjects.get(j);
+
+		if (!containerObject->isCreatureObject() && !containerObject->isTerminal())
+			++count;
+	}
+
+	return count;
 }

@@ -62,8 +62,6 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void resetCurrentNumerOfPlayerItems();
-
 	int getCurrentNumerOfPlayerItems();
 
 	int getCellNumber();
@@ -120,8 +118,6 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
-
-	void resetCurrentNumerOfPlayerItems();
 
 	int getCurrentNumerOfPlayerItems();
 
@@ -181,8 +177,6 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
-
-	void resetCurrentNumerOfPlayerItems();
 
 	int getCurrentNumerOfPlayerItems();
 

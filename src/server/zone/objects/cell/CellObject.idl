@@ -118,13 +118,11 @@ class CellObject extends SceneObject {
 	
 	public native void sendBaselinesTo(SceneObject player);
 	
-	public void resetCurrentNumerOfPlayerItems() {
+	/*public void resetCurrentNumerOfPlayerItems() {
 		currentNumberOfItems = 0;
-	}
+	}*/
 	
-	public int getCurrentNumerOfPlayerItems() {
-		return currentNumberOfItems;
-	}
+	public native int getCurrentNumerOfPlayerItems();
 	
 	public int getCellNumber() {
 		return cellNumber;
