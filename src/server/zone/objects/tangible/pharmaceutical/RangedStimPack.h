@@ -151,6 +151,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
@@ -195,8 +197,6 @@ namespace pharmaceutical {
 
 class RangedStimPackImplementation : public StimPackImplementation {
 protected:
-	float effectiveness;
-
 	float range;
 
 	float area;
@@ -211,6 +211,8 @@ public:
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -266,6 +268,8 @@ public:
 	RangedStimPackAdapter(RangedStimPackImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue);
 

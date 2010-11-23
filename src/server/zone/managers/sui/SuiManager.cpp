@@ -211,6 +211,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::MUSIC_CHANGE:
 		handleStartMusic(player, suiBox, cancel, args);
 		break;
+	case SuiWindowType::BAND_CHANGE:
+		handleStartMusic(player, suiBox, cancel, args);
+		break;
 	case SuiWindowType::SAMPLE_RADIOACTIVE_CONFIRM:
 		handleSampleRadioactiveConfirm(player, suiBox, cancel, args);
 		break;

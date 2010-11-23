@@ -266,6 +266,9 @@ public:
 		}
 
 		if (tendWound) {
+			if (attribute >= CreatureAttribute::MIND)
+				attribute = CreatureAttribute::UNKNOWN;
+
 			if (attribute == CreatureAttribute::UNKNOWN || creatureTarget->getWounds(attribute) == 0) {
 				if (creatureTarget == creature)
 					creature->sendSystemMessage("healing_response", "healing_response_67");
@@ -300,7 +303,7 @@ public:
 				playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)creatureTarget);
 			}
 
-			sendWoundMessage(creature, creatureTarget, attribute, healedWounds);
+			sendWoundMessage(creature, creatureTarget, attribute, -healedWounds);
 		}
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
