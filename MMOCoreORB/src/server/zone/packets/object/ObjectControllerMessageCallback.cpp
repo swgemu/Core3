@@ -29,7 +29,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 
 	if (objectControllerCallback == NULL) {
 		StringBuffer msg;
-		msg << "unregistered 0x" << hex << type << " object controller message received\n";
+		msg << "unregistered 0x" << hex << type << " object controller message received";
 
 		//SceneObject* player = client->getPlayer();
 		client->error(msg.toString());

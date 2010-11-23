@@ -125,7 +125,8 @@ void AiAgentImplementation::doRecovery() {
 	}
 
 	if (target != NULL && (!target->isInRange(_this, 128) || !target->isAttackableBy(_this))) {
-		CombatManager::instance()->attemptPeace(target);
+		//Locker clocker(target, _this);
+		CombatManager::instance()->attemptPeace(_this); //calling this on target will cause a deadlock, needs to be called in a new task
 		activateRecovery();
 		return;
 	}
@@ -140,29 +141,33 @@ void AiAgentImplementation::doRecovery() {
 
 	selectWeapon();
 
-	if (System::random(2) == 0) {
+	if (System::random(2) == 0 && npcTemplate != NULL) {
 		// do special attack
 		CreatureAttackMap* attackMap = npcTemplate->getAttacks();
 		int attackNum = attackMap->getRandomAttackNumber();
-		String args = attackMap->getArguments(attackNum);
 
-
-		if (!validateStateAttack(target, args)) {
-			// do default attack
+		if (attackNum < 0) {
 			enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
 		} else {
-			// queue special attack
-			unsigned int actionCRC = attackMap->getCommand(attackNum).hashCode();
-			enqueueCommand(actionCRC, 0, target->getObjectID(), args);
+			String args = attackMap->getArguments(attackNum);
 
-			if (System::random(4) == 0) {
-				// queue second special attack (rudimentary combo)
-				int secondAttackNum = attackMap->getRandomAttackNumber();
-				args = attackMap->getArguments(secondAttackNum);
+			if (!validateStateAttack(target, args)) {
+				// do default attack
+				enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
+			} else {
+				// queue special attack
+				unsigned int actionCRC = attackMap->getCommand(attackNum).hashCode();
+				enqueueCommand(actionCRC, 0, target->getObjectID(), args);
 
-				if (validateStateAttack(target, args) && secondAttackNum != attackNum) {
-					actionCRC = attackMap->getCommand(attackNum).hashCode();
-					enqueueCommand(actionCRC, 0, target->getObjectID(), args);
+				if (System::random(4) == 0) {
+					// queue second special attack (rudimentary combo)
+					int secondAttackNum = attackMap->getRandomAttackNumber();
+					args = attackMap->getArguments(secondAttackNum);
+
+					if (validateStateAttack(target, args) && secondAttackNum != attackNum) {
+						actionCRC = attackMap->getCommand(attackNum).hashCode();
+						enqueueCommand(actionCRC, 0, target->getObjectID(), args);
+					}
 				}
 			}
 		}
@@ -307,7 +312,8 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 		if (defender->isCreatureObject())
 			damageMap.dropDamage((CreatureObject*)defender);
 
-		defender->dropObserver(ObserverEventType::SPECIALATTACK, aiObserverMap.get(0));
+		if (aiObserverMap.size() > 0)
+			defender->dropObserver(ObserverEventType::SPECIALATTACK, aiObserverMap.get(0));
 	}
 
 	if (followObject == defender) {

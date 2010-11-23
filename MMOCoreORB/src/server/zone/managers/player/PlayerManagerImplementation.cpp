@@ -2087,6 +2087,8 @@ void PlayerManagerImplementation::updateAdminLevel(PlayerCreature* player, const
 		return;
 	}
 
+	Locker clocker(obj, player);
+
 	PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
 
 	ManagedReference<PlayerObject*> ghost = targetPlayer->getPlayerObject();

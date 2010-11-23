@@ -111,6 +111,11 @@ void BuffImplementation::activate(bool applyModifiers) {
 }
 
 void BuffImplementation::deactivate(bool removeModifiers) {
+	ManagedReference<CreatureObject*> strongRef = creature.get();
+
+	if (strongRef == NULL)
+		return;
+
 	try {
 		if (removeModifiers) {
 			removeAttributeModifiers();
