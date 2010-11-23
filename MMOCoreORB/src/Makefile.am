@@ -135,7 +135,6 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/region/Region.cpp \
 				server/zone/objects/installation/InstallationObject.cpp \
 				server/zone/objects/installation/shuttle/ShuttleInstallation.cpp \
-				server/zone/objects/installation/bank/BankInstallation.cpp \
 				server/zone/objects/installation/factory/FactoryObject.cpp \
 				server/zone/objects/installation/generator/GeneratorObject.cpp \
 				server/zone/objects/installation/harvester/HarvesterObject.cpp \
@@ -325,7 +324,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/sign/SignObjectImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
 		server/zone/objects/installation/shuttle/ShuttleInstallationImplementation.cpp \
-		server/zone/objects/installation/bank/BankInstallationImplementation.cpp \
 		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
 		server/zone/objects/tangible/component/ComponentImplementation.cpp \

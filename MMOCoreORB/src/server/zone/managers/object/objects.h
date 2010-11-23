@@ -46,7 +46,6 @@
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
-#include "server/zone/objects/installation/bank/BankInstallation.h"
 #include "server/zone/objects/installation/generator/GeneratorObject.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/tangible/component/Component.h"

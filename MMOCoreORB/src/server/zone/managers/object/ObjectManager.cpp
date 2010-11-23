@@ -163,7 +163,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<InstallationObject>(SceneObject::INSTALLATION);
 	objectFactory.registerObject<InstallationObject>(SceneObject::GARAGEINSTALLATION);
 	objectFactory.registerObject<ShuttleInstallation>(SceneObject::SHUTTLEINSTALLATION);
-	objectFactory.registerObject<BankInstallation>(SceneObject::BANKINSTALLATION);
 	objectFactory.registerObject<HarvesterObject>(SceneObject::HARVESTER);
 	objectFactory.registerObject<FactoryObject>(SceneObject::FACTORY);
 	objectFactory.registerObject<GeneratorObject>(SceneObject::GENERATOR);

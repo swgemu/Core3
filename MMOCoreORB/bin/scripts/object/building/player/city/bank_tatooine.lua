@@ -49,10 +49,13 @@ object_building_player_city_bank_tatooine = object_building_player_city_shared_b
 	length = 4,
 	width = 4,
 	cityRankRequired = 2,
-	gameObjectType = 4104,
+	gameObjectType = 4096,
 	abilityRequired = "place_bank",
 	childObjects = {
-		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 0, z = 0, y = -1, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1}
+		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 0, z = 0, y = -1, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_bank.iff", x = -1, z = 0, y = -1, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_bank.iff", x = 0, z = 0, y = 1, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_bank.iff", x = 1, z = 0, y = -1, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1}
 	}
 }
 
