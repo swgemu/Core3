@@ -723,8 +723,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 	//lock();
 
 	StringBuffer query;
-	query << "SELECT parentid FROM staticobjects WHERE zoneid = " << planetid;
-	query << " AND file = 'object/cell/shared_cell.iff' GROUP BY parentid;";
+	query << "SELECT objectid FROM staticobjects WHERE type = 512 AND zoneid = " << planetid << ";";
 
 	try {
 		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
@@ -732,12 +731,12 @@ void StructureManagerImplementation::loadStaticBuildings() {
 		while (result->next()) {
 			BuildingObject* building = NULL;
 
-			uint64 parentId = result->getUnsignedLong(0);
+			uint64 objectId = result->getUnsignedLong(0);
 
-			building = loadStaticBuilding(parentId);
+			building = loadStaticBuilding(objectId);
 
 			if (building == NULL) {
-				error("Can not add building "+ String::valueOf(parentId) + ". BUILDING DOES NOT EXIST");
+				error("Can not add building "+ String::valueOf(objectId) + ". BUILDING DOES NOT EXIST");
 				continue;
 			}
 		}
@@ -855,6 +854,8 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 				loadStaticCells(buio);
 
 				buio->insertToZone(zone);
+
+				buio->createChildObjects();
 
 				buio->updateToDatabase();
 			}
