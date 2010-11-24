@@ -49,6 +49,8 @@ namespace server {
 					uint32 createReporterId(ZoneClientSession* client);
 
 					String getTokenValue(const String& token, const UnicodeString& report);
+					uint32 getReproducibilityFromString(const String& str);
+					uint32 getSeverityFromString(const String& str);
 				};
 
 			}
