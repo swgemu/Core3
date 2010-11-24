@@ -63,11 +63,8 @@ void HolocronManager::submitTicket(ZoneClientSession* client, const UnicodeStrin
 		uint32 bugTextId = (uint32) result->getLastAffectedRow();
 		uint32 reporterId = getReporterId(client);
 		String category = getTokenValue("Bug Type: ", ticketBody);
-		String severity = getTokenValue("Severity: ", ticketBody);
-		String reproducibility = getTokenValue("Repeatable: ", ticketBody);
-
-		uint32 sev = 50; //TODO: Determine severity based on string.
-		uint32 rep = 10; //TODO: Determine reproducibility based on string.
+		uint32 sev = getSeverityFromString(getTokenValue("Severity: ", ticketBody));
+		uint32 rep = getReproducibilityFromString(getTokenValue("Repeatable: ", ticketBody));
 
 		Database::escapeString(category);
 
@@ -134,4 +131,23 @@ String HolocronManager::getTokenValue(const String& token, const UnicodeString& 
 	int fidx = report.indexOf("\n", iidx);
 
 	return report.subString(iidx + 10, fidx).toString();
+}
+
+uint32 HolocronManager::getSeverityFromString(const String& str) {
+	if (str == "Causes Crash") {
+		return 70;
+	} else if (str == "Can bypass") {
+		return 60;
+	} else if (str == "Cannot be bypassed") {
+		return 80;
+	} else {
+		return 50; //Unknown
+	}
+}
+uint32 HolocronManager::getReproducibilityFromString(const String& str) {
+	if (str == "Yes") {
+		return 10;
+	} else {
+		return 90;
+	}
 }
