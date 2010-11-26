@@ -1002,6 +1002,14 @@ void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod,
 
 	speedMultiplierMod = newMultiplierMod;
 
+	int bufferSize = speedMultiplierModChanges.size();
+
+	if (bufferSize > 3) {
+		speedMultiplierModChanges.remove(0);
+	}
+
+	speedMultiplierModChanges.add(SpeedModChange(speedMultiplierMod));
+
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
 		dcreo4->updateSpeedMultiplierMod();

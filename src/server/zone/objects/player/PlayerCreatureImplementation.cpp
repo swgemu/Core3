@@ -135,6 +135,8 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	if (hasState(CreatureState::RIDINGMOUNT) && parent == NULL)
 		clearState(CreatureState::RIDINGMOUNT);
 
+	speedMultiplierModChanges.removeAll();
+
 	activateRecovery();
 }
 

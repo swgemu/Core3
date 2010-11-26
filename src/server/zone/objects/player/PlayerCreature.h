@@ -263,6 +263,18 @@ using namespace server::zone::objects::creature::professions;
 
 namespace server {
 namespace zone {
+namespace packets {
+
+class MessageCallback;
+
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace structure {
 
@@ -286,6 +298,8 @@ using namespace server::zone::objects::structure;
 #include "server/zone/objects/player/badges/Badges.h"
 
 #include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/LastMovementUpdatesBuffer.h"
 
 #include "system/lang/Time.h"
 
@@ -574,6 +588,8 @@ public:
 
 	bool isInvisible();
 
+	LastMovementUpdatesBuffer* getLastMovementUpdates();
+
 	void setInvisible(bool invis);
 
 	BuildingObject* getDeclaredResidence();
@@ -690,6 +706,8 @@ protected:
 	int centeredBonus;
 
 	TradeContainer tradeContainer;
+
+	LastMovementUpdatesBuffer lastMovementUpdates;
 
 public:
 	static const int ONLINE = 1;
@@ -957,6 +975,8 @@ public:
 	void setLastCraftingToolUsed(CraftingTool* tool);
 
 	bool isInvisible();
+
+	LastMovementUpdatesBuffer* getLastMovementUpdates();
 
 	void setInvisible(bool invis);
 
