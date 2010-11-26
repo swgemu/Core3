@@ -217,6 +217,8 @@ using namespace server::zone::objects::tangible::weapon;
 
 #include "server/zone/objects/creature/CreatureState.h"
 
+#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
+
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 
 #include "server/zone/objects/creature/buffs/BuffList.h"
@@ -594,6 +596,8 @@ public:
 
 	float getSpeedMultiplierMod();
 
+	SpeedMultiplierModChanges* getSpeedMultiplierModChanges();
+
 	float getRunSpeed();
 
 	float getWalkSpeed();
@@ -797,6 +801,8 @@ protected:
 
 	float speedMultiplierBase;
 
+	SpeedMultiplierModChanges speedMultiplierModChanges;
+
 	float speedMultiplierMod;
 
 	float runSpeed;
@@ -938,7 +944,7 @@ public:
 
 	void setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
-	void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient = true);
+	virtual void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient = true);
 
 	void setRunSpeed(float newSpeed, bool notifyClient = true);
 
@@ -1227,6 +1233,8 @@ public:
 	float getSpeedMultiplierBase();
 
 	float getSpeedMultiplierMod();
+
+	SpeedMultiplierModChanges* getSpeedMultiplierModChanges();
 
 	float getRunSpeed();
 
