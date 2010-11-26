@@ -573,7 +573,7 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 
 	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
 	tutorial->createCellObjects();
-	tutorial->setStaticBuilding(false);
+	tutorial->setStaticObject(false);
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
@@ -608,7 +608,7 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* 
 
 	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
 	tutorial->createCellObjects();
-	tutorial->setStaticBuilding(false);
+	tutorial->setStaticObject(false);
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
@@ -2139,27 +2139,41 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 	if (parsedSpeed > maxAllowedSpeed * 1.1f) {
 		//float delta = abs(parsedSpeed - maxAllowedSpeed);
 
-		for (int i = 0; i < changeBuffer->size(); ++i) {
-			SpeedModChange* change = &changeBuffer->get(i);
-			Time timeStamp = change->getTimeStamp();
+		if (changeBuffer->size() == 0) { // no speed changes
+			player->teleport(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID());
 
-			//we check for last speed changes and account for 1 second lag for the client to start lowering the speed
-			if (timeStamp.miliDifference() > 1000) { // we purge the ones older than 1 second
-				changeBuffer->remove(i);
-
-				--i;
-
-				continue;
-			}
-
-			float oldSpeedMod = change->getNewSpeed();
-
-			if (allowedSpeedBase * oldSpeedMod >= parsedSpeed) {
-				return 0; // no hack detected
-			}
+			return 1;
 		}
 
-		player->info("max allowed speed should be " + String::valueOf(allowedSpeedMod * allowedSpeedBase), true);
+		SpeedModChange* firstChange = &changeBuffer->get(changeBuffer->size() - 1);
+		Time* timeStamp = &firstChange->getTimeStamp();
+
+		if (timeStamp->miliDifference() > 2000) { // we already should have lowered the speed, 2 seconds lag
+			player->teleport(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID());
+
+			return 1;
+		}
+
+		for (int i = 0; i < changeBuffer->size() - 1; ++i) {
+			SpeedModChange* change = &changeBuffer->get(i);
+			//Time timeStamp = change->getTimeStamp();
+
+			float oldSpeedMod = change->getNewSpeed();
+			float allowed = allowedSpeedBase * oldSpeedMod;
+
+			if (allowed >= parsedSpeed) {
+				return 0; // no hack detected
+			}
+
+			if (allowed > maxAllowedSpeed)
+				maxAllowedSpeed = allowed;
+		}
+
+		StringBuffer msg;
+		msg << "max allowed speed should be " << maxAllowedSpeed;
+		msg << " changeBufferSize: " << changeBuffer->size();
+
+		player->info(msg.toString(), true);
 
 		player->teleport(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID());
 

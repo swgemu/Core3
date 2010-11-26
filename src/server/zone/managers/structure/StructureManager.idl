@@ -90,7 +90,7 @@ class StructureManager extends ManagedService implements Logger {
 	private native void loadStaticGamblingTerminals();
 	private native void loadStaticGamblingTerminals(int iff);
 	private native void loadStaticGarages();
-	private native BuildingObject loadStaticBuilding(unsigned long oid);
+	private native SceneObject loadStaticBuilding(unsigned long oid);
 	private native void loadStaticCells(BuildingObject building);
 	
 	//PUBLIC METHODS

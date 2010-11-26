@@ -67,6 +67,13 @@ class CellObject extends SceneObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+	
+	/**
 	 * Sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the container objects }

@@ -46,6 +46,8 @@ void HolocronManager::sendRequestCategoriesResponseTo(ZoneClientSession* client)
 }
 
 void HolocronManager::submitTicket(ZoneClientSession* client, const UnicodeString& ticketBody) {
+	return; // disabled for now
+
 
 	String sanitizedBody(ticketBody.toString());
 	Database::escapeString(sanitizedBody);
