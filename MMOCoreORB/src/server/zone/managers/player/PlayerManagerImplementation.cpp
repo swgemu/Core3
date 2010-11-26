@@ -2121,6 +2121,11 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 	float allowedSpeedMod = player->getSpeedMultiplierMod();
 	float allowedSpeedBase = player->getRunSpeed();
 	ManagedReference<SceneObject*> parent = player->getParent();
+	SpeedMultiplierModChanges* changeBuffer = player->getSpeedMultiplierModChanges();
+	Vector<Reference<MessageCallback*> >* lastMovementUpdates = player->getLastMovementUpdates();
+
+	/*if (lastMovementUpdates->size() < 5)
+		return 0;*/
 
 	if (parent != NULL && parent->isVehicleObject()) {
 		VehicleObject* vehicle = (VehicleObject*) parent.get();
@@ -2132,11 +2137,36 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
 
 	if (parsedSpeed > maxAllowedSpeed * 1.1f) {
+		//float delta = abs(parsedSpeed - maxAllowedSpeed);
+
+		for (int i = 0; i < changeBuffer->size(); ++i) {
+			SpeedModChange* change = &changeBuffer->get(i);
+			Time timeStamp = change->getTimeStamp();
+
+			//we check for last speed changes and account for 1 second lag for the client to start lowering the speed
+			if (timeStamp.miliDifference() > 1000) { // we purge the ones older than 1 second
+				changeBuffer->remove(i);
+
+				--i;
+
+				continue;
+			}
+
+			float oldSpeedMod = change->getNewSpeed();
+
+			if (allowedSpeedBase * oldSpeedMod >= parsedSpeed) {
+				return 0; // no hack detected
+			}
+		}
+
 		player->info("max allowed speed should be " + String::valueOf(allowedSpeedMod * allowedSpeedBase), true);
 
 		player->teleport(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID());
+
 		return 1;
 	}
+
+	//lastMovementUpdates->removeAll();
 
 	return 0;
 }

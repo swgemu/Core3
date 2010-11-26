@@ -173,6 +173,12 @@ public:
 		object->setPosition(positionX, positionZ, positionY);
 		object->setClientLastMovementStamp(movementStamp);
 
+		/*Vector<Reference<MessageCallback*> >* updates = object->getLastMovementUpdates();
+
+		if (updates->size() > 5)
+			updates->remove(0);
+
+		updates->add(this);*/
 
 		/*StringBuffer posMsg;
 		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;

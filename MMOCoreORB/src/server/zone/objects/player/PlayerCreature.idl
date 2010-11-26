@@ -74,9 +74,11 @@ import system.lang.ref.Reference;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.player.TradeContainer;
+include server.zone.objects.player.LastMovementUpdatesBuffer;
 import server.zone.objects.area.ActiveArea;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.professions.SkillBox;
+import server.zone.packets.MessageCallback;
 import server.zone.objects.structure.StructureObject;
 
 class PlayerCreature extends CreatureObject {
@@ -164,6 +166,9 @@ class PlayerCreature extends CreatureObject {
 	
 	@dereferenced
 	protected TradeContainer tradeContainer;
+	
+	@dereferenced
+	protected transient LastMovementUpdatesBuffer lastMovementUpdates;
 	
 	//protected BankTerminal registeredBank;
 
@@ -789,6 +794,11 @@ class PlayerCreature extends CreatureObject {
 
 	public boolean isInvisible() {
 		return invisible;
+	}
+	
+	@local
+	public LastMovementUpdatesBuffer getLastMovementUpdates() {
+		return lastMovementUpdates;
 	}
 
 	public void setInvisible(boolean invis) {

@@ -205,6 +205,13 @@ public:
 		object->setPosition(positionX, positionZ, positionY);
 		object->setClientLastMovementStamp(movementStamp);
 
+		/*Vector<Reference<MessageCallback*> >* updates = object->getLastMovementUpdates();
+
+		if (updates->size() > 5)
+			updates->remove(0);
+
+		updates->add(this);*/
+
 		//TODO: add improved Speed Hack checks
 
 		if (objectControllerMain->getPriority() == 0x23)
