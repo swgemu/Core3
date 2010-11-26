@@ -50,6 +50,8 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void notifyLoadFromDatabase();
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
@@ -106,6 +108,8 @@ public:
 	CellObjectImplementation(DummyConstructorParameter* param);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void notifyLoadFromDatabase();
 
 	void sendContainerObjectsTo(SceneObject* player);
 
@@ -165,6 +169,8 @@ public:
 	CellObjectAdapter(CellObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void notifyLoadFromDatabase();
 
 	void sendContainerObjectsTo(SceneObject* player);
 

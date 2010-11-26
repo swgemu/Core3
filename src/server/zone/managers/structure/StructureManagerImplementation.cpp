@@ -729,7 +729,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 		while (result->next()) {
-			BuildingObject* building = NULL;
+			SceneObject* building = NULL;
 
 			uint64 objectId = result->getUnsignedLong(0);
 
@@ -803,17 +803,16 @@ void StructureManagerImplementation::loadStaticCells(BuildingObject * building) 
 	}
 }
 
-BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
-	BuildingObject* buio = NULL;
-
+SceneObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 	ZoneServer * zoneServer = zone->getZoneServer();
+	SceneObject* returnObject = NULL;
 
 	try {
 		ManagedWeakReference<SceneObject*> obj = zoneServer->getObject(oid);
 
-		if (obj != NULL && obj->isBuildingObject()) {
+		if (obj != NULL/* && obj->isBuildingObject()*/) {
 			info("loading building (" + String::valueOf(oid) + ") from static object db");
-			buio = (BuildingObject *) obj.get();
+			returnObject = obj.get();
 
 		} else {
 			StringBuffer query;
@@ -822,7 +821,6 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 
 			if (result->next()) {
 				info("loading building (" + String::valueOf(oid) + ") from mysql db");
-
 
 				String file = result->getString(3);
 
@@ -839,25 +837,32 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 
 				info("trying to create " + file);
 
-				buio = (BuildingObject*) server->getZoneServer()->createStaticObject(file.hashCode(), oid);
+				SceneObject* createdObject = server->getZoneServer()->createStaticObject(file.hashCode(), oid);
 
-				if (buio == NULL) {
+				//buio = dynamic_cast<SceneObject*>();
+
+				if (createdObject == NULL) {
 					error("could not create " + file);
 					return NULL;
 				}
 
-				buio->initializePosition(x, z, y);
+				createdObject->initializePosition(x, z, y);
 				//float fw, float fx, float fy, float fz
-				buio->setDirection(oW, oX, oY, oZ);
-				buio->setStaticBuilding(true);
+				createdObject->setDirection(oW, oX, oY, oZ);
+				createdObject->setStaticObject(true);
 
-				loadStaticCells(buio);
+				BuildingObject* buio = dynamic_cast<BuildingObject*>(createdObject);
 
-				buio->insertToZone(zone);
+				if (buio != NULL)
+					loadStaticCells(buio);
 
-				buio->createChildObjects();
+				createdObject->insertToZone(zone);
 
-				buio->updateToDatabase();
+				createdObject->createChildObjects();
+
+				createdObject->updateToDatabase();
+
+				returnObject = createdObject;
 			}
 
 			delete result;
@@ -868,7 +873,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuilding");
 	}
 
-	return buio;
+	return returnObject;
 }
 
 void StructureManagerImplementation::loadPlayerStructures() {

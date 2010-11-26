@@ -65,6 +65,9 @@ float HeightMap::getHeight(float x, float y) {
 	if (reader == NULL)
 		return 0;
 
+	if (isinf(x) || isnan(x) || isinf(y) || isnan(y))
+		return 0;
+
 	float retHeight = 0;
 
 	try {

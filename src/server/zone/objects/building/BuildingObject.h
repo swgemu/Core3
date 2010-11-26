@@ -192,8 +192,6 @@ public:
 
 	int getTotalCellNumber();
 
-	void setStaticBuilding(bool value);
-
 	int getCurrentNumerOfPlayerItems();
 
 	void onEnter(PlayerCreature* player);
@@ -309,8 +307,6 @@ public:
 
 	int getTotalCellNumber();
 
-	void setStaticBuilding(bool value);
-
 	int getCurrentNumerOfPlayerItems();
 
 	virtual void onEnter(PlayerCreature* player);
@@ -403,8 +399,6 @@ public:
 	CellObject* getCell(int idx);
 
 	int getTotalCellNumber();
-
-	void setStaticBuilding(bool value);
 
 	int getCurrentNumerOfPlayerItems();
 

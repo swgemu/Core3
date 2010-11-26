@@ -28,6 +28,28 @@ void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	containerType = 2;
 }
 
+void CellObjectImplementation::notifyLoadFromDatabase() {
+	/*for (int j = 0; j < containerObjects.size(); ++j) {
+		SceneObject* containerObject = containerObjects.get(j);
+		SceneObject* containerParent = containerObject->getParent();
+
+		if (containerParent == NULL) {
+			containerObject->setParent(_this);
+		} else if (containerParent != _this) {
+			if ((containerParent->hasObjectInSlottedContainer(containerObject))
+								|| (containerParent->hasObjectInContainer(containerObject->getObjectID()))) {
+				containerObjects.remove(j);
+
+				--j;
+
+				j = (j < -1) ? -1 : j;
+			}
+		}
+	}*/
+
+	SceneObjectImplementation::notifyLoadFromDatabase();
+}
+
 void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	//SceneObjectImplementation::sendContainerObjectsTo(player);
 	//info("sending cell containers", true);
@@ -35,8 +57,8 @@ void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		SceneObject* containerObject = containerObjects.get(j);
 
-		if (containerObject->getParent() == NULL)
-			containerObject->setParent(_this);
+		/*if (containerObject->getParent() == NULL)
+			containerObject->setParent(_this);*/
 
 		if (!containerObject->isInQuadTree() /*&& !containerObject->isPlayerCreature()*/)
 			containerObject->sendTo(player, true);

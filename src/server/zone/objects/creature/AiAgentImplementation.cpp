@@ -146,7 +146,7 @@ void AiAgentImplementation::doRecovery() {
 		CreatureAttackMap* attackMap = npcTemplate->getAttacks();
 		int attackNum = attackMap->getRandomAttackNumber();
 
-		if (attackNum < 0) {
+		if (attackNum < 0 || attackNum >= attackMap->size()) {
 			enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
 		} else {
 			String args = attackMap->getArguments(attackNum);

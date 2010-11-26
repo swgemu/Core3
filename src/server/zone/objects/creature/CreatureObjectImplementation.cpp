@@ -1004,7 +1004,7 @@ void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod,
 
 	int bufferSize = speedMultiplierModChanges.size();
 
-	if (bufferSize > 3) {
+	if (bufferSize > 5) {
 		speedMultiplierModChanges.remove(0);
 	}
 

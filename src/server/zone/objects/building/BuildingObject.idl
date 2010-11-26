@@ -193,10 +193,6 @@ class BuildingObject extends StructureObject implements QuadTree {
 		return totalCellNumber;
 	}
 	
-	public void setStaticBuilding(boolean value) {
-		super.staticObject = value;
-	}
-	
 	public native int getCurrentNumerOfPlayerItems() ;
 	
 	/**

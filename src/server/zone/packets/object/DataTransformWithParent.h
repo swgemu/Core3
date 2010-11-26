@@ -119,6 +119,13 @@ public:
 		if (object == NULL)
 			return;
 
+		if (isnan(positionX) || isnan(positionY) || isnan(positionZ))
+			return;
+
+		if (isinf(positionX) || isinf(positionY) || isinf(positionZ))
+			return;
+
+
 		if (positionX > 1024.0f || positionX < -1024.0f || positionY > 1024.0f || positionY < -1024.0f) {
 			StringBuffer msg;
 			msg << "position out of bounds cell:[" << parent << "]";

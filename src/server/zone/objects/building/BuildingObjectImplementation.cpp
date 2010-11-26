@@ -118,11 +118,17 @@ void BuildingObjectImplementation::removeFromZone() {
 
 			cell->removeObject(obj);
 
-			/*VectorMap<uint64, ManagedReference<SceneObject*> >* cont = cell->getContainerObjects();
+			VectorMap<uint64, ManagedReference<SceneObject*> >* cont = cell->getContainerObjects();
 
-			if (cont->size() > 0)
-				cont->remove(0);*/
 			//cont->drop(obj->getObjectID());
+
+			if (cont->size() > 0) {
+				SceneObject* test = cell->getContainerObject(0);
+
+				if (test == obj) {
+					cont->remove(0);
+				}
+			}
 		}
 
 		if (signObject != NULL) {
@@ -327,6 +333,10 @@ void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
 	Vector3 ejectionPoint = getEjectionPoint();
 	float x = ejectionPoint.getX();
 	float y = ejectionPoint.getY();
+
+	if (isinf(x) || isnan(x) || isinf(y) || isnan(y))
+		return;
+
 	float z = zone->getHeight(x, y);
 
 	//Locker _locker(zone);

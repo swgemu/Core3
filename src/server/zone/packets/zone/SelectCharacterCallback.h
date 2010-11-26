@@ -76,6 +76,11 @@ public:
 				uint64 savedParentID = player->getSavedParentID();
 
 				ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
+				ManagedReference<SceneObject*> currentParent = player->getParent();
+
+				if (currentParent != NULL && parent != NULL && parent->isCellObject() && currentParent->isCellObject()) {
+					parent = currentParent;
+				}
 
 				try {
 					zone = zoneServer->getZone(zoneID);
@@ -86,6 +91,8 @@ public:
 				if (parent != NULL && (parent->isCellObject() || parent->isVehicleObject())) {
 					try {
 						Locker clocker(parent, player);
+
+
 
 						if (parent->isCellObject())
 							parent->addObject(player, -1, false);

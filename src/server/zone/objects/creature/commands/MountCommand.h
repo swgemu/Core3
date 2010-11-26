@@ -117,11 +117,11 @@ public:
 			SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
 			int bufferSize = changeBuffer->size();
 
-			if (bufferSize > 3) {
+			if (bufferSize > 5) {
 				changeBuffer->remove(0);
 			}
 
-			changeBuffer->add(SpeedModChange(vehicle->getSpeedMultiplierMod()));
+			changeBuffer->add(SpeedModChange(vehicle->getRunSpeed() / creature->getRunSpeed()));
 
 			creature->updateToDatabase();
 
