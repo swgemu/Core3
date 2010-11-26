@@ -291,6 +291,8 @@ void ObjectManager::registerObjectTypes() {
 
 void ObjectManager::updateObjectVersion() {
 	ObjectVersionUpdateManager::instance()->run();
+
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
 }
 
 void ObjectManager::loadLastUsedObjectID() {

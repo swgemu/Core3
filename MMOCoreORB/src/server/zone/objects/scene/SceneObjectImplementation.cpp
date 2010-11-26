@@ -790,7 +790,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 	}
 
-	BuildingObject* building = (BuildingObject*) parent->getParent();
+	ManagedReference<BuildingObject*> building = (BuildingObject*) parent->getParent();
 
 	if (insert) {
 		info("insertToBuilding from updateZoneWithParent");
@@ -1131,6 +1131,8 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 	if (object->getParent() != _this && object->getParent() != NULL) {
 		ManagedReference<SceneObject*> objParent = object->getParent();
+
+		containerObjects.drop(object->getObjectID());
 
 		if (objParent->hasObjectInContainer(object->getObjectID()) || objParent->hasObjectInSlottedContainer(object)) {
 			error("trying to remove an object that is in a different object");

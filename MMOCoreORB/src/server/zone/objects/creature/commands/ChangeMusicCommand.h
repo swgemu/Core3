@@ -119,6 +119,8 @@ public:
 
 		if (!ghost->hasSkill(fullString)) {
 			creature->sendSystemMessage("performance", "music_lack_skill_song_self");
+
+			creature->stopEntertaining();
 			return GENERALERROR;
 		}
 

@@ -212,7 +212,7 @@ private:
 
 	void loadStaticGarages();
 
-	BuildingObject* loadStaticBuilding(unsigned long long oid);
+	SceneObject* loadStaticBuilding(unsigned long long oid);
 
 	void loadStaticCells(BuildingObject* building);
 

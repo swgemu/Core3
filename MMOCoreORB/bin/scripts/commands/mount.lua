@@ -28,7 +28,7 @@
 --programs or libraries that are released under the GNU LGPL and with
 --code included in the standard release of Core3 under the GNU LGPL
 --license (or modified versions of such code, with unchanged license).
---You may copy and distribute such a system following the terms of the
+--You may copy and distribute such a system following the terms of the1
 --GNU LGPL for Engine3 and the licenses of the other code concerned,
 --provided that you include the source code of that other code when
 --and as the GNU LGPL requires distribution of source code.
@@ -52,7 +52,7 @@ MountCommand = {
         failScriptHook = " ",
         cppHook = " ",
         failCppHook = " ",
-        defaultTime = 0,
+        defaultTime = 1,
         characterAbility = " ",
         tempScript = "player.skill.taming",
         targeType = "required",

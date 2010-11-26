@@ -92,7 +92,7 @@ public:
 			SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
 			int bufferSize = changeBuffer->size();
 
-			if (bufferSize > 3) {
+			if (bufferSize > 5) {
 				changeBuffer->remove(0);
 			}
 

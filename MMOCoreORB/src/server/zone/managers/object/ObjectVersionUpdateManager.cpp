@@ -14,7 +14,7 @@ ObjectVersionUpdateManager::ObjectVersionUpdateManager() : Logger("ObjectVersion
 }
 
 void ObjectVersionUpdateManager::run() {
-	/*ObjectDatabase* staticDatabase = ObjectDatabaseManager::instance()->loadDatabase("guilds", true);
+	/*ObjectDatabase* staticDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("playerstructures", true);
 
 	ObjectDatabaseIterator iterator(staticDatabase);
 
@@ -23,22 +23,26 @@ void ObjectVersionUpdateManager::run() {
 
 	ObjectInputStream objectData(2000);
 
-	while (iterator.getNextKeyAndValue(objectID, &objectData)) {
-		String guildAbbrev;
+	try {
 
-		if (!Serializable::getVariable<String>("guildAbbrev", &guildAbbrev, &objectData)) {
+		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+			uint32 gameObjectType = 0;
+
+			if (!Serializable::getVariable<uint32>("gameObjectType", &gameObjectType, &objectData)) {
+				objectData.reset();
+				continue;
+			}
+
+			if (gameObjectType == 4104) {
+				info("bank found", true);
+
+				ObjectManager::instance()->commitDestroyObjectToDB(objectID);
+			}
+
 			objectData.reset();
-			continue;
 		}
-
-		if (guildAbbrev == "cRus4") {
-			info("guild found");
-
-			ObjectManager::instance()->commitDestroyObjectToDB(objectID);
-		}
-
-		objectData.reset();
-	}
-
-	ObjectDatabaseManager::instance()->commitLocalTransaction();*/
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}*/
 }

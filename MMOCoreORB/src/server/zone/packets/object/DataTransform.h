@@ -112,6 +112,12 @@ public:
 		if (object == NULL)
 			return;
 
+		if (isnan(positionX) || isnan(positionY) || isnan(positionZ))
+			return;
+
+		if (isinf(positionX) || isinf(positionY) || isinf(positionZ))
+			return;
+
 		//object->info("received data transform with parsed speed " + String::valueOf(parsedSpeed), true);
 
 		/*StringBuffer movementMsg;

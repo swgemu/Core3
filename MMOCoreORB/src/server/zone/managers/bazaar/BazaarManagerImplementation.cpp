@@ -486,9 +486,11 @@ void BazaarManagerImplementation::refundAuction(AuctionItem* item) {
 	mess <<  "Your bid on " << item->getItemName() << " was retracted because the auction was cancelled by the owner.";
 	UnicodeString body(mess.toString());*/
 
-	int bankCredits = bidder->getBankCredits();
-	bidder->setBankCredits(bankCredits + item->getPrice());
-	bidder->sendSystemMessage(body);
+	if (bidder != NULL) {
+		int bankCredits = bidder->getBankCredits();
+		bidder->setBankCredits(bankCredits + item->getPrice());
+		bidder->sendSystemMessage(body);
+	}
 
 	cman->sendMail("auctioner", subject, body, item->getBidderName());
 }

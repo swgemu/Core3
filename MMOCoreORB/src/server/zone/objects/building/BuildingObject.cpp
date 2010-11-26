@@ -315,27 +315,13 @@ int BuildingObject::getTotalCellNumber() {
 		return _implementation->getTotalCellNumber();
 }
 
-void BuildingObject::setStaticBuilding(bool value) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 21);
-		method.addBooleanParameter(value);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setStaticBuilding(value);
-}
-
 int BuildingObject::getCurrentNumerOfPlayerItems() {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -348,7 +334,7 @@ void BuildingObject::onEnter(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -362,7 +348,7 @@ void BuildingObject::onExit(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -376,7 +362,7 @@ bool BuildingObject::isBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -389,7 +375,7 @@ bool BuildingObject::isMedicalBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -402,7 +388,7 @@ void BuildingObject::setSignObject(SignObject* sign) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(sign);
 
 		method.executeWithVoidReturn();
@@ -416,7 +402,7 @@ SignObject* BuildingObject::getSignObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 27);
 
 		return (SignObject*) method.executeWithObjectReturn();
 	} else
@@ -429,7 +415,7 @@ bool BuildingObject::isCityHallBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -442,7 +428,7 @@ void BuildingObject::setAccessFee(int fee) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 29);
 		method.addSignedIntParameter(fee);
 
 		method.executeWithVoidReturn();
@@ -456,7 +442,7 @@ int BuildingObject::getAccessFee() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -469,7 +455,7 @@ bool BuildingObject::isPublicStructure() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -482,7 +468,7 @@ void BuildingObject::setPublicStructure(bool privacy) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 32);
 		method.addBooleanParameter(privacy);
 
 		method.executeWithVoidReturn();
@@ -632,56 +618,51 @@ int BuildingObjectImplementation::getTotalCellNumber() {
 	return totalCellNumber;
 }
 
-void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(197):  		super.staticObject = value;
-	StructureObjectImplementation::staticObject = value;
-}
-
 void BuildingObjectImplementation::onExit(PlayerCreature* player) {
 }
 
 bool BuildingObjectImplementation::isBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(225):  		return true;
+	// server/zone/objects/building/BuildingObject.idl(221):  		return true;
 	return true;
 }
 
 bool BuildingObjectImplementation::isMedicalBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(229):  		return false;
+	// server/zone/objects/building/BuildingObject.idl(225):  		return false;
 	return false;
 }
 
 void BuildingObjectImplementation::setSignObject(SignObject* sign) {
-	// server/zone/objects/building/BuildingObject.idl(233):  		signObject = sign;
+	// server/zone/objects/building/BuildingObject.idl(229):  		signObject = sign;
 	signObject = sign;
 }
 
 SignObject* BuildingObjectImplementation::getSignObject() {
-	// server/zone/objects/building/BuildingObject.idl(237):  		return signObject;
+	// server/zone/objects/building/BuildingObject.idl(233):  		return signObject;
 	return signObject;
 }
 
 bool BuildingObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(241):  		return false;
+	// server/zone/objects/building/BuildingObject.idl(237):  		return false;
 	return false;
 }
 
 void BuildingObjectImplementation::setAccessFee(int fee) {
-	// server/zone/objects/building/BuildingObject.idl(245):  		accessFee = fee;
+	// server/zone/objects/building/BuildingObject.idl(241):  		accessFee = fee;
 	accessFee = fee;
 }
 
 int BuildingObjectImplementation::getAccessFee() {
-	// server/zone/objects/building/BuildingObject.idl(249):  		return accessFee;
+	// server/zone/objects/building/BuildingObject.idl(245):  		return accessFee;
 	return accessFee;
 }
 
 bool BuildingObjectImplementation::isPublicStructure() {
-	// server/zone/objects/building/BuildingObject.idl(253):  		return publicStructure;
+	// server/zone/objects/building/BuildingObject.idl(249):  		return publicStructure;
 	return publicStructure;
 }
 
 void BuildingObjectImplementation::setPublicStructure(bool privacy) {
-	// server/zone/objects/building/BuildingObject.idl(257):  		publicStructure = privacy;
+	// server/zone/objects/building/BuildingObject.idl(253):  		publicStructure = privacy;
 	publicStructure = privacy;
 }
 
@@ -742,42 +723,39 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertSignedInt(getTotalCellNumber());
 		break;
 	case 21:
-		setStaticBuilding(inv->getBooleanParameter());
-		break;
-	case 22:
 		resp->insertSignedInt(getCurrentNumerOfPlayerItems());
 		break;
-	case 23:
+	case 22:
 		onEnter((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 24:
+	case 23:
 		onExit((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 25:
+	case 24:
 		resp->insertBoolean(isBuildingObject());
 		break;
-	case 26:
+	case 25:
 		resp->insertBoolean(isMedicalBuildingObject());
 		break;
-	case 27:
+	case 26:
 		setSignObject((SignObject*) inv->getObjectParameter());
 		break;
-	case 28:
+	case 27:
 		resp->insertLong(getSignObject()->_getObjectID());
 		break;
-	case 29:
+	case 28:
 		resp->insertBoolean(isCityHallBuilding());
 		break;
-	case 30:
+	case 29:
 		setAccessFee(inv->getSignedIntParameter());
 		break;
-	case 31:
+	case 30:
 		resp->insertSignedInt(getAccessFee());
 		break;
-	case 32:
+	case 31:
 		resp->insertBoolean(isPublicStructure());
 		break;
-	case 33:
+	case 32:
 		setPublicStructure(inv->getBooleanParameter());
 		break;
 	default:
@@ -845,10 +823,6 @@ CellObject* BuildingObjectAdapter::getCell(int idx) {
 
 int BuildingObjectAdapter::getTotalCellNumber() {
 	return ((BuildingObjectImplementation*) impl)->getTotalCellNumber();
-}
-
-void BuildingObjectAdapter::setStaticBuilding(bool value) {
-	((BuildingObjectImplementation*) impl)->setStaticBuilding(value);
 }
 
 int BuildingObjectAdapter::getCurrentNumerOfPlayerItems() {
