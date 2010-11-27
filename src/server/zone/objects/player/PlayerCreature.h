@@ -301,6 +301,8 @@ using namespace server::zone::objects::structure;
 
 #include "server/zone/objects/player/LastMovementUpdatesBuffer.h"
 
+#include "server/zone/objects/player/ValidatedPosition.h"
+
 #include "system/lang/Time.h"
 
 #include "system/util/SortedVector.h"
@@ -318,6 +320,8 @@ using namespace server::zone::objects::structure;
 #include "engine/lua/LuaObject.h"
 
 #include "system/lang/ref/Reference.h"
+
+#include "engine/util/Vector3.h"
 
 namespace server {
 namespace zone {
@@ -361,6 +365,8 @@ public:
 	void activateRecovery();
 
 	void doRecovery();
+
+	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -422,6 +428,8 @@ public:
 
 	String getLastNpcConvStr();
 
+	ValidatedPosition* getLastValidatedPosition();
+
 	String getLastNpcConvMessStr();
 
 	String getLastNpcConvOption(int idx);
@@ -482,11 +490,17 @@ public:
 
 	unsigned int getAccountID();
 
+	bool isTeleporting();
+
 	ZoneClientSession* getClient();
 
 	byte getRaceID();
 
 	unsigned long long getSavedParentID();
+
+	unsigned long long getServerMovementTimeDelta();
+
+	Time* getServerMovementTimeStamp();
 
 	int getSavedZoneID();
 
@@ -500,6 +514,8 @@ public:
 
 	void setSkillPoints(int points);
 
+	void setTeleporting(bool val);
+
 	void addSkillPoints(int points);
 
 	void setClient(ZoneClientSession* cli);
@@ -511,6 +527,8 @@ public:
 	void setConversatingCreature(CreatureObject* creature);
 
 	void setClientLastMovementStamp(unsigned int stamp);
+
+	void updateServerLastMovementStamp();
 
 	void setOffline();
 
@@ -645,6 +663,12 @@ protected:
 
 	unsigned int clientLastMovementStamp;
 
+	Time serverLastMovementStamp;
+
+	bool teleporting;
+
+	ValidatedPosition lastValidatedPosition;
+
 	unsigned int accountID;
 
 	bool invisible;
@@ -750,6 +774,8 @@ public:
 
 	void doRecovery();
 
+	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
+
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
@@ -809,6 +835,8 @@ public:
 	void setLastNpcConvMessStr(const String& mess);
 
 	String getLastNpcConvStr();
+
+	ValidatedPosition* getLastValidatedPosition();
 
 	String getLastNpcConvMessStr();
 
@@ -870,11 +898,17 @@ public:
 
 	unsigned int getAccountID();
 
+	bool isTeleporting();
+
 	ZoneClientSession* getClient();
 
 	byte getRaceID();
 
 	unsigned long long getSavedParentID();
+
+	unsigned long long getServerMovementTimeDelta();
+
+	Time* getServerMovementTimeStamp();
 
 	int getSavedZoneID();
 
@@ -888,6 +922,8 @@ public:
 
 	void setSkillPoints(int points);
 
+	void setTeleporting(bool val);
+
 	void addSkillPoints(int points);
 
 	void setClient(ZoneClientSession* cli);
@@ -899,6 +935,8 @@ public:
 	void setConversatingCreature(CreatureObject* creature);
 
 	void setClientLastMovementStamp(unsigned int stamp);
+
+	void updateServerLastMovementStamp();
 
 	void setOffline();
 
@@ -1039,6 +1077,8 @@ public:
 
 	void doRecovery();
 
+	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void insertToBuilding(BuildingObject* building);
@@ -1155,11 +1195,15 @@ public:
 
 	unsigned int getAccountID();
 
+	bool isTeleporting();
+
 	ZoneClientSession* getClient();
 
 	byte getRaceID();
 
 	unsigned long long getSavedParentID();
+
+	unsigned long long getServerMovementTimeDelta();
 
 	int getSavedZoneID();
 
@@ -1173,6 +1217,8 @@ public:
 
 	void setSkillPoints(int points);
 
+	void setTeleporting(bool val);
+
 	void addSkillPoints(int points);
 
 	void setClient(ZoneClientSession* cli);
@@ -1184,6 +1230,8 @@ public:
 	void setConversatingCreature(CreatureObject* creature);
 
 	void setClientLastMovementStamp(unsigned int stamp);
+
+	void updateServerLastMovementStamp();
 
 	void setOffline();
 

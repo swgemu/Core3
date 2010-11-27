@@ -68,6 +68,8 @@ include server.zone.objects.tangible.DamageMap;
 import server.zone.objects.scene.Observer;
 import server.zone.objects.scene.Observable;
 import server.zone.objects.player.PlayerObject;
+include server.zone.objects.player.ValidatedPosition;
+import engine.util.Vector3;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -194,7 +196,9 @@ class PlayerManager extends Observer implements Logger {
 	public native void createTutorialBuilding(PlayerCreature player);
 	public native void createSkippedTutorialBuilding(PlayerCreature player);
 	
-	public native int checkSpeedHackFirstTest(PlayerCreature player, float parsedSpeed);
+	@local
+	public native int checkSpeedHackFirstTest(PlayerCreature player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
+	public native int checkSpeedHackSecondTest(PlayerCreature player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null);
 	
 	public native boolean existsName(final string name);
 	public native unsigned long getObjectID(final string name);

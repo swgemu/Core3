@@ -373,6 +373,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/city/CityHallObjectImplementation.cpp \
 		server/zone/objects/structure/StructurePermissionList.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
+		server/zone/objects/player/ValidatedPosition.cpp \
 		server/zone/objects/player/EntertainingSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
