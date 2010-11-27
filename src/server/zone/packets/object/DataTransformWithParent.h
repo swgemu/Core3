@@ -208,8 +208,7 @@ public:
 			return;
 
 		ValidatedPosition pos;
-		pos.setPosition(object->getPosition());
-		pos.setParent(object->getParentID());
+		pos.update(object);
 
 		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)
 			return;

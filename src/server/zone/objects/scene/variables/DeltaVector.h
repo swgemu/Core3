@@ -35,6 +35,21 @@ public:
 		addSerializableVariables();
 	}
 
+	DeltaVector(const DeltaVector& v) : Serializable() {
+		vector = v.vector;
+		updateCounter = v.updateCounter;
+	}
+
+	DeltaVector& operator=(const DeltaVector& v) {
+		if (this == &v)
+			return *this;
+
+		vector = v.vector;
+		updateCounter = v.updateCounter;
+
+		return *this;
+	}
+
 	inline void addSerializableVariables() {
 		addSerializableVariable("vector", &vector);
 		addSerializableVariable("updateCounter", &updateCounter);
