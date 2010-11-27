@@ -118,6 +118,9 @@ public:
 		if (isinf(positionX) || isinf(positionY) || isinf(positionZ))
 			return;
 
+		if (object->isTeleporting())
+			return;
+
 		//object->info("received data transform with parsed speed " + String::valueOf(parsedSpeed), true);
 
 		/*StringBuffer movementMsg;
@@ -166,7 +169,14 @@ public:
 		if (playerManager == NULL)
 			return;
 
-		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed) != 0)
+		ValidatedPosition pos;
+		pos.setPosition(object->getPosition());
+		pos.setParent(object->getParentID());
+
+		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)
+			return;
+
+		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, NULL) != 0)
 			return;
 
 		object->setDirection(directionW, directionX, directionY, directionZ);
@@ -178,6 +188,7 @@ public:
 
 		object->setPosition(positionX, positionZ, positionY);
 		object->setClientLastMovementStamp(movementStamp);
+		//object->updateServerLastMovementStamp();
 
 		/*Vector<Reference<MessageCallback*> >* updates = object->getLastMovementUpdates();
 

@@ -125,6 +125,8 @@ public:
 		if (isinf(positionX) || isinf(positionY) || isinf(positionZ))
 			return;
 
+		if (object->isTeleporting())
+			return;
 
 		if (positionX > 1024.0f || positionX < -1024.0f || positionY > 1024.0f || positionY < -1024.0f) {
 			StringBuffer msg;
@@ -205,12 +207,20 @@ public:
 		if (playerManager == NULL)
 			return;
 
-		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed) != 0)
+		ValidatedPosition pos;
+		pos.setPosition(object->getPosition());
+		pos.setParent(object->getParentID());
+
+		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)
+			return;
+
+		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, newParent) != 0)
 			return;
 
 		object->setDirection(directionW, directionX, directionY, directionZ);
 		object->setPosition(positionX, positionZ, positionY);
 		object->setClientLastMovementStamp(movementStamp);
+		//object->updateServerLastMovementStamp();
 
 		/*Vector<Reference<MessageCallback*> >* updates = object->getLastMovementUpdates();
 

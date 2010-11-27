@@ -80,6 +80,7 @@ which carries forward this exception.
 #include "packets/object/EmptyHopperCallback.h"
 #include "packets/object/MissionAcceptCallback.h"
 #include "packets/object/MissionAbortCallback.h"
+#include "packets/object/TeleportAckCallback.h"
 #include "packets/object/CraftingExperimentCallback.h"
 #include "packets/object/CraftingAddIngredientCallback.h"
 #include "packets/object/CraftingRemoveIngredientCallback.h"
@@ -188,6 +189,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
 	objectMessageControllerFactory->registerObject<DataTransformWithParentCallback>(0xF1);
 	objectMessageControllerFactory->registerObject<MissionListRequestCallback>(0xF5);
+	objectMessageControllerFactory->registerObject<TeleportAckCallback>(0x13F);
 	objectMessageControllerFactory->registerObject<ItemDropTradeCallback>(0x115);
 	objectMessageControllerFactory->registerObject<CommandQueueEnqueueCallback>(0x116);
 	objectMessageControllerFactory->registerObject<CommandQueueRemoveCallback>(0x117);

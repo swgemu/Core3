@@ -136,6 +136,9 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 		clearState(CreatureState::RIDINGMOUNT);
 
 	speedMultiplierModChanges.removeAll();
+	serverLastMovementStamp.updateToCurrentTime();
+
+	lastValidatedPosition.update(_this);
 
 	activateRecovery();
 }
@@ -177,6 +180,15 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 		group->sendTo(_this, true);
 
 	owner->resetPacketCheckupTime();
+}
+
+void PlayerCreatureImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
+	teleporting = true;
+
+	CreatureObjectImplementation::teleport(newPositionX, newPositionZ, newPositionY, parentID);
+
+	lastValidatedPosition.update(_this);
+	serverLastMovementStamp.updateToCurrentTime();
 }
 
 void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
