@@ -153,6 +153,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/tangible/DamageMap.h"
 
+#include "server/zone/objects/player/ValidatedPosition.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -162,6 +164,8 @@ using namespace server::zone::objects::player;
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/scene/Observer.h"
+
+#include "engine/util/Vector3.h"
 
 namespace server {
 namespace zone {
@@ -256,7 +260,9 @@ public:
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
 
-	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed);
+	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
+
+	int checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent = NULL);
 
 	bool existsName(const String& name);
 
@@ -398,7 +404,9 @@ public:
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
 
-	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed);
+	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
+
+	int checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent = NULL);
 
 	bool existsName(const String& name);
 
@@ -525,7 +533,7 @@ public:
 
 	void createSkippedTutorialBuilding(PlayerCreature* player);
 
-	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed);
+	int checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent);
 
 	bool existsName(const String& name);
 

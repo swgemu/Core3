@@ -659,7 +659,16 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 		_implementation->createSkippedTutorialBuilding(player);
 }
 
-int PlayerManager::checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed) {
+int PlayerManager::checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
+	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->checkSpeedHackFirstTest(player, parsedSpeed, teleportPosition, errorMultiplier);
+}
+
+int PlayerManager::checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -667,11 +676,15 @@ int PlayerManager::checkSpeedHackFirstTest(PlayerCreature* player, float parsedS
 
 		DistributedMethod method(this, 45);
 		method.addObjectParameter(player);
-		method.addFloatParameter(parsedSpeed);
+		method.addFloatParameter(newX);
+		method.addFloatParameter(newZ);
+		method.addFloatParameter(newY);
+		method.addUnsignedIntParameter(newStamp);
+		method.addObjectParameter(newParent);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->checkSpeedHackFirstTest(player, parsedSpeed);
+		return _implementation->checkSpeedHackSecondTest(player, newX, newZ, newY, newStamp, newParent);
 }
 
 bool PlayerManager::existsName(const String& name) {
@@ -943,7 +956,7 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 46:
-		resp->insertSignedInt(checkSpeedHackFirstTest((PlayerCreature*) inv->getObjectParameter(), inv->getFloatParameter()));
+		resp->insertSignedInt(checkSpeedHackSecondTest((PlayerCreature*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), (SceneObject*) inv->getObjectParameter()));
 		break;
 	case 47:
 		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
@@ -1124,8 +1137,8 @@ void PlayerManagerAdapter::createSkippedTutorialBuilding(PlayerCreature* player)
 	((PlayerManagerImplementation*) impl)->createSkippedTutorialBuilding(player);
 }
 
-int PlayerManagerAdapter::checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed) {
-	return ((PlayerManagerImplementation*) impl)->checkSpeedHackFirstTest(player, parsedSpeed);
+int PlayerManagerAdapter::checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent) {
+	return ((PlayerManagerImplementation*) impl)->checkSpeedHackSecondTest(player, newX, newZ, newY, newStamp, newParent);
 }
 
 bool PlayerManagerAdapter::existsName(const String& name) {

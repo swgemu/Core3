@@ -79,7 +79,9 @@ import server.zone.objects.area.ActiveArea;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.professions.SkillBox;
 import server.zone.packets.MessageCallback;
+import engine.util.Vector3;
 import server.zone.objects.structure.StructureObject;
+include server.zone.objects.player.ValidatedPosition;
 
 class PlayerCreature extends CreatureObject {
 	protected transient ZoneClientSession owner;
@@ -96,6 +98,12 @@ class PlayerCreature extends CreatureObject {
 	protected Time logoutTimeStamp;
 	
 	protected unsigned int clientLastMovementStamp;
+	@dereferenced
+	protected Time serverLastMovementStamp;
+	protected boolean teleporting;
+	
+	@dereferenced
+	protected ValidatedPosition lastValidatedPosition;
 	
 	protected unsigned int accountID;
 
@@ -206,6 +214,8 @@ class PlayerCreature extends CreatureObject {
 		
 		clientLastMovementStamp = 0;
 		
+		teleporting = false;
+		
 		super.pvpStatusBitmask = CreatureFlag.PLAYER;
 		
 		conversatingCreature = null;
@@ -257,7 +267,9 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void doRecovery();
 	
-		/**
+	public native void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
+	
+	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
 	 * @post { this object is locked, menuResponse is complete}
@@ -432,6 +444,11 @@ class PlayerCreature extends CreatureObject {
 	public string getLastNpcConvStr() {
 		return lastNpcConvo;
 	}
+	
+	@local
+	public ValidatedPosition getLastValidatedPosition() {
+		return lastValidatedPosition;
+	}
 
 	public string getLastNpcConvMessStr() {
 		return lastNpcConvoMessage;
@@ -553,6 +570,10 @@ class PlayerCreature extends CreatureObject {
 		return accountID;
 	}
 	
+	public boolean isTeleporting() {
+		return teleporting;
+	}
+	
 	public ZoneClientSession getClient() {
 		return owner;
 	}
@@ -563,6 +584,15 @@ class PlayerCreature extends CreatureObject {
 	
 	public unsigned long getSavedParentID() {
 		return savedParentID;
+	}
+	
+	public unsigned long getServerMovementTimeDelta() {
+		return serverLastMovementStamp.miliDifference();
+	}
+	
+	@local
+	public Time getServerMovementTimeStamp() {
+		return serverLastMovementStamp;
 	}
 	
 	public int getSavedZoneID() {
@@ -582,6 +612,10 @@ class PlayerCreature extends CreatureObject {
 	
 	public void setSkillPoints(int points) {
 		skillPoints = points;
+	}
+	
+	public void setTeleporting(boolean val) {
+		teleporting = val;
 	}
 	
 	public void addSkillPoints(int points) {
@@ -606,6 +640,10 @@ class PlayerCreature extends CreatureObject {
 	
 	public void setClientLastMovementStamp(unsigned int stamp) {
 		clientLastMovementStamp = stamp;
+	}
+	
+	public void updateServerLastMovementStamp() {
+		serverLastMovementStamp.updateToCurrentTime();
 	}
 	
 	public void setOffline() {

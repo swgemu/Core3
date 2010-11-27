@@ -829,17 +829,21 @@ void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ,
 	if (parentID != 0) {
 		ManagedReference<SceneObject*> newParent = zoneServer->getObject(parentID);
 
-		if (newParent == NULL)
+		if (newParent == NULL || !newParent->isCellObject())
 			return;
 
-		setPosition(newPositionX, newPositionZ, newPositionY);
-		updateZoneWithParent(newParent, false, false);
+		if (newPositionX != positionX || newPositionZ != positionZ || newPositionY != positionY) {
+			setPosition(newPositionX, newPositionZ, newPositionY);
+			updateZoneWithParent(newParent, false, false);
+		}
 
 		DataTransformWithParent* pack = new DataTransformWithParent(_this);
 		broadcastMessage(pack, true, false);
 	} else {
-		setPosition(newPositionX, newPositionZ, newPositionY);
-		updateZone(false, false);
+		if (newPositionX != positionX || newPositionZ != positionZ || newPositionY != positionY) {
+			setPosition(newPositionX, newPositionZ, newPositionY);
+			updateZone(false, false);
+		}
 
 		DataTransform* pack = new DataTransform(_this);
 		broadcastMessage(pack, true, false);
@@ -908,6 +912,8 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	}
 
 	zone->updateActiveAreas(_this);
+
+	teleport(positionX, positionZ, positionY, getParentID());
 }
 
 void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {

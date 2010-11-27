@@ -2117,12 +2117,14 @@ void PlayerManagerImplementation::updateAdminLevel(PlayerCreature* player, const
 	}
 }
 
-int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed) {
+int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
 	float allowedSpeedMod = player->getSpeedMultiplierMod();
 	float allowedSpeedBase = player->getRunSpeed();
 	ManagedReference<SceneObject*> parent = player->getParent();
 	SpeedMultiplierModChanges* changeBuffer = player->getSpeedMultiplierModChanges();
 	Vector<Reference<MessageCallback*> >* lastMovementUpdates = player->getLastMovementUpdates();
+	Vector3 teleportPoint = teleportPosition.getPosition();
+	uint64 teleportParentID = teleportPosition.getParent();
 
 	/*if (lastMovementUpdates->size() < 5)
 		return 0;*/
@@ -2136,11 +2138,15 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
 
-	if (parsedSpeed > maxAllowedSpeed * 1.1f) {
+	if (parsedSpeed > maxAllowedSpeed * errorMultiplier) {
 		//float delta = abs(parsedSpeed - maxAllowedSpeed);
 
 		if (changeBuffer->size() == 0) { // no speed changes
-			player->teleport(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID());
+			StringBuffer msg;
+			msg << "max allowed speed should be " << maxAllowedSpeed * errorMultiplier;
+			player->info(msg.toString(), true);
+
+			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
 			return 1;
 		}
@@ -2149,7 +2155,11 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 		Time* timeStamp = &firstChange->getTimeStamp();
 
 		if (timeStamp->miliDifference() > 2000) { // we already should have lowered the speed, 2 seconds lag
-			player->teleport(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID());
+			StringBuffer msg;
+			msg << "max allowed speed should be " << maxAllowedSpeed * errorMultiplier;
+			player->info(msg.toString(), true);
+
+			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
 			return 1;
 		}
@@ -2159,7 +2169,7 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 			//Time timeStamp = change->getTimeStamp();
 
 			float oldSpeedMod = change->getNewSpeed();
-			float allowed = allowedSpeedBase * oldSpeedMod;
+			float allowed = allowedSpeedBase * oldSpeedMod * errorMultiplier;
 
 			if (allowed >= parsedSpeed) {
 				return 0; // no hack detected
@@ -2175,7 +2185,7 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 
 		player->info(msg.toString(), true);
 
-		player->teleport(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID());
+		player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
 		return 1;
 	}
@@ -2183,4 +2193,79 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 	//lastMovementUpdates->removeAll();
 
 	return 0;
+}
+
+int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, uint32 newStamp, SceneObject* newParent) {
+	Vector3 newWorldPosition(newX, newY, newZ);
+
+	if (newParent != NULL) {
+		ManagedReference<SceneObject*> root = newParent->getRootParent();
+
+		if (!root->isBuildingObject())
+			return 1;
+
+		float length = Math::sqrt(newX * newX + newY * newY + newZ * newZ);
+		float angle = root->getDirection()->getRadians() + atan2(newX, newY);
+
+		newWorldPosition.set(root->getPositionX() + (sin(angle) * length), root->getPositionZ() + newZ, root->getPositionY() + (cos(angle) * length));
+	}
+
+	Vector3 currentWorldPosition = player->getWorldPosition();
+
+	uint32 stamp = player->getClientLastMovementStamp();
+
+	if (stamp > newStamp) {
+		//info("older stamp received", true);
+		return 1;
+	}
+
+	uint32 deltaTime = player->getServerMovementTimeDelta();//newStamp - stamp;
+
+	if (deltaTime < 1000) {
+		//info("time hasnt passed yet", true);
+		return 0;
+	}
+
+	ValidatedPosition* lastValidatedPosition = player->getLastValidatedPosition();
+
+	Vector3 lastValidatedWorldPosition = lastValidatedPosition->getWorldPosition(server);
+
+	//ignoring Z untill we have all heightmaps
+	float oldValidZ = lastValidatedWorldPosition.getZ();
+	float oldNewPosZ = newWorldPosition.getZ();
+
+	lastValidatedWorldPosition.setZ(0);
+	newWorldPosition.setZ(0);
+
+	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
+
+	if (dist < 1) {
+		//info("distance too small", true);
+		return 0;
+	}
+
+	float speed = dist / (float) deltaTime * 1000;
+
+	//lastValidatedPosition->set(newWorldPosition.getX(), oldNewPosZ, newWorldPosition.getY());
+
+	/*StringBuffer msg;
+	msg << "distancia recorreguda " << dist << " a una velocitat " << speed;
+	info(msg, true);*/
+
+	int ret = checkSpeedHackFirstTest(player, speed, *lastValidatedPosition, 1.5f);
+
+	if (ret == 0) {
+		lastValidatedPosition->setPosition(newX, newZ, newY);
+
+		if (newParent != NULL)
+			lastValidatedPosition->setParent(newParent->getObjectID());
+		else
+			lastValidatedPosition->setParent(0);
+
+		player->updateServerLastMovementStamp();
+	}
+
+	return ret;
+
+	//return 0;
 }
