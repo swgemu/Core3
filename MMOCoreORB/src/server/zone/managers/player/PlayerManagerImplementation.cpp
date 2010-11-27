@@ -2144,6 +2144,7 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 		if (changeBuffer->size() == 0) { // no speed changes
 			StringBuffer msg;
 			msg << "max allowed speed should be " << maxAllowedSpeed * errorMultiplier;
+			msg << " parsed " << parsedSpeed;
 			player->info(msg.toString(), true);
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
@@ -2157,6 +2158,7 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 		if (timeStamp->miliDifference() > 2000) { // we already should have lowered the speed, 2 seconds lag
 			StringBuffer msg;
 			msg << "max allowed speed should be " << maxAllowedSpeed * errorMultiplier;
+			msg << " parsed " << parsedSpeed;
 			player->info(msg.toString(), true);
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
@@ -2181,6 +2183,7 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 
 		StringBuffer msg;
 		msg << "max allowed speed should be " << maxAllowedSpeed;
+		msg << " parsed " << parsedSpeed;
 		msg << " changeBufferSize: " << changeBuffer->size();
 
 		player->info(msg.toString(), true);
@@ -2196,6 +2199,20 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 }
 
 int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, uint32 newStamp, SceneObject* newParent) {
+	uint32 deltaTime = player->getServerMovementTimeDelta();//newStamp - stamp;
+
+	if (deltaTime < 1000) {
+		//info("time hasnt passed yet", true);
+		return 0;
+	}
+
+	uint32 stamp = player->getClientLastMovementStamp();
+
+	if (stamp > newStamp) {
+		//info("older stamp received", true);
+		return 1;
+	}
+
 	Vector3 newWorldPosition(newX, newY, newZ);
 
 	if (newParent != NULL) {
@@ -2208,22 +2225,6 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player
 		float angle = root->getDirection()->getRadians() + atan2(newX, newY);
 
 		newWorldPosition.set(root->getPositionX() + (sin(angle) * length), root->getPositionZ() + newZ, root->getPositionY() + (cos(angle) * length));
-	}
-
-	Vector3 currentWorldPosition = player->getWorldPosition();
-
-	uint32 stamp = player->getClientLastMovementStamp();
-
-	if (stamp > newStamp) {
-		//info("older stamp received", true);
-		return 1;
-	}
-
-	uint32 deltaTime = player->getServerMovementTimeDelta();//newStamp - stamp;
-
-	if (deltaTime < 1000) {
-		//info("time hasnt passed yet", true);
-		return 0;
 	}
 
 	ValidatedPosition* lastValidatedPosition = player->getLastValidatedPosition();

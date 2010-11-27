@@ -35,6 +35,8 @@
 #include "server/zone/ZoneServer.h"
 #include "PatrolPoint.h"
 #include "AiObserver.h"
+#include "CreatureSetDefenderTask.h"
+
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
@@ -282,18 +284,30 @@ bool AiAgentImplementation::tryRetreat() {
 void AiAgentImplementation::setDefender(SceneObject* defender) {
 	CreatureObjectImplementation::setDefender(defender);
 
-	AiObserver* observer;
+	Reference<CreatureSetDefenderTask*> task;
+	ManagedReference<AiObserver*> observer = NULL;
+
 	if (aiObserverMap.size() == 0) {
 		observer = new AiObserver(_this);
 		ObjectManager::instance()->persistObject(observer, 1, "aiobservers");
 		aiObserverMap.put(observer);
 	} else {
 		observer = aiObserverMap.get(0);
-		for (int i = 0; i < defenderList.size(); ++i)
-			defenderList.get(i)->dropObserver(ObserverEventType::SPECIALATTACK, observer);
+
+		task = new CreatureSetDefenderTask(_this, defender, observer, true);
+
+		/*for (int i = 0; i < defenderList.size(); ++i)
+			defenderList.get(i)->dropObserver(ObserverEventType::SPECIALATTACK, observer);*/
 	}
 
-	defender->registerObserver(ObserverEventType::SPECIALATTACK, observer);
+	/*if (observer != NULL)
+			defender->registerObserver(ObserverEventType::SPECIALATTACK, observer);*/
+
+
+	if (task == NULL)
+		task = new CreatureSetDefenderTask(_this, defender, observer, false);
+
+	Core::getTaskManager()->executeTask(task);
 
 	setFollowObject(defender);
 

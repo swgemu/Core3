@@ -239,6 +239,7 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
+	objectManager->updateObjectVersion();
 	objectManager->loadStaticObjects();
 
 	bazaarManager = new BazaarManager(_this);
