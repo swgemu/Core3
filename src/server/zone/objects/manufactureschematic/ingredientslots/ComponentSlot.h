@@ -163,7 +163,7 @@ public:
 
 			} else {
 
-				if (incomingTano->getUseCount() >= needs) {
+				if (incomingTano->getUseCount() > needs) {
 
 					incomingTano->setUseCount(incomingTano->getUseCount() - needs, true);
 
