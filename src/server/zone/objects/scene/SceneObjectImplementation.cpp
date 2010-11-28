@@ -722,9 +722,19 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 
 	zone->updateActiveAreas(_this);
 
-	zoneLocker.release();
+	//zoneLocker.release();
 
-	notifySelfPositionUpdate();
+	zone->unlock();
+
+	try {
+		notifySelfPositionUpdate();
+	} catch (...) {
+
+	}
+
+	zone->wlock();
+
+	//notifySelfPositionUpdate();
 }
 
 void SceneObjectImplementation::notifySelfPositionUpdate() {
@@ -812,9 +822,17 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 	zone->updateActiveAreas(_this);
 
-	zoneLocker.release();
+	//zoneLocker.release();
 
-	notifySelfPositionUpdate();
+	zone->unlock();
+
+	try {
+		notifySelfPositionUpdate();
+	} catch (...) {
+
+	}
+
+	zone->wlock();
 }
 
 void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {

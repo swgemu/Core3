@@ -139,6 +139,8 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	serverLastMovementStamp.updateToCurrentTime();
 
 	lastValidatedPosition.update(_this);
+	movementCounter = 0;
+	clientLastMovementStamp = 0;
 
 	activateRecovery();
 }
@@ -189,6 +191,8 @@ void PlayerCreatureImplementation::teleport(float newPositionX, float newPositio
 
 	lastValidatedPosition.update(_this);
 	serverLastMovementStamp.updateToCurrentTime();
+	movementCounter = 0;
+	clientLastMovementStamp = 0;
 }
 
 void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
