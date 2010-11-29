@@ -605,7 +605,7 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 
 	newValue = MIN(newValue, maxValue);
 
-	if (currentValue <= 0 && isIncapacitated()) {
+	if (currentValue <= 0 && (isIncapacitated() || isDead())) {
 		if (newValue <= 0)
 			newValue = 1;
 

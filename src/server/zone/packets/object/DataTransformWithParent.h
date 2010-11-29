@@ -200,8 +200,6 @@ public:
 		object->info(posMsg.toString(), true);
 		*/
 
-		object->setMovementCounter(movementCounter);
-
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 		if (playerManager == NULL)
@@ -216,6 +214,7 @@ public:
 		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, newParent) != 0)
 			return;
 
+		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);
 		object->setPosition(positionX, positionZ, positionY);
 		object->setClientLastMovementStamp(movementStamp);
