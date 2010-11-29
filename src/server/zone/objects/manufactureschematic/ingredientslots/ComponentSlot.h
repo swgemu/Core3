@@ -243,6 +243,13 @@ public:
 		return contents.size() > 0;
 	}
 
+	inline TangibleObject* get() {
+		if(contents.size() < 1)
+			return NULL;
+		else
+			return contents.get(0);
+	}
+
 	inline uint64 getObjectID() {
 		if(contents.size() < 1)
 			return 0;
