@@ -1600,7 +1600,7 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 		if (meditateTask != NULL) {
 			creature->removePendingTask("meditate");
 			creature->sendSystemMessage("teraskasi", "med_end");
-			creature->setMoodString(meditateTask->getMoodString());
+			creature->setMood(creature->getMoodID(), true);
 			creature->clearState(CreatureState::ALERT, true);
 
 			if (meditateTask->isScheduled())

@@ -162,7 +162,7 @@ public:
 		slopeMsg << "dist:" << dist << " speed:" << speed * 1000.f << " deltaTime:" << deltaTime << " slope: " << slope << " angle:" << angle << " degrees:" << deg;
 		object->info(slopeMsg.toString(), true);*/
 
-		object->setMovementCounter(movementCounter);
+
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
@@ -178,6 +178,7 @@ public:
 		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, NULL) != 0)
 			return;
 
+		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);
 
 		/*StringBuffer degrees;
