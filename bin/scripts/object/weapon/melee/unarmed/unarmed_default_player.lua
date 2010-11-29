@@ -78,7 +78,8 @@ object_weapon_melee_unarmed_unarmed_default_player = object_weapon_melee_unarmed
 	speedModifiers = { "unarmed_speed" },
 	
 	-- carbine_damage, onehandmelee_damage, pistol_damage, rifle_damage, twohandmelee_damage, unarmed_damage
-	damageModifiers = { "unarmed_damage" },
+	-- unarmed_damage didn't work in pre-cu
+	damageModifiers = {  },
 	       
 	
 	-- The values below are the default values.  To be used for blue frog objects primarily
