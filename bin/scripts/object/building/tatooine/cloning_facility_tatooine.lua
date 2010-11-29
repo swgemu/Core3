@@ -46,6 +46,10 @@ object_building_tatooine_cloning_facility_tatooine = object_building_tatooine_sh
 	mapLocationsType1 = 5,
 	mapLocationsType2 = 0,
 	mapLocationsType3 = 0,
+	childObjects = {
+		{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = 1, z = -0.05, y = 2.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = 1, z = -0.05, y = -1.35, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 1, containmentType = -1}
+	},
 	spawningPoints = { 			
 			{ x = -16.6514, z = -4.29167, y = -10.4976, ow = 0.704753, ox = 0, oz = 0, oy = 0.709453, cellid = 4 }, 
 			{ x = -16.5965, z = -4.29167, y = -14.1652, ow = 0.692575, ox = 0, oz = 0, oy = 0.721346, cellid = 4 }, 
