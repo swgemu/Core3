@@ -42,7 +42,8 @@
 
 
 object_tangible_terminal_terminal_elevator_up = object_tangible_terminal_shared_terminal_elevator_up:new {
-
+	gameObjectType = 16403,
+	maxCondition = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_elevator_up, "object/tangible/terminal/terminal_elevator_up.iff")

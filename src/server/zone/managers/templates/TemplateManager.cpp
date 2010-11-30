@@ -61,7 +61,6 @@
 #include "server/zone/templates/tangible/DeedTemplate.h"
 #include "server/zone/templates/tangible/VehicleDeedTemplate.h"
 #include "server/zone/templates/tangible/MissionTerminalTemplate.h"
-#include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
@@ -180,7 +179,6 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<WoundPackTemplate>(SharedObjectTemplate::WOUNDPACK);
 	templateFactory.registerObject<StatePackTemplate>(SharedObjectTemplate::STATEPACK);
 	templateFactory.registerObject<ConsumableTemplate>(SharedObjectTemplate::CONSUMABLE);
-	templateFactory.registerObject<ElevatorTerminalTemplate>(SharedObjectTemplate::ELEVATORTERMINAL);
 	templateFactory.registerObject<InstrumentObjectTemplate>(SharedObjectTemplate::INSTRUMENT);
 	templateFactory.registerObject<CampKitTemplate>(SharedObjectTemplate::CAMPKIT);
 
@@ -316,7 +314,6 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("WOUNDPACK", SharedObjectTemplate::WOUNDPACK);
 	luaTemplatesInstance->setGlobalInt("STATEPACK", SharedObjectTemplate::STATEPACK);
 	luaTemplatesInstance->setGlobalInt("CONSUMABLE", SharedObjectTemplate::CONSUMABLE);
-	luaTemplatesInstance->setGlobalInt("ELEVATORTERMINAL", SharedObjectTemplate::ELEVATORTERMINAL);
 	luaTemplatesInstance->setGlobalInt("INSTRUMENT", SharedObjectTemplate::INSTRUMENT);
 	luaTemplatesInstance->setGlobalInt("CAMPKIT", SharedObjectTemplate::CAMPKIT);
 }

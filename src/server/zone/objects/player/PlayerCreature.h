@@ -614,6 +614,10 @@ public:
 
 	void setDeclaredResidence(BuildingObject* residence);
 
+	void setCloningFacility(BuildingObject* cloningfac);
+
+	BuildingObject* getCloningFacility();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -658,6 +662,8 @@ protected:
 	int onlineStatus;
 
 	ManagedWeakReference<BuildingObject* > declaredResidence;
+
+	ManagedWeakReference<BuildingObject* > cloningFacility;
 
 	Time logoutTimeStamp;
 
@@ -1022,6 +1028,10 @@ public:
 
 	void setDeclaredResidence(BuildingObject* residence);
 
+	void setCloningFacility(BuildingObject* cloningfac);
+
+	BuildingObject* getCloningFacility();
+
 	PlayerCreature* _this;
 
 	operator const PlayerCreature*();
@@ -1308,6 +1318,10 @@ public:
 	BuildingObject* getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
+
+	void setCloningFacility(BuildingObject* cloningfac);
+
+	BuildingObject* getCloningFacility();
 
 protected:
 	String _param0_sendExecuteConsoleCommand__String_;

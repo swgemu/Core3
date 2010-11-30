@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.objects.tangible.terminal.elevator;
 
 import server.zone.objects.tangible.terminal.Terminal;
+import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import system.util.VectorMap;
@@ -57,4 +58,6 @@ class CloningTerminal extends Terminal {
 	public CloningTerminal() {
 		Logger.setLoggingName("Cloning Terminal");
 	}
+	
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 }

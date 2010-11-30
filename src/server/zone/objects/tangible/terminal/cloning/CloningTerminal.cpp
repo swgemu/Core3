@@ -4,6 +4,8 @@
 
 #include "CloningTerminal.h"
 
+#include "server/zone/objects/tangible/TangibleObject.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -30,6 +32,21 @@ CloningTerminal::CloningTerminal(DummyConstructorParameter* param) : Terminal(pa
 CloningTerminal::~CloningTerminal() {
 }
 
+
+int CloningTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	CloningTerminalImplementation* _implementation = (CloningTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
 
 DistributedObjectServant* CloningTerminal::_getImplementation() {
 
@@ -112,7 +129,7 @@ void CloningTerminalImplementation::_serializationHelperMethod() {
 
 CloningTerminalImplementation::CloningTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/cloning/CloningTerminal.idl(58):  		Logger.setLoggingName("Cloning Terminal");
+	// server/zone/objects/tangible/terminal/cloning/CloningTerminal.idl(59):  		Logger.setLoggingName("Cloning Terminal");
 	Logger::setLoggingName("Cloning Terminal");
 }
 
@@ -127,11 +144,18 @@ Packet* CloningTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+int CloningTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((CloningTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 /*

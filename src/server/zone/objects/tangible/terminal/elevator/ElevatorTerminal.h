@@ -92,11 +92,13 @@ class ElevatorTerminal : public Terminal {
 public:
 	ElevatorTerminal();
 
-	void loadTemplateData(SharedObjectTemplate* templateData);
+	void notifyInsert(QuadTreeEntry* obj);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	bool isElevatorTerminal();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -128,25 +130,23 @@ namespace elevator {
 
 class ElevatorTerminalImplementation : public TerminalImplementation {
 protected:
-	float deltaZ;
+	ManagedReference<ElevatorTerminal* > elevatorUp;
+
+	ManagedReference<ElevatorTerminal* > elevatorDown;
 
 public:
 	ElevatorTerminalImplementation();
 
 	ElevatorTerminalImplementation(DummyConstructorParameter* param);
 
-	void loadTemplateData(SharedObjectTemplate* templateData);
+	void notifyInsert(QuadTreeEntry* obj);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-private:
-	void setDeltaZ(float dz);
+	bool isElevatorTerminal();
 
-	float getDeltaZ();
-
-public:
 	ElevatorTerminal* _this;
 
 	operator const ElevatorTerminal*();
@@ -189,6 +189,8 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	bool isElevatorTerminal();
 
 };
 
