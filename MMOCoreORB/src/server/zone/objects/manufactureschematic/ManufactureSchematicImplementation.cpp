@@ -220,10 +220,13 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 
 	ManagedReference<PlayerCreature* > playerCreature = (PlayerCreature*) player;
 
-	ManagedReference<CraftingTool* > craftingTool = playerCreature->getLastCraftingToolUsed();
+	if(parent != NULL && parent->isCraftingTool()) {
 
-	if(craftingTool != NULL)
-		craftingTool->synchronizedUIListenForSchematic(playerCreature);
+		ManagedReference<CraftingTool* > craftingTool = (CraftingTool*) parent.get();
+
+		if(craftingTool != NULL)
+			craftingTool->synchronizedUIListenForSchematic(playerCreature);
+	}
 }
 
 void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
