@@ -61,6 +61,8 @@ public:
 
 	SceneObject* getControlledObject();
 
+	bool isElevatorTerminal();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -107,6 +109,8 @@ public:
 	void setControlledObject(SceneObject* obj);
 
 	SceneObject* getControlledObject();
+
+	virtual bool isElevatorTerminal();
 
 	Terminal* _this;
 
@@ -156,6 +160,8 @@ public:
 	void setControlledObject(SceneObject* obj);
 
 	SceneObject* getControlledObject();
+
+	bool isElevatorTerminal();
 
 };
 

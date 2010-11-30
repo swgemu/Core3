@@ -54,16 +54,20 @@ import server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 
 class ElevatorTerminal extends Terminal {
-	protected float deltaZ;
+	protected ElevatorTerminal elevatorUp;
+	protected ElevatorTerminal elevatorDown;
 	
 	public ElevatorTerminal() {
-		Logger.setLoggingName("Elevator Terminal");
-		deltaZ = 0;
+		Logger.setLoggingName("ElevatorTerminal");
+		
+		elevatorUp = null;
+		elevatorDown = null;
 	}
 	
 	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+	public native void notifyInsert(QuadTreeEntry obj);
+		
+
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
 	
 	/**
@@ -74,19 +78,7 @@ class ElevatorTerminal extends Terminal {
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
-	/**
-	 * Sets how high/low to move the player.
-	 * @param dz The change in z-position relative to the player's current position.
-	 */
-	void setDeltaZ(float dz) {
-		deltaZ = dz;
-	}
-	
-	/**
-	 * Gets how high/low to move the player.
-	 * @return The change in z-position relative to the player's current position.
-	 */
-	float getDeltaZ() {
-		return deltaZ;
+	public boolean isElevatorTerminal() {
+		return true;
 	}
 }

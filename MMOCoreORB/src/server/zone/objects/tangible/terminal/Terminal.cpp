@@ -100,6 +100,19 @@ SceneObject* Terminal::getControlledObject() {
 		return _implementation->getControlledObject();
 }
 
+bool Terminal::isElevatorTerminal() {
+	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isElevatorTerminal();
+}
+
 DistributedObjectServant* Terminal::_getImplementation() {
 
 	_updated = true;
@@ -208,6 +221,11 @@ SceneObject* TerminalImplementation::getControlledObject() {
 	return controlledObject;
 }
 
+bool TerminalImplementation::isElevatorTerminal() {
+	// server/zone/objects/tangible/terminal/Terminal.idl(84):  		return false;
+	return false;
+}
+
 /*
  *	TerminalAdapter
  */
@@ -234,6 +252,9 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 10:
 		resp->insertLong(getControlledObject()->_getObjectID());
 		break;
+	case 11:
+		resp->insertBoolean(isElevatorTerminal());
+		break;
 	default:
 		return NULL;
 	}
@@ -259,6 +280,10 @@ void TerminalAdapter::setControlledObject(SceneObject* obj) {
 
 SceneObject* TerminalAdapter::getControlledObject() {
 	return ((TerminalImplementation*) impl)->getControlledObject();
+}
+
+bool TerminalAdapter::isElevatorTerminal() {
+	return ((TerminalImplementation*) impl)->isElevatorTerminal();
 }
 
 /*

@@ -94,6 +94,9 @@ class PlayerCreature extends CreatureObject {
 	@weakReference
 	protected BuildingObject declaredResidence;
 	
+	@weakReference
+	protected BuildingObject cloningFacility;
+	
 	@dereferenced
 	protected Time logoutTimeStamp;
 	
@@ -849,5 +852,13 @@ class PlayerCreature extends CreatureObject {
 	
 	public void setDeclaredResidence(BuildingObject residence) {
 		declaredResidence = residence;
+	}
+	
+	public void setCloningFacility(BuildingObject cloningfac) {
+		cloningFacility = cloningfac;
+	}
+	
+	public BuildingObject getCloningFacility() {
+		return cloningFacility;
 	}
 }
