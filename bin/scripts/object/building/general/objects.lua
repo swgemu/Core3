@@ -96,7 +96,7 @@ object_building_general_shared_aircar_general = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 929068141
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_aircar_general, "object/building/general/shared_aircar_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_aircar_general, "object/building/general/shared_aircar_general.iff")
 
 object_building_general_shared_arena_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -153,7 +153,7 @@ object_building_general_shared_arena_general = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 3257125986
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_arena_general, "object/building/general/shared_arena_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_arena_general, "object/building/general/shared_arena_general.iff")
 
 object_building_general_shared_arena_large_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -210,7 +210,7 @@ object_building_general_shared_arena_large_general = SharedBuildingObjectTemplat
 	clientObjectCRC = 3322084706
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_arena_large_general, "object/building/general/shared_arena_large_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_arena_large_general, "object/building/general/shared_arena_large_general.iff")
 
 object_building_general_shared_association_hall_civilian_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -267,7 +267,7 @@ object_building_general_shared_association_hall_civilian_general = SharedBuildin
 	clientObjectCRC = 3632219938
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_association_hall_civilian_general, "object/building/general/shared_association_hall_civilian_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_association_hall_civilian_general, "object/building/general/shared_association_hall_civilian_general.iff")
 
 object_building_general_shared_association_hall_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -324,7 +324,7 @@ object_building_general_shared_association_hall_general = SharedBuildingObjectTe
 	clientObjectCRC = 3960949370
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_association_hall_general, "object/building/general/shared_association_hall_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_association_hall_general, "object/building/general/shared_association_hall_general.iff")
 
 object_building_general_shared_bank_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -381,7 +381,7 @@ object_building_general_shared_bank_general = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 2650754817
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bank_general, "object/building/general/shared_bank_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bank_general, "object/building/general/shared_bank_general.iff")
 
 object_building_general_shared_bunker_allum_mine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -438,7 +438,7 @@ object_building_general_shared_bunker_allum_mine = SharedBuildingObjectTemplate:
 	clientObjectCRC = 599067335
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_allum_mine, "object/building/general/shared_bunker_allum_mine.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_allum_mine, "object/building/general/shared_bunker_allum_mine.iff")
 
 object_building_general_shared_bunker_blacksun_outpost_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -495,7 +495,7 @@ object_building_general_shared_bunker_blacksun_outpost_01 = SharedBuildingObject
 	clientObjectCRC = 1938342630
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_blacksun_outpost_01, "object/building/general/shared_bunker_blacksun_outpost_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_blacksun_outpost_01, "object/building/general/shared_bunker_blacksun_outpost_01.iff")
 
 object_building_general_shared_bunker_crimelord_retreat_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -552,7 +552,7 @@ object_building_general_shared_bunker_crimelord_retreat_01 = SharedBuildingObjec
 	clientObjectCRC = 3171223694
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_crimelord_retreat_01, "object/building/general/shared_bunker_crimelord_retreat_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_crimelord_retreat_01, "object/building/general/shared_bunker_crimelord_retreat_01.iff")
 
 object_building_general_shared_bunker_imperial_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -609,7 +609,7 @@ object_building_general_shared_bunker_imperial_01 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2982837298
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_01, "object/building/general/shared_bunker_imperial_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_01, "object/building/general/shared_bunker_imperial_01.iff")
 
 object_building_general_shared_bunker_imperial_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -666,7 +666,7 @@ object_building_general_shared_bunker_imperial_02 = SharedBuildingObjectTemplate
 	clientObjectCRC = 1792922789
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_02, "object/building/general/shared_bunker_imperial_02.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_02, "object/building/general/shared_bunker_imperial_02.iff")
 
 object_building_general_shared_bunker_imperial_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -723,7 +723,7 @@ object_building_general_shared_bunker_imperial_03 = SharedBuildingObjectTemplate
 	clientObjectCRC = 600879912
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_03, "object/building/general/shared_bunker_imperial_03.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_03, "object/building/general/shared_bunker_imperial_03.iff")
 
 object_building_general_shared_bunker_imperial_bunker_abandoned = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -780,7 +780,7 @@ object_building_general_shared_bunker_imperial_bunker_abandoned = SharedBuilding
 	clientObjectCRC = 990897798
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_bunker_abandoned, "object/building/general/shared_bunker_imperial_bunker_abandoned.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_bunker_abandoned, "object/building/general/shared_bunker_imperial_bunker_abandoned.iff")
 
 object_building_general_shared_bunker_imperial_deep_chasm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -837,7 +837,7 @@ object_building_general_shared_bunker_imperial_deep_chasm = SharedBuildingObject
 	clientObjectCRC = 2935243152
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_deep_chasm, "object/building/general/shared_bunker_imperial_deep_chasm.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_deep_chasm, "object/building/general/shared_bunker_imperial_deep_chasm.iff")
 
 object_building_general_shared_bunker_imperial_detainment_center_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -894,7 +894,7 @@ object_building_general_shared_bunker_imperial_detainment_center_01 = SharedBuil
 	clientObjectCRC = 1672354378
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_detainment_center_01, "object/building/general/shared_bunker_imperial_detainment_center_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_detainment_center_01, "object/building/general/shared_bunker_imperial_detainment_center_01.iff")
 
 object_building_general_shared_bunker_imperial_prison_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -951,7 +951,7 @@ object_building_general_shared_bunker_imperial_prison_01 = SharedBuildingObjectT
 	clientObjectCRC = 1661550307
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_prison_01, "object/building/general/shared_bunker_imperial_prison_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_prison_01, "object/building/general/shared_bunker_imperial_prison_01.iff")
 
 object_building_general_shared_bunker_imperial_weapons_research_facility_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1008,7 +1008,7 @@ object_building_general_shared_bunker_imperial_weapons_research_facility_01 = Sh
 	clientObjectCRC = 357299427
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_weapons_research_facility_01, "object/building/general/shared_bunker_imperial_weapons_research_facility_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_weapons_research_facility_01, "object/building/general/shared_bunker_imperial_weapons_research_facility_01.iff")
 
 object_building_general_shared_bunker_mad_bio = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1065,7 +1065,7 @@ object_building_general_shared_bunker_mad_bio = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 3223964695
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_mad_bio, "object/building/general/shared_bunker_mad_bio.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_mad_bio, "object/building/general/shared_bunker_mad_bio.iff")
 
 object_building_general_shared_bunker_rebel_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,7 +1122,7 @@ object_building_general_shared_bunker_rebel_01 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 102885585
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_rebel_01, "object/building/general/shared_bunker_rebel_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_01, "object/building/general/shared_bunker_rebel_01.iff")
 
 object_building_general_shared_bunker_rebel_deep_chasm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1179,7 +1179,7 @@ object_building_general_shared_bunker_rebel_deep_chasm = SharedBuildingObjectTem
 	clientObjectCRC = 3695355168
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_rebel_deep_chasm, "object/building/general/shared_bunker_rebel_deep_chasm.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_deep_chasm, "object/building/general/shared_bunker_rebel_deep_chasm.iff")
 
 object_building_general_shared_bunker_rebel_spynet = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1236,7 +1236,7 @@ object_building_general_shared_bunker_rebel_spynet = SharedBuildingObjectTemplat
 	clientObjectCRC = 4133162154
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_rebel_spynet, "object/building/general/shared_bunker_rebel_spynet.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_spynet, "object/building/general/shared_bunker_rebel_spynet.iff")
 
 object_building_general_shared_bunker_rebel_weapons_depot = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1293,7 +1293,7 @@ object_building_general_shared_bunker_rebel_weapons_depot = SharedBuildingObject
 	clientObjectCRC = 2551461683
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_rebel_weapons_depot, "object/building/general/shared_bunker_rebel_weapons_depot.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_weapons_depot, "object/building/general/shared_bunker_rebel_weapons_depot.iff")
 
 object_building_general_shared_bunker_research_facility_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1350,7 +1350,7 @@ object_building_general_shared_bunker_research_facility_01 = SharedBuildingObjec
 	clientObjectCRC = 2046272201
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_research_facility_01, "object/building/general/shared_bunker_research_facility_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_research_facility_01, "object/building/general/shared_bunker_research_facility_01.iff")
 
 object_building_general_shared_bunker_small_outpost_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1407,7 +1407,7 @@ object_building_general_shared_bunker_small_outpost_01 = SharedBuildingObjectTem
 	clientObjectCRC = 1060967532
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_small_outpost_01, "object/building/general/shared_bunker_small_outpost_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_small_outpost_01, "object/building/general/shared_bunker_small_outpost_01.iff")
 
 object_building_general_shared_bunker_small_outpost_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1464,7 +1464,7 @@ object_building_general_shared_bunker_small_outpost_02 = SharedBuildingObjectTem
 	clientObjectCRC = 3828006139
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_small_outpost_02, "object/building/general/shared_bunker_small_outpost_02.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_small_outpost_02, "object/building/general/shared_bunker_small_outpost_02.iff")
 
 object_building_general_shared_bunker_talus_chunker_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1521,7 +1521,7 @@ object_building_general_shared_bunker_talus_chunker_bunker = SharedBuildingObjec
 	clientObjectCRC = 2130756010
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_talus_chunker_bunker, "object/building/general/shared_bunker_talus_chunker_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_talus_chunker_bunker, "object/building/general/shared_bunker_talus_chunker_bunker.iff")
 
 object_building_general_shared_bunker_tok_retreat_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1578,7 +1578,7 @@ object_building_general_shared_bunker_tok_retreat_01 = SharedBuildingObjectTempl
 	clientObjectCRC = 2032341079
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_tok_retreat_01, "object/building/general/shared_bunker_tok_retreat_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_tok_retreat_01, "object/building/general/shared_bunker_tok_retreat_01.iff")
 
 object_building_general_shared_bunker_warren_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1635,7 +1635,7 @@ object_building_general_shared_bunker_warren_01 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 2436238099
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_bunker_warren_01, "object/building/general/shared_bunker_warren_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_warren_01, "object/building/general/shared_bunker_warren_01.iff")
 
 object_building_general_shared_cantina_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1692,7 +1692,7 @@ object_building_general_shared_cantina_general = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 4015930050
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cantina_general, "object/building/general/shared_cantina_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cantina_general, "object/building/general/shared_cantina_general.iff")
 
 object_building_general_shared_capitol_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1749,7 +1749,7 @@ object_building_general_shared_capitol_general = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2926502766
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_capitol_general, "object/building/general/shared_capitol_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_capitol_general, "object/building/general/shared_capitol_general.iff")
 
 object_building_general_shared_cave_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1806,7 +1806,7 @@ object_building_general_shared_cave_01 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3160184163
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_01, "object/building/general/shared_cave_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01, "object/building/general/shared_cave_01.iff")
 
 object_building_general_shared_cave_01_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1863,7 +1863,7 @@ object_building_general_shared_cave_01_damprock = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 952315499
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_01_damprock, "object/building/general/shared_cave_01_damprock.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_damprock, "object/building/general/shared_cave_01_damprock.iff")
 
 object_building_general_shared_cave_01_damprock_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1920,7 +1920,7 @@ object_building_general_shared_cave_01_damprock_mirror = SharedBuildingObjectTem
 	clientObjectCRC = 2530583699
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_01_damprock_mirror, "object/building/general/shared_cave_01_damprock_mirror.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_damprock_mirror, "object/building/general/shared_cave_01_damprock_mirror.iff")
 
 object_building_general_shared_cave_01_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1977,7 +1977,7 @@ object_building_general_shared_cave_01_ice = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3629542620
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_01_ice, "object/building/general/shared_cave_01_ice.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_ice, "object/building/general/shared_cave_01_ice.iff")
 
 object_building_general_shared_cave_01_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2034,7 +2034,7 @@ object_building_general_shared_cave_01_mirror = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 3887886541
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_01_mirror, "object/building/general/shared_cave_01_mirror.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_mirror, "object/building/general/shared_cave_01_mirror.iff")
 
 object_building_general_shared_cave_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2091,7 +2091,7 @@ object_building_general_shared_cave_02 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1732984308
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_02, "object/building/general/shared_cave_02.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02, "object/building/general/shared_cave_02.iff")
 
 object_building_general_shared_cave_02_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2148,7 +2148,7 @@ object_building_general_shared_cave_02_damprock = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 4040916264
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_02_damprock, "object/building/general/shared_cave_02_damprock.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_damprock, "object/building/general/shared_cave_02_damprock.iff")
 
 object_building_general_shared_cave_02_damprock_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2205,7 +2205,7 @@ object_building_general_shared_cave_02_damprock_mirror = SharedBuildingObjectTem
 	clientObjectCRC = 3705597680
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_02_damprock_mirror, "object/building/general/shared_cave_02_damprock_mirror.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_damprock_mirror, "object/building/general/shared_cave_02_damprock_mirror.iff")
 
 object_building_general_shared_cave_02_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2262,7 +2262,7 @@ object_building_general_shared_cave_02_ice = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3398864833
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_02_ice, "object/building/general/shared_cave_02_ice.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_ice, "object/building/general/shared_cave_02_ice.iff")
 
 object_building_general_shared_cave_02_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2319,7 +2319,7 @@ object_building_general_shared_cave_02_mirror = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 4020721095
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_02_mirror, "object/building/general/shared_cave_02_mirror.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_mirror, "object/building/general/shared_cave_02_mirror.iff")
 
 object_building_general_shared_cave_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2376,7 +2376,7 @@ object_building_general_shared_cave_03 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 776362617
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_03, "object/building/general/shared_cave_03.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03, "object/building/general/shared_cave_03.iff")
 
 object_building_general_shared_cave_03_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2433,7 +2433,7 @@ object_building_general_shared_cave_03_damprock = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 3073160169
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_03_damprock, "object/building/general/shared_cave_03_damprock.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_damprock, "object/building/general/shared_cave_03_damprock.iff")
 
 object_building_general_shared_cave_03_damprock_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2490,7 +2490,7 @@ object_building_general_shared_cave_03_damprock_mirror = SharedBuildingObjectTem
 	clientObjectCRC = 426189756
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_03_damprock_mirror, "object/building/general/shared_cave_03_damprock_mirror.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_damprock_mirror, "object/building/general/shared_cave_03_damprock_mirror.iff")
 
 object_building_general_shared_cave_03_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2547,7 +2547,7 @@ object_building_general_shared_cave_03_ice = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 949364135
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_03_ice, "object/building/general/shared_cave_03_ice.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_ice, "object/building/general/shared_cave_03_ice.iff")
 
 object_building_general_shared_cave_03_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2604,7 +2604,7 @@ object_building_general_shared_cave_03_mirror = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 3897669313
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_03_mirror, "object/building/general/shared_cave_03_mirror.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_mirror, "object/building/general/shared_cave_03_mirror.iff")
 
 object_building_general_shared_cave_04_ice_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2661,7 +2661,7 @@ object_building_general_shared_cave_04_ice_s01 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 519460091
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_04_ice_s01, "object/building/general/shared_cave_04_ice_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_04_ice_s01, "object/building/general/shared_cave_04_ice_s01.iff")
 
 object_building_general_shared_cave_05_ice_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2718,7 +2718,7 @@ object_building_general_shared_cave_05_ice_s02 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 759540329
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_05_ice_s02, "object/building/general/shared_cave_05_ice_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_05_ice_s02, "object/building/general/shared_cave_05_ice_s02.iff")
 
 object_building_general_shared_cave_06_flatland_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2775,7 +2775,7 @@ object_building_general_shared_cave_06_flatland_s01 = SharedBuildingObjectTempla
 	clientObjectCRC = 736190789
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_06_flatland_s01, "object/building/general/shared_cave_06_flatland_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_06_flatland_s01, "object/building/general/shared_cave_06_flatland_s01.iff")
 
 object_building_general_shared_cave_06_flatland_s01_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2832,7 +2832,7 @@ object_building_general_shared_cave_06_flatland_s01_damprock = SharedBuildingObj
 	clientObjectCRC = 3352052197
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_06_flatland_s01_damprock, "object/building/general/shared_cave_06_flatland_s01_damprock.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_06_flatland_s01_damprock, "object/building/general/shared_cave_06_flatland_s01_damprock.iff")
 
 object_building_general_shared_cave_06_flatland_s01_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2889,7 +2889,7 @@ object_building_general_shared_cave_06_flatland_s01_ice = SharedBuildingObjectTe
 	clientObjectCRC = 1663639712
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_06_flatland_s01_ice, "object/building/general/shared_cave_06_flatland_s01_ice.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_06_flatland_s01_ice, "object/building/general/shared_cave_06_flatland_s01_ice.iff")
 
 object_building_general_shared_cave_07_flatland_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2946,7 +2946,7 @@ object_building_general_shared_cave_07_flatland_s02 = SharedBuildingObjectTempla
 	clientObjectCRC = 1905336231
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_07_flatland_s02, "object/building/general/shared_cave_07_flatland_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_07_flatland_s02, "object/building/general/shared_cave_07_flatland_s02.iff")
 
 object_building_general_shared_cave_07_flatland_s02_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3003,7 +3003,7 @@ object_building_general_shared_cave_07_flatland_s02_damprock = SharedBuildingObj
 	clientObjectCRC = 3655237343
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_07_flatland_s02_damprock, "object/building/general/shared_cave_07_flatland_s02_damprock.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_07_flatland_s02_damprock, "object/building/general/shared_cave_07_flatland_s02_damprock.iff")
 
 object_building_general_shared_cave_07_flatland_s02_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3060,7 +3060,7 @@ object_building_general_shared_cave_07_flatland_s02_ice = SharedBuildingObjectTe
 	clientObjectCRC = 2188080207
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_07_flatland_s02_ice, "object/building/general/shared_cave_07_flatland_s02_ice.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_07_flatland_s02_ice, "object/building/general/shared_cave_07_flatland_s02_ice.iff")
 
 object_building_general_shared_cave_08_flatland_s03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3117,7 +3117,7 @@ object_building_general_shared_cave_08_flatland_s03 = SharedBuildingObjectTempla
 	clientObjectCRC = 2882713804
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_08_flatland_s03, "object/building/general/shared_cave_08_flatland_s03.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_08_flatland_s03, "object/building/general/shared_cave_08_flatland_s03.iff")
 
 object_building_general_shared_cave_08_flatland_s03_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3174,7 +3174,7 @@ object_building_general_shared_cave_08_flatland_s03_damprock = SharedBuildingObj
 	clientObjectCRC = 524918885
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_08_flatland_s03_damprock, "object/building/general/shared_cave_08_flatland_s03_damprock.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_08_flatland_s03_damprock, "object/building/general/shared_cave_08_flatland_s03_damprock.iff")
 
 object_building_general_shared_cave_08_flatland_s03_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3231,7 +3231,7 @@ object_building_general_shared_cave_08_flatland_s03_ice = SharedBuildingObjectTe
 	clientObjectCRC = 557190412
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_08_flatland_s03_ice, "object/building/general/shared_cave_08_flatland_s03_ice.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_08_flatland_s03_ice, "object/building/general/shared_cave_08_flatland_s03_ice.iff")
 
 object_building_general_shared_cave_lok_pirate_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3288,7 +3288,7 @@ object_building_general_shared_cave_lok_pirate_cave = SharedBuildingObjectTempla
 	clientObjectCRC = 153465138
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_lok_pirate_cave, "object/building/general/shared_cave_lok_pirate_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_lok_pirate_cave, "object/building/general/shared_cave_lok_pirate_cave.iff")
 
 object_building_general_shared_cave_morag = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3345,7 +3345,7 @@ object_building_general_shared_cave_morag = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1852639945
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cave_morag, "object/building/general/shared_cave_morag.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cave_morag, "object/building/general/shared_cave_morag.iff")
 
 object_building_general_shared_cloning_facility_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3402,7 +3402,7 @@ object_building_general_shared_cloning_facility_general = SharedBuildingObjectTe
 	clientObjectCRC = 327514443
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_cloning_facility_general, "object/building/general/shared_cloning_facility_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_cloning_facility_general, "object/building/general/shared_cloning_facility_general.iff")
 
 object_building_general_shared_corellia_afarathu_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3459,7 +3459,7 @@ object_building_general_shared_corellia_afarathu_cave = SharedBuildingObjectTemp
 	clientObjectCRC = 1102119105
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_corellia_afarathu_cave, "object/building/general/shared_corellia_afarathu_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_corellia_afarathu_cave, "object/building/general/shared_corellia_afarathu_cave.iff")
 
 object_building_general_shared_corellia_drall_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3516,7 +3516,7 @@ object_building_general_shared_corellia_drall_cave = SharedBuildingObjectTemplat
 	clientObjectCRC = 88228892
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_corellia_drall_cave, "object/building/general/shared_corellia_drall_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_corellia_drall_cave, "object/building/general/shared_corellia_drall_cave.iff")
 
 object_building_general_shared_corellia_nyax_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3573,7 +3573,7 @@ object_building_general_shared_corellia_nyax_bunker = SharedBuildingObjectTempla
 	clientObjectCRC = 780046145
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_corellia_nyax_bunker, "object/building/general/shared_corellia_nyax_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_corellia_nyax_bunker, "object/building/general/shared_corellia_nyax_bunker.iff")
 
 object_building_general_shared_dantooine_force_crystal_hunter_sd_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3630,7 +3630,7 @@ object_building_general_shared_dantooine_force_crystal_hunter_sd_cave = SharedBu
 	clientObjectCRC = 1263547301
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_dantooine_force_crystal_hunter_sd_cave, "object/building/general/shared_dantooine_force_crystal_hunter_sd_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_dantooine_force_crystal_hunter_sd_cave, "object/building/general/shared_dantooine_force_crystal_hunter_sd_cave.iff")
 
 object_building_general_shared_dantooine_janta_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3687,7 +3687,7 @@ object_building_general_shared_dantooine_janta_cave = SharedBuildingObjectTempla
 	clientObjectCRC = 1976190033
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_dantooine_janta_cave, "object/building/general/shared_dantooine_janta_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_dantooine_janta_cave, "object/building/general/shared_dantooine_janta_cave.iff")
 
 object_building_general_shared_dantooine_kunga_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3744,7 +3744,7 @@ object_building_general_shared_dantooine_kunga_cave = SharedBuildingObjectTempla
 	clientObjectCRC = 2274845407
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_dantooine_kunga_cave, "object/building/general/shared_dantooine_kunga_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_dantooine_kunga_cave, "object/building/general/shared_dantooine_kunga_cave.iff")
 
 object_building_general_shared_dathomir_nsister_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3801,7 +3801,7 @@ object_building_general_shared_dathomir_nsister_cave = SharedBuildingObjectTempl
 	clientObjectCRC = 711566567
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_dathomir_nsister_cave, "object/building/general/shared_dathomir_nsister_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_dathomir_nsister_cave, "object/building/general/shared_dathomir_nsister_cave.iff")
 
 object_building_general_shared_dathomir_nsister_rancor_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3858,7 +3858,7 @@ object_building_general_shared_dathomir_nsister_rancor_cave = SharedBuildingObje
 	clientObjectCRC = 1702144691
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_dathomir_nsister_rancor_cave, "object/building/general/shared_dathomir_nsister_rancor_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_dathomir_nsister_rancor_cave, "object/building/general/shared_dathomir_nsister_rancor_cave.iff")
 
 object_building_general_shared_endor_jinda_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3915,7 +3915,7 @@ object_building_general_shared_endor_jinda_cave = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 709151424
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_endor_jinda_cave, "object/building/general/shared_endor_jinda_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_endor_jinda_cave, "object/building/general/shared_endor_jinda_cave.iff")
 
 object_building_general_shared_endor_korga_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3972,7 +3972,7 @@ object_building_general_shared_endor_korga_cave = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1189018300
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_endor_korga_cave, "object/building/general/shared_endor_korga_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_endor_korga_cave, "object/building/general/shared_endor_korga_cave.iff")
 
 object_building_general_shared_endor_marauder_orphans_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4029,7 +4029,7 @@ object_building_general_shared_endor_marauder_orphans_cave = SharedBuildingObjec
 	clientObjectCRC = 3233389758
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_endor_marauder_orphans_cave, "object/building/general/shared_endor_marauder_orphans_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_endor_marauder_orphans_cave, "object/building/general/shared_endor_marauder_orphans_cave.iff")
 
 object_building_general_shared_guild_combat_general_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4086,7 +4086,7 @@ object_building_general_shared_guild_combat_general_style_01 = SharedBuildingObj
 	clientObjectCRC = 1394323186
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_guild_combat_general_style_01, "object/building/general/shared_guild_combat_general_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_guild_combat_general_style_01, "object/building/general/shared_guild_combat_general_style_01.iff")
 
 object_building_general_shared_guild_commerce_general_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4143,7 +4143,7 @@ object_building_general_shared_guild_commerce_general_style_01 = SharedBuildingO
 	clientObjectCRC = 326541771
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_guild_commerce_general_style_01, "object/building/general/shared_guild_commerce_general_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_guild_commerce_general_style_01, "object/building/general/shared_guild_commerce_general_style_01.iff")
 
 object_building_general_shared_guild_university_general_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4200,7 +4200,7 @@ object_building_general_shared_guild_university_general_style_01 = SharedBuildin
 	clientObjectCRC = 3594966040
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_guild_university_general_style_01, "object/building/general/shared_guild_university_general_style_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_guild_university_general_style_01, "object/building/general/shared_guild_university_general_style_01.iff")
 
 object_building_general_shared_hotel_general_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4257,7 +4257,7 @@ object_building_general_shared_hotel_general_style_1 = SharedBuildingObjectTempl
 	clientObjectCRC = 2957667026
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_hotel_general_style_1, "object/building/general/shared_hotel_general_style_1.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_hotel_general_style_1, "object/building/general/shared_hotel_general_style_1.iff")
 
 object_building_general_shared_hotel_general_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mockup_hotelb.apt",
@@ -4314,7 +4314,7 @@ object_building_general_shared_hotel_general_style_2 = SharedBuildingObjectTempl
 	clientObjectCRC = 1801306693
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_hotel_general_style_2, "object/building/general/shared_hotel_general_style_2.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_hotel_general_style_2, "object/building/general/shared_hotel_general_style_2.iff")
 
 object_building_general_shared_housing_general_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4371,7 +4371,7 @@ object_building_general_shared_housing_general_style_1 = SharedBuildingObjectTem
 	clientObjectCRC = 1516155062
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_housing_general_style_1, "object/building/general/shared_housing_general_style_1.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_housing_general_style_1, "object/building/general/shared_housing_general_style_1.iff")
 
 object_building_general_shared_landing_pad_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4428,7 +4428,7 @@ object_building_general_shared_landing_pad_s01 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 766941896
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_landing_pad_s01, "object/building/general/shared_landing_pad_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_landing_pad_s01, "object/building/general/shared_landing_pad_s01.iff")
 
 object_building_general_shared_lok_evil_droid_engineer_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4485,7 +4485,7 @@ object_building_general_shared_lok_evil_droid_engineer_cave = SharedBuildingObje
 	clientObjectCRC = 1736894341
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_lok_evil_droid_engineer_cave, "object/building/general/shared_lok_evil_droid_engineer_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_lok_evil_droid_engineer_cave, "object/building/general/shared_lok_evil_droid_engineer_cave.iff")
 
 object_building_general_shared_lok_kimogila_cult_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4542,7 +4542,7 @@ object_building_general_shared_lok_kimogila_cult_bunker = SharedBuildingObjectTe
 	clientObjectCRC = 2736597128
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_lok_kimogila_cult_bunker, "object/building/general/shared_lok_kimogila_cult_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_lok_kimogila_cult_bunker, "object/building/general/shared_lok_kimogila_cult_bunker.iff")
 
 object_building_general_shared_lok_mercenary_cave_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4599,7 +4599,7 @@ object_building_general_shared_lok_mercenary_cave_01 = SharedBuildingObjectTempl
 	clientObjectCRC = 2476588024
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_lok_mercenary_cave_01, "object/building/general/shared_lok_mercenary_cave_01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_lok_mercenary_cave_01, "object/building/general/shared_lok_mercenary_cave_01.iff")
 
 object_building_general_shared_lok_nymstheme_mercenary_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4656,7 +4656,7 @@ object_building_general_shared_lok_nymstheme_mercenary_bunker = SharedBuildingOb
 	clientObjectCRC = 526484590
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_lok_nymstheme_mercenary_bunker, "object/building/general/shared_lok_nymstheme_mercenary_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_lok_nymstheme_mercenary_bunker, "object/building/general/shared_lok_nymstheme_mercenary_bunker.iff")
 
 object_building_general_shared_lok_nymstheme_pirate_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4713,7 +4713,7 @@ object_building_general_shared_lok_nymstheme_pirate_cave = SharedBuildingObjectT
 	clientObjectCRC = 18770566
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_lok_nymstheme_pirate_cave, "object/building/general/shared_lok_nymstheme_pirate_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_lok_nymstheme_pirate_cave, "object/building/general/shared_lok_nymstheme_pirate_cave.iff")
 
 object_building_general_shared_merchant_tent_all_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4770,7 +4770,7 @@ object_building_general_shared_merchant_tent_all_s01 = SharedBuildingObjectTempl
 	clientObjectCRC = 3614150695
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_merchant_tent_all_s01, "object/building/general/shared_merchant_tent_all_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_merchant_tent_all_s01, "object/building/general/shared_merchant_tent_all_s01.iff")
 
 object_building_general_shared_mun_all_capitol_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4827,7 +4827,7 @@ object_building_general_shared_mun_all_capitol_s01 = SharedBuildingObjectTemplat
 	clientObjectCRC = 1684189678
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_capitol_s01, "object/building/general/shared_mun_all_capitol_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_capitol_s01, "object/building/general/shared_mun_all_capitol_s01.iff")
 
 object_building_general_shared_mun_all_cloning_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4884,7 +4884,7 @@ object_building_general_shared_mun_all_cloning_s01 = SharedBuildingObjectTemplat
 	clientObjectCRC = 432887298
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_cloning_s01, "object/building/general/shared_mun_all_cloning_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_cloning_s01, "object/building/general/shared_mun_all_cloning_s01.iff")
 
 object_building_general_shared_mun_all_guild_combat_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4941,7 +4941,7 @@ object_building_general_shared_mun_all_guild_combat_s01 = SharedBuildingObjectTe
 	clientObjectCRC = 3789605488
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_guild_combat_s01, "object/building/general/shared_mun_all_guild_combat_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_combat_s01, "object/building/general/shared_mun_all_guild_combat_s01.iff")
 
 object_building_general_shared_mun_all_guild_commerce_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4998,7 +4998,7 @@ object_building_general_shared_mun_all_guild_commerce_s01 = SharedBuildingObject
 	clientObjectCRC = 49465033
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_guild_commerce_s01, "object/building/general/shared_mun_all_guild_commerce_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_commerce_s01, "object/building/general/shared_mun_all_guild_commerce_s01.iff")
 
 object_building_general_shared_mun_all_guild_theater_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5055,7 +5055,7 @@ object_building_general_shared_mun_all_guild_theater_s01 = SharedBuildingObjectT
 	clientObjectCRC = 2335562190
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_guild_theater_s01, "object/building/general/shared_mun_all_guild_theater_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_theater_s01, "object/building/general/shared_mun_all_guild_theater_s01.iff")
 
 object_building_general_shared_mun_all_guild_university_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5112,7 +5112,7 @@ object_building_general_shared_mun_all_guild_university_s01 = SharedBuildingObje
 	clientObjectCRC = 1179256079
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_guild_university_s01, "object/building/general/shared_mun_all_guild_university_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_university_s01, "object/building/general/shared_mun_all_guild_university_s01.iff")
 
 object_building_general_shared_mun_all_hospital_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5169,7 +5169,7 @@ object_building_general_shared_mun_all_hospital_s01 = SharedBuildingObjectTempla
 	clientObjectCRC = 3942101786
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_hospital_s01, "object/building/general/shared_mun_all_hospital_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_hospital_s01, "object/building/general/shared_mun_all_hospital_s01.iff")
 
 object_building_general_shared_mun_all_hospital_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5226,7 +5226,7 @@ object_building_general_shared_mun_all_hospital_s02 = SharedBuildingObjectTempla
 	clientObjectCRC = 836770701
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_hospital_s02, "object/building/general/shared_mun_all_hospital_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_hospital_s02, "object/building/general/shared_mun_all_hospital_s02.iff")
 
 object_building_general_shared_mun_all_hotel_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5283,7 +5283,7 @@ object_building_general_shared_mun_all_hotel_s01 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 64245657
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_hotel_s01, "object/building/general/shared_mun_all_hotel_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_hotel_s01, "object/building/general/shared_mun_all_hotel_s01.iff")
 
 object_building_general_shared_mun_all_landing_pad_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5340,7 +5340,7 @@ object_building_general_shared_mun_all_landing_pad_s01 = SharedBuildingObjectTem
 	clientObjectCRC = 2845231920
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_landing_pad_s01, "object/building/general/shared_mun_all_landing_pad_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_landing_pad_s01, "object/building/general/shared_mun_all_landing_pad_s01.iff")
 
 object_building_general_shared_mun_all_starport_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5397,7 +5397,7 @@ object_building_general_shared_mun_all_starport_s01 = SharedBuildingObjectTempla
 	clientObjectCRC = 1399192891
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_mun_all_starport_s01, "object/building/general/shared_mun_all_starport_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_starport_s01, "object/building/general/shared_mun_all_starport_s01.iff")
 
 object_building_general_shared_naboo_narglatch_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5454,7 +5454,7 @@ object_building_general_shared_naboo_narglatch_cave = SharedBuildingObjectTempla
 	clientObjectCRC = 1618666507
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_naboo_narglatch_cave, "object/building/general/shared_naboo_narglatch_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_naboo_narglatch_cave, "object/building/general/shared_naboo_narglatch_cave.iff")
 
 object_building_general_shared_naboo_pirate_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5511,7 +5511,7 @@ object_building_general_shared_naboo_pirate_bunker = SharedBuildingObjectTemplat
 	clientObjectCRC = 2696571862
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_naboo_pirate_bunker, "object/building/general/shared_naboo_pirate_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_naboo_pirate_bunker, "object/building/general/shared_naboo_pirate_bunker.iff")
 
 object_building_general_shared_naboo_veermok_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5568,7 +5568,7 @@ object_building_general_shared_naboo_veermok_cave = SharedBuildingObjectTemplate
 	clientObjectCRC = 1074091686
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_naboo_veermok_cave, "object/building/general/shared_naboo_veermok_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_naboo_veermok_cave, "object/building/general/shared_naboo_veermok_cave.iff")
 
 object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5625,7 +5625,7 @@ object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3771444529
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_newbie_hall, "object/building/general/shared_newbie_hall.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_newbie_hall, "object/building/general/shared_newbie_hall.iff")
 
 object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5682,7 +5682,7 @@ object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplat
 	clientObjectCRC = 1011239275
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_newbie_hall_skipped, "object/building/general/shared_newbie_hall_skipped.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_newbie_hall_skipped, "object/building/general/shared_newbie_hall_skipped.iff")
 
 object_building_general_shared_nightsister_slave_mine_sd_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5739,7 +5739,7 @@ object_building_general_shared_nightsister_slave_mine_sd_cave = SharedBuildingOb
 	clientObjectCRC = 2054952898
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_nightsister_slave_mine_sd_cave, "object/building/general/shared_nightsister_slave_mine_sd_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_nightsister_slave_mine_sd_cave, "object/building/general/shared_nightsister_slave_mine_sd_cave.iff")
 
 object_building_general_shared_parking_garage_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5796,7 +5796,7 @@ object_building_general_shared_parking_garage_general = SharedBuildingObjectTemp
 	clientObjectCRC = 3151125
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_parking_garage_general, "object/building/general/shared_parking_garage_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_parking_garage_general, "object/building/general/shared_parking_garage_general.iff")
 
 object_building_general_shared_ranchers_house_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5853,7 +5853,7 @@ object_building_general_shared_ranchers_house_tatooine = SharedBuildingObjectTem
 	clientObjectCRC = 2779359080
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_ranchers_house_tatooine, "object/building/general/shared_ranchers_house_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_ranchers_house_tatooine, "object/building/general/shared_ranchers_house_tatooine.iff")
 
 object_building_general_shared_rebel_fuel_depot = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5910,7 +5910,7 @@ object_building_general_shared_rebel_fuel_depot = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 3374741880
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_rebel_fuel_depot, "object/building/general/shared_rebel_fuel_depot.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_rebel_fuel_depot, "object/building/general/shared_rebel_fuel_depot.iff")
 
 object_building_general_shared_rori_bark_mite_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -5967,7 +5967,7 @@ object_building_general_shared_rori_bark_mite_cave = SharedBuildingObjectTemplat
 	clientObjectCRC = 2008111071
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_rori_bark_mite_cave, "object/building/general/shared_rori_bark_mite_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_rori_bark_mite_cave, "object/building/general/shared_rori_bark_mite_cave.iff")
 
 object_building_general_shared_rori_bat_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6024,7 +6024,7 @@ object_building_general_shared_rori_bat_cave = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 2510037668
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_rori_bat_cave, "object/building/general/shared_rori_bat_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_rori_bat_cave, "object/building/general/shared_rori_bat_cave.iff")
 
 object_building_general_shared_rori_cobral_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6081,7 +6081,7 @@ object_building_general_shared_rori_cobral_bunker = SharedBuildingObjectTemplate
 	clientObjectCRC = 2753493661
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_rori_cobral_bunker, "object/building/general/shared_rori_cobral_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_rori_cobral_bunker, "object/building/general/shared_rori_cobral_bunker.iff")
 
 object_building_general_shared_rori_garyn_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6138,7 +6138,7 @@ object_building_general_shared_rori_garyn_bunker = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2144664039
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_rori_garyn_bunker, "object/building/general/shared_rori_garyn_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_rori_garyn_bunker, "object/building/general/shared_rori_garyn_bunker.iff")
 
 object_building_general_shared_rori_hyperdrive_research_facility = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6195,7 +6195,7 @@ object_building_general_shared_rori_hyperdrive_research_facility = SharedBuildin
 	clientObjectCRC = 2711352465
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_rori_hyperdrive_research_facility, "object/building/general/shared_rori_hyperdrive_research_facility.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_rori_hyperdrive_research_facility, "object/building/general/shared_rori_hyperdrive_research_facility.iff")
 
 object_building_general_shared_rori_kobola_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6252,7 +6252,7 @@ object_building_general_shared_rori_kobola_cave = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 303008890
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_rori_kobola_cave, "object/building/general/shared_rori_kobola_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_rori_kobola_cave, "object/building/general/shared_rori_kobola_cave.iff")
 
 object_building_general_shared_rori_torton_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6309,7 +6309,7 @@ object_building_general_shared_rori_torton_cave = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1919200278
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_rori_torton_cave, "object/building/general/shared_rori_torton_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_rori_torton_cave, "object/building/general/shared_rori_torton_cave.iff")
 
 object_building_general_shared_shuttleport_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_shuttleport_s01.apt",
@@ -6366,7 +6366,7 @@ object_building_general_shared_shuttleport_general = SharedBuildingObjectTemplat
 	clientObjectCRC = 3656969600
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_shuttleport_general, "object/building/general/shared_shuttleport_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_shuttleport_general, "object/building/general/shared_shuttleport_general.iff")
 
 object_building_general_shared_space_dungeon_corellian_corvette = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6423,7 +6423,7 @@ object_building_general_shared_space_dungeon_corellian_corvette = SharedBuilding
 	clientObjectCRC = 2945204994
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_corellian_corvette, "object/building/general/shared_space_dungeon_corellian_corvette.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_corellian_corvette, "object/building/general/shared_space_dungeon_corellian_corvette.iff")
 
 object_building_general_shared_space_dungeon_corellian_corvette_imperial = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6480,7 +6480,7 @@ object_building_general_shared_space_dungeon_corellian_corvette_imperial = Share
 	clientObjectCRC = 3935788511
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_corellian_corvette_imperial, "object/building/general/shared_space_dungeon_corellian_corvette_imperial.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_corellian_corvette_imperial, "object/building/general/shared_space_dungeon_corellian_corvette_imperial.iff")
 
 object_building_general_shared_space_dungeon_corellian_corvette_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6537,7 +6537,7 @@ object_building_general_shared_space_dungeon_corellian_corvette_rebel = SharedBu
 	clientObjectCRC = 1523571122
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_corellian_corvette_rebel, "object/building/general/shared_space_dungeon_corellian_corvette_rebel.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_corellian_corvette_rebel, "object/building/general/shared_space_dungeon_corellian_corvette_rebel.iff")
 
 object_building_general_shared_space_dungeon_hutt_asteroid = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6594,7 +6594,7 @@ object_building_general_shared_space_dungeon_hutt_asteroid = SharedBuildingObjec
 	clientObjectCRC = 692704019
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_hutt_asteroid, "object/building/general/shared_space_dungeon_hutt_asteroid.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_hutt_asteroid, "object/building/general/shared_space_dungeon_hutt_asteroid.iff")
 
 object_building_general_shared_space_dungeon_star_destroyer = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6651,7 +6651,7 @@ object_building_general_shared_space_dungeon_star_destroyer = SharedBuildingObje
 	clientObjectCRC = 1431567153
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_star_destroyer, "object/building/general/shared_space_dungeon_star_destroyer.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_star_destroyer, "object/building/general/shared_space_dungeon_star_destroyer.iff")
 
 object_building_general_shared_starport_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6708,7 +6708,7 @@ object_building_general_shared_starport_general = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 4229374013
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_starport_general, "object/building/general/shared_starport_general.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_starport_general, "object/building/general/shared_starport_general.iff")
 
 object_building_general_shared_starport_general_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6765,7 +6765,7 @@ object_building_general_shared_starport_general_style_1 = SharedBuildingObjectTe
 	clientObjectCRC = 2699737473
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_starport_general_style_1, "object/building/general/shared_starport_general_style_1.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_starport_general_style_1, "object/building/general/shared_starport_general_style_1.iff")
 
 object_building_general_shared_starport_general_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mockup_starportb.apt",
@@ -6822,7 +6822,7 @@ object_building_general_shared_starport_general_style_2 = SharedBuildingObjectTe
 	clientObjectCRC = 2080182550
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_starport_general_style_2, "object/building/general/shared_starport_general_style_2.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_starport_general_style_2, "object/building/general/shared_starport_general_style_2.iff")
 
 object_building_general_shared_talus_aakuan_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6879,7 +6879,7 @@ object_building_general_shared_talus_aakuan_cave = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1823419741
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_talus_aakuan_cave, "object/building/general/shared_talus_aakuan_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_talus_aakuan_cave, "object/building/general/shared_talus_aakuan_cave.iff")
 
 object_building_general_shared_talus_aqualish_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6936,7 +6936,7 @@ object_building_general_shared_talus_aqualish_cave = SharedBuildingObjectTemplat
 	clientObjectCRC = 3978592584
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_talus_aqualish_cave, "object/building/general/shared_talus_aqualish_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_talus_aqualish_cave, "object/building/general/shared_talus_aqualish_cave.iff")
 
 object_building_general_shared_talus_binyare_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -6993,7 +6993,7 @@ object_building_general_shared_talus_binyare_bunker = SharedBuildingObjectTempla
 	clientObjectCRC = 4022785523
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_talus_binyare_bunker, "object/building/general/shared_talus_binyare_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_talus_binyare_bunker, "object/building/general/shared_talus_binyare_bunker.iff")
 
 object_building_general_shared_talus_giant_decay_mite_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -7050,7 +7050,7 @@ object_building_general_shared_talus_giant_decay_mite_cave = SharedBuildingObjec
 	clientObjectCRC = 2459804029
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_talus_giant_decay_mite_cave, "object/building/general/shared_talus_giant_decay_mite_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_talus_giant_decay_mite_cave, "object/building/general/shared_talus_giant_decay_mite_cave.iff")
 
 object_building_general_shared_talus_giant_fynock_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -7107,7 +7107,7 @@ object_building_general_shared_talus_giant_fynock_cave = SharedBuildingObjectTem
 	clientObjectCRC = 1300216386
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_talus_giant_fynock_cave, "object/building/general/shared_talus_giant_fynock_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_talus_giant_fynock_cave, "object/building/general/shared_talus_giant_fynock_cave.iff")
 
 object_building_general_shared_talus_kahmurra_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -7164,7 +7164,7 @@ object_building_general_shared_talus_kahmurra_bunker = SharedBuildingObjectTempl
 	clientObjectCRC = 1743913196
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_talus_kahmurra_bunker, "object/building/general/shared_talus_kahmurra_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_talus_kahmurra_bunker, "object/building/general/shared_talus_kahmurra_bunker.iff")
 
 object_building_general_shared_talus_traitor_erran = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -7221,7 +7221,7 @@ object_building_general_shared_talus_traitor_erran = SharedBuildingObjectTemplat
 	clientObjectCRC = 330907884
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_talus_traitor_erran, "object/building/general/shared_talus_traitor_erran.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_talus_traitor_erran, "object/building/general/shared_talus_traitor_erran.iff")
 
 object_building_general_shared_tatooine_beetle_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -7278,7 +7278,7 @@ object_building_general_shared_tatooine_beetle_cave = SharedBuildingObjectTempla
 	clientObjectCRC = 1885974487
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_tatooine_beetle_cave, "object/building/general/shared_tatooine_beetle_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_beetle_cave, "object/building/general/shared_tatooine_beetle_cave.iff")
 
 object_building_general_shared_tatooine_hutt_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -7335,7 +7335,7 @@ object_building_general_shared_tatooine_hutt_cave = SharedBuildingObjectTemplate
 	clientObjectCRC = 434980665
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_tatooine_hutt_cave, "object/building/general/shared_tatooine_hutt_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_hutt_cave, "object/building/general/shared_tatooine_hutt_cave.iff")
 
 object_building_general_shared_tatooine_squill_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -7392,7 +7392,7 @@ object_building_general_shared_tatooine_squill_cave = SharedBuildingObjectTempla
 	clientObjectCRC = 1109209534
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_tatooine_squill_cave, "object/building/general/shared_tatooine_squill_cave.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_squill_cave, "object/building/general/shared_tatooine_squill_cave.iff")
 
 object_building_general_shared_tatooine_tusken_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -7449,4 +7449,4 @@ object_building_general_shared_tatooine_tusken_bunker = SharedBuildingObjectTemp
 	clientObjectCRC = 2741312696
 }
 
-ObjectTemplates:addTemplate(object_building_general_shared_tatooine_tusken_bunker, "object/building/general/shared_tatooine_tusken_bunker.iff")
+ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_tusken_bunker, "object/building/general/shared_tatooine_tusken_bunker.iff")

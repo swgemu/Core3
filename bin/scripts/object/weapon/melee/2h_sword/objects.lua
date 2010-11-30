@@ -97,7 +97,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe = SharedWeaponObjectTempl
 	clientObjectCRC = 3488117788
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe, "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe, "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_axe_s01.apt",
@@ -155,7 +155,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest = SharedWeaponObjec
 	clientObjectCRC = 2823273971
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest, "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe_quest.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest, "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe_quest.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_blacksun_hack.apt",
@@ -213,7 +213,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack = SharedWeaponObjectT
 	clientObjectCRC = 1699236305
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack, "object/weapon/melee/2h_sword/shared_2h_sword_blacksun_hack.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack, "object/weapon/melee/2h_sword/shared_2h_sword_blacksun_hack.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_cleaver = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s02.apt",
@@ -271,7 +271,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_cleaver = SharedWeaponObjectTemplat
 	clientObjectCRC = 1737909268
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_cleaver, "object/weapon/melee/2h_sword/shared_2h_sword_cleaver.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_cleaver, "object/weapon/melee/2h_sword/shared_2h_sword_cleaver.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_katana = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s01.apt",
@@ -329,7 +329,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana = SharedWeaponObjectTemplate
 	clientObjectCRC = 1688331731
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana, "object/weapon/melee/2h_sword/shared_2h_sword_katana.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana, "object/weapon/melee/2h_sword/shared_2h_sword_katana.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_katana_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s01.apt",
@@ -387,7 +387,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana_quest = SharedWeaponObjectTe
 	clientObjectCRC = 2213862016
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana_quest, "object/weapon/melee/2h_sword/shared_2h_sword_katana_quest.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana_quest, "object/weapon/melee/2h_sword/shared_2h_sword_katana_quest.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_maul = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_maul_s01.apt",
@@ -445,7 +445,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_maul = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 248141391
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_maul, "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_maul, "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_scythe = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s03.apt",
@@ -503,4 +503,4 @@ object_weapon_melee_2h_sword_shared_2h_sword_scythe = SharedWeaponObjectTemplate
 	clientObjectCRC = 3006583634
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_scythe, "object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_scythe, "object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff")

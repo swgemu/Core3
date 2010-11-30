@@ -93,7 +93,7 @@ object_tangible_container_quest_crafting_contract_shared_armor_crate = SharedTan
 	clientObjectCRC = 4232935338
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_armor_crate, "object/tangible/container/quest/crafting_contract/shared_armor_crate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_armor_crate, "object/tangible/container/quest/crafting_contract/shared_armor_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_clothing_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_clothing_sm.apt",
@@ -147,7 +147,7 @@ object_tangible_container_quest_crafting_contract_shared_clothing_crate = Shared
 	clientObjectCRC = 2488721733
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_clothing_crate, "object/tangible/container/quest/crafting_contract/shared_clothing_crate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_clothing_crate, "object/tangible/container/quest/crafting_contract/shared_clothing_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_droid_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_electronics_sm.apt",
@@ -201,7 +201,7 @@ object_tangible_container_quest_crafting_contract_shared_droid_crate = SharedTan
 	clientObjectCRC = 594486839
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_droid_crate, "object/tangible/container/quest/crafting_contract/shared_droid_crate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_droid_crate, "object/tangible/container/quest/crafting_contract/shared_droid_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_food_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_food_sm.apt",
@@ -255,7 +255,7 @@ object_tangible_container_quest_crafting_contract_shared_food_crate = SharedTang
 	clientObjectCRC = 2851563770
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_food_crate, "object/tangible/container/quest/crafting_contract/shared_food_crate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_food_crate, "object/tangible/container/quest/crafting_contract/shared_food_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_furniture_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -309,7 +309,7 @@ object_tangible_container_quest_crafting_contract_shared_furniture_crate = Share
 	clientObjectCRC = 3179098251
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_furniture_crate, "object/tangible/container/quest/crafting_contract/shared_furniture_crate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_furniture_crate, "object/tangible/container/quest/crafting_contract/shared_furniture_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_generic_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -363,7 +363,7 @@ object_tangible_container_quest_crafting_contract_shared_generic_crate = SharedT
 	clientObjectCRC = 2299347618
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_generic_crate, "object/tangible/container/quest/crafting_contract/shared_generic_crate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_generic_crate, "object/tangible/container/quest/crafting_contract/shared_generic_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_weapon_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_weapons_sm.apt",
@@ -417,4 +417,4 @@ object_tangible_container_quest_crafting_contract_shared_weapon_crate = SharedTa
 	clientObjectCRC = 2938212328
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_weapon_crate, "object/tangible/container/quest/crafting_contract/shared_weapon_crate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_weapon_crate, "object/tangible/container/quest/crafting_contract/shared_weapon_crate.iff")

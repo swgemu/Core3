@@ -93,7 +93,7 @@ object_tangible_item_quest_hero_of_tatooine_shared_explosives = SharedTangibleOb
 	clientObjectCRC = 2331373945
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives, "object/tangible/item/quest/hero_of_tatooine/shared_explosives.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives, "object/tangible/item/quest/hero_of_tatooine/shared_explosives.iff")
 
 object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_newbie_crate.apt",
@@ -147,4 +147,4 @@ object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate = SharedTang
 	clientObjectCRC = 633901236
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate, "object/tangible/item/quest/hero_of_tatooine/shared_explosives_crate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate, "object/tangible/item/quest/hero_of_tatooine/shared_explosives_crate.iff")

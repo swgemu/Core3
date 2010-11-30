@@ -93,7 +93,7 @@ object_tangible_wearables_belt_shared_aakuan_belt = SharedTangibleObjectTemplate
 	clientObjectCRC = 1699237411
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_aakuan_belt, "object/tangible/wearables/belt/shared_aakuan_belt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_aakuan_belt, "object/tangible/wearables/belt/shared_aakuan_belt.iff")
 
 object_tangible_wearables_belt_shared_belt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s01_f.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_belt_shared_belt_s01 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2489884324
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s01, "object/tangible/wearables/belt/shared_belt_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s01, "object/tangible/wearables/belt/shared_belt_s01.iff")
 
 object_tangible_wearables_belt_shared_belt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s02_f.sat",
@@ -201,7 +201,7 @@ object_tangible_wearables_belt_shared_belt_s02 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1333737011
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s02, "object/tangible/wearables/belt/shared_belt_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s02, "object/tangible/wearables/belt/shared_belt_s02.iff")
 
 object_tangible_wearables_belt_shared_belt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s03_f.sat",
@@ -255,7 +255,7 @@ object_tangible_wearables_belt_shared_belt_s03 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 108155326
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s03, "object/tangible/wearables/belt/shared_belt_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s03, "object/tangible/wearables/belt/shared_belt_s03.iff")
 
 object_tangible_wearables_belt_shared_belt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s04_f.sat",
@@ -309,7 +309,7 @@ object_tangible_wearables_belt_shared_belt_s04 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 4254169770
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s04, "object/tangible/wearables/belt/shared_belt_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s04, "object/tangible/wearables/belt/shared_belt_s04.iff")
 
 object_tangible_wearables_belt_shared_belt_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s05_f.sat",
@@ -363,7 +363,7 @@ object_tangible_wearables_belt_shared_belt_s05 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3030129959
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s05, "object/tangible/wearables/belt/shared_belt_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s05, "object/tangible/wearables/belt/shared_belt_s05.iff")
 
 object_tangible_wearables_belt_shared_belt_s05_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s05_f.sat",
@@ -417,7 +417,7 @@ object_tangible_wearables_belt_shared_belt_s05_quest = SharedTangibleObjectTempl
 	clientObjectCRC = 3225289633
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s05_quest, "object/tangible/wearables/belt/shared_belt_s05_quest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s05_quest, "object/tangible/wearables/belt/shared_belt_s05_quest.iff")
 
 object_tangible_wearables_belt_shared_belt_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s07_f.sat",
@@ -471,7 +471,7 @@ object_tangible_wearables_belt_shared_belt_s07 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 646369853
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s07, "object/tangible/wearables/belt/shared_belt_s07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s07, "object/tangible/wearables/belt/shared_belt_s07.iff")
 
 object_tangible_wearables_belt_shared_belt_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s09_f.sat",
@@ -525,7 +525,7 @@ object_tangible_wearables_belt_shared_belt_s09 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3582040482
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s09, "object/tangible/wearables/belt/shared_belt_s09.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s09, "object/tangible/wearables/belt/shared_belt_s09.iff")
 
 object_tangible_wearables_belt_shared_belt_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s11_f.sat",
@@ -579,7 +579,7 @@ object_tangible_wearables_belt_shared_belt_s11 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2403374044
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s11, "object/tangible/wearables/belt/shared_belt_s11.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s11, "object/tangible/wearables/belt/shared_belt_s11.iff")
 
 object_tangible_wearables_belt_shared_belt_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s12_f.sat",
@@ -633,7 +633,7 @@ object_tangible_wearables_belt_shared_belt_s12 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1415002955
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s12, "object/tangible/wearables/belt/shared_belt_s12.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s12, "object/tangible/wearables/belt/shared_belt_s12.iff")
 
 object_tangible_wearables_belt_shared_belt_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s13_f.sat",
@@ -687,7 +687,7 @@ object_tangible_wearables_belt_shared_belt_s13 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 492461254
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s13, "object/tangible/wearables/belt/shared_belt_s13.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s13, "object/tangible/wearables/belt/shared_belt_s13.iff")
 
 object_tangible_wearables_belt_shared_belt_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s14_f.sat",
@@ -741,7 +741,7 @@ object_tangible_wearables_belt_shared_belt_s14 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3870914514
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s14, "object/tangible/wearables/belt/shared_belt_s14.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s14, "object/tangible/wearables/belt/shared_belt_s14.iff")
 
 object_tangible_wearables_belt_shared_belt_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s15_f.sat",
@@ -795,7 +795,7 @@ object_tangible_wearables_belt_shared_belt_s15 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2947813471
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s15, "object/tangible/wearables/belt/shared_belt_s15.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s15, "object/tangible/wearables/belt/shared_belt_s15.iff")
 
 object_tangible_wearables_belt_shared_belt_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s16_f.sat",
@@ -849,7 +849,7 @@ object_tangible_wearables_belt_shared_belt_s16 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1956886728
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s16, "object/tangible/wearables/belt/shared_belt_s16.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s16, "object/tangible/wearables/belt/shared_belt_s16.iff")
 
 object_tangible_wearables_belt_shared_belt_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s17_f.sat",
@@ -903,7 +903,7 @@ object_tangible_wearables_belt_shared_belt_s17 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1034870597
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s17, "object/tangible/wearables/belt/shared_belt_s17.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s17, "object/tangible/wearables/belt/shared_belt_s17.iff")
 
 object_tangible_wearables_belt_shared_belt_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s18_f.sat",
@@ -957,7 +957,7 @@ object_tangible_wearables_belt_shared_belt_s18 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2275734359
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s18, "object/tangible/wearables/belt/shared_belt_s18.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s18, "object/tangible/wearables/belt/shared_belt_s18.iff")
 
 object_tangible_wearables_belt_shared_belt_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s19_f.sat",
@@ -1011,7 +1011,7 @@ object_tangible_wearables_belt_shared_belt_s19 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3467220186
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s19, "object/tangible/wearables/belt/shared_belt_s19.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s19, "object/tangible/wearables/belt/shared_belt_s19.iff")
 
 object_tangible_wearables_belt_shared_belt_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s20_f.sat",
@@ -1065,4 +1065,4 @@ object_tangible_wearables_belt_shared_belt_s20 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3946177497
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_belt_shared_belt_s20, "object/tangible/wearables/belt/shared_belt_s20.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s20, "object/tangible/wearables/belt/shared_belt_s20.iff")

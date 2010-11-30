@@ -93,7 +93,7 @@ object_tangible_wearables_underwear_shared_underwear_bottom = SharedTangibleObje
 	clientObjectCRC = 3623370478
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_underwear_shared_underwear_bottom, "object/tangible/wearables/underwear/shared_underwear_bottom.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_underwear_shared_underwear_bottom, "object/tangible/wearables/underwear/shared_underwear_bottom.iff")
 
 object_tangible_wearables_underwear_shared_underwear_top = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/underwear_top_f.sat",
@@ -147,4 +147,4 @@ object_tangible_wearables_underwear_shared_underwear_top = SharedTangibleObjectT
 	clientObjectCRC = 467062673
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_underwear_shared_underwear_top, "object/tangible/wearables/underwear/shared_underwear_top.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_underwear_shared_underwear_top, "object/tangible/wearables/underwear/shared_underwear_top.iff")

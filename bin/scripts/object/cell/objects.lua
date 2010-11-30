@@ -83,4 +83,4 @@ object_cell_shared_cell = SharedCellObjectTemplate:new {
 	clientObjectCRC = 206832110
 }
 
-ObjectTemplates:addTemplate(object_cell_shared_cell, "object/cell/shared_cell.iff")
+ObjectTemplates:addClientTemplate(object_cell_shared_cell, "object/cell/shared_cell.iff")

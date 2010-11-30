@@ -117,7 +117,7 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2217042692
 }
 
-ObjectTemplates:addTemplate(object_creature_camera_shared_intro_camera, "object/creature/camera/shared_intro_camera.iff")
+ObjectTemplates:addClientTemplate(object_creature_camera_shared_intro_camera, "object/creature/camera/shared_intro_camera.iff")
 
 object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -195,4 +195,4 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 1416223243
 }
 
-ObjectTemplates:addTemplate(object_creature_camera_shared_intro_controller, "object/creature/camera/shared_intro_controller.iff")
+ObjectTemplates:addClientTemplate(object_creature_camera_shared_intro_controller, "object/creature/camera/shared_intro_controller.iff")

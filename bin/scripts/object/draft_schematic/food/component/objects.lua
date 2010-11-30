@@ -83,7 +83,7 @@ object_draft_schematic_food_component_shared_container_barrel = SharedDraftSchem
 	clientObjectCRC = 1809601710
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_barrel, "object/draft_schematic/food/component/shared_container_barrel.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_container_barrel, "object/draft_schematic/food/component/shared_container_barrel.iff")
 
 object_draft_schematic_food_component_shared_container_cask = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,7 +127,7 @@ object_draft_schematic_food_component_shared_container_cask = SharedDraftSchemat
 	clientObjectCRC = 2983185528
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_cask, "object/draft_schematic/food/component/shared_container_cask.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_container_cask, "object/draft_schematic/food/component/shared_container_cask.iff")
 
 object_draft_schematic_food_component_shared_container_large_glass = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -171,7 +171,7 @@ object_draft_schematic_food_component_shared_container_large_glass = SharedDraft
 	clientObjectCRC = 3740654207
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_large_glass, "object/draft_schematic/food/component/shared_container_large_glass.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_container_large_glass, "object/draft_schematic/food/component/shared_container_large_glass.iff")
 
 object_draft_schematic_food_component_shared_container_small_glass = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -215,7 +215,7 @@ object_draft_schematic_food_component_shared_container_small_glass = SharedDraft
 	clientObjectCRC = 1819609352
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_small_glass, "object/draft_schematic/food/component/shared_container_small_glass.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_container_small_glass, "object/draft_schematic/food/component/shared_container_small_glass.iff")
 
 object_draft_schematic_food_component_shared_ingredient_ball_of_dough = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -259,7 +259,7 @@ object_draft_schematic_food_component_shared_ingredient_ball_of_dough = SharedDr
 	clientObjectCRC = 797799084
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_ingredient_ball_of_dough, "object/draft_schematic/food/component/shared_ingredient_ball_of_dough.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_ingredient_ball_of_dough, "object/draft_schematic/food/component/shared_ingredient_ball_of_dough.iff")
 
 object_draft_schematic_food_component_shared_ingredient_carbosyrup = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -303,4 +303,4 @@ object_draft_schematic_food_component_shared_ingredient_carbosyrup = SharedDraft
 	clientObjectCRC = 752274773
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_ingredient_carbosyrup, "object/draft_schematic/food/component/shared_ingredient_carbosyrup.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_ingredient_carbosyrup, "object/draft_schematic/food/component/shared_ingredient_carbosyrup.iff")

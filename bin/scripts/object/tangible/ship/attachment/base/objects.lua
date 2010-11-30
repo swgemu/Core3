@@ -93,4 +93,4 @@ object_tangible_ship_attachment_base_shared_base_ship_attachment = SharedTangibl
 	clientObjectCRC = 1517850046
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_base_shared_base_ship_attachment, "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_base_shared_base_ship_attachment, "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff")

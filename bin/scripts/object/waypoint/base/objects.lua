@@ -83,7 +83,7 @@ object_waypoint_base_shared_base_waypoint = SharedWaypointObjectTemplate:new {
 	clientObjectCRC = 80681620
 }
 
-ObjectTemplates:addTemplate(object_waypoint_base_shared_base_waypoint, "object/waypoint/base/shared_base_waypoint.iff")
+ObjectTemplates:addClientTemplate(object_waypoint_base_shared_base_waypoint, "object/waypoint/base/shared_base_waypoint.iff")
 
 object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,4 +127,4 @@ object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new 
 	clientObjectCRC = 2511311124
 }
 
-ObjectTemplates:addTemplate(object_waypoint_base_shared_waypoint_default, "object/waypoint/base/shared_waypoint_default.iff")
+ObjectTemplates:addClientTemplate(object_waypoint_base_shared_waypoint_default, "object/waypoint/base/shared_waypoint_default.iff")

@@ -83,7 +83,7 @@ object_static_structure_nobuild_shared_nobuild_128 = SharedStaticObjectTemplate:
 	clientObjectCRC = 1784128829
 }
 
-ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_128, "object/static/structure/nobuild/shared_nobuild_128.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild_128, "object/static/structure/nobuild/shared_nobuild_128.iff")
 
 object_static_structure_nobuild_shared_nobuild_32 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
@@ -127,7 +127,7 @@ object_static_structure_nobuild_shared_nobuild_32 = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1076938945
 }
 
-ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_32, "object/static/structure/nobuild/shared_nobuild_32.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild_32, "object/static/structure/nobuild/shared_nobuild_32.iff")
 
 object_static_structure_nobuild_shared_nobuild_4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
@@ -171,7 +171,7 @@ object_static_structure_nobuild_shared_nobuild_4 = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 2917289526
 }
 
-ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_4, "object/static/structure/nobuild/shared_nobuild_4.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild_4, "object/static/structure/nobuild/shared_nobuild_4.iff")
 
 object_static_structure_nobuild_shared_nobuild_64 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
@@ -215,4 +215,4 @@ object_static_structure_nobuild_shared_nobuild_64 = SharedStaticObjectTemplate:n
 	clientObjectCRC = 2237054144
 }
 
-ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_64, "object/static/structure/nobuild/shared_nobuild_64.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild_64, "object/static/structure/nobuild/shared_nobuild_64.iff")

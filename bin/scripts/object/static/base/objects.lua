@@ -83,7 +83,7 @@ object_static_base_shared_static_base = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1732101595
 }
 
-ObjectTemplates:addTemplate(object_static_base_shared_static_base, "object/static/base/shared_static_base.iff")
+ObjectTemplates:addClientTemplate(object_static_base_shared_static_base, "object/static/base/shared_static_base.iff")
 
 object_static_base_shared_static_default = SharedStaticObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,4 +127,4 @@ object_static_base_shared_static_default = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4025184
 }
 
-ObjectTemplates:addTemplate(object_static_base_shared_static_default, "object/static/base/shared_static_default.iff")
+ObjectTemplates:addClientTemplate(object_static_base_shared_static_default, "object/static/base/shared_static_default.iff")

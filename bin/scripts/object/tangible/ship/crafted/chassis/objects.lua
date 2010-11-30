@@ -93,7 +93,7 @@ object_tangible_ship_crafted_chassis_shared_awing_deed = SharedTangibleObjectTem
 	clientObjectCRC = 195949306
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_awing_deed, "object/tangible/ship/crafted/chassis/shared_awing_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_awing_deed, "object/tangible/ship/crafted/chassis/shared_awing_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_base_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -147,7 +147,7 @@ object_tangible_ship_crafted_chassis_shared_base_deed = SharedTangibleObjectTemp
 	clientObjectCRC = 3908589416
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_base_deed, "object/tangible/ship/crafted/chassis/shared_base_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_base_deed, "object/tangible/ship/crafted/chassis/shared_base_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -201,7 +201,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed = SharedTang
 	clientObjectCRC = 2022853613
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s01_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -255,7 +255,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed = SharedTang
 	clientObjectCRC = 4259493619
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s02_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -309,7 +309,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed = SharedTang
 	clientObjectCRC = 2104628884
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s03_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -363,7 +363,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed = SharedTang
 	clientObjectCRC = 4089598328
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s04_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -417,7 +417,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed = SharedTang
 	clientObjectCRC = 3394693840
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s01_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -471,7 +471,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed = SharedTang
 	clientObjectCRC = 1327896526
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s02_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -525,7 +525,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed = SharedTang
 	clientObjectCRC = 3484858281
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s03_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -579,7 +579,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed = SharedTang
 	clientObjectCRC = 1090973765
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s04_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -633,7 +633,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed = SharedTan
 	clientObjectCRC = 1166754060
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s01_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -687,7 +687,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed = SharedTan
 	clientObjectCRC = 3237723154
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s02_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -741,7 +741,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed = SharedTan
 	clientObjectCRC = 1080761461
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s03_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s03_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -795,7 +795,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed = SharedTan
 	clientObjectCRC = 3470482329
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s04_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s04_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_bwing_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -849,7 +849,7 @@ object_tangible_ship_crafted_chassis_shared_bwing_deed = SharedTangibleObjectTem
 	clientObjectCRC = 3283460537
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_bwing_deed, "object/tangible/ship/crafted/chassis/shared_bwing_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_bwing_deed, "object/tangible/ship/crafted/chassis/shared_bwing_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -903,7 +903,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body = SharedTang
 	clientObjectCRC = 1060557321
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_body.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_body.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s01.apt",
@@ -957,7 +957,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base = Share
 	clientObjectCRC = 357847559
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_base.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s01.apt",
@@ -1011,7 +1011,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01 = Shared
 	clientObjectCRC = 2488529697
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_s01.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s02.apt",
@@ -1065,7 +1065,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02 = Shared
 	clientObjectCRC = 1329879990
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_s02.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1119,7 +1119,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body = SharedTang
 	clientObjectCRC = 1329933896
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body, "object/tangible/ship/crafted/chassis/shared_chassis_tiefighter_body.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body, "object/tangible/ship/crafted/chassis/shared_chassis_tiefighter_body.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_xwing_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -1173,7 +1173,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_body = SharedTangibleO
 	clientObjectCRC = 3155334906
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_body, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_body.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_body, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_body.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_cockpit.apt",
@@ -1227,7 +1227,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit = SharedTangib
 	clientObjectCRC = 629673787
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_cockpit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_cockpit.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
@@ -1281,7 +1281,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l = SharedTangibl
 	clientObjectCRC = 3961922253
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_wing_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_wing_l.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
@@ -1335,7 +1335,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r = SharedTangibl
 	clientObjectCRC = 2633197406
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_wing_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_wing_r.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_z95_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -1389,7 +1389,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_body = SharedTangibleObj
 	clientObjectCRC = 2732841781
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_body, "object/tangible/ship/crafted/chassis/shared_chassis_z95_body.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_body, "object/tangible/ship/crafted/chassis/shared_chassis_z95_body.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_cockpit.apt",
@@ -1443,7 +1443,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit = SharedTangible
 	clientObjectCRC = 3648939768
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit, "object/tangible/ship/crafted/chassis/shared_chassis_z95_cockpit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit, "object/tangible/ship/crafted/chassis/shared_chassis_z95_cockpit.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
@@ -1497,7 +1497,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l = SharedTangibleO
 	clientObjectCRC = 1398777236
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l, "object/tangible/ship/crafted/chassis/shared_chassis_z95_wing_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l, "object/tangible/ship/crafted/chassis/shared_chassis_z95_wing_l.iff")
 
 object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
@@ -1551,7 +1551,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r = SharedTangibleO
 	clientObjectCRC = 596303879
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r, "object/tangible/ship/crafted/chassis/shared_chassis_z95_wing_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r, "object/tangible/ship/crafted/chassis/shared_chassis_z95_wing_r.iff")
 
 object_tangible_ship_crafted_chassis_shared_decimator_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -1605,7 +1605,7 @@ object_tangible_ship_crafted_chassis_shared_decimator_deed = SharedTangibleObjec
 	clientObjectCRC = 3999213800
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_decimator_deed, "object/tangible/ship/crafted/chassis/shared_decimator_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_decimator_deed, "object/tangible/ship/crafted/chassis/shared_decimator_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_firespray_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -1659,7 +1659,7 @@ object_tangible_ship_crafted_chassis_shared_firespray_deed = SharedTangibleObjec
 	clientObjectCRC = 2182625467
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_firespray_deed, "object/tangible/ship/crafted/chassis/shared_firespray_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_firespray_deed, "object/tangible/ship/crafted/chassis/shared_firespray_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -1713,7 +1713,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed = SharedTangible
 	clientObjectCRC = 3022324315
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed, "object/tangible/ship/crafted/chassis/shared_hutt_heavy_s01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed, "object/tangible/ship/crafted/chassis/shared_hutt_heavy_s01_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -1767,7 +1767,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed = SharedTangible
 	clientObjectCRC = 827719493
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed, "object/tangible/ship/crafted/chassis/shared_hutt_heavy_s02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed, "object/tangible/ship/crafted/chassis/shared_hutt_heavy_s02_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -1821,7 +1821,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed = SharedTangible
 	clientObjectCRC = 115450726
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed, "object/tangible/ship/crafted/chassis/shared_hutt_light_s01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed, "object/tangible/ship/crafted/chassis/shared_hutt_light_s01_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -1875,7 +1875,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed = SharedTangible
 	clientObjectCRC = 2207342200
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed, "object/tangible/ship/crafted/chassis/shared_hutt_light_s02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed, "object/tangible/ship/crafted/chassis/shared_hutt_light_s02_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -1929,7 +1929,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed = SharedTangibl
 	clientObjectCRC = 2588212465
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed, "object/tangible/ship/crafted/chassis/shared_hutt_medium_s01_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed, "object/tangible/ship/crafted/chassis/shared_hutt_medium_s01_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -1983,7 +1983,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed = SharedTangibl
 	clientObjectCRC = 523502063
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed, "object/tangible/ship/crafted/chassis/shared_hutt_medium_s02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed, "object/tangible/ship/crafted/chassis/shared_hutt_medium_s02_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2037,7 +2037,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed = SharedTangib
 	clientObjectCRC = 2817524533
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed, "object/tangible/ship/crafted/chassis/shared_hutt_turret_ship_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed, "object/tangible/ship/crafted/chassis/shared_hutt_turret_ship_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
@@ -2091,7 +2091,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s01 = SharedTangibleObje
 	clientObjectCRC = 1195910466
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s01, "object/tangible/ship/crafted/chassis/shared_texture_kit_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s01, "object/tangible/ship/crafted/chassis/shared_texture_kit_s01.iff")
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
@@ -2145,7 +2145,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s02 = SharedTangibleObje
 	clientObjectCRC = 2623507925
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s02, "object/tangible/ship/crafted/chassis/shared_texture_kit_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s02, "object/tangible/ship/crafted/chassis/shared_texture_kit_s02.iff")
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
@@ -2199,7 +2199,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s03 = SharedTangibleObje
 	clientObjectCRC = 3578980952
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s03, "object/tangible/ship/crafted/chassis/shared_texture_kit_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s03, "object/tangible/ship/crafted/chassis/shared_texture_kit_s03.iff")
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
@@ -2253,7 +2253,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s04 = SharedTangibleObje
 	clientObjectCRC = 783401292
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s04, "object/tangible/ship/crafted/chassis/shared_texture_kit_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s04, "object/tangible/ship/crafted/chassis/shared_texture_kit_s04.iff")
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
@@ -2307,7 +2307,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s05 = SharedTangibleObje
 	clientObjectCRC = 1740416705
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s05, "object/tangible/ship/crafted/chassis/shared_texture_kit_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s05, "object/tangible/ship/crafted/chassis/shared_texture_kit_s05.iff")
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
@@ -2361,7 +2361,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s06 = SharedTangibleObje
 	clientObjectCRC = 3165326934
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s06, "object/tangible/ship/crafted/chassis/shared_texture_kit_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s06, "object/tangible/ship/crafted/chassis/shared_texture_kit_s06.iff")
 
 object_tangible_ship_crafted_chassis_shared_tie_in_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2415,7 +2415,7 @@ object_tangible_ship_crafted_chassis_shared_tie_in_deed = SharedTangibleObjectTe
 	clientObjectCRC = 2702453550
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tie_in_deed, "object/tangible/ship/crafted/chassis/shared_tie_in_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tie_in_deed, "object/tangible/ship/crafted/chassis/shared_tie_in_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2469,7 +2469,7 @@ object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed = SharedTangible
 	clientObjectCRC = 3943699590
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed, "object/tangible/ship/crafted/chassis/shared_tie_light_duty_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed, "object/tangible/ship/crafted/chassis/shared_tie_light_duty_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_tieadvanced_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2523,7 +2523,7 @@ object_tangible_ship_crafted_chassis_shared_tieadvanced_deed = SharedTangibleObj
 	clientObjectCRC = 535268402
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieadvanced_deed, "object/tangible/ship/crafted/chassis/shared_tieadvanced_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tieadvanced_deed, "object/tangible/ship/crafted/chassis/shared_tieadvanced_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_tieaggressor_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2577,7 +2577,7 @@ object_tangible_ship_crafted_chassis_shared_tieaggressor_deed = SharedTangibleOb
 	clientObjectCRC = 738814292
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieaggressor_deed, "object/tangible/ship/crafted/chassis/shared_tieaggressor_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tieaggressor_deed, "object/tangible/ship/crafted/chassis/shared_tieaggressor_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_tiebomber_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2631,7 +2631,7 @@ object_tangible_ship_crafted_chassis_shared_tiebomber_deed = SharedTangibleObjec
 	clientObjectCRC = 2145194763
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tiebomber_deed, "object/tangible/ship/crafted/chassis/shared_tiebomber_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tiebomber_deed, "object/tangible/ship/crafted/chassis/shared_tiebomber_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_tiefighter_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2685,7 +2685,7 @@ object_tangible_ship_crafted_chassis_shared_tiefighter_deed = SharedTangibleObje
 	clientObjectCRC = 1456733944
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tiefighter_deed, "object/tangible/ship/crafted/chassis/shared_tiefighter_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tiefighter_deed, "object/tangible/ship/crafted/chassis/shared_tiefighter_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2739,7 +2739,7 @@ object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed = SharedTangible
 	clientObjectCRC = 3416726666
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed, "object/tangible/ship/crafted/chassis/shared_tieinterceptor_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed, "object/tangible/ship/crafted/chassis/shared_tieinterceptor_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_tieoppressor_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2793,7 +2793,7 @@ object_tangible_ship_crafted_chassis_shared_tieoppressor_deed = SharedTangibleOb
 	clientObjectCRC = 471077979
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieoppressor_deed, "object/tangible/ship/crafted/chassis/shared_tieoppressor_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tieoppressor_deed, "object/tangible/ship/crafted/chassis/shared_tieoppressor_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_xwing_customization_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
@@ -2847,7 +2847,7 @@ object_tangible_ship_crafted_chassis_shared_xwing_customization_kit = SharedTang
 	clientObjectCRC = 3720915529
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_xwing_customization_kit, "object/tangible/ship/crafted/chassis/shared_xwing_customization_kit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_xwing_customization_kit, "object/tangible/ship/crafted/chassis/shared_xwing_customization_kit.iff")
 
 object_tangible_ship_crafted_chassis_shared_xwing_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2901,7 +2901,7 @@ object_tangible_ship_crafted_chassis_shared_xwing_deed = SharedTangibleObjectTem
 	clientObjectCRC = 371125137
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_xwing_deed, "object/tangible/ship/crafted/chassis/shared_xwing_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_xwing_deed, "object/tangible/ship/crafted/chassis/shared_xwing_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_ykl37r_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -2955,7 +2955,7 @@ object_tangible_ship_crafted_chassis_shared_ykl37r_deed = SharedTangibleObjectTe
 	clientObjectCRC = 829078012
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_ykl37r_deed, "object/tangible/ship/crafted/chassis/shared_ykl37r_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_ykl37r_deed, "object/tangible/ship/crafted/chassis/shared_ykl37r_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_yt1300_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -3009,7 +3009,7 @@ object_tangible_ship_crafted_chassis_shared_yt1300_deed = SharedTangibleObjectTe
 	clientObjectCRC = 2624812962
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_yt1300_deed, "object/tangible/ship/crafted/chassis/shared_yt1300_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_yt1300_deed, "object/tangible/ship/crafted/chassis/shared_yt1300_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_ywing_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -3063,7 +3063,7 @@ object_tangible_ship_crafted_chassis_shared_ywing_deed = SharedTangibleObjectTem
 	clientObjectCRC = 1374233936
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_ywing_deed, "object/tangible/ship/crafted/chassis/shared_ywing_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_ywing_deed, "object/tangible/ship/crafted/chassis/shared_ywing_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -3117,7 +3117,7 @@ object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed = SharedTangibl
 	clientObjectCRC = 3027627051
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed, "object/tangible/ship/crafted/chassis/shared_ywing_longprobe_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed, "object/tangible/ship/crafted/chassis/shared_ywing_longprobe_deed.iff")
 
 object_tangible_ship_crafted_chassis_shared_z95_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
@@ -3171,4 +3171,4 @@ object_tangible_ship_crafted_chassis_shared_z95_deed = SharedTangibleObjectTempl
 	clientObjectCRC = 689633436
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_z95_deed, "object/tangible/ship/crafted/chassis/shared_z95_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_z95_deed, "object/tangible/ship/crafted/chassis/shared_z95_deed.iff")

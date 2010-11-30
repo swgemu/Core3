@@ -93,4 +93,4 @@ object_tangible_newbie_tutorial_shared_debris = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 4070737588
 }
 
-ObjectTemplates:addTemplate(object_tangible_newbie_tutorial_shared_debris, "object/tangible/newbie_tutorial/shared_debris.iff")
+ObjectTemplates:addClientTemplate(object_tangible_newbie_tutorial_shared_debris, "object/tangible/newbie_tutorial/shared_debris.iff")

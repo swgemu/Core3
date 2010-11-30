@@ -97,7 +97,7 @@ object_weapon_melee_baton_shared_baton_gaderiffi = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 1521219232
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_baton_shared_baton_gaderiffi, "object/weapon/melee/baton/shared_baton_gaderiffi.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_baton_gaderiffi, "object/weapon/melee/baton/shared_baton_gaderiffi.iff")
 
 object_weapon_melee_baton_shared_baton_stun = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_baton_stun.apt",
@@ -155,7 +155,7 @@ object_weapon_melee_baton_shared_baton_stun = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 2740869510
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_baton_shared_baton_stun, "object/weapon/melee/baton/shared_baton_stun.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_baton_stun, "object/weapon/melee/baton/shared_baton_stun.iff")
 
 object_weapon_melee_baton_shared_victor_baton_gaderiffi = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_baton_gaderiffi.apt",
@@ -213,4 +213,4 @@ object_weapon_melee_baton_shared_victor_baton_gaderiffi = SharedWeaponObjectTemp
 	clientObjectCRC = 926540761
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_baton_shared_victor_baton_gaderiffi, "object/weapon/melee/baton/shared_victor_baton_gaderiffi.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_victor_baton_gaderiffi, "object/weapon/melee/baton/shared_victor_baton_gaderiffi.iff")

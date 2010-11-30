@@ -117,4 +117,4 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 	clientObjectCRC = 2389040637
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_general_shared_skill_trainer, "object/creature/npc/general/shared_skill_trainer.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_general_shared_skill_trainer, "object/creature/npc/general/shared_skill_trainer.iff")

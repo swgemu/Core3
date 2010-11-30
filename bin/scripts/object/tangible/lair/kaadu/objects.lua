@@ -93,7 +93,7 @@ object_tangible_lair_kaadu_shared_lair_kaadu = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3251401603
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu, "object/tangible/lair/kaadu/shared_lair_kaadu.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kaadu_shared_lair_kaadu, "object/tangible/lair/kaadu/shared_lair_kaadu.iff")
 
 object_tangible_lair_kaadu_shared_lair_kaadu_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_kaadu_shared_lair_kaadu_forest = SharedTangibleObjectTempla
 	clientObjectCRC = 1694176520
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_forest, "object/tangible/lair/kaadu/shared_lair_kaadu_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_forest, "object/tangible/lair/kaadu/shared_lair_kaadu_forest.iff")
 
 object_tangible_lair_kaadu_shared_lair_kaadu_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -201,7 +201,7 @@ object_tangible_lair_kaadu_shared_lair_kaadu_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 2596368393
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_grassland, "object/tangible/lair/kaadu/shared_lair_kaadu_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_grassland, "object/tangible/lair/kaadu/shared_lair_kaadu_grassland.iff")
 
 object_tangible_lair_kaadu_shared_lair_kaadu_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -255,4 +255,4 @@ object_tangible_lair_kaadu_shared_lair_kaadu_swamp = SharedTangibleObjectTemplat
 	clientObjectCRC = 2515299649
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_swamp, "object/tangible/lair/kaadu/shared_lair_kaadu_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_swamp, "object/tangible/lair/kaadu/shared_lair_kaadu_swamp.iff")

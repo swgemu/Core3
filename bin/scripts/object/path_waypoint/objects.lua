@@ -93,7 +93,7 @@ object_path_waypoint_shared_path_waypoint = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2053891523
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint, "object/path_waypoint/shared_path_waypoint.iff")
+ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint, "object/path_waypoint/shared_path_waypoint.iff")
 
 object_path_waypoint_shared_path_waypoint_auto_spawn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_path.apt",
@@ -147,7 +147,7 @@ object_path_waypoint_shared_path_waypoint_auto_spawn = SharedTangibleObjectTempl
 	clientObjectCRC = 3534396119
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_auto_spawn, "object/path_waypoint/shared_path_waypoint_auto_spawn.iff")
+ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint_auto_spawn, "object/path_waypoint/shared_path_waypoint_auto_spawn.iff")
 
 object_path_waypoint_shared_path_waypoint_city = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_npc.apt",
@@ -201,7 +201,7 @@ object_path_waypoint_shared_path_waypoint_city = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3085605223
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_city, "object/path_waypoint/shared_path_waypoint_city.iff")
+ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint_city, "object/path_waypoint/shared_path_waypoint_city.iff")
 
 object_path_waypoint_shared_path_waypoint_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_droid.apt",
@@ -255,7 +255,7 @@ object_path_waypoint_shared_path_waypoint_droid = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3986061853
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_droid, "object/path_waypoint/shared_path_waypoint_droid.iff")
+ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint_droid, "object/path_waypoint/shared_path_waypoint_droid.iff")
 
 object_path_waypoint_shared_path_waypoint_patrol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_guard.apt",
@@ -309,4 +309,4 @@ object_path_waypoint_shared_path_waypoint_patrol = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1010698515
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_patrol, "object/path_waypoint/shared_path_waypoint_patrol.iff")
+ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint_patrol, "object/path_waypoint/shared_path_waypoint_patrol.iff")

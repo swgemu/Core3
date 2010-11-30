@@ -93,7 +93,7 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset = SharedTangibleObjectTemplat
 	clientObjectCRC = 3508293768
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset, "object/tangible/lair/gurnaset/shared_lair_gurnaset.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset, "object/tangible/lair/gurnaset/shared_lair_gurnaset.iff")
 
 object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland = SharedTangibleObj
 	clientObjectCRC = 535348522
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland, "object/tangible/lair/gurnaset/shared_lair_gurnaset_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland, "object/tangible/lair/gurnaset/shared_lair_gurnaset_grassland.iff")
 
 object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain = SharedTangibleObje
 	clientObjectCRC = 3153084894
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain, "object/tangible/lair/gurnaset/shared_lair_gurnaset_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain, "object/tangible/lair/gurnaset/shared_lair_gurnaset_mountain.iff")

@@ -93,7 +93,7 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1441198347
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel, "object/tangible/lair/vog_eel/shared_lair_vog_eel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel, "object/tangible/lair/vog_eel/shared_lair_vog_eel.iff")
 
 object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObje
 	clientObjectCRC = 1951814673
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater, "object/tangible/lair/vog_eel/shared_lair_vog_eel_underwater.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater, "object/tangible/lair/vog_eel/shared_lair_vog_eel_underwater.iff")

@@ -93,7 +93,7 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat = SharedTangibleObjectTemplat
 	clientObjectCRC = 2053935761
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat, "object/tangible/lair/womp_rat/shared_lair_womp_rat.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat, "object/tangible/lair/womp_rat/shared_lair_womp_rat.iff")
 
 object_tangible_lair_womp_rat_shared_lair_womp_rat_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat_desert = SharedTangibleObject
 	clientObjectCRC = 703016558
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat_desert, "object/tangible/lair/womp_rat/shared_lair_womp_rat_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat_desert, "object/tangible/lair/womp_rat/shared_lair_womp_rat_desert.iff")

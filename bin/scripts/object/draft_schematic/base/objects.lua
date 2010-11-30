@@ -83,7 +83,7 @@ object_draft_schematic_base_shared_base_draft_schematic = SharedDraftSchematicOb
 	clientObjectCRC = 1315482063
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_base_shared_base_draft_schematic, "object/draft_schematic/base/shared_base_draft_schematic.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_base_shared_base_draft_schematic, "object/draft_schematic/base/shared_base_draft_schematic.iff")
 
 object_draft_schematic_base_shared_draft_schematic_default = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,7 +127,7 @@ object_draft_schematic_base_shared_draft_schematic_default = SharedDraftSchemati
 	clientObjectCRC = 1088794197
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_base_shared_draft_schematic_default, "object/draft_schematic/base/shared_draft_schematic_default.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_base_shared_draft_schematic_default, "object/draft_schematic/base/shared_draft_schematic_default.iff")
 
 object_draft_schematic_base_shared_missing_schematic_substitute = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -171,4 +171,4 @@ object_draft_schematic_base_shared_missing_schematic_substitute = SharedDraftSch
 	clientObjectCRC = 1521547401
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_base_shared_missing_schematic_substitute, "object/draft_schematic/base/shared_missing_schematic_substitute.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_base_shared_missing_schematic_substitute, "object/draft_schematic/base/shared_missing_schematic_substitute.iff")

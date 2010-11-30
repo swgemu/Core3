@@ -96,7 +96,7 @@ object_building_faction_perk_hq_shared_hq_s01 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 4204337141
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01, "object/building/faction_perk/hq/shared_hq_s01.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01, "object/building/faction_perk/hq/shared_hq_s01.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -153,7 +153,7 @@ object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2419085158
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_fp, "object/building/faction_perk/hq/shared_hq_s01_fp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_fp, "object/building/faction_perk/hq/shared_hq_s01_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -210,7 +210,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 554924775
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_imp, "object/building/faction_perk/hq/shared_hq_s01_imp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_imp, "object/building/faction_perk/hq/shared_hq_s01_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -267,7 +267,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 2016142793
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_imp_pvp, "object/building/faction_perk/hq/shared_hq_s01_imp_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_imp_pvp, "object/building/faction_perk/hq/shared_hq_s01_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -324,7 +324,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 1119051291
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel, "object/building/faction_perk/hq/shared_hq_s01_rebel.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel, "object/building/faction_perk/hq/shared_hq_s01_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -381,7 +381,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 769008513
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s01_rebel_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s01_rebel_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -438,7 +438,7 @@ object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 563003234
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02, "object/building/faction_perk/hq/shared_hq_s02.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02, "object/building/faction_perk/hq/shared_hq_s02.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -495,7 +495,7 @@ object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2094148152
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_fp, "object/building/faction_perk/hq/shared_hq_s02_fp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_fp, "object/building/faction_perk/hq/shared_hq_s02_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -552,7 +552,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 869505530
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_imp, "object/building/faction_perk/hq/shared_hq_s02_imp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_imp, "object/building/faction_perk/hq/shared_hq_s02_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -609,7 +609,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 1158021745
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_imp_pvp, "object/building/faction_perk/hq/shared_hq_s02_imp_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_imp_pvp, "object/building/faction_perk/hq/shared_hq_s02_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -666,7 +666,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 1283967902
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel, "object/building/faction_perk/hq/shared_hq_s02_rebel.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel, "object/building/faction_perk/hq/shared_hq_s02_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -723,7 +723,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 1309089184
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s02_rebel_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s02_rebel_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -780,7 +780,7 @@ object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 1753471215
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03, "object/building/faction_perk/hq/shared_hq_s03.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03, "object/building/faction_perk/hq/shared_hq_s03.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -837,7 +837,7 @@ object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 661911282
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_fp, "object/building/faction_perk/hq/shared_hq_s03_fp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_fp, "object/building/faction_perk/hq/shared_hq_s03_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -894,7 +894,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 3251843996
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_imp, "object/building/faction_perk/hq/shared_hq_s03_imp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_imp, "object/building/faction_perk/hq/shared_hq_s03_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -951,7 +951,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 2913096820
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_imp_pvp, "object/building/faction_perk/hq/shared_hq_s03_imp_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_imp_pvp, "object/building/faction_perk/hq/shared_hq_s03_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1008,7 +1008,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 3039513712
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel, "object/building/faction_perk/hq/shared_hq_s03_rebel.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel, "object/building/faction_perk/hq/shared_hq_s03_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1065,7 +1065,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 2466839762
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s03_rebel_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s03_rebel_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,7 +1122,7 @@ object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 2472604667
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04, "object/building/faction_perk/hq/shared_hq_s04.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04, "object/building/faction_perk/hq/shared_hq_s04.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1179,7 +1179,7 @@ object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2715286835
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_fp, "object/building/faction_perk/hq/shared_hq_s04_fp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_fp, "object/building/faction_perk/hq/shared_hq_s04_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1236,7 +1236,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 374497216
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_imp, "object/building/faction_perk/hq/shared_hq_s04_imp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_imp, "object/building/faction_perk/hq/shared_hq_s04_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1293,7 +1293,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 1063111937
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_imp_pvp, "object/building/faction_perk/hq/shared_hq_s04_imp_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_imp_pvp, "object/building/faction_perk/hq/shared_hq_s04_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1350,7 +1350,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 1357832340
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel, "object/building/faction_perk/hq/shared_hq_s04_rebel.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel, "object/building/faction_perk/hq/shared_hq_s04_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1407,7 +1407,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 2309317090
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s04_rebel_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s04_rebel_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1464,7 +1464,7 @@ object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 3664614518
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05, "object/building/faction_perk/hq/shared_hq_s05.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05, "object/building/faction_perk/hq/shared_hq_s05.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1521,7 +1521,7 @@ object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 4202045945
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_fp, "object/building/faction_perk/hq/shared_hq_s05_fp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_fp, "object/building/faction_perk/hq/shared_hq_s05_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1578,7 +1578,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 3830642086
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_imp, "object/building/faction_perk/hq/shared_hq_s05_imp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_imp, "object/building/faction_perk/hq/shared_hq_s05_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1635,7 +1635,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 3623459588
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_imp_pvp, "object/building/faction_perk/hq/shared_hq_s05_imp_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_imp_pvp, "object/building/faction_perk/hq/shared_hq_s05_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1692,7 +1692,7 @@ object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 2839701370
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel, "object/building/faction_perk/hq/shared_hq_s05_rebel.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel, "object/building/faction_perk/hq/shared_hq_s05_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1749,4 +1749,4 @@ object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 1420460176
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s05_rebel_pvp.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s05_rebel_pvp.iff")

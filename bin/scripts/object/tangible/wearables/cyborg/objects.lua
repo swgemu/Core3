@@ -93,7 +93,7 @@ object_tangible_wearables_cyborg_shared_arm_l_s01 = SharedTangibleObjectTemplate
 	clientObjectCRC = 3312405691
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_arm_l_s01, "object/tangible/wearables/cyborg/shared_arm_l_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_arm_l_s01, "object/tangible/wearables/cyborg/shared_arm_l_s01.iff")
 
 object_tangible_wearables_cyborg_shared_arm_r_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_arm_r_m.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_cyborg_shared_arm_r_s01 = SharedTangibleObjectTemplate
 	clientObjectCRC = 1995018857
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_arm_r_s01, "object/tangible/wearables/cyborg/shared_arm_r_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_arm_r_s01, "object/tangible/wearables/cyborg/shared_arm_r_s01.iff")
 
 object_tangible_wearables_cyborg_shared_forearm_l_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_forearm_l_m.sat",
@@ -201,7 +201,7 @@ object_tangible_wearables_cyborg_shared_forearm_l_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 641245984
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_forearm_l_s01, "object/tangible/wearables/cyborg/shared_forearm_l_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_forearm_l_s01, "object/tangible/wearables/cyborg/shared_forearm_l_s01.iff")
 
 object_tangible_wearables_cyborg_shared_forearm_r_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_forearm_r_m.sat",
@@ -255,7 +255,7 @@ object_tangible_wearables_cyborg_shared_forearm_r_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 2512289266
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_forearm_r_s01, "object/tangible/wearables/cyborg/shared_forearm_r_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_forearm_r_s01, "object/tangible/wearables/cyborg/shared_forearm_r_s01.iff")
 
 object_tangible_wearables_cyborg_shared_hand_l_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_hand_l_m.sat",
@@ -309,7 +309,7 @@ object_tangible_wearables_cyborg_shared_hand_l_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1621320928
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_hand_l_s01, "object/tangible/wearables/cyborg/shared_hand_l_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_hand_l_s01, "object/tangible/wearables/cyborg/shared_hand_l_s01.iff")
 
 object_tangible_wearables_cyborg_shared_hand_r_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_hand_r_m.sat",
@@ -363,4 +363,4 @@ object_tangible_wearables_cyborg_shared_hand_r_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3542465074
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_hand_r_s01, "object/tangible/wearables/cyborg/shared_hand_r_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_hand_r_s01, "object/tangible/wearables/cyborg/shared_hand_r_s01.iff")

@@ -93,4 +93,4 @@ object_tangible_loadbeacon_shared_loadbeacon_base = SharedTangibleObjectTemplate
 	clientObjectCRC = 1191572337
 }
 
-ObjectTemplates:addTemplate(object_tangible_loadbeacon_shared_loadbeacon_base, "object/tangible/loadbeacon/shared_loadbeacon_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_loadbeacon_shared_loadbeacon_base, "object/tangible/loadbeacon/shared_loadbeacon_base.iff")

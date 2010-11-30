@@ -83,7 +83,7 @@ object_draft_schematic_weapon_shared_2h_sword_scythe = SharedDraftSchematicObjec
 	clientObjectCRC = 326162791
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_2h_sword_scythe, "object/draft_schematic/weapon/shared_2h_sword_scythe.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_2h_sword_scythe, "object/draft_schematic/weapon/shared_2h_sword_scythe.iff")
 
 object_draft_schematic_weapon_shared_axe = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,7 +127,7 @@ object_draft_schematic_weapon_shared_axe = SharedDraftSchematicObjectTemplate:ne
 	clientObjectCRC = 234370130
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_axe, "object/draft_schematic/weapon/shared_axe.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_axe, "object/draft_schematic/weapon/shared_axe.iff")
 
 object_draft_schematic_weapon_shared_axe_vibro = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -171,7 +171,7 @@ object_draft_schematic_weapon_shared_axe_vibro = SharedDraftSchematicObjectTempl
 	clientObjectCRC = 3948376002
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_axe_vibro, "object/draft_schematic/weapon/shared_axe_vibro.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_axe_vibro, "object/draft_schematic/weapon/shared_axe_vibro.iff")
 
 object_draft_schematic_weapon_shared_baton_gaderiffi = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -215,7 +215,7 @@ object_draft_schematic_weapon_shared_baton_gaderiffi = SharedDraftSchematicObjec
 	clientObjectCRC = 3052026379
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_baton_gaderiffi, "object/draft_schematic/weapon/shared_baton_gaderiffi.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_baton_gaderiffi, "object/draft_schematic/weapon/shared_baton_gaderiffi.iff")
 
 object_draft_schematic_weapon_shared_baton_stun = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -259,7 +259,7 @@ object_draft_schematic_weapon_shared_baton_stun = SharedDraftSchematicObjectTemp
 	clientObjectCRC = 366533914
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_baton_stun, "object/draft_schematic/weapon/shared_baton_stun.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_baton_stun, "object/draft_schematic/weapon/shared_baton_stun.iff")
 
 object_draft_schematic_weapon_shared_battleaxe = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -303,7 +303,7 @@ object_draft_schematic_weapon_shared_battleaxe = SharedDraftSchematicObjectTempl
 	clientObjectCRC = 597539800
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_battleaxe, "object/draft_schematic/weapon/shared_battleaxe.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_battleaxe, "object/draft_schematic/weapon/shared_battleaxe.iff")
 
 object_draft_schematic_weapon_shared_blaster_cannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -347,7 +347,7 @@ object_draft_schematic_weapon_shared_blaster_cannon = SharedDraftSchematicObject
 	clientObjectCRC = 2782911899
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_blaster_cannon, "object/draft_schematic/weapon/shared_blaster_cannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_blaster_cannon, "object/draft_schematic/weapon/shared_blaster_cannon.iff")
 
 object_draft_schematic_weapon_shared_carbine_blaster_cdef = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,7 +391,7 @@ object_draft_schematic_weapon_shared_carbine_blaster_cdef = SharedDraftSchematic
 	clientObjectCRC = 76251144
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_carbine_blaster_cdef, "object/draft_schematic/weapon/shared_carbine_blaster_cdef.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_carbine_blaster_cdef, "object/draft_schematic/weapon/shared_carbine_blaster_cdef.iff")
 
 object_draft_schematic_weapon_shared_carbine_quest_smuggler_underslung = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -435,7 +435,7 @@ object_draft_schematic_weapon_shared_carbine_quest_smuggler_underslung = SharedD
 	clientObjectCRC = 1906569024
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_carbine_quest_smuggler_underslung, "object/draft_schematic/weapon/shared_carbine_quest_smuggler_underslung.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_carbine_quest_smuggler_underslung, "object/draft_schematic/weapon/shared_carbine_quest_smuggler_underslung.iff")
 
 object_draft_schematic_weapon_shared_cleaver = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -479,7 +479,7 @@ object_draft_schematic_weapon_shared_cleaver = SharedDraftSchematicObjectTemplat
 	clientObjectCRC = 3092291953
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_cleaver, "object/draft_schematic/weapon/shared_cleaver.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_cleaver, "object/draft_schematic/weapon/shared_cleaver.iff")
 
 object_draft_schematic_weapon_shared_executioners_hack = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -523,7 +523,7 @@ object_draft_schematic_weapon_shared_executioners_hack = SharedDraftSchematicObj
 	clientObjectCRC = 3647480452
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_executioners_hack, "object/draft_schematic/weapon/shared_executioners_hack.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_executioners_hack, "object/draft_schematic/weapon/shared_executioners_hack.iff")
 
 object_draft_schematic_weapon_shared_heavy_acid_beam = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -567,7 +567,7 @@ object_draft_schematic_weapon_shared_heavy_acid_beam = SharedDraftSchematicObjec
 	clientObjectCRC = 2797052196
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_heavy_acid_beam, "object/draft_schematic/weapon/shared_heavy_acid_beam.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_heavy_acid_beam, "object/draft_schematic/weapon/shared_heavy_acid_beam.iff")
 
 object_draft_schematic_weapon_shared_heavy_lightning_beam = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -611,7 +611,7 @@ object_draft_schematic_weapon_shared_heavy_lightning_beam = SharedDraftSchematic
 	clientObjectCRC = 1279236123
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_heavy_lightning_beam, "object/draft_schematic/weapon/shared_heavy_lightning_beam.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_heavy_lightning_beam, "object/draft_schematic/weapon/shared_heavy_lightning_beam.iff")
 
 object_draft_schematic_weapon_shared_heavy_particle_beam = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -655,7 +655,7 @@ object_draft_schematic_weapon_shared_heavy_particle_beam = SharedDraftSchematicO
 	clientObjectCRC = 3571649817
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_heavy_particle_beam, "object/draft_schematic/weapon/shared_heavy_particle_beam.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_heavy_particle_beam, "object/draft_schematic/weapon/shared_heavy_particle_beam.iff")
 
 object_draft_schematic_weapon_shared_heavy_rocket_launcher = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -699,7 +699,7 @@ object_draft_schematic_weapon_shared_heavy_rocket_launcher = SharedDraftSchemati
 	clientObjectCRC = 2478786473
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_heavy_rocket_launcher, "object/draft_schematic/weapon/shared_heavy_rocket_launcher.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_heavy_rocket_launcher, "object/draft_schematic/weapon/shared_heavy_rocket_launcher.iff")
 
 object_draft_schematic_weapon_shared_ion_cannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -743,7 +743,7 @@ object_draft_schematic_weapon_shared_ion_cannon = SharedDraftSchematicObjectTemp
 	clientObjectCRC = 1667625944
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_ion_cannon, "object/draft_schematic/weapon/shared_ion_cannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_ion_cannon, "object/draft_schematic/weapon/shared_ion_cannon.iff")
 
 object_draft_schematic_weapon_shared_katana = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -787,7 +787,7 @@ object_draft_schematic_weapon_shared_katana = SharedDraftSchematicObjectTemplate
 	clientObjectCRC = 3248015659
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_katana, "object/draft_schematic/weapon/shared_katana.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_katana, "object/draft_schematic/weapon/shared_katana.iff")
 
 object_draft_schematic_weapon_shared_knife_stone = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -831,7 +831,7 @@ object_draft_schematic_weapon_shared_knife_stone = SharedDraftSchematicObjectTem
 	clientObjectCRC = 1343310494
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_knife_stone, "object/draft_schematic/weapon/shared_knife_stone.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knife_stone, "object/draft_schematic/weapon/shared_knife_stone.iff")
 
 object_draft_schematic_weapon_shared_knife_survival = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -875,7 +875,7 @@ object_draft_schematic_weapon_shared_knife_survival = SharedDraftSchematicObject
 	clientObjectCRC = 1433859593
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_knife_survival, "object/draft_schematic/weapon/shared_knife_survival.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knife_survival, "object/draft_schematic/weapon/shared_knife_survival.iff")
 
 object_draft_schematic_weapon_shared_knife_twilek_dagger = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -919,7 +919,7 @@ object_draft_schematic_weapon_shared_knife_twilek_dagger = SharedDraftSchematicO
 	clientObjectCRC = 1451327989
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_knife_twilek_dagger, "object/draft_schematic/weapon/shared_knife_twilek_dagger.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knife_twilek_dagger, "object/draft_schematic/weapon/shared_knife_twilek_dagger.iff")
 
 object_draft_schematic_weapon_shared_knife_vibroblade = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -963,7 +963,7 @@ object_draft_schematic_weapon_shared_knife_vibroblade = SharedDraftSchematicObje
 	clientObjectCRC = 3275846224
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_knife_vibroblade, "object/draft_schematic/weapon/shared_knife_vibroblade.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knife_vibroblade, "object/draft_schematic/weapon/shared_knife_vibroblade.iff")
 
 object_draft_schematic_weapon_shared_knuckler_vibro = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1007,7 +1007,7 @@ object_draft_schematic_weapon_shared_knuckler_vibro = SharedDraftSchematicObject
 	clientObjectCRC = 1403681275
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_knuckler_vibro, "object/draft_schematic/weapon/shared_knuckler_vibro.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knuckler_vibro, "object/draft_schematic/weapon/shared_knuckler_vibro.iff")
 
 object_draft_schematic_weapon_shared_lance_nightsister = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1051,7 +1051,7 @@ object_draft_schematic_weapon_shared_lance_nightsister = SharedDraftSchematicObj
 	clientObjectCRC = 4133019254
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_lance_nightsister, "object/draft_schematic/weapon/shared_lance_nightsister.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_lance_nightsister, "object/draft_schematic/weapon/shared_lance_nightsister.iff")
 
 object_draft_schematic_weapon_shared_lance_vibro = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1095,7 +1095,7 @@ object_draft_schematic_weapon_shared_lance_vibro = SharedDraftSchematicObjectTem
 	clientObjectCRC = 2399536859
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_lance_vibro, "object/draft_schematic/weapon/shared_lance_vibro.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_lance_vibro, "object/draft_schematic/weapon/shared_lance_vibro.iff")
 
 object_draft_schematic_weapon_shared_lance_vibro_controller_fp = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1139,7 +1139,7 @@ object_draft_schematic_weapon_shared_lance_vibro_controller_fp = SharedDraftSche
 	clientObjectCRC = 2188173511
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_lance_vibro_controller_fp, "object/draft_schematic/weapon/shared_lance_vibro_controller_fp.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_lance_vibro_controller_fp, "object/draft_schematic/weapon/shared_lance_vibro_controller_fp.iff")
 
 object_draft_schematic_weapon_shared_laser_cannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1183,7 +1183,7 @@ object_draft_schematic_weapon_shared_laser_cannon = SharedDraftSchematicObjectTe
 	clientObjectCRC = 3159431738
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_laser_cannon, "object/draft_schematic/weapon/shared_laser_cannon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_laser_cannon, "object/draft_schematic/weapon/shared_laser_cannon.iff")
 
 object_draft_schematic_weapon_shared_lightsaber_basic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1227,7 +1227,7 @@ object_draft_schematic_weapon_shared_lightsaber_basic = SharedDraftSchematicObje
 	clientObjectCRC = 190437753
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_lightsaber_basic, "object/draft_schematic/weapon/shared_lightsaber_basic.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_lightsaber_basic, "object/draft_schematic/weapon/shared_lightsaber_basic.iff")
 
 object_draft_schematic_weapon_shared_maul = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1271,7 +1271,7 @@ object_draft_schematic_weapon_shared_maul = SharedDraftSchematicObjectTemplate:n
 	clientObjectCRC = 1312097223
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_maul, "object/draft_schematic/weapon/shared_maul.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_maul, "object/draft_schematic/weapon/shared_maul.iff")
 
 object_draft_schematic_weapon_shared_pistol_blaster_cdef = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1315,7 +1315,7 @@ object_draft_schematic_weapon_shared_pistol_blaster_cdef = SharedDraftSchematicO
 	clientObjectCRC = 2266178839
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_blaster_cdef, "object/draft_schematic/weapon/shared_pistol_blaster_cdef.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_cdef, "object/draft_schematic/weapon/shared_pistol_blaster_cdef.iff")
 
 object_draft_schematic_weapon_shared_pistol_blaster_d18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1359,7 +1359,7 @@ object_draft_schematic_weapon_shared_pistol_blaster_d18 = SharedDraftSchematicOb
 	clientObjectCRC = 1379546989
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_blaster_d18, "object/draft_schematic/weapon/shared_pistol_blaster_d18.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_d18, "object/draft_schematic/weapon/shared_pistol_blaster_d18.iff")
 
 object_draft_schematic_weapon_shared_pistol_blaster_dh17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1403,7 +1403,7 @@ object_draft_schematic_weapon_shared_pistol_blaster_dh17 = SharedDraftSchematicO
 	clientObjectCRC = 2372103801
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_blaster_dh17, "object/draft_schematic/weapon/shared_pistol_blaster_dh17.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_dh17, "object/draft_schematic/weapon/shared_pistol_blaster_dh17.iff")
 
 object_draft_schematic_weapon_shared_pistol_blaster_dl44 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1447,7 +1447,7 @@ object_draft_schematic_weapon_shared_pistol_blaster_dl44 = SharedDraftSchematicO
 	clientObjectCRC = 408961925
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_blaster_dl44, "object/draft_schematic/weapon/shared_pistol_blaster_dl44.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_dl44, "object/draft_schematic/weapon/shared_pistol_blaster_dl44.iff")
 
 object_draft_schematic_weapon_shared_pistol_blaster_dl44_metal = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1491,7 +1491,7 @@ object_draft_schematic_weapon_shared_pistol_blaster_dl44_metal = SharedDraftSche
 	clientObjectCRC = 2361580915
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_blaster_dl44_metal, "object/draft_schematic/weapon/shared_pistol_blaster_dl44_metal.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_dl44_metal, "object/draft_schematic/weapon/shared_pistol_blaster_dl44_metal.iff")
 
 object_draft_schematic_weapon_shared_pistol_blaster_power5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1535,7 +1535,7 @@ object_draft_schematic_weapon_shared_pistol_blaster_power5 = SharedDraftSchemati
 	clientObjectCRC = 4124760882
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_blaster_power5, "object/draft_schematic/weapon/shared_pistol_blaster_power5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_power5, "object/draft_schematic/weapon/shared_pistol_blaster_power5.iff")
 
 object_draft_schematic_weapon_shared_pistol_blaster_scout_trooper = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1579,7 +1579,7 @@ object_draft_schematic_weapon_shared_pistol_blaster_scout_trooper = SharedDraftS
 	clientObjectCRC = 1147231467
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_blaster_scout_trooper, "object/draft_schematic/weapon/shared_pistol_blaster_scout_trooper.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_scout_trooper, "object/draft_schematic/weapon/shared_pistol_blaster_scout_trooper.iff")
 
 object_draft_schematic_weapon_shared_pistol_blaster_short_range_combat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1623,7 +1623,7 @@ object_draft_schematic_weapon_shared_pistol_blaster_short_range_combat = SharedD
 	clientObjectCRC = 3207190896
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_blaster_short_range_combat, "object/draft_schematic/weapon/shared_pistol_blaster_short_range_combat.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_short_range_combat, "object/draft_schematic/weapon/shared_pistol_blaster_short_range_combat.iff")
 
 object_draft_schematic_weapon_shared_pistol_de_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1667,7 +1667,7 @@ object_draft_schematic_weapon_shared_pistol_de_10 = SharedDraftSchematicObjectTe
 	clientObjectCRC = 1460478
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_de_10, "object/draft_schematic/weapon/shared_pistol_de_10.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_de_10, "object/draft_schematic/weapon/shared_pistol_de_10.iff")
 
 object_draft_schematic_weapon_shared_pistol_disrupter_dx2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1711,7 +1711,7 @@ object_draft_schematic_weapon_shared_pistol_disrupter_dx2 = SharedDraftSchematic
 	clientObjectCRC = 343860113
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_disrupter_dx2, "object/draft_schematic/weapon/shared_pistol_disrupter_dx2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_disrupter_dx2, "object/draft_schematic/weapon/shared_pistol_disrupter_dx2.iff")
 
 object_draft_schematic_weapon_shared_pistol_flechette_fwg5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1755,7 +1755,7 @@ object_draft_schematic_weapon_shared_pistol_flechette_fwg5 = SharedDraftSchemati
 	clientObjectCRC = 2825813273
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_flechette_fwg5, "object/draft_schematic/weapon/shared_pistol_flechette_fwg5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_flechette_fwg5, "object/draft_schematic/weapon/shared_pistol_flechette_fwg5.iff")
 
 object_draft_schematic_weapon_shared_pistol_flechette_fwg5_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1799,7 +1799,7 @@ object_draft_schematic_weapon_shared_pistol_flechette_fwg5_quest = SharedDraftSc
 	clientObjectCRC = 3441382387
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_flechette_fwg5_quest, "object/draft_schematic/weapon/shared_pistol_flechette_fwg5_quest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_flechette_fwg5_quest, "object/draft_schematic/weapon/shared_pistol_flechette_fwg5_quest.iff")
 
 object_draft_schematic_weapon_shared_pistol_geo_sonic_blaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1843,7 +1843,7 @@ object_draft_schematic_weapon_shared_pistol_geo_sonic_blaster = SharedDraftSchem
 	clientObjectCRC = 3419108874
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_geo_sonic_blaster, "object/draft_schematic/weapon/shared_pistol_geo_sonic_blaster.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_geo_sonic_blaster, "object/draft_schematic/weapon/shared_pistol_geo_sonic_blaster.iff")
 
 object_draft_schematic_weapon_shared_pistol_launcher = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1887,7 +1887,7 @@ object_draft_schematic_weapon_shared_pistol_launcher = SharedDraftSchematicObjec
 	clientObjectCRC = 1800323184
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_launcher, "object/draft_schematic/weapon/shared_pistol_launcher.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_launcher, "object/draft_schematic/weapon/shared_pistol_launcher.iff")
 
 object_draft_schematic_weapon_shared_pistol_projectile_striker = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1931,7 +1931,7 @@ object_draft_schematic_weapon_shared_pistol_projectile_striker = SharedDraftSche
 	clientObjectCRC = 70825547
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_projectile_striker, "object/draft_schematic/weapon/shared_pistol_projectile_striker.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_projectile_striker, "object/draft_schematic/weapon/shared_pistol_projectile_striker.iff")
 
 object_draft_schematic_weapon_shared_pistol_quest_imperial_navy_formal = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1975,7 +1975,7 @@ object_draft_schematic_weapon_shared_pistol_quest_imperial_navy_formal = SharedD
 	clientObjectCRC = 222927716
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_quest_imperial_navy_formal, "object/draft_schematic/weapon/shared_pistol_quest_imperial_navy_formal.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_quest_imperial_navy_formal, "object/draft_schematic/weapon/shared_pistol_quest_imperial_navy_formal.iff")
 
 object_draft_schematic_weapon_shared_pistol_republic_blaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2019,7 +2019,7 @@ object_draft_schematic_weapon_shared_pistol_republic_blaster = SharedDraftSchema
 	clientObjectCRC = 3999110437
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_republic_blaster, "object/draft_schematic/weapon/shared_pistol_republic_blaster.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_republic_blaster, "object/draft_schematic/weapon/shared_pistol_republic_blaster.iff")
 
 object_draft_schematic_weapon_shared_pistol_republic_blaster_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2063,7 +2063,7 @@ object_draft_schematic_weapon_shared_pistol_republic_blaster_quest = SharedDraft
 	clientObjectCRC = 1459893602
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_republic_blaster_quest, "object/draft_schematic/weapon/shared_pistol_republic_blaster_quest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_republic_blaster_quest, "object/draft_schematic/weapon/shared_pistol_republic_blaster_quest.iff")
 
 object_draft_schematic_weapon_shared_pistol_scatter = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2107,7 +2107,7 @@ object_draft_schematic_weapon_shared_pistol_scatter = SharedDraftSchematicObject
 	clientObjectCRC = 636138859
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_pistol_scatter, "object/draft_schematic/weapon/shared_pistol_scatter.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_scatter, "object/draft_schematic/weapon/shared_pistol_scatter.iff")
 
 object_draft_schematic_weapon_shared_poleaxe_vibro = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2151,7 +2151,7 @@ object_draft_schematic_weapon_shared_poleaxe_vibro = SharedDraftSchematicObjectT
 	clientObjectCRC = 1580001250
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_poleaxe_vibro, "object/draft_schematic/weapon/shared_poleaxe_vibro.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_poleaxe_vibro, "object/draft_schematic/weapon/shared_poleaxe_vibro.iff")
 
 object_draft_schematic_weapon_shared_razor_knuckler = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2195,7 +2195,7 @@ object_draft_schematic_weapon_shared_razor_knuckler = SharedDraftSchematicObject
 	clientObjectCRC = 158977907
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_razor_knuckler, "object/draft_schematic/weapon/shared_razor_knuckler.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_razor_knuckler, "object/draft_schematic/weapon/shared_razor_knuckler.iff")
 
 object_draft_schematic_weapon_shared_rifle_acid_beam = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2239,7 +2239,7 @@ object_draft_schematic_weapon_shared_rifle_acid_beam = SharedDraftSchematicObjec
 	clientObjectCRC = 2393268622
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_acid_beam, "object/draft_schematic/weapon/shared_rifle_acid_beam.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_acid_beam, "object/draft_schematic/weapon/shared_rifle_acid_beam.iff")
 
 object_draft_schematic_weapon_shared_rifle_beam = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2283,7 +2283,7 @@ object_draft_schematic_weapon_shared_rifle_beam = SharedDraftSchematicObjectTemp
 	clientObjectCRC = 2418671476
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_beam, "object/draft_schematic/weapon/shared_rifle_beam.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_beam, "object/draft_schematic/weapon/shared_rifle_beam.iff")
 
 object_draft_schematic_weapon_shared_rifle_berserker = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2327,7 +2327,7 @@ object_draft_schematic_weapon_shared_rifle_berserker = SharedDraftSchematicObjec
 	clientObjectCRC = 393845120
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_berserker, "object/draft_schematic/weapon/shared_rifle_berserker.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_berserker, "object/draft_schematic/weapon/shared_rifle_berserker.iff")
 
 object_draft_schematic_weapon_shared_rifle_blaster_cdef = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2371,7 +2371,7 @@ object_draft_schematic_weapon_shared_rifle_blaster_cdef = SharedDraftSchematicOb
 	clientObjectCRC = 3598018363
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_blaster_cdef, "object/draft_schematic/weapon/shared_rifle_blaster_cdef.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_cdef, "object/draft_schematic/weapon/shared_rifle_blaster_cdef.iff")
 
 object_draft_schematic_weapon_shared_rifle_blaster_dlt20 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2415,7 +2415,7 @@ object_draft_schematic_weapon_shared_rifle_blaster_dlt20 = SharedDraftSchematicO
 	clientObjectCRC = 1869102319
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_blaster_dlt20, "object/draft_schematic/weapon/shared_rifle_blaster_dlt20.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_dlt20, "object/draft_schematic/weapon/shared_rifle_blaster_dlt20.iff")
 
 object_draft_schematic_weapon_shared_rifle_blaster_dlt20a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2459,7 +2459,7 @@ object_draft_schematic_weapon_shared_rifle_blaster_dlt20a = SharedDraftSchematic
 	clientObjectCRC = 2174565787
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_blaster_dlt20a, "object/draft_schematic/weapon/shared_rifle_blaster_dlt20a.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_dlt20a, "object/draft_schematic/weapon/shared_rifle_blaster_dlt20a.iff")
 
 object_draft_schematic_weapon_shared_rifle_blaster_e11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2503,7 +2503,7 @@ object_draft_schematic_weapon_shared_rifle_blaster_e11 = SharedDraftSchematicObj
 	clientObjectCRC = 2213003971
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_blaster_e11, "object/draft_schematic/weapon/shared_rifle_blaster_e11.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_e11, "object/draft_schematic/weapon/shared_rifle_blaster_e11.iff")
 
 object_draft_schematic_weapon_shared_rifle_blaster_ionization_jawa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2547,7 +2547,7 @@ object_draft_schematic_weapon_shared_rifle_blaster_ionization_jawa = SharedDraft
 	clientObjectCRC = 2607432911
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_blaster_ionization_jawa, "object/draft_schematic/weapon/shared_rifle_blaster_ionization_jawa.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_ionization_jawa, "object/draft_schematic/weapon/shared_rifle_blaster_ionization_jawa.iff")
 
 object_draft_schematic_weapon_shared_rifle_blaster_laser_rifle = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2591,7 +2591,7 @@ object_draft_schematic_weapon_shared_rifle_blaster_laser_rifle = SharedDraftSche
 	clientObjectCRC = 621048174
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_blaster_laser_rifle, "object/draft_schematic/weapon/shared_rifle_blaster_laser_rifle.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_laser_rifle, "object/draft_schematic/weapon/shared_rifle_blaster_laser_rifle.iff")
 
 object_draft_schematic_weapon_shared_rifle_bowcaster = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2635,7 +2635,7 @@ object_draft_schematic_weapon_shared_rifle_bowcaster = SharedDraftSchematicObjec
 	clientObjectCRC = 4189243546
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_bowcaster, "object/draft_schematic/weapon/shared_rifle_bowcaster.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_bowcaster, "object/draft_schematic/weapon/shared_rifle_bowcaster.iff")
 
 object_draft_schematic_weapon_shared_rifle_disrupter_dxr6 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2679,7 +2679,7 @@ object_draft_schematic_weapon_shared_rifle_disrupter_dxr6 = SharedDraftSchematic
 	clientObjectCRC = 2244091215
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_disrupter_dxr6, "object/draft_schematic/weapon/shared_rifle_disrupter_dxr6.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_disrupter_dxr6, "object/draft_schematic/weapon/shared_rifle_disrupter_dxr6.iff")
 
 object_draft_schematic_weapon_shared_rifle_flame_thrower = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2723,7 +2723,7 @@ object_draft_schematic_weapon_shared_rifle_flame_thrower = SharedDraftSchematicO
 	clientObjectCRC = 1104931422
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_flame_thrower, "object/draft_schematic/weapon/shared_rifle_flame_thrower.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_flame_thrower, "object/draft_schematic/weapon/shared_rifle_flame_thrower.iff")
 
 object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2767,7 +2767,7 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine = SharedDr
 	clientObjectCRC = 1774809121
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_dh17_carbine.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_dh17_carbine.iff")
 
 object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine_snubnose = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2811,7 +2811,7 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine_snubnose =
 	clientObjectCRC = 2025642760
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine_snubnose, "object/draft_schematic/weapon/shared_rifle_light_blaster_dh17_carbine_snubnose.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine_snubnose, "object/draft_schematic/weapon/shared_rifle_light_blaster_dh17_carbine_snubnose.iff")
 
 object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2855,7 +2855,7 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine = SharedDra
 	clientObjectCRC = 24679666
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_e11_carbine.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_e11_carbine.iff")
 
 object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2899,7 +2899,7 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine_quest = Sha
 	clientObjectCRC = 3869068993
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine_quest, "object/draft_schematic/weapon/shared_rifle_light_blaster_e11_carbine_quest.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine_quest, "object/draft_schematic/weapon/shared_rifle_light_blaster_e11_carbine_quest.iff")
 
 object_draft_schematic_weapon_shared_rifle_light_blaster_ee3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2943,7 +2943,7 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_ee3 = SharedDraftSchema
 	clientObjectCRC = 1756442314
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_ee3, "object/draft_schematic/weapon/shared_rifle_light_blaster_ee3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_ee3, "object/draft_schematic/weapon/shared_rifle_light_blaster_ee3.iff")
 
 object_draft_schematic_weapon_shared_rifle_light_blaster_imperial_scout_carbine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2987,7 +2987,7 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_imperial_scout_carbine 
 	clientObjectCRC = 2997753388
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_imperial_scout_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_imperial_scout_carbine.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_imperial_scout_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_imperial_scout_carbine.iff")
 
 object_draft_schematic_weapon_shared_rifle_light_blaster_laser_carbine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3031,7 +3031,7 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_laser_carbine = SharedD
 	clientObjectCRC = 638676086
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_laser_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_laser_carbine.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_laser_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_laser_carbine.iff")
 
 object_draft_schematic_weapon_shared_rifle_lightning = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3075,7 +3075,7 @@ object_draft_schematic_weapon_shared_rifle_lightning = SharedDraftSchematicObjec
 	clientObjectCRC = 1659428780
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_lightning, "object/draft_schematic/weapon/shared_rifle_lightning.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_lightning, "object/draft_schematic/weapon/shared_rifle_lightning.iff")
 
 object_draft_schematic_weapon_shared_rifle_projectile_tusken = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3119,7 +3119,7 @@ object_draft_schematic_weapon_shared_rifle_projectile_tusken = SharedDraftSchema
 	clientObjectCRC = 112067557
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_projectile_tusken, "object/draft_schematic/weapon/shared_rifle_projectile_tusken.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_projectile_tusken, "object/draft_schematic/weapon/shared_rifle_projectile_tusken.iff")
 
 object_draft_schematic_weapon_shared_rifle_quest_rebel_longrifle = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3163,7 +3163,7 @@ object_draft_schematic_weapon_shared_rifle_quest_rebel_longrifle = SharedDraftSc
 	clientObjectCRC = 74294879
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_quest_rebel_longrifle, "object/draft_schematic/weapon/shared_rifle_quest_rebel_longrifle.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_quest_rebel_longrifle, "object/draft_schematic/weapon/shared_rifle_quest_rebel_longrifle.iff")
 
 object_draft_schematic_weapon_shared_rifle_sonic_sg82 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3207,7 +3207,7 @@ object_draft_schematic_weapon_shared_rifle_sonic_sg82 = SharedDraftSchematicObje
 	clientObjectCRC = 722478817
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_sonic_sg82, "object/draft_schematic/weapon/shared_rifle_sonic_sg82.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_sonic_sg82, "object/draft_schematic/weapon/shared_rifle_sonic_sg82.iff")
 
 object_draft_schematic_weapon_shared_rifle_spray_stick_stohli = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3251,7 +3251,7 @@ object_draft_schematic_weapon_shared_rifle_spray_stick_stohli = SharedDraftSchem
 	clientObjectCRC = 3338440548
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_spray_stick_stohli, "object/draft_schematic/weapon/shared_rifle_spray_stick_stohli.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_spray_stick_stohli, "object/draft_schematic/weapon/shared_rifle_spray_stick_stohli.iff")
 
 object_draft_schematic_weapon_shared_rifle_t21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3295,7 +3295,7 @@ object_draft_schematic_weapon_shared_rifle_t21 = SharedDraftSchematicObjectTempl
 	clientObjectCRC = 546888390
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_t21, "object/draft_schematic/weapon/shared_rifle_t21.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_t21, "object/draft_schematic/weapon/shared_rifle_t21.iff")
 
 object_draft_schematic_weapon_shared_rifle_tangle_gun7 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3339,7 +3339,7 @@ object_draft_schematic_weapon_shared_rifle_tangle_gun7 = SharedDraftSchematicObj
 	clientObjectCRC = 306573674
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_tangle_gun7, "object/draft_schematic/weapon/shared_rifle_tangle_gun7.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_tangle_gun7, "object/draft_schematic/weapon/shared_rifle_tangle_gun7.iff")
 
 object_draft_schematic_weapon_shared_rifle_tenloss_disrupter = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3383,7 +3383,7 @@ object_draft_schematic_weapon_shared_rifle_tenloss_disrupter = SharedDraftSchema
 	clientObjectCRC = 4198608458
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_rifle_tenloss_disrupter, "object/draft_schematic/weapon/shared_rifle_tenloss_disrupter.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_tenloss_disrupter, "object/draft_schematic/weapon/shared_rifle_tenloss_disrupter.iff")
 
 object_draft_schematic_weapon_shared_staff = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3427,7 +3427,7 @@ object_draft_schematic_weapon_shared_staff = SharedDraftSchematicObjectTemplate:
 	clientObjectCRC = 2766431643
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_staff, "object/draft_schematic/weapon/shared_staff.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_staff, "object/draft_schematic/weapon/shared_staff.iff")
 
 object_draft_schematic_weapon_shared_staff_metal = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3471,7 +3471,7 @@ object_draft_schematic_weapon_shared_staff_metal = SharedDraftSchematicObjectTem
 	clientObjectCRC = 1376786982
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_staff_metal, "object/draft_schematic/weapon/shared_staff_metal.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_staff_metal, "object/draft_schematic/weapon/shared_staff_metal.iff")
 
 object_draft_schematic_weapon_shared_staff_reinforced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3515,7 +3515,7 @@ object_draft_schematic_weapon_shared_staff_reinforced = SharedDraftSchematicObje
 	clientObjectCRC = 2748771750
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_staff_reinforced, "object/draft_schematic/weapon/shared_staff_reinforced.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_staff_reinforced, "object/draft_schematic/weapon/shared_staff_reinforced.iff")
 
 object_draft_schematic_weapon_shared_sword = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3559,7 +3559,7 @@ object_draft_schematic_weapon_shared_sword = SharedDraftSchematicObjectTemplate:
 	clientObjectCRC = 3572901439
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_sword, "object/draft_schematic/weapon/shared_sword.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_sword, "object/draft_schematic/weapon/shared_sword.iff")
 
 object_draft_schematic_weapon_shared_sword_curved = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3603,7 +3603,7 @@ object_draft_schematic_weapon_shared_sword_curved = SharedDraftSchematicObjectTe
 	clientObjectCRC = 2999681334
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_sword_curved, "object/draft_schematic/weapon/shared_sword_curved.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_sword_curved, "object/draft_schematic/weapon/shared_sword_curved.iff")
 
 object_draft_schematic_weapon_shared_sword_ryyk_blade = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3647,7 +3647,7 @@ object_draft_schematic_weapon_shared_sword_ryyk_blade = SharedDraftSchematicObje
 	clientObjectCRC = 3464681484
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_sword_ryyk_blade, "object/draft_schematic/weapon/shared_sword_ryyk_blade.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_sword_ryyk_blade, "object/draft_schematic/weapon/shared_sword_ryyk_blade.iff")
 
 object_draft_schematic_weapon_shared_turbo_laser = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3691,4 +3691,4 @@ object_draft_schematic_weapon_shared_turbo_laser = SharedDraftSchematicObjectTem
 	clientObjectCRC = 3719216124
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_weapon_shared_turbo_laser, "object/draft_schematic/weapon/shared_turbo_laser.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_turbo_laser, "object/draft_schematic/weapon/shared_turbo_laser.iff")

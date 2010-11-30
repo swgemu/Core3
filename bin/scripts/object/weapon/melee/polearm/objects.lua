@@ -97,7 +97,7 @@ object_weapon_melee_polearm_shared_lance_controllerfp = SharedWeaponObjectTempla
 	clientObjectCRC = 1316875243
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_controllerfp, "object/weapon/melee/polearm/shared_lance_controllerfp.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_controllerfp, "object/weapon/melee/polearm/shared_lance_controllerfp.iff")
 
 object_weapon_melee_polearm_shared_lance_controllerfp_nightsister = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_controller.apt",
@@ -155,7 +155,7 @@ object_weapon_melee_polearm_shared_lance_controllerfp_nightsister = SharedWeapon
 	clientObjectCRC = 3796866830
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_controllerfp_nightsister, "object/weapon/melee/polearm/shared_lance_controllerfp_nightsister.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_controllerfp_nightsister, "object/weapon/melee/polearm/shared_lance_controllerfp_nightsister.iff")
 
 object_weapon_melee_polearm_shared_lance_lightsaber_01 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -213,7 +213,7 @@ object_weapon_melee_polearm_shared_lance_lightsaber_01 = SharedWeaponObjectTempl
 	clientObjectCRC = 3828775483
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_lightsaber_01, "object/weapon/melee/polearm/shared_lance_lightsaber_01.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_lightsaber_01, "object/weapon/melee/polearm/shared_lance_lightsaber_01.iff")
 
 object_weapon_melee_polearm_shared_lance_lightsaber_02 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
@@ -271,7 +271,7 @@ object_weapon_melee_polearm_shared_lance_lightsaber_02 = SharedWeaponObjectTempl
 	clientObjectCRC = 1059181228
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_lightsaber_02, "object/weapon/melee/polearm/shared_lance_lightsaber_02.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_lightsaber_02, "object/weapon/melee/polearm/shared_lance_lightsaber_02.iff")
 
 object_weapon_melee_polearm_shared_lance_nightsister = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_nightsister.apt",
@@ -329,7 +329,7 @@ object_weapon_melee_polearm_shared_lance_nightsister = SharedWeaponObjectTemplat
 	clientObjectCRC = 1613461036
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_nightsister, "object/weapon/melee/polearm/shared_lance_nightsister.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_nightsister, "object/weapon/melee/polearm/shared_lance_nightsister.iff")
 
 object_weapon_melee_polearm_shared_lance_nightsister_npc_version = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_nightsister.apt",
@@ -387,7 +387,7 @@ object_weapon_melee_polearm_shared_lance_nightsister_npc_version = SharedWeaponO
 	clientObjectCRC = 770226321
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_nightsister_npc_version, "object/weapon/melee/polearm/shared_lance_nightsister_npc_version.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_nightsister_npc_version, "object/weapon/melee/polearm/shared_lance_nightsister_npc_version.iff")
 
 object_weapon_melee_polearm_shared_lance_staff_janta = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s01.apt",
@@ -445,7 +445,7 @@ object_weapon_melee_polearm_shared_lance_staff_janta = SharedWeaponObjectTemplat
 	clientObjectCRC = 1705789500
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_janta, "object/weapon/melee/polearm/shared_lance_staff_janta.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_staff_janta, "object/weapon/melee/polearm/shared_lance_staff_janta.iff")
 
 object_weapon_melee_polearm_shared_lance_staff_metal = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_metal_s01.apt",
@@ -503,7 +503,7 @@ object_weapon_melee_polearm_shared_lance_staff_metal = SharedWeaponObjectTemplat
 	clientObjectCRC = 978782032
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_metal, "object/weapon/melee/polearm/shared_lance_staff_metal.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_staff_metal, "object/weapon/melee/polearm/shared_lance_staff_metal.iff")
 
 object_weapon_melee_polearm_shared_lance_staff_wood_s1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s01.apt",
@@ -561,7 +561,7 @@ object_weapon_melee_polearm_shared_lance_staff_wood_s1 = SharedWeaponObjectTempl
 	clientObjectCRC = 1200142292
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_wood_s1, "object/weapon/melee/polearm/shared_lance_staff_wood_s1.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_staff_wood_s1, "object/weapon/melee/polearm/shared_lance_staff_wood_s1.iff")
 
 object_weapon_melee_polearm_shared_lance_staff_wood_s2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s02.apt",
@@ -619,7 +619,7 @@ object_weapon_melee_polearm_shared_lance_staff_wood_s2 = SharedWeaponObjectTempl
 	clientObjectCRC = 2627673923
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_wood_s2, "object/weapon/melee/polearm/shared_lance_staff_wood_s2.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_staff_wood_s2, "object/weapon/melee/polearm/shared_lance_staff_wood_s2.iff")
 
 object_weapon_melee_polearm_shared_lance_vibrolance = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibrolance.apt",
@@ -677,7 +677,7 @@ object_weapon_melee_polearm_shared_lance_vibrolance = SharedWeaponObjectTemplate
 	clientObjectCRC = 22784428
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_vibrolance, "object/weapon/melee/polearm/shared_lance_vibrolance.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_lance_vibrolance, "object/weapon/melee/polearm/shared_lance_vibrolance.iff")
 
 object_weapon_melee_polearm_shared_polearm_vibro_axe = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibroaxe.apt",
@@ -735,4 +735,4 @@ object_weapon_melee_polearm_shared_polearm_vibro_axe = SharedWeaponObjectTemplat
 	clientObjectCRC = 1723256113
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_polearm_vibro_axe, "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_shared_polearm_vibro_axe, "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff")

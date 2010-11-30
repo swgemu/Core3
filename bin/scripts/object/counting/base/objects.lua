@@ -93,7 +93,7 @@ object_counting_base_shared_base_counting = SharedCountingObjectTemplate:new {
 	clientObjectCRC = 2904726131
 }
 
-ObjectTemplates:addTemplate(object_counting_base_shared_base_counting, "object/counting/base/shared_base_counting.iff")
+ObjectTemplates:addClientTemplate(object_counting_base_shared_base_counting, "object/counting/base/shared_base_counting.iff")
 
 object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new {
 	appearanceFilename = "",
@@ -147,4 +147,4 @@ object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new 
 	clientObjectCRC = 3211286444
 }
 
-ObjectTemplates:addTemplate(object_counting_base_shared_counting_default, "object/counting/base/shared_counting_default.iff")
+ObjectTemplates:addClientTemplate(object_counting_base_shared_counting_default, "object/counting/base/shared_counting_default.iff")

@@ -93,4 +93,4 @@ object_tangible_medicine_base_shared_base_medicine = SharedTangibleObjectTemplat
 	clientObjectCRC = 832067310
 }
 
-ObjectTemplates:addTemplate(object_tangible_medicine_base_shared_base_medicine, "object/tangible/medicine/base/shared_base_medicine.iff")
+ObjectTemplates:addClientTemplate(object_tangible_medicine_base_shared_base_medicine, "object/tangible/medicine/base/shared_base_medicine.iff")

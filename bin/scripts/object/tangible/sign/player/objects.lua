@@ -93,7 +93,7 @@ object_tangible_sign_player_shared_house_address = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2527534357
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_shared_house_address, "object/tangible/sign/player/shared_house_address.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_house_address, "object/tangible/sign/player/shared_house_address.iff")
 
 object_tangible_sign_player_shared_house_address_corellia = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_corl_hanging.apt",
@@ -147,7 +147,7 @@ object_tangible_sign_player_shared_house_address_corellia = SharedTangibleObject
 	clientObjectCRC = 1770300189
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_shared_house_address_corellia, "object/tangible/sign/player/shared_house_address_corellia.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_house_address_corellia, "object/tangible/sign/player/shared_house_address_corellia.iff")
 
 object_tangible_sign_player_shared_house_address_naboo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_nboo_hanging.apt",
@@ -201,7 +201,7 @@ object_tangible_sign_player_shared_house_address_naboo = SharedTangibleObjectTem
 	clientObjectCRC = 3585850510
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_shared_house_address_naboo, "object/tangible/sign/player/shared_house_address_naboo.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_house_address_naboo, "object/tangible/sign/player/shared_house_address_naboo.iff")
 
 object_tangible_sign_player_shared_house_address_tatooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_tato_hanging.apt",
@@ -255,7 +255,7 @@ object_tangible_sign_player_shared_house_address_tatooine = SharedTangibleObject
 	clientObjectCRC = 1439154818
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_shared_house_address_tatooine, "object/tangible/sign/player/shared_house_address_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_house_address_tatooine, "object/tangible/sign/player/shared_house_address_tatooine.iff")
 
 object_tangible_sign_player_shared_shop_sign_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s01.apt",
@@ -309,7 +309,7 @@ object_tangible_sign_player_shared_shop_sign_s01 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3889554743
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_shared_shop_sign_s01, "object/tangible/sign/player/shared_shop_sign_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_shop_sign_s01, "object/tangible/sign/player/shared_shop_sign_s01.iff")
 
 object_tangible_sign_player_shared_shop_sign_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s02.apt",
@@ -363,7 +363,7 @@ object_tangible_sign_player_shared_shop_sign_s02 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1019366816
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_shared_shop_sign_s02, "object/tangible/sign/player/shared_shop_sign_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_shop_sign_s02, "object/tangible/sign/player/shared_shop_sign_s02.iff")
 
 object_tangible_sign_player_shared_shop_sign_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s03.apt",
@@ -417,7 +417,7 @@ object_tangible_sign_player_shared_shop_sign_s03 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1976511021
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_shared_shop_sign_s03, "object/tangible/sign/player/shared_shop_sign_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_shop_sign_s03, "object/tangible/sign/player/shared_shop_sign_s03.iff")
 
 object_tangible_sign_player_shared_shop_sign_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s04.apt",
@@ -471,4 +471,4 @@ object_tangible_sign_player_shared_shop_sign_s04 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2385248569
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_player_shared_shop_sign_s04, "object/tangible/sign/player/shared_shop_sign_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_shop_sign_s04, "object/tangible/sign/player/shared_shop_sign_s04.iff")

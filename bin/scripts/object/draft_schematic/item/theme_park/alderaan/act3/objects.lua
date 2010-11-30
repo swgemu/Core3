@@ -83,4 +83,4 @@ object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype =
 	clientObjectCRC = 3578248809
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype, "object/draft_schematic/item/theme_park/alderaan/act3/shared_dead_eye_prototype.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype, "object/draft_schematic/item/theme_park/alderaan/act3/shared_dead_eye_prototype.iff")

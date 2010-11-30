@@ -93,7 +93,7 @@ object_tangible_component_dna_shared_dna_sample_above_average = SharedTangibleOb
 	clientObjectCRC = 3272908463
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_above_average, "object/tangible/component/dna/shared_dna_sample_above_average.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_above_average, "object/tangible/component/dna/shared_dna_sample_above_average.iff")
 
 object_tangible_component_dna_shared_dna_sample_average = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
@@ -147,7 +147,7 @@ object_tangible_component_dna_shared_dna_sample_average = SharedTangibleObjectTe
 	clientObjectCRC = 2524715920
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_average, "object/tangible/component/dna/shared_dna_sample_average.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_average, "object/tangible/component/dna/shared_dna_sample_average.iff")
 
 object_tangible_component_dna_shared_dna_sample_below_average = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
@@ -201,7 +201,7 @@ object_tangible_component_dna_shared_dna_sample_below_average = SharedTangibleOb
 	clientObjectCRC = 675784259
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_below_average, "object/tangible/component/dna/shared_dna_sample_below_average.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_below_average, "object/tangible/component/dna/shared_dna_sample_below_average.iff")
 
 object_tangible_component_dna_shared_dna_sample_high = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
@@ -255,7 +255,7 @@ object_tangible_component_dna_shared_dna_sample_high = SharedTangibleObjectTempl
 	clientObjectCRC = 3034626514
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_high, "object/tangible/component/dna/shared_dna_sample_high.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_high, "object/tangible/component/dna/shared_dna_sample_high.iff")
 
 object_tangible_component_dna_shared_dna_sample_low = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
@@ -309,7 +309,7 @@ object_tangible_component_dna_shared_dna_sample_low = SharedTangibleObjectTempla
 	clientObjectCRC = 2579345010
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_low, "object/tangible/component/dna/shared_dna_sample_low.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_low, "object/tangible/component/dna/shared_dna_sample_low.iff")
 
 object_tangible_component_dna_shared_dna_sample_very_high = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
@@ -363,7 +363,7 @@ object_tangible_component_dna_shared_dna_sample_very_high = SharedTangibleObject
 	clientObjectCRC = 299885620
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_very_high, "object/tangible/component/dna/shared_dna_sample_very_high.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_very_high, "object/tangible/component/dna/shared_dna_sample_very_high.iff")
 
 object_tangible_component_dna_shared_dna_sample_very_low = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
@@ -417,7 +417,7 @@ object_tangible_component_dna_shared_dna_sample_very_low = SharedTangibleObjectT
 	clientObjectCRC = 1076609940
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_very_low, "object/tangible/component/dna/shared_dna_sample_very_low.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_very_low, "object/tangible/component/dna/shared_dna_sample_very_low.iff")
 
 object_tangible_component_dna_shared_dna_template_angler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -471,7 +471,7 @@ object_tangible_component_dna_shared_dna_template_angler = SharedTangibleObjectT
 	clientObjectCRC = 461916189
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_angler, "object/tangible/component/dna/shared_dna_template_angler.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_angler, "object/tangible/component/dna/shared_dna_template_angler.iff")
 
 object_tangible_component_dna_shared_dna_template_bantha = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -525,7 +525,7 @@ object_tangible_component_dna_shared_dna_template_bantha = SharedTangibleObjectT
 	clientObjectCRC = 726704759
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bantha, "object/tangible/component/dna/shared_dna_template_bantha.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bantha, "object/tangible/component/dna/shared_dna_template_bantha.iff")
 
 object_tangible_component_dna_shared_dna_template_bearded_jax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -579,7 +579,7 @@ object_tangible_component_dna_shared_dna_template_bearded_jax = SharedTangibleOb
 	clientObjectCRC = 727178963
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bearded_jax, "object/tangible/component/dna/shared_dna_template_bearded_jax.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bearded_jax, "object/tangible/component/dna/shared_dna_template_bearded_jax.iff")
 
 object_tangible_component_dna_shared_dna_template_blurrg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -633,7 +633,7 @@ object_tangible_component_dna_shared_dna_template_blurrg = SharedTangibleObjectT
 	clientObjectCRC = 1265107329
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_blurrg, "object/tangible/component/dna/shared_dna_template_blurrg.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_blurrg, "object/tangible/component/dna/shared_dna_template_blurrg.iff")
 
 object_tangible_component_dna_shared_dna_template_bol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -687,7 +687,7 @@ object_tangible_component_dna_shared_dna_template_bol = SharedTangibleObjectTemp
 	clientObjectCRC = 706373854
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bol, "object/tangible/component/dna/shared_dna_template_bol.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bol, "object/tangible/component/dna/shared_dna_template_bol.iff")
 
 object_tangible_component_dna_shared_dna_template_bolle_bol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -741,7 +741,7 @@ object_tangible_component_dna_shared_dna_template_bolle_bol = SharedTangibleObje
 	clientObjectCRC = 214227430
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bolle_bol, "object/tangible/component/dna/shared_dna_template_bolle_bol.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bolle_bol, "object/tangible/component/dna/shared_dna_template_bolle_bol.iff")
 
 object_tangible_component_dna_shared_dna_template_bolma = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -795,7 +795,7 @@ object_tangible_component_dna_shared_dna_template_bolma = SharedTangibleObjectTe
 	clientObjectCRC = 1395080056
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bolma, "object/tangible/component/dna/shared_dna_template_bolma.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bolma, "object/tangible/component/dna/shared_dna_template_bolma.iff")
 
 object_tangible_component_dna_shared_dna_template_brackaset = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -849,7 +849,7 @@ object_tangible_component_dna_shared_dna_template_brackaset = SharedTangibleObje
 	clientObjectCRC = 3633553517
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_brackaset, "object/tangible/component/dna/shared_dna_template_brackaset.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_brackaset, "object/tangible/component/dna/shared_dna_template_brackaset.iff")
 
 object_tangible_component_dna_shared_dna_template_carrion_spat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -903,7 +903,7 @@ object_tangible_component_dna_shared_dna_template_carrion_spat = SharedTangibleO
 	clientObjectCRC = 1875152726
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_carrion_spat, "object/tangible/component/dna/shared_dna_template_carrion_spat.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_carrion_spat, "object/tangible/component/dna/shared_dna_template_carrion_spat.iff")
 
 object_tangible_component_dna_shared_dna_template_choku = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -957,7 +957,7 @@ object_tangible_component_dna_shared_dna_template_choku = SharedTangibleObjectTe
 	clientObjectCRC = 262963315
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_choku, "object/tangible/component/dna/shared_dna_template_choku.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_choku, "object/tangible/component/dna/shared_dna_template_choku.iff")
 
 object_tangible_component_dna_shared_dna_template_dalyrake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1011,7 +1011,7 @@ object_tangible_component_dna_shared_dna_template_dalyrake = SharedTangibleObjec
 	clientObjectCRC = 1214055048
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_dalyrake, "object/tangible/component/dna/shared_dna_template_dalyrake.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_dalyrake, "object/tangible/component/dna/shared_dna_template_dalyrake.iff")
 
 object_tangible_component_dna_shared_dna_template_dewback = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1065,7 +1065,7 @@ object_tangible_component_dna_shared_dna_template_dewback = SharedTangibleObject
 	clientObjectCRC = 1144992157
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_dewback, "object/tangible/component/dna/shared_dna_template_dewback.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_dewback, "object/tangible/component/dna/shared_dna_template_dewback.iff")
 
 object_tangible_component_dna_shared_dna_template_eopie = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1119,7 +1119,7 @@ object_tangible_component_dna_shared_dna_template_eopie = SharedTangibleObjectTe
 	clientObjectCRC = 1680199838
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_eopie, "object/tangible/component/dna/shared_dna_template_eopie.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_eopie, "object/tangible/component/dna/shared_dna_template_eopie.iff")
 
 object_tangible_component_dna_shared_dna_template_falumpaset = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1173,7 +1173,7 @@ object_tangible_component_dna_shared_dna_template_falumpaset = SharedTangibleObj
 	clientObjectCRC = 671613943
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_falumpaset, "object/tangible/component/dna/shared_dna_template_falumpaset.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_falumpaset, "object/tangible/component/dna/shared_dna_template_falumpaset.iff")
 
 object_tangible_component_dna_shared_dna_template_fambaa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1227,7 +1227,7 @@ object_tangible_component_dna_shared_dna_template_fambaa = SharedTangibleObjectT
 	clientObjectCRC = 1331331454
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_fambaa, "object/tangible/component/dna/shared_dna_template_fambaa.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_fambaa, "object/tangible/component/dna/shared_dna_template_fambaa.iff")
 
 object_tangible_component_dna_shared_dna_template_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1281,7 +1281,7 @@ object_tangible_component_dna_shared_dna_template_generic = SharedTangibleObject
 	clientObjectCRC = 836379806
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_generic, "object/tangible/component/dna/shared_dna_template_generic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_generic, "object/tangible/component/dna/shared_dna_template_generic.iff")
 
 object_tangible_component_dna_shared_dna_template_gualama = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1335,7 +1335,7 @@ object_tangible_component_dna_shared_dna_template_gualama = SharedTangibleObject
 	clientObjectCRC = 17241294
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_gualama, "object/tangible/component/dna/shared_dna_template_gualama.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_gualama, "object/tangible/component/dna/shared_dna_template_gualama.iff")
 
 object_tangible_component_dna_shared_dna_template_guf_drolg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1389,7 +1389,7 @@ object_tangible_component_dna_shared_dna_template_guf_drolg = SharedTangibleObje
 	clientObjectCRC = 774185499
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_guf_drolg, "object/tangible/component/dna/shared_dna_template_guf_drolg.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_guf_drolg, "object/tangible/component/dna/shared_dna_template_guf_drolg.iff")
 
 object_tangible_component_dna_shared_dna_template_gurrcat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1443,7 +1443,7 @@ object_tangible_component_dna_shared_dna_template_gurrcat = SharedTangibleObject
 	clientObjectCRC = 1857431024
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_gurrcat, "object/tangible/component/dna/shared_dna_template_gurrcat.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_gurrcat, "object/tangible/component/dna/shared_dna_template_gurrcat.iff")
 
 object_tangible_component_dna_shared_dna_template_gurreck = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1497,7 +1497,7 @@ object_tangible_component_dna_shared_dna_template_gurreck = SharedTangibleObject
 	clientObjectCRC = 3322704079
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_gurreck, "object/tangible/component/dna/shared_dna_template_gurreck.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_gurreck, "object/tangible/component/dna/shared_dna_template_gurreck.iff")
 
 object_tangible_component_dna_shared_dna_template_kaadu = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1551,7 +1551,7 @@ object_tangible_component_dna_shared_dna_template_kaadu = SharedTangibleObjectTe
 	clientObjectCRC = 1112595757
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_kaadu, "object/tangible/component/dna/shared_dna_template_kaadu.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kaadu, "object/tangible/component/dna/shared_dna_template_kaadu.iff")
 
 object_tangible_component_dna_shared_dna_template_kahmurra = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1605,7 +1605,7 @@ object_tangible_component_dna_shared_dna_template_kahmurra = SharedTangibleObjec
 	clientObjectCRC = 1394407158
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_kahmurra, "object/tangible/component/dna/shared_dna_template_kahmurra.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kahmurra, "object/tangible/component/dna/shared_dna_template_kahmurra.iff")
 
 object_tangible_component_dna_shared_dna_template_kimogila = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1659,7 +1659,7 @@ object_tangible_component_dna_shared_dna_template_kimogila = SharedTangibleObjec
 	clientObjectCRC = 2155310796
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_kimogila, "object/tangible/component/dna/shared_dna_template_kimogila.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kimogila, "object/tangible/component/dna/shared_dna_template_kimogila.iff")
 
 object_tangible_component_dna_shared_dna_template_krahbu = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1713,7 +1713,7 @@ object_tangible_component_dna_shared_dna_template_krahbu = SharedTangibleObjectT
 	clientObjectCRC = 67998893
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_krahbu, "object/tangible/component/dna/shared_dna_template_krahbu.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_krahbu, "object/tangible/component/dna/shared_dna_template_krahbu.iff")
 
 object_tangible_component_dna_shared_dna_template_kusak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1767,7 +1767,7 @@ object_tangible_component_dna_shared_dna_template_kusak = SharedTangibleObjectTe
 	clientObjectCRC = 4199501468
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_kusak, "object/tangible/component/dna/shared_dna_template_kusak.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kusak, "object/tangible/component/dna/shared_dna_template_kusak.iff")
 
 object_tangible_component_dna_shared_dna_template_narglatch = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1821,7 +1821,7 @@ object_tangible_component_dna_shared_dna_template_narglatch = SharedTangibleObje
 	clientObjectCRC = 2079919048
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_narglatch, "object/tangible/component/dna/shared_dna_template_narglatch.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_narglatch, "object/tangible/component/dna/shared_dna_template_narglatch.iff")
 
 object_tangible_component_dna_shared_dna_template_pugoriss = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1875,7 +1875,7 @@ object_tangible_component_dna_shared_dna_template_pugoriss = SharedTangibleObjec
 	clientObjectCRC = 3819931989
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_pugoriss, "object/tangible/component/dna/shared_dna_template_pugoriss.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_pugoriss, "object/tangible/component/dna/shared_dna_template_pugoriss.iff")
 
 object_tangible_component_dna_shared_dna_template_rancor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1929,7 +1929,7 @@ object_tangible_component_dna_shared_dna_template_rancor = SharedTangibleObjectT
 	clientObjectCRC = 324550464
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_rancor, "object/tangible/component/dna/shared_dna_template_rancor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_rancor, "object/tangible/component/dna/shared_dna_template_rancor.iff")
 
 object_tangible_component_dna_shared_dna_template_ronto = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -1983,7 +1983,7 @@ object_tangible_component_dna_shared_dna_template_ronto = SharedTangibleObjectTe
 	clientObjectCRC = 1390548887
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_ronto, "object/tangible/component/dna/shared_dna_template_ronto.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_ronto, "object/tangible/component/dna/shared_dna_template_ronto.iff")
 
 object_tangible_component_dna_shared_dna_template_sand_panther = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2037,7 +2037,7 @@ object_tangible_component_dna_shared_dna_template_sand_panther = SharedTangibleO
 	clientObjectCRC = 2605574472
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_sand_panther, "object/tangible/component/dna/shared_dna_template_sand_panther.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_sand_panther, "object/tangible/component/dna/shared_dna_template_sand_panther.iff")
 
 object_tangible_component_dna_shared_dna_template_snorbal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2091,7 +2091,7 @@ object_tangible_component_dna_shared_dna_template_snorbal = SharedTangibleObject
 	clientObjectCRC = 3055149098
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_snorbal, "object/tangible/component/dna/shared_dna_template_snorbal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_snorbal, "object/tangible/component/dna/shared_dna_template_snorbal.iff")
 
 object_tangible_component_dna_shared_dna_template_torton = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2145,7 +2145,7 @@ object_tangible_component_dna_shared_dna_template_torton = SharedTangibleObjectT
 	clientObjectCRC = 1232171307
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_torton, "object/tangible/component/dna/shared_dna_template_torton.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_torton, "object/tangible/component/dna/shared_dna_template_torton.iff")
 
 object_tangible_component_dna_shared_dna_template_tybis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2199,7 +2199,7 @@ object_tangible_component_dna_shared_dna_template_tybis = SharedTangibleObjectTe
 	clientObjectCRC = 3076355230
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_tybis, "object/tangible/component/dna/shared_dna_template_tybis.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_tybis, "object/tangible/component/dna/shared_dna_template_tybis.iff")
 
 object_tangible_component_dna_shared_dna_template_veermok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2253,7 +2253,7 @@ object_tangible_component_dna_shared_dna_template_veermok = SharedTangibleObject
 	clientObjectCRC = 3141045747
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_veermok, "object/tangible/component/dna/shared_dna_template_veermok.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_veermok, "object/tangible/component/dna/shared_dna_template_veermok.iff")
 
 object_tangible_component_dna_shared_dna_template_zucca_boar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2307,4 +2307,4 @@ object_tangible_component_dna_shared_dna_template_zucca_boar = SharedTangibleObj
 	clientObjectCRC = 228699959
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_zucca_boar, "object/tangible/component/dna/shared_dna_template_zucca_boar.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_zucca_boar, "object/tangible/component/dna/shared_dna_template_zucca_boar.iff")

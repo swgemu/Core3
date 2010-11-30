@@ -83,4 +83,4 @@ object_static_terrain_base_shared_static_terrain_base = SharedStaticObjectTempla
 	clientObjectCRC = 2890795531
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_base_shared_static_terrain_base, "object/static/terrain/base/shared_static_terrain_base.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_base_shared_static_terrain_base, "object/static/terrain/base/shared_static_terrain_base.iff")

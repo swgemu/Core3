@@ -93,7 +93,7 @@ object_tangible_lair_flit_shared_lair_flit = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 148367825
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit, "object/tangible/lair/flit/shared_lair_flit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_flit_shared_lair_flit, "object/tangible/lair/flit/shared_lair_flit.iff")
 
 object_tangible_lair_flit_shared_lair_flit_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_flit_shared_lair_flit_forest = SharedTangibleObjectTemplate
 	clientObjectCRC = 1679618703
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit_forest, "object/tangible/lair/flit/shared_lair_flit_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_flit_shared_lair_flit_forest, "object/tangible/lair/flit/shared_lair_flit_forest.iff")
 
 object_tangible_lair_flit_shared_lair_flit_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_flit_shared_lair_flit_mountain = SharedTangibleObjectTempla
 	clientObjectCRC = 402738321
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit_mountain, "object/tangible/lair/flit/shared_lair_flit_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_flit_shared_lair_flit_mountain, "object/tangible/lair/flit/shared_lair_flit_mountain.iff")

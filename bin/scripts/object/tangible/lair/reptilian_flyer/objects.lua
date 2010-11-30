@@ -93,7 +93,7 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer = SharedTangibl
 	clientObjectCRC = 1767218829
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer.iff")
 
 object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest = Shared
 	clientObjectCRC = 989527915
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_forest.iff")
 
 object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain = Shar
 	clientObjectCRC = 4098043121
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_mountain.iff")

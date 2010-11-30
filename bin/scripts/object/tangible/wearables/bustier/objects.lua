@@ -93,7 +93,7 @@ object_tangible_wearables_bustier_shared_bustier_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 2813298237
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bustier_shared_bustier_s01, "object/tangible/wearables/bustier/shared_bustier_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bustier_shared_bustier_s01, "object/tangible/wearables/bustier/shared_bustier_s01.iff")
 
 object_tangible_wearables_bustier_shared_bustier_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bustier_s02_f.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_bustier_shared_bustier_s02 = SharedTangibleObjectTempl
 	clientObjectCRC = 2092445354
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bustier_shared_bustier_s02, "object/tangible/wearables/bustier/shared_bustier_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bustier_shared_bustier_s02, "object/tangible/wearables/bustier/shared_bustier_s02.iff")
 
 object_tangible_wearables_bustier_shared_bustier_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bustier_s03_f.sat",
@@ -201,4 +201,4 @@ object_tangible_wearables_bustier_shared_bustier_s03 = SharedTangibleObjectTempl
 	clientObjectCRC = 901073191
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bustier_shared_bustier_s03, "object/tangible/wearables/bustier/shared_bustier_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bustier_shared_bustier_s03, "object/tangible/wearables/bustier/shared_bustier_s03.iff")

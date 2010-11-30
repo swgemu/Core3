@@ -83,7 +83,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_blueleaf_temple
 	clientObjectCRC = 3554417607
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_blueleaf_temple, "object/draft_schematic/furniture/bestine/shared_painting_bestine_blueleaf_temple.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_blueleaf_temple, "object/draft_schematic/furniture/bestine/shared_painting_bestine_blueleaf_temple.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_blumbush = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,7 +127,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_blumbush = Shar
 	clientObjectCRC = 3868739773
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_blumbush, "object/draft_schematic/furniture/bestine/shared_painting_bestine_blumbush.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_blumbush, "object/draft_schematic/furniture/bestine/shared_painting_bestine_blumbush.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_boffa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -171,7 +171,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_boffa = SharedD
 	clientObjectCRC = 3812766941
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_boffa, "object/draft_schematic/furniture/bestine/shared_painting_bestine_boffa.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_boffa, "object/draft_schematic/furniture/bestine/shared_painting_bestine_boffa.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -215,7 +215,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_0
 	clientObjectCRC = 2798774405
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_01, "object/draft_schematic/furniture/bestine/shared_painting_bestine_golden_flower_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_01, "object/draft_schematic/furniture/bestine/shared_painting_bestine_golden_flower_01.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -259,7 +259,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_0
 	clientObjectCRC = 2110144530
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_02, "object/draft_schematic/furniture/bestine/shared_painting_bestine_golden_flower_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_02, "object/draft_schematic/furniture/bestine/shared_painting_bestine_golden_flower_02.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -303,7 +303,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_0
 	clientObjectCRC = 885729183
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_03, "object/draft_schematic/furniture/bestine/shared_painting_bestine_golden_flower_03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_03, "object/draft_schematic/furniture/bestine/shared_painting_bestine_golden_flower_03.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_house = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -347,7 +347,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_house = SharedD
 	clientObjectCRC = 1534476352
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_house, "object/draft_schematic/furniture/bestine/shared_painting_bestine_house.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_house, "object/draft_schematic/furniture/bestine/shared_painting_bestine_house.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_krayt_skeleton = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,7 +391,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_krayt_skeleton 
 	clientObjectCRC = 3028784545
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_krayt_skeleton, "object/draft_schematic/furniture/bestine/shared_painting_bestine_krayt_skeleton.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_krayt_skeleton, "object/draft_schematic/furniture/bestine/shared_painting_bestine_krayt_skeleton.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_lucky_despot = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -435,7 +435,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_lucky_despot = 
 	clientObjectCRC = 1610627862
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_lucky_despot, "object/draft_schematic/furniture/bestine/shared_painting_bestine_lucky_despot.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_lucky_despot, "object/draft_schematic/furniture/bestine/shared_painting_bestine_lucky_despot.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_mattberry = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -479,7 +479,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_mattberry = Sha
 	clientObjectCRC = 3967202686
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_mattberry, "object/draft_schematic/furniture/bestine/shared_painting_bestine_mattberry.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_mattberry, "object/draft_schematic/furniture/bestine/shared_painting_bestine_mattberry.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -523,7 +523,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_01 =
 	clientObjectCRC = 3453343183
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_01, "object/draft_schematic/furniture/bestine/shared_painting_bestine_moncal_eye_01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_01, "object/draft_schematic/furniture/bestine/shared_painting_bestine_moncal_eye_01.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -567,7 +567,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_02 =
 	clientObjectCRC = 381844824
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_02, "object/draft_schematic/furniture/bestine/shared_painting_bestine_moncal_eye_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_02, "object/draft_schematic/furniture/bestine/shared_painting_bestine_moncal_eye_02.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_rainbow_berry_bush = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -611,7 +611,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_rainbow_berry_b
 	clientObjectCRC = 33582333
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_rainbow_berry_bush, "object/draft_schematic/furniture/bestine/shared_painting_bestine_rainbow_berry_bush.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_rainbow_berry_bush, "object/draft_schematic/furniture/bestine/shared_painting_bestine_rainbow_berry_bush.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_raventhorn = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -655,7 +655,7 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_raventhorn = Sh
 	clientObjectCRC = 3011444247
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_raventhorn, "object/draft_schematic/furniture/bestine/shared_painting_bestine_raventhorn.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_raventhorn, "object/draft_schematic/furniture/bestine/shared_painting_bestine_raventhorn.iff")
 
 object_draft_schematic_furniture_bestine_shared_painting_bestine_ronka = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -699,4 +699,4 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_ronka = SharedD
 	clientObjectCRC = 653658046
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_ronka, "object/draft_schematic/furniture/bestine/shared_painting_bestine_ronka.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_ronka, "object/draft_schematic/furniture/bestine/shared_painting_bestine_ronka.iff")

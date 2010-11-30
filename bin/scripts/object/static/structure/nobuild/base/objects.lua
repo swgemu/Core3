@@ -83,4 +83,4 @@ object_static_structure_nobuild_base_shared_nobuild_base = SharedStaticObjectTem
 	clientObjectCRC = 2977184644
 }
 
-ObjectTemplates:addTemplate(object_static_structure_nobuild_base_shared_nobuild_base, "object/static/structure/nobuild/base/shared_nobuild_base.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_nobuild_base_shared_nobuild_base, "object/static/structure/nobuild/base/shared_nobuild_base.iff")

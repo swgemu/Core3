@@ -97,4 +97,4 @@ object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTempla
 	clientObjectCRC = 2110842690
 }
 
-ObjectTemplates:addTemplate(object_weapon_creature_shared_creature_default_weapon, "object/weapon/creature/shared_creature_default_weapon.iff")
+ObjectTemplates:addClientTemplate(object_weapon_creature_shared_creature_default_weapon, "object/weapon/creature/shared_creature_default_weapon.iff")

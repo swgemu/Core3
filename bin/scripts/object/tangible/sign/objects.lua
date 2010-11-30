@@ -93,7 +93,7 @@ object_tangible_sign_shared_all_sign_city_s01 = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 533444800
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_shared_all_sign_city_s01, "object/tangible/sign/shared_all_sign_city_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_shared_all_sign_city_s01, "object/tangible/sign/shared_all_sign_city_s01.iff")
 
 object_tangible_sign_shared_all_sign_city_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s02.apt",
@@ -147,7 +147,7 @@ object_tangible_sign_shared_all_sign_city_s02 = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 3302756439
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_shared_all_sign_city_s02, "object/tangible/sign/shared_all_sign_city_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_shared_all_sign_city_s02, "object/tangible/sign/shared_all_sign_city_s02.iff")
 
 object_tangible_sign_shared_all_sign_city_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s04.apt",
@@ -201,7 +201,7 @@ object_tangible_sign_shared_all_sign_city_s03 = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 2379315162
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_shared_all_sign_city_s03, "object/tangible/sign/shared_all_sign_city_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_shared_all_sign_city_s03, "object/tangible/sign/shared_all_sign_city_s03.iff")
 
 object_tangible_sign_shared_all_sign_street_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_street_s01.apt",
@@ -255,7 +255,7 @@ object_tangible_sign_shared_all_sign_street_s01 = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1023580937
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_shared_all_sign_street_s01, "object/tangible/sign/shared_all_sign_street_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_shared_all_sign_street_s01, "object/tangible/sign/shared_all_sign_street_s01.iff")
 
 object_tangible_sign_shared_streetsign_upright_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_street_sign_s01.apt",
@@ -309,7 +309,7 @@ object_tangible_sign_shared_streetsign_upright_style_01 = SharedTangibleObjectTe
 	clientObjectCRC = 281440325
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_shared_streetsign_upright_style_01, "object/tangible/sign/shared_streetsign_upright_style_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_shared_streetsign_upright_style_01, "object/tangible/sign/shared_streetsign_upright_style_01.iff")
 
 object_tangible_sign_shared_streetsign_wall_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_street_sign_wall_s01.apt",
@@ -363,7 +363,7 @@ object_tangible_sign_shared_streetsign_wall_style_01 = SharedTangibleObjectTempl
 	clientObjectCRC = 1744336727
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_shared_streetsign_wall_style_01, "object/tangible/sign/shared_streetsign_wall_style_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_shared_streetsign_wall_style_01, "object/tangible/sign/shared_streetsign_wall_style_01.iff")
 
 object_tangible_sign_shared_tatooine_moraj_marker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -417,4 +417,4 @@ object_tangible_sign_shared_tatooine_moraj_marker = SharedTangibleObjectTemplate
 	clientObjectCRC = 166858799
 }
 
-ObjectTemplates:addTemplate(object_tangible_sign_shared_tatooine_moraj_marker, "object/tangible/sign/shared_tatooine_moraj_marker.iff")
+ObjectTemplates:addClientTemplate(object_tangible_sign_shared_tatooine_moraj_marker, "object/tangible/sign/shared_tatooine_moraj_marker.iff")

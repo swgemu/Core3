@@ -93,4 +93,4 @@ object_tangible_survey_tool_base_shared_survey_tool_base = SharedTangibleObjectT
 	clientObjectCRC = 2568376858
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_base_shared_survey_tool_base, "object/tangible/survey_tool/base/shared_survey_tool_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_base_shared_survey_tool_base, "object/tangible/survey_tool/base/shared_survey_tool_base.iff")

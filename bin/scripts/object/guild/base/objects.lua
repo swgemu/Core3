@@ -83,7 +83,7 @@ object_guild_base_shared_base_guild = SharedGuildObjectTemplate:new {
 	clientObjectCRC = 2854935626
 }
 
-ObjectTemplates:addTemplate(object_guild_base_shared_base_guild, "object/guild/base/shared_base_guild.iff")
+ObjectTemplates:addClientTemplate(object_guild_base_shared_base_guild, "object/guild/base/shared_base_guild.iff")
 
 object_guild_base_shared_guild_default = SharedGuildObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,4 +127,4 @@ object_guild_base_shared_guild_default = SharedGuildObjectTemplate:new {
 	clientObjectCRC = 3744093888
 }
 
-ObjectTemplates:addTemplate(object_guild_base_shared_guild_default, "object/guild/base/shared_guild_default.iff")
+ObjectTemplates:addClientTemplate(object_guild_base_shared_guild_default, "object/guild/base/shared_guild_default.iff")

@@ -93,7 +93,7 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss = SharedTangibleObjectTemplat
 	clientObjectCRC = 1270614001
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss, "object/tangible/lair/pugoriss/shared_lair_pugoriss.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss, "object/tangible/lair/pugoriss/shared_lair_pugoriss.iff")
 
 object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland = SharedTangibleObj
 	clientObjectCRC = 3218295663
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland, "object/tangible/lair/pugoriss/shared_lair_pugoriss_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland, "object/tangible/lair/pugoriss/shared_lair_pugoriss_grassland.iff")

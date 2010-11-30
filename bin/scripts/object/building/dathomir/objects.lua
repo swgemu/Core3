@@ -96,7 +96,7 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 	clientObjectCRC = 3733495054
 }
 
-ObjectTemplates:addTemplate(object_building_dathomir_shared_mtn_clan_stronghold, "object/building/dathomir/shared_mtn_clan_stronghold.iff")
+ObjectTemplates:addClientTemplate(object_building_dathomir_shared_mtn_clan_stronghold, "object/building/dathomir/shared_mtn_clan_stronghold.iff")
 
 object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -153,4 +153,4 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 	clientObjectCRC = 1104863563
 }
 
-ObjectTemplates:addTemplate(object_building_dathomir_shared_night_sister_stronghold, "object/building/dathomir/shared_night_sister_stronghold.iff")
+ObjectTemplates:addClientTemplate(object_building_dathomir_shared_night_sister_stronghold, "object/building/dathomir/shared_night_sister_stronghold.iff")

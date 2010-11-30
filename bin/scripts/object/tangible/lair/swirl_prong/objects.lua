@@ -93,7 +93,7 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong = SharedTangibleObjectT
 	clientObjectCRC = 4003634872
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong.iff")
 
 object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland = SharedTangi
 	clientObjectCRC = 1455751773
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong_grassland.iff")

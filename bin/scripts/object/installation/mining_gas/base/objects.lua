@@ -93,4 +93,4 @@ object_installation_mining_gas_base_shared_mining_gas_base = SharedInstallationO
 	clientObjectCRC = 1518209965
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_gas_base_shared_mining_gas_base, "object/installation/mining_gas/base/shared_mining_gas_base.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_gas_base_shared_mining_gas_base, "object/installation/mining_gas/base/shared_mining_gas_base.iff")

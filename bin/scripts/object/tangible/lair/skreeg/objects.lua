@@ -93,7 +93,7 @@ object_tangible_lair_skreeg_shared_lair_skreeg = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3525197879
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg, "object/tangible/lair/skreeg/shared_lair_skreeg.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_skreeg_shared_lair_skreeg, "object/tangible/lair/skreeg/shared_lair_skreeg.iff")
 
 object_tangible_lair_skreeg_shared_lair_skreeg_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_skreeg_shared_lair_skreeg_jungle = SharedTangibleObjectTemp
 	clientObjectCRC = 962440956
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_jungle, "object/tangible/lair/skreeg/shared_lair_skreeg_jungle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_jungle, "object/tangible/lair/skreeg/shared_lair_skreeg_jungle.iff")
 
 object_tangible_lair_skreeg_shared_lair_skreeg_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_skreeg_shared_lair_skreeg_swamp = SharedTangibleObjectTempl
 	clientObjectCRC = 2757887034
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_swamp, "object/tangible/lair/skreeg/shared_lair_skreeg_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_swamp, "object/tangible/lair/skreeg/shared_lair_skreeg_swamp.iff")

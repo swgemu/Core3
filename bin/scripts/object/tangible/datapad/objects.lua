@@ -93,7 +93,7 @@ object_tangible_datapad_shared_character_datapad = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1941590017
 }
 
-ObjectTemplates:addTemplate(object_tangible_datapad_shared_character_datapad, "object/tangible/datapad/shared_character_datapad.iff")
+ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_character_datapad, "object/tangible/datapad/shared_character_datapad.iff")
 
 object_tangible_datapad_shared_droid_datapad_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -147,7 +147,7 @@ object_tangible_datapad_shared_droid_datapad_1 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3496173420
 }
 
-ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_1, "object/tangible/datapad/shared_droid_datapad_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_1, "object/tangible/datapad/shared_droid_datapad_1.iff")
 
 object_tangible_datapad_shared_droid_datapad_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -201,7 +201,7 @@ object_tangible_datapad_shared_droid_datapad_2 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 192215035
 }
 
-ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_2, "object/tangible/datapad/shared_droid_datapad_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_2, "object/tangible/datapad/shared_droid_datapad_2.iff")
 
 object_tangible_datapad_shared_droid_datapad_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -255,7 +255,7 @@ object_tangible_datapad_shared_droid_datapad_3 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1115263094
 }
 
-ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_3, "object/tangible/datapad/shared_droid_datapad_3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_3, "object/tangible/datapad/shared_droid_datapad_3.iff")
 
 object_tangible_datapad_shared_droid_datapad_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -309,7 +309,7 @@ object_tangible_datapad_shared_droid_datapad_4 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3113925474
 }
 
-ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_4, "object/tangible/datapad/shared_droid_datapad_4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_4, "object/tangible/datapad/shared_droid_datapad_4.iff")
 
 object_tangible_datapad_shared_droid_datapad_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -363,7 +363,7 @@ object_tangible_datapad_shared_droid_datapad_5 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 4036484335
 }
 
-ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_5, "object/tangible/datapad/shared_droid_datapad_5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_5, "object/tangible/datapad/shared_droid_datapad_5.iff")
 
 object_tangible_datapad_shared_droid_datapad_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -417,4 +417,4 @@ object_tangible_datapad_shared_droid_datapad_6 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 729838712
 }
 
-ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_6, "object/tangible/datapad/shared_droid_datapad_6.iff")
+ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_6, "object/tangible/datapad/shared_droid_datapad_6.iff")

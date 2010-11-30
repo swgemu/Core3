@@ -93,7 +93,7 @@ object_tangible_furniture_imperial_shared_bunker_table_giant_style_01 = SharedTa
 	clientObjectCRC = 396719577
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_bunker_table_giant_style_01, "object/tangible/furniture/imperial/shared_bunker_table_giant_style_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_bunker_table_giant_style_01, "object/tangible/furniture/imperial/shared_bunker_table_giant_style_01.iff")
 
 object_tangible_furniture_imperial_shared_data_terminal_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
@@ -147,7 +147,7 @@ object_tangible_furniture_imperial_shared_data_terminal_s1 = SharedTangibleObjec
 	clientObjectCRC = 2690468155
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_data_terminal_s1, "object/tangible/furniture/imperial/shared_data_terminal_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s1, "object/tangible/furniture/imperial/shared_data_terminal_s1.iff")
 
 object_tangible_furniture_imperial_shared_data_terminal_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
@@ -201,7 +201,7 @@ object_tangible_furniture_imperial_shared_data_terminal_s2 = SharedTangibleObjec
 	clientObjectCRC = 2068505004
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_data_terminal_s2, "object/tangible/furniture/imperial/shared_data_terminal_s2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s2, "object/tangible/furniture/imperial/shared_data_terminal_s2.iff")
 
 object_tangible_furniture_imperial_shared_data_terminal_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
@@ -255,7 +255,7 @@ object_tangible_furniture_imperial_shared_data_terminal_s3 = SharedTangibleObjec
 	clientObjectCRC = 843548193
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_data_terminal_s3, "object/tangible/furniture/imperial/shared_data_terminal_s3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s3, "object/tangible/furniture/imperial/shared_data_terminal_s3.iff")
 
 object_tangible_furniture_imperial_shared_data_terminal_s4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s4.apt",
@@ -309,7 +309,7 @@ object_tangible_furniture_imperial_shared_data_terminal_s4 = SharedTangibleObjec
 	clientObjectCRC = 3383012661
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_data_terminal_s4, "object/tangible/furniture/imperial/shared_data_terminal_s4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s4, "object/tangible/furniture/imperial/shared_data_terminal_s4.iff")
 
 object_tangible_furniture_imperial_shared_table_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_tbl_s1.apt",
@@ -363,7 +363,7 @@ object_tangible_furniture_imperial_shared_table_s1 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1484080816
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_table_s1, "object/tangible/furniture/imperial/shared_table_s1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_table_s1, "object/tangible/furniture/imperial/shared_table_s1.iff")
 
 object_tangible_furniture_imperial_shared_warren_computer_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -417,7 +417,7 @@ object_tangible_furniture_imperial_shared_warren_computer_terminal = SharedTangi
 	clientObjectCRC = 3872577518
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_computer_terminal, "object/tangible/furniture/imperial/shared_warren_computer_terminal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_computer_terminal, "object/tangible/furniture/imperial/shared_warren_computer_terminal.iff")
 
 object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -471,7 +471,7 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01 = SharedT
 	clientObjectCRC = 2156516600
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s01.iff")
 
 object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -525,7 +525,7 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02 = SharedT
 	clientObjectCRC = 1537113199
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s02.iff")
 
 object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -579,7 +579,7 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03 = SharedT
 	clientObjectCRC = 311630818
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s03.iff")
 
 object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -633,7 +633,7 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04 = SharedT
 	clientObjectCRC = 3916443894
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s04.iff")
 
 object_tangible_furniture_imperial_shared_warren_experiment_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -687,7 +687,7 @@ object_tangible_furniture_imperial_shared_warren_experiment_terminal = SharedTan
 	clientObjectCRC = 1918381408
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_experiment_terminal, "object/tangible/furniture/imperial/shared_warren_experiment_terminal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_experiment_terminal, "object/tangible/furniture/imperial/shared_warren_experiment_terminal.iff")
 
 object_tangible_furniture_imperial_shared_warren_warning_sign = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s03.apt",
@@ -741,4 +741,4 @@ object_tangible_furniture_imperial_shared_warren_warning_sign = SharedTangibleOb
 	clientObjectCRC = 811537804
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_warning_sign, "object/tangible/furniture/imperial/shared_warren_warning_sign.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_warning_sign, "object/tangible/furniture/imperial/shared_warren_warning_sign.iff")
